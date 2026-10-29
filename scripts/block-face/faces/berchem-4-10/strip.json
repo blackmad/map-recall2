@@ -1,0 +1,95 @@
+{
+ "face": "berchem-4-10",
+ "image": "staging/block-face/berchem-4-10/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 881,
+ "height": 744,
+ "groundNAP": 0.393,
+ "heightM": 18.6,
+ "frame": {
+  "midRD": [
+   121715.27012500001,
+   485578.874
+  ],
+  "uRD": [
+   -0.3859184129739441,
+   0.9225329146039573
+  ],
+  "nRD": [
+   0.9225329146039573,
+   0.3859184129739441
+  ]
+ },
+ "x0M": -10.9,
+ "x1M": 11.13,
+ "date": "2022-03-21",
+ "coverage": 0.5,
+ "spans": [
+  {
+   "pandId": "0363100012096339",
+   "x0M": -10.9,
+   "x1M": -0.11,
+   "px": [
+    0,
+    432
+   ],
+   "date": "2022-03-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000305",
+     "timestamp": "2022-03-21T07:32:35.300610Z",
+     "distanceM": 29,
+     "obliquityDeg": 27.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000306",
+     "timestamp": "2022-03-21T07:32:36.005770Z",
+     "distanceM": 24.8,
+     "obliquityDeg": 32.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000307",
+     "timestamp": "2022-03-21T07:32:36.710560Z",
+     "distanceM": 20.9,
+     "obliquityDeg": 40.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012128539",
+   "x0M": -0.11,
+   "x1M": 11.13,
+   "px": [
+    432,
+    881
+   ],
+   "date": "2022-03-21",
+   "fallbackDate": false,
+   "panoramas": []
+  }
+ ],
+ "candidatesByDate": {
+  "2020-01-06": 1,
+  "2022-03-21": 1,
+  "2019-05-02": 1,
+  "2020-04-29": 1,
+  "2016-08-28": 1,
+  "2022-01-10": 1,
+  "2021-04-23": 1,
+  "2018-07-29": 1,
+  "2023-01-03": 0,
+  "2024-09-04": 0,
+  "2016-08-02": 0,
+  "2025-09-29": 0,
+  "2018-06-11": 0,
+  "2022-03-23": 0,
+  "2020-07-07": 0,
+  "2022-01-11": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

@@ -1,0 +1,325 @@
+{
+ "face": "sweelinck-1-11",
+ "street": "Eerste Sweelinckstraat",
+ "library": "de-pijp",
+ "stripDate": "2021-04-23",
+ "seconds": 0.93,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012235945",
+   "address": "Eerste Sweelinckstraat 1A",
+   "builtYear": 1887,
+   "widthM": 12.97,
+   "eavesM": 13.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#807574",
+    "wallRaw": "#766e65",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 1.55,
+      "topWidthM": 0.85,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.05,
+       "widthM": 1,
+       "centre": 0.09
+      },
+      {
+       "atM": 5,
+       "widthM": 1.32,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1887, type 1875-1877; frontage 12.97 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1887, type 1875-1877",
+     "frontage 12.97 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.77 m = 3 storeys of 4.59 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.5 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157282",
+   "address": "Eerste Sweelinckstraat 5",
+   "builtYear": 1886,
+   "widthM": 5.92,
+   "eavesM": 12.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81807b",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 749,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163950",
+   "address": "Eerste Sweelinckstraat 7",
+   "builtYear": 1886,
+   "widthM": 6.05,
+   "eavesM": 12.66,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d403c",
+    "wallRaw": "#626255",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 148,
+     "confidence": 0.47,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.2,
+      "topWidthM": 0.8,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 3.05,
+       "centre": 0.53
+      },
+      {
+       "atM": 4.72,
+       "widthM": 0.93,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163278",
+   "address": "Eerste Sweelinckstraat 9",
+   "builtYear": 1887,
+   "widthM": 5.5,
+   "eavesM": 13.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6a64",
+    "wallRaw": "#71655c",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 151,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 0.83,
+      "topWidthM": 0.3,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 0.85,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.65 < 0.7 (strip wall #7f6a64 dE 15.9 to #524845 (<= 10); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.1 m; 3DBAG 13.79 m not compared)"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #7f6a64 dE 15.9 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156851",
+   "address": "Eerste Sweelinckstraat 11",
+   "builtYear": 1887,
+   "widthM": 5.29,
+   "eavesM": 13.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6461",
+    "wallRaw": "#6b5d59",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 156,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 3.53,
+      "topWidthM": 0.33,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

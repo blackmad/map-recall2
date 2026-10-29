@@ -1,0 +1,763 @@
+{
+ "face": "dou-56-74",
+ "street": "Gerard Doustraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 8.26,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236190",
+   "address": "Gerard Doustraat 72",
+   "builtYear": 1883,
+   "widthM": 5.01,
+   "eavesM": 12.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#504446",
+    "wallRaw": "#4d4a47",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 746,
+     "confidence": 0.26,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.95,
+       "widthM": 1.5,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.4,
+       "widthM": 2.02,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877; frontage 5.01 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1883, type 1875-1877",
+     "frontage 5.01 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.46 m = 3 storeys of 4.15 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.29 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153546",
+   "address": "Gerard Doustraat 70",
+   "builtYear": 1887,
+   "widthM": 4.9,
+   "eavesM": 13.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493e38",
+    "wallRaw": "#59504c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 746,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10,
+       "widthM": 1.2,
+       "centre": 0.13
+      },
+      {
+       "atM": 7.45,
+       "widthM": 3.25,
+       "centre": 0.39
+      },
+      {
+       "atM": 4.97,
+       "widthM": 4.5,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.086 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27)",
+   "likeness": {
+    "pandId": "0363100012153546",
+    "ncc": 0.086,
+    "nccRaw": 0.086,
+    "shiftM": [
+     0.3,
+     0.2
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27"
+    ],
+    "wall": {
+     "photo": "#5c4e4b",
+     "model": "#64554d",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.301
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.045,
+    "pijp-1882-keystone-lintel": 0.106,
+    "pijp-1885-segmental-keystone": 0.023
+   }
+  },
+  {
+   "pandId": "0363100012162701",
+   "address": "Gerard Doustraat 68",
+   "builtYear": 1887,
+   "widthM": 4.83,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755c51",
+    "wallRaw": "#655652",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.5,
+      "topWidthM": 0.42,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.13,
+       "widthM": 1.05,
+       "centre": 0.7
+      },
+      {
+       "atM": 7.35,
+       "widthM": 1.82,
+       "centre": 0.21
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.05,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.079 < 0.15 (photo vs model body; likeness.ts FAIL: wall family brick vs photo paint; glazing storey band off by 0.16)",
+   "likeness": {
+    "pandId": "0363100012162701",
+    "ncc": 0.079,
+    "nccRaw": 0.079,
+    "shiftM": [
+     0.4,
+     0.2
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall family brick vs photo paint",
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#9fa1a7",
+     "model": "#8d6f62",
+     "dL": -0.171
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.32
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.074,
+    "pijp-1882-keystone-lintel": 0.136,
+    "pijp-1885-segmental-keystone": 0.053
+   }
+  },
+  {
+   "pandId": "0363100012156649",
+   "address": "Gerard Doustraat 66",
+   "builtYear": 1886,
+   "widthM": 5.81,
+   "eavesM": 13.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715955",
+    "wallRaw": "#554845",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.93,
+      "topWidthM": 0.68,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.52,
+       "widthM": 0.82,
+       "centre": 0.36
+      },
+      {
+       "atM": 8.82,
+       "widthM": 0.85,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.23,
+       "centre": 0.23
+      },
+      {
+       "atM": 4.92,
+       "widthM": 1.07,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.48 < 0.7 (strip cornice 13.75 m vs the type's 15.1 m; strip wall #715955 dE 10.6 to #524845 (<= 10); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.48,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.75 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #715955 dE 10.6 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164863",
+   "address": "Gerard Doustraat 64",
+   "builtYear": 1886,
+   "widthM": 5.58,
+   "eavesM": 13.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62504a",
+    "wallRaw": "#4d4644",
+    "skyline": {
+     "eavesM": 14.1,
+     "eavesRow": 182,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 4.08,
+      "topWidthM": 0.17,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 3.2,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160762",
+   "address": "Gerard Doustraat 62",
+   "builtYear": 1886,
+   "widthM": 5.68,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#221f20",
+    "wallRaw": "#574c49",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 191,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 4.77,
+      "topWidthM": 0.6,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.05,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.4 < 0.7 (strip cornice 13.88 m vs the type's 15.1 m; strip wall #221f20 dE 19.8 to #524845 (<= 10); strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.4,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.88 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #221f20 dE 19.8 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167299",
+   "address": "Gerard Doustraat 60",
+   "builtYear": 1886,
+   "widthM": 5.72,
+   "eavesM": 13.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#412a22",
+    "wallRaw": "#5a5758",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 225,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 2.85,
+      "topWidthM": 0.45,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.109,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 0.82,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.2,
+       "widthM": 4.22,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.4 < 0.7 (strip cornice 13.03 m vs the type's 15.1 m; strip wall #412a22 dE 14.6 to #524845 (<= 10); strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.4,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.03 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #412a22 dE 14.6 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.07 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157589",
+   "address": "Gerard Doustraat 58",
+   "builtYear": 1886,
+   "widthM": 5.72,
+   "eavesM": 13.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#878884",
+    "wallRaw": "#7b7b77",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 746,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.8,
+       "widthM": 1.25,
+       "centre": 0.81
+      },
+      {
+       "atM": 10.9,
+       "widthM": 1.07,
+       "centre": 0.73
+      },
+      {
+       "atM": 5.8,
+       "widthM": 0.9,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.64 < 0.7 (strip wall #878884 dE 25.5 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.1 m; 3DBAG 13.22 m not compared)"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #878884 dE 25.5 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155928",
+   "address": "Gerard Doustraat 56B",
+   "builtYear": 1886,
+   "widthM": 14.7,
+   "eavesM": 13.45,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 13.48,
+    "toM": 13.93,
+    "depthM": 0.32,
+    "centre": 0.932
+   },
+   "strip": {
+    "wall": "#725a58",
+    "wallRaw": "#544441",
+    "skyline": {
+     "eavesM": 17.55,
+     "eavesRow": 44,
+     "confidence": 0.42,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1886, type 1875-1877; frontage 14.7 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1886, type 1875-1877",
+     "frontage 14.7 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.45 m = 3 storeys of 4.48 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.02 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

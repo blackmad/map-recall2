@@ -1,0 +1,261 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163007",
+   "addresses": [
+    "Govert Flinckstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 149-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000648758"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033158,
+     "lngLat": [
+      4.893571,
+      52.3550769
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01657",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    },
+    {
+     "type": "node",
+     "id": 13507033159,
+     "lngLat": [
+      4.8936009,
+      52.3550819
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01656",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156380",
+   "addresses": [
+    "Govert Flinckstraat 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 151-O",
+     "use": "industriefunctie",
+     "areaM2": 44,
+     "bagId": "0363010000648765"
+    },
+    {
+     "address": "Govert Flinckstraat 151-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001023732"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160051",
+   "addresses": [
+    "Govert Flinckstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000996285"
+    },
+    {
+     "address": "Govert Flinckstraat 153-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012061099"
+    },
+    {
+     "address": "Govert Flinckstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012061100"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556918,
+     "lngLat": [
+      4.8937127,
+      52.3551951
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "153-H",
+      "addr:postcode": "1073BS",
+      "addr:street": "Govert Flinckstraat",
+      "check_date": "2026-01-28",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153243",
+   "addresses": [
+    "Govert Flinckstraat 155"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 155-H",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010000648782"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116142",
+   "addresses": [
+    "Govert Flinckstraat 157",
+    "Govert Flinckstraat 159C",
+    "Govert Flinckstraat 159G",
+    "Govert Flinckstraat 159A",
+    "Govert Flinckstraat 159B",
+    "Govert Flinckstraat 159D",
+    "Govert Flinckstraat 159E",
+    "Govert Flinckstraat 159F",
+    "Govert Flinckstraat 159H",
+    "Govert Flinckstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 159C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000603083"
+    },
+    {
+     "address": "Govert Flinckstraat 159G",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000730271"
+    },
+    {
+     "address": "Govert Flinckstraat 161",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010000730330"
+    },
+    {
+     "address": "Govert Flinckstraat 157",
+     "use": "industriefunctie",
+     "areaM2": 119,
+     "bagId": "0363010000936850"
+    },
+    {
+     "address": "Govert Flinckstraat 159A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000936808"
+    },
+    {
+     "address": "Govert Flinckstraat 159B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000936816"
+    },
+    {
+     "address": "Govert Flinckstraat 159D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000936817"
+    },
+    {
+     "address": "Govert Flinckstraat 159E",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000936818"
+    },
+    {
+     "address": "Govert Flinckstraat 159F",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000936819"
+    },
+    {
+     "address": "Govert Flinckstraat 159H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000936822"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153277",
+   "addresses": [
+    "Govert Flinckstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 163-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000648805"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162348",
+   "addresses": [
+    "Govert Flinckstraat 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 165-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000648818"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

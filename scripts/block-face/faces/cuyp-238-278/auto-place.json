@@ -1,0 +1,1360 @@
+{
+ "face": "cuyp-238-278",
+ "street": "Albert Cuypstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 4.32,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012161932",
+   "address": "Albert Cuypstraat 272",
+   "builtYear": 1891,
+   "widthM": 21.04,
+   "eavesM": 15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766058",
+    "wallRaw": "#725e57",
+    "skyline": {
+     "eavesM": 16.55,
+     "eavesRow": 163,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 5.1,
+      "riseM": 3.68,
+      "topWidthM": 0.82,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.02,
+     "balconies": true,
+     "why": "bay-less open axis 0.6 m at 0.02 (light 0.64): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.02,
+       "light": 0.64
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.13,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.23,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.39,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.49,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.74,
+       "light": 0.2
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.72,
+       "widthM": 1.27,
+       "centre": 0.13
+      },
+      {
+       "atM": 13.42,
+       "widthM": 0.97,
+       "centre": 0.61
+      },
+      {
+       "atM": 7.05,
+       "widthM": 1.2,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.15,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 21.04 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 21.04 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15 m = 3 storeys of 5 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.96 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236829",
+   "address": "Albert Cuypstraat 264",
+   "builtYear": 1898,
+   "widthM": 20.08,
+   "eavesM": 17.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#805d53",
+    "wallRaw": "#856a61",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 178,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 3.65,
+      "topWidthM": 0.07,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.257,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.09 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.09,
+       "light": 0.34
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.18,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.36,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.44,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.54,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.64,
+       "light": 0.28
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.81,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.89,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.98,
+       "light": 0.27
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.82,
+       "widthM": 1.8,
+       "centre": 0.44
+      },
+      {
+       "atM": 14.45,
+       "widthM": 1.85,
+       "centre": 0.54
+      },
+      {
+       "atM": 10.18,
+       "widthM": 1.2,
+       "centre": 0.9
+      },
+      {
+       "atM": 7.02,
+       "widthM": 1.2,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1898, type 1875-1877; frontage 20.08 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1875-1877",
+     "frontage 20.08 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.01 m = 3 storeys of 5.67 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.46 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.229 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158052",
+   "address": "Albert Cuypstraat 262",
+   "builtYear": 1900,
+   "widthM": 5.18,
+   "eavesM": 13.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#74635d",
+    "wallRaw": "#6b5d58",
+    "skyline": {
+     "eavesM": 17.73,
+     "eavesRow": 116,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 2.75,
+      "topWidthM": 0.2,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.276,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.13,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.9 m = 3 storeys of 4.63 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.26 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156841",
+   "address": "Albert Cuypstraat 260",
+   "builtYear": 1900,
+   "widthM": 5.18,
+   "eavesM": 13.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b282c",
+    "wallRaw": "#786761",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 152,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.3,
+      "topWidthM": 1.2,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.155,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.79 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.79,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.1,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.52,
+       "widthM": 1.23,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.5 m = 3 storeys of 4.5 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.85 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.128 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164706",
+   "address": "Albert Cuypstraat 258",
+   "builtYear": 1900,
+   "widthM": 5.18,
+   "eavesM": 13.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70615b",
+    "wallRaw": "#6f635b",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 144,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.224,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.19 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.19,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.47,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.83,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.34 m = 3 storeys of 4.45 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.8 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.209 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161251",
+   "address": "Albert Cuypstraat 256",
+   "builtYear": 1900,
+   "widthM": 5.18,
+   "eavesM": 16.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706159",
+    "wallRaw": "#756a62",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 200,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.4,
+      "topWidthM": 0.7,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.319,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.47 m (1.63 m wide), 6.47 m (1.65 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.63,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.65,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.08 m = 3 storeys of 5.36 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.54 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.281 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012072617",
+   "address": "Albert Cuypstraat 254A",
+   "builtYear": 1900,
+   "widthM": 5.18,
+   "eavesM": 16.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614e4b",
+    "wallRaw": "#6c625f",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 223,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 5.57,
+      "topWidthM": 0.25,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.223,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.12 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.12,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.45,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.47,
+       "widthM": 1.27,
+       "centre": 0.31
+      },
+      {
+       "atM": 9.55,
+       "widthM": 2.48,
+       "centre": 0.38
+      },
+      {
+       "atM": 7.82,
+       "widthM": 0.82,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.3,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.23 m = 3 storeys of 5.41 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.239 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236226",
+   "address": "Albert Cuypstraat 250",
+   "builtYear": 1905,
+   "widthM": 9.82,
+   "eavesM": 13.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d9bb0",
+    "wallRaw": "#6c554e",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 194,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.47,
+      "topWidthM": 0.57,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.105,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.08 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.08,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.68,
+       "light": 0.46
+      },
+      {
+       "widthM": 2.08,
+       "centre": 0.84,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.88,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1905, type 1875-1877; frontage 9.82 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1875-1877",
+     "frontage 9.82 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.07 m = 3 storeys of 4.36 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.5 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165636",
+   "address": "Albert Cuypstraat 248",
+   "builtYear": 1891,
+   "widthM": 4.51,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826d65",
+    "wallRaw": "#796760",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 224,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 5.6,
+      "topWidthM": 0.3,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 4.51 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 4.51 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.42 m = 3 storeys of 4.47 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.04 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156996",
+   "address": "Albert Cuypstraat 246",
+   "builtYear": 1891,
+   "widthM": 4.51,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#6b5d57",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 825,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.215,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.25 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.25,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.68,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.68,
+       "widthM": 1,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 4.51 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 4.51 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.25 m = 3 storeys of 4.42 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.01 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.209 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163308",
+   "address": "Albert Cuypstraat 244",
+   "builtYear": 1891,
+   "widthM": 5.18,
+   "eavesM": 12.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705e56",
+    "wallRaw": "#75665e",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 278,
+     "confidence": 0.35,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 6.95,
+      "topWidthM": 0.53,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.57 m = 3 storeys of 4.19 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.29 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165136",
+   "address": "Albert Cuypstraat 242",
+   "builtYear": 1891,
+   "widthM": 5.14,
+   "eavesM": 15.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5149",
+    "wallRaw": "#74635c",
+    "skyline": {
+     "eavesM": 19.43,
+     "eavesRow": 48,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.2,
+      "topWidthM": 0.5,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 0.88,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 5.14 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 5.14 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.15 m = 3 storeys of 5.05 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.034 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233600",
+   "address": "Albert Cuypstraat 240",
+   "builtYear": 1890,
+   "widthM": 5.45,
+   "eavesM": 15.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d7064",
+    "wallRaw": "#746057",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 199,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.17,
+      "topWidthM": 1,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.1,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1890, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.38 m = 3 storeys of 5.13 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.12 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160590",
+   "address": "Albert Cuypstraat 238",
+   "builtYear": 1890,
+   "widthM": 11.14,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79605a",
+    "wallRaw": "#72625c",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 208,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.9,
+      "topWidthM": 0.8,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 0.97,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1890, type 1875-1877; frontage 11.14 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1875-1877",
+     "frontage 11.14 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.87 m = 3 storeys of 4.96 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.74 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,831 @@
+{
+ "face": "wou-74-92",
+ "street": "Van Woustraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 11.81,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "wou-74-92-r1",
+   "pands": [
+    "0363100012164235",
+    "0363100012134906"
+   ],
+   "passed": true,
+   "triangles": 4585
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012164235",
+   "address": "Van Woustraat 92",
+   "builtYear": 1887,
+   "widthM": 5.74,
+   "eavesM": 16.79,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.86,
+    "toM": 1.19,
+    "depthM": 0.43,
+    "centre": 0.178,
+    "lineRD": [
+     [
+      121876.50512500001,
+      485334.54825
+     ],
+     [
+      121874.63012500001,
+      485339.16825
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#635953",
+    "wallRaw": "#615550",
+    "skyline": {
+     "eavesM": 21.18,
+     "eavesRow": 16,
+     "confidence": 0.49,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#332c2a",
+      "fascia": true,
+      "name": "Coffee Company",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-03 span 0-230"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#635953",
+     "evidence": "strip 2023-01-03 span 0-230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012164235",
+    "ncc": 0.162,
+    "nccRaw": 0.162,
+    "shiftM": [
+     0.2,
+     0.35
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.258 < 0.45"
+    ],
+    "wall": {
+     "photo": "#615450",
+     "model": "#7a6e67",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.258
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134906",
+   "address": "Van Woustraat 90",
+   "builtYear": 1887,
+   "widthM": 5.97,
+   "eavesM": 16.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52473f",
+    "wallRaw": "#4a403c",
+    "skyline": {
+     "eavesM": 21.07,
+     "eavesRow": 20,
+     "confidence": 0.86,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.73,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b5854",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=atm); fascia colour measured on the strip 2023-01-03 span 230-469"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#52473f",
+     "evidence": "strip 2023-01-03 span 230-469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012134906",
+    "ncc": 0.191,
+    "nccRaw": 0.191,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.29"
+    ],
+    "wall": {
+     "photo": "#443935",
+     "model": "#6c5e53",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.441
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158407",
+   "address": "Van Woustraat 88",
+   "builtYear": 1887,
+   "widthM": 5.97,
+   "eavesM": 16.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503f38",
+    "wallRaw": "#54453f",
+    "skyline": {
+     "eavesM": 20.38,
+     "eavesRow": 48,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.2,
+      "topWidthM": 0.2,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.1,
+       "widthM": 0.88,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 20.38 m vs the type's 15.1 m)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.38 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #503f38 dE 5.6 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153372",
+   "address": "Van Woustraat 86",
+   "builtYear": 1887,
+   "widthM": 5.97,
+   "eavesM": 16.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78615d",
+    "wallRaw": "#584c49",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5,
+       "widthM": 2.35,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.6 < 0.7 (strip cornice 19.57 m vs the type's 15.1 m; strip wall #78615d dE 13.0 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.57 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #78615d dE 13.0 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236830",
+   "address": "Van Woustraat 82",
+   "builtYear": 1887,
+   "widthM": 11.83,
+   "eavesM": 14.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e413d",
+    "wallRaw": "#4f4340",
+    "skyline": {
+     "eavesM": 20.18,
+     "eavesRow": 56,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.52,
+      "riseM": 1.3,
+      "topWidthM": 2,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.5,
+       "widthM": 0.85,
+       "centre": 0.09
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.85,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.17,
+       "widthM": 1.05,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1887, type 1875-1877; frontage 11.83 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1887, type 1875-1877",
+     "frontage 11.83 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.84 m = 3 storeys of 4.95 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161714",
+   "address": "Van Woustraat 80",
+   "builtYear": 1887,
+   "widthM": 5.91,
+   "eavesM": 16.41,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5954",
+    "wallRaw": "#524642",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 1,
+      "topWidthM": 1.05,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.2,
+       "widthM": 0.9,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.003 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17)",
+   "likeness": {
+    "pandId": "0363100012161714",
+    "ncc": 0.003,
+    "nccRaw": 0.003,
+    "shiftM": [
+     -0.1,
+     0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17"
+    ],
+    "wall": {
+     "photo": "#524441",
+     "model": "#836d67",
+     "dL": 0.171
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.671
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.053
+   }
+  },
+  {
+   "pandId": "0363100012162507",
+   "address": "Van Woustraat 78A",
+   "builtYear": 1887,
+   "widthM": 5.91,
+   "eavesM": 15.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574744",
+    "wallRaw": "#554642",
+    "skyline": {
+     "eavesM": 19.85,
+     "eavesRow": 69,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.02,
+       "widthM": 0.8,
+       "centre": 0.66
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.63,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16 mean 0.44 vs photo 0.58)",
+   "likeness": {
+    "pandId": "0363100012162507",
+    "ncc": 0.113,
+    "nccRaw": 0.113,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.44 vs photo 0.58"
+    ],
+    "wall": {
+     "photo": "#554440",
+     "model": "#715c58",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.603
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.065,
+    "pijp-1885-segmental-keystone": 0.133
+   }
+  },
+  {
+   "pandId": "0363100012165243",
+   "address": "Van Woustraat 76A",
+   "builtYear": 1887,
+   "widthM": 6.01,
+   "eavesM": 15.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#58423b",
+    "wallRaw": "#5d4942",
+    "skyline": {
+     "eavesM": 19.18,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.3 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.3,
+       "light": 0.33
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.64,
+       "light": 0.39
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.108 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012165243",
+    "ncc": 0.108,
+    "nccRaw": 0.108,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5b4640",
+     "model": "#74574e",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.457
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.045,
+    "pijp-1885-segmental-keystone": 0.135
+   }
+  },
+  {
+   "pandId": "0363100012156225",
+   "address": "Van Woustraat 74A",
+   "builtYear": 1887,
+   "widthM": 5.11,
+   "eavesM": 15.5,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.54,
+    "depthM": 0.26,
+    "centre": 0.053,
+    "lineRD": [
+     [
+      121853.8496875,
+      485382.57825
+     ],
+     [
+      121851.8796875,
+      485386.68725
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8f625e",
+    "wallRaw": "#453b3a",
+    "skyline": {
+     "eavesM": 19.38,
+     "eavesRow": 88,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1,
+      "topWidthM": 0.82,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.39,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 0.85,
+       "centre": 0.31
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1.25,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.47 < 0.7 (strip cornice 19.38 m vs the type's 15.1 m; strip wall #8f625e dE 21.3 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.38 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #8f625e dE 21.3 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

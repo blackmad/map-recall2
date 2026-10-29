@@ -1,0 +1,167 @@
+{
+ "street": "Eerste Sweelinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157047",
+   "addresses": [
+    "Eerste Sweelinckstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 16-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000566855"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556968,
+     "lngLat": [
+      4.8974,
+      52.3562671
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1073CM",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "brand": "De Pizzabakkers",
+      "brand:website": "https://www.depizzabakkers.nl",
+      "brand:wikidata": "Q124218622",
+      "check_date": "2026-01-20",
+      "cuisine": "pizza",
+      "email": "depijp@depizzabakkers.nl",
+      "name": "De Pizzabakkers",
+      "opening_hours": "Mo-Th,Su 17:00-22:00; Fr-Sa 12:00-23:00",
+      "payment:cash": "no",
+      "phone": "+31 20 7527850",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.depizzabakkers.nl/vestigingen/amsterdam-de-pijp/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157460",
+   "addresses": [
+    "Eerste Sweelinckstraat 14",
+    "Eerste Sweelinckstraat 14C",
+    "Eerste Sweelinckstraat 14D",
+    "Eerste Sweelinckstraat 14E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 14",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000548521"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012565027"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012565028"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012565029"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556653,
+     "lngLat": [
+      4.897361,
+      52.356321
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1073CM",
+      "addr:street": "Eerste Sweelinckstraat",
+      "check_date": "2026-01-20",
+      "contact:email": "info@waldopatisserie.nl",
+      "name": "Waldo",
+      "opening_hours": "Tu 12:00-17:30; We-Fr 10:00-17:30; Sa 09:00-17:30",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.waldopatisserie.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166601",
+   "addresses": [
+    "Eerste Sweelinckstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 12-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000548514"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817555388,
+     "lngLat": [
+      4.8973202,
+      52.3563828
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1073CM",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-20",
+      "email": "info@dedakduif.nl",
+      "name": "Café Dakduif",
+      "opening_hours": "Mo-We 10:00-22:00; Th-Fr 10:00-00:00; Sa 09:00-00:00; Su 11:00-18:00",
+      "phone": "+31 20 7370382",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://dedakduif.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

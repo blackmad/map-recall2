@@ -1,0 +1,2235 @@
+{
+ "street": "Tweede Jan Steenstraat",
+ "seed": "0363100012165574",
+ "members": [
+  "0363100012121708",
+  "0363100012135879",
+  "0363100012153537",
+  "0363100012160085",
+  "0363100012152461",
+  "0363100012159683",
+  "0363100012155556",
+  "0363100012161897",
+  "0363100012166041",
+  "0363100012156666",
+  "0363100012159515",
+  "0363100012164766",
+  "0363100012235991",
+  "0363100012152764",
+  "0363100012158006",
+  "0363100012161456",
+  "0363100012154123",
+  "0363100012165574"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012121708 (face continues: 158142 155609 153571)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012165574 (face continues: 167255)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072617",
+   "reason": "frontage 97.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012075022",
+   "reason": "frontage 93.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012081229",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012134217"
+  },
+  {
+   "pandId": "0363100012081813",
+   "reason": "frontage 82.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012090966",
+   "reason": "frontage 32.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012092498",
+   "reason": "frontage 56.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012096339",
+   "reason": "frontage 137.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012099690",
+   "reason": "frontage 138.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012099835",
+   "reason": "frontage 53.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012114128",
+   "reason": "frontage 57.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012115560",
+   "reason": "frontage 37.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012126276",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012128539",
+   "reason": "frontage 148.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012134497",
+   "reason": "frontage 53.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012136670",
+   "reason": "frontage 158.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012137448",
+   "reason": "frontage 183.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012140916",
+   "reason": "frontage 153.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012140926",
+   "reason": "frontage 100.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152301",
+   "reason": "frontage 33.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152366",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012158142"
+  },
+  {
+   "pandId": "0363100012152384",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012072757"
+  },
+  {
+   "pandId": "0363100012072829",
+   "reason": "frontage 201.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012077688",
+   "reason": "frontage 129.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012078664",
+   "reason": "frontage 202.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012093583",
+   "reason": "frontage 226.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012113128",
+   "reason": "frontage 194.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012115498",
+   "reason": "frontage 197.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012133755",
+   "reason": "frontage 202.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012134906",
+   "reason": "frontage 129.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012140016",
+   "reason": "frontage 225.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012142954",
+   "reason": "frontage 198.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012145884",
+   "reason": "frontage 226.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152332",
+   "reason": "frontage 91.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012063870",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012066764",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012075562",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012082604",
+   "reason": "frontage 145.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012088330",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012103000",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012112673",
+   "reason": "frontage 200.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012137091",
+   "reason": "frontage 207.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012140762",
+   "reason": "frontage 203.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012146444",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152387",
+   "reason": "frontage 156.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152458",
+   "reason": "frontage 54.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 34.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152577",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152581",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152654",
+   "reason": "frontage 113.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152670",
+   "reason": "frontage 55.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152750",
+   "reason": "frontage 100.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152801",
+   "reason": "frontage 80.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152899",
+   "reason": "frontage 61.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153067",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153346",
+   "reason": "frontage 80.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153423",
+   "reason": "frontage 59.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153554",
+   "reason": "frontage 81.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153557",
+   "reason": "frontage 104.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153681",
+   "reason": "frontage 57.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153804",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154106",
+   "reason": "frontage 55.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154236",
+   "reason": "frontage 137.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154257",
+   "reason": "frontage 100.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153449",
+   "reason": "frontage 106.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152513",
+   "reason": "frontage 82.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152549",
+   "reason": "frontage 53.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152576",
+   "reason": "frontage 55.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152704",
+   "reason": "frontage 171.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152989",
+   "reason": "frontage 176.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153034",
+   "reason": "frontage 83.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153343",
+   "reason": "frontage 96.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153372",
+   "reason": "frontage 117.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153399",
+   "reason": "frontage 74.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153593",
+   "reason": "frontage 84.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154139",
+   "reason": "frontage 177.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152686",
+   "reason": "frontage 148.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152794",
+   "reason": "frontage 117.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012152838",
+   "reason": "frontage 141.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153246",
+   "reason": "frontage 133.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153355",
+   "reason": "frontage 113.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153395",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012153481",
+   "reason": "frontage 161.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154117",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154185",
+   "reason": "frontage 185.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155437",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155442",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155579",
+   "reason": "frontage 55.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155589",
+   "reason": "frontage 112.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155754",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155763",
+   "reason": "frontage 51.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "frontage 57.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156067",
+   "reason": "frontage 53.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156124",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156149",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012161717"
+  },
+  {
+   "pandId": "0363100012156166",
+   "reason": "frontage 43.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156327",
+   "reason": "frontage 54.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156408",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156438",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156530",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156761",
+   "reason": "frontage 102.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156841",
+   "reason": "frontage 102.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156851",
+   "reason": "frontage 80.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156925",
+   "reason": "frontage 35.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155343",
+   "reason": "frontage 112.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154321",
+   "reason": "frontage 175.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012154491",
+   "reason": "frontage 206.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155743",
+   "reason": "frontage 184.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155814",
+   "reason": "frontage 83.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155834",
+   "reason": "frontage 31.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156001",
+   "reason": "frontage 127.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156092",
+   "reason": "frontage 55.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156225",
+   "reason": "frontage 81.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156350",
+   "reason": "frontage 54.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156423",
+   "reason": "frontage 84.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156432",
+   "reason": "frontage 83.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156615",
+   "reason": "frontage 176.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155802",
+   "reason": "frontage 106.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155866",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012155992",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156089",
+   "reason": "frontage 184.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156256",
+   "reason": "frontage 165.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156297",
+   "reason": "frontage 142.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156812",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156819",
+   "reason": "frontage 126.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156902",
+   "reason": "frontage 143.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156947",
+   "reason": "frontage 112.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012156996",
+   "reason": "frontage 104.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157047",
+   "reason": "frontage 98.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157070",
+   "reason": "frontage 40.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157183",
+   "reason": "frontage 46.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157282",
+   "reason": "frontage 98.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157370",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157373",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012134217"
+  },
+  {
+   "pandId": "0363100012157452",
+   "reason": "frontage 38.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157459",
+   "reason": "frontage 80.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "frontage 104.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157561",
+   "reason": "frontage 36.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157562",
+   "reason": "frontage 42.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157644",
+   "reason": "frontage 101.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157898",
+   "reason": "frontage 64.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157916",
+   "reason": "frontage 94.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157993",
+   "reason": "frontage 106.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158052",
+   "reason": "frontage 104.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158143",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012158142"
+  },
+  {
+   "pandId": "0363100012158219",
+   "reason": "frontage 58.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "frontage 80.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158363",
+   "reason": "frontage 48.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157552",
+   "reason": "frontage 124.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157895",
+   "reason": "frontage 150.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157197",
+   "reason": "frontage 84.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157222",
+   "reason": "frontage 43.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157296",
+   "reason": "frontage 175.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157693",
+   "reason": "frontage 52.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157927",
+   "reason": "frontage 82.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158080",
+   "reason": "frontage 82.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158114",
+   "reason": "frontage 134.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158147",
+   "reason": "frontage 176.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158382",
+   "reason": "frontage 102.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158407",
+   "reason": "frontage 123.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158414",
+   "reason": "frontage 50.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158417",
+   "reason": "frontage 86.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158445",
+   "reason": "frontage 84.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158646",
+   "reason": "frontage 128.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157336",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012157956",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158044",
+   "reason": "frontage 157.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158131",
+   "reason": "frontage 188.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158270",
+   "reason": "frontage 126.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158287",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158441",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158628",
+   "reason": "frontage 192.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158922",
+   "reason": "frontage 59.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159005",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012152366"
+  },
+  {
+   "pandId": "0363100012159078",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159097",
+   "reason": "frontage 81.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159447",
+   "reason": "frontage 94.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159503",
+   "reason": "frontage 40.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159644",
+   "reason": "frontage 32.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159713",
+   "reason": "frontage 109.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159776",
+   "reason": "frontage 154.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159819",
+   "reason": "frontage 57.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160036",
+   "reason": "frontage 81.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "frontage 54.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160098",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012072757"
+  },
+  {
+   "pandId": "0363100012160372",
+   "reason": "frontage 137.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 80.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160474",
+   "reason": "frontage 57.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160477",
+   "reason": "frontage 57.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160499",
+   "reason": "frontage 31.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160542",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160590",
+   "reason": "frontage 110.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160469",
+   "reason": "frontage 144.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158801",
+   "reason": "frontage 177.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159100",
+   "reason": "frontage 228.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159213",
+   "reason": "frontage 115.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159622",
+   "reason": "frontage 59.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159693",
+   "reason": "frontage 127.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159754",
+   "reason": "frontage 229.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159758",
+   "reason": "frontage 127.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159861",
+   "reason": "frontage 172.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159925",
+   "reason": "frontage 97.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159948",
+   "reason": "frontage 103.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160283",
+   "reason": "frontage 84.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160287",
+   "reason": "frontage 120.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160368",
+   "reason": "frontage 175.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160466",
+   "reason": "frontage 226.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160522",
+   "reason": "frontage 179.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158776",
+   "reason": "frontage 167.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158804",
+   "reason": "frontage 153.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158855",
+   "reason": "frontage 152.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012158915",
+   "reason": "frontage 121.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159410",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012159690",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160238",
+   "reason": "frontage 153.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160706",
+   "reason": "frontage 185.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160777",
+   "reason": "frontage 80.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160804",
+   "reason": "frontage 53.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161129",
+   "reason": "frontage 49.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161157",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012156149"
+  },
+  {
+   "pandId": "0363100012161173",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161221",
+   "reason": "frontage 58.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161251",
+   "reason": "frontage 104.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161261",
+   "reason": "frontage 51.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161318",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012236832"
+  },
+  {
+   "pandId": "0363100012161721",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161722",
+   "reason": "frontage 98.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161932",
+   "reason": "frontage 102.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161093",
+   "reason": "frontage 137.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160842",
+   "reason": "frontage 127.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160869",
+   "reason": "frontage 55.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160929",
+   "reason": "frontage 108.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161016",
+   "reason": "frontage 84.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161053",
+   "reason": "frontage 82.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161298",
+   "reason": "frontage 83.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161306",
+   "reason": "frontage 55.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161314",
+   "reason": "frontage 174.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161370",
+   "reason": "frontage 55.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161409",
+   "reason": "frontage 55.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161714",
+   "reason": "frontage 100.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161720",
+   "reason": "frontage 52.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161742",
+   "reason": "frontage 132.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161896",
+   "reason": "frontage 227.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161967",
+   "reason": "frontage 81.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162109",
+   "reason": "frontage 224.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160715",
+   "reason": "frontage 146.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012160906",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161122",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161426",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161470",
+   "reason": "frontage 193.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161749",
+   "reason": "frontage 143.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161799",
+   "reason": "frontage 109.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161921",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012161977",
+   "reason": "frontage 158.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162028",
+   "reason": "frontage 164.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162038",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162061",
+   "reason": "frontage 129.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162140",
+   "reason": "frontage 147.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162147",
+   "reason": "frontage 159.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162189",
+   "reason": "frontage 189.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162307",
+   "reason": "frontage 158.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162565",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162618",
+   "reason": "frontage 61.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162715",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162738",
+   "reason": "frontage 52.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162868",
+   "reason": "frontage 43.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163021",
+   "reason": "frontage 88.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163168",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163278",
+   "reason": "frontage 87.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163308",
+   "reason": "frontage 104.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163351",
+   "reason": "frontage 159.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163631",
+   "reason": "frontage 30.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163662",
+   "reason": "frontage 59.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163710",
+   "reason": "frontage 153.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163725",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012156125"
+  },
+  {
+   "pandId": "0363100012163759",
+   "reason": "frontage 48.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163764",
+   "reason": "frontage 56.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163765",
+   "reason": "frontage 87.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163776",
+   "reason": "frontage 156.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163826",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "frontage 80.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163950",
+   "reason": "frontage 92.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163974",
+   "reason": "frontage 80.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162194",
+   "reason": "frontage 131.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162401",
+   "reason": "frontage 101.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162537",
+   "reason": "frontage 118.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162335",
+   "reason": "frontage 227.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162504",
+   "reason": "frontage 37.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162507",
+   "reason": "frontage 94.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162746",
+   "reason": "frontage 59.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162830",
+   "reason": "frontage 121.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163163",
+   "reason": "frontage 83.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163384",
+   "reason": "frontage 56.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163475",
+   "reason": "frontage 127.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163561",
+   "reason": "frontage 131.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163602",
+   "reason": "frontage 82.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163696",
+   "reason": "frontage 129.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163860",
+   "reason": "frontage 127.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163961",
+   "reason": "frontage 131.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164031",
+   "reason": "frontage 109.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164093",
+   "reason": "frontage 204.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164163",
+   "reason": "frontage 175.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162547",
+   "reason": "frontage 117.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012162680",
+   "reason": "frontage 135.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163078",
+   "reason": "frontage 156.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163612",
+   "reason": "frontage 142.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163807",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012163988",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164049",
+   "reason": "frontage 187.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164240",
+   "reason": "frontage 56.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164382",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164383",
+   "reason": "frontage 158.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164464",
+   "reason": "frontage 81.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164490",
+   "reason": "frontage 56.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164666",
+   "reason": "frontage 48.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164706",
+   "reason": "frontage 104.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164780",
+   "reason": "frontage 157.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164790",
+   "reason": "frontage 40.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164793",
+   "reason": "frontage 80.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164926",
+   "reason": "frontage 64.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165136",
+   "reason": "frontage 107.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165187",
+   "reason": "frontage 81.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165218",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012161717"
+  },
+  {
+   "pandId": "0363100012165329",
+   "reason": "frontage 58.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165335",
+   "reason": "frontage 81.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165449",
+   "reason": "frontage 54.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165452",
+   "reason": "frontage 87.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165464",
+   "reason": "frontage 32.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165472",
+   "reason": "frontage 154.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165477",
+   "reason": "frontage 101.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165636",
+   "reason": "frontage 103.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164653",
+   "reason": "frontage 162.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165308",
+   "reason": "frontage 91.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164235",
+   "reason": "frontage 135.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164535",
+   "reason": "frontage 124.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164537",
+   "reason": "frontage 181.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164626",
+   "reason": "frontage 115.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165243",
+   "reason": "frontage 88.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165284",
+   "reason": "frontage 62.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165529",
+   "reason": "frontage 193.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165605",
+   "reason": "frontage 128.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165607",
+   "reason": "frontage 83.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165788",
+   "reason": "frontage 228.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165912",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012166061"
+  },
+  {
+   "pandId": "0363100012164174",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164348",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012164497",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165191",
+   "reason": "frontage 139.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165297",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165545",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165727",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165800",
+   "reason": "frontage 163.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166061",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012167255"
+  },
+  {
+   "pandId": "0363100012166104",
+   "reason": "frontage 36.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166194",
+   "reason": "frontage 153.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166237",
+   "reason": "frontage 57.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166262",
+   "reason": "frontage 40.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166334",
+   "reason": "frontage 40.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166374",
+   "reason": "frontage 56.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166477",
+   "reason": "frontage 152.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166485",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166523",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012156125"
+  },
+  {
+   "pandId": "0363100012166567",
+   "reason": "frontage 137.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166601",
+   "reason": "frontage 110.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166639",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012072757"
+  },
+  {
+   "pandId": "0363100012166641",
+   "reason": "frontage 35.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166679",
+   "reason": "frontage 31.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166703",
+   "reason": "frontage 81.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "frontage 52.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166773",
+   "reason": "frontage 41.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166940",
+   "reason": "frontage 81.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167101",
+   "reason": "frontage 101.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167117",
+   "reason": "frontage 42.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167211",
+   "reason": "frontage 112.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167258",
+   "reason": "frontage 138.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167284",
+   "reason": "frontage 85.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167285",
+   "reason": "frontage 56.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166971",
+   "reason": "frontage 156.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167286",
+   "reason": "frontage 96.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165967",
+   "reason": "frontage 55.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166123",
+   "reason": "frontage 175.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166175",
+   "reason": "frontage 132.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166438",
+   "reason": "frontage 128.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166781",
+   "reason": "frontage 174.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166869",
+   "reason": "frontage 173.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166874",
+   "reason": "frontage 53.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167073",
+   "reason": "frontage 188.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167210",
+   "reason": "frontage 83.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167266",
+   "reason": "frontage 178.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167432",
+   "reason": "frontage 119.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012187167",
+   "reason": "frontage 112.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012165921",
+   "reason": "frontage 160.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166370",
+   "reason": "frontage 148.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012166675",
+   "reason": "frontage 150.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167171",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167344",
+   "reason": "frontage 160.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012167390",
+   "reason": "frontage 137.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012187524",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012191569",
+   "reason": "frontage 154.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012192066",
+   "reason": "frontage 33.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012192520",
+   "reason": "frontage 40.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012195354",
+   "reason": "frontage 151.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012196226",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012198961",
+   "reason": "frontage 33.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012199938",
+   "reason": "frontage 93.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012201641",
+   "reason": "frontage 98.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012201951",
+   "reason": "frontage 31.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012202881",
+   "reason": "frontage 98.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012203340",
+   "reason": "frontage 40.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012203929",
+   "reason": "frontage 35.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012210312",
+   "reason": "frontage 40.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012210498",
+   "reason": "frontage 34.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012219137",
+   "reason": "frontage 42.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012221673",
+   "reason": "frontage 149.3 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012223743",
+   "reason": "frontage 48.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012224723",
+   "reason": "frontage 48.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012225277",
+   "reason": "frontage 40.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012227420",
+   "reason": "frontage 36.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012231186",
+   "reason": "frontage 75.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012231775",
+   "reason": "frontage 151.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233600",
+   "reason": "frontage 104.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233891",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012235945",
+   "reason": "frontage 104.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236226",
+   "reason": "frontage 80.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236354",
+   "reason": "frontage 137.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012192993",
+   "reason": "frontage 112.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012196659",
+   "reason": "frontage 143.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012196826",
+   "reason": "frontage 198.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012203431",
+   "reason": "frontage 106.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012203991",
+   "reason": "frontage 112.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012211367",
+   "reason": "frontage 107.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012212463",
+   "reason": "frontage 31.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012218766",
+   "reason": "frontage 114.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012222671",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012154123"
+  },
+  {
+   "pandId": "0363100012225406",
+   "reason": "frontage 195.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233034",
+   "reason": "frontage 114.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233515",
+   "reason": "frontage 205.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233607",
+   "reason": "frontage 199.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233700",
+   "reason": "frontage 172.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236032",
+   "reason": "frontage 83.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236168",
+   "reason": "frontage 114.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012205453",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012206545",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233474",
+   "reason": "frontage 169.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012233512",
+   "reason": "frontage 194.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236211",
+   "reason": "frontage 168.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236408",
+   "reason": "frontage 149.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236449",
+   "reason": "frontage 154.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236504",
+   "reason": "frontage 37.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236517",
+   "reason": "frontage 81.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236546",
+   "reason": "frontage 39.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236557",
+   "reason": "frontage 53.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236629",
+   "reason": "frontage 100.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 31.4 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236829",
+   "reason": "frontage 97.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236859",
+   "reason": "frontage 80.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236898",
+   "reason": "frontage 137.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012237367",
+   "reason": "sightline to Tweede Jan Steenstraat crosses 0363100012156125"
+  },
+  {
+   "pandId": "0363100012236366",
+   "reason": "frontage 175.6 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236409",
+   "reason": "frontage 175.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236440",
+   "reason": "frontage 139.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236621",
+   "reason": "frontage 176.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236633",
+   "reason": "frontage 61.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236650",
+   "reason": "frontage 82.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236830",
+   "reason": "frontage 106.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236920",
+   "reason": "frontage 172.1 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012237019",
+   "reason": "frontage 173.9 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012237110",
+   "reason": "frontage 205.7 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012237798",
+   "reason": "frontage 200.5 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012240937",
+   "reason": "frontage 223.8 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012242135",
+   "reason": "frontage 116.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236543",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012236752",
+   "reason": "frontage 199.2 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012237165",
+   "reason": "no frontage on Tweede Jan Steenstraat: No footprint edge faces Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012252735",
+   "reason": "frontage 191.0 m from Tweede Jan Steenstraat"
+  },
+  {
+   "pandId": "0363100012062137",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152777",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153705",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155739",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156050",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156300",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158041",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159777",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161347",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161634",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161717",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162163",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163785",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164311",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165516",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167048",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167233",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236403",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236832",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237284",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012121708",
+   "alongM": -98.47,
+   "widthM": 5.65,
+   "eavesM": 10.63,
+   "roofMaxM": 13.24,
+   "storeys3dbag": 4,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135879",
+   "alongM": -92.82,
+   "widthM": 5.65,
+   "eavesM": 12.52,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 4,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153537",
+   "alongM": -87.17,
+   "widthM": 5.65,
+   "eavesM": 15.44,
+   "roofMaxM": 16.13,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160085",
+   "alongM": -81.52,
+   "widthM": 5.65,
+   "eavesM": 15.87,
+   "roofMaxM": 16.97,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152461",
+   "alongM": -75.87,
+   "widthM": 5.65,
+   "eavesM": 15.61,
+   "roofMaxM": 16.18,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159683",
+   "alongM": -70.22,
+   "widthM": 5.65,
+   "eavesM": 13.4,
+   "roofMaxM": 13.67,
+   "storeys3dbag": 4,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155556",
+   "alongM": -64.57,
+   "widthM": 5.65,
+   "eavesM": 13.04,
+   "roofMaxM": 14.01,
+   "storeys3dbag": 4,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161897",
+   "alongM": -58.87,
+   "widthM": 5.75,
+   "eavesM": 13.28,
+   "roofMaxM": 13.62,
+   "storeys3dbag": 0,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166041",
+   "alongM": -53.12,
+   "widthM": 5.75,
+   "eavesM": 13.05,
+   "roofMaxM": 16.18,
+   "storeys3dbag": 4,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156666",
+   "alongM": -47.37,
+   "widthM": 5.75,
+   "eavesM": 13.41,
+   "roofMaxM": 13.43,
+   "storeys3dbag": 4,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159515",
+   "alongM": -41.62,
+   "widthM": 5.75,
+   "eavesM": 13.38,
+   "roofMaxM": 16.11,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164766",
+   "alongM": -35.87,
+   "widthM": 5.75,
+   "eavesM": 13.37,
+   "roofMaxM": 16.52,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012235991",
+   "alongM": -30.12,
+   "widthM": 5.75,
+   "eavesM": 16.26,
+   "roofMaxM": 16.42,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152764",
+   "alongM": -24.37,
+   "widthM": 5.75,
+   "eavesM": 13.83,
+   "roofMaxM": 16.51,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158006",
+   "alongM": -18.62,
+   "widthM": 5.75,
+   "eavesM": 11.48,
+   "roofMaxM": 14.34,
+   "storeys3dbag": 4,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161456",
+   "alongM": -12.87,
+   "widthM": 5.75,
+   "eavesM": 13.04,
+   "roofMaxM": 14.02,
+   "storeys3dbag": 4,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154123",
+   "alongM": -7.12,
+   "widthM": 5.75,
+   "eavesM": 14.6,
+   "roofMaxM": 16.72,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165574",
+   "alongM": 0,
+   "widthM": 8.49,
+   "eavesM": 14.21,
+   "roofMaxM": 16.39,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  }
+ ]
+}

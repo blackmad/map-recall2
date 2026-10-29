@@ -1,0 +1,294 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159215",
+   "addresses": [
+    "Sarphatipark 36",
+    "Sarphatipark 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 157-H",
+     "use": "winkelfunctie",
+     "areaM2": 455,
+     "bagId": "0363010012597179"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 257518671,
+     "lngLat": [
+      4.8941462,
+      52.3533778
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "157-H",
+      "addr:postcode": "1072GB",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-21",
+      "note": "Formerly MC Meubelen, now for rent",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2026-01-09"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159196",
+   "addresses": [
+    "Sarphatipark 34",
+    "Sarphatipark 34E",
+    "Sarphatipark 34D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000804183"
+    },
+    {
+     "address": "Sarphatipark 34E",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012155494"
+    },
+    {
+     "address": "Sarphatipark 34D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012155495"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5297732822,
+     "lngLat": [
+      4.8942308,
+      52.3534726
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34E",
+      "addr:postcode": "1072PB",
+      "addr:street": "Sarphatipark",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "cuisine": "coffee_shop",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Scandinavian Embassy",
+      "opening_hours": "Mo-Fr 08:00-13:00; Sa-Su 09:00-13:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "takeaway": "yes",
+      "website": "http://scandinavianembassy.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161012",
+   "addresses": [
+    "Sarphatipark 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 32-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000804179"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161013",
+   "addresses": [
+    "Sarphatipark 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 30-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000804171"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153650",
+   "addresses": [
+    "Sarphatipark 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 28-H",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000804165"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817611894,
+     "lngLat": [
+      4.8941141,
+      52.3536324
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28-H",
+      "addr:postcode": "1072PB",
+      "addr:street": "Sarphatipark",
+      "amenity": "doctors",
+      "check_date": "2026-01-21",
+      "email": "info@huisartsensarphatipark.nl",
+      "healthcare": "doctor",
+      "healthcare:speciality": "general",
+      "name": "Huisartsen Sarphatipark",
+      "opening_hours": "Mo-Fr 08:00-17:00",
+      "operator": "J. de Boer & H. van den Hombergh",
+      "phone": "+31 20 6629371",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.huisartsindepijp.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163683",
+   "addresses": [
+    "Sarphatipark 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 26-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000804160"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152792",
+   "addresses": [
+    "Sarphatipark 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000804154"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817611838,
+     "lngLat": [
+      4.8940428,
+      52.3537312
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24-H",
+      "addr:postcode": "1072PB",
+      "addr:street": "Sarphatipark",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "cuisine": "coffee_shop",
+      "name": "Nook",
+      "opening_hours": "Mo-Th 08:00-17:00; Fr 08:00-18:00; Sa-Su 09:00-18:00",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.nookamsterdam.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166511",
+   "addresses": [
+    "Sarphatipark 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 22-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000804148"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 257518672,
+     "lngLat": [
+      4.8940078,
+      52.3537842
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1072PB",
+      "addr:street": "Sarphatipark",
+      "beauty": "nails",
+      "check_date": "2026-01-21",
+      "email": "info@artistlab.nl",
+      "name": "Artist Lab",
+      "opening_hours": "Mo-Sa 09:00-21:00",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://artistlab.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

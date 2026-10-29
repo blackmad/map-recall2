@@ -1,0 +1,399 @@
+{
+ "face": "helst-51-67",
+ "street": "Eerste Van der Helststraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 0.86,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237118",
+   "address": "Eerste Van der Helststraat 51",
+   "builtYear": 1881,
+   "widthM": 6.19,
+   "eavesM": 12.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736261",
+    "wallRaw": "#534944",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 738,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1881, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1881, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.53 m = 3 storeys of 4.18 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.57 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158716",
+   "address": "Eerste Van der Helststraat 53",
+   "builtYear": 1881,
+   "widthM": 5.43,
+   "eavesM": 12.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71605f",
+    "wallRaw": "#524945",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 738,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.25,
+       "widthM": 0.8,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1881, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1881, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.62 m = 3 storeys of 4.21 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.76 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159866",
+   "address": "Eerste Van der Helststraat 55",
+   "builtYear": 1881,
+   "widthM": 5.81,
+   "eavesM": 12.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 738,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167269",
+   "address": "Eerste Van der Helststraat 57",
+   "builtYear": 1881,
+   "widthM": 4.83,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 738,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143302",
+   "address": "Eerste Van der Helststraat 59",
+   "builtYear": 1881,
+   "widthM": 11.4,
+   "eavesM": 13.04,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 738,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164887",
+   "address": "Eerste Van der Helststraat 63",
+   "builtYear": 1875,
+   "widthM": 5.28,
+   "eavesM": 12.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776155",
+    "wallRaw": "#584943",
+    "skyline": {
+     "eavesM": 12.7,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 2.8,
+      "topWidthM": 0.13,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158065",
+   "address": "Eerste Van der Helststraat 65",
+   "builtYear": 1875,
+   "widthM": 12.83,
+   "eavesM": 13.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3430",
+    "wallRaw": "#403733",
+    "skyline": {
+     "eavesM": 15.68,
+     "eavesRow": 111,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 1.1,
+      "topWidthM": 0.38,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.77,
+       "widthM": 0.88,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 12.83 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 12.83 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.52 m = 3 storeys of 4.51 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.22 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,1332 @@
+{
+ "face": "sarphatipark-1-97",
+ "street": "Sarphatipark",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 14.72,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159611",
+   "address": "Sarphatipark 1",
+   "builtYear": 1875,
+   "widthM": 5.78,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403431",
+    "wallRaw": "#413633",
+    "skyline": {
+     "eavesM": 17.05,
+     "eavesRow": 182,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 4.55,
+      "topWidthM": 0.55,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.092 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.57 mean 0.49 vs photo 0.82)",
+   "likeness": {
+    "pandId": "0363100012159611",
+    "ncc": 0.092,
+    "nccRaw": 0.092,
+    "shiftM": [
+     -0.35,
+     0.3
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.57 mean 0.49 vs photo 0.82"
+    ],
+    "wall": {
+     "photo": "#413432",
+     "model": "#5c4b47",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.82,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.559
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.039,
+    "pijp-1885-segmental-keystone": 0.066
+   }
+  },
+  {
+   "pandId": "0363100012166006",
+   "address": "Sarphatipark 3",
+   "builtYear": 1875,
+   "widthM": 5.62,
+   "eavesM": 13.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#382f2b",
+    "wallRaw": "#37302d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 864,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012166006",
+    "ncc": 0.186,
+    "nccRaw": 0.186,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.49 mean 0.42 vs photo 0.64",
+     "wall family unresolved (#272121 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#272121",
+     "model": "#574942",
+     "dL": 0.159
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.454
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.093,
+    "pijp-1885-segmental-keystone": 0.173
+   }
+  },
+  {
+   "pandId": "0363100012158759",
+   "address": "Sarphatipark 5",
+   "builtYear": 1887,
+   "widthM": 6.5,
+   "eavesM": 14.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#302925",
+    "wallRaw": "#413632",
+    "skyline": {
+     "eavesM": 20.43,
+     "eavesRow": 47,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.18,
+      "topWidthM": 0.53,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 1.07,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.05,
+       "centre": 0.25
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.07,
+       "centre": 0.76
+      },
+      {
+       "atM": 5.9,
+       "widthM": 1.05,
+       "centre": 0.6
+      },
+      {
+       "atM": 4.92,
+       "widthM": 0.95,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.55 < 0.7 (strip wall #302925 dE 14.3 to #524845 (<= 10); strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.1 m; 3DBAG 14.76 m not compared)"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #302925 dE 14.3 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162204",
+   "address": "Sarphatipark 7",
+   "builtYear": 1887,
+   "widthM": 6.22,
+   "eavesM": 14.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4847",
+    "wallRaw": "#3b3431",
+    "skyline": {
+     "eavesM": 20.8,
+     "eavesRow": 32,
+     "confidence": 0.57,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.92,
+       "widthM": 0.95,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160634",
+   "address": "Sarphatipark 9",
+   "builtYear": 1887,
+   "widthM": 6.36,
+   "eavesM": 15.42,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d322d",
+    "wallRaw": "#3f3732",
+    "skyline": {
+     "eavesM": 19.2,
+     "eavesRow": 96,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 2.4,
+      "topWidthM": 0.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.57,
+       "widthM": 1.13,
+       "centre": 0.63
+      },
+      {
+       "atM": 9.35,
+       "widthM": 1.2,
+       "centre": 0.62
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1.18,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.116,
+    "pijp-1885-segmental-keystone": 0.137
+   }
+  },
+  {
+   "pandId": "0363100012167281",
+   "address": "Sarphatipark 11",
+   "builtYear": 1887,
+   "widthM": 6.64,
+   "eavesM": 15.5,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423734",
+    "wallRaw": "#423935",
+    "skyline": {
+     "eavesM": 18.45,
+     "eavesRow": 126,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 3.15,
+      "topWidthM": 0.2,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 0.82,
+       "centre": 0.3
+      },
+      {
+       "atM": 10.77,
+       "widthM": 0.8,
+       "centre": 0.77
+      },
+      {
+       "atM": 9.43,
+       "widthM": 1.18,
+       "centre": 0.32
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.15,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.082,
+    "pijp-1885-segmental-keystone": 0.091
+   }
+  },
+  {
+   "pandId": "0363100012156361",
+   "address": "Sarphatipark 13",
+   "builtYear": 1887,
+   "widthM": 6.4,
+   "eavesM": 15.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f2a26",
+    "wallRaw": "#3b3430",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 197,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 4.82,
+      "topWidthM": 0.1,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.4,
+       "widthM": 1.23,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.3,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.15,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.5 < 0.7 (strip cornice 16.68 m vs the type's 15.1 m; strip wall #2f2a26 dE 14.2 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.68 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #2f2a26 dE 14.2 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162183",
+   "address": "Sarphatipark 15",
+   "builtYear": 1882,
+   "widthM": 6.5,
+   "eavesM": 15.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#262322",
+    "wallRaw": "#423f3b",
+    "skyline": {
+     "eavesM": 19.1,
+     "eavesRow": 100,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 2.35,
+      "topWidthM": 0.47,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.95,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.52 m (1.3 m wide), 6.07 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.2,
+       "widthM": 0.85,
+       "centre": 0.93
+      },
+      {
+       "atM": 9.52,
+       "widthM": 1.3,
+       "centre": 0.32
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.27,
+       "centre": 0.31
+      },
+      {
+       "atM": 5.63,
+       "widthM": 0.9,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1882-keystone-lintel scores 0.6 < 0.7 (3DBAG eaves 15.6 m = 4 storeys of 3.9 m vs the type's 3.58 m; roof rise 0.01 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1882-keystone-lintel",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.6 m = 4 storeys of 3.9 m vs the type's 3.58 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152806",
+   "address": "Sarphatipark 17",
+   "builtYear": 1882,
+   "widthM": 6.62,
+   "eavesM": 15.39,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e2724",
+    "wallRaw": "#423832",
+    "skyline": {
+     "eavesM": 18.95,
+     "eavesRow": 106,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 2.25,
+      "topWidthM": 0.2,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.25,
+       "widthM": 1.23,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1882, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.39 m = 3 storeys of 5.13 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.5 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155849",
+   "address": "Sarphatipark 19",
+   "builtYear": 1882,
+   "widthM": 6.38,
+   "eavesM": 12.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#525252",
+    "wallRaw": "#413632",
+    "skyline": {
+     "eavesM": 18.3,
+     "eavesRow": 132,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 3.3,
+      "topWidthM": 0.3,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.63,
+       "widthM": 1,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.043 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.18; glazing storey band off by 0.31 mean 0.51 vs photo 0.29; window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012155849",
+    "ncc": 0.043,
+    "nccRaw": 0.043,
+    "shiftM": [
+     -0.3,
+     -0.05
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing storey band off by 0.31 mean 0.51 vs photo 0.29",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#433732",
+     "model": "#686868",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.307
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158447",
+   "address": "Sarphatipark 21",
+   "builtYear": 1882,
+   "widthM": 6.4,
+   "eavesM": 15.44,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372d28",
+    "wallRaw": "#473c36",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 179,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 4.48,
+      "topWidthM": 0.23,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.47,
+       "widthM": 1.07,
+       "centre": 0.33
+      },
+      {
+       "atM": 9.8,
+       "widthM": 1.23,
+       "centre": 0.35
+      },
+      {
+       "atM": 6.35,
+       "widthM": 0.97,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.086 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#372d29 is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.334 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012158447",
+    "ncc": 0.086,
+    "nccRaw": 0.086,
+    "shiftM": [
+     0.2,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "wall family unresolved (#372d29 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "mask IoU 0.334 < 0.45"
+    ],
+    "wall": {
+     "photo": "#372d29",
+     "model": "#594840",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.334
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156598",
+   "address": "Sarphatipark 23",
+   "builtYear": 1882,
+   "widthM": 7.06,
+   "eavesM": 15.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473a34",
+    "wallRaw": "#463b36",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 125,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.32,
+      "topWidthM": 0.5,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.89,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.5,
+       "widthM": 1.02,
+       "centre": 0.29
+      },
+      {
+       "atM": 7.35,
+       "widthM": 0.88,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1882, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.76 m = 3 storeys of 5.25 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162953",
+   "address": "Sarphatipark 25",
+   "builtYear": 1882,
+   "widthM": 6.43,
+   "eavesM": 15.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e2f28",
+    "wallRaw": "#473c36",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 179,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 4.48,
+      "topWidthM": 0.3,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.25 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.25,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.53,
+       "widthM": 1.18,
+       "centre": 0.58
+      },
+      {
+       "atM": 9.93,
+       "widthM": 1.25,
+       "centre": 0.25
+      },
+      {
+       "atM": 7.3,
+       "widthM": 1.1,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1882-keystone-lintel scores 0.69 < 0.7 (3DBAG eaves 15.48 m = 4 storeys of 3.87 m vs the type's 3.58 m; roof rise 0.21 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1882-keystone-lintel",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.48 m = 4 storeys of 3.87 m vs the type's 3.58 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.21 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152399",
+   "address": "Sarphatipark 27",
+   "builtYear": 1882,
+   "widthM": 6.5,
+   "eavesM": 15.64,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#49423e",
+    "wallRaw": "#483a34",
+    "skyline": {
+     "eavesM": 17.15,
+     "eavesRow": 178,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 4.45,
+      "topWidthM": 0.45,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.02,
+       "widthM": 1.25,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.23,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1882-keystone-lintel scores 0.6 < 0.7 (3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.58 m; roof rise 0.02 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1882-keystone-lintel",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.58 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161937",
+   "address": "Sarphatipark 29",
+   "builtYear": 1882,
+   "widthM": 6.53,
+   "eavesM": 15.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#373430",
+    "wallRaw": "#463a34",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 179,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 4.48,
+      "topWidthM": 0.33,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.28,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.57,
+       "widthM": 1.1,
+       "centre": 0.9
+      },
+      {
+       "atM": 9.97,
+       "widthM": 1.25,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.2,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1882-keystone-lintel scores 0.6 < 0.7 (3DBAG eaves 15.76 m = 4 storeys of 3.94 m vs the type's 3.58 m; roof rise 0.44 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1882-keystone-lintel",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.76 m = 4 storeys of 3.94 m vs the type's 3.58 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.44 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161698",
+   "address": "Sarphatipark 31",
+   "builtYear": 1882,
+   "widthM": 6.51,
+   "eavesM": 15.92,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#47413f",
+    "wallRaw": "#3e342f",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 125,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 3.13,
+      "topWidthM": 0.15,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.53 m (3.95 m wide), 10 m (1.65 m wide), 9.25 m (2.13 m wide), 6.47 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.53,
+       "widthM": 3.95,
+       "centre": 0.4
+      },
+      {
+       "atM": 10,
+       "widthM": 1.65,
+       "centre": 0.58
+      },
+      {
+       "atM": 9.25,
+       "widthM": 2.13,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.27,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1882-keystone-lintel scores 0.69 < 0.7 (3DBAG eaves 15.92 m = 4 storeys of 3.98 m vs the type's 3.58 m; roof rise 0.06 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1882-keystone-lintel",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.92 m = 4 storeys of 3.98 m vs the type's 3.58 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

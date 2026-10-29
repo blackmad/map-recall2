@@ -1,0 +1,99 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162281",
+   "addresses": [
+    "Eerste Van der Helststraat 54B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 54B-H",
+     "use": "winkelfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000548752"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2641495007,
+     "lngLat": [
+      4.8928803,
+      52.3556675
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54B-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-11",
+      "name": "Slagerij Zagora",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165514",
+   "addresses": [
+    "Eerste Van der Helststraat 54A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 54A-H",
+     "use": "winkelfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000548749"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515187,
+     "lngLat": [
+      4.8928476,
+      52.3557164
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54A-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Eerste van der Helststraat",
+      "brand": "New York Pizza",
+      "brand:website": "https://www.newyorkpizza.nl",
+      "brand:wikidata": "Q2639128",
+      "check_date": "2026-01-11",
+      "cuisine": "pizza",
+      "delivery": "yes",
+      "drive_through": "no",
+      "name": "New York Pizza",
+      "opening_hours": "Mo-Su 16:00-22:30",
+      "phone": "+31 20 2260080",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.newyorkpizza.nl/Store/Details?storename=order-pizzaamsterdam-eerste-van-der-helststraat"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

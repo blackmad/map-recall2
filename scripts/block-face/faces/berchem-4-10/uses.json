@@ -1,0 +1,121 @@
+{
+ "street": "Nicolaas Berchemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012096339",
+   "addresses": [
+    "Nicolaas Berchemstraat 8",
+    "Nicolaas Berchemstraat 10A",
+    "Nicolaas Berchemstraat 10B",
+    "Nicolaas Berchemstraat 10C",
+    "Nicolaas Berchemstraat 10D",
+    "Nicolaas Berchemstraat 10E",
+    "Nicolaas Berchemstraat 10F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Berchemstraat 8",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000953964"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000953965"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000953966"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000953967"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000953968"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000953969"
+    },
+    {
+     "address": "Nicolaas Berchemstraat 10F",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000953970"
+    },
+    {
+     "address": "Albert Cuypstraat 261",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000953971"
+    },
+    {
+     "address": "Albert Cuypstraat 263",
+     "use": "winkelfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000953972"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128539",
+   "addresses": [
+    "Nicolaas Berchemstraat 4",
+    "Nicolaas Berchemstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Berchemstraat 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000750520"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13120774501,
+     "lngLat": [
+      4.8985658,
+      52.3571381
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1073VR",
+      "addr:street": "Nicolaas Berchemstraat",
+      "branch": "De Pijp",
+      "check_date": "2026-01-14",
+      "email": "info@bakkerijlouf.nl",
+      "name": "Louf",
+      "opening_hours": "Mo-Su 08:00-15:00",
+      "shop": "bakery",
+      "website": "https://bakkerijlouf.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,665 @@
+{
+ "street": "Eerste Sweelinckstraat",
+ "seed": "0363100012154106",
+ "members": [
+  "0363100012154106",
+  "0363100012115560",
+  "0363100012166679",
+  "0363100012161318"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012156851 21.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012161318 (face continues: 160374)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062137",
+   "reason": "frontage 58.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012072617",
+   "reason": "frontage 65.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012075022",
+   "reason": "frontage 37.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012090966",
+   "reason": "frontage 30.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012092498",
+   "reason": "frontage 42.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012114128",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012152670"
+  },
+  {
+   "pandId": "0363100012123461",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012160374"
+  },
+  {
+   "pandId": "0363100012126276",
+   "reason": "frontage 49.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152458",
+   "reason": "frontage 50.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 97.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152581",
+   "reason": "frontage 66.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152654",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012166601"
+  },
+  {
+   "pandId": "0363100012152670",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012154106"
+  },
+  {
+   "pandId": "0363100012152764",
+   "reason": "frontage 43.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152801",
+   "reason": "frontage 36.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152873",
+   "reason": "frontage 88.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152994",
+   "reason": "frontage 76.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153067",
+   "reason": "frontage 43.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153346",
+   "reason": "frontage 76.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153557",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012157460"
+  },
+  {
+   "pandId": "0363100012153681",
+   "reason": "frontage 91.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153705",
+   "reason": "frontage 41.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012154123",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012165574"
+  },
+  {
+   "pandId": "0363100012154236",
+   "reason": "frontage 51.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012155442",
+   "reason": "frontage 111.5 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "frontage 79.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156050",
+   "reason": "frontage 47.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156166",
+   "reason": "frontage 38.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156408",
+   "reason": "frontage 56.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156438",
+   "reason": "frontage 117.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156666",
+   "reason": "frontage 65.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156687",
+   "reason": "frontage 82.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153449",
+   "reason": "frontage 102.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012155343",
+   "reason": "frontage 108.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152549",
+   "reason": "no frontage on Eerste Sweelinckstraat: No footprint edge faces Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012153399",
+   "reason": "frontage 70.5 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012155834",
+   "reason": "frontage 33.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156350",
+   "reason": "frontage 70.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012075562",
+   "reason": "frontage 78.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012082604",
+   "reason": "frontage 46.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152794",
+   "reason": "frontage 63.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012152838",
+   "reason": "frontage 32.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012155802",
+   "reason": "frontage 84.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156297",
+   "reason": "frontage 36.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156841",
+   "reason": "frontage 81.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156996",
+   "reason": "frontage 46.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012157373",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012134217"
+  },
+  {
+   "pandId": "0363100012157452",
+   "reason": "frontage 32.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012158006",
+   "reason": "frontage 38.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012158052",
+   "reason": "frontage 86.6 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012163278"
+  },
+  {
+   "pandId": "0363100012159515",
+   "reason": "frontage 60.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012159644",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012134217"
+  },
+  {
+   "pandId": "0363100012159713",
+   "reason": "frontage 31.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160036",
+   "reason": "frontage 88.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "frontage 67.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160372",
+   "reason": "frontage 45.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 31.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160474",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012114128"
+  },
+  {
+   "pandId": "0363100012160477",
+   "reason": "frontage 103.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160486",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012160374"
+  },
+  {
+   "pandId": "0363100012160542",
+   "reason": "frontage 61.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160590",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012235945"
+  },
+  {
+   "pandId": "0363100012160777",
+   "reason": "frontage 65.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161129",
+   "reason": "frontage 44.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161251",
+   "reason": "frontage 71.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161456",
+   "reason": "frontage 32.6 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161721",
+   "reason": "frontage 105.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161897",
+   "reason": "frontage 77.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161932",
+   "reason": "frontage 111.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012163308",
+   "reason": "frontage 41.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012163764",
+   "reason": "frontage 30.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012162401",
+   "reason": "frontage 97.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012158417",
+   "reason": "frontage 83.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012162504",
+   "reason": "frontage 40.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012156819",
+   "reason": "frontage 68.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012158044",
+   "reason": "frontage 32.5 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012159410",
+   "reason": "frontage 72.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012159690",
+   "reason": "frontage 58.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012160715",
+   "reason": "frontage 50.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161122",
+   "reason": "frontage 63.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161749",
+   "reason": "frontage 41.6 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012161799",
+   "reason": "frontage 89.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012162028",
+   "reason": "frontage 37.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012162038",
+   "reason": "frontage 68.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012156851"
+  },
+  {
+   "pandId": "0363100012163974",
+   "reason": "frontage 77.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164382",
+   "reason": "frontage 100.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164464",
+   "reason": "frontage 123.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164706",
+   "reason": "frontage 76.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164766",
+   "reason": "frontage 54.5 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164780",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012164383"
+  },
+  {
+   "pandId": "0363100012164793",
+   "reason": "frontage 71.6 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165136",
+   "reason": "frontage 36.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165187",
+   "reason": "frontage 83.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165449",
+   "reason": "frontage 61.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165452",
+   "reason": "frontage 31.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165574",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012167255"
+  },
+  {
+   "pandId": "0363100012165636",
+   "reason": "frontage 51.5 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166041",
+   "reason": "frontage 71.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166061",
+   "reason": "no frontage on Eerste Sweelinckstraat: No footprint edge faces Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166237",
+   "reason": "frontage 85.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166374",
+   "reason": "frontage 49.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "frontage 73.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012166940",
+   "reason": "frontage 94.4 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012167048",
+   "reason": "frontage 53.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012167211",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012152654"
+  },
+  {
+   "pandId": "0363100012167255",
+   "reason": "no frontage on Eerste Sweelinckstraat: No footprint edge faces Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012167284",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012081813"
+  },
+  {
+   "pandId": "0363100012167285",
+   "reason": "frontage 55.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012192066",
+   "reason": "frontage 62.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012196226",
+   "reason": "frontage 48.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012201641",
+   "reason": "frontage 111.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012201951",
+   "reason": "frontage 73.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012202881",
+   "reason": "frontage 101.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012221673",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012167258"
+  },
+  {
+   "pandId": "0363100012223743",
+   "reason": "frontage 81.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012231186",
+   "reason": "frontage 62.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012233600",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012235945"
+  },
+  {
+   "pandId": "0363100012233891",
+   "reason": "frontage 35.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165308",
+   "reason": "frontage 88.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012167286",
+   "reason": "frontage 93.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165912",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012166061"
+  },
+  {
+   "pandId": "0363100012222671",
+   "reason": "no frontage on Eerste Sweelinckstraat: No footprint edge faces Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012164497",
+   "reason": "frontage 73.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012165921",
+   "reason": "frontage 38.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012187524",
+   "reason": "frontage 70.0 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012205453",
+   "reason": "frontage 72.7 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012206545",
+   "reason": "frontage 68.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012235991",
+   "reason": "frontage 49.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236226",
+   "reason": "frontage 55.9 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 103.2 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236829",
+   "reason": "frontage 91.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236832",
+   "reason": "sightline to Eerste Sweelinckstraat crosses 0363100012160374"
+  },
+  {
+   "pandId": "0363100012236859",
+   "reason": "frontage 42.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236898",
+   "reason": "frontage 40.8 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012237284",
+   "reason": "frontage 70.6 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236633",
+   "reason": "frontage 57.3 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012236543",
+   "reason": "frontage 73.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012237165",
+   "reason": "frontage 78.1 m from Eerste Sweelinckstraat"
+  },
+  {
+   "pandId": "0363100012081229",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081813",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155763",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157047",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157183",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167258",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012154106",
+   "alongM": 0,
+   "widthM": 15.48,
+   "eavesM": 14.02,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115560",
+   "alongM": 16.78,
+   "widthM": 18.07,
+   "eavesM": 12.57,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 5,
+   "builtYear": 1992,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166679",
+   "alongM": 28.63,
+   "widthM": 5.64,
+   "eavesM": 14.13,
+   "roofMaxM": 16.96,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161318",
+   "alongM": 34.29,
+   "widthM": 5.68,
+   "eavesM": 13.26,
+   "roofMaxM": 18.01,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  }
+ ]
+}

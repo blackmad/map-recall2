@@ -1,0 +1,325 @@
+{
+ "street": "Tweede Jan van der Heijdenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158080",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000551826"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163602",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010012075396"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161053",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 236,
+     "bagId": "0363010000551814"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157927",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000551806"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152513",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000551798"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236650",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994514"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236032",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000551783"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155814",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000551775"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167210",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000551767"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163163",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000551760"
+    },
+    {
+     "address": "Tweede Jan van der Heijdenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010012080730"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153034",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000551752"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161298",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000551744"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165607",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000979739"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156432",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000551729"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156423",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000551722"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160283",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000551715"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158445",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000551706"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157197",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 4-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000551701"
+    },
+    {
+     "address": "Tweede Jan van der Heijdenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001007638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153593",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000551689"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

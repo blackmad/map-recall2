@@ -1,0 +1,493 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158044",
+   "addresses": [
+    "Gerard Doustraat 218"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 218-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000644192"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514114,
+     "lngLat": [
+      4.8966513,
+      52.3567147
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "218-H",
+      "addr:postcode": "1073XB",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162028",
+   "addresses": [
+    "Gerard Doustraat 216"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 216-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000644189"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514108,
+     "lngLat": [
+      4.8965793,
+      52.3566959
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "216-H",
+      "addr:postcode": "1073XB",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "name": "Hairstudio Pu-ma",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165921",
+   "addresses": [
+    "Gerard Doustraat 214"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 214-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000644186"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233474",
+   "addresses": [
+    "Gerard Doustraat 208A",
+    "Gerard Doustraat 208B",
+    "Gerard Doustraat 208C",
+    "Gerard Doustraat 208D",
+    "Gerard Doustraat 210A",
+    "Gerard Doustraat 210B",
+    "Gerard Doustraat 210C",
+    "Gerard Doustraat 210D",
+    "Gerard Doustraat 212"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 208A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001162966"
+    },
+    {
+     "address": "Gerard Doustraat 208B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001162967"
+    },
+    {
+     "address": "Gerard Doustraat 208C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001162968"
+    },
+    {
+     "address": "Gerard Doustraat 208D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001162969"
+    },
+    {
+     "address": "Gerard Doustraat 210A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001162970"
+    },
+    {
+     "address": "Gerard Doustraat 210B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001162971"
+    },
+    {
+     "address": "Gerard Doustraat 210C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001162972"
+    },
+    {
+     "address": "Gerard Doustraat 210D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001162973"
+    },
+    {
+     "address": "Gerard Doustraat 212",
+     "use": "industriefunctie",
+     "areaM2": 101,
+     "bagId": "0363010001162984"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513891,
+     "lngLat": [
+      4.8964346,
+      52.3566562
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "212",
+      "addr:postcode": "1073XB",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "info@apetozebra.nl",
+      "name": "Ape to Zebra",
+      "office": "advertising_agency",
+      "phone": "+31 20 6732697",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.apetozebra.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236211",
+   "addresses": [
+    "Gerard Doustraat 198",
+    "Gerard Doustraat 200",
+    "Gerard Doustraat 202",
+    "Gerard Doustraat 204",
+    "Gerard Doustraat 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 206-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001042742"
+    },
+    {
+     "address": "Gerard Doustraat 198-H",
+     "use": "industriefunctie",
+     "areaM2": 85,
+     "bagId": "0363010011323813"
+    }
+   ],
+   "units": 21,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160706",
+   "addresses": [
+    "Gerard Doustraat 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 196-H",
+     "use": "industriefunctie",
+     "areaM2": 85,
+     "bagId": "0363010011323812"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158131",
+   "addresses": [
+    "Gerard Doustraat 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 194-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000644145"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166850",
+   "addresses": [
+    "Gerard Doustraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 192-H",
+     "use": "kantoorfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000644141"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513316,
+     "lngLat": [
+      4.8957024,
+      52.3564406
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "192-H",
+      "addr:postcode": "1073XA",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-13",
+      "email": "info@chierah-dickson.com",
+      "name": "Chierah Hair & Beauty",
+      "opening_hours": "Tu 10:00-17:30; We,Fr 10:00-18:00; Th 12:00-17:00; Sa 9:30-19:00",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://chierah-dickson.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156170",
+   "addresses": [
+    "Gerard Doustraat 190"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 190-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000644137"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157470",
+   "addresses": [
+    "Gerard Doustraat 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 188-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000644133"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512888,
+     "lngLat": [
+      4.8955762,
+      52.356411
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "188-H",
+      "addr:postcode": "1073XA",
+      "addr:street": "Gerard Doustraat",
+      "name": "Coffeeshop Roxy",
+      "opening_hours": "Mo-Su 07:00-01:00",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://coffeeshoproxy.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164106",
+   "addresses": [
+    "Gerard Doustraat 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 186-H",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000644129"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512882,
+     "lngLat": [
+      4.8955185,
+      52.3563962
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "186-H",
+      "addr:postcode": "1073XA",
+      "addr:street": "Gerard Doustraat",
+      "email": "contact@jooze.nl",
+      "female": "yes",
+      "male": "yes",
+      "name": "Jooze",
+      "opening_hours": "Mo 12:00-18:00; Tu 10:00-18:00; We-Sa 09:00-18:00",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 6701269",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.jooze.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164334",
+   "addresses": [
+    "Gerard Doustraat 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 184-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000644125"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160528",
+   "addresses": [
+    "Gerard Doustraat 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 182-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000644120"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236518",
+   "addresses": [
+    "Gerard Doustraat 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 180-H",
+     "use": "industriefunctie",
+     "areaM2": 63,
+     "bagId": "0363010000644116"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512857,
+     "lngLat": [
+      4.8953308,
+      52.3563528
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "180-H",
+      "addr:postcode": "1073XA",
+      "addr:street": "Gerard Doustraat",
+      "contact:email": "info@depredetarier.com",
+      "name": "De Predetariër",
+      "opening_hours": "We-Fr 11:00-18:00; Sa-Su 11:00-16:00",
+      "phone": "+31 20 8905438",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://depredetarier.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236495",
+   "addresses": [
+    "Gerard Doustraat 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 178-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000644112"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

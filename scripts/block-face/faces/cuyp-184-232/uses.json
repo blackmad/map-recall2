@@ -1,0 +1,862 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:50:41.343Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012075022",
+   "addresses": [
+    "Albert Cuypstraat 222B",
+    "Albert Cuypstraat 222D",
+    "Albert Cuypstraat 222E",
+    "Albert Cuypstraat 222G",
+    "Albert Cuypstraat 222H",
+    "Albert Cuypstraat 222L",
+    "Albert Cuypstraat 222C",
+    "Albert Cuypstraat 222F",
+    "Albert Cuypstraat 222K",
+    "Albert Cuypstraat 222R",
+    "Albert Cuypstraat 222M",
+    "Albert Cuypstraat 222N",
+    "Albert Cuypstraat 222A",
+    "Albert Cuypstraat 222P",
+    "Albert Cuypstraat 224A",
+    "Albert Cuypstraat 224B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 222B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000604788"
+    },
+    {
+     "address": "Albert Cuypstraat 222D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000604789"
+    },
+    {
+     "address": "Albert Cuypstraat 222E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000607540"
+    },
+    {
+     "address": "Albert Cuypstraat 222G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000607541"
+    },
+    {
+     "address": "Albert Cuypstraat 222H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000607542"
+    },
+    {
+     "address": "Albert Cuypstraat 222L",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000607543"
+    },
+    {
+     "address": "Albert Cuypstraat 222C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607559"
+    },
+    {
+     "address": "Albert Cuypstraat 222F",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607560"
+    },
+    {
+     "address": "Albert Cuypstraat 222K",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607561"
+    },
+    {
+     "address": "Albert Cuypstraat 222R",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000607562"
+    },
+    {
+     "address": "Albert Cuypstraat 222M",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000607563"
+    },
+    {
+     "address": "Govert Flinckstraat 235B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607565"
+    },
+    {
+     "address": "Govert Flinckstraat 235E",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607566"
+    },
+    {
+     "address": "Govert Flinckstraat 235C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607567"
+    },
+    {
+     "address": "Govert Flinckstraat 235F",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000607568"
+    },
+    {
+     "address": "Govert Flinckstraat 235D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000607569"
+    },
+    {
+     "address": "Govert Flinckstraat 235G",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000607570"
+    },
+    {
+     "address": "Govert Flinckstraat 235A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 408,
+     "bagId": "0363010000620036"
+    },
+    {
+     "address": "Govert Flinckstraat 235H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000620037"
+    },
+    {
+     "address": "Albert Cuypstraat 222A",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000620038"
+    },
+    {
+     "address": "Albert Cuypstraat 224A",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000634108"
+    },
+    {
+     "address": "Albert Cuypstraat 224B",
+     "use": "industriefunctie",
+     "areaM2": 408,
+     "bagId": "0363010000634109"
+    },
+    {
+     "address": "Albert Cuypstraat 222P",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000987121"
+    }
+   ],
+   "units": 25,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558014,
+     "lngLat": [
+      4.8968895,
+      52.3562586
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "224A",
+      "addr:postcode": "1073BN",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@nanuccitessuti.nl",
+      "name": "Nanucci Tessuti",
+      "opening_hours": "Mo,We-Th,Sa 10:00-16:00",
+      "phone": "+31 20 6795973",
+      "shop": "fabric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://nanuccitessuti.nl"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152794",
+   "addresses": [
+    "Albert Cuypstraat 220"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 220-H",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001167662"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156819",
+   "addresses": [
+    "Albert Cuypstraat 218"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 218-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000563953"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557965,
+     "lngLat": [
+      4.8965162,
+      52.3561483
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "218-H",
+      "addr:postcode": "1073BN",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236543",
+   "addresses": [
+    "Albert Cuypstraat 216"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 216-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000563945"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557957,
+     "lngLat": [
+      4.8964475,
+      52.3561294
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "216-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "beauty": "spa",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-31",
+      "email": "support@dejapaneseheadspanederland.nl",
+      "name": "De Japanse Headspa",
+      "opening_hours": "Mo-Su 10:00-22:00",
+      "phone": "+31 30 2072787",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://dejapaneseheadspaamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164348",
+   "addresses": [
+    "Albert Cuypstraat 214"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 214-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000563937"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557951,
+     "lngLat": [
+      4.8963819,
+      52.3561102
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "214-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "beauty": "nails;eyelash;spa",
+      "check_date": "2026-01-31",
+      "name": "Trinh Nails & Beauty",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165727",
+   "addresses": [
+    "Albert Cuypstraat 212"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 212-H",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000563930"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557943,
+     "lngLat": [
+      4.8963137,
+      52.3560903
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "212-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "beauty": "nails",
+      "check_date": "2026-01-31",
+      "email": "blunailbaramsterdam@gmail.com",
+      "name": "Blu Nail Bar",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "phone": "+31 20 7512770",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://blunailbar.nl"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161426",
+   "addresses": [
+    "Albert Cuypstraat 210",
+    "Albert Cuypstraat 210E",
+    "Albert Cuypstraat 210D",
+    "Albert Cuypstraat 210C",
+    "Albert Cuypstraat 210B",
+    "Albert Cuypstraat 210A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 210-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000563923"
+    },
+    {
+     "address": "Albert Cuypstraat 210E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012590364"
+    },
+    {
+     "address": "Albert Cuypstraat 210D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012590363"
+    },
+    {
+     "address": "Albert Cuypstraat 210C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012590362"
+    },
+    {
+     "address": "Albert Cuypstraat 210B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012590361"
+    },
+    {
+     "address": "Albert Cuypstraat 210A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012590360"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557930,
+     "lngLat": [
+      4.896243,
+      52.3560662
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "210-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-31",
+      "contact:instagram": "ramen_fujitora",
+      "cuisine": "ramen",
+      "facebook": "https://www.facebook.com/people/Fujitora-Amsterdam/61555405107420",
+      "name": "Fujitora",
+      "opening_hours": "Mo-Fr 17:30-21:00; Sa-Su 12:00-15:00,17:30-21:00",
+      "phone": "+31 20 7371522",
+      "website": "https://fujitora-amsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158287",
+   "addresses": [
+    "Albert Cuypstraat 208"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 208-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000563915"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557910,
+     "lngLat": [
+      4.8961646,
+      52.3560446
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "208-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@risebakery.nl",
+      "name": "Rise Bakery",
+      "opening_hours": "Mo-Tu,Fr-Sa 08:00-15:00; Su 09:30-15:00",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.risebakeryamsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155866",
+   "addresses": [
+    "Albert Cuypstraat 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 206-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000563908"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163988",
+   "addresses": [
+    "Albert Cuypstraat 204"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 204-H",
+     "use": "industriefunctie",
+     "areaM2": 51,
+     "bagId": "0363010000563899"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557791,
+     "lngLat": [
+      4.896021,
+      52.3560079
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "204-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "hairdresser": "barber",
+      "male": "yes",
+      "name": "Freshcut Zuid",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161921",
+   "addresses": [
+    "Albert Cuypstraat 202"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 202-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000563865"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154117",
+   "addresses": [
+    "Albert Cuypstraat 200"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 200-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000563854"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165545",
+   "addresses": [
+    "Albert Cuypstraat 198",
+    "Albert Cuypstraat 198A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 198-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000563845"
+    },
+    {
+     "address": "Albert Cuypstraat 198-O",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000563846"
+    },
+    {
+     "address": "Albert Cuypstraat 198A",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010012107296"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9039013411,
+     "lngLat": [
+      4.8958405,
+      52.3559605
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "198A",
+      "addr:postcode": "1073BL",
+      "addr:street": "Albert Cuypstraat",
+      "email": "hachi.ink@gmail.com",
+      "name": "Hachi.ink",
+      "opening_hours": "Tu-Sa 12:00-19:00",
+      "phone": "+31 20 3348559",
+      "shop": "tattoo",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "http://hachi-ink.com"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157336",
+   "addresses": [
+    "Albert Cuypstraat 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 196-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000563837"
+    },
+    {
+     "address": "Albert Cuypstraat 196-O",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000563838"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165202",
+   "addresses": [
+    "Albert Cuypstraat 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 194-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000563830"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557499,
+     "lngLat": [
+      4.8957112,
+      52.3559257
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "194-H",
+      "addr:postcode": "1073BL",
+      "addr:street": "Albert Cuypstraat",
+      "email": "book@funamsterdam.com",
+      "name": "Stroopwafel Workshop",
+      "opening_hours": "Th-Su 09:00-18:00",
+      "phone": "+31 20 8100285",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "yes",
+      "website": "https://www.stroopwafelworkshop.com"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161405",
+   "addresses": [
+    "Albert Cuypstraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 192-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000563822"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156722",
+   "addresses": [
+    "Albert Cuypstraat 190"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12837408825,
+     "lngLat": [
+      4.8955766,
+      52.3558882
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "190-H",
+      "addr:postcode": "1073BL",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "cafe",
+      "branch": "Albert Cuyp",
+      "check_date": "2026-01-31",
+      "contact:instagram": "https://www.instagram.com/bagelboyshop",
+      "cuisine": "coffee_shop;bagel;sandwich",
+      "name": "BagelBoy",
+      "not:brand:wikidata": "Q13433690",
+      "not:name": "Bagels & Beans",
+      "opening_hours": "Mo-Fr 10:30-15:00; Sa-Su 09:00-15:00",
+      "outdoor_seating": "no",
+      "takeaway": "yes",
+      "website": "https://www.bagelboyshop.com/"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012079140",
+   "addresses": [
+    "Albert Cuypstraat 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 188-H",
+     "use": "winkelfunctie",
+     "areaM2": 181,
+     "bagId": "0363010001001954"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160903",
+   "addresses": [
+    "Albert Cuypstraat 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 186-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000563792"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13190569638,
+     "lngLat": [
+      4.895359,
+      52.3559085
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "charge": "1 EUR",
+      "check_date": "2025-10-03",
+      "coin:design_count": "3",
+      "coin:type": "5cent",
+      "indoor": "no",
+      "panoramax": "29aeb856-2d94-44d1-b1f9-350313bd499b",
+      "payment:coins": "yes",
+      "payment:coins:denominations": "1 EUR",
+      "vending": "elongated_coin"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141454",
+   "addresses": [
+    "Albert Cuypstraat 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 184-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000563774"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13190569638,
+     "lngLat": [
+      4.895359,
+      52.3559085
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "charge": "1 EUR",
+      "check_date": "2025-10-03",
+      "coin:design_count": "3",
+      "coin:type": "5cent",
+      "indoor": "no",
+      "panoramax": "29aeb856-2d94-44d1-b1f9-350313bd499b",
+      "payment:coins": "yes",
+      "payment:coins:denominations": "1 EUR",
+      "vending": "elongated_coin"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  }
+ ]
+}

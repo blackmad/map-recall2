@@ -1,0 +1,1316 @@
+{
+ "face": "dou-128-174",
+ "street": "Gerard Doustraat",
+ "library": "de-pijp",
+ "stripDate": "2022-01-11",
+ "seconds": 11.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "dou-128-174-r1",
+   "pands": [
+    "0363100012153387",
+    "0363100012153232",
+    "0363100012156601"
+   ],
+   "passed": true,
+   "triangles": 4264
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012153387",
+   "address": "Gerard Doustraat 168",
+   "builtYear": 1876,
+   "widthM": 5.77,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3637",
+    "wallRaw": "#3f3d3d",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 206,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 3.13,
+      "topWidthM": 0.55,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "pijp-1876-hood-frieze",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0.71
+   },
+   "placement": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3a3637",
+     "evidence": "strip 2022-01-11 span 0-231: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.529 vs 0.209), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012153387",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30",
+     "wall family unresolved (#383234 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#383234",
+     "model": "#544e50",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.343
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.529,
+    "pijp-1885-segmental-keystone": 0.226
+   }
+  },
+  {
+   "pandId": "0363100012153232",
+   "address": "Gerard Doustraat 166",
+   "builtYear": 1877,
+   "widthM": 6.94,
+   "eavesM": 13.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604d45",
+    "wallRaw": "#4c3f3a",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 183,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 4.18,
+      "topWidthM": 0.05,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.6,
+       "widthM": 1.15,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.22,
+       "widthM": 1.32,
+       "centre": 0.87
+      },
+      {
+       "atM": 5.05,
+       "widthM": 0.9,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "pijp-1876-hood-frieze",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "measuredPalette": {
+     "brick": "#604d45",
+     "evidence": "strip 2022-01-11 span 231-509: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012153232",
+    "ncc": 0.232,
+    "nccRaw": 0.232,
+    "shiftM": [
+     0.1,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.26 mean 0.47 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#4e3b37",
+     "model": "#7a6258",
+     "dL": 0.151
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.44
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.2,
+    "pijp-1882-keystone-lintel": 0.237,
+    "pijp-1885-segmental-keystone": 0.153
+   }
+  },
+  {
+   "pandId": "0363100012156601",
+   "address": "Gerard Doustraat 164",
+   "builtYear": 1877,
+   "widthM": 7.24,
+   "eavesM": 13.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59423a",
+    "wallRaw": "#423935",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 110,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 2.75,
+      "topWidthM": 0.17,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "pijp-1876-hood-frieze",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#2e231b",
+      "fascia": true,
+      "name": "De Oude Leeuw",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, craft=upholsterer); fascia colour measured on the strip 2022-01-11 span 508-798"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#59423a",
+     "evidence": "strip 2022-01-11 span 508-798: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012156601",
+    "ncc": 0.158,
+    "nccRaw": 0.158,
+    "shiftM": [
+     0.05,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#604a41",
+     "model": "#75574c",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.698
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.179,
+    "pijp-1882-keystone-lintel": 0.139,
+    "pijp-1885-segmental-keystone": 0.114
+   }
+  },
+  {
+   "pandId": "0363100012063423",
+   "address": "Gerard Doustraat 158",
+   "builtYear": 1991,
+   "widthM": 14.76,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a655c",
+    "wallRaw": "#6e6960",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 2.88,
+      "topWidthM": 0.35,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1991, type 1875-1877; frontage 14.76 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1875-1877",
+     "frontage 14.76 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.72 m = 3 storeys of 4.24 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.58 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237092",
+   "address": "Gerard Doustraat 156",
+   "builtYear": 1885,
+   "widthM": 9.88,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#626463",
+    "wallRaw": "#51423b",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 164,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 3.5,
+      "riseM": 3.6,
+      "topWidthM": 0.53,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.91 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.91,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.38,
+       "widthM": 0.97,
+       "centre": 0.95
+      },
+      {
+       "atM": 9.47,
+       "widthM": 1.1,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.77,
+       "widthM": 4.8,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.27,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.8,
+       "widthM": 1.18,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1885, type 1875-1877; frontage 9.88 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1875-1877",
+     "frontage 9.88 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.46 m = 3 storeys of 4.15 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236319",
+   "address": "Gerard Doustraat 148A",
+   "builtYear": 2006,
+   "widthM": 18.01,
+   "eavesM": 13.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52443d",
+    "wallRaw": "#4a433f",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 217,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 3.05,
+      "riseM": 5.42,
+      "topWidthM": 0.7,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.99,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.02,
+       "widthM": 0.88,
+       "centre": 0.32
+      },
+      {
+       "atM": 7.95,
+       "widthM": 1.18,
+       "centre": 0.66
+      },
+      {
+       "atM": 7.57,
+       "widthM": 0.82,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.9,
+       "widthM": 0.9,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 2006, type 1875-1877; frontage 18.01 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 2006, type 1875-1877",
+     "frontage 18.01 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.73 m = 3 storeys of 4.58 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.17 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157974",
+   "address": "Gerard Doustraat 146",
+   "builtYear": 1934,
+   "widthM": 4.81,
+   "eavesM": 8.79,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5c46",
+    "wallRaw": "#4e3e36",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1934, type 1875-1877; frontage 4.81 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1875-1877",
+     "frontage 4.81 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.79 m = 3 storeys of 2.93 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 7.26 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127016",
+   "address": "Gerard Doustraat 144",
+   "builtYear": 1934,
+   "widthM": 3.69,
+   "eavesM": 12.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#615042",
+    "wallRaw": "#57483a",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 233,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 4.1,
+      "topWidthM": 0.13,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.25,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1934, type 1875-1877; frontage 3.69 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1875-1877",
+     "frontage 3.69 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.25 m = 3 storeys of 4.08 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.27 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.032 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012095852",
+   "address": "Gerard Doustraat 142",
+   "builtYear": 1934,
+   "widthM": 4.79,
+   "eavesM": 12.23,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#43382f",
+    "wallRaw": "#453a32",
+    "skyline": {
+     "eavesM": 16.45,
+     "eavesRow": 153,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 2.2,
+      "topWidthM": 0.33,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1934, type 1875-1877; frontage 4.79 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1875-1877",
+     "frontage 4.79 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.23 m = 3 storeys of 4.08 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.27 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145070",
+   "address": "Gerard Doustraat 138A",
+   "builtYear": 1991,
+   "widthM": 8.07,
+   "eavesM": 12.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#57524a",
+    "wallRaw": "#6f685c",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 234,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 4.18,
+      "topWidthM": 0.2,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1991, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.59 m = 3 storeys of 4.2 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.01 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160401",
+   "address": "Gerard Doustraat 136",
+   "builtYear": 1991,
+   "widthM": 3.88,
+   "eavesM": 13.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685c57",
+    "wallRaw": "#695e56",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.176,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.3,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1991, type 1875-1877; frontage 3.88 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1875-1877",
+     "frontage 3.88 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 13.95 m = 3 storeys of 4.65 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.91 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.088 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161786",
+   "address": "Gerard Doustraat 134",
+   "builtYear": 1892,
+   "widthM": 4.49,
+   "eavesM": 14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4f4c",
+    "wallRaw": "#5d554e",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 2.75,
+      "topWidthM": 0.07,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.09,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 0.97,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.49 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.49 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14 m = 3 storeys of 4.67 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.83 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162832",
+   "address": "Gerard Doustraat 132",
+   "builtYear": 1892,
+   "widthM": 3.59,
+   "eavesM": 12.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#413632",
+    "wallRaw": "#463c37",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 134,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 1,
+      "riseM": 3.35,
+      "topWidthM": 0.55,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.47,
+       "widthM": 1.13,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 3.59 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 3.59 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.32 m = 3 storeys of 4.11 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164700",
+   "address": "Gerard Doustraat 130",
+   "builtYear": 1892,
+   "widthM": 4.75,
+   "eavesM": 7.61,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736c61",
+    "wallRaw": "#4c4038",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.78,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.17 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.17,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.82,
+       "light": 0.48
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.75 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.75 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.61 m = 3 storeys of 2.54 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 7.43 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163904",
+   "address": "Gerard Doustraat 128A",
+   "builtYear": 1887,
+   "widthM": 5.25,
+   "eavesM": 12.3,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61584c",
+    "wallRaw": "#685f54",
+    "skyline": {
+     "eavesM": 12.53,
+     "eavesRow": 310,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 5.72,
+      "topWidthM": 0.15,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.083,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 1.05,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 12.53 m vs the type's 15.1 m)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.53 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #61584c dE 8.4 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

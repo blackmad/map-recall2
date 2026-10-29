@@ -1,0 +1,1396 @@
+{
+ "face": "steen-2-40",
+ "street": "Tweede Jan Steenstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-23",
+ "seconds": 25.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012121708",
+   "address": "Tweede Jan Steenstraat 36",
+   "builtYear": 1887,
+   "widthM": 5.65,
+   "eavesM": 10.63,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705a4d",
+    "wallRaw": "#756050",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 63,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.58,
+      "topWidthM": 0.33,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.65 < 0.7 (strip wall #705a4d dE 11.9 to #524845 (<= 10); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.1 m; 3DBAG 10.63 m not compared)"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #705a4d dE 11.9 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012135879",
+   "address": "Tweede Jan Steenstraat 34",
+   "builtYear": 1887,
+   "widthM": 5.65,
+   "eavesM": 12.52,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4846",
+    "wallRaw": "#7f6b5f",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 159,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.23,
+      "topWidthM": 0.9,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.183,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 0.95,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 7; mask IoU 0.388 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012135879",
+    "ncc": 0.072,
+    "nccRaw": 0.072,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 3 vs photo 7",
+     "mask IoU 0.388 < 0.45"
+    ],
+    "wall": {
+     "photo": "#846359",
+     "model": "#635f5d",
+     "dL": -0.057
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.388
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153537",
+   "address": "Tweede Jan Steenstraat 32",
+   "builtYear": 1887,
+   "widthM": 5.65,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a665c",
+    "wallRaw": "#7d695f",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 52,
+     "confidence": 0.49,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.167,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.047 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.46)",
+   "likeness": {
+    "pandId": "0363100012153537",
+    "ncc": 0.047,
+    "nccRaw": 0.047,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.46"
+    ],
+    "wall": {
+     "photo": "#866e66",
+     "model": "#91796d",
+     "dL": 0.035
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.271
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160085",
+   "address": "Tweede Jan Steenstraat 30",
+   "builtYear": 1887,
+   "widthM": 5.65,
+   "eavesM": 15.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4a47",
+    "wallRaw": "#7c6c61",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 51,
+     "confidence": 0.31,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.2,
+      "topWidthM": 0.35,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.178,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 1.7,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.027 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#464444 is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.271 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012160085",
+    "ncc": 0.027,
+    "nccRaw": 0.027,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "wall family unresolved (#464444 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "mask IoU 0.271 < 0.45"
+    ],
+    "wall": {
+     "photo": "#464444",
+     "model": "#63625e",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.271
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152461",
+   "address": "Tweede Jan Steenstraat 28",
+   "builtYear": 1887,
+   "widthM": 5.65,
+   "eavesM": 15.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#515357",
+    "wallRaw": "#4d4c4d",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 32,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 0.8,
+      "topWidthM": 1.75,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.033 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18; wall family unresolved (#535357 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012152461",
+    "ncc": 0.033,
+    "nccRaw": 0.033,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18",
+     "wall family unresolved (#535357 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#535357",
+     "model": "#66696e",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.297
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159683",
+   "address": "Tweede Jan Steenstraat 26",
+   "builtYear": 1901,
+   "widthM": 5.65,
+   "eavesM": 13.4,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886a64",
+    "wallRaw": "#7a6056",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 32,
+     "confidence": 0.4,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.104,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.32 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.32,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.02,
+       "widthM": 1.35,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.65,
+       "widthM": 0.82,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1901, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1901, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.4 m = 3 storeys of 4.47 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.27 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155556",
+   "address": "Tweede Jan Steenstraat 24",
+   "builtYear": 1901,
+   "widthM": 5.65,
+   "eavesM": 13.04,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#84675b",
+    "wallRaw": "#695a4f",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 121,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 1,
+      "riseM": 3.03,
+      "topWidthM": 0.47,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.061,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1901, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1901, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.04 m = 3 storeys of 4.35 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.97 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.047 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161897",
+   "address": "Tweede Jan Steenstraat 22",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.28,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5b53",
+    "wallRaw": "#66564b",
+    "skyline": {
+     "eavesM": 17.55,
+     "eavesRow": 57,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.43,
+      "topWidthM": 0.82,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.127,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.68,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 17.55 m vs the type's 15.1 m)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.55 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #6c5b53 dE 9.6 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.104 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166041",
+   "address": "Tweede Jan Steenstraat 20",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.05,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70584b",
+    "wallRaw": "#715b4e",
+    "skyline": {
+     "eavesM": 17.75,
+     "eavesRow": 49,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.23,
+      "topWidthM": 0.4,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156666",
+   "address": "Tweede Jan Steenstraat 18",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.41,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79665e",
+    "wallRaw": "#7f6c61",
+    "skyline": {
+     "eavesM": 15.97,
+     "eavesRow": 120,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.22,
+      "topWidthM": 0.72,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 15.97 m vs the type's 15.1 m; strip wall #79665e dE 14.1 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.97 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #79665e dE 14.1 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159515",
+   "address": "Tweede Jan Steenstraat 16",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#60534b",
+    "wallRaw": "#786459",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 759,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.02,
+       "widthM": 0.88,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.052 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.40 mean 0.38 vs photo 0.16)",
+   "likeness": {
+    "pandId": "0363100012159515",
+    "ncc": 0.052,
+    "nccRaw": 0.052,
+    "shiftM": [
+     -0.25,
+     0.15
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.38 vs photo 0.16"
+    ],
+    "wall": {
+     "photo": "#796659",
+     "model": "#79685e",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.117
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.112,
+    "pijp-1882-keystone-lintel": 0.043,
+    "pijp-1885-segmental-keystone": 0.098
+   }
+  },
+  {
+   "pandId": "0363100012164766",
+   "address": "Tweede Jan Steenstraat 14",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322c22",
+    "wallRaw": "#725e53",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 759,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.33 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.33,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.17; glazing storey band off by 0.22)",
+   "likeness": {
+    "pandId": "0363100012164766",
+    "ncc": 0.063,
+    "nccRaw": 0.063,
+    "shiftM": [
+     0.15,
+     -0.1
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.17",
+     "glazing storey band off by 0.22"
+    ],
+    "wall": {
+     "photo": "#8a6e65",
+     "model": "#5b503e",
+     "dL": -0.169
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.238
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.124,
+    "pijp-1882-keystone-lintel": 0.13,
+    "pijp-1885-segmental-keystone": 0.115
+   }
+  },
+  {
+   "pandId": "0363100012235991",
+   "address": "Tweede Jan Steenstraat 12",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 16.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755f55",
+    "wallRaw": "#746258",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 759,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.78,
+       "widthM": 1.05,
+       "centre": 0.31
+      },
+      {
+       "atM": 12,
+       "widthM": 1.1,
+       "centre": 0.32
+      },
+      {
+       "atM": 9,
+       "widthM": 1.13,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.008 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.263 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012235991",
+    "ncc": 0.008,
+    "nccRaw": 0.008,
+    "shiftM": [
+     -0.25,
+     -0.2
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.263 < 0.45"
+    ],
+    "wall": {
+     "photo": "#82665d",
+     "model": "#8d7266",
+     "dL": 0.039
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.263
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.097
+   }
+  },
+  {
+   "pandId": "0363100012152764",
+   "address": "Tweede Jan Steenstraat 10B",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554c42",
+    "wallRaw": "#6e5b50",
+    "skyline": {
+     "eavesM": 17.77,
+     "eavesRow": 48,
+     "confidence": 0.35,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.2,
+      "topWidthM": 0.28,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.95,
+       "widthM": 0.85,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.04 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 15 deg; glazing storey band off by 0.40 mean 0.38 vs photo 0.17)",
+   "likeness": {
+    "pandId": "0363100012152764",
+    "ncc": 0.04,
+    "nccRaw": 0.04,
+    "shiftM": [
+     0.05,
+     0
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 15 deg",
+     "glazing storey band off by 0.40 mean 0.38 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#836459",
+     "model": "#6f6356",
+     "dL": -0.045
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.117
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.003,
+    "pijp-1876-hood-frieze": 0.061,
+    "pijp-1882-keystone-lintel": 0.025
+   }
+  },
+  {
+   "pandId": "0363100012158006",
+   "address": "Tweede Jan Steenstraat 8B",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 11.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a7166",
+    "wallRaw": "#6c5b52",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 144,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.82,
+      "topWidthM": 0.78,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; columns 3 vs photo 7)",
+   "likeness": {
+    "pandId": "0363100012158006",
+    "ncc": 0.089,
+    "nccRaw": 0.089,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "columns 3 vs photo 7"
+    ],
+    "wall": {
+     "photo": "#765f59",
+     "model": "#9c8479",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.244
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.162,
+    "pijp-1876-hood-frieze": 0.092
+   }
+  },
+  {
+   "pandId": "0363100012161456",
+   "address": "Tweede Jan Steenstraat 6",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 13.04,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3839",
+    "wallRaw": "#443f3f",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 86,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.38,
+      "topWidthM": 0.6,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.31,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.63 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.63,
+       "light": 0.38
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012161456",
+    "ncc": 0.163,
+    "nccRaw": 0.163,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23",
+     "wall family unresolved (#3c3738 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#3c3738",
+     "model": "#594f51",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.324
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.169,
+    "pijp-1876-hood-frieze": 0.08,
+    "pijp-1882-keystone-lintel": 0.145,
+    "pijp-1885-segmental-keystone": 0.089
+   }
+  },
+  {
+   "pandId": "0363100012154123",
+   "address": "Tweede Jan Steenstraat 4",
+   "builtYear": 1886,
+   "widthM": 5.75,
+   "eavesM": 14.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e737d",
+    "wallRaw": "#5d5c5a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 759,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.131,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.72,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.07,
+       "widthM": 0.85,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16)",
+   "likeness": {
+    "pandId": "0363100012154123",
+    "ncc": 0.061,
+    "nccRaw": 0.061,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#6d727d",
+     "model": "#818690",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.37
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.089,
+    "pijp-1885-segmental-keystone": 0.142
+   }
+  },
+  {
+   "pandId": "0363100012165574",
+   "address": "Tweede Jan Steenstraat 2",
+   "builtYear": 1886,
+   "widthM": 8.49,
+   "eavesM": 14.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5f61",
+    "wallRaw": "#575253",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 759,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.82,
+       "widthM": 0.9,
+       "centre": 0.06
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1886, type 1875-1877; frontage 8.49 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1886, type 1875-1877",
+     "frontage 8.49 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.21 m = 3 storeys of 4.74 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.18 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.135 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

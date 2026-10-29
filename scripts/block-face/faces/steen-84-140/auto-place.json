@@ -1,0 +1,1482 @@
+{
+ "face": "steen-84-140",
+ "street": "Eerste Jan Steenstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 35.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "steen-84-140-r1",
+   "pands": [
+    "0363100012160607",
+    "0363100012164678",
+    "0363100012157354",
+    "0363100012152902",
+    "0363100012159966",
+    "0363100012163192",
+    "0363100012153336",
+    "0363100012156490",
+    "0363100012163026"
+   ],
+   "passed": false,
+   "triangles": 19390
+  },
+  {
+   "face": "steen-84-140-r2",
+   "pands": [
+    "0363100012235888",
+    "0363100012153648",
+    "0363100012166394"
+   ],
+   "passed": true,
+   "triangles": 6514
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012160607",
+   "address": "Eerste Jan Steenstraat 114",
+   "builtYear": 1887,
+   "widthM": 5.97,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64504d",
+    "wallRaw": "#4c4442",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2,
+      "topWidthM": 0.42,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "measuredPalette": {
+     "brick": "#64504d",
+     "evidence": "strip 2023-01-03 span 0-239: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.502 vs 0.445), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.502 vs 0.441), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012160607",
+    "ncc": 0.441,
+    "nccRaw": 0.441,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27"
+    ],
+    "wall": {
+     "photo": "#64524f",
+     "model": "#7d6460",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.513
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.264,
+    "pijp-1876-hood-frieze": 0.433,
+    "pijp-1882-keystone-lintel": 0.502,
+    "pijp-1885-segmental-keystone": 0.478
+   }
+  },
+  {
+   "pandId": "0363100012164678",
+   "address": "Eerste Jan Steenstraat 112",
+   "builtYear": 1886,
+   "widthM": 6,
+   "eavesM": 13.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b3e38",
+    "wallRaw": "#514440",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 261,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 3.53,
+      "topWidthM": 0.42,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "measuredPalette": {
+     "brick": "#4b3e38",
+     "evidence": "strip 2023-01-03 span 239-479: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.382 vs 0.29), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.34 vs 0.29), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.382 vs 0.29), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.34 vs 0.29), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012164678",
+    "ncc": 0.29,
+    "nccRaw": 0.29,
+    "shiftM": [
+     -0.1,
+     -0.2
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.40 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#493d38",
+     "model": "#67554d",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.31
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.216,
+    "pijp-1876-hood-frieze": 0.302,
+    "pijp-1882-keystone-lintel": 0.382,
+    "pijp-1885-segmental-keystone": 0.34
+   }
+  },
+  {
+   "pandId": "0363100012157354",
+   "address": "Eerste Jan Steenstraat 110",
+   "builtYear": 1886,
+   "widthM": 5.98,
+   "eavesM": 13.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69564e",
+    "wallRaw": "#504440",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 2.9,
+      "topWidthM": 0.7,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#69564e",
+     "evidence": "strip 2023-01-03 span 479-718: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157354",
+    "ncc": 0.3,
+    "nccRaw": 0.3,
+    "shiftM": [
+     -0.1,
+     -0.1
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.41 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#6c5850",
+     "model": "#826a60",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.441
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.221,
+    "pijp-1876-hood-frieze": 0.255,
+    "pijp-1882-keystone-lintel": 0.339,
+    "pijp-1885-segmental-keystone": 0.333
+   }
+  },
+  {
+   "pandId": "0363100012152902",
+   "address": "Eerste Jan Steenstraat 108",
+   "builtYear": 1887,
+   "widthM": 5.92,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#483a32",
+    "wallRaw": "#524742",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 268,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 3.5,
+      "topWidthM": 0.4,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#483a32",
+     "evidence": "strip 2023-01-03 span 718-955: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.347 vs 0.157), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.338 vs 0.157), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.301 vs 0.157), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.347 vs 0.16), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.338 vs 0.16), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.301 vs 0.16), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012152902",
+    "ncc": 0.16,
+    "nccRaw": 0.16,
+    "shiftM": [
+     -0.1,
+     -0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#493b36",
+     "model": "#655146",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.551
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.178,
+    "pijp-1876-hood-frieze": 0.301,
+    "pijp-1882-keystone-lintel": 0.347,
+    "pijp-1885-segmental-keystone": 0.338
+   }
+  },
+  {
+   "pandId": "0363100012159966",
+   "address": "Eerste Jan Steenstraat 106",
+   "builtYear": 1887,
+   "widthM": 6.06,
+   "eavesM": 13.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69554d",
+    "wallRaw": "#4b403c",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 3,
+      "topWidthM": 0.6,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#69554d",
+     "evidence": "strip 2023-01-03 span 955-1197: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.309 vs 0.193), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.268 vs 0.193), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.248 vs 0.193), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.309 vs 0.192), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.268 vs 0.192), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.248 vs 0.192), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012159966",
+    "ncc": 0.192,
+    "nccRaw": 0.192,
+    "shiftM": [
+     0,
+     -0.25
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.39 vs photo 0.27"
+    ],
+    "wall": {
+     "photo": "#67544e",
+     "model": "#82695f",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.362
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.19,
+    "pijp-1876-hood-frieze": 0.309,
+    "pijp-1882-keystone-lintel": 0.248,
+    "pijp-1885-segmental-keystone": 0.268
+   }
+  },
+  {
+   "pandId": "0363100012163192",
+   "address": "Eerste Jan Steenstraat 104",
+   "builtYear": 1887,
+   "widthM": 5.99,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#444345",
+    "wallRaw": "#4f4e50",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 1.7,
+      "topWidthM": 0.3,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#423e3a",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie,woonfunctie); fascia colour measured on the strip 2023-01-03 span 1197-1437"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#444345",
+     "evidence": "strip 2023-01-03 span 1197-1437: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012163192",
+    "ncc": 0.33,
+    "nccRaw": 0.33,
+    "shiftM": [
+     -0.05,
+     -0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.47 vs photo 0.32"
+    ],
+    "wall": {
+     "photo": "#453e3c",
+     "model": "#5c5a5d",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.507
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.251,
+    "pijp-1876-hood-frieze": 0.282,
+    "pijp-1882-keystone-lintel": 0.281,
+    "pijp-1885-segmental-keystone": 0.31
+   }
+  },
+  {
+   "pandId": "0363100012153336",
+   "address": "Eerste Jan Steenstraat 102",
+   "builtYear": 1887,
+   "widthM": 5.99,
+   "eavesM": 13.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503f38",
+    "wallRaw": "#53433e",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.4,
+      "topWidthM": 0.23,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.73,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "measuredPalette": {
+     "brick": "#503f38",
+     "evidence": "strip 2023-01-03 span 1437-1677: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.292 vs 0.235), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.292 vs 0.235), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012153336",
+    "ncc": 0.235,
+    "nccRaw": 0.235,
+    "shiftM": [
+     -0.15,
+     -0.1
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.40 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#725850",
+     "model": "#6c554c",
+     "dL": -0.02
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.446
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.175,
+    "pijp-1876-hood-frieze": 0.162,
+    "pijp-1882-keystone-lintel": 0.292,
+    "pijp-1885-segmental-keystone": 0.193
+   }
+  },
+  {
+   "pandId": "0363100012156490",
+   "address": "Eerste Jan Steenstraat 100",
+   "builtYear": 1887,
+   "widthM": 5.98,
+   "eavesM": 13.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b544b",
+    "wallRaw": "#4f413b",
+    "skyline": {
+     "eavesM": 16.5,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.6,
+      "topWidthM": 0.4,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.73,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#6b544b",
+     "evidence": "strip 2023-01-03 span 1677-1916: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.312 vs 0.223), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.312 vs 0.222), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012156490",
+    "ncc": 0.222,
+    "nccRaw": 0.222,
+    "shiftM": [
+     -0.05,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#67514b",
+     "model": "#84685d",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.475
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.133,
+    "pijp-1876-hood-frieze": 0.247,
+    "pijp-1882-keystone-lintel": 0.312,
+    "pijp-1885-segmental-keystone": 0.256
+   }
+  },
+  {
+   "pandId": "0363100012163026",
+   "address": "Eerste Jan Steenstraat 98",
+   "builtYear": 1887,
+   "widthM": 6.02,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a2a3a8",
+    "wallRaw": "#544744",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 2.45,
+      "topWidthM": 0.6,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.73,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#a2a3a8",
+     "evidence": "strip 2023-01-03 span 1916-2157: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.407 vs 0.163), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.371 vs 0.163), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.294 vs 0.163), vetoed by its facts",
+    "the edges read closer to pijp-1875-shop-dormer (0.251 vs 0.163), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.407 vs 0.165), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.371 vs 0.165), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.294 vs 0.165), vetoed by its facts",
+    "the edges read closer to pijp-1875-shop-dormer (0.251 vs 0.165), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012163026",
+    "ncc": 0.165,
+    "nccRaw": 0.165,
+    "shiftM": [
+     -0.1,
+     0
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.24"
+    ],
+    "wall": {
+     "photo": "#665450",
+     "model": "#96979c",
+     "dL": 0.243
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.495
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.251,
+    "pijp-1876-hood-frieze": 0.294,
+    "pijp-1882-keystone-lintel": 0.371,
+    "pijp-1885-segmental-keystone": 0.407
+   }
+  },
+  {
+   "pandId": "0363100012236010",
+   "address": "Eerste Jan Steenstraat 96",
+   "builtYear": 1887,
+   "widthM": 6.26,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5a56",
+    "wallRaw": "#584d4a",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.7,
+      "topWidthM": 0.55,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.38,
+       "widthM": 1.27,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.138 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012236010",
+    "ncc": 0.138,
+    "nccRaw": 0.138,
+    "shiftM": [
+     -0.2,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#6f5b56",
+     "model": "#866d68",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.618
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.179,
+    "pijp-1882-keystone-lintel": 0.267,
+    "pijp-1885-segmental-keystone": 0.273
+   }
+  },
+  {
+   "pandId": "0363100012235888",
+   "address": "Eerste Jan Steenstraat 94",
+   "builtYear": 1887,
+   "widthM": 5.73,
+   "eavesM": 13.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#51433e",
+    "wallRaw": "#524643",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 278,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.75,
+      "topWidthM": 0.38,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 1.07,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.87,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#51433e",
+     "evidence": "strip 2023-01-03 span 2407-2636: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.318 vs 0.23), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.318 vs 0.232), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012235888",
+    "ncc": 0.232,
+    "nccRaw": 0.232,
+    "shiftM": [
+     -0.2,
+     -0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13"
+    ],
+    "wall": {
+     "photo": "#453a37",
+     "model": "#6c5952",
+     "dL": 0.129
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.486
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.263,
+    "pijp-1882-keystone-lintel": 0.259,
+    "pijp-1885-segmental-keystone": 0.318
+   }
+  },
+  {
+   "pandId": "0363100012153648",
+   "address": "Eerste Jan Steenstraat 92",
+   "builtYear": 1887,
+   "widthM": 6.19,
+   "eavesM": 13.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4b43",
+    "wallRaw": "#443e3c",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 279,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 1.78,
+      "topWidthM": 0.72,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.83,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#5d4b43",
+     "evidence": "strip 2023-01-03 span 2636-2884: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.239 vs 0.178), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.239 vs 0.185), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012153648",
+    "ncc": 0.185,
+    "nccRaw": 0.185,
+    "shiftM": [
+     -0.15,
+     -0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#64524d",
+     "model": "#776056",
+     "dL": 0.055
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.531
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.176,
+    "pijp-1882-keystone-lintel": 0.174,
+    "pijp-1885-segmental-keystone": 0.239
+   }
+  },
+  {
+   "pandId": "0363100012166394",
+   "address": "Eerste Jan Steenstraat 90",
+   "builtYear": 1886,
+   "widthM": 5.86,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453c38",
+    "wallRaw": "#4b423e",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 280,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 3,
+      "topWidthM": 0.4,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.2,
+       "widthM": 0.85,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1886-segmental-mansard",
+   "score": 0.87,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1886-segmental-mansard",
+    "measuredPalette": {
+     "brick": "#453c38",
+     "evidence": "strip 2023-01-03 span 2884-3118: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.373 vs 0.269), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.373 vs 0.271), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012166394",
+    "ncc": 0.271,
+    "nccRaw": 0.271,
+    "shiftM": [
+     -0.15,
+     -0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.40 vs photo 0.20"
+    ],
+    "wall": {
+     "photo": "#62544e",
+     "model": "#60534e",
+     "dL": -0.004
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.411
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.285,
+    "pijp-1882-keystone-lintel": 0.287,
+    "pijp-1885-segmental-keystone": 0.373
+   }
+  },
+  {
+   "pandId": "0363100012236007",
+   "address": "Eerste Jan Steenstraat 84",
+   "builtYear": 1887,
+   "widthM": 11.93,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.54,
+    "toM": 11.93,
+    "depthM": 0.4,
+    "centre": 0.732,
+    "lineRD": [
+     [
+      121211.033375,
+      485245.89525
+     ],
+     [
+      121206.912375,
+      485244.81724999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6a554e",
+    "wallRaw": "#4f433f",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 295,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.6,
+      "topWidthM": 0.2,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.1,
+       "centre": 0.22
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.1,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1887, type 1875-1877; frontage 11.93 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1887, type 1875-1877",
+     "frontage 11.93 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.97 m = 3 storeys of 4.32 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.34 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155544",
+   "address": "Eerste Jan Steenstraat 84A",
+   "builtYear": 1887,
+   "widthM": 7.43,
+   "eavesM": 12.9,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403531",
+    "wallRaw": "#4b433f",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.13,
+      "topWidthM": 0.7,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.9,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1.3,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1887, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1887, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.9 m = 3 storeys of 4.3 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

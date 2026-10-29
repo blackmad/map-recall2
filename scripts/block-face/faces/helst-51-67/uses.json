@@ -1,0 +1,370 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237118",
+   "addresses": [
+    "Eerste Van der Helststraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 156,
+     "bagId": "0363010011323625"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559322,
+     "lngLat": [
+      4.8934993,
+      52.3550097
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "email": "info@ami.amsterdam",
+      "internet_access": "yes",
+      "internet_access:fee": "customers",
+      "name": "Ami",
+      "note": "Horecagroep 3WO",
+      "opening_hours": "Su-We 11:00-24:00; Th 11:00-01:00; Fr-Sa 11:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 235 8710",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ami.amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158716",
+   "addresses": [
+    "Eerste Van der Helststraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 53-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000548745"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159866",
+   "addresses": [
+    "Eerste Van der Helststraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000548759"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559348,
+     "lngLat": [
+      4.8935609,
+      52.354909
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "55-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "cuisine": "surinamese;indonesian",
+      "name": "Warung Marlon",
+      "note": "Surinaams-Javaans eethuis",
+      "opening_hours": "We-Su 11:00-18:30",
+      "phone": "+31 20 6711526",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167269",
+   "addresses": [
+    "Eerste Van der Helststraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000548766"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559359,
+     "lngLat": [
+      4.8935879,
+      52.3548636
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "cuisine": "italian",
+      "email": "italiaanseeetwinkel@gmail.com",
+      "indoor_seating": "yes",
+      "name": "Alberto Pozzetto",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 3546498",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.albertopozzetto.it",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13474507885,
+     "lngLat": [
+      4.8936735,
+      52.3548864
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "name": "Pia Piatti",
+      "shop": "yes",
+      "website": "https://piapiatti.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012143302",
+   "addresses": [
+    "Eerste Van der Helststraat 59",
+    "Eerste Van der Helststraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 59-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000998436"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1315135104,
+     "lngLat": [
+      4.8936317,
+      52.3547975
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "59-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "email": "info@deduvel.nl",
+      "level": "0",
+      "name": "De Duvel",
+      "opening_hours": "Su-Tu 11:00-00:00; We-Th 11:00-01:00; Fr-Sa 10:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 6757517",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.deduvel.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164887",
+   "addresses": [
+    "Eerste Van der Helststraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 63-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 45,
+     "bagId": "0363010011118557"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559399,
+     "lngLat": [
+      4.8936814,
+      52.3547259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "name": "Cleen",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158065",
+   "addresses": [
+    "Eerste Van der Helststraat 65",
+    "Eerste Van der Helststraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 67",
+     "use": "winkelfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000548808"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2630038254,
+     "lngLat": [
+      4.8938005,
+      52.3546351
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-H",
+      "addr:postcode": "1073CN",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-29",
+      "delivery": "yes",
+      "drive_through": "no",
+      "email": "info@bier-baum.nl",
+      "name": "Bierbaum",
+      "opening_hours": "Mo-Fr 14:00-22:00; Sa 12:00-22:00; Su 12:00-18:00",
+      "phone": "+31 20 7792040",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://bier-baum.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    },
+    {
+     "type": "node",
+     "id": 2817559413,
+     "lngLat": [
+      4.8937379,
+      52.354622
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "67",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "check_date:opening_hours": "2025-06-19",
+      "email": "info@firmamoes.nl",
+      "name": "Firma Moes",
+      "opening_hours": "Tu-We,Fr 10:00-17:30; Sa 10:00-17:00",
+      "phone": "+31 20 662 6347",
+      "shop": "knives",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.firmamoes.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12909647109,
+     "lngLat": [
+      4.8937954,
+      52.3545404
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01666",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7
+    }
+   ]
+  }
+ ]
+}

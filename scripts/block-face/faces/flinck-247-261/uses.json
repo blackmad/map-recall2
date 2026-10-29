@@ -1,0 +1,224 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163890",
+   "addresses": [
+    "Govert Flinckstraat 247A",
+    "Govert Flinckstraat 247C",
+    "Govert Flinckstraat 247B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 247A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001003474"
+    },
+    {
+     "address": "Govert Flinckstraat 247C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001003475"
+    },
+    {
+     "address": "Govert Flinckstraat 247B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001003476"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158291",
+   "addresses": [
+    "Govert Flinckstraat 249",
+    "Govert Flinckstraat 249A",
+    "Govert Flinckstraat 249B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 249-H",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000649092"
+    },
+    {
+     "address": "Govert Flinckstraat 249A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012599646"
+    },
+    {
+     "address": "Govert Flinckstraat 249B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012599647"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160398",
+   "addresses": [
+    "Govert Flinckstraat 251"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 251-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000649099"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506127773,
+     "lngLat": [
+      4.8981031,
+      52.3563
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "251-H",
+      "addr:postcode": "1073BX",
+      "addr:street": "Govert Flinckstraat",
+      "alt_name": "Restaurant Arles Amsterdam",
+      "amenity": "restaurant",
+      "cuisine": "french",
+      "email": "info@arles-amsterdam.nl",
+      "name": "Arles",
+      "note": "neo-bistro",
+      "old_name": "A la Carte",
+      "opening_hours": "Mo-Su 17:30+",
+      "phone": "+31 20 679 8240",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.arles-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152801",
+   "addresses": [
+    "Govert Flinckstraat 253A",
+    "Govert Flinckstraat 253B",
+    "Govert Flinckstraat 253C",
+    "Govert Flinckstraat 253D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 253A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001019467"
+    },
+    {
+     "address": "Govert Flinckstraat 253B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001019468"
+    },
+    {
+     "address": "Govert Flinckstraat 253C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001019469"
+    },
+    {
+     "address": "Govert Flinckstraat 253D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001019470"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236859",
+   "addresses": [
+    "Govert Flinckstraat 255",
+    "Govert Flinckstraat 257",
+    "Govert Flinckstraat 259A",
+    "Govert Flinckstraat 259B",
+    "Govert Flinckstraat 259C",
+    "Govert Flinckstraat 259D",
+    "Govert Flinckstraat 259E",
+    "Govert Flinckstraat 259F",
+    "Govert Flinckstraat 261"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 255",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001044031"
+    },
+    {
+     "address": "Govert Flinckstraat 257",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001044032"
+    },
+    {
+     "address": "Govert Flinckstraat 259A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001044040"
+    },
+    {
+     "address": "Govert Flinckstraat 259B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001044075"
+    },
+    {
+     "address": "Govert Flinckstraat 259C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001044076"
+    },
+    {
+     "address": "Govert Flinckstraat 259D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001044077"
+    },
+    {
+     "address": "Govert Flinckstraat 259E",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044078"
+    },
+    {
+     "address": "Govert Flinckstraat 259F",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044079"
+    },
+    {
+     "address": "Govert Flinckstraat 261",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044080"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

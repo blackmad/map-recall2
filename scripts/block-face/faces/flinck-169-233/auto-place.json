@@ -1,0 +1,842 @@
+{
+ "face": "flinck-169-233",
+ "street": "Govert Flinckstraat",
+ "library": "de-pijp",
+ "stripDate": "2019-05-02",
+ "seconds": 1.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163818",
+   "address": "Govert Flinckstraat 169",
+   "builtYear": 1891,
+   "widthM": 6.4,
+   "eavesM": 11.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#928279",
+    "wallRaw": "#7d7d7c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 820,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.408,
+    "structure": {
+     "bayWidthM": 4.05,
+     "bayCentre": 0.34,
+     "balconies": true,
+     "why": "dark open axis 1.3 m at 0.11 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.3,
+       "centre": 0.11,
+       "light": 0.37
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5,
+       "widthM": 1.3,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236257",
+   "address": "Govert Flinckstraat 171",
+   "builtYear": 1893,
+   "widthM": 12.27,
+   "eavesM": 11.29,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#856f63",
+    "wallRaw": "#9b7f6e",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 240,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 2.08,
+      "riseM": 2.85,
+      "topWidthM": 0.17,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.212,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.57 m at 0.07 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.57,
+       "centre": 0.07,
+       "light": 0.41
+      },
+      {
+       "widthM": 2.17,
+       "centre": 0.25,
+       "light": 0.23
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.39,
+       "light": 0.08
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.8,
+       "widthM": 1.2,
+       "centre": 0.74
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.4,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1893, type 1875-1877; frontage 12.27 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1875-1877",
+     "frontage 12.27 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.29 m = 3 storeys of 3.76 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137589",
+   "address": "Govert Flinckstraat 175",
+   "builtYear": 1938,
+   "widthM": 5.1,
+   "eavesM": 10.28,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e2c2a1",
+    "wallRaw": "#e3c2a0",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 272,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 6.8,
+      "topWidthM": 0.4,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.464,
+    "structure": {
+     "bayWidthM": 4.7,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.46,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 46 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134850",
+   "address": "Govert Flinckstraat 177",
+   "builtYear": 1938,
+   "widthM": 5.26,
+   "eavesM": 10.26,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eecba9",
+    "wallRaw": "#eccba8",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 282,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 6.68,
+      "topWidthM": 0.2,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.517,
+    "structure": {
+     "bayWidthM": 4.85,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.51,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 51 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131774",
+   "address": "Govert Flinckstraat 179",
+   "builtYear": 1938,
+   "widthM": 7.77,
+   "eavesM": 10.23,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b89378",
+    "wallRaw": "#d7ae90",
+    "skyline": {
+     "eavesM": 12.5,
+     "eavesRow": 320,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 8,
+      "topWidthM": 0.33,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.216,
+    "structure": {
+     "bayWidthM": 3.4,
+     "bayCentre": 0.24,
+     "balconies": true,
+     "why": "dark open axis 1.3 m at 0.74 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.3,
+       "centre": 0.74,
+       "light": 0.37
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1938, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1938, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.23 m = 3 storeys of 3.41 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.57 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.121 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146154",
+   "address": "Govert Flinckstraat 183",
+   "builtYear": 1938,
+   "widthM": 17.71,
+   "eavesM": 10.15,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78726c",
+    "wallRaw": "#e0bca1",
+    "skyline": {
+     "eavesM": 11.88,
+     "eavesRow": 345,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 8.63,
+      "topWidthM": 0.42,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.508,
+    "structure": {
+     "bayWidthM": 11.9,
+     "bayCentre": 0.37,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 6.17 m @ 0.52, 1.85 m @ 0.66), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 6.17,
+       "centre": 0.19,
+       "light": 0.52
+      },
+      {
+       "widthM": 1.85,
+       "centre": 0.47,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 1.18,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.44,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 44 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162751",
+   "address": "Govert Flinckstraat 189",
+   "builtYear": 1938,
+   "widthM": 6.03,
+   "eavesM": 11.16,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f756b",
+    "wallRaw": "#9b8476",
+    "skyline": {
+     "eavesM": 13.38,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 6,
+      "topWidthM": 0.17,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.36,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1938, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1938, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.16 m = 3 storeys of 3.72 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.93 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.148 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236809",
+   "address": "Govert Flinckstraat 191",
+   "builtYear": 1892,
+   "widthM": 8.32,
+   "eavesM": 9.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cfa992",
+    "wallRaw": "#d2ad94",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 395,
+     "confidence": 0.4,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.68,
+      "topWidthM": 0.35,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 9,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.466,
+    "structure": {
+     "bayWidthM": 1.75,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 3.17,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.57 m = 3 storeys of 3.19 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 8.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.195 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159087",
+   "address": "Govert Flinckstraat 193A",
+   "builtYear": 1891,
+   "widthM": 18.47,
+   "eavesM": 9.16,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dacba9",
+    "wallRaw": "#f2e2b9",
+    "skyline": {
+     "eavesM": 11.7,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 1.15,
+      "topWidthM": 3.3,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.556,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.38 m at 0.13 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.38,
+       "centre": 0.13,
+       "light": 0
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.62,
+       "light": 0
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.96,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 18.47 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 18.47 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.16 m = 3 storeys of 3.05 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.42 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157212",
+   "address": "Govert Flinckstraat 195",
+   "builtYear": 1886,
+   "widthM": 5.02,
+   "eavesM": 10.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#565a69",
+    "wallRaw": "#6e6c6b",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 269,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 4.4,
+      "topWidthM": 0.3,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.74,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.74 (light 0.47): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.74,
+       "light": 0.47
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162693",
+   "address": "Govert Flinckstraat 197",
+   "builtYear": 1886,
+   "widthM": 5.02,
+   "eavesM": 10.88,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957c71",
+    "wallRaw": "#a28676",
+    "skyline": {
+     "eavesM": 14.2,
+     "eavesRow": 252,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 3.2,
+      "topWidthM": 0.4,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.334,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.6 < 0.7 (strip cornice 14.2 m vs the type's 15.1 m; strip wall #957c71 dE 23.8 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.2 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #957c71 dE 23.8 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.283 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157734",
+   "address": "Govert Flinckstraat 199",
+   "builtYear": 1886,
+   "widthM": 5.03,
+   "eavesM": 10.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#857367",
+    "wallRaw": "#948276",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 280,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 2.8,
+      "topWidthM": 0.38,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

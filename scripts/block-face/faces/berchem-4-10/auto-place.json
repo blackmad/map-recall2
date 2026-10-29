@@ -1,0 +1,137 @@
+{
+ "face": "berchem-4-10",
+ "street": "Nicolaas Berchemstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 0.29,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012096339",
+   "address": "Nicolaas Berchemstraat 8",
+   "builtYear": 1891,
+   "widthM": 10.79,
+   "eavesM": 10.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71675f",
+    "wallRaw": "#736960",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 159,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.43,
+      "topWidthM": 0.1,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 1.18,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 10.79 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1875-1877",
+     "frontage 10.79 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.89 m = 3 storeys of 3.63 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012128539",
+   "address": "Nicolaas Berchemstraat 4",
+   "builtYear": 1891,
+   "widthM": 11.24,
+   "eavesM": 12.4,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 744,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

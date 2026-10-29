@@ -1,0 +1,1401 @@
+{
+ "face": "steen-1-43",
+ "street": "Tweede Jan Steenstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-23",
+ "seconds": 8.36,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012160374",
+   "address": "Tweede Jan Steenstraat 1",
+   "builtYear": 1886,
+   "widthM": 4.7,
+   "eavesM": 14.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907264",
+    "wallRaw": "#6f5c51",
+    "skyline": {
+     "eavesM": 18.7,
+     "eavesRow": 106,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.092,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.35 < 0.7 (strip cornice 18.7 m vs the type's 15.1 m; strip wall #907264 dE 21.9 to #524845 (<= 10); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.35,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.7 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #907264 dE 21.9 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236832",
+   "address": "Tweede Jan Steenstraat 3",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4745",
+    "wallRaw": "#655e56",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 155,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.42,
+      "topWidthM": 0.65,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.172,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 8.93 m (1.65 m wide), 5.55 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.93,
+       "widthM": 1.65,
+       "centre": 0.61
+      },
+      {
+       "atM": 6.15,
+       "widthM": 0.93,
+       "centre": 0.55
+      },
+      {
+       "atM": 5.55,
+       "widthM": 1.3,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.53 < 0.7 (strip cornice 17.48 m vs the type's 15.1 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.48 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #4b4745 dE 3.0 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.115 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160486",
+   "address": "Tweede Jan Steenstraat 5",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7d1b1",
+    "wallRaw": "#757165",
+    "skyline": {
+     "eavesM": 17.63,
+     "eavesRow": 149,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 2.27,
+      "topWidthM": 0.93,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 1.05,
+       "centre": 0.73
+      },
+      {
+       "atM": 5.32,
+       "widthM": 1.48,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.35 < 0.7 (strip cornice 17.63 m vs the type's 15.1 m; strip wall #e7d1b1 dE 55.6 to #524845 (<= 10); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.35,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.63 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #e7d1b1 dE 55.6 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123461",
+   "address": "Tweede Jan Steenstraat 9A",
+   "builtYear": 1992,
+   "widthM": 17.29,
+   "eavesM": 12.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7cba4",
+    "wallRaw": "#4f4b47",
+    "skyline": {
+     "eavesM": 16.23,
+     "eavesRow": 205,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 22,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.4,
+       "widthM": 1.7,
+       "centre": 0.63
+      },
+      {
+       "atM": 7.42,
+       "widthM": 0.88,
+       "centre": 0.35
+      },
+      {
+       "atM": 6.9,
+       "widthM": 5,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1992, type 1875-1877; frontage 17.29 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1875-1877",
+     "frontage 17.29 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.67 m = 3 storeys of 4.22 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.89 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 22 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153705",
+   "address": "Tweede Jan Steenstraat 13",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 14.01,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5854",
+    "wallRaw": "#6d605a",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.08,
+      "topWidthM": 1.45,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.203,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.75,
+       "widthM": 1.23,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.076 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.23)",
+   "likeness": {
+    "pandId": "0363100012153705",
+    "ncc": 0.076,
+    "nccRaw": 0.076,
+    "shiftM": [
+     0.1,
+     -0.2
+    ],
+    "usable": 0.69,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.23"
+    ],
+    "wall": {
+     "photo": "#594d47",
+     "model": "#836b67",
+     "dL": 0.145
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.301
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156050",
+   "address": "Tweede Jan Steenstraat 15",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 12,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c5250",
+    "wallRaw": "#6f6660",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 1.72,
+      "topWidthM": 0.78,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.227,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.93,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 0.95,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012156050",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     0.15,
+     -0.25
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#4f4642",
+     "model": "#746764",
+     "dL": 0.139
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.268
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167048",
+   "address": "Tweede Jan Steenstraat 17",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 11.97,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eedfb5",
+    "wallRaw": "#7e776a",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 2.03,
+      "topWidthM": 0.75,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.226,
+    "structure": {
+     "bayWidthM": 3.1,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.4,
+       "widthM": 1.55,
+       "centre": 0.73
+      },
+      {
+       "atM": 7.02,
+       "widthM": 1.02,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.07,
+       "centre": 0.1
+      },
+      {
+       "atM": 5.75,
+       "widthM": 0.97,
+       "centre": 0.62
+      },
+      {
+       "atM": 5.38,
+       "widthM": 1.05,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.53 < 0.7 (strip wall #eedfb5 dE 60.9 to #524845 (<= 10); strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.28 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #eedfb5 dE 60.9 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062137",
+   "address": "Tweede Jan Steenstraat 19",
+   "builtYear": 1992,
+   "widthM": 11.66,
+   "eavesM": 11.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#515150",
+    "wallRaw": "#59534c",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 266,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.195,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.77,
+       "widthM": 0.9,
+       "centre": 0.67
+      },
+      {
+       "atM": 5.97,
+       "widthM": 3.38,
+       "centre": 0.43
+      },
+      {
+       "atM": 5.45,
+       "widthM": 3.77,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1992, type 1875-1877; frontage 11.66 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1875-1877",
+     "frontage 11.66 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.74 m = 3 storeys of 3.91 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.86 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.093 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237284",
+   "address": "Tweede Jan Steenstraat 23",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 16.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#717973",
+    "wallRaw": "#ecdeb1",
+    "skyline": {
+     "eavesM": 18,
+     "eavesRow": 134,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 1.55,
+      "topWidthM": 0.9,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.337,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.15,
+       "widthM": 0.82,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.33 < 0.7 (strip cornice 18 m vs the type's 15.1 m; strip wall #717973 dE 20.1 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #717973 dE 20.1 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.157 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152994",
+   "address": "Tweede Jan Steenstraat 25",
+   "builtYear": 1886,
+   "widthM": 5.83,
+   "eavesM": 16.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#60534d",
+    "wallRaw": "#93897a",
+    "skyline": {
+     "eavesM": 17.77,
+     "eavesRow": 143,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 2.38,
+      "topWidthM": 0.13,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.21,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "bay-less open axis 1.02 m at 0.1 (light 0.56): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.1,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 0.85,
+       "centre": 0.59
+      },
+      {
+       "atM": 8.55,
+       "widthM": 1.38,
+       "centre": 0.38
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1.43,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.4,
+       "widthM": 1.07,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156687",
+   "address": "Tweede Jan Steenstraat 27",
+   "builtYear": 1886,
+   "widthM": 5.73,
+   "eavesM": 16.56,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9aa29e",
+    "wallRaw": "#90948d",
+    "skyline": {
+     "eavesM": 17.8,
+     "eavesRow": 142,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 1.63,
+      "topWidthM": 0.9,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.617,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.13,
+       "widthM": 0.9,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.47 < 0.7 (strip cornice 17.8 m vs the type's 15.1 m; strip wall #9aa29e dE 35.2 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.8 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #9aa29e dE 35.2 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.442 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152873",
+   "address": "Tweede Jan Steenstraat 29",
+   "builtYear": 1886,
+   "widthM": 5.73,
+   "eavesM": 12.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a1a9ae",
+    "wallRaw": "#67615e",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 1.68,
+      "topWidthM": 1.57,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.3,
+       "widthM": 2.95,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.48 < 0.7 (strip cornice 14.57 m vs the type's 15.1 m; strip wall #a1a9ae dE 38.3 to #524845 (<= 10); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.48,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.57 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #a1a9ae dE 38.3 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.136 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152777",
+   "address": "Tweede Jan Steenstraat 31",
+   "builtYear": 1886,
+   "widthM": 5.74,
+   "eavesM": 12.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dfc5a3",
+    "wallRaw": "#6c6a66",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 273,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.2,
+       "widthM": 1.57,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.6 < 0.7 (strip cornice 14.53 m vs the type's 15.1 m; strip wall #dfc5a3 dE 52.3 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.53 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #dfc5a3 dE 52.3 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.13 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167233",
+   "address": "Tweede Jan Steenstraat 33",
+   "builtYear": 1886,
+   "widthM": 5.73,
+   "eavesM": 12.78,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e2c29c",
+    "wallRaw": "#868277",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 281,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 1.8,
+      "topWidthM": 1.35,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.239,
+    "structure": {
+     "bayWidthM": 5.28,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.85 m at 0.23 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.85,
+       "centre": 0.23,
+       "light": 0.45
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.8,
+       "light": 0.58
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.94,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.8,
+       "widthM": 1.98,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.6 < 0.7 (strip cornice 14.32 m vs the type's 15.1 m; strip wall #e2c29c dE 52.8 to #524845 (<= 10))",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.32 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #e2c29c dE 52.8 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161347",
+   "address": "Tweede Jan Steenstraat 35",
+   "builtYear": 1886,
+   "widthM": 5.73,
+   "eavesM": 12.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4644",
+    "wallRaw": "#6b625d",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 2.38,
+      "topWidthM": 0.07,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.199,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "bay-less open axis 1.23 m at 0.12 (light 0.58): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.12,
+       "light": 0.58
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.45,
+       "light": 0.37
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.75,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.65,
+       "widthM": 2.88,
+       "centre": 0.73
+      },
+      {
+       "atM": 8.13,
+       "widthM": 1.13,
+       "centre": 0.7
+      },
+      {
+       "atM": 6.7,
+       "widthM": 1.02,
+       "centre": 0.9
+      },
+      {
+       "atM": 5.88,
+       "widthM": 4,
+       "centre": 0.38
+      },
+      {
+       "atM": 5.13,
+       "widthM": 1.68,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 14.22 m vs the type's 15.1 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.22 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #4e4644 dE 1.5 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.125 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233592",
+   "address": "Tweede Jan Steenstraat 37",
+   "builtYear": 1885,
+   "widthM": 22.22,
+   "eavesM": 13.95,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.37,
+    "toM": 18.06,
+    "depthM": 0.54,
+    "centre": 0.505
+   },
+   "strip": {
+    "wall": "#878980",
+    "wallRaw": "#787971",
+    "skyline": {
+     "eavesM": 16.5,
+     "eavesRow": 194,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 29,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.49,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.55,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1885, type 1875-1877; frontage 22.22 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1875-1877",
+     "frontage 22.22 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 13.95 m = 3 storeys of 4.65 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.276 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 29 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,758 @@
+{
+ "street": "Ceintuurbaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160228",
+   "addresses": [
+    "Ceintuurbaan 105A",
+    "Ceintuurbaan 105B",
+    "Ceintuurbaan 105",
+    "Ceintuurbaan 107A",
+    "Ceintuurbaan 107B",
+    "Ceintuurbaan 107C",
+    "Ceintuurbaan 107D",
+    "Ceintuurbaan 109B",
+    "Ceintuurbaan 109C",
+    "Ceintuurbaan 109D",
+    "Ceintuurbaan 109E",
+    "Ceintuurbaan 109A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 105A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000602451"
+    },
+    {
+     "address": "Ceintuurbaan 105B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000602452"
+    },
+    {
+     "address": "Ceintuurbaan 107A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602453"
+    },
+    {
+     "address": "Ceintuurbaan 107B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602454"
+    },
+    {
+     "address": "Ceintuurbaan 107C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602455"
+    },
+    {
+     "address": "Ceintuurbaan 107D",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000602456"
+    },
+    {
+     "address": "Ceintuurbaan 109B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602458"
+    },
+    {
+     "address": "Ceintuurbaan 109C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602459"
+    },
+    {
+     "address": "Ceintuurbaan 109D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000602460"
+    },
+    {
+     "address": "Ceintuurbaan 109E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000602461"
+    },
+    {
+     "address": "Ceintuurbaan 109A",
+     "use": "winkelfunctie",
+     "areaM2": 540,
+     "bagId": "0363010000602457"
+    },
+    {
+     "address": "Ceintuurbaan 105",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012592531"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610168,
+     "lngLat": [
+      4.8920383,
+      52.3530809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109A",
+      "addr:postcode": "1072EZ",
+      "addr:street": "Ceintuurbaan",
+      "branch": "Amsterdam Ceintuurbaan",
+      "brand": "Sissy-Boy",
+      "brand:website": "https://www.sissy-boy.com",
+      "brand:wikidata": "Q17125357",
+      "clothes": "women;men;children",
+      "name": "Sissy-Boy",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-Sa 10:00-18:00",
+      "operator": "Termeer Groep",
+      "phone": "+31 20 2156473",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.sissy-boy.com/winkels/amsterdam-ceintuurbaan-109-a/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164665",
+   "addresses": [
+    "Ceintuurbaan 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 111-H",
+     "use": "winkelfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000979706"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332642299,
+     "lngLat": [
+      4.8921696,
+      52.3530991
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "111-H",
+      "addr:postcode": "1072EZ",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "clothes": "women",
+      "email": "info@moise-store.nl",
+      "mobile": "+31611235548",
+      "name": "Moise",
+      "opening_hours": "Tu-Sa 10:30-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.moise-store.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105647349,
+     "lngLat": [
+      4.8922319,
+      52.3530325
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163931",
+   "addresses": [
+    "Ceintuurbaan 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 113-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000602465"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610270,
+     "lngLat": [
+      4.8922867,
+      52.3531148
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:floor": "G",
+      "addr:housenumber": "113-H",
+      "addr:postcode": "1072EZ",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "fast_food",
+      "branch": "Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "drive_through": "no",
+      "name": "Today Is Greenday",
+      "opening_hours": "Mo-Su 11:00-21:00",
+      "payment:cash": "no",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 3626817",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.todayisgreenday.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105647349,
+     "lngLat": [
+      4.8922319,
+      52.3530325
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166861",
+   "addresses": [
+    "Ceintuurbaan 115"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164424",
+   "addresses": [
+    "Ceintuurbaan 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 21,
+     "bagId": "0363010000602472"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610446,
+     "lngLat": [
+      4.8924237,
+      52.3531315
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117-H",
+      "addr:postcode": "1072EZ",
+      "addr:street": "Ceintuurbaan",
+      "branch": "Flagship Store",
+      "check_date": "2026-01-27",
+      "name": "O My Bag",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-17:00",
+      "phone": "+31 20 7724464",
+      "shop": "bag",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105620786,
+     "lngLat": [
+      4.8924354,
+      52.3530523
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164182",
+   "addresses": [
+    "Ceintuurbaan 119",
+    "Ceintuurbaan 119A",
+    "Ceintuurbaan 119B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 119-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000602475"
+    },
+    {
+     "address": "Ceintuurbaan 119A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012061228"
+    },
+    {
+     "address": "Ceintuurbaan 119B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012061229"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249628974,
+     "lngLat": [
+      4.892498,
+      52.353143
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "119A",
+      "addr:postcode": "1072EZ",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "restaurant",
+      "check_date": "2026-01-27",
+      "cuisine": "chinese",
+      "diet:vegetarian": "yes",
+      "name": "Kam Kee",
+      "opening_hours": "Tu-Sa 11:00-21:00",
+      "phone": "+31 20 6644831",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166100",
+   "addresses": [
+    "Ceintuurbaan 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 121-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000602478"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332642301,
+     "lngLat": [
+      4.8925756,
+      52.3531536
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "121-H",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "restaurant",
+      "check_date": "2026-01-27",
+      "cuisine": "pizza",
+      "email": "info@pizzataxidapaoloeseba.nl",
+      "name": "Pizza Taxi Da Paolo & Seba",
+      "opening_hours": "Su-Tu,Th 17:00-22:00; Fr-Sa 14:00-22:00",
+      "phone": "+31 20 6715735",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pizzataxidapaoloeseba.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166279",
+   "addresses": [
+    "Ceintuurbaan 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 123-H",
+     "use": "winkelfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000602480"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105651008,
+     "lngLat": [
+      4.8926509,
+      52.3530806
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158002",
+   "addresses": [
+    "Ceintuurbaan 125"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236359",
+   "addresses": [
+    "Ceintuurbaan 127",
+    "Ceintuurbaan 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 127-H",
+     "use": "winkelfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000602485"
+    },
+    {
+     "address": "Ceintuurbaan 127-H",
+     "use": "winkelfunctie",
+     "areaM2": 197,
+     "bagId": "0363010012109992"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610767,
+     "lngLat": [
+      4.8928632,
+      52.3531916
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "127-H",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "branch": "Amsterdam Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "contact:instagram": "https://www.instagram.com/thriftshopnl",
+      "name": "Vintage Outlet",
+      "opening_hours": "Mo-Sa 11:00-18:00; Su 12:00-18:00",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://thriftshop.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155952",
+   "addresses": [
+    "Ceintuurbaan 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000602489"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166842",
+   "addresses": [
+    "Ceintuurbaan 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 133-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000602492"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610883,
+     "lngLat": [
+      4.8930652,
+      52.3532177
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "133-H;133",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "branch": "Amsterdam Ceintuurbaan",
+      "brand": "Hizi Hair",
+      "brand:website": "https://www.hizihair.nl/",
+      "brand:wikidata": "Q122903761",
+      "check_date": "2026-01-27",
+      "name": "Hizi Hair",
+      "opening_hours": "Mo 10:00-18:00; Tu-We,Fr 09:00-18:00; Th 09:00-21:00; Sa 09:00-17:30",
+      "phone": "+31 20 2466050",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hizihair.nl/kapsalons/amsterdam/hizi-hair-kapper-amsterdam-ceintuurbaan/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105648823,
+     "lngLat": [
+      4.8931079,
+      52.3531494
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162740",
+   "addresses": [
+    "Ceintuurbaan 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 135-H",
+     "use": "winkelfunctie",
+     "areaM2": 88,
+     "bagId": "0363010011211631"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610913,
+     "lngLat": [
+      4.893146,
+      52.3532293
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "135-H",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "alt_name": "Nirvana Thai Spa",
+      "branch": "Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "mobile": "+31683124088",
+      "name": "Thai Spa Nirvana",
+      "opening_hours": "Mo-Su 10:30-22:00",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://thaispanirvana.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105620785,
+     "lngLat": [
+      4.893205,
+      52.3531643
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164203",
+   "addresses": [
+    "Ceintuurbaan 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 137-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000602498"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332644231,
+     "lngLat": [
+      4.8932272,
+      52.3532387
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "137-H",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "name": "CityWash",
+      "opening_hours": "Mo-We 09:00-18:00; Th 09:00-19:00; Fr 09:00-17:00; Sa-Su 11:00-17:00",
+      "shop": "laundry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://citywashamsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105620785,
+     "lngLat": [
+      4.893205,
+      52.3531643
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166935",
+   "addresses": [
+    "Ceintuurbaan 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 139-H",
+     "use": "winkelfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000602501"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332644232,
+     "lngLat": [
+      4.8933104,
+      52.3532504
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "139-H",
+      "addr:postcode": "1072GA",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-27",
+      "note": "Voormalig Game Mania",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

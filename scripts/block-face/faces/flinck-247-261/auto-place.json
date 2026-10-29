@@ -1,0 +1,390 @@
+{
+ "face": "flinck-247-261",
+ "street": "Govert Flinckstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-23",
+ "seconds": 0.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163890",
+   "address": "Govert Flinckstraat 247A",
+   "builtYear": 1887,
+   "widthM": 5.26,
+   "eavesM": 11.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b9b9b6",
+    "wallRaw": "#5f5856",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 116,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.7,
+      "topWidthM": 1.02,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.105,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.75,
+       "widthM": 1.02,
+       "centre": 0.89
+      },
+      {
+       "atM": 10.07,
+       "widthM": 1.55,
+       "centre": 0.35
+      },
+      {
+       "atM": 7.52,
+       "widthM": 2,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.53 < 0.7 (strip wall #b9b9b6 dE 43.8 to #524845 (<= 10); strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.6 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #b9b9b6 dE 43.8 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158291",
+   "address": "Govert Flinckstraat 249",
+   "builtYear": 1886,
+   "widthM": 5.3,
+   "eavesM": 11.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#535356",
+    "wallRaw": "#717471",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 130,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.05,
+      "topWidthM": 0.2,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.072,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.77,
+       "widthM": 1.75,
+       "centre": 0.8
+      },
+      {
+       "atM": 7.17,
+       "widthM": 1.45,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160398",
+   "address": "Govert Flinckstraat 251",
+   "builtYear": 1886,
+   "widthM": 5.46,
+   "eavesM": 11.35,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#525255",
+    "wallRaw": "#787a77",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.75,
+      "topWidthM": 1.05,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.48,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.88,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 14.18 m vs the type's 15.1 m; strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "pijp-1886-segmental-mansard",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.18 m vs the type's 15.1 m"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 1,
+      "note": "strip wall #525255 dE 6.8 to #524845 (<= 10)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.088 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152801",
+   "address": "Govert Flinckstraat 253A",
+   "builtYear": 1886,
+   "widthM": 5.08,
+   "eavesM": 11.4,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#676059",
+    "wallRaw": "#6d6d6c",
+    "skyline": {
+     "eavesM": 14.1,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.8,
+      "topWidthM": 0.5,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 2.73,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236859",
+   "address": "Govert Flinckstraat 255",
+   "builtYear": 2006,
+   "widthM": 17.9,
+   "eavesM": 12.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554b49",
+    "wallRaw": "#453f3e",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 117,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 2.93,
+      "topWidthM": 0.45,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.27,
+       "widthM": 1.63,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 2006, type 1875-1877; frontage 17.9 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 2006, type 1875-1877",
+     "frontage 17.9 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.4 m = 3 storeys of 4.13 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.019 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

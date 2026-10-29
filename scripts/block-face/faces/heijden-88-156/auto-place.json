@@ -1,0 +1,1430 @@
+{
+ "face": "heijden-88-156",
+ "street": "Eerste Jan van der Heijdenstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 12.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012164708",
+   "address": "Eerste Jan van der Heijdenstraat 122E",
+   "builtYear": 1891,
+   "widthM": 5.57,
+   "eavesM": 16.98,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#676667",
+    "wallRaw": "#534844",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.1,
+       "widthM": 0.8,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162695",
+   "address": "Eerste Jan van der Heijdenstraat 120",
+   "builtYear": 1891,
+   "widthM": 5.44,
+   "eavesM": 17.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473d3b",
+    "wallRaw": "#504845",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.92,
+       "widthM": 3.05,
+       "centre": 0.58
+      },
+      {
+       "atM": 11.72,
+       "widthM": 0.95,
+       "centre": 0.37
+      },
+      {
+       "atM": 9.1,
+       "widthM": 0.95,
+       "centre": 0.38
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.18,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1892-banded-keystone scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1892-banded-keystone",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14 m; 3DBAG 17.34 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152526",
+   "address": "Eerste Jan van der Heijdenstraat 118",
+   "builtYear": 1892,
+   "widthM": 5.5,
+   "eavesM": 16.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5e5a",
+    "wallRaw": "#605f5c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012152526",
+    "ncc": 0.186,
+    "nccRaw": 0.186,
+    "shiftM": [
+     0.05,
+     0
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.65 mean 0.35 vs photo 0.99"
+    ],
+    "wall": {
+     "photo": "#726d67",
+     "model": "#75746f",
+     "dL": 0.022
+    },
+    "glazing": {
+     "photo": 0.99,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.38
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157382",
+   "address": "Eerste Jan van der Heijdenstraat 116",
+   "builtYear": 1892,
+   "widthM": 5.42,
+   "eavesM": 16.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503e3b",
+    "wallRaw": "#4f413e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.1,
+       "widthM": 4.88,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27 mean 0.36 vs photo 0.48; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.13 darker than the model's in shade or overcast light)",
+   "likeness": {
+    "pandId": "0363100012157382",
+    "ncc": 0.128,
+    "nccRaw": 0.128,
+    "shiftM": [
+     0.05,
+     0.35
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27 mean 0.36 vs photo 0.48",
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.13 darker than the model's in shade or overcast light"
+    ],
+    "wall": {
+     "photo": "#443733",
+     "model": "#6b534f",
+     "dL": 0.131
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.412
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163990",
+   "address": "Eerste Jan van der Heijdenstraat 114",
+   "builtYear": 1892,
+   "widthM": 5.75,
+   "eavesM": 16.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3d39",
+    "wallRaw": "#493c38",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.07,
+       "widthM": 4.35,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.034 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.62 mean 0.35 vs photo 0.82)",
+   "likeness": {
+    "pandId": "0363100012163990",
+    "ncc": 0.034,
+    "nccRaw": 0.034,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.62 mean 0.35 vs photo 0.82"
+    ],
+    "wall": {
+     "photo": "#513e3b",
+     "model": "#68534d",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.82,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.372
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159232",
+   "address": "Eerste Jan van der Heijdenstraat 112",
+   "builtYear": 1892,
+   "widthM": 5.52,
+   "eavesM": 16.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#413633",
+    "wallRaw": "#403633",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11,
+       "widthM": 0.88,
+       "centre": 0.62
+      },
+      {
+       "atM": 8.52,
+       "widthM": 0.82,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.72,
+       "widthM": 0.93,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.101 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.19; glazing storey band off by 0.23; columns 3 vs photo 5)",
+   "likeness": {
+    "pandId": "0363100012159232",
+    "ncc": 0.101,
+    "nccRaw": 0.101,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing storey band off by 0.23",
+     "columns 3 vs photo 5"
+    ],
+    "wall": {
+     "photo": "#262421",
+     "model": "#5d4d49",
+     "dL": 0.186
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 5,
+     "model": 3
+    },
+    "iou": 0.296
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164592",
+   "address": "Eerste Jan van der Heijdenstraat 110",
+   "builtYear": 1892,
+   "widthM": 5.47,
+   "eavesM": 16.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423836",
+    "wallRaw": "#443a38",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.82,
+       "widthM": 1.1,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.049 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16; columns 3 vs photo 8)",
+   "likeness": {
+    "pandId": "0363100012164592",
+    "ncc": 0.049,
+    "nccRaw": 0.049,
+    "shiftM": [
+     0.4,
+     0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16",
+     "columns 3 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#403633",
+     "model": "#5d4f4c",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.364
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160406",
+   "address": "Eerste Jan van der Heijdenstraat 108",
+   "builtYear": 1892,
+   "widthM": 5.33,
+   "eavesM": 14.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322a27",
+    "wallRaw": "#3c3532",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.041 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34 mean 0.35 vs photo 0.67; wall family unresolved (#362c29 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012160406",
+    "ncc": 0.041,
+    "nccRaw": 0.041,
+    "shiftM": [
+     0.25,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.35 vs photo 0.67",
+     "wall family unresolved (#362c29 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#362c29",
+     "model": "#564843",
+     "dL": 0.114
+    },
+    "glazing": {
+     "photo": 0.67,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.311
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.172,
+    "pijp-1885-segmental-keystone": 0.069
+   }
+  },
+  {
+   "pandId": "0363100012153695",
+   "address": "Eerste Jan van der Heijdenstraat 106",
+   "builtYear": 1892,
+   "widthM": 5.22,
+   "eavesM": 14.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a19d9e",
+    "wallRaw": "#55534f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.38,
+       "widthM": 1.15,
+       "centre": 0.49
+      },
+      {
+       "atM": 9.82,
+       "widthM": 0.95,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.2,
+       "widthM": 3.63,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.65,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.012 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.41; glazing storey band off by 0.64 mean 0.36 vs photo 1.00; wall family unresolved (#342d32 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012153695",
+    "ncc": -0.012,
+    "nccRaw": -0.012,
+    "shiftM": [
+     -0.1,
+     -0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.41",
+     "glazing storey band off by 0.64 mean 0.36 vs photo 1.00",
+     "wall family unresolved (#342d32 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#342d32",
+     "model": "#9b9798",
+     "dL": 0.41
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.396
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.084,
+    "pijp-1885-segmental-keystone": 0.037
+   }
+  },
+  {
+   "pandId": "0363100012163512",
+   "address": "Eerste Jan van der Heijdenstraat 104",
+   "builtYear": 1892,
+   "widthM": 5.65,
+   "eavesM": 15.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#666566",
+    "wallRaw": "#4d4b47",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.7,
+       "widthM": 1.2,
+       "centre": 0.41
+      },
+      {
+       "atM": 7.92,
+       "widthM": 1.18,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.2,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.13,
+       "widthM": 3.13,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1892-banded-keystone scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1892-banded-keystone",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14 m; 3DBAG 15.42 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161346",
+   "address": "Eerste Jan van der Heijdenstraat 102",
+   "builtYear": 1892,
+   "widthM": 5.68,
+   "eavesM": 15.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#757778",
+    "wallRaw": "#514d49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.72,
+       "widthM": 4.42,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.8,
+       "widthM": 1.23,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.5,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1892-banded-keystone scores 0.57 < 0.7 (strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "pijp-1892-banded-keystone",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14 m; 3DBAG 15.53 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070072",
+   "address": "Eerste Jan van der Heijdenstraat 100",
+   "builtYear": 1892,
+   "widthM": 4.79,
+   "eavesM": 15.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3632",
+    "wallRaw": "#4f4c49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.93,
+       "widthM": 0.8,
+       "centre": 0.32
+      },
+      {
+       "atM": 7,
+       "widthM": 1.9,
+       "centre": 0.78
+      },
+      {
+       "atM": 5.8,
+       "widthM": 1.07,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.79 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.79 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.04 m = 3 storeys of 5.01 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.26 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164211",
+   "address": "Eerste Jan van der Heijdenstraat 98",
+   "builtYear": 1892,
+   "widthM": 5.07,
+   "eavesM": 14.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#646461",
+    "wallRaw": "#5d5b57",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 0.9,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.95,
+       "widthM": 1.82,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.27,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 5.07 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 5.07 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.97 m = 3 storeys of 4.99 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164545",
+   "address": "Eerste Jan van der Heijdenstraat 96",
+   "builtYear": 1892,
+   "widthM": 4.69,
+   "eavesM": 15.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1f1d1f",
+    "wallRaw": "#504d4a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 1.07,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.69 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.69 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.06 m = 3 storeys of 5.02 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.3 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236501",
+   "address": "Eerste Jan van der Heijdenstraat 94",
+   "builtYear": 1892,
+   "widthM": 4.34,
+   "eavesM": 15.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#646360",
+    "wallRaw": "#4f4b47",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 1.05,
+       "centre": 0.23
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1.07,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.34 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.34 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.05 m = 3 storeys of 5.02 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.37 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167001",
+   "address": "Eerste Jan van der Heijdenstraat 92",
+   "builtYear": 1892,
+   "widthM": 4.74,
+   "eavesM": 14.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675551",
+    "wallRaw": "#403834",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 4.74 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 4.74 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.42 m = 3 storeys of 4.81 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.05 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157422",
+   "address": "Eerste Jan van der Heijdenstraat 90",
+   "builtYear": 1892,
+   "widthM": 6.41,
+   "eavesM": 14.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#41342f",
+    "wallRaw": "#453b36",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 846,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 0.88,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.13,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.32,
+       "widthM": 1.98,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1892-banded-keystone scores 0.57 < 0.7 (strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "pijp-1892-banded-keystone",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14 m; 3DBAG 14.02 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159468",
+   "address": "Eerste Jan van der Heijdenstraat 88A",
+   "builtYear": 1892,
+   "widthM": 11.16,
+   "eavesM": 14.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#63514a",
+    "wallRaw": "#4e413c",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 169,
+     "confidence": 0.33,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.7,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.97,
+       "widthM": 1.13,
+       "centre": 0.07
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1892, type 1875-1877; frontage 11.16 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1875-1877",
+     "frontage 11.16 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.17 m = 3 storeys of 4.72 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.99 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

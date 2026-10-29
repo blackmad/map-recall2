@@ -1,14 +1,78 @@
 {
  "buurt": "sarphatiparkbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T12:40:47.081Z",
- "seconds": 56.15,
+ "generatedAt": "2026-10-29T19:17:49.013Z",
+ "seconds": 2.08,
  "totals": {
-  "faces": 3,
-  "pands": 37,
-  "placed": 21
+  "faces": 42,
+  "pands": 488,
+  "placed": 54
  },
  "faces": [
+  {
+   "face": "berchem-4-10",
+   "street": "Nicolaas Berchemstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.29,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bol-47-53",
+   "street": "Ferdinand Bolstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.65,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "cuyp-102-130",
+   "street": "Albert Cuypstraat",
+   "pands": 5,
+   "placed": 3,
+   "held": 2,
+   "runs": [
+    {
+     "face": "cuyp-102-130-r1",
+     "pands": [
+      "0363100012162421",
+      "0363100012158606",
+      "0363100012158043"
+     ],
+     "passed": true,
+     "triangles": 6056
+    }
+   ],
+   "seconds": 10.26,
+   "byType": {
+    "pijp-1892-banded-keystone": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
   {
    "face": "cuyp-130-168",
    "street": "Albert Cuypstraat",
@@ -52,6 +116,707 @@
     "likeness": 0,
     "run": 1,
     "review": 3
+   }
+  },
+  {
+   "face": "cuyp-153-179",
+   "street": "Albert Cuypstraat",
+   "pands": 8,
+   "placed": 2,
+   "held": 6,
+   "runs": [
+    {
+     "face": "cuyp-153-179-r1",
+     "pands": [
+      "0363100012155726",
+      "0363100012167067"
+     ],
+     "passed": false,
+     "triangles": 4239
+    }
+   ],
+   "seconds": 10.25,
+   "byType": {
+    "pijp-1892-banded-keystone": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cuyp-183-239",
+   "street": "Albert Cuypstraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 2.89,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "cuyp-184-232",
+   "street": "Albert Cuypstraat",
+   "pands": 20,
+   "placed": 3,
+   "held": 17,
+   "runs": [
+    {
+     "face": "cuyp-184-232-r1",
+     "pands": [
+      "0363100012161426",
+      "0363100012158287",
+      "0363100012155866"
+     ],
+     "passed": true,
+     "triangles": 6197
+    }
+   ],
+   "seconds": 21.07,
+   "byType": {
+    "pijp-1892-banded-keystone": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cuyp-238-278",
+   "street": "Albert Cuypstraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 4.32,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cuyp-241-259",
+   "street": "Albert Cuypstraat",
+   "pands": 10,
+   "placed": 3,
+   "held": 7,
+   "runs": [
+    {
+     "face": "cuyp-241-259-r1",
+     "pands": [
+      "0363100012156408",
+      "0363100012160542",
+      "0363100012166567"
+     ],
+     "passed": true,
+     "triangles": 6077
+    }
+   ],
+   "seconds": 12.09,
+   "byType": {
+    "pijp-1892-banded-keystone": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dou-128-174",
+   "street": "Gerard Doustraat",
+   "pands": 15,
+   "placed": 3,
+   "held": 12,
+   "runs": [
+    {
+     "face": "dou-128-174-r1",
+     "pands": [
+      "0363100012153387",
+      "0363100012153232",
+      "0363100012156601"
+     ],
+     "passed": true,
+     "triangles": 4264
+    }
+   ],
+   "seconds": 11.44,
+   "byType": {
+    "pijp-1876-hood-frieze": 1,
+    "pijp-1875-shop-dormer": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dou-178-218",
+   "street": "Gerard Doustraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 3.02,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "dou-222-254",
+   "street": "Gerard Doustraat",
+   "pands": 14,
+   "placed": 3,
+   "held": 11,
+   "runs": [
+    {
+     "face": "dou-222-254-r1",
+     "pands": [
+      "0363100012163710",
+      "0363100012236408",
+      "0363100012236449"
+     ],
+     "passed": true,
+     "triangles": 6019
+    }
+   ],
+   "seconds": 8.07,
+   "byType": {
+    "pijp-1892-banded-keystone": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "dou-56-74",
+   "street": "Gerard Doustraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 8.26,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "dou-76-98",
+   "street": "Gerard Doustraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 22.48,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 5,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-120-178",
+   "street": "Govert Flinckstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 2.37,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-149-165",
+   "street": "Govert Flinckstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.08,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-169-233",
+   "street": "Govert Flinckstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 1.68,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 6,
+    "likeness": 0,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-182-284",
+   "street": "Govert Flinckstraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 2.42,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-247-261",
+   "street": "Govert Flinckstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.97,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-265-287",
+   "street": "Govert Flinckstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 43.24,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 6,
+    "likeness": 2,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-288-326",
+   "street": "Govert Flinckstraat",
+   "pands": 18,
+   "placed": 0,
+   "held": 18,
+   "runs": [],
+   "seconds": 7.94,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "flinck-87-143",
+   "street": "Govert Flinckstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 2.23,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "heijden-1-37",
+   "street": "Tweede Jan van der Heijdenstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 7.64,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 15,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "heijden-2-40",
+   "street": "Tweede Jan van der Heijdenstraat",
+   "pands": 19,
+   "placed": 0,
+   "held": 19,
+   "runs": [],
+   "seconds": 15.88,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 8,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "heijden-88-156",
+   "street": "Eerste Jan van der Heijdenstraat",
+   "pands": 18,
+   "placed": 0,
+   "held": 18,
+   "runs": [],
+   "seconds": 12.68,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 6,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "helst-39-49",
+   "street": "Eerste Van der Helststraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 0.89,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "helst-51-67",
+   "street": "Eerste Van der Helststraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.86,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "helst-66-82",
+   "street": "Eerste Van der Helststraat",
+   "pands": 9,
+   "placed": 2,
+   "held": 7,
+   "runs": [
+    {
+     "face": "helst-66-82-r1",
+     "pands": [
+      "0363100012163924",
+      "0363100012157290"
+     ],
+     "passed": true,
+     "triangles": 3476
+    }
+   ],
+   "seconds": 11.45,
+   "byType": {
+    "pijp-1882-keystone-lintel": 2
+   },
+   "holds": {
+    "evidence": 5,
+    "match": 0,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "sarphatipark-1-97",
+   "street": "Sarphatipark",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 14.72,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 6,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "sarphatipark-119-135",
+   "street": "Sarphatipark",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 5.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "sarphatipark-22-38",
+   "street": "Sarphatipark",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 5.03,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "sarphatipark-99-117",
+   "street": "Sarphatipark",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 2.07,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "steen-1-43",
+   "street": "Tweede Jan Steenstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 8.36,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 1,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "steen-2-40",
+   "street": "Tweede Jan Steenstraat",
+   "pands": 18,
+   "placed": 0,
+   "held": 18,
+   "runs": [],
+   "seconds": 25.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 10,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "steen-84-140",
+   "street": "Eerste Jan Steenstraat",
+   "pands": 15,
+   "placed": 12,
+   "held": 3,
+   "runs": [
+    {
+     "face": "steen-84-140-r1",
+     "pands": [
+      "0363100012160607",
+      "0363100012164678",
+      "0363100012157354",
+      "0363100012152902",
+      "0363100012159966",
+      "0363100012163192",
+      "0363100012153336",
+      "0363100012156490",
+      "0363100012163026"
+     ],
+     "passed": false,
+     "triangles": 19390
+    },
+    {
+     "face": "steen-84-140-r2",
+     "pands": [
+      "0363100012235888",
+      "0363100012153648",
+      "0363100012166394"
+     ],
+     "passed": true,
+     "triangles": 6514
+    }
+   ],
+   "seconds": 35.42,
+   "byType": {
+    "pijp-1886-segmental-mansard": 12
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "steen-91-149",
+   "street": "Eerste Jan Steenstraat",
+   "pands": 19,
+   "placed": 0,
+   "held": 19,
+   "runs": [],
+   "seconds": 3.27,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 19,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "sweelinck-1-11",
+   "street": "Eerste Sweelinckstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.93,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "sweelinck-13-23",
+   "street": "Eerste Sweelinckstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.29,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wou-12-22",
+   "street": "Van Woustraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 8.37,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -132,6 +897,35 @@
     "likeness": 0,
     "run": 0,
     "review": 1
+   }
+  },
+  {
+   "face": "wou-74-92",
+   "street": "Van Woustraat",
+   "pands": 9,
+   "placed": 2,
+   "held": 7,
+   "runs": [
+    {
+     "face": "wou-74-92-r1",
+     "pands": [
+      "0363100012164235",
+      "0363100012134906"
+     ],
+     "passed": true,
+     "triangles": 4585
+    }
+   ],
+   "seconds": 11.81,
+   "byType": {
+    "pijp-1886-segmental-mansard": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
    }
   }
  ]

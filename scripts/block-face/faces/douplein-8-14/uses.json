@@ -1,0 +1,217 @@
+{
+ "street": "Gerard Douplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073807",
+   "addresses": [
+    "Gerard Douplein 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000643441"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506027857,
+     "lngLat": [
+      4.8927702,
+      52.355825
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1072VE",
+      "addr:street": "Gerard Douplein",
+      "amenity": "pub",
+      "check_date": "2026-01-11",
+      "email": "info@pilsvogel.nl",
+      "name": "Pilsvogel",
+      "opening_hours": "Mo-Th,Su 10:00-01:00; Fr-Sa 10:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 6646483",
+      "source": "BAG",
+      "source:date": "2021-10-03",
+      "website": "https://pilsvogel.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157566",
+   "addresses": [
+    "Gerard Douplein 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000643436"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2641085731,
+     "lngLat": [
+      4.8926857,
+      52.3558092
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1072VE",
+      "addr:street": "Gerard Douplein",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-11",
+      "email": "info@menspire.nl",
+      "hairdresser": "barber",
+      "male": "yes",
+      "name": "Menspire",
+      "phone": "+31 20 2213948",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://menspire.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162905",
+   "addresses": [
+    "Gerard Douplein 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 10-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000643430"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817508026,
+     "lngLat": [
+      4.8926184,
+      52.3557959
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10-H",
+      "addr:postcode": "1072VE",
+      "addr:street": "Gerard Douplein",
+      "amenity": "restaurant",
+      "branch": "Café des Prés",
+      "check_date": "2026-01-11",
+      "cuisine": "french",
+      "name": "Libertine Café des Prés",
+      "opening_hours": "Tu-Su 12:00-24:00",
+      "short_name": "Libertine",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.libertine.amsterdam/libertine-cafe-des-pres/home"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157580",
+   "addresses": [
+    "Gerard Douplein 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 8-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000643422"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506067900,
+     "lngLat": [
+      4.8925499,
+      52.3557827
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-H",
+      "addr:postcode": "1072VE",
+      "addr:street": "Gerard Douplein",
+      "amenity": "restaurant",
+      "check_date": "2026-01-11",
+      "cuisine": "seafood",
+      "email": "brutdemer@gmail.com",
+      "name": "Brut de Mer",
+      "opening_hours": "Mo-Th 16:00-24:00; Fr-Su 12:00-24:00",
+      "phone": "+31 20 471 4099",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://brutdemer.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2641085732,
+     "lngLat": [
+      4.8924672,
+      52.3557687
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "98-H",
+      "addr:postcode": "1072VX",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-11",
+      "cuisine": "french",
+      "email": "info@salut-official.com",
+      "name": "Salut",
+      "opening_hours": "We-Su 12:00-01:00",
+      "operator": "Robert Kranenborg",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://salut-official.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    }
+   ]
+  }
+ ]
+}

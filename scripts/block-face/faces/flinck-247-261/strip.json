@@ -1,0 +1,182 @@
+{
+ "face": "flinck-247-261",
+ "image": "staging/block-face/flinck-247-261/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1560,
+ "height": 700,
+ "groundNAP": 0.125,
+ "heightM": 17.51,
+ "frame": {
+  "midRD": [
+   121681.93263750002,
+   485488.47290000005
+  ],
+  "uRD": [
+   0.9044099028563327,
+   0.4266646547528856
+  ],
+  "nRD": [
+   0.4266646547528856,
+   -0.9044099028563327
+  ]
+ },
+ "x0M": -14.49,
+ "x1M": 24.51,
+ "date": "2023-01-23",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012163890",
+   "x0M": -14.49,
+   "x1M": -9.23,
+   "px": [
+    0,
+    210
+   ],
+   "date": "2023-01-23",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000030",
+     "timestamp": "2023-01-23T09:33:13.283970Z",
+     "distanceM": 5.5,
+     "obliquityDeg": 19.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000031",
+     "timestamp": "2023-01-23T09:33:14.164180Z",
+     "distanceM": 6.1,
+     "obliquityDeg": 32.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158291",
+   "x0M": -9.23,
+   "x1M": -3.93,
+   "px": [
+    210,
+    422
+   ],
+   "date": "2023-01-23",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000029",
+     "timestamp": "2023-01-23T09:33:12.448960Z",
+     "distanceM": 5.4,
+     "obliquityDeg": 17.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000030",
+     "timestamp": "2023-01-23T09:33:13.283970Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 33.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160398",
+   "x0M": -3.93,
+   "x1M": 1.53,
+   "px": [
+    422,
+    640
+   ],
+   "date": "2023-01-23",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000028",
+     "timestamp": "2023-01-23T09:33:11.633980Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 14.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000029",
+     "timestamp": "2023-01-23T09:33:12.448960Z",
+     "distanceM": 6.4,
+     "obliquityDeg": 35.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152801",
+   "x0M": 1.53,
+   "x1M": 6.61,
+   "px": [
+    641,
+    844
+   ],
+   "date": "2023-01-23",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000027",
+     "timestamp": "2023-01-23T09:33:10.814010Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 13,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000028",
+     "timestamp": "2023-01-23T09:33:11.633980Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 37.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236859",
+   "x0M": 6.61,
+   "x1M": 24.51,
+   "px": [
+    844,
+    1560
+   ],
+   "date": "2023-01-23",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002945_pano_0003_000025",
+     "timestamp": "2023-01-23T09:33:09.089020Z",
+     "distanceM": 5.1,
+     "obliquityDeg": 0.3,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-01-18": 0,
+  "2019-05-02": 0,
+  "2020-07-07": 0,
+  "2025-07-30": 0,
+  "2024-09-04": 0,
+  "2019-01-04": 0,
+  "2019-01-09": 0,
+  "2018-06-11": 0,
+  "2021-04-23": 0,
+  "2022-01-11": 2,
+  "2022-03-23": 1,
+  "2020-01-06": 1,
+  "2016-08-02": 5,
+  "2023-01-23": 5,
+  "2025-09-29": 0,
+  "2023-01-03": 0,
+  "2020-04-29": 0,
+  "2022-01-10": 0,
+  "2016-08-28": 0,
+  "2022-03-21": 0,
+  "2018-07-29": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}
