@@ -864,7 +864,13 @@ export const ROOF_FORMS = ['saddle', 'flat', 'attic'] as const;
  * 3DBAG max still bounds it), `rearPitchDeg`
  * the back slope's own pitch (15-80), and `crossGables: true` makes every pointed crown on part of the front the end of a
  * cross roof whose rakes run back to the attic face (Zaanhof 1919: a long saddle with white cross gables).
+ * `hip: "front"` (with `form: "saddle"` and `pitchDeg`, on a cornice or flat front): a saddle whose ridge runs back from
+ * the middle of the front, hipped down to the eaves behind the cornice at the same pitch, so the street sees no roof face
+ * over the cornice and the air sees one ridge per house (Kinkerstraat 33-47, 1885-1886: red-tiled saddles ridged
+ * front to back, hipped behind the dormer, on the 2024 orthophoto; the 70 degree attic drew a slate band the strip
+ * never shows). The ridge is the eaves + tan(pitch) x half the front width, capped by the 3DBAG max (a flat top).
  */
+export const ROOF_HIPS = ['front'] as const;
 export interface RoofIntent {
   material: typeof ROOF_MATERIALS[number];
   source?: typeof ROOF_SOURCES[number];
@@ -873,6 +879,7 @@ export interface RoofIntent {
   rise?: number;
   rearPitchDeg?: number;
   crossGables?: boolean;
+  hip?: typeof ROOF_HIPS[number];
   evidence?: string;
 }
 
@@ -1624,8 +1631,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   if (intent?.roof?.rise !== undefined && !(typeof intent.roof.rise === 'number' && intent.roof.rise >= 0.2 && intent.roof.rise <= 2.5)) problems.push('roof.rise: 0.2..2.5 upper-storey heights');
   if (intent?.roof?.rearPitchDeg !== undefined && !(typeof intent.roof.rearPitchDeg === 'number' && intent.roof.rearPitchDeg >= 15 && intent.roof.rearPitchDeg <= 80)) problems.push('roof.rearPitchDeg: 15..80 degrees');
   if (intent?.roof?.crossGables !== undefined && intent.roof.crossGables !== true) problems.push('roof.crossGables: true or absent');
+  if (intent?.roof?.hip !== undefined) {
+    oneOf(intent.roof.hip, ROOF_HIPS, 'roof.hip');
+    if (intent.roof.form !== 'saddle' || intent.roof.pitchDeg === undefined) problems.push('roof.hip: needs form "saddle" and a measured pitchDeg');
+  }
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');

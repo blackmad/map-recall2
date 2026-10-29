@@ -100,6 +100,14 @@
       "stallriser": "medium",
       "evidence": "strip.jpg 2024-12-11 pand 2: dark shop between white pilasters, PIZZ.. letters on the stall board"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -149,6 +157,14 @@
       "stallriser": "medium",
       "evidence": "strip.jpg 2024-12-11 pand 3: white pui, a door with a 35 transom left; a truck hides the glass"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -193,6 +209,14 @@
       "stallriser": "low",
       "evidence": "strip.jpg 2024-12-11 pand 4: white pui, display glass left, door right, bicycles in front; OSM node 926571671 shop=bicycle"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -254,6 +278,14 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 5: purple fascia KAPSALON PRONTO over a white pui, black house door right"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -302,6 +334,14 @@
       "stallriser": "low",
       "evidence": "strip.jpg 2024-12-11 pand 6: black shop, red-papered glass with a white script name, orange board on the fascia; OSM node 7533672000"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -360,6 +400,13 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 7: black fascia over a white-framed display window, door left and right"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -418,6 +465,14 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 8: white pui under a black fascia with white letters, dark doors either side"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -472,6 +527,14 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 9: white timber pui with pilasters and three lights, dark house door left"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {

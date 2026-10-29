@@ -55,7 +55,11 @@
     }
   },
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
   },
   "rhythm": {
     "bays": "3 window axes (2 on 4-5 m pands)",
