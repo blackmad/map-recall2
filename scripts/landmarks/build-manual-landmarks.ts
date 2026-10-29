@@ -365,7 +365,9 @@ Object.assign(letters,{
  '6':['01110','10000','10000','11110','10001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],
  '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
 });
-function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
+// `angle` (optional, radians about +Y like box): the sign faces rotateY(angle) of +Z, its text running along rotateY(angle)
+// of +X from (x, z). Absent, the letters are placed exactly as before.
+function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number,angle?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;const ca=Math.cos(angle??0),sa=Math.sin(angle??0);for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1'){if(angle===undefined)box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);else{const t=u+k*pixel;box(x+t*ca,y+(6-j)*pixel,z-t*sa,pixel*.85,pixel*.85,.08,c,angle);}}u+=((rows?.[0].length??3)+1)*pixel;}}
 function music(){box(0,0,0,70,1.1,43,'stone');box(0,1.1,0,66,18.7,40,'glass');box(8,1.1,-3,35,17.5,28,'white'); // auditorium visible through foyer
  for(let x=-32;x<=32;x+=4){box(x,1.1,20.2,.19,18.7,.3,'frame');box(x,1.1,-20.2,.19,18.7,.3,'frame');}for(let z=-18;z<=18;z+=4){for(let x of [-33.2,33.2])box(x,1.1,z,.3,18.7,.19,'frame');}for(let y of [6,11,16]){box(0,y,20.25,66,.2,.3,'frame');box(0,y,-20.25,66,.2,.3,'frame');for(let x of [-33.25,33.25])box(x,y,0,.3,.2,40,'frame');}
  box(0,20,0,77,1.5,48,'slate');box(0,19.7,0,77,.35,48,'white');box(-13,4,21,21,1,7,'red'); // foyer connector

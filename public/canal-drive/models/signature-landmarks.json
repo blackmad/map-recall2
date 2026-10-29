@@ -14650,6 +14650,10 @@
       "name": "Treehouse NDSM",
       "landmarkId": "w1163404107",
       "modelUrl": "./models/treehouse-ndsm.glb",
+      "materialOverrides": {
+        "green": "#8fb4bc",
+        "blue": "#46566a"
+      },
       "suppressOsmIds": [
         "w717022796",
         "NL.IMBAG.Pand.0363100012252476",
@@ -14715,14 +14719,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -29.761865615844727,
+          -30.127283096313477,
           -1.1714635661519424e-7,
-          -25.17293357849121
+          -25.536067962646484
         ],
         "max": [
-          30.79609489440918,
+          31.159330368041992,
           9.318785667419434,
-          26.676523208618164
+          27.038938522338867
         ]
       },
       "placement": {
@@ -14736,13 +14740,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 60.557960510253906,
+        "widthMetres": 61.28661346435547,
         "heightMetres": 9.31878578456579,
-        "depthMetres": 51.849456787109375,
-        "depthCoverage": 0.9096395927563048
+        "depthMetres": 52.57500648498535,
+        "depthCoverage": 0.9223685348243044
       },
-      "triangles": 18779,
-      "bytes": 252004,
+      "triangles": 21935,
+      "bytes": 301288,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e5f87381bd928bde",

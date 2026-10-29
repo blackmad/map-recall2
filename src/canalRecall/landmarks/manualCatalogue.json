@@ -7216,6 +7216,10 @@
     "name": "Treehouse NDSM",
     "landmarkId": "w1163404107",
     "modelUrl": "./models/treehouse-ndsm.glb",
+    "materialOverrides": {
+      "green": "#8fb4bc",
+      "blue": "#46566a"
+    },
     "suppressOsmIds": [
       "w717022796",
       "NL.IMBAG.Pand.0363100012252476",
