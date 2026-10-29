@@ -45,10 +45,17 @@ budget, run down the landmark lane": scripted triage, unattended factory,
 one Opus review turn per strip of 20, verdict table, kill rules, cost in
 the queue. Its numbers live in `references/large-tier-sheet.md` (116
 installed large recipes: 7 likeness-pass, 95 inferred, 14 gates-only).
-Blocked on three issues before the first real run: #110 triage script (the
-buildable list and a ten-pand self-test), #111 cost fields and a factory
-smoke test (haiku), #112 needs-david: inferred-install policy and the
-curtain-wall judge fix. The #105 kit gaps are in `docs/handoffs/kit-gaps.md`.
+#110, #111 and #114 landed 2026-10-29 (HISTORY "Landmark lane, first run").
+First run: 10 buildable pands, 1 installed (Molenwerf 1), 7 held, 1
+no-evidence; 1.7 turns per reviewed building. Open: #112 (needs-david:
+inferred-install policy; running under policy A meanwhile). Next spend, per
+the kill rule: a kit lane for floor bands on curtain walls (unlocks 19
+triage `curtain` candidates and the 95 inferred glass installs' FAILs), the
+32 m crop cap raised for the 95 `tower` candidates (`all-walls.ts
+--max-height`, needs a re-crop), and the three self-test gaps (glazed
+pavilion under a deep roof, glazed sawtooth hall, painted-black front with
+white balconies). Self-test drafts sit in the skill worktree's
+`staging/landmark-lane-selftest/`, uncommitted (they would move fit-golden).
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan

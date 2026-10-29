@@ -1,27 +1,27 @@
 {
  "version": 1,
- "generatedAt": "2026-10-26T06:14:46.833Z",
+ "generatedAt": "2026-10-29T22:05:40.967Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 507,
- "strict": 165,
+ "headline": 494,
+ "strict": 166,
  "byTier": {
   "bespoke": {
-   "models": 337,
-   "counts": 330,
+   "models": 323,
+   "counts": 316,
    "strict": 0,
    "unreviewed": 0
   },
   "ordinary": {
-   "models": 69,
+   "models": 70,
    "counts": 12,
    "strict": 0,
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 116,
-   "counts": 55,
-   "strict": 55,
+   "models": 117,
+   "counts": 56,
+   "strict": 56,
    "unreviewed": 14
   },
   "landmarkKit": {
@@ -32,10 +32,10 @@
   }
  },
  "byReview": {
-  "legacy-gallery": 406,
+  "legacy-gallery": 393,
   "likeness-gate": 100,
   "none": 324,
-  "strip-review": 112
+  "strip-review": 113
  },
  "rows": [
   {
@@ -4759,126 +4759,6 @@
    "countsStrict": false
   },
   {
-   "key": "model:johnny-jordaan-groep",
-   "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:theo-thijssen-standbeeld",
-   "name": "Theo Thijssen monument (Lindengracht)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:johnny-jordaan-groep",
-   "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:theo-thijssen-standbeeld",
-   "name": "Theo Thijssen monument (Lindengracht)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:carmiggelt-borstbeeld",
-   "name": "Simon Carmiggelt bust (Weteringplantsoen)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:johnny-jordaan-groep",
-   "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:theo-thijssen-standbeeld",
-   "name": "Theo Thijssen monument (Lindengracht)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:carmiggelt-borstbeeld",
-   "name": "Simon Carmiggelt bust (Weteringplantsoen)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:winkler-prins-monument",
-   "name": "Winkler Prins monument (Frederiksplein)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:johnny-jordaan-groep",
-   "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
    "key": "model:theo-thijssen-standbeeld",
    "name": "Theo Thijssen monument (Lindengracht)",
    "tier": "bespoke",
@@ -4917,54 +4797,6 @@
   {
    "key": "model:kinderbrug-meisje-eekhoorns",
    "name": "Kinderbrug: Girl with squirrels (Hildo Krop)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:johnny-jordaan-groep",
-   "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:theo-thijssen-standbeeld",
-   "name": "Theo Thijssen monument (Lindengracht)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:carmiggelt-borstbeeld",
-   "name": "Simon Carmiggelt bust (Weteringplantsoen)",
-   "tier": "bespoke",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "legacy-gallery",
-   "counts": true,
-   "countsStrict": false
-  },
-  {
-   "key": "model:winkler-prins-monument",
-   "name": "Winkler Prins monument (Frederiksplein)",
    "tier": "bespoke",
    "pands": [],
    "namedPoi": true,
@@ -5132,6 +4964,20 @@
    "held": false,
    "review": "legacy-gallery",
    "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:stationsplein-paviljoens",
+   "name": "Noord-Zuid Hollandsch Koffiehuis and the Stationsplein pavilions",
+   "tier": "ordinary",
+   "pands": [
+    "0363100012182895"
+   ],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": false,
    "countsStrict": false
   },
   {
@@ -7308,6 +7154,21 @@
    "rideVisible": true,
    "held": false,
    "review": "likeness-gate",
+   "counts": true,
+   "countsStrict": true
+  },
+  {
+   "key": "model:ordinary-0363100012066028",
+   "name": "Molenwerf 1, Amsterdam (north side of the Haarlemmerweg corridor at its west end): a 1980 office campus of brown concrete, five storeys of continuous band windows in deep precast panels with a glazed ground floor, and a taller plain wing of small punched windows",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012066028"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "strip-review",
+   "reviewDate": "2026-10-29",
    "counts": true,
    "countsStrict": true
   },

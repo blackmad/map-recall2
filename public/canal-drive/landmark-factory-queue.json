@@ -175,6 +175,11 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
+   },
+   "model": "fable",
+   "turns": 0.2,
+   "ms": {
+    "strip": 89
    }
   },
   {
@@ -2858,7 +2863,7 @@
     4.846671049999999,
     52.3854768
    ],
-   "status": "compiled",
+   "status": "reviewed-pass",
    "house": "molenwerf-1-066028",
    "notes": [
     "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it",
@@ -2868,7 +2873,7 @@
    ],
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:51:11.571Z",
-   "updatedAt": "2026-10-29T20:51:20.265Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -2879,12 +2884,14 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 2.8,
    "ms": {
     "facts": 0,
     "draft": 0,
     "measure": 3470,
-    "compile": 5215
+    "compile": 5215,
+    "strip": 89,
+    "install": 3229
    },
    "report": {
     "triangles": 10960,
@@ -2917,7 +2924,16 @@
     "artifacts/building-recipes/molenwerf-1-066028/contact-walls-1.png",
     "artifacts/building-recipes/molenwerf-1-066028/contact-walls-2.png",
     "artifacts/building-recipes/molenwerf-1-066028/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "pass",
+    "note": "dark brown brick and ribbon windows match walls[0] (PASS); walls[2] WARN on mask IoU only, reads right; walls[1] no panorama, inherited from walls[0] (inferred)",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012246291",
@@ -3966,7 +3982,7 @@
     4.871646,
     52.338863
    ],
-   "status": "error",
+   "status": "held",
    "house": "pand-076454",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:51:20.266Z",
@@ -3975,7 +3991,7 @@
     "2026-10-29T20:51 facts: fronts on Ringweg-Zuid, Parnassusweg, Eduard van Beinumstraat",
     "2026-10-29T20:51 draft failed: Invalid large intent pand-076454:\n - walls[4].wallSurfaces: surface 5 is already in walls[1]\n - walls[7].wallSurfaces: surface 3 is already in walls[5]"
    ],
-   "updatedAt": "2026-10-29T20:51:28.081Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -3985,10 +4001,19 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.6,
    "ms": {
     "facts": 7807,
     "draft": 7
+   },
+   "verdict": {
+    "outcome": "hold",
+    "note": "factory draft stage error; not compiled",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
    }
   },
   {
@@ -4814,7 +4839,7 @@
     4.85656075,
     52.34663065
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-138843",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:51:28.082Z",
@@ -4825,7 +4850,7 @@
     "2026-10-29T20:52 measured groups 0,1,2,3 in 33 s",
     "2026-10-29T20:52 compiled: 15556 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g2:WARN g3:WARN (large.ts exited non-zero:   artifacts/building-recipes/pand-138843/contact-walls-3.png |   artifacts/building-recipes/pand-138843/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:52:25.146Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -4835,12 +4860,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 9319,
     "draft": 13,
     "measure": 32582,
-    "compile": 15143
+    "compile": 15143,
+    "strip": 89
    },
    "report": {
     "triangles": 15556,
@@ -4893,7 +4919,16 @@
     "artifacts/building-recipes/pand-138843/contact-walls-6.png",
     "artifacts/building-recipes/pand-138843/contact-walls-7.png",
     "artifacts/building-recipes/pand-138843/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "gate triangle-budget 15.6k > 12k; the long curved walls[1] front (10 columns in the photo) is blanked by the budget cap and reads as a bare wall",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012240368",
@@ -5002,7 +5037,7 @@
     4.9033545,
     52.3832095
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-119827",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:52:25.147Z",
@@ -5013,7 +5048,7 @@
     "2026-10-29T20:52 measured groups 0,2 in 11 s",
     "2026-10-29T20:52 compiled: 5225 tris, gates FAIL open-edges, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO EVIDENCE g4:NO EVIDENCE g5:NO EVIDENCE g6:NO PHOTO g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/pand-119827/contact-walls-3.png |   artifacts/building-recipes/pand-119827/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:52:53.782Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -5023,12 +5058,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 9365,
     "draft": 10,
     "measure": 10664,
-    "compile": 8589
+    "compile": 8589,
+    "strip": 89
    },
    "report": {
     "triangles": 5225,
@@ -5111,7 +5147,16 @@
     "artifacts/building-recipes/pand-119827/contact-walls-6.png",
     "artifacts/building-recipes/pand-119827/contact-walls-7.png",
     "artifacts/building-recipes/pand-119827/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "Tolhuis Paviljoen: glazed pavilion under a deep overhanging roof on a concrete frame; kit draws a grey brick box with square windows; gate open-edges",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012242039",
@@ -5319,7 +5364,7 @@
     4.84328,
     52.3788215
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-248597",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:52:53.783Z",
@@ -5330,7 +5375,7 @@
     "2026-10-29T20:53 measured groups 2,6 in 22 s",
     "2026-10-29T20:53 compiled: 9588 tris, gates FAIL footprint-vs-bag,eaves-vs-3dbag/walls[0],open-edges, likeness g2:FAIL g6:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-248597/contact-walls-3.png |   artifacts/building-recipes/pand-248597/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:53:33.472Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -5340,12 +5385,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 6578,
     "draft": 8,
     "measure": 21982,
-    "compile": 11115
+    "compile": 11115,
+    "strip": 89
    },
    "report": {
     "triangles": 9588,
@@ -5386,7 +5432,16 @@
     "artifacts/building-recipes/pand-248597/contact-walls-6.png",
     "artifacts/building-recipes/pand-248597/contact-walls-7.png",
     "artifacts/building-recipes/pand-248597/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "gates footprint-vs-bag, eaves-vs-3dbag walls[0], open-edges; massing and brick tone plausible, walls[2] white narrow bay reads right, walls[6] glazing band off 0.24",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012104065",
@@ -5853,7 +5908,7 @@
     4.8724755,
     52.379549
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-069991",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:53:33.473Z",
@@ -5864,7 +5919,7 @@
     "2026-10-29T20:53 measured groups 0,1,2,7 in 9 s",
     "2026-10-29T20:53 compiled: 8306 tris, gates FAIL footprint-vs-bag,eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:WARN g1:PASS g2:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-069991/contact-walls-3.png |   artifacts/building-recipes/pand-069991/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:53:52.670Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -5874,12 +5929,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 2518,
     "draft": 4,
     "measure": 9058,
-    "compile": 7613
+    "compile": 7613,
+    "strip": 89
    },
    "report": {
     "triangles": 8306,
@@ -5954,7 +6010,16 @@
     "artifacts/building-recipes/pand-069991/contact-walls-6.png",
     "artifacts/building-recipes/pand-069991/contact-walls-7.png",
     "artifacts/building-recipes/pand-069991/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "gates footprint-vs-bag, eaves-vs-3dbag walls[0] and [4]; walls[2] is painted black with projecting white balconies in the photo, model grey brick; walls[7] drawn as tall ribbons vs photo columns",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100100092333",
@@ -6746,7 +6811,7 @@
     4.912523,
     52.356573999999995
    ],
-   "status": "compiled",
+   "status": "no-evidence",
    "house": "pand-246848",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:53:52.672Z",
@@ -6757,7 +6822,7 @@
     "2026-10-29T20:54 measured groups 0,1,4 in 6 s",
     "2026-10-29T20:54 compiled: 9392 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:FAIL g3:NO PHOTO g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-246848/contact-walls-3.png |   artifacts/building-recipes/pand-246848/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:54:09.492Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -6767,12 +6832,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 3749,
     "draft": 3,
     "measure": 5671,
-    "compile": 7392
+    "compile": 7392,
+    "strip": 89
    },
    "report": {
     "triangles": 9392,
@@ -6846,7 +6912,16 @@
     "artifacts/building-recipes/pand-246848/contact-walls-6.png",
     "artifacts/building-recipes/pand-246848/contact-walls-7.png",
     "artifacts/building-recipes/pand-246848/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "no-evidence",
+    "note": "the only crops (w01-338, 2022-10-07) are covered by a parked truck and billboard; the judge reads them as a 19 m ribbon; also gates open-edges and openings-within-walls",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012249726",
@@ -7038,7 +7113,7 @@
     4.922489000000001,
     52.3559785
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-241220",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:54:09.494Z",
@@ -7049,7 +7124,7 @@
     "2026-10-29T20:54 measured groups 0,1,3,4,5 in 20 s",
     "2026-10-29T20:54 compiled: 11293 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:FAIL g4:FAIL g5:WARN g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-29T20:54:46.110Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -7059,12 +7134,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 7102,
     "draft": 7,
     "measure": 20052,
-    "compile": 9450
+    "compile": 9450,
+    "strip": 89
    },
    "report": {
     "triangles": 11293,
@@ -7141,7 +7217,16 @@
     "artifacts/building-recipes/pand-241220/contact-walls-6.png",
     "artifacts/building-recipes/pand-241220/contact-walls-7.png",
     "artifacts/building-recipes/pand-241220/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "gates pass; walls[0]/[1] WARN (mask IoU 0.17-0.24) and the 3/4 reads right; walls[3] street group FAIL: model openings not read as windows (shape none vs photo square, 2 columns); needs one look at the walls[3] intent before a fix",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012179689",
@@ -8035,7 +8120,7 @@
     4.871783499999999,
     52.3770605
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "gillis-van-ledenberchstraat-34-117498",
    "notes": [
     "authored recipe houses/gillis-van-ledenberchstraat-34-117498 exists and is not installed: the factory keeps its intent, measures and compiles it",
@@ -8046,7 +8131,7 @@
    ],
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:54:46.111Z",
-   "updatedAt": "2026-10-29T20:54:54.448Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -8056,12 +8141,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 1,
     "draft": 0,
     "measure": 2988,
-    "compile": 5342
+    "compile": 5342,
+    "strip": 89
    },
    "report": {
     "triangles": 5572,
@@ -8094,7 +8180,16 @@
     "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-walls-0.png",
     "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-walls-1.png",
     "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "hand-authored intent: walls[0] drawn painted white with small square windows where the photo is grey brick with ribbon glazing under a white band; walls[1] brick too light and red (dL +0.17) with 7 columns vs photo 2",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012250607",
@@ -8317,7 +8412,7 @@
     4.903069,
     52.394343500000005
    ],
-   "status": "compiled",
+   "status": "held",
    "house": "pand-111806",
    "owner": "landmark-lane-selftest",
    "claimedAt": "2026-10-29T20:54:54.449Z",
@@ -8328,7 +8423,7 @@
     "2026-10-29T20:55 measured groups 0,1,2,3,5 in 6 s",
     "2026-10-29T20:55 compiled: 6928 tris, gates FAIL eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:FAIL g1:PASS g2:FAIL g3:PASS g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-111806/contact-walls-3.png |   artifacts/building-recipes/pand-111806/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-29T20:55:12.030Z",
+   "updatedAt": "2026-10-29T22:05:16.189Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -8338,12 +8433,13 @@
     "date": "2026-10-29"
    },
    "model": "fable",
-   "turns": 0.6,
+   "turns": 1.8,
    "ms": {
     "facts": 4994,
     "draft": 3,
     "measure": 5873,
-    "compile": 6704
+    "compile": 6704,
+    "strip": 89
    },
    "report": {
     "triangles": 6928,
@@ -8415,7 +8511,16 @@
     "artifacts/building-recipes/pand-111806/contact-walls-6.png",
     "artifacts/building-recipes/pand-111806/contact-walls-7.png",
     "artifacts/building-recipes/pand-111806/contact-aerial.png"
-   ]
+   ],
+   "verdict": {
+    "outcome": "hold",
+    "note": "glazed hall front under a sawtooth roof in the photo; kit draws a grey box with small punched windows; gates eaves-vs-3dbag walls[0] and [4]",
+    "sheet": "artifacts/strips/selftest",
+    "date": "2026-10-29",
+    "model": "fable",
+    "lane": "landmark-lane-selftest",
+    "round": 1
+   }
   },
   {
    "id": "0363100012243737",
