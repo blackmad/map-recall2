@@ -128,3 +128,28 @@ export function connectedTerminals(origin: string, links: readonly FerryLink[]):
   }
   return [...found.values()];
 }
+
+export type TerminalLabel = Point & { name: string; ids: string[] };
+/**
+ * One map label per named landing, not per pier. Centraal Station has two GTFS
+ * piers 40 m apart (stops 3980457 and 3980940); each got its own
+ * "Centraal Station ⛴" label and the two stacked on the IJ-side view (#94,
+ * #99). The pins stay per pier, because the piers board different services.
+ * Same-name terminals within `mergeRadius` (world units, single linkage) share
+ * a label, which sits on the member pier nearest the group's centroid so it
+ * still hangs off a pin. Same-name terminals farther apart keep their own.
+ */
+export function terminalLabels(terminals: readonly Terminal[], mergeRadius: number): TerminalLabel[] {
+  const groups: Terminal[][] = [];
+  for (const t of terminals) {
+    const joined = groups.filter(g => g[0].name === t.name && g.some(m => distance(m, t) <= mergeRadius));
+    const merged = joined.flat();
+    for (const g of joined) groups.splice(groups.indexOf(g), 1);
+    groups.push([...merged, t]);
+  }
+  return groups.map(g => {
+    const c = { x: g.reduce((s, m) => s + m.x, 0) / g.length, y: g.reduce((s, m) => s + m.y, 0) / g.length };
+    const anchor = g.reduce((best, m) => (distance(m, c) < distance(best, c) ? m : best), g[0]);
+    return { name: anchor.name, x: anchor.x, y: anchor.y, ids: g.map(m => m.id).sort() };
+  });
+}

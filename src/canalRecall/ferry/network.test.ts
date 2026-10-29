@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildRoadGraph } from '../routing/roadGraph';
-import { BERTH_RADIUS, ferrySegments, connectFerryGraph, connectedTerminals, type Segment } from './network';
+import { BERTH_RADIUS, ferrySegments, connectFerryGraph, connectedTerminals, terminalLabels, type Segment } from './network';
 import type { TransitNetwork } from '../transit/network';
 const net = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json','utf8')) as TransitNetwork;
 const project = (lat:number,lng:number) => ({x:(lng-4.9)*200000,y:(52.38-lat)*333960});
@@ -46,6 +46,24 @@ assert.ok(graph.allNodes.some(n=>n.edges.some(e=>(e.segmentMetadata[0] as any)?.
     && n.edges.some(e => (e.segmentMetadata[0] as any)?.ferryId === 'X'))!;
   const first = quay.edges.find(e => (e.segmentMetadata[0] as any)?.ferryId === 'X')!.node;
   assert.deepEqual([first.x, first.y], [stop.x, stop.y], 'the crossing leaves from the stop, not the folded land node');
+}
+// #94/#99: the two Centraal piers (GTFS 3980457, 3980940, 40 m apart) each drew a
+// "Centraal Station" label; they stacked on the IJ-side view. One label per landing.
+{
+  const used = new Map(links.flatMap(l => [l.from, l.to]).map(t => [t.id, t]));
+  const centraal = [...used.values()].filter(t => /Centraal/.test(t.name));
+  assert.ok(centraal.length >= 2, `fixture: Centraal has several piers (${centraal.length})`);
+  const metre = Math.hypot(project(52.38, 4.9).x - project(52.38, 4.90001).x, 0) / (0.00001 * 111320 * Math.cos(52.38 * Math.PI / 180));
+  const labels = terminalLabels([...used.values()], 150 * metre);
+  const centraalLabels = labels.filter(l => /Centraal/.test(l.name));
+  for (const a of centraalLabels) for (const b of centraalLabels) if (a !== b)
+    assert.ok(Math.hypot(a.x - b.x, a.y - b.y) > 150 * metre, 'no two Centraal Station labels within 150 m');
+  assert.ok(centraalLabels.some(l => l.ids.includes('3980457') && l.ids.includes('3980940')), 'the two west piers share one label');
+  assert.equal(labels.reduce((n, l) => n + l.ids.length, 0), used.size, 'every terminal is covered by exactly one label');
+  const far = terminalLabels([{ id: 'a', name: 'X', x: 0, y: 0, land: { x: 0, y: 0 } }, { id: 'b', name: 'X', x: 1000, y: 0, land: { x: 0, y: 0 } }, { id: 'c', name: 'Y', x: 1, y: 0, land: { x: 0, y: 0 } }], 100);
+  assert.equal(far.length, 3, 'distant same-name and near other-name terminals keep their own labels');
+  const chain = terminalLabels([0, 90, 180].map((x, i) => ({ id: String(i), name: 'X', x, y: 0, land: { x, y: 0 } })), 100);
+  assert.deepEqual(chain.map(l => [l.ids, l.x]), [[['0', '1', '2'], 90]], 'single linkage; label on the pier nearest the centroid');
 }
 // At an interior crossing, service nodes must remain distinct even at identical coordinates.
 const crossing:Segment[] = [

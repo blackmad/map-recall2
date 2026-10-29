@@ -2486,18 +2486,24 @@ class VectorBasemap {
     for (const segment of track.segments) if (segment.ferryLink) {
       for (const terminal of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(terminal.id, terminal);
     }
-    const data = { type: 'FeatureCollection', features: [...terminals.values()].map(t => ({
+    const points = list => ({ type: 'FeatureCollection', features: list.map(t => ({
       type: 'Feature', properties: { name: `${t.name} ⛴` },
       geometry: { type: 'Point', coordinates: this.worldToLngLat(t.x, t.y, loader) },
-    })) };
+    })) });
+    // One pin per pier, one label per landing: Centraal's two piers 40 m apart stacked two labels
+    // (src/canalRecall/ferry/network.ts terminalLabels; falls back to one label per pier on an older bundle).
+    const merge = window.CanalRecallFerry && window.CanalRecallFerry.terminalLabels;
+    const pins = points([...terminals.values()]);
+    const labels = merge ? points(merge([...terminals.values()], 150 * PIXELS_PER_METER)) : pins;
     const source = this.map.getSource('cycling-ferry-terminals');
-    if (source) source.setData(data);
+    if (source) { source.setData(pins); this.map.getSource('cycling-ferry-terminal-names')?.setData(labels); }
     else {
-      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data });
+      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data: pins });
+      this.map.addSource('cycling-ferry-terminal-names', { type: 'geojson', data: labels });
       this.map.addLayer({ id: 'cycling-ferry-terminal-pins', type: 'circle', source: 'cycling-ferry-terminals', paint: {
         'circle-radius': 6, 'circle-color': '#008bce', 'circle-stroke-color': '#f2f0e7', 'circle-stroke-width': 2,
       }});
-      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminals', layout: {
+      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminal-names', layout: {
         'text-field': ['get', 'name'], 'text-size': 12, 'text-offset': [0, 1.4],
       }, paint: { 'text-color': '#153c54', 'text-halo-color': '#f2f0e7', 'text-halo-width': 2 } });
     }
