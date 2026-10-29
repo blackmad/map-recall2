@@ -6,6 +6,7 @@
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
     "test:large-tier": "node --import tsx scripts/check-large-tier.ts",
+    "test:landmark-triage": "node --import tsx --test src/canalRecall/landmarks/triage.test.ts",
     "audit:large-tier": "node --import tsx scripts/large-tier/audit.ts",
     "audit:glb": "node --import tsx scripts/audit-glb-quality.ts",
     "compare:facades": "node --import tsx scripts/landmarks/facade-compare.ts",
@@ -212,7 +213,7 @@
     "check:covers": "node --max-old-space-size=8192 --import tsx scripts/check-covers.ts",
     "build:bag-tiles": "node --max-old-space-size=12288 --import tsx scripts/build-bag-buildings.ts --tiles && node --max-old-space-size=8192 --import tsx scripts/build-covers.ts",
     "test:look": "node --import tsx --test src/canalRecall/look/*.test.ts src/canalRecall/rendererShared/*.test.ts",
-    "check:canal": "tsx scripts/check-canal.ts && npm run test:map-guard && npm run test:landmark-residency && npm run test:landmark-kits && npm run check:content-stats && npm run check:buurt-pages && npm run check:designs-page && npm run check:devlog && npm run test:houseboat-kinds && npm run test:hud && npm run test:street-gables && npm run check:stale-installs && npm run test:look && npm run test:bag-tiles && npm run test:tile-buildings && npm run check:covers && npm run test:building-types && npm run check:osm-under-models && npm run test:osm-under-models && npm run check:landmark-abutters && npm run test:landmark-abutters && npm run check:noorderkerk-corner-houses && npm run check:landmark-inventory && npm run check:signature-fallback && npm run check:manual-landmarks && npm run test:explorer && npm run test:open-deck-stack && npm run build:explorer-looks -- --check && npm run test:look-e2e",
+    "check:canal": "tsx scripts/check-canal.ts && npm run test:map-guard && npm run test:landmark-residency && npm run test:landmark-kits && npm run check:content-stats && npm run check:buurt-pages && npm run check:designs-page && npm run check:devlog && npm run test:houseboat-kinds && npm run test:hud && npm run test:street-gables && npm run check:stale-installs && npm run test:look && npm run test:bag-tiles && npm run test:tile-buildings && npm run check:covers && npm run test:building-types && npm run check:osm-under-models && npm run test:osm-under-models && npm run check:landmark-abutters && npm run test:landmark-abutters && npm run check:noorderkerk-corner-houses && npm run check:landmark-inventory && npm run check:signature-fallback && npm run check:manual-landmarks && npm run test:explorer && npm run test:open-deck-stack && npm run build:explorer-looks -- --check && npm run test:look-e2e && npm run test:landmark-triage",
     "test:shopfronts": "tsx scripts/check-shopfronts.ts",
     "build:shopfronts": "tsx scripts/build-shopfronts.ts",
     "test:facade-extras": "tsx scripts/check-facade-extras.ts",

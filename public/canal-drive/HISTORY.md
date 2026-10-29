@@ -12,6 +12,16 @@ New types, each measured on 3–4 exemplar strips:
 Sarphatiparkbuurt went from 7 runs / 19 pands to 13 installed runs. "No type fits" fell from 48 faces to 34. Two runs were held at review:
 - **sweelinck-1-11** (held by the lane): four storeys drawn over a three-storey front. The 1889 type now has `match.bands`.
 - **flinck-265-287-r1** (held by the integrator): an interwar block with ribbon windows and white bands, drawn as a 19th-century punched-window row. Its likeness NCC was 0.21. Lesson: the edge-NCC floor of 0.15 cannot tell an era mismatch apart; the median on good installs is 0.16–0.37.
+**Contact link; What's new tabs and dates (2026-10-29).** The landing, credits and
+privacy pages link a Contact mailto (`whizziwig@gmail.com`, the address the privacy
+note already gave), because the feedback form can't reply to anyone who isn't signed in.
+On `whats-new.html` the "Changes you can see" notes describe the whole ride, not
+models, so they show only on the All tab. The #103 De Pijp block faces had no entry
+in `models/model-first-added.json`, so Kit rows listed them undated at the bottom.
+The file is refreshed with 77 new entries. Existing dates are kept as committed,
+because a full regeneration moves 81 of them by hours after the history rewrite.
+Run `npm run build:model-first-added` after every model or chunk install.
+`chunk-face-wallen-oza-41-57` stays undated: `--diff-filter=A` finds no add for it.
 
 **The 3D frame rests behind the briefing on touch devices; a restore no longer
 loads Damrak facades (2026-10-29, #109, follow-ups to #106).** `rendererShared/mapCover.ts`
