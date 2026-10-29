@@ -223,7 +223,10 @@ export function addWindowHoods(group: T.Group, intent: CanalHouseIntent, recipe:
     }
     const values: number[] = [];
     for (const {l, r, head} of spans.values()) { prism(values, [[l - 0.1, -0.005], [r + 0.1, -0.005], [r + 0.1, 0.22], [l - 0.1, 0.22]], head + 0.02, head + 0.14, {bottom: true}); added++; }
-    if (values.length) facade.add(meshOf(values, wall, `window-hoods/${front.id}`, 'hood', 'wall', intent.pandId));
+    // `{colour}`: the band brick (the accent slot) or the stone colour instead of the wall material.
+    const c = typeof front.windowHoods === 'object' ? front.windowHoods.colour : null, pal = recipe.palette.value;
+    if (values.length) facade.add(c ? meshOf(values, material(c === 'band' ? pal.accent ?? pal.wall : pal.stone ?? pal.trim), `window-hoods/${front.id}`, 'hood', c === 'band' ? 'accent' : 'stone', intent.pandId)
+      : meshOf(values, wall, `window-hoods/${front.id}`, 'hood', 'wall', intent.pandId));
   }
   return added;
 }
