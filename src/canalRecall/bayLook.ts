@@ -9,6 +9,7 @@ import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
+import { profileTraits, unitDraw, type BuurtProfile, type ProfileTraits } from './buurtProfiles/profiles.js';
 
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
 const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
@@ -140,17 +141,54 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
   return indices[(h >>> 4) % indices.length];
 }
 
+/**
+ * The presets a buurt profile chooses among (GitHub #102): every plain masonry (or, for modern, punched) preset, i.e.
+ * the defaults plus the measured-proportion presets, but none tied to an observed assembly (opening groups, ground,
+ * entrance and facade assemblies), which only a street survey may claim.
+ */
+const PROFILE_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map(archetype => [archetype, BAY_STYLES[archetype].flatMap((v, i) =>
+  !v.openingGroup && !v.groundAssembly && !v.entranceAssembly && !v.facadeAssembly && (archetype === 'modern' ? v.family === 'punched' : !v.family || v.family === 'masonry') ? [i] : [])])) as Record<Archetype, number[]>;
+const traitStyles = new Map<string, number[]>();
+/** The presets that best match a profiled building's drawn traits (white accents, dark frames, arched heads, tall sashes). */
+export function bayStyleForTraits(id: string, archetype: Archetype, traits: ProfileTraits): number {
+  const key = `${archetype}|${traits.pale}|${traits.dark}|${traits.arch}|${traits.tall}`;
+  let indices = traitStyles.get(key);
+  if (!indices) {
+    const scored = PROFILE_STYLE_INDICES[archetype].map(i => {
+      const v = BAY_STYLES[archetype][i];
+      const arch = v.shape === 'segmental' || v.lintel === 'arch', tall = (v.proportions ?? 'tall') === 'tall';
+      return { i, score: (traits.pale === null ? 0 : (!!v.paleAccents === traits.pale ? 12 : 0)) + (traits.dark === null ? 0 : ((v.frameTone === 'dark') === traits.dark ? 10 : 0))
+        + (traits.tall === null ? 0 : (tall === traits.tall ? 8 : 0)) + (traits.arch === null ? 0 : (arch === traits.arch ? 6 : 0)) };
+    });
+    const max = Math.max(...scored.map(v => v.score));
+    indices = scored.filter(v => v.score === max).map(v => v.i);
+    traitStyles.set(key, indices);
+  }
+  return indices[(hashSeed(id) >>> 4) % indices.length];
+}
+
 /** Everything the mesh builder needs from a feature for a bay look. */
 /** `periodWall`: the measured period wall the `?walls=measured` enricher stamped (photo look only; look/measuredWalls.ts). */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string) {
-  const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern') : archetypeFor(id, year, heightM);
-  const h = hashSeed(id), style = bayStyleForRecipe(id, archetype, recipe);
-  // Without the extract: a third of buildings, picking among the original four shopfronts.
-  const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
+/**
+ * `profile`: the buurt profile at the building (buurtProfiles/profiles.ts), photo look only and never over a recipe:
+ * its era's measured wall colours, white-accent, frame, head and proportion shares pick the wall and the preset; with
+ * no construction year its dominant era picks the archetype; its shop share replaces the one-in-three guess when the
+ * shopfront extract is absent. Without a profile (or for another look) every pick is as before.
+ */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null) {
+  const buurt = !recipe && look === 'photo' && profile ? profile : null;
+  const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
+    : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
+  const era = buurt?.eras[archetype], traits = era ? profileTraits(id, era) : null;
+  const h = hashSeed(id), style = traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
+  // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
+  const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
+    : buurt?.shopShare !== undefined ? unitDraw(id, 'shop') < buurt.shopShare : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
+  if (traits?.wall) palette.wall = traits.wall;
   if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.

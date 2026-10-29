@@ -24,6 +24,7 @@ import { SUPERMARKET_CHAINS } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 import { SHED_LID_HEX, isGardenShed, shedHeightM, shedWallHex } from './gardenSheds.js';
 import { SegmentGrid } from './streetFronts.js';
+import { buurtProfileAt } from './buurtProfiles/data.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -100,7 +101,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   let plain: number, roofBase: number, layout: FacadeStyle;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p));
+    const at = polygons[0]?.[0]?.[0];
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null);
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
