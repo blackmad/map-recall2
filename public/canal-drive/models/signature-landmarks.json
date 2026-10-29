@@ -2050,14 +2050,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -30.567161560058594,
-          0,
-          -18.35427474975586
+          -30.255250930786133,
+          -0.1537318229675293,
+          -19.52946662902832
         ],
         "max": [
-          30.567161560058594,
+          30.255250930786133,
           88,
-          18.35427474975586
+          19.52946662902832
         ]
       },
       "placement": {
@@ -2068,16 +2068,16 @@
         "altitudeMetres": 0,
         "modelRotationDegrees": 139.0861196909724,
         "facadeBearingDegrees": 229.0861196909724,
-        "scale": 1.0204081556098386
+        "scale": 1.0309278551707224
       },
       "extent": {
-        "widthMetres": 61.13432312011719,
-        "heightMetres": 88,
-        "depthMetres": 36.70854949951172,
-        "depthCoverage": 1.0137899624884816
+        "widthMetres": 60.510501861572266,
+        "heightMetres": 88.15373182296753,
+        "depthMetres": 39.05893325805664,
+        "depthCoverage": 1.0787011478906858
       },
-      "triangles": 8532,
-      "bytes": 111856,
+      "triangles": 11920,
+      "bytes": 175292,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "7aeee8f5b9ff81c5",
@@ -10040,7 +10040,7 @@
       "bounds": {
         "min": [
           -54,
-          0,
+          -0.6000000238418579,
           -42
         ],
         "max": [
@@ -10061,12 +10061,12 @@
       },
       "extent": {
         "widthMetres": 109,
-        "heightMetres": 24.399999618530273,
+        "heightMetres": 24.99999964237213,
         "depthMetres": 101.91268157958984,
         "depthCoverage": 1.1786614565023388
       },
-      "triangles": 2703,
-      "bytes": 36684,
+      "triangles": 2646,
+      "bytes": 35952,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "royal-theater-carre": {
@@ -14650,6 +14650,10 @@
       "name": "Treehouse NDSM",
       "landmarkId": "w1163404107",
       "modelUrl": "./models/treehouse-ndsm.glb",
+      "materialOverrides": {
+        "green": "#8fb4bc",
+        "blue": "#46566a"
+      },
       "suppressOsmIds": [
         "w717022796",
         "NL.IMBAG.Pand.0363100012252476",
@@ -14715,14 +14719,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -29.761865615844727,
+          -30.127283096313477,
           -1.1714635661519424e-7,
-          -25.17293357849121
+          -25.536067962646484
         ],
         "max": [
-          30.79609489440918,
+          31.159330368041992,
           9.318785667419434,
-          26.676523208618164
+          27.038938522338867
         ]
       },
       "placement": {
@@ -14736,13 +14740,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 60.557960510253906,
+        "widthMetres": 61.28661346435547,
         "heightMetres": 9.31878578456579,
-        "depthMetres": 51.849456787109375,
-        "depthCoverage": 0.9096395927563048
+        "depthMetres": 52.57500648498535,
+        "depthCoverage": 0.9223685348243044
       },
-      "triangles": 18779,
-      "bytes": 252004,
+      "triangles": 21935,
+      "bytes": 301288,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e5f87381bd928bde",
@@ -15179,6 +15183,10 @@
       "name": "Pllek",
       "landmarkId": "n4913392670",
       "modelUrl": "./models/pllek.glb",
+      "materialOverrides": {
+        "blue": "#557380",
+        "red": "#8f4a3c"
+      },
       "suppressOsmIds": [
         "w500238189",
         "NL.IMBAG.Pand.0363100012241285"
@@ -15222,7 +15230,7 @@
         "max": [
           28.822158813476562,
           12.550000190734863,
-          11.651244163513184
+          16.84173011779785
         ]
       },
       "placement": {
@@ -15238,11 +15246,11 @@
       "extent": {
         "widthMetres": 57.722267150878906,
         "heightMetres": 12.550000295639038,
-        "depthMetres": 24.09434986114502,
-        "depthCoverage": 0.9267057638901931
+        "depthMetres": 29.284835815429688,
+        "depthCoverage": 1.126339839054988
       },
-      "triangles": 6573,
-      "bytes": 92408,
+      "triangles": 11034,
+      "bytes": 140908,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "73341fa36d2052b3",

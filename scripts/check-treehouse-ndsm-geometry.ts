@@ -7,7 +7,7 @@ import source from './landmarks/treehouse-ndsm-footprints.json';
 const geometry:T.BufferGeometry[]=[];
 const add:BuildingTools['add']=(g,c,x=0,y=0,z=0,a=0)=>{g.userData.palette=c;g.rotateY(a);g.translate(x,y,z);geometry.push(g)};
 const box:BuildingTools['box']=(x,y,z,w,h,d,c,a=0)=>add(new T.BoxGeometry(w,h,d),c,x,y+h/2,z,a);
-const unused=()=>{throw Error('unexpected primitive')};buildTreehouseNdsm(0,0,{add,box,prism:unused,gableRoof:unused,hip:unused,window:unused,clock:unused,sign:unused});
+const unused=()=>{throw Error('unexpected primitive')};buildTreehouseNdsm(0,0,{add,box,prism:unused,gableRoof:unused,hip:unused,window:unused,clock:unused,sign:()=>{}});
 let triangles=0;const bounds=new T.Box3();const meshes=geometry.map(g=>{triangles+=(g.index?.count??g.getAttribute('position').count)/3;g.computeBoundingBox();bounds.union(g.boundingBox!);for(const v of g.getAttribute('position').array)assert(Number.isFinite(v));return new T.Mesh(g,new T.MeshBasicMaterial({side:T.DoubleSide}))});
 const ray=(x:number,y:number,z:number,d:T.Vector3)=>new T.Raycaster(new T.Vector3(x,y,z),d).intersectObjects(meshes)[0];
 assert(triangles<40000);assert(bounds.max.y<9.8&&bounds.max.y>8.5);assert(bounds.max.x-bounds.min.x<65);assert(bounds.max.z-bounds.min.z<57);

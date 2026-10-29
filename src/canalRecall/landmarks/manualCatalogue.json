@@ -7092,6 +7092,10 @@
     "name": "Pllek",
     "landmarkId": "n4913392670",
     "modelUrl": "./models/pllek.glb",
+    "materialOverrides": {
+      "blue": "#557380",
+      "red": "#8f4a3c"
+    },
     "suppressOsmIds": [
       "w500238189",
       "NL.IMBAG.Pand.0363100012241285"
@@ -7216,6 +7220,10 @@
     "name": "Treehouse NDSM",
     "landmarkId": "w1163404107",
     "modelUrl": "./models/treehouse-ndsm.glb",
+    "materialOverrides": {
+      "green": "#8fb4bc",
+      "blue": "#46566a"
+    },
     "suppressOsmIds": [
       "w717022796",
       "NL.IMBAG.Pand.0363100012252476",

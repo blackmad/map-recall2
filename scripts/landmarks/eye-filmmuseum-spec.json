@@ -1,0 +1,6 @@
+{
+  "id": "eye-filmmuseum",
+  "note": "Audit thresholds for the EYE GLB (scripts/audit-glb-quality.ts reads <id>-spec.json); the builder's own data is eye-spec.json / eye-footprint.json.",
+  "belowGroundMetres": -0.65,
+  "belowGroundEvidence": "The game seats a landmark on the lowest relief within 3 m of its anchor (0.11 m scene here); the AHN relief along the EYE's west end is 0.27-0.28 m lower (-0.16 m at native (-50,0) and (-30,30)), so the walls continue 0.6 m below y = 0 instead of hanging over the lawn (feedback d1423818, 'floating wall on the left')."
+}

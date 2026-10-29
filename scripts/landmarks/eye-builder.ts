@@ -4,6 +4,10 @@ import data from './eye-footprint.json';
 type Colour=Parameters<BuildingTools['add']>[1];
 /** Original rounded roof control points, not triangles from either reference model. */
 export function buildEye(_w:number,_d:number,b:BuildingTools){
+ // Walls reach FOOT below the model origin: the game seats a landmark on the lowest relief within 3 m of its anchor,
+ // and the AHN relief under the west end is 0.27-0.28 m lower than there (the wall bottoms at +0.2 m hung ~0.5 m over
+ // the lawn, feedback d1423818 "floating wall on the left"). Declared in eye-filmmuseum-spec.json belowGroundMetres.
+ const FOOT=-0.6;
  const local=(p:number[])=>new T.Vector2((p[0]-data.anchor[0])*111320*Math.cos(data.anchor[1]*Math.PI/180),-(p[1]-data.anchor[1])*110540);
  function face(p:number[][],colour:Colour){const v:number[]=[];const normal=new T.Vector3().crossVectors(new T.Vector3(...p[1] as [number,number,number]).sub(new T.Vector3(...p[0] as [number,number,number])),new T.Vector3(...p[2] as [number,number,number]).sub(new T.Vector3(...p[0] as [number,number,number])));const axis=Math.abs(normal.y)>Math.abs(normal.z)?'y':'z';const points=p.map(q=>new T.Vector2(q[0],q[axis==='y'?2:1]));const tris=T.ShapeUtils.triangulateShape(points,[]);for(const tri of tris)for(const i of tri)v.push(...p[i]);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();b.add(g,colour);}
  function beam(a:number[],q:number[],width:number,colour:Colour){const p=new T.Vector3(...a as [number,number,number]),end=new T.Vector3(...q as [number,number,number]),d=end.clone().sub(p),g=new T.CylinderGeometry(width,width,d.length(),4);g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),d.clone().normalize()));g.translate(...p.add(end).multiplyScalar(.5).toArray() as [number,number,number]);b.add(g,colour);}
@@ -14,9 +18,9 @@ export function buildEye(_w:number,_d:number,b:BuildingTools){
  const lower=data.osmBuildings.find(f=>f.properties['@id']===1206726812)!;
  const ring=lower.geometry.coordinates[0][0].slice(0,-1).map(local);let area=0;for(let i=0;i<ring.length;i++)area+=ring[i].x*ring[(i+1)%ring.length].y-ring[(i+1)%ring.length].x*ring[i].y;
  for(let i=0;i<ring.length;i++){const a=ring[i],q=ring[(i+1)%ring.length],d=q.clone().sub(a),length=d.length();if(length<.2)continue;const n=new T.Vector2(d.y,-d.x).normalize().multiplyScalar(area>0?1:-1),isFront=n.y>.15;
-  face([[a.x,.2,a.y],[q.x,.2,q.y],[q.x,4,q.y],[a.x,4,a.y]],isFront?'glass':'white');
+  face([[a.x,FOOT,a.y],[q.x,FOOT,q.y],[q.x,4,q.y],[a.x,4,a.y]],isFront?'glass':'white');
   for(const y of [.15,3.9])beam([a.x,y,a.y],[q.x,y,q.y],.13,'white');
-  if(isFront){for(let t=0;t<=1;t+=1/Math.max(1,Math.ceil(length/2.5))){const m=a.clone().lerp(q,t).addScaledVector(n,.04);b.box(m.x,.2,m.y,.1,3.7,.1,'frame');}}
+  if(isFront){for(let t=0;t<=1;t+=1/Math.max(1,Math.ceil(length/2.5))){const m=a.clone().lerp(q,t).addScaledVector(n,.04);b.box(m.x,FOOT,m.y,.1,3.9-FOOT,.1,'frame');}}
  }
  const plan=new T.Shape(ring);const floor=new T.ShapeGeometry(plan);floor.rotateX(Math.PI/2);floor.translate(0,.15,0);b.add(floor,'slate');
  // Exterior shell below each roof edge; eastern edge is a suspended white beam.
@@ -32,15 +36,22 @@ export function buildEye(_w:number,_d:number,b:BuildingTools){
    if(i>=6)face([[a[0],4.15,a[2]],[q[0],4.15,q[2]],[q[0],hi,q[2]],[a[0],lo,a[2]]],'white');
   }else face([a,q,[q[0],hi,q[2]],[a[0],lo,a[2]]],'white');
   // Opaque return panels end at the inset core; never fill the eastern undercroft.
-  if(i<3||i===10||i===11)face([[a[0],lo,a[2]],[q[0],hi,q[2]],[q[0],.2,q[2]],[a[0],.2,a[2]]],'white');
+  if(i<3||i===10||i===11)face([[a[0],lo,a[2]],[q[0],hi,q[2]],[q[0],FOOT,q[2]],[a[0],FOOT,a[2]]],'white');
  }
  // Clear east undercroft soffit rather than a full-height white block.
  face([[24,18,-4],[55,21,13],[55,21,30],[25,18,28]],'white');
  // The narrow inclined glazed slit in the raised prow is geometric, without an image texture.
  face([[25.4,22.6,28.09],[27.8,22.58,28.32],[29.1,24.36,28.42],[26.7,24.38,28.19]],'glass');
- // Original simplified entrance steps follow the separately mapped stair footprint.
+ // Original simplified entrance steps follow the separately mapped stair footprint. The rise is the AHN DTM's stair
+ // surface: 0.2 m over the anchor's ground at the promenade (south-east) end to 3.0 m at the top by the building (18 x 0.16 m).
  const stair=data.osmBuildings.find(f=>f.properties['@id']===1207014127)!;
- const sr=stair.geometry.coordinates[0][0].slice(0,-1).map(local),direction=new T.Vector2(.66,.75),depths=sr.map(p=>p.dot(direction)),lo=Math.min(...depths),hi=Math.max(...depths);
+ // Convex hull of the mapped outline: its V notch at the foot (native (41,51)) is not in the orthophoto's or the AHN
+ // stair surface, which end in one straight flight.
+ const hull=(q:T.Vector2[])=>{const p=[...q].sort((u,v)=>u.x-v.x||u.y-v.y),cr=(o:T.Vector2,u:T.Vector2,v:T.Vector2)=>(u.x-o.x)*(v.y-o.y)-(u.y-o.y)*(v.x-o.x),lo:T.Vector2[]=[],up:T.Vector2[]=[];for(const v of p){while(lo.length>1&&cr(lo[lo.length-2],lo[lo.length-1],v)<=0)lo.pop();lo.push(v);}for(const v of [...p].reverse()){while(up.length>1&&cr(up[up.length-2],up[up.length-1],v)<=0)up.pop();up.push(v);}return [...lo.slice(0,-1),...up.slice(0,-1)];};
+ const sr=hull(stair.geometry.coordinates[0][0].slice(0,-1).map(local)),direction=new T.Vector2(.66,.75),depths=sr.map(p=>p.dot(direction)),lo=Math.min(...depths),hi=Math.max(...depths);
  const clip=(p:T.Vector2[],v:number,less:boolean)=>{const out:T.Vector2[]=[];for(let i=0;i<p.length;i++){const a=p[i],q=p[(i+1)%p.length],av=a.dot(direction),qv=q.dot(direction),ain=less?av<=v:av>=v,qin=less?qv<=v:qv>=v;if(ain)out.push(a);if(ain!==qin)out.push(a.clone().lerp(q,(v-av)/(qv-av)));}return out;};
- for(let i=0;i<18;i++){const p=clip(clip(sr,lo+(hi-lo)*i/18,false),lo+(hi-lo)*(i+1)/18,true);if(p.length<3)continue;const h=.15+(18-i)*.21;face(p.map(q=>[q.x,h,q.y]),'stone');for(let k=0;k<p.length;k++){const a=p[k],q=p[(k+1)%p.length];face([[a.x,0,a.y],[q.x,0,q.y],[q.x,h,q.y],[a.x,h,a.y]],'stone');}}
+ // A step's side against the shell's own wall is that wall (no coplanar stone over white).
+ const walls=[...outer.map((u,k)=>[u[0],u[2],outer[(k+1)%outer.length][0],outer[(k+1)%outer.length][2]]),...ring.map((u,k)=>[u.x,u.y,ring[(k+1)%ring.length].x,ring[(k+1)%ring.length].y])];
+ const onShell=(p:T.Vector2)=>walls.some(([ux,uz,vx,vz])=>{const ax=vx-ux,az=vz-uz,l2=ax*ax+az*az||1,t=Math.max(0,Math.min(1,((p.x-ux)*ax+(p.y-uz)*az)/l2));return Math.hypot(p.x-ux-t*ax,p.y-uz-t*az)<.2;});
+ for(let i=0;i<18;i++){const p=clip(clip(sr,lo+(hi-lo)*i/18,false),lo+(hi-lo)*(i+1)/18,true);if(p.length<3)continue;const h=.15+(18-i)*.16;face(p.map(q=>[q.x,h,q.y]),'stone');for(let k=0;k<p.length;k++){const a=p[k],q=p[(k+1)%p.length];if(onShell(a)&&onShell(q))continue;face([[a.x,0,a.y],[q.x,0,q.y],[q.x,h,q.y],[a.x,h,a.y]],'stone');}}
 }

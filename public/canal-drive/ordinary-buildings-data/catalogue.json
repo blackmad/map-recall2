@@ -42308,11 +42308,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012201637",
       "name": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
-      "hash": "01ea39c897fa8763dd8c9528bca9df897b0a97a200078bfb478ea1c57655151d",
-      "sha256": "01ea39c897fa8763dd8c9528bca9df897b0a97a200078bfb478ea1c57655151d",
-      "bytes": 60028,
-      "triangles": 680,
-      "materials": 6,
+      "hash": "a1fe8b3878886c2536c67f0453e3385940ebea088f02a18c494f61c7d3704d47",
+      "sha256": "a1fe8b3878886c2536c67f0453e3385940ebea088f02a18c494f61c7d3704d47",
+      "bytes": 446204,
+      "triangles": 6204,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42324,7 +42324,7 @@
         "max": [
           56.029,
           37.073,
-          28.447
+          28.722
         ]
       },
       "anchor": [
@@ -42453,7 +42453,10 @@
         "id": "grasweg-41-201637",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012201637/w05-80.jpg"
+          "staging/pand-reference-walls/0363100012201637/w05-80.jpg",
+          "artifacts/noord-fb/photos/grasweg/from209-174m-2024-10-21.jpg",
+          "artifacts/noord-fb/photos/grasweg/from270-148m-2021-01-22.jpg",
+          "artifacts/noord-fb/photos/grasweg/from088-112m-2025-06-30.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -42463,12 +42466,24 @@
           "ridge-vs-3dbag:pass",
           "eaves-vs-3dbag/walls[0]:pass",
           "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 9st 4b"
+          "brick-bay-grid+panels 9st 4b",
+          "brick-bay-grid+panels 9st 3b",
+          "brick-bay-grid+panels 9st 4b",
+          "brick-bay-grid+panels 9st 4b",
+          "blank+panels 2st 7b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
@@ -42481,8 +42496,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201637",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T11:08:53.750Z",
-      "meshHash": "4a89443b1c8a3102"
+      "updatedAt": "2026-10-29T12:28:18.916Z",
+      "meshHash": "c705af385e702621"
     },
     {
       "id": "ordinary-0363100012251313",

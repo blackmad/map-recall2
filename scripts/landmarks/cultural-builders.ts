@@ -8,7 +8,7 @@ export interface BuildingTools {
  hip(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour):void;
  window(x:number,y:number,z:number,w:number,h:number):void;
  clock(x:number,y:number,z:number,wind?:boolean):void;
- sign(text:string,x:number,y:number,z:number,pixel:number,c?:Colour,maxWidth?:number):void;
+ sign(text:string,x:number,y:number,z:number,pixel:number,c?:Colour,maxWidth?:number,angle?:number):void;
 }
 /** Each model is authored against its measured footprint, not stretched after export. */
 export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTools){
@@ -77,10 +77,46 @@ export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTool
   // Waterfront entrance is on model +X (east/south in fitted orientation).
   box(w*.49,0,0,5,5.5,d*.68,'glass');box(w*.47,5.5,0,8,.65,d*.84,'stone');for(let z of [-d*.3,0,d*.3])box(w*.55,0,z,.9,5.5,.9,'white');sign('OBA',w*.24,6.4,d*.49,.28,'red');
  }else if(id==='adam-tower'){
-  box(0,0,0,w*.98,5,d*.91,'dark');let side=d*.71;
-  grid(0,5,0,side,61,side,'dark',3.1);for(let y=8;y<65;y+=3.2){for(let z of [-side/2-.1,side/2+.1])box(0,y,z,side,.18,.16,'white');for(let x of [-side/2-.1,side/2+.1])box(x,y,0,.16,.18,side,'white');}for(let x=-side/2;x<=side/2;x+=3.1)for(let z of [-side/2-.14,side/2+.14])box(x,5,z,.18,61,.15,'white');
-  // Flared observation crown and roof terrace, with the rooftop swing.
-  box(0,66,0,side+10,1.6,side+10,'white');box(0,67.6,0,side+8,7.2,side+8,'glass');box(0,74.8,0,side+11,1.2,side+11,'white');rail(0,77,0,side+10,side+10);box(-side*.24,76,-side*.25,6,3,6,'white');for(let z of [-side/2-3,side/2+3])box(0,76,z,9,3,.22,'red');box(0,78.7,side/2+3,9,.25,.25,'red');box(-side*.24,79,-side*.25,1,9,1,'white');for(let y of [80,82.5,85]){box(-side*.24,y,-side*.25+1.1,1.5,.2,.15,'dark',.65);box(-side*.24,y,-side*.25+1.2,1.5,.2,.15,'dark',-.65);}
+  // Panoramas 2021-01-22 (from the IJ) and 2024-10-21 (Overhoeksplein, west): a dark curtain-wall shaft on a square
+  // module grid, every pane inside its own cell (feedback 3dee2b2a: the panes ran on a 3.4 m pitch against 3.2 m
+  // transoms), lifted on white splayed corner legs over a glazed ground floor with the LOOKOUT entrance sign, under a
+  // wider observation crown. Bay and storey come from one module so frames and panes cannot drift apart.
+  // The shaft is turned 45 degrees against the crown and the podium: OSM w593068474 (64 m, a 25.5 m square, faces at
+  // 9/99 deg) under w750257537 (75 m, a 33 m square, faces at 54/144 deg); the panoramas agree, a shaft face seen
+  // square-on (headings 7 and 107) under a crown 1.6x its width, the shaft seen corner-on (heading 323) under a crown
+  // no wider than its diagonal. The model's axes follow the crown and podium (catalogue heading 139).
+  const side=d*.71,shaftY=7,top=66,bays=8,storeys=19,bay=side/bays,storey=(top-shaftY)/storeys,h=side/2,R=Math.PI/4,cr=Math.cos(R),sr=Math.sin(R);
+  const rb=(x:number,y:number,z:number,bw:number,bh:number,bd:number,c:Colour)=>box(x*cr+z*sr,y,-x*sr+z*cr,bw,bh,bd,c,R);
+  const rv=(x:number,y:number,z:number)=>new T.Vector3(x*cr+z*sr,y,-x*sr+z*cr);
+  // Glazed pavilion storey on the crown axis (OSM w593068473): fills the footprint corners the turned shaft leaves
+  // open, under a white roof slab; LOOKOUT sign on its face. Above it a recessed glass lobby under the shaft and the
+  // four white splayed legs, which land on the plaza just past the pavilion faces (the panoramas' signature).
+  const pw=w*.97,pd=d*.97,ph=4.4,n=4,cw=pw/2-n,cd=pd/2-n;
+  // The pavilion is four corner blocks; each face midpoint keeps an 8 m notch where the shaft corner and its leg come
+  // down to the plaza in front of the lobby glass (recess under 4 m).
+  for(const sx of [-1,1])for(const sz of [-1,1]){const cx=sx*(n+cw/2),cz=sz*(n+cd/2);
+   box(cx,0,cz,cw,.4,cd,'concrete');box(cx,.4,cz,cw-.3,ph-1,cd-.3,'glass');box(cx,.4,cz,cw-5,ph-1,cd-5,'dark');box(cx,ph-.6,cz,cw,.6,cd,'white');
+   for(let k=1;k<4;k++){box(cx-cw/2+k*cw/4,.4,sz*(pd/2-.13),.14,ph-1,.14,'frame');box(sx*(pw/2-.13),.4,cz-cd/2+k*cd/4,.14,ph-1,.14,'frame');}}
+  // The pavilions run on along the long axis past the legs: close the notch there.
+  { const x0=h*Math.SQRT2+2.5,fw=pw/2-x0;for(const sx of [-1,1]){const cx=sx*(x0+fw/2);box(cx,0,0,fw,.4,2*n,'concrete');box(cx,.4,0,fw,ph-1,2*n-.3,'dark');box(sx*(x0+.08),.4,0,.16,ph-1,2*n-.3,'glass');box(cx,ph-.6,0,fw,.6,2*n,'white');}}
+  sign('LOOKOUT',n+cw/2,2.2,pd/2-.11,.16,'white',cw*.8);
+  rb(0,0,0,side-.6,shaftY,side-.6,'glass');rb(0,0,0,side-6,shaftY,side-6,'dark');
+  for(let j=1;j<6;j++)for(const s of [-1,1]){const u=-h+.3+j*(side-.6)/6;rb(u,0,s*(h-.23),.14,shaftY-.9,.14,'frame');rb(s*(h-.23),0,u,.14,shaftY-.9,.14,'frame');}
+  for(const s of [-1,1]){rb(0,shaftY-.9,s*(h-.3),side,.9,.6,'white');rb(s*(h-.3),shaftY-.9,0,.6,.9,side,'white');}
+  for(const sx of [-1,1])for(const sz of [-1,1])strut(rv(sx*(h-.5),shaftY-.5,sz*(h-.5)),rv(sx*(h+.4),0,sz*(h+.4)),.8,'concrete');
+  // Shaft: dark spandrel body, a pane per module cell, light frame lines on the module lines.
+  rb(0,shaftY,0,side,top-shaftY,side,'dark');
+  const paneW=bay-.42,paneH=storey*.66;
+  for(let k=0;k<storeys;k++){const y0=shaftY+k*storey+storey*.2;
+   for(let j=0;j<bays;j++){const u=-h+(j+.5)*bay;for(const s of [-1,1]){rb(u,y0,s*(h+.05),paneW,paneH,.1,'glass');rb(s*(h+.05),y0,u,.1,paneH,paneW,'glass');}}}
+  for(let k=0;k<=storeys;k++){const y=shaftY+k*storey-.09;for(const s of [-1,1]){rb(0,y,s*(h+.12),side+.3,.18,.12,'frame');rb(s*(h+.12),y,0,.12,.18,side+.3,'frame');}}
+  for(let j=0;j<=bays;j++){const u=-h+j*bay;for(const s of [-1,1]){rb(u,shaftY,s*(h+.14),.16,top-shaftY,.1,'frame');rb(s*(h+.14),shaftY,u,.1,top-shaftY,.16,'frame');}}
+  // Observation crown on the crown axis: a sloped dark-glass skirt from the shaft up to the overhang, then the glazed
+  // storeys, the deck and the rooftop swing.
+  { const skirt=new T.CylinderGeometry((side+8)/Math.SQRT2,side/Math.SQRT2*.98,3.6,4,1);skirt.rotateY(R);add(skirt,'glass',0,top-.2,0); }
+  box(0,top+1.6,0,side+10,.5,side+10,'white');box(0,67.6,0,side+8,7.2,side+8,'glass');
+  for(let u=-(side+8)/2;u<=(side+8)/2+.01;u+=(side+8)/10)for(const s of [-1,1]){box(u,67.6,s*((side+8)/2+.05),.14,7.2,.1,'frame');box(s*((side+8)/2+.05),67.6,u,.1,7.2,.14,'frame');}
+  box(0,74.8,0,side+11,1.2,side+11,'white');rail(0,77,0,side+10,side+10);box(-side*.24,76,-side*.25,6,3,6,'white');for(let z of [-side/2-3,side/2+3])box(0,76,z,9,3,.22,'red');box(0,78.7,side/2+3,9,.25,.25,'red');box(-side*.24,79,-side*.25,1,9,1,'white');for(let y of [80,82.5,85]){box(-side*.24,y,-side*.25+.55,1.5,.2,.15,'dark',.65);box(-side*.24,y,-side*.25+.62,1.5,.2,.15,'dark',-.65);}
  }else if(id==='pontsteiger'){
   // Raised low U, two slim tower legs and eight storeys in the skybridge.
   let leg=w*.19,span=w*.96,rear=-d*.29;
