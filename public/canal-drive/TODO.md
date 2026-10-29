@@ -1065,12 +1065,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Feel check on a real phone by the user; no one has ridden it on glass.
     Tunables are `STREET_TURN_RATE`, `CORNER_FRACTION`, `QUEUE_HOLD_SECONDS`
     (streetFollow.ts) and `CAMERA_YAW_DEFAULT` (cameraYaw.ts).
-  - Boats follow canals with one junction pinned (Prinsengracht ×
-    Leidsegracht). At the bend there the Prinsengracht centreline is one chain
-    of short ways (8–38 m) whose bearings zig-zag (−93°, −66°, −97°, −72°,
-    −37°), so the boat's heading wobbles; the camera dead band hides it.
-    Candidate fix: aim the follow heading at a point ~20–30 m ahead along the
-    chain instead of the local segment (streetFollow.ts), not merging data.
+  - The follow heading now aims ~25 m down the street (HISTORY 2026-10-29,
+    look-ahead). Its gain on the Prinsengracht zig-zag is modest in the sim;
+    judge it in the real-phone feel check above. `LOOK_AHEAD`/`AIM_SECONDS`
+    are the knobs, `SF_NO_LOOKAHEAD=1 npm run test:street-follow` the A/B.
 - **Public preview follow-ups (2026-10-17).**
   - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
@@ -2116,31 +2114,25 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - The MapLibre layer `cycling-ferry-terminal-labels` shows "Centraal Station ⛴" twice, once per pontoon. Dedupe it.
   - Stale LOD1 note: the Beurs is still a generic brick mass. It lacks the Damrak arcade, the Beursplein entrance and the stepped gables.
 
-- **Gameplay analytics without a consent banner (2026-10-28, user ask)**: there is
-  no gameplay analytics today (only Sentry errors). Aim for the most we can
-  measure without needing EU consent. ePrivacy Art. 5(3), and the Dutch Tw
-  11.7a, require consent to store or read anything on the device that is not
-  strictly needed. The Dutch rule exempts analytics with little privacy
-  impact, but a GDPR lawful basis and a privacy-notice line are still needed.
-  The no-consent design:
-  - first-party `navigator.sendBeacon` events to our own endpoint (a Firebase
-    function writing daily aggregate counters);
-  - no cookies, no localStorage ID, no fingerprinting;
-  - a per-tab random session id held in memory only;
-  - no IP stored, coarse user-agent class only, no precise GPS or route traces.
-  What we get: ride starts by mode, route/quiz completion and drop-off step,
-  answer accuracy per question kind, ride length buckets, which neighbourhoods
-  are ridden (rounded to buurt, not coordinates; this also feeds
-  buurt-priority-by-ride), errors and context losses, and device and
-  performance tier.
-  What we give up without consent: returning-user and retention counts across
-  days, cohorts, and cross-session funnels. If we want those, signed-in users
-  are the place: their own progress already lives in Firestore under a privacy
-  notice. The off-the-shelf alternative is Plausible or GoatCounter (EU,
-  cookieless, daily-rotating hash). Do not use Firebase/Google Analytics,
-  which sets identifiers and needs consent.
-  Confirm the legal reading in a needs-david issue before shipping. This is
-  not legal advice.
+- **Gameplay analytics: built, waiting on Blaze and a deploy (#101, #115, 2026-10-29)**.
+  The client, the function, the rules, the report and the privacy text are on main
+  (HISTORY "Consent-free gameplay analytics"). Nothing is collected yet: the bundle
+  loads only when `CANAL_RUNTIME_CONFIG.analyticsEndpoint` is set. To turn it on:
+  1. The user upgrades `map-recall2-blackmad` to Blaze (`billingEnabled: false`
+     today; the Cloud Functions API has never been enabled).
+  2. `npx firebase-tools@15 deploy --only functions:analytics,firestore:rules,firestore:indexes --project map-recall2-blackmad`.
+  3. Add `{ "source": "/api/analytics", "function": { "functionId": "analytics", "region": "europe-west4" } }`
+     as the first `canalrecall` rewrite in `firebase.json`.
+  4. Add `ANALYTICS_ENDPOINT: /api/analytics` to the runtime-config step env in
+     `deploy-firebase.yml`.
+  5. Exclude Cloud Run request logs, which record client IPs (the command is in the
+     #115 hand-back).
+  Then feed `npm run analytics:report -- --buurt-json` into buurt-priority-by-ride.
+  Known limits: iOS may drop the beacon from a backgrounded tab, so read completion
+  as finished ÷ started; the public endpoint can be inflated (batch caps,
+  `maxInstances: 5`); the buurt lookup fetches the full coverage-v1 `buurten.json`
+  (~95 KB gzipped) once per ride, and a slim extract would be lighter; Firestore is
+  in nam5.
 
 - **Dutch facts backlog (2026-10-23, HISTORY "Ride and Map Quest speak Dutch")**:
   1,564/2,351 facts carry a Dutch sentence; 787 still fall back to English

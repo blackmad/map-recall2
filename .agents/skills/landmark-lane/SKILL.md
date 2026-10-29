@@ -56,15 +56,17 @@ and never edit another owner's rows.
 
 ## Step 1: triage (about 5 turns, scripts only)
 
-The buildable list is a script output, never a judgement. Until issue #110
-lands `scripts/landmarks/triage.ts`, apply its rule by hand from
-`measure.ts` output and `walls.json`, and say so in the hand-back:
+The buildable list is a script output, never a judgement.
+`scripts/landmarks/triage.ts` (#110) decides it from BAG, 3DBAG, the tiles,
+covers and the archived crops, with no LLM call; its unit test is
+`npm run test:landmark-triage`. The validation run predicted 42 of the 45
+houses that earlier lanes had reviewed by hand.
 
 ```sh
-node --import tsx scripts/landmarks/triage.ts --limit=40 --write     # after #110
+node --import tsx scripts/landmarks/triage.ts --limit=0 --write    # add --archives=<source-archive worktree> when crops sit there uncommitted
 ```
 
-A candidate is **buildable** when: its pand is in the building tiles and not
+The queue rows carry `triage: {verdict, reasons[], gaps[]}` after the run; filter on them, do not re-derive. A candidate is **buildable** when: its pand is in the building tiles and not
 already covered (including twin registrations); at least two street-facing
 walls have a crop the judge can use (usable over 40 %, foliage under 25 %,
 washed out under 30 %, obliquity at most 45 degrees, captured after the BAG
@@ -73,13 +75,13 @@ build year); every judgeable front class is one the kit expresses today
 (32 m until the cap is parametrised). Everything else gets its verdict
 written to the row (`kit-gap`, `no-evidence`, `not-in-tiles`, `covered`,
 `bespoke`) and is not touched again this run. Glass curtain fronts and
-towers are `kit-gap` until issue #112 decides otherwise; sending them through
+towers are `kit-gap` until the judge lane #114 lands; sending them through
 the kit again is a known zero.
 
 ## Step 2: factory over the buildable list (about 5 turns, unattended)
 
 ```sh
-npm run -s factory -- --ids=20 --owner=<lane> 2>&1 | tail -30     # add --model/--turns after #111
+npm run -s factory -- --ids=20 --owner=<lane> --model=<model> --turns=<n> 2>&1 | tail -30
 ```
 
 Crops, facts, draft, measure and compile, each skipped when its output

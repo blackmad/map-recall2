@@ -2858,14 +2858,17 @@
     4.846671049999999,
     52.3854768
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "molenwerf-1-066028",
    "notes": [
-    "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it"
+    "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it",
+    "2026-10-29T20:51 draft: hand-authored intent kept",
+    "2026-10-29T20:51 measured read-only (hand-authored intent): artifacts/building-recipes/molenwerf-1-066028/measured.json",
+    "2026-10-29T20:51 compiled: 10960 tris, gates pass, likeness g0:PASS g1:NO PHOTO g2:WARN"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:04:21.982Z",
-   "updatedAt": "2026-10-23T21:04:21.983Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:51:11.571Z",
+   "updatedAt": "2026-10-29T20:51:20.265Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -2874,7 +2877,47 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 0,
+    "draft": 0,
+    "measure": 3470,
+    "compile": 5215
+   },
+   "report": {
+    "triangles": 10960,
+    "bytes": 813304,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.398 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:51"
+   },
+   "sheets": [
+    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-0.png",
+    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-1.png",
+    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-2.png",
+    "artifacts/building-recipes/molenwerf-1-066028/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012246291",
@@ -3923,14 +3966,16 @@
     4.871646,
     52.338863
    ],
-   "status": "crops",
+   "status": "error",
    "house": "pand-076454",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:12:46.209Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:51:20.266Z",
    "notes": [
-    "2026-10-23T21:13 crops: 17 usable walls in 41 s"
+    "2026-10-23T21:13 crops: 17 usable walls in 41 s",
+    "2026-10-29T20:51 facts: fronts on Ringweg-Zuid, Parnassusweg, Eduard van Beinumstraat",
+    "2026-10-29T20:51 draft failed: Invalid large intent pand-076454:\n - walls[4].wallSurfaces: surface 5 is already in walls[1]\n - walls[7].wallSurfaces: surface 3 is already in walls[5]"
    ],
-   "updatedAt": "2026-10-23T21:13:27.313Z",
+   "updatedAt": "2026-10-29T20:51:28.081Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -3938,6 +3983,12 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 7807,
+    "draft": 7
    }
   },
   {
@@ -4763,14 +4814,18 @@
     4.85656075,
     52.34663065
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-138843",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:20:50.233Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:51:28.082Z",
    "notes": [
-    "2026-10-23T21:21 crops: 8 usable walls in 24 s"
+    "2026-10-23T21:21 crops: 8 usable walls in 24 s",
+    "2026-10-29T20:51 facts: fronts on Amstelveenseweg, Afroditekade, Hestiastraat",
+    "2026-10-29T20:51 draft: 8 groups (6 on a street), 79 panels blank",
+    "2026-10-29T20:52 measured groups 0,1,2,3 in 33 s",
+    "2026-10-29T20:52 compiled: 15556 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g2:WARN g3:WARN (large.ts exited non-zero:   artifacts/building-recipes/pand-138843/contact-walls-3.png |   artifacts/building-recipes/pand-138843/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:21:14.276Z",
+   "updatedAt": "2026-10-29T20:52:25.146Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -4778,7 +4833,67 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 9319,
+    "draft": 13,
+    "measure": 32582,
+    "compile": 15143
+   },
+   "report": {
+    "triangles": 15556,
+    "bytes": 1152664,
+    "gatesFailing": [
+     "triangle-budget"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.15"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22 mean 0.00 vs photo 0.14",
+       "window shape none vs photo square",
+       "columns none vs photo 10"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.197 < 0.45"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.19 < 0.45"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:52"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-138843/contact-walls-0.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-1.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-2.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-3.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-4.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-5.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-6.png",
+    "artifacts/building-recipes/pand-138843/contact-walls-7.png",
+    "artifacts/building-recipes/pand-138843/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012240368",
@@ -4887,14 +5002,18 @@
     4.9033545,
     52.3832095
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-119827",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:23:07.556Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:52:25.147Z",
    "notes": [
-    "2026-10-23T21:23 crops: 11 usable walls in 17 s"
+    "2026-10-23T21:23 crops: 11 usable walls in 17 s",
+    "2026-10-29T20:52 facts: fronts on IJpromenade, Buiksloterweg, Overhoeksplein",
+    "2026-10-29T20:52 draft: 8 groups (3 on a street), 143 panels blank",
+    "2026-10-29T20:52 measured groups 0,2 in 11 s",
+    "2026-10-29T20:52 compiled: 5225 tris, gates FAIL open-edges, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO EVIDENCE g4:NO EVIDENCE g5:NO EVIDENCE g6:NO PHOTO g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/pand-119827/contact-walls-3.png |   artifacts/building-recipes/pand-119827/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:23:24.809Z",
+   "updatedAt": "2026-10-29T20:52:53.782Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -4902,7 +5021,97 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 9365,
+    "draft": 10,
+    "measure": 10664,
+    "compile": 8589
+   },
+   "report": {
+    "triangles": 5225,
+    "bytes": 420188,
+    "gatesFailing": [
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.22 mean 0.38 vs photo 0.24"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 31 % < 40 %",
+       "foliage 52 % > 25 %"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.32 mean 0.28 vs photo 0.57",
+       "wall family unresolved (#7b7e78 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 6 % < 40 %",
+       "foliage 82 % > 25 %"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "foliage 37 % > 25 %"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 32 % < 40 %",
+       "foliage 48 % > 25 %",
+       "obliquity 51.8 deg > 45"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "usable upper cells 25 % < 40 %",
+       "foliage 55 % > 25 %"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:52"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-119827/contact-walls-0.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-1.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-2.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-3.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-4.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-5.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-6.png",
+    "artifacts/building-recipes/pand-119827/contact-walls-7.png",
+    "artifacts/building-recipes/pand-119827/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012242039",
@@ -5110,14 +5319,18 @@
     4.84328,
     52.3788215
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-248597",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:24:25.450Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:52:53.783Z",
    "notes": [
-    "2026-10-23T21:25 crops: 18 usable walls in 46 s"
+    "2026-10-23T21:25 crops: 18 usable walls in 46 s",
+    "2026-10-29T20:53 facts: fronts on Jan van Schaffelaarplantsoen, Leeuwendalersweg, Bos en Lommerplein",
+    "2026-10-29T20:53 draft: 8 groups (6 on a street), 147 panels blank",
+    "2026-10-29T20:53 measured groups 2,6 in 22 s",
+    "2026-10-29T20:53 compiled: 9588 tris, gates FAIL footprint-vs-bag,eaves-vs-3dbag/walls[0],open-edges, likeness g2:FAIL g6:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-248597/contact-walls-3.png |   artifacts/building-recipes/pand-248597/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:25:11.562Z",
+   "updatedAt": "2026-10-29T20:53:33.472Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -5125,7 +5338,55 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 6578,
+    "draft": 8,
+    "measure": 21982,
+    "compile": 11115
+   },
+   "report": {
+    "triangles": 9588,
+    "bytes": 730180,
+    "gatesFailing": [
+     "footprint-vs-bag",
+     "eaves-vs-3dbag/walls[0]",
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.28",
+       "window shape none vs photo square",
+       "columns none vs photo 2"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.24 mean 0.28 vs photo 0.08"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:53"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-248597/contact-walls-0.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-1.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-2.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-3.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-4.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-5.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-6.png",
+    "artifacts/building-recipes/pand-248597/contact-walls-7.png",
+    "artifacts/building-recipes/pand-248597/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012104065",
@@ -5592,14 +5853,18 @@
     4.8724755,
     52.379549
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-069991",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:31:09.468Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:53:33.473Z",
    "notes": [
-    "2026-10-23T21:31 crops: 6 usable walls in 15 s"
+    "2026-10-23T21:31 crops: 6 usable walls in 15 s",
+    "2026-10-29T20:53 facts with streets Van Hallstraat|Donker Curtiusstraat|Van Hallbrug failed (/Users/blackmad/Code/map-recall2-worktrees/skill-landmark-lane-20261029/src/canalRecall/buildingRecipe/facts.ts:231 |   if (!seed) throw Error(`No footprint edge faces ${street}`); |                  ); kept the street-less facts",
+    "2026-10-29T20:53 draft: 8 groups (0 on a street), 124 panels blank",
+    "2026-10-29T20:53 measured groups 0,1,2,7 in 9 s",
+    "2026-10-29T20:53 compiled: 8306 tris, gates FAIL footprint-vs-bag,eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:WARN g1:PASS g2:FAIL g3:NO PHOTO g4:NO PHOTO g5:NO PHOTO g6:NO PHOTO g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-069991/contact-walls-3.png |   artifacts/building-recipes/pand-069991/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:31:24.057Z",
+   "updatedAt": "2026-10-29T20:53:52.670Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -5607,7 +5872,89 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 2518,
+    "draft": 4,
+    "measure": 9058,
+    "compile": 7613
+   },
+   "report": {
+    "triangles": 8306,
+    "bytes": 633556,
+    "gatesFailing": [
+     "footprint-vs-bag",
+     "eaves-vs-3dbag/walls[0]",
+     "eaves-vs-3dbag/walls[4]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.276 < 0.45"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.16",
+       "window shape wide vs photo square",
+       "wall family unresolved (#2f2623 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.27",
+       "window shape tall vs photo square",
+       "wall family unresolved (#100b0e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:53"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-069991/contact-walls-0.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-1.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-2.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-3.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-4.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-5.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-6.png",
+    "artifacts/building-recipes/pand-069991/contact-walls-7.png",
+    "artifacts/building-recipes/pand-069991/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100100092333",
@@ -6399,14 +6746,18 @@
     4.912523,
     52.356573999999995
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-246848",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:39:52.684Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:53:52.672Z",
    "notes": [
-    "2026-10-23T21:40 crops: 6 usable walls in 13 s"
+    "2026-10-23T21:40 crops: 6 usable walls in 13 s",
+    "2026-10-29T20:53 facts: fronts on Eerste Oosterparkstraat",
+    "2026-10-29T20:53 draft: 8 groups (2 on a street), 47 panels blank",
+    "2026-10-29T20:54 measured groups 0,1,4 in 6 s",
+    "2026-10-29T20:54 compiled: 9392 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:FAIL g3:NO PHOTO g4:FAIL g5:NO PHOTO g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-246848/contact-walls-3.png |   artifacts/building-recipes/pand-246848/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:40:06.145Z",
+   "updatedAt": "2026-10-29T20:54:09.492Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -6414,7 +6765,88 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 3749,
+    "draft": 3,
+    "measure": 5671,
+    "compile": 7392
+   },
+   "report": {
+    "triangles": 9392,
+    "bytes": 697880,
+    "gatesFailing": [
+     "open-edges"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.25",
+       "storey 1: widest opening 1.2 m vs photo 19.3 m (a ribbon against windows)"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.37 mean 0.36 vs photo 0.02"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.23",
+       "glazing  mean 0.25 vs photo 0.57",
+       "wall family unresolved (#3e312c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.29 mean 0.28 vs photo 0.04"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-29T20:54"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-246848/contact-walls-0.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-1.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-2.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-3.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-4.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-5.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-6.png",
+    "artifacts/building-recipes/pand-246848/contact-walls-7.png",
+    "artifacts/building-recipes/pand-246848/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012249726",
@@ -6606,14 +7038,18 @@
     4.922489000000001,
     52.3559785
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-241220",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:41:21.092Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:54:09.494Z",
    "notes": [
-    "2026-10-23T21:41 crops: 8 usable walls in 32 s"
+    "2026-10-23T21:41 crops: 8 usable walls in 32 s",
+    "2026-10-29T20:54 facts: fronts on Tugelaweg, Retiefstraat, Magersfonteinstraat",
+    "2026-10-29T20:54 draft: 8 groups (4 on a street), 107 panels blank",
+    "2026-10-29T20:54 measured groups 0,1,3,4,5 in 20 s",
+    "2026-10-29T20:54 compiled: 11293 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:FAIL g4:FAIL g5:WARN g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:41:53.556Z",
+   "updatedAt": "2026-10-29T20:54:46.110Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -6621,7 +7057,91 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 7102,
+    "draft": 7,
+    "measure": 20052,
+    "compile": 9450
+   },
+   "report": {
+    "triangles": 11293,
+    "bytes": 864804,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.241 < 0.45"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.167 < 0.45"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "NO EVIDENCE",
+      "reasons": [
+       "camera 7.1 m < 8 m from a 46 m wall"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.26",
+       "window shape none vs photo square",
+       "columns none vs photo 2"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape wide vs photo square",
+       "columns 6 vs photo 12"
+      ]
+     },
+     {
+      "group": 5,
+      "verdict": "WARN",
+      "reasons": [
+       "columns 15 vs photo 11",
+       "mask IoU 0.11 < 0.45"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-29T20:54"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-241220/contact-walls-0.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-1.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-2.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-3.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-4.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-5.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-6.png",
+    "artifacts/building-recipes/pand-241220/contact-walls-7.png",
+    "artifacts/building-recipes/pand-241220/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012179689",
@@ -7515,15 +8035,18 @@
     4.871783499999999,
     52.3770605
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "gillis-van-ledenberchstraat-34-117498",
    "notes": [
     "authored recipe houses/gillis-van-ledenberchstraat-34-117498 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T21:51 crops: 4 usable walls in 5 s"
+    "2026-10-23T21:51 crops: 4 usable walls in 5 s",
+    "2026-10-29T20:54 draft: hand-authored intent kept",
+    "2026-10-29T20:54 measured read-only (hand-authored intent): artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/measured.json",
+    "2026-10-29T20:54 compiled: 5572 tris, gates pass, likeness g0:FAIL g1:FAIL"
    ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:51:45.660Z",
-   "updatedAt": "2026-10-23T21:51:51.110Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:54:46.111Z",
+   "updatedAt": "2026-10-29T20:54:54.448Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -7531,7 +8054,47 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 1,
+    "draft": 0,
+    "measure": 2988,
+    "compile": 5342
+   },
+   "report": {
+    "triangles": 5572,
+    "bytes": 421200,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall family paint vs photo brick",
+       "glazing storey band off by 0.29 mean 0.32 vs photo 0.43",
+       "columns 14 vs photo 32"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "FAIL",
+      "reasons": [
+       "wall dL +0.17",
+       "glazing storey band off by 0.36",
+       "window shape square vs photo wide"
+      ]
+     }
+    ],
+    "compiledAt": "2026-10-29T20:54"
+   },
+   "sheets": [
+    "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-walls-0.png",
+    "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-walls-1.png",
+    "artifacts/building-recipes/gillis-van-ledenberchstraat-34-117498/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012250607",
@@ -7754,14 +8317,18 @@
     4.903069,
     52.394343500000005
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-111806",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:54:08.767Z",
+   "owner": "landmark-lane-selftest",
+   "claimedAt": "2026-10-29T20:54:54.449Z",
    "notes": [
-    "2026-10-23T21:54 crops: 4 usable walls in 9 s"
+    "2026-10-23T21:54 crops: 4 usable walls in 9 s",
+    "2026-10-29T20:54 facts: fronts on Ridderspoorweg, Distelweg",
+    "2026-10-29T20:54 draft: 8 groups (4 on a street), 36 panels blank",
+    "2026-10-29T20:55 measured groups 0,1,2,3,5 in 6 s",
+    "2026-10-29T20:55 compiled: 6928 tris, gates FAIL eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:FAIL g1:PASS g2:FAIL g3:PASS g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-111806/contact-walls-3.png |   artifacts/building-recipes/pand-111806/contact-walls-4.png |   artifacts/building-recipes/pand-)"
    ],
-   "updatedAt": "2026-10-23T21:54:17.553Z",
+   "updatedAt": "2026-10-29T20:55:12.030Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -7769,7 +8336,86 @@
     ],
     "gaps": [],
     "date": "2026-10-29"
-   }
+   },
+   "model": "fable",
+   "turns": 0.6,
+   "ms": {
+    "facts": 4994,
+    "draft": 3,
+    "measure": 5873,
+    "compile": 6704
+   },
+   "report": {
+    "triangles": 6928,
+    "bytes": 520884,
+    "gatesFailing": [
+     "eaves-vs-3dbag/walls[0]",
+     "eaves-vs-3dbag/walls[4]"
+    ],
+    "passed": false,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.33 mean 0.15 vs photo 0.60",
+       "wall family unresolved (#616464 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 1,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.20"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "PASS",
+      "reasons": []
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.44 mean 0.28 vs photo 0.56",
+       "wall family unresolved (#707379 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-10-29T20:55"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-111806/contact-walls-0.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-1.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-2.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-3.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-4.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-5.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-6.png",
+    "artifacts/building-recipes/pand-111806/contact-walls-7.png",
+    "artifacts/building-recipes/pand-111806/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012243737",

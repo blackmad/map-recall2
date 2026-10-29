@@ -668,6 +668,7 @@ class Game {
       this._explorationSnapshot = this._saveExploration();
       // One history record per ride, for My progress (src/canalRecall/routeHistory.ts).
       if (window.CanalRouteHistory) window.CanalRouteHistory.recordFinishedRide(this);
+      if (window.CanalRecallAnalytics) window.CanalRecallAnalytics.rideFinish(this);
     } else {
       this.player.finished = false;
       this._reviewStopWait = 0;
@@ -769,3 +770,4 @@ for (const RuntimeModule of window.CanalRecallGameModules || []) {
 // Expose the running instance for the browser smoke-test/debug harness. Game
 // state remains owned here; this only avoids brittle DOM-only test hooks.
 window.addEventListener('load', () => { window.canalRecallGame = new Game(); });
+/* Consent-free analytics load only once an endpoint is configured (src/canalRecall/analytics/browser.ts). */(function(){var c=window.CANAL_RUNTIME_CONFIG;if(!c||!c.analyticsEndpoint)return;var s=document.createElement('script');s.src='js/analytics.bundle.js';s.async=true;document.head.appendChild(s);})();

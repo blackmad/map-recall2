@@ -16,6 +16,38 @@ Re-running dou-1-7 now holds Gerard Doustraat 1–1D by itself. One reading per 
 The Frans Halsbuurt and Helmersbuurt-Oost reruns with the grown libraries installed nothing:
 - Frans Halsbuurt's one candidate was dou-1-7;
 - Helmersbuurt-Oost had 44 faces with no type.
+**Consent-free gameplay analytics (2026-10-29, #101 decided, #115).** The user chose
+to build it ourselves, accepted the Tw 11.7a / legitimate-interest reading (not
+legal advice), and asked for no retention counts yet. `src/canalRecall/analytics/`
+holds one allow-list schema shared by the browser and the function (eight events:
+session, ride_start, ride_end, ride_length, answer, buurt, perf, graphics_failure;
+closed value sets; unknown fields rejected). The client batches events and sends
+them by `sendBeacon`, with a session id per tab held in memory only. It sets no
+cookie, no storage and no fingerprint, and sends a buurt code instead of
+coordinates. `functions/` (codebase `analytics`, europe-west4) validates each batch
+and increments sharded daily counters in `analytics_daily`, which browsers cannot
+read or write. `scripts/analytics-report.ts` prints them. `privacy.html` gains one
+English and one Dutch paragraph. Tested: 30 unit tests, the emulator (exact counts,
+replay counted once, rules deny browsers), and `analytics-beacon.spec.ts` (payload
+allow-listed, no cookie or storage writes, nothing loads without an endpoint).
+Deploying needs Blaze; the steps are in TODO.
+
+**Street following aims down the street (2026-10-29).** Ways are often
+digitised as short pieces whose bearings zig-zag (Prinsengracht at the
+Leidsegracht: 66°, 97°, 72°, 37°, 48° over 60 m, after the 3 m
+simplification), and the follow steered to each piece in turn. It now walks
+the centreline ~25 m ahead in 15 px (5 m) steps via a contacts probe
+(`lookAheadHeading`), aims along the chord, and eases the aim over 0.2 s.
+Guards: the walk stays on its way, then its name; a step must move forward
+(a piece's clamped end stalled it); the chord may not leave any corridor walked
+(a right angle is followed, not cut); straight ways return their exact bearing.
+Sim, before → after: Keizersgracht ring camera peak 59 → 37°/s; through the
+Prinsengracht zig-zag the boat turns earlier and keeps ~1 m further off the
+quay (66→72→48° became 66→76→48°, smoother); reversal counts (≥0.5° legs)
+roughly unchanged. Cutting the zig-zag put a boat nearer a different piece of
+the Prinsengracht, whose reverse lay 147° off, and a queued left took it: a
+way of the street's own name more than 110° off is never a queued turn
+(`BACKTRACK_TURN`). The harness reversal count now ignores sub-0.5° flicker.
 
 **Type libraries grown; Sarphatiparkbuurt batch rerun (2026-10-29, #113).**
 

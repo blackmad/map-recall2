@@ -94,8 +94,11 @@ class PlayerCar extends Car {
   _applyStreetFollow(dt, track) {
     const ui = window.CanalRecallUi;
     const contacts = track && track.getRoadContacts ? track.getRoadContacts(this.x, this.y) : [];
+    // The probe lets it aim down the street rather than along the short piece
+    // underfoot (ways zig-zag where digitised in small pieces).
+    const probe = track && track.getRoadContacts ? (x, y) => track.getRoadContacts(x, y) : undefined;
     const step = ui.stepStreetFollow(this._streetState || ui.initialStreetFollowState(), this._streetButtons, {
-      heading: this.angle, speed: this.speed, contacts, dt,
+      heading: this.angle, speed: this.speed, contacts, dt, probe,
     });
     this._streetState = step.state;
     const command = step.command;
