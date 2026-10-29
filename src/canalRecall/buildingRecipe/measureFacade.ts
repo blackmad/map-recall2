@@ -548,17 +548,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
       const isWall = mixed[c] && pw.length && pn.length ? nearerWall(k) : ws[c] || dist[n] <= Math.min(tau, 0.9);
       raw[k] = isWall ? MASK.wall : nlab[k][0] > wallLab[0] + 5 ? MASK.trim : MASK.dark;
     });
-    // 3x3 majority clean-up of wall / not-wall (keeps the dark/trim label of the cell or its neighbours).
-    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
-      const k = j * cols + i; if (raw[k] === MASK.unusable) continue;
-      let nw = 0, n = 0, light = 0;
-      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
-        const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows) continue;
-        const q = raw[jj * cols + ii]; if (q === MASK.unusable) continue;
-        n++; if (q !== MASK.wall) { nw++; if (q === MASK.trim) light++; }
-      }
-      out[k] = nw * 2 > n ? (raw[k] !== MASK.wall ? raw[k] : light * 2 > nw ? MASK.trim : MASK.dark) : MASK.wall;
-    }
+    majorityClean(raw, cols, rows, out);
     // Openings (facadeOpenings.ts): frames, bars and panes regrouped into connected openings; bands and second materials out.
     const op = classifyOpenings({mask: Uint8Array.from(out), label: fullLabel, wallSet: ws, centres, edgeX, cols, rows, cell, counted: k => isUpper(Math.floor(k / cols)),
       // floors: the fit's storey lines, and where the fit has upper storeys, the photo's own floor zones (+-0.35 m round
@@ -632,6 +622,26 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
     glazing, storeyGlazing, ground, pitchM, pitchScore, columns, windowColumns, storeyM, window, frontClass, split, rowJoints};
+}
+
+/**
+ * 3x3 majority clean-up of wall / not-wall on the 10 cm cell grid (keeps the dark/trim label of the cell or its
+ * neighbours): a cell is not wall when most of its usable neighbours are. Lines one cell wide (a thin mullion between
+ * panes, a joint in a brick pier) vanish into their surroundings; two cells and wider survive. The photo's mask is read
+ * through it, and so is the model's curtain grid (likeness.ts `modelElevation`), so both sides see thin frames alike.
+ */
+export function majorityClean(raw: Uint8Array, cols: number, rows: number, out = new Uint8Array(raw.length).fill(MASK.unusable)): Uint8Array {
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    const k = j * cols + i; if (raw[k] === MASK.unusable) continue;
+    let nw = 0, n = 0, light = 0;
+    for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+      const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows) continue;
+      const q = raw[jj * cols + ii]; if (q === MASK.unusable) continue;
+      n++; if (q !== MASK.wall) { nw++; if (q === MASK.trim) light++; }
+    }
+    out[k] = nw * 2 > n ? (raw[k] !== MASK.wall ? raw[k] : light * 2 > nw ? MASK.trim : MASK.dark) : MASK.wall;
+  }
+  return out;
 }
 
 /** Chromaticity (r, g, b shares x 100) of a colour. */

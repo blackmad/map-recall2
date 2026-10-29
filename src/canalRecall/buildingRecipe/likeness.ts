@@ -26,6 +26,16 @@
  *   under it (windows under 4 m covering under 60 % of its span) on the other fails (rowOpenings `rowMismatch`);
  * - report only: not-wall mask IoU (WARN under 0.45), glass colour, the ground band (0..2.5 m, never pooled).
  *
+ * Curtain walls (GitHub #114): the photo reads a curtain front's mullion and transom grid as wall or trim (its wall
+ * cluster is the grid or the spandrels: photo glazing 0.70..0.87 on the #105 glass fronts), while the model drew the
+ * grid as frame slots, i.e. openings, and had no wall slot at all without spandrels ("wall not drawn", glazing 1.00).
+ * Where the group's system is `curtain-wall` or the photo's front class is `curtain`, and the model draws a curtain
+ * grid (`modelElevation` `curtain`: a `curtain-wall` group, or a front with no wall-slot material, whose modal frame
+ * material over the upper cells is the grid), the model is read the way the photo is: its wall is the spandrel material
+ * when it draws one, else the grid's; grid cells of the wall colour are wall, lighter ones trim, darker ones glazing
+ * (the photo's dark / light split); and the mask goes through the photo's 3x3 majority clean-up (measureFacade
+ * `majorityClean`), so a grid line one cell wide vanishes on both sides. The same LIKENESS constants judge it.
+ *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
  * washed out, the view is more than 45 degrees oblique, or the camera stood under 8 m from a wall over 15 m wide (for a
  * mosaic: one crop from under 8 m covering over 15 m of it).
@@ -36,7 +46,7 @@ import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
 import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
-import {analyseMask, chromaticity, hex, isOpeningCell, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {analyseMask, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
@@ -69,10 +79,15 @@ export interface ModelElevation {
   /** `wallToday`: through cityLookTint even when the tint is measured (what the game draws before the measured-tint bypass ships) */
   wall: Rgb | null; wallToday: Rgb | null; glass: Rgb | null; wallSlot: string | null;
   grid: MaskGrid;
+  /** the group's system, when the caller knows it (curtain symmetry) */
+  system?: string;
+  /** the model read as the photo reads a curtain front (file header), when it draws a curtain grid; `grid` on `mask` */
+  curtain?: CurtainReading;
 }
+export interface CurtainReading { mask: Uint8Array; wall: Rgb; wallToday: Rgb; wallSlot: string; mullion: Rgb; grid: MaskGrid }
 
 /** The model's elevation of one panel on the box (panel u, height above ground), classed like the photo. */
-export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>, behindM = 1.5): ModelElevation {
+export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>, behindM = 1.5, system?: string): ModelElevation {
   const bearing = (Math.atan2(panel.n[0], -panel.n[2]) * 180 / Math.PI + 360) % 360;
   const nx = Math.sin(bearing * Math.PI / 180), nz = -Math.cos(bearing * Math.PI / 180), tx = nz, tz = -nx;
   const tOf = (u: number) => (panel.o[0] + panel.r[0] * u) * tx + (panel.o[2] + panel.r[2] * u) * tz;
@@ -113,7 +128,35 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
     if (slot === 'glass') glassCells.push(c);
   }
   const grid = analyseMask({mask, cols, rows, cell, box, lines});
-  return {cols, rows, cell, box, mask, colours, wall, wallToday, glass: glassCells[0] ?? null, wallSlot: wallMat >= 0 ? slotOf[wallMat] : null, grid};
+  const curtain = curtainReading({matAt, cols, rows, cell, box, lines, slotOf, colourOf, todayOf, wallMat, system});
+  return {cols, rows, cell, box, mask, colours, wall, wallToday, glass: glassCells[0] ?? null, wallSlot: wallMat >= 0 ? slotOf[wallMat] : null, grid,
+    ...(system !== undefined ? {system} : {}), ...(curtain ? {curtain} : {})};
+}
+
+/**
+ * The model's curtain grid read as the photo reads one (file header): null unless the group is a `curtain-wall` or the
+ * front has no wall-slot material, and a frame material (the grid) shows above the ground band.
+ */
+export function curtainReading(a: {matAt: Int32Array; cols: number; rows: number; cell: number; box: FacadeBox; lines: number[]; slotOf: string[]; colourOf: Rgb[]; todayOf: Rgb[]; wallMat: number; system?: string}): CurtainReading | null {
+  const {matAt, cols, rows, cell, box, slotOf, colourOf} = a, N = cols * rows;
+  if (a.system !== 'curtain-wall' && a.wallMat >= 0) return null;
+  const votes = new Map<number, number>();
+  for (let k = 0; k < N; k++) { const m = matAt[k]; if (m >= 0 && slotOf[m] === 'frame' && box.v1 - (Math.floor(k / cols) + 0.5) * cell >= 2.5) votes.set(m, (votes.get(m) ?? 0) + 1); }
+  const grid = [...votes].sort((x, y) => y[1] - x[1])[0]?.[0] ?? -1;
+  if (grid < 0) return null;
+  const wallMat = a.wallMat >= 0 ? a.wallMat : grid, wallLab = rgbToLab(colourOf[wallMat]);
+  const raw = new Uint8Array(N).fill(MASK.unusable);
+  for (let k = 0; k < N; k++) {
+    const m = matAt[k]; if (m < 0) continue;
+    const slot = slotOf[m];
+    if (!WALL_SLOTS.has(slot) && !OPENING_SLOTS.has(slot) && !TRIM_SLOTS.has(slot)) continue;
+    const lab = rgbToLab(colourOf[m]), same = Math.hypot((lab[0] - wallLab[0]) * 0.5, lab[1] - wallLab[1], lab[2] - wallLab[2]) <= 15;
+    // the grid and the wall-slot materials: wall when of the wall colour, else the photo's light / dark split of not-wall cells
+    if (m === grid || WALL_SLOTS.has(slot)) raw[k] = same ? MASK.wall : m === grid ? (lab[0] > wallLab[0] + 5 ? MASK.trim : MASK.dark) : MASK.trim;
+    else raw[k] = OPENING_SLOTS.has(slot) ? (lab[0] < wallLab[0] + 5 ? MASK.dark : MASK.frame) : MASK.trim;
+  }
+  const mask = majorityClean(raw, cols, rows);
+  return {mask, wall: colourOf[wallMat], wallToday: a.todayOf[wallMat], wallSlot: slotOf[wallMat], mullion: colourOf[grid], grid: analyseMask({mask, cols, rows, cell, box, lines: a.lines})};
 }
 
 export type Verdict = 'PASS' | 'WARN' | 'FAIL' | 'NO EVIDENCE';
@@ -141,6 +184,8 @@ export interface LikenessResult {
   evidence: {usable: number; foliage: number; washedOut: number; obliquityDeg: number | null; cameraDistM: number | null; widthM: number; abstain: string[]};
   /** what the gate re-read on the photo before judging (GitHub #61), report only: pale panels the model draws, a shaded wall */
   rereads?: string[];
+  /** the model read as a curtain front (GitHub #114, file header), report only */
+  modelReading?: string;
 }
 
 /** Photo mask window at (du, dv) cells into the padded measurement, the model's size. */
@@ -242,7 +287,11 @@ export function closeCameraSpan(pieces: readonly {u0: number; u1: number; crop: 
  * from its own nearby panorama, `all-walls.ts --segment`); default the whole box width (one crop for the wall).
  */
 export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number; cameraSpanM?: number}): LikenessResult {
-  const {photo, model, padCells} = a, {cols, rows, cell, box} = model;
+  const {photo, padCells} = a, cr = a.model.curtain;
+  // curtain symmetry (file header): the model's curtain grid read as the photo reads one
+  const curtainMode = !!cr && (a.model.system === 'curtain-wall' || photo.frontClass === 'curtain');
+  const model: ModelElevation = curtainMode ? {...a.model, mask: cr.mask, wall: cr.wall, wallToday: cr.wallToday, wallSlot: cr.wallSlot, grid: cr.grid} : a.model;
+  const {cols, rows, cell, box} = model;
   // best shift within +-PAD_M
   let best = {du: 0, dv: 0, iou: -1};
   for (let dv = -padCells; dv <= padCells; dv++) for (let du = -padCells; du <= padCells; du++) {
@@ -339,5 +388,6 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
     columns: {photo: pg.columns, model: mg.columns, windows: {photo: pW, model: mW}, pass: colPass}, photoGrid: {pitchM: pg.pitchM, window: pg.window}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass}, ...(openings ? {openings: {...openings, sequenceMatch}} : {}),
     classes: {photo: pg.frontClass, model: mg.frontClass}, ground: {photo: pg.ground.glazing, model: mg.ground.glazing},
     evidence: {usable: +usable.toFixed(3), foliage: photo.foliageFraction, washedOut: photo.washedOutFraction, obliquityDeg: a.obliquityDeg ?? null, cameraDistM: a.cameraDistM ?? null, widthM: +widthM.toFixed(2), abstain},
-    ...(rereads.length ? {rereads} : {})};
+    ...(rereads.length ? {rereads} : {}),
+    ...(curtainMode ? {modelReading: `curtain grid ${hex(cr.mullion)} read as the photo reads one: wall ${hex(cr.wall)} (${cr.wall === cr.mullion ? 'the grid' : 'the spandrels'}), model glazing ${a.model.grid.glazing.toFixed(2)} -> ${cr.grid.glazing.toFixed(2)}`} : {})};
 }
