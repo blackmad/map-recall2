@@ -10,8 +10,11 @@ export function buildBeursBerlage(_w:number,_d:number,b:BuildingTools){
  // Explicit roof panels own the top surface. Retain extrusion walls/bottoms,
  // omitting upward caps that otherwise flicker against the gray flat roofs.
  function body(polys:number[][][][],base:number,h:number){for(const p of polys){const g=new T.ExtrudeGeometry(shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+h,0);const positions=g.getAttribute('position'),normals=g.getAttribute('normal'),v:number[]=[];for(let i=0;i<positions.count;i+=3){if(normals.getY(i)>.9&&normals.getY(i+1)>.9&&normals.getY(i+2)>.9)continue;for(let j=0;j<3;j++)v.push(positions.getX(i+j),positions.getY(i+j),positions.getZ(i+j));}g.dispose();mesh(v,'brick');}}
- function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth:.08,bevelEnabled:false,curveSegments:5}),c,x,y,z,a);}
- function pairedWindow(x:number,y:number,z:number,a:number,w=2.1,h=2.4){const nx=Math.sin(a),nz=Math.cos(a);box(x,y,z,w+.28,h+.2,.11,'stone',a);box(x+nx*.1,y+.08,z+nz*.1,w,h,.09,'glass',a);box(x+nx*.2,y+.05,z+nz*.2,.12,h,.12,'stone',a);box(x+nx*.2,y+h*.52,z+nz*.2,w,.1,.12,'stone',a);box(x,y+h+.1,z,w+.42,.22,.35,'stone',a);}
+ // `back` extends the arch behind its face into what it is set on (the wall,
+ // or the stone ring of an opening), so no arch hangs off its wall (audit
+ // "detached ... hovering", feedback 58f97b44). The face stays where it was.
+ function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour,back=0){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();const g=new T.ExtrudeGeometry(s,{depth:.08+back,bevelEnabled:false,curveSegments:5});g.translate(0,0,-back);add(g,c,x,y,z,a);}
+ function pairedWindow(x:number,y:number,z:number,a:number,w=2.1,h=2.4){const nx=Math.sin(a),nz=Math.cos(a);box(x-nx*.0475,y,z-nz*.0475,w+.28,h+.2,.205,'stone',a);box(x+nx*.1,y+.08,z+nz*.1,w,h,.09,'glass',a);box(x+nx*.2,y+.05,z+nz*.2,.12,h,.12,'stone',a);box(x+nx*.2,y+h*.52,z+nz*.2,w,.1,.12,'stone',a);box(x,y+h+.1,z,w+.42,.22,.35,'stone',a);}
  function band(ring:number[][],y:number,h:number,d:number,c:Colour){for(let i=0;i<ring.length-1;i++){const p=ring[i],q=ring[i+1];box((p[0]+q[0])/2,y,(p[1]+q[1])/2,Math.hypot(q[0]-p[0],q[1]-p[1]),h,d,c,-Math.atan2(q[1]-p[1],q[0]-p[0]));}}
  body(source.residualParentPolygons,0,14);
  for(const p of source.residualParentPolygons){const g=new T.ShapeGeometry(shape(p));g.rotateX(Math.PI/2);add(g,'frame',0,14,0);}
@@ -39,6 +42,13 @@ export function buildBeursBerlage(_w:number,_d:number,b:BuildingTools){
   if(base>=15)for(const p of part.localPolygons)band(p[0],eaves-.2,.25,.35,'stone');
  }
  function inside(x:number,z:number,ring:number[][]){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const p=ring[i],q=ring[j];if((p[1]>z)!==(q[1]>z)&&x<(q[0]-p[0])*(z-p[1])/(q[1]-p[1])+p[0])yes=!yes;}return yes;}
+ /** Eaves of the tallest ground-standing mass at a point: a mapped part, else the 14 m parent residual, else none. */
+ function wallTop(x:number,z:number){
+  let top=0;
+  for(const part of source.parts){const tags=part.properties as Record<string,string>;if(tags.min_height||tags['roof:material']==='glass')continue;if(part.localPolygons.some(poly=>inside(x,z,poly[0])))top=Math.max(top,Number(tags.height)-Number(tags['roof:height']||0));}
+  if(!top&&source.residualParentPolygons.some(poly=>inside(x,z,poly[0])))top=14;
+  return top;
+ }
  const ring=source.parent.localPolygons[0][0],winding=Math.sign(ring.slice(0,-1).reduce((s,p,i)=>s+p[0]*ring[i+1][1]-ring[i+1][0]*p[1],0))||1;
  // Exterior facade only. Source partitions and low interior courts are not
  // decorated or raised to the external wall height.
@@ -50,10 +60,14 @@ export function buildBeursBerlage(_w:number,_d:number,b:BuildingTools){
   band([p,q],.5,.4,.3,'stone');band([p,q],Math.min(h,18)-.4,.32,.3,'stone');
   const n=Math.max(1,Math.floor(len/(tower?4.2:5))),step=len/n;
   for(let j=0;j<n;j++){const t=(j+.5)/n,x=p[0]+dx*t+nx*.12,z=p[1]+dz*t+nz*.12;
-   if(tower){for(const y of [5,13,20]){arch(x,y,z,1.35,3.5,a,'stone');arch(x+nx*.1,y+.1,z+nz*.1,1.15,3.3,a,'dark');}continue;}
-   for(const y of [2.0,7.1,12.2])if(y+2.6<h)pairedWindow(x,y,z,a,Math.min(2.25,step*.62),2.5);
-   if(len>8&&h>=17&&h<30){
-    const width=Math.min(3.9,step*.85),y=Math.min(h,18)-.1,ux=Math.cos(a),uz=-Math.sin(a),v=[x-ux*width/2,y,z-uz*width/2,x+ux*width/2,y,z+uz*width/2,x,y+2.25,z];mesh(v,'brick');arch(x+nx*.12,y+.2,z+nz*.12,.92,1.65,a,'stone');
+   // The wall behind this window, not the segment's midpoint: a segment that
+   // runs past the clock tower onto the 14 m block hung tower arches in the
+   // air above its roof (feedback 58f97b44, "floating windows on berlage").
+   const local=Math.min(h,wallTop(x-nx*.37,z-nz*.37));
+   if(tower){for(const y of [5,13,20]){if(y+3.5>local)continue;arch(x,y,z,1.35,3.5,a,'stone',.15);arch(x+nx*.1,y+.1,z+nz*.1,1.15,3.3,a,'dark',.03);}continue;}
+   for(const y of [2.0,7.1,12.2])if(y+2.6<local)pairedWindow(x,y,z,a,Math.min(2.25,step*.62),2.5);
+   if(len>8&&local>=17&&local<30){
+    const width=Math.min(3.9,step*.85),y=Math.min(h,18)-.1,ux=Math.cos(a),uz=-Math.sin(a),gx=x-nx*.12,gz=z-nz*.12,v=[gx-ux*width/2,y,gz-uz*width/2,gx+ux*width/2,y,gz+uz*width/2,gx,y+2.25,gz];mesh(v,'brick');arch(x+nx*.12,y+.2,z+nz*.12,.92,1.65,a,'stone',.27);
    }
   }
  }
@@ -63,10 +77,10 @@ export function buildBeursBerlage(_w:number,_d:number,b:BuildingTools){
  const tw=Math.sign(r.slice(0,-1).reduce((s,p,i)=>s+p[0]*r[i+1][1]-r[i+1][0]*p[1],0))||1;
  for(let i=0;i<r.length-1;i++){
   const p=r[i],q=r[i+1],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<5)continue;const a=-Math.atan2(dz,dx)+(tw>0?Math.PI:0),nx=Math.sin(a),nz=Math.cos(a),x=(p[0]+q[0])/2+nx*.14,z=(p[1]+q[1])/2+nz*.14;
-  box(x,26.1,z,4.8,4.8,.14,'stone',a);box(x+nx*.12,26.35,z+nz*.12,4.3,4.3,.12,'blue',a);
+  box(x-nx*.08,26.1,z-nz*.08,4.8,4.8,.30,'stone',a);box(x+nx*.12,26.35,z+nz*.12,4.3,4.3,.12,'blue',a);
   add(new T.CylinderGeometry(1.7,1.7,.14,16).rotateX(Math.PI/2),'gold',x+nx*.23,28.5,z+nz*.23,a);add(new T.CylinderGeometry(1.5,1.5,.15,16).rotateX(Math.PI/2),'red',x+nx*.33,28.5,z+nz*.33,a);
   for(let k=0;k<12;k++){const t=k*Math.PI/6,u=1.25*Math.sin(t),v=1.25*Math.cos(t);box(x+nx*.44+Math.cos(a)*u,28.4+v,z+nz*.44-Math.sin(a)*u,.1,.22,.07,'gold',a);}box(x+nx*.46,28.5,z+nz*.46,.12,1.15,.08,'gold',a);
-  arch(x,33,z,3.2,5.2,a,'stone');arch(x+nx*.12,33.15,z+nz*.12,2.9,4.95,a,'dark');
+  arch(x,33,z,3.2,5.2,a,'stone',.17);arch(x+nx*.12,33.15,z+nz*.12,2.9,4.95,a,'dark',.05);
   for(let j=0;j<5;j++)box(p[0]+dx*(j+.5)/5,38.8,p[1]+dz*(j+.5)/5,.75,.65,.35,'stone',a);
  }
 }

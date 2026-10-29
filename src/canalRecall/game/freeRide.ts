@@ -12,6 +12,8 @@
 // off only while a free ride is running and restores it when the ride ends.
 
 import type { WorldPoint } from './worldTypes';
+import { dedupeLabelCandidates } from '../labels/labelDedupe';
+import type { LabelCandidate } from '../labels/labelPlan';
 
 /** The route pattern that means Free Ride (see `modes.ts` ROUTE_PATTERNS). */
 export const FREE_RIDE_PATTERN = 'free';
@@ -204,4 +206,34 @@ export function tapNamesWay(contact: { dist?: number; width?: number } | null, s
   if (!contact || !Number.isFinite(contact.dist)) return false;
   const halfWidth = Number.isFinite(contact.width) ? (contact.width as number) : 0;
   return (contact.dist as number) <= halfWidth + slopPx;
+}
+
+export interface CatalogLandmark {
+  id: string;
+  name: string;
+  /** [lng, lat] of the landmark's centre. */
+  lngLat?: readonly number[];
+  prominenceScore?: number;
+  /** Display geometry (landmarkData.ts): a Polygon feature is its building. */
+  geojson?: { features?: ReadonlyArray<{ geometry?: { type: string; coordinates: unknown } }> };
+}
+
+/**
+ * Landmarks that would be a second marker for a place: a part inside a
+ * bigger landmark's building ("Cuypersgebouw" in Central Station, feedback
+ * 3702bcd7) or another name for one, by the POI labels' own rules
+ * (labels/labelDedupe.ts). They keep their card when the building is tapped.
+ */
+export function secondMarkerIds(landmarks: readonly CatalogLandmark[]): Set<string> {
+  const candidates: LabelCandidate[] = [];
+  const footprints = new Map<string, unknown>();
+  for (const landmark of landmarks) {
+    const [lng, lat] = landmark.lngLat || [];
+    if (!Number.isFinite(lng) || !Number.isFinite(lat)) continue;
+    const id = String(landmark.id);
+    candidates.push({ id, name: landmark.name, lng, lat, heightM: 0, cls: 'landmark', rank: Math.min(999, (landmark.prominenceScore || 0) / 2) });
+    const polygon = landmark.geojson?.features?.find(f => f.geometry?.type === 'Polygon')?.geometry;
+    if (polygon) footprints.set(id, polygon);
+  }
+  return new Set(dedupeLabelCandidates(candidates, footprints).dropped.map(d => d.dropped.id));
 }

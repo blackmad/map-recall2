@@ -71,6 +71,20 @@ function within1Edit(a: string, b: string): boolean {
 }
 
 /**
+ * The same name, or the same words in another spelling or language, word for
+ * word: "Centraal Station" / "Central Station". Stricter than `similarNames`
+ * (no shared-word rule), so it is safe across a whole screen: "National
+ * Monument" and "Monument voor Damslachtoffers" share a word, not a name.
+ */
+export function spellingVariants(a: string, b: string): boolean {
+  const ka = nameKey(a), kb = nameKey(b);
+  if (!ka || !kb) return false;
+  if (ka === kb) return true;
+  const xa = ka.split(' '), xb = kb.split(' ');
+  return xa.length === xb.length && xa.some(w => w.length >= 4) && xa.every((w, i) => w.length >= 4 ? within1Edit(w, xb[i]) : w === xb[i]);
+}
+
+/**
  * Two names for one place: identical once normalised, or sharing a
  * distinctive word ("Berlage's Stock Market" / "Beurs van Berlage"), one
  * spelling apart for long words ("Centraal" / "Central" are generic, but
@@ -79,11 +93,8 @@ function within1Edit(a: string, b: string): boolean {
 export function similarNames(a: string, b: string): boolean {
   const ka = nameKey(a), kb = nameKey(b);
   if (!ka || !kb) return false;
-  if (ka === kb) return true;
-  // The same words in another spelling or language: "Centraal Station" / "Central Station".
-  const xa = ka.split(' '), xb = kb.split(' ');
-  if (xa.length === xb.length && xa.some(w => w.length >= 4) && xa.every((w, i) => w.length >= 4 ? within1Edit(w, xb[i]) : w === xb[i])) return true;
-  const distinctive = (w: string) => w.length >= 4 && !GENERIC.has(w) && !STOP.has(w) && !PLACE_WORDS.has(w);
+  if (spellingVariants(a, b)) return true;
+  const distinctive = (w: string) => w.length >= 4 && /[a-z]/.test(w) && !GENERIC.has(w) && !STOP.has(w) && !PLACE_WORDS.has(w);
   const wa = ka.split(' ').filter(distinctive), wb = kb.split(' ').filter(distinctive);
   for (const x of wa) for (const y of wb) {
     if (x === y) return true;
@@ -221,4 +232,45 @@ export function footprintAreaM2(geometry: Polygon): number {
     total += Math.abs(a) / 2;
   }
   return total;
+}
+
+/** A place already labelled by something other than the overlay: a Free Ride marker. */
+export interface MarkedPlace {
+  /** The landmark id the marker opens (the overlay's landmark candidates share it). */
+  id: string;
+  name: string;
+  lng?: number;
+  lat?: number;
+}
+
+/**
+ * The overlay candidates on one screen that would be a second label of a
+ * place (feedback d85ba0ac, 3702bcd7, 2026-10-25):
+ *  - a place a Free Ride marker already names: the same landmark id, a
+ *    similar name within SIMILAR_NAME_NEAR_M, or a spelling variant within
+ *    SAME_NAME_NEAR_M ("Berlage's Stock Market" was a pill and a label);
+ *  - two spelling variants on one screen within SAME_NAME_NEAR_M: the OSM
+ *    "Centraal Station" entrance node 250 m from the "Central Station"
+ *    landmark is kept as an entrance label, but never on screen beside it.
+ * The higher-ranked of a pair stays (destination, landmark, culture, civic,
+ * venue; then rank). Venues are never matched by spelling: chains repeat.
+ */
+export function screenDuplicateIds(onScreen: readonly LabelCandidate[], marked: readonly MarkedPlace[] = []): Set<string> {
+  const out = new Set<string>();
+  const markedIds = new Set(marked.map(m => m.id));
+  const order = [...onScreen].sort((a, b) => outranks(b, a));
+  const kept: LabelCandidate[] = [];
+  for (const c of order) {
+    if (c.cls === 'destination') { kept.push(c); continue; }
+    if (markedIds.has(c.id)) { out.add(c.id); continue; }
+    if (c.cls !== 'venue') {
+      const near = (m: { lng?: number; lat?: number }, limit: number) => m.lng == null || m.lat == null
+        || Math.hypot((m.lng - c.lng) * metresPerLng(c.lat), (m.lat - c.lat) * 111320) <= limit;
+      const byMarker = marked.some(m => (similarNames(m.name, c.name) && near(m, SIMILAR_NAME_NEAR_M)) || (spellingVariants(m.name, c.name) && near(m, SAME_NAME_NEAR_M)));
+      const byLabel = !byMarker && kept.some(k => k.cls !== 'venue' && spellingVariants(k.name, c.name) && distanceM(k, c) <= SAME_NAME_NEAR_M);
+      if (byMarker || byLabel) { out.add(c.id); continue; }
+    }
+    kept.push(c);
+  }
+  return out;
 }
