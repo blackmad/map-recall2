@@ -268,8 +268,14 @@ export class BuildingTileStreamer {
     this.attached = true;
     this.onFirstBuildings = onFirstBuildings;
     this.onFeatures = onFeatures;
-    this.map.on('moveend', () => this.followCamera());
+    // Only a re-plan: MapLibre also fires `moveend` from `resize()`, and a WebGL context restore resizes. On the
+    // briefing, where nothing has aimed the streamer yet, that moveend planned the style's Damrak default and
+    // ~67-183 k facade triangles drew behind the card that had not drawn before the loss (#109).
+    this.map.on('moveend', () => { if (this.aimed) this.followCamera(); });
   }
+
+  /** Planned once by an explicit `followCamera` (the game's camera sync, a lab page): `moveend` may then re-plan. */
+  private aimed = false;
 
   setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.restyleResident();}
 
@@ -449,6 +455,7 @@ export class BuildingTileStreamer {
     // Loading before attach would populate the old source, then leave the new
     // source empty while the cache/signature incorrectly say it is current.
     if (!this.available || !this.attached || this.disposed) return;
+    this.aimed = true;
     const centre = this.map.getCenter();
     const tile = tileFor(centre.lng, centre.lat, this.zoom);
     const zoomBucket = Math.round(this.map.getZoom() * 2) / 2;

@@ -81,3 +81,26 @@ test('a removed map stops the wait', () => {
     mock.timers.reset();
   }
 });
+
+// #109 / #106 follow-up 3: a context restore resizes the map, and MapLibre's `resize()` fires `moveend`. On the
+// briefing nothing had aimed the streamer, so that moveend planned the style's Damrak default and 67-183 k facade
+// triangles drew behind the card that had not drawn before the loss. A moveend only re-plans an aimed streamer.
+test('moveend before the first explicit followCamera (a restore\'s resize) plans nothing; after it, it re-plans', () => {
+  const handlers: Record<string, Array<() => void>> = {};
+  const { map } = fakeMap();
+  map.on = ((event: string, handler: () => void) => { (handlers[event] ??= []).push(handler); }) as never;
+  const streamer = new BuildingTileStreamer(map as never, 'buildings', '/data');
+  const internals = streamer as unknown as { available: boolean; update(): void; lastFollowSignature: string };
+  internals.available = true;
+  let plans = 0;
+  internals.update = () => { plans++; };
+  streamer.attach();
+  for (const h of handlers.moveend ?? []) h();
+  assert.equal(plans, 0, 'the style default view is not planned on a bare moveend');
+  streamer.followCamera();
+  assert.equal(plans, 1, 'the game\'s camera sync plans');
+  internals.lastFollowSignature = '';
+  for (const h of handlers.moveend ?? []) h();
+  assert.equal(plans, 2, 'once aimed, moveend re-plans as before');
+  streamer.dispose();
+});

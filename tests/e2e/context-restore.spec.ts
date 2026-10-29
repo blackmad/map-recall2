@@ -67,3 +67,28 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
   }), { timeout: 10_000 }).toBe(false);
   console.log(JSON.stringify({ project: test.info().project.name, drawnMs, groundCells: after.groundCells }));
 });
+
+// #109 (#106 follow-up 3): MapLibre's restore resizes the map, and `resize()` fires `moveend`. The building streamer
+// followed every moveend, so on the untouched briefing, where nothing had aimed it yet, a restore planned the style's
+// Damrak default and 67-183 k facade triangles drew that had not drawn before the loss. A restore now leaves the
+// briefing's resident set as it was (buildingTilesBrowser.ts, `aimed`).
+test('a context restore on the briefing streams no buildings the briefing had not', async ({ page }) => {
+  test.setTimeout(120_000);
+  await page.goto('/canal-drive/');
+  await page.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?._sharedFrame?.renderer && (window as any).canalRecallGame?.vectorMap?._completeCity, null, { timeout: 90_000 });
+  await page.waitForTimeout(3000);
+  const resident = () => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    return { state: (window as any).canalRecallGame.state, tiles: vm._completeCity.cache.size, features: vm._tileFeatures.length, facadeChunks: vm._threeBuildings?.chunks?.size ?? 0 };
+  });
+  const before = await resident();
+  expect(before.state).toBe(0);
+  await page.evaluate(() => new Promise<void>(resolve => {
+    const gl = (window as any).canalRecallGame.vectorMap.map.painter.context.gl, ext = gl.getExtension('WEBGL_lose_context');
+    ext.loseContext();
+    setTimeout(() => { ext.restoreContext(); resolve(); }, 173);
+  }));
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._sharedFrame.contextEvents.restored), { timeout: 5_000 }).toBe(1);
+  await page.waitForTimeout(3000);
+  expect(await resident()).toEqual(before);
+});
