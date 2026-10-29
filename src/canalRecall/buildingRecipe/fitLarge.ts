@@ -29,6 +29,7 @@ import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
 import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import {fitBoxBalconies, type BoxBalconyFit} from '../blockBuilding/boxBalcony.ts';
+import {fitStackedBlocks, type StackedBlocksFit} from '../blockBuilding/stackedBlocks.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
@@ -43,6 +44,8 @@ export function splitAtBay(uMin: number, uMax: number, pitchM: number, at: numbe
   const W = uMax - uMin, n = Math.max(2, Math.round(W / Math.max(0.5, pitchM))), k = Math.max(1, Math.min(n - 1, Math.round(at * n)));
   return r3(uMin + k / n * W);
 }
+/** A stacked-block balcony's glass balustrade as it reads from the street: a pale grey-green sheet (Blend 2023 photo). */
+export const STACKED_BLOCK_RAIL = '#c3cdcb';
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
 export const CROSS_SIZE_M = {small: 1.4, medium: 2.2, large: 3.2} as const;
@@ -108,6 +111,8 @@ export interface LargeGroupFit {
   gallery?: GalleryFit[];
   /** closed box balconies on scattered (storey, bay) cells of the main panel (intent `boxBalconies`, blockBuilding/boxBalcony.ts) */
   boxBalconies?: BoxBalconyFit;
+  /** stacked offset blocks and recessed balconies, storey by storey on the main panel (intent `stackedBlocks`, blockBuilding/stackedBlocks.ts) */
+  stackedBlocks?: StackedBlocksFit;
   /** mansard storeys and their slate-textured slot */
   mansard?: {storeys: number[]; slot: string};
 }
@@ -318,7 +323,7 @@ export function placeLantern(facts: BuildingFacts, anchorRD: [number, number], p
 
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
 export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport} {
-  const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && intent.footprint !== 'bag' ? {facts}
+  const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
     : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
   if (!intent.roof?.levelRooftop) return shelled;
   // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
@@ -351,7 +356,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   if (byShell) intent.walls.forEach((w, gi) => { if (w.shell !== undefined) for (const s of w.wallSurfaces) if (!set.walls.some((x, wi) => x.surface === s && shellOf[wi] === w.shell)) throw Error(`${intent.id}: walls[${gi}] lists surface ${s} of shell ${w.shell}, which has no such LoD2.2 wall (shells: ${Math.max(...shellOf)})`); });
   // Group per surface-set wall; coplanar walls of different groups stay separate panels.
   // shellRepair: panels merge only truly coplanar walls (strictMergeClasses), so a dissolved face cannot stray off a roof edge
-  const strict = intent.shellRepair || intent.footprint === 'bag' ? strictMergeClasses(set.walls) : null;
+  const strict = intent.shellRepair || intent.footprint === 'bag' || intent.footprint === 'core' ? strictMergeClasses(set.walls) : null;
   const wallGroup = set.walls.map((w, wi) => strict ? ((groupOfWall[wi] ?? -1) + 1) * 100000 + strict[wi] : groupOfWall[wi] ?? -1);
   const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, mergeKey: wi => wallGroup[wi]});
   // Panel -> group: the group holding most of its surfaces (by area), ties to the lower group.
@@ -575,6 +580,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.boxBalconies ? {boxBalconies: fitBoxBalconies(w.boxBalconies, w.boxBalconies.colour ? (palette[`box@g${gi}`] = swatch(w.boxBalconies.colour), `box@g${gi}`) : slots.frame)} : {}),
+      ...(w.stackedBlocks ? {stackedBlocks: fitStackedBlocks(w.stackedBlocks, {wall: slots.wall, frame: slots.frame, glass: slots.glass, rail: (palette[`rail@sb${gi}`] = STACKED_BLOCK_RAIL, `rail@sb${gi}`)})} : {}),
       ...(w.gallery ? {gallery: fitGallery(w.gallery, {stone: slots.stone, timber: (k, colour) => { if (!colour) return slots.frame; const sl = `rail@gal${gi}k${k}`; palette[sl] = swatch(colour); return sl; },
         rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),
       ...(clad && cladSlot && cladLine ? {cladding: {kind: clad.kind, ...claddingHeights(eaves, clad.from, clad.to), pitchM: clad.pitch ?? (clad.kind === 'paint' ? 0 : CLADDING[clad.kind].pitch), rowPitchM: clad.rowPitch ?? PANEL_ROW_M, slot: cladSlot, lineSlot: cladLine,

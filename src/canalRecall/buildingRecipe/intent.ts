@@ -9,6 +9,7 @@
  * compiler builds geometry.
  */
 import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
+import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
@@ -1245,6 +1246,12 @@ export interface LargeWallIntent {
   gallery?: GalleryIntent | GalleryIntent[];
   /** Closed box balconies on scattered (storey, bay) cells of the main panel (blockBuilding/boxBalcony.ts, Haarlemmerweg 778 "Pepper"). Absent: byte-identical. */
   boxBalconies?: BoxBalconyIntent;
+  /**
+   * Stacked offset blocks on the main panel, written storey by storey (blockBuilding/stackedBlocks.ts, Blend,
+   * Haarlemmerweg 518): `B` a block stepped `deepM` out with its own framed windows, `R` a recessed balcony with a glass
+   * balustrade on the block line, `.` the core wall. Absent: byte-identical.
+   */
+  stackedBlocks?: StackedBlocksIntent;
 }
 
 export interface LargeBuildingIntent {
@@ -1297,9 +1304,12 @@ export interface LargeBuildingIntent {
   shellRepair?: boolean;
   /**
    * `bag`: build the massing on the BAG LoD0 outline (LoD2.2 roof planes clipped to it, walls from the repair strips)
-   * when the LoD2.2 ground has drifted from it (IoU < 0.90). Default `lod22`: the LoD2.2 shell verbatim.
+   * when the LoD2.2 ground has drifted from it (IoU < 0.90). `core` (coreFootprint.ts, Blend 2026-10-29): the same on
+   * the BAG outline with its shallow outward steps (<= 2.5 m) retracted, for a tower whose stacked offset blocks BAG
+   * draws as one top-view union; the blocks come back per storey from `walls[].stackedBlocks`. Default `lod22`: the
+   * LoD2.2 shell verbatim.
    */
-  footprint?: 'lod22' | 'bag';
+  footprint?: 'lod22' | 'bag' | 'core';
   /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
   groundClamp?: boolean;
   /**

@@ -27,7 +27,9 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding, op
   g('finite', tris.every(t => [...t.a, ...t.b, ...t.c].every(Number.isFinite)), true, 'all positions finite');
   g('non-metallic', tris.every(t => t.metallic === 0), true, 'metallicFactor 0');
   const rings = recipe.set.ground.flatMap(s => s.rings.map(r => r.map(p => [p[0], p[2]])));
-  let iou = footprintIoU(facts, rings, recipe.anchorRD);
+  // stacked blocks off a core footprint (`footprint: "core"`): the plan is the core plus every block (the BAG top view)
+  const blocks = built.blockPlans ?? [];
+  let iou = footprintIoU(facts, rings, recipe.anchorRD, blocks);
   // 3DBAG LoD0 can be the courtyard-less outer ring (Westerdok 536) while its own LoD2.2 ground has the courtyards:
   // then the LoD2.2 holes are the courtyards of the BAG outline (only when LoD0 has no hole of its own).
   const courtyards = recipe.set.ground.flatMap(s => s.rings.slice(1).map(r => r.map(p => [p[0] + ax, ay - p[2]])));
@@ -36,7 +38,7 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding, op
     const alt = footprintIoU({...facts, bagFootprintRD: [...facts.bagFootprintRD, ...courtyards]} as typeof facts, rings, recipe.anchorRD);
     if (alt > iou) { iou = alt; viaCourtyards = courtyards.length; }
   }
-  g('footprint-vs-bag', iou >= 0.9, viaCourtyards ? {iou: +iou.toFixed(3), courtyardsFromLod22: viaCourtyards} : +iou.toFixed(3), 'IoU >= 0.90 against BAG LoD0');
+  g('footprint-vs-bag', iou >= 0.9, viaCourtyards ? {iou: +iou.toFixed(3), courtyardsFromLod22: viaCourtyards} : blocks.length ? {iou: +iou.toFixed(3), coreIou: +footprintIoU(facts, rings, recipe.anchorRD).toFixed(3), stackedBlocks: blocks.length} : +iou.toFixed(3), 'IoU >= 0.90 against BAG LoD0');
   const roofMax = Math.max(...tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]));
   g('ridge-vs-3dbag', Math.abs(roofMax - facts.heights.roofMaxM) <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2)}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max)');
   const panels = new Map<number, {o: number[]; r: number[]; n: number[]; uMin: number; uMax: number}>();
