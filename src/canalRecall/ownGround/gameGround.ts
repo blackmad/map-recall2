@@ -15,7 +15,8 @@
 //   `?groundRing=steps|view`) and cuts each heavy layer of a cell into 3×3
 //   tiles that three.js frustum-culls (cellTiles.ts, `?groundTiles=1..4`).
 //   iPad Westerkerk pitch 60: own-ground 875 k → ~320 k drawn triangles, the
-//   picture unchanged. Desktop keeps the stepped ring and one mesh per layer.
+//   picture unchanged. Desktop keeps the stepped ring and, since the same
+//   day, also draws 3×3 tiles (desktop Westerkerk 1065 k → 466 k, identical).
 // - Drawn as one participant of the shared three.js frame (order −10, under
 //   the facades), lit and shadowed by its rig.
 // - Overlays are draped ribbons on the same surface: the route line, the
@@ -40,7 +41,7 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundL
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { splitIntoTiles } from './cellTiles.js';
+import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -109,20 +110,22 @@ export interface OwnGroundOptions {
   ring?: 'steps' | 'view';
   /**
    * Cut each heavy layer of a cell into `tiles`×`tiles` sub-meshes so the ones off screen are culled (cellTiles.ts;
-   * default: from the page, `groundTilesFlag()` below; 1 = one mesh per layer, the desktop path). Display only.
+   * default: from the page, `groundTilesFlag()` below, 3; 1 = one mesh per layer). Display only.
    */
   tiles?: number;
 }
 
 /**
- * Cell tiles on this device: 3×3 on a touch device, none on a desktop (unchanged). `?groundTiles=1..4` (or
- * `window.__canalRecallGroundTiles`) overrides it.
+ * Cell tiles per side: 3×3 on every device. Touch since 2026-10-29 (#100); desktop since the same day, after the
+ * in-page before/after (scripts/gpu-load-ipad.mjs RETILE) came out pixel-identical at the Westerkerk, Damrak, Dam and
+ * Leidseplein with drawn ground triangles 1.04–1.44 M → 0.35–0.47 M. `?groundTiles=1..4` (or
+ * `window.__canalRecallGroundTiles`) overrides it; `?groundTiles=1` is the one-mesh-per-layer opt-out.
  */
 function groundTilesFlag(): number {
   const g = globalThis as { __canalRecallGroundTiles?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
   const asked = Number(g.__canalRecallGroundTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundTiles') : NaN));
   if (Number.isInteger(asked) && asked >= 1 && asked <= 4) return asked;
-  return g.matchMedia?.('(pointer: coarse)')?.matches ? TOUCH_TILES : 1;
+  return CELL_TILES;
 }
 
 /**
@@ -204,8 +207,8 @@ interface FarResident { key: string; group: any; parts: Map<string, any>; triang
 interface Resident { key: string; lod: 0 | 1; detail: CellDetail; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
-/** Cell tiles per side on a touch device (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
-const TOUCH_TILES = 3;
+/** Cell tiles per side (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
+const CELL_TILES = 3;
 const TILE_MIN_TRIANGLES = 4000;
 const AERIAL_RADIUS_M = 2000;
 /** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
@@ -922,18 +925,16 @@ export class OwnGround {
    * buffers, each with its own index and bounding sphere so three.js culls the tiles off screen. A tile's fade clone
    * and material are the layer's; the dispose in drop() runs over every tile.
    */
-  private tiledGeometries(p: GpuMesh): any[] {
-    const tiles = splitIntoTiles(p.positions, p.indices, this.opts.tiles, TILE_MIN_TRIANGLES);
-    if (!tiles) return [this.geometry(p)];
-    const THREE = this.THREE, base = this.packedGeometry(p);
-    return tiles.map(t => {
-      const g = new THREE.BufferGeometry();
-      for (const [name, attribute] of Object.entries(base.attributes)) g.setAttribute(name, attribute);
-      g.setIndex(new THREE.BufferAttribute(t.indices, 1));
-      g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...t.center), t.radius);
-      if (this.opts.releaseArrays) for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
-      return g;
-    });
+  /**
+   * Cut a layer mesh into `tiles`×`tiles` culled tiles over its own buffers (rendererShared/tiledGeometry.ts); the
+   * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
+   * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
+   */
+  private tile(mesh: any): void {
+    if (this.opts.tiles <= 1) return;
+    const tilesOnly = !!this.opts.releaseArrays;
+    // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: tilesOnly, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {
@@ -993,17 +994,16 @@ export class OwnGround {
       if (uniforms && CUT[layer]) { material = this.cutMaterial(layer, uniforms); materials.push(material); }
       const original = material;
       if (fade) material = this.fadeMaterial(original, fade.uniform);
-      for (const geometry of this.tiledGeometries(p)) {
-        const mesh = new THREE.Mesh(geometry, material);
-        if (fade) fade.meshes.push({ mesh, original, clone: material });
-        mesh.name = layer;
-        mesh.matrixAutoUpdate = false;
-        mesh.receiveShadow = true;
-        // Deck bodies, hedges and park furniture stand up; the rest is ground.
-        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
-        mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-        group.add(mesh);
-      }
+      const mesh = new THREE.Mesh(this.geometry(p), material);
+      if (fade) fade.meshes.push({ mesh, original, clone: material });
+      mesh.name = layer;
+      mesh.matrixAutoUpdate = false;
+      mesh.receiveShadow = true;
+      // Deck bodies, hedges and park furniture stand up; the rest is ground.
+      mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+      mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
+      this.tile(mesh);
+      group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
     }
@@ -1025,7 +1025,8 @@ export class OwnGround {
     this.root.remove(r.group);
     this.fading.delete(key);
     for (const f of r.fade?.meshes ?? []) f.clone.dispose();
-    r.group.traverse((o: any) => { if (o.isMesh) o.geometry.dispose(); });
+    r.group.traverse((o: any) => { if (o.isMesh && !o.userData?.tile) o.geometry.dispose(); });
+    for (const o of [...r.group.children]) disposeTiles(o);
     for (const m of r.materials) m.dispose();
     for (const t of r.textures) t.dispose();
     this.resident.delete(key);
@@ -1200,7 +1201,7 @@ export class OwnGround {
       const mask = r.textures[0]?.image as { data: Uint8Array; width: number; height: number } | undefined;
       const uniforms = r.maskInfo;
       r.group.traverse((o: any) => {
-        if (!o.isMesh) return;
+        if (!o.isMesh || o.userData?.tile) return; // a tile repeats its owner's triangles
         const layer = o.name as GroundLayer, pos = o.geometry.attributes.position.array as Float32Array, idx = o.geometry.index.array as Uint32Array;
         if (!pos || !idx) return; // released after upload (releaseArrays)
         for (let t = 0; t < idx.length; t += 3) {

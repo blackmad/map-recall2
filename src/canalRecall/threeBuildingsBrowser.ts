@@ -47,6 +47,7 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
+import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
 import { detailBlock, type DetailBlock } from './detailRing.js';
 
@@ -76,6 +77,21 @@ function facadeDetailFlag(): FacadeDetail {
   const asked = g.__canalRecallFacadeDetail ?? (g.location?.search ? new URLSearchParams(g.location.search).get('facadeDetail') : null);
   if (asked === 'full' || asked === 'touch') return asked;
   return g.matchMedia?.('(pointer: coarse)')?.matches ? 'touch' : 'full';
+}
+/**
+ * Facade chunk tiles per side (CANAL-RECALL-7, 2026-10-29): a merged chunk can draw as `n`×`n` child meshes over its
+ * own buffers (rendererShared/tiledGeometry.ts) so three.js culls the tiles off screen, a building never split across
+ * two; the shared frame picks whole or tiles per chunk and frame. The chunk mesh stays whole for picking, `hidden`
+ * flags, highlight passes and fades. 3 on every device; `?facadeTiles=1..4` (or
+ * `window.__canalRecallFacadeTiles` before load) overrides it, `?facadeTiles=1` draws one mesh per chunk as before.
+ */
+const FACADE_TILES = 3;
+/** Chunks smaller than this stay one mesh (a draw call per tile costs more than the culling saves). */
+const FACADE_TILE_MIN_TRIANGLES = 4000;
+function facadeTilesFlag(): number {
+  const g = globalThis as { __canalRecallFacadeTiles?: number | string; location?: { search?: string } };
+  const asked = Number(g.__canalRecallFacadeTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('facadeTiles') : NaN));
+  return Number.isInteger(asked) && asked >= 1 && asked <= 4 ? asked : FACADE_TILES;
 }
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
@@ -427,6 +443,9 @@ export class ThreeBuildings {
    * gives them one quad per wall and their flat lid; `full` is the desktop build, unchanged.
    */
   private readonly detail: FacadeDetail;
+  /** Facade chunk tiles per side (facadeTilesFlag). */
+  private readonly facadeTiles = facadeTilesFlag();
+
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural', options: { detail?: FacadeDetail } = {}) {
     this.look = this.requestedLook = look;
@@ -1172,6 +1191,9 @@ export class ThreeBuildings {
       lifted += n;
       attribute.needsUpdate = true;
       entry.mesh.geometry.computeBoundingSphere();
+      // Tiles were measured at install: grow them by the largest lift since (a few metres; conservative, never short).
+      const range = this.liftRange(lift.applied);
+      growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
       // Settled: let the CPU copy go after the next upload.
       if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
     }
@@ -1297,6 +1319,8 @@ export class ThreeBuildings {
     const sphere = boundingSphereOf(chunk.positions);
     geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     const mesh = new THREE.Mesh(geometry, this.material);
+    // Culled tiles over the same buffers (FACADE_TILES), measured while the CPU arrays still exist; a building stays in one tile.
+    cutMesh(THREE, mesh, this.facadeTiles, FACADE_TILE_MIN_TRIANGLES, { groups: chunk.ranges, release: true });
     mesh.userData ??= {};
     mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;
     mesh.userData.boundParentIds = boundParentIds;
@@ -1394,7 +1418,7 @@ export class ThreeBuildings {
     this.endFade(key, false);
     const held = this.chunks.get(key);
     if (!held) return;
-    if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
+    if (held.mesh) { this.scene?.remove(held.mesh); disposeTiles(held.mesh); held.mesh.geometry.dispose(); }
     this.chunks.delete(key);
     this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();
