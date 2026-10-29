@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+**Landmark lane skill and the #105 post-mortem (2026-10-29).** The ride-visible large-tier lane spent about 130 Opus turns for 0 of 17 installs; every blocker (not in tiles, covered twin, no judgeable crop, curtain front, tower above the 32 m crop cap in `rectify.ts`) was decidable from data before the first draft, and factory batches 1–2 (0 of 27) had failed the same way a week earlier. Its brief also asked for a bar no installed large recipe has met: of 116 installed, 7 pass likeness on every street group, 95 are `--allow-inferred`, 14 gates-only. The procedure is now a checked-in skill, `.agents/skills/landmark-lane/`, so the tier's blockers and the acceptance rule stop being rewritten per brief; it depends on #110 (scripted triage), #111 (cost in the queue, factory smoke test) and #112 (user: inferred policy, curtain-wall judging).
+
 **Keyboard-ride unstuck; follow-ups to street following (2026-10-29).**
 - `keyboard-ride.spec.ts` failed 7 of 8 core rides on main (since before the
   street-follow change, same rides at cbcace987). Cause, in the game and the

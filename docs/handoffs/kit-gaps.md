@@ -92,3 +92,20 @@ Still not expressible: curtain walls, sawtooth/folded/parabolic roofs, metal
 rib or louvre cladding, timber slats, ridge turrets and bell towers, drum
 churches, stepped gables on schools, arched heads in the school kit, mosque
 portals and pointed arches, pilotis, external stair galleries.
+
+## Ride-visible large tier (#105, 2026-10-29)
+
+17 drafted from the #104 ranks 1–40, 0 installed. Blockers by count, from `docs/handoffs/ride-landmarks-20261029.md`:
+
+| Gap | Pands blocked | Example |
+|---|---|---|
+| Curtain wall judged as "wall not drawn, glazing 1.00" (judge, not kit; #112) | 5 | NFTA, AkzoNobel tower, Apollo, Pieter Nieuwland walls[3], Het Dok walls[5] |
+| Crop pairs to single 3DBAG facets, misses curved/stepped fronts (measurement) | 3 | Het Nieuwe Huis 6 of 8 groups, Sarphati Plaza 5 of 8, AkzoNobel 8 of 8 |
+| Crops stop at 32 m, towers have no upper-storey evidence (measurement) | 3 | Het Dok, AkzoNobel tower, Atrium |
+| Translucent channel glass with scattered clear windows in a wide concrete frame | 1 | NFTA |
+| Cantilevered slab balconies and ribbon parapets | 1 | Sint-Nicolaaslyceum |
+| Graffiti / mural front | 1 | Y-Helling |
+| Warehouse with a modern block on top as one pand (BAG footprint differs from the LoD2.2 shell) | 1 | Pakhuis Australië |
+| Pand not in the building tiles | 2 | Prins en Keizer 165685, Belastingdienst 107557 |
+
+Identity noise in the ranked list (not kit): one office drawn by four OSM parts, an underground station, a name merge of two buildings, a twin BAG registration of a modelled house. Triage (#110) removes these before any draft.

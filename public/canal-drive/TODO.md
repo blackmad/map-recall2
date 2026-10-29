@@ -39,6 +39,17 @@ an issue labelled `lane` (+ `programme`), commented with its hand-back and
 closed when merged. Inbox:
 https://github.com/blackmad/map-recall2/issues?q=is%3Aopen+label%3Aneeds-david
 
+**Landmark lane as a skill (2026-10-29, after #105 installed 0 of 17 at 130 turns):**
+`.agents/skills/landmark-lane/SKILL.md` is the standing recipe for "I have
+budget, run down the landmark lane": scripted triage, unattended factory,
+one Opus review turn per strip of 20, verdict table, kill rules, cost in
+the queue. Its numbers live in `references/large-tier-sheet.md` (116
+installed large recipes: 7 likeness-pass, 95 inferred, 14 gates-only).
+Blocked on three issues before the first real run: #110 triage script (the
+buildable list and a ten-pand self-test), #111 cost fields and a factory
+smoke test (haiku), #112 needs-david: inferred-install policy and the
+curtain-wall judge fix. The #105 kit gaps are in `docs/handoffs/kit-gaps.md`.
+
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
 `docs/handoffs/slop-newyork-plan-20261029.md`, evidence

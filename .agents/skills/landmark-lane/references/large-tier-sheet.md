@@ -1,0 +1,84 @@
+# Large tier sheet (2026-10-29)
+
+What the `kind: large` recipe tier has produced, what blocks it, and the
+rules a review turn applies. Update the numbers with each integration.
+
+## Yield so far
+
+| Run | Reviewed | Pass | Installed |
+|---|---|---|---|
+| Factory batches 1–2 (2026-10-24, unattended drafts) | 27 | 0 | 0 |
+| Acceptance re-run on the new kit (#45) | 28 | 3 | 0 (gate refused all three on street walls) |
+| Ride-visible top 40 (#105, Opus hand passes) | 17 | 0 | 0 |
+
+| Installed large recipes (all time) | 116 |
+|---|---|
+| Likeness pass on every street group | 7 |
+| Installed with `--allow-inferred` notes | 95 |
+| Gates only (pre-gate installs) | 14 |
+
+Reading: the tier installs almost nothing under "every street group must
+PASS", and almost everything it has installed went in under a reviewed
+strip plus inferred notes. Open issue #59 says about 85 of the installed
+houses are refused by today's gate.
+
+## What passes
+
+Brick grids with punched or column windows on a rectangular 3DBAG shell,
+photographed from the street at under 45 degrees with little foliage:
+schools, libraries, offices and civic blocks from 1900 to 1990. The kit
+has stone bands, arch heads, piers, corbels, paired windows, balconies,
+loggias, plinths, cladding bands and a curtain-wall system, all measured
+from the crop by `measure.ts`.
+
+## What does not pass, and why
+
+1. **Glass curtain fronts.** The judge takes the model's wall as its modal
+   wall-slot material; a curtain group has none, so it reads "wall not
+   drawn, glazing 1.00", while the photo counts the mullion grid as wall
+   (0.35 to 0.87). Every glass front fails on this. Fix proposed on #112.
+2. **Towers.** Crops stop at 32 m (`rectify.ts wallHeight`,
+   `Math.min(..., 32)`), so upper storeys never have evidence.
+3. **Curved and stepped fronts.** Crops pair to single 3DBAG facets
+   (0.5 m, 5 degrees, 60 % overlap); a curved Amsterdam School corner
+   splits into hundreds of facets that nothing pairs with.
+4. **Photo quality.** Foliage over 25 %, washed-out glass over 30 %,
+   obliquity over 45 degrees, or a crop older than the building: NO
+   EVIDENCE, by design. Do not build from a guess.
+5. **Kit gaps** (see `docs/handoffs/kit-gaps.md`): channel glass, slab
+   balconies and ribbon parapets, mural fronts, metal rib and louvre
+   cladding, sawtooth and folded roofs, a warehouse with a modern block on
+   top where the BAG footprint differs from the LoD2.2 shell.
+6. **Identity noise in ranked lists.** Name merges (one office drawn by
+   four OSM parts), underground stations, twin BAG registrations of a
+   modelled building, pands missing from the tiles. Triage removes these
+   before any draft.
+
+## Expected yield by front class and evidence
+
+| Photo front class | Judgeable crops on 2+ street walls | Expect |
+|---|---|---|
+| punched / columns, brick or stone family | yes | buildable; roughly 1 in 3 passes on first compile, more after one `fix` |
+| ribbon | yes | buildable; watch `rowMismatch` (ribbon one side, punched the other) |
+| curtain | any | `kit-gap` until #112 |
+| blank, mural, cladding | any | `kit-gap` |
+| any | no | `no-evidence` |
+| any, over 32 m | any | `kit-gap` (crop cap) until parametrised |
+
+## Inferred-install policy
+
+Pending the user's answer on #112. Until then: a group installs as inferred
+only when the house has a `pass` verdict on its strip and the group carries
+a note saying what was inferred from what (`--allow-inferred=<group>:<note>`,
+eight characters at least). A group whose likeness verdict is FAIL never
+installs. The catalogue entry then carries
+`reviewState: large-recipe-likeness-inferred` and one `limitations` line per
+group, which is how 95 of the 116 installed houses are recorded.
+
+## Costs to beat
+
+- Ordinary rows by agent-per-house: about 3 M tokens per house (#98: 50
+  houses for 167 M; #97: 72 M for none). Stopped by the user 2026-10-29.
+- #105: about 130 Opus turns for 0 installs.
+- Target for this lane: one Opus turn per 20 houses reviewed, under 10
+  turns per install including fixes. Issue #111 makes the queue record it.
