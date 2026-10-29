@@ -10,3 +10,5 @@ export * from './hudTheme.ts';
 export * from './hudCopy.ts';
 export { openOnboarding, maybeShowOnboarding, isOnboardingOpen } from './onboarding/dom.ts';
 export { ONBOARDING_STORAGE_KEY, onboardingSteps } from './onboarding/steps.ts';
+export * from './streetFollow.ts';
+export * from './cameraYaw.ts';

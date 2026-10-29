@@ -124,6 +124,7 @@
     "test:canal-answer-path": "esbuild scripts/check-canal-answer-path.ts --bundle --platform=node --format=cjs | node",
     "test:canal-game-structure": "node scripts/check-game-decomposition.mjs",
     "test:canal-car": "tsx scripts/check-canal-car.ts",
+    "test:street-follow": "tsx scripts/check-street-follow.ts",
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:canal-orientation-pois": "esbuild src/canalRecall/orientationPois.ts --bundle --format=iife --global-name=CanalRecallOrientationPois --outfile=public/canal-drive/js/orientation-pois.bundle.js --sourcemap=external --minify",
     "test:orientation-pois": "tsx scripts/check-orientation-pois.ts",

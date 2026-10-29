@@ -228,7 +228,9 @@ var CanalRecallRoadSurface = (() => {
         segIdx: span.segIdx,
         ptIdx: span.ptIdx,
         nx: -rdy / length,
-        ny: rdx / length
+        ny: rdx / length,
+        length,
+        along: Math.hypot(hit.x - span.a.x, hit.y - span.a.y)
       });
     }
     return contacts;

@@ -10,6 +10,10 @@ class InputManager {
     this._viewport = null;
     this._dpad = null;
     this._stickTouch = null;
+    // 'street' turns the zone into the street-follow pad (left / right / back
+    // buttons, streetFollow.ts); 'stick' keeps the analog stick.
+    this._padMode = 'stick';
+    this._padTouches = new Map(); // touch id -> 'left' | 'right' | 'back'
     // The hint is a one-line "steer with the pad" nudge now, not a diagram of
     // an invisible scheme; the pad itself is the documentation.
     this._showTouchHint = this._isMobile;
@@ -112,6 +116,14 @@ class InputManager {
     canvas.addEventListener('touchstart', (e) => {
       let claimed = false;
       for (const touch of e.changedTouches) {
+        if (this._padMode === 'street') {
+          const point = this._canvasPoint(touch, canvas);
+          if (this._dpad && window.CanalRecallUi.isInsideDpad(point, this._dpad)) {
+            this._padTouches.set(touch.identifier, window.CanalRecallUi.streetPadButtonAt(point, this._dpad));
+            claimed = true;
+          }
+          continue;
+        }
         if (this._stickTouch) break;
         const point = this._canvasPoint(touch, canvas);
         if (window.CanalRecallUi.isInsideDpad(point, this._dpad)) {
@@ -135,6 +147,14 @@ class InputManager {
     }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
+      if (this._padTouches.size && this._dpad) {
+        for (const touch of e.changedTouches) {
+          if (!this._padTouches.has(touch.identifier)) continue;
+          this._padTouches.set(touch.identifier,
+            window.CanalRecallUi.streetPadButtonAt(this._canvasPoint(touch, canvas), this._dpad));
+          e.preventDefault();
+        }
+      }
       if (!this._stickTouch) return;
       for (const touch of e.changedTouches) {
         if (touch.identifier !== this._stickTouch.id) continue;
@@ -146,12 +166,31 @@ class InputManager {
     const release = (e) => {
       for (const touch of e.changedTouches) {
         if (this._stickTouch && touch.identifier === this._stickTouch.id) this._stickTouch = null;
+        this._padTouches.delete(touch.identifier);
       }
       if (e.touches.length === 0) this._touchActive = false;
       this.keys['Enter'] = false;
     };
     canvas.addEventListener('touchend', release, { passive: false });
     canvas.addEventListener('touchcancel', release, { passive: false });
+  }
+
+  /** 'street' for the street-follow pad, anything else for the stick. */
+  setPadMode(mode) {
+    const next = mode === 'street' ? 'street' : 'stick';
+    if (next === this._padMode) return;
+    this._padMode = next;
+    this._padTouches.clear();
+    this._stickTouch = null;
+  }
+
+  get padMode() { return this._padMode; }
+
+  /** The street-follow pad's buttons held right now. */
+  get streetButtons() {
+    const buttons = { left: false, right: false, back: false };
+    for (const button of this._padTouches.values()) buttons[button] = true;
+    return buttons;
   }
 
   /** A tap on the map restarts a finished route; while driving it must not. */
@@ -199,7 +238,7 @@ class InputManager {
   /** Anything the player did this frame: a key edge, a touch, the stick.
    *  The start-of-ride flight uses it as "skip". */
   get anyInput() {
-    return this._touchActive || this._touchedThisFrame || !!this._stickTouch
+    return this._touchActive || this._touchedThisFrame || !!this._stickTouch || this._padTouches.size > 0
       || Object.keys(this.justPressed).length > 0;
   }
 

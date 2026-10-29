@@ -2,6 +2,11 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
  "notes": [
   {
+   "date": "2026-10-29",
+   "title": "Calmer phone steering",
+   "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
+  },
+  {
    "date": "2026-10-26",
    "title": "Free ride from the home page",
    "text": "The rideamsterdam.nl home page now has a Free ride button that starts roaming straight away, with no route and no questions."

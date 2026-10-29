@@ -114,6 +114,8 @@ export const en = {
   'options.spin': '3D spin',
   'options.zoom': 'Zoom',
   'options.controls': 'Controls',
+  'options.controls.follow': 'Follow',
+  'options.controls.followHint': 'Rides along the street; choose each turn',
   'options.controls.steer': 'Steer',
   'options.controls.steerHint': 'Left and right turn the vehicle',
   'options.controls.point': 'Point',

@@ -37,12 +37,24 @@ export interface Camera {
   introOverview?: number;
 }
 
+/** What the street-follow pad draws (hud.js drawStreetPad). */
+export type StreetPadView = {
+  queuedTurn: number;
+  /** Waiting for the first press of the ride. */
+  parked: boolean;
+  turning: boolean;
+  awaitingChoice: boolean;
+  buttons: { left: boolean; right: boolean; back: boolean };
+};
+
 export interface InputManager {
   readonly isMobile: boolean;
   /** True while the one-line "hold here to drive" nudge is still showing. */
   readonly showTouchHint: boolean;
   /** The held thumbstick for drawing, or null when idle. */
   readonly stickView: import('../touchControls.ts').StickView | null;
+  /** The street-follow pad's buttons held right now. */
+  readonly streetButtons: { left: boolean; right: boolean; back: boolean };
   /** The stick's activation zone, or null on a pointer device. */
   readonly dpad: import('../touchControls.ts').DpadLayout | null;
   /** True once for the frame in which a key went down — the edge, not the
@@ -216,6 +228,7 @@ export interface Hud {
   noteCard?(rect: { x: number; y: number; width: number; height: number }): void;
   drawTouchHint(ctx: CanvasRenderingContext2D, controlMode: string): void;
   drawStick(ctx: CanvasRenderingContext2D, view: import('../touchControls.ts').StickView | null): void;
+  drawStreetPad(ctx: CanvasRenderingContext2D, view: StreetPadView | null): void;
 }
 
 export interface Renderer {

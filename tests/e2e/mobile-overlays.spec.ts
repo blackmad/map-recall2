@@ -16,7 +16,7 @@ type OverlayGame = {
   player: { x: number; y: number } | null;
   viewport: { width: number; height: number; mode: string };
   routeOptions: { answerMode: string };
-  hud: { drawStick: (...args: unknown[]) => void };
+  hud: { drawStick: (...args: unknown[]) => void; drawStreetPad: (...args: unknown[]) => void };
   input: { dpad: { cx: number; cy: number } | null };
   canvas: HTMLCanvasElement;
   camera: { rotation: number };
@@ -39,8 +39,8 @@ test.beforeEach(async ({}, testInfo) => {
   test.skip(testInfo.project.name !== 'iphone', 'phone-only overlay behaviour');
 });
 
-async function drive(page: Page): Promise<void> {
-  await openRoute(page, { travelMode: 'car' });
+async function drive(page: Page, controlMode?: 'street' | 'relative' | 'absolute'): Promise<void> {
+  await openRoute(page, { travelMode: 'car', controlMode });
 }
 
 /** Mid-ride the settings/help buttons are tucked away; a tap on the map
@@ -55,22 +55,85 @@ async function openSettings(page: Page): Promise<void> {
   }).toPass({ timeout: 15_000 });
 }
 
-/** Did this frame draw the thumbstick? */
+/** Did this frame draw the touch controls (the street pad or the stick)? */
 async function padDrawn(page: Page): Promise<boolean> {
   return page.evaluate(() => {
     const game = window.canalRecallGame;
     let drawn = false;
-    const original = game.hud.drawStick.bind(game.hud);
-    game.hud.drawStick = ((...args: unknown[]) => { drawn = true; return original(...args); }) as typeof game.hud.drawStick;
-    try { game._render(); } finally { game.hud.drawStick = original; }
+    const stick = game.hud.drawStick.bind(game.hud);
+    const street = game.hud.drawStreetPad.bind(game.hud);
+    game.hud.drawStick = ((...args: unknown[]) => { drawn = true; return stick(...args); }) as typeof game.hud.drawStick;
+    game.hud.drawStreetPad = ((...args: unknown[]) => { drawn = true; return street(...args); }) as typeof game.hud.drawStreetPad;
+    try { game._render(); } finally { game.hud.drawStick = stick; game.hud.drawStreetPad = street; }
     return drawn;
   });
 }
 
-test('the phone gets a compact layout and a thumbstick while driving', async ({ page }) => {
+test('the phone gets a compact layout and the street pad while driving', async ({ page }) => {
   await drive(page);
   expect(await page.evaluate(() => window.canalRecallGame.viewport.mode)).toBe('compact');
-  expect(await padDrawn(page), 'the stick is the only way to steer').toBe(true);
+  expect(await page.evaluate(() => window.canalRecallGame.controlMode), 'a phone follows the street by default').toBe('street');
+  expect(await padDrawn(page), 'the pad is the only way to steer').toBe(true);
+});
+
+// Named regression (user report 2026-10-29, the stick was "not fun to use
+// and kind of nauseating"). The phone default now follows the street: parked
+// until the first press, then the bike rides on by itself, a tap on ◀/▶
+// queues the next turn, and a tap on the back bar turns round.
+test('street pad: parked until pressed, then rides on, queues a turn, and back turns round', async ({ page }) => {
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame as unknown as Record<string, unknown>;
+    game._updateCanalQuiz = () => {};
+    game._updateBridgeQuiz = () => {};
+  });
+  const cdp = await page.context().newCDPSession(page);
+  const buttons = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const rect = game.canvas.getBoundingClientRect();
+    const scale = rect.width / CANVAS_W;
+    const ui = (window as unknown as { CanalRecallUi: { streetPadRects: (p: unknown) => Record<string, { x: number; y: number; width: number; height: number }> } }).CanalRecallUi;
+    const rects = ui.streetPadRects(game.input.dpad);
+    const centre = (r: { x: number; y: number; width: number; height: number }) => ({ x: rect.left + (r.x + r.width / 2) * scale, y: rect.top + (r.y + r.height / 2) * scale });
+    return { left: centre(rects.left), right: centre(rects.right), back: centre(rects.back) };
+  });
+  const pose = () => page.evaluate(() => {
+    const p = window.canalRecallGame.player as unknown as { x: number; y: number; angle: number; speed: number; streetFollowView: { queuedTurn: number; turning: boolean } | null };
+    return { x: p.x, y: p.y, angle: p.angle, speed: p.speed, queued: p.streetFollowView?.queuedTurn ?? 0, turning: !!p.streetFollowView?.turning };
+  });
+  const tap = async (at: { x: number; y: number }, ms = 120) => {
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: at.x, y: at.y, id: 1 }] });
+    await page.waitForTimeout(ms);
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  };
+  const start = await pose();
+  await page.waitForTimeout(800);
+  const still = await pose();
+  expect(Math.hypot(still.x - start.x, still.y - start.y), 'the ride starts parked, so the rider can look first').toBeLessThan(3);
+  // Queued, or already taken where a street opened on that side.
+  await tap(buttons.left);
+  const left = await pose();
+  expect(left.queued === -1 || left.turning, 'a tap on ◀ queues a left and sets off').toBe(true);
+  await page.waitForTimeout(1500);
+  const rolled = await pose();
+  expect(Math.hypot(rolled.x - start.x, rolled.y - start.y), 'then the bike rides along the street by itself').toBeGreaterThan(30);
+  await tap(buttons.right);
+  const right = await pose();
+  expect(right.queued === 1 || right.turning, 'a tap on ▶ queues a right').toBe(true);
+  const before = await pose();
+  await tap(buttons.back);
+  let turned = 0, last = before.angle, slowest = Infinity;
+  for (let t = 0; t < 3000; t += 100) {
+    await page.waitForTimeout(100);
+    const now = await pose();
+    const step = Math.atan2(Math.sin(now.angle - last), Math.cos(now.angle - last));
+    turned += step;
+    last = now.angle;
+    slowest = Math.min(slowest, now.speed);
+  }
+  // Round onto the street's own line, which need not be exactly 180°.
+  expect(Math.abs(turned) * 180 / Math.PI, 'a tap on back swings the bike round').toBeGreaterThan(120);
+  expect(slowest, 'without rolling backwards').toBeGreaterThanOrEqual(0);
 });
 
 test('a recall question hides the stick and leaves the vehicle visible', async ({ page }) => {
@@ -404,7 +467,7 @@ for (const size of [{ width: 390, height: 844 }, { width: 360, height: 740 }]) {
 // the street, and straight back stops and swings the bike 180° without
 // ever rolling backwards.
 test('relative stick: full lock turns right round, and pulling back turns about without reversing', async ({ page }) => {
-  await drive(page);
+  await drive(page, 'relative');
   // A question opening mid-turn freezes the bike; this is about steering.
   await page.evaluate(() => {
     const game = window.canalRecallGame as unknown as Record<string, unknown>;
@@ -449,7 +512,7 @@ test('relative stick: full lock turns right round, and pulling back turns about 
 // to turn around"). A hard-turn cruise still rolled a stopped bike forward
 // into the kerb. Hard sideways while stopped now pivots on the spot.
 test('relative stick: hard sideways from a standstill pivots on the spot', async ({ page }) => {
-  await drive(page);
+  await drive(page, 'relative');
   await page.evaluate(() => {
     const game = window.canalRecallGame as unknown as Record<string, unknown>;
     game._updateCanalQuiz = () => {};

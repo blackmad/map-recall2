@@ -213,6 +213,13 @@ class RoadNetwork {
     return best;
   }
 
+  /** Every corridor around a point, for street following (streetFollow.ts):
+   *  the same 5x5 ring as getNearestRoad, so the cross street at a junction
+   *  is among them. */
+  getRoadContacts(x, y) {
+    return SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+  }
+
   // The contact the road guard judges the vehicle against: the heading pick
   // while it contains the vehicle, else whichever corridor it is most inside
   // of, so turning into a cross street is not read as leaving the road.

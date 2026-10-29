@@ -883,8 +883,16 @@ export class GamePresentationRuntime {
       // Last, so nothing can be drawn over the only way to steer — but not at
       // all while a question or panel owns the screen: the vehicle is stopped,
       // the card covers the stick, and a stick drawn under a card is dead controls.
-      this.hud.drawStick(ctx, this.input.stickView);
-      if (this.input.showTouchHint) this.hud.drawTouchHint(ctx, this.controlMode);
+      if (this.controlMode === 'street') {
+        const follow = this.player?.streetFollowView ?? null;
+        this.hud.drawStreetPad(ctx, follow && { ...follow, buttons: this.input.streetButtons });
+      } else {
+        this.hud.drawStick(ctx, this.input.stickView);
+      }
+      // Parked at the start of a street-follow ride, the hint stays up: it is
+      // the only thing saying a press sets off.
+      const parked = this.controlMode === 'street' && !!this.player?.streetFollowView?.parked;
+      if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
     }
     if (this.state === GameState.PAUSED) this._renderPaused();
     if (this.state === GameState.FINISHED) this._renderFinish();
