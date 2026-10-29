@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Centraal surroundings (2026-10-29, #99).**
+
+- **Stationsplein island (feedback 334bcadd).** Pand 0363100012182895, the Noord-Zuid Hollandsch Koffiehuis and its pavilions, is now one bespoke model: `stationsplein-paviljoens` (10.9 k tris, about 160 KB). It suppresses the pand and 13 OSM ways.
+  - New typed `scripts/landmarks/pavilion-kit.ts`: exposed walls, inset rings, mansard roof, ogee turret.
+  - The inventory has 34 items, 7 of them signature features.
+- **IJ canopy (bbbeaceb).** A measured asymmetric vault with 29 arch ribs down to the De Ruijterkade quay, plus a canopyGlass palette. A Cuypers z-fight is fixed.
+- **Beurs van Berlage.** No longer generic: 7.2 m bays between pilasters, basement lights, four storeys under stone lintels, a segmental crest, and the Damrak round-arch arcade and entrance arches. Hidden back faces of the residual strip are removed, and opening-buried went from 14 to 0. It is now 30.3 k tris and 419 KB.
+- **Ferry labels.** One label per landing, so the duplicate Centraal ferry label is gone.
+- **Tests.** The new `test:landmark-kits` (pavilion kit and IJ canopy) now runs in check:canal.
+
 **Oud-West kit, Kinkerstraat first (2026-10-29, #98).** Five Kinkerstraat faces are installed, 50 pands: 1–29, 2–30, 56–84, 206–242 and 376–380. Their stripOverDrawn runs from 0.71 to 1.11.
 
 - **Main fix: roofs.** A 70° slate attic band stood over every cornice; the photos show only dormers against the sky. The rows now have a low front attic behind the cornice.

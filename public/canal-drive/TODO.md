@@ -1939,6 +1939,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Centraal surroundings, still open (#99, 2026-10-29).**
+  - **Beurs, Beursstraat side.** The 14–15 m wall sits 3.4–6.4 m behind a 3 m OSM part and draws blank. Place bays on the set-back part walls.
+  - **Beurs, north side.** The arched café entrance is missing.
+  - **Beurs, upper walls.** The hall walls above 18 m are blank.
+  - **Island.** The water-side deck storey, about 2.3 m below the plaza, is not shown.
+  - **Not modelled yet.** De Ruijterkade 37 (the bike-park entrance pits) and the ferry terminal structures (researched only).
+  - **Centraal.** zfight-near rose from 413.6 to 501.5 with the canopy (warn only).
+  - **Gate flake.** `geometryAudit` "200k-triangle models finish in seconds" took 47 s when load was over 17, and 12.9 s when rerun at load 14. Consider scaling its limit, or skipping it when load is high.
+
 - **Oud-West kit, next (#98, 2026-10-29).**
   - **Corner ownership:** kinker-49-63 and kinker-86-110 pass, but their corner pands (133467, 233580) belong to the installed faces face-bilder-133467-159649 and face-bilder-233580-162444. Installing would drop 153782, 159649 and 162444, so decide which face owns each corner first.
   - **kinker-31-49:** opening-outside on 47's shop. Its front is turned 0.4° from the row, and the audit's wall clustering puts it 3.5 cm off the plane.

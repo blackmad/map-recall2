@@ -340,10 +340,10 @@
       "bytes": 483916,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a6b4d3e189f14d24",
+        "sourceHash": "7e828db6c9d7e0ad",
         "buildVersion": 2,
-        "bytes": 185240,
-        "triangles": 14278
+        "bytes": 219960,
+        "triangles": 16460
       }
     },
     "de-beurs-van-berlage": {
@@ -454,10 +454,10 @@
       "bytes": 419524,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "8e38bc95b2a33648",
+        "sourceHash": "ac59800ea37889ed",
         "buildVersion": 2,
-        "bytes": 58384,
-        "triangles": 2719
+        "bytes": 91912,
+        "triangles": 4588
       }
     },
     "national-monument-on-the-dam": {
@@ -55268,7 +55268,13 @@
       },
       "triangles": 10939,
       "bytes": 160092,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "dea9198bc4f7a098",
+        "buildVersion": 2,
+        "bytes": 38616,
+        "triangles": 1563
+      }
     }
   }
 }
