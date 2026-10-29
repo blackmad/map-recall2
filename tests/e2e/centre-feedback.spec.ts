@@ -25,6 +25,8 @@ async function park(page: Page, p: { x: number; y: number; angle: number }) {
     g.player.x = p.x; g.player.y = p.y; g.player.angle = p.angle;
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     g.viewMode = 'chase'; g.camera.viewMode = 'chase'; g.camera.northUp = false;
+    // The notes' camera zoom (0.8997): the rider had zoomed out from the default.
+    if (g.camera.zoom != null) g.camera.zoom = 0.8997; if (g.camera.targetZoom != null) g.camera.targetZoom = 0.8997;
   }, p);
 }
 
@@ -54,7 +56,7 @@ test('centre feedback poses: frames and drawn labels', async ({ page }, info) =>
   test.skip(info.project.name !== 'desktop', 'desktop frames');
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
-  await page.setViewportSize({ width: 960, height: 540 });
+  await page.setViewportSize({ width: Number(process.env.CENTRE_FB_W || 960), height: Number(process.env.CENTRE_FB_H || 540) });
   if (process.env.CENTRE_FB_FREE !== '0') {
     // The feedback was sent from Free Ride (the plaque reads "N places opened").
     await page.route(/3dbag|cesium3dtiles/i, route => route.abort());

@@ -450,8 +450,8 @@
         "depthMetres": 129.0671844482422,
         "depthCoverage": 0.9520651512061618
       },
-      "triangles": 14794,
-      "bytes": 212472,
+      "triangles": 14504,
+      "bytes": 209360,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "9f3cfc24c3021afc",
