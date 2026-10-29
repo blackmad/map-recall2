@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Batch era guard: ribbon windows hold their row (#113, 2026-10-29).** Spot review held two batch installs that were
+the wrong era. flinck-265-287-r1 is an interwar ribbon block that was drawn as an 1889 row. dou-1-7-r1 was drawn with
+narrow arched windows under a mansard; the front has wide three-light flat-headed windows and a flat cornice.
+Edge NCC (0.21) let both through.
+
+measureFacade's `frontClass` now travels in the auto-place evidence. `ribbonRowHolds` (`blockFace/autoPlace.ts`) holds
+every placed pand of the contiguous same-build-year run around a `ribbon` reading, when its type ends by 1914.
+Calibration on the #103/#113 strips:
+- ribbon read on 0 of 45 installed pands;
+- it read on 2 of 5 dou-1-7 pands and 1 of 5 flinck pands.
+
+Re-running dou-1-7 now holds Gerard Doustraat 1–1D by itself. One reading per row is enough because a same-year row is one design.
+
+The Frans Halsbuurt and Helmersbuurt-Oost reruns with the grown libraries installed nothing:
+- Frans Halsbuurt's one candidate was dou-1-7;
+- Helmersbuurt-Oost had 44 faces with no type.
+
 **Type libraries grown; Sarphatiparkbuurt batch rerun (2026-10-29, #113).**
 
 New types, each measured on 3–4 exemplar strips:

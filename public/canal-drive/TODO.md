@@ -1984,10 +1984,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
-- **Batch likeness discrimination (#113, 2026-10-29).** Edge NCC accepted an interwar ribbon-window block as an 1889 row (flinck-265-287, NCC 0.21). Before scaling the batch further, add an era guard:
-  - compare the photo's window aspect and row structure with the type's;
-  - veto when the strip shows horizontal ribbons or a flat modern crown;
-  - also check the storey count, since sweelinck-1-11 was drawn one storey too many.
+- **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
+  - storey count: sweelinck-1-11 was drawn one storey too many;
+  - window head shape: measureFacade reads no arched heads; dou-1-7 drew arches over flat-headed windows;
+  - the slate mansard with dormers that the De Pijp types add over flat cornices.
 
   Spot review stays mandatory for each batch, on a 10 % sample.
 
