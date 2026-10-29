@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**Per-buurt profiles for generic buildings (2026-10-29, #102).** The generic generator now has two layers:
+- **City-wide mechanics** in `bayLook.ts` and `threeBuildingFeatures.ts`.
+- **Per-buurt parameter data** in `src/canalRecall/buurtProfiles/buurt-profiles.json`, derived by `scripts/buurt-profiles/derive.ts` (it writes to staging; `--publish` copies it into place).
+
+Each profile holds:
+- the brick palette distribution
+- the painted share
+- the white-accent, arched-head, tall-sash and dark-frame shares
+- the dominant era
+- the crown mix
+- the BAG year mix
+
+The data comes from 3,649 measured fronts: 2,765 panorama thumbnails, 123 archived rectified walls, 761 block-face houses, plus BAG.
+
+Coverage:
+- 256 buurten map to 209 profiles.
+- A buurt needs at least 12 fronts for its own profile. Otherwise it uses its wijk's pooled profile, and failing that the city default.
+
+Behaviour:
+- The pick per pand is deterministic, and a profile never overrides a recipe, an OSM colour tag or an accepted measurement.
+- Output without a profile is byte-identical, and the triangle count is unchanged.
+- `?buurtProfiles=0` turns profiles off; `?buurtProfiles=debug` paints every profiled wall magenta.
+
+Result on the 12-spot sheet (`docs/images/look/generic-uplift-12spot-20261029.jpg`): a modest colour gain. Ten Katestraat and Nicolaas Beetsstraat are closer to the photos. Fronts are still more saturated than the muted photos.
+
 **Landmark factory street fix (2026-10-29, #105).** `factory.ts` `nearbyStreets` read the `streets-routing.json` paths as [lng, lat] when they are [lat, lng]. Every factory draft so far therefore had no named streets, and the likeness gate treated every non-blank wall group as street-facing. The #105 run installed nothing; its blockers are in TODO. Its crops are archived in source-data 4be52dd2a.
 
 **Phones follow the street; the camera stops yawing at every wobble
