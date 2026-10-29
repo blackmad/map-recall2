@@ -35,7 +35,7 @@
 import { measuredWallForYear, measuredWallsEnabled } from './look/measuredWalls.js';
 import { decodeWallRows } from './look/wallRows.js';
 import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS, PERIOD_FROM, materialWallDisplayPrior, type ContextualBuildingColour } from './look/palette.js';
-import { BUILDING_FACT_ZOOM, plausibleYear, shortBuildingId, type BuildingFactTile } from './buildingFacts.js';
+import { BUILDING_FACT_ZOOM, BUILDING_TYPES, plausibleYear, shortBuildingId, type BuildingFactTile } from './buildingFacts.js';
 
 export const FACADE_STYLES = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'] as const;
 export type FacadeStyle = (typeof FACADE_STYLES)[number];
@@ -211,6 +211,8 @@ export function constructionYearEnricher(baseUrl: string, fetchImpl: typeof fetc
         const row = rows[shortBuildingId(id)];
         if (row && plausibleYear(row[0])) {
           feature.properties.constructionYear = row[0];
+          // The OSM building type (office, retail, ...) is the modern vocabulary's use signal (modernFacades.ts).
+          if (row[1] >= 0 && BUILDING_TYPES[row[1]]) feature.properties.buildingType = BUILDING_TYPES[row[1]];
           if (wallRows) feature.properties.periodWallHex = measuredWallForYear(id, row[0], wallRows.get(shortBuildingId(id)));
         }
       }

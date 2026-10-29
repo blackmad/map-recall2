@@ -16,7 +16,7 @@ import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
-import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
+import { FACADE_STYLES, footprintAreaM2, type FacadeStyle } from './genericFacades.js';
 import { profilesNearBuilding } from './streetFacadeRendering.js';
 import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
@@ -103,7 +103,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null);
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null,
+      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null } : undefined);
     profileWall = bay.profileWall;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);

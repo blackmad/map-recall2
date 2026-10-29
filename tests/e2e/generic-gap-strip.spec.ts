@@ -53,6 +53,15 @@ test('generic gap strip', async ({ page }, info) => {
     await page.waitForTimeout(1000);
     await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${s.slug}.png` });
     stats[s.slug] = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings?.stats?.() ?? null);
+    // GAP_PROBE=1: the decorated properties of the buildings under a row of screen points (what drew each wall).
+    if (process.env.GAP_PROBE) stats[`${s.slug}:probe`] = await page.evaluate(() => {
+      const t = (window as any).canalRecallGame.vectorMap._threeBuildings, c = t.map.getCanvas(), w = c.clientWidth, h = c.clientHeight, out: Record<string, unknown> = {};
+      for (const fx of [.08, .2, .32, .68, .8, .92]) {
+        const hit = t.inspectAtScreen(w * fx, h * .45, w, h); if (!hit || out[hit.id]) continue;
+        for (const chunk of t.chunks.values()) { const f = chunk.source?.find((x: any) => String(x.properties.id) === hit.id); if (f) { const { id: _id, ...p } = f.properties; out[hit.id] = { at: fx, ...Object.fromEntries(Object.entries(p).filter(([, v]) => typeof v !== 'object' || Array.isArray(v) && JSON.stringify(v).length < 80)) }; break; } }
+      }
+      return out;
+    });
   }
   writeFileSync(`${OUT}/meta.json`, JSON.stringify({ query: process.env.GAP_QUERY || '', stats }, null, 1));
 });

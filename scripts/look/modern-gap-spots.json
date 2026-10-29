@@ -1,0 +1,134 @@
+[
+ {
+  "name": "Weesperstraat (1960s offices)",
+  "slug": "weesperstraat-1965",
+  "lng": 4.90622,
+  "lat": 52.364249,
+  "bearing": 358,
+  "pand": "NL.IMBAG.Pand.0363100012185595",
+  "year": 1965,
+  "heightM": 26.8,
+  "footprintM2": 2241
+ },
+ {
+  "name": "Nieuwe Herengracht (1950s-70s infill)",
+  "slug": "nieuwe-herengracht-1960s",
+  "lng": 4.906823,
+  "lat": 52.367269,
+  "bearing": 359,
+  "pand": "NL.IMBAG.Pand.0363100012164943",
+  "year": 1961,
+  "heightM": 16.5,
+  "footprintM2": 1220
+ },
+ {
+  "name": "Reguliersdwarsstraat (1965 bank)",
+  "slug": "reguliersdwarsstraat-1965",
+  "lng": 4.891956,
+  "lat": 52.366241,
+  "bearing": 77,
+  "pand": "NL.IMBAG.Pand.0363100012175216",
+  "year": 1965,
+  "heightM": 20.4,
+  "footprintM2": 1874
+ },
+ {
+  "name": "Tweede Oosterparkstraat (1956-77 housing)",
+  "slug": "oosterpark-1970",
+  "lng": 4.914578,
+  "lat": 52.35644,
+  "bearing": 231,
+  "pand": "NL.IMBAG.Pand.0363100012110851",
+  "year": 1979,
+  "heightM": 15.8,
+  "footprintM2": 770
+ },
+ {
+  "name": "Kinkerstraat (1980s infill)",
+  "slug": "kinkerstraat-1985",
+  "lng": 4.863508,
+  "lat": 52.364982,
+  "bearing": 79,
+  "pand": "NL.IMBAG.Pand.0363100012215185",
+  "year": 1991,
+  "heightM": 15.3,
+  "footprintM2": 1049
+ },
+ {
+  "name": "Haarlemmer Houttuinen (1982-88 housing)",
+  "slug": "haarlemmer-houttuinen-1985",
+  "lng": 4.884943,
+  "lat": 52.384795,
+  "bearing": 139,
+  "pand": "NL.IMBAG.Pand.0363100012185423",
+  "year": 1982,
+  "heightM": 15.2,
+  "footprintM2": 880
+ },
+ {
+  "name": "Derde Oosterparkstraat (1980s-90s infill)",
+  "slug": "derde-oosterpark-1985",
+  "lng": 4.918105,
+  "lat": 52.356837,
+  "bearing": 83,
+  "pand": "NL.IMBAG.Pand.0363100012121409",
+  "year": 1997,
+  "heightM": 15.4,
+  "footprintM2": 991
+ },
+ {
+  "name": "Govert Flinckstraat (De Pijp 1980s-90s)",
+  "slug": "govert-flinck-1990",
+  "lng": 4.897475,
+  "lat": 52.356026,
+  "bearing": 255,
+  "pand": "NL.IMBAG.Pand.0363100012075022",
+  "year": 1993,
+  "heightM": 15.3,
+  "footprintM2": 854
+ },
+ {
+  "name": "Van Reigersbergenstraat (1990s Oud-West)",
+  "slug": "reigersbergen-1992",
+  "lng": 4.868843,
+  "lat": 52.372772,
+  "bearing": 222,
+  "pand": "NL.IMBAG.Pand.0363100012086878",
+  "year": 1991,
+  "heightM": 12.4,
+  "footprintM2": 1779
+ },
+ {
+  "name": "Valkenburgerstraat (2000s)",
+  "slug": "valkenburgerstraat-2005",
+  "lng": 4.90678,
+  "lat": 52.36961,
+  "bearing": 260,
+  "pand": "NL.IMBAG.Pand.0363100012241366",
+  "year": 2015,
+  "heightM": 20.7,
+  "footprintM2": 2080
+ },
+ {
+  "name": "Sarphatistraat (2001-02 blocks)",
+  "slug": "sarphatistraat-2002",
+  "lng": 4.913172,
+  "lat": 52.362307,
+  "bearing": 268,
+  "pand": "NL.IMBAG.Pand.0363100012164968",
+  "year": 2002,
+  "heightM": 17.9,
+  "footprintM2": 1865
+ },
+ {
+  "name": "Borneolaan (2001-02 IJ)",
+  "slug": "borneolaan-2001",
+  "lng": 4.937414,
+  "lat": 52.371131,
+  "bearing": 59,
+  "pand": "NL.IMBAG.Pand.0363100012138540",
+  "year": 2002,
+  "heightM": 16.9,
+  "footprintM2": 2186
+ }
+]
