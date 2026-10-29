@@ -2000,6 +2000,23 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
   Spot review stays mandatory for each batch, on a 10 % sample.
 
+- **Batch evidence guard for narrow streets (#113 Jordaan, 2026-10-29).** Bloemgrachtbuurt installed 8 runs, and a review of all 8 kept 1. All 8 passed edge NCC (0.155–0.218). Four held runs had no usable front:
+  - close two-storey crops (bloem-128-206);
+  - oblique wall crops (akoleien-2-10, lelie-150-194);
+  - a fence (bloemgracht-53-95).
+
+  NCC needs an evidence floor before it scores. Candidates:
+  - a skyline read under clear sky on every pand of the run;
+  - the strip's metric height reaching the eaves;
+  - obliquity from the panorama heading.
+
+  The other three held runs were wrong paint or crown, which the type match misses:
+  - black paint drawn green;
+  - grey render drawn as brick;
+  - gables drawn as cornice houses.
+
+  The Jordaan library has only 2 types and their crown rules are loose. Until both are fixed, review every Jordaan run, not a 10 % sample.
+
 - **Batch installer yield (#103 follow-ups, 2026-10-29).**
   1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.
      - The Oud-West library has no `match` blocks, so only authored intents can use it.

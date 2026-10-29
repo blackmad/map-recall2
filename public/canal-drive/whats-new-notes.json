@@ -2,6 +2,11 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
  "notes": [
   {
+   "date": "2026-10-30",
+   "title": "First Jordaan row",
+   "text": "Bloemgracht 138-300 is now three Jordaan houses from its street photo: a neck gable and two cornice fronts in dark brick. Seven more Jordaan rows were held back because their photos were too close, oblique or wrongly matched."
+  },
+  {
    "date": "2026-10-29",
    "title": "Kit-row cards in their real colours",
    "text": "The kit-row previews on this page showed every row's brick two shades too pale, so dark brown Kinkerstraat looked beige. They now use the measured brick colour, as the game always did."

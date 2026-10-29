@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Jordaan batch, Bloemgrachtbuurt (#113, 2026-10-29).** The first Jordaan batch installed nothing, for two kit bugs:
+- `houseType.ts` kept a type's per-storey lists (`storeyHeights`, `windowHeights`, `headLines`) at the type's storey
+  count when a house drew more or fewer storeys, so validation failed. `resizePerStorey` now keeps the ground and the
+  top and repeats the storey under the top.
+- both Jordaan types had roof material `"tile"`, which is not a kit material. They now use `red-tile`, and a library
+  test checks roof materials.
+
+Also `batch.ts` skips faces already in its report, so a rerun needs `--redo`.
+
+The fixed batch installed 8 runs. A full review kept only bloemgracht-138-300-r1 (3 pands) and held 7 in
+`buurten/bloemgrachtbuurt-review-holds.json`:
+- close or oblique crops, and a fence: no evidence at all;
+- black paint drawn green and grey render drawn as brick;
+- gables drawn as cornice houses.
+
+All 8 had passed edge NCC.
+
 **Landmark lane, round 2 (2026-10-29, late).** The 20 remaining triage-buildable pands: 19 compiled unattended, one review turn over five strip pages. 1 pass (pand 0363100012094874, a ten-storey dark brick slab on a glazed wing, installed with four inferred faces), 1 fix spent and held (pand 085900: the measured glazing 0.07 was one column of wide windows on a blank slab end, not small windows), 17 hold, 1 factory no-evidence. Cost 1.8 turns per reviewed building. What the holds teach triage: `buildable` let through industrial and retail sheds whose wall family was unresolved (dark, neutral, no brick courses) and read as brick, and fronts with balcony bands, shopfront ribbons, metal cladding and open parking decks; nine of the twenty were that. The triage rule should treat an unresolved wall family on a wide street wall as `kit-gap` and read ribbon/balcony bands from the row-openings pass. The r2 drafts sit in the skill worktree's `staging/landmark-lane-r2/`, uncommitted. The install also showed that `install-large.ts` does not suppress the tiles' `tower:` feature of a tower-podium pand (check:osm-under-models caught it on 094874).
 
 **What's New kit-row cards drew brick too pale (2026-10-29).** The user flagged Kinkerstraat 76-84: its photo shows
