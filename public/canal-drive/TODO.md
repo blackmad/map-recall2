@@ -1066,8 +1066,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     Tunables are `STREET_TURN_RATE`, `CORNER_FRACTION`, `QUEUE_HOLD_SECONDS`
     (streetFollow.ts) and `CAMERA_YAW_DEFAULT` (cameraYaw.ts).
   - Boats follow canals with one junction pinned (Prinsengracht ×
-    Leidsegracht). Prinsengracht is digitised as parallel ways a few degrees
-    apart, so the heading steps 66°→72° there; the camera dead band hides it.
+    Leidsegracht). At the bend there the Prinsengracht centreline is one chain
+    of short ways (8–38 m) whose bearings zig-zag (−93°, −66°, −97°, −72°,
+    −37°), so the boat's heading wobbles; the camera dead band hides it.
+    Candidate fix: aim the follow heading at a point ~20–30 m ahead along the
+    chain instead of the local segment (streetFollow.ts), not merging data.
 - **Public preview follow-ups (2026-10-17).**
   - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
