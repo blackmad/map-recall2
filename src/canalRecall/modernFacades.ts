@@ -67,7 +67,8 @@ export function modernUseFor(f: ModernFacts): ModernUse {
  * buurt profiles calibrate), concrete and render to the existing modern swatches.
  */
 export const MODERN_WALLS: Record<WallFamily, readonly string[]> = {
-  'brick-buff': ['#b08a62', '#a37a55', '#c09a6c', '#9c7a5c'],
+  // Buff and yellow brick, desaturated: the first pass (#b08a62, #c09a6c) read ochre-yellow beside the photos' brown.
+  'brick-buff': ['#a08a70', '#968068', '#ab9478', '#8e7a66'],
   'brick-red': ['#9a5240', '#8c4a38', '#a85a44', '#7e4636'],
   'brick-dark': ['#6e4a3c', '#5e4a42', '#4e4642', '#7a5646'],
   concrete: ['#cfcabf', '#bdb8ad', '#d8d4ca', '#aca79d'],
@@ -109,7 +110,10 @@ const WALLS: Record<ModernEra, { brick: Weighted<WallFamily>; smooth: Weighted<W
   contemporary: { brick: [['brick-dark', 5], ['brick-red', 2], ['brick-buff', 2]], smooth: [['render', 3], ['concrete', 1]] },
 };
 
-export type ModernVocabulary = { era: ModernEra; use: ModernUse; style: ModernStyle; styleIndex: number; family: WallFamily; wall: string };
+/** Spandrel panels under ribbon and curtain bands: pale concrete or enamel, never the period's red or teal accents. */
+export const SPANDREL_ACCENTS: readonly string[] = ['#e4e1da', '#d2d0ca', '#c4c6c4'];
+
+export type ModernVocabulary = { era: ModernEra; use: ModernUse; style: ModernStyle; styleIndex: number; family: WallFamily; wall: string; accent?: string };
 
 /**
  * The modern vocabulary for a dated post-1945 building, or null (no year, or before 1945: callers keep their old
@@ -127,5 +131,6 @@ export function modernVocabulary(f: ModernFacts): ModernVocabulary | null {
   const family = pick(f.id, 'modern-wall', walls);
   const swatches = MODERN_WALLS[family];
   const wall = swatches[Math.floor(unitDraw(f.id, 'modern-swatch') * swatches.length)];
-  return { era, use, style, styleIndex: MODERN_STYLE[style], family, wall };
+  const banded = style === 'ribbon' || style === 'curtain';
+  return { era, use, style, styleIndex: MODERN_STYLE[style], family, wall, ...(banded ? { accent: SPANDREL_ACCENTS[Math.floor(unitDraw(f.id, 'modern-spandrel') * SPANDREL_ACCENTS.length)] } : {}) };
 }

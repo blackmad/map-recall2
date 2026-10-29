@@ -196,7 +196,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   if (traits?.wall) palette.wall = traits.wall;
-  if (vocab) palette.wall = vocab.wall;
+  if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.

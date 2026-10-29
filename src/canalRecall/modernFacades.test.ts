@@ -81,6 +81,7 @@ test('deterministic, brick walls take brick swatches and smooth walls concrete o
     const look = bayLookFor(id, f.year, f.heightM, 'photo', undefined, undefined, undefined, null, f);
     assert.equal(look.wallHex, v.wall);
     assert.equal(look.style, v.styleIndex);
+    if (v.style === 'ribbon' || v.style === 'curtain') assert.equal(look.accentHex, v.accent);
   }
 });
 
