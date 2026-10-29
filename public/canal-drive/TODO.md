@@ -153,6 +153,17 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
+  **Road look, continuity (user 2026-10-29, iPhone at the Witte de
+  Withstraat × Van Kinsbergenstraat: "why isn't the grey continuous?",
+  look over accuracy): brief `docs/handoffs/lane-road-look-continuity-20261029.md`,
+  opus. Diagnosis at the pinned spot: partition fine (R1 14.7 m², R2 0,
+  R3 3.7), but seven greys in one material each, the kerb step under a
+  pixel on the phone, asphalt as light as the pavement (144 vs 175), no
+  tram rails (no `embedded_rails` on the way; `railway=tram` never
+  fetched), red notched at every junction mouth, saturated courtyard
+  lawns. Steps: one material per level, kerb edge ≥ 1.5 px on the
+  iPhone frame, darker asphalt (user picks of three), red through
+  junctions, rails from `railway=tram`, muted courtyards. Not started.
 - **build-hash-skip**: done 2026-10-23 (3 s no-change run). Open: four
   committed GLBs (compagnietheater, levend-paardenmuseum, mountain-network,
   pathe-de-munt) are not reproducible from current source; 8 haparandaweg-*

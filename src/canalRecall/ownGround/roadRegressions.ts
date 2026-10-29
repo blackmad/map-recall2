@@ -496,6 +496,9 @@ export const ROAD_SPOTS: RoadSpot[] = [
   // User chase-camera shots 2026-10-24 (#52, "why do the roads still look so bad?"): islands and tram beds as flat pale
   // slabs with no kerb, zebras and red cycle-crossing boxes in pieces, thin white rails, saturated red, no edges.
   { id: 'haarlemmerplein', label: 'Haarlemmerplein × Haarlemmerweg / Nassaukade (Haarlemmerpoort, Westerkanaal bridge)', at: [4.8816, 52.3849], bearing: 70, halfM: 50, backM: 30 },
+  // User phone screenshot 2026-10-29 (IMG_1482, riding north on the Witte de Withstraat at the Van Kinsbergenstraat
+  // tram stop by the An-Nour mosque): "the roads still look weird and half broken, why isn't the grey continuous?".
+  { id: 'witte-de-withstraat-van-kinsbergenstraat', label: 'Witte de Withstraat × Van Kinsbergenstraat (An-Nour mosque, tram 7 stop, looking north)', at: [4.85930, 52.36880], bearing: 0, halfM: 45, backM: 30 },
   { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */
