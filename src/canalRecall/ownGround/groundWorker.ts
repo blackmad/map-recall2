@@ -22,13 +22,13 @@ import { GroundStore, httpFetchBytes, maybeGunzip } from './groundStore.js';
 import { readGroundTile, type GroundIndex } from './heightField.js';
 import { buildCell, cellTransferables, type CellDetail } from './groundCell.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
-import { groundPalette, type GroundLook } from './groundLook.js';
-import { setKerbShadowAsphaltLuma } from './roadSurfaces.js';
+import { groundPalette, isRoadLookId, type GroundLook } from './groundLook.js';
+import { setKerbShadowRoadLook } from './roadSurfaces.js';
 import { GroundBuildQueue } from './buildQueue.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; /** The asphalt luma under review (gameGround asphaltLumaFlag), for the kerb shadows' ramp ends. */ asphaltLuma?: number | null }
+  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -85,7 +85,7 @@ ctx.onmessage = event => {
     store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true });
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
-    setKerbShadowAsphaltLuma(typeof msg.asphaltLuma === 'number' ? msg.asphaltLuma : null);
+    setKerbShadowRoadLook(isRoadLookId(msg.roadLook) ? msg.roadLook : null);
     colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));

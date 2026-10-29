@@ -69,8 +69,8 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
     const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
-  // ASPHALT_LUMA=<n>: draw the carriageway at that luma (gameGround asphaltLumaFlag; the step-3 options on the strip).
-  if (process.env.ASPHALT_LUMA) await page.addInitScript((l: number) => { (window as any).__canalRecallAsphaltLuma = l; }, Number(process.env.ASPHALT_LUMA));
+  // ROAD_LOOK=A|B|C: draw that road look (gameGround roadLookFlag, groundLook ROAD_LOOK_OPTIONS; the options on the strip).
+  if (process.env.ROAD_LOOK) await page.addInitScript((l: string) => { (window as any).__canalRecallRoadLook = l; }, process.env.ROAD_LOOK);
   // COMPACT_GROUND=1|0: force the compact ground meshes on or off (compactMesh.ts; phones default on), for a like-for-like A/B.
   if (process.env.COMPACT_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallCompactGround = on; }, process.env.COMPACT_GROUND === '1');
   await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });

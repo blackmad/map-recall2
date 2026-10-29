@@ -32,7 +32,7 @@ import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
-import { atLuma, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
+import { roadLookTones, type RoadLookId, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
 const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway', island: 'bgtIsland', berm: 'bgtBerm', verge: 'bgtVerge', square: 'bgtSquare' };
@@ -116,17 +116,17 @@ type Tint = [number, number, number];
  * The shadow's outer end per low-side surface (lane road-look-continuity 2026-10-29): the kerb mesh is opaque and
  * tinted from the kerb tone, so a ramp to white would end in a light granite strip on the road. It ends in the low
  * side's own base over the kerb tone instead (the textures mip to their base at chase distance), so the shadow fades
- * into the asphalt, klinker or red path. `asphaltLuma`: the asphalt option under review (groundLook ASPHALT_LUMA_OPTIONS).
+ * into the asphalt, klinker or red path. `look`: the road look option under review (groundLook ROAD_LOOK_OPTIONS).
  */
-export function kerbShadowEnds(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT), asphaltLuma: number | null = null): Partial<Record<RoadLayer, Tint>> {
+export function kerbShadowEnds(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT), look: RoadLookId | null = null): Partial<Record<RoadLayer, Tint>> {
   const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const kerb = rgb(palette.street.kerb), over = (c: readonly number[]): Tint => [0, 1, 2].map(i => Math.min(1, c[i] / Math.max(1, kerb[i]))) as Tint;
-  const asphalt = asphaltLuma === null ? palette.street.asphalt.base : atLuma(palette.street.asphalt.base, asphaltLuma);
-  return { asphalt: over(asphalt), klinker: over(palette.street.klinker.base), cycle: over(palette.street.cycle.base), gravel: over(palette.tones.gravel), paving: over(palette.street.pavement.base) };
+  const t = roadLookTones(palette.street, look);
+  return { asphalt: over(t.asphalt), klinker: over(t.klinker), cycle: over(palette.street.cycle.base), gravel: over(palette.tones.gravel), paving: over(t.pavement) };
 }
 let KERB_SHADOW_ENDS = kerbShadowEnds();
-/** The worker's asphalt option (groundWorker init `asphaltLuma`): the shadow ramps end in that asphalt. */
-export function setKerbShadowAsphaltLuma(luma: number | null): void { KERB_SHADOW_ENDS = kerbShadowEnds(groundPalette(GROUND_LOOK_DEFAULT), luma); }
+/** The worker's road look option (groundWorker init `roadLook`): the shadow ramps end in that option's tones. */
+export function setKerbShadowRoadLook(look: RoadLookId | null): void { KERB_SHADOW_ENDS = kerbShadowEnds(groundPalette(GROUND_LOOK_DEFAULT), look); }
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is

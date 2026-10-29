@@ -11,7 +11,7 @@ import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEn
 import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import { cycleThrough } from './cycleThrough';
-import { ASPHALT_LUMA_OPTIONS, atLuma, gardenTone, luma709 } from './groundLook';
+import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, luma709, ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId } from './groundLook';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
 
@@ -271,15 +271,38 @@ test('cycle through: the fietspad red crosses a junction mouth the survey calls 
   // No fietspad beyond the mouth (the way runs out onto the road): nothing drawn.
   const open = run(mouth(5).slice(0, 2).concat([{ c: 'carriage', k: 'asphalt', ring: [[4, -5], [50, -5], [50, 60], [4, 60]] }]), [[5, -50], [5, 20]]);
   assert.equal(open.stats.drawn, 0);
+  // Round 2, Witte de Withstraat × Van Kinsbergenstraat: 3 m of raised berm either side of the mouth's rijbaan. The band
+  // runs over them at the sidewalk top; a longer berm (a planted strip, not a mouth) still stops it.
+  const bermMouth = (b: number): Poly[] => [
+    { c: 'carriage', k: 'asphalt', ring: [[-4, -60], [4, -60], [4, 60], [-4, 60]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, -60], [6, -60], [6, -5 - b], [4, -5 - b]] },
+    { c: 'berm', k: 'paving', ring: [[4, -5 - b], [6, -5 - b], [6, -5], [4, -5]] },
+    { c: 'carriage', k: 'asphalt', ring: [[4, -5], [50, -5], [50, 5], [4, 5]] },
+    { c: 'berm', k: 'paving', ring: [[4, 5], [6, 5], [6, 5 + b], [4, 5 + b]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, 5 + b], [6, 5 + b], [6, 60], [4, 60]] },
+  ];
+  const overBerm = run(bermMouth(3), [[5, -50], [5, 50]]);
+  assert.equal(overBerm.stats.drawn, 1, JSON.stringify(overBerm.stats));
+  const raised = centroids(overBerm.m).filter(([x, y]) => overBerm.index.classAt(x, y) === 'berm');
+  assert.ok(raised.length > 0 && raised.every(([, , z]) => Math.abs(z - (ROAD_MARK_LIFT.lane + SIDEWALK_TOP - LIFT.carriageway)) < 1e-9), 'the band lies on the berms at the sidewalk top');
+  assert.equal(run(bermMouth(8), [[5, -50], [5, 50]]).stats.drawn, 0, 'an 8 m planted strip is not a mouth');
 });
 
-test('road look: asphalt options keep the hue, courtyard green is muted and darker than the lawn', () => {
-  const asphalt = [146, 144, 137];
-  for (const L of ASPHALT_LUMA_OPTIONS) {
-    const c = atLuma(asphalt, L);
-    assert.ok(Math.abs(luma709(c) - L) < 1, `${c} at luma ${L}`);
-    assert.ok(Math.abs(c[0] / c[2] - asphalt[0] / asphalt[2]) < 0.02, 'hue kept');
+test('road look: the options keep the asphalt hue, open a wide level gap, and courtyard green is muted', () => {
+  const street = groundPalette(GROUND_LOOK_DEFAULT).street, asphalt = street.asphalt.base;
+  const gaps: number[] = [];
+  for (const id of Object.keys(ROAD_LOOK_OPTIONS) as RoadLookId[]) {
+    const t = roadLookTones(street, id), L = ROAD_LOOK_OPTIONS[id].asphaltLuma;
+    assert.ok(Math.abs(luma709(t.asphalt) - L) < 1, `${id} asphalt ${t.asphalt} at luma ${L}`);
+    assert.ok(Math.abs(t.asphalt[0] / t.asphalt[2] - asphalt[0] / asphalt[2]) < 0.03, 'hue kept');
+    // The klinker carriageway sits on the road level, nearer the asphalt than the pavement.
+    assert.ok(luma709(t.klinker) - L < (luma709(t.pavement) - L) / 3, `${id} klinker ${t.klinker}`);
+    gaps.push(luma709(t.pavement) - L);
   }
+  // Palette gaps at least 60 (rendered pavement sits ~20 under its palette luma; the target is a rendered 40) and apart.
+  assert.ok(gaps.every(g => g >= 60), `gaps ${gaps}`);
+  assert.ok(gaps[1] - gaps[0] >= 20 && gaps[2] - gaps[1] >= 15, `gaps ${gaps}`);
+  assert.deepEqual(roadLookTones(street, null).asphalt, [...asphalt], 'no option: the palette');
   const lawn = [110, 154, 74], g = gardenTone(lawn);
   assert.ok(Math.abs(luma709(g) - (luma709(lawn) - 15)) < 1, `garden ${g}`);
   const chroma = (c: readonly number[]) => Math.max(...c) - Math.min(...c);

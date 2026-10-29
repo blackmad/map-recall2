@@ -12,8 +12,8 @@
 // mapped cycleways carry most of the city's fietspad), and a run that spans two ways' carriage (rare at a mouth).
 import { pointAt, ribbon, stations, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
-import type { RoadIndex } from './roadSurfaces.js';
-import { ROAD_MARK_LIFT, type LocalWay } from './streets.js';
+import { SIDEWALK_TOP, type RoadIndex } from './roadSurfaces.js';
+import { LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets.js';
 
 /**
  * Longest carriageway run a red band bridges: a side street's mouth with its kerb radii. The brief's 25 m bridged whole
@@ -32,6 +32,13 @@ export const THROUGH_REACH_M = 4;
 export const THROUGH_SOLID_M = 4;
 /** The band's width when the cycleway has no tag or prior: a one-way fietspad. */
 export const THROUGH_WIDTH_M = 2.0;
+/**
+ * Raised mouth pieces a band runs over (round 2, Witte de Withstraat × Van Kinsbergenstraat: the east fietspad meets
+ * 3 m of BGT berm, then 11 m of rijbaan, then 3 m of berm; the orthophoto shows the red unbroken across the mouth).
+ * At most this long on either side of the carriage run; the band lies on them at the sidewalk top.
+ */
+export const THROUGH_RAISED_M = 4;
+const RAISED = new Set(['berm', 'island']);
 const STEP = 1;
 
 export interface ThroughStats { drawn: number; skipped: { long: number; bent: number; unbracketed: number }; metres: number }
@@ -103,27 +110,44 @@ export function cycleThrough(m: MeshArrays, ways: readonly LocalWay[], own: (w: 
           for (let j = 1; j < THROUGH_SOLID_M; j++) { const q = at + dir * j; if (q < 0 || q >= n) break; if (cls[q] !== 'cycle') return false; }
           return true;
         }
-        if (cls[at] !== 'carriage' && cls[at] !== 'parking' && cls[at] !== null) return false;
+        if (cls[at] !== 'carriage' && cls[at] !== 'parking' && cls[at] !== null && !RAISED.has(cls[at]!)) return false;
       }
       return false;
     };
     for (let i = 0; i < n;) {
       if (cls[i] !== 'carriage') { i++; continue; }
-      const i0 = i;
+      let i0 = i;
       let j = i; while (j + 1 < n && cls[j + 1] === 'carriage') j++;
       i = j + 1;
+      const carriageLen = Math.min(total, (j + 0.5) * STEP) - Math.max(0, (i0 - 0.5) * STEP);
+      if (carriageLen < 1.5) continue;
+      if (carriageLen > THROUGH_MAX_M) { stats.skipped.long++; continue; }
+      // The raised mouth pieces either side, when the fietspad lies past them.
+      const raisedOut = (from: number, dir: 1 | -1): number => {
+        let k = 0; while (k < THROUGH_RAISED_M && from + dir * (k + 1) >= 0 && from + dir * (k + 1) < n && RAISED.has(cls[from + dir * (k + 1)] ?? '')) k++;
+        const next = from + dir * (k + 1);
+        return k > 0 && next >= 0 && next < n && cls[next] === 'cycle' ? k : 0;
+      };
+      const before = raisedOut(i0, -1), after = raisedOut(j, 1);
+      i0 -= before; j += after;
       const s0 = Math.max(0, (i0 - 0.5) * STEP), s1 = Math.min(total, (j + 0.5) * STEP), len = s1 - s0;
-      if (len < 1.5) continue;
-      if (len > THROUGH_MAX_M) { stats.skipped.long++; continue; }
       // Straight across: the directions a metre into the run at either end.
       const a0 = pointAt(w.points, st, s0), a1 = pointAt(w.points, st, Math.min(s1, s0 + 1)), b0 = pointAt(w.points, st, Math.max(s0, s1 - 1)), b1 = pointAt(w.points, st, s1);
       const da = norm([a1[0] - a0[0], a1[1] - a0[1]]), db = norm([b1[0] - b0[0], b1[1] - b0[1]]);
       if (da[0] * db[0] + da[1] * db[1] < cosMax) { stats.skipped.bent++; continue; }
       if (!side(i0, -1) || !side(j, 1)) { stats.skipped.unbracketed++; continue; }
-      const piece = sub(w.points, st, s0, s1);
+      // The carriage stretch at the lane lift, the raised mouth pieces either side at the sidewalk top.
+      const c0 = Math.max(0, (i0 + before - 0.5) * STEP), c1 = Math.min(total, (j - after + 0.5) * STEP), raisedLift = SIDEWALK_TOP - LIFT.carriageway;
       const from = m.indices.length;
-      ribbon(m, piece, 0, throughWidth(w), height, ROAD_MARK_LIFT.lane, { step: STEP });
+      ribbon(m, sub(w.points, st, c0, c1), 0, throughWidth(w), height, ROAD_MARK_LIFT.lane, { step: STEP });
       clipToCarriage(m, from, index);
+      const onRaised: HeightFn = (x, y) => height(x, y) + raisedLift;
+      for (const [a0, a1] of [[s0, c0], [c1, s1]]) {
+        if (a1 - a0 < 0.5) continue;
+        const at = m.indices.length;
+        ribbon(m, sub(w.points, st, a0, a1), 0, throughWidth(w), onRaised, ROAD_MARK_LIFT.lane, { step: STEP });
+        clipToCarriage(m, at, index, true);
+      }
       stats.drawn++; stats.metres += len;
     }
   }
@@ -139,12 +163,13 @@ function sub(pts: readonly Vec2[], st: readonly number[], s0: number, s1: number
 }
 
 /** Drop the band's triangles (from `from`) whose centroid is off the carriageway polygons. */
-function clipToCarriage(m: MeshArrays, from: number, index: RoadIndex): void {
+function clipToCarriage(m: MeshArrays, from: number, index: RoadIndex, raised = false): void {
   const idx = m.indices, p = m.positions;
   let w = from;
   for (let t = from; t < idx.length; t += 3) {
     const A = idx[t] * 3, B = idx[t + 1] * 3, C = idx[t + 2] * 3;
-    if (index.classAt((p[A] + p[B] + p[C]) / 3, (p[A + 1] + p[B + 1] + p[C + 1]) / 3) !== 'carriage') continue;
+    const c = index.classAt((p[A] + p[B] + p[C]) / 3, (p[A + 1] + p[B + 1] + p[C + 1]) / 3);
+    if (c !== 'carriage' && !(raised && RAISED.has(c ?? ''))) continue;
     if (w !== t) { idx[w] = idx[t]; idx[w + 1] = idx[t + 1]; idx[w + 2] = idx[t + 2]; }
     w += 3;
   }

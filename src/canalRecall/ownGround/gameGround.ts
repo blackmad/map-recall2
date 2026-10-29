@@ -47,7 +47,7 @@ import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar }
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { atLuma, gardenTone, GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
+import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, isRoadLookId, roadLookTones, type GroundLook, type RoadLookId } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
@@ -164,14 +164,14 @@ function compactFlag(): boolean {
 }
 
 /**
- * The asphalt luma under review (lane road-look-continuity 2026-10-29, step 3): `?asphaltLuma=130` (or
- * `window.__canalRecallAsphaltLuma`) draws the carriageway at that Rec. 709 luma, hue kept, the pavement unchanged, so
- * the user can pick on the strip. null: the palette's own (bright 146,144,137, luma 144).
+ * The road look under review (lane road-look-continuity 2026-10-29, round 2): `?roadLook=A|B|C` (or
+ * `window.__canalRecallRoadLook`) draws groundLook ROAD_LOOK_OPTIONS' tones, so the user can pick on the strip.
+ * null: round 1's palette.
  */
-function asphaltLumaFlag(): number | null {
-  const g = globalThis as { __canalRecallAsphaltLuma?: number | string; location?: { search?: string } };
-  const asked = Number(g.__canalRecallAsphaltLuma ?? (g.location?.search ? new URLSearchParams(g.location.search).get('asphaltLuma') : NaN));
-  return Number.isFinite(asked) && asked > 40 && asked < 230 ? asked : null;
+function roadLookFlag(): RoadLookId | null {
+  const g = globalThis as { __canalRecallRoadLook?: string; location?: { search?: string } };
+  const asked = g.__canalRecallRoadLook ?? (g.location?.search ? new URLSearchParams(g.location.search).get('roadLook') : null);
+  return isRoadLookId(asked) ? asked : null;
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
@@ -329,7 +329,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, asphaltLuma: asphaltLumaFlag() });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag() });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -668,7 +668,7 @@ export class OwnGround {
   private makeMaterials(): void {
     const THREE = this.THREE;
     const { street: STREET_GROUND, tones: G } = groundPalette(this.opts.groundLook);
-    const asphaltLuma = asphaltLumaFlag(), asphaltBase = asphaltLuma === null ? [...STREET_GROUND.asphalt.base] : atLuma(STREET_GROUND.asphalt.base, asphaltLuma);
+    const look = roadLookFlag(), lookTones = roadLookTones(STREET_GROUND, look), asphaltBase = lookTones.asphalt;
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
@@ -704,13 +704,15 @@ export class OwnGround {
       }
     };
     // Shared by the layers drawn as one level (paving and the OSM squares; asphalt and the OSM car parks).
-    const pavingMap = pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105);
+    const pavingMap = pavers(lookTones.pavement, lookTones.pavementJoint ?? STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105);
     const asphaltMap = this.canvasTexture(512, 4, (g, s) => grain(g, s, asphaltBase, { fine: 16, stones: 26, mottle: 2.5 }, 1));
     const M: Record<string, any> = {
-      land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
+      // Under a road look option the bare land draws the pavement (groundLook ROAD_LOOK_OPTIONS: beside a lighter pavement
+      // the land's own tone is the seam at a junction).
+      land: std({ map: look ? pavingMap : pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
       // Klinker carriageways: herringbone in mixed tones (streetTextures.ts), so a brick street never reads as cycle-path red.
       klinker: std({ map: this.canvasTexture(512, 2, (g, s) => {
-        const units = 20, px = s / units, base = STREET_GROUND.klinker.base;
+        const units = 20, px = s / units, base = lookTones.klinker;
         g.fillStyle = STREET_GROUND.klinker.joint; g.fillRect(0, 0, s, s);
         for (const b of herringboneBricks(units, KLINKER_TONES.length)) {
           const t = KLINKER_TONES[b.tone], v = (rnd() - 0.5) * 14;

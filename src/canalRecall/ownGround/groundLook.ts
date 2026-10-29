@@ -105,11 +105,44 @@ export function atLuma(c: readonly number[], target: number): number[] {
   return [0, 1, 2].map(i => Math.max(0, Math.min(255, Math.round(c[i] * k))));
 }
 /**
- * The carriageway lumas on the review strip (lane road-look-continuity 2026-10-29, step 3; user: the asphalt reads as
- * light as the pavement, luma 144 against 175, where the neighbourhood photo shows dark asphalt). Today's and two
- * darker options; the pavement is unchanged. The user picks; none is the default until then.
+ * The road looks on the review strip (lane road-look-continuity 2026-10-29, round 2; user: the asphalt reads as light as
+ * the pavement where the neighbourhood photo shows dark asphalt). Round 1's 144/130/118 asphalt lumas barely differed on
+ * the phone: the pavement's palette luma 175 renders ~155 (its paver joints, 0.72 of the base over ~17 % of the area,
+ * and the building shadows; there is no tone map or fog, FLAT_GROUND_GAIN draws level sunlit ground at its palette
+ * luma), so the rendered road/pavement gap was 10-25. Each option sets the carriageway luma (hue kept), the pavement
+ * tone and its joint fraction; the klinker carriageway follows the asphalt (`klinkerOver` luma above it, half its hue),
+ * so a side street's mouth stays on the road level rather than a brown wedge, and the bare land draws the pavement
+ * (beside a lighter pavement the land's 185,174,156 would be the seam). The orthophoto measures sunlit asphalt and
+ * pavement alike (luma 167 and 165, measure-spot-tones): a dark road is a look choice. The user picks; the default
+ * (no option) stays round 1's.
  */
-export const ASPHALT_LUMA_OPTIONS = [144, 130, 118] as const;
+export interface RoadLookOption {
+  readonly asphaltLuma: number;
+  /** null: the palette's pavement. */
+  readonly pavement: readonly [number, number, number] | null;
+  readonly pavementJoint: number;
+  readonly klinkerOver: number;
+}
+export const ROAD_LOOK_OPTIONS = {
+  /** Dark asphalt, today's pavement. */
+  A: { asphaltLuma: 105, pavement: null, pavementJoint: 0.8, klinkerOver: 12 },
+  /** Darker asphalt, a lighter warm-grey pavement. */
+  B: { asphaltLuma: 95, pavement: [200, 195, 186], pavementJoint: 0.86, klinkerOver: 12 },
+  /** Darkest asphalt, a cool pale pavement. */
+  C: { asphaltLuma: 85, pavement: [212, 212, 207], pavementJoint: 0.88, klinkerOver: 12 },
+} as const satisfies Record<string, RoadLookOption>;
+export type RoadLookId = keyof typeof ROAD_LOOK_OPTIONS;
+export const isRoadLookId = (v: unknown): v is RoadLookId => typeof v === 'string' && v in ROAD_LOOK_OPTIONS;
+
+/** The tones an option draws, from the palette's: asphalt, pavement (and the land under it), its joint, the klinker carriageway. */
+export function roadLookTones(street: { asphalt: { base: readonly number[] }; pavement: { base: readonly number[] }; klinker: { base: readonly number[] } }, id: RoadLookId | null): { asphalt: number[]; pavement: number[]; pavementJoint: string | null; klinker: number[] } {
+  if (id === null) return { asphalt: [...street.asphalt.base], pavement: [...street.pavement.base], pavementJoint: null, klinker: [...street.klinker.base] };
+  const o: RoadLookOption = ROAD_LOOK_OPTIONS[id];
+  const asphalt = atLuma(street.asphalt.base, o.asphaltLuma), pavement = o.pavement ? [...o.pavement] : [...street.pavement.base];
+  const half = street.klinker.base.map((c, i) => (c + asphalt[i]) / 2);
+  const hex2 = (v: number) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+  return { asphalt, pavement, pavementJoint: `#${pavement.map(c => hex2(c * o.pavementJoint)).join('')}`, klinker: atLuma(half, o.asphaltLuma + o.klinkerOver) };
+}
 
 /**
  * Courtyard green (lane road-look-continuity 2026-10-29, step 6): the lawn desaturated 40 % toward its own luma and
