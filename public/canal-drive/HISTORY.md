@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**The 3D frame rests behind the briefing on touch devices; a restore no longer
+loads Damrak facades (2026-10-29, #109, follow-ups to #106).** `rendererShared/mapCover.ts`
+measures whether displayed, opaque cards (the briefing rail, its photo vista, the
+knowledge review) cover the canvas, to within 1 px. While they do, a touch
+device's shared frame draws no pass and warms no shaders. On the Firefox Android
+profile the briefing went from 4 calls / 46 k triangles / 26 three.js programs /
+42 links / 9.8 MB of uploads to 0 / 0 / 0 / 16 (MapLibre only) / 1.8 MB.
+Resuming draws on the first MapLibre frame. The queued compiles run one per
+50 ms, and the ground warm-up waits 300 ms (`frame.warmupDue()`). The first 5 s
+after Start peak at 5-9 links per 100 ms with unchanged frame gaps.
+Desktop keeps today's path; `?coverPause=1|0` forces the pause on or off.
+Separately, MapLibre's restore calls `resize()`, which fires `moveend`, and the
+building streamer re-planned on every `moveend`. Before anything had aimed it,
+that loaded the style's Damrak default, so 67 k facade triangles drew behind the
+card after a restore. `moveend` now re-plans only after an explicit
+`followCamera()`. Pinned in `buildingTilesStyleLoss.test.ts`, `context-restore.spec.ts`
+and `briefing-pause.spec.ts`.
+
 **Landmark lane skill and the #105 post-mortem (2026-10-29).** The ride-visible large-tier lane spent about 130 Opus turns for 0 of 17 installs; every blocker (not in tiles, covered twin, no judgeable crop, curtain front, tower above the 32 m crop cap in `rectify.ts`) was decidable from data before the first draft, and factory batches 1–2 (0 of 27) had failed the same way a week earlier. Its brief also asked for a bar no installed large recipe has met: of 116 installed, 7 pass likeness on every street group, 95 are `--allow-inferred`, 14 gates-only. The procedure is now a checked-in skill, `.agents/skills/landmark-lane/`, so the tier's blockers and the acceptance rule stop being rewritten per brief; it depends on #110 (scripted triage), #111 (cost in the queue, factory smoke test) and #112 (user: inferred policy, curtain-wall judging).
 
 **Keyboard-ride unstuck; follow-ups to street following (2026-10-29).**
