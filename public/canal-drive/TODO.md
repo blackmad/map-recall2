@@ -1939,6 +1939,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Modelling strategy reset (user, 2026-10-29).**
+  - **Why:** agent-per-face and per-house modelling of ordinary rows is stopped. It cost about 3 M tokens per house (#98: 50 houses for 167 M tokens; #97: 72 M tokens and no installs).
+  - **The new route:**
+    1. Generic-generator rules that lift about 13.5 k buildings at once (#102).
+    2. An unattended batch block-face installer, gated on likeness and stripOverDrawn (#103).
+    3. Bespoke models only for named landmarks at the head of the ride-visibility list (#104).
+  - **Budget rules:** every lane brief carries a turn budget and a stop rule, with no automatic follow-up rounds.
+  - **Superseded follow-ups:** the #98 round 2 (corners, Bilderdijkstraat) and #99 round 2 briefs. Bilderdijkstraat and the Kinkerstraat corners go to the #103 batch. The Beurs gaps and the ferry structures wait for the #104 ranking. Their worktrees keep the partial work.
+
 - **Centraal surroundings, still open (#99, 2026-10-29).**
   - **Beurs, Beursstraat side.** The 14–15 m wall sits 3.4–6.4 m behind a 3 m OSM part and draws blank. Place bays on the set-back part walls.
   - **Beurs, north side.** The arched café entrance is missing.
