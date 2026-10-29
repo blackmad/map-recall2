@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Unattended batch block-face installer (2026-10-29, #103).** `scripts/block-face/batch.ts` runs a buurt or a face list with no agent edits. For each face it:
+- ranks by ride visibility and checks strip quality, falling back to an older date when a strip is poor;
+- trims corner pands an installed chunk already owns;
+- uses an authored intent, or else auto-places from the district library;
+- refits walls by solving brick lightness against the strip wall;
+- moves front palette facings to the house palette;
+- runs the gates, the GLB audit, the per-pand likeness score and stripOverDrawn;
+- installs only when everything passes.
+
+The first runs covered 164 faces and 1,502 pands. 12 runs (32 pands) went in:
+- 11 in De Pijp: Albert Cuyp, Gerard Dou, Van der Helst, Jan Steen, Van Woustraat, Van Campen, Ruysdaelkade, Saenredam;
+- 1 on Kinkerstraat, 112–116.
+
+125 of the 133 faces that failed in the buurt runs had no type in the library to fit them, so library coverage is the bottleneck. The tool cost about 44 tool turns, against about 800 for the hand-modelled #98. Strips are archived in source-data 4b688e1a3. Published chunk-wall-exposure values were kept; rows were added for the new chunks only.
+
 **Landmark lane skill and the #105 post-mortem (2026-10-29).** The ride-visible large-tier lane spent about 130 Opus turns for 0 of 17 installs; every blocker (not in tiles, covered twin, no judgeable crop, curtain front, tower above the 32 m crop cap in `rectify.ts`) was decidable from data before the first draft, and factory batches 1–2 (0 of 27) had failed the same way a week earlier. Its brief also asked for a bar no installed large recipe has met: of 116 installed, 7 pass likeness on every street group, 95 are `--allow-inferred`, 14 gates-only. The procedure is now a checked-in skill, `.agents/skills/landmark-lane/`, so the tier's blockers and the acceptance rule stop being rewritten per brief; it depends on #110 (scripted triage), #111 (cost in the queue, factory smoke test) and #112 (user: inferred policy, curtain-wall judging).
 
 **Keyboard-ride unstuck; follow-ups to street following (2026-10-29).**

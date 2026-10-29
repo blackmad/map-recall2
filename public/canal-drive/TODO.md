@@ -1981,6 +1981,21 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Batch installer yield (#103 follow-ups, 2026-10-29).**
+  1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.
+     - The Oud-West library has no `match` blocks, so only authored intents can use it.
+     - There is no Jordaan library.
+
+     Next lane: grow the libraries by year from the batch's failure reports, then rerun the batch. No hand-tuned faces.
+  2. **Openings outside their walls:** shopfront glass past the wall edge, dormer glass through the roof plane, and summed 2 cm door slivers.
+  3. **Pale buff brick:** Albert Cuypstraat 153–179 and 241–259 still read about 1.95, because the city tint caps how light brick can be drawn.
+  4. **Wrong types in the 2026-10-14 Kinkerstraat intents:** 109–161, 173–225 and 334–374.
+  5. **Seen on steen-84-140-r2:**
+     - ornate spired dormers are drawn as wide white pediments;
+     - arched stoop entries are plain doors;
+     - oculi are missing.
+  6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
+
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
   - **De Pijp lightness.** Lifting each source to the city lightness turns its dark purple-brown into rosy-brown. Proposal: keep each buurt's measured lightness relative to the city mean instead (needs the user's call).
   - **Saturation.** Fronts are still more saturated than the muted photos.
