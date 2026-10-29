@@ -1,0 +1,136 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helst-56-62-r1",
+ "street": "Eerste Van der Helststraat",
+ "sources": [
+  {
+   "id": "strip-2020-01-06",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-06",
+   "image": "staging/block-face/helst-56-62-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/helst-56-62/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012165647",
+   "slug": "helst-165647",
+   "address": "Eerste Van der Helststraat 62A",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#372e2a",
+      "fascia": true,
+      "name": "Eggs Benaddicted",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=restaurant); fascia colour measured on the strip 2020-01-06 span 0-235"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#382e29",
+     "evidence": "strip 2020-01-06 span 0-235: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Eggs Benaddicted",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2506127776,
+     "name": "Eggs Benaddicted"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2020-01-06 span 0-235"
+   }
+  },
+  {
+   "pandId": "0363100012164105",
+   "slug": "helst-164105",
+   "address": "Eerste Van der Helststraat 62",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#494643",
+      "fascia": true,
+      "name": "Eland & Vanderhelst",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, winkelfunctie, shop=clothes); fascia colour measured on the strip 2020-01-06 span 237-452"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#372e2b",
+     "evidence": "strip 2020-01-06 span 237-452: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Eland & Vanderhelst",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2817613066,
+     "name": "Eland & Vanderhelst"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2020-01-06 span 237-452"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012165647",
+    "stripRow": 191,
+    "evidence": "auto-place: strip skyline cornice 14.1 m within 1 m of the pijp-1884-bracketed-hood line 14 m; 3DBAG/PDOK eaves 13.62 m"
+   }
+  ]
+ }
+}

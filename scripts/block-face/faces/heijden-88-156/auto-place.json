@@ -3,7 +3,7 @@
  "street": "Eerste Jan van der Heijdenstraat",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 13.19,
+ "seconds": 9.76,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -118,9 +118,9 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best pijp-1892-banded-keystone scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "reason": "best pijp-1889-five-storey-banded scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
    "best": {
-    "type": "pijp-1892-banded-keystone",
+    "type": "pijp-1889-five-storey-banded",
     "score": 0.57,
     "veto": [],
     "criteria": [
@@ -128,7 +128,7 @@
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 14 m; 3DBAG 17.34 m not compared)"
+      "note": "strip cornice unread (type line 15.2 m; 3DBAG 17.34 m not compared)"
      },
      {
       "key": "stucco",

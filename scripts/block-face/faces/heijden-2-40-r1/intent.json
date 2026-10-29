@@ -1,0 +1,142 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "heijden-2-40-r1",
+ "street": "Tweede Jan van der Heijdenstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/heijden-2-40-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/heijden-2-40/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012157197",
+   "slug": "heijden-157197",
+   "address": "Tweede Jan van der Heijdenstraat 4",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#473835",
+     "evidence": "strip 2023-01-03 span 3891-4117: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#0c0a0a"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "overige gebruiksfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1; strip 2023-01-03 span 3891-4117"
+   }
+  },
+  {
+   "pandId": "0363100012153593",
+   "slug": "heijden-153593",
+   "address": "Tweede Jan van der Heijdenstraat 2",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#483c39",
+     "evidence": "strip 2023-01-03 span 4117-4343: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#0c0909"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1; strip 2023-01-03 span 4117-4343"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012157197",
+    "stripRow": 247,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.15 m"
+   },
+   {
+    "pand": "0363100012153593",
+    "stripRow": 247,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.06 m"
+   }
+  ]
+ }
+}

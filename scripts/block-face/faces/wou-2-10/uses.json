@@ -1,0 +1,195 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:22:12.336Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236030",
+   "addresses": [
+    "Van Woustraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000848666"
+    },
+    {
+     "address": "Van Woustraat 10-O",
+     "use": "industriefunctie",
+     "areaM2": 170,
+     "bagId": "0363010000848667"
+    },
+    {
+     "address": "Albert Cuypstraat 271",
+     "use": "winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012102747"
+    },
+    {
+     "address": "Albert Cuypstraat 271",
+     "use": "winkelfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012143248"
+    },
+    {
+     "address": "Albert Cuypstraat 273",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012143249"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13108712240,
+     "lngLat": [
+      4.8994672,
+      52.3572932
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "waste": "trash;cigarettes"
+     },
+     "fetchedAt": "2026-10-29T20:22:12.336Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165680",
+   "addresses": [
+    "Van Woustraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 8-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000848658"
+    },
+    {
+     "address": "Van Woustraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 230,
+     "bagId": "0363010012087929"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817516155,
+     "lngLat": [
+      4.8993029,
+      52.3573007
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-H",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-14",
+      "note": "Formerly Green Bubble pop-up store",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T20:22:12.336Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13108712240,
+     "lngLat": [
+      4.8994672,
+      52.3572932
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "waste": "trash;cigarettes"
+     },
+     "fetchedAt": "2026-10-29T20:22:12.336Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236588",
+   "addresses": [
+    "Van Woustraat 4",
+    "Van Woustraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Berchemstraat 3-H",
+     "use": "industriefunctie",
+     "areaM2": 180,
+     "bagId": "0363010000750516"
+    },
+    {
+     "address": "Van Woustraat 4-H",
+     "use": "sportfunctie",
+     "areaM2": 698,
+     "bagId": "0363010000848646"
+    }
+   ],
+   "units": 19,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160312",
+   "addresses": [
+    "Van Woustraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000848638"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513388,
+     "lngLat": [
+      4.8992239,
+      52.3574843
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H;2",
+      "addr:postcode": "1073LL",
+      "addr:street": "Van Woustraat",
+      "amenity": "pub",
+      "check_date": "2026-01-14",
+      "cocktails": "yes",
+      "indoor_seating": "yes",
+      "name": "Huis van Iemand Anders",
+      "opening_hours": "Tu 19:30-23:30; We-Th 17:00-01:00; Fr-Sa 17:00-03:00; Su 16:00-23:30",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 6 42170232",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.huisvaniemandanders.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T20:22:12.336Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

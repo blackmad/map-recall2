@@ -1,0 +1,209 @@
+{
+ "face": "sweelinck-12-16",
+ "street": "Eerste Sweelinckstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 3.57,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157047",
+   "address": "Eerste Sweelinckstraat 16",
+   "builtYear": 1878,
+   "widthM": 5.84,
+   "eavesM": 10.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 669,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157460",
+   "address": "Eerste Sweelinckstraat 14",
+   "builtYear": 1878,
+   "widthM": 6.49,
+   "eavesM": 10.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#656361",
+    "wallRaw": "#575a50",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 143,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.57,
+      "topWidthM": 0.7,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.056 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 32 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012157460",
+    "ncc": 0.056,
+    "nccRaw": 0.056,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.5,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 32 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#865928",
+     "model": "#865e4e",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.9,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.434
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166601",
+   "address": "Eerste Sweelinckstraat 12",
+   "builtYear": 1878,
+   "widthM": 6.3,
+   "eavesM": 12.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d1b385",
+    "wallRaw": "#b09b7a",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 109,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 2.57,
+      "topWidthM": 0.3,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.26,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.23 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.23,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.39,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 46 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012166601",
+    "ncc": null,
+    "nccRaw": 0.161,
+    "shiftM": [
+     0.25,
+     -0.4
+    ],
+    "usable": 0.46,
+    "abstain": "usable photo 46 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#d2ac83",
+     "model": "#c7a36b",
+     "dL": -0.069
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.253
+   },
+   "challengers": {}
+  }
+ ]
+}

@@ -27,8 +27,9 @@
     "bays": 3
    }
   ],
-  "note": "Eerste Jan Steenstraat 91-149 (1889-90), Tweede Jan van der Heijdenstraat 2-40 (1887), Sarphatipark 99-117 (1887): cornice 14.9-15.4 m on the 2022-2023 strips; 3DBAG 5 bouwlagen, eaves 14.8-17.2 m (dormers, mansard); the strip skyline reads the dormer top and hoist beam at 17.7-18.7 m (frontSkylineM)",
-  "frontSkylineM": 18.2
+  "note": "Eerste Jan Steenstraat 91-149 (1889-90), Tweede Jan van der Heijdenstraat 2-40 (1887), Sarphatipark 99-117 (1887): cornice 14.9-15.4 m on the 2022-2023 strips; 3DBAG 5 bouwlagen, eaves 14.8-17.2 m (dormers, mansard); the strip skyline reads the dormer top and hoist beam at 17.7-18.7 m (frontSkylineM); the white sill/head bands are a criterion (bands): Eerste Sweelinckstraat 11, a plain three-storey front, took this type without it",
+  "frontSkylineM": 18.2,
+  "bands": true
  },
  "body": {
   "storeys": 5,

@@ -1,0 +1,77 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:47:50.039Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012572100",
+   "addresses": [
+    "Albert Cuypstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000563354"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817614048,
+     "lngLat": [
+      4.8909463,
+      52.3549696
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1072CX",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-25",
+      "contact:instagram": "crema.ams",
+      "cuisine": "ice_cream;cookie",
+      "diet:gluten_free": "no",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Crema Amsterdam",
+      "opening_hours": "We-Mo 10:00-19:00",
+      "outdoor_seating": "no",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:47:50.039Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159870",
+   "addresses": [
+    "Albert Cuypstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 281,
+     "bagId": "0363010000648527"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "sweelinck-1-11-r1",
+ "street": "Eerste Sweelinckstraat",
+ "sources": [
+  {
+   "id": "strip-2021-04-23",
+   "kind": "street-panorama",
+   "capturedAt": "2021-04-23",
+   "image": "staging/block-face/sweelinck-1-11-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/sweelinck-1-11/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood",
+  "pijp-1889-five-storey-banded"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012163278",
+   "slug": "sweelinck-163278",
+   "address": "Eerste Sweelinckstraat 9",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#6a6a65",
+      "fascia": true,
+      "name": "Franggo",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=restaurant); fascia colour measured on the strip 2021-04-23 span 998-1218"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7f6a64",
+     "evidence": "strip 2021-04-23 span 998-1218: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Franggo",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2817559707,
+     "name": "Franggo"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-04-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 0.74 on eaves -, stucco 1, columns 0.4; strip 2021-04-23 span 998-1218"
+   }
+  },
+  {
+   "pandId": "0363100012156851",
+   "slug": "sweelinck-156851",
+   "address": "Eerste Sweelinckstraat 11",
+   "type": {
+    "type": "pijp-1889-five-storey-banded",
+    "ground": {
+     "shopfront": {
+      "colour": "#74756f",
+      "fascia": true,
+      "name": "Ilario",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, shop=vacant); fascia colour measured on the strip 2021-04-23 span 1218-1429"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7a6461",
+     "evidence": "strip 2021-04-23 span 1218-1429: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Ilario",
+    "category": "shop=vacant",
+    "osm": {
+     "type": "node",
+     "id": 2506127774,
+     "name": "Ilario"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2021-04-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1889-five-storey-banded scored 1 on eaves 1, stucco 1, columns 1; strip 2021-04-23 span 1218-1429"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012156851",
+    "stripRow": 156,
+    "evidence": "auto-place: strip skyline cornice 14.82 m within 1 m of the pijp-1889-five-storey-banded line 15.2 m; 3DBAG/PDOK eaves 13.92 m"
+   }
+  ]
+ }
+}

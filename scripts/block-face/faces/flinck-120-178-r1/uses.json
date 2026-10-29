@@ -1,0 +1,57 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237280",
+   "addresses": [
+    "Govert Flinckstraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 146-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000648742"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162469",
+   "addresses": [
+    "Govert Flinckstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000995080"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033149,
+     "lngLat": [
+      4.8917379,
+      52.3547533
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  }
+ ]
+}

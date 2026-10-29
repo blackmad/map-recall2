@@ -3,7 +3,7 @@
  "street": "Eerste Van der Helststraat",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 0.89,
+ "seconds": 8.44,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "helst-51-67-r1",
+   "pands": [
+    "0363100012237118",
+    "0363100012158716"
+   ],
+   "passed": true,
+   "triangles": 4579
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012237118",
@@ -49,44 +59,74 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1881, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1881, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 12.53 m = 3 storeys of 4.18 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 3.57 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.006 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#302e2b",
+      "fascia": true,
+      "name": "Ami",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-03 span 0-248"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#736261",
+     "evidence": "strip 2023-01-03 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1882-keystone-lintel (0.466 vs 0.369), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012237118",
+    "ncc": 0.369,
+    "nccRaw": 0.369,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.46 vs photo 0.34"
+    ],
+    "wall": {
+     "photo": "#705e5b",
+     "model": "#897473",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.512
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.19,
+    "pijp-1876-hood-frieze": 0.353,
+    "pijp-1882-keystone-lintel": 0.466,
+    "pijp-1885-segmental-keystone": 0.404
+   }
   },
   {
    "pandId": "0363100012158716",
@@ -128,44 +168,72 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1881, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1881, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 12.62 m = 3 storeys of 4.21 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.76 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.002 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#3c362e",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-03 span 248-465"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#71605f",
+     "evidence": "strip 2023-01-03 span 248-465: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012158716",
+    "ncc": 0.355,
+    "nccRaw": 0.355,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.48 vs photo 0.36"
+    ],
+    "wall": {
+     "photo": "#73615f",
+     "model": "#877371",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.183,
+    "pijp-1876-hood-frieze": 0.294,
+    "pijp-1882-keystone-lintel": 0.359,
+    "pijp-1885-segmental-keystone": 0.358
+   }
   },
   {
    "pandId": "0363100012159866",

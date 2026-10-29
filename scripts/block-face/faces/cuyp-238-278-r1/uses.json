@@ -1,0 +1,72 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163308",
+   "addresses": [
+    "Albert Cuypstraat 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 244-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000698992"
+    },
+    {
+     "address": "Albert Cuypstraat 244-O",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000564070"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165136",
+   "addresses": [
+    "Albert Cuypstraat 242"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 242-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000564060"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558226,
+     "lngLat": [
+      4.8979658,
+      52.3565812
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "242-H",
+      "addr:postcode": "1073BP",
+      "addr:street": "Albert Cuypstraat",
+      "email": "freya@folkvang.nl",
+      "name": "Folkvang",
+      "opening_hours": "Mo-Sa 10:30-18:00",
+      "shop": "esoteric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.folkvang.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

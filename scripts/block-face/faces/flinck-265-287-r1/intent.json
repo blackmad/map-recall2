@@ -1,0 +1,275 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "flinck-265-287-r1",
+ "street": "Govert Flinckstraat",
+ "sources": [
+  {
+   "id": "strip-2016-08-02",
+   "kind": "street-panorama",
+   "capturedAt": "2016-08-02",
+   "image": "staging/block-face/flinck-265-287-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/flinck-265-287/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012166940",
+   "slug": "flinck-166940",
+   "address": "Govert Flinckstraat 275",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#bebbb8",
+     "evidence": "strip 2016-08-02 span 1141-1369: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2016-08-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco 1; strip 2016-08-02 span 1141-1369"
+   }
+  },
+  {
+   "pandId": "0363100012164382",
+   "slug": "flinck-164382",
+   "address": "Govert Flinckstraat 277",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#6a554c",
+     "evidence": "strip 2016-08-02 span 1369-1598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie",
+     "industriefunctie"
+    ],
+    "photoDate": "2016-08-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2016-08-02 span 1369-1598"
+   }
+  },
+  {
+   "pandId": "0363100012161721",
+   "slug": "flinck-161721",
+   "address": "Govert Flinckstraat 279",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#66564c",
+     "evidence": "strip 2016-08-02 span 1598-1827: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2016-08-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2016-08-02 span 1598-1827"
+   }
+  },
+  {
+   "pandId": "0363100012155442",
+   "slug": "flinck-155442",
+   "address": "Govert Flinckstraat 281",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#715e56",
+     "evidence": "strip 2016-08-02 span 1826-2055: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie",
+     "industriefunctie"
+    ],
+    "photoDate": "2016-08-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 0.73 on eaves 1, stucco 1, columns 0; strip 2016-08-02 span 1826-2055"
+   }
+  },
+  {
+   "pandId": "0363100012156438",
+   "slug": "flinck-156438",
+   "address": "Govert Flinckstraat 283",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": "door-left",
+    "paletteOverrides": {
+     "brick": "#212519"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2016-08-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves 1, stucco -; strip 2016-08-02 span 2055-2284"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012166940",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.12 m"
+   },
+   {
+    "pand": "0363100012164382",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.24 m"
+   },
+   {
+    "pand": "0363100012161721",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.5 m"
+   },
+   {
+    "pand": "0363100012155442",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.32 m"
+   },
+   {
+    "pand": "0363100012156438",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.27 m"
+   }
+  ]
+ }
+}
