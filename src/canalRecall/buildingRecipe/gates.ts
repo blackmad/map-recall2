@@ -13,17 +13,19 @@ export interface Gate { id: string; pass: boolean; value: unknown; limit: string
 
 export const BUDGET_TRIANGLES = 3000;
 
-export function footprintIoU(facts: BuildingFacts, modelRingsLocal: number[][][], anchorRD: [number, number]) {
-  // Raster IoU on a 10 cm grid in RD, model rings converted back from local (x east, z south).
+export function footprintIoU(facts: BuildingFacts, modelRingsLocal: number[][][], anchorRD: [number, number], unionRingsLocal: number[][][] = []) {
+  // Raster IoU on a 10 cm grid in RD, model rings converted back from local (x east, z south). `unionRingsLocal`: plan
+  // pieces added to the model as a union (each its own ring, overlaps allowed), e.g. stacked blocks off a core footprint.
   const model = modelRingsLocal.map(r => r.map(([x, z]) => [x + anchorRD[0], anchorRD[1] - z]));
+  const extra = unionRingsLocal.map(r => r.map(([x, z]) => [x + anchorRD[0], anchorRD[1] - z]));
   const bag = facts.bagFootprintRD;
-  const all = [...model.flat(), ...bag.flat()];
+  const all = [...model.flat(), ...extra.flat(), ...bag.flat()];
   const [x0, x1] = [Math.min(...all.map(p => p[0])), Math.max(...all.map(p => p[0]))], [y0, y1] = [Math.min(...all.map(p => p[1])), Math.max(...all.map(p => p[1]))];
   let inter = 0, union = 0;
   const step = 0.1;
   const inside = (rings: number[][][], p: number[]) => rings.reduce((s, r) => s + (pointInRing(p, r) ? 1 : 0), 0) % 2 === 1;
   for (let x = x0 + step / 2; x < x1; x += step) for (let y = y0 + step / 2; y < y1; y += step) {
-    const a = inside(model, [x, y]), b = inside(bag, [x, y]);
+    const a = inside(model, [x, y]) || extra.some(r => pointInRing([x, y], r)), b = inside(bag, [x, y]);
     if (a && b) inter++; if (a || b) union++;
   }
   return union ? inter / union : 0;

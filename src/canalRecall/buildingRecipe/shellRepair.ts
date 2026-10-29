@@ -24,6 +24,7 @@ import {fitPlane, pointInRing} from './facts.ts';
 import {footprintIoU, pointTriangleDistance, topology, type Tri} from './gates.ts';
 import {MeshBuilder, type V3} from '../blockBuilding/mesh.ts';
 import {newell, triangulate3} from '../blockBuilding/panels.ts';
+import {coreRing, type CoreReport} from './coreFootprint.ts';
 
 /** First wall-surface index of a repair patch (3DBAG shells stay far below it; the intent validator allows < 100000). */
 export const REPAIR_SURFACE_BASE = 90000;
@@ -44,7 +45,10 @@ export const FILL_NEAREST_M = 1.5;
 
 export type PatchKind = 'cap' | 'strip' | 'seam';
 export interface ShellRepairReport {
-  mode: {repair: boolean; footprint: 'lod22' | 'bag'};
+  mode: {repair: boolean; footprint: 'lod22' | 'bag' | 'core'};
+  /** `footprint: "core"` (coreFootprint.ts): the outward steps retracted from the BAG outline and the plan area they took, the
+   * core's own wall surfaces, the LoD2.2 walls kept above the main roof and the lower roof area left out (top-storey terraces) */
+  core?: CoreReport & {coreWalls: number[]; keptWalls: number[]; droppedRoofM2: number; mainRoofM: number};
   /** gate-rule open edge of the bare host (metres) before and after the repair */
   openBeforeM: number; openAfterM: number; closedM: number;
   /** spikes: wall vertices clamped to the roof edge (`clampSpikes`) */
@@ -572,7 +576,7 @@ function wallFacts(surface: number, ringRD: number[][], groundNAP: number, onFoo
   return {surface, ringsRD: [ringRD], onFootprintEdge, areaM2: +(Math.hypot(nx, ny, nz) / 2).toFixed(3), bearingDeg: +((Math.atan2(nx, ny) * 180 / Math.PI + 360) % 360).toFixed(2), bottomM: +Math.min(...zs).toFixed(3), topM: +Math.max(...zs).toFixed(3)};
 }
 
-export interface ShellOptions { repair: boolean; footprint: 'lod22' | 'bag' }
+export interface ShellOptions { repair: boolean; footprint: 'lod22' | 'bag' | 'core' }
 
 /**
  * The fitted pre-step: facts with the repaired shell (extra wall surfaces from `REPAIR_SURFACE_BASE`, extra roof
@@ -596,7 +600,9 @@ export function prepareShell(facts: BuildingFacts, opts: ShellOptions): {facts: 
   let host = lodHost, roofsRD = facts.roofsRD, wallsRD: WallSurfaceFacts[] = facts.wallsRD, ground = facts.surveyFootprintPolygonsRD, spikes = 0;
   let preset: Patch[] = [];
   const openBeforeM = gateOpen(lodHost);
-  if (opts.repair && opts.footprint !== 'bag') {
+  const onBag = opts.footprint === 'bag';
+  let core: ShellRepairReport['core'];
+  if (opts.repair && !onBag && opts.footprint !== 'core') {
     // slanted LoD2.2 walls are roof for the kit (and for the spike rule)
     const slanted = lodWalls.filter(w => { const n = newell(w[0]), l = len3(n); return l >= 0.02 && Math.abs(n[1] / l) > 0.25; });
     const ends = openPieces(lodHost).flatMap(pc => { const t = lodHost[pc.owner]; return [t.a, t.b, t.c]; });
@@ -608,7 +614,7 @@ export function prepareShell(facts: BuildingFacts, opts: ShellOptions): {facts: 
       host = hostTriangles(c.walls, lodRoofs);
     }
   }
-  if (opts.footprint === 'bag') {
+  if (onBag) {
     const polys = bagPolygons(facts.bagFootprintRD);
     const local = polys.map(poly => poly.map(r => r.map(p => [p[0] - f.ax, f.ay - p[1]] as P2)));
     const maxM = facts.heights.roofMaxM, conv = bagRoofConvex(local, lodRoofs.map(rings => ({rings})), maxM, Math.min(maxM, facts.heights.dak70pM));
@@ -624,7 +630,33 @@ export function prepareShell(facts: BuildingFacts, opts: ShellOptions): {facts: 
     preset = bagWalls(conv.map(c => ({poly: c.poly, plane: (x: number, z: number) => Math.min(maxM, Math.max(0, c.plane(x, z)))}))).map(ring => ({kind: 'strip' as const, target: 'wall' as const, ring: orientOutward(ring, roofTris), edgeM: 0}));
     host = hostTriangles(preset.map(p => [p.ring]), pieces.map(p => p.rings));
   }
-  const res = opts.repair || opts.footprint === 'bag' ? repairHost(host) : {tris: host, patches: [] as Patch[], openBeforeM: gateOpen(host), openAfterM: gateOpen(host), leftover: []};
+  if (opts.footprint === 'core') {
+    // `core` (coreFootprint.ts): a prism on the BAG outline with its shallow outward steps retracted, up to the largest
+    // LoD2.2 roof facet (the main roof; its holes and every roof and wall wholly above it and inside the core kept as
+    // 3DBAG has them: lift heads, stair boxes). Lower roof facets (top-storey terraces) and the walls under the main
+    // roof are left out and reported; the stepped blocks are drawn per storey by `walls[].stackedBlocks`.
+    const [outer, ...holes] = bagPolygons(facts.bagFootprintRD)[0] ?? [];
+    if (!outer || bagPolygons(facts.bagFootprintRD).length !== 1 || holes.length) throw Error(`${facts.pandId}: footprint "core" needs a BAG outline of one ring without courtyards`);
+    const c = coreRing(outer as P2[]);
+    const ring = c.ring as RD[], ccw = signedArea(ring) > 0;
+    const main = facts.roofsRD.reduce((m, r) => r.areaM2 > m.areaM2 ? r : m, facts.roofsRD[0]);
+    const plane = fitPlane(main.ringsRD[0]), mainLow = Math.min(...main.ringsRD[0].map(p => p[2]));
+    const inCore = (p: number[]) => pointInRing(p, ring) || ring.some((q, i) => { const r2 = ring[(i + 1) % ring.length], dx = r2[0] - q[0], dy = r2[1] - q[1], L = Math.hypot(dx, dy) || 1; const t = Math.max(0, Math.min(1, ((p[0] - q[0]) * dx + (p[1] - q[1]) * dy) / (L * L))); return Math.hypot(p[0] - q[0] - dx * t, p[1] - q[1] - dy * t) < 0.05; });
+    const above = (rings: number[][][]) => rings.every(r => r.every(p => p[2] >= mainLow - 0.05 && inCore(p)));
+    const top = (p: RD) => [p[0], p[1], r3(plane(p[0], p[1]))];
+    const mainOuter = (signedArea(main.ringsRD[0]) > 0) === ccw ? ring.map(top) : [...ring].reverse().map(top);
+    const keptRoofs = facts.roofsRD.filter(r => r !== main && above(r.ringsRD));
+    roofsRD = [{...main, vertices: mainOuter, ringsRD: [mainOuter, ...main.ringsRD.slice(1)], areaM2: +(Math.abs(signedArea(ring)) - main.ringsRD.slice(1).reduce((s2, h) => s2 + Math.abs(signedArea(h)), 0)).toFixed(3)}, ...keptRoofs];
+    const keptWalls = facts.wallsRD.filter(w => w.bottomM >= mainLow - g - 0.05 && above(w.ringsRD));
+    const edges = ring.map((p, i) => [p, ring[(i + 1) % ring.length]]).map(([p, q]) => ccw ? [p, q] : [q, p]);
+    const outerWalls = edges.map(([p, q], k) => wallFacts(REPAIR_SURFACE_BASE + k, [[p[0], p[1], g], [q[0], q[1], g], top(q), top(p)], g, true));
+    wallsRD = [...keptWalls, ...outerWalls];
+    ground = [[ring]];
+    const droppedRoofM2 = facts.roofsRD.filter(r => r !== main && !keptRoofs.includes(r)).reduce((s2, r) => s2 + r.areaM2, 0);
+    core = {...c.report, coreWalls: outerWalls.map(w => w.surface), keptWalls: keptWalls.map(w => w.surface), droppedRoofM2: +droppedRoofM2.toFixed(1), mainRoofM: +(mainLow - g).toFixed(2)};
+    host = hostTriangles(wallsRD.map(w => w.ringsRD.map(r => r.map(p => toLocal(f, p)))), roofsRD.map(rr => rr.ringsRD.map(r => r.map(p => toLocal(f, p)))));
+  }
+  const res = opts.repair || onBag ? repairHost(host) : {tris: host, patches: [] as Patch[], openBeforeM: gateOpen(host), openAfterM: gateOpen(host), leftover: []};
   res.patches = [...preset, ...res.patches];
   const newWalls: WallSurfaceFacts[] = [], newRoofs: BuildingFacts['roofsRD'] = [];
   res.patches.forEach((p, i) => {
@@ -635,12 +667,16 @@ export function prepareShell(facts: BuildingFacts, opts: ShellOptions): {facts: 
       newRoofs.push({surfaceId: `${facts.pandId}:repair:${p.kind}:${i}`, vertices: ring, ringsRD: [ring], slopeDeg: Math.atan(Math.hypot(gx, gy)) * 180 / Math.PI, areaM2: Math.abs(signedArea(ring))});
     }
   });
-  const out: BuildingFacts = {...facts, surveyFootprintPolygonsRD: ground, roofsRD: [...roofsRD, ...newRoofs], wallsRD: [...wallsRD, ...newWalls]};
+  // `core`: the pand's own OSM outline (its centroid inside the BAG outline) is not a neighbour; around the retracted core
+  // it would stand 0.4 m out of every wall and read as a party wall up to its height
+  const self = (n: {ringRD: number[][]}) => { const cx = n.ringRD.reduce((t, p) => t + p[0], 0) / n.ringRD.length, cy = n.ringRD.reduce((t, p) => t + p[1], 0) / n.ringRD.length; return facts.bagFootprintRD.some(r => pointInRing([cx, cy], r)); };
+  const neighbours = opts.footprint === 'core' && facts.neighboursRD ? {neighboursRD: facts.neighboursRD.filter(n => !self(n))} : {};
+  const out: BuildingFacts = {...facts, surveyFootprintPolygonsRD: ground, roofsRD: [...roofsRD, ...newRoofs], wallsRD: [...wallsRD, ...newWalls], ...neighbours};
   const count = (k: PatchKind) => res.patches.filter(p => p.kind === k).length;
   const report: ShellRepairReport = {
     mode: {...opts}, openBeforeM: +openBeforeM.toFixed(2), openAfterM: +res.openAfterM.toFixed(2), closedM: +(openBeforeM - res.openAfterM).toFixed(2),
     patches: {spikes, cap: count('cap'), strip: count('strip'), seam: count('seam'), wallSurfaces: newWalls.map(w => w.surface), roofFacets: newRoofs.length},
-    iouBefore, iouAfter: opts.footprint === 'bag' ? iouOf(ground) : iouBefore, leftover: res.leftover,
+    iouBefore, iouAfter: onBag || opts.footprint === 'core' ? iouOf(ground) : iouBefore, leftover: res.leftover, ...(core ? {core} : {}),
   };
   return {facts: out, report};
 }
