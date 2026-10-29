@@ -1970,6 +1970,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Generic generator, next (#102 follow-ups, 2026-10-29).**
+  - **De Pijp lightness.** Lifting each source to the city lightness turns its dark purple-brown into rosy-brown. Proposal: keep each buurt's measured lightness relative to the city mean instead (needs the user's call).
+  - **Saturation.** Fronts are still more saturated than the muted photos.
+  - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
+  - **Tweede Jan Steenstraat** still has an ochre front.
+  - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
+  - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
+  - **Modern blocks.** Add a modern side to the generator: glass and spandrel bands and concrete frames, by year and use. This is the cheap route for the large ride-visible modern buildings #105 could not install.
+
 - **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
   - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.
   - **Blockers, most common first:**

@@ -21,6 +21,30 @@
 - A queued turn now shows a pulsing chevron on the map at the opening it will
   take (no label: the street may be the question).
 
+**Per-buurt profiles for generic buildings (2026-10-29, #102).** The generic generator now has two layers:
+- **City-wide mechanics** in `bayLook.ts` and `threeBuildingFeatures.ts`.
+- **Per-buurt parameter data** in `src/canalRecall/buurtProfiles/buurt-profiles.json`, derived by `scripts/buurt-profiles/derive.ts` (it writes to staging; `--publish` copies it into place).
+
+Each profile holds:
+- the brick palette distribution
+- the painted share
+- the white-accent, arched-head, tall-sash and dark-frame shares
+- the dominant era
+- the crown mix
+- the BAG year mix
+
+The data comes from 3,649 measured fronts: 2,765 panorama thumbnails, 123 archived rectified walls, 761 block-face houses, plus BAG.
+
+Coverage:
+- 256 buurten map to 209 profiles.
+- A buurt needs at least 12 fronts for its own profile. Otherwise it uses its wijk's pooled profile, and failing that the city default.
+
+Behaviour:
+- The pick per pand is deterministic, and a profile never overrides a recipe, an OSM colour tag or an accepted measurement.
+- Output without a profile is byte-identical, and the triangle count is unchanged.
+- `?buurtProfiles=0` turns profiles off; `?buurtProfiles=debug` paints every profiled wall magenta.
+
+Result on the 12-spot sheet (`docs/images/look/generic-uplift-12spot-20261029.jpg`): a modest colour gain. Ten Katestraat and Nicolaas Beetsstraat are closer to the photos. Fronts are still more saturated than the muted photos.
 **Touch devices spread the shader warm-up (2026-10-29, #106, Sentry
 CANAL-RECALL-7/-J/-N).** A Firefox Mobile 159 / Android 17 phone lost its WebGL
 context 7.8 s in, got it back, and then its GPU died at 11.3 s while compiling
