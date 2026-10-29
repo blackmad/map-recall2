@@ -1107,6 +1107,16 @@ export interface LargeWallIntent {
    */
   spandrels?: {sill?: number; head?: number; colour?: string};
   /**
+   * Layered `curtain-wall` floor bands (the #105 glass fronts: Apollo's slab-edge upstands): an opaque band `share` of an
+   * upper storey tall (0.05..0.6) at every storey line above the ground, its centre `lift` of a storey above the line
+   * (-0.3..0.45; a sill upstand over the slab is positive, a fascia under it negative), and with `roof` one more band under
+   * the roof edge; in `colour` (measured from the crop; default the group's frame colour). Measured by `measure.ts` from the
+   * crop's wall-coloured rows between glass rows (floorBands.ts `measureFloorBands`). Unlike `spandrels` (sill and head
+   * panels inside each upper storey) a band may straddle or hang under any floor line, the first one included. Not with
+   * `spandrels`. Absent: byte-identical.
+   */
+  floorBands?: {share: number; lift?: number; roof?: boolean; colour?: string};
+  /**
    * The ground storey's height as a fraction of an upper storey (0.3..2.5), when the photo shows it differs from the
    * ground system's default (a low raised plinth under the Rietveld building's curtain wall: 1.8 m under 4.2 m floors).
    */

@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawMeshScreen, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawFloorBands, drawMeshScreen, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {drawDressings} from '../blockBuilding/dressings.ts';
 import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
@@ -25,7 +25,7 @@ import {FLAT_ROOF_TONES} from '../look/palette.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -138,6 +138,11 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
       const sp = drawSpandrels(c, cells, levels, g.spandrels, top);
       if (sp.panels) counts.spandrels = (counts.spandrels ?? 0) + sp.panels;
       if (drawCurtainGrid(c, cells, sp.gridLevels, s.curtain, top, CURTAIN_GRID_OVER_SPANDRELS)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
+    } else if (g.floorBands && cells.length && top - p.vMin > 2) {
+      // Floor bands: the same spandrel layer and the grid over it, the bands placed in metres at the storey lines.
+      const fb = drawFloorBands(c, cells, levels, g.floorBands, top);
+      if (fb.panels) counts.floorBands = (counts.floorBands ?? 0) + fb.panels;
+      if (drawCurtainGrid(c, cells, fb.gridLevels, s.curtain, top, CURTAIN_GRID_OVER_SPANDRELS)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
     } else if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
   }
   // Screen panels over the wall (after the openings, which they leave open).

@@ -458,7 +458,7 @@ export function drawSpandrels(c: PanelCtx, cells: Cell[], levels: number[], sp: 
   const floors = [...new Set(cells.map(x => x.floor))].filter(f => f > 0).sort((a, b) => a - b);
   if (!floors.length) return { panels: 0, rails: [], gridLevels: levels };
   // an upper storey's height: the first full upper storey (the top one may be cut short by the eaves)
-  const unit = levels.length > 2 ? levels[2] - levels[1] : top - (levels[1] ?? 0);
+  const unit = storeyUnit(levels, top);
   const bands: [number, number][] = [];
   for (const f of floors) {
     const v0 = levels[f], v1 = f + 1 < levels.length ? Math.min(top, levels[f + 1]) : top, last = f === floors[floors.length - 1];
@@ -467,6 +467,47 @@ export function drawSpandrels(c: PanelCtx, cells: Cell[], levels: number[], sp: 
     // the top band stops at the grid's top rail centre: its top face then sits inside the rail, not on the rail's top face
     if (sp.head > 0) bands.push([Math.max(v0, (last ? Math.min(v1, v0 + unit) : v1) - sp.head * unit), Math.min(last ? top : v1, top - CURTAIN_GRID.railH / 2)]);
   }
+  return drawBandPanels(c, levels, floors, bands, sp.slot, top);
+}
+
+/** Floor bands (intent `floorBands`): the band's height (`share`) and its centre's lift over the storey line (`lift`), as fractions of an upper storey. */
+export const FLOOR_BAND_LIMITS = { minShare: 0.05, maxShare: 0.6, minLift: -0.3, maxLift: 0.45 } as const;
+
+/** An upper storey's height (m): the first full upper storey (the top one may be cut short by the eaves); `drawSpandrels`' unit. */
+export const storeyUnit = (levels: number[], top: number) => levels.length > 2 ? levels[2] - levels[1] : top - (levels[1] ?? 0);
+
+/**
+ * The spans of a layered curtain wall's floor bands (pure): in every storey above the ground that `cells` covers, a band
+ * `share` of an upper storey tall, its centre `lift` of a storey above the floor line, and with `roof` one under the roof
+ * edge (`top`); each clipped to the grid (the cells' lowest edge, the top rail's centre). Meeting bands merge when drawn.
+ */
+export function floorBandSpans(cells: Cell[], levels: number[], fb: { share: number; lift?: number; roof?: boolean }, top: number): [number, number][] {
+  const floors = [...new Set(cells.map(x => x.floor))].filter(f => f > 0).sort((a, b) => a - b);
+  if (!floors.length) return [];
+  const unit = storeyUnit(levels, top), lo = Math.min(...cells.map(x => x.v0)), hi = top - CURTAIN_GRID.railH / 2;
+  const h = fb.share * unit, off = (fb.lift ?? 0) * unit, spans: [number, number][] = [];
+  for (const f of floors) {
+    const L = levels[f];
+    if (L === undefined || L > top - 0.5) continue;
+    const v0 = Math.max(lo, L + off - h / 2), v1 = Math.min(hi, L + off + h / 2);
+    if (v1 - v0 >= SPANDREL.minH) spans.push([v0, v1]);
+  }
+  if (fb.roof && hi - h > lo) spans.push([Math.max(lo, top - h), hi]);
+  return spans;
+}
+
+/**
+ * Floor bands of a layered curtain wall (the #105 glass fronts' slab edges): the `floorBandSpans` drawn as spandrel
+ * panels (SPANDREL layer, cut round the openings); returns what `drawSpandrels` returns, so the grid goes over them the same way.
+ */
+export function drawFloorBands(c: PanelCtx, cells: Cell[], levels: number[], fb: { share: number; lift?: number; roof?: boolean; slot: Slot }, top: number): { panels: number; rails: number[]; gridLevels: number[] } {
+  const floors = [...new Set(cells.map(x => x.floor))].filter(f => f > 0).sort((a, b) => a - b);
+  if (!floors.length) return { panels: 0, rails: [], gridLevels: levels };
+  return drawBandPanels(c, levels, floors, floorBandSpans(cells, levels, fb, top), fb.slot, top);
+}
+
+/** Merge band spans and draw each as closed spandrel panels broken round the openings; the shared tail of `drawSpandrels` and `drawFloorBands`. */
+function drawBandPanels(c: PanelCtx, levels: number[], floors: number[], bands: [number, number][], slot: Slot, top: number): { panels: number; rails: number[]; gridLevels: number[] } {
   bands.sort((a, b) => a[0] - b[0]);
   const merged: [number, number][] = [];
   for (const b of bands) { const m = merged[merged.length - 1]; if (m && b[0] <= m[1] + 1e-3) m[1] = Math.max(m[1], b[1]); else merged.push([b[0], b[1]]); }
@@ -480,7 +521,7 @@ export function drawSpandrels(c: PanelCtx, cells: Cell[], levels: number[], sp: 
     for (const [a0, b0] of intervals(c.p, v0, v1, 0.25)) {
       let pieces: [number, number][] = [[a0, b0]];
       for (const [s0, s1] of holes) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
-      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(sp.slot, a, b, v0, v1, SPANDREL.back, SPANDREL.out, part); n++; }
+      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, SPANDREL.back, SPANDREL.out, part); n++; }
     }
   }
   const edges = [...new Set(rails.map(v => Math.round(v * 1000) / 1000))];

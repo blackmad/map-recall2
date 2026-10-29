@@ -10,13 +10,14 @@ import {boxBalconyProblems} from '../blockBuilding/boxBalcony.ts';
 import {stackedBlocksProblems} from '../blockBuilding/stackedBlocks.ts';
 import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
+import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
 import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -300,6 +301,19 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (sp.colour !== undefined) colour(sp.colour, `${at}.spandrels.colour`);
       }
       if (w.system !== 'curtain-wall' || intent.layeredKit === false) problems.push(`${at}.spandrels: a layered curtain-wall group`);
+    }
+    if (w.floorBands !== undefined) {
+      const fb = w.floorBands, F = FLOOR_BAND_LIMITS;
+      if (!fb || typeof fb !== 'object') problems.push(`${at}.floorBands: object {share, lift, roof, colour}`);
+      else {
+        for (const k of Object.keys(fb)) if (!['share', 'lift', 'roof', 'colour'].includes(k)) problems.push(`${at}.floorBands.${k}: unknown field (share, lift, roof, colour)`);
+        if (!(typeof fb.share === 'number' && fb.share >= F.minShare && fb.share <= F.maxShare)) problems.push(`${at}.floorBands.share: band height, fraction of a storey ${F.minShare}..${F.maxShare}`);
+        if (fb.lift !== undefined && !(typeof fb.lift === 'number' && fb.lift >= F.minLift && fb.lift <= F.maxLift)) problems.push(`${at}.floorBands.lift: band centre over the storey line, fraction of a storey ${F.minLift}..${F.maxLift}`);
+        if (fb.roof !== undefined && typeof fb.roof !== 'boolean') problems.push(`${at}.floorBands.roof: boolean`);
+        if (fb.colour !== undefined) colour(fb.colour, `${at}.floorBands.colour`);
+      }
+      if (w.system !== 'curtain-wall' || intent.layeredKit === false) problems.push(`${at}.floorBands: a layered curtain-wall group`);
+      if (w.spandrels !== undefined) problems.push(`${at}.floorBands: not with spandrels (one band system per group)`);
     }
     if (w.groundFactor !== undefined && !(typeof w.groundFactor === 'number' && w.groundFactor >= 0.3 && w.groundFactor <= 2.5)) problems.push(`${at}.groundFactor: number 0.3..2.5`);
     if (w.groundFactor !== undefined && (w.souterrain || w.ground === 'arcade' || w.alignWith !== undefined)) problems.push(`${at}.groundFactor: not with souterrain, an arcade ground or alignWith (they set the ground storey)`);
