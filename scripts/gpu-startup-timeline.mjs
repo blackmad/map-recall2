@@ -7,6 +7,8 @@ import path from 'node:path';
 // of the default guest route (boat, Anne Frank House -> Rijksmuseum). START=1 presses Start at once;
 // otherwise the page sits on the briefing, as a first-time rider reading it does.
 // PROFILE=firefox-android (default) | iphone | desktop. CPU=4 adds a 4x CDP CPU throttle.
+// START_AT=ms presses Start at that page time (a rider who read the briefing) and reports the 5 s after it:
+// frame gaps and program links (#109: the warm-up behind a covering card moves to Start). QS=?coverPause=0 is before.
 const port = process.env.PORT || 4641, seconds = Number(process.env.SECONDS || 15);
 const profiles = {
   'firefox-android': {viewport: {width: 414, height: 774}, deviceScaleFactor: 2.608695652173913, isMobile: true, hasTouch: true,
@@ -21,7 +23,9 @@ const page = await context.newPage();
 if (process.env.CPU) { const cdp = await context.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', {rate: Number(process.env.CPU)}); }
 if (process.env.TRACE) await page.addInitScript(() => { window.__gpuTrace = true; });
 await page.addInitScript(() => {
-  const log = window.__gpuLog = {t0: performance.now(), shaders: [], links: [], textures: 0, texBytes: 0, buffers: 0, contexts: 0};
+  const log = window.__gpuLog = {t0: performance.now(), shaders: [], links: [], textures: 0, texBytes: 0, buffers: 0, contexts: 0, frames: []};
+  const tick = t => { log.frames.push(t); requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
   for (const P of [window.WebGL2RenderingContext?.prototype, window.WebGLRenderingContext?.prototype].filter(Boolean)) {
     const wrap = (name, f) => { const o = P[name]; P[name] = function (...a) { f.call(this, a); return o.apply(this, a); }; };
     const owner = gl => gl.canvas?.classList?.contains('maplibregl-canvas') ? 'map' : 'other';
@@ -38,11 +42,12 @@ await page.addInitScript(() => {
 await page.goto(`http://127.0.0.1:${port}/canal-drive/` + (process.env.QS || ''));
 const t0 = Date.now(), rows = [];
 let started = false, lost = false;
+const startAt = Number(process.env.START_AT || 0);
 // LOSE_AT=ms: lose the map's context at that page time and restore it 173 ms later (the Sentry -7/-J timing),
 // to measure the compile burst a restore brings (-N died 1.4 s after one).
 const loseAt = Number(process.env.LOSE_AT || 0);
 while (Date.now() - t0 < seconds * 1000) {
-  if (process.env.START && !started) started = await page.evaluate(() => { const g = window.canalRecallGame; const f = document.querySelector('#route-card'); if (!g?.routePois?.length || !f) return false; f.requestSubmit(); return true; }).catch(() => false);
+  if ((process.env.START || startAt) && !started) started = await page.evaluate((at) => { const g = window.canalRecallGame; const f = document.querySelector('#route-card'); if (performance.now() < at || !g?.routePois?.length || !f) return false; window.__gpuLog.startedAt = Math.round(performance.now()); f.requestSubmit(); return true; }, startAt).catch(() => false);
   if (loseAt && !lost) lost = await page.evaluate((at) => {
     if (performance.now() < at) return false;
     const gl = window.canalRecallGame?.vectorMap?.map?.painter?.context?.gl, ext = gl?.getExtension('WEBGL_lose_context');
@@ -57,13 +62,25 @@ while (Date.now() - t0 < seconds * 1000) {
     let mapPrograms = null; try { mapPrograms = m?.painter?.cache ? Object.keys(m.painter.cache).length : null; } catch (_) {}
     return {t: Math.round(performance.now()), links: L.links.length, mapLinks: L.links.filter(x => x[1] === 'map').length, threePrograms: i?.programs?.length ?? null, mapPrograms,
       textures: L.textures, texMB: +(L.texBytes / 1048576).toFixed(1), buffers: L.buffers, threeTex: i?.memory?.textures ?? null, threeGeo: i?.memory?.geometries ?? null,
-      tris: f?.stats?.main?.triangles ?? null, calls: f?.stats?.main?.calls ?? null, state: g?.state ?? null, pitch: m ? Math.round(m.getPitch()) : null, zoom: m ? +m.getZoom().toFixed(1) : null,
+      tris: f?.stats?.main?.triangles ?? null, paused: f?.coverPaused ?? null, calls: f?.stats?.main?.calls ?? null, state: g?.state ?? null, pitch: m ? Math.round(m.getPitch()) : null, zoom: m ? +m.getZoom().toFixed(1) : null,
       canvas: m ? `${m.getCanvas().width}x${m.getCanvas().height}` : null, coarse: matchMedia('(pointer: coarse)').matches,
       heaviest: Object.entries(stats).sort((a, b) => b[1].triangles - a[1].triangles).slice(0, 3).map(([k, v]) => `${k}:${v.triangles}`).join(' ')};
   }).catch(e => ({err: String(e).slice(0, 80)}));
   rows.push(r); await page.waitForTimeout(500);
 }
 const links = await page.evaluate(() => window.__gpuLog.links);
+const startedAt = await page.evaluate(() => window.__gpuLog.startedAt ?? null);
+if (startedAt != null) {
+  // The first 5 s after Start: frame gaps (rAF) and program links.
+  const frames = await page.evaluate(() => window.__gpuLog.frames);
+  const win = frames.filter(t => t >= startedAt && t < startedAt + 5000);
+  const gaps = win.slice(1).map((t, i) => t - win[i]).sort((a, b) => a - b);
+  const q = p => gaps.length ? +gaps[Math.min(gaps.length - 1, Math.floor(p * gaps.length))].toFixed(1) : null;
+  const after = links.filter(([t]) => t >= startedAt && t < startedAt + 5000).map(([t]) => t);
+  let peak = 0; for (const t of after) peak = Math.max(peak, after.filter(u => u >= t && u < t + 100).length);
+  const before = links.filter(([t]) => t < startedAt).length;
+  console.log('start', startedAt, JSON.stringify({linksBeforeStart: before, linksIn5s: after.length, linkPeakPer100ms: peak, frames: win.length, gapP50: q(0.5), gapP95: q(0.95), gapMax: q(1), gapsOver50: gaps.filter(g => g > 50).length, gapsOver100: gaps.filter(g => g > 100).length}));
+}
 const {lostAt, restoredAt} = await page.evaluate(() => window.__gpuLog);
 if (restoredAt) {
   // Links in the 1.4 s after the restore, and the most in any one 100 ms (one task / frame).

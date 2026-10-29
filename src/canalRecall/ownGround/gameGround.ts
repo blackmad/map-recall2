@@ -446,7 +446,9 @@ export class OwnGround {
   /** Per frame, from the shared frame's main pass. */
   private beforeRender(zoom: number): boolean {
     this.zoom = zoom;
-    if (!this.precompiled) this.precompile();
+    // Not in the first moments after a covering card goes (sharedFrame.warmupDue, #109): the first draw compiles then.
+    if (typeof this.frame?.warmupDue === 'function' && !this.frame.warmupDue()) { if (!this.precompiled || this.precompileQueue) this.host.repaint(); }
+    else if (!this.precompiled) this.precompile();
     else if (this.precompileQueue) this.precompileStep();
     if (this.opts.transition) {
       this.blendUniform.value = this.blend.update(zoom);
