@@ -1939,6 +1939,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Westerpark West, still open (#97, 2026-10-29).**
+  - **Blend** (`haarlemmerweg-518`): held. To unblock it:
+    - stop `isLeaf` flagging sunlit cream render as leaves, or find a straight-on, low-foliage south crop;
+    - check the advisory openings-within-walls failure at the 38 m roof stair box;
+    - darken the core-wall windows, which read too pale.
+  - **Green-framed blocks** (0363100012570119, 0124, 0120) and the **yellow block** (0363100012570893): 3DBAG has only construction-stage shells, or none at all. These need a new large-tier shell built from the BAG outline plus a height measured from a post-completion panorama.
+  - **Wraparound tower** (0363100012116511, draft `haarlemmerweg-290`): it compiles, but all 4 likeness groups fail. Its south crop is a dark 2022 panorama; remodel it from a better one.
+  - **Salt:** the white-wall rule fixed its wall; glazing still fails (0.19 vs 0.355, because of reflections).
+  - **The kit cannot yet say:** the panel joint grid on render.
+
 - **De Pijp kit, next (#96, 2026-10-29).**
   - **Ferdinand Bolstraat 40–54** is held for tone. It needs pale buff brick and white stucco pilasters in the kit, then a reinstall.
   - **Shopfront grounds** come out with 1 bay where the photos show 2–4.

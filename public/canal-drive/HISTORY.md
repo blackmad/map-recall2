@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Westerpark West remainder: kit additions, nothing installed (2026-10-29, #97).**
+
+- **`footprint: "core"`** (`coreFootprint.ts`). BAG traces an outline from above, so balcony-depth bumps on every storey (1.85 m on Blend) became full-height grooves. The core footprint snaps those bumps back onto the main wall and builds a clean box under the LoD2.2 roof. The pand's own OSM way is dropped as a false party wall.
+- **`stackedBlocks` wall field** (`stackedBlocks.ts`). Rows of cells per storey: B is a block 1.5 m proud with 4-pane windows, R is a recessed balcony with a glass rail, `.` is plain wall. The footprint gates include the block outlines.
+- **White-wall likeness rule** (`measureFacade.ts`, `wallIsOwnTrim`). A light, near-neutral wall that is its own bright reference is no longer exposure-darkened to grey. It is mapped to the 215 white point and never read lighter than raw. Across 1,532 archived large-recipe crops it fires on 97 and changes 33 by 3/255 or more, at most +33/255, all of them white or very light walls.
+- **Blend (Haarlemmerweg 518, pand 0363100012250970)** is modelled and held. Its south, east and west faces were read from 2024-11-21 panoramas; the north face is inferred. Likeness has no evidence on any face:
+  - `isLeaf` flags 49 % of the sunlit cream south wall as foliage;
+  - the east and west crops are 48–50° oblique.
+
+  The crops are archived in source-data dd929bb11.
+
 **De Pijp block-face kit, first runs (2026-10-29, #96).** It uses the Helmersbuurt method (#81), starting with the most-ridden streets.
 
 - **Installed:** eight runs, 25 pands, on Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38.
