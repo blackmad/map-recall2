@@ -65,7 +65,7 @@ export function wallsOf(rings: XY[][]): Wall[] {
 }
 
 /** Every BAG pand footprint in RD (outer rings plus holes per polygon) with its bbox, gridded at 100 m. */
-function loadFootprints() {
+export function loadFootprints() {
   const index = JSON.parse(fs.readFileSync(path.join(BAG, '..', 'index-z14.json'), 'utf8'));
   const tiles: string[] = index.tileList.map((t: string) => t.replace(/^14\//, ''));
   const pands = new Map<string, {polys: XY[][][]; box: [number, number, number, number]}>();
@@ -114,7 +114,7 @@ function destinations() {
 }
 
 /** Route samples pooled on a STEP_M grid: key -> [x, y, passes, routeIds]. */
-function sampleRoutes(nRoutes: number, seed: number) {
+export function sampleRoutes(nRoutes: number, seed: number) {
   const graph = bikeGraph(), dests = destinations(), rand = rng(seed);
   const samples = new Map<string, {x: number; y: number; passes: number; routes: Set<number>}>();
   let made = 0, tries = 0, metres = 0;
@@ -145,7 +145,7 @@ function sampleRoutes(nRoutes: number, seed: number) {
 
 export interface RideVisibility {score: number; routeMetres: number; wallM: number; routes: number}
 
-function scorer(samples: ReturnType<typeof sampleRoutes>['samples'], fp: ReturnType<typeof loadFootprints>) {
+export function scorer(samples: ReturnType<typeof sampleRoutes>['samples'], fp: ReturnType<typeof loadFootprints>) {
   const C = 50, grid = new Map<string, number[]>();
   samples.forEach((s, i) => { const k = `${Math.floor(s.x / C)},${Math.floor(s.y / C)}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push(i); });
   return (id: string): RideVisibility | null => {

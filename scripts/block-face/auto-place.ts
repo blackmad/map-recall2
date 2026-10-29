@@ -179,7 +179,7 @@ async function faceEvidence(faceId: string) {
 }
 
 /** A face directory for a run of the parent face: members' facts, uses, discovery and the strip cropped to the run. */
-async function writeRunFace(parent: string, runId: string, ids: string[], parentStrip: any, parentUses: any, parentDiscovery: any) {
+export async function writeRunFace(parent: string, runId: string, ids: string[], parentStrip: any, parentUses: any, parentDiscovery: any) {
   const src = path.join(FACES, parent), dst = path.join(FACES, runId), stage = path.join(STAGING, runId);
   await fs.mkdir(dst, {recursive: true}); await fs.mkdir(stage, {recursive: true});
   const facts: {pandId: string; facts: BuildingFacts}[] = [];
@@ -225,7 +225,7 @@ export interface PandLikeness { pandId: string; ncc: number | null; nccRaw: numb
   verdict: LikenessResult['verdict']; reasons: string[]; wall: {photo: string; model: string | null; dL: number | null}; glazing: {photo: number; model: number}; columns: {photo: number | null; model: number | null}; iou: number | null }
 
 /** Likeness of each pand of a compiled run face: the strip span vs the model elevation of the chunk (buildingRecipe/likeness.ts). */
-async function runLikeness(runId: string): Promise<PandLikeness[]> {
+export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const strip = await readJson(path.join(FACES, runId, 'strip.json')), report = await readJson(path.join(STAGING, runId, 'report.json'));
   const raw = await stripRaw(strip.image), soup = await loadMaterialSoup(path.join(STAGING, runId, 'chunk.glb'));
   // The model at the strip's frame and scale (as review.ts renders it).
