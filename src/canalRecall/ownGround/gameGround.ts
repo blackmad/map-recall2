@@ -15,7 +15,8 @@
 //   `?groundRing=steps|view`) and cuts each heavy layer of a cell into 3×3
 //   tiles that three.js frustum-culls (cellTiles.ts, `?groundTiles=1..4`).
 //   iPad Westerkerk pitch 60: own-ground 875 k → ~320 k drawn triangles, the
-//   picture unchanged. Desktop keeps the stepped ring and one mesh per layer.
+//   picture unchanged. Desktop keeps the stepped ring and, since the same
+//   day, also draws 3×3 tiles (desktop Westerkerk 1065 k → 466 k, identical).
 // - Drawn as one participant of the shared three.js frame (order −10, under
 //   the facades), lit and shadowed by its rig.
 // - Overlays are draped ribbons on the same surface: the route line, the
@@ -40,7 +41,7 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundL
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { splitIntoTiles } from './cellTiles.js';
+import { tileGeometry } from '../rendererShared/tiledGeometry.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -109,20 +110,22 @@ export interface OwnGroundOptions {
   ring?: 'steps' | 'view';
   /**
    * Cut each heavy layer of a cell into `tiles`×`tiles` sub-meshes so the ones off screen are culled (cellTiles.ts;
-   * default: from the page, `groundTilesFlag()` below; 1 = one mesh per layer, the desktop path). Display only.
+   * default: from the page, `groundTilesFlag()` below, 3; 1 = one mesh per layer). Display only.
    */
   tiles?: number;
 }
 
 /**
- * Cell tiles on this device: 3×3 on a touch device, none on a desktop (unchanged). `?groundTiles=1..4` (or
- * `window.__canalRecallGroundTiles`) overrides it.
+ * Cell tiles per side: 3×3 on every device. Touch since 2026-10-29 (#100); desktop since the same day, after the
+ * in-page before/after (scripts/gpu-load-ipad.mjs RETILE) came out pixel-identical at the Westerkerk, Damrak, Dam and
+ * Leidseplein with drawn ground triangles 1.04–1.44 M → 0.35–0.47 M. `?groundTiles=1..4` (or
+ * `window.__canalRecallGroundTiles`) overrides it; `?groundTiles=1` is the one-mesh-per-layer opt-out.
  */
 function groundTilesFlag(): number {
   const g = globalThis as { __canalRecallGroundTiles?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
   const asked = Number(g.__canalRecallGroundTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundTiles') : NaN));
   if (Number.isInteger(asked) && asked >= 1 && asked <= 4) return asked;
-  return g.matchMedia?.('(pointer: coarse)')?.matches ? TOUCH_TILES : 1;
+  return CELL_TILES;
 }
 
 /**
@@ -204,8 +207,8 @@ interface FarResident { key: string; group: any; parts: Map<string, any>; triang
 interface Resident { key: string; lod: 0 | 1; detail: CellDetail; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
-/** Cell tiles per side on a touch device (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
-const TOUCH_TILES = 3;
+/** Cell tiles per side (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
+const CELL_TILES = 3;
 const TILE_MIN_TRIANGLES = 4000;
 const AERIAL_RADIUS_M = 2000;
 /** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
@@ -923,17 +926,38 @@ export class OwnGround {
    * and material are the layer's; the dispose in drop() runs over every tile.
    */
   private tiledGeometries(p: GpuMesh): any[] {
-    const tiles = splitIntoTiles(p.positions, p.indices, this.opts.tiles, TILE_MIN_TRIANGLES);
+    if (this.opts.tiles <= 1) return [this.geometry(p)];
+    const tiles = tileGeometry(this.THREE, this.packedGeometry(p), this.opts.tiles, TILE_MIN_TRIANGLES);
     if (!tiles) return [this.geometry(p)];
-    const THREE = this.THREE, base = this.packedGeometry(p);
-    return tiles.map(t => {
-      const g = new THREE.BufferGeometry();
-      for (const [name, attribute] of Object.entries(base.attributes)) g.setAttribute(name, attribute);
-      g.setIndex(new THREE.BufferAttribute(t.indices, 1));
-      g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...t.center), t.radius);
-      if (this.opts.releaseArrays) for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
-      return g;
-    });
+    if (this.opts.releaseArrays) for (const g of tiles) for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
+    return tiles;
+  }
+
+  /**
+   * Diagnostics (before/after in one page, scripts/gpu-load-ipad.mjs RETILE): cut the resident cells' meshes into
+   * `n`×`n` tiles in place, as install does with `tiles` = n, so the same frame can be shot whole and tiled. Needs the
+   * CPU arrays (a desktop; `releaseArrays` frees them on phones). Returns the meshes replaced.
+   */
+  retile(n: number, minTriangles = TILE_MIN_TRIANGLES): number {
+    let replaced = 0;
+    this.opts.tiles = n;
+    for (const r of this.resident.values()) {
+      for (const mesh of [...r.group.children] as any[]) {
+        if (!mesh.isMesh) continue;
+        const tiles = tileGeometry(this.THREE, mesh.geometry, n, minTriangles);
+        if (!tiles) continue;
+        for (const g of tiles) {
+          const m = new this.THREE.Mesh(g, mesh.material);
+          for (const k of ['name', 'matrixAutoUpdate', 'receiveShadow', 'castShadow', 'renderOrder'] as const) m[k] = mesh[k];
+          r.group.add(m);
+        }
+        r.group.remove(mesh);
+        replaced++;
+      }
+    }
+    this.frame.invalidateShadows?.();
+    this.host.repaint();
+    return replaced;
   }
 
   private packedGeometry(p: GpuMesh): any {

@@ -386,3 +386,32 @@ test('shared frame: a context lost mid-compile drops the frame instead of throwi
   assert.throws(() => renderLosingContext(throwing('Cannot read properties of undefined'), scene, camera, live), /Cannot read/, 'a live-context bug still throws');
   assert.equal(renderLosingContext({ render() {} }, scene, camera, live), true);
 });
+
+test('tileGeometry: culled tiles share the vertex attributes, partition the index, and leave unfit geometry whole', async () => {
+  const { tileGeometry } = await import('./tiledGeometry');
+  const nx = 60, ny = 60, pos: number[] = [], idx: number[] = [];
+  for (let j = 0; j <= ny; j++) for (let i = 0; i <= nx; i++) pos.push(i * 10, j * 10, 0);
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) { const a = j * (nx + 1) + i; idx.push(a, a + 1, a + nx + 2, a, a + nx + 2, a + nx + 1); }
+  const plain = new THREE.BufferGeometry();
+  plain.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  plain.setIndex(new THREE.BufferAttribute(new Uint32Array(idx), 1));
+  const tiles = tileGeometry(THREE, plain, 3, 100)!;
+  assert.equal(tiles.length, 9);
+  assert.ok(tiles.every(t => t.attributes.position === plain.attributes.position), 'one vertex buffer');
+  assert.equal(tiles.reduce((n, t) => n + t.index!.count, 0), idx.length);
+  // Interleaved (the compact ground layout: position and uv over one buffer).
+  const inter = new THREE.BufferGeometry(), buf = new THREE.InterleavedBuffer(new Float32Array(pos), 3);
+  inter.setAttribute('position', new THREE.InterleavedBufferAttribute(buf, 3, 0));
+  inter.setAttribute('uv', new THREE.InterleavedBufferAttribute(buf, 2, 0));
+  inter.setIndex(new THREE.BufferAttribute(new Uint32Array(idx), 1));
+  const it = tileGeometry(THREE, inter, 2, 100)!;
+  assert.equal(it.length, 4);
+  assert.ok(it.every(t => t.attributes.uv === inter.attributes.uv));
+  for (const t of it) { t.computeBoundingSphere(); }
+  // Left whole: one tile, too small, groups, a partial draw range, no index.
+  assert.equal(tileGeometry(THREE, plain, 1, 0), null);
+  assert.equal(tileGeometry(THREE, plain, 3, idx.length), null);
+  const grouped = plain.clone(); grouped.addGroup(0, 6, 0); assert.equal(tileGeometry(THREE, grouped, 3, 0), null);
+  const ranged = plain.clone(); ranged.setDrawRange(0, 600); assert.equal(tileGeometry(THREE, ranged, 3, 0), null);
+  const loose = new THREE.BufferGeometry(); loose.setAttribute('position', plain.attributes.position); assert.equal(tileGeometry(THREE, loose, 3, 0), null);
+});

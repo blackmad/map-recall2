@@ -21,8 +21,6 @@ for (const [lng, lat, bearing] of places) {
     g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b)); Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
   }, { lng, lat, bearing });
   await page.waitForTimeout(Number(process.env.SETTLE_MS || 20000));
-  // SHOTS=dir: a screenshot per place (before/after strips), named by place and the query string.
-  if (process.env.SHOTS) { fs.mkdirSync(process.env.SHOTS, {recursive: true}); await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)}); }
   const r = await page.evaluate(() => {
     const vm = canalRecallGame.vectorMap, f = vm._sharedFrame, i = f.renderer.info;
     // The farthest ground on screen from the map centre (the rider), metres: the touch ring must reach it (residency.ts).
@@ -30,6 +28,40 @@ for (const [lng, lat, bearing] of places) {
     const reachM = Math.round(Math.max(...[[0, 0], [w / 2, 0], [w, 0], [0, h], [w, h]].map(([px, py]) => m.unproject([px, py]).distanceTo(c))));
     return { pitch: Math.round(vm.map.getPitch()), zoom: +vm.map.getZoom().toFixed(2), calls: f.stats.main.calls, tris: f.stats.main.triangles, geometries: i.memory.geometries, textures: i.memory.textures, stats: f.drawStats(), reachM, view: `${w}x${h}`, ground: (({ radiusM, cells, details, buildMsMedian }) => ({ radiusM, cells: cells && Object.keys(cells).length, details, buildMsMedian }))(vm._ownGround?.status?.() || {}) };
   });
+  // SHOTS=dir: a screenshot per place (before/after strips), named by place and the query string.
+  if (process.env.SHOTS) { fs.mkdirSync(process.env.SHOTS, {recursive: true}); await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)}); }
+  // ONLY=<participant id> (e.g. own-ground, facades): a second shot with every other shared-frame participant, the
+  // map's labels and the HUD hidden, for pixel-exact before/after of one participant. Restored afterwards.
+  if (process.env.SHOTS && process.env.ONLY) {
+    await page.evaluate((only) => {
+      const vm = canalRecallGame.vectorMap, f = vm._sharedFrame, m = vm.map;
+      window.__only = { roots: [], layers: [], els: [] };
+      // Freeze the simulation (the chase camera's settle and the rider's bob move the view sub-pixel between shots).
+      const g = canalRecallGame; window.__only.update = Object.prototype.hasOwnProperty.call(g, '_update') ? g._update : null; g._update = () => {};
+      for (const e of f.registry.all()) { const root = e.participant?.participant?.root ?? e.participant?.root; if (root && only !== 'all' && e.id !== only && root.visible) { root.visible = false; window.__only.roots.push(root); } }
+      for (const l of m.getStyle().layers) if (l.type === 'symbol' && m.getLayoutProperty(l.id, 'visibility') !== 'none') { m.setLayoutProperty(l.id, 'visibility', 'none'); window.__only.layers.push(l.id); }
+      for (const el of document.querySelectorAll('body *')) { window.__only.els.push([el, el.style.visibility]); el.style.visibility = 'hidden'; }
+      let el = m.getCanvas(); while (el) { el.style.visibility = 'visible'; el = el.parentElement; }
+      f.invalidateShadows?.(); m.triggerRepaint();
+    }, process.env.ONLY);
+    await page.waitForTimeout(1500);
+    await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${process.env.ONLY}-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)});
+    // RETILE=js: an expression run in the page between two ONLY shots (e.g. `vm._ownGround.retile(3)`), so the same
+    // frame is shot before and after a mesh partition: pixel-exact, no run-to-run noise (sun, route, streaming).
+    if (process.env.RETILE) {
+      const n = await page.evaluate((js) => { const vm = canalRecallGame.vectorMap; const out = (0, eval)(`(vm) => (${js})`)(vm); vm._sharedFrame.invalidateShadows?.(); vm.map.triggerRepaint(); return out; }, process.env.RETILE);
+      await page.waitForTimeout(1500);
+      await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${process.env.ONLY}-retiled-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)});
+      const after = await page.evaluate(() => { const f = canalRecallGame.vectorMap._sharedFrame; return { calls: f.stats.main.calls, stats: f.drawStats() }; });
+      console.log(`  RETILE ${process.env.RETILE} -> ${JSON.stringify(n)}; ONLY-frame calls ${after.calls}; ${Object.entries(after.stats).map(([k, v]) => `${k} ${v.meshes} meshes ${(v.triangles / 1e3).toFixed(0)}k`).join(', ')}`);
+    }
+    await page.evaluate(() => {
+      const o = window.__only, m = canalRecallGame.vectorMap.map;
+      if (o.update) canalRecallGame._update = o.update; else delete canalRecallGame._update;
+      for (const r of o.roots) r.visible = true; for (const id of o.layers) m.setLayoutProperty(id, 'visibility', 'visible'); for (const [el, v] of o.els) el.style.visibility = v;
+      canalRecallGame.vectorMap._sharedFrame.invalidateShadows?.(); m.triggerRepaint();
+    });
+  }
   if (process.env.GROUND) console.log(await page.evaluate(() => {
     // Own-ground triangles by mesh name/layer, plus the cell residency settings.
     const f = canalRecallGame.vectorMap._sharedFrame, g = canalRecallGame.vectorMap._ownGround;
