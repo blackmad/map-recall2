@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**De Pijp block-face kit, first runs (2026-10-29, #96).** It uses the Helmersbuurt method (#81), starting with the most-ridden streets.
+
+- **Installed:** eight runs, 25 pands, on Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38.
+- **Types:** seven in `scripts/block-face/types/de-pijp/`.
+- **New kit components,** each tested and byte-identical when absent:
+  - `dormerHoist`, a hoist beam over each dormer;
+  - `wallAnchors`, iron anchor crosses over the window heads, measured on Albert Cuypstraat 144–162;
+  - `windowHoods {colour: band|stone}`.
+- **GLB audit fix:** opening-outside now judges each coplanar wall piece where it meets the part. A front about 1° off its row was split into a 1.2 m piece and a 0.23 m strip, and judged 1.5 m away, which made a flush frieze read 3 cm proud. The 3 cm tolerance is unchanged, and a 6 cm part still fails.
+- **Held at integration:**
+  - **Ferdinand Bolstraat 40–54 (two runs).** The fronts are pale buff and white stucco, but the kit drew orange brick: `stripOverDrawn` is 1.9, against about 1.0 on the installed runs.
+  - **Bol 20–22:** a 0.31 m kinked BAG front segment puts the frieze 3.9 cm off the wall.
+  - **Review-pin holds:** Cuyp 158A (stepped gable), 138 and 140E (the roof goes flat under the dormer) and Wou 60 (the painted-black variant).
+
 **Noord feedback: EYE, A'DAM Toren, Treehouse, Pllek, Grasweg 41S, NDSM ground (2026-10-29, #95).**
 
 - **a524acc9, ground.** The AHN survey was flown during the 2021 works, so it recorded 1.5–3 m of sand fill. The 2025 NDSM-oost blocks were seated on that.

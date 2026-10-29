@@ -94,6 +94,4 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-wou-54-72-r2': {white: [225, 228, 229], stripOverDrawn: 0.69},
   'face-bol-12-22-r2': {white: [235, 237, 241], stripOverDrawn: 0.868},
   'face-bol-24-38-r1': {white: [223, 219, 223], stripOverDrawn: 1.027},
-  'face-bol-40-54-r1': {white: [187, 184, 173], stripOverDrawn: 1.888},
-  'face-bol-40-54-r2': {white: [190, 179, 162], stripOverDrawn: 1.977},
 };

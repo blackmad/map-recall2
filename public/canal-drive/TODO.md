@@ -1939,6 +1939,25 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **De Pijp kit, next (#96, 2026-10-29).**
+  - **Ferdinand Bolstraat 40–54** is held for tone. It needs pale buff brick and white stucco pilasters in the kit, then a reinstall.
+  - **Shopfront grounds** come out with 1 bay where the photos show 2–4.
+  - **Albert Cuypstraat 152** has a lighter roof slab above the eaves that the photo doesn't show.
+  - **Bol 22:** straighten BAG front kinks under 2 cm in the shell, then install bol-12-22-r1.
+  - **Not attempted:** bol-5-19 and bol-21-43. **Intake failed:** cuyp-79-145 (frontages differ by more than 11°) and bol-97-113 (no frontage).
+  - **The kit cannot yet say:**
+    - white stucco party pilasters
+    - dormer balconettes and side cheeks
+    - hood dentils and rosettes
+    - yellow brick courses
+    - a corbel-table frieze
+    - frieze lozenges
+    - sculpted keystones
+    - mansard roof lights
+    - the painted-black balconette variant
+    - stepped gables in a row
+    - a pitched attic band under dormers
+
 - **Kit gaps found by the Noord lane (#95, 2026-10-29).**
   - The kit cannot yet express:
     - irregular window scatter on large-tier walls (Grasweg 41S);
