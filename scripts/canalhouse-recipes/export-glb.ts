@@ -17,6 +17,11 @@ export interface CanalhouseGlbOptions {
   slotFor?: (mesh: T.Mesh) => string;
 }
 
+/** Appends without spreading: `push(...array)` overflows the call stack on a large building (KPN Teleport, pand 0363100012165158: ~1 M values). */
+export function appendAll(target: number[], source: ArrayLike<number>): void {
+  for (let i = 0; i < source.length; i++) target.push(source[i]);
+}
+
 /** Planar projection per triangle along its dominant normal axis, in metres. */
 export function metreBoxUvs(positions: ArrayLike<number>): number[] {
   const uv: number[] = [];
@@ -69,17 +74,17 @@ export async function canalhouseGroupToGlb(id: string, group: T.Object3D, option
       }
     }
     if (!geometry.getAttribute('normal')) geometry.computeVertexNormals();
-    if (preset) bucket.uvs.push(...Array.from(canalhouseRoofUvs(geometry, canalhouseRoofMaterialPresets[preset].widthM).array));
+    if (preset) appendAll(bucket.uvs, canalhouseRoofUvs(geometry, canalhouseRoofMaterialPresets[preset].widthM).array);
     else if (options.metreUvs) {
       const positions = geometry.getAttribute('position').array;
       // Glass: 0..1 per pane so the shared pane texture (gradient + reflection) spans each window;
       // roofs: eave/down-slope metres so tile courses run along the eaves on every slope.
-      if (slot === 'glass') bucket.uvs.push(...paneUvs(positions));
-      else if (surface === 'roof') bucket.uvs.push(...Array.from(canalhouseRoofUvs(geometry, 1).array));
-      else bucket.uvs.push(...metreBoxUvs(positions));
+      if (slot === 'glass') appendAll(bucket.uvs, paneUvs(positions));
+      else if (surface === 'roof') appendAll(bucket.uvs, canalhouseRoofUvs(geometry, 1).array);
+      else appendAll(bucket.uvs, metreBoxUvs(positions));
     }
-    bucket.positions.push(...Array.from(geometry.getAttribute('position').array));
-    bucket.normals.push(...Array.from(geometry.getAttribute('normal').array)); geometry.dispose();
+    appendAll(bucket.positions, geometry.getAttribute('position').array);
+    appendAll(bucket.normals, geometry.getAttribute('normal').array); geometry.dispose();
   });
   for (const [key, bucket] of buckets) {
     const c = bucket.material.color;
