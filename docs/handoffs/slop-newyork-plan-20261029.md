@@ -24,9 +24,9 @@ they are; (3) compact binary extracts with strict decoders; (4) shadow
 stand-ins, size-based culling and the loading recipe; (5) the driving-feel
 fundamentals (fixed substeps with a display-rate agreement test, a
 speed-dependent steering lock, entity-relative camera smoothing). A sixth, the
-raster-derived ground, is a measured spike, not a rollout. Traffic,
-pedestrians, time of day and audio are product questions for the user, not
-lanes, and are on the GitHub issue that accompanies this plan.
+raster-derived ground, is a measured spike, not a rollout. The user
+decided the same day: no NPC traffic or pedestrians, no audio or music, and
+time of day is welcome as a nicety (lane G, after B).
 
 ## 2. Where we are already ahead (do not regress these)
 
@@ -98,6 +98,7 @@ from `scripts/worktrees/new.sh`.
 | D | Shadow stand-ins, culling, loading recipe | `lane-shadow-standins-culling-20261029.md` | — | 1 week | shadow draws, ride-perf, time-to-ride before/after |
 | E | Driving feel: substeps, lock, camera offset | `lane-driving-feel-20261029.md` | — | 3–5 days | display-rate test green; named junction rides; user rides the strip |
 | F | Ground raster spike | `lane-ground-raster-spike-20261029.md` | — | 1 week, spike | side-by-side with the orthophoto at the 13 ROAD_SPOTS; no rollout without the user |
+| G | Time of day (dusk ride, opt-in) | `lane-time-of-day-20261029.md` | B | 1 week | user rides it; day strips unchanged; programs ≤ 32 |
 
 Order: A1 (step 1 of the frame) and E first because they are small and
 unblock or de-risk the rest; C and D in parallel (data and renderer lanes,
@@ -105,25 +106,19 @@ different files); B after C's footprint stream exists (B reads it); F last and
 only as a spike. B, D and F all touch the shared frame and the ground; give
 them separate worktrees and have the integrator merge in that order.
 
-## 5. Product questions for the user (issue, label needs-david)
+## 5. Product decisions (user, 2026-10-29)
 
-1. **NPC life.** Slop's recipe (IDM car-following on Bézier lane connectors
-   pruned to the largest strongly connected component, late committed dodges
-   of the player, 340 pedestrians on sidewalk tracks) is well documented and
-   portable. In a learning game it costs attention and frame time and adds
-   nothing to recall. Trams on their real lines would teach something; cars
-   would not. Decision wanted: none / trams and bikes only / full traffic.
-2. **Time of day.** LOOK fixes one sun so facades compare across pipelines.
-   A dusk or night preset would need slop's interior mapping and clustered
-   distant lights (both pure shader maths, portable) and a second set of
-   likeness strips. Decision wanted: stay with one sun, or allow a dusk ride.
-3. **Audio.** Disabled "without an explicit product decision". The cheapest
-   port is the bicycle voice (tyre hiss, freewheel ratchet when coasting,
-   chain when pedalling) plus wind sheltered by street enclosure, about 150
-   lines and no files. Decision wanted: keep silent, or allow a muted-by-
-   default bike voice.
-4. **Drop MapLibre pace.** Lane A proposes landing flag-gated steps on main
-   weekly instead of the long-lived branch rule from 2026-10-10. Confirm.
+1. **NPC life: no.** No traffic, no pedestrians, no trams as NPCs for now.
+   Slop's recipe stays documented in the research file in case this changes.
+2. **Audio and music: no.** The 2026 "permanently disabled" decision stands;
+   the bicycle voice is not ported.
+3. **Time of day: yes, as a nicety.** "A cute thing." Lane G,
+   `lane-time-of-day-20261029.md`, after lane B: an opt-in dusk ride on the
+   shader facades (interior-mapped lit windows, clustered distant lights,
+   sky-matched fog), never the default and never the rig under which
+   likeness strips are judged (LOOK §Light stays one sun).
+4. **Drop MapLibre pace.** Still open on issue #107: landing flag-gated
+   steps on main weekly instead of the long-lived branch rule.
 
 ## 6. Numbers to carry forward (baseline, 2026-10-29)
 
