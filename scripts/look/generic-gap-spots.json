@@ -1,0 +1,98 @@
+[
+ {
+  "name": "Tweede Egelantiersdwarsstraat",
+  "slug": "tweede-egelantiersdwarsstraat",
+  "lng": 4.882064,
+  "lat": 52.376806,
+  "bearing": 160,
+  "segLen": 41
+ },
+ {
+  "name": "Tichelstraat",
+  "slug": "tichelstraat",
+  "lng": 4.880705,
+  "lat": 52.379193,
+  "bearing": 344,
+  "segLen": 90
+ },
+ {
+  "name": "Eerste Looiersdwarsstraat",
+  "slug": "eerste-looiersdwarsstraat",
+  "lng": 4.881144,
+  "lat": 52.368856,
+  "bearing": 157,
+  "segLen": 64
+ },
+ {
+  "name": "Bellamystraat",
+  "slug": "bellamystraat",
+  "lng": 4.865742,
+  "lat": 52.367016,
+  "bearing": 247,
+  "segLen": 135
+ },
+ {
+  "name": "Ten Katestraat",
+  "slug": "ten-katestraat",
+  "lng": 4.866931,
+  "lat": 52.366855,
+  "bearing": 157,
+  "segLen": 95
+ },
+ {
+  "name": "Nicolaas Beetsstraat",
+  "slug": "nicolaas-beetsstraat",
+  "lng": 4.866072,
+  "lat": 52.364679,
+  "bearing": 160,
+  "segLen": 65
+ },
+ {
+  "name": "Tweede Jan Steenstraat",
+  "slug": "tweede-jan-steenstraat",
+  "lng": 4.901409,
+  "lat": 52.356425,
+  "bearing": 65,
+  "segLen": 173
+ },
+ {
+  "name": "Saenredamstraat",
+  "slug": "saenredamstraat",
+  "lng": 4.889496,
+  "lat": 52.355698,
+  "bearing": 276,
+  "segLen": 84
+ },
+ {
+  "name": "Dani\u00ebl Stalpertstraat",
+  "slug": "dani\u00ebl-stalpertstraat",
+  "lng": 4.891577,
+  "lat": 52.356126,
+  "bearing": 95,
+  "segLen": 112
+ },
+ {
+  "name": "Van Breestraat",
+  "slug": "van-breestraat",
+  "lng": 4.869844,
+  "lat": 52.355087,
+  "bearing": 66,
+  "segLen": 185
+ },
+ {
+  "name": "Kerkstraat",
+  "slug": "kerkstraat",
+  "lng": 4.886966,
+  "lat": 52.364464,
+  "bearing": 135,
+  "segLen": 308
+ },
+ {
+  "name": "Runstraat",
+  "slug": "runstraat",
+  "lng": 4.883577,
+  "lat": 52.368888,
+  "bearing": 93,
+  "segLen": 94
+ }
+]
