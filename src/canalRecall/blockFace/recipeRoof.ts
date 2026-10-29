@@ -87,6 +87,12 @@ export interface FrontRoofSpec {
    * end wall of a roof instead of a sheet standing in front of it (Zaanhof, 1919).
    */
   crossGables?: CrossGable[];
+  /**
+   * Saddle only (`RoofIntent.hip`): `front` hips the saddle down to the eaves behind the cornice at its own pitch (from
+   * the attic setback), so a cornice front shows no roof face over it and the ridge runs back from the middle of the
+   * front. `capM` (and the 3DBAG max) then cap the ridge as a flat top.
+   */
+  hip?: 'front';
 }
 
 /** One cross-roof gable (see `FrontRoofSpec.crossGables`): feet `leftRD`/`rightRD` and `apexRD` on the facade line. */
@@ -108,7 +114,7 @@ export interface RecipeRoofReport {
   surfacesBefore: number; surfacesAfter: number;
   notes: string[];
   /** Front forms only: per front band, and the crown line the roof stays under. */
-  bands?: {id: string; form: FrontRoofForm; eavesM: number; ridgeM: number; pitchDeg?: number; sideEavesM?: number}[];
+  bands?: {id: string; form: FrontRoofForm; eavesM: number; ridgeM: number; pitchDeg?: number; sideEavesM?: number; hip?: 'front'}[];
   crownTopM?: number;
 }
 
@@ -500,7 +506,12 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     const spec = specOf(b);
     if (!spec) return {...b, form: (ridge - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: Math.max(b.eaves, ridge), pitch: o.frontPitchDeg, tan: t, spec};
     if (spec.form === 'flat') return {...b, form: 'flat' as FrontRoofForm, ridge: b.eaves, pitch: o.frontPitchDeg, tan: t, spec};
-    if (spec.form === 'saddle') { const pitch = spec.pitchDeg ?? o.frontPitchDeg; return {...b, form: 'saddle' as FrontRoofForm, ridge: r3(spec.ridgeM ?? b.eaves), pitch, tan: Math.tan(pitch * Math.PI / 180), spec}; }
+    if (spec.form === 'saddle') {
+      const pitch = spec.pitchDeg ?? o.frontPitchDeg, ridgeS = r3(spec.ridgeM ?? b.eaves);
+      // A front hip's flat top: the ridge capped by the hint/row cap, the 3DBAG max and the cornice group's line.
+      const top = spec.hip ? r3(Math.max(b.eaves, Math.min(ridgeS, spec.capM ?? Infinity, surveyMaxM, input.ridgeCapM ?? Infinity))) : undefined;
+      return {...b, form: 'saddle' as FrontRoofForm, ridge: ridgeS, pitch, tan: Math.tan(pitch * Math.PI / 180), spec, ...(top !== undefined ? {top} : {})};
+    }
     // Attic: the recipe's steep face, capped by the hint's top (a photo row, a row ridge) and, unless the hint says otherwise, by the 3DBAG p95.
     const bandCapM = (b as {ownCapM?: number}).ownCapM ?? capM;
     const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180);
@@ -626,6 +637,28 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
         if (main.length < 3) continue;
         const lo = cut(band.fLo), hi = cut(band.fHi), side = r3(R - tn * Math.max(c - lo, hi - c));
         push(clipBand(main, along, -Infinity, lo), () => side, `saddle-${tag}-skirt`);
+        const top = (band as {top?: number}).top;
+        if (band.spec?.hip === 'front' && top !== undefined) {
+          // Front hip: the lower of each side plane and the hip plane rising from the eaves at the attic setback, at the
+          // same pitch; the gutter in front of the setback stays at the eaves; anything over the top is the flat top.
+          // Each split is along the line where two planes meet, so every piece stays planar.
+          const hipH = (p: number[]) => Eb + tn * (depth(p) - setback);
+          const sideL = (p: number[]) => R - tn * (c - along(p)), sideR = (p: number[]) => R - tn * (along(p) - c);
+          const mid = clipBand(main, along, lo, hi);
+          push(clipBand(mid, depth, -Infinity, setback), () => Eb, `hip-${tag}-gutter`);
+          const back = clipBand(mid, depth, setback, Infinity);
+          const capped = (piece: number[][], h: (p: number[]) => number, key: string) => {
+            push(clipBand(piece, p => h(p) - top, -Infinity, 0), h, key);
+            push(clipBand(piece, p => h(p) - top, 0, Infinity), () => top, `hip-${tag}-top`);
+          };
+          for (const [half, sideH, k] of [[clipBand(back, along, lo, c), sideL, 'L'], [clipBand(back, along, c, hi), sideR, 'R']] as const) {
+            if (half.length < 3) continue;
+            capped(clipBand(half, p => hipH(p) - sideH(p), -Infinity, 0), hipH, `hip-${tag}-front`);
+            capped(clipBand(half, p => hipH(p) - sideH(p), 0, Infinity), sideH, `saddle-${tag}-${k}`);
+          }
+          push(clipBand(main, along, hi, Infinity), () => side, `saddle-${tag}-skirt`);
+          continue;
+        }
         push(clipBand(main, along, lo, c), p => R - tn * (c - along(p)), `saddle-${tag}-L`);
         push(clipBand(main, along, c, hi), p => R - tn * (along(p) - c), `saddle-${tag}-R`);
         push(clipBand(main, along, hi, Infinity), () => side, `saddle-${tag}-skirt`);
@@ -774,12 +807,12 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     return {facts: out, report: {pandId: facts.pandId, form: ridge - E < 0.05 ? 'flat' : 'attic', eavesM: r3(E), ridgeM: ridge, capM: r3(capM), surveyMaxM: r3(surveyMaxM), atticM: r3(attic), mainDepthM: r3(mainDepth), plotDepthM: r3(plotDepth), wings, surfacesBefore: facts.roofsRD.length, surfacesAfter: roofsRD.length, notes}};
   }
   // Front forms: the crown line is the highest line any band may reach (the gate `height-vs-3dbag` bounds the model by it).
-  const lineOf = (b: typeof shaped[number]) => b.spec?.lineM ?? b.ridge;
-  const crownTopM = r3(Math.max(...shaped.map(lineOf))), ridgeTop = r3(Math.max(...shaped.map(b => b.ridge)));
+  const lineOf = (b: typeof shaped[number]) => b.spec?.lineM ?? (b as {top?: number}).top ?? b.ridge;
+  const crownTopM = r3(Math.max(...shaped.map(lineOf))), ridgeTop = r3(Math.max(...shaped.map(b => (b as {top?: number}).top ?? b.ridge)));
   const forms = Object.fromEntries(shaped.map(b => [b.id ?? input.frontId ?? 'front0', b.form]));
   const formSet = new Set(shaped.map(b => b.form)), form = formSet.size === 1 ? shaped[0].form : 'mixed';
   const out: BuildingFacts = {...facts, roofsRD, roofSource: {kind: 'front', surveyRoofMaxM: surveyMaxM, capM: r3(capM), crownTopM, forms}};
   return {facts: out, report: {pandId: facts.pandId, form, eavesM: r3(E), ridgeM: ridgeTop, capM: r3(capM), surveyMaxM: r3(surveyMaxM), atticM: r3(attic), mainDepthM: r3(mainDepth), plotDepthM: r3(plotDepth), wings, surfacesBefore: facts.roofsRD.length, surfacesAfter: roofsRD.length, notes,
-    bands: shaped.map(b => ({id: b.id ?? input.frontId ?? 'front0', form: b.form, eavesM: r3(b.eaves), ridgeM: b.ridge, ...(b.form !== 'flat' ? {pitchDeg: b.pitch} : {}), ...(b.form === 'saddle' ? {sideEavesM: r3(b.spec?.sideEavesM ?? (b.ridge - b.tan * c0(b)))} : {})})), crownTopM}};
+    bands: shaped.map(b => ({id: b.id ?? input.frontId ?? 'front0', form: b.form, eavesM: r3(b.eaves), ridgeM: (b as {top?: number}).top ?? b.ridge, ...(b.form !== 'flat' ? {pitchDeg: b.pitch} : {}), ...(b.form === 'saddle' ? {sideEavesM: r3(b.spec?.sideEavesM ?? (b.ridge - b.tan * c0(b)))} : {}), ...(b.spec?.hip ? {hip: b.spec.hip} : {})})), crownTopM}};
   function c0(b: typeof shaped[number]) { return Math.max(b.centre - (Number.isFinite(b.lo) ? b.lo : along(front.endpointsRD[0])), (Number.isFinite(b.hi) ? b.hi : along(front.endpointsRD[1])) - b.centre); }
 }

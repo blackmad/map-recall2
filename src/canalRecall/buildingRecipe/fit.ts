@@ -538,6 +538,11 @@ function clampToPane(o: CanalhouseOpening, [x, y]: CanalhousePoint): CanalhouseP
 }
 
 /** Proportions of the historic ground fronts: pier/post width, beam height, panel (riser) top. */
+/**
+ * Depth of a ground-front riser or door panel: 10 cm, 4 cm proud of the 6 cm plinth band it stands on. At 5 cm its face lay
+ * 1 cm in front of the plinth's over the plinth height, coplanar in the geometry audit (Kinkerstraat 26 pui, #98).
+ */
+export const GROUND_FRONT_PANEL_DEPTH_M = 0.1;
 const GROUND_FRONT = {arcade: {pierM: 0.34, beamM: 0.32, riserM: 0.5}, pui: {pierM: 0.2, beamM: 0.42, riserM: 0.62}, wall: {pierM: 0.45, beamM: 0, riserM: 0}} as const;
 
 /**
@@ -563,12 +568,12 @@ export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, wi
       const th = top - (0.02 + dh + 0.06);
       if (th >= 0.3) openings.push({id: `${id}-transom`, kind: 'window', leftM: round(left), bottomM: round(0.02 + dh + 0.06), widthM: round(w), heightM: round(th), trimWidthM: 0.06, ...(w > 1.1 ? {verticalBars: [.5]} : {}), frameSurface: joinery, barSurface: joinery});
       // A door narrower than its bay stands in a panel of the frame colour.
-      if (framed && w - dw > 0.2) for (const [side, x, pw] of [['l', left, dl - left], ['r', dl + dw, left + w - dl - dw]] as const) if (pw > 0.08) blocks.push({id: `${id}-door-panel-${side}`, leftM: round(x), bottomM: 0.02, widthM: round(pw), heightM: round(dh), depthM: 0.05, surface: 'shop'});
+      if (framed && w - dw > 0.2) for (const [side, x, pw] of [['l', left, dl - left], ['r', dl + dw, left + w - dl - dw]] as const) if (pw > 0.08) blocks.push({id: `${id}-door-panel-${side}`, leftM: round(x), bottomM: 0.02, widthM: round(pw), heightM: round(dh), depthM: GROUND_FRONT_PANEL_DEPTH_M, surface: 'shop'});
       return;
     }
     if (kind === 'blank') return;
     const sill = framed ? k.riserM : h * 0.2;
-    if (framed) blocks.push({id: `${id}-riser`, leftM: round(left), bottomM: 0.02, widthM: round(w), heightM: round(sill - 0.02), depthM: 0.05, surface: 'shop'});
+    if (framed) blocks.push({id: `${id}-riser`, leftM: round(left), bottomM: 0.02, widthM: round(w), heightM: round(sill - 0.02), depthM: GROUND_FRONT_PANEL_DEPTH_M, surface: 'shop'});
     if (kind === 'panel') { openings.push({id: `${id}-panel`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', frameSurface: joinery, barSurface: joinery}); return; }
     if (kind === 'shutter') { openings.push({id: `${id}-shutter`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', horizontalBars: [0.15, 0.3, 0.45, 0.6, 0.75, 0.9], frameSurface: joinery, barSurface: joinery}); return; }
     openings.push({id: `${id}-window`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, ...(w > 1.1 ? {verticalBars: [.5]} : {}), horizontalBars: [0.74], frameSurface: joinery, barSurface: joinery});
@@ -1017,10 +1022,15 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const style = front.dormerStyle ?? 'plain';
       // Pediment: a triangular trim pediment over a projecting frame. Pointed: a tall pointed roof. On a mansard the dormer
       // stands on the roof face, its front just behind the cornice.
-      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
+      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'arched' ? {roofRiseM: round(clamp(w * 0.5, 0.45, 1)), frontOverhangM: 0.12, roofProfile: 'arch' as const} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
       const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' ? 'wall' as const : front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
+    }
+    // `dormerHoist`: one beam per dormer, over its frame in the pediment, from inside the dormer to `reach` in front of it.
+    if (front.dormerHoist && elevation.dormers) {
+      const reach = front.dormerHoist.reach ?? 0.8;
+      elevation.hoists = seen(elevation.dormers.value.map(d => ({id: `hoist-${d.id}`, centerM: round(d.leftM + d.widthM / 2), heightM: round(d.bottomM + d.heightM + 0.08), widthM: 0.14, beamHeightM: 0.16, projectionM: round(Math.max(0.05, reach - (d.setbackM ?? 0))), setbackM: round((d.setbackM ?? 0) + 0.3), endRiseM: 0.1, surface: front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const})));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {

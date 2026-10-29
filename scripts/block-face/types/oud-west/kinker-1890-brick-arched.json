@@ -59,7 +59,13 @@
       "gable": "cornice",
       "dormers": 1,
       "dormerStyle": "pediment",
-      "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15)"
+      "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15) (#98: white painted bodies, dormerBody stone; a trim-slot body exported as a frame sunk in the low front attic and failed the opening-outside audit)",
+      "dormerBody": "stone",
+      "dormerSize": {
+        "sill": 0.4,
+        "rise": 1.3,
+        "setback": 0.3
+      }
     },
     "none": {
       "gable": "cornice",
@@ -88,7 +94,7 @@
   },
   "palettes": {
     "kinker-2-30": {
-      "brick": "#604e3d",
+      "brick": "#543f30",
       "frame": "#a7a89d",
       "door": "black",
       "stone": "#eae7dc",
@@ -112,7 +118,11 @@
     }
   },
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
   },
   "rhythm": {
     "bays": "2 window axes per module (3.6-4.2 m)",

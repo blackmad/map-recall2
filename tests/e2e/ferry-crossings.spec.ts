@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { setHiddenSelect } from './helpers';
 
-test('cycling boards an IJ ferry, rejects another pier, and docks at its connected terminal', async ({ page }, testInfo) => {
+test('cycling boards an IJ ferry, is kept off the bank, and docks at any pier', async ({ page }, testInfo) => {
   test.setTimeout(180000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await page.goto('/canal-drive/');
@@ -144,23 +144,29 @@ test('cycling boards an IJ ferry, rejects another pier, and docks at its connect
     const runtime=(window as any).CanalRecallFerryTravel;
     const links=g.track.segments.filter((s:any)=>s.ferryLink).map((s:any)=>s.ferryLink);
     const f3=links.find((l:any)=>l.ref==='F3'), unrelated=links.find((l:any)=>l.ref==='F2').to;
-    p.ferryOrigin=f3.from;p.ferryDeparted=true;p.isBoat=true;
-    // Force an attempted landing at the wrong pier, with a land mask supplied
-    // only for this constraint probe. The crossing screenshot uses real water.
+    p.ferryOrigin=f3.from;p.ferryDeparted=true;p.isBoat=true;p.ferryUnarmed=undefined;
+    // Force a landing on a bank far from every pier, with a land mask
+    // supplied only for this constraint probe; then at another line's pier,
+    // which any vessel may dock at (feedback 50ea10bf). The crossing
+    // screenshot uses real water.
     const water=g.vectorMap.isWater;g.vectorMap.isWater=()=>false;
-    p.x=unrelated.x;p.y=unrelated.y;
+    p.x=(f3.from.x+f3.to.x)/2;p.y=(f3.from.y+f3.to.y)/2;
     const previous={x:p.x-8,y:p.y-8};runtime.afterMove(g,previous);
     const rejected=p.x===previous.x&&p.y===previous.y&&!!p.ferryOrigin;
+    p.x=unrelated.x;p.y=unrelated.y;runtime.afterMove(g,{x:p.x-8,y:p.y-8});
+    const otherLine=!p.ferryOrigin&&Math.hypot(p.x-unrelated.land.x,p.y-unrelated.land.y)<.01;
     g.vectorMap.isWater=water;
+    p.ferryOrigin=f3.from;p.ferryDeparted=true;p.isBoat=true;p.ferryUnarmed=undefined;
     const t=f3.to, dx=t.land.x-t.x,dy=t.land.y-t.y;
     p.x=t.x;p.y=t.y;
     runtime.afterMove(g,{x:t.x-dx*.1,y:t.y-dy*.1});
     const docked=!p.ferryOrigin&&!p.isBoat;
     const onLand=Math.hypot(p.x-t.land.x,p.y-t.land.y)<.01;
     const route=g.track.findRoute(f3.from.land,f3.to.land);
-    return {rejected,docked,onLand,routePoints:route.length,accessLengths:links.map((l:any)=>({ref:l.ref,from:Math.hypot(l.from.x-l.from.land.x,l.from.y-l.from.land.y),to:Math.hypot(l.to.x-l.to.land.x,l.to.y-l.to.land.y)}))};
+    return {rejected,otherLine,docked,onLand,routePoints:route.length,accessLengths:links.map((l:any)=>({ref:l.ref,from:Math.hypot(l.from.x-l.from.land.x,l.from.y-l.from.land.y),to:Math.hypot(l.to.x-l.to.land.x,l.to.y-l.to.land.y)}))};
   });
   expect(result.rejected).toBe(true);
+  expect(result.otherLine).toBe(true);
   expect(result.docked).toBe(true);
   expect(result.onLand).toBe(true);
   expect(result.routePoints).toBeGreaterThan(2);

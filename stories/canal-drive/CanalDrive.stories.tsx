@@ -12,10 +12,13 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // A street's name origin, the most common card while driving.
   | 'landmark-card-street' | 'landmark-card-street-touch'
+  // A landmark whose name runs past the card's line: 63 characters, the same
+  // string the Free Ride card story uses.
+  | 'landmark-card-long' | 'landmark-card-long-touch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
-  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-street-queued' | 'touch-hud-street-waiting' | 'touch-hud-question' | 'touch-setup' | 'touch-setup-transit' | 'touch-setup-here'
+  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-street-queued' | 'touch-hud-street-waiting' | 'touch-hud-question' | 'touch-hud-idle' | 'touch-setup' | 'touch-setup-transit' | 'touch-setup-here'
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
@@ -25,9 +28,11 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // tease and a personal best (user report 2026-10-02: ran off the screen).
   | 'finish-full' | 'finish-full-touch'
   | 'landmark-panel-touch'
-  | 'stacked-notices-touch' | 'neighborhood-fallback-touch'
+  | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
   | 'hud-ferry' | 'touch-hud-ferry'
+  // Aboard, 24 m from a pier: the notice says how to dock there.
+  | 'hud-ferry-dock' | 'touch-hud-ferry-dock'
   // Desktop utilities: tucked a few seconds into the ride, and back after a
   // mouse wiggle (with the destination card's hover-only "% new" badge).
   | 'hud-idle' | 'hud-wiggle'
@@ -41,6 +46,12 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // A home route on a phone: the Feedback / How to play row under Start.
   | 'touch-setup-home'
 ;
+
+/** A landmark name well past the card's line (63 characters): the string the
+ *  Free Ride card story already uses, so both stories stress the same name. */
+const LONG_LANDMARK_NAME = 'Rijksmuseum en Museumplein (hoofdingang aan de Museumstraat)';
+/** Its extract, likewise reused from the Free Ride card story. */
+const LONG_LANDMARK_DETAIL = 'The Rijksmuseum is the national museum of the Netherlands, on the Museumplein. Pierre Cuypers designed the building, which opened in 1885; its passage under the middle is a public cycle path, the only one through a national museum.';
 
 const ONBOARDING_STEP: Partial<Record<Scenario, number>> = {
   'onboarding-ride': 0, 'onboarding-name': 1, 'onboarding-score': 2,
@@ -171,7 +182,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
       doc.getElementById('knowledge-button')?.click();
     }
-    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
+    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-ferry-dock' || scenario === 'hud-radar' || scenario === 'neighborhood' || scenario === 'neighborhood-touch' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
@@ -299,16 +310,23 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           return;
         }
         if (scenario.startsWith('landmark')) {
-          const dutch = scenario === 'landmark-panel-dutch';
-          const bare = scenario === 'landmark-card-bare';
+          const dutch = scenario.startsWith('landmark-panel-dutch');
+          const bare = scenario.startsWith('landmark-card-bare');
+          const long = scenario.startsWith('landmark-card-long');
+          const name = long ? LONG_LANDMARK_NAME : 'Oude Kerk';
+          // The photo is keyed by the notice's id when it arrives; the long-name
+          // card is the same stand-in painting under its own name.
+          const id = long ? 'rijksmuseum' : 'oude-kerk';
           game._landmarkNotice = {
-            id: 'oude-kerk',
-            name: 'Oude Kerk',
-            type: 'church',
+            id,
+            name,
+            type: long ? 'museum' : 'church',
             extractLang: dutch ? 'nl' : 'en',
             imageUrl: bare ? undefined : `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#9fc1c7"/><rect y="220" width="400" height="80" fill="#759bb5"/><path d="M150 220V90l50-60 50 60v130z" fill="#b95c45"/><rect x="185" y="140" width="30" height="80" fill="#3f2f28"/></svg>')}`,
-            wikipediaUrl: 'https://en.wikipedia.org/wiki/Oude_Kerk,_Amsterdam',
-            longDetail: dutch
+            wikipediaUrl: long ? 'https://en.wikipedia.org/wiki/Rijksmuseum' : 'https://en.wikipedia.org/wiki/Oude_Kerk,_Amsterdam',
+            longDetail: long
+              ? LONG_LANDMARK_DETAIL
+              : dutch
               ? 'De Oude Kerk is het oudste gebouw en de oudste parochiekerk van '
                 + 'Amsterdam, gesticht in 1213 en ingewijd in 1306 door de bisschop van '
                 + 'Utrecht. De kerk staat aan het Oudekerksplein midden op De Wallen, en '
@@ -321,7 +339,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
                 + 'Saskia van Uylenburgh is buried under one of its floor slabs.',
           };
           game._landmarkNoticeAlpha = 1;
-          game.currentNeighborhood = 'De Wallen';
+          game.currentNeighborhood = long ? 'Museumkwartier' : 'De Wallen';
           if (scenario.startsWith('landmark-card-folded')) {
             // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
             game._landmarkNoticeSource = 'drive-by';
@@ -335,9 +353,9 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           }
           const paint = new Image();
           paint.onload = () => {
-            game._landmarkImages.set('oude-kerk', paint);
+            game._landmarkImages.set(id, paint);
             game._renderLandmarkNotice();
-            if (!['landmark-card', 'landmark-card-bare', 'landmark-card-touch'].includes(scenario)) game._expandLandmarkNotice();
+            if (!scenario.startsWith('landmark-card')) game._expandLandmarkNotice();
           };
           paint.src = game._landmarkNotice.imageUrl;
           return;
@@ -405,8 +423,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario.startsWith('touch-hud')) {
-          const ferry = scenario.endsWith('-ferry');
+        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-ferry-dock' || scenario === 'hud-radar' || scenario.startsWith('touch-hud')) {
+          const ferry = scenario.endsWith('-ferry') || scenario.endsWith('-ferry-dock');
           const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
           const hood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : 'Jordaan';
@@ -432,7 +450,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           });
           // Desktop idle: the corner cluster fades out. The game loop only
           // tucks while racing, so the story applies the same rule directly.
-          if (scenario === 'hud-idle') {
+          if (scenario === 'hud-idle' || scenario === 'touch-hud-idle') {
             const style = doc.createElement('style');
             style.textContent = '#utility-buttons > * { opacity: 0 !important; pointer-events: none; }';
             doc.head.appendChild(style);
@@ -471,6 +489,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             game._renderFerryNotice({
               ferryOrigin: { id: '3980940', name: 'Centraal Station', x: 0, y: 0, land: { x: 0, y: 0 } },
               ferryDestinations: 'Buiksloterweg',
+              ferryNearest: scenario.endsWith('-ferry-dock') ? { name: 'Buiksloterweg', distance: 72 } : null,
             }, true);
           }
           return;
@@ -510,6 +529,11 @@ const meta = {
   parameters: { controls: { disable: true } },
 } satisfies Meta<typeof CanalDriveFrame>;
 
+/** The phone viewports (`mobile1` 320×568, `mobile2` 414×896), set the way
+ *  Storybook 10 reads them. `touch-…` scenarios force the touch layout in the
+ *  frame itself, so the state is the phone one even at a desktop canvas width. */
+const phone = { viewport: { value: 'mobile2', isRotated: false } };
+
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -518,6 +542,10 @@ export const BikeFromHome: Story = { args: { scenario: 'bike-home' } };
 export const BikeFromHere: Story = { args: { scenario: 'bike-here' } };
 export const TransitBriefing: Story = { args: { scenario: 'transit' } };
 export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
+export const AdvancedOptionsPhone: Story = {
+  args: { scenario: 'advanced' },
+  globals: phone,
+};
 export const AdvancedOptionsCartoonLook: Story = { args: { scenario: 'advanced-cartoon' } };
 export const AdvancedOptionsCartoonLookPhone: Story = {
   args: { scenario: 'advanced-cartoon' },
@@ -541,9 +569,17 @@ export const LiveHud: Story = { args: { scenario: 'hud' } };
 /** Aboard an IJ ferry: the notice names the departure and the pier to dock at. */
 /** Desktop, a few seconds into the ride: Feedback, settings, help and the build stamp are gone. */
 export const LiveHudIdle: Story = { args: { scenario: 'hud-idle' } };
+/** The same tuck on a phone: a tap on the map brings the corner cluster back,
+ *  so "gone" is a state there too. */
+export const LiveHudIdlePhone: Story = {
+  args: { scenario: 'touch-hud-idle' },
+  globals: phone,
+};
 /** Desktop after a mouse wiggle: the corner cluster is back and the destination card shows "% new" on hover. */
 export const LiveHudWiggle: Story = { args: { scenario: 'hud-wiggle' } };
 export const LiveHudFerry: Story = { args: { scenario: 'hud-ferry' } };
+/** Aboard, 24 m from the Buiksloterweg pier: the notice names it and how to dock. */
+export const LiveHudFerryDock: Story = { args: { scenario: 'hud-ferry-dock' } };
 /** The riding radar: heading-up, route ahead in bold, the Dam clamped to the rim as an arrow. */
 export const LiveHudRadar: Story = { args: { scenario: 'hud-radar' } };
 export const LiveHudRadarPhone: Story = {
@@ -558,11 +594,29 @@ export const FinishCardFullPhone: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
+/** Calm arrival on a phone, with the landmark photo kept. */
+export const FinishCardCalmModePhone: Story = {
+  args: { scenario: 'finish-calm-touch' },
+  globals: phone,
+};
 /** Calm finish with no landmark photo — typography-only arrival. */
 export const FinishCardCalmBare: Story = { args: { scenario: 'finish-calm-bare' } };
 export const FinishCardBike: Story = { args: { scenario: 'finish-bike' } };
+/** The card's footer names the vehicle: a bike ride, on a phone. */
+export const FinishCardBikePhone: Story = {
+  args: { scenario: 'finish-bike-touch' },
+  globals: phone,
+};
 export const FinishCardTransit: Story = { args: { scenario: 'finish-transit' } };
+export const FinishCardTransitPhone: Story = {
+  args: { scenario: 'finish-transit-touch' },
+  globals: phone,
+};
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };
+export const NeighborhoodPhotoCardPhone: Story = {
+  args: { scenario: 'neighborhood-touch' },
+  globals: phone,
+};
 /** Neighborhood entry with no photo — typography-only postcard. */
 export const NeighborhoodFallbackCard: Story = { args: { scenario: 'neighborhood-fallback' } };
 /** Landmark trivia and neighborhood postcard sharing the bottom band. */
@@ -576,8 +630,25 @@ export const LandmarkCardFoldedMobile: Story = {
 };
 /** Landmark card when the extract has no image. */
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
+/** No photo on a phone either: the card is text alone, and still fits. */
+export const LandmarkCardBarePhone: Story = {
+  args: { scenario: 'landmark-card-bare-touch' },
+  globals: phone,
+};
+/** A 63-character landmark name plus a long extract: the card's name has to
+ *  trim, never push the fact off the card. */
+export const LandmarkCardLongName: Story = { args: { scenario: 'landmark-card-long' } };
+export const LandmarkCardLongNamePhone: Story = {
+  args: { scenario: 'landmark-card-long-touch' },
+  globals: phone,
+};
 export const LandmarkPanel: Story = { args: { scenario: 'landmark-panel' } };
 export const LandmarkPanelUntranslated: Story = { args: { scenario: 'landmark-panel-dutch' } };
+/** The Dutch article on a phone: it has to scroll inside the viewport. */
+export const LandmarkPanelUntranslatedPhone: Story = {
+  args: { scenario: 'landmark-panel-dutch-touch' },
+  globals: phone,
+};
 export const LandmarkPanelMobile: Story = {
   args: { scenario: 'landmark-panel' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
@@ -667,6 +738,12 @@ export const PortraitHudLongNames: Story = {
 /** Aboard an IJ ferry on a phone: the notice sits below the plaque and minimap. */
 export const PortraitHudFerry: Story = {
   args: { scenario: 'touch-hud-ferry' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Aboard on a phone, 24 m from a pier: the dock hint fits the notice. */
+export const PortraitHudFerryDock: Story = {
+  args: { scenario: 'touch-hud-ferry-dock' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 

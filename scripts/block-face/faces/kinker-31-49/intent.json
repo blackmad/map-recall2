@@ -15,7 +15,7 @@
  "authoring": {
   "author": "claude (kinkerstraat odd-faces lane)",
   "passes": 1,
-  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip."
+  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip. #98 pass: Kinkerstraat 47 drew #dcbb9d through its measured tint (photo #bf9d83, too light and saturated); it takes the brick of 45 (#c9a080, the same sunlit red brick on the strip) through the city tint instead. Brick facings (overrides.palette) moved to paletteOverrides: the 3 cm facing lay 1 cm off the shop doors (coplanar)."
  },
  "types": [
   "kinker-1890-plain-brick",
@@ -86,10 +86,7 @@
     "crown": "pediment-dormer",
     "overrides": {
      "windowSurround": "keystone",
-     "windowShare": 0.64,
-     "palette": {
-      "brick": "#352f26"
-     }
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -100,6 +97,17 @@
       "stallriser": "medium",
       "evidence": "strip.jpg 2024-12-11 pand 2: dark shop between white pilasters, PIZZ.. letters on the stall board"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#352f26"
     }
    },
    "groundFloor": {
@@ -135,10 +143,7 @@
     "crown": "pediment-dormer",
     "overrides": {
      "windowSurround": "keystone",
-     "windowShare": 0.64,
-     "palette": {
-      "brick": "#49382d"
-     }
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -149,6 +154,17 @@
       "stallriser": "medium",
       "evidence": "strip.jpg 2024-12-11 pand 3: white pui, a door with a 35 transom left; a truck hides the glass"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#49382d"
     }
    },
    "groundFloor": {
@@ -193,6 +209,14 @@
       "stallriser": "low",
       "evidence": "strip.jpg 2024-12-11 pand 4: white pui, display glass left, door right, bicycles in front; OSM node 926571671 shop=bicycle"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -254,6 +278,14 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 5: purple fascia KAPSALON PRONTO over a white pui, black house door right"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "red-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -287,10 +319,7 @@
     "crown": "pediment-dormer",
     "overrides": {
      "windowSurround": "keystone",
-     "windowShare": 0.64,
-     "palette": {
-      "brick": "#856c57"
-     }
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -302,6 +331,17 @@
       "stallriser": "low",
       "evidence": "strip.jpg 2024-12-11 pand 6: black shop, red-papered glass with a white script name, orange board on the fascia; OSM node 7533672000"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#856c57"
     }
    },
    "groundFloor": {
@@ -341,10 +381,7 @@
     "crown": "pediment-dormer",
     "overrides": {
      "windowSurround": "keystone",
-     "windowShare": 0.64,
-     "palette": {
-      "brick": "#91735c"
-     }
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -360,6 +397,16 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 7: black fascia over a white-framed display window, door left and right"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#91735c"
     }
    },
    "groundFloor": {
@@ -399,10 +446,7 @@
     "crown": "pediment-dormer",
     "overrides": {
      "windowSurround": "keystone",
-     "windowShare": 0.64,
-     "palette": {
-      "brick": "#c9a080"
-     }
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -418,6 +462,17 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 8: white pui under a black fascia with white letters, dark doors either side"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#c9a080"
     }
    },
    "groundFloor": {
@@ -450,9 +505,7 @@
     "type": "kinker-1890-plain-brick",
     "crown": "pediment-dormer",
     "paletteOverrides": {
-     "brick": "#c09d84",
-     "wallTint": "measured",
-     "whitePoint": "#beb4a2"
+     "brick": "#c9a080"
     },
     "overrides": {
      "windowSurround": "keystone",
@@ -472,6 +525,14 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 9: white timber pui with pilasters and three lights, dark house door left"
      }
+    },
+    "roof": {
+     "source": "front",
+     "form": "saddle",
+     "hip": "front",
+     "pitchDeg": 35,
+     "material": "black-tile",
+     "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     }
    },
    "groundFloor": {
@@ -515,10 +576,7 @@
        "keystone": true
       }
      },
-     "cornice": "bracketed",
-     "palette": {
-      "brick": "#d0ab8d"
-     }
+     "cornice": "bracketed"
     },
     "ground": {
      "shopfront": {
@@ -539,6 +597,9 @@
       },
       "evidence": "strip.jpg 2024-12-11 pand 10: dark green shopfront lettered EXCELLENT TAILOR & DRY CLEANING (corner Da Costakade)"
      }
+    },
+    "paletteOverrides": {
+     "brick": "#d0ab8d"
     }
    },
    "groundFloor": {

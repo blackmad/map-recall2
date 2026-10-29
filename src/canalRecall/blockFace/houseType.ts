@@ -21,7 +21,7 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody', 'dormerHoist'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
@@ -113,8 +113,12 @@ export interface HousePlacement {
   pair?: 'left' | 'right';
   /** Body fields this house changes; `null` removes the type's field (absent = the type's). */
   overrides?: BodyOverrides;
-  /** This house's roof over the type's (`RoofIntent` minus the material: source, form, pitch, evidence). Absent = the type's roof, byte-identical. */
-  roof?: Partial<Omit<CanalHouseIntent['roof'], 'material'>>;
+  /**
+   * This house's roof over the type's (`RoofIntent`: source, form, pitch, hip, evidence, and the material when the
+   * orthophoto shows this house's roof in another covering than the type's, Kinkerstraat 33-47 red tile beside slate).
+   * Absent = the type's roof, byte-identical. A material or hip override needs evidence.
+   */
+  roof?: Partial<CanalHouseIntent['roof']>;
 }
 
 /** Colour slots a placement may measure per pand (`HousePlacement.measuredPalette`). */
@@ -293,9 +297,10 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
       else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
     }
     if (pl.roof !== undefined) {
-      if (!pl.roof || typeof pl.roof !== 'object' || Array.isArray(pl.roof)) p.push(`${at}.roof: an object (source, form, pitchDeg, evidence)`);
-      else for (const k of Object.keys(pl.roof)) if (!['source', 'form', 'pitchDeg', 'evidence'].includes(k)) p.push(`${at}.roof.${k}: not a placement roof field (source, form, pitchDeg, evidence; the material is the type's)`);
+      if (!pl.roof || typeof pl.roof !== 'object' || Array.isArray(pl.roof)) p.push(`${at}.roof: an object (source, form, pitchDeg, hip, material, evidence)`);
+      else for (const k of Object.keys(pl.roof)) if (!['source', 'form', 'pitchDeg', 'hip', 'material', 'evidence'].includes(k)) p.push(`${at}.roof.${k}: not a placement roof field (source, form, pitchDeg, hip, material, evidence)`);
       if (pl.roof?.source === 'front' && !pl.roof.evidence) p.push(`${at}.roof.source front needs evidence (what on the strip shows the roof form)`);
+      if ((pl.roof?.material !== undefined || pl.roof?.hip !== undefined) && !pl.roof.evidence) p.push(`${at}.roof: a material or hip override needs evidence (the orthophoto or strip that shows it)`);
     }
     if (pl.modules && pl.modules.length < 2) p.push(`${at}.modules: two or more modules (one module is the placement itself)`);
     if (pl.modules && pl.visualSpan) p.push(`${at}: visualSpan and modules are alternatives`);

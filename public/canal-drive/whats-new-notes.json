@@ -7,6 +7,51 @@
    "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
   },
   {
+   "date": "2026-10-29",
+   "title": "Less work for your graphics card",
+   "text": "The city now skips the ground and building fronts that are off screen. On desktop the picture is the same with about half the triangles. On iPad the busiest views drop to under a million triangles."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Around Centraal Station",
+   "text": "The pavilions on the Stationsplein island, the Noord-Zuid Hollandsch Koffiehuis among them, are now modelled with their mansard roofs and turret. The IJ-side canopy has its arched ribs, the Beurs van Berlage has proper bays, arches and a crest, and each ferry landing has one label."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Kinkerstraat rows",
+   "text": "Fifty Kinkerstraat houses in Oud-West are now drawn from their street photos: brick and painted fronts, white bands, shopfronts, and the dormer roofline behind the cornice, including arched and brick wall dormers."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Lighter on iPads and phones",
+   "text": "Phones and tablets now load only the ground they can actually see and skip what is off screen. That cuts about a third of the GPU work, so the map should crash less often on iPad and iPhone."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "De Pijp rows, first streets",
+   "text": "Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38 are now drawn from their street photos: white bands, iron wall anchors, keystones, window hoods and pediment dormers with hoist beams."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Noord waterfront rebuilt",
+   "text": "The A'DAM Toren's windows now follow its floors, and its shaft turns on the podium as in real life. The EYE stairs are no longer buried, and its west wall no longer floats. Treehouse NDSM has its black fence and truer cabin colours, Pllek is stacked containers under a truss canopy, and Grasweg 41S is silver panels. The bumpy construction-site ground at NDSM-oost is flat again."
+  },
+  {
+   "date": "2026-10-29",
+   "title": "One name per place, and tidier Dam landmarks",
+   "text": "Free Ride no longer shows the same place name twice: Beurs van Berlage, De Bijenkorf, the National Monument and Centraal each get one label. The Beurs windows and arches sit on their walls, the Bijenkorf's Dam front shows its windows again, and the stray grey strip on the Dam corner is gone."
+  },
+  {
+   "date": "2026-10-28",
+   "title": "Ferries dock at any pier",
+   "text": "Steer the ferry onto any pier, from the water or up the quay, to step off. Buiksloterweg and NDSM-werf no longer leave you stuck aboard, the boat stays off the bank, and the cycle bridge by the Odebrug in Oosterdok is now reachable."
+  },
+  {
+   "date": "2026-10-28",
+   "title": "Helmersstraat rows: matching roofs and pointed dormers",
+   "text": "On Eerste Helmersstraat, 120 and 122 now share one roof line, so the dark slot of party wall between them is gone. On Derde Helmersstraat, 54 to 62 gain the small white pointed dormers beside their battlemented wall dormers, as in the street photos."
+  },
+  {
    "date": "2026-10-26",
    "title": "Free ride from the home page",
    "text": "The rideamsterdam.nl home page now has a Free ride button that starts roaming straight away, with no route and no questions."

@@ -85,7 +85,7 @@
  },
  {
   "slug": "da-costabuurt",
-  "buildings": 16,
+  "buildings": 18,
   "kits": 0,
   "facts": 15,
   "origins": 22,
@@ -107,7 +107,7 @@
  },
  {
   "slug": "de-pijp",
-  "buildings": 12,
+  "buildings": 20,
   "kits": 0,
   "facts": 38,
   "origins": 94,
@@ -341,7 +341,7 @@
  },
  {
   "slug": "kinkerbuurt",
-  "buildings": 16,
+  "buildings": 18,
   "kits": 0,
   "facts": 22,
   "origins": 30,
@@ -551,7 +551,7 @@
  },
  {
   "slug": "oude-pijp",
-  "buildings": 5,
+  "buildings": 13,
   "kits": 0,
   "facts": 26,
   "origins": 33,
@@ -835,7 +835,7 @@
  },
  {
   "slug": "van-lennepbuurt",
-  "buildings": 6,
+  "buildings": 7,
   "kits": 0,
   "facts": 22,
   "origins": 32,

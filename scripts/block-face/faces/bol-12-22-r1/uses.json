@@ -1,0 +1,115 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:29:14.217Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153030",
+   "addresses": [
+    "Ferdinand Bolstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010011048064"
+    },
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 220,
+     "bagId": "0363010012078511"
+    },
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 328,
+     "bagId": "0363010012094897"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817452500,
+     "lngLat": [
+      4.8905105,
+      52.3568789
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-04",
+      "email": "amsterdam@witbaard.nl",
+      "name": "Witbaard Feestartikelen",
+      "opening_hours": "Mo 11:00-18:00; Tu-Sa 09:30-18:00",
+      "phone": "+31 20 6626144",
+      "shop": "party",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.witbaard.nl"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105645894,
+     "lngLat": [
+      4.8905522,
+      52.3568138
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "frontage",
+     "distanceM": 4.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167250",
+   "addresses": [
+    "Ferdinand Bolstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000635297"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13533825152,
+     "lngLat": [
+      4.8906541,
+      52.3569809
+     ],
+     "tags": {
+      "amenity": "shelter",
+      "bench": "yes",
+      "bin": "yes",
+      "lit": "yes",
+      "shelter_type": "public_transport"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  }
+ ]
+}

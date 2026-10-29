@@ -9,11 +9,13 @@
  * compiler builds geometry.
  */
 import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
+import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {friezeVentProblems} from './friezeVents.ts';
+import {wallAnchorProblems} from './wallAnchors.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -171,7 +173,10 @@ export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel',
 export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
-export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
+/** `arched` (Kinkerstraat 22-24, 1890): a dormer under a round hood, half an ellipse as high as half its width (0.45..1 m), its round front in the dormer body colour (white with `dormerBody: "stone"`). */
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'arched'] as const;
+/** Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. */
+export const DORMER_BODIES = ['stone', 'brick'] as const;
 /**
  * Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab).
  * `merlons` (Helmersbuurt 1899-1900 wall dormers, Derde Helmersstraat 54-66): a flat brick top with three square brick
@@ -519,8 +524,16 @@ export interface FrontIntent {
   /**
    * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
+   * `{colour}` (Ferdinand Bolstraat 40-54, 1875-77): the same ledge in the palette's band brick (`band`: the cream
+   * moulded-brick hood friezes of the polychrome fronts; needs `palette.band`) or the stone colour (`stone`).
    */
-  windowHoods?: boolean;
+  windowHoods?: boolean | {colour: 'band' | 'stone'};
+  /**
+   * Iron wall anchors (De Pijp 1882-1893 rows; buildingRecipe/wallAnchors.ts): a dark cross `size` m tall (default 0.36)
+   * on every pier and end pier, `over` m (default 0.35) over the window heads of the listed upper `storeys` (default
+   * every storey above the ground). Absent = byte-identical.
+   */
+  wallAnchors?: {storeys?: number[]; size?: number; over?: number};
   /**
    * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
    * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
@@ -614,8 +627,10 @@ export interface FrontIntent {
    * stone colour (painted white) instead of the trim slot, which exports as an opening (frame) material: a frame-class
    * body sunk into the roof slope read as a window piercing the roof and left its own pane with no wall. The window
    * frame, bars and pane stay trim and glass. Not for `box` dormers (brick). Absent = trim, byte-identical.
+   * `brick` (Kinkerstraat 60-62, 1893 Neo-Renaissance): a brick wall dormer, its cheeks, back and front gable (the
+   * pediment or pointed front) in the wall colour; the frame, bars and pane stay trim and glass.
    */
-  dormerBody?: 'stone';
+  dormerBody?: typeof DORMER_BODIES[number];
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -658,6 +673,14 @@ export interface FrontIntent {
    * Not on a mansard. Absent = byte-identical.
    */
   dormerSize?: {sill: number; rise: number; setback: number};
+  /**
+   * A hoist beam out of every dormer (De Pijp 1875-1893 shop rows: Ferdinand Bolstraat 12-54, Albert Cuypstraat 138-162,
+   * Van Woustraat 32-72): a timber beam painted with the dormer (the stone colour with `dormerBody: "stone"`, else the
+   * trim), centred on the dormer just over its window frame (in the pediment), running from inside the dormer
+   * to `reach` metres (0.3..1.5, default 0.8) in front of the dormer's front, rising 0.1 m to its tip. Needs dormers
+   * (not `box`/`flat`). Not with `hoist` (the facade beam). Absent = byte-identical.
+   */
+  dormerHoist?: {reach?: number};
   /** A hoist cap on some dormers (`DormerCapIntent`). */
   dormerCap?: DormerCapIntent;
 }
@@ -846,7 +869,13 @@ export const ROOF_FORMS = ['saddle', 'flat', 'attic'] as const;
  * 3DBAG max still bounds it), `rearPitchDeg`
  * the back slope's own pitch (15-80), and `crossGables: true` makes every pointed crown on part of the front the end of a
  * cross roof whose rakes run back to the attic face (Zaanhof 1919: a long saddle with white cross gables).
+ * `hip: "front"` (with `form: "saddle"` and `pitchDeg`, on a cornice or flat front): a saddle whose ridge runs back from
+ * the middle of the front, hipped down to the eaves behind the cornice at the same pitch, so the street sees no roof face
+ * over the cornice and the air sees one ridge per house (Kinkerstraat 33-47, 1885-1886: red-tiled saddles ridged
+ * front to back, hipped behind the dormer, on the 2024 orthophoto; the 70 degree attic drew a slate band the strip
+ * never shows). The ridge is the eaves + tan(pitch) x half the front width, capped by the 3DBAG max (a flat top).
  */
+export const ROOF_HIPS = ['front'] as const;
 export interface RoofIntent {
   material: typeof ROOF_MATERIALS[number];
   source?: typeof ROOF_SOURCES[number];
@@ -855,6 +884,7 @@ export interface RoofIntent {
   rise?: number;
   rearPitchDeg?: number;
   crossGables?: boolean;
+  hip?: typeof ROOF_HIPS[number];
   evidence?: string;
 }
 
@@ -1228,6 +1258,12 @@ export interface LargeWallIntent {
   gallery?: GalleryIntent | GalleryIntent[];
   /** Closed box balconies on scattered (storey, bay) cells of the main panel (blockBuilding/boxBalcony.ts, Haarlemmerweg 778 "Pepper"). Absent: byte-identical. */
   boxBalconies?: BoxBalconyIntent;
+  /**
+   * Stacked offset blocks on the main panel, written storey by storey (blockBuilding/stackedBlocks.ts, Blend,
+   * Haarlemmerweg 518): `B` a block stepped `deepM` out with its own framed windows, `R` a recessed balcony with a glass
+   * balustrade on the block line, `.` the core wall. Absent: byte-identical.
+   */
+  stackedBlocks?: StackedBlocksIntent;
 }
 
 export interface LargeBuildingIntent {
@@ -1280,9 +1316,12 @@ export interface LargeBuildingIntent {
   shellRepair?: boolean;
   /**
    * `bag`: build the massing on the BAG LoD0 outline (LoD2.2 roof planes clipped to it, walls from the repair strips)
-   * when the LoD2.2 ground has drifted from it (IoU < 0.90). Default `lod22`: the LoD2.2 shell verbatim.
+   * when the LoD2.2 ground has drifted from it (IoU < 0.90). `core` (coreFootprint.ts, Blend 2026-10-29): the same on
+   * the BAG outline with its shallow outward steps (<= 2.5 m) retracted, for a tower whose stacked offset blocks BAG
+   * draws as one top-view union; the blocks come back per storey from `walls[].stackedBlocks`. Default `lod22`: the
+   * LoD2.2 shell verbatim.
    */
-  footprint?: 'lod22' | 'bag';
+  footprint?: 'lod22' | 'bag' | 'core';
   /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
   groundClamp?: boolean;
   /**
@@ -1418,7 +1457,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen', 'painted'], `${at}.bands`);
     problems.push(...paintedProblems(f, at, oneOf));
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
-    if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.windowHoods !== undefined && f.windowHoods !== true) {
+      const h = f.windowHoods as unknown as Record<string, unknown>;
+      if (!h || typeof h !== 'object' || Array.isArray(h) || Object.keys(h).some(k => k !== 'colour') || !['band', 'stone'].includes(h.colour as string)) problems.push(`${at}.windowHoods: true or {colour: band | stone} (or leave it out)`);
+      else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
+    }
+    if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
@@ -1592,8 +1636,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   if (intent?.roof?.rise !== undefined && !(typeof intent.roof.rise === 'number' && intent.roof.rise >= 0.2 && intent.roof.rise <= 2.5)) problems.push('roof.rise: 0.2..2.5 upper-storey heights');
   if (intent?.roof?.rearPitchDeg !== undefined && !(typeof intent.roof.rearPitchDeg === 'number' && intent.roof.rearPitchDeg >= 15 && intent.roof.rearPitchDeg <= 80)) problems.push('roof.rearPitchDeg: 15..80 degrees');
   if (intent?.roof?.crossGables !== undefined && intent.roof.crossGables !== true) problems.push('roof.crossGables: true or absent');
+  if (intent?.roof?.hip !== undefined) {
+    oneOf(intent.roof.hip, ROOF_HIPS, 'roof.hip');
+    if (intent.roof.form !== 'saddle' || intent.roof.pitchDeg === undefined) problems.push('roof.hip: needs form "saddle" and a measured pitchDeg');
+  }
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
@@ -1832,7 +1880,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerCap !== undefined) problems.push(...dormerCapProblems(f, at));
   if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
   if (f.dormerBody !== undefined) {
-    if (f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: "stone" (or leave it out)`);
+    if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
     if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
   }
@@ -1862,6 +1910,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     const list = Array.isArray(f.dormerAt) ? f.dormerAt : [];
     if (list.length !== (f.dormers ?? 0)) problems.push(`${at}.dormerAt: one span per dormer (dormers ${f.dormers ?? 0})`);
     list.forEach((d, i) => { if (!d || !(d.from >= 0 && d.to <= 1 && d.to - d.from >= 0.1 && (i === 0 || d.from >= list[i - 1].to))) problems.push(`${at}.dormerAt[${i}]: {from, to} ascending, non-overlapping fractions of the front within 0..1, at least 0.1 wide`); });
+  }
+  if (f.dormerHoist !== undefined) {
+    const z = f.dormerHoist as {reach?: unknown};
+    if (!z || typeof z !== 'object' || Array.isArray(z) || Object.keys(z).some(k => k !== 'reach') || (z.reach !== undefined && !(typeof z.reach === 'number' && z.reach >= 0.3 && z.reach <= 1.5))) problems.push(`${at}.dormerHoist: {reach?: 0.3..1.5 m in front of the dormer}`);
+    if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment, pointed or arched dormers`);
+    if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

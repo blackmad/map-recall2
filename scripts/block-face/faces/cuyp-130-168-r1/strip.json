@@ -1,0 +1,128 @@
+{
+ "face": "cuyp-130-168-r1",
+ "image": "staging/block-face/cuyp-130-168-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 481,
+ "height": 804,
+ "groundNAP": 0.325,
+ "heightM": 20.1,
+ "frame": {
+  "midRD": [
+   121444.97168749999,
+   485425.84025
+  ],
+  "uRD": [
+   -0.9429434033891868,
+   -0.33295305675848264
+  ],
+  "nRD": [
+   -0.33295305675848264,
+   0.9429434033891868
+  ]
+ },
+ "x0M": -5.88,
+ "x1M": 6.15,
+ "date": "2022-03-21",
+ "cameraHeightM": 2.44,
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012164103",
+   "x0M": -5.88,
+   "x1M": -0.13,
+   "px": [
+    0,
+    230
+   ],
+   "date": "2022-03-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000372",
+     "timestamp": "2022-03-21T07:33:49.694990Z",
+     "distanceM": 9.8,
+     "obliquityDeg": 6.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000373",
+     "timestamp": "2022-03-21T07:33:50.694980Z",
+     "distanceM": 10.3,
+     "obliquityDeg": 22.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000371",
+     "timestamp": "2022-03-21T07:33:48.705010Z",
+     "distanceM": 11.7,
+     "obliquityDeg": 31.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163353",
+   "x0M": -0.13,
+   "x1M": 6.15,
+   "px": [
+    230,
+    481
+   ],
+   "date": "2022-03-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000373",
+     "timestamp": "2022-03-21T07:33:50.694980Z",
+     "distanceM": 9.7,
+     "obliquityDeg": 12.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000374",
+     "timestamp": "2022-03-21T07:33:51.709990Z",
+     "distanceM": 9.9,
+     "obliquityDeg": 17.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002453_pano_0000_000372",
+     "timestamp": "2022-03-21T07:33:49.694990Z",
+     "distanceM": 12.1,
+     "obliquityDeg": 36,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-04-29": 17,
+  "2021-04-23": 17,
+  "2022-01-10": 17,
+  "2019-05-02": 17,
+  "2022-03-21": 17,
+  "2018-07-29": 17,
+  "2020-01-06": 17,
+  "2016-08-28": 17,
+  "2022-03-23": 5,
+  "2018-06-11": 1,
+  "2020-07-07": 0,
+  "2019-01-04": 0,
+  "2024-09-04": 0,
+  "2025-07-30": 0,
+  "2019-01-18": 0,
+  "2016-08-02": 0,
+  "2022-01-11": 0,
+  "2023-01-03": 0,
+  "2025-09-29": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "cuyp-130-168",
+  "px": [
+   0,
+   481
+  ]
+ }
+}

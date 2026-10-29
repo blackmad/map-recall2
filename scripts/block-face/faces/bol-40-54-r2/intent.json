@@ -1,0 +1,220 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bol-40-54-r2",
+ "street": "Ferdinand Bolstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-23",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-23",
+   "image": "staging/block-face/bol-40-54-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/bol-40-54/auto-place.json"
+ },
+ "types": [
+  "pijp-1876-hood-frieze"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012157768",
+   "slug": "bol-157768",
+   "address": "Ferdinand Bolstraat 46",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#978d83",
+      "fascia": true,
+      "name": "Deshi Bazar",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-03-23 span 925-1158"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#d8ccaf",
+     "evidence": "strip 2022-03-23 span 925-1158: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Deshi Bazar",
+    "category": "shop=convenience",
+    "osm": {
+     "type": "node",
+     "id": 2506049586,
+     "name": "Deshi Bazar"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2022-03-23 span 925-1158"
+   }
+  },
+  {
+   "pandId": "0363100012237226",
+   "slug": "bol-237226",
+   "address": "Ferdinand Bolstraat 44",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#a87374",
+      "fascia": true,
+      "name": "Blond Amsterdam",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=vacant); fascia colour measured on the strip 2022-03-23 span 1156-1393"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#edd0ad",
+     "evidence": "strip 2022-03-23 span 1156-1393: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Blond Amsterdam",
+    "category": "shop=vacant",
+    "osm": {
+     "type": "node",
+     "id": 2817454310,
+     "name": "Blond Amsterdam"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-03-23 span 1156-1393"
+   }
+  },
+  {
+   "pandId": "0363100012156921",
+   "slug": "bol-156921",
+   "address": "Ferdinand Bolstraat 42",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#898b74",
+      "fascia": true,
+      "name": "Milobi",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=wigs); fascia colour measured on the strip 2022-03-23 span 1393-1629"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#cbad90",
+     "evidence": "strip 2022-03-23 span 1393-1629: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Milobi",
+    "category": "shop=wigs",
+    "osm": {
+     "type": "node",
+     "id": 2817454177,
+     "name": "Milobi"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-03-23 span 1393-1629"
+   }
+  },
+  {
+   "pandId": "0363100012237278",
+   "slug": "bol-237278",
+   "address": "Ferdinand Bolstraat 40",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#97967e",
+      "fascia": true,
+      "name": "Mazzeltof",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=pub); fascia colour measured on the strip 2022-03-23 span 1629-1864"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#d8bc9d",
+     "evidence": "strip 2022-03-23 span 1629-1864: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "name": "Mazzeltof",
+    "category": "amenity=pub",
+    "osm": {
+     "type": "node",
+     "id": 2506049585,
+     "name": "Mazzeltof"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2022-03-23",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2022-03-23 span 1629-1864"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

@@ -35,8 +35,8 @@ const SHARED_FRAME_DEFAULT = false;
 // Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
 // stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
-const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
-const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
+const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261029-spans';
+const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js?v=20261028-touch-lod';
 // The basemap's own ground fills and lines stay visible under the own ground:
 // they sit below the first 3D layer, so MapLibre draws them at the back of the
 // depth range and the own ground covers them wherever it is resident (the near
@@ -267,9 +267,16 @@ class VectorBasemap {
       out.geometries = renderer.info.memory && renderer.info.memory.geometries;
       out.textures = renderer.info.memory && renderer.info.memory.textures;
       out.programs = renderer.info.programs ? renderer.info.programs.length : null;
-      out.lastFrameCalls = renderer.info.render && renderer.info.render.calls;
-      out.lastFrameTriangles = renderer.info.render && renderer.info.render.triangles;
+      // Main pass (buildings, ground, shadows); renderer.info itself holds only the last (overlay) pass.
+      const main = this._sharedFrame.stats && this._sharedFrame.stats.main;
+      out.lastFrameCalls = main ? main.calls : null;
+      out.lastFrameTriangles = main ? main.triangles : null;
     }
+    try {
+      // The four heaviest shared-frame participants, as "id:triangles".
+      const stats = this._sharedFrame && this._sharedFrame.drawStats ? this._sharedFrame.drawStats() : null;
+      if (stats) out.heaviest = Object.entries(stats).sort((a, b) => b[1].triangles - a[1].triangles).slice(0, 4).map(([id, s]) => `${id}:${s.triangles}`).join(' ');
+    } catch (_) { out.heaviest = null; }
     try {
       out.styleLayers = map && map.style ? map.getStyle().layers.length : null;
     } catch (_) { out.styleLayers = null; }
@@ -2479,18 +2486,24 @@ class VectorBasemap {
     for (const segment of track.segments) if (segment.ferryLink) {
       for (const terminal of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(terminal.id, terminal);
     }
-    const data = { type: 'FeatureCollection', features: [...terminals.values()].map(t => ({
+    const points = list => ({ type: 'FeatureCollection', features: list.map(t => ({
       type: 'Feature', properties: { name: `${t.name} ⛴` },
       geometry: { type: 'Point', coordinates: this.worldToLngLat(t.x, t.y, loader) },
-    })) };
+    })) });
+    // One pin per pier, one label per landing: Centraal's two piers 40 m apart stacked two labels
+    // (src/canalRecall/ferry/network.ts terminalLabels; falls back to one label per pier on an older bundle).
+    const merge = window.CanalRecallFerry && window.CanalRecallFerry.terminalLabels;
+    const pins = points([...terminals.values()]);
+    const labels = merge ? points(merge([...terminals.values()], 150 * PIXELS_PER_METER)) : pins;
     const source = this.map.getSource('cycling-ferry-terminals');
-    if (source) source.setData(data);
+    if (source) { source.setData(pins); this.map.getSource('cycling-ferry-terminal-names')?.setData(labels); }
     else {
-      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data });
+      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data: pins });
+      this.map.addSource('cycling-ferry-terminal-names', { type: 'geojson', data: labels });
       this.map.addLayer({ id: 'cycling-ferry-terminal-pins', type: 'circle', source: 'cycling-ferry-terminals', paint: {
         'circle-radius': 6, 'circle-color': '#008bce', 'circle-stroke-color': '#f2f0e7', 'circle-stroke-width': 2,
       }});
-      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminals', layout: {
+      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminal-names', layout: {
         'text-field': ['get', 'name'], 'text-size': 12, 'text-offset': [0, 1.4],
       }, paint: { 'text-color': '#153c54', 'text-halo-color': '#f2f0e7', 'text-halo-width': 2 } });
     }

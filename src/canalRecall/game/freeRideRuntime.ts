@@ -17,6 +17,7 @@ import {
   FREE_RIDE_MARKER_RADIUS_M,
   FREE_RIDE_REFRESH_SECONDS,
   freeRideTallyKey,
+  secondMarkerIds,
   isFreeRidePattern,
   layoutMarkers,
   markerAt,
@@ -146,8 +147,10 @@ export class GameFreeRideRuntime {
       return this._freeRidePlaces;
     }
     const places: FreeRidePlace[] = [];
-    for (const landmark of this.landmarks || []) {
-      if (!isWorthACard(landmark)) continue;
+    const worth = (this.landmarks || []).filter(landmark => isWorthACard(landmark));
+    const second = secondMarkerIds(worth);
+    for (const landmark of worth) {
+      if (second.has(String(landmark.id))) continue;
       places.push({ key: landmark.id, kind: 'landmark', name: landmark.name, x: landmark.x, y: landmark.y });
     }
     for (const bridge of this.bridges || []) {

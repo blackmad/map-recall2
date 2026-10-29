@@ -173,6 +173,8 @@ export type RoofSourceKind = 'survey' | 'recipe' | 'front';
 export function roofSourceFor(intent: CanalHouseIntent, facts: BuildingFacts, faceRule: 'recipe' | 'survey', keepSurvey: Set<string> = new Set()): RoofSourceKind {
   if (intent.roof.source === '3dbag') return 'survey';
   if (intent.roof.source === 'front') return 'front';
+  // A front hip (RoofIntent.hip) is a front form: it says what stands behind the cornice.
+  if (intent.roof.hip) return 'front';
   if (keepSurvey.has(intent.pandId)) return 'survey';
   const street = intent.fronts[0].street;
   const measuredCrown = intent.fronts.some(fr => fr.street === street && (!['cornice', 'flat'].includes(fr.gable) || facts.measuredEavesM?.[fr.id] !== undefined));
@@ -199,6 +201,14 @@ export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevatio
     const gabled = !['cornice', 'flat'].includes(fr.gable), hint = opts.hints?.[fr.id], profile = el?.crown?.value.profile;
     let note: string | undefined;
     if (forced === 'saddle' || (!forced && gabled)) {
+      if (intent.roof.hip === 'front' && !gabled && pitchOpt !== undefined) {
+        // A saddle ridged front to back behind a cornice, hipped down to the eaves behind it (RoofIntent.hip): the ridge
+        // from the pitch over half the front, capped (a flat top) by a hint's top or the row ridge; recipeRoof caps it by
+        // the 3DBAG max as well.
+        const capH = Math.min(hint?.topM ?? Infinity, opts.rowRidgeM !== undefined ? opts.rowRidgeM + ROW_COHERENCE.ridgeCapAboveM : Infinity);
+        out[fr.id] = {form: 'saddle', hip: 'front', ridgeM: cm(rf.eavesM + Math.tan(pitchOpt * Math.PI / 180) * rf.widthM / 2), pitchDeg: pitchOpt, sideEavesM: rf.eavesM, ...(Number.isFinite(capH) ? {capM: cm(capH)} : {})};
+        continue;
+      }
       // A neck or bell crown over the whole front stands in front of the whole roof, so the saddle's sides may meet the party walls
       // under the cornice: concave neck/bell flanks hug the eaves line and only rise at the neck (2026-10-16), and a
       // saddle under them drops its sides 1-2.5 m. A crown on part of the front, and a step/spout/point crown, keep the 1 m limit.

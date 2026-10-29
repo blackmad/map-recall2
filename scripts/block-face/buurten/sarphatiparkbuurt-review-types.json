@@ -1,0 +1,8 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (blockFace/reviewCrowns.ts typesForFace): the 1891-93 Albert Cuypstraat rows share year, width and cornice line, so the facts alone cannot tell the banded fronts from the plain ones.",
+ "reviewed": "2026-10-29",
+ "pins": [
+  {"face": "cuyp-130-168", "types": ["pijp-1892-plain-anchor"], "pands": ["0363100012164103", "0363100012163353", "0363100012164227", "0363100012155461", "0363100012162980"], "reason": "Albert Cuypstraat 162-152 (2022-03-21 strip): flat brick heads with white sills, no band pieces or keystones; white lozenges in the frieze"},
+  {"face": "cuyp-130-168", "types": ["pijp-1892-banded-keystone"], "pands": ["0363100012167434", "0363100012158812", "0363100012158985", "0363100012157319", "0363100012160055", "0363100012166514", "0363100012166647"], "reason": "Albert Cuypstraat 150-138 (2022-03-21 strip): white band pieces at every sill, transom and head, white keystones, corbel-table frieze"}
+ ]
+}

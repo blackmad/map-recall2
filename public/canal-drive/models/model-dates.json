@@ -12,8 +12,8 @@
       "dateSource": "asset-update"
     },
     "adam-tower": {
-      "updatedAt": "2026-10-20T10:11:45.269Z",
-      "version": "7aeee8f5b9ff81c5",
+      "updatedAt": "2026-10-29T12:09:42.081Z",
+      "version": "f5963924108a152e",
       "dateSource": "asset-update"
     },
     "adam-tower.lod1": {
@@ -412,8 +412,8 @@
       "dateSource": "asset-update"
     },
     "centraal-station": {
-      "updatedAt": "2026-10-16T18:59:18.132Z",
-      "version": "a6b4d3e189f14d24",
+      "updatedAt": "2026-10-29T13:38:06.478Z",
+      "version": "7e828db6c9d7e0ad",
       "dateSource": "asset-update"
     },
     "centraal-station.lod1": {
@@ -492,8 +492,8 @@
       "dateSource": "asset-update"
     },
     "compagnietheater": {
-      "updatedAt": "2026-10-20T10:00:58.682Z",
-      "version": "d39bdbf201d38a08",
+      "updatedAt": "2026-10-29T12:42:47.744Z",
+      "version": "02ec4851b9ce300a",
       "dateSource": "asset-update"
     },
     "compagnietheater.lod1": {
@@ -582,23 +582,23 @@
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage": {
-      "updatedAt": "2026-10-20T10:13:08.633Z",
-      "version": "9f3cfc24c3021afc",
+      "updatedAt": "2026-10-29T15:04:37.605Z",
+      "version": "ac59800ea37889ed",
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.338Z",
-      "version": "704b41cca9bb4dfd",
+      "updatedAt": "2026-10-29T12:26:31.002Z",
+      "version": "3468978b793f84ac",
       "dateSource": "asset-update"
     },
     "de-bijenkorf": {
-      "updatedAt": "2026-10-20T10:12:04.557Z",
-      "version": "e158e072ede63fe3",
+      "updatedAt": "2026-10-29T12:16:40.039Z",
+      "version": "3997d133fbb0e19a",
       "dateSource": "asset-update"
     },
     "de-bijenkorf.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.338Z",
-      "version": "f5ea23f849ff2009",
+      "updatedAt": "2026-10-29T12:26:31.047Z",
+      "version": "14084965540c6b84",
       "dateSource": "asset-update"
     },
     "de-bloem": {
@@ -812,8 +812,8 @@
       "dateSource": "asset-update"
     },
     "eye-filmmuseum": {
-      "updatedAt": "2026-10-20T10:13:04.955Z",
-      "version": "757905cc04dc9f51",
+      "updatedAt": "2026-10-28T20:25:28.212Z",
+      "version": "72dc9cb8f009ae4e",
       "dateSource": "asset-update"
     },
     "faralda-crane-hotel": {
@@ -1717,8 +1717,8 @@
       "dateSource": "asset-update"
     },
     "levend-paardenmuseum": {
-      "updatedAt": "2026-10-11T05:47:49.569Z",
-      "version": "0da226d361b14c2d",
+      "updatedAt": "2026-10-29T12:42:46.952Z",
+      "version": "d9e7ab3c0233e393",
       "dateSource": "asset-update"
     },
     "lieverdje": {
@@ -2377,8 +2377,8 @@
       "dateSource": "asset-update"
     },
     "pathe-de-munt": {
-      "updatedAt": "2026-10-09T21:12:37.300Z",
-      "version": "3900822d1e08e68d",
+      "updatedAt": "2026-10-29T12:42:47.630Z",
+      "version": "ba5562b87eac40c2",
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk": {
@@ -2422,8 +2422,8 @@
       "dateSource": "asset-update"
     },
     "pllek": {
-      "updatedAt": "2026-10-20T10:00:54.518Z",
-      "version": "73341fa36d2052b3",
+      "updatedAt": "2026-10-29T12:24:07.290Z",
+      "version": "104dc0d341d99262",
       "dateSource": "asset-update"
     },
     "pllek.lod1": {
@@ -2937,8 +2937,8 @@
       "dateSource": "asset-update"
     },
     "treehouse-ndsm": {
-      "updatedAt": "2026-10-20T10:15:02.652Z",
-      "version": "e5f87381bd928bde",
+      "updatedAt": "2026-10-29T12:19:32.402Z",
+      "version": "b25a90f1046b376a",
       "dateSource": "asset-update"
     },
     "treehouse-ndsm.lod1": {
@@ -3314,6 +3314,11 @@
     "zuiveringshal-west.lod1": {
       "updatedAt": "2026-10-23T20:23:30.758Z",
       "version": "2908515415d99dc3",
+      "dateSource": "asset-update"
+    },
+    "stationsplein-paviljoens": {
+      "updatedAt": "2026-10-29T14:31:13.495Z",
+      "version": "dea9198bc4f7a098",
       "dateSource": "asset-update"
     }
   }

@@ -274,6 +274,9 @@ console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`
     ['Buikslotermeerplein (Noord)', 52.40030, 4.93240],
     ['NDSM-werf (Noord)', 52.40090, 4.89150],
     ['Oosterdokskade', 52.37655, 4.90750],
+    // Feedback 3e7f0aa4: the cycle bridge Brug 228 by the Odebrug, reached over
+    // the paved link at its west landing (pavedLinks.ts), leads on to the city.
+    ['Brug 228 by the Odebrug', 52.3770640, 4.9034365],
   ];
   const centre = componentOf.get(nearest(places[0][1], places[0][2]));
   console.log(`\nmotor-only ways dropped for cycling: ${motorOnly}`);

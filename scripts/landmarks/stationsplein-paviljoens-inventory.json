@@ -1,0 +1,669 @@
+{
+ "schemaVersion": 1,
+ "id": "stationsplein-paviljoens",
+ "pand": "0363100012182895",
+ "brief": "scripts/landmarks/stationsplein-paviljoens-brief.md",
+ "signature": [
+  "n-crest-gable",
+  "k-neck-gable",
+  "n-white-turret",
+  "n-west-lantern",
+  "l-mansard",
+  "n-stained-lights",
+  "s-pediment-gable"
+ ],
+ "walls": [
+  {
+   "tag": "w01-193",
+   "bearing": 193,
+   "lengthM": 19,
+   "centre": [
+    4.9003085,
+    52.3774904
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000399",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-pediment-gable",
+     "kind": "crest",
+     "where": "centre, the 0329 wing gable over the water: pediment dormer with two lights and a finial figure",
+     "approxSizeM": [
+      3.5,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "pedimentDormer(): stone body with two leaded lights, white entablature and raked cornices, red gable roof, cream pedestal and a white tapered finial for the figure",
+     "seenIn": "TMX7316010203-000354_pano_0001_000399"
+    },
+    {
+     "id": "s-upper-bays",
+     "kind": "window-shape",
+     "where": "main storey, both sides of the gable: wide three-light timber windows with transoms in white frames",
+     "approxSizeM": [
+      19,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "pane() rows on the wing and the Loetje south run, white four-bar frames, glazing bars, sills",
+     "seenIn": "TMX7316010203-000354_pano_0001_000399"
+    },
+    {
+     "id": "s-iron-crown",
+     "kind": "tower",
+     "where": "upper right: open iron crown with a weathervane on the Loetje corner turret",
+     "approxSizeM": [
+      1.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "turret(..., crown=true): torus ring, four bowed iron ribs, rod and gilt vane",
+     "seenIn": "TMX7316010203-000354_pano_0001_000399"
+    },
+    {
+     "id": "s-terrace-storey",
+     "kind": "colonnade",
+     "where": "lower storey with columns and terrace on the deck below the plaza",
+     "approxSizeM": [
+      19,
+      3.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the deck storey stands about 2.3 m below the plaza on the water side; the flat game ground at plaza level hides it"
+     },
+     "seenIn": "TMX7316010203-000354_pano_0001_000399"
+    },
+    {
+     "id": "s-umbrellas",
+     "kind": "other",
+     "where": "terrace parasols",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal terrace furniture"
+     },
+     "seenIn": "TMX7316010203-000354_pano_0001_000399"
+    }
+   ]
+  },
+  {
+   "tag": "w02-201",
+   "bearing": 201,
+   "lengthM": 18.9,
+   "centre": [
+    4.9005859,
+    52.3774761
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000030",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "l-mansard",
+     "kind": "other",
+     "where": "Loetje roof: red-tile mansard ring round a flat top",
+     "approxSizeM": [
+      19,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "mansardRoof() over the LOETJE ring, 2.6 m insets, eaves 4.6 m, flat top 7.3 m with skylights",
+     "seenIn": "TMX7316010203-001981_pano_0000_000030"
+    },
+    {
+     "id": "l-dormer",
+     "kind": "window-shape",
+     "where": "centre of the south slope: hipped dormer with three two-by-two lights",
+     "approxSizeM": [
+      3.6,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "dormer box on the slope with three pane() lights and a hipRoof()",
+     "seenIn": "TMX7316010203-001981_pano_0000_000030"
+    },
+    {
+     "id": "l-glazed-bays",
+     "kind": "window-shape",
+     "where": "plaza storey: continuous bays of three-light windows with transoms",
+     "approxSizeM": [
+      19,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "windowRow() 2.3 m pitch on every exposed ground run",
+     "seenIn": "TMX7316010203-001981_pano_0000_000030"
+    },
+    {
+     "id": "l-lettering",
+     "kind": "lettering",
+     "where": "fascia over the lower storey: \"Café Restaurant Loetje\"",
+     "approxSizeM": [
+      4,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm shop lettering on the deck storey band below the plaza; the map label names the restaurant"
+     },
+     "seenIn": "TMX7316010203-001981_pano_0000_000030"
+    },
+    {
+     "id": "l-crown-vane",
+     "kind": "tower",
+     "where": "upper left: iron crown and vane over the corner turret",
+     "approxSizeM": [
+      1.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "turret() with crown=true at OSM w752700328",
+     "seenIn": "TMX7316010203-001981_pano_0000_000030"
+    }
+   ]
+  },
+  {
+   "tag": "w03-36",
+   "bearing": 36,
+   "lengthM": 13.7,
+   "centre": [
+    4.900154,
+    52.3776629
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02695",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-hall-front",
+     "kind": "colonnade",
+     "where": "GVB hall front: white pilasters between glazed bays, fascia band and cornice",
+     "approxSizeM": [
+      13.7,
+      4.4
+     ],
+     "plan": "modelled",
+     "how": "hall runs: windowRow() 2.6 m pitch, white pilasters at the bay joints, blank fascia band at 3.25 m, cornice at 4.05 m",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    },
+    {
+     "id": "n-gvb-lettering",
+     "kind": "lettering",
+     "where": "fascia band: \"GVB Tram Bus Metro Ferry\"",
+     "approxSizeM": [
+      5,
+      0.35
+     ],
+     "plan": "simplified",
+     "how": "the fascia band is modelled blank: signage rule, the map label names the POI, and the GVB lettering is a tenant sign",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    },
+    {
+     "id": "n-west-lantern",
+     "kind": "tower",
+     "where": "behind the hall: lead ogee lantern turret with weathervane",
+     "approxSizeM": [
+      1.7,
+      4
+     ],
+     "plan": "modelled",
+     "how": "turret(..., crown=false) at OSM w752700324: octagonal shaft, ogee lathe cap, ball finial, rod and vane",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    },
+    {
+     "id": "n-chimney",
+     "kind": "other",
+     "where": "brick chimney on the west hipped roof",
+     "approxSizeM": [
+      0.8,
+      3
+     ],
+     "plan": "modelled",
+     "how": "brick box with a cap at (-25.6, -0.9)",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    },
+    {
+     "id": "n-lanterns",
+     "kind": "lamp",
+     "where": "wall lanterns beside the doors",
+     "approxSizeM": [
+      0.3,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm lamps"
+     },
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    }
+   ]
+  },
+  {
+   "tag": "w04-36",
+   "bearing": 36,
+   "lengthM": 12.1,
+   "centre": [
+    4.9004043,
+    52.377596
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02699",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-crest-gable",
+     "kind": "crest",
+     "where": "stolp north face, centre: gable dormer with two lights, coat of arms in the tympanum, pedestal and gilt finial",
+     "approxSizeM": [
+      3.6,
+      4.6
+     ],
+     "plan": "modelled",
+     "how": "pedimentDormer(crest=true): red mantling and gold shield, raked white cornices, gilt finial on a cream pedestal",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    },
+    {
+     "id": "n-stained-lights",
+     "kind": "window-shape",
+     "where": "below the crest gable: four tall stained-glass lights",
+     "approxSizeM": [
+      3.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "four pane() lights in blue leaded glass with dark cames",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    },
+    {
+     "id": "n-frieze",
+     "kind": "relief",
+     "where": "band under the eaves above the lights: four ornament panels",
+     "approxSizeM": [
+      3.6,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "four lead-grey recessed panels with white lattice bars between white bands",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    },
+    {
+     "id": "n-pyramid",
+     "kind": "other",
+     "where": "stolp roof: red-tile pyramid with finial",
+     "approxSizeM": [
+      8,
+      5.4
+     ],
+     "plan": "modelled",
+     "how": "hipRoof() with ridgeHalf 0, apex 10.4 m (AHN)",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    },
+    {
+     "id": "n-white-turret",
+     "kind": "tower",
+     "where": "left: white turret with lead ogee cap and spire",
+     "approxSizeM": [
+      2.4,
+      7
+     ],
+     "plan": "modelled",
+     "how": "turret() at w752700328",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    },
+    {
+     "id": "n-lead-dormer",
+     "kind": "window-shape",
+     "where": "left: lead-clad dormer on the Loetje NW slope",
+     "approxSizeM": [
+      2.4,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "two-light dormer with hipped red cap on the NW slope (the lead cladding read as stone cheeks)",
+     "seenIn": "recording_2025-06-16_06-42-40_02699"
+    }
+   ]
+  },
+  {
+   "tag": "w05-306",
+   "bearing": 306,
+   "lengthM": 11.8,
+   "centre": [
+    4.9005268,
+    52.3776075
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02696",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-dormer",
+     "kind": "window-shape",
+     "where": "Loetje NW slope: two-light dormer",
+     "approxSizeM": [
+      2.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "dormer on LOETJE edge 5",
+     "seenIn": "recording_2025-06-16_06-42-40_02696"
+    },
+    {
+     "id": "e-two-rows",
+     "kind": "window-shape",
+     "where": "plaza storey: windows in white frames",
+     "approxSizeM": [
+      11.8,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "windowRow() on the run",
+     "seenIn": "recording_2025-06-16_06-42-40_02696"
+    }
+   ]
+  },
+  {
+   "tag": "w06-36",
+   "bearing": 36,
+   "lengthM": 10,
+   "centre": [
+    4.900846,
+    52.3776343
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_001365",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-neck-gable",
+     "kind": "crest",
+     "where": "east kiosk front: neck gable with claw scrolls, two attic windows and a curved cap",
+     "approxSizeM": [
+      6.9,
+      4.3
+     ],
+     "plan": "modelled",
+     "how": "neckGableOutline() extruded 30 cm, tier and neck cornices, two dark attic lights",
+     "seenIn": "TMX7316010203-002532_pano_0000_001365"
+    },
+    {
+     "id": "k-chimney",
+     "kind": "other",
+     "where": "brick chimney stack up the middle of the gable to above its cap",
+     "approxSizeM": [
+      1,
+      8.9
+     ],
+     "plan": "modelled",
+     "how": "brick box 1.0 x 0.55 m from the ground to 8.9 m (AHN max) with a cap",
+     "seenIn": "TMX7316010203-002532_pano_0000_001365"
+    },
+    {
+     "id": "k-shop-windows",
+     "kind": "window-shape",
+     "where": "ground floor: two large multi-pane windows either side of the chimney",
+     "approxSizeM": [
+      5.5,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "two pane() 1.9 x 2.6 m, 3 x 4 lights",
+     "seenIn": "TMX7316010203-002532_pano_0000_001365"
+    }
+   ]
+  },
+  {
+   "tag": "w07-305",
+   "bearing": 305,
+   "lengthM": 7.7,
+   "centre": [
+    4.90004,
+    52.3776702
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001668_pano_0000_001137",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-signs",
+     "kind": "sign",
+     "where": "island seen from the north-west: tenant signs and flags",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags and tenant boards"
+     },
+     "seenIn": "TMX7316010203-001668_pano_0000_001137"
+    }
+   ],
+   "note": "distant view of the west end; masses covered by w03 and w08"
+  },
+  {
+   "tag": "w08-274",
+   "bearing": 274,
+   "lengthM": 7.5,
+   "centre": [
+    4.8999427,
+    52.3776165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000037",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-hall-end",
+     "kind": "window-shape",
+     "where": "west end of the GVB hall over the water: glazed bays and cornice",
+     "approxSizeM": [
+      7.5,
+      4.4
+     ],
+     "plan": "modelled",
+     "how": "hall runs as on the north front",
+     "seenIn": "TMX7316010203-001981_pano_0000_000037"
+    },
+    {
+     "id": "w-flags",
+     "kind": "other",
+     "where": "flagpoles with flags",
+     "approxSizeM": [
+      1.5,
+      8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags"
+     },
+     "seenIn": "TMX7316010203-001981_pano_0000_000037"
+    }
+   ]
+  },
+  {
+   "tag": "w09-187",
+   "bearing": 187,
+   "lengthM": 6.5,
+   "centre": [
+    4.9001337,
+    52.377557
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000033",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-upper-windows",
+     "kind": "window-shape",
+     "where": "GVB hall south-west front: large windows with a lettering band",
+     "approxSizeM": [
+      6.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "hall windowRow()",
+     "seenIn": "TMX7316010203-001981_pano_0000_000033"
+    },
+    {
+     "id": "sw-lettering",
+     "kind": "lettering",
+     "where": "\"GVB Tram Bus Metro\" / \"I amsterdam\" band",
+     "approxSizeM": [
+      5,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "blank fascia band (signage rule)",
+     "seenIn": "TMX7316010203-001981_pano_0000_000033"
+    },
+    {
+     "id": "sw-door",
+     "kind": "window-shape",
+     "where": "arched timber door on the deck storey",
+     "approxSizeM": [
+      1,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "deck storey below the plaza level"
+     },
+     "seenIn": "TMX7316010203-001981_pano_0000_000033"
+    }
+   ]
+  },
+  {
+   "tag": "w10-306",
+   "bearing": 306,
+   "lengthM": 5.6,
+   "centre": [
+    4.9006543,
+    52.3776905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02696",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [],
+   "note": "distant view along the tram tracks; the kiosk side and Loetje masses only"
+  },
+  {
+   "tag": "w11-12",
+   "bearing": 12,
+   "lengthM": 5.3,
+   "centre": [
+    4.9002812,
+    52.3776211
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02695",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "st-pavilion",
+     "kind": "colonnade",
+     "where": "Stromma pavilion front (0327): columns, glazed doors, fascia band and a small gable behind",
+     "approxSizeM": [
+      5.3,
+      4.6
+     ],
+     "plan": "simplified",
+     "how": "part of the LOETJE ring: ground run with glazed bays and the fascia band; the small gable is read as the mansard slope",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    },
+    {
+     "id": "st-lettering",
+     "kind": "lettering",
+     "where": "\"STROMMA.COM Sightseeing\" band",
+     "approxSizeM": [
+      5,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "blank fascia band (signage rule)",
+     "seenIn": "recording_2025-06-16_06-42-40_02695"
+    }
+   ]
+  },
+  {
+   "tag": "w12-36",
+   "bearing": 36,
+   "lengthM": 5,
+   "centre": [
+    4.9007864,
+    52.377699
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track24_Sphere_00025",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "distant view from the north: kiosk neck gable and Loetje roof, covered by w06 and w02"
+  },
+  {
+   "tag": "w13-36",
+   "bearing": 36,
+   "lengthM": 4.3,
+   "centre": [
+    4.9007037,
+    52.3777
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track24_Sphere_00026",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "distant view from the north: Loetje mansard and turrets, covered by w02 and w04"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Noord-Zuid Hollandsch Koffiehuis (nl.wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Noord-Zuid_Hollandsch_Koffiehuis",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012182895",
+   "url": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012182895",
+   "licence": "CC0"
+  },
+  {
+   "name": "AHN4 DSM/DTM 0.5 m (PDOK)",
+   "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap building parts",
+   "url": "https://www.openstreetmap.org/way/752700330",
+   "licence": "ODbL"
+  }
+ ]
+}

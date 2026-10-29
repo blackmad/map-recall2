@@ -12,7 +12,8 @@ import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAN
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
-import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
+import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from './residency';
+import { splitIntoTiles } from './cellTiles';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_LOOK_DEFAULT, groundPalette } from './groundLook';
 import { drawnGrey, flatGroundGain, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
@@ -733,6 +734,63 @@ test('resident radius follows what the camera sees: chase stays on the base ring
   assert.ok(viewReachM(15.8, 76, 52.37) > viewReachM(15.8, 60, 52.37), 'a steeper pitch sees further');
 });
 
+test('touch ring fits the iPad chase view: 464 m to the top corners, a 500 m ring, not the desktop 800 m (CANAL-RECALL-7)', () => {
+  // The iPad profile at the Westerkerk (scripts/gpu-load-ipad.mjs): 1180×734, zoom 17.81, pitch 60. The script
+  // measures 464 m from the map centre to the farthest unprojected corner; the formula must agree.
+  const corner = viewCornerReachM(17.81, 60, 52.3745, 1180, 734);
+  assert.ok(Math.abs(corner - 464) < 3, `corner reach ${corner.toFixed(1)} m`);
+  assert.ok(corner > viewReachM(17.81, 60, 52.3745) * 734 / 900 * 0.99, 'the corner is past the top centre');
+  assert.equal(touchResidentRadius(corner, 400, 2000), 500);
+  // The desktop rule on the same view stepped to 800 m (6–7 resident cells): unchanged for desktops.
+  assert.equal(residentRadius(viewReachM(17.81, 60, 52.3745), 400, 2000), 800);
+  // Steps, base and cap.
+  assert.equal(touchResidentRadius(100, 400, 2000), 400, 'never below the base');
+  assert.equal(touchResidentRadius(5000, 400, 2000), 2000, 'capped from the air');
+  assert.equal(touchResidentRadius(560, 400, 2000) % TOUCH_RADIUS_STEP_M, 0);
+  // A phone in portrait sees less wide than an iPad in landscape.
+  assert.ok(viewCornerReachM(17.81, 60, 52.37, 390, 844) < viewCornerReachM(17.81, 60, 52.37, 1180, 734));
+});
+
+test('touch ring reaches further only ahead of a moving rider', () => {
+  assert.equal(touchAheadMarginM(0), 0);
+  assert.equal(touchAheadMarginM(20), 80);
+  assert.equal(touchAheadMarginM(500), TOUCH_AHEAD_MAX_M, 'capped');
+  assert.ok(inTouchRing(560, 1, 500, 100), 'straight ahead: the margin applies');
+  assert.ok(!inTouchRing(560, 0, 500, 100), 'beside: the plain disc');
+  assert.ok(!inTouchRing(560, -1, 500, 100), 'behind: the plain disc');
+  assert.ok(inTouchRing(480, -1, 500, 100), 'the disc itself always counts');
+});
+
+test('cell tiles partition a layer\'s triangles exactly once, each tile bounded by its own sphere', () => {
+  // A 1 km strip of 2×2 m quads (two triangles each) over 0..1000 × 0..20.
+  const nx = 500, ny = 10, pos: number[] = [], idx: number[] = [];
+  for (let j = 0; j <= ny; j++) for (let i = 0; i <= nx; i++) pos.push(i * 2, j * 2, 0.1 * j);
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+    const a = j * (nx + 1) + i, b = a + 1, c = a + nx + 1, d = c + 1;
+    idx.push(a, b, d, a, d, c);
+  }
+  const positions = new Float32Array(pos), indices = new Uint32Array(idx);
+  assert.equal(splitIntoTiles(positions, indices, 1), null, 'one tile: keep the mesh');
+  assert.equal(splitIntoTiles(positions, indices, 3, indices.length), null, 'below the minimum: keep the mesh');
+  const tiles = splitIntoTiles(positions, indices, 3)!;
+  assert.equal(tiles.length, 9, 'a 3×3 grid over the extent');
+  assert.equal(tiles.reduce((n, t) => n + t.indices.length, 0), indices.length, 'every triangle once');
+  const seen = new Set<string>();
+  for (const t of tiles) {
+    assert.ok(t.indices instanceof Uint32Array);
+    for (let k = 0; k < t.indices.length; k += 3) {
+      const key = `${t.indices[k]},${t.indices[k + 1]},${t.indices[k + 2]}`;
+      assert.ok(!seen.has(key)); seen.add(key);
+      for (let v = 0; v < 3; v++) {
+        const o = t.indices[k + v] * 3, dist = Math.hypot(positions[o] - t.center[0], positions[o + 1] - t.center[1], positions[o + 2] - t.center[2]);
+        assert.ok(dist <= t.radius + 1e-6, 'vertex inside its tile sphere');
+      }
+    }
+    assert.ok(t.radius < 200, `a tile is about a third of the strip (${t.radius.toFixed(0)} m)`);
+  }
+  assert.ok(splitIntoTiles(positions, new Uint16Array(6).map((_, i) => idx[i]), 2)!.every(t => t.indices instanceof Uint16Array), 'keeps a 16-bit index');
+});
+
 test('basemap ground layers take the own ground palette; buildings and labels are left alone', () => {
   const layers = [
     { id: 'background', type: 'background' }, { id: 'water', type: 'fill', 'source-layer': 'water' }, { id: 'waterway_river', type: 'line', 'source-layer': 'waterway' },
@@ -1017,8 +1075,29 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
   });
 }
 
-test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {
+/**
+ * CANAL-RECALL-7: a `touch` cell (a touch device, far from the rider) draws every layer a `full` one draws — the same
+ * footprints, so the seams with the near ring have no holes — at coarser steps: fewer triangles, a 2 m water mask, no
+ * bollards and no park furniture. The near ring and the desktop stay `full` (byte-identical, the other tests' pins).
+ */
+test('detail level: a touch cell keeps every layer, with no bollards or furniture and fewer triangles', { skip: !haveCells }, async () => {
   const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.87445, 52.37286), key = store.cellAt(x, y);
+  const full = buildCell(await store.cellInput(key, 0)), touch = buildCell(await store.cellInput(key, 0, 'touch'));
+  assert.equal(full.detail, 'full'); assert.equal(touch.detail, 'touch');
+  const optional = new Set(['bollard', 'furniture']);
+  for (const layer of new Set([...Object.keys(full.layers), ...Object.keys(touch.layers)])) {
+    if (optional.has(layer)) continue;
+    assert.ok(full.layers[layer as keyof typeof full.layers] && touch.layers[layer as keyof typeof touch.layers], `${layer} drawn by both builds`);
+  }
+  for (const layer of ['bollard', 'furniture'] as const) assert.equal(touch.layers[layer], undefined, `${layer} left out`);
+  assert.ok(touch.mask && touch.mask.res === 2 && full.mask && full.mask.res === 1, 'water mask at 2 m');
+  assert.ok(touch.stats.triangles < full.stats.triangles * 0.8, `${touch.stats.triangles} triangles against ${full.stats.triangles}`);
+  assert.ok(touch.stats.buildMs <= full.stats.buildMs * 1.5, `touch build ${touch.stats.buildMs} ms against ${full.stats.buildMs}`);
+});
+
+test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {  const store = fsStore();
   await store.init();
   const [x, y] = storeToLocal(DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]), key = store.cellAt(x, y);
   const input = await store.cellInput(key, 0), ids = new Set(DE_CLERCQSTRAAT.ways), seen = new Set<number>();

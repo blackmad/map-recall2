@@ -15,7 +15,7 @@
  "authoring": {
   "author": "claude (kinkerstraat-types lane)",
   "passes": 1,
-  "note": "Kinkerstraat 30-2 (even side, Bilderdijkkade end), 1886-1889. Proof face for the Oud-West Kinkerstraat type library: 9 pands of kinker-1890-brick-arched (18-4 row, 2 modules on 18-20 and 4-6), 3 of kinker-1890-plain-brick (30, 24, 22), 2 of kinker-1895-painted-band (28, 26), corner 2 and the corner block. Shops read on zoom crops of the 2024-12-11 strip; names only where legible, else OSM with agreement osm-only."
+  "note": "Kinkerstraat 30-2 (even side, Bilderdijkkade end), 1886-1889. Proof face for the Oud-West Kinkerstraat type library: 9 pands of kinker-1890-brick-arched (18-4 row, 2 modules on 18-20 and 4-6), 3 of kinker-1890-plain-brick (30, 24, 22), 2 of kinker-1895-painted-band (28, 26), corner 2 and the corner block. Shops read on zoom crops of the 2024-12-11 strip; names only where legible, else OSM with agreement osm-only. #98 pass: Kinkerstraat 22 and 24 carry round-hooded dormers (dormerStyle arched); 26-28 (painted-band) take the low front attic instead of the 3DBAG roof that stood as a slate pyramid over the cornice."
  },
  "types": [
   "kinker-1890-brick-arched",
@@ -202,7 +202,7 @@
    "address": "Kinkerstraat 24",
    "type": {
     "type": "kinker-1890-plain-brick",
-    "crown": "pediment-dormer",
+    "crown": "arched-dormer",
     "palette": "kinker-2-30",
     "storeys": 5,
     "overrides": {
@@ -275,7 +275,7 @@
    "address": "Kinkerstraat 22",
    "type": {
     "type": "kinker-1890-plain-brick",
-    "crown": "pediment-dormer",
+    "crown": "arched-dormer",
     "palette": "kinker-2-30",
     "storeys": 5,
     "overrides": {

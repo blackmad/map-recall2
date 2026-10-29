@@ -51,6 +51,25 @@
     "none": {
       "gable": "cornice",
       "note": "56-84 236441 between gables"
+    },
+    "wall-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "pointed",
+      "dormerBody": "brick",
+      "dormerSize": {
+        "sill": 0.35,
+        "rise": 1.8,
+        "setback": 0.4
+      },
+      "note": "56-84 236441 (Kinkerstraat 62 and 60), strip 2023-01-10 at 40 px/m: one brick wall dormer over the cornice per house, about 1.9 m wide with its stone cheeks, a 2-light window, body about 2.2 m to a peaked brick top about 0.9 m high; drawn as a pointed dormer in the wall colour (the stone cheek scrolls and coping are not drawn)"
+    },
+    "stone-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "pointed",
+      "dormerBody": "stone",
+      "note": "56-84 236325 (Kinkerstraat 66), strip 2023-01-10 at 40 px/m: one white stone dormer about 1.45 m wide over the cornice, a single light under a pointed top about 0.9 m high, the next house's step gable beside it"
     }
   },
   "palettes": {
@@ -58,12 +77,17 @@
       "brick": "#696052",
       "frame": "#b3b5a3",
       "door": "black",
-      "stone": "#b2bbab",
-      "cornice": "#7f7965"
+      "stone": "#e2dfd2",
+      "cornice": "#7f7965",
+      "stoneMaterial": "painted"
     }
   },
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "strip 2024-11-29 kinker-49-63 pands 1-4: between the gables only sky and the dormer over the cornice; the 3DBAG attic stood as a slate block there"
   },
   "rhythm": {
     "bays": "3 window axes (2-3 per gable)",

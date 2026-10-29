@@ -5,17 +5,17 @@
  "street": "Kinkerstraat",
  "sources": [
   {
-   "id": "strip-2024-11-29",
+   "id": "strip-2023-01-10",
    "kind": "street-panorama",
-   "capturedAt": "2024-11-29",
+   "capturedAt": "2023-01-10",
    "image": "staging/block-face/kinker-56-84/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
  "authoring": {
   "author": "claude (kinkerstraat even-side faces lane)",
-  "passes": 1,
-  "note": "Kinkerstraat 84-56 (even side, Bilderdijkstraat to Da Costakade), 2024-11-29 low-sun strip. 76-84 is a 1979 infill block (kinker-1985-infill, one front with its own 13-axis grid); 56-74 are the 1893 Neo-Renaissance speklagen row (kinker-1886-neo-renaissance, 2 axes per module, step/pointed gables and two gabled dormers). Shops read on the pand-reference zoom crops (same day)."
+  "passes": 2,
+  "note": "Kinkerstraat 84-56 (even side, Bilderdijkstraat to Da Costakade), 2024-11-29 low-sun strip. 76-84 is a 1979 infill block (kinker-1985-infill, one front with its own 13-axis grid); 56-74 are the 1893 Neo-Renaissance speklagen row (kinker-1886-neo-renaissance, 2 axes per module, step/pointed gables and two gabled dormers). Shops read on the pand-reference zoom crops (same day). Re-stripped on 2023-01-10 (overcast, camera height 2.4 m; the 2024-11-29 strip was blown out over the gables and cast cyan, which drew the fronts olive); measured bricks re-read on brick pixels of that strip (Oud-West kit #98). Bricks then fitted halfway between the strip median and the exact inverse of the city tint (scripts/block-face/fit-wall-palette.ts), stripOverDrawn 0.705 -> 0.925. Crowns re-read on the 2023-01-10 strip: brick wall dormers on 62 and 60 (crown wall-dormer, dormerBody brick), a white stone dormer on 66 (crown stone-dormer)."
  },
  "types": [
   "kinker-1985-infill",
@@ -35,8 +35,8 @@
      "evidence": "2024-11-29 strip: flat parapet with two raised blocks, sky behind"
     },
     "measuredPalette": {
-     "brick": "#635e52",
-     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #635e52 on the 2024-11-29 strip"
+     "brick": "#443a36",
+     "evidence": "brick pixels (warm, not mortar, not stone) of the 2023-01-10 strip body: median #51413c; fitted halfway to the city-tint inverse (fit-wall-palette.ts) so the drawn wall matches the strip"
     },
     "storeys": 4,
     "overrides": {
@@ -129,8 +129,8 @@
     "type": "kinker-1886-neo-renaissance",
     "crown": "point-gable",
     "measuredPalette": {
-     "brick": "#615e51",
-     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #615e51 on the 2024-11-29 strip"
+     "brick": "#544d46",
+     "evidence": "brick pixels (warm, not mortar, not stone) of the 2023-01-10 strip body: median #685e53; fitted halfway to the city-tint inverse (fit-wall-palette.ts) so the drawn wall matches the strip"
     },
     "overrides": {
      "bays": 2
@@ -190,8 +190,8 @@
    "type": {
     "type": "kinker-1886-neo-renaissance",
     "measuredPalette": {
-     "brick": "#636257",
-     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #636257 on the 2024-11-29 strip"
+     "brick": "#534c45",
+     "evidence": "brick pixels (warm, not mortar, not stone) of the 2023-01-10 strip body: median #6b6257; fitted halfway to the city-tint inverse (fit-wall-palette.ts) so the drawn wall matches the strip"
     },
     "overrides": {
      "bays": 2
@@ -266,15 +266,15 @@
    "type": {
     "type": "kinker-1886-neo-renaissance",
     "measuredPalette": {
-     "brick": "#69695b",
-     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #69695b on the 2024-11-29 strip"
+     "brick": "#4e4741",
+     "evidence": "brick pixels (warm, not mortar, not stone) of the 2023-01-10 strip body: median #62574d; fitted halfway to the city-tint inverse (fit-wall-palette.ts) so the drawn wall matches the strip"
     },
     "overrides": {
      "bays": 2
     },
     "modules": [
      {
-      "crown": "step-gable",
+      "crown": "stone-dormer",
       "ground": {
        "shopfront": {
         "colour": "#2b2d2a",
@@ -328,7 +328,7 @@
     "note": "sushi take-away read on the glass; the right module (64) is house doors"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 4 (zoom): two 2-axis modules with speklagen; round-headed top storey with white tympana; a small step gable (66) and a tall step gable (64)",
+    "citation": "strip.jpg pand 4 (zoom): two 2-axis modules with speklagen; round-headed top storey with white tympana; a white stone dormer (66; read as a small step gable on the 2024-11-29 strip, the 2023-01-10 strip shows a pointed stone dormer) and a tall step gable (64)",
     "photoRows": [
      3,
      4,
@@ -349,8 +349,8 @@
    "type": {
     "type": "kinker-1886-neo-renaissance",
     "measuredPalette": {
-     "brick": "#6b695b",
-     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #6b695b on the 2024-11-29 strip"
+     "brick": "#524a42",
+     "evidence": "brick pixels (warm, not mortar, not stone) of the 2023-01-10 strip body: median #62594e; fitted halfway to the city-tint inverse (fit-wall-palette.ts) so the drawn wall matches the strip"
     },
     "overrides": {
      "bays": 2
@@ -358,7 +358,7 @@
     "modules": [
      {
       "share": 0.205,
-      "crown": "none",
+      "crown": "wall-dormer",
       "ground": {
        "shopfront": {
         "colour": "white",
@@ -381,7 +381,7 @@
      },
      {
       "share": 0.21,
-      "crown": "none",
+      "crown": "wall-dormer",
       "ground": {
        "shopfront": {
         "colour": "white",
@@ -496,11 +496,10 @@
   "158903: sunburst voussoirs drawn as blocked arches",
   "161359: sunburst voussoirs drawn as blocked arches",
   "161359: two attic lights in the pointed gable of 68 (the crown draws one)",
-  "236325: the step gable of 66 is a small two-step gable about 2.5 m tall; the model draws the type step gable (about 4 m) on both modules",
-  "236441: 62 and 60 carry a gabled stone dormer each behind the cornice; the type has no dormer crown, so they are left off (cornice only)",
   "236441: sunburst voussoirs drawn as blocked arches",
   "236441: the corner bay of 56 round Da Costakade is not on the strip",
-  "152566: the 3DBAG roof over the flat 1979 block reads as a hipped slate roof with one brick box; the photo has a flat parapet with sky above and two raised brick blocks (a recipe roof was tried on pass 2 and drew a 3 m slate attic over the whole width, worse)"
+  "152566: the 3DBAG roof over the flat 1979 block reads as a hipped slate roof with one brick box; the photo has a flat parapet with sky above and two raised brick blocks (a recipe roof was tried on pass 2 and drew a 3 m slate attic over the whole width, worse)",
+  "236441: the brick wall dormers of 62 and 60 are drawn as pointed dormers in the wall colour (dormerBody brick); their stone cheek scrolls, stone coping and the arched stone band over the top-storey windows are not drawn"
  ],
  "continuity": {
   "streetLevel": "shared",

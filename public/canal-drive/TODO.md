@@ -1954,6 +1954,119 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Modelling strategy reset (user, 2026-10-29).**
+  - **Why:** agent-per-face and per-house modelling of ordinary rows is stopped. It cost about 3 M tokens per house (#98: 50 houses for 167 M tokens; #97: 72 M tokens and no installs).
+  - **The new route:**
+    1. Generic-generator rules that lift about 13.5 k buildings at once (#102).
+    2. An unattended batch block-face installer, gated on likeness and stripOverDrawn (#103).
+    3. Bespoke models only for named landmarks at the head of the ride-visibility list (#104).
+  - **Budget rules:** every lane brief carries a turn budget and a stop rule, with no automatic follow-up rounds.
+  - **Superseded follow-ups:** the #98 round 2 (corners, Bilderdijkstraat) and #99 round 2 briefs. Bilderdijkstraat and the Kinkerstraat corners go to the #103 batch. The Beurs gaps and the ferry structures wait for the #104 ranking. Their worktrees keep the partial work.
+
+- **Centraal surroundings, still open (#99, 2026-10-29).**
+  - **Beurs, Beursstraat side.** The 14–15 m wall sits 3.4–6.4 m behind a 3 m OSM part and draws blank. Place bays on the set-back part walls.
+  - **Beurs, north side.** The arched café entrance is missing.
+  - **Beurs, upper walls.** The hall walls above 18 m are blank.
+  - **Island.** The water-side deck storey, about 2.3 m below the plaza, is not shown.
+  - **Not modelled yet.** De Ruijterkade 37 (the bike-park entrance pits) and the ferry terminal structures (researched only).
+  - **Centraal.** zfight-near rose from 413.6 to 501.5 with the canopy (warn only).
+  - **Gate flake.** `geometryAudit` "200k-triangle models finish in seconds" took 47 s when load was over 17, and 12.9 s when rerun at load 14. Consider scaling its limit, or skipping it when load is high.
+
+- **Oud-West kit, next (#98, 2026-10-29).**
+  - **Corner ownership:** kinker-49-63 and kinker-86-110 pass, but their corner pands (133467, 233580) belong to the installed faces face-bilder-133467-159649 and face-bilder-233580-162444. Installing would drop 153782, 159649 and 162444, so decide which face owns each corner first.
+  - **kinker-31-49:** opening-outside on 47's shop. Its front is turned 0.4° from the row, and the audit's wall clustering puts it 3.5 cm off the plane.
+  - **kinker-112-116:** needs a stepped parapet and its raised blocks.
+  - **kinker-142-178:** balcony side rails near the party walls.
+  - **Still failing gates or audit:** 65–87, 120–138, 186–202, 334–374 and 386–390. Intake fails on 244–332.
+  - **Not started:** Bilderdijkstraat (installed faces at 0.46–0.58 stripOverDrawn, so too dark), Overtoom, Jan Pieter Heijestraat, Ten Katestraat, Bellamy.
+  - **The kit cannot yet say:**
+    - sunburst voussoirs
+    - scrolled or fluted dormer cheeks
+    - glazed green roof tiles
+    - alternating segmental and round heads by storey
+    - pointed-gable attic lights
+    - penthouse blocks
+    - frieze consoles
+    - the tower dormers on Kinkerstraat 208–210
+- **Evertsen wall exposure (2026-10-29).** With the `drawnWall` fix, a rerun gives the evertsen-* faces about 1.0 instead of 0.67–0.75, and evertsen-152-160 2.10 instead of 1.12. Before accepting it, compare an in-game screenshot with the strip on Eerste Van Swindenstraat and Evertsenstraat.
+
+- **GPU load, next (#100 follow-up, 2026-10-29).**
+  - Done 2026-10-29: desktop spans and touch facade tiles (see HISTORY).
+  - Still to do: re-run iPhone ride-perf after the spans and tiles change.
+  - After the deploy, watch Sentry iPad `webgl-context-lost`; `probe.heaviest` should show own-ground at about 300 k.
+  - Lever 1 (simplify coarse road polygons) is parked. It needs a new versioned roads extract.
+
+- **Westerpark West, still open (#97, 2026-10-29).**
+  - **Blend** (`haarlemmerweg-518`): held. To unblock it:
+    - stop `isLeaf` flagging sunlit cream render as leaves, or find a straight-on, low-foliage south crop;
+    - check the advisory openings-within-walls failure at the 38 m roof stair box;
+    - darken the core-wall windows, which read too pale.
+  - **Green-framed blocks** (0363100012570119, 0124, 0120) and the **yellow block** (0363100012570893): 3DBAG has only construction-stage shells, or none at all. These need a new large-tier shell built from the BAG outline plus a height measured from a post-completion panorama.
+  - **Wraparound tower** (0363100012116511, draft `haarlemmerweg-290`): it compiles, but all 4 likeness groups fail. Its south crop is a dark 2022 panorama; remodel it from a better one.
+  - **Salt:** the white-wall rule fixed its wall; glazing still fails (0.19 vs 0.355, because of reflections).
+  - **The kit cannot yet say:** the panel joint grid on render.
+
+- **De Pijp kit, next (#96, 2026-10-29).**
+  - **Ferdinand Bolstraat 40–54** is held for tone. It needs pale buff brick and white stucco pilasters in the kit, then a reinstall.
+  - **Shopfront grounds** come out with 1 bay where the photos show 2–4.
+  - **Albert Cuypstraat 152** has a lighter roof slab above the eaves that the photo doesn't show.
+  - **Bol 22:** straighten BAG front kinks under 2 cm in the shell, then install bol-12-22-r1.
+  - **Not attempted:** bol-5-19 and bol-21-43. **Intake failed:** cuyp-79-145 (frontages differ by more than 11°) and bol-97-113 (no frontage).
+  - **The kit cannot yet say:**
+    - white stucco party pilasters
+    - dormer balconettes and side cheeks
+    - hood dentils and rosettes
+    - yellow brick courses
+    - a corbel-table frieze
+    - frieze lozenges
+    - sculpted keystones
+    - mansard roof lights
+    - the painted-black balconette variant
+    - stepped gables in a row
+    - a pitched attic band under dormers
+
+- **Kit gaps found by the Noord lane (#95, 2026-10-29).**
+  - The kit cannot yet express:
+    - irregular window scatter on large-tier walls (Grasweg 41S);
+    - see-through bar or slatted fences (Treehouse);
+    - per-container colour from a measured list (Pllek);
+    - a curved cap on an eaves line.
+  - The 2025 NDSM-oost pands (0363100012252793 and 95–98) still carry construction-stage 3DBAG heights of 2.9–4.5 m for blocks of 7–10 storeys. They need a data refresh or a height override.
+  - The EYE GLB audit still FAILs on holes (6 open loops, down from 12).
+
+- **Centraal surroundings, still unmodelled (feedback 334bcadd, bbbeaceb; 2026-10-29, #94).** Findings are in `docs/handoffs/centre-landmarks-fb-20261028.md`.
+  - **Stationsplein island,** pand 0363100012182895 (Stationsplein 4–16). Low cream rendered pavilions with red-tiled mansard roofs and a white lantern turret. The pand is not in the building tiles, so the game draws generic OSM brick boxes. It needs a bespoke builder.
+  - **IJ-side canopy,** in `centraal-complex-builder.ts` ("Overkapping IJsei"). The game draws an opaque dark tube. The photo shows white steel arch ribs down to the quay and an open glazed vault over the glass shopfronts. Measure the rib count and spacing from the orthophoto and panoramas.
+  - Missing IJ-side pands include De Ruijterkade 37 (2023).
+  - The MapLibre layer `cycling-ferry-terminal-labels` shows "Centraal Station ⛴" twice, once per pontoon. Dedupe it.
+  - Stale LOD1 note: the Beurs is still a generic brick mass. It lacks the Damrak arcade, the Beursplein entrance and the stepped gables.
+
+- **Gameplay analytics without a consent banner (2026-10-28, user ask)**: there is
+  no gameplay analytics today (only Sentry errors). Aim for the most we can
+  measure without needing EU consent. ePrivacy Art. 5(3), and the Dutch Tw
+  11.7a, require consent to store or read anything on the device that is not
+  strictly needed. The Dutch rule exempts analytics with little privacy
+  impact, but a GDPR lawful basis and a privacy-notice line are still needed.
+  The no-consent design:
+  - first-party `navigator.sendBeacon` events to our own endpoint (a Firebase
+    function writing daily aggregate counters);
+  - no cookies, no localStorage ID, no fingerprinting;
+  - a per-tab random session id held in memory only;
+  - no IP stored, coarse user-agent class only, no precise GPS or route traces.
+  What we get: ride starts by mode, route/quiz completion and drop-off step,
+  answer accuracy per question kind, ride length buckets, which neighbourhoods
+  are ridden (rounded to buurt, not coordinates; this also feeds
+  buurt-priority-by-ride), errors and context losses, and device and
+  performance tier.
+  What we give up without consent: returning-user and retention counts across
+  days, cohorts, and cross-session funnels. If we want those, signed-in users
+  are the place: their own progress already lives in Firestore under a privacy
+  notice. The off-the-shelf alternative is Plausible or GoatCounter (EU,
+  cookieless, daily-rotating hash). Do not use Firebase/Google Analytics,
+  which sets identifiers and needs consent.
+  Confirm the legal reading in a needs-david issue before shipping. This is
+  not legal advice.
+
 - **Dutch facts backlog (2026-10-23, HISTORY "Ride and Map Quest speak Dutch")**:
   1,564/2,351 facts carry a Dutch sentence; 787 still fall back to English
   labelled "(Engels)". Next: more agent-writer + fresh-verifier batches via

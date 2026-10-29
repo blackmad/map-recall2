@@ -15,7 +15,7 @@
  "authoring": {
   "author": "claude (kinkerstraat odd-faces lane)",
   "passes": 1,
-  "note": "Kinkerstraat 1-29 (odd side, Bilderdijkkade end), 1883-1885 plus the post-war block 7-17. Plain-brick fronts (1-5, 25-29), three wall-dormer fronts (19-23, face-local type), one 33.5 m brown-brick infill block (7-17) as 7 modules of kinker-1985-infill with a flat top. Shops read on zoom crops of the 2024-12-11 strip."
+  "note": "Kinkerstraat 1-29 (odd side, Bilderdijkkade end), 1883-1885 plus the post-war block 7-17. Plain-brick fronts (1-5, 25-29), three wall-dormer fronts (19-23, face-local type), one 33.5 m brown-brick infill block (7-17) as 7 modules of kinker-1985-infill with a flat top. Shops read on zoom crops of the 2024-12-11 strip. #98 pass: brick facings (overrides.palette) moved to paletteOverrides; the 3 cm facing lay 1 cm off the shop doors and the cornice soffit (coplanar in the GLB audit)."
  },
  "types": [
   "kinker-1890-plain-brick",
@@ -37,10 +37,7 @@
       1,
       1,
       1
-     ],
-     "palette": {
-      "brick": "#4b3826"
-     }
+     ]
     },
     "ground": {
      "shopfront": {
@@ -54,6 +51,9 @@
       "name": "Orange Copy",
       "evidence": "strip.jpg 2024-12-11 pand 1: black shop under a black banner lettered \"... in all shapes and sizes\", \"Posters\" and \"Flyers\" in the glass; OSM node 13075064150 shop=copyshop"
      }
+    },
+    "paletteOverrides": {
+     "brick": "#4b3826"
     }
    },
    "groundFloor": {
@@ -109,10 +109,8 @@
       "evidence": "strip.jpg 2024-12-11 pand 2: white pui, white fascia lettered MEVIBITE (the V a chilli) between Italian flags; door left, white house door right"
      }
     },
-    "overrides": {
-     "palette": {
-      "brick": "#53412f"
-     }
+    "paletteOverrides": {
+     "brick": "#53412f"
     }
    },
    "groundFloor": {
@@ -158,10 +156,8 @@
       "evidence": "strip.jpg 2024-12-11 pand 3: cream pui, black doors either side of the glass, blue round logo and lettering \"...ICARE\" (partly legible)"
      }
     },
-    "overrides": {
-     "palette": {
-      "brick": "#563c2c"
-     }
+    "paletteOverrides": {
+     "brick": "#563c2c"
     }
    },
    "groundFloor": {
@@ -210,10 +206,8 @@
       "evidence": "strip.jpg 2024-12-11 pand 4: tall red board lettered 7 DAYS in white over a white pui, a convenience/liquor strip under it"
      }
     },
-    "overrides": {
-     "palette": {
-      "brick": "#514231"
-     }
+    "paletteOverrides": {
+     "brick": "#514231"
     }
    },
    "groundFloor": {

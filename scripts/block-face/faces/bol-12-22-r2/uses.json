@@ -1,0 +1,95 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:29:14.217Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164618",
+   "addresses": [
+    "Ferdinand Bolstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000635283"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817451919,
+     "lngLat": [
+      4.890535,
+      52.3571553
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Golden Years - True Vintage",
+      "branch": "Ferdinand Bolstraat",
+      "check_date": "2026-01-04",
+      "clothes": "vintage",
+      "name": "Golden Years",
+      "opening_hours": "Mo-Sa 11:00-19:00; Su 11:00-18:00",
+      "operator": "Thriftshop",
+      "second_hand": "only",
+      "shop": "second_hand",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156333",
+   "addresses": [
+    "Ferdinand Bolstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 12-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 98,
+     "bagId": "0363010011910650"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2165936479,
+     "lngLat": [
+      4.8905639,
+      52.3572005
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "cuisine": "asian",
+      "name": "Shanghai Soup Dumplings",
+      "opening_hours": "Su-Th 11:00-23:00; Fr-Sa 11:00-25:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

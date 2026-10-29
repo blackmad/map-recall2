@@ -16,6 +16,11 @@ export const IGNORED_ERRORS: readonly RegExp[] = [
   // thousands of times per visit (Sentry CANAL-RECALL-G/-F, 2026-10-24). Not
   // a person and not our code.
   /Object Not Found Matching Id:\d+, MethodName:\w+, ParamCount:\d+/,
+  // The same scanner profile (Windows Chrome 139, no WebGL, reCAPTCHA calls
+  // blocked) makes App Check's reCAPTCHA re-render its invisible widget after
+  // the blocked call (Sentry CANAL-RECALL-M, 2026-10-27). Thrown inside
+  // Google's script; App Check falls back to no token either way.
+  /reCAPTCHA has already been rendered in this element/,
 ];
 
 /** Would Sentry's `ignoreErrors` drop an event with this message? (Sentry matches substrings and regexes.) */

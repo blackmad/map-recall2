@@ -11,7 +11,8 @@
  *   faces  proposed faces (blockFace/buurtFaces.ts `proposeFaces`: per street side, pands joined by shared party walls),
  *          each with its seed and the from/to trim to the buurt's own pands.
  * With --intake every proposed face not covered yet runs scripts/block-face/intake.ts (strip, uses, facts), trimmed
- * to the buurt.
+ * to the buurt; --camera-height=<m> is passed through (the face's ground + this, when a capture day's published
+ * panorama heights drift and the strip sits low).
  */
 import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
@@ -120,7 +121,8 @@ if (process.argv[1]?.endsWith('block-face/buurt-survey.ts')) {
       if (existsSync(path.join(FACES, f.id, 'strip.json')) && !process.argv.includes('--force')) { console.log(`${f.id}: intake exists`); continue; }
       // Trim to the buurt's own pands; discover.ts may drop an end pand the proposal kept (a corner whose sightline
       // crosses its neighbour), so the trim falls back to the outermost proposal members it did discover.
-      const run = async (from: string, to: string) => intake({face: f.id, street: f.street, seed: f.seed, from, to});
+      const cameraHeight = arg('camera-height') ? Number(arg('camera-height')) : undefined;
+      const run = async (from: string, to: string) => intake({face: f.id, street: f.street, seed: f.seed, from, to, ...(cameraHeight !== undefined ? {cameraHeight} : {})});
       try {
         try { await run(f.members[0], f.members.at(-1)!); }
         catch (e) {

@@ -10,7 +10,7 @@ import type { Houseboat } from './houseboats.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
 
-type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string };
+type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string };
 
 self.onmessage = (event: MessageEvent<Job>) => {
   const { key, gen, look, features, contextFeatures, mode, streets, profiles, appearanceRevision, hostOpenings, hostOpeningRevision, surveyedEnvelopeRevision } = event.data;

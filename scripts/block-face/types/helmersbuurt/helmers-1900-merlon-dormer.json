@@ -71,7 +71,16 @@
     "lightSill": 0.15,
     "lightRise": 0.45
    },
-   "note": "54-64: a brick wall dormer over the two right-hand axes, 3.4 m over the cornice, two lights, merlon parapet"
+   "note": "54-64: a brick wall dormer over the two right-hand axes, 3.4 m over the cornice, two lights, merlon parapet; left axis: a small white timber dormer with a tall pointed roof (strip 2023-01-12, nos. 60 and 62; #87 2026-10-28)",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerAt": [
+    {
+     "from": 0.06,
+     "to": 0.28
+    }
+   ],
+   "dormerBody": "stone"
   }
  },
  "grounds": {
@@ -133,7 +142,6 @@
   }
  ],
  "schemaLimits": [
-  "the small timber dormer on the left axis is not drawn (one crown: the wall dormer)",
   "the arched heads of the wall-dormer lights are square",
   "58 and 50-52 carry a painted timber oriel on storey 1: held"
  ],

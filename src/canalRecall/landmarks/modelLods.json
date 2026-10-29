@@ -1,15 +1,15 @@
 {
  "centraal-station": {
-  "sourceHash": "a6b4d3e189f14d24",
+  "sourceHash": "7e828db6c9d7e0ad",
   "buildVersion": 2,
-  "bytes": 185240,
-  "triangles": 14278
+  "bytes": 219960,
+  "triangles": 16460
  },
  "de-beurs-van-berlage": {
-  "sourceHash": "9f3cfc24c3021afc",
+  "sourceHash": "ac59800ea37889ed",
   "buildVersion": 2,
-  "bytes": 59192,
-  "triangles": 2763
+  "bytes": 91912,
+  "triangles": 4588
  },
  "national-monument-on-the-dam": {
   "sourceHash": "5c6fd1051011658b",
@@ -108,10 +108,10 @@
   "triangles": 1140
  },
  "adam-tower": {
-  "sourceHash": "7aeee8f5b9ff81c5",
+  "sourceHash": "f5963924108a152e",
   "buildVersion": 2,
-  "bytes": 50568,
-  "triangles": 2570
+  "bytes": 67572,
+  "triangles": 3298
  },
  "pontsteiger": {
   "sourceHash": "1f9f41629833d4c5",
@@ -228,10 +228,10 @@
   "triangles": 1452
  },
  "de-bijenkorf": {
-  "sourceHash": "e158e072ede63fe3",
+  "sourceHash": "3997d133fbb0e19a",
   "buildVersion": 2,
-  "bytes": 77728,
-  "triangles": 4496
+  "bytes": 78392,
+  "triangles": 4497
  },
  "gashouder": {
   "sourceHash": "297078e45465e2cc",
@@ -948,10 +948,10 @@
   "triangles": 728
  },
  "treehouse-ndsm": {
-  "sourceHash": "e5f87381bd928bde",
+  "sourceHash": "b25a90f1046b376a",
   "buildVersion": 2,
-  "bytes": 55996,
-  "triangles": 3306
+  "bytes": 63576,
+  "triangles": 3671
  },
  "centrale-markthal": {
   "sourceHash": "9ce6b54498760a99",
@@ -978,10 +978,10 @@
   "triangles": 1385
  },
  "pllek": {
-  "sourceHash": "73341fa36d2052b3",
+  "sourceHash": "104dc0d341d99262",
   "buildVersion": 2,
-  "bytes": 24880,
-  "triangles": 1027
+  "bytes": 37876,
+  "triangles": 1614
  },
  "vinoly": {
   "sourceHash": "a1bf421212f4b2dd",
@@ -1236,9 +1236,9 @@
   "triangles": 3180
  },
  "compagnietheater": {
-  "sourceHash": "d39bdbf201d38a08",
+  "sourceHash": "02ec4851b9ce300a",
   "buildVersion": 2,
-  "bytes": 49064,
+  "bytes": 48864,
   "triangles": 2202
  },
  "west-india-house": {
@@ -1846,5 +1846,11 @@
   "buildVersion": 2,
   "bytes": 35520,
   "triangles": 984
+ },
+ "stationsplein-paviljoens": {
+  "sourceHash": "dea9198bc4f7a098",
+  "buildVersion": 2,
+  "bytes": 38616,
+  "triangles": 1563
  }
 }

@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bol-12-22-r1",
+ "street": "Ferdinand Bolstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/bol-12-22-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/bol-12-22/auto-place.json"
+ },
+ "types": [
+  "pijp-1875-shop-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012153030",
+   "slug": "bol-153030",
+   "address": "Ferdinand Bolstraat 22",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#4d3e3a",
+      "fascia": true,
+      "name": "Witbaard Feestartikelen",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=party); fascia colour measured on the strip 2023-01-03 span 0-282"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#58443d",
+     "evidence": "strip 2023-01-03 span 0-282: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Witbaard Feestartikelen",
+    "category": "shop=party",
+    "osm": {
+     "type": "node",
+     "id": 2817452500,
+     "name": "Witbaard Feestartikelen"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 0-282"
+   }
+  },
+  {
+   "pandId": "0363100012167250",
+   "slug": "bol-167250",
+   "address": "Ferdinand Bolstraat 20",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#612423",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=shelter); fascia colour measured on the strip 2023-01-03 span 282-598"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#545257",
+     "evidence": "strip 2023-01-03 span 282-598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3d3c3c",
+     "wallMaterial": "painted-brick"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "amenity=shelter",
+    "osm": {
+     "type": "node",
+     "id": 13533825152
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 282-598"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

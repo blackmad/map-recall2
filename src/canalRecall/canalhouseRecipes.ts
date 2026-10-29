@@ -53,12 +53,16 @@ export interface CanalhouseOpening {
   /** Source-selected door-leaf layout only; absent/empty never invents panels. */
   panels?: CanalhouseDoorPanel[];
 }
+/** Strips of an arched dormer roof (`CanalhouseDormer.roofProfile: 'arch'`). */
+export const ARCH_SEGMENTS = 8;
 export interface CanalhouseDormer {
  wallSurface?:'wall'|'trim'|'stone';roofSurface?:'roof'|'trim'|'wall';
   /** Source-observed distance behind the main facade plane. Default preserves legacy placement. */
   setbackM?:number;
   /** Explicit source-visible opening in a native wall covering this dormer. */
-  hostAperture?:{depthM:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
+  hostAperture?:{depthM:number};
+  /** `arch`: a round (half-elliptic, `roofRiseM` high) roof over the dormer and a matching round front and back, instead of the two pitched planes (Kinkerstraat 22-24 round-hooded dormers). Absent = pitched, byte-identical. */
+  roofProfile?:'arch'; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
@@ -818,7 +822,15 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         const overhang=d.frontOverhangM??0;finite(overhang);if(overhang<0||overhang>.3)throw Error('Unsupported dormer front overhang');
         const roofValues:number[]=[],mid=(x0+x1)/2;
         const quad=(p:number[],q:number[],r:number[],s:number[])=>roofValues.push(...p,...q,...r,...p,...r,...s);
-        if(d.roofRiseM>0){
+        if(d.roofProfile!==undefined&&d.roofProfile!=='arch')throw Error('Invalid dormer roof profile');
+        if(d.roofProfile==='arch'&&d.roofRiseM>0){
+          // Half-ellipse over the frame in ARCH_SEGMENTS strips; the round front and back sit 4 cm inside it (as the pitched cap below).
+          const n=ARCH_SEGMENTS,hw=d.widthM/2,at=(k:number,inset:number):[number,number]=>{const a=Math.PI*(1-k/n);return[mid+Math.cos(a)*(hw-inset),top+Math.sin(a)*Math.max(.01,d.roofRiseM-inset)];};
+          for(let k=0;k<n;k++){const [xa,ya]=at(k,0),[xb,yb]=at(k+1,0);quad([xa,ya,overhang],[xb,yb,overhang],[xb,yb,-d.depthM],[xa,ya,-d.depthM]);}
+          const pts=[new T.Vector2(x0+.04,top-.005)];for(let k=1;k<n;k++){const [x,y]=at(k,.04);pts.push(new T.Vector2(x,Math.max(top-.005,y)));}pts.push(new T.Vector2(x1-.04,top-.005));
+          const g=new T.ExtrudeGeometry(new T.Shape(pts),{depth:wall,bevelEnabled:false});g.translate(0,0,overhang-wall);add(g,wallSurface,`${label}/front-gable`,facade);
+          const back=g.clone();back.translate(0,0,-d.depthM+wall-overhang);add(back,wallSurface,`${label}/back-gable`,facade);
+        }else if(d.roofRiseM>0){
           quad([x0,top,overhang],[mid,top+d.roofRiseM,overhang],[mid,top+d.roofRiseM,-d.depthM],[x0,top,-d.depthM]);
           quad([mid,top+d.roofRiseM,overhang],[x1,top,overhang],[x1,top,-d.depthM],[mid,top+d.roofRiseM,-d.depthM]);
           // Roof owns the top: solid gable ends sit just below its planes,

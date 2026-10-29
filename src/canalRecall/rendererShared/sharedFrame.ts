@@ -24,6 +24,7 @@ import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.
 import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from './residency.js';
+import { chooseTileDraws } from './tiledGeometry.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -36,6 +37,20 @@ export type FrameContext = {
   /** View bounds, computed at most once per pass. */
   bounds(): LngLatBounds;
 };
+
+/**
+ * Tiled meshes draw whole when the tiles on screen hold at least this share of their triangles (chooseTileDraws). A
+ * desktop is bound by draw calls on the CPU, so a mesh mostly on screen draws in one call; a touch device is bound by
+ * the GPU, so it always draws only the tiles on screen (> 1). `?tileWhole=0..2` (or `window.__canalRecallTileWhole`)
+ * overrides it.
+ */
+export const DESKTOP_TILE_WHOLE_SHARE = 0.6;
+function tileWholeShareFlag(): number {
+  const g = globalThis as { __canalRecallTileWhole?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = Number(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : NaN));
+  if (Number.isFinite(asked) && asked >= 0 && asked <= 2) return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? 2 : DESKTOP_TILE_WHOLE_SHARE;
+}
 
 export interface FrameParticipant {
   /** The object drawn. Its local space is mapped to Mercator by `mercatorFromLocal`. */
@@ -94,6 +109,10 @@ export class SharedFrame {
   renderer: any = null;
   lastFrame: FrameMatrices | null = null;
   /** Per-pass diagnostics for the perf harnesses. */
+  /** Tiled meshes' whole-draw share (tileWholeShareFlag) and the last main pass's choice. */
+  private readonly tileWholeShare = tileWholeShareFlag();
+  private tileScratch: { frustum: any; sphere: any; m: any } | null = null;
+  tileDraws = { tiled: 0, whole: 0 };
   readonly stats = { main: { ms: 0, calls: 0, triangles: 0, frames: 0 }, overlay: { ms: 0, calls: 0, triangles: 0, frames: 0 }, shadowCasters: 0 };
   private readonly options: SharedFrameOptions;
   private readonly worldFromMercatorM: any;
@@ -315,6 +334,39 @@ export class SharedFrame {
     return [a[0] + abs[0] * u, a[1] - abs[1] * u, abs[2] * u];
   }
 
+  /**
+   * Triangles each participant drew in the last frame, frustum-culled like three (shadow passes not included).
+   * Diagnostics for GPU load on phones and iPads (Sentry CANAL-RECALL-7); walks the scene, so call it on demand.
+   */
+  private readonly lastDrawn: Partial<Record<FramePass, string[]>> = {};
+
+  drawStats(): Record<string, { meshes: number; triangles: number }> {
+    const THREE = this.THREE;
+    const frustum = new THREE.Frustum().setFromProjectionMatrix(this.camera.projectionMatrix);
+    const sphere = new THREE.Sphere();
+    const out: Record<string, { meshes: number; triangles: number }> = {};
+    const drawn = new Set(Object.values(this.lastDrawn).flat());
+    for (const entry of this.registry.all()) {
+      if (!drawn.has(entry.id)) continue;
+      const stats = { meshes: 0, triangles: 0 };
+      entry.participant.participant.root.traverseVisible((object: any) => {
+        if (!object.isMesh || !object.geometry) return;
+        // A tiled owner (tiledGeometry.ts drawAsTiles) sits on a layer the camera skips; its tiles are counted instead.
+        if (!object.layers.test(this.camera.layers)) return;
+        const geometry = object.geometry;
+        if (object.frustumCulled && !object.isInstancedMesh) {
+          if (!geometry.boundingSphere) geometry.computeBoundingSphere();
+          if (!frustum.intersectsSphere(sphere.copy(geometry.boundingSphere).applyMatrix4(object.matrixWorld))) return;
+        }
+        const vertices = Math.min(geometry.index ? geometry.index.count : geometry.attributes.position?.count ?? 0, geometry.drawRange.count);
+        stats.meshes++;
+        stats.triangles += Math.floor(vertices / 3) * (object.isInstancedMesh ? object.count : 1);
+      });
+      out[entry.id] = stats;
+    }
+    return out;
+  }
+
   private renderPass(pass: FramePass, gl: WebGL2RenderingContext, args: any): void {
     const renderer = this.renderer;
     if (!renderer) return;
@@ -336,6 +388,7 @@ export class SharedFrame {
       bounds: () => (bounds ??= plainBounds(this.map.getBounds())),
     };
     const drawn: Handle[] = [];
+    const drawnIds: string[] = [];
     for (const entry of this.registry.all()) {
       const handle = entry.participant;
       if (entry.pass !== pass) { handle.wrapper.visible = false; continue; }
@@ -349,7 +402,9 @@ export class SharedFrame {
       if (local) handle.wrapper.matrix.multiply(this.tmp.fromArray(local));
       handle.wrapper.matrixWorldNeedsUpdate = true;
       drawn.push(handle);
+      drawnIds.push(entry.id);
     }
+    this.lastDrawn[pass] = drawnIds;
     if (!drawn.length) return;
     const t0 = performance.now();
     renderer.resetState();
@@ -361,6 +416,9 @@ export class SharedFrame {
     renderer.info.autoReset = false;
     renderer.info.reset();
     if (pass === 'main') {
+      // Tiled meshes (tiledGeometry.ts): whole or through their culled tiles, per mesh, from what is on screen.
+      const t = chooseTileDraws(this.THREE, this.camera.projectionMatrix, this.tileWholeShare, this.tileScratch ??= { frustum: new this.THREE.Frustum(), sphere: new this.THREE.Sphere(), m: new this.THREE.Matrix4() });
+      this.tileDraws = t;
       // castShadow stays constant (toggling it recompiles every lit program);
       // below the shadow zoom, or when switched off, the map is not redrawn and
       // its contribution is zeroed instead.

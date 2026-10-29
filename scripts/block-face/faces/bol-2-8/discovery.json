@@ -1,0 +1,329 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "seed": "0363100012166420",
+ "members": [
+  "0363100012163371",
+  "0363100012166796",
+  "0363100012161404",
+  "0363100012166420"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012163371 (face continues: 228680)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012166420 (face continues: 164454)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012068187",
+   "reason": "frontage 30.1 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012069726",
+   "reason": "frontage 62.1 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012080628",
+   "reason": "frontage 73.7 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012082246",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012119117"
+  },
+  {
+   "pandId": "0363100012087624",
+   "reason": "frontage 61.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012096414",
+   "reason": "frontage 62.3 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012132765",
+   "reason": "no frontage on Ferdinand Bolstraat: No footprint edge faces Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012143922",
+   "reason": "frontage 79.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012152559",
+   "reason": "frontage 60.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012152710",
+   "reason": "frontage 83.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012153602",
+   "reason": "frontage 71.8 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012154231",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012228680"
+  },
+  {
+   "pandId": "0363100012155105",
+   "reason": "frontage 70.1 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012155659",
+   "reason": "frontage 83.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012156123",
+   "reason": "frontage 46.7 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012156213",
+   "reason": "frontage 40.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012156663",
+   "reason": "frontage 53.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012157625",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012164454"
+  },
+  {
+   "pandId": "0363100012158664",
+   "reason": "frontage 36.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012159194",
+   "reason": "frontage 46.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012159553",
+   "reason": "frontage 66.1 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012159600",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012152317"
+  },
+  {
+   "pandId": "0363100012159865",
+   "reason": "frontage 64.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012161104",
+   "reason": "frontage 77.6 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012162050",
+   "reason": "frontage 77.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012162418",
+   "reason": "frontage 58.1 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012163067",
+   "reason": "frontage 53.3 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012163139",
+   "reason": "frontage 40.3 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012163377",
+   "reason": "frontage 71.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012163981",
+   "reason": "frontage 33.7 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012145946",
+   "reason": "frontage 93.5 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012152579",
+   "reason": "frontage 103.6 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012153116",
+   "reason": "frontage 89.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012153280",
+   "reason": "frontage 101.6 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012155486",
+   "reason": "frontage 89.0 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012156425",
+   "reason": "frontage 91.5 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012156911",
+   "reason": "frontage 97.6 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012158890",
+   "reason": "frontage 95.7 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012159558",
+   "reason": "frontage 106.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012160165",
+   "reason": "frontage 85.3 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012162055",
+   "reason": "frontage 94.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012162322",
+   "reason": "frontage 100.7 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012162907",
+   "reason": "frontage 101.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012166419",
+   "reason": "frontage 40.0 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012166520",
+   "reason": "frontage 34.3 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012167369",
+   "reason": "frontage 46.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012167426",
+   "reason": "frontage 72.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012183999",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012228680"
+  },
+  {
+   "pandId": "0363100012187219",
+   "reason": "no frontage on Ferdinand Bolstraat: No footprint edge faces Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012191582",
+   "reason": "frontage 59.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012191583",
+   "reason": "frontage 63.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012191584",
+   "reason": "frontage 63.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012228626",
+   "reason": "frontage 59.2 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012233622",
+   "reason": "frontage 58.5 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012236534",
+   "reason": "frontage 79.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012236960",
+   "reason": "frontage 42.0 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012237129",
+   "reason": "sightline to Ferdinand Bolstraat crosses 0363100012157625"
+  },
+  {
+   "pandId": "0363100012237354",
+   "reason": "frontage 88.8 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012165741",
+   "reason": "frontage 106.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012167283",
+   "reason": "frontage 99.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012183259",
+   "reason": "frontage 97.5 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012224807",
+   "reason": "frontage 84.4 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012224808",
+   "reason": "frontage 87.9 m from Ferdinand Bolstraat"
+  },
+  {
+   "pandId": "0363100012119117",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166152",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237337",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012163371",
+   "alongM": -18.65,
+   "widthM": 7.3,
+   "eavesM": 12.37,
+   "roofMaxM": 15.22,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166796",
+   "alongM": -12,
+   "widthM": 6,
+   "eavesM": 13.41,
+   "roofMaxM": 14.44,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161404",
+   "alongM": -6,
+   "widthM": 6,
+   "eavesM": 11.39,
+   "roofMaxM": 14.56,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166420",
+   "alongM": 0,
+   "widthM": 6,
+   "eavesM": 13.58,
+   "roofMaxM": 14.51,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  }
+ ]
+}

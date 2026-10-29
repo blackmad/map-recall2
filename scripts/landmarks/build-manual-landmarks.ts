@@ -131,6 +131,7 @@ import {buildBlauweTheehuis} from './blauwe-theehuis-builder';
 import {buildBeestHetLab} from './beest-het-lab-builder';
 import {buildMuseumAmsterdamNoord} from './museum-amsterdam-noord-builder';
 import {buildLevendPaardenmuseum} from './levend-paardenmuseum-builder';
+import {buildStationspleinPaviljoens} from './stationsplein-paviljoens-builder';
 import {buildOudemanhuispoort} from './oudemanhuispoort-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
@@ -326,7 +327,10 @@ import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
+ // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
+ // orthophoto (#939696 to #747b82) and of its underside in panorama recording_2025-06-17_09-10-34_02640 (#5e6c69). Used by no other model.
+ canopyGlass:'#86908f'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour,hex?:string,unlit?:boolean}[]=[];
 /** Native decal geometry is already transformed by its builder; do not translate it again. */
@@ -365,7 +369,9 @@ Object.assign(letters,{
  '6':['01110','10000','10000','11110','10001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],
  '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
 });
-function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
+// `angle` (optional, radians about +Y like box): the sign faces rotateY(angle) of +Z, its text running along rotateY(angle)
+// of +X from (x, z). Absent, the letters are placed exactly as before.
+function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number,angle?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;const ca=Math.cos(angle??0),sa=Math.sin(angle??0);for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1'){if(angle===undefined)box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);else{const t=u+k*pixel;box(x+t*ca,y+(6-j)*pixel,z-t*sa,pixel*.85,pixel*.85,.08,c,angle);}}u+=((rows?.[0].length??3)+1)*pixel;}}
 function music(){box(0,0,0,70,1.1,43,'stone');box(0,1.1,0,66,18.7,40,'glass');box(8,1.1,-3,35,17.5,28,'white'); // auditorium visible through foyer
  for(let x=-32;x<=32;x+=4){box(x,1.1,20.2,.19,18.7,.3,'frame');box(x,1.1,-20.2,.19,18.7,.3,'frame');}for(let z=-18;z<=18;z+=4){for(let x of [-33.2,33.2])box(x,1.1,z,.3,18.7,.19,'frame');}for(let y of [6,11,16]){box(0,y,20.25,66,.2,.3,'frame');box(0,y,-20.25,66,.2,.3,'frame');for(let x of [-33.25,33.25])box(x,y,0,.3,.2,40,'frame');}
  box(0,20,0,77,1.5,48,'slate');box(0,19.7,0,77,.35,48,'white');box(-13,4,21,21,1,7,'red'); // foyer connector
@@ -594,6 +600,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
     else if(id==='museum-amsterdam-noord')buildMuseumAmsterdamNoord(w,d,helpers);
     else if(id==='levend-paardenmuseum')buildLevendPaardenmuseum(w,d,helpers);
+    else if(id==='stationsplein-paviljoens')buildStationspleinPaviljoens(w,d,helpers);
     else if(id==='oudemanhuispoort')buildOudemanhuispoort(w,d,helpers);
     else if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);

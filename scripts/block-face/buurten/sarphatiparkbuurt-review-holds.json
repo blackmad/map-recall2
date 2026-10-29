@@ -1,0 +1,22 @@
+{
+ "note": "Pands held after a review of their run's strip sheet (scripts/block-face/auto-place.ts).",
+ "reviewed": "2026-10-29",
+ "holds": [
+  {
+   "pandId": "0363100012154144",
+   "reason": "Albert Cuypstraat 158A (2022-03-21 strip): a stepped Neo-Renaissance gable with an arched attic window over the cornice; no type in the library has it"
+  },
+  {
+   "pandId": "0363100012166514",
+   "reason": "Albert Cuypstraat 140E: 3DBAG's roof stands under a metre over the 14.0-14.5 m cornice, so the front roof goes flat (recipeRoof) and the pediment dormer hovers 0.10 m over it (GLB audit `detached`); the front matches the banded type (NCC 0.23-0.45). Kit gap: an attic band with dormers should not go flat"
+  },
+  {
+   "pandId": "0363100012166647",
+   "reason": "Albert Cuypstraat 138: 3DBAG's roof stands under a metre over the 14.0-14.5 m cornice, so the front roof goes flat (recipeRoof) and the pediment dormer hovers 0.10 m over it (GLB audit `detached`); the front matches the banded type (NCC 0.23-0.45). Kit gap: an attic band with dormers should not go flat"
+  },
+  {
+   "pandId": "0363100012159005",
+   "reason": "Van Woustraat 60 (2023-01-03 strip): painted near-black with white stucco jamb blocks, white lintel pieces and iron balconettes on a bracketed slab over the middle axis, like 62; not the plain 1886 brick type"
+  }
+ ]
+}

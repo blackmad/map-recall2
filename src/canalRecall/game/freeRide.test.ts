@@ -10,6 +10,7 @@ import {
   MARKER_STEM,
   nearbyPlaces,
   nearestPoint,
+  secondMarkerIds,
   tapNamesWay,
   type FreeRidePlace,
 } from './freeRide.ts';
@@ -104,4 +105,18 @@ test('a tap names a way only on or right beside it', () => {
   assert.ok(!tapNamesWay({ dist: 40, width: 12 }, 6));
   assert.ok(!tapNamesWay(null, 6));
   assert.ok(!tapNamesWay({ width: 12 }, 6));
+});
+
+// Feedback 3702bcd7 (2026-10-25, Stationsplein): Free Ride pinned "Cuypersgebouw" and "Central Station"
+// side by side. The Cuypersgebouw is the station's front building; its marker goes, its card stays.
+test('second markers: a minor landmark inside a major one is not marked twice', () => {
+  const poly = (w: number, s: number, e: number, n: number) => ({ features: [{ geometry: { type: 'Polygon', coordinates: [[[w, s], [e, s], [e, n], [w, n], [w, s]]] } }] });
+  const ids = secondMarkerIds([
+    { id: 'cs', name: 'Central Station', lngLat: [4.8998, 52.37846], prominenceScore: 368, geojson: poly(4.8975, 52.3778, 4.9020, 52.3792) },
+    { id: 'cuy', name: 'Cuypersgebouw', lngLat: [4.899603, 52.378577], prominenceScore: 113, geojson: poly(4.8990, 52.3783, 4.9002, 52.3789) },
+    { id: 'naco', name: 'NACO-house', lngLat: [4.905527, 52.378777], prominenceScore: 240 },
+    { id: 'dam', name: 'Monument voor Damslachtoffers 7 mei 1945', lngLat: [4.8932, 52.3731], prominenceScore: 120 },
+    { id: 'plq', name: 'Plaquette 7 mei 1945', lngLat: [4.8933, 52.3731], prominenceScore: 90 },
+  ]);
+  assert.deepEqual([...ids], ['cuy']);
 });

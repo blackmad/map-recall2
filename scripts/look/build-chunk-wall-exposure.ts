@@ -25,7 +25,8 @@ import sharp from 'sharp';
 import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
-import {BRICK_CELL_MEAN, cityTint, hexToRgb} from '../../src/canalRecall/look/palette.ts';
+import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
+import {drawnWallLuma} from '../../src/canalRecall/look/drawnWall.ts';
 import {srgbToLinear} from '../../src/canalRecall/look/sunny.ts';
 import {chunkWallGain} from '../../src/canalRecall/look/chunkWallExposure.ts';
 import {CHUNK_WALL_EXPOSURE_DATA} from '../../src/canalRecall/look/chunkWallExposureData.ts';
@@ -61,7 +62,7 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
     const facts = path.join(dir, 'pands', s.pandId, 'facts.json'), h = fs.existsSync(facts) ? JSON.parse(fs.readFileSync(facts, 'utf8')).heights : null;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
     const intent = intents.find(i => i.pandId === s.pandId), brick = !!intent && (intent.palette.wallMaterial ?? 'brick') !== 'stucco';
-    const drawn = intent ? luma(hexToRgb(cityTint(brick ? 'brick' : 'stucco', swatch(intent.palette.brick)))) * BRICK_CELL_MEAN : NaN;
+    const drawn = intent ? drawnWallLuma({...intent.palette, brick: swatch(intent.palette.brick)}) : NaN;
     const wall = p.wall && !p.stucco && brick && p.shares.wall >= 0.3 ? luma(hexToRgb(p.wall)) : NaN;
     return {frame: p.frame ? hexToRgb(p.frame) : null, ratio: srgbToLinear(wall) / srgbToLinear(drawn)};
   });

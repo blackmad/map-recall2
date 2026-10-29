@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-25T18:26:26.100Z",
+ "generatedAt": "2026-10-29T14:25:23.240Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -52750,242 +52750,6 @@
    ]
   },
   {
-   "id": "chunk-face-helmers-108-174-r1",
-   "category": "street-survey",
-   "name": "face-helmers-108-174-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-108-174-r1.glb?asset=c50b9315f86ea9fd",
-   "sha256": "c50b9315f86ea9fdc72efee1c724214b09ecf21dc25903aa83a8c15b101a9bea",
-   "bytes": 248476,
-   "triangles": 3522,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.8673459212733,
-     52.36153202136213
-    ],
-    "northOffsetDegrees": 338.227,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -6.029,
-     0,
-     -13.436
-    ],
-    "max": [
-     5.978,
-     14.226,
-     0.662
-    ]
-   },
-   "height": 14.226,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012154337",
-    "NL.IMBAG.Pand.0363100012164727"
-   ],
-   "replaces": [
-    "ordinary-0363100012154337",
-    "ordinary-0363100012164727"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8672826,
-        52.361625
-       ],
-       [
-        4.8672047,
-        52.3616059
-       ],
-       [
-        4.8672634,
-        52.3615125
-       ],
-       [
-        4.8673466,
-        52.3615316
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8673627,
-        52.3616461
-       ],
-       [
-        4.8673299,
-        52.3616378
-       ],
-       [
-        4.8673179,
-        52.3616549
-       ],
-       [
-        4.8672706,
-        52.3616427
-       ],
-       [
-        4.8673466,
-        52.3615316
-       ],
-       [
-        4.8674271,
-        52.3615523
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "helmers-154337",
-     "pandId": "0363100012154337",
-     "buildingId": "NL.IMBAG.Pand.0363100012154337",
-     "address": "Eerste Helmersstraat 122",
-     "frontage": {
-      "x0": -6.025,
-      "x1": 0.027,
-      "widthM": 6.052
-     },
-     "bounds": {
-      "min": [
-       -6.029,
-       0,
-       -11.249
-      ],
-      "max": [
-       0.027,
-       14.226,
-       0.661
-      ]
-     },
-     "triangles": 1776,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 59
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 636
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 720
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 40
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 138
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 13
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 9
-      }
-     ]
-    },
-    {
-     "recipeId": "helmers-164727",
-     "pandId": "0363100012164727",
-     "buildingId": "NL.IMBAG.Pand.0363100012164727",
-     "address": "Eerste Helmersstraat 120",
-     "frontage": {
-      "x0": 0.027,
-      "x1": 5.971,
-      "widthM": 5.944
-     },
-     "bounds": {
-      "min": [
-       -0.21,
-       0,
-       -13.436
-      ],
-      "max": [
-       5.978,
-       13.904,
-       0.662
-      ]
-     },
-     "triangles": 1746,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 39
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 636,
-       "triangleCount": 636
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 720,
-       "triangleCount": 720
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 40,
-       "triangleCount": 40
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 156,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 138,
-       "triangleCount": 138
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 13,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 5,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 9,
-       "triangleCount": 7
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-helmers-40-60-r1",
    "category": "street-survey",
    "name": "face-helmers-40-60-r1",
@@ -53212,478 +52976,6 @@
        "primitive": 9,
        "firstTriangle": 5,
        "triangleCount": 6
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-helmers-32-66-r1",
-   "category": "street-survey",
-   "name": "face-helmers-32-66-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-32-66-r1.glb?asset=479af0cfc6b6b73e",
-   "sha256": "479af0cfc6b6b73e28ae7270f9cce28c60d759e25a88ce041c6b74b345902514",
-   "bytes": 307548,
-   "triangles": 4648,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.8759111188542015,
-     52.364961163045514
-    ],
-    "northOffsetDegrees": 334.4122,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -5.94,
-     0,
-     -14.166
-    ],
-    "max": [
-     5.871,
-     18.629,
-     0.647
-    ]
-   },
-   "height": 18.629,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012165412",
-    "NL.IMBAG.Pand.0363100012163126"
-   ],
-   "replaces": [
-    "ordinary-0363100012165412",
-    "ordinary-0363100012163126"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8758347,
-        52.3650573
-       ],
-       [
-        4.8757602,
-        52.3650357
-       ],
-       [
-        4.8758325,
-        52.3649381
-       ],
-       [
-        4.8759119,
-        52.3649612
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8759885,
-        52.3649837
-       ],
-       [
-        4.8758996,
-        52.3650984
-       ],
-       [
-        4.8758536,
-        52.3650851
-       ],
-       [
-        4.8758677,
-        52.3650669
-       ],
-       [
-        4.8758347,
-        52.3650573
-       ],
-       [
-        4.8759116,
-        52.3649616
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "helmers-165412",
-     "pandId": "0363100012165412",
-     "buildingId": "NL.IMBAG.Pand.0363100012165412",
-     "address": "Derde Helmersstraat 62",
-     "frontage": {
-      "x0": -5.94,
-      "x1": 0.05,
-      "widthM": 5.99
-     },
-     "bounds": {
-      "min": [
-       -5.94,
-       0,
-       -11.956
-      ],
-      "max": [
-       0.05,
-       18.629,
-       0.647
-      ]
-     },
-     "triangles": 2309,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 81
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 1308
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 300
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 2
-      }
-     ]
-    },
-    {
-     "recipeId": "helmers-163126",
-     "pandId": "0363100012163126",
-     "buildingId": "NL.IMBAG.Pand.0363100012163126",
-     "address": "Derde Helmersstraat 60",
-     "frontage": {
-      "x0": 0.05,
-      "x1": 5.841,
-      "widthM": 5.791
-     },
-     "bounds": {
-      "min": [
-       -0.086,
-       0,
-       -14.166
-      ],
-      "max": [
-       5.871,
-       18.617,
-       0.646
-      ]
-     },
-     "triangles": 2339,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 106
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 228,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 1308,
-       "triangleCount": 1308
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 300,
-       "triangleCount": 300
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 372,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 4,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 2,
-       "triangleCount": 3
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-helmers-32-66-r2",
-   "category": "street-survey",
-   "name": "face-helmers-32-66-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-32-66-r2.glb?asset=b8004cdc709ae834",
-   "sha256": "b8004cdc709ae8341b01f9984e6673d18c90a960f5ace7f523077ec4b347a77e",
-   "bytes": 306868,
-   "triangles": 4647,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.876143866913741,
-     52.36502971304845
-    ],
-    "northOffsetDegrees": 334.5044,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -5.863,
-     0,
-     -13.287
-    ],
-    "max": [
-     5.867,
-     18.528,
-     0.645
-    ]
-   },
-   "height": 18.528,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012157083",
-    "NL.IMBAG.Pand.0363100012162406"
-   ],
-   "replaces": [
-    "ordinary-0363100012157083",
-    "ordinary-0363100012162406"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.876144,
-        52.3650295
-       ],
-       [
-        4.8760525,
-        52.3651457
-       ],
-       [
-        4.8760078,
-        52.3651327
-       ],
-       [
-        4.8760239,
-        52.3651121
-       ],
-       [
-        4.8759922,
-        52.3651029
-       ],
-       [
-        4.8760661,
-        52.3650071
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8761474,
-        52.3651479
-       ],
-       [
-        4.876069,
-        52.3651252
-       ],
-       [
-        4.8761437,
-        52.3650299
-       ],
-       [
-        4.8762217,
-        52.3650524
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "helmers-157083",
-     "pandId": "0363100012157083",
-     "buildingId": "NL.IMBAG.Pand.0363100012157083",
-     "address": "Derde Helmersstraat 56A",
-     "frontage": {
-      "x0": -5.863,
-      "x1": -0.002,
-      "widthM": 5.861
-     },
-     "bounds": {
-      "min": [
-       -5.863,
-       0,
-       -13.287
-      ],
-      "max": [
-       -0.001,
-       18.528,
-       0.645
-      ]
-     },
-     "triangles": 2332,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 100
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 1308
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 300
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 3
-      }
-     ]
-    },
-    {
-     "recipeId": "helmers-162406",
-     "pandId": "0363100012162406",
-     "buildingId": "NL.IMBAG.Pand.0363100012162406",
-     "address": "Derde Helmersstraat 54",
-     "frontage": {
-      "x0": -0.002,
-      "x1": 5.867,
-      "widthM": 5.869
-     },
-     "bounds": {
-      "min": [
-       -0.041,
-       0,
-       -11.822
-      ],
-      "max": [
-       5.867,
-       18.528,
-       0.645
-      ]
-     },
-     "triangles": 2315,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 84
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 228,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 1308,
-       "triangleCount": 1308
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 300,
-       "triangleCount": 300
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 372,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 4,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 5,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 3,
-       "triangleCount": 2
       }
      ]
     }
@@ -56132,6 +55424,9151 @@
        "primitive": 9,
        "firstTriangle": 6,
        "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-108-174-r1",
+   "category": "street-survey",
+   "name": "face-helmers-108-174-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-108-174-r1.glb?asset=d8a964e94b9eeac0",
+   "sha256": "d8a964e94b9eeac075a08516e606cfcf0c56dfaf3d91d24224aac474bf5c8ed6",
+   "bytes": 247120,
+   "triangles": 3505,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.8673459212733,
+     52.36153202136213
+    ],
+    "northOffsetDegrees": 338.227,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.029,
+     0,
+     -13.436
+    ],
+    "max": [
+     5.978,
+     13.904,
+     0.662
+    ]
+   },
+   "height": 13.904,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012154337",
+    "NL.IMBAG.Pand.0363100012164727"
+   ],
+   "replaces": [
+    "ordinary-0363100012154337",
+    "ordinary-0363100012164727"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8672826,
+        52.361625
+       ],
+       [
+        4.8672047,
+        52.3616059
+       ],
+       [
+        4.8672634,
+        52.3615125
+       ],
+       [
+        4.8673466,
+        52.3615316
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8673627,
+        52.3616461
+       ],
+       [
+        4.8673299,
+        52.3616378
+       ],
+       [
+        4.8673179,
+        52.3616549
+       ],
+       [
+        4.8672706,
+        52.3616427
+       ],
+       [
+        4.8673466,
+        52.3615316
+       ],
+       [
+        4.8674271,
+        52.3615523
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-154337",
+     "pandId": "0363100012154337",
+     "buildingId": "NL.IMBAG.Pand.0363100012154337",
+     "address": "Eerste Helmersstraat 122",
+     "frontage": {
+      "x0": -6.025,
+      "x1": 0.027,
+      "widthM": 6.052
+     },
+     "bounds": {
+      "min": [
+       -6.029,
+       0,
+       -11.249
+      ],
+      "max": [
+       0.027,
+       13.904,
+       0.661
+      ]
+     },
+     "triangles": 1759,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 42
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 636
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-164727",
+     "pandId": "0363100012164727",
+     "buildingId": "NL.IMBAG.Pand.0363100012164727",
+     "address": "Eerste Helmersstraat 120",
+     "frontage": {
+      "x0": 0.027,
+      "x1": 5.971,
+      "widthM": 5.944
+     },
+     "bounds": {
+      "min": [
+       -0.21,
+       0,
+       -13.436
+      ],
+      "max": [
+       5.978,
+       13.904,
+       0.662
+      ]
+     },
+     "triangles": 1746,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 636,
+       "triangleCount": 636
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 720,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 138,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 14,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-32-66-r1",
+   "category": "street-survey",
+   "name": "face-helmers-32-66-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-32-66-r1.glb?asset=8cc4a7f57ae12b1b",
+   "sha256": "8cc4a7f57ae12b1ba0f4d5e4236c90310971f87b7fce8b83e5685f8e1c0eb0e9",
+   "bytes": 324968,
+   "triangles": 4915,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.8759111188542015,
+     52.364961163045514
+    ],
+    "northOffsetDegrees": 334.4122,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.94,
+     0,
+     -14.166
+    ],
+    "max": [
+     5.871,
+     18.629,
+     0.647
+    ]
+   },
+   "height": 18.629,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012165412",
+    "NL.IMBAG.Pand.0363100012163126"
+   ],
+   "replaces": [
+    "ordinary-0363100012165412",
+    "ordinary-0363100012163126"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8758347,
+        52.3650573
+       ],
+       [
+        4.8757602,
+        52.3650357
+       ],
+       [
+        4.8758325,
+        52.3649381
+       ],
+       [
+        4.8759119,
+        52.3649612
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8759885,
+        52.3649837
+       ],
+       [
+        4.8758996,
+        52.3650984
+       ],
+       [
+        4.8758536,
+        52.3650851
+       ],
+       [
+        4.8758677,
+        52.3650669
+       ],
+       [
+        4.8758347,
+        52.3650573
+       ],
+       [
+        4.8759116,
+        52.3649616
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-165412",
+     "pandId": "0363100012165412",
+     "buildingId": "NL.IMBAG.Pand.0363100012165412",
+     "address": "Derde Helmersstraat 62",
+     "frontage": {
+      "x0": -5.94,
+      "x1": 0.05,
+      "widthM": 5.99
+     },
+     "bounds": {
+      "min": [
+       -5.94,
+       0,
+       -11.956
+      ],
+      "max": [
+       0.05,
+       18.629,
+       0.647
+      ]
+     },
+     "triangles": 2443,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 85
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1368
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-163126",
+     "pandId": "0363100012163126",
+     "buildingId": "NL.IMBAG.Pand.0363100012163126",
+     "address": "Derde Helmersstraat 60",
+     "frontage": {
+      "x0": 0.05,
+      "x1": 5.841,
+      "widthM": 5.791
+     },
+     "bounds": {
+      "min": [
+       -0.086,
+       0,
+       -14.166
+      ],
+      "max": [
+       5.871,
+       18.617,
+       0.646
+      ]
+     },
+     "triangles": 2472,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 280,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1368,
+       "triangleCount": 1368
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 384,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 6,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-32-66-r2",
+   "category": "street-survey",
+   "name": "face-helmers-32-66-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-32-66-r2.glb?asset=6bffbc9274beb649",
+   "sha256": "6bffbc9274beb6494e57fe6c97bbb78aae0fca817e18937eaf51c949378824af",
+   "bytes": 323872,
+   "triangles": 4913,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.876143866913741,
+     52.36502971304845
+    ],
+    "northOffsetDegrees": 334.5044,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.863,
+     0,
+     -13.287
+    ],
+    "max": [
+     5.867,
+     18.528,
+     0.645
+    ]
+   },
+   "height": 18.528,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012157083",
+    "NL.IMBAG.Pand.0363100012162406"
+   ],
+   "replaces": [
+    "ordinary-0363100012157083",
+    "ordinary-0363100012162406"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.876144,
+        52.3650295
+       ],
+       [
+        4.8760525,
+        52.3651457
+       ],
+       [
+        4.8760078,
+        52.3651327
+       ],
+       [
+        4.8760239,
+        52.3651121
+       ],
+       [
+        4.8759922,
+        52.3651029
+       ],
+       [
+        4.8760661,
+        52.3650071
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8761474,
+        52.3651479
+       ],
+       [
+        4.876069,
+        52.3651252
+       ],
+       [
+        4.8761437,
+        52.3650299
+       ],
+       [
+        4.8762217,
+        52.3650524
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-157083",
+     "pandId": "0363100012157083",
+     "buildingId": "NL.IMBAG.Pand.0363100012157083",
+     "address": "Derde Helmersstraat 56A",
+     "frontage": {
+      "x0": -5.863,
+      "x1": -0.002,
+      "widthM": 5.861
+     },
+     "bounds": {
+      "min": [
+       -5.863,
+       0,
+       -13.287
+      ],
+      "max": [
+       -0.001,
+       18.528,
+       0.645
+      ]
+     },
+     "triangles": 2466,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1368
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-162406",
+     "pandId": "0363100012162406",
+     "buildingId": "NL.IMBAG.Pand.0363100012162406",
+     "address": "Derde Helmersstraat 54",
+     "frontage": {
+      "x0": -0.002,
+      "x1": 5.867,
+      "widthM": 5.869
+     },
+     "bounds": {
+      "min": [
+       -0.041,
+       0,
+       -11.822
+      ],
+      "max": [
+       5.867,
+       18.528,
+       0.645
+      ]
+     },
+     "triangles": 2447,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 86
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 280,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1368,
+       "triangleCount": 1368
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 384,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 7,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-cuyp-130-168-r1",
+   "category": "street-survey",
+   "name": "face-cuyp-130-168-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-cuyp-130-168-r1.glb?asset=940685129c520a62",
+   "sha256": "940685129c520a62a09ac218eb5383d2a1846877f0daf0dcac08d34f7b620a37",
+   "bytes": 237168,
+   "triangles": 3392,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.894661262315107,
+     52.35570611432764
+    ],
+    "northOffsetDegrees": 160.1165,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.885,
+     0,
+     -17.925
+    ],
+    "max": [
+     6.251,
+     16.257,
+     0.507
+    ]
+   },
+   "height": 16.257,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164103",
+    "NL.IMBAG.Pand.0363100012163353"
+   ],
+   "replaces": [
+    "ordinary-0363100012164103",
+    "ordinary-0363100012163353"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8947425,
+        52.3557241
+       ],
+       [
+        4.8946631,
+        52.3557065
+       ],
+       [
+        4.894749,
+        52.355555
+       ],
+       [
+        4.8948296,
+        52.3555724
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8946631,
+        52.3557065
+       ],
+       [
+        4.8945764,
+        52.3556874
+       ],
+       [
+        4.8946439,
+        52.3555701
+       ],
+       [
+        4.89473,
+        52.3555886
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "cuyp-164103",
+     "pandId": "0363100012164103",
+     "buildingId": "NL.IMBAG.Pand.0363100012164103",
+     "address": "Albert Cuypstraat 162",
+     "frontage": {
+      "x0": -5.885,
+      "x1": -0.131,
+      "widthM": 5.754
+     },
+     "bounds": {
+      "min": [
+       -5.885,
+       0,
+       -17.925
+      ],
+      "max": [
+       0.081,
+       16.257,
+       0.507
+      ]
+     },
+     "triangles": 1674,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 676
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 162
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-163353",
+     "pandId": "0363100012163353",
+     "buildingId": "NL.IMBAG.Pand.0363100012163353",
+     "address": "Albert Cuypstraat 160",
+     "frontage": {
+      "x0": -0.131,
+      "x1": 6.147,
+      "widthM": 6.277
+     },
+     "bounds": {
+      "min": [
+       -0.131,
+       0,
+       -13.923
+      ],
+      "max": [
+       6.251,
+       16.102,
+       0.507
+      ]
+     },
+     "triangles": 1718,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 676,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 28,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 162,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 7,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 16,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-cuyp-130-168-r2",
+   "category": "street-survey",
+   "name": "face-cuyp-130-168-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-cuyp-130-168-r2.glb?asset=fb358bdafe397553",
+   "sha256": "fb358bdafe39755312326a0fb01d22ff8a2b9bb80367521bc6ca6e2d4587c85c",
+   "bytes": 1122932,
+   "triangles": 16609,
+   "primitives": 25,
+   "instance": {
+    "anchor": [
+     4.894162163553513,
+     52.355598978897596
+    ],
+    "northOffsetDegrees": 161.5019,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -24.299,
+     0,
+     -36.976
+    ],
+    "max": [
+     24.433,
+     16.57,
+     0.733
+    ]
+   },
+   "height": 16.57,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164227",
+    "NL.IMBAG.Pand.0363100012155461",
+    "NL.IMBAG.Pand.0363100012162980",
+    "NL.IMBAG.Pand.0363100012167434",
+    "NL.IMBAG.Pand.0363100012158812",
+    "NL.IMBAG.Pand.0363100012158985",
+    "NL.IMBAG.Pand.0363100012157319",
+    "NL.IMBAG.Pand.0363100012160055"
+   ],
+   "replaces": [
+    "ordinary-0363100012164227",
+    "ordinary-0363100012155461",
+    "ordinary-0363100012162980",
+    "ordinary-0363100012167434",
+    "ordinary-0363100012158812",
+    "ordinary-0363100012158985",
+    "ordinary-0363100012157319",
+    "ordinary-0363100012160055"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8944927,
+        52.3556691
+       ],
+       [
+        4.8944125,
+        52.3556514
+       ],
+       [
+        4.8945002,
+        52.3554999
+       ],
+       [
+        4.8945681,
+        52.3555153
+       ],
+       [
+        4.8945821,
+        52.3555183
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8944125,
+        52.3556514
+       ],
+       [
+        4.8943311,
+        52.3556335
+       ],
+       [
+        4.8943974,
+        52.3555157
+       ],
+       [
+        4.8943982,
+        52.3555159
+       ],
+       [
+        4.8944174,
+        52.3554812
+       ],
+       [
+        4.8945002,
+        52.3554999
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8943311,
+        52.3556335
+       ],
+       [
+        4.8942497,
+        52.3556155
+       ],
+       [
+        4.8943095,
+        52.3554979
+       ],
+       [
+        4.8943102,
+        52.355497
+       ],
+       [
+        4.8943974,
+        52.3555157
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8942496,
+        52.3556155
+       ],
+       [
+        4.8941673,
+        52.3555974
+       ],
+       [
+        4.8942366,
+        52.3554813
+       ],
+       [
+        4.8943102,
+        52.355497
+       ],
+       [
+        4.8943095,
+        52.3554979
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8942565,
+        52.3554473
+       ],
+       [
+        4.8942367,
+        52.3554813
+       ],
+       [
+        4.8941673,
+        52.3555974
+       ],
+       [
+        4.8941598,
+        52.3555958
+       ],
+       [
+        4.8940807,
+        52.3555809
+       ],
+       [
+        4.8941519,
+        52.3554631
+       ],
+       [
+        4.8941713,
+        52.35543
+       ],
+       [
+        4.8941869,
+        52.3553893
+       ],
+       [
+        4.8942455,
+        52.3552679
+       ],
+       [
+        4.8943347,
+        52.3552839
+       ],
+       [
+        4.8942756,
+        52.3554056
+       ],
+       [
+        4.8942656,
+        52.3554285
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8940807,
+        52.3555809
+       ],
+       [
+        4.8939924,
+        52.3555643
+       ],
+       [
+        4.894064,
+        52.3554443
+       ],
+       [
+        4.8941519,
+        52.3554631
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8939924,
+        52.3555643
+       ],
+       [
+        4.8939066,
+        52.3555482
+       ],
+       [
+        4.893981,
+        52.3554265
+       ],
+       [
+        4.894064,
+        52.3554443
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8939066,
+        52.3555482
+       ],
+       [
+        4.8938215,
+        52.3555322
+       ],
+       [
+        4.8938876,
+        52.3554091
+       ],
+       [
+        4.893981,
+        52.3554265
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "cuyp-164227",
+     "pandId": "0363100012164227",
+     "buildingId": "NL.IMBAG.Pand.0363100012164227",
+     "address": "Albert Cuypstraat 156E",
+     "frontage": {
+      "x0": -23.831,
+      "x1": -18.027,
+      "widthM": 5.804
+     },
+     "bounds": {
+      "min": [
+       -24.299,
+       0,
+       -17.773
+      ],
+      "max": [
+       -18.019,
+       16.083,
+       0.713
+      ]
+     },
+     "triangles": 1644,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 668
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-155461",
+     "pandId": "0363100012155461",
+     "buildingId": "NL.IMBAG.Pand.0363100012155461",
+     "address": "Albert Cuypstraat 154",
+     "frontage": {
+      "x0": -18.027,
+      "x1": -12.13,
+      "widthM": 5.896
+     },
+     "bounds": {
+      "min": [
+       -18.355,
+       0,
+       -17.965
+      ],
+      "max": [
+       -12.126,
+       16.57,
+       0.577
+      ]
+     },
+     "triangles": 1763,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 70
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 668,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 28,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 160,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 15,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 1,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 8,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-162980",
+     "pandId": "0363100012162980",
+     "buildingId": "NL.IMBAG.Pand.0363100012162980",
+     "address": "Albert Cuypstraat 152",
+     "frontage": {
+      "x0": -12.13,
+      "x1": -6.237,
+      "widthM": 5.893
+     },
+     "bounds": {
+      "min": [
+       -12.266,
+       0,
+       -13.987
+      ],
+      "max": [
+       -5.961,
+       16.19,
+       0.439
+      ]
+     },
+     "triangles": 1726,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 440,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1416,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 56,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 504,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 340,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 28,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 7,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 14,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-167434",
+     "pandId": "0363100012167434",
+     "buildingId": "NL.IMBAG.Pand.0363100012167434",
+     "address": "Albert Cuypstraat 150A",
+     "frontage": {
+      "x0": -6.237,
+      "x1": -0.272,
+      "widthM": 5.965
+     },
+     "bounds": {
+      "min": [
+       -6.237,
+       0,
+       -14.064
+      ],
+      "max": [
+       -0.263,
+       16.056,
+       0.301
+      ]
+     },
+     "triangles": 2289,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 660,
+       "triangleCount": 796
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2164,
+       "triangleCount": 716
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 84,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 756,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 520,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 38,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 10,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 22,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-158812",
+     "pandId": "0363100012158812",
+     "buildingId": "NL.IMBAG.Pand.0363100012158812",
+     "address": "Albert Cuypstraat 148D",
+     "frontage": {
+      "x0": -0.272,
+      "x1": 5.901,
+      "widthM": 6.173
+     },
+     "bounds": {
+      "min": [
+       -0.756,
+       0,
+       -36.976
+      ],
+      "max": [
+       6.271,
+       16.064,
+       0.292
+      ]
+     },
+     "triangles": 2432,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1456,
+       "triangleCount": 652
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2880,
+       "triangleCount": 684
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 112,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1008,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 692,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 50,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 15,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 31,
+       "triangleCount": 172
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-158985",
+     "pandId": "0363100012158985",
+     "buildingId": "NL.IMBAG.Pand.0363100012158985",
+     "address": "Albert Cuypstraat 146A",
+     "frontage": {
+      "x0": 5.901,
+      "x1": 12.191,
+      "widthM": 6.29
+     },
+     "bounds": {
+      "min": [
+       5.45,
+       0,
+       -14.246
+      ],
+      "max": [
+       12.191,
+       16.084,
+       0.432
+      ]
+     },
+     "triangles": 2303,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2108,
+       "triangleCount": 796
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3564,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 140,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1260,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 856,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 64,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 21,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 203,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-157319",
+     "pandId": "0363100012157319",
+     "buildingId": "NL.IMBAG.Pand.0363100012157319",
+     "address": "Albert Cuypstraat 144E",
+     "frontage": {
+      "x0": 12.191,
+      "x1": 18.306,
+      "widthM": 6.114
+     },
+     "bounds": {
+      "min": [
+       11.794,
+       0,
+       -14.328
+      ],
+      "max": [
+       18.306,
+       16.059,
+       0.584
+      ]
+     },
+     "triangles": 2150,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2904,
+       "triangleCount": 652
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4312,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 168,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1512,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1036,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 75,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 25,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 208,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "cuyp-160055",
+     "pandId": "0363100012160055",
+     "buildingId": "NL.IMBAG.Pand.0363100012160055",
+     "address": "Albert Cuypstraat 142B",
+     "frontage": {
+      "x0": 18.306,
+      "x1": 24.367,
+      "widthM": 6.062
+     },
+     "bounds": {
+      "min": [
+       17.778,
+       0,
+       -14.323
+      ],
+      "max": [
+       24.433,
+       16.065,
+       0.733
+      ]
+     },
+     "triangles": 2302,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 3556,
+       "triangleCount": 796
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5060,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 196,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1764,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1216,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 86,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 28,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 213,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wou-32-52-r1",
+   "category": "street-survey",
+   "name": "face-wou-32-52-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wou-32-52-r1.glb?asset=7644eb5ea1c590b9",
+   "sha256": "7644eb5ea1c590b99a8123791393c005b89961ebbe0c606f9b3b170f3517c00f",
+   "bytes": 509820,
+   "triangles": 7792,
+   "primitives": 16,
+   "instance": {
+    "anchor": [
+     4.899890963569239,
+     52.356324085459974
+    ],
+    "northOffsetDegrees": 244.3063,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.551,
+     0,
+     -11.6
+    ],
+    "max": [
+     8.318,
+     16.546,
+     0.513
+    ]
+   },
+   "height": 16.546,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012161157",
+    "NL.IMBAG.Pand.0363100012160499",
+    "NL.IMBAG.Pand.0363100012157561"
+   ],
+   "replaces": [
+    "ordinary-0363100012161157",
+    "ordinary-0363100012160499",
+    "ordinary-0363100012157561"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8999081,
+        52.3563021
+       ],
+       [
+        4.8997559,
+        52.3562574
+       ],
+       [
+        4.8997925,
+        52.3562097
+       ],
+       [
+        4.8999455,
+        52.3562551
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.899873,
+        52.3563469
+       ],
+       [
+        4.8997216,
+        52.3563021
+       ],
+       [
+        4.8997559,
+        52.3562574
+       ],
+       [
+        4.8999081,
+        52.3563021
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.899838,
+        52.3563915
+       ],
+       [
+        4.8996878,
+        52.3563463
+       ],
+       [
+        4.8997216,
+        52.3563021
+       ],
+       [
+        4.899873,
+        52.3563469
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wou-161157",
+     "pandId": "0363100012161157",
+     "buildingId": "NL.IMBAG.Pand.0363100012161157",
+     "address": "Van Woustraat 46",
+     "frontage": {
+      "x0": -8.532,
+      "x1": -2.708,
+      "widthM": 5.824
+     },
+     "bounds": {
+      "min": [
+       -8.551,
+       0,
+       -11.6
+      ],
+      "max": [
+       -2.687,
+       16.546,
+       0.508
+      ]
+     },
+     "triangles": 2600,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 45
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-160499",
+     "pandId": "0363100012160499",
+     "buildingId": "NL.IMBAG.Pand.0363100012160499",
+     "address": "Van Woustraat 44C",
+     "frontage": {
+      "x0": -2.708,
+      "x1": 2.815,
+      "widthM": 5.524
+     },
+     "bounds": {
+      "min": [
+       -2.709,
+       0,
+       -11.54
+      ],
+      "max": [
+       2.815,
+       15.943,
+       0.503
+      ]
+     },
+     "triangles": 2590,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 360,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1076,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 352,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 6,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-157561",
+     "pandId": "0363100012157561",
+     "buildingId": "NL.IMBAG.Pand.0363100012157561",
+     "address": "Van Woustraat 42A",
+     "frontage": {
+      "x0": 2.815,
+      "x1": 8.318,
+      "widthM": 5.503
+     },
+     "bounds": {
+      "min": [
+       2.813,
+       0,
+       -11.48
+      ],
+      "max": [
+       8.318,
+       15.731,
+       0.513
+      ]
+     },
+     "triangles": 2602,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 720,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2152,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 80,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 504,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 704,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 12,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 12,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wou-32-52-r2",
+   "category": "street-survey",
+   "name": "face-wou-32-52-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wou-32-52-r2.glb?asset=8941b063416bf733",
+   "sha256": "8941b063416bf733e457b95933863ba6e9b21d977e560aa4181c1444f8460c65",
+   "bytes": 235048,
+   "triangles": 3373,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.899730426165571,
+     52.3565286803595
+    ],
+    "northOffsetDegrees": 244.4531,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.633,
+     0,
+     -18.599
+    ],
+    "max": [
+     5.787,
+     16.652,
+     0.407
+    ]
+   },
+   "height": 16.652,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012236557",
+    "NL.IMBAG.Pand.0363100012158922"
+   ],
+   "replaces": [
+    "ordinary-0363100012236557",
+    "ordinary-0363100012158922"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8997659,
+        52.3564834
+       ],
+       [
+        4.899731,
+        52.3565278
+       ],
+       [
+        4.8994858,
+        52.3564554
+       ],
+       [
+        4.8995205,
+        52.3564109
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.899731,
+        52.3565278
+       ],
+       [
+        4.8996938,
+        52.3565756
+       ],
+       [
+        4.899566,
+        52.3565379
+       ],
+       [
+        4.8995774,
+        52.3565232
+       ],
+       [
+        4.8995328,
+        52.3565101
+       ],
+       [
+        4.8995586,
+        52.3564769
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wou-236557",
+     "pandId": "0363100012236557",
+     "buildingId": "NL.IMBAG.Pand.0363100012236557",
+     "address": "Van Woustraat 36",
+     "frontage": {
+      "x0": -5.586,
+      "x1": -0.1,
+      "widthM": 5.486
+     },
+     "bounds": {
+      "min": [
+       -5.633,
+       0,
+       -18.599
+      ],
+      "max": [
+       -0.1,
+       16.594,
+       0.406
+      ]
+     },
+     "triangles": 1656,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 668
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-158922",
+     "pandId": "0363100012158922",
+     "buildingId": "NL.IMBAG.Pand.0363100012158922",
+     "address": "Van Woustraat 34",
+     "frontage": {
+      "x0": -0.1,
+      "x1": 5.787,
+      "widthM": 5.888
+     },
+     "bounds": {
+      "min": [
+       -0.134,
+       0,
+       -13.084
+      ],
+      "max": [
+       5.787,
+       16.652,
+       0.407
+      ]
+     },
+     "triangles": 1717,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 668,
+       "triangleCount": 716
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 160,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 15,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 8,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wou-54-72-r1",
+   "category": "street-survey",
+   "name": "face-wou-54-72-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wou-54-72-r1.glb?asset=7d094467dbacf6f8",
+   "sha256": "7d094467dbacf6f86ed2bdbf662efa6a7c6ba6abfadaa6ef35b52efbdef61a07",
+   "bytes": 587460,
+   "triangles": 9081,
+   "primitives": 18,
+   "instance": {
+    "anchor": [
+     4.9004149166054605,
+     52.355663305545065
+    ],
+    "northOffsetDegrees": 243.9614,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.451,
+     0,
+     -15.676
+    ],
+    "max": [
+     11.748,
+     17.597,
+     0.408
+    ]
+   },
+   "height": 17.597,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012156067",
+    "NL.IMBAG.Pand.0363100012158363",
+    "NL.IMBAG.Pand.0363100012167117",
+    "NL.IMBAG.Pand.0363100012166104"
+   ],
+   "replaces": [
+    "ordinary-0363100012156067",
+    "ordinary-0363100012158363",
+    "ordinary-0363100012167117",
+    "ordinary-0363100012166104"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9004888,
+        52.3555709
+       ],
+       [
+        4.900452,
+        52.3556169
+       ],
+       [
+        4.9002459,
+        52.3555551
+       ],
+       [
+        4.9002603,
+        52.3555371
+       ],
+       [
+        4.9002767,
+        52.355542
+       ],
+       [
+        4.9002992,
+        52.355514
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.900452,
+        52.3556169
+       ],
+       [
+        4.9004152,
+        52.3556629
+       ],
+       [
+        4.9002479,
+        52.3556127
+       ],
+       [
+        4.9002847,
+        52.3555667
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9004152,
+        52.3556629
+       ],
+       [
+        4.9003784,
+        52.3557089
+       ],
+       [
+        4.9002111,
+        52.3556587
+       ],
+       [
+        4.9002479,
+        52.3556127
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9003784,
+        52.3557089
+       ],
+       [
+        4.9003391,
+        52.355758
+       ],
+       [
+        4.9001717,
+        52.3557079
+       ],
+       [
+        4.9002111,
+        52.3556587
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wou-156067",
+     "pandId": "0363100012156067",
+     "buildingId": "NL.IMBAG.Pand.0363100012156067",
+     "address": "Van Woustraat 70",
+     "frontage": {
+      "x0": -11.448,
+      "x1": -5.748,
+      "widthM": 5.7
+     },
+     "bounds": {
+      "min": [
+       -11.451,
+       0,
+       -15.676
+      ],
+      "max": [
+       -5.748,
+       17.314,
+       0.407
+      ]
+     },
+     "triangles": 2233,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1036
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 342
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-158363",
+     "pandId": "0363100012158363",
+     "buildingId": "NL.IMBAG.Pand.0363100012158363",
+     "address": "Van Woustraat 68",
+     "frontage": {
+      "x0": -5.748,
+      "x1": -0.048,
+      "widthM": 5.699
+     },
+     "bounds": {
+      "min": [
+       -5.749,
+       0,
+       -12.732
+      ],
+      "max": [
+       -0.048,
+       17.597,
+       0.407
+      ]
+     },
+     "triangles": 2277,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 28,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1036,
+       "triangleCount": 1108
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 342,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 15,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 9,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-167117",
+     "pandId": "0363100012167117",
+     "buildingId": "NL.IMBAG.Pand.0363100012167117",
+     "address": "Van Woustraat 66",
+     "frontage": {
+      "x0": -0.048,
+      "x1": 5.652,
+      "widthM": 5.701
+     },
+     "bounds": {
+      "min": [
+       -0.051,
+       0,
+       -12.732
+      ],
+      "max": [
+       5.652,
+       17.246,
+       0.407
+      ]
+     },
+     "triangles": 2296,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 504,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 440,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 56,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2144,
+       "triangleCount": 1108
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 702,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 25,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 15,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-166104",
+     "pandId": "0363100012166104",
+     "buildingId": "NL.IMBAG.Pand.0363100012166104",
+     "address": "Van Woustraat 64",
+     "frontage": {
+      "x0": 5.652,
+      "x1": 11.736,
+      "widthM": 6.084
+     },
+     "bounds": {
+      "min": [
+       5.65,
+       0,
+       -12.733
+      ],
+      "max": [
+       11.748,
+       17.224,
+       0.408
+      ]
+     },
+     "triangles": 2275,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 756,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 660,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 84,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 3252,
+       "triangleCount": 1108
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1062,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 38,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 7,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 20,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wou-54-72-r2",
+   "category": "street-survey",
+   "name": "face-wou-54-72-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wou-54-72-r2.glb?asset=9f002aae8c0dff2e",
+   "sha256": "9f002aae8c0dff2e9d0cabff8c3cc5a12ff7f0a23d90a84ff3502ccdf067fdf5",
+   "bytes": 293976,
+   "triangles": 4506,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.900223156065308,
+     52.35590531037446
+    ],
+    "northOffsetDegrees": 244.493,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.1,
+     0,
+     -13.054
+    ],
+    "max": [
+     6.038,
+     17.55,
+     0.407
+    ]
+   },
+   "height": 17.55,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012152366",
+    "NL.IMBAG.Pand.0363100012158143"
+   ],
+   "replaces": [
+    "ordinary-0363100012152366",
+    "ordinary-0363100012158143"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9002611,
+        52.3558567
+       ],
+       [
+        4.9002233,
+        52.3559051
+       ],
+       [
+        4.9000807,
+        52.3558633
+       ],
+       [
+        4.9000745,
+        52.3558612
+       ],
+       [
+        4.9001011,
+        52.3558276
+       ],
+       [
+        4.9000771,
+        52.3558204
+       ],
+       [
+        4.9000891,
+        52.3558053
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9001849,
+        52.3559543
+       ],
+       [
+        4.9000424,
+        52.3559125
+       ],
+       [
+        4.9000807,
+        52.3558633
+       ],
+       [
+        4.9002233,
+        52.3559051
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wou-152366",
+     "pandId": "0363100012152366",
+     "buildingId": "NL.IMBAG.Pand.0363100012152366",
+     "address": "Van Woustraat 58",
+     "frontage": {
+      "x0": -5.991,
+      "x1": -0.023,
+      "widthM": 5.968
+     },
+     "bounds": {
+      "min": [
+       -6.1,
+       0,
+       -13.054
+      ],
+      "max": [
+       -0.023,
+       17.55,
+       0.407
+      ]
+     },
+     "triangles": 2250,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1044
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "wou-158143",
+     "pandId": "0363100012158143",
+     "buildingId": "NL.IMBAG.Pand.0363100012158143",
+     "address": "Van Woustraat 56",
+     "frontage": {
+      "x0": -0.023,
+      "x1": 6.037,
+      "widthM": 6.06
+     },
+     "bounds": {
+      "min": [
+       -0.025,
+       0,
+       -10.808
+      ],
+      "max": [
+       6.038,
+       17.55,
+       0.407
+      ]
+     },
+     "triangles": 2256,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 28,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1044,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 344,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 19,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 12,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bol-12-22-r2",
+   "category": "street-survey",
+   "name": "face-bol-12-22-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bol-12-22-r2.glb?asset=efe774be3e4bbbaf",
+   "sha256": "efe774be3e4bbbaf0752c5c11de1e9099b8dbd83e9b68982d64a90ab2c421d55",
+   "bytes": 177084,
+   "triangles": 2487,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.890601001033031,
+     52.35717735153661
+    ],
+    "northOffsetDegrees": 275.4064,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.595,
+     0,
+     -23.558
+    ],
+    "max": [
+     6.361,
+     14.749,
+     0.508
+    ]
+   },
+   "height": 14.749,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164618",
+    "NL.IMBAG.Pand.0363100012156333",
+    "w277216400",
+    "w277216459",
+    "w277216482"
+   ],
+   "replaces": [
+    "ordinary-0363100012164618",
+    "ordinary-0363100012156333"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8906012,
+        52.3571784
+       ],
+       [
+        4.8904219,
+        52.3571889
+       ],
+       [
+        4.8904217,
+        52.3571876
+       ],
+       [
+        4.8903632,
+        52.3571909
+       ],
+       [
+        4.8903634,
+        52.3571923
+       ],
+       [
+        4.8902575,
+        52.3571984
+       ],
+       [
+        4.8902482,
+        52.3571383
+       ],
+       [
+        4.8905919,
+        52.3571183
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8906098,
+        52.3572343
+       ],
+       [
+        4.8904305,
+        52.3572447
+       ],
+       [
+        4.8904219,
+        52.3571889
+       ],
+       [
+        4.8906012,
+        52.3571784
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bol-164618",
+     "pandId": "0363100012164618",
+     "buildingId": "NL.IMBAG.Pand.0363100012164618",
+     "address": "Ferdinand Bolstraat 14",
+     "frontage": {
+      "x0": -6.595,
+      "x1": 0.117,
+      "widthM": 6.712
+     },
+     "bounds": {
+      "min": [
+       -6.595,
+       0,
+       -23.558
+      ],
+      "max": [
+       0.128,
+       14.749,
+       0.508
+      ]
+     },
+     "triangles": 1243,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 95
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 508
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "bol-156333",
+     "pandId": "0363100012156333",
+     "buildingId": "NL.IMBAG.Pand.0363100012156333",
+     "address": "Ferdinand Bolstraat 12",
+     "frontage": {
+      "x0": 0.117,
+      "x1": 6.36,
+      "widthM": 6.243
+     },
+     "bounds": {
+      "min": [
+       0.117,
+       0,
+       -12.309
+      ],
+      "max": [
+       6.361,
+       14.714,
+       0.507
+      ]
+     },
+     "triangles": 1244,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 184,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 508,
+       "triangleCount": 556
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 126,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 13,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 19,
+       "triangleCount": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bol-24-38-r1",
+   "category": "street-survey",
+   "name": "face-bol-24-38-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bol-24-38-r1.glb?asset=1141e8387266e84e",
+   "sha256": "1141e8387266e84e564bb119db93b81ac834ed81f5675a9eef0b9971a13daab3",
+   "bytes": 178668,
+   "triangles": 2531,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.890518121590672,
+     52.3566635635061
+    ],
+    "northOffsetDegrees": 275.6503,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.488,
+     0,
+     -24.134
+    ],
+    "max": [
+     6.404,
+     14.434,
+     0.508
+    ]
+   },
+   "height": 14.434,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167017",
+    "NL.IMBAG.Pand.0363100012158811"
+   ],
+   "replaces": [
+    "ordinary-0363100012167017",
+    "ordinary-0363100012158811"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.890518,
+        52.356663
+       ],
+       [
+        4.8901666,
+        52.3566823
+       ],
+       [
+        4.8901585,
+        52.3566268
+       ],
+       [
+        4.8905091,
+        52.3566076
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8905274,
+        52.3567206
+       ],
+       [
+        4.890287,
+        52.3567354
+       ],
+       [
+        4.8901751,
+        52.3567405
+       ],
+       [
+        4.8901666,
+        52.3566823
+       ],
+       [
+        4.890518,
+        52.356663
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bol-167017",
+     "pandId": "0363100012167017",
+     "buildingId": "NL.IMBAG.Pand.0363100012167017",
+     "address": "Ferdinand Bolstraat 26",
+     "frontage": {
+      "x0": -6.258,
+      "x1": -0.058,
+      "widthM": 6.2
+     },
+     "bounds": {
+      "min": [
+       -6.488,
+       0,
+       -24.072
+      ],
+      "max": [
+       -0.058,
+       14.337,
+       0.508
+      ]
+     },
+     "triangles": 1227,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 508
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 23
+      }
+     ]
+    },
+    {
+     "recipeId": "bol-158811",
+     "pandId": "0363100012158811",
+     "buildingId": "NL.IMBAG.Pand.0363100012158811",
+     "address": "Ferdinand Bolstraat 24",
+     "frontage": {
+      "x0": -0.058,
+      "x1": 6.374,
+      "widthM": 6.432
+     },
+     "bounds": {
+      "min": [
+       -0.286,
+       0,
+       -24.134
+      ],
+      "max": [
+       6.404,
+       14.434,
+       0.507
+      ]
+     },
+     "triangles": 1304,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 184,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 508,
+       "triangleCount": 532
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 126,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 9,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 23,
+       "triangleCount": 38
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-1-29",
+   "category": "street-survey",
+   "name": "face-kinker-1-29",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-1-29.glb?asset=71ac72bc79b0f6de",
+   "sha256": "71ac72bc79b0f6de10d138e32b98fc5e4ec68e8cb1b1586b0c5a5a383d7ba0e0",
+   "bytes": 1264776,
+   "triangles": 25115,
+   "primitives": 40,
+   "instance": {
+    "anchor": [
+     4.87552571653081,
+     52.368070987614345
+    ],
+    "northOffsetDegrees": 156.9185,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -54.153,
+     0,
+     -18.656
+    ],
+    "max": [
+     41.83,
+     18.112,
+     0.559
+    ]
+   },
+   "height": 18.112,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012166843",
+    "NL.IMBAG.Pand.0363100012158478",
+    "NL.IMBAG.Pand.0363100012166689",
+    "NL.IMBAG.Pand.0363100012156139",
+    "NL.IMBAG.Pand.0363100012103619",
+    "NL.IMBAG.Pand.0363100012158983",
+    "NL.IMBAG.Pand.0363100012165338",
+    "NL.IMBAG.Pand.0363100012159971",
+    "NL.IMBAG.Pand.0363100012157023",
+    "NL.IMBAG.Pand.0363100012155746",
+    "NL.IMBAG.Pand.0363100012158003"
+   ],
+   "replaces": [
+    "ordinary-0363100012166843",
+    "ordinary-0363100012158478",
+    "ordinary-0363100012166689",
+    "ordinary-0363100012156139",
+    "ordinary-0363100012103619",
+    "ordinary-0363100012158983",
+    "ordinary-0363100012165338",
+    "ordinary-0363100012159971",
+    "ordinary-0363100012157023",
+    "ordinary-0363100012155746",
+    "ordinary-0363100012158003"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8762904,
+        52.3682139
+       ],
+       [
+        4.8762483,
+        52.3682497
+       ],
+       [
+        4.8762255,
+        52.3682536
+       ],
+       [
+        4.8760773,
+        52.3682143
+       ],
+       [
+        4.8761114,
+        52.3681663
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8760773,
+        52.3682143
+       ],
+       [
+        4.8760085,
+        52.3681976
+       ],
+       [
+        4.8760794,
+        52.3680981
+       ],
+       [
+        4.8761273,
+        52.3681107
+       ],
+       [
+        4.8761075,
+        52.3681402
+       ],
+       [
+        4.8761262,
+        52.3681453
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8760085,
+        52.3681976
+       ],
+       [
+        4.875935,
+        52.368179
+       ],
+       [
+        4.8760145,
+        52.3680684
+       ],
+       [
+        4.8760875,
+        52.368087
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.875935,
+        52.368179
+       ],
+       [
+        4.8758603,
+        52.3681591
+       ],
+       [
+        4.8759345,
+        52.3680479
+       ],
+       [
+        4.8760145,
+        52.3680684
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8759638,
+        52.368004
+       ],
+       [
+        4.8758603,
+        52.3681591
+       ],
+       [
+        4.8754089,
+        52.3680399
+       ],
+       [
+        4.8754784,
+        52.367939
+       ],
+       [
+        4.8755122,
+        52.3679441
+       ],
+       [
+        4.8755302,
+        52.3679399
+       ],
+       [
+        4.8755322,
+        52.3679369
+       ],
+       [
+        4.8755341,
+        52.3679374
+       ],
+       [
+        4.875541,
+        52.3679274
+       ],
+       [
+        4.8755399,
+        52.3679271
+       ],
+       [
+        4.875542,
+        52.3679246
+       ],
+       [
+        4.8755443,
+        52.3679223
+       ],
+       [
+        4.875547,
+        52.36792
+       ],
+       [
+        4.87555,
+        52.367918
+       ],
+       [
+        4.8755532,
+        52.367916
+       ],
+       [
+        4.8755567,
+        52.3679143
+       ],
+       [
+        4.8755605,
+        52.3679128
+       ],
+       [
+        4.8755644,
+        52.3679114
+       ],
+       [
+        4.8755686,
+        52.3679103
+       ],
+       [
+        4.8755729,
+        52.3679094
+       ],
+       [
+        4.8755773,
+        52.3679087
+       ],
+       [
+        4.8755818,
+        52.3679082
+       ],
+       [
+        4.8755863,
+        52.367908
+       ],
+       [
+        4.8755909,
+        52.3679081
+       ],
+       [
+        4.8755954,
+        52.3679083
+       ],
+       [
+        4.8755999,
+        52.3679088
+       ],
+       [
+        4.8756042,
+        52.3679096
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8754089,
+        52.3680399
+       ],
+       [
+        4.8754075,
+        52.3680396
+       ],
+       [
+        4.8754072,
+        52.3680398
+       ],
+       [
+        4.8753278,
+        52.3680192
+       ],
+       [
+        4.8754047,
+        52.3679097
+       ],
+       [
+        4.8754841,
+        52.3679311
+       ],
+       [
+        4.8754784,
+        52.367939
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753278,
+        52.3680192
+       ],
+       [
+        4.8752567,
+        52.3680006
+       ],
+       [
+        4.8753498,
+        52.3678716
+       ],
+       [
+        4.8753526,
+        52.3678663
+       ],
+       [
+        4.8754229,
+        52.3678843
+       ],
+       [
+        4.8754047,
+        52.3679097
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8752567,
+        52.3680006
+       ],
+       [
+        4.8751785,
+        52.3679803
+       ],
+       [
+        4.8752218,
+        52.3679184
+       ],
+       [
+        4.8752569,
+        52.3678699
+       ],
+       [
+        4.8752694,
+        52.3678518
+       ],
+       [
+        4.8753498,
+        52.3678716
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8751785,
+        52.3679803
+       ],
+       [
+        4.8751047,
+        52.3679611
+       ],
+       [
+        4.8751488,
+        52.3678985
+       ],
+       [
+        4.8751842,
+        52.3679078
+       ],
+       [
+        4.8752218,
+        52.3679184
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8751047,
+        52.3679611
+       ],
+       [
+        4.8750303,
+        52.3679412
+       ],
+       [
+        4.8750738,
+        52.3678789
+       ],
+       [
+        4.8751488,
+        52.3678985
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8749613,
+        52.3679227
+       ],
+       [
+        4.8750046,
+        52.3678607
+       ],
+       [
+        4.8750738,
+        52.3678789
+       ],
+       [
+        4.8750303,
+        52.3679412
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-166843",
+     "pandId": "0363100012166843",
+     "buildingId": "NL.IMBAG.Pand.0363100012166843",
+     "address": "Kinkerstraat 1",
+     "frontage": {
+      "x0": -51.812,
+      "x1": -40.812,
+      "widthM": 11
+     },
+     "bounds": {
+      "min": [
+       -54.153,
+       0,
+       -5.881
+      ],
+      "max": [
+       -40.809,
+       15.05,
+       0.455
+      ]
+     },
+     "triangles": 1329,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 43
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 812
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 0,
+       "triangleCount": 212
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158478",
+     "pandId": "0363100012158478",
+     "buildingId": "NL.IMBAG.Pand.0363100012158478",
+     "address": "Kinkerstraat 1A",
+     "frontage": {
+      "x0": -40.812,
+      "x1": -35.773,
+      "widthM": 5.039
+     },
+     "bounds": {
+      "min": [
+       -40.876,
+       0,
+       -12.012
+      ],
+      "max": [
+       -35.773,
+       16.634,
+       0.501
+      ]
+     },
+     "triangles": 1335,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 149
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 36,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 812,
+       "triangleCount": 716
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 212,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 7,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 3,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-166689",
+     "pandId": "0363100012166689",
+     "buildingId": "NL.IMBAG.Pand.0363100012166689",
+     "address": "Kinkerstraat 3",
+     "frontage": {
+      "x0": -35.773,
+      "x1": -30.36,
+      "widthM": 5.413
+     },
+     "bounds": {
+      "min": [
+       -35.908,
+       0,
+       -13.363
+      ],
+      "max": [
+       -30.36,
+       16.532,
+       0.559
+      ]
+     },
+     "triangles": 1163,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 53
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 136,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1528,
+       "triangleCount": 716
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 192,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 372,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-156139",
+     "pandId": "0363100012156139",
+     "buildingId": "NL.IMBAG.Pand.0363100012156139",
+     "address": "Kinkerstraat 5",
+     "frontage": {
+      "x0": -30.36,
+      "x1": -24.808,
+      "widthM": 5.552
+     },
+     "bounds": {
+      "min": [
+       -30.524,
+       0,
+       -13.329
+      ],
+      "max": [
+       -24.617,
+       16.452,
+       0.559
+      ]
+     },
+     "triangles": 1194,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 212,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 2244,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 148,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 532,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 24,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 30,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-103619",
+     "pandId": "0363100012103619",
+     "buildingId": "NL.IMBAG.Pand.0363100012103619",
+     "address": "Kinkerstraat 7-17",
+     "frontage": {
+      "x0": -24.808,
+      "x1": 8.673,
+      "widthM": 33.481
+     },
+     "bounds": {
+      "min": [
+       -24.808,
+       0,
+       -18.656
+      ],
+      "max": [
+       8.711,
+       15.443,
+       0.286
+      ]
+     },
+     "triangles": 7253,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 4524
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 984
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 700,
+       "triangleCount": 1100
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 0,
+       "triangleCount": 99
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158983",
+     "pandId": "0363100012158983",
+     "buildingId": "NL.IMBAG.Pand.0363100012158983",
+     "address": "Kinkerstraat 19",
+     "frontage": {
+      "x0": 8.673,
+      "x1": 14.659,
+      "widthM": 5.987
+     },
+     "bounds": {
+      "min": [
+       8.672,
+       0,
+       -13.318
+      ],
+      "max": [
+       14.659,
+       17.602,
+       0.265
+      ]
+     },
+     "triangles": 2175,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 86
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 1388
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 296,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 1800,
+       "triangleCount": 450
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 34,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 38,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-165338",
+     "pandId": "0363100012165338",
+     "buildingId": "NL.IMBAG.Pand.0363100012165338",
+     "address": "Kinkerstraat 21",
+     "frontage": {
+      "x0": 14.659,
+      "x1": 19.923,
+      "widthM": 5.264
+     },
+     "bounds": {
+      "min": [
+       14.571,
+       0,
+       -16.418
+      ],
+      "max": [
+       19.923,
+       18.112,
+       0.241
+      ]
+     },
+     "triangles": 2711,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 86,
+       "triangleCount": 107
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1388,
+       "triangleCount": 1444
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 60,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 408,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 2250,
+       "triangleCount": 472
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 54,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 4,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 45,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-159971",
+     "pandId": "0363100012159971",
+     "buildingId": "NL.IMBAG.Pand.0363100012159971",
+     "address": "Kinkerstraat 23",
+     "frontage": {
+      "x0": 19.923,
+      "x1": 25.709,
+      "widthM": 5.786
+     },
+     "bounds": {
+      "min": [
+       19.704,
+       0,
+       -15.758
+      ],
+      "max": [
+       25.709,
+       17.657,
+       0.24
+      ]
+     },
+     "triangles": 2762,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 193,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 72,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2832,
+       "triangleCount": 1464
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 108,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 532,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 2722,
+       "triangleCount": 458
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 78,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 9,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 52,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-157023",
+     "pandId": "0363100012157023",
+     "buildingId": "NL.IMBAG.Pand.0363100012157023",
+     "address": "Kinkerstraat 25",
+     "frontage": {
+      "x0": 25.709,
+      "x1": 31.172,
+      "widthM": 5.463
+     },
+     "bounds": {
+      "min": [
+       25.693,
+       0,
+       -7.657
+      ],
+      "max": [
+       31.172,
+       16.293,
+       0.215
+      ]
+     },
+     "triangles": 1606,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 300,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 2916,
+       "triangleCount": 1000
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 680,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 3180,
+       "triangleCount": 340
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 96,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 59,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-155746",
+     "pandId": "0363100012155746",
+     "buildingId": "NL.IMBAG.Pand.0363100012155746",
+     "address": "Kinkerstraat 27",
+     "frontage": {
+      "x0": 31.172,
+      "x1": 36.703,
+      "widthM": 5.532
+     },
+     "bounds": {
+      "min": [
+       31.13,
+       0,
+       -7.67
+      ],
+      "max": [
+       36.704,
+       16.414,
+       0.214
+      ]
+     },
+     "triangles": 1783,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 46
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 388,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 3916,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 3520,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 109,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 64,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158003",
+     "pandId": "0363100012158003",
+     "buildingId": "NL.IMBAG.Pand.0363100012158003",
+     "address": "Kinkerstraat 29",
+     "frontage": {
+      "x0": 36.703,
+      "x1": 41.64,
+      "widthM": 4.937
+     },
+     "bounds": {
+      "min": [
+       36.687,
+       0,
+       -7.679
+      ],
+      "max": [
+       41.83,
+       16.352,
+       0.159
+      ]
+     },
+     "triangles": 1804,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 70,
+       "triangleCount": 46
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 476,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 4948,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 792,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 3880,
+       "triangleCount": 340
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 118,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 70,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-2-30",
+   "category": "street-survey",
+   "name": "face-kinker-2-30",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-2-30.glb?asset=3ba5ae48f1ac4d66",
+   "sha256": "3ba5ae48f1ac4d66b5552104800364815b09ebf66ab053c7e89f68fd927d4588",
+   "bytes": 1502968,
+   "triangles": 29935,
+   "primitives": 30,
+   "instance": {
+    "anchor": [
+     4.875417919105738,
+     52.36823699779775
+    ],
+    "northOffsetDegrees": 336.8788,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -42.556,
+     0,
+     -20.096
+    ],
+    "max": [
+     43.496,
+     18.94,
+     1.026
+    ]
+   },
+   "height": 18.94,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012157476",
+    "NL.IMBAG.Pand.0363100012236471",
+    "NL.IMBAG.Pand.0363100012158140",
+    "NL.IMBAG.Pand.0363100012235988",
+    "NL.IMBAG.Pand.0363100012160746",
+    "NL.IMBAG.Pand.0363100012236814",
+    "NL.IMBAG.Pand.0363100012236360",
+    "NL.IMBAG.Pand.0363100012236379",
+    "NL.IMBAG.Pand.0363100012163174",
+    "NL.IMBAG.Pand.0363100012155541",
+    "NL.IMBAG.Pand.0363100012236383",
+    "NL.IMBAG.Pand.0363100012164188",
+    "NL.IMBAG.Pand.0363100012162482",
+    "NL.IMBAG.Pand.0363100012237357",
+    "NL.IMBAG.Pand.0363100012163325",
+    "NL.IMBAG.Pand.0363100012161331"
+   ],
+   "replaces": [
+    "ordinary-0363100012157476",
+    "ordinary-0363100012236471",
+    "ordinary-0363100012158140",
+    "ordinary-0363100012235988",
+    "ordinary-0363100012160746",
+    "ordinary-0363100012236814",
+    "ordinary-0363100012236360",
+    "ordinary-0363100012236379",
+    "ordinary-0363100012163174",
+    "ordinary-0363100012155541",
+    "ordinary-0363100012236383",
+    "ordinary-0363100012164188",
+    "ordinary-0363100012162482",
+    "ordinary-0363100012237357",
+    "ordinary-0363100012163325",
+    "ordinary-0363100012161331"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.874861,
+        52.3682216
+       ],
+       [
+        4.8747662,
+        52.3681975
+       ],
+       [
+        4.8748349,
+        52.3681005
+       ],
+       [
+        4.8748646,
+        52.3680933
+       ],
+       [
+        4.8749336,
+        52.3681111
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8749575,
+        52.368225
+       ],
+       [
+        4.874946,
+        52.368243
+       ],
+       [
+        4.8749217,
+        52.3682367
+       ],
+       [
+        4.8748912,
+        52.3682293
+       ],
+       [
+        4.874861,
+        52.3682216
+       ],
+       [
+        4.8749336,
+        52.3681111
+       ],
+       [
+        4.8750177,
+        52.3681328
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.874996,
+        52.3682703
+       ],
+       [
+        4.8749686,
+        52.3682635
+       ],
+       [
+        4.8749873,
+        52.368232
+       ],
+       [
+        4.8749575,
+        52.368225
+       ],
+       [
+        4.8750177,
+        52.3681328
+       ],
+       [
+        4.8750745,
+        52.3681477
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8750617,
+        52.3683104
+       ],
+       [
+        4.8750454,
+        52.3683062
+       ],
+       [
+        4.8750286,
+        52.3683312
+       ],
+       [
+        4.8749671,
+        52.3683154
+       ],
+       [
+        4.8750745,
+        52.3681477
+       ],
+       [
+        4.8751568,
+        52.3681693
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8751653,
+        52.3682888
+       ],
+       [
+        4.8751483,
+        52.36831
+       ],
+       [
+        4.8750743,
+        52.3682917
+       ],
+       [
+        4.8751568,
+        52.3681693
+       ],
+       [
+        4.8752301,
+        52.3681885
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8752619,
+        52.3683254
+       ],
+       [
+        4.8752356,
+        52.3683195
+       ],
+       [
+        4.8752293,
+        52.3683289
+       ],
+       [
+        4.8751741,
+        52.3683148
+       ],
+       [
+        4.8751874,
+        52.368294
+       ],
+       [
+        4.8751653,
+        52.3682888
+       ],
+       [
+        4.8752301,
+        52.3681885
+       ],
+       [
+        4.8753355,
+        52.3682156
+       ],
+       [
+        4.8752685,
+        52.3683149
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753037,
+        52.3683471
+       ],
+       [
+        4.8752864,
+        52.3683736
+       ],
+       [
+        4.8752693,
+        52.3683779
+       ],
+       [
+        4.8752327,
+        52.3683686
+       ],
+       [
+        4.8752619,
+        52.3683254
+       ],
+       [
+        4.8752685,
+        52.3683149
+       ],
+       [
+        4.8753355,
+        52.3682156
+       ],
+       [
+        4.8753844,
+        52.3682282
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753734,
+        52.3683413
+       ],
+       [
+        4.8753297,
+        52.3684082
+       ],
+       [
+        4.8752732,
+        52.3683938
+       ],
+       [
+        4.8753037,
+        52.3683471
+       ],
+       [
+        4.8753844,
+        52.3682282
+       ],
+       [
+        4.8754414,
+        52.3682429
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8754152,
+        52.3683755
+       ],
+       [
+        4.8753855,
+        52.368368
+       ],
+       [
+        4.8753991,
+        52.3683469
+       ],
+       [
+        4.8753734,
+        52.3683413
+       ],
+       [
+        4.8754414,
+        52.3682429
+       ],
+       [
+        4.8754956,
+        52.368257
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8754797,
+        52.3683677
+       ],
+       [
+        4.875456,
+        52.3683622
+       ],
+       [
+        4.8754426,
+        52.3683824
+       ],
+       [
+        4.8754152,
+        52.3683755
+       ],
+       [
+        4.8754956,
+        52.368257
+       ],
+       [
+        4.8755447,
+        52.3682697
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8755186,
+        52.3684004
+       ],
+       [
+        4.8754991,
+        52.3684295
+       ],
+       [
+        4.8754468,
+        52.3684166
+       ],
+       [
+        4.8754797,
+        52.3683677
+       ],
+       [
+        4.8755447,
+        52.3682697
+       ],
+       [
+        4.8755982,
+        52.3682837
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8755727,
+        52.3684138
+       ],
+       [
+        4.8755186,
+        52.3684004
+       ],
+       [
+        4.8755982,
+        52.3682837
+       ],
+       [
+        4.8756507,
+        52.3682973
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8756281,
+        52.3684274
+       ],
+       [
+        4.8755727,
+        52.3684138
+       ],
+       [
+        4.8756507,
+        52.3682973
+       ],
+       [
+        4.8757061,
+        52.3683117
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8757461,
+        52.3684342
+       ],
+       [
+        4.8757312,
+        52.3684302
+       ],
+       [
+        4.8757179,
+        52.3684484
+       ],
+       [
+        4.8757337,
+        52.3684523
+       ],
+       [
+        4.8757274,
+        52.3684626
+       ],
+       [
+        4.8756712,
+        52.3684488
+       ],
+       [
+        4.875691,
+        52.3684199
+       ],
+       [
+        4.8756644,
+        52.3684129
+       ],
+       [
+        4.8756505,
+        52.3684329
+       ],
+       [
+        4.8756281,
+        52.3684274
+       ],
+       [
+        4.8757061,
+        52.3683117
+       ],
+       [
+        4.8758122,
+        52.3683393
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8758349,
+        52.3684196
+       ],
+       [
+        4.8757961,
+        52.3684112
+       ],
+       [
+        4.8757771,
+        52.3684396
+       ],
+       [
+        4.8757471,
+        52.3684327
+       ],
+       [
+        4.8758122,
+        52.3683393
+       ],
+       [
+        4.8758778,
+        52.3683566
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8759027,
+        52.3684605
+       ],
+       [
+        4.8758836,
+        52.3684473
+       ],
+       [
+        4.8758253,
+        52.3684331
+       ],
+       [
+        4.8758349,
+        52.3684196
+       ],
+       [
+        4.8758778,
+        52.3683566
+       ],
+       [
+        4.8759908,
+        52.3683864
+       ],
+       [
+        4.8759956,
+        52.3684044
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-157476",
+     "pandId": "0363100012157476",
+     "buildingId": "NL.IMBAG.Pand.0363100012157476",
+     "address": "Kinkerstraat 30",
+     "frontage": {
+      "x0": -40.939,
+      "x1": -35.835,
+      "widthM": 5.104
+     },
+     "bounds": {
+      "min": [
+       -42.556,
+       0,
+       -13.375
+      ],
+      "max": [
+       -35.564,
+       15.83,
+       0.381
+      ]
+     },
+     "triangles": 914,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 106
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 520
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236471",
+     "pandId": "0363100012236471",
+     "buildingId": "NL.IMBAG.Pand.0363100012236471",
+     "address": "Kinkerstraat 28",
+     "frontage": {
+      "x0": -35.838,
+      "x1": -29.617,
+      "widthM": 6.221
+     },
+     "bounds": {
+      "min": [
+       -35.842,
+       0,
+       -13.324
+      ],
+      "max": [
+       -29.307,
+       16.552,
+       0.272
+      ]
+     },
+     "triangles": 1607,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 69
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 316
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 12,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 716
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 120,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 14,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 14,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158140",
+     "pandId": "0363100012158140",
+     "buildingId": "NL.IMBAG.Pand.0363100012158140",
+     "address": "Kinkerstraat 26",
+     "frontage": {
+      "x0": -29.617,
+      "x1": -25.412,
+      "widthM": 4.205
+     },
+     "bounds": {
+      "min": [
+       -29.617,
+       0,
+       -14.706
+      ],
+      "max": [
+       -24.984,
+       17.227,
+       0.258
+      ]
+     },
+     "triangles": 1508,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 72,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 216,
+       "triangleCount": 248
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 292,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 32,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 30,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-235988",
+     "pandId": "0363100012235988",
+     "buildingId": "NL.IMBAG.Pand.0363100012235988",
+     "address": "Kinkerstraat 24",
+     "frontage": {
+      "x0": -25.412,
+      "x1": -19.314,
+      "widthM": 6.099
+     },
+     "bounds": {
+      "min": [
+       -25.412,
+       0,
+       -20.096
+      ],
+      "max": [
+       -19.121,
+       18.94,
+       0.225
+      ]
+     },
+     "triangles": 2135,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 106,
+       "triangleCount": 89
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 120,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 520,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 532,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 50,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 40,
+       "triangleCount": 39
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-160746",
+     "pandId": "0363100012160746",
+     "buildingId": "NL.IMBAG.Pand.0363100012160746",
+     "address": "Kinkerstraat 22",
+     "frontage": {
+      "x0": -19.314,
+      "x1": -13.881,
+      "widthM": 5.433
+     },
+     "bounds": {
+      "min": [
+       -19.314,
+       0,
+       -14.797
+      ],
+      "max": [
+       -13.57,
+       18.94,
+       0.215
+      ]
+     },
+     "triangles": 2158,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 195,
+       "triangleCount": 58
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 148,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1836,
+       "triangleCount": 1380
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 956,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 77,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 79,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236814",
+     "pandId": "0363100012236814",
+     "buildingId": "NL.IMBAG.Pand.0363100012236814",
+     "address": "Kinkerstraat 18-20",
+     "frontage": {
+      "x0": -13.881,
+      "x1": -6.094,
+      "widthM": 7.787
+     },
+     "bounds": {
+      "min": [
+       -13.882,
+       0,
+       -14.513
+      ],
+      "max": [
+       -5.922,
+       17.392,
+       0.989
+      ]
+     },
+     "triangles": 3343,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 66
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 1360
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 248
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 1396,
+       "triangleCount": 472
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 108,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 88,
+       "triangleCount": 18
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236360",
+     "pandId": "0363100012236360",
+     "buildingId": "NL.IMBAG.Pand.0363100012236360",
+     "address": "Kinkerstraat 16",
+     "frontage": {
+      "x0": -6.094,
+      "x1": -2.485,
+      "widthM": 3.609
+     },
+     "bounds": {
+      "min": [
+       -6.095,
+       0,
+       -18.451
+      ],
+      "max": [
+       -2.287,
+       17.402,
+       0.255
+      ]
+     },
+     "triangles": 1713,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 66,
+       "triangleCount": 87
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1088,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1360,
+       "triangleCount": 656
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 128,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 1868,
+       "triangleCount": 230
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 135,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 106,
+       "triangleCount": 38
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236379",
+     "pandId": "0363100012236379",
+     "buildingId": "NL.IMBAG.Pand.0363100012236379",
+     "address": "Kinkerstraat 14",
+     "frontage": {
+      "x0": -2.485,
+      "x1": 1.727,
+      "widthM": 4.213
+     },
+     "bounds": {
+      "min": [
+       -2.487,
+       0,
+       -19.945
+      ],
+      "max": [
+       1.934,
+       17.392,
+       0.275
+      ]
+     },
+     "triangles": 1670,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 153,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1632,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2016,
+       "triangleCount": 664
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 264,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 2098,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 145,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 144,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-163174",
+     "pandId": "0363100012163174",
+     "buildingId": "NL.IMBAG.Pand.0363100012163174",
+     "address": "Kinkerstraat 12C",
+     "frontage": {
+      "x0": 1.727,
+      "x1": 5.737,
+      "widthM": 4.01
+     },
+     "bounds": {
+      "min": [
+       1.727,
+       0,
+       -14.273
+      ],
+      "max": [
+       5.868,
+       17.392,
+       0.278
+      ]
+     },
+     "triangles": 1629,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 208,
+       "triangleCount": 42
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2176,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2680,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 2330,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 159,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 157,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-155541",
+     "pandId": "0363100012155541",
+     "buildingId": "NL.IMBAG.Pand.0363100012155541",
+     "address": "Kinkerstraat 12B",
+     "frontage": {
+      "x0": 5.737,
+      "x1": 9.369,
+      "widthM": 3.631
+     },
+     "bounds": {
+      "min": [
+       5.737,
+       0,
+       -14.249
+      ],
+      "max": [
+       9.573,
+       17.402,
+       0.281
+      ]
+     },
+     "triangles": 1624,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 250,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2720,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3328,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 136,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 2558,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 167,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 168,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236383",
+     "pandId": "0363100012236383",
+     "buildingId": "NL.IMBAG.Pand.0363100012236383",
+     "address": "Kinkerstraat 12A",
+     "frontage": {
+      "x0": 9.369,
+      "x1": 13.334,
+      "widthM": 3.965
+     },
+     "bounds": {
+      "min": [
+       9.369,
+       0,
+       -17.652
+      ],
+      "max": [
+       13.482,
+       17.402,
+       0.284
+      ]
+     },
+     "triangles": 1674,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 290,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3264,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3976,
+       "triangleCount": 664
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 272,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 2786,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 175,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 176,
+       "triangleCount": 18
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-164188",
+     "pandId": "0363100012164188",
+     "buildingId": "NL.IMBAG.Pand.0363100012164188",
+     "address": "Kinkerstraat 10",
+     "frontage": {
+      "x0": 13.334,
+      "x1": 17.218,
+      "widthM": 3.884
+     },
+     "bounds": {
+      "min": [
+       13.334,
+       0,
+       -14.076
+      ],
+      "max": [
+       17.404,
+       17.402,
+       0.288
+      ]
+     },
+     "triangles": 1684,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 349,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3808,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 4640,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 400,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 3018,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 184,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 194,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-162482",
+     "pandId": "0363100012162482",
+     "buildingId": "NL.IMBAG.Pand.0363100012162482",
+     "address": "Kinkerstraat 8",
+     "frontage": {
+      "x0": 17.218,
+      "x1": 21.318,
+      "widthM": 4.1
+     },
+     "bounds": {
+      "min": [
+       17.218,
+       0,
+       -13.993
+      ],
+      "max": [
+       21.475,
+       17.402,
+       0.292
+      ]
+     },
+     "triangles": 1744,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 371,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4352,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 5352,
+       "triangleCount": 680
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 536,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 78
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 3262,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 192,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 200,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-237357",
+     "pandId": "0363100012237357",
+     "buildingId": "NL.IMBAG.Pand.0363100012237357",
+     "address": "Kinkerstraat 4-6",
+     "frontage": {
+      "x0": 21.318,
+      "x1": 29.168,
+      "widthM": 7.85
+     },
+     "bounds": {
+      "min": [
+       21.318,
+       0,
+       -14.95
+      ],
+      "max": [
+       29.227,
+       17.402,
+       0.297
+      ]
+     },
+     "triangles": 3410,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 408,
+       "triangleCount": 151
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4896,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 6032,
+       "triangleCount": 1360
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 108,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 672,
+       "triangleCount": 272
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 3498,
+       "triangleCount": 472
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 202,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 211,
+       "triangleCount": 27
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-163325",
+     "pandId": "0363100012163325",
+     "buildingId": "NL.IMBAG.Pand.0363100012163325",
+     "address": "Kinkerstraat 2",
+     "frontage": {
+      "x0": 29.168,
+      "x1": 34.031,
+      "widthM": 4.863
+     },
+     "bounds": {
+      "min": [
+       29.163,
+       0,
+       -11.25
+      ],
+      "max": [
+       34.093,
+       18.058,
+       0.222
+      ]
+     },
+     "triangles": 1559,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 106
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 824
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 132,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 944,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 464,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 3970,
+       "triangleCount": 152
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 218,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 238,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-161331",
+     "pandId": "0363100012161331",
+     "buildingId": "NL.IMBAG.Pand.0363100012161331",
+     "address": "Kinkerstraat 2 (corner)",
+     "frontage": {
+      "x0": 34.031,
+      "x1": 42.413,
+      "widthM": 8.381
+     },
+     "bounds": {
+      "min": [
+       34.031,
+       0,
+       -9.94
+      ],
+      "max": [
+       43.496,
+       15.182,
+       1.026
+      ]
+     },
+     "triangles": 1563,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 559,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5984,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 7392,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 556,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 4122,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 228,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 241,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-56-84",
+   "category": "street-survey",
+   "name": "face-kinker-56-84",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-56-84.glb?asset=d5a1f6056ce581b1",
+   "sha256": "d5a1f6056ce581b1ada03e798f186a69d764a73d724a1f5b8287a066389936d8",
+   "bytes": 1193288,
+   "triangles": 22687,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.872702111385653,
+     52.367496417745684
+    ],
+    "northOffsetDegrees": 334.7469,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -30.011,
+     0,
+     -24.154
+    ],
+    "max": [
+     30.904,
+     18.844,
+     1
+    ]
+   },
+   "height": 18.844,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012152566",
+    "NL.IMBAG.Pand.0363100012158903",
+    "NL.IMBAG.Pand.0363100012161359",
+    "NL.IMBAG.Pand.0363100012236325",
+    "NL.IMBAG.Pand.0363100012236441"
+   ],
+   "replaces": [
+    "ordinary-0363100012152566",
+    "ordinary-0363100012158903",
+    "ordinary-0363100012161359",
+    "ordinary-0363100012236325",
+    "ordinary-0363100012236441"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8727853,
+        52.3676502
+       ],
+       [
+        4.8727748,
+        52.3676649
+       ],
+       [
+        4.8728262,
+        52.3676795
+       ],
+       [
+        4.8727793,
+        52.3677437
+       ],
+       [
+        4.8727759,
+        52.3677469
+       ],
+       [
+        4.8724785,
+        52.3676622
+       ],
+       [
+        4.8724777,
+        52.3676634
+       ],
+       [
+        4.8721642,
+        52.3675811
+       ],
+       [
+        4.872289,
+        52.3674004
+       ],
+       [
+        4.8723321,
+        52.3673899
+       ],
+       [
+        4.8725417,
+        52.3674502
+       ],
+       [
+        4.8724669,
+        52.3675587
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8725847,
+        52.3675706
+       ],
+       [
+        4.8724787,
+        52.3675417
+       ],
+       [
+        4.8725417,
+        52.3674502
+       ],
+       [
+        4.8726481,
+        52.3674809
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8725847,
+        52.3675706
+       ],
+       [
+        4.8726481,
+        52.3674809
+       ],
+       [
+        4.872762,
+        52.3675137
+       ],
+       [
+        4.8726996,
+        52.367602
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8727999,
+        52.3676299
+       ],
+       [
+        4.8727853,
+        52.3676502
+       ],
+       [
+        4.8724669,
+        52.3675587
+       ],
+       [
+        4.8724787,
+        52.3675417
+       ],
+       [
+        4.8726996,
+        52.367602
+       ],
+       [
+        4.872762,
+        52.3675137
+       ],
+       [
+        4.8728635,
+        52.3675429
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8730204,
+        52.3677347
+       ],
+       [
+        4.8729183,
+        52.3677055
+       ],
+       [
+        4.8729445,
+        52.3676699
+       ],
+       [
+        4.8727999,
+        52.3676299
+       ],
+       [
+        4.8728635,
+        52.3675429
+       ],
+       [
+        4.873105,
+        52.3676125
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-152566",
+     "pandId": "0363100012152566",
+     "buildingId": "NL.IMBAG.Pand.0363100012152566",
+     "address": "Kinkerstraat 76-84",
+     "frontage": {
+      "x0": -27.851,
+      "x1": -12.076,
+      "widthM": 15.775
+     },
+     "bounds": {
+      "min": [
+       -30.011,
+       0,
+       -24.154
+      ],
+      "max": [
+       16.47,
+       13.642,
+       0.176
+      ]
+     },
+     "triangles": 2853,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 139
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 1792
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 606
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 32
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158903",
+     "pandId": "0363100012158903",
+     "buildingId": "NL.IMBAG.Pand.0363100012158903",
+     "address": "Kinkerstraat 72-74",
+     "frontage": {
+      "x0": -12.076,
+      "x1": -7.572,
+      "widthM": 4.504
+     },
+     "bounds": {
+      "min": [
+       -12.076,
+       0,
+       -11.033
+      ],
+      "max": [
+       -3.722,
+       17.407,
+       0.276
+      ]
+     },
+     "triangles": 2243,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 93
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 1128
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 318
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 606,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-161359",
+     "pandId": "0363100012161359",
+     "buildingId": "NL.IMBAG.Pand.0363100012161359",
+     "address": "Kinkerstraat 68-70",
+     "frontage": {
+      "x0": -4.063,
+      "x1": 4.511,
+      "widthM": 8.574
+     },
+     "bounds": {
+      "min": [
+       -4.063,
+       0,
+       -10.874
+      ],
+      "max": [
+       4.845,
+       18.207,
+       0.275
+      ]
+     },
+     "triangles": 4278,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 205
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1128,
+       "triangleCount": 2160
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 48,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 492,
+       "triangleCount": 1212
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 318,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 726,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 10,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 10,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236325",
+     "pandId": "0363100012236325",
+     "buildingId": "NL.IMBAG.Pand.0363100012236325",
+     "address": "Kinkerstraat 64-66",
+     "frontage": {
+      "x0": 4.511,
+      "x1": 12.146,
+      "widthM": 7.635
+     },
+     "bounds": {
+      "min": [
+       -11.626,
+       0,
+       -13.09
+      ],
+      "max": [
+       12.414,
+       18.413,
+       0.275
+      ]
+     },
+     "triangles": 4525,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 187
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3288,
+       "triangleCount": 2272
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 144,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1704,
+       "triangleCount": 1128
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 448
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 638,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 942,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 27,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 14,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236441",
+     "pandId": "0363100012236441",
+     "buildingId": "NL.IMBAG.Pand.0363100012236441",
+     "address": "Kinkerstraat 56-62",
+     "frontage": {
+      "x0": 12.146,
+      "x1": 30.326,
+      "widthM": 18.18
+     },
+     "bounds": {
+      "min": [
+       12.146,
+       0,
+       -14.826
+      ],
+      "max": [
+       30.904,
+       18.844,
+       1
+      ]
+     },
+     "triangles": 8788,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 468
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 5560,
+       "triangleCount": 4416
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 216,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 2832,
+       "triangleCount": 2276
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 72,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 738,
+       "triangleCount": 608
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 48,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1182,
+       "triangleCount": 456
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 41,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 30,
+       "triangleCount": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-206-242",
+   "category": "street-survey",
+   "name": "face-kinker-206-242",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-206-242.glb?asset=79bda9f3ff968492",
+   "sha256": "79bda9f3ff96849297843b0e7ad48f147398f543bd747d3573e81f85f7c09d2e",
+   "bytes": 1334344,
+   "triangles": 26033,
+   "primitives": 43,
+   "instance": {
+    "anchor": [
+     4.866051636939592,
+     52.36571021821337
+    ],
+    "northOffsetDegrees": 338.547,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -35.427,
+     0,
+     -31.776
+    ],
+    "max": [
+     44.382,
+     16.227,
+     1.239
+    ]
+   },
+   "height": 16.227,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012236953",
+    "NL.IMBAG.Pand.0363100012237297",
+    "NL.IMBAG.Pand.0363100012160838",
+    "NL.IMBAG.Pand.0363100012165141",
+    "NL.IMBAG.Pand.0363100012152992",
+    "NL.IMBAG.Pand.0363100012163768",
+    "NL.IMBAG.Pand.0363100012162560",
+    "NL.IMBAG.Pand.0363100012161056",
+    "NL.IMBAG.Pand.0363100012166034",
+    "NL.IMBAG.Pand.0363100012236982",
+    "NL.IMBAG.Pand.0363100012237261",
+    "NL.IMBAG.Pand.0363100012236886",
+    "NL.IMBAG.Pand.0363100012233589",
+    "NL.IMBAG.Pand.0363100012160871",
+    "NL.IMBAG.Pand.0363100012159816"
+   ],
+   "replaces": [
+    "ordinary-0363100012236953",
+    "ordinary-0363100012237297",
+    "ordinary-0363100012160838",
+    "ordinary-0363100012165141",
+    "ordinary-0363100012152992",
+    "ordinary-0363100012163768",
+    "ordinary-0363100012162560",
+    "ordinary-0363100012161056",
+    "ordinary-0363100012166034",
+    "ordinary-0363100012236982",
+    "ordinary-0363100012237261",
+    "ordinary-0363100012236886",
+    "ordinary-0363100012233589",
+    "ordinary-0363100012160871",
+    "ordinary-0363100012159816"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8655658,
+        52.3657317
+       ],
+       [
+        4.8654906,
+        52.3657139
+       ],
+       [
+        4.8654926,
+        52.3657112
+       ],
+       [
+        4.865493,
+        52.3657113
+       ],
+       [
+        4.8655667,
+        52.365604
+       ],
+       [
+        4.865586,
+        52.3655982
+       ],
+       [
+        4.8656428,
+        52.3656118
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8656402,
+        52.365714
+       ],
+       [
+        4.8656207,
+        52.3657448
+       ],
+       [
+        4.8655658,
+        52.3657317
+       ],
+       [
+        4.8656428,
+        52.3656118
+       ],
+       [
+        4.8656975,
+        52.3656247
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8656838,
+        52.3657443
+       ],
+       [
+        4.8656558,
+        52.3657376
+       ],
+       [
+        4.8656669,
+        52.3657204
+       ],
+       [
+        4.8656402,
+        52.365714
+       ],
+       [
+        4.8656975,
+        52.3656247
+       ],
+       [
+        4.8657522,
+        52.3656379
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8657328,
+        52.3657663
+       ],
+       [
+        4.8657048,
+        52.3657596
+       ],
+       [
+        4.865717,
+        52.3657405
+       ],
+       [
+        4.8656904,
+        52.3657341
+       ],
+       [
+        4.8657522,
+        52.3656379
+       ],
+       [
+        4.8658069,
+        52.365651
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8657615,
+        52.3658203
+       ],
+       [
+        4.8657067,
+        52.3658071
+       ],
+       [
+        4.8658069,
+        52.365651
+       ],
+       [
+        4.8658617,
+        52.3656643
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8657971,
+        52.3658646
+       ],
+       [
+        4.865741,
+        52.3658521
+       ],
+       [
+        4.8658617,
+        52.3656643
+       ],
+       [
+        4.8659172,
+        52.3656776
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8659082,
+        52.3657915
+       ],
+       [
+        4.8658806,
+        52.3657849
+       ],
+       [
+        4.8658661,
+        52.3658074
+       ],
+       [
+        4.8658381,
+        52.3658007
+       ],
+       [
+        4.8659172,
+        52.3656776
+       ],
+       [
+        4.8659726,
+        52.3656911
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8659495,
+        52.3658275
+       ],
+       [
+        4.8659212,
+        52.3658207
+       ],
+       [
+        4.8659357,
+        52.3657981
+       ],
+       [
+        4.8659082,
+        52.3657915
+       ],
+       [
+        4.8659726,
+        52.3656911
+       ],
+       [
+        4.8660289,
+        52.3657046
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8660226,
+        52.3659145
+       ],
+       [
+        4.8659093,
+        52.3658895
+       ],
+       [
+        4.8660289,
+        52.3657046
+       ],
+       [
+        4.8661407,
+        52.3657317
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8660815,
+        52.3659285
+       ],
+       [
+        4.8660226,
+        52.3659145
+       ],
+       [
+        4.8661407,
+        52.3657317
+       ],
+       [
+        4.8661983,
+        52.3657455
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8661375,
+        52.3659418
+       ],
+       [
+        4.8660815,
+        52.3659285
+       ],
+       [
+        4.8661983,
+        52.3657455
+       ],
+       [
+        4.8662544,
+        52.365759
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8661375,
+        52.3659418
+       ],
+       [
+        4.8662544,
+        52.365759
+       ],
+       [
+        4.8663104,
+        52.3657724
+       ],
+       [
+        4.8661936,
+        52.3659551
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8663651,
+        52.3659901
+       ],
+       [
+        4.8663434,
+        52.365985
+       ],
+       [
+        4.8663112,
+        52.366035
+       ],
+       [
+        4.866238,
+        52.3660173
+       ],
+       [
+        4.866227,
+        52.3660344
+       ],
+       [
+        4.8663002,
+        52.3660521
+       ],
+       [
+        4.8662867,
+        52.366073
+       ],
+       [
+        4.8659152,
+        52.365983
+       ],
+       [
+        4.8659674,
+        52.3659023
+       ],
+       [
+        4.8660226,
+        52.3659145
+       ],
+       [
+        4.8661936,
+        52.3659551
+       ],
+       [
+        4.8663104,
+        52.3657724
+       ],
+       [
+        4.8664786,
+        52.3658127
+       ]
+      ],
+      [
+       [
+        4.866316,
+        52.3659171
+       ],
+       [
+        4.8663304,
+        52.3658945
+       ],
+       [
+        4.8663014,
+        52.3658875
+       ],
+       [
+        4.866287,
+        52.3659101
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8665267,
+        52.3659423
+       ],
+       [
+        4.8665004,
+        52.3659843
+       ],
+       [
+        4.8664789,
+        52.3660174
+       ],
+       [
+        4.8663651,
+        52.3659901
+       ],
+       [
+        4.8664786,
+        52.3658127
+       ],
+       [
+        4.8665922,
+        52.3658399
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8665929,
+        52.3659579
+       ],
+       [
+        4.8665267,
+        52.3659423
+       ],
+       [
+        4.8665918,
+        52.3658407
+       ],
+       [
+        4.866657,
+        52.3658561
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-236953",
+     "pandId": "0363100012236953",
+     "buildingId": "NL.IMBAG.Pand.0363100012236953",
+     "address": "Kinkerstraat 242",
+     "frontage": {
+      "x0": -34.076,
+      "x1": -29.925,
+      "widthM": 4.151
+     },
+     "bounds": {
+      "min": [
+       -35.427,
+       0,
+       -14.361
+      ],
+      "max": [
+       -29.925,
+       14.892,
+       0.307
+      ]
+     },
+     "triangles": 1667,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 376
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 0,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-237297",
+     "pandId": "0363100012237297",
+     "buildingId": "NL.IMBAG.Pand.0363100012237297",
+     "address": "Kinkerstraat 240",
+     "frontage": {
+      "x0": -29.925,
+      "x1": -25.934,
+      "widthM": 3.991
+     },
+     "bounds": {
+      "min": [
+       -29.932,
+       0,
+       -14.344
+      ],
+      "max": [
+       -25.923,
+       15.135,
+       0.959
+      ]
+     },
+     "triangles": 1857,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 376,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 48,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 712,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 244,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 15,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 5,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-160838",
+     "pandId": "0363100012160838",
+     "buildingId": "NL.IMBAG.Pand.0363100012160838",
+     "address": "Kinkerstraat 238",
+     "frontage": {
+      "x0": -25.934,
+      "x1": -21.925,
+      "widthM": 4.009
+     },
+     "bounds": {
+      "min": [
+       -25.936,
+       0,
+       -12.675
+      ],
+      "max": [
+       -21.925,
+       14.791,
+       0.959
+      ]
+     },
+     "triangles": 1558,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 700,
+       "triangleCount": 376
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 84,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1648,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 136,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 44,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 488,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 22,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 7,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-165141",
+     "pandId": "0363100012165141",
+     "buildingId": "NL.IMBAG.Pand.0363100012165141",
+     "address": "Kinkerstraat 236",
+     "frontage": {
+      "x0": -21.925,
+      "x1": -17.925,
+      "widthM": 4
+     },
+     "bounds": {
+      "min": [
+       -21.937,
+       0,
+       -13.738
+      ],
+      "max": [
+       -17.925,
+       14.853,
+       0.952
+      ]
+     },
+     "triangles": 1573,
+     "ranges": [
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 376
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 132,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 272,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 88,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 716,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 35,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 15,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-152992",
+     "pandId": "0363100012152992",
+     "buildingId": "NL.IMBAG.Pand.0363100012152992",
+     "address": "Kinkerstraat 234",
+     "frontage": {
+      "x0": -17.925,
+      "x1": -13.913,
+      "widthM": 4.012
+     },
+     "bounds": {
+      "min": [
+       -17.942,
+       0,
+       -18.654
+      ],
+      "max": [
+       -13.913,
+       15.135,
+       0.952
+      ]
+     },
+     "triangles": 1815,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 376,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 180,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 648,
+       "triangleCount": 888
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 408,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 132,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 944,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 44,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 27,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-163768",
+     "pandId": "0363100012163768",
+     "buildingId": "NL.IMBAG.Pand.0363100012163768",
+     "address": "Kinkerstraat 232",
+     "frontage": {
+      "x0": -13.913,
+      "x1": -9.851,
+      "widthM": 4.062
+     },
+     "bounds": {
+      "min": [
+       -13.936,
+       0,
+       -22.446
+      ],
+      "max": [
+       -9.851,
+       16.227,
+       1.239
+      ]
+     },
+     "triangles": 887,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 66
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 228,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1176,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 50,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 32,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-162560",
+     "pandId": "0363100012162560",
+     "buildingId": "NL.IMBAG.Pand.0363100012162560",
+     "address": "Kinkerstraat 230",
+     "frontage": {
+      "x0": -9.852,
+      "x1": -5.788,
+      "widthM": 4.064
+     },
+     "bounds": {
+      "min": [
+       -9.865,
+       0,
+       -14.682
+      ],
+      "max": [
+       -5.787,
+       16.225,
+       1.234
+      ]
+     },
+     "triangles": 851,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 88,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 240,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 424,
+       "triangleCount": 408
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 136,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1288,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 62,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 45,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-161056",
+     "pandId": "0363100012161056",
+     "buildingId": "NL.IMBAG.Pand.0363100012161056",
+     "address": "Kinkerstraat 228",
+     "frontage": {
+      "x0": -5.788,
+      "x1": -1.672,
+      "widthM": 4.116
+     },
+     "bounds": {
+      "min": [
+       -5.796,
+       0,
+       -14.688
+      ],
+      "max": [
+       -1.671,
+       16.188,
+       0.419
+      ]
+     },
+     "triangles": 949,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 43
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 176,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 252,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 832,
+       "triangleCount": 484
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1396,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 40,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 70,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 56,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-166034",
+     "pandId": "0363100012166034",
+     "buildingId": "NL.IMBAG.Pand.0363100012166034",
+     "address": "Kinkerstraat 224",
+     "frontage": {
+      "x0": -1.671,
+      "x1": 6.522,
+      "widthM": 8.193
+     },
+     "bounds": {
+      "min": [
+       -1.743,
+       0,
+       -22.139
+      ],
+      "max": [
+       6.523,
+       15.26,
+       0.413
+      ]
+     },
+     "triangles": 1775,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 276,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 264,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1316,
+       "triangleCount": 864
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 0,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 64,
+       "triangleCount": 68
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1504,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 78,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 66,
+       "triangleCount": 38
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236982",
+     "pandId": "0363100012236982",
+     "buildingId": "NL.IMBAG.Pand.0363100012236982",
+     "address": "Kinkerstraat 222",
+     "frontage": {
+      "x0": 6.522,
+      "x1": 10.736,
+      "widthM": 4.214
+     },
+     "bounds": {
+      "min": [
+       6.451,
+       0,
+       -21.883
+      ],
+      "max": [
+       10.755,
+       14.65,
+       0.388
+      ]
+     },
+     "triangles": 897,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 43
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 372,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 288,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 2180,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 0,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1700,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 95,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 104,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-237261",
+     "pandId": "0363100012237261",
+     "buildingId": "NL.IMBAG.Pand.0363100012237261",
+     "address": "Kinkerstraat 220",
+     "frontage": {
+      "x0": 10.736,
+      "x1": 14.836,
+      "widthM": 4.1
+     },
+     "bounds": {
+      "min": [
+       10.736,
+       0,
+       -21.868
+      ],
+      "max": [
+       14.844,
+       15.344,
+       0.396
+      ]
+     },
+     "triangles": 716,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 448,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 300,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 2624,
+       "triangleCount": 368
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 128,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1816,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 104,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 113,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-236886",
+     "pandId": "0363100012236886",
+     "buildingId": "NL.IMBAG.Pand.0363100012236886",
+     "address": "Kinkerstraat 218",
+     "frontage": {
+      "x0": 14.836,
+      "x1": 18.937,
+      "widthM": 4.1
+     },
+     "bounds": {
+      "min": [
+       14.835,
+       0,
+       -21.852
+      ],
+      "max": [
+       18.944,
+       15.688,
+       0.406
+      ]
+     },
+     "triangles": 758,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 87
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 512,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 312,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 2992,
+       "triangleCount": 368
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 232,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 1920,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 113,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 121,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-233589",
+     "pandId": "0363100012233589",
+     "buildingId": "NL.IMBAG.Pand.0363100012233589",
+     "address": "Kinkerstraat 212-216",
+     "frontage": {
+      "x0": 18.936,
+      "x1": 31.237,
+      "widthM": 12.301
+     },
+     "bounds": {
+      "min": [
+       2.427,
+       0,
+       -31.776
+      ],
+      "max": [
+       31.245,
+       15.456,
+       0.635
+      ]
+     },
+     "triangles": 4708,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 289
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 576,
+       "triangleCount": 1236
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 324,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 3360,
+       "triangleCount": 1948
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 48,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 336,
+       "triangleCount": 368
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 2024,
+       "triangleCount": 612
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 122,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 131,
+       "triangleCount": 107
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-160871",
+     "pandId": "0363100012160871",
+     "buildingId": "NL.IMBAG.Pand.0363100012160871",
+     "address": "Kinkerstraat 208-210",
+     "frontage": {
+      "x0": 31.237,
+      "x1": 39.549,
+      "widthM": 8.312
+     },
+     "bounds": {
+      "min": [
+       31.138,
+       0,
+       -21.246
+      ],
+      "max": [
+       39.61,
+       15.267,
+       0.246
+      ]
+     },
+     "triangles": 3765,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 107
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1812,
+       "triangleCount": 1428
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 360,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 1332
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 704,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 2636,
+       "triangleCount": 452
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 162,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 238,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-159816",
+     "pandId": "0363100012159816",
+     "buildingId": "NL.IMBAG.Pand.0363100012159816",
+     "address": "Kinkerstraat 206",
+     "frontage": {
+      "x0": 39.549,
+      "x1": 44.311,
+      "widthM": 4.761
+     },
+     "bounds": {
+      "min": [
+       39.549,
+       0,
+       -12.275
+      ],
+      "max": [
+       44.382,
+       15.251,
+       0.956
+      ]
+     },
+     "triangles": 2257,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 62
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 3240,
+       "triangleCount": 540
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 384,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1332,
+       "triangleCount": 976
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 132,
+       "triangleCount": 78
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 3088,
+       "triangleCount": 340
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 192,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 248,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-376-380",
+   "category": "street-survey",
+   "name": "face-kinker-376-380",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-376-380.glb?asset=9dc34f80b841b7fc",
+   "sha256": "9dc34f80b841b7fcf3c95d290a4d8a943078ccf9ac8cf3bb9cb40fdb4be5aae6",
+   "bytes": 423208,
+   "triangles": 6637,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.861007403377442,
+     52.36450228275437
+    ],
+    "northOffsetDegrees": 338.8651,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -7.928,
+     0,
+     -14.965
+    ],
+    "max": [
+     7.631,
+     18.299,
+     0.401
+    ]
+   },
+   "height": 18.299,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012160877",
+    "NL.IMBAG.Pand.0363100012158308",
+    "NL.IMBAG.Pand.0363100012165323"
+   ],
+   "replaces": [
+    "ordinary-0363100012160877",
+    "ordinary-0363100012158308",
+    "ordinary-0363100012165323"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8609209,
+        52.3645839
+       ],
+       [
+        4.8608432,
+        52.3645649
+       ],
+       [
+        4.8608997,
+        52.3644769
+       ],
+       [
+        4.860974,
+        52.3644944
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8609649,
+        52.3646327
+       ],
+       [
+        4.8609004,
+        52.364614
+       ],
+       [
+        4.8609209,
+        52.3645839
+       ],
+       [
+        4.860974,
+        52.3644944
+       ],
+       [
+        4.8610424,
+        52.3645105
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8610307,
+        52.3646518
+       ],
+       [
+        4.8609649,
+        52.3646327
+       ],
+       [
+        4.8610424,
+        52.3645105
+       ],
+       [
+        4.8611119,
+        52.364527
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-160877",
+     "pandId": "0363100012160877",
+     "buildingId": "NL.IMBAG.Pand.0363100012160877",
+     "address": "Kinkerstraat 380",
+     "frontage": {
+      "x0": -7.862,
+      "x1": -2.437,
+      "widthM": 5.426
+     },
+     "bounds": {
+      "min": [
+       -7.928,
+       0,
+       -10.63
+      ],
+      "max": [
+       -2.23,
+       18.286,
+       0.401
+      ]
+     },
+     "triangles": 2247,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1344
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 450
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-158308",
+     "pandId": "0363100012158308",
+     "buildingId": "NL.IMBAG.Pand.0363100012158308",
+     "address": "Kinkerstraat 378",
+     "frontage": {
+      "x0": -2.437,
+      "x1": 2.552,
+      "widthM": 4.989
+     },
+     "bounds": {
+      "min": [
+       -2.437,
+       0,
+       -14.595
+      ],
+      "max": [
+       2.552,
+       18.299,
+       0.401
+      ]
+     },
+     "triangles": 2221,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 71
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 232,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1344,
+       "triangleCount": 1240
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 450,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 9,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 5,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-165323",
+     "pandId": "0363100012165323",
+     "buildingId": "NL.IMBAG.Pand.0363100012165323",
+     "address": "Kinkerstraat 376",
+     "frontage": {
+      "x0": 2.553,
+      "x1": 7.631,
+      "widthM": 5.078
+     },
+     "bounds": {
+      "min": [
+       2.523,
+       0,
+       -14.965
+      ],
+      "max": [
+       7.631,
+       17.847,
+       0.4
+      ]
+     },
+     "triangles": 2169,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 54
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 464,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2584,
+       "triangleCount": 1240
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 210,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 874,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 17,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 17,
+       "triangleCount": 14
       }
      ]
     }

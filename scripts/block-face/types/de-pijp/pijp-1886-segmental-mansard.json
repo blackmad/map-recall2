@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1886-segmental-mansard",
+ "district": "de-pijp",
+ "description": "Van Woustraat 54-72 (1886-87): 5.7-6.1 m fronts of a shop and three tall upper storeys of dark brown brick; three axes of white T-windows under segmental brick heads; white sills; a plain brick frieze to a thin cornice at 15.1 m; a short slate mansard with roof lights and one stone pediment dormer with a hoist beam over the middle axis",
+ "fit": {
+  "widthM": [
+   5.0,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1886,
+   1887
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 15.1,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Van Woustraat 54-72 (1886-87); cornice 15.1 m on the 2023-01-03 strip at a 2.44 m camera height (3DBAG eaves 13.7-16.2 m); the 2023-01-03 skyline reads the tram wires or the mansard top (16.3-21 m), so the measured wall (#4f-#57 warm grey-brown on this overcast strip) is a criterion too and every placed pand is drawn at the 15.1 m line",
+  "wall": {
+   "hex": "#524845",
+   "maxDE": 10
+  }
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.5,
+   3.2,
+   3.3,
+   3.0
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "band",
+    "style": "solid",
+    "widthCourses": 2
+   }
+  },
+  "windowHeights": [
+   0.62,
+   0.69,
+   0.7,
+   0.77
+  ],
+  "headLines": [
+   0.86,
+   0.75,
+   0.76,
+   0.87
+  ],
+  "windowShare": 0.58,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.1,
+   "cap": 0.25,
+   "frieze": "wall",
+   "architrave": 0.08
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.34,
+     "to": 0.66
+    }
+   ],
+   "dormerHoist": {
+    "reach": 0.8
+   },
+   "note": "56-70: one stone pediment dormer over the middle axis, 15.3-17.2 m, with a hoist beam, standing on the slate roof behind the 15.1 m cornice (the photo's short mansard face with roof lights is drawn as the pitched roof)",
+   "dormerSize": {
+    "sill": 0.2,
+    "rise": 1.4,
+    "setback": 0.4
+   }
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "dark-brown-1886": {
+   "brick": "#674a40",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#d8d4c8",
+   "band": "#4e3128",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "a shop per house",
+  "signage": "per shop",
+  "roofline": "plain brick frieze, thin cornice at 15.1 m, slate mansard with one stone pediment dormer and a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the short slate mansard face (15.1-16.3 m) and its roof lights beside the dormer are drawn as the pitched roof: the kit's mansard put the dormer frames through the roof face and its slate coplanar with the party walls (audit)",
+   "the dormer's carved ears and side cheeks are plain"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "wou-54-72",
+   "pands": [
+    "158363",
+    "167117"
+   ],
+   "citation": "strip.jpg 2023-01-03 (camera height 2.44 m) pands 3-4 (68, 66) at 1.3x with a metre grid: shop to 4.4 m; storey-1 windows 4.6-6.9 m, storey-2 7.9-10.2 m, storey-3 11.3-13.6 m under segmental heads; brick frieze 14.0-14.8, cornice 15.1 m; mansard to 16.3 m; dormer 15.3-17.2 m; windows 1.1 m on 5.7 m"
+  },
+  {
+   "face": "wou-54-72",
+   "pands": [
+    "156067",
+    "166104",
+    "152366",
+    "158143"
+   ],
+   "citation": "strip.jpg 2023-01-03 pands 2-9 (70-56): the same axes, frieze, mansard and dormers"
+  }
+ ]
+}

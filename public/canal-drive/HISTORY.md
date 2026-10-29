@@ -27,6 +27,108 @@ Leidsestraat × Keizersgracht (straight, left, right), the Keizersgracht ring
 hands-off, Utrechtsestraat × Prinsengracht from past Kerkstraat; all stay in
 the corridor, camera ≤ 80°/s, zero yaw on straight streets.
 
+**Desktop draw spans and touch facade tiles (2026-10-29, #100 follow-up).** Ground and facade meshes now skip their off-screen parts. The whole-mesh draw call is unchanged; spans only cut the triangles drawn.
+
+- **Desktop: spans.** The index buffer is reordered once, tile by tile, and each frame draws from the first to the last on-screen tile. Object and draw-call counts are unchanged, and the picture is pixel-identical at Westerkerk, Damrak, Dam and Leidseplein.
+  - Ground: 1,065 → 609 k triangles at Westerkerk and 1,443 → 516 k at Leidseplein.
+  - Facades: 1,493 → 724 k at Westerkerk and 1,571 → 461 k at Leidseplein.
+  - An earlier version used separate tile meshes. It added about 65 draw calls and raised the three-layers time from 0.8 to 1.4 ms, so it was replaced by spans.
+- **Touch: 3×3 tile meshes** that share the owner's buffers. iPad facades went from 596 → 245 k at Westerkerk, and the main pass is now 0.71–0.80 M triangles (1.13–1.36 M after #100).
+  - Touch pictures can differ by 32–368 px at building seams, where draw order decides between coplanar neighbours.
+- **Highlight passes** restore the full draw range after drawing.
+- **Overrides:** `?groundTiles=1`, `?facadeTiles=1`, `?tileDraw=spans|tiles`.
+
+**Centraal surroundings (2026-10-29, #99).**
+
+- **Stationsplein island (feedback 334bcadd).** Pand 0363100012182895, the Noord-Zuid Hollandsch Koffiehuis and its pavilions, is now one bespoke model: `stationsplein-paviljoens` (10.9 k tris, about 160 KB). It suppresses the pand and 13 OSM ways.
+  - New typed `scripts/landmarks/pavilion-kit.ts`: exposed walls, inset rings, mansard roof, ogee turret.
+  - The inventory has 34 items, 7 of them signature features.
+- **IJ canopy (bbbeaceb).** A measured asymmetric vault with 29 arch ribs down to the De Ruijterkade quay, plus a canopyGlass palette. A Cuypers z-fight is fixed.
+- **Beurs van Berlage.** No longer generic: 7.2 m bays between pilasters, basement lights, four storeys under stone lintels, a segmental crest, and the Damrak round-arch arcade and entrance arches. Hidden back faces of the residual strip are removed, and opening-buried went from 14 to 0. It is now 30.3 k tris and 419 KB.
+- **Ferry labels.** One label per landing, so the duplicate Centraal ferry label is gone.
+- **Tests.** The new `test:landmark-kits` (pavilion kit and IJ canopy) now runs in check:canal.
+
+**Oud-West kit, Kinkerstraat first (2026-10-29, #98).** Five Kinkerstraat faces are installed, 50 pands: 1–29, 2–30, 56–84, 206–242 and 376–380. Their stripOverDrawn runs from 0.71 to 1.11.
+
+- **Main fix: roofs.** A 70° slate attic band stood over every cornice; the photos show only dormers against the sky. The rows now have a low front attic behind the cornice.
+- **Kinkerstraat 33–47:** front-hipped saddles read from the PDOK 2024 orthophoto, red or black tile per house.
+- **Kinkerstraat 56–84** was re-stripped from 2023-01-10 at camera height 2.4 m, because the 2024 strip was blown out and cyan. stripOverDrawn went from 0.705 to 0.925.
+- **Kit additions** (typed and tested): `roof.hip: 'front'` with a per-placement roof material, `dormerBody: 'brick'` and `dormerStyle: 'arched'`.
+- **Front-panel depth:** `GROUND_FRONT_PANEL_DEPTH_M` is now 0.1, which fixes coplanar shop risers. cw-prinsen-167765 changed with it and its fit golden was re-recorded.
+- **Facings:** brick facings moved to `paletteOverrides`.
+- **`drawnWall.ts`** now reads walls drawn with a measured tint correctly.
+- **New scripts:** `face-wall-exposure.ts` and `fit-wall-palette.ts`.
+- **Evertsen held back.** Re-running `build-chunk-wall-exposure` would move the published Evertsenstraat entries from about 0.7 to about 1.0, and evertsen-152-160 from 1.12 to 2.10. That is a visible brightening of installed rows, so only the kinker rows were added and the Evertsen values stay as published (see TODO).
+- The strips are archived in source-data 86268f539.
+
+**Manual catalogue deduplicated (2026-10-29).** Union merges had left four memorials in `manualCatalogue.json` several times over: johnny-jordaan-groep ×6, theo-thijssen-standbeeld ×5, carmiggelt-borstbeeld ×4 and winkler-prins-monument ×3. Each copy was placed as its own model. Each id now has one entry, the spec's last variant, which takes the first copy's position in the list. Live manual landmark specs went from 356 to 342.
+
+**Touch GPU load under target (2026-10-29, #100, CANAL-RECALL-7).** The iPad main pass at pitch 60 dropped from 1.7–1.9 M to 1.13–1.36 M triangles; the target was ≤ 1.5 M. Desktop is unchanged: same ground triangles, same meshes and the same 1,400 m ring.
+
+- **Residency ring sized to the screen** (`residency.ts`, touch only). The farthest ground on screen is computed from the screen corners: 464 m on the iPad, which matches the measurement. The ring is that distance plus 25 m, rounded up to 100 m steps, plus 4 s of travel ahead (at most 400 m). That made the iPad ring 500 m instead of 800 m, with 3–4 cells loaded instead of 6–7. In a cap-speed ride at 117 m/s, missing ground at the screen edge fell from 65 samples to 4 out of 8,505. Override with `?groundRing=steps|view`.
+- **Ground layers cut into culled tiles** (`cellTiles.ts`). A 1 km cell always counted as on screen. Layers over 4,000 triangles are now split into a 3×3 grid sharing the vertex buffers, and off-screen tiles are skipped. Ground at Westerkerk went from 875 k to 319 k triangles, for about 45 more draw calls. Override with `?groundTiles=1..4`.
+- **Desktop trial:** `?groundTiles=3` cuts desktop ground by 56–74 % (Westerkerk 1,065 → 466 k, Leidseplein 1,443 → 371 k) with the same picture. Lever 1, road-polygon simplification, is deferred because the target was met without it.
+- **Also fixed:** a De Pijp OSM leak. Three OSM ways (w277216400, w277216459, w277216482) inside the Ferdinand Bolstraat 12–22 row were still drawn through it. They are now suppressed.
+
+**Westerpark West remainder: kit additions, nothing installed (2026-10-29, #97).**
+
+- **`footprint: "core"`** (`coreFootprint.ts`). BAG traces an outline from above, so balcony-depth bumps on every storey (1.85 m on Blend) became full-height grooves. The core footprint snaps those bumps back onto the main wall and builds a clean box under the LoD2.2 roof. The pand's own OSM way is dropped as a false party wall.
+- **`stackedBlocks` wall field** (`stackedBlocks.ts`). Rows of cells per storey: B is a block 1.5 m proud with 4-pane windows, R is a recessed balcony with a glass rail, `.` is plain wall. The footprint gates include the block outlines.
+- **White-wall likeness rule** (`measureFacade.ts`, `wallIsOwnTrim`). A light, near-neutral wall that is its own bright reference is no longer exposure-darkened to grey. It is mapped to the 215 white point and never read lighter than raw. Across 1,532 archived large-recipe crops it fires on 97 and changes 33 by 3/255 or more, at most +33/255, all of them white or very light walls.
+- **Blend (Haarlemmerweg 518, pand 0363100012250970)** is modelled and held. Its south, east and west faces were read from 2024-11-21 panoramas; the north face is inferred. Likeness has no evidence on any face:
+  - `isLeaf` flags 49 % of the sunlit cream south wall as foliage;
+  - the east and west crops are 48–50° oblique.
+
+  The crops are archived in source-data dd929bb11.
+
+**De Pijp block-face kit, first runs (2026-10-29, #96).** It uses the Helmersbuurt method (#81), starting with the most-ridden streets.
+
+- **Installed:** eight runs, 25 pands, on Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38.
+- **Types:** seven in `scripts/block-face/types/de-pijp/`.
+- **New kit components,** each tested and byte-identical when absent:
+  - `dormerHoist`, a hoist beam over each dormer;
+  - `wallAnchors`, iron anchor crosses over the window heads, measured on Albert Cuypstraat 144–162;
+  - `windowHoods {colour: band|stone}`.
+- **GLB audit fix:** opening-outside now judges each coplanar wall piece where it meets the part. A front about 1° off its row was split into a 1.2 m piece and a 0.23 m strip, and judged 1.5 m away, which made a flush frieze read 3 cm proud. The 3 cm tolerance is unchanged, and a 6 cm part still fails.
+- **Held at integration:**
+  - **Ferdinand Bolstraat 40–54 (two runs).** The fronts are pale buff and white stucco, but the kit drew orange brick: `stripOverDrawn` is 1.9, against about 1.0 on the installed runs.
+  - **Bol 20–22:** a 0.31 m kinked BAG front segment puts the frieze 3.9 cm off the wall.
+  - **Review-pin holds:** Cuyp 158A (stepped gable), 138 and 140E (the roof goes flat under the dormer) and Wou 60 (the painted-black variant).
+
+**Noord feedback: EYE, A'DAM Toren, Treehouse, Pllek, Grasweg 41S, NDSM ground (2026-10-29, #95).**
+
+- **a524acc9, ground.** The AHN survey was flown during the 2021 works, so it recorded 1.5–3 m of sand fill. The 2025 NDSM-oost blocks were seated on that.
+  - Stale-relief rings now take a `levelNAP`. The ring `ndsm-oost-buiksloterham-kop-works` sets the surface to 1.11 NAP, the median of the surrounding rim. A blank ring would be filled in from the water side.
+  - `scripts/own-ground/splice-ground-tile.ts` copies only the cells near the named rings into the published tiles. A full rebuild of 121_489 changed about 119 k unrelated cells.
+  - Pinned in `reliefRegressions.ts`: `ndsm-oost-block` (spread 3.32 → 0.00 m) and `eye-stair`.
+- **d1423818, EYE.** The ground had a 3 m bump that buried the stair treads; a new relief ring flattens it. The stair outline is the convex hull of the OSM shape. Walls start 0.65 m below ground, declared with evidence in `eye-filmmuseum-spec.json`, so the west wall no longer floats.
+- **3dee2b2a, A'DAM Toren.** Panes ran on a 3.4 m pitch against 3.2 m floor bands; panes and frames now come from one module of 8 bays × 19 storeys. Both OSM and the panoramas show the shaft turned 45° to the crown and podium, and the model now does that. The podium is a glass pavilion with four splayed white legs and the LOOKOUT sign.
+- **bdd73994, Treehouse and Pllek.**
+  - Treehouse gets the ~3.5 m black slatted fence with the TREEHOUSE lettering, and its cabin colours were measured from the panoramas.
+  - Pllek's stacks are separate 40 ft containers, with the truss canopy and the PLLEK sign container. A coplanar z-fight of 472 m² is gone.
+- **7f82ac01, Grasweg 41S.** It is light silver cassette panels with a dark cap and rows of small square windows. The old recipe drew it as a mid-grey slab.
+
+**Centre feedback: one label per place, Beurs and Bijenkorf windows on their walls (2026-10-29, #94).**
+
+- **d85ba0ac / 3702bcd7, double labels.** In Free Ride the DOM overlay repeated each canvas marker pill's name. `labels/labelDedupe.ts` `screenDuplicateIds` drops an overlay label that repeats a placed marker: the same landmark id, a similar name within 60 m, or a spelling variant within 600 m. `freeRide.ts` `secondMarkerIds` removes the inner-footprint second markers: Cuypersgebouw, Zuiderkerk Tower and OBA De Hallen.
+- **58f97b44, Beurs.** Arches and clock plates hung 0.11–0.18 m off the walls. Tower arches were drawn on segments that run onto the 14 m roof. Each window now reads its local wall top. The GLB audit went from FAIL (11 hovering parts) to PASS.
+- **3026cca1, Bijenkorf.** The Dam and Beursplein fronts stood 0.25–0.39 m behind the surveyed ring, so the brick swallowed the glass. The fronts are now fitted to the ring. Z-fighting went from 119 to 1.6 m².
+- **59b67ef0, grey strip.** It was the generic `stair-glass` facade extra (p = 0.3), invented on Dam 2 and the 1991 corner beside the Bijenkorf. The panoramas show neither has one. The integrator removed the generic component; a real stair window comes from a building type.
+- **Replay harness:** `tests/e2e/centre-feedback.spec.ts` replays each note's pose in Free Ride.
+
+**Ferries dock at any pier; Odebrug reachable (2026-10-28, #93).** Feedback
+50ea10bf, 1d632c41, f80d47da and 3e7f0aa4.
+
+- **Docking radii,** measured from the OSM pier outlines:
+  - On water a boat docks within 20 m of the stop. The Buiksloterweg pontoon, way 294911777, spans 11–23 m from it; the old radius was 6 m.
+  - Touching land it docks within 37 m. The NDSM pier outline, way 588710849, reaches 36.8 m; the old radius was 16–20 m.
+- **Any pier:** a boat docks at any ferry pier, not only its line's terminus. Players kept trying to step off at Buiksloterweg from an NDSM boat.
+- **Re-arm hysteresis:** a pier within 50 m of the boarding point only becomes dockable once the boat has been 50 m away. So leaving Centraal F4 never docks at F3, 40 m along the same quay.
+- **Hull on water:** the centre and both bow corners must stay on water. One bow corner on the bank turns the boat 4° away and slows it instead of stopping it.
+- **Odebrug:** the cycle bridge Brug 228, way 1168346867, landed on a 1 m stub joined only to the sidewalks the extract drops. `routing/pavedLinks.ts` adds a curated rideable ring for that stub, indexed with the squares. Other cycleways that end on dropped footways need their own entries, or a generator that keeps connecting footways.
+- **Regressions:** all pinned in `check-canal-car.ts`, the reachability audit and `ferry-docking-feedback.spec.ts`.
+- **Still open:** only the bow is tested, so a hard turn can still swing a side over the quay.
+
 **Own ground compiles half the shaders (2026-10-26).** Asking why phones that
 lost their WebGL context (CANAL-RECALL-7) reported 66 three.js programs: a
 phone-sized ride measured 68, all compiled within 10 s and none after. About 44

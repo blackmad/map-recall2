@@ -1,0 +1,976 @@
+{
+ "face": "wou-32-52",
+ "street": "Van Woustraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 18.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "wou-32-52-r1",
+   "pands": [
+    "0363100012161157",
+    "0363100012160499",
+    "0363100012157561"
+   ],
+   "passed": true,
+   "triangles": 7792
+  },
+  {
+   "face": "wou-32-52-r2",
+   "pands": [
+    "0363100012236557",
+    "0363100012158922"
+   ],
+   "passed": true,
+   "triangles": 3373
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012161717",
+   "address": "Van Woustraat 52",
+   "builtYear": 1885,
+   "widthM": 5.88,
+   "eavesM": 16.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715d5a",
+    "wallRaw": "#524543",
+    "skyline": {
+     "eavesM": 17.98,
+     "eavesRow": 28,
+     "confidence": 0.84,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.45,
+       "widthM": 4.6,
+       "centre": 0.42
+      },
+      {
+       "atM": 8.38,
+       "widthM": 0.97,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1885-segmental-keystone scores 0.54 < 0.7 (3DBAG eaves 16.26 m = 4 storeys of 4.07 m vs the type's 3.5 m; roof rise 0.2 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1885-segmental-keystone",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.26 m = 4 storeys of 4.07 m vs the type's 3.5 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.2 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165218",
+   "address": "Van Woustraat 50A",
+   "builtYear": 1885,
+   "widthM": 3.81,
+   "eavesM": 16.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685554",
+    "wallRaw": "#514441",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 48,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.82,
+      "topWidthM": 0.45,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.47,
+       "widthM": 3.5,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1885, type 1875-1877; frontage 3.81 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1875-1877",
+     "frontage 3.81 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.35 m = 3 storeys of 5.45 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156149",
+   "address": "Van Woustraat 48A",
+   "builtYear": 1885,
+   "widthM": 5.58,
+   "eavesM": 16.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5b5c",
+    "wallRaw": "#514340",
+    "skyline": {
+     "eavesM": 17.88,
+     "eavesRow": 32,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.47,
+       "widthM": 4.03,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1885-segmental-keystone scores 0.54 < 0.7 (3DBAG eaves 16.28 m = 4 storeys of 4.07 m vs the type's 3.5 m; roof rise 0.06 m (flat) vs pitched)",
+   "best": {
+    "type": "pijp-1885-segmental-keystone",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.28 m = 4 storeys of 4.07 m vs the type's 3.5 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161157",
+   "address": "Van Woustraat 46",
+   "builtYear": 1885,
+   "widthM": 5.82,
+   "eavesM": 14.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78635d",
+    "wallRaw": "#584944",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 39,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1885-segmental-keystone",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1885-segmental-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#3b3731",
+      "fascia": true,
+      "name": "Daniele Dentici",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=shoes); fascia colour measured on the strip 2023-01-03 span 610-843"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#78635d",
+     "evidence": "strip 2023-01-03 span 610-843: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.513 vs 0.461), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.513 vs 0.461), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012161157",
+    "ncc": 0.461,
+    "nccRaw": 0.461,
+    "shiftM": [
+     0.1,
+     0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#79655e",
+     "model": "#8e766e",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.698
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.513,
+    "pijp-1882-keystone-lintel": 0.369
+   }
+  },
+  {
+   "pandId": "0363100012160499",
+   "address": "Van Woustraat 44C",
+   "builtYear": 1885,
+   "widthM": 5.52,
+   "eavesM": 13.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#56463f",
+    "wallRaw": "#5b4f49",
+    "skyline": {
+     "eavesM": 17.75,
+     "eavesRow": 37,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.54,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.1,
+       "centre": 0.19
+      },
+      {
+       "atM": 5.7,
+       "widthM": 0.9,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1885-segmental-keystone",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1885-segmental-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2725",
+      "fascia": true,
+      "name": "Allrepair 7",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, winkelfunctie, craft=electronics_repair); fascia colour measured on the strip 2023-01-03 span 843-1064"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#56463f",
+     "evidence": "strip 2023-01-03 span 843-1064: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012160499",
+    "ncc": 0.571,
+    "nccRaw": 0.571,
+    "shiftM": [
+     0.2,
+     0.05
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#56463f",
+     "model": "#715c53",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.549
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.404,
+    "pijp-1882-keystone-lintel": 0.397
+   }
+  },
+  {
+   "pandId": "0363100012157561",
+   "address": "Van Woustraat 42A",
+   "builtYear": 1885,
+   "widthM": 5.5,
+   "eavesM": 13.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2b2f",
+    "wallRaw": "#5c4d47",
+    "skyline": {
+     "eavesM": 17.32,
+     "eavesRow": 54,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1885-segmental-keystone",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1885-segmental-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2e32",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie, woonfunctie); fascia colour measured on the strip 2023-01-03 span 1064-1284"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#2c2b2f",
+     "evidence": "strip 2023-01-03 span 1064-1284: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157561",
+    "ncc": 0.517,
+    "nccRaw": 0.517,
+    "shiftM": [
+     0.3,
+     -0.25
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.40 mean 0.51 vs photo 0.62",
+     "wall family unresolved (#2c2b2e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2c2b2e",
+     "model": "#4b4950",
+     "dL": 0.125
+    },
+    "glazing": {
+     "photo": 0.62,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.529
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.4,
+    "pijp-1882-keystone-lintel": 0.492
+   }
+  },
+  {
+   "pandId": "0363100012157562",
+   "address": "Van Woustraat 38",
+   "builtYear": 1882,
+   "widthM": 11.35,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b655e",
+    "wallRaw": "#574c47",
+    "skyline": {
+     "eavesM": 17.27,
+     "eavesRow": 56,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1,
+      "topWidthM": 0.88,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 0.8,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1882, type 1875-1877; frontage 11.35 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1875-1877",
+     "frontage 11.35 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.69 m = 3 storeys of 4.56 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.34 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236557",
+   "address": "Van Woustraat 36",
+   "builtYear": 1882,
+   "widthM": 5.49,
+   "eavesM": 14.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624b43",
+    "wallRaw": "#675852",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 48,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 0.8,
+      "topWidthM": 0.7,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.15 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.15,
+       "light": 0.35
+      },
+      {
+       "widthM": 1,
+       "centre": 0.47,
+       "light": 0.34
+      },
+      {
+       "widthM": 1,
+       "centre": 0.81,
+       "light": 0.42
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1882-keystone-lintel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1882-keystone-lintel",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d7175",
+      "fascia": true,
+      "name": "Lion's Head Restaurant & Brewery",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=pub); fascia colour measured on the strip 2023-01-03 span 1738-1957"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#624b43",
+     "evidence": "strip 2023-01-03 span 1738-1957: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012236557",
+    "ncc": 0.372,
+    "nccRaw": 0.372,
+    "shiftM": [
+     -0.15,
+     -0.1
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37"
+    ],
+    "wall": {
+     "photo": "#624c43",
+     "model": "#7d5f55",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.569
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.218,
+    "pijp-1885-segmental-keystone": 0.307
+   }
+  },
+  {
+   "pandId": "0363100012158922",
+   "address": "Van Woustraat 34",
+   "builtYear": 1882,
+   "widthM": 5.89,
+   "eavesM": 14.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614b42",
+    "wallRaw": "#67534b",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 40,
+     "confidence": 0.88,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 0.97,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1882-keystone-lintel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1882-keystone-lintel",
+    "ground": {
+     "shopfront": {
+      "colour": "#696b70",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2023-01-03 span 1958-2194"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#614b42",
+     "evidence": "strip 2023-01-03 span 1958-2194: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012158922",
+    "ncc": 0.316,
+    "nccRaw": 0.316,
+    "shiftM": [
+     -0.05,
+     -0.15
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.51 vs photo 0.35"
+    ],
+    "wall": {
+     "photo": "#624b42",
+     "model": "#7c6054",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.462
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.18,
+    "pijp-1885-segmental-keystone": 0.25
+   }
+  },
+  {
+   "pandId": "0363100012164926",
+   "address": "Van Woustraat 32",
+   "builtYear": 1882,
+   "widthM": 5.2,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53453e",
+    "wallRaw": "#5d4a42",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 8,
+     "confidence": 0.31,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.28,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.099 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.26 mean 0.50 vs photo 0.31)",
+   "likeness": {
+    "pandId": "0363100012164926",
+    "ncc": 0.099,
+    "nccRaw": 0.099,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.50 vs photo 0.31"
+    ],
+    "wall": {
+     "photo": "#5e4b43",
+     "model": "#6e5b52",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.307
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.159,
+    "pijp-1885-segmental-keystone": 0.218
+   }
+  }
+ ]
+}

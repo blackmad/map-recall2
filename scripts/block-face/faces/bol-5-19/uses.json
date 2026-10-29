@@ -1,0 +1,344 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:48:30.783Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165931",
+   "addresses": [
+    "Ferdinand Bolstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 306,
+     "bagId": "0363010000635266"
+    },
+    {
+     "address": "Ferdinand Bolstraat 5-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 330,
+     "bagId": "0363010012100173"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506017794,
+     "lngLat": [
+      4.8908163,
+      52.3566847
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "air_conditioning": "yes",
+      "alt_name": "O'Donnell's Irish Pub",
+      "amenity": "pub",
+      "check_date": "2025-12-29",
+      "email": "info@odonnellsamsterdam.nl",
+      "food": "yes",
+      "name": "O'Donnell's",
+      "opening_hours": "Mo-Th,Su 10:00-01:00; Fr-Sa 10:00-03:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 6767786",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "theme": "irish",
+      "toilets:wheelchair": "no",
+      "website": "https://www.odonnellsamsterdam.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155856",
+   "addresses": [
+    "Ferdinand Bolstraat 7"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506047394,
+     "lngLat": [
+      4.8907654,
+      52.3565972
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-02-17",
+      "email": "info@cleancenteramsterdam.nl",
+      "fixme": "NL: Op 17 feb (gedeeltelijk) door brand verwoest. Graag updaten met openingstijden als ze weer open zijn.\nEN: (Partly) ravaged by fire on 17 Feb. Please update with opening times once they're open again.",
+      "laundry_service": "no",
+      "level": "0",
+      "name": "Clean Center",
+      "opening_hours": "closed",
+      "phone": "+31 20 6627167",
+      "self_service": "yes",
+      "shop": "laundry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236688",
+   "addresses": [
+    "Ferdinand Bolstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 186,
+     "bagId": "0363010001006555"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236033",
+   "addresses": [
+    "Ferdinand Bolstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 11-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 238,
+     "bagId": "0363010001016636"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2186372449,
+     "lngLat": [
+      4.8907494,
+      52.3565
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-10",
+      "cuisine": "pancake",
+      "email": "info@moakpancakes.nl",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "internet_access:ssid": "MOAK FEBO GUEST",
+      "kids_area": "no",
+      "level": "0",
+      "name": "Moak Pancakes",
+      "opening_hours": "Mo-Su 08:30-15:30",
+      "outdoor_seating": "yes",
+      "payment:cards": "yes",
+      "payment:cash": "no",
+      "payment:qr_code": "yes",
+      "reservation": "no",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "website": "https://www.moakpancakes.nl"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12061606499,
+     "lngLat": [
+      4.8907814,
+      52.3565178
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "bar",
+      "check_date": "2026-01-10",
+      "description": "Shares entrance with Moak Pancakes.",
+      "email": "info@barmokum.nl",
+      "level": "-1",
+      "name": "Bar Mokum",
+      "opening_hours": "Mo-Th 17:00-24:00; Fr-Sa 17:00-02:00; Su 18:00-24:00",
+      "website": "https://www.barmokum.nl"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13446588686,
+     "lngLat": [
+      4.8908424,
+      52.3564957
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-10",
+      "cuisine": "japanese",
+      "description": "Shares entrance with Moak Pancakes.",
+      "diet:halal": "yes",
+      "level": "0",
+      "name": "Omakase",
+      "opening_hours": "Mo-Sa 17:30-22:00",
+      "website": "https://www.omakaseamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161978",
+   "addresses": [
+    "Ferdinand Bolstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 13-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000635281"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236110",
+   "addresses": [
+    "Ferdinand Bolstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 15-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000635286"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506047393,
+     "lngLat": [
+      4.8907526,
+      52.3564252
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-H;15-H",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "bar": "yes",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-10",
+      "cuisine": "korean",
+      "email": "info@sojubar.com",
+      "name": "Soju Bar",
+      "old_name": "Ginger",
+      "opening_hours": "Mo-Su 12:00-24:00",
+      "phone": "+31 20 2269021",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://sojubar.nl/amsterdam/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236388",
+   "addresses": [
+    "Ferdinand Bolstraat 17",
+    "Ferdinand Bolstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 19-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 239,
+     "bagId": "0363010000635294"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506045198,
+     "lngLat": [
+      4.8907223,
+      52.3563051
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17;19",
+      "addr:postcode": "1072LA",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "bar",
+      "check_date": "2026-01-10",
+      "email": "reservations@barbellini.nl",
+      "name": "Bar Bellini",
+      "opening_hours": "Tu-Th 16:00-01:00; Fr-Sa 12:00-03:00",
+      "phone": "+31 20 8208148",
+      "website": "https://www.barbellini.nl"
+     },
+     "fetchedAt": "2026-10-28T20:48:30.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,781 @@
+{
+ "street": "Van Woustraat",
+ "seed": "0363100012158142",
+ "members": [
+  "0363100012159819",
+  "0363100012156067",
+  "0363100012158363",
+  "0363100012167117",
+  "0363100012166104",
+  "0363100012163631",
+  "0363100012159005",
+  "0363100012152366",
+  "0363100012158143",
+  "0363100012158142"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012156225 23.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012161717 22.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062137",
+   "reason": "frontage 84.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012068898",
+   "reason": "frontage 76.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012088426",
+   "reason": "frontage 90.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012095860",
+   "reason": "frontage 59.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012099835",
+   "reason": "frontage 31.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012121708",
+   "reason": "frontage 34.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012135879",
+   "reason": "frontage 39.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152461",
+   "reason": "frontage 56.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 52.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152764",
+   "reason": "frontage 108.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152777",
+   "reason": "frontage 55.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152873",
+   "reason": "frontage 61.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152899",
+   "reason": "sightline to Van Woustraat crosses 0363100012157898"
+  },
+  {
+   "pandId": "0363100012152994",
+   "reason": "frontage 73.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012153500",
+   "reason": "frontage 66.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012153532",
+   "reason": "sightline to Van Woustraat crosses 0363100012166523"
+  },
+  {
+   "pandId": "0363100012153537",
+   "reason": "frontage 45.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012153554",
+   "reason": "sightline to Van Woustraat crosses 0363100012162715"
+  },
+  {
+   "pandId": "0363100012153571",
+   "reason": "sightline to Van Woustraat crosses 0363100012155609"
+  },
+  {
+   "pandId": "0363100012153681",
+   "reason": "frontage 58.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155442",
+   "reason": "frontage 40.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155556",
+   "reason": "frontage 68.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155579",
+   "reason": "sightline to Van Woustraat crosses 0363100012165329"
+  },
+  {
+   "pandId": "0363100012155609",
+   "reason": "sightline to Van Woustraat crosses 0363100012158142"
+  },
+  {
+   "pandId": "0363100012155739",
+   "reason": "frontage 71.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155887",
+   "reason": "frontage 33.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "frontage 70.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156050",
+   "reason": "frontage 102.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156300",
+   "reason": "sightline to Van Woustraat crosses 0363100012152384"
+  },
+  {
+   "pandId": "0363100012156327",
+   "reason": "sightline to Van Woustraat crosses 0363100012155579"
+  },
+  {
+   "pandId": "0363100012156340",
+   "reason": "frontage 61.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156438",
+   "reason": "frontage 34.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156495",
+   "reason": "frontage 43.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152513",
+   "reason": "frontage 47.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152549",
+   "reason": "frontage 95.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012152576",
+   "reason": "frontage 47.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012155814",
+   "reason": "frontage 64.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156092",
+   "reason": "frontage 58.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156350",
+   "reason": "frontage 101.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156666",
+   "reason": "frontage 85.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156687",
+   "reason": "frontage 67.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012156925",
+   "reason": "frontage 38.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012157070",
+   "reason": "frontage 56.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012157459",
+   "reason": "sightline to Van Woustraat crosses 0363100012236517"
+  },
+  {
+   "pandId": "0363100012158006",
+   "reason": "frontage 114.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012158041",
+   "reason": "frontage 40.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012158082",
+   "reason": "frontage 44.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012158491",
+   "reason": "frontage 72.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012159503",
+   "reason": "frontage 78.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012159515",
+   "reason": "frontage 91.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012159683",
+   "reason": "frontage 62.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012159777",
+   "reason": "frontage 67.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012159982",
+   "reason": "frontage 43.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160036",
+   "reason": "frontage 62.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "frontage 82.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160085",
+   "reason": "frontage 51.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160158",
+   "reason": "frontage 48.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160477",
+   "reason": "frontage 46.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160804",
+   "reason": "sightline to Van Woustraat crosses 0363100012158922"
+  },
+  {
+   "pandId": "0363100012161221",
+   "reason": "frontage 34.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161261",
+   "reason": "frontage 42.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161347",
+   "reason": "frontage 44.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161456",
+   "reason": "frontage 119.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161634",
+   "reason": "frontage 52.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012157222",
+   "reason": "frontage 134.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012157693",
+   "reason": "frontage 63.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012157927",
+   "reason": "frontage 42.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012158080",
+   "reason": "sightline to Van Woustraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012158414",
+   "reason": "frontage 136.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012160869",
+   "reason": "frontage 89.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161053",
+   "reason": "frontage 36.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161306",
+   "reason": "frontage 68.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161370",
+   "reason": "frontage 117.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161409",
+   "reason": "frontage 73.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161721",
+   "reason": "frontage 46.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161897",
+   "reason": "frontage 73.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012162163",
+   "reason": "frontage 35.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012162618",
+   "reason": "sightline to Van Woustraat crosses 0363100012164926"
+  },
+  {
+   "pandId": "0363100012162738",
+   "reason": "sightline to Van Woustraat crosses 0363100012152899"
+  },
+  {
+   "pandId": "0363100012163785",
+   "reason": "frontage 57.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012163974",
+   "reason": "frontage 74.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164221",
+   "reason": "frontage 77.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164240",
+   "reason": "frontage 40.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164287",
+   "reason": "frontage 55.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164311",
+   "reason": "frontage 62.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164382",
+   "reason": "frontage 51.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164464",
+   "reason": "sightline to Van Woustraat crosses 0363100012153554"
+  },
+  {
+   "pandId": "0363100012164572",
+   "reason": "frontage 64.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164666",
+   "reason": "frontage 34.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164766",
+   "reason": "frontage 96.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012164790",
+   "reason": "frontage 45.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012165187",
+   "reason": "frontage 68.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012165516",
+   "reason": "sightline to Van Woustraat crosses 0363100012152384"
+  },
+  {
+   "pandId": "0363100012165518",
+   "reason": "frontage 50.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012165597",
+   "reason": "frontage 83.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166041",
+   "reason": "frontage 79.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166237",
+   "reason": "frontage 64.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166262",
+   "reason": "frontage 67.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166334",
+   "reason": "frontage 89.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166641",
+   "reason": "frontage 33.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "frontage 76.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166773",
+   "reason": "frontage 84.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161720",
+   "reason": "frontage 84.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012161967",
+   "reason": "sightline to Van Woustraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012163602",
+   "reason": "sightline to Van Woustraat crosses 0363100012161714"
+  },
+  {
+   "pandId": "0363100012165967",
+   "reason": "frontage 52.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166940",
+   "reason": "frontage 57.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012167011",
+   "reason": "frontage 54.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012167048",
+   "reason": "frontage 96.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012167233",
+   "reason": "frontage 50.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012192066",
+   "reason": "frontage 88.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012192520",
+   "reason": "frontage 72.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012198961",
+   "reason": "frontage 74.2 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012201951",
+   "reason": "frontage 76.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012202881",
+   "reason": "frontage 49.5 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012203340",
+   "reason": "sightline to Van Woustraat crosses 0363100012162868"
+  },
+  {
+   "pandId": "0363100012203929",
+   "reason": "frontage 62.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012210312",
+   "reason": "frontage 39.7 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012210498",
+   "reason": "frontage 41.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012219137",
+   "reason": "sightline to Van Woustraat crosses 0363100012162868"
+  },
+  {
+   "pandId": "0363100012223743",
+   "reason": "frontage 70.0 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012224723",
+   "reason": "sightline to Van Woustraat crosses 0363100012163759"
+  },
+  {
+   "pandId": "0363100012225277",
+   "reason": "frontage 34.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012227420",
+   "reason": "frontage 60.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012233592",
+   "reason": "sightline to Van Woustraat crosses 0363100012161717"
+  },
+  {
+   "pandId": "0363100012235991",
+   "reason": "frontage 102.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236403",
+   "reason": "frontage 46.8 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 34.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236829",
+   "reason": "frontage 49.6 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236895",
+   "reason": "sightline to Van Woustraat crosses 0363100012153532"
+  },
+  {
+   "pandId": "0363100012237284",
+   "reason": "frontage 78.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012166874",
+   "reason": "frontage 79.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012207253",
+   "reason": "sightline to Van Woustraat crosses 0363100012236168"
+  },
+  {
+   "pandId": "0363100012215461",
+   "reason": "frontage 32.3 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012222671",
+   "reason": "frontage 125.9 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236032",
+   "reason": "frontage 59.1 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012236650",
+   "reason": "frontage 53.4 m from Van Woustraat"
+  },
+  {
+   "pandId": "0363100012072757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152384",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153423",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156125",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153343",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160098",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160929",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163725",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165329",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165464",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166523",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166639",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163368",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236517",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237367",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236168",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012159819",
+   "alongM": -53.06,
+   "widthM": 6.14,
+   "eavesM": 14.58,
+   "roofMaxM": 17.15,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012156067",
+   "alongM": -47.13,
+   "widthM": 5.7,
+   "eavesM": 13.71,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158363",
+   "alongM": -41.43,
+   "widthM": 5.7,
+   "eavesM": 14.71,
+   "roofMaxM": 19.7,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167117",
+   "alongM": -35.73,
+   "widthM": 5.7,
+   "eavesM": 15.06,
+   "roofMaxM": 19.61,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166104",
+   "alongM": -29.84,
+   "widthM": 6.08,
+   "eavesM": 14.99,
+   "roofMaxM": 19.67,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163631",
+   "alongM": -23.75,
+   "widthM": 6.1,
+   "eavesM": 16.22,
+   "roofMaxM": 16.38,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159005",
+   "alongM": -17.65,
+   "widthM": 6.1,
+   "eavesM": 16.22,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152366",
+   "alongM": -11.62,
+   "widthM": 5.97,
+   "eavesM": 14.56,
+   "roofMaxM": 16.74,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158143",
+   "alongM": -5.6,
+   "widthM": 6.06,
+   "eavesM": 14.35,
+   "roofMaxM": 16.76,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158142",
+   "alongM": 0,
+   "widthM": 5.14,
+   "eavesM": 15.27,
+   "roofMaxM": 16.57,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  }
+ ]
+}

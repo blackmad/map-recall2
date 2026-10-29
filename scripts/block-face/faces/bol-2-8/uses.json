@@ -1,0 +1,255 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:22:35.187Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163371",
+   "addresses": [
+    "Ferdinand Bolstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012149886"
+    },
+    {
+     "address": "Ferdinand Bolstraat 8",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000979699"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9035360351,
+     "lngLat": [
+      4.8906578,
+      52.3576789
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Bike Rental De Pijp",
+      "check_date": "2026-01-09",
+      "email": "info@hetzwartefietsenplan.com",
+      "name": "Het Zwarte Fietsenplan",
+      "name:en": "Black Bikes",
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "operator": "Het Zwarte Fietsenplan",
+      "phone": "+31 85 2735994",
+      "service:bicycle:ebike": "yes",
+      "service:bicycle:parts": "yes",
+      "service:bicycle:pump": "yes",
+      "service:bicycle:rental": "yes",
+      "service:bicycle:repair": "yes",
+      "service:bicycle:retail": "yes",
+      "shop": "bicycle",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://www.hetzwartefietsenplan.com"
+     },
+     "fetchedAt": "2026-10-28T20:22:35.187Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166796",
+   "addresses": [
+    "Ferdinand Bolstraat 6",
+    "Ferdinand Bolstraat 6A",
+    "Ferdinand Bolstraat 6B",
+    "Ferdinand Bolstraat 6C",
+    "Ferdinand Bolstraat 6D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 6-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000635269"
+    },
+    {
+     "address": "Ferdinand Bolstraat 6A",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012122785"
+    },
+    {
+     "address": "Ferdinand Bolstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012122786"
+    },
+    {
+     "address": "Ferdinand Bolstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012122787"
+    },
+    {
+     "address": "Ferdinand Bolstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012122788"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9035347001,
+     "lngLat": [
+      4.8906166,
+      52.3577512
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6A",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "cuisine": "hawaiian",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "amsterdam@olakinobowls.nl",
+      "name": "Olakino Poké Bowl",
+      "opening_hours": "Sa-We 12:00-21:00; Th-Fr 12:00-22:00",
+      "phone": "+31 20 7864346",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://www.olakinobowls.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T20:22:35.187Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161404",
+   "addresses": [
+    "Ferdinand Bolstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 4-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000635264"
+    },
+    {
+     "address": "Ferdinand Bolstraat 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012572176"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506017793,
+     "lngLat": [
+      4.8906761,
+      52.3578047
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "ice_cream",
+      "check_date": "2026-04-19",
+      "contact:instagram": "miuzgelato",
+      "level": "0",
+      "name": "Miuz",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "payment:cards": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 2231372",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.miuz.nl",
+      "website:menu": "https://www.miuz.nl/gelato/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T20:22:35.187Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13081350401,
+     "lngLat": [
+      4.8906946,
+      52.3577736
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Euronet",
+      "brand:wikidata": "Q5412010",
+      "indoor": "no",
+      "operator": "Euronet",
+      "operator:wikidata": "Q5412010",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-10-28T20:22:35.187Z",
+     "match": "frontage",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166420",
+   "addresses": [
+    "Ferdinand Bolstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 2-H",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000635261"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817452429,
+     "lngLat": [
+      4.8906827,
+      52.3578467
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2024-05-15",
+      "craft": "tailor",
+      "name": "Ferdinand Bol Fine Tailors",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:22:35.187Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

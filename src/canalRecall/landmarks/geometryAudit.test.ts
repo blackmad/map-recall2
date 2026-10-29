@@ -764,6 +764,31 @@ test('within-walls: a wall clustered into planes a few tenths of a degree apart 
   assert.equal(openingsWithinWalls(past).failing.length, 1);
 });
 
+test('within-walls: a cornice over a pand front a degree off its row is judged where the off-plane pieces are (Ferdinand Bolstraat 44, #96)', () => {
+  // The row plane z = 8 runs x 0..9; the pand's last 2.7 m turn 1.5 degrees (clustered as a 2.7 m piece) and its last 0.3 m
+  // a further 3 degrees (a sliver under 1 m wide, never a host). A frame-class frieze band runs straight across x 0..12, y 7.9..9:
+  // judged at the band's centre (x 6) the piece read 8 cm off the row plane; where it meets the band it is flush.
+  const soup = boxes({min: [0, 7.9, 8], max: [12, 9, 8.1], mat: 'white'});
+  const P = soup.positions as number[], I = soup.indices as number[], M = soup.triMaterial as number[];
+  const quad = (x0: number, z0: number, x1: number, z1: number) => {
+    const base = P.length / 3;
+    P.push(x0, 0, z0, x1, 0, z1, x1, 9, z1, x0, 9, z0);
+    I.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    M.push(0, 0);
+  };
+  const t1 = Math.tan(1.5 * Math.PI / 180), t2 = Math.tan(4.5 * Math.PI / 180), zB = 8 - 2.7 * t1;
+  quad(0, 8, 9, 8); quad(9, 8, 11.7, zB); quad(11.7, zB, 12, zB - 0.3 * t2);
+  const r = openingsWithinWalls(soup);
+  assert.equal(r.judged, 1);
+  assert.equal(r.failing.length, 0, JSON.stringify(r.failing.map(f => f.outsideM2)));
+  // A piece standing 6 cm proud where it meets the band (a pilaster, not the wall) does not extend the silhouette.
+  const proud = boxes({min: [0, 7.9, 8.1], max: [12, 9, 8.2], mat: 'white'});
+  const PP = proud.positions as number[], PI = proud.indices as number[], PM = proud.triMaterial as number[];
+  const q2 = (x0: number, x1: number, z: number) => { const base = PP.length / 3; PP.push(x0, 0, z, x1, 0, z, x1, 9, z, x0, 9, z); PI.push(base, base + 1, base + 2, base, base + 2, base + 3); PM.push(0, 0); };
+  q2(0, 9, 8); q2(9, 12, 8.06);
+  assert.equal(openingsWithinWalls(proud).failing.length, 1);
+});
+
 test('within-walls: a window head 2 cm under the eaves is inside (a strip thinner than a raster cell still tops its column)', () => {
   const soup = boxes({min: [2, 6.3, 7.85], max: [3.2, 8.98, 7.9], mat: 'white'});
   const P = soup.positions as number[], I = soup.indices as number[], M = soup.triMaterial as number[];

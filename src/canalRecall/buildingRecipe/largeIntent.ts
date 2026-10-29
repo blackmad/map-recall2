@@ -7,6 +7,7 @@ import {arcadePiersProblems} from '../blockBuilding/arcadePiers.ts';
 import {windowBoxProblems} from '../blockBuilding/windowBox.ts';
 import {galleryProblems} from '../blockBuilding/gallery.ts';
 import {boxBalconyProblems} from '../blockBuilding/boxBalcony.ts';
+import {stackedBlocksProblems} from '../blockBuilding/stackedBlocks.ts';
 import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
@@ -15,7 +16,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -63,7 +64,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
-  if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
+  if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag', 'core'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
   if (intent?.crown !== undefined) {
     const c = intent.crown;
@@ -77,7 +78,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (!['N', 'E', 'S', 'W'].includes(side)) problems.push(`crown.overhang.${side}: N, E, S or W`);
         if (!Number.isInteger(bays) || (bays as number) < 1 || (bays as number) > 12) problems.push(`crown.overhang.${side}: whole bays 1..12 of the front's pitch (not metres)`);
       }
-      if (intent.footprint === 'bag') problems.push('crown: not with footprint "bag" (the crown is fitted to the LoD2.2 shell)');
+      if (intent.footprint === 'bag' || intent.footprint === 'core') problems.push(`crown: not with footprint "${intent.footprint}" (the crown is fitted to the LoD2.2 shell)`);
     }
   }
   // A raised per-house triangle budget (see LargeBuildingIntent.budgetTriangles): it only ever raises the 12k default.
@@ -173,6 +174,10 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     }
     bool(w.falseFront, `${at}.falseFront`);
     if (w.boxBalconies !== undefined) problems.push(...boxBalconyProblems(w.boxBalconies, `${at}.boxBalconies`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
+    if (w.stackedBlocks !== undefined) {
+      problems.push(...stackedBlocksProblems(w.stackedBlocks, `${at}.stackedBlocks`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
+      if (w.baysPerStorey === undefined) problems.push(`${at}.stackedBlocks: needs baysPerStorey (one cell per bay)`);
+    }
     if (w.gallery !== undefined) {
       problems.push(...galleryProblems(w.gallery, `${at}.gallery`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.gallery: in front of a wall with a face (not curtain-wall, glazed-hall or screen)`);

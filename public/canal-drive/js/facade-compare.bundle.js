@@ -5636,10 +5636,10 @@
     { id: "brick-bands", styles: ["school"], p: 0.35, build: (c, s) => {
       for (let k = 0; k < c.layout.storeys; k++) s.box(c.f, 0, c.f.len, 0, 0.05, storeyZ2(c, k) - 0.15, storeyZ2(c, k), "#6b3a2c");
     } },
-    { id: "stair-glass", styles: ["school", "postwar", "modern"], p: 0.3, build: (c, s) => {
-      const x = doorX(c) ?? c.f.len / 2;
-      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS2);
-    } },
+    // No generic stair-glass (removed 2026-10-29, #94). Drawn at random on three in ten
+    // school/postwar/modern walls, it put a full-height 1 m grey glass strip on fronts that
+    // have none: Dam 2 (pand 0363100012253910) and the 1991 stone corner beside the Bijenkorf
+    // (0363100012179183), feedback 59b67ef0. A real stair window comes from a building type.
     { id: "window-grilles", styles: ["school", "c19"], p: 0.15, build: (c, s) => {
       const d = doorX(c);
       for (const x of windowXs(c).slice(0, 4)) {
@@ -5848,7 +5848,7 @@
       }
       ranges.push({ id: part.id, start, count: v - start });
     }
-    return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
+    return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length, kinds: { kit: tris } };
   }
 
   // src/canalRecall/landmarkFronts.ts

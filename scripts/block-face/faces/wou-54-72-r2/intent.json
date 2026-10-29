@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wou-54-72-r2",
+ "street": "Van Woustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/wou-54-72-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/wou-54-72/auto-place.json"
+ },
+ "types": [
+  "pijp-1886-segmental-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012152366",
+   "slug": "wou-152366",
+   "address": "Van Woustraat 58",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#322e34",
+      "fascia": true,
+      "name": "Yên Dining Bar",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-03 span 1661-1900"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#554741",
+     "evidence": "strip 2023-01-03 span 1661-1900: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Yên Dining Bar",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2817559364,
+     "name": "Yên Dining Bar"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 0.73 on eaves 0, wall 1, stucco 1, columns 1; strip 2023-01-03 span 1661-1900"
+   }
+  },
+  {
+   "pandId": "0363100012158143",
+   "slug": "wou-158143",
+   "address": "Van Woustraat 56",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#171315",
+      "fascia": true,
+      "name": "Foto Mignon",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=photo); fascia colour measured on the strip 2023-01-03 span 1900-2142"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#463737",
+     "evidence": "strip 2023-01-03 span 1900-2142: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Foto Mignon",
+    "category": "shop=photo",
+    "osm": {
+     "type": "node",
+     "id": 2817559354,
+     "name": "Foto Mignon"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 0.73 on eaves 0, wall 1, stucco 1, columns 1; strip 2023-01-03 span 1900-2142"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012152366",
+    "stripRow": 264,
+    "evidence": "auto-place: the pijp-1886-segmental-mansard cornice line 15.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.56 m"
+   },
+   {
+    "pand": "0363100012158143",
+    "stripRow": 264,
+    "evidence": "auto-place: the pijp-1886-segmental-mansard cornice line 15.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.35 m"
+   }
+  ]
+ }
+}

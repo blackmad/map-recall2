@@ -3,72 +3,89 @@
  "kind": "large",
  "id": "haarlemmerweg-518",
  "pandId": "0363100012250970",
- "address": "Haarlemmerweg 518A-776, Amsterdam (north side of the Haarlemmerweg at the west end of the corridor): the 2023 residential block of 13 storeys with continuous white balcony slabs, glass balustrades and a glazed plinth",
+ "address": "Haarlemmerweg 518A-776, Amsterdam (Westerpark West, across the Haarlemmertrekvaart): \"Blend\" (MVRDV, 2023), a 13-storey tower in cream ceramic panels whose rooms step out of the core as stacked offset blocks, storey by storey, with glass-railed balconies in the gaps, dark-framed windows and a glazed ground floor",
  "sources": [
   {
-   "id": "pano-2025-07-01-e",
+   "id": "pano-2024-11-21-s",
    "kind": "street-panorama",
-   "capturedAt": "2025-07-01",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-01_09-03-48_00810/",
-   "image": "source-data://pand-reference-walls/0363100012250970/w01-89.jpg",
-   "sha256": "ff02f29c2796c6e667cbeb13eba343d6ca8b02987000e6b0fad5e96049aaaee4",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track04_Sphere_00122/",
+   "image": "source-data://pand-reference-walls/0363100012250970/cS-179-00122.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "sha256": "77ca5bdc12d660fa674d52a0e83edf6d0f3cc032db0f20c272cab4718c1a8517"
   },
   {
-   "id": "pano-2022-12-06-e",
+   "id": "pano-2024-11-21-e",
    "kind": "street-panorama",
-   "capturedAt": "2022-12-06",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002829_pano_0007_000166/",
-   "image": "source-data://pand-reference-walls/0363100012250970/w01-89.jpg",
-   "sha256": "7a8de713f75f0c4efa1ae28b96f3ad2f8eff585b9ec641ab1a9e67eb35d38f85",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track04_Sphere_00115/",
+   "image": "source-data://pand-reference-walls/0363100012250970/cE-89-00115.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "sha256": "617a98e2b46043de7b05c66c79e8ac9dcba33a4202f3e19d05997df221f02a40"
+  },
+  {
+   "id": "pano-2024-11-21-w",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track04_Sphere_00140/",
+   "image": "source-data://pand-reference-walls/0363100012250970/cW-269-00140.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "sha256": "c60db0ad9fce8ed4b92640601ad8aabc325d8520cecad79edd159dda0fdc04bc"
+  },
+  {
+   "id": "commons-2023-blend",
+   "kind": "archive-photo",
+   "capturedAt": "2023-08-16",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Haarlemmerweg,_Asd-Blend.jpg",
+   "image": "source-data://pand-reference-walls/0363100012250970/commons-2023 Haarlemmerweg, Asd-Blend.jpg",
+   "license": "Wikimedia Commons, Ceescamel, CC BY-SA 4.0 \u2014 reference only, no pixels or textures are used in the model",
+   "sha256": "ab12fb15f3b7b6c96ec0eae561c012218bf95ef13a467302620bc5c527f8e161"
   }
  ],
  "walls": [
   {
    "wallSurfaces": [
-    16,
-    21,
-    24,
-    28,
-    33,
-    44,
-    49,
-    50,
-    52,
-    53,
-    54,
-    56,
-    60,
-    62,
-    64,
-    68,
-    69,
-    73,
-    75,
-    81,
-    85,
-    87,
-    89,
-    90,
-    95,
-    107,
-    109,
-    112
+    90002
    ],
-   "street": "the Haarlemmerweg front",
    "system": "brick-bay-grid",
    "storeys": 13,
    "baysPerStorey": 12,
    "ground": "glazed",
-   "windows": "wide",
-   "entrance": true,
+   "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#c8c9c5",
-    "stone": "#d6d6d1",
-    "glass": "#566066"
+    "brick": "#ebe3cf",
+    "frame": "#2d3134",
+    "stone": "#e6dfcd",
+    "glass": "#46545c"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.7,
+    "sill": 0.12
+   },
+   "stackedBlocks": {
+    "rows": {
+     "1": "BBBBRR.RR.RR",
+     "2": "RRRR.BBRR.BB",
+     "3": "BBRRRRRBB.RR",
+     "4": "RRBBRR.RR.BB",
+     "5": "BBRR..BRR.RR",
+     "6": "RRRR..R.RR..",
+     "7": "BBBBRR.RR.BB",
+     "8": "RRRR..BBB.RR",
+     "9": "..RRBB.RR.RR",
+     "10": "BBB.RR.RR...",
+     "11": "RRRR..BBB.BB",
+     "12": "R..RRR......"
+    },
+    "deep": 0.47,
+    "window": {
+     "w": 0.62,
+     "h": 0.72,
+     "sill": 0.12
+    },
+    "panes": 4
    },
    "hand": [
     "system",
@@ -78,55 +95,167 @@
     "palette",
     "wallMaterial",
     "ground",
-    "entrance"
+    "windowShape",
+    "stackedBlocks"
+   ],
+   "street": "south front on the Haarlemmerweg, across the Haarlemmertrekvaart",
+   "entrance": true
+  },
+  {
+   "wallSurfaces": [
+    90003
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 13,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#ebe3cf",
+    "frame": "#2d3134",
+    "stone": "#e6dfcd",
+    "glass": "#46545c"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.7,
+    "sill": 0.12
+   },
+   "stackedBlocks": {
+    "rows": {
+     "1": "BBB..RRRB",
+     "2": "RRR.BBRRR",
+     "3": "BBBRRR..B",
+     "4": "RRRRRRBB.",
+     "5": "BBB..RRR.",
+     "6": "RRRBBBRRB",
+     "7": "RRRRRR..R",
+     "8": "........B",
+     "9": "...RRBBBR",
+     "10": "BBB..RRR.",
+     "11": "RRR.RRRRB",
+     "12": "RRRBBB..."
+    },
+    "deep": 0.47,
+    "window": {
+     "w": 0.62,
+     "h": 0.72,
+     "sill": 0.12
+    },
+    "panes": 4
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "palette",
+    "wallMaterial",
+    "ground",
+    "windowShape",
+    "stackedBlocks"
    ]
   },
   {
    "wallSurfaces": [
-    2,
-    4,
-    6,
-    7,
-    9,
-    11,
-    13,
-    14,
-    22,
-    27,
-    29,
-    32,
-    38,
-    40,
-    41,
-    47,
-    58,
-    65,
-    70,
-    71,
-    77,
-    78,
-    80,
-    82,
-    83,
-    91,
-    98,
-    99,
-    101,
-    103,
-    104,
-    108
+    90001
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 13,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#ebe3cf",
+    "frame": "#2d3134",
+    "stone": "#e6dfcd",
+    "glass": "#46545c"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.7,
+    "sill": 0.12
+   },
+   "stackedBlocks": {
+    "rows": {
+     "1": "....RR.RR",
+     "2": "..RR...BB",
+     "3": "...BB..RR",
+     "4": "....RR...",
+     "5": ".BB....RR",
+     "6": "..RR...BB",
+     "7": "....RR...",
+     "8": "R.BBBB...",
+     "9": "..BBRR...",
+     "10": "B......RR",
+     "11": "R.BBBB.RR",
+     "12": "B......BB"
+    },
+    "deep": 0.47,
+    "window": {
+     "w": 0.62,
+     "h": 0.72,
+     "sill": 0.12
+    },
+    "panes": 4
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "palette",
+    "wallMaterial",
+    "ground",
+    "windowShape",
+    "stackedBlocks"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    90000
    ],
    "system": "brick-bay-grid",
    "storeys": 13,
    "baysPerStorey": 12,
    "ground": "glazed",
-   "windows": "wide",
+   "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#c8c9c5",
-    "stone": "#d6d6d1",
-    "glass": "#566066"
+    "brick": "#ebe3cf",
+    "frame": "#2d3134",
+    "stone": "#e6dfcd",
+    "glass": "#46545c"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.7,
+    "sill": 0.12
+   },
+   "stackedBlocks": {
+    "rows": {
+     "1": "BBBBRR.RR.RR",
+     "2": "RRRR.BBRR.BB",
+     "3": "BBRRRRRBB.RR",
+     "4": "RRBBRR.RR.BB",
+     "5": "BBRR..BRR.RR",
+     "6": "RRRR..R.RR..",
+     "7": "BBBBRR.RR.BB",
+     "8": "RRRR..BBB.RR",
+     "9": "..RRBB.RR.RR",
+     "10": "BBB.RR.RR...",
+     "11": "RRRR..BBB.BB",
+     "12": "R..RRR......"
+    },
+    "deep": 0.47,
+    "window": {
+     "w": 0.62,
+     "h": 0.72,
+     "sill": 0.12
+    },
+    "panes": 4
    },
    "hand": [
     "system",
@@ -135,110 +264,34 @@
     "windows",
     "palette",
     "wallMaterial",
-    "ground"
+    "ground",
+    "windowShape",
+    "stackedBlocks"
    ]
   },
   {
    "wallSurfaces": [
-    3,
-    8,
-    10,
-    19,
-    20,
-    23,
-    25,
     31,
-    34,
+    32,
     35,
-    37,
-    42,
-    45,
-    51,
-    61,
-    63,
-    66,
-    67,
-    72,
-    76,
-    79,
-    84,
-    86,
-    100
-   ],
-   "system": "brick-bay-grid",
-   "storeys": 13,
-   "baysPerStorey": 4,
-   "ground": "glazed",
-   "windows": "wide",
-   "wallMaterial": "render",
-   "palette": {
-    "brick": "#b9bab4",
-    "frame": "#c8c9c5",
-    "stone": "#d6d6d1",
-    "glass": "#566066"
-   },
-   "hand": [
-    "system",
-    "storeys",
-    "baysPerStorey",
-    "windows",
-    "palette",
-    "wallMaterial",
-    "ground"
-   ]
-  },
-  {
-   "wallSurfaces": [
-    1,
-    5,
-    12,
-    15,
-    17,
-    18,
-    26,
-    30,
-    36,
-    39,
     43,
-    46,
-    48,
-    55,
     57,
-    59,
-    74,
-    88,
-    92,
-    93,
-    94,
-    96,
-    97,
-    102,
-    105,
-    106,
-    110,
-    111,
-    113
+    71,
+    73
    ],
-   "system": "brick-bay-grid",
-   "storeys": 13,
-   "baysPerStorey": 4,
-   "ground": "glazed",
-   "windows": "wide",
+   "system": "blank",
+   "storeys": 1,
    "wallMaterial": "render",
    "palette": {
-    "brick": "#b9bab4",
-    "frame": "#c8c9c5",
-    "stone": "#d6d6d1",
-    "glass": "#566066"
+    "brick": "#ebe3cf",
+    "frame": "#2d3134",
+    "stone": "#e6dfcd"
    },
    "hand": [
     "system",
     "storeys",
-    "baysPerStorey",
-    "windows",
-    "palette",
     "wallMaterial",
-    "ground"
+    "palette"
    ]
   }
  ],
@@ -247,23 +300,23 @@
   "material": "bitumen",
   "flatHex": "#d7d7cf"
  },
- "roofPlant": true,
+ "roofPlant": false,
  "palette": {
-  "brick": "#b9bab4",
-  "frame": "#c8c9c5",
-  "stone": "#d6d6d1",
-  "glass": "#566066",
+  "brick": "#ebe3cf",
+  "frame": "#2d3134",
+  "stone": "#e6dfcd",
+  "glass": "#46545c",
   "door": "#2b2d2e"
  },
  "closedBands": true,
  "layeredKit": true,
+ "footprint": "core",
  "budgetTriangles": 40000,
  "notes": [
-  "Haarlemmerweg 518A-776 (BAG pand 0363100012250970, built 2023, 905 m2 footprint in one long block, eaves 41.7 m, 13 storeys, 137 addresses). NO MEASURABLE PHOTO: all-walls.ts finds one exposed wall (the 15.5 m east end); its only post-build crops are 2022-12-06 (TMX7316010203-002829_pano_0007_000166), which shows the building still scaffolded behind a green site hut and a Cloxam cabin, and 2025-07-01 (recording_2025-07-01_09-03-48_00810) at 88 m with 56 % tree cover. Both are declared unusable for measurement, so this recipe is INFERRED from what the 2025-07-01 crop does show: white balcony slab bands on every storey, glass balustrades on thin posts, a glazed wall behind with white mullions, and a glazed plinth with white columns.",
-  "No measured.json: no field here is a measurement. Every wall group lists its whole hand-held set in `hand`, and the colour, bay counts, storey splits and balcony frequency are read off the 2025 east crop only. Do not install on this evidence alone; a 2025+ panorama from the Haarlemmerweg front is what would settle it.",
-  "The other 17 street walls of the pand are party walls in 3DBAG (the row), so the block is drawn as four bearing groups: south (the Haarlemmerweg front), north (the rear), east end and west end. The plinth is glazed with the entrance on the south front.",
-  "Balcony bands are NOT drawn: on this shell the block-kit balcony row leaves parts on panels that do not host them (123 hostless parts, 160 m2 of openings outside their wall), because 3DBAG splits the 2023 block into 98 narrow planes. The 2025 crop shows glass-railed balcony bands on every storey, so this is a kit/shell gap, not a design choice: the plain wide-window grid is the honest stand-in until the shell or the balcony row is fixed.",
-  "Rendered 2026-10-21 (contact-aerial.png): most of the block still reads blank. Only the panels whose surfaces landed in a group with a workable width carry the window grid, and the four bearing groups cut across 98 small 3DBAG planes, so the big faces show as render with one band of windows near the top. The draft is a starting point for a shell/grouping pass, not a building.",
-  "roof.flatHex #d7d7cf: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot white-membrane, rgb 214/214/206, confidence 0.5; roof-flat.ts), the colour the city drew it in before the install."
+  "Haarlemmerweg 518A-776 (BAG pand 0363100012250970, built 2023, 13 storeys, LoD2.2 main roof 42.0 m). BAG draws the tower as the top-view union of its stepped rooms: an outline of 1.85 m bumps that 3DBAG extrudes to the roof as full-height grooves. `footprint: \"core\"` retracts them (coreFootprint.ts: 11 steps, 117 m2) and the blocks come back storey by storey from `stackedBlocks` (blockBuilding/stackedBlocks.ts). Core walls: 90000 N, 90001 W, 90002 S, 90003 E.",
+  "Rows read 2026-10-29 off straight-on rectified crops of the core faces (artifacts/wpw/crop-face.mts, 30 px/m, storeys 95 px): S from terdam_21112024_Track04_Sphere_00122 (2024-11-21, leafless, 41 m), E from terdam_21112024_Track04_Sphere_00115 (2024-11-21, oblique from the south-east), W from terdam_21112024_Track04_Sphere_00140 (2024-11-21, from the south-west); checked against the 2023 Commons photo (south-east three-quarter view) and recording_2025-06-18_07-44-47_00974. B = a block with a soffit under it and its own two windows, R = a recessed balcony behind a glass rail, . = the core's own windows. The north face's rows are INFERRED (the S rows mirrored): every 2024-2025 north panorama (recording_2024-09-09_11-06-52_00869 and neighbours, 22 m) is behind a street tree.",
+  "Block depth 1.5 m: the soffit and rail returns in the 2023 photo are about half a bay deep (BAG's 1.85 m steps are the outermost reach). Colour #ebe3cf: the sunlit panel face reads 240,237,230 (b* about 3) in the 2023 Commons photo and warmer in the 2024-11-21 panoramas (S sunlit p50 240,246,220; E in shade p50 187,176,144; light cells with b* 4..35, upper half of each crop); the palette takes the Commons lightness with part of the panoramas' warmth (b* about 8), stone #e6dfcd a shade darker. Frames #2d3134: the dark window frames.",
+  "Left out: the top-storey roof terraces (LoD2.2 roofs at 38.6 m, 96 m2 at the corners) are drawn as full top storey with rails on the terrace bays; the core cannot yet lower a storey per bay.",
+  "roof.flatHex #d7d7cf: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot white-membrane, rgb 214/214/206, confidence 0.5; roof-flat.ts)."
  ]
 }

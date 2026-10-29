@@ -4,6 +4,19 @@
 // - Streaming: elevation-v1 1 km cells around the rider, built in the ground
 //   worker (groundWorker.ts), LOD 0 within NEAR_M of the rider's cell edge,
 //   LOD 1 to RADIUS_M, evicted beyond; installed one cell per frame.
+// - Detail (CANAL-RECALL-7, touch devices): a cell beyond the rider's own and
+//   its neighbours builds at `touch` detail (groundCell CellDetail): coarser
+//   drapes, no bollards or park furniture, the same footprints. A cell that
+//   becomes near again rebuilds at `full` through the ordinary LOD swap. Desktop
+//   is always `full`; the level comes from `pointer: coarse`, and
+//   `?groundDetail=full|touch` / `?groundNear=block|cell|all` override it.
+// - Touch ring and tiles (CANAL-RECALL-7, 2026-10-29): a touch device fits the
+//   resident ring to its own viewport plus a speed margin ahead (residency.ts,
+//   `?groundRing=steps|view`) and cuts each heavy layer of a cell into 3×3
+//   tiles that three.js frustum-culls (cellTiles.ts, `?groundTiles=1..4`).
+//   iPad Westerkerk pitch 60: own-ground 875 k → ~320 k drawn triangles, the
+//   picture unchanged. Desktop keeps the stepped ring and, since the same
+//   day, also draws 3×3 tiles (desktop Westerkerk 1065 k → 466 k, identical).
 // - Drawn as one participant of the shared three.js frame (order −10, under
 //   the facades), lit and shadowed by its rig.
 // - Overlays are draped ribbons on the same surface: the route line, the
@@ -24,11 +37,12 @@
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
 import { boundingSphereOf } from '../geometryBounds.js';
-import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer } from './groundCell.js';
+import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { residentRadius, viewReachM } from './residency.js';
+import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
+import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -78,6 +92,57 @@ export interface OwnGroundOptions {
    * from zoom 14 to 15.6 instead of appearing at `minZoom`.
    */
   transition?: boolean;
+  /**
+   * Far cells' detail level (default: from the device, `detailFlag()` above). `touch` builds every resident cell the
+   * rider is not in (or beside) at the coarse level; `full` builds the desktop city everywhere. Display only.
+   */
+  detail?: CellDetail;
+  /**
+   * Which cells keep `full` detail on a touch device (default: from the page, `groundNearFlag()` above): the rider's
+   * cell and its 8 neighbours, the rider's cell alone, or none.
+   */
+  groundNear?: 'block' | 'cell' | 'all';
+  /**
+   * How the resident ring follows the view (default: from the page, `groundRingFlag()` below). `steps` is the desktop
+   * rule (a 900 px view, 400 m steps). `view` fits the ring to this device's viewport (its farthest visible corner,
+   * 100 m steps) and reaches further only ahead of a moving rider (residency.ts, CANAL-RECALL-7). Display only.
+   */
+  ring?: 'steps' | 'view';
+  /**
+   * Cut each heavy layer of a cell into `tiles`×`tiles` sub-meshes so the ones off screen are culled (cellTiles.ts;
+   * default: from the page, `groundTilesFlag()` below, 3; 1 = one mesh per layer). Display only.
+   */
+  tiles?: number;
+}
+
+/**
+ * Cell tiles per side: 3×3 on every device. Touch since 2026-10-29 (#100); desktop since the same day, after the
+ * in-page before/after (scripts/gpu-load-ipad.mjs RETILE) came out pixel-identical at the Westerkerk, Damrak, Dam and
+ * Leidseplein with drawn ground triangles 1.04–1.44 M → 0.35–0.47 M. `?groundTiles=1..4` (or
+ * `window.__canalRecallGroundTiles`) overrides it; `?groundTiles=1` is the one-mesh-per-layer opt-out.
+ */
+function groundTilesFlag(): number {
+  const g = globalThis as { __canalRecallGroundTiles?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = Number(g.__canalRecallGroundTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundTiles') : NaN));
+  if (Number.isInteger(asked) && asked >= 1 && asked <= 4) return asked;
+  return CELL_TILES;
+}
+
+/**
+ * The ring fit on this device: `view` on a touch device (the same `pointer: coarse` test as `detailFlag()`), `steps`
+ * on a desktop, unchanged. `?groundRing=steps|view` (or `window.__canalRecallGroundRing`) overrides it.
+ */
+function groundRingFlag(): 'steps' | 'view' {
+  const g = globalThis as { __canalRecallGroundRing?: string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = g.__canalRecallGroundRing ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundRing') : null);
+  if (asked === 'steps' || asked === 'view') return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? 'view' : 'steps';
+}
+
+/** The page's viewport in CSS pixels (the map canvas fills it), or the iPad landscape profile outside a page. */
+function viewportPx(): [number, number] {
+  const g = globalThis as { innerWidth?: number; innerHeight?: number };
+  return g.innerWidth && g.innerHeight ? [g.innerWidth, g.innerHeight] : [1180, 734];
 }
 
 /** The roads flag from the page: the BGT road surfaces are on by default since 2026-10-16 (user: "if BGT is the fix,
@@ -105,15 +170,46 @@ function parksFlag(): boolean {
   return !/[?&]parks=0\b/.test(g.location?.search ?? '');
 }
 
+/**
+ * The far cells' detail level on this device (CANAL-RECALL-7). A touch device (iPad, phone: `pointer: coarse`, the
+ * test the page itself uses for the phone pixel ratio and the 400 m ground ring) builds the cells away from the rider
+ * at `touch` detail; a desktop builds every cell at `full`, unchanged. `?groundDetail=full|touch` (or
+ * `window.__canalRecallGroundDetail` before load) overrides it, so one machine can show both paths.
+ */
+function detailFlag(): CellDetail {
+  const g = globalThis as { __canalRecallGroundDetail?: string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = g.__canalRecallGroundDetail ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundDetail') : null);
+  if (asked === 'full' || asked === 'touch') return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? 'touch' : 'full';
+}
+
+/**
+ * Which cells a `touch` device still builds at `full` detail: `block` = the cell the rider is in and its 8
+ * neighbours; `cell` = the rider's own cell only; `all` = none (every cell at the coarse level, a measurement value:
+ * the floor a touch device can reach). `?groundNear=cell|all` (or `window.__canalRecallGroundNear`) is the A/B: on a
+ * touch ride the resident ring is 400–800 m (six 1 km cells at the Westerkerk, all of them inside the block), so
+ * `block` gives the far level nothing to build and `cell` is the one that measures the coarser city.
+ */
+function groundNearFlag(): 'block' | 'cell' | 'all' {
+  const g = globalThis as { __canalRecallGroundNear?: string; location?: { search?: string } };
+  const asked = g.__canalRecallGroundNear ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundNear') : null);
+  // Default `cell` (2026-10-28): the 800 m touch ring fits inside the 3×3 block, so `block` coarsened nothing; the
+  // rider's own cell at full detail looked identical at the Westerkerk and cut own-ground 18 % (CANAL-RECALL-7).
+  return asked === 'block' || asked === 'all' ? asked : 'cell';
+}
+
 type LngLat = [number, number];
 
 /** `fade`: a cell that just arrived dissolves in over FADE_MS (screen-door dither on per-cell material clones); the clones go when it ends. */
 interface Fade { start: number; uniform: { value: number }; meshes: { mesh: any; original: any; clone: any }[] }
 /** A far block on screen: one mesh per 1 km part, keyed by the streamed cell it stands in for. */
 interface FarResident { key: string; group: any; parts: Map<string, any>; triangles: number; bytes: number }
-interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
+interface Resident { key: string; lod: 0 | 1; detail: CellDetail; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
+/** Cell tiles per side (OwnGroundOptions.tiles), and the smallest layer worth cutting (fewer draw calls for the rest). */
+const CELL_TILES = 3;
+const TILE_MIN_TRIANGLES = 4000;
 const AERIAL_RADIUS_M = 2000;
 /** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
 export const FADE_MS = 400;
@@ -134,6 +230,9 @@ const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
 
+/** A cell's level as one value: the LOD and the detail it was (or should be) built at. */
+const levelOf = (lod: 0 | 1, detail: CellDetail): string => `${lod}:${detail}`;
+
 export class OwnGround {
   readonly root: any;
   store: GroundStore;
@@ -153,7 +252,8 @@ export class OwnGround {
   private wantedKeys: ReadonlySet<string> = new Set();
   /** Keys of resident cells still dissolving in (empty when idle: no per-frame work). */
   private readonly fading = new Set<string>();
-  private readonly pending = new Map<string, 0 | 1>();
+  /** Cell key → the level asked for (`levelOf`: LOD and detail) while its build is in flight. */
+  private readonly pending = new Map<string, string>();
   private readonly installQueue: BuiltCell[] = [];
   private readonly prepared = new Set<string>();
   private readonly preparing = new Set<string>();
@@ -176,9 +276,11 @@ export class OwnGround {
   /** When each pending build was asked for (cell load latency: request → installed). */
   private readonly requestedAt = new Map<string, number>();
   /** The last build's stats per cell key (cost per park cell: triangles per layer, build ms). */
-  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1 }>();
+  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail }>();
   /** Far ring radius now (0: the resident ring reaches what the camera sees). */
   private farRadius = 0;
+  /** A `view` ring's extra reach ahead of the moving rider, metres (residency.ts touchAheadMarginM). */
+  private aheadM = 0;
   private readonly far = new Map<string, FarResident>();
   private readonly farPending = new Set<string>();
   /** Far blocks with nothing to draw (outside the extracts). */
@@ -194,7 +296,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -216,7 +318,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag() });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -311,7 +413,18 @@ export class OwnGround {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
     if (this.lookAheadOn ??= lookAheadEnabled()) this.motion.update(lngLat[0], lngLat[1], performance.now());
-    const reach = viewReachM(zoom, pitchDeg, lngLat[1]), radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+    let reach: number, radius: number;
+    if (this.opts.ring === 'view') {
+      const [w, h] = viewportPx();
+      reach = viewCornerReachM(zoom, pitchDeg, lngLat[1], w, h);
+      radius = touchResidentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+      // The ahead margin follows the speed in steps, so a steady ride does not re-plan every frame.
+      const ahead = this.lookAheadOn ? Math.round(touchAheadMarginM(this.motion.speed) / 50) * 50 : 0;
+      if (ahead !== this.aheadM) { this.aheadM = ahead; this.residencyAt = null; }
+    } else {
+      reach = viewReachM(zoom, pitchDeg, lngLat[1]);
+      radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
+    }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     const far = this.opts.far ? farRadiusM(reach, radius) : 0;
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
@@ -378,24 +491,30 @@ export class OwnGround {
   private lookAheadOn: boolean | undefined;
 
   /**
-   * Cells wanted now with their LOD, best first: nearest ahead of the rider (streamingLookAhead.ts aheadRankXY on
-   * the cell's nearest point), so the cells the rider is riding into build before the ones it left behind;
-   * nearest first while standing or with `?lookAhead=0`. The LOD still follows the plain distance.
+   * Cells wanted now with their LOD and detail level, best first: nearest ahead of the rider (streamingLookAhead.ts
+   * aheadRankXY on the cell's nearest point), so the cells the rider is riding into build before the ones it left
+   * behind; nearest first while standing or with `?lookAhead=0`. The LOD still follows the plain distance. A `touch`
+   * device wants the rider's cell and the cells beside it (the block, or only the rider's with `groundNear`) at `full`
+   * detail, every other resident cell at `touch` (CANAL-RECALL-7): the ground around the rider stays exactly as it
+   * looks on a desktop.
    */
-  wantedCells(): { key: string; lod: 0 | 1; d: number }[] {
+  wantedCells(): { key: string; lod: 0 | 1; detail: CellDetail; d: number }[] {
     if (!this.centre || !this.ready) return [];
     const [x, y] = this.centre, R = this.radiusM, size = this.store.elevation.cellSizeM;
     const direction = this.lookAheadOn ? this.motion.direction : null;
-    const out: { key: string; lod: 0 | 1; d: number; rank: number }[] = [];
-    const span = Math.ceil(R / size) + 1;
+    const out: { key: string; lod: 0 | 1; detail: CellDetail; d: number; rank: number }[] = [];
+    const view = this.opts.ring === 'view', ahead = view && direction ? this.aheadM : 0;
+    const span = Math.ceil((R + ahead) / size) + 1;
     const [cx, cy] = this.store.cellAt(x, y).split('_').map(Number);
     for (let dy = -span; dy <= span; dy++) for (let dx = -span; dx <= span; dx++) {
       const key = `${cx + dx}_${cy + dy}`;
       if (!this.store.covers(key)) continue;
       const rect = this.store.cellRect(key), d = this.rectDistance(rect, this.centre);
-      if (d > R) continue;
       const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
-      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
+      if (view ? !inTouchRing(d, d > 1e-6 && direction ? ((near[0] - x) * direction[0] + (near[1] - y) * direction[1]) / d : 0, R, ahead) : d > R) continue;
+      const own = dx === 0 && dy === 0, beside = Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
+      const fine = this.opts.groundNear === 'all' ? false : own || (this.opts.groundNear === 'block' && beside);
+      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
     }
     return out.sort((a, b) => a.rank - b.rank || a.d - b.d);
   }
@@ -412,11 +531,13 @@ export class OwnGround {
     for (const w of wanted) {
       // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
       this.prepareMain(w.key);
-      const have = this.resident.get(w.key)?.lod, asked = this.pending.get(w.key);
-      if (have === w.lod || asked === w.lod) continue;
-      this.pending.set(w.key, w.lod);
-      this.requestedAt.set(`${w.key}:${w.lod}`, performance.now());
-      this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, gen: this.gen });
+      const want = levelOf(w.lod, w.detail), have = this.resident.get(w.key);
+      if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
+      // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
+      // request, then the install swaps the whole cell, so two levels are never on screen together.
+      this.pending.set(w.key, want);
+      this.requestedAt.set(`${w.key}:${want}`, performance.now());
+      this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, detail: w.detail, gen: this.gen });
     }
     // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
     if (this.lookAheadOn) this.worker?.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
@@ -510,12 +631,12 @@ export class OwnGround {
     if (msg.type === 'error') { this.stats.errors.push(`${msg.key ?? ''}: ${msg.message}`.slice(0, 400)); if (msg.key) this.pending.delete(msg.key); return; }
     if (msg.type !== 'cell' || msg.gen !== this.gen) return;
     const cell = msg.cell as BuiltCell;
-    if (this.pending.get(cell.key) !== cell.lod) return;
+    if (this.pending.get(cell.key) !== levelOf(cell.lod, cell.detail)) return;
     this.pending.delete(cell.key);
     this.stats.cellsBuilt++;
     this.stats.buildMs.push(cell.stats.buildMs);
-    this.stats.lastBuild = { key: cell.key, lod: cell.lod, ...cell.stats };
-    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod });
+    this.stats.lastBuild = { key: cell.key, lod: cell.lod, detail: cell.detail, ...cell.stats };
+    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail });
     this.installQueue.push(cell);
     this.host.repaint();
   }
@@ -799,6 +920,23 @@ export class OwnGround {
     return g;
   }
 
+  /**
+   * One layer's geometries: the whole mesh, or with `tiles` > 1 one per tile (cellTiles.ts) over the same vertex
+   * buffers, each with its own index and bounding sphere so three.js culls the tiles off screen. A tile's fade clone
+   * and material are the layer's; the dispose in drop() runs over every tile.
+   */
+  /**
+   * Cut a layer mesh into `tiles`×`tiles` culled tiles over its own buffers (rendererShared/tiledGeometry.ts); the
+   * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
+   * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
+   */
+  private tile(mesh: any): void {
+    if (this.opts.tiles <= 1) return;
+    const tilesOnly = !!this.opts.releaseArrays;
+    // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: tilesOnly, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
+  }
+
   private packedGeometry(p: GpuMesh): any {
     const THREE = this.THREE;
     const g = new THREE.BufferGeometry();
@@ -831,14 +969,14 @@ export class OwnGround {
   }
 
   private install(cell: BuiltCell): void {
-    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod)) return;
+    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) return;
     const t0 = performance.now();
     const THREE = this.THREE;
-    // A cell swapping its LOD keeps the picture (same colours): only a cell new to the ring fades in.
+    // A cell swapping its LOD or its detail keeps the picture (same colours): only a cell new to the ring fades in.
     const arriving = !this.resident.has(cell.key) && this.opts.fadeMs > 0;
     this.drop(cell.key);
     const group = new THREE.Group();
-    group.name = `own-ground/${cell.key}/lod${cell.lod}`;
+    group.name = `own-ground/${cell.key}/lod${cell.lod}${cell.detail === 'touch' ? '-touch' : ''}`;
     const materials: any[] = [], textures: any[] = [];
     let uniforms: Record<string, { value: unknown }> | null = null;
     if (cell.mask) {
@@ -864,18 +1002,19 @@ export class OwnGround {
       // Deck bodies, hedges and park furniture stand up; the rest is ground.
       mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
+      this.tile(mesh);
       group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
     }
     group.matrixAutoUpdate = false;
     this.root.add(group);
-    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null, fade });
+    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, detail: cell.detail, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null, fade });
     if (fade) this.fading.add(cell.key);
     this.syncFar();
     this.stats.installMs.push(performance.now() - t0);
-    const asked = this.requestedAt.get(`${cell.key}:${cell.lod}`);
-    if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${cell.lod}`); }
+    const asked = this.requestedAt.get(`${cell.key}:${levelOf(cell.lod, cell.detail)}`);
+    if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
     this.frame.invalidateShadows?.();
     this.host.repaint();
   }
@@ -886,7 +1025,8 @@ export class OwnGround {
     this.root.remove(r.group);
     this.fading.delete(key);
     for (const f of r.fade?.meshes ?? []) f.clone.dispose();
-    r.group.traverse((o: any) => { if (o.isMesh) o.geometry.dispose(); });
+    r.group.traverse((o: any) => { if (o.isMesh && !o.userData?.tile) o.geometry.dispose(); });
+    for (const o of [...r.group.children]) disposeTiles(o);
     for (const m of r.materials) m.dispose();
     for (const t of r.textures) t.dispose();
     this.resident.delete(key);
@@ -1061,7 +1201,7 @@ export class OwnGround {
       const mask = r.textures[0]?.image as { data: Uint8Array; width: number; height: number } | undefined;
       const uniforms = r.maskInfo;
       r.group.traverse((o: any) => {
-        if (!o.isMesh) return;
+        if (!o.isMesh || o.userData?.tile) return; // a tile repeats its owner's triangles
         const layer = o.name as GroundLayer, pos = o.geometry.attributes.position.array as Float32Array, idx = o.geometry.index.array as Uint32Array;
         if (!pos || !idx) return; // released after upload (releaseArrays)
         for (let t = 0; t < idx.length; t += 3) {
@@ -1098,17 +1238,17 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat };
+    return { lod: b.lod, detail: b.detail, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat };
   }
 
   status(): Record<string, unknown> {
     let triangles = 0, bytes = 0;
-    const cells: Record<string, number> = {};
-    for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; }
+    const cells: Record<string, number> = {}, details: Record<string, CellDetail> = {};
+    for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; details[r.key] = r.detail; }
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
-      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false,
-      cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
+      cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,

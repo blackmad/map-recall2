@@ -8,6 +8,9 @@ import { buildRoadSpatialIndex, contactsAt, pickGuardContact, roadsNear, type Ro
 import { buildPlazaIndex, plazaAt, plazaGuardContact, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
 import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
+import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
+import type { Terminal } from '../src/canalRecall/ferry/network';
+import { ijFerryWorld, ijWaterTest, sail, toLatLon as ijToLatLon, toWorld as ijToWorld } from './lib/ferryIjWorld';
 
 const options = { edgeTolerance: 12 };
 const road = (overrides: Partial<RoadContact> = {}): RoadContact => ({
@@ -410,6 +413,45 @@ let plazaSummary = '';
     const moved = leidse.ride(stuck, away, leidse.plazas);
     assert.equal(moved.stops, 0, `the bike moves ${moved.steps} m off the Leidseplein plaza point ${stuck.map(v => v.toFixed(6)).join(',')} toward ${away.map(v => v.toFixed(6)).join(',')}`);
   }
+  // The exact positions decoded from the two reports (camera offset applied
+  // to the map centre; game origin 52.355861,4.8995): the bike is free there.
+  for (const [label, at, world] of [
+    ['Dam (636a57f4)', [52.372813, 4.892422], dam],
+    ['Leidseplein (638590e9)', [52.363933, 4.882884], leidse],
+  ] as const) {
+    const w = world.toWorld(at[0], at[1]);
+    assert.equal(world.blocked(w.x, w.y, world.plazas), false, `${label}: the reported bike position is rideable`);
+    for (const [dLat, dLon] of [[0.00004, 0], [-0.00004, 0], [0, 0.00006], [0, -0.00006]] as const) {
+      const away: [number, number] = [at[0] + dLat, at[1] + dLon];
+      assert.equal(world.ride([at[0], at[1]], away, world.plazas).stops, 0, `${label}: the bike leaves the reported position towards ${away.join(',')}`);
+    }
+  }
+  // Named regression (feedback 3e7f0aa4, 2026-10-25, "I should probably be
+  // able to bike to this red path but I'm blocked"): on the paving between the
+  // Oosterdok busway and the quay at 52.377294,4.903152, the cycle bridge Brug
+  // 228 to the Odebrug dead-ends on a 1 m stub 20 m away (pavedLinks.ts).
+  const odeReport: [number, number] = [52.377294, 4.903152];
+  const ode = plazaWorld(odeReport);
+  const brug228: [number, number] = [52.3770640, 4.9034365]; // mid-span, OSM way 1168346867
+  const stub: [number, number] = [52.3771270, 4.9032636]; // the landing stub 1168346869
+  const viaLanding = (from: [number, number], plazas: PlazaIndex | null) => {
+    const legs = [ode.ride(from, stub, plazas), ode.ride(stub, brug228, plazas)];
+    return { steps: legs[0].steps + legs[1].steps, stops: legs[0].stops + legs[1].stops };
+  };
+  const odeBefore = viaLanding(odeReport, null);
+  const odeAfter = viaLanding(odeReport, ode.plazas);
+  assert.ok(odeBefore.stops > 0, `the bridge is off every corridor from the report without the paved link (${odeBefore.stops}/${odeBefore.steps} m blocked)`);
+  assert.equal(odeAfter.stops, 0, `Odebrug (3e7f0aa4): the bike rides from the report onto Brug 228 (${odeAfter.stops}/${odeAfter.steps} m blocked)`);
+  const odeBusway: [number, number] = [52.3773674, 4.9032464]; // busway 1071670642
+  assert.equal(viaLanding(odeBusway, ode.plazas).stops, 0, 'Odebrug: from the busway onto Brug 228');
+  // Brug 228 carries on to the Odebrug and Oostertoegang on corridors alone.
+  const brugEast: [number, number] = [52.3770047, 4.9035998], oostertoegang: [number, number] = [52.3769706, 4.9037110];
+  assert.equal(ode.ride(brug228, brugEast, null).stops + ode.ride(brugEast, oostertoegang, null).stops, 0, 'Odebrug: Brug 228 leads on to Oostertoegang');
+  // The water beside the landing and the bus station west of the wall stay off-road.
+  for (const [label, at] of [['the Oosterdok inlet east of the quay', [52.3772494, 4.9037387]], ['below the wall, west of the steps', [52.3771200, 4.9030300]]] as const) {
+    const w = ode.toWorld(at[0], at[1]);
+    assert.equal(plazaAt(ode.plazas, w.x, w.y), null, `${label} is not paved link`);
+  }
   // Negatives: closed rings that stay blocked. Frederiksplein is a park
   // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
   // 10,159 m², the largest closed street ring in the centre) loops around a
@@ -444,7 +486,92 @@ let plazaSummary = '';
     }
   }
   assert.ok(interior > 100, `the Piet Heinkade ring has off-road interior to test (${interior} samples)`);
-  plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, Frederiksplein and Piet Heinkade ring blocked`;
+  plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, both report positions free, Odebrug Brug 228 reached in ${odeAfter.steps} m, Frederiksplein and Piet Heinkade ring blocked`;
 }
 
-process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}).\n`);
+let ferrySummary = '';
+{
+  // Ferry docking and hull on the real western IJ: terminals and links from
+  // ferrySegments over the transit extract, water from OSM polygons
+  // (scripts/fixtures/ferry-water-ij.json). Feedback of 2026-10-25, build
+  // 2620cb1; positions decoded from each report's camera and map centre.
+  const world = ijFerryWorld(), water = ijWaterTest();
+  const terminal = (id: string) => { const t = world.terminals.get(id); assert.ok(t, `ferry terminal ${id}`); return t!; };
+  const centraalF4 = terminal('3980457'), centraalF3 = terminal('3980940'), ndsm = terminal('3980786'), buiksloterweg = terminal('3980896');
+  const vessel = (lat: number, lon: number, degrees: number, origin: Terminal): FerryGame => ({
+    travelMode: 'car', track: { segments: world.segments, getNearestRoad: () => null },
+    player: { ...ijToWorld(lat, lon), angle: degrees * Math.PI / 180, speed: 60, vx: 0, vy: 0, maxSpeed: 180, length: 96, width: 27,
+      isBoat: true, ferryOrigin: origin, ferryDeparted: true },
+  });
+  const step = (game: FerryGame, metres = 3) => afterFerryMove(game,
+    { x: game.player.x - Math.cos(game.player.angle) * metres * 3, y: game.player.y - Math.sin(game.player.angle) * metres * 3 }, water);
+  // 1d632c41 "can't turn back into a bike even at ndsm": the vessel stood on
+  // the NDSM-werf quay at 52.401408,4.891088, 24.7 m from the stop, heading
+  // in (284 degrees). Build 2620cb1 and the 20.5 m quay radius both blocked it.
+  const ndsmReport = vessel(52.401408, 4.891088, 284.4, centraalF4);
+  assert.equal(water(ndsmReport.player.x, ndsmReport.player.y), false, 'the NDSM report position is on the quay');
+  assert.equal(step(ndsmReport), 'docked', 'NDSM-werf (1d632c41): the vessel on the quay 24.7 m from the stop docks');
+  assert.equal(Math.hypot(ndsmReport.player.x - ndsm.land.x, ndsmReport.player.y - ndsm.land.y), 0, 'onto the NDSM-werf land access');
+  // 50ea10bf "why isn't it letting me turn back [into a bike] at buikslotweg":
+  // an F4 vessel from Centraal afloat by the Buiksloterweg pontoon, 15 m from
+  // the F3 stop, heading in. Other lines' piers were refused, and on water
+  // docking needed 6 m.
+  const buikReport = vessel(52.382217, 4.903187, 310.8, centraalF4);
+  assert.equal(water(buikReport.player.x, buikReport.player.y), true, 'the Buiksloterweg report position is afloat');
+  assert.equal(step(buikReport), 'docked', 'Buiksloterweg (50ea10bf): an F4 vessel 15 m from the F3 pier docks');
+  assert.equal(Math.hypot(buikReport.player.x - buiksloterweg.land.x, buikReport.player.y - buiksloterweg.land.y), 0, 'onto the Buiksloterweg land access');
+  // Negative: the NDSM quay past its 37 m pier outline (OSM way 588710849) is
+  // an ordinary bank; a vessel nosing into it 55-60 m from the stop is blocked.
+  let farQuay = 0;
+  for (let k = 0; k < 72; k++) {
+    const a = k * Math.PI / 36;
+    for (const metres of [55, 60]) {
+      const x = ndsm.x + Math.cos(a) * metres * 3, y = ndsm.y + Math.sin(a) * metres * 3;
+      if (water(x, y)) continue;
+      // Approach from whichever neighbouring point 3 m away is afloat.
+      const from = Array.from({ length: 8 }, (_, j) => j * Math.PI / 4)
+        .map(d => ({ d, x: x - Math.cos(d) * 9, y: y - Math.sin(d) * 9 })).find(q => water(q.x, q.y));
+      if (!from) continue;
+      const g = vessel(...ijToLatLon({ x, y }), from.d * 180 / Math.PI, centraalF4);
+      assert.equal(afterFerryMove(g, from, water), 'blocked', `the NDSM bank ${metres} m from the stop is not a pier`);
+      farQuay++;
+    }
+  }
+  assert.ok(farQuay >= 4, `the NDSM bank beyond the pier is probed (${farQuay} touches)`);
+  // f80d47da "boat tears through the ground a bit": the vessel ran along the
+  // north shore at 52.392846,4.897173 (OSM IJ edge 0.1 m away) with half its
+  // hull over the quay. Holding course into the bank from 80 m out, the hull's
+  // centre and bow stay afloat on every frame; build 2620cb1 put them ashore
+  // on 143 frames. Riding the bank, the bow glances off instead.
+  const shoreStart = ijToWorld(52.392846, 4.897173), shoreHeading = 290.1 * Math.PI / 180;
+  const fromSea = { x: shoreStart.x - Math.cos(shoreHeading) * 240, y: shoreStart.y - Math.sin(shoreHeading) * 240 };
+  const intoBank = sail({ afterFerryMove, leadingEdge }, world, water, centraalF4, fromSea,
+    [{ x: shoreStart.x + Math.cos(shoreHeading) * 180, y: shoreStart.y + Math.sin(shoreHeading) * 180 }]);
+  assert.equal(intoBank.aground, 0, `f80d47da: the hull stays afloat heading into the north shore (${intoBank.aground} frames ashore)`);
+  assert.equal(intoBank.result, 'stalled', 'f80d47da: the bank stops the vessel');
+  // Every GVB crossing in the western IJ, both ways, sails its GTFS line and
+  // docks at the far pier without the hull going ashore. Leaving Centraal F4
+  // passes its sister stop F3 40 m along the same quay, which must not dock
+  // the vessel straight back (REARM_RADIUS hysteresis).
+  const crossings: string[] = [];
+  for (const link of world.links) {
+    if (link.ref === 'F7') continue; // its GTFS shape runs via Distelweg and the Centraal piers; the boat docks at Distelweg
+    for (const [from, to, points] of [[link.from, link.to, link.points], [link.to, link.from, [...link.points].reverse()]] as const) {
+      const boarding: FerryGame = { travelMode: 'car', track: { segments: world.segments, getNearestRoad: () => null },
+        player: { x: from.x, y: from.y, angle: 0, speed: 20, vx: 0, vy: 0, maxSpeed: 260, length: 6, width: 2 } };
+      const shore = nearestWater(from, water);
+      assert.ok(shore, `${link.ref} ${from.name} has water in boarding reach`);
+      boarding.player.angle = shore!.angle ?? Math.atan2(from.y - from.land.y, from.x - from.land.x);
+      assert.equal(beginFerryFrame(boarding, water), true, `${link.ref}: boards at ${from.name}`);
+      const v = sail({ afterFerryMove, leadingEdge }, world, water, boarding.player.ferryOrigin!, boarding.player, points.slice(1), { maxFrames: 60 * 90 });
+      assert.equal(v.result, 'docked', `${link.ref} ${from.name} -> ${to.name} docks (${v.result}, ${v.endMetres.toFixed(1)} m from a pier)`);
+      assert.equal(v.dockedAt, to.name, `${link.ref} ${from.name} -> ${to.name} docks at ${to.name}, not ${v.dockedAt}`);
+      assert.equal(v.aground, 0, `${link.ref} ${from.name} -> ${to.name}: the hull stays afloat (${v.aground} frames ashore)`);
+      crossings.push(`${link.ref}`);
+    }
+  }
+  assert.ok(Math.hypot(centraalF3.x - centraalF4.x, centraalF3.y - centraalF4.y) < 150, 'Centraal F3 and F4 share a quay inside the re-arm radius');
+  ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock`;
+}
+
+process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${ferrySummary}).\n`);

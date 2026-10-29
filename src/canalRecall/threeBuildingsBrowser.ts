@@ -47,6 +47,7 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
+import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
 import { detailBlock, type DetailBlock } from './detailRing.js';
 
@@ -64,6 +65,34 @@ const DETAIL_ZOOM = 16;
 const EXTRAS_PREFIX = 'extras:';
 const COARSE_PREFIX = 'coarse:';
 const chunkMode = (key: string): 'walls' | 'extras' | 'coarse' => key.startsWith(EXTRAS_PREFIX) ? 'extras' : key.startsWith(COARSE_PREFIX) ? 'coarse' : 'walls';
+/**
+ * Far chunks' facade level (CANAL-RECALL-7), chosen like the own ground's `detail` (gameGround.ts
+ * `detailFlag`): a touch device (iPad, phone: `pointer: coarse`) builds the city away from the rider's
+ * detailed block as a cheaper shell; a desktop builds every chunk at `full`, unchanged.
+ * `?facadeDetail=full|touch` (or `window.__canalRecallFacadeDetail` before load) is the A/B.
+ */
+export type FacadeDetail = 'full' | 'touch';
+function facadeDetailFlag(): FacadeDetail {
+  const g = globalThis as { __canalRecallFacadeDetail?: string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
+  const asked = g.__canalRecallFacadeDetail ?? (g.location?.search ? new URLSearchParams(g.location.search).get('facadeDetail') : null);
+  if (asked === 'full' || asked === 'touch') return asked;
+  return g.matchMedia?.('(pointer: coarse)')?.matches ? 'touch' : 'full';
+}
+/**
+ * Facade chunk tiles per side (CANAL-RECALL-7, 2026-10-29): a merged chunk can draw as `n`×`n` child meshes over its
+ * own buffers (rendererShared/tiledGeometry.ts) so three.js culls the tiles off screen, a building never split across
+ * two; the shared frame picks whole or tiles per chunk and frame. The chunk mesh stays whole for picking, `hidden`
+ * flags, highlight passes and fades. 3 on every device; `?facadeTiles=1..4` (or
+ * `window.__canalRecallFacadeTiles` before load) overrides it, `?facadeTiles=1` draws one mesh per chunk as before.
+ */
+const FACADE_TILES = 3;
+/** Chunks smaller than this stay one mesh (a draw call per tile costs more than the culling saves). */
+const FACADE_TILE_MIN_TRIANGLES = 4000;
+function facadeTilesFlag(): number {
+  const g = globalThis as { __canalRecallFacadeTiles?: number | string; location?: { search?: string } };
+  const asked = Number(g.__canalRecallFacadeTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('facadeTiles') : NaN));
+  return Number.isInteger(asked) && asked >= 1 && asked <= 4 ? asked : FACADE_TILES;
+}
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
 const TRANSITION = transitionOn();
@@ -231,7 +260,7 @@ const KIT_HIDE_SET: ReadonlySet<string> = new Set(KIT_HIDE_IDS);
 /** What stays after upload: counts only, never the typed arrays. */
 type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
 
-export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
+export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number; detail: FacadeDetail };
 
 /**
  * The game's colour and tint-mask texture arrays for a look (also used by the gallery pages).
@@ -409,9 +438,18 @@ export class ThreeBuildings {
   private detailTiles = new Set<string>();
   private installedDetailIds = new Set<string>();
   private readonly detailZoom = typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches ? 17 : DETAIL_ZOOM;
+  /**
+   * What the chunks away from the rider's detailed block draw (`facadeDetailFlag()` above): `touch`
+   * gives them one quad per wall and their flat lid; `full` is the desktop build, unchanged.
+   */
+  private readonly detail: FacadeDetail;
+  /** Facade chunk tiles per side (facadeTilesFlag). */
+  private readonly facadeTiles = facadeTilesFlag();
 
-  constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
+
+  constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural', options: { detail?: FacadeDetail } = {}) {
     this.look = this.requestedLook = look;
+    this.detail = options.detail ?? facadeDetailFlag();
     this.layer = this.makeLayer();
     // Nearest-ahead chunk first (chunkRank); `?lookAhead=0` keeps request order.
     this.pending.setRank(key => this.lookAheadOn === false ? NaN : this.chunkRank(key));
@@ -849,7 +887,7 @@ export class ThreeBuildings {
     return {
       kitVertices: this.chunks.get(KIT_KEY)?.info.vertexCount ?? 0, chunks: this.chunks.size, buildings, walls, quads, vertices,
       geometryMB: bytes / 1048576, textureMB: this.textureMB,
-      drawCalls: info?.calls ?? 0, triangles: info?.triangles ?? 0, buildMs: this.lastBuildMs,
+      drawCalls: info?.calls ?? 0, triangles: info?.triangles ?? 0, buildMs: this.lastBuildMs, detail: this.detail,
     };
   }
 
@@ -1059,6 +1097,18 @@ export class ThreeBuildings {
       const id=String(f.properties.id);return ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id);
     }) ?? [];
   }
+  /**
+   * The build mode for a chunk key (CANAL-RECALL-7). The detailed walls and their extras stay `walls` /
+   * `extras`; on a `touch` device the z14 city shells between them are `shell`: one quad per wall and the
+   * building's own flat lid, still in its window cell and wall tint. A chunk that becomes near rebuilds
+   * at full through the usual `near:` path, so one key never holds two levels at once. Desktop (`full`)
+   * keeps `coarse` and is byte-identical.
+   */
+  private modeFor(key: string): 'walls' | 'extras' | 'coarse' | 'shell' {
+    const mode = chunkMode(key);
+    return mode === 'coarse' && this.detail === 'touch' ? 'shell' : mode;
+  }
+
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     const worker = this.chunkWorker();
@@ -1070,7 +1120,7 @@ export class ThreeBuildings {
       const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
       this.workerBusy = true;
-      worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key),
+      worker.postMessage({ key, gen, ...options, features: source, mode: this.modeFor(key),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
         layers: this.kitLayers() });
@@ -1080,7 +1130,7 @@ export class ThreeBuildings {
     const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
     const result = key === KIT_KEY ? {chunk:this.buildKits(source),boundParentIds:[]}
       : key.startsWith(BOAT_PREFIX) ? {chunk:this.buildBoats(key.slice(BOAT_PREFIX.length)),boundParentIds:[]}
-      : buildTransportedEnvelopeChunk(source,{...options,mode:chunkMode(key)});
+      : buildTransportedEnvelopeChunk(source,{...options,mode:this.modeFor(key)});
     this.install(key, source, result.chunk, performance.now() - t0, options, result.boundParentIds);
   }
 
@@ -1141,6 +1191,9 @@ export class ThreeBuildings {
       lifted += n;
       attribute.needsUpdate = true;
       entry.mesh.geometry.computeBoundingSphere();
+      // Tiles were measured at install: grow them by the largest lift since (a few metres; conservative, never short).
+      const range = this.liftRange(lift.applied);
+      growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
       // Settled: let the CPU copy go after the next upload.
       if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
     }
@@ -1266,6 +1319,8 @@ export class ThreeBuildings {
     const sphere = boundingSphereOf(chunk.positions);
     geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     const mesh = new THREE.Mesh(geometry, this.material);
+    // Culled tiles over the same buffers (FACADE_TILES), measured while the CPU arrays still exist; a building stays in one tile.
+    cutMesh(THREE, mesh, this.facadeTiles, FACADE_TILE_MIN_TRIANGLES, { groups: chunk.ranges, release: true });
     mesh.userData ??= {};
     mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;
     mesh.userData.boundParentIds = boundParentIds;
@@ -1277,6 +1332,7 @@ export class ThreeBuildings {
     mesh.userData.hostOpeningRevision = options?.hostOpeningRevision;
     mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
+    mesh.userData.kinds = chunk.kinds;
     mesh.frustumCulled = true;
     if (this.lit) {
       // Coarse shells cover the whole city in a few huge meshes: drawing them
@@ -1362,7 +1418,7 @@ export class ThreeBuildings {
     this.endFade(key, false);
     const held = this.chunks.get(key);
     if (!held) return;
-    if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
+    if (held.mesh) { this.scene?.remove(held.mesh); disposeTiles(held.mesh); held.mesh.geometry.dispose(); }
     this.chunks.delete(key);
     this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();

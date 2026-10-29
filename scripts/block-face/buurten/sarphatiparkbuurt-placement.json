@@ -1,0 +1,138 @@
+{
+ "buurt": "sarphatiparkbuurt",
+ "library": "de-pijp",
+ "generatedAt": "2026-10-29T12:40:47.081Z",
+ "seconds": 56.15,
+ "totals": {
+  "faces": 3,
+  "pands": 37,
+  "placed": 21
+ },
+ "faces": [
+  {
+   "face": "cuyp-130-168",
+   "street": "Albert Cuypstraat",
+   "pands": 17,
+   "placed": 10,
+   "held": 7,
+   "runs": [
+    {
+     "face": "cuyp-130-168-r1",
+     "pands": [
+      "0363100012164103",
+      "0363100012163353"
+     ],
+     "passed": true,
+     "triangles": 3392
+    },
+    {
+     "face": "cuyp-130-168-r2",
+     "pands": [
+      "0363100012164227",
+      "0363100012155461",
+      "0363100012162980",
+      "0363100012167434",
+      "0363100012158812",
+      "0363100012158985",
+      "0363100012157319",
+      "0363100012160055"
+     ],
+     "passed": true,
+     "triangles": 16609
+    }
+   ],
+   "seconds": 21.84,
+   "byType": {
+    "pijp-1892-plain-anchor": 5,
+    "pijp-1892-banded-keystone": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 3
+   }
+  },
+  {
+   "face": "wou-32-52",
+   "street": "Van Woustraat",
+   "pands": 10,
+   "placed": 5,
+   "held": 5,
+   "runs": [
+    {
+     "face": "wou-32-52-r1",
+     "pands": [
+      "0363100012161157",
+      "0363100012160499",
+      "0363100012157561"
+     ],
+     "passed": true,
+     "triangles": 7792
+    },
+    {
+     "face": "wou-32-52-r2",
+     "pands": [
+      "0363100012236557",
+      "0363100012158922"
+     ],
+     "passed": true,
+     "triangles": 3373
+    }
+   ],
+   "seconds": 18.39,
+   "byType": {
+    "pijp-1885-segmental-keystone": 3,
+    "pijp-1882-keystone-lintel": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wou-54-72",
+   "street": "Van Woustraat",
+   "pands": 10,
+   "placed": 6,
+   "held": 4,
+   "runs": [
+    {
+     "face": "wou-54-72-r1",
+     "pands": [
+      "0363100012156067",
+      "0363100012158363",
+      "0363100012167117",
+      "0363100012166104"
+     ],
+     "passed": true,
+     "triangles": 9081
+    },
+    {
+     "face": "wou-54-72-r2",
+     "pands": [
+      "0363100012152366",
+      "0363100012158143"
+     ],
+     "passed": true,
+     "triangles": 4506
+    }
+   ],
+   "seconds": 15.91,
+   "byType": {
+    "pijp-1886-segmental-mansard": 6
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 1
+   }
+  }
+ ]
+}

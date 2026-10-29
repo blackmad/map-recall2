@@ -1,0 +1,1325 @@
+{
+ "method": "ride-visibility/v1: teachable destinations ≤ 6 km of the Dam, seeded pairs 1–6 km, bike graph shortest paths, 5 m samples, walls ≥ 2 m within 60 m on their outer side with a 2D footprint sightline; score = Σ sample m × passes × visible facing-wall m",
+ "routes": 2000,
+ "routeKm": 9271,
+ "generatedBy": "scripts/building-recipes/landmark-targets.ts",
+ "openCandidates": 197,
+ "targets": [
+  {
+   "rank": 1,
+   "name": "Prins en Keizer",
+   "pandIds": [
+    "w1489746218",
+    "w1489746219",
+    "w1489746221",
+    "w1489746222"
+   ],
+   "score": 8433054,
+   "routes": 164,
+   "routeMetres": 34010,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 13379,
+   "heightM": 9,
+   "monument": null,
+   "notable": "Raised parts or underpass risk, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 2,
+   "name": "Nederlandse Film en Televisie Academie",
+   "pandIds": [
+    "0363100012170259"
+   ],
+   "score": 2020816,
+   "routes": 235,
+   "routeMetres": 26915,
+   "state": "generic",
+   "sources": [
+    "landmark-backlog"
+   ],
+   "footprintM2": 2164,
+   "heightM": null,
+   "monument": null,
+   "notable": "university; prominence 308; Film and Television Academy; school occupying rooms in an ordinary building.",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 3,
+   "name": "Academie van Bouwkunst",
+   "pandIds": [
+    "0363100012171994"
+   ],
+   "score": 1228267,
+   "routes": 173,
+   "routeMetres": 24665,
+   "state": "generic",
+   "sources": [
+    "landmark-backlog"
+   ],
+   "footprintM2": 1925,
+   "heightM": null,
+   "monument": null,
+   "notable": "university; prominence 293; Academy of Architecture; school in ordinary building, no BAG pand matched at point.",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 4,
+   "name": "Kalverpassage",
+   "pandIds": [
+    "0363100012165086"
+   ],
+   "score": 1226981,
+   "routes": 232,
+   "routeMetres": 36455,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 5475,
+   "heightM": 29.4,
+   "monument": null,
+   "notable": "shops, housing, offices; Mapped POI: Rasphuispoort, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 5,
+   "name": "Atrium Parkeergarage",
+   "pandIds": [
+    "0363100012244160"
+   ],
+   "score": 1145435,
+   "routes": 52,
+   "routeMetres": 12685,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 6681,
+   "heightM": 67.4,
+   "monument": null,
+   "notable": "other use; parking; Tall skyline building",
+   "tier": "large recipe (tall); bespoke only if it is a recognised skyline icon"
+  },
+  {
+   "rank": 6,
+   "name": "Belastingdienst",
+   "pandIds": [
+    "w57864988"
+   ],
+   "score": 1088175,
+   "routes": 50,
+   "routeMetres": 13315,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 14325,
+   "heightM": 9,
+   "monument": null,
+   "notable": "Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 7,
+   "name": "Weesperplein",
+   "pandIds": [
+    "w268998785"
+   ],
+   "score": 1030796,
+   "routes": 152,
+   "routeMetres": 21655,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 4122,
+   "heightM": 9,
+   "monument": null,
+   "notable": "Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 8,
+   "name": "Hirschgebouw",
+   "pandIds": [
+    "0363100012165488"
+   ],
+   "score": 1020070,
+   "routes": 223,
+   "routeMetres": 33310,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2738,
+   "heightM": 27.5,
+   "monument": null,
+   "notable": "other use, offices, shops; Complex footprint, Unusual mapped roof: quadruple_saltbox",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 9,
+   "name": "DoubleTree by Hilton Amsterdam Centraal Station",
+   "pandIds": [
+    "w1487606275",
+    "w1487642120",
+    "w1487642116",
+    "w1487642112",
+    "w1487642118",
+    "w1487642115",
+    "w779659694",
+    "w1487606284",
+    "w240467636",
+    "w1487642117",
+    "w1487642119",
+    "w1487642114",
+    "w1487606285",
+    "w453809679",
+    "w1487642121",
+    "w1487642113",
+    "w1487606316"
+   ],
+   "score": 899286,
+   "routes": 28,
+   "routeMetres": 3975,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 51101,
+   "heightM": 27,
+   "monument": null,
+   "notable": "Raised parts or underpass risk, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 10,
+   "name": "De Makroon",
+   "pandIds": [
+    "0363100012242951"
+   ],
+   "score": 797783,
+   "routes": 94,
+   "routeMetres": 13650,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 6249,
+   "heightM": 21.3,
+   "monument": null,
+   "notable": "housing, shops, other use; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 11,
+   "name": "Y-Helling",
+   "pandIds": [
+    "0363100012238702"
+   ],
+   "score": 543958,
+   "routes": 69,
+   "routeMetres": 9675,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 4393,
+   "heightM": 4.3,
+   "monument": null,
+   "notable": "industry; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 12,
+   "name": "OBA Roelof Hartplein",
+   "pandIds": [
+    "0363100012148010"
+   ],
+   "score": 510391,
+   "routes": 101,
+   "routeMetres": 12755,
+   "state": "generic",
+   "sources": [
+    "landmark-backlog"
+   ],
+   "footprintM2": 2140,
+   "heightM": null,
+   "monument": null,
+   "notable": "library; prominence 182; Neighbourhood library occupying part of an ordinary plain building; not a distinctive standalone building.; public building",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 13,
+   "name": "Byzantium",
+   "pandIds": [
+    "0363100012135250",
+    "0363100012236811"
+   ],
+   "score": 506158,
+   "routes": 99,
+   "routeMetres": 10635,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3822,
+   "heightM": 21.3,
+   "monument": null,
+   "notable": "housing, other use; Courtyard/open-space geometry, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 14,
+   "name": "AkzoNobel Center",
+   "pandIds": [
+    "0363100012240015",
+    "0363100012240149"
+   ],
+   "score": 461617,
+   "routes": 43,
+   "routeMetres": 6305,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 11460,
+   "heightM": 41.5,
+   "monument": null,
+   "notable": "other use; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 15,
+   "name": "Het Dok",
+   "pandIds": [
+    "0363100012252442"
+   ],
+   "score": 451371,
+   "routes": 28,
+   "routeMetres": 8050,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3347,
+   "heightM": 64.9,
+   "monument": null,
+   "notable": "housing, assembly/events, other use; Tall skyline building, Complex footprint",
+   "tier": "large recipe (tall); bespoke only if it is a recognised skyline icon"
+  },
+  {
+   "rank": 16,
+   "name": "Het Nieuwe Huis",
+   "pandIds": [
+    "w277117928"
+   ],
+   "score": 449190,
+   "routes": 101,
+   "routeMetres": 11830,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2136,
+   "heightM": 39.1,
+   "monument": null,
+   "notable": "Mapped POI: OBA Roelof Hartplein, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 17,
+   "name": "Pakhuis Australië",
+   "pandIds": [
+    "0363100012139498"
+   ],
+   "score": 422695,
+   "routes": 46,
+   "routeMetres": 6690,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3149,
+   "heightM": 34,
+   "monument": null,
+   "notable": "housing, offices, shops; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 18,
+   "name": "De Joodse Invalide",
+   "pandIds": [
+    "0363100012170299"
+   ],
+   "score": 399015,
+   "routes": 74,
+   "routeMetres": 8925,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2657,
+   "heightM": 31.5,
+   "monument": null,
+   "notable": "other use, housing; Courtyard/open-space geometry, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 19,
+   "name": "Sint-Nicolaaslyceum",
+   "pandIds": [
+    "0363100012239853"
+   ],
+   "score": 395611,
+   "routes": 84,
+   "routeMetres": 8645,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3154,
+   "heightM": 22.4,
+   "monument": null,
+   "notable": "other use, education; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 20,
+   "name": "ABN AMRO World HQ",
+   "pandIds": [
+    "w754717732",
+    "w754717724",
+    "w754717738",
+    "w754717725"
+   ],
+   "score": 385863,
+   "routes": 42,
+   "routeMetres": 7325,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3274,
+   "heightM": 70,
+   "monument": null,
+   "notable": "Tall skyline building, Complex footprint",
+   "tier": "large recipe (tall); bespoke only if it is a recognised skyline icon"
+  },
+  {
+   "rank": 21,
+   "name": "Barlaeus Gymnasium",
+   "pandIds": [
+    "0363100012169565"
+   ],
+   "score": 328766,
+   "routes": 81,
+   "routeMetres": 9425,
+   "state": "generic",
+   "sources": [
+    "landmark-backlog"
+   ],
+   "footprintM2": 872,
+   "heightM": null,
+   "monument": null,
+   "notable": "Large-tier recipe candidate; see scripts/landmarks/schools.json.; public building",
+   "tier": "building type / ordinary kit"
+  },
+  {
+   "rank": 22,
+   "name": "KPN Teleport",
+   "pandIds": [
+    "0363100012165158"
+   ],
+   "score": 317215,
+   "routes": 28,
+   "routeMetres": 4620,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3691,
+   "heightM": 28.9,
+   "monument": null,
+   "notable": "offices; Courtyard/open-space geometry, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 23,
+   "name": "Sarphati Plaza",
+   "pandIds": [
+    "0363100012182840"
+   ],
+   "score": 315350,
+   "routes": 143,
+   "routeMetres": 9585,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 890,
+   "heightM": 39.1,
+   "monument": null,
+   "notable": "other use, housing, offices; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 24,
+   "name": "Gebouw Parnas",
+   "pandIds": [
+    "0363100012153698"
+   ],
+   "score": 311678,
+   "routes": 52,
+   "routeMetres": 4820,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 4337,
+   "heightM": 29.9,
+   "monument": "Gemeentelijk monument 222302",
+   "notable": "Gemeentelijk monument 222302 (1972); assembly/events, other use, offices; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  },
+  {
+   "rank": 25,
+   "name": "Hoofdgebouw",
+   "pandIds": [
+    "0363100012136232"
+   ],
+   "score": 273023,
+   "routes": 19,
+   "routeMetres": 4785,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 12051,
+   "heightM": 64.7,
+   "monument": null,
+   "notable": "education; Tall skyline building, Courtyard/open-space geometry, Complex footprint",
+   "tier": "large recipe (tall); bespoke only if it is a recognised skyline icon"
+  },
+  {
+   "rank": 26,
+   "name": "The Edge",
+   "pandIds": [
+    "0363100012239633"
+   ],
+   "score": 266242,
+   "routes": 23,
+   "routeMetres": 3155,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 6249,
+   "heightM": 55.3,
+   "monument": null,
+   "notable": "other use, assembly/events, offices; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 27,
+   "name": "De Valerius",
+   "pandIds": [
+    "0363100012251533"
+   ],
+   "score": 260722,
+   "routes": 31,
+   "routeMetres": 4925,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3426,
+   "heightM": 19.3,
+   "monument": null,
+   "notable": "housing, assembly/events, healthcare; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 28,
+   "name": "WTC (H)",
+   "pandIds": [
+    "w754856621"
+   ],
+   "score": 247798,
+   "routes": 38,
+   "routeMetres": 4490,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 4822,
+   "heightM": 26,
+   "monument": null,
+   "notable": "Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 29,
+   "name": "Apollo",
+   "pandIds": [
+    "0363100012148632"
+   ],
+   "score": 238976,
+   "routes": 76,
+   "routeMetres": 8180,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3014,
+   "heightM": 24.5,
+   "monument": null,
+   "notable": "lodging; Courtyard/open-space geometry, Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 30,
+   "name": "Amsterdams Lyceum",
+   "pandIds": [
+    "0363100012149878"
+   ],
+   "score": 237209,
+   "routes": 32,
+   "routeMetres": 4045,
+   "state": "generic",
+   "sources": [
+    "landmark-backlog"
+   ],
+   "footprintM2": 1500,
+   "heightM": null,
+   "monument": null,
+   "notable": "Large-tier recipe candidate; see scripts/landmarks/schools.json.; public building",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 31,
+   "name": "Autopon",
+   "pandIds": [
+    "0363100012236735"
+   ],
+   "score": 227669,
+   "routes": 52,
+   "routeMetres": 5610,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2958,
+   "heightM": 23.7,
+   "monument": "Rijksmonument 532201",
+   "notable": "Rijksmonument 532201 (1955); housing, sport; Complex footprint",
+   "tier": "bespoke: Rijksmonument, ornament carries the likeness"
+  },
+  {
+   "rank": 32,
+   "name": "Tolhuis Paviljoen",
+   "pandIds": [
+    "0363100012119827"
+   ],
+   "score": 213062,
+   "routes": 41,
+   "routeMetres": 3620,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2703,
+   "heightM": 9.2,
+   "monument": null,
+   "notable": "assembly/events; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 33,
+   "name": "Pieter Nieuwlandcollege",
+   "pandIds": [
+    "0363100012078546"
+   ],
+   "score": 205476,
+   "routes": 40,
+   "routeMetres": 3875,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 3200,
+   "heightM": 12.1,
+   "monument": "Gemeentelijk monument 200659",
+   "notable": "Gemeentelijk monument 200659 (1958); education; Complex footprint",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  },
+  {
+   "rank": 34,
+   "name": "Forum",
+   "pandIds": [
+    "0363100012125840"
+   ],
+   "score": 205026,
+   "routes": 19,
+   "routeMetres": 2790,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 5660,
+   "heightM": 29.9,
+   "monument": null,
+   "notable": "offices; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 35,
+   "name": "Atlanta",
+   "pandIds": [
+    "0363100012080492"
+   ],
+   "score": 204779,
+   "routes": 80,
+   "routeMetres": 6510,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 870,
+   "heightM": 35.4,
+   "monument": "Gemeentelijk monument 224005",
+   "notable": "Gemeentelijk monument 224005 (1929); offices, assembly/events; Simple mapped massing; facade and recognition still need visual review",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  },
+  {
+   "rank": 36,
+   "name": "UN Studio",
+   "pandIds": [
+    "w1001115825",
+    "w1001115823"
+   ],
+   "score": 203578,
+   "routes": 43,
+   "routeMetres": 4185,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 1474,
+   "heightM": 82.5,
+   "monument": null,
+   "notable": "Tall skyline building",
+   "tier": "large recipe (tall); bespoke only if it is a recognised skyline icon"
+  },
+  {
+   "rank": 37,
+   "name": "Loods 6",
+   "pandIds": [
+    "0363100012142095"
+   ],
+   "score": 194908,
+   "routes": 12,
+   "routeMetres": 2090,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 6975,
+   "heightM": 15.9,
+   "monument": "Gemeentelijk monument 200635",
+   "notable": "Gemeentelijk monument 200635 (1925); industry, shops, other use; Complex footprint",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  },
+  {
+   "rank": 38,
+   "name": "vm RK Technische School Dominicus Savius, nu Vliegbasis De Huygens",
+   "pandIds": [
+    "0363100012113136"
+   ],
+   "score": 185529,
+   "routes": 17,
+   "routeMetres": 2995,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2717,
+   "heightM": 17.2,
+   "monument": "Gemeentelijk monument 200564",
+   "notable": "Gemeentelijk monument 200564 (1968); other use; Complex footprint",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  },
+  {
+   "rank": 39,
+   "name": "Brand bij C&A",
+   "pandIds": [
+    "0363100012165746"
+   ],
+   "score": 182750,
+   "routes": 48,
+   "routeMetres": 6330,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 2868,
+   "heightM": 32.2,
+   "monument": null,
+   "notable": "offices, shops, assembly/events; Complex footprint",
+   "tier": "large recipe"
+  },
+  {
+   "rank": 40,
+   "name": "Strafgevangenis",
+   "pandIds": [
+    "0363100012236656"
+   ],
+   "score": 181795,
+   "routes": 37,
+   "routeMetres": 3910,
+   "state": "generic",
+   "sources": [
+    "dominant-backlog"
+   ],
+   "footprintM2": 4702,
+   "heightM": 14.5,
+   "monument": "Gemeentelijk monument 200752",
+   "notable": "Gemeentelijk monument 200752 (1885); education; Complex footprint",
+   "tier": "large recipe: gemeentelijk monument, measured façade; bespoke only if the photo shows sculpture"
+  }
+ ],
+ "notBuildings": [
+  {
+   "name": "Kunstenaarsverzet",
+   "score": 2041989,
+   "routes": 188,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Wind phone Hoftuin",
+   "score": 334001,
+   "routes": 162,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Grenspaal",
+   "score": 191240,
+   "routes": 234,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Plaquette 7 mei 1945",
+   "score": 185814,
+   "routes": 220,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Plaquette Chet Baker",
+   "score": 149861,
+   "routes": 152,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "OBA Spaarndammerbuurt",
+   "score": 78271,
+   "routes": 55,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Monument voor Damslachtoffers 7 mei 1945",
+   "score": 73313,
+   "routes": 80,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "De Knoop",
+   "score": 57870,
+   "routes": 4,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "Bevrijdingslinde",
+   "score": 48933,
+   "routes": 40,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  },
+  {
+   "name": "P.W. Janssen",
+   "score": 44065,
+   "routes": 77,
+   "note": "small monument / sculpture / plaque: a prop or sign tier, not a building"
+  }
+ ],
+ "bespokeLowVisibility": [
+  {
+   "name": "Buiksloterkerk",
+   "modelId": "buiksloterkerk",
+   "pandIds": [
+    "0363100012160472"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Filmhuis Cavia / former twin-school complex",
+   "modelId": "cavia",
+   "pandIds": [
+    "0363100012117132",
+    "0363100012118954",
+    "0363100012164519"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Houten Huys — Begijnhof 34",
+   "modelId": "houten-huys",
+   "pandIds": [
+    "0363100012175498",
+    "0363100012175499"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Faralda NDSM Crane Hotel Amsterdam",
+   "modelId": "faralda-crane-hotel",
+   "pandIds": [
+    "0363100012241774"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Haparandaweg 9",
+   "modelId": "haparandaweg-9",
+   "pandIds": [
+    "0363100012122663"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Haparandaweg 11",
+   "modelId": "haparandaweg-11",
+   "pandIds": [
+    "0363100012104964",
+    "0363100012104965"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Haparandaweg 13",
+   "modelId": "haparandaweg-13",
+   "pandIds": [
+    "0363100012104964"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Kazerne Osdorp",
+   "modelId": "fire-station-osdorp",
+   "pandIds": [
+    "0363100012096223"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Kazerne Weesp",
+   "modelId": "fire-station-weesp",
+   "pandIds": [
+    "0457100000062823"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Kazerne Driemond",
+   "modelId": "fire-station-driemond",
+   "pandIds": [
+    "0363100012070690"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Kazerne Anton",
+   "modelId": "fire-station-anton",
+   "pandIds": [
+    "0363100012244404"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "VOC-kade 600",
+   "modelId": "voc-kade-600",
+   "pandIds": [
+    "0363100012252518"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Grasweg 116-124",
+   "modelId": "grasweg-116",
+   "pandIds": [
+    "0363100012252853"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Oostenburgermiddenstraat 228",
+   "modelId": "oostenburgermiddenstraat-228",
+   "pandIds": [
+    "0363100012254998"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Motorkade 1",
+   "modelId": "motorkade-1",
+   "pandIds": [
+    "0363100012247879"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Noord-Zuid Hollandsch Koffiehuis and the Stationsplein pavilions",
+   "modelId": "stationsplein-paviljoens",
+   "pandIds": [
+    "w57864041",
+    "w752700326",
+    "w752700330",
+    "w752700334",
+    "w752700335"
+   ],
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0
+  },
+  {
+   "name": "Multatuli Museum — Korsjespoortsteeg20",
+   "modelId": "multatuli",
+   "pandIds": [
+    "0363100012167929",
+    "0363100012167937",
+    "0363100012167938"
+   ],
+   "score": 774,
+   "routeMetres": 105,
+   "wallM": 15,
+   "routes": 12
+  },
+  {
+   "name": "Uilenburger Synagoge",
+   "modelId": "uilenburger-synagoge",
+   "pandIds": [
+    "0363100012181889"
+   ],
+   "score": 849,
+   "routeMetres": 45,
+   "wallM": 34,
+   "routes": 3
+  },
+  {
+   "name": "Da Costakade 13",
+   "modelId": "da-costakade-13",
+   "pandIds": [
+    "0363100012166570"
+   ],
+   "score": 1273,
+   "routeMetres": 85,
+   "wallM": 18,
+   "routes": 1
+  },
+  {
+   "name": "Wine buyers’ guildhall / Wijnkopersgildehuis",
+   "modelId": "wine-guildhall",
+   "pandIds": [
+    "0363100012178459",
+    "0363100012178460",
+    "0363100012178461"
+   ],
+   "score": 1314,
+   "routeMetres": 155,
+   "wallM": 17,
+   "routes": 31
+  },
+  {
+   "name": "Museum De Dageraad",
+   "modelId": "dageraad",
+   "pandIds": [
+    "0363100012076951"
+   ],
+   "score": 1414,
+   "routeMetres": 220,
+   "wallM": 9,
+   "routes": 4
+  },
+  {
+   "name": "MidWest",
+   "modelId": "midwest",
+   "pandIds": [
+    "0363100012081251",
+    "0363100012142520"
+   ],
+   "score": 2736,
+   "routeMetres": 125,
+   "wallM": 30,
+   "routes": 5
+  },
+  {
+   "name": "Meerpadkerk",
+   "modelId": "meerpadkerk",
+   "pandIds": [
+    "0363100012162810"
+   ],
+   "score": 3431,
+   "routeMetres": 375,
+   "wallM": 19,
+   "routes": 7
+  },
+  {
+   "name": "Petruskerk",
+   "modelId": "petruskerk",
+   "pandIds": [
+    "0363100012163298"
+   ],
+   "score": 4020,
+   "routeMetres": 515,
+   "wallM": 16,
+   "routes": 11
+  },
+  {
+   "name": "Herepoort / Bergpoort — Rijksmuseum garden",
+   "modelId": "herepoort-bergpoort",
+   "pandIds": [
+    "0363100012229949"
+   ],
+   "score": 6632,
+   "routeMetres": 1425,
+   "wallM": 9,
+   "routes": 21
+  },
+  {
+   "name": "Asterweg 23",
+   "modelId": "asterweg-23",
+   "pandIds": [
+    "0363100012064810"
+   ],
+   "score": 6862,
+   "routeMetres": 270,
+   "wallM": 143,
+   "routes": 2
+  },
+  {
+   "name": "Orgelpark / Parkkerk",
+   "modelId": "orgelpark",
+   "pandIds": [
+    "0363100012082170"
+   ],
+   "score": 6934,
+   "routeMetres": 340,
+   "wallM": 32,
+   "routes": 4
+  },
+  {
+   "name": "English Reformed Church",
+   "modelId": "english-reformed-church",
+   "pandIds": [
+    "0363100012168141",
+    "0363100012175668"
+   ],
+   "score": 7010,
+   "routeMetres": 690,
+   "wallM": 15,
+   "routes": 40
+  },
+  {
+   "name": "Klimhal Amsterdam",
+   "modelId": "klimhal",
+   "pandIds": [
+    "0363100012150166"
+   ],
+   "score": 7311,
+   "routeMetres": 190,
+   "wallM": 82,
+   "routes": 2
+  },
+  {
+   "name": "Maarten Lutherkerk",
+   "modelId": "maarten-lutherkerk",
+   "pandIds": [
+    "0363100012135926"
+   ],
+   "score": 7389,
+   "routeMetres": 315,
+   "wallM": 91,
+   "routes": 4
+  },
+  {
+   "name": "Pianola Museum",
+   "modelId": "pianola-museum",
+   "pandIds": [
+    "0363100012173588"
+   ],
+   "score": 9364,
+   "routeMetres": 800,
+   "wallM": 12,
+   "routes": 28
+  },
+  {
+   "name": "De Otter",
+   "modelId": "de-otter",
+   "pandIds": [
+    "0363100012096312"
+   ],
+   "score": 9970,
+   "routeMetres": 790,
+   "wallM": 26,
+   "routes": 15
+  },
+  {
+   "name": "Odessa",
+   "modelId": "odessa",
+   "pandIds": [
+    "0363100012106052"
+   ],
+   "score": 11237,
+   "routeMetres": 935,
+   "wallM": 12,
+   "routes": 19
+  },
+  {
+   "name": "Sint Jorishof / historic courtyard complex",
+   "modelId": "sint-jorishof",
+   "pandIds": [
+    "0363100012165371",
+    "w267001389",
+    "w749386976"
+   ],
+   "score": 11239,
+   "routeMetres": 430,
+   "wallM": 40,
+   "routes": 13
+  },
+  {
+   "name": "Oude Kerk",
+   "modelId": "oude-kerk",
+   "pandIds": [
+    "0363100012178475",
+    "w747868960",
+    "w747868974",
+    "w747868976",
+    "w747868977",
+    "w747868978",
+    "w747868984",
+    "w747868985",
+    "w747868958"
+   ],
+   "score": 11400,
+   "routeMetres": 585,
+   "wallM": 26,
+   "routes": 17
+  },
+  {
+   "name": "Embassy of the Free Mind",
+   "modelId": "embassy-free-mind",
+   "pandIds": [
+    "0363100012177213"
+   ],
+   "score": 11540,
+   "routeMetres": 780,
+   "wallM": 17,
+   "routes": 18
+  },
+  {
+   "name": "Former Nieuw Dakota",
+   "modelId": "nieuw-dakota",
+   "pandIds": [
+    "0363100012064117"
+   ],
+   "score": 11918,
+   "routeMetres": 455,
+   "wallM": 82,
+   "routes": 11
+  },
+  {
+   "name": "Koningskerk",
+   "modelId": "koningskerk",
+   "pandIds": [
+    "0363100012062993"
+   ],
+   "score": 11970,
+   "routeMetres": 245,
+   "wallM": 120,
+   "routes": 3
+  },
+  {
+   "name": "Church of England (Christ Church)",
+   "modelId": "christ-church-groenburgwal",
+   "pandIds": [
+    "0363100012171165",
+    "0363100012177717"
+   ],
+   "score": 12467,
+   "routeMetres": 730,
+   "wallM": 18,
+   "routes": 20
+  },
+  {
+   "name": "Cinecenter",
+   "modelId": "cinecenter",
+   "pandIds": [
+    "0363100012173768"
+   ],
+   "score": 12668,
+   "routeMetres": 680,
+   "wallM": 23,
+   "routes": 12
+  }
+ ],
+ "bespokeZeroScore": 16,
+ "bespokeTotal": 330
+}

@@ -22,7 +22,8 @@
  },
  "x0M": -27.85,
  "x1M": 30.33,
- "date": "2024-11-29",
+ "date": "2023-01-10",
+ "cameraHeightM": 2.4,
  "coverage": 1,
  "spans": [
   {
@@ -33,28 +34,28 @@
     0,
     631
    ],
-   "date": "2024-11-29",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00028",
-     "timestamp": "2024-11-29T09:33:26Z",
+     "panoId": "TMX7316010203-002921_pano_0015_000079",
+     "timestamp": "2023-01-10T10:49:10.493340Z",
      "distanceM": 12.6,
-     "obliquityDeg": 1.9,
+     "obliquityDeg": 1.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00087",
-     "timestamp": "2024-11-29T09:57:19Z",
-     "distanceM": 9.2,
-     "obliquityDeg": 9.4,
+     "panoId": "TMX7316010203-002921_pano_0015_000080",
+     "timestamp": "2023-01-10T10:49:11.003470Z",
+     "distanceM": 13.4,
+     "obliquityDeg": 20.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00027",
-     "timestamp": "2024-11-29T09:33:25Z",
-     "distanceM": 13.3,
-     "obliquityDeg": 19.3,
+     "panoId": "TMX7316010203-002921_pano_0015_000078",
+     "timestamp": "2023-01-10T10:49:09.983310Z",
+     "distanceM": 13.8,
+     "obliquityDeg": 23.1,
      "missingFraction": 0
     }
    ]
@@ -67,28 +68,28 @@
     631,
     811
    ],
-   "date": "2024-11-29",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00030",
-     "timestamp": "2024-11-29T09:33:27Z",
-     "distanceM": 12.9,
-     "obliquityDeg": 0.2,
+     "panoId": "TMX7316010203-002921_pano_0015_000081",
+     "timestamp": "2023-01-10T10:49:11.523300Z",
+     "distanceM": 12.5,
+     "obliquityDeg": 2.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00085",
-     "timestamp": "2024-11-29T09:57:16Z",
-     "distanceM": 9.3,
-     "obliquityDeg": 10.4,
+     "panoId": "TMX7316010203-002921_pano_0015_000082",
+     "timestamp": "2023-01-10T10:49:12.048480Z",
+     "distanceM": 13.2,
+     "obliquityDeg": 19.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00086",
-     "timestamp": "2024-11-29T09:57:17Z",
-     "distanceM": 9.8,
-     "obliquityDeg": 20.6,
+     "panoId": "TMX7316010203-002921_pano_0015_000080",
+     "timestamp": "2023-01-10T10:49:11.003470Z",
+     "distanceM": 13.7,
+     "obliquityDeg": 23.8,
      "missingFraction": 0
     }
    ]
@@ -101,28 +102,28 @@
     952,
     1295
    ],
-   "date": "2024-11-29",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00032",
-     "timestamp": "2024-11-29T09:33:29Z",
-     "distanceM": 12.9,
-     "obliquityDeg": 0.1,
+     "panoId": "TMX7316010203-002921_pano_0015_000083",
+     "timestamp": "2023-01-10T10:49:12.588500Z",
+     "distanceM": 12.4,
+     "obliquityDeg": 2.9,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00083",
-     "timestamp": "2024-11-29T09:57:14Z",
-     "distanceM": 9.3,
-     "obliquityDeg": 10.2,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241129_0829_Track32_Sphere_00084",
-     "timestamp": "2024-11-29T09:57:15Z",
-     "distanceM": 9.7,
+     "panoId": "TMX7316010203-002921_pano_0015_000084",
+     "timestamp": "2023-01-10T10:49:13.143320Z",
+     "distanceM": 13.1,
      "obliquityDeg": 19.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002921_pano_0015_000082",
+     "timestamp": "2023-01-10T10:49:12.048480Z",
+     "distanceM": 13.7,
+     "obliquityDeg": 24.2,
      "missingFraction": 0
     }
    ]
@@ -135,28 +136,28 @@
     1294,
     1599
    ],
-   "date": "2024-11-29",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00034",
-     "timestamp": "2024-11-29T09:33:30Z",
-     "distanceM": 13,
-     "obliquityDeg": 9,
+     "panoId": "TMX7316010203-002921_pano_0015_000085",
+     "timestamp": "2023-01-10T10:49:13.718250Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 5.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00082",
-     "timestamp": "2024-11-29T09:57:13Z",
-     "distanceM": 9.2,
-     "obliquityDeg": 9.5,
+     "panoId": "TMX7316010203-002921_pano_0015_000084",
+     "timestamp": "2023-01-10T10:49:13.143320Z",
+     "distanceM": 12.9,
+     "obliquityDeg": 17,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00033",
-     "timestamp": "2024-11-29T09:33:29Z",
-     "distanceM": 13.3,
-     "obliquityDeg": 13.3,
+     "panoId": "TMX7316010203-002921_pano_0015_000086",
+     "timestamp": "2023-01-10T10:49:14.313290Z",
+     "distanceM": 13.6,
+     "obliquityDeg": 27.2,
      "missingFraction": 0
     }
    ]
@@ -169,28 +170,28 @@
     1600,
     2327
    ],
-   "date": "2024-11-29",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00036",
-     "timestamp": "2024-11-29T09:33:32Z",
-     "distanceM": 12.6,
-     "obliquityDeg": 0.9,
+     "panoId": "TMX7316010203-002921_pano_0015_000087",
+     "timestamp": "2023-01-10T10:49:14.943270Z",
+     "distanceM": 12,
+     "obliquityDeg": 8.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track32_Sphere_00079",
-     "timestamp": "2024-11-29T09:57:09Z",
-     "distanceM": 9.1,
-     "obliquityDeg": 1.1,
+     "panoId": "TMX7316010203-002921_pano_0015_000088",
+     "timestamp": "2023-01-10T10:49:15.583260Z",
+     "distanceM": 12.2,
+     "obliquityDeg": 15.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241129_0829_Track26_Sphere_00035",
-     "timestamp": "2024-11-29T09:33:31Z",
-     "distanceM": 14,
-     "obliquityDeg": 24.5,
+     "panoId": "TMX7316010203-002921_pano_0015_000086",
+     "timestamp": "2023-01-10T10:49:14.313290Z",
+     "distanceM": 13.8,
+     "obliquityDeg": 29.1,
      "missingFraction": 0
     }
    ]

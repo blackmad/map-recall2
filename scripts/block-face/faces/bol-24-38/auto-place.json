@@ -1,0 +1,573 @@
+{
+ "face": "bol-24-38",
+ "street": "Ferdinand Bolstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 5.81,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bol-24-38-r1",
+   "pands": [
+    "0363100012167017",
+    "0363100012158811"
+   ],
+   "passed": true,
+   "triangles": 2531
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012140727",
+   "address": "Ferdinand Bolstraat 34",
+   "builtYear": 1875,
+   "widthM": 5.49,
+   "eavesM": 12.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584a45",
+    "wallRaw": "#5e514c",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 131,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 3.13,
+      "topWidthM": 0.25,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.3,
+       "widthM": 1.07,
+       "centre": 0.11
+      },
+      {
+       "atM": 7,
+       "widthM": 1.2,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.141 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.54 vs photo 0.34)",
+   "likeness": {
+    "pandId": "0363100012140727",
+    "ncc": 0.141,
+    "nccRaw": 0.141,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.54 vs photo 0.34"
+    ],
+    "wall": {
+     "photo": "#564843",
+     "model": "#725f59",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.305
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165314",
+   "address": "Ferdinand Bolstraat 36",
+   "builtYear": 1875,
+   "widthM": 5.94,
+   "eavesM": 12.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4b45",
+    "wallRaw": "#594d48",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 2.17,
+      "topWidthM": 1.18,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.54,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012165314",
+    "ncc": 0.163,
+    "nccRaw": 0.163,
+    "shiftM": [
+     0.25,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.55 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#584943",
+     "model": "#746059",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.325
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159016",
+   "address": "Ferdinand Bolstraat 32",
+   "builtYear": 1876,
+   "widthM": 6.86,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64504c",
+    "wallRaw": "#4d413e",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 223,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 1.2,
+      "topWidthM": 0.57,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.64,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.88,
+       "widthM": 0.85,
+       "centre": 0.07
+      },
+      {
+       "atM": 5.1,
+       "widthM": 5.15,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16 mean 0.54 vs photo 0.21)",
+   "likeness": {
+    "pandId": "0363100012159016",
+    "ncc": 0.107,
+    "nccRaw": 0.107,
+    "shiftM": [
+     0.25,
+     0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.54 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#66534d",
+     "model": "#7d645f",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.226
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236685",
+   "address": "Ferdinand Bolstraat 28",
+   "builtYear": 1876,
+   "widthM": 13.72,
+   "eavesM": 14.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514545",
+    "wallRaw": "#44403f",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 4.4,
+      "topWidthM": 0.07,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.25 m (1.25 m wide), 10.95 m (1.25 m wide), 7.8 m (1.25 m wide), 5.32 m (3.95 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 1.25,
+       "centre": 0.28
+      },
+      {
+       "atM": 10.95,
+       "widthM": 1.25,
+       "centre": 0.14
+      },
+      {
+       "atM": 7.8,
+       "widthM": 1.25,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.13,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.32,
+       "widthM": 3.95,
+       "centre": 0.3
+      },
+      {
+       "atM": 4.88,
+       "widthM": 2.05,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 13.72 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 13.72 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.02 m = 3 storeys of 4.67 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.93 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167017",
+   "address": "Ferdinand Bolstraat 26",
+   "builtYear": 1876,
+   "widthM": 6.2,
+   "eavesM": 12.15,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584a44",
+    "wallRaw": "#5b4f4a",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 2.8,
+      "topWidthM": 0.05,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.96,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1f23",
+      "fascia": true,
+      "name": "NorthEast Kitchen",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-03 span 1492-1740"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#584a44",
+     "evidence": "strip 2023-01-03 span 1492-1740: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167017",
+    "ncc": 0.395,
+    "nccRaw": 0.395,
+    "shiftM": [
+     0.35,
+     -0.35
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.54 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#584a44",
+     "model": "#726058",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.462
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158811",
+   "address": "Ferdinand Bolstraat 24",
+   "builtYear": 1876,
+   "widthM": 6.43,
+   "eavesM": 11.79,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52433a",
+    "wallRaw": "#5e524c",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 1.63,
+      "topWidthM": 0.6,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#726258",
+      "fascia": true,
+      "name": "Arie Op De Hoek",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=pub); fascia colour measured on the strip 2023-01-03 span 1740-1997"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#52433a",
+     "evidence": "strip 2023-01-03 span 1740-1997: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012158811",
+    "ncc": 0.182,
+    "nccRaw": 0.182,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#55453c",
+     "model": "#6e5a4e",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.538
+   },
+   "challengers": {}
+  }
+ ]
+}

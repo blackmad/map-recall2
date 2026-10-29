@@ -3,6 +3,11 @@
  "title": "Dev log",
  "entries": [
   {
+   "date": "2026-10-26T06:31:28Z",
+   "body": "**2026-10-26, b4c8112d8**\n- rideamsterdam.nl home page: a **Free ride** button in the hero and the Ride card. It opens `/ride?ride=free`, which starts roaming straight away.\n- iPhone graphics loss (Sentry CANAL-RECALL-7):\n  - Temporary fix: the Reload notice now appears 2.5 s after a loss. It also stays up when Safari restores the context without our 3D layers.\n  - Instrumentation: a new `webgl-context-restored` event, plus uptime, tab visibility, time since the tab was last hidden, and three.js memory/program counts on every graphics report. The next iPhone event should show whether the cause is backgrounding or memory.",
+   "url": "https://github.com/blackmad/map-recall2/issues/68#issuecomment-6409772517"
+  },
+  {
    "date": "2026-10-25T18:42:07Z",
    "body": "**2026-10-25 — Helmersbuurt and Haarlemmerweg are live.** 33 houses on Eerste and Derde Helmersstraat are built from street photos with a new kit: stone jamb blocks, relieving arches, wall dormers with battlements, deep white cornices with brackets, and the painted-black front at no. 122. Review sent the first try back twice, for a green house and a plum one. On the Haarlemmerweg, the Carpetright hall at no. 337 is in. The Da Vinci building and the Waterkeringweg block are held until the kit can draw their side-light windows and loggias; a lane is adding that now (#86). Repeated designs round 9 (#85) is running.",
    "url": "https://github.com/blackmad/map-recall2/issues/68#issuecomment-6401623445"
