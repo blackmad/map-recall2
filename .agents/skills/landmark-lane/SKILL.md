@@ -75,7 +75,7 @@ build year); every judgeable front class is one the kit expresses today
 (32 m until the cap is parametrised). Everything else gets its verdict
 written to the row (`kit-gap`, `no-evidence`, `not-in-tiles`, `covered`,
 `bespoke`) and is not touched again this run. Glass curtain fronts and
-towers are `kit-gap` until the judge lane #114 lands; sending them through
+towers are `kit-gap` until the kit draws the floor bands the photo shows (tier sheet, blocker 1); sending them through
 the kit again is a known zero.
 
 ## Step 2: factory over the buildable list (about 5 turns, unattended)

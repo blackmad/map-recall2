@@ -10,11 +10,12 @@ rules a review turn applies. Update the numbers with each integration.
 | Factory batches 1–2 (2026-10-24, unattended drafts) | 27 | 0 | 0 |
 | Acceptance re-run on the new kit (#45) | 28 | 3 | 0 (gate refused all three on street walls) |
 | Ride-visible top 40 (#105, Opus hand passes) | 17 | 0 | 0 |
+| Skill self-test, triage-selected punched/ribbon fronts (2026-10-29) | 9 | 1 | 1 (Molenwerf 1; 5 holds on gates, 3 on kit gaps, 1 no-evidence) |
 
-| Installed large recipes (all time) | 116 |
+| Installed large recipes (all time) | 117 |
 |---|---|
 | Likeness pass on every street group | 7 |
-| Installed with `--allow-inferred` notes | 95 |
+| Installed with `--allow-inferred` notes | 96 |
 | Gates only (pre-gate installs) | 14 |
 
 Reading: the tier installs almost nothing under "every street group must
@@ -33,10 +34,12 @@ from the crop by `measure.ts`.
 
 ## What does not pass, and why
 
-1. **Glass curtain fronts.** The judge takes the model's wall as its modal
-   wall-slot material; a curtain group has none, so it reads "wall not
-   drawn, glazing 1.00", while the photo counts the mullion grid as wall
-   (0.35 to 0.87). Every glass front fails on this. Fix in lane #114.
+1. **Glass curtain fronts.** Lane #114 made the judge read a curtain group
+   on its spandrels or grid colour, and found the FAILs are real: the
+   photo's 13 to 30 % "wall" is floor bands 0.5 to 1.5 m tall at the storey
+   lines, which the kit's spandrel-less curtain system cannot draw (model
+   glazing 0.97 to 0.99 against the photo's 0.70 to 0.87). A kit lane for
+   floor bands is the unlock, not a judge change.
 2. **Towers.** Crops stop at 32 m (`rectify.ts wallHeight`,
    `Math.min(..., 32)`), so upper storeys never have evidence.
 3. **Curved and stepped fronts.** Crops pair to single 3DBAG facets
@@ -60,7 +63,7 @@ from the crop by `measure.ts`.
 |---|---|---|
 | punched / columns, brick or stone family | yes | buildable; roughly 1 in 3 passes on first compile, more after one `fix` |
 | ribbon | yes | buildable; watch `rowMismatch` (ribbon one side, punched the other) |
-| curtain | any | `kit-gap` until #114 lands |
+| curtain | any | `kit-gap` until the kit draws floor bands (see blocker 1) |
 | blank, mural, cladding | any | `kit-gap` |
 | any | no | `no-evidence` |
 | any, over 32 m | any | `kit-gap` (crop cap) until parametrised |
@@ -81,4 +84,6 @@ group, which is how 95 of the 116 installed houses are recorded.
   houses for 167 M; #97: 72 M for none). Stopped by the user 2026-10-29.
 - #105: about 130 Opus turns for 0 installs.
 - Target for this lane: one Opus turn per 20 houses reviewed, under 10
-  turns per install including fixes. Issue #111 makes the queue record it.
+  turns per install including fixes. The queue records it since #111; the
+  first run measured 1.7 turns per reviewed building and about 19 turns
+  per install.
