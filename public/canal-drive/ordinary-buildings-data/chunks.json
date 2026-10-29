@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-29T14:25:23.240Z",
+ "generatedAt": "2026-10-29T17:57:48.402Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -64569,6 +64569,253 @@
        "primitive": 12,
        "firstTriangle": 17,
        "triangleCount": 14
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kinker-112-116",
+   "category": "street-survey",
+   "name": "face-kinker-112-116",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kinker-112-116.glb?asset=8b722a7fc2ce430d",
+   "sha256": "8b722a7fc2ce430daa56131df12f9a446ae6ff701dca1acf2dd2337904f238b0",
+   "bytes": 281904,
+   "triangles": 4118,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.870241950056711,
+     52.366786430852414
+    ],
+    "northOffsetDegrees": 336.4318,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.64,
+     0,
+     -6.132
+    ],
+    "max": [
+     10.396,
+     14.69,
+     0.401
+    ]
+   },
+   "height": 14.69,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164444",
+    "NL.IMBAG.Pand.0363100012166997"
+   ],
+   "replaces": [
+    "ordinary-0363100012164444",
+    "ordinary-0363100012166997"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.870185,
+        52.366831
+       ],
+       [
+        4.8701169,
+        52.3668128
+       ],
+       [
+        4.8701536,
+        52.3667629
+       ],
+       [
+        4.8702217,
+        52.366781
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8703463,
+        52.3668739
+       ],
+       [
+        4.870185,
+        52.366831
+       ],
+       [
+        4.8702217,
+        52.366781
+       ],
+       [
+        4.8703709,
+        52.3668208
+       ],
+       [
+        4.8703769,
+        52.3668299
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kinker-164444",
+     "pandId": "0363100012164444",
+     "buildingId": "NL.IMBAG.Pand.0363100012164444",
+     "address": "Kinkerstraat 116",
+     "frontage": {
+      "x0": -6.565,
+      "x1": -1.506,
+      "widthM": 5.059
+     },
+     "bounds": {
+      "min": [
+       -6.64,
+       0,
+       -6.132
+      ],
+      "max": [
+       -1.506,
+       14.68,
+       0.401
+      ]
+     },
+     "triangles": 1496,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 764
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 188
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "kinker-166997",
+     "pandId": "0363100012166997",
+     "buildingId": "NL.IMBAG.Pand.0363100012166997",
+     "address": "Kinkerstraat 112-114",
+     "frontage": {
+      "x0": -1.506,
+      "x1": 9.577,
+      "widthM": 11.084
+     },
+     "bounds": {
+      "min": [
+       -1.581,
+       0,
+       -6.132
+      ],
+      "max": [
+       10.396,
+       14.69,
+       0.401
+      ]
+     },
+     "triangles": 2622,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 252,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 36,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 764,
+       "triangleCount": 1420
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 188,
+       "triangleCount": 326
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 4,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2,
+       "triangleCount": 8
       }
      ]
     }

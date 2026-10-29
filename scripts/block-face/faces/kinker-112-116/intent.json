@@ -55,7 +55,7 @@
       0.66
      ],
      "storeyHeights": [
-      3.0,
+      3,
       2.75,
       2.75,
       2.75,
@@ -78,6 +78,9 @@
       "stallriser": "low",
       "evidence": "strip.jpg pand 1 ground hidden by a bus; zoom crop: black fascia, gold \"KAPSALON KNIP je KNAP\"; OSM node 4942879221 shop=hairdresser"
      }
+    },
+    "paletteOverrides": {
+     "brick": "#423327"
     }
    },
    "groundFloor": {
@@ -97,7 +100,13 @@
     "note": "lettering read on the zoom crop (the strip ground is behind a bus); OSM also maps Glam by Mooi here"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 1 (zoom): 3 axes, relieving arches on storeys 1-3, flat top storey, a roof light, half a brick dormer on the party line",
+    "bays": "3 window axes (2 on 4-5 m pands)",
+    "identicalBays": "upper storeys: equal axes, no balconies",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop per house, residential door beside it",
+    "signage": "per house",
+    "roofline": "heavy cream cornice with consoles; one pediment dormer",
     "photoRows": [
      1,
      3,
@@ -105,10 +114,12 @@
      3,
      3
     ],
+    "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
      "brick dormer straddling the 116|114 party line"
-    ]
+    ],
+    "citation": "strip.jpg pand 1 (zoom): 3 axes, relieving arches on storeys 1-3, flat top storey, a roof light, half a brick dormer on the party line"
    }
   },
   {
@@ -145,7 +156,7 @@
       0.66
      ],
      "storeyHeights": [
-      3.0,
+      3,
       2.75,
       2.75,
       2.75,
@@ -176,7 +187,7 @@
         0.66
        ],
        "storeyHeights": [
-        3.0,
+        3,
         2.75,
         2.75,
         2.75,
@@ -222,7 +233,7 @@
         0.66
        ],
        "storeyHeights": [
-        3.0,
+        3,
         2.75,
         2.75,
         2.75,
@@ -241,7 +252,10 @@
        }
       }
      }
-    ]
+    ],
+    "paletteOverrides": {
+     "brick": "#2d221a"
+    }
    },
    "groundFloor": {
     "use": "cafe",
@@ -260,7 +274,13 @@
     "agreement": "osm-only"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 2 (zoom): 4 axes as 116, then a narrow bay of moulded brick ornament with a chimney stack and a corbelled frieze; a brick dormer tower over one axis",
+    "bays": "3 window axes (2 on 4-5 m pands)",
+    "identicalBays": "upper storeys: equal axes, no balconies",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop per house, residential door beside it",
+    "signage": "per house",
+    "roofline": "heavy cream cornice with consoles; one pediment dormer",
     "photoRows": [
      3,
      5,
@@ -268,12 +288,14 @@
      5,
      4
     ],
+    "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
      "narrow bay of moulded brick ornament (niches, corbels, pendant) with a chimney stack (drawn as a plain one-axis module)",
      "brick dormer tower over one axis",
      "carved green-and-timber house door surround"
-    ]
+    ],
+    "citation": "strip.jpg pand 2 (zoom): 4 axes as 116, then a narrow bay of moulded brick ornament with a chimney stack and a corbelled frieze; a brick dormer tower over one axis"
    }
   }
  ],

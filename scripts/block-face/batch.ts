@@ -17,6 +17,7 @@
  *
  *   node --import tsx scripts/block-face/batch.ts --name=<batch> (--buurt=<slug> --district=<library> | --faces=<id>,...)
  *        [--install] [--ride[=<routes>]] [--limit=<n>] [--skip=<id>,...] [--strip-cache=<worktree>,...] [--redo] [--no-restrip]
+ *        [--intake-only]   only intake + strip checks (network; safe beside a placing run: no browser, no manifest writes)
  *
  * --strip-cache: other checkouts whose staging/block-face/<face>/strip.jpg may be reused when its size matches the
  *   committed strip.json (strip images are untracked). Without one the strip is re-taken from the panoramas.
@@ -40,7 +41,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {coveredElsewhere, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, coveredElsewhere, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -158,7 +159,7 @@ async function rideScores(name: string, pandIds: string[], routes: number): Prom
   if (todo.length) {
     const rv = await import('../building-recipes/ride-visibility.ts');
     const fp = rv.loadFootprints(), samples = rv.sampleRoutes(routes, 7).samples, score = rv.scorer(samples, fp);
-    for (const p of todo) cached[p] = score(p)?.score ?? 0;
+    for (const p of todo) cached[p] = score(`NL.IMBAG.Pand.${p}`)?.score ?? 0; // BAG tile ids carry the prefix
     await fs.mkdir(path.dirname(file), {recursive: true});
     await writeJson(file, cached);
   }
@@ -177,15 +178,20 @@ async function trimmedFace(face: string, keep: string[], dropped: string[]): Pro
   return id;
 }
 
-/** Brick pands whose review wall check fails: refit their brick through the city tint (paletteOverrides.brick). */
-async function fitWalls(run: string, fc: any[]): Promise<number> {
+/**
+ * Brick pands whose review wall check fails: refit their brick through the city tint (paletteOverrides.brick). With
+ * `all` (the face's stripOverDrawn is out of range), every brick pand with a wall reading is refitted: a row can pass
+ * the per-pand hue/saturation/lightness tolerance while drawing 0.7x the photo's linear wall light (Kinkerstraat
+ * 109-161, 112-116, 120-138, 142-178 on the first batch run, #98's 56-84 at 0.705 before its bricks were fitted).
+ */
+async function fitWalls(run: string, fc: any[], all = false): Promise<number> {
   const file = path.join(FACES, run, 'intent.json'), intent = await readJson(file);
   const discovery = await readJson(path.join(FACES, run, 'discovery.json'));
   const resolved = houseIntents(validateBlockFace(intent, discovery.members, fileTypeLoader()));
   let n = 0;
   for (const f of fc) {
     const w = f.wallColour, h = intent.houses.find((x: any) => x.pandId === f.pand), r = resolved.find(x => x.pandId === f.pand);
-    if (!w || w.pass || !h?.type || !r || (r.palette.wallMaterial ?? 'brick') === 'stucco') continue;
+    if (!w || (w.pass && !all) || !h?.type || !r || (r.palette.wallMaterial ?? 'brick') === 'stucco') continue;
     const brick = typeof r.palette.brick === 'string' ? r.palette.brick : null;
     if (!brick) continue;
     const fit = fitWallBrick(brick, toHex(w.model), toHex(w.photo));
@@ -208,7 +214,13 @@ async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
   try {
     const fc = await compileAndReview();
     wallFits = await fitWalls(run, fc);
-    if (wallFits) await compileAndReview();
+    let fc2 = fc;
+    if (wallFits) fc2 = await compileAndReview();
+    const e = await faceWallExposure(run).catch(() => null), [lo, hi] = BATCH_GATES.stripOverDrawn;
+    if (e?.stripOverDrawn != null && (e.stripOverDrawn < lo || e.stripOverDrawn > hi)) {
+      const n = await fitWalls(run, fc2, true);
+      if (n) { wallFits += n; await compileAndReview(); }
+    }
   } catch (e) { error = (e as Error).message; }
   const c = compiled as Awaited<ReturnType<typeof compileFace>> | null;
   const likeness = c && !error ? await quiet(() => runLikeness(run)).catch(() => []) : [];
@@ -257,6 +269,7 @@ async function main() {
     const base = {face: f.id, street: f.street, ride: faceRide(f), restriped: null, stripQuality: null, nccMin: null, nccMedian: null, stripOverDrawn: null, wallFits: 0, droppedCorners: [], triangles: null, sheet: null};
     const fail = (run: string, mode: Row['mode'], reasons: string[], extra: Partial<Row> = {}) => { rows.push({...base, run, pands: f.members.length, mode, stripDate: null, status: 'failed', reasons, ...extra, seconds: secs()} as Row); };
     const manifest0 = await readJson(MANIFEST);
+    if (flag('intake-only') && existsSync(path.join(FACES, f.id, 'strip.json')) && existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
     if (manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
     console.log(`\n== ${f.id} (${f.street}, ${f.members.length} pands${base.ride !== null ? `, ride ${base.ride}` : ''})`);
     // 1. Intake / strip.
@@ -277,6 +290,8 @@ async function main() {
     const stripInfo = {stripDate: st.date, restriped: st.restriped, stripQuality: st.q ? {badShare: st.q.badShare, reasons: st.q.reasons} : null};
     console.log(`  strip ${st.date}: bad share ${st.q?.badShare} ${st.q?.reasons.join(', ') ?? ''}${st.restriped ? ` (restriped ${st.restriped})` : ''}`);
     const stripVerdict = {bad: !st.q || st.q.bad, reasons: st.q?.reasons ?? ['no strip image']};
+    // --intake-only: network-bound intake and strip checks ahead of a placing run (no browser, no manifest writes).
+    if (flag('intake-only')) continue;
     // 2. Type assignment.
     const intentFile = path.join(FACES, f.id, 'intent.json');
     const authored = existsSync(intentFile) && !String((await readJson(intentFile)).authoring?.author ?? '').startsWith('auto-place');
@@ -324,6 +339,7 @@ async function main() {
       await save();
     }
   }
+  if (flag('intake-only')) return;
   await save();
   // Contact sheet: a seeded 10 % of the installs, review sheets at thumbnail width.
   const installs = rows.filter(r => r.status === 'installed' && r.sheet && existsSync(r.sheet));
