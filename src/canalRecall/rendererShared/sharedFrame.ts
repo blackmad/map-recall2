@@ -25,6 +25,8 @@ import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from './residency.js';
 import { chooseTileDraws } from './tiledGeometry.js';
+import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
+import { PRECOMPILE_STEP_MS } from './compileBudget.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -134,6 +136,25 @@ export class SharedFrame {
   shadowRedraws = 0;
   /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
   shadowDepthRange: [number, number] | null = null;
+  /**
+   * An opaque card (the guest briefing) hides the whole map: no pass draws and no participant runs, so nothing is
+   * drawn or warmed up behind it (#109, Sentry CANAL-RECALL-7/-J/-N). Measured from the layout (mapCover.ts).
+   * Touch devices only by default (a desktop draws behind cards as before); `?coverPause=1|0` forces it.
+   */
+  private coverWatch: MapCoverWatch | null = null;
+  /** Passes skipped behind a card (diagnostics). */
+  coverSkipped = 0;
+  get coverPaused(): boolean { return !!this.coverWatch?.covered; }
+  private readonly deferredCompiles: any[] = [];
+  /** When the map last showed again after a cover; warm-ups wait a little longer than the first draw's own compiles. */
+  private resumedAt = -Infinity;
+  private lastDeferredCompile = -Infinity;
+  /**
+   * May a participant run its shader warm-up now? Not behind a card, nor in the first RESUME_WARMUP_HOLD_MS after it
+   * goes: the first draw links its own programs then (trees, shadows, ~6 in 40 ms on the phone profile), and the
+   * ground's spread warm-up on top made 10 links in 100 ms at Start. Always true without a cover watch (desktop).
+   */
+  warmupDue(now = performance.now()): boolean { return !this.coverPaused && now - this.resumedAt >= RESUME_WARMUP_HOLD_MS; }
 
   constructor(THREE: any, map: any, options: SharedFrameOptions = {}) {
     this.THREE = THREE;
@@ -193,6 +214,10 @@ export class SharedFrame {
 
   /** Add both passes to the map. The overlay is kept last, like the vehicles were. */
   attach(): void {
+    if (!this.coverWatch && typeof document !== 'undefined' && typeof this.map.getCanvas === 'function' && coverPauseFlag()) {
+      const canvas = this.map.getCanvas();
+      if (canvas?.getBoundingClientRect) this.coverWatch = new MapCoverWatch(canvas, covered => { if (!covered) { this.resumedAt = performance.now(); this.map.triggerRepaint?.(); } });
+    }
     const before = this.options.beforeId?.();
     if (!this.map.getLayer(SHARED_FRAME_MAIN_ID)) this.map.addLayer(this.mainLayer, before && this.map.getLayer(before) ? before : undefined);
     if (!this.map.getLayer(SHARED_FRAME_OVERLAY_ID)) this.map.addLayer(this.overlayLayer);
@@ -236,9 +261,13 @@ export class SharedFrame {
     this.map.triggerRepaint?.();
   }
 
-  /** Compile an object's programs against the shared lights, off the critical frame. */
+  /**
+   * Compile an object's programs against the shared lights, off the critical frame. Behind a covering card (touch)
+   * the compile waits, and runs one object per warm-up step once the map shows (the vehicles' four, #109).
+   */
   compile(object: any): void {
     if (!this.renderer) return;
+    if (this.coverPaused) { if (!this.deferredCompiles.includes(object)) this.deferredCompiles.push(object); return; }
     try { this.renderer.compile(object, this.camera, this.scene); }
     catch (error) { console.warn('Shared frame: could not precompile', error); }
     this.renderer.resetState();
@@ -373,6 +402,19 @@ export class SharedFrame {
     // A lost context answers createShader with null and three throws from
     // every frame (Sentry CANAL-RECALL-5, Safari/Mac); MapLibre restores it.
     if (gl.isContextLost?.()) return;
+    if (this.coverWatch?.check(performance.now())) {
+      this.coverSkipped++;
+      this.lastDrawn[pass] = [];
+      const s = this.stats[pass];
+      s.ms = 0; s.calls = 0; s.triangles = 0;
+      return;
+    }
+    if (pass === 'main' && this.deferredCompiles.length) {
+      // One deferred compile per warm-up step, after the first draw's own compiles.
+      const now = performance.now();
+      if (now - this.resumedAt >= RESUME_DEFERRED_COMPILE_MS && now - this.lastDeferredCompile >= PRECOMPILE_STEP_MS) { this.lastDeferredCompile = now; this.compile(this.deferredCompiles.shift()); }
+      if (this.deferredCompiles.length) this.map.triggerRepaint?.();
+    }
     const main: Mat4 | undefined = args?.defaultProjectionData?.mainMatrix ?? args;
     if (!main || (main as any).length !== 16) return;
     const fm = frameMatrices(main);
