@@ -297,6 +297,7 @@ const routeChoices = (t: Translate): Choice<CanalPreferences['routePattern']>[] 
 ];
 
 const controlChoices = (t: Translate): Choice<CanalPreferences['controlMode']>[] => [
+  { value: 'street', title: t('options.controls.follow'), hint: t('options.controls.followHint') },
   { value: 'relative', title: t('options.controls.steer'), hint: t('options.controls.steerHint') },
   { value: 'absolute', title: t('options.controls.point'), hint: t('options.controls.pointHint') },
 ];

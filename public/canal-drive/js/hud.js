@@ -742,9 +742,11 @@ class HUD {
     if (!layout?.dpad) return;
     const theme = window.CanalRecallUi.hudSurface;
     const pad = layout.dpad;
-    const text = controlMode === 'absolute'
-      ? 'hold here and point where you want to go'
-      : 'hold here to drive — slide to steer, pull back to brake';
+    const text = controlMode === 'street'
+      ? 'tap to ride — ◀ ▶ turn at the next corner, ↺ turns round'
+      : controlMode === 'absolute'
+        ? 'hold here and point where you want to go'
+        : 'hold here to drive — slide to steer, pull back to brake';
     ctx.save();
     ctx.font = `500 12px ${theme.fontUi}`;
     ctx.textAlign = 'center';
@@ -757,6 +759,80 @@ class HUD {
     ctx.fillStyle = theme.inkMuted;
     ctx.fillText(text, x + width / 2, rect.y + 15);
     ctx.restore();
+  }
+
+  // The street-follow pad (streetFollow.ts): two turn buttons over a back
+  // bar, in the stick's zone. A queued turn stays lit until it is taken, so
+  // the player can see the bike "remembers" the choice; at a junction with no
+  // way straight on, both arrows pulse to ask for one. Translucent like the
+  // stick, so the corridor behind stays visible.
+  drawStreetPad(ctx, view) {
+    const layout = this.layout;
+    if (!layout?.dpad) return;
+    const ui = window.CanalRecallUi;
+    const surface = ui.hudSurface;
+    const rects = ui.streetPadRects(layout.dpad);
+    const held = view?.buttons || { left: false, right: false, back: false };
+    const queued = view?.queuedTurn || 0;
+    // Parked at the start, or at a junction with no way straight on: the
+    // arrows pulse to ask for a press.
+    const waiting = !!view?.awaitingChoice || !!view?.parked;
+    const pulse = waiting ? 0.5 + 0.5 * Math.sin(performance.now() / 180) : 0;
+    const draw = (name, glyph) => {
+      const rect = rects[name];
+      const lit = held[name] || (name === 'left' && queued < 0) || (name === 'right' && queued > 0);
+      ctx.save();
+      ctx.shadowColor = surface.shadow;
+      ctx.shadowBlur = 12;
+      ctx.shadowOffsetY = 3;
+      ctx.fillStyle = lit ? surface.controlPressed : surface.control;
+      ctx.globalAlpha = lit ? 0.92 : 1;
+      roundRect(ctx, rect.x, rect.y, rect.width, rect.height, ui.hudRadius.control);
+      ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.strokeStyle = surface.border;
+      ctx.lineWidth = name !== 'back' && waiting ? 1 + 2 * pulse : 1;
+      roundRect(ctx, rect.x, rect.y, rect.width, rect.height, ui.hudRadius.control);
+      ctx.stroke();
+      ctx.fillStyle = lit ? surface.control : surface.controlInk;
+      ctx.translate(rect.x + rect.width / 2, rect.y + rect.height / 2);
+      glyph(Math.min(rect.width, rect.height));
+      ctx.restore();
+    };
+    const chevron = direction => size => {
+      const r = Math.max(9, size * 0.2);
+      ctx.strokeStyle = ctx.fillStyle;
+      ctx.lineWidth = 4;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(-direction * r * 0.4, -r);
+      ctx.lineTo(direction * r * 0.5, 0);
+      ctx.lineTo(-direction * r * 0.4, r);
+      ctx.stroke();
+    };
+    draw('left', chevron(-1));
+    draw('right', chevron(1));
+    draw('back', size => {
+      // A U-turn arrow: tap turns round, holding stops.
+      const r = Math.max(7, size * 0.22);
+      ctx.strokeStyle = ctx.fillStyle;
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(r, r * 0.7);
+      ctx.lineTo(r, -r * 0.1);
+      ctx.arc(0, -r * 0.1, r, 0, Math.PI, true);
+      ctx.lineTo(-r, r * 0.4);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(-r - 4.5, r * 0.15);
+      ctx.lineTo(-r, r * 0.85);
+      ctx.lineTo(-r + 4.5, r * 0.15);
+      ctx.closePath();
+      ctx.fill();
+    });
   }
 
   // The thumbstick. Idle, it is a faint ring in the zone so it can be found;

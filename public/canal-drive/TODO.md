@@ -1037,6 +1037,21 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
+  the phone default (HISTORY 2026-10-29). Open:
+  - Feel check on a real phone by the user; no one has ridden it on glass.
+    Tunables are `STREET_TURN_RATE`, `CORNER_FRACTION`, `QUEUE_HOLD_SECONDS`
+    (streetFollow.ts) and `CAMERA_YAW_DEFAULT` (cameraYaw.ts).
+  - Boats: street following runs on canals too (same contacts), but only
+    streets are pinned in `test:street-follow`; add a canal junction
+    (e.g. Prinsengracht × Leidsegracht) before trusting it on water. Boat
+    mode's grass push (`game.js` `_updateBoundaryCollisions`) still turns the
+    heading toward the nearest road *point* at 0.08 rad/frame, a sideways
+    jerk the yaw dead band only partly hides.
+  - The junction hint is the pulsing pad only; no arrow on the map shows
+    which openings count as a turn. Never name the street.
+  - `mobile-overlays.spec.ts` "absolute mode … drives due east" fails on
+    main too (expects a north-up map; chase is the default since 10-22).
 - **Public preview follow-ups (2026-10-17).**
   - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);

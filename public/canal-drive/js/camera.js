@@ -94,9 +94,35 @@ class Camera {
     const wantedRotation = this.detached
       ? this.rotation
       : this.followRotation(target);
+    // Heading-following views turn through cameraYaw.ts: a dead band so
+    // steering corrections do not yaw the city, slower easing, and a yaw-rate
+    // cap so a turn-around pans instead of whipping (user report 2026-10-29,
+    // phone steering "kind of nauseating"). Held and north-up views keep the
+    // plain ease: their wanted rotation only changes on an explicit request.
+    const ui = window.CanalRecallUi;
+    const followsHeading = !this.northUp && !this.holdHeading && !this.detached;
+    if (followsHeading && ui && ui.stepCameraYaw) {
+      // The dead band smooths the vehicle's heading only. The orbit bearing
+      // (the player's own drag, or R resetting it) applies at once on top.
+      const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+      const bearing = is3d ? this.bearingOffset : 0;
+      // Anything else that set the rotation (a ride reset, R, the intro
+      // flight) is the new starting point.
+      if (this.rotation !== this._yawApplied || !Number.isFinite(this._yawBase)) this._yawBase = this.rotation - bearing;
+      this._yawState = this._yawState || { following: false };
+      this._yawBase = ui.stepCameraYaw(this._yawBase, wantedRotation - bearing, seconds, this._yawState,
+        this.reducedMotion ? ui.CAMERA_YAW_REDUCED_MOTION : ui.CAMERA_YAW_DEFAULT);
+      this.rotation = normalizeAngle(this._yawBase + bearing);
+      this._yawApplied = this.rotation;
+      return;
+    }
+    if (this._yawState) this._yawState.following = false;
+    this._yawApplied = NaN;
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
-    this.rotation += delta * ease(this.smoothing * rotationRate);
+    // Wrapped, so a view held north-up after a heading-following stretch
+    // reads 0 rather than 2π (every consumer treats it modularly).
+    this.rotation = normalizeAngle(this.rotation + delta * ease(this.smoothing * rotationRate));
   }
   zoomIn() {
     this.zoom = clamp(this.zoom + CAMERA_ZOOM_STEP, this.minZoom, this.maxZoom);

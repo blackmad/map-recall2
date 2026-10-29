@@ -100,6 +100,7 @@ const CHECKS = [
   'test:play-delight',
   'test:canal-game-structure',
   'test:canal-car',
+  'test:street-follow',
   'test:canal-buildings',
   'test:canal-streets',
   'test:neighborhoods',

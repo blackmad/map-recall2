@@ -256,6 +256,8 @@
     "options.spin": "3D spin",
     "options.zoom": "Zoom",
     "options.controls": "Controls",
+    "options.controls.follow": "Follow",
+    "options.controls.followHint": "Rides along the street; choose each turn",
     "options.controls.steer": "Steer",
     "options.controls.steerHint": "Left and right turn the vehicle",
     "options.controls.point": "Point",
@@ -875,6 +877,8 @@
     "options.spin": "3D-draai",
     "options.zoom": "Zoom",
     "options.controls": "Besturing",
+    "options.controls.follow": "Volgen",
+    "options.controls.followHint": "Rijdt de straat af; jij kiest elke afslag",
     "options.controls.steer": "Sturen",
     "options.controls.steerHint": "Links en rechts draaien het voertuig",
     "options.controls.point": "Richten",
@@ -7919,8 +7923,14 @@
       this._renderControlsHint();
       this._renderIntroOverlay();
       if (this.state === GameState.RACING && !this._overlayOpen() && !this._intro) {
-        this.hud.drawStick(ctx, this.input.stickView);
-        if (this.input.showTouchHint) this.hud.drawTouchHint(ctx, this.controlMode);
+        if (this.controlMode === "street") {
+          const follow = this.player?.streetFollowView ?? null;
+          this.hud.drawStreetPad(ctx, follow && { ...follow, buttons: this.input.streetButtons });
+        } else {
+          this.hud.drawStick(ctx, this.input.stickView);
+        }
+        const parked = this.controlMode === "street" && !!this.player?.streetFollowView?.parked;
+        if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
       }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();

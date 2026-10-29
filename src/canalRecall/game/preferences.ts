@@ -93,6 +93,31 @@ export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
  */
 export const ZOOM_DEFAULT_VERSION = 4 as const;
 /**
+ * v2 (2026-10-29): "Follow the street" became the default control on phones
+ * and tablets. A saved `relative` without this flag was the old default rather
+ * than a choice, so on a touch device it moves once to `street`; a saved
+ * `absolute` was chosen and is kept.
+ */
+export const CONTROL_DEFAULT_VERSION = 2 as const;
+
+/** Phones and tablets follow the street (the stick was nauseating, user
+ *  2026-10-29); a keyboard keeps car-style steering, where the arrows already
+ *  work and the up arrow is the throttle. A touch laptop has a fine primary
+ *  pointer, so it counts as a keyboard. */
+export function defaultControlMode(
+  env: { maxTouchPoints?: number; coarsePointer?: boolean } = browserPointer(),
+): ControlMode {
+  return (env.maxTouchPoints ?? 0) > 0 && env.coarsePointer !== false ? 'street' : 'relative';
+}
+
+function browserPointer(): { maxTouchPoints?: number; coarsePointer?: boolean } {
+  const scope = globalThis as { navigator?: { maxTouchPoints?: number }; matchMedia?: (query: string) => { matches: boolean } };
+  return {
+    maxTouchPoints: scope.navigator?.maxTouchPoints ?? 0,
+    coarsePointer: scope.matchMedia ? scope.matchMedia('(pointer: coarse)').matches : undefined,
+  };
+}
+/**
  * Highest pitch the game asks the basemap for; `vector-map.js` passes it as
  * MapLibre's `maxPitch` and every request is clamped to it.
  * Until 2026-10-25 this was 60, MapLibre's *default* `maxPitch`, which the
@@ -182,6 +207,7 @@ export interface CanalPreferences {
   sound: boolean;
   zoom: number;
   zoomDefaultVersion: typeof ZOOM_DEFAULT_VERSION;
+  controlDefaultVersion: typeof CONTROL_DEFAULT_VERSION;
   /**
    * Extra MapLibre pitch (degrees) on top of the view-mode default.
    * The 3D views use this as a live tilt control; 2D modes ignore it.
@@ -207,7 +233,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     // Boat and Chase are the product start (2026-10-22, user's call; cockpit
     // is retired and the setup View row offers the 2D and 3D views).
     travelMode: 'boat',
-    controlMode: 'relative',
+    controlMode: defaultControlMode(),
     viewMode: 'chase',
     themeMode: 'clean',
     buildingLook: 'photo',
@@ -224,6 +250,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     sound: false,
     zoom: zoom.defaultZoom,
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+    controlDefaultVersion: CONTROL_DEFAULT_VERSION,
     cameraTilt: 0,
     cameraBearing: 0,
   };
@@ -316,6 +343,7 @@ function fillPreferences(
     sound: false, // sound is permanently disabled
     zoom: parseZoom(source, zoom),
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+    controlDefaultVersion: CONTROL_DEFAULT_VERSION,
     cameraTilt: clampTilt(source.cameraTilt, base.cameraTilt),
     cameraBearing: wrapBearing(source.cameraBearing, base.cameraBearing),
   };
@@ -327,8 +355,14 @@ function fillPreferences(
  * old save that only stored `difficulty: "easy"` still gets the route line.
  */
 export function parsePreferences(raw: unknown, zoom: ZoomClamp): CanalPreferences {
-  const source = asRecord(raw);
+  const saved = asRecord(raw);
   const base = defaultPreferences(zoom);
+  // Only a stored save migrates; a live snapshot (coercePreferences) carries
+  // the player's current choice, `relative` included.
+  const source = saved.controlMode === 'relative' && saved.controlDefaultVersion !== CONTROL_DEFAULT_VERSION
+    && base.controlMode === 'street'
+    ? { ...saved, controlMode: 'street' }
+    : saved;
   const difficulty = parseMode(ROUTE_DIFFICULTIES, source.difficulty, base.difficulty);
   const withDifficulty: CanalPreferences = difficulty === 'custom'
     ? { ...base, difficulty }
@@ -364,6 +398,7 @@ export function writePreferences(store: KeyValueStore, prefs: CanalPreferences):
     store.setItem(PREFERENCES_STORAGE_KEY, JSON.stringify({
       ...prefs,
       zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+      controlDefaultVersion: CONTROL_DEFAULT_VERSION,
     }));
   } catch {
     /* private mode */

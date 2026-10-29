@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-29",
+   "title": "Calmer phone steering",
+   "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
+  },
+  {
+   "date": "2026-10-29",
    "title": "Less work for your graphics card",
    "text": "The city now skips the ground and building fronts that are off screen. On desktop the picture is the same with about half the triangles. On iPad the busiest views drop to under a million triangles."
   },

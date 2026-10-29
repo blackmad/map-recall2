@@ -157,6 +157,7 @@ class GameRouteRuntime {
     if (typeof this._prefetchCityExtracts === 'function') this._prefetchCityExtracts();
     this.controlMode = prefs.controlMode;
     if (this.player) this.player.controlMode = this.controlMode;
+    if (this.input.setPadMode) this.input.setPadMode(this.controlMode);
     this.viewMode = prefs.viewMode;
     this.camera.viewMode = this.viewMode;
     this.camera.northUp = this.viewMode === 'north';

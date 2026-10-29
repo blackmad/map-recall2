@@ -182,6 +182,11 @@ export interface RoadContact {
   /** Unit normal, for placing things beside the road. */
   nx: number;
   ny: number;
+  /** Span length, and how far along it (from the start, in the direction of
+   *  `angle`) the contact point lies — so street following can tell a way on
+   *  from the end of a span. */
+  length?: number;
+  along?: number;
 }
 
 export function contactsAt(spans: readonly RoadSpan[], x: number, y: number): RoadContact[] {
@@ -201,6 +206,8 @@ export function contactsAt(spans: readonly RoadSpan[], x: number, y: number): Ro
       ptIdx: span.ptIdx,
       nx: -rdy / length,
       ny: rdx / length,
+      length,
+      along: Math.hypot(hit.x - span.a.x, hit.y - span.a.y),
     });
   }
   return contacts;

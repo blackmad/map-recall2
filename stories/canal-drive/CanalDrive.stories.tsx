@@ -18,7 +18,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
-  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-hud-idle' | 'touch-setup' | 'touch-setup-transit' | 'touch-setup-here'
+  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-street-queued' | 'touch-hud-street-waiting' | 'touch-hud-question' | 'touch-hud-idle' | 'touch-setup' | 'touch-setup-transit' | 'touch-setup-here'
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
@@ -469,15 +469,22 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // The game's own window, not Storybook's: reading it off `window`
           // was undefined, and the steering story threw before the pad drew.
           const ui = (frame.contentWindow as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number; stickVector: (o: unknown, p: unknown, r: number) => unknown } }).CanalRecallUi;
+          // The phone default is the street-follow pad; the stick story keeps
+          // the 'Steer' option reviewable.
           if (scenario === 'touch-hud-steering' && pad) {
             const radius = ui.stickRadius(pad);
             const origin = { x: pad.cx + 8, y: pad.cy + 6 };
             const point = { x: origin.x - radius * 0.7, y: origin.y - radius * 0.35 };
             game.hud.drawStick(ctx, { origin, point, radius, vector: ui.stickVector(origin, point, radius) });
           } else {
-            game.hud.drawStick(ctx, null);
+            const none = { left: false, right: false, back: false };
+            game.hud.drawStreetPad(ctx, scenario === 'touch-hud-street-queued'
+              ? { queuedTurn: -1, parked: false, turning: false, awaitingChoice: false, buttons: none }
+              : scenario === 'touch-hud-street-waiting'
+                ? { queuedTurn: 0, parked: false, turning: false, awaitingChoice: true, buttons: none }
+                : { queuedTurn: 0, parked: scenario === 'touch-hud', turning: false, awaitingChoice: false, buttons: none });
           }
-          if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'relative');
+          if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'street');
           if (ferry) {
             game._renderFerryNotice({
               ferryOrigin: { id: '3980940', name: 'Centraal Station', x: 0, y: 0, land: { x: 0, y: 0 } },
@@ -687,10 +694,31 @@ export const PortraitHud: Story = {
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 
-/** The pad lit while steering left, so the pressed state is reviewable. */
+/** The 'Steer' option's thumbstick, held up-left, so its pressed state is
+ *  reviewable. */
 export const PortraitHudSteering: Story = {
   args: { scenario: 'touch-hud-steering' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Street following with a left queued: the ◀ stays lit until the bike
+ *  reaches a street opening on that side. */
+export const PortraitHudStreetQueued: Story = {
+  args: { scenario: 'touch-hud-street-queued' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Street following at a T-junction with nothing queued: the arrows pulse to
+ *  ask which way. */
+export const PortraitHudStreetWaiting: Story = {
+  args: { scenario: 'touch-hud-street-waiting' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Landscape, a left queued: the pad sits under the left thumb. */
+export const LandscapeHudStreetQueued: Story = {
+  args: { scenario: 'touch-hud-street-queued' },
+  parameters: { viewport: { defaultViewport: 'mobile2', defaultOrientation: 'landscape' } },
 };
 
 /** Mid-question: the street name is withheld and the feedback line is gone,

@@ -28,6 +28,8 @@ export type OpenRouteOptions = {
   seed?: number;
   /** Query string for the page URL, e.g. `?streetChunks=0`. */
   query?: string;
+  /** Steering scheme; phones default to 'street' (follow the street). */
+  controlMode?: 'street' | 'relative' | 'absolute';
 };
 
 /** Boot Canal Recall, set prefs via the hidden selects, and start a route. */
@@ -41,6 +43,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
     playerTimeoutMs = 90_000,
     seed: seedValue = 0x5eed1234,
     query = '',
+    controlMode,
   } = options;
 
   if (seedRandom) {
@@ -62,6 +65,12 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);
   if (viewMode) await setHiddenSelect(page, 'view-mode', viewMode);
+  if (controlMode) {
+    await page.evaluate(mode => {
+      const g = window.canalRecallGame as unknown as { _overlay: { store: { patchPrefs(p: object, z: unknown): void } }; _overlayZoom(): unknown };
+      g._overlay.store.patchPrefs({ controlMode: mode }, g._overlayZoom());
+    }, controlMode);
+  }
   await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
   await expect.poll(
     () => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)),

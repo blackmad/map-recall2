@@ -116,6 +116,8 @@ export const nl: Record<MessageKey, string> = {
   'options.spin': '3D-draai',
   'options.zoom': 'Zoom',
   'options.controls': 'Besturing',
+  'options.controls.follow': 'Volgen',
+  'options.controls.followHint': 'Rijdt de straat af; jij kiest elke afslag',
   'options.controls.steer': 'Sturen',
   'options.controls.steerHint': 'Links en rechts draaien het voertuig',
   'options.controls.point': 'Richten',

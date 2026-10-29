@@ -31,7 +31,7 @@ test('cycling boards an IJ ferry, is kept off the bank, and docks at any pier', 
     if (!held) { await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]}); return; }
     const c = await page.evaluate(()=>{
       const g=(window as any).canalRecallGame, d=g.input._dpad, v=g.input._viewport, r=g.canvas.getBoundingClientRect();
-      g.player.controlMode='relative';
+      g.player.controlMode='relative'; g.input.setPadMode('relative');
       return {x:r.left+d.cx*r.width/v.width,y:r.top+d.cy*r.height/v.height,delta:(window as any).CanalRecallUi.stickRadius(d)*r.height/v.height};
     });
     await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:c.x,y:c.y}]});

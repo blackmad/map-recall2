@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**Phones follow the street; the camera stops yawing at every wobble
+(2026-10-29).** User: the mobile steering was "not fun to use and kind of
+nauseating". Two causes in code: the chase camera eased toward the bike's
+heading in ~0.25 s, so each thumb correction, road-guard nudge and on-the-spot
+pivot yawed the whole city; and the analog stick turned straight into turn
+rate, with diagonal gestures overloaded (brake, turn-around, pivot). Looked at
+Mario Kart Tour (auto-cruise, one-finger sideways steer), Asphalt 9
+TouchDrive (auto-steer, swipe to pick a route at forks) and SuperTuxKart
+(wheel; tilt modes opt-in and fiddly). Built two things:
+- `cameraYaw.ts`: heading-following views ignore changes under 10°, ease
+  slower, and cap yaw at 80°/s (45°/s with reduced motion). The orbit bearing
+  still applies at once on top, and the rotation is now wrapped to ±π.
+- `streetFollow.ts`, control mode `street` ("Follow"), the default on
+  phones/tablets (coarse pointer; keyboards keep Steer). The bike rides
+  along the street by itself; ◀/▶ queue the next turn (one press, one turn;
+  4 s memory), taken where a street opens on that side, with a slow-down on
+  approach and the arc started at the radius the speed needs (committing at
+  the corridor edge cut the corner at cruise). Straight on at crossings,
+  bends followed, a T-junction or dead end waits; ↺ tap turns round, hold
+  stops. Rides start parked until the first press, so the bike does not roll
+  into the first question. A saved `relative` without the new version flag
+  migrates once to `street` on touch.
+`test:street-follow` rides real junctions without the road guard:
+Leidsestraat × Keizersgracht (straight, left, right), the Keizersgracht ring
+hands-off, Utrechtsestraat × Prinsengracht from past Kerkstraat; all stay in
+the corridor, camera ≤ 80°/s, zero yaw on straight streets.
+
 **Desktop draw spans and touch facade tiles (2026-10-29, #100 follow-up).** Ground and facade meshes now skip their off-screen parts. The whole-mesh draw call is unchanged; spans only cut the triangles drawn.
 
 - **Desktop: spans.** The index buffer is reordered once, tile by tile, and each frame draws from the first to the last on-screen tile. Object and draw-call counts are unchanged, and the picture is pixel-identical at Westerkerk, Damrak, Dam and Leidseplein.

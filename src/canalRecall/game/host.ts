@@ -42,6 +42,9 @@ export interface Vehicle extends WorldPoint {
   speed: number;
   vx: number;
   vy: number;
+  /** Street following's queued turn and junction wait, for the HUD pad;
+   *  null outside 'street' control. */
+  readonly streetFollowView?: Omit<import('./collaborators').StreetPadView, 'buttons'> | null;
 }
 
 /** Construction, canvas and per-frame state that every subsystem uses. */
@@ -58,7 +61,8 @@ export interface GameCoreHost {
   raceTime: number;
   currentNeighborhood: string;
   travelMode: TravelMode;
-  /** 'relative' (car-style) or 'absolute' (screen directions) steering. */
+  /** 'street' (follow the street, choose at junctions), 'relative'
+   *  (car-style) or 'absolute' (screen directions) steering. */
   controlMode: string;
   /** Active extract city — stamps recall keys and extract URLs. */
   cityId: string;

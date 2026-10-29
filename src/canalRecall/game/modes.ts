@@ -13,7 +13,7 @@ export type TravelMode = typeof TRAVEL_MODES[number];
 export const ANSWER_MODES = ['multiple', 'typing'] as const;
 export type AnswerMode = typeof ANSWER_MODES[number];
 
-export const CONTROL_MODES = ['relative', 'absolute'] as const;
+export const CONTROL_MODES = ['street', 'relative', 'absolute'] as const;
 export type ControlMode = typeof CONTROL_MODES[number];
 
 // Cockpit was retired as a player choice (2026-10-22, user): setup and the

@@ -105,6 +105,8 @@
     "options.spin": "3D spin",
     "options.zoom": "Zoom",
     "options.controls": "Controls",
+    "options.controls.follow": "Follow",
+    "options.controls.followHint": "Rides along the street; choose each turn",
     "options.controls.steer": "Steer",
     "options.controls.steerHint": "Left and right turn the vehicle",
     "options.controls.point": "Point",
@@ -724,6 +726,8 @@
     "options.spin": "3D-draai",
     "options.zoom": "Zoom",
     "options.controls": "Besturing",
+    "options.controls.follow": "Volgen",
+    "options.controls.followHint": "Rijdt de straat af; jij kiest elke afslag",
     "options.controls.steer": "Sturen",
     "options.controls.steerHint": "Links en rechts draaien het voertuig",
     "options.controls.point": "Richten",
@@ -1731,6 +1735,17 @@
   // src/canalRecall/game/preferences.ts
   var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
   var ZOOM_DEFAULT_VERSION = 4;
+  var CONTROL_DEFAULT_VERSION = 2;
+  function defaultControlMode(env = browserPointer()) {
+    return (env.maxTouchPoints ?? 0) > 0 && env.coarsePointer !== false ? "street" : "relative";
+  }
+  function browserPointer() {
+    const scope = globalThis;
+    return {
+      maxTouchPoints: scope.navigator?.maxTouchPoints ?? 0,
+      coarsePointer: scope.matchMedia ? scope.matchMedia("(pointer: coarse)").matches : void 0
+    };
+  }
   var MAP_MAX_PITCH = 75;
   var CHASE_PITCH_DEGREES = 60;
   var CHASE_FLATTEST_PITCH = 12;
@@ -1751,7 +1766,7 @@
       // Boat and Chase are the product start (2026-10-22, user's call; cockpit
       // is retired and the setup View row offers the 2D and 3D views).
       travelMode: "boat",
-      controlMode: "relative",
+      controlMode: defaultControlMode(),
       viewMode: "chase",
       themeMode: "clean",
       buildingLook: "photo",
@@ -1768,6 +1783,7 @@
       sound: false,
       zoom: zoom.defaultZoom,
       zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+      controlDefaultVersion: CONTROL_DEFAULT_VERSION,
       cameraTilt: 0,
       cameraBearing: 0
     };
@@ -2025,7 +2041,9 @@
         segIdx: span.segIdx,
         ptIdx: span.ptIdx,
         nx: -rdy / length,
-        ny: rdx / length
+        ny: rdx / length,
+        length,
+        along: Math.hypot(hit.x - span.a.x, hit.y - span.a.y)
       });
     }
     return contacts;
