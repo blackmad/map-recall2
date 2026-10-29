@@ -1709,6 +1709,266 @@
     return mode === "boat";
   }
 
+  // src/canalRecall/labels/labelDedupe.ts
+  var SIMILAR_NAME_NEAR_M = 60;
+  var SAME_NAME_NEAR_M = 600;
+  var SAME_VENUE_NEAR_M = 40;
+  var BUILDING_MAX_AREA_M2 = 6e4;
+  var PART_RANK_SHARE = 0.5;
+  var FOOTPRINT_SLACK_M = 8;
+  var GENERIC = /* @__PURE__ */ new Set([
+    "amsterdam",
+    "station",
+    "centraal",
+    "central",
+    "kerk",
+    "church",
+    "museum",
+    "hotel",
+    "park",
+    "plein",
+    "square",
+    "bridge",
+    "brug",
+    "house",
+    "huis",
+    "gebouw",
+    "building",
+    "market",
+    "markt",
+    "cafe",
+    "bar",
+    "restaurant",
+    "theater",
+    "theatre",
+    "school",
+    "centrum",
+    "centre",
+    "center",
+    "tower",
+    "toren",
+    "gate",
+    "poort",
+    "palace",
+    "paleis",
+    "stock",
+    "exchange",
+    "beurs",
+    "hall",
+    "zaal",
+    "hof",
+    "oude",
+    "nieuwe",
+    "old",
+    "new",
+    "grand",
+    "royal",
+    "koninklijk",
+    "national",
+    "nationaal"
+  ]);
+  var STOP = /* @__PURE__ */ new Set(["van", "de", "der", "den", "het", "the", "of", "and", "en", "in", "op", "aan", "bij", "la", "le", "s", "t", "voor", "met", "over", "naar", "for", "with"]);
+  var PLACE_WORDS = /* @__PURE__ */ new Set([
+    "weesp",
+    "noord",
+    "oost",
+    "zuid",
+    "west",
+    "zuidoost",
+    "nieuw",
+    "jordaan",
+    "pijp",
+    "ijburg",
+    "amstel",
+    "amstelveen",
+    "diemen",
+    "zaandam",
+    "haarlem",
+    "spaarndam",
+    "aalsmeer",
+    "duivendrecht",
+    "halfweg",
+    "landsmeer",
+    "zwanenburg",
+    "osdorp",
+    "slotervaart",
+    "bijlmer",
+    "watergraafsmeer",
+    "centrum",
+    "location",
+    "locatie"
+  ]);
+  function nameWords(name) {
+    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/['’]s\b/g, "").replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
+  }
+  function nameKey(name) {
+    return nameWords(name).join(" ");
+  }
+  function within1Edit(a, b) {
+    if (a === b) return true;
+    if (Math.abs(a.length - b.length) > 1) return false;
+    let i = 0, j = 0, edits = 0;
+    while (i < a.length && j < b.length) {
+      if (a[i] === b[j]) {
+        i++;
+        j++;
+        continue;
+      }
+      if (++edits > 1) return false;
+      if (a.length > b.length) i++;
+      else if (b.length > a.length) j++;
+      else {
+        i++;
+        j++;
+      }
+    }
+    return edits + (a.length - i) + (b.length - j) <= 1;
+  }
+  function spellingVariants(a, b) {
+    const ka = nameKey(a), kb = nameKey(b);
+    if (!ka || !kb) return false;
+    if (ka === kb) return true;
+    const xa = ka.split(" "), xb = kb.split(" ");
+    return xa.length === xb.length && xa.some((w) => w.length >= 4) && xa.every((w, i) => w.length >= 4 ? within1Edit(w, xb[i]) : w === xb[i]);
+  }
+  function similarNames(a, b) {
+    const ka = nameKey(a), kb = nameKey(b);
+    if (!ka || !kb) return false;
+    if (spellingVariants(a, b)) return true;
+    const distinctive = (w) => w.length >= 4 && /[a-z]/.test(w) && !GENERIC.has(w) && !STOP.has(w) && !PLACE_WORDS.has(w);
+    const wa = ka.split(" ").filter(distinctive), wb = kb.split(" ").filter(distinctive);
+    for (const x of wa) for (const y of wb) {
+      if (x === y) return true;
+      if (x.length >= 7 && y.length >= 7 && within1Edit(x, y)) return true;
+    }
+    return false;
+  }
+  var CLASS_ORDER = { destination: 4, landmark: 3, culture: 2, civic: 1, venue: 0 };
+  function outranks(a, b) {
+    return CLASS_ORDER[a.cls] - CLASS_ORDER[b.cls] || a.rank - b.rank || (a.id < b.id ? 1 : -1);
+  }
+  function metresPerLng(lat) {
+    return 111320 * Math.cos(lat * Math.PI / 180);
+  }
+  function distanceM(a, b) {
+    return Math.hypot((a.lng - b.lng) * metresPerLng((a.lat + b.lat) / 2), (a.lat - b.lat) * 111320);
+  }
+  function ringContains(ring, lng, lat) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if (yi > lat !== yj > lat && lng < (xj - xi) * (lat - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  }
+  function nearFootprint(geometry, lng, lat, slackM = FOOTPRINT_SLACK_M) {
+    if (!geometry) return false;
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
+    const k = metresPerLng(lat);
+    for (const rings of polygons) {
+      const ring = rings?.[0];
+      if (!ring || ring.length < 3) continue;
+      if (ringContains(ring, lng, lat)) return true;
+      for (let i = 0; i + 1 < ring.length; i++) {
+        const ax = (ring[i][0] - lng) * k, ay = (ring[i][1] - lat) * 111320;
+        const bx = (ring[i + 1][0] - lng) * k, by = (ring[i + 1][1] - lat) * 111320;
+        const dx = bx - ax, dy = by - ay, len = dx * dx + dy * dy;
+        const t2 = len > 0 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / len)) : 0;
+        if (Math.hypot(ax + t2 * dx, ay + t2 * dy) <= slackM) return true;
+      }
+    }
+    return false;
+  }
+  function dedupeLabelCandidates(candidates, footprints = /* @__PURE__ */ new Map()) {
+    const order = candidates.map((c, i) => ({ c, i })).sort((a, b) => outranks(b.c, a.c) || a.i - b.i);
+    const cell = SIMILAR_NAME_NEAR_M, kLng = metresPerLng(52.37);
+    const cellOf = (c) => [Math.floor(c.lng * kLng / cell), Math.floor(c.lat * 111320 / cell)];
+    const near = /* @__PURE__ */ new Map();
+    const byName = /* @__PURE__ */ new Map();
+    const buildings = [];
+    const keep = /* @__PURE__ */ new Set();
+    const dropped = [];
+    const push = (m, k, v) => {
+      const l = m.get(k);
+      if (l) l.push(v);
+      else m.set(k, [v]);
+    };
+    for (const { c } of order) {
+      let found = null;
+      const key = nameKey(c.name);
+      for (const w of byName.get(key) || []) {
+        const limit = c.cls === "venue" && w.cls === "venue" ? SAME_VENUE_NEAR_M : SAME_NAME_NEAR_M;
+        if (distanceM(w, c) <= limit) {
+          found = { w, reason: "same-name" };
+          break;
+        }
+      }
+      if (!found && c.cls !== "venue") {
+        const [cx2, cy2] = cellOf(c);
+        search: for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+          for (const w of near.get(`${cx2 + dx},${cy2 + dy}`) || []) {
+            if ((w.cls === "landmark" || c.cls === "landmark") && distanceM(w, c) <= SIMILAR_NAME_NEAR_M && similarNames(w.name, c.name)) {
+              found = { w, reason: "similar-name" };
+              break search;
+            }
+          }
+        }
+      }
+      if (!found && c.cls !== "venue") {
+        for (const b of buildings) {
+          if (c.lng < b.box[0] || c.lng > b.box[2] || c.lat < b.box[1] || c.lat > b.box[3]) continue;
+          const part = c.cls === "landmark" && footprints.has(c.id) && c.rank < PART_RANK_SHARE * b.c.rank;
+          if (!part && !similarNames(b.c.name, c.name)) continue;
+          if (nearFootprint(b.foot, c.lng, c.lat)) {
+            found = { w: b.c, reason: part ? "inside-landmark" : "similar-name" };
+            break;
+          }
+        }
+      }
+      if (found && c.cls !== "destination") {
+        dropped.push({ dropped: c, keptId: found.w.id, reason: found.reason });
+        continue;
+      }
+      keep.add(c);
+      push(byName, key, c);
+      const [cx, cy] = cellOf(c);
+      push(near, `${cx},${cy}`, c);
+      const foot = footprints.get(c.id);
+      if (foot && c.cls === "landmark") {
+        const box = footprintBox(foot);
+        if (box && footprintAreaM2(foot) <= BUILDING_MAX_AREA_M2) {
+          const sx = FOOTPRINT_SLACK_M / metresPerLng(c.lat), sy = FOOTPRINT_SLACK_M / 111320;
+          buildings.push({ c, foot, box: [box[0] - sx, box[1] - sy, box[2] + sx, box[3] + sy] });
+        }
+      }
+    }
+    return { kept: candidates.filter((c) => keep.has(c)), dropped };
+  }
+  function footprintBox(geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
+    let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+    for (const rings of polygons) for (const [x, y] of rings?.[0] || []) {
+      if (x < w) w = x;
+      if (x > e) e = x;
+      if (y < s) s = y;
+      if (y > n) n = y;
+    }
+    return w <= e ? [w, s, e, n] : null;
+  }
+  function footprintAreaM2(geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
+    let total = 0;
+    for (const rings of polygons) {
+      const ring = rings?.[0] || [];
+      if (ring.length < 3) continue;
+      const k = metresPerLng(ring[0][1]);
+      let a = 0;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) a += ring[j][0] * k * ring[i][1] * 111320 - ring[i][0] * k * ring[j][1] * 111320;
+      total += Math.abs(a) / 2;
+    }
+    return total;
+  }
+
   // src/canalRecall/game/freeRide.ts
   var FREE_RIDE_PATTERN = "free";
   function isFreeRidePattern(pattern) {
@@ -1798,6 +2058,19 @@
     if (!contact || !Number.isFinite(contact.dist)) return false;
     const halfWidth = Number.isFinite(contact.width) ? contact.width : 0;
     return contact.dist <= halfWidth + slopPx;
+  }
+  function secondMarkerIds(landmarks) {
+    const candidates = [];
+    const footprints = /* @__PURE__ */ new Map();
+    for (const landmark of landmarks) {
+      const [lng, lat] = landmark.lngLat || [];
+      if (!Number.isFinite(lng) || !Number.isFinite(lat)) continue;
+      const id = String(landmark.id);
+      candidates.push({ id, name: landmark.name, lng, lat, heightM: 0, cls: "landmark", rank: Math.min(999, (landmark.prominenceScore || 0) / 2) });
+      const polygon = landmark.geojson?.features?.find((f) => f.geometry?.type === "Polygon")?.geometry;
+      if (polygon) footprints.set(id, polygon);
+    }
+    return new Set(dedupeLabelCandidates(candidates, footprints).dropped.map((d) => d.dropped.id));
   }
 
   // src/canalRecall/answerPath.ts
@@ -1980,8 +2253,10 @@
         return this._freeRidePlaces;
       }
       const places = [];
-      for (const landmark of this.landmarks || []) {
-        if (!isWorthACard(landmark)) continue;
+      const worth = (this.landmarks || []).filter((landmark) => isWorthACard(landmark));
+      const second = secondMarkerIds(worth);
+      for (const landmark of worth) {
+        if (second.has(String(landmark.id))) continue;
         places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y });
       }
       for (const bridge of this.bridges || []) {
@@ -6361,11 +6636,11 @@
     const c = Math.min(1, Math.max(0, t2));
     return c * c * (3 - 2 * c);
   };
-  function sightlineWeight(distanceM) {
+  function sightlineWeight(distanceM2) {
     const s = SIGHTLINE;
-    if (!Number.isFinite(distanceM) || distanceM >= s.reachM || distanceM <= s.nearZeroM) return 0;
-    if (distanceM > s.fullM) return smooth((s.reachM - distanceM) / (s.reachM - s.fullM));
-    if (distanceM < s.nearFullM) return smooth((distanceM - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
+    if (!Number.isFinite(distanceM2) || distanceM2 >= s.reachM || distanceM2 <= s.nearZeroM) return 0;
+    if (distanceM2 > s.fullM) return smooth((s.reachM - distanceM2) / (s.reachM - s.fullM));
+    if (distanceM2 < s.nearFullM) return smooth((distanceM2 - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
     return 1;
   }
   function landmarkSightline(target, engaged, enabled = true) {
@@ -6494,7 +6769,7 @@
     rider: "#1f1c17"
   };
   var CLASS_WIDTH = [3.4, 3, 2.5, 1.9, 1.1, 1.1];
-  var CLASS_ORDER = [5, 4, 3, 2, 1, 0];
+  var CLASS_ORDER2 = [5, 4, 3, 2, 1, 0];
   var PATH_CLASS = 6;
   function radarWorkerMain() {
     const scope = self;
@@ -6666,11 +6941,11 @@
       const streets = data.streets;
       const n = streets.cls.length;
       const pad = 6;
-      const inTile = CLASS_ORDER.map(() => []);
+      const inTile = CLASS_ORDER2.map(() => []);
       for (let i = 0; i < n; i++) {
         const cls = streets.cls[i];
         if (cls >= PATH_CLASS || !hits(streets.bbox, i, pad)) continue;
-        inTile[CLASS_ORDER.indexOf(cls)].push(i);
+        inTile[CLASS_ORDER2.indexOf(cls)].push(i);
       }
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
@@ -6688,10 +6963,10 @@
       };
       const dpr = this.ppm / this.cssPpm;
       const roads = inTile.slice(1);
-      roads.forEach((list, k) => stroke(list, (CLASS_WIDTH[CLASS_ORDER[k + 1]] + 1.4) * dpr, RADAR_COLORS.streetCasing));
+      roads.forEach((list, k) => stroke(list, (CLASS_WIDTH[CLASS_ORDER2[k + 1]] + 1.4) * dpr, RADAR_COLORS.streetCasing));
       stroke(inTile[0], CLASS_WIDTH[5] * dpr, RADAR_COLORS.cycle);
       roads.forEach((list, k) => {
-        const cls = CLASS_ORDER[k + 1];
+        const cls = CLASS_ORDER2[k + 1];
         stroke(list, CLASS_WIDTH[cls] * dpr, cls <= 1 ? RADAR_COLORS.major : RADAR_COLORS.street);
       });
       this.stats.tilesRendered++;

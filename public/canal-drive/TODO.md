@@ -1939,6 +1939,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Centraal surroundings, still unmodelled (feedback 334bcadd, bbbeaceb; 2026-10-29, #94).** Findings are in `docs/handoffs/centre-landmarks-fb-20261028.md`.
+  - **Stationsplein island,** pand 0363100012182895 (Stationsplein 4–16). Low cream rendered pavilions with red-tiled mansard roofs and a white lantern turret. The pand is not in the building tiles, so the game draws generic OSM brick boxes. It needs a bespoke builder.
+  - **IJ-side canopy,** in `centraal-complex-builder.ts` ("Overkapping IJsei"). The game draws an opaque dark tube. The photo shows white steel arch ribs down to the quay and an open glazed vault over the glass shopfronts. Measure the rib count and spacing from the orthophoto and panoramas.
+  - Missing IJ-side pands include De Ruijterkade 37 (2023).
+  - The MapLibre layer `cycling-ferry-terminal-labels` shows "Centraal Station ⛴" twice, once per pontoon. Dedupe it.
+  - Stale LOD1 note: the Beurs is still a generic brick mass. It lacks the Damrak arcade, the Beursplein entrance and the stepped gables.
+
 - **Gameplay analytics without a consent banner (2026-10-28, user ask)**: there is
   no gameplay analytics today (only Sentry errors). Aim for the most we can
   measure without needing EU consent. ePrivacy Art. 5(3), and the Dutch Tw

@@ -218,7 +218,7 @@
     "test:houseboat-kinds": "tsx scripts/check-houseboat-hull-classification.ts",
     "test:street-gables": "node --import tsx --test src/canalRecall/streetGableEnds.test.ts src/canalRecall/streetRidge.test.ts src/canalRecall/narrowHalfHip.test.ts src/canalRecall/buildingRecipe/neckEntablature.test.ts",
     "build:overview-tiles": "node --import tsx scripts/overview-tiles/build-overview-tiles.ts",
-    "test:hud": "node --import tsx --test src/canalRecall/game/radar.test.ts src/canalRecall/game/utilityTuck.test.ts src/canalRecall/game/freeRide.test.ts",
+    "test:hud": "node --import tsx --test src/canalRecall/game/radar.test.ts src/canalRecall/game/utilityTuck.test.ts src/canalRecall/game/freeRide.test.ts src/canalRecall/labels/labelsOcclusion.test.ts",
     "build:houseboats": "tsx scripts/build-houseboats.ts",
     "test:landmark-fronts": "tsx src/canalRecall/facade/photoSilhouette.test.ts && tsx scripts/check-landmark-fronts.ts",
     "test:generic-facades": "tsx scripts/check-generic-facades.ts",

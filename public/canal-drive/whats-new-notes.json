@@ -2,6 +2,11 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
  "notes": [
   {
+   "date": "2026-10-29",
+   "title": "One name per place, and tidier Dam landmarks",
+   "text": "Free Ride no longer shows the same place name twice: Beurs van Berlage, De Bijenkorf, the National Monument and Centraal each get one label. The Beurs windows and arches sit on their walls, the Bijenkorf's Dam front shows its windows again, and the stray grey strip on the Dam corner is gone."
+  },
+  {
    "date": "2026-10-28",
    "title": "Ferries dock at any pier",
    "text": "Steer the ferry onto any pier, from the water or up the quay, to step off. Buiksloterweg and NDSM-werf no longer leave you stuck aboard, the boat stays off the bank, and the cycle bridge by the Odebrug in Oosterdok is now reachable."

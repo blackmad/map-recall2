@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**Centre feedback: one label per place, Beurs and Bijenkorf windows on their walls (2026-10-29, #94).**
+
+- **d85ba0ac / 3702bcd7, double labels.** In Free Ride the DOM overlay repeated each canvas marker pill's name. `labels/labelDedupe.ts` `screenDuplicateIds` drops an overlay label that repeats a placed marker: the same landmark id, a similar name within 60 m, or a spelling variant within 600 m. `freeRide.ts` `secondMarkerIds` removes the inner-footprint second markers: Cuypersgebouw, Zuiderkerk Tower and OBA De Hallen.
+- **58f97b44, Beurs.** Arches and clock plates hung 0.11–0.18 m off the walls. Tower arches were drawn on segments that run onto the 14 m roof. Each window now reads its local wall top. The GLB audit went from FAIL (11 hovering parts) to PASS.
+- **3026cca1, Bijenkorf.** The Dam and Beursplein fronts stood 0.25–0.39 m behind the surveyed ring, so the brick swallowed the glass. The fronts are now fitted to the ring. Z-fighting went from 119 to 1.6 m².
+- **59b67ef0, grey strip.** It was the generic `stair-glass` facade extra (p = 0.3), invented on Dam 2 and the 1991 corner beside the Bijenkorf. The panoramas show neither has one. The integrator removed the generic component; a real stair window comes from a building type.
+- **Replay harness:** `tests/e2e/centre-feedback.spec.ts` replays each note's pose in Free Ride.
+
 **Ferries dock at any pier; Odebrug reachable (2026-10-28, #93).** Feedback
 50ea10bf, 1d632c41, f80d47da and 3e7f0aa4.
 
