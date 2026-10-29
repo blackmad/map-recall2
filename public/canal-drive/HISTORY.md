@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Consent-free gameplay analytics (2026-10-29, #101 decided, #115).** The user chose
+to build it ourselves, accepted the Tw 11.7a / legitimate-interest reading (not
+legal advice), and asked for no retention counts yet. `src/canalRecall/analytics/`
+holds one allow-list schema shared by the browser and the function (eight events:
+session, ride_start, ride_end, ride_length, answer, buurt, perf, graphics_failure;
+closed value sets; unknown fields rejected). The client batches events and sends
+them by `sendBeacon`, with a session id per tab held in memory only. It sets no
+cookie, no storage and no fingerprint, and sends a buurt code instead of
+coordinates. `functions/` (codebase `analytics`, europe-west4) validates each batch
+and increments sharded daily counters in `analytics_daily`, which browsers cannot
+read or write. `scripts/analytics-report.ts` prints them. `privacy.html` gains one
+English and one Dutch paragraph. Tested: 30 unit tests, the emulator (exact counts,
+replay counted once, rules deny browsers), and `analytics-beacon.spec.ts` (payload
+allow-listed, no cookie or storage writes, nothing loads without an endpoint).
+Deploying needs Blaze; the steps are in TODO.
+
 **Street following aims down the street (2026-10-29).** Ways are often
 digitised as short pieces whose bearings zig-zag (Prinsengracht at the
 Leidsegracht: 66°, 97°, 72°, 37°, 48° over 60 m, after the 3 m
