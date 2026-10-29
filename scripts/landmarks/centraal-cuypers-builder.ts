@@ -114,9 +114,12 @@ export function buildCentraalCuypers(b: BuildingTools) {
     for (const w of [...up1, ...up2]) {
       // ornamented tympanum over each head: an ochre tile field under a stone relieving arch
       const top = w.o.y + w.o.h + 0.2;
-      slab(S, 'ochre', f, w.o.t - 1.0, w.o.t + 1.0, top, top + 0.34, 0, 0.07, false);
-      coping(S, 'stone', f, [w.o.t - 1.2, top], [w.o.t, top + 0.48], 0.14, 0, 0.1);
-      coping(S, 'stone', f, [w.o.t, top + 0.48], [w.o.t + 1.2, top], 0.14, 0, 0.1);
+      // Faces 6.5 cm apart (wall 0, tiles 0.065, arch 0.13): at 7/10 cm the tiles and the arch sat 3 cm apart, one quantisation step of
+      // the 14-bit export (2.6 cm over this 432 m model), and the IJ canopy ribs' new north bound (2026-10-29) shifted the grid so 72
+      // tympana fell into the 2-3 cm z-fight band.
+      slab(S, 'ochre', f, w.o.t - 1.0, w.o.t + 1.0, top, top + 0.34, 0, 0.065, false);
+      coping(S, 'stone', f, [w.o.t - 1.2, top], [w.o.t, top + 0.48], 0.14, 0, 0.13);
+      coping(S, 'stone', f, [w.o.t, top + 0.48], [w.o.t + 1.2, top], 0.14, 0, 0.13);
     }
     for (let i = 0; i + 1 < bays.length; i++) {
       // wrought-iron wall anchors between the windows (the dark crosses at both floor levels)
@@ -435,8 +438,10 @@ export function buildCentraalCuypers(b: BuildingTools) {
     const lancets: Win[] = [...evenly(0.3, c - 1.5, 3), ...evenly(c + 1.5, L - 0.3, 3)].map(t => ({o: {t, y: 5.1, w: 0.72, h: 4.4, head: 'pointed' as const, rise: 0.55}, opt: {depth: 0.2, panes: [1, 4] as [number, number]}}));
     lancets.push({o: {t: c, y: 7.2, w: 0.72, h: 2.3, head: 'pointed', rise: 0.55}, opt: {depth: 0.2}});
     wall(f, 'brick', rect(0, L, 4.3, 9.85), lancets);
-    panel(S, 'gold', f, rect(0.35, L - 0.35, 9.95, 11.35), [], 0.08);
-    for (let k = 0; k < 7; k++) figure(f, 0.95 + k * (L - 1.9) / 6, 10.0, 1.25, 0.14, 'stone');
+    // The gilt frieze and its figures stop at the quoins (0.8 m blocks 12 cm proud): ending at 0.35 m the gold ran 4 cm behind the
+    // quoin faces, one quantisation step at the 14-bit export grid (zfight-tight, 2026-10-29).
+    panel(S, 'gold', f, rect(0.85, L - 0.85, 9.95, 11.35), [], 0.08);
+    for (let k = 0; k < 7; k++) figure(f, 1.15 + k * (L - 2.3) / 6, 10.0, 1.25, 0.14, 'stone');
     slab(S, 'stone', f, 0, L, 9.85, 9.98, 0, 0.16, false); slab(S, 'stone', f, 0, L, 11.35, 11.5, 0, 0.16, false);
     wall(f, 'brick', rect(0, L, 11.5, 19.1), evenly(0.6, L - 0.6, 3).map(t => ({o: {t, y: 11.65, w: 1.65, h: 4.0}, surround: 0.2, sill: 0.12, opt: cross2})));
     for (const [y0, y1] of [[15.95, 16.15], [18.6, 19.1]] as const) slab(S, 'stone', f, -0.1, L + 0.1, y0, y1, 0, 0.3, true);
