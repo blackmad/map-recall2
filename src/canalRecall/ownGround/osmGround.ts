@@ -320,8 +320,12 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
   // Tram tracks in the street: two-way (or two-way for buses and trams) streets carry a track each way, 3 m apart.
   const rails: number[] = [];
   if ((tags.embedded_rails ?? '').split(';').includes('tram')) {
+    // Measured track offsets (patch-osm-trams.ts from BGT spoor, lane road-look-continuity 2026-10-29): the tracks
+    // where they lie, left of the way positive, a few metres off the centreline on streets with a median track bed.
+    const measured = (tags['embedded_rails:offsets'] ?? '').split(';').map(Number).filter(v => tags['embedded_rails:offsets'] && Number.isFinite(v) && Math.abs(v) <= 12);
     const both = !oneway || tags['oneway:bus'] === 'no' || tags['oneway:psv'] === 'no';
-    if (both && carriage >= 5.5) rails.push(1.5, -1.5); else rails.push(0);
+    if (measured.length) rails.push(...measured);
+    else if (both && carriage >= 5.5) rails.push(1.5, -1.5); else rails.push(0);
   }
   return { bands, paint, rails, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source, sidewalkSides: sw.source } };
 }

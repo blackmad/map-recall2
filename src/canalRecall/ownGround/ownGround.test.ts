@@ -2029,3 +2029,11 @@ test('RAIL_VIADUCTS: rings are quads with two abutments, decks cover their passa
     assert.ok(floorZone(v, p => [p[0] * 67960, p[1] * 111250]).length === 4);
   }
 });
+
+test('tram rails: measured BGT track offsets replace the ±1.5 m prior (lane road-look-continuity 2026-10-29)', () => {
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': '-1.9;1.9' })!.rails, [-1.9, 1.9]);
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': '2.4' })!.rails, [2.4]);
+  const prior = crossSection({ highway: 'residential', embedded_rails: 'tram' })!.rails;
+  assert.ok(prior.length >= 1 && prior.every(v => v === 0 || Math.abs(v) === 1.5), `prior ${prior}`);
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': 'x;40' })!.rails, prior, 'nonsense offsets: the prior');
+});
