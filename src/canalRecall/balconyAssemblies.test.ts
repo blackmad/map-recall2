@@ -107,3 +107,15 @@ test('a multi-bay joint stack follows the wide central access opening above its 
   const points = alternative.tris.filter(t => t.hex === '#b9b5ac').slice(0, 10).flatMap(t => t.p);
   assert.ok(Math.abs((Math.min(...points.map(p => p[0])) + Math.max(...points.map(p => p[0]))) / 2 - 6) < 1e-9, 'without an entrance use a central access slot, never an arbitrary side window');
 });
+
+// Feedback 59b67ef0 (Dam, 2026-10-25): "what's the gray vertical strip on this building?" The
+// random stair-glass extra drew a full-height grey glass strip on Dam 2 (pand 0363100012253910) and
+// the 1991 corner beside the Bijenkorf (0363100012179183); the panoramas show neither has one.
+test('no generic wall draws an invented stair-glass strip', () => {
+  for (const style of ['school', 'postwar', 'modern'] as const) {
+    for (let i = 0; i < 200; i++) {
+      const used = wallExtras(wall({ id: `NL.IMBAG.Pand.0363100012${253910 + i}`, style, period: style, wallKey: `w${i % 4}` }), new ExtraSink(230));
+      assert.ok(!used.includes('stair-glass'), `${style} ${i}`);
+    }
+  }
+});

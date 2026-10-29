@@ -79,7 +79,20 @@ test('centre feedback poses: frames and drawn labels', async ({ page }, info) =>
     await park(page, pose);
     await page.waitForTimeout(2_000);
     await page.screenshot({ path: `${OUT}/${pose.id}.png` });
-    report[pose.id] = { ...pose, ...(await drawnLabels(page)) };
+    // CENTRE_FB_PICK="x,y;x,y" (CSS px): which model each pixel shows, for naming the pand in a screenshot.
+    const picks = process.env.CENTRE_FB_PICK ? await page.evaluate((spec) => {
+      const vm = (window as any).canalRecallGame.vectorMap, canvas = vm.map.getCanvas() as HTMLCanvasElement;
+      return spec.split(';').map(pair => {
+        const [x, y] = pair.split(',').map(Number);
+        const hits: Record<string, unknown> = {};
+        for (const [name, layer] of [['signature', vm._signatureLandmarks], ['three', vm._threeBuildings], ['tiles', vm._tileBuildings]] as const) {
+          const hit = (layer as any)?.inspectAtScreen?.(x, y, canvas.clientWidth, canvas.clientHeight);
+          if (hit) hits[name] = { ...hit, footprint: undefined, geometry: undefined };
+        }
+        return { x, y, hits };
+      });
+    }, process.env.CENTRE_FB_PICK) : undefined;
+    report[pose.id] = { ...pose, ...(await drawnLabels(page)), picks };
   }
   writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 1));
 });
