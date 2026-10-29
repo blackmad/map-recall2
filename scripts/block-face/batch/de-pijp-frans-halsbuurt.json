@@ -2,18 +2,16 @@
  "name": "de-pijp-frans-halsbuurt",
  "buurt": "frans-halsbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T19:45:44.215Z",
+ "generatedAt": "2026-10-29T19:56:02.332Z",
  "method": "scripts/block-face/batch.ts",
  "totals": {
   "faces": 37,
-  "runs": 38,
-  "installed": 3,
-  "installedPands": 9,
-  "failed": 35,
+  "runs": 37,
+  "installed": 4,
+  "installedPands": 11,
+  "failed": 33,
   "byReason": {
    "no-type": 31,
-   "strip-over-drawn-high": 2,
-   "glb-audit": 1,
    "intake-failed": 1,
    "likeness": 1
   }
@@ -44,83 +42,6 @@
    "seconds": 5
   },
   {
-   "face": "campen-36-66",
-   "street": "Eerste Jacob van Campenstraat",
-   "ride": 35674,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "campen-36-66",
-   "pands": 15,
-   "mode": "auto-place",
-   "stripDate": "2019-01-30",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/14 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x run: a single placed pand between held neighbours or the face end: a block )"
-   ],
-   "seconds": 68.9
-  },
-  {
-   "face": "stadhouderskade-74-76",
-   "street": "Stadhouderskade",
-   "ride": 22673,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "stadhouderskade-74-76",
-   "pands": 2,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1878/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
-  },
-  {
-   "face": "campen-2-34",
-   "street": "Eerste Jacob van Campenstraat",
-   "ride": 13881,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0.186,
-    "reasons": [
-     "cold cast rb"
-    ]
-   },
-   "nccMin": 0.156,
-   "nccMedian": 0.171,
-   "stripOverDrawn": 0.975,
-   "wallFits": 2,
-   "droppedCorners": [],
-   "triangles": 4103,
-   "sheet": "staging/block-face/campen-2-34-r1/review/strip-sheet.png",
-   "stripDate": "2022-03-21",
-   "run": "campen-2-34-r1",
-   "pands": 2,
-   "mode": "auto-place",
-   "status": "failed",
-   "reasons": [
-    "glb-audit: failed (see report.json audit)"
-   ],
-   "seconds": 7.1
-  },
-  {
    "face": "campen-2-34",
    "street": "Eerste Jacob van Campenstraat",
    "ride": 13881,
@@ -147,6 +68,79 @@
    "seconds": 6.7
   },
   {
+   "face": "ruysdaelkade-75-85",
+   "street": "Ruysdaelkade",
+   "ride": 974,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.18,
+   "nccMedian": 0.2,
+   "stripOverDrawn": 0.892,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4224,
+   "sheet": "staging/block-face/ruysdaelkade-75-85-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-03",
+   "run": "ruysdaelkade-75-85-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.2
+  },
+  {
+   "face": "campen-36-66",
+   "street": "Eerste Jacob van Campenstraat",
+   "ride": 35674,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "campen-36-66",
+   "pands": 15,
+   "mode": "auto-place",
+   "stripDate": "2019-01-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 14.9
+  },
+  {
+   "face": "stadhouderskade-74-76",
+   "street": "Stadhouderskade",
+   "ride": 22673,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "stadhouderskade-74-76",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1878/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+   ],
+   "seconds": 0
+  },
+  {
    "face": "campen-1-21",
    "street": "Eerste Jacob van Campenstraat",
    "ride": 13726,
@@ -170,7 +164,7 @@
    "reasons": [
     "no-type: 0/9 placed (9x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 72.2
+   "seconds": 3.3
   },
   {
    "face": "ruysdaelkade-15-55",
@@ -196,7 +190,7 @@
    "reasons": [
     "no-type: 0/14 placed (8x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 116.1
+   "seconds": 12.3
   },
   {
    "face": "dou-9-39",
@@ -219,7 +213,7 @@
    "reasons": [
     "intake-failed: Houses of one chunk must front the same direction (frontages differ by more than ~11 degrees)"
    ],
-   "seconds": 35
+   "seconds": 11.5
   },
   {
    "face": "saenredam-39-67",
@@ -248,7 +242,7 @@
    "face": "stalpert-38-70",
    "street": "Daniël Stalpertstraat",
    "ride": 7572,
-   "restriped": "2022-03-21 -> 2022-01-26",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -268,7 +262,7 @@
    "reasons": [
     "no-type: 0/15 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
    ],
-   "seconds": 126.5
+   "seconds": 7.3
   },
   {
    "face": "quellijn-35-61",
@@ -294,7 +288,7 @@
    "reasons": [
     "no-type: 0/12 placed (8x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 86.6
+   "seconds": 3.2
   },
   {
    "face": "stalpert-33-67",
@@ -343,7 +337,7 @@
    "reasons": [
     "no-type: 0/9 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: best pijp-#-hood-frieze scores # < # (#DBAG eaves # m = # storeys of #; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 39.3
+   "seconds": 10.9
   },
   {
    "face": "ruysdaelkade-61-71",
@@ -369,20 +363,20 @@
    "reasons": [
     "no-type: 0/6 placed (4x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
    ],
-   "seconds": 23.5
+   "seconds": 1.8
   },
   {
    "face": "saenredam-62-66",
    "street": "Saenredamstraat",
    "ride": 3891,
-   "restriped": "2022-03-21 -> 2020-01-06",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
    },
    "nccMin": 0.393,
-   "nccMedian": 0.514,
-   "stripOverDrawn": 1.502,
+   "nccMedian": 0.504,
+   "stripOverDrawn": 0.993,
    "wallFits": 4,
    "droppedCorners": [],
    "triangles": 4148,
@@ -391,11 +385,9 @@
    "run": "saenredam-62-66-r1",
    "pands": 2,
    "mode": "auto-place",
-   "status": "failed",
-   "reasons": [
-    "strip-over-drawn-high: 1.502 > 1.25 (walls drawn darker than the photo)"
-   ],
-   "seconds": 6.6
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.7
   },
   {
    "face": "saenredam-26-56",
@@ -423,7 +415,7 @@
    "reasons": [
     "no-type: 0/14 placed (5x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
    ],
-   "seconds": 72.8
+   "seconds": 2.5
   },
   {
    "face": "quellijn-32-56",
@@ -472,7 +464,7 @@
    "reasons": [
     "no-type: 0/7 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 49.3
+   "seconds": 14.5
   },
   {
    "face": "hals-2-26",
@@ -498,31 +490,7 @@
    "reasons": [
     "no-type: 0/12 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
    ],
-   "seconds": 64.2
-  },
-  {
-   "face": "ruysdaelkade-75-85",
-   "street": "Ruysdaelkade",
-   "ride": 974,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
-   "nccMin": 0.18,
-   "nccMedian": 0.2,
-   "stripOverDrawn": 0.892,
-   "wallFits": 1,
-   "droppedCorners": [],
-   "triangles": 4224,
-   "sheet": "staging/block-face/ruysdaelkade-75-85-r1/review/strip-sheet.png",
-   "stripDate": "2023-01-03",
-   "run": "ruysdaelkade-75-85-r1",
-   "pands": 3,
-   "mode": "auto-place",
-   "status": "installed",
-   "reasons": [],
-   "seconds": 7.2
+   "seconds": 8.8
   },
   {
    "face": "ruysdaelkade-89-105",
@@ -548,7 +516,7 @@
    "reasons": [
     "no-type: 0/8 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
    ],
-   "seconds": 22.6
+   "seconds": 1.9
   },
   {
    "face": "hals-5-19",
@@ -597,7 +565,7 @@
    "reasons": [
     "no-type: 0/6 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
    ],
-   "seconds": 45.4
+   "seconds": 17.4
   },
   {
    "face": "saenredam-1-37",
@@ -625,7 +593,7 @@
    "reasons": [
     "no-type: 0/18 placed (11x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 105.3
+   "seconds": 9.2
   },
   {
    "face": "ruysdaelkade-3-13",
@@ -651,13 +619,13 @@
    "reasons": [
     "no-type: 0/6 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 32.6
+   "seconds": 1.8
   },
   {
    "face": "stalpert-2-36",
    "street": "Daniël Stalpertstraat",
    "ride": 0,
-   "restriped": "2022-03-21 -> 2022-01-26",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -677,7 +645,7 @@
    "reasons": [
     "no-type: 0/15 placed (12x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 129.9
+   "seconds": 3.1
   },
   {
    "face": "stalpert-1-5",
@@ -734,10 +702,10 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": 0.117,
-   "nccMedian": 0.172,
-   "stripOverDrawn": 1.349,
-   "wallFits": 3,
+   "nccMin": 0.128,
+   "nccMedian": 0.177,
+   "stripOverDrawn": 0.999,
+   "wallFits": 4,
    "droppedCorners": [],
    "triangles": 4027,
    "sheet": "staging/block-face/hals-42-66-r1/review/strip-sheet.png",
@@ -747,10 +715,9 @@
    "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "likeness: 1 pand(s) under NCC 0.15 (237026 0.117)",
-    "strip-over-drawn-high: 1.349 > 1.25 (walls drawn darker than the photo)"
+    "likeness: 1 pand(s) under NCC 0.15 (237026 0.128)"
    ],
-   "seconds": 8
+   "seconds": 7.3
   },
   {
    "face": "hals-68-74",
@@ -778,7 +745,7 @@
    "reasons": [
     "no-type: 0/3 placed (1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 1x evidence: strip # % without panorama data; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 40.2
+   "seconds": 1.1
   },
   {
    "face": "hals-76-90",
@@ -806,7 +773,7 @@
    "reasons": [
     "no-type: 0/8 placed (4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x evidence: strip # % without panorama data)"
    ],
-   "seconds": 62.6
+   "seconds": 7
   },
   {
    "face": "hals-37-43",
@@ -832,7 +799,7 @@
    "reasons": [
     "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 23.6
+   "seconds": 1.5
   },
   {
    "face": "hals-55-67",
@@ -858,7 +825,7 @@
    "reasons": [
     "no-type: 0/7 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 49.4
+   "seconds": 17.3
   },
   {
    "face": "hals-69-79",
@@ -930,7 +897,7 @@
    "reasons": [
     "no-type: 0/10 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
    ],
-   "seconds": 66.5
+   "seconds": 2.7
   },
   {
    "face": "saenredam-2-22",

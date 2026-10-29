@@ -44,6 +44,9 @@
     "measuredPalette": {
      "brick": "#342d2e",
      "evidence": "strip 2020-01-06 span 0-207: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#624242"
     }
    },
    "groundFloor": {
@@ -56,6 +59,26 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 13.8 m; one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge",
+     "the white stucco pilasters at the party walls (46-48) are not drawn",
+     "the yellow brick courses of 44 and 48 are not drawn"
+    ],
     "citation": "auto-place: pijp-1876-hood-frieze scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2020-01-06 span 0-207"
    }
   },
@@ -82,6 +105,9 @@
     "measuredPalette": {
      "brick": "#2a292a",
      "evidence": "strip 2020-01-06 span 207-410: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#38383b"
     }
    },
    "groundFloor": {
@@ -94,6 +120,26 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 13.8 m; one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge",
+     "the white stucco pilasters at the party walls (46-48) are not drawn",
+     "the yellow brick courses of 44 and 48 are not drawn"
+    ],
     "citation": "auto-place: pijp-1876-hood-frieze scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2020-01-06 span 207-410"
    }
   }

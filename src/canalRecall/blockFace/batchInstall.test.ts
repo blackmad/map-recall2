@@ -63,3 +63,13 @@ test('library year prefilter', async () => {
   const types = [{match: {years: [1893, 1893] as [number, number]}}, {match: {years: [1909, 1912] as [number, number], yearSlack: 0}}, {}];
   assert.equal(libraryYearMatches([1895, 1896, 1913, 1908, null, 1910], types), 2);
 });
+
+test('brick for the strip wall luma: stripOverDrawn 1 by construction, clamp reported', async () => {
+  const {brickForDrawnLuma} = await import('./batchInstall.ts');
+  const {drawnWallLuma} = await import('../look/drawnWall.ts');
+  const target = drawnWallLuma({brick: '#7a4a30'}) * 1.4;
+  const r = brickForDrawnLuma('#7a4a30', target);
+  assert.equal(r.reached, true);
+  assert.ok(Math.abs(drawnWallLuma({brick: r.brick}) - target) <= Math.max(1, target * 0.03));
+  assert.equal(brickForDrawnLuma('#7a4a30', 250).reached, false);
+});

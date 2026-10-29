@@ -1,8 +1,8 @@
 {
  "buurt": "sarphatiparkbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T19:17:49.013Z",
- "seconds": 2.08,
+ "generatedAt": "2026-10-29T19:52:55.343Z",
+ "seconds": 2.22,
  "totals": {
   "faces": 42,
   "pands": 488,
@@ -16,7 +16,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.29,
+   "seconds": 0.36,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -33,7 +33,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.65,
+   "seconds": 0.59,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -135,7 +135,7 @@
      "triangles": 4239
     }
    ],
-   "seconds": 10.25,
+   "seconds": 9.78,
    "byType": {
     "pijp-1892-banded-keystone": 2
    },
@@ -154,7 +154,7 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 2.89,
+   "seconds": 3.71,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -201,7 +201,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 4.32,
+   "seconds": 4.26,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -229,7 +229,7 @@
      "triangles": 6077
     }
    ],
-   "seconds": 12.09,
+   "seconds": 12.91,
    "byType": {
     "pijp-1892-banded-keystone": 3
    },
@@ -259,7 +259,7 @@
      "triangles": 4264
     }
    ],
-   "seconds": 11.44,
+   "seconds": 10.26,
    "byType": {
     "pijp-1876-hood-frieze": 1,
     "pijp-1875-shop-dormer": 2
@@ -279,7 +279,7 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 3.02,
+   "seconds": 2.85,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -326,7 +326,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 8.26,
+   "seconds": 7.62,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -343,7 +343,7 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 22.48,
+   "seconds": 21.55,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -360,7 +360,7 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 2.37,
+   "seconds": 2.45,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -377,7 +377,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 1.08,
+   "seconds": 1.09,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -394,7 +394,7 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 1.68,
+   "seconds": 1.75,
    "byType": {},
    "holds": {
     "evidence": 3,
@@ -411,7 +411,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 2.42,
+   "seconds": 2.09,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -428,7 +428,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.97,
+   "seconds": 1.02,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -445,7 +445,7 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 43.24,
+   "seconds": 18.02,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -462,7 +462,7 @@
    "placed": 0,
    "held": 18,
    "runs": [],
-   "seconds": 7.94,
+   "seconds": 7.13,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -479,7 +479,7 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 2.23,
+   "seconds": 2.84,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -496,7 +496,7 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 7.64,
+   "seconds": 4.36,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -513,7 +513,7 @@
    "placed": 0,
    "held": 19,
    "runs": [],
-   "seconds": 15.88,
+   "seconds": 15.47,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -530,7 +530,7 @@
    "placed": 0,
    "held": 18,
    "runs": [],
-   "seconds": 12.68,
+   "seconds": 13.19,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -547,7 +547,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 0.89,
+   "seconds": 0.91,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -564,7 +564,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.86,
+   "seconds": 0.89,
    "byType": {},
    "holds": {
     "evidence": 3,
@@ -610,7 +610,7 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 14.72,
+   "seconds": 15.2,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -627,7 +627,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 5.4,
+   "seconds": 6.42,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -644,7 +644,7 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 5.03,
+   "seconds": 5.08,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -661,7 +661,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 2.07,
+   "seconds": 2.22,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -678,7 +678,7 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 8.36,
+   "seconds": 7.36,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -695,7 +695,7 @@
    "placed": 0,
    "held": 18,
    "runs": [],
-   "seconds": 25.4,
+   "seconds": 21.73,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -758,7 +758,7 @@
    "placed": 0,
    "held": 19,
    "runs": [],
-   "seconds": 3.27,
+   "seconds": 3.48,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -775,7 +775,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.93,
+   "seconds": 0.9,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -792,7 +792,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.29,
+   "seconds": 1.27,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -809,7 +809,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 8.37,
+   "seconds": 11.04,
    "byType": {},
    "holds": {
     "evidence": 0,

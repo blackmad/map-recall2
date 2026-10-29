@@ -5,6 +5,8 @@
  * that fails any check stays generic and its reasons are logged.
  */
 import {STRIP_LIKENESS} from './stripLikeness.ts';
+import {drawnWallLuma, type DrawnWallPalette} from '../look/drawnWall.ts';
+import {hexToRgb, hslToRgb, rgbToHex, rgbToHsl} from '../look/palette.ts';
 
 export const BATCH_GATES = {
   /** lin(strip wall) / lin(drawn wall), face median (look/chunkWallExposure.ts); outside this the walls draw at the wrong tone. */
@@ -119,4 +121,21 @@ export function facingsToHousePalette(intent: {houses: {pandId: string; type?: {
  */
 export function libraryYearMatches(years: readonly (number | null)[], types: readonly {match?: {years: readonly [number, number]; yearSlack?: number}}[], defaultSlack = 2): number {
   return years.filter(y => y !== null && types.some(t => t.match && y >= t.match.years[0] - (t.match.yearSlack ?? defaultSlack) && y <= t.match.years[1] + (t.match.yearSlack ?? defaultSlack))).length;
+}
+
+/**
+ * The brick whose head-on drawn wall (look/drawnWall.ts drawnWallLuma: city tint x brick cell mean) has the luma of the
+ * strip's wall, keeping the hue and saturation of `hueFrom` (the photo-fitted brick, fit-wall-palette.ts): stripOverDrawn
+ * = lin(strip wall) / lin(drawn wall) = 1 by construction. The review-render fit alone overshot on De Pijp rows
+ * (Frans Halsstraat 42-66 0.66 -> 1.35, Gerard Doustraat 128-174 0.74 -> 1.30: the render's light is not the drawn
+ * luma). `reached` is false when the city tint's lightness clamp cannot draw the wall that light or dark (pale buff
+ * fronts, Albert Cuypstraat 153-179 at 2.1).
+ */
+export function brickForDrawnLuma(hueFrom: string, targetLuma: number, base: Omit<DrawnWallPalette, 'brick'> = {}): {brick: string; luma: number; reached: boolean} {
+  const [h, s] = rgbToHsl(hexToRgb(hueFrom));
+  const at = (l: number) => { const brick = rgbToHex(hslToRgb([h, s, l])); return {brick, luma: drawnWallLuma({...base, brick})}; };
+  let lo = 0.02, hi = 0.98;
+  for (let i = 0; i < 30; i++) { const mid = (lo + hi) / 2; if (at(mid).luma < targetLuma) lo = mid; else hi = mid; }
+  const best = at((lo + hi) / 2);
+  return {...best, luma: +best.luma.toFixed(2), reached: Math.abs(best.luma - targetLuma) <= Math.max(1, targetLuma * 0.03)};
 }

@@ -41,7 +41,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {BATCH_GATES, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -203,6 +203,28 @@ async function fitWalls(run: string, fc: any[], all = false): Promise<number> {
   return n;
 }
 
+/**
+ * The face's stripOverDrawn is out of range: every brick pand gets the brick whose drawn wall has its strip wall's luma
+ * (batchInstall.ts brickForDrawnLuma), in the hue the review fit reads off the photo. Pands the city tint cannot reach
+ * keep the nearest brick it can draw (the verdict then fails on stripOverDrawn).
+ */
+async function matchExposure(run: string, e: NonNullable<Awaited<ReturnType<typeof faceWallExposure>>>, fc: any[]): Promise<number> {
+  const file = path.join(FACES, run, 'intent.json'), intent = await readJson(file);
+  const discovery = await readJson(path.join(FACES, run, 'discovery.json'));
+  const resolved = houseIntents(validateBlockFace(intent, discovery.members, fileTypeLoader()));
+  let n = 0;
+  for (const p of e.pands) {
+    const h = intent.houses.find((x: any) => x.pandId === p.pandId), r = resolved.find(x => x.pandId === p.pandId), w = fc.find(f => f.pand === p.pandId)?.wallColour;
+    if (!h?.type || !r || typeof r.palette.brick !== 'string') continue;
+    const hue = w ? fitWallBrick(r.palette.brick, toHex(w.model), toHex(w.photo)).brick : r.palette.brick;
+    const m = brickForDrawnLuma(hue, p.wallLuma, {wallMaterial: r.palette.wallMaterial, wallTint: r.palette.wallTint});
+    h.type.paletteOverrides = {...(h.type.paletteOverrides ?? {}), brick: m.brick};
+    n++;
+  }
+  if (n) await writeJson(file, intent);
+  return n;
+}
+
 /** Compile, review, wall fit (+ recompile), likeness, stripOverDrawn, verdict. */
 async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
   let compiled: Awaited<ReturnType<typeof compileFace>> | null = null, error: string | undefined, sheet: string | null = null, wallFits = 0;
@@ -218,7 +240,7 @@ async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
     if (wallFits) fc2 = await compileAndReview();
     const e = await faceWallExposure(run).catch(() => null), [lo, hi] = BATCH_GATES.stripOverDrawn;
     if (e?.stripOverDrawn != null && (e.stripOverDrawn < lo || e.stripOverDrawn > hi)) {
-      const n = await fitWalls(run, fc2, true);
+      const n = await matchExposure(run, e, fc2);
       if (n) { wallFits += n; await compileAndReview(); }
     }
   } catch (e) { error = (e as Error).message; }

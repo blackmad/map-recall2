@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "cuyp-153-179-r1",
+ "street": "Albert Cuypstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/cuyp-153-179-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/cuyp-153-179/auto-place.json"
+ },
+ "types": [
+  "pijp-1892-banded-keystone"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012155726",
+   "slug": "cuyp-155726",
+   "address": "Albert Cuypstraat 161",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d6e66",
+      "fascia": true,
+      "name": "Gotu Zhang",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=jewelry); fascia colour measured on the strip 2022-03-21 span 801-1055"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#f1da9b",
+     "evidence": "strip 2022-03-21 span 801-1055: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Gotu Zhang",
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 2817512367,
+     "name": "Gotu Zhang"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-03-21 span 801-1055"
+   }
+  },
+  {
+   "pandId": "0363100012167067",
+   "slug": "cuyp-167067",
+   "address": "Albert Cuypstraat 163",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#5b554f",
+      "fascia": true,
+      "name": "Boef's Beestenbazaar",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=pet); fascia colour measured on the strip 2022-03-21 span 1055-1296"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#f8c792",
+     "evidence": "strip 2022-03-21 span 1055-1296: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Boef's Beestenbazaar",
+    "category": "shop=pet",
+    "osm": {
+     "type": "node",
+     "id": 2817512377,
+     "name": "Boef's Beestenbazaar"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-03-21 span 1055-1296"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

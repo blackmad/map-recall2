@@ -1,0 +1,169 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164235",
+   "addresses": [
+    "Van Woustraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 191A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000602600"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1225666492,
+     "lngLat": [
+      4.9009479,
+      52.3549133
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "cafe",
+      "branch": "CC Ceintuur",
+      "brand": "Coffee Company",
+      "brand:wikidata": "Q108927063",
+      "check_date": "2026-01-20",
+      "cuisine": "coffee_shop",
+      "name": "Coffee Company",
+      "opening_hours": "Mo-Fr 07:30-18:00; Sa-Su 08:30-18:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 303 3873",
+      "takeaway": "yes",
+      "website": "https://coffeecompany.nl/locations/van-woustraat-92/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134906",
+   "addresses": [
+    "Van Woustraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 90-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000991406"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249628968,
+     "lngLat": [
+      4.9007184,
+      52.354809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "90",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "atm",
+      "cash_in": "no",
+      "fee": "yes",
+      "fixme": "Check brand and operator of atm.",
+      "mapillary": "3234588680037851",
+      "note": "brand of ATM machine: Wincor Nixdorf",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "address",
+     "distanceM": 23.9
+    },
+    {
+     "type": "node",
+     "id": 1261916822,
+     "lngLat": [
+      4.900822,
+      52.354931
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "post_office",
+      "name": "Bruna",
+      "note": "Inside Bruna",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2643609330,
+     "lngLat": [
+      4.900926,
+      52.3549639
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "branch": "Amsterdam Van Woustraat",
+      "brand": "Bruna",
+      "brand:website": "https://www.bruna.nl/",
+      "brand:wikidata": "Q3317555",
+      "brand:wikipedia": "nl:Bruna (winkelketen)",
+      "check_date": "2026-01-20",
+      "name": "Bruna",
+      "opening_hours": "Mo 09:00-18:00; Tu-Fr 08:30-18:00; Sa 08:30-17:30",
+      "phone": "+31 20 662 6331",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bruna.nl/winkels/amsterdam/761"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471162388,
+     "lngLat": [
+      4.9009856,
+      52.3549843
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2
+    }
+   ]
+  }
+ ]
+}

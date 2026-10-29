@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dou-222-254-r1",
+ "street": "Gerard Doustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/dou-222-254-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/dou-222-254/auto-place.json"
+ },
+ "types": [
+  "pijp-1892-banded-keystone"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012163710",
+   "slug": "dou-163710",
+   "address": "Gerard Doustraat 234",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#565655",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie,woonfunctie, woonfunctie); fascia colour measured on the strip 2023-01-03 span 2182-2419"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#644a44",
+     "evidence": "strip 2023-01-03 span 2182-2419: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#42403f"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie,woonfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house behind the market stalls",
+    "signage": "per shop",
+    "roofline": "brick frieze with a corbel table, white cornice at 14.0 m, one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the frieze's corbel table is plain brick",
+     "the market stalls in front of the shops are not part of the building"
+    ],
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.75 on eaves 0.5, stucco 1; strip 2023-01-03 span 2182-2419"
+   }
+  },
+  {
+   "pandId": "0363100012236408",
+   "slug": "dou-236408",
+   "address": "Gerard Doustraat 232",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "measuredPalette": {
+     "brick": "#6f6765",
+     "evidence": "strip 2023-01-03 span 2418-2655: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3d3a39"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house behind the market stalls",
+    "signage": "per shop",
+    "roofline": "brick frieze with a corbel table, white cornice at 14.0 m, one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the frieze's corbel table is plain brick",
+     "the market stalls in front of the shops are not part of the building"
+    ],
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.84 on eaves 1, stucco 1, columns 0.4; strip 2023-01-03 span 2418-2655"
+   }
+  },
+  {
+   "pandId": "0363100012236449",
+   "slug": "dou-236449",
+   "address": "Gerard Doustraat 230",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "measuredPalette": {
+     "brick": "#685853",
+     "evidence": "strip 2023-01-03 span 2655-2892: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows of one width",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house behind the market stalls",
+    "signage": "per shop",
+    "roofline": "brick frieze with a corbel table, white cornice at 14.0 m, one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the frieze's corbel table is plain brick",
+     "the market stalls in front of the shops are not part of the building"
+    ],
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.73 on eaves 1, stucco 1, columns 0; strip 2023-01-03 span 2655-2892"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012163710",
+    "stripRow": 234,
+    "frontRoof": {},
+    "evidence": "auto-place: strip skyline cornice 14.6 m within 1 m of the pijp-1892-banded-keystone line 14 m; 3DBAG/PDOK eaves 16.02 m"
+   },
+   {
+    "pand": "0363100012236408",
+    "stripRow": 240,
+    "evidence": "auto-place: strip skyline cornice 14.45 m within 1 m of the pijp-1892-banded-keystone line 14 m; 3DBAG/PDOK eaves 13.96 m"
+   },
+   {
+    "pand": "0363100012236449",
+    "stripRow": 259,
+    "frontRoof": {},
+    "evidence": "auto-place: strip skyline cornice 13.97 m within 1 m of the pijp-1892-banded-keystone line 14 m; 3DBAG/PDOK eaves 16.15 m"
+   }
+  ]
+ }
+}

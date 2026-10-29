@@ -1,0 +1,63 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163710",
+   "addresses": [
+    "Gerard Doustraat 234"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 234-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000644222"
+    },
+    {
+     "address": "Gerard Doustraat 234-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012145584"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236408",
+   "addresses": [
+    "Gerard Doustraat 232"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 232-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000644218"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236449",
+   "addresses": [
+    "Gerard Doustraat 230"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 230-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001020448"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
