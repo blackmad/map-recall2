@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "23d21203917e03ef4a486f7df4fb09d9fc2ec78a24016cc3fd538631f0c49ac2"
+      "sha256": "661499f552a9cdc9a92a100aa69da33432da753871e459b73938d555e7643a5a"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -140,7 +140,7 @@
   "streetFrontPathsSha256": "8bc67d18dfd30b51e795bb7973589ca8c63d43565c9913d41723e03ec8bd7078",
   "streetSegments": 153,
   "neighborHaloM": 25,
-  "features": 360,
+  "features": 359,
   "exposedRuns": 34,
   "assignments": 33,
   "profiles": [

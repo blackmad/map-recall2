@@ -1939,6 +1939,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Kit gaps found by the Noord lane (#95, 2026-10-29).**
+  - The kit cannot yet express:
+    - irregular window scatter on large-tier walls (Grasweg 41S);
+    - see-through bar or slatted fences (Treehouse);
+    - per-container colour from a measured list (Pllek);
+    - a curved cap on an eaves line.
+  - The 2025 NDSM-oost pands (0363100012252793 and 95–98) still carry construction-stage 3DBAG heights of 2.9–4.5 m for blocks of 7–10 storeys. They need a data refresh or a height override.
+  - The EYE GLB audit still FAILs on holes (6 open loops, down from 12).
+
 - **Centraal surroundings, still unmodelled (feedback 334bcadd, bbbeaceb; 2026-10-29, #94).** Findings are in `docs/handoffs/centre-landmarks-fb-20261028.md`.
   - **Stationsplein island,** pand 0363100012182895 (Stationsplein 4–16). Low cream rendered pavilions with red-tiled mansard roofs and a white lantern turret. The pand is not in the building tiles, so the game draws generic OSM brick boxes. It needs a bespoke builder.
   - **IJ-side canopy,** in `centraal-complex-builder.ts` ("Overkapping IJsei"). The game draws an opaque dark tube. The photo shows white steel arch ribs down to the quay and an open glazed vault over the glass shopfronts. Measure the rib count and spacing from the orthophoto and panoramas.

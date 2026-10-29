@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Noord feedback: EYE, A'DAM Toren, Treehouse, Pllek, Grasweg 41S, NDSM ground (2026-10-29, #95).**
+
+- **a524acc9, ground.** The AHN survey was flown during the 2021 works, so it recorded 1.5–3 m of sand fill. The 2025 NDSM-oost blocks were seated on that.
+  - Stale-relief rings now take a `levelNAP`. The ring `ndsm-oost-buiksloterham-kop-works` sets the surface to 1.11 NAP, the median of the surrounding rim. A blank ring would be filled in from the water side.
+  - `scripts/own-ground/splice-ground-tile.ts` copies only the cells near the named rings into the published tiles. A full rebuild of 121_489 changed about 119 k unrelated cells.
+  - Pinned in `reliefRegressions.ts`: `ndsm-oost-block` (spread 3.32 → 0.00 m) and `eye-stair`.
+- **d1423818, EYE.** The ground had a 3 m bump that buried the stair treads; a new relief ring flattens it. The stair outline is the convex hull of the OSM shape. Walls start 0.65 m below ground, declared with evidence in `eye-filmmuseum-spec.json`, so the west wall no longer floats.
+- **3dee2b2a, A'DAM Toren.** Panes ran on a 3.4 m pitch against 3.2 m floor bands; panes and frames now come from one module of 8 bays × 19 storeys. Both OSM and the panoramas show the shaft turned 45° to the crown and podium, and the model now does that. The podium is a glass pavilion with four splayed white legs and the LOOKOUT sign.
+- **bdd73994, Treehouse and Pllek.**
+  - Treehouse gets the ~3.5 m black slatted fence with the TREEHOUSE lettering, and its cabin colours were measured from the panoramas.
+  - Pllek's stacks are separate 40 ft containers, with the truss canopy and the PLLEK sign container. A coplanar z-fight of 472 m² is gone.
+- **7f82ac01, Grasweg 41S.** It is light silver cassette panels with a dark cap and rows of small square windows. The old recipe drew it as a mid-grey slab.
+
 **Centre feedback: one label per place, Beurs and Bijenkorf windows on their walls (2026-10-29, #94).**
 
 - **d85ba0ac / 3702bcd7, double labels.** In Free Ride the DOM overlay repeated each canvas marker pill's name. `labels/labelDedupe.ts` `screenDuplicateIds` drops an overlay label that repeats a placed marker: the same landmark id, a similar name within 60 m, or a spelling variant within 600 m. `freeRide.ts` `secondMarkerIds` removes the inner-footprint second markers: Cuypersgebouw, Zuiderkerk Tower and OBA De Hallen.

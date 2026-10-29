@@ -4,6 +4,7 @@ import test from 'node:test';
 // Re-recorded again 2026-10-14 after the terrain rule's reach test (bag3dCityJson.ts GROUND_REACH_M) restored split-level pands in tiles 8414/5383 and 8415/5384; frontages and profiles.json unchanged, only the tile hashes.
 // Re-recorded 2026-10-28 after the facade touch LOD (#92, threeBuilding* sources) and landmark installs (signature-landmarks.json) changed admission inputs; frontages byte-identical, only the four input hashes moved.
 // Re-recorded 2026-10-29 after #94 (generic stair-glass removed from facadeExtras.ts; Beurs and Bijenkorf in signature-landmarks.json); frontages byte-identical, only input hashes moved.
+// Re-recorded 2026-10-29 after #95 (four Noord landmarks rebuilt; one halo feature now under a landmark footprint, features 360 -> 359); every cohort byte-identical.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';

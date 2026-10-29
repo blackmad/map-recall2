@@ -108,10 +108,10 @@
   "triangles": 1140
  },
  "adam-tower": {
-  "sourceHash": "7aeee8f5b9ff81c5",
+  "sourceHash": "f5963924108a152e",
   "buildVersion": 2,
-  "bytes": 50568,
-  "triangles": 2570
+  "bytes": 67572,
+  "triangles": 3298
  },
  "pontsteiger": {
   "sourceHash": "1f9f41629833d4c5",
@@ -948,10 +948,10 @@
   "triangles": 728
  },
  "treehouse-ndsm": {
-  "sourceHash": "e5f87381bd928bde",
+  "sourceHash": "b25a90f1046b376a",
   "buildVersion": 2,
-  "bytes": 55996,
-  "triangles": 3306
+  "bytes": 63576,
+  "triangles": 3671
  },
  "centrale-markthal": {
   "sourceHash": "9ce6b54498760a99",
@@ -978,10 +978,10 @@
   "triangles": 1385
  },
  "pllek": {
-  "sourceHash": "73341fa36d2052b3",
+  "sourceHash": "104dc0d341d99262",
   "buildVersion": 2,
-  "bytes": 24880,
-  "triangles": 1027
+  "bytes": 37876,
+  "triangles": 1614
  },
  "vinoly": {
   "sourceHash": "a1bf421212f4b2dd",
@@ -1236,9 +1236,9 @@
   "triangles": 3180
  },
  "compagnietheater": {
-  "sourceHash": "d39bdbf201d38a08",
+  "sourceHash": "02ec4851b9ce300a",
   "buildVersion": 2,
-  "bytes": 49064,
+  "bytes": 48864,
   "triangles": 2202
  },
  "west-india-house": {
