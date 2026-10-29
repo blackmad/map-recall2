@@ -1,0 +1,76 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157212",
+   "addresses": [
+    "Govert Flinckstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 195-H",
+     "use": "industriefunctie",
+     "areaM2": 67,
+     "bagId": "0363010000648928"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033180,
+     "lngLat": [
+      4.8955915,
+      52.3555099
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01655",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162693",
+   "addresses": [
+    "Govert Flinckstraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 197-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000648935"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157734",
+   "addresses": [
+    "Govert Flinckstraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 199-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000648943"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

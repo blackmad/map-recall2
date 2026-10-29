@@ -1,0 +1,156 @@
+{
+ "face": "helst-54-54",
+ "street": "Eerste Van der Helststraat",
+ "library": "de-pijp",
+ "stripDate": "2020-01-06",
+ "seconds": 0.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162281",
+   "address": "Eerste Van der Helststraat 54B",
+   "builtYear": 1890,
+   "widthM": 5.51,
+   "eavesM": 16.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433b36",
+    "wallRaw": "#443d3a",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 150,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 3.75,
+      "topWidthM": 0.28,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.5,
+       "widthM": 0.9,
+       "centre": 0.23
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.9,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165514",
+   "address": "Eerste Van der Helststraat 54A",
+   "builtYear": 1890,
+   "widthM": 5.92,
+   "eavesM": 11.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1b1716",
+    "wallRaw": "#453a35",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 164,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 3.93,
+      "topWidthM": 0.07,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.18,
+       "widthM": 0.8,
+       "centre": 0.89
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1.25,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.65 < 0.7 (strip cornice 14.25 m vs the type's 15.2 m (wall-dormer skyline 18.2 m); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.25 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

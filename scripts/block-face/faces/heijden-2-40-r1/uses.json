@@ -1,0 +1,47 @@
+{
+ "street": "Tweede Jan van der Heijdenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157197",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 4-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000551701"
+    },
+    {
+     "address": "Tweede Jan van der Heijdenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001007638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153593",
+   "addresses": [
+    "Tweede Jan van der Heijdenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan van der Heijdenstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000551689"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

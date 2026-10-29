@@ -1,0 +1,102 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165647",
+   "addresses": [
+    "Eerste Van der Helststraat 62A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 62A-H",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000648745"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506127776,
+     "lngLat": [
+      4.8931195,
+      52.3551558
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62A-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "check_date": "2026-01-21",
+      "cuisine": "breakfast",
+      "email": "benaddicted.pijp@gmail.com",
+      "fixme": "Opening soon. Please update with hours and other details once open.",
+      "name": "Eggs Benaddicted",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://benaddicted.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164105",
+   "addresses": [
+    "Eerste Van der Helststraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 62-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000548788"
+    },
+    {
+     "address": "Eerste Van der Helststraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012068341"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613066,
+     "lngLat": [
+      4.8930978,
+      52.3552042
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62-H",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "clothes": "women",
+      "name": "Eland & Vanderhelst",
+      "opening_hours": "Tu-Fr 12:00-17:00; Sa 11:00-18:00",
+      "phone": "+31 20 6257717",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.elandenvanderhelst.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

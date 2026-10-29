@@ -109,3 +109,15 @@ portals and pointed arches, pilotis, external stair galleries.
 | Pand not in the building tiles | 2 | Prins en Keizer 165685, Belastingdienst 107557 |
 
 Identity noise in the ranked list (not kit): one office drawn by four OSM parts, an underground station, a name merge of two buildings, a twin BAG registration of a modelled house. Triage (#110) removes these before any draft.
+
+## Triage over the whole queue (#110, 2026-10-29)
+
+`scripts/landmarks/triage.ts` over 336 candidates (324 queue rows plus the #104 targets): buildable 32, kit-gap 117, no-evidence 140, not-in-tiles 21, covered 8, bespoke 18. Validation against the 45 reviewed houses: 42 predicted. Full rows in `docs/reports/landmark-triage-20261029.json`.
+
+| Gap | Candidates | Examples |
+|---|---|---|
+| Tower above the 32 m crop cap (measurement, `rectify.ts wallHeight`; #114 parametrises it) | 95 | OBA Geuzenveld, OBA Postjesweg, Atrium 244160, AkzoNobel 240015/240149, Pakhuis Australië, Sarphati Plaza, The Edge, Het Dok, Atlanta, Byzantium 236811 |
+| Curtain-wall street front (judge; #114) | 19 | OBA IJburg, Molenwijk, Reigersbos, Slotermeer, Kalverpassage, Loods 6, Forum |
+| Blank wide street front (cladding or mural; not detected separately) | 8 | Forum 125840, 080532, 119400, 242116, 240481, 237888, 095940, 239598 |
+
+Triage cannot yet tell cladding, mural and channel-glass fronts apart: the measured wall families are brick, paint and stone only. Y-Helling reads `curtain` but is a graffiti mural. Factory pairing ignores better `L`/`R` alternate crops (OBA Buitenveldert 135359 has judgeable 2022 crops the factory never used).

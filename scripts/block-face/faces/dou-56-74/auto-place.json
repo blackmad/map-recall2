@@ -3,7 +3,7 @@
  "street": "Gerard Doustraat",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 7.62,
+ "seconds": 11.43,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -61,38 +61,42 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877; frontage 5.01 m, type 5.6-8 m)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1883, type 1875-1877",
-     "frontage 5.01 m, type 5.6-8 m"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012236190",
+    "ncc": 0.156,
+    "nccRaw": 0.156,
+    "shiftM": [
+     0.35,
+     0.25
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 12.46 m = 3 storeys of 4.15 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.29 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.001 (brick)"
-     }
-    ]
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.37",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#3f3836",
+     "model": "#69595c",
+     "dL": 0.151
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.31
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.02
+   }
   },
   {
    "pandId": "0363100012153546",
@@ -146,40 +150,40 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.086 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27)",
+   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.46 vs photo 0.34)",
    "likeness": {
     "pandId": "0363100012153546",
-    "ncc": 0.086,
-    "nccRaw": 0.086,
+    "ncc": 0.094,
+    "nccRaw": 0.094,
     "shiftM": [
      0.3,
-     0.2
+     0.15
     ],
-    "usable": 0.98,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.27"
+     "glazing storey band off by 0.25 mean 0.46 vs photo 0.34"
     ],
     "wall": {
-     "photo": "#5c4e4b",
+     "photo": "#5a4c48",
      "model": "#64554d",
-     "dL": 0.02
+     "dL": 0.029
     },
     "glazing": {
-     "photo": 0.37,
+     "photo": 0.34,
      "model": 0.46
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.301
+    "iou": 0.283
    },
    "challengers": {
-    "pijp-1876-hood-frieze": 0.045,
-    "pijp-1882-keystone-lintel": 0.106,
-    "pijp-1885-segmental-keystone": 0.023
+    "pijp-1876-hood-frieze": 0.051,
+    "pijp-1882-keystone-lintel": 0.109,
+    "pijp-1885-segmental-keystone": 0.026
    }
   },
   {
@@ -239,41 +243,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.079 < 0.15 (photo vs model body; likeness.ts FAIL: wall family brick vs photo paint; glazing storey band off by 0.16)",
+   "reason": "edge NCC 0.074 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.58 mean 0.44 vs photo 0.76)",
    "likeness": {
     "pandId": "0363100012162701",
-    "ncc": 0.079,
-    "nccRaw": 0.079,
+    "ncc": 0.074,
+    "nccRaw": 0.074,
     "shiftM": [
      0.4,
-     0.2
+     0.35
     ],
     "usable": 0.95,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall family brick vs photo paint",
-     "glazing storey band off by 0.16"
+     "wall dL +0.15",
+     "glazing storey band off by 0.58 mean 0.44 vs photo 0.76"
     ],
     "wall": {
-     "photo": "#9fa1a7",
+     "photo": "#57504c",
      "model": "#8d6f62",
-     "dL": -0.171
+     "dL": 0.149
     },
     "glazing": {
-     "photo": 0.44,
+     "photo": 0.76,
      "model": 0.44
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.32
+    "iou": 0.414
    },
    "challengers": {
-    "pijp-1876-hood-frieze": 0.074,
-    "pijp-1882-keystone-lintel": 0.136,
-    "pijp-1885-segmental-keystone": 0.053
+    "pijp-1876-hood-frieze": 0.098,
+    "pijp-1882-keystone-lintel": 0.14,
+    "pijp-1885-segmental-keystone": 0.066
    }
   },
   {
@@ -337,41 +341,43 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.48 < 0.7 (strip cornice 13.75 m vs the type's 15.1 m; strip wall #715955 dE 10.6 to #524845 (<= 10); strip columns 2 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.48,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 13.75 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #715955 dE 10.6 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.039 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012156649",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     -0.15,
+     -0.35
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.48 vs photo 0.26",
+     "columns 3 vs photo 5"
+    ],
+    "wall": {
+     "photo": "#6c5551",
+     "model": "#896c67",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 5,
+     "model": 3
+    },
+    "iou": 0.217
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.357,
+    "pijp-1882-keystone-lintel": 0.188,
+    "pijp-1885-segmental-keystone": 0.18
+   }
   },
   {
    "pandId": "0363100012164863",
@@ -419,10 +425,43 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.125 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.19; glazing  mean 0.49 vs photo 0.37)",
+   "likeness": {
+    "pandId": "0363100012164863",
+    "ncc": 0.125,
+    "nccRaw": 0.125,
+    "shiftM": [
+     0.1,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing  mean 0.49 vs photo 0.37"
+    ],
+    "wall": {
+     "photo": "#433836",
+     "model": "#7b645d",
+     "dL": 0.186
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.323
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.275,
+    "pijp-1882-keystone-lintel": 0.137,
+    "pijp-1885-segmental-keystone": 0.221
+   }
   },
   {
    "pandId": "0363100012160762",
@@ -470,40 +509,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.4 < 0.7 (strip cornice 13.88 m vs the type's 15.1 m; strip wall #221f20 dE 19.8 to #524845 (<= 10); strip columns 5 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.4,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 13.88 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #221f20 dE 19.8 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.043 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.06 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.50 vs photo 0.32; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012160762",
+    "ncc": 0.06,
+    "nccRaw": 0.06,
+    "shiftM": [
+     -0.15,
+     -0.35
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.50 vs photo 0.32",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#4f4440",
+     "model": "#50494b",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.261
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -558,23 +595,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.4 < 0.7 (strip cornice 13.03 m vs the type's 15.1 m; strip wall #412a22 dE 14.6 to #524845 (<= 10); strip columns 7 vs 3 bays)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.55 < 0.7 (strip cornice 13.03 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 7 vs 3 bays)",
    "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.4,
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.55,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 13.03 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
       "score": 0.5,
-      "note": "strip wall #412a22 dE 14.6 to #524845 (<= 10)"
+      "note": "strip cornice 13.03 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -644,39 +675,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.64 < 0.7 (strip wall #878884 dE 25.5 to #524845 (<= 10))",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.64,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 15.1 m; 3DBAG 13.22 m not compared)"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0,
-      "note": "strip wall #878884 dE 25.5 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },

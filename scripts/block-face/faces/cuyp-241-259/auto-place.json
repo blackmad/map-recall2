@@ -3,7 +3,7 @@
  "street": "Albert Cuypstraat",
  "library": "de-pijp",
  "stripDate": "2022-03-21",
- "seconds": 12.91,
+ "seconds": 12,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -820,26 +820,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 5.02 m, type 5.6-8 m)",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 13.8 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1891, type 1875-1877",
-     "frontage 5.02 m, type 5.6-8 m"
-    ],
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.41 m = 3 storeys of 4.47 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.09 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 13.8 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
      },
      {
       "key": "stucco",
@@ -915,26 +906,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 5.02 m, type 5.6-8 m)",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 13.78 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1891, type 1875-1877",
-     "frontage 5.02 m, type 5.6-8 m"
-    ],
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.42 m = 3 storeys of 4.47 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.11 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 13.78 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
      },
      {
       "key": "stucco",
@@ -1005,26 +987,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1891, type 1875-1877; frontage 5.02 m, type 5.6-8 m)",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 13.78 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1891, type 1875-1877",
-     "frontage 5.02 m, type 5.6-8 m"
-    ],
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.4 m = 3 storeys of 4.47 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.11 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 13.78 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
      },
      {
       "key": "stucco",

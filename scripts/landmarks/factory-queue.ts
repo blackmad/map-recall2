@@ -22,7 +22,7 @@ export type QueueStatus = 'queued' | 'needs-pand' | 'crops' | 'facts' | 'drafted
 export interface QueueItem {
   id: string; pand: string; name: string | null; source: 'poi' | 'dominant'; poiId?: string; type?: string;
   rideVisibility: {score: number; rank: number} | null; footprintM2?: number; heightM?: number; center: [number, number] | null;
-  status: QueueStatus; house?: string; owner?: string; model?: string; turns?: number; claimedAt?: string; updatedAt?: string;
+  status: QueueStatus; house?: string; owner?: string; model?: string; turns?: number; ms?: Partial<Record<'crops' | 'facts' | 'draft' | 'measure' | 'compile' | 'strip' | 'install', number>>; claimedAt?: string; updatedAt?: string;
   report?: Record<string, unknown>; sheets?: string[]; verdict?: {outcome: 'pass' | 'fix' | 'hold' | 'no-evidence'; note?: string; fix?: Record<string, unknown>; reviewer?: string; date?: string; strip?: string};
   notes?: string[];
 }

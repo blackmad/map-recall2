@@ -1,0 +1,441 @@
+{
+ "face": "cuyp-80-88",
+ "street": "Albert Cuypstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 7.62,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "cuyp-80-88-r1",
+   "pands": [
+    "0363100012572100",
+    "0363100012159870"
+   ],
+   "passed": true,
+   "triangles": 4240
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159079",
+   "address": "Albert Cuypstraat 88",
+   "builtYear": 1881,
+   "widthM": 5.64,
+   "eavesM": 7.75,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b766d",
+    "wallRaw": "#675b54",
+    "skyline": {
+     "eavesM": 11.03,
+     "eavesRow": 343,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 2.5,
+      "topWidthM": 0.23,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.388,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1884-bracketed-hood scores 0.47 < 0.7 (strip cornice 11.03 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.03 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.123 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164392",
+   "address": "Albert Cuypstraat 86",
+   "builtYear": 1890,
+   "widthM": 5.73,
+   "eavesM": 14.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695451",
+    "wallRaw": "#635252",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 784,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 0.85,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160393",
+   "address": "Albert Cuypstraat 84",
+   "builtYear": 1884,
+   "widthM": 4.63,
+   "eavesM": 13.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786058",
+    "wallRaw": "#715e59",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 784,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.46 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.46,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1884-bracketed-hood scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14 m; 3DBAG 13.89 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.182 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012572100",
+   "address": "Albert Cuypstraat 82",
+   "builtYear": 1884,
+   "widthM": 4.65,
+   "eavesM": 13.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#73655d",
+    "wallRaw": "#605854",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 227,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 5.43,
+      "topWidthM": 0.13,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.092,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#815e68",
+      "fascia": true,
+      "name": "Crema Amsterdam",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=cafe); fascia colour measured on the strip 2022-03-21 span 640-826"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#73655d",
+     "evidence": "strip 2022-03-21 span 640-826: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.414 vs 0.206), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.296 vs 0.206), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012572100",
+    "ncc": 0.206,
+    "nccRaw": 0.206,
+    "shiftM": [
+     0.4,
+     -0.15
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 13 deg",
+     "glazing storey band off by 0.21 mean 0.48 vs photo 0.38"
+    ],
+    "wall": {
+     "photo": "#796561",
+     "model": "#89796f",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.386
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.414,
+    "pijp-1882-keystone-lintel": 0.235,
+    "pijp-1885-segmental-keystone": 0.296
+   }
+  },
+  {
+   "pandId": "0363100012159870",
+   "address": "Albert Cuypstraat 80",
+   "builtYear": 1884,
+   "widthM": 4.6,
+   "eavesM": 13.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c6c0b1",
+    "wallRaw": "#756263",
+    "skyline": {
+     "eavesM": 13.97,
+     "eavesRow": 225,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 5.63,
+      "topWidthM": 0.33,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.17 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.17,
+       "light": 0.32
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.48,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.78,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#4a4939",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-03-21 span 826-1010"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#c6c0b1",
+     "evidence": "strip 2022-03-21 span 826-1010: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.316 vs 0.188), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.267 vs 0.188), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012159870",
+    "ncc": 0.188,
+    "nccRaw": 0.188,
+    "shiftM": [
+     -0.1,
+     -0.15
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.36 mean 0.48 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#7c6467",
+     "model": "#a9a089",
+     "dL": 0.161
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.363
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.316,
+    "pijp-1882-keystone-lintel": 0.267,
+    "pijp-1885-segmental-keystone": 0.212
+   }
+  }
+ ]
+}

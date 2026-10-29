@@ -1,0 +1,499 @@
+{
+ "face": "heijden-119-165",
+ "street": "Eerste Jan van der Heijdenstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 3.6,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012233666",
+   "address": "Eerste Jan van der Heijdenstraat 119A",
+   "builtYear": 1938,
+   "widthM": 39.33,
+   "eavesM": 16.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52473b",
+    "wallRaw": "#4c4339",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 845,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.26 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.26,
+       "light": 0.1
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.46,
+       "light": 0.1
+      },
+      {
+       "widthM": 1,
+       "centre": 0.82,
+       "light": 0.09
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.45,
+       "widthM": 1.05,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.38,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1938, type 1875-1877; frontage 39.33 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1938, type 1875-1877",
+     "frontage 39.33 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.45 m = 3 storeys of 5.48 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.09 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012239832",
+   "address": "Eerste Jan van der Heijdenstraat 125",
+   "builtYear": 2008,
+   "widthM": 37.1,
+   "eavesM": 13.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2a2827",
+    "wallRaw": "#343331",
+    "skyline": {
+     "eavesM": 18.5,
+     "eavesRow": 105,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 3.42,
+      "riseM": 2.15,
+      "topWidthM": 0.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.75 m (3.5 m wide), 9.38 m (4.13 m wide), 6.3 m (4.45 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.05,
+       "widthM": 2.52,
+       "centre": 0.43
+      },
+      {
+       "atM": 9.75,
+       "widthM": 3.5,
+       "centre": 0.43
+      },
+      {
+       "atM": 9.38,
+       "widthM": 4.13,
+       "centre": 0.28
+      },
+      {
+       "atM": 9.07,
+       "widthM": 0.88,
+       "centre": 0.41
+      },
+      {
+       "atM": 6.3,
+       "widthM": 4.45,
+       "centre": 0.43
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.02,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 2008, type 1875-1877; frontage 37.1 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 2008, type 1875-1877",
+     "frontage 37.1 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 13.95 m = 3 storeys of 4.65 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.18 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162517",
+   "address": "Eerste Jan van der Heijdenstraat 139",
+   "builtYear": 1894,
+   "widthM": 4.6,
+   "eavesM": 15.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a2e2b",
+    "wallRaw": "#3e3836",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 845,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.4,
+       "centre": 0.4
+      },
+      {
+       "atM": 9.25,
+       "widthM": 2.3,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1894, type 1875-1877; frontage 4.6 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1875-1877",
+     "frontage 4.6 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.62 m = 3 storeys of 5.21 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110677",
+   "address": "Eerste Jan van der Heijdenstraat 143B",
+   "builtYear": 1995,
+   "widthM": 15.33,
+   "eavesM": 11.15,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#25201e",
+    "wallRaw": "#3c3633",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 845,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.55,
+       "centre": 0.94
+      },
+      {
+       "atM": 5.07,
+       "widthM": 2.42,
+       "centre": 0.69
+      },
+      {
+       "atM": 4.77,
+       "widthM": 2.58,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1995, type 1875-1877; frontage 15.33 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1995, type 1875-1877",
+     "frontage 15.33 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.15 m = 3 storeys of 3.72 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145173",
+   "address": "Eerste Jan van der Heijdenstraat 145A",
+   "builtYear": 1995,
+   "widthM": 15.8,
+   "eavesM": 11.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#393532",
+    "wallRaw": "#3b3633",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 231,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 5.78,
+      "riseM": 5.78,
+      "topWidthM": 1.25,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.77,
+       "widthM": 1,
+       "centre": 0.97
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.1,
+       "centre": 0.96
+      },
+      {
+       "atM": 6.3,
+       "widthM": 0.85,
+       "centre": 0.97
+      },
+      {
+       "atM": 5.02,
+       "widthM": 1.35,
+       "centre": 0.05
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1995, type 1875-1877; frontage 15.8 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1995, type 1875-1877",
+     "frontage 15.8 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.09 m = 3 storeys of 3.7 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.78 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

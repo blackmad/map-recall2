@@ -1,0 +1,93 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:40:23.898Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164046",
+   "addresses": [
+    "Sarphatipark 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000804142"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 257518698,
+     "lngLat": [
+      4.8938863,
+      52.3539665
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T20:40:23.898Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163810",
+   "addresses": [
+    "Sarphatipark 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000804136"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332661073,
+     "lngLat": [
+      4.8938537,
+      52.354016
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "amenity": "restaurant",
+      "cuisine": "thai",
+      "delivery": "yes",
+      "name": "Naa Thai",
+      "opening_hours": "Th-Tu 12:00-21:00",
+      "phone": "+31 20 3626803",
+      "shop": "toko",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.naathai.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T20:40:23.898Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

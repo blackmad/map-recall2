@@ -3,7 +3,7 @@
  "street": "Sarphatipark",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 5.08,
+ "seconds": 7.4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -166,42 +166,40 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1889, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1889, type 1875-1877"
+   "stage": "likeness",
+   "reason": "edge NCC 0.132 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.20; window shape tall vs photo square; wall family unresolved (#2e2825 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012159196",
+    "ncc": 0.132,
+    "nccRaw": 0.132,
+    "shiftM": [
+     0.05,
+     -0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 15.25 m = 3 storeys of 5.08 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 0.67 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.20",
+     "window shape tall vs photo square",
+     "wall family unresolved (#2e2825 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2e2825",
+     "model": "#554b44",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.349
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -260,36 +258,39 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1889, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1889, type 1875-1877"
+   "stage": "likeness",
+   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.27; glazing storey band off by 0.23; wall family unresolved (#919191 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012161012",
+    "ncc": 0.143,
+    "nccRaw": 0.143,
+    "shiftM": [
+     -0.3,
+     -0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 15.51 m = 3 storeys of 5.17 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 0.59 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     }
-    ]
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.27",
+     "glazing storey band off by 0.23",
+     "wall family unresolved (#919191 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#919191",
+     "model": "#5a453f",
+     "dL": -0.269
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.293
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -358,42 +359,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1889, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1889, type 1875-1877"
+   "stage": "likeness",
+   "reason": "edge NCC 0.097 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.44 mean 0.43 vs photo 0.15; wall family unresolved (#362d29 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012161013",
+    "ncc": 0.097,
+    "nccRaw": 0.097,
+    "shiftM": [
+     -0.05,
+     0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 17 m = 3 storeys of 5.67 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 1.22 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.44 mean 0.43 vs photo 0.15",
+     "wall family unresolved (#362d29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#362d29",
+     "model": "#574944",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.209
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -448,37 +445,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.33 mean 0.42 vs photo 0.22; wall family unresolved (#392e2a is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.075 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.39 mean 0.46 vs photo 0.68; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012153650",
-    "ncc": 0.072,
-    "nccRaw": 0.072,
+    "ncc": 0.075,
+    "nccRaw": 0.075,
     "shiftM": [
-     -0.2,
-     -0.3
+     -0.4,
+     -0.05
     ],
-    "usable": 1,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.15",
-     "glazing storey band off by 0.33 mean 0.42 vs photo 0.22",
-     "wall family unresolved (#392e2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "wall dL +0.13",
+     "glazing storey band off by 0.39 mean 0.46 vs photo 0.68",
+     "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#392e2a",
+     "photo": "#3f3431",
      "model": "#64524e",
-     "dL": 0.155
+     "dL": 0.129
     },
     "glazing": {
-     "photo": 0.22,
-     "model": 0.42
+     "photo": 0.68,
+     "model": 0.46
     },
     "columns": {
-     "photo": 3,
+     "photo": 4,
      "model": 3
     },
-    "iou": 0.372
+    "iou": 0.432
    },
    "challengers": {}
   },
@@ -538,37 +535,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38 mean 0.37 vs photo 0.20; wall family unresolved (#342b28 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012163683",
-    "ncc": 0.143,
-    "nccRaw": 0.143,
+    "ncc": 0.195,
+    "nccRaw": 0.195,
     "shiftM": [
      -0.25,
-     0.4
+     -0.25
     ],
-    "usable": 0.99,
+    "usable": 1,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.38 mean 0.37 vs photo 0.20",
-     "wall family unresolved (#342b28 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "wall dL +0.13",
+     "glazing storey band off by 0.42 mean 0.42 vs photo 0.28",
+     "wall family unresolved (#312a27 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#342b28",
+     "photo": "#312a27",
      "model": "#564743",
-     "dL": 0.12
+     "dL": 0.127
     },
     "glazing": {
-     "photo": 0.2,
-     "model": 0.37
+     "photo": 0.28,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.322
+    "iou": 0.306
    },
    "challengers": {}
   },
@@ -623,42 +621,39 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1890, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1890, type 1875-1877"
+   "stage": "likeness",
+   "reason": "edge NCC 0.099 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.18; glazing storey band off by 0.42 mean 0.46 vs photo 0.25; wall family unresolved (#312826 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012152792",
+    "ncc": 0.099,
+    "nccRaw": 0.099,
+    "shiftM": [
+     -0.2,
+     -0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 16.93 m = 3 storeys of 5.64 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 0.01 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing storey band off by 0.42 mean 0.46 vs photo 0.25",
+     "wall family unresolved (#312826 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#312826",
+     "model": "#635452",
+     "dL": 0.184
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.365
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -712,42 +707,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1890, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1890, type 1875-1877"
+   "stage": "likeness",
+   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.42 mean 0.47 vs photo 0.30; wall family unresolved (#382f2b is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012166511",
+    "ncc": 0.107,
+    "nccRaw": 0.107,
+    "shiftM": [
+     -0.4,
+     0
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 16.65 m = 3 storeys of 5.55 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 0.27 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.42 mean 0.47 vs photo 0.30",
+     "wall family unresolved (#382f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#382f2b",
+     "model": "#594b46",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.314
    },
-   "likeness": null,
    "challengers": {}
   }
  ]
