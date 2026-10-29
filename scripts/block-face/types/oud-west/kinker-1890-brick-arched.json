@@ -59,7 +59,13 @@
       "gable": "cornice",
       "dormers": 1,
       "dormerStyle": "pediment",
-      "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15)"
+      "note": "one pedimented dormer with scrolled cheeks per module, centred, standing behind the cornice (2-30 pands 6-14; 206-242 pands 14-15) (#98: white painted bodies, dormerBody stone; a trim-slot body exported as a frame sunk in the low front attic and failed the opening-outside audit)",
+      "dormerBody": "stone",
+      "dormerSize": {
+        "sill": 0.4,
+        "rise": 1.3,
+        "setback": 0.3
+      }
     },
     "none": {
       "gable": "cornice",

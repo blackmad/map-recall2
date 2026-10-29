@@ -15,7 +15,7 @@
  "authoring": {
   "author": "claude (kinkerstraat odd-faces lane)",
   "passes": 1,
-  "note": "Kinkerstraat 49A-63 (odd side, Da Costakade to Bellamystraat), 1886-1892 neo-renaissance group (49A-53A: white speklagen, sunburst and blocked arches, stepped and pointed gables) and the 1891 row 55-63 (keystoned flat heads; 57, 59 and 63 with blocked segmental arches on the two lower upper storeys). Strip 2024-11-29 (low sun); shops read on zoom crops."
+  "note": "Kinkerstraat 49A-63 (odd side, Da Costakade to Bellamystraat), 1886-1892 neo-renaissance group (49A-53A: white speklagen, sunburst and blocked arches, stepped and pointed gables) and the 1891 row 55-63 (keystoned flat heads; 57, 59 and 63 with blocked segmental arches on the two lower upper storeys). Strip 2024-11-29 (low sun); shops read on zoom crops. #98 pass: brick facings (overrides.palette) moved to paletteOverrides; the 3 cm facing lay 1 cm off the shop doors and the cornice soffit (coplanar in the GLB audit)."
  },
  "types": [
   "kinker-1886-neo-renaissance",
@@ -80,10 +80,8 @@
       "evidence": "strip.jpg 2024-11-29 pand 1: dark fascia lettered GROENTE FRUIT SENER DELICATESSEN, dark awning over a fruit display; OSM node 2809443947 shop=greengrocer"
      }
     },
-    "overrides": {
-     "palette": {
-      "brick": "#5d5349"
-     }
+    "paletteOverrides": {
+     "brick": "#5d5349"
     }
    },
    "groundFloor": {
@@ -527,10 +525,7 @@
     "type": "kinker-1890-plain-brick",
     "crown": "pediment-dormer",
     "overrides": {
-     "windowSurround": "keystone",
-     "palette": {
-      "brick": "#816b54"
-     }
+     "windowSurround": "keystone"
     },
     "ground": {
      "shopfront": {
@@ -541,6 +536,9 @@
       "stallriser": "medium",
       "evidence": "strip.jpg 2024-11-29 pand 8: orange-brown timber shopfront, gold lettering illegible"
      }
+    },
+    "paletteOverrides": {
+     "brick": "#816b54"
     }
    },
    "groundFloor": {
