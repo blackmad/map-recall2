@@ -95,8 +95,17 @@ function buildBijenkorfNative(b:BuildingTools){
  // Local facade coordinates support all THREE historic fronts (+Z Damrak,
  // +X Dam and -X Beursplein), including identical five-axis end elevations.
  function front(cx:number,cz:number,angle:number,width:number,count:number,raised:boolean){
+  // An end front stands on its surveyed wall: the line fitted through the ring
+  // across the front's width, turned to that wall's own bearing. A fixed cx
+  // left the Dam and Beursplein fronts 0.25-0.39 m behind the ring (Dam end
+  // 58.50-58.64 m against cx 58.25): the brick swallowed the window glass of
+  // two bays and left only white mullion crosses on it (feedback 3026cca1,
+  // "bijenkorf windows look bad on this side").
+  if(angle!==0){const out=Math.sign(Math.sin(angle)),zs:number[]=[],xs:number[]=[];for(let t=-.45;t<=.45;t+=.05){const z=cz+t*width,x=endX(z,out>0);if(Number.isFinite(x)){zs.push(z);xs.push(x);}}
+   const mz=zs.reduce((a,q)=>a+q,0)/zs.length,mx=xs.reduce((a,q)=>a+q,0)/xs.length,k=zs.reduce((a,z,i)=>a+(z-mz)*(xs[i]-mx),0)/zs.reduce((a,z)=>a+(z-mz)**2,0);
+   const nx=out,nz=-out*k,len=Math.hypot(nx,nz);angle=Math.atan2(nx/len,nz/len);cx=mx+k*(cz-mz);}
   const ca=Math.cos(angle),sa=Math.sin(angle);
-  const local=(x:number,z:number):P=>angle===0?[cx+x,frontZ(cx+x)+.03+z]:[cx+x*ca+z*sa,cz-x*sa+z*ca];
+  const local=(x:number,z:number):P=>angle===0?[cx+x,frontZ(cx+x)+.03+z]:[cx+x*ca+(z+.03)*sa,cz-x*sa+(z+.03)*ca];
   // Every facade part reaches back into the wall (the ring wall is local z -0.03): surrounds, sills and pilasters used to stand 10-13 cm off it
   // and read as detached parts.
   const fb=(x:number,y:number,z:number,w:number,hh:number,dd:number,c:C)=>{const back=z-dd/2,reach=-.07;if(back>reach&&back-reach<=.35){dd+=back-reach;z-=(back-reach)/2;}const p=local(x,z);box(p[0],y,p[1],w,hh,dd,c,angle);};
@@ -124,6 +133,8 @@ function buildBijenkorfNative(b:BuildingTools){
  }
  // Intersections with the actual front ring align ornamental skins with
  // curved/recessed survey corners rather than a single bounding rectangle.
+ /** The ring's outermost x at a given z: the +X (Dam) or -X (Beursplein) end wall. */
+ const endX=(z:number,max:boolean)=>{const hits:number[]=[];for(let i=0;i<ring.length;i++){const a=ring[i],q=ring[(i+1)%ring.length];if(((a[1]<=z&&q[1]>=z)||(a[1]>=z&&q[1]<=z))&&Math.abs(q[1]-a[1])>.001)hits.push(a[0]+(z-a[1])*(q[0]-a[0])/(q[1]-a[1]));}return hits.length?(max?Math.max(...hits):Math.min(...hits)):NaN;};
  const frontZ=(x:number)=>{const hits:number[]=[];for(let i=0;i<ring.length;i++){const a=ring[i],q=ring[(i+1)%ring.length];if((a[0]<=x&&q[0]>=x)||(a[0]>=x&&q[0]<=x)){if(Math.abs(q[0]-a[0])>.001)hits.push(a[1]+(x-a[0])*(q[1]-a[1])/(q[0]-a[0]));}}return Math.max(...hits);};
  // Twenty-five paired-window bays, grouped 4/7/3/7/4 as the owner's detailed
  // original facade description; tiny carvings are deliberately simplified.
