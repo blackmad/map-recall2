@@ -459,7 +459,11 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
   for (const t of host) hostTri[t] = 1;
   const hostSoup = asTriSoup(s, host);
   // Walls: vertical host planes at least 1 m tall and wide (rails, cornices and copings are not walls).
-  const walls = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}).filter(w => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1);
+  // Planes under 1 m either way never host a part, but they may be a sliver of one (a pand front 1 degree off its row is cut by the
+  // greedy clustering into the row plane, a 1.2 m piece and a 0.23 m end strip, Ferdinand Bolstraat 44, #96): they only extend a
+  // host's silhouette where they are flush with it (`measure`).
+  const segments = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}), isHostSize = (w: WallSegment) => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1;
+  const walls = segments.filter(isHostSize), slivers = segments.filter(w => !isHostSize(w));
   // Host triangles that belong to a wall plane; trim touching only other host surfaces (a cartouche, a pediment, a roof) is applied ornament.
   const wallTris = new Set<number>();
   for (const w of walls) for (const i of w.tris) wallTris.add(host[i]);
@@ -852,7 +856,11 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
   for (const t of host) if (isRoofMat[s.triMaterial[t]]) { const [a, b, c] = triVerts(s, t); if (Math.abs(triNormal(a, b, c).n[1]) >= 0.2) roofTri[t] = 1; }
   const grid = new TriGrid(s, host, 1);
   const hostSoup = asTriSoup(s, host);
-  const walls = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}).filter(w => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1);
+  // Planes under 1 m either way never host a part, but they may be a sliver of one (a pand front 1 degree off its row is cut by the
+  // greedy clustering into the row plane, a 1.2 m piece and a 0.23 m end strip, Ferdinand Bolstraat 44, #96): they only extend a
+  // host's silhouette where they are flush with it (`measure`).
+  const segments = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}), isHostSize = (w: WallSegment) => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1;
+  const walls = segments.filter(isHostSize), slivers = segments.filter(w => !isHostSize(w));
   const rasters = new Map<WallSegment, WallRaster>();
   const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host); rasters.set(w, r); } return r; };
 
@@ -879,7 +887,7 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
     const corners = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]];
     const partFace = Math.max(skin / 2, (bb.max[1] - bb.min[1]) * Math.max(bb.max[0] - bb.min[0], bb.max[2] - bb.min[2]) * 0.5);
     const cands: {w: WallSegment; sd: number}[] = [], pieces: WallSegment[] = [];
-    for (const w of walls) {
+    for (const w of [...walls, ...slivers]) {
       if (axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94) continue;
       const sds = corners.map(([x, z]) => w.n[0] * x + w.n[1] * z - w.d), lo = Math.min(...sds), hi = Math.max(...sds);
       if (hi < -0.8 || lo > 0.8) continue;
@@ -891,7 +899,7 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
       // dormer or roof light, not this wall's opening.
       if (footClearsWall(raster(w), Math.min(...us), Math.max(...us), bb.min[1])) continue;
       // smaller planes in reach: fragments of a host wall (they extend its silhouette, see `measure`), never hosts themselves
-      if (w.area < 3 * partFace) { pieces.push(w); continue; }
+      if (w.area < 3 * partFace || !isHostSize(w)) { pieces.push(w); continue; }
       cands.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0)});
     }
     cands.sort((p, q) => (Math.abs(p.sd - q.sd) > 0.02 ? p.sd - q.sd : q.w.area - p.w.area));
@@ -902,8 +910,16 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
       // Fragments of the same wall: one 3DBAG wall is often clustered into several planes (member normals a few tenths of a degree
       // apart move `d` by decimetres 70 m from the origin), so the rows above and below a window can each be a plane too small to
       // host it. A piece within 3 cm of `w`'s plane at the part joins the silhouette; a stone ring or surround stands prouder.
+      // "At the part" is where the piece meets it: the piece's own surface at the end of its span nearest the part's centre (a
+      // pand front a degree off its row's plane is split where it drifts past the cluster tolerance; judged at a part centre 1.5 m
+      // away, or through the tilted plane's d far from the origin, the flush remainder read 3-4 cm off, Ferdinand Bolstraat 44, #96).
       const at = (g: WallSegment) => g.n[0] * c[0] + g.n[1] * c[2] - g.d, sw = at(w);
-      const group = [...cands.map(x => x.w), ...pieces].filter(g => g.n[0] * w.n[0] + g.n[1] * w.n[1] > 0.94 && (g === w || cands.some(x => x.w === g) || Math.abs(at(g) - sw) <= 0.03)), groupRasters = group.map(raster);
+      const flush = (g: WallSegment) => {
+        const us = corners.map(([x, z]) => x * g.t[0] + z * g.t[1]), cu = c[0] * g.t[0] + c[2] * g.t[1], lo = Math.max(g.uMin, Math.min(...us)), hi = Math.min(g.uMax, Math.max(...us));
+        const u = lo <= hi ? Math.min(hi, Math.max(lo, cu)) : cu, q = [g.n[0] * g.d + u * g.t[0], g.n[1] * g.d + u * g.t[1]];
+        return Math.abs(w.n[0] * q[0] + w.n[1] * q[1] - w.d) <= 0.03;
+      };
+      const group = [...cands.map(x => x.w), ...pieces].filter(g => g.n[0] * w.n[0] + g.n[1] * w.n[1] > 0.94 && (g === w || cands.some(x => x.w === g) || flush(g))), groupRasters = group.map(raster);
       // Facets of a curved or polygonal wall continue it: neighbours turned less than ~46 degrees (an octagonal tower's facets are 45 apart).
       const facets = cands.filter(x => x.w.n[0] * w.n[0] + x.w.n[1] * w.n[1] > 0.7).map(x => x.w);
       let faceM2 = 0, outsideM2 = 0;
