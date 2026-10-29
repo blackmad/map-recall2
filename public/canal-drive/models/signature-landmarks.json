@@ -311,8 +311,8 @@
       "bounds": {
         "min": [
           -185.1193084716797,
-          -2.3610128607742809e-7,
-          -167.28273010253906
+          -0.019257551059126854,
+          -178.5500030517578
         ],
         "max": [
           246.6999969482422,
@@ -332,12 +332,12 @@
       },
       "extent": {
         "widthMetres": 431.8193054199219,
-        "heightMetres": 41.79999947316183,
-        "depthMetres": 182.30273056030273,
-        "depthCoverage": 5.896632838141768
+        "heightMetres": 41.819256788119674,
+        "depthMetres": 193.57000350952148,
+        "depthCoverage": 6.2610759348769145
       },
-      "triangles": 42807,
-      "bytes": 406912,
+      "triangles": 51741,
+      "bytes": 483916,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "a6b4d3e189f14d24",
@@ -424,14 +424,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -60.00481414794922,
+          -60.18007278442383,
           0,
-          -58.04224395751953
+          -58.21932601928711
         ],
         "max": [
-          69.06237030029297,
+          69.24337005615234,
           40,
-          77.76261138916016
+          77.93659210205078
         ]
       },
       "placement": {
@@ -445,13 +445,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 135.8048553466797,
+        "widthMetres": 136.1559181213379,
         "heightMetres": 40,
-        "depthMetres": 129.0671844482422,
-        "depthCoverage": 0.9520651512061618
+        "depthMetres": 129.42344284057617,
+        "depthCoverage": 0.9546930941772268
       },
-      "triangles": 14504,
-      "bytes": 209360,
+      "triangles": 30320,
+      "bytes": 419524,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "8e38bc95b2a33648",
@@ -54968,6 +54968,307 @@
         "bytes": 35520,
         "triangles": 984
       }
+    },
+    "stationsplein-paviljoens": {
+      "id": "stationsplein-paviljoens",
+      "category": "ordinary",
+      "name": "Noord-Zuid Hollandsch Koffiehuis and the Stationsplein pavilions",
+      "modelUrl": "./models/stationsplein-paviljoens.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012182895",
+        "w57864041",
+        "w752700324",
+        "w752700325",
+        "w752700326",
+        "w752700327",
+        "w752700328",
+        "w752700329",
+        "w752700330",
+        "w752700331",
+        "w752700333",
+        "w752700334",
+        "w752700335",
+        "w752713621"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9004215,
+          52.377579
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 65.7,
+        "widthMetres": 29.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.9004215,
+          52.377579
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM building:part rings w752700324-w752700335, w752713621 and w57864041 (ODbL) in local east/south metres from the anchor; heights from AHN4 DSM/DTM 0.5 m (PDOK, CC0) above the 3.2 m NAP plaza; the Loetje block's south façade on the BAG pand 0363100012182895 line (CC0), where AHN puts the eaves. Features from Gemeente Amsterdam panoramas 2017-2025 (scripts/landmarks/stationsplein-paviljoens-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "stone": "#dcd8c5",
+        "white": "#f2efe6",
+        "red": "#b0654c",
+        "slate": "#6b6e6f",
+        "frame": "#8e989c",
+        "brick": "#8a5442",
+        "glass": "#56666c",
+        "blue": "#59607e",
+        "gold": "#c9a54a",
+        "dark": "#3a3f3d"
+      },
+      "attribution": {
+        "title": "Noord-Zuid Hollandsch Koffiehuis (Stationsplein 4-16)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Noord-Zuid_Hollandsch_Koffiehuis",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on OSM building:part rings (ODbL) and the BAG footprint (CC0) with AHN4 heights (CC0): cream timber walls on exposed runs only, red-tile hips and the Loetje mansard, the stolp's crest gable over four stained-glass lights with its coat of arms and finial, the south pediment gable, two lead ogee turrets (one with an open iron crown) and the east kiosk's neck gable with its chimney. Proportions read from Gemeente Amsterdam panoramas (CC BY 4.0); history from nl.wikipedia (CC BY-SA 4.0). No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9003313,
+              52.3776276
+            ],
+            [
+              4.9003183,
+              52.3776164
+            ],
+            [
+              4.9003126,
+              52.3776171
+            ],
+            [
+              4.9002776,
+              52.3776216
+            ],
+            [
+              4.9002424,
+              52.377626
+            ],
+            [
+              4.9002431,
+              52.3776287
+            ],
+            [
+              4.9002355,
+              52.3776293
+            ],
+            [
+              4.9002351,
+              52.3776273
+            ],
+            [
+              4.9000716,
+              52.3776987
+            ],
+            [
+              4.9000068,
+              52.3776418
+            ],
+            [
+              4.9000033,
+              52.377642
+            ],
+            [
+              4.9000034,
+              52.3776413
+            ],
+            [
+              4.9000033,
+              52.3776403
+            ],
+            [
+              4.899973,
+              52.3776377
+            ],
+            [
+              4.8999458,
+              52.37765
+            ],
+            [
+              4.8999381,
+              52.3775831
+            ],
+            [
+              4.8999965,
+              52.3775807
+            ],
+            [
+              4.8999939,
+              52.377558
+            ],
+            [
+              4.9000538,
+              52.3775554
+            ],
+            [
+              4.9000591,
+              52.377547
+            ],
+            [
+              4.9000751,
+              52.3775466
+            ],
+            [
+              4.9000841,
+              52.3775548
+            ],
+            [
+              4.9000853,
+              52.3775605
+            ],
+            [
+              4.9001806,
+              52.3775538
+            ],
+            [
+              4.9001716,
+              52.3775086
+            ],
+            [
+              4.9002477,
+              52.377499
+            ],
+            [
+              4.9003628,
+              52.3774841
+            ],
+            [
+              4.9004439,
+              52.3774725
+            ],
+            [
+              4.9004553,
+              52.3775061
+            ],
+            [
+              4.9007149,
+              52.3774464
+            ],
+            [
+              4.9007158,
+              52.3774472
+            ],
+            [
+              4.9007963,
+              52.3775166
+            ],
+            [
+              4.9007748,
+              52.3775261
+            ],
+            [
+              4.9007879,
+              52.377537
+            ],
+            [
+              4.9007785,
+              52.3775413
+            ],
+            [
+              4.9007991,
+              52.3775586
+            ],
+            [
+              4.900809,
+              52.3775668
+            ],
+            [
+              4.90084,
+              52.3775529
+            ],
+            [
+              4.9009048,
+              52.3776085
+            ],
+            [
+              4.9007859,
+              52.3776604
+            ],
+            [
+              4.9008156,
+              52.377686
+            ],
+            [
+              4.9007555,
+              52.3777123
+            ],
+            [
+              4.9007285,
+              52.377689
+            ],
+            [
+              4.9006775,
+              52.3777112
+            ],
+            [
+              4.9006294,
+              52.3776699
+            ],
+            [
+              4.9006318,
+              52.3776689
+            ],
+            [
+              4.9005991,
+              52.3776407
+            ],
+            [
+              4.9005763,
+              52.3776507
+            ],
+            [
+              4.9004758,
+              52.3775645
+            ],
+            [
+              4.9003313,
+              52.3776276
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -31.72310447692871,
+          -4.7683716530855236e-8,
+          -8.0184326171875
+        ],
+        "max": [
+          33.516204833984375,
+          12,
+          15.049890518188477
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9004215,
+          52.377579
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 65.23930931091309,
+        "heightMetres": 12.000000047683717,
+        "depthMetres": 23.068323135375977,
+        "depthCoverage": 0.784636841339319
+      },
+      "triangles": 10939,
+      "bytes": 160092,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

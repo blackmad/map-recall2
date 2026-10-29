@@ -412,8 +412,8 @@
       "dateSource": "asset-update"
     },
     "centraal-station": {
-      "updatedAt": "2026-10-16T18:59:18.132Z",
-      "version": "a6b4d3e189f14d24",
+      "updatedAt": "2026-10-29T13:38:06.478Z",
+      "version": "7e828db6c9d7e0ad",
       "dateSource": "asset-update"
     },
     "centraal-station.lod1": {
@@ -582,8 +582,8 @@
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage": {
-      "updatedAt": "2026-10-29T12:03:15.429Z",
-      "version": "8e38bc95b2a33648",
+      "updatedAt": "2026-10-29T15:04:37.605Z",
+      "version": "ac59800ea37889ed",
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage.lod1": {
@@ -3314,6 +3314,11 @@
     "zuiveringshal-west.lod1": {
       "updatedAt": "2026-10-23T20:23:30.758Z",
       "version": "2908515415d99dc3",
+      "dateSource": "asset-update"
+    },
+    "stationsplein-paviljoens": {
+      "updatedAt": "2026-10-29T14:31:13.495Z",
+      "version": "dea9198bc4f7a098",
       "dateSource": "asset-update"
     }
   }

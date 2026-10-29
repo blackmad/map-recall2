@@ -131,6 +131,7 @@ import {buildBlauweTheehuis} from './blauwe-theehuis-builder';
 import {buildBeestHetLab} from './beest-het-lab-builder';
 import {buildMuseumAmsterdamNoord} from './museum-amsterdam-noord-builder';
 import {buildLevendPaardenmuseum} from './levend-paardenmuseum-builder';
+import {buildStationspleinPaviljoens} from './stationsplein-paviljoens-builder';
 import {buildOudemanhuispoort} from './oudemanhuispoort-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
@@ -326,7 +327,10 @@ import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
+ // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
+ // orthophoto (#939696 to #747b82) and of its underside in panorama recording_2025-06-17_09-10-34_02640 (#5e6c69). Used by no other model.
+ canopyGlass:'#86908f'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour,hex?:string,unlit?:boolean}[]=[];
 /** Native decal geometry is already transformed by its builder; do not translate it again. */
@@ -596,6 +600,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
     else if(id==='museum-amsterdam-noord')buildMuseumAmsterdamNoord(w,d,helpers);
     else if(id==='levend-paardenmuseum')buildLevendPaardenmuseum(w,d,helpers);
+    else if(id==='stationsplein-paviljoens')buildStationspleinPaviljoens(w,d,helpers);
     else if(id==='oudemanhuispoort')buildOudemanhuispoort(w,d,helpers);
     else if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);

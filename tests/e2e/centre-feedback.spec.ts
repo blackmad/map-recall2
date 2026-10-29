@@ -7,7 +7,7 @@ import { openRoute, setHiddenSelect } from './helpers';
 //   CENTRE_FB_OUT=<dir> PW_PORT=4687 npx playwright test centre-feedback --project=desktop
 const OUT = process.env.CENTRE_FB_OUT || 'artifacts/centre-feedback';
 const ONLY = process.env.CENTRE_FB_ONLY || '';
-export const CENTRE_POSES = [
+export const CENTRE_POSES: { id: string; note: string; x: number; y: number; angle: number; zoom?: number }[] = [
   { id: '3026cca1', note: 'bijenkorf windows', x: -1256.88, y: -5717.19, angle: -0.9148 },
   { id: '59b67ef0', note: 'grey vertical strip, Dam', x: -1340.79, y: -5802.81, angle: -1.0613 },
   { id: '58f97b44', note: 'berlage floating windows', x: -937.65, y: -6119.65, angle: -0.4793 },
@@ -15,9 +15,15 @@ export const CENTRE_POSES = [
   { id: '3702bcd7', note: 'double POI labels, Centraal', x: 15.71, y: -7350.21, angle: -0.5125 },
   { id: '334bcadd', note: 'Stationsplein island', x: 200.35, y: -7349.79, angle: 1.6912 },
   { id: 'bbbeaceb', note: 'De Ruijterkade IJ side', x: 652.88, y: -7855.94, angle: -2.5912 },
+  // #99 (2026-10-29): close views of the IJ canopy ribs on the quay and of the Stationsplein island pavilions.
+  { id: 'ij-ribs-close', note: 'IJ canopy ribs from the quay, riding west', x: 643.9, y: -7844.8, angle: -2.62, zoom: 1.8 },
+  { id: 'island-north', note: 'Stationsplein island from the tram stops', x: 200.35, y: -7349.79, angle: 1.6912, zoom: 1.9 },
+  { id: 'beurs-damrak', note: 'Beurs van Berlage Damrak front: bays, arcade, entrances, crests', x: -800, y: -6380, angle: 0.25, zoom: 1.4 },
 ];
+// CENTRE_FB_POSES='[{"id":"x","x":0,"y":0,"angle":0,"zoom":1.5}]' adds ad-hoc poses (world px; lng/lat -> x,y: see #99 handoff).
+if (process.env.CENTRE_FB_POSES) CENTRE_POSES.push(...JSON.parse(process.env.CENTRE_FB_POSES));
 
-async function park(page: Page, p: { x: number; y: number; angle: number }) {
+async function park(page: Page, p: { x: number; y: number; angle: number; zoom?: number }) {
   await page.evaluate((p) => {
     const g = (window as any).canalRecallGame;
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
@@ -26,7 +32,8 @@ async function park(page: Page, p: { x: number; y: number; angle: number }) {
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     g.viewMode = 'chase'; g.camera.viewMode = 'chase'; g.camera.northUp = false;
     // The notes' camera zoom (0.8997): the rider had zoomed out from the default.
-    if (g.camera.zoom != null) g.camera.zoom = 0.8997; if (g.camera.targetZoom != null) g.camera.targetZoom = 0.8997;
+    const zoom = p.zoom ?? 0.8997;
+    if (g.camera.zoom != null) g.camera.zoom = zoom; if (g.camera.targetZoom != null) g.camera.targetZoom = zoom;
   }, p);
 }
 
