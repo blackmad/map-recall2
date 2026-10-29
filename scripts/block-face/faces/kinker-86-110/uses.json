@@ -286,51 +286,6 @@
    ],
    "units": 5,
    "osm": []
-  },
-  {
-   "pandId": "0363100012233580",
-   "addresses": [
-    "Kinkerstraat 86",
-    "Kinkerstraat 88"
-   ],
-   "groundUnits": [
-    {
-     "address": "Kinkerstraat 86-H",
-     "use": "bijeenkomstfunctie",
-     "areaM2": 129,
-     "bagId": "0363010000705558"
-    }
-   ],
-   "units": 8,
-   "osm": [
-    {
-     "type": "node",
-     "id": 494157345,
-     "lngLat": [
-      4.8718715,
-      52.3672623
-     ],
-     "tags": {
-      "addr:city": "Amsterdam",
-      "addr:housenumber": "88",
-      "addr:street": "Kinkerstraat",
-      "amenity": "fast_food",
-      "changing_table": "no",
-      "check_date": "2025-01-16",
-      "diet:vegan": "yes",
-      "diet:vegetarian": "yes",
-      "indoor_seating": "yes",
-      "name": "Corner Inn",
-      "opening_hours": "Mo-Th 14:00-01:00; Fr-Sa 14:00-04:00; Su 14:00-03:00",
-      "outdoor_seating": "no",
-      "payment:cash": "yes",
-      "wheelchair": "yes"
-     },
-     "fetchedAt": "2026-10-14T09:38:51.733Z",
-     "match": "inside",
-     "distanceM": 0
-    }
-   ]
   }
  ]
 }

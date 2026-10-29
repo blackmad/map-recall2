@@ -682,79 +682,6 @@
      "carved ornament in the tympana drawn as plain stone fills"
     ]
    }
-  },
-  {
-   "pandId": "0363100012233580",
-   "slug": "kinker-233580",
-   "address": "Kinkerstraat 86-88",
-   "type": {
-    "type": "kinker-1890-plain-brick",
-    "crown": "none",
-    "palette": "red-brown",
-    "overrides": {
-     "windowHead": {
-      "kind": "segmental",
-      "storeys": [
-       1,
-       2
-      ],
-      "tympanum": "stone"
-     }
-    },
-    "ground": {
-     "shopfront": {
-      "colour": "#e6d7a6",
-      "fascia": true,
-      "name": "Corner Inn",
-      "sign": {
-       "text": "Corner Inn",
-       "textColour": "white",
-       "mount": "fascia",
-       "background": "#2a2f6e"
-      },
-      "entrance": "left",
-      "residentialDoor": {
-       "side": "right",
-       "colour": "black"
-      },
-      "glazing": "transom",
-      "stallriser": "low",
-      "fasciaColour": "#2a2f6e",
-      "evidence": "strip.jpg pand 10 (zoom): cream-painted ground storey with a row of small leaded transom lights, dark blue fascia lettered \"...INN\", roller shutter; OSM amenity=fast_food Corner Inn"
-     }
-    }
-   },
-   "groundFloor": {
-    "use": "restaurant",
-    "photoDate": "2024-11-29",
-    "name": "Corner Inn",
-    "category": "amenity=fast_food",
-    "osm": {
-     "type": "node",
-     "id": 494157345,
-     "name": "Corner Inn"
-    },
-    "bag": [
-     "bijeenkomstfunctie"
-    ],
-    "agreement": "osm-and-photo"
-   },
-   "rhythm": {
-    "citation": "strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3, flat top with one low roof box",
-    "photoRows": [
-     3,
-     3,
-     3,
-     3
-    ],
-    "photoGables": 0,
-    "schemaLimits": [
-     "the strip wall median (#d7a569) is direct low sun on the brick; the type palette is kept instead of a measured wall",
-     "a low flat roof box on the roof (the plain-brick type has no box crown)",
-     "cream-painted ground storey wall",
-     "carved ornament in the tympana drawn as plain stone fills"
-    ]
-   }
   }
  ],
  "limitations": [
@@ -775,11 +702,7 @@
   "236213: iron wall anchors between the windows",
   "236213: carved ornament in the tympana drawn as plain stone fills",
   "155794: iron wall anchors between the windows",
-  "155794: carved ornament in the tympana drawn as plain stone fills",
-  "233580: the strip wall median (#d7a569) is direct low sun on the brick; the type palette is kept instead of a measured wall",
-  "233580: a low flat roof box on the roof (the plain-brick type has no box crown)",
-  "233580: cream-painted ground storey wall",
-  "233580: carved ornament in the tympana drawn as plain stone fills"
+  "155794: carved ornament in the tympana drawn as plain stone fills"
  ],
  "continuity": {
   "streetLevel": "shared",

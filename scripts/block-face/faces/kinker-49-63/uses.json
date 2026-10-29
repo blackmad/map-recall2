@@ -209,39 +209,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012133467",
-   "addresses": [
-    "Kinkerstraat 63"
-   ],
-   "groundUnits": [
-    {
-     "address": "Kinkerstraat 63-H",
-     "use": "winkelfunctie",
-     "areaM2": 59,
-     "bagId": "0363010000789290"
-    }
-   ],
-   "units": 4,
-   "osm": [
-    {
-     "type": "node",
-     "id": 11411936971,
-     "lngLat": [
-      4.8724689,
-      52.3671993
-     ],
-     "tags": {
-      "name": "Mensink",
-      "shop": "bakery",
-      "wheelchair": "limited"
-     },
-     "fetchedAt": "2026-10-14T09:28:42.688Z",
-     "match": "inside",
-     "distanceM": 0
-    }
-   ]
   }
  ]
 }
