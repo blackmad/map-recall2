@@ -42,3 +42,11 @@ export function advanceSilentPass(
 export function questionFreezesRide(open: boolean, silent: boolean): boolean {
   return open && !silent;
 }
+
+/** Whether an answer's hold may close its card. Not when another question has
+ *  opened since (its card is the one on screen); a silent pass is not one, as
+ *  it has no card. Treating it as one kept the answered card up until the
+ *  rider left the street (keyboard-ride.spec.ts, Melkwegbrug, 2026-10-29). */
+export function answerHoldMayHide(holdIsCurrent: boolean, questionOpen: boolean, silent: boolean): boolean {
+  return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
+}

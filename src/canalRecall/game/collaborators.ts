@@ -42,6 +42,8 @@ export type StreetPadView = {
   queuedTurn: number;
   /** Waiting for the first press of the ride. */
   parked: boolean;
+  /** Where the queued turn will be taken (world px), for the map chevron. */
+  turnMarker?: { x: number; y: number; heading: number; side: number } | null;
   turning: boolean;
   awaitingChoice: boolean;
   buttons: { left: boolean; right: boolean; back: boolean };
@@ -229,6 +231,8 @@ export interface Hud {
   drawTouchHint(ctx: CanvasRenderingContext2D, controlMode: string): void;
   drawStick(ctx: CanvasRenderingContext2D, view: import('../touchControls.ts').StickView | null): void;
   drawStreetPad(ctx: CanvasRenderingContext2D, view: StreetPadView | null): void;
+  /** A chevron on the map where a queued turn will be taken. */
+  drawTurnMarker(ctx: CanvasRenderingContext2D, point: { x: number; y: number }, screenAngle: number): void;
 }
 
 export interface Renderer {

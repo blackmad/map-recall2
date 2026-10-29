@@ -3,6 +3,11 @@
  "notes": [
   {
    "date": "2026-10-29",
+   "title": "Turns you can see; no stuck answer card",
+   "text": "When you queue a turn on the phone pad, a pulsing chevron now marks the opening the bike will take. Boats follow the canals the same way, and slide along the quay instead of jerking sideways. An answered question card no longer stays on screen after a street that isn't asked about."
+  },
+  {
+   "date": "2026-10-29",
    "title": "Calmer phone steering",
    "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
   },

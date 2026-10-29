@@ -835,6 +835,34 @@ class HUD {
     });
   }
 
+  // Where a queued turn will be taken: a chevron on the street opening,
+  // pointing down it, in the pad's accent. Never a label — the street may be
+  // the next question.
+  drawTurnMarker(ctx, point, screenAngle) {
+    if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return;
+    if (point.x < -40 || point.y < -40 || point.x > CANVAS_W + 40 || point.y > CANVAS_H + 40) return;
+    const surface = window.CanalRecallUi.hudSurface;
+    const pulse = 0.75 + 0.25 * Math.sin(performance.now() / 200);
+    ctx.save();
+    ctx.translate(point.x, point.y);
+    ctx.rotate(screenAngle);
+    ctx.globalAlpha = pulse;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (const [offset, width, colour] of [[0, 9, surface.control], [0, 5, surface.controlPressed]]) {
+      ctx.strokeStyle = colour;
+      ctx.lineWidth = width;
+      for (const step of [-9, 5]) {
+        ctx.beginPath();
+        ctx.moveTo(step + offset - 7, -10);
+        ctx.lineTo(step + offset + 3, 0);
+        ctx.lineTo(step + offset - 7, 10);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
   // The thumbstick. Idle, it is a faint ring in the zone so it can be found;
   // held, the base sits under the thumb's landing point and the knob follows
   // the thumb, clamped to the rim. Translucent so the corridor stays visible.

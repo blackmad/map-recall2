@@ -692,9 +692,13 @@ class Game {
           const latComp = car.vx * rx + car.vy * ry;
           car.vx -= rx * latComp * 0.5;
           car.vy -= ry * latComp * 0.5;
-          const toRoadAngle = Math.atan2(dy, dx);
-          const norm = normalizeAngle(toRoadAngle - car.angle);
-          car.angle += norm * OFF_ROAD_CORRECTION;
+          // Ease the heading along the water, not toward the nearest point on
+          // its centreline: that point is roughly sideways, so every brush
+          // with the quay jerked the bow (and the chase camera behind it)
+          // across the canal. The position push above already brings the
+          // boat back in.
+          const along = window.CanalRecallUi.assistedHeading(car.angle, roadInfo.angle, Math.PI);
+          car.angle += normalizeAngle(along - car.angle) * OFF_ROAD_CORRECTION;
         }
       } else if (surface === 'curb') {
         const roadInfo = this.track.getNearestRoad(car.x, car.y);

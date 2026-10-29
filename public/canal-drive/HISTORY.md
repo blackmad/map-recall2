@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Keyboard-ride unstuck; follow-ups to street following (2026-10-29).**
+- `keyboard-ride.spec.ts` failed 7 of 8 core rides on main (since before the
+  street-follow change, same rides at cbcace987). Cause, in the game and the
+  spec: a *silent pass* (a name the question budget declines, no card, bike
+  free) sets `quizPromptName`. The previous answer's hold timer read that as
+  a new question and never hid the answered card, so it stayed up until the
+  rider left the street; the spec, also reading it as a question, released
+  the keys and waited, so the rider never left. `answerHoldMayHide`
+  (silentPass.ts, unit-tested) closes the card under a silent pass; the spec
+  ignores silent passes. 8/8 pass.
+- `mobile-overlays` "absolute mode" asserted a north-up map; chase (default
+  since 10-22) holds the starting bearing. It now asserts what absolute mode
+  promises: the map holds still and the stick's right is screen-right.
+- Boats: the grass push eased the bow toward the nearest centreline *point*
+  (sideways) — now along the water. `test:street-follow` pins Prinsengracht ×
+  Leidsegracht both ways; it caught a queued left spent on the Prinsengracht's
+  own 35° bend. A choice on the way underfoot is never a turn, and a gentle
+  split between two ways of one name is not a fork.
+- A queued turn now shows a pulsing chevron on the map at the opening it will
+  take (no label: the street may be the question).
+
 **Phones follow the street; the camera stops yawing at every wobble
 (2026-10-29).** User: the mobile steering was "not fun to use and kind of
 nauseating". Two causes in code: the chase camera eased toward the bike's

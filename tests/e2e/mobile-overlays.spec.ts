@@ -248,11 +248,12 @@ test('phone setup shows every main choice above Start, and says when it scrolls'
 
 // Named regression (2026-09-26): "even in absolute mode I can't reliably go
 // east". Touch auto-throttle turned a rightward press into north-east.
-test('absolute mode: holding the stick right drives due east', async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ controlMode: 'absolute' }));
-  });
-  await drive(page);
+// Absolute mode points in screen directions. Since chase became the default
+// view (2026-10-22) the map is held at the ride's starting bearing rather than
+// north-up, so "right" is screen-right, not world east: the test used to
+// assert a north-up map and failed on main from then on.
+test('absolute mode: holding the stick right drives screen-right, and the map holds still', async ({ page }) => {
+  await drive(page, 'absolute');
   const origin = await page.evaluate(() => {
     const game = window.canalRecallGame;
     const pad = game.input.dpad!;
@@ -261,21 +262,24 @@ test('absolute mode: holding the stick right drives due east', async ({ page }) 
     const scale = rect.width / CANVAS_W;
     return { x: rect.left + pad.cx * scale, y: rect.top + pad.cy * scale, rotation: game.camera.rotation };
   });
-  expect(Math.abs(origin.rotation), 'absolute mode holds the map north-up').toBeLessThan(0.01);
   const cdp = await page.context().newCDPSession(page);
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: origin.x, y: origin.y, id: 1 }] });
   for (let step = 1; step <= 4; step++) {
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: origin.x + step * 25, y: origin.y, id: 1 }] });
   }
   await page.waitForTimeout(1500);
-  const heading = await page.evaluate(() => {
-    const player = window.canalRecallGame.player as unknown as { angle: number };
-    return Math.atan2(Math.sin(player.angle), Math.cos(player.angle));
+  const after = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const player = game.player as unknown as { angle: number };
+    return { angle: player.angle, rotation: game.camera.rotation };
   });
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-  // Road assist may bend it along a street within 55° of east; never north-east
-  // by construction, and never a quarter-turn off.
-  expect(Math.abs(heading), `heading ${heading.toFixed(2)} rad is eastward`).toBeLessThan((55 * Math.PI) / 180);
+  const wrap = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
+  expect(Math.abs(wrap(after.rotation - origin.rotation)), 'absolute mode holds the map still while steering').toBeLessThan(0.01);
+  // Screen-right in world terms is the camera's rotation (screenToWorldAngle).
+  // Road assist may bend it along a street within 55°; never a quarter-turn off.
+  const offRight = wrap(after.angle - after.rotation);
+  expect(Math.abs(offRight), `heading is ${(offRight * 180 / Math.PI).toFixed(0)}° off screen-right`).toBeLessThan((55 * Math.PI) / 180);
 });
 
 // Named regression (UI review 2026-09-26): a wrong answer was one amber line

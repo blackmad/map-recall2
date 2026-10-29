@@ -32,6 +32,16 @@ export type FollowContact = Readonly<{
    *  SPAN_END_LEAD is not a way on (the next span, if any, is its own contact). */
   length?: number;
   along?: number;
+  /** The way (OSM polyline) the span belongs to. A way never branches, so a
+   *  choice on the way the bike is already on is that street continuing —
+   *  a bend — never a turn. */
+  segIdx?: number;
+  /** The street/canal name, when known. A gentle split between two ways of
+   *  one name is that street, not a fork. */
+  name?: string;
+  /** The closest point on the centreline (world px), for the turn marker. */
+  x?: number;
+  y?: number;
 }>;
 
 export type StreetFollowButtons = Readonly<{ left: boolean; right: boolean; back: boolean; forward?: boolean }>;
@@ -74,6 +84,9 @@ export type StreetFollowCommand = {
   pivot: number;
   /** At a junction with no straight on and nothing queued: waiting. */
   awaitingChoice: boolean;
+  /** Where the queued turn will be taken (world px) and which way, for a
+   *  chevron on the map. Never a name: the street may be the question. */
+  turnMarker: { x: number; y: number; heading: number; side: number } | null;
 };
 
 /** Cruise speed as a fraction of max speed. */
@@ -122,7 +135,7 @@ export function initialStreetFollowState(): StreetFollowState {
   return { queuedTurn: 0, queueAge: 0, backHeld: -1, uTurnPending: false, turning: null, stuckHeld: 0, spentSide: 0, parked: true };
 }
 
-export type StreetChoice = { heading: number; turn: number; dist: number; width: number };
+export type StreetChoice = { heading: number; turn: number; dist: number; width: number; segIdx?: number; name?: string; x?: number; y?: number };
 
 /** Every direction the bike could ride from here: both ways along each street
  *  whose corridor it is in, minus the ones behind it. */
@@ -137,10 +150,15 @@ export function streetChoices(contacts: readonly FollowContact[], heading: numbe
       if (room < SPAN_END_LEAD) continue;
       const turn = normalizeAngle(direction - heading);
       if (Math.abs(turn) > MAX_TURN) continue;
-      choices.push({ heading: normalizeAngle(direction), turn, dist: contact.dist, width: contact.width });
+      choices.push({ heading: normalizeAngle(direction), turn, dist: contact.dist, width: contact.width, segIdx: contact.segIdx, name: contact.name, x: contact.x, y: contact.y });
     }
   }
   return choices;
+}
+
+/** Both on one known way. Unknown (no index) never matches. */
+function sameWay(a: number | undefined, b: number | undefined): boolean {
+  return a != null && a === b;
 }
 
 function straightest(choices: readonly StreetChoice[]): StreetChoice | null {
@@ -156,16 +174,21 @@ function straightest(choices: readonly StreetChoice[]): StreetChoice | null {
  *  the corner at cruise speed. The one closest to a right angle wins (a
  *  fork's gentle branch loses to a real cross street, but is taken when it is
  *  the only one). */
-export function queuedTurnChoice(choices: readonly StreetChoice[], side: number, speed = 0): StreetChoice | null {
+export function queuedTurnChoice(choices: readonly StreetChoice[], side: number, speed = 0, currentSeg?: number): StreetChoice | null {
   const radius = Math.abs(speed) / STREET_TURN_RATE;
   let best: StreetChoice | null = null;
   for (const choice of choices) {
     if (Math.sign(choice.turn) !== side || Math.abs(choice.turn) < MIN_TURN) continue;
+    // The way underfoot bending (Prinsengracht before the Leidsegracht, 35°,
+    // took a queued left in the 2026-10-29 sim): not a turn.
+    if (sameWay(choice.segIdx, currentSeg)) continue;
     // A slight bend is a turn only at a fork, where another way runs on
     // further to the other side; otherwise it is the street itself kinking
     // (a bridge approach), which straight-on already follows.
     if (Math.abs(choice.turn) < QUEUE_MIN_TURN && !choices.some(other =>
-      Math.abs(other.turn) <= STRAIGHT_TOLERANCE && (choice.turn - other.turn) * side > FORK_SPLIT)) continue;
+      Math.abs(other.turn) <= STRAIGHT_TOLERANCE && !sameWay(other.segIdx, choice.segIdx)
+      && !(choice.name && choice.name === other.name)
+      && (choice.turn - other.turn) * side > FORK_SPLIT)) continue;
     const commitAt = Math.max(COMMIT_MIN, radius * Math.sin(Math.min(Math.PI / 2, Math.abs(choice.turn))));
     if (choice.dist > commitAt) continue;
     const score = Math.abs(Math.abs(choice.turn) - Math.PI / 2);
@@ -174,12 +197,16 @@ export function queuedTurnChoice(choices: readonly StreetChoice[], side: number,
   return best;
 }
 
-/** True when a street opens on the queued side within APPROACH_REACH: time to
- *  slow for the corner. */
-export function turnAhead(contacts: readonly FollowContact[], heading: number, side: number): boolean {
-  if (!side) return false;
-  return streetChoices(contacts, heading, APPROACH_REACH)
-    .some(choice => Math.sign(choice.turn) === side && Math.abs(choice.turn) >= MIN_TURN);
+/** The nearest street opening on the queued side within APPROACH_REACH, or
+ *  null: time to slow for the corner, and where the HUD marks the turn. */
+export function turnAhead(contacts: readonly FollowContact[], heading: number, side: number, currentSeg?: number): StreetChoice | null {
+  if (!side) return null;
+  let best: StreetChoice | null = null;
+  for (const choice of streetChoices(contacts, heading, APPROACH_REACH)) {
+    if (Math.sign(choice.turn) !== side || Math.abs(choice.turn) < MIN_TURN || sameWay(choice.segIdx, currentSeg)) continue;
+    if (!best || choice.dist < best.dist) best = choice;
+  }
+  return best;
 }
 
 function updateButtons(state: StreetFollowState, buttons: StreetFollowButtons, dt: number): StreetFollowState {
@@ -223,6 +250,7 @@ export function stepStreetFollow(
     steer: 0,
     pivot: 0,
     awaitingChoice: false,
+    turnMarker: null,
   };
   const slow = Math.abs(speed) < TURN_AROUND_MAX_SPEED;
   if (state.parked) {
@@ -248,6 +276,12 @@ export function stepStreetFollow(
   }
 
   const choices = streetChoices(context.contacts, heading);
+  // The way underfoot: the nearest corridor's.
+  let currentSeg: number | undefined;
+  let nearestDist = Infinity;
+  for (const contact of context.contacts) {
+    if (contact.dist < nearestDist) { nearestDist = contact.dist; currentSeg = contact.segIdx; }
+  }
   const held = (buttons.right ? 1 : 0) - (buttons.left ? 1 : 0);
   if (!choices.length) {
     state.turning = null;
@@ -289,7 +323,7 @@ export function stepStreetFollow(
   }
 
   if (state.queuedTurn) {
-    const turn = queuedTurnChoice(choices, state.queuedTurn, speed);
+    const turn = queuedTurnChoice(choices, state.queuedTurn, speed, currentSeg);
     if (turn) {
       state.turning = turn.heading;
       if (held === state.queuedTurn) state.spentSide = held;
@@ -300,7 +334,13 @@ export function stepStreetFollow(
       command.speedFraction = CORNER_FRACTION;
       return { state, command };
     }
-    if (turnAhead(context.contacts, heading, state.queuedTurn)) command.speedFraction = CORNER_FRACTION;
+    const opening = turnAhead(context.contacts, heading, state.queuedTurn, currentSeg);
+    if (opening) {
+      command.speedFraction = CORNER_FRACTION;
+      if (opening.x != null && opening.y != null) {
+        command.turnMarker = { x: opening.x, y: opening.y, heading: opening.heading, side: state.queuedTurn };
+      }
+    }
   }
 
   const ahead = straightest(choices);
@@ -322,7 +362,7 @@ export function stepStreetFollow(
 
   // Stopped with a side held and no street that way (wedged at a kerb, a dead
   // end): after a beat, pivot, the way the stick's hard sideways did.
-  if (held && slow && !queuedTurnChoice(choices, held, speed)) {
+  if (held && slow && !queuedTurnChoice(choices, held, speed, currentSeg)) {
     state.stuckHeld += context.dt;
     if (state.stuckHeld > STUCK_PIVOT_SECONDS && command.speedFraction === 0) command.pivot = held;
   } else {

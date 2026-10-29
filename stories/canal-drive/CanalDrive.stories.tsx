@@ -484,6 +484,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
                 ? { queuedTurn: 0, parked: false, turning: false, awaitingChoice: true, buttons: none }
                 : { queuedTurn: 0, parked: scenario === 'touch-hud', turning: false, awaitingChoice: false, buttons: none });
           }
+          // A queued left, with the chevron on the opening it will take.
+          if (scenario === 'touch-hud-street-queued' && pad) game.hud.drawTurnMarker(ctx, { x: pad.cx - 30, y: pad.bounds.y - 150 }, Math.PI);
           if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'street');
           if (ferry) {
             game._renderFerryNotice({

@@ -891,6 +891,14 @@ export class GamePresentationRuntime {
       // the card covers the stick, and a stick drawn under a card is dead controls.
       if (this.controlMode === 'street') {
         const follow = this.player?.streetFollowView ?? null;
+        const marker = follow?.turnMarker;
+        if (marker) {
+          // Pointing down the street to be taken, in screen terms (the map may
+          // be turned and tilted). No label: the street may be the question.
+          const at = this.camera.worldToScreen(marker.x, marker.y);
+          const ahead = this.camera.worldToScreen(marker.x + Math.cos(marker.heading) * 30, marker.y + Math.sin(marker.heading) * 30);
+          if (at && ahead) this.hud.drawTurnMarker(ctx, at, Math.atan2(ahead.y - at.y, ahead.x - at.x));
+        }
         this.hud.drawStreetPad(ctx, follow && { ...follow, buttons: this.input.streetButtons });
       } else {
         this.hud.drawStick(ctx, this.input.stickView);

@@ -1974,6 +1974,9 @@
   function questionFreezesRide(open, silent) {
     return open && !silent;
   }
+  function answerHoldMayHide(holdIsCurrent, questionOpen, silent) {
+    return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
+  }
 
   // src/canalRecall/game/notableBridges.ts
   var NOTABLE_BRIDGES = /* @__PURE__ */ new Set([
@@ -6609,7 +6612,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const learnedRouteType = isStreetQuiz ? "street" : profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water";
       const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
       setTimeout(() => {
-        if (holdToken !== this._answerHoldToken || this.quizPromptName) return;
+        if (!answerHoldMayHide(holdToken === this._answerHoldToken, !!this.quizPromptName, !!this._silentPass)) return;
         this._prompt.style.display = "none";
         document.getElementById("canal-card")?.classList.remove("answered");
         this._answerReveal = null;

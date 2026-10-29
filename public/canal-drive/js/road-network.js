@@ -217,7 +217,10 @@ class RoadNetwork {
    *  the same 5x5 ring as getNearestRoad, so the cross street at a junction
    *  is among them. */
   getRoadContacts(x, y) {
-    return SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    // Named, so a gentle split between two ways of one street is not a fork.
+    for (const contact of contacts) contact.name = (this.segments[contact.segIdx] && this.segments[contact.segIdx].name) || '';
+    return contacts;
   }
 
   // The contact the road guard judges the vehicle against: the heading pick

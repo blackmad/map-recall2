@@ -75,6 +75,20 @@ const street = (angle: number, dist = 0, width = 18, length?: number, along?: nu
   assert.ok(fork.state.turning != null && fork.state.turning < 0, 'at a fork, left takes the left branch');
 }
 {
+  // A way never branches: the way underfoot bending sharply is not a turn.
+  const bend = stepStreetFollow(riding(), { ...none, left: true }, {
+    heading: 0, speed: 60, dt: 1 / 60,
+    contacts: [{ ...street(0, 0, 18, 100, 99), segIdx: 7 }, { ...street(-deg(60), 2, 18, 100, 0), segIdx: 7 }],
+  });
+  assert.equal(bend.state.turning, null, 'a 60° bend of the same way does not spend a queued left');
+  // A gentle split between two ways of one name is that street, not a fork.
+  const split = stepStreetFollow(riding(), { ...none, left: true }, {
+    heading: 0, speed: 60, dt: 1 / 60,
+    contacts: [{ ...street(0, 2, 18, 100, 50), segIdx: 1, name: 'Prinsengracht' }, { ...street(-deg(35), 2, 18, 100, 50), segIdx: 2, name: 'Prinsengracht' }],
+  });
+  assert.equal(split.state.turning, null, 'a 35° Prinsengracht split is not a fork');
+}
+{
   // A queue expires after QUEUE_HOLD_SECONDS when no junction comes.
   let state = stepStreetFollow(riding(), { ...none, left: true }, { heading: 0, speed: 100, contacts: [street(0)], dt: 1 / 60 }).state;
   for (let i = 0; i < 60 * 5; i++) state = stepStreetFollow(state, none, { heading: 0, speed: 100, contacts: [street(0)], dt: 1 / 60 }).state;
@@ -157,8 +171,12 @@ const street = (angle: number, dist = 0, width = 18, length?: number, along?: nu
 }
 
 // --- rides through real junctions ---------------------------------------
-type RoutingStreet = { name: string; highway?: string; path?: [number, number][]; paths?: [number, number][][] };
+type RoutingStreet = { name: string; highway?: string; type?: string; path?: [number, number][]; paths?: [number, number][][] };
 const routing = JSON.parse(await readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
+// The boat's network, as osm-loader.js builds it from water.json: canals are
+// `canal`, everything else `river`, with constants.js's widths.
+const water = JSON.parse(await readFile('public/data/extracts/amsterdam/water.json', 'utf8')) as RoutingStreet[];
+const WATER_WIDTHS: Record<string, number> = { canal: 32, river: 46, dock: 50 };
 const ROAD_WIDTHS: Record<string, number> = {
   primary: 30, secondary: 26, tertiary: 21, residential: 18, unclassified: 17, living_street: 16,
   service: 13, busway: 18, cycleway: 9, pedestrian: 14, footway: 7, path: 8,
@@ -167,32 +185,34 @@ const pathsOf = (street: RoutingStreet) => street.paths ?? (street.path ? [stree
 const metres = (a: [number, number], b: [number, number]) => Math.hypot((a[0] - b[0]) * 111_320, (a[1] - b[1]) * 111_320 * Math.cos(a[0] * Math.PI / 180));
 
 /** The junction of two named streets: their closest pair of vertices. */
-function junctionOf(a: string, b: string): [number, number] {
+function junctionOf(a: string, b: string, features: RoutingStreet[] = routing): [number, number] {
   let best: { d: number; p: [number, number] } = { d: Infinity, p: [0, 0] };
-  const pa = routing.filter(s => s.name === a).flatMap(pathsOf).flat();
-  const pb = routing.filter(s => s.name === b).flatMap(pathsOf).flat();
+  const pa = features.filter(s => s.name === a).flatMap(pathsOf).flat();
+  const pb = features.filter(s => s.name === b).flatMap(pathsOf).flat();
   for (const p of pa) for (const q of pb) { const d = metres(p, q); if (d < best.d) best = { d, p }; }
   assert.ok(best.d < 15, `${a} meets ${b} (${best.d.toFixed(1)} m)`);
   return best.p;
 }
 
-function world(centre: [number, number], radius = 400) {
+function world(centre: [number, number], radius = 400, onWater = false) {
   const ways: OsmWay[] = [];
-  routing.forEach((s, si) => pathsOf(s).forEach((p, pi) => {
+  (onWater ? water : routing).forEach((s, si) => pathsOf(s).forEach((p, pi) => {
     if (p.length < 2) return;
     if (p.length > 3 && p[0][0] === p.at(-1)![0] && p[0][1] === p.at(-1)![1]) return;
     if (!p.some(q => metres(q, centre) < radius)) return;
-    const highway = s.highway || 'residential';
+    const highway = onWater ? (s.type === 'canal' ? 'canal' : 'river') : s.highway || 'residential';
     ways.push({ id: `${si}:${pi}`, nodes: p.map(([lat, lon]) => ({ lat, lon })), tags: { name: s.name, highway }, highway } as unknown as OsmWay);
   }));
   const centreLL = { lat: centre[0], lon: centre[1] };
-  const built = buildRoadSegments(ways, centreLL, { simplificationToleranceDegrees: 0.00003, roadWidths: ROAD_WIDTHS, defaultRoadWidth: 32 });
+  const built = buildRoadSegments(ways, centreLL, { simplificationToleranceDegrees: 0.00003, roadWidths: onWater ? WATER_WIDTHS : ROAD_WIDTHS, defaultRoadWidth: 32 });
   const index = buildRoadSpatialIndex(built.segments, 100);
   const toWorld = (lat: number, lon: number) => {
     const p = projectToWorld({ lat, lon }, centreLL);
     return { x: p.x + built.offset.x, y: p.y + built.offset.y };
   };
-  const contacts = (x: number, y: number) => contactsAt(roadsNear(index, x, y, 2), x, y);
+  // Named, as road-network.js getRoadContacts gives them to the player.
+  const contacts = (x: number, y: number) => contactsAt(roadsNear(index, x, y, 2), x, y)
+    .map(c => ({ ...c, name: built.segments[c.segIdx]?.name || '' }));
   const nameAt = (x: number, y: number, heading: number) => {
     let best: { name: string; score: number } = { name: '', score: Infinity };
     for (const c of contacts(x, y)) {
@@ -335,6 +355,35 @@ const report = (label: string, r: Ride) => summary.push(`${label}: on ${r.finalN
   const straight = ride(w, before, junction, {}, 1.5, 0.4, 'Utrechtsestraat');
   report('Utrechtsestraat straight', straight);
   assert.equal(straight.finalName, 'Utrechtsestraat', 'nothing queued: straight across');
+}
+
+{
+  // Named canal junction (boats follow the water the same way): along the
+  // Prinsengracht to the Leidsegracht. Straight on stays on the Prinsengracht;
+  // a queued turn takes the Leidsegracht, whose mouth is on one side only.
+  const junction = junctionOf('Prinsengracht', 'Leidsegracht', water);
+  const w = world(junction, 600, true);
+  const prinsen = water.filter(s => s.name === 'Prinsengracht').flatMap(pathsOf).flat();
+  const leidse = water.filter(s => s.name === 'Leidsegracht').flatMap(pathsOf).flat();
+  const mouth = leidse.filter(p => metres(p, junction) > 30).sort((p, q) => metres(p, junction) - metres(q, junction))[0];
+  const approaches = prinsen.filter(p => metres(p, junction) > 60 && metres(p, junction) < 140);
+  assert.ok(approaches.length && mouth, 'Prinsengracht approaches and a Leidsegracht mouth');
+  if (process.env.SF_DEBUG) console.log('boat junction', junction, w.toWorld(junction[0], junction[1]), 'mouth', w.toWorld(mouth[0], mouth[1]), 'from', approaches.map(a => w.toWorld(a[0], a[1])));
+  const straightOn = ride(w, approaches[0], junction, {}, 3, 0.4, 'Prinsengracht');
+  report('Prinsengracht by boat, hands off', straightOn);
+  assert.equal(straightOn.finalName, 'Prinsengracht', 'hands off, the boat keeps to the canal ring');
+  assert.ok(straightOn.maxExcess < 6, `inside the water (${straightOn.maxExcess.toFixed(1)} px)`);
+  // The Leidsegracht crosses here: left is its north-east arm, right its
+  // south-west arm. Before the same-way and same-name rules, a queued left was
+  // spent on a 35° bend of the Prinsengracht itself (2026-10-29).
+  for (const side of ['left', 'right'] as const) {
+    if (process.env.SF_DEBUG) console.log('--- boat', side);
+    const r = ride(w, approaches[0], junction, { [side]: true }, 6, 0.4, 'Prinsengracht');
+    report(`Prinsengracht → ${side} by boat`, r);
+    assert.equal(r.finalName, 'Leidsegracht', `${side} queued: into the Leidsegracht`);
+    assert.ok(r.maxExcess < 6, `inside the water through the turn (${r.maxExcess.toFixed(1)} px)`);
+    assert.ok(r.maxCameraRate <= CAMERA_YAW_DEFAULT.maxRate + 1e-6, 'camera yaw capped');
+  }
 }
 
 console.log(summary.join('\n'));

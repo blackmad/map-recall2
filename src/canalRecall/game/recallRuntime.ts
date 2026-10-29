@@ -57,7 +57,7 @@ import { ROTATION_STORAGE_KEY } from '../facts/factStore';
 import { ANSWERED_STREET_SECONDS } from '../streetOverlayStyle';
 import { feedbackExpired, gapElapsed, streetClearOfStop } from './teachingPacer';
 import { decideQuestion, EMPTY_BUDGET, recordAsk, type BudgetDecision, type NameEvent } from './questionBudget';
-import { advanceSilentPass, beginSilentPass, questionFreezesRide } from './silentPass';
+import { advanceSilentPass, answerHoldMayHide, beginSilentPass, questionFreezesRide } from './silentPass';
 import { bridgeNameAskable } from './notableBridges';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from './bridgeStreetName';
 import { nearestRouteIndex } from './routeSelection';
@@ -1451,7 +1451,7 @@ export class GameRecallRuntime {
     // "stuck on this bridge", Sint Antoniessluis and others).
     const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
     setTimeout(() => {
-      if (holdToken !== this._answerHoldToken || this.quizPromptName) return;
+      if (!answerHoldMayHide(holdToken === this._answerHoldToken, !!this.quizPromptName, !!this._silentPass)) return;
       this._prompt.style.display = 'none';
       document.getElementById('canal-card')?.classList.remove('answered');
       this._answerReveal = null;

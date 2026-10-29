@@ -179,7 +179,10 @@ for (const bridge of legs) {
         const input = document.getElementById('canal-answer') as HTMLInputElement | null;
         return {
           x: game.player.x, y: game.player.y, angle: game.player.angle, speed: game.player.speed, stall: game._edgeStallFrames || 0, steerIn: game.player.steerInput,
-          question: game.quizPromptName || '', visible,
+          // A silent pass (a name the budget declined) has no card and does
+          // not stop the bike: it is not a question to wait on. Treating it as
+          // one stalled 7 of 8 core rides (2026-10-29).
+          question: game._silentPass ? '' : game.quizPromptName || '', visible,
           choices: (game._choiceOrder || []) as string[],
           typing: !!input && getComputedStyle(input).display !== 'none',
           focusIsInput: document.activeElement === input,

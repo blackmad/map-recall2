@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { LEAVE_STREET_SECONDS, advanceSilentPass, beginSilentPass, questionFreezesRide } from './silentPass.ts';
+import { LEAVE_STREET_SECONDS, advanceSilentPass, beginSilentPass, questionFreezesRide, answerHoldMayHide } from './silentPass.ts';
 
 function ride(name: string, roads: string[], dt = 0.1): number {
   let state = beginSilentPass(name);
@@ -31,4 +31,11 @@ test('every question freezes the ride; a silent pass never does', () => {
   assert.equal(questionFreezesRide(true, false), true);
   assert.equal(questionFreezesRide(true, true), false);
   assert.equal(questionFreezesRide(false, false), false);
+});
+
+test('an answer hold closes its card under a silent pass, not under a new question', () => {
+  assert.equal(answerHoldMayHide(true, false, false), true, 'nothing open: close');
+  assert.equal(answerHoldMayHide(true, true, true), true, 'a silent pass has no card: close');
+  assert.equal(answerHoldMayHide(true, true, false), false, 'a new question owns the card');
+  assert.equal(answerHoldMayHide(false, false, false), false, 'a superseded hold does nothing');
 });

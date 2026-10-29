@@ -121,6 +121,7 @@ class PlayerCar extends Car {
       parked: !state || state.parked,
       turning: !!(state && state.turning != null),
       awaitingChoice: !!(this._streetCommand && this._streetCommand.awaitingChoice),
+      turnMarker: (this._streetCommand && this._streetCommand.turnMarker) || null,
       buttons: this._streetButtons,
     };
   }
