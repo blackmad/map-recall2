@@ -3,6 +3,7 @@
  *
  *   npx tsx scripts/pand-reference/all-walls.ts --pand=0363100012186086 [--min-len=14] [--max=8] [--out=staging/pand-reference-walls] [--archive]
  *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5] [--max-dist=60] [--inset=0.6]
+ *     [--max-height=60]
  *
  * For each exposed (non-party) wall >= min-len metres: the best panorama within 35 m (same ranking as run.ts), a
  * rectified straight-on crop and an aimed thumbnail, written to <out>/<pand>/w<NN>-<bearing>.{jpg,thumb.jpg} and
@@ -21,6 +22,10 @@
  * the tag); `--suffix=` appends to every tag; `--min-dist=` lets a camera stand nearer than 5 m (a narrow street); `--max-dist=` lets it stand further than 35 m (a
  * front set back behind a lawn or a cycle park, the 1967 Rietveld building 45-55 m from Fred. Roeskestraat). Runs with any of `--segment`, `--walls`, `--suffix` merge into the
  * existing walls.json (rows of the same tag replaced, the rest kept); without them the output is as before.
+ *
+ * `--max-height=<m>` (4..120, default 32: every archived crop) raises the crop's height cap for a tower; the pixel
+ * budget grows with it (rectify.ts `maxPixelsFor`, the resolution trade is in its header). Use it with `--suffix` so a
+ * taller crop is merged beside the archived one instead of replacing it.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -28,7 +33,7 @@ import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { findPands, lngLatToRd, neighbourhood, normId, rdToLngLat } from './core.ts';
 import { exposedWalls, FACADE_WINDOW, listPanos, rankPanos } from './select.ts';
-import { loadPano, rectifyWall, aimedThumbnail } from './rectify.ts';
+import { loadPano, rectifyWall, aimedThumbnail, DEFAULT_MAX_WALL_HEIGHT_M } from './rectify.ts';
 import { filterPanos, insetWall, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -57,9 +62,12 @@ const onlyWalls = arg('walls').split(',').filter(Boolean).map(Number);
 // `--inset=<m>`: cut the crop on a plane that many metres behind the footprint edge (a set-back front); needs --suffix
 // and --walls so the shifted crop is merged beside the edge's own, never in its place.
 const insetM = Number(arg('inset', '0'));
+const maxHeightM = Number(arg('max-height', String(DEFAULT_MAX_WALL_HEIGHT_M)));
+if (!(maxHeightM >= 4 && maxHeightM <= 120)) throw new Error('--max-height: 4..120 m');
 if (insetM && (!suffix || !onlyWalls.length)) throw new Error('--inset needs --suffix and --walls');
 if (!(insetM >= 0 && insetM <= 5)) throw new Error('--inset: 0..5 m');
 const merging = segM > 0 || onlyWalls.length > 0 || suffix !== '';
+if (maxHeightM !== DEFAULT_MAX_WALL_HEIGHT_M && !suffix) throw new Error('--max-height needs --suffix (the taller crop is merged beside the archived one)');
 const rows: any[] = [], rerun: string[] = [];
 const r2 = (v: number) => Math.round(v * 100) / 100, r4 = (v: number) => Math.round(v * 1e4) / 1e4;
 let i = 0;
@@ -86,12 +94,12 @@ for (const whole of walls) {
   for (const [t, pick] of picks) {
     const row: any = { tag: t, ...base };
     const pano = await loadPano(pick);
-    const crop = pano ? rectifyWall(pano.img, pick, w, fp.height, 50) : null;
+    const crop = pano ? rectifyWall(pano.img, pick, w, fp.height, 50, undefined, maxHeightM) : null;
     if (crop) {
       await fs.writeFile(path.join(out, `${t}.jpg`), crop.jpeg);
       if (archive) await fs.writeFile(path.join(out, `${t}.mask.png`), await sharp(Buffer.from(crop.alpha), { raw: { width: crop.width, height: crop.height, channels: 1 } }).png({ compressionLevel: 9 }).toBuffer());
     }
-    const thumb = await aimedThumbnail(pick, w, fp.height);
+    const thumb = await aimedThumbnail(pick, w, fp.height, maxHeightM);
     if (thumb) await fs.writeFile(path.join(out, `${t}.thumb.jpg`), thumb.jpeg);
     Object.assign(row, { panoId: pick.panoId, capturedAt: pick.timestamp.slice(0, 10), cameraDistM: Math.round(pick.distM * 10) / 10, obliquityDeg: Math.round(pick.obliquityDeg * 10) / 10, crop: !!crop, thumb: thumb?.url, washedOut: crop?.washedOut });
     if (crop) Object.assign(row, { ppm: crop.ppm, widthPx: crop.width, heightPx: crop.height, wallWidthM: r2(crop.wallWidthM), wallHeightM: r2(crop.wallHeightM), baseZ: r2(crop.baseZ), groundSource: crop.groundSource,

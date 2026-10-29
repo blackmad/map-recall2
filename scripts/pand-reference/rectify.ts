@@ -1,6 +1,14 @@
 /**
  * Step 2: straight-on facade crop (reusing src/canalRecall/facade/rectify.ts, the Amsterdam world-aligned camera)
  * plus a cheap aimed perspective thumbnail from /panorama/thumbnail/<pano_id>/ as a fallback.
+ *
+ * Height cap (GitHub #114): a crop covers the tile height + WALL_EXTRA_M, capped at `maxHeightM` (default
+ * DEFAULT_MAX_WALL_HEIGHT_M = 32 m, which every archived crop used; `all-walls.ts --max-height=<m>` raises it for a
+ * tower). rectifyFacade lowers the ppm until the crop fits `maxPixels`; the budget is scaled with the cap
+ * (`maxPixelsFor`: BASE_MAX_PIXELS x height / 32 m above the default), so a 60 m wall keeps the ppm a 32 m wall of the
+ * same width gets instead of dropping to ~0.73x. The trade: the crop is up to height / 32 m times larger (a 60 m x
+ * 40 m wall at 50 ppm is 3.4 Mpx, ~1.9x the default budget); walls
+ * wider than 22.5 m (1.8 Mpx / 32 m / 50 ppm) are still rectified below 50 ppm, at the same ppm as under the 32 m cap. Under the default cap nothing changes.
  */
 import jpeg from 'jpeg-js';
 import sharp from 'sharp';
@@ -58,9 +66,14 @@ export function washedOutFraction(rgba: Uint8ClampedArray | Uint8Array, width: n
   return n ? bad / n : 0;
 }
 
-export function wallHeight(tileHeightM: number) { return Math.min(Math.max(tileHeightM, 4) + WALL_EXTRA_M, 32); }
+export const DEFAULT_MAX_WALL_HEIGHT_M = 32;
+export const BASE_MAX_PIXELS = 1_800_000;
+/** Height (m) a crop covers: the tile height + WALL_EXTRA_M (at least 4 m), capped at `maxHeightM`. */
+export function wallHeight(tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M) { return Math.min(Math.max(tileHeightM, 4) + WALL_EXTRA_M, maxHeightM); }
+/** Pixel budget of a crop `heightM` tall: BASE_MAX_PIXELS up to the default cap, then in proportion to the height. */
+export function maxPixelsFor(heightM: number) { return Math.round(BASE_MAX_PIXELS * Math.max(1, heightM / DEFAULT_MAX_WALL_HEIGHT_M)); }
 
-export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeightM: number, ppm = 50, baseZ?: number): Crop | null {
+export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeightM: number, ppm = 50, baseZ?: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M): Crop | null {
   let lens = lensFor(pick.record, baseZ);
   let groundSource = 'published camera height - 2.44 m';
   if (!lens) { lens = lensFor(pick.record, baseZ ?? FALLBACK_GROUND_NAP); groundSource = `assumed ground ${baseZ ?? FALLBACK_GROUND_NAP} m NAP`; }
@@ -69,8 +82,9 @@ export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeigh
   if (baseZ === undefined && (ground < -2.5 || ground > 3)) { // implausible published height (bridge, bad datum): assume street level
     ground = FALLBACK_GROUND_NAP; lens = { ...lens, pose: { ...lens.pose, z: ground + 2.44 } }; groundSource = `published height implausible; assumed ground ${ground} m NAP`;
   }
-  const plane: FacadePlane = { start: wall.a, end: wall.b, baseZ: ground, topZ: ground + wallHeight(tileHeightM) };
-  const out = rectifyFacade(pano, { ...lens.pose, headingDeg: 0, pitchDeg: 0, rollDeg: 0 }, plane, { pixelsPerMetre: ppm, camera: AMSTERDAM_WORLD_ALIGNED, maxPixels: 1_800_000 });
+  const h = wallHeight(tileHeightM, maxHeightM);
+  const plane: FacadePlane = { start: wall.a, end: wall.b, baseZ: ground, topZ: ground + h };
+  const out = rectifyFacade(pano, { ...lens.pose, headingDeg: 0, pitchDeg: 0, rollDeg: 0 }, plane, { pixelsPerMetre: ppm, camera: AMSTERDAM_WORLD_ALIGNED, maxPixels: maxPixelsFor(h) });
   // Missing pixels (behind camera / off image) render mid-grey; keep the rest.
   const rgba = Buffer.from(out.data.buffer, out.data.byteOffset, out.data.byteLength);
   const enc = jpeg.encode({ data: rgba, width: out.width, height: out.height }, 80);
@@ -82,11 +96,11 @@ export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeigh
 }
 
 /** Aimed perspective view from the chosen panorama at the wall centre, via the public thumbnail endpoint. */
-export async function aimedThumbnail(pick: PanoPick, wall: Wall, tileHeightM: number): Promise<{ jpeg: Buffer; url: string; fovDeg: number; headingDeg: number } | null> {
+export async function aimedThumbnail(pick: PanoPick, wall: Wall, tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M): Promise<{ jpeg: Buffer; url: string; fovDeg: number; headingDeg: number } | null> {
   const [lngC, latC] = rdToLngLat(wall.mid);
   const cam = pick.record.geometry.coordinates;
   const dx = (lngC - cam[0]) * 111320 * Math.cos(latC * Math.PI / 180), dy = (latC - cam[1]) * 110540;
-  const heading = (Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360, d = Math.max(pick.distM, 4), h = wallHeight(tileHeightM);
+  const heading = (Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360, d = Math.max(pick.distM, 4), h = wallHeight(tileHeightM, maxHeightM);
   const need = Math.max(wall.len / 2 + 1.5, h / 2 + 1);
   const fov = Math.round(Math.min(100, Math.max(40, 2 * Math.atan(need / d) * 180 / Math.PI)));
   const pitch = Math.round(Math.atan((h / 2 - 2.4) / d) * 180 / Math.PI);

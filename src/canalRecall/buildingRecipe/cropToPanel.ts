@@ -8,6 +8,13 @@
  * around the recipe's `anchorRD`) with `r` the viewer's right. The match uses the thresholds of
  * facade/wallSurfaceMatch.ts: plan offset <= 0.5 m, angle <= 5 degrees, and here also the same facing side and an
  * along-overlap of at least 60 % of the panel's width. Replaces the old positional pairing `sources[g.index]`.
+ *
+ * Group plane (GitHub #114): a curved or stepped front that 3DBAG facets into several panels of one wall group pairs
+ * no crop when no single facet lies within those tolerances of the BAG edge the crop was cut on. `groupPlaneCoverage`
+ * then also tries the merged plane of the group (a least-squares line in plan through the vertices of every member
+ * wall of the group's panels, `mergedPanelPlane`) with the same thresholds; a crop on it covers the main panel where
+ * the panel's ends project onto the crop. Only when the main panel alone has no evidence, so every house that pairs
+ * today keeps its pieces.
  */
 import {WALL_ANGLE_TOLERANCE_DEG, WALL_OFFSET_TOLERANCE_M} from '../facade/wallSurfaceMatch.ts';
 
@@ -85,6 +92,10 @@ export interface CoveragePiece { crop: CropWall; match: CropMatch; u0: number; u
  */
 export function panelCoverage(crops: CropWall[], p: PanelPlan, anchorRD: Xy, stepM = 0.1): {pieces: CoveragePiece[]; coverage: number} {
   const cands = crops.map(crop => ({crop, match: matchCropToPanel(crop, p, anchorRD)})).filter(m => m.match.relation === 'match' || m.match.relation === 'overlap').filter(m => m.match.overlapFraction > 0);
+  return coverageOf(cands, p, stepM);
+}
+
+function coverageOf(cands: {crop: CropWall; match: CropMatch}[], p: PanelPlan, stepM = 0.1): {pieces: CoveragePiece[]; coverage: number} {
   const width = p.uMax - p.uMin, pieces: CoveragePiece[] = [];
   let covered = 0;
   for (let u = p.uMin + stepM / 2; u < p.uMax; u += stepM) {
@@ -113,6 +124,60 @@ export function panelCoverageStraight(crops: CropWall[], p: PanelPlan, anchorRD:
   if (!all.pieces.some(q => (q.crop.obliquityDeg ?? 0) > maxObliquityDeg)) return all;
   const straight = panelCoverage(crops.filter(c => (c.obliquityDeg ?? 0) <= maxObliquityDeg), p, anchorRD);
   return straight.pieces.length && straight.coverage >= CROP_MIN_OVERLAP ? straight : all;
+}
+
+/** A panel with the member walls' 3D rings (blockBuilding/panels.ts `members`), for the group plane. */
+export type GroupPanel = PanelPlan & {members?: {rings: number[][][]}[]};
+
+/**
+ * Merged plan plane of a wall group's panels: the least-squares line (x, z) through the vertices of their member walls
+ * (the panel ends where a panel has no members), oriented like `main` (r to the viewer's right, n outward), with
+ * uMin..uMax the extent of the points along it. Null under two distinct points.
+ */
+export function mergedPanelPlane(panels: GroupPanel[], main: PanelPlan): PanelPlan | null {
+  const pts: [number, number][] = [];
+  for (const p of panels) {
+    if (p.members?.length) for (const m of p.members) for (const r of m.rings) for (const q of r) pts.push([q[0], q[2]]);
+    else for (const u of [p.uMin, p.uMax]) pts.push([p.o[0] + p.r[0] * u, p.o[2] + p.r[2] * u]);
+  }
+  const seen = new Set<string>(), uniq = pts.filter(q => { const k = `${q[0].toFixed(3)},${q[1].toFixed(3)}`; if (seen.has(k)) return false; seen.add(k); return true; });
+  if (uniq.length < 2) return null;
+  const cx = uniq.reduce((x, q) => x + q[0], 0) / uniq.length, cz = uniq.reduce((x, q) => x + q[1], 0) / uniq.length;
+  let sxx = 0, sxz = 0, szz = 0;
+  for (const q of uniq) { sxx += (q[0] - cx) ** 2; sxz += (q[0] - cx) * (q[1] - cz); szz += (q[1] - cz) ** 2; }
+  const th = 0.5 * Math.atan2(2 * sxz, sxx - szz);
+  let r = [Math.cos(th), 0, Math.sin(th)];
+  if (r[0] * main.r[0] + r[2] * main.r[2] < 0) r = r.map(v => -v);
+  let n = [r[2], 0, -r[0]];
+  if (n[0] * main.n[0] + n[2] * main.n[2] < 0) n = n.map(v => -v);
+  const us = uniq.map(q => (q[0] - cx) * r[0] + (q[1] - cz) * r[2]);
+  return {index: main.index, o: [cx, 0, cz], r, n, uMin: Math.min(...us), uMax: Math.max(...us)};
+}
+
+/**
+ * `panelCoverageStraight` for a group's main panel, and where that pairs nothing (coverage under CROP_MIN_OVERLAP),
+ * the crops on the group's merged plane (`mergedPanelPlane`, the same offset / angle / facing thresholds) placed on the
+ * main panel: `via` says which. The main panel's own match is kept when it has evidence.
+ */
+export function groupPlaneCoverage(crops: CropWall[], main: PanelPlan, group: GroupPanel[], anchorRD: Xy, maxObliquityDeg = 45): {pieces: CoveragePiece[]; coverage: number; via: 'panel' | 'group'} {
+  const own = panelCoverageStraight(crops, main, anchorRD, maxObliquityDeg);
+  if (own.coverage >= CROP_MIN_OVERLAP) return {...own, via: 'panel'};
+  const plane = mergedPanelPlane(group.length ? group : [main], main);
+  if (!plane) return {...own, via: 'panel'};
+  const onPlane = (cs: CropWall[]) => {
+    const cands = cs.map(crop => ({crop, plane: matchCropToPanel(crop, plane, anchorRD)})).filter(m => m.plane.relation === 'match' || m.plane.relation === 'overlap')
+      .map(({crop, plane: pm}) => {
+        // the main panel's ends on the crop: along its BAG edge, as the panel match measures them
+        const q0 = panelPointRD(main, main.uMin, anchorRD), q1 = panelPointRD(main, main.uMax, anchorRD), {len} = cropFrame(crop.a, crop.b);
+        const s0 = alongOf(crop, q0), s1 = alongOf(crop, q1), width = Math.max(1e-6, main.uMax - main.uMin);
+        const overlapFraction = Math.max(0, Math.min(len, Math.max(s0, s1)) - Math.max(0, Math.min(s0, s1))) / width, r3 = (v: number) => Math.round(v * 1000) / 1000;
+        return {crop, match: {...pm, panel: main.index, relation: (overlapFraction < CROP_MIN_OVERLAP ? 'overlap' : 'match') as CropRelation, overlapFraction: r3(overlapFraction), alongAtUMin: r3(s0), alongAtUMax: r3(s1)}};
+      }).filter(m => m.match.overlapFraction > 0);
+    return coverageOf(cands, main);
+  };
+  const all = onPlane(crops);
+  const best = all.pieces.some(q => (q.crop.obliquityDeg ?? 0) > maxObliquityDeg) ? (() => { const st = onPlane(crops.filter(c => (c.obliquityDeg ?? 0) <= maxObliquityDeg)); return st.pieces.length && st.coverage >= CROP_MIN_OVERLAP ? st : all; })() : all;
+  return best.coverage >= CROP_MIN_OVERLAP ? {...best, via: 'group'} : {...own, via: 'panel'};
 }
 
 /** walls.json (v2) rows with a crop -> CropWall (file names relative to the pand directory). */
