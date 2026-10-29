@@ -41,7 +41,7 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundL
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { tileGeometry } from '../rendererShared/tiledGeometry.js';
+import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -925,39 +925,16 @@ export class OwnGround {
    * buffers, each with its own index and bounding sphere so three.js culls the tiles off screen. A tile's fade clone
    * and material are the layer's; the dispose in drop() runs over every tile.
    */
-  private tiledGeometries(p: GpuMesh): any[] {
-    if (this.opts.tiles <= 1) return [this.geometry(p)];
-    const tiles = tileGeometry(this.THREE, this.packedGeometry(p), this.opts.tiles, TILE_MIN_TRIANGLES);
-    if (!tiles) return [this.geometry(p)];
-    if (this.opts.releaseArrays) for (const g of tiles) for (const attribute of [...Object.values(g.attributes), g.index] as any[]) (attribute?.isInterleavedBufferAttribute ? attribute.data : attribute)?.onUpload(releaseArray);
-    return tiles;
-  }
-
   /**
-   * Diagnostics (before/after in one page, scripts/gpu-load-ipad.mjs RETILE): cut the resident cells' meshes into
-   * `n`×`n` tiles in place, as install does with `tiles` = n, so the same frame can be shot whole and tiled. Needs the
-   * CPU arrays (a desktop; `releaseArrays` frees them on phones). Returns the meshes replaced.
+   * Cut a layer mesh into `tiles`×`tiles` culled tiles over its own buffers (rendererShared/tiledGeometry.ts); the
+   * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
+   * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
    */
-  retile(n: number, minTriangles = TILE_MIN_TRIANGLES): number {
-    let replaced = 0;
-    this.opts.tiles = n;
-    for (const r of this.resident.values()) {
-      for (const mesh of [...r.group.children] as any[]) {
-        if (!mesh.isMesh) continue;
-        const tiles = tileGeometry(this.THREE, mesh.geometry, n, minTriangles);
-        if (!tiles) continue;
-        for (const g of tiles) {
-          const m = new this.THREE.Mesh(g, mesh.material);
-          for (const k of ['name', 'matrixAutoUpdate', 'receiveShadow', 'castShadow', 'renderOrder'] as const) m[k] = mesh[k];
-          r.group.add(m);
-        }
-        r.group.remove(mesh);
-        replaced++;
-      }
-    }
-    this.frame.invalidateShadows?.();
-    this.host.repaint();
-    return replaced;
+  private tile(mesh: any): void {
+    if (this.opts.tiles <= 1) return;
+    const tilesOnly = !!this.opts.releaseArrays;
+    // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: tilesOnly, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {
@@ -1017,17 +994,16 @@ export class OwnGround {
       if (uniforms && CUT[layer]) { material = this.cutMaterial(layer, uniforms); materials.push(material); }
       const original = material;
       if (fade) material = this.fadeMaterial(original, fade.uniform);
-      for (const geometry of this.tiledGeometries(p)) {
-        const mesh = new THREE.Mesh(geometry, material);
-        if (fade) fade.meshes.push({ mesh, original, clone: material });
-        mesh.name = layer;
-        mesh.matrixAutoUpdate = false;
-        mesh.receiveShadow = true;
-        // Deck bodies, hedges and park furniture stand up; the rest is ground.
-        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
-        mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-        group.add(mesh);
-      }
+      const mesh = new THREE.Mesh(this.geometry(p), material);
+      if (fade) fade.meshes.push({ mesh, original, clone: material });
+      mesh.name = layer;
+      mesh.matrixAutoUpdate = false;
+      mesh.receiveShadow = true;
+      // Deck bodies, hedges and park furniture stand up; the rest is ground.
+      mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+      mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
+      this.tile(mesh);
+      group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
     }
@@ -1049,7 +1025,8 @@ export class OwnGround {
     this.root.remove(r.group);
     this.fading.delete(key);
     for (const f of r.fade?.meshes ?? []) f.clone.dispose();
-    r.group.traverse((o: any) => { if (o.isMesh) o.geometry.dispose(); });
+    r.group.traverse((o: any) => { if (o.isMesh && !o.userData?.tile) o.geometry.dispose(); });
+    for (const o of [...r.group.children]) disposeTiles(o);
     for (const m of r.materials) m.dispose();
     for (const t of r.textures) t.dispose();
     this.resident.delete(key);
@@ -1224,7 +1201,7 @@ export class OwnGround {
       const mask = r.textures[0]?.image as { data: Uint8Array; width: number; height: number } | undefined;
       const uniforms = r.maskInfo;
       r.group.traverse((o: any) => {
-        if (!o.isMesh) return;
+        if (!o.isMesh || o.userData?.tile) return; // a tile repeats its owner's triangles
         const layer = o.name as GroundLayer, pos = o.geometry.attributes.position.array as Float32Array, idx = o.geometry.index.array as Uint32Array;
         if (!pos || !idx) return; // released after upload (releaseArrays)
         for (let t = 0; t < idx.length; t += 3) {

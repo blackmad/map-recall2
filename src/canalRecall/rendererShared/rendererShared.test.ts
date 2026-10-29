@@ -415,3 +415,37 @@ test('tileGeometry: culled tiles share the vertex attributes, partition the inde
   const ranged = plain.clone(); ranged.setDrawRange(0, 600); assert.equal(tileGeometry(THREE, ranged, 3, 0), null);
   const loose = new THREE.BufferGeometry(); loose.setAttribute('position', plain.attributes.position); assert.equal(tileGeometry(THREE, loose, 3, 0), null);
 });
+
+test('drawAsTiles: the owner draws through its tiles or whole, chosen by the triangles on screen; tiles follow its material', async () => {
+  const { drawAsTiles, chooseTileDraws, disposeTiles, setTilesDrawn, tileGeometry, tileRegistry, TILE_OWNER_LAYER } = await import('./tiledGeometry');
+  const nx = 30, pos: number[] = [], idx: number[] = [];
+  for (let j = 0; j <= nx; j++) for (let i = 0; i <= nx; i++) pos.push(i * 10, j * 10, 0);
+  for (let j = 0; j < nx; j++) for (let i = 0; i < nx; i++) { const a = j * (nx + 1) + i; idx.push(a, a + 1, a + nx + 2, a, a + nx + 2, a + nx + 1); }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  g.setIndex(new THREE.BufferAttribute(new Uint32Array(idx), 1));
+  g.computeBoundingSphere();
+  const owner = new THREE.Mesh(g, new THREE.MeshBasicMaterial());
+  const scene = new THREE.Scene(); scene.add(owner); scene.updateMatrixWorld(true);
+  drawAsTiles(THREE, owner, tileGeometry(THREE, g, 3, 0)!);
+  assert.equal(owner.children.length, 9);
+  assert.ok(!owner.layers.test(new THREE.Layers()), 'the owner leaves the camera layer while the tiles draw');
+  assert.ok(owner.layers.isEnabled(TILE_OWNER_LAYER));
+  const other = new THREE.MeshBasicMaterial(); owner.material = other;
+  assert.equal((owner.children[0] as any).material, other, 'a tile reads the owner material live');
+  // A camera that sees one corner tile only, then the whole field.
+  const cam = new THREE.OrthographicCamera(0, 60, 60, 0, -10, 10); cam.updateMatrixWorld(true);
+  const clip = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
+  assert.deepEqual(chooseTileDraws(THREE, clip, 0.6), { tiled: 1, whole: 0 });
+  assert.ok(owner.userData.tilesDrawn);
+  const all = new THREE.OrthographicCamera(-50, 350, 350, -50, -10, 10); all.updateMatrixWorld(true);
+  assert.deepEqual(chooseTileDraws(THREE, new THREE.Matrix4().multiplyMatrices(all.projectionMatrix, all.matrixWorldInverse), 0.6), { tiled: 0, whole: 1 });
+  assert.ok(owner.layers.test(new THREE.Layers()) && owner.children.every(t => !t.visible), 'whole: the owner draws, the tiles hide');
+  assert.deepEqual(chooseTileDraws(THREE, clip, 2), { tiled: 1, whole: 0 }, 'a share over 1 always draws tiles');
+  tileRegistry().mode = 'whole'; chooseTileDraws(THREE, clip, 2); assert.ok(!owner.userData.tilesDrawn, 'forced whole');
+  tileRegistry().mode = 'auto';
+  owner.userData.tilesOnly = true; setTilesDrawn(owner, false); assert.ok(owner.userData.tilesDrawn, 'tiles-only never draws whole');
+  disposeTiles(owner);
+  assert.equal(owner.children.length, 0);
+  assert.ok(!tileRegistry().owners.has(owner));
+});
