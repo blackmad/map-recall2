@@ -137,7 +137,7 @@ test('dormer body: white timber dormers in the stone slot (not frame-class); val
   assert.ok(d.length >= 1 && d.every(x => x.wallSurface === 'stone'));
   const trim = fitIntent(house('helmers-1897-balconette', '0363100012164920', fr => { delete fr.dormerBody; }), f).recipe.elevations[0].dormers!.value;
   assert.ok(trim.every(x => x.wallSurface === 'trim'));
-  assert.throws(bad(h, {dormerBody: 'brick' as never}), /dormerBody/);
+  assert.throws(bad(h, {dormerBody: 'timber' as never}), /dormerBody/);
   assert.throws(bad(h, {dormers: 0}), /dormerBody: needs dormers/);
   assert.throws(bad(h, {dormerStyle: 'box'}), /dormerBody: a box dormer/);
 });

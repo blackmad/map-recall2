@@ -174,6 +174,8 @@ export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
+/** Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. */
+export const DORMER_BODIES = ['stone', 'brick'] as const;
 /**
  * Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab).
  * `merlons` (Helmersbuurt 1899-1900 wall dormers, Derde Helmersstraat 54-66): a flat brick top with three square brick
@@ -624,8 +626,10 @@ export interface FrontIntent {
    * stone colour (painted white) instead of the trim slot, which exports as an opening (frame) material: a frame-class
    * body sunk into the roof slope read as a window piercing the roof and left its own pane with no wall. The window
    * frame, bars and pane stay trim and glass. Not for `box` dormers (brick). Absent = trim, byte-identical.
+   * `brick` (Kinkerstraat 60-62, 1893 Neo-Renaissance): a brick wall dormer, its cheeks, back and front gable (the
+   * pediment or pointed front) in the wall colour; the frame, bars and pane stay trim and glass.
    */
-  dormerBody?: 'stone';
+  dormerBody?: typeof DORMER_BODIES[number];
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -1875,7 +1879,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerCap !== undefined) problems.push(...dormerCapProblems(f, at));
   if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
   if (f.dormerBody !== undefined) {
-    if (f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: "stone" (or leave it out)`);
+    if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
     if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
   }
