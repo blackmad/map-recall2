@@ -1,0 +1,2170 @@
+{
+ "street": "Tweede Jan van der Heijdenstraat",
+ "seed": "0363100012153593",
+ "members": [
+  "0363100012158080",
+  "0363100012163602",
+  "0363100012161053",
+  "0363100012157927",
+  "0363100012152513",
+  "0363100012236650",
+  "0363100012236032",
+  "0363100012155814",
+  "0363100012167210",
+  "0363100012163163",
+  "0363100012153034",
+  "0363100012161298",
+  "0363100012165607",
+  "0363100012156432",
+  "0363100012156423",
+  "0363100012160283",
+  "0363100012158445",
+  "0363100012157197",
+  "0363100012153593"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012158080 (face continues: 156225 161967)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012153593 (face continues: 161016)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062137",
+   "reason": "frontage 87.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012072757",
+   "reason": "frontage 85.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012075022",
+   "reason": "frontage 166.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012081229",
+   "reason": "frontage 100.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012081813",
+   "reason": "frontage 160.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012090966",
+   "reason": "frontage 110.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012092498",
+   "reason": "frontage 134.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012114128",
+   "reason": "frontage 136.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012115560",
+   "reason": "frontage 116.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012121708",
+   "reason": "frontage 58.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012123461",
+   "reason": "frontage 88.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012126276",
+   "reason": "frontage 149.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012062723",
+   "reason": "frontage 178.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012063859",
+   "reason": "frontage 155.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012069207",
+   "reason": "frontage 179.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012072825",
+   "reason": "frontage 152.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012072829",
+   "reason": "frontage 124.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012073674",
+   "reason": "frontage 211.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012074499",
+   "reason": "frontage 189.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012077688",
+   "reason": "frontage 52.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012078431",
+   "reason": "frontage 185.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012078664",
+   "reason": "frontage 124.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012080657",
+   "reason": "frontage 113.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012082996",
+   "reason": "frontage 215.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012085399",
+   "reason": "frontage 174.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012087904",
+   "reason": "frontage 183.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012088211",
+   "reason": "frontage 212.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012090363",
+   "reason": "frontage 188.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012092043",
+   "reason": "frontage 172.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012093120",
+   "reason": "frontage 185.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012093583",
+   "reason": "frontage 148.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012094739",
+   "reason": "frontage 177.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012095877",
+   "reason": "frontage 193.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012095938",
+   "reason": "frontage 175.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012100383",
+   "reason": "frontage 193.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012103310",
+   "reason": "frontage 192.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012106338",
+   "reason": "frontage 178.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012110422",
+   "reason": "frontage 225.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012112991",
+   "reason": "frontage 159.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012113128",
+   "reason": "frontage 115.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012113594",
+   "reason": "frontage 167.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012115498",
+   "reason": "frontage 120.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012115872",
+   "reason": "frontage 184.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012116942",
+   "reason": "frontage 220.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012119695",
+   "reason": "frontage 248.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012120514",
+   "reason": "frontage 186.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012075562",
+   "reason": "frontage 158.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012082604",
+   "reason": "frontage 221.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012134217",
+   "reason": "frontage 90.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012135879",
+   "reason": "frontage 58.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152300",
+   "reason": "frontage 53.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152301",
+   "reason": "frontage 36.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152366",
+   "reason": "frontage 52.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152384",
+   "reason": "frontage 91.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152458",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152461",
+   "reason": "frontage 58.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152488",
+   "reason": "frontage 112.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152581",
+   "reason": "frontage 142.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152654",
+   "reason": "frontage 192.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152670",
+   "reason": "frontage 134.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152764",
+   "reason": "frontage 58.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152777",
+   "reason": "frontage 86.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152801",
+   "reason": "frontage 159.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152873",
+   "reason": "frontage 87.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152994",
+   "reason": "frontage 87.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153067",
+   "reason": "frontage 144.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012126512",
+   "reason": "frontage 178.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012128118",
+   "reason": "frontage 167.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012129453",
+   "reason": "frontage 197.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012130896",
+   "reason": "frontage 190.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012131238",
+   "reason": "frontage 178.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012131359",
+   "reason": "frontage 168.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012133755",
+   "reason": "frontage 125.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012134455",
+   "reason": "frontage 135.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012134535",
+   "reason": "frontage 191.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012134906",
+   "reason": "frontage 53.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012135530",
+   "reason": "frontage 154.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012135568",
+   "reason": "frontage 217.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012137703",
+   "reason": "frontage 227.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012140016",
+   "reason": "frontage 147.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012142954",
+   "reason": "frontage 120.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012144048",
+   "reason": "frontage 208.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012145496",
+   "reason": "frontage 169.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012145884",
+   "reason": "frontage 148.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012146478",
+   "reason": "frontage 141.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012147139",
+   "reason": "frontage 194.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012148284",
+   "reason": "frontage 180.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012148417",
+   "reason": "frontage 142.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152332",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012161016"
+  },
+  {
+   "pandId": "0363100012152704",
+   "reason": "frontage 95.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152989",
+   "reason": "frontage 99.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153036",
+   "reason": "frontage 166.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152686",
+   "reason": "frontage 223.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012152794",
+   "reason": "frontage 188.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153346",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153500",
+   "reason": "frontage 54.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153532",
+   "reason": "frontage 57.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153537",
+   "reason": "frontage 58.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153557",
+   "reason": "frontage 182.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153571",
+   "reason": "frontage 58.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153681",
+   "reason": "frontage 135.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153705",
+   "reason": "frontage 87.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012154106",
+   "reason": "frontage 134.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012154123",
+   "reason": "frontage 62.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155556",
+   "reason": "frontage 57.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155609",
+   "reason": "frontage 58.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155739",
+   "reason": "frontage 83.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155763",
+   "reason": "frontage 129.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155898",
+   "reason": "frontage 135.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156050",
+   "reason": "frontage 87.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156067",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012159819"
+  },
+  {
+   "pandId": "0363100012156125",
+   "reason": "frontage 64.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156149",
+   "reason": "frontage 96.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156166",
+   "reason": "frontage 100.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156300",
+   "reason": "frontage 85.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156340",
+   "reason": "frontage 54.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153366",
+   "reason": "frontage 216.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153449",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155343",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156309",
+   "reason": "frontage 206.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153343",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012236517"
+  },
+  {
+   "pandId": "0363100012153372",
+   "reason": "frontage 41.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153399",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153425",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153615",
+   "reason": "frontage 203.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012154139",
+   "reason": "frontage 100.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012154321",
+   "reason": "frontage 96.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012154491",
+   "reason": "frontage 129.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155682",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155743",
+   "reason": "frontage 105.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155834",
+   "reason": "frontage 41.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155955",
+   "reason": "frontage 117.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156001",
+   "reason": "frontage 50.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012153355",
+   "reason": "frontage 166.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155802",
+   "reason": "frontage 161.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012155992",
+   "reason": "frontage 180.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156666",
+   "reason": "frontage 57.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156687",
+   "reason": "frontage 87.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156851",
+   "reason": "frontage 159.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157047",
+   "reason": "frontage 177.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157183",
+   "reason": "frontage 123.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157282",
+   "reason": "frontage 177.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157373",
+   "reason": "frontage 92.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157452",
+   "reason": "frontage 98.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "frontage 183.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157561",
+   "reason": "frontage 113.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157562",
+   "reason": "frontage 118.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158006",
+   "reason": "frontage 58.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158041",
+   "reason": "frontage 84.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158082",
+   "reason": "frontage 53.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158142",
+   "reason": "frontage 64.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158143",
+   "reason": "frontage 58.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "frontage 159.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158363",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156067"
+  },
+  {
+   "pandId": "0363100012158491",
+   "reason": "frontage 54.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157161",
+   "reason": "frontage 200.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157552",
+   "reason": "frontage 161.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156557",
+   "reason": "frontage 150.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156615",
+   "reason": "frontage 97.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156783",
+   "reason": "frontage 246.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156842",
+   "reason": "frontage 202.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157222",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012158414"
+  },
+  {
+   "pandId": "0363100012157296",
+   "reason": "frontage 96.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157888",
+   "reason": "frontage 126.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012157950",
+   "reason": "frontage 119.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158074",
+   "reason": "frontage 180.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158114",
+   "reason": "frontage 55.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158147",
+   "reason": "frontage 98.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158225",
+   "reason": "frontage 131.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158382",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012153343"
+  },
+  {
+   "pandId": "0363100012158407",
+   "reason": "frontage 47.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158414",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012163384"
+  },
+  {
+   "pandId": "0363100012158417",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158494",
+   "reason": "frontage 136.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156812",
+   "reason": "frontage 183.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012156819",
+   "reason": "frontage 197.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159005",
+   "reason": "frontage 46.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159515",
+   "reason": "frontage 57.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159644",
+   "reason": "frontage 95.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159683",
+   "reason": "frontage 57.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159713",
+   "reason": "frontage 186.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159734",
+   "reason": "frontage 53.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159777",
+   "reason": "frontage 83.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160076",
+   "reason": "frontage 132.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160085",
+   "reason": "frontage 42.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160098",
+   "reason": "frontage 97.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160374",
+   "reason": "frontage 88.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 159.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160474",
+   "reason": "frontage 136.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160477",
+   "reason": "frontage 134.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160486",
+   "reason": "frontage 88.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160499",
+   "reason": "frontage 107.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159994",
+   "reason": "frontage 222.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158646",
+   "reason": "frontage 50.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158801",
+   "reason": "frontage 102.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158816",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158904",
+   "reason": "frontage 171.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158945",
+   "reason": "frontage 111.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159100",
+   "reason": "frontage 151.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159213",
+   "reason": "frontage 36.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159556",
+   "reason": "frontage 152.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159693",
+   "reason": "frontage 50.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159754",
+   "reason": "frontage 152.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159758",
+   "reason": "frontage 50.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159861",
+   "reason": "frontage 95.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159925",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012152332"
+  },
+  {
+   "pandId": "0363100012159926",
+   "reason": "frontage 200.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159948",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012152332"
+  },
+  {
+   "pandId": "0363100012160105",
+   "reason": "frontage 145.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160287",
+   "reason": "frontage 42.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160368",
+   "reason": "frontage 96.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160402",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160407",
+   "reason": "frontage 200.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160466",
+   "reason": "frontage 149.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160522",
+   "reason": "frontage 106.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160626",
+   "reason": "frontage 179.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158804",
+   "reason": "frontage 226.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012158915",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159410",
+   "reason": "frontage 155.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012159690",
+   "reason": "frontage 170.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160715",
+   "reason": "frontage 222.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160777",
+   "reason": "frontage 158.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160804",
+   "reason": "frontage 130.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161129",
+   "reason": "frontage 104.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161157",
+   "reason": "frontage 101.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161318",
+   "reason": "frontage 104.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161347",
+   "reason": "frontage 86.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161456",
+   "reason": "frontage 58.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161634",
+   "reason": "frontage 83.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161717",
+   "reason": "frontage 86.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161897",
+   "reason": "frontage 55.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162163",
+   "reason": "frontage 84.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161283",
+   "reason": "frontage 191.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162327",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162401",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160842",
+   "reason": "frontage 50.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160873",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012160929",
+   "reason": "frontage 32.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161058",
+   "reason": "frontage 140.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161314",
+   "reason": "frontage 96.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161354",
+   "reason": "frontage 170.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161510",
+   "reason": "frontage 154.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161585",
+   "reason": "frontage 160.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161714",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012161742",
+   "reason": "frontage 53.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161853",
+   "reason": "frontage 42.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161896",
+   "reason": "frontage 150.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162104",
+   "reason": "frontage 171.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162109",
+   "reason": "frontage 147.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162167",
+   "reason": "frontage 53.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162218",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162335",
+   "reason": "frontage 150.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162343",
+   "reason": "frontage 170.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162434",
+   "reason": "frontage 153.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162504",
+   "reason": "frontage 35.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161122",
+   "reason": "frontage 172.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161749",
+   "reason": "frontage 220.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012161799",
+   "reason": "frontage 164.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162038",
+   "reason": "frontage 174.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163278",
+   "reason": "frontage 166.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163631",
+   "reason": "frontage 40.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163725",
+   "reason": "frontage 42.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163764",
+   "reason": "frontage 134.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163785",
+   "reason": "frontage 83.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "frontage 159.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163950",
+   "reason": "frontage 171.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164221",
+   "reason": "frontage 54.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164287",
+   "reason": "frontage 55.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164311",
+   "reason": "frontage 83.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164666",
+   "reason": "frontage 125.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164766",
+   "reason": "frontage 58.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162537",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162507",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012162521",
+   "reason": "frontage 112.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162704",
+   "reason": "frontage 122.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162830",
+   "reason": "frontage 42.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163019",
+   "reason": "frontage 147.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163043",
+   "reason": "frontage 182.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163044",
+   "reason": "frontage 176.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163368",
+   "reason": "frontage 48.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163384",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012165284"
+  },
+  {
+   "pandId": "0363100012163455",
+   "reason": "frontage 165.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163475",
+   "reason": "frontage 49.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163561",
+   "reason": "frontage 53.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163696",
+   "reason": "frontage 52.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163812",
+   "reason": "frontage 115.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163860",
+   "reason": "frontage 50.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012163961",
+   "reason": "frontage 52.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164025",
+   "reason": "frontage 47.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164031",
+   "reason": "frontage 30.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164093",
+   "reason": "frontage 125.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164133",
+   "reason": "frontage 107.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164163",
+   "reason": "frontage 96.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164213",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164235",
+   "reason": "frontage 59.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164535",
+   "reason": "frontage 47.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164537",
+   "reason": "frontage 109.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164626",
+   "reason": "frontage 36.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164683",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164769",
+   "reason": "frontage 153.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012162547",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164348",
+   "reason": "frontage 196.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164497",
+   "reason": "frontage 176.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012164793",
+   "reason": "frontage 158.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165218",
+   "reason": "frontage 92.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165449",
+   "reason": "frontage 132.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165452",
+   "reason": "frontage 163.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165464",
+   "reason": "frontage 107.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165516",
+   "reason": "frontage 84.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165518",
+   "reason": "frontage 55.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165574",
+   "reason": "frontage 66.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165597",
+   "reason": "frontage 38.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166041",
+   "reason": "frontage 57.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166061",
+   "reason": "frontage 60.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166104",
+   "reason": "frontage 34.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166237",
+   "reason": "frontage 135.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166374",
+   "reason": "frontage 134.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166523",
+   "reason": "frontage 58.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166601",
+   "reason": "frontage 189.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166639",
+   "reason": "frontage 102.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166679",
+   "reason": "frontage 110.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166771",
+   "reason": "frontage 130.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165308",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166451",
+   "reason": "frontage 196.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165222",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165243",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012165256",
+   "reason": "frontage 201.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165529",
+   "reason": "frontage 114.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165535",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165605",
+   "reason": "frontage 50.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165778",
+   "reason": "frontage 200.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165788",
+   "reason": "frontage 151.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165912",
+   "reason": "frontage 47.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165981",
+   "reason": "frontage 199.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166002",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166049",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166123",
+   "reason": "frontage 96.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166129",
+   "reason": "frontage 148.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166175",
+   "reason": "frontage 53.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166211",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166265",
+   "reason": "frontage 159.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166343",
+   "reason": "frontage 173.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166363",
+   "reason": "frontage 172.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166438",
+   "reason": "frontage 49.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166664",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166781",
+   "reason": "frontage 96.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012165727",
+   "reason": "frontage 203.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166675",
+   "reason": "frontage 225.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167048",
+   "reason": "frontage 87.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167117",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156067"
+  },
+  {
+   "pandId": "0363100012167211",
+   "reason": "frontage 191.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167233",
+   "reason": "frontage 86.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167255",
+   "reason": "frontage 67.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167284",
+   "reason": "frontage 162.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167285",
+   "reason": "frontage 135.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012192066",
+   "reason": "frontage 111.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012196226",
+   "reason": "frontage 131.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012198961",
+   "reason": "frontage 41.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012201951",
+   "reason": "frontage 109.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012210498",
+   "reason": "frontage 40.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167286",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012201242",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166869",
+   "reason": "frontage 95.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012166925",
+   "reason": "frontage 158.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167073",
+   "reason": "frontage 109.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167074",
+   "reason": "frontage 157.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167220",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167266",
+   "reason": "frontage 104.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167315",
+   "reason": "frontage 187.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167432",
+   "reason": "frontage 43.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012184159",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012187167",
+   "reason": "frontage 34.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012188019",
+   "reason": "frontage 214.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012192811",
+   "reason": "frontage 144.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012192993",
+   "reason": "frontage 35.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012194095",
+   "reason": "frontage 168.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012196659",
+   "reason": "frontage 65.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012196826",
+   "reason": "frontage 120.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012198724",
+   "reason": "frontage 169.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012203431",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012152513"
+  },
+  {
+   "pandId": "0363100012203991",
+   "reason": "frontage 34.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012204379",
+   "reason": "frontage 169.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012207253",
+   "reason": "frontage 38.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012211367",
+   "reason": "frontage 30.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012211964",
+   "reason": "frontage 168.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012212463",
+   "reason": "frontage 45.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012212767",
+   "reason": "frontage 127.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012215461",
+   "reason": "frontage 32.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012215539",
+   "reason": "frontage 32.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012218620",
+   "reason": "frontage 217.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012218766",
+   "reason": "frontage 36.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012167171",
+   "reason": "frontage 186.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012187524",
+   "reason": "frontage 189.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012205453",
+   "reason": "frontage 151.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012206545",
+   "reason": "frontage 187.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012223743",
+   "reason": "frontage 126.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012227420",
+   "reason": "frontage 38.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012231186",
+   "reason": "frontage 137.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233592",
+   "reason": "frontage 86.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233891",
+   "reason": "frontage 130.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012235945",
+   "reason": "frontage 183.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012235991",
+   "reason": "frontage 56.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236226",
+   "reason": "frontage 158.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236403",
+   "reason": "frontage 84.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236504",
+   "reason": "frontage 113.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236546",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012165329"
+  },
+  {
+   "pandId": "0363100012236557",
+   "reason": "frontage 130.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236692",
+   "reason": "frontage 108.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236832",
+   "reason": "frontage 88.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236859",
+   "reason": "frontage 159.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236895",
+   "reason": "frontage 39.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012235943",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236954",
+   "reason": "frontage 211.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012222271",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012222671",
+   "reason": "frontage 47.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012223892",
+   "reason": "frontage 129.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012225406",
+   "reason": "frontage 118.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012225634",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012230975",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012232971",
+   "reason": "frontage 218.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233034",
+   "reason": "frontage 36.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233515",
+   "reason": "frontage 128.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233520",
+   "reason": "frontage 178.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233607",
+   "reason": "frontage 122.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012233700",
+   "reason": "frontage 95.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012235932",
+   "reason": "frontage 42.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236168",
+   "reason": "frontage 38.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236237",
+   "reason": "frontage 52.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236251",
+   "reason": "frontage 95.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236366",
+   "reason": "frontage 96.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236409",
+   "reason": "frontage 96.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236440",
+   "reason": "frontage 60.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236463",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236621",
+   "reason": "frontage 97.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236633",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236643",
+   "reason": "frontage 95.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236828",
+   "reason": "frontage 120.1 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236830",
+   "reason": "sightline to Tweede Jan van der Heijdenstraat crosses 0363100012156225"
+  },
+  {
+   "pandId": "0363100012236920",
+   "reason": "frontage 95.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236933",
+   "reason": "frontage 136.9 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237019",
+   "reason": "frontage 96.2 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012236543",
+   "reason": "frontage 191.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237284",
+   "reason": "frontage 87.4 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237367",
+   "reason": "frontage 48.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237020",
+   "reason": "frontage 178.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237091",
+   "reason": "no frontage on Tweede Jan van der Heijdenstraat: No footprint edge faces Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237110",
+   "reason": "frontage 128.7 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237359",
+   "reason": "frontage 182.0 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237798",
+   "reason": "frontage 122.5 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012240937",
+   "reason": "frontage 145.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012242135",
+   "reason": "frontage 37.8 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012249797",
+   "reason": "frontage 143.3 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012237165",
+   "reason": "frontage 178.6 m from Tweede Jan van der Heijdenstraat"
+  },
+  {
+   "pandId": "0363100012095860",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099835",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152549",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152576",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155579",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156327",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156350",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156925",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157693",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159982",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161261",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161691",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161409",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161720",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164572",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164578",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162746",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165329",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166641",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165284",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165967",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167011",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166874",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012158080",
+   "alongM": -102.89,
+   "widthM": 5.71,
+   "eavesM": 14.84,
+   "roofMaxM": 17.34,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163602",
+   "alongM": -96.85,
+   "widthM": 6.36,
+   "eavesM": 16.32,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012161053",
+   "alongM": -90.87,
+   "widthM": 5.61,
+   "eavesM": 15.93,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157927",
+   "alongM": -85.3,
+   "widthM": 5.53,
+   "eavesM": 16.22,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152513",
+   "alongM": -79.81,
+   "widthM": 5.47,
+   "eavesM": 15.95,
+   "roofMaxM": 16.56,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236650",
+   "alongM": -74.2,
+   "widthM": 5.74,
+   "eavesM": 16.05,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236032",
+   "alongM": -68.5,
+   "widthM": 5.67,
+   "eavesM": 16.49,
+   "roofMaxM": 17.18,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155814",
+   "alongM": -62.72,
+   "widthM": 5.89,
+   "eavesM": 17.07,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167210",
+   "alongM": -56.97,
+   "widthM": 5.6,
+   "eavesM": 14.11,
+   "roofMaxM": 16.95,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163163",
+   "alongM": -51.3,
+   "widthM": 5.73,
+   "eavesM": 15.27,
+   "roofMaxM": 16.27,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153034",
+   "alongM": -45.56,
+   "widthM": 5.76,
+   "eavesM": 13.43,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161298",
+   "alongM": -39.85,
+   "widthM": 5.66,
+   "eavesM": 16.37,
+   "roofMaxM": 17.01,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165607",
+   "alongM": -34.11,
+   "widthM": 5.82,
+   "eavesM": 16.33,
+   "roofMaxM": 17.21,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156432",
+   "alongM": -28.36,
+   "widthM": 5.68,
+   "eavesM": 15.95,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156423",
+   "alongM": -22.68,
+   "widthM": 5.68,
+   "eavesM": 16.01,
+   "roofMaxM": 18.18,
+   "storeys3dbag": 5,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160283",
+   "alongM": -17,
+   "widthM": 5.68,
+   "eavesM": 16.09,
+   "roofMaxM": 16.75,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158445",
+   "alongM": -11.32,
+   "widthM": 5.68,
+   "eavesM": 15.97,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157197",
+   "alongM": -5.65,
+   "widthM": 5.65,
+   "eavesM": 17.15,
+   "roofMaxM": 17.34,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153593",
+   "alongM": 0,
+   "widthM": 5.65,
+   "eavesM": 17.06,
+   "roofMaxM": 17.3,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  }
+ ]
+}

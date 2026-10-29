@@ -1,0 +1,433 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236190",
+   "addresses": [
+    "Gerard Doustraat 72",
+    "Gerard Doustraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 72-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 273,
+     "bagId": "0363010003702480"
+    },
+    {
+     "address": "Gerard Doustraat 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012110122"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515746,
+     "lngLat": [
+      4.8913321,
+      52.3555236
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "72-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "email": "webshop@living-in.nl",
+      "name": "Living-in By Romy's",
+      "opening_hours": "Su-Mo 12:00-17:00; Tu-Fr 11:00-18:00; Sa 11:00-17:00",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://living-in.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153546",
+   "addresses": [
+    "Gerard Doustraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 70-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000643788"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515712,
+     "lngLat": [
+      4.891273,
+      52.355513
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "email": "info@charlottedekoomen.com",
+      "name": "Charlotte de Koomen",
+      "opening_hours": "Tu-Fr 11:00-18:00; Sa 11:00-17:00",
+      "phone": "+31 20 3038319",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://charlottedekoomen.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162701",
+   "addresses": [
+    "Gerard Doustraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 68-H",
+     "use": "industriefunctie",
+     "areaM2": 108,
+     "bagId": "0363010000643779"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515488,
+     "lngLat": [
+      4.8911948,
+      52.3554985
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "note": "Formerly Pacoumer",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156649",
+   "addresses": [
+    "Gerard Doustraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000643759"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515479,
+     "lngLat": [
+      4.8911267,
+      52.3554855
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-12",
+      "cuisine": "sandwich;juice;coffee_shop",
+      "delivery": "yes",
+      "name": "Broodje Gerard",
+      "opening_hours": "Mo-Su 10:00-16:00",
+      "phone": "+31 6 29157330",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164863",
+   "addresses": [
+    "Gerard Doustraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000643752"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160762",
+   "addresses": [
+    "Gerard Doustraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000643748"
+    },
+    {
+     "address": "Gerard Doustraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010012569073"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167299",
+   "addresses": [
+    "Gerard Doustraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000643737"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515439,
+     "lngLat": [
+      4.8908923,
+      52.3554395
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "alt_name": "D'Hyeres",
+      "check_date": "2026-01-12",
+      "name": "D'Hyères",
+      "opening_hours": "Tu-Su 12:00-18:00; Mo 13:00-18:00",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://dhyeres.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157589",
+   "addresses": [
+    "Gerard Doustraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 58-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000643733"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505989199,
+     "lngLat": [
+      4.8908045,
+      52.3554212
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58-H",
+      "addr:postcode": "1072VV",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "pub",
+      "check_date": "2026-01-12",
+      "email": "eddybar58@gmail.com",
+      "mobile": "+31619423000",
+      "name": "Eddy Bar",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155928",
+   "addresses": [
+    "Gerard Doustraat 56B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 45",
+     "use": "winkelfunctie",
+     "areaM2": 338,
+     "bagId": "0363010000635365"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505986111,
+     "lngLat": [
+      4.8905892,
+      52.3554388
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:cardboard": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container",
+      "ref": "PAK02925"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.3
+    },
+    {
+     "type": "node",
+     "id": 2817515127,
+     "lngLat": [
+      4.8905847,
+      52.3553759
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "cafe",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "brand": "Starbucks",
+      "brand:wikidata": "Q37158",
+      "brand:wikipedia": "en:Starbucks",
+      "check_date": "2026-01-10",
+      "cuisine": "coffee_shop",
+      "name": "Starbucks",
+      "official_name": "Starbucks Coffee",
+      "opening_hours": "Mo-Fr 07:30-18:30; Sa 08:30-18:30; Su 09:00-17:30",
+      "phone": "+31 20 493 2221",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.starbucks.nl/nl/store-locator/21580-210115",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105630219,
+     "lngLat": [
+      4.8906304,
+      52.3554926
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:glass_bottles": "yes",
+      "recycling_type": "container",
+      "ref": "GLK02043"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 8
+    },
+    {
+     "type": "node",
+     "id": 13446588683,
+     "lngLat": [
+      4.8906176,
+      52.3554458
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01639",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    },
+    {
+     "type": "node",
+     "id": 13446588684,
+     "lngLat": [
+      4.890645,
+      52.3554508
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01628",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.3
+    }
+   ]
+  }
+ ]
+}

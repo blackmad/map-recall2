@@ -1,0 +1,1983 @@
+{
+ "street": "Albert Cuypstraat",
+ "seed": "0363100012141454",
+ "members": [
+  "0363100012075022",
+  "0363100012152794",
+  "0363100012156819",
+  "0363100012236543",
+  "0363100012164348",
+  "0363100012165727",
+  "0363100012161426",
+  "0363100012158287",
+  "0363100012155866",
+  "0363100012163988",
+  "0363100012161921",
+  "0363100012154117",
+  "0363100012165545",
+  "0363100012157336",
+  "0363100012165202",
+  "0363100012161405",
+  "0363100012156722",
+  "0363100012079140",
+  "0363100012160903",
+  "0363100012141454"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012075022 (face continues: 166601 152654 167211 153557 159713)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012141454 (face continues: 236809 156548 159249 162571 164103 163353 154144 164227 155461 162980 167434 158812 158985 157319 160055 166514 166647 237169 236118 162705 163743)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012081229",
+   "reason": "frontage 82.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012081813",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152654"
+  },
+  {
+   "pandId": "0363100012114128",
+   "reason": "frontage 55.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012115560",
+   "reason": "frontage 70.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012126276",
+   "reason": "frontage 55.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012134217",
+   "reason": "frontage 105.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012071838",
+   "reason": "frontage 55.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012084636",
+   "reason": "frontage 56.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012091682",
+   "reason": "frontage 118.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012093594",
+   "reason": "frontage 30.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012104472",
+   "reason": "frontage 53.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012116142",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012166514"
+  },
+  {
+   "pandId": "0363100012118823",
+   "reason": "frontage 55.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012132212",
+   "reason": "frontage 93.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012134263",
+   "reason": "frontage 119.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012062071",
+   "reason": "frontage 93.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012063423",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012156029"
+  },
+  {
+   "pandId": "0363100012063457",
+   "reason": "frontage 60.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012063571",
+   "reason": "frontage 198.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012063870",
+   "reason": "frontage 80.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012064586",
+   "reason": "frontage 126.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012066764",
+   "reason": "frontage 80.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012067895",
+   "reason": "frontage 106.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012073807",
+   "reason": "frontage 32.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012074958",
+   "reason": "frontage 126.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012075562",
+   "reason": "frontage 55.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012075569",
+   "reason": "frontage 85.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012077301",
+   "reason": "frontage 85.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012080102",
+   "reason": "frontage 83.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012088330",
+   "reason": "frontage 83.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012089801",
+   "reason": "frontage 124.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012095852",
+   "reason": "frontage 35.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012100323",
+   "reason": "frontage 59.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012102423",
+   "reason": "frontage 83.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012102930",
+   "reason": "frontage 169.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012103000",
+   "reason": "frontage 86.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012112673",
+   "reason": "frontage 74.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012115167",
+   "reason": "frontage 97.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012119240",
+   "reason": "frontage 165.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012123889",
+   "reason": "frontage 88.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012126712",
+   "reason": "frontage 119.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012127016",
+   "reason": "frontage 38.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012131774",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012163353"
+  },
+  {
+   "pandId": "0363100012132914",
+   "reason": "frontage 69.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012134850",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012154144"
+  },
+  {
+   "pandId": "0363100012137448",
+   "reason": "frontage 57.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012140916",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012154236"
+  },
+  {
+   "pandId": "0363100012152458",
+   "reason": "frontage 97.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152581",
+   "reason": "frontage 55.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152670",
+   "reason": "frontage 55.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153067",
+   "reason": "frontage 55.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153346",
+   "reason": "frontage 93.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012143302",
+   "reason": "frontage 77.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012145600",
+   "reason": "frontage 53.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012146804",
+   "reason": "frontage 118.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152399",
+   "reason": "frontage 90.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152785",
+   "reason": "frontage 32.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152806",
+   "reason": "frontage 91.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152878",
+   "reason": "frontage 118.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152886",
+   "reason": "frontage 55.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152914",
+   "reason": "frontage 99.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153033",
+   "reason": "frontage 150.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153140",
+   "reason": "frontage 70.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153243",
+   "reason": "frontage 34.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153266",
+   "reason": "frontage 119.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153277",
+   "reason": "frontage 31.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153403",
+   "reason": "frontage 91.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153399",
+   "reason": "frontage 92.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012137091",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012137589",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012164227"
+  },
+  {
+   "pandId": "0363100012139717",
+   "reason": "frontage 90.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012140762",
+   "reason": "frontage 77.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012141060",
+   "reason": "frontage 60.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012145070",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012162264"
+  },
+  {
+   "pandId": "0363100012146154",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012162571"
+  },
+  {
+   "pandId": "0363100012146444",
+   "reason": "frontage 65.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012146867",
+   "reason": "frontage 88.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012148099",
+   "reason": "frontage 79.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152387",
+   "reason": "frontage 33.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012152552",
+   "reason": "frontage 98.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153168",
+   "reason": "frontage 137.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153232",
+   "reason": "frontage 30.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153246",
+   "reason": "frontage 55.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153338",
+   "reason": "frontage 114.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153355",
+   "reason": "frontage 55.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153387",
+   "reason": "frontage 34.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153395",
+   "reason": "frontage 67.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012154106",
+   "reason": "frontage 55.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155763",
+   "reason": "frontage 55.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156166",
+   "reason": "frontage 98.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153435",
+   "reason": "frontage 86.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153449",
+   "reason": "frontage 92.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153722",
+   "reason": "frontage 90.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012154091",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012163134"
+  },
+  {
+   "pandId": "0363100012154143",
+   "reason": "frontage 126.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155343",
+   "reason": "frontage 90.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155849",
+   "reason": "frontage 91.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156361",
+   "reason": "frontage 92.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156380",
+   "reason": "frontage 34.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156598",
+   "reason": "frontage 90.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153481",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012161405"
+  },
+  {
+   "pandId": "0363100012153491",
+   "reason": "frontage 158.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153501",
+   "reason": "frontage 172.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153599",
+   "reason": "frontage 132.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012153746",
+   "reason": "frontage 130.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012154185",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012154267",
+   "reason": "frontage 33.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012154401",
+   "reason": "frontage 61.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155392",
+   "reason": "frontage 109.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155489",
+   "reason": "frontage 54.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155514",
+   "reason": "frontage 67.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155707",
+   "reason": "frontage 93.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155802",
+   "reason": "frontage 56.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012155992",
+   "reason": "frontage 33.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156089",
+   "reason": "frontage 56.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156170",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012165297"
+  },
+  {
+   "pandId": "0363100012156571",
+   "reason": "frontage 143.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156601",
+   "reason": "frontage 30.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156674",
+   "reason": "frontage 128.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156812",
+   "reason": "frontage 33.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156851",
+   "reason": "frontage 39.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157047",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152654"
+  },
+  {
+   "pandId": "0363100012157183",
+   "reason": "frontage 76.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157282",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012235945"
+  },
+  {
+   "pandId": "0363100012157373",
+   "reason": "frontage 98.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157452",
+   "reason": "frontage 99.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157460",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152654"
+  },
+  {
+   "pandId": "0363100012158291",
+   "reason": "frontage 31.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156946",
+   "reason": "frontage 56.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157290",
+   "reason": "frontage 60.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157552",
+   "reason": "frontage 90.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157579",
+   "reason": "frontage 55.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157895",
+   "reason": "frontage 91.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158065",
+   "reason": "frontage 94.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158174",
+   "reason": "frontage 53.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158188",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012154091"
+  },
+  {
+   "pandId": "0363100012158205",
+   "reason": "frontage 53.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158425",
+   "reason": "frontage 91.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158447",
+   "reason": "frontage 91.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158451",
+   "reason": "frontage 37.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158681",
+   "reason": "frontage 55.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158716",
+   "reason": "frontage 61.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158759",
+   "reason": "frontage 90.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158417",
+   "reason": "frontage 94.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012156902",
+   "reason": "frontage 33.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157139",
+   "reason": "frontage 98.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157205",
+   "reason": "frontage 131.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157212",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012141454"
+  },
+  {
+   "pandId": "0363100012157470",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152659"
+  },
+  {
+   "pandId": "0363100012157546",
+   "reason": "frontage 108.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157566",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012089864"
+  },
+  {
+   "pandId": "0363100012157611",
+   "reason": "frontage 54.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157734",
+   "reason": "frontage 33.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157842",
+   "reason": "frontage 122.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157901",
+   "reason": "frontage 71.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157956",
+   "reason": "frontage 74.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012157974",
+   "reason": "frontage 33.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158044",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152838"
+  },
+  {
+   "pandId": "0363100012158131",
+   "reason": "frontage 32.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158266",
+   "reason": "no frontage on Albert Cuypstraat: No footprint edge faces Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158270",
+   "reason": "frontage 55.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158440",
+   "reason": "frontage 101.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158441",
+   "reason": "frontage 71.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158628",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159644",
+   "reason": "frontage 101.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159776",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012236354"
+  },
+  {
+   "pandId": "0363100012160398",
+   "reason": "frontage 31.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161129",
+   "reason": "frontage 98.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158874",
+   "reason": "frontage 55.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158877",
+   "reason": "frontage 120.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159331",
+   "reason": "frontage 93.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159611",
+   "reason": "frontage 96.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159794",
+   "reason": "frontage 119.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159866",
+   "reason": "frontage 66.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160051",
+   "reason": "frontage 33.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160469",
+   "reason": "frontage 91.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160634",
+   "reason": "frontage 92.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161017",
+   "reason": "frontage 88.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161093",
+   "reason": "frontage 91.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161198",
+   "reason": "frontage 95.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158855",
+   "reason": "frontage 33.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158900",
+   "reason": "frontage 55.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012158915",
+   "reason": "frontage 55.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159044",
+   "reason": "frontage 34.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159087",
+   "reason": "frontage 31.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159188",
+   "reason": "frontage 150.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159410",
+   "reason": "frontage 55.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159482",
+   "reason": "frontage 83.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159690",
+   "reason": "frontage 32.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012159704",
+   "reason": "frontage 104.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160238",
+   "reason": "frontage 54.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160401",
+   "reason": "frontage 32.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160503",
+   "reason": "frontage 33.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160528",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012159284"
+  },
+  {
+   "pandId": "0363100012160584",
+   "reason": "frontage 54.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160658",
+   "reason": "frontage 73.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160687",
+   "reason": "frontage 135.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160706",
+   "reason": "frontage 32.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012160805",
+   "reason": "frontage 59.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161063",
+   "reason": "frontage 64.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161122",
+   "reason": "frontage 33.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162307",
+   "reason": "frontage 32.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161698",
+   "reason": "frontage 90.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161804",
+   "reason": "frontage 88.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161847",
+   "reason": "frontage 144.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161937",
+   "reason": "frontage 91.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162183",
+   "reason": "frontage 89.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162194",
+   "reason": "frontage 92.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162204",
+   "reason": "frontage 92.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162298",
+   "reason": "frontage 56.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162310",
+   "reason": "frontage 83.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162348",
+   "reason": "frontage 32.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162401",
+   "reason": "frontage 95.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162471",
+   "reason": "frontage 91.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162537",
+   "reason": "frontage 92.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162562",
+   "reason": "frontage 55.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162792",
+   "reason": "frontage 30.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161470",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161761",
+   "reason": "frontage 166.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161786",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012155726"
+  },
+  {
+   "pandId": "0363100012161790",
+   "reason": "frontage 118.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161799",
+   "reason": "frontage 56.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012161962",
+   "reason": "frontage 93.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162028",
+   "reason": "frontage 33.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162038",
+   "reason": "frontage 33.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162061",
+   "reason": "frontage 55.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162076",
+   "reason": "frontage 157.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162140",
+   "reason": "frontage 33.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162147",
+   "reason": "frontage 54.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162189",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162202",
+   "reason": "frontage 133.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162281",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012166938"
+  },
+  {
+   "pandId": "0363100012162364",
+   "reason": "frontage 172.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162379",
+   "reason": "frontage 135.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162385",
+   "reason": "frontage 34.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162533",
+   "reason": "frontage 142.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162547",
+   "reason": "frontage 55.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162549",
+   "reason": "frontage 173.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162680",
+   "reason": "frontage 33.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162693",
+   "reason": "frontage 33.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162751",
+   "reason": "frontage 33.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162805",
+   "reason": "frontage 54.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162832",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012155726"
+  },
+  {
+   "pandId": "0363100012163278",
+   "reason": "frontage 33.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163710",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012160372"
+  },
+  {
+   "pandId": "0363100012163890",
+   "reason": "frontage 36.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163950",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012157282"
+  },
+  {
+   "pandId": "0363100012164383",
+   "reason": "frontage 32.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162920",
+   "reason": "frontage 91.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162953",
+   "reason": "frontage 91.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163007",
+   "reason": "frontage 37.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163034",
+   "reason": "frontage 132.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163134",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012163743"
+  },
+  {
+   "pandId": "0363100012163289",
+   "reason": "frontage 55.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163684",
+   "reason": "frontage 55.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163924",
+   "reason": "frontage 65.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163979",
+   "reason": "frontage 91.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163996",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012237218"
+  },
+  {
+   "pandId": "0363100012164082",
+   "reason": "frontage 55.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164105",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012163996"
+  },
+  {
+   "pandId": "0363100012164653",
+   "reason": "frontage 87.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164674",
+   "reason": "frontage 118.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162968",
+   "reason": "frontage 165.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012162999",
+   "reason": "frontage 150.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163048",
+   "reason": "frontage 145.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163072",
+   "reason": "frontage 141.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163156",
+   "reason": "frontage 54.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163224",
+   "reason": "frontage 120.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163388",
+   "reason": "frontage 127.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163612",
+   "reason": "frontage 54.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163714",
+   "reason": "frontage 132.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163807",
+   "reason": "frontage 33.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163818",
+   "reason": "frontage 31.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163824",
+   "reason": "frontage 159.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012163904",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012162035"
+  },
+  {
+   "pandId": "0363100012163941",
+   "reason": "frontage 117.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164049",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164106",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012152659"
+  },
+  {
+   "pandId": "0363100012164334",
+   "reason": "frontage 30.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164497",
+   "reason": "frontage 33.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164582",
+   "reason": "frontage 147.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164586",
+   "reason": "frontage 179.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164780",
+   "reason": "frontage 31.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165452",
+   "reason": "frontage 30.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166477",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012221673"
+  },
+  {
+   "pandId": "0363100012166679",
+   "reason": "frontage 89.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164887",
+   "reason": "frontage 88.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165182",
+   "reason": "frontage 89.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165308",
+   "reason": "frontage 96.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165564",
+   "reason": "frontage 120.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165583",
+   "reason": "frontage 56.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165647",
+   "reason": "frontage 31.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165664",
+   "reason": "frontage 92.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165914",
+   "reason": "frontage 55.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166006",
+   "reason": "frontage 96.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166270",
+   "reason": "frontage 53.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166472",
+   "reason": "frontage 91.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166747",
+   "reason": "frontage 91.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166971",
+   "reason": "frontage 87.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012164700",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012159698"
+  },
+  {
+   "pandId": "0363100012164875",
+   "reason": "frontage 154.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165191",
+   "reason": "frontage 33.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165270",
+   "reason": "frontage 70.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165279",
+   "reason": "frontage 139.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165340",
+   "reason": "frontage 146.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165458",
+   "reason": "frontage 106.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165460",
+   "reason": "frontage 103.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012165514",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012162281"
+  },
+  {
+   "pandId": "0363100012165921",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012161749"
+  },
+  {
+   "pandId": "0363100012166101",
+   "reason": "frontage 122.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166273",
+   "reason": "frontage 161.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166370",
+   "reason": "frontage 54.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166729",
+   "reason": "frontage 60.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012166850",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012164174"
+  },
+  {
+   "pandId": "0363100012166920",
+   "reason": "frontage 120.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167014",
+   "reason": "frontage 154.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167103",
+   "reason": "frontage 131.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167171",
+   "reason": "frontage 33.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167189",
+   "reason": "frontage 161.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167284",
+   "reason": "frontage 32.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012196226",
+   "reason": "frontage 82.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012231186",
+   "reason": "frontage 81.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012233891",
+   "reason": "frontage 76.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167269",
+   "reason": "frontage 72.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167281",
+   "reason": "frontage 92.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167286",
+   "reason": "frontage 93.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012196657",
+   "reason": "frontage 171.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012196658",
+   "reason": "frontage 133.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012207372",
+   "reason": "frontage 74.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012218020",
+   "reason": "frontage 77.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012219468",
+   "reason": "frontage 71.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012229467",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012154091"
+  },
+  {
+   "pandId": "0363100012233660",
+   "reason": "frontage 56.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236018",
+   "reason": "frontage 37.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236101",
+   "reason": "frontage 79.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236102",
+   "reason": "frontage 74.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236132",
+   "reason": "frontage 56.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167297",
+   "reason": "frontage 135.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012167390",
+   "reason": "frontage 55.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012187524",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012156819"
+  },
+  {
+   "pandId": "0363100012188543",
+   "reason": "frontage 158.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012190054",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012143237"
+  },
+  {
+   "pandId": "0363100012190055",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012143237"
+  },
+  {
+   "pandId": "0363100012196364",
+   "reason": "frontage 79.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012197460",
+   "reason": "no frontage on Albert Cuypstraat: No footprint edge faces Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012205453",
+   "reason": "frontage 70.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012206545",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012156819"
+  },
+  {
+   "pandId": "0363100012209057",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012162264"
+  },
+  {
+   "pandId": "0363100012216885",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012143237"
+  },
+  {
+   "pandId": "0363100012219504",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012167434"
+  },
+  {
+   "pandId": "0363100012220408",
+   "reason": "frontage 115.5 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012233474",
+   "reason": "frontage 32.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012233512",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012233621",
+   "reason": "frontage 188.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012233685",
+   "reason": "frontage 194.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012235906",
+   "reason": "frontage 142.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012235907",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012163743"
+  },
+  {
+   "pandId": "0363100012236200",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012238733"
+  },
+  {
+   "pandId": "0363100012236211",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012167344"
+  },
+  {
+   "pandId": "0363100012236216",
+   "reason": "frontage 136.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236408",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012236898"
+  },
+  {
+   "pandId": "0363100012236449",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012236354"
+  },
+  {
+   "pandId": "0363100012236246",
+   "reason": "frontage 33.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236334",
+   "reason": "frontage 138.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012237118",
+   "reason": "frontage 54.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236633",
+   "reason": "frontage 96.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236257",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012155461"
+  },
+  {
+   "pandId": "0363100012236319",
+   "reason": "frontage 35.1 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236324",
+   "reason": "frontage 58.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236326",
+   "reason": "frontage 147.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236394",
+   "reason": "frontage 110.6 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236495",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012236387"
+  },
+  {
+   "pandId": "0363100012236518",
+   "reason": "sightline to Albert Cuypstraat crosses 0363100012236387"
+  },
+  {
+   "pandId": "0363100012236747",
+   "reason": "frontage 88.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236752",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236779",
+   "reason": "frontage 104.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236908",
+   "reason": "frontage 75.8 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012236912",
+   "reason": "frontage 96.4 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012237145",
+   "reason": "frontage 110.2 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012237165",
+   "reason": "frontage 33.9 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012237180",
+   "reason": "frontage 180.7 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012252367",
+   "reason": "frontage 83.3 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012252735",
+   "reason": "frontage 57.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012570907",
+   "reason": "frontage 135.0 m from Albert Cuypstraat"
+  },
+  {
+   "pandId": "0363100012082604",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089864",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098051",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152659",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152686",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152838",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154236",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156408",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153790",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155338",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156029",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156256",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156297",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156811",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158056",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158776",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159284",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159698",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160715",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160906",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161749",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161977",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162035",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163776",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164174",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166194",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165297",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165800",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167258",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012221673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236049",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236354",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236387",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236396",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236537",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237058",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012238733",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012075022",
+   "alongM": -104.73,
+   "widthM": 25.57,
+   "eavesM": 12.54,
+   "roofMaxM": 15.32,
+   "storeys3dbag": 5,
+   "builtYear": 1993,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012152794",
+   "alongM": -89.5,
+   "widthM": 5.04,
+   "eavesM": 15.03,
+   "roofMaxM": 17.64,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156819",
+   "alongM": -84.49,
+   "widthM": 5.04,
+   "eavesM": 14.99,
+   "roofMaxM": 15.61,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236543",
+   "alongM": -79.48,
+   "widthM": 5.05,
+   "eavesM": 15.08,
+   "roofMaxM": 15.25,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164348",
+   "alongM": -74.48,
+   "widthM": 5.04,
+   "eavesM": 15.15,
+   "roofMaxM": 15.47,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165727",
+   "alongM": -69.47,
+   "widthM": 5.04,
+   "eavesM": 15.25,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161426",
+   "alongM": -63.99,
+   "widthM": 5.96,
+   "eavesM": 13.31,
+   "roofMaxM": 16,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158287",
+   "alongM": -58.05,
+   "widthM": 5.96,
+   "eavesM": 13.39,
+   "roofMaxM": 16.99,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155866",
+   "alongM": -52.46,
+   "widthM": 5.26,
+   "eavesM": 14.09,
+   "roofMaxM": 15.99,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163988",
+   "alongM": -47.63,
+   "widthM": 4.43,
+   "eavesM": 16.66,
+   "roofMaxM": 16.75,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161921",
+   "alongM": -43.21,
+   "widthM": 4.43,
+   "eavesM": 16.37,
+   "roofMaxM": 16.53,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154117",
+   "alongM": -38.74,
+   "widthM": 4.54,
+   "eavesM": 16.38,
+   "roofMaxM": 18.88,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165545",
+   "alongM": -34.32,
+   "widthM": 4.33,
+   "eavesM": 16.46,
+   "roofMaxM": 16.5,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157336",
+   "alongM": -29.66,
+   "widthM": 5,
+   "eavesM": 16.48,
+   "roofMaxM": 16.51,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165202",
+   "alongM": -24.68,
+   "widthM": 5,
+   "eavesM": 12.65,
+   "roofMaxM": 14.98,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161405",
+   "alongM": -19.69,
+   "widthM": 5,
+   "eavesM": 12.69,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156722",
+   "alongM": -14.7,
+   "widthM": 5,
+   "eavesM": 12.59,
+   "roofMaxM": 14.66,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079140",
+   "alongM": -9.71,
+   "widthM": 5,
+   "eavesM": 12.56,
+   "roofMaxM": 14.61,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160903",
+   "alongM": -4.81,
+   "widthM": 4.81,
+   "eavesM": 12.85,
+   "roofMaxM": 15.24,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012141454",
+   "alongM": 0,
+   "widthM": 4.81,
+   "eavesM": 12.74,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  }
+ ]
+}

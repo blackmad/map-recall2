@@ -1,0 +1,145 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:50:41.343Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161426",
+   "addresses": [
+    "Albert Cuypstraat 210",
+    "Albert Cuypstraat 210E",
+    "Albert Cuypstraat 210D",
+    "Albert Cuypstraat 210C",
+    "Albert Cuypstraat 210B",
+    "Albert Cuypstraat 210A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 210-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000563923"
+    },
+    {
+     "address": "Albert Cuypstraat 210E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012590364"
+    },
+    {
+     "address": "Albert Cuypstraat 210D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012590363"
+    },
+    {
+     "address": "Albert Cuypstraat 210C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012590362"
+    },
+    {
+     "address": "Albert Cuypstraat 210B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012590361"
+    },
+    {
+     "address": "Albert Cuypstraat 210A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012590360"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557930,
+     "lngLat": [
+      4.896243,
+      52.3560662
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "210-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-31",
+      "contact:instagram": "ramen_fujitora",
+      "cuisine": "ramen",
+      "facebook": "https://www.facebook.com/people/Fujitora-Amsterdam/61555405107420",
+      "name": "Fujitora",
+      "opening_hours": "Mo-Fr 17:30-21:00; Sa-Su 12:00-15:00,17:30-21:00",
+      "phone": "+31 20 7371522",
+      "website": "https://fujitora-amsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158287",
+   "addresses": [
+    "Albert Cuypstraat 208"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 208-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000563915"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557910,
+     "lngLat": [
+      4.8961646,
+      52.3560446
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "208-H",
+      "addr:postcode": "1073BM",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@risebakery.nl",
+      "name": "Rise Bakery",
+      "opening_hours": "Mo-Tu,Fr-Sa 08:00-15:00; Su 09:30-15:00",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.risebakeryamsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:50:41.343Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155866",
+   "addresses": [
+    "Albert Cuypstraat 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 206-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000563908"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

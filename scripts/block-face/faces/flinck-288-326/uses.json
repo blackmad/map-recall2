@@ -1,0 +1,396 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164666",
+   "addresses": [
+    "Govert Flinckstraat 322"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 322-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000649376"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236692",
+   "addresses": [
+    "Govert Flinckstraat 320"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 320-H",
+     "use": "woonfunctie",
+     "areaM2": 331,
+     "bagId": "0363010000649370"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160477",
+   "addresses": [
+    "Govert Flinckstraat 318"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 318-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000649364"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152488",
+   "addresses": [
+    "Govert Flinckstraat 316A",
+    "Govert Flinckstraat 316B",
+    "Govert Flinckstraat 316C",
+    "Govert Flinckstraat 316D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 316A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001030336"
+    },
+    {
+     "address": "Govert Flinckstraat 316B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001030337"
+    },
+    {
+     "address": "Govert Flinckstraat 316C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001030338"
+    },
+    {
+     "address": "Govert Flinckstraat 316D",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001030339"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153681",
+   "addresses": [
+    "Govert Flinckstraat 314"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 314-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000649352"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166237",
+   "addresses": [
+    "Govert Flinckstraat 312"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 312-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000649346"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155898",
+   "addresses": [
+    "Govert Flinckstraat 310"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 310-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000649341"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166771",
+   "addresses": [
+    "Govert Flinckstraat 308"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 308-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000649332"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160076",
+   "addresses": [
+    "Govert Flinckstraat 306"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 306-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000649326"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165449",
+   "addresses": [
+    "Govert Flinckstraat 304"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 304-H",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000649320"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167285",
+   "addresses": [
+    "Govert Flinckstraat 302"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 302-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000649313"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166374",
+   "addresses": [
+    "Govert Flinckstraat 300"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 300-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000649304"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558767,
+     "lngLat": [
+      4.8984386,
+      52.3562403
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "300-H",
+      "addr:postcode": "1073CH",
+      "addr:street": "Govert Flinckstraat",
+      "amenity": "restaurant",
+      "cuisine": "french",
+      "email": "montblanc.amsterdam@gmail.com",
+      "name": "Mont Blanc",
+      "opening_hours": "Tu-Sa 19:00-23:30",
+      "phone": "+31 20 7741645",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.restaurantmontblanc.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092498",
+   "addresses": [
+    "Govert Flinckstraat 298"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 298-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000649295"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163764",
+   "addresses": [
+    "Govert Flinckstraat 294",
+    "Govert Flinckstraat 296"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 294-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000649277"
+    },
+    {
+     "address": "Govert Flinckstraat 296-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010011872102"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090966",
+   "addresses": [
+    "Govert Flinckstraat 294A",
+    "Govert Flinckstraat 294B",
+    "Govert Flinckstraat 294C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 294A",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000649282"
+    },
+    {
+     "address": "Govert Flinckstraat 294B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012085639"
+    },
+    {
+     "address": "Govert Flinckstraat 294C",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012085640"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160474",
+   "addresses": [
+    "Govert Flinckstraat 292"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 292-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000649268"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114128",
+   "addresses": [
+    "Govert Flinckstraat 290"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 290-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000649258"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152670",
+   "addresses": [
+    "Govert Flinckstraat 288"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 288-H",
+     "use": "industriefunctie",
+     "areaM2": 112,
+     "bagId": "0363010000649250"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558707,
+     "lngLat": [
+      4.8979557,
+      52.3561041
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "288-H",
+      "addr:postcode": "1073CH",
+      "addr:street": "Govert Flinckstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-20",
+      "cuisine": "brunch",
+      "email": "info@florentinbrunch.com",
+      "name": "Florentin St.",
+      "name:ar": "ش. فلورنتين",
+      "name:he": "רחי פלורנטיו",
+      "phone": "+31 20 770 5984",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://florentinbrunch.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

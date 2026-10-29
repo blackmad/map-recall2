@@ -1,0 +1,134 @@
+{
+ "street": "Ceintuurbaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156313",
+   "addresses": [
+    "Ceintuurbaan 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 93-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000602428"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332689452,
+     "lngLat": [
+      4.8914354,
+      52.3529952
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "93-H",
+      "addr:postcode": "1072EX",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "fast_food",
+      "brand": "Subway",
+      "brand:wikidata": "Q244457",
+      "check_date": "2026-01-27",
+      "cuisine": "sandwich",
+      "delivery": "yes",
+      "name": "Subway",
+      "opening_hours": "Mo-Sa 09:00-21:00; Su 10:00-21:00",
+      "phone": "+31 20 4705974",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://restaurants.subway.com/nl/nederland/amsterdam/ceintuurbaan-93",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155384",
+   "addresses": [
+    "Ceintuurbaan 95",
+    "Ceintuurbaan 97",
+    "Ceintuurbaan 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 307,
+     "bagId": "0363010001020785"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163640",
+   "addresses": [
+    "Ceintuurbaan 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 101-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000602445"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817609912,
+     "lngLat": [
+      4.8917597,
+      52.3530409
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101-H",
+      "addr:postcode": "1072EX",
+      "addr:street": "Ceintuurbaan",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-27",
+      "email": "amsterdam@toverschaar.nl",
+      "name": "Toverschaar",
+      "opening_hours": "Mo-Fr 09:30-18:30; Sa 09:30-17:00; Su 13:00-17:00",
+      "phone": "+31 20 6739838",
+      "shop": "tailor",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105633572,
+     "lngLat": [
+      4.8917766,
+      52.3529599
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  }
+ ]
+}

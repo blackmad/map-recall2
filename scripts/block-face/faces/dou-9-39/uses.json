@@ -1,0 +1,380 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153294",
+   "addresses": [
+    "Gerard Doustraat 9C",
+    "Gerard Doustraat 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 81",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010001166673"
+    },
+    {
+     "address": "Gerard Doustraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001166681"
+    },
+    {
+     "address": "Gerard Doustraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001962982"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817456234,
+     "lngLat": [
+      4.8886627,
+      52.355296
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "81",
+      "addr:postcode": "1072BN",
+      "addr:street": "Frans Halsstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Shah Saatchi",
+      "opening_hours": "Tu 12:00-19:00; We-Su 11:00-20:00",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159720",
+   "addresses": [
+    "Gerard Doustraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 9-H",
+     "use": "industriefunctie",
+     "areaM2": 43,
+     "bagId": "0363010000643547"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165873",
+   "addresses": [
+    "Gerard Doustraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000643555"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161285",
+   "addresses": [
+    "Gerard Doustraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000643564"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237347",
+   "addresses": [
+    "Gerard Doustraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010001026169"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077763",
+   "addresses": [
+    "Gerard Doustraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001026171"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159598",
+   "addresses": [
+    "Gerard Doustraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000643586"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166852",
+   "addresses": [
+    "Gerard Doustraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000643598"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155345",
+   "addresses": [
+    "Gerard Doustraat 23C",
+    "Gerard Doustraat 23B",
+    "Gerard Doustraat 23A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001020033"
+    },
+    {
+     "address": "Gerard Doustraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010001020779"
+    },
+    {
+     "address": "Gerard Doustraat 23A",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001020782"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166381",
+   "addresses": [
+    "Gerard Doustraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000643619"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158826",
+   "addresses": [
+    "Gerard Doustraat 25A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 25A-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000643624"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160320",
+   "addresses": [
+    "Gerard Doustraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000643631"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236483",
+   "addresses": [
+    "Gerard Doustraat 29",
+    "Gerard Doustraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001040428"
+    },
+    {
+     "address": "Gerard Doustraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001040429"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155782",
+   "addresses": [
+    "Gerard Doustraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 33-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000643656"
+    },
+    {
+     "address": "Gerard Doustraat 33-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012097364"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506067250,
+     "lngLat": [
+      4.8896399,
+      52.3553615
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33-H",
+      "addr:postcode": "1072VK",
+      "addr:street": "Gerard Doustraat",
+      "air_conditioning": "yes",
+      "amenity": "restaurant",
+      "check_date": "2026-01-08",
+      "contact:instagram": "spangmakandra1978",
+      "cuisine": "surinamese",
+      "delivery": "yes",
+      "email": "info@spangmakandra.nl",
+      "name": "Spang Makandra",
+      "opening_hours": "Mo-Sa 11:00-22:00; Su 13:00-22:00",
+      "phone": "+31 20 6705081",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.spangmakandra.nl",
+      "website:menu": "https://www.spangmakandra.nl/_files/ugd/a0673b_f9ee21eae0e142f2b081d3cc2eb980cc.pdf"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155438",
+   "addresses": [
+    "Gerard Doustraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643664"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156918",
+   "addresses": [
+    "Gerard Doustraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000987825"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152469",
+   "addresses": [
+    "Gerard Doustraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 39-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000643680"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

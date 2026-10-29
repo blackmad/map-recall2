@@ -1,0 +1,816 @@
+{
+ "street": "Ruysdaelkade",
+ "seed": "0363100012163559",
+ "members": [
+  "0363100012163559",
+  "0363100012157203",
+  "0363100012098429",
+  "0363100012165817",
+  "0363100012157389",
+  "0363100012152303",
+  "0363100012162417",
+  "0363100012092127",
+  "0363100012070028",
+  "0363100012164608",
+  "0363100012163135",
+  "0363100012155531",
+  "0363100012165482",
+  "0363100012164799"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012164799 (face continues: 236004 162318 163098 158091 165275 160200 153592)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012152559",
+   "reason": "frontage 195.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012152710",
+   "reason": "frontage 173.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012066812",
+   "reason": "frontage 137.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012071827",
+   "reason": "frontage 85.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012073912",
+   "reason": "frontage 108.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012077492",
+   "reason": "frontage 92.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012087328",
+   "reason": "frontage 72.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012091498",
+   "reason": "frontage 113.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012093534",
+   "reason": "frontage 123.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 154.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012105881",
+   "reason": "frontage 53.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012110929",
+   "reason": "frontage 78.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012114350",
+   "reason": "frontage 151.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012116862",
+   "reason": "frontage 119.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012118196",
+   "reason": "frontage 159.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012118922",
+   "reason": "frontage 115.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012123938",
+   "reason": "frontage 117.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012138135",
+   "reason": "frontage 144.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012142126",
+   "reason": "frontage 66.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012145946",
+   "reason": "frontage 161.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012148007",
+   "reason": "frontage 148.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012151391",
+   "reason": "frontage 40.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012152579",
+   "reason": "frontage 144.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012152944",
+   "reason": "frontage 70.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012153280",
+   "reason": "frontage 145.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012153361",
+   "reason": "frontage 143.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012153362",
+   "reason": "frontage 112.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012154270",
+   "reason": "frontage 114.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012154349",
+   "reason": "frontage 36.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012154376",
+   "reason": "frontage 112.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012155486",
+   "reason": "frontage 167.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012155600",
+   "reason": "frontage 78.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012155840",
+   "reason": "frontage 33.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012156114",
+   "reason": "frontage 118.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012156746",
+   "reason": "frontage 39.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012156937",
+   "reason": "sightline to Ruysdaelkade crosses 0363100012157729"
+  },
+  {
+   "pandId": "0363100012157140",
+   "reason": "sightline to Ruysdaelkade crosses 0363100012237018"
+  },
+  {
+   "pandId": "0363100012157291",
+   "reason": "frontage 143.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012157294",
+   "reason": "frontage 45.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012157600",
+   "reason": "frontage 83.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012158664",
+   "reason": "frontage 180.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159553",
+   "reason": "frontage 188.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159865",
+   "reason": "frontage 190.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012161104",
+   "reason": "frontage 179.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162418",
+   "reason": "frontage 198.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163377",
+   "reason": "frontage 185.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012157614",
+   "reason": "frontage 90.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012157631",
+   "reason": "sightline to Ruysdaelkade crosses 0363100012158980"
+  },
+  {
+   "pandId": "0363100012157632",
+   "reason": "frontage 30.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012157857",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012158941",
+   "reason": "frontage 101.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012158980",
+   "reason": "sightline to Ruysdaelkade crosses 0363100012160781"
+  },
+  {
+   "pandId": "0363100012158987",
+   "reason": "frontage 118.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159179",
+   "reason": "frontage 111.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159456",
+   "reason": "frontage 84.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159558",
+   "reason": "frontage 144.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012159617",
+   "reason": "frontage 45.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012160093",
+   "reason": "frontage 87.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012160429",
+   "reason": "frontage 141.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012160700",
+   "reason": "frontage 54.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012161417",
+   "reason": "frontage 101.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162055",
+   "reason": "frontage 161.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162065",
+   "reason": "sightline to Ruysdaelkade crosses 0363100012153328"
+  },
+  {
+   "pandId": "0363100012162212",
+   "reason": "frontage 95.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162222",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162322",
+   "reason": "frontage 155.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162576",
+   "reason": "frontage 116.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162907",
+   "reason": "frontage 144.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012162924",
+   "reason": "frontage 96.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163052",
+   "reason": "frontage 143.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163233",
+   "reason": "frontage 112.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163246",
+   "reason": "frontage 118.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163358",
+   "reason": "frontage 57.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012163556",
+   "reason": "frontage 143.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012164339",
+   "reason": "frontage 66.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012164553",
+   "reason": "frontage 37.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175062",
+   "reason": "frontage 121.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175064",
+   "reason": "frontage 124.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176210",
+   "reason": "frontage 122.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176211",
+   "reason": "frontage 127.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176212",
+   "reason": "frontage 130.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176213",
+   "reason": "frontage 132.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012184747",
+   "reason": "frontage 162.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012171824",
+   "reason": "frontage 119.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012171971",
+   "reason": "frontage 121.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012171974",
+   "reason": "frontage 114.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012171982",
+   "reason": "frontage 118.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012171983",
+   "reason": "frontage 116.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012172644",
+   "reason": "frontage 159.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175058",
+   "reason": "frontage 117.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175059",
+   "reason": "frontage 116.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175060",
+   "reason": "frontage 116.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175061",
+   "reason": "frontage 117.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175063",
+   "reason": "frontage 119.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176829",
+   "reason": "frontage 99.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012177023",
+   "reason": "frontage 127.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012177024",
+   "reason": "frontage 123.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012177027",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012165002",
+   "reason": "frontage 110.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012167426",
+   "reason": "frontage 182.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012175055",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176208",
+   "reason": "frontage 104.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176217",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012164554",
+   "reason": "frontage 44.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012165003",
+   "reason": "frontage 84.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012165478",
+   "reason": "frontage 75.6 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012165741",
+   "reason": "frontage 144.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012165952",
+   "reason": "frontage 85.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012166055",
+   "reason": "frontage 54.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012166077",
+   "reason": "frontage 50.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012166428",
+   "reason": "frontage 89.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012166483",
+   "reason": "frontage 124.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012167124",
+   "reason": "frontage 72.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012167283",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176206",
+   "reason": "frontage 91.2 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176207",
+   "reason": "frontage 97.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176209",
+   "reason": "frontage 86.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176215",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012176216",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012193147",
+   "reason": "frontage 154.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012237298",
+   "reason": "frontage 90.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012241554",
+   "reason": "frontage 190.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012228626",
+   "reason": "frontage 199.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236534",
+   "reason": "frontage 175.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012237354",
+   "reason": "frontage 168.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012194197",
+   "reason": "frontage 163.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012197306",
+   "reason": "frontage 109.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012197307",
+   "reason": "frontage 110.3 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012205606",
+   "reason": "no frontage on Ruysdaelkade: No footprint edge faces Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012226693",
+   "reason": "frontage 143.5 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012227385",
+   "reason": "frontage 156.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012233523",
+   "reason": "frontage 52.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012233526",
+   "reason": "frontage 104.0 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012235994",
+   "reason": "frontage 94.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236103",
+   "reason": "frontage 109.1 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236127",
+   "reason": "frontage 52.4 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236293",
+   "reason": "frontage 90.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236686",
+   "reason": "frontage 100.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012236794",
+   "reason": "frontage 123.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012237124",
+   "reason": "frontage 114.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012237318",
+   "reason": "frontage 134.8 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012241553",
+   "reason": "frontage 84.7 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012242075",
+   "reason": "frontage 167.9 m from Ruysdaelkade"
+  },
+  {
+   "pandId": "0363100012155606",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159161",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159837",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160781",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161167",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012195331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236547",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012163559",
+   "alongM": 0,
+   "widthM": 12.26,
+   "eavesM": 14.88,
+   "roofMaxM": 17.43,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012157203",
+   "alongM": 9.39,
+   "widthM": 6.52,
+   "eavesM": 15.34,
+   "roofMaxM": 17.52,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012098429",
+   "alongM": 15.94,
+   "widthM": 6.58,
+   "eavesM": 15.2,
+   "roofMaxM": 17.51,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012165817",
+   "alongM": 22.46,
+   "widthM": 6.46,
+   "eavesM": 14.97,
+   "roofMaxM": 17.48,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012157389",
+   "alongM": 28.92,
+   "widthM": 6.46,
+   "eavesM": 15.05,
+   "roofMaxM": 17.59,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012152303",
+   "alongM": 35.45,
+   "widthM": 6.6,
+   "eavesM": 15.19,
+   "roofMaxM": 17.49,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162417",
+   "alongM": 42.28,
+   "widthM": 7.06,
+   "eavesM": 15.6,
+   "roofMaxM": 18.18,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012092127",
+   "alongM": 49.36,
+   "widthM": 7.11,
+   "eavesM": 15.54,
+   "roofMaxM": 18.7,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012070028",
+   "alongM": 55.97,
+   "widthM": 6.09,
+   "eavesM": 15.45,
+   "roofMaxM": 18.58,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012164608",
+   "alongM": 62.14,
+   "widthM": 6.25,
+   "eavesM": 18.05,
+   "roofMaxM": 18.09,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012163135",
+   "alongM": 68.42,
+   "widthM": 6.16,
+   "eavesM": 15.37,
+   "roofMaxM": 18.12,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override.",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012155531",
+   "alongM": 74.62,
+   "widthM": 6.24,
+   "eavesM": 15.51,
+   "roofMaxM": 18.05,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012165482",
+   "alongM": 80.86,
+   "widthM": 6.24,
+   "eavesM": 15.31,
+   "roofMaxM": 18.06,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012164799",
+   "alongM": 87.12,
+   "widthM": 6.3,
+   "eavesM": 15.14,
+   "roofMaxM": 17.95,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

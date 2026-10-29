@@ -1,0 +1,288 @@
+{
+ "street": "Ruysdaelkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163559",
+   "addresses": [
+    "Ruysdaelkade 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 15-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000801044"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157203",
+   "addresses": [
+    "Ruysdaelkade 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 17-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000801048"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098429",
+   "addresses": [
+    "Ruysdaelkade 19A",
+    "Ruysdaelkade 19B",
+    "Ruysdaelkade 19C",
+    "Ruysdaelkade 19D",
+    "Ruysdaelkade 19E",
+    "Ruysdaelkade 19F",
+    "Ruysdaelkade 19G",
+    "Ruysdaelkade 19J",
+    "Ruysdaelkade 19H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 19A",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000937576"
+    },
+    {
+     "address": "Ruysdaelkade 19B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990457"
+    },
+    {
+     "address": "Ruysdaelkade 19C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990458"
+    },
+    {
+     "address": "Ruysdaelkade 19D",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990459"
+    },
+    {
+     "address": "Ruysdaelkade 19E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990460"
+    },
+    {
+     "address": "Ruysdaelkade 19F",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990461"
+    },
+    {
+     "address": "Ruysdaelkade 19G",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990462"
+    },
+    {
+     "address": "Ruysdaelkade 19J",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000990463"
+    },
+    {
+     "address": "Ruysdaelkade 19H",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000982489"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165817",
+   "addresses": [
+    "Ruysdaelkade 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 21-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000801055"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157389",
+   "addresses": [
+    "Ruysdaelkade 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 23-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000801059"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152303",
+   "addresses": [
+    "Ruysdaelkade 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 25-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000801062"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162417",
+   "addresses": [
+    "Ruysdaelkade 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 27-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000801064"
+    },
+    {
+     "address": "Ruysdaelkade 27-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012073437"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092127",
+   "addresses": [
+    "Ruysdaelkade 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 29",
+     "use": "woonfunctie",
+     "areaM2": 246,
+     "bagId": "0363010001025291"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070028",
+   "addresses": [
+    "Ruysdaelkade 31"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164608",
+   "addresses": [
+    "Ruysdaelkade 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 33-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000801070"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163135",
+   "addresses": [
+    "Ruysdaelkade 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 35-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000801073"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155531",
+   "addresses": [
+    "Ruysdaelkade 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 37-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000801076"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165482",
+   "addresses": [
+    "Ruysdaelkade 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 39-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000801079"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164799",
+   "addresses": [
+    "Ruysdaelkade 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 41-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000801082"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

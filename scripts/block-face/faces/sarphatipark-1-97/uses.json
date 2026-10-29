@@ -1,0 +1,398 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159611",
+   "addresses": [
+    "Sarphatipark 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 1-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001167672"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2630038254,
+     "lngLat": [
+      4.8938005,
+      52.3546351
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-H",
+      "addr:postcode": "1073CN",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-29",
+      "delivery": "yes",
+      "drive_through": "no",
+      "email": "info@bier-baum.nl",
+      "name": "Bierbaum",
+      "opening_hours": "Mo-Fr 14:00-22:00; Sa 12:00-22:00; Su 12:00-18:00",
+      "phone": "+31 20 7792040",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://bier-baum.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12909647109,
+     "lngLat": [
+      4.8937954,
+      52.3545404
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01666",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    },
+    {
+     "type": "node",
+     "id": 13509430831,
+     "lngLat": [
+      4.8938277,
+      52.3545477
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01667",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166006",
+   "addresses": [
+    "Sarphatipark 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 3-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012130878"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158759",
+   "addresses": [
+    "Sarphatipark 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 5-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000804093"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162204",
+   "addresses": [
+    "Sarphatipark 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 7-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000804101"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160634",
+   "addresses": [
+    "Sarphatipark 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 9-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000804110"
+    },
+    {
+     "address": "Sarphatipark 9-H",
+     "use": "woonfunctie",
+     "areaM2": 217,
+     "bagId": "0363010012569952"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167281",
+   "addresses": [
+    "Sarphatipark 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 11-H",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010000804117"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156361",
+   "addresses": [
+    "Sarphatipark 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 13-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000804122"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162183",
+   "addresses": [
+    "Sarphatipark 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 15-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000804127"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152806",
+   "addresses": [
+    "Sarphatipark 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 17-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000804133"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155849",
+   "addresses": [
+    "Sarphatipark 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 19-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000804140"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12909646253,
+     "lngLat": [
+      4.8946217,
+      52.3547267
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158447",
+   "addresses": [
+    "Sarphatipark 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 21-H",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000804146"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12909677466,
+     "lngLat": [
+      4.8946975,
+      52.3547444
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156598",
+   "addresses": [
+    "Sarphatipark 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 23-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000804152"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162953",
+   "addresses": [
+    "Sarphatipark 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 25-H",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010000804158"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152399",
+   "addresses": [
+    "Sarphatipark 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 27-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000804163"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161937",
+   "addresses": [
+    "Sarphatipark 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 29-H",
+     "use": "woonfunctie",
+     "areaM2": 286,
+     "bagId": "0363010000804168"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558714,
+     "lngLat": [
+      4.8950417,
+      52.3549111
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29-H",
+      "addr:postcode": "1073CP",
+      "addr:street": "Sarphatipark",
+      "email": "info@taqt.nl",
+      "name": "TAQT",
+      "office": "consulting",
+      "phone": "+31 6 21640711",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://taqt.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161698",
+   "addresses": [
+    "Sarphatipark 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 31-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000804175"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

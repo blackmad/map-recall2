@@ -1,0 +1,540 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164235",
+   "addresses": [
+    "Van Woustraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 191A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000602600"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1225666492,
+     "lngLat": [
+      4.9009479,
+      52.3549133
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "cafe",
+      "branch": "CC Ceintuur",
+      "brand": "Coffee Company",
+      "brand:wikidata": "Q108927063",
+      "check_date": "2026-01-20",
+      "cuisine": "coffee_shop",
+      "name": "Coffee Company",
+      "opening_hours": "Mo-Fr 07:30-18:00; Sa-Su 08:30-18:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 303 3873",
+      "takeaway": "yes",
+      "website": "https://coffeecompany.nl/locations/van-woustraat-92/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134906",
+   "addresses": [
+    "Van Woustraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 90-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000991406"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249628968,
+     "lngLat": [
+      4.9007184,
+      52.354809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "90",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "atm",
+      "cash_in": "no",
+      "fee": "yes",
+      "fixme": "Check brand and operator of atm.",
+      "mapillary": "3234588680037851",
+      "note": "brand of ATM machine: Wincor Nixdorf",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "address",
+     "distanceM": 23.9
+    },
+    {
+     "type": "node",
+     "id": 1261916822,
+     "lngLat": [
+      4.900822,
+      52.354931
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "post_office",
+      "name": "Bruna",
+      "note": "Inside Bruna",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2643609330,
+     "lngLat": [
+      4.900926,
+      52.3549639
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "branch": "Amsterdam Van Woustraat",
+      "brand": "Bruna",
+      "brand:website": "https://www.bruna.nl/",
+      "brand:wikidata": "Q3317555",
+      "brand:wikipedia": "nl:Bruna (winkelketen)",
+      "check_date": "2026-01-20",
+      "name": "Bruna",
+      "opening_hours": "Mo 09:00-18:00; Tu-Fr 08:30-18:00; Sa 08:30-17:30",
+      "phone": "+31 20 662 6331",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bruna.nl/winkels/amsterdam/761"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471162388,
+     "lngLat": [
+      4.9009856,
+      52.3549843
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158407",
+   "addresses": [
+    "Van Woustraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000848917"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559492,
+     "lngLat": [
+      4.9008866,
+      52.3550155
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "branch": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "female:signed": "no",
+      "male:signed": "no",
+      "name": "Pieter Bas",
+      "opening_hours": "Mo 10:00-18:00; Tu-Fr 09:30-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 7371780",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153372",
+   "addresses": [
+    "Van Woustraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 86-H",
+     "use": "kantoorfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000848909"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559485,
+     "lngLat": [
+      4.9008471,
+      52.3550646
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "86-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Zuid-De Pijp",
+      "check_date": "2026-01-20",
+      "cuisine": "indonesian",
+      "delivery": "yes",
+      "diet:halal": "yes",
+      "drive_through": "no",
+      "email": "info@tokobersama.nl",
+      "name": "Toko Bersama",
+      "opening_hours": "Mo-Su 12:00-20:00",
+      "phone": "+31 20 3030524",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://tokobersama.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236830",
+   "addresses": [
+    "Van Woustraat 82",
+    "Van Woustraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000848891"
+    },
+    {
+     "address": "Van Woustraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012061130"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559478,
+     "lngLat": [
+      4.9008085,
+      52.3551086
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "84-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "email": "amsterdam@ubnuitzendbureau.com",
+      "name": "UBN Uitzendbureau",
+      "office": "employment_agency",
+      "opening_hours": "Mo-Fr 08:30-17:30",
+      "phone": "+31 20 3058830",
+      "website": "https://www.ubnuitzendbureau.com/vestiging/uitzendbureau-amsterdam/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161714",
+   "addresses": [
+    "Van Woustraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000848884"
+    },
+    {
+     "address": "Van Woustraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 230,
+     "bagId": "0363010012061128"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1456942669,
+     "lngLat": [
+      4.9007441,
+      52.3551812
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80-H",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "branch": "Amsterdam Van Woustraat",
+      "brand": "Holland & Barrett",
+      "brand:wikidata": "Q5880870",
+      "brand:wikipedia": "en:Holland & Barrett",
+      "check_date": "2026-01-20",
+      "email": "klantenservice@hollandandbarrett.nl",
+      "name": "Holland & Barrett",
+      "opening_hours": "Mo 11:00-18:00; Tu-We,Fr-Sa 09:30-18:00; Th 09:30-20:00; Su 12:00-18:00",
+      "phone": "+31 20 8885031",
+      "shop": "health_food",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hollandandbarrett.nl/winkels/amsterdam-van-woustraat-7759/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162507",
+   "addresses": [
+    "Van Woustraat 78A",
+    "Van Woustraat 78B",
+    "Van Woustraat 78C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 78A",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000998095"
+    },
+    {
+     "address": "Van Woustraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000998096"
+    },
+    {
+     "address": "Van Woustraat 78C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000998097"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559452,
+     "lngLat": [
+      4.9006913,
+      52.3552555
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78A",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "branch": "Amsterdam Van Woustraat",
+      "check_date": "2026-01-20",
+      "cuisine": "coffee_shop",
+      "email": "info@vlaamschbroodhuys.nl",
+      "name": "Vlaamsch Broodhuys",
+      "opening_hours": "Mo-Su 08:00-17:00",
+      "payment:cash": "no",
+      "phone": "+31 20 4004555",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/van-woustraat"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165243",
+   "addresses": [
+    "Van Woustraat 76A",
+    "Van Woustraat 76B",
+    "Van Woustraat 76C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 76A",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000998092"
+    },
+    {
+     "address": "Van Woustraat 76B",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000998093"
+    },
+    {
+     "address": "Van Woustraat 76C",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000998094"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559447,
+     "lngLat": [
+      4.9006546,
+      52.3553024
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76A",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "check_date": "2026-01-20",
+      "cuisine": "sushi",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Sushi Only",
+      "opening_hours": "We-Mo 12:00-22:00",
+      "phone": "+31 20 737 0375",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "only",
+      "website": "http://sushionly.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156225",
+   "addresses": [
+    "Van Woustraat 74A",
+    "Van Woustraat 74B",
+    "Van Woustraat 74C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 74A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000998089"
+    },
+    {
+     "address": "Van Woustraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000998090"
+    },
+    {
+     "address": "Van Woustraat 74C",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000998091"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559442,
+     "lngLat": [
+      4.9006127,
+      52.3553539
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "74A",
+      "addr:postcode": "1073LP",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "name": "Veloretti",
+      "service:bicycle:repair": "yes",
+      "shop": "bicycle",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

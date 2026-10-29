@@ -1,0 +1,696 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161932",
+   "addresses": [
+    "Albert Cuypstraat 272",
+    "Albert Cuypstraat 274",
+    "Albert Cuypstraat 276",
+    "Albert Cuypstraat 276D",
+    "Albert Cuypstraat 276E",
+    "Albert Cuypstraat 276F",
+    "Albert Cuypstraat 276G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 272-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000672970"
+    },
+    {
+     "address": "Albert Cuypstraat 274-H",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000672972"
+    },
+    {
+     "address": "Albert Cuypstraat 276-H",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000921145"
+    },
+    {
+     "address": "Albert Cuypstraat 276D",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012110116"
+    },
+    {
+     "address": "Albert Cuypstraat 276E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012110117"
+    },
+    {
+     "address": "Albert Cuypstraat 276F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012110118"
+    },
+    {
+     "address": "Albert Cuypstraat 276G",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012110119"
+    }
+   ],
+   "units": 25,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558630,
+     "lngLat": [
+      4.8989732,
+      52.3568773
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "272-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "name": "Luxury Brand Amsterdam",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817558639,
+     "lngLat": [
+      4.8990644,
+      52.3569055
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "274-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@fix-zo.nl",
+      "name": "Fixzo",
+      "opening_hours": "Mo-Sa 10:00-17:30",
+      "shop": "repair",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fix-zo.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817558644,
+     "lngLat": [
+      4.8991887,
+      52.3568986
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "276-2",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "guest_house": "guest_house",
+      "name": "The Market Retreat",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817558650,
+     "lngLat": [
+      4.8991595,
+      52.3569334
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "276-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "diet:kosher": "yes",
+      "email": "info@kosher-point.com",
+      "name": "Kosher Point",
+      "opening_hours": "Mo-Th 11:00-19:00; Fr 09:00-16:00; Su 12:00-19:00",
+      "phone": "+31 20 7865435",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://kosher-point.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471523518,
+     "lngLat": [
+      4.8990897,
+      52.3568736
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "274-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "post_office",
+      "name": "Fixzo",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236829",
+   "addresses": [
+    "Albert Cuypstraat 264",
+    "Albert Cuypstraat 266",
+    "Albert Cuypstraat 268",
+    "Albert Cuypstraat 270"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 266-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000665160"
+    },
+    {
+     "address": "Albert Cuypstraat 264-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000564151"
+    },
+    {
+     "address": "Albert Cuypstraat 268-H",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010003684094"
+    }
+   ],
+   "units": 33,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558382,
+     "lngLat": [
+      4.8987577,
+      52.3568148
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "266-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "clothes": "women;oversize",
+      "email": "info@foxybrownstyling.nl",
+      "name": "Foxy Brown",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 4701410",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://foxybrownshop.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817558395,
+     "lngLat": [
+      4.8988285,
+      52.3568353
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "268-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@voordeelgordijnen.nl",
+      "name": "Voordeelgordijnen",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 3638567",
+      "shop": "curtain",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.voordeelgordijnen.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158052",
+   "addresses": [
+    "Albert Cuypstraat 262"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 262-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000564144"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156841",
+   "addresses": [
+    "Albert Cuypstraat 260"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 260-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001168952"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558344,
+     "lngLat": [
+      4.8985566,
+      52.3567552
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "260-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-31",
+      "cuisine": "sandwich",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "email": "info@ranchi.amsterdam",
+      "name": "Ranchi Amsterdam",
+      "opening_hours": "Mo-Su 11:00-17:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ranchi.amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164706",
+   "addresses": [
+    "Albert Cuypstraat 258"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 258-H",
+     "use": "winkelfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000564125"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558325,
+     "lngLat": [
+      4.8984892,
+      52.3567357
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "258-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@ideaalgordijn.com",
+      "name": "Ideaal Gordijnen Specialisten",
+      "phone": "+31 20 6733616",
+      "shop": "curtain",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ideaalgordijin.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161251",
+   "addresses": [
+    "Albert Cuypstraat 256"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 256-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000564117"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558318,
+     "lngLat": [
+      4.8984185,
+      52.3567138
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "256-H",
+      "addr:postcode": "1073BR",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@mikadospeelgoed.nl",
+      "name": "Mikado Speelgoed",
+      "opening_hours": "Mo,We-Fr 10:00-16:30; Sa 10:00-17:00",
+      "phone": "+31 20 6713083",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://mikadospeelgoed.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072617",
+   "addresses": [
+    "Albert Cuypstraat 254A",
+    "Albert Cuypstraat 254B",
+    "Albert Cuypstraat 254C",
+    "Albert Cuypstraat 254D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 254A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000853367"
+    },
+    {
+     "address": "Albert Cuypstraat 254B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000937861"
+    },
+    {
+     "address": "Albert Cuypstraat 254C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000937862"
+    },
+    {
+     "address": "Albert Cuypstraat 254D",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000937863"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236226",
+   "addresses": [
+    "Albert Cuypstraat 250",
+    "Albert Cuypstraat 252"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 263A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000649151"
+    },
+    {
+     "address": "Govert Flinckstraat 263B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000649153"
+    },
+    {
+     "address": "Albert Cuypstraat 250-H",
+     "use": "winkelfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000995619"
+    },
+    {
+     "address": "Govert Flinckstraat 263C",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001963809"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165636",
+   "addresses": [
+    "Albert Cuypstraat 248"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 248-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000564085"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156996",
+   "addresses": [
+    "Albert Cuypstraat 246"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 246-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000564077"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163308",
+   "addresses": [
+    "Albert Cuypstraat 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 244-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000698992"
+    },
+    {
+     "address": "Albert Cuypstraat 244-O",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000564070"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165136",
+   "addresses": [
+    "Albert Cuypstraat 242"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 242-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000564060"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558226,
+     "lngLat": [
+      4.8979658,
+      52.3565812
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "242-H",
+      "addr:postcode": "1073BP",
+      "addr:street": "Albert Cuypstraat",
+      "email": "freya@folkvang.nl",
+      "name": "Folkvang",
+      "opening_hours": "Mo-Sa 10:30-18:00",
+      "shop": "esoteric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.folkvang.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233600",
+   "addresses": [
+    "Albert Cuypstraat 240"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 240-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000564056"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558217,
+     "lngLat": [
+      4.8978952,
+      52.3565608
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "240-H",
+      "addr:postcode": "1073BP",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-31",
+      "email": "info@lunchcafebozz.nl",
+      "name": "Lunchcafé Bozz",
+      "opening_hours": "Tu-Fr 09:00-17:00; Sa 09:00-18:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "yes",
+      "website": "https://lunchcafebozz.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160590",
+   "addresses": [
+    "Albert Cuypstraat 238",
+    "Albert Cuypstraat 238B",
+    "Albert Cuypstraat 238C",
+    "Albert Cuypstraat 238A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 238",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001016459"
+    },
+    {
+     "address": "Albert Cuypstraat 238B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001016460"
+    },
+    {
+     "address": "Albert Cuypstraat 238C",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001016461"
+    },
+    {
+     "address": "Albert Cuypstraat 238A",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001016462"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558096,
+     "lngLat": [
+      4.8977512,
+      52.3565164
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "238A",
+      "addr:postcode": "1073BP",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Leuke Laarsjes",
+      "brand": "Birkenstock",
+      "brand:wikidata": "Q648458",
+      "check_date": "2026-01-31",
+      "email": "info@leukelaarsjes.com",
+      "name": "Birkenstock",
+      "phone": "+31 20 4682703",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.leukelaarsjes.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

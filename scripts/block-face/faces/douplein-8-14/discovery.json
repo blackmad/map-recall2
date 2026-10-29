@@ -1,0 +1,769 @@
+{
+ "street": "Gerard Douplein",
+ "seed": "0363100012157580",
+ "members": [
+  "0363100012073807",
+  "0363100012157566",
+  "0363100012162905",
+  "0363100012157580"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012098051 28.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012093594",
+   "reason": "frontage 84.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012104472",
+   "reason": "frontage 108.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012116142",
+   "reason": "frontage 80.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012118823",
+   "reason": "frontage 108.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012145600",
+   "reason": "frontage 107.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012152509",
+   "reason": "frontage 93.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012152785",
+   "reason": "frontage 85.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012153115",
+   "reason": "frontage 129.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012153243",
+   "reason": "frontage 86.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012154091",
+   "reason": "frontage 75.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012154096",
+   "reason": "frontage 88.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012154109",
+   "reason": "frontage 119.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012155562",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012155595",
+   "reason": "frontage 99.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012156380",
+   "reason": "frontage 87.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157076",
+   "reason": "frontage 127.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157290",
+   "reason": "frontage 112.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012063457",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012074329",
+   "reason": "frontage 50.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012077301",
+   "reason": "frontage 46.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012077619",
+   "reason": "frontage 34.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012080102",
+   "reason": "frontage 46.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012089864",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157566"
+  },
+  {
+   "pandId": "0363100012093267",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157580"
+  },
+  {
+   "pandId": "0363100012094355",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012095852",
+   "reason": "sightline to Gerard Douplein crosses 0363100012145070"
+  },
+  {
+   "pandId": "0363100012115810",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012123889",
+   "reason": "frontage 38.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012127543",
+   "reason": "frontage 55.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012136858",
+   "reason": "frontage 72.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012141060",
+   "reason": "sightline to Gerard Douplein crosses 0363100012063457"
+  },
+  {
+   "pandId": "0363100012144545",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012145070",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012153437",
+   "reason": "frontage 56.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012153546",
+   "reason": "frontage 93.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012155337",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157365"
+  },
+  {
+   "pandId": "0363100012155392",
+   "reason": "frontage 40.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012155721",
+   "reason": "sightline to Gerard Douplein crosses 0363100012155337"
+  },
+  {
+   "pandId": "0363100012155726",
+   "reason": "sightline to Gerard Douplein crosses 0363100012162832"
+  },
+  {
+   "pandId": "0363100012155889",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157580"
+  },
+  {
+   "pandId": "0363100012155901",
+   "reason": "frontage 30.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012156473",
+   "reason": "frontage 69.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012156810",
+   "reason": "frontage 82.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012156811",
+   "reason": "sightline to Gerard Douplein crosses 0363100012162905"
+  },
+  {
+   "pandId": "0363100012157139",
+   "reason": "sightline to Gerard Douplein crosses 0363100012236908"
+  },
+  {
+   "pandId": "0363100012157319",
+   "reason": "frontage 64.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157475",
+   "reason": "frontage 93.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158043",
+   "reason": "frontage 66.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158149",
+   "reason": "frontage 86.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158174",
+   "reason": "frontage 106.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158188",
+   "reason": "frontage 79.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158205",
+   "reason": "frontage 106.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158451",
+   "reason": "frontage 90.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158606",
+   "reason": "frontage 64.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158716",
+   "reason": "frontage 114.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159245",
+   "reason": "frontage 87.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159291",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159866",
+   "reason": "frontage 119.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159884",
+   "reason": "frontage 95.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160051",
+   "reason": "frontage 86.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160797",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160913",
+   "reason": "frontage 85.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161833",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161987",
+   "reason": "frontage 103.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157661",
+   "reason": "frontage 84.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157847",
+   "reason": "frontage 69.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012157938",
+   "reason": "frontage 70.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158214",
+   "reason": "frontage 81.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158234",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158543",
+   "reason": "frontage 41.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158702",
+   "reason": "frontage 82.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012158825",
+   "reason": "sightline to Gerard Douplein crosses 0363100012094355"
+  },
+  {
+   "pandId": "0363100012158955",
+   "reason": "frontage 87.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159304",
+   "reason": "frontage 83.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159416",
+   "reason": "frontage 70.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159480",
+   "reason": "frontage 75.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012159482",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157901"
+  },
+  {
+   "pandId": "0363100012159698",
+   "reason": "sightline to Gerard Douplein crosses 0363100012163904"
+  },
+  {
+   "pandId": "0363100012159920",
+   "reason": "frontage 47.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160055",
+   "reason": "frontage 62.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160401",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160675",
+   "reason": "frontage 64.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160805",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012160884",
+   "reason": "frontage 32.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161133",
+   "reason": "frontage 62.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161382",
+   "reason": "frontage 52.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161723",
+   "reason": "frontage 37.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012161786",
+   "reason": "sightline to Gerard Douplein crosses 0363100012162832"
+  },
+  {
+   "pandId": "0363100012162035",
+   "reason": "frontage 31.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162264",
+   "reason": "frontage 34.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162281",
+   "reason": "sightline to Gerard Douplein crosses 0363100012073807"
+  },
+  {
+   "pandId": "0363100012162421",
+   "reason": "frontage 62.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162562",
+   "reason": "frontage 107.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162705",
+   "reason": "frontage 61.6 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162792",
+   "reason": "frontage 83.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163007",
+   "reason": "frontage 90.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163134",
+   "reason": "frontage 71.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163639",
+   "reason": "frontage 108.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163996",
+   "reason": "frontage 73.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012164105",
+   "reason": "frontage 78.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012165647",
+   "reason": "frontage 84.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012165882",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166270",
+   "reason": "frontage 106.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012167269",
+   "reason": "frontage 125.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162701",
+   "reason": "frontage 98.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162832",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012162854",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163354",
+   "reason": "frontage 76.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163743",
+   "reason": "frontage 61.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012163893",
+   "reason": "frontage 54.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012164184",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012164425",
+   "reason": "sightline to Gerard Douplein crosses 0363100012237153"
+  },
+  {
+   "pandId": "0363100012164433",
+   "reason": "frontage 85.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012164436",
+   "reason": "frontage 64.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012164700",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012165347",
+   "reason": "frontage 50.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012165460",
+   "reason": "frontage 31.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012165514",
+   "reason": "sightline to Gerard Douplein crosses 0363100012073807"
+  },
+  {
+   "pandId": "0363100012165639",
+   "reason": "sightline to Gerard Douplein crosses 0363100012157580"
+  },
+  {
+   "pandId": "0363100012165943",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166124",
+   "reason": "frontage 75.2 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166339",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166514",
+   "reason": "frontage 62.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166517",
+   "reason": "frontage 76.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166647",
+   "reason": "frontage 61.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166921",
+   "reason": "frontage 42.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166936",
+   "reason": "frontage 35.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012166938",
+   "reason": "frontage 30.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012167067",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012167137",
+   "reason": "frontage 60.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012167219",
+   "reason": "frontage 52.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012167455",
+   "reason": "frontage 57.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012196364",
+   "reason": "sightline to Gerard Douplein crosses 0363100012154401"
+  },
+  {
+   "pandId": "0363100012197545",
+   "reason": "frontage 78.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012200174",
+   "reason": "frontage 57.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012205462",
+   "reason": "frontage 85.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012209057",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012209722",
+   "reason": "frontage 86.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012229467",
+   "reason": "frontage 79.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012233677",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236018",
+   "reason": "frontage 90.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236246",
+   "reason": "frontage 85.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236367",
+   "reason": "frontage 99.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236568",
+   "reason": "frontage 60.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237115",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237118",
+   "reason": "frontage 107.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237218",
+   "reason": "frontage 61.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012223834",
+   "reason": "frontage 58.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012226896",
+   "reason": "frontage 96.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012233460",
+   "reason": "frontage 34.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012235907",
+   "reason": "frontage 67.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012235934",
+   "reason": "frontage 76.0 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236047",
+   "reason": "no frontage on Gerard Douplein: No footprint edge faces Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236118",
+   "reason": "frontage 61.7 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236154",
+   "reason": "frontage 90.1 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236190",
+   "reason": "frontage 89.3 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236424",
+   "reason": "frontage 33.9 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236490",
+   "reason": "sightline to Gerard Douplein crosses 0363100012155337"
+  },
+  {
+   "pandId": "0363100012236661",
+   "reason": "sightline to Gerard Douplein crosses 0363100012164425"
+  },
+  {
+   "pandId": "0363100012236667",
+   "reason": "frontage 30.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012236834",
+   "reason": "frontage 46.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237145",
+   "reason": "frontage 37.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237164",
+   "reason": "frontage 65.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237169",
+   "reason": "frontage 61.8 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012237281",
+   "reason": "frontage 38.4 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012238733",
+   "reason": "frontage 31.5 m from Gerard Douplein"
+  },
+  {
+   "pandId": "0363100012240682",
+   "reason": "sightline to Gerard Douplein crosses 0363100012164425"
+  },
+  {
+   "pandId": "0363100012252367",
+   "reason": "sightline to Gerard Douplein crosses 0363100012161063"
+  },
+  {
+   "pandId": "0363100012154401",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155514",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157365",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157901",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161063",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166729",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236908",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237153",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012073807",
+   "alongM": -15.85,
+   "widthM": 6.84,
+   "eavesM": 9.37,
+   "roofMaxM": 13.72,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157566",
+   "alongM": -9.96,
+   "widthM": 4.94,
+   "eavesM": 9.73,
+   "roofMaxM": 12.29,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162905",
+   "alongM": -5.08,
+   "widthM": 4.83,
+   "eavesM": 10.13,
+   "roofMaxM": 12.46,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157580",
+   "alongM": 0,
+   "widthM": 5.33,
+   "eavesM": 9.6,
+   "roofMaxM": 12.32,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  }
+ ]
+}

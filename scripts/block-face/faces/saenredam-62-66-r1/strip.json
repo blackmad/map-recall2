@@ -1,0 +1,131 @@
+{
+ "face": "saenredam-62-66-r1",
+ "image": "staging/block-face/saenredam-62-66-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 410,
+ "height": 756,
+ "groundNAP": 0.355,
+ "heightM": 18.9,
+ "frame": {
+  "midRD": [
+   121134.08212500002,
+   485415.34475
+  ],
+  "uRD": [
+   -0.9952502597536713,
+   0.09734947591153212
+  ],
+  "nRD": [
+   0.09734947591153212,
+   0.9952502597536713
+  ]
+ },
+ "x0M": -5.15,
+ "x1M": 5.1,
+ "date": "2020-01-06",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012159593",
+   "x0M": -5.15,
+   "x1M": 0.02,
+   "px": [
+    0,
+    207
+   ],
+   "date": "2020-01-06",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000380",
+     "timestamp": "2020-01-06T09:20:40.663660Z",
+     "distanceM": 8.7,
+     "obliquityDeg": 7.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000381",
+     "timestamp": "2020-01-06T09:20:42.428610Z",
+     "distanceM": 9.5,
+     "obliquityDeg": 23.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000379",
+     "timestamp": "2020-01-06T09:20:39.528640Z",
+     "distanceM": 10.6,
+     "obliquityDeg": 35.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156620",
+   "x0M": 0.02,
+   "x1M": 5.1,
+   "px": [
+    207,
+    410
+   ],
+   "date": "2020-01-06",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000379",
+     "timestamp": "2020-01-06T09:20:39.528640Z",
+     "distanceM": 8.7,
+     "obliquityDeg": 6.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000380",
+     "timestamp": "2020-01-06T09:20:40.663660Z",
+     "distanceM": 9.5,
+     "obliquityDeg": 24.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001533_pano_0000_000378",
+     "timestamp": "2020-01-06T09:20:38.683720Z",
+     "distanceM": 10.5,
+     "obliquityDeg": 35.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-05-02": 2,
+  "2021-04-23": 2,
+  "2025-09-29": 3,
+  "2016-08-02": 3,
+  "2020-01-06": 3,
+  "2022-03-21": 3,
+  "2020-07-07": 2,
+  "2018-06-11": 2,
+  "2023-01-03": 0,
+  "2020-02-17": 0,
+  "2020-04-29": 0,
+  "2018-06-07": 0,
+  "2022-01-11": 0,
+  "2019-01-18": 0,
+  "2018-06-06": 0,
+  "2019-01-30": 0,
+  "2022-03-23": 0,
+  "2019-01-04": 0,
+  "2024-09-04": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "restripped": {
+  "from": "2022-03-21",
+  "by": "scripts/block-face/batch.ts (strip quality)"
+ },
+ "croppedFrom": {
+  "face": "saenredam-62-66",
+  "px": [
+   0,
+   410
+  ]
+ }
+}

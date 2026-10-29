@@ -1,0 +1,516 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162854",
+   "addresses": [
+    "Gerard Doustraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 98-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000643916"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2641085732,
+     "lngLat": [
+      4.8924672,
+      52.3557687
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "98-H",
+      "addr:postcode": "1072VX",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-11",
+      "cuisine": "french",
+      "email": "info@salut-official.com",
+      "name": "Salut",
+      "opening_hours": "We-Su 12:00-01:00",
+      "operator": "Robert Kranenborg",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://salut-official.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165639",
+   "addresses": [
+    "Gerard Doustraat 96F",
+    "Gerard Doustraat 96A",
+    "Gerard Doustraat 96B",
+    "Gerard Doustraat 96C",
+    "Gerard Doustraat 96D",
+    "Gerard Doustraat 96E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 96F",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000643913"
+    },
+    {
+     "address": "Gerard Doustraat 96A",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000979618"
+    },
+    {
+     "address": "Gerard Doustraat 96B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000979619"
+    },
+    {
+     "address": "Gerard Doustraat 96C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000979621"
+    },
+    {
+     "address": "Gerard Doustraat 96D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000979623"
+    },
+    {
+     "address": "Gerard Doustraat 96E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000979626"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3899063072,
+     "lngLat": [
+      4.8923833,
+      52.3557505
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96",
+      "addr:postcode": "1072VX",
+      "addr:street": "Gerard Doustraat",
+      "alt_name": "Baskets",
+      "branch": "De Pijp",
+      "check_date": "2026-01-11",
+      "email": "service@baskets-store.com",
+      "name": "Baskèts",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00; Su 11:00-18:00",
+      "operator": "Baskèts",
+      "phone": "+31 20 4701010",
+      "shop": "shoes",
+      "website": "https://baskets-store.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012094355",
+   "addresses": [
+    "Gerard Doustraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000656128"
+    },
+    {
+     "address": "Gerard Doustraat 94-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012072103"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817517279,
+     "lngLat": [
+      4.8922968,
+      52.3557344
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "94-H",
+      "addr:postcode": "1072VX",
+      "addr:street": "Gerard Doustraat",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-11",
+      "name": "Anna+Nina",
+      "opening_hours": "Mo,Su 12:00-18:00; Tu-Sa 10:00-18:00",
+      "phone": "+31 20 2044532",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.anna-nina.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158825",
+   "addresses": [
+    "Gerard Doustraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000643893"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160884",
+   "addresses": [
+    "Gerard Doustraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 90-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010001030333"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237281",
+   "addresses": [
+    "Gerard Doustraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 88-H",
+     "use": "industriefunctie",
+     "areaM2": 140,
+     "bagId": "0363010000643873"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817516926,
+     "lngLat": [
+      4.8920337,
+      52.3556725
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-11",
+      "description": "Fashion & interior design",
+      "name": "Felice",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00; Su 13:00-17:00",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.felicehomeofbrands.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236834",
+   "addresses": [
+    "Gerard Doustraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 86-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000643864"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817516768,
+     "lngLat": [
+      4.8919433,
+      52.3556555
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "86-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "branch": "De Pijp",
+      "email": "contact@alltheluckintheworld.nl",
+      "name": "All The Luck In The World",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-Sa 11:00-18:00",
+      "shop": "fashion_accessories",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.alltheluckintheworld.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161382",
+   "addresses": [
+    "Gerard Doustraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 84-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000643856"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817516735,
+     "lngLat": [
+      4.891848,
+      52.3556413
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "84-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "email": "info@versegoodstore.com",
+      "name": "Verse",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://versegoodstore.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167455",
+   "addresses": [
+    "Gerard Doustraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 82-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000643848"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3899061104,
+     "lngLat": [
+      4.8917629,
+      52.3556262
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-12",
+      "contact:instagram": "carletto_amsterdam",
+      "cuisine": "italian",
+      "email": "info@carlettoamsterdam.com",
+      "name": "Carletto",
+      "opening_hours": "Mo-Th 17:00-23:00; Fr-Sa 17:00-00:00; Su 16:00-22:30",
+      "phone": "+31 6 4114 6488",
+      "website": "https://www.carlettoamsterdam.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164436",
+   "addresses": [
+    "Gerard Doustraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010012110125"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5465519127,
+     "lngLat": [
+      4.8916803,
+      52.3556017
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "clothes": "women",
+      "name": "Brick Lane",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2021-01-08"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156473",
+   "addresses": [
+    "Gerard Doustraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012110124"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8363589702,
+     "lngLat": [
+      4.8915938,
+      52.3555835
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "branch": "De Pijp",
+      "check_date": "2026-01-12",
+      "email": "depijp@everydayhero.nl",
+      "name": "Everyday Hero",
+      "opening_hours": "Mo-Sa 11:00-18:00; Su 12:00-18:00",
+      "phone": "+31 85 8088187",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "website": "https://everydayhero.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235934",
+   "addresses": [
+    "Gerard Doustraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 76-H",
+     "use": "kantoorfunctie",
+     "areaM2": 234,
+     "bagId": "0363010011073677"
+    },
+    {
+     "address": "Gerard Doustraat 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012110123"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817515781,
+     "lngLat": [
+      4.8914931,
+      52.3555591
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76-H",
+      "addr:postcode": "1072VW",
+      "addr:street": "Gerard Doustraat",
+      "check_date": "2026-01-12",
+      "email": "info@elcie.nl",
+      "mobile": "+31653982042",
+      "name": "Elcie",
+      "opening_hours": "Th-Fr 10:00-17:00; Su 13:00-17:00 || \"By appointment\"",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.elcie.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

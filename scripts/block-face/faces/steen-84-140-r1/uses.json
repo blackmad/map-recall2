@@ -1,0 +1,153 @@
+{
+ "street": "Eerste Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160607",
+   "addresses": [
+    "Eerste Jan Steenstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000546243"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164678",
+   "addresses": [
+    "Eerste Jan Steenstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000546235"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157354",
+   "addresses": [
+    "Eerste Jan Steenstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000546222"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152902",
+   "addresses": [
+    "Eerste Jan Steenstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000546214"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159966",
+   "addresses": [
+    "Eerste Jan Steenstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000546207"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163192",
+   "addresses": [
+    "Eerste Jan Steenstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 104-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546199"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153336",
+   "addresses": [
+    "Eerste Jan Steenstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000995079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156490",
+   "addresses": [
+    "Eerste Jan Steenstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000546179"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163026",
+   "addresses": [
+    "Eerste Jan Steenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000546170"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "campen-2-34-r1",
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/campen-2-34-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/campen-2-34/auto-place.json"
+ },
+ "types": [
+  "pijp-1876-hood-frieze"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012155600",
+   "slug": "campen-155600",
+   "address": "Eerste Jacob van Campenstraat 22",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "measuredPalette": {
+     "brick": "#6f584c",
+     "evidence": "strip 2022-03-21 span 668-928: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2022-03-21 span 668-928"
+   }
+  },
+  {
+   "pandId": "0363100012167124",
+   "slug": "campen-167124",
+   "address": "Eerste Jacob van Campenstraat 20",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "measuredPalette": {
+     "brick": "#a69884",
+     "evidence": "strip 2022-03-21 span 928-1188: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.85 on eaves 0.5, roof 1, stucco 1, columns 1; strip 2022-03-21 span 928-1188"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

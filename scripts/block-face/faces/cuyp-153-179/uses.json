@@ -1,0 +1,468 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012238733",
+   "addresses": [
+    "Albert Cuypstraat 151",
+    "Albert Cuypstraat 153F",
+    "Albert Cuypstraat 153E",
+    "Albert Cuypstraat 153G",
+    "Albert Cuypstraat 153H",
+    "Albert Cuypstraat 153A",
+    "Albert Cuypstraat 153B",
+    "Albert Cuypstraat 153D",
+    "Albert Cuypstraat 153C",
+    "Albert Cuypstraat 155"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 155-H",
+     "use": "winkelfunctie",
+     "areaM2": 317,
+     "bagId": "0363010000563684"
+    },
+    {
+     "address": "Albert Cuypstraat 155-1",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000563685"
+    },
+    {
+     "address": "Albert Cuypstraat 153F",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061545"
+    },
+    {
+     "address": "Albert Cuypstraat 153E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061546"
+    },
+    {
+     "address": "Albert Cuypstraat 153G",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012061547"
+    },
+    {
+     "address": "Albert Cuypstraat 155",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061548"
+    },
+    {
+     "address": "Albert Cuypstraat 153H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012061549"
+    },
+    {
+     "address": "Albert Cuypstraat 153A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061550"
+    },
+    {
+     "address": "Albert Cuypstraat 151",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012061551"
+    },
+    {
+     "address": "Albert Cuypstraat 153B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061552"
+    },
+    {
+     "address": "Albert Cuypstraat 153D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061553"
+    },
+    {
+     "address": "Albert Cuypstraat 153C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012061554"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817511793,
+     "lngLat": [
+      4.8935633,
+      52.3556865
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "155",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "email": "info@vishandelalbertcuyp.nl",
+      "name": "Vishandel Albert Cuyp",
+      "opening_hours": "Mo-Sa 08:00-17:00",
+      "phone": "+31 20 8456772",
+      "shop": "seafood",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vishandel-albertcuyp.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162035",
+   "addresses": [
+    "Albert Cuypstraat 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 157-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000563691"
+    },
+    {
+     "address": "Albert Cuypstraat 157-O",
+     "use": "industriefunctie",
+     "areaM2": 35,
+     "bagId": "0363010000563692"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512318,
+     "lngLat": [
+      4.8936361,
+      52.355702
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "157-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "level": "-1",
+      "name": "Tropische Winkel Amarjeet Singh",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159698",
+   "addresses": [
+    "Albert Cuypstraat 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 159-H",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000563704"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512338,
+     "lngLat": [
+      4.8937038,
+      52.3557149
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "159-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-18",
+      "cuisine": "italian",
+      "name": "Fiaschetteria Pistoia",
+      "opening_hours": "Mo-Su 17:00-22:00",
+      "phone": "+31 20 7051379",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fiaschetteriapistoia.com",
+      "website:menu": "https://fiaschetteriapistoia.com/menu-amsterdam-de-pijp/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155726",
+   "addresses": [
+    "Albert Cuypstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 161-H",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000563715"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512367,
+     "lngLat": [
+      4.8937772,
+      52.3557298
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "161-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Gotu Zhang",
+      "old_name": "Poffertjes Albert Cuyp",
+      "opening_hours": "Mo 12:00-17:30; Tu-Sa 10:30-17:30",
+      "payment:credit_cards": "no",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167067",
+   "addresses": [
+    "Albert Cuypstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 163-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000563724"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512377,
+     "lngLat": [
+      4.8938583,
+      52.3557459
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "163-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Boef's Beestenbazaar",
+      "opening_hours": "Tu-Sa 09:00-18:00",
+      "shop": "pet",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://boefsbeestenbazaar.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162264",
+   "addresses": [
+    "Albert Cuypstraat 165",
+    "Albert Cuypstraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 165-H",
+     "use": "winkelfunctie",
+     "areaM2": 239,
+     "bagId": "0363010001003272"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4815531723,
+     "lngLat": [
+      4.8939613,
+      52.3557689
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "165",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "community_centre",
+      "check_date": "2026-01-18",
+      "email": "Info@chabadamsterdamcenter.com",
+      "internet_access": "wlan",
+      "name": "Chabad Center Amsterdam",
+      "name:en": "Chabad Center Amsterdam",
+      "name:he": "בית חב\"ד למטייל מרכז אמסטרדם",
+      "name:nl": "Chabad Center Amsterdam",
+      "opening_hours": "Su-Th 13:00-20:00; Sa 12:00+",
+      "phone": "+31 6 10442770",
+      "website": "https://www.chabadamsterdamcenter.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012143237",
+   "addresses": [
+    "Albert Cuypstraat 169A",
+    "Albert Cuypstraat 169B",
+    "Albert Cuypstraat 169C",
+    "Albert Cuypstraat 169D",
+    "Albert Cuypstraat 171A",
+    "Albert Cuypstraat 171B",
+    "Albert Cuypstraat 171C",
+    "Albert Cuypstraat 171D",
+    "Albert Cuypstraat 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 169A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000936843"
+    },
+    {
+     "address": "Albert Cuypstraat 169B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000936844"
+    },
+    {
+     "address": "Albert Cuypstraat 169C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000936845"
+    },
+    {
+     "address": "Albert Cuypstraat 169D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000936846"
+    },
+    {
+     "address": "Albert Cuypstraat 171A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936847"
+    },
+    {
+     "address": "Albert Cuypstraat 171B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936848"
+    },
+    {
+     "address": "Albert Cuypstraat 171C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936849"
+    },
+    {
+     "address": "Albert Cuypstraat 171D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000936859"
+    },
+    {
+     "address": "Albert Cuypstraat 173",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000998558"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237058",
+   "addresses": [
+    "Albert Cuypstraat 175",
+    "Albert Cuypstraat 177",
+    "Albert Cuypstraat 179A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 175-H",
+     "use": "winkelfunctie",
+     "areaM2": 538,
+     "bagId": "0363010000563763"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512839,
+     "lngLat": [
+      4.8942715,
+      52.3558379
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "175-H",
+      "addr:postcode": "1073BD",
+      "addr:street": "Albert Cuypstraat",
+      "branch": "Amsterdam Albert Cuyp",
+      "brand": "Zeeman",
+      "brand:website": "https://www.zeeman.com",
+      "brand:wikidata": "Q184399",
+      "check_date": "2026-01-18",
+      "clothes": "women;men;children",
+      "name": "Zeeman",
+      "opening_hours": "Mo-Sa 09:00-17:30",
+      "phone": "+31 88 0070239",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.zeeman.com/nl-nl/winkels/239-amsterdam-alb-cuyp",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

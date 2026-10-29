@@ -1,0 +1,279 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236354",
+   "addresses": [
+    "Albert Cuypstraat 241"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 241",
+     "use": "industriefunctie",
+     "areaM2": 931,
+     "bagId": "0363010000564059"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236898",
+   "addresses": [
+    "Albert Cuypstraat 243"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 243-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000564064"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514529,
+     "lngLat": [
+      4.897866,
+      52.3567942
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "243-H",
+      "addr:postcode": "1073BH",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-18",
+      "cuisine": "peruvian",
+      "drive_through": "no",
+      "name": "Mari Peruvian Delights & More",
+      "opening_hours": "Tu,Th-Sa 12:00-19:00",
+      "short_name": "Mari",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160372",
+   "addresses": [
+    "Albert Cuypstraat 245"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 245-H",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000564073"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154236",
+   "addresses": [
+    "Albert Cuypstraat 247"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 247-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000988018"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514541,
+     "lngLat": [
+      4.8979989,
+      52.3568374
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "247-H",
+      "addr:postcode": "1073BH",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "dancing_school",
+      "check_date": "2026-01-18",
+      "dance:style": "pole_dance",
+      "education": "dancing_school",
+      "email": "admin@polepractice.com",
+      "name": "Pole Practice",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156408",
+   "addresses": [
+    "Albert Cuypstraat 249"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 249-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000994382"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160542",
+   "addresses": [
+    "Albert Cuypstraat 251"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 251-H",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010000564097"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166567",
+   "addresses": [
+    "Albert Cuypstraat 253"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 253-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000564106"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514583,
+     "lngLat": [
+      4.8981854,
+      52.3568983
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "253-H",
+      "addr:postcode": "1073BH",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "email": "caftanbiladi@gmail.com",
+      "name": "Khadija Caftan Biladi",
+      "opening_hours": "Mo-Sa 09:30-18:00",
+      "operator": "Khadija Rachid",
+      "shop": "tailor",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.khadijacaftan-biladi.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155754",
+   "addresses": [
+    "Albert Cuypstraat 255"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 255-H",
+     "use": "kantoorfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000564113"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163168",
+   "addresses": [
+    "Albert Cuypstraat 257"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 257-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000564121"
+    },
+    {
+     "address": "Albert Cuypstraat 257-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012078959"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514595,
+     "lngLat": [
+      4.898362,
+      52.3569462
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "257-H",
+      "addr:postcode": "1073BH",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Vivant Nancy",
+      "check_date": "2026-01-18",
+      "name": "Vivánt Nancy",
+      "shop": "tobacco",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166485",
+   "addresses": [
+    "Albert Cuypstraat 259"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 259-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012078960"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

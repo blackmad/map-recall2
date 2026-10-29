@@ -1,0 +1,2348 @@
+{
+ "street": "Ceintuurbaan",
+ "seed": "0363100012160228",
+ "members": [
+  "0363100012160228",
+  "0363100012164665",
+  "0363100012163931",
+  "0363100012166861",
+  "0363100012164424",
+  "0363100012164182",
+  "0363100012166100",
+  "0363100012166279",
+  "0363100012158002",
+  "0363100012236359",
+  "0363100012155952",
+  "0363100012166842",
+  "0363100012162740",
+  "0363100012164203",
+  "0363100012166935"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012160228 (face continues: 159674 156313 155384 163640 161346)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012166935 (face continues: 153089 155825 165596 159361 166087 159778 160148 159215)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012067464",
+   "reason": "frontage 186.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012070072",
+   "reason": "frontage 50.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012071523",
+   "reason": "frontage 150.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012072320",
+   "reason": "frontage 46.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012083942",
+   "reason": "frontage 53.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012086323",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012082408"
+  },
+  {
+   "pandId": "0363100012087190",
+   "reason": "frontage 73.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012087419",
+   "reason": "frontage 150.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012091682",
+   "reason": "frontage 121.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012091845",
+   "reason": "frontage 80.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012092305",
+   "reason": "frontage 142.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012092625",
+   "reason": "frontage 151.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012093925",
+   "reason": "frontage 122.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012094145",
+   "reason": "frontage 150.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012097977",
+   "reason": "frontage 46.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012098533",
+   "reason": "frontage 152.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012101987",
+   "reason": "frontage 75.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012102639",
+   "reason": "frontage 75.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012104472",
+   "reason": "frontage 186.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012109025",
+   "reason": "frontage 43.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012109875",
+   "reason": "frontage 151.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012110677",
+   "reason": "frontage 79.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012110869",
+   "reason": "frontage 149.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012115181",
+   "reason": "frontage 45.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012116744",
+   "reason": "frontage 51.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012117458",
+   "reason": "frontage 142.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012118277",
+   "reason": "frontage 152.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012118394",
+   "reason": "frontage 168.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012122814",
+   "reason": "frontage 49.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012124310",
+   "reason": "frontage 74.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012130670",
+   "reason": "frontage 79.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012130876",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012153323"
+  },
+  {
+   "pandId": "0363100012132212",
+   "reason": "frontage 152.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012133038",
+   "reason": "frontage 195.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012134263",
+   "reason": "frontage 123.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012136696",
+   "reason": "frontage 198.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012140787",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012096256"
+  },
+  {
+   "pandId": "0363100012141582",
+   "reason": "frontage 79.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012142164",
+   "reason": "frontage 156.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012092769",
+   "reason": "frontage 37.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012096104",
+   "reason": "frontage 245.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012099321",
+   "reason": "frontage 30.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012104845",
+   "reason": "frontage 43.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012105599",
+   "reason": "frontage 166.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012130973",
+   "reason": "frontage 71.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012142566",
+   "reason": "frontage 72.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012142668",
+   "reason": "frontage 42.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012143302",
+   "reason": "frontage 170.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012145173",
+   "reason": "frontage 79.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012145306",
+   "reason": "frontage 187.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012145600",
+   "reason": "frontage 189.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012146804",
+   "reason": "frontage 123.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012149211",
+   "reason": "frontage 49.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152319",
+   "reason": "frontage 80.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152433",
+   "reason": "frontage 48.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152472",
+   "reason": "frontage 109.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152514",
+   "reason": "frontage 118.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152526",
+   "reason": "frontage 50.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152556",
+   "reason": "frontage 116.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152639",
+   "reason": "frontage 183.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152650",
+   "reason": "frontage 117.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152667",
+   "reason": "frontage 183.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152792",
+   "reason": "frontage 50.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152806",
+   "reason": "frontage 161.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152812",
+   "reason": "frontage 100.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152817",
+   "reason": "frontage 80.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152852",
+   "reason": "frontage 75.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152878",
+   "reason": "frontage 107.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152902",
+   "reason": "frontage 121.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152910",
+   "reason": "frontage 123.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152914",
+   "reason": "frontage 152.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152935",
+   "reason": "frontage 50.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012152997",
+   "reason": "frontage 80.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153033",
+   "reason": "frontage 102.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153110",
+   "reason": "frontage 80.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153115",
+   "reason": "frontage 203.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153140",
+   "reason": "frontage 183.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153210",
+   "reason": "frontage 152.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153266",
+   "reason": "frontage 125.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153320",
+   "reason": "frontage 99.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153336",
+   "reason": "frontage 120.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153386",
+   "reason": "frontage 39.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153403",
+   "reason": "frontage 151.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153527",
+   "reason": "frontage 79.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153578",
+   "reason": "frontage 50.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153598",
+   "reason": "frontage 151.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153648",
+   "reason": "frontage 115.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153650",
+   "reason": "frontage 38.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012148158",
+   "reason": "frontage 138.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153695",
+   "reason": "frontage 51.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153714",
+   "reason": "frontage 176.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012153745",
+   "reason": "frontage 40.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154143",
+   "reason": "frontage 125.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154182",
+   "reason": "frontage 52.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154191",
+   "reason": "frontage 150.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154298",
+   "reason": "frontage 141.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154351",
+   "reason": "frontage 80.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012154370",
+   "reason": "frontage 168.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155352",
+   "reason": "frontage 79.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155410",
+   "reason": "frontage 99.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155416",
+   "reason": "frontage 45.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155443",
+   "reason": "frontage 142.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155544",
+   "reason": "frontage 115.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155555",
+   "reason": "frontage 100.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155562",
+   "reason": "frontage 207.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155713",
+   "reason": "frontage 74.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155849",
+   "reason": "frontage 163.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155862",
+   "reason": "frontage 74.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155915",
+   "reason": "frontage 45.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155954",
+   "reason": "frontage 31.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156085",
+   "reason": "frontage 125.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156133",
+   "reason": "frontage 74.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156182",
+   "reason": "frontage 81.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156245",
+   "reason": "frontage 75.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156361",
+   "reason": "frontage 157.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156364",
+   "reason": "frontage 80.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156490",
+   "reason": "frontage 106.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156499",
+   "reason": "frontage 51.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156607",
+   "reason": "frontage 93.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156719",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012157585"
+  },
+  {
+   "pandId": "0363100012156769",
+   "reason": "frontage 89.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156786",
+   "reason": "frontage 177.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156825",
+   "reason": "frontage 80.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012155381",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012156281"
+  },
+  {
+   "pandId": "0363100012156281",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159627"
+  },
+  {
+   "pandId": "0363100012156828",
+   "reason": "frontage 182.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156868",
+   "reason": "frontage 80.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156932",
+   "reason": "frontage 79.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157009",
+   "reason": "frontage 74.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157073",
+   "reason": "frontage 201.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157076",
+   "reason": "frontage 202.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157232",
+   "reason": "frontage 164.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157290",
+   "reason": "frontage 192.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157352",
+   "reason": "frontage 74.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157354",
+   "reason": "frontage 121.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157367",
+   "reason": "frontage 80.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157382",
+   "reason": "frontage 47.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157388",
+   "reason": "frontage 45.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157422",
+   "reason": "frontage 45.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157462",
+   "reason": "frontage 50.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157490",
+   "reason": "frontage 80.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157534",
+   "reason": "frontage 118.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157585",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012158333"
+  },
+  {
+   "pandId": "0363100012157747",
+   "reason": "frontage 150.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157837",
+   "reason": "frontage 165.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157867",
+   "reason": "frontage 119.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157886",
+   "reason": "frontage 80.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157940",
+   "reason": "frontage 98.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157941",
+   "reason": "frontage 110.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157942",
+   "reason": "frontage 81.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158065",
+   "reason": "frontage 151.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158070",
+   "reason": "frontage 206.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158168",
+   "reason": "frontage 166.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158174",
+   "reason": "frontage 189.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158205",
+   "reason": "frontage 187.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158258",
+   "reason": "frontage 80.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158264",
+   "reason": "frontage 46.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158333",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159674"
+  },
+  {
+   "pandId": "0363100012158334",
+   "reason": "frontage 198.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158356",
+   "reason": "frontage 74.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158357",
+   "reason": "frontage 152.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158359",
+   "reason": "frontage 50.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158376",
+   "reason": "frontage 52.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158380",
+   "reason": "frontage 48.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158381",
+   "reason": "frontage 117.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158425",
+   "reason": "frontage 151.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158455",
+   "reason": "frontage 121.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158458",
+   "reason": "frontage 119.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158501",
+   "reason": "frontage 118.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158607",
+   "reason": "frontage 79.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012156956",
+   "reason": "frontage 41.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012157856",
+   "reason": "frontage 41.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158669",
+   "reason": "frontage 161.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158759",
+   "reason": "frontage 152.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158767",
+   "reason": "frontage 74.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158866",
+   "reason": "frontage 46.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158875",
+   "reason": "frontage 79.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158877",
+   "reason": "frontage 131.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012158908",
+   "reason": "frontage 81.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159046",
+   "reason": "frontage 79.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159079",
+   "reason": "frontage 218.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159177",
+   "reason": "frontage 89.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159196",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159215"
+  },
+  {
+   "pandId": "0363100012159208",
+   "reason": "frontage 44.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159212",
+   "reason": "frontage 78.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159232",
+   "reason": "frontage 51.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159247",
+   "reason": "frontage 120.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159259",
+   "reason": "frontage 44.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159291",
+   "reason": "frontage 208.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159331",
+   "reason": "frontage 159.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159333",
+   "reason": "frontage 150.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159455",
+   "reason": "frontage 51.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159468",
+   "reason": "frontage 51.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159498",
+   "reason": "frontage 49.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159588",
+   "reason": "frontage 78.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159611",
+   "reason": "frontage 152.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159715",
+   "reason": "frontage 145.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159755",
+   "reason": "frontage 196.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159762",
+   "reason": "frontage 52.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159786",
+   "reason": "frontage 74.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159794",
+   "reason": "frontage 125.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159833",
+   "reason": "frontage 122.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159866",
+   "reason": "frontage 186.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159870",
+   "reason": "frontage 220.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159871",
+   "reason": "frontage 75.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159884",
+   "reason": "frontage 209.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159935",
+   "reason": "frontage 44.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159966",
+   "reason": "frontage 121.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159980",
+   "reason": "frontage 146.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159997",
+   "reason": "frontage 173.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160100",
+   "reason": "frontage 80.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159136",
+   "reason": "frontage 244.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012159528",
+   "reason": "frontage 88.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160161",
+   "reason": "frontage 117.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160279",
+   "reason": "frontage 74.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160380",
+   "reason": "frontage 177.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160406",
+   "reason": "frontage 51.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160435",
+   "reason": "frontage 80.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160449",
+   "reason": "frontage 80.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160458",
+   "reason": "frontage 51.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160536",
+   "reason": "frontage 176.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160607",
+   "reason": "frontage 122.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160634",
+   "reason": "frontage 154.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160665",
+   "reason": "frontage 49.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160686",
+   "reason": "frontage 52.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160693",
+   "reason": "frontage 125.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160694",
+   "reason": "frontage 51.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160797",
+   "reason": "frontage 208.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160816",
+   "reason": "frontage 53.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160819",
+   "reason": "frontage 201.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160949",
+   "reason": "frontage 74.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161012",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159196"
+  },
+  {
+   "pandId": "0363100012161013",
+   "reason": "frontage 32.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161025",
+   "reason": "frontage 46.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161045",
+   "reason": "frontage 151.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161082",
+   "reason": "frontage 168.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161086",
+   "reason": "frontage 168.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161124",
+   "reason": "frontage 149.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161137",
+   "reason": "frontage 30.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161185",
+   "reason": "frontage 142.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161198",
+   "reason": "frontage 152.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161341",
+   "reason": "frontage 54.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161387",
+   "reason": "frontage 77.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161389",
+   "reason": "frontage 74.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161454",
+   "reason": "frontage 52.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161520",
+   "reason": "frontage 152.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161644",
+   "reason": "frontage 74.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161729",
+   "reason": "frontage 150.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161767",
+   "reason": "frontage 74.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161801",
+   "reason": "frontage 79.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012160891",
+   "reason": "frontage 214.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161804",
+   "reason": "frontage 165.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161833",
+   "reason": "frontage 205.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161847",
+   "reason": "frontage 107.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161931",
+   "reason": "frontage 49.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161992",
+   "reason": "frontage 149.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162087",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012158333"
+  },
+  {
+   "pandId": "0363100012162107",
+   "reason": "frontage 48.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162114",
+   "reason": "frontage 120.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162132",
+   "reason": "frontage 117.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162150",
+   "reason": "frontage 118.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162183",
+   "reason": "frontage 159.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162184",
+   "reason": "frontage 118.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162204",
+   "reason": "frontage 153.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162232",
+   "reason": "frontage 122.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162243",
+   "reason": "frontage 81.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162303",
+   "reason": "frontage 177.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162310",
+   "reason": "frontage 169.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162350",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012165185"
+  },
+  {
+   "pandId": "0363100012162413",
+   "reason": "frontage 120.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162455",
+   "reason": "frontage 46.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162469",
+   "reason": "frontage 184.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162479",
+   "reason": "frontage 50.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162515",
+   "reason": "frontage 46.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162517",
+   "reason": "frontage 79.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162669",
+   "reason": "frontage 149.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162695",
+   "reason": "frontage 50.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162846",
+   "reason": "frontage 116.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162911",
+   "reason": "frontage 45.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162913",
+   "reason": "frontage 105.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162920",
+   "reason": "frontage 151.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162964",
+   "reason": "frontage 83.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162967",
+   "reason": "frontage 42.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163014",
+   "reason": "frontage 74.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163026",
+   "reason": "frontage 120.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163034",
+   "reason": "frontage 119.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163136",
+   "reason": "frontage 74.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163145",
+   "reason": "frontage 51.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163192",
+   "reason": "frontage 121.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163280",
+   "reason": "frontage 52.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163463",
+   "reason": "frontage 152.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163480",
+   "reason": "frontage 122.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163512",
+   "reason": "frontage 36.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163530",
+   "reason": "frontage 175.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012161971",
+   "reason": "frontage 243.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012162626",
+   "reason": "frontage 74.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163591",
+   "reason": "frontage 149.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163597",
+   "reason": "frontage 171.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163604",
+   "reason": "frontage 144.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163613",
+   "reason": "frontage 120.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163624",
+   "reason": "frontage 96.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163683",
+   "reason": "frontage 44.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163706",
+   "reason": "frontage 51.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163751",
+   "reason": "frontage 81.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163810",
+   "reason": "frontage 85.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163828",
+   "reason": "frontage 121.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163909",
+   "reason": "frontage 49.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163924",
+   "reason": "frontage 187.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012163990",
+   "reason": "frontage 51.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164015",
+   "reason": "frontage 119.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164046",
+   "reason": "frontage 79.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164111",
+   "reason": "frontage 58.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164162",
+   "reason": "frontage 94.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164211",
+   "reason": "frontage 48.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164238",
+   "reason": "frontage 36.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164297",
+   "reason": "frontage 44.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164330",
+   "reason": "frontage 119.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164392",
+   "reason": "frontage 217.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164506",
+   "reason": "frontage 46.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164545",
+   "reason": "frontage 47.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164579",
+   "reason": "frontage 51.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164592",
+   "reason": "frontage 48.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164674",
+   "reason": "frontage 122.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164678",
+   "reason": "frontage 121.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164693",
+   "reason": "frontage 46.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164708",
+   "reason": "frontage 50.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164715",
+   "reason": "frontage 214.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164816",
+   "reason": "frontage 74.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164835",
+   "reason": "frontage 121.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164859",
+   "reason": "frontage 58.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164872",
+   "reason": "frontage 125.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012164887",
+   "reason": "frontage 165.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165144",
+   "reason": "frontage 51.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165185",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012240435"
+  },
+  {
+   "pandId": "0363100012165196",
+   "reason": "frontage 40.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165387",
+   "reason": "frontage 75.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165395",
+   "reason": "frontage 125.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165543",
+   "reason": "frontage 178.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165564",
+   "reason": "frontage 125.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165567",
+   "reason": "frontage 95.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165568",
+   "reason": "frontage 42.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165611",
+   "reason": "frontage 122.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165664",
+   "reason": "frontage 152.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165779",
+   "reason": "frontage 51.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165804",
+   "reason": "frontage 49.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165846",
+   "reason": "frontage 210.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165853",
+   "reason": "frontage 117.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165866",
+   "reason": "frontage 105.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165878",
+   "reason": "frontage 117.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165882",
+   "reason": "frontage 208.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012165885",
+   "reason": "frontage 80.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166006",
+   "reason": "frontage 152.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166030",
+   "reason": "frontage 118.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166042",
+   "reason": "frontage 157.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166178",
+   "reason": "frontage 80.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166198",
+   "reason": "frontage 74.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166270",
+   "reason": "frontage 189.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166356",
+   "reason": "frontage 199.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166366",
+   "reason": "frontage 81.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166391",
+   "reason": "frontage 51.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166394",
+   "reason": "frontage 100.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166404",
+   "reason": "frontage 149.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166472",
+   "reason": "frontage 151.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166511",
+   "reason": "frontage 56.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166660",
+   "reason": "frontage 51.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166706",
+   "reason": "frontage 44.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166713",
+   "reason": "frontage 74.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166726",
+   "reason": "frontage 109.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166849",
+   "reason": "frontage 79.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166891",
+   "reason": "frontage 35.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012166964",
+   "reason": "frontage 117.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167001",
+   "reason": "frontage 30.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167034",
+   "reason": "frontage 197.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167054",
+   "reason": "frontage 147.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167060",
+   "reason": "frontage 151.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167096",
+   "reason": "frontage 73.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167098",
+   "reason": "frontage 79.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167148",
+   "reason": "frontage 80.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167269",
+   "reason": "frontage 182.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167281",
+   "reason": "frontage 156.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012167316",
+   "reason": "frontage 104.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012183835",
+   "reason": "frontage 85.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012184210",
+   "reason": "frontage 40.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012185020",
+   "reason": "frontage 94.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012185033",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012161612"
+  },
+  {
+   "pandId": "0363100012185480",
+   "reason": "frontage 171.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012187010",
+   "reason": "frontage 96.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012187240",
+   "reason": "frontage 36.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012190577",
+   "reason": "frontage 96.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012192791",
+   "reason": "frontage 104.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012194425",
+   "reason": "frontage 101.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012195053",
+   "reason": "frontage 85.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012196658",
+   "reason": "frontage 122.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012197189",
+   "reason": "frontage 30.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012198216",
+   "reason": "frontage 101.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012200021",
+   "reason": "frontage 114.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012201571",
+   "reason": "frontage 100.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012202511",
+   "reason": "frontage 170.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012203290",
+   "reason": "frontage 101.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012206423",
+   "reason": "frontage 110.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012207372",
+   "reason": "frontage 177.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012207373",
+   "reason": "frontage 35.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012209227",
+   "reason": "frontage 41.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012209358",
+   "reason": "frontage 34.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012211324",
+   "reason": "frontage 34.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012213054",
+   "reason": "frontage 96.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012214138",
+   "reason": "frontage 103.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012215418",
+   "reason": "frontage 170.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012216126",
+   "reason": "frontage 165.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012217224",
+   "reason": "frontage 30.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012219241",
+   "reason": "frontage 102.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012219468",
+   "reason": "frontage 182.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012219743",
+   "reason": "frontage 111.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012224279",
+   "reason": "frontage 107.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012224823",
+   "reason": "frontage 213.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012225055",
+   "reason": "frontage 108.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012225587",
+   "reason": "frontage 96.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012225755",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012155384"
+  },
+  {
+   "pandId": "0363100012227910",
+   "reason": "frontage 41.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012199774",
+   "reason": "frontage 30.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012228618",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012236065"
+  },
+  {
+   "pandId": "0363100012229980",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012236909"
+  },
+  {
+   "pandId": "0363100012231052",
+   "reason": "frontage 104.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012232961",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159215"
+  },
+  {
+   "pandId": "0363100012233056",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012161536"
+  },
+  {
+   "pandId": "0363100012233225",
+   "reason": "frontage 149.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012233666",
+   "reason": "frontage 71.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012233677",
+   "reason": "frontage 206.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012234243",
+   "reason": "frontage 107.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235888",
+   "reason": "frontage 117.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235909",
+   "reason": "frontage 111.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235913",
+   "reason": "frontage 80.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235914",
+   "reason": "frontage 35.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235926",
+   "reason": "frontage 79.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235933",
+   "reason": "frontage 80.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235939",
+   "reason": "frontage 196.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012235962",
+   "reason": "frontage 45.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236007",
+   "reason": "frontage 98.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236010",
+   "reason": "frontage 119.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236034",
+   "reason": "frontage 80.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236043",
+   "reason": "frontage 116.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236046",
+   "reason": "frontage 194.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236063",
+   "reason": "frontage 150.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236067",
+   "reason": "frontage 44.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236073",
+   "reason": "frontage 117.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236087",
+   "reason": "frontage 86.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236101",
+   "reason": "frontage 174.3 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236102",
+   "reason": "frontage 178.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236104",
+   "reason": "frontage 111.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236105",
+   "reason": "frontage 111.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236199",
+   "reason": "frontage 150.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236208",
+   "reason": "frontage 39.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236283",
+   "reason": "frontage 105.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236327",
+   "reason": "frontage 148.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236333",
+   "reason": "frontage 194.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236334",
+   "reason": "frontage 114.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236348",
+   "reason": "frontage 173.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236367",
+   "reason": "frontage 209.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236386",
+   "reason": "frontage 211.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236398",
+   "reason": "frontage 30.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236446",
+   "reason": "frontage 30.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236447",
+   "reason": "frontage 75.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236454",
+   "reason": "frontage 194.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236455",
+   "reason": "frontage 201.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236487",
+   "reason": "frontage 171.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236501",
+   "reason": "frontage 42.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236630",
+   "reason": "frontage 73.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236691",
+   "reason": "frontage 74.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236695",
+   "reason": "frontage 147.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236698",
+   "reason": "frontage 140.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236726",
+   "reason": "frontage 52.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236730",
+   "reason": "frontage 168.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236769",
+   "reason": "frontage 110.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236840",
+   "reason": "frontage 44.5 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237035",
+   "reason": "frontage 117.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237174",
+   "reason": "frontage 36.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237227",
+   "reason": "frontage 119.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237280",
+   "reason": "frontage 172.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237342",
+   "reason": "frontage 195.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237374",
+   "reason": "frontage 115.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012237843",
+   "reason": "frontage 192.4 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012239832",
+   "reason": "frontage 78.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012240426",
+   "reason": "frontage 34.1 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012240435",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012246036"
+  },
+  {
+   "pandId": "0363100012244385",
+   "reason": "frontage 163.2 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012246036",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012240435"
+  },
+  {
+   "pandId": "0363100012246040",
+   "reason": "frontage 212.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012247340",
+   "reason": "frontage 36.8 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012249730",
+   "reason": "frontage 165.0 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012572100",
+   "reason": "frontage 220.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012572322",
+   "reason": "frontage 108.7 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236506",
+   "reason": "frontage 242.6 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100012236577",
+   "reason": "frontage 205.9 m from Ceintuurbaan"
+  },
+  {
+   "pandId": "0363100100092244",
+   "reason": "sightline to Ceintuurbaan crosses 0363100012159252"
+  },
+  {
+   "pandId": "0363100012082408",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096256",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112131",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134118",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138144",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152810",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153105",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153323",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153440",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153797",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155626",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155706",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156205",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157258",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158722",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159918",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160199",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160585",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161041",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161536",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162205",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162850",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163643",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165417",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166107",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166168",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166683",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236247",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236593",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012160228",
+   "alongM": 0,
+   "widthM": 16.79,
+   "eavesM": 14.18,
+   "roofMaxM": 16.37,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain."
+   ]
+  },
+  {
+   "pandId": "0363100012164665",
+   "alongM": 11.67,
+   "widthM": 6.54,
+   "eavesM": 16.59,
+   "roofMaxM": 16.61,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163931",
+   "alongM": 17.66,
+   "widthM": 5.46,
+   "eavesM": 16.3,
+   "roofMaxM": 16.37,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166861",
+   "alongM": 23.41,
+   "widthM": 6.04,
+   "eavesM": 16.32,
+   "roofMaxM": 16.38,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164424",
+   "alongM": 29.36,
+   "widthM": 5.86,
+   "eavesM": 15.4,
+   "roofMaxM": 15.42,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164182",
+   "alongM": 34.62,
+   "widthM": 4.66,
+   "eavesM": 15.82,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166100",
+   "alongM": 39.94,
+   "widthM": 5.97,
+   "eavesM": 14.73,
+   "roofMaxM": 15.9,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166279",
+   "alongM": 45.75,
+   "widthM": 5.64,
+   "eavesM": 14.61,
+   "roofMaxM": 14.7,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158002",
+   "alongM": 51.39,
+   "widthM": 5.64,
+   "eavesM": 14.62,
+   "roofMaxM": 14.68,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236359",
+   "alongM": 60.04,
+   "widthM": 11.66,
+   "eavesM": 14.23,
+   "roofMaxM": 14.71,
+   "storeys3dbag": 5,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155952",
+   "alongM": 68.77,
+   "widthM": 5.8,
+   "eavesM": 14.29,
+   "roofMaxM": 14.36,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166842",
+   "alongM": 74.33,
+   "widthM": 5.32,
+   "eavesM": 14.12,
+   "roofMaxM": 14.17,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162740",
+   "alongM": 79.9,
+   "widthM": 5.83,
+   "eavesM": 14.15,
+   "roofMaxM": 17.16,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164203",
+   "alongM": 85.58,
+   "widthM": 5.52,
+   "eavesM": 13.99,
+   "roofMaxM": 16.74,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166935",
+   "alongM": 91.25,
+   "widthM": 5.84,
+   "eavesM": 16.96,
+   "roofMaxM": 17.02,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  }
+ ]
+}

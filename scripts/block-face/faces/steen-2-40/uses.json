@@ -1,0 +1,344 @@
+{
+ "street": "Tweede Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121708",
+   "addresses": [
+    "Tweede Jan Steenstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000551361"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135879",
+   "addresses": [
+    "Tweede Jan Steenstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000551358"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153537",
+   "addresses": [
+    "Tweede Jan Steenstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001982367"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160085",
+   "addresses": [
+    "Tweede Jan Steenstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000551340"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152461",
+   "addresses": [
+    "Tweede Jan Steenstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000551333"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159683",
+   "addresses": [
+    "Tweede Jan Steenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000551326"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155556",
+   "addresses": [
+    "Tweede Jan Steenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000551319"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161897",
+   "addresses": [
+    "Tweede Jan Steenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000551313"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166041",
+   "addresses": [
+    "Tweede Jan Steenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000994640"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156666",
+   "addresses": [
+    "Tweede Jan Steenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010001002082"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159515",
+   "addresses": [
+    "Tweede Jan Steenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000551296"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164766",
+   "addresses": [
+    "Tweede Jan Steenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000551289"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235991",
+   "addresses": [
+    "Tweede Jan Steenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010001002056"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152764",
+   "addresses": [
+    "Tweede Jan Steenstraat 10B",
+    "Tweede Jan Steenstraat 10A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000551268"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 208,
+     "bagId": "0363010000951488"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158006",
+   "addresses": [
+    "Tweede Jan Steenstraat 8B",
+    "Tweede Jan Steenstraat 8C",
+    "Tweede Jan Steenstraat 8A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000551265"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000648799"
+    },
+    {
+     "address": "Tweede Jan Steenstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000953566"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161456",
+   "addresses": [
+    "Tweede Jan Steenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 6-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000551260"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559377,
+     "lngLat": [
+      4.8986648,
+      52.3555507
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1073VN",
+      "addr:street": "Tweede Jan Steenstraat",
+      "check_date": "2026-01-29",
+      "company": "media",
+      "email": "dennis@bloomerrecords.com",
+      "name": "Bloomer Records",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://bloomerrecords.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154123",
+   "addresses": [
+    "Tweede Jan Steenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000551253"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165574",
+   "addresses": [
+    "Tweede Jan Steenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000551244"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

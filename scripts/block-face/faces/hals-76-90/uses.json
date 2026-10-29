@@ -1,0 +1,285 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165970",
+   "addresses": [
+    "Frans Halsstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 90-H",
+     "use": "industriefunctie",
+     "areaM2": 89,
+     "bagId": "0363010000638613"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817456513,
+     "lngLat": [
+      4.8883684,
+      52.3553037
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1072BW",
+      "addr:street": "Frans Halsstraat",
+      "check_date": "2026-01-08",
+      "name": "Amsterdam Wine Academy",
+      "note": "Amsterdam Wine Academy moves to Blasiusstraat 82-84 per March 2026. This location is already vacant.",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162752",
+   "addresses": [
+    "Frans Halsstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000638606"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505986115,
+     "lngLat": [
+      4.8883679,
+      52.3553488
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88-H",
+      "addr:postcode": "1072BW",
+      "addr:street": "Frans Halsstraat",
+      "check_date": "2026-01-09",
+      "name": "Fenix Books",
+      "note": "Building and foundation under renovation. New temporary address since Dec 2025 is Albert Cuypstraat 117. They claim they will return to this address in 2027.",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157485",
+   "addresses": [
+    "Frans Halsstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000638596"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160791",
+   "addresses": [
+    "Frans Halsstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000638588"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166097",
+   "addresses": [
+    "Frans Halsstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000638580"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156971",
+   "addresses": [
+    "Frans Halsstraat 80A",
+    "Frans Halsstraat 80B",
+    "Frans Halsstraat 80C",
+    "Frans Halsstraat 80D",
+    "Frans Halsstraat 80F",
+    "Frans Halsstraat 80E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 80A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001982475"
+    },
+    {
+     "address": "Frans Halsstraat 80B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001982476"
+    },
+    {
+     "address": "Frans Halsstraat 80C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001982477"
+    },
+    {
+     "address": "Frans Halsstraat 80D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001982478"
+    },
+    {
+     "address": "Frans Halsstraat 80F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001982479"
+    },
+    {
+     "address": "Frans Halsstraat 80E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001982480"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164596",
+   "addresses": [
+    "Frans Halsstraat 78A",
+    "Frans Halsstraat 78C",
+    "Frans Halsstraat 78E",
+    "Frans Halsstraat 78F",
+    "Frans Halsstraat 78B",
+    "Frans Halsstraat 78D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 78A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001982469"
+    },
+    {
+     "address": "Frans Halsstraat 78C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001982470"
+    },
+    {
+     "address": "Frans Halsstraat 78E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001982471"
+    },
+    {
+     "address": "Frans Halsstraat 78F",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001982472"
+    },
+    {
+     "address": "Frans Halsstraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001982473"
+    },
+    {
+     "address": "Frans Halsstraat 78D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001982474"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236608",
+   "addresses": [
+    "Frans Halsstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 76",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 440,
+     "bagId": "0363010001982481"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2508437585,
+     "lngLat": [
+      4.8884238,
+      52.3556545
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1072BV",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-08",
+      "cuisine": "french",
+      "email": "info@maris-piper.com",
+      "name": "Maris Piper Brasserie",
+      "opening_hours": "Mo-We 18:00-24:00; Th-Su 12:00-17:00,18:00-24:00",
+      "phone": "+31 20 7372479",
+      "short_name": "Maris Piper",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://maris-piper.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

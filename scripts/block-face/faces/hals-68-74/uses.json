@@ -1,0 +1,91 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236267",
+   "addresses": [
+    "Frans Halsstraat 72",
+    "Frans Halsstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000638542"
+    },
+    {
+     "address": "Frans Halsstraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001002356"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817456026,
+     "lngLat": [
+      4.8884643,
+      52.3559424
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "74-H",
+      "addr:postcode": "1072BV",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "language_school",
+      "check_date": "2026-01-09",
+      "education": "language_school",
+      "email": "jukujapans@gmail.com",
+      "language:ja": "yes",
+      "name": "Juku Japans",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.jukujapans.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153081",
+   "addresses": [
+    "Frans Halsstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010001024714"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164261",
+   "addresses": [
+    "Frans Halsstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000638511"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

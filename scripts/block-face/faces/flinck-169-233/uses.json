@@ -1,0 +1,375 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163818",
+   "addresses": [
+    "Govert Flinckstraat 169",
+    "Govert Flinckstraat 169D",
+    "Govert Flinckstraat 169B",
+    "Govert Flinckstraat 169C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 169-H",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000648842"
+    },
+    {
+     "address": "Govert Flinckstraat 169-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012593544"
+    },
+    {
+     "address": "Govert Flinckstraat 169D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012593543"
+    },
+    {
+     "address": "Govert Flinckstraat 169B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012593541"
+    },
+    {
+     "address": "Govert Flinckstraat 169C",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012593542"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236257",
+   "addresses": [
+    "Govert Flinckstraat 171",
+    "Govert Flinckstraat 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 171-H",
+     "use": "onderwijsfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000648846"
+    },
+    {
+     "address": "Govert Flinckstraat 173-H",
+     "use": "industriefunctie",
+     "areaM2": 97,
+     "bagId": "0363010000648851"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137589",
+   "addresses": [
+    "Govert Flinckstraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 175-H",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010000648862"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557274,
+     "lngLat": [
+      4.8946139,
+      52.3553707
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "175-H",
+      "addr:postcode": "1073BT",
+      "addr:street": "Govert Flinckstraat",
+      "check_date": "2026-01-28",
+      "name": "Epicerie De Pijp",
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "origin": "french",
+      "phone": "+31 6 24 12 36 63",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.epiceriedepijp.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134850",
+   "addresses": [
+    "Govert Flinckstraat 177"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 177-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000648869"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557279,
+     "lngLat": [
+      4.8947137,
+      52.3553952
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "177-H",
+      "addr:postcode": "1073BT",
+      "addr:street": "Govert Flinckstraat",
+      "alt_name": "Van Dorp CISO",
+      "branch": "Amstercam Centrum",
+      "consulting": "engineering",
+      "email": "cisoamsterdam@vandorp.eu",
+      "name": "Van Dorp City Solutions",
+      "office": "consulting",
+      "phone": "+31 20 4496969",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://vandorp.eu/vestiging/amsterdam-centrum/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131774",
+   "addresses": [
+    "Govert Flinckstraat 179",
+    "Govert Flinckstraat 181"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146154",
+   "addresses": [
+    "Govert Flinckstraat 183",
+    "Govert Flinckstraat 185",
+    "Govert Flinckstraat 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 185-H",
+     "use": "winkelfunctie",
+     "areaM2": 300,
+     "bagId": "0363010001022312"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162751",
+   "addresses": [
+    "Govert Flinckstraat 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 189-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000648897"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236809",
+   "addresses": [
+    "Govert Flinckstraat 191"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 191-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000996254"
+    },
+    {
+     "address": "Albert Cuypstraat 182",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 905,
+     "bagId": "0363010000563773"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557406,
+     "lngLat": [
+      4.8951759,
+      52.3557975
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "182",
+      "addr:postcode": "1073BL",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "disused:shop": "restaurant",
+      "note": "Voormalig (Brouwerij) De Engel",
+      "old_name": "Restaurant Bazar Amsterdam",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159087",
+   "addresses": [
+    "Govert Flinckstraat 193A",
+    "Govert Flinckstraat 193B",
+    "Govert Flinckstraat 193C",
+    "Govert Flinckstraat 193D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 193A",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000980434"
+    },
+    {
+     "address": "Govert Flinckstraat 193B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000980435"
+    },
+    {
+     "address": "Govert Flinckstraat 193C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000980437"
+    },
+    {
+     "address": "Govert Flinckstraat 193D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000980438"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033169,
+     "lngLat": [
+      4.8953888,
+      52.3555078
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157212",
+   "addresses": [
+    "Govert Flinckstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 195-H",
+     "use": "industriefunctie",
+     "areaM2": 67,
+     "bagId": "0363010000648928"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033180,
+     "lngLat": [
+      4.8955915,
+      52.3555099
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01655",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162693",
+   "addresses": [
+    "Govert Flinckstraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 197-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000648935"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157734",
+   "addresses": [
+    "Govert Flinckstraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 199-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000648943"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

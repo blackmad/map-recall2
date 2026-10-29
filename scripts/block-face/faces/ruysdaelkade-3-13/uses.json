@@ -1,0 +1,127 @@
+{
+ "street": "Ruysdaelkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161167",
+   "addresses": [
+    "Ruysdaelkade 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 3-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000801025"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160885",
+   "addresses": [
+    "Ruysdaelkade 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 5-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000801029"
+    },
+    {
+     "address": "Ruysdaelkade 5-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012153022"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162312",
+   "addresses": [
+    "Ruysdaelkade 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 7-H",
+     "use": "kantoorfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000801033"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159161",
+   "addresses": [
+    "Ruysdaelkade 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 9-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000801035"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11235706219,
+     "lngLat": [
+      4.8874253,
+      52.3591639
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-01-03"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 1.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155606",
+   "addresses": [
+    "Ruysdaelkade 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 11-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000801038"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159837",
+   "addresses": [
+    "Ruysdaelkade 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 13-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000801040"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

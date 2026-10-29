@@ -1,0 +1,449 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:48:54.538Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236568",
+   "addresses": [
+    "Albert Cuypstraat 126",
+    "Albert Cuypstraat 128",
+    "Albert Cuypstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 128-H",
+     "use": "winkelfunctie",
+     "areaM2": 201,
+     "bagId": "0363010001170752"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162421",
+   "addresses": [
+    "Albert Cuypstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 124-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000563535"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610711,
+     "lngLat": [
+      4.8926046,
+      52.3552739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "bar",
+      "check_date": "2026-01-25",
+      "contact:facebook": "https://www.facebook.com/BarBukaAmsterdam",
+      "email": "connect@barbuka.nl",
+      "name": "Bar Buka",
+      "opening_hours": "Th 17:00-00:00; Fr 17:00-00:30; Sa 17:00-01:00; Su 16:00-20:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://barbuka.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158606",
+   "addresses": [
+    "Albert Cuypstraat 122B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 122B-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000563523"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610666,
+     "lngLat": [
+      4.8925247,
+      52.3552598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122B-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Koffiehuis De Markt",
+      "amenity": "cafe",
+      "check_date": "2026-01-25",
+      "name": "De Markt",
+      "opening_hours": "Mo-Sa 06:30-19:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158043",
+   "addresses": [
+    "Albert Cuypstraat 122A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 122A-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000563514"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610658,
+     "lngLat": [
+      4.892449,
+      52.3552478
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122A-H",
+      "addr:postcode": "1072EA",
+      "addr:street": "Albert Cuypstraat",
+      "name": "MC Jewels",
+      "opening_hours": "Tu-Fr 10:30-17:30; Sa 10:30-17:00",
+      "phone": "+31 20 6626782",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237115",
+   "addresses": [
+    "Albert Cuypstraat 102",
+    "Albert Cuypstraat 104A",
+    "Albert Cuypstraat 104B",
+    "Albert Cuypstraat 104D",
+    "Albert Cuypstraat 104C",
+    "Albert Cuypstraat 106C",
+    "Albert Cuypstraat 106A",
+    "Albert Cuypstraat 106B",
+    "Albert Cuypstraat 106D",
+    "Albert Cuypstraat 108A",
+    "Albert Cuypstraat 108B",
+    "Albert Cuypstraat 108C",
+    "Albert Cuypstraat 108D",
+    "Albert Cuypstraat 110A",
+    "Albert Cuypstraat 110B",
+    "Albert Cuypstraat 110C",
+    "Albert Cuypstraat 110D",
+    "Albert Cuypstraat 112A",
+    "Albert Cuypstraat 112B",
+    "Albert Cuypstraat 112C",
+    "Albert Cuypstraat 112D",
+    "Albert Cuypstraat 114A",
+    "Albert Cuypstraat 114B",
+    "Albert Cuypstraat 114C",
+    "Albert Cuypstraat 114D",
+    "Albert Cuypstraat 116E",
+    "Albert Cuypstraat 116A",
+    "Albert Cuypstraat 116B",
+    "Albert Cuypstraat 116C",
+    "Albert Cuypstraat 116D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 108A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911009"
+    },
+    {
+     "address": "Albert Cuypstraat 116E",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000912001"
+    },
+    {
+     "address": "Albert Cuypstraat 108B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911713"
+    },
+    {
+     "address": "Albert Cuypstraat 108C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911714"
+    },
+    {
+     "address": "Albert Cuypstraat 108D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911715"
+    },
+    {
+     "address": "Albert Cuypstraat 110A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911716"
+    },
+    {
+     "address": "Albert Cuypstraat 110B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911717"
+    },
+    {
+     "address": "Albert Cuypstraat 110C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911718"
+    },
+    {
+     "address": "Albert Cuypstraat 110D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000911719"
+    },
+    {
+     "address": "Albert Cuypstraat 112A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911720"
+    },
+    {
+     "address": "Albert Cuypstraat 112B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911721"
+    },
+    {
+     "address": "Albert Cuypstraat 112C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911722"
+    },
+    {
+     "address": "Albert Cuypstraat 102",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000910946"
+    },
+    {
+     "address": "Albert Cuypstraat 104A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000910947"
+    },
+    {
+     "address": "Albert Cuypstraat 112D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911781"
+    },
+    {
+     "address": "Albert Cuypstraat 114A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000911782"
+    },
+    {
+     "address": "Albert Cuypstraat 114B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000911783"
+    },
+    {
+     "address": "Albert Cuypstraat 114C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000911784"
+    },
+    {
+     "address": "Albert Cuypstraat 114D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000911846"
+    },
+    {
+     "address": "Albert Cuypstraat 116A",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000911936"
+    },
+    {
+     "address": "Albert Cuypstraat 116B",
+     "use": "winkelfunctie",
+     "areaM2": 279,
+     "bagId": "0363010000911937"
+    },
+    {
+     "address": "Albert Cuypstraat 116C",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000911938"
+    },
+    {
+     "address": "Albert Cuypstraat 116D",
+     "use": "winkelfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000911939"
+    },
+    {
+     "address": "Albert Cuypstraat 104B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000910974"
+    },
+    {
+     "address": "Albert Cuypstraat 104D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000910976"
+    },
+    {
+     "address": "Albert Cuypstraat 106C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000911007"
+    },
+    {
+     "address": "Albert Cuypstraat 104C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000910975"
+    },
+    {
+     "address": "Albert Cuypstraat 106A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000910977"
+    },
+    {
+     "address": "Albert Cuypstraat 106B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000910978"
+    },
+    {
+     "address": "Albert Cuypstraat 106D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000911008"
+    }
+   ],
+   "units": 30,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610430,
+     "lngLat": [
+      4.8921061,
+      52.3551853
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116C",
+      "addr:postcode": "1072CZ",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-25",
+      "clothes": "women",
+      "email": "info@spettersmode.nl",
+      "name": "Spetters Mode",
+      "opening_hours": "Mo-Sa 09:30-17:30",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://spettersmode.nl"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817610431,
+     "lngLat": [
+      4.8919592,
+      52.3551574
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116D",
+      "addr:postcode": "1072CZ",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Amsterdamse Matrassen Centrale",
+      "check_date": "2026-01-25",
+      "name": "Amsterdamse Matrassencentrale",
+      "opening_hours": "Mo-Sa 09:00-17:30",
+      "shop": "bed",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817610432,
+     "lngLat": [
+      4.8918326,
+      52.3551331
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116E",
+      "addr:postcode": "1072CZ",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-25",
+      "name": "June Amsterdam",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://juneamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T17:48:54.538Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

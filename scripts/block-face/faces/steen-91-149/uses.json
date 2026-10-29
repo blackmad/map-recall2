@@ -1,0 +1,532 @@
+{
+ "street": "Eerste Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117458",
+   "addresses": [
+    "Eerste Jan Steenstraat 91A",
+    "Eerste Jan Steenstraat 91B",
+    "Eerste Jan Steenstraat 91C",
+    "Eerste Jan Steenstraat 91D",
+    "Eerste Jan Steenstraat 93D",
+    "Eerste Jan Steenstraat 93C",
+    "Eerste Jan Steenstraat 93B",
+    "Eerste Jan Steenstraat 93A",
+    "Eerste Jan Steenstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 91A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948842"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 91B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948843"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 91C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948844"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 91D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000948845"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 93D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000948846"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 93C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948847"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 93B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948848"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 93A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000948849"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000948850"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163604",
+   "addresses": [
+    "Eerste Jan Steenstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 97-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000546163"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817614530,
+     "lngLat": [
+      4.8913456,
+      52.3542596
+     ],
+     "tags": {
+      "access": "permit",
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "97-H",
+      "addr:postcode": "1072NG",
+      "addr:street": "Eerste Jan Steenstraat",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "capacity": "70",
+      "check_date": "2026-01-29",
+      "covered": "yes",
+      "email": "receptie@u-stal.nl",
+      "fee": "yes",
+      "indoor": "yes",
+      "mapillary": "1457312891285393",
+      "name": "Buurtstalling Eerste Jan Steenstraat",
+      "operator": "U-Stal",
+      "operator:type": "private",
+      "phone": "+31 20 2403800",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "survey:date": "2020-09-22",
+      "website": "https://u-stal.ubgroep.nl/locaties-fietsenstallingen/buurtstallingen-nieuw/amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13509430847,
+     "lngLat": [
+      4.8914019,
+      52.3541904
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01665",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159715",
+   "addresses": [
+    "Eerste Jan Steenstraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 99-H",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000546174"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13509430844,
+     "lngLat": [
+      4.8914834,
+      52.3542039
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    },
+    {
+     "type": "node",
+     "id": 13509430847,
+     "lngLat": [
+      4.8914019,
+      52.3541904
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01665",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159980",
+   "addresses": [
+    "Eerste Jan Steenstraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 101-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000546183"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13509430844,
+     "lngLat": [
+      4.8914834,
+      52.3542039
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167054",
+   "addresses": [
+    "Eerste Jan Steenstraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 103-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000546195"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162669",
+   "addresses": [
+    "Eerste Jan Steenstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 105-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000546203"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110869",
+   "addresses": [
+    "Eerste Jan Steenstraat 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 107-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000546211"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161992",
+   "addresses": [
+    "Eerste Jan Steenstraat 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 109-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000546218"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610163,
+     "lngLat": [
+      4.8917819,
+      52.3543251
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109-H",
+      "addr:postcode": "1072NH",
+      "addr:street": "Eerste Jan Steenstraat",
+      "check_date": "2026-01-29",
+      "email": "info@brandpioneersagency.com",
+      "name": "Brand Pioneers",
+      "office": "advertising_agency",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.brandpioneersagency.com/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161124",
+   "addresses": [
+    "Eerste Jan Steenstraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 111-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001994095"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166404",
+   "addresses": [
+    "Eerste Jan Steenstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 113-H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000546239"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163591",
+   "addresses": [
+    "Eerste Jan Steenstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 115-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000546247"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236199",
+   "addresses": [
+    "Eerste Jan Steenstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 117-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000546255"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236063",
+   "addresses": [
+    "Eerste Jan Steenstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 119-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000546263"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154191",
+   "addresses": [
+    "Eerste Jan Steenstraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 121-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000546271"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157747",
+   "addresses": [
+    "Eerste Jan Steenstraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 123-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000546279"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087419",
+   "addresses": [
+    "Eerste Jan Steenstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 125-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000546288"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161729",
+   "addresses": [
+    "Eerste Jan Steenstraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000546297"
+    },
+    {
+     "address": "Eerste Jan Steenstraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012569946"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159333",
+   "addresses": [
+    "Eerste Jan Steenstraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000546302"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167060",
+   "addresses": [
+    "Eerste Jan Steenstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan Steenstraat 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000546311"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610851,
+     "lngLat": [
+      4.8925617,
+      52.3544433
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "131-H",
+      "addr:postcode": "1072NJ",
+      "addr:street": "Eerste Jan Steenstraat",
+      "check_date": "2026-01-29",
+      "email": "info@bellabeautique.nl",
+      "female": "yes",
+      "mobile": "+31622781278",
+      "name": "Bella Boutique",
+      "opening_hours": "Mo 12:00-19:00; Tu-We 10:00-21:00; Th-Fr 10:00-19:00; Sa 10:00-17:00",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bellabeautique.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

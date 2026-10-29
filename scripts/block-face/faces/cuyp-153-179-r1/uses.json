@@ -1,0 +1,90 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155726",
+   "addresses": [
+    "Albert Cuypstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 161-H",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000563715"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512367,
+     "lngLat": [
+      4.8937772,
+      52.3557298
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "161-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Gotu Zhang",
+      "old_name": "Poffertjes Albert Cuyp",
+      "opening_hours": "Mo 12:00-17:30; Tu-Sa 10:30-17:30",
+      "payment:credit_cards": "no",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167067",
+   "addresses": [
+    "Albert Cuypstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 163-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000563724"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512377,
+     "lngLat": [
+      4.8938583,
+      52.3557459
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "163-H",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Boef's Beestenbazaar",
+      "opening_hours": "Tu-Sa 09:00-18:00",
+      "shop": "pet",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://boefsbeestenbazaar.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

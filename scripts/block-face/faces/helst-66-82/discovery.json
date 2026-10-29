@@ -1,0 +1,786 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "seed": "0363100012157290",
+ "members": [
+  "0363100012152914",
+  "0363100012159331",
+  "0363100012161804",
+  "0363100012162310",
+  "0363100012236101",
+  "0363100012236102",
+  "0363100012153140",
+  "0363100012163924",
+  "0363100012157290"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012157290 (face continues: 158174)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012067464",
+   "reason": "frontage 70.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012084636",
+   "reason": "frontage 63.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012087419",
+   "reason": "frontage 85.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012091682",
+   "reason": "frontage 45.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012093594",
+   "reason": "frontage 39.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012104472",
+   "reason": "frontage 45.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012116142",
+   "reason": "frontage 35.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012118823",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012162562"
+  },
+  {
+   "pandId": "0363100012132212",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012152914"
+  },
+  {
+   "pandId": "0363100012134263",
+   "reason": "frontage 39.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012145306",
+   "reason": "frontage 52.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012145600",
+   "reason": "frontage 40.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012146804",
+   "reason": "frontage 53.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012152509",
+   "reason": "frontage 66.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012152806",
+   "reason": "frontage 60.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012152878",
+   "reason": "frontage 66.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012152886",
+   "reason": "frontage 40.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012152902",
+   "reason": "frontage 112.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153033",
+   "reason": "frontage 36.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153243",
+   "reason": "frontage 30.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153266",
+   "reason": "frontage 34.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153277",
+   "reason": "frontage 53.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153403",
+   "reason": "frontage 38.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012153598",
+   "reason": "frontage 60.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012154096",
+   "reason": "frontage 55.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012154143",
+   "reason": "no frontage on Eerste Van der Helststraat: No footprint edge faces Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012154191",
+   "reason": "frontage 94.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012155849",
+   "reason": "frontage 67.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012156361",
+   "reason": "frontage 47.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012156380",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158451"
+  },
+  {
+   "pandId": "0363100012156946",
+   "reason": "frontage 74.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012077619",
+   "reason": "frontage 37.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012089864",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012166938"
+  },
+  {
+   "pandId": "0363100012093267",
+   "reason": "frontage 31.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012094355",
+   "reason": "frontage 42.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012127543",
+   "reason": "frontage 69.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012137589",
+   "reason": "frontage 89.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012154144",
+   "reason": "frontage 94.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012155461",
+   "reason": "frontage 82.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012155726",
+   "reason": "frontage 46.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012155889",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012089864"
+  },
+  {
+   "pandId": "0363100012156811",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012089864"
+  },
+  {
+   "pandId": "0363100012157354",
+   "reason": "frontage 106.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012157747",
+   "reason": "frontage 90.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158043",
+   "reason": "frontage 50.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158149",
+   "reason": "frontage 61.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158205",
+   "reason": "frontage 30.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158425",
+   "reason": "frontage 55.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158606",
+   "reason": "frontage 44.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158759",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158065"
+  },
+  {
+   "pandId": "0363100012158877",
+   "reason": "no frontage on Eerste Van der Helststraat: No footprint edge faces Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159245",
+   "reason": "frontage 50.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159291",
+   "reason": "frontage 92.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159333",
+   "reason": "frontage 75.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159611",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158065"
+  },
+  {
+   "pandId": "0363100012159794",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158877"
+  },
+  {
+   "pandId": "0363100012159884",
+   "reason": "frontage 71.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159966",
+   "reason": "frontage 118.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159997",
+   "reason": "frontage 88.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160051",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012156380"
+  },
+  {
+   "pandId": "0363100012160607",
+   "reason": "frontage 94.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160634",
+   "reason": "frontage 34.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160797",
+   "reason": "frontage 87.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160913",
+   "reason": "frontage 44.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161045",
+   "reason": "frontage 66.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161124",
+   "reason": "frontage 119.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161198",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012152914"
+  },
+  {
+   "pandId": "0363100012161729",
+   "reason": "frontage 80.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161847",
+   "reason": "frontage 30.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162183",
+   "reason": "frontage 54.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162204",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158065"
+  },
+  {
+   "pandId": "0363100012157319",
+   "reason": "frontage 52.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012157566",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012073807"
+  },
+  {
+   "pandId": "0363100012157580",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012073807"
+  },
+  {
+   "pandId": "0363100012158234",
+   "reason": "frontage 55.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158812",
+   "reason": "frontage 64.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158825",
+   "reason": "no frontage on Eerste Van der Helststraat: No footprint edge faces Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012158985",
+   "reason": "frontage 58.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012159698",
+   "reason": "frontage 42.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160055",
+   "reason": "frontage 46.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012160884",
+   "reason": "frontage 59.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161382",
+   "reason": "frontage 68.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012161723",
+   "reason": "frontage 43.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162035",
+   "reason": "frontage 37.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162232",
+   "reason": "frontage 76.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162298",
+   "reason": "frontage 69.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162303",
+   "reason": "frontage 82.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162348",
+   "reason": "frontage 59.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162421",
+   "reason": "frontage 38.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162562",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012237118"
+  },
+  {
+   "pandId": "0363100012162705",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012235907"
+  },
+  {
+   "pandId": "0363100012162792",
+   "reason": "frontage 34.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162920",
+   "reason": "frontage 49.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163007",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158451"
+  },
+  {
+   "pandId": "0363100012163034",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012154143"
+  },
+  {
+   "pandId": "0363100012163192",
+   "reason": "frontage 124.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163480",
+   "reason": "frontage 70.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163591",
+   "reason": "frontage 109.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163613",
+   "reason": "frontage 88.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163624",
+   "reason": "frontage 41.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163684",
+   "reason": "frontage 46.4 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163828",
+   "reason": "frontage 82.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012164674",
+   "reason": "frontage 58.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012164678",
+   "reason": "frontage 100.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012165564",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158877"
+  },
+  {
+   "pandId": "0363100012165583",
+   "reason": "frontage 80.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012165664",
+   "reason": "frontage 33.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012165882",
+   "reason": "frontage 97.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012166006",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158065"
+  },
+  {
+   "pandId": "0363100012166270",
+   "reason": "frontage 35.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012166404",
+   "reason": "frontage 114.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012166472",
+   "reason": "frontage 43.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012167060",
+   "reason": "frontage 70.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162854",
+   "reason": "frontage 30.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012162905",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012073807"
+  },
+  {
+   "pandId": "0363100012162980",
+   "reason": "frontage 76.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012163818",
+   "reason": "frontage 71.6 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012164184",
+   "reason": "frontage 49.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012164227",
+   "reason": "frontage 88.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012165639",
+   "reason": "frontage 36.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012166514",
+   "reason": "frontage 40.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012166647",
+   "reason": "frontage 34.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012167067",
+   "reason": "frontage 52.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012167281",
+   "reason": "frontage 41.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012185480",
+   "reason": "frontage 88.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012207372",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012236102"
+  },
+  {
+   "pandId": "0363100012214138",
+   "reason": "frontage 42.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012215418",
+   "reason": "frontage 98.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012219468",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012153140"
+  },
+  {
+   "pandId": "0363100012229467",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012158188"
+  },
+  {
+   "pandId": "0363100012236063",
+   "reason": "frontage 100.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236132",
+   "reason": "frontage 52.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236199",
+   "reason": "frontage 104.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236246",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012236018"
+  },
+  {
+   "pandId": "0363100012236334",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012154143"
+  },
+  {
+   "pandId": "0363100012236348",
+   "reason": "frontage 94.3 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236367",
+   "reason": "frontage 77.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236568",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012237218"
+  },
+  {
+   "pandId": "0363100012237115",
+   "reason": "frontage 56.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012237280",
+   "reason": "frontage 106.5 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012167434",
+   "reason": "frontage 71.0 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012167455",
+   "reason": "frontage 72.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012219504",
+   "reason": "frontage 71.7 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236047",
+   "reason": "frontage 61.2 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236118",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012162705"
+  },
+  {
+   "pandId": "0363100012236257",
+   "reason": "frontage 78.1 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012236834",
+   "reason": "frontage 63.9 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012237169",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012162705"
+  },
+  {
+   "pandId": "0363100012237281",
+   "reason": "frontage 65.8 m from Eerste Van der Helststraat"
+  },
+  {
+   "pandId": "0363100012238733",
+   "reason": "sightline to Eerste Van der Helststraat crosses 0363100012098051"
+  },
+  {
+   "pandId": "0363100012143302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152785",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098051",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158065",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158188",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158451",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158716",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164887",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163743",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012196658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237118",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235907",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012152914",
+   "alongM": -39.46,
+   "widthM": 5.42,
+   "eavesM": 14,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159331",
+   "alongM": -33.78,
+   "widthM": 5.93,
+   "eavesM": 15.06,
+   "roofMaxM": 17.33,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161804",
+   "alongM": -28.44,
+   "widthM": 4.76,
+   "eavesM": 13.55,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162310",
+   "alongM": -23.71,
+   "widthM": 4.7,
+   "eavesM": 13.83,
+   "roofMaxM": 17.03,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236101",
+   "alongM": -19,
+   "widthM": 4.71,
+   "eavesM": 13.24,
+   "roofMaxM": 16.17,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236102",
+   "alongM": -14.38,
+   "widthM": 4.53,
+   "eavesM": 14.14,
+   "roofMaxM": 17.38,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153140",
+   "alongM": -9.86,
+   "widthM": 4.5,
+   "eavesM": 13.79,
+   "roofMaxM": 17,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163924",
+   "alongM": -5.06,
+   "widthM": 5.1,
+   "eavesM": 14.46,
+   "roofMaxM": 17.25,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157290",
+   "alongM": 0,
+   "widthM": 5.02,
+   "eavesM": 14.21,
+   "roofMaxM": 18.67,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

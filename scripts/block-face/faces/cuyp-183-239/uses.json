@@ -1,0 +1,710 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153172",
+   "addresses": [
+    "Albert Cuypstraat 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 183",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000814992"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156029",
+   "addresses": [
+    "Albert Cuypstraat 185C",
+    "Albert Cuypstraat 185D",
+    "Albert Cuypstraat 185G",
+    "Albert Cuypstraat 185K",
+    "Albert Cuypstraat 185A",
+    "Albert Cuypstraat 185E",
+    "Albert Cuypstraat 185L",
+    "Albert Cuypstraat 185B",
+    "Albert Cuypstraat 185F",
+    "Albert Cuypstraat 185H",
+    "Albert Cuypstraat 185M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 185C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000814993"
+    },
+    {
+     "address": "Albert Cuypstraat 185D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000814994"
+    },
+    {
+     "address": "Albert Cuypstraat 185G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000814995"
+    },
+    {
+     "address": "Albert Cuypstraat 185K",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000814996"
+    },
+    {
+     "address": "Albert Cuypstraat 185A",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000814997"
+    },
+    {
+     "address": "Albert Cuypstraat 185E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000814998"
+    },
+    {
+     "address": "Albert Cuypstraat 185L",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000814999"
+    },
+    {
+     "address": "Albert Cuypstraat 185B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000878181"
+    },
+    {
+     "address": "Albert Cuypstraat 185F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000898951"
+    },
+    {
+     "address": "Albert Cuypstraat 185H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000939172"
+    },
+    {
+     "address": "Albert Cuypstraat 185M",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000939173"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512875,
+     "lngLat": [
+      4.8946887,
+      52.3559253
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "185H",
+      "addr:postcode": "1073BD",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Amsterdam Dreamz",
+      "shop": "smartshop",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153790",
+   "addresses": [
+    "Albert Cuypstraat 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 187",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000878180"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512883,
+     "lngLat": [
+      4.8947553,
+      52.3559385
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "187",
+      "addr:postcode": "1073BD",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "branch": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "cuisine": "pizza",
+      "email": "info@pizzeriadamichele.nl",
+      "fixme": "Unsure if this pizzeria is opening soon or if it is a former location. It is not mentioned on their website",
+      "name": "Pizzeria da Michele",
+      "phone": "+31 20 3586942",
+      "reservation": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pizzeriadamichele.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236452",
+   "addresses": [
+    "Albert Cuypstraat 189",
+    "Albert Cuypstraat 191"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 189-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000563799"
+    },
+    {
+     "address": "Albert Cuypstraat 191-H",
+     "use": "winkelfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000563806"
+    },
+    {
+     "address": "Albert Cuypstraat 189-H",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010012116665"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817512892,
+     "lngLat": [
+      4.8948349,
+      52.3559605
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "189-H",
+      "addr:postcode": "1073BD",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236049",
+   "addresses": [
+    "Albert Cuypstraat 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 193-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000563826"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513320,
+     "lngLat": [
+      4.8949513,
+      52.3559898
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "193-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Toko Hola",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158056",
+   "addresses": [
+    "Albert Cuypstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 195-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000563834"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513330,
+     "lngLat": [
+      4.8950253,
+      52.3560069
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "195-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "branch": "Outlet",
+      "check_date": "2026-01-18",
+      "email": "info@relovexchange.com",
+      "name": "ReLove Outlet",
+      "opening_hours": "Tu-Sa 11:00-17:00",
+      "operator": "ReLove",
+      "phone": "+31 20 2397275",
+      "second_hand": "yes",
+      "shop": "second_hand",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.relovexchange.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "relation",
+     "id": 7112728,
+     "lngLat": [
+      4.8949678,
+      52.356054
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1073",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "marketplace",
+      "name": "Albert Cuyp-markt",
+      "name:en": "Albert Cuyp market",
+      "name:nl": "Albert Cuyp-markt",
+      "name:ru": "Рынок Альберта Кёйпа",
+      "name:zh": "亞伯特市集",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "tourism": "attraction",
+      "type": "multipolygon",
+      "website": "https://albertcuyp-markt.amsterdam/",
+      "wikidata": "Q2342892"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155338",
+   "addresses": [
+    "Albert Cuypstraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 197-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000563842"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236396",
+   "addresses": [
+    "Albert Cuypstraat 199",
+    "Albert Cuypstraat 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 199-H",
+     "use": "winkelfunctie",
+     "areaM2": 183,
+     "bagId": "0363010001168867"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513347,
+     "lngLat": [
+      4.8952202,
+      52.3560499
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "199-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Sportshop PeterJan;Sportshop Peter-Jan",
+      "check_date": "2026-01-18",
+      "email": "info@peterjan.nl",
+      "name": "Sportshop Peter Jan",
+      "opening_hours": "Tu 10:00-17:00; We-Sa 10:00-17:30",
+      "phone": "+31 20 673 5421",
+      "shop": "sports",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "sport": "kickboxing;boxing",
+      "website": "https://peterjan.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236537",
+   "addresses": [
+    "Albert Cuypstraat 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 203-H",
+     "use": "winkelfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000563870"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513807,
+     "lngLat": [
+      4.895342,
+      52.356078
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "De Plantenmarkt",
+      "opening_hours": "Tu-Sa 09:00-17:30",
+      "phone": "+31 20 6626440",
+      "shop": "florist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.plantenmarktamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236387",
+   "addresses": [
+    "Albert Cuypstraat 203A",
+    "Albert Cuypstraat 203B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 203A-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000563874"
+    },
+    {
+     "address": "Albert Cuypstraat 203B-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000563878"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513812,
+     "lngLat": [
+      4.8954191,
+      52.3560949
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203A-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817513816,
+     "lngLat": [
+      4.8954836,
+      52.3561101
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203B-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "email": "info@hollywoodmode.nl",
+      "mobile": "+31614308620",
+      "name": "Hollywood Mode",
+      "opening_hours": "Mo 13:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "shop": "tailor",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://hollywoodmode.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159284",
+   "addresses": [
+    "Albert Cuypstraat 203C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 203C-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000563882"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513820,
+     "lngLat": [
+      4.8955649,
+      52.3561286
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203C-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "alt_name": "Saskias Huiskamer",
+      "amenity": "restaurant",
+      "capacity": "26",
+      "check_date": "2026-01-18",
+      "email": "saskia@huiskamerrestaurant.nl",
+      "mobile": "+31628629839",
+      "name": "Saskia's Huiskamer",
+      "opening_hours": "\"By appointment\"",
+      "reservation": "required",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.huiskamerrestaurant.com",
+      "website:menu": "https://www.huiskamerrestaurant.com/seizoensmenu/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152659",
+   "addresses": [
+    "Albert Cuypstraat 203F",
+    "Albert Cuypstraat 203E",
+    "Albert Cuypstraat 203D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 203E-O",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010001006570"
+    },
+    {
+     "address": "Albert Cuypstraat 203F-O",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010001006571"
+    },
+    {
+     "address": "Albert Cuypstraat 203F-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000563895"
+    },
+    {
+     "address": "Albert Cuypstraat 203D-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000563886"
+    },
+    {
+     "address": "Albert Cuypstraat 203D-O",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000563887"
+    },
+    {
+     "address": "Albert Cuypstraat 203E-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000563891"
+    }
+   ],
+   "units": 27,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165297",
+   "addresses": [
+    "Albert Cuypstraat 205"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 205-H",
+     "use": "winkelfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000563904"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513844,
+     "lngLat": [
+      4.8958424,
+      52.3561938
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "205-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Drogisterij Yousef",
+      "phone": "+31 20 4703989",
+      "shop": "chemist",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164174",
+   "addresses": [
+    "Albert Cuypstraat 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 207-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000563912"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817513857,
+     "lngLat": [
+      4.8958969,
+      52.3562119
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "207-H",
+      "addr:postcode": "1073BE",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "female": "yes",
+      "name": "Il Salotto",
+      "opening_hours": "We 10:00-16:00; Th-Sa 10:00-18:00; Su 12:00-17:00",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160906",
+   "addresses": [
+    "Albert Cuypstraat 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 209-H",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000563919"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,606 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159997",
+   "addresses": [
+    "Govert Flinckstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000648768"
+    },
+    {
+     "address": "Govert Flinckstraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010012061112"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236348",
+   "addresses": [
+    "Govert Flinckstraat 148",
+    "Govert Flinckstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 150-H",
+     "use": "industriefunctie",
+     "areaM2": 260,
+     "bagId": "0363010000648754"
+    },
+    {
+     "address": "Govert Flinckstraat 148-H",
+     "use": "industriefunctie",
+     "areaM2": 43,
+     "bagId": "0363010012146212"
+    },
+    {
+     "address": "Govert Flinckstraat 150-H",
+     "use": "industriefunctie",
+     "areaM2": 68,
+     "bagId": "0363010012146213"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237280",
+   "addresses": [
+    "Govert Flinckstraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 146-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000648742"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162469",
+   "addresses": [
+    "Govert Flinckstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000995080"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033149,
+     "lngLat": [
+      4.8917379,
+      52.3547533
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152667",
+   "addresses": [
+    "Govert Flinckstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 142-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000648727"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152639",
+   "addresses": [
+    "Govert Flinckstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 140-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000648717"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156828",
+   "addresses": [
+    "Govert Flinckstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 138-H",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010000648705"
+    },
+    {
+     "address": "Govert Flinckstraat 138-HV",
+     "use": "industriefunctie",
+     "areaM2": 26,
+     "bagId": "0363010012097214"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156786",
+   "addresses": [
+    "Govert Flinckstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 136-H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000648694"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165543",
+   "addresses": [
+    "Govert Flinckstraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 134-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001021196"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160380",
+   "addresses": [
+    "Govert Flinckstraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 132-H",
+     "use": "industriefunctie",
+     "areaM2": 86,
+     "bagId": "0363010000648676"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13507033145,
+     "lngLat": [
+      4.8912142,
+      52.3546589
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01658",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.7
+    },
+    {
+     "type": "node",
+     "id": 13507033146,
+     "lngLat": [
+      4.891245,
+      52.3546637
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01659",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153714",
+   "addresses": [
+    "Govert Flinckstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000648669"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163530",
+   "addresses": [
+    "Govert Flinckstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 128-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010001167828"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157232",
+   "addresses": [
+    "Govert Flinckstraat 126",
+    "Govert Flinckstraat 126A",
+    "Govert Flinckstraat 126B",
+    "Govert Flinckstraat 126C",
+    "Govert Flinckstraat 126D",
+    "Govert Flinckstraat 126E",
+    "Govert Flinckstraat 126F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 126A",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012155730"
+    },
+    {
+     "address": "Govert Flinckstraat 126B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012155731"
+    },
+    {
+     "address": "Govert Flinckstraat 126C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012155732"
+    },
+    {
+     "address": "Govert Flinckstraat 126D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012155733"
+    },
+    {
+     "address": "Govert Flinckstraat 126E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012155734"
+    },
+    {
+     "address": "Govert Flinckstraat 126F",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012155735"
+    },
+    {
+     "address": "Govert Flinckstraat 126-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000648651"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158669",
+   "addresses": [
+    "Govert Flinckstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 124-H",
+     "use": "industriefunctie",
+     "areaM2": 138,
+     "bagId": "0363010000648642"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505878178,
+     "lngLat": [
+      4.8909136,
+      52.3545503
+     ],
+     "tags": {
+      "access": "permit",
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124-H",
+      "addr:postcode": "1072EM",
+      "addr:street": "Govert Flinckstraat",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "check_date": "2026-01-28",
+      "contact:email": "info@stallingamsterdam.nl",
+      "contact:mobile": "+31626070538",
+      "covered": "yes",
+      "fee": "yes",
+      "indoor": "yes",
+      "name": "Buurtstalling Govert Flinckstraat",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://stallingamsterdam.nl/16-1072-em-124-goverflickstraat"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163597",
+   "addresses": [
+    "Govert Flinckstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 122-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000648633"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610652,
+     "lngLat": [
+      4.8908273,
+      52.3545348
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122-H",
+      "addr:postcode": "1072EM",
+      "addr:street": "Govert Flinckstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-28",
+      "cuisine": "burger",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Le Smash",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "payment:cash": "no",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 205 1146",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://le-smash.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012244385",
+   "addresses": [
+    "Govert Flinckstraat 120",
+    "Govert Flinckstraat 120A",
+    "Govert Flinckstraat 120B",
+    "Govert Flinckstraat 120C",
+    "Govert Flinckstraat 120D",
+    "Govert Flinckstraat 120E",
+    "Govert Flinckstraat 120F",
+    "Govert Flinckstraat 120G",
+    "Govert Flinckstraat 120H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000635439"
+    },
+    {
+     "address": "Ferdinand Bolstraat 73-H",
+     "use": "winkelfunctie",
+     "areaM2": 217,
+     "bagId": "0363010000635447"
+    },
+    {
+     "address": "Govert Flinckstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001167569"
+    },
+    {
+     "address": "Ferdinand Bolstraat 73",
+     "use": "winkelfunctie",
+     "areaM2": 412,
+     "bagId": "0363010012090061"
+    },
+    {
+     "address": "Govert Flinckstraat 120A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012090062"
+    },
+    {
+     "address": "Govert Flinckstraat 120B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012090063"
+    },
+    {
+     "address": "Govert Flinckstraat 120C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012090064"
+    },
+    {
+     "address": "Govert Flinckstraat 120D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012090065"
+    },
+    {
+     "address": "Govert Flinckstraat 120E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012090066"
+    },
+    {
+     "address": "Govert Flinckstraat 120F",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012090067"
+    },
+    {
+     "address": "Govert Flinckstraat 120G",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012090068"
+    },
+    {
+     "address": "Govert Flinckstraat 120H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012090069"
+    },
+    {
+     "address": "Ferdinand Bolstraat 73",
+     "use": "winkelfunctie",
+     "areaM2": 235,
+     "bagId": "0363010012571302"
+    },
+    {
+     "address": "Ferdinand Bolstraat 75",
+     "use": "winkelfunctie",
+     "areaM2": 162,
+     "bagId": "0363010012571303"
+    }
+   ],
+   "units": 22,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5126611402,
+     "lngLat": [
+      4.8906763,
+      52.3544697
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "73",
+      "addr:postcode": "1072LC",
+      "addr:street": "Ferdinand Bolstraat",
+      "brand": "Rituals",
+      "brand:wikidata": "Q62874140",
+      "check_date": "2026-01-22",
+      "name": "Rituals",
+      "opening_hours": "Mo 12:00-18:00; Tu-We,Fr-Sa 10:00-18:00; Th 10:00-20:00; Su 12:00-17:00",
+      "shop": "cosmetics",
+      "source": "BAG",
+      "source:date": "2017-09-24",
+      "website": "https://www.rituals.com/nl-nl/store-detail?store=Amsterdam-Ferdinand-Bolstraat"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10743234990,
+     "lngLat": [
+      4.8907151,
+      52.3543909
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "75",
+      "addr:postcode": "1072LC",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Vodafone / Ziggo",
+      "check_date": "2026-01-22",
+      "name": "VodafoneZiggo",
+      "opening_hours": "Mo-We,Fr 09:00-18:00; Th 09:00-20:00; Sa 09:00-17:00; Su 12:00-17:00",
+      "operator": "VodafoneZiggo",
+      "payment:cash": "no",
+      "shop": "mobile_phone",
+      "source": "BAG",
+      "source:date": "2023-03-18",
+      "website": "https://www.vodafone.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13476647627,
+     "lngLat": [
+      4.8906025,
+      52.3545896
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.8
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,270 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012235907",
+   "addresses": [
+    "Eerste Van der Helststraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000548690"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506601988,
+     "lngLat": [
+      4.8933375,
+      52.3553728
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "name": "Tabakspeciaalzaak Van Hartingsveldt",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "tobacco",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163134",
+   "addresses": [
+    "Eerste Van der Helststraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000548698"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558941,
+     "lngLat": [
+      4.8933546,
+      52.3553365
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "name": "De Kaaiman",
+      "opening_hours": "Mo-Sa 12:00-19:00",
+      "shop": "tattoo",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154091",
+   "addresses": [
+    "Eerste Van der Helststraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000548716"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558959,
+     "lngLat": [
+      4.8933717,
+      52.3552997
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-21",
+      "cuisine": "falafel;fries",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "name": "Sonny",
+      "opening_hours": "Apr-Oct Mo-Sa 11:00-22:00; Apr-Oct Su 13:00-22:00; Nov-Mar Mo-Sa 11:00-21:00; Nov-Mar Su 13:00-21:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 6767612",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.sonnyfalafel.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158188",
+   "addresses": [
+    "Eerste Van der Helststraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 45-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000548724"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558972,
+     "lngLat": [
+      4.8933911,
+      52.3552579
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "cuisine": "turkish;mediterranean",
+      "email": "hello@mudavim.nl",
+      "mobile": "+31682979791",
+      "name": "Müdavim",
+      "opening_hours": "Su-Th 11:00-22:00; Fr-Sa 11:00-24:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.mudavim.nl/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152785",
+   "addresses": [
+    "Eerste Van der Helststraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 47-H",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000548728"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558985,
+     "lngLat": [
+      4.8934108,
+      52.355211
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "cuisine": "mediterranean;sandwich",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Mezzave",
+      "opening_hours": "Mo-Th 10:00-22:00; Fr-Su 11:00-22:00",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158451",
+   "addresses": [
+    "Eerste Van der Helststraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000548732"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558996,
+     "lngLat": [
+      4.8934352,
+      52.3551543
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "branch": "Amsterdam Zuid van der Helststraat",
+      "check_date": "2026-01-21",
+      "email": "helststraat@bbrood.nl",
+      "name": "BBrood",
+      "opening_hours": "Mo-Fr 07:30-17:00; Sa 08:00-17:00; Su 08:00-16:00",
+      "phone": "+31 20 379 5844",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.bbrood.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

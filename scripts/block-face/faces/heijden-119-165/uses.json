@@ -1,0 +1,611 @@
+{
+ "street": "Eerste Jan van der Heijdenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233666",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 119A",
+    "Eerste Jan van der Heijdenstraat 119B",
+    "Eerste Jan van der Heijdenstraat 119C",
+    "Eerste Jan van der Heijdenstraat 119D",
+    "Eerste Jan van der Heijdenstraat 119E",
+    "Eerste Jan van der Heijdenstraat 119F",
+    "Eerste Jan van der Heijdenstraat 119G",
+    "Eerste Jan van der Heijdenstraat 119J",
+    "Eerste Jan van der Heijdenstraat 119H",
+    "Eerste Jan van der Heijdenstraat 121A",
+    "Eerste Jan van der Heijdenstraat 121B",
+    "Eerste Jan van der Heijdenstraat 121C",
+    "Eerste Jan van der Heijdenstraat 121D",
+    "Eerste Jan van der Heijdenstraat 121E",
+    "Eerste Jan van der Heijdenstraat 121F",
+    "Eerste Jan van der Heijdenstraat 121H",
+    "Eerste Jan van der Heijdenstraat 121J",
+    "Eerste Jan van der Heijdenstraat 121K",
+    "Eerste Jan van der Heijdenstraat 121L",
+    "Eerste Jan van der Heijdenstraat 121M",
+    "Eerste Jan van der Heijdenstraat 121N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000546877"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546878"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000546879"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546880"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000546881"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119F",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000546882"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119G",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000546883"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119J",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000546885"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546890"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000546891"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000546892"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000546893"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000546894"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121F",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000546895"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000546896"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121J",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546897"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121K",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000546898"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121L",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000546899"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121M",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000546900"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 121N",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000546901"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93A",
+     "use": "winkelfunctie",
+     "areaM2": 2039,
+     "bagId": "0363010000635508"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000635509"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000635510"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000635511"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000635512"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93F",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000635513"
+    },
+    {
+     "address": "Ferdinand Bolstraat 93G",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000635514"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 119H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000546884"
+    }
+   ],
+   "units": 28,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249327305,
+     "lngLat": [
+      4.8910218,
+      52.3536789
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "93A",
+      "addr:postcode": "1072LD",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Amsterdam-Ferdinand Bolstraat",
+      "brand": "HEMA",
+      "brand:website": "https://www.hema.nl",
+      "brand:wikidata": "Q903805",
+      "check_date": "2026-01-22",
+      "name": "HEMA",
+      "opening_hours": "Mo-We,Fr-Sa 09:00-19:00; Th 09:00-21:00; Su 11:00-18:00",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 676 3222",
+      "ref": "12",
+      "shop": "department_store",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://winkels.hema.nl/nl/amsterdam/hema-amsterdam-ferdinand-bolstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13476647631,
+     "lngLat": [
+      4.8909386,
+      52.3535633
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    },
+    {
+     "type": "node",
+     "id": 13512730824,
+     "lngLat": [
+      4.8912594,
+      52.3535292
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01688",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    },
+    {
+     "type": "node",
+     "id": 13512730825,
+     "lngLat": [
+      4.891292,
+      52.353534
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01689",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012239832",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 125",
+    "Eerste Jan van der Heijdenstraat 127C",
+    "Eerste Jan van der Heijdenstraat 127A",
+    "Eerste Jan van der Heijdenstraat 127B",
+    "Eerste Jan van der Heijdenstraat 129C",
+    "Eerste Jan van der Heijdenstraat 129D",
+    "Eerste Jan van der Heijdenstraat 129A",
+    "Eerste Jan van der Heijdenstraat 129B",
+    "Eerste Jan van der Heijdenstraat 131A",
+    "Eerste Jan van der Heijdenstraat 131D",
+    "Eerste Jan van der Heijdenstraat 131G",
+    "Eerste Jan van der Heijdenstraat 131H",
+    "Eerste Jan van der Heijdenstraat 131B",
+    "Eerste Jan van der Heijdenstraat 131E",
+    "Eerste Jan van der Heijdenstraat 131F",
+    "Eerste Jan van der Heijdenstraat 131C",
+    "Eerste Jan van der Heijdenstraat 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010003691962"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 127C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010003691963"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 127A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010003691964"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 127B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010003691965"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 129C",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010003691966"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 129D",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010003691967"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 129A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010003691968"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 129B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010003691969"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010003691970"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131D",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010003691972"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131G",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010003691973"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010003691974"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010003691975"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131E",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010003691976"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131F",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010003691977"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010003691978"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 131C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010003691971"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162517",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 139-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000546964"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110677",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 143B",
+    "Eerste Jan van der Heijdenstraat 143C",
+    "Eerste Jan van der Heijdenstraat 143D",
+    "Eerste Jan van der Heijdenstraat 143A",
+    "Eerste Jan van der Heijdenstraat 145E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 143B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949565"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 143C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949566"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 143D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000949570"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 143A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000949572"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 145E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000949644"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145173",
+   "addresses": [
+    "Eerste Jan van der Heijdenstraat 145A",
+    "Eerste Jan van der Heijdenstraat 145B",
+    "Eerste Jan van der Heijdenstraat 145C",
+    "Eerste Jan van der Heijdenstraat 145D",
+    "Eerste Jan van der Heijdenstraat 147C",
+    "Eerste Jan van der Heijdenstraat 147B",
+    "Eerste Jan van der Heijdenstraat 147D",
+    "Eerste Jan van der Heijdenstraat 147A",
+    "Eerste Jan van der Heijdenstraat 149A",
+    "Eerste Jan van der Heijdenstraat 149C",
+    "Eerste Jan van der Heijdenstraat 149E",
+    "Eerste Jan van der Heijdenstraat 149G",
+    "Eerste Jan van der Heijdenstraat 149K",
+    "Eerste Jan van der Heijdenstraat 149B",
+    "Eerste Jan van der Heijdenstraat 149D",
+    "Eerste Jan van der Heijdenstraat 149F",
+    "Eerste Jan van der Heijdenstraat 149H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149A",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000949556"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000949557"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000949558"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149G",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000949560"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 145A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000949561"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 145B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949562"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 145C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949563"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 145D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949564"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 147C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949567"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 147B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949568"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 147D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000949569"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149K",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000949571"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 147A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000949573"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000989719"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000989721"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000989722"
+    },
+    {
+     "address": "Eerste Jan van der Heijdenstraat 149H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000989724"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,435 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163289",
+   "addresses": [
+    "Govert Flinckstraat 226"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 226-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000649016"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071838",
+   "addresses": [
+    "Govert Flinckstraat 224"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 224-H",
+     "use": "industriefunctie",
+     "areaM2": 54,
+     "bagId": "0363010000649010"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158874",
+   "addresses": [
+    "Govert Flinckstraat 222"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 222-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000649004"
+    },
+    {
+     "address": "Govert Flinckstraat 222",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 236,
+     "bagId": "0363010012119583"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158681",
+   "addresses": [
+    "Govert Flinckstraat 210"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 210-H",
+     "use": "industriefunctie",
+     "areaM2": 133,
+     "bagId": "0363010001010062"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557935,
+     "lngLat": [
+      4.8948043,
+      52.3552638
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "210-H",
+      "addr:postcode": "1073CC",
+      "addr:street": "Govert Flinckstraat",
+      "email": "studio@duoverba.com",
+      "name": "Duo Verba",
+      "opening_hours": "Mo-Su 10:00-19:00 || \"By appointment\"",
+      "shop": "tattoo",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://duoverba.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233660",
+   "addresses": [
+    "Govert Flinckstraat 206A",
+    "Govert Flinckstraat 206B",
+    "Govert Flinckstraat 206C",
+    "Govert Flinckstraat 208C",
+    "Govert Flinckstraat 208A",
+    "Govert Flinckstraat 208B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 206B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001014161"
+    },
+    {
+     "address": "Govert Flinckstraat 206C",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010001014162"
+    },
+    {
+     "address": "Govert Flinckstraat 208C",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010001014164"
+    },
+    {
+     "address": "Govert Flinckstraat 208A",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012569494"
+    },
+    {
+     "address": "Govert Flinckstraat 208B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001014163"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165583",
+   "addresses": [
+    "Govert Flinckstraat 204",
+    "Govert Flinckstraat 204D",
+    "Govert Flinckstraat 204E",
+    "Govert Flinckstraat 204A",
+    "Govert Flinckstraat 204C",
+    "Govert Flinckstraat 204B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 204D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012578376"
+    },
+    {
+     "address": "Govert Flinckstraat 204E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012578377"
+    },
+    {
+     "address": "Govert Flinckstraat 204A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012578378"
+    },
+    {
+     "address": "Govert Flinckstraat 204C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012578379"
+    },
+    {
+     "address": "Govert Flinckstraat 204B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012578381"
+    },
+    {
+     "address": "Govert Flinckstraat 204-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010001030395"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156946",
+   "addresses": [
+    "Govert Flinckstraat 202"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 202-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000648953"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162298",
+   "addresses": [
+    "Govert Flinckstraat 200"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 200-H",
+     "use": "industriefunctie",
+     "areaM2": 100,
+     "bagId": "0363010000648946"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084636",
+   "addresses": [
+    "Govert Flinckstraat 198"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 198-H",
+     "use": "sportfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000648938"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557725,
+     "lngLat": [
+      4.8943195,
+      52.3551583
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "198-H",
+      "addr:postcode": "1073CB",
+      "addr:street": "Govert Flinckstraat",
+      "amenity": "childcare",
+      "check_date": "2026-01-28",
+      "email": "info@kcdeboefjes.nl",
+      "name": "Kindercentrum De Boefjes",
+      "phone": "+31 20 4708842",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://kcdeboefjes.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236132",
+   "addresses": [
+    "Govert Flinckstraat 194",
+    "Govert Flinckstraat 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 194-H",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010003685096"
+    },
+    {
+     "address": "Govert Flinckstraat 196-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 116,
+     "bagId": "0363010003685097"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163684",
+   "addresses": [
+    "Govert Flinckstraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 192-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000648908"
+    },
+    {
+     "address": "Govert Flinckstraat 192-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012143079"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152886",
+   "addresses": [
+    "Govert Flinckstraat 190"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 190-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000648903"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118823",
+   "addresses": [
+    "Govert Flinckstraat 184",
+    "Govert Flinckstraat 186A",
+    "Govert Flinckstraat 186B",
+    "Govert Flinckstraat 186C",
+    "Govert Flinckstraat 186D",
+    "Govert Flinckstraat 188A",
+    "Govert Flinckstraat 188B",
+    "Govert Flinckstraat 188C",
+    "Govert Flinckstraat 188D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 186A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000936830"
+    },
+    {
+     "address": "Govert Flinckstraat 186B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000936831"
+    },
+    {
+     "address": "Govert Flinckstraat 186C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000936832"
+    },
+    {
+     "address": "Govert Flinckstraat 186D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000936833"
+    },
+    {
+     "address": "Govert Flinckstraat 188A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000936834"
+    },
+    {
+     "address": "Govert Flinckstraat 188B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000936835"
+    },
+    {
+     "address": "Govert Flinckstraat 188C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000936836"
+    },
+    {
+     "address": "Govert Flinckstraat 188D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000936837"
+    },
+    {
+     "address": "Govert Flinckstraat 184",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000956141"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162562",
+   "addresses": [
+    "Govert Flinckstraat 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 182-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001988009"
+    },
+    {
+     "address": "Govert Flinckstraat 182-O",
+     "use": "industriefunctie",
+     "areaM2": 47,
+     "bagId": "0363010001988010"
+    },
+    {
+     "address": "Govert Flinckstraat 182-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012115531"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1589 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "seed": "0363100012160429",
+ "members": [
+  "0363100012160429",
+  "0363100012148007",
+  "0363100012162322",
+  "0363100012162055",
+  "0363100012155486",
+  "0363100012152710",
+  "0363100012161104",
+  "0363100012163377",
+  "0363100012159865",
+  "0363100012162418",
+  "0363100012158664",
+  "0363100012159194",
+  "0363100012163139",
+  "0363100012166520",
+  "0363100012154231",
+  "0363100012228680"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012156114 22.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012068187",
+   "reason": "frontage 32.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012069726",
+   "reason": "frontage 62.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012069980",
+   "reason": "frontage 115.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012074388",
+   "reason": "frontage 111.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012082246",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012119117"
+  },
+  {
+   "pandId": "0363100012087624",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012096414",
+   "reason": "frontage 66.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012103295",
+   "reason": "frontage 78.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012111128",
+   "reason": "frontage 138.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012119135",
+   "reason": "frontage 138.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012125783",
+   "reason": "frontage 74.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012132891",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012140727",
+   "reason": "frontage 105.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152559",
+   "reason": "frontage 60.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152738",
+   "reason": "frontage 145.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153030",
+   "reason": "frontage 50.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012062070",
+   "reason": "frontage 161.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012069043",
+   "reason": "frontage 140.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012070028",
+   "reason": "frontage 101.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012071682",
+   "reason": "frontage 98.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012073912",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012233526"
+  },
+  {
+   "pandId": "0363100012081074",
+   "reason": "frontage 115.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012083238",
+   "reason": "frontage 45.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012090495",
+   "reason": "frontage 155.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012091498",
+   "reason": "frontage 97.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012092127",
+   "reason": "frontage 106.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012098429",
+   "reason": "frontage 140.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012098847",
+   "reason": "frontage 75.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012135465",
+   "reason": "frontage 52.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012145946",
+   "reason": "frontage 79.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012148687",
+   "reason": "frontage 47.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012151391",
+   "reason": "frontage 109.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152303",
+   "reason": "frontage 121.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152579",
+   "reason": "frontage 63.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152593",
+   "reason": "frontage 174.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152613",
+   "reason": "frontage 112.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152944",
+   "reason": "frontage 86.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012152965",
+   "reason": "frontage 72.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153081",
+   "reason": "frontage 157.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153280",
+   "reason": "frontage 77.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153321",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012153328"
+  },
+  {
+   "pandId": "0363100012153361",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012160429"
+  },
+  {
+   "pandId": "0363100012153437",
+   "reason": "frontage 156.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153444",
+   "reason": "frontage 144.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153492",
+   "reason": "frontage 42.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153825",
+   "reason": "frontage 72.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012154395",
+   "reason": "frontage 140.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155760",
+   "reason": "frontage 141.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155821",
+   "reason": "frontage 72.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155856",
+   "reason": "frontage 79.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156213",
+   "reason": "frontage 51.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156333",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012152317"
+  },
+  {
+   "pandId": "0363100012156424",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012152317"
+  },
+  {
+   "pandId": "0363100012156741",
+   "reason": "frontage 112.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156921",
+   "reason": "frontage 144.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153362",
+   "reason": "frontage 54.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153510",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153592",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012237018"
+  },
+  {
+   "pandId": "0363100012153646",
+   "reason": "frontage 140.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153684",
+   "reason": "frontage 38.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012153748",
+   "reason": "frontage 74.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012154148",
+   "reason": "frontage 140.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012154270",
+   "reason": "frontage 48.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012154376",
+   "reason": "frontage 41.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155409",
+   "reason": "frontage 34.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155493",
+   "reason": "frontage 44.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155525",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155531",
+   "reason": "frontage 82.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155606",
+   "reason": "frontage 157.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155636",
+   "reason": "frontage 45.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155732",
+   "reason": "frontage 109.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012155984",
+   "reason": "frontage 72.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156061",
+   "reason": "frontage 141.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156282",
+   "reason": "frontage 74.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156425",
+   "reason": "frontage 43.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156538",
+   "reason": "frontage 43.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012156911",
+   "reason": "frontage 43.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157203",
+   "reason": "frontage 147.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157216",
+   "reason": "frontage 119.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157625",
+   "reason": "frontage 55.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157683",
+   "reason": "frontage 111.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157847",
+   "reason": "frontage 151.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158214",
+   "reason": "frontage 121.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158342",
+   "reason": "frontage 72.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158464",
+   "reason": "frontage 43.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158730",
+   "reason": "frontage 50.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158732",
+   "reason": "frontage 86.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158811",
+   "reason": "frontage 72.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158955",
+   "reason": "frontage 118.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159016",
+   "reason": "frontage 98.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159152",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159231",
+   "reason": "frontage 35.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159304",
+   "reason": "frontage 146.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159416",
+   "reason": "frontage 128.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159553",
+   "reason": "frontage 67.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157291",
+   "reason": "frontage 36.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157381",
+   "reason": "frontage 74.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157389",
+   "reason": "frontage 127.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157446",
+   "reason": "frontage 169.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157600",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157631",
+   "reason": "frontage 168.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157632",
+   "reason": "frontage 163.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157729",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012153328"
+  },
+  {
+   "pandId": "0363100012157731",
+   "reason": "frontage 113.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012157887",
+   "reason": "frontage 52.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158091",
+   "reason": "frontage 41.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158604",
+   "reason": "frontage 119.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158625",
+   "reason": "frontage 46.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158633",
+   "reason": "frontage 138.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158917",
+   "reason": "frontage 112.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158941",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158953",
+   "reason": "frontage 74.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158980",
+   "reason": "frontage 175.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012158987",
+   "reason": "frontage 85.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159084",
+   "reason": "frontage 72.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159103",
+   "reason": "frontage 111.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159161",
+   "reason": "frontage 164.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159178",
+   "reason": "frontage 155.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159179",
+   "reason": "frontage 35.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159244",
+   "reason": "frontage 141.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159354",
+   "reason": "frontage 46.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160369",
+   "reason": "frontage 72.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160675",
+   "reason": "frontage 130.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161076",
+   "reason": "frontage 43.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161133",
+   "reason": "frontage 154.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161231",
+   "reason": "frontage 43.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161379",
+   "reason": "frontage 43.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161404",
+   "reason": "frontage 44.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161978",
+   "reason": "frontage 98.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159558",
+   "reason": "frontage 56.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012159837",
+   "reason": "frontage 155.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160151",
+   "reason": "frontage 112.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160165",
+   "reason": "frontage 43.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160200",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012153592"
+  },
+  {
+   "pandId": "0363100012160359",
+   "reason": "frontage 74.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160421",
+   "reason": "frontage 175.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160553",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160573",
+   "reason": "frontage 114.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160596",
+   "reason": "frontage 140.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160651",
+   "reason": "frontage 48.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160700",
+   "reason": "frontage 68.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160712",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160742",
+   "reason": "frontage 52.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160781",
+   "reason": "frontage 177.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012160885",
+   "reason": "frontage 167.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161167",
+   "reason": "frontage 172.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161718",
+   "reason": "frontage 74.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161788",
+   "reason": "frontage 47.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161914",
+   "reason": "frontage 33.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012161957",
+   "reason": "frontage 87.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162196",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162212",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162263",
+   "reason": "frontage 40.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162312",
+   "reason": "frontage 159.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162317",
+   "reason": "frontage 110.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162318",
+   "reason": "frontage 54.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162395",
+   "reason": "frontage 51.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162399",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012161247"
+  },
+  {
+   "pandId": "0363100012162417",
+   "reason": "frontage 113.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162437",
+   "reason": "frontage 142.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162535",
+   "reason": "frontage 84.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162763",
+   "reason": "frontage 81.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163067",
+   "reason": "frontage 59.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163120",
+   "reason": "frontage 138.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163354",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163371",
+   "reason": "frontage 31.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164142",
+   "reason": "frontage 111.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164220",
+   "reason": "frontage 43.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164368",
+   "reason": "frontage 139.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164433",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164454",
+   "reason": "frontage 56.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164473",
+   "reason": "frontage 72.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164510",
+   "reason": "frontage 108.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162486",
+   "reason": "frontage 140.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162576",
+   "reason": "frontage 79.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162598",
+   "reason": "frontage 141.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162731",
+   "reason": "frontage 111.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162798",
+   "reason": "frontage 74.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162831",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012105340"
+  },
+  {
+   "pandId": "0363100012162885",
+   "reason": "frontage 175.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012162907",
+   "reason": "frontage 70.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163052",
+   "reason": "frontage 49.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163098",
+   "reason": "frontage 47.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163135",
+   "reason": "frontage 88.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163196",
+   "reason": "frontage 113.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163233",
+   "reason": "frontage 91.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163235",
+   "reason": "frontage 106.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163246",
+   "reason": "frontage 73.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163358",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163485",
+   "reason": "frontage 31.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163556",
+   "reason": "frontage 42.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163559",
+   "reason": "frontage 153.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163595",
+   "reason": "frontage 145.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163608",
+   "reason": "frontage 140.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163636",
+   "reason": "frontage 46.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163767",
+   "reason": "frontage 112.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012163963",
+   "reason": "frontage 100.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164016",
+   "reason": "frontage 138.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164119",
+   "reason": "frontage 74.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164149",
+   "reason": "frontage 175.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164256",
+   "reason": "frontage 75.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164261",
+   "reason": "frontage 152.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164504",
+   "reason": "frontage 44.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164618",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012152317"
+  },
+  {
+   "pandId": "0363100012164644",
+   "reason": "frontage 72.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164648",
+   "reason": "frontage 72.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165314",
+   "reason": "frontage 110.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165931",
+   "reason": "frontage 73.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166015",
+   "reason": "frontage 138.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166062",
+   "reason": "frontage 138.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166124",
+   "reason": "frontage 148.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166152",
+   "reason": "frontage 50.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166420",
+   "reason": "frontage 50.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166517",
+   "reason": "frontage 123.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166796",
+   "reason": "frontage 38.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167017",
+   "reason": "frontage 78.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167219",
+   "reason": "frontage 134.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167250",
+   "reason": "frontage 42.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164553",
+   "reason": "frontage 157.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164554",
+   "reason": "frontage 155.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164608",
+   "reason": "frontage 94.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164659",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164799",
+   "reason": "frontage 69.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012164898",
+   "reason": "frontage 140.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165275",
+   "reason": "frontage 34.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165482",
+   "reason": "frontage 75.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165645",
+   "reason": "frontage 179.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165741",
+   "reason": "frontage 83.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165817",
+   "reason": "frontage 134.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165850",
+   "reason": "frontage 115.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012165989",
+   "reason": "frontage 112.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166068",
+   "reason": "frontage 40.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166077",
+   "reason": "frontage 149.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166204",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166226",
+   "reason": "frontage 140.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166428",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166489",
+   "reason": "frontage 140.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166549",
+   "reason": "frontage 163.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166627",
+   "reason": "frontage 140.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166630",
+   "reason": "frontage 112.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012166810",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012161247"
+  },
+  {
+   "pandId": "0363100012167015",
+   "reason": "frontage 141.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167059",
+   "reason": "frontage 140.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167062",
+   "reason": "frontage 34.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167165",
+   "reason": "frontage 138.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167242",
+   "reason": "frontage 150.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167283",
+   "reason": "frontage 83.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167369",
+   "reason": "frontage 57.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012167426",
+   "reason": "frontage 67.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012168277",
+   "reason": "frontage 178.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012183999",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012228680"
+  },
+  {
+   "pandId": "0363100012187219",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012191582",
+   "reason": "frontage 74.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012191583",
+   "reason": "frontage 71.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012191584",
+   "reason": "frontage 68.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012191585",
+   "reason": "frontage 78.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012198175",
+   "reason": "frontage 98.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012205462",
+   "reason": "frontage 108.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012209722",
+   "reason": "frontage 109.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012220785",
+   "reason": "frontage 98.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012228626",
+   "reason": "frontage 44.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012233604",
+   "reason": "frontage 98.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236033",
+   "reason": "frontage 92.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236110",
+   "reason": "frontage 104.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236148",
+   "reason": "frontage 138.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012176206",
+   "reason": "frontage 199.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012183259",
+   "reason": "frontage 31.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012189110",
+   "reason": "frontage 41.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012189956",
+   "reason": "frontage 161.7 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012191807",
+   "reason": "frontage 94.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012197306",
+   "reason": "frontage 76.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012197307",
+   "reason": "frontage 85.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012205606",
+   "reason": "frontage 174.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012206448",
+   "reason": "frontage 161.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012207269",
+   "reason": "frontage 164.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012210979",
+   "reason": "frontage 164.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012215371",
+   "reason": "frontage 164.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012215721",
+   "reason": "frontage 162.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012218173",
+   "reason": "frontage 40.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012221243",
+   "reason": "frontage 36.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012224807",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012155659"
+  },
+  {
+   "pandId": "0363100012224808",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012155659"
+  },
+  {
+   "pandId": "0363100012226693",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012160429"
+  },
+  {
+   "pandId": "0363100012227385",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012162322"
+  },
+  {
+   "pandId": "0363100012231161",
+   "reason": "frontage 35.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012231162",
+   "reason": "frontage 33.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012233419",
+   "reason": "frontage 79.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012233456",
+   "reason": "frontage 45.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012233597",
+   "reason": "frontage 45.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236004",
+   "reason": "frontage 60.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236103",
+   "reason": "frontage 104.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236267",
+   "reason": "frontage 164.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236388",
+   "reason": "frontage 110.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236534",
+   "reason": "frontage 67.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236563",
+   "reason": "frontage 111.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236571",
+   "reason": "frontage 110.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236685",
+   "reason": "frontage 84.6 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236688",
+   "reason": "frontage 85.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236960",
+   "reason": "frontage 31.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237129",
+   "reason": "frontage 52.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237225",
+   "reason": "frontage 107.4 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237226",
+   "reason": "frontage 138.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237278",
+   "reason": "frontage 138.1 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237354",
+   "reason": "no frontage on Eerste Jacob van Campenstraat: No footprint edge faces Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012240682",
+   "reason": "frontage 165.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236279",
+   "reason": "frontage 45.5 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012236548",
+   "reason": "frontage 164.3 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237026",
+   "reason": "frontage 94.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237124",
+   "reason": "frontage 60.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237318",
+   "reason": "frontage 83.9 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012237360",
+   "reason": "sightline to Eerste Jacob van Campenstraat crosses 0363100012152335"
+  },
+  {
+   "pandId": "0363100012237381",
+   "reason": "frontage 141.2 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012239265",
+   "reason": "frontage 99.0 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012248029",
+   "reason": "frontage 97.8 m from Eerste Jacob van Campenstraat"
+  },
+  {
+   "pandId": "0363100012119117",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152317",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105340",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152335",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153116",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155659",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156123",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156663",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155840",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156746",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158972",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158976",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162050",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161247",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161417",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162065",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163981",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162924",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166419",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236127",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237337",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012160429",
+   "alongM": 0,
+   "widthM": 7.13,
+   "eavesM": 15.77,
+   "roofMaxM": 18.69,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012148007",
+   "alongM": 7.07,
+   "widthM": 7,
+   "eavesM": 15.82,
+   "roofMaxM": 18.83,
+   "storeys3dbag": 5,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162322",
+   "alongM": 13.61,
+   "widthM": 6.1,
+   "eavesM": 12.95,
+   "roofMaxM": 16.07,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162055",
+   "alongM": 19.66,
+   "widthM": 6,
+   "eavesM": 12.59,
+   "roofMaxM": 16.49,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155486",
+   "alongM": 25.61,
+   "widthM": 5.9,
+   "eavesM": 9.48,
+   "roofMaxM": 13.03,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152710",
+   "alongM": 31.46,
+   "widthM": 5.8,
+   "eavesM": 10.62,
+   "roofMaxM": 12.79,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161104",
+   "alongM": 37.21,
+   "widthM": 5.7,
+   "eavesM": 10.83,
+   "roofMaxM": 12.73,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163377",
+   "alongM": 42.81,
+   "widthM": 5.5,
+   "eavesM": 11.09,
+   "roofMaxM": 12.98,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159865",
+   "alongM": 49.46,
+   "widthM": 7.8,
+   "eavesM": 11.4,
+   "roofMaxM": 14.68,
+   "storeys3dbag": 4,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162418",
+   "alongM": 56.36,
+   "widthM": 6,
+   "eavesM": 13.43,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158664",
+   "alongM": 62.36,
+   "widthM": 6,
+   "eavesM": 13.5,
+   "roofMaxM": 17.34,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159194",
+   "alongM": 68.36,
+   "widthM": 6,
+   "eavesM": 13.33,
+   "roofMaxM": 16.35,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163139",
+   "alongM": 74.36,
+   "widthM": 6,
+   "eavesM": 13.47,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166520",
+   "alongM": 80.36,
+   "widthM": 6,
+   "eavesM": 13.08,
+   "roofMaxM": 16.14,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012154231",
+   "alongM": 86.36,
+   "widthM": 6,
+   "eavesM": 13.25,
+   "roofMaxM": 15.65,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012228680",
+   "alongM": 99.38,
+   "widthM": 20.04,
+   "eavesM": 11.53,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 0,
+   "builtYear": 1900,
+   "uncertainty": []
+  }
+ ]
+}

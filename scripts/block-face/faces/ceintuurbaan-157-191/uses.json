@@ -1,0 +1,580 @@
+{
+ "street": "Ceintuurbaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236440",
+   "addresses": [
+    "Ceintuurbaan 157A",
+    "Ceintuurbaan 157B",
+    "Ceintuurbaan 157C",
+    "Ceintuurbaan 157D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 157A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000602531"
+    },
+    {
+     "address": "Ceintuurbaan 157B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000602532"
+    },
+    {
+     "address": "Ceintuurbaan 157C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000602533"
+    },
+    {
+     "address": "Ceintuurbaan 157D",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000602534"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249628969,
+     "lngLat": [
+      4.8991979,
+      52.3543687
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "157A",
+      "addr:postcode": "1072GB",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "pub",
+      "check_date": "2026-02-24",
+      "name": "Café Sarphaat",
+      "opening_hours": "Su-Th 09:00-01:00; Fr-Sa 09:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 675 1565",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.sarphaat.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163961",
+   "addresses": [
+    "Ceintuurbaan 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 159-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000982027"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751627,
+     "lngLat": [
+      4.8994708,
+      52.35437
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164626",
+   "addresses": [
+    "Ceintuurbaan 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 161-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000602538"
+    },
+    {
+     "address": "Ceintuurbaan 161-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012147847"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161742",
+   "addresses": [
+    "Ceintuurbaan 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 163-H",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000602541"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751628,
+     "lngLat": [
+      4.8996495,
+      52.354423
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166175",
+   "addresses": [
+    "Ceintuurbaan 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 165-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000602544"
+    },
+    {
+     "address": "Ceintuurbaan 165-4A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000986401"
+    },
+    {
+     "address": "Ceintuurbaan 165-4V",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000986409"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160287",
+   "addresses": [
+    "Ceintuurbaan 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 167-H",
+     "use": "winkelfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000602547"
+    },
+    {
+     "address": "Ceintuurbaan 167-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012077375"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751629,
+     "lngLat": [
+      4.8998368,
+      52.3544804
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158646",
+   "addresses": [
+    "Ceintuurbaan 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 169-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012077376"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751629,
+     "lngLat": [
+      4.8998368,
+      52.3544804
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163561",
+   "addresses": [
+    "Ceintuurbaan 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 171-H",
+     "use": "kantoorfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001032556"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751630,
+     "lngLat": [
+      4.8999951,
+      52.3545304
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163475",
+   "addresses": [
+    "Ceintuurbaan 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 173-H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000602557"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159758",
+   "addresses": [
+    "Ceintuurbaan 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 175-H",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000602560"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163860",
+   "addresses": [
+    "Ceintuurbaan 177"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 177-H",
+     "use": "woonfunctie",
+     "areaM2": 288,
+     "bagId": "0363010000982306"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751631,
+     "lngLat": [
+      4.9002171,
+      52.3545953
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165605",
+   "addresses": [
+    "Ceintuurbaan 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 179-H",
+     "use": "woonfunctie",
+     "areaM2": 253,
+     "bagId": "0363010000602564"
+    },
+    {
+     "address": "Ceintuurbaan 179-H",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010012153648"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159693",
+   "addresses": [
+    "Ceintuurbaan 181"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 181-H",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000602567"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557405,
+     "lngLat": [
+      4.900312,
+      52.3547175
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "181-H",
+      "addr:postcode": "1073EK",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-20",
+      "contact:mobile": "+31624391214",
+      "craft": "caterer",
+      "name": "Ratatouille Traiteur",
+      "opening_hours": "Tu-Fr 16:00-22:00; Sa 15:00-19:00",
+      "operator": "Ernie Nauta",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156001",
+   "addresses": [
+    "Ceintuurbaan 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 183-H",
+     "use": "woonfunctie",
+     "areaM2": 238,
+     "bagId": "0363010000602570"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1154751632,
+     "lngLat": [
+      4.9004277,
+      52.3546643
+     ],
+     "tags": {
+      "amenity": "parking",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160842",
+   "addresses": [
+    "Ceintuurbaan 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 185-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000602573"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557426,
+     "lngLat": [
+      4.9004778,
+      52.3547682
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "185-H",
+      "addr:postcode": "1073EK",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-20",
+      "email": "deverguldehond@gmail.com",
+      "name": "De Vergulde Hond En De Wijze Kater",
+      "opening_hours": "Tu-We,Fr 10:30-17:00; Sa 12:00-16:00",
+      "pet_food": "dog,cat",
+      "pet_supplies": "no",
+      "pets": "no",
+      "phone": "+31 20 775 0970",
+      "shop": "pet",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.verguldehond.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012077688",
+   "addresses": [
+    "Ceintuurbaan 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 187-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000602581"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557440,
+     "lngLat": [
+      4.9005577,
+      52.3547912
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "187-H",
+      "addr:postcode": "1073EK",
+      "addr:street": "Ceintuurbaan",
+      "amenity": "childcare",
+      "email": "mail@kinderopvangdevlieger.nl",
+      "max_age": "4",
+      "name": "De Vlieger",
+      "opening_hours": "Mo-Fr 07:30-18:30; PH off",
+      "phone": "+31 20 6708222",
+      "religion": "anthroposophy",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://kinderopvangdevlieger.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163696",
+   "addresses": [
+    "Ceintuurbaan 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ceintuurbaan 189-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000602588"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557457,
+     "lngLat": [
+      4.9006358,
+      52.3548164
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "189-H",
+      "addr:postcode": "1073EK",
+      "addr:street": "Ceintuurbaan",
+      "check_date": "2026-01-20",
+      "name": "Pachouly Flowers",
+      "phone": "+31 20 6722896",
+      "shop": "florist",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

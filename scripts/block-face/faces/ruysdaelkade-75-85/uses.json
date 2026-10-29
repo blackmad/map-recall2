@@ -1,0 +1,140 @@
+{
+ "street": "Ruysdaelkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237381",
+   "addresses": [
+    "Ruysdaelkade 75",
+    "Ruysdaelkade 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 2-H",
+     "use": "kantoorfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000614994"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13435950954,
+     "lngLat": [
+      4.8871526,
+      52.3563628
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK02441",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159178",
+   "addresses": [
+    "Ruysdaelkade 79",
+    "Ruysdaelkade 79A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 79-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000801144"
+    },
+    {
+     "address": "Ruysdaelkade 79-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012078264"
+    },
+    {
+     "address": "Ruysdaelkade 79A-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000801149"
+    },
+    {
+     "address": "Ruysdaelkade 79-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012158700"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166549",
+   "addresses": [
+    "Ruysdaelkade 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 81-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801153"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157446",
+   "addresses": [
+    "Ruysdaelkade 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 83-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801160"
+    },
+    {
+     "address": "Ruysdaelkade 83-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010012073195"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162885",
+   "addresses": [
+    "Ruysdaelkade 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 85-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001029812"
+    },
+    {
+     "address": "Ruysdaelkade 85-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012163826"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

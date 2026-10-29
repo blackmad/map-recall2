@@ -1,0 +1,282 @@
+{
+ "street": "Eerste Sweelinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154106",
+   "addresses": [
+    "Eerste Sweelinckstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 13-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000548517"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506127777,
+     "lngLat": [
+      4.8978928,
+      52.3560468
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-H",
+      "addr:postcode": "1073CL",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "pub",
+      "check_date": "2026-01-20",
+      "name": "Café Mansro",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://frankmansro.wordpress.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012115560",
+   "addresses": [
+    "Eerste Sweelinckstraat 15",
+    "Eerste Sweelinckstraat 17A",
+    "Eerste Sweelinckstraat 17B",
+    "Eerste Sweelinckstraat 17C",
+    "Eerste Sweelinckstraat 17E",
+    "Eerste Sweelinckstraat 17D",
+    "Eerste Sweelinckstraat 19C",
+    "Eerste Sweelinckstraat 19B",
+    "Eerste Sweelinckstraat 19F",
+    "Eerste Sweelinckstraat 19A",
+    "Eerste Sweelinckstraat 19D",
+    "Eerste Sweelinckstraat 19E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000676075"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000698978"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000698979"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000698980"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000698981"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 19F",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000701215"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 15",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000701216"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000700356"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010001044571"
+    },
+    {
+     "address": "Eerste Sweelinckstraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010011122380"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556694,
+     "lngLat": [
+      4.8979757,
+      52.3559517
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15",
+      "addr:postcode": "1073CL",
+      "addr:street": "Eerste Sweelinckstraat",
+      "check_date": "2026-01-20",
+      "email": "info@deoorsprongwinkel.nl",
+      "name": "De Oorsprong",
+      "opening_hours": "Tu,Th-Sa 11:00-17:00",
+      "phone": "+31 20 6641847",
+      "shop": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.deoorsprongwinkel.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817557735,
+     "lngLat": [
+      4.8980495,
+      52.3558603
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19F",
+      "addr:postcode": "1073CL",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-20",
+      "contact:instagram": "https://instagram.com/littlecollinsamsterdam",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Little Collins",
+      "opening_hours": "Mo-Su 09:00-16:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 753 9636",
+      "reservation": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.littlecollins.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166679",
+   "addresses": [
+    "Eerste Sweelinckstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000548557"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817557927,
+     "lngLat": [
+      4.8980851,
+      52.3558113
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21-H",
+      "addr:postcode": "1073CL",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "community_centre",
+      "check_date": "2026-01-20",
+      "community_centre": "family_centre",
+      "email": "info@wowfamilycenter.nl",
+      "name": "WOW Family Centre",
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa-Su 10:00-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.wowfamilycenter.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161318",
+   "addresses": [
+    "Eerste Sweelinckstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 23-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000548564"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506128642,
+     "lngLat": [
+      4.8981239,
+      52.3557633
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23-H",
+      "addr:postcode": "1073CL",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-20",
+      "name": "Brio",
+      "opening_hours": "We-Th 17:30-13:00; Fr-Sa 17:30-00:00",
+      "phone": "+31 20 3036086",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.restaurantbrio.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

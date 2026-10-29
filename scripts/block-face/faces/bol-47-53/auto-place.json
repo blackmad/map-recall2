@@ -1,0 +1,232 @@
+{
+ "face": "bol-47-53",
+ "street": "Ferdinand Bolstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-23",
+ "seconds": 0.59,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237150",
+   "address": "Ferdinand Bolstraat 47",
+   "builtYear": 1885,
+   "widthM": 14.66,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 14.65,
+    "depthM": 0.78,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      121162.872375,
+      485382.07625
+     ],
+     [
+      121162.169375,
+      485373.28925
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#725a51",
+    "wallRaw": "#695b54",
+    "skyline": {
+     "eavesM": 16.45,
+     "eavesRow": 186,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 4.5,
+      "riseM": 4.65,
+      "topWidthM": 0.07,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 1.48,
+     "bayCentre": 0.6,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.41 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.41,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1885, type 1875-1877; frontage 14.66 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1875-1877",
+     "frontage 14.66 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.35 m = 3 storeys of 4.45 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.76 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.156 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236112",
+   "address": "Ferdinand Bolstraat 51",
+   "builtYear": 1885,
+   "widthM": 1.28,
+   "eavesM": 15.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#343a3f",
+    "wallRaw": "#4d4b49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 844,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1885, type 1875-1877; frontage 1.28 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1875-1877",
+     "frontage 1.28 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.94 m = 3 storeys of 5.31 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.17 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237272",
+   "address": "Ferdinand Bolstraat 53",
+   "builtYear": 1885,
+   "widthM": 5.75,
+   "eavesM": 13.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816b6a",
+    "wallRaw": "#685b58",
+    "skyline": {
+     "eavesM": 18.27,
+     "eavesRow": 113,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 2.43,
+      "topWidthM": 0.17,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

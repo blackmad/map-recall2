@@ -1,0 +1,940 @@
+{
+ "street": "Gerard Douplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236200",
+   "addresses": [
+    "Gerard Douplein 90",
+    "Gerard Douplein 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 90-H",
+     "use": "industriefunctie",
+     "areaM2": 232,
+     "bagId": "0363010012061676"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505905142,
+     "lngLat": [
+      4.8934254,
+      52.3560106
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo-Fr 09:00",
+      "indoor": "no",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "post_box:type": "pillar"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    },
+    {
+     "type": "node",
+     "id": 2817516989,
+     "lngLat": [
+      4.8933769,
+      52.3559458
+     ],
+     "tags": {
+      "access": "permissive",
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90-H",
+      "addr:postcode": "1073XG",
+      "addr:street": "Gerard Douplein",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "building",
+      "check_date": "2026-01-11",
+      "covered": "yes",
+      "email": "info@u-stal.nl",
+      "fee": "yes",
+      "indoor": "yes",
+      "lit": "yes",
+      "maxstay": "28 days",
+      "name": "Fietsenstalling Gerard Douplein",
+      "opening_hours": "Mo-Th 11:00-19:00; Fr-Sa 11:00-3:30; Su 12:00-18:00",
+      "operator": "U-stal",
+      "operator:type": "private",
+      "phone": "+31 20 2403800",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.u-stal.nl/locaties-fietsenstallingen/bewaakte-fietsenstallingen/amsterdam-gerard-douplein"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012098051",
+   "addresses": [
+    "Gerard Douplein 18",
+    "Gerard Douplein 20",
+    "Gerard Douplein 22",
+    "Gerard Douplein 24",
+    "Gerard Douplein 26",
+    "Gerard Douplein 28",
+    "Gerard Douplein 30",
+    "Gerard Douplein 32",
+    "Gerard Douplein 34",
+    "Gerard Douplein 36",
+    "Gerard Douplein 38",
+    "Gerard Douplein 40",
+    "Gerard Douplein 42",
+    "Gerard Douplein 44",
+    "Gerard Douplein 46",
+    "Gerard Douplein 48",
+    "Gerard Douplein 50",
+    "Gerard Douplein 52",
+    "Gerard Douplein 54",
+    "Gerard Douplein 56",
+    "Gerard Douplein 58",
+    "Gerard Douplein 60",
+    "Gerard Douplein 62",
+    "Gerard Douplein 64",
+    "Gerard Douplein 66",
+    "Gerard Douplein 68",
+    "Gerard Douplein 70",
+    "Gerard Douplein 72",
+    "Gerard Douplein 74",
+    "Gerard Douplein 76",
+    "Gerard Douplein 78",
+    "Gerard Douplein 80",
+    "Gerard Douplein 82",
+    "Gerard Douplein 84",
+    "Gerard Douplein 86",
+    "Gerard Douplein 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Douplein 22",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000610118"
+    },
+    {
+     "address": "Gerard Douplein 36",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000610119"
+    },
+    {
+     "address": "Gerard Douplein 50",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000719434"
+    },
+    {
+     "address": "Gerard Douplein 64",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000719435"
+    },
+    {
+     "address": "Gerard Douplein 78",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000728442"
+    },
+    {
+     "address": "Gerard Douplein 24",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000777608"
+    },
+    {
+     "address": "Gerard Douplein 86",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000938059"
+    },
+    {
+     "address": "Gerard Douplein 18",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000937864"
+    },
+    {
+     "address": "Gerard Douplein 32",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000937865"
+    },
+    {
+     "address": "Gerard Douplein 46",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000937866"
+    },
+    {
+     "address": "Gerard Douplein 60",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000937867"
+    },
+    {
+     "address": "Gerard Douplein 74",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000937868"
+    },
+    {
+     "address": "Gerard Douplein 20",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937869"
+    },
+    {
+     "address": "Gerard Douplein 34",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937870"
+    },
+    {
+     "address": "Gerard Douplein 48",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937871"
+    },
+    {
+     "address": "Gerard Douplein 62",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937872"
+    },
+    {
+     "address": "Gerard Douplein 38",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937873"
+    },
+    {
+     "address": "Gerard Douplein 52",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937874"
+    },
+    {
+     "address": "Gerard Douplein 66",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937875"
+    },
+    {
+     "address": "Gerard Douplein 26",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937876"
+    },
+    {
+     "address": "Gerard Douplein 40",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937877"
+    },
+    {
+     "address": "Gerard Douplein 54",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937878"
+    },
+    {
+     "address": "Gerard Douplein 68",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937879"
+    },
+    {
+     "address": "Gerard Douplein 80",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937880"
+    },
+    {
+     "address": "Gerard Douplein 82",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937881"
+    },
+    {
+     "address": "Gerard Douplein 28",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937882"
+    },
+    {
+     "address": "Gerard Douplein 42",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937883"
+    },
+    {
+     "address": "Gerard Douplein 56",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937884"
+    },
+    {
+     "address": "Gerard Douplein 70",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937885"
+    },
+    {
+     "address": "Gerard Douplein 84",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000937886"
+    },
+    {
+     "address": "Gerard Douplein 30",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000937887"
+    },
+    {
+     "address": "Gerard Douplein 44",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000937888"
+    },
+    {
+     "address": "Gerard Douplein 58",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000937889"
+    },
+    {
+     "address": "Gerard Douplein 72",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000937890"
+    },
+    {
+     "address": "Gerard Douplein 88",
+     "use": "industriefunctie",
+     "areaM2": 68,
+     "bagId": "0363010000937891"
+    },
+    {
+     "address": "Eerste Van der Helststraat 27",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000937892"
+    },
+    {
+     "address": "Eerste Van der Helststraat 29",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000937893"
+    },
+    {
+     "address": "Eerste Van der Helststraat 31",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000937894"
+    },
+    {
+     "address": "Eerste Van der Helststraat 33",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000937895"
+    },
+    {
+     "address": "Eerste Van der Helststraat 35",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000937896"
+    },
+    {
+     "address": "Albert Cuypstraat 149",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000937897"
+    },
+    {
+     "address": "Gerard Douplein 76",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000577114"
+    }
+   ],
+   "units": 42,
+   "osm": [
+    {
+     "type": "node",
+     "id": 568803131,
+     "lngLat": [
+      4.8930524,
+      52.3558663
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "27",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "alt_name": "Moca Choco",
+      "amenity": "ice_cream",
+      "brand": "IJscuypje",
+      "brand:wikidata": "Q121742244",
+      "check_date": "2025-12-30",
+      "description": "ijssalon IJscuypje in de zomermaanden, chocomelkwinkel in de wintermaanden",
+      "description:en": "ice cream parlour IJscuypje during the summer months, hot chocolate shop during the winter months.",
+      "email": "info@ijscuypje.nl",
+      "name": "IJscuypje",
+      "note": "Deze winkel wordt weer IJscuypje in maart 2026 met openingstijden Mo-Su 14:00-20:00",
+      "opening_hours": "Mo-Th 11:00-18:00; Fr-Su 11:00-19:00",
+      "phone": "+31 20 617 0039",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ijscuypje.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1923769063,
+     "lngLat": [
+      4.8931671,
+      52.3558796
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-11",
+      "cuisine": "coffee_shop",
+      "email": "info@dewasserette.com",
+      "name": "De Wasserette",
+      "opening_hours": "Mo-Su 07:30-17:00",
+      "toilets:wheelchair": "no",
+      "website": "https://www.dewasserette.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2509462327,
+     "lngLat": [
+      4.8931647,
+      52.3556833
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-11",
+      "clothes": "women",
+      "email": "info@sjerpetine.nl",
+      "name": "Sjerpetine",
+      "note": "Website is nonexistent.",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2668473777,
+     "lngLat": [
+      4.8931472,
+      52.3557499
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817511729,
+     "lngLat": [
+      4.8933852,
+      52.3556573
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "149",
+      "addr:postcode": "1073BC",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-18",
+      "name": "Gowtu Centre",
+      "opening_hours": "Mo 12:30-17:30; We-Fr 10:30-17:30",
+      "phone": "+31 20 6722540",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817514714,
+     "lngLat": [
+      4.8930901,
+      52.3557909
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-11",
+      "email": "info@sranangsieraden.nl",
+      "name": "Hot Fashion",
+      "phone": "+31 20 6721992",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.sranangsieraden.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817514736,
+     "lngLat": [
+      4.8931398,
+      52.3557484
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "shop": "money",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817514759,
+     "lngLat": [
+      4.8931947,
+      52.3556295
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-18",
+      "note": "Formerly Noosh",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817516904,
+     "lngLat": [
+      4.8932491,
+      52.3559175
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:postcode": "1073XG",
+      "addr:street": "Gerard Douplein",
+      "branch": "De Pijp",
+      "check_date": "2026-01-11",
+      "name": "Day & Night",
+      "opening_hours": "Mo-Sa 10:00-22:00",
+      "phone": "+31 20 7705709",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12870639873,
+     "lngLat": [
+      4.8931209,
+      52.3557347
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "shop": "money"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853862,
+     "lngLat": [
+      4.8931411,
+      52.3557301
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "107331",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/107331"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853863,
+     "lngLat": [
+      4.8931348,
+      52.3557289
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_out": "yes",
+      "cash_out:coins": "yes",
+      "cash_out:notes": "no",
+      "description": "Alleen muntrollen opnemen; In Geldmaat-winkel",
+      "fee": "yes",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "107331",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/107331"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853864,
+     "lngLat": [
+      4.8931646,
+      52.355736
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "no",
+      "cash_in:sealbags": "yes",
+      "cash_out": "no",
+      "description": "Alleen sealbag storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073005",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073005"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853865,
+     "lngLat": [
+      4.893171,
+      52.355737
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073005",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073005"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853866,
+     "lngLat": [
+      4.893162,
+      52.3557528
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853867,
+     "lngLat": [
+      4.8931251,
+      52.3557454
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853868,
+     "lngLat": [
+      4.8931546,
+      52.3557513
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041853869,
+     "lngLat": [
+      4.8931324,
+      52.3557469
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1073006",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1073006"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13042568112,
+     "lngLat": [
+      4.8931474,
+      52.3557314
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "107331",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/107331"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

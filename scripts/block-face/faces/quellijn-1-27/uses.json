@@ -1,0 +1,447 @@
+{
+ "street": "Quellijnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157887",
+   "addresses": [
+    "Quellijnstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000786809"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158625",
+   "addresses": [
+    "Quellijnstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000786814"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164504",
+   "addresses": [
+    "Quellijnstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000991433"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161788",
+   "addresses": [
+    "Quellijnstraat 7A",
+    "Quellijnstraat 7B",
+    "Quellijnstraat 7C",
+    "Quellijnstraat 7D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001030200"
+    },
+    {
+     "address": "Quellijnstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001030201"
+    },
+    {
+     "address": "Quellijnstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001030202"
+    },
+    {
+     "address": "Quellijnstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010001030203"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161914",
+   "addresses": [
+    "Quellijnstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 9-H",
+     "use": "industriefunctie",
+     "areaM2": 155,
+     "bagId": "0363010000786827"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817456506,
+     "lngLat": [
+      4.8875275,
+      52.3570536
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9-H",
+      "addr:postcode": "1072XM",
+      "addr:street": "Quellijnstraat",
+      "check_date": "2026-01-10",
+      "email": "info@kempelektroniks.nl",
+      "name": "Kemp Elektroniks",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "phone": "+31 20 7764464",
+      "shop": "electronics",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kempelektroniksshop.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156538",
+   "addresses": [
+    "Quellijnstraat 15",
+    "Quellijnstraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000786831"
+    },
+    {
+     "address": "Quellijnstraat 15A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012080844"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155636",
+   "addresses": [
+    "Quellijnstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000786835"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083238",
+   "addresses": [
+    "Quellijnstraat 19E",
+    "Quellijnstraat 19A",
+    "Quellijnstraat 19B",
+    "Quellijnstraat 19C",
+    "Quellijnstraat 19D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000786842"
+    },
+    {
+     "address": "Quellijnstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001025281"
+    },
+    {
+     "address": "Quellijnstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001025282"
+    },
+    {
+     "address": "Quellijnstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001025283"
+    },
+    {
+     "address": "Quellijnstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001025284"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233456",
+   "addresses": [
+    "Quellijnstraat 23A",
+    "Quellijnstraat 23B",
+    "Quellijnstraat 23D",
+    "Quellijnstraat 23F",
+    "Quellijnstraat 23K",
+    "Quellijnstraat 23E",
+    "Quellijnstraat 23C",
+    "Quellijnstraat 23H",
+    "Quellijnstraat 23G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001026634"
+    },
+    {
+     "address": "Quellijnstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001026635"
+    },
+    {
+     "address": "Quellijnstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026637"
+    },
+    {
+     "address": "Quellijnstraat 23F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026639"
+    },
+    {
+     "address": "Quellijnstraat 23K",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001026642"
+    },
+    {
+     "address": "Quellijnstraat 23E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026638"
+    },
+    {
+     "address": "Quellijnstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026636"
+    },
+    {
+     "address": "Quellijnstraat 23H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001026641"
+    },
+    {
+     "address": "Quellijnstraat 23G",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026640"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233597",
+   "addresses": [
+    "Quellijnstraat 25A",
+    "Quellijnstraat 25D",
+    "Quellijnstraat 25E",
+    "Quellijnstraat 25H",
+    "Quellijnstraat 25F",
+    "Quellijnstraat 25K",
+    "Quellijnstraat 25G",
+    "Quellijnstraat 25C",
+    "Quellijnstraat 25B",
+    "Quellijnstraat 27A",
+    "Quellijnstraat 27H",
+    "Quellijnstraat 27E",
+    "Quellijnstraat 27C",
+    "Quellijnstraat 27G",
+    "Quellijnstraat 27D",
+    "Quellijnstraat 27F",
+    "Quellijnstraat 27B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001026625"
+    },
+    {
+     "address": "Quellijnstraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001026643"
+    },
+    {
+     "address": "Quellijnstraat 27H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001026650"
+    },
+    {
+     "address": "Quellijnstraat 27E",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001026647"
+    },
+    {
+     "address": "Quellijnstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001026645"
+    },
+    {
+     "address": "Quellijnstraat 27G",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001026649"
+    },
+    {
+     "address": "Quellijnstraat 25D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026628"
+    },
+    {
+     "address": "Quellijnstraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026646"
+    },
+    {
+     "address": "Quellijnstraat 27F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026648"
+    },
+    {
+     "address": "Quellijnstraat 25E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026629"
+    },
+    {
+     "address": "Quellijnstraat 25H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001026632"
+    },
+    {
+     "address": "Quellijnstraat 25F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026630"
+    },
+    {
+     "address": "Quellijnstraat 25K",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001026633"
+    },
+    {
+     "address": "Quellijnstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026644"
+    },
+    {
+     "address": "Quellijnstraat 25G",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026631"
+    },
+    {
+     "address": "Quellijnstraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026627"
+    },
+    {
+     "address": "Quellijnstraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001026626"
+    }
+   ],
+   "units": 17,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453046,
+     "lngLat": [
+      4.888203,
+      52.3570107
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27A",
+      "addr:postcode": "1072XN",
+      "addr:street": "Quellijnstraat",
+      "check_date": "2026-01-10",
+      "craft": "atelier",
+      "email": "info@atelierdepijp.nl",
+      "name": "Atelier De Pijp",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 6 41814973",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.atelierdepijp.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
