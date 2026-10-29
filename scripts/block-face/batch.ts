@@ -333,7 +333,14 @@ async function main() {
       const j = await judgeRun(run, stripVerdict);
       const pands = (await readJson(path.join(FACES, run, 'discovery.json'))).members.length;
       let status: Row['status'] = j.verdict.install ? (flag('install') ? 'installed' : 'passed (not installed: no --install)') : 'failed';
-      if (j.verdict.install && flag('install') && j.compiled) await quiet(() => installFace(run, j.compiled!.entry, j.compiled!.glbPath));
+      if (j.verdict.install && flag('install') && j.compiled) {
+        await quiet(() => installFace(run, j.compiled!.entry, j.compiled!.glbPath));
+        // The roof golden records each face's house-intent hash: a wall refit changes it, a roof class must not.
+        const golden = (a: string[]) => { try { return execFileSync(process.execPath, ['--import', 'tsx', 'scripts/block-face/roof-golden.ts', `--face=${run}`, ...a], {encoding: 'utf8'}); } catch (e: any) { return String(e.stdout ?? '') + String(e.stderr ?? ''); } };
+        const check = golden([]);
+        if (/\b0 violations, 0 reclassed\b/.test(check)) golden(['--write']);
+        else j.verdict.reasons.push(`roof-golden (installed; integrator to review): ${check.trim().split('\n').at(-1)}`);
+      }
       // Nothing installed: the face stays as it was (no wall-fit edits, no trimmed copy left behind).
       else if (dropped.length) await fs.rm(path.join(FACES, run), {recursive: true, force: true});
       else if (j.wallFits || facings.length) await fs.writeFile(path.join(FACES, run, 'intent.json'), intentBefore);
