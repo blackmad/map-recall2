@@ -3332,6 +3332,14 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
   postcard and neighbourhood text/story checks) alongside `check:canal`.
+- P1: Firefox Android startup GPU loss follow-ups (#106; the shader warm-up
+  spread merged 2026-10-29, see HISTORY). Unproven until Sentry stays quiet for
+  Firefox Android: the GPU death itself never reproduced headless. Open: (1) the
+  3D frame draws trees and warms shaders behind the opaque guest briefing card,
+  which is where both failures happened, so pause it while the card covers the map;
+  (2) MapLibre recompiles its own ~9-16 programs in one burst after a restore,
+  which is outside our code; (3) after a restore on the briefing, facades start
+  drawing (67-183 k triangles) although they did not before the loss.
 - P0: Real-device pass for the 2026-10-23 phone/slow-machine work (HISTORY
   "Phone memory", "Landmarks stop piling up", "Slow machines step their render
   cost down"): ride 5+ minutes on a real iPhone and a low-end Android, and on

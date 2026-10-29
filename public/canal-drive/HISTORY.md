@@ -24,6 +24,19 @@ Behaviour:
 - `?buurtProfiles=0` turns profiles off; `?buurtProfiles=debug` paints every profiled wall magenta.
 
 Result on the 12-spot sheet (`docs/images/look/generic-uplift-12spot-20261029.jpg`): a modest colour gain. Ten Katestraat and Nicolaas Beetsstraat are closer to the photos. Fronts are still more saturated than the muted photos.
+**Touch devices spread the shader warm-up (2026-10-29, #106, Sentry
+CANAL-RECALL-7/-J/-N).** A Firefox Mobile 159 / Android 17 phone lost its WebGL
+context 7.8 s in, got it back, and then its GPU died at 11.3 s while compiling
+shaders (2 -> 22 programs). The rider never pressed Start: the guest briefing
+reproduces the Sentry probe exactly (`scripts/gpu-startup-timeline.mjs`).
+Touch classification and memory were fine. The cause was `OwnGround.precompile()`
+linking about 21 three.js programs in one task, on top of MapLibre's ~16, and again
+after every restore. `rendererShared/compileBudget.ts` lets a coarse-pointer
+device link at most 2 new programs per step, with steps at least 50 ms apart (about
+0.5 s for the whole set), and keeps the same programs and keys. Desktop keeps the
+single compile; `?precompile=all|N` overrides the budget. Peak three.js compiles
+in any 100 ms went from 14-24 to at most 4, at start and after a restore. The
+regression is pinned in `tests/e2e/touch-shader-warmup.spec.ts` (iphone project).
 
 **Landmark factory street fix (2026-10-29, #105).** `factory.ts` `nearbyStreets` read the `streets-routing.json` paths as [lng, lat] when they are [lat, lng]. Every factory draft so far therefore had no named streets, and the likeness gate treated every non-blank wall group as street-facing. The #105 run installed nothing; its blockers are in TODO. Its crops are archived in source-data 4be52dd2a.
 
