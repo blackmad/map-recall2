@@ -1,0 +1,112 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "saenredam-62-66-r1",
+ "street": "Saenredamstraat",
+ "sources": [
+  {
+   "id": "strip-2020-01-06",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-06",
+   "image": "staging/block-face/saenredam-62-66-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/saenredam-62-66/auto-place.json"
+ },
+ "types": [
+  "pijp-1876-hood-frieze"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159593",
+   "slug": "saenredam-159593",
+   "address": "Saenredamstraat 66",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#2b2928",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2020-01-06 span 0-207"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#342d2e",
+     "evidence": "strip 2020-01-06 span 0-207: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2020-01-06 span 0-207"
+   }
+  },
+  {
+   "pandId": "0363100012156620",
+   "slug": "saenredam-156620",
+   "address": "Saenredamstraat 64",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#242221",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2020-01-06 span 207-410"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#2a292a",
+     "evidence": "strip 2020-01-06 span 207-410: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2020-01-06 span 207-410"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

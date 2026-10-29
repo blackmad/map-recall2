@@ -1,0 +1,62 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152710",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 37"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161104",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 39-H",
+     "use": "industriefunctie",
+     "areaM2": 187,
+     "bagId": "0363010000545755"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9035360322,
+     "lngLat": [
+      4.8895918,
+      52.3575288
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-H",
+      "addr:postcode": "1072BC",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2025-04-28",
+      "email": "amsterdam@fivecityspa.com",
+      "name": "Five City Spa",
+      "opening_hours": "Mo-Sa 10:00-22:00; Su 10:00-19:00",
+      "phone": "+31 20 2423101",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://fivecityspa.nl/massage-amsterdam/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

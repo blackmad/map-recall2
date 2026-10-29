@@ -1,0 +1,623 @@
+{
+ "face": "hals-28-40",
+ "street": "Frans Halsstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 13.78,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012135465",
+   "address": "Frans Halsstraat 40",
+   "builtYear": 1877,
+   "widthM": 6.14,
+   "eavesM": 13.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#272325",
+    "wallRaw": "#42403b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 1.88,
+       "centre": 0.81
+      },
+      {
+       "atM": 8.97,
+       "widthM": 0.8,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.004 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.40; wall family unresolved (#282426 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012135465",
+    "ncc": 0.004,
+    "nccRaw": 0.004,
+    "shiftM": [
+     0.4,
+     0.1
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.40",
+     "wall family unresolved (#282426 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#282426",
+     "model": "#51484d",
+     "dL": 0.151
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.349
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.056,
+    "pijp-1885-segmental-keystone": 0.01
+   }
+  },
+  {
+   "pandId": "0363100012159354",
+   "address": "Frans Halsstraat 38",
+   "builtYear": 1877,
+   "widthM": 6.04,
+   "eavesM": 13.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f2625",
+    "wallRaw": "#38322e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.13,
+       "widthM": 3.2,
+       "centre": 0.29
+      },
+      {
+       "atM": 10,
+       "widthM": 0.8,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1,
+       "centre": 0.35
+      },
+      {
+       "atM": 8.35,
+       "widthM": 0.85,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.031 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.35 mean 0.49 vs photo 0.20; wall family unresolved (#302726 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 5)",
+   "likeness": {
+    "pandId": "0363100012159354",
+    "ncc": 0.031,
+    "nccRaw": 0.031,
+    "shiftM": [
+     0.35,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.35 mean 0.49 vs photo 0.20",
+     "wall family unresolved (#302726 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 5"
+    ],
+    "wall": {
+     "photo": "#302726",
+     "model": "#564543",
+     "dL": 0.131
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 5,
+     "model": 3
+    },
+    "iou": 0.208
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.101,
+    "pijp-1885-segmental-keystone": 0.012
+   }
+  },
+  {
+   "pandId": "0363100012166068",
+   "address": "Frans Halsstraat 36",
+   "builtYear": 1876,
+   "widthM": 6.11,
+   "eavesM": 13.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#37322e",
+    "wallRaw": "#38322e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11,
+       "widthM": 0.85,
+       "centre": 0.13
+      },
+      {
+       "atM": 8.15,
+       "widthM": 0.85,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012166068",
+    "ncc": 0.189,
+    "nccRaw": 0.189,
+    "shiftM": [
+     0,
+     0
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.48 vs photo 0.22",
+     "wall family unresolved (#342c29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#342c29",
+     "model": "#534c46",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.22
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.087,
+    "pijp-1885-segmental-keystone": 0.125
+   }
+  },
+  {
+   "pandId": "0363100012167062",
+   "address": "Frans Halsstraat 34",
+   "builtYear": 1876,
+   "widthM": 5.94,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b302f",
+    "wallRaw": "#38342f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.9,
+       "widthM": 2.3,
+       "centre": 0.26
+      },
+      {
+       "atM": 10.07,
+       "widthM": 1.02,
+       "centre": 0.33
+      },
+      {
+       "atM": 7.6,
+       "widthM": 1.5,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.086 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.37 mean 0.45 vs photo 0.27; window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012167062",
+    "ncc": 0.086,
+    "nccRaw": 0.086,
+    "shiftM": [
+     -0.2,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.45 vs photo 0.27",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#3f3331",
+     "model": "#574745",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.359
+   },
+   "challengers": {
+    "pijp-1885-segmental-keystone": 0.111
+   }
+  },
+  {
+   "pandId": "0363100012237360",
+   "address": "Frans Halsstraat 32",
+   "builtYear": 1876,
+   "widthM": 6.09,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#262224",
+    "wallRaw": "#3a3430",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.27 m (1.52 m wide), 8.18 m (1.5 m wide), 6 m (1.73 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 0.8,
+       "centre": 0.88
+      },
+      {
+       "atM": 10.27,
+       "widthM": 1.52,
+       "centre": 0.86
+      },
+      {
+       "atM": 8.18,
+       "widthM": 1.5,
+       "centre": 0.87
+      },
+      {
+       "atM": 6,
+       "widthM": 1.73,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.009 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.35 mean 0.44 vs photo 0.15; window shape tall vs photo wide; wall family unresolved (#372f2d is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012237360",
+    "ncc": 0.009,
+    "nccRaw": 0.009,
+    "shiftM": [
+     0.1,
+     0.1
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.44 vs photo 0.15",
+     "window shape tall vs photo wide",
+     "wall family unresolved (#372f2d is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#372f2d",
+     "model": "#51484d",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.225
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.138,
+    "pijp-1885-segmental-keystone": 0.053
+   }
+  },
+  {
+   "pandId": "0363100012162831",
+   "address": "Frans Halsstraat 30",
+   "builtYear": 1876,
+   "widthM": 6.09,
+   "eavesM": 13.2,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322828",
+    "wallRaw": "#36302c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.85,
+       "widthM": 0.88,
+       "centre": 0.47
+      },
+      {
+       "atM": 10.57,
+       "widthM": 0.85,
+       "centre": 0.23
+      },
+      {
+       "atM": 9.82,
+       "widthM": 1.2,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.05 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.21 mean 0.44 vs photo 0.26)",
+   "likeness": {
+    "pandId": "0363100012162831",
+    "ncc": 0.05,
+    "nccRaw": 0.05,
+    "shiftM": [
+     0.15,
+     0.3
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.21 mean 0.44 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#302826",
+     "model": "#554444",
+     "dL": 0.131
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.248
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.096,
+    "pijp-1885-segmental-keystone": 0.098
+   }
+  },
+  {
+   "pandId": "0363100012105340",
+   "address": "Frans Halsstraat 28",
+   "builtYear": 1876,
+   "widthM": 12.05,
+   "eavesM": 12.59,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#42373c",
+    "wallRaw": "#3c3a37",
+    "skyline": {
+     "eavesM": 17.63,
+     "eavesRow": 56,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 1.4,
+      "topWidthM": 0.42,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 12.05 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 12.05 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.59 m = 3 storeys of 4.2 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.39 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

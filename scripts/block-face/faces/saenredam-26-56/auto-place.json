@@ -1,0 +1,1081 @@
+{
+ "face": "saenredam-26-56",
+ "street": "Saenredamstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012160699",
+   "address": "Saenredamstraat 56",
+   "builtYear": 1876,
+   "widthM": 4.25,
+   "eavesM": 12.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#545057",
+    "wallRaw": "#4c4a51",
+    "skyline": {
+     "eavesM": 17.65,
+     "eavesRow": 72,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.8,
+      "topWidthM": 0.17,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 4.25 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.25 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.5 m = 3 storeys of 4.17 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153342",
+   "address": "Saenredamstraat 54",
+   "builtYear": 1876,
+   "widthM": 4.26,
+   "eavesM": 11.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d9eb0",
+    "wallRaw": "#575251",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 198,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 4.95,
+      "topWidthM": 0.3,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 4.26 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.26 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.63 m = 3 storeys of 3.88 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.25 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155761",
+   "address": "Saenredamstraat 52",
+   "builtYear": 1877,
+   "widthM": 4.93,
+   "eavesM": 12.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655944",
+    "wallRaw": "#4c4a4d",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 180,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 3.7,
+      "topWidthM": 0.1,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082931",
+   "address": "Saenredamstraat 50",
+   "builtYear": 1878,
+   "widthM": 6.06,
+   "eavesM": 12.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957668",
+    "wallRaw": "#75675c",
+    "skyline": {
+     "eavesM": 15.15,
+     "eavesRow": 172,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 4.3,
+      "topWidthM": 0.25,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.26 m = 3 storeys of 4.09 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.89 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163164",
+   "address": "Saenredamstraat 48",
+   "builtYear": 1878,
+   "widthM": 6.06,
+   "eavesM": 12.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c594e",
+    "wallRaw": "#6e5e55",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 107,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 2.5,
+      "topWidthM": 0.45,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.45 m = 3 storeys of 4.15 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.98 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164541",
+   "address": "Saenredamstraat 46",
+   "builtYear": 1877,
+   "widthM": 4.14,
+   "eavesM": 13.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#424043",
+    "wallRaw": "#494243",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 778,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.3 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.3,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.87,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 4.14 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.14 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.14 m = 3 storeys of 4.38 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.57 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156636",
+   "address": "Saenredamstraat 42E",
+   "builtYear": 1877,
+   "widthM": 4.56,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3d40",
+    "wallRaw": "#413c3e",
+    "skyline": {
+     "eavesM": 16.95,
+     "eavesRow": 100,
+     "confidence": 0.52,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 4.56 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 4.56 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.73 m = 3 storeys of 4.24 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.63 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161471",
+   "address": "Saenredamstraat 42",
+   "builtYear": 1878,
+   "widthM": 4.5,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#424450",
+    "wallRaw": "#4c4245",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 104,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 1,
+      "topWidthM": 0.53,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.3,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.75 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.75,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.43,
+       "widthM": 0.82,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 4.5 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 4.5 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.25 m = 3 storeys of 4.42 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167431",
+   "address": "Saenredamstraat 40",
+   "builtYear": 1878,
+   "widthM": 4.52,
+   "eavesM": 12.95,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#555b6a",
+    "wallRaw": "#424045",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 104,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 2.6,
+      "topWidthM": 0.45,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.93,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 4.52 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 4.52 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.95 m = 3 storeys of 4.32 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.34 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.029 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166655",
+   "address": "Saenredamstraat 38A",
+   "builtYear": 1878,
+   "widthM": 4.68,
+   "eavesM": 13.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3a40",
+    "wallRaw": "#464246",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 101,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 2.52,
+      "topWidthM": 0.55,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 4.68 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 4.68 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.44 m = 3 storeys of 4.48 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152867",
+   "address": "Saenredamstraat 38",
+   "builtYear": 1878,
+   "widthM": 4.86,
+   "eavesM": 13.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6a66",
+    "wallRaw": "#786964",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 207,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 4.9,
+      "topWidthM": 0.17,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.104,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 4.86 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 4.86 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.64 m = 3 storeys of 4.55 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.1 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237155",
+   "address": "Saenredamstraat 32",
+   "builtYear": 1876,
+   "widthM": 12.11,
+   "eavesM": 13.97,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756663",
+    "wallRaw": "#736662",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 183,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 1.88,
+      "topWidthM": 1.95,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.75,
+       "widthM": 0.9,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 12.11 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 12.11 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 13.97 m = 3 storeys of 4.66 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.47 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.042 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098699",
+   "address": "Saenredamstraat 28A",
+   "builtYear": 1876,
+   "widthM": 7.98,
+   "eavesM": 14.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b6b0a2",
+    "wallRaw": "#3c3c41",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 191,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 4.52,
+      "topWidthM": 0.13,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "bay-less open axis 1.02 m at 0.17 (light 0.6): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.17,
+       "light": 0.6
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.56,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.55 < 0.7 (3DBAG eaves 14.58 m = 3 storeys of 4.86 m vs the type's 4.03 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.58 m = 3 storeys of 4.86 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.82 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.05 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163137",
+   "address": "Saenredamstraat 26",
+   "builtYear": 1878,
+   "widthM": 5.18,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886a5b",
+    "wallRaw": "#624f45",
+    "skyline": {
+     "eavesM": 16.3,
+     "eavesRow": 126,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 3.15,
+      "topWidthM": 0.35,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 5.18 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 5.18 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.63 m = 3 storeys of 4.54 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.11 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

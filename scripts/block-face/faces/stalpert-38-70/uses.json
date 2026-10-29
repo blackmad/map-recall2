@@ -1,0 +1,382 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236148",
+   "addresses": [
+    "Daniël Stalpertstraat 70B",
+    "Daniël Stalpertstraat 70A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000615279"
+    },
+    {
+     "address": "Daniël Stalpertstraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001020035"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119135",
+   "addresses": [
+    "Daniël Stalpertstraat 66A",
+    "Daniël Stalpertstraat 66B",
+    "Daniël Stalpertstraat 66C",
+    "Daniël Stalpertstraat 66D",
+    "Daniël Stalpertstraat 66E",
+    "Daniël Stalpertstraat 68A",
+    "Daniël Stalpertstraat 68B",
+    "Daniël Stalpertstraat 68C",
+    "Daniël Stalpertstraat 68D",
+    "Daniël Stalpertstraat 68E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 66A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000615264"
+    },
+    {
+     "address": "Daniël Stalpertstraat 66B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615265"
+    },
+    {
+     "address": "Daniël Stalpertstraat 66C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615266"
+    },
+    {
+     "address": "Daniël Stalpertstraat 66D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615267"
+    },
+    {
+     "address": "Daniël Stalpertstraat 66E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000615268"
+    },
+    {
+     "address": "Daniël Stalpertstraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000615270"
+    },
+    {
+     "address": "Daniël Stalpertstraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615271"
+    },
+    {
+     "address": "Daniël Stalpertstraat 68C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615272"
+    },
+    {
+     "address": "Daniël Stalpertstraat 68D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615273"
+    },
+    {
+     "address": "Daniël Stalpertstraat 68E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000615274"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111128",
+   "addresses": [
+    "Daniël Stalpertstraat 62A",
+    "Daniël Stalpertstraat 62B",
+    "Daniël Stalpertstraat 62C",
+    "Daniël Stalpertstraat 62D",
+    "Daniël Stalpertstraat 62E",
+    "Daniël Stalpertstraat 64A",
+    "Daniël Stalpertstraat 64B",
+    "Daniël Stalpertstraat 64C",
+    "Daniël Stalpertstraat 64D",
+    "Daniël Stalpertstraat 64E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 62A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000615245"
+    },
+    {
+     "address": "Daniël Stalpertstraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615246"
+    },
+    {
+     "address": "Daniël Stalpertstraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615247"
+    },
+    {
+     "address": "Daniël Stalpertstraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615248"
+    },
+    {
+     "address": "Daniël Stalpertstraat 62E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000615249"
+    },
+    {
+     "address": "Daniël Stalpertstraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000615255"
+    },
+    {
+     "address": "Daniël Stalpertstraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615256"
+    },
+    {
+     "address": "Daniël Stalpertstraat 64C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615257"
+    },
+    {
+     "address": "Daniël Stalpertstraat 64D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000615258"
+    },
+    {
+     "address": "Daniël Stalpertstraat 64E",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000615259"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163120",
+   "addresses": [
+    "Daniël Stalpertstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000615231"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166062",
+   "addresses": [
+    "Daniël Stalpertstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000615226"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164016",
+   "addresses": [
+    "Daniël Stalpertstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000615215"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158633",
+   "addresses": [
+    "Daniël Stalpertstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000615207"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164659",
+   "addresses": [
+    "Daniël Stalpertstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000615198"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153510",
+   "addresses": [
+    "Daniël Stalpertstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000615190"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155525",
+   "addresses": [
+    "Daniël Stalpertstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000615182"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167165",
+   "addresses": [
+    "Daniël Stalpertstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000986108"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162196",
+   "addresses": [
+    "Daniël Stalpertstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000615165"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166204",
+   "addresses": [
+    "Daniël Stalpertstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000615157"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160553",
+   "addresses": [
+    "Daniël Stalpertstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000615151"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160712",
+   "addresses": [
+    "Daniël Stalpertstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001164778"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

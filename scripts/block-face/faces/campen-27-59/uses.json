@@ -1,0 +1,514 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160429",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 27-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000545721"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2505967266,
+     "lngLat": [
+      4.8890336,
+      52.3575624
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27-H",
+      "addr:postcode": "1072BC",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "alt_name": "Locals All Day Brunch",
+      "amenity": "restaurant",
+      "branch": "Jacob",
+      "check_date": "2026-01-03",
+      "cuisine": "breakfast;brunch;coffee_shop",
+      "email": "contact@localscoffee.nl",
+      "indoor_seating": "yes",
+      "name": "Locals Coffee",
+      "opening_hours": "Mo-Th 08:00-16:00; Fr-Su 08:00-18:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 6 24910728",
+      "source": "BAG",
+      "source:date": "2014-03-24;2021-08-08",
+      "website": "https://www.localscoffee.nl/locations/all-day-brunch-jacob",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012148007",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001020221"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1475534712,
+     "lngLat": [
+      4.8891516,
+      52.3574876
+     ],
+     "tags": {
+      "amenity": "parking",
+      "capacity": "1",
+      "covered": "no",
+      "fee": "no",
+      "orientation": "parallel",
+      "parking": "street_side",
+      "parking:left:restriction": "loading_only",
+      "surface": "paving_stones"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162322",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 31-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000545734"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162055",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 33-H",
+     "use": "industriefunctie",
+     "areaM2": 57,
+     "bagId": "0363010000545742"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155486",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 35-H",
+     "use": "winkelfunctie,kantoorfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000545748"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152710",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 37"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161104",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 39-H",
+     "use": "industriefunctie",
+     "areaM2": 187,
+     "bagId": "0363010000545755"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9035360322,
+     "lngLat": [
+      4.8895918,
+      52.3575288
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-H",
+      "addr:postcode": "1072BC",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2025-04-28",
+      "email": "amsterdam@fivecityspa.com",
+      "name": "Five City Spa",
+      "opening_hours": "Mo-Sa 10:00-22:00; Su 10:00-19:00",
+      "phone": "+31 20 2423101",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://fivecityspa.nl/massage-amsterdam/"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163377",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 41-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000545768"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2165936478,
+     "lngLat": [
+      4.8896736,
+      52.3575174
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:postcode": "1072BD",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "check_date": "2026-01-03",
+      "check_date:opening_hours": "2024-12-27",
+      "cuisine": "italian",
+      "diet:gluten_free": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "info@linguini.nl",
+      "name": "Linguini Trattoria",
+      "opening_hours": "Tu-Sa 18:00-23:00",
+      "opening_hours:signed": "no",
+      "payment:cards": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 7861278",
+      "reservation": "required",
+      "website": "https://www.linguini.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159865",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 43",
+    "Eerste Jacob van Campenstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000545781"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162418",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 47-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000545788"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454503,
+     "lngLat": [
+      4.8898708,
+      52.3575216
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47-H",
+      "addr:postcode": "1072BD",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-03",
+      "contact:facebook": "https://www.facebook.com/flowbrunch/",
+      "contact:instagram": "https://www.instagram.com/flowbrunch.co",
+      "cuisine": "breakfast;brunch;coffee_shop",
+      "email": "flow@localscoffee.nl",
+      "name": "Flow",
+      "opening_hours": "Mp-Fr 08:00-15:00; Sa-Su 08:00-16:00",
+      "operator": "Locals Coffee",
+      "outdoor_seating": "yes",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.flowbrunch.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158664",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 49-H",
+     "use": "industriefunctie",
+     "areaM2": 95,
+     "bagId": "0363010000545801"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159194",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 51",
+    "Eerste Jacob van Campenstraat 51A",
+    "Eerste Jacob van Campenstraat 51B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 51-H",
+     "use": "overige gebruiksfunctie,winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000545809"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 51A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 14,
+     "bagId": "0363010012084547"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 51B",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012084548"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163139",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000545817"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166520",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000545824"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154231",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010001975844"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012228680",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 59",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 880,
+     "bagId": "0363010012072141"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105630218,
+     "lngLat": [
+      4.8906411,
+      52.3574066
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash;cigarettes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.2
+    },
+    {
+     "type": "node",
+     "id": 13429384508,
+     "lngLat": [
+      4.8903604,
+      52.3574116
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01631",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    },
+    {
+     "type": "node",
+     "id": 13532133723,
+     "lngLat": [
+      4.8906401,
+      52.3574185
+     ],
+     "tags": {
+      "information": "guidepost",
+      "tourism": "information"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    },
+    {
+     "type": "way",
+     "id": 1475042615,
+     "lngLat": [
+      4.890595,
+      52.3573964
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "capacity": "10",
+      "check_date": "2026-02-07",
+      "covered": "no",
+      "fee": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    },
+    {
+     "type": "way",
+     "id": 1475042616,
+     "lngLat": [
+      4.8904637,
+      52.3574273
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "34",
+      "check_date": "2026-02-07",
+      "covered": "no",
+      "fee": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 3.1
+    }
+   ]
+  }
+ ]
+}

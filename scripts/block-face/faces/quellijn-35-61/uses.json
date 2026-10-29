@@ -1,0 +1,585 @@
+{
+ "street": "Quellijnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160651",
+   "addresses": [
+    "Quellijnstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000786902"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156911",
+   "addresses": [
+    "Quellijnstraat 37E",
+    "Quellijnstraat 37A",
+    "Quellijnstraat 37B",
+    "Quellijnstraat 37C",
+    "Quellijnstraat 37D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 37E",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000786909"
+    },
+    {
+     "address": "Quellijnstraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000786910"
+    },
+    {
+     "address": "Quellijnstraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786911"
+    },
+    {
+     "address": "Quellijnstraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786912"
+    },
+    {
+     "address": "Quellijnstraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010003696009"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156425",
+   "addresses": [
+    "Quellijnstraat 39A",
+    "Quellijnstraat 39B",
+    "Quellijnstraat 39C",
+    "Quellijnstraat 39D",
+    "Quellijnstraat 39E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786916"
+    },
+    {
+     "address": "Quellijnstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786917"
+    },
+    {
+     "address": "Quellijnstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786918"
+    },
+    {
+     "address": "Quellijnstraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786919"
+    },
+    {
+     "address": "Quellijnstraat 39E",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010003696010"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160165",
+   "addresses": [
+    "Quellijnstraat 41A",
+    "Quellijnstraat 41B",
+    "Quellijnstraat 41C",
+    "Quellijnstraat 41D",
+    "Quellijnstraat 41E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001036321"
+    },
+    {
+     "address": "Quellijnstraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001036322"
+    },
+    {
+     "address": "Quellijnstraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001036323"
+    },
+    {
+     "address": "Quellijnstraat 41D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001036324"
+    },
+    {
+     "address": "Quellijnstraat 41E",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001036325"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161076",
+   "addresses": [
+    "Quellijnstraat 43A",
+    "Quellijnstraat 43B",
+    "Quellijnstraat 43C",
+    "Quellijnstraat 43D",
+    "Quellijnstraat 43E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001036326"
+    },
+    {
+     "address": "Quellijnstraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001036327"
+    },
+    {
+     "address": "Quellijnstraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001036328"
+    },
+    {
+     "address": "Quellijnstraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001036329"
+    },
+    {
+     "address": "Quellijnstraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001036330"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161231",
+   "addresses": [
+    "Quellijnstraat 45",
+    "Quellijnstraat 45A",
+    "Quellijnstraat 45B",
+    "Quellijnstraat 45C",
+    "Quellijnstraat 45D",
+    "Quellijnstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786938"
+    },
+    {
+     "address": "Quellijnstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012069146"
+    },
+    {
+     "address": "Quellijnstraat 45A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012069154"
+    },
+    {
+     "address": "Quellijnstraat 45B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012069161"
+    },
+    {
+     "address": "Quellijnstraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012069174"
+    },
+    {
+     "address": "Quellijnstraat 45D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012069180"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164220",
+   "addresses": [
+    "Quellijnstraat 47",
+    "Quellijnstraat 49H",
+    "Quellijnstraat 49A",
+    "Quellijnstraat 49C",
+    "Quellijnstraat 49E",
+    "Quellijnstraat 49G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 47-H",
+     "use": "kantoorfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000786947"
+    },
+    {
+     "address": "Quellijnstraat 49H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010012069147"
+    },
+    {
+     "address": "Quellijnstraat 49A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069155"
+    },
+    {
+     "address": "Quellijnstraat 49C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069164"
+    },
+    {
+     "address": "Quellijnstraat 49E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069175"
+    },
+    {
+     "address": "Quellijnstraat 49G",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012069184"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158464",
+   "addresses": [
+    "Quellijnstraat 49",
+    "Quellijnstraat 49B",
+    "Quellijnstraat 49D",
+    "Quellijnstraat 49F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 49-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001006482"
+    },
+    {
+     "address": "Quellijnstraat 49B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069156"
+    },
+    {
+     "address": "Quellijnstraat 49D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069165"
+    },
+    {
+     "address": "Quellijnstraat 49F",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069176"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161379",
+   "addresses": [
+    "Quellijnstraat 51",
+    "Quellijnstraat 51A",
+    "Quellijnstraat 51B",
+    "Quellijnstraat 51D",
+    "Quellijnstraat 51F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000786963"
+    },
+    {
+     "address": "Quellijnstraat 51A",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010012069148"
+    },
+    {
+     "address": "Quellijnstraat 51B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069157"
+    },
+    {
+     "address": "Quellijnstraat 51D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069166"
+    },
+    {
+     "address": "Quellijnstraat 51F",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012069177"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236960",
+   "addresses": [
+    "Quellijnstraat 51C",
+    "Quellijnstraat 51E",
+    "Quellijnstraat 51G",
+    "Quellijnstraat 51H",
+    "Quellijnstraat 53",
+    "Quellijnstraat 55",
+    "Quellijnstraat 55A",
+    "Quellijnstraat 55B",
+    "Quellijnstraat 55C",
+    "Quellijnstraat 55D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 53-H",
+     "use": "industriefunctie",
+     "areaM2": 335,
+     "bagId": "0363010000786979"
+    },
+    {
+     "address": "Quellijnstraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012069158"
+    },
+    {
+     "address": "Quellijnstraat 51C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069159"
+    },
+    {
+     "address": "Quellijnstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012069167"
+    },
+    {
+     "address": "Quellijnstraat 51E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069168"
+    },
+    {
+     "address": "Quellijnstraat 55C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012069178"
+    },
+    {
+     "address": "Quellijnstraat 51G",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069179"
+    },
+    {
+     "address": "Quellijnstraat 55D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012069185"
+    },
+    {
+     "address": "Quellijnstraat 51H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012069186"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153492",
+   "addresses": [
+    "Quellijnstraat 57",
+    "Quellijnstraat 59",
+    "Quellijnstraat 59G",
+    "Quellijnstraat 59A",
+    "Quellijnstraat 59B",
+    "Quellijnstraat 59C",
+    "Quellijnstraat 59E",
+    "Quellijnstraat 59F",
+    "Quellijnstraat 59D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 57-H",
+     "use": "industriefunctie",
+     "areaM2": 200,
+     "bagId": "0363010000786994"
+    },
+    {
+     "address": "Quellijnstraat 59G",
+     "use": "winkelfunctie",
+     "areaM2": 114,
+     "bagId": "0363010012069189"
+    },
+    {
+     "address": "Quellijnstraat 57",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012069150"
+    },
+    {
+     "address": "Quellijnstraat 59A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012069160"
+    },
+    {
+     "address": "Quellijnstraat 59B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012069162"
+    },
+    {
+     "address": "Quellijnstraat 59C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012069169"
+    },
+    {
+     "address": "Quellijnstraat 59E",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012069181"
+    },
+    {
+     "address": "Quellijnstraat 59F",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012069182"
+    },
+    {
+     "address": "Quellijnstraat 59D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012069960"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9152780762,
+     "lngLat": [
+      4.8901385,
+      52.3569126
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57",
+      "addr:postcode": "1072XR",
+      "addr:street": "Quellijnstraat",
+      "check_date": "2026-01-10",
+      "name": "K's Things You Forgot You Needed",
+      "phone": "+31 6 21146369",
+      "shop": "books",
+      "short_name": "K's Store",
+      "source": "BAG",
+      "source:date": "2021-10-03"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158730",
+   "addresses": [
+    "Quellijnstraat 61",
+    "Quellijnstraat 61A",
+    "Quellijnstraat 61B",
+    "Quellijnstraat 61C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 61A",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069163"
+    },
+    {
+     "address": "Quellijnstraat 61B",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069170"
+    },
+    {
+     "address": "Quellijnstraat 61C",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069183"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

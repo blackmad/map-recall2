@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-29T19:10:59.556Z",
+ "generatedAt": "2026-10-29T19:35:00.157Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -66851,6 +66851,1022 @@
        "primitive": 12,
        "firstTriangle": 13,
        "triangleCount": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-campen-27-59-r1",
+   "category": "street-survey",
+   "name": "face-campen-27-59-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-campen-27-59-r1.glb?asset=5e34af6e55bd4901",
+   "sha256": "5e34af6e55bd4901ae047050631414441db9973e84ae180a19fcdb8169b96c86",
+   "bytes": 161816,
+   "triangles": 2274,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.889545370222106,
+     52.357507298176095
+    ],
+    "northOffsetDegrees": 5.35,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.774,
+     0,
+     -15.72
+    ],
+    "max": [
+     5.725,
+     13.228,
+     0.508
+    ]
+   },
+   "height": 13.228,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012152710",
+    "NL.IMBAG.Pand.0363100012161104"
+   ],
+   "replaces": [
+    "ordinary-0363100012152710",
+    "ordinary-0363100012161104"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8895615,
+        52.3576109
+       ],
+       [
+        4.8895078,
+        52.3576139
+       ],
+       [
+        4.8895135,
+        52.357651
+       ],
+       [
+        4.8894825,
+        52.3576528
+       ],
+       [
+        4.889461,
+        52.3575121
+       ],
+       [
+        4.8895457,
+        52.3575073
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8896448,
+        52.3576061
+       ],
+       [
+        4.8895615,
+        52.3576109
+       ],
+       [
+        4.8895457,
+        52.3575073
+       ],
+       [
+        4.889629,
+        52.3575025
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "campen-152710",
+     "pandId": "0363100012152710",
+     "buildingId": "NL.IMBAG.Pand.0363100012152710",
+     "address": "Eerste Jacob van Campenstraat 37",
+     "frontage": {
+      "x0": -5.774,
+      "x1": 0.024,
+      "widthM": 5.798
+     },
+     "bounds": {
+      "min": [
+       -5.774,
+       0,
+       -15.72
+      ],
+      "max": [
+       0.026,
+       12.949,
+       0.507
+      ]
+     },
+     "triangles": 1082,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 644
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "campen-161104",
+     "pandId": "0363100012161104",
+     "buildingId": "NL.IMBAG.Pand.0363100012161104",
+     "address": "Eerste Jacob van Campenstraat 39",
+     "frontage": {
+      "x0": 0.024,
+      "x1": 5.725,
+      "widthM": 5.701
+     },
+     "bounds": {
+      "min": [
+       0.024,
+       0,
+       -11.615
+      ],
+      "max": [
+       5.725,
+       13.228,
+       0.508
+      ]
+     },
+     "triangles": 1192,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 184,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 644,
+       "triangleCount": 532
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 132,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 3,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 7,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-campen-2-34-r2",
+   "category": "street-survey",
+   "name": "face-campen-2-34-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-campen-2-34-r2.glb?asset=eff02c1ccd117675",
+   "sha256": "eff02c1ccd117675633e2029517ae3223c986d794a95cb550cf80be8cc744ffa",
+   "bytes": 464904,
+   "triangles": 7128,
+   "primitives": 16,
+   "instance": {
+    "anchor": [
+     4.887507725727969,
+     52.35748896716068
+    ],
+    "northOffsetDegrees": 185.4402,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -12.823,
+     0,
+     -25.142
+    ],
+    "max": [
+     12.225,
+     15.949,
+     0.508
+    ]
+   },
+   "height": 15.949,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012159617",
+    "NL.IMBAG.Pand.0363100012156746",
+    "NL.IMBAG.Pand.0363100012155840",
+    "NL.IMBAG.Pand.0363100012156937"
+   ],
+   "replaces": [
+    "ordinary-0363100012159617",
+    "ordinary-0363100012156746",
+    "ordinary-0363100012155840",
+    "ordinary-0363100012156937"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8876944,
+        52.3574781
+       ],
+       [
+        4.887598,
+        52.3574837
+       ],
+       [
+        4.8875638,
+        52.3572592
+       ],
+       [
+        4.8876603,
+        52.3572537
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.887598,
+        52.3574837
+       ],
+       [
+        4.8875044,
+        52.3574892
+       ],
+       [
+        4.8874703,
+        52.3572645
+       ],
+       [
+        4.8875638,
+        52.3572592
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8875044,
+        52.3574892
+       ],
+       [
+        4.8874168,
+        52.3574943
+       ],
+       [
+        4.8873914,
+        52.3573278
+       ],
+       [
+        4.8874791,
+        52.3573228
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8873037,
+        52.3573328
+       ],
+       [
+        4.8873914,
+        52.3573278
+       ],
+       [
+        4.8874168,
+        52.3574943
+       ],
+       [
+        4.8873291,
+        52.3574994
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "campen-159617",
+     "pandId": "0363100012159617",
+     "buildingId": "NL.IMBAG.Pand.0363100012159617",
+     "address": "Eerste Jacob van Campenstraat 12",
+     "frontage": {
+      "x0": -12.777,
+      "x1": -6.176,
+      "widthM": 6.601
+     },
+     "bounds": {
+      "min": [
+       -12.823,
+       0,
+       -25.13
+      ],
+      "max": [
+       -6.176,
+       15.949,
+       0.507
+      ]
+     },
+     "triangles": 1950,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 61
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 1148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 342
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "campen-156746",
+     "pandId": "0363100012156746",
+     "buildingId": "NL.IMBAG.Pand.0363100012156746",
+     "address": "Eerste Jacob van Campenstraat 10",
+     "frontage": {
+      "x0": -6.176,
+      "x1": 0.226,
+      "widthM": 6.402
+     },
+     "bounds": {
+      "min": [
+       -6.223,
+       0,
+       -25.142
+      ],
+      "max": [
+       0.226,
+       15.406,
+       0.507
+      ]
+     },
+     "triangles": 1185,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 220,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1148,
+       "triangleCount": 508
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 342,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 7,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 6,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "campen-155840",
+     "pandId": "0363100012155840",
+     "buildingId": "NL.IMBAG.Pand.0363100012155840",
+     "address": "Eerste Jacob van Campenstraat 8",
+     "frontage": {
+      "x0": 0.226,
+      "x1": 6.225,
+      "widthM": 5.999
+     },
+     "bounds": {
+      "min": [
+       0.19,
+       0,
+       -18.642
+      ],
+      "max": [
+       6.225,
+       15.302,
+       0.508
+      ]
+     },
+     "triangles": 2058,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 51
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 108,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 404,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1656,
+       "triangleCount": 1028
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 80,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 468,
+       "triangleCount": 340
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 17,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 14,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "campen-156937",
+     "pandId": "0363100012156937",
+     "buildingId": "NL.IMBAG.Pand.0363100012156937",
+     "address": "Eerste Jacob van Campenstraat 6",
+     "frontage": {
+      "x0": 6.225,
+      "x1": 12.225,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       6.19,
+       0,
+       -18.656
+      ],
+      "max": [
+       12.225,
+       15.529,
+       0.508
+      ]
+     },
+     "triangles": 1935,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 216,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 624,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2684,
+       "triangleCount": 1148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 120,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 808,
+       "triangleCount": 342
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 25,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 10,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 23,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-ruysdaelkade-75-85-r1",
+   "category": "street-survey",
+   "name": "face-ruysdaelkade-75-85-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-ruysdaelkade-75-85-r1.glb?asset=1ebdb9a8bbbd8c5a",
+   "sha256": "1ebdb9a8bbbd8c5a53262f82a6bc46dc47dd2486734417a385f058ea456851ec",
+   "bytes": 285764,
+   "triangles": 4224,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.887067034041148,
+     52.35603487883359
+    ],
+    "northOffsetDegrees": 93.039,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.214,
+     0,
+     -14.39
+    ],
+    "max": [
+     9.084,
+     15.659,
+     0.508
+    ]
+   },
+   "height": 15.659,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012166549",
+    "NL.IMBAG.Pand.0363100012157446",
+    "NL.IMBAG.Pand.0363100012162885"
+   ],
+   "replaces": [
+    "ordinary-0363100012166549",
+    "ordinary-0363100012157446",
+    "ordinary-0363100012162885"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8872547,
+        52.3561102
+       ],
+       [
+        4.8870742,
+        52.3561176
+       ],
+       [
+        4.8870692,
+        52.35606
+       ],
+       [
+        4.8872486,
+        52.3560542
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8870692,
+        52.35606
+       ],
+       [
+        4.8870648,
+        52.3560087
+       ],
+       [
+        4.8872751,
+        52.3560014
+       ],
+       [
+        4.8872796,
+        52.3560532
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8872429,
+        52.3560025
+       ],
+       [
+        4.8870648,
+        52.3560087
+       ],
+       [
+        4.88706,
+        52.3559544
+       ],
+       [
+        4.8872368,
+        52.3559476
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "ruysdaelkade-166549",
+     "pandId": "0363100012166549",
+     "buildingId": "NL.IMBAG.Pand.0363100012166549",
+     "address": "Ruysdaelkade 81",
+     "frontage": {
+      "x0": -9.214,
+      "x1": -2.801,
+      "widthM": 6.413
+     },
+     "bounds": {
+      "min": [
+       -9.214,
+       0,
+       -12.343
+      ],
+      "max": [
+       -2.801,
+       15.238,
+       0.508
+      ]
+     },
+     "triangles": 2017,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 68
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1188
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "ruysdaelkade-157446",
+     "pandId": "0363100012157446",
+     "buildingId": "NL.IMBAG.Pand.0363100012157446",
+     "address": "Ruysdaelkade 83",
+     "frontage": {
+      "x0": -2.801,
+      "x1": 2.922,
+      "widthM": 5.723
+     },
+     "bounds": {
+      "min": [
+       -2.803,
+       0,
+       -14.39
+      ],
+      "max": [
+       2.966,
+       15.659,
+       0.507
+      ]
+     },
+     "triangles": 1099,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 220,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1188,
+       "triangleCount": 636
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 352,
+       "triangleCount": 130
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 13,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 11,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "ruysdaelkade-162885",
+     "pandId": "0363100012162885",
+     "buildingId": "NL.IMBAG.Pand.0363100012162885",
+     "address": "Ruysdaelkade 85",
+     "frontage": {
+      "x0": 2.922,
+      "x1": 8.972,
+      "widthM": 6.05
+     },
+     "bounds": {
+      "min": [
+       2.922,
+       0,
+       -12.19
+      ],
+      "max": [
+       9.084,
+       14.99,
+       0.508
+      ]
+     },
+     "triangles": 1108,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 404,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1824,
+       "triangleCount": 668
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 80,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 482,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 25,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 21,
+       "triangleCount": 5
       }
      ]
     }

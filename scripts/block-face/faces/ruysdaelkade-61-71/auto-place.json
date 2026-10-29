@@ -1,0 +1,600 @@
+{
+ "face": "ruysdaelkade-61-71",
+ "street": "Ruysdaelkade",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 1.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157729",
+   "address": "Ruysdaelkade 61",
+   "builtYear": 1876,
+   "widthM": 9.2,
+   "eavesM": 11.22,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6a5e",
+    "wallRaw": "#60564d",
+    "skyline": {
+     "eavesM": 12.13,
+     "eavesRow": 368,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 9.2,
+      "topWidthM": 0.05,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.57,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.39 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.39,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.25,
+       "widthM": 1.8,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: frontage 9.2 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 9.2 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.22 m = 3 storeys of 3.74 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.13 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.046 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153321",
+   "address": "Ruysdaelkade 63",
+   "builtYear": 1878,
+   "widthM": 7.46,
+   "eavesM": 13.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#767c7e",
+    "wallRaw": "#6d6356",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 272,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 1.62,
+      "topWidthM": 0.35,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.11 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.11,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.46,
+       "light": 0.17
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.5,
+       "widthM": 1.43,
+       "centre": 0.1
+      },
+      {
+       "atM": 7.6,
+       "widthM": 1.35,
+       "centre": 0.85
+      },
+      {
+       "atM": 5.13,
+       "widthM": 2.02,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.16 m = 3 storeys of 4.39 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.68 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155409",
+   "address": "Ruysdaelkade 65",
+   "builtYear": 1876,
+   "widthM": 6.2,
+   "eavesM": 16.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#664d46",
+    "wallRaw": "#624a43",
+    "skyline": {
+     "eavesM": 16.55,
+     "eavesRow": 191,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.57,
+      "topWidthM": 0.55,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.15 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.15,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.42,
+       "light": 0.27
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.78,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.94,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.78,
+       "widthM": 1.23,
+       "centre": 0.76
+      },
+      {
+       "atM": 10.47,
+       "widthM": 0.93,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.23,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.55 < 0.7 (3DBAG eaves 16.77 m = 3 storeys of 5.59 m vs the type's 4.03 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.77 m = 3 storeys of 5.59 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.01 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.158 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162263",
+   "address": "Ruysdaelkade 67",
+   "builtYear": 1876,
+   "widthM": 6.2,
+   "eavesM": 16.75,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786057",
+    "wallRaw": "#735e56",
+    "skyline": {
+     "eavesM": 16.55,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 3.43,
+      "topWidthM": 0.6,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.245,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.16 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.16,
+       "light": 0.36
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.47,
+       "light": 0.3
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.75,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.63,
+       "widthM": 0.95,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.69 < 0.7 (3DBAG eaves 16.75 m = 3 storeys of 5.58 m vs the type's 4.03 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.75 m = 3 storeys of 5.58 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.03 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.224 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163636",
+   "address": "Ruysdaelkade 69",
+   "builtYear": 1876,
+   "widthM": 6.2,
+   "eavesM": 16.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72625b",
+    "wallRaw": "#786861",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 4,
+      "topWidthM": 0.2,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.348,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.14 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.14,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.8,
+       "widthM": 1.2,
+       "centre": 0.14
+      },
+      {
+       "atM": 10.72,
+       "widthM": 1.3,
+       "centre": 0.76
+      },
+      {
+       "atM": 7.57,
+       "widthM": 1,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.55 < 0.7 (3DBAG eaves 16.51 m = 3 storeys of 5.5 m vs the type's 4.03 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.51 m = 3 storeys of 5.5 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.81 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.32 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160742",
+   "address": "Ruysdaelkade 71",
+   "builtYear": 1876,
+   "widthM": 7.44,
+   "eavesM": 16.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d877f",
+    "wallRaw": "#827b73",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 853,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.13,
+       "widthM": 0.85,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.55 < 0.7 (3DBAG eaves 16.15 m = 3 storeys of 5.38 m vs the type's 4.03 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.15 m = 3 storeys of 5.38 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.94 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.134 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

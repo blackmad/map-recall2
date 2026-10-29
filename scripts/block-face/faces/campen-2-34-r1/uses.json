@@ -1,0 +1,41 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155600",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010003720951"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167124",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000545690"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -3537,6 +3537,48 @@
     "hash": "477d96942f7003be",
     "class": "recipe"
    }
+  },
+  "campen-27-59-r1": {
+   "152710": {
+    "hash": "6fdb29a796cfd19a",
+    "class": "recipe"
+   },
+   "161104": {
+    "hash": "d6e75763d70ec1dd",
+    "class": "recipe"
+   }
+  },
+  "campen-2-34-r2": {
+   "155840": {
+    "hash": "1139181e86b788e5",
+    "class": "recipe"
+   },
+   "156746": {
+    "hash": "a8167e3a1f19e1d9",
+    "class": "recipe"
+   },
+   "156937": {
+    "hash": "fce343a563d97126",
+    "class": "recipe"
+   },
+   "159617": {
+    "hash": "1d76b24a7b242f19",
+    "class": "recipe"
+   }
+  },
+  "ruysdaelkade-75-85-r1": {
+   "157446": {
+    "hash": "52bbcdcfceb18c36",
+    "class": "recipe"
+   },
+   "162885": {
+    "hash": "1d087e5bc63e9c51",
+    "class": "recipe"
+   },
+   "166549": {
+    "hash": "db1d1393ed73eaa9",
+    "class": "recipe"
+   }
   }
  },
  "intents": {
@@ -3662,6 +3704,9 @@
   "cuyp-102-130-r1": "7214c043e73f2267",
   "cuyp-184-232-r1": "c50255a0d9a1add2",
   "steen-84-140-r2": "6045e7eb0fc59b07",
-  "helst-66-82-r1": "de688d134859470f"
+  "helst-66-82-r1": "de688d134859470f",
+  "campen-27-59-r1": "7db4fac4cc844aa0",
+  "campen-2-34-r2": "04cf2f3bc1add9ff",
+  "ruysdaelkade-75-85-r1": "ec024ad93dece7b1"
  }
 }

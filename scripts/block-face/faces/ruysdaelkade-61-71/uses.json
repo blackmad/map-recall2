@@ -1,0 +1,146 @@
+{
+ "street": "Ruysdaelkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157729",
+   "addresses": [
+    "Ruysdaelkade 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 61-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000801108"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153321",
+   "addresses": [
+    "Ruysdaelkade 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 63-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000991629"
+    },
+    {
+     "address": "Ruysdaelkade 63-O",
+     "use": "industriefunctie",
+     "areaM2": 83,
+     "bagId": "0363010000801113"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155409",
+   "addresses": [
+    "Ruysdaelkade 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 65-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000801117"
+    },
+    {
+     "address": "Ruysdaelkade 65-O",
+     "use": "industriefunctie",
+     "areaM2": 66,
+     "bagId": "0363010000801118"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162263",
+   "addresses": [
+    "Ruysdaelkade 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 67-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000801122"
+    },
+    {
+     "address": "Ruysdaelkade 67-O",
+     "use": "industriefunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801123"
+    },
+    {
+     "address": "Ruysdaelkade 67-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012062755"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163636",
+   "addresses": [
+    "Ruysdaelkade 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 69-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001963455"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160742",
+   "addresses": [
+    "Ruysdaelkade 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000801135"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4399007685,
+     "lngLat": [
+      4.8870624,
+      52.3570383
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes",
+      "check_date": "2021-03-17"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  }
+ ]
+}

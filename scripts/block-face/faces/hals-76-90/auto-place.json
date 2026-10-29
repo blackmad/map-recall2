@@ -1,0 +1,650 @@
+{
+ "face": "hals-76-90",
+ "street": "Frans Halsstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 7.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012165970",
+   "address": "Frans Halsstraat 90",
+   "builtYear": 1878,
+   "widthM": 6.32,
+   "eavesM": 13.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c9a27d",
+    "wallRaw": "#caa783",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 108,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 2.63,
+      "topWidthM": 1.3,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.31 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.31,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.4,
+       "centre": 0.76,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.77 m = 3 storeys of 4.59 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.45 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.152 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162752",
+   "address": "Frans Halsstraat 88",
+   "builtYear": 1878,
+   "widthM": 5.02,
+   "eavesM": 13.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0c798",
+    "wallRaw": "#efca9e",
+    "skyline": {
+     "eavesM": 14.05,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 2.38,
+      "topWidthM": 0.1,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.205,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.36,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.07 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.07,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.34,
+       "light": 0.36
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 5.02 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 5.02 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.46 m = 3 storeys of 4.49 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.48 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.116 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157485",
+   "address": "Frans Halsstraat 86",
+   "builtYear": 1878,
+   "widthM": 5.4,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c6ac93",
+    "wallRaw": "#eccba5",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 185,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.67,
+      "topWidthM": 0.13,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.545,
+    "structure": {
+     "bayWidthM": 4.95,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.8 m @ 0.63, 1.27 m @ 0.66, 0.88 m @ 0.58), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.08,
+       "light": 0.63
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.66,
+       "light": 0.66
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.91,
+       "light": 0.58
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160791",
+   "address": "Frans Halsstraat 84",
+   "builtYear": 1878,
+   "widthM": 5.41,
+   "eavesM": 13.36,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#feeab7",
+    "wallRaw": "#fce8ba",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 179,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 2.7,
+      "topWidthM": 0.33,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.351,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.07 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.07,
+       "light": 0
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.31,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.36 m = 3 storeys of 4.45 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.67 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166097",
+   "address": "Frans Halsstraat 82",
+   "builtYear": 1878,
+   "widthM": 5.95,
+   "eavesM": 13.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dacba4",
+    "wallRaw": "#f3e4b6",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 169,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 2.25,
+      "topWidthM": 0.45,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.279,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.79 m = 3 storeys of 4.6 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.27 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.105 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156971",
+   "address": "Frans Halsstraat 80A",
+   "builtYear": 1878,
+   "widthM": 5.86,
+   "eavesM": 14.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#404342",
+    "wallRaw": "#ecd3aa",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.6,
+      "topWidthM": 0.25,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.373,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.05 m = 3 storeys of 4.68 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.1 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.125 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164596",
+   "address": "Frans Halsstraat 78A",
+   "builtYear": 1877,
+   "widthM": 5.98,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f5c991",
+    "wallRaw": "#e9c08a",
+    "skyline": {
+     "eavesM": 13.9,
+     "eavesRow": 213,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 5.33,
+      "topWidthM": 0.07,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.193,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.1,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.104 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.32; glazing storey band off by 0.19)",
+   "likeness": {
+    "pandId": "0363100012164596",
+    "ncc": 0.104,
+    "nccRaw": 0.104,
+    "shiftM": [
+     -0.4,
+     0.3
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.32",
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#4d4b43",
+     "model": "#cc9f66",
+     "dL": 0.318
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.446
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.085,
+    "pijp-1885-segmental-keystone": 0.167
+   }
+  },
+  {
+   "pandId": "0363100012236608",
+   "address": "Frans Halsstraat 76",
+   "builtYear": 1877,
+   "widthM": 5.61,
+   "eavesM": 13.65,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3830",
+    "wallRaw": "#988467",
+    "skyline": {
+     "eavesM": 18.38,
+     "eavesRow": 34,
+     "confidence": 0.41,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.85,
+      "topWidthM": 0.53,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.38 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.38,
+       "light": 0.1
+      },
+      {
+       "widthM": 1.57,
+       "centre": 0.68,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.056 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23 mean 0.49 vs photo 0.23)",
+   "likeness": {
+    "pandId": "0363100012236608",
+    "ncc": 0.056,
+    "nccRaw": 0.056,
+    "shiftM": [
+     0.4,
+     0.1
+    ],
+    "usable": 0.76,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.49 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#5b4f43",
+     "model": "#575247",
+     "dL": 0
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.236
+   },
+   "challengers": {
+    "pijp-1882-keystone-lintel": 0.079,
+    "pijp-1885-segmental-keystone": 0.049
+   }
+  }
+ ]
+}

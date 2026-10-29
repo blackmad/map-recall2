@@ -1,0 +1,115 @@
+{
+ "street": "Eerste Jacob van Campenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159617",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 12-H",
+     "use": "industriefunctie",
+     "areaM2": 290,
+     "bagId": "0363010000545635"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156746",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 10"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2512986099,
+     "lngLat": [
+      4.8875505,
+      52.3574509
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-10",
+      "addr:postcode": "1072BE",
+      "addr:street": "Eerste Jacob van Campenstraat",
+      "check_date": "2026-01-03",
+      "name": "De Aanzet",
+      "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-18:00; Su 10:00-17:00",
+      "organic": "only",
+      "payment:cards": "yes",
+      "payment:cash": "yes",
+      "phone": "+31 20 6733415",
+      "shop": "convenience",
+      "website": "https://www.de-aanzet.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155840",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000545610"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13081316500,
+     "lngLat": [
+      4.8875004,
+      52.3575327
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "24",
+      "covered": "no",
+      "fee": "no",
+      "indoor": "no"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 4.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156937",
+   "addresses": [
+    "Eerste Jacob van Campenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Jacob van Campenstraat 6-H",
+     "use": "industriefunctie",
+     "areaM2": 94,
+     "bagId": "0363010000545598"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

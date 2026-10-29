@@ -1,0 +1,815 @@
+{
+ "face": "quellijn-1-27",
+ "street": "Quellijnstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 2.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157887",
+   "address": "Quellijnstraat 1",
+   "builtYear": 1876,
+   "widthM": 6.2,
+   "eavesM": 16.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eccda4",
+    "wallRaw": "#eacda3",
+    "skyline": {
+     "eavesM": 17.73,
+     "eavesRow": 115,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 1.47,
+      "topWidthM": 0.42,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 1.05,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.69 < 0.7 (3DBAG eaves 16.13 m = 3 storeys of 5.38 m vs the type's 4.03 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.13 m = 3 storeys of 5.38 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.46 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.118 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158625",
+   "address": "Quellijnstraat 3",
+   "builtYear": 1879,
+   "widthM": 6.5,
+   "eavesM": 10.65,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9d2ac",
+    "wallRaw": "#f3cea9",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 266,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.8,
+      "riseM": 3.7,
+      "topWidthM": 0.05,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.65 m = 3 storeys of 3.55 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164504",
+   "address": "Quellijnstraat 5",
+   "builtYear": 1879,
+   "widthM": 6.5,
+   "eavesM": 10.5,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f5d4ae",
+    "wallRaw": "#f2d6b0",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 2.85,
+      "topWidthM": 0.63,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.147,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.5 m = 3 storeys of 3.5 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.136 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161788",
+   "address": "Quellijnstraat 7A",
+   "builtYear": 1879,
+   "widthM": 6.7,
+   "eavesM": 14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eabf97",
+    "wallRaw": "#e7bf9a",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 215,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.3,
+      "riseM": 2.15,
+      "topWidthM": 0.1,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.236,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14 m = 3 storeys of 4.67 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.24 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.208 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161914",
+   "address": "Quellijnstraat 9",
+   "builtYear": 1876,
+   "widthM": 6.75,
+   "eavesM": 15.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fad6b3",
+    "wallRaw": "#f2d5b2",
+    "skyline": {
+     "eavesM": 17.1,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 2.25,
+      "topWidthM": 1,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.205,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1875-shop-dormer scores 0.69 < 0.7 (3DBAG eaves 15.6 m = 3 storeys of 5.2 m vs the type's 4.03 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.6 m = 3 storeys of 5.2 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.94 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.194 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156538",
+   "address": "Quellijnstraat 15",
+   "builtYear": 1879,
+   "widthM": 4.99,
+   "eavesM": 14.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f7cfb0",
+    "wallRaw": "#f0cdae",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 126,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.1,
+      "topWidthM": 0.42,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877; frontage 4.99 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877",
+     "frontage 4.99 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.53 m = 3 storeys of 4.84 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.78 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.124 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155636",
+   "address": "Quellijnstraat 17",
+   "builtYear": 1879,
+   "widthM": 6.5,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f4cea7",
+    "wallRaw": "#e8c69f",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 1.95,
+      "topWidthM": 1.1,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.126,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 0.95,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.21 m = 3 storeys of 4.4 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.69 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.101 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012083238",
+   "address": "Quellijnstraat 19E",
+   "builtYear": 1879,
+   "widthM": 6.5,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0caa4",
+    "wallRaw": "#e3be99",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.63,
+      "topWidthM": 1.05,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.173,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.26 m = 3 storeys of 4.42 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.65 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.163 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233456",
+   "address": "Quellijnstraat 23A",
+   "builtYear": 1879,
+   "widthM": 13,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0caa7",
+    "wallRaw": "#eecdaa",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 188,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 1.6,
+      "topWidthM": 1.52,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.138,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.55,
+       "widthM": 1.48,
+       "centre": 0.81
+      },
+      {
+       "atM": 7.4,
+       "widthM": 0.97,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877; frontage 13 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877",
+     "frontage 13 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.26 m = 3 storeys of 4.42 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.65 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.138 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233597",
+   "address": "Quellijnstraat 25A",
+   "builtYear": 1878,
+   "widthM": 13,
+   "eavesM": 13.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fbdab9",
+    "wallRaw": "#f5d6b3",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 201,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 5.03,
+      "topWidthM": 0.2,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.163,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 13 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 13 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.32 m = 3 storeys of 4.44 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.3 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.081 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

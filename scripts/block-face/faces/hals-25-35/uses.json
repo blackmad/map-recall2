@@ -1,0 +1,212 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166810",
+   "addresses": [
+    "Frans Halsstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 25-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000638343"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162399",
+   "addresses": [
+    "Frans Halsstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000638356"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453042,
+     "lngLat": [
+      4.888994,
+      52.3572115
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27-H",
+      "addr:postcode": "1072BK",
+      "addr:street": "Frans Halsstraat",
+      "bar": "yes",
+      "check_date": "2026-01-04",
+      "female": "yes",
+      "name": "De Föhnbar",
+      "name:en": "The Blow Dry Bar",
+      "opening_hours": "Su-Th 10:00-18:00; Fr-Sa 10:00-19:00",
+      "payment:cash": "no",
+      "phone": "+31 20 8455744",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.defohnbar.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163485",
+   "addresses": [
+    "Frans Halsstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 29-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000638363"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 305076371,
+     "lngLat": [
+      4.8889801,
+      52.3571488
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29-H",
+      "addr:postcode": "1072BK",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "capacity": "50",
+      "description": "Vegetarisch Restaurant De Waaghals",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "only",
+      "email": "reserveringen@waaghals.nl",
+      "name": "De Waaghals",
+      "opening_hours": "Su-Th 17:00-23:00; Fr-Sa 17:00-24:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 679 9609",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://waaghals.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153684",
+   "addresses": [
+    "Frans Halsstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000638371"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155493",
+   "addresses": [
+    "Frans Halsstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000638379"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162395",
+   "addresses": [
+    "Frans Halsstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 35-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000638389"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2508437608,
+     "lngLat": [
+      4.888938,
+      52.3569777
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-H",
+      "addr:postcode": "1072BK",
+      "addr:street": "Frans Halsstraat",
+      "check_date": "2026-01-04",
+      "name": "Craft Wine",
+      "opening_hours": "Tu-Sa 12:00-19:00",
+      "payment:cards": "yes",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "phone": "+31 6 46345616",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://craftwine.nl"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4399007683,
+     "lngLat": [
+      4.8888782,
+      52.3569547
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "frontage",
+     "distanceM": 1.2
+    }
+   ]
+  }
+ ]
+}

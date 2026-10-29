@@ -1,0 +1,226 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012135465",
+   "addresses": [
+    "Frans Halsstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000981039"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454124,
+     "lngLat": [
+      4.8886429,
+      52.3569857
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40-H",
+      "addr:postcode": "1072BS",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "cuisine": "juice;coffee_shop",
+      "diet:vegan": "yes",
+      "email": "hello@rainbowls.amsterdam",
+      "name": "Rainbowls",
+      "opening_hours": "Mo-Fr 09:00-15:00; Sa-Su 09:00-16:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://rainbowls.amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159354",
+   "addresses": [
+    "Frans Halsstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 38-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000638397"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497166929,
+     "lngLat": [
+      4.8886424,
+      52.3570484
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38-H",
+      "addr:postcode": "1072BS",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-10",
+      "cuisine": "japanese",
+      "delivery": "yes",
+      "email": "isshin.amsterdam@gmail.com",
+      "name": "ISSHIN",
+      "opening_hours": "Mo-Fr 18:00-22:00; Sa 12:00-15:00,18:00-22:00; Su 12:00-15:00,17:30-21:00",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 6270607",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.isshin-amsterdam.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166068",
+   "addresses": [
+    "Frans Halsstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000638393"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167062",
+   "addresses": [
+    "Frans Halsstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001013012"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237360",
+   "addresses": [
+    "Frans Halsstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000638375"
+    },
+    {
+     "address": "Frans Halsstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001963441"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162831",
+   "addresses": [
+    "Frans Halsstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000638367"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105340",
+   "addresses": [
+    "Frans Halsstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 28-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000638360"
+    },
+    {
+     "address": "Eerste Jacob van Campenstraat 34E",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000954571"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453062,
+     "lngLat": [
+      4.8887752,
+      52.3573801
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28-H",
+      "addr:postcode": "1072BS",
+      "addr:street": "Frans Halsstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-03",
+      "cuisine": "french",
+      "diet:vegetarian": "yes",
+      "email": "info@cafecaron.nl",
+      "name": "Café Caron",
+      "opening_hours": "Mo-Th 18:00-24:00; Fr-Sa 18:00-01:00; Su 12:00-14:00,18:00-24:00",
+      "payment:cards": "yes",
+      "payment:cash": "no",
+      "phone": "+31 20 6758668",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.cafecaron.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
