@@ -1,0 +1,104 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:33:12.361Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164043",
+   "addresses": [
+    "Ferdinand Bolstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 52-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000635387"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506051482,
+     "lngLat": [
+      4.8903522,
+      52.3557886
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2025-12-27",
+      "cuisine": "indonesian",
+      "email": "yummy@makachi.nl",
+      "name": "Makachi",
+      "opening_hours": "Mo-Su 12:30-19:30",
+      "phone": "+31 20 2218487",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://makachi.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160619",
+   "addresses": [
+    "Ferdinand Bolstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 50-H",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000635381"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454736,
+     "lngLat": [
+      4.8903607,
+      52.355843
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "brewery": "no",
+      "check_date": "2026-07-21",
+      "cuisine": "japanese",
+      "description": "Onogiri",
+      "level": "0",
+      "name": "Wagaya",
+      "opening_hours": "Mo-Su 11:00-19:00",
+      "outdoor_seating": "no",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://wagaya.nl"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

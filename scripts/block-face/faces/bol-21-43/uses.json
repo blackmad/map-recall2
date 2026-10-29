@@ -1,0 +1,571 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:53:07.189Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166015",
+   "addresses": [
+    "Ferdinand Bolstraat 21A",
+    "Ferdinand Bolstraat 21B",
+    "Ferdinand Bolstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 21A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012088901"
+    },
+    {
+     "address": "Ferdinand Bolstraat 21B",
+     "use": "winkelfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012088902"
+    },
+    {
+     "address": "Ferdinand Bolstraat 21-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000988123"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506067253,
+     "lngLat": [
+      4.8906782,
+      52.3561056
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21A",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-10",
+      "craft": "caterer",
+      "cuisine": "surinamese;indonesian",
+      "email": "info@moksi.nl",
+      "mobile": "+31621574754",
+      "name": "Moksi",
+      "opening_hours": "We-Su 13:00-20:00",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "http://www.moksi.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9035360349,
+     "lngLat": [
+      4.8906655,
+      52.3560742
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21B",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "cafe",
+      "branch": "Specialty Coffee To-go",
+      "check_date": "2026-01-10",
+      "cuisine": "coffee_shop",
+      "email": "contact@localscoffee.nl",
+      "name": "Locals Coffee",
+      "opening_hours": "Mo-Th 08:00-16:00; Fr-Su 08:00-17:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "takeaway": "yes",
+      "website": "https://www.localscoffee.nl/"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13430557171,
+     "lngLat": [
+      4.8907381,
+      52.3561435
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "ref": "REK01641",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    },
+    {
+     "type": "node",
+     "id": 13457872450,
+     "lngLat": [
+      4.8907143,
+      52.356146
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "frontage",
+     "distanceM": 6.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152738",
+   "addresses": [
+    "Ferdinand Bolstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 23-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000635308"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514175,
+     "lngLat": [
+      4.8906729,
+      52.3560256
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-10",
+      "cuisine": "kebab",
+      "delivery": "yes",
+      "drive_through": "no",
+      "name": "Kebab House",
+      "opening_hours": "Su-Th 11:00-01:00; Fr-Sa 11:00-03:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.kebabhouse.nl"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154150",
+   "addresses": [
+    "Ferdinand Bolstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000635315"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506067244,
+     "lngLat": [
+      4.8906629,
+      52.3559795
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Benjamens",
+      "brand": "Primera",
+      "brand:website": "https://www.primera.nl",
+      "brand:wikidata": "Q2176149",
+      "check_date": "2025-12-30",
+      "name": "Primera",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-17:00",
+      "phone": "+31 20 6731403",
+      "shop": "newsagent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.primera.nl/primera-benjamens",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471523516,
+     "lngLat": [
+      4.8907506,
+      52.3559731
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "post_office",
+      "name": "Primera",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159334",
+   "addresses": [
+    "Ferdinand Bolstraat 27",
+    "Ferdinand Bolstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 29",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000635325"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506067247,
+     "lngLat": [
+      4.8906606,
+      52.3559033
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2025-12-27",
+      "name": "Wirin Juwelier",
+      "opening_hours": "Tu-Sa 10:30-17:00",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.juwelierwirin.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164120",
+   "addresses": [
+    "Ferdinand Bolstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 31-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000635329"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514742,
+     "lngLat": [
+      4.8906567,
+      52.3558503
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31-H",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-10",
+      "contact:facebook": "https://www.facebook.com/TheJuniorsFoodMarket/",
+      "name": "The Junior's",
+      "opening_hours": "Mo-Su 10:00-22:00",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 2397447",
+      "shop": "confectionery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://thejuniors.nl"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13418671656,
+     "lngLat": [
+      4.8906127,
+      52.3558418
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Euronet",
+      "brand:wikidata": "Q5412010",
+      "cash_in": "no",
+      "drive_through": "no",
+      "operator": "Euronet",
+      "operator:wikidata": "Q5412010"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236036",
+   "addresses": [
+    "Ferdinand Bolstraat 33",
+    "Ferdinand Bolstraat 35",
+    "Ferdinand Bolstraat 37",
+    "Ferdinand Bolstraat 39A",
+    "Ferdinand Bolstraat 39B",
+    "Ferdinand Bolstraat 39C",
+    "Ferdinand Bolstraat 39D",
+    "Ferdinand Bolstraat 39E",
+    "Ferdinand Bolstraat 39F",
+    "Ferdinand Bolstraat 39G",
+    "Ferdinand Bolstraat 39H",
+    "Ferdinand Bolstraat 39K",
+    "Ferdinand Bolstraat 39L",
+    "Ferdinand Bolstraat 39M",
+    "Ferdinand Bolstraat 39N",
+    "Ferdinand Bolstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 35",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 355,
+     "bagId": "0363010001167841"
+    },
+    {
+     "address": "Ferdinand Bolstraat 37",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001167842"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001167843"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001167844"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001167845"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001167846"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001167847"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39F",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001167848"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39G",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001167849"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001167850"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39K",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001167851"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39L",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001167852"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39M",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010001167853"
+    },
+    {
+     "address": "Ferdinand Bolstraat 39N",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001167854"
+    },
+    {
+     "address": "Ferdinand Bolstraat 43",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001167855"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817514764,
+     "lngLat": [
+      4.8906405,
+      52.3557675
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33;35;37;39",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "check_date": "2025-12-31",
+      "name": "Kruidvat",
+      "opening_hours": "Mo 11:00-19:00; Tu,Fr 09:00-19:00; We,Sa 09:00-18:00; Th 09:00-20:00; Su 11:30-18:00",
+      "operator": "Kruidvat",
+      "ref": "4316",
+      "shop": "chemist",
+      "source": "BAG;AS Watson BNL",
+      "source:date": "2014-03-24",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-4316",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817515123,
+     "lngLat": [
+      4.8906118,
+      52.3555738
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "brand": "Hans Anders",
+      "brand:website": "https://www.hansanders.nl",
+      "brand:wikidata": "Q1884976",
+      "brand:wikipedia": "nl:Hans Anders",
+      "check_date": "2026-01-10",
+      "name": "Hans Anders",
+      "opening_hours": "Mo 13:00-18:00; Tu-We,Fr 09:30-18:00; Th 09:30-21:00; Sa 09:30-17:00; Su[-1] 12:00-17:00",
+      "phone": "+31 20 6641879",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hansanders.nl/opticiens/noord-holland/amsterdam/ferdinand-bolstraat-43/"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9035347002,
+     "lngLat": [
+      4.8906331,
+      52.3556911
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37",
+      "addr:postcode": "1072LB",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-27",
+      "name": "rollingsweets",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2021-08-08"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105630219,
+     "lngLat": [
+      4.8906304,
+      52.3554926
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:glass_bottles": "yes",
+      "recycling_type": "container",
+      "ref": "GLK02043"
+     },
+     "fetchedAt": "2026-10-28T20:53:07.189Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T21:14:35.769Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156067",
+   "addresses": [
+    "Van Woustraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001005144"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559435,
+     "lngLat": [
+      4.9004445,
+      52.3555845
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "email": "post@stadshout.nu",
+      "name": "Stadshout",
+      "opening_hours": "Th-Sa 11:00-17:00",
+      "phone": "+31 20 6759063",
+      "shop": "trade",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "trade": "wood",
+      "website": "https://stadshout.nu"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158363",
+   "addresses": [
+    "Van Woustraat 68"
+   ],
+   "groundUnits": [],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8147199255,
+     "lngLat": [
+      4.9004065,
+      52.3556349
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "branch": "Amsterdam",
+      "brand": "Gents",
+      "brand:website": "https://gents.nl",
+      "brand:wikidata": "Q136447125",
+      "check_date": "2026-01-20",
+      "clothes": "suits",
+      "email": "amsterdam@gents.nl",
+      "name": "Gents",
+      "opening_hours": "Mo 13:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 334 89 51",
+      "shop": "clothes",
+      "website": "https://gents.nl/pages/gents-amsterdam"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167117",
+   "addresses": [
+    "Van Woustraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000848838"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559412,
+     "lngLat": [
+      4.9003752,
+      52.3556781
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "clothes": "maternity",
+      "email": "love@lebumpstudio.com",
+      "name": "Le Bump",
+      "opening_hours": "Mo-Sa 10:00-17:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://lebumpstudio.com"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166104",
+   "addresses": [
+    "Van Woustraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000848831"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559404,
+     "lngLat": [
+      4.9003315,
+      52.3557233
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "craft": "signmaker",
+      "email": "info@ledletters.net",
+      "mobile": "+31622220705",
+      "name": "LED Letters",
+      "opening_hours": "Mo-Fr 10:00-17:00; Sa 11:00-15:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ledletters.amsterdam/"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

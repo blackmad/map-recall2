@@ -1,0 +1,225 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wou-54-72-r1",
+ "street": "Van Woustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/wou-54-72-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/wou-54-72/auto-place.json"
+ },
+ "types": [
+  "pijp-1886-segmental-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012156067",
+   "slug": "wou-156067",
+   "address": "Van Woustraat 70",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#525054",
+      "fascia": true,
+      "name": "Stadshout",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=trade); fascia colour measured on the strip 2023-01-03 span 246-474"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4d3f3a",
+     "evidence": "strip 2023-01-03 span 246-474: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Stadshout",
+    "category": "shop=trade",
+    "osm": {
+     "type": "node",
+     "id": 2817559435,
+     "name": "Stadshout"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 0.73 on eaves 0, wall 1, stucco 1, columns 1; strip 2023-01-03 span 246-474"
+   }
+  },
+  {
+   "pandId": "0363100012158363",
+   "slug": "wou-158363",
+   "address": "Van Woustraat 68",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#2c2d31",
+      "fascia": true,
+      "name": "Gents",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (shop=clothes); fascia colour measured on the strip 2023-01-03 span 474-702"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#574b48",
+     "evidence": "strip 2023-01-03 span 474-702: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Gents",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 8147199255,
+     "name": "Gents"
+    },
+    "bag": [],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 1 on eaves -, wall 1, stucco 1; strip 2023-01-03 span 474-702"
+   }
+  },
+  {
+   "pandId": "0363100012167117",
+   "slug": "wou-167117",
+   "address": "Van Woustraat 66",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#8b675c",
+      "fascia": true,
+      "name": "Le Bump",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2023-01-03 span 702-930"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6e5953",
+     "evidence": "strip 2023-01-03 span 702-930: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Le Bump",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2817559412,
+     "name": "Le Bump"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 1 on eaves -, wall 1, stucco 1, columns 1; strip 2023-01-03 span 702-930"
+   }
+  },
+  {
+   "pandId": "0363100012166104",
+   "slug": "wou-166104",
+   "address": "Van Woustraat 64",
+   "type": {
+    "type": "pijp-1886-segmental-mansard",
+    "ground": {
+     "shopfront": {
+      "colour": "#67625c",
+      "fascia": true,
+      "name": "LED Letters",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, craft=signmaker); fascia colour measured on the strip 2023-01-03 span 930-1173"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#68544d",
+     "evidence": "strip 2023-01-03 span 930-1173: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "LED Letters",
+    "category": "craft=signmaker",
+    "osm": {
+     "type": "node",
+     "id": 2817559404,
+     "name": "LED Letters"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1886-segmental-mansard scored 0.73 on eaves 0, wall 1, stucco 1, columns 1; strip 2023-01-03 span 930-1173"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012156067",
+    "stripRow": 264,
+    "evidence": "auto-place: the pijp-1886-segmental-mansard cornice line 15.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.71 m"
+   }
+  ]
+ }
+}

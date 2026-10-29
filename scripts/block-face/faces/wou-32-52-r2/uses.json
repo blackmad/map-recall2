@@ -1,0 +1,73 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T21:12:51.011Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236557",
+   "addresses": [
+    "Van Woustraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001037217"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11757698169,
+     "lngLat": [
+      4.8997012,
+      52.3565119
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "amenity": "pub",
+      "check_date": "2026-01-20",
+      "cuisine": "south_african",
+      "email": "shaun@lionsheadbrewing.com",
+      "microbrewery": "yes",
+      "mobile": "+31648450378",
+      "name": "Lion's Head Restaurant & Brewery",
+      "opening_hours": "Mo-Th 17:00-23:00; Fr-Su 12:00-24:00"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158922",
+   "addresses": [
+    "Van Woustraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 34-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012066831"
+    },
+    {
+     "address": "Van Woustraat 34-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000848721"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

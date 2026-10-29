@@ -1,0 +1,158 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T21:12:51.011Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161157",
+   "addresses": [
+    "Van Woustraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 46-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000848764"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558978,
+     "lngLat": [
+      4.8998953,
+      52.3562683
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "name": "Daniele Dentici",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160499",
+   "addresses": [
+    "Van Woustraat 44C",
+    "Van Woustraat 44D",
+    "Van Woustraat 44A",
+    "Van Woustraat 44B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 44D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012120105"
+    },
+    {
+     "address": "Van Woustraat 44A",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000998080"
+    },
+    {
+     "address": "Van Woustraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000998081"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558964,
+     "lngLat": [
+      4.8998607,
+      52.3563159
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "44A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "craft": "electronics_repair",
+      "email": "contact@allrepair.pro",
+      "name": "Allrepair 7",
+      "opening_hours": "Mo-Th,Sa 09:30-19:00; Fr 09:30-13:00,14:00-19:00",
+      "phone": "+31 20 2217447",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.allrepair.pro"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471523519,
+     "lngLat": [
+      4.899769,
+      52.3562906
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "44A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "amenity": "post_office",
+      "name": "Allrepair7",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157561",
+   "addresses": [
+    "Van Woustraat 42A",
+    "Van Woustraat 42B",
+    "Van Woustraat 42C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 42A",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000998077"
+    },
+    {
+     "address": "Van Woustraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000998078"
+    },
+    {
+     "address": "Van Woustraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000998079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

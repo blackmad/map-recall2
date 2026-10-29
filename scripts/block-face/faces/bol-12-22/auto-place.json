@@ -1,0 +1,597 @@
+{
+ "face": "bol-12-22",
+ "street": "Ferdinand Bolstraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 8.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bol-12-22-r1",
+   "pands": [
+    "0363100012153030",
+    "0363100012167250"
+   ],
+   "passed": false,
+   "triangles": 2519
+  },
+  {
+   "face": "bol-12-22-r2",
+   "pands": [
+    "0363100012164618",
+    "0363100012156333"
+   ],
+   "passed": true,
+   "triangles": 2487
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012153030",
+   "address": "Ferdinand Bolstraat 22",
+   "builtYear": 1875,
+   "widthM": 7.05,
+   "eavesM": 12.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#58443d",
+    "wallRaw": "#5a4740",
+    "skyline": {
+     "eavesM": 17.35,
+     "eavesRow": 48,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1,
+      "topWidthM": 0.57,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.33,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.94 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.94,
+       "light": 0.08
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#4d3e3a",
+      "fascia": true,
+      "name": "Witbaard Feestartikelen",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=party); fascia colour measured on the strip 2023-01-03 span 0-282"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#58443d",
+     "evidence": "strip 2023-01-03 span 0-282: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012153030",
+    "ncc": 0.242,
+    "nccRaw": 0.242,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.22"
+    ],
+    "wall": {
+     "photo": "#5a453e",
+     "model": "#735950",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.65,
+     "model": 0.56
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.454
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167250",
+   "address": "Ferdinand Bolstraat 20",
+   "builtYear": 1875,
+   "widthM": 7.9,
+   "eavesM": 11.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#545257",
+    "wallRaw": "#413e3e",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 3,
+     "confidence": 0.54,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#612423",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=shelter); fascia colour measured on the strip 2023-01-03 span 282-598"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#545257",
+     "evidence": "strip 2023-01-03 span 282-598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3d3c3c",
+     "wallMaterial": "painted-brick"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Ferdinand Bolstraat 20 (strip 2023-01-03 span 282-598): the front is painted near-black (raw wall #4d4642 under an overcast sky beside the white trim at #eef1ef); the measured-brick lift turned it plum"
+   ],
+   "likeness": {
+    "pandId": "0363100012167250",
+    "ncc": 0.347,
+    "nccRaw": 0.347,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.55 vs photo 0.31",
+     "wall family unresolved (#565258 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#565258",
+     "model": "#3d3c3c",
+     "dL": -0.096
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.338
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159231",
+   "address": "Ferdinand Bolstraat 18",
+   "builtYear": 1900,
+   "widthM": 6.8,
+   "eavesM": 11.77,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#434248",
+    "wallRaw": "#3c3839",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 742,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.06,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.05 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.05,
+       "light": 0.49
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.35,
+       "light": 0.47
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.05,
+       "widthM": 1.35,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1900, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.77 m = 3 storeys of 3.92 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156424",
+   "address": "Ferdinand Bolstraat 16D",
+   "builtYear": 1875,
+   "widthM": 7.8,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a383a",
+    "wallRaw": "#443f40",
+    "skyline": {
+     "eavesM": 17.55,
+     "eavesRow": 40,
+     "confidence": 0.32,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.13 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.55 vs photo 0.31; wall family unresolved (#3b3939 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012156424",
+    "ncc": 0.13,
+    "nccRaw": 0.13,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.55 vs photo 0.31",
+     "wall family unresolved (#3b3939 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#3b3939",
+     "model": "#3d3c3c",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.306
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164618",
+   "address": "Ferdinand Bolstraat 14",
+   "builtYear": 1875,
+   "widthM": 6.71,
+   "eavesM": 11.73,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c3f39",
+    "wallRaw": "#4e433e",
+    "skyline": {
+     "eavesM": 17.75,
+     "eavesRow": 32,
+     "confidence": 0.49,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.68 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.68,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.2,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 1,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#292729",
+      "fascia": true,
+      "name": "Golden Years",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=second_hand); fascia colour measured on the strip 2023-01-03 span 1182-1450"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4c3f39",
+     "evidence": "strip 2023-01-03 span 1182-1450: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012164618",
+    "ncc": 0.294,
+    "nccRaw": 0.294,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.54 vs photo 0.42"
+    ],
+    "wall": {
+     "photo": "#4c4039",
+     "model": "#67564e",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.483
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156333",
+   "address": "Ferdinand Bolstraat 12",
+   "builtYear": 1875,
+   "widthM": 6.24,
+   "eavesM": 11.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e433a",
+    "wallRaw": "#534640",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 742,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1875-shop-dormer",
+   "score": 0.86,
+   "placement": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#494138",
+      "fascia": true,
+      "name": "Shanghai Soup Dumplings",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-03 span 1451-1700"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4e433a",
+     "evidence": "strip 2023-01-03 span 1451-1700: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012156333",
+    "ncc": 0.186,
+    "nccRaw": 0.186,
+    "shiftM": [
+     0,
+     -0.25
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.55 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#4b4039",
+     "model": "#695a4e",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.405
+   },
+   "challengers": {}
+  }
+ ]
+}

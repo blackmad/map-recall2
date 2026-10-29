@@ -1,0 +1,476 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T21:12:51.011Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161717",
+   "addresses": [
+    "Van Woustraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 52-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000848788"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2510453159,
+     "lngLat": [
+      4.8999961,
+      52.3561383
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "email": "info@shop-lucille.com",
+      "name": "Lucille",
+      "opening_hours": "Mo-Tu 13:00-18:00; We-Sa 12:00-18:00; Su 13:00-17:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165218",
+   "addresses": [
+    "Van Woustraat 50A",
+    "Van Woustraat 50B",
+    "Van Woustraat 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 50A",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000998086"
+    },
+    {
+     "address": "Van Woustraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000998087"
+    },
+    {
+     "address": "Van Woustraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000998088"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559314,
+     "lngLat": [
+      4.8999649,
+      52.3561877
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "beauty": "nails",
+      "check_date": "2026-01-20",
+      "name": "Century Nails",
+      "opening_hours": "Mo-Fr 09:30-18:00; Sa 09:00-18:00",
+      "phone": "+31 20 6755959",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156149",
+   "addresses": [
+    "Van Woustraat 48A",
+    "Van Woustraat 48B",
+    "Van Woustraat 48C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 48A",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000998083"
+    },
+    {
+     "address": "Van Woustraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000998084"
+    },
+    {
+     "address": "Van Woustraat 48C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000998085"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558988,
+     "lngLat": [
+      4.8999349,
+      52.3562236
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "48A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "alt_name": "Mister Nata",
+      "branch": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "description": "Portuguese Pastries",
+      "email": "info@misternata.com",
+      "name": "Mr. Nata",
+      "opening_hours": "Mo-Fr 08:00-18:00, Sa-Su 09:00-18:00",
+      "phone": "+31 6 21493534",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://misternata.com/"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161157",
+   "addresses": [
+    "Van Woustraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 46-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000848764"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558978,
+     "lngLat": [
+      4.8998953,
+      52.3562683
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "name": "Daniele Dentici",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160499",
+   "addresses": [
+    "Van Woustraat 44C",
+    "Van Woustraat 44D",
+    "Van Woustraat 44A",
+    "Van Woustraat 44B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 44D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012120105"
+    },
+    {
+     "address": "Van Woustraat 44A",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000998080"
+    },
+    {
+     "address": "Van Woustraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000998081"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558964,
+     "lngLat": [
+      4.8998607,
+      52.3563159
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "44A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "craft": "electronics_repair",
+      "email": "contact@allrepair.pro",
+      "name": "Allrepair 7",
+      "opening_hours": "Mo-Th,Sa 09:30-19:00; Fr 09:30-13:00,14:00-19:00",
+      "phone": "+31 20 2217447",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.allrepair.pro"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471523519,
+     "lngLat": [
+      4.899769,
+      52.3562906
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "44A",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "amenity": "post_office",
+      "name": "Allrepair7",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157561",
+   "addresses": [
+    "Van Woustraat 42A",
+    "Van Woustraat 42B",
+    "Van Woustraat 42C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 42A",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000998077"
+    },
+    {
+     "address": "Van Woustraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000998078"
+    },
+    {
+     "address": "Van Woustraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000998079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157562",
+   "addresses": [
+    "Van Woustraat 38",
+    "Van Woustraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 250,
+     "bagId": "0363010012079276"
+    },
+    {
+     "address": "Van Woustraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 509,
+     "bagId": "0363010001006465"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817558902,
+     "lngLat": [
+      4.8997584,
+      52.3564374
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "beauty": "tanning",
+      "check_date": "2026-01-20",
+      "email": "vragen@sunflower.nl",
+      "name": "The Sunflower",
+      "opening_hours": "Mo-Fr 09:00-22:00; Sa,Su 09:00-21:00",
+      "phone": "+31 20 7372640",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.thesunflower.nl/location/van-woustraat-38-40/"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236557",
+   "addresses": [
+    "Van Woustraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001037217"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11757698169,
+     "lngLat": [
+      4.8997012,
+      52.3565119
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "amenity": "pub",
+      "check_date": "2026-01-20",
+      "cuisine": "south_african",
+      "email": "shaun@lionsheadbrewing.com",
+      "microbrewery": "yes",
+      "mobile": "+31648450378",
+      "name": "Lion's Head Restaurant & Brewery",
+      "opening_hours": "Mo-Th 17:00-23:00; Fr-Su 12:00-24:00"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158922",
+   "addresses": [
+    "Van Woustraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 34-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012066831"
+    },
+    {
+     "address": "Van Woustraat 34-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000848721"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164926",
+   "addresses": [
+    "Van Woustraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000848710"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2509600419,
+     "lngLat": [
+      4.8996324,
+      52.3565883
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32-H",
+      "addr:postcode": "1073LM",
+      "addr:street": "Van Woustraat",
+      "amenity": "fast_food",
+      "check_date": "2026-01-20",
+      "cuisine": "turkish",
+      "drive_through": "no",
+      "email": "bakeryeethuislavina.shop@gmail.com",
+      "name": "Lavina",
+      "phone": "+31 20 2211471",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://bakeryeethuislavina.shop",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T21:12:51.011Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

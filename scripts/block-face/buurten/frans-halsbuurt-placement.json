@@ -1,0 +1,120 @@
+{
+ "buurt": "frans-halsbuurt",
+ "library": "de-pijp",
+ "generatedAt": "2026-10-29T12:39:50.459Z",
+ "seconds": 23.72,
+ "totals": {
+  "faces": 3,
+  "pands": 20,
+  "placed": 12
+ },
+ "faces": [
+  {
+   "face": "bol-12-22",
+   "street": "Ferdinand Bolstraat",
+   "pands": 6,
+   "placed": 4,
+   "held": 2,
+   "runs": [
+    {
+     "face": "bol-12-22-r1",
+     "pands": [
+      "0363100012153030",
+      "0363100012167250"
+     ],
+     "passed": false,
+     "triangles": 2519
+    },
+    {
+     "face": "bol-12-22-r2",
+     "pands": [
+      "0363100012164618",
+      "0363100012156333"
+     ],
+     "passed": true,
+     "triangles": 2487
+    }
+   ],
+   "seconds": 8.68,
+   "byType": {
+    "pijp-1875-shop-dormer": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bol-24-38",
+   "street": "Ferdinand Bolstraat",
+   "pands": 6,
+   "placed": 2,
+   "held": 4,
+   "runs": [
+    {
+     "face": "bol-24-38-r1",
+     "pands": [
+      "0363100012167017",
+      "0363100012158811"
+     ],
+     "passed": true,
+     "triangles": 2531
+    }
+   ],
+   "seconds": 5.81,
+   "byType": {
+    "pijp-1875-shop-dormer": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "bol-40-54",
+   "street": "Ferdinand Bolstraat",
+   "pands": 8,
+   "placed": 6,
+   "held": 2,
+   "runs": [
+    {
+     "face": "bol-40-54-r1",
+     "pands": [
+      "0363100012164043",
+      "0363100012160619"
+     ],
+     "passed": true,
+     "triangles": 4173
+    },
+    {
+     "face": "bol-40-54-r2",
+     "pands": [
+      "0363100012157768",
+      "0363100012237226",
+      "0363100012156921",
+      "0363100012237278"
+     ],
+     "passed": true,
+     "triangles": 8597
+    }
+   ],
+   "seconds": 9.23,
+   "byType": {
+    "pijp-1876-hood-frieze": 6
+   },
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

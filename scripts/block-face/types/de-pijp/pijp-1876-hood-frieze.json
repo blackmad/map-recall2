@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1876-hood-frieze",
+ "district": "de-pijp",
+ "description": "Ferdinand Bolstraat 40-54 (1875-77): 5.4-6.2 m shop-street fronts of a shop and three upper storeys of red-brown brick (some painted grey or cream); three axes of white T-windows under segmental heads, each under a cream moulded-brick hood frieze; white sills; a white frieze and cornice at 13.8 m; one white pediment dormer with a hoist beam over the middle axis",
+ "fit": {
+  "widthM": [
+   5.2,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1875,
+   1877
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.6,
+   14.0
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Ferdinand Bolstraat 40-54 (1875-77), 5.4-6.2 m; cornice 13.7-13.9 m on the 2022-03-23 strip; 3DBAG eaves 12.7-13.9 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.3,
+   2.7,
+   2.8,
+   2.6
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental"
+  },
+  "windowHeights": [
+   0.62,
+   0.67,
+   0.64,
+   0.69
+  ],
+  "headLines": [
+   0.86,
+   0.74,
+   0.71,
+   0.77
+  ],
+  "windowShare": 0.55,
+  "windowHoods": {
+   "colour": "band"
+  },
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.4,
+   "cap": 0.35,
+   "frieze": "trim",
+   "architrave": 0.1
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.4,
+    "setback": 0.3
+   },
+   "note": "40-54: one white dormer 1.8 m wide over the middle axis, 13.8-15.3 m, pediment and hoist beam",
+   "dormerAt": [
+    {
+     "from": 0.35,
+     "to": 0.65
+    }
+   ],
+   "dormerHoist": {
+    "reach": 0.8
+   }
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "red-brown-1876": {
+   "brick": "#a0705a",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "band": "#d9c49c",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows of one width",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "a shop per house",
+  "signage": "per shop",
+  "roofline": "white frieze and cornice at 13.8 m; one pediment dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge",
+   "the white stucco pilasters at the party walls (46-48) are not drawn",
+   "the yellow brick courses of 44 and 48 are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "bol-40-54",
+   "pands": [
+    "237023",
+    "157768"
+   ],
+   "citation": "strip.jpg 2022-03-23 pands 4-5 (48, 46) at 1.5x with a metre grid: shop to 4.2 m; storey-1 windows 4.5-6.3 m, storey-2 7.2-9.0 m, storey-3 10.0-11.8 m under segmental heads; cream hood friezes at 6.5-6.9, 9.3-9.6, 12.1-12.4 m; frieze 12.4-13.2, cornice to 13.8 m; dormers 13.8-15.3 m; windows 1.1 m on 5.8-6.0 m"
+  },
+  {
+   "face": "bol-40-54",
+   "pands": [
+    "237226",
+    "156921",
+    "237278"
+   ],
+   "citation": "strip.jpg 2022-03-23 pands 6-8 (44-40): the same axes, hood friezes (44), cornice and dormers"
+  }
+ ],
+ "notes": [
+  "Palette: the 2022-03-23 strip is sunlit; placed pands take their own measured wall."
+ ]
+}

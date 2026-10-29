@@ -1,0 +1,340 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:29:14.217Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153030",
+   "addresses": [
+    "Ferdinand Bolstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010011048064"
+    },
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 220,
+     "bagId": "0363010012078511"
+    },
+    {
+     "address": "Ferdinand Bolstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 328,
+     "bagId": "0363010012094897"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817452500,
+     "lngLat": [
+      4.8905105,
+      52.3568789
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-04",
+      "email": "amsterdam@witbaard.nl",
+      "name": "Witbaard Feestartikelen",
+      "opening_hours": "Mo 11:00-18:00; Tu-Sa 09:30-18:00",
+      "phone": "+31 20 6626144",
+      "shop": "party",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.witbaard.nl"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105645894,
+     "lngLat": [
+      4.8905522,
+      52.3568138
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "frontage",
+     "distanceM": 4.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167250",
+   "addresses": [
+    "Ferdinand Bolstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000635297"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13533825152,
+     "lngLat": [
+      4.8906541,
+      52.3569809
+     ],
+     "tags": {
+      "amenity": "shelter",
+      "bench": "yes",
+      "bin": "yes",
+      "lit": "yes",
+      "shelter_type": "public_transport"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159231",
+   "addresses": [
+    "Ferdinand Bolstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 18-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 201,
+     "bagId": "0363010012150029"
+    },
+    {
+     "address": "Ferdinand Bolstraat 18-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000979702"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2165936476,
+     "lngLat": [
+      4.8905058,
+      52.3570187
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "branch": "Ferdinand Bol",
+      "check_date": "2026-01-10",
+      "cuisine": "chinese",
+      "email": "info@yuanhotpot.com",
+      "name": "Yuan's Hot Pot",
+      "opening_hours": "Mo-Su 12:00-22:30",
+      "phone": "+31 6 23988988",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://yuanhotpot.com"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13533825152,
+     "lngLat": [
+      4.8906541,
+      52.3569809
+     ],
+     "tags": {
+      "amenity": "shelter",
+      "bench": "yes",
+      "bin": "yes",
+      "lit": "yes",
+      "shelter_type": "public_transport"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156424",
+   "addresses": [
+    "Ferdinand Bolstraat 16D",
+    "Ferdinand Bolstraat 16A",
+    "Ferdinand Bolstraat 16B",
+    "Ferdinand Bolstraat 16C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 16D",
+     "use": "winkelfunctie",
+     "areaM2": 322,
+     "bagId": "0363010000635288"
+    },
+    {
+     "address": "Ferdinand Bolstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000635289"
+    },
+    {
+     "address": "Ferdinand Bolstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000635290"
+    },
+    {
+     "address": "Ferdinand Bolstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001037624"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817451983,
+     "lngLat": [
+      4.8905274,
+      52.3570815
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16D",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-27",
+      "delivery": "yes",
+      "diet:halal": "yes",
+      "drive_through": "no",
+      "name": "The Wings Paradise",
+      "opening_hours": "Tu,Th-Fr 17:00-23:00; We 16:00-23:30; Sa 14:00-23:00; Su 14:00-22:00",
+      "operator": "The Wings Paradise",
+      "payment:cash": "no",
+      "phone": "+31 20 2613188",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.wingsparadise.nl"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164618",
+   "addresses": [
+    "Ferdinand Bolstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000635283"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817451919,
+     "lngLat": [
+      4.890535,
+      52.3571553
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Golden Years - True Vintage",
+      "branch": "Ferdinand Bolstraat",
+      "check_date": "2026-01-04",
+      "clothes": "vintage",
+      "name": "Golden Years",
+      "opening_hours": "Mo-Sa 11:00-19:00; Su 11:00-18:00",
+      "operator": "Thriftshop",
+      "second_hand": "only",
+      "shop": "second_hand",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156333",
+   "addresses": [
+    "Ferdinand Bolstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 12-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 98,
+     "bagId": "0363010011910650"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2165936479,
+     "lngLat": [
+      4.8905639,
+      52.3572005
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1072LJ",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "cuisine": "asian",
+      "name": "Shanghai Soup Dumplings",
+      "opening_hours": "Su-Th 11:00-23:00; Fr-Sa 11:00-25:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:29:14.217Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

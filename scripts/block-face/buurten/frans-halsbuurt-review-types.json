@@ -1,0 +1,9 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (blockFace/reviewCrowns.ts typesForFace): the 1875-77 Ferdinand Bolstraat rows share year, width and roof, and 3DBAG eaves (11.7-14.0 m) overlap between the two-storey and three-storey fronts, so the facts alone cannot count the storeys.",
+ "reviewed": "2026-10-29",
+ "pins": [
+  {"face": "bol-12-22", "types": ["pijp-1875-shop-dormer"], "reason": "Ferdinand Bolstraat 12-22 (2023-01-03 strip): every front is a shop and two upper storeys under the white entablature"},
+  {"face": "bol-24-38", "types": ["pijp-1875-shop-dormer"], "reason": "Ferdinand Bolstraat 24-36 (2023-01-03 strip): a shop and two upper storeys under the white entablature on every front"},
+  {"face": "bol-40-54", "types": ["pijp-1876-hood-frieze"], "reason": "Ferdinand Bolstraat 40-52 (2022-03-23 strip): a shop and three upper storeys with cream hood friezes over segmental heads"}
+ ]
+}

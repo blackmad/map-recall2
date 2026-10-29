@@ -1,0 +1,129 @@
+{
+ "street": "Van Woustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T21:14:35.769Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152366",
+   "addresses": [
+    "Van Woustraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 58-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000848809"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559364,
+     "lngLat": [
+      4.9002025,
+      52.3558669
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "alt_name": "Yen Dining Bar",
+      "amenity": "restaurant",
+      "check_date": "2026-01-20",
+      "cuisine": "vietnamese",
+      "name": "Yên Dining Bar",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471162381,
+     "lngLat": [
+      4.900259,
+      52.3559171
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "frontage",
+     "distanceM": 2.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158143",
+   "addresses": [
+    "Van Woustraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Woustraat 56-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001169655"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559354,
+     "lngLat": [
+      4.9001603,
+      52.3559176
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56-H",
+      "addr:postcode": "1073LN",
+      "addr:street": "Van Woustraat",
+      "check_date": "2026-01-20",
+      "contact:instagram": "fotomignon",
+      "email": "info@fotomignon.nl",
+      "level": "0",
+      "name": "Foto Mignon",
+      "opening_hours": "Mo-Fr 10:00-18:00; Sa 10:00-17:30",
+      "operator": "Foto Mignon",
+      "phone": "+31 20 66 20 145",
+      "shop": "photo",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fotomignon.nl/"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13471162381,
+     "lngLat": [
+      4.900259,
+      52.3559171
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-28T21:14:35.769Z",
+     "match": "frontage",
+     "distanceM": 2.8
+    }
+   ]
+  }
+ ]
+}

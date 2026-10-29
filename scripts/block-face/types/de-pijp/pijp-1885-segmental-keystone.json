@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1885-segmental-keystone",
+ "district": "de-pijp",
+ "description": "Van Woustraat 42-46 (1885): 5.2-6 m shop-street fronts of a shop and three upper storeys of dark red-brown brick; three axes of white T-windows under segmental heads with a dark rubbed-brick ring and a white keystone; white sills; a white plain frieze and cornice at 14.0 m; one white pediment dormer with a hoist beam over the middle axis",
+ "fit": {
+  "widthM": [
+   5.0,
+   6.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1885,
+   1885
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   13.4,
+   14.6
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Van Woustraat 42-46 (1885); cornice 14.0-14.2 m on the 2023-01-03 strip at a 2.44 m camera height, 3DBAG eaves 13.7-14.4 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.2,
+   2.9,
+   3.0,
+   2.8
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "band",
+    "style": "solid",
+    "widthCourses": 2,
+    "keystone": true
+   }
+  },
+  "windowHeights": [
+   0.62,
+   0.69,
+   0.73,
+   0.75
+  ],
+  "headLines": [
+   0.86,
+   0.76,
+   0.8,
+   0.82
+  ],
+  "windowShare": 0.57,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.2,
+   "cap": 0.4,
+   "frieze": "trim",
+   "architrave": 0.1
+  },
+  "wallAnchors": {
+   "over": 0.4
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.34,
+     "to": 0.66
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.4,
+    "setback": 0.3
+   },
+   "dormerHoist": {
+    "reach": 0.8
+   },
+   "note": "32-46: one white dormer 1.8 m wide over the middle axis, 14.1-15.6 m, pediment and hoist beam (its low side cheeks are not drawn)"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "dark-red-brown-1885": {
+   "brick": "#6e4a3e",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "band": "#4e3128",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "a shop per house",
+  "signage": "per shop",
+  "roofline": "white frieze and cornice at 14.0 m, one pediment dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the sculpted keystone heads of 44 are plain blocks",
+   "the dormer's low side cheeks are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "wou-32-52",
+   "pands": [
+    "161157",
+    "160499"
+   ],
+   "citation": "strip.jpg 2023-01-03 (camera height 2.44 m) pands 4-5 (46, 44) at 1.4x with a metre grid: shop to 4.1 m; storey-1 windows 4.4-6.4 m, storey-2 7.3-9.5 m, storey-3 10.3-12.4 m, segmental heads with keystones; frieze 12.9-13.5, cornice to 14.0-14.2 m; dormer 14.0-15.6 m + pediment, 1.8 m wide; windows 1.1 m on 5.8 m"
+  },
+  {
+   "face": "wou-32-52",
+   "pands": [
+    "157561"
+   ],
+   "citation": "strip.jpg 2023-01-03 pand 6 (42): the same segmental heads, cornice and dormer"
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bol-24-38-r1",
+ "street": "Ferdinand Bolstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/bol-24-38-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/bol-24-38/auto-place.json"
+ },
+ "types": [
+  "pijp-1875-shop-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012167017",
+   "slug": "bol-167017",
+   "address": "Ferdinand Bolstraat 26",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1f23",
+      "fascia": true,
+      "name": "NorthEast Kitchen",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-03 span 1492-1740"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#584a44",
+     "evidence": "strip 2023-01-03 span 1492-1740: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "NorthEast Kitchen",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2817453013,
+     "name": "NorthEast Kitchen"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 1492-1740"
+   }
+  },
+  {
+   "pandId": "0363100012158811",
+   "slug": "bol-158811",
+   "address": "Ferdinand Bolstraat 24",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#726258",
+      "fascia": true,
+      "name": "Arie Op De Hoek",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=pub); fascia colour measured on the strip 2023-01-03 span 1740-1997"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#52433a",
+     "evidence": "strip 2023-01-03 span 1740-1997: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "name": "Arie Op De Hoek",
+    "category": "amenity=pub",
+    "osm": {
+     "type": "node",
+     "id": 249327900,
+     "name": "Arie Op De Hoek"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 1740-1997"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
