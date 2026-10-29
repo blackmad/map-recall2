@@ -3,7 +3,7 @@
  "street": "Govert Flinckstraat",
  "library": "de-pijp",
  "stripDate": "2023-01-23",
- "seconds": 1.02,
+ "seconds": 4.38,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -72,23 +72,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.53 < 0.7 (strip wall #b9b9b6 dE 43.8 to #524845 (<= 10); strip columns 5 vs 3 bays)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.55 < 0.7 (strip cornice 14.6 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 5 vs 3 bays)",
    "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.53,
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.55,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "strip cornice 14.6 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0,
-      "note": "strip wall #b9b9b6 dE 43.8 to #524845 (<= 10)"
+      "score": 0.5,
+      "note": "strip cornice 14.6 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -158,9 +152,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.078 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21 mean 0.47 vs photo 0.30; columns 3 vs photo 7)",
+   "likeness": {
+    "pandId": "0363100012158291",
+    "ncc": 0.078,
+    "nccRaw": 0.078,
+    "shiftM": [
+     -0.3,
+     0.1
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.30",
+     "columns 3 vs photo 7"
+    ],
+    "wall": {
+     "photo": "#756e6c",
+     "model": "#69696d",
+     "dL": -0.022
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.324
+   },
    "challengers": {}
   },
   {
@@ -214,40 +237,38 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 14.18 m vs the type's 15.1 m; strip columns 5 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.67,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 14.18 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 1,
-      "note": "strip wall #525255 dE 6.8 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.088 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.083 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23 mean 0.47 vs photo 0.25; wall family unresolved (#69666a is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012160398",
+    "ncc": 0.083,
+    "nccRaw": 0.083,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.47 vs photo 0.25",
+     "wall family unresolved (#69666a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#69666a",
+     "model": "#68686c",
+     "dL": 0.008
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.246
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -298,7 +319,37 @@
    "status": "held",
    "stage": "run",
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "likeness": {
+    "pandId": "0363100012152801",
+    "ncc": 0.158,
+    "nccRaw": 0.158,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.49 mean 0.40 vs photo 0.64",
+     "wall family unresolved (#696465 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#696465",
+     "model": "#7e756c",
+     "dL": 0.057
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.406
+   },
    "challengers": {}
   },
   {

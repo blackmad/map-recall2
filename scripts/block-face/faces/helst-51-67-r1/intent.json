@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helst-51-67-r1",
+ "street": "Eerste Van der Helststraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/helst-51-67-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/helst-51-67/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012237118",
+   "slug": "helst-237118",
+   "address": "Eerste Van der Helststraat 51",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#302e2b",
+      "fascia": true,
+      "name": "Ami",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-03 span 0-248"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#736261",
+     "evidence": "strip 2023-01-03 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3e3936"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Ami",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 2817559322,
+     "name": "Ami"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-03 span 0-248"
+   }
+  },
+  {
+   "pandId": "0363100012158716",
+   "slug": "helst-158716",
+   "address": "Eerste Van der Helststraat 53",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#3c362e",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-03 span 248-465"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#71605f",
+     "evidence": "strip 2023-01-03 span 248-465: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3c3835"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-03 span 248-465"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012237118",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.53 m"
+   },
+   {
+    "pand": "0363100012158716",
+    "stripRow": 178,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.62 m"
+   }
+  ]
+ }
+}

@@ -3,7 +3,7 @@
  "street": "Tweede Jan Steenstraat",
  "library": "de-pijp",
  "stripDate": "2022-03-23",
- "seconds": 21.73,
+ "seconds": 25.39,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -55,40 +55,38 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.65 < 0.7 (strip wall #705a4d dE 11.9 to #524845 (<= 10); strip columns 2 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.65,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 15.1 m; 3DBAG 10.63 m not compared)"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #705a4d dE 11.9 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.03 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.37 mean 0.42 vs photo 0.15; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012121708",
+    "ncc": 0.124,
+    "nccRaw": 0.124,
+    "shiftM": [
+     0,
+     0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.42 vs photo 0.15",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7b645a",
+     "model": "#896e5e",
+     "dL": 0.035
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.174
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -138,36 +136,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 7; mask IoU 0.388 < 0.45)",
+   "reason": "edge NCC 0.066 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.39 vs photo 0.53; columns 3 vs photo 7)",
    "likeness": {
     "pandId": "0363100012135879",
-    "ncc": 0.072,
-    "nccRaw": 0.072,
+    "ncc": 0.066,
+    "nccRaw": 0.066,
     "shiftM": [
      0.4,
      -0.4
     ],
     "usable": 0.88,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "columns 3 vs photo 7",
-     "mask IoU 0.388 < 0.45"
+     "glazing  mean 0.39 vs photo 0.53",
+     "columns 3 vs photo 7"
     ],
     "wall": {
-     "photo": "#846359",
+     "photo": "#836358",
      "model": "#635f5d",
-     "dL": -0.057
+     "dL": -0.053
     },
     "glazing": {
-     "photo": 0.45,
-     "model": 0.4
+     "photo": 0.53,
+     "model": 0.39
     },
     "columns": {
      "photo": 7,
      "model": 3
     },
-    "iou": 0.388
+    "iou": 0.412
    },
    "challengers": {}
   },
@@ -207,11 +205,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.047 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.46)",
+   "reason": "edge NCC 0.108 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38 mean 0.42 vs photo 0.13)",
    "likeness": {
     "pandId": "0363100012153537",
-    "ncc": 0.047,
-    "nccRaw": 0.047,
+    "ncc": 0.108,
+    "nccRaw": 0.108,
     "shiftM": [
      0.2,
      0.4
@@ -220,22 +218,22 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46"
+     "glazing storey band off by 0.38 mean 0.42 vs photo 0.13"
     ],
     "wall": {
-     "photo": "#866e66",
+     "photo": "#7a665e",
      "model": "#91796d",
-     "dL": 0.035
+     "dL": 0.075
     },
     "glazing": {
-     "photo": 0.45,
-     "model": 0.39
+     "photo": 0.13,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.271
+    "iou": 0.183
    },
    "challengers": {}
   },
@@ -286,36 +284,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.027 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#464444 is dark and neutral, brick courses not resolved): lightness and hue judged only; mask IoU 0.271 < 0.45)",
+   "reason": "edge NCC 0.136 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21; wall family unresolved (#484647 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012160085",
-    "ncc": 0.027,
-    "nccRaw": 0.027,
+    "ncc": 0.136,
+    "nccRaw": 0.136,
     "shiftM": [
-     -0.05,
-     -0.4
+     0.2,
+     0.4
     ],
-    "usable": 0.87,
+    "usable": 0.83,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "wall family unresolved (#464444 is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "mask IoU 0.271 < 0.45"
+     "glazing storey band off by 0.21",
+     "wall family unresolved (#484647 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#464444",
+     "photo": "#484647",
      "model": "#63625e",
-     "dL": 0.108
+     "dL": 0.1
     },
     "glazing": {
-     "photo": 0.48,
-     "model": 0.39
+     "photo": 0.49,
+     "model": 0.42
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.271
+    "iou": 0.395
    },
    "challengers": {}
   },
@@ -360,36 +358,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.033 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18; wall family unresolved (#535357 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23; wall family unresolved (#525253 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012152461",
-    "ncc": 0.033,
-    "nccRaw": 0.033,
+    "ncc": 0.116,
+    "nccRaw": 0.116,
     "shiftM": [
-     -0.25,
-     -0.4
+     -0.3,
+     0.4
     ],
-    "usable": 0.86,
+    "usable": 0.84,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18",
-     "wall family unresolved (#535357 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.23",
+     "wall family unresolved (#525253 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#535357",
+     "photo": "#525253",
      "model": "#66696e",
-     "dL": 0.082
+     "dL": 0.092
     },
     "glazing": {
-     "photo": 0.32,
-     "model": 0.39
+     "photo": 0.33,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.297
+    "iou": 0.371
    },
    "challengers": {}
   },
@@ -601,35 +599,42 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 17.55 m vs the type's 15.1 m)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.67,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 17.55 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 1,
-      "note": "strip wall #6c5b53 dE 9.6 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.104 (brick)"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.136 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19 mean 0.43 vs photo 0.58)",
+   "likeness": {
+    "pandId": "0363100012161897",
+    "ncc": 0.136,
+    "nccRaw": 0.136,
+    "shiftM": [
+     0.2,
+     -0.3
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.43 vs photo 0.58"
+    ],
+    "wall": {
+     "photo": "#69554b",
+     "model": "#846f65",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.458
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.083,
+    "pijp-1882-keystone-lintel": 0.095,
+    "pijp-1885-segmental-keystone": 0.073
+   }
   },
   {
    "pandId": "0363100012166041",
@@ -671,10 +676,43 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.40 mean 0.42 vs photo 0.17; columns 3 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012166041",
+    "ncc": 0.113,
+    "nccRaw": 0.113,
+    "shiftM": [
+     0,
+     -0.35
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.42 vs photo 0.17",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#70584b",
+     "model": "#896c5c",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.19
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.072,
+    "pijp-1882-keystone-lintel": 0.094,
+    "pijp-1885-segmental-keystone": 0.059
+   }
   },
   {
    "pandId": "0363100012156666",
@@ -716,35 +754,42 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.67 < 0.7 (strip cornice 15.97 m vs the type's 15.1 m; strip wall #79665e dE 14.1 to #524845 (<= 10))",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.67,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 15.97 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #79665e dE 14.1 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.087 (brick)"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12)",
+   "likeness": {
+    "pandId": "0363100012156666",
+    "ncc": 0.143,
+    "nccRaw": 0.143,
+    "shiftM": [
+     -0.15,
+     -0.1
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12"
+    ],
+    "wall": {
+     "photo": "#6e5b51",
+     "model": "#8f796f",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.489
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.015,
+    "pijp-1882-keystone-lintel": 0.104,
+    "pijp-1885-segmental-keystone": 0.061
+   }
   },
   {
    "pandId": "0363100012159515",
@@ -788,40 +833,40 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.052 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.40 mean 0.38 vs photo 0.16)",
+   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.37 mean 0.42 vs photo 0.18)",
    "likeness": {
     "pandId": "0363100012159515",
-    "ncc": 0.052,
-    "nccRaw": 0.052,
+    "ncc": 0.063,
+    "nccRaw": 0.063,
     "shiftM": [
-     -0.25,
-     0.15
+     -0.4,
+     -0.1
     ],
-    "usable": 0.91,
+    "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.40 mean 0.38 vs photo 0.16"
+     "glazing storey band off by 0.37 mean 0.42 vs photo 0.18"
     ],
     "wall": {
-     "photo": "#796659",
+     "photo": "#956d5e",
      "model": "#79685e",
-     "dL": 0.01
+     "dL": -0.055
     },
     "glazing": {
-     "photo": 0.16,
-     "model": 0.38
+     "photo": 0.18,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.117
+    "iou": 0.21
    },
    "challengers": {
-    "pijp-1876-hood-frieze": 0.112,
-    "pijp-1882-keystone-lintel": 0.043,
-    "pijp-1885-segmental-keystone": 0.098
+    "pijp-1876-hood-frieze": 0.088,
+    "pijp-1882-keystone-lintel": 0.045,
+    "pijp-1885-segmental-keystone": 0.107
    }
   },
   {
@@ -866,41 +911,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.17; glazing storey band off by 0.22)",
+   "reason": "edge NCC 0.091 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.21; glazing storey band off by 0.27)",
    "likeness": {
     "pandId": "0363100012164766",
-    "ncc": 0.063,
-    "nccRaw": 0.063,
+    "ncc": 0.091,
+    "nccRaw": 0.091,
     "shiftM": [
      0.15,
-     -0.1
+     0.15
     ],
-    "usable": 0.7,
+    "usable": 0.68,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL -0.17",
-     "glazing storey band off by 0.22"
+     "wall dL -0.21",
+     "glazing storey band off by 0.27"
     ],
     "wall": {
-     "photo": "#8a6e65",
+     "photo": "#9b7669",
      "model": "#5b503e",
-     "dL": -0.169
+     "dL": -0.21
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.38
+     "photo": 0.46,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.238
+    "iou": 0.347
    },
    "challengers": {
-    "pijp-1876-hood-frieze": 0.124,
-    "pijp-1882-keystone-lintel": 0.13,
-    "pijp-1885-segmental-keystone": 0.115
+    "pijp-1876-hood-frieze": 0.122,
+    "pijp-1882-keystone-lintel": 0.128,
+    "pijp-1885-segmental-keystone": 0.11
    }
   },
   {
@@ -955,38 +1000,38 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.008 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.263 < 0.45)",
+   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.42 vs photo 0.52)",
    "likeness": {
     "pandId": "0363100012235991",
-    "ncc": 0.008,
-    "nccRaw": 0.008,
+    "ncc": 0.063,
+    "nccRaw": 0.063,
     "shiftM": [
-     -0.25,
-     -0.2
+     -0.3,
+     0.4
     ],
     "usable": 0.92,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.263 < 0.45"
+     "glazing  mean 0.42 vs photo 0.52"
     ],
     "wall": {
-     "photo": "#82665d",
+     "photo": "#8b6b5e",
      "model": "#8d7266",
-     "dL": 0.039
+     "dL": 0.02
     },
     "glazing": {
-     "photo": 0.47,
-     "model": 0.39
+     "photo": 0.52,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.263
+    "iou": 0.369
    },
    "challengers": {
-    "pijp-1882-keystone-lintel": 0.097
+    "pijp-1882-keystone-lintel": 0.083
    }
   },
   {
@@ -1036,41 +1081,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.04 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 15 deg; glazing storey band off by 0.40 mean 0.38 vs photo 0.17)",
+   "reason": "edge NCC 0.036 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 13 deg; glazing storey band off by 0.18)",
    "likeness": {
     "pandId": "0363100012152764",
-    "ncc": 0.04,
-    "nccRaw": 0.04,
+    "ncc": 0.036,
+    "nccRaw": 0.036,
     "shiftM": [
      0.05,
-     0
+     -0.2
     ],
-    "usable": 0.89,
+    "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall hue 15 deg",
-     "glazing storey band off by 0.40 mean 0.38 vs photo 0.17"
+     "wall hue 13 deg",
+     "glazing storey band off by 0.18"
     ],
     "wall": {
-     "photo": "#836459",
+     "photo": "#8c6e61",
      "model": "#6f6356",
-     "dL": -0.045
+     "dL": -0.078
     },
     "glazing": {
-     "photo": 0.17,
-     "model": 0.38
+     "photo": 0.39,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.117
+    "iou": 0.281
    },
    "challengers": {
     "pijp-1875-shop-dormer": 0.003,
     "pijp-1876-hood-frieze": 0.061,
-    "pijp-1882-keystone-lintel": 0.025
+    "pijp-1882-keystone-lintel": 0.031
    }
   },
   {
@@ -1114,36 +1159,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; columns 3 vs photo 7)",
+   "reason": "edge NCC 0.087 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.25; columns 3 vs photo 7)",
    "likeness": {
     "pandId": "0363100012158006",
-    "ncc": 0.089,
-    "nccRaw": 0.089,
+    "ncc": 0.087,
+    "nccRaw": 0.087,
     "shiftM": [
-     -0.05,
-     -0.05
+     0.15,
+     -0.4
     ],
-    "usable": 0.92,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.14",
+     "wall dL +0.15",
+     "glazing storey band off by 0.25",
      "columns 3 vs photo 7"
     ],
     "wall": {
-     "photo": "#765f59",
+     "photo": "#745d57",
      "model": "#9c8479",
-     "dL": 0.137
+     "dL": 0.145
     },
     "glazing": {
      "photo": 0.36,
-     "model": 0.39
+     "model": 0.42
     },
     "columns": {
      "photo": 7,
      "model": 3
     },
-    "iou": 0.244
+    "iou": 0.261
    },
    "challengers": {
     "pijp-1875-shop-dormer": 0.162,
@@ -1200,33 +1246,32 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012161456",
-    "ncc": 0.163,
-    "nccRaw": 0.163,
+    "ncc": 0.171,
+    "nccRaw": 0.171,
     "shiftM": [
-     -0.4,
-     -0.35
+     0.1,
+     0.2
     ],
-    "usable": 0.87,
+    "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23",
-     "wall family unresolved (#3c3738 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.23"
     ],
     "wall": {
-     "photo": "#3c3738",
+     "photo": "#413a3a",
      "model": "#594f51",
-     "dL": 0.104
+     "dL": 0.088
     },
     "glazing": {
-     "photo": 0.47,
-     "model": 0.38
+     "photo": 0.45,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.324
+    "iou": 0.343
    },
    "challengers": {
     "pijp-1875-shop-dormer": 0.169,
@@ -1277,35 +1322,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16)",
+   "reason": "edge NCC 0.129 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38 mean 0.42 vs photo 0.13; wall family unresolved (#6d7277 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012154123",
-    "ncc": 0.061,
-    "nccRaw": 0.061,
+    "ncc": 0.129,
+    "nccRaw": 0.129,
     "shiftM": [
      0,
-     0.4
+     -0.25
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16"
+     "glazing storey band off by 0.38 mean 0.42 vs photo 0.13",
+     "wall family unresolved (#6d7277 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#6d727d",
+     "photo": "#6d7277",
      "model": "#818690",
-     "dL": 0.076
+     "dL": 0.088
     },
     "glazing": {
-     "photo": 0.36,
-     "model": 0.39
+     "photo": 0.13,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.37
+    "iou": 0.18
    },
    "challengers": {
     "pijp-1882-keystone-lintel": 0.089,

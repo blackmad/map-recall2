@@ -1,0 +1,229 @@
+{
+ "street": "Sarphatipark",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:38:51.844Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163624",
+   "addresses": [
+    "Sarphatipark 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 14-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000999730"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153033",
+   "addresses": [
+    "Sarphatipark 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 12-H",
+     "use": "kantoorfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000804119"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817610602,
+     "lngLat": [
+      4.8937537,
+      52.3541578
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-21",
+      "email": "info@samilaspa.nl",
+      "name": "Samila Spa",
+      "opening_hours": "Mo-Su 11:00-21:00",
+      "phone": "+31 20 7370942",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://samilaspa.nl"
+     },
+     "fetchedAt": "2026-10-29T20:38:51.844Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161847",
+   "addresses": [
+    "Sarphatipark 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 10-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000804113"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236334",
+   "addresses": [
+    "Sarphatipark 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 8-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000804106"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163034",
+   "addresses": [
+    "Sarphatipark 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000804097"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613032,
+     "lngLat": [
+      4.8936492,
+      52.3543011
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "check_date": "2026-01-21",
+      "name": "Beadazzled",
+      "opening_hours": "Mo 13:00-18:00, Tu-Fr 10:30-18:00, Sa 10:30-17:00, Su 12:00-17:00",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://beadazzled.nl/"
+     },
+     "fetchedAt": "2026-10-29T20:38:51.844Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154143",
+   "addresses": [
+    "Sarphatipark 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000804089"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 332661074,
+     "lngLat": [
+      4.8936155,
+      52.3543495
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "amenity": "restaurant",
+      "check_date": "2026-01-21",
+      "cuisine": "chicken",
+      "name": "Ladybird Fried Chicken",
+      "opening_hours": "We 15:00-21:00; Th-Sa 12:00-22:00; Su 12:00-20:00",
+      "reservation": "no",
+      "website": "https://www.ladybirdfriedchicken.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T20:38:51.844Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158877",
+   "addresses": [
+    "Sarphatipark 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatipark 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000804082"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 527528305,
+     "lngLat": [
+      4.8935807,
+      52.3544004
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1072PA",
+      "addr:street": "Sarphatipark",
+      "amenity": "pub",
+      "check_date": "2026-01-21",
+      "name": "Café Krull",
+      "opening_hours": "Mo-Th 09:00-01:00; Fr-Sa 09:00-03:00; Su 10:00-01:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T20:38:51.844Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

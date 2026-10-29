@@ -1,0 +1,240 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wou-12-22-r1",
+ "street": "Van Woustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/wou-12-22-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/wou-12-22/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood",
+  "pijp-1885-segmental-keystone"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012163021",
+   "slug": "wou-163021",
+   "address": "Van Woustraat 20",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#242427",
+      "fascia": true,
+      "name": "Broodje Popov",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=fast_food); fascia colour measured on the strip 2023-01-03 span 296-539"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#473d38",
+     "evidence": "strip 2023-01-03 span 296-539: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Broodje Popov",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2507166317,
+     "name": "Broodje Popov"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2023-01-03 span 296-539"
+   }
+  },
+  {
+   "pandId": "0363100012159447",
+   "slug": "wou-159447",
+   "address": "Van Woustraat 18",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#70706f",
+      "fascia": true,
+      "name": "Tabak- & Vapeshop Van Wou",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, shop=tobacco); fascia colour measured on the strip 2023-01-03 span 539-793"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#62524e",
+     "evidence": "strip 2023-01-03 span 539-793: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#201d1d"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Tabak- & Vapeshop Van Wou",
+    "category": "shop=tobacco",
+    "osm": {
+     "type": "node",
+     "id": 2817557298,
+     "name": "Tabak- & Vapeshop Van Wou"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a raised house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14 m, one pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    ],
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-03 span 539-793"
+   }
+  },
+  {
+   "pandId": "0363100012236629",
+   "slug": "wou-236629",
+   "address": "Van Woustraat 16",
+   "type": {
+    "type": "pijp-1885-segmental-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#3f3230",
+      "fascia": true,
+      "name": "Me Gorgeous!",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2023-01-03 span 793-1046"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#594943",
+     "evidence": "strip 2023-01-03 span 793-1046: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Me Gorgeous!",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 2817556971,
+     "name": "Me Gorgeous!"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every upper storey: 3 T-windows",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "a shop per house",
+    "signage": "per shop",
+    "roofline": "white frieze and cornice at 14.0 m, one pediment dormer with a hoist beam",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the sculpted keystone heads of 44 are plain blocks",
+     "the dormer's low side cheeks are not drawn"
+    ],
+    "citation": "auto-place: pijp-1885-segmental-keystone scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 793-1046"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012159447",
+    "stripRow": 192,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.48 m"
+   }
+  ]
+ }
+}

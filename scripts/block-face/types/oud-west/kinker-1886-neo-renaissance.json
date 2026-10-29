@@ -1,152 +1,166 @@
 {
-  "schemaVersion": 1,
-  "kind": "house-type",
-  "id": "kinker-1886-neo-renaissance",
-  "district": "oud-west",
-  "description": "Kinkerstraat 1886-1893 Neo-Renaissance fronts (49-53, 66-76, 65-69): brown brick banded with white speklagen (a sill course and an impost course on every storey), segmental and round-headed windows under white blocked arches, stepped or pointed gables with an attic light",
-  "fit": {
-    "widthM": [
-      4.0,
-      13.5
-    ],
-    "storeys": [
-      4
-    ]
-  },
-  "body": {
-    "storeys": 4,
-    "bays": 3,
-    "cornice": "bracketed",
-    "windows": "t-window",
-    "windowHead": {
-      "kind": "segmental",
-      "archRing": {
-        "colour": "stone",
-        "style": "blocks",
-        "keystone": true
-      },
-      "tympanum": "stone"
-    },
-    "bands": "speklagen",
-    "speklagen": {
-      "spacing": 14,
-      "courses": 2
-    }
-  },
-  "crowns": {
-    "step-gable": {
-      "gable": "step",
-      "crownSteps": 4,
-      "crownRise": 1.3,
-      "atticWindows": 1,
-      "crownFinial": true,
-      "note": "49-63 pands 1-2, 65-87 pands 1-2: tall stepped gables, top 3.5-4 m over the cornice"
-    },
-    "point-gable": {
-      "gable": "point",
-      "crownRise": 1.2,
-      "atticWindows": 1,
-      "note": "49-63 pand 4 (161889): a pointed gable"
-    },
-    "none": {
-      "gable": "cornice",
-      "note": "56-84 236441 between gables"
-    },
-    "wall-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pointed",
-      "dormerBody": "brick",
-      "dormerSize": {
-        "sill": 0.35,
-        "rise": 1.8,
-        "setback": 0.4
-      },
-      "note": "56-84 236441 (Kinkerstraat 62 and 60), strip 2023-01-10 at 40 px/m: one brick wall dormer over the cornice per house, about 1.9 m wide with its stone cheeks, a 2-light window, body about 2.2 m to a peaked brick top about 0.9 m high; drawn as a pointed dormer in the wall colour (the stone cheek scrolls and coping are not drawn)"
-    },
-    "stone-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pointed",
-      "dormerBody": "stone",
-      "note": "56-84 236325 (Kinkerstraat 66), strip 2023-01-10 at 40 px/m: one white stone dormer about 1.45 m wide over the cornice, a single light under a pointed top about 0.9 m high, the next house's step gable beside it"
-    }
-  },
-  "palettes": {
-    "brown-speklaag": {
-      "brick": "#696052",
-      "frame": "#b3b5a3",
-      "door": "black",
-      "stone": "#e2dfd2",
-      "cornice": "#7f7965",
-      "stoneMaterial": "painted"
-    }
-  },
-  "roof": {
-    "material": "slate",
-    "source": "front",
-    "rise": 0.25,
-    "pitchDeg": 45,
-    "evidence": "strip 2024-11-29 kinker-49-63 pands 1-4: between the gables only sky and the dormer over the cornice; the 3DBAG attic stood as a slate block there"
-  },
-  "rhythm": {
-    "bays": "3 window axes (2-3 per gable)",
-    "identicalBays": "storeys alternate segmental and round heads (the kit draws segmental on every storey)",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric about each gable",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "stepped or pointed gables over carved cornices",
-    "photoRows": [
-      1,
-      3,
-      3,
-      3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 1,
-    "schemaLimits": [
-      "radiating white voussoirs (sunburst arches) are drawn as blocked arches (springers, two voussoirs, keystone)",
-      "white tympana are drawn on every head storey (windowHead.tympanum); on the photo the top storey's heads are glazed",
-      "speklagen are evenly spaced every 14 courses (0.77 m, the photo median); on the photo they also step around the arch springers",
-      "gable scrolls and pinnacles"
-    ]
-  },
-  "evidence": [
-    {
-      "face": "kinker-49-63",
-      "pands": [
-        "160810",
-        "236773",
-        "164246",
-        "161889"
-      ],
-      "citation": "strip.jpg 2024-11-29 pands 1-4 (zoom): white speklagen bands, sunburst arches, stepped/pointed gables"
-    },
-    {
-      "face": "kinker-56-84",
-      "pands": [
-        "161359",
-        "236325",
-        "236441"
-      ],
-      "citation": "strip.jpg 2024-11-29 pands 3-5: banded fronts with gables; cluster-street-types C12"
-    },
-    {
-      "face": "kinker-65-87",
-      "pands": [
-        "106015",
-        "156997"
-      ],
-      "citation": "strip.jpg 2024-11-29 pands 1-2: stepped gables"
-    }
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "kinker-1886-neo-renaissance",
+ "district": "oud-west",
+ "description": "Kinkerstraat 1886-1893 Neo-Renaissance fronts (49-53, 66-76, 65-69): brown brick banded with white speklagen (a sill course and an impost course on every storey), segmental and round-headed windows under white blocked arches, stepped or pointed gables with an attic light",
+ "fit": {
+  "widthM": [
+   4.0,
+   13.5
   ],
-  "schemaLimits": [
-    "sunburst voussoirs",
-    "multiple speklagen per storey",
-    "gable scrollwork"
-  ],
-  "notes": [
-    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 9 exemplar pands, sunlit 2024-11-29 strips)."
+  "storeys": [
+   4
   ]
+ },
+ "match": {
+  "years": [
+   1885,
+   1895
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.5,
+   16.0
+  ],
+  "stucco": false,
+  "bands": true,
+  "note": "Kinkerstraat 49-53, 66-76, 65-69 (1886-1895; 10 authored placements on kinker-142-178, 31-49, 49-63, 56-84): white speklagen read as band rows"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "bracketed",
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "blocks",
+    "keystone": true
+   },
+   "tympanum": "stone"
+  },
+  "bands": "speklagen",
+  "speklagen": {
+   "spacing": 14,
+   "courses": 2
+  }
+ },
+ "crowns": {
+  "step-gable": {
+   "gable": "step",
+   "crownSteps": 4,
+   "crownRise": 1.3,
+   "atticWindows": 1,
+   "crownFinial": true,
+   "note": "49-63 pands 1-2, 65-87 pands 1-2: tall stepped gables, top 3.5-4 m over the cornice"
+  },
+  "point-gable": {
+   "gable": "point",
+   "crownRise": 1.2,
+   "atticWindows": 1,
+   "note": "49-63 pand 4 (161889): a pointed gable"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "56-84 236441 between gables"
+  },
+  "wall-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerBody": "brick",
+   "dormerSize": {
+    "sill": 0.35,
+    "rise": 1.8,
+    "setback": 0.4
+   },
+   "note": "56-84 236441 (Kinkerstraat 62 and 60), strip 2023-01-10 at 40 px/m: one brick wall dormer over the cornice per house, about 1.9 m wide with its stone cheeks, a 2-light window, body about 2.2 m to a peaked brick top about 0.9 m high; drawn as a pointed dormer in the wall colour (the stone cheek scrolls and coping are not drawn)"
+  },
+  "stone-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerBody": "stone",
+   "note": "56-84 236325 (Kinkerstraat 66), strip 2023-01-10 at 40 px/m: one white stone dormer about 1.45 m wide over the cornice, a single light under a pointed top about 0.9 m high, the next house's step gable beside it"
+  }
+ },
+ "palettes": {
+  "brown-speklaag": {
+   "brick": "#696052",
+   "frame": "#b3b5a3",
+   "door": "black",
+   "stone": "#e2dfd2",
+   "cornice": "#7f7965",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "strip 2024-11-29 kinker-49-63 pands 1-4: between the gables only sky and the dormer over the cornice; the 3DBAG attic stood as a slate block there"
+ },
+ "rhythm": {
+  "bays": "3 window axes (2-3 per gable)",
+  "identicalBays": "storeys alternate segmental and round heads (the kit draws segmental on every storey)",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric about each gable",
+  "groundFloor": "shop per house",
+  "signage": "per house",
+  "roofline": "stepped or pointed gables over carved cornices",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "radiating white voussoirs (sunburst arches) are drawn as blocked arches (springers, two voussoirs, keystone)",
+   "white tympana are drawn on every head storey (windowHead.tympanum); on the photo the top storey's heads are glazed",
+   "speklagen are evenly spaced every 14 courses (0.77 m, the photo median); on the photo they also step around the arch springers",
+   "gable scrolls and pinnacles"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "kinker-49-63",
+   "pands": [
+    "160810",
+    "236773",
+    "164246",
+    "161889"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 1-4 (zoom): white speklagen bands, sunburst arches, stepped/pointed gables"
+  },
+  {
+   "face": "kinker-56-84",
+   "pands": [
+    "161359",
+    "236325",
+    "236441"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 3-5: banded fronts with gables; cluster-street-types C12"
+  },
+  {
+   "face": "kinker-65-87",
+   "pands": [
+    "106015",
+    "156997"
+   ],
+   "citation": "strip.jpg 2024-11-29 pands 1-2: stepped gables"
+  }
+ ],
+ "schemaLimits": [
+  "sunburst voussoirs",
+  "multiple speklagen per storey",
+  "gable scrollwork"
+ ],
+ "notes": [
+  "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 9 exemplar pands, sunlit 2024-11-29 strips)."
+ ]
 }

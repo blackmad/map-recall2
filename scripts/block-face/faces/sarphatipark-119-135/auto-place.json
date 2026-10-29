@@ -3,7 +3,7 @@
  "street": "Sarphatipark",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 6.42,
+ "seconds": 2.43,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -56,8 +56,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -96,39 +96,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.65 < 0.7 (strip wall #332926 dE 13.9 to #524845 (<= 10); strip columns 2 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.65,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 15.1 m; 3DBAG 16.71 m not compared)"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #332926 dE 13.9 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -173,37 +142,8 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.108 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.26)",
-   "likeness": {
-    "pandId": "0363100012159925",
-    "ncc": 0.108,
-    "nccRaw": 0.108,
-    "shiftM": [
-     -0.15,
-     0.1
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.14",
-     "glazing storey band off by 0.26"
-    ],
-    "wall": {
-     "photo": "#473e40",
-     "model": "#6e605c",
-     "dL": 0.135
-    },
-    "glazing": {
-     "photo": 0.47,
-     "model": 0.45
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.352
-   },
+   "reason": "run did not compile",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -242,37 +182,8 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16 mean 0.45 vs photo 0.57; wall family unresolved (#36312f is dark and neutral, brick courses not resolved): lightness and hue judged only)",
-   "likeness": {
-    "pandId": "0363100012159948",
-    "ncc": 0.14,
-    "nccRaw": 0.14,
-    "shiftM": [
-     -0.15,
-     0.1
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.16 mean 0.45 vs photo 0.57",
-     "wall family unresolved (#36312f is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#36312f",
-     "model": "#574742",
-     "dL": 0.102
-    },
-    "glazing": {
-     "photo": 0.57,
-     "model": 0.45
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.352
-   },
+   "reason": "run did not compile",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -317,37 +228,8 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.038 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.20; glazing storey band off by 0.31)",
-   "likeness": {
-    "pandId": "0363100012164031",
-    "ncc": 0.038,
-    "nccRaw": 0.038,
-    "shiftM": [
-     -0.05,
-     -0.4
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.20",
-     "glazing storey band off by 0.31"
-    ],
-    "wall": {
-     "photo": "#312826",
-     "model": "#675755",
-     "dL": 0.198
-    },
-    "glazing": {
-     "photo": 0.47,
-     "model": 0.39
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.366
-   },
+   "reason": "run did not compile",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -400,35 +282,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1888, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1888, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 14.84 m = 3 storeys of 4.95 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.28 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -472,41 +327,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1888, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1888, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 12.55 m = 3 storeys of 4.18 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 4.57 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -566,41 +388,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1888, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1888, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 17.01 m = 3 storeys of 5.67 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.88 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -655,41 +444,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1888, type 1875-1877)",
-   "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1888, type 1875-1877"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 16.24 m = 3 storeys of 5.41 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 0.1 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   }

@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "helst-39-49-r1",
+ "street": "Eerste Van der Helststraat",
+ "sources": [
+  {
+   "id": "strip-2020-01-06",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-06",
+   "image": "staging/block-face/helst-39-49-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/helst-39-49/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012158188",
+   "slug": "helst-158188",
+   "address": "Eerste Van der Helststraat 45",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#3c3835",
+      "fascia": true,
+      "name": "Müdavim",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2020-01-06 span 514-735"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3b332f",
+     "evidence": "strip 2020-01-06 span 514-735: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Müdavim",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2817558972,
+     "name": "Müdavim"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1; strip 2020-01-06 span 514-735"
+   }
+  },
+  {
+   "pandId": "0363100012152785",
+   "slug": "helst-152785",
+   "address": "Eerste Van der Helststraat 47",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#3f3c39",
+      "fascia": true,
+      "name": "Mezzave",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=deli); fascia colour measured on the strip 2020-01-06 span 734-950"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#483f3d",
+     "evidence": "strip 2020-01-06 span 734-950: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Mezzave",
+    "category": "shop=deli",
+    "osm": {
+     "type": "node",
+     "id": 2817558985,
+     "name": "Mezzave"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2020-01-06 span 734-950"
+   }
+  },
+  {
+   "pandId": "0363100012158451",
+   "slug": "helst-158451",
+   "address": "Eerste Van der Helststraat 49",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#4e4846",
+      "fascia": true,
+      "name": "BBrood",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2020-01-06 span 951-1217"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3e3633",
+     "evidence": "strip 2020-01-06 span 951-1217: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "BBrood",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 2817558996,
+     "name": "BBrood"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2020-01-06",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2020-01-06 span 951-1217"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

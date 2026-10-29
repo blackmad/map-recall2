@@ -1,0 +1,126 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "flinck-120-178-r2",
+ "street": "Govert Flinckstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/flinck-120-178-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/flinck-120-178/auto-place.json"
+ },
+ "types": [
+  "pijp-1884-bracketed-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012153714",
+   "slug": "flinck-153714",
+   "address": "Govert Flinckstraat 130",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#58463e",
+     "evidence": "strip 2023-01-03 span 2643-2884: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-03 span 2643-2884"
+   }
+  },
+  {
+   "pandId": "0363100012163530",
+   "slug": "flinck-163530",
+   "address": "Govert Flinckstraat 128",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3b312c",
+     "evidence": "strip 2023-01-03 span 2883-3124: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 1 on eaves -, stucco 1, columns 1; strip 2023-01-03 span 2883-3124"
+   }
+  },
+  {
+   "pandId": "0363100012157232",
+   "slug": "flinck-157232",
+   "address": "Govert Flinckstraat 126",
+   "type": {
+    "type": "pijp-1884-bracketed-hood",
+    "measuredPalette": {
+     "brick": "#5e4c48",
+     "evidence": "strip 2023-01-03 span 3124-3377: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1884-bracketed-hood scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2023-01-03 span 3124-3377"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012153714",
+    "stripRow": 235,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 10.69 m"
+   },
+   {
+    "pand": "0363100012163530",
+    "stripRow": 235,
+    "evidence": "auto-place: the pijp-1884-bracketed-hood cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 10.52 m"
+   },
+   {
+    "pand": "0363100012157232",
+    "stripRow": 256,
+    "evidence": "auto-place: strip skyline cornice 13.47 m within 1 m of the pijp-1884-bracketed-hood line 14 m; 3DBAG/PDOK eaves 9.95 m"
+   }
+  ]
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "jordaan-1850-cornice-house",
+ "district": "jordaan",
+ "description": "Jordaan cornice houses (lijstgevels) of the 18th-19th c. and their 1880-1910 rebuilds (Bloemgracht, Rozengracht, Westerstraat): 4.5-8 m fronts of red-brown brick, a ground storey and two to four upper storeys of about 2.8 m; three axes (two under 4.6 m, four over 7.6 m) of white T-windows with white sills; a plain white cornice, sometimes one small dormer over the middle",
+ "fit": {
+  "widthM": [
+   3.8,
+   8.2
+  ],
+  "storeys": [
+   3,
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1650,
+   1910
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   8.5,
+   16.5
+  ],
+  "stucco": false,
+  "crownMatch": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.6,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 7.6,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   },
+   "dormer": {
+    "riseM": [
+     0.6,
+     2.2
+    ],
+    "topWidthM": [
+     0.4,
+     3.0
+    ]
+   }
+  },
+  "note": "Bloemgracht 80-128 and 138-300 (2024-12 strips): cornices at 10.7, 13.5 and 14.5 m over three to five storeys; a front whose skyline reads a tall crown is the gable house's (crownMatch)",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.6,
+   2.9,
+   2.8,
+   2.7
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.58,
+   0.66,
+   0.66,
+   0.62
+  ],
+  "headLines": [
+   0.82,
+   0.86,
+   0.84,
+   0.82
+  ],
+  "windowShare": 0.52,
+  "cornice": "simple"
+ },
+ "crowns": {
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only (Bloemgracht 138-300, 174824)"
+  },
+  "dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.3,
+    "setback": 0.35
+   },
+   "note": "Bloemgracht 80-128 (169914): one small white dormer over the middle"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis; a pand whose door reads on the right is mirrored (mirrorForDoor), so a two-axis front keeps a valid door bay"
+  }
+ },
+ "palettes": {
+  "red-brown-jordaan": {
+   "brick": "#7a5444",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "tile"
+ },
+ "rhythm": {
+  "bays": "3 axes (2 under 4.6 m, 4 over 7.6 m)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + windows | upper: 2-4",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and windows, or a shop",
+  "signage": "per shop",
+  "roofline": "a plain white cornice, sometimes one dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the 18th c. cornice ornament (Louis XIV/XV) is drawn as a plain cornice"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "bloemgracht-80-128",
+   "pands": [
+    "169914",
+    "168078"
+   ],
+   "citation": "strip.jpg 2024-12 at 0.42x with a metre grid: ground to 3.6 m; storeys of 2.8-2.9 m; cornices at 14.5 m (with a dormer to 16 m) and 10.7 m"
+  },
+  {
+   "face": "bloemgracht-138-300",
+   "pands": [
+    "174824",
+    "174837"
+   ],
+   "citation": "strip.jpg 2024-12: cornice 13.5 m over a ground and four storeys"
+  }
+ ]
+}

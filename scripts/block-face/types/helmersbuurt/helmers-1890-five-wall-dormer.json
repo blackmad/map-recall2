@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1890-five-wall-dormer",
+ "district": "helmersbuurt",
+ "description": "Helmersbuurt 1887-1892 (Tweede Helmersstraat 79-97, Eerste Helmersstraat 1-27, Bosboom Toussaintstraat): 5.4-6.6 m red-brown brick fronts of a ground storey and four upper storeys under a cream cornice at about 15.2 m; three axes of white T-windows under segmental heads with a white keystone and white sills; a wrought-iron balconette on the centre axis of storeys 1-2; a square brick wall dormer with one light over the centre axis rising to about 18.5 m",
+ "fit": {
+  "widthM": [
+   5.4,
+   6.6
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "storeyHeights": [
+   3.6,
+   3.1,
+   3.0,
+   2.6,
+   2.35
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "none",
+    "keystone": true
+   }
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.6,
+   0.68,
+   0.72,
+   0.65,
+   0.55
+  ],
+  "headLines": [
+   0.85,
+   0.81,
+   0.92,
+   0.88,
+   0.85
+  ],
+  "cornice": "heavy",
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "wall-dormer": {
+   "gable": "cornice",
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 1
+    },
+    "rise": 0.9,
+    "cap": "flat",
+    "lights": "per-axis",
+    "lightSill": 0.08,
+    "lightRise": 0.45
+   },
+   "note": "Tweede Helmersstraat 79-97: a square brick wall dormer over the centre axis, 15.3-18.7 m, one light, flat cap"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "red-brown-1890": {
+   "brick": "#7a5040",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#eeeae0",
+   "cornice": "#e3d5af",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: door + 2 windows | 1-4: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and two windows over a low souterrain",
+  "signage": "none",
+  "roofline": "cream cornice at 15.2 m, a brick wall dormer over the centre axis",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the souterrain windows under the ground storey are not drawn"
+  ]
+ },
+ "match": {
+  "years": [
+   1887,
+   1892
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 15.2,
+  "frontSkylineM": 18.5,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Tweede Helmersstraat 79-97 (1889), Eerste Helmersstraat 1-27 (1891): cornice 14.6-15.3 m on the strips; the skyline reads the brick wall dormer at 17.5-19 m (frontSkylineM)"
+ },
+ "evidence": [
+  {
+   "face": "helmers-79-97",
+   "pands": [
+    "152281",
+    "156928"
+   ],
+   "citation": "strip.jpg at 0.6x with a metre grid: ground to 3.7 m; window rows 4.0-6.1, 7.4-9.7, 10.3-12.0, 13.0-14.3 m; balconettes at 8.0 m; cornice 14.6-15.3 m; wall dormer to 18.7 m"
+  },
+  {
+   "face": "helmers-1-27",
+   "pands": [
+    "163100"
+   ],
+   "citation": "strip.jpg: the same five rows and wall dormer, cornice 15.2 m"
+  }
+ ]
+}

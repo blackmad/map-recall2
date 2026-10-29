@@ -3,7 +3,7 @@
  "street": "Eerste Sweelinckstraat",
  "library": "de-pijp",
  "stripDate": "2023-01-03",
- "seconds": 1.27,
+ "seconds": 1.24,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -252,23 +252,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.55 < 0.7 (strip wall #282f37 dE 16.2 to #524845 (<= 10); strip columns 7 vs 3 bays)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.57 < 0.7 (strip columns 7 vs 3 bays)",
    "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.55,
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.57,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 15.1 m; 3DBAG 14.13 m not compared)"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #282f37 dE 16.2 to #524845 (<= 10)"
+      "note": "strip cornice unread (type line 14 m; 3DBAG 14.13 m not compared)"
      },
      {
       "key": "stucco",
@@ -338,39 +332,8 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.27 < 0.7 (strip cornice 16.65 m vs the type's 15.1 m; strip wall #b1ada6 dE 39.5 to #524845 (<= 10); strip columns 7 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.27,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 16.65 m vs the type's 15.1 m"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0,
-      "note": "strip wall #b1ada6 dE 39.5 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.02 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 7 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }

@@ -1,0 +1,1269 @@
+{
+ "face": "ceintuurbaan-157-191",
+ "street": "Ceintuurbaan",
+ "library": "de-pijp",
+ "stripDate": "2022-03-23",
+ "seconds": 6.78,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236440",
+   "address": "Ceintuurbaan 157A",
+   "builtYear": 1888,
+   "widthM": 17.12,
+   "eavesM": 16.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9e49d",
+    "wallRaw": "#f9db95",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.05,
+      "riseM": 0.8,
+      "topWidthM": 4.9,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.17 m at 0.07 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.17,
+       "centre": 0.07,
+       "light": 0
+      },
+      {
+       "widthM": 2.9,
+       "centre": 0.91,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1888, type 1875-1877; frontage 17.12 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1888, type 1875-1877",
+     "frontage 17.12 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.49 m = 3 storeys of 5.5 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163961",
+   "address": "Ceintuurbaan 159",
+   "builtYear": 1888,
+   "widthM": 6.16,
+   "eavesM": 13.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#efb77f",
+    "wallRaw": "#e4bc87",
+    "skyline": {
+     "eavesM": 21.82,
+     "eavesRow": 53,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 1.32,
+      "topWidthM": 0.47,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.125,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.97,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.12 (light 0.09): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.12,
+       "light": 0.09
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.42,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 1,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 21.82 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 21.82 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164626",
+   "address": "Ceintuurbaan 161",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f6b679",
+    "wallRaw": "#eebc80",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 257,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 3.75,
+      "riseM": 6.42,
+      "topWidthM": 0.9,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.159,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.78 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.78,
+       "light": 0.4
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 16.73 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.73 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.059 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161742",
+   "address": "Ceintuurbaan 163",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e6a46d",
+    "wallRaw": "#e2ae77",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 253,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.63,
+      "riseM": 6.32,
+      "topWidthM": 0.33,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.07 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.07,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.43,
+       "light": 0.33
+      },
+      {
+       "widthM": 1,
+       "centre": 0.8,
+       "light": 0.17
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 16.82 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.82 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166175",
+   "address": "Ceintuurbaan 165",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f754e",
+    "wallRaw": "#cfa873",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 926,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.087,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.45 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.45,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160287",
+   "address": "Ceintuurbaan 167",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cc9b69",
+    "wallRaw": "#c8a174",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 261,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 6.52,
+      "topWidthM": 0.1,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.47 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.47,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 16.63 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.63 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.062 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158646",
+   "address": "Ceintuurbaan 169",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61513e",
+    "wallRaw": "#d5aa79",
+    "skyline": {
+     "eavesM": 17.1,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 3.32,
+      "topWidthM": 0.42,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.1 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.1,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.45,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.47 < 0.7 (strip cornice 17.1 m vs the type's 15.2 m (wall-dormer skyline 18.2 m); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.1 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163561",
+   "address": "Ceintuurbaan 171",
+   "builtYear": 1890,
+   "widthM": 6.04,
+   "eavesM": 16.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cd9d68",
+    "wallRaw": "#e0b67e",
+    "skyline": {
+     "eavesM": 21.18,
+     "eavesRow": 79,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.97,
+      "topWidthM": 0.63,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.48 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.48,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163475",
+   "address": "Ceintuurbaan 173",
+   "builtYear": 1889,
+   "widthM": 6.39,
+   "eavesM": 17.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ebc388",
+    "wallRaw": "#dcbd86",
+    "skyline": {
+     "eavesM": 19.6,
+     "eavesRow": 142,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.95,
+      "riseM": 3.55,
+      "topWidthM": 0.03,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.183,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 19.6 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.6 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.134 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159758",
+   "address": "Ceintuurbaan 175",
+   "builtYear": 1889,
+   "widthM": 4.23,
+   "eavesM": 16.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f7dd9c",
+    "wallRaw": "#e8c68c",
+    "skyline": {
+     "eavesM": 16.9,
+     "eavesRow": 250,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 6.2,
+      "topWidthM": 0.4,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.106,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.08 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.08,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.5 < 0.7 (strip cornice 16.9 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.9 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.072 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163860",
+   "address": "Ceintuurbaan 177",
+   "builtYear": 1889,
+   "widthM": 6.42,
+   "eavesM": 16.82,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.21,
+    "toM": 6.16,
+    "depthM": 0.82,
+    "centre": 0.808
+   },
+   "strip": {
+    "wall": "#917e5b",
+    "wallRaw": "#e6c487",
+    "skyline": {
+     "eavesM": 19.88,
+     "eavesRow": 131,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 3.27,
+      "topWidthM": 1,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.148,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.08 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.08,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.44,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.57,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 19.88 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.88 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165605",
+   "address": "Ceintuurbaan 179",
+   "builtYear": 1889,
+   "widthM": 6.11,
+   "eavesM": 17.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0c887",
+    "wallRaw": "#e4c287",
+    "skyline": {
+     "eavesM": 17.27,
+     "eavesRow": 235,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 5.88,
+      "topWidthM": 0.47,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.18; glazing storey band off by 0.38 mean 0.43 vs photo 0.56)",
+   "likeness": {
+    "pandId": "0363100012165605",
+    "ncc": 0.109,
+    "nccRaw": 0.109,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.58,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.18",
+     "glazing storey band off by 0.38 mean 0.43 vs photo 0.56"
+    ],
+    "wall": {
+     "photo": "#f6e09a",
+     "model": "#cca566",
+     "dL": -0.184
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.396
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159693",
+   "address": "Ceintuurbaan 181",
+   "builtYear": 1889,
+   "widthM": 6.11,
+   "eavesM": 15.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f7dfa3",
+    "wallRaw": "#ecd39b",
+    "skyline": {
+     "eavesM": 17.23,
+     "eavesRow": 237,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 5.92,
+      "topWidthM": 0.33,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.133,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.46 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.46,
+       "light": 0.11
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012159693",
+    "ncc": 0.178,
+    "nccRaw": 0.178,
+    "shiftM": [
+     -0.1,
+     -0.05
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.44 mean 0.46 vs photo 0.00"
+    ],
+    "wall": {
+     "photo": "#97856a",
+     "model": "#ccaf66",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156001",
+   "address": "Ceintuurbaan 183",
+   "builtYear": 1889,
+   "widthM": 6.55,
+   "eavesM": 15.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c3a374",
+    "wallRaw": "#dcbd88",
+    "skyline": {
+     "eavesM": 21.1,
+     "eavesRow": 82,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 1.77,
+      "topWidthM": 0.23,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.4 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.4,
+       "light": 0.05
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.4,
+       "widthM": 1.02,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 21.1 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 21.1 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.116 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160842",
+   "address": "Ceintuurbaan 185",
+   "builtYear": 1890,
+   "widthM": 5.67,
+   "eavesM": 16.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ecb177",
+    "wallRaw": "#eac487",
+    "skyline": {
+     "eavesM": 21.57,
+     "eavesRow": 63,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.57,
+      "topWidthM": 0.25,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.117,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.28,
+       "widthM": 0.82,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012077688",
+   "address": "Ceintuurbaan 187",
+   "builtYear": 1890,
+   "widthM": 6.11,
+   "eavesM": 16.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71634c",
+    "wallRaw": "#cda378",
+    "skyline": {
+     "eavesM": 19.85,
+     "eavesRow": 132,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 3.3,
+      "topWidthM": 1.15,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 19.85 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.85 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163696",
+   "address": "Ceintuurbaan 189",
+   "builtYear": 1890,
+   "widthM": 6.11,
+   "eavesM": 16.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bf9561",
+    "wallRaw": "#a9905e",
+    "skyline": {
+     "eavesM": 22.27,
+     "eavesRow": 35,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 0.88,
+      "topWidthM": 0.42,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.57 < 0.7 (strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.2 m; 3DBAG 16.37 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

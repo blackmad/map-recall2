@@ -1,0 +1,171 @@
+{
+ "face": "sarphatipark-18-20",
+ "street": "Sarphatipark",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 0.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012164046",
+   "address": "Sarphatipark 20",
+   "builtYear": 1890,
+   "widthM": 5.93,
+   "eavesM": 14.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#352e2c",
+    "wallRaw": "#3f3734",
+    "skyline": {
+     "eavesM": 16.88,
+     "eavesRow": 86,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 2.1,
+      "topWidthM": 0.5,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.55,
+       "widthM": 0.8,
+       "centre": 0.43
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1,
+       "centre": 0.55
+      },
+      {
+       "atM": 5,
+       "widthM": 0.97,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.47 < 0.7 (strip cornice 16.88 m vs the type's 15.2 m (wall-dormer skyline 18.2 m); strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.88 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163810",
+   "address": "Sarphatipark 18",
+   "builtYear": 1890,
+   "widthM": 5.43,
+   "eavesM": 14.36,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 5.34,
+    "depthM": 0.31,
+    "centre": 0.492,
+    "lineRD": [
+     [
+      121392.179625,
+      485237.49625
+     ],
+     [
+      121391.288625,
+      485239.65525
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4c413c",
+    "wallRaw": "#413c39",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 74,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.65,
+      "topWidthM": 0.53,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.82,
+       "widthM": 0.82,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

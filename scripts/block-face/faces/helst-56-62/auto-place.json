@@ -1,0 +1,484 @@
+{
+ "face": "helst-56-62",
+ "street": "Eerste Van der Helststraat",
+ "library": "de-pijp",
+ "stripDate": "2020-01-06",
+ "seconds": 10.87,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "helst-56-62-r1",
+   "pands": [
+    "0363100012165647",
+    "0363100012164105"
+   ],
+   "passed": true,
+   "triangles": 4495
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012165647",
+   "address": "Eerste Van der Helststraat 62A",
+   "builtYear": 1883,
+   "widthM": 5.89,
+   "eavesM": 13.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#382e29",
+    "wallRaw": "#453b38",
+    "skyline": {
+     "eavesM": 14.1,
+     "eavesRow": 191,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 4.08,
+      "topWidthM": 0.13,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.8,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 0.95,
+       "centre": 0.16
+      },
+      {
+       "atM": 5.3,
+       "widthM": 0.95,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#372e2a",
+      "fascia": true,
+      "name": "Eggs Benaddicted",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=restaurant); fascia colour measured on the strip 2020-01-06 span 0-235"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#382e29",
+     "evidence": "strip 2020-01-06 span 0-235: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.614 vs 0.233), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.465 vs 0.233), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.392 vs 0.233), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.614 vs 0.234), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.465 vs 0.234), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.392 vs 0.234), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012165647",
+    "ncc": 0.234,
+    "nccRaw": 0.234,
+    "shiftM": [
+     -0.05,
+     -0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38 mean 0.48 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#3f3531",
+     "model": "#584941",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.272
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.465,
+    "pijp-1882-keystone-lintel": 0.392,
+    "pijp-1885-segmental-keystone": 0.614
+   }
+  },
+  {
+   "pandId": "0363100012164105",
+   "address": "Eerste Van der Helststraat 62",
+   "builtYear": 1883,
+   "widthM": 5.36,
+   "eavesM": 13.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372e2b",
+    "wallRaw": "#433c39",
+    "skyline": {
+     "eavesM": 13.97,
+     "eavesRow": 196,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 4.9,
+      "topWidthM": 0.72,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.82,
+       "widthM": 1.3,
+       "centre": 0.47
+      },
+      {
+       "atM": 5.97,
+       "widthM": 1.15,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#494643",
+      "fascia": true,
+      "name": "Eland & Vanderhelst",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, winkelfunctie, shop=clothes); fascia colour measured on the strip 2020-01-06 span 237-452"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#372e2b",
+     "evidence": "strip 2020-01-06 span 237-452: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1885-segmental-keystone (0.599 vs 0.189), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.468 vs 0.189), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.599 vs 0.192), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.468 vs 0.192), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012164105",
+    "ncc": 0.192,
+    "nccRaw": 0.192,
+    "shiftM": [
+     0.05,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.48 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#3e3330",
+     "model": "#564843",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.327
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.468,
+    "pijp-1882-keystone-lintel": 0.121,
+    "pijp-1885-segmental-keystone": 0.599
+   }
+  },
+  {
+   "pandId": "0363100012163996",
+   "address": "Eerste Van der Helststraat 60",
+   "builtYear": 1883,
+   "widthM": 5.32,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b302c",
+    "wallRaw": "#4d4844",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 188,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 4.7,
+      "topWidthM": 0.63,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.21 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.21,
+       "light": 0.39
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.53,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.85,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12,
+       "widthM": 1.2,
+       "centre": 0.19
+      },
+      {
+       "atM": 9,
+       "widthM": 1.2,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.18,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.148 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24; wall family unresolved (#3a302c is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012163996",
+    "ncc": 0.148,
+    "nccRaw": 0.148,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24",
+     "wall family unresolved (#3a302c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#3a302c",
+     "model": "#584842",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.486
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.367,
+    "pijp-1882-keystone-lintel": 0.229,
+    "pijp-1885-segmental-keystone": 0.589
+   }
+  },
+  {
+   "pandId": "0363100012237218",
+   "address": "Eerste Van der Helststraat 56A",
+   "builtYear": 1883,
+   "widthM": 12.44,
+   "eavesM": 14.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423835",
+    "wallRaw": "#49403d",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 174,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 4.35,
+      "topWidthM": 0.07,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.22,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.06 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.06,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 0.9,
+       "centre": 0.32
+      },
+      {
+       "atM": 9,
+       "widthM": 0.82,
+       "centre": 0.04
+      },
+      {
+       "atM": 6.07,
+       "widthM": 0.9,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877; frontage 12.44 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1883, type 1875-1877",
+     "frontage 12.44 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.16 m = 3 storeys of 4.72 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

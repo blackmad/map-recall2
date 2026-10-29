@@ -1,0 +1,168 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1889-five-storey-banded",
+ "district": "de-pijp",
+ "description": "Sarphatiparkbuurt 1886-1891 (Tweede Jan van der Heijdenstraat, Eerste Jan Steenstraat, Sarphatipark, Govert Flinckstraat): 5-6.6 m fronts of a ground storey and four upper storeys of dark red-brown brick under a white cornice at about 15.2 m; three axes of white T-windows with flat heads; white painted bands across the front at the sill and head lines of every upper storey; one white pediment dormer with a finial and hoist beam over the middle axis",
+ "fit": {
+  "widthM": [
+   4.6,
+   6.8
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1886,
+   1891
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 15.2,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Eerste Jan Steenstraat 91-149 (1889-90), Tweede Jan van der Heijdenstraat 2-40 (1887), Sarphatipark 99-117 (1887): cornice 14.9-15.4 m on the 2022-2023 strips; 3DBAG 5 bouwlagen, eaves 14.8-17.2 m (dormers, mansard); the strip skyline reads the dormer top and hoist beam at 17.7-18.7 m (frontSkylineM); the white sill/head bands are a criterion (bands): Eerste Sweelinckstraat 11, a plain three-storey front, took this type without it",
+  "frontSkylineM": 18.2,
+  "bands": true
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "storeyHeights": [
+   3.8,
+   3.0,
+   3.0,
+   2.8,
+   2.6
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.62,
+   0.72,
+   0.72,
+   0.72,
+   0.62
+  ],
+  "headLines": [
+   0.8,
+   0.88,
+   0.86,
+   0.86,
+   0.78
+  ],
+  "windowShare": 0.6,
+  "cornice": "simple",
+  "bands": "painted",
+  "bandLines": [
+   "sill",
+   "head"
+  ],
+  "bandHeights": {
+   "sill": 0.08,
+   "head": 0.1
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.15,
+    "rise": 1.4,
+    "setback": 0.3
+   },
+   "dormerHoist": {
+    "reach": 0.8
+   },
+   "note": "Eerste Jan Steenstraat 91-149: one white dormer about 1.3 m wide over the middle axis, 15.3-16.8 m, pediment with a finial and a hoist beam"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "dark-red-brown-1889": {
+   "brick": "#5e4038",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#e6e2d8",
+   "cornice": "#e6e2d8",
+   "band": "#4a2e26",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: door + window or shop | 1-4: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house doors and a window, or a shop",
+  "signage": "per shop",
+  "roofline": "white cornice at 15.2 m, one pediment dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the dormer finial is not drawn",
+   "cast-iron balconettes on some fronts (Tweede Jan van der Heijdenstraat 2-40) are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "steen-91-149",
+   "pands": [
+    "236199",
+    "161992"
+   ],
+   "citation": "strip.jpg 2023-01-03 at 0.6x with a metre grid: ground to 3.9 m; window rows 4.4-6.4, 7.3-9.3, 10.2-12.1, 13.0-14.4 m; white bands at the sills and heads; cornice 14.9-15.3 m; dormer 15.3-16.8 m"
+  },
+  {
+   "face": "heijden-2-40",
+   "pands": [
+    "158445",
+    "236650"
+   ],
+   "citation": "strip.jpg 2023-01-03: the same rows, cornice 15.2 m"
+  },
+  {
+   "face": "sarphatipark-99-117",
+   "pands": [
+    "157222"
+   ],
+   "citation": "strip.jpg 2023-01-03: the same rows, cornice 15.3 m, dormer to 17.0 m"
+  }
+ ]
+}

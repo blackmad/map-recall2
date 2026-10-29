@@ -1,0 +1,73 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:35:20.426Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236246",
+   "addresses": [
+    "Govert Flinckstraat 147"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236018",
+   "addresses": [
+    "Govert Flinckstraat 147A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 62B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000548794"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817613075,
+     "lngLat": [
+      4.8931473,
+      52.3551021
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62B",
+      "addr:postcode": "1072NX",
+      "addr:street": "Eerste Van der Helststraat",
+      "alt_name": "Burger Bar",
+      "amenity": "fast_food",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-01-21",
+      "contact:facebook": "BurgerBarNL",
+      "contact:instagram": "burgerbarnl",
+      "cuisine": "burger",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "name": "Burgerbar",
+      "opening_hours": "Su-Th 11:00-01:00; Fr-Sa 11:00-03:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 370 4956",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.burgerbar.nl/burgerbar-best-burger-location-1e-v-d-helststraat-amsterdam-the-pijp/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T20:35:20.426Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
