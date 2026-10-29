@@ -1,0 +1,153 @@
+{
+  "schema": "landmark-triage-selftest/v1",
+  "date": "2026-10-29",
+  "command": "node --import tsx scripts/landmarks/triage.ts --limit=0",
+  "note": "Fixed batch: a triage run over these pands must return these verdicts and the same judgeable street walls; a factory run over them is the skill self-test.",
+  "pands": [
+    {
+      "pand": "0363100012066028",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:ribbon",
+          "w02:punched",
+          "w03:punched",
+          "w04:punched",
+          "w05:punched",
+          "w12:null"
+        ]
+      },
+      "heightM": 22.5,
+      "builtYear": 1980
+    },
+    {
+      "pand": "0363100012076454",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w02:punched",
+          "w03:punched",
+          "w05:punched",
+          "w12:punched"
+        ]
+      },
+      "heightM": 11.2,
+      "builtYear": 1981
+    },
+    {
+      "pand": "0363100012138843",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:punched",
+          "w02:punched",
+          "w03:punched",
+          "w04:columns",
+          "w05:punched",
+          "w06:punched"
+        ]
+      },
+      "heightM": 19.2,
+      "builtYear": 2007
+    },
+    {
+      "pand": "0363100012119827",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w02:punched",
+          "w03:punched",
+          "w05:punched"
+        ]
+      },
+      "heightM": 9.2,
+      "builtYear": 1979
+    },
+    {
+      "pand": "0363100012248597",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w02:punched",
+          "w08:punched",
+          "w09:punched",
+          "w10:punched"
+        ]
+      },
+      "heightM": 25.6,
+      "builtYear": 2019
+    },
+    {
+      "pand": "0363100012069991",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:punched",
+          "w05:punched"
+        ]
+      },
+      "heightM": 19.8,
+      "builtYear": 2005
+    },
+    {
+      "pand": "0363100012246848",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:punched",
+          "w04:punched"
+        ]
+      },
+      "heightM": 14.1,
+      "builtYear": 2019
+    },
+    {
+      "pand": "0363100012241220",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:punched",
+          "w02:punched",
+          "w03:punched",
+          "w04:punched"
+        ]
+      },
+      "heightM": 15.2,
+      "builtYear": 2015
+    },
+    {
+      "pand": "0363100012117498",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w02:punched",
+          "w03:punched"
+        ]
+      },
+      "heightM": 11.1,
+      "builtYear": 1932
+    },
+    {
+      "pand": "0363100012111806",
+      "name": null,
+      "expected": {
+        "verdict": "buildable",
+        "judgeableStreetWalls": [
+          "w01:punched",
+          "w04:punched"
+        ]
+      },
+      "heightM": 11.5,
+      "builtYear": 1953
+    }
+  ]
+}

@@ -1,0 +1,5615 @@
+{
+ "date": "2026-10-29",
+ "counts": {
+  "buildable": 32,
+  "kit-gap": 117,
+  "no-evidence": 140,
+  "not-in-tiles": 21,
+  "covered": 8,
+  "bespoke": 18
+ },
+ "gaps": {
+  "tower": 95,
+  "curtain": 19,
+  "blank-front": 8
+ },
+ "validation": [
+  {
+   "pand": "0363100012080943",
+   "name": "Politiebureau West Overtoomsesluis",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Bos en Lommerplantsoen, 18 m): foliage 27 % > 25 %",
+    "w08 (Bos en Lommerplantsoen, 16 m): obliquity 45 deg > 45",
+    "w10 (Bos en Lommerplein, 12 m): washed out 47 % > 30 %"
+   ],
+   "recordedNote": "footprint-vs-bag gate red; hand-authored intent, not a factory draft: leave to its own lane"
+  },
+  {
+   "pand": "0363100012135359",
+   "name": "OBA Buitenveldert",
+   "from": "factory",
+   "recorded": "no-evidence",
+   "predicted": "buildable",
+   "ok": false,
+   "reasons": [
+    "w04 (15 m, short) reads curtain: noted, not a gap",
+    "3 judgeable street walls: w02 punched, w04 curtain, w05 ribbon"
+   ],
+   "recordedNote": "walls[3] crop is tree-occluded, walls[4] crop is sun glare over parked cars; other groups no photo"
+  },
+  {
+   "pand": "0363100012121137",
+   "name": "OBA Geuzenveld",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 39.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "45 m tower photographed only on an 8.7 m north slice (dark brick, staggered paired windows); the south crop shows an orange balconied tower in front whose pand is unresolved"
+  },
+  {
+   "pand": "0363100012070481",
+   "name": "OBA IJburg",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "w04 (Erich Salomonstraat, 57 m) reads curtain"
+   ],
+   "recordedNote": "loggia fronts walls[2,3] read right (walls[2] PASS), but walls[1] is an 80 m x 18.6 m NW front with no photo drawn blank (budget); needs a crop"
+  },
+  {
+   "pand": "0363100012098534",
+   "name": "OBA Molenwijk",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "w02 (Stellingweg, 25 m) reads curtain"
+   ],
+   "recordedNote": "re-measured; walls[0] still reads the sign band over a painted-black front (paint over brick not expressible), walls[1] curtain wall still a brick grid"
+  },
+  {
+   "pand": "0363100012085435",
+   "name": "OBA Osdorp",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Osdorpplein, 17 m): washed out 32 % > 30 %",
+    "w08 (Meer en Vaart, 8 m): foliage 67 % > 25 %"
+   ],
+   "recordedNote": "Meervaart/library complex: horizontal metal cladding on the upper box, beige panels, dark painted volumes; model all beige brick grid"
+  },
+  {
+   "pand": "0363100012248844",
+   "name": "OBA Postjesweg",
+   "from": "factory",
+   "recorded": "no-evidence",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 39.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "crops for the main fronts predate construction (2018 vs 2019); walls[7] 2024 crop is a narrow slice"
+  },
+  {
+   "pand": "0363100012073560",
+   "name": "OBA Reigersbos",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "w04 (Reigersbos, 24 m) reads curtain"
+   ],
+   "recordedNote": "gate eaves-vs-3dbag walls[3]; glass-block stair tower walls[4] not expressible"
+  },
+  {
+   "pand": "0363100012241007",
+   "name": "OBA Slotermeer",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "w03 (Slotermeerlaan, 38 m) reads curtain"
+   ],
+   "recordedNote": "dark brick and glazed plinth right on walls[0,1]; the S (panel 11) and W (panel 7) faces have no photo and fail eaves-vs-3dbag as window groups, so they draw as 25 m blank brick"
+  },
+  {
+   "pand": "0363100012253671",
+   "name": "Stadsloket Nieuw-West",
+   "from": "factory",
+   "recorded": "no-evidence",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "0 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Osdorpplein, 53 m): crop 2022 predates the 2022 building",
+    "w03 (Osdorpplein, 53 m): crop 2022 predates the 2022 building",
+    "w04 (Osdorpplein, 43 m): camera 5.7 m < 8 m from a 43 m wall; crop 2022 predates the 2022 building"
+   ],
+   "recordedNote": "crops predate the 2022 building (site huts, the old block)"
+  },
+  {
+   "pand": "0363100012080098",
+   "name": "Metis Montessori Lyceum",
+   "from": "factory",
+   "recorded": "pass",
+   "predicted": "no-evidence",
+   "ok": false,
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Derde Oosterparkstraat, 22 m): obliquity 53 deg > 45"
+   ],
+   "recordedNote": "brown-grey brick, 10 wide blue-framed windows per storey, canopy entrance; schoolyard wall added from w02-247L; SE wall blank as photographed (vents)"
+  },
+  {
+   "pand": "0363100012080630",
+   "name": "Montessori Lyceum Oostpoort",
+   "from": "factory",
+   "recorded": "pass",
+   "predicted": "covered",
+   "ok": true,
+   "reasons": [
+    "already drawn by ordinary-0363100012080630"
+   ],
+   "recordedNote": "purple-brown brick, two storeys of square sashes under a frieze of small paired attic windows, red tile hipped roof; south walls blank (no crop); tall stair window not drawn"
+  },
+  {
+   "pand": "0363100012253721",
+   "name": "Spinoza20first",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Bijdorpstraat, 77 m): washed out 46 % > 30 %",
+    "w04 (H.J.E. Wenckebachweg, 34 m): foliage 47 % > 25 %; obliquity 47 deg > 45; crop 2017 predates the 2022 building",
+    "w07 (Bijdorpstraat, 19 m): washed out 32 % > 30 %"
+   ],
+   "recordedNote": "white panel facade with dark glass bays drawn as grey brick grid; gate eaves-vs-3dbag walls[2]; bogus measured row split removed"
+  },
+  {
+   "pand": "0363100012243823",
+   "name": "0363100012243823",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "4 of 10 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Volewijkshof, 59 m): washed out 31 % > 30 %",
+    "w04 (Johan van Hasseltweg, 39 m): usable 29 % < 40 %",
+    "w06 (Wingerdweg, 37 m): washed out 74 % > 30 %"
+   ],
+   "recordedNote": "gate footprint-vs-bag; walls[6] measured paired windows (windowGroup) but crop too small to confirm"
+  },
+  {
+   "pand": "0363100012087570",
+   "name": "0363100012087570",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "1 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Kramatweg, 67 m): foliage 26 % > 25 %; washed out 38 % > 30 %",
+    "w02 (Kramatweg, 64 m): washed out 53 % > 30 %",
+    "w05 (Kramatplantsoen, 25 m): washed out 45 % > 30 %"
+   ],
+   "recordedNote": "the walls[1] crop shows only the lower three of seven storeys (ribbon windows between pilasters); the rest cannot be judged"
+  },
+  {
+   "pand": "0363100012111954",
+   "name": "0363100012111954",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "w09 (14 m, short) reads curtain: noted, not a gap",
+    "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Jan van Galenstraat, 16 m): foliage 50 % > 25 %"
+   ],
+   "recordedNote": "low grey/black hall; unphotographed walls carry the inherited grid; walls[0,2] fail columns and glazing"
+  },
+  {
+   "pand": "0363100012165488",
+   "name": "0363100012165488",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1912 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "wall reads beige-brown vs dark sandstone photo; 2 vs 3 windows per bay (3 per bay over budget); balustrades missing"
+  },
+  {
+   "pand": "0363100012165427",
+   "name": "0363100012165427",
+   "from": "factory",
+   "recorded": "pass",
+   "predicted": "covered",
+   "ok": true,
+   "reasons": [
+    "already drawn by ordinary-0363100012165427"
+   ],
+   "recordedNote": "canal front reads right: dark brick, 12 bays, row of four fronts with the tall left house arched on top, red-brown frames; courtyard walls blank (no photo); dormers and oculus not drawn"
+  },
+  {
+   "pand": "0363100012186290",
+   "name": "0363100012186290",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1899 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "walls[0] split into its two houses with bands; but walls[1] (Amstelstraat, Eden Hotel) has no photo and draws a large red block; tile panels between storeys not drawn"
+  },
+  {
+   "pand": "0363100012137448",
+   "name": "0363100012137448",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1872 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "gates fail: eaves-vs-3dbag walls[0].houses[6] and [9], openings-within-walls"
+  },
+  {
+   "pand": "0363100012236656",
+   "name": "0363100012236656",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1890 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "1980s school: full-height brick piers with an arched (scalloped) parapet over round-headed top windows; walls[2] mostly blank with one window block; six groups no photo"
+  },
+  {
+   "pand": "0363100012165746",
+   "name": "0363100012165746",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1893 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "brick now darker (#57291f) but still reads red after tint; one arch over several bays (Beurspassage) and the offset bay grid missing; large blank flank"
+  },
+  {
+   "pand": "0363100012165051",
+   "name": "0363100012165051",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ],
+   "recordedNote": "every group NO EVIDENCE (obliquity > 45 deg); crops disagree on the brick (sunlit orange-red vs overcast dark brown); surrounds added but read thin"
+  },
+  {
+   "pand": "0363100012233585",
+   "name": "0363100012233585",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1898 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "giant-order warehouse bays right on walls[1,7] and now walls[0]; the tower and the right wing of the east front stay plain draft grids, and walls[3] is a low strip; budget 16k"
+  },
+  {
+   "pand": "0363100012083604",
+   "name": "0363100012083604",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "modern industrial shed (BAG year wrong); metal cladding not expressible"
+  },
+  {
+   "pand": "0363100012169282",
+   "name": "0363100012169282",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1840 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "gate footprint-vs-bag; sawtooth roof not expressible"
+  },
+  {
+   "pand": "0363100012138900",
+   "name": "0363100012138900",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "gate open-edges; blue-glass stair stripes and white frame not expressible"
+  },
+  {
+   "pand": "0363100012083151",
+   "name": "0363100012083151",
+   "from": "factory",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "horizontal metal cladding on a hall not expressible; blue tone guessed"
+  },
+  {
+   "pand": "0363100012240015",
+   "name": "akzonobel-240015",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 41.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012240149",
+   "name": "akzonobel-tower-240149",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 42.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012148632",
+   "name": "apollo-148632",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012080492",
+   "name": "atlanta-080492",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 35.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012169565",
+   "name": "barlaeus-gymnasium-169565",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "bespoke",
+   "ok": true,
+   "reasons": [
+    "built 1885 (< 1915): ornamented historic front"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012251533",
+   "name": "de-valerius-251533",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "0 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Lassusstraat, 69 m): foliage 38 % > 25 %; crop 2020 predates the 2023 building",
+    "w02 (Valeriusstraat, 42 m): washed out 74 % > 30 %; crop 2019 predates the 2023 building",
+    "w04 (Valeriusstraat, 31 m): crop 2022 predates the 2023 building"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012125840",
+   "name": "forum-125840",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "w04 (Fred. Roeskestraat, 22 m) reads curtain",
+    "w05 (Fred. Roeskestraat, 16 m) reads blank"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012153698",
+   "name": "gebouw-parnas-153698",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Majoie Hajarystraat, 62 m): washed out 53 % > 30 %",
+    "w11 (Parnassusweg, 10 m): washed out 85 % > 30 %"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012252442",
+   "name": "het-dok-252442",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 64.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence",
+    "w04 (Klaprozenweg, 25 m) reads curtain"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012148010",
+   "name": "het-nieuwe-huis-148010",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Roelof Hartstraat, 38 m): curtain reading untrusted: foliage 27 % > 25 %; not-wall #4f412a does not read as glass on #694c38 (>= 10 L* darker, chroma < 15)",
+    "w06 (Gerard Terborgstraat, 10 m): washed out 34 % > 30 %",
+    "w07 (Gerard Terborgstraat, 9 m): foliage 32 % > 25 %"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012165158",
+   "name": "kpn-teleport-165158",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "buildable",
+   "ok": false,
+   "reasons": [
+    "5 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched, w06 punched"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012170259",
+   "name": "nfta-markenplein-170259",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Meester Visserplein, 63 m): foliage 42 % > 25 %",
+    "w03 (Rapenburgerstraat, 39 m): washed out 56 % > 30 %"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012139498",
+   "name": "pakhuis-australie-139498",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 34 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012078546",
+   "name": "pieter-nieuwlandcollege-078546",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "w06 (15 m, short) reads curtain: noted, not a gap",
+    "5 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Kamerlingh Onneslaan, 55 m): usable 24 % < 40 %; foliage 61 % > 25 %",
+    "w09 (Kamerlingh Onneslaan, 10 m): washed out 93 % > 30 %"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012182840",
+   "name": "sarphati-plaza-182840",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 39.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012239853",
+   "name": "sint-nicolaaslyceum-239853",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "no-evidence",
+   "ok": true,
+   "reasons": [
+    "4 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Beethovenplein, 42 m): washed out 50 % > 30 %",
+    "w06 (Beethovenplein, 11 m): usable 12 % < 40 %"
+   ],
+   "recordedNote": "#105: held, not installed"
+  },
+  {
+   "pand": "0363100012239633",
+   "name": "the-edge-239633",
+   "from": "#105",
+   "recorded": "hold",
+   "predicted": "kit-gap",
+   "ok": true,
+   "reasons": [
+    "height 55.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ],
+   "recordedNote": "#105: held, not installed"
+  }
+ ],
+ "rows": [
+  {
+   "id": "poi:lm-extract_landmarks_257271103",
+   "pand": "0363100012179384",
+   "name": "Pathé de Munt",
+   "source": "queue",
+   "heightM": 22.1,
+   "builtYear": 2001,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "pand 0363100012179384 under the POI centre",
+    "already drawn by a placed model or catalogue entry"
+   ]
+  },
+  {
+   "id": "poi:lm-extract_landmarks_994708838",
+   "pand": "0363100012240368",
+   "name": "DeLaMar (West)",
+   "source": "queue",
+   "heightM": 25.8,
+   "builtYear": 2014,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "pand 0363100012240368 under the POI centre",
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Jan van Galenstraat, 56 m): foliage 31 % > 25 %"
+   ]
+  },
+  {
+   "id": "poi:lm-extract_landmarks_82936853",
+   "pand": "0363100012074454",
+   "name": "Levend Paardenmuseum",
+   "source": "queue",
+   "heightM": 12.8,
+   "builtYear": 1882,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "pand 0363100012074454 under the POI centre",
+    "already drawn by a placed model or catalogue entry"
+   ]
+  },
+  {
+   "id": "poi:requested-world-trade-center-amsterdam",
+   "pand": null,
+   "name": "World Trade Center Amsterdam",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012080943",
+   "pand": "0363100012080943",
+   "name": "Politiebureau West Overtoomsesluis",
+   "source": "queue",
+   "heightM": 29.7,
+   "builtYear": 2009,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Bos en Lommerplantsoen, 18 m): foliage 27 % > 25 %",
+    "w08 (Bos en Lommerplantsoen, 16 m): obliquity 45 deg > 45",
+    "w10 (Bos en Lommerplein, 12 m): washed out 47 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012239467",
+   "pand": "0363100012239467",
+   "name": "OBA Banne",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012079410",
+   "pand": "0363100012079410",
+   "name": "OBA Bijlmerplein",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012135359",
+   "pand": "0363100012135359",
+   "name": "OBA Buitenveldert",
+   "source": "queue",
+   "heightM": 9.6,
+   "builtYear": 1968,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "w04 (15 m, short) reads curtain: noted, not a gap",
+    "3 judgeable street walls: w02 punched, w04 curtain, w05 ribbon"
+   ]
+  },
+  {
+   "id": "0363100012131914",
+   "pand": "0363100012131914",
+   "name": "OBA Ganzenhoef",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012121137",
+   "pand": "0363100012121137",
+   "name": "OBA Geuzenveld",
+   "source": "queue",
+   "heightM": 39.5,
+   "builtYear": 2002,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012070481",
+   "pand": "0363100012070481",
+   "name": "OBA IJburg",
+   "source": "queue",
+   "heightM": 18.1,
+   "builtYear": 2008,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w04 (Erich Salomonstraat, 57 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012098534",
+   "pand": "0363100012098534",
+   "name": "OBA Molenwijk",
+   "source": "queue",
+   "heightM": 4.5,
+   "builtYear": 1987,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w02 (Stellingweg, 25 m) reads curtain"
+   ]
+  },
+  {
+   "id": "poi:library-oba-next",
+   "pand": null,
+   "name": "OBA Next",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012164964",
+   "pand": "0363100012164964",
+   "name": "OBA Oosterdok",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012085435",
+   "pand": "0363100012085435",
+   "name": "OBA Osdorp",
+   "source": "queue",
+   "heightM": 12.4,
+   "builtYear": 1999,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Osdorpplein, 17 m): washed out 32 % > 30 %",
+    "w08 (Meer en Vaart, 8 m): foliage 67 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012248844",
+   "pand": "0363100012248844",
+   "name": "OBA Postjesweg",
+   "source": "queue",
+   "heightM": 39.8,
+   "builtYear": 2019,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012073560",
+   "pand": "0363100012073560",
+   "name": "OBA Reigersbos",
+   "source": "queue",
+   "heightM": 16.6,
+   "builtYear": 1984,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w04 (Reigersbos, 24 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012241007",
+   "pand": "0363100012241007",
+   "name": "OBA Slotermeer",
+   "source": "queue",
+   "heightM": 25.3,
+   "builtYear": 2013,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w03 (Slotermeerlaan, 38 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012239985",
+   "pand": "0363100012239985",
+   "name": "OBA Waterlandplein",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012186092",
+   "pand": "0363100012186092",
+   "name": "Stadsloket Centrum",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012253671",
+   "pand": "0363100012253671",
+   "name": "Stadsloket Nieuw-West",
+   "source": "queue",
+   "heightM": 12.4,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Osdorpplein, 53 m): crop 2022 predates the 2022 building",
+    "w03 (Osdorpplein, 53 m): crop 2022 predates the 2022 building",
+    "w04 (Osdorpplein, 43 m): camera 5.7 m < 8 m from a 43 m wall; crop 2022 predates the 2022 building",
+    "w06 (Osdorpplein, 31 m): crop 2021 predates the 2022 building",
+    "w08 (Osdorpplein, 21 m): washed out 35 % > 30 %; crop 2017 predates the 2022 building",
+    "w09 (Osdorpplein, 18 m): crop 2022 predates the 2022 building",
+    "w12 (Osdorpplein, 11 m): washed out 50 % > 30 %; crop 2017 predates the 2022 building"
+   ]
+  },
+  {
+   "id": "0363100012090647",
+   "pand": "0363100012090647",
+   "name": "Stadsloket Zuid",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012116268",
+   "pand": "0363100012116268",
+   "name": "Amsterdam UMC - locatie VUMC",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "poi:hospital-amsterdam-umc-locatie-amc",
+   "pand": null,
+   "name": "Amsterdam UMC locatie AMC",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012149452",
+   "pand": "0363100012149452",
+   "name": "Antoni van Leeuwenhoek",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012090318",
+   "pand": "0363100012090318",
+   "name": "BovenIJ Ziekenhuis",
+   "source": "queue",
+   "heightM": 12.3,
+   "builtYear": 1987,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w09 (Statenjachtstraat, 29 m): no crop",
+    "w11 (Statenjachtstraat, 26 m): no crop",
+    "w12 (Statenjachtstraat, 25 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012149878",
+   "pand": "0363100012149878",
+   "name": "Amsterdams Lyceum",
+   "source": "queue",
+   "rank": 30,
+   "heightM": 17.7,
+   "builtYear": 1920,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "front class unmeasured on some judgeable walls (no measurement)",
+    "6 judgeable street walls: w01 punched, w03 punched, w04 columns, w07 columns, w08 punched, w09 ?"
+   ]
+  },
+  {
+   "id": "poi:school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
+   "pand": null,
+   "name": "Berlage Lyceum (tijdelijke locatie bovenbouw)",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012096559",
+   "pand": "0363100012096559",
+   "name": "Hogeschool van Amsterdam",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "poi:school-hogeschool-van-amsterdam-bsv",
+   "pand": "0363100012061467",
+   "name": "Hogeschool van Amsterdam (BSV)",
+   "source": "queue",
+   "heightM": 8.5,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "pand 0363100012061467 under the POI centre",
+    "0 of 0 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage"
+   ]
+  },
+  {
+   "id": "0363100012080098",
+   "pand": "0363100012080098",
+   "name": "Metis Montessori Lyceum",
+   "source": "queue",
+   "heightM": 7.2,
+   "builtYear": 1991,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Derde Oosterparkstraat, 22 m): obliquity 53 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012080630",
+   "pand": "0363100012080630",
+   "name": "Montessori Lyceum Oostpoort",
+   "source": "queue",
+   "heightM": 17.2,
+   "builtYear": 1932,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012080630"
+   ]
+  },
+  {
+   "id": "poi:school-rietveldschool",
+   "pand": "0394100000208189",
+   "name": "Rietveldschool",
+   "source": "queue",
+   "heightM": 8.1,
+   "builtYear": 1963,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "pand 0394100000208189 under the POI centre",
+    "0 of 0 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage"
+   ]
+  },
+  {
+   "id": "poi:school-roeterseiland-uva",
+   "pand": null,
+   "name": "Roeterseiland (UvA)",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "poi:school-spinoza-lyceum",
+   "pand": null,
+   "name": "Spinoza Lyceum",
+   "source": "queue",
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "no BAG pand in the tiles under the POI centre",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012253721",
+   "pand": "0363100012253721",
+   "name": "Spinoza20first",
+   "source": "queue",
+   "heightM": 17.6,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Bijdorpstraat, 77 m): washed out 46 % > 30 %",
+    "w04 (H.J.E. Wenckebachweg, 34 m): foliage 47 % > 25 %; obliquity 47 deg > 45; crop 2017 predates the 2022 building",
+    "w07 (Bijdorpstraat, 19 m): washed out 32 % > 30 %",
+    "w08 (Bijdorpstraat, 17 m): washed out 58 % > 30 %; obliquity 50 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012098925",
+   "pand": "0363100012098925",
+   "name": null,
+   "source": "queue",
+   "heightM": 36.3,
+   "builtYear": 1998,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 36.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012186093",
+   "pand": "0363100012186093",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.4,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 11 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Plantage Muidergracht, 24 m): crop 2017 predates the 2022 building",
+    "w06 (Plantage Lepellaan, 24 m): washed out 32 % > 30 %; crop 2019 predates the 2022 building",
+    "w07 (Plantage Lepellaan, 24 m): foliage 30 % > 25 %; washed out 35 % > 30 %",
+    "w08 (Plantage Muidergracht, 21 m): foliage 30 % > 25 %; washed out 35 % > 30 %",
+    "w09 (Plantage Muidergracht, 20 m): foliage 29 % > 25 %; washed out 32 % > 30 %",
+    "w10 (Plantage Middenlaan, 17 m): camera 7 m < 8 m from a 17 m wall",
+    "w12 (Plantage Lepellaan, 9 m): crop 2021 predates the 2022 building"
+   ]
+  },
+  {
+   "id": "0363100012243823",
+   "pand": "0363100012243823",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.9,
+   "builtYear": 2016,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 10 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Volewijkshof, 59 m): washed out 31 % > 30 %",
+    "w04 (Johan van Hasseltweg, 39 m): usable 29 % < 40 %",
+    "w06 (Wingerdweg, 37 m): washed out 74 % > 30 %",
+    "w08 (Johan van Hasseltweg, 22 m): usable 23 % < 40 %",
+    "w09 (Volewijkshof, 18 m): foliage 52 % > 25 %",
+    "w11 (Johan van Hasseltweg, 15 m): washed out 74 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012087570",
+   "pand": "0363100012087570",
+   "name": null,
+   "source": "queue",
+   "heightM": 26.1,
+   "builtYear": 1997,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Kramatweg, 67 m): foliage 26 % > 25 %; washed out 38 % > 30 %",
+    "w02 (Kramatweg, 64 m): washed out 53 % > 30 %",
+    "w05 (Kramatplantsoen, 25 m): washed out 45 % > 30 %",
+    "w09 (Zeeburgerdijk, 19 m): foliage 25 % > 25 %; obliquity 49 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012111954",
+   "pand": "0363100012111954",
+   "name": null,
+   "source": "queue",
+   "heightM": 6,
+   "builtYear": 1966,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "w09 (14 m, short) reads curtain: noted, not a gap",
+    "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Jan van Galenstraat, 16 m): foliage 50 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012165086",
+   "pand": "0363100012165086",
+   "name": null,
+   "source": "queue",
+   "rank": 4,
+   "heightM": 29.4,
+   "builtYear": 1997,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w01 (Singel, 34 m) reads curtain",
+    "w04 (Singel, 15 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012165488",
+   "pand": "0363100012165488",
+   "name": null,
+   "source": "queue",
+   "rank": 8,
+   "heightM": 27.5,
+   "builtYear": 1912,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1912 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012242075",
+   "pand": "0363100012242075",
+   "name": null,
+   "source": "queue",
+   "heightM": 4.9,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Johannes Vermeerstraat, 58 m): foliage 27 % > 25 %",
+    "w10 (Museumstraat, 11 m): foliage 31 % > 25 %",
+    "w12 (Museumstraat, 9 m): foliage 48 % > 25 %; washed out 62 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012244160",
+   "pand": "0363100012244160",
+   "name": null,
+   "source": "queue",
+   "rank": 5,
+   "heightM": 46.3,
+   "builtYear": 2018,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 46.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012079326",
+   "pand": "0363100012079326",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.1,
+   "builtYear": 1990,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Struisgrasstraat, 93 m): washed out 35 % > 30 %",
+    "w09 (Papaverweg, 11 m): foliage 29 % > 25 %",
+    "w10 (Struisgrasstraat, 11 m): foliage 25 % > 25 %; washed out 98 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012242951",
+   "pand": "0363100012242951",
+   "name": null,
+   "source": "queue",
+   "rank": 10,
+   "heightM": 21.3,
+   "builtYear": 2015,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Nieuwe Passeerdersstraat, 79 m): washed out 36 % > 30 %",
+    "w06 (Marnixstraat, 25 m): foliage 32 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012247342",
+   "pand": "0363100012247342",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.2,
+   "builtYear": 2017,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Eef Kamerbeekstraat, 49 m): crop 2017 predates the 2017 building",
+    "w06 (Eef Kamerbeekstraat, 16 m): usable 36 % < 40 %"
+   ]
+  },
+  {
+   "id": "0363100012096613",
+   "pand": "0363100012096613",
+   "name": null,
+   "source": "queue",
+   "heightM": 45,
+   "builtYear": 1985,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012238702",
+   "pand": "0363100012238702",
+   "name": null,
+   "source": "queue",
+   "rank": 11,
+   "heightM": 4.3,
+   "builtYear": 2006,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w06 (NDSM-plein, 21 m) reads curtain",
+    "w07 (NDSM-plein, 18 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012092384",
+   "pand": "0363100012092384",
+   "name": null,
+   "source": "queue",
+   "heightM": 17.4,
+   "builtYear": 1974,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Strawinskypad, 34 m): obliquity 47 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012253630",
+   "pand": "0363100012253630",
+   "name": null,
+   "source": "queue",
+   "heightM": 27,
+   "builtYear": 2023,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Papaverweg, 76 m): crop 2021 predates the 2023 building",
+    "w02 (Bosrankstraat, 76 m): crop 2021 predates the 2023 building"
+   ]
+  },
+  {
+   "id": "0363100012066028",
+   "pand": "0363100012066028",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.5,
+   "builtYear": 1980,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "front class unmeasured on some judgeable walls (no measurement)",
+    "6 judgeable street walls: w01 ribbon, w02 punched, w03 punched, w04 punched, w05 punched, w12 ?"
+   ]
+  },
+  {
+   "id": "0363100012246291",
+   "pand": "0363100012246291",
+   "name": null,
+   "source": "queue",
+   "heightM": 46.9,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 46.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012165427",
+   "pand": "0363100012165427",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.5,
+   "builtYear": 1915,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012165427"
+   ]
+  },
+  {
+   "id": "0363100012145366",
+   "pand": "0363100012145366",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.4,
+   "builtYear": 1968,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Spanderswoudstraat, 230 m): foliage 34 % > 25 %",
+    "w04 (Spanderswoudstraat, 12 m): washed out 58 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012240435",
+   "pand": "0363100012240435",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.3,
+   "builtYear": 2018,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w10 (Govert Flinckstraat, 16 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012252557",
+   "pand": "0363100012252557",
+   "name": null,
+   "source": "queue",
+   "heightM": 54.2,
+   "builtYear": 2022,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 54.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012133211",
+   "pand": "0363100012133211",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.5,
+   "builtYear": 1929,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012084286",
+   "pand": "0363100012084286",
+   "name": null,
+   "source": "queue",
+   "heightM": 41.4,
+   "builtYear": 2004,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012247112",
+   "pand": "0363100012247112",
+   "name": null,
+   "source": "queue",
+   "heightM": 47.5,
+   "builtYear": 2018,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 47.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012233471",
+   "pand": "0363100012233471",
+   "name": null,
+   "source": "queue",
+   "heightM": 23.4,
+   "builtYear": 1930,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Pieter Cornelisz. Hooftstraat, 28 m): foliage 29 % > 25 %",
+    "w06 (Hobbemastraat, 17 m): washed out 35 % > 30 %",
+    "w07 (Pieter Cornelisz. Hooftstraat, 12 m): foliage 28 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012240015",
+   "pand": "0363100012240015",
+   "name": null,
+   "source": "queue",
+   "rank": 14,
+   "heightM": 41.5,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012086968",
+   "pand": "0363100012086968",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.7,
+   "builtYear": 1963,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Vlierweg, 39 m): washed out 44 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012167466",
+   "pand": "0363100012167466",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.2,
+   "builtYear": 1991,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Lijnbaansgracht, 20 m): washed out 32 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012111255",
+   "pand": "0363100012111255",
+   "name": null,
+   "source": "queue",
+   "heightM": 23.8,
+   "builtYear": 2008,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Bos en Lommerplein, 36 m): washed out 36 % > 30 %",
+    "w06 (Bos en Lommerplein, 30 m): washed out 38 % > 30 %",
+    "w08 (Bos en Lommerplein, 9 m): obliquity 49 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012239853",
+   "pand": "0363100012239853",
+   "name": null,
+   "source": "queue",
+   "rank": 19,
+   "heightM": 22.4,
+   "builtYear": 2013,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Beethovenplein, 42 m): washed out 50 % > 30 %",
+    "w06 (Beethovenplein, 11 m): usable 12 % < 40 %"
+   ]
+  },
+  {
+   "id": "0363100012186290",
+   "pand": "0363100012186290",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.3,
+   "builtYear": 1899,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1899 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012084650",
+   "pand": "0363100012084650",
+   "name": null,
+   "source": "queue",
+   "heightM": 17.1,
+   "builtYear": 1974,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "10 of 11 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Strawinskypad, 42 m): washed out 53 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012135250",
+   "pand": "0363100012135250",
+   "name": null,
+   "source": "queue",
+   "rank": 13,
+   "heightM": 21.3,
+   "builtYear": 1991,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Zandpad, 64 m): foliage 32 % > 25 %; washed out 41 % > 30 %; camera 5.6 m < 8 m from a 64 m wall",
+    "w05 (Tesselschadestraat, 9 m): washed out 44 % > 30 %",
+    "w07 (Tesselschadestraat, 8 m): washed out 31 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012128727",
+   "pand": "0363100012128727",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.7,
+   "builtYear": 1950,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Papaverweg, 39 m): foliage 27 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012137448",
+   "pand": "0363100012137448",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.5,
+   "builtYear": 1872,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1872 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012090791",
+   "pand": "0363100012090791",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.3,
+   "builtYear": 1939,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012090791"
+   ]
+  },
+  {
+   "id": "0363100012151539",
+   "pand": "0363100012151539",
+   "name": null,
+   "source": "queue",
+   "heightM": 29.3,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012571499",
+   "pand": "0363100012571499",
+   "name": null,
+   "source": "queue",
+   "heightM": 17.1,
+   "builtYear": 2024,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Rocketstraat, 81 m): washed out 70 % > 30 %; crop 2024 predates the 2024 building",
+    "w02 (Weesperzijde, 59 m): usable 19 % < 40 %",
+    "w04 (Meester Treublaan, 53 m): crop 2021 predates the 2024 building"
+   ]
+  },
+  {
+   "id": "0363100012251533",
+   "pand": "0363100012251533",
+   "name": null,
+   "source": "queue",
+   "rank": 27,
+   "heightM": 19.3,
+   "builtYear": 2023,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Lassusstraat, 69 m): foliage 38 % > 25 %; crop 2020 predates the 2023 building",
+    "w02 (Valeriusstraat, 42 m): washed out 74 % > 30 %; crop 2019 predates the 2023 building",
+    "w04 (Valeriusstraat, 31 m): crop 2022 predates the 2023 building",
+    "w06 (Valeriusplein, 20 m): foliage 28 % > 25 %; washed out 43 % > 30 %; crop 2020 predates the 2023 building",
+    "w07 (Valeriusplein, 20 m): washed out 62 % > 30 %; crop 2017 predates the 2023 building",
+    "w09 (Valeriusstraat, 14 m): washed out 78 % > 30 %; crop 2019 predates the 2023 building",
+    "w10 (Valeriusplein, 13 m): crop 2023 predates the 2023 building",
+    "w11 (Valeriusplein, 10 m): foliage 27 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012154874",
+   "pand": "0363100012154874",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.1,
+   "builtYear": 1924,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012169731",
+   "pand": "0363100012169731",
+   "name": null,
+   "source": "queue",
+   "heightM": 35,
+   "builtYear": 1992,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 35 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012076454",
+   "pand": "0363100012076454",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.2,
+   "builtYear": 1981,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w02 punched, w03 punched, w05 punched, w12 punched"
+   ]
+  },
+  {
+   "id": "0363100012148630",
+   "pand": "0363100012148630",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.7,
+   "builtYear": 1972,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (no street, 105 m): washed out 71 % > 30 %",
+    "w03 (no street, 67 m): washed out 47 % > 30 %",
+    "w04 (no street, 63 m): washed out 43 % > 30 %",
+    "w05 (no street, 41 m): no crop",
+    "w06 (no street, 29 m): foliage 32 % > 25 %",
+    "w07 (no street, 29 m): no crop",
+    "w08 (no street, 28 m): foliage 44 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012247688",
+   "pand": "0363100012247688",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.8,
+   "builtYear": 2017,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Nieuwe Purmerweg, 19 m): obliquity 53 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012119260",
+   "pand": "0363100012119260",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.2,
+   "builtYear": 1992,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Brettenpad, 17 m): obliquity 53 deg > 45",
+    "w06 (Brettenpad, 14 m): washed out 35 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012139498",
+   "pand": "0363100012139498",
+   "name": null,
+   "source": "queue",
+   "rank": 17,
+   "heightM": 34,
+   "builtYear": 2006,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 34 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012142095",
+   "pand": "0363100012142095",
+   "name": null,
+   "source": "queue",
+   "rank": 37,
+   "heightM": 15.9,
+   "builtYear": 1924,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w04 (Azartplein, 27 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012070306",
+   "pand": "0363100012070306",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.6,
+   "builtYear": 1988,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Strawinskypad, 28 m): foliage 31 % > 25 %",
+    "w05 (Prinses Irenestraat, 15 m): foliage 43 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012247952",
+   "pand": "0363100012247952",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.7,
+   "builtYear": 2021,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Rijswijkstraat, 56 m): washed out 56 % > 30 %; crop 2017 predates the 2021 building"
+   ]
+  },
+  {
+   "id": "0363100012125840",
+   "pand": "0363100012125840",
+   "name": null,
+   "source": "queue",
+   "rank": 34,
+   "heightM": 29.9,
+   "builtYear": 2001,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain",
+    "blank-front"
+   ],
+   "reasons": [
+    "w04 (Fred. Roeskestraat, 22 m) reads curtain",
+    "w05 (Fred. Roeskestraat, 16 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012153698",
+   "pand": "0363100012153698",
+   "name": null,
+   "source": "queue",
+   "rank": 24,
+   "heightM": 17.4,
+   "builtYear": 1975,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Majoie Hajarystraat, 62 m): washed out 53 % > 30 %",
+    "w11 (Parnassusweg, 10 m): washed out 85 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012244662",
+   "pand": "0363100012244662",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.3,
+   "builtYear": 2017,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Stadionplein, 79 m): foliage 43 % > 25 %",
+    "w02 (Stadionplein, 57 m): foliage 32 % > 25 %; washed out 43 % > 30 %",
+    "w04 (Stadionplein, 29 m): foliage 37 % > 25 %; washed out 50 % > 30 %",
+    "w05 (Stadionplein, 21 m): crop 2017 predates the 2017 building",
+    "w06 (Stadionplein, 20 m): washed out 36 % > 30 %; camera 7.3 m < 8 m from a 20 m wall"
+   ]
+  },
+  {
+   "id": "0363100012182840",
+   "pand": "0363100012182840",
+   "name": null,
+   "source": "queue",
+   "rank": 23,
+   "heightM": 39.1,
+   "builtYear": 1992,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012136232",
+   "pand": "0363100012136232",
+   "name": null,
+   "source": "queue",
+   "rank": 25,
+   "heightM": 23.3,
+   "builtYear": 1973,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 12 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (no street, 83 m): washed out 35 % > 30 %",
+    "w02 (no street, 78 m): no crop",
+    "w04 (no street, 53 m): no crop",
+    "w05 (no street, 42 m): no crop",
+    "w06 (no street, 41 m): no crop",
+    "w07 (no street, 41 m): no crop",
+    "w09 (no street, 33 m): washed out 32 % > 30 %",
+    "w10 (no street, 29 m): no crop",
+    "w11 (no street, 29 m): no crop",
+    "w12 (no street, 21 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012236735",
+   "pand": "0363100012236735",
+   "name": null,
+   "source": "queue",
+   "rank": 31,
+   "heightM": 23.7,
+   "builtYear": 1961,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012165158",
+   "pand": "0363100012165158",
+   "name": null,
+   "source": "queue",
+   "rank": 22,
+   "heightM": 28.9,
+   "builtYear": 2014,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "5 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched, w06 punched"
+   ]
+  },
+  {
+   "id": "0363100012246191",
+   "pand": "0363100012246191",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.8,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Haarlemmerweg, 73 m): no crop",
+    "w03 (Haarlemmerweg, 47 m): no crop",
+    "w07 (Haarlemmerweg, 28 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012239633",
+   "pand": "0363100012239633",
+   "name": null,
+   "source": "queue",
+   "rank": 26,
+   "heightM": 55.3,
+   "builtYear": 2013,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 55.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012236656",
+   "pand": "0363100012236656",
+   "name": null,
+   "source": "queue",
+   "rank": 40,
+   "heightM": 14.4,
+   "builtYear": 1890,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1890 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012080492",
+   "pand": "0363100012080492",
+   "name": null,
+   "source": "queue",
+   "rank": 35,
+   "heightM": 35.4,
+   "builtYear": 1929,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 35.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012165746",
+   "pand": "0363100012165746",
+   "name": null,
+   "source": "queue",
+   "rank": 39,
+   "heightM": 32.2,
+   "builtYear": 1893,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1893 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012236811",
+   "pand": "0363100012236811",
+   "name": null,
+   "source": "queue",
+   "rank": 13,
+   "heightM": 38.9,
+   "builtYear": 1991,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 38.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012138843",
+   "pand": "0363100012138843",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.2,
+   "builtYear": 2007,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "6 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 columns, w05 punched, w06 punched"
+   ]
+  },
+  {
+   "id": "0363100012088496",
+   "pand": "0363100012088496",
+   "name": null,
+   "source": "queue",
+   "heightM": 10.7,
+   "builtYear": 1992,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Plesostraat, 38 m): washed out 31 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012077450",
+   "pand": "0363100012077450",
+   "name": null,
+   "source": "queue",
+   "heightM": 26.9,
+   "builtYear": 1966,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "8 of 11 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Groningenstraat, 163 m): foliage 37 % > 25 %",
+    "w08 (De Boelelaan, 20 m): foliage 51 % > 25 %",
+    "w10 (Willem van Weldammelaan, 11 m): foliage 46 % > 25 %; washed out 37 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012119827",
+   "pand": "0363100012119827",
+   "name": null,
+   "source": "queue",
+   "rank": 32,
+   "heightM": 9.2,
+   "builtYear": 1979,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "3 judgeable street walls: w02 punched, w03 punched, w05 punched"
+   ]
+  },
+  {
+   "id": "0363100012242039",
+   "pand": "0363100012242039",
+   "name": null,
+   "source": "queue",
+   "heightM": 62.1,
+   "builtYear": 2014,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 62.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012165051",
+   "pand": "0363100012165051",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.3,
+   "builtYear": 1913,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012148632",
+   "pand": "0363100012148632",
+   "name": null,
+   "source": "queue",
+   "rank": 29,
+   "heightM": 24.5,
+   "builtYear": 1928,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012240382",
+   "pand": "0363100012240382",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.1,
+   "builtYear": 2013,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Laan van Spartaan, 16 m): foliage 59 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012248597",
+   "pand": "0363100012248597",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.6,
+   "builtYear": 2019,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w02 punched, w08 punched, w09 punched, w10 punched"
+   ]
+  },
+  {
+   "id": "0363100012104065",
+   "pand": "0363100012104065",
+   "name": null,
+   "source": "queue",
+   "heightM": 5.8,
+   "builtYear": 1997,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Nobelweg, 24 m): foliage 73 % > 25 %",
+    "w06 (Nobelweg, 18 m): foliage 61 % > 25 %; obliquity 51 deg > 45",
+    "w08 (Nobelweg, 13 m): foliage 31 % > 25 %",
+    "w10 (Nobelweg, 13 m): foliage 36 % > 25 %",
+    "w12 (Nobelweg, 13 m): foliage 64 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012078546",
+   "pand": "0363100012078546",
+   "name": null,
+   "source": "queue",
+   "rank": 33,
+   "heightM": 12.1,
+   "builtYear": 1960,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "w06 (15 m, short) reads curtain: noted, not a gap",
+    "5 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Kamerlingh Onneslaan, 55 m): usable 24 % < 40 %; foliage 61 % > 25 %",
+    "w09 (Kamerlingh Onneslaan, 10 m): washed out 93 % > 30 %",
+    "w10 (Pierre Lallementstraat, 10 m): foliage 42 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012250187",
+   "pand": "0363100012250187",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.2,
+   "builtYear": 2019,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Revaleiland, 55 m): washed out 31 % > 30 %",
+    "w02 (Revaleiland, 32 m): washed out 38 % > 30 %",
+    "w06 (Revaleiland, 19 m): washed out 55 % > 30 %",
+    "w07 (Revaleiland, 13 m): washed out 54 % > 30 %; crop 2017 predates the 2019 building",
+    "w08 (Revaleiland, 12 m): washed out 58 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012064800",
+   "pand": "0363100012064800",
+   "name": null,
+   "source": "queue",
+   "heightM": 17,
+   "builtYear": 1973,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Barkpad, 34 m): foliage 27 % > 25 %",
+    "w03 (Schoenerstraat, 33 m): foliage 34 % > 25 %",
+    "w04 (Schoenerstraat, 33 m): foliage 28 % > 25 %; washed out 37 % > 30 %",
+    "w07 (Schoenerstraat, 26 m): washed out 70 % > 30 %",
+    "w08 (Barkpad, 20 m): foliage 40 % > 25 %; obliquity 51 deg > 45",
+    "w10 (Schoenerstraat, 18 m): washed out 34 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012252166",
+   "pand": "0363100012252166",
+   "name": null,
+   "source": "queue",
+   "heightM": 28.6,
+   "builtYear": 2021,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Jan van Galenstraat, 14 m): foliage 30 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012249707",
+   "pand": "0363100012249707",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.9,
+   "builtYear": 2020,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Wiborgeiland, 16 m): washed out 64 % > 30 %; crop 2017 predates the 2020 building",
+    "w08 (Stettineiland, 12 m): washed out 33 % > 30 %; obliquity 47 deg > 45; crop 2020 predates the 2020 building"
+   ]
+  },
+  {
+   "id": "0363100012080770",
+   "pand": "0363100012080770",
+   "name": null,
+   "source": "queue",
+   "heightM": 3.9,
+   "builtYear": 1960,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012080490",
+   "pand": "0363100012080490",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.6,
+   "builtYear": 1931,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Stadionplein, 17 m): washed out 38 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012085366",
+   "pand": "0363100012085366",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.3,
+   "builtYear": 1969,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Burgemeester Röellstraat, 39 m): washed out 35 % > 30 %",
+    "w10 (Burgemeester Hogguerstraat, 21 m): foliage 47 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012184746",
+   "pand": "0363100012184746",
+   "name": null,
+   "source": "queue",
+   "heightM": 35.5,
+   "builtYear": 2007,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 35.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012142901",
+   "pand": "0363100012142901",
+   "name": null,
+   "source": "queue",
+   "heightM": 21.1,
+   "builtYear": 1993,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Fred. Roeskestraat, 38 m): obliquity 46 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012080532",
+   "pand": "0363100012080532",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.3,
+   "builtYear": 2009,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w07 (Leeuwendalersweg, 31 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012254400",
+   "pand": "0363100012254400",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.1,
+   "builtYear": 2024,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Ottho Heldringstraat, 30 m): washed out 32 % > 30 %; crop 2024 predates the 2024 building",
+    "w05 (Ottho Heldringstraat, 30 m): foliage 28 % > 25 %",
+    "w07 (Ottho Heldringstraat, 14 m): washed out 44 % > 30 %; crop 2022 predates the 2024 building",
+    "w08 (Ottho Heldringstraat, 13 m): washed out 40 % > 30 %; crop 2016 predates the 2024 building",
+    "w10 (Ottho Heldringstraat, 9 m): washed out 77 % > 30 %; crop 2022 predates the 2024 building"
+   ]
+  },
+  {
+   "id": "0363100012069991",
+   "pand": "0363100012069991",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.8,
+   "builtYear": 2005,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w05 punched"
+   ]
+  },
+  {
+   "id": "0363100100092333",
+   "pand": "0363100100092333",
+   "name": null,
+   "source": "queue",
+   "heightM": 49.9,
+   "builtYear": 1964,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 49.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012113136",
+   "pand": "0363100012113136",
+   "name": null,
+   "source": "queue",
+   "rank": 38,
+   "heightM": 17.2,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (no street, 61 m): usable 31 % < 40 %; foliage 44 % > 25 %",
+    "w03 (no street, 51 m): no crop",
+    "w04 (no street, 18 m): washed out 43 % > 30 %",
+    "w05 (no street, 13 m): curtain reading untrusted: foliage 54 % > 25 %; not-wall #1e2928 does not read as glass on #2f3f40 (>= 10 L* darker, chroma < 15)",
+    "w07 (no street, 8 m): usable 38 % < 40 %; foliage 49 % > 25 %",
+    "w08 (no street, 5 m): washed out 39 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012233585",
+   "pand": "0363100012233585",
+   "name": null,
+   "source": "queue",
+   "heightM": 24.3,
+   "builtYear": 1898,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1898 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012093150",
+   "pand": "0363100012093150",
+   "name": null,
+   "source": "queue",
+   "heightM": 48.1,
+   "builtYear": 2025,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 48.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012253656",
+   "pand": "0363100012253656",
+   "name": null,
+   "source": "queue",
+   "heightM": 32.8,
+   "builtYear": 2023,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 32.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012105724",
+   "pand": "0363100012105724",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.4,
+   "builtYear": 2008,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Elckerlijcstraat, 88 m): washed out 34 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012237537",
+   "pand": "0363100012237537",
+   "name": null,
+   "source": "queue",
+   "heightM": 40,
+   "builtYear": 2011,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 40 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012133123",
+   "pand": "0363100012133123",
+   "name": null,
+   "source": "queue",
+   "heightM": 4.9,
+   "builtYear": 1985,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Nieuwe Purmerweg, 19 m): foliage 49 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012119145",
+   "pand": "0363100012119145",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.6,
+   "builtYear": 1981,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Ringweg-Zuid, 29 m): washed out 50 % > 30 %",
+    "w04 (Ringweg-Zuid, 25 m): washed out 61 % > 30 %",
+    "w06 (Ringweg-Zuid, 20 m): washed out 40 % > 30 %",
+    "w09 (Ringweg-Zuid, 16 m): washed out 40 % > 30 %",
+    "w11 (Europaboulevard, 11 m): washed out 34 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012254687",
+   "pand": "0363100012254687",
+   "name": null,
+   "source": "queue",
+   "heightM": 4.5,
+   "builtYear": 2025,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Grasweg, 128 m): crop 2020 predates the 2025 building",
+    "w02 (Distelweg, 119 m): crop 2024 predates the 2025 building",
+    "w04 (Wim Ibobrug, 33 m): crop 2017 predates the 2025 building",
+    "w05 (Grasweg, 20 m): crop 2024 predates the 2025 building"
+   ]
+  },
+  {
+   "id": "0363100012173447",
+   "pand": "0363100012173447",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.4,
+   "builtYear": 1991,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Hirschpassage, 14 m): no crop",
+    "w06 (Max Euweplein, 9 m): foliage 38 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012247938",
+   "pand": "0363100012247938",
+   "name": null,
+   "source": "queue",
+   "heightM": 47.9,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 47.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012246555",
+   "pand": "0363100012246555",
+   "name": null,
+   "source": "queue",
+   "heightM": 74.3,
+   "builtYear": 2019,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 74.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012112179",
+   "pand": "0363100012112179",
+   "name": null,
+   "source": "queue",
+   "heightM": 10.9,
+   "builtYear": 2000,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "9 of 12 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Joop van Weezelhof, 34 m): washed out 38 % > 30 %",
+    "w09 (Plein '40-'45, 29 m): foliage 38 % > 25 %",
+    "w11 (Joop van Weezelhof, 22 m): washed out 34 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012093716",
+   "pand": "0363100012093716",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.6,
+   "builtYear": 1998,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w11 (Kimpoweg, 15 m): obliquity 50 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012076543",
+   "pand": "0363100012076543",
+   "name": null,
+   "source": "queue",
+   "heightM": 19.1,
+   "builtYear": 1926,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Jacob Obrechtplein, 26 m): obliquity 54 deg > 45",
+    "w05 (Bartholomeus Ruloffsstraat, 22 m): washed out 56 % > 30 %",
+    "w07 (Bartholomeus Ruloffsstraat, 22 m): washed out 54 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012071927",
+   "pand": "0363100012071927",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.4,
+   "builtYear": 1990,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Ward Bingleystraat, 17 m): washed out 43 % > 30 %",
+    "w08 (Adam van Germezhof, 16 m): foliage 56 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012186002",
+   "pand": "0363100012186002",
+   "name": null,
+   "source": "queue",
+   "heightM": 38.3,
+   "builtYear": 2009,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 38.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012061445",
+   "pand": "0363100012061445",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.6,
+   "builtYear": 2007,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012150568",
+   "pand": "0363100012150568",
+   "name": null,
+   "source": "queue",
+   "heightM": 27.1,
+   "builtYear": 1966,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Distelkade, 42 m): foliage 49 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012246848",
+   "pand": "0363100012246848",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.1,
+   "builtYear": 2019,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012249726",
+   "pand": "0363100012249726",
+   "name": null,
+   "source": "queue",
+   "heightM": 23.5,
+   "builtYear": 2020,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Buikslotermeerplein, 45 m): washed out 34 % > 30 %",
+    "w03 (Buikslotermeerplein, 22 m): washed out 91 % > 30 %; crop 2017 predates the 2020 building",
+    "w04 (Buikslotermeerplein, 16 m): crop 2020 predates the 2020 building",
+    "w05 (Buikslotermeerplein, 16 m): washed out 90 % > 30 %; crop 2018 predates the 2020 building",
+    "w06 (Buikslotermeerplein, 9 m): washed out 35 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012243844",
+   "pand": "0363100012243844",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.3,
+   "builtYear": 1932,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Gillis van Ledenberchstraat, 48 m): washed out 39 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012254654",
+   "pand": "0363100012254654",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.1,
+   "builtYear": 2021,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower",
+    "curtain"
+   ],
+   "reasons": [
+    "height 43.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence",
+    "w04 (Gustav Mahlerlaan, 23 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012253954",
+   "pand": "0363100012253954",
+   "name": null,
+   "source": "queue",
+   "heightM": 55.9,
+   "builtYear": 2024,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 55.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012116511",
+   "pand": "0363100012116511",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.4,
+   "builtYear": 1970,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012241220",
+   "pand": "0363100012241220",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.2,
+   "builtYear": 2015,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012179689",
+   "pand": "0363100012179689",
+   "name": null,
+   "source": "queue",
+   "heightM": 53,
+   "builtYear": 1960,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 53 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012119117",
+   "pand": "0363100012119117",
+   "name": null,
+   "source": "queue",
+   "heightM": 42,
+   "builtYear": 1995,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 42 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012067917",
+   "pand": "0363100012067917",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.6,
+   "builtYear": 1965,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Transformatorweg, 18 m): washed out 46 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012061212",
+   "pand": "0363100012061212",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.9,
+   "builtYear": 2007,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012237535",
+   "pand": "0363100012237535",
+   "name": null,
+   "source": "queue",
+   "heightM": 57.5,
+   "builtYear": 2011,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 57.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012072084",
+   "pand": "0363100012072084",
+   "name": null,
+   "source": "queue",
+   "heightM": 55,
+   "builtYear": 2001,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 55 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012070336",
+   "pand": "0363100012070336",
+   "name": null,
+   "source": "queue",
+   "heightM": 37.2,
+   "builtYear": 1992,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower",
+    "curtain"
+   ],
+   "reasons": [
+    "height 37.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence",
+    "w03 (Zaventemweg, 24 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012216927",
+   "pand": "0363100012216927",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.5,
+   "builtYear": 1965,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Skûtsjespad, 40 m): foliage 27 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012242874",
+   "pand": "0363100012242874",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.4,
+   "builtYear": 2015,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (De Boelelaan, 70 m): foliage 30 % > 25 %; washed out 49 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012252015",
+   "pand": "0363100012252015",
+   "name": null,
+   "source": "queue",
+   "heightM": 41.2,
+   "builtYear": 2020,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012095578",
+   "pand": "0363100012095578",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.8,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 43.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012061961",
+   "pand": "0363100012061961",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.3,
+   "builtYear": 1994,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Borneokade, 21 m): washed out 36 % > 30 %",
+    "w08 (Borneokade, 20 m): washed out 43 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012115242",
+   "pand": "0363100012115242",
+   "name": null,
+   "source": "queue",
+   "heightM": 37.3,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 37.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012238493",
+   "pand": "0363100012238493",
+   "name": null,
+   "source": "queue",
+   "heightM": 30.6,
+   "builtYear": 2010,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "w08 (11 m, short) reads curtain: noted, not a gap",
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Andreasplein, 16 m): washed out 55 % > 30 %",
+    "w06 (Andreasplein, 16 m): washed out 67 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012239389",
+   "pand": "0363100012239389",
+   "name": null,
+   "source": "queue",
+   "heightM": 39,
+   "builtYear": 2012,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012134773",
+   "pand": "0363100012134773",
+   "name": null,
+   "source": "queue",
+   "heightM": 5,
+   "builtYear": 1925,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w03 (Rustenburgerstraat, 31 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012154521",
+   "pand": "0363100012154521",
+   "name": null,
+   "source": "queue",
+   "heightM": 17.6,
+   "builtYear": 1987,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012244546",
+   "pand": "0363100012244546",
+   "name": null,
+   "source": "queue",
+   "heightM": 78.2,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 78.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012250162",
+   "pand": "0363100012250162",
+   "name": null,
+   "source": "queue",
+   "heightM": 17.3,
+   "builtYear": 2019,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Narav-eiland, 17 m): camera 7.3 m < 8 m from a 17 m wall"
+   ]
+  },
+  {
+   "id": "0363100012240149",
+   "pand": "0363100012240149",
+   "name": null,
+   "source": "queue",
+   "rank": 14,
+   "heightM": 42.7,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 42.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012104501",
+   "pand": "0363100012104501",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.1,
+   "builtYear": 1998,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Sibogastraat, 29 m): foliage 32 % > 25 %",
+    "w06 (Celebesstraat, 25 m): washed out 46 % > 30 %",
+    "w09 (Sibogastraat, 23 m): foliage 29 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012137174",
+   "pand": "0363100012137174",
+   "name": null,
+   "source": "queue",
+   "heightM": 59.5,
+   "builtYear": 1997,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 59.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012241221",
+   "pand": "0363100012241221",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.3,
+   "builtYear": 2015,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Retiefstraat, 54 m): camera 7.4 m < 8 m from a 54 m wall"
+   ]
+  },
+  {
+   "id": "0363100012246893",
+   "pand": "0363100012246893",
+   "name": null,
+   "source": "queue",
+   "heightM": 61.4,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 61.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012067741",
+   "pand": "0363100012067741",
+   "name": null,
+   "source": "queue",
+   "heightM": 29.8,
+   "builtYear": 1971,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w12 (Van der Boechorststraat, 15 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012245338",
+   "pand": "0363100012245338",
+   "name": null,
+   "source": "queue",
+   "heightM": 31.4,
+   "builtYear": 2017,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012117498",
+   "pand": "0363100012117498",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.1,
+   "builtYear": 1932,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w02 punched, w03 punched"
+   ]
+  },
+  {
+   "id": "0363100012250607",
+   "pand": "0363100012250607",
+   "name": null,
+   "source": "queue",
+   "heightM": 41.2,
+   "builtYear": 2020,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012106929",
+   "pand": "0363100012106929",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.8,
+   "builtYear": 1926,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "w07 (13 m, short) reads curtain: noted, not a gap",
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Waverstraat, 185 m): camera 7.1 m < 8 m from a 185 m wall",
+    "w10 (Kromme-Mijdrechtstraat, 12 m): washed out 48 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012091320",
+   "pand": "0363100012091320",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.1,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 43.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012237143",
+   "pand": "0363100012237143",
+   "name": null,
+   "source": "queue",
+   "heightM": 34.6,
+   "builtYear": 1952,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 34.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012244547",
+   "pand": "0363100012244547",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.2,
+   "builtYear": 2018,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Nieuwe Leeuwarderweg, 16 m): washed out 73 % > 30 %",
+    "w06 (Termini, 9 m): crop 2018 predates the 2018 building"
+   ]
+  },
+  {
+   "id": "0363100012249646",
+   "pand": "0363100012249646",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.6,
+   "builtYear": 2020,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Molukkenstraat, 110 m): foliage 38 % > 25 %; crop 2019 predates the 2020 building",
+    "w03 (Madurastraat, 35 m): camera 7.9 m < 8 m from a 35 m wall; crop 2019 predates the 2020 building",
+    "w04 (Billitonstraat, 35 m): crop 2016 predates the 2020 building"
+   ]
+  },
+  {
+   "id": "0363100012111806",
+   "pand": "0363100012111806",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.5,
+   "builtYear": 1953,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012243737",
+   "pand": "0363100012243737",
+   "name": null,
+   "source": "queue",
+   "heightM": 39.8,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012249709",
+   "pand": "0363100012249709",
+   "name": null,
+   "source": "queue",
+   "heightM": 73.2,
+   "builtYear": 2021,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 73.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012240148",
+   "pand": "0363100012240148",
+   "name": null,
+   "source": "queue",
+   "heightM": 57.2,
+   "builtYear": 2015,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 57.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012121704",
+   "pand": "0363100012121704",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.3,
+   "builtYear": 2000,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Hobbemakade, 18 m): foliage 46 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012243287",
+   "pand": "0363100012243287",
+   "name": null,
+   "source": "queue",
+   "heightM": 51.4,
+   "builtYear": 2021,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 51.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012144991",
+   "pand": "0363100012144991",
+   "name": null,
+   "source": "queue",
+   "heightM": 9.7,
+   "builtYear": 1963,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Krelis Louwenstraat, 39 m): foliage 55 % > 25 %",
+    "w11 (Krelis Louwenstraat, 20 m): foliage 38 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012063809",
+   "pand": "0363100012063809",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.8,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 43.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012250970",
+   "pand": "0363100012250970",
+   "name": null,
+   "source": "queue",
+   "heightM": 42,
+   "builtYear": 2023,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 42 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012127804",
+   "pand": "0363100012127804",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.5,
+   "builtYear": 1980,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Spaarndammerdijk, 49 m): foliage 26 % > 25 %",
+    "w07 (Spaarndammerdijk, 24 m): washed out 48 % > 30 %; obliquity 50 deg > 45",
+    "w08 (Spaarndammerdijk, 23 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012092403",
+   "pand": "0363100012092403",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.1,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Jan van Galenstraat, 23 m): washed out 31 % > 30 %",
+    "w10 (Jan van Galenstraat, 8 m): foliage 32 % > 25 %; washed out 45 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012245324",
+   "pand": "0363100012245324",
+   "name": null,
+   "source": "queue",
+   "heightM": 38.6,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 38.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012151987",
+   "pand": "0363100012151987",
+   "name": null,
+   "source": "queue",
+   "heightM": 44.1,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 44.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012251732",
+   "pand": "0363100012251732",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.7,
+   "builtYear": 2021,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w04 punched, w05 punched"
+   ]
+  },
+  {
+   "id": "0363100012253541",
+   "pand": "0363100012253541",
+   "name": null,
+   "source": "queue",
+   "heightM": 50.5,
+   "builtYear": 2021,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 50.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012250971",
+   "pand": "0363100012250971",
+   "name": null,
+   "source": "queue",
+   "heightM": 36.5,
+   "builtYear": 2023,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012250971"
+   ]
+  },
+  {
+   "id": "0363100012119400",
+   "pand": "0363100012119400",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.2,
+   "builtYear": 1950,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w07 (De Roos van Dekamaweg, 28 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012242083",
+   "pand": "0363100012242083",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.7,
+   "builtYear": 2010,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Ottho Heldringstraat, 32 m): washed out 31 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012252442",
+   "pand": "0363100012252442",
+   "name": null,
+   "source": "queue",
+   "rank": 15,
+   "heightM": 64.9,
+   "builtYear": 2022,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower",
+    "curtain"
+   ],
+   "reasons": [
+    "height 64.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence",
+    "w04 (Klaprozenweg, 25 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012085900",
+   "pand": "0363100012085900",
+   "name": null,
+   "source": "queue",
+   "heightM": 29.4,
+   "builtYear": 2001,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "6 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched, w09 punched, w10 punched"
+   ]
+  },
+  {
+   "id": "0363100012253661",
+   "pand": "0363100012253661",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.2,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Distelweg, 34 m): crop 2021 predates the 2022 building",
+    "w05 (Distelweg, 10 m): crop 2022 predates the 2022 building"
+   ]
+  },
+  {
+   "id": "0363100012103159",
+   "pand": "0363100012103159",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.2,
+   "builtYear": 1988,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w09 (Klaprozenweg, 20 m): foliage 34 % > 25 %",
+    "w10 (Klaprozenweg, 13 m): washed out 39 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012080966",
+   "pand": "0363100012080966",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.6,
+   "builtYear": 1968,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "7 of 10 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Van der Boechorststraat, 27 m): no crop",
+    "w08 (Van der Boechorststraat, 23 m): no crop",
+    "w11 (Van der Boechorststraat, 16 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012165747",
+   "pand": "0363100012165747",
+   "name": null,
+   "source": "queue",
+   "heightM": 20.8,
+   "builtYear": 1997,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 12 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Dirk van Hasseltssteeg, 29 m): no crop",
+    "w02 (Nieuwe Nieuwstraat, 26 m): foliage 63 % > 25 %",
+    "w03 (Nieuwezijds Kolk, 20 m): no crop",
+    "w04 (Dirk van Hasseltssteeg, 16 m): obliquity 45 deg > 45",
+    "w05 (Nieuwendijk, 16 m): obliquity 50 deg > 45",
+    "w07 (Nieuwe Nieuwstraat, 13 m): obliquity 48 deg > 45",
+    "w08 (Nieuwezijds Kolk, 10 m): no crop",
+    "w10 (Dirk van Hasseltssteeg, 9 m): no crop",
+    "w11 (Nieuwe Nieuwstraat, 9 m): foliage 63 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012089681",
+   "pand": "0363100012089681",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.3,
+   "builtYear": 1981,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "6 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Commelinstraat, 21 m): no crop",
+    "w09 (Pontanusstraat, 16 m): foliage 30 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012242968",
+   "pand": "0363100012242968",
+   "name": null,
+   "source": "queue",
+   "heightM": 18,
+   "builtYear": 2016,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012238346",
+   "pand": "0363100012238346",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.5,
+   "builtYear": 2011,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w09 (Piri Reisplein, 15 m): washed out 48 % > 30 %",
+    "w10 (Piri Reisplein, 14 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012133666",
+   "pand": "0363100012133666",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.7,
+   "builtYear": 1959,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w07 (Jan Tooropstraat, 28 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012246472",
+   "pand": "0363100012246472",
+   "name": null,
+   "source": "queue",
+   "heightM": 39.8,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012120246",
+   "pand": "0363100012120246",
+   "name": null,
+   "source": "queue",
+   "heightM": 41.2,
+   "builtYear": 1962,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012117753",
+   "pand": "0363100012117753",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.3,
+   "builtYear": 1980,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w04 (Buiksloterdijk, 25 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012250972",
+   "pand": "0363100012250972",
+   "name": null,
+   "source": "queue",
+   "heightM": 46.9,
+   "builtYear": 2023,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012250972"
+   ]
+  },
+  {
+   "id": "0363100012246583",
+   "pand": "0363100012246583",
+   "name": null,
+   "source": "queue",
+   "heightM": 66.3,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 66.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012242134",
+   "pand": "0363100012242134",
+   "name": null,
+   "source": "queue",
+   "heightM": 11,
+   "builtYear": 2016,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "8 of 9 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Ariana Nozemanstraat, 28 m): foliage 41 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012242116",
+   "pand": "0363100012242116",
+   "name": null,
+   "source": "queue",
+   "heightM": 35.4,
+   "builtYear": 2016,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower",
+    "blank-front"
+   ],
+   "reasons": [
+    "height 35.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence",
+    "w01 (Benjamin Brittenstraat, 25 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012130710",
+   "pand": "0363100012130710",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.9,
+   "builtYear": 1922,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "5 judgeable street walls: w01 punched, w02 columns, w03 punched, w04 punched, w07 columns"
+   ]
+  },
+  {
+   "id": "0363100012247673",
+   "pand": "0363100012247673",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.3,
+   "builtYear": 2018,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Stettineiland, 22 m): obliquity 48 deg > 45; crop 2017 predates the 2018 building",
+    "w02 (Stettineiland, 22 m): obliquity 49 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012082192",
+   "pand": "0363100012082192",
+   "name": null,
+   "source": "queue",
+   "heightM": 39,
+   "builtYear": 1968,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012103794",
+   "pand": "0363100012103794",
+   "name": null,
+   "source": "queue",
+   "heightM": 10.4,
+   "builtYear": 1952,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w02 punched"
+   ]
+  },
+  {
+   "id": "0363100012240959",
+   "pand": "0363100012240959",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.6,
+   "builtYear": 2014,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Wichersstraat, 33 m): washed out 31 % > 30 %",
+    "w04 (Buyspad, 25 m): foliage 31 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012109285",
+   "pand": "0363100012109285",
+   "name": null,
+   "source": "queue",
+   "heightM": 25.4,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 10 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Wijnand Nuijenstraat, 36 m): foliage 28 % > 25 %; washed out 54 % > 30 %",
+    "w06 (Piet Mondriaanstraat, 15 m): washed out 30 % > 30 %",
+    "w07 (Wijnand Nuijenstraat, 15 m): foliage 42 % > 25 %",
+    "w10 (Wijnand Nuijenstraat, 15 m): foliage 51 % > 25 %",
+    "w12 (Wijnand Nuijenstraat, 8 m): foliage 30 % > 25 %; obliquity 48 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012123762",
+   "pand": "0363100012123762",
+   "name": null,
+   "source": "queue",
+   "heightM": 37.6,
+   "builtYear": 1977,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 37.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012244540",
+   "pand": "0363100012244540",
+   "name": null,
+   "source": "queue",
+   "heightM": 21.9,
+   "builtYear": 2016,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012150906",
+   "pand": "0363100012150906",
+   "name": null,
+   "source": "queue",
+   "heightM": 32.7,
+   "builtYear": 2006,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 32.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012082246",
+   "pand": "0363100012082246",
+   "name": null,
+   "source": "queue",
+   "heightM": 41.9,
+   "builtYear": 1995,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 41.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012078713",
+   "pand": "0363100012078713",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.4,
+   "builtYear": 1972,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012098805",
+   "pand": "0363100012098805",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.7,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Dr. Jan van Breemenstraat, 43 m): foliage 26 % > 25 %",
+    "w04 (Jan van Galenstraat, 17 m): foliage 36 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012080601",
+   "pand": "0363100012080601",
+   "name": null,
+   "source": "queue",
+   "heightM": 35.5,
+   "builtYear": 1999,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 35.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012131508",
+   "pand": "0363100012131508",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.9,
+   "builtYear": 1995,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Spyridon Louisweg, 23 m): washed out 70 % > 30 %",
+    "w07 (Spyridon Louisweg, 19 m): foliage 26 % > 25 %; washed out 62 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012064727",
+   "pand": "0363100012064727",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.2,
+   "builtYear": 1993,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Statenjachtstraat, 25 m): foliage 75 % > 25 %",
+    "w08 (Statenjachtstraat, 12 m): foliage 46 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012124847",
+   "pand": "0363100012124847",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.6,
+   "builtYear": 1986,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w02 punched, w04 punched, w06 punched, w07 punched"
+   ]
+  },
+  {
+   "id": "0363100012122004",
+   "pand": "0363100012122004",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.5,
+   "builtYear": 1978,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Wagenaarstraat, 24 m): foliage 33 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012083604",
+   "pand": "0363100012083604",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.1,
+   "builtYear": 1900,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012064292",
+   "pand": "0363100012064292",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.6,
+   "builtYear": 1949,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012248827",
+   "pand": "0363100012248827",
+   "name": null,
+   "source": "queue",
+   "heightM": 42.7,
+   "builtYear": 2018,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 42.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012165818",
+   "pand": "0363100012165818",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.2,
+   "builtYear": 2001,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Geschutswerf, 15 m): foliage 39 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012239704",
+   "pand": "0363100012239704",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.1,
+   "builtYear": 2011,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "8 of 9 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Van Kinsbergenstraat, 55 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012141601",
+   "pand": "0363100012141601",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.3,
+   "builtYear": 1965,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "8 of 11 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Schipluidenlaan, 17 m): washed out 45 % > 30 %",
+    "w08 (Schipluidenlaan, 14 m): foliage 31 % > 25 %",
+    "w11 (Schielandplein, 9 m): foliage 28 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012071645",
+   "pand": "0363100012071645",
+   "name": null,
+   "source": "queue",
+   "heightM": 31.6,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Jachthavenweg, 90 m): washed out 86 % > 30 %",
+    "w03 (Skûtsjespad, 33 m): washed out 31 % > 30 %; obliquity 54 deg > 45",
+    "w07 (Skûtsjespad, 16 m): foliage 45 % > 25 %; obliquity 49 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012240481",
+   "pand": "0363100012240481",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.7,
+   "builtYear": 2013,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w02 (Suze Robertsonstraat, 68 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012237884",
+   "pand": "0363100012237884",
+   "name": null,
+   "source": "queue",
+   "heightM": 27.3,
+   "builtYear": 2013,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w08 (Ambulanceingang VUmc, 11 m): washed out 56 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012169284",
+   "pand": "0363100012169284",
+   "name": null,
+   "source": "queue",
+   "heightM": 20.8,
+   "builtYear": 1993,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Kruithuisstraat, 37 m): washed out 52 % > 30 %",
+    "w03 (Hoogte Kadijk, 29 m): washed out 45 % > 30 %",
+    "w04 (Hoogte Kadijk, 20 m): washed out 54 % > 30 %",
+    "w05 (Kruithuisstraat, 14 m): foliage 52 % > 25 %; washed out 30 % > 30 %",
+    "w08 (Kruithuisstraat, 10 m): washed out 65 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012252498",
+   "pand": "0363100012252498",
+   "name": null,
+   "source": "queue",
+   "heightM": 48.3,
+   "builtYear": 2021,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 48.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012110208",
+   "pand": "0363100012110208",
+   "name": null,
+   "source": "queue",
+   "heightM": 35.8,
+   "builtYear": 1989,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 35.8 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012114770",
+   "pand": "0363100012114770",
+   "name": null,
+   "source": "queue",
+   "heightM": 48.5,
+   "builtYear": 1975,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 48.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012112409",
+   "pand": "0363100012112409",
+   "name": null,
+   "source": "queue",
+   "heightM": 46.7,
+   "builtYear": 2005,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 46.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012105061",
+   "pand": "0363100012105061",
+   "name": null,
+   "source": "queue",
+   "heightM": 39.9,
+   "builtYear": 1968,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 39.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012114072",
+   "pand": "0363100012114072",
+   "name": null,
+   "source": "queue",
+   "heightM": 11,
+   "builtYear": 1966,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (De Boelelaan, 48 m): washed out 53 % > 30 %; obliquity 49 deg > 45",
+    "w02 (De Boelelaan, 45 m): obliquity 53 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012063071",
+   "pand": "0363100012063071",
+   "name": null,
+   "source": "queue",
+   "heightM": 9,
+   "builtYear": 2000,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Computerweg, 81 m): washed out 37 % > 30 %",
+    "w04 (Computerweg, 13 m): washed out 60 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012241772",
+   "pand": "0363100012241772",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.5,
+   "builtYear": 2013,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "w03 (8 m, short) reads curtain: noted, not a gap",
+    "3 judgeable street walls: w02 punched, w03 curtain, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012094874",
+   "pand": "0363100012094874",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.8,
+   "builtYear": 1982,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "5 judgeable street walls: w01 punched, w04 punched, w05 punched, w06 punched, w08 punched"
+   ]
+  },
+  {
+   "id": "0363100012063603",
+   "pand": "0363100012063603",
+   "name": null,
+   "source": "queue",
+   "heightM": 31.8,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Transformatorweg, 106 m): foliage 52 % > 25 %",
+    "w03 (Kabelweg, 43 m): washed out 56 % > 30 %",
+    "w04 (Transformatorweg, 42 m): usable 23 % < 40 %",
+    "w07 (Kabelweg, 13 m): usable 19 % < 40 %"
+   ]
+  },
+  {
+   "id": "0363100012252819",
+   "pand": "0363100012252819",
+   "name": null,
+   "source": "queue",
+   "heightM": 48.4,
+   "builtYear": 2024,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 48.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012132433",
+   "pand": "0363100012132433",
+   "name": null,
+   "source": "queue",
+   "heightM": 22.1,
+   "builtYear": 2006,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Alma Tademastraat, 68 m): washed out 34 % > 30 %",
+    "w02 (Jan Voermanstraat, 68 m): foliage 29 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012246469",
+   "pand": "0363100012246469",
+   "name": null,
+   "source": "queue",
+   "heightM": 40.3,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 40.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012143384",
+   "pand": "0363100012143384",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.5,
+   "builtYear": 1962,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "6 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Nicolaas Japiksestraat, 32 m): foliage 36 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012245915",
+   "pand": "0363100012245915",
+   "name": null,
+   "source": "queue",
+   "heightM": 54.3,
+   "builtYear": 2017,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 54.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012169282",
+   "pand": "0363100012169282",
+   "name": null,
+   "source": "queue",
+   "heightM": 14.7,
+   "builtYear": 1840,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1840 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012237888",
+   "pand": "0363100012237888",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.9,
+   "builtYear": 2007,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w07 (Maassluisstraat, 16 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012237887",
+   "pand": "0363100012237887",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.9,
+   "builtYear": 2010,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Kwintsheulstraat, 97 m): washed out 36 % > 30 %",
+    "w02 (Loosduinenstraat, 87 m): foliage 52 % > 25 %",
+    "w07 (Loosduinenstraat, 15 m): washed out 34 % > 30 %",
+    "w08 (Kwintsheulstraat, 15 m): obliquity 53 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012240480",
+   "pand": "0363100012240480",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.7,
+   "builtYear": 2014,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched"
+   ]
+  },
+  {
+   "id": "0363100012141929",
+   "pand": "0363100012141929",
+   "name": null,
+   "source": "queue",
+   "heightM": 5,
+   "builtYear": 1959,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "5 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w04 (Schakelstraat, 34 m): foliage 29 % > 25 %; washed out 43 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012134888",
+   "pand": "0363100012134888",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.5,
+   "builtYear": 1981,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "front class unmeasured on some judgeable walls (no measurement)",
+    "4 judgeable street walls: w01 ?, w02 punched, w04 punched, w05 punched"
+   ]
+  },
+  {
+   "id": "0363100012241496",
+   "pand": "0363100012241496",
+   "name": null,
+   "source": "queue",
+   "heightM": 18.7,
+   "builtYear": 2014,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w02 punched"
+   ]
+  },
+  {
+   "id": "0363100012148603",
+   "pand": "0363100012148603",
+   "name": null,
+   "source": "queue",
+   "heightM": 13.7,
+   "builtYear": 2003,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "3 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Arlandaweg, 24 m): obliquity 53 deg > 45",
+    "w10 (Zaventemweg, 15 m): foliage 74 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012138900",
+   "pand": "0363100012138900",
+   "name": null,
+   "source": "queue",
+   "heightM": 32.1,
+   "builtYear": 1900,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012237793",
+   "pand": "0363100012237793",
+   "name": null,
+   "source": "queue",
+   "heightM": 30.7,
+   "builtYear": 2009,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Kwintsheulstraat, 97 m): washed out 32 % > 30 %",
+    "w07 (Kwintsheulstraat, 17 m): washed out 40 % > 30 %; obliquity 55 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012143167",
+   "pand": "0363100012143167",
+   "name": null,
+   "source": "queue",
+   "heightM": 10.9,
+   "builtYear": 1989,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (De Klencke, 40 m): washed out 51 % > 30 %",
+    "w02 (De Klencke, 39 m): washed out 63 % > 30 %; obliquity 48 deg > 45",
+    "w03 (De Klencke, 38 m): obliquity 49 deg > 45",
+    "w04 (De Klencke, 37 m): washed out 34 % > 30 %",
+    "w06 (De Boelelaan, 31 m): no crop",
+    "w07 (De Klencke, 26 m): obliquity 52 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012242987",
+   "pand": "0363100012242987",
+   "name": null,
+   "source": "queue",
+   "heightM": 14,
+   "builtYear": 2015,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Luchtvaartstraat, 20 m): obliquity 48 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012208268",
+   "pand": "0363100012208268",
+   "name": null,
+   "source": "queue",
+   "heightM": 33.9,
+   "builtYear": 1985,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 33.9 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012253708",
+   "pand": "0363100012253708",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.9,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Ridderspoorweg, 48 m): washed out 54 % > 30 %; crop 2019 predates the 2022 building",
+    "w04 (Klaprozenweg, 9 m): crop 2021 predates the 2022 building"
+   ]
+  },
+  {
+   "id": "0363100012195030",
+   "pand": "0363100012195030",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.2,
+   "builtYear": 1966,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w07 (Dr. Jan van Breemenstraat, 17 m): foliage 26 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012095940",
+   "pand": "0363100012095940",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.7,
+   "builtYear": 1961,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w08 (Transformatorweg, 16 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012093565",
+   "pand": "0363100012093565",
+   "name": null,
+   "source": "queue",
+   "heightM": 42.5,
+   "builtYear": 2024,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 42.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012165552",
+   "pand": "0363100012165552",
+   "name": null,
+   "source": "queue",
+   "heightM": 44.5,
+   "builtYear": 1998,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 44.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012072045",
+   "pand": "0363100012072045",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.4,
+   "builtYear": 1974,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 7 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Radioweg, 101 m): foliage 59 % > 25 %",
+    "w02 (Kruislaan, 56 m): foliage 27 % > 25 %",
+    "w03 (Radioweg, 52 m): no crop",
+    "w04 (Radioweg, 34 m): no crop",
+    "w05 (Radioweg, 26 m): no crop",
+    "w06 (Radioweg, 20 m): no crop",
+    "w07 (Radioweg, 13 m): obliquity 52 deg > 45"
+   ]
+  },
+  {
+   "id": "0363100012571849",
+   "pand": "0363100012571849",
+   "name": null,
+   "source": "queue",
+   "heightM": 17,
+   "builtYear": 2024,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Jan Tooropstraat, 91 m): crop 2022 predates the 2024 building",
+    "w03 (Piet Mondriaanstraat, 45 m): crop 2022 predates the 2024 building",
+    "w06 (Johan Greivestraat, 19 m): foliage 28 % > 25 %; crop 2016 predates the 2024 building"
+   ]
+  },
+  {
+   "id": "0363100012247188",
+   "pand": "0363100012247188",
+   "name": null,
+   "source": "queue",
+   "heightM": 47.5,
+   "builtYear": 2019,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 47.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012254552",
+   "pand": "0363100012254552",
+   "name": null,
+   "source": "queue",
+   "heightM": 20.4,
+   "builtYear": 2024,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w06 (Radarweg, 23 m): washed out 92 % > 30 %; crop 2022 predates the 2024 building",
+    "w07 (Radarweg, 9 m): washed out 50 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012253362",
+   "pand": "0363100012253362",
+   "name": null,
+   "source": "queue",
+   "heightM": 83.2,
+   "builtYear": 2023,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 83.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012126563",
+   "pand": "0363100012126563",
+   "name": null,
+   "source": "queue",
+   "heightM": 9.3,
+   "builtYear": 1952,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w03 punched"
+   ]
+  },
+  {
+   "id": "0363100012077602",
+   "pand": "0363100012077602",
+   "name": null,
+   "source": "queue",
+   "heightM": 50.7,
+   "builtYear": 1967,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 50.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012085297",
+   "pand": "0363100012085297",
+   "name": null,
+   "source": "queue",
+   "heightM": 6,
+   "builtYear": 1972,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "3 judgeable street walls: w04 punched, w05 punched, w06 punched"
+   ]
+  },
+  {
+   "id": "0363100012144276",
+   "pand": "0363100012144276",
+   "name": null,
+   "source": "queue",
+   "heightM": 12.8,
+   "builtYear": 1963,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "4 of 9 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Henk Henriëtstraat, 36 m): foliage 36 % > 25 %",
+    "w05 (Henk Henriëtstraat, 32 m): foliage 43 % > 25 %",
+    "w06 (Andries Copierstraat, 29 m): obliquity 53 deg > 45",
+    "w08 (Andries Copierstraat, 26 m): camera 5.2 m < 8 m from a 26 m wall",
+    "w11 (Jan Tooropstraat, 14 m): washed out 49 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012112686",
+   "pand": "0363100012112686",
+   "name": null,
+   "source": "queue",
+   "heightM": 59.4,
+   "builtYear": 2002,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 59.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012246632",
+   "pand": "0363100012246632",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.9,
+   "builtYear": 2017,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "w06 (11 m, short) reads curtain: noted, not a gap",
+    "4 judgeable street walls: w02 punched, w03 punched, w05 punched, w06 curtain"
+   ]
+  },
+  {
+   "id": "0363100012105094",
+   "pand": "0363100012105094",
+   "name": null,
+   "source": "queue",
+   "heightM": 36.4,
+   "builtYear": 1989,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 36.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012109322",
+   "pand": "0363100012109322",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.3,
+   "builtYear": 1962,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w06 (Transformatorweg, 19 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012065279",
+   "pand": "0363100012065279",
+   "name": null,
+   "source": "queue",
+   "heightM": 4.2,
+   "builtYear": 1982,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w01 (Jan Tooropstraat, 41 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012164353",
+   "pand": "0363100012164353",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.7,
+   "builtYear": 1999,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
+   ]
+  },
+  {
+   "id": "0363100012083151",
+   "pand": "0363100012083151",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.7,
+   "builtYear": 1900,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1900 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "0363100012126767",
+   "pand": "0363100012126767",
+   "name": null,
+   "source": "queue",
+   "heightM": 15.2,
+   "builtYear": 1960,
+   "verdict": "kit-gap",
+   "gaps": [
+    "curtain"
+   ],
+   "reasons": [
+    "w06 (Jan Tooropstraat, 22 m) reads curtain"
+   ]
+  },
+  {
+   "id": "0363100012239598",
+   "pand": "0363100012239598",
+   "name": null,
+   "source": "queue",
+   "heightM": 28.3,
+   "builtYear": 2013,
+   "verdict": "kit-gap",
+   "gaps": [
+    "blank-front"
+   ],
+   "reasons": [
+    "w05 (Piet Mondriaanstraat, 15 m) reads blank"
+   ]
+  },
+  {
+   "id": "0363100012179691",
+   "pand": "0363100012179691",
+   "name": null,
+   "source": "queue",
+   "heightM": 50.6,
+   "builtYear": 1960,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 50.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012074840",
+   "pand": "0363100012074840",
+   "name": null,
+   "source": "queue",
+   "heightM": 25,
+   "builtYear": 1974,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 0 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage"
+   ]
+  },
+  {
+   "id": "0363100012254404",
+   "pand": "0363100012254404",
+   "name": null,
+   "source": "queue",
+   "heightM": 6.4,
+   "builtYear": 2021,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w05 (Koivistokade, 15 m): crop 2018 predates the 2021 building",
+    "w06 (Koivistokade, 12 m): obliquity 48 deg > 45",
+    "w07 (Koivistokade, 10 m): washed out 45 % > 30 %; crop 2021 predates the 2021 building"
+   ]
+  },
+  {
+   "id": "0363100012243686",
+   "pand": "0363100012243686",
+   "name": null,
+   "source": "queue",
+   "heightM": 40.7,
+   "builtYear": 2016,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 40.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012127007",
+   "pand": "0363100012127007",
+   "name": null,
+   "source": "queue",
+   "heightM": 40.3,
+   "builtYear": 1932,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "rijksmonument: ornament carries the likeness"
+   ]
+  },
+  {
+   "id": "0363100012242098",
+   "pand": "0363100012242098",
+   "name": null,
+   "source": "queue",
+   "heightM": 10.4,
+   "builtYear": 2014,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w02 (Radioweg, 70 m): no crop"
+   ]
+  },
+  {
+   "id": "0363100012069797",
+   "pand": "0363100012069797",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.4,
+   "builtYear": 2001,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "6 judgeable street walls: w07 columns, w08 punched, w09 columns, w10 columns, w11 columns, w12 columns"
+   ]
+  },
+  {
+   "id": "0363100012092290",
+   "pand": "0363100012092290",
+   "name": null,
+   "source": "queue",
+   "heightM": 8.8,
+   "builtYear": 2000,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "3 judgeable street walls: w01 punched, w02 punched, w03 punched"
+   ]
+  },
+  {
+   "id": "0363100012243124",
+   "pand": "0363100012243124",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.6,
+   "builtYear": 2012,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012093690",
+   "pand": "0363100012093690",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.4,
+   "builtYear": 2004,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 0 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage"
+   ]
+  },
+  {
+   "id": "0363100012241720",
+   "pand": "0363100012241720",
+   "name": null,
+   "source": "queue",
+   "heightM": 53.3,
+   "builtYear": 2015,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 53.3 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012239207",
+   "pand": "0363100012239207",
+   "name": null,
+   "source": "queue",
+   "heightM": 3.1,
+   "builtYear": 2013,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 0 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage"
+   ]
+  },
+  {
+   "id": "0363100012246549",
+   "pand": "0363100012246549",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.6,
+   "builtYear": 2018,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 43.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012238742",
+   "pand": "0363100012238742",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.6,
+   "builtYear": 2007,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012250984",
+   "pand": "0363100012250984",
+   "name": null,
+   "source": "queue",
+   "heightM": 44.4,
+   "builtYear": 1928,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 44.4 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012081222",
+   "pand": "0363100012081222",
+   "name": null,
+   "source": "queue",
+   "heightM": 74.2,
+   "builtYear": 1985,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 74.2 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012120865",
+   "pand": "0363100012120865",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.5,
+   "builtYear": 2007,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.5 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012090220",
+   "pand": "0363100012090220",
+   "name": null,
+   "source": "queue",
+   "heightM": 11.6,
+   "builtYear": 1992,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "front class unmeasured on some judgeable walls (no measurement)",
+    "2 judgeable street walls: w04 punched, w05 ?"
+   ]
+  },
+  {
+   "id": "0363100012251218",
+   "pand": "0363100012251218",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.5,
+   "builtYear": 2022,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Ariana Nozemanstraat, 93 m): foliage 28 % > 25 %; crop 2020 predates the 2022 building",
+    "w02 (Reinier Engelmanstraat, 93 m): crop 2022 predates the 2022 building",
+    "w03 (Jan Puntstraat, 29 m): crop 2022 predates the 2022 building",
+    "w04 (Reinier Engelmanstraat, 29 m): crop 2022 predates the 2022 building"
+   ]
+  },
+  {
+   "id": "0363100012074933",
+   "pand": "0363100012074933",
+   "name": null,
+   "source": "queue",
+   "heightM": 45.6,
+   "builtYear": 2007,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 45.6 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012140686",
+   "pand": "0363100012140686",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.1,
+   "builtYear": 2003,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "2 judgeable street walls: w01 punched, w07 punched"
+   ]
+  },
+  {
+   "id": "0363100012150639",
+   "pand": "0363100012150639",
+   "name": null,
+   "source": "queue",
+   "heightM": 16.3,
+   "builtYear": 2007,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w09 (Carolina MacGillavrylaan, 12 m): washed out 31 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012254300",
+   "pand": "0363100012254300",
+   "name": null,
+   "source": "queue",
+   "heightM": 62,
+   "builtYear": 2023,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 62 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012068941",
+   "pand": "0363100012068941",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.4,
+   "builtYear": 1976,
+   "verdict": "buildable",
+   "gaps": [],
+   "reasons": [
+    "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
+   ]
+  },
+  {
+   "id": "0363100012216977",
+   "pand": "0363100012216977",
+   "name": null,
+   "source": "queue",
+   "heightM": 36.1,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 36.1 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012239262",
+   "pand": "0363100012239262",
+   "name": null,
+   "source": "queue",
+   "heightM": 27.2,
+   "builtYear": 2009,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "0 of 1 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Gerrie Knetemannlaan, 10 m): washed out 53 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012125830",
+   "pand": "0363100012125830",
+   "name": null,
+   "source": "queue",
+   "heightM": 48,
+   "builtYear": 1972,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 48 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "0363100012079952",
+   "pand": "0363100012079952",
+   "name": null,
+   "source": "queue",
+   "heightM": 7.5,
+   "builtYear": 1968,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w03 (Turbinestraat, 18 m): washed out 41 % > 30 %",
+    "w04 (Turbinestraat, 16 m): foliage 33 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012196327",
+   "pand": "0363100012196327",
+   "name": null,
+   "source": "queue",
+   "heightM": 43.7,
+   "builtYear": 1965,
+   "verdict": "kit-gap",
+   "gaps": [
+    "tower"
+   ],
+   "reasons": [
+    "height 43.7 m over the crop cap: crops stop at 32 m, the upper storeys have no evidence"
+   ]
+  },
+  {
+   "id": "w1489746218",
+   "pand": null,
+   "name": "Prins en Keizer",
+   "source": "target",
+   "rank": 1,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "OSM 4 part(s) w1489746218,w1489746219: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012170259",
+   "pand": "0363100012170259",
+   "name": "Nederlandse Film en Televisie Academie",
+   "source": "target",
+   "rank": 2,
+   "heightM": 19.5,
+   "builtYear": 1999,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "1 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Meester Visserplein, 63 m): foliage 42 % > 25 %",
+    "w03 (Rapenburgerstraat, 39 m): washed out 56 % > 30 %"
+   ]
+  },
+  {
+   "id": "0363100012171994",
+   "pand": "0363100012171994",
+   "name": "Academie van Bouwkunst",
+   "source": "target",
+   "rank": 3,
+   "heightM": 13.4,
+   "builtYear": 1613,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1613 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "w57864988",
+   "pand": null,
+   "name": "Belastingdienst",
+   "source": "target",
+   "rank": 6,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "OSM 1 part(s) w57864988: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "w268998785",
+   "pand": null,
+   "name": "Weesperplein",
+   "source": "target",
+   "rank": 7,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "OSM 1 part(s) w268998785: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "identity: underground station (Gemeentelijk Vervoerbedrijf)"
+   ]
+  },
+  {
+   "id": "w1487606275",
+   "pand": null,
+   "name": "DoubleTree by Hilton Amsterdam Centraal Station",
+   "source": "target",
+   "rank": 9,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "OSM 17 part(s) w1487606275,w1487642120: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "identity: name merge over 17 OSM ways"
+   ]
+  },
+  {
+   "id": "0363100012148010",
+   "pand": "0363100012148010",
+   "name": "OBA Roelof Hartplein",
+   "source": "target",
+   "rank": 12,
+   "heightM": 24.8,
+   "builtYear": 1928,
+   "verdict": "no-evidence",
+   "gaps": [],
+   "reasons": [
+    "2 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
+    "w01 (Roelof Hartstraat, 38 m): curtain reading untrusted: foliage 27 % > 25 %; not-wall #4f412a does not read as glass on #694c38 (>= 10 L* darker, chroma < 15)",
+    "w06 (Gerard Terborgstraat, 10 m): washed out 34 % > 30 %",
+    "w07 (Gerard Terborgstraat, 9 m): foliage 32 % > 25 %",
+    "w10 (Gerard Terborgstraat, 8 m): foliage 64 % > 25 %"
+   ]
+  },
+  {
+   "id": "0363100012170299",
+   "pand": "0363100012170299",
+   "name": "De Joodse Invalide",
+   "source": "target",
+   "rank": 18,
+   "heightM": 31.5,
+   "builtYear": 1936,
+   "verdict": "covered",
+   "gaps": [],
+   "reasons": [
+    "already drawn by ordinary-0363100012253824"
+   ]
+  },
+  {
+   "id": "w754717732",
+   "pand": null,
+   "name": "ABN AMRO World HQ",
+   "source": "target",
+   "rank": 20,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "OSM 4 part(s) w754717732,w754717724: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "0363100012169565",
+   "pand": "0363100012169565",
+   "name": "Barlaeus Gymnasium",
+   "source": "target",
+   "rank": 21,
+   "heightM": 21.8,
+   "builtYear": 1885,
+   "verdict": "bespoke",
+   "gaps": [],
+   "reasons": [
+    "built 1885 (< 1915): ornamented historic front"
+   ]
+  },
+  {
+   "id": "w754856621",
+   "pand": null,
+   "name": "WTC (H)",
+   "source": "target",
+   "rank": 28,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "OSM 1 part(s) w754856621: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  },
+  {
+   "id": "w1001115825",
+   "pand": null,
+   "name": "UN Studio",
+   "source": "target",
+   "rank": 36,
+   "heightM": null,
+   "builtYear": null,
+   "verdict": "not-in-tiles",
+   "gaps": [],
+   "reasons": [
+    "OSM 2 part(s) w1001115825,w1001115823: no BAG pand of the tiles inside (the OSM parts draw it)",
+    "pand not in the building tiles: crops and facts cannot run"
+   ]
+  }
+ ]
+}
