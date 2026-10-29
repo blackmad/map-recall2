@@ -13,6 +13,8 @@ const config = {
   sentryDsn: process.env.SENTRY_DSN || '',
   release: process.env.GITHUB_SHA || '',
   appCheckSiteKey: process.env.APPCHECK_SITE_KEY || '',
+  // Consent-free gameplay analytics (#115): the same-origin Hosting rewrite, e.g. /api/analytics.
+  analyticsEndpoint: process.env.ANALYTICS_ENDPOINT || '',
 };
 
 const target = path.join(process.cwd(), 'public', 'canal-drive', 'js', 'runtime-config.js');

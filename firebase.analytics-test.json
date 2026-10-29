@@ -1,0 +1,30 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "analytics",
+      "runtime": "nodejs22"
+    }
+  ],
+  "emulators": {
+    "functions": {
+      "port": 8399
+    },
+    "firestore": {
+      "port": 8398
+    },
+    "ui": {
+      "enabled": false
+    },
+    "singleProjectMode": true,
+    "hub": {
+      "port": 8397
+    },
+    "logging": {
+      "port": 8396
+    }
+  }
+}
