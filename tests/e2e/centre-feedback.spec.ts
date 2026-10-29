@@ -18,6 +18,7 @@ export const CENTRE_POSES: { id: string; note: string; x: number; y: number; ang
   // #99 (2026-10-29): close views of the IJ canopy ribs on the quay and of the Stationsplein island pavilions.
   { id: 'ij-ribs-close', note: 'IJ canopy ribs from the quay, riding west', x: 643.9, y: -7844.8, angle: -2.62, zoom: 1.8 },
   { id: 'island-north', note: 'Stationsplein island from the tram stops', x: 200.35, y: -7349.79, angle: 1.6912, zoom: 1.9 },
+  { id: 'beurs-damrak', note: 'Beurs van Berlage Damrak front: bays, arcade, entrances, crests', x: -800, y: -6380, angle: 0.25, zoom: 1.4 },
 ];
 // CENTRE_FB_POSES='[{"id":"x","x":0,"y":0,"angle":0,"zoom":1.5}]' adds ad-hoc poses (world px; lng/lat -> x,y: see #99 handoff).
 if (process.env.CENTRE_FB_POSES) CENTRE_POSES.push(...JSON.parse(process.env.CENTRE_FB_POSES));
