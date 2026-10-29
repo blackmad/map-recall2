@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bloem-128-206-r1",
+ "street": "Bloemstraat",
+ "sources": [
+  {
+   "id": "strip-2021-03-17",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-17",
+   "image": "staging/block-face/bloem-128-206-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/bloem-128-206/auto-place.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable",
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174735",
+   "slug": "bloem-174735",
+   "address": "Bloemstraat 154",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b1aba0",
+     "evidence": "strip 2021-03-17 span 1152-1371: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2021-03-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 1 on eaves 1, stucco 1, crown -; strip 2021-03-17 span 1152-1371"
+   }
+  },
+  {
+   "pandId": "0363100012174650",
+   "slug": "bloem-174650",
+   "address": "Bloemstraat 152",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "measuredPalette": {
+     "brick": "#c1bcac",
+     "evidence": "strip 2021-03-17 span 1371-1583: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 1 on eaves 1, roof 1, stucco 1, crown -; strip 2021-03-17 span 1371-1583"
+   }
+  },
+  {
+   "pandId": "0363100012167881",
+   "slug": "bloem-167881",
+   "address": "Bloemstraat 150",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "measuredPalette": {
+     "brick": "#83878c",
+     "evidence": "strip 2021-03-17 span 1583-1830: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie,woonfunctie"
+    ],
+    "photoDate": "2021-03-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 1 on eaves 1, roof 1, stucco 1, crown -, columns 1; strip 2021-03-17 span 1583-1830"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

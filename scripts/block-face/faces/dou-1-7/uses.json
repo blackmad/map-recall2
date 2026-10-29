@@ -1,0 +1,233 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:01:45.295Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159383",
+   "addresses": [
+    "Gerard Doustraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000643474"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13439937665,
+     "lngLat": [
+      4.8872464,
+      52.3553046
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:cardboard": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container",
+      "ref": "PAK02667"
+     },
+     "fetchedAt": "2026-10-29T21:01:45.295Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161208",
+   "addresses": [
+    "Gerard Doustraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1A-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001012487"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160332",
+   "addresses": [
+    "Gerard Doustraat 1B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1B-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000643483"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085925",
+   "addresses": [
+    "Gerard Doustraat 1C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1C-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000643490"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157397",
+   "addresses": [
+    "Gerard Doustraat 1D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1D-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000643494"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236161",
+   "addresses": [
+    "Gerard Doustraat 1E",
+    "Gerard Doustraat 1F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 1F-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010001001099"
+    },
+    {
+     "address": "Gerard Doustraat 1E-H",
+     "use": "industriefunctie",
+     "areaM2": 58,
+     "bagId": "0363010012159000"
+    },
+    {
+     "address": "Gerard Doustraat 1F-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010012159001"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160743",
+   "addresses": [
+    "Gerard Doustraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000643509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236717",
+   "addresses": [
+    "Gerard Doustraat 3A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3A-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001012489"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152502",
+   "addresses": [
+    "Gerard Doustraat 3B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3B-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001018808"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157463",
+   "addresses": [
+    "Gerard Doustraat 3C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3C-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000643521"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236467",
+   "addresses": [
+    "Gerard Doustraat 5",
+    "Gerard Doustraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 5-H",
+     "use": "industriefunctie",
+     "areaM2": 42,
+     "bagId": "0363010000643529"
+    },
+    {
+     "address": "Gerard Doustraat 7-H",
+     "use": "industriefunctie",
+     "areaM2": 37,
+     "bagId": "0363010000643537"
+    },
+    {
+     "address": "Gerard Doustraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012601224"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "face": "ruysdaelkade-89-105-r1",
+ "image": "staging/block-face/ruysdaelkade-89-105-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 649,
+ "height": 825,
+ "groundNAP": 0.241,
+ "heightM": 20.61,
+ "frame": {
+  "midRD": [
+   120929.38956249999,
+   485397.236
+  ],
+  "uRD": [
+   0.059553707393464564,
+   -0.9982251028378789
+  ],
+  "nRD": [
+   -0.9982251028378789,
+   -0.059553707393464564
+  ]
+ },
+ "x0M": -8.39,
+ "x1M": 7.84,
+ "date": "2023-01-03",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012062357",
+   "x0M": -8.39,
+   "x1M": -2.57,
+   "px": [
+    0,
+    233
+   ],
+   "date": "2023-01-03",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000093",
+     "timestamp": "2023-01-03T10:09:30.539200Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 20.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000092",
+     "timestamp": "2023-01-03T10:09:29.899220Z",
+     "distanceM": 7.2,
+     "obliquityDeg": 21.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165247",
+   "x0M": -2.57,
+   "x1M": 2.83,
+   "px": [
+    233,
+    449
+   ],
+   "date": "2023-01-03",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000091",
+     "timestamp": "2023-01-03T10:09:29.239280Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 17.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000092",
+     "timestamp": "2023-01-03T10:09:29.899220Z",
+     "distanceM": 7.3,
+     "obliquityDeg": 24.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163180",
+   "x0M": 2.83,
+   "x1M": 7.84,
+   "px": [
+    449,
+    649
+   ],
+   "date": "2023-01-03",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000090",
+     "timestamp": "2023-01-03T10:09:28.464200Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 17.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002913_pano_0001_000091",
+     "timestamp": "2023-01-03T10:09:29.239280Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 25.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2017-04-12": 2,
+  "2022-03-21": 8,
+  "2020-07-07": 8,
+  "2022-01-10": 8,
+  "2016-08-02": 8,
+  "2019-05-02": 8,
+  "2022-01-11": 8,
+  "2021-04-23": 8,
+  "2024-09-04": 8,
+  "2020-01-06": 8,
+  "2023-01-03": 8,
+  "2019-01-30": 8,
+  "2018-06-11": 8,
+  "2019-01-18": 8,
+  "2021-01-18": 8,
+  "2025-09-29": 0,
+  "2024-12-11": 0,
+  "2025-07-30": 0,
+  "2021-04-26": 0,
+  "2020-07-06": 0,
+  "2020-08-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "ruysdaelkade-89-105",
+  "px": [
+   1198,
+   1847
+  ]
+ }
+}

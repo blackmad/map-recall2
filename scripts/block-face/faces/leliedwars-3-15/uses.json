@@ -1,0 +1,133 @@
+{
+ "street": "Tweede Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:26:54.149Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168653",
+   "addresses": [
+    "Tweede Leliedwarsstraat 3",
+    "Tweede Leliedwarsstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000552593"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000552597"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2631625098,
+     "lngLat": [
+      4.8807964,
+      52.3756175
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1015TB",
+      "addr:street": "Tweede Leliedwarsstraat",
+      "email": "electriclady21@hotmail.com",
+      "fee": "yes",
+      "name": "Electric Ladyland",
+      "opening_hours": "Tu-Sa 14:00-18:00",
+      "phone": "+31 20 420 3776",
+      "reservation": "required",
+      "reservation:website": "https://electricladyland.appointy.com/",
+      "tourism": "museum",
+      "website": "http://electric-lady-land.com/",
+      "wikidata": "Q41574019",
+      "wikimedia_commons": "Category:Electric Ladyland (museum)",
+      "wikipedia": "en:Electric Ladyland (museum)"
+     },
+     "fetchedAt": "2026-10-29T22:26:54.149Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169918",
+   "addresses": [
+    "Tweede Leliedwarsstraat 7",
+    "Tweede Leliedwarsstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000983681"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000552605"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169966",
+   "addresses": [
+    "Tweede Leliedwarsstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 13-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000552613"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11377616764,
+     "lngLat": [
+      4.8808245,
+      52.3754728
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Davie's"
+     },
+     "fetchedAt": "2026-10-29T22:26:54.149Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169976",
+   "addresses": [
+    "Tweede Leliedwarsstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000552619"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

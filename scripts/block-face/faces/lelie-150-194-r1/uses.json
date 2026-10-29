@@ -1,0 +1,41 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:49:16.531Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169842",
+   "addresses": [
+    "Nieuwe Leliestraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 156-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000953474"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169843",
+   "addresses": [
+    "Nieuwe Leliestraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 154",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000946027"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

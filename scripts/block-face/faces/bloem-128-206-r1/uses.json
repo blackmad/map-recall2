@@ -1,0 +1,57 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:40:37.539Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174735",
+   "addresses": [
+    "Bloemstraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 154-H",
+     "use": "industriefunctie",
+     "areaM2": 381,
+     "bagId": "0363010000589193"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174650",
+   "addresses": [
+    "Bloemstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000589186"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167881",
+   "addresses": [
+    "Bloemstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 150-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000589179"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

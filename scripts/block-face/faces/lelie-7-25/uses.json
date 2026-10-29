@@ -1,0 +1,236 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:50:01.417Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174502",
+   "addresses": [
+    "Nieuwe Leliestraat 7D",
+    "Nieuwe Leliestraat 7C",
+    "Nieuwe Leliestraat 7A",
+    "Nieuwe Leliestraat 7B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756629"
+    },
+    {
+     "address": "Nieuwe Leliestraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756628"
+    },
+    {
+     "address": "Nieuwe Leliestraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756626"
+    },
+    {
+     "address": "Nieuwe Leliestraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756627"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174503",
+   "addresses": [
+    "Nieuwe Leliestraat 9B",
+    "Nieuwe Leliestraat 9C",
+    "Nieuwe Leliestraat 9D",
+    "Nieuwe Leliestraat 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756634"
+    },
+    {
+     "address": "Nieuwe Leliestraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756636"
+    },
+    {
+     "address": "Nieuwe Leliestraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756637"
+    },
+    {
+     "address": "Nieuwe Leliestraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000756633"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168799",
+   "addresses": [
+    "Nieuwe Leliestraat 11A",
+    "Nieuwe Leliestraat 11B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000756659"
+    },
+    {
+     "address": "Nieuwe Leliestraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000756660"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168804",
+   "addresses": [
+    "Nieuwe Leliestraat 13",
+    "Nieuwe Leliestraat 15B",
+    "Nieuwe Leliestraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000756644"
+    },
+    {
+     "address": "Nieuwe Leliestraat 13",
+     "use": "industriefunctie",
+     "areaM2": 221,
+     "bagId": "0363010001025096"
+    },
+    {
+     "address": "Nieuwe Leliestraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001025097"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11211150638,
+     "lngLat": [
+      4.8831416,
+      52.3757378
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1015SH",
+      "addr:street": "Nieuwe Leliestraat",
+      "name": "Design Thinkers Academy",
+      "office": "company",
+      "website": "https://www.designthinkersacademy.com"
+     },
+     "fetchedAt": "2026-10-29T21:50:01.417Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168803",
+   "addresses": [
+    "Nieuwe Leliestraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000756650"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168800",
+   "addresses": [
+    "Nieuwe Leliestraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 21-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000756670"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012243821",
+   "addresses": [
+    "Nieuwe Leliestraat 23"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168802",
+   "addresses": [
+    "Nieuwe Leliestraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 25",
+     "use": "winkelfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001019603"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001019604"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747871780,
+     "lngLat": [
+      4.882826,
+      52.3756654
+     ],
+     "tags": {
+      "name": "Dr. Spectacles",
+      "shop": "optician"
+     },
+     "fetchedAt": "2026-10-29T21:50:01.417Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

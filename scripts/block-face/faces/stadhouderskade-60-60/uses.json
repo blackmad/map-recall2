@@ -1,0 +1,41 @@
+{
+ "street": "Stadhouderskade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:05:53.434Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236103",
+   "addresses": [
+    "Stadhouderskade 60A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Stadhouderskade 60A",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010000818650"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160700",
+   "addresses": [
+    "Stadhouderskade 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Stadhouderskade 60",
+     "use": "onderwijsfunctie",
+     "areaM2": 2474,
+     "bagId": "0363010000818649"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

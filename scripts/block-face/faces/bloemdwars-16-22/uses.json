@@ -1,0 +1,80 @@
+{
+ "street": "Eerste Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:17:14.909Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168648",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 22",
+    "Eerste Bloemdwarsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 24",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000543947"
+    },
+    {
+     "address": "Rozengracht 28",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000797399"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172770",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 20"
+   ],
+   "groundUnits": [],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174014",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 18A",
+    "Eerste Bloemdwarsstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001025506"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 18B",
+     "use": "winkelfunctie",
+     "areaM2": 25,
+     "bagId": "0363010001025507"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174013",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000650346"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

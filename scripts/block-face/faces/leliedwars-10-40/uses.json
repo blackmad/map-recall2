@@ -1,0 +1,173 @@
+{
+ "street": "Derde Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:04:37.199Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174176",
+   "addresses": [
+    "Derde Leliedwarsstraat 22",
+    "Derde Leliedwarsstraat 24",
+    "Derde Leliedwarsstraat 26",
+    "Derde Leliedwarsstraat 28",
+    "Derde Leliedwarsstraat 30",
+    "Derde Leliedwarsstraat 32",
+    "Derde Leliedwarsstraat 34",
+    "Derde Leliedwarsstraat 36",
+    "Derde Leliedwarsstraat 38",
+    "Derde Leliedwarsstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Leliedwarsstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000837186"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000947502"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000947504"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000947505"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000947506"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000947507"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000947508"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000588768"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000588769"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000947503"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169836",
+   "addresses": [
+    "Derde Leliedwarsstraat 18",
+    "Derde Leliedwarsstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Leliedwarsstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000953144"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000953145"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169834",
+   "addresses": [
+    "Derde Leliedwarsstraat 14",
+    "Derde Leliedwarsstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Leliedwarsstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000953142"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000953143"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168092",
+   "addresses": [
+    "Derde Leliedwarsstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Leliedwarsstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000555562"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174431",
+   "addresses": [
+    "Derde Leliedwarsstraat 10A",
+    "Derde Leliedwarsstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Leliedwarsstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000555555"
+    },
+    {
+     "address": "Derde Leliedwarsstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000555556"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

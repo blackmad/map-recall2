@@ -1,0 +1,130 @@
+{
+ "street": "Eerste Looiersdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:50:20.609Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170063",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 22",
+    "Eerste Looiersdwarsstraat 24B",
+    "Eerste Looiersdwarsstraat 24A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000983001"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 22",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012062314"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000983000"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170062",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 20A",
+    "Eerste Looiersdwarsstraat 20B",
+    "Eerste Looiersdwarsstraat 20C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000547510"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000547511"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000958910"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571515",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010012587247"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170077",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001987458"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170078",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 10A",
+    "Eerste Looiersdwarsstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000980816"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000980817"
+    },
+    {
+     "address": "Oude Looiersstraat 57-H",
+     "use": "industriefunctie",
+     "areaM2": 52,
+     "bagId": "0363010001020089"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

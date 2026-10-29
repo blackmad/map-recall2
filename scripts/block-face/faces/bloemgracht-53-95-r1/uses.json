@@ -1,0 +1,84 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:28:38.915Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170212",
+   "addresses": [
+    "Bloemgracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 59-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000588566"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170209",
+   "addresses": [
+    "Bloemgracht 61A",
+    "Bloemgracht 61B",
+    "Bloemgracht 61C",
+    "Bloemgracht 61D",
+    "Bloemgracht 61E",
+    "Bloemgracht 61F",
+    "Bloemgracht 61H",
+    "Bloemgracht 61G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 61B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000686037"
+    },
+    {
+     "address": "Bloemgracht 61C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000686038"
+    },
+    {
+     "address": "Bloemgracht 61D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000686039"
+    },
+    {
+     "address": "Bloemgracht 61E",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000686040"
+    },
+    {
+     "address": "Bloemgracht 61F",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000686041"
+    },
+    {
+     "address": "Bloemgracht 61H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000686043"
+    },
+    {
+     "address": "Bloemgracht 61G",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000686042"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

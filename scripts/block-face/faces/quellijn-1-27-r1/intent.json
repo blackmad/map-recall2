@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "quellijn-1-27-r1",
+ "street": "Quellijnstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/quellijn-1-27-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/quellijn-1-27/auto-place.json"
+ },
+ "types": [
+  "pijp-1879-five-low"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012158625",
+   "slug": "quellijn-158625",
+   "address": "Quellijnstraat 3",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "measuredPalette": {
+     "brick": "#f9d2ac",
+     "evidence": "strip 2022-03-21 span 248-508: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-03-21 span 248-508"
+   }
+  },
+  {
+   "pandId": "0363100012164504",
+   "slug": "quellijn-164504",
+   "address": "Quellijnstraat 5",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#f5d4ae",
+     "evidence": "strip 2022-03-21 span 508-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves 1, stucco 1, columns 1; strip 2022-03-21 span 508-768"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012158625",
+    "stripRow": 266,
+    "evidence": "auto-place: strip skyline cornice 13.95 m within 1 m of the pijp-1879-five-low line 13 m; 3DBAG/PDOK eaves 10.65 m"
+   },
+   {
+    "pand": "0363100012164504",
+    "stripRow": 285,
+    "evidence": "auto-place: strip skyline cornice 13.47 m within 1 m of the pijp-1879-five-low line 13 m; 3DBAG/PDOK eaves 10.5 m"
+   }
+  ]
+ }
+}

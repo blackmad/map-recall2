@@ -1,0 +1,108 @@
+{
+ "street": "Tweede Helmersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162865",
+   "addresses": [
+    "Tweede Helmersstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 91-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000550645"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156928",
+   "addresses": [
+    "Tweede Helmersstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 93-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000550647"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158996",
+   "addresses": [
+    "Tweede Helmersstraat 95A",
+    "Tweede Helmersstraat 95B",
+    "Tweede Helmersstraat 95C",
+    "Tweede Helmersstraat 95D",
+    "Tweede Helmersstraat 95E",
+    "Tweede Helmersstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 95A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012574702"
+    },
+    {
+     "address": "Tweede Helmersstraat 95B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012574703"
+    },
+    {
+     "address": "Tweede Helmersstraat 95C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012576688"
+    },
+    {
+     "address": "Tweede Helmersstraat 95D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012576689"
+    },
+    {
+     "address": "Tweede Helmersstraat 95E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012576690"
+    },
+    {
+     "address": "Tweede Helmersstraat 95-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000550650"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165956",
+   "addresses": [
+    "Tweede Helmersstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Helmersstraat 97-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000550654"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

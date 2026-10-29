@@ -1,0 +1,610 @@
+{
+ "face": "leliedwars-2-16",
+ "street": "Tweede Leliedwarsstraat",
+ "library": "jordaan",
+ "stripDate": "2020-01-08",
+ "seconds": 4.94,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012169979",
+   "address": "Tweede Leliedwarsstraat 16",
+   "builtYear": 1834,
+   "widthM": 3.53,
+   "eavesM": 11.34,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#363028",
+    "wallRaw": "#3a3932",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 731,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34 mean 0.30 vs photo 0.63; wall family unresolved (#352f2a is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012169979",
+    "ncc": 0.088,
+    "nccRaw": 0.088,
+    "shiftM": [
+     -0.2,
+     0.35
+    ],
+    "usable": 0.81,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.30 vs photo 0.63",
+     "wall family unresolved (#352f2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#352f2a",
+     "model": "#584e41",
+     "dL": 0.114
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.397
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169975",
+   "address": "Tweede Leliedwarsstraat 14",
+   "builtYear": 1760,
+   "widthM": 4.34,
+   "eavesM": 11.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#191415",
+    "wallRaw": "#303028",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 731,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.79 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.79,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.112 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.35 mean 0.36 vs photo 0.05; wall family unresolved (#2b2a1f is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012169975",
+    "ncc": 0.112,
+    "nccRaw": 0.112,
+    "shiftM": [
+     -0.4,
+     0.35
+    ],
+    "usable": 0.69,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.35 mean 0.36 vs photo 0.05",
+     "wall family unresolved (#2b2a1f is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2b2a1f",
+     "model": "#554447",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.05,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.035
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169978",
+   "address": "Tweede Leliedwarsstraat 12A",
+   "builtYear": 1893,
+   "widthM": 3.78,
+   "eavesM": 9.26,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39b99",
+    "wallRaw": "#485541",
+    "skyline": {
+     "eavesM": 12.28,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.9,
+      "topWidthM": 0.57,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.214,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.77
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 0 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012169978",
+    "ncc": null,
+    "nccRaw": -1,
+    "shiftM": [
+     0,
+     0
+    ],
+    "usable": 0,
+    "abstain": "usable photo 0 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 18 % < 40 %",
+     "foliage 65 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#262420",
+     "model": "#956753",
+     "dL": 0.318
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.115
+   },
+   "challengers": {
+    "jordaan-1750-neck-gable": null
+   }
+  },
+  {
+   "pandId": "0363100012169902",
+   "address": "Tweede Leliedwarsstraat 10",
+   "builtYear": 1865,
+   "widthM": 3.92,
+   "eavesM": 8.16,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e6053",
+    "wallRaw": "#6f685e",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 4.47,
+      "topWidthM": 0.8,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.51 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.51,
+       "light": 0.1
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 0.93,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.068 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.56 mean 0.38 vs photo 0.89)",
+   "likeness": {
+    "pandId": "0363100012169902",
+    "ncc": 0.068,
+    "nccRaw": 0.068,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.56 mean 0.38 vs photo 0.89"
+    ],
+    "wall": {
+     "photo": "#6d5c50",
+     "model": "#867565",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.89,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.454
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169908",
+   "address": "Tweede Leliedwarsstraat 8",
+   "builtYear": 1883,
+   "widthM": 3.68,
+   "eavesM": 9.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716f66",
+    "wallRaw": "#6e6c63",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 731,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.63 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.63,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.72,
+       "widthM": 0.95,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.078 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.35 mean 0.38 vs photo 0.71)",
+   "likeness": {
+    "pandId": "0363100012169908",
+    "ncc": 0.078,
+    "nccRaw": 0.078,
+    "shiftM": [
+     0.05,
+     -0.2
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.38 vs photo 0.71"
+    ],
+    "wall": {
+     "photo": "#727066",
+     "model": "#868379",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.71,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.441
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169907",
+   "address": "Tweede Leliedwarsstraat 6",
+   "builtYear": 1997,
+   "widthM": 3.72,
+   "eavesM": 8.67,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#372f2c",
+    "wallRaw": "#3d3532",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 731,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.29,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1997, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1997, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 8.67 m = 3 storeys of 2.89 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.67 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169911",
+   "address": "Tweede Leliedwarsstraat 4",
+   "builtYear": 1997,
+   "widthM": 3.69,
+   "eavesM": 8.42,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#36322f",
+    "wallRaw": "#3a3533",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 731,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1997, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1997, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.42 m = 3 storeys of 2.81 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169088",
+   "address": "Tweede Leliedwarsstraat 2",
+   "builtYear": 1733,
+   "widthM": 4.89,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3431",
+    "wallRaw": "#3f3734",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 207,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 5.15,
+      "topWidthM": 0.1,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

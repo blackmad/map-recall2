@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "dou-1-7-r1",
+ "street": "Gerard Doustraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/dou-1-7-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/dou-1-7/auto-place.json"
+ },
+ "types": [
+  "pijp-1879-five-low"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160743",
+   "slug": "dou-160743",
+   "address": "Gerard Doustraat 3",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#68645c",
+     "evidence": "strip 2023-01-03 span 1469-1646: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves 1, stucco 1; strip 2023-01-03 span 1469-1646"
+   }
+  },
+  {
+   "pandId": "0363100012236717",
+   "slug": "dou-236717",
+   "address": "Gerard Doustraat 3A",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#3f3d42",
+     "evidence": "strip 2023-01-03 span 1646-1827: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-03 span 1646-1827"
+   }
+  },
+  {
+   "pandId": "0363100012152502",
+   "slug": "dou-152502",
+   "address": "Gerard Doustraat 3B",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#53545b",
+     "evidence": "strip 2023-01-03 span 1827-2005: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves 1, stucco 1; strip 2023-01-03 span 1827-2005"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012160743",
+    "stripRow": 248,
+    "evidence": "auto-place: strip skyline cornice 13.32 m within 1 m of the pijp-1879-five-low line 13 m; 3DBAG/PDOK eaves 12.72 m"
+   },
+   {
+    "pand": "0363100012236717",
+    "stripRow": 248,
+    "evidence": "auto-place: strip skyline cornice 13.32 m within 1 m of the pijp-1879-five-low line 13 m; 3DBAG/PDOK eaves 12.66 m"
+   }
+  ]
+ }
+}

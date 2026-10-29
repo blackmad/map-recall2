@@ -1,0 +1,1633 @@
+{
+ "face": "rozengracht-30-82",
+ "street": "Rozengracht",
+ "library": "jordaan",
+ "stripDate": "2025-01-20",
+ "seconds": 8.58,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "rozengracht-30-82-r1",
+   "pands": [
+    "0363100012168603",
+    "0363100012168605"
+   ],
+   "passed": false,
+   "triangles": 3585
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012170146",
+   "address": "Rozengracht 74E",
+   "builtYear": 1998,
+   "widthM": 6.1,
+   "eavesM": 12.06,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#413422",
+    "wallRaw": "#474232",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 769,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.93 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.93,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 0.9,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1998, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1998, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.06 m = 4 storeys of 3.02 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.15 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170147",
+   "address": "Rozengracht 72",
+   "builtYear": 1688,
+   "widthM": 5.8,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c534d",
+    "wallRaw": "#5c5f50",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 84,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.85,
+      "topWidthM": 0.15,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 2.1,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.07,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.62
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170092",
+   "address": "Rozengracht 68A",
+   "builtYear": 1976,
+   "widthM": 8.24,
+   "eavesM": 10.83,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524432",
+    "wallRaw": "#4b4333",
+    "skyline": {
+     "eavesM": 16.95,
+     "eavesRow": 91,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.35 m at 0.16 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.16,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.37,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.75,
+       "widthM": 1.15,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.27,
+       "widthM": 1.77,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1976, type 1600-1870; frontage 8.24 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1976, type 1600-1870",
+     "frontage 8.24 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.83 m = 3 storeys of 3.61 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.64 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170148",
+   "address": "Rozengracht 66",
+   "builtYear": 1825,
+   "widthM": 3.24,
+   "eavesM": 7.38,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#282821",
+    "wallRaw": "#404135",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 220,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 3.7,
+      "topWidthM": 0.68,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.33 < 0.7 (3DBAG eaves 7.38 m = 3 storeys of 2.46 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.38 m = 3 storeys of 2.46 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.44 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170093",
+   "address": "Rozengracht 62",
+   "builtYear": 1825,
+   "widthM": 7.05,
+   "eavesM": 13.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5f46",
+    "wallRaw": "#545040",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 3.35,
+      "topWidthM": 0.97,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.05,
+       "widthM": 1.05,
+       "centre": 0.5
+      },
+      {
+       "atM": 5,
+       "widthM": 1.05,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.5 < 0.7 (3DBAG eaves 13.54 m = 4 storeys of 3.38 m vs the type's 3.13 m)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.54 m = 4 storeys of 3.38 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170088",
+   "address": "Rozengracht 60",
+   "builtYear": 1675,
+   "widthM": 4.16,
+   "eavesM": 10.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3524",
+    "wallRaw": "#423d2e",
+    "skyline": {
+     "eavesM": 17.23,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170089",
+   "address": "Rozengracht 58",
+   "builtYear": 1825,
+   "widthM": 4.89,
+   "eavesM": 11.64,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#432f15",
+    "wallRaw": "#54523f",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 2.9,
+      "topWidthM": 0.6,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170090",
+   "address": "Rozengracht 56",
+   "builtYear": 1955,
+   "widthM": 3.86,
+   "eavesM": 14.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473e2e",
+    "wallRaw": "#494435",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 134,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 1.1,
+       "centre": 0.24
+      },
+      {
+       "atM": 6.13,
+       "widthM": 0.88,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1955, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1955, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.51 m = 4 storeys of 3.63 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170091",
+   "address": "Rozengracht 52B",
+   "builtYear": 1994,
+   "widthM": 10.09,
+   "eavesM": 14.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69644f",
+    "wallRaw": "#61614d",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 174,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 3.15,
+      "topWidthM": 0.88,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 3.48,
+       "centre": 0.76
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.45,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1994, type 1600-1870; frontage 10.09 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1600-1870",
+     "frontage 10.09 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.67 m = 4 storeys of 3.67 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170149",
+   "address": "Rozengracht 50A",
+   "builtYear": 1785,
+   "widthM": 1.8,
+   "eavesM": 13.77,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#463f2e",
+    "wallRaw": "#403c2b",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: frontage 1.8 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "frontage 1.8 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.77 m = 4 storeys of 3.44 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.25 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168604",
+   "address": "Rozengracht 48A",
+   "builtYear": 1636,
+   "widthM": 5.07,
+   "eavesM": 11.13,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.65,
+    "depthM": 0.38,
+    "centre": 0.163,
+    "lineRD": [
+     [
+      120531.67,
+      487426.02349999995
+     ],
+     [
+      120534.842,
+      487427.2645
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#99977e",
+    "wallRaw": "#525445",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 2.8,
+      "topWidthM": 0.6,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.27,
+       "widthM": 1.4,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.67 < 0.7 (3DBAG eaves 11.13 m = 3 storeys of 3.71 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.13 m = 3 storeys of 3.71 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.72 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170087",
+   "address": "Rozengracht 46",
+   "builtYear": 1844,
+   "widthM": 4.09,
+   "eavesM": 11.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#352f1f",
+    "wallRaw": "#6f6d5a",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 3.95,
+      "topWidthM": 0.78,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.6,
+       "widthM": 1.25,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.67 < 0.7 (3DBAG eaves 11.16 m = 3 storeys of 3.72 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.16 m = 3 storeys of 3.72 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.5 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170085",
+   "address": "Rozengracht 44",
+   "builtYear": 1911,
+   "widthM": 3.92,
+   "eavesM": 12.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a886f",
+    "wallRaw": "#47483b",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.17,
+       "widthM": 2.88,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1911, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.1 m = 4 storeys of 3.02 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.46 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170086",
+   "address": "Rozengracht 42D",
+   "builtYear": 1899,
+   "widthM": 4.65,
+   "eavesM": 14.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534434",
+    "wallRaw": "#595041",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 3.2,
+      "topWidthM": 0.4,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.95,
+       "widthM": 0.9,
+       "centre": 0.71
+      },
+      {
+       "atM": 8.27,
+       "widthM": 0.85,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.57,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.7,
+       "centre": 0.75
+      },
+      {
+       "atM": 5.35,
+       "widthM": 1.18,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.54 < 0.7 (skyline crown rise 3.2 m, top 0.4 m fits no crown of the type; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.42 m = 5 storeys of 2.88 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 3.2 m, top 0.4 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168603",
+   "address": "Rozengracht 40C",
+   "builtYear": 1843,
+   "widthM": 4.61,
+   "eavesM": 12.58,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604f37",
+    "wallRaw": "#483f2f",
+    "skyline": {
+     "eavesM": 18.82,
+     "eavesRow": 16,
+     "confidence": 0.32,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "jordaan-1750-neck-gable",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "jordaan-1850-cornice-house",
+    "score": 0.84
+   },
+   "placement": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#433c2e",
+      "fascia": true,
+      "name": "Velvet Music",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=music); fascia colour measured on the strip 2025-01-20 span 3046-3230"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#604f37",
+     "evidence": "strip 2025-01-20 span 3046-3230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with jordaan-1850-cornice-house (0.84)",
+    "storeys 4: eaves 12.58 m at the type's 3.33 m pitch",
+    "door right: mirrored",
+    "crown neck: skyline unread (confidence 0.32)"
+   ],
+   "likeness": {
+    "pandId": "0363100012168603",
+    "ncc": 0.419,
+    "nccRaw": 0.419,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.38 vs photo 0.23",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#584d36",
+     "model": "#7d6748",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.247
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168605",
+   "address": "Rozengracht 38",
+   "builtYear": 1714,
+   "widthM": 5.78,
+   "eavesM": 7.49,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52442d",
+    "wallRaw": "#393020",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 160,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 4,
+      "topWidthM": 0.9,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "jordaan-1750-neck-gable",
+   "score": 0.79,
+   "runnerUp": {
+    "typeId": "jordaan-1850-cornice-house",
+    "score": 0.41
+   },
+   "placement": {
+    "type": "jordaan-1750-neck-gable",
+    "ground": {
+     "shopfront": {
+      "colour": "#352f20",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2025-01-20 span 3230-3461"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#52442d",
+     "evidence": "strip 2025-01-20 span 3230-3461: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown neck: skyline rise 4 m, width 2.92 m, top 0.9 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012168605",
+    "ncc": 0.285,
+    "nccRaw": 0.285,
+    "shiftM": [
+     -0.2,
+     -0.15
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#52452d",
+     "model": "#715e3e",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.497
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168613",
+   "address": "Rozengracht 36",
+   "builtYear": 1905,
+   "widthM": 5.63,
+   "eavesM": 13.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473a28",
+    "wallRaw": "#4a4335",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 150,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 3.38,
+      "topWidthM": 0.88,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.72,
+       "widthM": 1.27,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.53 < 0.7 (3DBAG eaves 13.53 m = 4 storeys of 3.38 m vs the type's 3.13 m; skyline crown rise 3.38 m, top 0.88 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.53 m = 4 storeys of 3.38 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 3.38 m, top 0.88 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168646",
+   "address": "Rozengracht 34",
+   "builtYear": 1885,
+   "widthM": 5.7,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785e44",
+    "wallRaw": "#534637",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012168646",
+    "ncc": 0.487,
+    "nccRaw": 0.487,
+    "shiftM": [
+     -0.2,
+     -0.05
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.34",
+     "glazing storey band off by 0.26 mean 0.38 vs photo 0.12",
+     "wall family unresolved (#232516 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#232516",
+     "model": "#937353",
+     "dL": 0.335
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.365
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168639",
+   "address": "Rozengracht 32",
+   "builtYear": 1852,
+   "widthM": 4.04,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#282c20",
+    "wallRaw": "#4e5144",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 100,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.3,
+      "topWidthM": 0.65,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 39 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012168639",
+    "ncc": null,
+    "nccRaw": 0.099,
+    "shiftM": [
+     0.35,
+     0.4
+    ],
+    "usable": 0.39,
+    "abstain": "usable photo 39 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 32 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#282a20",
+     "model": "#875d4e",
+     "dL": 0.273
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.243
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": null
+   }
+  },
+  {
+   "pandId": "0363100012168640",
+   "address": "Rozengracht 30",
+   "builtYear": 1872,
+   "widthM": 3.87,
+   "eavesM": 10.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3121",
+    "wallRaw": "#4a4b3a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 769,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.5 < 0.7 (3DBAG eaves 10.53 m = 3 storeys of 3.51 m vs the type's 3.13 m)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.53 m = 3 storeys of 3.51 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

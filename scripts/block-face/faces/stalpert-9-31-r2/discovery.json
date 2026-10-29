@@ -1,0 +1,556 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "seed": "0363100012165989",
+ "members": [
+  "0363100012162731",
+  "0363100012152613"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of stalpert-9-31: 160151 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of stalpert-9-31: 158917 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062070",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012090495"
+  },
+  {
+   "pandId": "0363100012068649",
+   "reason": "frontage 70.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012078655",
+   "reason": "frontage 49.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012083238",
+   "reason": "frontage 72.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012090495",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012160553"
+  },
+  {
+   "pandId": "0363100012096576",
+   "reason": "frontage 43.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012105340",
+   "reason": "frontage 109.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012112064",
+   "reason": "frontage 69.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012135465",
+   "reason": "frontage 73.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012143481",
+   "reason": "frontage 75.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012148687",
+   "reason": "frontage 73.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012152593",
+   "reason": "frontage 42.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012152965",
+   "reason": "frontage 51.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012153081",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012164261"
+  },
+  {
+   "pandId": "0363100012153321",
+   "reason": "frontage 98.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012153672",
+   "reason": "frontage 34.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012153684",
+   "reason": "frontage 88.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012153748",
+   "reason": "frontage 46.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155409",
+   "reason": "frontage 92.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155493",
+   "reason": "frontage 81.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155510",
+   "reason": "frontage 46.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155600",
+   "reason": "frontage 103.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155636",
+   "reason": "frontage 72.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155728",
+   "reason": "frontage 70.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155819",
+   "reason": "frontage 43.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012155977",
+   "reason": "frontage 43.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156195",
+   "reason": "frontage 43.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156282",
+   "reason": "frontage 50.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156480",
+   "reason": "frontage 43.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156538",
+   "reason": "frontage 72.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156746",
+   "reason": "frontage 98.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012156872",
+   "reason": "frontage 42.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012157381",
+   "reason": "frontage 43.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012157446",
+   "reason": "frontage 37.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012157668",
+   "reason": "frontage 46.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012157731",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012157216"
+  },
+  {
+   "pandId": "0363100012157887",
+   "reason": "frontage 72.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012158262",
+   "reason": "frontage 70.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012158625",
+   "reason": "frontage 71.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012158731",
+   "reason": "frontage 70.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012158953",
+   "reason": "frontage 44.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012159178",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012237381"
+  },
+  {
+   "pandId": "0363100012159354",
+   "reason": "frontage 79.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012159617",
+   "reason": "frontage 98.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012159703",
+   "reason": "frontage 43.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012160198",
+   "reason": "frontage 70.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012160359",
+   "reason": "frontage 43.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012160421",
+   "reason": "frontage 42.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012160742",
+   "reason": "frontage 72.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012161417",
+   "reason": "frontage 110.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012161718",
+   "reason": "frontage 47.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012161788",
+   "reason": "frontage 71.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012161914",
+   "reason": "frontage 72.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012161957",
+   "reason": "frontage 38.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162009",
+   "reason": "frontage 70.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162065",
+   "reason": "frontage 98.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162263",
+   "reason": "frontage 86.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162395",
+   "reason": "frontage 75.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162593",
+   "reason": "frontage 43.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162709",
+   "reason": "frontage 40.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162798",
+   "reason": "frontage 44.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162831",
+   "reason": "frontage 103.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012162885",
+   "reason": "frontage 43.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012163235",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012157216"
+  },
+  {
+   "pandId": "0363100012163396",
+   "reason": "frontage 46.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012163595",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012160712"
+  },
+  {
+   "pandId": "0363100012163619",
+   "reason": "frontage 41.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012163636",
+   "reason": "frontage 80.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012163963",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012157216"
+  },
+  {
+   "pandId": "0363100012164119",
+   "reason": "frontage 44.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012164149",
+   "reason": "frontage 43.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012164256",
+   "reason": "frontage 44.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012164261",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012167059"
+  },
+  {
+   "pandId": "0363100012164404",
+   "reason": "frontage 70.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012164504",
+   "reason": "frontage 71.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012166068",
+   "reason": "frontage 85.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012166231",
+   "reason": "frontage 70.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012166549",
+   "reason": "frontage 31.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012166578",
+   "reason": "frontage 70.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012166599",
+   "reason": "frontage 70.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012167062",
+   "reason": "frontage 91.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012167124",
+   "reason": "frontage 103.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012167242",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012160553"
+  },
+  {
+   "pandId": "0363100012189110",
+   "reason": "frontage 86.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012189956",
+   "reason": "sightline to Daniël Stalpertstraat crosses 0363100012166226"
+  },
+  {
+   "pandId": "0363100012191807",
+   "reason": "frontage 35.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012207269",
+   "reason": "frontage 32.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012210979",
+   "reason": "frontage 32.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012215371",
+   "reason": "frontage 32.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012215721",
+   "reason": "frontage 30.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012218173",
+   "reason": "frontage 84.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012221243",
+   "reason": "frontage 91.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012231161",
+   "reason": "frontage 95.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012231162",
+   "reason": "frontage 97.0 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012233419",
+   "reason": "frontage 33.9 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012233456",
+   "reason": "frontage 72.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012233597",
+   "reason": "frontage 72.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012235923",
+   "reason": "frontage 43.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012235966",
+   "reason": "frontage 70.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236108",
+   "reason": "frontage 43.3 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236127",
+   "reason": "frontage 98.4 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236169",
+   "reason": "frontage 39.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236267",
+   "reason": "frontage 31.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236279",
+   "reason": "frontage 72.7 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236548",
+   "reason": "frontage 32.2 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012236608",
+   "reason": "frontage 66.6 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012237026",
+   "reason": "frontage 31.8 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012237360",
+   "reason": "frontage 97.5 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012248029",
+   "reason": "frontage 32.1 m from Daniël Stalpertstraat"
+  },
+  {
+   "pandId": "0363100012069043",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160553",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160596",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160712",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162598",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163608",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166226",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166627",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167015",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167059",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237381",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162731",
+   "alongM": 18,
+   "widthM": 4.5,
+   "eavesM": 13.93,
+   "roofMaxM": 15.55,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152613",
+   "alongM": 22.5,
+   "widthM": 4.5,
+   "eavesM": 13.57,
+   "roofMaxM": 15.78,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "stalpert-9-31"
+}

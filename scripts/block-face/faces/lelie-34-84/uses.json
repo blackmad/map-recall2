@@ -1,0 +1,491 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:45:09.061Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169973",
+   "addresses": [
+    "Nieuwe Leliestraat 74",
+    "Nieuwe Leliestraat 76",
+    "Nieuwe Leliestraat 76A",
+    "Nieuwe Leliestraat 76B",
+    "Nieuwe Leliestraat 76C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 74",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000756797"
+    },
+    {
+     "address": "Nieuwe Leliestraat 76",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000756802"
+    },
+    {
+     "address": "Nieuwe Leliestraat 76A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012156824"
+    },
+    {
+     "address": "Nieuwe Leliestraat 76C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012159659"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168654",
+   "addresses": [
+    "Nieuwe Leliestraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000756792"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168752",
+   "addresses": [
+    "Nieuwe Leliestraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000756783"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173046",
+   "addresses": [
+    "Nieuwe Leliestraat 68",
+    "Nieuwe Leliestraat 68A",
+    "Nieuwe Leliestraat 68B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000756777"
+    },
+    {
+     "address": "Nieuwe Leliestraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012123528"
+    },
+    {
+     "address": "Nieuwe Leliestraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012123529"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173047",
+   "addresses": [
+    "Nieuwe Leliestraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000756775"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173050",
+   "addresses": [
+    "Nieuwe Leliestraat 64A",
+    "Nieuwe Leliestraat 64B",
+    "Nieuwe Leliestraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000756773"
+    },
+    {
+     "address": "Nieuwe Leliestraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000756774"
+    },
+    {
+     "address": "Nieuwe Leliestraat 64",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010012146366"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173052",
+   "addresses": [
+    "Nieuwe Leliestraat 60",
+    "Nieuwe Leliestraat 62A",
+    "Nieuwe Leliestraat 62B",
+    "Nieuwe Leliestraat 62D",
+    "Nieuwe Leliestraat 62E",
+    "Nieuwe Leliestraat 62H",
+    "Nieuwe Leliestraat 62C",
+    "Nieuwe Leliestraat 62L",
+    "Nieuwe Leliestraat 62K",
+    "Nieuwe Leliestraat 62F",
+    "Nieuwe Leliestraat 62G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 60",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000756757"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000756760"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000756761"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000756763"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000756764"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000756767"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000756762"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62L",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000756769"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62K",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000756768"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62F",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000756765"
+    },
+    {
+     "address": "Nieuwe Leliestraat 62G",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000756766"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168750",
+   "addresses": [
+    "Nieuwe Leliestraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 54-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000756746"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168762",
+   "addresses": [
+    "Nieuwe Leliestraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 50-H",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000756739"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168751",
+   "addresses": [
+    "Nieuwe Leliestraat 48D",
+    "Nieuwe Leliestraat 48F",
+    "Nieuwe Leliestraat 48E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 48D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756735"
+    },
+    {
+     "address": "Nieuwe Leliestraat 48F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756737"
+    },
+    {
+     "address": "Nieuwe Leliestraat 48E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000756736"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168763",
+   "addresses": [
+    "Nieuwe Leliestraat 44",
+    "Nieuwe Leliestraat 46A",
+    "Nieuwe Leliestraat 46B",
+    "Nieuwe Leliestraat 46C",
+    "Nieuwe Leliestraat 48A",
+    "Nieuwe Leliestraat 48B",
+    "Nieuwe Leliestraat 48C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 44",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000756723"
+    },
+    {
+     "address": "Nieuwe Leliestraat 46A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000756729"
+    },
+    {
+     "address": "Nieuwe Leliestraat 46B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756730"
+    },
+    {
+     "address": "Nieuwe Leliestraat 46C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756731"
+    },
+    {
+     "address": "Nieuwe Leliestraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756732"
+    },
+    {
+     "address": "Nieuwe Leliestraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756733"
+    },
+    {
+     "address": "Nieuwe Leliestraat 48C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756734"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168764",
+   "addresses": [
+    "Nieuwe Leliestraat 38",
+    "Nieuwe Leliestraat 40A",
+    "Nieuwe Leliestraat 40B",
+    "Nieuwe Leliestraat 40C",
+    "Nieuwe Leliestraat 42A",
+    "Nieuwe Leliestraat 42B",
+    "Nieuwe Leliestraat 42C",
+    "Nieuwe Leliestraat 42D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 38",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756710"
+    },
+    {
+     "address": "Nieuwe Leliestraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756712"
+    },
+    {
+     "address": "Nieuwe Leliestraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000756713"
+    },
+    {
+     "address": "Nieuwe Leliestraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756714"
+    },
+    {
+     "address": "Nieuwe Leliestraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756718"
+    },
+    {
+     "address": "Nieuwe Leliestraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756719"
+    },
+    {
+     "address": "Nieuwe Leliestraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000756720"
+    },
+    {
+     "address": "Nieuwe Leliestraat 42D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000756721"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172602",
+   "addresses": [
+    "Nieuwe Leliestraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000756705"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172890",
+   "addresses": [
+    "Nieuwe Leliestraat 34",
+    "Nieuwe Leliestraat 34A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000937517"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578160226,
+     "lngLat": [
+      4.8825261,
+      52.3757295
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "cuisine": "international",
+      "name": "De Reiger"
+     },
+     "fetchedAt": "2026-10-29T21:45:09.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1578160237,
+     "lngLat": [
+      4.8825985,
+      52.3757377
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "De Reiger"
+     },
+     "fetchedAt": "2026-10-29T21:45:09.061Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

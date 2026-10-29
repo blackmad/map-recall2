@@ -1,0 +1,229 @@
+{
+ "street": "Derde Looiersdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:29:28.720Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174147",
+   "addresses": [
+    "Derde Looiersdwarsstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 1-H",
+     "use": "industriefunctie",
+     "areaM2": 47,
+     "bagId": "0363010001025189"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174154",
+   "addresses": [
+    "Derde Looiersdwarsstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 3-H",
+     "use": "industriefunctie",
+     "areaM2": 106,
+     "bagId": "0363010000555587"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174151",
+   "addresses": [
+    "Derde Looiersdwarsstraat 3A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 3A-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000555592"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174547",
+   "addresses": [
+    "Derde Looiersdwarsstraat 5",
+    "Derde Looiersdwarsstraat 7",
+    "Derde Looiersdwarsstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 7-H",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000976231"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 9-H",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000960882"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 5-H",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000555596"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174548",
+   "addresses": [
+    "Derde Looiersdwarsstraat 53",
+    "Derde Looiersdwarsstraat 55",
+    "Derde Looiersdwarsstraat 57",
+    "Derde Looiersdwarsstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000555613"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000555614"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000555615"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000555616"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167471",
+   "addresses": [
+    "Derde Looiersdwarsstraat 61",
+    "Derde Looiersdwarsstraat 63",
+    "Derde Looiersdwarsstraat 65",
+    "Derde Looiersdwarsstraat 67",
+    "Derde Looiersdwarsstraat 69",
+    "Derde Looiersdwarsstraat 71",
+    "Derde Looiersdwarsstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000555617"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000555619"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000555621"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000555623"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000555620"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000555622"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000555618"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167468",
+   "addresses": [
+    "Derde Looiersdwarsstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 75-H",
+     "use": "logiesfunctie",
+     "areaM2": 956,
+     "bagId": "0363010000555624"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "way",
+     "id": 168633830,
+     "lngLat": [
+      4.8797235,
+      52.3683408
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "75",
+      "addr:postcode": "1016VD",
+      "addr:street": "Derde Looiersdwarsstraat",
+      "building": "yes",
+      "contact:website": "https://www.hoteldelooier.com",
+      "height": "14.5",
+      "internet_access": "no",
+      "name": "De Looier",
+      "ref:bag": "0363100012167468",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "stars": "3",
+      "start_date": "1890",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-10-29T22:29:28.720Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

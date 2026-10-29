@@ -2,26 +2,26 @@
  "face": "toussaint-9-27",
  "image": "staging/block-face/toussaint-9-27/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 2354,
+ "width": 2351,
  "height": 834,
- "groundNAP": 0.399,
- "heightM": 20.86,
+ "groundNAP": 0.375,
+ "heightM": 20.85,
  "frame": {
   "midRD": [
-   120250.09455,
-   486549.73104999994
+   120250.1009625,
+   486549.72750000004
   ],
   "uRD": [
-   -0.9053526333462975,
-   -0.42466058127983175
+   -0.9047826336482464,
+   -0.4258736735800222
   ],
   "nRD": [
-   -0.42466058127983175,
-   0.9053526333462975
+   -0.4258736735800222,
+   0.9047826336482464
   ]
  },
  "x0M": -29.98,
- "x1M": 28.88,
+ "x1M": 28.79,
  "date": "2022-01-03",
  "cameraHeightM": 2.4,
  "coverage": 1,
@@ -29,7 +29,7 @@
   {
    "pandId": "0363100012161315",
    "x0M": -29.98,
-   "x1M": -24.16,
+   "x1M": -24.15,
    "px": [
     0,
     233
@@ -55,14 +55,14 @@
      "panoId": "TMX7316010203-002377_pano_0000_000058",
      "timestamp": "2022-01-03T08:46:07.620820Z",
      "distanceM": 11.2,
-     "obliquityDeg": 33,
+     "obliquityDeg": 32.9,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012161958",
-   "x0M": -24.16,
+   "x0M": -24.15,
    "x1M": -17.92,
    "px": [
     233,
@@ -131,7 +131,7 @@
   {
    "pandId": "0363100012166210",
    "x0M": -11.91,
-   "x1M": -5.9,
+   "x1M": -5.89,
    "px": [
     723,
     964
@@ -164,7 +164,7 @@
   },
   {
    "pandId": "0363100012162495",
-   "x0M": -5.9,
+   "x0M": -5.89,
    "x1M": 0.15,
    "px": [
     963,
@@ -191,7 +191,7 @@
      "panoId": "TMX7316010203-002377_pano_0000_000053",
      "timestamp": "2022-01-03T08:46:02.840880Z",
      "distanceM": 12,
-     "obliquityDeg": 35.9,
+     "obliquityDeg": 35.8,
      "missingFraction": 0
     }
    ]
@@ -225,7 +225,7 @@
      "panoId": "TMX7316010203-002377_pano_0000_000052",
      "timestamp": "2022-01-03T08:46:01.930880Z",
      "distanceM": 11.4,
-     "obliquityDeg": 32.6,
+     "obliquityDeg": 32.5,
      "missingFraction": 0
     }
    ]
@@ -233,7 +233,7 @@
   {
    "pandId": "0363100012161668",
    "x0M": 6.06,
-   "x1M": 12.13,
+   "x1M": 12.14,
    "px": [
     1442,
     1685
@@ -269,8 +269,8 @@
    "x0M": 12.13,
    "x1M": 17.91,
    "px": [
-    1684,
-    1915
+    1685,
+    1916
    ],
    "date": "2022-01-03",
    "fallbackDate": false,
@@ -301,7 +301,7 @@
   {
    "pandId": "0363100012163234",
    "x0M": 17.91,
-   "x1M": 24.19,
+   "x1M": 24.2,
    "px": [
     1916,
     2167
@@ -327,7 +327,7 @@
      "panoId": "TMX7316010203-002377_pano_0000_000051",
      "timestamp": "2022-01-03T08:46:00.965860Z",
      "distanceM": 11.7,
-     "obliquityDeg": 35.4,
+     "obliquityDeg": 35.3,
      "missingFraction": 0
     }
    ]
@@ -335,10 +335,10 @@
   {
    "pandId": "0363100012158948",
    "x0M": 24.2,
-   "x1M": 28.88,
+   "x1M": 28.79,
    "px": [
     2167,
-    2354
+    2350
    ],
    "date": "2022-01-03",
    "fallbackDate": false,
@@ -347,21 +347,21 @@
      "panoId": "TMX7316010203-002377_pano_0000_000049",
      "timestamp": "2022-01-03T08:45:59.175860Z",
      "distanceM": 9.7,
-     "obliquityDeg": 12.4,
+     "obliquityDeg": 13,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002377_pano_0000_000048",
      "timestamp": "2022-01-03T08:45:58.260910Z",
      "distanceM": 9.8,
-     "obliquityDeg": 17.1,
+     "obliquityDeg": 16.4,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002377_pano_0000_000050",
      "timestamp": "2022-01-03T08:46:00.041010Z",
      "distanceM": 11.9,
-     "obliquityDeg": 36.4,
+     "obliquityDeg": 37.1,
      "missingFraction": 0
     }
    ]

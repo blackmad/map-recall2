@@ -1,0 +1,140 @@
+{
+ "street": "Eerste Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:08:52.071Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169091",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 10",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000543924"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168707",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000543920"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168652",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000913078"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168651",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 4B",
+    "Eerste Bloemdwarsstraat 4A",
+    "Eerste Bloemdwarsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001040539"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 4A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001040536"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012607665"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170211",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 2-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000543905"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 2-HR",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012566777"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1289051062,
+     "lngLat": [
+      4.8812511,
+      52.3745362
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-HR",
+      "addr:postcode": "1016KS",
+      "addr:street": "Eerste Bloemdwarsstraat",
+      "alt_name": "Paradox",
+      "contact:facebook": "https://www.facebook.com/paradoxcoffeeshop/",
+      "contact:instagram": "https://www.instagram.com/paradox.coffeeshop/",
+      "drink:coffee": "yes",
+      "int_name": "Koffiehuis Paradox",
+      "min_age": "18",
+      "name": "Coffeeshop Paradox",
+      "opening_hours": "Mo-Su 11:00-20:00",
+      "phone": "+31 20 623 5639",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2022-06-22",
+      "website": "https://paradoxcoffeeshop.com"
+     },
+     "fetchedAt": "2026-10-29T21:08:52.071Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

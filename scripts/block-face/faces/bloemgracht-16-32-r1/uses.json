@@ -1,0 +1,41 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:16:36.890Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173350",
+   "addresses": [
+    "Bloemgracht 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 32",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010011040719"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173345",
+   "addresses": [
+    "Bloemgracht 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 30",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000588499"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

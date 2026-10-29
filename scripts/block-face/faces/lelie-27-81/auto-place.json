@@ -1,0 +1,1510 @@
+{
+ "face": "lelie-27-81",
+ "street": "Nieuwe Leliestraat",
+ "library": "jordaan",
+ "stripDate": "2024-12-16",
+ "seconds": 5.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012168754",
+   "address": "Nieuwe Leliestraat 27",
+   "builtYear": 1876,
+   "widthM": 8.6,
+   "eavesM": 12.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907460",
+    "wallRaw": "#8e7c62",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.82,
+      "topWidthM": 1.1,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.47,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.47 < 0.7 (skyline crown rise 2.82 m, top 1.1 m fits no crown of the type; strip columns 10 vs 4 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.177 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.82 m, top 1.1 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172778",
+   "address": "Nieuwe Leliestraat 31",
+   "builtYear": 1994,
+   "widthM": 8.89,
+   "eavesM": 9.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c624b",
+    "wallRaw": "#8f7054",
+    "skyline": {
+     "eavesM": 13.2,
+     "eavesRow": 204,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.433,
+    "structure": {
+     "bayWidthM": 2.17,
+     "bayCentre": 0.84,
+     "balconies": true,
+     "why": "dark open axis 3.42 m at 0.22 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.42,
+       "centre": 0.22,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.49,
+       "light": 0.01
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.61,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.7,
+       "centre": 0.87,
+       "light": 0.99
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1994, type 1600-1870; frontage 8.89 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1600-1870",
+     "frontage 8.89 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 9.24 m = 3 storeys of 3.08 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.65 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172777",
+   "address": "Nieuwe Leliestraat 35",
+   "builtYear": 1887,
+   "widthM": 4.3,
+   "eavesM": 10.68,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6853",
+    "wallRaw": "#89785f",
+    "skyline": {
+     "eavesM": 12.15,
+     "eavesRow": 246,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.38,
+      "topWidthM": 1.1,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.443,
+    "structure": {
+     "bayWidthM": 1.65,
+     "bayCentre": 0.65,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 29 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012172777",
+    "ncc": null,
+    "nccRaw": 0.512,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.29,
+    "abstain": "usable photo 29 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 40 % < 40 %",
+     "foliage 44 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#7f6c53",
+     "model": "#977c63",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.09,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.365
+   },
+   "challengers": {
+    "jordaan-1750-neck-gable": null
+   }
+  },
+  {
+   "pandId": "0363100012173132",
+   "address": "Nieuwe Leliestraat 37",
+   "builtYear": 1750,
+   "widthM": 5.58,
+   "eavesM": 9.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f837b",
+    "wallRaw": "#7b7762",
+    "skyline": {
+     "eavesM": 11.43,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.88,
+      "topWidthM": 1.05,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.392,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 19 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012173132",
+    "ncc": null,
+    "nccRaw": 0.137,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.19,
+    "abstain": "usable photo 19 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 32 % < 40 %",
+     "foliage 60 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#8d817b",
+     "model": "#875d4e",
+     "dL": -0.1
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.151
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173131",
+   "address": "Nieuwe Leliestraat 39C",
+   "builtYear": 1905,
+   "widthM": 5.37,
+   "eavesM": 11.74,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6b57",
+    "wallRaw": "#9a876e",
+    "skyline": {
+     "eavesM": 11.78,
+     "eavesRow": 261,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.32,
+      "topWidthM": 0.45,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 5,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.437,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.02,
+       "widthM": 0.88,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.1,
+       "widthM": 0.88,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 29 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012173131",
+    "ncc": null,
+    "nccRaw": 0.249,
+    "shiftM": [
+     -0.35,
+     -0.05
+    ],
+    "usable": 0.29,
+    "abstain": "usable photo 29 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 46 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#8f7863",
+     "model": "#956753",
+     "dL": -0.02
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.198
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173130",
+   "address": "Nieuwe Leliestraat 41C",
+   "builtYear": 1890,
+   "widthM": 5.39,
+   "eavesM": 8.95,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.27,
+    "depthM": 0.48,
+    "centre": 0.211,
+    "lineRD": [
+     [
+      120613.128,
+      487639.7455
+     ],
+     [
+      120609.507,
+      487638.7495
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7e6954",
+    "wallRaw": "#9f846a",
+    "skyline": {
+     "eavesM": 11.13,
+     "eavesRow": 287,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2.22,
+      "topWidthM": 1.2,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.459,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.54 < 0.7 (skyline crown rise 2.22 m, top 1.2 m fits no crown of the type; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 8.95 m = 3 storeys of 2.98 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.22 m, top 1.2 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173058",
+   "address": "Nieuwe Leliestraat 43",
+   "builtYear": 1850,
+   "widthM": 5.37,
+   "eavesM": 7.56,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c745b",
+    "wallRaw": "#847158",
+    "skyline": {
+     "eavesM": 8.18,
+     "eavesRow": 405,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.72,
+      "topWidthM": 0.78,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.42,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.1 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.1,
+       "light": 0.1
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.41,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.75,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.33 < 0.7 (3DBAG eaves 7.56 m = 3 storeys of 2.52 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.56 m = 3 storeys of 2.52 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173057",
+   "address": "Nieuwe Leliestraat 45",
+   "builtYear": 1933,
+   "widthM": 5.51,
+   "eavesM": 13.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806a56",
+    "wallRaw": "#8c7964",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.434,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.11,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1933, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.24 m = 4 storeys of 3.31 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.143 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173353",
+   "address": "Nieuwe Leliestraat 49",
+   "builtYear": 1785,
+   "widthM": 5.35,
+   "eavesM": 8.55,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786045",
+    "wallRaw": "#877052",
+    "skyline": {
+     "eavesM": 12.07,
+     "eavesRow": 249,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.45,
+      "topWidthM": 0.72,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.372,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.74,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.42 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.42,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.73,
+       "light": 0.45
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.67 < 0.7 (3DBAG eaves 8.55 m = 3 storeys of 2.85 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 8.55 m = 3 storeys of 2.85 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173351",
+   "address": "Nieuwe Leliestraat 51",
+   "builtYear": 1930,
+   "widthM": 5.38,
+   "eavesM": 9.23,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#915644",
+    "wallRaw": "#9c604b",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 307,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.1,
+      "topWidthM": 0.7,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.479,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1930, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1930, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 9.23 m = 3 storeys of 3.08 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.2 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.148 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.1 m, top 0.7 m fits bell"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012239612",
+   "address": "Nieuwe Leliestraat 53",
+   "builtYear": 2011,
+   "widthM": 5.52,
+   "eavesM": 10.35,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#896e5c",
+    "wallRaw": "#897963",
+    "skyline": {
+     "eavesM": 10.57,
+     "eavesRow": 309,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.73,
+      "topWidthM": 0.38,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.495,
+    "structure": {
+     "bayWidthM": 1.35,
+     "bayCentre": 0.39,
+     "balconies": true,
+     "why": "bay-less open axis 1 m at 0.1 (light 0.57): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.1,
+       "light": 0.57
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.4,
+       "light": 0.62
+      },
+      {
+       "widthM": 1,
+       "centre": 0.7,
+       "light": 0.54
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 1.2,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 2011, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 2011, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.35 m = 3 storeys of 3.45 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.28 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.121 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.73 m, top 0.38 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173344",
+   "address": "Nieuwe Leliestraat 55A",
+   "builtYear": 1918,
+   "widthM": 5.29,
+   "eavesM": 10.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b816b",
+    "wallRaw": "#636a5e",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 295,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.612,
+    "structure": {
+     "bayWidthM": 4.88,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.93 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.42,
+       "light": 0.67
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.72,
+       "light": 0.73
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.93,
+       "light": 0.08
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.37,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 37 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173343",
+   "address": "Nieuwe Leliestraat 57",
+   "builtYear": 1905,
+   "widthM": 4.37,
+   "eavesM": 10.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806b52",
+    "wallRaw": "#a8927a",
+    "skyline": {
+     "eavesM": 11.72,
+     "eavesRow": 263,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 0.97,
+      "topWidthM": 0.72,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.551,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.62,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173341",
+   "address": "Nieuwe Leliestraat 59",
+   "builtYear": 1907,
+   "widthM": 4.22,
+   "eavesM": 10.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635139",
+    "wallRaw": "#99876c",
+    "skyline": {
+     "eavesM": 10.9,
+     "eavesRow": 296,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.6,
+      "topWidthM": 0.63,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.582,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.58,
+     "balconies": true,
+     "why": "bay-less open axis 1.2 m at 0.15 (light 0.71): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.15,
+       "light": 0.71
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.57,
+       "light": 0.71
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.1,
+       "widthM": 3.4,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0.29,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.53 < 0.7 (3DBAG eaves 10.2 m = 3 storeys of 3.4 m vs the type's 3.13 m; skyline crown rise 2.6 m, top 0.63 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.2 m = 3 storeys of 3.4 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.269 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.6 m, top 0.63 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173135",
+   "address": "Nieuwe Leliestraat 61",
+   "builtYear": 1926,
+   "widthM": 4.28,
+   "eavesM": 11.12,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6a56",
+    "wallRaw": "#9c8e74",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 303,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.38,
+      "topWidthM": 0.9,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.385,
+    "structure": {
+     "bayWidthM": 2.85,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.15 m @ 0.58, 0.68 m @ 0.58), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.19,
+       "light": 0.58
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.65,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 1.13,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1926, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1926, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.12 m = 3 storeys of 3.71 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.165 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.38 m, top 0.9 m fits neck"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173133",
+   "address": "Nieuwe Leliestraat 63",
+   "builtYear": 1939,
+   "widthM": 4.27,
+   "eavesM": 9.51,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826f59",
+    "wallRaw": "#8a785d",
+    "skyline": {
+     "eavesM": 11.13,
+     "eavesRow": 287,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.78,
+      "topWidthM": 0.4,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.476,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.62,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1939, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1939, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 9.51 m = 3 storeys of 3.17 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.2 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.139 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.78 m, top 0.4 m fits bell"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173134",
+   "address": "Nieuwe Leliestraat 67A",
+   "builtYear": 1994,
+   "widthM": 8.67,
+   "eavesM": 9,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#895941",
+    "wallRaw": "#776046",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.588,
+    "structure": {
+     "bayWidthM": 3.2,
+     "bayCentre": 0.69,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1994, type 1600-1870; frontage 8.67 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1600-1870",
+     "frontage 8.67 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 9 m = 3 storeys of 3 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.71 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172861",
+   "address": "Nieuwe Leliestraat 69A",
+   "builtYear": 1905,
+   "widthM": 4.26,
+   "eavesM": 11.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705c3d",
+    "wallRaw": "#74674e",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 3.1,
+      "topWidthM": 1.05,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.338,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.69,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.65 < 0.7 (skyline crown rise 3.1 m, top 1.05 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.57 m = 4 storeys of 2.89 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.116 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 3.1 m, top 1.05 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

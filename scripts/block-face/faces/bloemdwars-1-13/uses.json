@@ -1,0 +1,148 @@
+{
+ "street": "Tweede Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:23:33.937Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174270",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 1A",
+    "Tweede Bloemdwarsstraat 1B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000549851"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000549852"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4843126225,
+     "lngLat": [
+      4.8792801,
+      52.3742076
+     ],
+     "tags": {
+      "amenity": "doctors",
+      "check_date": "2024-05-20",
+      "description": "Natural medicine and treatments",
+      "healthcare": "alternative",
+      "name": "Spinoza",
+      "website": "https://spinoza.co/"
+     },
+     "fetchedAt": "2026-10-29T22:23:33.937Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174265",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 1C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000549853"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174183",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000994592"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174182",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 5-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000549856"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174181",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000549865"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174267",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000549867"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174268",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001165534"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

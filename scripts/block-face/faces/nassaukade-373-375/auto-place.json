@@ -3,7 +3,7 @@
  "street": "Nassaukade",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 0.4,
+ "seconds": 0.48,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,16 +24,16 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#735f41",
+    "wall": "#735f42",
     "wallRaw": "#776a4a",
     "skyline": {
      "eavesM": 18.88,
      "eavesRow": 356,
      "confidence": 1,
      "crown": {
-      "widthM": 2.15,
-      "riseM": 4.73,
-      "topWidthM": 0.13,
+      "widthM": 2.2,
+      "riseM": 4.9,
+      "topWidthM": 0.03,
       "centre": 0.82
      }
     },
@@ -41,22 +41,17 @@
     "bands": 1,
     "columns": 3,
     "doorSide": "left",
-    "accentSide": null,
-    "accentShare": 0.063,
+    "accentSide": "left",
+    "accentShare": 0.062,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.6 m at 0.33 (light 0.07): no brick spandrel between the storeys",
+     "why": "dark open axis 0.8 m at 0.82 (light 0.09): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 0.6,
-       "centre": 0.33,
-       "light": 0.07
-      },
-      {
-       "widthM": 0.68,
-       "centre": 0.81,
+       "widthM": 0.8,
+       "centre": 0.82,
        "light": 0.09
       }
      ],
@@ -66,29 +61,8 @@
     "foliageShare": 0.33
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1892, type 1893-1893)",
-   "best": {
-    "type": "helmers-1893-jamb-blocks",
-    "score": 0,
-    "veto": [
-     "built 1892, type 1893-1893"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 18.88 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -101,7 +75,7 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5e4f32",
+    "wall": "#5f5033",
     "wallRaw": "#846d44",
     "skyline": {
      "eavesM": 20.7,
@@ -109,7 +83,7 @@
      "confidence": 1,
      "crown": {
       "widthM": 3.8,
-      "riseM": 6.28,
+      "riseM": 6.35,
       "topWidthM": 0.1,
       "centre": 0.72
      }
@@ -133,20 +107,19 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1891, type 1893-1893; frontage 7.42 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: frontage 7.42 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1891, type 1893-1893",
-     "frontage 7.42 m, type 5.6-6.4 m"
+     "frontage 7.42 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 20.7 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "note": "strip cornice 20.7 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",

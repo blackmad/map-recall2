@@ -1,0 +1,76 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166097",
+   "addresses": [
+    "Frans Halsstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000638580"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156971",
+   "addresses": [
+    "Frans Halsstraat 80A",
+    "Frans Halsstraat 80B",
+    "Frans Halsstraat 80C",
+    "Frans Halsstraat 80D",
+    "Frans Halsstraat 80F",
+    "Frans Halsstraat 80E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 80A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001982475"
+    },
+    {
+     "address": "Frans Halsstraat 80B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001982476"
+    },
+    {
+     "address": "Frans Halsstraat 80C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001982477"
+    },
+    {
+     "address": "Frans Halsstraat 80D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001982478"
+    },
+    {
+     "address": "Frans Halsstraat 80F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001982479"
+    },
+    {
+     "address": "Frans Halsstraat 80E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001982480"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

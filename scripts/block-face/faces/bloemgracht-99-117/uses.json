@@ -1,0 +1,110 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:30:22.843Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169841",
+   "addresses": [
+    "Bloemgracht 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000588658"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4843126225,
+     "lngLat": [
+      4.8792801,
+      52.3742076
+     ],
+     "tags": {
+      "amenity": "doctors",
+      "check_date": "2024-05-20",
+      "description": "Natural medicine and treatments",
+      "healthcare": "alternative",
+      "name": "Spinoza",
+      "website": "https://spinoza.co/"
+     },
+     "fetchedAt": "2026-10-29T20:30:22.843Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174266",
+   "addresses": [
+    "Bloemgracht 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 101-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000588662"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174187",
+   "addresses": [
+    "Bloemgracht 103",
+    "Bloemgracht 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 103-H",
+     "use": "kantoorfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000588667"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169837",
+   "addresses": [
+    "Bloemgracht 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 109-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000939022"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168004",
+   "addresses": [
+    "Bloemgracht 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 117-H",
+     "use": "industriefunctie",
+     "areaM2": 336,
+     "bagId": "0363010000588687"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,184 @@
+{
+ "face": "stadhouderskade-60-60",
+ "street": "Stadhouderskade",
+ "library": "de-pijp",
+ "stripDate": "2025-01-30",
+ "seconds": 0.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236103",
+   "address": "Stadhouderskade 60A",
+   "builtYear": 1880,
+   "widthM": 4.21,
+   "eavesM": 14.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a5b3f",
+    "wallRaw": "#5f5e50",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 171,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 1.9,
+      "topWidthM": 1.43,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.3,
+       "widthM": 0.85,
+       "centre": 0.77
+      },
+      {
+       "atM": 9.93,
+       "widthM": 1.35,
+       "centre": 0.26
+      },
+      {
+       "atM": 5.65,
+       "widthM": 0.88,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1879-five-low scores 0.5 < 0.7 (strip cornice 16.82 m vs the type's 13 m (wall-dormer skyline 15.2 m))",
+   "best": {
+    "type": "pijp-1879-five-low",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.82 m vs the type's 13 m (wall-dormer skyline 15.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.025 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160700",
+   "address": "Stadhouderskade 60",
+   "builtYear": 1879,
+   "widthM": 2.55,
+   "eavesM": 14.45,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705e45",
+    "wallRaw": "#5b4b3b",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 2.3,
+      "topWidthM": 0.28,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877; frontage 2.55 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877",
+     "frontage 2.55 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.45 m = 3 storeys of 4.82 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.7 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

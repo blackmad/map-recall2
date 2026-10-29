@@ -3,7 +3,7 @@
  "street": "Alberdingk Thijmstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 3.22,
+ "seconds": 3.29,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -29,69 +29,79 @@
     "centre": 0.303
    },
    "strip": {
-    "wall": "#eab682",
-    "wallRaw": "#f4d5a6",
+    "wall": "#867062",
+    "wallRaw": "#7e7066",
     "skyline": {
-     "eavesM": 15.63,
-     "eavesRow": 100,
-     "confidence": 1,
+     "eavesM": 16.55,
+     "eavesRow": 63,
+     "confidence": 0.92,
      "crown": {
-      "widthM": 2.17,
-      "riseM": 1.55,
-      "topWidthM": 1.15,
-      "centre": 0.41
+      "widthM": 2.77,
+      "riseM": 1.38,
+      "topWidthM": 1.7,
+      "centre": 0.43
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 9,
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.319,
+    "accentSide": null,
+    "accentShare": 0.189,
     "structure": {
-     "bayWidthM": 1.25,
-     "bayCentre": 0.12,
-     "balconies": true,
-     "why": "bay-less open axis 0.97 m at 0.12 (light 0.5): no brick spandrel between the storeys",
-     "openAxes": [
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
       {
-       "widthM": 0.97,
-       "centre": 0.12,
-       "light": 0.5
+       "atM": 10.25,
+       "widthM": 1.18,
+       "centre": 0.41
       },
       {
-       "widthM": 0.82,
-       "centre": 0.4,
-       "light": 0.33
+       "atM": 6.5,
+       "widthM": 1.6,
+       "centre": 0.71
+      },
+      {
+       "atM": 6.13,
+       "widthM": 0.93,
+       "centre": 0.4
       }
-     ],
-     "slabs": []
+     ]
     },
-    "voidShare": 0.18,
-    "foliageShare": 0.15
+    "voidShare": 0,
+    "foliageShare": 0.02
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1899, type 1893-1893; frontage 6.95 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1899, type 1886-1892)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1899, type 1893-1893",
-     "frontage 6.95 m, type 5.6-6.4 m"
+     "built 1899, type 1886-1892"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 15.63 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 1,
+      "note": "strip cornice 16.55 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.069 (brick)"
+      "note": "strip accent share 0.129 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
      }
     ]
    },
@@ -103,93 +113,84 @@
    "address": "Alberdingk Thijmstraat 13",
    "builtYear": 1899,
    "widthM": 5.93,
-   "eavesM": 14.72,
+   "eavesM": 15.54,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#d39462",
-    "wallRaw": "#f5d89c",
+    "wall": "#a18273",
+    "wallRaw": "#8d7869",
     "skyline": {
-     "eavesM": 14.72,
-     "eavesRow": 136,
+     "eavesM": 15.22,
+     "eavesRow": 116,
      "confidence": 1,
      "crown": {
-      "widthM": 2.4,
-      "riseM": 1.83,
-      "topWidthM": 2.27,
-      "centre": 0.46
+      "widthM": 3.6,
+      "riseM": 2.53,
+      "topWidthM": 0.7,
+      "centre": 0.33
      }
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 2,
     "columns": 3,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.476,
+    "accentShare": 0.346,
     "structure": {
-     "bayWidthM": 5.45,
-     "bayCentre": 0.5,
-     "balconies": false,
-     "why": "no dark open axis (light ones: 1.25 m @ 0.54, 1.15 m @ 0.54, 1.23 m @ 0.55), 1 wide slab(s)",
+     "bayWidthM": 1.15,
+     "bayCentre": 0.39,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.39 (light 0.48): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 1.25,
-       "centre": 0.13,
-       "light": 0.54
-      },
-      {
-       "widthM": 1.15,
-       "centre": 0.48,
-       "light": 0.54
-      },
-      {
-       "widthM": 1.23,
-       "centre": 0.82,
-       "light": 0.55
+       "widthM": 0.97,
+       "centre": 0.39,
+       "light": 0.48
       }
      ],
      "slabs": [
       {
-       "atM": 6.17,
-       "widthM": 1.3,
-       "centre": 0.82
+       "atM": 13.5,
+       "widthM": 1.93,
+       "centre": 0.77
       }
      ]
     },
-    "voidShare": 0.35,
-    "foliageShare": 0.21
+    "voidShare": 0.03,
+    "foliageShare": 0.04
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 31 % < 50 %) and no passing same-type neighbour",
+   "reason": "edge NCC 0.058 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.48 mean 0.33 vs photo 0.56)",
    "likeness": {
     "pandId": "0363100012160396",
-    "ncc": null,
-    "nccRaw": 0.259,
+    "ncc": 0.058,
+    "nccRaw": 0.058,
     "shiftM": [
-     -0.2,
-     -0.15
+     -0.4,
+     -0.3
     ],
-    "usable": 0.31,
-    "abstain": "usable photo 31 % < 50 %",
-    "verdict": "NO EVIDENCE",
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
     "reasons": [
-     "foliage 30 % > 25 %"
+     "wall dL +0.36",
+     "glazing storey band off by 0.48 mean 0.33 vs photo 0.56"
     ],
     "wall": {
-     "photo": "#d29662",
-     "model": "#cc9366",
-     "dL": -0.004
+     "photo": "#423b37",
+     "model": "#ad9285",
+     "dL": 0.363
     },
     "glazing": {
-     "photo": 0.55,
+     "photo": 0.56,
      "model": 0.33
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.293
+    "iou": 0.306
    },
    "challengers": {}
   },
@@ -198,87 +199,93 @@
    "address": "Alberdingk Thijmstraat 15",
    "builtYear": 1899,
    "widthM": 6.64,
-   "eavesM": 14.15,
+   "eavesM": 13.37,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#e3aa83",
-    "wallRaw": "#f5d4a3",
+    "wall": "#453e38",
+    "wallRaw": "#9b8878",
     "skyline": {
-     "eavesM": 14.15,
-     "eavesRow": 159,
+     "eavesM": 14.95,
+     "eavesRow": 127,
      "confidence": 1,
      "crown": {
-      "widthM": 2.33,
-      "riseM": 1.97,
-      "topWidthM": 0.82,
-      "centre": 0.48
+      "widthM": 2.4,
+      "riseM": 1.6,
+      "topWidthM": 2.13,
+      "centre": 0.42
      }
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 12,
     "columns": null,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.494,
+    "accentShare": 0.535,
     "structure": {
-     "bayWidthM": 4.03,
-     "bayCentre": 0.33,
+     "bayWidthM": 1.25,
+     "bayCentre": 0.42,
      "balconies": true,
-     "why": "dark open axis 1.32 m at 0.49 (light 0.49): no brick spandrel between the storeys",
+     "why": "bay-less open axis 0.88 m at 0.07 (light 0.54): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 1.3,
-       "centre": 0.14,
-       "light": 0.62
+       "widthM": 0.88,
+       "centre": 0.07,
+       "light": 0.54
       },
       {
-       "widthM": 1.32,
-       "centre": 0.49,
+       "widthM": 1.18,
+       "centre": 0.41,
        "light": 0.49
       },
       {
-       "widthM": 1.3,
-       "centre": 0.84,
-       "light": 0.63
+       "widthM": 1.15,
+       "centre": 0.77,
+       "light": 0.51
       }
      ],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 9.7,
+       "widthM": 1.85,
+       "centre": 0.41
+      }
+     ]
     },
-    "voidShare": 0.34,
-    "foliageShare": 0.15
+    "voidShare": 0.1,
+    "foliageShare": 0.11
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 36 % < 50 %) and no passing same-type neighbour",
+   "reason": "edge NCC 0.137 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 33 % > 30 %)",
    "likeness": {
     "pandId": "0363100012157617",
-    "ncc": null,
-    "nccRaw": 0.179,
+    "ncc": 0.137,
+    "nccRaw": 0.137,
     "shiftM": [
-     -0.25,
-     0.35
+     0.4,
+     -0.15
     ],
-    "usable": 0.36,
-    "abstain": "usable photo 36 % < 50 %",
-    "verdict": "FAIL",
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
     "reasons": [
-     "glazing  mean 0.48 vs photo 0.59"
+     "washed out 33 % > 30 %"
     ],
     "wall": {
-     "photo": "#d9a17a",
-     "model": "#cc8f66",
-     "dL": -0.065
+     "photo": "#b08d7f",
+     "model": "#60564e",
+     "dL": -0.253
     },
     "glazing": {
-     "photo": 0.59,
-     "model": 0.48
+     "photo": 0.18,
+     "model": 0.5
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.539
+    "iou": 0.26
    },
    "challengers": {}
   }

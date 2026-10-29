@@ -1,0 +1,253 @@
+{
+ "street": "Quellijnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:49:26.322Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156282",
+   "addresses": [
+    "Quellijnstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000786990"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157381",
+   "addresses": [
+    "Quellijnstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000786983"
+    },
+    {
+     "address": "Quellijnstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012600716"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161718",
+   "addresses": [
+    "Quellijnstraat 52E",
+    "Quellijnstraat 52F",
+    "Quellijnstraat 52G",
+    "Quellijnstraat 52K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 52E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000786975"
+    },
+    {
+     "address": "Quellijnstraat 52F",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000786976"
+    },
+    {
+     "address": "Quellijnstraat 52G",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000786977"
+    },
+    {
+     "address": "Quellijnstraat 52K",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000786978"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153748",
+   "addresses": [
+    "Quellijnstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000786968"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160359",
+   "addresses": [
+    "Quellijnstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 48-H",
+     "use": "industriefunctie",
+     "areaM2": 92,
+     "bagId": "0363010000786951"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454547,
+     "lngLat": [
+      4.8880139,
+      52.3568289
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "48-H",
+      "addr:postcode": "1072XT",
+      "addr:street": "Quellijnstraat",
+      "alt_name": "Kavango Marketing Agency",
+      "check_date": "2026-01-10",
+      "email": "info@kavango.nl",
+      "name": "Kavango",
+      "office": "advertising_agency",
+      "phone": "+31 20 3419796",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://kavango.nl"
+     },
+     "fetchedAt": "2026-10-29T20:49:26.322Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158953",
+   "addresses": [
+    "Quellijnstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000786942"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164119",
+   "addresses": [
+    "Quellijnstraat 44A",
+    "Quellijnstraat 44B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 44A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000995711"
+    },
+    {
+     "address": "Quellijnstraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000995712"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164256",
+   "addresses": [
+    "Quellijnstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000786924"
+    },
+    {
+     "address": "Quellijnstraat 42-O",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000786925"
+    },
+    {
+     "address": "Quellijnstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012081469"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098847",
+   "addresses": [
+    "Quellijnstraat 32",
+    "Quellijnstraat 34",
+    "Quellijnstraat 36",
+    "Quellijnstraat 38",
+    "Quellijnstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000614992"
+    },
+    {
+     "address": "Daniël Stalpertstraat 7-H",
+     "use": "industriefunctie",
+     "areaM2": 2500,
+     "bagId": "0363010000786877"
+    }
+   ],
+   "units": 21,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13435950958,
+     "lngLat": [
+      4.8871059,
+      52.3569432
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-29T20:49:26.322Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    }
+   ]
+  }
+ ]
+}

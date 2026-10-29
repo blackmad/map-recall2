@@ -1,0 +1,240 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:12:46.265Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174167",
+   "addresses": [
+    "Rozengracht 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000947455"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174168",
+   "addresses": [
+    "Rozengracht 104",
+    "Rozengracht 106",
+    "Rozengracht 108A",
+    "Rozengracht 108B",
+    "Rozengracht 108C",
+    "Rozengracht 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 108A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000946383"
+    },
+    {
+     "address": "Rozengracht 108B",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000946384"
+    },
+    {
+     "address": "Rozengracht 108C",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000946385"
+    },
+    {
+     "address": "Rozengracht 110",
+     "use": "kantoorfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000947527"
+    },
+    {
+     "address": "Rozengracht 106-3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000962003"
+    },
+    {
+     "address": "Rozengracht 104-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000797547"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1590738324,
+     "lngLat": [
+      4.8793053,
+      52.373391
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "cuisine": "asian",
+      "name": "Chow"
+     },
+     "fetchedAt": "2026-10-29T22:12:46.265Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9039944148,
+     "lngLat": [
+      4.8794691,
+      52.3732531
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "106-H",
+      "addr:postcode": "1016NH",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "cuisine": "latin_american",
+      "name": "Salmuera",
+      "outdoor_seating": "no",
+      "phone": "+31 20 624 5752",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "toilets:wheelchair": "no",
+      "website": "https://www.sal-amsterdam.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:12:46.265Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174079",
+   "addresses": [
+    "Rozengracht 92",
+    "Rozengracht 92E",
+    "Rozengracht 92D",
+    "Rozengracht 92C",
+    "Rozengracht 92B",
+    "Rozengracht 92A",
+    "Rozengracht 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 117-H",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000964408"
+    },
+    {
+     "address": "Bloemstraat 119-H",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000964420"
+    },
+    {
+     "address": "Rozengracht 92-H",
+     "use": "winkelfunctie",
+     "areaM2": 274,
+     "bagId": "0363010000797543"
+    },
+    {
+     "address": "Rozengracht 92E",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012610344"
+    },
+    {
+     "address": "Rozengracht 92D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012610343"
+    },
+    {
+     "address": "Rozengracht 92C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010012610342"
+    },
+    {
+     "address": "Rozengracht 92B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012610341"
+    },
+    {
+     "address": "Rozengracht 92A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012610340"
+    },
+    {
+     "address": "Rozengracht 94",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 183,
+     "bagId": "0363010012610339"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720974480,
+     "lngLat": [
+      4.8795734,
+      52.3732872
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92-H",
+      "addr:postcode": "1016NG",
+      "addr:street": "Rozengracht",
+      "amenity": "cafe",
+      "cuisine": "teahouse",
+      "description:en": "Tea culture club",
+      "diet:vegan": "yes",
+      "email": "hi@moychay.nl",
+      "indoor_seating": "yes",
+      "int_name:ru": "Мой чай",
+      "name": "Moychay",
+      "opening_hours": "Mo 13:00-20:00; Tu-Fr 11:00-20:00; Sa-Su 11:00-20:30",
+      "outdoor_seating": "limited",
+      "phone": "+31 6 25395868",
+      "shop": "tea",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes",
+      "website": "https://moychay.nl"
+     },
+     "fetchedAt": "2026-10-29T22:12:46.265Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174090",
+   "addresses": [
+    "Rozengracht 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 90-H",
+     "use": "winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000797540"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

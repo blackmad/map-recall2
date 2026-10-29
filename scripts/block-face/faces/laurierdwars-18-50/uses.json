@@ -1,0 +1,150 @@
+{
+ "street": "Eerste Laurierdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169959",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001008136"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169956",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010001008137"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169958",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 46-H",
+     "use": "industriefunctie",
+     "areaM2": 48,
+     "bagId": "0363010000547338"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169957",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 26",
+    "Eerste Laurierdwarsstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000547325"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000547330"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169896",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000964429"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169595",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001167578"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169600",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000547310"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170023",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000547306"
+    },
+    {
+     "address": "Laurierstraat 53",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000719744"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

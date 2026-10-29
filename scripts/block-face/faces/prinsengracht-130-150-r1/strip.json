@@ -1,0 +1,148 @@
+{
+ "face": "prinsengracht-130-150-r1",
+ "image": "staging/block-face/prinsengracht-130-150-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 469,
+ "height": 842,
+ "groundNAP": 0.452,
+ "heightM": 21.06,
+ "frame": {
+  "midRD": [
+   120696.2060625,
+   487631.208
+  ],
+  "uRD": [
+   0.48736362936432515,
+   0.8731991140472103
+  ],
+  "nRD": [
+   0.8731991140472103,
+   -0.48736362936432515
+  ]
+ },
+ "x0M": -5.85,
+ "x1M": 5.88,
+ "date": "2021-01-25",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012174415",
+   "x0M": -5.85,
+   "x1M": 0,
+   "px": [
+    0,
+    234
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000299",
+     "timestamp": "2021-01-25T11:17:13.255630Z",
+     "distanceM": 23.9,
+     "obliquityDeg": 4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000298",
+     "timestamp": "2021-01-25T11:17:07.355650Z",
+     "distanceM": 25.2,
+     "obliquityDeg": 19,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000300",
+     "timestamp": "2021-01-25T11:17:18.985620Z",
+     "distanceM": 26.2,
+     "obliquityDeg": 26.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174416",
+   "x0M": 0,
+   "x1M": 5.88,
+   "px": [
+    234,
+    469
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000299",
+     "timestamp": "2021-01-25T11:17:13.255630Z",
+     "distanceM": 24.2,
+     "obliquityDeg": 10.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000300",
+     "timestamp": "2021-01-25T11:17:18.985620Z",
+     "distanceM": 24.1,
+     "obliquityDeg": 13.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001979_pano_0001_000298",
+     "timestamp": "2021-01-25T11:17:07.355650Z",
+     "distanceM": 27.6,
+     "obliquityDeg": 31,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-09-05": 2,
+  "2025-06-16": 0,
+  "2023-02-06": 0,
+  "2018-05-03": 0,
+  "2021-03-17": 0,
+  "2022-04-29": 4,
+  "2024-11-21": 0,
+  "2023-02-13": 0,
+  "2023-02-27": 2,
+  "2018-05-02": 1,
+  "2023-04-17": 3,
+  "2022-04-22": 1,
+  "2016-08-17": 4,
+  "2018-05-14": 0,
+  "2020-04-24": 0,
+  "2019-01-15": 4,
+  "2020-01-10": 0,
+  "2023-02-20": 0,
+  "2023-04-03": 0,
+  "2022-04-25": 3,
+  "2020-04-22": 3,
+  "2023-04-11": 2,
+  "2016-08-15": 2,
+  "2023-01-11": 1,
+  "2023-03-20": 3,
+  "2023-03-13": 2,
+  "2023-01-30": 0,
+  "2023-03-06": 2,
+  "2020-01-08": 6,
+  "2021-01-22": 7,
+  "2017-03-13": 7,
+  "2021-01-25": 7,
+  "2025-07-03": 0,
+  "2019-05-13": 0,
+  "2024-12-16": 0,
+  "2023-03-27": 0,
+  "2017-03-29": 0,
+  "2023-01-16": 0,
+  "2022-01-27": 0,
+  "2024-12-17": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "prinsengracht-130-150",
+  "px": [
+   0,
+   469
+  ]
+ }
+}

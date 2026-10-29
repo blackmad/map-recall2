@@ -3,7 +3,7 @@
  "street": "Eerste Constantijn Huygensstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 1.15,
+ "seconds": 1.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,26 +20,26 @@
    "address": "Eerste Constantijn Huygensstraat 31",
    "builtYear": 1895,
    "widthM": 10.13,
-   "eavesM": 14.75,
+   "eavesM": 14.24,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#8d7b5b",
-    "wallRaw": "#614731",
+    "wall": "#8e7959",
+    "wallRaw": "#614631",
     "skyline": {
-     "eavesM": 14.75,
-     "eavesRow": 161,
-     "confidence": 0.66,
+     "eavesM": 15,
+     "eavesRow": 152,
+     "confidence": 0.68,
      "crown": {
-      "widthM": 2.77,
-      "riseM": 4.02,
+      "widthM": 2.55,
+      "riseM": 3.8,
       "topWidthM": 0.23,
       "centre": 0.41
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 10,
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.063,
@@ -56,26 +56,32 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1895, type 1893-1893; frontage 10.13 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1895, type 1886-1892; frontage 10.13 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1895, type 1893-1893",
-     "frontage 10.13 m, type 5.6-6.4 m"
+     "built 1895, type 1886-1892",
+     "frontage 10.13 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.75 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 1,
+      "note": "strip cornice 15 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
       "note": "strip accent share 0.033 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
      }
     ]
    },
@@ -91,17 +97,17 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#392616",
+    "wall": "#3a2616",
     "wallRaw": "#5c4f37",
     "skyline": {
-     "eavesM": 17.88,
-     "eavesRow": 36,
-     "confidence": 0.41,
+     "eavesM": 17.8,
+     "eavesRow": 40,
+     "confidence": 0.47,
      "crown": {
-      "widthM": 1.02,
-      "riseM": 0.9,
-      "topWidthM": 0.88,
-      "centre": 0.39
+      "widthM": 0.72,
+      "riseM": 1,
+      "topWidthM": 0.55,
+      "centre": 0.4
      }
     },
     "stucco": false,
@@ -119,18 +125,18 @@
      "slabs": [
       {
        "atM": 10.15,
-       "widthM": 1.15,
+       "widthM": 1.13,
        "centre": 0.67
       },
       {
-       "atM": 7.97,
-       "widthM": 0.85,
-       "centre": 0.86
+       "atM": 9.55,
+       "widthM": 0.9,
+       "centre": 0.51
       },
       {
-       "atM": 6.92,
-       "widthM": 1.18,
-       "centre": 0.46
+       "atM": 7,
+       "widthM": 0.93,
+       "centre": 0.11
       },
       {
        "atM": 6.25,
@@ -140,30 +146,30 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.12
+    "foliageShare": 0.11
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1895, type 1893-1893; frontage 12.29 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1895, type 1886-1892; frontage 12.29 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1895, type 1893-1893",
-     "frontage 12.29 m, type 5.6-6.4 m"
+     "built 1895, type 1886-1892",
+     "frontage 12.29 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.49 m not compared)"
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 14.49 m not compared)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.049 (brick)"
+      "note": "strip accent share 0.05 (brick)"
      },
      {
       "key": "columns",
@@ -185,12 +191,12 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#877455",
+    "wall": "#7c6b4d",
     "wallRaw": "#58432f",
     "skyline": {
-     "eavesM": 18.27,
+     "eavesM": 18.3,
      "eavesRow": 20,
-     "confidence": 0.34,
+     "confidence": 0.36,
      "crown": null
     },
     "stucco": false,
@@ -198,7 +204,7 @@
     "columns": 7,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.038,
+    "accentShare": 0.037,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -256,17 +262,17 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#725238",
+    "wall": "#7a5a3f",
     "wallRaw": "#604d38",
     "skyline": {
-     "eavesM": 16.32,
-     "eavesRow": 98,
-     "confidence": 0.84,
+     "eavesM": 16.4,
+     "eavesRow": 96,
+     "confidence": 0.86,
      "crown": {
-      "widthM": 2.85,
-      "riseM": 2.45,
-      "topWidthM": 0.72,
-      "centre": 0.74
+      "widthM": 2,
+      "riseM": 2.4,
+      "topWidthM": 0.8,
+      "centre": 0.81
      }
     },
     "stucco": false,
@@ -281,14 +287,20 @@
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1.07,
+       "centre": 0.59
+      }
+     ]
     },
     "voidShare": 0,
-    "foliageShare": 0.1
+    "foliageShare": 0.11
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.32 m vs the type's 14.9 m)",
+   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.4 m vs the type's 14.9 m)",
    "best": {
     "type": "helmers-1896-transom-band",
     "score": 0.5,
@@ -298,7 +310,7 @@
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 16.32 m vs the type's 14.9 m"
+      "note": "strip cornice 16.4 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
@@ -320,22 +332,22 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#4b3425",
+    "wall": "#5c4d3d",
     "wallRaw": "#564431",
     "skyline": {
-     "eavesM": 16.57,
-     "eavesRow": 88,
-     "confidence": 0.53,
+     "eavesM": 15.7,
+     "eavesRow": 124,
+     "confidence": 0.54,
      "crown": {
-      "widthM": 2.2,
-      "riseM": 2.2,
-      "topWidthM": 1.27,
-      "centre": 0.39
+      "widthM": 1.68,
+      "riseM": 3.1,
+      "topWidthM": 0.45,
+      "centre": 0.29
      }
     },
     "stucco": false,
     "bands": 1,
-    "columns": 2,
+    "columns": null,
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.125,
@@ -352,32 +364,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1896, type 1893-1893; frontage 9.48 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1896, type 1886-1892; frontage 9.48 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1896, type 1893-1893",
-     "frontage 9.48 m, type 5.6-6.4 m"
+     "built 1896, type 1886-1892",
+     "frontage 9.48 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.25 m not compared)"
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 14.25 m not compared)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.077 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
+      "note": "strip accent share 0.076 (brick)"
      }
     ]
    },

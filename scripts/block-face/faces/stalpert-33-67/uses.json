@@ -1,0 +1,438 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:46:39.818Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012071682",
+   "addresses": [
+    "Daniël Stalpertstraat 33E",
+    "Daniël Stalpertstraat 33F",
+    "Daniël Stalpertstraat 33G",
+    "Daniël Stalpertstraat 33H",
+    "Daniël Stalpertstraat 33A",
+    "Daniël Stalpertstraat 33B",
+    "Daniël Stalpertstraat 33C",
+    "Daniël Stalpertstraat 33D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 33E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000615130"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33F",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000615131"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33G",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000615132"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000615133"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000615126"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000615127"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000615128"
+    },
+    {
+     "address": "Daniël Stalpertstraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000615129"
+    },
+    {
+     "address": "Frans Halsstraat 45A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000638445"
+    },
+    {
+     "address": "Frans Halsstraat 45B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000638446"
+    },
+    {
+     "address": "Frans Halsstraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000638447"
+    },
+    {
+     "address": "Frans Halsstraat 45D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000638449"
+    },
+    {
+     "address": "Frans Halsstraat 47A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000638453"
+    },
+    {
+     "address": "Frans Halsstraat 47B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000638454"
+    },
+    {
+     "address": "Frans Halsstraat 47C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000638455"
+    },
+    {
+     "address": "Frans Halsstraat 47D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000638456"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13435950942,
+     "lngLat": [
+      4.8887992,
+      52.3563052
+     ],
+     "tags": {
+      "amenity": "bench",
+      "armrest": "no",
+      "backrest": "yes",
+      "material": "metal",
+      "seats": "4"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012239265",
+   "addresses": [
+    "Daniël Stalpertstraat 35",
+    "Daniël Stalpertstraat 35A",
+    "Daniël Stalpertstraat 35B",
+    "Daniël Stalpertstraat 35C",
+    "Daniël Stalpertstraat 35D",
+    "Daniël Stalpertstraat 35E",
+    "Daniël Stalpertstraat 35F",
+    "Daniël Stalpertstraat 35G",
+    "Daniël Stalpertstraat 35H",
+    "Daniël Stalpertstraat 37",
+    "Daniël Stalpertstraat 39",
+    "Daniël Stalpertstraat 41",
+    "Daniël Stalpertstraat 41A",
+    "Daniël Stalpertstraat 41B",
+    "Daniël Stalpertstraat 41C",
+    "Daniël Stalpertstraat 41D",
+    "Daniël Stalpertstraat 41E",
+    "Daniël Stalpertstraat 41F",
+    "Daniël Stalpertstraat 41G",
+    "Daniël Stalpertstraat 41H",
+    "Daniël Stalpertstraat 41K",
+    "Daniël Stalpertstraat 43",
+    "Daniël Stalpertstraat 45",
+    "Daniël Stalpertstraat 45A",
+    "Daniël Stalpertstraat 45B",
+    "Daniël Stalpertstraat 45C",
+    "Daniël Stalpertstraat 45D",
+    "Daniël Stalpertstraat 45E",
+    "Daniël Stalpertstraat 45F",
+    "Daniël Stalpertstraat 45G",
+    "Daniël Stalpertstraat 45H",
+    "Daniël Stalpertstraat 45K",
+    "Daniël Stalpertstraat 45L",
+    "Daniël Stalpertstraat 47",
+    "Daniël Stalpertstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 35-H",
+     "use": "sportfunctie",
+     "areaM2": 339,
+     "bagId": "0363010000615135"
+    },
+    {
+     "address": "Daniël Stalpertstraat 43-H",
+     "use": "sportfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000615161"
+    },
+    {
+     "address": "Daniël Stalpertstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000615169"
+    },
+    {
+     "address": "Daniël Stalpertstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000615178"
+    },
+    {
+     "address": "Daniël Stalpertstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000615186"
+    },
+    {
+     "address": "Daniël Stalpertstraat 35-1",
+     "use": "kantoorfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000984336"
+    }
+   ],
+   "units": 94,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164142",
+   "addresses": [
+    "Daniël Stalpertstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000615194"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157683",
+   "addresses": [
+    "Daniël Stalpertstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000615202"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074388",
+   "addresses": [
+    "Daniël Stalpertstraat 55B",
+    "Daniël Stalpertstraat 55A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000949181"
+    },
+    {
+     "address": "Daniël Stalpertstraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949092"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237225",
+   "addresses": [
+    "Daniël Stalpertstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000615222"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455097,
+     "lngLat": [
+      4.8897961,
+      52.3563253
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-1",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "guest_house": "bed_and_breakfast",
+      "name": "The Fabulous Suite",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817455205,
+     "lngLat": [
+      4.889796,
+      52.3563343
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-3",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "check_date": "2026-01-10",
+      "name": "The Superstay Boutique guestroom",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house",
+      "website": "https://eatbu.nl/the-superstay-boutique-guestroom-netherlands"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236571",
+   "addresses": [
+    "Daniël Stalpertstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 61-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000615238"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455441,
+     "lngLat": [
+      4.8898615,
+      52.3563181
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "61-H",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "alt_name": "Locals All Day Brunch",
+      "amenity": "restaurant",
+      "branch": "Daniël",
+      "check_date": "2026-01-06",
+      "cuisine": "breakfast;brunch;coffee_shop",
+      "email": "info@localscoffee.nl",
+      "name": "Locals Coffee",
+      "opening_hours": "Mo-Th 09:00-15:00; Fr-Su 09:00-16:00",
+      "outdoor_seating": "no",
+      "phone": "+31 6 24910728",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.localscoffee.nl/locations/all-day-brunch-daniel"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233604",
+   "addresses": [
+    "Daniël Stalpertstraat 63",
+    "Daniël Stalpertstraat 65A",
+    "Daniël Stalpertstraat 65B",
+    "Daniël Stalpertstraat 65C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010001001613"
+    },
+    {
+     "address": "Daniël Stalpertstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 230,
+     "bagId": "0363010001002353"
+    },
+    {
+     "address": "Daniël Stalpertstraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001020783"
+    },
+    {
+     "address": "Daniël Stalpertstraat 65C",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001020784"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164510",
+   "addresses": [
+    "Daniël Stalpertstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000615269"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

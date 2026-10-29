@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bloemgracht-80-128-r1",
+ "street": "Bloemgracht",
+ "sources": [
+  {
+   "id": "strip-2024-12-16",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-16",
+   "image": "staging/block-face/bloemgracht-80-128-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/bloemgracht-80-128/auto-place.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169915",
+   "slug": "bloemgracht-169915",
+   "address": "Bloemgracht 82",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 5,
+    "measuredPalette": {
+     "brick": "#b49a7d",
+     "evidence": "strip 2024-12-16 span 3695-3915: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "dormer"
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2024-12-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 1 on eaves 1, stucco 1, crown 1, columns 1; strip 2024-12-16 span 3695-3915"
+   }
+  },
+  {
+   "pandId": "0363100012169916",
+   "slug": "bloemgracht-169916",
+   "address": "Bloemgracht 80",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 5,
+    "measuredPalette": {
+     "brick": "#9d896b",
+     "evidence": "strip 2024-12-16 span 3915-4143: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 0.88 on eaves 0.5, stucco 1, crown 1, columns 1; strip 2024-12-16 span 3915-4143"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

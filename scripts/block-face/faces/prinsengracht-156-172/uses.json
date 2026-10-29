@@ -1,0 +1,119 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:07:38.490Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168699",
+   "addresses": [
+    "Prinsengracht 166",
+    "Prinsengracht 166A",
+    "Prinsengracht 166B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 166",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000657242"
+    },
+    {
+     "address": "Prinsengracht 166A",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010012572765"
+    },
+    {
+     "address": "Prinsengracht 166B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012572766"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168698",
+   "addresses": [
+    "Prinsengracht 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 164",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000783993"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168748",
+   "addresses": [
+    "Prinsengracht 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 162",
+     "use": "woonfunctie",
+     "areaM2": 246,
+     "bagId": "0363010000805952"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168797",
+   "addresses": [
+    "Prinsengracht 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 160",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010000759667"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168767",
+   "addresses": [
+    "Prinsengracht 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 158-H",
+     "use": "winkelfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000783967"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168798",
+   "addresses": [
+    "Prinsengracht 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 156-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000783963"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "prinsengracht-130-150-r1",
+ "street": "Prinsengracht",
+ "sources": [
+  {
+   "id": "strip-2021-01-25",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25",
+   "image": "staging/block-face/prinsengracht-130-150-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/prinsengracht-130-150/auto-place.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174415",
+   "slug": "prinsengracht-174415",
+   "address": "Prinsengracht 150",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#beab88",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=cafe); fascia colour measured on the strip 2021-01-25 span 0-234"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#ebc79f",
+     "evidence": "strip 2021-01-25 span 0-234: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 7487205751
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-25",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 1 on eaves 1, roof 1, stucco 1, crown 1, columns 1; strip 2021-01-25 span 0-234"
+   }
+  },
+  {
+   "pandId": "0363100012174416",
+   "slug": "prinsengracht-174416",
+   "address": "Prinsengracht 148",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "measuredPalette": {
+     "brick": "#745e53",
+     "evidence": "strip 2021-01-25 span 234-469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "bell"
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2021-01-25",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 0.91 on eaves 1, roof 1, stucco 1, crown 1, columns 0.4; strip 2021-01-25 span 234-469"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

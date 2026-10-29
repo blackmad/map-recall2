@@ -2,16 +2,19 @@
  "name": "de-pijp-frans-halsbuurt",
  "buurt": "frans-halsbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T19:56:02.332Z",
+ "generatedAt": "2026-10-29T21:06:02.060Z",
  "method": "scripts/block-face/batch.ts",
  "totals": {
   "faces": 37,
-  "runs": 37,
-  "installed": 4,
-  "installedPands": 11,
-  "failed": 33,
+  "runs": 40,
+  "installed": 5,
+  "installedPands": 16,
+  "failed": 35,
   "byReason": {
-   "no-type": 31,
+   "no-type": 18,
+   "compile-gates": 11,
+   "strip-over-drawn-high": 9,
+   "glb-audit": 3,
    "intake-failed": 1,
    "likeness": 1
   }
@@ -92,6 +95,30 @@
    "seconds": 7.2
   },
   {
+   "face": "saenredam-62-66",
+   "street": "Saenredamstraat",
+   "ride": 3891,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.393,
+   "nccMedian": 0.504,
+   "stripOverDrawn": 0.993,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 4148,
+   "sheet": "staging/block-face/saenredam-62-66-r1/review/strip-sheet.png",
+   "stripDate": "2020-01-06",
+   "run": "saenredam-62-66-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.7
+  },
+  {
    "face": "campen-36-66",
    "street": "Eerste Jacob van Campenstraat",
    "ride": 35674,
@@ -113,16 +140,19 @@
    "stripDate": "2019-01-30",
    "status": "failed",
    "reasons": [
-    "no-type: 0/14 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/14 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x run: a single placed pand between held neighbours or the face end: a block ; 2x match: best pijp-#-five-low scores # < # (strip cornice # m vs the type's # m)"
    ],
-   "seconds": 14.9
+   "seconds": 19.3
   },
   {
    "face": "stadhouderskade-74-76",
    "street": "Stadhouderskade",
    "ride": 22673,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -133,12 +163,12 @@
    "run": "stadhouderskade-74-76",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2025-01-30",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1878/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 0
+   "seconds": 54.2
   },
   {
    "face": "campen-1-21",
@@ -164,7 +194,7 @@
    "reasons": [
     "no-type: 0/9 placed (9x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 3.3
+   "seconds": 3.4
   },
   {
    "face": "ruysdaelkade-15-55",
@@ -190,7 +220,7 @@
    "reasons": [
     "no-type: 0/14 placed (8x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 12.3
+   "seconds": 13.3
   },
   {
    "face": "dou-9-39",
@@ -213,35 +243,12 @@
    "reasons": [
     "intake-failed: Houses of one chunk must front the same direction (frontages differ by more than ~11 degrees)"
    ],
-   "seconds": 11.5
+   "seconds": 18.7
   },
   {
    "face": "saenredam-39-67",
    "street": "Saenredamstraat",
    "ride": 8380,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "saenredam-39-67",
-   "pands": 16,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1877/1878/1879; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
-  },
-  {
-   "face": "stalpert-38-70",
-   "street": "Daniël Stalpertstraat",
-   "ride": 7572,
    "restriped": null,
    "stripQuality": {
     "badShare": 0,
@@ -254,15 +261,41 @@
    "droppedCorners": [],
    "triangles": null,
    "sheet": null,
-   "run": "stalpert-38-70",
-   "pands": 15,
+   "run": "saenredam-39-67",
+   "pands": 16,
    "mode": "auto-place",
-   "stripDate": "2022-01-26",
+   "stripDate": "2022-03-21",
    "status": "failed",
    "reasons": [
-    "no-type: 0/15 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
+    "no-type: 0/16 placed (9x match: best pijp-#-five-low scores # < # (strip cornice # m vs the type's # m; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 7.3
+   "seconds": 97.1
+  },
+  {
+   "face": "stalpert-38-70",
+   "street": "Daniël Stalpertstraat",
+   "ride": 7572,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.166,
+   "nccMedian": 0.188,
+   "stripOverDrawn": 1.024,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 13598,
+   "sheet": "staging/block-face/stalpert-38-70-r1/review/strip-sheet.png",
+   "stripDate": "2022-01-26",
+   "run": "stalpert-38-70-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 166062/storey-height; 164016/storey-height; 158633/storey-height; 164659/storey-height"
+   ],
+   "seconds": 6.1
   },
   {
    "face": "quellijn-35-61",
@@ -286,32 +319,35 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (8x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
+    "no-type: 0/12 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 2x match: best pijp-#-five-low scores # < # (strip columns # vs # bays); 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 3.2
+   "seconds": 15.1
   },
   {
    "face": "stalpert-33-67",
    "street": "Daniël Stalpertstraat",
    "ride": 6384,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.223,
+   "nccMedian": 0.233,
+   "stripOverDrawn": 2.065,
+   "wallFits": 10,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "stalpert-33-67",
-   "pands": 9,
+   "triangles": 10602,
+   "sheet": "staging/block-face/stalpert-33-67-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "stalpert-33-67-r1",
+   "pands": 5,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1879/1980/2014; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "strip-over-drawn-high: 2.065 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 0
+   "seconds": 34.3
   },
   {
    "face": "quellijn-60-80",
@@ -337,7 +373,7 @@
    "reasons": [
     "no-type: 0/9 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: best pijp-#-hood-frieze scores # < # (#DBAG eaves # m = # storeys of #; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 10.9
+   "seconds": 22.5
   },
   {
    "face": "ruysdaelkade-61-71",
@@ -363,31 +399,7 @@
    "reasons": [
     "no-type: 0/6 placed (4x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
    ],
-   "seconds": 1.8
-  },
-  {
-   "face": "saenredam-62-66",
-   "street": "Saenredamstraat",
-   "ride": 3891,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
-   "nccMin": 0.393,
-   "nccMedian": 0.504,
-   "stripOverDrawn": 0.993,
-   "wallFits": 4,
-   "droppedCorners": [],
-   "triangles": 4148,
-   "sheet": "staging/block-face/saenredam-62-66-r1/review/strip-sheet.png",
-   "stripDate": "2020-01-06",
-   "run": "saenredam-62-66-r1",
-   "pands": 2,
-   "mode": "auto-place",
-   "status": "installed",
-   "reasons": [],
-   "seconds": 9.7
+   "seconds": 3.8
   },
   {
    "face": "saenredam-26-56",
@@ -400,29 +412,32 @@
      "cold cast rb"
     ]
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.204,
+   "nccMedian": 0.208,
+   "stripOverDrawn": 0.958,
+   "wallFits": 1,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "saenredam-26-56",
-   "pands": 14,
-   "mode": "auto-place",
+   "triangles": 5712,
+   "sheet": "staging/block-face/saenredam-26-56-r1/review/strip-sheet.png",
    "stripDate": "2022-03-21",
+   "run": "saenredam-26-56-r1",
+   "pands": 3,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/14 placed (5x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
+    "compile-gates: 167431/storey-height; 166655/storey-height; 152867/storey-height"
    ],
-   "seconds": 2.5
+   "seconds": 8.2
   },
   {
    "face": "quellijn-32-56",
    "street": "Quellijnstraat",
    "ride": 1809,
-   "restriped": null,
-   "stripQuality": null,
+   "restriped": "2022-03-21 -> 2019-01-30",
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -433,12 +448,12 @@
    "run": "quellijn-32-56",
    "pands": 9,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2019-01-30",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1879/1880/1927; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/9 placed (3x likeness: run did not compile; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
    ],
-   "seconds": 0
+   "seconds": 147.4
   },
   {
    "face": "hals-28-40",
@@ -464,7 +479,7 @@
    "reasons": [
     "no-type: 0/7 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 14.5
+   "seconds": 23.9
   },
   {
    "face": "hals-2-26",
@@ -488,9 +503,9 @@
    "stripDate": "2022-03-21",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
+    "no-type: 0/12 placed (4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
    ],
-   "seconds": 8.8
+   "seconds": 15.3
   },
   {
    "face": "ruysdaelkade-89-105",
@@ -501,45 +516,48 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.158,
+   "nccMedian": 0.171,
+   "stripOverDrawn": 1.147,
+   "wallFits": 4,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "ruysdaelkade-89-105",
-   "pands": 8,
-   "mode": "auto-place",
+   "triangles": 6468,
+   "sheet": "staging/block-face/ruysdaelkade-89-105-r1/review/strip-sheet.png",
    "stripDate": "2023-01-03",
+   "run": "ruysdaelkade-89-105-r1",
+   "pands": 3,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/8 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
+    "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 1.9
+   "seconds": 19.3
   },
   {
    "face": "hals-5-19",
    "street": "Frans Halsstraat",
    "ride": 564,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.229,
+   "nccMedian": 0.289,
+   "stripOverDrawn": 0.963,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "hals-5-19",
-   "pands": 8,
+   "triangles": 11062,
+   "sheet": "staging/block-face/hals-5-19-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "hals-5-19-r1",
+   "pands": 4,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1877/1878/1879/1880; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "compile-gates: 162907/storey-height; 152579/storey-height; 159558/storey-height; 163052/storey-height"
    ],
-   "seconds": 0
+   "seconds": 5.1
   },
   {
    "face": "hals-25-35",
@@ -565,7 +583,7 @@
    "reasons": [
     "no-type: 0/6 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
    ],
-   "seconds": 17.4
+   "seconds": 21.9
   },
   {
    "face": "saenredam-1-37",
@@ -578,22 +596,52 @@
      "cold cast rb"
     ]
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.183,
+   "nccMedian": 0.206,
+   "stripOverDrawn": 2.216,
+   "wallFits": 6,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "saenredam-1-37",
-   "pands": 18,
-   "mode": "auto-place",
+   "triangles": 5762,
+   "sheet": "staging/block-face/saenredam-1-37-r1/review/strip-sheet.png",
    "stripDate": "2022-03-21",
+   "run": "saenredam-1-37-r1",
+   "pands": 3,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/18 placed (11x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m); 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "compile-gates: 164149/storey-height; 155977/storey-height",
+    "strip-over-drawn-high: 2.216 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 9.2
+   "seconds": 7.8
+  },
+  {
+   "face": "saenredam-1-37",
+   "street": "Saenredamstraat",
+   "ride": 195,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.063,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.172,
+   "nccMedian": 0.255,
+   "stripOverDrawn": 2.023,
+   "wallFits": 7,
+   "droppedCorners": [],
+   "triangles": 7666,
+   "sheet": "staging/block-face/saenredam-1-37-r2/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "saenredam-1-37-r2",
+   "pands": 4,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 159703/storey-height; 155819/storey-height; 163619/storey-height; 236169/storey-height",
+    "strip-over-drawn-high: 2.023 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 9.5
   },
   {
    "face": "ruysdaelkade-3-13",
@@ -617,9 +665,9 @@
    "stripDate": "2022-03-21",
    "status": "failed",
    "reasons": [
-    "no-type: 0/6 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/6 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #; 1x match: best pijp-#-five-low scores # < # (strip cornice # m vs the type's # m)"
    ],
-   "seconds": 1.8
+   "seconds": 6.8
   },
   {
    "face": "stalpert-2-36",
@@ -630,68 +678,108 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.189,
+   "nccMedian": 0.273,
+   "stripOverDrawn": 0.885,
+   "wallFits": 5,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "stalpert-2-36",
-   "pands": 15,
-   "mode": "auto-place",
+   "triangles": 25629,
+   "sheet": "staging/block-face/stalpert-2-36-r1/review/strip-sheet.png",
    "stripDate": "2022-01-26",
+   "run": "stalpert-2-36-r1",
+   "pands": 13,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/15 placed (12x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
+    "compile-gates: 160596/storey-height; 164898/storey-height; 166489/storey-height; 154148/storey-height"
    ],
-   "seconds": 3.1
+   "seconds": 17.7
   },
   {
    "face": "stalpert-1-5",
    "street": "Daniël Stalpertstraat",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.246,
+   "nccMedian": 0.285,
+   "stripOverDrawn": 2.25,
+   "wallFits": 5,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
+   "triangles": 8113,
+   "sheet": "staging/block-face/stalpert-1-5/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
    "run": "stalpert-1-5",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1880; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "compile-gates: 081074/storey-height; 165850/storey-height; 160573/storey-height",
+    "strip-over-drawn-high: 2.25 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 0
+   "seconds": 8.4
   },
   {
    "face": "stalpert-9-31",
    "street": "Daniël Stalpertstraat",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "stripQuality": {
+    "badShare": 0.076,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.247,
+   "nccMedian": 0.394,
+   "stripOverDrawn": 1.887,
+   "wallFits": 6,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "stalpert-9-31",
-   "pands": 12,
+   "triangles": 5881,
+   "sheet": "staging/block-face/stalpert-9-31-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "stalpert-9-31-r1",
+   "pands": 3,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1876/1880; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "glb-audit: failed (see report.json audit)",
+    "strip-over-drawn-high: 1.887 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 0
+   "seconds": 8
+  },
+  {
+   "face": "stalpert-9-31",
+   "street": "Daniël Stalpertstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.076,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.289,
+   "nccMedian": 0.403,
+   "stripOverDrawn": 1.99,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 3893,
+   "sheet": "staging/block-face/stalpert-9-31-r2/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "stalpert-9-31-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-over-drawn-high: 1.99 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 6.9
   },
   {
    "face": "hals-42-66",
@@ -717,7 +805,7 @@
    "reasons": [
     "likeness: 1 pand(s) under NCC 0.15 (237026 0.128)"
    ],
-   "seconds": 7.3
+   "seconds": 7.1
   },
   {
    "face": "hals-68-74",
@@ -758,22 +846,23 @@
      "blown"
     ]
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.267,
+   "nccMedian": 0.267,
+   "stripOverDrawn": 2.26,
+   "wallFits": 4,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "hals-76-90",
-   "pands": 8,
-   "mode": "auto-place",
+   "triangles": 5506,
+   "sheet": "staging/block-face/hals-76-90-r1/review/strip-sheet.png",
    "stripDate": "2022-03-21",
+   "run": "hals-76-90-r1",
+   "pands": 2,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/8 placed (4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x evidence: strip # % without panorama data)"
+    "compile-gates: 166097/storey-height",
+    "strip-over-drawn-high: 2.26 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 7
+   "seconds": 6.9
   },
   {
    "face": "hals-37-43",
@@ -799,7 +888,7 @@
    "reasons": [
     "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 1.5
+   "seconds": 1.4
   },
   {
    "face": "hals-55-67",
@@ -825,57 +914,11 @@
    "reasons": [
     "no-type: 0/7 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: every type vetoed (best pijp-#-shop-dormer: frontage # m, type #-# m))"
    ],
-   "seconds": 17.3
+   "seconds": 18.5
   },
   {
    "face": "hals-69-79",
    "street": "Frans Halsstraat",
-   "ride": 0,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "hals-69-79",
-   "pands": 7,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1877/1878; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
-  },
-  {
-   "face": "dou-1-7",
-   "street": "Gerard Doustraat",
-   "ride": 0,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "dou-1-7",
-   "pands": 11,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1878/1880/1881/1884; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
-  },
-  {
-   "face": "quellijn-1-27",
-   "street": "Quellijnstraat",
    "ride": 0,
    "restriped": null,
    "stripQuality": {
@@ -889,45 +932,130 @@
    "droppedCorners": [],
    "triangles": null,
    "sheet": null,
-   "run": "quellijn-1-27",
-   "pands": 10,
+   "run": "hals-69-79",
+   "pands": 7,
    "mode": "auto-place",
    "stripDate": "2022-03-21",
    "status": "failed",
    "reasons": [
-    "no-type: 0/10 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
+    "no-type: 0/7 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL -#; gla)"
    ],
-   "seconds": 2.7
+   "seconds": 67.8
+  },
+  {
+   "face": "dou-1-7",
+   "street": "Gerard Doustraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.186,
+   "nccMedian": 0.202,
+   "stripOverDrawn": 1.178,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 10798,
+   "sheet": "staging/block-face/dou-1-7-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-03",
+   "run": "dou-1-7-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8.5
+  },
+  {
+   "face": "quellijn-1-27",
+   "street": "Quellijnstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.179,
+   "nccMedian": 0.264,
+   "stripOverDrawn": 2.278,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 5624,
+   "sheet": "staging/block-face/quellijn-1-27-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "quellijn-1-27-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 158625/height-vs-3dbag; 164504/height-vs-3dbag",
+    "glb-audit: failed (see report.json audit)",
+    "strip-over-drawn-high: 2.278 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 7.9
+  },
+  {
+   "face": "quellijn-1-27",
+   "street": "Quellijnstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.249,
+   "nccMedian": 0.325,
+   "stripOverDrawn": 2.174,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 5462,
+   "sheet": "staging/block-face/quellijn-1-27-r2/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "quellijn-1-27-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 083238/storey-height",
+    "strip-over-drawn-high: 2.174 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 6.8
   },
   {
    "face": "saenredam-2-22",
    "street": "Saenredamstraat",
    "ride": 0,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "restriped": "2022-03-21 -> 2022-01-10",
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.183,
+   "nccMedian": 0.216,
+   "stripOverDrawn": 0.923,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "saenredam-2-22",
-   "pands": 11,
+   "triangles": 11842,
+   "sheet": "staging/block-face/saenredam-2-22-r1/review/strip-sheet.png",
+   "stripDate": "2022-01-10",
+   "run": "saenredam-2-22-r1",
+   "pands": 5,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1880/1984; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "compile-gates: 166578/storey-height; 155728/storey-height; 162009/storey-height; 164404/storey-height"
    ],
-   "seconds": 0
+   "seconds": 3.8
   },
   {
    "face": "stadhouderskade-60-60",
    "street": "Stadhouderskade",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -938,12 +1066,12 @@
    "run": "stadhouderskade-60-60",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2025-01-30",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1879/1880; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/2 placed (1x match: best pijp-#-five-low scores # < # (strip cornice # m vs the type's # m; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 0
+   "seconds": 56.7
   }
  ]
 }

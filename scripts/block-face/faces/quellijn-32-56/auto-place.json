@@ -1,0 +1,715 @@
+{
+ "face": "quellijn-32-56",
+ "street": "Quellijnstraat",
+ "library": "de-pijp",
+ "stripDate": "2019-01-30",
+ "seconds": 10.35,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012156282",
+   "address": "Quellijnstraat 56",
+   "builtYear": 1880,
+   "widthM": 6,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b484a",
+    "wallRaw": "#474648",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 143,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.4,
+      "topWidthM": 1.02,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.111 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17; glazing storey band off by 0.30 mean 0.34 vs photo 0.08; window shape square vs photo tall; wall family unresolved (#383132 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012156282",
+    "ncc": 0.111,
+    "nccRaw": 0.111,
+    "shiftM": [
+     -0.4,
+     0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing storey band off by 0.30 mean 0.34 vs photo 0.08",
+     "window shape square vs photo tall",
+     "wall family unresolved (#383132 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#383132",
+     "model": "#635f61",
+     "dL": 0.175
+    },
+    "glazing": {
+     "photo": 0.08,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.111
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157381",
+   "address": "Quellijnstraat 54",
+   "builtYear": 1880,
+   "widthM": 5.6,
+   "eavesM": 7.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#413b39",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 150,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.38,
+      "topWidthM": 1.82,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.72,
+     "balconies": true,
+     "why": "bay-less open axis 0.9 m at 0.72 (light 0.52): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.72,
+       "light": 0.52
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012157381",
+    "ncc": 0.2,
+    "nccRaw": 0.2,
+    "shiftM": [
+     0.35,
+     0.3
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#4b4340",
+     "model": "#865e4e",
+     "dL": 0.143
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.281
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161718",
+   "address": "Quellijnstraat 52E",
+   "builtYear": 1880,
+   "widthM": 6,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624f47",
+    "wallRaw": "#62514a",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 2.73,
+      "topWidthM": 0.75,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.091 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25)",
+   "likeness": {
+    "pandId": "0363100012161718",
+    "ncc": 0.091,
+    "nccRaw": 0.091,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#624f4a",
+     "model": "#7c645a",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.262
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.027,
+    "pijp-1876-hood-frieze": 0.011
+   }
+  },
+  {
+   "pandId": "0363100012153748",
+   "address": "Quellijnstraat 52",
+   "builtYear": 1879,
+   "widthM": 6,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806963",
+    "wallRaw": "#6a5a55",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 155,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 2.7,
+      "topWidthM": 0.6,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.199,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.058 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23)",
+   "likeness": {
+    "pandId": "0363100012153748",
+    "ncc": 0.058,
+    "nccRaw": 0.058,
+    "shiftM": [
+     0.4,
+     0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23"
+    ],
+    "wall": {
+     "photo": "#7a645f",
+     "model": "#947c75",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.307
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.032,
+    "pijp-1876-hood-frieze": 0.004
+   }
+  },
+  {
+   "pandId": "0363100012160359",
+   "address": "Quellijnstraat 48",
+   "builtYear": 1879,
+   "widthM": 6.1,
+   "eavesM": 13.99,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.13,
+    "depthM": 0.49,
+    "centre": 0.093,
+    "lineRD": [
+     [
+      120995.1680625,
+      485556.8945
+     ],
+     [
+      120990.2690625,
+      485557.78250000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#423a3d",
+    "wallRaw": "#443c3b",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.75,
+      "topWidthM": 1.2,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.3,
+       "widthM": 1.4,
+       "centre": 0.33
+      },
+      {
+       "atM": 5.65,
+       "widthM": 0.93,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1879-five-low scores 0.55 < 0.7 (strip cornice 15.8 m vs the type's 13 m (wall-dormer skyline 15.2 m); strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "pijp-1879-five-low",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.8 m vs the type's 13 m (wall-dormer skyline 15.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158953",
+   "address": "Quellijnstraat 46",
+   "builtYear": 1879,
+   "widthM": 4.52,
+   "eavesM": 14.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735c51",
+    "wallRaw": "#6a5952",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 145,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.63,
+      "topWidthM": 0.3,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164119",
+   "address": "Quellijnstraat 44A",
+   "builtYear": 1879,
+   "widthM": 4.52,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#393236",
+    "wallRaw": "#443e3d",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.5,
+      "riseM": 1.63,
+      "topWidthM": 2.23,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164256",
+   "address": "Quellijnstraat 42",
+   "builtYear": 1879,
+   "widthM": 4.4,
+   "eavesM": 14.88,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.22,
+    "toM": 1.22,
+    "depthM": 0.65,
+    "centre": 0.277,
+    "lineRD": [
+     [
+      120979.9460625,
+      485558.1525
+     ],
+     [
+      120976.9410625,
+      485559.08150000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#33292b",
+    "wallRaw": "#484241",
+    "skyline": {
+     "eavesM": 15.93,
+     "eavesRow": 128,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.22,
+      "topWidthM": 1.32,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.108,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.09 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.09,
+       "light": 0.05
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 1.32,
+       "centre": 0.43
+      },
+      {
+       "atM": 10.22,
+       "widthM": 1,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.43,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098847",
+   "address": "Quellijnstraat 32",
+   "builtYear": 1927,
+   "widthM": 54.87,
+   "eavesM": 11.64,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5550",
+    "wallRaw": "#5f5550",
+    "skyline": {
+     "eavesM": 12.32,
+     "eavesRow": 272,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 26.73,
+      "riseM": 6.6,
+      "topWidthM": 1.43,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 7 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.68,
+       "widthM": 2.55,
+       "centre": 0.34
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.27,
+       "centre": 0.26
+      },
+      {
+       "atM": 8.65,
+       "widthM": 2.77,
+       "centre": 0.18
+      },
+      {
+       "atM": 8.35,
+       "widthM": 2.73,
+       "centre": 0.34
+      },
+      {
+       "atM": 7.52,
+       "widthM": 2.58,
+       "centre": 0.34
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.75,
+       "centre": 0.6
+      },
+      {
+       "atM": 5.35,
+       "widthM": 2.75,
+       "centre": 0.04
+      },
+      {
+       "atM": 5.05,
+       "widthM": 1.5,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1927, type 1875-1877; frontage 54.87 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1875-1877",
+     "frontage 54.87 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.64 m = 3 storeys of 3.88 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.49 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

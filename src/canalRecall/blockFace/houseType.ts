@@ -31,6 +31,28 @@ const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];
 type GroundKey = typeof GROUND_KEYS[number];
 
+/**
+ * The type's per-storey lists (`storeyHeights`, `windowHeights`, `headLines`, per-storey `bays`) for a house with more or
+ * fewer storeys than its type (auto-place draws the storeys its eaves give: the Jordaan cornice house is authored with
+ * four, Bloemgracht fronts read three to five). The ground and the top storey keep their entries; an added storey
+ * repeats the one under the top, a removed one is taken from under the top. Before this, such a house failed validation
+ * ("one share per storey"), so no installed face changes.
+ */
+export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeights?: 'diminishing' | number[]; headLines?: number[]; bays: number | number[]}>(f: F, from: number, to: number): F {
+  const fit = (a: number[]) => {
+    if (a.length !== from || from < 2 || to < 2) return a;
+    const mid = a.slice(1, -1), top = a[a.length - 1];
+    while (mid.length < to - 2) mid.push(mid.length ? mid[mid.length - 1] : a[0]);
+    return [a[0], ...mid.slice(0, to - 2), top];
+  };
+  const out = {...f};
+  if (Array.isArray(f.storeyHeights)) out.storeyHeights = fit(f.storeyHeights);
+  if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
+  if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
+  if (Array.isArray(f.bays)) out.bays = fit(f.bays);
+  return out;
+}
+
 /** The upper body: bays, storeys, windows, balconies, bay windows, bands, surrounds, cornice. Written once per type. */
 export type BodyIntent = Omit<FrontIntent, CrownKey | GroundKey | typeof PLACEMENT_KEYS[number]>;
 /** Placement overrides of body fields: a value replaces the type's, `null` removes it. */
@@ -240,7 +262,7 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (!has(f, 'doorBay')) f.doorBay = null;
     if (!has(f, 'basement')) f.basement = 'none';
     if (!has(f, 'hoist')) f.hoist = false;
-    if (place.storeys !== undefined) { f.storeys = place.storeys; if (place.storeys !== t.body.storeys) deviations.push(`storeys ${place.storeys} (type: ${t.body.storeys})`); }
+    if (place.storeys !== undefined) { f.storeys = place.storeys; if (place.storeys !== t.body.storeys) { deviations.push(`storeys ${place.storeys} (type: ${t.body.storeys})`); f = resizePerStorey(f, t.body.storeys, place.storeys); } }
     f = {...f, ...overrides} as FrontIntent;
     // A `null` override removes the type's body field (a row house without the type's box frames or lisenes).
     for (const [key, v] of Object.entries(overrides)) if (v === null) delete (f as unknown as Record<string, unknown>)[key];

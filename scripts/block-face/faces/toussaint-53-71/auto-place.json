@@ -3,7 +3,7 @@
  "street": "Bosboom Toussaintstraat",
  "library": "helmersbuurt",
  "stripDate": "2019-01-07",
- "seconds": 3.84,
+ "seconds": 5.09,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -51,11 +51,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.043 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.49 mean 0.39 vs photo 0.66; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.15 darker than the model's in shade or overcast light; wall family unresolved (#2d2622 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 6)",
+   "reason": "edge NCC 0.044 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20; wall family unresolved (#372c26 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012158175",
-    "ncc": 0.043,
-    "nccRaw": 0.043,
+    "ncc": 0.044,
+    "nccRaw": 0.044,
     "shiftM": [
      0.2,
      0.15
@@ -64,25 +64,23 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.49 mean 0.39 vs photo 0.66",
-     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.15 darker than the model's in shade or overcast light",
-     "wall family unresolved (#2d2622 is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 3 vs photo 6"
+     "glazing storey band off by 0.20",
+     "wall family unresolved (#372c26 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#2d2622",
+     "photo": "#372c26",
      "model": "#594740",
-     "dL": 0.145
+     "dL": 0.118
     },
     "glazing": {
-     "photo": 0.66,
-     "model": 0.39
+     "photo": 0.34,
+     "model": 0.37
     },
     "columns": {
-     "photo": 6,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.359
+    "iou": 0.318
    },
    "challengers": {}
   },
@@ -98,14 +96,14 @@
     "wall": "#413429",
     "wallRaw": "#433b35",
     "skyline": {
-     "eavesM": 14.82,
-     "eavesRow": 175,
+     "eavesM": 14,
+     "eavesRow": 208,
      "confidence": 0.8,
      "crown": {
-      "widthM": 3.55,
-      "riseM": 4.38,
-      "topWidthM": 0.65,
-      "centre": 0.45
+      "widthM": 1.9,
+      "riseM": 5.2,
+      "topWidthM": 0.47,
+      "centre": 0.3
      }
     },
     "stucco": false,
@@ -126,7 +124,7 @@
        "light": 0.32
       },
       {
-       "widthM": 0.93,
+       "widthM": 0.95,
        "centre": 0.46,
        "light": 0.24
       }
@@ -134,7 +132,7 @@
      "slabs": [
       {
        "atM": 5.05,
-       "widthM": 1.02,
+       "widthM": 1.05,
        "centre": 0.46
       }
      ]
@@ -144,37 +142,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.013 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17; glazing storey band off by 0.43 mean 0.37 vs photo 0.72; wall family unresolved (#262321 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.143 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29 mean 0.38 vs photo 0.55; wall family unresolved (#3e3126 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012160227",
-    "ncc": 0.013,
-    "nccRaw": 0.013,
+    "ncc": 0.143,
+    "nccRaw": 0.143,
     "shiftM": [
-     0.4,
-     -0.4
+     -0.25,
+     0.3
     ],
-    "usable": 0.96,
+    "usable": 0.98,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.17",
-     "glazing storey band off by 0.43 mean 0.37 vs photo 0.72",
-     "wall family unresolved (#262321 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.29 mean 0.38 vs photo 0.55",
+     "wall family unresolved (#3e3126 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#262321",
+     "photo": "#3e3126",
      "model": "#604d3d",
-     "dL": 0.169
+     "dL": 0.112
     },
     "glazing": {
-     "photo": 0.72,
-     "model": 0.37
+     "photo": 0.55,
+     "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.384
+    "iou": 0.461
    },
    "challengers": {}
   },
@@ -187,22 +184,22 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#373634",
+    "wall": "#383836",
     "wallRaw": "#383735",
     "skyline": {
-     "eavesM": 17.4,
-     "eavesRow": 72,
-     "confidence": 0.53,
+     "eavesM": 17.57,
+     "eavesRow": 65,
+     "confidence": 0.54,
      "crown": {
       "widthM": 1.13,
-      "riseM": 1.8,
-      "topWidthM": 0.4,
+      "riseM": 1.63,
+      "topWidthM": 0.42,
       "centre": 0.1
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 2,
+    "columns": 3,
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -215,13 +212,13 @@
      "slabs": [
       {
        "atM": 7.17,
-       "widthM": 1.4,
+       "widthM": 1.32,
        "centre": 0.44
       },
       {
        "atM": 6.27,
-       "widthM": 0.8,
-       "centre": 0.45
+       "widthM": 1.13,
+       "centre": 0.42
       }
      ]
     },
@@ -230,11 +227,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.068 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.16; glazing storey band off by 0.46; wall family unresolved (#2a2421 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.06 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.16; glazing storey band off by 0.57 mean 0.38 vs photo 0.60; wall family unresolved (#2c2522 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 2)",
    "likeness": {
     "pandId": "0363100012160276",
-    "ncc": 0.068,
-    "nccRaw": 0.068,
+    "ncc": 0.06,
+    "nccRaw": 0.06,
     "shiftM": [
      -0.35,
      0.4
@@ -244,24 +241,24 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.16",
-     "glazing storey band off by 0.46",
-     "wall family unresolved (#2a2421 is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 3 vs photo 4"
+     "glazing storey band off by 0.57 mean 0.38 vs photo 0.60",
+     "wall family unresolved (#2c2522 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 2"
     ],
     "wall": {
-     "photo": "#2a2421",
-     "model": "#514f4d",
+     "photo": "#2c2522",
+     "model": "#52524f",
      "dL": 0.163
     },
     "glazing": {
-     "photo": 0.48,
+     "photo": 0.6,
      "model": 0.38
     },
     "columns": {
      "photo": 2,
      "model": 3
     },
-    "iou": 0.311
+    "iou": 0.338
    },
    "challengers": {}
   },
@@ -274,8 +271,8 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#1a1817",
-    "wallRaw": "#383735",
+    "wall": "#171515",
+    "wallRaw": "#373835",
     "skyline": {
      "eavesM": 0,
      "eavesRow": 768,
@@ -297,8 +294,13 @@
      "slabs": [
       {
        "atM": 10.6,
-       "widthM": 1.95,
-       "centre": 0.28
+       "widthM": 1.98,
+       "centre": 0.27
+      },
+      {
+       "atM": 7.07,
+       "widthM": 0.93,
+       "centre": 0.79
       }
      ]
     },
@@ -307,38 +309,38 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.078 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.21; wall family unresolved (#302825 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 6)",
+   "reason": "edge NCC 0.076 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.24; wall family unresolved (#302824 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 3 vs photo 5)",
    "likeness": {
     "pandId": "0363100012154222",
-    "ncc": 0.078,
-    "nccRaw": 0.078,
+    "ncc": 0.076,
+    "nccRaw": 0.076,
     "shiftM": [
-     -0.35,
+     -0.3,
      0.4
     ],
     "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.13",
-     "glazing storey band off by 0.21",
-     "wall family unresolved (#302825 is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 3 vs photo 6"
+     "wall dL +0.14",
+     "glazing storey band off by 0.24",
+     "wall family unresolved (#302824 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 5"
     ],
     "wall": {
-     "photo": "#302825",
-     "model": "#514b48",
-     "dL": 0.133
+     "photo": "#302824",
+     "model": "#504949",
+     "dL": 0.135
     },
     "glazing": {
-     "photo": 0.36,
+     "photo": 0.34,
      "model": 0.41
     },
     "columns": {
-     "photo": 6,
+     "photo": 5,
      "model": 3
     },
-    "iou": 0.221
+    "iou": 0.2
    },
    "challengers": {}
   },
@@ -351,22 +353,22 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#2a2420",
+    "wall": "#27231f",
     "wallRaw": "#393733",
     "skyline": {
      "eavesM": 18.4,
      "eavesRow": 32,
      "confidence": 0.4,
      "crown": {
-      "widthM": 0.65,
+      "widthM": 0.6,
       "riseM": 0.8,
-      "topWidthM": 0.38,
-      "centre": 0.75
+      "topWidthM": 0.5,
+      "centre": 0.56
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 2,
+    "columns": 6,
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -374,13 +376,13 @@
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
+     "why": "no dark open axis, 1 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
        "atM": 10.63,
-       "widthM": 1.23,
-       "centre": 0.73
+       "widthM": 1.7,
+       "centre": 0.62
       },
       {
        "atM": 7.25,
@@ -393,38 +395,34 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.03 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43 mean 0.41 vs photo 0.69; wall family unresolved (#362d29 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
-   "likeness": {
-    "pandId": "0363100012167182",
-    "ncc": 0.03,
-    "nccRaw": 0.03,
-    "shiftM": [
-     0.25,
-     0.2
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.43 mean 0.41 vs photo 0.69",
-     "wall family unresolved (#362d29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#362d29",
-     "model": "#574a42",
-     "dL": 0.114
-    },
-    "glazing": {
-     "photo": 0.69,
-     "model": 0.41
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.415
+   "stage": "match",
+   "reason": "best helmers-1896-transom-band scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "helmers-1896-transom-band",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.9 m; 3DBAG 14.3 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -432,7 +430,7 @@
    "address": "Bosboom Toussaintstraat 63",
    "builtYear": 1895,
    "widthM": 5.88,
-   "eavesM": 17.57,
+   "eavesM": 16.65,
    "storeys3dbag": null,
    "bagBay": {
     "fromM": 3.33,
@@ -441,22 +439,22 @@
     "centre": 0.567
    },
    "strip": {
-    "wall": "#261f1c",
+    "wall": "#251f1b",
     "wallRaw": "#3e3d3a",
     "skyline": {
-     "eavesM": 17.57,
-     "eavesRow": 65,
-     "confidence": 0.84,
+     "eavesM": 17.55,
+     "eavesRow": 66,
+     "confidence": 0.85,
      "crown": {
-      "widthM": 1.73,
-      "riseM": 1.63,
-      "topWidthM": 0.4,
-      "centre": 0.69
+      "widthM": 0.75,
+      "riseM": 1.6,
+      "topWidthM": 0.3,
+      "centre": 0.6
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 3,
+    "columns": 6,
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -468,17 +466,27 @@
      "openAxes": [],
      "slabs": [
       {
+       "atM": 13.65,
+       "widthM": 1.05,
+       "centre": 0.5
+      },
+      {
        "atM": 10.5,
-       "widthM": 1.27,
-       "centre": 0.82
+       "widthM": 1.3,
+       "centre": 0.81
       },
       {
        "atM": 10.13,
        "widthM": 1.13,
-       "centre": 0.18
+       "centre": 0.17
       },
       {
-       "atM": 4.88,
+       "atM": 7.72,
+       "widthM": 0.88,
+       "centre": 0.15
+      },
+      {
+       "atM": 4.95,
        "widthM": 1.6,
        "centre": 0.25
       }
@@ -489,17 +497,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 17.57 m vs the type's 14.9 m)",
+   "reason": "best helmers-1896-transom-band scores 0.36 < 0.7 (strip cornice 17.55 m vs the type's 14.9 m; strip columns 6 vs 3 bays)",
    "best": {
     "type": "helmers-1896-transom-band",
-    "score": 0.64,
+    "score": 0.36,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 17.57 m vs the type's 14.9 m"
+      "note": "strip cornice 17.55 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
@@ -510,8 +518,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
      }
     ]
    },
@@ -532,7 +540,7 @@
     "skyline": {
      "eavesM": 0,
      "eavesRow": 768,
-     "confidence": 0.2,
+     "confidence": 0.21,
      "crown": null
     },
     "stucco": false,
@@ -554,7 +562,7 @@
        "centre": 0.82
       },
       {
-       "atM": 10.07,
+       "atM": 10.15,
        "widthM": 0.93,
        "centre": 0.83
       },
@@ -584,21 +592,21 @@
    "address": "Bosboom Toussaintstraat 67",
    "builtYear": 1895,
    "widthM": 5.54,
-   "eavesM": 17.35,
+   "eavesM": 16.81,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#27221e",
+    "wall": "#241d1b",
     "wallRaw": "#393634",
     "skyline": {
-     "eavesM": 17.35,
-     "eavesRow": 74,
-     "confidence": 0.81,
+     "eavesM": 17.32,
+     "eavesRow": 75,
+     "confidence": 0.82,
      "crown": {
-      "widthM": 1.3,
-      "riseM": 1.82,
-      "topWidthM": 0.13,
-      "centre": 0.46
+      "widthM": 1.57,
+      "riseM": 1.88,
+      "topWidthM": 0.2,
+      "centre": 0.43
      }
     },
     "stucco": false,
@@ -615,8 +623,8 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 10.15,
-       "widthM": 1.15,
+       "atM": 10.07,
+       "widthM": 1.18,
        "centre": 0.86
       },
       {
@@ -636,7 +644,7 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 17.35 m vs the type's 14.9 m)",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 17.32 m vs the type's 14.9 m)",
    "best": {
     "type": "helmers-1896-transom-band",
     "score": 0.64,
@@ -646,7 +654,7 @@
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 17.35 m vs the type's 14.9 m"
+      "note": "strip cornice 17.32 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
@@ -677,15 +685,10 @@
     "wall": "#28221e",
     "wallRaw": "#363430",
     "skyline": {
-     "eavesM": 18.35,
-     "eavesRow": 34,
-     "confidence": 0.5,
-     "crown": {
-      "widthM": 0.75,
-      "riseM": 0.85,
-      "topWidthM": 0.45,
-      "centre": 0.45
-     }
+     "eavesM": 18.45,
+     "eavesRow": 30,
+     "confidence": 0.48,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
@@ -701,13 +704,13 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 10.35,
-       "widthM": 0.97,
-       "centre": 0.8
+       "atM": 10.2,
+       "widthM": 0.85,
+       "centre": 0.53
       },
       {
-       "atM": 6.82,
-       "widthM": 1.15,
+       "atM": 6.75,
+       "widthM": 1.18,
        "centre": 0.82
       }
      ]
@@ -730,45 +733,50 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#39312c",
+    "wall": "#39312d",
     "wallRaw": "#3f3934",
     "skyline": {
-     "eavesM": 17.75,
-     "eavesRow": 58,
-     "confidence": 0.57,
+     "eavesM": 17.98,
+     "eavesRow": 49,
+     "confidence": 0.59,
      "crown": {
-      "widthM": 1.35,
-      "riseM": 1.45,
-      "topWidthM": 0.55,
-      "centre": 0.67
+      "widthM": 0.55,
+      "riseM": 1.22,
+      "topWidthM": 0.2,
+      "centre": 0.6
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
+    "columns": 3,
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
     "structure": {
-     "bayWidthM": 0.3,
-     "bayCentre": 0.46,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
        "atM": 10.75,
-       "widthM": 1.15,
+       "widthM": 1.13,
        "centre": 0.84
       },
       {
+       "atM": 8.05,
+       "widthM": 0.82,
+       "centre": 0.87
+      },
+      {
        "atM": 7.38,
-       "widthM": 1.2,
+       "widthM": 1.23,
        "centre": 0.84
       },
       {
        "atM": 5.13,
-       "widthM": 0.82,
+       "widthM": 0.88,
        "centre": 0.82
       }
      ]
@@ -778,19 +786,19 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1894, type 1893-1893)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1894, type 1886-1892)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1894, type 1893-1893"
+     "built 1894, type 1886-1892"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 10.8 m; 3DBAG 13.89 m not compared)"
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 13.89 m not compared)"
      },
      {
       "key": "stucco",
@@ -801,8 +809,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },

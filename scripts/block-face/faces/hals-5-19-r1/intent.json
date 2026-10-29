@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hals-5-19-r1",
+ "street": "Frans Halsstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/hals-5-19-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/hals-5-19/auto-place.json"
+ },
+ "types": [
+  "pijp-1879-five-low"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012162907",
+   "slug": "hals-162907",
+   "address": "Frans Halsstraat 7",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#775c4d",
+     "evidence": "strip 2022-03-21 span 283-543: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "gezondheidszorgfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 283-543"
+   }
+  },
+  {
+   "pandId": "0363100012152579",
+   "slug": "hals-152579",
+   "address": "Frans Halsstraat 9B",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "measuredPalette": {
+     "brick": "#6a5345",
+     "evidence": "strip 2022-03-21 span 544-822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie",
+     "industriefunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 544-822"
+   }
+  },
+  {
+   "pandId": "0363100012159558",
+   "slug": "hals-159558",
+   "address": "Frans Halsstraat 11A",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "ground": {
+     "shopfront": {
+      "colour": "#857862",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=bench); fascia colour measured on the strip 2022-03-21 span 822-1112"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#645045",
+     "evidence": "strip 2022-03-21 span 822-1112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "amenity=bench",
+    "osm": {
+     "type": "node",
+     "id": 13273976491
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 822-1112"
+   }
+  },
+  {
+   "pandId": "0363100012163052",
+   "slug": "hals-163052",
+   "address": "Frans Halsstraat 13C",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "measuredPalette": {
+     "brick": "#6a5a51",
+     "evidence": "strip 2022-03-21 span 1112-1378: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "osm": {
+     "type": "node",
+     "id": 4552593190
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 1112-1378"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012162907",
+    "stripRow": 369,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.74 m"
+   },
+   {
+    "pand": "0363100012152579",
+    "stripRow": 369,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.07 m"
+   },
+   {
+    "pand": "0363100012159558",
+    "stripRow": 369,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.66 m"
+   },
+   {
+    "pand": "0363100012163052",
+    "stripRow": 369,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.07 m"
+   }
+  ]
+ }
+}

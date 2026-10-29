@@ -1,0 +1,57 @@
+{
+ "street": "Gerard Doustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:01:45.295Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160743",
+   "addresses": [
+    "Gerard Doustraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000643509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236717",
+   "addresses": [
+    "Gerard Doustraat 3A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3A-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001012489"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152502",
+   "addresses": [
+    "Gerard Doustraat 3B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Doustraat 3B-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001018808"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

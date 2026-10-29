@@ -1,0 +1,131 @@
+{
+ "street": "Eerste Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:24:05.012Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168759",
+   "addresses": [
+    "Eerste Leliedwarsstraat 20",
+    "Eerste Leliedwarsstraat 22",
+    "Eerste Leliedwarsstraat 24",
+    "Eerste Leliedwarsstraat 26",
+    "Eerste Leliedwarsstraat 28",
+    "Eerste Leliedwarsstraat 30",
+    "Eerste Leliedwarsstraat 32",
+    "Eerste Leliedwarsstraat 34",
+    "Eerste Leliedwarsstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000946116"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946117"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946118"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946119"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946120"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946121"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946122"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000946123"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000946124"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168755",
+   "addresses": [
+    "Eerste Leliedwarsstraat 16",
+    "Eerste Leliedwarsstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 16",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000946115"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000946114"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34050787,
+     "lngLat": [
+      4.8826878,
+      52.3755212
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1015TA",
+      "addr:street": "Eerste Leliedwarsstraat",
+      "fee": "yes",
+      "museum": "person",
+      "name": "Theo Thijssen Museum",
+      "opening_hours": "Th-Su 12:00-17:00",
+      "phone": "+31 20 420 7119",
+      "tourism": "museum",
+      "website": "https://theothijssenmuseum.nl",
+      "wikidata": "Q111154596",
+      "wikipedia": "nl:Theo Thijssen Museum"
+     },
+     "fetchedAt": "2026-10-29T21:24:05.012Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

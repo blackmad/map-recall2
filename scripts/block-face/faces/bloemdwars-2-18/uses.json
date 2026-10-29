@@ -1,0 +1,138 @@
+{
+ "street": "Tweede Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:21:48.672Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167957",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 18A",
+    "Tweede Bloemdwarsstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000936570"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000936571"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169830",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001024879"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169831",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000980402"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169832",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 6",
+    "Tweede Bloemdwarsstraat 8A",
+    "Tweede Bloemdwarsstraat 8B",
+    "Tweede Bloemdwarsstraat 10B",
+    "Tweede Bloemdwarsstraat 10A",
+    "Tweede Bloemdwarsstraat 12A",
+    "Tweede Bloemdwarsstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000903227"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000903228"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000903229"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000903691"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000903693"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000903694"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000903692"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174188",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000549854"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

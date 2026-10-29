@@ -1,0 +1,97 @@
+{
+ "street": "Ruysdaelkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012062357",
+   "addresses": [
+    "Ruysdaelkade 101",
+    "Ruysdaelkade 101A",
+    "Ruysdaelkade 101B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 101A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012582922"
+    },
+    {
+     "address": "Ruysdaelkade 101B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012582923"
+    },
+    {
+     "address": "Ruysdaelkade 101-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000801196"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165247",
+   "addresses": [
+    "Ruysdaelkade 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 103-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000801200"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163180",
+   "addresses": [
+    "Ruysdaelkade 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelkade 105-H",
+     "use": "industriefunctie",
+     "areaM2": 67,
+     "bagId": "0363010000801207"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2512957359,
+     "lngLat": [
+      4.8871505,
+      52.3553704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "105-H",
+      "addr:postcode": "1072AM",
+      "addr:street": "Ruysdaelkade",
+      "check_date": "2026-01-10",
+      "email": "peter@deplug.nl",
+      "name": "De Plug",
+      "phone": "+31 20 6624889",
+      "shop": "musical_instrument",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://deplug.squarespace.com"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

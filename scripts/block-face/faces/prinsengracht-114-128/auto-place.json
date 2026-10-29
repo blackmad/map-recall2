@@ -1,0 +1,579 @@
+{
+ "face": "prinsengracht-114-128",
+ "street": "Prinsengracht",
+ "library": "jordaan",
+ "stripDate": "2023-03-20",
+ "seconds": 9.23,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174970",
+   "address": "Prinsengracht 128A",
+   "builtYear": 1855,
+   "widthM": 7.1,
+   "eavesM": 13.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#494850",
+    "wallRaw": "#5a5c5a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 803,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.125,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.38 m (1.38 m wide), 7.38 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.38,
+       "widthM": 1.38,
+       "centre": 0.34
+      },
+      {
+       "atM": 7.38,
+       "widthM": 1.32,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.65 < 0.7 (3DBAG eaves 13.75 m = 4 storeys of 3.44 m vs the type's 3.13 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.75 m = 4 storeys of 3.44 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.136 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174969",
+   "address": "Prinsengracht 126",
+   "builtYear": 1755,
+   "widthM": 5.71,
+   "eavesM": 13.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#726158",
+    "wallRaw": "#68635b",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 134,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.55,
+      "topWidthM": 0.6,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.076,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10 m (1.35 m wide), 7.22 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.55,
+       "widthM": 1.35,
+       "centre": 0.19
+      },
+      {
+       "atM": 10,
+       "widthM": 1.35,
+       "centre": 0.52
+      },
+      {
+       "atM": 7.22,
+       "widthM": 1.3,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012174969",
+    "ncc": 0.252,
+    "nccRaw": 0.252,
+    "shiftM": [
+     0,
+     0.1
+    ],
+    "usable": 0.81,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20"
+    ],
+    "wall": {
+     "photo": "#705f55",
+     "model": "#89756a",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.526
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.241
+   }
+  },
+  {
+   "pandId": "0363100012174971",
+   "address": "Prinsengracht 124",
+   "builtYear": 1790,
+   "widthM": 5.96,
+   "eavesM": 14.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b675a",
+    "wallRaw": "#60584f",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 8.18 m (1.43 m wide), 5.47 m (5.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.42,
+       "widthM": 0.97,
+       "centre": 0.37
+      },
+      {
+       "atM": 11.1,
+       "widthM": 1.05,
+       "centre": 0.2
+      },
+      {
+       "atM": 8.18,
+       "widthM": 1.43,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.47,
+       "widthM": 5.3,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.1 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30 mean 0.41 vs photo 0.51; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012174971",
+    "ncc": 0.1,
+    "nccRaw": 0.1,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30 mean 0.41 vs photo 0.51",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7d685b",
+     "model": "#927a6b",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.397
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174776",
+   "address": "Prinsengracht 122",
+   "builtYear": 1744,
+   "widthM": 5.78,
+   "eavesM": 11.01,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a504a",
+    "wallRaw": "#584f49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 803,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "the photo prefers jordaan-1850-cornice-house (edge NCC 0.411 vs 0.228 for jordaan-1750-neck-gable)",
+   "likeness": {
+    "pandId": "0363100012174776",
+    "ncc": 0.228,
+    "nccRaw": 0.228,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.32 vs photo 0.19"
+    ],
+    "wall": {
+     "photo": "#756b68",
+     "model": "#73665e",
+     "dL": -0.024
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.169
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.411
+   }
+  },
+  {
+   "pandId": "0363100012174777",
+   "address": "Prinsengracht 120A",
+   "builtYear": 1877,
+   "widthM": 6.18,
+   "eavesM": 15.03,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.63,
+    "toM": 6.15,
+    "depthM": 0.54,
+    "centre": 0.957,
+    "lineRD": [
+     [
+      120741.3405625,
+      487712.16849999997
+     ],
+     [
+      120743.2185625,
+      487715.9075
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5d504a",
+    "wallRaw": "#655d57",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 803,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.028,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.35,
+       "widthM": 1.3,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012174777",
+    "ncc": 0.211,
+    "nccRaw": 0.211,
+    "shiftM": [
+     0.25,
+     -0.05
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.42 mean 0.34 vs photo 0.60"
+    ],
+    "wall": {
+     "photo": "#706260",
+     "model": "#76655e",
+     "dL": 0.008
+    },
+    "glazing": {
+     "photo": 0.6,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.352
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174699",
+   "address": "Prinsengracht 116",
+   "builtYear": 1927,
+   "widthM": 8.59,
+   "eavesM": 17.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6c69",
+    "wallRaw": "#625854",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 803,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1927, type 1600-1870; frontage 8.59 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1600-1870",
+     "frontage 8.59 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.66 m = 4 storeys of 4.42 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.075 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169253",
+   "address": "Prinsengracht 114",
+   "builtYear": 1860,
+   "widthM": 4.17,
+   "eavesM": 15.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#968f82",
+    "wallRaw": "#6f605b",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 188,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.9,
+      "topWidthM": 0.5,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.318,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.97,
+       "widthM": 0.93,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

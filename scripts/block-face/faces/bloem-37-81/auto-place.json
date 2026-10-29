@@ -1,0 +1,1145 @@
+{
+ "face": "bloem-37-81",
+ "street": "Bloemstraat",
+ "library": "jordaan",
+ "stripDate": "2022-04-25",
+ "seconds": 5.89,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174015",
+   "address": "Bloemstraat 37F",
+   "builtYear": 1993,
+   "widthM": 11.73,
+   "eavesM": 9.35,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5346",
+    "wallRaw": "#5a4f44",
+    "skyline": {
+     "eavesM": 12.93,
+     "eavesRow": 296,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.4,
+      "topWidthM": 0.2,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.82 m at 0.5 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.82,
+       "centre": 0.5,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.07,
+       "widthM": 1.82,
+       "centre": 0.9
+      },
+      {
+       "atM": 4.77,
+       "widthM": 1.25,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1993, type 1600-1870; frontage 11.73 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1993, type 1600-1870",
+     "frontage 11.73 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 9.35 m = 3 storeys of 3.12 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.78 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.4 m, top 0.2 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168647",
+   "address": "Bloemstraat 41",
+   "builtYear": 1907,
+   "widthM": 6.41,
+   "eavesM": 10.14,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e2d2c",
+    "wallRaw": "#52524e",
+    "skyline": {
+     "eavesM": 11.85,
+     "eavesRow": 339,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.33,
+      "topWidthM": 0.6,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 1.6,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012168647",
+    "ncc": 0.154,
+    "nccRaw": 0.154,
+    "shiftM": [
+     0.05,
+     0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24",
+     "wall family unresolved (#2d2d2f is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 3 vs photo 6"
+    ],
+    "wall": {
+     "photo": "#2d2d2f",
+     "model": "#4e4d4b",
+     "dL": 0.12
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 6,
+     "model": 3
+    },
+    "iou": 0.223
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168606",
+   "address": "Bloemstraat 43",
+   "builtYear": 1905,
+   "widthM": 5.2,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685248",
+    "wallRaw": "#574d49",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.43,
+      "topWidthM": 0.85,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.57,
+       "widthM": 1.1,
+       "centre": 0.38
+      },
+      {
+       "atM": 4.8,
+       "widthM": 3.77,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.052 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20)",
+   "likeness": {
+    "pandId": "0363100012168606",
+    "ncc": 0.052,
+    "nccRaw": 0.052,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20"
+    ],
+    "wall": {
+     "photo": "#68554c",
+     "model": "#82665a",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.355
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168608",
+   "address": "Bloemstraat 47A",
+   "builtYear": 2000,
+   "widthM": 37.4,
+   "eavesM": 12.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836854",
+    "wallRaw": "#5b4e43",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 246,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 4.63,
+      "riseM": 6.1,
+      "topWidthM": 0.23,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.05 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.05,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.11,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.86,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.2,
+       "widthM": 1.13,
+       "centre": 0.34
+      },
+      {
+       "atM": 9.68,
+       "widthM": 1.4,
+       "centre": 0.08
+      },
+      {
+       "atM": 7.35,
+       "widthM": 1.43,
+       "centre": 0.64
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.7,
+       "centre": 0.03
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 2000, type 1600-1870; frontage 37.4 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 2000, type 1600-1870",
+     "frontage 37.4 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.08 m = 4 storeys of 3.02 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.25 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 6.1 m, top 0.23 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 12 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168607",
+   "address": "Bloemstraat 61",
+   "builtYear": 1750,
+   "widthM": 5.79,
+   "eavesM": 7.06,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#46423d",
+    "skyline": {
+     "eavesM": 11.53,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.5,
+      "topWidthM": 0.5,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.08 m at 0.3 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.08,
+       "centre": 0.3,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.66 < 0.7 (3DBAG eaves 7.06 m = 3 storeys of 2.35 m vs the type's 3.13 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.66,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.06 m = 3 storeys of 2.35 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 1.5 m, top 0.5 m fits dormer"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169086",
+   "address": "Bloemstraat 63",
+   "builtYear": 1886,
+   "widthM": 4.38,
+   "eavesM": 9.1,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.46,
+    "depthM": 0.4,
+    "centre": 0.167,
+    "lineRD": [
+     [
+      120499.403,
+      487460.6015
+     ],
+     [
+      120496.585,
+      487459.8345
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4a3834",
+    "wallRaw": "#393432",
+    "skyline": {
+     "eavesM": 11.82,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.13,
+      "topWidthM": 0.63,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169085",
+   "address": "Bloemstraat 65",
+   "builtYear": 1860,
+   "widthM": 4.08,
+   "eavesM": 9.91,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e514b",
+    "wallRaw": "#48433f",
+    "skyline": {
+     "eavesM": 12.32,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.9,
+      "topWidthM": 0.28,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.9,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.53 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.53,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.89,
+       "light": 0.44
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 3.6,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.68 < 0.7 (skyline crown rise 1.9 m, top 0.28 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.68,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 9.91 m = 3 storeys of 3.3 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.13 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.9 m, top 0.28 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012243113",
+   "address": "Bloemstraat 67A",
+   "builtYear": 2017,
+   "widthM": 6.41,
+   "eavesM": 11.41,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#674d48",
+    "wallRaw": "#493631",
+    "skyline": {
+     "eavesM": 12.28,
+     "eavesRow": 322,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.07,
+      "topWidthM": 1.88,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 2017, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 2017, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.41 m = 3 storeys of 3.8 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.64 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.07 m, top 1.88 m fits neck"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168014",
+   "address": "Bloemstraat 73",
+   "builtYear": 1881,
+   "widthM": 5.44,
+   "eavesM": 12.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#48483f",
+    "wallRaw": "#4b4c48",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.85,
+      "topWidthM": 0.38,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.105,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 1.2,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.57 < 0.7 (skyline crown rise 1.85 m, top 0.38 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.08 m = 4 storeys of 3.02 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.85 m, top 0.38 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168011",
+   "address": "Bloemstraat 75A",
+   "builtYear": 1905,
+   "widthM": 3.92,
+   "eavesM": 13.47,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75655f",
+    "wallRaw": "#534a46",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 268,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.72,
+      "topWidthM": 0.6,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012168011",
+    "ncc": 0.286,
+    "nccRaw": 0.286,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue -14 deg",
+     "glazing storey band off by 0.67 mean 0.34 vs photo 0.97"
+    ],
+    "wall": {
+     "photo": "#988c80",
+     "model": "#8b7871",
+     "dL": -0.055
+    },
+    "glazing": {
+     "photo": 0.97,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.384
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168010",
+   "address": "Bloemstraat 77",
+   "builtYear": 1905,
+   "widthM": 3.7,
+   "eavesM": 11.77,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3735",
+    "wallRaw": "#4e4f4d",
+    "skyline": {
+     "eavesM": 12.88,
+     "eavesRow": 298,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.3 m (2.98 m wide), 6.38 m (2.95 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.3,
+       "widthM": 2.98,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.38,
+       "widthM": 2.95,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.045 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29 mean 0.34 vs photo 0.51; wall family unresolved (#3f3b39 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012168010",
+    "ncc": 0.045,
+    "nccRaw": 0.045,
+    "shiftM": [
+     0.35,
+     0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.34 vs photo 0.51",
+     "wall family unresolved (#3f3b39 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#3f3b39",
+     "model": "#54504d",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.507
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168013",
+   "address": "Bloemstraat 79",
+   "builtYear": 1912,
+   "widthM": 2.7,
+   "eavesM": 12.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3530",
+    "wallRaw": "#554c49",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 1.6,
+      "topWidthM": 0.38,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 0.95,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1912, type 1600-1870; frontage 2.7 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1600-1870",
+     "frontage 2.7 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.83 m = 4 storeys of 3.21 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.6 m, top 0.38 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168012",
+   "address": "Bloemstraat 81",
+   "builtYear": 1913,
+   "widthM": 4.19,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#382e2c",
+    "wallRaw": "#453e3b",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 255,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.98,
+      "topWidthM": 0.47,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1913, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.85 m = 4 storeys of 3.21 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.48 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.98 m, top 0.47 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

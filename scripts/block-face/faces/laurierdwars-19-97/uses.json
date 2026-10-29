@@ -1,0 +1,185 @@
+{
+ "street": "Eerste Laurierdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:31:55.048Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170026",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 51",
+    "Eerste Laurierdwarsstraat 53",
+    "Eerste Laurierdwarsstraat 55",
+    "Eerste Laurierdwarsstraat 57",
+    "Eerste Laurierdwarsstraat 59",
+    "Eerste Laurierdwarsstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000547344"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000547352"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000547349"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000547348"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000547350"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000547351"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169602",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 19",
+    "Eerste Laurierdwarsstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 19-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001168600"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169954",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000547317"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169596",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 25",
+    "Eerste Laurierdwarsstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012586043"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012586042"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 25-H",
+     "use": "industriefunctie",
+     "areaM2": 248,
+     "bagId": "0363010000547322"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169597",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 91",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000547353"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168594",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 93",
+    "Eerste Laurierdwarsstraat 95",
+    "Eerste Laurierdwarsstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000547356"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000547355"
+    },
+    {
+     "address": "Eerste Laurierdwarsstraat 93",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000547354"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169613",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 35",
+    "Eerste Laurierdwarsstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000547337"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

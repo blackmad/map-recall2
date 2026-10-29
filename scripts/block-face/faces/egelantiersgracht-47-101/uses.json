@@ -1,0 +1,534 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:38:10.616Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172610",
+   "addresses": [
+    "Egelantiersgracht 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 47",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000629018"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172620",
+   "addresses": [
+    "Egelantiersgracht 49",
+    "Egelantiersgracht 49A",
+    "Egelantiersgracht 49B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 49",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000629022"
+    },
+    {
+     "address": "Egelantiersgracht 49A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012089262"
+    },
+    {
+     "address": "Egelantiersgracht 49B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012089263"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172618",
+   "addresses": [
+    "Egelantiersgracht 51A",
+    "Egelantiersgracht 51C",
+    "Egelantiersgracht 51B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 51A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000629024"
+    },
+    {
+     "address": "Egelantiersgracht 51C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000629029"
+    },
+    {
+     "address": "Egelantiersgracht 51B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000629028"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173424",
+   "addresses": [
+    "Egelantiersgracht 53A",
+    "Egelantiersgracht 53C",
+    "Egelantiersgracht 53B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 53A",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000629030"
+    },
+    {
+     "address": "Egelantiersgracht 53C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000629032"
+    },
+    {
+     "address": "Egelantiersgracht 53B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000629031"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173423",
+   "addresses": [
+    "Egelantiersgracht 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 55-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000629034"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172693",
+   "addresses": [
+    "Egelantiersgracht 57A",
+    "Egelantiersgracht 57B",
+    "Egelantiersgracht 57C",
+    "Egelantiersgracht 57D",
+    "Egelantiersgracht 57E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 57A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000946134"
+    },
+    {
+     "address": "Egelantiersgracht 57B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946135"
+    },
+    {
+     "address": "Egelantiersgracht 57C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946136"
+    },
+    {
+     "address": "Egelantiersgracht 57D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000946137"
+    },
+    {
+     "address": "Egelantiersgracht 57E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000946138"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172885",
+   "addresses": [
+    "Egelantiersgracht 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 61",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000629040"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172884",
+   "addresses": [
+    "Egelantiersgracht 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 63",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000629042"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172883",
+   "addresses": [
+    "Egelantiersgracht 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 65",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000629046"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172882",
+   "addresses": [
+    "Egelantiersgracht 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 67-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000629049"
+    },
+    {
+     "address": "Egelantiersgracht 67-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001994775"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782489067,
+     "lngLat": [
+      4.8817467,
+      52.3759739
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-29T21:38:10.616Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173422",
+   "addresses": [
+    "Egelantiersgracht 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 69-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001019722"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782480346,
+     "lngLat": [
+      4.8817137,
+      52.375968
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:38:10.616Z",
+     "match": "frontage",
+     "distanceM": 5.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172889",
+   "addresses": [
+    "Egelantiersgracht 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 71",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000629061"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173421",
+   "addresses": [
+    "Egelantiersgracht 73"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172888",
+   "addresses": [
+    "Egelantiersgracht 75A",
+    "Egelantiersgracht 75B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 75A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000629071"
+    },
+    {
+     "address": "Egelantiersgracht 75B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000629072"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172887",
+   "addresses": [
+    "Egelantiersgracht 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 77-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000629077"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172886",
+   "addresses": [
+    "Egelantiersgracht 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 79-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000629081"
+    },
+    {
+     "address": "Egelantiersgracht 79",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012068118"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168760",
+   "addresses": [
+    "Egelantiersgracht 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 81-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000629092"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168761",
+   "addresses": [
+    "Egelantiersgracht 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 83-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000629095"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168657",
+   "addresses": [
+    "Egelantiersgracht 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 85-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010001024067"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168694",
+   "addresses": [
+    "Egelantiersgracht 87",
+    "Egelantiersgracht 89",
+    "Egelantiersgracht 89A",
+    "Egelantiersgracht 89B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 89-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000629103"
+    },
+    {
+     "address": "Egelantiersgracht 89-O",
+     "use": "industriefunctie",
+     "areaM2": 38,
+     "bagId": "0363010000629104"
+    },
+    {
+     "address": "Egelantiersgracht 87",
+     "use": "industriefunctie",
+     "areaM2": 72,
+     "bagId": "0363010001172961"
+    },
+    {
+     "address": "Egelantiersgracht 89A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001172962"
+    },
+    {
+     "address": "Egelantiersgracht 89B",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010001172963"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168693",
+   "addresses": [
+    "Egelantiersgracht 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 91-H",
+     "use": "industriefunctie",
+     "areaM2": 83,
+     "bagId": "0363010000629107"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11377613936,
+     "lngLat": [
+      4.8810979,
+      52.3757605
+     ],
+     "tags": {
+      "name": "The Boardroom",
+      "shop": "tailor"
+     },
+     "fetchedAt": "2026-10-29T21:38:10.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168692",
+   "addresses": [
+    "Egelantiersgracht 93",
+    "Egelantiersgracht 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 93-H",
+     "use": "kantoorfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000629111"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11377622283,
+     "lngLat": [
+      4.8810066,
+      52.3757383
+     ],
+     "tags": {
+      "name": "Antiek d'Eglantier",
+      "shop": "antiques"
+     },
+     "fetchedAt": "2026-10-29T21:38:10.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

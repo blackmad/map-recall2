@@ -1,0 +1,130 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "saenredam-1-37-r1",
+ "street": "Saenredamstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/saenredam-1-37-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/saenredam-1-37/auto-place.json"
+ },
+ "types": [
+  "pijp-1876-hood-frieze",
+  "pijp-1879-five-low"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012152593",
+   "slug": "saenredam-152593",
+   "address": "Saenredamstraat 1",
+   "type": {
+    "type": "pijp-1876-hood-frieze",
+    "measuredPalette": {
+     "brick": "#f9d0a4",
+     "evidence": "strip 2022-03-21 span 516-767: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1876-hood-frieze scored 0.85 on eaves 0.5, roof 1, stucco 1, columns 1; strip 2022-03-21 span 516-767"
+   }
+  },
+  {
+   "pandId": "0363100012164149",
+   "slug": "saenredam-164149",
+   "address": "Saenredamstraat 3",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#fbcda6",
+     "evidence": "strip 2022-03-21 span 767-914: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-03-21 span 767-914"
+   }
+  },
+  {
+   "pandId": "0363100012155977",
+   "slug": "saenredam-155977",
+   "address": "Saenredamstraat 5",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#fbcda6",
+     "evidence": "strip 2022-03-21 span 914-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-03-21 span 914-1066"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012164149",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.64 m"
+   },
+   {
+    "pand": "0363100012155977",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.87 m"
+   }
+  ]
+ }
+}

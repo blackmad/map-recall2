@@ -10,7 +10,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {validateIntent, type FrontIntent} from '../buildingRecipe/intent.ts';
 import {houseIntents, validateBlockFace, type BlockFaceIntent} from './intent.ts';
-import {mirrorFront, resolvePlacement, type HouseTypeIntent} from './houseType.ts';
+import {resizePerStorey, mirrorFront, resolvePlacement, type HouseTypeIntent} from './houseType.ts';
 
 const load = (id: string): BlockFaceIntent => JSON.parse(fs.readFileSync(path.join('scripts/block-face/faces', id, 'intent.json'), 'utf8'));
 const members = (id: string): string[] => JSON.parse(fs.readFileSync(path.join('scripts/block-face/faces', id, 'discovery.json'), 'utf8')).members;
@@ -88,4 +88,17 @@ test('measuredPalette: per-pand measured strip colours go over the named palette
 test('faces without types resolve exactly as before (no type fields leak into designs)', () => {
   const face = validateBlockFace(load('marnix-124-138'));
   for (const i of houseIntents(face)) for (const f of i.fronts) { assert.equal(f.gridAt, undefined); assert.equal(f.dormerAt, undefined); assert.equal(f.souterrain, undefined); }
+});
+
+test('resizePerStorey: more or fewer storeys than the type keep the ground and the top (Jordaan cornice house, Bloemgracht 1-51)', () => {
+  const f = {storeyHeights: [3.6, 2.9, 2.8, 2.7], windowHeights: [0.58, 0.66, 0.66, 0.62], headLines: [0.82, 0.86, 0.84, 0.82], bays: 3};
+  const five = resizePerStorey(f, 4, 5);
+  assert.deepEqual(five.storeyHeights, [3.6, 2.9, 2.8, 2.8, 2.7]);
+  assert.deepEqual(five.headLines, [0.82, 0.86, 0.84, 0.84, 0.82]);
+  assert.equal(five.bays, 3);
+  const three = resizePerStorey(f, 4, 3);
+  assert.deepEqual(three.storeyHeights, [3.6, 2.9, 2.7]);
+  assert.deepEqual(three.windowHeights, [0.58, 0.66, 0.62]);
+  assert.deepEqual(resizePerStorey({...f, windowHeights: 'diminishing' as const}, 4, 5).windowHeights, 'diminishing');
+  assert.deepEqual(resizePerStorey({bays: [2, 3, 3]}, 3, 4).bays, [2, 3, 3, 3]);
 });

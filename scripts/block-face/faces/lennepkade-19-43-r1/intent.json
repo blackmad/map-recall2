@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lennepkade-19-43-r1",
+ "street": "Jacob van Lennepkade",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/lennepkade-19-43-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the helmersbuurt library (buurt Helmersbuurt-Oost); scores and holds in scripts/block-face/faces/lennepkade-19-43/auto-place.json"
+ },
+ "types": [
+  "helmers-1889-balconette-pediment"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012163778",
+   "slug": "lennepkade-163778",
+   "address": "Jacob van Lennepkade 29",
+   "type": {
+    "type": "helmers-1889-balconette-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#866245",
+     "evidence": "strip 2024-11-29 span 1243-1459: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1889-balconette-pediment scored 1 on eaves 1, stucco 1, columns 1; strip 2024-11-29 span 1243-1459"
+   }
+  },
+  {
+   "pandId": "0363100012156512",
+   "slug": "lennepkade-156512",
+   "address": "Jacob van Lennepkade 31",
+   "type": {
+    "type": "helmers-1889-balconette-pediment",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#9c6b4b",
+     "evidence": "strip 2024-11-29 span 1458-1678: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1889-balconette-pediment scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1458-1678"
+   }
+  },
+  {
+   "pandId": "0363100012153662",
+   "slug": "lennepkade-153662",
+   "address": "Jacob van Lennepkade 33",
+   "type": {
+    "type": "helmers-1889-balconette-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#8f6144",
+     "evidence": "strip 2024-11-29 span 1679-1899: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1889-balconette-pediment scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1679-1899"
+   }
+  },
+  {
+   "pandId": "0363100012159235",
+   "slug": "lennepkade-159235",
+   "address": "Jacob van Lennepkade 35",
+   "type": {
+    "type": "helmers-1889-balconette-pediment",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7f5f41",
+     "evidence": "strip 2024-11-29 span 1899-2120: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: helmers-1889-balconette-pediment scored 1 on eaves -, stucco 1, columns 1; strip 2024-11-29 span 1899-2120"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012156512",
+    "stripRow": 262,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1889-balconette-pediment cornice line 14.6 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.25 m"
+   },
+   {
+    "pand": "0363100012153662",
+    "stripRow": 262,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1889-balconette-pediment cornice line 14.6 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.25 m"
+   },
+   {
+    "pand": "0363100012159235",
+    "stripRow": 262,
+    "frontRoof": {},
+    "evidence": "auto-place: the helmers-1889-balconette-pediment cornice line 14.6 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.15 m"
+   }
+  ]
+ }
+}

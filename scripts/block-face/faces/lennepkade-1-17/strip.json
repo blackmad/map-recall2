@@ -3,21 +3,21 @@
  "image": "staging/block-face/lennepkade-1-17/strip.jpg",
  "pixelsPerMetre": 40,
  "width": 2219,
- "height": 821,
- "groundNAP": 0.048,
- "heightM": 20.53,
+ "height": 831,
+ "groundNAP": 0.056,
+ "heightM": 20.78,
  "frame": {
   "midRD": [
-   120222.7166111111,
-   486608.4273888889
+   120222.71775694445,
+   486608.42494444444
   ],
   "uRD": [
-   -0.9038233812468925,
-   -0.42790570866890076
+   -0.903813043887964,
+   -0.4279275425793168
   ],
   "nRD": [
-   -0.42790570866890076,
-   0.9038233812468925
+   -0.4279275425793168,
+   0.903813043887964
   ]
  },
  "x0M": -25.93,
@@ -54,7 +54,7 @@
      "panoId": "b_20241129_0829_Track04_Sphere_00112",
      "timestamp": "2024-11-29T08:20:37Z",
      "distanceM": 8.6,
-     "obliquityDeg": 42.4,
+     "obliquityDeg": 42.3,
      "missingFraction": 0
     }
    ]
@@ -142,14 +142,14 @@
      "panoId": "b_20241129_0829_Track04_Sphere_00110",
      "timestamp": "2024-11-29T08:20:35Z",
      "distanceM": 6.7,
-     "obliquityDeg": 15.7,
+     "obliquityDeg": 15.8,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track04_Sphere_00109",
      "timestamp": "2024-11-29T08:20:34Z",
      "distanceM": 7.1,
-     "obliquityDeg": 26.7,
+     "obliquityDeg": 26.6,
      "missingFraction": 0
     }
    ]
@@ -169,21 +169,21 @@
      "panoId": "b_20241129_0829_Track04_Sphere_00108",
      "timestamp": "2024-11-29T08:20:33Z",
      "distanceM": 6.5,
-     "obliquityDeg": 14.1,
+     "obliquityDeg": 14.5,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track04_Sphere_00109",
      "timestamp": "2024-11-29T08:20:34Z",
      "distanceM": 7.1,
-     "obliquityDeg": 27.2,
+     "obliquityDeg": 26.8,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track04_Sphere_00107",
      "timestamp": "2024-11-29T08:20:32Z",
      "distanceM": 8.9,
-     "obliquityDeg": 44.4,
+     "obliquityDeg": 44.8,
      "missingFraction": 0
     }
    ]
