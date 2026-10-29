@@ -3,7 +3,7 @@
  "kind": "large",
  "id": "grasweg-41-201637",
  "pandId": "0363100012201637",
- "address": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
+ "address": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 silver metal-panel industrial block 36 m high with a dark cap edge and sparse small windows, a white pitched hall to the west",
  "sources": [
   {
    "id": "pano-2016-07-08-w05",
@@ -11,6 +11,30 @@
    "capturedAt": "2016-07-08",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000105_pano_0001_007089/",
    "image": "staging/pand-reference-walls/0363100012201637/w05-80.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-21-from209",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-21_09-31-05_00126/",
+   "image": "artifacts/noord-fb/photos/grasweg/from209-174m-2024-10-21.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-from270",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001976_pano_0000_000255/",
+   "image": "artifacts/noord-fb/photos/grasweg/from270-148m-2021-01-22.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-from088",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_11-38-09_02595/",
+   "image": "artifacts/noord-fb/photos/grasweg/from088-112m-2025-06-30.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -23,7 +47,7 @@
    "storeys": 9,
    "baysPerStorey": 4,
    "ground": "blank",
-   "windows": "low",
+   "windows": "plain",
    "blankStoreys": [
     0,
     1,
@@ -33,11 +57,147 @@
     8
    ],
    "deepBars": true,
+   "cornice": true,
    "wallMaterial": "stone",
+   "cladding": {
+    "kind": "panels",
+    "colour": "#c9d0d4",
+    "lines": "#9ea8ae",
+    "pitch": 1.5,
+    "rowPitch": 1.5
+   },
    "palette": {
-    "brick": "#a8acb0",
-    "frame": "#5a6a74",
-    "stone": "#a8acb0"
+    "brick": "#c9d0d4",
+    "frame": "#4a5560",
+    "stone": "#c9d0d4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    21
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 3,
+   "ground": "blank",
+   "windows": "plain",
+   "blankStoreys": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ],
+   "deepBars": true,
+   "cornice": true,
+   "wallMaterial": "stone",
+   "cladding": {
+    "kind": "panels",
+    "colour": "#c9d0d4",
+    "lines": "#9ea8ae",
+    "pitch": 1.5,
+    "rowPitch": 1.5
+   },
+   "palette": {
+    "brick": "#c9d0d4",
+    "frame": "#4a5560",
+    "stone": "#c9d0d4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    58
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "plain",
+   "blankStoreys": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    8
+   ],
+   "deepBars": true,
+   "cornice": true,
+   "wallMaterial": "stone",
+   "cladding": {
+    "kind": "panels",
+    "colour": "#c9d0d4",
+    "lines": "#9ea8ae",
+    "pitch": 1.5,
+    "rowPitch": 1.5
+   },
+   "palette": {
+    "brick": "#c9d0d4",
+    "frame": "#4a5560",
+    "stone": "#c9d0d4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    10,
+    27,
+    31,
+    32,
+    73,
+    79
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "plain",
+   "blankStoreys": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    8
+   ],
+   "deepBars": true,
+   "cornice": true,
+   "wallMaterial": "stone",
+   "cladding": {
+    "kind": "panels",
+    "colour": "#c9d0d4",
+    "lines": "#9ea8ae",
+    "pitch": 1.5,
+    "rowPitch": 1.5
+   },
+   "palette": {
+    "brick": "#c9d0d4",
+    "frame": "#4a5560",
+    "stone": "#c9d0d4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    40,
+    56,
+    24
+   ],
+   "system": "blank",
+   "cornice": true,
+   "wallMaterial": "stone",
+   "cladding": {
+    "kind": "panels",
+    "colour": "#c9d0d4",
+    "lines": "#9ea8ae",
+    "pitch": 1.5,
+    "rowPitch": 1.5
+   },
+   "palette": {
+    "brick": "#c9d0d4",
+    "stone": "#c9d0d4"
    }
   }
  ],
@@ -45,17 +205,19 @@
  "roof": {
   "material": "bitumen",
   "flatHex": "#81838d",
-  "pitchedHex": "#81838d"
+  "pitchedHex": "#d9dcdc"
  },
  "palette": {
-  "brick": "#a8acb0",
+  "brick": "#c9d0d4",
   "frame": "#5a6a74",
   "door": "#3a4a58",
-  "stone": "#7a8a8a"
+  "stone": "#c9d0d4",
+  "cornice": "#6f7a82"
  },
  "closedBands": true,
  "layeredKit": true,
  "notes": [
+  "Feedback 7f82ac01 (2026-10-28, 'this grey building looks wrong'): panoramas 2024-10-21 (from 209 deg, 174 m), 2021-01-22 (from the IJ, 270 deg) and 2025-06-30 (from 88 deg) show light silver metal cassette cladding (white in sun, cyan-grey overcast; sampled #b5d8e7 cast, #fefefe sunlit, #4c6b84 in shade), a thin dark cap edge, rows of small square windows on the south, west and east faces, and the 45-degree hall to the west in white. The old recipe drew the whole block mid grey with one windowed wall, which read as a dark featureless slab in game. Now: panels cladding at 1.5 m on every face of the tall block, cornice cap, sparse window rows on S/W/E per photo, white pitched roofs. Windows are an even grid of 4 per row on the rows the photos show; the real ones are scattered unevenly (the kit has no irregular window scatter).",
   "Grasweg 41S (BAG, 2010; Buiksloterham, Noord): a 36 m grey metal-clad industrial block with a curved eaves line and low annexes (6.9-8.9 m) to the west. The panoramas show it only through tree cover and over a blue site fence: w01-349 (north, 22 m away) is all foliage, w05-80 (east, 34 m, 20 degree obliquity) shows the grey cladding with a few small windows under a curved cap, w08-349 shows the low annex behind the fence.",
   "walls[0] = panel 45 (E, 24.6 m, party 6.9 m below): the grey cladding with small windows in three rows, drawn as 9 storeys x 4 bays of low windows with the other storeys blank (render/stone material grey). Every other wall is blank grey (palette brick set to the cladding grey) and the flat roof is bitumen. Simplified: the curved cap on the eaves line (straight in 3DBAG), the horizontal cladding ribs, the window positions (read from one oblique photo).",
   "Not drawn or not seen: the north, south and west walls (tree cover) and the annexes.",
