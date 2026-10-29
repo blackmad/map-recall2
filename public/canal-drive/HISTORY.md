@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**What's New kit-row cards drew brick too pale (2026-10-29).** The user flagged Kinkerstraat 76-84: its photo shows
+dark purple-brown brick (measured #544d46), but the card drew greige (#9a948e). Block-face chunk GLBs
+(`streetChunks/gltf.ts`) store a slot material's sRGB colour raw as its base colour factor. glTF reads that factor as
+linear, so the colour shows about two stops lighter. Landmark GLBs store linear factors.
+
+The game ignores the factor and colours from the `tint` extra (`look/cityLook.ts`), so only plain loaders were
+wrong. `whats-new.html` now sets untextured materials from `tint`. The writer itself is in TODO: fixing it changes
+every chunk's bytes, so it waits for the next full chunk rebuild.
+
 **Batch era guard: ribbon windows hold their row (#113, 2026-10-29).** Spot review held two batch installs that were
 the wrong era. flinck-265-287-r1 is an interwar ribbon block that was drawn as an 1889 row. dou-1-7-r1 was drawn with
 narrow arched windows under a mansard; the front has wide three-light flat-headed windows and a flat cornice.

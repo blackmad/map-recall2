@@ -2004,14 +2004,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
+
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp lightness.** Lifting each source to the city lightness turns its dark purple-brown into rosy-brown. Proposal: keep each buurt's measured lightness relative to the city mean instead (needs the user's call).
+  - **De Pijp lightness: decided.** The user (2026-10-29): "if it's darker let it be darker". A buurt keeps its measured lightness; do not lift dark buurten to the city level. Lane buurt-lightness-20261029.
   - **Saturation.** Fronts are still more saturated than the muted photos.
   - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
-  - **Modern blocks.** Add a modern side to the generator: glass and spandrel bands and concrete frames, by year and use. This is the cheap route for the large ride-visible modern buildings #105 could not install.
+  - **Modern blocks: approved by the user (2026-10-29), lane modern-generic-20261029.** Add a modern side to the generator: glass and spandrel bands and concrete frames, by year and use. This is the cheap route for the large ride-visible modern buildings #105 could not install.
 
 - **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
   - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.

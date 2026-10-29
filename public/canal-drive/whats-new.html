@@ -247,6 +247,9 @@ function pump() {
       loading--; c.loading = false;
       if (!visible.has(c)) { disposeModel(gltf.scene); pump(); return; }
       const model = gltf.scene;
+      // The game colours slot materials from their `tint` extra (look/cityLook.ts); block-face chunk GLBs store
+      // that sRGB value raw as the base colour factor, which a plain loader reads as linear (two stops too light).
+      model.traverse(o => { for (const m of [].concat(o.material || [])) if (!m.map && typeof m.userData?.tint === 'string') m.color.set(m.userData.tint); });
       const box = new T.Box3().setFromObject(model);
       box.getCenter(c.target);
       const size = box.getSize(new T.Vector3());
