@@ -54,9 +54,9 @@
    "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#efebe2",
+    "brick": "#ebe3cf",
     "frame": "#2d3134",
-    "stone": "#e9e5dc",
+    "stone": "#e6dfcd",
     "glass": "#46545c"
    },
    "windowShape": {
@@ -112,9 +112,9 @@
    "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#efebe2",
+    "brick": "#ebe3cf",
     "frame": "#2d3134",
-    "stone": "#e9e5dc",
+    "stone": "#e6dfcd",
     "glass": "#46545c"
    },
    "windowShape": {
@@ -168,9 +168,9 @@
    "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#efebe2",
+    "brick": "#ebe3cf",
     "frame": "#2d3134",
-    "stone": "#e9e5dc",
+    "stone": "#e6dfcd",
     "glass": "#46545c"
    },
    "windowShape": {
@@ -224,9 +224,9 @@
    "windows": "plain",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#efebe2",
+    "brick": "#ebe3cf",
     "frame": "#2d3134",
-    "stone": "#e9e5dc",
+    "stone": "#e6dfcd",
     "glass": "#46545c"
    },
    "windowShape": {
@@ -283,9 +283,9 @@
    "storeys": 1,
    "wallMaterial": "render",
    "palette": {
-    "brick": "#efebe2",
+    "brick": "#ebe3cf",
     "frame": "#2d3134",
-    "stone": "#e9e5dc"
+    "stone": "#e6dfcd"
    },
    "hand": [
     "system",
@@ -302,9 +302,9 @@
  },
  "roofPlant": false,
  "palette": {
-  "brick": "#efebe2",
+  "brick": "#ebe3cf",
   "frame": "#2d3134",
-  "stone": "#e9e5dc",
+  "stone": "#e6dfcd",
   "glass": "#46545c",
   "door": "#2b2d2e"
  },
@@ -315,7 +315,7 @@
  "notes": [
   "Haarlemmerweg 518A-776 (BAG pand 0363100012250970, built 2023, 13 storeys, LoD2.2 main roof 42.0 m). BAG draws the tower as the top-view union of its stepped rooms: an outline of 1.85 m bumps that 3DBAG extrudes to the roof as full-height grooves. `footprint: \"core\"` retracts them (coreFootprint.ts: 11 steps, 117 m2) and the blocks come back storey by storey from `stackedBlocks` (blockBuilding/stackedBlocks.ts). Core walls: 90000 N, 90001 W, 90002 S, 90003 E.",
   "Rows read 2026-10-29 off straight-on rectified crops of the core faces (artifacts/wpw/crop-face.mts, 30 px/m, storeys 95 px): S from terdam_21112024_Track04_Sphere_00122 (2024-11-21, leafless, 41 m), E from terdam_21112024_Track04_Sphere_00115 (2024-11-21, oblique from the south-east), W from terdam_21112024_Track04_Sphere_00140 (2024-11-21, from the south-west); checked against the 2023 Commons photo (south-east three-quarter view) and recording_2025-06-18_07-44-47_00974. B = a block with a soffit under it and its own two windows, R = a recessed balcony behind a glass rail, . = the core's own windows. The north face's rows are INFERRED (the S rows mirrored): every 2024-2025 north panorama (recording_2024-09-09_11-06-52_00869 and neighbours, 22 m) is behind a street tree.",
-  "Block depth 1.5 m: the soffit and rail returns in the 2023 photo are about half a bay deep (BAG's 1.85 m steps are the outermost reach). Colour #efebe2: the sunlit panel face in the 2023 Commons photo (240,237,230 median, 20 px patches between windows). Frames #2d3134: the dark window frames.",
+  "Block depth 1.5 m: the soffit and rail returns in the 2023 photo are about half a bay deep (BAG's 1.85 m steps are the outermost reach). Colour #ebe3cf: the sunlit panel face reads 240,237,230 (b* about 3) in the 2023 Commons photo and warmer in the 2024-11-21 panoramas (S sunlit p50 240,246,220; E in shade p50 187,176,144; light cells with b* 4..35, upper half of each crop); the palette takes the Commons lightness with part of the panoramas' warmth (b* about 8), stone #e6dfcd a shade darker. Frames #2d3134: the dark window frames.",
   "Left out: the top-storey roof terraces (LoD2.2 roofs at 38.6 m, 96 m2 at the corners) are drawn as full top storey with rails on the terrace bays; the core cannot yet lower a storey per bay.",
   "roof.flatHex #d7d7cf: the PDOK orthophoto's reading of this pand (roof-facts 14/8412/5383: slot white-membrane, rgb 214/214/206, confidence 0.5; roof-flat.ts)."
  ]
