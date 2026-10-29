@@ -173,7 +173,8 @@ export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel',
 export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
-export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
+/** `arched` (Kinkerstraat 22-24, 1890): a dormer under a round hood, half an ellipse as high as half its width (0.45..1 m), its round front in the dormer body colour (white with `dormerBody: "stone"`). */
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'arched'] as const;
 /** Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. */
 export const DORMER_BODIES = ['stone', 'brick'] as const;
 /**
@@ -1913,7 +1914,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerHoist !== undefined) {
     const z = f.dormerHoist as {reach?: unknown};
     if (!z || typeof z !== 'object' || Array.isArray(z) || Object.keys(z).some(k => k !== 'reach') || (z.reach !== undefined && !(typeof z.reach === 'number' && z.reach >= 0.3 && z.reach <= 1.5))) problems.push(`${at}.dormerHoist: {reach?: 0.3..1.5 m in front of the dormer}`);
-    if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment or pointed dormers`);
+    if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment, pointed or arched dormers`);
     if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
   }
   if (f.dormerSize !== undefined) {

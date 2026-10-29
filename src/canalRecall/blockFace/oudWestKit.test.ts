@@ -7,6 +7,8 @@
  *
  * Kinkerstraat 60-62 (kinker-56-84, 1893): brick wall dormers over the cornice between the gables, drawn in the wall
  * colour (`dormerBody: "brick"`); Kinkerstraat 66: a white stone dormer, not a step gable (2023-01-10 strip).
+ * Kinkerstraat 22-24 (kinker-2-30): round-hooded white dormers (`dormerStyle: "arched"`); Kinkerstraat 26 pui: risers 4 cm
+ * proud of the plinth band (they lay 1 cm off it, coplanar).
  *   node --import tsx --test src/canalRecall/blockFace/oudWestKit.test.ts
  */
 import {test} from 'node:test';
@@ -16,7 +18,9 @@ import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {validateIntent} from '../buildingRecipe/intent.ts';
 import {validateBlockFace, type BlockFaceIntent} from './intent.ts';
 import {compileBlockFace, type StripScale} from './compile.ts';
-import {fitIntent} from '../buildingRecipe/fit.ts';
+import {fitIntent, groundFrontLayout, GROUND_FRONT_PANEL_DEPTH_M} from '../buildingRecipe/fit.ts';
+import * as T from 'three';
+import {compileBuilding} from '../buildingRecipe/compile.ts';
 import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {resolvePlacement} from './houseType.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
@@ -74,4 +78,45 @@ test('Kinkerstraat 56-84: wall dormers on 60 and 62, a stone dormer on 66, gates
   const crowns = (pand: string) => (face.houses.find(h => h.pandId.endsWith(pand))!.type as {modules: {crown?: string}[]}).modules.map(m => m.crown);
   assert.deepEqual(crowns('236441').slice(0, 2), ['wall-dormer', 'wall-dormer']);
   assert.equal(crowns('236325')[0], 'stone-dormer');
+});
+
+const houseOf = (typeId: string, crown: string, pand: string, face: string) => {
+  const t = defaultTypeLoader(typeId)!;
+  const design = resolvePlacement(t, {type: t.id, crown}, 'Kinkerstraat').design;
+  const h = validateIntent({schemaVersion: 1, kind: 'canal-house', id: `kinker-${pand.slice(-6)}`, pandId: pand, address: 'Kinkerstraat', sources: [{id: 'strip', kind: 'street-panorama', capturedAt: '2024-12-11'}], ...design, notes: []} as CanalHouseIntent);
+  const f: BuildingFacts = JSON.parse(fs.readFileSync(`scripts/block-face/faces/${face}/pands/${pand}/facts.json`, 'utf8'));
+  return {h, f};
+};
+
+test('dormer style arched: a round roof and round front over the frame; pediment unchanged; validation', async () => {
+  const {h, f} = houseOf('kinker-1890-plain-brick', 'arched-dormer', '0363100012235988', 'kinker-2-30');
+  const d = fitIntent(h, f).recipe.elevations[0].dormers!.value;
+  assert.ok(d.length === 1 && d[0].roofProfile === 'arch' && d[0].wallSurface === 'stone', JSON.stringify(d));
+  assert.ok(Math.abs(d[0].roofRiseM - Math.min(1, d[0].widthM / 2)) < 0.01, `rise ${d[0].roofRiseM} for width ${d[0].widthM}`);
+  const ped = houseOf('kinker-1890-plain-brick', 'pediment-dormer', '0363100012235988', 'kinker-2-30');
+  assert.equal(fitIntent(ped.h, ped.f).recipe.elevations[0].dormers!.value[0].roofProfile, undefined);
+  assert.throws(() => validateIntent({...h, fronts: h.fronts.map(x => ({...x, dormerStyle: 'round' as never}))}), /dormerStyle/);
+  const built = await compileBuilding(h, f);
+  const roof: T.Mesh[] = [], front: T.Mesh[] = [];
+  built.group.traverse(o => { if (o instanceof T.Mesh && /dormer\/dormer-0\/roof$/.test(o.name)) roof.push(o); if (o instanceof T.Mesh && /dormer\/dormer-0\/front-gable$/.test(o.name)) front.push(o); });
+  assert.equal(roof.length, 1);
+  assert.equal(roof[0].geometry.getAttribute('position').count, 8 * 6, 'eight roof strips');
+  assert.equal(front.length, 1);
+  front[0].geometry.computeBoundingBox();
+  const bb = front[0].geometry.boundingBox!;
+  assert.ok(bb.max.y - bb.min.y > d[0].roofRiseM - 0.06 && bb.max.y - bb.min.y < d[0].roofRiseM, `round front ${bb.max.y - bb.min.y}`);
+});
+
+test('ground-front pui: risers and door panels stand proud of the 6 cm plinth band', () => {
+  const blocks = groundFrontLayout({kind: 'pui', bays: ['window', 'window', 'door'], colour: 'white'}, 4.2, 3.4, []);
+  const risers = blocks.filter(b => /riser|door-panel/.test(b.id));
+  assert.ok(risers.length >= 2 && risers.every(b => b.depthM === GROUND_FRONT_PANEL_DEPTH_M && b.depthM - 0.06 >= 0.03), JSON.stringify(risers));
+});
+
+test('Kinkerstraat 2-30: arched dormers on 22 and 24, the painted-band houses under the low front attic, gates pass', async () => {
+  const {face, facts, strip} = load('kinker-2-30');
+  const r = await compileBlockFace(face, facts, 'face-oudwest-arched-test', {strip});
+  assert.deepEqual(r.gates.filter(g => !g.pass).map(g => `${g.pand}/${g.id}`), []);
+  const roofs = new Map((r.recipeRoofs ?? []).map(x => [x.pandId.slice(-6), x]));
+  for (const p of ['236471', '158140']) assert.equal(roofs.get(p)?.bands?.[0]?.form, 'attic', `${p}: low front attic, not the 3DBAG roof`);
 });
