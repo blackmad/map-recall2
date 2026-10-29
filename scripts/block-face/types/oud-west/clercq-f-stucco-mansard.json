@@ -1,102 +1,115 @@
 {
-  "schemaVersion": 1,
-  "kind": "house-type",
-  "id": "clercq-f-stucco-mansard",
-  "district": "oud-west",
-  "description": "1898 houses 6-2: red-brown brick, 3 axes x 3 upper storeys, white keystone blocks, centre console balcony stack, heavy white bracketed cornice, slate mansard with one ornate arched dormer between two small dormers; cream timber shop puis",
-  "fit": {
-    "widthM": [
-      5.3,
-      5.6
-    ],
-    "storeys": [
-      4
-    ]
-  },
-  "body": {
-    "storeys": 4,
-    "bays": 3,
-    "cornice": "heavy",
-    "windows": "cross",
-    "windowSurround": "keystone",
-    "balconies": {
-      "storeys": [
-        1,
-        2,
-        3
-      ],
-      "bays": [
-        1
-      ],
-      "projecting": true
-    }
-  },
-  "crowns": {
-    "mansard-dormers": {
-      "gable": "cornice",
-      "roofFront": "mansard",
-      "dormers": 3,
-      "dormerStyle": "pediment",
-      "dormerAt": [
-        {
-          "from": 0.1,
-          "to": 0.27
-        },
-        {
-          "from": 0.36,
-          "to": 0.64
-        },
-        {
-          "from": 0.73,
-          "to": 0.9
-        }
-      ],
-      "note": "big centre dormer with an arched light and scrolled pediment between two small dormers (strip crop c-f)"
-    }
-  },
-  "palettes": {
-    "red-brown-brick": {
-      "brick": "#715850",
-      "frame": "white",
-      "door": "cream",
-      "stone": "white",
-      "cornice": "white"
-    }
-  },
-  "roof": {
-    "material": "slate"
-  },
-  "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "upper storeys: 3 axes, centre a French window with a console balcony",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | mansard: 3 dormers",
-    "symmetry": "symmetric about the centre axis above the shop",
-    "groundFloor": "cream timber shop pui per house",
-    "signage": "per house",
-    "roofline": "heavy white bracketed cornice; slate mansard with three dormers",
-    "photoRows": [
-      1,
-      3,
-      3,
-      3,
-      3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-      "the centre dormer's arched light and scrolled pediment are a plain pedimented dormer",
-      "the shop puis' transom lights are one transom bar"
-    ]
-  },
-  "evidence": [
-    {
-      "face": "clercq-236681",
-      "pands": [
-        "157618",
-        "156454",
-        "156960"
-      ],
-      "citation": "strip.jpg pands 6-8: identical uppers and mansards"
-    }
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "clercq-f-stucco-mansard",
+ "district": "oud-west",
+ "description": "1898 houses 6-2: red-brown brick, 3 axes x 3 upper storeys, white keystone blocks, centre console balcony stack, heavy white bracketed cornice, slate mansard with one ornate arched dormer between two small dormers; cream timber shop puis",
+ "fit": {
+  "widthM": [
+   5.3,
+   5.6
+  ],
+  "storeys": [
+   4
   ]
+ },
+ "match": {
+  "years": [
+   1896,
+   1900
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   14.8,
+   17.8
+  ],
+  "stucco": false,
+  "note": "De Clercqstraat 6-2 (1898, clercq-236681); 3DBAG eaves 15.0-17.6 m (the mansard)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "heavy",
+  "windows": "cross",
+  "windowSurround": "keystone",
+  "balconies": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "mansard-dormers": {
+   "gable": "cornice",
+   "roofFront": "mansard",
+   "dormers": 3,
+   "dormerStyle": "pediment",
+   "dormerAt": [
+    {
+     "from": 0.1,
+     "to": 0.27
+    },
+    {
+     "from": 0.36,
+     "to": 0.64
+    },
+    {
+     "from": 0.73,
+     "to": 0.9
+    }
+   ],
+   "note": "big centre dormer with an arched light and scrolled pediment between two small dormers (strip crop c-f)"
+  }
+ },
+ "palettes": {
+  "red-brown-brick": {
+   "brick": "#715850",
+   "frame": "white",
+   "door": "cream",
+   "stone": "white",
+   "cornice": "white"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "identicalBays": "upper storeys: 3 axes, centre a French window with a console balcony",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | mansard: 3 dormers",
+  "symmetry": "symmetric about the centre axis above the shop",
+  "groundFloor": "cream timber shop pui per house",
+  "signage": "per house",
+  "roofline": "heavy white bracketed cornice; slate mansard with three dormers",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the centre dormer's arched light and scrolled pediment are a plain pedimented dormer",
+   "the shop puis' transom lights are one transom bar"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "clercq-236681",
+   "pands": [
+    "157618",
+    "156454",
+    "156960"
+   ],
+   "citation": "strip.jpg pands 6-8: identical uppers and mansards"
+  }
+ ]
 }

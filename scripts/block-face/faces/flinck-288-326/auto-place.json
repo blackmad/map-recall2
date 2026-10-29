@@ -3,7 +3,7 @@
  "street": "Govert Flinckstraat",
  "library": "de-pijp",
  "stripDate": "2022-03-23",
- "seconds": 7.13,
+ "seconds": 6.88,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -725,36 +725,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.098 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012160076",
-    "ncc": 0.098,
-    "nccRaw": 0.098,
+    "ncc": 0.088,
+    "nccRaw": 0.088,
     "shiftM": [
-     -0.3,
-     -0.4
+     0,
+     0.4
     ],
-    "usable": 0.67,
+    "usable": 0.79,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.43",
+     "glazing storey band off by 0.38",
      "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#64554f",
-     "model": "#825e51",
-     "dL": 0.063
+     "photo": "#61544e",
+     "model": "#90634e",
+     "dL": 0.092
     },
     "glazing": {
-     "photo": 0.39,
-     "model": 0.39
+     "photo": 0.36,
+     "model": 0.41
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.436
+    "iou": 0.417
    },
    "challengers": {
     "pijp-1875-shop-dormer": 0.133
@@ -801,25 +801,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.36 < 0.7 (strip cornice 11.95 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 6 vs 3 bays)",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1883, type 1875-1877"
-    ],
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.36,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 11.28 m = 3 storeys of 3.76 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 3.07 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 11.95 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -885,25 +877,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.47 < 0.7 (strip cornice 11.45 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 2 vs 3 bays)",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1883, type 1875-1877"
-    ],
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.47,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 11.67 m = 3 storeys of 3.89 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.51 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 11.45 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -1071,33 +1055,8 @@
     "foliageShare": 0.05
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1882-keystone-lintel scores 0.6 < 0.7 (3DBAG eaves 12.62 m = 4 storeys of 3.15 m vs the type's 3.58 m; roof rise 1.23 m (flat) vs pitched)",
-   "best": {
-    "type": "pijp-1882-keystone-lintel",
-    "score": 0.6,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.62 m = 4 storeys of 3.15 m vs the type's 3.58 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 0,
-      "note": "roof rise 1.23 m (flat) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.315 (brick)"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -1336,25 +1295,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1884, type 1875-1877)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.47 < 0.7 (strip cornice 11.13 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 4 vs 3 bays)",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1884, type 1875-1877"
-    ],
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.47,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 12.39 m = 3 storeys of 4.13 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
       "score": 0,
-      "note": "roof rise 1.25 m (flat) vs pitched"
+      "note": "strip cornice 11.13 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -1430,25 +1381,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.36 < 0.7 (strip cornice 11.18 m vs the type's 14 m (wall-dormer skyline 16.3 m); strip columns 7 vs 3 bays)",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1883, type 1875-1877"
-    ],
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.36,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.1 m = 3 storeys of 4.37 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
       "score": 0,
-      "note": "roof rise 0.51 m (flat) vs pitched"
+      "note": "strip cornice 11.18 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -1514,25 +1457,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877)",
+   "reason": "best pijp-1884-bracketed-hood scores 0.64 < 0.7 (strip cornice 11.38 m vs the type's 14 m (wall-dormer skyline 16.3 m))",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1883, type 1875-1877"
-    ],
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.64,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.01 m = 3 storeys of 4.34 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
       "score": 0,
-      "note": "roof rise 0.45 m (flat) vs pitched"
+      "note": "strip cornice 11.38 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",

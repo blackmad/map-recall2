@@ -352,6 +352,7 @@ function render() {
   for (const [el, c] of cards) { io.unobserve(el); visible.delete(c); release(c); }
   cards.clear(); queue.length = 0;
   const feed = $('#feed'); feed.textContent = '';
+  syncChanges();
   const list = filtered();
   $('#count').textContent = `${fmt(list.length)} model${list.length === 1 ? '' : 's'}`;
   if (!list.length) { feed.innerHTML = '<p class="empty">No models match.</p>'; $('#more').hidden = true; renderWip(); return; }
@@ -406,11 +407,13 @@ function wipLabel(status) {
   if (/in-progress/.test(status)) return 'Being built';
   return status.replace(/-/g, ' ');
 }
+// Ride-wide changes are not models, so only the All tab shows them.
+function syncChanges() { const sec = $('#changes-sec'); sec.hidden = !Number(sec.dataset.notes) || state.kind !== 'all'; }
 // Hand-written notes (public/canal-drive/whats-new-notes.json): one entry per
 // visible change the integrator ships; models are listed by the feed below.
 function renderChanges(notes) {
   const list = (notes || []).filter(n => n && n.date && n.title).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
-  const sec = $('#changes-sec'); sec.hidden = !list.length; if (!list.length) return;
+  const sec = $('#changes-sec'); sec.dataset.notes = String(list.length); syncChanges(); if (!list.length) return;
   const ul = $('#changes'); ul.replaceChildren();
   for (const n of list) {
     const li = document.createElement('li');

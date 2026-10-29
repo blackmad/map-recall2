@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "helmers-1889-balconette-pediment",
+ "district": "helmersbuurt",
+ "description": "Helmersbuurt 1886-1892 (Bosboom Toussaintstraat 9-27, Tweede Helmersstraat 2-30, Jacob van Lennepkade): 5.4-6.6 m red-brown brick fronts of a ground storey and three tall upper storeys under a frieze and cream cornice at about 14.6 m; three axes of white T-windows under segmental heads with white arch rings and keystones; white sills; wrought-iron balconettes on the centre axis of storeys 1-2; one white pediment dormer over the centre",
+ "fit": {
+  "widthM": [
+   5.4,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.0,
+   3.2,
+   3.0,
+   3.2
+  ],
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "none",
+    "keystone": true
+   }
+  },
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.6,
+   0.69,
+   0.6,
+   0.56
+  ],
+  "headLines": [
+   0.8,
+   0.81,
+   0.8,
+   0.69
+  ],
+  "cornice": "heavy",
+  "entablature": {
+   "rise": 1.2,
+   "cap": 0.4,
+   "frieze": "wall",
+   "architrave": 0.1
+  },
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.3,
+    "setback": 0.35
+   },
+   "note": "Bosboom Toussaintstraat 9-27: one white pediment dormer about 1.4 m wide over the centre, 15.0-16.5 m"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "red-brown-1889": {
+   "brick": "#8a5a45",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#eeeae0",
+   "cornice": "#e3d5af",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and two windows under arched heads",
+  "signage": "none",
+  "roofline": "frieze and cream cornice at 14.6 m, one pediment dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the white arch rings are drawn as keystones only"
+  ]
+ },
+ "match": {
+  "years": [
+   1886,
+   1892
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 14.6,
+  "frontSkylineM": 16.3,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Bosboom Toussaintstraat 9-27 (1889): cornice 14.5-14.8 m on the strip; the skyline reads the pediment dormer at 15.5-16.5 m (frontSkylineM)"
+ },
+ "evidence": [
+  {
+   "face": "toussaint-9-27",
+   "pands": [
+    "162495",
+    "166210"
+   ],
+   "citation": "strip.jpg at 0.6x with a metre grid: ground to 4.0 m; window rows 4.4-6.6, 7.6-9.4, 10.6-12.4 m; balconettes at 4.6 and 7.8 m; frieze 12.6-13.6 m; cornice to 14.6 m; dormer 15.0-16.5 m"
+  },
+  {
+   "face": "helmers-2-30",
+   "pands": [
+    "152957"
+   ],
+   "citation": "strip.jpg: the same rows under arched white heads, cornice 14.0-14.5 m"
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "street": "Eerste Van der Helststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237118",
+   "addresses": [
+    "Eerste Van der Helststraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 156,
+     "bagId": "0363010011323625"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559322,
+     "lngLat": [
+      4.8934993,
+      52.3550097
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51-H",
+      "addr:postcode": "1073AD",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-21",
+      "email": "info@ami.amsterdam",
+      "internet_access": "yes",
+      "internet_access:fee": "customers",
+      "name": "Ami",
+      "note": "Horecagroep 3WO",
+      "opening_hours": "Su-We 11:00-24:00; Th 11:00-01:00; Fr-Sa 11:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 235 8710",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ami.amsterdam"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158716",
+   "addresses": [
+    "Eerste Van der Helststraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 53-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000548745"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

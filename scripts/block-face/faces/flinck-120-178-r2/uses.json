@@ -1,0 +1,99 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153714",
+   "addresses": [
+    "Govert Flinckstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000648669"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163530",
+   "addresses": [
+    "Govert Flinckstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 128-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010001167828"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157232",
+   "addresses": [
+    "Govert Flinckstraat 126",
+    "Govert Flinckstraat 126A",
+    "Govert Flinckstraat 126B",
+    "Govert Flinckstraat 126C",
+    "Govert Flinckstraat 126D",
+    "Govert Flinckstraat 126E",
+    "Govert Flinckstraat 126F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 126A",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012155730"
+    },
+    {
+     "address": "Govert Flinckstraat 126B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012155731"
+    },
+    {
+     "address": "Govert Flinckstraat 126C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012155732"
+    },
+    {
+     "address": "Govert Flinckstraat 126D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012155733"
+    },
+    {
+     "address": "Govert Flinckstraat 126E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012155734"
+    },
+    {
+     "address": "Govert Flinckstraat 126F",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012155735"
+    },
+    {
+     "address": "Govert Flinckstraat 126-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000648651"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

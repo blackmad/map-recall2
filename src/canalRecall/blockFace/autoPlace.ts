@@ -94,6 +94,14 @@ export interface TypeMatchRule {
   bagBayOffset?: [number, number];
   crowns?: Record<string, CrownRule & {alt?: CrownRule}>;
   /**
+   * The crown is a criterion (weight 3), not only the variant choice: a strip skyline read under clean sky scores 1
+   * when one of `crowns` holds it (a `none` rule holds a front without a crown), else 0; unread scores nothing.
+   * Jordaan (#113): gable houses and cornice houses share the build years (BAG dates many 17th-18th c. gables to
+   * 1775-1865 rebuilds) and frontages, so only the skyline tells a neck or bell gable from a cornice front.
+   * Absent = no criterion, byte-identical.
+   */
+  crownMatch?: true;
+  /**
    * The cornice line of the type's rows, measured on its exemplar strips (m over the pavement; Helmersbuurt 1893-1901:
    * Eerste Helmersstraat 217-229 at 10.8 m, where 3DBAG/PDOK eaves read the mansard top at 10.9-13.4 m). Set, the eaves
    * criterion compares the strip skyline (when read under clean sky) with it instead of 3DBAG's eaves (unread: no
@@ -258,6 +266,10 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   if (m.bayWidthM) criteria.push({key: 'bay', weight: 3, score: st ? (st.bayWidthM >= m.bayWidthM[0] && st.bayWidthM <= m.bayWidthM[1] ? 1 : 0) : null, note: st ? `widest light bay ${st.bayWidthM} m vs ${m.bayWidthM.join('-')} m` : 'no strip structure'});
   if (m.accentShare) criteria.push({key: 'accent-share', weight: 2, score: usable && s!.accentShare !== undefined ? (s!.accentShare >= m.accentShare[0] && s!.accentShare <= m.accentShare[1] ? 1 : 0) : null, note: usable ? `upper accent share ${s!.accentShare ?? '-'} vs ${m.accentShare.join('-')}` : 'no strip'});
   if (m.mirrorForAccent) { const side = usable ? accentSideOf(s!) : null; criteria.push({key: 'accent-side', weight: 2, score: usable ? (side ? 1 : 0) : null, note: usable ? `upper accent ${side ?? 'even'} (type: one-sided)` : 'no strip'}); }
+  if (m.crownMatch && m.crowns) {
+    const sky = usable ? s!.skyline : null, read = !!sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE, hit = read ? crownRuleFor(t, sky!.crown) : null;
+    criteria.push({key: 'crown', weight: 3, score: read ? (hit ? 1 : 0) : null, note: read ? `skyline ${sky!.crown ? `crown rise ${sky!.crown.riseM} m, top ${sky!.crown.topWidthM} m` : 'no crown'} ${hit ? `fits ${hit}` : 'fits no crown of the type'}` : 'skyline unread'});
+  }
   const want = baysFor(t, ev.widthM);
   if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);
@@ -334,6 +346,14 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
 export const SKYLINE_MIN_CONFIDENCE = 0.6;
 
 /** The crown variant the skyline reads (`match.crowns`), else the type's first. */
+/** The first crown rule of the type (with a crown drawn for it) that holds this skyline crown (null = no crown), or null. */
+export function crownRuleFor(t: MatchableType, c: Skyline['crown']): string | null {
+  const inR = (v: number, r?: [number, number]) => !r || (v >= r[0] && v <= r[1]);
+  const fits = (q: CrownRule) => !!c && inR(c.riseM, q.riseM) && inR(c.topWidthM, q.topWidthM) && inR(c.widthM, q.widthM);
+  for (const [name, r] of Object.entries(t.match?.crowns ?? {})) if (t.crowns[name] && (r.none ? !c : fits(r) || (!!r.alt && fits(r.alt)))) return name;
+  return null;
+}
+
 export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; why: string} {
   const first = Object.keys(t.crowns)[0], rules = t.match?.crowns;
   if (!rules) return {name: first, why: `crown ${first} (type default)`};

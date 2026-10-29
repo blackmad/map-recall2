@@ -2,20 +2,24 @@
  "name": "de-pijp-sarphatiparkbuurt",
  "buurt": "sarphatiparkbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T19:52:55.359Z",
+ "generatedAt": "2026-10-29T20:41:15.095Z",
  "method": "scripts/block-face/batch.ts",
  "totals": {
   "faces": 62,
-  "runs": 62,
-  "installed": 7,
-  "installedPands": 19,
-  "failed": 52,
+  "runs": 63,
+  "installed": 14,
+  "installedPands": 38,
+  "failed": 46,
   "byReason": {
-   "no-type": 48,
+   "no-type": 34,
+   "intake-failed": 4,
+   "glb-audit": 4,
    "already-installed": 3,
-   "intake-failed": 2,
    "strip-over-drawn-high": 2,
-   "compile-gates": 1
+   "compile-gates": 2,
+   "likeness": 1,
+   "strip-quality": 1,
+   "spot-review": 1
   }
  },
  "rows": [
@@ -166,11 +170,88 @@
    "seconds": 6.2
   },
   {
+   "face": "dou-128-174",
+   "street": "Gerard Doustraat",
+   "ride": 28299,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.16,
+   "nccMedian": 0.204,
+   "stripOverDrawn": 0.993,
+   "wallFits": 6,
+   "droppedCorners": [],
+   "triangles": 4264,
+   "sheet": "staging/block-face/dou-128-174-r1/review/strip-sheet.png",
+   "stripDate": "2022-01-11",
+   "run": "dou-128-174-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 11
+  },
+  {
+   "face": "cuyp-80-88",
+   "street": "Albert Cuypstraat",
+   "ride": 8434,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.224,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.206,
+   "nccMedian": 0.237,
+   "stripOverDrawn": 0.964,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4240,
+   "sheet": "staging/block-face/cuyp-80-88-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "cuyp-80-88-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.5
+  },
+  {
+   "face": "wou-12-22",
+   "street": "Van Woustraat",
+   "ride": 5114,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.165,
+   "nccMedian": 0.187,
+   "stripOverDrawn": 0.823,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 7176,
+   "sheet": "staging/block-face/wou-12-22-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-03",
+   "run": "wou-12-22-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8
+  },
+  {
    "face": "ceintuurbaan-157-191",
    "street": "Ceintuurbaan",
    "ride": 38922,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -181,12 +262,12 @@
    "run": "ceintuurbaan-157-191",
    "pands": 18,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2022-03-23",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1888/1889/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/17 placed (10x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the ; 4x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 0
+   "seconds": 7.3
   },
   {
    "face": "bol-47-53",
@@ -215,30 +296,6 @@
    "seconds": 1.1
   },
   {
-   "face": "dou-128-174",
-   "street": "Gerard Doustraat",
-   "ride": 28299,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
-   "nccMin": 0.16,
-   "nccMedian": 0.204,
-   "stripOverDrawn": 0.993,
-   "wallFits": 6,
-   "droppedCorners": [],
-   "triangles": 4264,
-   "sheet": "staging/block-face/dou-128-174-r1/review/strip-sheet.png",
-   "stripDate": "2022-01-11",
-   "run": "dou-128-174-r1",
-   "pands": 3,
-   "mode": "auto-place",
-   "status": "installed",
-   "reasons": [],
-   "seconds": 11
-  },
-  {
    "face": "dou-56-74",
    "street": "Gerard Doustraat",
    "ride": 27202,
@@ -260,9 +317,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/9 placed (3x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+    "no-type: 0/9 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
    ],
-   "seconds": 8.1
+   "seconds": 11.9
   },
   {
    "face": "dou-178-218",
@@ -286,9 +343,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/15 placed (12x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-keystone-lintel scores # < # (#DBAG eaves # m = # storeys ; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/15 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL -#; gla)"
    ],
-   "seconds": 3.3
+   "seconds": 16.6
   },
   {
    "face": "dou-76-98",
@@ -312,9 +369,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
+    "no-type: 0/12 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
    ],
-   "seconds": 22.1
+   "seconds": 26.8
   },
   {
    "face": "ceintuurbaan-93-101",
@@ -335,7 +392,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1895; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: no library year (built 1895; de-pijp types 1875-1877, 1875-1877, 1877-1880, 1882-1882, 1881-1887, 1885-1885, 1886-1887, 1886-1891, 1891-1893, 1891-1893)"
    ],
    "seconds": 0
   },
@@ -358,7 +415,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1887/1990; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: no library year (built 1887/1990; de-pijp types 1875-1877, 1875-1877, 1877-1880, 1882-1882, 1881-1887, 1885-1885, 1886-1887, 1886-1891, 1891-1893, 1891-1893)"
    ],
    "seconds": 0
   },
@@ -367,7 +424,10 @@
    "street": "Van Woustraat",
    "ride": 8610,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -378,12 +438,12 @@
    "run": "wou-2-10",
    "pands": 4,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1878/1883; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/4 placed (2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: best pijp-#-five-low scores # < # (strip cornice # m vs the type's # m)"
    ],
-   "seconds": 0
+   "seconds": 1.9
   },
   {
    "face": "cuyp-79-145",
@@ -406,30 +466,7 @@
    "reasons": [
     "intake-failed: Houses of one chunk must front the same direction (frontages differ by more than ~11 degrees)"
    ],
-   "seconds": 28.6
-  },
-  {
-   "face": "cuyp-80-88",
-   "street": "Albert Cuypstraat",
-   "ride": 8434,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "cuyp-80-88",
-   "pands": 5,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1881/1884/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
+   "seconds": 16.2
   },
   {
    "face": "sarphatipark-22-38",
@@ -453,9 +490,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/8 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
+    "no-type: 0/8 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 5.7
+   "seconds": 7.9
   },
   {
    "face": "wou-54-72",
@@ -524,35 +561,12 @@
    "reasons": [
     "intake-failed: Seed 0363100012157388 has no frontage on Ferdinand Bolstraat: sightline to Ferdinand Bolstraat crosses 0363100012240435"
    ],
-   "seconds": 3.4
+   "seconds": 2.2
   },
   {
    "face": "douplein-8-14",
    "street": "Gerard Douplein",
    "ride": 5559,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "douplein-8-14",
-   "pands": 4,
-   "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
-  },
-  {
-   "face": "wou-12-22",
-   "street": "Van Woustraat",
-   "ride": 5114,
    "restriped": null,
    "stripQuality": {
     "badShare": 0,
@@ -565,15 +579,15 @@
    "droppedCorners": [],
    "triangles": null,
    "sheet": null,
-   "run": "wou-12-22",
-   "pands": 6,
+   "run": "douplein-8-14",
+   "pands": 4,
    "mode": "auto-place",
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/6 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x run: a single placed pand between held neighbours or the face end: a block ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+    "no-type: 0/4 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the ; 1x match: best pijp-#-five-storey-banded scores # < # (strip columns # vs # bays)"
    ],
-   "seconds": 11.6
+   "seconds": 3.9
   },
   {
    "face": "sarphatipark-119-135",
@@ -597,9 +611,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/9 placed (4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/9 placed (9x likeness: run did not compile)"
    ],
-   "seconds": 7.2
+   "seconds": 2.9
   },
   {
    "face": "berchem-4-10",
@@ -625,7 +639,7 @@
    "reasons": [
     "no-type: 0/2 placed (1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x evidence: strip # % without panorama data)"
    ],
-   "seconds": 0.9
+   "seconds": 0.8
   },
   {
    "face": "cuyp-183-239",
@@ -653,7 +667,7 @@
    "reasons": [
     "no-type: 0/15 placed (10x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 3x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best pijp-#-banded-keystone scores # < # (strip cornice # m vs the typ)"
    ],
-   "seconds": 4.3
+   "seconds": 3.3
   },
   {
    "face": "ceintuurbaan-105-153",
@@ -674,7 +688,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1894/1895/1896/1900; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: no library year (built 1894/1895/1896/1900; de-pijp types 1875-1877, 1875-1877, 1877-1880, 1882-1882, 1881-1887, 1885-1885, 1886-1887, 1886-1891, 1891-1893, 1891-1893)"
    ],
    "seconds": 0
   },
@@ -700,9 +714,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/18 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x match: best pijp-#-banded-keystone scores # < # (strip columns # vs # bays); 4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+    "no-type: 0/18 placed (6x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: best pijp-#-banded-keystone scores # < # (strip columns # vs # bays))"
    ],
-   "seconds": 14
+   "seconds": 10.3
   },
   {
    "face": "flinck-87-143",
@@ -728,9 +742,9 @@
    "stripDate": "2018-06-11",
    "status": "failed",
    "reasons": [
-    "no-type: 0/16 placed (9x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x evidence: strip # % without panorama data)"
+    "no-type: 0/16 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 3x run: a single placed pand between held neighbours or the face end: a block ; 2x match: best pijp-#-bracketed-hood scores # < # (strip cornice # m vs the type)"
    ],
-   "seconds": 3.4
+   "seconds": 10.3
   },
   {
    "face": "heijden-1-37",
@@ -754,9 +768,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/16 placed (11x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
+    "no-type: 0/16 placed (6x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the ; 3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 5
+   "seconds": 11.7
   },
   {
    "face": "steen-2-40",
@@ -780,9 +794,9 @@
    "stripDate": "2022-03-23",
    "status": "failed",
    "reasons": [
-    "no-type: 0/18 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
+    "no-type: 0/18 placed (8x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
    ],
-   "seconds": 22.4
+   "seconds": 25.9
   },
   {
    "face": "steen-1-43",
@@ -793,22 +807,22 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.143,
+   "nccMedian": 0.168,
+   "stripOverDrawn": 1.141,
+   "wallFits": 3,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "steen-1-43",
-   "pands": 16,
-   "mode": "auto-place",
+   "triangles": 6151,
+   "sheet": "staging/block-face/steen-1-43-r1/review/strip-sheet.png",
    "stripDate": "2022-03-23",
+   "run": "steen-1-43-r1",
+   "pands": 3,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/16 placed (9x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x run: a single placed pand between held neighbours or the face end: a block )"
+    "likeness: 1 pand(s) under NCC 0.15 (237284 0.143)"
    ],
-   "seconds": 7.9
+   "seconds": 7.2
   },
   {
    "face": "flinck-265-287",
@@ -821,22 +835,20 @@
      "blown"
     ]
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.173,
+   "nccMedian": 0.214,
+   "stripOverDrawn": 1.106,
+   "wallFits": 1,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "flinck-265-287",
-   "pands": 12,
-   "mode": "auto-place",
+   "triangles": 10734,
+   "sheet": "staging/block-face/flinck-265-287-r1/review/strip-sheet.png",
    "stripDate": "2016-08-02",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/12 placed (5x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t; 3x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
-   ],
-   "seconds": 18.6
+   "run": "flinck-265-287-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.2
   },
   {
    "face": "flinck-288-326",
@@ -860,9 +872,9 @@
    "stripDate": "2022-03-23",
    "status": "failed",
    "reasons": [
-    "no-type: 0/18 placed (9x match: best pijp-#-keystone-lintel scores # < # (#DBAG eaves # m = # storeys ; 5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
+    "no-type: 0/18 placed (8x match: best pijp-#-keystone-lintel scores # < # (#DBAG eaves # m = # storeys ; 5x match: best pijp-#-bracketed-hood scores # < # (strip cornice # m vs the type; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 7.7
+   "seconds": 7.4
   },
   {
    "face": "heijden-2-40",
@@ -873,27 +885,51 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.212,
+   "nccMedian": 0.228,
+   "stripOverDrawn": 0.849,
+   "wallFits": 2,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "heijden-2-40",
-   "pands": 20,
-   "mode": "auto-place",
+   "triangles": 4276,
+   "sheet": "staging/block-face/heijden-2-40-r1/review/strip-sheet.png",
    "stripDate": "2023-01-03",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/19 placed (9x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block )"
-   ],
-   "seconds": 16
+   "run": "heijden-2-40-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.1
   },
   {
    "face": "cuyp-238-278",
    "street": "Albert Cuypstraat",
    "ride": 461,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.15,
+   "nccMedian": 0.168,
+   "stripOverDrawn": 1.125,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 4064,
+   "sheet": "staging/block-face/cuyp-238-278-r1/review/strip-sheet.png",
+   "stripDate": "2022-03-21",
+   "run": "cuyp-238-278-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 2.8
+  },
+  {
+   "face": "helst-54-54",
+   "street": "Eerste Van der Helststraat",
+   "ride": 442,
    "restriped": null,
    "stripQuality": {
     "badShare": 0,
@@ -906,38 +942,15 @@
    "droppedCorners": [],
    "triangles": null,
    "sheet": null,
-   "run": "cuyp-238-278",
-   "pands": 15,
-   "mode": "auto-place",
-   "stripDate": "2022-03-21",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/14 placed (13x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
-   ],
-   "seconds": 4.8
-  },
-  {
-   "face": "helst-54-54",
-   "street": "Eerste Van der Helststraat",
-   "ride": 442,
-   "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
-   "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
    "run": "helst-54-54",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2020-01-06",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the )"
    ],
-   "seconds": 0
+   "seconds": 0.9
   },
   {
    "face": "cuyp-241-259",
@@ -965,14 +978,17 @@
    "reasons": [
     "strip-over-drawn-high: 1.934 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 8.6
+   "seconds": 8.2
   },
   {
    "face": "sweelinck-12-16",
    "street": "Eerste Sweelinckstraat",
    "ride": 51,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -983,12 +999,12 @@
    "run": "sweelinck-12-16",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2022-03-21",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1878; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/3 placed (1x evidence: strip # % without panorama data; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: foliage ; 1x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne)"
    ],
-   "seconds": 0
+   "seconds": 4.2
   },
   {
    "face": "cuyp-130-168",
@@ -1038,7 +1054,7 @@
     "compile-gates: 155726/storey-height; 167067/storey-height",
     "strip-over-drawn-high: 1.962 > 1.25 (walls drawn darker than the photo)"
    ],
-   "seconds": 7.4
+   "seconds": 6.8
   },
   {
    "face": "steen-91-149",
@@ -1062,16 +1078,19 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/19 placed (17x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
+    "no-type: 0/19 placed (14x likeness: run did not compile; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
    ],
-   "seconds": 4
+   "seconds": 20.8
   },
   {
    "face": "heijden-119-165",
    "street": "Eerste Jan van der Heijdenstraat",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -1082,12 +1101,12 @@
    "run": "heijden-119-165",
    "pands": 10,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1890/1894/1938/1995/2008; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/5 placed (5x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 0
+   "seconds": 4.1
   },
   {
    "face": "sweelinck-24-56",
@@ -1108,7 +1127,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1895/1992; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: no library year (built 1895/1992; de-pijp types 1875-1877, 1875-1877, 1877-1880, 1882-1882, 1881-1887, 1885-1885, 1886-1887, 1886-1891, 1891-1893, 1891-1893)"
    ],
    "seconds": 0
   },
@@ -1121,22 +1140,22 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "nccMin": 0.209,
+   "nccMedian": 0.311,
+   "stripOverDrawn": 0.834,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "sweelinck-1-11",
-   "pands": 5,
-   "mode": "auto-place",
+   "triangles": 4377,
+   "sheet": "staging/block-face/sweelinck-1-11-r1/review/strip-sheet.png",
    "stripDate": "2021-04-23",
+   "run": "sweelinck-1-11-r1",
+   "pands": 2,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x evidence: strip # % without panorama data)"
+    "spot-review: 156851 (Eerste Sweelinckstraat 11) drawn with four upper storeys over a three-storey front (pijp-1889-five-storey-banded false positive past the NCC gate); install reverted, the type now needs the white bands (match.bands)"
    ],
-   "seconds": 1.4
+   "seconds": 4.1
   },
   {
    "face": "sweelinck-13-23",
@@ -1160,32 +1179,33 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/4 placed (2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: best pijp-#-segmental-mansard scores # < # (strip wall ##f# dE # to ##; 1x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
+    "no-type: 0/4 placed (2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 1x match: best pijp-#-bracketed-hood scores # < # (strip columns # vs # bays); 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 1.8
+   "seconds": 1.7
   },
   {
    "face": "helst-56-62",
    "street": "Eerste Van der Helststraat",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.192,
+   "nccMedian": 0.234,
+   "stripOverDrawn": 0.93,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "helst-56-62",
-   "pands": 4,
+   "triangles": 4495,
+   "sheet": "staging/block-face/helst-56-62-r1/review/strip-sheet.png",
+   "stripDate": "2020-01-06",
+   "run": "helst-56-62-r1",
+   "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
-   "status": "failed",
-   "reasons": [
-    "no-type: no library year (built 1883; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
-   ],
-   "seconds": 0
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.3
   },
   {
    "face": "helst-39-49",
@@ -1196,22 +1216,20 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "nccMin": 0.161,
+   "nccMedian": 0.164,
+   "stripOverDrawn": 1.157,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "helst-39-49",
-   "pands": 6,
-   "mode": "auto-place",
+   "triangles": 6783,
+   "sheet": "staging/block-face/helst-39-49-r1/review/strip-sheet.png",
    "stripDate": "2020-01-06",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/6 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
-   ],
-   "seconds": 1.4
+   "run": "helst-39-49-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 4.8
   },
   {
    "face": "helst-51-67",
@@ -1222,22 +1240,20 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.362,
+   "nccMedian": 0.365,
+   "stripOverDrawn": 1.112,
+   "wallFits": 2,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "helst-51-67",
-   "pands": 7,
-   "mode": "auto-place",
+   "triangles": 4579,
+   "sheet": "staging/block-face/helst-51-67-r1/review/strip-sheet.png",
    "stripDate": "2023-01-03",
-   "status": "failed",
-   "reasons": [
-    "no-type: 0/7 placed (3x evidence: strip # % without panorama data; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x run: a single placed pand between held neighbours or the face end: a block )"
-   ],
-   "seconds": 1.4
+   "run": "helst-51-67-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6.4
   },
   {
    "face": "bol-65-67",
@@ -1258,9 +1274,9 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1883; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "intake-failed: Seed 0363100012158070 has no frontage on Ferdinand Bolstraat: sightline to Ferdinand Bolstraat crosses 0363100012240435"
    ],
-   "seconds": 0
+   "seconds": 5.2
   },
   {
    "face": "bol-79-85",
@@ -1281,9 +1297,9 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1884; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "intake-failed: Seed 0363100012166042 has no frontage on Ferdinand Bolstraat: sightline to Ferdinand Bolstraat crosses 0363100012240435"
    ],
-   "seconds": 0
+   "seconds": 2.4
   },
   {
    "face": "flinck-120-178",
@@ -1294,22 +1310,49 @@
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "nccMin": 0.254,
+   "nccMedian": 0.328,
+   "stripOverDrawn": 0.968,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "flinck-120-178",
-   "pands": 24,
-   "mode": "auto-place",
+   "triangles": 4467,
+   "sheet": "staging/block-face/flinck-120-178-r1/review/strip-sheet.png",
    "stripDate": "2023-01-03",
+   "run": "flinck-120-178-r1",
+   "pands": 2,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/16 placed (12x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-segmental-keystone scores # < # (#DBAG eaves # m = # store)"
+    "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 3
+   "seconds": 5
+  },
+  {
+   "face": "flinck-120-178",
+   "street": "Govert Flinckstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.258,
+   "nccMedian": 0.319,
+   "stripOverDrawn": 0.809,
+   "wallFits": 5,
+   "droppedCorners": [],
+   "triangles": 6339,
+   "sheet": "staging/block-face/flinck-120-178-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-03",
+   "run": "flinck-120-178-r2",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 157232/height-vs-3dbag",
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 10
   },
   {
    "face": "flinck-182-284",
@@ -1333,16 +1376,19 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/14 placed (6x match: best pijp-#-keystone-lintel scores # < # (#DBAG eaves # m = # storeys ; 4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
+    "no-type: 0/14 placed (5x run: a single placed pand between held neighbours or the face end: a block ; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
    ],
-   "seconds": 2.6
+   "seconds": 10.4
   },
   {
    "face": "flinck-147-147",
    "street": "Govert Flinckstraat",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -1353,12 +1399,12 @@
    "run": "flinck-147-147",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2022-03-23",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1883; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 0
+   "seconds": 87.9
   },
   {
    "face": "flinck-149-165",
@@ -1382,9 +1428,9 @@
    "stripDate": "2019-05-02",
    "status": "failed",
    "reasons": [
-    "no-type: 0/7 placed (3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 1x match: best pijp-#-banded-keystone scores # < # (strip accent share # (stucco)"
+    "no-type: 0/7 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: washed o; 1x match: best pijp-#-bracketed-hood scores # < # (strip columns # vs # bays); 1x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#; frontag)"
    ],
-   "seconds": 1.6
+   "seconds": 6.3
   },
   {
    "face": "flinck-169-233",
@@ -1398,22 +1444,23 @@
      "blown"
     ]
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.175,
+   "nccMedian": 0.175,
+   "stripOverDrawn": 1.186,
+   "wallFits": 1,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "flinck-169-233",
-   "pands": 29,
-   "mode": "auto-place",
+   "triangles": 6444,
+   "sheet": "staging/block-face/flinck-169-233-r1/review/strip-sheet.png",
    "stripDate": "2019-05-02",
+   "run": "flinck-169-233-r1",
+   "pands": 3,
+   "mode": "auto-place",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 3x evidence: strip # % without panorama data; 3x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
+    "strip-quality: cold cast rb, blown",
+    "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 2.3
+   "seconds": 6.4
   },
   {
    "face": "flinck-237-243",
@@ -1434,7 +1481,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1992/1993; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: no library year (built 1992/1993; de-pijp types 1875-1877, 1875-1877, 1877-1880, 1882-1882, 1881-1887, 1885-1885, 1886-1887, 1886-1891, 1891-1893, 1891-1893)"
    ],
    "seconds": 0
   },
@@ -1460,16 +1507,19 @@
    "stripDate": "2023-01-23",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best pijp-#-segmental-mansard scores # < # (strip wall #b#b#b# dE # to; 1x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t)"
+    "no-type: 0/5 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: best pijp-#-bracketed-hood scores # < # (strip cornice # m vs the type; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 1.5
+   "seconds": 4.9
   },
   {
    "face": "sarphatipark-2-14",
    "street": "Sarphatipark",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -1480,19 +1530,22 @@
    "run": "sarphatipark-2-14",
    "pands": 7,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1889/1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/7 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
    ],
-   "seconds": 0
+   "seconds": 234.6
   },
   {
    "face": "sarphatipark-18-20",
    "street": "Sarphatipark",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -1503,12 +1556,12 @@
    "run": "sarphatipark-18-20",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1890; de-pijp types 1875-1877, 1875-1877, 1882-1882, 1885-1885, 1886-1887, 1891-1893, 1891-1893)"
+    "no-type: 0/2 placed (1x match: best pijp-#-five-storey-banded scores # < # (strip cornice # m vs the ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 0
+   "seconds": 51.8
   },
   {
    "face": "sarphatipark-1-97",
@@ -1532,9 +1585,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/16 placed (5x match: best pijp-#-keystone-lintel scores # < # (#DBAG eaves # m = # storeys ; 3x likeness: run did not compile; 2x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#))"
+    "no-type: 0/16 placed (4x run: a single placed pand between held neighbours or the face end: a block ; 3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
    ],
-   "seconds": 15.8
+   "seconds": 20.3
   },
   {
    "face": "sarphatipark-99-117",
@@ -1558,9 +1611,9 @@
    "stripDate": "2023-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/9 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 3x match: best pijp-#-segmental-mansard scores # < # (strip cornice # m vs the t; 1x match: best pijp-#-segmental-mansard scores # < # (strip wall ##a# dE # to ##)"
+    "no-type: 0/9 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
    ],
-   "seconds": 2.7
+   "seconds": 17.9
   }
  ]
 }

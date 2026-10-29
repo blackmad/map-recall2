@@ -1,0 +1,154 @@
+{
+ "face": "flinck-147-147",
+ "street": "Govert Flinckstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-23",
+ "seconds": 0.72,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236246",
+   "address": "Govert Flinckstraat 147",
+   "builtYear": 1883,
+   "widthM": 5.89,
+   "eavesM": 12.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534643",
+    "wallRaw": "#7d7064",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 4.5,
+      "topWidthM": 0.23,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.219,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.26 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.26,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.61,
+       "light": 0.46
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236018",
+   "address": "Govert Flinckstraat 147A",
+   "builtYear": 1883,
+   "widthM": 13.47,
+   "eavesM": 15.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d9bfa2",
+    "wallRaw": "#f2d6b5",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 125,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 3.07,
+      "topWidthM": 0.1,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.154,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1883, type 1875-1877; frontage 13.47 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1883, type 1875-1877",
+     "frontage 13.47 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.72 m = 3 storeys of 5.24 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.11 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.046 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

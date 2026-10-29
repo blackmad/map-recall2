@@ -1,0 +1,101 @@
+{
+ "street": "Govert Flinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166940",
+   "addresses": [
+    "Govert Flinckstraat 275"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 275-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000649195"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164382",
+   "addresses": [
+    "Govert Flinckstraat 277"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 277-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000649203"
+    },
+    {
+     "address": "Govert Flinckstraat 277-O",
+     "use": "industriefunctie",
+     "areaM2": 52,
+     "bagId": "0363010000649204"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161721",
+   "addresses": [
+    "Govert Flinckstraat 279"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 279-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000649207"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155442",
+   "addresses": [
+    "Govert Flinckstraat 281"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 281-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000649211"
+    },
+    {
+     "address": "Govert Flinckstraat 281-O",
+     "use": "industriefunctie",
+     "areaM2": 52,
+     "bagId": "0363010000649212"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156438",
+   "addresses": [
+    "Govert Flinckstraat 283"
+   ],
+   "groundUnits": [
+    {
+     "address": "Govert Flinckstraat 283-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001983560"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

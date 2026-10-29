@@ -3,7 +3,7 @@
  "street": "Eerste Sweelinckstraat",
  "library": "de-pijp",
  "stripDate": "2021-04-23",
- "seconds": 0.9,
+ "seconds": 8.69,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "sweelinck-1-11-r1",
+   "pands": [
+    "0363100012163278",
+    "0363100012156851"
+   ],
+   "passed": true,
+   "triangles": 4377
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012235945",
@@ -189,9 +199,38 @@
     "foliageShare": 0.06
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.049 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.19; glazing storey band off by 0.45)",
+   "likeness": {
+    "pandId": "0363100012163950",
+    "ncc": 0.049,
+    "nccRaw": 0.049,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.19",
+     "glazing storey band off by 0.45"
+    ],
+    "wall": {
+     "photo": "#aa7765",
+     "model": "#555954",
+     "dL": -0.192
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.349
+   },
    "challengers": {}
   },
   {
@@ -239,42 +278,77 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "best pijp-1886-segmental-mansard scores 0.65 < 0.7 (strip wall #7f6a64 dE 15.9 to #524845 (<= 10); strip columns 4 vs 3 bays)",
-   "best": {
-    "type": "pijp-1886-segmental-mansard",
-    "score": 0.65,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 15.1 m; 3DBAG 13.79 m not compared)"
-     },
-     {
-      "key": "wall",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip wall #7f6a64 dE 15.9 to #524845 (<= 10)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.06 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "pijp-1884-bracketed-hood",
+   "score": 0.74,
+   "runnerUp": {
+    "typeId": "pijp-1889-five-storey-banded",
+    "score": 0.74
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "pijp-1884-bracketed-hood",
+    "ground": {
+     "shopfront": {
+      "colour": "#6a6a65",
+      "fascia": true,
+      "name": "Franggo",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=restaurant); fascia colour measured on the strip 2021-04-23 span 998-1218"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7f6a64",
+     "evidence": "strip 2021-04-23 span 998-1218: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with pijp-1889-five-storey-banded (0.74)",
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.403 vs 0.3), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.395 vs 0.3), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.403 vs 0.311), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.395 vs 0.311), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012163278",
+    "ncc": 0.311,
+    "nccRaw": 0.311,
+    "shiftM": [
+     -0.1,
+     0
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.47 vs photo 0.19"
+    ],
+    "wall": {
+     "photo": "#806b65",
+     "model": "#937d76",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.219
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.403,
+    "pijp-1882-keystone-lintel": 0.314,
+    "pijp-1885-segmental-keystone": 0.395
+   }
   },
   {
    "pandId": "0363100012156851",
@@ -315,11 +389,78 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "pijp-1889-five-storey-banded",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1886-segmental-mansard",
+    "score": 0.87
+   },
+   "placement": {
+    "type": "pijp-1889-five-storey-banded",
+    "ground": {
+     "shopfront": {
+      "colour": "#74756f",
+      "fascia": true,
+      "name": "Ilario",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, shop=vacant); fascia colour measured on the strip 2021-04-23 span 1218-1429"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7a6461",
+     "evidence": "strip 2021-04-23 span 1218-1429: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1876-hood-frieze (0.394 vs 0.223), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.386 vs 0.223), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.286 vs 0.223), vetoed by its facts",
+    "the edges read closer to pijp-1876-hood-frieze (0.394 vs 0.209), vetoed by its facts",
+    "the edges read closer to pijp-1882-keystone-lintel (0.386 vs 0.209), vetoed by its facts",
+    "the edges read closer to pijp-1885-segmental-keystone (0.286 vs 0.209), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012156851",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.51 mean 0.46 vs photo 0.64"
+    ],
+    "wall": {
+     "photo": "#766059",
+     "model": "#907673",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {
+    "pijp-1876-hood-frieze": 0.394,
+    "pijp-1882-keystone-lintel": 0.386,
+    "pijp-1885-segmental-keystone": 0.286
+   }
   }
  ]
 }

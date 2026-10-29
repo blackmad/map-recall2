@@ -1,140 +1,153 @@
 {
-  "schemaVersion": 1,
-  "kind": "house-type",
-  "id": "nassau-1900-two-axis-balcony",
-  "district": "oud-west",
-  "description": "1900 Nassaukade row (145, 149): two axes, a narrow left one with the door and a wide right one with a double T-window, a stack of white timber balconies with turned balusters on carved brackets on storeys 1-2 of the wide axis, white painted bands at the sill and transom lines, eared heads with keystone blocks, heavy white cornice, pointed pediment dormer",
-  "fit": {
-    "widthM": [
-      5.9,
-      6.2
-    ],
-    "storeys": [
-      4
-    ]
-  },
-  "body": {
-    "windows": "t-window",
-    "windowSurround": "eared-keystone",
-    "windowSills": "consoles",
-    "bands": "painted",
-    "bandLines": [
-      "sill",
-      "transom"
-    ],
-    "bandHeights": {
-      "sill": 0.15,
-      "transom": 0.13
-    },
-    "bandTransomAt": 0.65,
-    "cornice": "heavy",
-    "storeys": 4,
-    "bays": 2,
-    "bayWidths": [
-      1,
-      1.8
-    ],
-    "balconies": {
-      "storeys": [
-        1,
-        2
-      ],
-      "bays": [
-        1
-      ],
-      "style": "timber-bracketed",
-      "rail": "turned"
-    },
-    "windowHeights": [
-      0.6,
-      0.64,
-      0.651,
-      0.65
-    ],
-    "headLines": [
-      0.86,
-      0.759,
-      0.718,
-      0.716
-    ]
-  },
-  "crowns": {
-    "pointed-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pointed",
-      "dormerAt": [
-        {
-          "from": 0.42,
-          "to": 0.68
-        }
-      ],
-      "note": "one white dormer with a pointed pediment, over the wide axis"
-    }
-  },
-  "grounds": {
-    "door-left": {
-      "doorBay": 0,
-      "basement": "none",
-      "tallGround": true,
-      "note": "door with a fanlight on the narrow axis, one wide window with a transom on the right"
-    }
-  },
-  "palettes": {
-    "grey-paint": {
-      "brick": "#6a685d",
-      "frame": "white-painted",
-      "door": "#1f2324",
-      "stone": "#f5f1e7",
-      "cornice": "white-painted",
-      "wallMaterial": "painted-brick",
-      "stoneMaterial": "painted"
-    },
-    "red-brick": {
-      "brick": "#b58c6f",
-      "frame": "white-painted",
-      "door": "#3a2a22",
-      "stone": "#f5f1e7",
-      "cornice": "white-painted",
-      "stoneMaterial": "painted"
-    }
-  },
-  "roof": {
-    "material": "slate"
-  },
-  "rhythm": {
-    "bays": "2 axes: narrow left (door axis), wide right (double window), widths about 1 : 1.8",
-    "identicalBays": "the right axis carries a double T-window on every storey",
-    "windowsPerStorey": "ground: door + 1 wide | 1: 2 | 2: 2 | 3: 2 | dormer: 1",
-    "symmetry": "asymmetric: door and narrow axis left, balcony stack right",
-    "groundFloor": "residential: door with a fanlight, one wide window",
-    "signage": "none",
-    "roofline": "heavy white cornice (14.0-15.4 m), one pointed pediment dormer over the wide axis",
-    "photoRows": [
-      2,
-      2,
-      2,
-      2,
-      1
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0
-  },
-  "schemaLimits": [
-    "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls",
-    "window heights and head lines are measured on 149 (window 4.95-7.15, 8.2-10.35, 11.35-13.55 m, drawn 0.65 = 2.06 m so the sill clears the kit storey floor, on the kit's storeys [4.54, 3.44, 3.30, 3.17]); 149's storey-2 band runs at the head line where its storey-1 band is at 0.65 of the window"
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "nassau-1900-two-axis-balcony",
+ "district": "oud-west",
+ "description": "1900 Nassaukade row (145, 149): two axes, a narrow left one with the door and a wide right one with a double T-window, a stack of white timber balconies with turned balusters on carved brackets on storeys 1-2 of the wide axis, white painted bands at the sill and transom lines, eared heads with keystone blocks, heavy white cornice, pointed pediment dormer",
+ "fit": {
+  "widthM": [
+   5.9,
+   6.2
   ],
-  "evidence": [
-    {
-      "face": "nassau-145-152",
-      "pands": [
-        "161422",
-        "159694"
-      ],
-      "citation": "strip.jpg 2024-11-21 pands 3 and 7 (149 painted dark grey, 145 red brick): same axes, balcony stack, bands and cornice"
-    }
-  ],
-  "notes": [
-    "White dressings (kit lane 2026-10-14): stone #f5f1e7 = the drawn white-painted frame x 149's band-to-frame ratio 1.031 (palette-from-strip.ts --frame=white-painted), stoneMaterial painted."
+  "storeys": [
+   4
   ]
+ },
+ "match": {
+  "years": [
+   1898,
+   1902
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   14.6,
+   15.2
+  ],
+  "stucco": false,
+  "note": "Nassaukade 145, 149 (1900, nassau-145-152)"
+ },
+ "body": {
+  "windows": "t-window",
+  "windowSurround": "eared-keystone",
+  "windowSills": "consoles",
+  "bands": "painted",
+  "bandLines": [
+   "sill",
+   "transom"
+  ],
+  "bandHeights": {
+   "sill": 0.15,
+   "transom": 0.13
+  },
+  "bandTransomAt": 0.65,
+  "cornice": "heavy",
+  "storeys": 4,
+  "bays": 2,
+  "bayWidths": [
+   1,
+   1.8
+  ],
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "style": "timber-bracketed",
+   "rail": "turned"
+  },
+  "windowHeights": [
+   0.6,
+   0.64,
+   0.651,
+   0.65
+  ],
+  "headLines": [
+   0.86,
+   0.759,
+   0.718,
+   0.716
+  ]
+ },
+ "crowns": {
+  "pointed-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerAt": [
+    {
+     "from": 0.42,
+     "to": 0.68
+    }
+   ],
+   "note": "one white dormer with a pointed pediment, over the wide axis"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "tallGround": true,
+   "note": "door with a fanlight on the narrow axis, one wide window with a transom on the right"
+  }
+ },
+ "palettes": {
+  "grey-paint": {
+   "brick": "#6a685d",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#f5f1e7",
+   "cornice": "white-painted",
+   "wallMaterial": "painted-brick",
+   "stoneMaterial": "painted"
+  },
+  "red-brick": {
+   "brick": "#b58c6f",
+   "frame": "white-painted",
+   "door": "#3a2a22",
+   "stone": "#f5f1e7",
+   "cornice": "white-painted",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "2 axes: narrow left (door axis), wide right (double window), widths about 1 : 1.8",
+  "identicalBays": "the right axis carries a double T-window on every storey",
+  "windowsPerStorey": "ground: door + 1 wide | 1: 2 | 2: 2 | 3: 2 | dormer: 1",
+  "symmetry": "asymmetric: door and narrow axis left, balcony stack right",
+  "groundFloor": "residential: door with a fanlight, one wide window",
+  "signage": "none",
+  "roofline": "heavy white cornice (14.0-15.4 m), one pointed pediment dormer over the wide axis",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "schemaLimits": [
+  "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls",
+  "window heights and head lines are measured on 149 (window 4.95-7.15, 8.2-10.35, 11.35-13.55 m, drawn 0.65 = 2.06 m so the sill clears the kit storey floor, on the kit's storeys [4.54, 3.44, 3.30, 3.17]); 149's storey-2 band runs at the head line where its storey-1 band is at 0.65 of the window"
+ ],
+ "evidence": [
+  {
+   "face": "nassau-145-152",
+   "pands": [
+    "161422",
+    "159694"
+   ],
+   "citation": "strip.jpg 2024-11-21 pands 3 and 7 (149 painted dark grey, 145 red brick): same axes, balcony stack, bands and cornice"
+  }
+ ],
+ "notes": [
+  "White dressings (kit lane 2026-10-14): stone #f5f1e7 = the drawn white-painted frame x 149's band-to-frame ratio 1.031 (palette-from-strip.ts --frame=white-painted), stoneMaterial painted."
+ ]
 }

@@ -1,0 +1,115 @@
+{
+ "street": "Eerste Sweelinckstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163278",
+   "addresses": [
+    "Eerste Sweelinckstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000548505"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817559707,
+     "lngLat": [
+      4.8977325,
+      52.3562579
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9-H",
+      "addr:postcode": "1073CK",
+      "addr:street": "Eerste Sweelinckstraat",
+      "amenity": "restaurant",
+      "branch": "De Pijp",
+      "check_date": "2026-01-20",
+      "cuisine": "chicken;portuguese",
+      "delivery": "yes",
+      "diet:halal": "yes",
+      "email": "info@franggo.nl",
+      "name": "Franggo",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 3031046",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets": "yes",
+      "toilets:wheelchair": "no",
+      "website": "https://www.franggo.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156851",
+   "addresses": [
+    "Eerste Sweelinckstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Sweelinckstraat 11-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000548510"
+    },
+    {
+     "address": "Govert Flinckstraat 245B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001021231"
+    },
+    {
+     "address": "Govert Flinckstraat 245A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001170150"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506127774,
+     "lngLat": [
+      4.8977713,
+      52.3562006
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1073CK",
+      "addr:street": "Eerste Sweelinckstraat",
+      "check_date": "2026-01-20",
+      "fixme": "Formerly Café Sweelinck/Jeffrey's/Luz Restobar. Soon to be Ilario. Please update if there is a website or when it opens",
+      "name": "Ilario",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T17:51:10.472064Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

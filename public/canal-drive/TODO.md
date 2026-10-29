@@ -1065,12 +1065,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Feel check on a real phone by the user; no one has ridden it on glass.
     Tunables are `STREET_TURN_RATE`, `CORNER_FRACTION`, `QUEUE_HOLD_SECONDS`
     (streetFollow.ts) and `CAMERA_YAW_DEFAULT` (cameraYaw.ts).
-  - Boats follow canals with one junction pinned (Prinsengracht ×
-    Leidsegracht). At the bend there the Prinsengracht centreline is one chain
-    of short ways (8–38 m) whose bearings zig-zag (−93°, −66°, −97°, −72°,
-    −37°), so the boat's heading wobbles; the camera dead band hides it.
-    Candidate fix: aim the follow heading at a point ~20–30 m ahead along the
-    chain instead of the local segment (streetFollow.ts), not merging data.
+  - The follow heading now aims ~25 m down the street (HISTORY 2026-10-29,
+    look-ahead). Its gain on the Prinsengracht zig-zag is modest in the sim;
+    judge it in the real-phone feel check above. `LOOK_AHEAD`/`AIM_SECONDS`
+    are the knobs, `SF_NO_LOOKAHEAD=1 npm run test:street-follow` the A/B.
 - **Public preview follow-ups (2026-10-17).**
   - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
@@ -1983,6 +1981,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **Batch likeness discrimination (#113, 2026-10-29).** Edge NCC accepted an interwar ribbon-window block as an 1889 row (flinck-265-287, NCC 0.21). Before scaling the batch further, add an era guard:
+  - compare the photo's window aspect and row structure with the type's;
+  - veto when the strip shows horizontal ribbons or a flat modern crown;
+  - also check the storey count, since sweelinck-1-11 was drawn one storey too many.
+
+  Spot review stays mandatory for each batch, on a 10 % sample.
 
 - **Batch installer yield (#103 follow-ups, 2026-10-29).**
   1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.

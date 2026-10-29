@@ -1,0 +1,57 @@
+{
+ "street": "Tweede Jan Steenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237284",
+   "addresses": [
+    "Tweede Jan Steenstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000551316"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152994",
+   "addresses": [
+    "Tweede Jan Steenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000551322"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156687",
+   "addresses": [
+    "Tweede Jan Steenstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Jan Steenstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000551329"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

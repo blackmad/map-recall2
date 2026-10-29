@@ -1,0 +1,316 @@
+{
+ "face": "douplein-8-14",
+ "street": "Gerard Douplein",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 3.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012073807",
+   "address": "Gerard Douplein 14",
+   "builtYear": 1890,
+   "widthM": 6.84,
+   "eavesM": 9.37,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4c48",
+    "wallRaw": "#5d514c",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 104,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 2.6,
+      "topWidthM": 0.3,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.64 < 0.7 (strip cornice 13.13 m vs the type's 15.2 m (wall-dormer skyline 18.2 m))",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.13 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157566",
+   "address": "Gerard Douplein 12",
+   "builtYear": 1890,
+   "widthM": 4.94,
+   "eavesM": 9.73,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e625d",
+    "wallRaw": "#5a504a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 629,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.2 m; 3DBAG 9.73 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162905",
+   "address": "Gerard Douplein 10",
+   "builtYear": 1890,
+   "widthM": 4.83,
+   "eavesM": 10.13,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#565861",
+    "wallRaw": "#3f403f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 629,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.103 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.24; glazing storey band off by 0.18; window shape tall vs photo square; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012162905",
+    "ncc": 0.103,
+    "nccRaw": 0.103,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.24",
+     "glazing storey band off by 0.18",
+     "window shape tall vs photo square",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#373234",
+     "model": "#6a6d78",
+     "dL": 0.237
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.528
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157580",
+   "address": "Gerard Douplein 8",
+   "builtYear": 1890,
+   "widthM": 5.33,
+   "eavesM": 9.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#565651",
+    "wallRaw": "#75746a",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 64,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 1.6,
+      "topWidthM": 0.13,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.03,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.19 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.19,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.88,
+       "widthM": 0.95,
+       "centre": 0.75
+      },
+      {
+       "atM": 5.17,
+       "widthM": 0.95,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.08 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.28; glazing storey band off by 0.51 mean 0.47 vs photo 0.72)",
+   "likeness": {
+    "pandId": "0363100012157580",
+    "ncc": 0.08,
+    "nccRaw": 0.08,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.28",
+     "glazing storey band off by 0.51 mean 0.47 vs photo 0.72"
+    ],
+    "wall": {
+     "photo": "#252220",
+     "model": "#6d6d67",
+     "dL": 0.28
+    },
+    "glazing": {
+     "photo": 0.72,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.437
+   },
+   "challengers": {}
+  }
+ ]
+}
