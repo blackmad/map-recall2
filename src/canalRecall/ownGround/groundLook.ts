@@ -96,3 +96,26 @@ export function groundPalette(look: GroundLook = 'default'): GroundPalette {
   cache.set(look, out);
   return out;
 }
+
+/** Rec. 709 luma of an sRGB triple (0..255), as scripts/ground-look-sheet.mjs measures frames. */
+export const luma709 = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+/** `c` scaled (hue and saturation kept) to Rec. 709 luma `target`, rounded and clamped to 0..255. */
+export function atLuma(c: readonly number[], target: number): number[] {
+  const k = target / Math.max(1, luma709(c));
+  return [0, 1, 2].map(i => Math.max(0, Math.min(255, Math.round(c[i] * k))));
+}
+/**
+ * The carriageway lumas on the review strip (lane road-look-continuity 2026-10-29, step 3; user: the asphalt reads as
+ * light as the pavement, luma 144 against 175, where the neighbourhood photo shows dark asphalt). Today's and two
+ * darker options; the pavement is unchanged. The user picks; none is the default until then.
+ */
+export const ASPHALT_LUMA_OPTIONS = [144, 130, 118] as const;
+
+/**
+ * Courtyard green (lane road-look-continuity 2026-10-29, step 6): the lawn desaturated 40 % toward its own luma and
+ * 15 luma darker. Block-interior gardens read as saturated park lawn against the grey street corridor.
+ */
+export function gardenTone(lawn: readonly number[]): number[] {
+  const L = luma709(lawn), grey = lawn.map(c => c + 0.4 * (L - c));
+  return atLuma(grey, L - 15);
+}

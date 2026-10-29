@@ -32,7 +32,7 @@ import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
-import { groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
+import { atLuma, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
 const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway', island: 'bgtIsland', berm: 'bgtBerm', verge: 'bgtVerge', square: 'bgtSquare' };
@@ -48,7 +48,7 @@ export const ROAD_LIFT: Record<RoadClass, number> = {
 /** The kerb face runs from the sidewalk top down to just under the carriageway plane. */
 export const KERB_FACE_BOTTOM = LIFT.carriageway - 0.01;
 /** Granite kerb line width (as streets.ts draws along raised bands). */
-export const KERB_LINE_M = 0.15;
+export const KERB_LINE_M = 0.25;
 /** Either side of a kerb line the class is read this far off it. */
 export const KERB_PROBE_M = 0.2;
 
@@ -103,7 +103,7 @@ export const TOUCH_DRAPE_TOL_SCALE = 8, TOUCH_MIN_EDGE_SCALE = 4, TOUCH_KERB_SIM
  * face and the gutter meet the road. Drawn in the kerb mesh with a vertex tint (the kerb material multiplies it), so
  * it costs no draw call: the tint takes the kerb tone to the rails' dark-groove tone.
  */
-export const KERB_SHADOW_M = 0.14;
+export const KERB_SHADOW_M = 0.45;
 /** The shadow line's vertex tint (sRGB 0..1): the palette's dark groove over its kerb tone, per channel. */
 export function kerbShadowTint(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): [number, number, number] {
   const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
@@ -111,6 +111,22 @@ export function kerbShadowTint(palette: GroundPalette = groundPalette(GROUND_LOO
   return [0, 1, 2].map(c => Math.min(1, groove[c] / Math.max(1, kerb[c]))) as [number, number, number];
 }
 const KERB_SHADOW_TINT = kerbShadowTint();
+type Tint = [number, number, number];
+/**
+ * The shadow's outer end per low-side surface (lane road-look-continuity 2026-10-29): the kerb mesh is opaque and
+ * tinted from the kerb tone, so a ramp to white would end in a light granite strip on the road. It ends in the low
+ * side's own base over the kerb tone instead (the textures mip to their base at chase distance), so the shadow fades
+ * into the asphalt, klinker or red path. `asphaltLuma`: the asphalt option under review (groundLook ASPHALT_LUMA_OPTIONS).
+ */
+export function kerbShadowEnds(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT), asphaltLuma: number | null = null): Partial<Record<RoadLayer, Tint>> {
+  const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const kerb = rgb(palette.street.kerb), over = (c: readonly number[]): Tint => [0, 1, 2].map(i => Math.min(1, c[i] / Math.max(1, kerb[i]))) as Tint;
+  const asphalt = asphaltLuma === null ? palette.street.asphalt.base : atLuma(palette.street.asphalt.base, asphaltLuma);
+  return { asphalt: over(asphalt), klinker: over(palette.street.klinker.base), cycle: over(palette.street.cycle.base), gravel: over(palette.tones.gravel), paving: over(palette.street.pavement.base) };
+}
+let KERB_SHADOW_ENDS = kerbShadowEnds();
+/** The worker's asphalt option (groundWorker init `asphaltLuma`): the shadow ramps end in that asphalt. */
+export function setKerbShadowAsphaltLuma(luma: number | null): void { KERB_SHADOW_ENDS = kerbShadowEnds(groundPalette(GROUND_LOOK_DEFAULT), luma); }
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
@@ -417,13 +433,18 @@ export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard' | 'lawn';
 export function surfaceLayer(cls: RoadClass, mesh: RoadMesh): RoadLayer {
   // The park grass material (the `lawn` layer parks-v1 draws) for green verges and grass islands (roads lane R1).
   if (mesh === 'grass') return 'lawn';
-  // A traffic island the survey calls asphalt draws as raised paving in the pavement tone (issue #52, user 2026-10-24:
-  // islands read as "floating cardboard"). On the orthophoto at the fourteen ROAD_SPOTS the island/asphalt polygons
-  // sit at luma 214 against the carriageway's 160 (island/paving 171; scripts/own-ground/road-look-junctions.ts measure).
-  if (cls === 'island' && mesh === 'asphalt') return 'paving';
-  const brick = cls === 'driveway' || cls === 'parking' || (ANCILLARY_CLASSES as readonly RoadClass[]).includes(cls);
-  return mesh === 'klinker' && brick ? 'brick' : mesh;
+  // One material per level (lane road-look-continuity 2026-10-29, user: "why isn't the grey continuous?"). Every
+  // pavement-level class draws the one paving: within the Witte de Withstraat crop the islands, berms, squares and
+  // inritten drew asphalt, brick and paving at the sidewalk top, and the joins between them read as pale wedges at
+  // every corner. The kerb (the level step) is the edge the rider reads; the survey's surface under a pavement is not.
+  // Issue #52's island rule (asphalt islands as raised paving) is the special case of this one.
+  if (PAVEMENT_LEVEL.has(cls)) return 'paving';
+  // Carriage level: asphalt or klinker by surface alone, parking bays included (no separate brick, which drew a third
+  // grey beside the road and the pavement); a fietsstraat section stays red, gravel stays gravel.
+  return mesh === 'paving' ? 'asphalt' : mesh;
 }
+/** The classes drawn at the sidewalk top (ROAD_LIFT SIDEWALK_TOP): one material, `paving`, unless green. */
+export const PAVEMENT_LEVEL: ReadonlySet<RoadClass> = new Set<RoadClass>(['foot', 'pedestrian', 'driveway', ...ANCILLARY_CLASSES]);
 
 export interface RoadBuildInput {
   /** The land surface the h = 0 polygons drape on (groundCell `onLand`). */
@@ -554,7 +575,13 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     edgeWall(kerb, line, 0, height, KERB_TOP, KERB_FACE_BOTTOM, facing, { step: Infinity });
     ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: Infinity });
     // The shadow line on the low side at the face's foot, at the rails' lift over the relief (ROAD_MARK_LIFT.rail).
-    ribbon(kerb, line, -into * KERB_SHADOW_M / 2, KERB_SHADOW_M, height, ROAD_MARK_LIFT.rail, { step: Infinity, colour: KERB_SHADOW_TINT });
+    // Lane road-look-continuity 2026-10-29: 0.14 m of flat tint was under a pixel from the phone's chase camera, so the
+    // level step vanished and the road grey ran into the pavement grey. A 0.45 m ramp from the groove tone at the face
+    // to none reads at chase distance and has no hard outer edge. `into` > 0: the upper side is the ribbon's left, so
+    // the face (and the dark end) is the ramp's left edge.
+    const lowCls = (lowLeft ? left : right)!, lowMesh = index.meshAt(cx - into * nx * KERB_PROBE_M, cy - into * ny * KERB_PROBE_M, bridge) ?? 'asphalt';
+    const end = KERB_SHADOW_ENDS[surfaceLayer(lowCls, lowMesh)] ?? KERB_SHADOW_ENDS.asphalt!;
+    ribbon(kerb, line, -into * KERB_SHADOW_M / 2, KERB_SHADOW_M, height, ROAD_MARK_LIFT.rail, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
     // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
     // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
     const upper = lowLeft ? right : left;

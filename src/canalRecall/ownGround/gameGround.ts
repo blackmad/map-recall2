@@ -47,7 +47,7 @@ import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar }
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
+import { atLuma, gardenTone, GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
@@ -163,6 +163,17 @@ function compactFlag(): boolean {
   return g.__canalRecallCompactGround !== false;
 }
 
+/**
+ * The asphalt luma under review (lane road-look-continuity 2026-10-29, step 3): `?asphaltLuma=130` (or
+ * `window.__canalRecallAsphaltLuma`) draws the carriageway at that Rec. 709 luma, hue kept, the pavement unchanged, so
+ * the user can pick on the strip. null: the palette's own (bright 146,144,137, luma 144).
+ */
+function asphaltLumaFlag(): number | null {
+  const g = globalThis as { __canalRecallAsphaltLuma?: number | string; location?: { search?: string } };
+  const asked = Number(g.__canalRecallAsphaltLuma ?? (g.location?.search ? new URLSearchParams(g.location.search).get('asphaltLuma') : NaN));
+  return Number.isFinite(asked) && asked > 40 && asked < 230 ? asked : null;
+}
+
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
 function parksFlag(): boolean {
   const g = globalThis as { __canalRecallParks?: boolean; location?: { search?: string } };
@@ -218,7 +229,7 @@ const RESIDENCY_STEP_M = 60;
 
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
-  land: 'r', park: 'r', wood: 'r', square: 'r', parking: 'r',
+  land: 'r', park: 'r', garden: 'r', wood: 'r', square: 'r', parking: 'r',
   lawn: 'r', bed: 'r', shrub: 'r', bark: 'r', sand: 'r', parkGravel: 'r', parkPath: 'r', pond: 'r',
   asphalt: 'g', klinker: 'g', brick: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
@@ -318,7 +329,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, asphaltLuma: asphaltLumaFlag() });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -657,6 +668,7 @@ export class OwnGround {
   private makeMaterials(): void {
     const THREE = this.THREE;
     const { street: STREET_GROUND, tones: G } = groundPalette(this.opts.groundLook);
+    const asphaltLuma = asphaltLumaFlag(), asphaltBase = asphaltLuma === null ? [...STREET_GROUND.asphalt.base] : atLuma(STREET_GROUND.asphalt.base, asphaltLuma);
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
@@ -691,6 +703,9 @@ export class OwnGround {
         for (const [dx, dy] of [[0, 0], [s, 0], [-s, 0], [0, s], [0, -s]]) { g.beginPath(); g.arc(x + dx, y + dy, r, 0, Math.PI * 2); g.fill(); }
       }
     };
+    // Shared by the layers drawn as one level (paving and the OSM squares; asphalt and the OSM car parks).
+    const pavingMap = pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105);
+    const asphaltMap = this.canvasTexture(512, 4, (g, s) => grain(g, s, asphaltBase, { fine: 16, stones: 26, mottle: 2.5 }, 1));
     const M: Record<string, any> = {
       land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
       // Klinker carriageways: herringbone in mixed tones (streetTextures.ts), so a brick street never reads as cycle-path red.
@@ -717,10 +732,10 @@ export class OwnGround {
       // Asphalt and the red cycle paths (issue #63): fine aggregate grain at ~8 mm a texel with sparse stones and a soft
       // 0.5 m mottle (streetTextures asphaltGrain, mean 0), mipmapped, so it is texture up close and the flat base at
       // chase distance (no shimmer: the mips average to the base). The red path's grain is subtler.
-      asphalt: std({ map: this.canvasTexture(512, 4, (g, s) => grain(g, s, [...STREET_GROUND.asphalt.base], { fine: 16, stones: 26, mottle: 2.5 }, 1)) }),
+      asphalt: std({ map: asphaltMap }),
       cycle: std({ map: this.canvasTexture(512, 4, (g, s) => grain(g, s, [...STREET_GROUND.cycle.base], { fine: 10, stones: 14, mottle: 1.5 }, 2)), roughness: 0.85 }),
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
-      paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
+      paving: std({ map: pavingMap }),
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),
       // Vertex-tinted: white is the kerb tone, roadSurfaces KERB_SHADOW_TINT its shadow line (groundCell VERTEX_TINTED).
       kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9, vertexColors: true }),
@@ -730,8 +745,11 @@ export class OwnGround {
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),
-      square: std({ map: pavers(G.square.base, G.square.joint, 4, 0.6, 0.6) }),
-      parking: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.parking, 16)) }),
+      // One material per level (lane road-look-continuity 2026-10-29): the OSM squares and paved areas draw the
+      // pavement's paving (they were a fourth pale grey, 198,187,169, against the pavement's 183,174,161), and the OSM
+      // car parks the carriageway's asphalt (126,125,120 was a seventh grey, darker than the road beside it).
+      square: std({ map: pavingMap }),
+      parking: std({ map: asphaltMap }),
       quay: std({ vertexColors: true }),
       deckBody: std({ vertexColors: true, roughness: 0.85 }),
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
@@ -739,6 +757,8 @@ export class OwnGround {
       water: std({ color: G.water, roughness: 0.65, envMapIntensity: 0.5 }),
       // Parks (parks.ts): textured surfaces, ponds like the canals, one vertex-coloured mesh each for hedges and furniture.
       lawn: std({ map: this.canvasTexture(256, 5, (g, s) => { noise(g, s, G.lawn, 18, 2); stripes(g, s); }), roughness: 1 }),
+      // Courtyard green (groundCell COURTYARD_ROAD_M): the muted garden tone, no mowing stripes.
+      garden: std({ map: this.canvasTexture(256, 5, (g, s) => noise(g, s, gardenTone(G.lawn), 18, 2)), roughness: 1 }),
       bed: std({ map: this.canvasTexture(256, 3, (g, s) => { noise(g, s, G.bed.soil, 24, 2); dabs(g, s, G.bed.leaf, 260, 3, 7); }), roughness: 1 }),
       shrub: std({ map: this.canvasTexture(256, 6, (g, s) => { noise(g, s, G.shrub.base, 22, 3); dabs(g, s, G.shrub.leaf, 160, 6, 14); }), roughness: 1 }),
       bark: std({ map: this.canvasTexture(256, 2, (g, s) => noise(g, s, G.bark, 40, 3)), roughness: 1 }),

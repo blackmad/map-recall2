@@ -33,6 +33,7 @@ import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
+import { cycleThrough, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
@@ -48,9 +49,11 @@ export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
   | 'lawn' | 'bed' | 'shrub' | 'bark' | 'sand' | 'parkGravel' | 'parkPath' | 'pond' | 'hedge' | 'furniture'
   | 'asphalt' | 'klinker' | 'brick' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint' | 'tram' | 'bollard'
-  | 'water' | 'quay' | 'deckBody' | 'deckTop';
+  | 'water' | 'quay' | 'deckBody' | 'deckTop'
+  /** Courtyard green (lane road-look-continuity 2026-10-29): an OSM green fill that meets no road polygon. Appended: layer ids stay. */
+  | 'garden';
 
-export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop'];
+export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop', 'garden'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
@@ -76,7 +79,7 @@ export interface BuiltCell {
   mask: GroundMask | null;
   /** Source code per triangle per layer (sourceTrace.ts), only when tracing is on (diagnostics). */
   sources?: Partial<Record<GroundLayer, Uint8Array>>;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ /** Rail viaducts over streets (railViaducts.ts) the cell drew: deck, wall and floor heights. */ viaducts?: ViaductBuild[]; roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ /** Rail viaducts over streets (railViaducts.ts) the cell drew: deck, wall and floor heights. */ viaducts?: ViaductBuild[]; /** OSM green fills drawn as courtyard `garden`. */ courtyardGreens?: number; roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null; /** cycleThrough.ts: red bands across junction mouths. */ through?: ThroughStats | null }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -395,7 +398,7 @@ export function buildCell(input: CellInput): BuiltCell {
     return best;
   };
   const holesIn = (layer: GroundLayer, pts: Vec2[]): Vec2[][] => {
-    if (layer === 'park' || layer === 'wood' || !greenCuts.length) return [];
+    if (layer === 'park' || layer === 'wood' || layer === 'garden' || !greenCuts.length) return [];
     const bb: [number, number, number, number] = [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))];
     return greenCuts.filter(g => g.bb[0] >= bb[0] && g.bb[1] >= bb[1] && g.bb[2] <= bb[2] && g.bb[3] <= bb[3]
       && g.pts.every(([x, y]) => pointInRing(pts, x, y) && edgeDistance(pts, x, y) >= HOLE_CLEARANCE_M)).map(g => g.pts);
@@ -413,12 +416,32 @@ export function buildCell(input: CellInput): BuiltCell {
     }
     return keep.length === m.indices.length ? m : { ...m, indices: keep };
   };
+  // Courtyard green (lane road-look-continuity 2026-10-29): an OSM park, grass or wood fill that meets no road polygon
+  // within COURTYARD_ROAD_M is a block-interior garden, drawn muted (groundLook gardenTone) instead of the saturated
+  // park fill that read as lawn in every courtyard against the grey corridor. Parks meet their streets and paths.
+  let courtyardGreens = 0;
+  const isCourtyard = (a: { rings: [number, number][][] }): boolean => {
+    if (!roadIndex) return false;
+    const d = COURTYARD_ROAD_M;
+    for (const r of a.rings) {
+      const pts = r.map(input.project);
+      for (let i = 0; i + 1 < pts.length; i++) {
+        const p = pts[i], q = pts[i + 1], len = Math.hypot(q[0] - p[0], q[1] - p[1]), n = Math.max(1, Math.ceil(len / 2));
+        for (let k = 0; k < n; k++) {
+          const x = p[0] + (q[0] - p[0]) * k / n, y = p[1] + (q[1] - p[1]) * k / n;
+          if (roadIndex.findFast(x, y) >= 0 || roadIndex.findFast(x + d, y) >= 0 || roadIndex.findFast(x - d, y) >= 0 || roadIndex.findFast(x, y + d) >= 0 || roadIndex.findFast(x, y - d) >= 0) return false;
+        }
+      }
+    }
+    return true;
+  };
   for (const a of areas) {
-    const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
+    let layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
+    if ((layer === 'park' || layer === 'wood') && isCourtyard(a)) { layer = 'garden'; courtyardGreens++; }
     // Only the green fills need the clearance refinement (see drapeBisect): the land under a street or a square is
     // culled by the road partition or sits under paving that is already 3-4 cm clear.
-    const clearance = layer === 'park' || layer === 'wood' ? (fine ? CLEARANCE_M : CLEARANCE_FAR_M) : undefined;
+    const clearance = layer === 'park' || layer === 'wood' || layer === 'garden' ? (fine ? CLEARANCE_M : CLEARANCE_FAR_M) : undefined;
     let m = emptyMesh();
     for (const r of a.rings) {
       const pts = r.slice(0, -1).map(input.project);
@@ -430,7 +453,7 @@ export function buildCell(input: CellInput): BuiltCell {
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
       drapeBisect(m, flat, earcut(flat, holeAt), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), fine ? 8 : 16, clearance, fine ? 1 : 2, step);
     }
-    if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
+    if (cover && (layer === 'park' || layer === 'garden')) { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     m = cullUnderRoads(m);
     add(layer, m, 'osmArea');
   }
@@ -454,7 +477,8 @@ export function buildCell(input: CellInput): BuiltCell {
     if (flat.length < 6) continue;
     const m = emptyMesh();
     drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
-    add(SURFACE_LAYER[a.k], m, 'park');
+    // Their grass is courtyard green too (lane road-look-continuity 2026-10-29): the muted garden, not the park's lawn.
+    add(SURFACE_LAYER[a.k] === 'lawn' ? 'garden' : SURFACE_LAYER[a.k], m, 'park');
     courtyards++;
   }
 
@@ -482,10 +506,18 @@ export function buildCell(input: CellInput): BuiltCell {
     add('paint', mk.paint, 'nodePaint'); add('cycle', mk.red, 'cycleCross');
     surveyMarks = mk.stats;
   }
+  // The fietspad's red across the junction mouths the survey calls rijbaan (cycleThrough.ts; look over accuracy).
+  let through: ThroughStats | null = null;
+  if (roadIndex && lod === 0) {
+    const red = emptyMesh();
+    through = cycleThrough(red, ways, w => own.has(w.id), roadIndex, onLand);
+    add('cycle', red, 'cycleCross');
+  }
   phase('surveyMarkings');
   if (roads) {
     roads.landCulled = roadLandCulled;
     roads.markings = surveyMarks;
+    roads.through = through;
     const a = streets.stats.markings.clipped, b = onBridges.stats.markings.clipped;
     if (a && b) roads.clipped = Object.fromEntries(Object.keys(a).map(k => [k, a[k as keyof typeof a] + b[k as keyof typeof b]]));
   }
@@ -599,7 +631,7 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('pack');
   return {
     key, lod, detail, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}) },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, courtyardGreens, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}) },
   };
 }
 
@@ -611,11 +643,13 @@ type PocketSurface = 'asphalt' | 'klinker' | 'paving';
 const POCKET_VOTE: Partial<Record<GroundLayer, PocketSurface>> = { asphalt: 'asphalt', klinker: 'klinker', brick: 'klinker', paving: 'paving', cycle: 'paving', square: 'paving', gravel: 'paving' };
 
 /** Park surfaces rank between the OSM areas (1) and the street bands (2+), as their lifts do (parks.ts PARK_LIFT). */
-export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };
+export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, garden: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
+/** An OSM green fill with no road polygon within this of its outline is a courtyard (drawn as `garden`). */
+export const COURTYARD_ROAD_M = 3;
 export const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
-export const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, brick: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
+export const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, garden: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, brick: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
 
 /** Topmost first; within 2 cm the higher draw rank wins, as the polygon offsets make it on screen. */
 export function compareHits(p: { layer: GroundLayer; z: number }, q: { layer: GroundLayer; z: number }): number {

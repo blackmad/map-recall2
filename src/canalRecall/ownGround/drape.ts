@@ -120,6 +120,8 @@ export interface RibbonOptions {
   /** Extra vertices across (for wide bands on cambered/sloped ground). */
   across?: number;
   colour?: [number, number, number];
+  /** A colour ramp across the ribbon: the left edge's colour to the right edge's, linear (overrides `colour`). */
+  ramp?: { left: [number, number, number]; right: [number, number, number] };
 }
 
 /**
@@ -137,7 +139,9 @@ export function ribbon(m: MeshArrays, pts: readonly Vec2[], offset: number, widt
     for (let c = 0; c <= across; c++) {
       const o = (offset + width / 2 - (width * c) / across) * k; // left edge first
       const x = dense[i][0] + nx * o, y = dense[i][1] + ny * o;
-      row.push(vertex(m, x, y, height(x, y) + lift, opts.colour));
+      const r = opts.ramp, u = c / across;
+      const colour: [number, number, number] | undefined = r ? [0, 1, 2].map(j => r.left[j] + (r.right[j] - r.left[j]) * u) as [number, number, number] : opts.colour;
+      row.push(vertex(m, x, y, height(x, y) + lift, colour));
     }
     if (prev) for (let c = 0; c < across; c++) {
       // prev = start, row = end; left→right across. CCW seen from above.
