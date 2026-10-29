@@ -15,12 +15,21 @@ import type { HeightFn, Vec2 } from './surface.js';
 import type { RoadIndex } from './roadSurfaces.js';
 import { ROAD_MARK_LIFT, type LocalWay } from './streets.js';
 
-/** Longest carriageway run a red band bridges (a junction mouth, a two-lane side street with its parking). */
-export const THROUGH_MAX_M = 25;
+/**
+ * Longest carriageway run a red band bridges: a side street's mouth with its kerb radii. The brief's 25 m bridged whole
+ * junctions: the Bilderdijkstraat fietspad, mapped through the De Clercqstraat junction's centre, drew red over 14 of
+ * its 49 interior probes (check-ground-cells JUNCTIONS bilderdijkstraat-de-clercqstraat, asphalt pinned at 0.9).
+ */
+export const THROUGH_MAX_M = 15;
 /** Largest turn between the run's entry and exit directions. */
 export const THROUGH_MAX_TURN_DEG = 30;
 /** How far either side of the run the fietspad must be met (station class `cycle`). */
 export const THROUGH_REACH_M = 4;
+/**
+ * The fietspad met at either end runs on for this long: a cycle sliver inside the junction (the Bilderdijkstraat
+ * fietspad, mapped through the De Clercqstraat junction's centre, meets 2 m strips there) does not bracket a run.
+ */
+export const THROUGH_SOLID_M = 4;
 /** The band's width when the cycleway has no tag or prior: a one-way fietspad. */
 export const THROUGH_WIDTH_M = 2.0;
 const STEP = 1;
@@ -58,7 +67,12 @@ function beyondEnd(w: LocalWay, atStart: boolean, ends: Map<string, LocalWay[]>,
   }
   if (!best) return false;
   const pts = bestFromStart ? best.points : [...best.points].reverse(), st = stations(pts), total = st[st.length - 1];
-  for (let s = STEP; s <= Math.min(reach, total); s += STEP) { const x = pointAt(pts, st, s); if (index.classAt(x[0], x[1]) === 'cycle') return true; }
+  for (let s = STEP; s <= Math.min(reach, total); s += STEP) {
+    const x = pointAt(pts, st, s);
+    if (index.classAt(x[0], x[1]) !== 'cycle') continue;
+    for (let j = 1; j < THROUGH_SOLID_M && s + j * STEP <= total; j++) { const q = pointAt(pts, st, s + j * STEP); if (index.classAt(q[0], q[1]) !== 'cycle') return false; }
+    return true;
+  }
   return false;
 }
 const norm = (v: Vec2): Vec2 => { const l = Math.hypot(v[0], v[1]) || 1; return [v[0] / l, v[1] / l]; };
@@ -84,7 +98,11 @@ export function cycleThrough(m: MeshArrays, ways: readonly LocalWay[], own: (w: 
       for (let k = 1; k <= THROUGH_REACH_M; k++) {
         const at = from + dir * k;
         if (at < 0 || at >= n) return beyondEnd(w, at < 0, ends, index, THROUGH_REACH_M - k + 1);
-        if (cls[at] === 'cycle') return true;
+        if (cls[at] === 'cycle') {
+          // A fietspad, not a crossing strip inside the junction: THROUGH_SOLID_M of cycle on from there (to the way's end).
+          for (let j = 1; j < THROUGH_SOLID_M; j++) { const q = at + dir * j; if (q < 0 || q >= n) break; if (cls[q] !== 'cycle') return false; }
+          return true;
+        }
         if (cls[at] !== 'carriage' && cls[at] !== 'parking' && cls[at] !== null) return false;
       }
       return false;
