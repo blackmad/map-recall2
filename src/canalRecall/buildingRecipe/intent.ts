@@ -14,6 +14,7 @@ import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/s
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {friezeVentProblems} from './friezeVents.ts';
+import {wallAnchorProblems} from './wallAnchors.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -519,8 +520,16 @@ export interface FrontIntent {
   /**
    * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
+   * `{colour}` (Ferdinand Bolstraat 40-54, 1875-77): the same ledge in the palette's band brick (`band`: the cream
+   * moulded-brick hood friezes of the polychrome fronts; needs `palette.band`) or the stone colour (`stone`).
    */
-  windowHoods?: boolean;
+  windowHoods?: boolean | {colour: 'band' | 'stone'};
+  /**
+   * Iron wall anchors (De Pijp 1882-1893 rows; buildingRecipe/wallAnchors.ts): a dark cross `size` m tall (default 0.36)
+   * on every pier and end pier, `over` m (default 0.35) over the window heads of the listed upper `storeys` (default
+   * every storey above the ground). Absent = byte-identical.
+   */
+  wallAnchors?: {storeys?: number[]; size?: number; over?: number};
   /**
    * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
    * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
@@ -658,6 +667,14 @@ export interface FrontIntent {
    * Not on a mansard. Absent = byte-identical.
    */
   dormerSize?: {sill: number; rise: number; setback: number};
+  /**
+   * A hoist beam out of every dormer (De Pijp 1875-1893 shop rows: Ferdinand Bolstraat 12-54, Albert Cuypstraat 138-162,
+   * Van Woustraat 32-72): a timber beam painted with the dormer (the stone colour with `dormerBody: "stone"`, else the
+   * trim), centred on the dormer just over its window frame (in the pediment), running from inside the dormer
+   * to `reach` metres (0.3..1.5, default 0.8) in front of the dormer's front, rising 0.1 m to its tip. Needs dormers
+   * (not `box`/`flat`). Not with `hoist` (the facade beam). Absent = byte-identical.
+   */
+  dormerHoist?: {reach?: number};
   /** A hoist cap on some dormers (`DormerCapIntent`). */
   dormerCap?: DormerCapIntent;
 }
@@ -1418,7 +1435,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen', 'painted'], `${at}.bands`);
     problems.push(...paintedProblems(f, at, oneOf));
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
-    if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.windowHoods !== undefined && f.windowHoods !== true) {
+      const h = f.windowHoods as unknown as Record<string, unknown>;
+      if (!h || typeof h !== 'object' || Array.isArray(h) || Object.keys(h).some(k => k !== 'colour') || !['band', 'stone'].includes(h.colour as string)) problems.push(`${at}.windowHoods: true or {colour: band | stone} (or leave it out)`);
+      else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
+    }
+    if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
@@ -1862,6 +1884,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     const list = Array.isArray(f.dormerAt) ? f.dormerAt : [];
     if (list.length !== (f.dormers ?? 0)) problems.push(`${at}.dormerAt: one span per dormer (dormers ${f.dormers ?? 0})`);
     list.forEach((d, i) => { if (!d || !(d.from >= 0 && d.to <= 1 && d.to - d.from >= 0.1 && (i === 0 || d.from >= list[i - 1].to))) problems.push(`${at}.dormerAt[${i}]: {from, to} ascending, non-overlapping fractions of the front within 0..1, at least 0.1 wide`); });
+  }
+  if (f.dormerHoist !== undefined) {
+    const z = f.dormerHoist as {reach?: unknown};
+    if (!z || typeof z !== 'object' || Array.isArray(z) || Object.keys(z).some(k => k !== 'reach') || (z.reach !== undefined && !(typeof z.reach === 'number' && z.reach >= 0.3 && z.reach <= 1.5))) problems.push(`${at}.dormerHoist: {reach?: 0.3..1.5 m in front of the dormer}`);
+    if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment or pointed dormers`);
+    if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

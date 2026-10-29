@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "cuyp-130-168-r2",
+ "street": "Albert Cuypstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/cuyp-130-168-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Sarphatiparkbuurt); scores and holds in scripts/block-face/faces/cuyp-130-168/auto-place.json"
+ },
+ "types": [
+  "pijp-1892-banded-keystone",
+  "pijp-1892-plain-anchor"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164227",
+   "slug": "cuyp-164227",
+   "address": "Albert Cuypstraat 156E",
+   "type": {
+    "type": "pijp-1892-plain-anchor",
+    "ground": {
+     "shopfront": {
+      "colour": "#38302c",
+      "fascia": true,
+      "name": "BRUHN Barbershop",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=hairdresser); fascia colour measured on the strip 2022-03-21 span 723-955"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#77645c",
+     "evidence": "strip 2022-03-21 span 723-955: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "BRUHN Barbershop",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 2817556932,
+     "name": "BRUHN Barbershop"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-plain-anchor scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 723-955"
+   }
+  },
+  {
+   "pandId": "0363100012155461",
+   "slug": "cuyp-155461",
+   "address": "Albert Cuypstraat 154",
+   "type": {
+    "type": "pijp-1892-plain-anchor",
+    "ground": {
+     "shopfront": {
+      "colour": "#4f4b42",
+      "fascia": true,
+      "name": "Studio Chicas",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-03-21 span 955-1191"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#75574f",
+     "evidence": "strip 2022-03-21 span 955-1191: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Studio Chicas",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2817556924,
+     "name": "Studio Chicas"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-plain-anchor scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 955-1191"
+   }
+  },
+  {
+   "pandId": "0363100012162980",
+   "slug": "cuyp-162980",
+   "address": "Albert Cuypstraat 152",
+   "type": {
+    "type": "pijp-1892-plain-anchor",
+    "ground": {
+     "shopfront": {
+      "colour": "#393430",
+      "fascia": true,
+      "name": "Viareggio",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (overige gebruiksfunctie, shop=houseware); fascia colour measured on the strip 2022-03-21 span 1191-1427"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7f6860",
+     "evidence": "strip 2022-03-21 span 1191-1427: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Viareggio",
+    "category": "shop=houseware",
+    "osm": {
+     "type": "node",
+     "id": 2817556916,
+     "name": "Viareggio"
+    },
+    "bag": [
+     "overige gebruiksfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-plain-anchor scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 1191-1427"
+   }
+  },
+  {
+   "pandId": "0363100012167434",
+   "slug": "cuyp-167434",
+   "address": "Albert Cuypstraat 150A",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#575530",
+      "fascia": true,
+      "name": "De Peperbol",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, winkelfunctie, shop=spices); fascia colour measured on the strip 2022-03-21 span 1427-1666"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6e5955",
+     "evidence": "strip 2022-03-21 span 1427-1666: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "De Peperbol",
+    "category": "shop=spices",
+    "osm": {
+     "type": "node",
+     "id": 2817556905,
+     "name": "De Peperbol"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 1427-1666"
+   }
+  },
+  {
+   "pandId": "0363100012158812",
+   "slug": "cuyp-158812",
+   "address": "Albert Cuypstraat 148D",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#847b6b",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie, woonfunctie, overige gebruiksfunctie); fascia colour measured on the strip 2022-03-21 span 1665-1912"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6f5c56",
+     "evidence": "strip 2022-03-21 span 1665-1912: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie",
+     "overige gebruiksfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 1665-1912"
+   }
+  },
+  {
+   "pandId": "0363100012158985",
+   "slug": "cuyp-158985",
+   "address": "Albert Cuypstraat 146A",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#615a54",
+      "fascia": true,
+      "name": "N&N Stoffen",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=fabric); fascia colour measured on the strip 2022-03-21 span 1912-2164"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#9da1a1",
+     "evidence": "strip 2022-03-21 span 1912-2164: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a625b"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "N&N Stoffen",
+    "category": "shop=fabric",
+    "osm": {
+     "type": "node",
+     "id": 2817556681,
+     "name": "N&N Stoffen"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 1912-2164"
+   }
+  },
+  {
+   "pandId": "0363100012157319",
+   "slug": "cuyp-157319",
+   "address": "Albert Cuypstraat 144E",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#7f7762",
+      "fascia": true,
+      "name": "Byoux For You",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=interior_decoration); fascia colour measured on the strip 2022-03-21 span 2164-2409"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#869294",
+     "evidence": "strip 2022-03-21 span 2164-2409: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a635c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Byoux For You",
+    "category": "shop=interior_decoration",
+    "osm": {
+     "type": "node",
+     "id": 2817556676,
+     "name": "Byoux For You"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 1 on eaves -, stucco 1, columns 1; strip 2022-03-21 span 2164-2409"
+   }
+  },
+  {
+   "pandId": "0363100012160055",
+   "slug": "cuyp-160055",
+   "address": "Albert Cuypstraat 142B",
+   "type": {
+    "type": "pijp-1892-banded-keystone",
+    "ground": {
+     "shopfront": {
+      "colour": "#9f9586",
+      "fascia": true,
+      "name": "Çan's Buns",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-03-21 span 2408-2651"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6e544d",
+     "evidence": "strip 2022-03-21 span 2408-2651: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Çan's Buns",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2817556671,
+     "name": "Çan's Buns"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1892-banded-keystone scored 0.74 on eaves -, stucco 1, columns 0.4; strip 2022-03-21 span 2408-2651"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012164227",
+    "stripRow": 244,
+    "evidence": "auto-place: the pijp-1892-plain-anchor cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.59 m"
+   },
+   {
+    "pand": "0363100012155461",
+    "stripRow": 244,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1892-plain-anchor cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.28 m"
+   },
+   {
+    "pand": "0363100012167434",
+    "stripRow": 244,
+    "evidence": "auto-place: the pijp-1892-banded-keystone cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.98 m"
+   },
+   {
+    "pand": "0363100012158812",
+    "stripRow": 244,
+    "evidence": "auto-place: the pijp-1892-banded-keystone cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.03 m"
+   },
+   {
+    "pand": "0363100012158985",
+    "stripRow": 244,
+    "evidence": "auto-place: the pijp-1892-banded-keystone cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.82 m"
+   },
+   {
+    "pand": "0363100012157319",
+    "stripRow": 244,
+    "evidence": "auto-place: the pijp-1892-banded-keystone cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.01 m"
+   },
+   {
+    "pand": "0363100012160055",
+    "stripRow": 244,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1892-banded-keystone cornice line 14 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.22 m"
+   }
+  ]
+ }
+}

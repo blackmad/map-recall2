@@ -1,0 +1,973 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:58:46.102Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164103",
+   "addresses": [
+    "Albert Cuypstraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 162-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000563719"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163353",
+   "addresses": [
+    "Albert Cuypstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 160-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000563708"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556976,
+     "lngLat": [
+      4.8946689,
+      52.3556818
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "160-H",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "stof@kniphal.nl",
+      "name": "Kniphal",
+      "opening_hours": "Mo-Fr 09:30-17:30; Sa 09:30-17:00",
+      "phone": "+31 20 6795831",
+      "shop": "fabric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.stof.nl"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154144",
+   "addresses": [
+    "Albert Cuypstraat 158A",
+    "Albert Cuypstraat 158B",
+    "Albert Cuypstraat 158C",
+    "Albert Cuypstraat 158D",
+    "Albert Cuypstraat 158E",
+    "Albert Cuypstraat 158F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 158A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000999702"
+    },
+    {
+     "address": "Albert Cuypstraat 158B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000999703"
+    },
+    {
+     "address": "Albert Cuypstraat 158C",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000999704"
+    },
+    {
+     "address": "Albert Cuypstraat 158D",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000999706"
+    },
+    {
+     "address": "Albert Cuypstraat 158E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000999727"
+    },
+    {
+     "address": "Albert Cuypstraat 158F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000999728"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556938,
+     "lngLat": [
+      4.894549,
+      52.3556539
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158A",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "hookah_lounge",
+      "check_date:amenity": "2026-09-14",
+      "check_date:opening_hours": "2026-09-14",
+      "check_date:phone": "2026-09-14",
+      "name": "Shisha Lounge Angelo",
+      "opening_hours": "Su-Th 16:00-01:00; Fr-Sa 16:00-03:00",
+      "phone": "+31 6 14733574",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://shishaloungeangelo.me/"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164227",
+   "addresses": [
+    "Albert Cuypstraat 156E",
+    "Albert Cuypstraat 156A",
+    "Albert Cuypstraat 156B",
+    "Albert Cuypstraat 156C",
+    "Albert Cuypstraat 156D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 156E",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001001442"
+    },
+    {
+     "address": "Albert Cuypstraat 156A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001001443"
+    },
+    {
+     "address": "Albert Cuypstraat 156B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001001445"
+    },
+    {
+     "address": "Albert Cuypstraat 156C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001001446"
+    },
+    {
+     "address": "Albert Cuypstraat 156D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001001447"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556932,
+     "lngLat": [
+      4.894469,
+      52.3556368
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "156E",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "info@bruhnbarbershop.com",
+      "hairdresser": "barber",
+      "male": "yes",
+      "name": "BRUHN Barbershop",
+      "phone": "+31 20 2235631",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bruhn.nl"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155461",
+   "addresses": [
+    "Albert Cuypstraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 154-H",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000563677"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556924,
+     "lngLat": [
+      4.8943882,
+      52.355617
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "154-H",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "clothes": "women",
+      "email": "info@studiochicas.nl",
+      "name": "Studio Chicas",
+      "opening_hours": "Mo-Sa 09:30-17:30",
+      "phone": "+31 20 6752019",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://studiochicas.nl"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162980",
+   "addresses": [
+    "Albert Cuypstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 152-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000563670"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556916,
+     "lngLat": [
+      4.8943066,
+      52.3555981
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "152-H",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "name": "Viareggio",
+      "phone": "+31 20 6755789",
+      "shop": "houseware",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167434",
+   "addresses": [
+    "Albert Cuypstraat 150A",
+    "Albert Cuypstraat 150B",
+    "Albert Cuypstraat 150C",
+    "Albert Cuypstraat 150D",
+    "Albert Cuypstraat 150E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 150A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001002617"
+    },
+    {
+     "address": "Albert Cuypstraat 150B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001002618"
+    },
+    {
+     "address": "Albert Cuypstraat 150C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001002619"
+    },
+    {
+     "address": "Albert Cuypstraat 150D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001002620"
+    },
+    {
+     "address": "Albert Cuypstraat 150E",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001002621"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556905,
+     "lngLat": [
+      4.8942206,
+      52.3555807
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "150A",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "email": "info@depeperbol.nl",
+      "name": "De Peperbol",
+      "opening_hours": "Mo-Sa 09:00-17:15",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 3039242",
+      "shop": "spices",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://depeperbol.nl"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158812",
+   "addresses": [
+    "Albert Cuypstraat 148D",
+    "Albert Cuypstraat 148A",
+    "Albert Cuypstraat 148B",
+    "Albert Cuypstraat 148C",
+    "Albert Cuypstraat 148E",
+    "Albert Cuypstraat 148F",
+    "Albert Cuypstraat 148G",
+    "Albert Cuypstraat 148H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 148A",
+     "use": "winkelfunctie",
+     "areaM2": 180,
+     "bagId": "0363010012061040"
+    },
+    {
+     "address": "Albert Cuypstraat 148E",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012132824"
+    },
+    {
+     "address": "Albert Cuypstraat 148F",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012132825"
+    },
+    {
+     "address": "Albert Cuypstraat 148G",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012132826"
+    },
+    {
+     "address": "Albert Cuypstraat 148A",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012165358"
+    },
+    {
+     "address": "Govert Flinckstraat 167-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012165359"
+    },
+    {
+     "address": "Albert Cuypstraat 148H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000996308"
+    },
+    {
+     "address": "Govert Flinckstraat 167-4V",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000823646"
+    },
+    {
+     "address": "Govert Flinckstraat 167-4A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000823647"
+    }
+   ],
+   "units": 21,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158985",
+   "addresses": [
+    "Albert Cuypstraat 146A",
+    "Albert Cuypstraat 146B",
+    "Albert Cuypstraat 146C",
+    "Albert Cuypstraat 146E",
+    "Albert Cuypstraat 146D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 146A",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000996205"
+    },
+    {
+     "address": "Albert Cuypstraat 146B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996206"
+    },
+    {
+     "address": "Albert Cuypstraat 146C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996207"
+    },
+    {
+     "address": "Albert Cuypstraat 146E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000996208"
+    },
+    {
+     "address": "Albert Cuypstraat 146D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996210"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556681,
+     "lngLat": [
+      4.8940871,
+      52.3555546
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "146A",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "name": "N&N Stoffen",
+      "opening_hours": "Mo-Sa 09:00-17:15",
+      "phone": "+31 20 4707080",
+      "shop": "fabric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://nnstoffen.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157319",
+   "addresses": [
+    "Albert Cuypstraat 144E",
+    "Albert Cuypstraat 144A",
+    "Albert Cuypstraat 144B",
+    "Albert Cuypstraat 144C",
+    "Albert Cuypstraat 144D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 144E",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000996194"
+    },
+    {
+     "address": "Albert Cuypstraat 144A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000996195"
+    },
+    {
+     "address": "Albert Cuypstraat 144B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996196"
+    },
+    {
+     "address": "Albert Cuypstraat 144C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996198"
+    },
+    {
+     "address": "Albert Cuypstraat 144D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000996199"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556676,
+     "lngLat": [
+      4.893964,
+      52.3555324
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "144A",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "name": "Byoux For You",
+      "opening_hours": "Mo-We,Fr-Sa 09:00-17:00",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160055",
+   "addresses": [
+    "Albert Cuypstraat 142B",
+    "Albert Cuypstraat 142A",
+    "Albert Cuypstraat 142C",
+    "Albert Cuypstraat 142D",
+    "Albert Cuypstraat 142E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 142B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000563627"
+    },
+    {
+     "address": "Albert Cuypstraat 142A",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000996318"
+    },
+    {
+     "address": "Albert Cuypstraat 142C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996319"
+    },
+    {
+     "address": "Albert Cuypstraat 142D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000996320"
+    },
+    {
+     "address": "Albert Cuypstraat 142E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000996321"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556671,
+     "lngLat": [
+      4.8938787,
+      52.3555156
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "142A",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "cuisine": "sandwich",
+      "diet:halal": "yes",
+      "drive_through": "no",
+      "email": "info@cansbuns.com",
+      "name": "Çan's Buns",
+      "opening_hours": "Mo-Sa 09:30-19:00; Su 11:00-18:00",
+      "phone": "+31 20 3620369",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cansbuns.com/store/albert-cuypstraat"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166514",
+   "addresses": [
+    "Albert Cuypstraat 140E",
+    "Albert Cuypstraat 140A",
+    "Albert Cuypstraat 140B",
+    "Albert Cuypstraat 140C",
+    "Albert Cuypstraat 140D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 140E",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001001052"
+    },
+    {
+     "address": "Albert Cuypstraat 140A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001001054"
+    },
+    {
+     "address": "Albert Cuypstraat 140B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001001056"
+    },
+    {
+     "address": "Albert Cuypstraat 140C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001001058"
+    },
+    {
+     "address": "Albert Cuypstraat 140D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001001059"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556665,
+     "lngLat": [
+      4.8937909,
+      52.3554995
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "140A",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-31",
+      "cuisine": "surinamese",
+      "diet:halal": "yes",
+      "name": "Wan Pipel",
+      "opening_hours": "Mo-Sa 12:00-23:00; Su 14:30-23:00",
+      "phone": "+31 20 6718001",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.wan-pipel.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166647",
+   "addresses": [
+    "Albert Cuypstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 138-H",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000563599"
+    },
+    {
+     "address": "Albert Cuypstraat 138-4A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000984118"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556652,
+     "lngLat": [
+      4.893706,
+      52.355483
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "138-H",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "name": "Juwelier Kenneth",
+      "opening_hours": "Tu-Fr 11:00-17:30; Sa 11:00-17:00",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237169",
+   "addresses": [
+    "Albert Cuypstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 136-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000563595"
+    },
+    {
+     "address": "Albert Cuypstraat 136-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012574155"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556645,
+     "lngLat": [
+      4.893633,
+      52.3554694
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "136-H",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-31",
+      "cuisine": "poke",
+      "delivery": "yes",
+      "diet:halal": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "thepokelabamsterdam@gmail.com",
+      "name": "The Poké Lab",
+      "opening_hours": "Mo-We 11:00-18:00; Th-Sa 11:00-21:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.thepokelab.eu"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236118",
+   "addresses": [
+    "Albert Cuypstraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000563591"
+    },
+    {
+     "address": "Albert Cuypstraat 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012168581"
+    },
+    {
+     "address": "Albert Cuypstraat 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012574154"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162705",
+   "addresses": [
+    "Albert Cuypstraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 132-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000563583"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556630,
+     "lngLat": [
+      4.8935024,
+      52.3554482
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "132-H",
+      "addr:postcode": "1073BJ",
+      "addr:street": "Albert Cuypstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-31",
+      "cuisine": "moroccan",
+      "name": "Twins Olives",
+      "opening_hours": "Tu-Sa 09:00-17:30",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163743",
+   "addresses": [
+    "Albert Cuypstraat 130C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van der Helststraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000563570"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506027863,
+     "lngLat": [
+      4.893319,
+      52.3554133
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "amenity": "pub",
+      "check_date": "2026-01-21",
+      "email": "info@cafeflamingo.nl",
+      "name": "Café Flamingo",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 6709007",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://cafeflamingo.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2506601988,
+     "lngLat": [
+      4.8933375,
+      52.3553728
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39-H",
+      "addr:postcode": "1073AC",
+      "addr:street": "Eerste Van der Helststraat",
+      "check_date": "2026-01-21",
+      "name": "Tabakspeciaalzaak Van Hartingsveldt",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "tobacco",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    }
+   ]
+  }
+ ]
+}

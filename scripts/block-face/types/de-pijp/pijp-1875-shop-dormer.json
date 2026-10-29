@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1875-shop-dormer",
+ "district": "de-pijp",
+ "description": "Ferdinand Bolstraat 12-26 (1875-76): 6-8 m shop-street fronts of a shop ground floor and two upper storeys under a deep white entablature (architrave, plain or vented frieze, projecting cap) at 12.2 m; three equal axes of tall white T-windows with flat brick heads and white sills; one white pediment dormer with a hoist beam centred over the middle axis; brick left red-brown or painted near-black",
+ "fit": {
+  "widthM": [
+   5.6,
+   8.0
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1875,
+   1877
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   11.6,
+   12.6
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Ferdinand Bolstraat 12-26 (1875-76), 6.2-7.9 m; cornice 12.1-12.3 m on the 2023-01-03 strip at a 2.44 m camera height; 3DBAG eaves 11.7-12.4 m"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   4.3,
+   3.3,
+   3.2
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.62,
+   0.68,
+   0.69
+  ],
+  "headLines": [
+   0.86,
+   0.77,
+   0.78
+  ],
+  "windowShare": 0.6,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.4,
+   "cap": 0.3,
+   "frieze": "trim",
+   "architrave": 0.12
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.75,
+    "setback": 0.3
+   },
+   "note": "12-26: one white timber dormer, 1.8-1.9 m wide (0.36-0.64 of the front), over the middle axis, 12.3-14.4 m, under a pediment; the hoist beam projects from the pediment over the dormer window",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerHoist": {
+    "reach": 0.8
+   }
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "red-brown-1875": {
+   "brick": "#7a5242",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "painted-black": {
+   "brick": "#3b3a3a",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "both upper storeys: 3 T-windows of one width",
+  "windowsPerStorey": "ground: shop (+ side door) | 1: 3 | 2: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "a shop per house, often a residential door at one party wall",
+  "signage": "per shop",
+  "roofline": "deep white entablature at 12.2 m; one pediment dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the square frieze vents of 12 are not drawn",
+   "the iron balconettes at the storey-1 and storey-2 sills of 12 are not drawn",
+   "the slightly cambered brick heads are flat"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "bol-12-22",
+   "pands": [
+    "164618",
+    "156333"
+   ],
+   "citation": "strip.jpg 2023-01-03 (camera height 2.44 m) pands 5-6 (14, 12) at 1.5x with a metre grid: shop to 4.0-4.2 m, storey-1 windows 4.6-6.85 m, storey-2 windows 7.9-10.1 m, architrave 10.8-10.9 m, frieze (vents on 12) to 11.8 m, cornice cap to 12.2 m; windows 1.27 m wide on a 6.2 m front; dormer 12.3-14.4 m, 1.9 m wide, hoist beam over the apex"
+  },
+  {
+   "face": "bol-12-22",
+   "pands": [
+    "153030",
+    "167250",
+    "159231",
+    "156424"
+   ],
+   "citation": "strip.jpg 2023-01-03 pands 1-4 (22-16): the same axes, entablature and dormers; 20, 18 and 16 painted near-black"
+  },
+  {
+   "face": "bol-24-38",
+   "pands": [
+    "167017",
+    "158811"
+   ],
+   "citation": "strip.jpg 2023-01-03 pands 5-6 (26, 24): the same storeys (windows 4.7-6.9 and 7.9-10.2 m), entablature 10.9-12.3 m, a pediment dormer with a hoist beam to 14.6 m"
+  }
+ ],
+ "notes": [
+  "Palettes: the 2023-01-03 strips are overcast (walls read #4a-#5c grey); the red-brown is the sunlit tone of the same brick on the 2022-03-23 strip of Ferdinand Bolstraat 40-54; placed pands take their own measured wall."
+ ]
+}

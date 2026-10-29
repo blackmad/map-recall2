@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bol-12-22-r2",
+ "street": "Ferdinand Bolstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/bol-12-22-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/bol-12-22/auto-place.json"
+ },
+ "types": [
+  "pijp-1875-shop-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164618",
+   "slug": "bol-164618",
+   "address": "Ferdinand Bolstraat 14",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#292729",
+      "fascia": true,
+      "name": "Golden Years",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=second_hand); fascia colour measured on the strip 2023-01-03 span 1182-1450"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4c3f39",
+     "evidence": "strip 2023-01-03 span 1182-1450: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Golden Years",
+    "category": "shop=second_hand",
+    "osm": {
+     "type": "node",
+     "id": 2817451919,
+     "name": "Golden Years"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2023-01-03 span 1182-1450"
+   }
+  },
+  {
+   "pandId": "0363100012156333",
+   "slug": "bol-156333",
+   "address": "Ferdinand Bolstraat 12",
+   "type": {
+    "type": "pijp-1875-shop-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#494138",
+      "fascia": true,
+      "name": "Shanghai Soup Dumplings",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-03 span 1451-1700"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4e433a",
+     "evidence": "strip 2023-01-03 span 1451-1700: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Shanghai Soup Dumplings",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2165936479,
+     "name": "Shanghai Soup Dumplings"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1875-shop-dormer scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2023-01-03 span 1451-1700"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

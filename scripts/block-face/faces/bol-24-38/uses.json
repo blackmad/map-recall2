@@ -1,0 +1,420 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:31:15.324Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140727",
+   "addresses": [
+    "Ferdinand Bolstraat 34",
+    "Ferdinand Bolstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 69-H",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010001020827"
+    },
+    {
+     "address": "Ferdinand Bolstraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001024152"
+    },
+    {
+     "address": "Ferdinand Bolstraat 38-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 151,
+     "bagId": "0363010001020828"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506045347,
+     "lngLat": [
+      4.8904308,
+      52.3562852
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "cafe",
+      "branch": "De Bol",
+      "brand": "Coffee Company",
+      "brand:website": "https://coffeecompany.nl",
+      "brand:wikidata": "Q108927063",
+      "check_date": "2026-01-04",
+      "cuisine": "coffee_shop",
+      "name": "Coffee Company",
+      "opening_hours": "Mo-Fr 07:30-18:00; Sa,Su 08:30-19:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 303 3879",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "toilets:wheelchair": "no",
+      "website": "https://coffeecompany.nl/locations/ferdinand-bolstraat-38",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817453538,
+     "lngLat": [
+      4.8904474,
+      52.3563992
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-09",
+      "cuisine": "açaí",
+      "name": "Oakberry",
+      "opening_hours": "Mo-Su 09:00-20:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 7868026",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "only",
+      "website": "https://www.oakberry.com"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165314",
+   "addresses": [
+    "Ferdinand Bolstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000635342"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453587,
+     "lngLat": [
+      4.8904439,
+      52.3563609
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam De Pijp",
+      "check_date": "2026-07-13",
+      "check_date:opening_hours": "2026-07-13",
+      "contact:facebook": "takumiamsterdam",
+      "contact:instagram": "takumiramenamsterdam",
+      "cuisine": "japanese",
+      "diet:vegetarian": "yes",
+      "email": "takumi@ramenkitchen.nl",
+      "name": "Takumi Ramen",
+      "name:en": "Takumi Ramen",
+      "opening_hours": "Mo-Sa 12:00-21:30; Su 12:00-21:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 2371750",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://takumiramennoodles.com/nl/amsterdam-depijp/"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159016",
+   "addresses": [
+    "Ferdinand Bolstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000635333"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506047855,
+     "lngLat": [
+      4.8904668,
+      52.3564584
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Ferdinand Bolstraat",
+      "check_date": "2026-01-04",
+      "cuisine": "seafood",
+      "diet:vegetarian": "yes",
+      "email": "info@theseafoodbar.com",
+      "name": "The Seafood Bar",
+      "opening_hours": "Mo-Th 17:00-23:00; Fr-Su 12:00-23:00",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 2614864",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.theseafoodbar.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236685",
+   "addresses": [
+    "Ferdinand Bolstraat 28",
+    "Ferdinand Bolstraat 28D",
+    "Ferdinand Bolstraat 28C",
+    "Ferdinand Bolstraat 28B",
+    "Ferdinand Bolstraat 28E",
+    "Ferdinand Bolstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 30-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000980073"
+    },
+    {
+     "address": "Ferdinand Bolstraat 28-H",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000959416"
+    },
+    {
+     "address": "Ferdinand Bolstraat 28D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012578353"
+    },
+    {
+     "address": "Ferdinand Bolstraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012578352"
+    },
+    {
+     "address": "Ferdinand Bolstraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012578351"
+    },
+    {
+     "address": "Ferdinand Bolstraat 28E",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012578354"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506045988,
+     "lngLat": [
+      4.8904821,
+      52.3565205
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-04",
+      "contact:facebook": "recordmaniaNL",
+      "email": "info@recordmania.nl",
+      "name": "Record Mania",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-18:00",
+      "phone": "+31 20 6209912",
+      "shop": "music",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://www.recordmania.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817453061,
+     "lngLat": [
+      4.8904711,
+      52.3565835
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "alt_name": "Marbles Vintage & Design",
+      "branch": "Ferdinand Bol",
+      "check_date": "2026-01-04",
+      "contact:facebook": "https://www.facebook.com/100064589265784/",
+      "contact:instagram": "marblesvintage",
+      "name": "Marbles Vintage",
+      "opening_hours": "Mo-Su 11:00-19:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167017",
+   "addresses": [
+    "Ferdinand Bolstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000635319"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453013,
+     "lngLat": [
+      4.8904758,
+      52.3566343
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "check_date:opening_hours": "2025-08-24",
+      "cuisine": "chinese",
+      "name": "NorthEast Kitchen",
+      "opening_hours": "Tu-Fr 12:00-14:30,16:30-22:00; Sa-Su 12:00-22:00",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 845 2943",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.northeastkitchen.nl/"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158811",
+   "addresses": [
+    "Ferdinand Bolstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 24-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000635312"
+    },
+    {
+     "address": "Quellijnstraat 80A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000787054"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249327900,
+     "lngLat": [
+      4.8904823,
+      52.3566879
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "pub",
+      "atm": "no",
+      "check_date": "2026-05-16",
+      "email": "arie@goudvisch.nl",
+      "food": "yes",
+      "internet_access": "no",
+      "level": "0",
+      "name": "Arie Op De Hoek",
+      "opening_hours": "Su-Th 09:00-01:00; Fr-Sa 09:00-02:30",
+      "operator": "Familie Goudvisch",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 2357173",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "toilets:wheelchair": "no",
+      "website": "https://arie.goudvisch.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

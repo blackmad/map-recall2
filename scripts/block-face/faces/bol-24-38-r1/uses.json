@@ -1,0 +1,115 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:31:15.324Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167017",
+   "addresses": [
+    "Ferdinand Bolstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000635319"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817453013,
+     "lngLat": [
+      4.8904758,
+      52.3566343
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-04",
+      "check_date:opening_hours": "2025-08-24",
+      "cuisine": "chinese",
+      "name": "NorthEast Kitchen",
+      "opening_hours": "Tu-Fr 12:00-14:30,16:30-22:00; Sa-Su 12:00-22:00",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 845 2943",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.northeastkitchen.nl/"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158811",
+   "addresses": [
+    "Ferdinand Bolstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 24-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000635312"
+    },
+    {
+     "address": "Quellijnstraat 80A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000787054"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 249327900,
+     "lngLat": [
+      4.8904823,
+      52.3566879
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24-H",
+      "addr:postcode": "1072LK",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "pub",
+      "atm": "no",
+      "check_date": "2026-05-16",
+      "email": "arie@goudvisch.nl",
+      "food": "yes",
+      "internet_access": "no",
+      "level": "0",
+      "name": "Arie Op De Hoek",
+      "opening_hours": "Su-Th 09:00-01:00; Fr-Sa 09:00-02:30",
+      "operator": "Familie Goudvisch",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 2357173",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "toilets:wheelchair": "no",
+      "website": "https://arie.goudvisch.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-28T20:31:15.324Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

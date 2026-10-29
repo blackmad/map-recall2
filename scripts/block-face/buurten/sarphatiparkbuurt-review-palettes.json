@@ -1,0 +1,21 @@
+{
+ "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts) for the sunlit, hazy 2022-03-21 Albert Cuypstraat strip.",
+ "pins": [
+  {
+   "pandId": "0363100012158985",
+   "type": "pijp-1892-banded-keystone",
+   "palette": {
+    "brick": "#7a625b"
+   },
+   "reason": "Albert Cuypstraat 146A: the trim-normalised wall #809696 is off-family (blue-grey: sky in the white band pieces lifted the gain); the raw strip wall median #76615b on span 1912-2164, as 148D and 150A (#76665f, #715f5b), so the row stays one red-brown brick"
+  },
+  {
+   "pandId": "0363100012157319",
+   "type": "pijp-1892-banded-keystone",
+   "palette": {
+    "brick": "#7a635c"
+   },
+   "reason": "Albert Cuypstraat 144E: the trim-normalised wall #809396 is off-family (blue-grey); the raw strip wall median #76635c on span 2164-2409"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "street": "Albert Cuypstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:58:46.102Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164103",
+   "addresses": [
+    "Albert Cuypstraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 162-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000563719"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163353",
+   "addresses": [
+    "Albert Cuypstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Cuypstraat 160-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000563708"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817556976,
+     "lngLat": [
+      4.8946689,
+      52.3556818
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "160-H",
+      "addr:postcode": "1073BK",
+      "addr:street": "Albert Cuypstraat",
+      "check_date": "2026-01-31",
+      "email": "stof@kniphal.nl",
+      "name": "Kniphal",
+      "opening_hours": "Mo-Fr 09:30-17:30; Sa 09:30-17:00",
+      "phone": "+31 20 6795831",
+      "shop": "fabric",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.stof.nl"
+     },
+     "fetchedAt": "2026-10-28T20:58:46.102Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

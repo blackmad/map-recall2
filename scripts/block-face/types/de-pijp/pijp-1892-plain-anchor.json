@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "pijp-1892-plain-anchor",
+ "district": "de-pijp",
+ "description": "Albert Cuypstraat 152-164 (1892-93): 6 m fronts of a tall shop and three upper storeys of red-brown brick; three axes of white T-windows under flat brick heads with white sills; iron wall anchors on the piers; a brick frieze with small white lozenges under a white cornice at 14.0 m; one white pediment dormer with a hoist beam over the middle axis",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1891,
+   1893
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 14.0,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Albert Cuypstraat 152-162 (1892-93); cornice 14.0 m on the 2022-03-21 strip"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.7,
+   2.7,
+   2.9,
+   2.6
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.62,
+   0.7,
+   0.69,
+   0.77
+  ],
+  "headLines": [
+   0.86,
+   0.78,
+   0.76,
+   0.85
+  ],
+  "windowShare": 0.52,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.1,
+   "cap": 0.5,
+   "frieze": "wall",
+   "architrave": 0.1
+  },
+  "wallAnchors": {
+   "over": 0.35
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.37,
+     "to": 0.63
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.15,
+    "rise": 1.45,
+    "setback": 0.3
+   },
+   "dormerHoist": {
+    "reach": 0.8
+   },
+   "note": "152-162: one white dormer 1.6 m wide over the middle axis, 14.2-16.5 m, pediment and hoist beam"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "a residential door at the left party wall beside the shop"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "red-brown-1892": {
+   "brick": "#8a6253",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "a tall shop (fascia to 4.9 m)",
+  "signage": "per shop",
+  "roofline": "brick frieze with white lozenges, white cornice at 14.0 m, one pediment dormer with a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the white lozenges in the frieze are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "cuyp-130-168",
+   "pands": [
+    "164103",
+    "163353"
+   ],
+   "citation": "strip.jpg 2022-03-21 (camera height 2.44 m) pands 1-2 (162, 160) at 1.4x with a metre grid: shop fascia to 4.9 m; storey-1 windows 4.9-6.8 m, storey-2 7.6-9.6 m, storey-3 10.5-12.5 m; anchors at 7.2, 10.0, 12.8 m; frieze lozenges 13.0 m; cornice to 14.0 m; dormers 14.2-16.5 m"
+  },
+  {
+   "face": "cuyp-130-168",
+   "pands": [
+    "164227",
+    "155461",
+    "162980"
+   ],
+   "citation": "strip.jpg 2022-03-21 pands 4-6 (156-152): the same flat-headed axes, frieze and dormers"
+  }
+ ]
+}

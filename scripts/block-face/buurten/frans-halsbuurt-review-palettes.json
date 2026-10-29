@@ -1,0 +1,23 @@
+{
+ "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts) for the overcast 2023-01-03 Ferdinand Bolstraat strips.",
+ "pins": [
+  {
+   "pandId": "0363100012167250",
+   "type": "pijp-1875-shop-dormer",
+   "palette": {
+    "brick": "#3d3c3c",
+    "wallMaterial": "painted-brick"
+   },
+   "reason": "Ferdinand Bolstraat 20 (strip 2023-01-03 span 282-598): the front is painted near-black (raw wall #4d4642 under an overcast sky beside the white trim at #eef1ef); the measured-brick lift turned it plum"
+  },
+  {
+   "pandId": "0363100012156424",
+   "type": "pijp-1875-shop-dormer",
+   "palette": {
+    "brick": "#3d3c3c",
+    "wallMaterial": "painted-brick"
+   },
+   "reason": "Ferdinand Bolstraat 16D (strip 2023-01-03 span 870-1182): painted near-black like 20 (raw wall #4c4442); the measured-brick lift turned it purple (#534254 on the sheet)"
+  }
+ ]
+}

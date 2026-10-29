@@ -1,0 +1,180 @@
+{
+ "street": "Ferdinand Bolstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-28T20:33:12.361Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157768",
+   "addresses": [
+    "Ferdinand Bolstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 46-H",
+     "use": "winkelfunctie",
+     "areaM2": 231,
+     "bagId": "0363010000635366"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506049586,
+     "lngLat": [
+      4.8903786,
+      52.3559447
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2025-12-31",
+      "name": "Deshi Bazar",
+      "opening_hours": "Mo-Su 10:00-22:00",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237226",
+   "addresses": [
+    "Ferdinand Bolstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 44-H",
+     "use": "winkelfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001029173"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454310,
+     "lngLat": [
+      4.8903687,
+      52.3559954
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "44-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-27",
+      "email": "winkel@blond-amsterdam.nl",
+      "name": "Blond Amsterdam",
+      "note": "Blond relocated to Utrechtsestraat 120-H",
+      "opening_hours": "closed",
+      "outdoor_seating": "no",
+      "phone": "+31 20 4284930",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.blond-amsterdam.com/nl/shop-en-cafe/"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156921",
+   "addresses": [
+    "Ferdinand Bolstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 42-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000635351"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817454177,
+     "lngLat": [
+      4.8903812,
+      52.3560449
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "check_date": "2026-01-06",
+      "name": "Milobi",
+      "opening_hours": "Mo-Sa 10:00-18:00",
+      "shop": "wigs",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237278",
+   "addresses": [
+    "Ferdinand Bolstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ferdinand Bolstraat 40-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000635346"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506049585,
+     "lngLat": [
+      4.890398,
+      52.3561026
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40-H",
+      "addr:postcode": "1072LL",
+      "addr:street": "Ferdinand Bolstraat",
+      "amenity": "pub",
+      "check_date": "2026-01-10",
+      "contact:facebook": "https://www.facebook.com/mazzeltof40/",
+      "name": "Mazzeltof",
+      "outdoor_seating": "no",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-28T20:33:12.361Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
