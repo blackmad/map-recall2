@@ -15183,6 +15183,10 @@
       "name": "Pllek",
       "landmarkId": "n4913392670",
       "modelUrl": "./models/pllek.glb",
+      "materialOverrides": {
+        "blue": "#557380",
+        "red": "#8f4a3c"
+      },
       "suppressOsmIds": [
         "w500238189",
         "NL.IMBAG.Pand.0363100012241285"
@@ -15226,7 +15230,7 @@
         "max": [
           28.822158813476562,
           12.550000190734863,
-          11.651244163513184
+          16.84173011779785
         ]
       },
       "placement": {
@@ -15242,11 +15246,11 @@
       "extent": {
         "widthMetres": 57.722267150878906,
         "heightMetres": 12.550000295639038,
-        "depthMetres": 24.09434986114502,
-        "depthCoverage": 0.9267057638901931
+        "depthMetres": 29.284835815429688,
+        "depthCoverage": 1.126339839054988
       },
-      "triangles": 6573,
-      "bytes": 92408,
+      "triangles": 11034,
+      "bytes": 140908,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "73341fa36d2052b3",

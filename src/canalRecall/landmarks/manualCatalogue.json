@@ -7092,6 +7092,10 @@
     "name": "Pllek",
     "landmarkId": "n4913392670",
     "modelUrl": "./models/pllek.glb",
+    "materialOverrides": {
+      "blue": "#557380",
+      "red": "#8f4a3c"
+    },
     "suppressOsmIds": [
       "w500238189",
       "NL.IMBAG.Pand.0363100012241285"
