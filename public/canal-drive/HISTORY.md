@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+**Touch GPU load under target (2026-10-29, #100, CANAL-RECALL-7).** The iPad main pass at pitch 60 dropped from 1.7–1.9 M to 1.13–1.36 M triangles; the target was ≤ 1.5 M. Desktop is unchanged: same ground triangles, same meshes and the same 1,400 m ring.
+
+- **Residency ring sized to the screen** (`residency.ts`, touch only). The farthest ground on screen is computed from the screen corners: 464 m on the iPad, which matches the measurement. The ring is that distance plus 25 m, rounded up to 100 m steps, plus 4 s of travel ahead (at most 400 m). That made the iPad ring 500 m instead of 800 m, with 3–4 cells loaded instead of 6–7. In a cap-speed ride at 117 m/s, missing ground at the screen edge fell from 65 samples to 4 out of 8,505. Override with `?groundRing=steps|view`.
+- **Ground layers cut into culled tiles** (`cellTiles.ts`). A 1 km cell always counted as on screen. Layers over 4,000 triangles are now split into a 3×3 grid sharing the vertex buffers, and off-screen tiles are skipped. Ground at Westerkerk went from 875 k to 319 k triangles, for about 45 more draw calls. Override with `?groundTiles=1..4`.
+- **Desktop trial:** `?groundTiles=3` cuts desktop ground by 56–74 % (Westerkerk 1,065 → 466 k, Leidseplein 1,443 → 371 k) with the same picture. Lever 1, road-polygon simplification, is deferred because the target was met without it.
+- **Also fixed:** a De Pijp OSM leak. Three OSM ways (w277216400, w277216459, w277216482) inside the Ferdinand Bolstraat 12–22 row were still drawn through it. They are now suppressed.
+
 **Westerpark West remainder: kit additions, nothing installed (2026-10-29, #97).**
 
 - **`footprint: "core"`** (`coreFootprint.ts`). BAG traces an outline from above, so balcony-depth bumps on every storey (1.85 m on Blend) became full-height grooves. The core footprint snaps those bumps back onto the main wall and builds a clean box under the LoD2.2 roof. The pand's own OSM way is dropped as a false party wall.

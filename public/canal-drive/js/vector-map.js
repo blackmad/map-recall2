@@ -35,7 +35,7 @@ const SHARED_FRAME_DEFAULT = false;
 // Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
 // stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
-const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261028-touch-lod';
+const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261029-touch-ring-tiles';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js?v=20261028-touch-lod';
 // The basemap's own ground fills and lines stay visible under the own ground:
 // they sit below the first 3D layer, so MapLibre draws them at the back of the

@@ -1939,6 +1939,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **GPU load, next (#100 follow-up, 2026-10-29).**
+  - Turn ground tiles on for desktop by default (`groundTiles=3`; the trial showed the same picture at 56–74 % fewer ground triangles).
+  - Facade chunks (600–800 k on the iPad) are now the largest participant; try the same culled-tile split there.
+  - After the deploy, watch Sentry iPad `webgl-context-lost`; `probe.heaviest` should show own-ground at about 300 k.
+  - Lever 1 (simplify coarse road polygons) is parked. It needs a new versioned roads extract.
+
 - **Westerpark West, still open (#97, 2026-10-29).**
   - **Blend** (`haarlemmerweg-518`): held. To unblock it:
     - stop `isLeaf` flagging sunlit cream render as leaves, or find a straight-on, low-foliage south crop;
