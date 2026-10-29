@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Street following aims down the street (2026-10-29).** Ways are often
+digitised as short pieces whose bearings zig-zag (Prinsengracht at the
+Leidsegracht: 66°, 97°, 72°, 37°, 48° over 60 m, after the 3 m
+simplification), and the follow steered to each piece in turn. It now walks
+the centreline ~25 m ahead in 15 px (5 m) steps via a contacts probe
+(`lookAheadHeading`), aims along the chord, and eases the aim over 0.2 s.
+Guards: the walk stays on its way, then its name; a step must move forward
+(a piece's clamped end stalled it); the chord may not leave any corridor walked
+(a right angle is followed, not cut); straight ways return their exact bearing.
+Sim, before → after: Keizersgracht ring camera peak 59 → 37°/s; through the
+Prinsengracht zig-zag the boat turns earlier and keeps ~1 m further off the
+quay (66→72→48° became 66→76→48°, smoother); reversal counts (≥0.5° legs)
+roughly unchanged. Cutting the zig-zag put a boat nearer a different piece of
+the Prinsengracht, whose reverse lay 147° off, and a queued left took it: a
+way of the street's own name more than 110° off is never a queued turn
+(`BACKTRACK_TURN`). The harness reversal count now ignores sub-0.5° flicker.
+
 **The 3D frame rests behind the briefing on touch devices; a restore no longer
 loads Damrak facades (2026-10-29, #109, follow-ups to #106).** `rendererShared/mapCover.ts`
 measures whether displayed, opaque cards (the briefing rail, its photo vista, the

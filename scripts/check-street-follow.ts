@@ -9,7 +9,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
-  initialStreetFollowState, stepStreetFollow, streetPadButtonAt, streetPadRects,
+  initialStreetFollowState, lookAheadHeading, queuedTurnChoice, stepStreetFollow, streetPadButtonAt, streetPadRects,
   STREET_TURN_RATE, type FollowContact, type StreetFollowButtons,
 } from '../src/canalRecall/streetFollow';
 import { stepCameraYaw, CAMERA_YAW_DEFAULT } from '../src/canalRecall/cameraYaw';
@@ -19,6 +19,8 @@ import { buildRoadSegments, projectToWorld, type OsmWay } from '../src/canalReca
 
 const deg = (d: number) => (d * Math.PI) / 180;
 const none: StreetFollowButtons = { left: false, right: false, back: false };
+/** SF_NO_LOOKAHEAD=1 rides without the look-ahead heading, for comparison. */
+const smooth = !process.env.SF_NO_LOOKAHEAD;
 /** A state already riding (past the start-of-ride park). */
 const riding = () => ({ ...initialStreetFollowState(), parked: false });
 const street = (angle: number, dist = 0, width = 18, length?: number, along?: number): FollowContact => ({ angle, dist, width, length, along });
@@ -170,6 +172,27 @@ const street = (angle: number, dist = 0, width = 18, length?: number, along?: nu
   assert.ok(Math.abs(normalizeAngle(rotation - Math.PI)) < deg(1.01), 'and it arrives');
 }
 
+{
+  // Look-ahead: a way digitised as short pieces zig-zagging ±15° about due
+  // east is aimed along, not piece by piece; a real right-angle bend is
+  // followed, not cut; and a queued side never takes the street back.
+  const spansOf = (points: [number, number][], segIdx = 0) => points.slice(1).map((b, i) => ({
+    a: { x: points[i][0], y: points[i][1] }, b: { x: b[0], y: b[1] }, segIdx: segIdx + i, ptIdx: 0, width: 30,
+  }));
+  const probeOf = (spans: ReturnType<typeof spansOf>) => (x: number, y: number) => contactsAt(spans, x, y).map(c => ({ ...c, name: 'Gracht' }));
+  const zigzag: [number, number][] = [];
+  for (let i = 0; i <= 12; i++) zigzag.push([i * 24, i % 2 ? 6.4 : 0]);
+  const chord = lookAheadHeading(probeOf(spansOf(zigzag)), { x: 0, y: 0, heading: Math.atan2(6.4, 24), name: 'Gracht', segIdx: 0 });
+  assert.ok(chord != null && Math.abs(chord) < deg(7), `aims down the zig-zag (${chord == null ? 'null' : (chord * 180 / Math.PI).toFixed(1)}°), not along its first 15° piece`);
+  const corner = spansOf([[0, 0], [60, 0], [60, 200]]);
+  const atCorner = lookAheadHeading(probeOf(corner), { x: 30, y: 0, heading: 0, name: 'Gracht', segIdx: 0 });
+  assert.ok(atCorner == null || Math.abs(atCorner) < deg(12), `a right-angle bend is not cut (${atCorner == null ? 'local' : (atCorner * 180 / Math.PI).toFixed(1)}°)`);
+  const back = { heading: Math.PI - deg(30), turn: -(Math.PI - deg(30)), dist: 0, width: 30, segIdx: 7, name: 'Gracht' };
+  const side = { heading: -Math.PI / 2, turn: -Math.PI / 2, dist: 0, width: 30, segIdx: 8, name: 'Dwarsstraat' };
+  assert.equal(queuedTurnChoice([back], -1, 0, 3, 'Gracht'), null, 'a queued left never runs back up the street underfoot');
+  assert.equal(queuedTurnChoice([back, side], -1, 0, 3, 'Gracht'), side, 'the cross street is the left');
+}
+
 // --- rides through real junctions ---------------------------------------
 type RoutingStreet = { name: string; highway?: string; type?: string; path?: [number, number][]; paths?: [number, number][][] };
 const routing = JSON.parse(await readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
@@ -227,6 +250,9 @@ function world(centre: [number, number], radius = 400, onWater = false) {
   return { toWorld, contacts, nameAt, nameOf };
 }
 
+/** rad — the smallest turn whose undoing counts as a heading reversal. */
+const WOBBLE_LEG = (0.5 * Math.PI) / 180;
+
 type Ride = { finalName: string; maxExcess: number; seconds: number; headingReversals: number; maxCameraRate: number; cameraTravel: number };
 
 /** Ride from `from` toward `toward` along `startStreet`, pressing `press`
@@ -245,21 +271,27 @@ function ride(w: ReturnType<typeof world>, from: [number, number], toward: [numb
   let state = riding();
   const yaw = { following: false };
   let camera = heading;
-  let speed = 0, maxExcess = 0, maxCameraRate = 0, cameraTravel = 0, lastTurnSign = 0, reversals = 0;
+  let speed = 0, maxExcess = 0, maxCameraRate = 0, cameraTravel = 0, legSign = 0, leg = 0, reversals = 0;
   const dt = 1 / 60, maxSpeed = 260;
   for (let t = 0; t < seconds; t += dt) {
     const buttons = { ...none, ...(t < pressSeconds ? press : {}) };
     const contacts = w.contacts(x, y);
-    const step = stepStreetFollow(state, buttons, { heading, speed, contacts, dt });
+    const step = stepStreetFollow(state, buttons, { heading, speed, contacts, dt, probe: smooth ? w.contacts : undefined });
     state = step.state;
     const c = step.command;
     let cruise = c.brake > 0 ? 0 : c.speedFraction;
     if (c.targetHeading != null) {
       cruise *= alignmentSpeedScale(c.targetHeading - heading);
       const next = turnToward(heading, c.targetHeading, STREET_TURN_RATE * dt);
-      const sign = Math.sign(normalizeAngle(next - heading));
-      if (sign && lastTurnSign && sign !== lastTurnSign) reversals++;
-      if (sign) lastTurnSign = sign;
+      // A reversal is a swing back after a turn of at least half a degree;
+      // sub-degree flicker is not a wobble anyone could see.
+      const turned = normalizeAngle(next - heading);
+      const sign = Math.sign(turned);
+      if (sign && sign !== legSign) {
+        if (legSign && Math.abs(leg) >= WOBBLE_LEG) reversals++;
+        legSign = sign; leg = 0;
+      }
+      leg += turned;
       heading = next;
     }
     speed += (maxSpeed * cruise - speed) * Math.min(1, dt * 4);

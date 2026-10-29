@@ -1065,12 +1065,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Feel check on a real phone by the user; no one has ridden it on glass.
     Tunables are `STREET_TURN_RATE`, `CORNER_FRACTION`, `QUEUE_HOLD_SECONDS`
     (streetFollow.ts) and `CAMERA_YAW_DEFAULT` (cameraYaw.ts).
-  - Boats follow canals with one junction pinned (Prinsengracht ×
-    Leidsegracht). At the bend there the Prinsengracht centreline is one chain
-    of short ways (8–38 m) whose bearings zig-zag (−93°, −66°, −97°, −72°,
-    −37°), so the boat's heading wobbles; the camera dead band hides it.
-    Candidate fix: aim the follow heading at a point ~20–30 m ahead along the
-    chain instead of the local segment (streetFollow.ts), not merging data.
+  - The follow heading now aims ~25 m down the street (HISTORY 2026-10-29,
+    look-ahead). Its gain on the Prinsengracht zig-zag is modest in the sim;
+    judge it in the real-phone feel check above. `LOOK_AHEAD`/`AIM_SECONDS`
+    are the knobs, `SF_NO_LOOKAHEAD=1 npm run test:street-follow` the A/B.
 - **Public preview follow-ups (2026-10-17).**
   - User: Sentry projects/DSNs and `SENTRY_AUTH_TOKEN`, reCAPTCHA Enterprise key
     as `APPCHECK_SITE_KEY`, App Check registration (monitor, then enforce);
