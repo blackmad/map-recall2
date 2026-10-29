@@ -57,6 +57,8 @@ export interface ProposeOpts {
   fallbackSystem?: LargeWallIntent['system'];
   /** row split evidence per group: the main panel's width and its 3DBAG roof steps (rowSplit `roofSteps`, fractions) */
   rows?: Record<number, {widthM: number; roof: number[]}>;
+  /** false for a building with `layeredKit: false` (no floor bands there) */
+  layered?: boolean;
 }
 
 /** The system a group's front class proposes and, for a curtain class, why it is not trusted (`curtainEvidence`). */
@@ -137,6 +139,12 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
   if (w.plinth === undefined && !hand.has('plinth') && groundFree && !['curtain-wall', 'glazed-hall', 'glazed-columns'].includes(system) && !w.screen) {
     const gp = glazedPlinth({ground: m.ground, storeyGlazing: m.storeyGlazing, glass: m.glass, wall: m.wall, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut});
     if (gp.plinth) { patch.plinth = gp.plinth; notes.push(`glazed plinth: ground band ${Math.round((m.ground ?? 0) * 100)} % over upper storeys ${(m.storeyGlazing ?? []).slice(1).filter(v => v !== null).map(v => Math.round(v! * 100)).join('/')} %`); }
+  }
+  // floor bands at the storey lines of a layered curtain wall (floorBands.ts): never over spandrels or a hand floorBands
+  if (system === 'curtain-wall' && opts.layered !== false && m.floorBands && !w.spandrels && !hand.has('floorBands')) {
+    const {heightM, liftM, ...fb} = m.floorBands;
+    patch.floorBands = fb;
+    notes.push(`floor bands ${heightM} m (${fb.share} of a storey) centred ${liftM >= 0 ? '+' : ''}${liftM} m over the storey lines${fb.roof ? ' and under the roof edge' : ''} in ${fb.colour}`);
   }
   // light bands across the wall (speklagen, stone courses) seen at the same place in two or more storeys: stone bands,
   // never over bands drawn another way (string courses, courses) or a hand `dressings`
@@ -270,7 +278,7 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   const rows: NonNullable<ProposeOpts['rows']> = {};
   for (const g of likeness) { const p = built.panels[g.panel]; if (p) rows[g.group] = {widthM: p.uMax - p.uMin, roof: roofSteps(roofProfile(built.facts.roofsRD, built.facts.heights.groundNAP, built.anchorRD, p))}; }
   for (const g of likeness) {
-    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
+    const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, layered: intent.layeredKit !== false, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
     if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
     for (const src of cropSources(g)) if (!sources.some(s => s.id === src.id)) sources.push(src);

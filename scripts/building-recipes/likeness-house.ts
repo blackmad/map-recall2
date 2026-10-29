@@ -6,6 +6,7 @@
  * (`all-walls.ts --archive`); without that variable the house has no likeness (`null`).
  */
 import {lightBands, type LightBand} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
+import {measureFloorBands} from '../../src/canalRecall/buildingRecipe/floorBands.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -40,10 +41,14 @@ export interface GroupLikeness {
     /** the front's colour segments along the panel (fractions of the panel width from uMin; rowSplit.ts) */
     rowJoints?: NonNullable<FacadeMeasurement['rowJoints']>;
     /** light horizontal bands across the wall (lightBands.ts), bottom to top; absent in older reports */
-    lightBands?: LightBand[]};
+    lightBands?: LightBand[];
+    /** floor bands at the storey lines of a glazed front (floorBands.ts `measureFloorBands`), with the wall colour; absent when none */
+    floorBands?: {share: number; lift: number; roof?: boolean; colour: string; heightM: number; liftM: number}};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
+/** The measured floor bands as a `measured` field (only on a glazed front whose lines carry them). */
+const floorBandsOf = (photo: FacadeMeasurement, lines: number[], panelTop: number) => { const p = photo.frontClass === 'blank' ? null : measureFloorBands(photo, lines, panelTop).proposal; return p ? {floorBands: {...p, colour: photo.wall.hex}} : {}; };
 const PPM = 50;
 
 export async function houseLikeness(built: CompiledLargeBuilding, glbFile: string, measuredTints?: Set<string>): Promise<GroupLikeness[] | null> {
@@ -115,7 +120,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
         // the colour split as a fraction of the panel width from uMin (the photo box is padded by PAD_M)
         lightBands: lightBands(photo, g.lines, {image, wall: photo.wall.raw}),
         split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
-        ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {})}});
+        ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {}),
+        ...floorBandsOf(photo, g.lines, box.v1)}});
   }
   return out;
 }
