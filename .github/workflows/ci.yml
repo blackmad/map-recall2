@@ -29,6 +29,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # check:canal now includes focused Playwright specs (building-look), so the job needs a browser too (2026-10-29).
+      - run: npx playwright install --with-deps chromium
       - run: npm run check:canal
 
   e2e-smoke:
