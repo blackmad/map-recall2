@@ -111,3 +111,40 @@ test('two bricks side by side on one plane: split along u measured; a one-brick 
   assert.equal(measureFacade({image: punched(3, 0.5, 0.55, 0.25).image, box: box(30), lines: LINES}).split, null);
 });
 const hexRgb = (h: string): Rgb => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as Rgb;
+
+/** A white render grid (Salt): wide dark glazing, a white wall with sunlit white highlights and no lighter trim. */
+function whiteGrid(wall: Rgb, highlight: Rgb) {
+  const c = canvas(30, 18.3, wall);
+  for (let s = 1; s + 1 < LINES.length; s++) for (let b = 0; b < 10; b++) {
+    const lo = LINES[s], u0 = b * 3 + 0.45;
+    c.fill(u0, u0 + 2.1, lo + 0.35, lo + 2.85, GLASS);
+    c.fill(u0 - 0.45, u0 - 0.15, lo, lo + 3.2, highlight); // the sunlit pier edge: the brightest neutral cells
+  }
+  return c;
+}
+
+test('a white wall that is its own light trim is not darkened to grey by the light-trim gain', () => {
+  const WHITE: Rgb = [226, 226, 221], SUN: Rgb = [252, 252, 248];
+  const m = measureFacade({image: whiteGrid(WHITE, SUN).image, box: box(30), lines: LINES});
+  assert.ok(m.normalisation.ref && m.normalisation.gain < 1, `ref ${m.normalisation.ref} gain ${m.normalisation.gain}`);
+  assert.equal(m.normalisation.selfTrim, true);
+  const L = rgbToLab(m.wall.normalised)[0], plain = rgbToLab(m.wall.raw.map(v => v * m.normalisation.gain) as Rgb)[0];
+  assert.ok(L >= 84, `wall L* ${L.toFixed(1)} (gain alone gives ${plain.toFixed(1)})`);
+  assert.ok(m.wall.normalised.every((v, i) => v <= m.wall.raw[i] * Math.max(...m.normalisation.wb) + 1), 'never lighter than raw');
+});
+
+test('self-trim rule: brick with white frames, a grey wall and a buff wall keep the light-trim gain', async () => {
+  const {wallIsOwnTrim, selfTrimWall} = await import('./measureFacade.ts');
+  const brick = measureFacade({image: punched(3, 0.5, 0.55, 0.25, {frames: true}).image, box: box(30), lines: LINES});
+  assert.equal(brick.normalisation.selfTrim, undefined);
+  assert.equal(wallIsOwnTrim([150, 150, 146], [250, 250, 246], 0.86), false, 'grey concrete under white frames');
+  assert.equal(wallIsOwnTrim([226, 226, 221], [252, 252, 248], 1.1), false, 'a brightening gain is left alone');
+  assert.equal(wallIsOwnTrim([226, 226, 221], null, 1), false);
+  assert.equal(wallIsOwnTrim([210, 190, 150], [252, 252, 248], 0.86), false, 'a buff wall is not neutral');
+  assert.equal(wallIsOwnTrim([226, 226, 221], [252, 252, 248], 0.86), true);
+  assert.equal(wallIsOwnTrim([217, 217, 212], [255, 255, 255], 0.843), true, 'Salt walls[1]: a clipped reference 13 L* over the wall');
+  assert.equal(wallIsOwnTrim([217, 217, 212], [249, 252, 252], 0.85), false, 'the same gap to an unclipped white trim is real trim');
+  const w = selfTrimWall([240, 240, 236], 0.86, [1, 1, 1]);
+  assert.ok(Math.abs((w[0] + w[1] + w[2]) / 3 - 215) < 1, `the wall maps to 215: ${w}`);
+  assert.deepEqual(selfTrimWall([200, 200, 196], 0.86, [1, 1, 1]), [200, 200, 196], 'under 215: raw, never lifted');
+});

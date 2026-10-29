@@ -94,7 +94,8 @@ export interface FacadeMeasurement {
    *  of another family or colour when it holds >= 25 % of the band's wall (a spandrel-and-column front) */
   bands?: (BandMaterial | null)[];
   usableFraction: number; foliageFraction: number; washedOutFraction: number;
-  normalisation: {method: string; ref: Rgb | null; gain: number; wb: [number, number, number]};
+  /** `selfTrim`: the wall is its own light trim (`wallIsOwnTrim`): its colour is not darkened under its own 215 mapping */
+  normalisation: {method: string; ref: Rgb | null; gain: number; wb: [number, number, number]; selfTrim?: boolean};
   wall: {raw: Rgb; normalised: Rgb; hex: string; rawHex: string; cells: number};
   /** the colour clusters of the upper storeys (Lab centre, share, warm) and which one is the wall */
   /** true when the wall was chosen by the floor-zone enrichment (else the continuous-body fallback) */
@@ -323,6 +324,27 @@ export function lightTrimNormalisation(lab: readonly Rgb[], rgb: readonly Rgb[])
   const refLab = ref ? rgbToLab(ref) : null, cream = !!refLab && refLab[2] >= WB_CREAM_B && Math.hypot(refLab[1], refLab[2]) >= WB_CREAM_B;
   const wb: [number, number, number] = ref && refY > 1 && !cream ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
   return {ref, gain, wb};
+}
+
+/**
+ * A white wall that is its own light trim (Salt, Haarlemmerweg 940: a white grid of render with no lighter frames).
+ * The light-trim reference is then the wall's own brightest cells, and mapping that to 215 darkens the wall itself to
+ * grey (raw #d9d9d4 read #b7b7b3 against a #dededa model). Measured rule: the reference darkens (gain < 1), the wall
+ * is light and near-neutral (L* >= SELF_TRIM.minL, chroma < SELF_TRIM.maxChroma) and within SELF_TRIM.dL L* of the
+ * reference, or within SELF_TRIM.clippedDL when the reference is clipped (every channel >= SELF_TRIM.clip: sunlit
+ * white paint saturating the sensor carries no exposure; Salt walls[1]: ref #ffffff, wall raw #d9d9d4, 13.4 L* apart).
+ * Only the wall colour changes, and never lighter than its raw reading (a grey wall is not lifted).
+ */
+export const SELF_TRIM = {minL: 75, maxChroma: 10, dL: 10, clippedDL: 15, clip: 250} as const;
+export function wallIsOwnTrim(wallRaw: Rgb, ref: Rgb | null, gain: number): boolean {
+  if (!ref || !(gain < 1)) return false;
+  const w = rgbToLab(wallRaw), r = rgbToLab(ref), clipped = Math.min(...ref) >= SELF_TRIM.clip;
+  return w[0] >= SELF_TRIM.minL && Math.hypot(w[1], w[2]) < SELF_TRIM.maxChroma && r[0] - w[0] <= (clipped ? SELF_TRIM.clippedDL : SELF_TRIM.dL);
+}
+/** The wall's colour when it is its own trim: the wall itself as the 215 reference, never brighter than raw nor darker than the crop's gain. */
+export function selfTrimWall(wallRaw: Rgb, gain: number, wb: readonly number[]): Rgb {
+  const y = (wallRaw[0] + wallRaw[1] + wallRaw[2]) / 3, g = Math.max(gain, Math.min(1, 215 / Math.max(1, y)));
+  return wallRaw.map((v, i) => Math.max(0, Math.min(255, v * g * wb[i]))) as Rgb;
 }
 
 export function measureFacade(input: MeasureInput): FacadeMeasurement {
@@ -595,14 +617,15 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const tex = cellTexture(im, box, cell), wallTex = wallCells.length ? poolTexture(tex, wallCells) : null;
   let wallRawFinal = wallRaw;
   if (textureFamily(wallTex) === 'brick') { const face = brickFaceColour(im, box, cell, wallCells, cols, wallTex!.skew); if (face) wallRawFinal = face.rgb; }
-  const wallN = norm(wallRawFinal), glassN = glassRaw ? norm(glassRaw) : null;
+  const selfTrim = wallIsOwnTrim(wallRawFinal, ref, gain);
+  const wallN = selfTrim ? selfTrimWall(wallRawFinal, gain, wb) : norm(wallRawFinal), glassN = glassRaw ? norm(glassRaw) : null;
   const material = wallMaterialOf(wallN, wallTex);
   const bands = bandMaterials({mask, label: fullLabel, cols, rows, cell, box, lines: input.lines, gb, colour: k => norm(mean[k]), tex, interior});
   const split = wallSplit(allUsable.filter(k => mask[k] === MASK.wall && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const rowJoints = frontRows(allUsable.filter(k => (mask[k] === MASK.wall || mask[k] === MASK.trim) && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const clusters = centres.map((c, i) => ({solid: +solid[i].toFixed(2), lab: c.map(v => +v.toFixed(1)) as Rgb, share: +share[i].toFixed(3), warm: warm(c), score: +score[i].toFixed(4), mixed: mixed[i], enrich: +enrich[i].toFixed(2), conn: +shape[i].conn.toFixed(2), span: [+shape[i].spanW.toFixed(2), +shape[i].spanH.toFixed(2)], wall: wallSet[i]}));
   return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3),
-    normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number]},
+    normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number], ...(selfTrim ? {selfTrim: true} : {})},
     wall: {raw: wallRawFinal.map(Math.round) as Rgb, normalised: wallN.map(Math.round) as Rgb, hex: hex(wallN), rawHex: hex(wallRawFinal), cells: wallCells.length},
     clusterMask, ...(altMask ? {altMask} : {}), material, bands, wallSample: Int32Array.from(wallCells),
     openings: {count: op.openings.length, regularity: op.regularity, surrounds: op.surrounds, range: op.range, abstain: op.abstain, frameLike: op.frameLike.flatMap((f, i) => (f ? [i] : [])), accessory: op.accessory, secondMaterial: op.secondMaterial, bands: op.bands, ambiguous: op.ambiguous},
