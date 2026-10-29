@@ -122,26 +122,39 @@ export interface RoadLookOption {
   readonly pavement: readonly [number, number, number] | null;
   readonly pavementJoint: number;
   readonly klinkerOver: number;
+  /**
+   * The tram rail groove, a fraction of the asphalt's luma: the palette's groove (luma ~91) vanishes on a dark
+   * carriageway. Darker, not lighter: the user rejected light steel rails as "thin white lines" (2026-10-24, issue #52),
+   * and the orthophoto has the rails under the asphalt (Kinkerstraat 93 against 126).
+   */
+  readonly railK: number;
+  /** The kerb shadow line at the face, a fraction of the asphalt, and its width (roadSurfaces KERB_SHADOW_M by default). */
+  readonly kerbShadow: number;
+  readonly kerbShadowM: number;
 }
 export const ROAD_LOOK_OPTIONS = {
   /** Dark asphalt, today's pavement. */
-  A: { asphaltLuma: 105, pavement: null, pavementJoint: 0.8, klinkerOver: 12 },
+  A: { asphaltLuma: 105, pavement: null, pavementJoint: 0.8, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
   /** Darker asphalt, a lighter warm-grey pavement. */
-  B: { asphaltLuma: 95, pavement: [200, 195, 186], pavementJoint: 0.86, klinkerOver: 12 },
+  B: { asphaltLuma: 95, pavement: [200, 195, 186], pavementJoint: 0.86, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
   /** Darkest asphalt, a cool pale pavement. */
-  C: { asphaltLuma: 85, pavement: [212, 212, 207], pavementJoint: 0.88, klinkerOver: 12 },
+  C: { asphaltLuma: 85, pavement: [212, 212, 207], pavementJoint: 0.88, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
 } as const satisfies Record<string, RoadLookOption>;
 export type RoadLookId = keyof typeof ROAD_LOOK_OPTIONS;
 export const isRoadLookId = (v: unknown): v is RoadLookId => typeof v === 'string' && v in ROAD_LOOK_OPTIONS;
 
 /** The tones an option draws, from the palette's: asphalt, pavement (and the land under it), its joint, the klinker carriageway. */
-export function roadLookTones(street: { asphalt: { base: readonly number[] }; pavement: { base: readonly number[] }; klinker: { base: readonly number[] } }, id: RoadLookId | null): { asphalt: number[]; pavement: number[]; pavementJoint: string | null; klinker: number[] } {
-  if (id === null) return { asphalt: [...street.asphalt.base], pavement: [...street.pavement.base], pavementJoint: null, klinker: [...street.klinker.base] };
+export function roadLookTones(street: { asphalt: { base: readonly number[] }; pavement: { base: readonly number[] }; klinker: { base: readonly number[] }; rail: string }, id: RoadLookId | null): { asphalt: number[]; pavement: number[]; pavementJoint: string | null; klinker: number[]; rail: number[]; kerbShadow: number[] } {
+  const groove = [1, 3, 5].map(i => parseInt(street.rail.slice(i, i + 2), 16));
+  if (id === null) return { asphalt: [...street.asphalt.base], pavement: [...street.pavement.base], pavementJoint: null, klinker: [...street.klinker.base], rail: groove, kerbShadow: groove };
   const o: RoadLookOption = ROAD_LOOK_OPTIONS[id];
   const asphalt = atLuma(street.asphalt.base, o.asphaltLuma), pavement = o.pavement ? [...o.pavement] : [...street.pavement.base];
   const half = street.klinker.base.map((c, i) => (c + asphalt[i]) / 2);
   const hex2 = (v: number) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
-  return { asphalt, pavement, pavementJoint: `#${pavement.map(c => hex2(c * o.pavementJoint)).join('')}`, klinker: atLuma(half, o.asphaltLuma + o.klinkerOver) };
+  return {
+    asphalt, pavement, pavementJoint: `#${pavement.map(c => hex2(c * o.pavementJoint)).join('')}`, klinker: atLuma(half, o.asphaltLuma + o.klinkerOver),
+    rail: atLuma(groove, o.asphaltLuma * o.railK), kerbShadow: asphalt.map(c => Math.round(c * o.kerbShadow)),
+  };
 }
 
 /**

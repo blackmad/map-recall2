@@ -32,7 +32,7 @@ import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
-import { roadLookTones, type RoadLookId, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
+import { ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
 const BGT_SOURCE: Record<RoadClass, GroundSource> = { carriage: 'bgtCarriage', parking: 'bgtParking', foot: 'bgtFoot', pedestrian: 'bgtPedestrian', cycle: 'bgtCycle', driveway: 'bgtDriveway', island: 'bgtIsland', berm: 'bgtBerm', verge: 'bgtVerge', square: 'bgtSquare' };
@@ -105,12 +105,12 @@ export const TOUCH_DRAPE_TOL_SCALE = 8, TOUCH_MIN_EDGE_SCALE = 4, TOUCH_KERB_SIM
  */
 export const KERB_SHADOW_M = 0.45;
 /** The shadow line's vertex tint (sRGB 0..1): the palette's dark groove over its kerb tone, per channel. */
-export function kerbShadowTint(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): [number, number, number] {
+export function kerbShadowTint(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT), look: RoadLookId | null = null): [number, number, number] {
   const rgb = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
-  const groove = rgb(palette.street.rail), kerb = rgb(palette.street.kerb);
+  const groove = roadLookTones(palette.street, look).kerbShadow, kerb = rgb(palette.street.kerb);
   return [0, 1, 2].map(c => Math.min(1, groove[c] / Math.max(1, kerb[c]))) as [number, number, number];
 }
-const KERB_SHADOW_TINT = kerbShadowTint();
+let KERB_SHADOW_TINT = kerbShadowTint();
 type Tint = [number, number, number];
 /**
  * The shadow's outer end per low-side surface (lane road-look-continuity 2026-10-29): the kerb mesh is opaque and
@@ -126,7 +126,12 @@ export function kerbShadowEnds(palette: GroundPalette = groundPalette(GROUND_LOO
 }
 let KERB_SHADOW_ENDS = kerbShadowEnds();
 /** The worker's road look option (groundWorker init `roadLook`): the shadow ramps end in that option's tones. */
-export function setKerbShadowRoadLook(look: RoadLookId | null): void { KERB_SHADOW_ENDS = kerbShadowEnds(groundPalette(GROUND_LOOK_DEFAULT), look); }
+export function setKerbShadowRoadLook(look: RoadLookId | null): void {
+  KERB_SHADOW_ENDS = kerbShadowEnds(groundPalette(GROUND_LOOK_DEFAULT), look); KERB_SHADOW_TINT = kerbShadowTint(groundPalette(GROUND_LOOK_DEFAULT), look);
+  kerbShadowWidth = look ? ROAD_LOOK_OPTIONS[look].kerbShadowM : KERB_SHADOW_M;
+}
+/** The shadow ramp's width: KERB_SHADOW_M, or the road look option's (round 2: 0.45 m did not read at 1:1 on the phone). */
+let kerbShadowWidth = KERB_SHADOW_M;
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
@@ -581,7 +586,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     // the face (and the dark end) is the ramp's left edge.
     const lowCls = (lowLeft ? left : right)!, lowMesh = index.meshAt(cx - into * nx * KERB_PROBE_M, cy - into * ny * KERB_PROBE_M, bridge) ?? 'asphalt';
     const end = KERB_SHADOW_ENDS[surfaceLayer(lowCls, lowMesh)] ?? KERB_SHADOW_ENDS.asphalt!;
-    ribbon(kerb, line, -into * KERB_SHADOW_M / 2, KERB_SHADOW_M, height, ROAD_MARK_LIFT.rail, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
+    ribbon(kerb, line, -into * kerbShadowWidth / 2, kerbShadowWidth, height, ROAD_MARK_LIFT.rail, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
     // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
     // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
     const upper = lowLeft ? right : left;

@@ -297,6 +297,10 @@ test('road look: the options keep the asphalt hue, open a wide level gap, and co
     assert.ok(Math.abs(t.asphalt[0] / t.asphalt[2] - asphalt[0] / asphalt[2]) < 0.03, 'hue kept');
     // The klinker carriageway sits on the road level, nearer the asphalt than the pavement.
     assert.ok(luma709(t.klinker) - L < (luma709(t.pavement) - L) / 3, `${id} klinker ${t.klinker}`);
+    // Rails and the kerb's shadow read as dark lines on the dark carriageway (not light: issue #52).
+    assert.ok(L - luma709(t.rail) >= 30 && L - luma709(t.kerbShadow) >= 30, `${id} rail ${t.rail} shadow ${t.kerbShadow}`);
+    const tint = kerbShadowTint(groundPalette(GROUND_LOOK_DEFAULT), id), kerb = [1, 3, 5].map(i => parseInt(street.kerb.slice(i, i + 2), 16));
+    assert.ok(Math.abs(luma709(tint.map((v, c) => v * kerb[c])) - luma709(t.kerbShadow)) < 3, `${id} tint ${tint}`);
     gaps.push(luma709(t.pavement) - L);
   }
   // Palette gaps at least 60 (rendered pavement sits ~20 under its palette luma; the target is a rendered 40) and apart.
