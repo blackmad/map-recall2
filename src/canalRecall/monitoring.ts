@@ -14,6 +14,8 @@ interface CanalRuntimeConfig {
   sentryDsn?: string;
   release?: string;
   appCheckSiteKey?: string;
+  /** Consent-free gameplay analytics beacon URL (analytics/browser.ts); empty = off. */
+  analyticsEndpoint?: string;
 }
 
 declare global {

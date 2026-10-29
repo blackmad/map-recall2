@@ -1371,6 +1371,7 @@ export class GameRecallRuntime {
       rememberKnownPlace: (name: string, center: LatLon) => this._rememberKnownPlace(name, center),
     });
     const correct = result.wasCorrect;
+    window.CanalRecallAnalytics?.answer(this, correct, noIdea);
     this.quizAttempts = result.attempts;
     this.quizCorrect = result.correct;
     this.quizPoints = result.points;

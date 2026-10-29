@@ -2,6 +2,38 @@
 
 **Landmark lane, first run under the skill (2026-10-29, #110, #111, #114).** Three lanes landed the skill's prerequisites: `triage.ts` (buildable list from tiles, covers and crop evidence; 42 of 45 hand-reviewed outcomes predicted; 336 candidates: buildable 32, kit-gap 118 of which 95 are towers over the 32 m crop cap and 19 curtain fronts, no-evidence 135), cost fields in the queue (`model`, `turns`, per-stage ms; census prints turns per reviewed building), a factory street smoke test, the KPN export-glb stack fix, and the judge changes (curtain reading, `--max-height` crop cap, group-plane pairing). The judge lane disproved the #105 premise: the photo does not read mullions as wall, it reads floor bands at the storey lines, which the kit's curtain system cannot draw, so the glass FAILs are real kit gaps, not a judge artefact; no verdict moved on 17 drafts or 95 inferred installs. The self-test run: ten buildable pands, 9 compiled unattended, one strip reviewed in one turn: 1 pass (Molenwerf 1, 066028, installed with walls[1] inferred), 7 hold (gate failures on 5: footprint-vs-bag, eaves-vs-3dbag, open-edges, triangle budget; kit gaps on 3: a glazed pavilion under a deep roof, a glazed sawtooth hall, painted-black fronts with white balconies), 1 no-evidence (a truck covers the only crops and reads as a 19 m ribbon). Cost: 1.7 turns per reviewed building. The 10 % pass rate trips the skill's kill rule, so the next spend is kit work (floor bands on curtain walls, the three gaps above) and the gate failures, not another batch.
 
+**Batch era guard: ribbon windows hold their row (#113, 2026-10-29).** Spot review held two batch installs that were
+the wrong era. flinck-265-287-r1 is an interwar ribbon block that was drawn as an 1889 row. dou-1-7-r1 was drawn with
+narrow arched windows under a mansard; the front has wide three-light flat-headed windows and a flat cornice.
+Edge NCC (0.21) let both through.
+
+measureFacade's `frontClass` now travels in the auto-place evidence. `ribbonRowHolds` (`blockFace/autoPlace.ts`) holds
+every placed pand of the contiguous same-build-year run around a `ribbon` reading, when its type ends by 1914.
+Calibration on the #103/#113 strips:
+- ribbon read on 0 of 45 installed pands;
+- it read on 2 of 5 dou-1-7 pands and 1 of 5 flinck pands.
+
+Re-running dou-1-7 now holds Gerard Doustraat 1–1D by itself. One reading per row is enough because a same-year row is one design.
+
+The Frans Halsbuurt and Helmersbuurt-Oost reruns with the grown libraries installed nothing:
+- Frans Halsbuurt's one candidate was dou-1-7;
+- Helmersbuurt-Oost had 44 faces with no type.
+**Consent-free gameplay analytics (2026-10-29, #101 decided, #115).** The user chose
+to build it ourselves, accepted the Tw 11.7a / legitimate-interest reading (not
+legal advice), and asked for no retention counts yet. `src/canalRecall/analytics/`
+holds one allow-list schema shared by the browser and the function (eight events:
+session, ride_start, ride_end, ride_length, answer, buurt, perf, graphics_failure;
+closed value sets; unknown fields rejected). The client batches events and sends
+them by `sendBeacon`, with a session id per tab held in memory only. It sets no
+cookie, no storage and no fingerprint, and sends a buurt code instead of
+coordinates. `functions/` (codebase `analytics`, europe-west4) validates each batch
+and increments sharded daily counters in `analytics_daily`, which browsers cannot
+read or write. `scripts/analytics-report.ts` prints them. `privacy.html` gains one
+English and one Dutch paragraph. Tested: 30 unit tests, the emulator (exact counts,
+replay counted once, rules deny browsers), and `analytics-beacon.spec.ts` (payload
+allow-listed, no cookie or storage writes, nothing loads without an endpoint).
+Deploying needs Blaze; the steps are in TODO.
+
 **Street following aims down the street (2026-10-29).** Ways are often
 digitised as short pieces whose bearings zig-zag (Prinsengracht at the
 Leidsegracht: 66°, 97°, 72°, 37°, 48° over 60 m, after the 3 m

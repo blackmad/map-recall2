@@ -16,11 +16,11 @@ import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
-import {isLeaf, measureFacade, type FacadeImage} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {isLeaf, measureFacade, type FacadeImage, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {TYPE_LIBRARY_DIR} from '../../src/canalRecall/blockFace/typeLibrary.ts';
@@ -156,8 +156,8 @@ async function faceEvidence(faceId: string) {
       const palette = measureStripPalette({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM});
       const storeys = facts.heights.storeys ?? Math.max(2, Math.round(eavesM / 3.1));
       const lines = Array.from({length: storeys + 1}, (_, k) => r2(k * eavesM / storeys));
-      let columns: number | null = null, wall: string | null = null;
-      try { const m = measureFacade({image: spanImage(raw, px, strip.pixelsPerMetre, strip.heightM, 0), box: {u0: 0, u1: (px[1] - px[0]) / strip.pixelsPerMetre, v0: 0, v1: eavesM}, lines}); columns = m.columns; wall = m.wall.cells ? m.wall.hex : null; } catch { columns = null; }
+      let columns: number | null = null, wall: string | null = null, frontClass: FrontClass | undefined;
+      try { const m = measureFacade({image: spanImage(raw, px, strip.pixelsPerMetre, strip.heightM, 0), box: {u0: 0, u1: (px[1] - px[0]) / strip.pixelsPerMetre, v0: 0, v1: eavesM}, lines}); columns = m.columns; wall = m.wall.cells ? m.wall.hex : null; frontClass = m.frontClass; } catch { columns = null; }
       const skyline = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
       // The structure reads the body up to the lower of the 3DBAG and the photographed eaves (a gable's shoulder is no wall).
       const structure = measureStripStructure({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre,
@@ -171,7 +171,7 @@ async function faceEvidence(faceId: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
-      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
+      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }
@@ -336,6 +336,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
+    const ribbonHeld = ribbonRowHolds(decisions, types, evs);
+    if (ribbonHeld.length) console.log(`${f.id}: era guard held ${ribbonHeld.length} pand(s) of a ribbon-window row`);
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
     let runFaces: {id: string; ids: string[]}[] = [];
@@ -482,7 +484,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
       pands: decisions.map((d, k) => {
         const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag, bagBay: ev.bagBay ?? null,
-          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
+          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, frontClass: ev.strip.frontClass ?? null, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
             structure: ev.strip.structure ? {bayWidthM: ev.strip.structure.bayWidthM, bayCentre: ev.strip.structure.bayCentre, balconies: ev.strip.structure.balconies, why: ev.strip.structure.balconyWhy, openAxes: ev.strip.structure.openAxes, slabs: ev.strip.structure.slabs} : null, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
         return d.kind === 'placed' ? {...base, status: 'placed', type: d.typeId, score: d.score, runnerUp: d.runnerUp, placement: d.house.type, notes: d.notes, likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}}
           : {...base, status: 'held', stage: d.stage, reason: d.reason, ...(d.best ? {best: {type: d.best.typeId, score: d.best.score, veto: d.best.veto, criteria: d.best.criteria}} : {}), likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}};

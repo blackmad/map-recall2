@@ -148,6 +148,12 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Consent-free gameplay analytics counters (functions/src/index.ts). Only
+    // the function's Admin SDK writes them; no browser reads or writes them.
+    match /analytics_daily/{document=**} {
+      allow read, write: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

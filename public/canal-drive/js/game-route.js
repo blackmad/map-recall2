@@ -1566,6 +1566,7 @@ class GameRouteRuntime {
     // progress bar in turn: it jumped back and forth (user report 2026-09-29).
     const load = ++this._loadToken;
     const stale = () => load !== this._loadToken;
+    if (window.CanalRecallAnalytics) window.CanalRecallAnalytics.rideStart(this); // consent-free counters (src/canalRecall/analytics)
     // A failure on the reused network still shows its message before setup.
     const fail = (message, delayMs = 2500) => {
       this.loadingMessage = message;
