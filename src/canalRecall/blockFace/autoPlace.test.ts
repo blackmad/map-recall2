@@ -16,7 +16,7 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
-import {accentSideOf, AUTO_PLACE, frontEavesFor, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {accentSideOf, AUTO_PLACE, frontEavesFor, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, ribbonRowHolds, RIBBON_GUARD, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {measureSkyline} from './stripSkyline.ts';
 import {measureStripStructure, type StripStructure} from './stripStructure.ts';
 import {bestNcc, gradient, type Gray} from './stripLikeness.ts';
@@ -115,6 +115,30 @@ test('runs: held pands split the face; a lone placed pand is held; door pairs fi
   const intent = runIntent({id: 'test-run', street: 'Hasebroekstraat', stripDate: '2022-01-04', stripImage: 'x.jpg', types: BELLAMY, run, note: 'test'});
   assert.deepEqual(intent.types, ['bellamy-1904-balcony-axis']);
   validateBlockFace(JSON.parse(JSON.stringify(intent)), run.map(p => p.pandId));
+});
+
+test('era guard: a ribbon reading holds its same-year row of punched-window types (dou-1-7-r1, flinck-265-287-r1)', () => {
+  const t1904 = types[0];
+  assert.ok(t1904.match!.years[1] <= RIBBON_GUARD.maxTypeYear, t1904.id);
+  const ev = (k: number, year: number, fc?: 'ribbon' | 'punched') => pand({pandId: `p${k}`, address: `Gerard Doustraat ${k}`, builtYear: year, strip: strip(fc ? {frontClass: fc} : {})});
+  // 1904 row of four with one ribbon reading, then a 1905 pand: the row is held, the next year's pand is not.
+  const evs = [ev(1, 1904, 'punched'), ev(3, 1904, 'ribbon'), ev(5, 1904), ev(7, 1904), ev(9, 1905, 'punched')];
+  const ds = evs.map(e => decidePand([t1904], e, e.pandId, '2022-01-04'));
+  assert.ok(ds.every(d => d.kind === 'placed'));
+  assert.deepEqual(ribbonRowHolds(ds, [t1904], evs), ['p1', 'p3', 'p5', 'p7']);
+  assert.equal(ds[4].kind, 'placed');
+  const d0 = ds[0] as Decision & {reason?: string};
+  assert.match(d0.reason ?? '', /Gerard Doustraat 3 \(same 1904 row\) reads ribbon/);
+  // No ribbon reading, or a ribbon reading on a grey strip: nothing changes.
+  const plain = evs.map(e => ({...e, strip: strip()}));
+  const ds2 = plain.map(e => decidePand([t1904], e, e.pandId, '2022-01-04'));
+  assert.deepEqual(ribbonRowHolds(ds2, [t1904], plain), []);
+  const grey = evs.map(e => ({...e, strip: {...e.strip!, voidShare: 0.9}}));
+  assert.deepEqual(ribbonRowHolds(evs.map(e => decidePand([t1904], e, e.pandId, '2022-01-04')), [t1904], grey), []);
+  // A type that runs past the punched-window era (an interwar type may have ribbons) is not held.
+  const late: MatchableType = {...t1904, match: {...t1904.match!, years: [1900, 1930]}};
+  const ds3 = evs.map(e => decidePand([late], e, e.pandId, '2022-01-04'));
+  assert.deepEqual(ribbonRowHolds(ds3, [late], evs), []);
 });
 
 test('gate: under the NCC floor holds, no score is no evidence', () => {

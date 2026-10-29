@@ -21,7 +21,7 @@ import type {BlockFaceHouse, BlockFaceIntent, GroundFloorUse, RhythmSpec} from '
 import type {StripPalette} from './stripPalette.ts';
 import type {Skyline} from './stripSkyline.ts';
 import type {StripStructure} from './stripStructure.ts';
-import {rgbToLab, type Rgb} from '../buildingRecipe/measureFacade.ts';
+import {rgbToLab, type FrontClass, type Rgb} from '../buildingRecipe/measureFacade.ts';
 import type {FrontBump} from './bayOutline.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
 
@@ -150,6 +150,8 @@ export interface StripEvidence {
   voidShare: number; foliageShare: number;
   /** Window columns over the upper storeys (measureFacade on the span), null when unread. */
   columns: number | null;
+  /** measureFacade's front class of the span (punched, ribbon, ...); undefined when unread. */
+  frontClass?: FrontClass;
   /** Door side read off the ground band (the dark tall opening nearest a party wall), null when unread. */
   doorSide: 'left' | 'right' | null;
   /** The half of the upper storeys holding clearly more light accent pixels (ratio >= 1.6), null when even. */
@@ -508,6 +510,38 @@ export function fillPairs(decisions: Decision[], types: MatchableType[]): number
  */
 export function placementGate(l: {ncc: number | null; abstain: string | null}, minNcc = 0.15): {gate: 'pass' | 'hold' | 'no-evidence'} {
   return {gate: l.ncc === null ? 'no-evidence' : l.ncc < minNcc ? 'hold' : 'pass'};
+}
+
+/**
+ * Era guard (#113, 2026-10-29): a pand whose strip reads RIBBON windows (measureFacade `frontClass`: horizontal glazing
+ * runs, or windows over 85 % of the bay) is not a punched-window 19th-century row, and nor is the rest of its row.
+ * Every placed pand of the contiguous same-build-year run around a ribbon reading is held when its type ends before
+ * RIBBON_GUARD.maxTypeYear. Calibration on the #103/#113 batch strips: ribbon read on 0 of 45 installed pands, and on
+ * 2 of 5 of Gerard Doustraat 1-7 (dou-1-7-r1: wide three-light windows drawn as narrow arched ones) and 1 of 5 of
+ * Govert Flinckstraat 265-287 (flinck-265-287-r1: an interwar ribbon block drawn as an 1889 row), both held at review.
+ * Returns the pands held.
+ */
+export const RIBBON_GUARD = {maxTypeYear: 1914} as const;
+export function ribbonRowHolds(decisions: Decision[], types: MatchableType[], evs: PandEvidence[]): string[] {
+  const held: string[] = [];
+  const usable = (e: PandEvidence) => !!e.strip && e.strip.voidShare <= AUTO_PLACE.maxVoid && e.strip.foliageShare <= AUTO_PLACE.maxFoliage;
+  for (let k = 0; k < evs.length; k++) {
+    if (!usable(evs[k]) || evs[k].strip!.frontClass !== 'ribbon' || evs[k].builtYear === null) continue;
+    const year = evs[k].builtYear;
+    let a = k, b = k;
+    while (a > 0 && evs[a - 1].builtYear === year) a--;
+    while (b + 1 < evs.length && evs[b + 1].builtYear === year) b++;
+    for (let j = a; j <= b; j++) {
+      const d = decisions[j];
+      if (d.kind !== 'placed') continue;
+      const t = types.find(x => x.id === d.typeId);
+      if (!t?.match || t.match.years[1] > RIBBON_GUARD.maxTypeYear) continue;
+      decisions[j] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'match',
+        reason: `era guard: ${j === k ? 'the strip reads' : `${evs[k].address} (same ${year} row) reads`} ribbon windows; ${d.typeId} is a punched-window type`};
+      held.push(d.pandId);
+    }
+  }
+  return held;
 }
 
 /** Contiguous runs of placed pands (street order); a run of one cannot be a face and is held. */
