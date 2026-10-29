@@ -91,7 +91,10 @@ test('six faces: every compiled gable outline is mirror-symmetric (a cornice cap
 test('Kinkerstraat 56-84: step and point gables carry saddles, the roof is symmetric about each gable and under its outline', async () => {
   const {face, facts, options, prepared} = loadGoldenFace('kinker-56-84');
   const report = new Map((prepared.recipeRoofs ?? []).map(r => [r.pandId.slice(-6), r]));
-  for (const [pand, front] of [['236325', 'm0'], ['236325', 'm1'], ['236441', 'm2'], ['161359', 'm0']]) {
+  // 236325 m0 (Kinkerstraat 66) is a white stone dormer behind the cornice on the 2023-01-10 strip (#98), not the small
+  // step gable read on the blown-out 2024-11-29 strip: its front keeps the low attic, the gables beside it keep saddles.
+  assert.equal(report.get('236325')?.bands?.find(b => b.id === 'm0')?.form, 'attic', '236325 m0: stone dormer, low attic');
+  for (const [pand, front] of [['236325', 'm1'], ['236441', 'm2'], ['236441', 'm3'], ['161359', 'm0'], ['161359', 'm1']]) {
     const r = report.get(pand);
     assert.ok(r?.bands, `${pand}: a front roof`);
     assert.equal(r!.bands!.find(b => b.id === front)?.form, 'saddle', `${pand} ${front}`);

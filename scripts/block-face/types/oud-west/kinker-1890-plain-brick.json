@@ -31,11 +31,29 @@
       "gable": "cornice",
       "dormers": 1,
       "dormerStyle": "pediment",
-      "note": "one pedimented dormer with a zinc finial per house (31-49 pands 2-9, 65-87 pands 4-10)"
+      "note": "one pedimented dormer with a zinc finial per house (31-49 pands 2-9, 65-87 pands 4-10) (#98: white painted bodies, dormerBody stone; a trim-slot body exported as a frame sunk in the low front attic and failed the opening-outside audit)",
+      "dormerBody": "stone",
+      "dormerSize": {
+        "sill": 0.4,
+        "rise": 1.3,
+        "setback": 0.3
+      }
     },
     "none": {
       "gable": "cornice",
       "note": "cornice only (2-30 pand 1, 1-29 pand 1)"
+    },
+    "arched-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "arched",
+      "note": "Kinkerstraat 22 and 24 (2-30 pands 4-5, strip 2024-12-11): one white dormer per house under a round hood (a fan in the tympanum), about 2.1 m wide with the hood and 1 m high over the frame; drawn as dormerStyle arched in the stone colour (the fan is not drawn)",
+      "dormerBody": "stone",
+      "dormerSize": {
+        "sill": 0.4,
+        "rise": 1.3,
+        "setback": 0.3
+      }
     }
   },
   "palettes": {
@@ -55,7 +73,11 @@
     }
   },
   "roof": {
-    "material": "slate"
+    "material": "slate",
+    "source": "front",
+    "rise": 0.25,
+    "pitchDeg": 45,
+    "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
   },
   "rhythm": {
     "bays": "3 window axes (2 on 4-5 m pands)",

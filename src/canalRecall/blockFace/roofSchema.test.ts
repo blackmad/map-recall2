@@ -29,7 +29,7 @@ test('house intent: roof source/form/pitch/evidence validated; unknown roof fiel
   assert.throws(() => validateIntent({...base, roof: {...base.roof, ridgeM: 17}}), /roof/);
 });
 
-test('typed placement: roof override merges over the type roof; source front needs evidence; no material override', () => {
+test('typed placement: roof override merges over the type roof; source front needs evidence; a material override needs evidence and a known covering', () => {
   const {raw, members} = load('kinker-315-359');
   const ok = JSON.parse(JSON.stringify(raw));
   ok.houses[2].type.roof = {source: 'front', form: 'saddle', evidence: 'strip pand 3: the neck gable with a saddle behind'};
@@ -41,8 +41,15 @@ test('typed placement: roof override merges over the type roof; source front nee
   noEvidence.houses[2].type.roof = {source: 'front'};
   assert.throws(() => validateBlockFace(noEvidence, members, fileTypeLoader()), /roof\.source front needs evidence/);
   const material = JSON.parse(JSON.stringify(raw));
-  material.houses[2].type.roof = {material: 'tile'};
-  assert.throws(() => validateBlockFace(material, members, fileTypeLoader()), /not a placement roof field/);
+  material.houses[2].type.roof = {material: 'red-tile'};
+  assert.throws(() => validateBlockFace(material, members, fileTypeLoader()), /material or hip override needs evidence/);
+  material.houses[2].type.roof = {material: 'tile', evidence: 'orthophoto 2024'};
+  assert.throws(() => validateBlockFace(material, members, fileTypeLoader()), /roof\.material/);
+  material.houses[2].type.roof = {material: 'red-tile', evidence: 'orthophoto 2024: orange tiles'};
+  assert.equal(houseIntents(validateBlockFace(material, members, fileTypeLoader()), fileTypeLoader())[2].roof.material, 'red-tile');
+  const unknown = JSON.parse(JSON.stringify(raw));
+  unknown.houses[2].type.roof = {ridgeM: 17};
+  assert.throws(() => validateBlockFace(unknown, members, fileTypeLoader()), /not a placement roof field/);
   const bad = JSON.parse(JSON.stringify(raw));
   bad.houses[2].type.roof = {pitchDeg: 90};
   assert.throws(() => validateBlockFace(bad, members, fileTypeLoader()), /pitchDeg/);

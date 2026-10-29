@@ -68,8 +68,10 @@ test('Kinkerstraat 31: black paint is a measured painted-brick wall with its exp
   assert.ok(walls.some(w => w.tint === '#282b24'));
 });
 
-test('Kinkerstraat 47, 63, 87: brick walls with wallTint measured export the measured tint and white point', () => {
-  for (const [face, pand, hex] of [['kinker-31-49', '161457', '#c09d84'], ['kinker-49-63', '133467', '#78675b'], ['kinker-65-87', '156991', '#74705e']] as const) {
+// Kinkerstraat 47 (kinker-31-49 161457) left the measured tint in #98: it drew #dcbb9d against the strip's #bf9d83 (too light
+// and saturated); it now takes the brick of 45 through the city tint, pinned below.
+test('Kinkerstraat 63, 87: brick walls with wallTint measured export the measured tint and white point', () => {
+  for (const [face, pand, hex] of [['kinker-49-63', '133467', '#78675b'], ['kinker-65-87', '156991', '#74705e']] as const) {
     const {intent, b} = build(face, pand);
     assert.equal(intent.palette.wallTint, 'measured', pand);
     const walls = wallBuckets(intent, b.group);
@@ -78,9 +80,11 @@ test('Kinkerstraat 47, 63, 87: brick walls with wallTint measured export the mea
   }
 });
 
-test('plain brick on the same face stays unmeasured (Kinkerstraat 45)', () => {
-  const {intent, b} = build('kinker-31-49', '154359');
-  assert.ok(wallBuckets(intent, b.group).every(w => !w.tintSource && !w.tintWhitePoint));
+test('plain brick on the same face stays unmeasured (Kinkerstraat 45, and 47 in the same brick since #98)', () => {
+  for (const pand of ['154359', '161457']) {
+    const {intent, b} = build('kinker-31-49', pand);
+    assert.ok(wallBuckets(intent, b.group).every(w => !w.tintSource && !w.tintWhitePoint), pand);
+  }
 });
 
 test('Kinkerstraat 21 and 23: the first storey is a white-painted facing cut around its four lights, measured paint', () => {
