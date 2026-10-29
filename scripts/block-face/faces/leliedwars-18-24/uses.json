@@ -1,0 +1,79 @@
+{
+ "street": "Tweede Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:25:52.426Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170045",
+   "addresses": [
+    "Tweede Leliedwarsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001005232"
+    },
+    {
+     "address": "Bloemgracht 78",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001005233"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169906",
+   "addresses": [
+    "Tweede Leliedwarsstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001005231"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169917",
+   "addresses": [
+    "Tweede Leliedwarsstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001005229"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169987",
+   "addresses": [
+    "Tweede Leliedwarsstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000996901"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

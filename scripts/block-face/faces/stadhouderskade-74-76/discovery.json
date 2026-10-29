@@ -1,0 +1,317 @@
+{
+ "street": "Stadhouderskade",
+ "seed": "0363100012237129",
+ "members": [
+  "0363100012157625",
+  "0363100012237129"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012157625 (face continues: 164454)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012237129 (face continues: 156213 167369 163067 152559 159553 167426 236534 237354 145946 167283 165741 237318)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012068187",
+   "reason": "frontage 52.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012069726",
+   "reason": "frontage 48.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012082246",
+   "reason": "frontage 50.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012087624",
+   "reason": "no frontage on Stadhouderskade: No footprint edge faces Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012096414",
+   "reason": "frontage 82.2 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012119117",
+   "reason": "frontage 54.7 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012152317",
+   "reason": "frontage 77.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012152710",
+   "reason": "frontage 64.5 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012153602",
+   "reason": "frontage 89.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012154231",
+   "reason": "frontage 47.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012155659",
+   "reason": "frontage 92.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012156123",
+   "reason": "frontage 83.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012156333",
+   "reason": "frontage 84.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012156424",
+   "reason": "frontage 99.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012156663",
+   "reason": "frontage 84.2 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012158664",
+   "reason": "sightline to Stadhouderskade crosses 0363100012237129"
+  },
+  {
+   "pandId": "0363100012159194",
+   "reason": "frontage 52.5 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012159600",
+   "reason": "frontage 79.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012159865",
+   "reason": "frontage 60.7 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012161104",
+   "reason": "frontage 66.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012161404",
+   "reason": "sightline to Stadhouderskade crosses 0363100012164454"
+  },
+  {
+   "pandId": "0363100012162050",
+   "reason": "frontage 91.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012162418",
+   "reason": "frontage 54.6 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012163139",
+   "reason": "frontage 52.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012163371",
+   "reason": "frontage 32.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012148007",
+   "reason": "frontage 73.6 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012152579",
+   "reason": "frontage 31.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012153116",
+   "reason": "frontage 94.6 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012153280",
+   "reason": "sightline to Stadhouderskade crosses 0363100012165741"
+  },
+  {
+   "pandId": "0363100012153361",
+   "reason": "frontage 63.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012153684",
+   "reason": "frontage 132.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012155486",
+   "reason": "frontage 68.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012157291",
+   "reason": "frontage 57.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012158890",
+   "reason": "frontage 96.5 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012158976",
+   "reason": "frontage 98.7 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012159558",
+   "reason": "frontage 38.6 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012160263",
+   "reason": "frontage 101.2 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012160429",
+   "reason": "frontage 75.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012161247",
+   "reason": "frontage 103.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012162055",
+   "reason": "frontage 72.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012162322",
+   "reason": "frontage 66.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012162399",
+   "reason": "frontage 120.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012162907",
+   "reason": "sightline to Stadhouderskade crosses 0363100012153280"
+  },
+  {
+   "pandId": "0363100012163052",
+   "reason": "frontage 45.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012163377",
+   "reason": "frontage 58.5 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012163981",
+   "reason": "frontage 80.5 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012164618",
+   "reason": "frontage 91.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012166419",
+   "reason": "frontage 81.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012166420",
+   "reason": "sightline to Stadhouderskade crosses 0363100012164454"
+  },
+  {
+   "pandId": "0363100012166520",
+   "reason": "frontage 49.2 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012166796",
+   "reason": "sightline to Stadhouderskade crosses 0363100012157625"
+  },
+  {
+   "pandId": "0363100012183999",
+   "reason": "frontage 42.7 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012187219",
+   "reason": "no frontage on Stadhouderskade: No footprint edge faces Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012191582",
+   "reason": "frontage 62.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012191584",
+   "reason": "frontage 85.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012228626",
+   "reason": "frontage 35.8 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012228680",
+   "reason": "frontage 39.2 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012233622",
+   "reason": "frontage 86.6 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012236960",
+   "reason": "frontage 107.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012237337",
+   "reason": "sightline to Stadhouderskade crosses 0363100012166152"
+  },
+  {
+   "pandId": "0363100012163485",
+   "reason": "frontage 126.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012163556",
+   "reason": "frontage 51.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012166810",
+   "reason": "frontage 115.3 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012183259",
+   "reason": "frontage 120.7 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012224807",
+   "reason": "frontage 113.1 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012224808",
+   "reason": "frontage 110.9 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012226693",
+   "reason": "frontage 71.0 m from Stadhouderskade"
+  },
+  {
+   "pandId": "0363100012227385",
+   "reason": "frontage 65.7 m from Stadhouderskade"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012157625",
+   "alongM": -11.64,
+   "widthM": 7.06,
+   "eavesM": 16.07,
+   "roofMaxM": 17.01,
+   "storeys3dbag": 0,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237129",
+   "alongM": 0,
+   "widthM": 16.23,
+   "eavesM": 16.6,
+   "roofMaxM": 20.38,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,749 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:11:28.736Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170146",
+   "addresses": [
+    "Rozengracht 74E",
+    "Rozengracht 74A",
+    "Rozengracht 74B",
+    "Rozengracht 74C",
+    "Rozengracht 74D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 74E",
+     "use": "winkelfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000987828"
+    },
+    {
+     "address": "Rozengracht 74A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000987855"
+    },
+    {
+     "address": "Rozengracht 74B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000987856"
+    },
+    {
+     "address": "Rozengracht 74C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000987857"
+    },
+    {
+     "address": "Rozengracht 74D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000987858"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170147",
+   "addresses": [
+    "Rozengracht 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000797516"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170092",
+   "addresses": [
+    "Rozengracht 68A",
+    "Rozengracht 68B",
+    "Rozengracht 68C",
+    "Rozengracht 70C",
+    "Rozengracht 70D",
+    "Rozengracht 70A",
+    "Rozengracht 70B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 70C",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000952471"
+    },
+    {
+     "address": "Rozengracht 70D",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000952472"
+    },
+    {
+     "address": "Rozengracht 68A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000797489"
+    },
+    {
+     "address": "Rozengracht 68B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000797490"
+    },
+    {
+     "address": "Rozengracht 68C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000797491"
+    },
+    {
+     "address": "Rozengracht 70A",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000797510"
+    },
+    {
+     "address": "Rozengracht 70B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000952470"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170148",
+   "addresses": [
+    "Rozengracht 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 66",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000797488"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170093",
+   "addresses": [
+    "Rozengracht 62",
+    "Rozengracht 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 64-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000963407"
+    },
+    {
+     "address": "Rozengracht 64-3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000963408"
+    },
+    {
+     "address": "Rozengracht 64-2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000975028"
+    },
+    {
+     "address": "Rozengracht 64-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000975029"
+    },
+    {
+     "address": "Rozengracht 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000797484"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328791,
+     "lngLat": [
+      4.8806118,
+      52.3735147
+     ],
+     "tags": {
+      "check_date": "2023-08-16",
+      "name": "Gebr. Winter",
+      "opening_hours": "Mo 11:15-18:00; Tu-Fr 09:15-18:00; Sa 10:15-17:00",
+      "shop": "stationery",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170088",
+   "addresses": [
+    "Rozengracht 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000797482"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170089",
+   "addresses": [
+    "Rozengracht 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000797476"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170090",
+   "addresses": [
+    "Rozengracht 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 56-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000797468"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328794,
+     "lngLat": [
+      4.880794,
+      52.3735655
+     ],
+     "tags": {
+      "name": "Perzische Supermarkt",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170091",
+   "addresses": [
+    "Rozengracht 52B",
+    "Rozengracht 52D",
+    "Rozengracht 52F",
+    "Rozengracht 52H",
+    "Rozengracht 52A",
+    "Rozengracht 52C",
+    "Rozengracht 52E",
+    "Rozengracht 52G",
+    "Rozengracht 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 54",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000725154"
+    },
+    {
+     "address": "Rozengracht 52B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000725157"
+    },
+    {
+     "address": "Rozengracht 52D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000796388"
+    },
+    {
+     "address": "Rozengracht 52F",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000797922"
+    },
+    {
+     "address": "Rozengracht 52H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000797924"
+    },
+    {
+     "address": "Rozengracht 52A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000725156"
+    },
+    {
+     "address": "Rozengracht 52C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000767382"
+    },
+    {
+     "address": "Rozengracht 52E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000796389"
+    },
+    {
+     "address": "Rozengracht 52G",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000797923"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328785,
+     "lngLat": [
+      4.8809013,
+      52.3735835
+     ],
+     "tags": {
+      "check_date": "2023-08-16",
+      "name": "Coppenhagen",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "frontage",
+     "distanceM": 0.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170149",
+   "addresses": [
+    "Rozengracht 50A",
+    "Rozengracht 50B",
+    "Rozengracht 50D",
+    "Rozengracht 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 50A",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010011040725"
+    },
+    {
+     "address": "Rozengracht 50D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012588130"
+    },
+    {
+     "address": "Rozengracht 50C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012588129"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168604",
+   "addresses": [
+    "Rozengracht 48A",
+    "Rozengracht 48B",
+    "Rozengracht 48C",
+    "Rozengracht 48D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 48A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 135,
+     "bagId": "0363010011048496"
+    },
+    {
+     "address": "Rozengracht 48B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010011048497"
+    },
+    {
+     "address": "Rozengracht 48C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010011048498"
+    },
+    {
+     "address": "Rozengracht 48D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010011048499"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170087",
+   "addresses": [
+    "Rozengracht 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 46-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000797444"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328789,
+     "lngLat": [
+      4.8811186,
+      52.3736527
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-48",
+      "addr:postcode": "1016ND",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "check_date": "2023-08-16",
+      "cuisine": "indonesian",
+      "email": "info@restaurant-longpura.com",
+      "indoor_seating": "yes",
+      "name": "Long Pura",
+      "opening_hours": "Mo-Su 17:30+",
+      "outdoor_seating": "no",
+      "phone": "+31 20 6238950",
+      "website": "https://www.restaurant-longpura.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170085",
+   "addresses": [
+    "Rozengracht 44",
+    "Rozengracht 44A",
+    "Rozengracht 44B",
+    "Rozengracht 44C",
+    "Rozengracht 44D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 44-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000797440"
+    },
+    {
+     "address": "Rozengracht 44A",
+     "use": "winkelfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012103466"
+    },
+    {
+     "address": "Rozengracht 44B",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012103467"
+    },
+    {
+     "address": "Rozengracht 44C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012103468"
+    },
+    {
+     "address": "Rozengracht 44D",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012103469"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170086",
+   "addresses": [
+    "Rozengracht 42D",
+    "Rozengracht 42A",
+    "Rozengracht 42B",
+    "Rozengracht 42C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 42D",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949823"
+    },
+    {
+     "address": "Rozengracht 42A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000949824"
+    },
+    {
+     "address": "Rozengracht 42B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000949825"
+    },
+    {
+     "address": "Rozengracht 42C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000949826"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168603",
+   "addresses": [
+    "Rozengracht 40C",
+    "Rozengracht 40A",
+    "Rozengracht 40B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 40C",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000797435"
+    },
+    {
+     "address": "Rozengracht 40A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000797436"
+    },
+    {
+     "address": "Rozengracht 40B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000797437"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328793,
+     "lngLat": [
+      4.8812871,
+      52.373712
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40",
+      "addr:postcode": "1016NC",
+      "addr:street": "Rozengracht",
+      "branch": "Amsterdam",
+      "brand": "Velvet Music",
+      "brand:website": "https://www.velvetmusic.nl",
+      "brand:wikidata": "Q140668249",
+      "email": "amsterdam@velvetmusic.nl",
+      "name": "Velvet Music",
+      "opening_hours": "Mo-Th,Su 12:00-18:00; Fr-Sa 10:00-18:00",
+      "payment:cash": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 422 8777",
+      "shop": "music",
+      "short_name": "Velvet",
+      "website": "https://www.velvetamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168605",
+   "addresses": [
+    "Rozengracht 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 38",
+     "use": "winkelfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000797426"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168613",
+   "addresses": [
+    "Rozengracht 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 36-H",
+     "use": "winkelfunctie",
+     "areaM2": 288,
+     "bagId": "0363010000797417"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328786,
+     "lngLat": [
+      4.881396,
+      52.3737429
+     ],
+     "tags": {
+      "name": "van der Linde",
+      "opening_hours": "Mo 09:30-18:00; Tu-Fr 09:00-18:00; Sa 11:00-17:00",
+      "shop": "craft"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168646",
+   "addresses": [
+    "Rozengracht 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000797405"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720972145,
+     "lngLat": [
+      4.8814935,
+      52.3737564
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34-2",
+      "addr:postcode": "1016NC",
+      "addr:street": "Rozengracht",
+      "email": "info@voedingalsmedicatie.nl",
+      "healthcare": "alternative",
+      "healthcare:speciality": "nutritional_medicine;kpni;orthomoleculaire_therapie;voedingsgeneeskunde",
+      "name": "VaM - Voeding als Medicatie",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.voedingalsmedicatie.nl"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168639",
+   "addresses": [
+    "Rozengracht 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 32-H",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000797401"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328788,
+     "lngLat": [
+      4.8815789,
+      52.3737879
+     ],
+     "tags": {
+      "name": "Wegewijs",
+      "shop": "cheese"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168640",
+   "addresses": [
+    "Rozengracht 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 30",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000797400"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

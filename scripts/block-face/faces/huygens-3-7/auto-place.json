@@ -3,7 +3,7 @@
  "street": "Eerste Constantijn Huygensstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 0.47,
+ "seconds": 0.48,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,7 +20,7 @@
    "address": "Eerste Constantijn Huygensstraat 3",
    "builtYear": 1895,
    "widthM": 6.61,
-   "eavesM": 16.7,
+   "eavesM": 17.26,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
@@ -28,7 +28,7 @@
     "wallRaw": "#60442b",
     "skyline": {
      "eavesM": 16.7,
-     "eavesRow": 105,
+     "eavesRow": 106,
      "confidence": 0.98,
      "crown": null
     },
@@ -46,14 +46,14 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 9.72,
+       "atM": 9.65,
        "widthM": 0.82,
        "centre": 0.56
       },
       {
-       "atM": 6.57,
-       "widthM": 0.97,
-       "centre": 0.59
+       "atM": 6.65,
+       "widthM": 1.15,
+       "centre": 0.61
       }
      ]
     },
@@ -94,23 +94,28 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#633d28",
-    "wallRaw": "#6a5c48",
+    "wall": "#5c3620",
+    "wallRaw": "#6a5b48",
     "skyline": {
-     "eavesM": 16.13,
-     "eavesRow": 128,
+     "eavesM": 15.55,
+     "eavesRow": 152,
      "confidence": 0.91,
-     "crown": null
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 3.8,
+      "topWidthM": 0.03,
+      "centre": 0.55
+     }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 5,
     "doorSide": null,
     "accentSide": "right",
-    "accentShare": 0.056,
+    "accentShare": 0.057,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.4,
+     "bayCentre": 0.7,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
@@ -121,23 +126,29 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.13 m vs the type's 14.9 m)",
+   "reason": "best helmers-1896-transom-band scores 0.55 < 0.7 (strip cornice 15.55 m vs the type's 14.9 m; strip columns 5 vs 3 bays)",
    "best": {
     "type": "helmers-1896-transom-band",
-    "score": 0.5,
+    "score": 0.55,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 16.13 m vs the type's 14.9 m"
+      "score": 0.5,
+      "note": "strip cornice 15.55 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.048 (brick)"
+      "note": "strip accent share 0.049 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
      }
     ]
    },
@@ -149,21 +160,21 @@
    "address": "Eerste Constantijn Huygensstraat 7",
    "builtYear": 1895,
    "widthM": 2.73,
-   "eavesM": 14.57,
+   "eavesM": 13.86,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#7b492d",
+    "wall": "#865033",
     "wallRaw": "#563822",
     "skyline": {
      "eavesM": 14.57,
-     "eavesRow": 190,
+     "eavesRow": 191,
      "confidence": 1,
      "crown": {
-      "widthM": 0.7,
-      "riseM": 4.7,
-      "topWidthM": 0.1,
-      "centre": 0.86
+      "widthM": 0.63,
+      "riseM": 4.68,
+      "topWidthM": 0.13,
+      "centre": 0.88
      }
     },
     "stucco": false,
@@ -185,20 +196,20 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1895, type 1893-1893; frontage 2.73 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1895, type 1886-1892; frontage 2.73 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1895, type 1893-1893",
-     "frontage 2.73 m, type 5.6-6.4 m"
+     "built 1895, type 1886-1892",
+     "frontage 2.73 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.57 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 1,
+      "note": "strip cornice 14.57 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",

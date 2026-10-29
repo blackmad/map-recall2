@@ -1,0 +1,899 @@
+{
+ "street": "Tweede Leliedwarsstraat",
+ "seed": "0363100012168653",
+ "members": [
+  "0363100012168653",
+  "0363100012169918",
+  "0363100012169966",
+  "0363100012169976"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012168653 (face continues: 170047)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012169976 (face continues: 572336)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168695",
+   "reason": "frontage 54.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168747",
+   "reason": "frontage 64.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168751",
+   "reason": "frontage 81.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168758",
+   "reason": "frontage 68.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168763",
+   "reason": "frontage 85.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168764",
+   "reason": "frontage 97.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168078",
+   "reason": "frontage 89.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168084",
+   "reason": "frontage 93.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168147",
+   "reason": "frontage 79.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168148",
+   "reason": "frontage 75.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168149",
+   "reason": "frontage 63.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168154",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168158",
+   "reason": "frontage 66.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168159",
+   "reason": "frontage 54.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168160",
+   "reason": "frontage 38.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168161",
+   "reason": "frontage 71.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168162",
+   "reason": "frontage 71.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168163",
+   "reason": "frontage 50.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168221",
+   "reason": "frontage 89.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168225",
+   "reason": "frontage 69.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168291",
+   "reason": "frontage 89.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168293",
+   "reason": "frontage 65.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168654",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169903"
+  },
+  {
+   "pandId": "0363100012168655",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169904"
+  },
+  {
+   "pandId": "0363100012168656",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169899"
+  },
+  {
+   "pandId": "0363100012168657",
+   "reason": "frontage 39.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168690",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168653"
+  },
+  {
+   "pandId": "0363100012168691",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168653"
+  },
+  {
+   "pandId": "0363100012168692",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168653"
+  },
+  {
+   "pandId": "0363100012168693",
+   "reason": "frontage 31.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168694",
+   "reason": "frontage 34.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168750",
+   "reason": "frontage 70.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168752",
+   "reason": "frontage 33.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168753",
+   "reason": "frontage 39.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168756",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168655"
+  },
+  {
+   "pandId": "0363100012168757",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168656"
+  },
+  {
+   "pandId": "0363100012168760",
+   "reason": "frontage 45.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168761",
+   "reason": "frontage 45.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168762",
+   "reason": "frontage 75.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168808",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168809",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168841",
+   "reason": "frontage 67.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169034",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169089",
+   "reason": "frontage 65.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169848",
+   "reason": "frontage 99.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169849",
+   "reason": "frontage 95.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169898",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169088"
+  },
+  {
+   "pandId": "0363100012169900",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169902"
+  },
+  {
+   "pandId": "0363100012169901",
+   "reason": "frontage 36.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169903",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012572336"
+  },
+  {
+   "pandId": "0363100012169905",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169906"
+  },
+  {
+   "pandId": "0363100012169909",
+   "reason": "frontage 50.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169910",
+   "reason": "frontage 67.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169912",
+   "reason": "frontage 46.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169913",
+   "reason": "frontage 31.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169914",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169915"
+  },
+  {
+   "pandId": "0363100012169915",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169906"
+  },
+  {
+   "pandId": "0363100012169916",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170045"
+  },
+  {
+   "pandId": "0363100012169967",
+   "reason": "frontage 32.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169968",
+   "reason": "frontage 32.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169969",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169088"
+  },
+  {
+   "pandId": "0363100012169970",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169907"
+  },
+  {
+   "pandId": "0363100012169971",
+   "reason": "frontage 30.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169972",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169918"
+  },
+  {
+   "pandId": "0363100012169973",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169903"
+  },
+  {
+   "pandId": "0363100012169974",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169900"
+  },
+  {
+   "pandId": "0363100012169977",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169903"
+  },
+  {
+   "pandId": "0363100012169980",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169903"
+  },
+  {
+   "pandId": "0363100012169981",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169904"
+  },
+  {
+   "pandId": "0363100012169982",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169904"
+  },
+  {
+   "pandId": "0363100012169983",
+   "reason": "frontage 63.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169984",
+   "reason": "frontage 59.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169985",
+   "reason": "frontage 55.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169986",
+   "reason": "frontage 41.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169988",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170036"
+  },
+  {
+   "pandId": "0363100012170031",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169904"
+  },
+  {
+   "pandId": "0363100012170032",
+   "reason": "frontage 34.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170033",
+   "reason": "frontage 30.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170034",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170035"
+  },
+  {
+   "pandId": "0363100012170035",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170044"
+  },
+  {
+   "pandId": "0363100012170036",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170046"
+  },
+  {
+   "pandId": "0363100012172609",
+   "reason": "frontage 126.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172617",
+   "reason": "frontage 123.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170039",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169899"
+  },
+  {
+   "pandId": "0363100012170040",
+   "reason": "frontage 45.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170041",
+   "reason": "frontage 41.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170042",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012169988"
+  },
+  {
+   "pandId": "0363100012170043",
+   "reason": "frontage 64.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170048",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170049",
+   "reason": "frontage 86.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170050",
+   "reason": "frontage 91.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170051",
+   "reason": "frontage 74.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170052",
+   "reason": "frontage 77.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170053",
+   "reason": "frontage 54.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170095",
+   "reason": "frontage 44.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170096",
+   "reason": "frontage 40.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170098",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170099",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170100",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012170047"
+  },
+  {
+   "pandId": "0363100012170103",
+   "reason": "frontage 32.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170104",
+   "reason": "frontage 40.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170107",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170108",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170109",
+   "reason": "frontage 88.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170111",
+   "reason": "frontage 68.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170112",
+   "reason": "frontage 71.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170113",
+   "reason": "frontage 72.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170114",
+   "reason": "frontage 78.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170115",
+   "reason": "frontage 82.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170116",
+   "reason": "frontage 53.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170117",
+   "reason": "frontage 44.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170160",
+   "reason": "frontage 50.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170161",
+   "reason": "frontage 48.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170162",
+   "reason": "frontage 50.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170163",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170164",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170165",
+   "reason": "frontage 65.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170166",
+   "reason": "frontage 65.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172608",
+   "reason": "frontage 117.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172612",
+   "reason": "frontage 108.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172614",
+   "reason": "frontage 109.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172621",
+   "reason": "frontage 126.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172693",
+   "reason": "frontage 96.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172781",
+   "reason": "frontage 72.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172857",
+   "reason": "frontage 76.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172885",
+   "reason": "frontage 92.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173057",
+   "reason": "frontage 82.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173058",
+   "reason": "frontage 88.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173350",
+   "reason": "frontage 81.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173351",
+   "reason": "frontage 71.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173352",
+   "reason": "frontage 66.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173353",
+   "reason": "frontage 76.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173354",
+   "reason": "frontage 72.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173355",
+   "reason": "frontage 114.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173423",
+   "reason": "frontage 104.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172619",
+   "reason": "frontage 83.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172694",
+   "reason": "frontage 86.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172858",
+   "reason": "frontage 32.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172859",
+   "reason": "frontage 56.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172860",
+   "reason": "frontage 38.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172861",
+   "reason": "frontage 30.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172882",
+   "reason": "frontage 78.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172883",
+   "reason": "frontage 85.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172884",
+   "reason": "frontage 89.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172886",
+   "reason": "frontage 54.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172887",
+   "reason": "frontage 58.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172888",
+   "reason": "frontage 63.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172889",
+   "reason": "frontage 73.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172893",
+   "reason": "frontage 95.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173046",
+   "reason": "frontage 38.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173047",
+   "reason": "frontage 42.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173048",
+   "reason": "frontage 49.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173049",
+   "reason": "frontage 53.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173050",
+   "reason": "frontage 46.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173051",
+   "reason": "frontage 61.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173052",
+   "reason": "frontage 51.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173053",
+   "reason": "sightline to Tweede Leliedwarsstraat crosses 0363100012168656"
+  },
+  {
+   "pandId": "0363100012173054",
+   "reason": "frontage 38.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173055",
+   "reason": "frontage 42.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173056",
+   "reason": "frontage 45.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173133",
+   "reason": "frontage 43.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173134",
+   "reason": "frontage 34.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173135",
+   "reason": "frontage 47.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173339",
+   "reason": "frontage 42.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173340",
+   "reason": "frontage 45.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173341",
+   "reason": "frontage 51.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173343",
+   "reason": "frontage 56.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173344",
+   "reason": "frontage 60.7 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173421",
+   "reason": "frontage 68.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173422",
+   "reason": "frontage 77.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173424",
+   "reason": "frontage 108.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174243",
+   "reason": "frontage 82.6 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174245",
+   "reason": "frontage 84.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174246",
+   "reason": "frontage 83.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174252",
+   "reason": "frontage 86.9 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174422",
+   "reason": "frontage 93.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174428",
+   "reason": "frontage 103.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174433",
+   "reason": "frontage 105.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174439",
+   "reason": "frontage 92.1 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174619",
+   "reason": "no frontage on Tweede Leliedwarsstraat: No footprint edge faces Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174627",
+   "reason": "frontage 97.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174628",
+   "reason": "frontage 95.3 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174629",
+   "reason": "frontage 93.5 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174630",
+   "reason": "frontage 91.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174631",
+   "reason": "frontage 90.2 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174632",
+   "reason": "frontage 88.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174633",
+   "reason": "frontage 66.4 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012239612",
+   "reason": "frontage 66.0 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012571976",
+   "reason": "frontage 50.8 m from Tweede Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169088",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169902",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169906",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169908",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169911",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169917",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169975",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169978",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169979",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169987",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170044",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170045",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170046",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170097",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170101",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170102",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170105",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170106",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012168653",
+   "alongM": 0,
+   "widthM": 9.81,
+   "eavesM": 10.28,
+   "roofMaxM": 13.73,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169918",
+   "alongM": 9.68,
+   "widthM": 9.54,
+   "eavesM": 10.32,
+   "roofMaxM": 13.2,
+   "storeys3dbag": 4,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169966",
+   "alongM": 16.7,
+   "widthM": 4.5,
+   "eavesM": 9.16,
+   "roofMaxM": 14.38,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169976",
+   "alongM": 20.73,
+   "widthM": 3.56,
+   "eavesM": 7.95,
+   "roofMaxM": 10.14,
+   "storeys3dbag": 3,
+   "builtYear": 1832,
+   "uncertainty": []
+  }
+ ]
+}

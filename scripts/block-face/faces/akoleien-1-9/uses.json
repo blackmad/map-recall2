@@ -1,0 +1,331 @@
+{
+ "street": "Akoleienstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:15:16.002Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174654",
+   "addresses": [
+    "Akoleienstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Akoleienstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000562961"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174652",
+   "addresses": [
+    "Akoleienstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Akoleienstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000562972"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167879",
+   "addresses": [
+    "Akoleienstraat 5",
+    "Akoleienstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Akoleienstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000562976"
+    },
+    {
+     "address": "Akoleienstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000562980"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167944",
+   "addresses": [
+    "Akoleienstraat 9",
+    "Akoleienstraat 9A",
+    "Akoleienstraat 9C",
+    "Akoleienstraat 9D",
+    "Akoleienstraat 9E",
+    "Akoleienstraat 9F",
+    "Akoleienstraat 9G",
+    "Akoleienstraat 9H",
+    "Akoleienstraat 9K",
+    "Akoleienstraat 9L",
+    "Akoleienstraat 9M",
+    "Akoleienstraat 9N",
+    "Akoleienstraat 9P",
+    "Akoleienstraat 9R",
+    "Akoleienstraat 9S",
+    "Akoleienstraat 9B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 152",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000968788"
+    },
+    {
+     "address": "Rozengracht 154",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000968789"
+    },
+    {
+     "address": "Rozengracht 144",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000797610"
+    },
+    {
+     "address": "Rozengracht 148",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000797617"
+    },
+    {
+     "address": "Rozengracht 146",
+     "use": "winkelfunctie",
+     "areaM2": 28,
+     "bagId": "0363010003696954"
+    },
+    {
+     "address": "Akoleienstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012100681"
+    },
+    {
+     "address": "Akoleienstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012573491"
+    },
+    {
+     "address": "Akoleienstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012573492"
+    },
+    {
+     "address": "Akoleienstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012573493"
+    },
+    {
+     "address": "Akoleienstraat 9E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012573494"
+    },
+    {
+     "address": "Akoleienstraat 9F",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012573495"
+    },
+    {
+     "address": "Akoleienstraat 9G",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012573496"
+    },
+    {
+     "address": "Akoleienstraat 9H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012573497"
+    },
+    {
+     "address": "Akoleienstraat 9K",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012573498"
+    },
+    {
+     "address": "Akoleienstraat 9L",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012573499"
+    },
+    {
+     "address": "Akoleienstraat 9M",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012573500"
+    },
+    {
+     "address": "Akoleienstraat 9N",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012573501"
+    },
+    {
+     "address": "Akoleienstraat 9P",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012573502"
+    },
+    {
+     "address": "Akoleienstraat 9R",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012573503"
+    },
+    {
+     "address": "Akoleienstraat 9S",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012573504"
+    },
+    {
+     "address": "Rozengracht 150",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1463,
+     "bagId": "0363010012573505"
+    },
+    {
+     "address": "Akoleienstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010012574164"
+    }
+   ],
+   "units": 23,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588299492,
+     "lngLat": [
+      4.8784792,
+      52.3730536
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "check_date": "2026-01-13",
+      "name": "Fatih",
+      "religion": "muslim",
+      "wikidata": "Q674125",
+      "wikimedia_commons": "Category:Fatih Mosque (Amsterdam)"
+     },
+     "fetchedAt": "2026-10-29T20:15:16.002Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 3400742540,
+     "lngLat": [
+      4.8784397,
+      52.3729889
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "154",
+      "addr:postcode": "1016NJ",
+      "addr:street": "Rozengracht",
+      "amenity": "fast_food",
+      "name": "Grillroom Shoarma \"Hilal\"",
+      "opening_hours": "Mo-Su 16:30-01:00",
+      "phone": "+31 20 620 1603",
+      "website": "https://www.hilal-grillroom-shoarma-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T20:15:16.002Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10881672347,
+     "lngLat": [
+      4.8785844,
+      52.3730397
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "148",
+      "addr:postcode": "1016NJ",
+      "addr:street": "Rozengracht",
+      "air_conditioning": "yes",
+      "amenity": "restaurant",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Effendy Lahmacun Cafe",
+      "opening_hours": "Su,Mo 11:00-20:00; Tu-Sa 09:00-20:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "website": "https://www.effendy-amsterdam.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T20:15:16.002Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10881672348,
+     "lngLat": [
+      4.8787767,
+      52.3730723
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "name": "Burger House"
+     },
+     "fetchedAt": "2026-10-29T20:15:16.002Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10881672349,
+     "lngLat": [
+      4.8786684,
+      52.3730541
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "name": "Mirinda",
+      "opening_hours": "Mo-Su 10:00-21:30",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "website": "https://www.mirindaamsterdam.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T20:15:16.002Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

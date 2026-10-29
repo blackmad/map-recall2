@@ -1,0 +1,69 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:38:10.616Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172620",
+   "addresses": [
+    "Egelantiersgracht 49",
+    "Egelantiersgracht 49A",
+    "Egelantiersgracht 49B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 49",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000629022"
+    },
+    {
+     "address": "Egelantiersgracht 49A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012089262"
+    },
+    {
+     "address": "Egelantiersgracht 49B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012089263"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172618",
+   "addresses": [
+    "Egelantiersgracht 51A",
+    "Egelantiersgracht 51C",
+    "Egelantiersgracht 51B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 51A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000629024"
+    },
+    {
+     "address": "Egelantiersgracht 51C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000629029"
+    },
+    {
+     "address": "Egelantiersgracht 51B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000629028"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

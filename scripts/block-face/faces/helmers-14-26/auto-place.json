@@ -2,8 +2,8 @@
  "face": "helmers-14-26",
  "street": "Tweede Helmersstraat",
  "library": "helmersbuurt",
- "stripDate": "2024-11-29",
- "seconds": 0.66,
+ "stripDate": "2023-01-12",
+ "seconds": 3.75,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,51 +24,64 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5d645b",
-    "wallRaw": "#f9eecd",
+    "wall": "#332f2d",
+    "wallRaw": "#423a36",
     "skyline": {
-     "eavesM": 16.77,
-     "eavesRow": 155,
-     "confidence": 0.72,
-     "crown": {
-      "widthM": 1,
-      "riseM": 3.88,
-      "topWidthM": 0.45,
-      "centre": 0.24
-     }
+     "eavesM": 19.98,
+     "eavesRow": 27,
+     "confidence": 0.43,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
-    "columns": 2,
-    "doorSide": null,
+    "columns": null,
+    "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.603,
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 2.17,
-     "bayCentre": 0.24,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis (light ones: 1.02 m @ 0.56, 1.52 m @ 0.67), 0 wide slab(s)",
-     "openAxes": [
-      {
-       "widthM": 1.02,
-       "centre": 0.34,
-       "light": 0.56
-      },
-      {
-       "widthM": 1.52,
-       "centre": 0.77,
-       "light": 0.67
-      }
-     ],
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.46,
-    "foliageShare": 0.25
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 46 % without panorama data",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC -0.058 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.19; glazing storey band off by 0.67 mean 0.39 vs photo 0.77)",
+   "likeness": {
+    "pandId": "0363100012164923",
+    "ncc": -0.058,
+    "nccRaw": -0.058,
+    "shiftM": [
+     0.4,
+     -0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing storey band off by 0.67 mean 0.39 vs photo 0.77"
+    ],
+    "wall": {
+     "photo": "#1d1b1b",
+     "model": "#514b48",
+     "dL": 0.19
+    },
+    "glazing": {
+     "photo": 0.77,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.321
+   },
    "challengers": {}
   },
   {
@@ -76,45 +89,83 @@
    "address": "Tweede Helmersstraat 24",
    "builtYear": 1900,
    "widthM": 6.28,
-   "eavesM": 14.15,
+   "eavesM": 13.24,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#a49378",
-    "wallRaw": "#ebdab3",
+    "wall": "#332d2b",
+    "wallRaw": "#45413d",
     "skyline": {
-     "eavesM": 14.15,
-     "eavesRow": 260,
-     "confidence": 1,
+     "eavesM": 0,
+     "eavesRow": 826,
+     "confidence": 0,
      "crown": null
     },
     "stucco": false,
-    "bands": 3,
-    "columns": 4,
-    "doorSide": null,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.592,
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 1.55,
-     "bayCentre": 0.46,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis (light ones: 1.48 m @ 0.56), 0 wide slab(s)",
-     "openAxes": [
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
       {
-       "widthM": 1.48,
-       "centre": 0.46,
-       "light": 0.56
+       "atM": 9.55,
+       "widthM": 2.08,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.57,
+       "centre": 0.23
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.55,
+       "centre": 0.82
       }
-     ],
-     "slabs": []
+     ]
     },
-    "voidShare": 0.42,
-    "foliageShare": 0.24
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 42 % without panorama data",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.087 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.56 mean 0.51 vs photo 0.33)",
+   "likeness": {
+    "pandId": "0363100012157994",
+    "ncc": 0.087,
+    "nccRaw": 0.087,
+    "shiftM": [
+     0.25,
+     -0.15
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.56 mean 0.51 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#4e4541",
+     "model": "#534946",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.45
+   },
    "challengers": {}
   },
   {
@@ -122,38 +173,97 @@
    "address": "Tweede Helmersstraat 22",
    "builtYear": 1900,
    "widthM": 3.49,
-   "eavesM": 14,
+   "eavesM": 15.58,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#e5bd9e",
-    "wallRaw": "#eddcb6",
+    "wall": "#382f2d",
+    "wallRaw": "#47423f",
     "skyline": {
-     "eavesM": 14,
-     "eavesRow": 266,
-     "confidence": 1,
+     "eavesM": 0,
+     "eavesRow": 826,
+     "confidence": 0.13,
      "crown": null
     },
     "stucco": false,
-    "bands": 8,
-    "columns": 4,
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.64,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.026,
     "structure": {
-     "bayWidthM": 1.48,
-     "bayCentre": 0.71,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
+     "why": "no dark open axis, 1 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 13.92,
+       "widthM": 1.32,
+       "centre": 0.28
+      },
+      {
+       "atM": 10.02,
+       "widthM": 0.95,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.2,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.13,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.2,
+       "widthM": 1.05,
+       "centre": 0.79
+      },
+      {
+       "atM": 5.45,
+       "widthM": 0.9,
+       "centre": 0.2
+      }
+     ]
     },
-    "voidShare": 0.49,
-    "foliageShare": 0.22
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 49 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1900, type 1886-1892; frontage 3.49 m, type 5.4-6.6 m)",
+   "best": {
+    "type": "helmers-1889-balconette-pediment",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1886-1892",
+     "frontage 3.49 m, type 5.4-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 15.58 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -171,66 +281,65 @@
     "centre": 0.45
    },
    "strip": {
-    "wall": "#d3a684",
-    "wallRaw": "#f5deaa",
+    "wall": "#372f2c",
+    "wallRaw": "#3d3937",
     "skyline": {
-     "eavesM": 15.47,
-     "eavesRow": 207,
-     "confidence": 0.69,
-     "crown": {
-      "widthM": 0.75,
-      "riseM": 1.97,
-      "topWidthM": 0.17,
-      "centre": 0.88
-     }
+     "eavesM": 0,
+     "eavesRow": 826,
+     "confidence": 0.23,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
-    "columns": 6,
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.256,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.012,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 0.72 m at 0.47 (light 0.32): no brick spandrel between the storeys",
-     "openAxes": [
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
       {
-       "widthM": 0.72,
-       "centre": 0.47,
-       "light": 0.32
+       "atM": 14.05,
+       "widthM": 1.2,
+       "centre": 0.3
+      },
+      {
+       "atM": 13.45,
+       "widthM": 1.13,
+       "centre": 0.6
+      },
+      {
+       "atM": 10.15,
+       "widthM": 1.7,
+       "centre": 0.53
+      },
+      {
+       "atM": 7.15,
+       "widthM": 0.85,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.15,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.07,
+       "centre": 0.52
       }
-     ],
-     "slabs": []
+     ]
     },
-    "voidShare": 0.15,
-    "foliageShare": 0.31
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1900, type 1893-1893)",
-   "best": {
-    "type": "helmers-1893-jamb-blocks",
-    "score": 0,
-    "veto": [
-     "built 1900, type 1893-1893"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 15.47 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -239,60 +348,64 @@
    "address": "Tweede Helmersstraat 18",
    "builtYear": 1900,
    "widthM": 5.2,
-   "eavesM": 13.85,
+   "eavesM": 15.6,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#a28f6e",
-    "wallRaw": "#f8e8b9",
+    "wall": "#39302d",
+    "wallRaw": "#4c4946",
     "skyline": {
-     "eavesM": 13.85,
-     "eavesRow": 272,
-     "confidence": 0.97,
+     "eavesM": 19.55,
+     "eavesRow": 44,
+     "confidence": 0.51,
      "crown": {
-      "widthM": 1.4,
-      "riseM": 6.8,
-      "topWidthM": 0.1,
-      "centre": 0.18
+      "widthM": 0.95,
+      "riseM": 1.1,
+      "topWidthM": 0.75,
+      "centre": 0.77
      }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": 3,
-    "doorSide": null,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.705,
+    "accentShare": 0.062,
     "structure": {
-     "bayWidthM": 3.08,
-     "bayCentre": 0.32,
-     "balconies": false,
-     "why": "no dark open axis (light ones: 1.35 m @ 0.58, 1.02 m @ 0.59), 1 wide slab(s)",
-     "openAxes": [
-      {
-       "widthM": 1.35,
-       "centre": 0.47,
-       "light": 0.58
-      },
-      {
-       "widthM": 1.02,
-       "centre": 0.8,
-       "light": 0.59
-      }
-     ],
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.82 m (2.85 m wide), 9.45 m (2.15 m wide), 6.67 m (1.32 m wide)",
+     "openAxes": [],
      "slabs": [
       {
-       "atM": 6.2,
-       "widthM": 1.4,
-       "centre": 0.48
+       "atM": 12.82,
+       "widthM": 2.85,
+       "centre": 0.6
+      },
+      {
+       "atM": 9.45,
+       "widthM": 2.15,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.32,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.07,
+       "widthM": 0.85,
+       "centre": 0.49
       }
      ]
     },
-    "voidShare": 0.57,
-    "foliageShare": 0.17
+    "voidShare": 0.01,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 57 % without panorama data",
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -305,61 +418,76 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#a58d6b",
-    "wallRaw": "#f8edc5",
+    "wall": "#3c3330",
+    "wallRaw": "#4a4441",
     "skyline": {
-     "eavesM": 13.75,
-     "eavesRow": 276,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.93,
-      "riseM": 3.7,
-      "topWidthM": 0.1,
-      "centre": 0.92
-     }
+     "eavesM": 0,
+     "eavesRow": 826,
+     "confidence": 0,
+     "crown": null
     },
     "stucco": false,
-    "bands": 1,
-    "columns": 3,
-    "doorSide": null,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.645,
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 1.4 m at 0.16 (light 0): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 1.4,
-       "centre": 0.16,
-       "light": 0
-      },
-      {
-       "widthM": 1.43,
-       "centre": 0.49,
-       "light": 0
-      },
-      {
-       "widthM": 0.8,
-       "centre": 0.77,
-       "light": 0
-      }
-     ],
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
      "slabs": [
       {
-       "atM": 5.67,
+       "atM": 12.65,
+       "widthM": 1.25,
+       "centre": 0.24
+      },
+      {
+       "atM": 9.35,
+       "widthM": 1.6,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.45,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.9,
        "widthM": 0.82,
-       "centre": 0.51
+       "centre": 0.42
       }
      ]
     },
-    "voidShare": 0.5,
-    "foliageShare": 0.22
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 50 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1989, type 1886-1892)",
+   "best": {
+    "type": "helmers-1889-balconette-pediment",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1886-1892"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 13.47 m not compared)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -372,70 +500,60 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#e5b890",
-    "wallRaw": "#f6eaaf",
+    "wall": "#4f443f",
+    "wallRaw": "#4f4945",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 826,
-     "confidence": 0.23,
-     "crown": null
+     "eavesM": 19.45,
+     "eavesRow": 48,
+     "confidence": 0.53,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.2,
+      "topWidthM": 0.93,
+      "centre": 0.34
+     }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": 6,
+    "bands": 0,
+    "columns": null,
     "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.433,
+    "accentSide": "right",
+    "accentShare": 0.011,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.85 m at 0.17 (light 0): no brick spandrel between the storeys",
-     "openAxes": [
+     "why": "balcony slabs stacked at 12.75 m (2.1 m wide), 9.38 m (1.68 m wide), 5.85 m (1.38 m wide)",
+     "openAxes": [],
+     "slabs": [
       {
-       "widthM": 0.85,
-       "centre": 0.17,
-       "light": 0
+       "atM": 12.75,
+       "widthM": 2.1,
+       "centre": 0.34
       },
       {
-       "widthM": 0.78,
-       "centre": 0.43,
-       "light": 0
+       "atM": 9.38,
+       "widthM": 1.68,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.07,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.85,
+       "widthM": 1.38,
+       "centre": 0.45
       }
-     ],
-     "slabs": []
+     ]
     },
-    "voidShare": 0.32,
-    "foliageShare": 0.3
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best helmers-1900-balcony-arch scores 0.57 < 0.7 (strip columns 6 vs 3 bays)",
-   "best": {
-    "type": "helmers-1900-balcony-arch",
-    "score": 0.57,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 14 m; 3DBAG 15.66 m not compared)"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.137 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 6 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }

@@ -1,0 +1,79 @@
+{
+ "street": "Jacob van Lennepkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-25T16:29:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163778",
+   "addresses": [
+    "Jacob van Lennepkade 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 29-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000680229"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156512",
+   "addresses": [
+    "Jacob van Lennepkade 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 31-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000680237"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153662",
+   "addresses": [
+    "Jacob van Lennepkade 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 33-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000680242"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159235",
+   "addresses": [
+    "Jacob van Lennepkade 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepkade 35-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010003684937"
+    },
+    {
+     "address": "Jacob van Lennepkade 35-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010012151561"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

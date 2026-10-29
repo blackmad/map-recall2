@@ -3,7 +3,7 @@
  "street": "Eerste Constantijn Huygensstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 1.13,
+ "seconds": 1.26,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,17 +24,17 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#886e48",
+    "wall": "#8d7149",
     "wallRaw": "#565b4b",
     "skyline": {
      "eavesM": 17.07,
      "eavesRow": 116,
-     "confidence": 0.76,
+     "confidence": 0.86,
      "crown": {
-      "widthM": 1.88,
+      "widthM": 2.67,
       "riseM": 2.9,
-      "topWidthM": 0.82,
-      "centre": 0.49
+      "topWidthM": 1.05,
+      "centre": 0.58
      }
     },
     "stucco": false,
@@ -58,8 +58,8 @@
      "slabs": [
       {
        "atM": 12.3,
-       "widthM": 0.9,
-       "centre": 0.7
+       "widthM": 1.38,
+       "centre": 0.65
       }
      ]
     },
@@ -68,20 +68,19 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1897, type 1893-1893; frontage 5.13 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1897, type 1886-1892)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1897, type 1893-1893",
-     "frontage 5.13 m, type 5.6-6.4 m"
+     "built 1897, type 1886-1892"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 17.07 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 0.5,
+      "note": "strip cornice 17.07 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -99,21 +98,21 @@
    "address": "Eerste Constantijn Huygensstraat 47",
    "builtYear": 1897,
    "widthM": 5.81,
-   "eavesM": 16.38,
+   "eavesM": 15.64,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#553e2b",
+    "wall": "#533b2a",
     "wallRaw": "#5c4f3b",
     "skyline": {
-     "eavesM": 16.38,
-     "eavesRow": 144,
-     "confidence": 0.87,
+     "eavesM": 15.2,
+     "eavesRow": 191,
+     "confidence": 0.96,
      "crown": {
-      "widthM": 0.5,
-      "riseM": 3.45,
-      "topWidthM": 0.5,
-      "centre": 0.95
+      "widthM": 2.95,
+      "riseM": 1.43,
+      "topWidthM": 2.95,
+      "centre": 0.48
      }
     },
     "stucco": false,
@@ -131,36 +130,11 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.18
+    "foliageShare": 0.19
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best helmers-1897-balconette-tall scores 0.64 < 0.7 (strip cornice 16.38 m vs the type's 14.3 m)",
-   "best": {
-    "type": "helmers-1897-balconette-tall",
-    "score": 0.64,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 16.38 m vs the type's 14.3 m"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.04 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -173,22 +147,22 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#523927",
+    "wall": "#453323",
     "wallRaw": "#63503a",
     "skyline": {
      "eavesM": 15.3,
      "eavesRow": 187,
-     "confidence": 0.62,
+     "confidence": 0.63,
      "crown": {
-      "widthM": 1.73,
-      "riseM": 1.27,
-      "topWidthM": 0.6,
-      "centre": 0.09
+      "widthM": 1.77,
+      "riseM": 4.68,
+      "topWidthM": 0.28,
+      "centre": 0.45
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 13,
+    "columns": 12,
     "doorSide": "left",
     "accentSide": "left",
     "accentShare": 0.115,
@@ -196,29 +170,29 @@
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.65 m at 0.23 (light 0.22): no brick spandrel between the storeys",
+     "why": "dark open axis 0.65 m at 0.22 (light 0.19): no brick spandrel between the storeys",
      "openAxes": [
       {
        "widthM": 0.65,
-       "centre": 0.23,
-       "light": 0.22
+       "centre": 0.22,
+       "light": 0.19
       },
       {
-       "widthM": 0.82,
-       "centre": 0.54,
+       "widthM": 0.8,
+       "centre": 0.53,
        "light": 0.11
-      },
-      {
-       "widthM": 0.78,
-       "centre": 0.66,
-       "light": 0.06
       }
      ],
      "slabs": [
       {
        "atM": 9.38,
-       "widthM": 1.45,
+       "widthM": 1.43,
        "centre": 0.08
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.9,
+       "centre": 0.53
       },
       {
        "atM": 6.3,
@@ -237,20 +211,20 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1897, type 1893-1893; frontage 24.48 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1897, type 1886-1892; frontage 24.48 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1897, type 1893-1893",
-     "frontage 24.48 m, type 5.6-6.4 m"
+     "built 1897, type 1886-1892",
+     "frontage 24.48 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 15.3 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 0.5,
+      "note": "strip cornice 15.3 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
@@ -262,7 +236,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 13 vs 3 bays"
+      "note": "strip columns 12 vs 3 bays"
      }
     ]
    },
@@ -278,86 +252,69 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5d402a",
-    "wallRaw": "#614b35",
+    "wall": "#9f9274",
+    "wallRaw": "#604b35",
     "skyline": {
-     "eavesM": 15.82,
-     "eavesRow": 166,
-     "confidence": 0.96,
+     "eavesM": 15.97,
+     "eavesRow": 160,
+     "confidence": 0.97,
      "crown": {
-      "widthM": 2.67,
-      "riseM": 4,
+      "widthM": 2.88,
+      "riseM": 3.95,
       "topWidthM": 0.15,
-      "centre": 0.71
+      "centre": 0.69
      }
     },
     "stucco": false,
     "bands": 2,
-    "columns": 3,
+    "columns": null,
     "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.068,
+    "accentShare": 0.067,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.63 m at 0.15 (light 0.13): no brick spandrel between the storeys",
+     "why": "dark open axis 0.6 m at 0.16 (light 0.13): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 0.63,
-       "centre": 0.15,
+       "widthM": 0.6,
+       "centre": 0.16,
        "light": 0.13
-      },
-      {
-       "widthM": 0.63,
-       "centre": 0.83,
-       "light": 0.15
       }
      ],
      "slabs": [
       {
-       "atM": 9.9,
-       "widthM": 1,
+       "atM": 9.97,
+       "widthM": 1.02,
        "centre": 0.49
-      },
-      {
-       "atM": 6.3,
-       "widthM": 0.8,
-       "centre": 0.31
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.13
+    "foliageShare": 0.12
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1897, type 1893-1893; frontage 5.04 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1897, type 1886-1892)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1897, type 1893-1893",
-     "frontage 5.04 m, type 5.6-6.4 m"
+     "built 1897, type 1886-1892"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 15.82 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 1,
+      "note": "strip cornice 15.97 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
       "note": "strip accent share 0.029 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },

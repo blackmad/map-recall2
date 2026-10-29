@@ -1,0 +1,400 @@
+{
+ "face": "lelie-126-142",
+ "street": "Nieuwe Leliestraat",
+ "library": "jordaan",
+ "stripDate": "2019-05-13",
+ "seconds": 3.83,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174264",
+   "address": "Nieuwe Leliestraat 142",
+   "builtYear": 1866,
+   "widthM": 4.51,
+   "eavesM": 11.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d897b",
+    "wallRaw": "#8e8b7d",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 160,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 4,
+      "topWidthM": 0.15,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.501,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.07,
+       "widthM": 1.13,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.073 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 43 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012174264",
+    "ncc": 0.073,
+    "nccRaw": 0.073,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.81,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 43 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#9d9da0",
+     "model": "#9d9a8e",
+     "dL": -0.035
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 5,
+     "model": 2
+    },
+    "iou": 0.223
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174333",
+   "address": "Nieuwe Leliestraat 140",
+   "builtYear": 1863,
+   "widthM": 4.51,
+   "eavesM": 12.77,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.68,
+    "depthM": 0.44,
+    "centre": 0.187,
+    "lineRD": [
+     [
+      120404.24,
+      487575.38275
+     ],
+     [
+      120406.622,
+      487576.00074999995
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d7d7d7",
+    "wallRaw": "#7d7865",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 104,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 2.6,
+      "topWidthM": 0.33,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.437,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1.23,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 34 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012174333",
+    "ncc": 0.124,
+    "nccRaw": 0.124,
+    "shiftM": [
+     0.05,
+     0.1
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 34 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#857c6a",
+     "model": "#999999",
+     "dL": 0.131
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.346
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.155
+   }
+  },
+  {
+   "pandId": "0363100012174418",
+   "address": "Nieuwe Leliestraat 138A",
+   "builtYear": 2004,
+   "widthM": 4.4,
+   "eavesM": 11.56,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174419",
+   "address": "Nieuwe Leliestraat 136",
+   "builtYear": 1935,
+   "widthM": 4.35,
+   "eavesM": 11.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174420",
+   "address": "Nieuwe Leliestraat 134",
+   "builtYear": 1871,
+   "widthM": 4.21,
+   "eavesM": 13.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174421",
+   "address": "Nieuwe Leliestraat 130",
+   "builtYear": 1966,
+   "widthM": 8.45,
+   "eavesM": 9.74,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174422",
+   "address": "Nieuwe Leliestraat 128A",
+   "builtYear": 1862,
+   "widthM": 4.41,
+   "eavesM": 8.8,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174245",
+   "address": "Nieuwe Leliestraat 126A",
+   "builtYear": 1808,
+   "widthM": 8.71,
+   "eavesM": 9.13,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 735,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "face": "akoleien-2-10-r1",
+ "image": "staging/block-face/akoleien-2-10-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 394,
+ "height": 761,
+ "groundNAP": 0.307,
+ "heightM": 19.02,
+ "frame": {
+  "midRD": [
+   120330.95943750002,
+   487384.6285
+  ],
+  "uRD": [
+   -0.34437239887321824,
+   0.9388331326142602
+  ],
+  "nRD": [
+   0.9388331326142602,
+   0.34437239887321824
+  ]
+ },
+ "x0M": -5.33,
+ "x1M": 4.52,
+ "date": "2021-03-17",
+ "coverage": 0.5,
+ "spans": [
+  {
+   "pandId": "0363100012174736",
+   "x0M": -5.33,
+   "x1M": 0.42,
+   "px": [
+    0,
+    230
+   ],
+   "date": "2021-03-17",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002044_pano_0000_001642",
+     "timestamp": "2021-03-17T11:13:12.810950Z",
+     "distanceM": 29.4,
+     "obliquityDeg": 37.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174739",
+   "x0M": 0.45,
+   "x1M": 4.52,
+   "px": [
+    231,
+    394
+   ],
+   "date": "2021-03-17",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002044_pano_0000_001642",
+     "timestamp": "2021-03-17T11:13:12.810950Z",
+     "distanceM": 26.6,
+     "obliquityDeg": 31.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002044_pano_0000_001641",
+     "timestamp": "2021-03-17T11:13:11.890990Z",
+     "distanceM": 22.4,
+     "obliquityDeg": 38.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-03-17": 2,
+  "2020-04-24": 1,
+  "2018-05-03": 0,
+  "2023-02-13": 0,
+  "2019-05-13": 1,
+  "2020-01-10": 0,
+  "2022-04-25": 1,
+  "2016-08-17": 1,
+  "2024-12-17": 1,
+  "2016-08-15": 2,
+  "2018-05-02": 1,
+  "2025-07-03": 1,
+  "2022-01-27": 1,
+  "2018-05-14": 1,
+  "2023-04-11": 0,
+  "2022-04-22": 0,
+  "2024-12-16": 0,
+  "2019-01-15": 0,
+  "2022-04-29": 0,
+  "2020-01-07": 0,
+  "2023-03-13": 0,
+  "2022-12-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "akoleien-2-10",
+  "px": [
+   781,
+   1175
+  ]
+ }
+}

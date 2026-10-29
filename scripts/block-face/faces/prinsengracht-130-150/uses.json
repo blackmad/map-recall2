@@ -1,0 +1,195 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:06:30.713Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174415",
+   "addresses": [
+    "Prinsengracht 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 150-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000783945"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7487205751,
+     "lngLat": [
+      4.883347,
+      52.3754325
+     ],
+     "tags": {
+      "amenity": "cafe"
+     },
+     "fetchedAt": "2026-10-29T22:06:30.713Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174416",
+   "addresses": [
+    "Prinsengracht 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 148-H",
+     "use": "kantoorfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000783941"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174417",
+   "addresses": [
+    "Prinsengracht 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 146-O",
+     "use": "industriefunctie",
+     "areaM2": 63,
+     "bagId": "0363010000783939"
+    },
+    {
+     "address": "Prinsengracht 146-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000783938"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164999",
+   "addresses": [
+    "Prinsengracht 142",
+    "Prinsengracht 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 142",
+     "use": "kantoorfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000783932"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165018",
+   "addresses": [
+    "Prinsengracht 136",
+    "Prinsengracht 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 136-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000783922"
+    },
+    {
+     "address": "Prinsengracht 136-O",
+     "use": "winkelfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000783923"
+    },
+    {
+     "address": "Prinsengracht 138-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000783927"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174698",
+   "addresses": [
+    "Prinsengracht 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000943012"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173566",
+   "addresses": [
+    "Prinsengracht 130",
+    "Prinsengracht 130A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 130A",
+     "use": "winkelfunctie",
+     "areaM2": 185,
+     "bagId": "0363010001172732"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9896139617,
+     "lngLat": [
+      4.8837459,
+      52.3758369
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "130A",
+      "addr:postcode": "1015EB",
+      "addr:street": "Prinsengracht",
+      "check_date": "2025-03-17",
+      "name": "Tickets & Gifts",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-10-29T22:06:30.713Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11211150637,
+     "lngLat": [
+      4.8837242,
+      52.3758919
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-10-22",
+      "name": "Leliebieb",
+      "public_bookcase:type": "wooden_cabinet"
+     },
+     "fetchedAt": "2026-10-29T22:06:30.713Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  }
+ ]
+}

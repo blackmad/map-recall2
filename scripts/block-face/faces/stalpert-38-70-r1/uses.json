@@ -1,0 +1,89 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166062",
+   "addresses": [
+    "Daniël Stalpertstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000615226"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164016",
+   "addresses": [
+    "Daniël Stalpertstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000615215"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158633",
+   "addresses": [
+    "Daniël Stalpertstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000615207"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164659",
+   "addresses": [
+    "Daniël Stalpertstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000615198"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153510",
+   "addresses": [
+    "Daniël Stalpertstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000615190"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

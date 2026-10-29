@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bloemgracht-121-197-r1",
+ "street": "Bloemgracht",
+ "sources": [
+  {
+   "id": "strip-2024-12-17",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-17",
+   "image": "staging/block-face/bloemgracht-121-197-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/bloemgracht-121-197/auto-place.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174177",
+   "slug": "bloemgracht-174177",
+   "address": "Bloemgracht 129",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "measuredPalette": {
+     "brick": "#161810",
+     "evidence": "strip 2024-12-17 span 869-1070: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#211b15"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 axes (2 under 4.6 m, 4 over 7.6 m)",
+    "identicalBays": "every upper storey alike",
+    "windowsPerStorey": "ground: door + windows | upper: 2-4",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "a plain white cornice, sometimes one dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the 18th c. cornice ornament (Louis XIV/XV) is drawn as a plain cornice"
+    ],
+    "citation": "auto-place: jordaan-1850-cornice-house scored 1 on eaves 1, stucco 1, crown 1, columns 1; strip 2024-12-17 span 869-1070"
+   }
+  },
+  {
+   "pandId": "0363100012168006",
+   "slug": "bloemgracht-168006",
+   "address": "Bloemgracht 131",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#24241b",
+     "evidence": "strip 2024-12-17 span 1070-1359: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "dormer",
+    "paletteOverrides": {
+     "brick": "#030403"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 axes (2 under 4.6 m, 4 over 7.6 m)",
+    "identicalBays": "every upper storey alike",
+    "windowsPerStorey": "ground: door + windows | upper: 2-4",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "a house door and windows, or a shop",
+    "signage": "per shop",
+    "roofline": "a plain white cornice, sometimes one dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the 18th c. cornice ornament (Louis XIV/XV) is drawn as a plain cornice"
+    ],
+    "citation": "auto-place: jordaan-1850-cornice-house scored 1 on eaves 1, stucco 1, crown 1, columns 1; strip 2024-12-17 span 1070-1359"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

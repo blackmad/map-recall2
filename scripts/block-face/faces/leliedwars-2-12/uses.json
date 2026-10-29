@@ -1,0 +1,209 @@
+{
+ "street": "Eerste Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:19:48.213Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172603",
+   "addresses": [
+    "Eerste Leliedwarsstraat 10",
+    "Eerste Leliedwarsstraat 12D",
+    "Eerste Leliedwarsstraat 12A",
+    "Eerste Leliedwarsstraat 12B",
+    "Eerste Leliedwarsstraat 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 10",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000937512"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000937513"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000937514"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000937515"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000937516"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172606",
+   "addresses": [
+    "Eerste Leliedwarsstraat 8A",
+    "Eerste Leliedwarsstraat 8B",
+    "Eerste Leliedwarsstraat 8C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001025074"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010001025075"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001025076"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172607",
+   "addresses": [
+    "Eerste Leliedwarsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000547383"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747823968,
+     "lngLat": [
+      4.8825286,
+      52.3758916
+     ],
+     "tags": {
+      "name": "patina",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-10-29T21:19:48.213Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172611",
+   "addresses": [
+    "Eerste Leliedwarsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000944519"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747871779,
+     "lngLat": [
+      4.882516,
+      52.3759328
+     ],
+     "tags": {
+      "name": "Galilea",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-29T21:19:48.213Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172613",
+   "addresses": [
+    "Eerste Leliedwarsstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 2A-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000547379"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 2A",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012065383"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747855381,
+     "lngLat": [
+      4.8824892,
+      52.3759684
+     ],
+     "tags": {
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-10-29T21:19:48.213Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172891",
+   "addresses": [
+    "Eerste Leliedwarsstraat 2"
+   ],
+   "groundUnits": [],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747871770,
+     "lngLat": [
+      4.8825751,
+      52.3760744
+     ],
+     "tags": {
+      "female": "yes",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-29T21:19:48.213Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    }
+   ]
+  }
+ ]
+}

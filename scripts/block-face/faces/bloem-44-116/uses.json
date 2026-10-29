@@ -1,0 +1,511 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:36:55.692Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174042",
+   "addresses": [
+    "Bloemstraat 100",
+    "Bloemstraat 100A",
+    "Bloemstraat 100B",
+    "Bloemstraat 100C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 100-H",
+     "use": "industriefunctie",
+     "areaM2": 307,
+     "bagId": "0363010000788638"
+    },
+    {
+     "address": "Bloemstraat 100A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012108600"
+    },
+    {
+     "address": "Bloemstraat 100B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012108601"
+    },
+    {
+     "address": "Bloemstraat 100C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012108602"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012243810",
+   "addresses": [
+    "Bloemstraat 98",
+    "Bloemstraat 98A",
+    "Bloemstraat 98B",
+    "Bloemstraat 98C",
+    "Bloemstraat 98D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 98",
+     "use": "industriefunctie",
+     "areaM2": 166,
+     "bagId": "0363010011944103"
+    },
+    {
+     "address": "Bloemstraat 98A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012087654"
+    },
+    {
+     "address": "Bloemstraat 98B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012087655"
+    },
+    {
+     "address": "Bloemstraat 98C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012087656"
+    },
+    {
+     "address": "Bloemstraat 98D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087657"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174043",
+   "addresses": [
+    "Bloemstraat 96",
+    "Bloemstraat 96A",
+    "Bloemstraat 96B",
+    "Bloemstraat 96C",
+    "Bloemstraat 96D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 96-H",
+     "use": "industriefunctie",
+     "areaM2": 63,
+     "bagId": "0363010011944102"
+    },
+    {
+     "address": "Bloemstraat 96",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 212,
+     "bagId": "0363010012123669"
+    },
+    {
+     "address": "Bloemstraat 96A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012154827"
+    },
+    {
+     "address": "Bloemstraat 96B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012154828"
+    },
+    {
+     "address": "Bloemstraat 96D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012589693"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170222",
+   "addresses": [
+    "Bloemstraat 88",
+    "Bloemstraat 90A",
+    "Bloemstraat 90B",
+    "Bloemstraat 90",
+    "Bloemstraat 92",
+    "Bloemstraat 92A",
+    "Bloemstraat 92B",
+    "Bloemstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 90A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000589084"
+    },
+    {
+     "address": "Bloemstraat 90B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000589085"
+    },
+    {
+     "address": "Bloemstraat 92",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000589086"
+    },
+    {
+     "address": "Bloemstraat 92A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000589087"
+    },
+    {
+     "address": "Bloemstraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000589088"
+    },
+    {
+     "address": "Bloemstraat 94",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000589089"
+    },
+    {
+     "address": "Bloemstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000589082"
+    },
+    {
+     "address": "Bloemstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000589083"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170216",
+   "addresses": [
+    "Bloemstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000589075"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170217",
+   "addresses": [
+    "Bloemstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000589072"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170155",
+   "addresses": [
+    "Bloemstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000946391"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170218",
+   "addresses": [
+    "Bloemstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000589052"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170219",
+   "addresses": [
+    "Bloemstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000589046"
+    },
+    {
+     "address": "Bloemstraat 64-O",
+     "use": "industriefunctie",
+     "areaM2": 54,
+     "bagId": "0363010000589047"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170220",
+   "addresses": [
+    "Bloemstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 62-O",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010000589041"
+    },
+    {
+     "address": "Bloemstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000589040"
+    },
+    {
+     "address": "Bloemstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012600695"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170157",
+   "addresses": [
+    "Bloemstraat 56C",
+    "Bloemstraat 56D",
+    "Bloemstraat 56B",
+    "Bloemstraat 56A",
+    "Bloemstraat 58C",
+    "Bloemstraat 58D",
+    "Bloemstraat 58B",
+    "Bloemstraat 58A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 56C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000548616"
+    },
+    {
+     "address": "Bloemstraat 58C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000701525"
+    },
+    {
+     "address": "Bloemstraat 58D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000701526"
+    },
+    {
+     "address": "Bloemstraat 56D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000724286"
+    },
+    {
+     "address": "Bloemstraat 58B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000943338"
+    },
+    {
+     "address": "Bloemstraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000943339"
+    },
+    {
+     "address": "Bloemstraat 58A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000943337"
+    },
+    {
+     "address": "Bloemstraat 56A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000943336"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170158",
+   "addresses": [
+    "Bloemstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000589025"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170214",
+   "addresses": [
+    "Bloemstraat 48A",
+    "Bloemstraat 48B",
+    "Bloemstraat 48C",
+    "Bloemstraat 48D",
+    "Bloemstraat 48E",
+    "Bloemstraat 48F",
+    "Bloemstraat 48G",
+    "Bloemstraat 50A",
+    "Bloemstraat 50B",
+    "Bloemstraat 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000981657"
+    },
+    {
+     "address": "Bloemstraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000981658"
+    },
+    {
+     "address": "Bloemstraat 48C",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000981659"
+    },
+    {
+     "address": "Bloemstraat 48D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000981660"
+    },
+    {
+     "address": "Bloemstraat 48E",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000981661"
+    },
+    {
+     "address": "Bloemstraat 48F",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000981662"
+    },
+    {
+     "address": "Bloemstraat 48G",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000981663"
+    },
+    {
+     "address": "Bloemstraat 50A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000981664"
+    },
+    {
+     "address": "Bloemstraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000981665"
+    },
+    {
+     "address": "Bloemstraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000981666"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169092",
+   "addresses": [
+    "Bloemstraat 44",
+    "Bloemstraat 46B",
+    "Bloemstraat 46D",
+    "Bloemstraat 46C",
+    "Bloemstraat 46A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 44-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000589000"
+    },
+    {
+     "address": "Bloemstraat 46D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012163879"
+    },
+    {
+     "address": "Bloemstraat 46C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012163878"
+    },
+    {
+     "address": "Bloemstraat 46A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001007198"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

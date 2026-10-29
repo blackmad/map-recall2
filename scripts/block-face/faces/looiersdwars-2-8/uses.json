@@ -1,0 +1,113 @@
+{
+ "street": "Eerste Looiersdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:43:37.268Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170074",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 8B-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 58,
+     "bagId": "0363010003764088"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170007",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 8A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 8A-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003764085"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170123",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 6",
+     "use": "woonfunctie,kantoorfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000547470"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170122",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 4-H",
+     "use": "industriefunctie",
+     "areaM2": 45,
+     "bagId": "0363010000547465"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012253731",
+   "addresses": [
+    "Eerste Looiersdwarsstraat 2"
+   ],
+   "groundUnits": [],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 859922189,
+     "lngLat": [
+      4.8807031,
+      52.3692937
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1016VM",
+      "addr:street": "Eerste Looiersdwarsstraat",
+      "check_date": "2025-09-02",
+      "check_date:currency:XBT": "2025-09-02",
+      "contact:email": "info@barbershopjordaan.nl",
+      "contact:instagram": "barbershopjordaan",
+      "currency:XBT": "yes",
+      "male": "yes",
+      "name": "Barbershop Jordaan",
+      "opening_hours": "Tu-Fr 10:30-18:00; Sa 10:00-18:00",
+      "payment:lightning": "yes",
+      "payment:lightning_contactless": "no",
+      "payment:onchain": "no",
+      "shop": "hairdresser",
+      "website": "https://barbershopjordaan.com/"
+     },
+     "fetchedAt": "2026-10-29T22:43:37.268Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

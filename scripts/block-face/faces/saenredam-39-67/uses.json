@@ -1,0 +1,388 @@
+{
+ "street": "Saenredamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:44:23.196Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156480",
+   "addresses": [
+    "Saenredamstraat 39",
+    "Saenredamstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 39-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001018695"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2506076504,
+     "lngLat": [
+      4.8889362,
+      52.3558187
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39-H",
+      "addr:postcode": "1072CC",
+      "addr:street": "Saenredamstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-08",
+      "email": "info@brasseriesent.nl",
+      "name": "Brasserie SenT",
+      "opening_hours": "Tu-Th 18:00-22:30; Fr-Su 13:00-22:30",
+      "phone": "+31 20 676 2495",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.restaurantsent.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-29T20:44:23.196Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164796",
+   "addresses": [
+    "Saenredamstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001009639"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165641",
+   "addresses": [
+    "Saenredamstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000996286"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166390",
+   "addresses": [
+    "Saenredamstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000802679"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159604",
+   "addresses": [
+    "Saenredamstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000802690"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236524",
+   "addresses": [
+    "Saenredamstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000802701"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236766",
+   "addresses": [
+    "Saenredamstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 53-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000802708"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161816",
+   "addresses": [
+    "Saenredamstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000802715"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159856",
+   "addresses": [
+    "Saenredamstraat 57A",
+    "Saenredamstraat 57B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 57A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001019058"
+    },
+    {
+     "address": "Saenredamstraat 57B",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001019059"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153586",
+   "addresses": [
+    "Saenredamstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000802730"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154326",
+   "addresses": [
+    "Saenredamstraat 59A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 59A-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000802734"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236583",
+   "addresses": [
+    "Saenredamstraat 59B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 59B-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000802738"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167425",
+   "addresses": [
+    "Saenredamstraat 59C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 59C-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001994217"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236356",
+   "addresses": [
+    "Saenredamstraat 59D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 59D-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001040413"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160264",
+   "addresses": [
+    "Saenredamstraat 61",
+    "Saenredamstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 61-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000802753"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455444,
+     "lngLat": [
+      4.88992,
+      52.3557691
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "61-H",
+      "addr:postcode": "1072CD",
+      "addr:street": "Saenredamstraat",
+      "amenity": "studio",
+      "check_date": "2026-01-08",
+      "email": "info@cortimedia.nl",
+      "name": "Cortimedia",
+      "phone": "+31 20 4220787",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "studio": "audio",
+      "website": "https://www.cortimedia.nl"
+     },
+     "fetchedAt": "2026-10-29T20:44:23.196Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164539",
+   "addresses": [
+    "Saenredamstraat 65",
+    "Saenredamstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 65-H",
+     "use": "industriefunctie",
+     "areaM2": 32,
+     "bagId": "0363010000802768"
+    },
+    {
+     "address": "Saenredamstraat 67-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000802776"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455619,
+     "lngLat": [
+      4.8900523,
+      52.3557604
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "65-H",
+      "addr:postcode": "1072CD",
+      "addr:street": "Saenredamstraat",
+      "check_date": "2026-01-08",
+      "craft": "atelier",
+      "email": "info@violetteanna.com",
+      "name": "Violette Anna Atelier",
+      "opening_hours": "\"By appointment\"",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://violetteanna.com"
+     },
+     "fetchedAt": "2026-10-29T20:44:23.196Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817455676,
+     "lngLat": [
+      4.8901201,
+      52.3557508
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "67-H",
+      "addr:postcode": "1072CD",
+      "addr:street": "Saenredamstraat",
+      "amenity": "cafe",
+      "check_date": "2026-01-08",
+      "diet:vegan": "yes",
+      "fixme": "Seems temporarily closed. No indication of when it will be open again, or if it will be permanently closed",
+      "name": "Olive & Cookie",
+      "opening_hours": "Tu-Fr 12:00-19:00; Sa 12:00-16:00",
+      "phone": "+31 20 4707190",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-29T20:44:23.196Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

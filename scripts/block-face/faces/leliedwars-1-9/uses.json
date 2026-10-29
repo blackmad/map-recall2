@@ -1,0 +1,160 @@
+{
+ "street": "Eerste Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:25:01.648Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172892",
+   "addresses": [
+    "Eerste Leliedwarsstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 1-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000703263"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11747871770,
+     "lngLat": [
+      4.8825751,
+      52.3760744
+     ],
+     "tags": {
+      "female": "yes",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-29T21:25:01.648Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172615",
+   "addresses": [
+    "Eerste Leliedwarsstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000547381"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172616",
+   "addresses": [
+    "Eerste Leliedwarsstraat 5",
+    "Eerste Leliedwarsstraat 5B",
+    "Eerste Leliedwarsstraat 5A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 5-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000547382"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 5B",
+     "use": "kantoorfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012599649"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012599648"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168765",
+   "addresses": [
+    "Eerste Leliedwarsstraat 7",
+    "Eerste Leliedwarsstraat 7A",
+    "Eerste Leliedwarsstraat 7B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000547386"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 7",
+     "use": "winkelfunctie",
+     "areaM2": 375,
+     "bagId": "0363010003761293"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 7A",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012599662"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 7B",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012599663"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168766",
+   "addresses": [
+    "Eerste Leliedwarsstraat 9A",
+    "Eerste Leliedwarsstraat 9B",
+    "Eerste Leliedwarsstraat 9C",
+    "Eerste Leliedwarsstraat 9D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Leliedwarsstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000547389"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000547390"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000547391"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000547392"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,318 @@
+{
+ "face": "akoleien-1-9",
+ "street": "Akoleienstraat",
+ "library": "jordaan",
+ "stripDate": "2021-03-17",
+ "seconds": 3.66,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174654",
+   "address": "Akoleienstraat 1",
+   "builtYear": 1902,
+   "widthM": 4.64,
+   "eavesM": 12.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775e52",
+    "wallRaw": "#6e5a4f",
+    "skyline": {
+     "eavesM": 38.3,
+     "eavesRow": 40,
+     "confidence": 0.36,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.107,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.075 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.47; glazing storey band off by 0.69 mean 0.34 vs photo 1.00; wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012174654",
+    "ncc": 0.075,
+    "nccRaw": 0.075,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.47",
+     "glazing storey band off by 0.69 mean 0.34 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#8f7163",
+     "dL": 0.475
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.372
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174652",
+   "address": "Akoleienstraat 3",
+   "builtYear": 1899,
+   "widthM": 4.5,
+   "eavesM": 9.96,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#38332d",
+    "wallRaw": "#6c614e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1572,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.57,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.27 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.27,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1.3,
+       "centre": 0.3
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.2,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39 mean 0.36 vs photo 0.50; columns 2 vs photo 5)",
+   "likeness": {
+    "pandId": "0363100012174652",
+    "ncc": 0.106,
+    "nccRaw": 0.106,
+    "shiftM": [
+     -0.35,
+     0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.36 vs photo 0.50",
+     "columns 2 vs photo 5"
+    ],
+    "wall": {
+     "photo": "#423d36",
+     "model": "#554d44",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.5,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 5,
+     "model": 2
+    },
+    "iou": 0.376
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167879",
+   "address": "Akoleienstraat 5",
+   "builtYear": 1921,
+   "widthM": 8.98,
+   "eavesM": 8.69,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.35,
+    "toM": 8.95,
+    "depthM": 0.7,
+    "centre": 0.743,
+    "lineRD": [
+     [
+      120337.82293750001,
+      487381.5395
+     ],
+     [
+      120340.8699375,
+      487375.02150000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#838079",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1572,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167944",
+   "address": "Akoleienstraat 9",
+   "builtYear": 1886,
+   "widthM": 12.28,
+   "eavesM": 8.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4440",
+    "wallRaw": "#59514f",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 1143,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 28.57,
+      "topWidthM": 0.82,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.284,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.33 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.33,
+       "light": 0.35
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1886, type 1600-1870; frontage 12.28 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1886, type 1600-1870",
+     "frontage 12.28 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.1 m = 3 storeys of 2.7 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 29.21 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 28.57 m, top 0.82 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

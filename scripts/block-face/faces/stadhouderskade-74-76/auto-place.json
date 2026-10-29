@@ -1,0 +1,184 @@
+{
+ "face": "stadhouderskade-74-76",
+ "street": "Stadhouderskade",
+ "library": "de-pijp",
+ "stripDate": "2025-01-30",
+ "seconds": 0.83,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157625",
+   "address": "Stadhouderskade 76",
+   "builtYear": 1890,
+   "widthM": 7.06,
+   "eavesM": 16.07,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62685c",
+    "wallRaw": "#5d5d4d",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.8,
+      "topWidthM": 0.6,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.6,
+       "widthM": 0.95,
+       "centre": 0.83
+      },
+      {
+       "atM": 11.88,
+       "widthM": 0.8,
+       "centre": 0.89
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.05,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237129",
+   "address": "Stadhouderskade 74",
+   "builtYear": 1878,
+   "widthM": 16.23,
+   "eavesM": 16.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78837f",
+    "wallRaw": "#676957",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.78,
+      "riseM": 1.72,
+      "topWidthM": 1.98,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.036,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.72,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.78,
+       "widthM": 6.08,
+       "centre": 0.8
+      },
+      {
+       "atM": 15.47,
+       "widthM": 6.13,
+       "centre": 0.21
+      },
+      {
+       "atM": 14.5,
+       "widthM": 1.45,
+       "centre": 0.32
+      },
+      {
+       "atM": 11.35,
+       "widthM": 6.13,
+       "centre": 0.21
+      },
+      {
+       "atM": 10.68,
+       "widthM": 1.77,
+       "centre": 0.18
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877; frontage 16.23 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877",
+     "frontage 16.23 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.6 m = 3 storeys of 5.53 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.78 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

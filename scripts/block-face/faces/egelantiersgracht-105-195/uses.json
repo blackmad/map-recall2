@@ -1,0 +1,470 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:40:36.436Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169969",
+   "addresses": [
+    "Egelantiersgracht 105",
+    "Egelantiersgracht 109",
+    "Egelantiersgracht 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 105",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000629128"
+    },
+    {
+     "address": "Egelantiersgracht 111",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000629131"
+    },
+    {
+     "address": "Egelantiersgracht 109",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000629130"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169898",
+   "addresses": [
+    "Egelantiersgracht 107",
+    "Egelantiersgracht 137",
+    "Egelantiersgracht 139",
+    "Egelantiersgracht 141",
+    "Egelantiersgracht 143",
+    "Egelantiersgracht 145",
+    "Egelantiersgracht 145A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 139",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000629145"
+    },
+    {
+     "address": "Egelantiersgracht 141",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000629146"
+    },
+    {
+     "address": "Egelantiersgracht 145",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001007348"
+    },
+    {
+     "address": "Egelantiersgracht 145A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001007349"
+    },
+    {
+     "address": "Egelantiersgracht 137",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000629144"
+    },
+    {
+     "address": "Egelantiersgracht 143",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000629147"
+    },
+    {
+     "address": "Egelantiersgracht 107",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000629129"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12064959906,
+     "lngLat": [
+      4.8802037,
+      52.3756467
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:40:36.436Z",
+     "match": "frontage",
+     "distanceM": 6.1
+    },
+    {
+     "type": "node",
+     "id": 12064966671,
+     "lngLat": [
+      4.8802301,
+      52.3756564
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-29T21:40:36.436Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168160",
+   "addresses": [
+    "Egelantiersgracht 151A",
+    "Egelantiersgracht 151B",
+    "Egelantiersgracht 151C",
+    "Egelantiersgracht 151D",
+    "Egelantiersgracht 153A",
+    "Egelantiersgracht 153B",
+    "Egelantiersgracht 153C",
+    "Egelantiersgracht 155A",
+    "Egelantiersgracht 155B",
+    "Egelantiersgracht 157A",
+    "Egelantiersgracht 157B",
+    "Egelantiersgracht 159A",
+    "Egelantiersgracht 159B",
+    "Egelantiersgracht 159C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 151A",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000981667"
+    },
+    {
+     "address": "Egelantiersgracht 151B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000981668"
+    },
+    {
+     "address": "Egelantiersgracht 151C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000981669"
+    },
+    {
+     "address": "Egelantiersgracht 151D",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000981670"
+    },
+    {
+     "address": "Egelantiersgracht 153A",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000981671"
+    },
+    {
+     "address": "Egelantiersgracht 153B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000981672"
+    },
+    {
+     "address": "Egelantiersgracht 153C",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000981673"
+    },
+    {
+     "address": "Egelantiersgracht 155A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000981674"
+    },
+    {
+     "address": "Egelantiersgracht 155B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000981675"
+    },
+    {
+     "address": "Egelantiersgracht 157A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000981676"
+    },
+    {
+     "address": "Egelantiersgracht 157B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000981677"
+    },
+    {
+     "address": "Egelantiersgracht 159A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000981678"
+    },
+    {
+     "address": "Egelantiersgracht 159B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000981679"
+    },
+    {
+     "address": "Egelantiersgracht 159C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000981680"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168149",
+   "addresses": [
+    "Egelantiersgracht 161A",
+    "Egelantiersgracht 161B",
+    "Egelantiersgracht 161C",
+    "Egelantiersgracht 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 163",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000629150"
+    },
+    {
+     "address": "Egelantiersgracht 161A",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 281,
+     "bagId": "0363010001036357"
+    },
+    {
+     "address": "Egelantiersgracht 161B",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001036358"
+    },
+    {
+     "address": "Egelantiersgracht 161C",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010001036359"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12064955832,
+     "lngLat": [
+      4.8794405,
+      52.3754877
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-29T21:40:36.436Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174243",
+   "addresses": [
+    "Egelantiersgracht 167A",
+    "Egelantiersgracht 167B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 167A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000955153"
+    },
+    {
+     "address": "Egelantiersgracht 167B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000955154"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12064955832,
+     "lngLat": [
+      4.8794405,
+      52.3754877
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-29T21:40:36.436Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    },
+    {
+     "type": "node",
+     "id": 12064972420,
+     "lngLat": [
+      4.8794166,
+      52.3754809
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:40:36.436Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174252",
+   "addresses": [
+    "Egelantiersgracht 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 169",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000995145"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174251",
+   "addresses": [
+    "Egelantiersgracht 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 171",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010003692107"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174250",
+   "addresses": [
+    "Egelantiersgracht 173A",
+    "Egelantiersgracht 173B",
+    "Egelantiersgracht 173C",
+    "Egelantiersgracht 175A",
+    "Egelantiersgracht 175C",
+    "Egelantiersgracht 175B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 173A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000629157"
+    },
+    {
+     "address": "Egelantiersgracht 175A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000629160"
+    },
+    {
+     "address": "Egelantiersgracht 175C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000629162"
+    },
+    {
+     "address": "Egelantiersgracht 173B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000629158"
+    },
+    {
+     "address": "Egelantiersgracht 175B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000629161"
+    },
+    {
+     "address": "Egelantiersgracht 173C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000629159"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174249",
+   "addresses": [
+    "Egelantiersgracht 177"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 177-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000629163"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174248",
+   "addresses": [
+    "Egelantiersgracht 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 179-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000629167"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174247",
+   "addresses": [
+    "Egelantiersgracht 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 187",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000608161"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

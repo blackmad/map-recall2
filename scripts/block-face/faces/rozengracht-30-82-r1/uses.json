@@ -1,0 +1,86 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:11:28.736Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168603",
+   "addresses": [
+    "Rozengracht 40C",
+    "Rozengracht 40A",
+    "Rozengracht 40B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 40C",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000797435"
+    },
+    {
+     "address": "Rozengracht 40A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000797436"
+    },
+    {
+     "address": "Rozengracht 40B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000797437"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1588328793,
+     "lngLat": [
+      4.8812871,
+      52.373712
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40",
+      "addr:postcode": "1016NC",
+      "addr:street": "Rozengracht",
+      "branch": "Amsterdam",
+      "brand": "Velvet Music",
+      "brand:website": "https://www.velvetmusic.nl",
+      "brand:wikidata": "Q140668249",
+      "email": "amsterdam@velvetmusic.nl",
+      "name": "Velvet Music",
+      "opening_hours": "Mo-Th,Su 12:00-18:00; Fr-Sa 10:00-18:00",
+      "payment:cash": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 422 8777",
+      "shop": "music",
+      "short_name": "Velvet",
+      "website": "https://www.velvetamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-29T22:11:28.736Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168605",
+   "addresses": [
+    "Rozengracht 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 38",
+     "use": "winkelfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000797426"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

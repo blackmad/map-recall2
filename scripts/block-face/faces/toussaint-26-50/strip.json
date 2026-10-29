@@ -2,34 +2,34 @@
  "face": "toussaint-26-50",
  "image": "staging/block-face/toussaint-26-50/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 3009,
+ "width": 3008,
  "height": 839,
- "groundNAP": 0.421,
+ "groundNAP": 0.423,
  "heightM": 20.98,
  "frame": {
   "midRD": [
-   120165.94023076925,
-   486532.2270384615
+   120165.94985096155,
+   486532.23003846157
   ],
   "uRD": [
-   0.904931905197175,
-   0.42555639691609753
+   0.9047607465365836,
+   0.42592017036830226
   ],
   "nRD": [
-   0.42555639691609753,
-   -0.904931905197175
+   0.42592017036830226,
+   -0.9047607465365836
   ]
  },
- "x0M": -37.58,
- "x1M": 37.63,
+ "x0M": -37.59,
+ "x1M": 37.62,
  "date": "2023-01-12",
  "cameraHeightM": 2.4,
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012158674",
-   "x0M": -37.58,
-   "x1M": -32.74,
+   "x0M": -37.59,
+   "x1M": -32.75,
    "px": [
     0,
     194
@@ -62,8 +62,8 @@
   },
   {
    "pandId": "0363100012159217",
-   "x0M": -32.74,
-   "x1M": -26.73,
+   "x0M": -32.75,
+   "x1M": -26.74,
    "px": [
     194,
     434
@@ -96,8 +96,8 @@
   },
   {
    "pandId": "0363100012160766",
-   "x0M": -26.73,
-   "x1M": -20.74,
+   "x0M": -26.74,
+   "x1M": -20.75,
    "px": [
     434,
     674
@@ -109,29 +109,29 @@
      "panoId": "TMX7316010203-002929_pano_0009_000014",
      "timestamp": "2023-01-12T10:32:16.550630Z",
      "distanceM": 9,
-     "obliquityDeg": 11.8,
+     "obliquityDeg": 10.4,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000013",
      "timestamp": "2023-01-12T10:32:15.385520Z",
      "distanceM": 9.4,
-     "obliquityDeg": 20.2,
+     "obliquityDeg": 21.6,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000015",
      "timestamp": "2023-01-12T10:32:17.650560Z",
      "distanceM": 11.3,
-     "obliquityDeg": 38.1,
+     "obliquityDeg": 36.7,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012152531",
-   "x0M": -20.74,
-   "x1M": -15,
+   "x0M": -20.75,
+   "x1M": -15.01,
    "px": [
     674,
     904
@@ -157,15 +157,15 @@
      "panoId": "TMX7316010203-002929_pano_0009_000016",
      "timestamp": "2023-01-12T10:32:18.640520Z",
      "distanceM": 10.9,
-     "obliquityDeg": 33.4,
+     "obliquityDeg": 33.3,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012156913",
-   "x0M": -15,
-   "x1M": -9.01,
+   "x0M": -15.01,
+   "x1M": -9.02,
    "px": [
     903,
     1143
@@ -177,29 +177,29 @@
      "panoId": "TMX7316010203-002929_pano_0009_000016",
      "timestamp": "2023-01-12T10:32:18.640520Z",
      "distanceM": 9.1,
-     "obliquityDeg": 1.6,
+     "obliquityDeg": 0.9,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000015",
      "timestamp": "2023-01-12T10:32:17.650560Z",
      "distanceM": 10.3,
-     "obliquityDeg": 28.2,
+     "obliquityDeg": 29,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000017",
      "timestamp": "2023-01-12T10:32:19.580520Z",
      "distanceM": 10.6,
-     "obliquityDeg": 30.8,
+     "obliquityDeg": 30,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012233486",
-   "x0M": -9.01,
-   "x1M": -2.95,
+   "x0M": -9.02,
+   "x1M": -2.96,
    "px": [
     1143,
     1385
@@ -217,7 +217,7 @@
     {
      "panoId": "TMX7316010203-002929_pano_0009_000018",
      "timestamp": "2023-01-12T10:32:20.520500Z",
-     "distanceM": 10.2,
+     "distanceM": 10.1,
      "obliquityDeg": 25.9,
      "missingFraction": 0
     },
@@ -232,11 +232,11 @@
   },
   {
    "pandId": "0363100012155774",
-   "x0M": -2.95,
-   "x1M": 2.74,
+   "x0M": -2.96,
+   "x1M": 3.01,
    "px": [
     1385,
-    1613
+    1624
    ],
    "date": "2023-01-12",
    "fallbackDate": false,
@@ -245,29 +245,29 @@
      "panoId": "TMX7316010203-002929_pano_0009_000018",
      "timestamp": "2023-01-12T10:32:20.520500Z",
      "distanceM": 9.1,
-     "obliquityDeg": 9.5,
+     "obliquityDeg": 9.6,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000019",
      "timestamp": "2023-01-12T10:32:21.495510Z",
-     "distanceM": 9.7,
+     "distanceM": 9.6,
      "obliquityDeg": 22.4,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000017",
      "timestamp": "2023-01-12T10:32:19.580520Z",
-     "distanceM": 11.2,
-     "obliquityDeg": 36.5,
+     "distanceM": 11.3,
+     "obliquityDeg": 36.3,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012155675",
-   "x0M": 3.02,
-   "x1M": 8.97,
+   "x0M": 3.01,
+   "x1M": 8.96,
    "px": [
     1624,
     1862
@@ -286,7 +286,7 @@
      "panoId": "TMX7316010203-002929_pano_0009_000020",
      "timestamp": "2023-01-12T10:32:22.515490Z",
      "distanceM": 9.3,
-     "obliquityDeg": 17.9,
+     "obliquityDeg": 18,
      "missingFraction": 0
     },
     {
@@ -300,8 +300,8 @@
   },
   {
    "pandId": "0363100012164638",
-   "x0M": 8.97,
-   "x1M": 14.88,
+   "x0M": 8.96,
+   "x1M": 14.87,
    "px": [
     1862,
     2098
@@ -313,14 +313,14 @@
      "panoId": "TMX7316010203-002929_pano_0009_000021",
      "timestamp": "2023-01-12T10:32:23.585450Z",
      "distanceM": 9.1,
-     "obliquityDeg": 13.8,
+     "obliquityDeg": 13.9,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000020",
      "timestamp": "2023-01-12T10:32:22.515490Z",
      "distanceM": 9.4,
-     "obliquityDeg": 19,
+     "obliquityDeg": 18.9,
      "missingFraction": 0
     },
     {
@@ -334,8 +334,8 @@
   },
   {
    "pandId": "0363100012236846",
-   "x0M": 14.88,
-   "x1M": 20.86,
+   "x0M": 14.87,
+   "x1M": 20.85,
    "px": [
     2098,
     2337
@@ -361,15 +361,15 @@
      "panoId": "TMX7316010203-002929_pano_0009_000023",
      "timestamp": "2023-01-12T10:32:26.030660Z",
      "distanceM": 11,
-     "obliquityDeg": 38.2,
+     "obliquityDeg": 38.3,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012152681",
-   "x0M": 20.86,
-   "x1M": 26.79,
+   "x0M": 20.85,
+   "x1M": 26.78,
    "px": [
     2338,
     2575
@@ -381,29 +381,29 @@
      "panoId": "TMX7316010203-002929_pano_0009_000023",
      "timestamp": "2023-01-12T10:32:26.030660Z",
      "distanceM": 8.7,
-     "obliquityDeg": 5.8,
+     "obliquityDeg": 7,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000022",
      "timestamp": "2023-01-12T10:32:24.710490Z",
      "distanceM": 9.8,
-     "obliquityDeg": 27,
+     "obliquityDeg": 25.7,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000024",
      "timestamp": "2023-01-12T10:32:27.655440Z",
      "distanceM": 10.8,
-     "obliquityDeg": 36.7,
+     "obliquityDeg": 37.9,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012154262",
-   "x0M": 26.79,
-   "x1M": 32.77,
+   "x0M": 26.78,
+   "x1M": 32.76,
    "px": [
     2575,
     2814
@@ -436,8 +436,8 @@
   },
   {
    "pandId": "0363100012161166",
-   "x0M": 32.77,
-   "x1M": 37.63,
+   "x0M": 32.76,
+   "x1M": 37.62,
    "px": [
     2814,
     3008
@@ -456,14 +456,14 @@
      "panoId": "TMX7316010203-002929_pano_0009_000029",
      "timestamp": "2023-01-12T10:32:38.310460Z",
      "distanceM": 25.5,
-     "obliquityDeg": 24.3,
+     "obliquityDeg": 24.2,
      "missingFraction": 0
     },
     {
      "panoId": "TMX7316010203-002929_pano_0009_000028",
      "timestamp": "2023-01-12T10:32:36.625370Z",
      "distanceM": 20.8,
-     "obliquityDeg": 29.8,
+     "obliquityDeg": 29.7,
      "missingFraction": 0
     }
    ]

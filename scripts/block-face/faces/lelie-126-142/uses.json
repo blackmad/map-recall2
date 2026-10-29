@@ -1,0 +1,179 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:47:23.819Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174264",
+   "addresses": [
+    "Nieuwe Leliestraat 142"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174333",
+   "addresses": [
+    "Nieuwe Leliestraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 140-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010001010872"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174418",
+   "addresses": [
+    "Nieuwe Leliestraat 138A",
+    "Nieuwe Leliestraat 138B",
+    "Nieuwe Leliestraat 138C",
+    "Nieuwe Leliestraat 138D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 138A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001022471"
+    },
+    {
+     "address": "Nieuwe Leliestraat 138B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001022472"
+    },
+    {
+     "address": "Nieuwe Leliestraat 138C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001022474"
+    },
+    {
+     "address": "Nieuwe Leliestraat 138D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001022478"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174419",
+   "addresses": [
+    "Nieuwe Leliestraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 136-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001172384"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174420",
+   "addresses": [
+    "Nieuwe Leliestraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 134-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000959748"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174421",
+   "addresses": [
+    "Nieuwe Leliestraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 198,
+     "bagId": "0363010000756907"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174422",
+   "addresses": [
+    "Nieuwe Leliestraat 128A",
+    "Nieuwe Leliestraat 128B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 128A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000756903"
+    },
+    {
+     "address": "Nieuwe Leliestraat 128B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000756904"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174245",
+   "addresses": [
+    "Nieuwe Leliestraat 126A",
+    "Nieuwe Leliestraat 126B",
+    "Nieuwe Leliestraat 126C",
+    "Nieuwe Leliestraat 126D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 126A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000981338"
+    },
+    {
+     "address": "Nieuwe Leliestraat 126B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000981339"
+    },
+    {
+     "address": "Nieuwe Leliestraat 126C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000981340"
+    },
+    {
+     "address": "Nieuwe Leliestraat 126D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000981341"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

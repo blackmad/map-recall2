@@ -1,0 +1,237 @@
+{
+ "street": "Tweede Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:22:34.745Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167943",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 26",
+    "Tweede Bloemdwarsstraat 28",
+    "Tweede Bloemdwarsstraat 30",
+    "Tweede Bloemdwarsstraat 32",
+    "Tweede Bloemdwarsstraat 34",
+    "Tweede Bloemdwarsstraat 34A",
+    "Tweede Bloemdwarsstraat 34B",
+    "Tweede Bloemdwarsstraat 36",
+    "Tweede Bloemdwarsstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000549892"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000549893"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000549894"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000549895"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000549896"
+    },
+    {
+     "address": "Rozengracht 88",
+     "use": "kantoorfunctie",
+     "areaM2": 391,
+     "bagId": "0363010000797534"
+    },
+    {
+     "address": "Rozengracht 88",
+     "use": "kantoorfunctie",
+     "areaM2": 255,
+     "bagId": "0363010012079657"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012079658"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012122346"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012126650"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012126651"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13265871791,
+     "lngLat": [
+      4.8797205,
+      52.3732947
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:postcode": "1016NG",
+      "addr:street": "Rozengracht",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-23:00",
+      "ref": "1016005",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1016005"
+     },
+     "fetchedAt": "2026-10-29T22:22:34.745Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174080",
+   "addresses": [
+    "Tweede Bloemdwarsstraat 20B",
+    "Tweede Bloemdwarsstraat 20A",
+    "Tweede Bloemdwarsstraat 22B",
+    "Tweede Bloemdwarsstraat 22D",
+    "Tweede Bloemdwarsstraat 22F",
+    "Tweede Bloemdwarsstraat 22E",
+    "Tweede Bloemdwarsstraat 22A",
+    "Tweede Bloemdwarsstraat 22C",
+    "Tweede Bloemdwarsstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Bloemdwarsstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000549880"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000549883"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000549885"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22F",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000549887"
+    },
+    {
+     "address": "Bloemstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000589108"
+    },
+    {
+     "address": "Bloemstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000589112"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000549891"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000549886"
+    },
+    {
+     "address": "Bloemstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000589111"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000549882"
+    },
+    {
+     "address": "Bloemstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000589115"
+    },
+    {
+     "address": "Bloemstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000589118"
+    },
+    {
+     "address": "Bloemstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000589106"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000549879"
+    },
+    {
+     "address": "Tweede Bloemdwarsstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000549884"
+    },
+    {
+     "address": "Bloemstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000589107"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

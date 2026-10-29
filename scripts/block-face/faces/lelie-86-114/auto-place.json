@@ -1,0 +1,559 @@
+{
+ "face": "lelie-86-114",
+ "street": "Nieuwe Leliestraat",
+ "library": "jordaan",
+ "stripDate": "2024-12-17",
+ "seconds": 0.73,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012169983",
+   "address": "Nieuwe Leliestraat 114A",
+   "builtYear": 1849,
+   "widthM": 4.32,
+   "eavesM": 12.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c7069",
+    "wallRaw": "#4c4643",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169984",
+   "address": "Nieuwe Leliestraat 112A",
+   "builtYear": 1987,
+   "widthM": 3.78,
+   "eavesM": 8.4,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169985",
+   "address": "Nieuwe Leliestraat 110",
+   "builtYear": 1804,
+   "widthM": 4.32,
+   "eavesM": 10.13,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62524f",
+    "wallRaw": "#433b38",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169986",
+   "address": "Nieuwe Leliestraat 102A",
+   "builtYear": 1987,
+   "widthM": 9.46,
+   "eavesM": 11.17,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.4,
+    "depthM": 0.3,
+    "centre": 0.021,
+    "lineRD": [
+     [
+      120472.121,
+      487599.61075000005
+     ],
+     [
+      120479.456,
+      487601.87475
+     ]
+    ]
+   },
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170032",
+   "address": "Nieuwe Leliestraat 100A",
+   "builtYear": 1987,
+   "widthM": 7.69,
+   "eavesM": 7.61,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f4942",
+    "wallRaw": "#4f4a42",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.32 m at 0.09 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.32,
+       "centre": 0.09,
+       "light": 0.03
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.25,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1987, type 1600-1870; frontage 7.69 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1987, type 1600-1870",
+     "frontage 7.69 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.61 m = 3 storeys of 2.54 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.61 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170033",
+   "address": "Nieuwe Leliestraat 98",
+   "builtYear": 1750,
+   "widthM": 4.33,
+   "eavesM": 6.89,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170034",
+   "address": "Nieuwe Leliestraat 94B",
+   "builtYear": 1990,
+   "widthM": 17.14,
+   "eavesM": 8.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4747",
+    "wallRaw": "#3d3f3f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0.18,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 16,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "bay-less open axis 0.6 m at 0.02 (light 0.92): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.02,
+       "light": 0.92
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.43,
+       "light": 0.07
+      },
+      {
+       "widthM": 1.52,
+       "centre": 0.8,
+       "light": 0
+      },
+      {
+       "widthM": 1.63,
+       "centre": 0.93,
+       "light": 0.82
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1990, type 1600-1870; frontage 17.14 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1990, type 1600-1870",
+     "frontage 17.14 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 8.53 m = 3 storeys of 2.84 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.75 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 16 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170035",
+   "address": "Nieuwe Leliestraat 88",
+   "builtYear": 1937,
+   "widthM": 4.46,
+   "eavesM": 11.26,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655f52",
+    "wallRaw": "#625d50",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 692,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1937, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1937, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.26 m = 3 storeys of 3.75 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.37 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170044",
+   "address": "Nieuwe Leliestraat 86",
+   "builtYear": 1712,
+   "widthM": 4.55,
+   "eavesM": 8.82,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 4.01,
+    "toM": 4.01,
+    "depthM": 0.28,
+    "centre": 0.884,
+    "lineRD": [
+     [
+      120511.339,
+      487612.52075
+     ],
+     [
+      120515.012,
+      487614.17675
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6b6456",
+    "wallRaw": "#76705f",
+    "skyline": {
+     "eavesM": 13.05,
+     "eavesRow": 170,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 4.25,
+      "topWidthM": 0.6,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.88 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.88,
+       "light": 0.27
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

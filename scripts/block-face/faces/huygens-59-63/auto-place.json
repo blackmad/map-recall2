@@ -3,7 +3,7 @@
  "street": "Eerste Constantijn Huygensstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 0.54,
+ "seconds": 0.59,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -29,11 +29,11 @@
     "skyline": {
      "eavesM": 17.77,
      "eavesRow": 68,
-     "confidence": 0.78,
+     "confidence": 0.81,
      "crown": {
       "widthM": 0.78,
-      "riseM": 1.7,
-      "topWidthM": 0.07,
+      "riseM": 1.1,
+      "topWidthM": 0.47,
       "centre": 0.53
      }
     },
@@ -42,7 +42,7 @@
     "columns": 2,
     "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.063,
+    "accentShare": 0.061,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -56,26 +56,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1911, type 1893-1893; frontage 4.52 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1911, type 1886-1892; frontage 4.52 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1911, type 1893-1893",
-     "frontage 4.52 m, type 5.6-6.4 m"
+     "built 1911, type 1886-1892",
+     "frontage 4.52 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 17.77 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "note": "strip cornice 17.77 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.048 (brick)"
+      "note": "strip accent share 0.047 (brick)"
      },
      {
       "key": "columns",
@@ -112,7 +112,7 @@
     ]
    },
    "strip": {
-    "wall": "#725f44",
+    "wall": "#715e44",
     "wallRaw": "#574c39",
     "skyline": {
      "eavesM": 17.75,
@@ -120,8 +120,8 @@
      "confidence": 0.96,
      "crown": {
       "widthM": 1.2,
-      "riseM": 1.55,
-      "topWidthM": 0.53,
+      "riseM": 1.57,
+      "topWidthM": 0.57,
       "centre": 0.89
      }
     },
@@ -130,7 +130,7 @@
     "columns": 3,
     "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.036,
+    "accentShare": 0.037,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -140,13 +140,13 @@
      "slabs": [
       {
        "atM": 14.57,
-       "widthM": 1.43,
+       "widthM": 1.38,
        "centre": 0.21
       },
       {
        "atM": 10.52,
-       "widthM": 1.43,
-       "centre": 0.53
+       "widthM": 1.52,
+       "centre": 0.52
       }
      ]
     },
@@ -171,7 +171,7 @@
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.026 (brick)"
+      "note": "strip accent share 0.028 (brick)"
      },
      {
       "key": "columns",
@@ -198,12 +198,12 @@
     "centre": 0.971
    },
    "strip": {
-    "wall": "#906949",
-    "wallRaw": "#645139",
+    "wall": "#946a4e",
+    "wallRaw": "#64523a",
     "skyline": {
-     "eavesM": 18.88,
-     "eavesRow": 24,
-     "confidence": 0.61,
+     "eavesM": 18.8,
+     "eavesRow": 27,
+     "confidence": 0.59,
      "crown": null
     },
     "stucco": false,
@@ -211,39 +211,24 @@
     "columns": 3,
     "doorSide": "left",
     "accentSide": "right",
-    "accentShare": 0.088,
+    "accentShare": 0.084,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.95 m at 0.12 (light 0.23): no brick spandrel between the storeys",
+     "why": "dark open axis 0.85 m at 0.12 (light 0.22): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 0.95,
+       "widthM": 0.85,
        "centre": 0.12,
-       "light": 0.23
-      },
-      {
-       "widthM": 0.6,
-       "centre": 0.85,
-       "light": 0.55
+       "light": 0.22
       }
      ],
      "slabs": [
       {
-       "atM": 10.5,
-       "widthM": 1.05,
-       "centre": 0.48
-      },
-      {
-       "atM": 7.13,
-       "widthM": 1.02,
-       "centre": 0.1
-      },
-      {
-       "atM": 6.52,
+       "atM": 7.05,
        "widthM": 0.82,
-       "centre": 0.11
+       "centre": 0.15
       }
      ]
     },
@@ -251,33 +236,8 @@
     "foliageShare": 0.28
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best helmers-1911-balcony-axis scores 0.64 < 0.7 (strip cornice 18.88 m vs the type's 15.3 m)",
-   "best": {
-    "type": "helmers-1911-balcony-axis",
-    "score": 0.64,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 18.88 m vs the type's 15.3 m"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.082 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }

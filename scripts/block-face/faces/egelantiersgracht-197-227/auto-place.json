@@ -1,0 +1,757 @@
+{
+ "face": "egelantiersgracht-197-227",
+ "street": "Egelantiersgracht",
+ "library": "jordaan",
+ "stripDate": "2024-12-16",
+ "seconds": 5.46,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174261",
+   "address": "Egelantiersgracht 197",
+   "builtYear": 1862,
+   "widthM": 5.78,
+   "eavesM": 10.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e7f64",
+    "wallRaw": "#968969",
+    "skyline": {
+     "eavesM": 12.03,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 2.25,
+      "topWidthM": 0.55,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 0.95,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 31 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012174261",
+    "ncc": 0.061,
+    "nccRaw": 0.061,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.51,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#918367",
+     "model": "#a09177",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 5,
+     "model": 3
+    },
+    "iou": 0.321
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.194
+   }
+  },
+  {
+   "pandId": "0363100012174259",
+   "address": "Egelantiersgracht 197A",
+   "builtYear": 1883,
+   "widthM": 5.88,
+   "eavesM": 13.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4805f",
+    "wallRaw": "#c2906d",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.8,
+      "topWidthM": 0.72,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.185,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.51 mean 0.35 vs photo 0.69)",
+   "likeness": {
+    "pandId": "0363100012174259",
+    "ncc": 0.116,
+    "nccRaw": 0.116,
+    "shiftM": [
+     0,
+     0.1
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.51 mean 0.35 vs photo 0.69"
+    ],
+    "wall": {
+     "photo": "#b47f5f",
+     "model": "#be9174",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.69,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.316
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174262",
+   "address": "Egelantiersgracht 199",
+   "builtYear": 1849,
+   "widthM": 5.97,
+   "eavesM": 9.02,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c3b69a",
+    "wallRaw": "#6b6550",
+    "skyline": {
+     "eavesM": 11.8,
+     "eavesRow": 249,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 5.82,
+      "topWidthM": 0.2,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.06 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.06,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.38,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.97,
+       "widthM": 1.63,
+       "centre": 0.82
+      },
+      {
+       "atM": 5.5,
+       "widthM": 2.2,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 26 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012174262",
+    "ncc": null,
+    "nccRaw": 0.183,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.26,
+    "abstain": "usable photo 26 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#ada286",
+     "model": "#956753",
+     "dL": -0.147
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.368
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168085",
+   "address": "Egelantiersgracht 201",
+   "builtYear": 1735,
+   "widthM": 14.08,
+   "eavesM": 10.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#968b74",
+    "wallRaw": "#787c6c",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.58,
+      "riseM": 3,
+      "topWidthM": 0.55,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.222,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.97,
+       "widthM": 1.13,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.57
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: frontage 14.08 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "frontage 14.08 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.29 m = 3 storeys of 3.43 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.74 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174931",
+   "address": "Egelantiersgracht 215",
+   "builtYear": 1879,
+   "widthM": 4.92,
+   "eavesM": 9.05,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c6a61",
+    "wallRaw": "#7c7f6c",
+    "skyline": {
+     "eavesM": 11.53,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.53,
+      "topWidthM": 1.15,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.64
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174913",
+   "address": "Egelantiersgracht 217",
+   "builtYear": 1953,
+   "widthM": 8.89,
+   "eavesM": 10.94,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#917554",
+    "wallRaw": "#6f6646",
+    "skyline": {
+     "eavesM": 17.23,
+     "eavesRow": 32,
+     "confidence": 0.5,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.15 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.15,
+       "light": 0.36
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.37
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1953, type 1600-1870; frontage 8.89 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1953, type 1600-1870",
+     "frontage 8.89 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.94 m = 3 storeys of 3.65 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174912",
+   "address": "Egelantiersgracht 219",
+   "builtYear": 1851,
+   "widthM": 5.3,
+   "eavesM": 7.71,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ad8f6d",
+    "wallRaw": "#9e8a69",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 176,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 3.2,
+      "topWidthM": 0.63,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.16 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.16,
+       "light": 0.01
+      },
+      {
+       "widthM": 2.05,
+       "centre": 0.52,
+       "light": 0.1
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174923",
+   "address": "Egelantiersgracht 221",
+   "builtYear": 1882,
+   "widthM": 10.06,
+   "eavesM": 8.24,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#928062",
+    "wallRaw": "#565741",
+    "skyline": {
+     "eavesM": 16.32,
+     "eavesRow": 68,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 1.32,
+      "topWidthM": 0.55,
+      "centre": 0.03
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.065,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.5 m at 0.69 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.5,
+       "centre": 0.69,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.94,
+       "light": 0.11
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1882, type 1600-1870; frontage 10.06 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1600-1870",
+     "frontage 10.06 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.24 m = 3 storeys of 2.75 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.08 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174922",
+   "address": "Egelantiersgracht 225",
+   "builtYear": 1899,
+   "widthM": 4.59,
+   "eavesM": 7.33,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5e4a",
+    "wallRaw": "#86765c",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 85,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 1,
+      "riseM": 2.12,
+      "topWidthM": 0.3,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.326,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.2,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1899, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.33 m = 3 storeys of 2.44 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.39 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174921",
+   "address": "Egelantiersgracht 227B",
+   "builtYear": 1873,
+   "widthM": 5.67,
+   "eavesM": 12.75,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#937f65",
+    "wallRaw": "#a08c71",
+    "skyline": {
+     "eavesM": 12.45,
+     "eavesRow": 223,
+     "confidence": 0.91,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.275,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

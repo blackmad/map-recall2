@@ -1,0 +1,748 @@
+{
+ "face": "bloemgracht-16-32",
+ "street": "Bloemgracht",
+ "library": "jordaan",
+ "stripDate": "2023-03-27",
+ "seconds": 4.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bloemgracht-16-32-r1",
+   "pands": [
+    "0363100012173350",
+    "0363100012173345"
+   ],
+   "passed": false,
+   "triangles": 1300
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012173350",
+   "address": "Bloemgracht 32",
+   "builtYear": 1700,
+   "widthM": 3.84,
+   "eavesM": 8.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7cca3",
+    "wallRaw": "#ebd6a7",
+    "skyline": {
+     "eavesM": 18.55,
+     "eavesRow": 13,
+     "confidence": 0.72,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.05 m at 0.29 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.05,
+       "centre": 0.29,
+       "light": 0.23
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.88,
+       "light": 0.62
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "jordaan-1850-cornice-house",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "jordaan-1750-neck-gable",
+    "score": 0.38
+   },
+   "placement": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 3,
+    "measuredPalette": {
+     "brick": "#e7cca3",
+     "evidence": "strip 2023-03-27 span 0-154: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 3: eaves 8.03 m at the type's 3.13 m pitch",
+    "door unread",
+    "crown none: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012173350",
+    "ncc": 0.215,
+    "nccRaw": 0.215,
+    "shiftM": [
+     0.35,
+     0.15
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 38 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#f7eab5",
+     "model": "#cca466",
+     "dL": -0.239
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.394
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173345",
+   "address": "Bloemgracht 30",
+   "builtYear": 1775,
+   "widthM": 4.01,
+   "eavesM": 8.88,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e9dabe",
+    "wallRaw": "#f3e5be",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 755,
+     "confidence": 0.26,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.332,
+    "structure": {
+     "bayWidthM": 3.73,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.27 m at 0.17 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.27,
+       "centre": 0.17,
+       "light": 0.23
+      },
+      {
+       "widthM": 2.38,
+       "centre": 0.68,
+       "light": 0.57
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.31,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "jordaan-1850-cornice-house",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "jordaan-1750-neck-gable",
+    "score": 0.85
+   },
+   "placement": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 3,
+    "measuredPalette": {
+     "brick": "#e9dabe",
+     "evidence": "strip 2023-03-27 span 154-315: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 3: eaves 8.88 m at the type's 3.13 m pitch",
+    "door unread",
+    "crown none: skyline unread (confidence 0.26)",
+    "no photo evidence of its own (usable photo 35 % < 50 %); placed on row evidence from 173350",
+    "no photo evidence of its own (usable photo 35 % < 50 %); placed on row evidence from 173350"
+   ],
+   "likeness": {
+    "pandId": "0363100012173345",
+    "ncc": null,
+    "nccRaw": 0.124,
+    "shiftM": [
+     -0.35,
+     0.4
+    ],
+    "usable": 0.35,
+    "abstain": "usable photo 35 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 36 % < 40 %",
+     "foliage 28 % > 25 %",
+     "washed out 49 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#e8dcc1",
+     "model": "#cba867",
+     "dL": -0.233
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.543
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173346",
+   "address": "Bloemgracht 28",
+   "builtYear": 1888,
+   "widthM": 3.87,
+   "eavesM": 12.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#eedfcf",
+    "wallRaw": "#fcfbe0",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 755,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.384,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.27,
+       "widthM": 0.95,
+       "centre": 0.22
+      },
+      {
+       "atM": 5.2,
+       "widthM": 1.07,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173348",
+   "address": "Bloemgracht 26",
+   "builtYear": 1905,
+   "widthM": 3.66,
+   "eavesM": 12.47,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.65,
+    "toM": 3.65,
+    "depthM": 0.31,
+    "centre": 1,
+    "lineRD": [
+     [
+      120623.19900000001,
+      487600.94075
+     ],
+     [
+      120624.883,
+      487601.62175
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#f1e1b4",
+    "wallRaw": "#e8daaf",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 16,
+     "confidence": 0.71,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.752,
+    "structure": {
+     "bayWidthM": 3.35,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.95 m @ 0.69), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.34,
+       "light": 0.69
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.63,
+       "widthM": 0.8,
+       "centre": 0.21
+      },
+      {
+       "atM": 5.13,
+       "widthM": 0.82,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.53,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 53 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173349",
+   "address": "Bloemgracht 24D",
+   "builtYear": 1881,
+   "widthM": 4.13,
+   "eavesM": 12.56,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.56,
+    "depthM": 0.31,
+    "centre": 0.068,
+    "lineRD": [
+     [
+      120627.098,
+      487602.53075
+     ],
+     [
+      120630.533,
+      487603.54875
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#f6e8ae",
+    "wallRaw": "#f8f2c4",
+    "skyline": {
+     "eavesM": 18.63,
+     "eavesRow": 10,
+     "confidence": 0.69,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.08 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.08,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172780",
+   "address": "Bloemgracht 22",
+   "builtYear": 1865,
+   "widthM": 1.75,
+   "eavesM": 11.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3935",
+    "wallRaw": "#6e6356",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 136,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 3.4,
+      "topWidthM": 0.2,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: frontage 1.75 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "frontage 1.75 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.32 m = 3 storeys of 3.77 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.7 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 3.4 m, top 0.2 m fits bell"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172862",
+   "address": "Bloemgracht 20",
+   "builtYear": 1849,
+   "widthM": 7.89,
+   "eavesM": 10.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39b8a",
+    "wallRaw": "#aea28a",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 104,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 2.6,
+      "topWidthM": 0.47,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 1.8,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.23 m @ 0.81, 0.7 m @ 0.8), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.65,
+       "light": 0.81
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.95,
+       "light": 0.8
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.5,
+       "widthM": 1.48,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.42 < 0.7 (3DBAG eaves 10.89 m = 4 storeys of 2.72 m vs the type's 3.13 m; skyline crown rise 2.6 m, top 0.47 m fits no crown of the type; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.42,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.89 m = 4 storeys of 2.72 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.239 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.6 m, top 0.47 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173044",
+   "address": "Bloemgracht 18B",
+   "builtYear": 1902,
+   "widthM": 4.8,
+   "eavesM": 14.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d7c38a",
+    "wallRaw": "#cdb182",
+    "skyline": {
+     "eavesM": 18.3,
+     "eavesRow": 23,
+     "confidence": 0.55,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.6,
+       "widthM": 1.35,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.25,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.086 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 30 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012173044",
+    "ncc": 0.086,
+    "nccRaw": 0.086,
+    "shiftM": [
+     0.35,
+     -0.1
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 30 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#b0956d",
+     "model": "#cbb167",
+     "dL": 0.041
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.226
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168709",
+   "address": "Bloemgracht 16A",
+   "builtYear": 1884,
+   "widthM": 4.21,
+   "eavesM": 15.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d6c28a",
+    "wallRaw": "#d9c693",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 755,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.178,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.88,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.15 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.15,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.09 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 35 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012168709",
+    "ncc": 0.09,
+    "nccRaw": 0.09,
+    "shiftM": [
+     -0.25,
+     -0.15
+    ],
+    "usable": 0.59,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 35 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#b29a74",
+     "model": "#cab068",
+     "dL": 0.024
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.186
+   },
+   "challengers": {}
+  }
+ ]
+}

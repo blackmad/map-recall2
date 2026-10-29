@@ -1,12 +1,12 @@
 {
  "buurt": "frans-halsbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-10-29T19:56:02.314Z",
- "seconds": 2.19,
+ "generatedAt": "2026-10-29T22:07:10.628Z",
+ "seconds": 1.99,
  "totals": {
-  "faces": 28,
-  "pands": 258,
-  "placed": 26
+  "faces": 39,
+  "pands": 348,
+  "placed": 88
  },
  "faces": [
   {
@@ -123,7 +123,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 2.82,
+   "seconds": 2.9,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -210,7 +210,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 14.28,
+   "seconds": 18.6,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -221,13 +221,41 @@
    }
   },
   {
+   "face": "dou-1-7",
+   "street": "Gerard Doustraat",
+   "pands": 11,
+   "placed": 3,
+   "held": 8,
+   "runs": [
+    {
+     "face": "dou-1-7-r1",
+     "pands": [
+      "0363100012160743",
+      "0363100012236717",
+      "0363100012152502"
+     ]
+    }
+   ],
+   "seconds": 1.98,
+   "byType": {
+    "pijp-1879-five-low": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
    "face": "hals-2-26",
    "street": "Frans Halsstraat",
    "pands": 12,
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 8.32,
+   "seconds": 13.62,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -244,7 +272,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 16.84,
+   "seconds": 21.19,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -261,7 +289,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 13.98,
+   "seconds": 23.31,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -278,7 +306,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.91,
+   "seconds": 0.9,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -305,7 +333,7 @@
      "triangles": 4027
     }
    ],
-   "seconds": 9.78,
+   "seconds": 10.35,
    "byType": {
     "pijp-1876-hood-frieze": 2
    },
@@ -318,13 +346,44 @@
    }
   },
   {
+   "face": "hals-5-19",
+   "street": "Frans Halsstraat",
+   "pands": 8,
+   "placed": 4,
+   "held": 4,
+   "runs": [
+    {
+     "face": "hals-5-19-r1",
+     "pands": [
+      "0363100012162907",
+      "0363100012152579",
+      "0363100012159558",
+      "0363100012163052"
+     ],
+     "passed": false,
+     "triangles": 11062
+    }
+   ],
+   "seconds": 21.93,
+   "byType": {
+    "pijp-1879-five-low": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
    "face": "hals-55-67",
    "street": "Frans Halsstraat",
    "pands": 7,
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 16.74,
+   "seconds": 17.97,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -341,7 +400,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.59,
+   "seconds": 0.56,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -352,18 +411,47 @@
    }
   },
   {
+   "face": "hals-69-79",
+   "street": "Frans Halsstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 12.17,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 6,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
    "face": "hals-76-90",
    "street": "Frans Halsstraat",
    "pands": 8,
-   "placed": 0,
-   "held": 8,
-   "runs": [],
-   "seconds": 6.47,
-   "byType": {},
+   "placed": 2,
+   "held": 6,
+   "runs": [
+    {
+     "face": "hals-76-90-r1",
+     "pands": [
+      "0363100012166097",
+      "0363100012156971"
+     ],
+     "passed": false,
+     "triangles": 5506
+    }
+   ],
+   "seconds": 12.55,
+   "byType": {
+    "pijp-1879-five-low": 2
+   },
    "holds": {
     "evidence": 1,
-    "match": 5,
-    "likeness": 2,
+    "match": 2,
+    "likeness": 3,
     "run": 0,
     "review": 0
    }
@@ -372,16 +460,54 @@
    "face": "quellijn-1-27",
    "street": "Quellijnstraat",
    "pands": 10,
+   "placed": 4,
+   "held": 6,
+   "runs": [
+    {
+     "face": "quellijn-1-27-r1",
+     "pands": [
+      "0363100012158625",
+      "0363100012164504"
+     ],
+     "passed": false,
+     "triangles": 5624
+    },
+    {
+     "face": "quellijn-1-27-r2",
+     "pands": [
+      "0363100012155636",
+      "0363100012083238"
+     ],
+     "passed": false,
+     "triangles": 5462
+    }
+   ],
+   "seconds": 14.71,
+   "byType": {
+    "pijp-1879-five-low": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "quellijn-32-56",
+   "street": "Quellijnstraat",
+   "pands": 9,
    "placed": 0,
-   "held": 10,
+   "held": 9,
    "runs": [],
-   "seconds": 2.18,
+   "seconds": 10.35,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 10,
-    "likeness": 0,
-    "run": 0,
+    "match": 2,
+    "likeness": 6,
+    "run": 1,
     "review": 0
    }
   },
@@ -392,13 +518,13 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 2.63,
+   "seconds": 14.54,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 12,
-    "likeness": 0,
-    "run": 0,
+    "match": 5,
+    "likeness": 4,
+    "run": 3,
     "review": 0
    }
   },
@@ -409,7 +535,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 10.37,
+   "seconds": 20.94,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -426,7 +552,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 11.72,
+   "seconds": 12.74,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -443,12 +569,12 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 1.28,
+   "seconds": 6.19,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 5,
-    "likeness": 0,
+    "match": 3,
+    "likeness": 2,
     "run": 1,
     "review": 0
    }
@@ -460,7 +586,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 1.38,
+   "seconds": 2.78,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -505,14 +631,27 @@
    "face": "ruysdaelkade-89-105",
    "street": "Ruysdaelkade",
    "pands": 8,
-   "placed": 0,
-   "held": 8,
-   "runs": [],
-   "seconds": 1.44,
-   "byType": {},
+   "placed": 3,
+   "held": 5,
+   "runs": [
+    {
+     "face": "ruysdaelkade-89-105-r1",
+     "pands": [
+      "0363100012062357",
+      "0363100012165247",
+      "0363100012163180"
+     ],
+     "passed": false,
+     "triangles": 6468
+    }
+   ],
+   "seconds": 14.83,
+   "byType": {
+    "pijp-1884-bracketed-hood": 3
+   },
    "holds": {
     "evidence": 0,
-    "match": 8,
+    "match": 5,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -522,16 +661,73 @@
    "face": "saenredam-1-37",
    "street": "Saenredamstraat",
    "pands": 18,
-   "placed": 0,
-   "held": 18,
-   "runs": [],
-   "seconds": 8.66,
-   "byType": {},
+   "placed": 7,
+   "held": 11,
+   "runs": [
+    {
+     "face": "saenredam-1-37-r1",
+     "pands": [
+      "0363100012152593",
+      "0363100012164149",
+      "0363100012155977"
+     ],
+     "passed": false,
+     "triangles": 5762
+    },
+    {
+     "face": "saenredam-1-37-r2",
+     "pands": [
+      "0363100012159703",
+      "0363100012155819",
+      "0363100012163619",
+      "0363100012236169"
+     ],
+     "passed": false,
+     "triangles": 7666
+    }
+   ],
+   "seconds": 32.76,
+   "byType": {
+    "pijp-1876-hood-frieze": 1,
+    "pijp-1879-five-low": 6
+   },
    "holds": {
     "evidence": 0,
-    "match": 15,
-    "likeness": 2,
-    "run": 1,
+    "match": 5,
+    "likeness": 4,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "saenredam-2-22",
+   "street": "Saenredamstraat",
+   "pands": 11,
+   "placed": 5,
+   "held": 6,
+   "runs": [
+    {
+     "face": "saenredam-2-22-r1",
+     "pands": [
+      "0363100012166578",
+      "0363100012155728",
+      "0363100012162009",
+      "0363100012164404",
+      "0363100012158262"
+     ],
+     "passed": false,
+     "triangles": 11842
+    }
+   ],
+   "seconds": 11.18,
+   "byType": {
+    "pijp-1879-five-low": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
     "review": 0
    }
   },
@@ -539,16 +735,46 @@
    "face": "saenredam-26-56",
    "street": "Saenredamstraat",
    "pands": 14,
+   "placed": 3,
+   "held": 11,
+   "runs": [
+    {
+     "face": "saenredam-26-56-r1",
+     "pands": [
+      "0363100012167431",
+      "0363100012166655",
+      "0363100012152867"
+     ],
+     "passed": false,
+     "triangles": 5712
+    }
+   ],
+   "seconds": 29.55,
+   "byType": {
+    "pijp-1879-five-low": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 4,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "saenredam-39-67",
+   "street": "Saenredamstraat",
+   "pands": 16,
    "placed": 0,
-   "held": 14,
+   "held": 16,
    "runs": [],
-   "seconds": 2.02,
+   "seconds": 8.12,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 13,
-    "likeness": 0,
-    "run": 1,
+    "match": 12,
+    "likeness": 2,
+    "run": 2,
     "review": 0
    }
   },
@@ -582,17 +808,136 @@
    }
   },
   {
-   "face": "stalpert-2-36",
-   "street": "Daniël Stalpertstraat",
-   "pands": 15,
+   "face": "stadhouderskade-60-60",
+   "street": "Stadhouderskade",
+   "pands": 2,
    "placed": 0,
-   "held": 15,
+   "held": 2,
    "runs": [],
-   "seconds": 2.51,
+   "seconds": 0.22,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 14,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "stadhouderskade-74-76",
+   "street": "Stadhouderskade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.83,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "stalpert-1-5",
+   "street": "Daniël Stalpertstraat",
+   "pands": 3,
+   "placed": 3,
+   "held": 0,
+   "runs": [
+    {
+     "face": "stalpert-1-5",
+     "pands": [
+      "0363100012081074",
+      "0363100012165850",
+      "0363100012160573"
+     ],
+     "passed": false,
+     "triangles": 8113
+    }
+   ],
+   "seconds": 9.36,
+   "byType": {
+    "pijp-1879-five-low": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "stalpert-2-36",
+   "street": "Daniël Stalpertstraat",
+   "pands": 15,
+   "placed": 13,
+   "held": 2,
+   "runs": [
+    {
+     "face": "stalpert-2-36-r1",
+     "pands": [
+      "0363100012160596",
+      "0363100012069043",
+      "0363100012164898",
+      "0363100012166489",
+      "0363100012154148",
+      "0363100012166226",
+      "0363100012162486",
+      "0363100012166627",
+      "0363100012163608",
+      "0363100012156061",
+      "0363100012159244",
+      "0363100012162598",
+      "0363100012167015"
+     ],
+     "passed": false,
+     "triangles": 25629
+    }
+   ],
+   "seconds": 22.25,
+   "byType": {
+    "pijp-1879-five-low": 13
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "stalpert-33-67",
+   "street": "Daniël Stalpertstraat",
+   "pands": 9,
+   "placed": 5,
+   "held": 4,
+   "runs": [
+    {
+     "face": "stalpert-33-67-r1",
+     "pands": [
+      "0363100012164142",
+      "0363100012157683",
+      "0363100012074388",
+      "0363100012237225",
+      "0363100012236571"
+     ],
+     "passed": true,
+     "triangles": 10602
+    }
+   ],
+   "seconds": 14.38,
+   "byType": {
+    "pijp-1879-five-low": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
     "likeness": 0,
     "run": 1,
     "review": 0
@@ -602,15 +947,69 @@
    "face": "stalpert-38-70",
    "street": "Daniël Stalpertstraat",
    "pands": 15,
-   "placed": 0,
-   "held": 15,
-   "runs": [],
-   "seconds": 6.81,
-   "byType": {},
+   "placed": 5,
+   "held": 10,
+   "runs": [
+    {
+     "face": "stalpert-38-70-r1",
+     "pands": [
+      "0363100012166062",
+      "0363100012164016",
+      "0363100012158633",
+      "0363100012164659",
+      "0363100012153510"
+     ],
+     "passed": false,
+     "triangles": 13598
+    }
+   ],
+   "seconds": 22.53,
+   "byType": {
+    "pijp-1879-five-low": 5
+   },
    "holds": {
     "evidence": 0,
-    "match": 12,
-    "likeness": 2,
+    "match": 4,
+    "likeness": 4,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "stalpert-9-31",
+   "street": "Daniël Stalpertstraat",
+   "pands": 12,
+   "placed": 5,
+   "held": 7,
+   "runs": [
+    {
+     "face": "stalpert-9-31-r1",
+     "pands": [
+      "0363100012165989",
+      "0363100012166630",
+      "0363100012163767"
+     ],
+     "passed": false,
+     "triangles": 5881
+    },
+    {
+     "face": "stalpert-9-31-r2",
+     "pands": [
+      "0363100012162731",
+      "0363100012152613"
+     ],
+     "passed": true,
+     "triangles": 3893
+    }
+   ],
+   "seconds": 21.48,
+   "byType": {
+    "pijp-1879-five-low": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 1,
     "run": 1,
     "review": 0
    }

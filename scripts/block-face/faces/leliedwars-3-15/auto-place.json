@@ -1,0 +1,342 @@
+{
+ "face": "leliedwars-3-15",
+ "street": "Tweede Leliedwarsstraat",
+ "library": "jordaan",
+ "stripDate": "2024-12-16",
+ "seconds": 0.49,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012168653",
+   "address": "Tweede Leliedwarsstraat 3",
+   "builtYear": 1905,
+   "widthM": 9.81,
+   "eavesM": 10.28,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a4856f",
+    "wallRaw": "#af9782",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 655,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.367,
+    "structure": {
+     "bayWidthM": 4.92,
+     "bayCentre": 0.73,
+     "balconies": true,
+     "why": "dark open axis 1.27 m at 0.1 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.27,
+       "centre": 0.1,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.36,
+       "light": 0.5
+      },
+      {
+       "widthM": 4.95,
+       "centre": 0.72,
+       "light": 0.43
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1905, type 1600-1870; frontage 9.81 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1870",
+     "frontage 9.81 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.28 m = 3 storeys of 3.43 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.45 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.324 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169918",
+   "address": "Tweede Leliedwarsstraat 7",
+   "builtYear": 1914,
+   "widthM": 9.54,
+   "eavesM": 10.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d5047",
+    "wallRaw": "#504944",
+    "skyline": {
+     "eavesM": 13.9,
+     "eavesRow": 99,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 2.1,
+      "topWidthM": 0.35,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.6,
+       "widthM": 7.9,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1914, type 1600-1870; frontage 9.54 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1600-1870",
+     "frontage 9.54 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.32 m = 3 storeys of 3.44 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.88 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.038 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.1 m, top 0.35 m fits bell"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169966",
+   "address": "Tweede Leliedwarsstraat 13",
+   "builtYear": 1889,
+   "widthM": 4.5,
+   "eavesM": 9.16,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.75,
+    "toM": 3.75,
+    "depthM": 0.28,
+    "centre": 0.832,
+    "lineRD": [
+     [
+      120515.722,
+      487633.01875000005
+     ],
+     [
+      120517.185,
+      487629.55975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7c6d4d",
+    "wallRaw": "#938160",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 655,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169976",
+   "address": "Tweede Leliedwarsstraat 15",
+   "builtYear": 1832,
+   "widthM": 3.56,
+   "eavesM": 7.95,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#97846a",
+    "wallRaw": "#ac9c7b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 655,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.218,
+    "structure": {
+     "bayWidthM": 1.73,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.75 m @ 0.55), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.73,
+       "light": 0.55
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1750-neck-gable scores 0.33 < 0.7 (3DBAG eaves 7.95 m = 3 storeys of 2.65 m vs the type's 3.33 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.95 m = 3 storeys of 2.65 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.19 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

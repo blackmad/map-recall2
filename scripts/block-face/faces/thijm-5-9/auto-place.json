@@ -3,7 +3,7 @@
  "street": "Alberdingk Thijmstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 0.46,
+ "seconds": 0.54,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -39,17 +39,17 @@
     ]
    },
    "strip": {
-    "wall": "#937054",
-    "wallRaw": "#b18464",
+    "wall": "#3d3531",
+    "wallRaw": "#453c38",
     "skyline": {
-     "eavesM": 14.65,
-     "eavesRow": 166,
+     "eavesM": 14.68,
+     "eavesRow": 165,
      "confidence": 1,
      "crown": {
-      "widthM": 2.3,
-      "riseM": 3.37,
-      "topWidthM": 0.68,
-      "centre": 0.8
+      "widthM": 2.55,
+      "riseM": 3.32,
+      "topWidthM": 0.5,
+      "centre": 0.77
      }
     },
     "stucco": false,
@@ -57,54 +57,38 @@
     "columns": 3,
     "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.298,
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 1.25,
-     "bayCentre": 0.49,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 1.07 m at 0.17 (light 0.49): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 1.07,
-       "centre": 0.17,
-       "light": 0.49
-      },
-      {
-       "widthM": 1.05,
-       "centre": 0.49,
-       "light": 0.45
-      },
-      {
-       "widthM": 0.85,
-       "centre": 0.84,
-       "light": 0.51
-      }
-     ],
+     "why": "balcony slabs stacked at 9.82 m (1.48 m wide), 7.13 m (1.35 m wide), 6.6 m (1.38 m wide)",
+     "openAxes": [],
      "slabs": [
       {
-       "atM": 9.68,
-       "widthM": 1.07,
-       "centre": 0.86
-      },
-      {
-       "atM": 9.38,
-       "widthM": 1.13,
-       "centre": 0.15
-      },
-      {
-       "atM": 6.97,
-       "widthM": 0.9,
+       "atM": 9.82,
+       "widthM": 1.48,
        "centre": 0.78
       },
       {
-       "atM": 6.38,
-       "widthM": 0.85,
-       "centre": 0.87
+       "atM": 9.52,
+       "widthM": 1.18,
+       "centre": 0.13
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.35,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.38,
+       "centre": 0.78
       }
      ]
     },
-    "voidShare": 0.12,
-    "foliageShare": 0.04
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
    "stage": "review",
@@ -117,46 +101,45 @@
    "address": "Alberdingk Thijmstraat 7",
    "builtYear": 1899,
    "widthM": 6.49,
-   "eavesM": 17.32,
+   "eavesM": 16.28,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#e4b794",
-    "wallRaw": "#edc89e",
+    "wall": "#302926",
+    "wallRaw": "#423c38",
     "skyline": {
-     "eavesM": 17.32,
-     "eavesRow": 59,
+     "eavesM": 17.35,
+     "eavesRow": 58,
      "confidence": 1,
      "crown": null
     },
     "stucco": false,
-    "bands": 4,
+    "bands": 0,
     "columns": 3,
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.489,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 1.4,
-     "bayCentre": 0.83,
-     "balconies": true,
-     "why": "bay-less open axis 0.88 m at 0.17 (light 0.56): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 0.88,
-       "centre": 0.17,
-       "light": 0.56
-      }
-     ],
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
      "slabs": [
       {
-       "atM": 9.3,
-       "widthM": 1.18,
-       "centre": 0.5
+       "atM": 9.6,
+       "widthM": 1.55,
+       "centre": 0.44
+      },
+      {
+       "atM": 5.32,
+       "widthM": 1.48,
+       "centre": 0.12
       }
      ]
     },
-    "voidShare": 0.34,
-    "foliageShare": 0.16
+    "voidShare": 0,
+    "foliageShare": 0.01
    },
    "status": "held",
    "stage": "review",
@@ -169,51 +152,55 @@
    "address": "Alberdingk Thijmstraat 9",
    "builtYear": 1899,
    "widthM": 5.84,
-   "eavesM": 14.28,
+   "eavesM": 16.33,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#f9deb2",
-    "wallRaw": "#f5dbb0",
+    "wall": "#362d2a",
+    "wallRaw": "#3f3835",
     "skyline": {
-     "eavesM": 14.28,
-     "eavesRow": 181,
+     "eavesM": 14.57,
+     "eavesRow": 169,
      "confidence": 1,
      "crown": {
-      "widthM": 1.8,
-      "riseM": 2.92,
-      "topWidthM": 1.8,
-      "centre": 0.17
+      "widthM": 1.48,
+      "riseM": 2.45,
+      "topWidthM": 1.48,
+      "centre": 0.14
      }
     },
     "stucco": false,
-    "bands": 3,
+    "bands": 0,
     "columns": 5,
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.437,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 1.25,
-     "bayCentre": 0.47,
-     "balconies": true,
-     "why": "dark open axis 0.75 m at 0.8 (light 0.35): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 0.75,
-       "centre": 0.8,
-       "light": 0.35
-      }
-     ],
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
      "slabs": [
       {
-       "atM": 13.3,
-       "widthM": 2.58,
-       "centre": 0.56
+       "atM": 13.53,
+       "widthM": 3.58,
+       "centre": 0.61
+      },
+      {
+       "atM": 12.63,
+       "widthM": 1.02,
+       "centre": 0.1
+      },
+      {
+       "atM": 9.55,
+       "widthM": 1.27,
+       "centre": 0.43
       }
      ]
     },
-    "voidShare": 0.3,
-    "foliageShare": 0.18
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
    "stage": "run",

@@ -1,0 +1,760 @@
+{
+ "street": "Eerste Bloemdwarsstraat",
+ "seed": "0363100012174037",
+ "members": [
+  "0363100012174037",
+  "0363100012172774",
+  "0363100012172772",
+  "0363100012172771",
+  "0363100012172581"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012174036 17.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012172581 (face continues: 168644)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168612",
+   "reason": "frontage 53.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168649",
+   "reason": "frontage 58.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012164995",
+   "reason": "frontage 62.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168643",
+   "reason": "frontage 61.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168695",
+   "reason": "frontage 41.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168698",
+   "reason": "frontage 86.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168699",
+   "reason": "frontage 86.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168700",
+   "reason": "frontage 74.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168706",
+   "reason": "frontage 80.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168708",
+   "reason": "frontage 79.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168710",
+   "reason": "frontage 102.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168747",
+   "reason": "frontage 58.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168748",
+   "reason": "frontage 86.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168749",
+   "reason": "frontage 69.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168758",
+   "reason": "frontage 63.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168767",
+   "reason": "frontage 97.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168797",
+   "reason": "frontage 97.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168798",
+   "reason": "frontage 108.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168806",
+   "reason": "frontage 83.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168807",
+   "reason": "frontage 71.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168011",
+   "reason": "frontage 89.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168014",
+   "reason": "frontage 84.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168159",
+   "reason": "frontage 63.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168603",
+   "reason": "frontage 32.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168604",
+   "reason": "frontage 49.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168605",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168613"
+  },
+  {
+   "pandId": "0363100012168606",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168647"
+  },
+  {
+   "pandId": "0363100012168607",
+   "reason": "frontage 63.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168608",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168606"
+  },
+  {
+   "pandId": "0363100012168613",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168639"
+  },
+  {
+   "pandId": "0363100012168639",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168640"
+  },
+  {
+   "pandId": "0363100012168640",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168648"
+  },
+  {
+   "pandId": "0363100012168642",
+   "reason": "frontage 46.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168645",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168644"
+  },
+  {
+   "pandId": "0363100012168646",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168640"
+  },
+  {
+   "pandId": "0363100012168647",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174015"
+  },
+  {
+   "pandId": "0363100012168696",
+   "reason": "frontage 37.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168697",
+   "reason": "frontage 41.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168701",
+   "reason": "frontage 32.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168703",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174010"
+  },
+  {
+   "pandId": "0363100012168704",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168702"
+  },
+  {
+   "pandId": "0363100012168705",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168703"
+  },
+  {
+   "pandId": "0363100012169085",
+   "reason": "frontage 74.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169086",
+   "reason": "frontage 69.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170141",
+   "reason": "frontage 63.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172574",
+   "reason": "frontage 67.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172575",
+   "reason": "frontage 65.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172576",
+   "reason": "frontage 37.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169901",
+   "reason": "frontage 48.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169905",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169912",
+   "reason": "frontage 53.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169913",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169914",
+   "reason": "frontage 38.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169915",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170085",
+   "reason": "frontage 41.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170086",
+   "reason": "frontage 36.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170087",
+   "reason": "frontage 45.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170088",
+   "reason": "frontage 78.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170089",
+   "reason": "frontage 73.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170090",
+   "reason": "frontage 69.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170091",
+   "reason": "frontage 59.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170092",
+   "reason": "frontage 92.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170093",
+   "reason": "frontage 82.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170140",
+   "reason": "frontage 67.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170147",
+   "reason": "frontage 101.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170148",
+   "reason": "frontage 89.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170149",
+   "reason": "frontage 54.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170155",
+   "reason": "frontage 60.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170157",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012169092"
+  },
+  {
+   "pandId": "0363100012170158",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012169092"
+  },
+  {
+   "pandId": "0363100012170159",
+   "reason": "frontage 45.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170206",
+   "reason": "frontage 32.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170208",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012170207"
+  },
+  {
+   "pandId": "0363100012170209",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012170210"
+  },
+  {
+   "pandId": "0363100012170210",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012170211"
+  },
+  {
+   "pandId": "0363100012170212",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012170207"
+  },
+  {
+   "pandId": "0363100012170213",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168652"
+  },
+  {
+   "pandId": "0363100012170214",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012169092"
+  },
+  {
+   "pandId": "0363100012170216",
+   "reason": "frontage 72.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170217",
+   "reason": "frontage 66.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170218",
+   "reason": "frontage 54.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170219",
+   "reason": "frontage 49.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170220",
+   "reason": "frontage 43.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170221",
+   "reason": "frontage 34.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170222",
+   "reason": "frontage 77.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170223",
+   "reason": "frontage 70.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172577",
+   "reason": "frontage 43.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172578",
+   "reason": "frontage 37.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172579",
+   "reason": "frontage 49.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172580",
+   "reason": "frontage 43.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172768",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012172582"
+  },
+  {
+   "pandId": "0363100012172769",
+   "reason": "frontage 32.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172773",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168644"
+  },
+  {
+   "pandId": "0363100012172775",
+   "reason": "frontage 60.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172776",
+   "reason": "frontage 80.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172779",
+   "reason": "frontage 86.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172863",
+   "reason": "frontage 90.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173043",
+   "reason": "frontage 94.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173045",
+   "reason": "frontage 74.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173342",
+   "reason": "frontage 97.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173978",
+   "reason": "frontage 61.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173980",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173981",
+   "reason": "frontage 42.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173982",
+   "reason": "frontage 47.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173983",
+   "reason": "frontage 50.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173984",
+   "reason": "frontage 43.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173988",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173989",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173990",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173991",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173992",
+   "reason": "frontage 37.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173994",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173995",
+   "reason": "frontage 38.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174004",
+   "reason": "frontage 40.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174012",
+   "reason": "frontage 32.0 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173975",
+   "reason": "frontage 39.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173977",
+   "reason": "frontage 65.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012172582",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174037"
+  },
+  {
+   "pandId": "0363100012172583",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012172582"
+  },
+  {
+   "pandId": "0363100012174000",
+   "reason": "frontage 42.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174001",
+   "reason": "frontage 37.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174002",
+   "reason": "frontage 31.4 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174007",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174008",
+   "reason": "frontage 33.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174009",
+   "reason": "no frontage on Eerste Bloemdwarsstraat: No footprint edge faces Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174010",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174016"
+  },
+  {
+   "pandId": "0363100012174020",
+   "reason": "frontage 35.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174021",
+   "reason": "frontage 40.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174025",
+   "reason": "frontage 44.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174026",
+   "reason": "frontage 48.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174027",
+   "reason": "frontage 52.2 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174028",
+   "reason": "frontage 57.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174029",
+   "reason": "frontage 68.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174030",
+   "reason": "frontage 57.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174031",
+   "reason": "frontage 56.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174032",
+   "reason": "frontage 68.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174039",
+   "reason": "frontage 53.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012240299",
+   "reason": "frontage 57.7 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012571485",
+   "reason": "frontage 74.9 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012571486",
+   "reason": "frontage 80.3 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174017",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012168702"
+  },
+  {
+   "pandId": "0363100012174018",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174033"
+  },
+  {
+   "pandId": "0363100012174019",
+   "reason": "frontage 30.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174033",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174036"
+  },
+  {
+   "pandId": "0363100012174034",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174033"
+  },
+  {
+   "pandId": "0363100012174035",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174024"
+  },
+  {
+   "pandId": "0363100012174040",
+   "reason": "frontage 69.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012239635",
+   "reason": "frontage 45.6 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012239834",
+   "reason": "sightline to Eerste Bloemdwarsstraat crosses 0363100012174037"
+  },
+  {
+   "pandId": "0363100012243113",
+   "reason": "frontage 78.1 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012571976",
+   "reason": "frontage 57.8 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012571981",
+   "reason": "frontage 54.5 m from Eerste Bloemdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168652",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168707",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169899",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169916",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170045",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170207",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174005",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172770",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174014",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174015",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174037",
+   "alongM": 0,
+   "widthM": 10.84,
+   "eavesM": 9.02,
+   "roofMaxM": 12.25,
+   "storeys3dbag": 4,
+   "builtYear": 1931,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172774",
+   "alongM": 8.48,
+   "widthM": 6.13,
+   "eavesM": 9.6,
+   "roofMaxM": 12.94,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172772",
+   "alongM": 14.41,
+   "widthM": 5.72,
+   "eavesM": 12.37,
+   "roofMaxM": 12.64,
+   "storeys3dbag": 4,
+   "builtYear": 1846,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172771",
+   "alongM": 20.12,
+   "widthM": 5.72,
+   "eavesM": 9.02,
+   "roofMaxM": 13.33,
+   "storeys3dbag": 0,
+   "builtYear": 1811,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172581",
+   "alongM": 25.41,
+   "widthM": 4.86,
+   "eavesM": 9.24,
+   "roofMaxM": 9.35,
+   "storeys3dbag": 3,
+   "builtYear": 1839,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:46:39.818Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164142",
+   "addresses": [
+    "Daniël Stalpertstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000615194"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157683",
+   "addresses": [
+    "Daniël Stalpertstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000615202"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074388",
+   "addresses": [
+    "Daniël Stalpertstraat 55B",
+    "Daniël Stalpertstraat 55A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000949181"
+    },
+    {
+     "address": "Daniël Stalpertstraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000949092"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237225",
+   "addresses": [
+    "Daniël Stalpertstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000615222"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455097,
+     "lngLat": [
+      4.8897961,
+      52.3563253
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-1",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "guest_house": "bed_and_breakfast",
+      "name": "The Fabulous Suite",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2817455205,
+     "lngLat": [
+      4.889796,
+      52.3563343
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-3",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "check_date": "2026-01-10",
+      "name": "The Superstay Boutique guestroom",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house",
+      "website": "https://eatbu.nl/the-superstay-boutique-guestroom-netherlands"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236571",
+   "addresses": [
+    "Daniël Stalpertstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 61-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000615238"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817455441,
+     "lngLat": [
+      4.8898615,
+      52.3563181
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "61-H",
+      "addr:postcode": "1072XB",
+      "addr:street": "Daniël Stalpertstraat",
+      "alt_name": "Locals All Day Brunch",
+      "amenity": "restaurant",
+      "branch": "Daniël",
+      "check_date": "2026-01-06",
+      "cuisine": "breakfast;brunch;coffee_shop",
+      "email": "info@localscoffee.nl",
+      "name": "Locals Coffee",
+      "opening_hours": "Mo-Th 09:00-15:00; Fr-Su 09:00-16:00",
+      "outdoor_seating": "no",
+      "phone": "+31 6 24910728",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.localscoffee.nl/locations/all-day-brunch-daniel"
+     },
+     "fetchedAt": "2026-10-29T20:46:39.818Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

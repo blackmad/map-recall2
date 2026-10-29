@@ -1,0 +1,69 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:01:39.345Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169849",
+   "addresses": [
+    "Nieuwe Leliestraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 127",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000756902"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169848",
+   "addresses": [
+    "Nieuwe Leliestraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 129-H",
+     "use": "industriefunctie",
+     "areaM2": 48,
+     "bagId": "0363010000756905"
+    },
+    {
+     "address": "Nieuwe Leliestraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012141860"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174428",
+   "addresses": [
+    "Nieuwe Leliestraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012583386"
+    },
+    {
+     "address": "Nieuwe Leliestraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000756916"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

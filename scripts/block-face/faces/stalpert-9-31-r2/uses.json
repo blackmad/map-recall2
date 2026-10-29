@@ -1,0 +1,41 @@
+{
+ "street": "Daniël Stalpertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:57:49.876Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162731",
+   "addresses": [
+    "Daniël Stalpertstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000615059"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152613",
+   "addresses": [
+    "Daniël Stalpertstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Daniël Stalpertstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000615067"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

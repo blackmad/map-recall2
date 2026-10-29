@@ -1,0 +1,449 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:01:39.345Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170046",
+   "addresses": [
+    "Nieuwe Leliestraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 83-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756817"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1556508595,
+     "lngLat": [
+      4.8808005,
+      52.3752102
+     ],
+     "tags": {
+      "amenity": "pub",
+      "check_date": "2023-08-27",
+      "name": "De Nieuwe Lelie",
+      "opening_hours": "Mo-Th 15:00-01:00, Fr 15:00-02:00, Sa 12:00-02:00, Su 12:00-01:00"
+     },
+     "fetchedAt": "2026-10-29T22:01:39.345Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170036",
+   "addresses": [
+    "Nieuwe Leliestraat 85",
+    "Nieuwe Leliestraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 85",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000756819"
+    },
+    {
+     "address": "Nieuwe Leliestraat 87",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000756823"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169988",
+   "addresses": [
+    "Nieuwe Leliestraat 89B",
+    "Nieuwe Leliestraat 89C",
+    "Nieuwe Leliestraat 89A",
+    "Nieuwe Leliestraat 91D",
+    "Nieuwe Leliestraat 91A",
+    "Nieuwe Leliestraat 91C",
+    "Nieuwe Leliestraat 91B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 91D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000916651"
+    },
+    {
+     "address": "Nieuwe Leliestraat 89B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756827"
+    },
+    {
+     "address": "Nieuwe Leliestraat 91A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000756830"
+    },
+    {
+     "address": "Nieuwe Leliestraat 89C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756828"
+    },
+    {
+     "address": "Nieuwe Leliestraat 91C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756832"
+    },
+    {
+     "address": "Nieuwe Leliestraat 91B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756831"
+    },
+    {
+     "address": "Nieuwe Leliestraat 89A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000756826"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170042",
+   "addresses": [
+    "Nieuwe Leliestraat 93",
+    "Nieuwe Leliestraat 95A",
+    "Nieuwe Leliestraat 95B",
+    "Nieuwe Leliestraat 95C",
+    "Nieuwe Leliestraat 97",
+    "Nieuwe Leliestraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 93",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001005680"
+    },
+    {
+     "address": "Nieuwe Leliestraat 95A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001005682"
+    },
+    {
+     "address": "Nieuwe Leliestraat 95B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001005683"
+    },
+    {
+     "address": "Nieuwe Leliestraat 95C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001005685"
+    },
+    {
+     "address": "Nieuwe Leliestraat 97",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001005687"
+    },
+    {
+     "address": "Nieuwe Leliestraat 99",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001005688"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170041",
+   "addresses": [
+    "Nieuwe Leliestraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 101-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000756850"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170040",
+   "addresses": [
+    "Nieuwe Leliestraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 103-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000756859"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169909",
+   "addresses": [
+    "Nieuwe Leliestraat 105",
+    "Nieuwe Leliestraat 107A",
+    "Nieuwe Leliestraat 107B",
+    "Nieuwe Leliestraat 107C",
+    "Nieuwe Leliestraat 109A",
+    "Nieuwe Leliestraat 109B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 105",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001005689"
+    },
+    {
+     "address": "Nieuwe Leliestraat 107A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001005690"
+    },
+    {
+     "address": "Nieuwe Leliestraat 107B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001005691"
+    },
+    {
+     "address": "Nieuwe Leliestraat 107C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001005692"
+    },
+    {
+     "address": "Nieuwe Leliestraat 109A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001005693"
+    },
+    {
+     "address": "Nieuwe Leliestraat 109B",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001005694"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170043",
+   "addresses": [
+    "Nieuwe Leliestraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 111-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000687099"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169910",
+   "addresses": [
+    "Nieuwe Leliestraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 113",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000756878"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168161",
+   "addresses": [
+    "Nieuwe Leliestraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 115",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000939023"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168148",
+   "addresses": [
+    "Nieuwe Leliestraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 117",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001020745"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168147",
+   "addresses": [
+    "Nieuwe Leliestraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 119-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000756887"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174246",
+   "addresses": [
+    "Nieuwe Leliestraat 123B",
+    "Nieuwe Leliestraat 123C",
+    "Nieuwe Leliestraat 123D",
+    "Nieuwe Leliestraat 123A",
+    "Nieuwe Leliestraat 125A",
+    "Nieuwe Leliestraat 125B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 123B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000756890"
+    },
+    {
+     "address": "Nieuwe Leliestraat 123C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000756891"
+    },
+    {
+     "address": "Nieuwe Leliestraat 123D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000756892"
+    },
+    {
+     "address": "Nieuwe Leliestraat 125A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000756897"
+    },
+    {
+     "address": "Nieuwe Leliestraat 125B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000756898"
+    },
+    {
+     "address": "Nieuwe Leliestraat 123A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000756889"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169849",
+   "addresses": [
+    "Nieuwe Leliestraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 127",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000756902"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169848",
+   "addresses": [
+    "Nieuwe Leliestraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 129-H",
+     "use": "industriefunctie",
+     "areaM2": 48,
+     "bagId": "0363010000756905"
+    },
+    {
+     "address": "Nieuwe Leliestraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012141860"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174428",
+   "addresses": [
+    "Nieuwe Leliestraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012583386"
+    },
+    {
+     "address": "Nieuwe Leliestraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000756916"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,794 @@
+{
+ "face": "dou-1-7",
+ "street": "Gerard Doustraat",
+ "library": "de-pijp",
+ "stripDate": "2023-01-03",
+ "seconds": 1.98,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "dou-1-7-r1",
+   "pands": [
+    "0363100012160743",
+    "0363100012236717",
+    "0363100012152502"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159383",
+   "address": "Gerard Doustraat 1",
+   "builtYear": 1881,
+   "widthM": 5.49,
+   "eavesM": 13.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554943",
+    "wallRaw": "#615752",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 4.45,
+      "topWidthM": 0.2,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.1 m (2.67 m wide), 6.4 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.1,
+       "widthM": 2.67,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.5,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; pijp-1884-bracketed-hood is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161208",
+   "address": "Gerard Doustraat 1A",
+   "builtYear": 1881,
+   "widthM": 5.35,
+   "eavesM": 13.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755f58",
+    "wallRaw": "#5b4f4a",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.9,
+      "topWidthM": 0.2,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.88,
+       "widthM": 1.18,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: Gerard Doustraat 1 (same 1881 row) reads ribbon windows; pijp-1884-bracketed-hood is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160332",
+   "address": "Gerard Doustraat 1B",
+   "builtYear": 1881,
+   "widthM": 5.41,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705b53",
+    "wallRaw": "#5c504c",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.25,
+      "topWidthM": 0.17,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.63 m (4.35 m wide), 8.93 m (4.38 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 4.35,
+       "centre": 0.44
+      },
+      {
+       "atM": 8.93,
+       "widthM": 4.38,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: Gerard Doustraat 1 (same 1881 row) reads ribbon windows; pijp-1884-bracketed-hood is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012085925",
+   "address": "Gerard Doustraat 1C",
+   "builtYear": 1881,
+   "widthM": 4.99,
+   "eavesM": 13.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78615c",
+    "wallRaw": "#5e5551",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.05,
+      "topWidthM": 0.3,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.141,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.45,
+       "widthM": 0.9,
+       "centre": 0.82
+      },
+      {
+       "atM": 8.97,
+       "widthM": 1.48,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: Gerard Doustraat 1 (same 1881 row) reads ribbon windows; pijp-1884-bracketed-hood is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157397",
+   "address": "Gerard Doustraat 1D",
+   "builtYear": 1881,
+   "widthM": 5.67,
+   "eavesM": 13.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c7c73",
+    "wallRaw": "#615753",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.43,
+      "topWidthM": 0.35,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.101,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.7 m (2.02 m wide), 9.07 m (1.73 m wide), 6.45 m (2.88 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 2.02,
+       "centre": 0.43
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.73,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.45,
+       "widthM": 2.88,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: Gerard Doustraat 1 (same 1881 row) reads ribbon windows; pijp-1884-bracketed-hood is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236161",
+   "address": "Gerard Doustraat 1E",
+   "builtYear": 1884,
+   "widthM": 9.8,
+   "eavesM": 14.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f8279",
+    "wallRaw": "#726b66",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 2.82,
+      "topWidthM": 0.68,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.92,
+       "widthM": 0.97,
+       "centre": 0.9
+      },
+      {
+       "atM": 9.88,
+       "widthM": 1.07,
+       "centre": 0.22
+      },
+      {
+       "atM": 5.6,
+       "widthM": 0.8,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1884, type 1875-1877; frontage 9.8 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1884, type 1875-1877",
+     "frontage 9.8 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.67 m = 3 storeys of 4.89 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.86 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.14 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160743",
+   "address": "Gerard Doustraat 3",
+   "builtYear": 1880,
+   "widthM": 4.44,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68645c",
+    "wallRaw": "#736f65",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.23,
+      "topWidthM": 0.47,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#68645c",
+     "evidence": "strip 2023-01-03 span 1469-1646: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236717",
+   "address": "Gerard Doustraat 3A",
+   "builtYear": 1880,
+   "widthM": 4.55,
+   "eavesM": 12.66,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.45,
+    "toM": 2.5,
+    "depthM": 0.58,
+    "centre": 0.324,
+    "lineRD": [
+     [
+      120981.7100625,
+      485383.9385
+     ],
+     [
+      120985.7320625,
+      485382.9385
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3f3d42",
+    "wallRaw": "#494946",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.23,
+      "topWidthM": 0.25,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.4,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#3f3d42",
+     "evidence": "strip 2023-01-03 span 1646-1827: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152502",
+   "address": "Gerard Doustraat 3B",
+   "builtYear": 1880,
+   "widthM": 4.46,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53545b",
+    "wallRaw": "#554e4a",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.48,
+      "topWidthM": 0.38,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.27,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.02 m (1.52 m wide), 6.47 m (1.52 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.02,
+       "widthM": 1.52,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.52,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#53545b",
+     "evidence": "strip 2023-01-03 span 1827-2005: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157463",
+   "address": "Gerard Doustraat 3C",
+   "builtYear": 1878,
+   "widthM": 5.14,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f574e",
+    "wallRaw": "#59504b",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 227,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 2.88,
+      "topWidthM": 0.17,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.18 m (4.38 m wide), 9.55 m (3.73 m wide), 6.85 m (3.33 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.18,
+       "widthM": 4.38,
+       "centre": 0.48
+      },
+      {
+       "atM": 9.55,
+       "widthM": 3.73,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.85,
+       "widthM": 3.33,
+       "centre": 0.39
+      },
+      {
+       "atM": 4.75,
+       "widthM": 4.55,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: Gerard Doustraat 5 (same 1878 row) reads ribbon windows; pijp-1879-five-low is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236467",
+   "address": "Gerard Doustraat 5",
+   "builtYear": 1878,
+   "widthM": 7.8,
+   "eavesM": 13.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715b51",
+    "wallRaw": "#5a4f4a",
+    "skyline": {
+     "eavesM": 13.9,
+     "eavesRow": 225,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.85,
+      "topWidthM": 0.45,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.35,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.92,
+       "widthM": 3.15,
+       "centre": 0.23
+      },
+      {
+       "atM": 4.75,
+       "widthM": 0.82,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1878, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 13.94 m = 3 storeys of 4.65 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.44 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

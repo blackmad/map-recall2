@@ -1,12 +1,12 @@
 {
  "buurt": "helmersbuurt-oost",
  "library": "helmersbuurt",
- "generatedAt": "2026-10-25T18:25:26.225Z",
- "seconds": 21.48,
+ "generatedAt": "2026-10-29T21:12:00.682Z",
+ "seconds": 2.1,
  "totals": {
-  "faces": 50,
-  "pands": 344,
-  "placed": 20
+  "faces": 51,
+  "pands": 357,
+  "placed": 28
  },
  "faces": [
   {
@@ -37,11 +37,11 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.39,
+   "seconds": 0.63,
    "byType": {},
    "holds": {
-    "evidence": 2,
-    "match": 0,
+    "evidence": 0,
+    "match": 2,
     "likeness": 0,
     "run": 1,
     "review": 0
@@ -58,7 +58,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.03,
+   "seconds": 0.04,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -75,12 +75,12 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.55,
+   "seconds": 3.39,
    "byType": {},
    "holds": {
-    "evidence": 1,
+    "evidence": 0,
     "match": 0,
-    "likeness": 2,
+    "likeness": 3,
     "run": 0,
     "review": 0
    }
@@ -92,12 +92,12 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.34,
+   "seconds": 3.1,
    "byType": {},
    "holds": {
-    "evidence": 3,
-    "match": 0,
-    "likeness": 0,
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
     "run": 0,
     "review": 0
    }
@@ -109,13 +109,13 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 7.12,
+   "seconds": 8.36,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 7,
-    "likeness": 7,
-    "run": 0,
+    "match": 4,
+    "likeness": 9,
+    "run": 1,
     "review": 0
    }
   },
@@ -126,13 +126,13 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.66,
+   "seconds": 3.75,
    "byType": {},
    "holds": {
-    "evidence": 5,
+    "evidence": 0,
     "match": 2,
-    "likeness": 0,
-    "run": 0,
+    "likeness": 4,
+    "run": 1,
     "review": 0
    }
   },
@@ -143,13 +143,13 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.49,
+   "seconds": 1.08,
    "byType": {},
    "holds": {
-    "evidence": 4,
-    "match": 1,
+    "evidence": 0,
+    "match": 2,
     "likeness": 0,
-    "run": 0,
+    "run": 3,
     "review": 0
    }
   },
@@ -160,13 +160,13 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 2.1,
+   "seconds": 2.15,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 14,
+    "match": 13,
     "likeness": 0,
-    "run": 1,
+    "run": 2,
     "review": 0
    }
   },
@@ -251,13 +251,13 @@
    "placed": 0,
    "held": 13,
    "runs": [],
-   "seconds": 1.23,
+   "seconds": 2.09,
    "byType": {},
    "holds": {
-    "evidence": 8,
-    "match": 5,
+    "evidence": 0,
+    "match": 11,
     "likeness": 0,
-    "run": 0,
+    "run": 2,
     "review": 0
    }
   },
@@ -285,7 +285,7 @@
    "placed": 0,
    "held": 13,
    "runs": [],
-   "seconds": 6.63,
+   "seconds": 8.18,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -416,13 +416,13 @@
    "placed": 0,
    "held": 13,
    "runs": [],
-   "seconds": 2.11,
+   "seconds": 5.25,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 8,
-    "likeness": 3,
-    "run": 2,
+    "match": 6,
+    "likeness": 7,
+    "run": 0,
     "review": 0
    }
   },
@@ -433,13 +433,13 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 4.62,
+   "seconds": 7.86,
    "byType": {},
    "holds": {
-    "evidence": 5,
-    "match": 2,
-    "likeness": 4,
-    "run": 1,
+    "evidence": 0,
+    "match": 4,
+    "likeness": 6,
+    "run": 2,
     "review": 0
    }
   },
@@ -447,16 +447,31 @@
    "face": "helmers-79-97",
    "street": "Tweede Helmersstraat",
    "pands": 10,
-   "placed": 0,
-   "held": 10,
-   "runs": [],
-   "seconds": 1.11,
-   "byType": {},
+   "placed": 4,
+   "held": 6,
+   "runs": [
+    {
+     "face": "helmers-79-97-r1",
+     "pands": [
+      "0363100012162865",
+      "0363100012156928",
+      "0363100012158996",
+      "0363100012165956"
+     ],
+     "passed": false,
+     "triangles": 9016
+    }
+   ],
+   "seconds": 8.87,
+   "byType": {
+    "helmers-1889-balconette-pediment": 3,
+    "helmers-1897-balconette-tall": 1
+   },
    "holds": {
-    "evidence": 7,
-    "match": 2,
-    "likeness": 0,
-    "run": 1,
+    "evidence": 0,
+    "match": 0,
+    "likeness": 6,
+    "run": 0,
     "review": 0
    }
   },
@@ -484,7 +499,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.52,
+   "seconds": 0.61,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -501,7 +516,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.47,
+   "seconds": 0.48,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -518,7 +533,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.15,
+   "seconds": 1.27,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -535,13 +550,13 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.13,
+   "seconds": 1.26,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 4,
+    "match": 3,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -552,13 +567,13 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.54,
+   "seconds": 0.59,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 3,
+    "match": 2,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -569,7 +584,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 3.28,
+   "seconds": 3.84,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -586,7 +601,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.54,
+   "seconds": 0.62,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -603,19 +618,46 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 1.32,
+   "seconds": 4.96,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 9,
-    "likeness": 0,
+    "match": 5,
+    "likeness": 4,
     "run": 0,
     "review": 0
    }
   },
   {
    "face": "lennepkade-19-43",
-   "status": "no intake"
+   "street": "Jacob van Lennepkade",
+   "pands": 13,
+   "placed": 4,
+   "held": 9,
+   "runs": [
+    {
+     "face": "lennepkade-19-43-r1",
+     "pands": [
+      "0363100012163778",
+      "0363100012156512",
+      "0363100012153662",
+      "0363100012159235"
+     ],
+     "passed": false,
+     "triangles": 8847
+    }
+   ],
+   "seconds": 153.08,
+   "byType": {
+    "helmers-1889-balconette-pediment": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 7,
+    "run": 0,
+    "review": 0
+   }
   },
   {
    "face": "lennepkade-49-75",
@@ -624,7 +666,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 2.1,
+   "seconds": 2.37,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -719,13 +761,13 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.4,
+   "seconds": 0.48,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 1,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -794,12 +836,12 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.18,
+   "seconds": 5.21,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 5,
-    "likeness": 0,
+    "match": 3,
+    "likeness": 2,
     "run": 0,
     "review": 0
    }
@@ -811,7 +853,7 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 2.57,
+   "seconds": 2.78,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -836,7 +878,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 3.22,
+   "seconds": 3.29,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -865,7 +907,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.61,
+   "seconds": 1.55,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -899,7 +941,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.46,
+   "seconds": 0.54,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -950,7 +992,7 @@
    "placed": 0,
    "held": 11,
    "runs": [],
-   "seconds": 1.97,
+   "seconds": 2.02,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -967,7 +1009,7 @@
    "placed": 0,
    "held": 13,
    "runs": [],
-   "seconds": 1.86,
+   "seconds": 2.51,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -984,13 +1026,13 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 2.01,
+   "seconds": 2.6,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 5,
+    "match": 4,
     "likeness": 7,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -1001,12 +1043,12 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 3.84,
+   "seconds": 5.09,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 3,
-    "likeness": 5,
+    "match": 4,
+    "likeness": 4,
     "run": 2,
     "review": 0
    }
@@ -1018,7 +1060,7 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 1.42,
+   "seconds": 1.56,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1035,13 +1077,13 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 1.53,
+   "seconds": 5.41,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 10,
-    "likeness": 0,
-    "run": 0,
+    "match": 3,
+    "likeness": 2,
+    "run": 5,
     "review": 0
    }
   }

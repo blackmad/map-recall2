@@ -1,0 +1,452 @@
+{
+ "face": "leliedwars-1-9",
+ "street": "Eerste Leliedwarsstraat",
+ "library": "jordaan",
+ "stripDate": "2020-01-08",
+ "seconds": 4.17,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012172892",
+   "address": "Eerste Leliedwarsstraat 1",
+   "builtYear": 1900,
+   "widthM": 4.33,
+   "eavesM": 7.52,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5f5d56",
+    "skyline": {
+     "eavesM": 9.57,
+     "eavesRow": 332,
+     "confidence": 0.31,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 8.3,
+      "topWidthM": 0.42,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.36 < 0.7 (3DBAG eaves 7.52 m = 3 storeys of 2.51 m vs the type's 3.13 m; strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.36,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.52 m = 3 storeys of 2.51 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172615",
+   "address": "Eerste Leliedwarsstraat 3",
+   "builtYear": 1887,
+   "widthM": 4.12,
+   "eavesM": 7.86,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3833",
+    "wallRaw": "#3f3a35",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 715,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.47 < 0.7 (3DBAG eaves 7.86 m = 3 storeys of 2.62 m vs the type's 3.13 m; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.86 m = 3 storeys of 2.62 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172616",
+   "address": "Eerste Leliedwarsstraat 5",
+   "builtYear": 1910,
+   "widthM": 4.09,
+   "eavesM": 9.41,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2a28",
+    "wallRaw": "#44403a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 715,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012172616",
+    "ncc": 0.157,
+    "nccRaw": 0.157,
+    "shiftM": [
+     -0.25,
+     -0.35
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.30",
+     "glazing storey band off by 0.68 mean 0.34 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#504d49",
+     "dL": 0.3
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.379
+   },
+   "challengers": {
+    "jordaan-1750-neck-gable": 0.181
+   }
+  },
+  {
+   "pandId": "0363100012168765",
+   "address": "Eerste Leliedwarsstraat 7",
+   "builtYear": 1904,
+   "widthM": 5.04,
+   "eavesM": 9.29,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.34,
+    "toM": 5.02,
+    "depthM": 0.38,
+    "centre": 0.932,
+    "lineRD": [
+     [
+      120639.742,
+      487687.89575
+     ],
+     [
+      120641.409,
+      487683.86575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#59554d",
+    "wallRaw": "#59574c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 715,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.13,
+       "widthM": 0.9,
+       "centre": 0.7
+      },
+      {
+       "atM": 6.82,
+       "widthM": 0.88,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.098 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 4; mask IoU 0.237 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012168765",
+    "ncc": 0.098,
+    "nccRaw": 0.098,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 3 vs photo 4",
+     "mask IoU 0.237 < 0.45"
+    ],
+    "wall": {
+     "photo": "#5c5951",
+     "model": "#716c62",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.237
+   },
+   "challengers": {
+    "jordaan-1750-neck-gable": 0.097
+   }
+  },
+  {
+   "pandId": "0363100012168766",
+   "address": "Eerste Leliedwarsstraat 9A",
+   "builtYear": 1981,
+   "widthM": 12.6,
+   "eavesM": 8.11,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1f1e21",
+    "wallRaw": "#3b393a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 715,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.06 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.06,
+       "light": 0.21
+      },
+      {
+       "widthM": 1.52,
+       "centre": 0.44,
+       "light": 0.18
+      },
+      {
+       "widthM": 2.15,
+       "centre": 0.62,
+       "light": 0.18
+      },
+      {
+       "widthM": 1,
+       "centre": 0.8,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.97,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.3,
+       "widthM": 0.8,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1981, type 1600-1870; frontage 12.6 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1600-1870",
+     "frontage 12.6 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.11 m = 3 storeys of 2.7 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,458 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:09:11.528Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168644",
+   "addresses": [
+    "Rozengracht 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797396"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12085380769,
+     "lngLat": [
+      4.8818372,
+      52.3738678
+     ],
+     "tags": {
+      "addr:housenumber": "26",
+      "addr:postcode": "1016NC",
+      "addr:street": "Rozengracht",
+      "amenity": "fast_food",
+      "cuisine": "sandwich",
+      "email": "bestellen@broodje-mokum.nl",
+      "name": "Broodje Mokum",
+      "website": "https://broodje-mokum.nl/",
+      "website:menu": "https://broodje-mokum.nl/menukaart/"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168645",
+   "addresses": [
+    "Rozengracht 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 24-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000797391"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172773",
+   "addresses": [
+    "Rozengracht 16",
+    "Rozengracht 18D",
+    "Rozengracht 18E",
+    "Rozengracht 18B",
+    "Rozengracht 18A",
+    "Rozengracht 18C",
+    "Rozengracht 20A",
+    "Rozengracht 20B",
+    "Rozengracht 20D",
+    "Rozengracht 20C",
+    "Rozengracht 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 16",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000725153"
+    },
+    {
+     "address": "Rozengracht 22",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000943354"
+    },
+    {
+     "address": "Rozengracht 18D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000943358"
+    },
+    {
+     "address": "Rozengracht 20A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000943359"
+    },
+    {
+     "address": "Rozengracht 20B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000943360"
+    },
+    {
+     "address": "Rozengracht 18E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000989383"
+    },
+    {
+     "address": "Rozengracht 20D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000943363"
+    },
+    {
+     "address": "Rozengracht 20C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000943361"
+    },
+    {
+     "address": "Rozengracht 18B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000943356"
+    },
+    {
+     "address": "Rozengracht 18A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000943355"
+    },
+    {
+     "address": "Rozengracht 18C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000943357"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720971582,
+     "lngLat": [
+      4.8819925,
+      52.3738723
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22",
+      "addr:postcode": "1016NC",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "cuisine": "thai",
+      "indoor_seating": "yes",
+      "name": "Thaise Afhaal Dong Son",
+      "name:en": "Dong Son Takeaway Restaurant",
+      "opening_hours": "12:00-20:00; We closed",
+      "phone": "+31 20 233 9439",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes",
+      "toilets": "no",
+      "website": "https://thaisafhaalrestaurantdongson.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11251745049,
+     "lngLat": [
+      4.8821506,
+      52.373916
+     ],
+     "tags": {
+      "amenity": "bar",
+      "name": "Café Brakke"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174012",
+   "addresses": [
+    "Rozengracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 14-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000797374"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172578",
+   "addresses": [
+    "Rozengracht 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 12-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 10,
+     "bagId": "0363010001041611"
+    },
+    {
+     "address": "Rozengracht 12-1",
+     "use": "kantoorfunctie",
+     "areaM2": 99,
+     "bagId": "0363010012128014"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1581150246,
+     "lngLat": [
+      4.8823403,
+      52.3739533
+     ],
+     "tags": {
+      "amenity": "atm",
+      "cash_in": "no",
+      "check_date": "2025-07-20",
+      "operator": "Euronet",
+      "panoramax": "c30f30e8-1490-4edc-8f82-60678e92dedd"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172580",
+   "addresses": [
+    "Rozengracht 8D",
+    "Rozengracht 8A",
+    "Rozengracht 8B",
+    "Rozengracht 8C",
+    "Rozengracht 10A",
+    "Rozengracht 10B",
+    "Rozengracht 10C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 8D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 519,
+     "bagId": "0363010000797356"
+    },
+    {
+     "address": "Rozengracht 8A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797357"
+    },
+    {
+     "address": "Rozengracht 8B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797358"
+    },
+    {
+     "address": "Rozengracht 8C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797359"
+    },
+    {
+     "address": "Rozengracht 10A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797362"
+    },
+    {
+     "address": "Rozengracht 10B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797363"
+    },
+    {
+     "address": "Rozengracht 10C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797364"
+    },
+    {
+     "address": "Rozengracht 8D",
+     "use": "winkelfunctie",
+     "areaM2": 367,
+     "bagId": "0363010012122933"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13013851609,
+     "lngLat": [
+      4.8824139,
+      52.3740019
+     ],
+     "tags": {
+      "branch": "Amsterdam 2",
+      "brand": "Blokker",
+      "brand:website": "https://www.blokker.nl",
+      "brand:wikidata": "Q33903645",
+      "check_date": "2025-07-20",
+      "name": "Blokker",
+      "operator": "Blokker New",
+      "operator:wikidata": "Q134959128",
+      "panoramax": "5ec56e02-b8dd-414d-8e50-b95dc2003497",
+      "shop": "houseware",
+      "source": "BAG",
+      "start_date": "2025-06-18",
+      "website": "https://www.blokker.nl/nl/vind-een-winkel/details/blokker-amsterdam-2-new/"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174039",
+   "addresses": [
+    "Rozengracht 4",
+    "Rozengracht 6A",
+    "Rozengracht 6B",
+    "Rozengracht 6C",
+    "Rozengracht 6D",
+    "Rozengracht 6E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 4",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001031582"
+    },
+    {
+     "address": "Rozengracht 6A",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001031584"
+    },
+    {
+     "address": "Rozengracht 6B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001031590"
+    },
+    {
+     "address": "Rozengracht 6C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001031592"
+    },
+    {
+     "address": "Rozengracht 6D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010001031594"
+    },
+    {
+     "address": "Rozengracht 6E",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010001031595"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172775",
+   "addresses": [
+    "Rozengracht 2A",
+    "Rozengracht 2B",
+    "Rozengracht 2C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 184",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000784053"
+    },
+    {
+     "address": "Rozengracht 2A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000949768"
+    },
+    {
+     "address": "Rozengracht 2B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000949769"
+    },
+    {
+     "address": "Rozengracht 2C",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000949770"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5551560327,
+     "lngLat": [
+      4.8826899,
+      52.3740681
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1016NB",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "contact:facebook": "https://facebook.com/Caferestaurant-De-Oude-wester-174526659287165",
+      "cuisine": "dutch;regional;pizza;burger;sandwich;pasta;pancake",
+      "internet_access": "wlan",
+      "name": "Oude Wester",
+      "opening_hours": "Mo-Su 10:00-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 625 7502",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-29T22:09:11.528Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

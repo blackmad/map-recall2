@@ -29,17 +29,17 @@
     "centre": 0.312
    },
    "strip": {
-    "wall": "#1b1a0b",
+    "wall": "#1c1a0b",
     "wallRaw": "#5a4d3c",
     "skyline": {
-     "eavesM": 19.98,
+     "eavesM": 19.95,
      "eavesRow": 64,
-     "confidence": 0.44,
+     "confidence": 0.43,
      "crown": {
-      "widthM": 1.8,
+      "widthM": 1.43,
       "riseM": 1.6,
-      "topWidthM": 1.25,
-      "centre": 0.83
+      "topWidthM": 0.7,
+      "centre": 0.74
      }
     },
     "stucco": false,
@@ -49,22 +49,27 @@
     "accentSide": "left",
     "accentShare": 0.103,
     "structure": {
-     "bayWidthM": 2.9,
+     "bayWidthM": 2.88,
      "bayCentre": 0.09,
      "balconies": false,
-     "why": "no dark open axis (light ones: 0.7 m @ 0.72), 1 wide slab(s)",
+     "why": "no dark open axis (light ones: 0.6 m @ 0.76), 1 wide slab(s)",
      "openAxes": [
       {
-       "widthM": 0.7,
+       "widthM": 0.6,
        "centre": 0.05,
-       "light": 0.72
+       "light": 0.76
       }
      ],
      "slabs": [
       {
+       "atM": 11.72,
+       "widthM": 1.02,
+       "centre": 0.79
+      },
+      {
        "atM": 6.4,
-       "widthM": 1.6,
-       "centre": 0.72
+       "widthM": 1.52,
+       "centre": 0.63
       },
       {
        "atM": 5.2,
@@ -73,7 +78,7 @@
       },
       {
        "atM": 4.75,
-       "widthM": 1.55,
+       "widthM": 1.43,
        "centre": 0.63
       }
      ]
@@ -83,20 +88,20 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1897, type 1893-1893; frontage 22.23 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1897, type 1886-1892; frontage 22.23 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1897, type 1893-1893",
-     "frontage 22.23 m, type 5.6-6.4 m"
+     "built 1897, type 1886-1892",
+     "frontage 22.23 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": null,
-      "note": "strip cornice unread (type line 10.8 m; 3DBAG 14.88 m not compared)"
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 14.88 m not compared)"
      },
      {
       "key": "stucco",
@@ -124,25 +129,25 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#2f2a19",
+    "wall": "#765d47",
     "wallRaw": "#73644d",
     "skyline": {
-     "eavesM": 19.57,
-     "eavesRow": 80,
-     "confidence": 0.61,
+     "eavesM": 19.02,
+     "eavesRow": 101,
+     "confidence": 0.59,
      "crown": {
-      "widthM": 1.98,
-      "riseM": 2,
-      "topWidthM": 0.97,
-      "centre": 0.17
+      "widthM": 2.27,
+      "riseM": 2.53,
+      "topWidthM": 0.55,
+      "centre": 0.67
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 3,
     "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.152,
+    "accentShare": 0.153,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -152,12 +157,12 @@
      "slabs": [
       {
        "atM": 9,
-       "widthM": 1.15,
-       "centre": 0.44
+       "widthM": 1.23,
+       "centre": 0.43
       },
       {
        "atM": 5.25,
-       "widthM": 1.32,
+       "widthM": 1.27,
        "centre": 0.35
       }
      ]
@@ -167,19 +172,19 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1902, type 1893-1893)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1902, type 1886-1892)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1902, type 1893-1893"
+     "built 1902, type 1886-1892"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 19.57 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": null,
+      "note": "strip cornice unread (type line 14.6 m; 3DBAG 15.44 m not compared)"
      },
      {
       "key": "stucco",

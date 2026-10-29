@@ -1,0 +1,555 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:28:38.915Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170207",
+   "addresses": [
+    "Bloemgracht 53A",
+    "Bloemgracht 53B",
+    "Bloemgracht 53C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 53A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001976360"
+    },
+    {
+     "address": "Bloemgracht 53B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001976361"
+    },
+    {
+     "address": "Bloemgracht 53C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001976362"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170208",
+   "addresses": [
+    "Bloemgracht 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 55",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000588559"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782481274,
+     "lngLat": [
+      4.8810509,
+      52.3746994
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "ref": "11059",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T20:28:38.915Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170210",
+   "addresses": [
+    "Bloemgracht 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 57-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000970047"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170212",
+   "addresses": [
+    "Bloemgracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 59-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000588566"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170209",
+   "addresses": [
+    "Bloemgracht 61A",
+    "Bloemgracht 61B",
+    "Bloemgracht 61C",
+    "Bloemgracht 61D",
+    "Bloemgracht 61E",
+    "Bloemgracht 61F",
+    "Bloemgracht 61H",
+    "Bloemgracht 61G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 61B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000686037"
+    },
+    {
+     "address": "Bloemgracht 61C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000686038"
+    },
+    {
+     "address": "Bloemgracht 61D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000686039"
+    },
+    {
+     "address": "Bloemgracht 61E",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000686040"
+    },
+    {
+     "address": "Bloemgracht 61F",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000686041"
+    },
+    {
+     "address": "Bloemgracht 61H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000686043"
+    },
+    {
+     "address": "Bloemgracht 61G",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000686042"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170213",
+   "addresses": [
+    "Bloemgracht 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000885990"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170221",
+   "addresses": [
+    "Bloemgracht 65",
+    "Bloemgracht 65C",
+    "Bloemgracht 65B",
+    "Bloemgracht 65A",
+    "Bloemgracht 65D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 65-1",
+     "use": "kantoorfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000984918"
+    },
+    {
+     "address": "Bloemgracht 65-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000984920"
+    },
+    {
+     "address": "Bloemgracht 65-HL",
+     "use": "kantoorfunctie",
+     "areaM2": 252,
+     "bagId": "0363010000984921"
+    },
+    {
+     "address": "Bloemgracht 65C",
+     "use": "woonfunctie",
+     "areaM2": 254,
+     "bagId": "0363010012075953"
+    },
+    {
+     "address": "Bloemgracht 65B",
+     "use": "kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012075954"
+    },
+    {
+     "address": "Bloemgracht 65A",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012075955"
+    },
+    {
+     "address": "Bloemgracht 65D",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010012075956"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012239635",
+   "addresses": [
+    "Bloemgracht 67",
+    "Bloemgracht 69",
+    "Bloemgracht 71B",
+    "Bloemgracht 71E",
+    "Bloemgracht 71C",
+    "Bloemgracht 71A",
+    "Bloemgracht 71D",
+    "Bloemgracht 71F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 67",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010001977391"
+    },
+    {
+     "address": "Bloemgracht 71B",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001977392"
+    },
+    {
+     "address": "Bloemgracht 71E",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010001977393"
+    },
+    {
+     "address": "Bloemgracht 71C",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001977394"
+    },
+    {
+     "address": "Bloemgracht 69",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010001977395"
+    },
+    {
+     "address": "Bloemgracht 71A",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010001977396"
+    },
+    {
+     "address": "Bloemgracht 71D",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010001977397"
+    },
+    {
+     "address": "Bloemgracht 71F",
+     "use": "woonfunctie",
+     "areaM2": 256,
+     "bagId": "0363010001977398"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782484792,
+     "lngLat": [
+      4.8804304,
+      52.3745502
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-10-29T20:28:38.915Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    },
+    {
+     "type": "way",
+     "id": 1465651921,
+     "lngLat": [
+      4.880263,
+      52.3745162
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "parking_space"
+     },
+     "fetchedAt": "2026-10-29T20:28:38.915Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174040",
+   "addresses": [
+    "Bloemgracht 73A",
+    "Bloemgracht 73B",
+    "Bloemgracht 73D",
+    "Bloemgracht 73C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 73A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001009179"
+    },
+    {
+     "address": "Bloemgracht 73D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588603"
+    },
+    {
+     "address": "Bloemgracht 73C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000588605"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170224",
+   "addresses": [
+    "Bloemgracht 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 75",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000944241"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170223",
+   "addresses": [
+    "Bloemgracht 77A",
+    "Bloemgracht 77B",
+    "Bloemgracht 77C",
+    "Bloemgracht 77D",
+    "Bloemgracht 77E",
+    "Bloemgracht 77F",
+    "Bloemgracht 77G",
+    "Bloemgracht 77H",
+    "Bloemgracht 77K",
+    "Bloemgracht 77L",
+    "Bloemgracht 77M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 77A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000681586"
+    },
+    {
+     "address": "Bloemgracht 77B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000681587"
+    },
+    {
+     "address": "Bloemgracht 77C",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000681588"
+    },
+    {
+     "address": "Bloemgracht 77D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000703173"
+    },
+    {
+     "address": "Bloemgracht 77E",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000722864"
+    },
+    {
+     "address": "Bloemgracht 77F",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000722865"
+    },
+    {
+     "address": "Bloemgracht 77G",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000751521"
+    },
+    {
+     "address": "Bloemgracht 77H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000776430"
+    },
+    {
+     "address": "Bloemgracht 77K",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000776431"
+    },
+    {
+     "address": "Bloemgracht 77L",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000776432"
+    },
+    {
+     "address": "Bloemgracht 77M",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776433"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174041",
+   "addresses": [
+    "Bloemgracht 79",
+    "Bloemgracht 79D",
+    "Bloemgracht 79E",
+    "Bloemgracht 79C",
+    "Bloemgracht 79A",
+    "Bloemgracht 79B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 79",
+     "use": "woonfunctie",
+     "areaM2": 579,
+     "bagId": "0363010000588617"
+    },
+    {
+     "address": "Bloemgracht 79D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012067414"
+    },
+    {
+     "address": "Bloemgracht 79E",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012067415"
+    },
+    {
+     "address": "Bloemgracht 79C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012067416"
+    },
+    {
+     "address": "Bloemgracht 79A",
+     "use": "woonfunctie",
+     "areaM2": 252,
+     "bagId": "0363010012067417"
+    },
+    {
+     "address": "Bloemgracht 79B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012067418"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169897",
+   "addresses": [
+    "Bloemgracht 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 81-HV",
+     "use": "industriefunctie",
+     "areaM2": 88,
+     "bagId": "0363010000944242"
+    },
+    {
+     "address": "Bloemgracht 81-HA",
+     "use": "industriefunctie",
+     "areaM2": 132,
+     "bagId": "0363010000944243"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169087",
+   "addresses": [
+    "Bloemgracht 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 83-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000588632"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

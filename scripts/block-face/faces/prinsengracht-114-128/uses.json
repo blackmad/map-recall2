@@ -1,0 +1,369 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:05:36.077Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174970",
+   "addresses": [
+    "Prinsengracht 128A",
+    "Prinsengracht 128B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 128A",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000783908"
+    },
+    {
+     "address": "Prinsengracht 128B",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000783909"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720971344,
+     "lngLat": [
+      4.8838771,
+      52.3760284
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "amenity": "cafe",
+      "check_date": "2025-03-17",
+      "indoor_seating": "yes",
+      "name": "Café Wester",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    },
+    {
+     "type": "node",
+     "id": 2720972352,
+     "lngLat": [
+      4.8838321,
+      52.3760019
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "check_date": "2025-03-17",
+      "name": "Quinta Absinthe",
+      "opening_hours": "Mo-Tu,Su 12:00-19:00; We-Sa 10:00-19:00",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "frontage",
+     "distanceM": 6.9
+    },
+    {
+     "type": "node",
+     "id": 11377634987,
+     "lngLat": [
+      4.8839293,
+      52.3760556
+     ],
+     "tags": {
+      "name": "MenM",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174969",
+   "addresses": [
+    "Prinsengracht 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 126-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000783902"
+    },
+    {
+     "address": "Prinsengracht 126-HA",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000783903"
+    },
+    {
+     "address": "Prinsengracht 126-HV",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000966726"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720970002,
+     "lngLat": [
+      4.8839743,
+      52.3761134
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126-H",
+      "addr:postcode": "1015EA",
+      "addr:street": "Prinsengracht",
+      "amenity": "restaurant",
+      "cuisine": "indian;regional",
+      "indoor_seating": "yes",
+      "name": "Kesar Indian restaurant",
+      "opening_hours": "Mo-Su 18:00-21:30",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174971",
+   "addresses": [
+    "Prinsengracht 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 124-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000783896"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2610881750,
+     "lngLat": [
+      4.8840213,
+      52.376151
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124-H",
+      "addr:postcode": "1015EA",
+      "addr:street": "Prinsengracht",
+      "amenity": "restaurant",
+      "check_date": "2025-03-17",
+      "name": "Cafe de Prins",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174776",
+   "addresses": [
+    "Prinsengracht 122",
+    "Prinsengracht 122A",
+    "Prinsengracht 122B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 122",
+     "use": "woonfunctie",
+     "areaM2": 208,
+     "bagId": "0363010000783894"
+    },
+    {
+     "address": "Prinsengracht 122A",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010012147408"
+    },
+    {
+     "address": "Prinsengracht 122B",
+     "use": "kantoorfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012147409"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12620444865,
+     "lngLat": [
+      4.8840578,
+      52.3762034
+     ],
+     "tags": {
+      "name": "Duijn Horecamakelaars",
+      "office": "estate_agent"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174777",
+   "addresses": [
+    "Prinsengracht 120A",
+    "Prinsengracht 120B",
+    "Prinsengracht 120C",
+    "Prinsengracht 120D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 120A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000783889"
+    },
+    {
+     "address": "Prinsengracht 120B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000783890"
+    },
+    {
+     "address": "Prinsengracht 120C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000783891"
+    },
+    {
+     "address": "Prinsengracht 120D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000783892"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174699",
+   "addresses": [
+    "Prinsengracht 116",
+    "Prinsengracht 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 118",
+     "use": "kantoorfunctie",
+     "areaM2": 225,
+     "bagId": "0363010011048049"
+    },
+    {
+     "address": "Prinsengracht 118",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 212,
+     "bagId": "0363010012066728"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720969403,
+     "lngLat": [
+      4.8841751,
+      52.3763169
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116",
+      "addr:postcode": "1015EA",
+      "addr:street": "Prinsengracht",
+      "fee": "yes",
+      "name": "Amsterdam Tulip Museum",
+      "opening_hours": "Mo-Su 10:00-18:00",
+      "phone": "+31 20 421 0095",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "museum",
+      "website": "https://amsterdamtulipmuseum.com",
+      "wheelchair": "no",
+      "wikidata": "Q2020907",
+      "wikimedia_commons": "Category:Amsterdam Tulip Museum",
+      "wikipedia": "nl:Amsterdam Tulip Museum"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169253",
+   "addresses": [
+    "Prinsengracht 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 114-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000783879"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720969381,
+     "lngLat": [
+      4.8842005,
+      52.376348
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "114-H",
+      "addr:postcode": "1015EA",
+      "addr:street": "Prinsengracht",
+      "amenity": "bar",
+      "brewery": "Bavaria",
+      "indoor_seating": "yes",
+      "level": "0",
+      "name": "Twee Zwaantjes",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-29T22:05:36.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

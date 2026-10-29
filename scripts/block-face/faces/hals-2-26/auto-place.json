@@ -3,7 +3,7 @@
  "street": "Frans Halsstraat",
  "library": "de-pijp",
  "stripDate": "2022-03-21",
- "seconds": 8.32,
+ "seconds": 13.62,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -945,25 +945,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877)",
+   "reason": "best pijp-1879-five-low scores 0.64 < 0.7 (strip cornice 19.18 m vs the type's 13 m (wall-dormer skyline 15.2 m))",
    "best": {
-    "type": "pijp-1875-shop-dormer",
-    "score": 0,
-    "veto": [
-     "built 1879, type 1875-1877"
-    ],
+    "type": "pijp-1879-five-low",
+    "score": 0.64,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.78 m = 3 storeys of 4.59 m vs the type's 4.03 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 2.59 m (pitched) vs pitched"
+      "score": 0,
+      "note": "strip cornice 19.18 m vs the type's 13 m (wall-dormer skyline 15.2 m)"
      },
      {
       "key": "stucco",

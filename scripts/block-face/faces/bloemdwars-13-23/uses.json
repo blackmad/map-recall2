@@ -1,0 +1,158 @@
+{
+ "street": "Eerste Bloemdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:18:48.875Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174037",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 13A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 13A-H",
+     "use": "winkelfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000543926"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720970244,
+     "lngLat": [
+      4.8815202,
+      52.374086
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1016KS",
+      "addr:street": "Eerste Bloemdwarsstraat",
+      "check_date": "2025-10-21",
+      "name": "Universe on a T-Shirt",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.universeonatshirt.com/"
+     },
+     "fetchedAt": "2026-10-29T21:18:48.875Z",
+     "match": "frontage",
+     "distanceM": 7.7
+    },
+    {
+     "type": "node",
+     "id": 10991974154,
+     "lngLat": [
+      4.8816181,
+      52.3741628
+     ],
+     "tags": {
+      "check_date": "2025-10-21",
+      "name": "Subculture",
+      "opening_hours": "We-Su 12:00-18:00",
+      "shop": "tattoo"
+     },
+     "fetchedAt": "2026-10-29T21:18:48.875Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172774",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 15C",
+    "Eerste Bloemdwarsstraat 15B",
+    "Eerste Bloemdwarsstraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 15C",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001021218"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010011117142"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010011117143"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172772",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000543935"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172771",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 21",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000785757"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172581",
+   "addresses": [
+    "Eerste Bloemdwarsstraat 23",
+    "Eerste Bloemdwarsstraat 23A",
+    "Eerste Bloemdwarsstraat 23B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Bloemdwarsstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000785293"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012150339"
+    },
+    {
+     "address": "Eerste Bloemdwarsstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012150338"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

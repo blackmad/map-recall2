@@ -1,0 +1,120 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lelie-83-141-r2",
+ "street": "Nieuwe Leliestraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-16",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-16",
+   "image": "staging/block-face/lelie-83-141-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/lelie-83-141/auto-place.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable",
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169849",
+   "slug": "lelie-169849",
+   "address": "Nieuwe Leliestraat 127",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 3,
+    "crown": "dormer",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 0.78 on eaves 0.5, stucco 1, crown 1, columns 0.4; strip 2023-01-16 span 3703-3846"
+   }
+  },
+  {
+   "pandId": "0363100012169848",
+   "slug": "lelie-169848",
+   "address": "Nieuwe Leliestraat 129",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 5,
+    "measuredPalette": {
+     "brick": "#453f39",
+     "evidence": "strip 2023-01-16 span 3845-4002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 1 on eaves 1, stucco 1, crown 1; strip 2023-01-16 span 3845-4002"
+   }
+  },
+  {
+   "pandId": "0363100012174428",
+   "slug": "lelie-174428",
+   "address": "Nieuwe Leliestraat 131",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 4,
+    "measuredPalette": {
+     "brick": "#60504d",
+     "evidence": "strip 2023-01-16 span 4002-4162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 0.8 on eaves 1, roof 0, stucco 1, crown -; strip 2023-01-16 span 4002-4162"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

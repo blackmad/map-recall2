@@ -1,0 +1,223 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:51:34.248Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012185686",
+   "addresses": [
+    "Bloemstraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 121-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012143207"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012185685",
+   "addresses": [
+    "Bloemstraat 123A",
+    "Bloemstraat 123B",
+    "Bloemstraat 123C",
+    "Bloemstraat 123D",
+    "Bloemstraat 123E",
+    "Bloemstraat 123F",
+    "Bloemstraat 125A",
+    "Bloemstraat 125B",
+    "Bloemstraat 125C",
+    "Bloemstraat 125D",
+    "Bloemstraat 125E",
+    "Bloemstraat 125F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 114-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 450,
+     "bagId": "0363010000797568"
+    },
+    {
+     "address": "Bloemstraat 123A",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010001038931"
+    },
+    {
+     "address": "Bloemstraat 123B",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001038932"
+    },
+    {
+     "address": "Bloemstraat 123C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001038933"
+    },
+    {
+     "address": "Bloemstraat 123D",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010001038934"
+    },
+    {
+     "address": "Bloemstraat 123E",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010001038935"
+    },
+    {
+     "address": "Bloemstraat 123F",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001038936"
+    },
+    {
+     "address": "Bloemstraat 125A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001038937"
+    },
+    {
+     "address": "Bloemstraat 125B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001038938"
+    },
+    {
+     "address": "Bloemstraat 125C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001038939"
+    },
+    {
+     "address": "Bloemstraat 125D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001038940"
+    },
+    {
+     "address": "Bloemstraat 125E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001038941"
+    },
+    {
+     "address": "Bloemstraat 125F",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001038942"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5106588432,
+     "lngLat": [
+      4.8792043,
+      52.3732138
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "114",
+      "addr:postcode": "1016NH",
+      "addr:street": "Rozengracht",
+      "alt_name": "Cannibale Royale Rozengracht",
+      "amenity": "restaurant",
+      "cuisine": "american;burger;diner;grill;local;mexican;sandwich",
+      "email": "bookingCRRG@CannibaleRoyale.nl",
+      "indoor_seating": "yes",
+      "name": "Cannibale Royale",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 218 1713",
+      "website": "https://cannibaleroyale.nl/locations/rozengracht/"
+     },
+     "fetchedAt": "2026-10-29T20:51:34.248Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174082",
+   "addresses": [
+    "Bloemstraat 129",
+    "Bloemstraat 131",
+    "Bloemstraat 133",
+    "Bloemstraat 135",
+    "Bloemstraat 137",
+    "Bloemstraat 139",
+    "Bloemstraat 141",
+    "Bloemstraat 143",
+    "Bloemstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000554671"
+    },
+    {
+     "address": "Bloemstraat 143",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000554672"
+    },
+    {
+     "address": "Bloemstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000554673"
+    },
+    {
+     "address": "Bloemstraat 129",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000941024"
+    },
+    {
+     "address": "Bloemstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000941026"
+    },
+    {
+     "address": "Bloemstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000941027"
+    },
+    {
+     "address": "Bloemstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000941028"
+    },
+    {
+     "address": "Bloemstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000941029"
+    },
+    {
+     "address": "Bloemstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000941030"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}
