@@ -2,20 +2,21 @@
  "name": "oud-west-kinkerstraat",
  "buurt": null,
  "library": null,
- "generatedAt": "2026-10-29T17:57:58.662Z",
+ "generatedAt": "2026-10-29T18:02:42.481Z",
  "method": "scripts/block-face/batch.ts",
  "totals": {
   "faces": 15,
   "runs": 15,
-  "installed": 1,
-  "installedPands": 2,
+  "installed": 0,
+  "installedPands": 0,
   "failed": 14,
   "byReason": {
    "glb-audit": 11,
    "likeness": 7,
    "compile-gates": 2,
    "likeness-no-evidence": 2,
-   "intake-failed": 1
+   "intake-failed": 1,
+   "already-installed": 1
   }
  },
  "rows": [
@@ -33,7 +34,7 @@
    "stripOverDrawn": 1.141,
    "wallFits": 19,
    "droppedCorners": [],
-   "triangles": 43320,
+   "triangles": 42840,
    "sheet": "staging/block-face/kinker-315-359/review/strip-sheet.png",
    "stripDate": "2024-12-11",
    "run": "kinker-315-359",
@@ -43,7 +44,7 @@
    "reasons": [
     "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 47.7
+   "seconds": 29.7
   },
   {
    "face": "kinker-173-225",
@@ -55,11 +56,11 @@
     "reasons": []
    },
    "nccMin": 0.012,
-   "nccMedian": 0.178,
-   "stripOverDrawn": 1.006,
-   "wallFits": 10,
+   "nccMedian": 0.183,
+   "stripOverDrawn": 0.87,
+   "wallFits": 0,
    "droppedCorners": [],
-   "triangles": 29946,
+   "triangles": 23970,
    "sheet": "staging/block-face/kinker-173-225/review/strip-sheet.png",
    "stripDate": "2024-12-11",
    "run": "kinker-173-225",
@@ -71,7 +72,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 4 pand(s) under NCC 0.15 (119385 0.124, 151677 0.101, 130890 0.012, 131204 0.051)"
    ],
-   "seconds": 43.8
+   "seconds": 13.1
   },
   {
    "face": "kinker-65-87",
@@ -87,7 +88,7 @@
    "stripOverDrawn": 0.979,
    "wallFits": 1,
    "droppedCorners": [],
-   "triangles": 20430,
+   "triangles": 19914,
    "sheet": "staging/block-face/kinker-65-87/review/strip-sheet.png",
    "stripDate": "2024-11-29",
    "run": "kinker-65-87",
@@ -98,7 +99,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 3 pand(s) under NCC 0.15 (155934 0.129, 161747 0.124, 156991 0.069)"
    ],
-   "seconds": 15.9
+   "seconds": 16.1
   },
   {
    "face": "kinker-244-332",
@@ -121,7 +122,7 @@
    "reasons": [
     "intake-failed: strip image missing and re-take failed: --from/--to not on the face (159927 236616 153405 236512 157584 235902 236531 236250 236258 235916 235880 156795 061473 "
    ],
-   "seconds": 2.9
+   "seconds": 4.1
   },
   {
    "face": "kinker-334-374",
@@ -149,7 +150,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 8 pand(s) under NCC 0.15 (166359 0.095, 161284 0.086, 158310 0.044, 163986 0.082, 167064 0.027, 160347 0.143, 160344 0.145, 072741 0.076)"
    ],
-   "seconds": 33.9
+   "seconds": 33
   },
   {
    "face": "kinker-109-161",
@@ -175,7 +176,7 @@
    "reasons": [
     "likeness: 7 pand(s) under NCC 0.15 (149986 0.055, 119702 0.144, 144295 0.123, 141903 0.1, 084581 0.128, 067449 0.121, 079593 0.137)"
    ],
-   "seconds": 26.5
+   "seconds": 24.8
   },
   {
    "face": "kinker-265-313",
@@ -188,10 +189,10 @@
    },
    "nccMin": null,
    "nccMedian": null,
-   "stripOverDrawn": 1.142,
+   "stripOverDrawn": 1.05,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": 15496,
+   "triangles": 13468,
    "sheet": "staging/block-face/kinker-265-313/review/strip-sheet.png",
    "stripDate": "2024-12-11",
    "run": "kinker-265-313",
@@ -202,7 +203,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness-no-evidence: 0/3 pands scored"
    ],
-   "seconds": 10.2
+   "seconds": 10.6
   },
   {
    "face": "kinker-120-138",
@@ -229,7 +230,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 1 pand(s) under NCC 0.15 (233461 0.126)"
    ],
-   "seconds": 9.2
+   "seconds": 8.2
   },
   {
    "face": "kinker-31-49",
@@ -255,7 +256,7 @@
    "reasons": [
     "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 7.2
+   "seconds": 7
   },
   {
    "face": "kinker-363-371",
@@ -268,10 +269,10 @@
    },
    "nccMin": 0.257,
    "nccMedian": 0.277,
-   "stripOverDrawn": 0.922,
-   "wallFits": 4,
+   "stripOverDrawn": 0.892,
+   "wallFits": 0,
    "droppedCorners": [],
-   "triangles": 13715,
+   "triangles": 11579,
    "sheet": "staging/block-face/kinker-363-371/review/strip-sheet.png",
    "stripDate": "2024-12-11",
    "run": "kinker-363-371",
@@ -281,7 +282,7 @@
    "reasons": [
     "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 8.4
+   "seconds": 5
   },
   {
    "face": "kinker-142-178",
@@ -307,7 +308,7 @@
    "reasons": [
     "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 14.9
+   "seconds": 16.8
   },
   {
    "face": "kinker-186-202",
@@ -334,7 +335,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 1 pand(s) under NCC 0.15 (073962 0.138)"
    ],
-   "seconds": 12.2
+   "seconds": 10.7
   },
   {
    "face": "kinker-386-390",
@@ -361,31 +362,7 @@
     "glb-audit: failed (see report.json audit)",
     "likeness: 2 pand(s) under NCC 0.15 (071767 0.073, 130085 0.106)"
    ],
-   "seconds": 2.9
-  },
-  {
-   "face": "kinker-112-116",
-   "street": "Kinkerstraat",
-   "ride": 7763,
-   "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
-   "nccMin": 0.192,
-   "nccMedian": 0.245,
-   "stripOverDrawn": 1.072,
-   "wallFits": 2,
-   "droppedCorners": [],
-   "triangles": 4118,
-   "sheet": "staging/block-face/kinker-112-116/review/strip-sheet.png",
-   "stripDate": "2024-12-11",
-   "run": "kinker-112-116",
-   "pands": 2,
-   "mode": "authored",
-   "status": "installed",
-   "reasons": [],
-   "seconds": 40
+   "seconds": 2.8
   },
   {
    "face": "kinker-182-184",
@@ -411,7 +388,31 @@
    "reasons": [
     "likeness-no-evidence: 0/2 pands scored"
    ],
-   "seconds": 10.2
+   "seconds": 4.4
+  },
+  {
+   "face": "kinker-112-116",
+   "street": "Kinkerstraat",
+   "ride": 7763,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.192,
+   "nccMedian": 0.245,
+   "stripOverDrawn": 1.072,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 4118,
+   "sheet": "staging/block-face/kinker-112-116/review/strip-sheet.png",
+   "stripDate": "2024-12-11",
+   "run": "kinker-112-116",
+   "pands": 2,
+   "mode": "authored",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 40
   }
  ]
 }

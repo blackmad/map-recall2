@@ -43,3 +43,17 @@ test('the spot-review sample is deterministic and at least one', () => {
   assert.equal(sampleShare([1, 2]).length, 1);
   assert.deepEqual(sampleShare([]), []);
 });
+
+test('front palette facings move to the house palette (Kinkerstraat 65-87 door/brick z-fight)', async () => {
+  const {facingsToHousePalette} = await import('./batchInstall.ts');
+  const intent = {houses: [
+    {pandId: 'a', type: {overrides: {bays: 3, palette: {brick: '#714a2d'}}}},
+    {pandId: 'b', type: {overrides: {palette: {band: '#7a4a30'}}, paletteOverrides: {brick: '#74705e', wallTint: 'measured'}}},
+    {pandId: 'c', type: {overrides: {bays: 2}}},
+    {pandId: 'd'},
+  ]};
+  assert.deepEqual(facingsToHousePalette(intent as any), ['a', 'b']);
+  assert.deepEqual(intent.houses[0].type, {overrides: {bays: 3}, paletteOverrides: {brick: '#714a2d'}});
+  assert.deepEqual(intent.houses[1].type, {paletteOverrides: {brick: '#74705e', wallTint: 'measured', band: '#7a4a30'}});
+  assert.deepEqual(intent.houses[2].type, {overrides: {bays: 2}});
+});

@@ -91,3 +91,23 @@ export function sampleShare<T>(items: readonly T[], share = 0.1, seed = 7): T[] 
   const idx = items.map((_, i) => ({i, k: rand()})).sort((a, b) => a.k - b.k).slice(0, Math.max(1, Math.round(items.length * share))).map(x => x.i).sort((a, b) => a - b);
   return idx.map(i => items[i]);
 }
+
+/**
+ * Front-level palette overrides (`type.overrides.palette`) build a 3 cm brick facing that lies 1 cm off shop doors and
+ * cornice soffits, which the GLB audit fails as coplanar overlap (#98 moved them by hand on Kinkerstraat 1-29, 31-49 and
+ * 49-63; the batch's first Kinkerstraat run found the same door/brick z-fight on 65-87, 173-225, 265-313 and 363-371).
+ * Moved to the house palette (`type.paletteOverrides`), the colour is the same and there is no facing. Module-level
+ * palettes are left alone (per-module colour has no house-level equivalent). Returns the houses changed.
+ */
+export function facingsToHousePalette(intent: {houses: {pandId: string; type?: {overrides?: Record<string, unknown> & {palette?: Record<string, unknown>}; paletteOverrides?: Record<string, unknown>}}[]}): string[] {
+  const changed: string[] = [];
+  for (const h of intent.houses) {
+    const t = h.type, p = t?.overrides?.palette;
+    if (!t || !p || typeof p !== 'object') continue;
+    t.paletteOverrides = {...(t.paletteOverrides ?? {}), ...p};
+    delete t.overrides!.palette;
+    if (!Object.keys(t.overrides!).length) delete t.overrides;
+    changed.push(h.pandId);
+  }
+  return changed;
+}

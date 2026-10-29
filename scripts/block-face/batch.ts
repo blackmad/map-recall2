@@ -41,7 +41,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {BATCH_GATES, coveredElsewhere, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, coveredElsewhere, facingsToHousePalette, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -239,7 +239,7 @@ async function main() {
   const outDir = 'scripts/block-face/batch', reportFile = path.join(outDir, `${name}.json`);
   await fs.mkdir(outDir, {recursive: true}); await fs.mkdir(path.join(STAGING, 'batch', name), {recursive: true});
   const prev = existsSync(reportFile) ? await readJson(reportFile) : {rows: []};
-  const rows: Row[] = flag('redo') ? [] : prev.rows;
+  const rows: Row[] = flag('redo') ? prev.rows.filter((r: Row) => r.status === 'installed') : prev.rows; // --redo keeps the installs
   const done = new Set(rows.map(r => r.face));
   // The faces: a buurt's uncovered proposals of two or more pands, or the given list.
   const doc = buurt ? await readJson(path.join('scripts/block-face/buurten', `${buurt}.json`)) : null;
@@ -327,13 +327,16 @@ async function main() {
         console.log(`  ${run}: corners ${dropped.map(p => `${p.slice(-6)} (${shared.get(p)})`).join(', ')} stay with their installed chunk`);
       }
       const intentBefore = await fs.readFile(path.join(FACES, run, 'intent.json'), 'utf8');
+      // Front facings -> house palette (batchInstall.ts facingsToHousePalette): the facing z-fights shop doors.
+      const ij = JSON.parse(intentBefore), facings = facingsToHousePalette(ij);
+      if (facings.length) { await writeJson(path.join(FACES, run, 'intent.json'), ij); console.log(`  ${run}: ${facings.length} front facing(s) -> house palette`); }
       const j = await judgeRun(run, stripVerdict);
       const pands = (await readJson(path.join(FACES, run, 'discovery.json'))).members.length;
       let status: Row['status'] = j.verdict.install ? (flag('install') ? 'installed' : 'passed (not installed: no --install)') : 'failed';
       if (j.verdict.install && flag('install') && j.compiled) await quiet(() => installFace(run, j.compiled!.entry, j.compiled!.glbPath));
       // Nothing installed: the face stays as it was (no wall-fit edits, no trimmed copy left behind).
       else if (dropped.length) await fs.rm(path.join(FACES, run), {recursive: true, force: true});
-      else if (j.wallFits) await fs.writeFile(path.join(FACES, run, 'intent.json'), intentBefore);
+      else if (j.wallFits || facings.length) await fs.writeFile(path.join(FACES, run, 'intent.json'), intentBefore);
       rows.push({...base, ...stripInfo, run, pands, mode, status, reasons: j.verdict.reasons, nccMin: j.nccMin, nccMedian: j.nccMedian, stripOverDrawn: j.stripOverDrawn, wallFits: j.wallFits, droppedCorners: dropped, triangles: j.triangles, sheet: j.sheet, seconds: +((performance.now() - tr) / 1000).toFixed(1)});
       console.log(`  ${run}: ${status.toUpperCase()} ${pands} pands | NCC min ${j.nccMin} med ${j.nccMedian} | stripOverDrawn ${j.stripOverDrawn} | wall fits ${j.wallFits}${j.verdict.reasons.length ? ' | ' + j.verdict.reasons.join(' ; ') : ''}`);
       await save();
