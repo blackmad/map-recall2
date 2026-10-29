@@ -31,6 +31,12 @@ const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.spli
 const WALLS = arg('walls') ?? path.join(process.env.HOME ?? '', 'Code/map-recall2-source-data/pand-reference-walls');
 const OUT = path.resolve('staging/buurt-profiles');
 const CACHE = path.resolve('.cache/buurt-profiles');
+/**
+ * Brick chroma target as a share of the city palette's median (first sheet, 2026-10-29: at the full median, Saenredam-
+ * and Stalpertstraat's measured dark red-brown drew as saturated pink-red and Jan Steenstraat's brown as ochre beside
+ * photos of purple-brown and dark brown brick). Lightness keeps the city level (brighter palette, priorities 2026-10-16).
+ */
+const BRICK_CHROMA_SHARE = 0.75;
 const MIN_N = 12, MIN_ERA_N = 8, SWATCHES = 10, CELL_M = 40;
 const BBOX = { west: 4.80, east: 4.98, south: 4.0 + 48.32, north: 52.42 };
 fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync(CACHE, { recursive: true });
@@ -193,18 +199,21 @@ for (const src of ['pano', 'thumb', 'blockface'] as const) {
 /**
  * One source's brick median -> the city palette's (lightness offset, chroma ratio, hue rotation), so the city's overall
  * level stays where the look lane put it and only the differences between buurten come from the photos. Painted
- * walls keep their measured chroma and hue (white, grey, black paint has none to correct) and take the lightness offset.
- * Brick stays inside cropWallColour's brick family bounds (C* <= 48 and <= 0.9 L* + 8), L* <= 72, C* >= 12.
+ * walls keep half their measured tint (white and grey paint have little to correct) and take the lightness offset.
+ * Brick stays inside cropWallColour's brick family bounds (C* <= 0.9 L* + 8), C* 12-34 (the photos' brick is never as loud as the city palette's orange), L* <= 72.
  */
-/** Brick hues stay red to brown (Lab hue 18-72); a near-grey photo wall's hue is noise, so it takes the city's. */
-const brickHue = (h: number) => { const x = ((h % 360) + 360) % 360; return x > 200 ? 18 : Math.max(18, Math.min(72, x)); };
+/** Brick hues stay red to brown (Lab hue 32-56; second sheet: 24 drew salmon-pink fronts in De Pijp and 66 ochre ones on Jan Steen- and Van Breestraat); a near-grey photo wall's hue is noise, so it takes the city's. */
+const brickHue = (h: number) => { const x = ((h % 360) + 360) % 360; return x > 200 ? 32 : Math.max(32, Math.min(56, x)); };
 const calibrate = (s: Sample): number[] => {
   const c = calibration[s.source], [L, a, b] = s.lab!;
   const L2 = Math.max(14, Math.min(92, ref.L + (L - c.L)));
-  if (s.painted || !(c.n >= 10)) return [L2, a, b];
+  // Paint keeps half its measured tint: the thumbnails' white balance gives white render a sky-blue or warm cast
+  // (first sheet: Tweede Egelantiersdwarsstraat drew a pale cyan front, #b4c3c2).
+  if (s.painted) return [L2, a * 0.5, b * 0.5];
+  if (!(c.n >= 10)) return [L2, a, b];
   // Bare brick is never lighter than L* 72 (lighter is sun glare or a pale stone band) nor greyer than C* 12 (a shaded
   // wall's lost colour; its hue still says red or brown).
-  const Lb = Math.min(72, L2), C = Math.max(12, Math.min(48, 0.9 * Lb + 8, Math.hypot(a, b) * ref.C / c.C)), h = brickHue(Math.hypot(a, b) < 4 ? ref.h : hueOf(s.lab!) + ref.h - c.h) * Math.PI / 180;
+  const Lb = Math.min(72, L2), C = Math.max(12, Math.min(34, 0.9 * Lb + 8, Math.hypot(a, b) * BRICK_CHROMA_SHARE * ref.C / c.C)), h = brickHue(Math.hypot(a, b) < 4 ? ref.h : hueOf(s.lab!) + ref.h - c.h) * Math.PI / 180;
   return [Lb, C * Math.cos(h), C * Math.sin(h)];
 };
 const toHex = (lab: number[]) => '#' + labToRgb(lab).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');

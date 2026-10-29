@@ -72,3 +72,13 @@ test('published set validates, and the 12-spot buurten resolve to their own prof
   const codes = spots.map(([name, lng, lat]) => { const p = index.at(lng, lat); assert.ok(p, `${name} has a profile`); return p!.code; });
   assert.ok(new Set(codes).size >= 6, `distinct profiles over the 12 spots: ${codes.join(' ')}`);
 });
+
+test('a profile wall replaces a material-family prior only within its family', async () => {
+  const { profileWallBeatsMaterial } = await import('./profiles.ts');
+  assert.equal(profileWallBeatsMaterial('brick', '#7a4535'), true);
+  assert.equal(profileWallBeatsMaterial('brick', '#efe7d8'), false);
+  assert.equal(profileWallBeatsMaterial('plaster', '#efe7d8'), true);
+  assert.equal(profileWallBeatsMaterial('plaster', '#7a4535'), false);
+  assert.equal(profileWallBeatsMaterial('concrete', '#7a4535'), false);
+  assert.equal(profileWallBeatsMaterial(undefined, '#7a4535'), false);
+});

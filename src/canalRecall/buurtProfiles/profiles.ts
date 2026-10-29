@@ -9,6 +9,7 @@
  * for its era, keeps the city default exactly as before. Every pick is deterministic, hashed by pand id.
  */
 import type { Period } from '../look/palette.js';
+import { rgbToLab } from '../look/brickTone.js';
 
 /** A swatch and its weight in the buurt's measured distribution. */
 export type WeightedHex = readonly [hex: string, weight: number];
@@ -133,4 +134,22 @@ export function profileTraits(id: string, era: EraProfile | undefined): ProfileT
     wall: era?.walls?.length ? pickWeighted(era.walls, unitDraw(id, 'wall')) : null,
     pale: draw('paleAccentShare', 'pale'), dark: draw('darkFrameShare', 'dark'), arch: draw('archShare', 'arch'), tall: draw('tallShare', 'tall'),
   };
+}
+
+/** A light, near-neutral swatch (white or cream paint, render): what derive.ts calls painted. */
+export function isPaintedHex(hex: string): boolean {
+  const [L, a, b] = rgbToLab([parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]);
+  return L >= 62 && Math.hypot(a, b) < 14;
+}
+
+/**
+ * Whether a profiled wall replaces an OSM `building:material` display prior (palette.ts MATERIAL_WALL_COLOURS): the
+ * prior is one hue per material family for the whole city, the profile the buurt's measured spread, so the profile wins
+ * when it agrees on the family (a brick prior takes a brick swatch, a plaster or stucco prior a painted one).
+ */
+export function profileWallBeatsMaterial(material: unknown, wall: string): boolean {
+  const key = typeof material === 'string' ? material.trim().toLowerCase() : '';
+  if (key === 'brick') return !isPaintedHex(wall);
+  if (key === 'plaster' || key === 'stucco') return isPaintedHex(wall);
+  return false;
 }

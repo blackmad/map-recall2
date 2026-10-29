@@ -1,12 +1,12 @@
 // Contact sheet for the generic-uplift spots: per spot the panorama, then each game run's rider-height frame (tests/e2e/generic-gap-strip.spec.ts).
 //   node scripts/look/generic-gap-sheet.mjs <spots.json> <panoDir> <out.jpg> <runDir>[=label] ...
-// Two spots per row, thumbnails 400x250, label under each spot.
+// Two spots per row, thumbnails 400x250, label under each spot (SHEET_PER=1 SHEET_W=560 for one spot per row).
 import fs from 'node:fs';
 import sharp from 'sharp';
 
 const [spotsFile, panoDir, out, ...runs] = process.argv.slice(2);
 const spots = JSON.parse(fs.readFileSync(spotsFile, 'utf8'));
-const W = 400, H = 250, LH = 22, PER = 2, cols = 1 + runs.length;
+const W = Number(process.env.SHEET_W || 400), H = Math.round(W * 0.625), LH = 22, PER = Number(process.env.SHEET_PER || 2), cols = 1 + runs.length;
 const runDirs = runs.map(r => { const [dir, label] = r.split('='); return { dir, label: label || dir.split('/').pop() }; });
 const thumb = async (file, crop) => {
   if (!fs.existsSync(file)) return sharp({ create: { width: W, height: H, channels: 3, background: '#444' } }).png().toBuffer();

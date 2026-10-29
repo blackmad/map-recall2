@@ -25,6 +25,7 @@ import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 import { SHED_LID_HEX, isGardenShed, shedHeightM, shedWallHex } from './gardenSheds.js';
 import { SegmentGrid } from './streetFronts.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
+import { profileWallBeatsMaterial } from './buurtProfiles/profiles.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -98,11 +99,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (!polygons.length || !Number.isFinite(heightM)) return null;
   const id = String(p.id ?? '');
   let building: MeshBuilding;
-  let plain: number, roofBase: number, layout: FacadeStyle;
+  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null);
+    profileWall = bay.profileWall;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
@@ -115,7 +117,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   }
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   if (look === 'photo') {
-    const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, p.facadeMaterialColourPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
+    // A buurt profile's measured wall (bayLook.ts) outranks a city-wide material-family hue of the same family.
+    const materialPrior = profileWall && profileWallBeatsMaterial(p.material, profileWall) ? undefined : p.facadeMaterialColourPrior;
+    const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
   }
   const front = shopfrontOf(p);
