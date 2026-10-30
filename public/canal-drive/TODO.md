@@ -2035,11 +2035,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp colour: the type palettes, not the profile.** Since #118 a buurt keeps its measured L*. Saenredamstraat still draws saturated red and Tweede Jan Steenstraat rosy pink, because those fronts take the De Pijp block-face type palettes (light brick, L* 39–52, C* 22–26). Re-measure those palettes against the strips.
-  - **Painted test after exposure.** Kerkstraat's white and grey fronts read as brick. The thumbnails are underexposed (white render reads about L* 55–60, under the painted cut of 62). Decide "painted" after the shared-frame offset, against a city white point.
+  - **De Pijp colour, what #121 left.** Profiles now take block-face colour from the face strips, not the type palettes, and salmon swatches went 208 → 0. Still wrong: the city brick chroma lift (×5.3 on thumbnail C* ≈ 5) pushes De Pijp brick to C* 14–24 where the photos are purple-grey, so Tweede Jan Steenstraat still draws rosy brown. KE01 painted share 0.36 looks high (sunlit strips read cream).
+  - **Kerkstraat whites.** The painted test now runs after white-point normalisation (#121), but Kerkstraat's fronts are drawn from the AG pool (painted share 0.17), so the hash still picks brick for white and grey fronts. Needs per-pand or per-street colour rather than the pool.
   - **Buurt profile tests have no npm script.** `src/canalRecall/buurtProfiles/*.test.ts` run only by hand.
   - **Saturation.** Fronts are still more saturated than the muted photos.
-  - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
