@@ -122,7 +122,7 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   // addressable by the same id.
   const idBefore = sample[0].id;
   const centreBefore = await page.evaluate(() => {
-    const centre = (window as any).canalRecallGame.vectorMap.map.getCenter();
+    const centre = (window as any).canalRecallGame.vectorMap.camera.center();
     return [centre.lng, centre.lat];
   });
   const stateHeld = await page.evaluate((id) => {
@@ -134,7 +134,7 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
 
   await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap.map;
-    const centre = map.getCenter();
+    const centre = (window as any).canalRecallGame.vectorMap.camera.center();
     map.jumpTo({ center: [centre.lng + 0.02, centre.lat + 0.012] });
   });
   await expect

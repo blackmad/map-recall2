@@ -77,7 +77,10 @@ async function instrument(page: Page) {
       const original = obj[key].bind(obj);
       obj[key] = (...args: unknown[]) => { const s = performance.now(); try { return original(...args); } finally { t[bucket].push(performance.now() - s); } };
     };
-    wrap(map, '_render', 'mapRender');
+    // Map frames as the camera's per-render interval (camera.onFrame). This replaces the
+    // former map._render duration wrap, so mapRender now means time between map renders.
+    let lastMapFrame = 0;
+    vm.camera.onFrame(() => { const n = performance.now(); if (lastMapFrame) t.mapRender.push(n - lastMapFrame); lastMapFrame = n; });
     // The HUD frame and, inside it, the minimap (the riding radar since 2026-10-16, the city sheet before).
     const game = w.canalRecallGame;
     wrap(game, '_render', 'gameRender');

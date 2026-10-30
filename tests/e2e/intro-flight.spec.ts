@@ -63,7 +63,7 @@ test('the ride opens on an overview of start and destination, then lands on the 
     let worst = 0;
     for (const point of [g.player, g.track.finishPoint]) {
       const drawn = g.camera.worldToScreen(point.x, point.y);
-      const map = g.vectorMap.map.project(g.vectorMap.worldToLngLat(point.x, point.y, g.osmLoader));
+      const map = g.vectorMap.camera.project(g.vectorMap.worldToLngLat(point.x, point.y, g.osmLoader));
       const dx = (rect.left + drawn.x * scale) - (mapRect.left + map.x);
       const dy = (rect.top + drawn.y * scale) - (mapRect.top + map.y);
       worst = Math.max(worst, Math.hypot(dx, dy));
@@ -107,7 +107,7 @@ test.describe('on a retina laptop window', () => {
       let worst = 0;
       for (const point of [g.player, g.track.finishPoint]) {
         const drawn = g.camera.worldToScreen(point.x, point.y);
-        const map = g.vectorMap.map.project(g.vectorMap.worldToLngLat(point.x, point.y, g.osmLoader));
+        const map = g.vectorMap.camera.project(g.vectorMap.worldToLngLat(point.x, point.y, g.osmLoader));
         worst = Math.max(worst, Math.hypot((rect.left + drawn.x * scale) - (mapRect.left + map.x), (rect.top + drawn.y * scale) - (mapRect.top + map.y)));
       }
       return worst;

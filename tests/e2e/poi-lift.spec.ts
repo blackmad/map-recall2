@@ -11,14 +11,14 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch()), { timeout: 30000 }).toBeGreaterThan(20);
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.pitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
   const result = await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap.map;
     const layers = (window as any).CanalRecallOrientationPois.basemapOrientationPoiLayerIds(map.getStyle().layers);
     // Evaluate each translate expression at the live zoom. The style's own
     // evaluated value can lag at the zoom of its last recalculation.
-    const zoom = map.getZoom();
+    const zoom = (window as any).canalRecallGame.vectorMap.camera.zoom();
     const liftAt = (id: string, property: string) => {
       if (!map.getLayer(id)) return 0;
       const value = map.getPaintProperty(id, property);
@@ -28,8 +28,8 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
       return v0[1] + (v1[1] - v0[1]) * (2 ** (zoom - z0) - 1) / (2 ** (z1 - z0) - 1);
     };
     return {
-      zoom: map.getZoom(),
-      pitch: map.getPitch(),
+      zoom: (window as any).canalRecallGame.vectorMap.camera.zoom(),
+      pitch: (window as any).canalRecallGame.vectorMap.camera.pitch(),
       liftPitch: (window as any).canalRecallGame.vectorMap._poiLiftPitch,
       labels: liftAt('brand-poi-labels', 'text-translate'),
       landmarks: liftAt('poi-labels', 'text-translate'),
@@ -67,12 +67,12 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
   test.setTimeout(150000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._ownPoisActive ?? false), { timeout: 30000 }).toBe(true);
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch()), { timeout: 30000 }).toBeGreaterThan(20);
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.pitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
   const result = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
     const lib = (window as any).CanalRecallOrientationPois;
-    const zoom = map.getZoom();
+    const zoom = (window as any).canalRecallGame.vectorMap.camera.zoom();
     const liftAt = (id: string) => {
       const value = map.getPaintProperty(id, 'text-translate');
       if (!Array.isArray(value) || value[0] !== 'interpolate') return 0;

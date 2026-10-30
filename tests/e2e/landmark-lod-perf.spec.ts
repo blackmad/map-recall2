@@ -46,7 +46,9 @@ test(`landmark lod ${label}`, async ({ page }, info) => {
       const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], rendererTri: [] };
       w.__perf = t; w.__stopFrames = false;
       const wrap = (obj: any, key: string, bucket: string) => { const o = obj[key].bind(obj); const orig = obj[key]; obj[key] = (...a: unknown[]) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; return () => { obj[key] = orig; }; };
-      w.__unwrap = [wrap(map, '_render', 'mapRender')];
+      // Map frames as the camera's per-render interval (camera.onFrame), not the old _render duration.
+      let lastMapFrame = 0;
+      w.__unwrap = [vm.camera.onFrame(() => { const n = performance.now(); if (lastMapFrame) t.mapRender.push(n - lastMapFrame); lastMapFrame = n; })];
       w.__unwrap.push(wrap(vm._signatureLandmarks.layer, 'render', 'landmarkRender'));
       let frameTri = 0; const proto = THREE.WebGLRenderer.prototype, origR = proto.render;
       proto.render = function (...a: unknown[]) { const r = origR.apply(this, a); frameTri += this.info.render.triangles; return r; };
