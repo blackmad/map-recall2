@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Covered-passage spec matched to the landmark era (2026-10-30).** The
+Cuyperspassage spec failed with "the shed is back". The train shed
+(w451533149) is one of the buildings the Centraal landmark model replaces, so
+it stays hidden for the `signature` reason, and the cover itself now names the
+streamed city's building id. The spec now checks that the cover reason
+releases everything after riding out. Probe at the passage with tunnel cuts
+on: the rider is visible in the slot, and part of the shed is cut away over
+it.
+
 **Labels fade, one look, hidden behind buildings, along their streets (2026-10-30, #122).**
 Canvas street names and Free Ride pills had no fade, and MapLibre had `fadeDuration: 0`.
 `labelFade.ts` fades every label over 300 ms, holds a label that lost its place for 250 ms,

@@ -69,10 +69,12 @@ test('the rider can see the Cuyperspassage under Centraal\'s train shed', async 
   const open = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     const three = vm._threeOwnsTops?.();
-    return { covered: vm.riderCovered, three, opacity: vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...vm._threeBuildings.hidden] : [] };
+    return { covered: vm.riderCovered, three, opacity: vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...(vm._threeBuildings.hiddenBy.get('cover') ?? [])] : [] };
   });
   expect(open.covered, 'out in the open the buildings come back').toBe(false);
   // The default (Photo) look draws buildings in three.js: the covering building is hidden while covered, then back.
-  if (open.three) expect(open.hidden, 'the shed is back').not.toContain('w451533149');
+  // Only the cover reason is checked: the shed also stays hidden under the Centraal landmark model ('signature'),
+  // and the cover's id comes from the streamed city (not the OSM way id), so out in the open the cover holds nothing.
+  if (open.three) expect(open.hidden, 'the cover releases the shed').toEqual([]);
   else expect(typeof open.opacity === 'number' && open.opacity < 0.5, 'opacity restored').toBe(false);
 });
