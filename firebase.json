@@ -8,8 +8,17 @@
       "source": "functions",
       "codebase": "analytics",
       "runtime": "nodejs22",
-      "ignore": ["node_modules", ".git", "*.log", "src", "test"],
-      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" ci", "npm --prefix \"$RESOURCE_DIR\" run build"]
+      "ignore": [
+        "node_modules",
+        ".git",
+        "*.log",
+        "src",
+        "test"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" ci",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
     }
   ],
   "hosting": [
@@ -164,6 +173,13 @@
         }
       ],
       "rewrites": [
+        {
+          "source": "/api/analytics",
+          "function": {
+            "functionId": "analytics",
+            "region": "europe-west4"
+          }
+        },
         {
           "source": "/ride",
           "destination": "/ride.html"
