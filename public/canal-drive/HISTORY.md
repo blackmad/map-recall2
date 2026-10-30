@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**Tunnel cuts round 2 (2026-10-30).**
+- Walls: weathered faces with a pale coping and lip, the wall line smoothed
+  over about 30 m, and headwalls ending halfway to the next carriageway, so
+  the IJ portal reads as one mouth.
+- Neighbouring cuts merge into one trench (`mergeNeighbours`) when the gap is
+  at most 12 m, the floors agree within 1.2 m and the ground between rises at
+  most 1.6 m. The IJ median wedge now sits at −2.3 m; it was a ridge at
+  −1.5 m.
+- A deep ramp carries on through its shallow start (at most 30 m). Slots get
+  lintels where the embankment stands at least 3 m above the floor.
+- False-cut guards: rideable roads are scanned within 120 m of a portal and
+  need walls on both sides for half the run (three Westerpark no-cut
+  regressions).
+- Coverage (`check-tunnels-coverage.ts`): sunken motor approaches cut, 49/59
+  (48 before); rideable mouths or lintels, 35 (5 before).
+- Cost: `prepareCell` at the IJ cell is +0.33 s median at load 7.5, against
+  +0.55 s before this round.
+- 15 named regressions.
+
 **Specs read `vectorMap.camera`, not MapLibre (2026-10-30, #128).** Engine
 programme P0: `vector-map.js` gained a camera facade (`project`, `unproject`,
 `center`, `zoom`, `bounds`, `pitch`, `bearing`, `onFrame`, `whenIdle`) and 41
@@ -14,9 +33,11 @@ baselines with dates and sources (draws 851 2026-10-24, programs 32
 2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
 MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
 budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
-perf scripts against it. Browser verification of the migration is still
-pending: the lane's run was mis-scoped to all 638 tests and held the shared
-Playwright lock for two hours.
+perf scripts against it. Verified the same day: `ride-perf` default variants pass; the two
+migrated specs that fail (`bike-xray`, `complete-city`) fail identically with
+their pre-migration files, so they are reds on main (TODO). The lane's own
+run had been mis-scoped to all 638 tests and held the shared Playwright lock
+for two hours; the lane rules now ask for ≤ 20-minute runs.
 
 **What's New notes link screenshots (2026-10-30).** User: notes should link
 to screenshots, kept in a separate repository so this one does not grow with

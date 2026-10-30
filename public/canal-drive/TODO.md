@@ -113,12 +113,15 @@ reverted the lane's change of `mapRender` in `ride-perf` / `landmark-lod-perf`
 to the render-to-render interval: `DESKTOP_BUDGET` is main-thread ms, so the
 MapLibre `_render` wrap stays (guarded on `vm.map`) until the frame host has
 its own render owner. `tests/perf/budgets.json` + `scripts/perf-gate.mjs`
-landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser
-verification pending:** the lane's run was mis-scoped to every spec (426/638
-in 2 h, lock held); two migrated specs failed there (`bike-xray` chase
-colours, `complete-city` contextualFeatures 0) and are classified
-not-migration-caused by reading only; a `ride-perf` + those two specs run is
-queued behind the lock. P0 deletions still open: study layers and Google
+landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser verification done (2026-10-30):** `ride-perf` default
+variants pass with the restored `_render` owner; `bike-xray` ("bike draws
+after every building layer") and `complete-city` (contextualFeatures 0 of
+> 12,578) fail identically with their pre-migration spec files on the same
+tree, so they are reds on main, not from the migration (listed under "Reds
+on main" below); the `ride-perf` motion variant read 8 frames > 50 ms against
+a budget of 4 (p95 16.8, 0 > 100 ms, longest 100 ms) on a machine running
+three other browser lanes: load-induced by the 2026-10-16 doc's own spread,
+re-measure on a quiet machine before calling it a regression. P0 deletions still open: study layers and Google
 tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 `scripts/city-appearance/publish-area-geometry-demo.ts`,
 `scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
@@ -128,6 +131,19 @@ tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 and the build chain), `index.html` script tags, the bundles. Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
+**L4 world streamer spawned 2026-10-30** (#136, `lane-world-streamer-20261030.md`,
+port 4529): browser identity for `?world=v1` first (the A/B found the world
+path holding ~4,400 more buildings on four centre tiles, and dense cells
+decoding on the main thread at ~1.24 s), then worker decode, ATTR/STRS cut,
+one streamer after L1, road CSR.
+**Reds on main found by the programme's runs (2026-10-30), not yet owned:**
+`tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
+draws after every building layer: expected > 128, got −1);
+`tests/e2e/complete-city.spec.ts` "the streamed city loads …"
+(contextualFeatures 0, want > 50 % of features: the citywide display prior is
+not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
+throws (`test:city-startup`). CI runs only lint and the boot smoke, so none of
+these block a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
@@ -2107,12 +2123,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
-  - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
-  - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
-  - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
-  - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
-  - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
+- **Tunnel cuts: follow-ups (2026-10-30, after round 2).**
+  - On the phone frame the walls are still faint (the cut reads through the mouths and the coping), and a small wave remains in the IJ east coping.
+  - The merged median wedges sit in the trench but are drawn in the pale ground colour, not grass.
+  - Motor approaches still missed (10 of 59):
+    - Piet Hein east (sun screen and steel truss over the carriageways);
+    - Michiel de Ruijter west (mouth under the IJsei bus-station roof);
+    - the Kruislaan car underpass, a motorway link, Stationsweg;
+    - six service ramps in Noord.
+  - Phone shots are not re-shot after round 2's final fixes; run `PHONE=1 node scripts/tunnel-places-shots.mjs`.
 
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
