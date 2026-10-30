@@ -25,6 +25,8 @@ export interface TunnelSite {
     /** The riding height along this polyline (the routed way through, run on 10 m past each end) climbs at most this over its higher end, metres. */
     rideMaxClimbM?: number;
     ride?: LngLat[];
+    /** The ground here (a median between carriageways merged into one trench) lies on the cut floor within 0.3 m. */
+    groundAtFloor?: LngLat[];
   };
 }
 
@@ -34,6 +36,30 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     label: 'IJ-tunnel south ramp from Prins Hendrikkade / Foeliestraat up to the portal under NEMO (user report 2026-10-30: read as a street to ride)',
     at: [4.91165, 52.37250],
     expect: { kind: 'ramp', motor: true, minWallM: 1, portalNear: [4.91235, 52.37360], groundIntact: [[4.91240, 52.37400], [4.91225, 52.37440]] },
+  },
+  {
+    id: 'ij-tunnel-median-wedge',
+    label: 'IJ-tunnel south ramp: the median wedge between the inner carriageways lies in the trench (round 2, 2026-10-30: drew a ridge at the wall top)',
+    at: [4.91166, 52.37264],
+    expect: { groundAtFloor: [[4.91166, 52.37264], [4.91162, 52.37265]] },
+  },
+  {
+    id: 'westerpark-path-rail-embankment',
+    label: 'Westerpark: path at the foot of the rail embankment west of the cycle underpass (one-sided "wall": no cut)',
+    at: [4.86400, 52.38940],
+    expect: {},
+  },
+  {
+    id: 'westerpark-path-dike',
+    label: 'Westerpark: park path beside the bank, 200-500 m from the underpass (way 61848368: no cut)',
+    at: [4.86182, 52.38594],
+    expect: {},
+  },
+  {
+    id: 'westerpark-path-east',
+    label: 'Westerpark: path along the embankment east of the underpass (way 290027474: no cut)',
+    at: [4.86622, 52.38885],
+    expect: {},
   },
   {
     id: 'piet-heintunnel-west',

@@ -51,7 +51,7 @@ test('the chase bike keeps its own colours in the open and draws after the build
   const box = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const ll = g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader);
-    const p = g.vectorMap.map.project(ll);
+    const p = g.vectorMap.camera.project(ll);
     const rect = g.vectorMap.map.getCanvas().getBoundingClientRect();
     return { x: Math.round(rect.left + p.x - 60), y: Math.round(rect.top + p.y - 90), width: 120, height: 120 };
   });

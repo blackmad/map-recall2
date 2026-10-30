@@ -1,5 +1,5 @@
 {
- "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
+ "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
  "notes": [
   {
    "date": "2026-10-30",
@@ -19,6 +19,27 @@
      "src": "whats-new/2026-10-30-streets-under-buildings-cruquiusweg.jpg",
      "alt": "A courtyard block on the Cruquiusweg with its garage entrance open",
      "caption": "Cruquiusweg: the garage entrance is open"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Tunnel ramps and underpasses",
+   "text": "The approaches to the IJ, Piet Hein, Spaarndammer and Michiel de Ruijter tunnels are walled cuts now, sinking to a dark tunnel mouth, so the IJ-tunnel ramp by NEMO no longer looks like a street you could ride up (bikes stay out of motor tunnels). Cycle and foot underpasses under rail embankments and dikes, like the Molukkenstraat and the Cuyperspassage, ride under the embankment instead of climbing over it.",
+   "where": [
+    4.9105,
+    52.3727
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-tunnel-ramps-before.jpg",
+     "alt": "The IJ-tunnel ramp by NEMO drawn as an open road",
+     "caption": "Before"
+    },
+    {
+     "src": "whats-new/2026-10-30-tunnel-ramps-after.jpg",
+     "alt": "The IJ-tunnel ramp as a walled cut ending in a dark tunnel mouth under NEMO",
+     "caption": "After"
     }
    ]
   },
@@ -47,6 +68,13 @@
    "where": [
     4.9003,
     52.3723
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-squares-standstill.jpg",
+     "alt": "The bike stopped on the Nieuwmarkt square in front of the Waag, chase view",
+     "caption": "Stopped on the Nieuwmarkt; it now pulls away forward"
+    }
    ]
   },
   {

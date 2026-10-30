@@ -53,7 +53,7 @@ try{
  });
  const snapshots=[], cullingAB=[];
  for(const [name,zoom,pan] of [['street',null,0],['pan',null,650],['wide',16,0],['minimum','minimum',0],['overview',14.8,0]]){
-  await page.evaluate(({name,zoom,pan})=>{__cityPerf.stage=name;const g=canalRecallGame;if(zoom==='minimum')g.camera.zoom=g.camera.minZoom;else if(zoom!=null)g.camera.zoom*=2**(zoom-g.vectorMap.map.getZoom());if(pan)g.camera.pan(pan,-160)},{name,zoom,pan});
+  await page.evaluate(({name,zoom,pan})=>{__cityPerf.stage=name;const g=canalRecallGame;if(zoom==='minimum')g.camera.zoom=g.camera.minZoom;else if(zoom!=null)g.camera.zoom*=2**(zoom-g.vectorMap.camera.zoom());if(pan)g.camera.pan(pan,-160)},{name,zoom,pan});
   await page.waitForTimeout(1200);
   await page.waitForFunction(()=>{const t=canalRecallGame.vectorMap._threeBuildings,s=canalRecallGame.vectorMap._completeCity;return t?.ready&&!t.pending.length&&!t.inflight.size&&!s.inFlight&&!s.queue.length},null,{timeout:180000});
   const sample=await page.evaluate(async()=>{let last=0,frames=[];await new Promise(resolve=>{const frame=now=>{if(last)frames.push(now-last);last=now;if(frames.length>=90)resolve();else requestAnimationFrame(frame)};requestAnimationFrame(frame)});const g=canalRecallGame,v=g.vectorMap,t=v._threeBuildings;return {stage:__cityPerf.stage,zoom:v.map.getZoom(),pitch:v.map.getPitch(),center:v.map.getCenter().toArray(),rider:{x:g.player.x,y:g.player.y},frames,stats:t.stats(),resident:t.lastFeatures.length,chunks:[...t.chunks].map(([key,c])=>({key,buildings:c.info.buildingCount,vertices:c.info.vertexCount,visible:c.mesh?.visible}))};});

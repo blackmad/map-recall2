@@ -138,6 +138,10 @@ class VectorBasemap {
   constructor(container) {
     this.container = container;
     this.map = null;
+    // Camera oracle for specs and scripts (engine programme P0, lane L2).
+    // TODO(L1): add `/** @implements {import('../../../src/canalRecall/engine/worldViewApi').WorldView} */`
+    // once worldViewApi.ts exists on main.
+    this.camera = this._cameraFacade();
     this.ready = false;
     this.theme = 'clean';
     this._basePaint = new Map();
@@ -233,6 +237,29 @@ class VectorBasemap {
       return;
     }
     this._installMap();
+  }
+
+  // The camera surface specs read instead of `vectorMap.map` (MapLibre-backed).
+  // Reads go through `basemap.map` at call time, so it works before and after
+  // the map exists; onFrame is one callback per MapLibre render.
+  _cameraFacade() {
+    const basemap = this;
+    const map = () => basemap.map;
+    return {
+      project: lngLat => map().project(lngLat),
+      unproject: px => map().unproject(px),
+      center: () => map().getCenter(),
+      zoom: () => map().getZoom(),
+      bounds: () => map().getBounds(),
+      pitch: () => map().getPitch(),
+      bearing: () => map().getBearing(),
+      onFrame(cb) {
+        const handler = () => cb();
+        map().on('render', handler);
+        return () => map().off('render', handler);
+      },
+      whenIdle: () => new Promise(resolve => map().once('idle', () => resolve())),
+    };
   }
 
   _createMap(container) {

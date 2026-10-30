@@ -64,7 +64,7 @@ try {
    await page.waitForTimeout(1200);
    const state=await page.evaluate(async()=>{
     const a=canalRecallGame.vectorMap._artisAnimals,times=[];await new Promise(resolve=>{let last;function step(t){if(last)times.push(t-last);last=t;if(times.length<60)requestAnimationFrame(step);else resolve();}requestAnimationFrame(step);});times.sort((x,y)=>x-y);
-    return {visible:a.entries.filter(e=>e.group.visible).map(e=>e.spec.name),draws:a.renderer.info.render.calls,triangles:a.renderer.info.render.triangles,frameIntervalMedianMs:times[30],failures:[...a.failures.keys()],center:canalRecallGame.vectorMap.map.getCenter(),zoom:canalRecallGame.vectorMap.map.getZoom()};
+    return {visible:a.entries.filter(e=>e.group.visible).map(e=>e.spec.name),draws:a.renderer.info.render.calls,triangles:a.renderer.info.render.triangles,frameIntervalMedianMs:times[30],failures:[...a.failures.keys()],center:canalRecallGame.vectorMap.camera.center(),zoom:canalRecallGame.vectorMap.camera.zoom()};
    });
    await page.screenshot({path:`${evidence}/${name}.png`});report.runtime.push({name,touch,...state});
    await fs.writeFile(`${evidence}/report.json`,JSON.stringify(report,null,2)+'\n');
