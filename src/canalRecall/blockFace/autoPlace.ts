@@ -148,6 +148,9 @@ export interface StripEvidence {
   skyline: Skyline | null;
   /** Body-band shares that are no evidence: the strip's grey placeholder and foliage. */
   voidShare: number; foliageShare: number;
+  /** The strip evidence gate (stripEvidence.ts, #120): does the span show the front (sky over the roof in most columns)?
+   * Absent when the gate was not run; a failing gate holds the pand before the type match and the likeness score. */
+  frontEvidence?: {pass: boolean; reasons: string[]; skyCols: number};
   /** Window columns over the upper storeys (measureFacade on the span), null when unread. */
   columns: number | null;
   /** measureFacade's front class of the span (punched, ribbon, ...); undefined when unread. */
@@ -310,6 +313,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   const s = ev.strip;
   if (!s) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: 'no strip span (no panorama covers the front)'};
   if (s.voidShare > AUTO_PLACE.maxVoid) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `strip ${Math.round(s.voidShare * 100)} % without panorama data`};
+  if (s.frontEvidence && !s.frontEvidence.pass) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `no front on the strip: ${s.frontEvidence.reasons.join('; ')}`};
   const ranked = types.map(t => scoreType(t, ev)).sort((a, b) => b.score - a.score);
   const best = ranked[0], second = ranked[1];
   if (!best || best.score < AUTO_PLACE.minScore) {
