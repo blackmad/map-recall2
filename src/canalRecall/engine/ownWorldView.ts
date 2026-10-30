@@ -26,6 +26,12 @@ import { clearCamera } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { fetchOverview, OverviewLayer } from './overviewLayer';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
+import { FlatLines, type LngLatLine } from './overlays/flatLines';
+import { LabelLayer, type PointLabel } from './overlays/labelLayer';
+import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
+import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
+import { cameraFrame } from '../ownMap/mapCamera';
+import { fromLocal, toLocal } from '../ownMap/frame';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -67,10 +73,8 @@ export const MERCATOR = { MercatorCoordinate };
 
 /** VectorMap members that are no-ops under the flag (the hand-back's list; checked by the engine spec). */
 export const UNIMPLEMENTED = [
-  'setActiveLandmark', 'highlightTarget', 'setPlaces', 'setBrandedPois', 'setSpoilerNames (stored, no labels yet)',
-  'setQuizQuietMap', 'setSpoilersSuspended', 'setLabelsVisible/toggleLabels (no labels yet)', 'setAnsweredStreetName',
-  'setTransitNetwork', 'setCycleTracks', 'setFerryTerminals', 'setTreesVisible (no trees yet)',
-  'setDetailedBuildingsVisible', 'setGoogleTilesEnabled', 'applyTheme (palette themes)', 'signature landmarks',
+  'setTreesVisible (no trees yet)', 'setDetailedBuildingsVisible', 'setGoogleTilesEnabled', 'applyTheme (palette themes)',
+  'signature landmarks', 'neighbourhood lines are solid (MapLibre drew them dashed)',
 ] as const;
 
 type Vehicle = any;
@@ -122,6 +126,19 @@ export class OwnWorldView {
   private introLanding = false;
   private measuredColoursOnly = false;
   private buildingLookPref = 'photo';
+  /** Overlays (engine/overlays): flat lines over the ground, labels on a 2D canvas, the landmark marker. */
+  readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
+  readonly _labels: LabelLayer;
+  _highlightMarker: any = null;
+  private quizQuiet = false;
+  private spoilersSuspended = false;
+  private loader: LoaderFrame | null = null;
+  private answeredKey = '';
+  private ferryTrack: unknown = null;
+  private poisLoading = false;
+  private brandedPois: PointLabel[] = [];
+  private placePois: PointLabel[] = [];
+  private orientationPois: PointLabel[] = [];
 
   constructor(container: HTMLElement | null) {
     if (!container) throw new Error('OwnWorldView needs its container');
@@ -163,6 +180,21 @@ export class OwnWorldView {
       probe: () => this.graphicsProbe(),
     });
     this._renderGovernor = guards.governor;
+    const view = { center: () => this.camera.center(), zoom: () => this.camera.zoom() };
+    this._lines = { cycle: new FlatLines('cycle-tracks', view), transit: new FlatLines('transit-network', view), hoods: new FlatLines('neighbourhoods', view) };
+    this._sharedFrame.register('engine-hoods', this._lines.hoods, { order: -60 });
+    this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
+    this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
+    this._labels = new LabelLayer(container, () => this.labelPolicy());
+    if (three.HighlightMarker && three.highlightStyle?.() !== 'yellow') {
+      try {
+        this._highlightMarker = new three.HighlightMarker(THREE, this.cameraMap, {
+          sharedFrame: this._sharedFrame,
+          heightAt: (p: [number, number]) => (this._ownGround?.ready ? this._ownGround.heightAt(p) : 0),
+          featuresById: (ids: string[]) => this._completeCity?.featuresById?.(ids) ?? null,
+        });
+      } catch (error) { this.fail('highlight marker', error); }
+    }
     this.host.start();
     void this.boot();
   }
@@ -201,6 +233,7 @@ export class OwnWorldView {
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
+      this._labels.setOverview(data);
     } catch (error) { this.fail('overview', error); }
   }
 
@@ -294,7 +327,57 @@ export class OwnWorldView {
   // ---- the frame ----
   private renderFrame(): void {
     this._sharedFrame.drive(this.cameraMap.camera.clipFromMercator());
+    this.drawLabels();
   }
+
+  /** The game's spoiler screen (labelPolicy.ts gameLabelContext) from the live game, cached by what it reads. */
+  private policyCache: { key: string; ctx: LabelContext } | null = null;
+  private labelPolicy(): LabelContext & { revision?: string } {
+    const g = W().canalRecallGame || {};
+    const names: ReadonlySet<string> = g._mapLabelNames instanceof Set ? g._mapLabelNames : new Set();
+    const known: ReadonlyMap<string, any> = g._knownPlaces instanceof Map ? g._knownPlaces : new Map();
+    const spoilers = this.spoilersSuspended ? [] : this.spoilerNames;
+    const key = `${names.size}|${known.size}|${spoilers.length}|${g.quizPromptName || ''}|${g.quizCandidateName || ''}|${this.quizQuiet}|${this._labelsVisible}`;
+    if (this.policyCache?.key !== key) {
+      const loader = this.loader;
+      const ctx = gameLabelContext({
+        mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
+        quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName,
+        spoilerNames: spoilers, quizQuiet: this.quizQuiet,
+        toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
+      });
+      // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
+      const labelsOn = this._labelsVisible;
+      const isLabelled = ctx.isLabelled;
+      this.policyCache = { key, ctx: { ...ctx, isLabelled: (t, x, y) => labelsOn && isLabelled(t, x, y), revision: key } as LabelContext };
+    }
+    return this.policyCache.ctx;
+  }
+
+  private drawLabels(): void {
+    const cam = this.cameraMap.camera;
+    const zoom = cam.zoom;
+    if (zoom >= 16 && !this.poisLoading) { this.poisLoading = true; void this.loadPois(); }
+    const [lx, ly] = toLocal(cam.lng, cam.lat);
+    const frame = cameraFrame({ center: [lx, ly], zoom, bearing: cam.bearing, pitch: cam.pitch, fovDeg: cam.fovDeg, elevation: cam.elevation }, this.host.viewport(), cam.lat);
+    const b = cam.bounds();
+    const [x0, y0] = toLocal(b.west, b.south), [x1, y1] = toLocal(b.east, b.north);
+    this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); });
+  }
+
+  private async loadPois(): Promise<void> {
+    try {
+      const r = await fetch(`${this.absoluteExtractRoot()}/orientation-pois.json`);
+      if (!r.ok) throw new Error(`orientation-pois: ${r.status}`);
+      const b = new Uint8Array(await r.arrayBuffer());
+      const text = b[0] === 0x1f && b[1] === 0x8b ? await new Response(new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(b);
+      // The spoiler screen runs per frame (labelPolicy); ownPoiFeatures only thins here.
+      const fc = ownPoiFeatures(JSON.parse(text) as OrientationPoiFile, () => false);
+      this.orientationPois = fc.features.map((f, i) => ({ id: `p${i}`, text: f.properties.name, kind: 'poi' as const, priority: f.properties.rank, lngLat: f.geometry.coordinates as [number, number] }));
+      this.pushPois();
+    } catch (error) { this.fail('pois', error); }
+  }
+  private pushPois(): void { this._labels.setPois([...this.orientationPois, ...this.placePois, ...this.brandedPois]); }
 
   private graphicsProbe(): Record<string, unknown> {
     const r = this.host.renderer;
@@ -321,7 +404,7 @@ export class OwnWorldView {
     this._cameraTilt = Number.isFinite(v) ? Math.max(min, Math.min(max, v)) : 0;
   }
   setLandmarkView(view: { pitchDeg: number; leadM: number } | null): void { this.landmarkView = view && (view.pitchDeg > 0 || view.leadM > 0) ? view : null; }
-  highlightTarget(): null { return null; }
+  highlightTarget(): { lngLat: [number, number]; heightM: number } | null { return this._highlightMarker?.target?.() || null; }
 
   /** vector-map.js pitchForViewMode, same constants (COCKPIT/CHASE/TOPDOWN globals, game/preferences.ts). */
   pitchForViewMode(viewMode: string): number {
@@ -376,6 +459,7 @@ export class OwnWorldView {
 
   sync(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
     if (!this.ready || !camera || !loader || !canvas || loader._lastCenterLat == null) return;
+    this.loader = loader;
     const view = this.solver.request(camera, loader, {
       pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
       landmarkView: this.landmarkView, displayScale: canvas.getBoundingClientRect().width / CANVAS_W, now: performance.now(),
@@ -555,19 +639,101 @@ export class OwnWorldView {
     body?.classList.remove('theme-8bit', 'theme-16bit', 'theme-psx', 'theme-cyberpunk');
     if (this.theme !== 'clean') body?.classList.add(`theme-${this.theme}`);
   }
-  toggleLabels(): boolean { this._labelsVisible = !this._labelsVisible; return this._labelsVisible; }
-  setLabelsVisible(v: boolean): void { this._labelsVisible = !!v; }
+  toggleLabels(): boolean { this._labelsVisible = !this._labelsVisible; this.host.triggerRepaint(); return this._labelsVisible; }
+  setLabelsVisible(v: boolean): void { this._labelsVisible = !!v; this.host.triggerRepaint(); }
+  setQuizQuietMap(quiet: boolean): void { if (this.quizQuiet !== !!quiet) { this.quizQuiet = !!quiet; this.host.triggerRepaint(); } }
+  setSpoilersSuspended(suspended: boolean): void { this.spoilersSuspended = !!suspended; }
+
+  /** The card's landmark: its building(s) lit through the facades, and the marker (look/highlightMarker.ts). */
+  setActiveLandmark(landmark: any): void {
+    let ids: string[] = [];
+    if (landmark && Array.isArray(landmark.buildingIds) && landmark.buildingIds.length) ids = landmark.buildingIds.map(String);
+    else if (landmark?.featureTarget?.id != null) ids = [String(landmark.featureTarget.id)];
+    else if (landmark && Array.isArray(landmark.lngLat) && this._completeCity?.buildingForLandmark) {
+      const id = this._completeCity.buildingForLandmark({ lng: landmark.lngLat[0], lat: landmark.lngLat[1] });
+      if (id) ids = [String(id)];
+    }
+    if (!ids.length && landmark && Array.isArray(landmark.lngLat) && this._threeBuildings?.boatForLandmark) {
+      const boat = this._threeBuildings.boatForLandmark(landmark.lngLat, landmark.type);
+      if (boat) ids = [String(boat)];
+    }
+    const focus = landmark && landmark.lngLat ? { lngLat: landmark.lngLat, ids } : null;
+    this._threeBuildings?.setHighlighted?.(ids, focus);
+    this._highlightMarker?.set(focus ? (this._threeBuildings?.highlightFootprint?.(ids) || focus) : null);
+    this.host.triggerRepaint();
+  }
+
+  /** Prominent extract landmarks as POI labels, and the neighbourhood boundaries as lines (vector-map.js setPlaces). */
+  setPlaces(landmarks: any[], boundaries: any[]): void {
+    this.placePois = (landmarks || []).filter(item => item.center && (item.manualPoi || item.nativeKitPoi || (item.prominenceScore || 0) >= 220))
+      .map(item => ({ id: `l:${item.id}`, text: item.name, kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
+    this.pushPois();
+    const lines: LngLatLine[] = [];
+    for (const b of (boundaries || []).filter(item => item.kind === 'neighbourhood' && item.geometry)) {
+      for (const polygon of b.geometry) { const ring = polygon[0]; if (ring && ring.length >= 3) lines.push(ring.map(([lat, lng]: [number, number]) => [lng, lat] as [number, number])); }
+    }
+    this._lines.hoods.set([{ lines, style: { color: '#8B5CF6', width: [[13, 1], [18, 2.5]], minZoom: 13, opacity: 0.48 } }]);
+  }
+  setBrandedPois(pois: any[]): void {
+    // Thinned like vector-map.js (thinOrientationPois): only the best cue per patch of ground.
+    const thin = W().CanalRecallOrientationPois?.thinOrientationPois;
+    const safe = (pois || []).filter(p => p && p.name && Array.isArray(p.center));
+    this.brandedPois = (thin ? thin(safe) : safe)
+      .map((p: any, i: number) => ({ id: `b${i}`, text: p.name, kind: 'poi' as const, priority: 3000 + (p.orientationScore || 0), lngLat: [p.center[1], p.center[0]] as [number, number], minZoom: 16.5 }));
+    this.pushPois();
+  }
+
+  /** The just-answered name, on the road ahead of the rider (streetOverlayStyle pointsAheadOnChains). */
+  setAnsweredStreetName(track: any, loader: LoaderFrame, stamp: { name: string; label?: string; segmentIndex: number; correct: boolean } | null, rider: any = null): void {
+    if (!this.ready || !track || !loader) return;
+    const key = stamp ? `${stamp.name}:${stamp.segmentIndex}:${stamp.correct}` : '';
+    if (key === this.answeredKey) return;
+    this.answeredKey = key;
+    const streets = W().CanalRecallStreets;
+    let points: any[] = [];
+    if (stamp && rider && streets?.pointsAheadOnChains) {
+      const ridden = track.segments[stamp.segmentIndex];
+      const connected = ridden && ridden.name === stamp.name ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(stamp.segmentIndex) : [ridden]) : [];
+      const paths = streets.collapseParallelFragments ? streets.collapseParallelFragments(connected, ridden) : connected.map((s: any) => s.points);
+      points = streets.pointsAheadOnChains(streets.stitchOverlayPaths ? streets.stitchOverlayPaths(paths) : paths, rider);
+    }
+    this._labels.setPoints('answered', points.map((p, i) => ({ id: `a${i}`, text: stamp!.label || stamp!.name, kind: 'street' as const, priority: 10 - i, lngLat: worldToLngLat(p.x, p.y, loader) })));
+    this.host.triggerRepaint();
+  }
+
+  setFerryTerminals(track: any, loader: LoaderFrame): void {
+    if (!this.ready || !track || !loader || this.ferryTrack === track) return;
+    this.ferryTrack = track;
+    const terminals = new Map<string, any>();
+    for (const segment of track.segments) if (segment.ferryLink) for (const t of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(t.id, t);
+    const merge = W().CanalRecallFerry?.terminalLabels;
+    const list = merge ? merge([...terminals.values()], 150 * 3) : [...terminals.values()];
+    this._labels.setPoints('ferry', list.map((t: any, i: number) => ({ id: `f${i}`, text: `${t.name} ⛴`, kind: 'poi' as const, priority: 100, lngLat: worldToLngLat(t.x, t.y, loader) })));
+  }
+
+  setCycleTracks(ways: unknown[]): void {
+    const lib = W().CanalRecallOrientationPois;
+    const fc = lib?.cycleTrackFeatures ? lib.cycleTrackFeatures(ways || []) : null;
+    const lines: LngLatLine[] = (fc?.features ?? []).filter((f: any) => f.geometry?.type === 'LineString').map((f: any) => f.geometry.coordinates);
+    this._lines.cycle.set([{ lines, style: { color: lib?.CYCLE_TRACK_COLOUR || '#c0392b', width: [[12, 1], [15, 2], [18, 5]], minZoom: 12, opacity: typeof lib?.CYCLE_TRACK_OPACITY === 'number' ? lib.CYCLE_TRACK_OPACITY : 0.85 } }]);
+  }
+
+  setTransitNetwork(load: any, visible: boolean): void {
+    const Transit = W().CanalRecallTransit;
+    const byColour = new Map<string, LngLatLine[]>();
+    if (visible && load?.ways?.length) {
+      for (const way of load.ways) {
+        if (!way.nodes || way.nodes.length < 2) continue;
+        const meta = load.featureMeta && way.tags?.name ? load.featureMeta.get(way.tags.name) : null;
+        const line = { name: way.tags?.name || way.id || 'line', mode: way.highway || meta?.mode || 'tram', color: meta?.color, coordinates: way.nodes.map((n: any) => [n.lon, n.lat]) };
+        const fc = Transit?.transitOverlayCollection ? Transit.transitOverlayCollection([line]) : { features: [{ properties: { color: line.color || '#E11D48' }, geometry: { type: 'LineString', coordinates: line.coordinates } }] };
+        for (const f of fc.features) { if (f.geometry?.type !== 'LineString') continue; const c = f.properties?.color || '#E11D48'; const l = byColour.get(c); if (l) l.push(f.geometry.coordinates); else byColour.set(c, [f.geometry.coordinates]); }
+      }
+    }
+    this._lines.transit.set([...byColour].map(([color, lines]) => ({ lines, style: { color, width: [[11, 1.5], [15, 3], [18, 6]], opacity: 0.85 } })));
+  }
 
   // Not yet under the flag (UNIMPLEMENTED): no-ops so the game runs.
-  setActiveLandmark(): void {}
-  setPlaces(): void {}
-  setBrandedPois(): void {}
-  setQuizQuietMap(): void {}
-  setSpoilersSuspended(): void {}
-  setAnsweredStreetName(): void {}
-  setTransitNetwork(): void {}
-  setCycleTracks(): void {}
-  setFerryTerminals(): void {}
   setTreesVisible(): void {}
   setDetailedBuildingsVisible(): void {}
   setGoogleTilesEnabled(): void {}

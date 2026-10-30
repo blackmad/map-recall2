@@ -57,6 +57,9 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
       water: vm.status.overview,
       moved: Math.hypot(game.player.x - game.track.startPoint?.x || 0, game.player.y - game.track.startPoint?.y || 0),
       facades: !!vm._threeBuildings?.ready,
+      hoodLines: vm._lines.hoods.lineCount, cycleLines: vm._lines.cycle.lineCount,
+      labels: vm._labels.placed.map((l: any) => l.text),
+      asked: [game.quizPromptName, game.quizCandidateName].filter(Boolean),
     };
   });
   console.log('engine=own', JSON.stringify(stats));
@@ -67,6 +70,18 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.calls).toBeLessThanOrEqual(700);
   expect(stats.programs).toBeLessThanOrEqual(32);
   expect(errors).toEqual([]);
+  // Spoiler rule: the name under question is never on the map.
+  for (const name of stats.asked) expect(stats.labels.map((t: string) => t.toLowerCase())).not.toContain(String(name).toLowerCase());
+  // With every name earned (labels on, every street learned), the asked one still is not drawn.
+  const allEarned = await page.evaluate(() => {
+    const g = (window as any).canalRecallGame, vm = g.vectorMap;
+    vm.setLabelsVisible(true);
+    for (const s of g.track.segments) if (s.name) g._mapLabelNames.add(s.name);
+    g.quizPromptName = g.track.segments.find((s: any) => s.name)?.name;
+    return new Promise<{ asked: string; labels: string[] }>(r => vm.camera.onFrame(() => r({ asked: g.quizPromptName, labels: vm._labels.placed.map((l: any) => l.text) })));
+  });
+  console.log('labels with every name earned', allEarned.labels.length, JSON.stringify(allEarned.labels.slice(0, 12)));
+  expect(allEarned.labels).not.toContain(allEarned.asked);
 });
 
 // The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera

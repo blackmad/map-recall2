@@ -71,6 +71,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
 
   await page.goto(`/canal-drive/${query}`);
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+  if (process.env.ENGINE === 'own') expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap.engine), 'ENGINE=own: the engine world view is in charge').toBe('own');
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);
   if (viewMode) await setHiddenSelect(page, 'view-mode', viewMode);
