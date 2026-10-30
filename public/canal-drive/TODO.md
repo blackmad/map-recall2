@@ -54,14 +54,20 @@ no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
-inferred-install policy; running under policy A meanwhile). Next spend, per
-the kill rule: a kit lane for floor bands on curtain walls (unlocks 19
-triage `curtain` candidates and the 95 inferred glass installs' FAILs), the
-32 m crop cap raised for the 95 `tower` candidates (`all-walls.ts
---max-height`, needs a re-crop), and the three self-test gaps (glazed
-pavilion under a deep roof, glazed sawtooth hall, painted-black front with
-white balconies). Self-test drafts sit in the skill worktree's
-`staging/landmark-lane-selftest/`, uncommitted (they would move fit-golden).
+inferred-install policy; running under policy A meanwhile). Spent since, per
+the kill rule: floor bands on curtain walls (#116), the 70 m crop cap for
+towers (round 3), band fronts (#126, #127: `balconyBands.spans`, ribbon and
+glazed-storey proposals) and the band measurement blockers (#134, HISTORY
+"Band fronts measured"): painted floor bands no longer count as washed-out
+glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
+groups are probed again when a crop pairs them. Measured result: 0 of 253
+inferred groups moved and none of the 17 ride-landmark drafts passes yet;
+what still blocks them is in the tier sheet (item 8). Next spend by blocked
+ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
+closer-crop or second-capture signal for pale brick fronts (240435) that the
+cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
+would move fit-golden).
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan

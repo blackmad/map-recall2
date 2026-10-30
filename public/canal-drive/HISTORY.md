@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
+measurement blockers from the band kit lanes (#126, #127) are fixed in the
+judge and the measurer, with LIKENESS constants unchanged. `measureFacade`
+reads the washed mask row by row before computing the washed-out share: a
+run 0.2–1.8 m thick, washed across at least half the row, with clear rows
+within 1.5 m above and below, repeating at least three times at one storey
+spacing, is a painted floor band and counts as wall (063809's slab fronts go
+from 36 % washed to 8 %, and from NO EVIDENCE to a judged FAIL). The
+likeness elevation now carries a depth buffer, and on groups that draw
+`balconyBands` glass 0.35 m or more in front of the wall plane near an upper
+storey line is classed as trim, so parapet glass no longer inflates model
+glazing (247342 w1 0.41 to 0.25 against a photo 0.18). The rule is gated to
+balcony-band groups because the ungated version moved Houthavenkade 26 PASS
+to WARN and Politie Van Leijenberghlaan WARN to FAIL: on about twenty
+inferred installs ordinary kit windows sit 0.35 m proud of the modal wall
+material, which a kit or likeness lane should look at. `measure.ts` probes
+groups the triangle budget blanked, compiling them with the draft system
+through a `compileLargeHouse` override, and re-applies the budget after
+`--write`. Replay over the 253 measured inferred groups: identical verdicts
+and reasons (PASS 13, WARN 38, FAIL 151, NO EVIDENCE 51); over the 17
+ride-landmark drafts, 0 verdicts moved. What still blocks a PASS is now
+geometry the drafts draw wrong, not measurement: punched windows where the
+photo shows ribbons (063809, 247342), storey-2 opening widths (242968), a
+pale pink-grey brick that cell statistics cannot separate from AkzoNobel's
+glare (240435), and 063809 still 9,395 triangles over the 12k budget.
+
 **Amstel station drawn from its roofs; raised OSM parts lifted; over-road check (2026-10-30).**
 Amstel station (BAG `0363100012145715`) was held unfilled because its outline
 covers the Julianaplein busway. Measured with a 3 m edge inset, the bus lanes
