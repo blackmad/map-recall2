@@ -5,9 +5,14 @@
  *   BuildingTileStreamer.styled:    decorateBuildingFeature + vector-map's feature decorator
  *                                   (galleryPipeline.gameDecorator repeats _applyFeatureDecorator).
  */
+// The compiler bakes what the browser computes: Chrome's Math.cos/sin are correctly rounded, Node's are not
+// (one-ulp roofEavesHeightM differences, 2026-10-30 A/B). Every user of this pipeline (compile, verify, the
+// world-format tests) runs with the browser's functions; this import comes first. See browserMath.ts.
+import './useBrowserMath.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
+import crypto from 'node:crypto';
 import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
 import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
@@ -17,8 +22,20 @@ import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
 export const COVERS = path.join(ROOT, 'public/canal-drive/models/covers.json');
+export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
+
+/** Hash of files' paths and contents (absent files hash as 'absent'): the compiler's change detector. */
+export function inputHash(files: string[]): string {
+  const h = crypto.createHash('sha256');
+  for (const f of files) { h.update(path.relative(ROOT, f)); h.update(fs.existsSync(f) ? fs.readFileSync(f) : Buffer.from('absent')); }
+  return h.digest('hex');
+}
+/** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
+export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
+  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts',
+  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 export const tileFile = (t: string) => path.join(EXTRACT, `building-tiles/14/${t}.geojson.gz`);
