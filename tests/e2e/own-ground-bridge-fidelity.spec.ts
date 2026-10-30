@@ -137,7 +137,7 @@ async function spanColumns(page: Page, b: Bridge): Promise<[number, number]> {
   return page.evaluate(({ b }) => {
     const map = (window as any).canalRecallGame.vectorMap.map, left = map.getContainer().getBoundingClientRect().left;
     const rad = b.bearing * Math.PI / 180, mLng = 111320 * Math.cos(b.lat * Math.PI / 180), h = b.lengthM / 2;
-    const xs = [-1, 1].map(s => map.project([b.lng + Math.sin(rad) * s * h / mLng, b.lat + Math.cos(rad) * s * h / 111320]).x + left);
+    const xs = [-1, 1].map(s => (window as any).canalRecallGame.vectorMap.camera.project([b.lng + Math.sin(rad) * s * h / mLng, b.lat + Math.cos(rad) * s * h / 111320]).x + left);
     return [Math.round(Math.min(...xs)), Math.round(Math.max(...xs))] as [number, number];
   }, { b });
 }

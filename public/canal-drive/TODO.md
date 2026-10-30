@@ -32,7 +32,11 @@ with "continue from the branch", model per `LANE-RULES.md`. The plan is
 bullet list below; the per-building state is
 `public/canal-drive/landmark-factory-queue.json` and the census. Visible
 changes go to `public/canal-drive/whats-new-notes.json` in the same commit
-that ships them (the What's New page renders it). Tracking (user, 2026-10-24):
+that ships them (the What's New page renders it), with a screenshot when the
+change can be seen (user, 2026-10-30): push the picture to
+`github.com/blackmad/map-recall2-screenshots` (`whats-new/<date>-<slug>.jpg`,
+before/after pairs welcome) and list it under the note's `images`; the game
+repository holds no new screenshots. Tracking (user, 2026-10-24):
 every question or action for the user is a GitHub issue labelled
 `needs-david` and assigned to blackmad, never only a chat line; each lane is
 an issue labelled `lane` (+ `programme`), commented with its hand-back and
@@ -97,6 +101,33 @@ world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
 shader (B) / L7 shadows (D). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
+State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
+fixes): `vectorMap.camera` (project, unproject, center, zoom, bounds, pitch,
+bearing, onFrame, whenIdle) over MapLibre in `vector-map.js`; 41 spec/script
+files read it instead of `vectorMap.map` for those members (inventory
+`docs/handoffs/oracle-inventory-20261030.md`). Still on `.map`: `jumpTo` 69,
+`getCanvas` 29, `setMaxPitch` 27, `calculateCameraOptionsFromTo` 22,
+`triggerRepaint` 29, `getStyle` 23, `stop` 19, `getLayoutProperty` 24,
+`once('render')` ×4 (L1 decides which become `WorldView` methods). Integrator
+reverted the lane's change of `mapRender` in `ride-perf` / `landmark-lod-perf`
+to the render-to-render interval: `DESKTOP_BUDGET` is main-thread ms, so the
+MapLibre `_render` wrap stays (guarded on `vm.map`) until the frame host has
+its own render owner. `tests/perf/budgets.json` + `scripts/perf-gate.mjs`
+landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser
+verification pending:** the lane's run was mis-scoped to every spec (426/638
+in 2 h, lock held); two migrated specs failed there (`bike-xray` chase
+colours, `complete-city` contextualFeatures 0) and are classified
+not-migration-caused by reading only; a `ride-perf` + those two specs run is
+queued behind the lock. P0 deletions still open: study layers and Google
+tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
+`scripts/city-appearance/publish-area-geometry-demo.ts`,
+`scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
+`wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
+`tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
+(`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
+and the build chain), `index.html` script tags, the bundles. Lesson for
+`LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
+representative subset, not every touched spec.
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
@@ -2064,6 +2095,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **What's New "In progress" strip is stale (found 2026-10-30).** It renders
+  `poi-work-queue.json` rows whose status matches draft/in-progress/awaiting,
+  a queue nobody has written to since 2026-10-10. Of the nine rows shown, none
+  is live: the Jan Evertsenstraat generator pilot was retired 2026-10-14; the
+  Keizersgracht 73/Herengracht 54 and Leidsestraat/Kerkstraat one-off
+  ordinary builders were frozen (no model exists); the Nassaukade roof task,
+  street-profile entrances/crowns, dominant-building triage and the
+  large-ordinary pilot were all superseded by the kit lanes and the
+  dominant-building backlog; the signage policy has no owner; UvA
+  Roeterseiland shows REC B/C/D as a CPU draft while REC-A is installed and
+  the remaining builder is held. Decide the source (open `lane` issues, the
+  programme bullets above, or drop the strip) and point the page at it.
 
 - **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
   - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.

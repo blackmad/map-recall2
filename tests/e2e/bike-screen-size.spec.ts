@@ -12,15 +12,15 @@ test('the chase bike takes a similar share of the screen on desktop and phone', 
   // Measure once the camera has settled: sampled while it was still easing in
   // from the overview, the zoom (and so the share) came out low at random.
   await expect.poll(async () => {
-    const zoom = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getZoom());
+    const zoom = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.zoom());
     const before = await zoom();
     await page.waitForTimeout(600);
     return Math.abs((await zoom()) - before) < 0.005;
   }, { timeout: 30000 }).toBe(true);
   const share = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
-    const map = g.vectorMap.map;
-    const metresPerPx = 156543.03392 * Math.cos(map.getCenter().lat * Math.PI / 180) / 2 ** map.getZoom();
+    const map = g.vectorMap.camera;
+    const metresPerPx = 156543.03392 * Math.cos(map.center().lat * Math.PI / 180) / 2 ** map.zoom();
     const bike = g.vectorMap._playerBike;
     const lengthM = 2.15 * bike.options.gameScale * bike.viewportScale();
     return lengthM / metresPerPx / Math.min(innerWidth, innerHeight);
