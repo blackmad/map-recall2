@@ -38,6 +38,9 @@ export interface CropMatch {
   offsetM: number; angleDeg: number; overlapFraction: number;
   /** crop metres (from `a`) at the panel's uMin and uMax; increasing when the panel and crop face the same side */
   alongAtUMin: number; alongAtUMax: number;
+  /** a set-back panel (`setbackCoverage`): the panel stands `setbackM` behind the crop's BAG edge, so the photo shows it
+   *  shrunk towards the camera by `depthScale` = D / (D + setbackM); heights map as z' = camZ + (z - camZ) * depthScale (NAP) */
+  setback?: {setbackM: number; depthScale: number; camZ: number};
 }
 
 /** Unit direction a->b and the outward normal of a counter-clockwise footprint edge. */
@@ -213,4 +216,38 @@ export function cropStreetShiftM(c: Pick<CropWall, 'groundSource' | 'cameraRD'>,
   if (!terrainAt || !c.groundSource || !/assumed/.test(c.groundSource) || !c.cameraRD || c.cameraRD.length < 3 || !Number.isFinite(c.cameraRD[2])) return 0;
   const g = terrainAt(c.cameraRD[0], c.cameraRD[1]);
   return Number.isFinite(g) ? Math.round((g + CAMERA_ABOVE_TERRAIN_M - c.cameraRD[2]) * 1000) / 1000 : 0;
+}
+
+/**
+ * Set-back fronts (GitHub #127): a BAG footprint edge is the building's outermost line seen from above, so where a low
+ * wing or plinth stands in front of a tall slab, the crop is rectified on the plinth's line and the slab behind it pairs
+ * nothing (Burgemeester Hogguerstraat 063809: the 12-storey slab, panels 8 and 20, 6.1 m behind the 87.9 m edge of its
+ * 2.9 m plinth, panel 13). A crop on a parallel edge (angle and facing within the match thresholds) with the panel
+ * WALL_OFFSET_TOLERANCE_M..SETBACK.maxM behind it, whose own line holds nothing taller than SETBACK.frontMaxM over the
+ * panel's span, shows the panel by central projection from the camera: along the edge s' = cs + (s - cs) * k and up
+ * z' = camZ + (z - camZ) * k with k = D / (D + setback), D the camera's distance to the edge. The pieces carry that in
+ * `match.setback`; only crops with a camera position that reach the panel's projected top (`topNAP`), and only when the
+ * panel and its group plane pair nothing.
+ */
+export const SETBACK = {maxM: 8, frontMaxM: 6} as const;
+export function setbackCoverage(crops: CropWall[], main: PanelPlan, anchorRD: Xy, front: readonly (PanelPlan & {vMax: number})[], maxObliquityDeg = 45, topNAP?: number): {pieces: CoveragePiece[]; coverage: number} {
+  const q0 = panelPointRD(main, main.uMin, anchorRD), q1 = panelPointRD(main, main.uMax, anchorRD), width = Math.max(1e-6, main.uMax - main.uMin), r3 = (v: number) => Math.round(v * 1000) / 1000;
+  const cands = crops.filter(c => (c.obliquityDeg ?? 0) <= maxObliquityDeg && c.cameraRD && c.cameraRD.length >= 3 && Number.isFinite(c.cameraRD[2])).flatMap(crop => {
+    const m = matchCropToPanel(crop, main, anchorRD);
+    if (m.relation !== 'offset' || m.offsetM > SETBACK.maxM) return [];
+    const {n, len} = cropFrame(crop.a, crop.b), mid: Xy = [(q0[0] + q1[0]) / 2, (q0[1] + q1[1]) / 2], cam = crop.cameraRD!;
+    // behind the edge (inside the footprint), with the camera outside it
+    const signed = (mid[0] - crop.a[0]) * n[0] + (mid[1] - crop.a[1]) * n[1], D = (cam[0] - crop.a[0]) * n[0] + (cam[1] - crop.a[1]) * n[1];
+    if (signed >= 0 || D <= 1) return [];
+    // nothing tall on the edge's own line over the panel's span (it would hide the panel)
+    const s0 = alongOf(crop, q0), s1 = alongOf(crop, q1), lo = Math.min(s0, s1), hi = Math.max(s0, s1);
+    if (front.some(f => { const fm = matchCropToPanel(crop, f, anchorRD); return fm.relation !== 'facing' && fm.relation !== 'angle' && fm.offsetM <= WALL_OFFSET_TOLERANCE_M && Math.min(hi, Math.max(fm.alongAtUMin, fm.alongAtUMax)) - Math.max(lo, Math.min(fm.alongAtUMin, fm.alongAtUMax)) > 0.5 && f.vMax > SETBACK.frontMaxM; })) return [];
+    const k = D / (D - signed), cs = alongOf(crop, [cam[0], cam[1]]), p0 = cs + (s0 - cs) * k, p1 = cs + (s1 - cs) * k;
+    // the crop must reach the panel's projected top (a tall slab needs the tall rectification, all-walls.ts `h70`)
+    if (topNAP !== undefined && crop.baseZ + crop.wallHeightM < cam[2] + (topNAP - cam[2]) * k - 0.5) return [];
+    const overlapFraction = Math.max(0, Math.min(len, Math.max(p0, p1)) - Math.max(0, Math.min(p0, p1))) / (width * k);
+    return [{crop, match: {...m, relation: (overlapFraction < CROP_MIN_OVERLAP ? 'overlap' : 'match') as CropRelation, overlapFraction: r3(overlapFraction), alongAtUMin: r3(p0), alongAtUMax: r3(p1),
+      setback: {setbackM: r3(-signed), depthScale: Math.round(k * 10000) / 10000, camZ: cam[2]}}}];
+  }).filter(m => m.match.overlapFraction > 0);
+  return coverageOf(cands, main);
 }

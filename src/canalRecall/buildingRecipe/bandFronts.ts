@@ -21,7 +21,7 @@
 import {ROW_OPENINGS, punchedUnder, type RowOpeningSummary} from './rowOpenings.ts';
 import {LIKENESS} from './likeness.ts';
 import type {LightBand} from './lightBands.ts';
-import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
+import type {BalconyBandsIntent, BalconyBandSpan} from '../blockBuilding/balconyBands.ts';
 
 /** The photo's band evidence per wall: the upper window storeys judged, and each storey's widest ribbon (if any) with the storey whose punched row lies under it. */
 export interface RowBands {judged: number[]; ribbons: {storey: number; ribbonM: number; against: number | null}[]}
@@ -91,4 +91,45 @@ export function bandFrontProposal(m: BandFrontInput): BandFrontProposal {
   if (thin.length) why.push(`ribbon storeys ${thin.join(',')} glazed under ${GLAZED_STOREY_MIN * 100} % in the photo (${thin.map(s => Math.round((m.storeyGlazing?.[s] ?? 0) * 100)).join('/')} %): not a glazed storey`);
   if (!over.some(glazed)) return {kind: null, why: [...why, `no glazed ribbon storey over a punched row within 1..${m.storeys - 1}`]};
   return {kind: 'ribbon-storeys', glazedStoreys: over.filter(glazed), why: [`ribbon storeys ${over.filter(glazed).join(',')} over punched rows (${rb.ribbons.filter(r => over.includes(r.storey) && glazed(r.storey)).map(r => `${r.ribbonM} m over storey ${r.against}`).join(', ')})`, ...why]};
+}
+
+/** Part-width balcony spans: a storey whose runs cover at least `fullShare` of the wall is not a part-width storey (a full
+ *  light band is the `lightBands` rule's), and at least `minStoreys` part-width storeys are needed. */
+export const BALCONY_SPANS = {fullShare: 0.85, minStoreys: 2, snap: 0.25, minBays: 2} as const;
+
+export interface BalconySpansInput {
+  /** the light runs along the floor lines as fractions of the main panel's width (lightBands `lightRuns`, measured) */
+  runs: readonly {storey: number; from: number; to: number}[] | null | undefined;
+  /** the group's bays per storey (after this run's proposal) */
+  bays: number | null | undefined;
+  storeys: number; usable: number; foliage: number; washedOut: number;
+  taken?: readonly number[];
+}
+
+/**
+ * Staggered or part-width balcony bands (GitHub #127) from the photo's light runs on the floor lines: per storey the
+ * bay ranges the runs cover on the main panel's bay grid (a run's ends snap to the nearest bay edge, a range at least one
+ * bay; a range under BALCONY_SPANS.minBays bays is dropped), as `balconyBands.spans` with glass parapets; only on trusted evidence, on 1..storeys-1, off the storeys another
+ * field claims, and when at least BALCONY_SPANS.minStoreys storeys have part-width runs.
+ */
+export function balconySpansProposal(m: BalconySpansInput): {balconyBands: BalconyBandsIntent | null; why: string[]} {
+  const why: string[] = [];
+  if (!m.runs?.length || !m.bays || m.bays < 2) return {balconyBands: null, why: ['no light run on a floor line (or no bay grid)']};
+  if (m.usable < LIKENESS.minUsable || m.foliage > LIKENESS.maxFoliage || m.washedOut > LIKENESS.maxWashedOut) return {balconyBands: null, why: ['evidence under the likeness gate']};
+  const B = m.bays, spans: BalconyBandSpan[] = [];
+  const storeys = [...new Set(m.runs.map(r => r.storey))].filter(s => s >= 1 && s <= m.storeys - 1 && !(m.taken ?? []).includes(s)).sort((a, b) => a - b);
+  for (const s of storeys) {
+    const rs = m.runs.filter(r => r.storey === s), cover = rs.reduce((t, r) => t + Math.max(0, Math.min(1, r.to) - Math.max(0, r.from)), 0);
+    if (cover >= BALCONY_SPANS.fullShare) { why.push(`storey ${s}: light across ${Math.round(cover * 100)} % of the wall, not part-width`); continue; }
+    const ranges: [number, number][] = [];
+    for (const r of rs) {
+      const b0 = Math.max(0, Math.floor(Math.max(0, r.from) * B + BALCONY_SPANS.snap)), b1 = Math.min(B - 1, Math.ceil(Math.min(1, r.to) * B - BALCONY_SPANS.snap) - 1);
+      if (b1 - b0 + 1 < BALCONY_SPANS.minBays) continue;   // a balcony spans two bays or more; a lone light bay is a frame or a panel
+      const last = ranges[ranges.length - 1];
+      if (last && b0 <= last[1] + 1) last[1] = Math.max(last[1], b1); else ranges.push([b0, b1]);
+    }
+    if (ranges.length) spans.push({storey: s, bays: ranges});
+  }
+  if (spans.length < BALCONY_SPANS.minStoreys) return {balconyBands: null, why: [...why, `${spans.length} part-width storey(s) < ${BALCONY_SPANS.minStoreys}`]};
+  return {balconyBands: {storeys: [], spans, kind: 'glass'}, why: [`balcony spans on storeys ${spans.map(x => `${x.storey} (bays ${x.bays.map(b => b.join('-')).join(', ')})`).join('; ')} from light parapet runs on the floor lines`, ...why]};
 }
