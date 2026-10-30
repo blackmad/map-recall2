@@ -43,6 +43,37 @@ Named regressions in `check:guessed-heights` cover The Robin, The Martin,
 Terrace Tower, a Westpoort settling tank, the houseboat Doris and the shed
 under the tower.
 
+**Tunnel cuts round 3 (2026-10-30).**
+- Merged median gaps (at least 1.5 m) are draped as park at the trench floor.
+- Walls get a darker foot, a bright coping strip, a thicker parapet and a
+  gutter line.
+- Motor ramps search for walls up to 10 m out and step past low islands.
+- The portal roof sits where the relief first steps up within 40 m (Piet Hein
+  east under the sun screen).
+- Walled and open stations smooth separately, which removes the IJ east
+  coping wave.
+- Coverage: sunken motor approaches cut, 51/59 (49 before); motor mouths, 52
+  (43 before).
+- On the phone frame the IJ walls still read faintly (r3-phone shots).
+
+**`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
+engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
+canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a
+fixed-step `tick(dtFixed)` hook; `SharedFrame.drive(matrices)` lets it drive
+the existing participants, so facades, own ground and vehicles render
+unchanged while MapLibre is never constructed. `cameraMap.ts` evaluates
+MapLibre's camera model in metres about the view centre, which is why parity
+with `map.project` is exact (0.00 px over 22 samples on desktop and iPhone)
+rather than the 1.1–3.2 px of the 2026-10-10 prototype, whose frame used a
+linear latitude scale. `ownWorldView.ts` implements the typed `WorldView`
+interface that `vector-map.js` now declares it implements; `game.js` picks it
+under the flag. Rider cover, camera clearance and the game-camera solve were
+lifted into typed modules for both implementations. Under the flag a chase
+ride draws 140–146 calls with 29–30 programs on desktop (851 / 32 on the
+default path, where the basemap pass is included). Labels, overlays, trees,
+landmarks and themes are not drawn under the flag yet; the gate specs cannot
+run under it until they gain a switch.
+
 **Untagged streets under buildings opened; mixed-height gap fills reviewed (2026-10-30).**
 Every building `check-buildings-over-roads` finds standing over a street OSM
 does not tag as passing under it was checked against the PDOK orthophoto.
@@ -144,6 +175,24 @@ tracking paragraph and the lane hand-back template (SCREENSHOTS line).
 Verified at 1280 and 390 px with a stub notes file; the "In progress" strip
 on the same page was found to be stale (TODO P2).
 
+**Continuous zebras, watertight Muntplein (2026-10-30).** User screenshots: "why do we still have these broken
+zebras?" (Prins Hendrikkade by Arcam) and "what is happening with the roads here" (Muntplein). Lane
+`zebra-munt-20261030`, two rounds.
+
+- Zebras are clipped per BGT polygon, so every polygon edge cut a crossing. Now one row runs across every
+  road-level surface (carriage, parking, cycle) and breaks only at a raised island; pieces of one crossing merge onto
+  one line; main roads take 4 m stripes. Fietspad crossings are kept where the walk crosses at ≥ 45°. The audit
+  measured against the clipped polygon and passed the broken rows; a new `short` category measures the row against
+  the whole walking line (1,369 → 604 city-wide, capped).
+- Photo evidence diluted long rows: one Fourier amplitude over a 15–20 m profile. Rows over 7.5 m now score their
+  strongest 5 m window after removing a ±0.8 m running median; threshold unchanged (0.07, the 95th percentile off
+  the rows). Drops 376 → 146; of 12 random newly kept, 9 are real zebras in the photo.
+- The Muntplein water: the Singel polygon runs under the whole plein and the measured deck was a 7 m strip, so the
+  water mask cut the road. `wetGround.ts`: an h0 BGT polygon over water with relief ≥ 2 m above it is a deck. The
+  "wireframe triangle" was the Muntsluis parapet placed against that water; parapets now face open water only.
+- Path join discs tested only their centre against the survey and drew over the BGT voetpad (Arcam steps); they
+  now skip when the rim reaches a survey polygon (2,295 discs city-wide).
+
 **Roads through buildings cut open; guessed heights measured (2026-10-30).**
 `scripts/cut-building-passages.ts` (`src/canalRecall/buildingPassages.ts`,
 polygon-clipping) takes every ridden OSM way tagged
@@ -199,6 +248,61 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**De Roos, P.C. Hooftstraat 183 (2026-10-30, lane #133).** The 1880 villa on
+the Vondelpark corner, now Centrum De Roos, is a bespoke model
+(`scripts/landmarks/de-roos-builder.ts`, 15,884 triangles, 239 KB, every
+material with a slot). One BAG pand, `0363100012236970` (1880, 679 m²),
+covers the whole complex: the villa, the 1897 Van Arkel / 1912 Jacot wing
+along the Van Eeghenlaan and the 1943 Blomhert garage, so that one pand is
+suppressed and the 2003 and 1991 neighbours are untouched. The inventory has
+38 items (28 modelled, 8 simplified, 2 skipped as too small: the n-sign and
+the INGANG neon); the signature items are the console cornice, the arched
+attic, the garden risalit with pediment, two erkers, the five-light serre,
+the hip-roof tower with pirons, the thermenvenster, the timber serre, the
+mansard, the NW chamfer and the garage windows. The 156° SE wall has no
+panorama and is drawn from 3DBAG and the next wall's axes. Gates: audit:glb
+PASS 3.0, inventory 0 fail, compare:facades on the street front pass,
+check:manual-landmarks 344. The kit still cannot say: the carved door and
+wrought-iron grilles (ochre slats), leaded glass, the dome serre in its
+casing, truly curved arc windows on the rounded SE corner, carved consoles
+and garland friezes; and the audit's opening rules forced free-standing
+timber to the ochre slot and serre glass to green, which a "free-standing
+glazing" audit class would remove. Two tool breaks surfaced: the review
+sheet's IN GAME column times out for every landmark lane (it waits on
+`vectorMap._signatureLandmarks.shown`, see the lane issue filed with this
+entry), and the gallery-card capture finds no canvas on
+`manual-landmarks.html`; the four-side and street strips were rendered
+offline instead. Sources (37 Gemeente Amsterdam panoramas, register 222055,
+BAG and the 3DBAG tile) are archived in map-recall2-source-data under
+`models/de-roos/`.
+
+**City look re-levelled; flip pending (2026-10-30, lane #135, decision #137).**
+The opt-in city look (`?cityLook=1`: one facade shader drawing photo brick
+cells on chunks, recipe houses and bespoke landmarks alike) was dour against
+the sunny frame since the 2026-10-23 pass (whole-frame luma 7 to 16 points
+under the default). Lane #135 raised its level to 1 under the sunny rig (0.9
+stays under `?look=legacy`), gave city chunks the same `litFacadeWallGain`
+the default look uses, and gave unrecorded GLB brick and accent the #73
+sunlit gain, so a chunk in the city look now draws what the default draws:
+Dam 131→138, Kinkerbuurt 128→128, Osdorper Ban 141→141, Prinsengracht
+121→124 (off → on). Two landmark roof rules came with it: the kit's dark
+slate maps to the default measured slate, and level faces of an inferred
+`slate` material draw as bitumen flat roof (Theater Amsterdam, Stedelijk,
+Studio K, The Movies had painted decks). The cost is that landmarks brighten
+at gallery-card size, +13.6 % sun / +15.5 % shade median over 356 GLBs
+against the brief's ±2 %: flag-off landmarks draw raw kit hex with neither
+the brick lift nor the sunlit gain, and one shared brick cannot match both
+them and the chunks. Level 0.85 would hit ±2 % and make the chunks dour
+again, so the choice went to David as #137 with the strip (review/ in the
+screenshots repo). Ride perf is unchanged on desktop (16.7 ms median either
+way, 98 → 104 MB facade textures); iPhone is unmeasured. The gallery review
+now tells GLB-baked inferred slots from explicit tags and renders four-side
+close-ups (`--views`); it found that all 356 models are inferred and none
+explicit, and listed the wrong ones for the re-tag lane #138. The flag-off
+code path is unchanged (verified from the diff; a base-vs-base
+look-consistency control run was not possible with the browser lock
+contended), and the four bundles were rebuilt in the merge commit.
 
 **Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
 measurement blockers from the band kit lanes (#126, #127) are fixed in the

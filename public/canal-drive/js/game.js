@@ -103,7 +103,12 @@ class Game {
     this.osmLoader = new OSMLoader();
     this.mapPicker = new MapPicker();
     this.loadingScreen = new LoadingScreen();
-    this.vectorMap = new VectorBasemap(document.getElementById('vector-map'));
+    // Engine programme (2026-10-30): `?engine=own` picks the three.js-owned
+    // world view (src/canalRecall/engine/ownWorldView.ts); default stays MapLibre.
+    const engine = window.CanalRecallEngine;
+    this.vectorMap = engine && engine.engineFlag() === 'own'
+      ? new engine.OwnWorldView(document.getElementById('vector-map'))
+      : new VectorBasemap(document.getElementById('vector-map'));
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;

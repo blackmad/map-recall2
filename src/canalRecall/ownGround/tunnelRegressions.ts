@@ -10,8 +10,10 @@ export interface TunnelSite {
   label: string;
   at: LngLat;
   expect: {
-    /** The cut that must hold the probe point (absent: no cut may hold it). */
+    /** The cut that must hold the probe point. */
     kind?: 'ramp' | 'slot';
+    /** No cut may hold the probe point (a path beside an embankment, a street at grade). */
+    noCut?: boolean;
     /** That cut is a motor road's (portal mouths, closed to bikes). */
     motor?: boolean;
     /** Its wall at the probe stands at least this high above the floor, metres. */
@@ -44,22 +46,34 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     expect: { groundAtFloor: [[4.91166, 52.37264], [4.91162, 52.37265]] },
   },
   {
+    id: 'piet-heintunnel-east-south',
+    label: 'Piet Heintunnel east ramp, south carriageway (way 895958377): a 0.5 m island 4-8 m out hid the 8 m wall at 14-18 m (round 3)',
+    at: [4.95889, 52.37275],
+    expect: { kind: 'ramp', motor: true, minWallM: 2, portalNear: [4.95799, 52.37295] },
+  },
+  {
+    id: 'michiel-de-ruijtertunnel-west-cover',
+    label: 'Michiel de Ruijtertunnel west: the ramp is cut up to the IJsei bus-station deck (round 3). No mouth: the DTM measures the floor under the deck (+0.3 m over 120 m), so its level needs a structure layer',
+    at: [4.89820, 52.38057],
+    expect: { kind: 'ramp', motor: true },
+  },
+  {
     id: 'westerpark-path-rail-embankment',
     label: 'Westerpark: path at the foot of the rail embankment west of the cycle underpass (one-sided "wall": no cut)',
     at: [4.86400, 52.38940],
-    expect: {},
+    expect: { noCut: true },
   },
   {
     id: 'westerpark-path-dike',
     label: 'Westerpark: park path beside the bank, 200-500 m from the underpass (way 61848368: no cut)',
     at: [4.86182, 52.38594],
-    expect: {},
+    expect: { noCut: true },
   },
   {
     id: 'westerpark-path-east',
     label: 'Westerpark: path along the embankment east of the underpass (way 290027474: no cut)',
     at: [4.86622, 52.38885],
-    expect: {},
+    expect: { noCut: true },
   },
   {
     id: 'piet-heintunnel-west',

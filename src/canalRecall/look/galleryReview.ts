@@ -23,9 +23,11 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { createLightRig } from '../rendererShared/lightRig.js';
 import { normaliseLandmarkMaterials } from '../landmarks/landmarkShading.js';
 import { cityLookTint, createCityLook, slotIneligible, SLOT_LAYERS, type CityLook } from './cityLook.js';
-import { inferMaterialSlot } from './materialSlotInference.js';
+import { inferMaterialSlot, INFERRED_SLOT_SOURCE } from './materialSlotInference.js';
 
-export type ReviewView = 'sun' | 'shade';
+/** `sun`/`shade` for the review; `east`/`west` complete the four sides for a landmark close-up (`views` option). */
+export type ReviewView = 'sun' | 'shade' | 'east' | 'west';
+const VIEW_AZIMUTH: Record<ReviewView, number> = { sun: 205, shade: 25, east: 115, west: 295 };
 export type ReviewMaterial = { name: string; hex: string; slot: string | null; rule: string; confidence: string | null; cityTint: string | null; cell: string | null; skipped: string | null; meshes: number };
 export type ReviewModel = {
   id: string;
@@ -71,7 +73,9 @@ function materialTable(root: THREE.Object3D): ReviewMaterial[] {
         const declared = m?.userData?.materialSlot;
         const inf = !skipped && hex ? inferMaterialSlot(m.name, hex) : null;
         const slot = declared ?? inf?.slot ?? null;
-        row = { name: m?.name ?? '', hex, slot, rule: declared ? 'declared' : inf?.rule ?? '', confidence: declared ? 'declared' : inf?.confidence ?? null,
+        // `declared-inferred`: extras the one-time inference script (or the builder default) wrote into the GLB, not a recipe's own tag.
+        const source = declared ? (m.userData?.materialSlotSource === INFERRED_SLOT_SOURCE ? 'declared-inferred' : 'declared') : null;
+        row = { name: m?.name ?? '', hex, slot, rule: source ?? inf?.rule ?? '', confidence: source ?? inf?.confidence ?? null,
           cityTint: slot && hex ? cityLookTint(slot, m.userData?.tint ?? hex, m.userData?.tintSource) : null, cell: null, skipped, meshes: 0 };
         byKey.set(key, row);
       }
@@ -85,7 +89,7 @@ function frame(root: THREE.Object3D, view: ReviewView, camera: THREE.Perspective
   const box = new THREE.Box3().setFromObject(root), c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
   const radius = Math.max(s.length() / 2, 4);
   // ENU, z up. Sun at azimuth 215° (docs/LOOK.md): the sun view looks from 205°, the shade view from 25°.
-  const az = (view === 'sun' ? 205 : 25) * Math.PI / 180, el = 28 * Math.PI / 180;
+  const az = VIEW_AZIMUTH[view] * Math.PI / 180, el = 28 * Math.PI / 180;
   const dist = radius / Math.sin((camera.fov / 2) * Math.PI / 180) * 0.8;
   camera.up.set(0, 0, 1);
   camera.position.set(c.x + Math.sin(az) * Math.cos(el) * dist, c.y + Math.cos(az) * Math.cos(el) * dist, c.z + Math.sin(el) * dist);
@@ -105,7 +109,7 @@ function stats(width: number, height: number): { luma: number; rgb: [number, num
 }
 
 /** Render one model both ways. `url` relative to the page. */
-export async function reviewModel(options: { id: string; url: string; year?: number | null; width?: number; height?: number; brickUrl: string }): Promise<ReviewModel> {
+export async function reviewModel(options: { id: string; url: string; year?: number | null; views?: readonly ReviewView[]; width?: number; height?: number; brickUrl: string }): Promise<ReviewModel> {
   const width = options.width ?? 320, height = options.height ?? 240;
   await setup(width, height, options.brickUrl);
   const year = options.year ?? null;
@@ -130,7 +134,7 @@ export async function reviewModel(options: { id: string; url: string; year?: num
     for (const o of createLightRig(THREE, { shadows: false }).objects) scene.add(o);
     scene.add(holder);
     holder.updateMatrixWorld(true);
-    for (const view of ['sun', 'shade'] as const) {
+    for (const view of options.views ?? (['sun', 'shade'] as const)) {
       frame(holder, view, camera);
       renderer!.setClearColor(0x000000, 0);
       renderer!.render(scene, camera);

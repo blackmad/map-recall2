@@ -132,6 +132,7 @@ import {buildBeestHetLab} from './beest-het-lab-builder';
 import {buildMuseumAmsterdamNoord} from './museum-amsterdam-noord-builder';
 import {buildLevendPaardenmuseum} from './levend-paardenmuseum-builder';
 import {buildStationspleinPaviljoens} from './stationsplein-paviljoens-builder';
+import {buildDeRoos} from './de-roos-builder';
 import {buildOudemanhuispoort} from './oudemanhuispoort-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
@@ -601,6 +602,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='museum-amsterdam-noord')buildMuseumAmsterdamNoord(w,d,helpers);
     else if(id==='levend-paardenmuseum')buildLevendPaardenmuseum(w,d,helpers);
     else if(id==='stationsplein-paviljoens')buildStationspleinPaviljoens(w,d,helpers);
+    else if(id==='de-roos')buildDeRoos(w,d,helpers);
     else if(id==='oudemanhuispoort')buildOudemanhuispoort(w,d,helpers);
     else if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);

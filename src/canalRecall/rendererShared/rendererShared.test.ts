@@ -486,3 +486,29 @@ test('shared frame: behind a covering card no pass draws and no participant runs
   assert.equal(runs, 1);
   assert.deepEqual(log, ['reset', 'reset', 'viewport 800x600', 'render[shadow] ground'], 'the compile resets state, then the pass draws');
 });
+
+test('shared frame, host driver: no custom layers, drive() draws both passes, a restore adopts the new renderer', () => {
+  const map = fakeMap();
+  const log: string[] = [];
+  let current: any = null;
+  const frame = new SharedFrame(THREE, map, { host: { renderer: () => current } });
+  const gl = { isContextLost: () => false, drawingBufferWidth: 800, drawingBufferHeight: 600 };
+  current = { ...fakeRenderer(log, frame), getContext: () => gl };
+  frame.attach();
+  assert.equal(map.layers.length, 0, 'the host driver adds no MapLibre layer');
+  assert.equal(frame.renderer, current);
+  const calls: string[] = [];
+  frame.register('ground', { root: new THREE.Group(), onAttach: () => calls.push('attach'), onContextRestored: () => calls.push('restore') });
+  frame.register('bike', { root: new THREE.Group() }, { pass: 'overlay' });
+  frame.drive(amsterdamClip().clip);
+  assert.deepEqual(log.filter(l => l.startsWith('render')).map(l => l.replace('[shadow]', '')), ['render ground', 'render bike']);
+  let disposed = 0;
+  current.dispose = () => { disposed++; };
+  map.fire('webglcontextlost');
+  assert.equal(frame.renderer, null);
+  assert.equal(disposed, 0, "the host's renderer is the host's to dispose");
+  current = { ...fakeRenderer(log, frame), getContext: () => gl };
+  map.fire('webglcontextrestored');
+  assert.equal(frame.renderer, current);
+  assert.deepEqual(calls, ['attach', 'restore']);
+});
