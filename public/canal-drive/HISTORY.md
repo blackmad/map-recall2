@@ -18,6 +18,55 @@ default path, where the basemap pass is included). Labels, overlays, trees,
 landmarks and themes are not drawn under the flag yet; the gate specs cannot
 run under it until they gain a switch.
 
+**Untagged streets under buildings opened; mixed-height gap fills reviewed (2026-10-30).**
+Every building `check-buildings-over-roads` finds standing over a street OSM
+does not tag as passing under it was checked against the PDOK orthophoto.
+Three kinds turned up. In the first, the BAG outline takes in a lane, car
+park or courtyard that the roofs do not cover: Gerard Ruttenhof,
+Staalmeesterslaan, Het Buitenhof, the VUmc, Ottho Heldringstraat and
+Stadionplein. In the second, a road enters a loading bay or garage under the
+building: Ankerweg, Cruquiusweg and Science Park `…063461`. In the third, OSM
+has a building part over a street: Oosterdoksstraat `w453809679` and
+`w779659694`, and Science Park `w1082655793` and `…164372`.
+
+- The ten pands of the first two kinds are listed in
+  `scripts/data/bag-gaps/over-road-pands.json`. `fill-over-road-holes.ts`
+  redraws them from their 3DBAG LoD1.3 roof faces, as it does Amstel station,
+  and drops the whole outline.
+- A high face with a road through it opens only the road strip
+  (`passagePieces`, `buildingPassages.ts`). Lifting the whole face would have
+  stood the one-face Ankerweg warehouse on 4.5 m stilts.
+- The four OSM outlines of the third kind are cut by
+  `scripts/data/passages/passage-overrides.json`. It names the routed street
+  that `cut-building-passages.ts` treats as a passage there.
+- Javakade is Hotel Jakarta, which a landmark model draws. A pand a model
+  hides keeps its one feature, because the runtime hides by exact id, and the
+  script now refuses to draw one.
+- `check-bag-gaps` pins every drawn pand: its parts are present, its outline
+  is gone, and Ankerweg keeps ground parts.
+
+The 13 published gap fills whose AHN ridge stands 10 m or more over their box
+were each reviewed on the orthophoto, with their AHN cells more than 8 m over
+the box plotted:
+
+- **Nine are edge spill**, under 10 m² each of a neighbour's wall or a tree
+  crown, and keep one box.
+- **Three are already drawn.** At Gelderlandplein (`…241555`) the towers are
+  OSM parts over the mall box. At Roeterseiland (`…082861`) the 38 m tower is
+  OSM parts `w751024386` and `w751024387`. At `…237890` the tall cells are the
+  neighbour `…238000`.
+- **The Overtoom 1874 house (`…159138`)** stood at 4.9 m, because its outline
+  runs back over a garden AHN sees at ground. Its 17.6 m street front is now a
+  `tower:` part from the box top up.
+
+This is a typed rule, not an edit by hand. `mixedFillTower`
+(`src/canalRecall/mixedFillTowers.ts`) finds the largest 4-connected group of
+tall cells. The group counts as a tower when it covers at least 50 m² and
+fills at least 60 % of its convex hull, which tree scatter does not.
+`scripts/split-mixed-gap-fills.ts` stages its decisions in
+`scripts/data/bag-gaps/mixed-fill-towers.json`, and `check:mixed-gap-fills`
+in `check:canal` keeps the Overtoom tower at 15–20 m.
+
 **Tunnel cuts round 2 (2026-10-30).**
 - Walls: weathered faces with a pale coping and lip, the wall line smoothed
   over about 30 m, and headwalls ending halfway to the next carriageway, so

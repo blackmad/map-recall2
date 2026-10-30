@@ -1142,21 +1142,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
-  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
-  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
-  street that OSM does not tag as passing under them, on the reviewed list in
-  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
-  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
-  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
-  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
-  street runs under the building, tag the way in OSM or add a passage
-  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
-  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
-  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
-  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
-  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
-  on PDOK.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -3496,6 +3481,11 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
+- **Re-measure the guessed heights when AHN5 is on PDOK (2026-10-30).**
+  171 OSM outlines AHN4 sees as flat stay at the 9 m guess, and outlines OSM
+  dates after 2019 keep the new-build rules' guess
+  (`scripts/measure-guessed-heights.ts`). New mixed gap fills from a survey
+  re-run go through `scripts/split-mixed-gap-fills.ts`.
 - **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
   paint and look from the orthophoto.** Surveyed roads draw no procedural
   paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural

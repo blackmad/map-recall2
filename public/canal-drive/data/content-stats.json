@@ -42,7 +42,7 @@
       ]
     },
     "buildings3d": {
-      "count": 349779,
+      "count": 349854,
       "note": "Every building in the 3D city: BAG footprints with 3DBAG heights, including the modelled ones.",
       "sources": [
         "public/data/extracts/amsterdam/building-tiles/index-z14.json"
