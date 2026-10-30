@@ -79,7 +79,8 @@ assert.deepEqual(flatOnly.osmIds, [], 'tier 3 emits the pand, so nothing stands 
 assert.deepEqual(flatOnly.matchedOsmIds, ['w1'], 'the overlapping outline is still reported, so its colour can be carried');
 
 // Multi-height parts without min_height still beat BAG (Magna Plaza / Oude Kerk).
-const nave = osm('w-nave', square(4.9001, 52.3701, 0.0002), 0, 18);
+// The parts cover the outline, as mapped wings do (MIN_COMPOSITION_COVER).
+const nave = osm('w-nave', square(4.90001, 52.37001, 0.00038), 0, 18);
 nave.isPart = true;
 const tower = osm('w-tower', square(4.90025, 52.37025, 0.0001), 0, 40);
 tower.isPart = true;
@@ -105,5 +106,12 @@ for (const offset of [0, 0.0003, 0.0006]) {
 const tallPand = { bagId: 'NL.IMBAG.Pand.tall', rings: [square(4.91, 52.38, 0.0002)] };
 const enclosing = osm('w-enclosing', square(4.9095, 52.3795, 0.0012), 9);
 assert.equal(decideTier(tallPand, [enclosing]).tier, 2, 'a pand inside a modelled outline is claimed by it');
+
+// A fragment does not stand in for the pand: Wibautstraat 150 (Pauwenpad, 2026-10-30)
+// vanished behind one stacked part over 13% of its 5,557 m² outline.
+const office = { bagId: 'NL.IMBAG.Pand.0363100012110168', rings: [square(4.92, 52.39, 0.001)] };
+const fragment = osm('w496986960', square(4.9203, 52.3903, 0.00035), 4, 28);
+assert.equal(decideTier(office, [fragment]).tier, 3, 'a part over a corner of the pand leaves the measured extrusion');
+assert.deepEqual(decideTier(office, [fragment]).matchedOsmIds, ['w496986960'], 'the fragment is still matched, so it is not re-emitted');
 
 process.stdout.write('Building ladder checks passed (tier 2 beats a measured extrusion only when a part is stacked, and ownership never overlaps)\n');

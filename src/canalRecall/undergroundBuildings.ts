@@ -38,7 +38,10 @@ export function isUndergroundOsm(tags: OsmTags): boolean {
   if (tags.parking === 'underground' || tags.building === 'tunnel' || tags.tunnel === 'yes') return true;
   // A bare `layer=-1` is not enough: mappers use it for houses in a dike
   // (De Spreeuwen), sheds under a deck and offices below a viaduct.
-  return (num(tags.layer) ?? 0) < 0 && allLevelsBelowGround(tags.level);
+  if ((num(tags.layer) ?? 0) >= 0) return false;
+  // A car park below layer 0 is under the street or the water (Albert Cuypgarage under the Boerenwetering).
+  if (tags.amenity === 'parking' || tags.building === 'parking' || tags['building:part'] === 'parking') return true;
+  return allLevelsBelowGround(tags.level);
 }
 
 /**
@@ -74,4 +77,50 @@ export function isUndergroundPand(pand: PandUndergroundInput, index: Underground
   if (pand.heightM !== null && pand.heightM > UNDERGROUND_PAND_MAX_HEIGHT_M) return false;
   if (!pand.matchedOsm.every(osmId => index.osm.has(osmId))) return false;
   return pand.matchedOsm.length > 0 || index.refBag.has(bareBagId(pand.id));
+}
+
+/**
+ * A BAG pand that is mostly underground with no OSM tag saying so: it lies
+ * across a car road and 3DBAG found roofs over little of it. The Albert
+ * Cuypgarage pand (0363100012240435) spans 520 m of de Pijp streets at 12%
+ * roof cover; the Museumplein garage (…242075) is 15%. A tower over a podium
+ * keeps most of its outline (75% for a 55 m Zuidas tower). Pands newer than the
+ * lidar are left alone: a building site has no roof yet either.
+ */
+export const VOID_MAX_ROOF_COVER = 0.15;
+export const VOID_MIN_ROAD_M = 20;
+export const VOID_LIDAR_YEAR = 2022;
+
+export function isVoidOverRoad(pand: { roofCover: number | null; roadInsideM: number; year: number | null }): boolean {
+  if (pand.roofCover === null || pand.roofCover >= VOID_MAX_ROOF_COVER) return false;
+  if (pand.year !== null && pand.year > VOID_LIDAR_YEAR) return false;
+  return pand.roadInsideM >= VOID_MIN_ROAD_M;
+}
+
+type LngLat = readonly [number, number];
+type Polygon = readonly (readonly LngLat[])[];
+
+const insideRing = (x: number, y: number, ring: readonly LngLat[]): boolean => {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+};
+const insidePolygon = (x: number, y: number, polygon: Polygon): boolean =>
+  insideRing(x, y, polygon[0]) && !polygon.slice(1).some(hole => insideRing(x, y, hole));
+
+/** Metres of the given `[lng, lat]` segments inside the polygons, sampled every metre. */
+export function centrelineInsideM(polygons: readonly Polygon[], segments: readonly (readonly [LngLat, LngLat])[]): number {
+  let metres = 0;
+  for (const [a, b] of segments) {
+    const kx = 111_320 * Math.cos((a[1] * Math.PI) / 180), length = Math.hypot((b[0] - a[0]) * kx, (b[1] - a[1]) * 111_320);
+    const steps = Math.max(1, Math.round(length));
+    for (let i = 0; i < steps; i++) {
+      const t = (i + 0.5) / steps, x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t;
+      if (polygons.some(polygon => insidePolygon(x, y, polygon))) metres += length / steps;
+    }
+  }
+  return metres;
 }

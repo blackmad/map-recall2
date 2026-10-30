@@ -25,6 +25,7 @@ import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles';
 import { readTileIndex } from '../src/canalRecall/bag3dTileIndex';
 import { lngLatToRd } from '../src/canalRecall/facade/rdNew';
 import { readGeoTiff, type Raster } from '../src/canalRecall/ownGround/geotiff';
+import { centrelineInsideM } from '../src/canalRecall/undergroundBuildings';
 import { pointInRing, ringBounds, type LngLat, type Ring, type TileBuilding } from '../src/canalRecall/landmarks/osmUnderModels';
 import { ahnHeights, coveredShare, fillDecision, findBagGaps, supplementFeature, type BagGap, type RegisterPand, type SupplementFeature } from '../src/canalRecall/bagGaps';
 
@@ -166,10 +167,22 @@ const reviewList: unknown[] = [];
 const heightOf = new Map<string, ReturnType<typeof ahnHeights>>();
 if (withHeights) {
   // Underground shells (metro halls, car parks) are holes by design: drawn, they stand in the road.
-  const underground = new Set((JSON.parse(fs.readFileSync(path.join('public', 'data', 'extracts', 'amsterdam', 'underground-buildings.json'), 'utf8')) as { refBag: string[] }).refBag);
+  const index = JSON.parse(fs.readFileSync(path.join('public', 'data', 'extracts', 'amsterdam', 'underground-buildings.json'), 'utf8')) as { refBag: string[]; voidPands?: Record<string, unknown>; droppedPands?: string[] };
+  const underground = new Set([...index.refBag, ...[...Object.keys(index.voidPands ?? {}), ...(index.droppedPands ?? [])].map(id => id.replace('NL.IMBAG.Pand.', ''))]);
   const above = holes.filter(g => !underground.has(g.id.replace('NL.IMBAG.Pand.', '')));
   decisions.underground = holes.length - above.length;
+  // Car-road centreline inside each hole: a fill across a street stands in it.
+  const CAR = new Set(['primary', 'secondary', 'tertiary', 'trunk', 'residential', 'unclassified', 'living_street', 'primary_link', 'secondary_link', 'tertiary_link', 'busway']);
+  const streets = JSON.parse(fs.readFileSync(path.join('public', 'data', 'extracts', 'amsterdam', 'streets-routing.json'), 'utf8')) as { highway?: string; path: [number, number][]; paths?: [number, number][][] }[];
+  const roadSegments: [LngLat, LngLat][] = [];
+  for (const street of streets) if (CAR.has(street.highway ?? '')) for (const line of street.paths ?? [street.path]) for (let i = 1; i < line.length; i++) roadSegments.push([[line[i - 1][1], line[i - 1][0]], [line[i][1], line[i][0]]]);
   const fill = above.filter(g => g.areaM2 >= 10);
+  for (const g of fill) {
+    const rings = pands.get(g.id.replace('NL.IMBAG.Pand.', ''))!.rings, b = rings.map(ringBounds);
+    const [w, s, e, n] = [Math.min(...b.map(x => x.w)), Math.min(...b.map(x => x.s)), Math.max(...b.map(x => x.e)), Math.max(...b.map(x => x.n))];
+    const near = roadSegments.filter(([a, c]) => Math.max(a[0], c[0]) >= w && Math.min(a[0], c[0]) <= e && Math.max(a[1], c[1]) >= s && Math.min(a[1], c[1]) <= n);
+    if (near.length) g.roadInsideM = centrelineInsideM(rings.map(r => [r]), near);
+  }
   decisions['too-small'] = above.length - fill.length;
   await pool(fill, 4, async g => {
     const rings = pands.get(g.id.replace('NL.IMBAG.Pand.', ''))!.rings;

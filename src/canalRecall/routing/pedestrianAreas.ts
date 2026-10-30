@@ -145,6 +145,24 @@ export function plazaAt(index: PlazaIndex | null | undefined, x: number, y: numb
 }
 
 /**
+ * The surface under (x, y) with squares counted as paving. The guard letting
+ * the bike onto a square is not enough: the car physics reads the surface too,
+ * and off every corridor that is grass, whose drag (80 px/s²) beats the bike's
+ * thrust at grass grip (168 × 0.45 ≈ 76 px/s²) while reverse is not scaled by
+ * grip. A bike that stopped on the Nieuwmarkt could only back up (user report
+ * 2026-10-30, south of the Waag).
+ */
+export function plazaSurface<S extends string>(
+  surface: S,
+  index: PlazaIndex | null | undefined,
+  x: number,
+  y: number,
+): S | 'asphalt' {
+  if (surface === 'asphalt') return surface;
+  return plazaAt(index, x, y) ? 'asphalt' : surface;
+}
+
+/**
  * The guard contact on a square: the nearest corridor's contact, reported as
  * on its centreline so the guard neither rolls back nor eases the heading.
  * Its point stays on the corridor, so an unwedge walk still heads for asphalt.

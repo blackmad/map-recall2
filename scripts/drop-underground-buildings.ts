@@ -10,27 +10,91 @@
  *   npx tsx scripts/drop-underground-buildings.ts            # report to artifacts/underground-buildings/report.json
  *   npx tsx scripts/drop-underground-buildings.ts --publish  # rewrite affected building-tiles and bag-tiles in place
  *   npx tsx scripts/drop-underground-buildings.ts --check    # exit 1 if any published feature is underground
+ *   npx tsx scripts/drop-underground-buildings.ts --survey-voids [--publish]
+ *     # also measure `isVoidOverRoad` pands (needs .cache/3dbag) into the stored index
  */
 import { createReadStream, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
 import path from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
-import { isUndergroundOsm, isUndergroundPand, type UndergroundIndex } from '../src/canalRecall/undergroundBuildings.ts';
+import { centrelineInsideM, isUndergroundOsm, isUndergroundPand, isVoidOverRoad, type UndergroundIndex } from '../src/canalRecall/undergroundBuildings.ts';
+import { roofCoverOf, type CityJson } from '../src/canalRecall/bag3dCityJson.ts';
+import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.ts';
 
 const publish = process.argv.includes('--publish');
 const check = process.argv.includes('--check');
+const surveyVoids = process.argv.includes('--survey-voids');
 const ROOT = path.join('public', 'data', 'extracts', 'amsterdam');
 const OSM_SEQ = path.join('.cache', 'osm-source', 'derived', 'amsterdam-buildings.geojsonseq');
 const INDEX_FILE = path.join(ROOT, 'underground-buildings.json');
 const REPORT = path.join('artifacts', 'underground-buildings');
 
-type TileFeature = { properties: Record<string, unknown>; geometry: unknown };
+type LngLat = [number, number];
+type TileFeature = { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } };
+type Void = { roofCover: number; roadInsideM: number; year: number | null };
+const polygonsOf = (g: TileFeature['geometry']): LngLat[][][] => (g.type === 'Polygon' ? [g.coordinates as LngLat[][]] : g.coordinates as LngLat[][][]);
+const stored = (): { voidPands?: Record<string, Void> } => { try { return JSON.parse(readFileSync(INDEX_FILE, 'utf8')); } catch { return {}; } };
+
+/**
+ * `isVoidOverRoad`: pands lying across a car road that 3DBAG roofs over little
+ * of. Measured only with --survey-voids (the 3DBAG cache), then kept in the
+ * index, since a published drop removes the very pands the survey looks for.
+ */
+function measureVoids(): Record<string, Void> {
+  const CAR = new Set(['primary', 'secondary', 'tertiary', 'trunk', 'residential', 'unclassified', 'living_street', 'primary_link', 'secondary_link', 'tertiary_link', 'busway']);
+  const streets = JSON.parse(readFileSync(path.join(ROOT, 'streets-routing.json'), 'utf8')) as { highway?: string; path: [number, number][]; paths?: [number, number][][] }[];
+  const CELL = 0.002, grid = new Map<string, [LngLat, LngLat][]>();
+  for (const street of streets) {
+    if (!CAR.has(street.highway ?? '')) continue;
+    for (const line of street.paths ?? [street.path]) for (let i = 1; i < line.length; i++) {
+      const a: LngLat = [line[i - 1][1], line[i - 1][0]], b: LngLat = [line[i][1], line[i][0]];
+      for (let x = Math.floor(Math.min(a[0], b[0]) / CELL); x <= Math.floor(Math.max(a[0], b[0]) / CELL); x++)
+        for (let y = Math.floor(Math.min(a[1], b[1]) / CELL); y <= Math.floor(Math.max(a[1], b[1]) / CELL); y++) {
+          const key = `${x},${y}`;
+          if (!grid.has(key)) grid.set(key, []);
+          grid.get(key)!.push([a, b]);
+        }
+    }
+  }
+  const roadInside = new Map<string, number>();
+  const zoomDir = path.join(ROOT, 'bag-tiles', '14');
+  for (const x of readdirSync(zoomDir).filter(name => /^\d+$/.test(name))) for (const file of readdirSync(path.join(zoomDir, x)).filter(name => name.endsWith('.geojson.gz'))) {
+    const { features } = JSON.parse(gunzipSync(readFileSync(path.join(zoomDir, x, file))).toString('utf8')) as { features: TileFeature[] };
+    for (const feature of features) {
+      const id = String(feature.properties.id ?? '');
+      if (!id.startsWith('NL.IMBAG.Pand.')) continue;
+      const polygons = polygonsOf(feature.geometry), outer = polygons.flatMap(p => p[0]);
+      const lngs = outer.map(p => p[0]), lats = outer.map(p => p[1]), segments = new Set<[LngLat, LngLat]>();
+      for (let gx = Math.floor(Math.min(...lngs) / CELL); gx <= Math.floor(Math.max(...lngs) / CELL); gx++)
+        for (let gy = Math.floor(Math.min(...lats) / CELL); gy <= Math.floor(Math.max(...lats) / CELL); gy++)
+          for (const segment of grid.get(`${gx},${gy}`) ?? []) segments.add(segment);
+      if (!segments.size) continue;
+      const metres = centrelineInsideM(polygons, [...segments]);
+      if (metres >= 1) roadInside.set(id, Math.max(metres, roadInside.get(id) ?? 0));
+    }
+  }
+  const voids: Record<string, Void> = {}, cache = path.join('.cache', '3dbag', BAG3D_VERSION, 'tiles');
+  for (const file of readdirSync(cache).filter(name => name.endsWith('.city.json.gz'))) {
+    const text = gunzipSync(readFileSync(path.join(cache, file))).toString('utf8');
+    const ids = [...roadInside.keys()].filter(id => text.includes(id));
+    if (!ids.length) continue;
+    const city = JSON.parse(text) as CityJson;
+    for (const id of ids) {
+      const object = city.CityObjects[id];
+      if (!object) continue;
+      const roofCover = roofCoverOf(city, object), year = typeof object.attributes?.oorspronkelijkbouwjaar === 'number' ? object.attributes.oorspronkelijkbouwjaar : null;
+      const pand = { roofCover, roadInsideM: roadInside.get(id)!, year };
+      if (isVoidOverRoad(pand)) voids[id] = { roofCover: +roofCover!.toFixed(3), roadInsideM: Math.round(pand.roadInsideM), year };
+    }
+  }
+  return voids;
+}
 
 /**
  * The OSM ids and ref:bag ids that are underground. Built from the OSM cache
  * when present and stored in the extract, so `--check` runs without the cache.
  */
-async function loadIndex(): Promise<UndergroundIndex & { names: Record<string, string> }> {
+async function loadIndex(): Promise<UndergroundIndex & { voids: Set<string>; names: Record<string, string> }> {
   let fromCache = false;
   const osm = new Set<string>(), refBag = new Set<string>(), names: Record<string, string> = {};
   try {
@@ -52,15 +116,17 @@ async function loadIndex(): Promise<UndergroundIndex & { names: Record<string, s
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
+  const prior = stored();
+  const voidPands = { ...prior.voidPands, ...(surveyVoids ? measureVoids() : {}) };
   if (!fromCache) {
-    const stored = JSON.parse(readFileSync(INDEX_FILE, 'utf8')) as { osm: string[]; refBag: string[] };
-    return { osm: new Set(stored.osm), refBag: new Set(stored.refBag), names: {} };
+    const index = prior as { osm: string[]; refBag: string[] };
+    return { osm: new Set(index.osm), refBag: new Set(index.refBag), voids: new Set(Object.keys(voidPands)), names: {} };
   }
   writeFileSync(INDEX_FILE, `${JSON.stringify({
-    rule: 'src/canalRecall/undergroundBuildings.ts isUndergroundOsm over .cache/osm-source/derived/amsterdam-buildings.geojsonseq',
-    osm: [...osm].sort(), refBag: [...refBag].sort(),
+    rule: 'src/canalRecall/undergroundBuildings.ts isUndergroundOsm over .cache/osm-source/derived/amsterdam-buildings.geojsonseq; voidPands isVoidOverRoad over .cache/3dbag',
+    osm: [...osm].sort(), refBag: [...refBag].sort(), voidPands,
   }, null, 0)}\n`);
-  return { osm, refBag, names };
+  return { osm, refBag, voids: new Set(Object.keys(voidPands)), names };
 }
 
 const index = await loadIndex();
@@ -79,7 +145,7 @@ for (const tileSet of ['bag-tiles', 'building-tiles']) {
         const id = String(feature.properties.id ?? '');
         const height = typeof feature.properties.height === 'number' ? feature.properties.height : null;
         const matchedOsm = Array.isArray(feature.properties.osm) ? feature.properties.osm.map(String) : [];
-        const underground = droppedIds.has(id) || (id.startsWith('NL.IMBAG.Pand.')
+        const underground = droppedIds.has(id) || index.voids.has(id) || (id.startsWith('NL.IMBAG.Pand.')
           ? isUndergroundPand({ id, heightM: height, matchedOsm }, index)
           : index.osm.has(id));
         if (underground) droppedIds.add(id);
@@ -94,6 +160,10 @@ for (const tileSet of ['bag-tiles', 'building-tiles']) {
   }
 }
 
+// Every BAG pand ever dropped stays listed, so the gap survey does not refill it (survey-bag-gaps.ts).
+const indexJson = stored() as Record<string, unknown> & { droppedPands?: string[] };
+const droppedPands = new Set([...(indexJson.droppedPands ?? []), ...[...droppedIds].filter(id => id.startsWith('NL.IMBAG.Pand.'))]);
+if (publish || droppedPands.size !== (indexJson.droppedPands ?? []).length) writeFileSync(INDEX_FILE, `${JSON.stringify({ ...indexJson, droppedPands: [...droppedPands].sort() }, null, 0)}\n`);
 mkdirSync(REPORT, { recursive: true });
 writeFileSync(path.join(REPORT, 'report.json'), `${JSON.stringify({ osmUnderground: index.osm.size, refBagUnderground: index.refBag.size, dropped }, null, 1)}\n`);
 const bySet = (set: string): number => dropped.filter(row => row.tileSet === set).length;

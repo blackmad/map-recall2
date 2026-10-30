@@ -27,11 +27,18 @@ const extract = path.join(ROOT, 'public/data/extracts/amsterdam');
 const root = path.resolve(process.argv.find(a => a.startsWith('--root='))?.slice(7) ?? extract);
 const NAMED: { id: string; place: string; minHeight: number; maxHeight: number }[] = [
   { id: 'NL.IMBAG.Pand.0363100012169308', place: 'Prinsengracht 221-227 (empty lot, 2026-10-16)', minHeight: 12, maxHeight: 20 },
+  { id: 'NL.IMBAG.Pand.0363100012110168', place: 'Wibautstraat 150 at the Pauwenpad (missing, 2026-10-30)', minHeight: 15, maxHeight: 26 },
+  { id: 'NL.IMBAG.Pand.0363100012241555', place: 'Gelderlandplein shopping centre (held as too-large until 2026-10-30)', minHeight: 5, maxHeight: 12 },
+];
+/** Holes that must stay unfilled: a box here would stand across the road. */
+const HELD: { id: string; place: string; why: string }[] = [
+  { id: 'NL.IMBAG.Pand.0363100012145715', place: 'Amstel station hole across Julianaplein', why: 'over-road' },
 ];
 const report = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/bag-gaps.json'), 'utf8')) as { holes: number; filled: number; holeList: { id: string }[] };
 const fills = (JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/bag-gaps-supplement.geojson'), 'utf8')) as { features: SupplementFeature[] }).features;
 const fillById = new Map(fills.map(f => [f.properties.id, f]));
 const problems: string[] = [];
+for (const h of HELD) if (fillById.has(h.id)) problems.push(`${h.place}: ${h.id} must not be filled (${h.why})`);
 for (const n of NAMED) {
   const f = fillById.get(n.id);
   if (!report.holeList.some(h => h.id === n.id)) problems.push(`${n.place}: ${n.id} is not in the survey's holes`);

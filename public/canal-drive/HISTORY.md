@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Squares are paving to the physics too (2026-10-30).** User report: on the
+Nieuwmarkt south of the Waag the bike "can't go forward, only backwards". The
+2026-10-25 squares fix taught only the road guard (`getGuardRoad`) that
+`squares.json` plazas are rideable; `getSurface` still read the paving off
+every corridor as grass. Grass drag (80 px/s²) beats the bike's thrust at
+grass grip (168 × 0.45 ≈ 76 px/s²), and reverse thrust is not scaled by grip,
+so a bike that stopped there could only back up. `plazaSurface`
+(`pedestrianAreas.ts`) now reports a square as asphalt in `getSurface`, the
+same index the guard uses, so park squares (Frederiksplein) stay grass.
+Pinned in `scripts/check-canal-car.ts` (Nieuwmarkt paving within 20 m of the
+report: grass without squares, asphalt and unblocked with them) and in
+`open-squares.spec.ts` (the running game's `getSurface`).
+
 **Underground buildings out of the road; Namenmonument turned back
 (2026-10-30).** User screenshots on Weesperstraat, Weesperplein and Wibautstraat
 showed buildings standing in the carriageway. They were Oostlijn metro halls
@@ -20,6 +33,27 @@ whose native frame is x east / z south (the 162 other such models use 0), so
 its 89 m north–south plaza lay east–west across Weesperstraat. It is 0 now,
 pinned by `surveyedFrame.test.ts`, which checks the site outline against its
 surveyed lon/lat.
+
+**Void pands, held gap fills and the Pauwenpad block (2026-10-30, round 2).**
+Two BAG pands that no OSM tag marks as underground were drawn over de Pijp
+and Museumplein streets: the Albert Cuypgarage (`…240435`, 18 m over 614 m of
+street) and the Museumplein garage (`…242075`). The register outline includes
+the car park; 3DBAG's LoD2.2 roofs cover 12% and 15% of it, because lidar reads
+the street as ground (a 55 m Zuidas tower keeps 75%). `isVoidOverRoad` drops
+a pand that crosses ≥ 20 m of car-road centreline with roof cover < 15% and was
+built before the lidar (`--survey-voids`, `roofCoverOf` in bag3dCityJson). The
+rule matched only those two in the city. OSM's own garage way
+(`w1497713631`, `layer=-1 amenity=parking`) was a 9 m box over the
+Boerenwetering, so car parks below layer 0 now count as underground (7 more).
+Wibautstraat 150 at the Pauwenpad (`…110168`, 5,557 m², 20 m) was missing for
+two reasons. The lod1 merge let one OSM part covering 13% stand in for it, so
+`decideTier` now needs the drawn parts to cover ≥ 60% (`MIN_COMPOSITION_COVER`).
+The gap survey then held it as `too-large`, so large holes are filled when AHN
+sees ≥ 5 m. That also restored Gelderlandplein (3.2 ha) and a 2017 block near
+the ArenA. A new `over-road` hold keeps fills off streets: Amstel station's
+hole spans Julianaplein. The survey skips underground and dropped pands
+(`droppedPands`, `voidPands` in `underground-buildings.json`). Pinned in
+`check-bag-gaps` NAMED/HELD and `check-building-ladder`.
 
 **Mariniersbrug: green basement bascule with truss sides (2026-10-30).** The
 register lists BRU0272 as timber, so the material rule drew a white
