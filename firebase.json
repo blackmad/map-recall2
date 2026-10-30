@@ -174,13 +174,6 @@
       ],
       "rewrites": [
         {
-          "source": "/api/analytics",
-          "function": {
-            "functionId": "analytics",
-            "region": "europe-west4"
-          }
-        },
-        {
           "source": "/ride",
           "destination": "/ride.html"
         },

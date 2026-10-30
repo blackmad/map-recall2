@@ -49,7 +49,9 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           GITHUB_SHA: ${{ github.sha }}
           APPCHECK_SITE_KEY: ${{ secrets.APPCHECK_SITE_KEY }}
-          ANALYTICS_ENDPOINT: /api/analytics
+          # Direct to the function: rideamsterdam.nl is served by Cloudflare Pages, which has no
+          # function rewrites (a text/plain sendBeacon needs no CORS).
+          ANALYTICS_ENDPOINT: https://europe-west4-map-recall2-blackmad.cloudfunctions.net/analytics
         run: node scripts/write-runtime-config.mjs
       # No DEPLOY_TARGET here: each Firebase site serves from its own domain
       # root, so the build keeps Vite's default '/' base.

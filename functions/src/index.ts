@@ -39,7 +39,7 @@ export const analytics = onRequest(
     maxInstances: 5,
     timeoutSeconds: 10,
     invoker: 'public',
-    // Served same-origin through the Hosting rewrite; a text/plain beacon needs no CORS anyway.
+    // Called cross-origin from the Pages site; a text/plain beacon needs no CORS.
     cors: false,
   },
   async (req, res) => {
