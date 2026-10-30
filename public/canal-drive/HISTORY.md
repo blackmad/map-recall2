@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**`?world=v1` identical in the browser, decoded in the worker, cells published (2026-10-30, #136).**
+Why the first A/B showed ~4,400 extra buildings on four centre tiles: the
+cells were stale (the building tiles had been regenerated after L3 compiled;
+207 of 295 tiles differed) and, after a recompile, 47 buildings still differed
+by one ulp in `roofEavesHeightM` because Node 26 computes `Math.cos` with
+fdlibm while Chrome returns the correctly rounded value. The compiler, the
+verifier and the world tests now use the browser's cos/sin
+(`scripts/world/browserMath.ts`, checked against Chrome on 200,014 inputs), and
+`scripts/world/verify.ts` refuses stale cells before any publish. The cell
+reader moved into the three-buildings worker, so the "1.2 s decodes" (really
+gzip inflate wall time on page start) left the main thread: longest task
+3.3 ms at 1×, 7.3 ms at 4×. Format v2 drops ATTR and stores ids compactly
+(13.45 MB gz). A 90 s desktop ride ends at 688 MB heap under the flag against
+1,262 MB on the default path. The default path is untouched, pixel strips
+within the between-load noise. Cells live in
+`public/data/extracts/amsterdam/world-v1/` and must be recompiled with every
+building-data integration.
+
 **`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
 engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
 canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a
