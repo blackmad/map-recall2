@@ -46,6 +46,7 @@ test(`landmark lod ${label}`, async ({ page }, info) => {
       const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], rendererTri: [] };
       w.__perf = t; w.__stopFrames = false;
       const wrap = (obj: any, key: string, bucket: string) => { const o = obj[key].bind(obj); const orig = obj[key]; obj[key] = (...a: unknown[]) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; return () => { obj[key] = orig; }; };
+      // mapRender stays MapLibre's _render duration (main-thread ms) for the MapLibre implementation.
       w.__unwrap = [wrap(map, '_render', 'mapRender')];
       w.__unwrap.push(wrap(vm._signatureLandmarks.layer, 'render', 'landmarkRender'));
       let frameTri = 0; const proto = THREE.WebGLRenderer.prototype, origR = proto.render;

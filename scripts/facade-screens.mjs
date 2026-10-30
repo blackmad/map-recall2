@@ -37,7 +37,7 @@ for (const detail of ['full', 'touch']) {
     await page.screenshot({path: file});
     const r = await page.evaluate(() => {
       const f = canalRecallGame.vectorMap._sharedFrame;
-      return { tris: f.stats.main.triangles, calls: f.stats.main.calls, facades: f.drawStats().facades?.triangles ?? 0, detail: canalRecallGame.vectorMap._threeBuildings?.detail ?? '?', bearing: Math.round((canalRecallGame.vectorMap.map.getBearing() + 360) % 360) };
+      return { tris: f.stats.main.triangles, calls: f.stats.main.calls, facades: f.drawStats().facades?.triangles ?? 0, detail: canalRecallGame.vectorMap._threeBuildings?.detail ?? '?', bearing: Math.round((canalRecallGame.vectorMap.camera.bearing() + 360) % 360) };
     });
     console.log(`${file}  facades ${(r.facades / 1e3).toFixed(0)}k  main ${(r.tris / 1e6).toFixed(2)}M  ${r.calls} calls  detail ${r.detail}  bearing ${r.bearing}`);
   }

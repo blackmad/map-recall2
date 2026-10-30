@@ -19,6 +19,24 @@
   +0.55 s before this round.
 - 15 named regressions.
 
+**Specs read `vectorMap.camera`, not MapLibre (2026-10-30, #128).** Engine
+programme P0: `vector-map.js` gained a camera facade (`project`, `unproject`,
+`center`, `zoom`, `bounds`, `pitch`, `bearing`, `onFrame`, `whenIdle`) and 41
+spec and script files read it instead of `vectorMap.map`, so a second
+`VectorMap` implementation can satisfy the same oracles. Why the two perf
+specs keep wrapping `map._render`: `DESKTOP_BUDGET` (median ≤ 4 ms, p95 ≤ 10)
+is MapLibre's main-thread render cost, and the lane's replacement (the
+render-to-render interval, 16.7 ms at vsync) would have changed the metric
+under the same budget; the wrap stays, guarded on `vm.map`, until the frame
+host exposes its own render owner. `tests/perf/budgets.json` records the P0
+baselines with dates and sources (draws 851 2026-10-24, programs 32
+2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
+MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
+budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
+perf scripts against it. Browser verification of the migration is still
+pending: the lane's run was mis-scoped to all 638 tests and held the shared
+Playwright lock for two hours.
+
 **What's New notes link screenshots (2026-10-30).** User: notes should link
 to screenshots, kept in a separate repository so this one does not grow with
 every release. Each note may carry `images: [{src, alt, caption?}]`;
