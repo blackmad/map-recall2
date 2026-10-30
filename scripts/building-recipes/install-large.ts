@@ -28,6 +28,8 @@ import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {closeRenderer} from './render.ts';
 import {loadBagTiles} from '../lib/bagTileIndex.ts';
 import {applyRunCost, costFlags} from '../../src/canalRecall/buildingRecipe/factoryCost.ts';
+import {installAliases} from '../../src/canalRecall/buildingRecipe/installAliases.ts';
+import {buildingsIn} from '../lib/placedFootprints.ts';
 
 const CATALOGUE = 'public/canal-drive/ordinary-buildings-data/catalogue.json', MODELS = 'public/canal-drive/models/ordinary-buildings', ARTIFACTS = 'artifacts/building-recipes';
 /** Gallery/placement fields of a replaced hand-built entry that still describe the same building. */
@@ -39,6 +41,12 @@ let bagIndex: ReturnType<typeof loadBagTiles> | null = null;
 function linkedOsmOutlines(pand: string): string[] {
   bagIndex ??= loadBagTiles('public/data/extracts/amsterdam/bag-tiles/14');
   return (bagIndex.pands.get(`NL.IMBAG.Pand.${pand}`)?.osm ?? []).filter(id => bagIndex!.osmOnly.has(id));
+}
+
+/** Every tile feature id over the pand's footprint (the tiles check:osm-under-models reads, scripts/lib/placedFootprints.ts). */
+function tileIdsOver(footprint: [number, number][][]): string[] {
+  const pts = footprint.flat(), lon = pts.map(p => p[0]), lat = pts.map(p => p[1]);
+  return buildingsIn({w: Math.min(...lon), e: Math.max(...lon), s: Math.min(...lat), n: Math.max(...lat)}).map(b => b.id);
 }
 
 const io = new NodeIO().registerExtensions([KHRMeshQuantization]);
@@ -74,14 +82,17 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
   const pand = intent.pandId, entryId = `ordinary-${pand}`, replaced = catalogue.models.find(m => m.id === entryId) ?? null;
   const facts = built.facts, [ax, ay] = built.anchorRD;
   const carried = Object.fromEntries(CARRY.filter(k => replaced?.[k] !== undefined).map(k => [k, replaced[k]]));
+  const footprintLL = facts.bagFootprintRD.map(ring => ring.map(p => ll(p[0], p[1])));
+  // linked OSM outlines, plus the tiles' separate tower feature of a tower-podium pand (installAliases.ts, GitHub #119)
+  const aliases = installAliases(pand, linkedOsmOutlines(pand), tileIdsOver(footprintLL));
   const groups = built.recipe.groups.filter(g => g.system !== 'blank' || g.entrance || g.cladding);
   const entry = {
     id: entryId, category: 'ordinary' as const, buildingId: `NL.IMBAG.Pand.${pand}`, name: replaced?.name ?? intent.address,
     hash: report.sha256, sha256: report.sha256, meshHash: meshHashOf(compileLargeBuilding(intent, built.facts, {budget: 1e9}).group), bytes: report.bytes, triangles: report.triangles, materials: report.materials, textures: 0, scale: 1, bounds: b,
-    anchor: ll(ax, ay), footprint: {type: 'Polygon', coordinates: facts.bagFootprintRD.map(ring => ring.map(p => ll(p[0], p[1])))},
+    anchor: ll(ax, ay), footprint: {type: 'Polygon', coordinates: footprintLL},
     nativeHeight: +facts.heights.roofMaxM.toFixed(2), height: +b.max[1].toFixed(2),
     modelUrl: `./models/ordinary-buildings/recipe-large-${id}.glb`, suppress: [`NL.IMBAG.Pand.${pand}`],
-    ...(linkedOsmOutlines(pand).length ? {aliases: linkedOsmOutlines(pand)} : {}),
+    ...(aliases.length ? {aliases} : {}),
     ...carried,
     // Not 'building-recipes': that tag means a street-survey recipe house (buildingCategory.test.ts).
     source: 'building-recipes-large', recipe: {id, kind: 'large', intentSources: intent.sources.map(s => s.image ?? s.id), gates: report.gates.map(g => `${g.id}:${g.pass ? 'pass' : 'FAIL'}`),

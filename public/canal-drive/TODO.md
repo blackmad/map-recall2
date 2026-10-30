@@ -187,17 +187,22 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
-  **Road look, continuity (user 2026-10-29, iPhone at the Witte de
-  Withstraat × Van Kinsbergenstraat: "why isn't the grey continuous?",
-  look over accuracy): brief `docs/handoffs/lane-road-look-continuity-20261029.md`,
-  opus. Diagnosis at the pinned spot: partition fine (R1 14.7 m², R2 0,
-  R3 3.7), but seven greys in one material each, the kerb step under a
-  pixel on the phone, asphalt as light as the pavement (144 vs 175), no
-  tram rails (no `embedded_rails` on the way; `railway=tram` never
-  fetched), red notched at every junction mouth, saturated courtyard
-  lawns. Steps: one material per level, kerb edge ≥ 1.5 px on the
-  iPhone frame, darker asphalt (user picks of three), red through
-  junctions, rails from `railway=tram`, muted courtyards. Not started.
+  **Zebras and the Muntplein (user 2026-10-30 screenshots)**: lane
+  `lane/zebra-munt-20261030` (opus), running. Zebras by Arcam (Prins
+  Hendrikkade × Kattenburgerstraat) break into pieces at every BGT polygon
+  edge; 45 crossings in cell 0_0 dropped on cycle lanes; the crossing audit
+  measures against the clipped polygon, so it passes them. Muntplein: water
+  through the bridge road, a brown klinker band, the tram wye reads as
+  wireframe, 3 of 5 zebras drawn. City-wide rule plus a new `short` audit
+  category; both spots pinned as regressions.
+  **Road look, continuity, left open** (shipped 2026-10-30 as look B, HISTORY
+  "Road look continuity"): the kerb edge is under 1.5 px on desktop at far
+  junctions (an `fwidth` ground-shader edge was not prototyped); the east kerb
+  at the Witte de Withstraat shows no shadow dip; road-way `cycleway=track`
+  sides are not bridged at junction mouths; the red band is 2 m on the OSM line,
+  not the BGT fietspad width (a thin dark sliver at the Witte mouth); tram rails
+  use one offset per way, so tracks that wander against the OSM way (Witte
+  ±1.9 m) need rails drawn from BGT spoor lines (new extract).
 - **build-hash-skip**: done 2026-10-23 (3 s no-change run). Open: four
   committed GLBs (compagnietheater, levend-paardenmuseum, mountain-network,
   pathe-de-munt) are not reproducible from current source; 8 haparandaweg-*
@@ -2035,11 +2040,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp colour: the type palettes, not the profile.** Since #118 a buurt keeps its measured L*. Saenredamstraat still draws saturated red and Tweede Jan Steenstraat rosy pink, because those fronts take the De Pijp block-face type palettes (light brick, L* 39–52, C* 22–26). Re-measure those palettes against the strips.
-  - **Painted test after exposure.** Kerkstraat's white and grey fronts read as brick. The thumbnails are underexposed (white render reads about L* 55–60, under the painted cut of 62). Decide "painted" after the shared-frame offset, against a city white point.
+  - **De Pijp colour, what #121 left.** Profiles now take block-face colour from the face strips, not the type palettes, and salmon swatches went 208 → 0. Still wrong: the city brick chroma lift (×5.3 on thumbnail C* ≈ 5) pushes De Pijp brick to C* 14–24 where the photos are purple-grey, so Tweede Jan Steenstraat still draws rosy brown. KE01 painted share 0.36 looks high (sunlit strips read cream).
+  - **Kerkstraat whites.** The painted test now runs after white-point normalisation (#121), but Kerkstraat's fronts are drawn from the AG pool (painted share 0.17), so the hash still picks brick for white and grey fronts. Needs per-pand or per-street colour rather than the pool.
   - **Buurt profile tests have no npm script.** `src/canalRecall/buurtProfiles/*.test.ts` run only by hand.
   - **Saturation.** Fronts are still more saturated than the muted photos.
-  - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.

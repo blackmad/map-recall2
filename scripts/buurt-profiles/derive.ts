@@ -28,6 +28,8 @@ import { measureBrickTone, rgbToLab, labToRgb } from '../../src/canalRecall/look
 import { cropNormaliser, masonryFamily, lch } from '../../src/canalRecall/facade/cropWallColour.ts';
 import { PERIOD_WALLS, periodForYear, type Period } from '../../src/canalRecall/look/palette.ts';
 import { fitExposure, applyExposure, median, hueMedian, hueOf, chromaOf } from '../../src/canalRecall/buurtProfiles/exposure.ts';
+import { classifyWall, cityTrimLevel } from '../../src/canalRecall/buurtProfiles/paintClass.ts';
+import { faceStripPalettes } from '../block-face/palette-from-strip.ts';
 import { validateProfileSet, type BuurtProfile, type BuurtProfileSet, type EraProfile, type WeightedHex } from '../../src/canalRecall/buurtProfiles/profiles.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
@@ -92,7 +94,7 @@ console.log('pands', pands.size);
 const buurten = await gebieden('wijken').then(() => gebieden('buurten')), wijken = await gebieden('wijken');
 const buurtOf = (lng: number, lat: number) => buurten.find(a => inArea(lng, lat, a)) ?? null;
 
-type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
+type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface' | 'strip'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
 const samples: Sample[] = [];
 const eraOf = (p: Pand | undefined) => p?.year ? periodForYear(p.year) : null;
 
@@ -105,6 +107,15 @@ const eraOf = (p: Pand | undefined) => p?.year ? periodForYear(p.year) : null;
  * canal period keeps its own black and green paints.
  */
 const photoPainted = (rgb: readonly number[]) => { const c = lch(rgb); return (c.L >= 62 && c.C < 14) || (c.L >= 40 && c.h > 100 && c.h < 250 && c.C < 12); };
+
+/**
+ * The city white point for walls without real light trim (#121): the median light trim of the panorama thumbnails
+ * (the reference source). The archived panorama walls are white-balanced crops of the same fleet and share it.
+ */
+const THUMB_ROWS = ['staging/buurt-profiles/pano-samples.json', 'staging/buurt-profiles/pano-samples-modern.json'].filter(f => fs.existsSync(f)).flatMap(f => JSON.parse(fs.readFileSync(f, 'utf8')).samples as any[]);
+const PANO_TRIM = cityTrimLevel(THUMB_ROWS.filter(r => !r.skipped && r.wall).map(r => r.lightTrim));
+console.log('city trim level (thumbnails)', PANO_TRIM.toFixed(0));
+let paintedByTrim = 0, paintedByCity = 0, paintedBefore = 0, paintedAfter = 0;
 
 // 1. Archived panorama walls.
 let panoSeen = 0, panoUsed = 0;
@@ -133,10 +144,12 @@ if (fs.existsSync(WALLS)) for (const dir of fs.readdirSync(WALLS)) {
   }
   const tone = measureBrickTone(px, 3);
   if (!tone) continue;
-  if (!masonryFamily(tone.wall) && !photoPainted(tone.wall)) continue;
-  const painted = photoPainted(tone.wall);
+  if (!masonryFamily(tone.wall) && !classifyWall(tone.wall, tone.lightTrim, PANO_TRIM).painted) continue;
+  // #121: painted decided on the wall normalised to the light-trim white point (buurtProfiles/paintClass.ts).
+  const cls = classifyWall(tone.wall, tone.lightTrim, PANO_TRIM);
+  const painted = cls.painted;
   panoUsed++;
-  samples.push({ pand: dir, source: 'pano', era: eraOf(pand), lab: rgbToLab(painted ? tone.wall : tone.brick), painted, pale: painted ? undefined : valid > 0 && pale / valid >= 0.05 });
+  samples.push({ pand: dir, source: 'pano', era: eraOf(pand), lab: rgbToLab(painted ? cls.normalised : tone.brick), painted, pale: painted ? undefined : valid > 0 && pale / valid >= 0.05 });
 }
 console.log('pano walls', panoSeen, 'used', panoUsed);
 
@@ -149,21 +162,50 @@ for (const file of THUMBS) if (fs.existsSync(file)) for (const r of JSON.parse(f
   if (r.skipped || !pand || !r.wall) continue;
   // Modern pass: a light front (L >= 66 in the thumbnail) is render, white panels or pale buff brick, and is kept
   // as paint (half its tint); the brick calibration's chroma lift turned those peach (review 2026-10-30).
-  const painted = photoPainted(r.wall) || (file.endsWith('-modern.json') && lch(r.wall).L >= 66);
+  // #121: painted is decided on the wall normalised to the light-trim white point (its own trim when real, else the
+  // city's), so a white front in a dull capture is paint and a cream or buff one is not clamped to salmon brick.
+  const cls = classifyWall(r.wall, r.lightTrim, PANO_TRIM);
+  const painted = cls.painted || (file.endsWith('-modern.json') && lch(r.wall).L >= 66);
+  if (photoPainted(r.wall)) paintedBefore++;
+  if (painted) { paintedAfter++; if (cls.via === 'trim') paintedByTrim++; else paintedByCity++; }
   if (!painted && !masonryFamily(r.brick) && lch(r.brick).C >= 4) continue;
   // The modern pass only ever adds to the modern era: it does not move the calibration, a profile's level, n or older eras.
   const modernPass = file.endsWith('-modern.json') ? { modernPass: true as const } : {};
   if (modernPass.modernPass && eraOf(pand) !== 'modern') continue;
-  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06, ...modernPass });
+  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? cls.normalised : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06, ...modernPass });
   thumbUsed++;
 }
-console.log('panorama thumbnails used', thumbUsed);
+console.log('panorama thumbnails used', thumbUsed, `painted ${paintedBefore} -> ${paintedAfter} (own trim ${paintedByTrim}, city white ${paintedByCity})`);
 
 // 2. Block-face houses through their types.
 const types = new Map<string, any>();
 for (const d of fs.readdirSync('scripts/block-face/types')) for (const f of fs.readdirSync(path.join('scripts/block-face/types', d))) if (f.endsWith('.json')) { const t = JSON.parse(fs.readFileSync(path.join('scripts/block-face/types', d, f), 'utf8')); types.set(t.id, t); }
 const hexLab = (v: unknown) => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v) ? rgbToLab([parseInt(v.slice(1, 3), 16), parseInt(v.slice(3, 5), 16), parseInt(v.slice(5, 7), 16)]) : null;
 const TALL = new Set(['t-window', 'two-light', 'cross', 'cross-transom', 'arched', 'sash', 'sash-small-panes', 'ladder']);
+/**
+ * Block-face house walls measured from the face strips (#121), not read off the type palette. A type palette's brick
+ * is a KIT colour, fitted so the chunk renders it (cityWallTint x brick texture) like the photo; read as a photo
+ * measure it took the brick calibration's ~6x chroma lift and drew De Pijp's dark purple-brown brick saturated red
+ * (pijp-1879-five-low #6a4a3e -> #823e37, 58 of Frans Halsbuurt's 103 fronts). The strip is a photo like the
+ * thumbnails: the per-pand wall median (blockFace/stripPalette.ts), painted decided against the strip's light trim
+ * (its accent class) like every other photo source. A house without an archived strip keeps its traits but no colour.
+ */
+const stripWalls = new Map<string, { wall: number[]; trim: number[] | null }>();
+let stripFaces = 0;
+for (const face of fs.readdirSync('scripts/block-face/faces')) {
+  const sj = path.join('scripts/block-face/faces', face, 'strip.json');
+  if (!fs.existsSync(sj)) continue;
+  try {
+    for (const p of await faceStripPalettes(face)) {
+      if (!p.wall || stripWalls.has(p.pandId) || p.shares.wall < 0.3) continue;
+      const rgb = (h: string | null) => h ? [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) : null;
+      stripWalls.set(p.pandId, { wall: rgb(p.wall)!, trim: rgb(p.accent) });
+    }
+    stripFaces++;
+  } catch { /* no strip image in staging/block-face: archived in map-recall2-source-data block-face-strips */ }
+}
+const STRIP_TRIM = cityTrimLevel([...stripWalls.values()].map(w => w.trim));
+console.log('block-face strips', stripFaces, 'faces,', stripWalls.size, 'pands; strip trim level', STRIP_TRIM.toFixed(0));
 let bfHouses = 0, bfUsed = 0;
 for (const face of fs.readdirSync('scripts/block-face/faces')) {
   const file = path.join('scripts/block-face/faces', face, 'intent.json');
@@ -186,7 +228,12 @@ for (const face of fs.readdirSync('scripts/block-face/faces')) {
     const stone = hexLab(palette?.stone), frame = hexLab(palette?.frame);
     const frameName = typeof palette?.frame === 'string' && !palette.frame.startsWith('#') ? palette.frame : '';
     const s: Sample = { pand: String(h.pandId), source: 'blockface', era: eraOf(pand), shop: use ? ['shop', 'restaurant', 'cafe', 'bar', 'services'].includes(use) : undefined };
-    if (brick) { s.lab = brick; s.painted = palette.wallMaterial === 'painted-brick' || palette.wallMaterial === 'stucco' || lch(labToRgb(brick)).C < 8; }
+    const strip = stripWalls.get(String(h.pandId));
+    const cls = strip ? classifyWall(strip.wall, strip.trim, STRIP_TRIM) : null;
+    if (strip && cls && (cls.painted || masonryFamily(strip.wall))) {
+      s.source = 'strip'; s.painted = cls.painted || palette?.wallMaterial === 'stucco';
+      s.lab = rgbToLab(s.painted ? cls.normalised : strip.wall);
+    } else if (brick) s.painted = palette.wallMaterial === 'painted-brick' || palette.wallMaterial === 'stucco' || lch(labToRgb(brick)).C < 8;
     if (body) {
       const accents = !!(body.windowSurround || body.bands || body.entablature || body.speklagen || body.archRings || body.bandLines || (body.cornice && body.cornice !== 'none'));
       s.pale = accents && (!stone || stone[0] > 70);
@@ -223,16 +270,41 @@ const paintCast = (() => {
   return p.length ? [median(p.map(s => s.lab![1])), median(p.map(s => s.lab![2]))] : [0, 0];
 })();
 console.log('modern paint cast a/b', paintCast.map(v => v.toFixed(1)).join(' '));
+/**
+ * Each photo source's own paint cast (#121): the median a/b of its painted walls. The block-face strips are sunlit
+ * rectified crops with a yellow cast (painted median b* +19), the thumbnails near neutral; kept as half tint, the
+ * strips' white fronts drew cream-yellow and the thumbnails' cream peach (#ffd9b4). Taken out before the half tint,
+ * like the modern pass's paintCast, so white stays white and cream keeps only its own difference.
+ */
+const sourcePaintCast = new Map<string, number[]>();
+for (const src of ['pano', 'thumb', 'strip']) {
+  const p = samples.filter(s => s.source === src && !s.modernPass && s.painted && s.lab);
+  sourcePaintCast.set(src, p.length >= 20 ? [median(p.map(s => s.lab![1])), median(p.map(s => s.lab![2]))] : [0, 0]);
+}
+console.log('paint cast a/b by source', [...sourcePaintCast].map(([k, v]) => `${k} ${v.map(x => x.toFixed(1)).join('/')}`).join(', '));
 const calibrate = (s: Sample): number[] => {
   if (s.modernPass && s.painted) return applyExposure(exposure, s.source, [s.lab![0], s.lab![1] - paintCast[0], s.lab![2] - paintCast[1]], true);
+  if (s.painted && sourcePaintCast.has(s.source)) { const c = sourcePaintCast.get(s.source)!; return applyExposure(exposure, s.source, [s.lab![0], s.lab![1] - c[0], s.lab![2] - c[1]], true); }
   const lab = applyExposure(exposure, s.source, s.lab!, s.painted);
   return s.modernPass && !s.painted ? [lab[0], lab[1] * MODERN_BRICK_CHROMA, lab[2] * MODERN_BRICK_CHROMA] : lab;
 };
 const toHex = (lab: number[]) => '#' + labToRgb(lab).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 
 /** Ten quantile swatches over lightness, each the median a/b of its slice. */
-function swatches(labs: number[][]): WeightedHex[] {
-  const sorted = [...labs].sort((p, q) => p[0] - q[0]), k = Math.min(SWATCHES, sorted.length), out: WeightedHex[] = [];
+/**
+ * Swatches for brick and paint apart (#121), slots in proportion to their counts: one lightness slice mixing a light
+ * brick with white paint took the median a/b of both and drew peach (#ffcfa9 in Elandsgrachtbuurt, Langestraat).
+ */
+function familySwatches(list: Sample[]): WeightedHex[] {
+  const paint = list.filter(s => s.painted).map(calibrate), brick = list.filter(s => !s.painted).map(calibrate);
+  if (!paint.length || !brick.length) return swatches([...paint, ...brick]);
+  const kp = Math.max(1, Math.min(SWATCHES - 1, Math.round(SWATCHES * paint.length / list.length)));
+  const merged = new Map<string, number>();
+  for (const [h, w] of [...swatches(brick, SWATCHES - kp), ...swatches(paint, kp)]) merged.set(h, (merged.get(h) ?? 0) + w);
+  return [...merged].map(([h, w]) => [h, w] as const);
+}
+function swatches(labs: number[][], slots = SWATCHES): WeightedHex[] {
+  const sorted = [...labs].sort((p, q) => p[0] - q[0]), k = Math.min(slots, sorted.length), out: WeightedHex[] = [];
   for (let i = 0; i < k; i++) {
     const slice = sorted.slice(Math.floor(i * sorted.length / k), Math.floor((i + 1) * sorted.length / k));
     out.push([toHex([median(slice.map(l => l[0])), median(slice.map(l => l[1])), median(slice.map(l => l[2]))]), slice.length]);
@@ -247,7 +319,7 @@ function eraProfile(list: Sample[]): EraProfile | undefined {
   if (list.length < MIN_ERA_N) return undefined;
   const coloured = list.filter(s => s.lab);
   const e: EraProfile = { n: list.length };
-  if (coloured.length >= MIN_ERA_N) { e.walls = swatches(coloured.map(calibrate)); e.paintedShare = shareOf(coloured.map(s => s.painted)); }
+  if (coloured.length >= MIN_ERA_N) { e.walls = familySwatches(coloured); e.paintedShare = shareOf(coloured.map(s => s.painted)); }
   e.paleAccentShare = shareOf(list.map(s => s.pale)); e.darkFrameShare = shareOf(list.map(s => s.dark));
   e.archShare = shareOf(list.map(s => s.arch)); e.tallShare = shareOf(list.map(s => s.tall));
   for (const k of Object.keys(e) as (keyof EraProfile)[]) if (e[k] === undefined) delete e[k];
