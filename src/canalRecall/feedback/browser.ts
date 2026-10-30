@@ -64,21 +64,12 @@ function blank(c: HTMLCanvasElement) {
   for (let i = 3; i < d.length; i += 4) if (d[i]) return false;
   return true;
 }
-/**
- * The game's world canvas through the world view (engine/worldViewApi.ts), so the capture works with either
- * implementation (`?engine=own` has no MapLibre map). The `.map` fallback is for a vector-map.js without
- * `frameCanvas` / `captureFrame` yet.
- */
+/** The game's world canvas through the world view (engine/worldViewApi.ts): either engine (`?engine=own` has no MapLibre map). */
 function worldCanvas(): HTMLCanvasElement | null {
-  const view = w.canalRecallGame?.vectorMap;
-  return view?.frameCanvas?.() ?? view?.map?.getCanvas?.() ?? null;
+  return w.canalRecallGame?.vectorMap?.frameCanvas?.() ?? null;
 }
 function worldCapture(): Promise<HTMLCanvasElement | null> | null {
-  const view = w.canalRecallGame?.vectorMap;
-  if (typeof view?.captureFrame === 'function') return view.captureFrame();
-  const map = view?.map;
-  if (!map?.once || !map.triggerRepaint) return null;
-  return new Promise(resolve => { map.once('render', () => resolve(map.getCanvas())); map.triggerRepaint(); });
+  return w.canalRecallGame?.vectorMap?.captureFrame?.() ?? null;
 }
 function snapshot(target: Target) {
   try {
@@ -111,7 +102,7 @@ function snapshot(target: Target) {
 function gameContext(): Context {
   const g = w.canalRecallGame;
   if (!g) return {};
-  const center = g.vectorMap?.camera?.center?.() ?? g.vectorMap?.map?.getCenter?.();
+  const center = g.vectorMap?.camera?.center?.();
   return {
     city: g.cityId, travelMode: g.travelMode, viewMode: g.viewMode, themeMode: g.themeMode,
     buildingLook: g.vectorMap?.buildingLook?.(), state: g.state,

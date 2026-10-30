@@ -227,6 +227,7 @@ export class OwnWorldView {
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
       city.attach(() => { this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
+        this._tileFeatures = features;
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
       });
       this.applyPendingAim();
@@ -544,6 +545,10 @@ export class OwnWorldView {
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; }
   setBuildingLookPreference(look: string): void { this.buildingLookPref = look || 'photo'; }
   buildingLook(): string { return this.buildingLookPref; }
+  /** Read by the look specs; the own view draws one look until the look switch is ported. */
+  get _buildings3dLook(): string { return this.buildingLookPref; }
+  /** The streamed buildings' features (context-restore compares them across a restore). */
+  _tileFeatures: unknown[] = [];
   applyTheme(theme: string): void {
     this.theme = theme || 'clean';
     const body = W().document?.body;

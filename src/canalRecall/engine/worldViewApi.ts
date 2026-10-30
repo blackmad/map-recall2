@@ -74,11 +74,11 @@ export interface WorldView extends VectorMap {
 
   // ---- frame / camera (new in P0; replaces the `vectorMap.map` leaks) ----
   /** Resolve with the world canvas right after a freshly rendered frame, while its drawing buffer is readable. */
-  captureFrame?(): Promise<HTMLCanvasElement | null>;
+  captureFrame(): Promise<HTMLCanvasElement | null>;
   /** The canvas the world draws into (feedback compares and composites it). */
-  frameCanvas?(): HTMLCanvasElement | null;
+  frameCanvas(): HTMLCanvasElement | null;
   /** Show a lng/lat directly (the briefing's city centre before a loader exists). */
-  jumpToLngLat?(options: JumpOptions): void;
+  jumpToLngLat(options: JumpOptions): void;
 
   // ---- camera from the game ----
   /** `options.pitch` also resets the eased pitch (game-route.js used to poke `_pitchSmoothed`). */
