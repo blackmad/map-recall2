@@ -89,28 +89,22 @@ serres and timber screens are not fitted to the ochre and green slots to
 dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
 waited 3 h behind 25 others today; the lock is not fair).
 
-**City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
-the city look (HISTORY "City look re-levelled; flip pending"); source and
-bundles are on main with the flag still off. A = flip on at level 1 (chunks
-match today, landmarks +14 % brighter at card size), B = level 0.85
-(landmarks within ±2 %, chunks dour), C = keep off. On A or B the integrator
-flips `cityLookEnabled` to default on with `?cityLook=0` as opt-out, rebuilds
-the four bundles, and writes the What's New note with the strip. Follow-ups
-regardless (#138 landed, HISTORY "Builder-declared material slots"): a
-`timber` and a `metalRoof` slot (houseboat museum, Hannekes Boom, Vondeltuin,
-Hotel Jakarta, Odessa; Ronde Lutherse dome, American Hotel copper), a
-warm-grey roofTile keeping its tone instead of the black-tile slate tone
-(Uilenburger), evidence for Podium Mozaïek / He Hua / Centrale Markthal /
-Symphony / Haparandaweg cladding, dropping the `materialSlotSource:
-'inferred'` marker on tagged materials once the flip is decided, a
-base-vs-base look-consistency control run when the browser lock is quiet,
-iPhone perf with the slot array at 128², and the missing bagYears (values
-in the #138 hand-back: olvg-west 1966, olvg-oost 1900, max-euwe-centrum
-1905, academie-theater-dans 1996, jodenbreestraat-11 1996, begijnhof 1697,
-europarking-marnixstraat 1972; `landmark-bag-years.ts` writes to staging
-only, and olvg-west/oost have no manualCatalogue entry). Note:
-`build-manual-landmarks.ts` changed, so its toolchain hash moved and the
-next full builder run re-exports every model.
+**City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
+default"):** measure iPhone perf with the slot array at 128² (desktop was
+16.7 ms either way); a `timber` and a `metalRoof` slot (houseboat museum,
+Hannekes Boom, Vondeltuin, Hotel Jakarta, Odessa; Ronde Lutherse dome,
+American Hotel copper); a warm-grey roofTile keeping its tone instead of the
+black-tile slate tone (Uilenburger); evidence for Podium Mozaïek / He Hua /
+Centrale Markthal / Symphony / Haparandaweg cladding; drop the
+`materialSlotSource: 'inferred'` marker on tagged materials now that the
+default is the city look (check `_dress` first); a base-vs-base
+look-consistency control run when the browser lock is quiet; the missing
+bagYears (values in the #138 hand-back: olvg-west 1966, olvg-oost 1900,
+max-euwe-centrum 1905, academie-theater-dans 1996, jodenbreestraat-11 1996,
+begijnhof 1697, europarking-marnixstraat 1972; `landmark-bag-years.ts`
+writes to staging only, and olvg-west/oost have no manualCatalogue entry).
+Note: `build-manual-landmarks.ts` changed in #138, so its toolchain hash
+moved and the next full builder run re-exports every model.
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
