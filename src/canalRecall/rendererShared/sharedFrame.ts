@@ -92,7 +92,20 @@ export type SharedFrameOptions = {
   shadowSnapM?: number;
   /** Redraw the shadow map at least this often, frames (default 120), for changes no signature catches. */
   shadowRefreshFrames?: number;
+  /**
+   * The second driver (engine/frameHost.ts, `?engine=own`): the host owns the canvas, the WebGLRenderer and the
+   * frame loop, and calls `drive(clipFromMercator)` once per frame. No MapLibre custom layer is added; `map` is then
+   * the host's camera surface (engine/cameraMap.ts) and its `webglcontextlost` / `webglcontextrestored` events are
+   * the host's. Without it the MapLibre custom-layer driver below is used (until P5).
+   */
+  host?: FrameRendererHost;
 };
+
+/** What the frame needs from a host that owns the renderer (engine/frameHost.ts). */
+export interface FrameRendererHost {
+  /** The live renderer, or null while the context is lost. A restore hands out a new one. */
+  renderer(): any | null;
+}
 
 type Handle = { wrapper: any; participant: FrameParticipant; attached: boolean };
 
@@ -175,9 +188,12 @@ export class SharedFrame {
     this.overlayLayer = this.makeLayer(SHARED_FRAME_OVERLAY_ID, 'overlay');
     // MapLibre rebuilds its style after a context loss (`setStyle` from a serialised copy) and drops custom layers
     // ("cannot be restored after WebGL context loss"): until 2026-10-24 the 3D layer stayed blank until a reload.
+    this.host = options.host ?? null;
     this.map.on?.('webglcontextlost', () => this.contextLost());
     this.map.on?.('webglcontextrestored', () => this.contextRestored());
   }
+
+  private readonly host: FrameRendererHost | null;
 
   private contextLost(): void {
     this.contextEvents.lost++;
@@ -187,14 +203,16 @@ export class SharedFrame {
     this.removedLayers = 0;
     this.shadowKey = '';
     // Its GL objects are gone with the context; dispose drops its canvas listeners and caches.
-    try { old?.dispose(); } catch (_) { /* lost context */ }
+    // A host's renderer is the host's to dispose; it makes a new one on restore.
+    if (!this.host) { try { old?.dispose(); } catch (_) { /* lost context */ } }
   }
 
   private contextRestored(): void {
     this.contextEvents.restored++;
     // The restored style loads asynchronously; the layers go back once it has.
     const reattach = () => this.attach();
-    if (this.map.isStyleLoaded?.()) reattach();
+    // The host has made its new renderer before it fires the restore.
+    if (this.host || this.map.isStyleLoaded?.()) reattach();
     else if (this.map.once) this.map.once('style.load', reattach);
     else this.map.on?.('style.load', reattach);
   }
@@ -214,6 +232,7 @@ export class SharedFrame {
 
   /** Add both passes to the map. The overlay is kept last, like the vehicles were. */
   attach(): void {
+    if (this.host) { this.attachHost(); return; }
     if (!this.coverWatch && typeof document !== 'undefined' && typeof this.map.getCanvas === 'function' && coverPauseFlag()) {
       const canvas = this.map.getCanvas();
       if (canvas?.getBoundingClientRect) this.coverWatch = new MapCoverWatch(canvas, covered => { if (!covered) { this.resumedAt = performance.now(); this.map.triggerRepaint?.(); } });
@@ -233,6 +252,31 @@ export class SharedFrame {
       };
       this.map.on('styledata', this.keepOverlayOnTop);
     }
+  }
+
+  /** Host driver: adopt the host's renderer (first attach, or a new one after a context restore). */
+  private attachHost(): void {
+    if (!this.coverWatch && typeof document !== 'undefined' && typeof this.map.getCanvas === 'function' && coverPauseFlag()) {
+      const canvas = this.map.getCanvas();
+      if (canvas?.getBoundingClientRect) this.coverWatch = new MapCoverWatch(canvas, covered => { if (!covered) { this.resumedAt = performance.now(); this.map.triggerRepaint?.(); } });
+    }
+    const renderer = this.host!.renderer();
+    if (!renderer || renderer === this.renderer) return;
+    this.renderer = renderer;
+    this.viewport = [0, 0];
+    this.rendererReady();
+  }
+
+  /**
+   * Host driver: draw both passes (main, then the overlay) for one frame. `clipFromMercator` is what MapLibre hands a
+   * custom layer as `mainMatrix` (engine/cameraMap.ts builds it from mapCamera.ts). The host clears the buffers.
+   */
+  drive(clipFromMercator: Mat4): void {
+    const renderer = this.renderer;
+    if (!renderer) return;
+    const gl = renderer.getContext() as WebGL2RenderingContext;
+    this.renderPass('main', gl, clipFromMercator);
+    this.renderPass('overlay', gl, clipFromMercator);
   }
 
   /** Register a participant. Returns an unregister function. */

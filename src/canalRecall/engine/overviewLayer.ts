@@ -1,0 +1,108 @@
+// The own map's overview (ownMap/layers.ts meshes over own-map-v1/overview.json.gz:
+// land, water, parks, streets by class) as a shared-frame participant: the far
+// field and the start flight's city view under `?engine=own`, where there is no
+// basemap. Flat, depth-write off, drawn first, so the own ground and the
+// buildings draw over it; it also feeds `isWater` (engine/waterIndex.ts).
+//
+// Geometry is in the own map's local frame (ownMap/frame.ts). Mercator x is
+// linear in it; Mercator y is linearised at the view centre every frame
+// (≤ ~2.5 m at 5 km from the centre, beyond the own ground's ring).
+
+import * as THREE from 'three';
+import { decodeOverview, STREET_CLASSES, type OverviewData, type OverviewFile, type StreetClass } from '../ownMap/overviewFormat';
+import { fillMaterial, lineGeometry, lineMaterial, polygonGeometry, handover } from '../ownMap/layers';
+import { interpolateStops, MIN_LINE_PX, PALETTE, STREET_STYLE } from '../ownMap/style';
+import { KX, KY, ORIGIN, toLocal } from '../ownMap/frame';
+import { metresPerPixel } from '../ownMap/mapCamera';
+import { WaterIndex } from './waterIndex';
+import type { FrameContext, FrameParticipant } from '../rendererShared/sharedFrame';
+
+export async function fetchOverview(extractRoot: string): Promise<OverviewData> {
+  const r = await fetch(`${extractRoot}/own-map-v1/overview.json.gz`);
+  if (!r.ok) throw new Error(`own-map overview: ${r.status}`);
+  const b = new Uint8Array(await r.arrayBuffer());
+  const text = b[0] === 0x1f && b[1] === 0x8b
+    ? await new Response(new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'))).text()
+    : new TextDecoder().decode(b);
+  return decodeOverview(JSON.parse(text) as OverviewFile);
+}
+
+/** Mercator ← own-map local metres, linearised in y at `lat` (column-major). */
+export function mercatorFromOwnLocal(lat: number): number[] {
+  const cos = Math.cos(lat * Math.PI / 180);
+  const yc = (lat - ORIGIN.lat) * KY;
+  const Yc = (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))) / 360;
+  const sY = -1 / (360 * cos * KY);
+  const u = 1 / (2 * Math.PI * 6371008.8 * cos);
+  return [1 / (360 * KX), 0, 0, 0, 0, sY, 0, 0, 0, 0, u, 0, (ORIGIN.lng + 180) / 360, Yc - yc * sY, 0, 1];
+}
+
+/**
+ * Metres below z = 0: under the own ground's sunken water, so wherever the ground is resident it wins the depth test
+ * (the flat layers do not write depth and keep their order by renderOrder).
+ */
+export const OVERVIEW_Z = -3;
+
+type Lines = { cls: StreetClass; fill: THREE.Mesh; casing: THREE.Mesh | null };
+
+export class OverviewLayer implements FrameParticipant {
+  readonly root = new THREE.Group();
+  readonly water: WaterIndex;
+  private readonly lines: Lines[] = [];
+  private readonly land: THREE.Mesh;
+  private centreLat: number = ORIGIN.lat;
+
+  constructor(readonly data: OverviewData, private readonly view: { center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null }) {
+    this.root.name = 'engine-overview';
+    this.water = new WaterIndex(data.water);
+    const [x0, y0, x1, y1] = data.bounds;
+    const pad = 20_000;
+    this.land = new THREE.Mesh(polygonGeometry([[[[x0 - pad, y0 - pad], [x1 + pad, y0 - pad], [x1 + pad, y1 + pad], [x0 - pad, y1 + pad]]]]), fillMaterial(PALETTE.land, OVERVIEW_Z));
+    this.land.renderOrder = -1;
+    const water = new THREE.Mesh(polygonGeometry(data.water), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
+    const parks = new THREE.Mesh(polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r]))), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
+    for (const m of [this.land, parks, water]) m.frustumCulled = false;
+    this.root.add(this.land, parks, water);
+    const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
+    for (const cls of ordered) {
+      const geo = lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points));
+      const st = STREET_STYLE[cls];
+      const fill = new THREE.Mesh(geo, lineMaterial(st.fill, OVERVIEW_Z)); fill.renderOrder = 20 + st.order; fill.frustumCulled = false;
+      let casing: THREE.Mesh | null = null;
+      if (st.casing) { casing = new THREE.Mesh(geo, lineMaterial(st.casing, OVERVIEW_Z)); casing.renderOrder = 10 + st.order; casing.frustumCulled = false; this.root.add(casing); }
+      this.root.add(fill);
+      this.lines.push({ cls, fill, casing });
+    }
+    // The overview sits under everything; nothing casts.
+    this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
+  }
+
+  isWater(lng: number, lat: number): boolean { return this.water.isWater(lng, lat); }
+
+  mercatorFromLocal(): number[] { return mercatorFromOwnLocal(this.centreLat); }
+
+  beforeRender(_ctx: FrameContext): boolean {
+    const c = this.view.center();
+    this.centreLat = c.lat;
+    const zoom = this.view.zoom();
+    const mpp = metresPerPixel(zoom, c.lat);
+    for (const l of this.lines) {
+      const st = STREET_STYLE[l.cls];
+      const px = interpolateStops(st.width, zoom);
+      const visible = px >= MIN_LINE_PX;
+      l.fill.visible = visible;
+      const fm = l.fill.material as THREE.ShaderMaterial;
+      fm.uniforms.uHalf.value = px / 2 * mpp;
+      fm.uniforms.uOpacity.value = Math.min(1, px / 0.9);
+      if (l.casing) {
+        l.casing.visible = visible && px > 1.2;
+        (l.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + st.casingExtra) / 2 * mpp;
+      }
+    }
+    // The own ground covers the rider's ring; no screen-door handover needed (it is opaque and above).
+    const rider = this.view.rider?.();
+    if (rider) { const [x, y] = toLocal(rider[0], rider[1]); handover.uRider.value.set(x, y); }
+    handover.uNear.value = 0;
+    return true;
+  }
+}
