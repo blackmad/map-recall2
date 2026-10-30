@@ -1256,6 +1256,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Wikipedia articles on plain buildings never reach the card (2026-10-30).**
+  User, Emerald Empire / Venetiëhof on KNSM-eiland: the card says only
+  "Built 1995" although OSM relation r3679879 carries `wikipedia=nl:Emerald
+  Empire` and `wikidata=Q66764687`. `build-amsterdam-extract.ts`
+  `classify()` admits landmarks only via tourism/historic/civic amenity,
+  the POI layer filters amenity/shop/tourism/leisure, and
+  `build-building-facts.ts` ignores name/wikipedia/wikidata. Measured:
+  1,698 OSM buildings carry a wiki tag (8 joined to a landmark); 1,257
+  Wikidata building articles with coordinates land in an OSM footprint and
+  are linked nowhere (200 OSM-tagged, 1,057 by point; 126 English, 1,131
+  Dutch-only). Beyond buildings, 5,611 located Wikidata items with
+  articles share no Q-id with the extracts (942 bridges, 789 streets, 513
+  sculptures, 243 works of art, 127 statues, 88 murals…; bridges/streets
+  unverified by title). Lane brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`; audit
+  `npm run audit:wikipedia-buildings`. Open: the lane itself.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
