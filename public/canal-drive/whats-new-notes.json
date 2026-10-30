@@ -3,6 +3,89 @@
  "notes": [
   {
    "date": "2026-10-30",
+   "title": "Fewer 9 m guesses",
+   "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",
+   "where": [
+    4.858,
+    52.4301
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-heights-from-ahn5-settling-tanks.jpg",
+     "alt": "The Westpoort water treatment plant from the air, its round settling tanks drawn flat on the ground",
+     "caption": "Westpoort: the settling tanks lie flat instead of standing 9 m tall"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "More tunnel mouths, grass medians",
+   "text": "The Piet Hein tunnel's eastern ramp sinks to its mouth under the sun screen, and nine more motor tunnels show a dark entrance. The medians between the IJ-tunnel carriageways sit down in the trench as grass, and the cut walls carry a bright coping edge and a dark gutter line.",
+   "where": [
+    4.959,
+    52.3726
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-piet-hein-tunnel-east.jpg",
+     "alt": "The Piet Hein tunnel's eastern ramp as a cut ending in a tunnel mouth, phone view",
+     "caption": "Piet Hein tunnel, east ramp"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Zebras across the whole road",
+   "text": "Zebra crossings run as one row across the whole street, cycle lanes included, instead of breaking into stubs at every lane edge, and about 230 real zebras that were dropped now show. The Muntplein no longer shows canal water through the road or stray railing lines across the square.",
+   "where": [
+    4.9117,
+    52.371
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "De Roos on the P.C. Hooftstraat",
+   "text": "The 1880 villa on the Vondelpark corner of the P.C. Hooftstraat, now Centrum De Roos, is a bespoke model: the console cornice and arched attic on the street front, the garden side with its two bay windows and tiled hip-roof tower, the five-light conservatory, the 1912 wing along the Van Eeghenlaan with its arched entrance, and the 1943 garage with its skylights. Built from the BAG footprint, the 3DBAG roofs, monument register 222055 and 37 city panoramas; 38 inventory items, 28 modelled, 8 simplified, 2 too small.",
+   "where": [
+    4.8754121,
+    52.35861
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-de-roos-four-sides.jpg",
+     "alt": "De Roos villa complex rendered from the south-east, south-west, north-west and north-east",
+     "caption": "Four sides: the villa, the Van Eeghenlaan wing and the garage"
+    },
+    {
+     "src": "whats-new/2026-10-30-de-roos-street.jpg",
+     "alt": "De Roos at street level: the P.C. Hooftstraat front, the garden side, the Van Eeghenlaan wing and the east wing",
+     "caption": "Street level, four views"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Streets under buildings, open",
+   "text": "Lanes, car parks and loading bays that buildings were drawn standing on are open now: Staalmeesterslaan, Gerard Ruttenhof, the VUmc, Stadionplein, Cruquiusweg, the Ankerweg warehouse and the Oosterdoksstraat, with the building carried over the road where it really bridges it. An 1874 house on the Overtoom that stood at garden-shed height rises to its four storeys again.",
+   "where": [
+    4.8439,
+    52.3685
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-streets-under-buildings-staalmeesterslaan.jpg",
+     "alt": "The Staalmeesterslaan office tower with the open car park beside it, seen from the air",
+     "caption": "Staalmeesterslaan: the car park is ground again"
+    },
+    {
+     "src": "whats-new/2026-10-30-streets-under-buildings-cruquiusweg.jpg",
+     "alt": "A courtyard block on the Cruquiusweg with its garage entrance open",
+     "caption": "Cruquiusweg: the garage entrance is open"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
    "title": "Tunnel ramps and underpasses",
    "text": "The approaches to the IJ, Piet Hein, Spaarndammer and Michiel de Ruijter tunnels are walled cuts now, sinking to a dark tunnel mouth, so the IJ-tunnel ramp by NEMO no longer looks like a street you could ride up (bikes stay out of motor tunnels). Cycle and foot underpasses under rail embankments and dikes, like the Molukkenstraat and the Cuyperspassage, ride under the embankment instead of climbing over it.",
    "where": [

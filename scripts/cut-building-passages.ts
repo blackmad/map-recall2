@@ -14,7 +14,9 @@
  *
  * The ways come from the OSM cache (.cache/osm-source/Amsterdam.osm.pbf, osmium)
  * and are staged in scripts/data/passages/passage-ways.geojson, so --write and
- * --check run without it. Buildings a placed model hides (covers.json) are left
+ * --check run without it. Streets OSM does not tag but that run under a building
+ * (reviewed against the orthophoto) are listed in scripts/data/passages/passage-overrides.json.
+ * Buildings a placed model hides (covers.json) are left
  * whole: the model draws them. Re-run --write after a full tile rebuild.
  */
 import { execFileSync } from 'node:child_process';
@@ -115,6 +117,21 @@ const waysThrough = (mp: MultiPolygon): Feature[] => {
   });
 };
 
+// ---- reviewed passages OSM does not tag -----------------------------------------------------------------------
+// A building a routed street runs under without a tunnel/covered tag on the way: the street's routing lines through it count as passages.
+type Override = { street: string; reason: string };
+const overrides = JSON.parse(fs.readFileSync(path.join(STAGE, 'passage-overrides.json'), 'utf8')) as Record<string, Override>;
+const routing = JSON.parse(fs.readFileSync(path.join(ROOT, 'streets-routing.json'), 'utf8')) as { name?: string; highway?: string; path: [number, number][]; paths?: [number, number][][] }[];
+const overrideWays = (id: string, mp: MultiPolygon): Feature[] => {
+  const o = overrides[id];
+  if (!o) return [];
+  const lines = routing.filter(s => s.name === o.street).flatMap(s => (s.paths ?? [s.path]).map(l => ({ highway: s.highway, line: l.map(([lat, lng]) => [lng, lat] as LngLat) })));
+  return lines.filter(({ line }) => {
+    const segs: [LngLat, LngLat][] = []; for (let i = 1; i < line.length; i++) segs.push([line[i - 1], line[i]]);
+    return centrelineInsideM(mp as never, segs, INSIDE_INSET_M) >= MIN_INSIDE_M;
+  }).map(({ highway, line }) => ({ type: 'Feature', properties: { id: `override:${id}`, highway, name: o.street, covered: 'override' }, geometry: { type: 'LineString', coordinates: line } }));
+};
+
 // ---- what models hide ------------------------------------------------------------------------------------------
 const covers = JSON.parse(fs.readFileSync(path.join('public', 'canal-drive', 'models', 'covers.json'), 'utf8')) as { models: Record<string, { p: string[]; o?: string[] }> };
 const hidden = new Set<string>();
@@ -146,7 +163,7 @@ for (const key of index.tileList) {
     if (seen.has(id) || id.startsWith('passage:') || id.startsWith('part:') || Number(f.properties.minHeight ?? 0) >= RIDE_UNDER_M) continue;
     const mp = polygonsOf(f.geometry);
     if (!mp.length) continue;
-    const through = waysThrough(mp);
+    const through = [...waysThrough(mp), ...overrideWays(id, mp)];
     if (!through.length) continue;
     seen.add(id);
     if (hidden.has(id)) { skippedHidden++; continue; }
@@ -156,7 +173,7 @@ for (const key of index.tileList) {
 }
 for (const [id, f] of originals) {
   if (seen.has(id)) continue;
-  const mp = polygonsOf(f.geometry), through = waysThrough(mp);
+  const mp = polygonsOf(f.geometry), through = [...waysThrough(mp), ...overrideWays(id, mp)];
   seen.add(id);
   if (!through.length || hidden.has(id)) continue;
   cut(f, mp, through);

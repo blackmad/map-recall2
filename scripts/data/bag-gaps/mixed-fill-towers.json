@@ -1,0 +1,111 @@
+{
+ "NL.IMBAG.Pand.0363100012061958": {
+  "decision": "edge",
+  "note": "ridge 17.99 m over a 6.64 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012064775": {
+  "decision": "edge",
+  "note": "ridge 30.16 m over a 3.97 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012082861": {
+  "decision": "drawn",
+  "note": "373 m2 at 38.5 m drawn by w751024386, w751024387"
+ },
+ "NL.IMBAG.Pand.0363100012149097": {
+  "decision": "edge",
+  "note": "ridge 30.16 m over a 3.44 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012159138": {
+  "decision": "tower",
+  "note": "90 m2 at 18.1 m over a 4.89 m box (fill 0.86)",
+  "tower": {
+   "type": "Feature",
+   "properties": {
+    "id": "tower:NL.IMBAG.Pand.0363100012159138",
+    "pand": "NL.IMBAG.Pand.0363100012159138",
+    "tier": 3,
+    "minHeight": 4.89,
+    "height": 18.1
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       4.874804,
+       52.362468
+      ],
+      [
+       4.874891,
+       52.362337
+      ],
+      [
+       4.874901,
+       52.362338
+      ],
+      [
+       4.87493,
+       52.362342
+      ],
+      [
+       4.874952,
+       52.362383
+      ],
+      [
+       4.874952,
+       52.362389
+      ],
+      [
+       4.874887,
+       52.362486
+      ],
+      [
+       4.874877,
+       52.362486
+      ],
+      [
+       4.874805,
+       52.362468
+      ],
+      [
+       4.874804,
+       52.362468
+      ]
+     ]
+    ]
+   }
+  }
+ },
+ "NL.IMBAG.Pand.0363100012169500": {
+  "decision": "edge",
+  "note": "ridge 14.47 m over a 2.93 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012179776": {
+  "decision": "edge",
+  "note": "ridge 19.12 m over a 6.77 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012209718": {
+  "decision": "edge",
+  "note": "ridge 14.41 m over a 2.83 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012234803": {
+  "decision": "edge",
+  "note": "ridge 15.23 m over a 5.21 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0363100012237890": {
+  "decision": "drawn",
+  "note": "49 m2 at 21.9 m drawn by NL.IMBAG.Pand.0363100012238000"
+ },
+ "NL.IMBAG.Pand.0363100012241555": {
+  "decision": "drawn",
+  "note": "1955 m2 at 28.1 m drawn by w548447060"
+ },
+ "NL.IMBAG.Pand.0431100000007592": {
+  "decision": "edge",
+  "note": "ridge 33.81 m over a 19.41 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ },
+ "NL.IMBAG.Pand.0437100012228848": {
+  "decision": "edge",
+  "note": "ridge 13.92 m over a 2.84 m box: no block of tall cells, a tree or a neighbour's wall at the edge"
+ }
+}

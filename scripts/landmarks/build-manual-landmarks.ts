@@ -2,6 +2,7 @@ import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
 import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
+import {MATERIAL_SLOT_TAG, slotTagFor} from './material-slot-tags';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -132,6 +133,7 @@ import {buildBeestHetLab} from './beest-het-lab-builder';
 import {buildMuseumAmsterdamNoord} from './museum-amsterdam-noord-builder';
 import {buildLevendPaardenmuseum} from './levend-paardenmuseum-builder';
 import {buildStationspleinPaviljoens} from './stationsplein-paviljoens-builder';
+import {buildDeRoos} from './de-roos-builder';
 import {buildOudemanhuispoort} from './oudemanhuispoort-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
@@ -459,7 +461,8 @@ async function save(id:string){
   const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true).setExtras(slotExtras(name,group.hex)??{});
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   // Shared look (`?cityLook=1`, look/cityLook.ts): the slot follows from the palette name; audit:glb gates new exports at 100 %.
-  else material.setExtras(inferredSlotExtras(name,group.hex));
+  // Builder-declared slots (material-slot-tags.ts) win over inference; absent a tag the export is unchanged.
+  else{const tag=slotTagFor(id,name);material.setExtras(tag?{...inferredSlotExtras(name,group.hex),materialSlot:tag.slot,materialSlotTag:MATERIAL_SLOT_TAG}:inferredSlotExtras(name,group.hex));}
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');
@@ -601,6 +604,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='museum-amsterdam-noord')buildMuseumAmsterdamNoord(w,d,helpers);
     else if(id==='levend-paardenmuseum')buildLevendPaardenmuseum(w,d,helpers);
     else if(id==='stationsplein-paviljoens')buildStationspleinPaviljoens(w,d,helpers);
+    else if(id==='de-roos')buildDeRoos(w,d,helpers);
     else if(id==='oudemanhuispoort')buildOudemanhuispoort(w,d,helpers);
     else if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);

@@ -118,3 +118,51 @@ export function readGeoTiff(buffer: ArrayBuffer | Uint8Array, inflate: Inflate):
   const scale = arr(TAG.pixelScale), tie = arr(TAG.tiepoint);
   return { width, height, data, originX: tie[3] ?? 0, originY: tie[4] ?? 0, pixelX: scale[0] ?? 1, pixelY: scale[1] ?? 1, nodata };
 }
+
+/**
+ * The tile layout of a tiled single-band float32 TIFF (a COG), from its header
+ * bytes alone, so a caller can range-fetch just the tiles a window needs
+ * (AHN5 sheets on basisdata.nl are 193 MB each). `decodeTile` turns one
+ * fetched tile into its samples, NaN at nodata, using the same rules as
+ * readGeoTiff.
+ */
+export interface TiledTiff {
+  width: number; height: number; tileWidth: number; tileHeight: number;
+  offsets: number[]; byteCounts: number[];
+  originX: number; originY: number; pixelX: number; pixelY: number;
+  decodeTile(bytes: Uint8Array): Float32Array;
+}
+
+export function readTiledTiffHeader(header: Uint8Array, inflate: Inflate): TiledTiff {
+  const view = new DataView(header.buffer, header.byteOffset, header.byteLength);
+  const tags = readIfd(view, header);
+  const num = (t: number, d?: number) => { const v = tags.get(t); if (Array.isArray(v)) return v[0]; if (d === undefined) throw new Error(`geotiff: missing tag ${t}`); return d; };
+  const arr = (t: number) => { const v = tags.get(t); return Array.isArray(v) ? v : []; };
+  if (!tags.has(TAG.tileOffsets)) throw new Error('geotiff: not tiled');
+  if (num(TAG.bits) !== 32 || num(TAG.sampleFormat, 1) !== 3 || num(TAG.samplesPerPixel, 1) !== 1) throw new Error('geotiff: expected single-band float32');
+  const compression = num(TAG.compression, 1), predictor = num(TAG.predictor, 1);
+  if (compression !== 1 && compression !== 8 && compression !== 32946) throw new Error(`geotiff: compression ${compression} unsupported`);
+  if (predictor !== 1 && predictor !== 3) throw new Error(`geotiff: predictor ${predictor} unsupported`);
+  const tileWidth = num(TAG.tileWidth), tileHeight = num(TAG.tileLength);
+  const offsets = arr(TAG.tileOffsets), byteCounts = arr(TAG.tileByteCounts);
+  if (offsets.length !== Math.ceil(num(TAG.width) / tileWidth) * Math.ceil(num(TAG.height) / tileHeight)) throw new Error('geotiff: tile offsets past the header bytes');
+  const nodataTag = tags.get(TAG.gdalNodata);
+  const nd = typeof nodataTag === 'string' && nodataTag.trim() ? Math.fround(Number(nodataTag)) : null;
+  const scale = arr(TAG.pixelScale), tie = arr(TAG.tiepoint);
+  return {
+    width: num(TAG.width), height: num(TAG.height), tileWidth, tileHeight, offsets, byteCounts,
+    originX: tie[3] ?? 0, originY: tie[4] ?? 0, pixelX: scale[0] ?? 1, pixelY: scale[1] ?? 1,
+    decodeTile(bytes) {
+      const plain = compression === 1 ? bytes.slice() : inflate(bytes);
+      const out = new Float32Array(tileWidth * tileHeight);
+      for (let r = 0; r < tileHeight; r++) {
+        const rowBytes = plain.subarray(r * tileWidth * 4, (r + 1) * tileWidth * 4);
+        if (rowBytes.length < tileWidth * 4) break;
+        if (predictor === 3) undoFloatPredictor(rowBytes, tileWidth, out, r * tileWidth);
+        else out.set(new Float32Array(rowBytes.slice().buffer, 0, tileWidth), r * tileWidth);
+      }
+      for (let i = 0; i < out.length; i++) if ((nd !== null && out[i] === nd) || !Number.isFinite(out[i]) || Math.abs(out[i]) > 1e30) out[i] = NaN;
+      return out;
+    },
+  };
+}

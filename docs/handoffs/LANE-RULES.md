@@ -31,6 +31,10 @@ write the question in your report instead; the integrator answers it.
   poll; wait.
 - At most one Playwright run per machine (`/tmp/canal-pw.sh` if it exists);
   the factory, strips and census need no browser beyond their own headless one.
+  One run holds the lock for at most ~20 minutes: name the specs (never a
+  directory or a `git diff` list), `--workers=1`, and re-run a representative
+  subset, not every touched file. A 638-test run on 2026-10-30 held the lock
+  for two hours with six lanes queued behind it.
 
 ## The queue is the handoff
 

@@ -67,7 +67,7 @@ export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
 };
 
 /** Junction road markings drawn (roadMarkings.ts). */
-export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number; /** 1 m band stations of part-covered ways dropped over a polygon (any class). */ bandStations: number; /** Band triangles dropped whose centroid still lay on a polygon (dropOnSurvey). */ bandTris: number } }
+export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number; /** 1 m band stations of part-covered ways dropped over a polygon (any class). */ bandStations: number; /** Band triangles dropped whose centroid still lay on a polygon (dropOnSurvey). */ bandTris: number; /** Path join discs skipped because the disc (not only its node) reaches over a polygon (discOnSurvey). */ discs: number } }
 
 /**
  * roads-v1 (roadSurfaces.ts) in the street pass: `covered` ways emit no bands (the surveyed polygons are their
@@ -423,7 +423,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
   const guessed = opts.guessedPaint ?? GUESSED_PAINT;
-  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0, bandTris: 0 };
+  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0, bandTris: 0, discs: 0 };
   // roads-v1: the markings sit over the surveyed carriageway plane's float (roadSurfaces ROAD_MARK_LIFT).
   const paintLift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, railLift = bgt ? ROAD_MARK_LIFT.rail : LIFT.rail;
   /** Where a way's paint may lie: a carriageway polygon, or no survey (the fallback). */
@@ -519,7 +519,11 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
           const k = `${key(p)}:${band.surface}:${band.width.toFixed(1)}`;
           if (discDone.has(k)) continue;
           discDone.add(k);
-          disc(m, p, Math.min(band.width / 2, 1.6), height, lift - 0.001, 12);
+          const rad = Math.min(band.width / 2, 1.6);
+          // Nor where the disc itself reaches over a polygon: drawn after dropOnSurvey, its fan lay over the BGT
+          // voetpad beside the steps at the Arcam (2026-10-30, probe-doubled-lanes prins-hendrikkade-arcam).
+          if (bgt && discOnSurvey(p, rad, bgt.index, isBridgeWay(w))) { clipped.discs++; continue; }
+          disc(m, p, rad, height, lift - 0.001, 12);
         }
       }
     }
@@ -737,6 +741,15 @@ function coverCuts(w: LocalWay, band: Band, index: RoadIndex): [number, number][
  * stay (unreferenced). Returns the triangles dropped. R2, lane roads-lanes 2026-10-23: probe-doubled-lanes gates the
  * band triangles over the survey at 0.
  */
+/** roads-v1: a join disc of radius `r` at `p` reaches over a survey polygon (any class) on its rim or half-way out. */
+export function discOnSurvey(p: Vec2, r: number, index: RoadIndex, bridge: boolean): boolean {
+  for (const f of [0.5, 1]) for (let i = 0; i < 12; i++) {
+    const a = (i / 12) * 2 * Math.PI;
+    if (index.classAt(p[0] + Math.cos(a) * r * f, p[1] + Math.sin(a) * r * f, bridge) !== null) return true;
+  }
+  return false;
+}
+
 function dropOnSurvey(m: MeshArrays, from: number, index: RoadIndex, bridge: boolean): number {
   const idx = m.indices, p = m.positions;
   let w = from, dropped = 0;

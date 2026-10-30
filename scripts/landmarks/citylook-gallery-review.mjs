@@ -19,6 +19,9 @@ const out = path.resolve(ROOT, arg('out') ?? 'artifacts/citylook-review/gallery'
 const yearsFile = path.resolve(ROOT, arg('years') ?? 'artifacts/citylook-review/landmark-bag-years.json');
 const only = arg('only')?.split(',');
 const perSheet = Number(arg('per-sheet') ?? 30);
+// --views=sun,shade,east,west: more sides per model (landmark close-ups; sheets still show sun and shade).
+const views = arg('views')?.split(',');
+const size = arg('size')?.split('x').map(Number);
 const PUBLIC = path.join(ROOT, 'public/canal-drive');
 fs.mkdirSync(path.join(out, 'tiles'), {recursive: true});
 
@@ -28,7 +31,7 @@ const ids = fs.readdirSync(path.join(PUBLIC, 'models')).filter(f => f.endsWith('
 
 const bundle = await build({entryPoints: [path.join(ROOT, 'src/canalRecall/look/galleryReview.ts')], bundle: true, format: 'iife', globalName: 'GalleryReview', write: false, logLevel: 'error'});
 const browser = await chromium.launch({args: ['--enable-webgl', '--ignore-gpu-blocklist', '--enable-gpu', '--use-angle=metal']});
-const page = await browser.newPage({viewport: {width: 400, height: 300}});
+const page = await browser.newPage({viewport: {width: Math.max(400, (size?.[0] ?? 0) + 80), height: Math.max(300, (size?.[1] ?? 0) + 60)}});
 page.on('pageerror', e => console.log('pageerror', e.message));
 const types = {'.glb': 'model/gltf-binary', '.jpg': 'image/jpeg', '.png': 'image/png', '.json': 'application/json', '.js': 'application/javascript', '.html': 'text/html'};
 await page.route('http://review.local/**', route => {
@@ -45,7 +48,7 @@ const results = [];
 const t0 = Date.now();
 for (const [i, id] of ids.entries()) {
   try {
-    const r = await page.evaluate(o => window.GalleryReview.reviewModel(o), {id, url: `/models/${id}.glb`, year: years[id]?.year ?? null, brickUrl: '/materials/ambientcg/Bricks057/colour.jpg'});
+    const r = await page.evaluate(o => window.GalleryReview.reviewModel(o), {id, url: `/models/${id}.glb`, year: years[id]?.year ?? null, ...(views ? {views} : {}), ...(size ? {width: size[0], height: size[1]} : {}), brickUrl: '/materials/ambientcg/Bricks057/colour.jpg'});
     for (const [key, url] of Object.entries(r.images)) fs.writeFileSync(path.join(out, 'tiles', `${id}--${key}.png`), Buffer.from(url.split(',')[1], 'base64'));
     delete r.images;
     results.push(r);

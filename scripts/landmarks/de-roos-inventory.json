@@ -1,0 +1,717 @@
+{
+ "schemaVersion": 1,
+ "id": "de-roos",
+ "pand": "0363100012236970",
+ "brief": "scripts/landmarks/de-roos-brief.md",
+ "signature": [
+  "n-console-cornice",
+  "n-arched-attic",
+  "r-pediment",
+  "r-erker-big",
+  "g-serre-five",
+  "g-hip-tower",
+  "v-thermen",
+  "k-timber-serre",
+  "n-mansard",
+  "c-chamfer",
+  "k-garage-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-247",
+   "bearing": 247,
+   "lengthM": 19.3,
+   "centre": [
+    4.8750915,
+    52.3585525
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000012_pano_0000_001174",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-garage-west",
+     "kind": "window-shape",
+     "where": "west end of the 1943 garage: multi-pane windows with grilles, pale blue paint",
+     "approxSizeM": [
+      19,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "pale blue walls, white cornice band, multi-pane windows like the Van Eeghenlaan side",
+     "note": "mostly hidden by trees in every capture; the visible corner matches the south side"
+    }
+   ]
+  },
+  {
+   "tag": "w02-337",
+   "bearing": 337,
+   "lengthM": 8.6,
+   "centre": [
+    4.8755225,
+    52.3587995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001145_pano_0000_001533",
+   "capturedAt": "2019-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-arched-attic",
+     "kind": "window-shape",
+     "where": "top of the door axis: the cornice breaks into a round arch framing an attic window (register: \"kroonlijst onderbroken door een rondboog ... zoldervenster\")",
+     "approxSizeM": [
+      1.6,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "round-arch surround (archBand) rising through the cornice over an arched glazed light, cornice returns either side"
+    },
+    {
+     "id": "n-console-cornice",
+     "kind": "other",
+     "where": "crown: entablature with paired consoles under a projecting cornice, all round the 1880 block",
+     "approxSizeM": [
+      10,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "frieze band, console blocks at 0.9 m pitch, projecting white cornice slab with a cyma strip"
+    },
+    {
+     "id": "n-carved-door",
+     "kind": "other",
+     "where": "left bay: main entrance, dark carved double door with wrought-iron grilles and transom light in a moulded surround (register)",
+     "approxSizeM": [
+      1.4,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "dark leaf with two raised panels and two dark grille panels, transom light, white moulded surround with a cornice head; carving not modelled"
+    },
+    {
+     "id": "n-upper-entablatures",
+     "kind": "window-shape",
+     "where": "first floor: both windows under a plastered entablature on scroll consoles",
+     "approxSizeM": [
+      1.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01698",
+     "how": "white cornice head slab on two console blocks above each upper window"
+    },
+    {
+     "id": "n-baluster-panels",
+     "kind": "other",
+     "where": "cordon between the storeys: sunk panels with small balusters under each upper window (register: \"vakken ... verlevendigd met balusters\")",
+     "approxSizeM": [
+      1.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01698",
+     "how": "cordon band pair with a recessed panel and five small balusters per window"
+    },
+    {
+     "id": "n-sash-windows",
+     "kind": "window-shape",
+     "where": "T-sash windows (register \"T-schuiframen\") in moulded frames, bel-etage and first floor",
+     "approxSizeM": [
+      1.3,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "glass with a white T bar (mullion over the lower sash, transom) in a white moulded surround"
+    },
+    {
+     "id": "n-plinth",
+     "kind": "other",
+     "where": "souterrain: painted (formerly natural) stone plinth, grey, with barred basement windows",
+     "approxSizeM": [
+      10,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "grey plinth band proud of the plaster, barred basement windows (dark grille bars)"
+    },
+    {
+     "id": "n-pilasters",
+     "kind": "other",
+     "where": "flat plastered pilasters dividing the bays and at the corners",
+     "approxSizeM": [
+      0.5,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01698",
+     "how": "white pilaster strips 6 cm proud on both storeys"
+    },
+    {
+     "id": "n-mansard",
+     "kind": "other",
+     "where": "roof: flat roof with surrounding steep hips (register \"plat dak met omlopende schilden\"), dark bitumen",
+     "approxSizeM": [
+      11,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "mansard: 59 degree slopes from the 13.0 m cornice to a 15.3 m flat top (3DBAG fit of the slopes agrees)"
+    },
+    {
+     "id": "n-sign",
+     "kind": "sign",
+     "where": "beside the door: small red \"de Roos\" panel sign and wall lantern",
+     "approxSizeM": [
+      0.6,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 m panel sign and lantern; the map label names the POI"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-66",
+   "bearing": 66,
+   "lengthM": 8.4,
+   "centre": [
+    4.875688,
+    52.3586555
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241112_0936_Track33_Sphere_00024",
+   "capturedAt": "2024-11-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-curved-corner",
+     "kind": "other",
+     "where": "Van Eeghenlaan / east: the one-storey-plus-souterrain east part turns the corner on a curve, with a window on the curve",
+     "approxSizeM": [
+      3,
+      6.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_10-47-04_00099",
+     "how": "quarter-round corner (radius 2.5 m) in the east block footprint, window and cornice on the straight runs"
+    }
+   ]
+  },
+  {
+   "tag": "w04-337",
+   "bearing": 337,
+   "lengthM": 8.2,
+   "centre": [
+    4.87509,
+    52.3586465
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_10-47-04_00470",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "o-windows",
+     "kind": "window-shape",
+     "where": "one-storey block toward the garden (1943 addition, \"INGANG\"): four windows of six panes each and a central entrance",
+     "approxSizeM": [
+      8,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00141",
+     "how": "six-pane white-framed windows and a dark double door, white cornice band at the flat roof"
+    },
+    {
+     "id": "o-ingang-sign",
+     "kind": "sign",
+     "where": "red neon \"INGANG\" over the entrance",
+     "approxSizeM": [
+      1,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00141",
+     "skip": {
+      "reason": "too-small",
+      "note": "1 m neon word"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-158",
+   "bearing": 158,
+   "lengthM": 8.1,
+   "centre": [
+    4.8752025,
+    52.358487
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_10-47-04_00161",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-garage-windows",
+     "kind": "window-shape",
+     "where": "Van Eeghenlaan: 1943 garage (I. Blomhert) with wide multi-pane windows behind decorative iron grilles, a dark double door, pale blue paint and a white cornice band",
+     "approxSizeM": [
+      8,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "wide windows: glass, white frame grid, dark grille bars with a scroll band; double dark door; pale blue walls; white band at 3.4 m"
+    },
+    {
+     "id": "k-dome-serre",
+     "kind": "dome",
+     "where": "behind the garage, west head of the wing: the half-round glass serre with a glass dome, now enclosed in a flat-roofed glass casing (register)",
+     "approxSizeM": [
+      2.6,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "flat-topped glass casing box with a white frame grid (the enclosure as seen today; the dome inside is not visible)"
+    },
+    {
+     "id": "k-timber-serre",
+     "kind": "window-shape",
+     "where": "the second serre with timber posts and sloping glass roof planes, meeting a balcony with a timber railing (register)",
+     "approxSizeM": [
+      3.2,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "glazed walls with white posts and transoms, a glass hip roof, and above it the balcony slab with a white timber railing"
+    }
+   ]
+  },
+  {
+   "tag": "w06-157",
+   "bearing": 157,
+   "lengthM": 7.9,
+   "centre": [
+    4.875611,
+    52.358595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001061_pano_0001_001928",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-windows",
+     "kind": "window-shape",
+     "where": "east part: coupled windows with high transom on two storeys, flat roof behind a plain cornice",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00099",
+     "how": "four-light coupled windows with transoms, plain white cornice"
+    }
+   ]
+  },
+  {
+   "tag": "w07-157",
+   "bearing": 157,
+   "lengthM": 5.9,
+   "centre": [
+    4.875519,
+    52.3585695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001061_pano_0001_001930",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "v-arch-entrance",
+     "kind": "other",
+     "where": "Van Eeghenlaan 21: entrance inside a plastered round-arch surround with a fanlight",
+     "approxSizeM": [
+      1.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241112_0936_Track33_Sphere_00032",
+     "how": "dark door with semicircular fanlight in a white arch band"
+    },
+    {
+     "id": "v-barred-windows",
+     "kind": "window-shape",
+     "where": "souterrain windows with iron bars on the grey-blue plinth (register \"traliewerk\")",
+     "approxSizeM": [
+      1.2,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241112_0936_Track33_Sphere_00032",
+     "how": "barred basement windows (dark bars over glass)"
+    }
+   ]
+  },
+  {
+   "tag": "w08-247",
+   "bearing": 247,
+   "lengthM": 5.8,
+   "centre": [
+    4.875458,
+    52.358676
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250115_1006_Track02_Sphere_00141",
+   "capturedAt": "2025-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-pediment",
+     "kind": "crest",
+     "where": "garden side of the 1880 block: risalit closed by a pediment (timpaan) in the console cornice",
+     "approxSizeM": [
+      6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00142",
+     "how": "risalit 1.4 m proud of the west wall, cornice carried round it, triangular pediment with raked white cornices and a small gable roof behind"
+    },
+    {
+     "id": "r-erker-big",
+     "kind": "window-shape",
+     "where": "in front of the risalit: five-sided bel-etage bay window with large T-sash lights, finished by decorative timber boarding, grey hipped zinc roof",
+     "approxSizeM": [
+      3.8,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00142",
+     "how": "five-sided bay (two canted faces) on the grey plinth: big lights with T bars, white boarded fascia, zinc hip roof"
+    },
+    {
+     "id": "r-erker-small",
+     "kind": "window-shape",
+     "where": "right of it in the inside corner: a second, smaller bay window with a lower zinc roof",
+     "approxSizeM": [
+      2.2,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00142",
+     "how": "three-sided small bay, lights with transoms, low zinc hip roof"
+    },
+    {
+     "id": "r-balcony",
+     "kind": "balcony-ironwork",
+     "where": "second storey of the risalit: balcony over the small bay with a balustrade",
+     "approxSizeM": [
+      2.2,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00142",
+     "how": "white balustrade (dies, rail, balusters) along the small bay roof edge"
+    }
+   ]
+  },
+  {
+   "tag": "w09-337",
+   "bearing": 337,
+   "lengthM": 5.8,
+   "centre": [
+    4.875436,
+    52.3586415
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250115_1006_Track02_Sphere_00143",
+   "capturedAt": "2025-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-coupled-windows",
+     "kind": "window-shape",
+     "where": "younger wing, garden front: wide coupled windows with a high transom on the first floor (register \"gekoppelde vensters met een hooggeplaatste middendorpel\"), eight lights",
+     "approxSizeM": [
+      4.6,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "four-light coupled window pairs: white frame, mullions, a transom at 80 % height, small upper lights"
+    },
+    {
+     "id": "g-serre-five",
+     "kind": "window-shape",
+     "where": "five-sided serre with broad overhanging red-tile hips and a sober timber balcony balustrade on top (register)",
+     "approxSizeM": [
+      3.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "five-sided glazed bay on the plinth, multi-pane fanlights (veelruits bovenlichten), red-tile skirt roof with 0.6 m overhang, white timber balustrade above"
+    },
+    {
+     "id": "g-hip-tower",
+     "kind": "tower",
+     "where": "the hipped block above the serre: red-tile hip with broad eaves and red ceramic ridge pirons (register)",
+     "approxSizeM": [
+      5.3,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "hip roof over the block, eaves overhang 0.8 m with soffit, red tile; finial pirons at the ridge ends"
+    },
+    {
+     "id": "g-plinth",
+     "kind": "other",
+     "where": "visible souterrain storey with grey plinth and basement windows",
+     "approxSizeM": [
+      16,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "grey plinth band with basement windows along the garden fronts"
+    }
+   ]
+  },
+  {
+   "tag": "w10-158",
+   "bearing": 158,
+   "lengthM": 5.8,
+   "centre": [
+    4.875295,
+    52.358512
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001061_pano_0001_001933",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-tower-roof",
+     "kind": "tower",
+     "where": "Van Eeghenlaan: square block with a broad-eaved red-tile pyramid roof and ceramic piron on the apex",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "pyramid roof 0.9 m overhang with soffit boards, red tile, red piron finial"
+    },
+    {
+     "id": "t-low-door",
+     "kind": "other",
+     "where": "one-storey part on the street line: double door and barred window",
+     "approxSizeM": [
+      5,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "dark double door, barred window, pale blue plinth, cornice band"
+    }
+   ]
+  },
+  {
+   "tag": "w11-336",
+   "bearing": 336,
+   "lengthM": 5.7,
+   "centre": [
+    4.8752785,
+    52.3586145
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_10-47-04_00472",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-balcony2",
+     "kind": "balcony-ironwork",
+     "where": "west part of the wing, garden side: second balcony at the top storey with a white balustrade",
+     "approxSizeM": [
+      3,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "white balustrade on a slab on the wall"
+    },
+    {
+     "id": "w-windows",
+     "kind": "window-shape",
+     "where": "coupled multi-pane windows on two storeys",
+     "approxSizeM": [
+      3,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track02_Sphere_00143",
+     "how": "four-light windows with transoms"
+    }
+   ]
+  },
+  {
+   "tag": "w12-156",
+   "bearing": 156,
+   "lengthM": 5,
+   "centre": [
+    4.8754135,
+    52.3585425
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001158_pano_0000_000065",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "v-thermen",
+     "kind": "window-shape",
+     "where": "bel-etage: large round-arch thermal window (register \"thermenvenster\") in a moulded arch surround, three lights",
+     "approxSizeM": [
+      3.0,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241112_0936_Track33_Sphere_00032",
+     "how": "semicircular arch: glass with two radial-ish mullions, broad white arch band and sill"
+    },
+    {
+     "id": "v-balustrade-bay",
+     "kind": "balcony-ironwork",
+     "where": "second storey left: shallow projecting bay ending in a balustraded parapet on consoles",
+     "approxSizeM": [
+      2.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "bay slab 0.5 m proud on two consoles with a white balustrade"
+    },
+    {
+     "id": "v-stair-window",
+     "kind": "window-shape",
+     "where": "right of the thermal window: tall stair window with leaded glass (register)",
+     "approxSizeM": [
+      0.8,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241112_0936_Track33_Sphere_00032",
+     "how": "tall narrow window in white frame (leaded pattern not modelled; too small)"
+    },
+    {
+     "id": "v-roof",
+     "kind": "other",
+     "where": "red cross-tile hips with broad overhangs stepping over the parts, red ceramic pirons on ridge ends (register)",
+     "approxSizeM": [
+      9,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_10-47-04_00163",
+     "how": "hip roof broad eaves, red tile"
+    }
+   ]
+  },
+  {
+   "tag": "w13-67",
+   "bearing": 67,
+   "lengthM": 4.8,
+   "centre": [
+    4.875226,
+    52.358624
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000258_pano_0002_003323",
+   "capturedAt": "2017-04-12",
+   "checked": true,
+   "items": [],
+   "note": "the brief crop is of the Van Eeghenlaan thermal window (wrong wall); this short ENE side of the one-storey INGANG block faces the garden terrace and is plain in H-1 (b_20250115_1006_Track02_Sphere_00141)"
+  },
+  {
+   "tag": "w14-246",
+   "bearing": 246,
+   "lengthM": 4.3,
+   "centre": [
+    4.875466,
+    52.3587475
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250115_1006_Track02_Sphere_00141",
+   "capturedAt": "2025-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-chamfer",
+     "kind": "window-shape",
+     "where": "NW corner: canted corner bay facing the park entrance with a window per storey (register \"afgeschuinde hoek met zicht op het park\")",
+     "approxSizeM": [
+      2.3,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01698",
+     "how": "chamfered corner in the footprint (BAG ring) with the same window, panel and entablature set as the front"
+    },
+    {
+     "id": "c-chamfer-dormer",
+     "kind": "other",
+     "where": "roof above the chamfer: timber dormer with a segmental pediment (register \"houten dakkapel met een segmentboogtimpaan\")",
+     "approxSizeM": [
+      1.4,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01695",
+     "how": "white timber dormer box with glazed front and a segmental-arch pediment slab, standing on the mansard slope",
+     "note": "only its top shows over the cornice in the 2025 views"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 222055 register description",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/d2466b7d-9fb5-464f-8c73-96fc2157c5f8?_format=json",
+   "licence": "CC0 (Gemeente Amsterdam open data)"
+  },
+  {
+   "name": "BAG pand 0363100012236970",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012236970/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236970",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
