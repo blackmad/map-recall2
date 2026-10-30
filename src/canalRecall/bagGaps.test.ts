@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ahnHeights, appendSupplement, DECK_CLEARANCE_M, fillDecision, findBagGaps, forBuildingTiles, overRoadPartFeatures, quantile, supplementFeature, type RegisterPand } from './bagGaps';
+import { ahnHeights, appendSupplement, DECK_CLEARANCE_M, fillDecision, findBagGaps, forBuildingTiles, osmHeightGuessed, overRoadPartFeatures, quantile, supplementFeature, type RegisterPand } from './bagGaps';
 import { isPandId } from './bagTiles';
 import type { Ring, TileBuilding } from './landmarks/osmUnderModels';
 
@@ -59,6 +59,33 @@ test('appendSupplement is idempotent and never doubles a drawn footprint', () =>
   const twice = appendSupplement(once.features, [a, b], ringsOf);
   assert.deepEqual(twice.added, []);
   assert.equal(twice.features.length, 2);
+});
+
+test('a guessed-height outline does not draw a pand; the fill replaces it (Jan van Zutphenstraat)', () => {
+  assert.ok(osmHeightGuessed({ 'building:part': 'yes' }), 'w1313016956: no height, no levels -> the 9 m default');
+  assert.ok(!osmHeightGuessed({ 'building:part': 'yes', 'building:levels': '12' }));
+  assert.ok(!osmHeightGuessed({ building: 'yes', height: '33' }));
+  const tower = sq(4.8853, 52.3765, 0.00015); // a third of the lot
+  const tiles: TileBuilding[] = [{ id: 'w1313016956', height: 9, rings: [tower] }];
+  const pands = [pand('0363100012078768', [lot])];
+  assert.equal(findBagGaps(pands, new Set(), () => tiles)[0].tileCover > 0.2, true, 'counted as drawn, the pand is held as half-drawn');
+  const [gap] = findBagGaps(pands, new Set(), () => tiles, new Set(['w1313016956']));
+  assert.equal(gap.tileCover, 0);
+  assert.deepEqual(gap.guessIds, ['w1313016956']);
+  const h = ahnHeights(Array(50).fill(37.4), [0.6, 0.6, 0.6]);
+  const fill = supplementFeature(gap, [lot], h)!;
+  assert.deepEqual(fill.properties.replaces, ['w1313016956']);
+  assert.deepEqual(forBuildingTiles(fill).properties.replaces, ['w1313016956']);
+  const ringsOf = (g: unknown) => ((g as { coordinates: Ring[] }).coordinates).slice(0, 1);
+  const existing = [{ properties: { id: 'w1313016956' }, geometry: { type: 'Polygon', coordinates: [tower] } }, { properties: { id: 'w2' }, geometry: { type: 'Polygon', coordinates: [sq(4.8870, 52.3765)] } }];
+  const once = appendSupplement(existing, [fill], ringsOf);
+  assert.deepEqual(once.added, ['NL.IMBAG.Pand.0363100012078768']);
+  assert.deepEqual(once.replaced, ['w1313016956']);
+  assert.deepEqual(once.features.map(f => f.properties.id), ['w2', 'NL.IMBAG.Pand.0363100012078768']);
+  const twice = appendSupplement(once.features, [fill], ringsOf);
+  assert.deepEqual([twice.added, twice.replaced, twice.features.length], [[], [], 2], 'idempotent');
+  const towerOnLawn = { ...h!, height: 11.67, ridge: 35.29 }; // pand 126344: a tower over a low base
+  assert.equal(fillDecision(gap, towerOnLawn), 'mixed-under-guess', 'the guesses stay and are measured on their own');
 });
 
 test('over-road parts: ground faces stand, faces over the road become decks, low ones over it go', () => {

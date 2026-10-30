@@ -1049,19 +1049,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Real buildings over car roads are solid to the ground (2026-10-30).**
-  `check:buildings-over-roads` lists 43 reviewed footprints on ≥ 20 m of car
-  road (`scripts/data/buildings-over-roads.json`): the ArenA over
-  Burgemeester Stramanweg, Station Noord over the Nieuwe Leeuwarderweg,
-  Oosterdokseiland, the IJ-tunnel and Piet Heintunnel portals, Science Park.
-  Each has a real roof (3DBAG roof cover ≥ 37 %), but it is drawn from the
-  ground, so a rider on a road that passes under it at street level rides
-  into a wall. Tunnelled roads (IJ-tunnel, Piet Heintunnel) are fine. Draw
-  the street-level passages from 3DBAG LoD1.3 parts, as Amstel station is
-  (`scripts/fill-over-road-holes.ts`, decks above `DECK_CLEARANCE_M`), and
-  take each one off the reviewed list. Also: the four Jan van Zutphenstraat
-  towers (`w1313016955`–`60`, no BAG match) are drawn at the 9 m default,
-  but the orthophoto shadows show high-rise blocks.
+- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
+  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
+  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
+  street that OSM does not tag as passing under them, on the reviewed list in
+  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
+  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
+  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
+  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
+  street runs under the building, tag the way in OSM or add a passage
+  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
+  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
+  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
+  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
+  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
+  on PDOK.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding

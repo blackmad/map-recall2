@@ -3,6 +3,15 @@
  "notes": [
   {
    "date": "2026-10-30",
+   "title": "Ride through the poorts",
+   "text": "Streets, cycle paths and alleys that run under a building are open now, with the building carried over them: the poorts into Jordaan hofjes, the Motorwal, and the path under the Jan van Zutphenstraat towers. Buildings OSM left without a height are measured from the AHN height map instead of all standing at 9 m, so those towers rise to 37 m and garden sheds sit low.",
+   "where": [
+    4.7998,
+    52.3502
+   ]
+  },
+  {
+   "date": "2026-10-30",
    "title": "Buildings out of the road",
    "text": "Underground metro halls and car parks no longer stand across the Weesperstraat, Wibautstraat or the Albert Cuyp, and the Holocaust Namenmonument faces the right way. Amstel station stands again, with its bus canopy raised over the platforms. Canopies are thin roofs instead of solid blocks, and houses built over a street, as on the Kerkstraat, start at the right storey.",
    "where": [
