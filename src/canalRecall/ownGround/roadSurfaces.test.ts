@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
 import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEnds, kerbShadowTint, KERB_LINE_M, KERB_SHADOW_M, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
-import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
+import { buildStreets, carriageGrid, crossCuts, discOnSurvey, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import { cycleThrough } from './cycleThrough';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, luma709, ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId } from './groundLook';
@@ -245,6 +245,24 @@ test('roads R1 triangles: kerb stations follow the relief, coarse relief caps th
   for (let i = 1; i < bp.length; i += 3) assert.ok(bp[i] > 0, `post at y ${bp[i]} by the berm`);
 });
 
+test('wetGround: a ground polygon over water at street height is a deck for the water mask; a canal-level one and a quay sliver are not', async () => {
+  const { wetGroundRings } = await import('./wetGround');
+  const surf = (c: RoadClass, ring: Vec2[]) => ({ k: 'klinker' as RoadMesh, c, h: 0, r: [encodeLine(ring)] });
+  const sq = (x0: number, y0: number, x1: number, y1: number): Vec2[] => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+  // Water: the canal x ∈ [0, 30]. A plein over it (x 5..25), its fietspad beside it (x 25..27, too narrow for the inset),
+  // a quay road whose edge overlaps the water by a metre (x -10..1), and a slab over open canal at canal level.
+  const wet = (x: number) => x >= 0 && x <= 30;
+  const plein = surf('carriage', sq(5, 0, 25, 20)), path = surf('cycle', sq(25, 0, 27, 20)), quay = surf('carriage', sq(-10, 0, 1, 20)), low = surf('carriage', sq(5, 40, 25, 60));
+  const ground = (_x: number, y: number) => (y >= 40 ? -1.0 : 0.9);
+  const rings = wetGroundRings([plein, path, quay, low], { wet: x => wet(x), ground, waterZ: () => -1.77 });
+  const has = (x: number, y: number) => rings.some(r => r.some(p => p[0] === x && p[1] === y));
+  assert.ok(has(5, 0) && has(25, 20), 'the plein over the canal');
+  assert.ok(has(27, 0), 'its narrow fietspad beside it');
+  assert.ok(!has(-10, 0), 'the quay sliver stays cut');
+  assert.ok(!has(5, 40), 'canal-level ground stays cut');
+  assert.equal(wetGroundRings([plein], { wet: () => false, ground, waterZ: () => -1.77 }).length, 0, 'no water, nothing');
+});
+
 test('cycle through: the fietspad red crosses a junction mouth the survey calls rijbaan, straight and short only', () => {
   // A main road (x -4..4), the fietspad east of it (x 4..6) broken by a side street's mouth (y -h..h, the rijbaan).
   const mouth = (h: number): Poly[] => [
@@ -311,4 +329,10 @@ test('road look: the options keep the asphalt hue, open a wide level gap, and co
   assert.ok(Math.abs(luma709(g) - (luma709(lawn) - 15)) < 1, `garden ${g}`);
   const chroma = (c: readonly number[]) => Math.max(...c) - Math.min(...c);
   assert.ok(chroma(g) < 0.7 * chroma(lawn), `garden chroma ${chroma(g)} against ${chroma(lawn)}`);
+});
+
+test('path join discs: none where the disc, not only its node, reaches over a survey polygon (Arcam steps, 2026-10-30)', () => {
+  const index = new RoadIndex([cellOf([{ c: 'foot', k: 'paving', ring: [[2, -10], [10, -10], [10, 10], [2, 10]] }])]);
+  assert.equal(discOnSurvey([0, 0], 1.6, index, false), false, 'a disc 0.4 m short of the voetpad');
+  assert.equal(discOnSurvey([1, 0], 1.6, index, false), true, 'its rim over the voetpad, the node off it');
 });

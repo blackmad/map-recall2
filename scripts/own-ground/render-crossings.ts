@@ -1,6 +1,7 @@
 // Zebras the ground renderer draws, over the PDOK 8 cm orthophoto (ortho.ts, Beeldmateriaal Nederland, CC BY 4.0),
 // for judging crossings against the photo. One PNG per spot: the photo | the photo with the drawn stripes (magenta,
-// outlined) and the ground carriageway polygons' edges (cyan asphalt, orange klinker).
+// outlined) and the ground carriageway polygons' edges (cyan asphalt, orange klinker),
+// and the other road-level polygons (red cycle, yellow parking) and raised islands / berms (green).
 //
 //   npx tsx scripts/own-ground/render-crossings.ts <label> [--out=artifacts/zebra-crossings] [--half=40] [--res=0.1] [--at=lng,lat]
 import { mkdirSync } from 'node:fs';
@@ -8,7 +9,7 @@ import { join } from 'node:path';
 import sharp from 'sharp';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import type { DrawnCrossing } from '../../src/canalRecall/ownGround/surveyMarkings.ts';
-import { ZEBRA } from '../../src/canalRecall/ownGround/surveyMarkings.ts';
+import { buildSurveyMarkings, ZEBRA } from '../../src/canalRecall/ownGround/surveyMarkings.ts';
 import type { Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 import { OrthoTiles, ORTHO_ATTRIBUTION } from './ortho.ts';
 import { cellCrossings, type CellCrossings } from '../../src/canalRecall/ownGround/crossingCells.ts';
@@ -28,7 +29,7 @@ export const CROSSING_SPOTS: readonly { name: string; lng: number; lat: number }
 
 const arg = (k: string, d: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
 
-export async function renderSpot(store: GroundStore, ortho: OrthoTiles, cache: Map<string, CellCrossings | null>, spot: { name: string; lng: number; lat: number }, half: number, res: number): Promise<Buffer> {
+export async function renderSpot(store: GroundStore, ortho: OrthoTiles, cache: Map<string, CellCrossings | null>, spot: { name: string; lng: number; lat: number }, half: number, res: number, build: typeof buildSurveyMarkings = buildSurveyMarkings): Promise<Buffer> {
   const [x, y] = toLocal(spot.lng, spot.lat), w = Math.round((2 * half) / res);
   const x0 = x - half, y0 = y - half;
   const keys = new Set<string>();
@@ -36,7 +37,8 @@ export async function renderSpot(store: GroundStore, ortho: OrthoTiles, cache: M
   const cells: CellCrossings[] = [];
   for (const k of keys) {
     if (!store.covers(k) || !store.roadCells.has(k)) continue;
-    if (!cache.has(k)) cache.set(k, await cellCrossings(store, k));
+    // With the photo evidence, as the game draws them (placeByPhoto); the audit plans without it.
+    if (!cache.has(k)) cache.set(k, await cellCrossings(store, k, build, true, true));
     const c = cache.get(k);
     if (c) cells.push(c);
   }
@@ -47,10 +49,15 @@ export async function renderSpot(store: GroundStore, ortho: OrthoTiles, cache: M
   const ix = cells[0]?.index;
   if (ix) for (let k = 0; k < ix.records.length; k++) {
     const r = ix.records[k];
-    if (r.h !== 0 || ix.drawClass(k) !== 'carriage') continue;
+    const cls = ix.drawClass(k);
+    if (r.h !== 0) continue;
+    // Carriageway: cyan asphalt / orange klinker; the other road-level classes thinner: red cycle, yellow parking;
+    // raised islands and berms green (where a zebra may break).
+    const stroke = cls === 'carriage' ? (ix.mesh(k) === 'klinker' ? '#ff9a2e' : '#38d6ff') : cls === 'cycle' ? '#ff3b3b' : cls === 'parking' ? '#ffe14a' : cls === 'island' || cls === 'berm' ? '#5dff6a' : null;
+    if (!stroke) continue;
     for (const ring of ix.ringsOf(k)) {
       if (!ring.some(inView)) continue;
-      svg += `<polygon points="${ring.map(px).join(' ')}" fill="none" stroke="${ix.mesh(k) === 'klinker' ? '#ff9a2e' : '#38d6ff'}" stroke-width="2" stroke-opacity="0.8"/>`;
+      svg += `<polygon points="${ring.map(px).join(' ')}" fill="none" stroke="${stroke}" stroke-width="${cls === 'carriage' ? 2 : 1.5}" stroke-opacity="0.8"/>`;
     }
   }
   const crossings: DrawnCrossing[] = cells.flatMap(c => c.crossings).filter(c => inView(c.centre));

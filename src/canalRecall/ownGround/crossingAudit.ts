@@ -2,8 +2,10 @@
 //
 // User 2026-10-17, ride screenshots at the Nieuwezijds Voorburgwal / Magna Plaza / Dam junction: stripes splayed in
 // fans and overlapped at different angles, one crossing had every other stripe missing at an angle, crossings sat on
-// cobbles and in odd places. Each crossing is measured against the carriageway it is drawn on with exact polygon
-// tests (not the 0.5 m fast raster the renderer clips with), in six categories:
+// cobbles and in odd places. Each crossing is measured against the road it is drawn on with exact polygon tests (not
+// the 0.5 m fast raster the renderer clips with). "The road" is every road-level surface (carriageway, parking strip,
+// cycle lane or fietspad: ROAD_LEVEL), which Amsterdam paints its zebras across (lane zebra-munt 2026-10-30; before, the
+// carriageway class alone, so a row cut at the cycle lane passed). Eight categories:
 //
 //   splay      the stripes of one crossing are not parallel (any two pieces more than SPLAY_DEG apart);
 //   skew       the stripes are not along the carriageway: the shortest chord across the carriageway polygon (the
@@ -15,7 +17,12 @@
 //   cobbles    more than COBBLE_SHARE of its paint lies on a klinker carriageway (reported, see the lane notes);
 //   gaps       a stripe of the row is missing or cut short where the carriageway runs on under it (alternate or
 //              missing stripes), or the drawn stripes are unevenly spaced;
-//   length     the row across the road is shorter than MIN_ROW_M or longer than MAX_ROW_M.
+//   length     the row across the road is shorter than MIN_ROW_M or longer than MAX_ROW_M;
+//   short      the zebras drawn cover under SHORT_SHARE of the road-level surface on the full walking line through
+//              the crossing (its line across the road, on over islands up to WALK_GAP_M, every zebra's stripes on it
+//              counted): the row stops at a cycle lane, a parking strip or a polygon edge where the road runs on
+//              (user 2026-10-30 at Arcam, "why do we still have these broken zebras?"). A row the generator stopped
+//              short of a tram or bus lane on purpose (DrawnCrossing.tramCut, Raadhuisstraat) is not counted.
 
 import type { DrawnCrossing } from './surveyMarkings.js';
 import type { Vec2 } from './surface.js';
@@ -33,17 +40,31 @@ export const AUDIT = {
   STRIPE_KEEP: 0.7,
   /** Spacing between neighbouring drawn stripes may differ from the pitch by this much. */
   PITCH_TOL_M: 0.05,
+  /** short: drawn share of the walking line's road-level length under this. */
+  SHORT_SHARE: 0.85,
+  /** short: the walking line runs on over a non-road gap (an island, a footway strip) up to this, within WALK_MAX_M a side. */
+  WALK_GAP_M: 4,
+  WALK_MAX_M: 24,
+  /** short: a station is painted within this of a drawn stripe's centre line across (half a pitch, and a quarter metre
+   *  more: the stripe pattern ends up to a gap short of every polygon edge it meets). */
+  SHORT_REACH_M: 0.75,
 } as const;
+
+/** Road-level classes: drawn at carriageway level (roadCells KERB_LOW_CLASSES), what a zebra is painted across. */
+export const ROAD_LEVEL: ReadonlySet<string> = new Set(['carriage', 'parking', 'cycle']);
 
 /**
  * City-wide ceilings (scripts/own-ground/audit-crossings.ts --check and crossingAudit.test.ts): the remaining
  * flagged crossings are listed and explained in the lane notes (2026-10-17). `cobbles` is reported, not capped:
  * Amsterdam paints zebras on klinker streets (Nieuwezijds Voorburgwal, Paleisstraat) where OSM and the photo say so.
+ * `short` (2026-10-30, zebras across every road-level lane): main's generator measured 1369, the one-row rule 602 (604 after merging road look B: two rows in -5_-3 at 4.8364,52.3515);
+ * the rest are mostly walking lines a raised island legitimately breaks beyond the audit's reach, or nodes the plan
+ * keeps on one lane of a dual carriageway.
  */
-export const CROSSING_AUDIT_MAX: Partial<Record<AuditCategory, number>> = { splay: 0, skew: 5, overlap: 0, off: 0, gaps: 4, length: 0 };
+export const CROSSING_AUDIT_MAX: Partial<Record<AuditCategory, number>> = { splay: 0, skew: 5, overlap: 0, off: 0, gaps: 4, length: 0, short: 604 };
 
-export type AuditCategory = 'splay' | 'skew' | 'overlap' | 'off' | 'cobbles' | 'gaps' | 'length';
-export const AUDIT_CATEGORIES: readonly AuditCategory[] = ['splay', 'skew', 'overlap', 'off', 'cobbles', 'gaps', 'length'];
+export type AuditCategory = 'splay' | 'skew' | 'overlap' | 'off' | 'cobbles' | 'gaps' | 'length' | 'short';
+export const AUDIT_CATEGORIES: readonly AuditCategory[] = ['splay', 'skew', 'overlap', 'off', 'cobbles', 'gaps', 'length', 'short'];
 
 /** What lies under a point: a ground (h = 0) polygon's class and mesh, or null. Exact, not rastered. */
 export type GroundAt = (x: number, y: number) => { cls: string; mesh: string } | null;
@@ -62,6 +83,7 @@ export const lineAngle = (a: Vec2, b: Vec2) => Math.acos(Math.min(1, Math.abs(do
 
 /** Stripe width the renderer draws (surveyMarkings ZEBRA.stripe); the audit takes it as an input so it stays pure. */
 export interface AuditSpec { stripe: number; gap: number; len: number }
+const lenOf = (c: DrawnCrossing, spec: AuditSpec) => c.len ?? spec.len;
 
 /** The oriented footprint of a drawn crossing: along r over its stripes' extent, along n over its drawn row. */
 export function footprint(c: DrawnCrossing, spec: AuditSpec): Vec2[] | null {
@@ -102,7 +124,9 @@ function chord(p: Vec2, d: Vec2, onCarriage: (x: number, y: number) => boolean, 
 export function auditCrossings(all: readonly DrawnCrossing[], groundAt: GroundAt, spec: AuditSpec, owned: (c: DrawnCrossing) => boolean = () => true, roadDir: (p: Vec2) => Vec2 | null = () => null): CrossingAuditResult {
   const counts = Object.fromEntries(AUDIT_CATEGORIES.map(k => [k, 0])) as Record<AuditCategory, number>;
   const flagged: CrossingFinding[] = [];
-  const onCarriage = (x: number, y: number) => groundAt(x, y)?.cls === 'carriage';
+  const onCarriage = (x: number, y: number) => { const g = groundAt(x, y); return !!g && ROAD_LEVEL.has(g.cls); };
+  // Every drawn stripe piece, for the short test's coverage (any crossing's stripes count: a row in pieces is one row).
+  const pieces = all.flatMap(c => c.stripes.flatMap(s => s.pieces));
   const feet = all.map(c => footprint(c, spec));
   let crossings = 0;
   all.forEach((c, ci) => {
@@ -146,7 +170,7 @@ export function auditCrossings(all: readonly DrawnCrossing[], groundAt: GroundAt
       for (let t = 0.05; t < len; t += 0.1) for (const k of [-0.2, 0, 0.2]) {
         const x = add(add(p, u, t), w, k * spec.stripe / 0.5), g = groundAt(x[0], x[1]);
         samples++;
-        if (g?.cls !== 'carriage') offN++; else if (g.mesh === 'klinker') cobble++;
+        if (!g || !ROAD_LEVEL.has(g.cls)) offN++; else if (g.cls === 'carriage' && g.mesh === 'klinker') cobble++;
       }
     }
     if (samples && offN / samples > AUDIT.OFF_SHARE) { cats.add('off'); notes.push(`off carriageway ${(100 * offN / samples).toFixed(0)}%`); }
@@ -161,12 +185,13 @@ export function auditCrossings(all: readonly DrawnCrossing[], groundAt: GroundAt
       let on = 0, k = 0;
       // On the carriageway: the centre line and both edges (a stripe straddling a kerb is not owed).
       const e = spec.stripe / 2 - 0.05;
-      for (let t = -spec.len / 2 + 0.05; t < spec.len / 2; t += 0.1, k++) { const x = add(base, c.r, t); if (onCarriage(x[0], x[1]) && onCarriage(x[0] + n[0] * e, x[1] + n[1] * e) && onCarriage(x[0] - n[0] * e, x[1] - n[1] * e)) on++; }
+      const L = lenOf(c, spec);
+      for (let t = -L / 2 + 0.05; t < L / 2; t += 0.1, k++) { const x = add(base, c.r, t); if (onCarriage(x[0], x[1]) && onCarriage(x[0] + n[0] * e, x[1] + n[1] * e) && onCarriage(x[0] - n[0] * e, x[1] - n[1] * e)) on++; }
       const share = on / k, s = drawn.get(i);
       if (share < AUDIT.STRIPE_ON) continue;
       if (!s) { missing++; continue; }
       const got = s.pieces.reduce((acc, [p, q]) => acc + Math.hypot(q[0] - p[0], q[1] - p[1]), 0);
-      if (got < AUDIT.STRIPE_KEEP * share * spec.len) short++;
+      if (got < AUDIT.STRIPE_KEEP * share * L) short++;
     }
     let uneven = 0;
     const vs = c.stripes.map(s => dot(sub(add(s.pieces[0][0], sub(s.pieces[0][1], s.pieces[0][0]), 0.5), c.centre), n)).sort((a, b) => a - b);
@@ -175,6 +200,27 @@ export function auditCrossings(all: readonly DrawnCrossing[], groundAt: GroundAt
     // length of the row
     const row = Math.max(...lv) - Math.min(...lv) + spec.stripe;
     if (row < AUDIT.MIN_ROW_M - 0.05 || row > AUDIT.MAX_ROW_M + 0.05) { cats.add('length'); notes.push(`row ${row.toFixed(1)} m`); }
+    // short: along n through the crossing's centre, the road-level stations of the walking line (on over gaps up to
+    // WALK_GAP_M), each covered when a drawn stripe piece of any crossing lies within SHORT_REACH_M across and spans it.
+    if (!c.tramCut) {
+      const covered = (q: Vec2) => pieces.some(([p0, p1]) => {
+        const d = sub(p1, p0), l = Math.hypot(d[0], d[1]);
+        if (l < 1e-6) return false;
+        const u: Vec2 = [d[0] / l, d[1] / l], w = sub(q, p0), t = dot(w, u), off = Math.abs(dot(w, left(u)));
+        return t >= -0.05 && t <= l + 0.05 && off <= AUDIT.SHORT_REACH_M;
+      });
+      let road = 0, got = 0;
+      for (const sgn of [1, -1]) {
+        let gap = 0;
+        for (let t = sgn > 0 ? 0 : 0.25; t <= AUDIT.WALK_MAX_M; t += 0.25) {
+          const q = add(c.centre, n, sgn * t);
+          if (!onCarriage(q[0], q[1])) { if ((gap += 0.25) > AUDIT.WALK_GAP_M) break; continue; }
+          gap = 0; road++;
+          if (covered(q)) got++;
+        }
+      }
+      if (road && got / road < AUDIT.SHORT_SHARE) { cats.add('short'); notes.push(`drawn ${(100 * got / road).toFixed(0)}% of ${(road * 0.25).toFixed(1)} m road-level walking line`); }
+    }
     for (const k of cats) counts[k]++;
     if (cats.size) flagged.push({ at: mid, source: c.source, ref: c.ref, categories: [...cats], notes });
   });
