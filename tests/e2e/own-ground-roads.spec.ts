@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { openRoute } from './helpers';
 import { ROAD_SPOTS as DIAGNOSE_SPOTS, spotViewpoint } from '../../src/canalRecall/ownGround/roadRegressions';
@@ -110,6 +110,9 @@ async function settle(page: Page, ms = 3500): Promise<Record<string, any>> {
 test('roads: shots at the user spots and the deck regressions', async ({ page }, info) => {
   test.setTimeout(1_200_000);
   mkdirSync(OUT, { recursive: true });
+  // ROADS_EVIDENCE=<staged photo-evidence.json.gz>: shoot with staged photo evidence before it is published.
+  const staged = process.env.ROADS_EVIDENCE;
+  if (staged) await page.context().route('**/road-marks-v1/photo-evidence.json.gz', r => r.fulfill({ body: readFileSync(staged), contentType: 'application/gzip' }));
   const errors = await boot(page);
   const only = process.env.ROADS_ONLY?.split(',');
   const report: Record<string, unknown> = {};
