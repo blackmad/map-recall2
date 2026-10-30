@@ -164,7 +164,6 @@ export function buildDeRoos(_w: number, _d: number, b: BuildingTools) {
   {
     const c = vf.f, t = 2.35, p: V2 = [c.origin[0] + c.tangent[0] * t, c.origin[1] + c.tangent[1] * t];
     slab(k, c, t, H.villaTop, 1.9, 0.75, 2.2, 'stone', -2.2); // front in the wall plane, above the wall top
-    W(c, t, H.villaTop + 0.1, 0.9, 0.5, 0.06, 'glass');
     hipRoof(k, p[0] - 1.05, p[0] + 1.05, p[1] - 0.12, p[1] + 2.3, H.villaTop + 0.75, 0.5, 'slate', {ends: false, gableCol: 'stone'});
   }
   // risalit: cornice carried round, pediment (timpaan) on the garden side
