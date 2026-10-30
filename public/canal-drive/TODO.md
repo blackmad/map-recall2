@@ -1023,17 +1023,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
-  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
-  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
-  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
-  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
-- **Buildings over roads: re-scan as a check (2026-10-30).** After the
-  underground and void drops, about 375 footprints still cover ≥ 6 m of a
-  car-road centreline. The ones looked at are real (IJ-tunnel portals,
-  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
-  bridges), but the list has not been read end to end. Make the one-off scan
-  a check with an allowlist.
+- **Real buildings over car roads are solid to the ground (2026-10-30).**
+  `check:buildings-over-roads` lists 43 reviewed footprints on ≥ 20 m of car
+  road (`scripts/data/buildings-over-roads.json`): the ArenA over
+  Burgemeester Stramanweg, Station Noord over the Nieuwe Leeuwarderweg,
+  Oosterdokseiland, the IJ-tunnel and Piet Heintunnel portals, Science Park.
+  Each has a real roof (3DBAG roof cover ≥ 37 %), but it is drawn from the
+  ground, so a rider on a road that passes under it at street level rides
+  into a wall. Tunnelled roads (IJ-tunnel, Piet Heintunnel) are fine. Draw
+  the street-level passages from 3DBAG LoD1.3 parts, as Amstel station is
+  (`scripts/fill-over-road-holes.ts`, decks above `DECK_CLEARANCE_M`), and
+  take each one off the reviewed list. Also: the four Jan van Zutphenstraat
+  towers (`w1313016955`–`60`, no BAG match) are drawn at the 9 m default,
+  but the orthophoto shadows show high-rise blocks.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding

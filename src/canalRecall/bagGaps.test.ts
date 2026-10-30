@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ahnHeights, appendSupplement, fillDecision, findBagGaps, forBuildingTiles, quantile, supplementFeature, type RegisterPand } from './bagGaps';
+import { ahnHeights, appendSupplement, DECK_CLEARANCE_M, fillDecision, findBagGaps, forBuildingTiles, overRoadPartFeatures, quantile, supplementFeature, type RegisterPand } from './bagGaps';
+import { isPandId } from './bagTiles';
 import type { Ring, TileBuilding } from './landmarks/osmUnderModels';
 
 // ~20 m square at Prinsengracht 221-227 (the 2026-10-16 empty lot).
@@ -58,4 +59,20 @@ test('appendSupplement is idempotent and never doubles a drawn footprint', () =>
   const twice = appendSupplement(once.features, [a, b], ringsOf);
   assert.deepEqual(twice.added, []);
   assert.equal(twice.features.length, 2);
+});
+
+test('over-road parts: ground faces stand, faces over the road become decks, low ones over it go', () => {
+  const ring = sq(4.9178, 52.3465);
+  const faces = [
+    { rings: [ring], topM: 13.8, roadInsideM: 0, areaM2: 620 },
+    { rings: [ring], topM: 18.1, roadInsideM: 31, areaM2: 958 }, // Amstel station over the Julianaplein underpass
+    { rings: [ring], topM: 5.5, roadInsideM: 41, areaM2: 268 },
+    { rings: [ring], topM: 10.7, roadInsideM: 0, areaM2: 4 },
+  ];
+  const parts = overRoadPartFeatures('NL.IMBAG.Pand.0363100012145715', faces, 1939);
+  assert.deepEqual(parts.map(p => [p.properties.id, p.properties.minHeight]), [
+    ['part:NL.IMBAG.Pand.0363100012145715:0', 0],
+    ['part:NL.IMBAG.Pand.0363100012145715:1', DECK_CLEARANCE_M],
+  ]);
+  assert.ok(parts.every(p => !isPandId(p.properties.id)));
 });

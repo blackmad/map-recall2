@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+**Amstel station drawn from its roofs; raised OSM parts lifted; over-road check (2026-10-30).**
+Amstel station (BAG `0363100012145715`) was held unfilled because its outline
+covers the Julianaplein busway. Measured with a 3 m edge inset, the bus lanes
+only run along the hall's edges, and the PDOK orthophoto agrees. So
+`scripts/fill-over-road-holes.ts` now draws it from its eight 3DBAG LoD1.3
+roof faces: six stand on the ground, the north canopy is a deck 4.5 m up, and
+one sliver is left out. These are the `part:` features, and `check-bag-gaps`
+pins them.
+
+`building:min_level` had been read as metres, so a part tagged min_level 4
+started 4 m up instead of 12 m. `osmMinHeightM`
+(`src/canalRecall/osmMinHeight.ts`) now converts storeys: the part's height ÷
+its levels, or 3 m a storey when the levels are not tagged. OSM `roof`
+outlines with no base, such as bus and petrol-station canopies (Overkapping
+IJsei), are now 1 m slabs under their top instead of solid blocks. The new
+`scripts/fix-osm-min-level.ts` applies both rules to the published tiles:
+1,419 parts, with the expected values kept in `scripts/data/osm-min-levels.json`.
+`check:osm-min-level` keeps them on the rule.
+
+`check:buildings-over-roads` turns the one-off scan into a gate. It fails on
+any feature lower than 2.5 m (a part a rider fits under) that has ≥ 20 m of
+car-road centreline more than 3 m inside its outline, unless that feature is
+reviewed in `scripts/data/buildings-over-roads.json`, which records a reason
+for each. The first read found five 2026-10-16 gap fills that were tunnel
+mouths and viaduct decks drawn as 3–5 m boxes: Piet Heinkade (two), Eerste
+Constantijn Huygensstraat over the Vondeltunnel, and Johan van Hasseltweg
+(two). They are out of the supplement (1,598 fills) and held in
+`check-bag-gaps`. The other 43 are real buildings. The check runs in about
+2 s and is part of `check:canal`.
+
 **Covered-passage spec matched to the landmark era (2026-10-30).** The
 Cuyperspassage spec failed with "the shed is back". The train shed
 (w451533149) is one of the buildings the Centraal landmark model replaces, so

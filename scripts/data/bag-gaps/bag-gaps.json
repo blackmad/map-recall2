@@ -18,7 +18,7 @@
   "10-50": 2469,
   "<10": 4647
  },
- "filled": 1603,
+ "filled": 1598,
  "fillDecisions": {
   "too-small": 4647,
   "too-large": 12,
@@ -85180,6 +85180,8 @@
   }
  ],
  "rerun20261030": {
+  "unfilledOverRoad": ["NL.IMBAG.Pand.0363100012170698","NL.IMBAG.Pand.0363100012170750","NL.IMBAG.Pand.0363100012241657","NL.IMBAG.Pand.0363100012142986","NL.IMBAG.Pand.0363100012251792"],
+  "unfilledOverRoadNote": "2026-10-16 fills that stood on >= 20 m of car road (tunnel mouths and viaduct decks under Piet Heinkade, Eerste Constantijn Huygensstraat, Johan van Hasseltweg); taken out by check-buildings-over-roads.",
   "note": "Re-survey after underground drops and the large-hole/over-road rules; its fills are appended to the supplement, the 2026-10-16 survey above stands.",
   "holes": 6612,
   "fillDecisions": {
