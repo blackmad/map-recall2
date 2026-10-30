@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
+Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
+palettes (kit colours tuned for chunk likeness) as photo measurements; the
+blockface source's chroma ×0.60 times the city lift ×5.79 clamped every brick
+at C* 34 and rotated it red. Block-face houses now take their wall colour from
+the archived face strips (fitted to the thumbnails over 27 shared pands, dL
+−1.1, C ×0.77). The painted-or-brick decision (`paintClass.ts`) runs on colour
+normalised to one white point (the trim reference), which also fixed cream and
+buff walls that went through the brick lift into salmon (208 swatches → 0).
+`BRICK_MAX_L` is 60. Type palettes are unchanged on purpose. Sheet:
+`docs/images/look/colour-fixes-8spot-20261030.jpg`. The 167 strips that lived
+only in lane staging are archived in source-data (271c48e0d).
+
+**Analytics live (2026-10-30, #115).** The project is on Blaze, with a $0.00
+alert budget (an alert only, not a cap). `functions:analytics` is deployed in
+europe-west4, together with the Firestore rules and indexes, and container images
+are kept for 1 day. A `_Default` log-sink exclusion (`analytics-requests`) stops
+Cloud Run from keeping request logs with client IPs. The beacon goes straight to
+`https://europe-west4-map-recall2-blackmad.cloudfunctions.net/analytics`, because
+rideamsterdam.nl is served by Cloudflare Pages: a Firebase Hosting function rewrite
+crashed `build-pages-site.mjs`, which needs a `destination` on every rewrite (run
+41020836052), and Pages could not have used it anyway. A text/plain beacon needs no
+CORS, and the site sets no CSP. Checked on the live site: the bundle loads, the
+`session` beacon carries only allow-listed fields, and `analytics:report` counts it.
+
 **Modern side of the generic generator (#117, 2026-10-30).** The user approved it on 2026-10-29: "if we need a modern
 building side let it be modern". Before this, every dated post-1945 generic building drew smooth beige render with
 punched windows.

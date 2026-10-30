@@ -2874,6 +2874,11 @@ class VectorBasemap {
 
   _setBasemapOrientationPoisVisible(visible) {
     if (!this.map || !this.map.getStyle()) return;
+    // One label system on the map: the game's place pills (landmarks, bridges).
+    // Shop and café names drew beside them in a second style and read as
+    // clutter ("why two kinds of labels? too distracting", user 2026-10-30);
+    // `?shopNames=1` brings them back.
+    if (new URLSearchParams(window.location.search).get('shopNames') !== '1') visible = false;
     const pickLayers = window.CanalRecallOrientationPois
       && window.CanalRecallOrientationPois.basemapOrientationPoiLayerIds;
     if (!pickLayers) return;
