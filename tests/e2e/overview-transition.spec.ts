@@ -139,12 +139,12 @@ test('overview tiles: the Vondelpark lawn is the tiles\' lawn below the blend, n
   for (const z of [13.5, 14]) {
     await planZoom(page, z);
     const at = await page.evaluate(({ lng, lat }) => {
-      const m = (window as any).canalRecallGame.vectorMap.map, p = m.project([lng, lat]);
+      const m = (window as any).canalRecallGame.vectorMap.map, p = (window as any).canalRecallGame.vectorMap.camera.project([lng, lat]);
       const order = m.getStyle().layers as { id: string; type: string }[];
       const tiles = order.findIndex(l => l.id === 'canal-overview-ground');
       const over = [...new Set((m.queryRenderedFeatures([p.x, p.y]) as { layer: { id: string; type: string } }[])
         .filter(f => (f.layer.type === 'fill' || f.layer.type === 'line') && order.findIndex(l => l.id === f.layer.id) > tiles).map(f => f.layer.id))];
-      return { x: p.x, y: p.y, tiles, over, zoom: m.getZoom() as number, cssW: window.innerWidth };
+      return { x: p.x, y: p.y, tiles, over, zoom: (window as any).canalRecallGame.vectorMap.camera.zoom() as number, cssW: window.innerWidth };
     }, LAWN);
     expect(at.tiles, 'overview tiles layer present').toBeGreaterThanOrEqual(0);
     const { data, info: im } = await sharp(await page.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });

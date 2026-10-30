@@ -35,7 +35,7 @@ await page.waitForFunction(() => { const t = canalRecallGame.vectorMap._threeBui
 // Own ground (default; `?ownGround=0` opts out): wait for its streamed cells around the rider (built in a worker, installed one per frame).
 await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && !s.queued && !Object.keys(s.pending).length && Object.values(s.cells).includes(0); }, null, {timeout: 180000});
 await page.waitForTimeout(6000);
-const start = await page.evaluate(() => ({x: canalRecallGame.player.x, y: canalRecallGame.player.y, center: canalRecallGame.vectorMap.map.getCenter().toArray()}));
+const start = await page.evaluate(() => ({x: canalRecallGame.player.x, y: canalRecallGame.player.y, center: canalRecallGame.vectorMap.camera.center().toArray()}));
 const cdp = await page.context().newCDPSession(page);
 const throttle = device === 'touch' ? 4 : 1;
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: throttle});

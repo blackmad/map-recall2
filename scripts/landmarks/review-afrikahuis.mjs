@@ -104,7 +104,7 @@ try{
   ]){
    const info=await page.evaluate(({view,anchor})=>{const g=canalRecallGame,v=g.vectorMap,m=v.map,lon=111320*Math.cos(anchor[1]*Math.PI/180),coord=p=>[anchor[0]+p[0]/lon,anchor[1]-p[2]/110540],options=m.calculateCameraOptionsFromTo(coord(view.from),view.from[1],coord(view.to),view.to[1]);m.jumpTo(options);v._completeCity.followCamera();return{...view,requested:options};},{view,anchor:s.surveyed.anchor});
    await page.waitForTimeout(2600);await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return !b.pending.length&&!b.inflight.size;},null,{timeout:180000});
-   info.actual=await page.evaluate(()=>{const g=canalRecallGame,m=g.vectorMap.map;return{center:m.getCenter().toArray(),zoom:m.getZoom(),pitch:m.getPitch(),bearing:m.getBearing(),eye:{lngLat:m.transform.getCameraLngLat().toArray(),altitude:m.transform.getCameraAltitude()},rider:[g.player.x,g.player.y]};});
+   info.actual=await page.evaluate(()=>{const g=canalRecallGame,m=g.vectorMap.map;return{center:g.vectorMap.camera.center().toArray(),zoom:g.vectorMap.camera.zoom(),pitch:g.vectorMap.camera.pitch(),bearing:g.vectorMap.camera.bearing(),eye:{lngLat:m.transform.getCameraLngLat().toArray(),altitude:m.transform.getCameraAltitude()},rider:[g.player.x,g.player.y]};});
    await page.screenshot({path:path.join(out,view.name+'.png')});extension.views.push(info);
   }
   await page.evaluate(anchor=>{const v=canalRecallGame.vectorMap;v.map.setMaxPitch(60);v.map.setCenterClampedToGround(true);v.map.jumpTo({center:anchor,zoom:18.4,pitch:55,bearing:150});v._completeCity.followCamera();},s.surveyed.anchor);await page.waitForTimeout(2500);

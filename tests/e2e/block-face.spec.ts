@@ -104,7 +104,7 @@ for (const chunk of faces) {
         vm.sync = () => {}; map.stop(); map.setMaxPitch(90); map.setVerticalFieldOfView(fovDeg); map.setPadding({ top: padTop, bottom: 0, left: 0, right: 0 });
         const opts = map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, eyeAlt, { lng: target[0], lat: target[1] }, targetAlt);
         map.jumpTo(opts);
-        return { fov: +fovDeg.toFixed(1), pitch: +map.getPitch().toFixed(1), bearing: +map.getBearing().toFixed(1), cameraAltM: +map.transform.getCameraAltitude().toFixed(2) };
+        return { fov: +fovDeg.toFixed(1), pitch: +(window as any).canalRecallGame.vectorMap.camera.pitch().toFixed(1), bearing: +(window as any).canalRecallGame.vectorMap.camera.bearing().toFixed(1), cameraAltM: +map.transform.getCameraAltitude().toFixed(2) };
       }, { eye, eyeAlt, target, targetAlt, fovDeg, padTop });
       await page.waitForTimeout(4500);
       await page.screenshot({ path: `${OUT}/${chunk.name}-${info.project.name}-${name}.png` });

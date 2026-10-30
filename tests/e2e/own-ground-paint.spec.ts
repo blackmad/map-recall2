@@ -73,7 +73,7 @@ test('paint: the Nassaukade / Frederik Hendrikplantsoen junction carries its roa
     return s.ready && !s.queued && !Object.keys(s.pending ?? {}).length;
   }, { timeout: 180_000, intervals: [1000] }).toBe(true);
   await page.waitForTimeout(5000);
-  const at = await page.evaluate(({ lng, lat }) => (window as any).canalRecallGame.vectorMap.map.project([lng, lat]), JUNCTION);
+  const at = await page.evaluate(({ lng, lat }) => (window as any).canalRecallGame.vectorMap.camera.project([lng, lat]), JUNCTION);
   const vw = page.viewportSize()!, w = Math.min(640, vw.width), h = Math.min(320, vw.height);
   const box = { left: Math.round(Math.min(vw.width - w, Math.max(0, at.x - w / 2))), top: Math.round(Math.min(vw.height - h, Math.max(0, at.y - h / 2))), width: w, height: h };
   const png = await page.screenshot({ path: `${OUT}/${info.project.name}-junction.png` });
