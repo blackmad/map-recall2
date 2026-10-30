@@ -5,6 +5,10 @@
  *   BuildingTileStreamer.styled:    decorateBuildingFeature + vector-map's feature decorator
  *                                   (galleryPipeline.gameDecorator repeats _applyFeatureDecorator).
  */
+// The compiler bakes what the browser computes: Chrome's Math.cos/sin are correctly rounded, Node's are not
+// (one-ulp roofEavesHeightM differences, 2026-10-30 A/B). Every user of this pipeline (compile, verify, the
+// world-format tests) runs with the browser's functions; this import comes first. See browserMath.ts.
+import './useBrowserMath.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -31,7 +35,7 @@ export function inputHash(files: string[]): string {
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
   'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts',
-  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'scripts/world/compile.ts'].map(f => path.join(ROOT, f));
+  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 export const tileFile = (t: string) => path.join(EXTRACT, `building-tiles/14/${t}.geojson.gz`);

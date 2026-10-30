@@ -7,6 +7,7 @@
  * stale cells are the commonest cause of a world/default difference (2026-10-30: the four tiles under
  * Westerkerk differed because the building tiles were regenerated after the cells were compiled).
  */
+import './useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';

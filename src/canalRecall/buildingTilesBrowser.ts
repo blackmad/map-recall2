@@ -403,8 +403,11 @@ export class BuildingTileStreamer {
   private styled(feature: BuildingFeature): BuildingFeature {
     let out = this.decorated.get(feature);
     if (!out) {
-      // world-v1 carries the default chain's output (no appearance priors, the game decorator in force).
-      const baked = this.featureDecorator && !this.appearancePriors.size ? this.baked.get(feature) : undefined;
+      // world-v1 carries the default chain's output (no appearance priors, the game decorator in force). A runtime
+      // cell (format v2) carries only that output, so its feature is its own styled copy and is never re-decorated
+      // (decorating a decorated bag is not the default path); a DEBUG cell also carries the source bag.
+      const known = this.baked.get(feature);
+      const baked = known === feature || this.featureDecorator && !this.appearancePriors.size ? known : undefined;
       if (baked) out = baked;
       else {
         out = decorateBuildingFeature(feature, this.appearancePriors);

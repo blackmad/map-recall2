@@ -29,7 +29,14 @@ const SPOTS = [
   { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
   { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
 ] as const;
-const VARIANTS = [{ name: 'default', query: '' }, { name: 'world', query: '?world=v1' }] as const;
+// AB_SPOTS=westerkerk,nassaukade measures a subset (diagnosis runs).
+const SPOT_FILTER = (process.env.AB_SPOTS ?? '').split(',').filter(Boolean);
+const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.name)) : SPOTS;
+// AB_QUERY='&x=1' is added to both variants (e.g. `buildingSource=0`: the default path without MapLibre's copy of the
+// buildings, which world-v1 never makes). AB_NOISE=1 adds a second default run: default vs default2 is the noise floor.
+const AB_QUERY = (process.env.AB_QUERY ?? '').replace(/^[?&]/, '');
+const withQuery = (q: string) => (q || AB_QUERY ? `?${[q.replace(/^\?/, ''), AB_QUERY].filter(Boolean).join('&')}` : '');
+const VARIANTS = [{ name: 'default', query: withQuery('') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
 
 async function serve(page: Page) {
   // On the context, so a worker's cell fetches are served too.
@@ -86,7 +93,7 @@ for (const variant of VARIANTS) {
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     mkdirSync(OUT, { recursive: true });
     const spots: Record<string, any> = {};
-    for (const spot of SPOTS) {
+    for (const spot of RUN_SPOTS) {
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(3000);
       await park(page, spot.at, spot.face);
@@ -95,22 +102,26 @@ for (const variant of VARIANTS) {
       await page.waitForTimeout(800);
       const shot = `${OUT}/${spot.name}-${variant.name}.png`;
       await page.screenshot({ path: shot });
-      spots[spot.name] = await page.evaluate(() => {
+      spots[spot.name] = await page.evaluate((dumpIds: string[]) => {
         const vm = (window as any).canalRecallGame.vectorMap, city = vm._completeCity;
         const fnv = (s: string) => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16); };
-        const tiles: Record<string, string> = {}, ids: Record<string, [string, string][]> = {};
+        const tiles: Record<string, string> = {}, ids: Record<string, [string, string][]> = {}, dumped: Record<string, unknown> = {};
         for (const [key, features] of city.cache.entries()) {
           const styled = features.map((f: any) => city.styled(f));
           tiles[key] = fnv(JSON.stringify(styled));
           ids[key] = styled.map((f: any) => [String(f.properties?.id), fnv(JSON.stringify(f))]);
+          for (const f of styled) if (dumpIds.includes(String(f.properties?.id))) dumped[String(f.properties.id)] = f.properties;
         }
         const t = vm._threeBuildings?.stats?.() ?? {};
         return { usingWorldCells: !!city.usingWorldCells, publishing: city.isPublishing, status: city.status(), tiles, ids, three: { chunks: t.chunks, buildings: t.buildings, walls: t.walls, quads: t.quads, vertices: t.vertices, triangles: t.triangles },
-          decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null };
-      });
+          decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null, dumped };
+      }, (process.env.AB_DUMP_IDS ?? '').split(',').filter(Boolean));
       spots[spot.name].shot = shot;
       writeFileSync(`${OUT}/ids-${spot.name}-${variant.name}.json`, JSON.stringify(spots[spot.name].ids));
       delete spots[spot.name].ids;
+      // AB_DUMP_IDS=id,id: the styled properties of those buildings, to diff what differs.
+      if (Object.keys(spots[spot.name].dumped).length) writeFileSync(`${OUT}/dump-${spot.name}-${variant.name}.json`, JSON.stringify(spots[spot.name].dumped, null, 1));
+      delete spots[spot.name].dumped;
     }
     results[variant.name] = spots;
     writeFileSync(`${OUT}/${variant.name}.json`, JSON.stringify(spots, null, 2));
@@ -121,7 +132,7 @@ for (const variant of VARIANTS) {
 test('world ab: compare', async () => {
   const read = (n: string) => results[n] ?? JSON.parse(readFileSync(`${OUT}/${n}.json`, 'utf8'));
   const a = read('default'), b = read('world'), rows: Record<string, any> = {};
-  for (const spot of SPOTS) {
+  for (const spot of RUN_SPOTS) {
     const x = a[spot.name], y = b[spot.name];
     const common = Object.keys(x.tiles).filter(k => k in y.tiles), differing = common.filter(k => x.tiles[k] !== y.tiles[k]);
     const idsA = JSON.parse(readFileSync(`${OUT}/ids-${spot.name}-default.json`, 'utf8')), idsB = JSON.parse(readFileSync(`${OUT}/ids-${spot.name}-world.json`, 'utf8'));
@@ -133,8 +144,11 @@ test('world ab: compare', async () => {
         styledDiffer: [...a.keys()].filter(id => b.has(id) && a.get(id) !== b.get(id)), orderDiffers: orderA !== orderB };
     }
     const [ia, ib] = await Promise.all([x.shot, y.shot].map((f: string) => sharp(f).raw().toBuffer({ resolveWithObject: true })));
-    let px = 0; for (let i = 0; i < ia.data.length; i += ia.info.channels) if (ia.data[i] !== ib.data[i] || ia.data[i + 1] !== ib.data[i + 1] || ia.data[i + 2] !== ib.data[i + 2]) px++;
-    rows[spot.name] = { commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
+    const differ = (p: typeof ia, q: typeof ia) => { let n = 0, over30 = 0; for (let i = 0; i < p.data.length; i += p.info.channels) { const d = Math.abs(p.data[i] - q.data[i]) + Math.abs(p.data[i + 1] - q.data[i + 1]) + Math.abs(p.data[i + 2] - q.data[i + 2]); if (d) n++; if (d > 30) over30++; } return { n, over30 }; };
+    const px = differ(ia, ib).n, pxOver30 = differ(ia, ib).over30;
+    const noise = process.env.AB_NOISE ? differ(ia, await sharp(read('default2')[spot.name].shot).raw().toBuffer({ resolveWithObject: true })) : null;
+    const tiles2 = process.env.AB_NOISE ? read('default2')[spot.name].tiles : null;
+    rows[spot.name] = { commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixelsDifferingOver30: pxOver30, noiseFloor: noise && { pixelsDiffering: noise.n, pixelsDifferingOver30: noise.over30, sameTilesAsDefault: JSON.stringify(Object.keys(tiles2).sort()) === JSON.stringify(Object.keys(x.tiles).sort()), tilesWithDifferentFeatures: Object.keys(x.tiles).filter(k => k in tiles2 && tiles2[k] !== x.tiles[k]) }, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
   }
   writeFileSync(`${OUT}/compare.json`, JSON.stringify(rows, null, 2));
   const brief = (r: any) => ({ ...r, perTile: Object.fromEntries(Object.entries<any>(r.perTile).map(([k, t]) => [k, { ...t, onlyWorld: t.onlyWorld.length, onlyDefault: t.onlyDefault.length, styledDiffer: t.styledDiffer.length }])) });
