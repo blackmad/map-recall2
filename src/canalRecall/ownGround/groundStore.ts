@@ -601,19 +601,20 @@ export class GroundStore {
     // water, and the street mask cut them there, leaving the grey deck top as a jagged band across the road at both
     // ends (user 2026-10-16, a Prinsengracht bridge). The reach is read off the water polygons (the mask is built from these rings).
     const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []));
+    const wetGround = this.options.wetGround === false ? [] : this.wetGroundOf(roadsAround[around.indexOf(key)] ?? null, waterAround);
     const deckRingsAround: Vec2[][] = [
       ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
       // Ground polygons standing over mapped water at street height (a plein over a canal: the Muntplein over the Singel,
       // wetGround.ts): decks too, so the water mask never cuts them (user 2026-10-30, water through the Muntplein).
-      ...(this.options.wetGround === false ? [] : this.wetGroundOf(roadsAround[around.indexOf(key)] ?? null, waterAround)),
+      ...wetGround,
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
     ];
     return {
       key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.decks(key), deckRingsAround,
+      decks: this.decks(key), deckRingsAround, wetGround,
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
       // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.

@@ -476,9 +476,9 @@ export function deckEndMisses(cells: readonly BuiltCell[], deck: DeckLine, offse
  * Within `radiusM` of `at`, on a 1 m grid, every point under a BGT ground polygon (h = 0) must show a surface: at most
  * `maxWater` show only the water (topAcross 'none'); `pinMin`: with the wet-ground rule off at least this many (the pin is live).
  */
-export interface WetDeckRegression { id: string; label: string; at: [number, number]; radiusM: number; maxWater: number; pinMin: number }
+export interface WetDeckRegression { id: string; label: string; at: [number, number]; radiusM: number; maxWater: number; pinMin: number; /** A measured deck inside the plein: fewer parapet posts than with the rule off (no parapet over the plein's covered water). */ deck?: string }
 export const WET_DECKS: WetDeckRegression[] = [
-  { id: 'muntplein-singel', label: 'Muntplein over the Singel by the Muntsluis: no water through the plein', at: [4.89361, 52.36707], radiusM: 12, maxWater: 3, pinMin: 40 },
+  { id: 'muntplein-singel', label: 'Muntplein over the Singel by the Muntsluis: no water through the plein', at: [4.89361, 52.36707], radiusM: 12, maxWater: 3, pinMin: 40, deck: 'BRU0001' },
 ];
 export function wetDeckWater(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, index: RoadIndex): { probes: number; water: [number, number][] } {
   const water: [number, number][] = [];

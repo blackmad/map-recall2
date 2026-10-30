@@ -837,6 +837,11 @@ async function roadRegressions(): Promise<void> {
     const r = wetDeckWater(n.cells, [x, y], reg.radiusM, n.index), off = wetDeckWater((await neighbourhood(dry, x, y)).cells, [x, y], reg.radiusM, n.index);
     check(r.water.length <= reg.maxWater, `${reg.id} (${reg.label}): ${r.water.length}/${r.probes} probes on BGT ground show only water (≤ ${reg.maxWater})${r.water.length ? ` ${JSON.stringify(r.water.slice(0, 6))}` : ''}`);
     check(off.water.length >= reg.pinMin, `${reg.id}: without the wet-ground rule ${off.water.length} probes show water (≥ ${reg.pinMin}, the pin is live)`);
+    if (reg.deck) {
+      const posts = (cells: BuiltCell[]) => cells.reduce((a, c) => a + c.stats.bridges.decks.filter(d => d.id === reg.deck).reduce((b, d) => b + d.railingPosts, 0), 0);
+      const on = posts(n.cells), was = posts((await neighbourhood(dry, x, y)).cells);
+      check(on < was, `${reg.id}: ${reg.deck} parapet posts ${on} (without the wet-ground rule ${was}): no parapet over the plein's covered water`);
+    }
   }
   // Doubled lanes (lane roads-lanes 2026-10-23, R2) and the R4 artefact: at every ROAD_SPOTS crop no red lane ribbon
   // over a BGT cycle polygon and no OSM band surface over any BGT polygon; artifacts/roads/<spot>-vs-ortho.jpg written
