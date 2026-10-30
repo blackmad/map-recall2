@@ -46,7 +46,8 @@ import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
 import { finishBlurb } from './finishBlurb';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
-import { StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
+import { occlusionWanted, StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
+import { StreetLabelPlacement } from '../labels/labelFade';
 import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
@@ -771,15 +772,19 @@ export class GamePresentationRuntime {
     };
     // A name whose street a building hides is not drawn: the canvas paints
     // over every map layer (user 2026-10-25, Oude Doelenstraat). Pitched views only.
-    const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, pitched);
+    // Any tilted map, not only the pitched views: north- and heading-up tilt 14° (#122).
+    const tilted = occlusionWanted(pitched, (this.vectorMap as { map?: { getPitch?(): number } } | null)?.map?.getPitch?.());
+    const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, tilted);
     // Free Ride asks nothing, so every street and canal is named.
-    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText, hiddenBy);
+    // Names fade and follow their street on screen (labels/labelFade.ts, #122).
+    const placement = (this._streetLabelPlacement ||= new StreetLabelPlacement());
+    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
     else this.track.drawLabels(ctx, this.camera,
       (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
       asked, player,
       (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
         .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
-      shownText, hiddenBy);
+      shownText, hiddenBy, placement);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }

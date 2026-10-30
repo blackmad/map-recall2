@@ -3,6 +3,43 @@
  "notes": [
   {
    "date": "2026-10-30",
+   "title": "Ride off from a standstill on squares",
+   "text": "A bike that stopped on an open square such as the Nieuwmarkt could only back up; squares now ride like paving, so it pulls away forward again.",
+   "where": [
+    4.9003,
+    52.3723
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Calmer labels",
+   "text": "Map labels fade in and out instead of popping. Street names follow the direction of their street on screen, hide behind buildings in every tilted view, and each place keeps one label style at any distance."
+  },
+  {
+   "date": "2026-10-30",
+   "title": "No more flickering walls; Sea Palace fixed",
+   "text": "Neighbouring buildings whose walls stood a few centimetres apart no longer flicker against each other (Oosterdokseiland and about 2,000 other places). The Sea Palace and the Houseboat Museum no longer show a plain box inside them.",
+   "where": [
+    4.9065,
+    52.376
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Railway tracks",
+   "text": "Train, metro and separate tram lines now draw their tracks: a ballast bed with sleepers and rails, on bridges too. The wide rail corridor beside Dijksgracht and the approach to Centraal no longer look like empty sand.",
+   "where": [
+    4.915,
+    52.375
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "No more red and salmon brick",
+   "text": "Ordinary houses in De Pijp and the centre no longer draw in saturated red or salmon pink. Their colours now come from photos of the street itself, and cream and white painted fronts are recognised as paint."
+  },
+  {
+   "date": "2026-10-30",
    "title": "One kind of map label",
    "text": "Shop and café names no longer draw on the map beside the place labels, so landmarks and bridges are the only names you see while riding."
   },

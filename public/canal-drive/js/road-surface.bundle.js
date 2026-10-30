@@ -44,6 +44,7 @@ var CanalRecallRoadSurface = (() => {
     pickRoadContactPreferName: () => pickRoadContactPreferName,
     plazaAt: () => plazaAt,
     plazaGuardContact: () => plazaGuardContact,
+    plazaSurface: () => plazaSurface,
     roadNameAt: () => roadNameAt,
     roadsNear: () => roadsNear
   });
@@ -167,6 +168,10 @@ var CanalRecallRoadSurface = (() => {
       if (insideRing(plaza.ring, x, y) && edgeDistance(plaza.ring, x, y) >= index.inset) return plaza;
     }
     return null;
+  }
+  function plazaSurface(surface, index, x, y) {
+    if (surface === "asphalt") return surface;
+    return plazaAt(index, x, y) ? "asphalt" : surface;
   }
   function plazaGuardContact(contact, index, x, y) {
     if (!contact || contact.dist <= contact.width) return contact;

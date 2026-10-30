@@ -48,7 +48,9 @@ installed large recipes: 7 likeness-pass, 95 inferred, 14 gates-only).
 #110, #111 and #114 landed 2026-10-29 (HISTORY "Landmark lane, first run").
 First run: 10 buildable pands, 1 installed (Molenwerf 1), 7 held, 1
 no-evidence; round 2: 20 pands, 1 installed (094874), 18 held, 1
-no-evidence; 1.8 turns per reviewed building. Triage follow-up (HISTORY
+no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
+10 held, 4 of them on the 12k triangle budget alone (#125 needs-david);
+1.8 turns per reviewed building. Triage follow-up (HISTORY
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
@@ -187,17 +189,22 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
-  **Road look, continuity (user 2026-10-29, iPhone at the Witte de
-  Withstraat × Van Kinsbergenstraat: "why isn't the grey continuous?",
-  look over accuracy): brief `docs/handoffs/lane-road-look-continuity-20261029.md`,
-  opus. Diagnosis at the pinned spot: partition fine (R1 14.7 m², R2 0,
-  R3 3.7), but seven greys in one material each, the kerb step under a
-  pixel on the phone, asphalt as light as the pavement (144 vs 175), no
-  tram rails (no `embedded_rails` on the way; `railway=tram` never
-  fetched), red notched at every junction mouth, saturated courtyard
-  lawns. Steps: one material per level, kerb edge ≥ 1.5 px on the
-  iPhone frame, darker asphalt (user picks of three), red through
-  junctions, rails from `railway=tram`, muted courtyards. Not started.
+  **Zebras and the Muntplein (user 2026-10-30 screenshots)**: lane
+  `lane/zebra-munt-20261030` (opus), running. Zebras by Arcam (Prins
+  Hendrikkade × Kattenburgerstraat) break into pieces at every BGT polygon
+  edge; 45 crossings in cell 0_0 dropped on cycle lanes; the crossing audit
+  measures against the clipped polygon, so it passes them. Muntplein: water
+  through the bridge road, a brown klinker band, the tram wye reads as
+  wireframe, 3 of 5 zebras drawn. City-wide rule plus a new `short` audit
+  category; both spots pinned as regressions.
+  **Road look, continuity, left open** (shipped 2026-10-30 as look B, HISTORY
+  "Road look continuity"): the kerb edge is under 1.5 px on desktop at far
+  junctions (an `fwidth` ground-shader edge was not prototyped); the east kerb
+  at the Witte de Withstraat shows no shadow dip; road-way `cycleway=track`
+  sides are not bridged at junction mouths; the red band is 2 m on the OSM line,
+  not the BGT fietspad width (a thin dark sliver at the Witte mouth); tram rails
+  use one offset per way, so tracks that wander against the OSM way (Witte
+  ±1.9 m) need rails drawn from BGT spoor lines (new extract).
 - **build-hash-skip**: done 2026-10-23 (3 s no-change run). Open: four
   committed GLBs (compagnietheater, levend-paardenmuseum, mountain-network,
   pathe-de-munt) are not reproducible from current source; 8 haparandaweg-*
@@ -1016,6 +1023,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
+  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
+  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
+  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
+  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
+- **Buildings over roads: re-scan as a check (2026-10-30).** After the
+  underground and void drops, about 375 footprints still cover ≥ 6 m of a
+  car-road centreline. The ones looked at are real (IJ-tunnel portals,
+  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
+  bridges), but the list has not been read end to end. Make the one-off scan
+  a check with an allowlist.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1993,6 +2011,24 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
+  - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
+  - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
+  - At Cuyperspassage the station hall still hides the rider; the covered-passage x-ray should treat a slot like a building passage (`game.js`).
+  - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
+  - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
+  - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
+  - Pre-existing on main (2026-10-30, not tunnels): `covered-passage.spec.ts` fails "the shed is back". After riding out, `_threeBuildings.hidden` still holds w451533149 among ~400 ids, so something else keeps a large hidden set.
+
+- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
+  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
+  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
+  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
+  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
+  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
+
+  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;
   - window head shape: measureFacade reads no arched heads; dou-1-7 drew arches over flat-headed windows;
@@ -2032,19 +2068,29 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **MapLibre symbol labels draw over 3D buildings (#122 follow-up).** Neighbourhood names ("Oosterdokseiland") now fade but are not occluded by buildings. Also add `labelFade.test.ts` to `test:hud` explicitly (it runs today only via the `labelsOcclusion.test.ts` import).
+
+- **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
+
+- **Rail follow-ups (#124, 2026-10-30).**
+  - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
+  - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.
+  - Separate tram beds draw as ballast, but many are grass or concrete in Amsterdam (Piet Heinkade).
+  - No catenary masts.
+  - Fold the rail ways into the main own-ground Overpass query in `fetch-osm-ground.ts`.
+  - Measure the phone cost on a real iPhone (emulated +0.2–0.9 ms).
+
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp colour: the type palettes, not the profile.** Since #118 a buurt keeps its measured L*. Saenredamstraat still draws saturated red and Tweede Jan Steenstraat rosy pink, because those fronts take the De Pijp block-face type palettes (light brick, L* 39–52, C* 22–26). Re-measure those palettes against the strips.
-  - **Painted test after exposure.** Kerkstraat's white and grey fronts read as brick. The thumbnails are underexposed (white render reads about L* 55–60, under the painted cut of 62). Decide "painted" after the shared-frame offset, against a city white point.
+  - **De Pijp colour, what #121 left.** Profiles now take block-face colour from the face strips, not the type palettes, and salmon swatches went 208 → 0. Still wrong: the city brick chroma lift (×5.3 on thumbnail C* ≈ 5) pushes De Pijp brick to C* 14–24 where the photos are purple-grey, so Tweede Jan Steenstraat still draws rosy brown. KE01 painted share 0.36 looks high (sunlit strips read cream).
+  - **Kerkstraat whites.** The painted test now runs after white-point normalisation (#121), but Kerkstraat's fronts are drawn from the AG pool (painted share 0.17), so the hash still picks brick for white and grey fronts. Needs per-pand or per-street colour rather than the pool.
   - **Buurt profile tests have no npm script.** `src/canalRecall/buurtProfiles/*.test.ts` run only by hand.
   - **Saturation.** Fronts are still more saturated than the muted photos.
-  - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
   - **Modern blocks (#117, landed 2026-10-30). Open items:**
-    - **Per-pand modern walls are off.** `modern-pand-walls.json` is shipped empty. The 320 px thumbnail samples are too close and steep: at Haarlemmer Houttuinen, 8.6 m away at pitch 39°, balcony shadow read as dark brick. Gate on distance, pitch, shadow and whether the sampler's family agrees with derive's material before shipping per-pand walls.
     - **Misses on the 12-spot sheet:** Van Reigersbergenstraat (pale buff, drawn dark brown) and Sarphatistraat (dark grey brick, drawn white). Neither building was sampled.
     - **Use is thin.** OSM tags only about 4 % of post-1945 buildings. Add BAG `gebruiksdoel` (`.cache/bag-pand-uses`) to the building-facts rows.
     - **Not drawn yet:** set-back top floors, glazed, recessed or arcaded ground floors, and floor bands on brick. These need the one spare texture layer, or a roof or extras hook.
@@ -2151,25 +2197,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - The MapLibre layer `cycling-ferry-terminal-labels` shows "Centraal Station ⛴" twice, once per pontoon. Dedupe it.
   - Stale LOD1 note: the Beurs is still a generic brick mass. It lacks the Damrak arcade, the Beursplein entrance and the stepped gables.
 
-- **Gameplay analytics: built, waiting on Blaze and a deploy (#101, #115, 2026-10-29)**.
-  The client, the function, the rules, the report and the privacy text are on main
-  (HISTORY "Consent-free gameplay analytics"). Nothing is collected yet: the bundle
-  loads only when `CANAL_RUNTIME_CONFIG.analyticsEndpoint` is set. To turn it on:
-  1. The user upgrades `map-recall2-blackmad` to Blaze (`billingEnabled: false`
-     today; the Cloud Functions API has never been enabled).
-  2. `npx firebase-tools@15 deploy --only functions:analytics,firestore:rules,firestore:indexes --project map-recall2-blackmad`.
-  3. Add `{ "source": "/api/analytics", "function": { "functionId": "analytics", "region": "europe-west4" } }`
-     as the first `canalrecall` rewrite in `firebase.json`.
-  4. Add `ANALYTICS_ENDPOINT: /api/analytics` to the runtime-config step env in
-     `deploy-firebase.yml`.
-  5. Exclude Cloud Run request logs, which record client IPs (the command is in the
-     #115 hand-back).
-  Then feed `npm run analytics:report -- --buurt-json` into buurt-priority-by-ride.
-  Known limits: iOS may drop the beacon from a backgrounded tab, so read completion
-  as finished ÷ started; the public endpoint can be inflated (batch caps,
-  `maxInstances: 5`); the buurt lookup fetches the full coverage-v1 `buurten.json`
-  (~95 KB gzipped) once per ride, and a slim extract would be lighter; Firestore is
-  in nam5.
+- **Gameplay analytics follow-ups (live since 2026-10-30, HISTORY "Analytics live")**:
+  feed `npm run analytics:report -- --buurt-json <file>` into buurt-priority-by-ride
+  once a week of data exists. Known limits: iOS may drop the beacon from a
+  backgrounded tab, so read completion as finished ÷ started; the public endpoint
+  can be inflated (batch caps, `maxInstances: 5`); the buurt lookup fetches the full
+  coverage-v1 `buurten.json` (~95 KB gzipped) once per ride, and a slim extract
+  would be lighter; Firestore is in nam5.
 
 - **Dutch facts backlog (2026-10-23, HISTORY "Ride and Map Quest speak Dutch")**:
   1,564/2,351 facts carry a Dutch sentence; 787 still fall back to English

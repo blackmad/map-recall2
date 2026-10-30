@@ -1498,6 +1498,12 @@ export class ThreeBuildings {
     this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
   }
 
+  /** The canvas pixel ratio MapLibre renders at (the facade tier's rates are per CSS pixel). */
+  private pixelRatio(): number {
+    const ratio = (this.map as { getPixelRatio?: () => number }).getPixelRatio?.();
+    return typeof ratio === 'number' && Number.isFinite(ratio) && ratio > 0 ? ratio : 1;
+  }
+
   private newMaterial(): any {
     const THREE = this.THREE;
     // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
@@ -1508,11 +1514,11 @@ export class ThreeBuildings {
       const variant = LOOK_VARIANTS[this.look];
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
-        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() },
+        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) },
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
@@ -1520,7 +1526,7 @@ export class ThreeBuildings {
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: highlightDefines(),
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) } }, side: THREE.FrontSide,
     });
   }
 

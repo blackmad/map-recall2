@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {LIKENESS} from '../buildingRecipe/likeness.ts';
-import {cropAbstains, judgeWall, triageCandidate, wallFacesStreet, type TriageInput, type WallCrop, type WallInput} from './triage.ts';
+import {cropAbstains, judgeWall, OPEN_DECK_GLAZING, PAINTED_WALL_M, TOWER_COVER, triageCandidate, wallFacesStreet, type TriageInput, type WallCrop, type WallInput} from './triage.ts';
 
-const crop = (o: Partial<WallCrop> = {}): WallCrop => ({tag: 'w01-0', lengthM: 30, crop: true, capturedAt: '2022-05-01', cameraDistM: 15, obliquityDeg: 5, foliage: 0.05, washedOut: 0.05, missingFraction: 0, usable: 0.9, frontClass: 'punched', ...o});
+const crop = (o: Partial<WallCrop> = {}): WallCrop => ({tag: 'w01-0', lengthM: 30, crop: true, capturedAt: '2022-05-01', cameraDistM: 15, obliquityDeg: 5, foliage: 0.05, washedOut: 0.05, missingFraction: 0, usable: 0.9, frontClass: 'punched', basis: 'courses', glazing: 0.25, wallHeightM: 21.5, ...o});
 const wall = (name: string, o: Partial<WallCrop> = {}, street: string | null = 'Teststraat', lengthM = 30): WallInput => ({wall: name, lengthM, street, crops: [crop({tag: `${name}-0`, lengthM, ...o})]});
-const base = (walls: WallInput[], o: Partial<TriageInput> = {}): TriageInput => ({inTiles: true, covered: null, builtYear: 1990, heightM: 20, cropCapped: false, walls, ...o});
+const base = (walls: WallInput[], o: Partial<TriageInput> = {}): TriageInput => ({inTiles: true, covered: null, builtYear: 1990, heightM: 20, walls, ...o});
 
 test('crop abstains on the likeness thresholds, no restated numbers', () => {
   assert.deepEqual(cropAbstains(crop(), 1990), []);
@@ -46,12 +46,62 @@ test('buildable needs two judgeable street walls in the kit classes', () => {
   assert.equal(triageCandidate(base([wall('w01'), wall('w02'), wall('w03', {crop: false}, 'B', LIKENESS.wideWallM - 1)])).verdict, 'buildable');
 });
 
-test('kit gaps: curtain on a wide street wall, the crop cap', () => {
+test('kit gaps: curtain on a wide street wall unless the crop shows floor bands', () => {
   const c = triageCandidate(base([wall('w01'), wall('w02', {frontClass: 'curtain'})]));
   assert.equal(c.verdict, 'kit-gap'); assert.deepEqual(c.gaps, ['curtain']);
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {frontClass: 'curtain', floorBands: false})])).verdict, 'kit-gap');
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {frontClass: 'curtain', floorBands: true})])).verdict, 'buildable');
   assert.equal(triageCandidate(base([wall('w01'), wall('w02'), wall('w03', {frontClass: 'curtain'}, 'C', 9)])).verdict, 'buildable');
-  const t = triageCandidate(base([wall('w01'), wall('w02')], {heightM: 45, cropCapped: true, cropTopM: 32}));
+});
+
+test('tower: no judgeable street crop covers TOWER_COVER of the height', () => {
+  const t = triageCandidate(base([wall('w01', {wallHeightM: 32}), wall('w02', {wallHeightM: 32})], {heightM: 45}));
   assert.equal(t.verdict, 'kit-gap'); assert.deepEqual(t.gaps, ['tower']);
+  // a --max-height crop of one street wall reaching 80 % is evidence enough
+  const tall = triageCandidate(base([wall('w01', {wallHeightM: 32}), wall('w02', {wallHeightM: 45 * TOWER_COVER})], {heightM: 45}));
+  assert.equal(tall.verdict, 'buildable', tall.reasons.join());
+  // the tall crop is the one judged on a wall that has both
+  const w: WallInput = {wall: 'w01', lengthM: 30, street: 'A', crops: [crop({tag: 'w01-0', wallHeightM: 32, obliquityDeg: 1}), crop({tag: 'w01-0h70', wallHeightM: 46.5, obliquityDeg: 1})]};
+  assert.equal(judgeWall(w, 1990).crop, 'w01-0h70');
+  // an unjudgeable tall crop is no evidence
+  const foggy = triageCandidate(base([wall('w01', {wallHeightM: 32}), {wall: 'w02', lengthM: 30, street: 'T', crops: [crop({tag: 'a', wallHeightM: 32}), crop({tag: 'b', wallHeightM: 46.5, foliage: 0.6})]}], {heightM: 45}));
+  assert.deepEqual(foggy.gaps, ['tower']);
+});
+
+test('#119 painted-or-clad: the main front, or half the street wall, unresolved', () => {
+  const u = {basis: 'unresolved', family: null};
+  const p = triageCandidate(base([wall('w01', u, 'T', 40), wall('w02')]));
+  assert.equal(p.verdict, 'kit-gap'); assert.deepEqual(p.gaps, ['painted-or-clad']);
+  // half the judgeable street-wall length
+  assert.deepEqual(triageCandidate(base([wall('w01', {}, 'T', 30), wall('w02', u, 'T', 15), wall('w03', u, 'T', 15)])).gaps, ['painted-or-clad']);
+  // one shaded dark-brick wall of a brick building (Molenwerf 066028 w04): not decisive
+  assert.equal(triageCandidate(base([wall('w01', {}, 'T', 33), wall('w02', {}, 'T', 32), wall('w03', u, 'T', 20)])).verdict, 'buildable');
+  // the main front must be a wall of PAINTED_WALL_M or more
+  assert.equal(triageCandidate(base([wall('w01', u, 'T', PAINTED_WALL_M - 1), wall('w02', u, 'T', PAINTED_WALL_M - 1)])).verdict, 'buildable');
+  assert.equal(triageCandidate(base([wall('w01', {basis: 'colour', family: 'paint'}, 'T', 40), wall('w02')])).verdict, 'buildable');
+  // an unjudgeable crop's basis is not evidence
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02'), wall('w03', {...u, foliage: 0.6}, 'T', 10)])).verdict, 'buildable');
+});
+
+test('#119 band: a ribbon over punched windows on another storey of the same crop', () => {
+  const band = [{storey: 2, againstStorey: 1, ribbonM: 14}];
+  const b = triageCandidate(base([wall('w01'), wall('w02', {bandStoreys: band})]));
+  assert.equal(b.verdict, 'kit-gap'); assert.deepEqual(b.gaps, ['band']);
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {bandStoreys: []})])).verdict, 'buildable');
+  // a ribbon storey on a grid-class wall: the kit draws windows under it
+  assert.deepEqual(triageCandidate(base([wall('w01'), wall('w02', {ribbonStoreys: [2]})])).gaps, ['band']);
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {frontClass: 'ribbon', ribbonStoreys: [1, 2]})])).verdict, 'buildable');
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02'), wall('w03', {bandStoreys: band}, 'T', LIKENESS.wideWallM - 1)])).verdict, 'buildable');
+});
+
+test('#119 open-deck: no glazing and no courses on a parking pand', () => {
+  const deck = {glazing: OPEN_DECK_GLAZING - 0.01, basis: 'colour'};
+  const d = triageCandidate(base([wall('w01'), wall('w02', deck)], {use: 'overige gebruiksfunctie'}));
+  assert.equal(d.verdict, 'kit-gap'); assert.deepEqual(d.gaps, ['open-deck']);
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', deck)], {use: 'woonfunctie, overige gebruiksfunctie'})).verdict, 'buildable');
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', deck)], {use: 'osm parking (parking)'})).verdict, 'kit-gap');
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {...deck, basis: 'courses'})], {use: 'overige gebruiksfunctie'})).verdict, 'buildable');
+  assert.equal(triageCandidate(base([wall('w01'), wall('w02', {...deck, glazing: OPEN_DECK_GLAZING})], {use: 'overige gebruiksfunctie'})).verdict, 'buildable');
 });
 
 test('wallFacesStreet: in front within 30 m only', () => {

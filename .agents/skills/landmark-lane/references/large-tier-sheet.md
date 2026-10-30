@@ -12,11 +12,12 @@ rules a review turn applies. Update the numbers with each integration.
 | Ride-visible top 40 (#105, Opus hand passes) | 17 | 0 | 0 |
 | Skill self-test, triage-selected punched/ribbon fronts (2026-10-29) | 9 | 1 | 1 (Molenwerf 1; 5 holds on gates, 3 on kit gaps, 1 no-evidence) |
 | Round 2, the remaining 20 triage-buildable pands (2026-10-29) | 19 | 1 | 1 (pand 094874; 1 fix spent and held, 17 holds: 9 sheds/retail fronts triage should have filtered, 5 gates, 3 kit gaps) |
+| Round 3, towers unlocked by 70 m crops (2026-10-30) | 11 | 1 | 1 (pand 137174 after a blank-plinth fix; 4 holds on the 12k triangle budget, two with passing fronts, #125; 5 glass/band towers; 1 colour) |
 
-| Installed large recipes (all time) | 118 |
+| Installed large recipes (all time) | 119 |
 |---|---|
 | Likeness pass on every street group | 7 |
-| Installed with `--allow-inferred` notes | 97 |
+| Installed with `--allow-inferred` notes | 98 |
 | Gates only (pre-gate installs) | 14 |
 
 Reading: the tier installs almost nothing under "every street group must
@@ -45,8 +46,10 @@ from the crop by `measure.ts`.
    NZV, Stadsloket West and Rietveld stay FAIL for other reasons (storey
    count, dark spandrels the mask cannot separate, a blank crop, wall
    runs), so curtain fronts remain a per-house judgement, not a batch.
-2. **Towers.** Crops stop at 32 m (`rectify.ts wallHeight`,
-   `Math.min(..., 32)`), so upper storeys never have evidence.
+2. **Towers.** Crops stopped at 32 m until 2026-10-30; `all-walls.ts
+   --max-height=70 --suffix=h70` now covers them and triage reads the
+   crop's own height. The next tower blocker is the 12k triangle budget
+   (#125): a 10-storey grid with 20 bays passes likeness at 13k.
 3. **Curved and stepped fronts.** Crops pair to single 3DBAG facets
    (0.5 m, 5 degrees, 60 % overlap); a curved Amsterdam School corner
    splits into hundreds of facets that nothing pairs with.

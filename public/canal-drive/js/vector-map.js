@@ -35,8 +35,8 @@ const SHARED_FRAME_DEFAULT = false;
 // Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
 // stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
-const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261029-spans';
-const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js?v=20261028-touch-lod';
+const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261030-rails-tunnels';
+const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js?v=20261030-rails-tunnels';
 // The basemap's own ground fills and lines stay visible under the own ground:
 // they sit below the first 3D layer, so MapLibre draws them at the back of the
 // depth range and the own ground covers them wherever it is resident (the near
@@ -246,7 +246,9 @@ class VectorBasemap {
       interactive: false,
       pixelRatio: canalRecallPixelRatio(),
       attributionControl: false,
-      fadeDuration: 0,
+      // Symbol labels (neighbourhoods, the basemap's names) fade in and out
+      // rather than snap as the camera moves (user 2026-10-30, #122).
+      fadeDuration: 300,
       // MapLibre's default maxPitch is 60; Chase may sit lower (game/preferences.ts MAP_MAX_PITCH).
       maxPitch: canalRecallMaxPitch()
     });

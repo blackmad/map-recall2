@@ -47,15 +47,21 @@ function centroids(m: MeshArrays): [number, number, number][] {
 const build = (marks: RoadMark[], ways = WAYS, guessed = false) => buildSurveyMarkings({ ways, marks, ownsWay: () => true, ownsPoint: () => true, index, height: () => 0, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane }, guessedPaint: guessed });
 const onCarriage = (x: number, y: number) => index.classAt(x, y) === 'carriage';
 
-test('inrit and parking klinker draw as the muted brick layer; carriageway klinker and the rest keep their mesh', () => {
-  assert.equal(surfaceLayer('driveway', 'klinker'), 'brick');
-  assert.equal(surfaceLayer('parking', 'klinker'), 'brick');
+test('one material per level: every pavement class draws paving, the carriage level asphalt or klinker by surface', () => {
+  // Lane road-look-continuity 2026-10-29 (user: "why isn't the grey continuous?"): no brick layer, no asphalt at the
+  // sidewalk top; grass stays lawn, a fietsstraat section red, gravel gravel.
+  for (const cls of ['foot', 'pedestrian', 'driveway', 'island', 'berm', 'verge', 'square'] as const) {
+    for (const mesh of ['asphalt', 'klinker', 'paving', 'gravel'] as const) assert.equal(surfaceLayer(cls, mesh), 'paving', `${cls}/${mesh}`);
+    assert.equal(surfaceLayer(cls, 'grass'), 'lawn');
+  }
+  assert.equal(surfaceLayer('parking', 'klinker'), 'klinker');
   assert.equal(surfaceLayer('carriage', 'klinker'), 'klinker');
   assert.equal(surfaceLayer('parking', 'asphalt'), 'asphalt');
-  assert.equal(surfaceLayer('driveway', 'paving'), 'paving');
+  assert.equal(surfaceLayer('carriage', 'cycle'), 'cycle');
+  assert.equal(surfaceLayer('carriage', 'gravel'), 'gravel');
+  assert.equal(surfaceLayer('cycle', 'cycle'), 'cycle');
   // Issue #52: an asphalt traffic island is raised paving in the pavement tone (the photo reads it light, luma 214).
   assert.equal(surfaceLayer('island', 'asphalt'), 'paving');
-  assert.equal(surfaceLayer('berm', 'asphalt'), 'asphalt');
 });
 
 test('road-marks-v1: node tags → marks, and the cell encoding round-trips', () => {

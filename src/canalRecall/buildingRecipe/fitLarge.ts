@@ -29,6 +29,7 @@ import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
 import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import {fitBoxBalconies, type BoxBalconyFit} from '../blockBuilding/boxBalcony.ts';
+import {fitBalconyBands, type BalconyBandsFit} from '../blockBuilding/balconyBands.ts';
 import {fitStackedBlocks, type StackedBlocksFit} from '../blockBuilding/stackedBlocks.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
@@ -113,6 +114,8 @@ export interface LargeGroupFit {
   gallery?: GalleryFit[];
   /** closed box balconies on scattered (storey, bay) cells of the main panel (intent `boxBalconies`, blockBuilding/boxBalcony.ts) */
   boxBalconies?: BoxBalconyFit;
+  /** continuous balcony slabs with parapets on listed storeys, over every panel of the group (intent `balconyBands`, blockBuilding/balconyBands.ts) */
+  balconyBands?: BalconyBandsFit;
   /** stacked offset blocks and recessed balconies, storey by storey on the main panel (intent `stackedBlocks`, blockBuilding/stackedBlocks.ts) */
   stackedBlocks?: StackedBlocksFit;
   /** mansard storeys and their slate-textured slot */
@@ -582,6 +585,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.boxBalconies ? {boxBalconies: fitBoxBalconies(w.boxBalconies, w.boxBalconies.colour ? (palette[`box@g${gi}`] = swatch(w.boxBalconies.colour), `box@g${gi}`) : slots.frame)} : {}),
+      ...(w.balconyBands ? {balconyBands: fitBalconyBands(w.balconyBands, {slab: w.balconyBands.colour ? (palette[`slab@bb${gi}`] = swatch(w.balconyBands.colour), `slab@bb${gi}`) : slots.stone, rail: w.balconyBands.railColour ? (palette[`rail@bb${gi}`] = swatch(w.balconyBands.railColour), `rail@bb${gi}`) : slots.frame, glass: slots.glass})} : {}),
       ...(w.stackedBlocks ? {stackedBlocks: fitStackedBlocks(w.stackedBlocks, {wall: slots.wall, frame: slots.frame, glass: slots.glass, rail: (palette[`rail@sb${gi}`] = STACKED_BLOCK_RAIL, `rail@sb${gi}`)})} : {}),
       ...(w.gallery ? {gallery: fitGallery(w.gallery, {stone: slots.stone, timber: (k, colour) => { if (!colour) return slots.frame; const sl = `rail@gal${gi}k${k}`; palette[sl] = swatch(colour); return sl; },
         rail: (k, colour) => { const sl = `rail@gal${gi}k${k}r`; palette[sl] = swatch(colour); return sl; }})} : {}),

@@ -17,7 +17,7 @@ import { lod13RoofFaces, polygonAreaM2, splitTowerPodium, type RdPolygon } from 
 
 type Transform = { scale: [number, number, number]; translate: [number, number, number] };
 type Geometry = { type: string; lod?: string; boundaries: unknown; semantics?: { surfaces: { type: string }[]; values: unknown } };
-type CityObject = { type: string; attributes?: Record<string, unknown>; geometry?: Geometry[]; children?: string[] };
+export type CityObject = { type: string; attributes?: Record<string, unknown>; geometry?: Geometry[]; children?: string[] };
 export type CityJson = { transform: Transform; vertices: number[][]; CityObjects: Record<string, CityObject> };
 
 /** A ring of `[lng, lat]`, closed. */
@@ -348,4 +348,36 @@ export function readBagBuildings(city: CityJson, terrainAt?: TerrainAt): BagBuil
     });
   }
   return buildings;
+}
+
+/**
+ * Plan area of a pand's LoD2.2 roof faces over its LoD0 footprint area, or
+ * null without both. Lidar reads a street or plaza as ground, so a pand that is
+ * mostly an underground car park (Albert Cuypgarage, Museumplein) keeps roofs
+ * over a few percent of its outline; a tower over a podium keeps most of it.
+ */
+export function roofCoverOf(city: CityJson, object: CityObject): number | null {
+  const { scale, translate } = city.transform;
+  const rd = (index: number): [number, number] => {
+    const v = city.vertices[index];
+    return [v[0] * scale[0] + translate[0], v[1] * scale[1] + translate[1]];
+  };
+  const lod0 = object.geometry?.find(part => part.lod === '0' && part.type === 'MultiSurface');
+  if (!lod0) return null;
+  const footprint = (lod0.boundaries as number[][][]).reduce((sum, surface) => sum + polygonAreaM2(surface.map(ring => ring.map(rd))), 0);
+  let roof = 0, seen = false;
+  for (const child of object.children ?? []) {
+    for (const geometry of city.CityObjects[child]?.geometry ?? []) {
+      if (geometry.lod !== '2.2' || !geometry.semantics) continue;
+      seen = true;
+      const solid = geometry.type === 'Solid';
+      const faces = (solid ? (geometry.boundaries as number[][][][])[0] : geometry.boundaries as number[][][]);
+      const values = (solid ? (geometry.semantics.values as (number | null)[][])[0] : geometry.semantics.values as (number | null)[]) ?? [];
+      faces.forEach((face, i) => {
+        const surface = values[i];
+        if (surface !== null && surface !== undefined && geometry.semantics!.surfaces[surface]?.type === 'RoofSurface') roof += Math.abs(polygonAreaM2([face[0].map(rd)]));
+      });
+    }
+  }
+  return seen && footprint > 0 ? roof / footprint : null;
 }

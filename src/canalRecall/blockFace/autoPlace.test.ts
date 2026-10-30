@@ -88,6 +88,14 @@ test('evidence holds: no strip, a mostly grey strip', () => {
   assert.equal(d.kind === 'held' && d.stage, 'evidence');
 });
 
+test('evidence holds: a strip without its front (#120 gate) is held before the type match; a passing or absent gate changes nothing', () => {
+  const held = decidePand(types, pand({strip: strip({frontEvidence: {pass: false, reasons: ['sky over the roof in 6 % of columns'], skyCols: 0.06}})}), 'x', 'd');
+  assert.equal(held.kind === 'held' && held.stage, 'evidence');
+  assert.match(held.kind === 'held' ? held.reason : '', /no front on the strip: sky over the roof/);
+  const base = decidePand(types, pand(), 'x', 'd');
+  assert.deepEqual(decidePand(types, pand({strip: strip({frontEvidence: {pass: true, reasons: [], skyCols: 1}})}), 'x', 'd'), base);
+});
+
 test('crowns by skyline: narrow top = neck with hoist, wide top = box dormer, none, unread keeps the default', () => {
   const t = types[0];
   assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: {widthM: 2, riseM: 2.2, topWidthM: 0.7, centre: 0.5}}).name, 'neck-hoist');

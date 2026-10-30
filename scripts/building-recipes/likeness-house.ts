@@ -7,6 +7,8 @@
  */
 import {lightBands, type LightBand} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {measureFloorBands} from '../../src/canalRecall/buildingRecipe/floorBands.ts';
+import {rowOpenings} from '../../src/canalRecall/buildingRecipe/rowOpenings.ts';
+import {photoRowBands, type RowBands} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -43,11 +45,16 @@ export interface GroupLikeness {
     /** light horizontal bands across the wall (lightBands.ts), bottom to top; absent in older reports */
     lightBands?: LightBand[];
     /** floor bands at the storey lines of a glazed front (floorBands.ts `measureFloorBands`), with the wall colour; absent when none */
-    floorBands?: {share: number; lift: number; roof?: boolean; colour: string; heightM: number; liftM: number}};
+    floorBands?: {share: number; lift: number; roof?: boolean; colour: string; heightM: number; liftM: number};
+    /** the photo's ribbon storeys (bandFronts.ts `photoRowBands` on rowOpenings, the triage measurement); absent in older reports */
+    rowBands?: RowBands};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
 /** The measured floor bands as a `measured` field (only on a glazed front whose lines carry them). */
+/** The photo's per-storey ribbons, as triage reads them (wall-coloured runs cut a ribbon, rowOpenings `wallLike`). */
+const rowBandsOf = (photo: FacadeMeasurement, lines: number[]): RowBands => photoRowBands(rowOpenings({mask: photo.mask, cols: photo.cols, rows: photo.rows, cell: photo.cell, box: photo.box, lines,
+  wallLike: photo.labels && photo.clusters ? Uint8Array.from(photo.labels, c => (c >= 0 && photo.clusters![c]?.wall ? 1 : 0)) : undefined}));
 const floorBandsOf = (photo: FacadeMeasurement, lines: number[], panelTop: number) => { const p = photo.frontClass === 'blank' ? null : measureFloorBands(photo, lines, panelTop).proposal; return p ? {floorBands: {...p, colour: photo.wall.hex}} : {}; };
 const PPM = 50;
 
@@ -121,7 +128,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
         lightBands: lightBands(photo, g.lines, {image, wall: photo.wall.raw}),
         split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
         ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {}),
-        ...floorBandsOf(photo, g.lines, box.v1)}});
+        ...floorBandsOf(photo, g.lines, box.v1), rowBands: rowBandsOf(photo, g.lines)}});
   }
   return out;
 }
