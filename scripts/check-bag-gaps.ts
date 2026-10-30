@@ -62,7 +62,10 @@ const idsIn = (dir: string, key: string): Set<string> => {
   return ids;
 };
 const missing: Record<string, string[]> = { 'building-tiles': [], 'bag-tiles': [] };
+// A fill a passage runs through is drawn as its pieces (scripts/cut-building-passages.ts; check:building-passages checks them).
+const cutByPassage = new Set((JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/passages/passage-pieces.geojson'), 'utf8')) as { features: { properties: { pand: string } }[] }).features.map(f => f.properties.pand));
 for (const f of fills) {
+  if (cutByPassage.has(f.properties.id)) continue;
   const r = (f.geometry.type === 'Polygon' ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0]) as number[][];
   const c = r.reduce((a, p) => [a[0] + p[0] / r.length, a[1] + p[1] / r.length], [0, 0]);
   const key = tileKey(tileFor(c[0], c[1], 14));

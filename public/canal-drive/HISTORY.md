@@ -18,6 +18,51 @@ perf scripts against it. Browser verification of the migration is still
 pending: the lane's run was mis-scoped to all 638 tests and held the shared
 Playwright lock for two hours.
 
+**What's New notes link screenshots (2026-10-30).** User: notes should link
+to screenshots, kept in a separate repository so this one does not grow with
+every release. Each note may carry `images: [{src, alt, caption?}]`;
+`whats-new.html` renders them as lazy thumbnails under the text (full row on
+phones), opening the full picture in a new tab, and drops a thumbnail whose
+file is missing so a half-pushed note never shows a broken image. `src` is a
+path in `github.com/blackmad/map-recall2-screenshots`
+(`whats-new/YYYY-MM-DD-slug[-before|-after].jpg`, served from
+raw.githubusercontent.com) or a full URL. The rule is in CLAUDE.md, TODO's
+tracking paragraph and the lane hand-back template (SCREENSHOTS line).
+Verified at 1280 and 390 px with a stub notes file; the "In progress" strip
+on the same page was found to be stale (TODO P2).
+
+**Roads through buildings cut open; guessed heights measured (2026-10-30).**
+`scripts/cut-building-passages.ts` (`src/canalRecall/buildingPassages.ts`,
+polygon-clipping) takes every ridden OSM way tagged
+`tunnel=building_passage` or `covered=yes` (1,250 ways) and the tile features
+it runs through. Each becomes ground pieces either side of the road strip
+plus a deck over it: 474 buildings, 1,537 pieces, 573 decks. The deck starts
+4.5 m up over a street and 3.5 m over a poort, cycleway or service lane. A
+building too low to bridge the strip leaves it open, and a building a model
+hides is left whole. The pieces are `passage:<id>:<i>` features with the
+original id in `pand`. The originals are staged, so `--write` is idempotent
+and survives a tile rebuild. `check:building-passages` names Jan van
+Zutphenstraat, the Motorwal and Berchvliet. Tunnels (IJ-tunnel, Piet
+Heintunnel, Burgemeester Stramanweg under the ArenA) stay whole, since the
+ground layer cuts them. The over-road reviewed list drops from 43 to 29.
+
+The Jan van Zutphenstraat towers stood at 9 m: OSM-only outlines with no
+height or levels get the default. `osmHeightGuessed` (bagGaps.ts) now marks
+them, and `scripts/measure-guessed-heights.ts` measures each guess from AHN
+inside its own outline, unless OSM dates it after 2019, because AHN flew in
+2020; the gate's Elandsgracht kiosk (2023) caught that. 1,043 of 1,214 are
+measured (towers 37 m, sheds 2–3 m), stored in
+`scripts/data/osm-guessed-heights.json` and kept by `check:guessed-heights`.
+AHN sees the other 171 as flat, so they keep the guess. The gap survey no longer counts
+an OSM-only outline without a tagged height as drawing a pand (the 9 m default,
+or the new-build rules' 3.2 m / neighbour guesses), so an AHN-measured BAG
+fill replaces it (197 new fills; `appendSupplement` / `publish-bag-gaps` drop them in every tile). The
+exception is a gap whose AHN top stands ≥ 10 m over its p70
+(`mixed-under-guess`): there the guesses stay. The Jan van Zutphenstraat
+pands are an example: each covers its tower plus the garage under the lawn
+beside it, and one 37 m box would have stood on the lawn. The AHN raster
+code moved to `scripts/lib/ahnFootprint.ts`.
+
 **World compiler v1 merged, flag-off (2026-10-30, #130).** First piece of the
 engine programme's P2: `src/canalRecall/world/cellFormat.ts` (WRLD v1, 1 km
 own-ground cells, streams STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, decoders that

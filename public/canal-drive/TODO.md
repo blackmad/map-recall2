@@ -32,7 +32,11 @@ with "continue from the branch", model per `LANE-RULES.md`. The plan is
 bullet list below; the per-building state is
 `public/canal-drive/landmark-factory-queue.json` and the census. Visible
 changes go to `public/canal-drive/whats-new-notes.json` in the same commit
-that ships them (the What's New page renders it). Tracking (user, 2026-10-24):
+that ships them (the What's New page renders it), with a screenshot when the
+change can be seen (user, 2026-10-30): push the picture to
+`github.com/blackmad/map-recall2-screenshots` (`whats-new/<date>-<slug>.jpg`,
+before/after pairs welcome) and list it under the note's `images`; the game
+repository holds no new screenshots. Tracking (user, 2026-10-24):
 every question or action for the user is a GitHub issue labelled
 `needs-david` and assigned to blackmad, never only a chat line; each lane is
 an issue labelled `lane` (+ `programme`), commented with its hand-back and
@@ -1098,19 +1102,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Real buildings over car roads are solid to the ground (2026-10-30).**
-  `check:buildings-over-roads` lists 43 reviewed footprints on ≥ 20 m of car
-  road (`scripts/data/buildings-over-roads.json`): the ArenA over
-  Burgemeester Stramanweg, Station Noord over the Nieuwe Leeuwarderweg,
-  Oosterdokseiland, the IJ-tunnel and Piet Heintunnel portals, Science Park.
-  Each has a real roof (3DBAG roof cover ≥ 37 %), but it is drawn from the
-  ground, so a rider on a road that passes under it at street level rides
-  into a wall. Tunnelled roads (IJ-tunnel, Piet Heintunnel) are fine. Draw
-  the street-level passages from 3DBAG LoD1.3 parts, as Amstel station is
-  (`scripts/fill-over-road-holes.ts`, decks above `DECK_CLEARANCE_M`), and
-  take each one off the reviewed list. Also: the four Jan van Zutphenstraat
-  towers (`w1313016955`–`60`, no BAG match) are drawn at the 9 m default,
-  but the orthophoto shadows show high-rise blocks.
+- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
+  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
+  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
+  street that OSM does not tag as passing under them, on the reviewed list in
+  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
+  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
+  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
+  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
+  street runs under the building, tag the way in OSM or add a passage
+  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
+  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
+  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
+  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
+  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
+  on PDOK.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -2087,6 +2093,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **What's New "In progress" strip is stale (found 2026-10-30).** It renders
+  `poi-work-queue.json` rows whose status matches draft/in-progress/awaiting,
+  a queue nobody has written to since 2026-10-10. Of the nine rows shown, none
+  is live: the Jan Evertsenstraat generator pilot was retired 2026-10-14; the
+  Keizersgracht 73/Herengracht 54 and Leidsestraat/Kerkstraat one-off
+  ordinary builders were frozen (no model exists); the Nassaukade roof task,
+  street-profile entrances/crowns, dominant-building triage and the
+  large-ordinary pilot were all superseded by the kit lanes and the
+  dominant-building backlog; the signage policy has no owner; UvA
+  Roeterseiland shows REC B/C/D as a CPU draft while REC-A is installed and
+  the remaining builder is held. Decide the source (open `lane` issues, the
+  programme bullets above, or drop the strip) and point the page at it.
 
 - **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
   - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
