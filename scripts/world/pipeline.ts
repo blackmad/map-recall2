@@ -10,7 +10,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
 import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
-import { gameDecorator } from '../../src/canalRecall/galleryPipeline.js';
+import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
 import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 
@@ -42,9 +42,11 @@ export function gameChain() {
   for (const list of Object.values<string[]>(readJson(path.join(EXTRACT, 'landmark-buildings.json')).buildings ?? {})) for (const id of list) landmarkIds.add(String(id));
   setShopfronts(readJson(path.join(EXTRACT, 'shopfronts.json')));
   const decorate = gameDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
+  /** What vector-map installs with setFeatureDecorator (the streamer applies decorateBuildingFeature itself). */
+  const featureDecorator = gameFeatureDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
   const years = constructionYearEnricher(FILE_BASE, fileFetch);
   const enricher = roofFactsEnabled('') ? composeEnrichers(years, roofFactsEnricher(FILE_BASE, fileFetch)) : years;
-  return { decorate, enricher };
+  return { decorate, featureDecorator, enricher, fileFetch, fileBase: FILE_BASE };
 }
 
 export type Chain = ReturnType<typeof gameChain>;
