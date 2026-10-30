@@ -3,6 +3,15 @@
  "notes": [
   {
    "date": "2026-10-30",
+   "title": "Ride off from a standstill on squares",
+   "text": "A bike that stopped on an open square such as the Nieuwmarkt could only back up; squares now ride like paving, so it pulls away forward again.",
+   "where": [
+    4.9003,
+    52.3723
+   ]
+  },
+  {
+   "date": "2026-10-30",
    "title": "Calmer labels",
    "text": "Map labels fade in and out instead of popping. Street names follow the direction of their street on screen, hide behind buildings in every tilted view, and each place keeps one label style at any distance."
   },
