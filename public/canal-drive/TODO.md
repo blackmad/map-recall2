@@ -83,10 +83,12 @@ behind `?engine=own` (not edits to `vector-map.js`, which is frozen to fixes
 and deleted at the flip); all of MapLibre goes (ride, overview, picker);
 gates on the emulator and SwiftShader proxy, no real-device rides for now;
 Google tiles deleted; content lanes keep merging with a `world:compile` step.
-Lanes: L2 oracle migration + P0 deletions (`lane-oracle-migration-20261030.md`,
-haiku) → L1 engine host (`lane-engine-host-20261030.md`) ∥ L3 world compiler
-(`lane-world-compiler-20261030.md`, absorbs lane C) ∥ L8 driving feel (lane E)
-→ L4 streamer / L5 overlays → L6 facade shader (B) / L7 shadows (D). Gates per
+Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
+migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
+4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
+world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
+#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
 
