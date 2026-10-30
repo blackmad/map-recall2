@@ -2039,6 +2039,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **MapLibre symbol labels draw over 3D buildings (#122 follow-up).** Neighbourhood names ("Oosterdokseiland") now fade but are not occluded by buildings. Also add `labelFade.test.ts` to `test:hud` explicitly (it runs today only via the `labelsOcclusion.test.ts` import).
+
 - **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
 
 - **Rail follow-ups (#124, 2026-10-30).**

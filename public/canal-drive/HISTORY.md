@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Labels fade, one look, hidden behind buildings, along their streets (2026-10-30, #122).**
+Canvas street names and Free Ride pills had no fade, and MapLibre had `fadeDuration: 0`.
+`labelFade.ts` fades every label over 300 ms, holds a label that lost its place for 250 ms,
+places last frame's labels first, and drops quiz spoilers at once. Snaps on a De Ruijterkade
+ride went 3.5/s → 0 on desktop. Klimmuur Centraal switched between the canvas marker pill
+(< 320 m) and the DOM landmark plaque; Free Ride catalogue landmarks now draw as the pill at
+any distance. Street-name occlusion was gated on chase/cockpit only, although north-up and
+heading-up tilt 14°; it now follows the real pitch (≥ 5°) and tests both text ends at 70 %.
+Names sat across their streets because the angle was map bearing minus camera rotation;
+`screenTextAngle()` projects the street onscreen. Shop and café names are hidden by default
+(`?shopNames=1`).
+
 **Near-coplanar walls and boat suppression (2026-10-30, #123).** Oosterdokseiland
 striped because `coplanarSurfaces.ts` only culled shared walls matching within
 2 mm: duplicated OSM building parts and sliver-overlapping BAG/OSM footprints
