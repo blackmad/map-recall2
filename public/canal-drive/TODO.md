@@ -2032,6 +2032,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **Rail follow-ups (#124, 2026-10-30).**
+  - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
+  - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.
+  - Separate tram beds draw as ballast, but many are grass or concrete in Amsterdam (Piet Heinkade).
+  - No catenary masts.
+  - Fold the rail ways into the main own-ground Overpass query in `fetch-osm-ground.ts`.
+  - Measure the phone cost on a real iPhone (emulated +0.2–0.9 ms).
+
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**

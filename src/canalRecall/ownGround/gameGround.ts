@@ -51,6 +51,7 @@ import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
+import { RAIL_TONES, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
@@ -76,6 +77,8 @@ export interface OwnGroundOptions {
   minZoom?: number;
   /** Park surfaces and furniture from parks-v1 (default on; `?parks=0` or `window.__canalRecallParks = false` turns them off). */
   parks?: boolean;
+  /** Railway tracks from rail-v1 (railTracks.ts; default on; `?rails=0` or `window.__canalRecallRails = false` turns them off). */
+  rails?: boolean;
   /** The far ring beyond the resident cells from the air (default on). */
   far?: boolean;
   /**
@@ -169,6 +172,13 @@ function compactFlag(): boolean {
   return g.__canalRecallCompactGround !== false;
 }
 
+/** The rails flag from the page: `?rails=0` or `window.__canalRecallRails = false` turns the railway tracks off. */
+function railsFlag(): boolean {
+  const g = globalThis as { __canalRecallRails?: boolean; location?: { search?: string } };
+  if (g.__canalRecallRails === false) return false;
+  return !/[?&]rails=0\b/.test(g.location?.search ?? '');
+}
+
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
 function parksFlag(): boolean {
   const g = globalThis as { __canalRecallParks?: boolean; location?: { search?: string } };
@@ -230,7 +240,7 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
 /** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
-const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram']);
+const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram', 'track']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
@@ -302,7 +312,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -315,7 +325,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, roads: this.opts.roads, reliefTile: this.reliefLoader(root) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -324,7 +334,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -736,6 +746,18 @@ export class OwnGround {
       paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
       // Dark grooves (issue #52): the tram rails, matte (the kerbs' shadow lines take the same tone, roadSurfaces kerbShadowTint).
       tram: std({ color: STREET_GROUND.rail, roughness: 0.9 }),
+      // Railway tracks (railTracks.ts, issue #124): grey-brown ballast with concrete sleepers every 0.6 m across the bed's
+      // top (u across, v along the track, one SLEEPER_TILE_M tile), the shoulders sampling the gravel column at u ≈ 0.
+      ballast: std({ map: this.canvasTexture(256, SLEEPER_TILE_M, (g, s) => {
+        noise(g, s, RAIL_TONES.ballast, 30, 2);
+        const px = s / SLEEPER_TILE_M, sl = RAIL_TONES.sleeper;
+        for (let y = 0; y < SLEEPER_TILE_M - 0.01; y += SLEEPER_TILE_M / 5) {
+          const v = (rnd() - 0.5) * 10;
+          g.fillStyle = `rgb(${sl[0] + v},${sl[1] + v},${sl[2] + v})`;
+          g.fillRect(0.25 * px, (y + 0.17) * px, (SLEEPER_TILE_M - 0.5) * px, 0.26 * px);
+        }
+      }), roughness: 1 }),
+      track: std({ color: `rgb(${RAIL_TONES.track.join(',')})`, roughness: 0.55, metalness: 0.2 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),

@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Railway tracks (2026-10-30, #124).** The own-ground extract fetched only
+highways and areas, so separated rail corridors (Dijksgracht beside Piet
+Heinkade, the Centraal approach, Muiderpoort, Amstel) drew as empty sand.
+`scripts/own-ground/build-rail-tracks.ts` cuts rail, metro and own-bed tram
+ways from the archived Amsterdam PBF into a versioned `rail-v1` extract (139
+cells, 226 KB gz). Tunnels are dropped, and street-running trams are left to
+`embedded_rails`. `railTracks.ts` draws a raised ballast bed with a sleeper
+texture and two ridge rails, merged per cell into `ballast`/`track` layers.
+Bridges run on a straight line between their end heights over a deck slab, and
+level crossings are flat. Desktop frame time is unchanged within noise. `?rails=0`
+turns it off. Regression: the Dijksgracht corridor has ≥ 6 tracks.
+
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
 palettes (kit colours tuned for chunk likeness) as photo measurements; the
