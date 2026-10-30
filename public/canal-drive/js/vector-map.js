@@ -140,8 +140,6 @@ class VectorBasemap {
     this.container = container;
     this.map = null;
     // Camera oracle for specs and scripts (engine programme P0, lane L2).
-    // TODO(L1): add `/** @implements {import('../../../src/canalRecall/engine/worldViewApi').WorldView} */`
-    // once worldViewApi.ts exists on main.
     this.camera = this._cameraFacade();
     this.ready = false;
     this.theme = 'clean';

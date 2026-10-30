@@ -179,10 +179,10 @@ export class CameraMap {
     const self = this;
     this.api = {
       project: p => { const s = self.camera.project(p); return { x: s.x, y: s.y }; },
-      unproject: p => self.camera.unproject(Array.isArray(p) ? p[0] : (p as ScreenPoint).x, Array.isArray(p) ? p[1] : (p as ScreenPoint).y),
-      center: () => ({ lng: self.camera.lng, lat: self.camera.lat }),
+      unproject: p => self.unproject(p),
+      center: () => lngLatObject(self.camera.lng, self.camera.lat),
       zoom: () => self.camera.zoom,
-      bounds: () => self.camera.bounds(),
+      bounds: () => boundsObject(self.camera.bounds()),
       pitch: () => self.camera.pitch,
       bearing: () => self.camera.bearing,
       onFrame: cb => { const l = () => cb(); self.host.on('render', l); return () => self.host.off('render', l); },

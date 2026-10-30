@@ -47,11 +47,13 @@ export type ViewBounds = { west: number; south: number; east: number; north: num
 export interface WorldCamera {
   /** lng/lat (ground, z = 0) → CSS px of the map canvas. */
   project(lngLat: LngLatLike): ScreenPoint;
-  /** CSS px → the ground point under it (null above the horizon in the own view; MapLibre clamps). */
+  /** CSS px → the ground point under it (above the horizon both clamp to the far ground). */
   unproject(point: ScreenPoint | readonly [number, number]): LngLat | null;
-  center(): LngLat;
+  /** MapLibre's LngLat shape: `toArray()` too (migrated specs use it). */
+  center(): LngLat & { toArray?(): [number, number] };
   zoom(): number;
-  bounds(): ViewBounds | null;
+  /** Plain numbers and MapLibre's `getWest()`… accessors. */
+  bounds(): (ViewBounds & { getWest?(): number; getEast?(): number; getSouth?(): number; getNorth?(): number }) | null;
   /** Degrees from straight down. */
   pitch(): number;
   /** Degrees clockwise from north. */
