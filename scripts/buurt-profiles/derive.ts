@@ -14,9 +14,10 @@
  *  - the BAG year mix of every pand in the area.
  * Areas are the Gemeente Amsterdam gebieden (CC0): a buurt keeps its own profile with >= MIN_N measured fronts, else
  * its wijk's pooled profile with >= MIN_N, else none (city default). Per era likewise (>= MIN_ERA_N fronts).
- * Measured colours come from overcast and sunlit photos alike and read darker than the city palette; each source is
- * calibrated so its city-wide brick median lands on the city palette's (PERIOD_WALLS photo) brick median in Lab
- * lightness and chroma, keeping each buurt's difference from the city (hue, relative lightness, painted share).
+ * Measured colours come from overcast and sunlit photos alike and read darker than the city palette; every source is
+ * brought onto the panorama thumbnails' frame by the offset measured on pands both cover, then one city-wide
+ * transform moves that frame to the city palette's (PERIOD_WALLS photo) brick median (buurtProfiles/exposure.ts,
+ * #118), so a buurt keeps its measured lightness, hue and painted share relative to the city.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,18 +26,26 @@ import sharp from 'sharp';
 import { measureBrickTone, rgbToLab, labToRgb } from '../../src/canalRecall/look/brickTone.ts';
 import { cropNormaliser, masonryFamily, lch } from '../../src/canalRecall/facade/cropWallColour.ts';
 import { PERIOD_WALLS, periodForYear, type Period } from '../../src/canalRecall/look/palette.ts';
+import { fitExposure, applyExposure, median, hueMedian, hueOf, chromaOf } from '../../src/canalRecall/buurtProfiles/exposure.ts';
 import { validateProfileSet, type BuurtProfile, type BuurtProfileSet, type EraProfile, type WeightedHex } from '../../src/canalRecall/buurtProfiles/profiles.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
 const WALLS = arg('walls') ?? path.join(process.env.HOME ?? '', 'Code/map-recall2-source-data/pand-reference-walls');
-const OUT = path.resolve('staging/buurt-profiles');
+const OUT = path.resolve(arg('out') ?? 'staging/buurt-profiles');
 const CACHE = path.resolve('.cache/buurt-profiles');
 /**
  * Brick chroma target as a share of the city palette's median (first sheet, 2026-10-29: at the full median, Saenredam-
  * and Stalpertstraat's measured dark red-brown drew as saturated pink-red and Jan Steenstraat's brown as ochre beside
- * photos of purple-brown and dark brown brick). Lightness keeps the city level (brighter palette, priorities 2026-10-16).
+ * photos of purple-brown and dark brown brick). 
  */
 const BRICK_CHROMA_SHARE = 0.75;
+/**
+ * Share of the reference frame's lightness gap to the city palette (thumbnail brick median L* 35 vs palette 43) that
+ * every buurt is lifted by. 0 (#118, user 2026-10-29 "if it's darker let it be darker"): a buurt keeps the L* its
+ * photos measure; on the 12-spot sheet the unlifted brick sat closer to the panoramas (Ten Kate-, Kerk-, Runstraat)
+ * than the +8 L* lift. --lift-share=1 restores the #102 city level for comparison.
+ */
+const CITY_LIFT_SHARE = 0;
 const MIN_N = 12, MIN_ERA_N = 8, SWATCHES = 10, CELL_M = 40;
 const BBOX = { west: 4.80, east: 4.98, south: 4.0 + 48.32, north: 52.42 };
 fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync(CACHE, { recursive: true });
@@ -184,38 +193,13 @@ for (const face of fs.readdirSync('scripts/block-face/faces')) {
 }
 console.log('block-face houses', bfHouses, 'used', bfUsed);
 
-// Calibration: each source's city-wide brick median -> the city palette's brick median (Lab L and C).
-const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[s.length >> 1] : NaN; };
+// Calibration (#118): every source onto the panorama thumbnails' frame by the offset on pands both cover, then ONE
+// city-wide transform to the city palette's brick (src/canalRecall/buurtProfiles/exposure.ts). A buurt keeps its
+// measured lightness difference from the city whichever source measured it.
 const paletteBricks = (['canal', 'c19', 'school'] as const).flatMap(p => PERIOD_WALLS.photo[p] ?? []).map(h => hexLab(h)!).filter(l => masonryFamily(labToRgb(l)) === 'brick');
-const hueOf = (l: number[]) => (Math.atan2(l[2], l[1]) * 180 / Math.PI + 360) % 360;
-/** Circular median: the sample hue minimising the summed angular distance. */
-const hueMedian = (hs: number[]) => hs.length ? hs.reduce((best, h) => { const d = hs.reduce((s, x) => s + Math.abs(((x - h + 540) % 360) - 180), 0); return d < best.d ? { h, d } : best; }, { h: hs[0], d: Infinity }).h : 0;
-const ref = { L: median(paletteBricks.map(l => l[0])), C: median(paletteBricks.map(l => Math.hypot(l[1], l[2]))), h: hueMedian(paletteBricks.map(hueOf)) };
-const calibration: Record<string, { L: number; C: number; h: number; n: number }> = {};
-for (const src of ['pano', 'thumb', 'blockface'] as const) {
-  const bricks = samples.filter(s => s.source === src && s.lab && !s.painted).map(s => s.lab!);
-  calibration[src] = { L: median(bricks.map(l => l[0])), C: median(bricks.map(l => Math.hypot(l[1], l[2]))), h: hueMedian(bricks.slice(0, 400).map(hueOf)), n: bricks.length };
-}
-/**
- * One source's brick median -> the city palette's (lightness offset, chroma ratio, hue rotation), so the city's overall
- * level stays where the look lane put it and only the differences between buurten come from the photos. Painted
- * walls keep half their measured tint (white and grey paint have little to correct) and take the lightness offset.
- * Brick stays inside cropWallColour's brick family bounds (C* <= 0.9 L* + 8), C* 12-34 (the photos' brick is never as loud as the city palette's orange), L* <= 72.
- */
-/** Brick hues stay red to brown (Lab hue 32-56; second sheet: 24 drew salmon-pink fronts in De Pijp and 66 ochre ones on Jan Steen- and Van Breestraat); a near-grey photo wall's hue is noise, so it takes the city's. */
-const brickHue = (h: number) => { const x = ((h % 360) + 360) % 360; return x > 200 ? 32 : Math.max(32, Math.min(56, x)); };
-const calibrate = (s: Sample): number[] => {
-  const c = calibration[s.source], [L, a, b] = s.lab!;
-  const L2 = Math.max(14, Math.min(92, ref.L + (L - c.L)));
-  // Paint keeps half its measured tint: the thumbnails' white balance gives white render a sky-blue or warm cast
-  // (first sheet: Tweede Egelantiersdwarsstraat drew a pale cyan front, #b4c3c2).
-  if (s.painted) return [L2, a * 0.5, b * 0.5];
-  if (!(c.n >= 10)) return [L2, a, b];
-  // Bare brick is never lighter than L* 72 (lighter is sun glare or a pale stone band) nor greyer than C* 12 (a shaded
-  // wall's lost colour; its hue still says red or brown).
-  const Lb = Math.min(72, L2), C = Math.max(12, Math.min(34, 0.9 * Lb + 8, Math.hypot(a, b) * BRICK_CHROMA_SHARE * ref.C / c.C)), h = brickHue(Math.hypot(a, b) < 4 ? ref.h : hueOf(s.lab!) + ref.h - c.h) * Math.PI / 180;
-  return [Lb, C * Math.cos(h), C * Math.sin(h)];
-};
+const ref = { L: median(paletteBricks.map(l => l[0])), C: median(paletteBricks.map(chromaOf)), h: hueMedian(paletteBricks.map(hueOf)) };
+const exposure = fitExposure(samples, ref, { reference: 'thumb', chromaShare: BRICK_CHROMA_SHARE, liftShare: Number(arg('lift-share') ?? CITY_LIFT_SHARE) });
+const calibrate = (s: Sample): number[] => applyExposure(exposure, s.source, s.lab!, s.painted);
 const toHex = (lab: number[]) => '#' + labToRgb(lab).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 
 /** Ten quantile swatches over lightness, each the median a/b of its slice. */
@@ -245,6 +229,7 @@ function eraProfile(list: Sample[]): EraProfile | undefined {
 // Assign samples and pands to buurten.
 const sampleBuurt = new Map<Sample, Area | null>();
 for (const s of samples) { const p = pands.get(s.pand)!; sampleBuurt.set(s, buurtOf(p.lng, p.lat)); }
+if (process.argv.includes('--dump-samples')) fs.writeFileSync(path.join(OUT, 'samples.json'), JSON.stringify(samples.map(s => ({ ...s, buurt: sampleBuurt.get(s)?.code, name: sampleBuurt.get(s)?.name, wijk: sampleBuurt.get(s)?.wijk, cal: s.lab ? calibrate(s) : undefined }))));
 const yearMixOf = new Map<string, Partial<Record<Period, number>>>();
 for (const p of pands.values()) {
   if (p.lng < BBOX.west || p.lng > BBOX.east || p.lat < BBOX.south || p.lat > BBOX.north || !p.year) continue;
@@ -303,7 +288,7 @@ fs.writeFileSync(path.join(OUT, 'buurt-profiles.json'), JSON.stringify(set));
 
 // Report.
 const lines = [`# Buurt profiles ${revision}`, '', `Samples: ${samples.length} (panorama walls ${panoUsed} of ${panoSeen} pands archived; panorama thumbnails ${thumbUsed}; block-face houses ${bfUsed} of ${bfHouses}).`,
-  `Calibration: city palette brick L ${ref.L.toFixed(1)} C ${ref.C.toFixed(1)} h ${ref.h.toFixed(0)}; ${Object.entries(calibration).map(([k, v]) => `${k} brick median L ${v.L.toFixed(1)} C ${v.C.toFixed(1)} h ${v.h.toFixed(0)} (n ${v.n})`).join('; ')}.`,
+  `Calibration (#118, one shared reference): city palette brick L ${ref.L.toFixed(1)} C ${ref.C.toFixed(1)} h ${ref.h.toFixed(0)}; reference ${exposure.reference} brick median L ${exposure.referenceMedian.L.toFixed(1)} C ${exposure.referenceMedian.C.toFixed(1)} h ${exposure.referenceMedian.h.toFixed(0)}; city transform L ${exposure.city.lift >= 0 ? '+' : ''}${exposure.city.lift.toFixed(1)}, C x${exposure.city.chroma.toFixed(2)}, h ${exposure.city.dh.toFixed(0)}; sources ${Object.entries(exposure.sources).map(([k, v]) => `${k} dL ${v.dL.toFixed(1)} C x${v.chroma.toFixed(2)} dh ${v.dh.toFixed(0)} (${v.via}, ${v.pairs} shared pands, n ${v.n})`).join('; ')}.`,
   `Grid ${cols} x ${rows} cells of ${CELL_M} m, ${runs.length} runs; ${profiled.length} buurten mapped to ${profiles.length} profiles (${profiles.filter(p => p.level === 'buurt').length} buurt-level, ${profiles.filter(p => p.level === 'wijk').length} wijk-level pools).`, '',
   '| code | name | level | n | confidence | eras (n) | painted | pale accents | arch | tall | dark frames | shop | walls (c19 or first era) |', '|---|---|---|---|---|---|---|---|---|---|---|---|---|'];
 for (const p of profiles) {
