@@ -57,8 +57,11 @@ export const ROAD_LEVEL: ReadonlySet<string> = new Set(['carriage', 'parking', '
  * City-wide ceilings (scripts/own-ground/audit-crossings.ts --check and crossingAudit.test.ts): the remaining
  * flagged crossings are listed and explained in the lane notes (2026-10-17). `cobbles` is reported, not capped:
  * Amsterdam paints zebras on klinker streets (Nieuwezijds Voorburgwal, Paleisstraat) where OSM and the photo say so.
+ * `short` (2026-10-30, zebras across every road-level lane): main's generator measured 1369, the one-row rule 602;
+ * the rest are mostly walking lines a raised island legitimately breaks beyond the audit's reach, or nodes the plan
+ * keeps on one lane of a dual carriageway.
  */
-export const CROSSING_AUDIT_MAX: Partial<Record<AuditCategory, number>> = { splay: 0, skew: 5, overlap: 0, off: 0, gaps: 4, length: 0 };
+export const CROSSING_AUDIT_MAX: Partial<Record<AuditCategory, number>> = { splay: 0, skew: 5, overlap: 0, off: 0, gaps: 4, length: 0, short: 602 };
 
 export type AuditCategory = 'splay' | 'skew' | 'overlap' | 'off' | 'cobbles' | 'gaps' | 'length' | 'short';
 export const AUDIT_CATEGORIES: readonly AuditCategory[] = ['splay', 'skew', 'overlap', 'off', 'cobbles', 'gaps', 'length', 'short'];
