@@ -290,6 +290,16 @@ const BAY_M = 8;
 export const PIER_SPAN_M = 12;
 /** Railing geometry, metres. */
 export const RAILING = { height: 1.05, post: 0.07, rail: 0.05, plinthWidth: 0.28 };
+/**
+ * The lattice-truss parapet (user 2026-10-30, the Mariniersbrug BRU0272 panorama): a riveted steel truss along each
+ * side instead of a railing, a top chord with verticals and Pratt diagonals, in the bridge's colour.
+ * Hand-listed by register id (the measured facts carry no parapet class for it). Height, bay length, chord half
+ * section and web bar half width, metres; the bay widens with the level's post step.
+ */
+export const TRUSS = { height: 1.7, bay: 3.6, chord: 0.07, web: 0.035 };
+/** Triangles a truss parapet adds on both sides of a `len` m span at full detail (a vertical, a diagonal and a chord per bay): the budget allowance. */
+export const trussTriangles = (len: number): number => 2 * (Math.ceil(len / TRUSS.bay) + 1) * 14;
+export const TRUSS_PARAPET: ReadonlySet<string> = new Set(['BRU0272']);
 /** The brick-rail parapet (ParapetClass 'brick-rail'): wall height and width over the deck edge, end piers (half size, height, stone cap), metres. */
 export const BRICK_RAIL = { wall: 0.35, width: 0.4, pier: 0.24, pierTop: 1.12, cap: 0.08, postStep: 1.8 };
 
@@ -382,7 +392,9 @@ export function buildKit(raw: KitInput): { mesh: MeshArrays; info: KitInfo } {
   const input = { ...raw, rows: cleanWater(raw.rows, raw.spans) };
   kitTrace.input?.(input);
   const named = !!raw.facts?.named;
-  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far));
+  // A hand-listed truss parapet is the bridge's silhouette: the near ring gets its triangles on top of the budget.
+  const truss = input.lod === 0 && TRUSS_PARAPET.has(input.id) ? trussTriangles(input.parapet[1] - input.parapet[0]) : 0;
+  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = truss + (input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)));
   let last: { mesh: MeshArrays; info: KitInfo } | null = null;
   for (let k = 0; k < levels.length; k++) {
     last = buildAt(input, levels[k], k);
@@ -668,7 +680,30 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       box(m, c, u, BRICK_RAIL.pier, BRICK_RAIL.pier, z - 0.06, z + BRICK_RAIL.pierTop, style.plinthCol, false);
       box(m, c, u, BRICK_RAIL.pier + 0.04, BRICK_RAIL.pier + 0.04, z + BRICK_RAIL.pierTop, z + BRICK_RAIL.pierTop + BRICK_RAIL.cap, capCol);
     }
-    if (lv.railings && style.post > 0) {
+    if (lv.railings && TRUSS_PARAPET.has(input.id)) {
+      // Lattice truss (Pratt): panel points at even spacing on the plinth, a top chord between them, a vertical at each
+      // point and one diagonal per bay sloping down toward midspan. Web members are flat bars facing water and road;
+      // the plinth is the bottom chord.
+      const count = Math.max(1, Math.round(len / Math.min(len, TRUSS.bay * lv.postStep)));
+      const pts = Array.from({ length: count + 1 }, (_, i) => { const r = rowAt(rows, p0 + len * i / count); return { c: inward(r, style.width / 2), z: zt(r) + style.plinth, o: out(r) }; });
+      const bar = (a: V3, b: V3, o: Vec2): void => {
+        const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], w = [-d[2] * o[1], d[2] * o[0], d[0] * o[1] - d[1] * o[0]], wl = Math.hypot(w[0], w[1], w[2]) || 1;
+        const k = TRUSS.web / wl, q = (p: V3, sg: number): V3 => [p[0] + w[0] * k * sg, p[1] + w[1] * k * sg, p[2] + w[2] * k * sg];
+        const quad: V3[] = [q(a, -1), q(b, -1), q(b, 1), q(a, 1)];
+        face(m, quad, railColour, [o[0], o[1], 0]);
+        face(m, quad, railColour, [-o[0], -o[1], 0]);
+      };
+      const H = TRUSS.height;
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        bar([p.c[0], p.c[1], p.z], [p.c[0], p.c[1], p.z + H], p.o);
+        info.railingPosts++;
+        if (i + 1 === pts.length) continue;
+        const n = pts[i + 1], inner = 2 * i + 1 < count;
+        beam(m, [p.c[0], p.c[1], p.z + H], [n.c[0], n.c[1], n.z + H], TRUSS.chord, railColour, true);
+        bar([p.c[0], p.c[1], p.z + (inner ? H : 0)], [n.c[0], n.c[1], n.z + (inner ? 0 : H)], p.o);
+      }
+    } else if (lv.railings && style.post > 0) {
     // Posts at even spacing, rails straight from post to post.
     const count = Math.max(1, Math.round(len / Math.min(len, (brickRail ? BRICK_RAIL.postStep : POST_STEP[kind]) * lv.postStep)));
     const posts: { c: Vec2; z: number; u: Vec2 }[] = [];

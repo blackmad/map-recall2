@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Mariniersbrug: green basement bascule with truss sides (2026-10-30).** The
+register lists BRU0272 as timber, so the material rule drew a white
+Magere Brug-style portal; the panorama shows a green steel basement bascule
+with signal masts and Pratt lattice trusses for parapets. Hand override in
+`BASCULE_STYLE`/`BASCULE_COLOUR`, and a new kit component: `TRUSS_PARAPET`
+(hand-listed ids) draws a top chord, verticals and one diagonal per 3.6 m bay
+sloping toward midspan, in the bridge's colour, with its triangles added to
+the near-ring budget (`trussTriangles`) so the bridge keeps its level. Every
+other bridge's mesh is unchanged. Likeness sheet: `npx tsx
+scripts/bridge-reference/sheet.ts BRU0272`. Still missing: the real top chord
+is arched (deeper at midspan), and the truss runs past the brick abutments.
+The register's "Hout" is unreliable for movable bridges (Bullebak too); an
+audit of the other timber/unknown movable bridges is in progress.
+
 **Street following aims down the street (2026-10-29).** Ways are often
 digitised as short pieces whose bearings zig-zag (Prinsengracht at the
 Leidsegracht: 66°, 97°, 72°, 37°, 48° over 60 m, after the 3 m

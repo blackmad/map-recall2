@@ -1,7 +1,7 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { basculeColour, basculeStyle, KIT_COLOURS, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
+import { basculeColour, basculeStyle, KIT_COLOURS, TRUSS, trussTriangles, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
 import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, measuredDeckTop, movableFrame, underDeck } from './decks';
 import { decodeProfile, sideWidths } from '../elevation/bridgeDeck';
@@ -143,6 +143,20 @@ test('bascules: portal or basement by the panoramas, then the register', () => {
   basementEnd(m, (a, b) => [a, b], [1, 0], 0, [3, -3], () => 1);
   const zs = m.positions.filter((_, i) => i % 3 === 2);
   assert.ok(Math.max(...zs) >= 1 + MAST.height - 1e-6 && Math.min(...zs) <= 1 - 0.1, 'masts stand on the deck and reach their height');
+});
+
+// User 2026-10-30 (the Mariniersbrug's sides are green lattice trusses, not a railing): the hand-listed truss parapet
+// stands TRUSS.height over the plinth, in the bridge's colour, and every other bridge's mesh is untouched.
+test('truss parapet: the Mariniersbrug carries lattice trusses, other bridges are unchanged', () => {
+  const green = KIT_COLOURS.green, plain = { ...input('bascule', 0), colour: green };
+  const t = buildKit({ ...plain, id: 'BRU0272' }), p = buildKit(plain);
+  const top = (m: typeof t.mesh) => Math.max(...m.positions.filter((_, i) => i % 3 === 2));
+  assert.ok(top(t.mesh) > top(p.mesh) + 0.4, 'the truss stands over a railing');
+  assert.ok(Math.abs(top(t.mesh) - (1.3 + 1.2 + 0.14 + TRUSS.height + TRUSS.chord)) < 0.15, 'truss height over the plinth at the crown');
+  assert.equal(t.info.level, p.info.level, 'the truss allowance keeps the railing level');
+  assert.ok(t.info.triangles <= KIT_BUDGET.near + trussTriangles(24), `near budget plus the truss (${t.info.triangles})`);
+  assert.deepEqual(buildKit({ ...plain, id: 'BRU0151' }).mesh, buildKit({ ...plain, id: 'BRU0151' }).mesh);
+  assert.deepEqual(buildKit({ ...plain, id: 'T' }).mesh.positions, p.mesh.positions, 'no truss off the list');
 });
 
 // User 2026-10-14 ("disconnected bridge", a Houthavens footbridge, BRU2433-2435): the water mask ran past the measured
