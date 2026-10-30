@@ -30,9 +30,10 @@ import {pandWallsDir} from './sourceData.ts';
 const HOUSES = 'scripts/building-recipes/houses', ARTIFACTS = 'artifacts/building-recipes';
 const readJson = async (file: string) => JSON.parse(await fs.readFile(file, 'utf8'));
 
-export async function compileLargeHouse(id: string) {
+/** `override`: compile this intent in place of houses/<id>/intent.json (measure.ts probes budget-blanked groups, #134). */
+export async function compileLargeHouse(id: string, override?: unknown) {
   const t0 = performance.now();
-  const intent = validateLargeIntent(await readJson(path.join(HOUSES, id, 'intent.json')));
+  const intent = validateLargeIntent(override !== undefined ? structuredClone(override) : await readJson(path.join(HOUSES, id, 'intent.json')));
   // On the trusted ground (bag3dCityJson.ts `pandGroundNap`): a facts.json built before the terrain rule is re-measured here.
   const facts: BuildingFacts = trustFactsGround(await readJson(path.join(HOUSES, id, 'facts.json')), sharedTerrain());
   const built = compileBuilding(intent, facts);
