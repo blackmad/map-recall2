@@ -31,6 +31,10 @@ write the question in your report instead; the integrator answers it.
   poll; wait.
 - At most one Playwright run per machine (`/tmp/canal-pw.sh` if it exists);
   the factory, strips and census need no browser beyond their own headless one.
+  One run holds the lock for at most ~20 minutes: name the specs (never a
+  directory or a `git diff` list), `--workers=1`, and re-run a representative
+  subset, not every touched file. A 638-test run on 2026-10-30 held the lock
+  for two hours with six lanes queued behind it.
 
 ## The queue is the handoff
 
@@ -83,6 +87,7 @@ DID: <three lines at most>
 NUMBERS: <counts, m², ms, tris, whatever the brief measures>
 CHECKS: <command -> summary line, one per line>
 STRIP/SHEETS: <paths>
+SCREENSHOTS: <before/after frames of the visible change, for the What's New note; paths or none>
 HELD / NO EVIDENCE: <ids with the one-line reason>
 KIT CANNOT YET EXPRESS: <list, or none>
 INTEGRATOR TODO: <bundle rebuilds, covers, baselines, queue rows to merge>

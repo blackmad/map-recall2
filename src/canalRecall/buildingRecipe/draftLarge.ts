@@ -9,7 +9,7 @@
  */
 import {buildHost, pt, type Panel} from '../blockBuilding/panels.ts';
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
-import {bearingOfNormal, largeSurfaceSet} from './fitLarge.ts';
+import {bearingOfNormal, largeSurfaceSet, shellOfWalls} from './fitLarge.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from './intent.ts';
 import {validateLargeIntent} from './largeIntent.ts';
@@ -146,9 +146,33 @@ export function draftLargeIntent(facts: BuildingFacts, opts: DraftOptions): Draf
     chosen.push(r);
   }
   if (!chosen.length) throw Error(`${opts.id}: no exposed panel at least ${minStreet} m wide faces a street, and none at least ${minOther} m wide is free`);
-  const walls: LargeWallIntent[] = chosen.map((r, i) => ({
-    wallSurfaces: [...new Set(r.p.walls.map(wi => set.walls[wi].surface!))].sort((a, b) => a - b),
-    ...(r.street ? {street: r.street} : {}),
+  // A multi-shell pand numbers each 3DBAG shell's surfaces from 1, so the same index names a wall in every shell
+  // (pand-240435: surface 10 in walls[1] and walls[3], factory r3 2026-10-30). There each group claims its surfaces in
+  // one shell (`shell`, the shell holding most of the panel's wall area); a panel that also spans another shell leaves
+  // those walls to otherWalls. A surface already claimed by an earlier (higher priority) group is never listed again,
+  // and a group left with no surface is skipped. Single-shell pands draft exactly as before.
+  const shellOf = shellOfWalls(set.walls), byShell = shellOf[shellOf.length - 1] > 1 && set.walls.length === (facts.wallsRD?.length ?? -1);
+  const areaOf = (wi: number) => (byShell ? facts.wallsRD![wi].areaM2 : 1);
+  const claimed = new Set<string>(), groupsOut: {r: (typeof rows)[number]; surfaces: number[]; shell?: number}[] = [];
+  for (const r of chosen) {
+    let walls = r.p.walls, shell: number | undefined;
+    if (byShell) {
+      const area = new Map<number, number>();
+      for (const wi of walls) area.set(shellOf[wi], (area.get(shellOf[wi]) ?? 0) + areaOf(wi));
+      shell = [...area].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0][0];
+      walls = walls.filter(wi => shellOf[wi] === shell);
+    }
+    const key = (s: number) => (byShell ? `${shell}:${s}` : String(s));
+    const surfaces = [...new Set(walls.map(wi => set.walls[wi].surface!))].filter(s => !claimed.has(key(s))).sort((a, b) => a - b);
+    if (!surfaces.length) { skipped.push({panel: r.p.index, widthM: +r.w.toFixed(1), reason: 'surfaces already in another group'}); continue; }
+    surfaces.forEach(s => claimed.add(key(s)));
+    groupsOut.push({r, surfaces, ...(shell !== undefined ? {shell} : {})});
+  }
+  chosen.splice(0, chosen.length, ...groupsOut.map(g => g.r));
+  const walls: LargeWallIntent[] = groupsOut.map((g, i) => ({
+    wallSurfaces: g.surfaces,
+    ...(g.shell !== undefined ? {shell: g.shell} : {}),
+    ...(g.r.street ? {street: g.r.street} : {}),
     system: 'brick-bay-grid',
     ...(i === 0 ? {entrance: true} : {}),
   }));

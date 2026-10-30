@@ -33,14 +33,19 @@ export type DecoratorOptions = {
   afterFacade?: (feature: Feature) => Feature;
 };
 
-/** The streamer's decoration chain, in the game's order. */
-export function gameDecorator(options: DecoratorOptions = {}): (feature: Feature) => Feature {
+/** vector-map `_applyFeatureDecorator`'s decorator (3D looks): what it hands `setFeatureDecorator`. */
+export function gameFeatureDecorator(options: DecoratorOptions = {}): (feature: Feature) => Feature {
   const { gables, landmarkIds = new Set<string>(), listed, afterFacade } = options;
   const named = gables && gables.size ? (f: Feature) => withMonumentGable(f, gables) : (f: Feature) => f;
   const decorate = (f: Feature) => decorateRoof(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(f))));
   const base = exceptLandmarks(decorate, landmarkIds, KIT_MODELLED_IDS, listed);
-  const priors = new Map();
-  return (f: Feature) => decorateShopfront(decorateFront(decorateKitRoof(base(decorateBuildingFeature(f, priors)))));
+  return (f: Feature) => decorateShopfront(decorateFront(decorateKitRoof(base(f))));
+}
+
+/** The streamer's decoration chain, in the game's order: its own `decorateBuildingFeature`, then the decorator. */
+export function gameDecorator(options: DecoratorOptions = {}): (feature: Feature) => Feature {
+  const chain = gameFeatureDecorator(options), priors = new Map();
+  return (f: Feature) => chain(decorateBuildingFeature(f, priors));
 }
 
 /** The centre and size of a set of footprint rings (metres), for framing a camera. */

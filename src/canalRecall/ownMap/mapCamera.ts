@@ -23,6 +23,8 @@ export interface CameraState {
   /** Degrees from straight down. */
   pitch: number;
   fovDeg?: number;
+  /** Height of the centre above z = 0, metres (MapLibre `jumpTo({elevation})`: the rider's deck or sunken water). */
+  elevation?: number;
 }
 
 export interface Viewport { width: number; height: number }
@@ -52,20 +54,25 @@ const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 const cross = (a: Vec3, b: Vec3): Vec3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
 const norm = (a: Vec3): Vec3 => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
 
-export function cameraFrame(cam: CameraState, viewport: Viewport): CameraFrame {
+/**
+ * `latitude` overrides the one derived from the own map's local frame: the engine (engine/cameraMap.ts) evaluates
+ * the camera in east/north metres about the view centre, where `center` is [0, 0].
+ */
+export function cameraFrame(cam: CameraState, viewport: Viewport, latitude?: number): CameraFrame {
   const fov = (cam.fovDeg ?? DEFAULT_FOV_DEG) * Math.PI / 180;
-  const lat = fromLocal(cam.center[0], cam.center[1])[1];
+  const lat = latitude ?? fromLocal(cam.center[0], cam.center[1])[1];
   const mpp = metresPerPixel(cam.zoom, lat);
   const focal = 0.5 * viewport.height / Math.tan(fov / 2);
   const distance = focal * mpp;
   const pitch = Math.min(MAX_PITCH_DEG, Math.max(0, cam.pitch)) * Math.PI / 180;
   const bearing = cam.bearing * Math.PI / 180;
   const heading: Vec3 = [Math.sin(bearing), Math.cos(bearing), 0];
-  const target: Vec3 = [cam.center[0], cam.center[1], 0];
+  const z0 = cam.elevation ?? 0;
+  const target: Vec3 = [cam.center[0], cam.center[1], z0];
   const eye: Vec3 = [
     target[0] - heading[0] * distance * Math.sin(pitch),
     target[1] - heading[1] * distance * Math.sin(pitch),
-    distance * Math.cos(pitch),
+    z0 + distance * Math.cos(pitch),
   ];
   const forward = norm(sub(target, eye));
   // Right is heading × z-up, which stays defined when looking straight down.

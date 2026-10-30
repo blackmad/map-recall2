@@ -7,7 +7,7 @@ import { openRoute } from './helpers';
 // slider clamped to 0°. The chase base and slider range now live in
 // src/canalRecall/game/preferences.ts (chasePitch).
 
-const pitchNow = (page: Page) => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch() as number);
+const pitchNow = (page: Page) => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.pitch() as number);
 
 /** The pitch once it has held still for a second. A raised tilt waits for
  *  the next clearance check (up to 1 s) and then eases up over ~2 s. */

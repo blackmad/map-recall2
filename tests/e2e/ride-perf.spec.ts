@@ -77,7 +77,10 @@ async function instrument(page: Page) {
       const original = obj[key].bind(obj);
       obj[key] = (...args: unknown[]) => { const s = performance.now(); try { return original(...args); } finally { t[bucket].push(performance.now() - s); } };
     };
-    wrap(map, '_render', 'mapRender');
+    // mapRender is the MapLibre implementation's own render cost (main-thread ms; DESKTOP_BUDGET
+    // is written in those units). Under the own engine there is no map; the frame host's render
+    // owner replaces this when `?engine=own` lands (programme P1).
+    if (map) wrap(map, '_render', 'mapRender');
     // The HUD frame and, inside it, the minimap (the riding radar since 2026-10-16, the city sheet before).
     const game = w.canalRecallGame;
     wrap(game, '_render', 'gameRender');

@@ -20,6 +20,7 @@ import { mkdir, stat } from 'node:fs/promises';
 import { once } from 'node:events';
 import path from 'node:path';
 import { isUndergroundOsm } from '../src/canalRecall/undergroundBuildings.ts';
+import { osmMinHeightM } from '../src/canalRecall/osmMinHeight.ts';
 
 type Geometry = { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown };
 type SourceFeature = {
@@ -70,7 +71,7 @@ function toOutputFeature(feature: SourceFeature): object | null {
   if (isUndergroundOsm(tags)) return null;
   const levels = numeric(tags['building:levels']);
   const height = numeric(tags.height) ?? (levels ? levels * 3 : 9);
-  const minHeight = numeric(tags.min_height) ?? numeric(tags['building:min_level']) ?? 0;
+  const minHeight = osmMinHeightM(tags, height);
   const isPart = tags['building:part'] != null && tags['building:part'] !== '' && tags['building:part'] !== 'no';
   return {
     type: 'Feature',

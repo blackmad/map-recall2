@@ -54,7 +54,15 @@ export const MAX_FILL_MODEL_COVER = 0.05;
 /** A fill across this much car-road centreline stands in the road (Amstel station's hole spans Julianaplein); look first. */
 export const MAX_FILL_ROAD_M = 20;
 
-export type FillDecision = 'fill' | 'too-small' | 'half-drawn' | 'under-model' | 'newer-than-ahn' | 'too-large' | 'over-road' | 'no-ahn' | 'ahn-flat';
+/**
+ * A gap under guessed outlines whose AHN top stands this far over its p70 is a
+ * tower on a low base (a slab over a garage, a mall with flats): one p70 box
+ * would flatten the tower and cover the base, so the guesses stay (and are
+ * measured on their own, scripts/measure-guessed-heights.ts).
+ */
+export const MIXED_RIDGE_M = 10;
+
+export type FillDecision = 'fill' | 'too-small' | 'half-drawn' | 'under-model' | 'newer-than-ahn' | 'too-large' | 'over-road' | 'no-ahn' | 'ahn-flat' | 'mixed-under-guess';
 
 /** Whether a gap is filled from BAG + AHN, or why not (bounded and explainable: each reason is a count in the report). */
 export function fillDecision(gap: BagGap, heights: AhnHeights | null): FillDecision {
@@ -66,10 +74,22 @@ export function fillDecision(gap: BagGap, heights: AhnHeights | null): FillDecis
   if ((gap.roadInsideM ?? 0) >= MAX_FILL_ROAD_M) return 'over-road';
   if (!heights) return 'no-ahn';
   if (heights.height < MIN_FILL_HEIGHT_M) return 'ahn-flat';
+  if (gap.guessIds?.length && heights.ridge - heights.height >= MIXED_RIDGE_M) return 'mixed-under-guess';
   return 'fill';
 }
 
 export interface RegisterPand { id: string; status: string; year: number | null; rings: Ring[] }
+
+/**
+ * An OSM outline with neither `height` nor `building:levels` is drawn at the 9 m
+ * default (build-osm-buildings.ts). Such a guess does not count as drawing a pand:
+ * four Jan van Zutphenstraat towers (2007-2009, AHN 29-37 m) were held as
+ * half-drawn under 9 m guesses (2026-10-30). The fill replaces the guesses.
+ */
+export const osmHeightGuessed = (tags: Record<string, unknown>): boolean =>
+  (tags.height === undefined || tags.height === '') && (tags['building:levels'] === undefined || tags['building:levels'] === '');
+/** A guess this much inside a gap is part of it, and the fill replaces it. */
+export const MIN_GUESS_INSIDE = 0.5;
 
 export interface BagGap {
   id: string;
@@ -83,6 +103,8 @@ export interface BagGap {
   modelCover?: number;
   /** Metres of car-road centreline inside the pand (set by the survey). */
   roadInsideM?: number;
+  /** Guessed-height outlines inside the pand (osmHeightGuessed): left out of tileCover, replaced by the fill. */
+  guessIds?: string[];
 }
 
 export const pandAreaM2 = (rings: readonly Ring[]): number => rings.reduce((a, r) => a + ringAreaM2(r), 0);
@@ -108,16 +130,22 @@ const centreOf = (rings: readonly Ring[]): LngLat => {
  */
 export function findBagGaps(
   pands: Iterable<RegisterPand>, tileIds: ReadonlySet<string>, tilesNear: (rings: readonly Ring[]) => readonly TileBuilding[],
+  guessed: ReadonlySet<string> = new Set(),
 ): BagGap[] {
   const out: BagGap[] = [];
   for (const p of pands) {
     if (!STANDING_STATUSES.has(p.status) || !p.rings.length) continue;
     const id = p.id.startsWith(PAND_PREFIX) ? p.id : `${PAND_PREFIX}${p.id}`;
     if (tileIds.has(id)) continue;
-    const near = tilesNear(p.rings).filter(b => b.id !== id).flatMap(b => b.rings);
+    const others = tilesNear(p.rings).filter(b => b.id !== id);
+    const guesses = others.filter(b => guessed.has(b.id) && coveredShare(b.rings, p.rings) >= MIN_GUESS_INSIDE);
+    const near = others.filter(b => !guesses.includes(b)).flatMap(b => b.rings);
     const tileCover = near.length ? coveredShare(p.rings, near) : 0;
     if (tileCover >= MIN_TILE_COVER) continue;
-    out.push({ id, status: p.status, year: p.year, areaM2: Math.round(pandAreaM2(p.rings) * 10) / 10, tileCover: Math.round(tileCover * 1000) / 1000, centre: centreOf(p.rings) });
+    out.push({
+      id, status: p.status, year: p.year, areaM2: Math.round(pandAreaM2(p.rings) * 10) / 10, tileCover: Math.round(tileCover * 1000) / 1000, centre: centreOf(p.rings),
+      ...(guesses.length ? { guessIds: guesses.map(b => b.id).sort() } : {}),
+    });
   }
   return out.sort((a, b) => b.areaM2 - a.areaM2);
 }
@@ -148,7 +176,7 @@ export function ahnHeights(roofNap: readonly number[], groundNap: readonly numbe
 
 export interface SupplementFeature {
   type: 'Feature';
-  properties: { id: string; tier: 3; minHeight: 0; height: number; heightSource: 'ahn-dsm-p70'; bagGap: true; year?: number; eaves?: number; ridge?: number };
+  properties: { id: string; tier: 3; minHeight: 0; height: number; heightSource: 'ahn-dsm-p70'; bagGap: true; year?: number; eaves?: number; ridge?: number; replaces?: string[] };
   geometry: { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 }
 
@@ -164,6 +192,7 @@ export function supplementFeature(gap: BagGap, rings: readonly Ring[], heights: 
       ...(gap.year && gap.year > 1100 ? { year: gap.year } : {}),
       ...(heights.eaves >= MIN_FILL_HEIGHT_M ? { eaves: heights.eaves } : {}), // p10 on a courtyard pand is the yard, not an eave
       ...(heights.ridge > heights.height ? { ridge: heights.ridge } : {}),
+      ...(gap.guessIds?.length ? { replaces: gap.guessIds } : {}),
     },
     geometry: polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] } : { type: 'MultiPolygon', coordinates: polys },
   };
@@ -171,17 +200,21 @@ export function supplementFeature(gap: BagGap, rings: readonly Ring[], heights: 
 
 /** The building-tiles copy carries only the drawing keys (bag-tiles also keeps year/eaves/ridge). */
 export const forBuildingTiles = (f: SupplementFeature): SupplementFeature => ({
-  ...f, properties: { id: f.properties.id, tier: 3, minHeight: 0, height: f.properties.height, heightSource: 'ahn-dsm-p70', bagGap: true },
+  ...f, properties: { id: f.properties.id, tier: 3, minHeight: 0, height: f.properties.height, heightSource: 'ahn-dsm-p70', bagGap: true, ...(f.properties.replaces ? { replaces: f.properties.replaces } : {}) },
 });
 
 /**
  * Appends supplement features to one tile's features: idempotent (an id already
- * present is left alone) and disjoint (a feature already >= MIN_TILE_COVER under
+ * present is left alone), replacing the guessed outlines a fill names (`replaces`), and disjoint (a feature already >= MIN_TILE_COVER under
  * existing features is skipped, so a later 3DBAG release that draws it wins).
  */
 export function appendSupplement<T extends { properties: { id?: unknown }; geometry: unknown }>(
   existing: T[], additions: readonly SupplementFeature[], ringsOf: (g: unknown) => Ring[],
-): { features: (T | SupplementFeature)[]; added: string[]; skipped: string[] } {
+): { features: (T | SupplementFeature)[]; added: string[]; skipped: string[]; replaced: string[] } {
+  // Guessed-height outlines a fill stands in for go first, so they neither block it nor stay inside it.
+  const replace = new Set(additions.flatMap(a => a.properties.replaces ?? []));
+  const replaced = existing.filter(f => replace.has(String(f.properties.id ?? ''))).map(f => String(f.properties.id));
+  existing = existing.filter(f => !replace.has(String(f.properties.id ?? '')));
   const ids = new Set(existing.map(f => String(f.properties.id ?? '')));
   const rings = existing.flatMap(f => ringsOf(f.geometry));
   const features: (T | SupplementFeature)[] = [...existing], added: string[] = [], skipped: string[] = [];
@@ -191,5 +224,50 @@ export function appendSupplement<T extends { properties: { id?: unknown }; geome
     if (rings.length && coveredShare(own, rings) >= MIN_TILE_COVER) { skipped.push(a.properties.id); continue; }
     features.push(a); added.push(a.properties.id); ids.add(a.properties.id);
   }
-  return { features, added, skipped };
+  return { features, added, skipped, replaced };
+}
+
+/**
+ * Clearance under a pand's roof face that a car road runs beneath at grade.
+ * Amstel station's 3DBAG roofs cover the Julianaplein underpass below the rail
+ * viaduct; drawn from the ground they close the road, so they start here.
+ */
+export const DECK_CLEARANCE_M = 4.5;
+/** Road metres under one roof face that make it a deck rather than a wall. */
+export const DECK_MIN_ROAD_M = 5;
+/** Only road this far inside a face's edge counts: roads hugging a wall are beside it, not under it. */
+export const DECK_ROAD_INSET_M = 3;
+
+export interface PartFace { rings: Ring[]; topM: number; roadInsideM: number; areaM2: number }
+export interface PartFeature {
+  type: 'Feature';
+  properties: { id: string; pand: string; tier: 3; minHeight: number; height: number; heightSource: '3dbag-lod13-face'; bagGap: true; year?: number };
+  geometry: { type: 'Polygon'; coordinates: number[][][] };
+}
+
+/** Tile id for one roof part of a pand (not a pand id: `isPandId` is a prefix test). */
+export const partFeatureId = (pandId: string, index: number): string => `part:${pandId}:${index}`;
+
+/**
+ * An over-road hole drawn as its LoD1.3 roof parts: faces with no road under
+ * them stand on the ground, faces over a road become decks above the
+ * clearance, and a face too low to clear it is left out.
+ */
+export function overRoadPartFeatures(pandId: string, faces: readonly PartFace[], year: number | null): PartFeature[] {
+  const r6 = (v: number) => Math.round(v * 1e6) / 1e6, r2 = (v: number) => Math.round(v * 100) / 100;
+  const out: PartFeature[] = [];
+  faces.forEach((face, i) => {
+    if (face.areaM2 < MIN_FILL_AREA_M2 || face.topM < MIN_FILL_HEIGHT_M) return;
+    const deck = face.roadInsideM >= DECK_MIN_ROAD_M;
+    if (deck && face.topM < DECK_CLEARANCE_M + 1.5) return;
+    out.push({
+      type: 'Feature',
+      properties: {
+        id: partFeatureId(pandId, i), pand: pandId, tier: 3, minHeight: deck ? DECK_CLEARANCE_M : 0, height: r2(face.topM),
+        heightSource: '3dbag-lod13-face', bagGap: true, ...(year !== null ? { year } : {}),
+      },
+      geometry: { type: 'Polygon', coordinates: face.rings.map(r => r.map(([x, y]) => [r6(x), r6(y)])) },
+    });
+  });
+  return out;
 }

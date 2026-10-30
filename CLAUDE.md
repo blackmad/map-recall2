@@ -15,6 +15,11 @@ working behavior, and leave it easier for the next session to continue.
   change. `TODO.md` is the handoff board and holds only unfinished work, ordered
   P0–P3; it must reflect reality, including blockers and measured results.
   `HISTORY.md` is append-at-the-top and records why a thing is the way it is.
+- Every visible change gets a What's New note in the same commit
+  (`public/canal-drive/whats-new-notes.json`), with a screenshot whenever the
+  change can be seen. Screenshots go to the separate
+  `blackmad/map-recall2-screenshots` repository (its README has the layout)
+  and are linked from the note's `images`; never add them to this repository.
 - Make periodic, coherent commits after verification. Do not accumulate an
   entire long session into one opaque commit.
 - Integrate completed branches back into `main` regularly. Before merging,

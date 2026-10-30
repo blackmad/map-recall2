@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GroundField, type LocalToRd } from './heightField';
 import { GroundSurface, type Vec2 } from './surface';
-import { cutMeshes, cutRelief, dropSharedWalls, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
+import { MIN_RISE_M, WALL_REACH_MOTOR_M, cutMeshes, cutRelief, mergeNeighbours, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
 import { buildCell } from './groundCell';
 
 const IDENTITY: LocalToRd = { cx: 0, cy: 0, r: 1, a: [0, 1, 0, 0, 0, 0], b: [0, 0, 1, 0, 0, 0] };
@@ -121,16 +121,70 @@ test('splitAtCrossings: a street at grade over a ramp breaks the strip and marks
   assert.ok(pieces.every(p => p.cut.y.every(y => Math.abs(y - 50) > 4)), 'nothing left under the street');
 });
 
-test('dropSharedWalls: two cuts side by side keep only their outer walls', () => {
-  const mk = (id: string, x: number): Cut => {
+test('scanSide steps past a low island the relief falls back from, to the wall behind it (motor reach)', () => {
+  // A 0.5 m island at 4-8 m, the floor again to 12 m, then an 8 m wall smeared over 12-16 m.
+  const g = (t: number) => (t > 4 && t < 8 ? 0.5 : 0) + 8 * smooth((t - 12) / 4);
+  const s = scanSide(g, 0, 3.3, null, MIN_RISE_M, WALL_REACH_MOTOR_M)!;
+  assert.ok(s && s.wall && s.depth > 7 && Math.abs(s.reach - 14) < 1, `the wall behind (${JSON.stringify(s)})`);
+  // The low rise alone with nothing behind (a taper's end): it is the side's wall after all.
+  const lone = scanSide(t => (t > 4 && t < 8 ? 0.5 : 0), 0, 3.3, null)!;
+  assert.ok(lone && lone.wall && Math.abs(lone.depth - 0.5) < 0.05 && Math.abs(lone.reach - 4.5) < 1, `the low rise (${JSON.stringify(lone)})`);
+});
+
+test('mergeNeighbours: two carriageways with a median between are one trench, the median on the floor', () => {
+  const mk = (id: string, x: number, f = 0): Cut => {
     const n = 11, ys = Array.from({ length: n }, (_, i) => i * 2);
-    return { id, way: 1, kind: 'slot', motor: false, x: ys.map(() => x), y: ys, s: ys, floor: ys.map(() => 0), left: ys.map(() => 2), right: ys.map(() => 2), wallL: ys.map(() => 1), wallR: ys.map(() => 1), rimL: ys.map(() => 3), rimR: ys.map(() => 3), portals: [], bbox: [x - 10, -10, x + 10, 30] };
+    return { id, way: 1, kind: 'ramp', motor: true, x: ys.map(() => x), y: ys, s: ys, floor: ys.map(() => f), left: ys.map(() => 2), right: ys.map(() => 2), wallL: ys.map(() => 1), wallR: ys.map(() => 1), rimL: ys.map(() => 3), rimR: ys.map(() => 3), portals: [], bbox: [x - 10, -10, x + 10, 30] };
   };
-  const a = mk('a', 0), b = mk('b', 3.8);
-  dropSharedWalls([a, b]);
-  // Along +y the left normal points to −x: a's left wall is its outer one, its right wall faces b.
-  assert.ok(a.wallL.every(Boolean) && a.wallR.every(w => !w), 'a keeps its outer wall');
-  assert.ok(b.wallR.every(Boolean) && b.wallL.every(w => !w), 'b keeps its outer wall');
+  // Touching strips (the old shared-wall case).
+  {
+    const a = mk('a', 0), b = mk('b', 3.8);
+    mergeNeighbours([a, b]);
+    // Along +y the left normal points to −x: a's left wall is its outer one, its right wall faces b.
+    assert.ok(a.wallL.every(Boolean) && a.wallR.every(w => !w), 'a keeps its outer wall');
+    assert.ok(b.wallR.every(Boolean) && b.wallL.every(w => !w), 'b keeps its outer wall');
+  }
+  // A 5 m median island 1 m high between them: merged, and the relief over the median lies on the floor.
+  {
+    const a = mk('a', 0), b = mk('b', 9), relief = (x: number) => (x > 2 && x < 7 ? 1 : 0);
+    mergeNeighbours([a, b], relief);
+    assert.ok(a.wallR.every(w => !w) && b.wallL.every(w => !w), 'no wall across the median');
+    assert.ok(a.gapR!.every(g => Math.abs(g - 5) < 0.6), `gap ${a.gapR}`);
+    const surface = new GroundSurface(field((x, y) => relief(x) + 0 * y), IDENTITY, 0);
+    surface.addCut(a); surface.addCut(b);
+    for (const x of [2.5, 4.5, 6.5]) assert.ok(Math.abs(surface.ground(x, 10)) < 0.05, `median at the floor at x = ${x}: ${surface.ground(x, 10)}`);
+    assert.ok(Math.abs(surface.ground(-2.5, 10) - 3) < 0.05, 'the outer side keeps its wall top behind it');
+  }
+  // A real berm (3 m) or a floor 2 m apart: two trenches, walls kept.
+  for (const [b, relief] of [[mk('b', 9), (x: number) => (x > 2 && x < 7 ? 3 : 0)], [mk('b', 9, -2), () => 0]] as [Cut, (x: number) => number][]) {
+    const a = mk('a', 0);
+    mergeNeighbours([a, b], relief);
+    assert.ok(a.wallR.every(Boolean) && b.wallL.every(Boolean), 'walls kept');
+  }
+});
+
+test('scanWay carries a deep ramp on through its shallow taper, and starts no cut from a shallow dip', () => {
+  // The ramp sinks 0 → −5 m over y 0..100 between walls at ±6; the first 20 m are under 0.45 m deep.
+  const surface = new GroundSurface(field(rampRelief), IDENTITY, 0);
+  const ramp = planCuts([way(1, { highway: 'trunk' }, [[0, -20], [0, 100]]), way(2, { highway: 'trunk', tunnel: 'yes' }, [[0, 100], [0, 300]])], surface.relief, () => true)[0];
+  const startY = Math.min(...ramp.y);
+  assert.ok(startY < 8, `the cut reaches back into the taper (starts at y = ${startY.toFixed(1)})`);
+  // A 0.3 m dip alone, 60 m long: no cut.
+  const dip = (x: number, y: number) => (y > 0 && y < 60 ? -0.3 * (1 - smooth((Math.abs(x) - 5.5) / 1.5)) : 0);
+  const s2 = new GroundSurface(field(dip), IDENTITY, 0);
+  assert.deepEqual(planCuts([way(1, { highway: 'trunk' }, [[0, -20], [0, 100]]), way(2, { highway: 'trunk', tunnel: 'yes' }, [[0, 100], [0, 300]])], s2.relief, () => true), []);
+});
+
+test('a slot under a high embankment gets open lintels at the tunnel ends, and they are drawn', () => {
+  const relief = (x: number) => 5 * (1 - smooth((Math.abs(x) - 15) / 5));
+  const run = tunnelRuns([way(10, { highway: 'cycleway' }, [[-60, 0], [-20, 0]], 1.1), way(11, { highway: 'cycleway', tunnel: 'yes' }, [[-20, 0], [20, 0]], 1.1), way(12, { highway: 'cycleway' }, [[20, 0], [60, 0]], 1.1)])[0];
+  const slot = slotCut(run, x => relief(x))!;
+  assert.equal(slot.portals.length, 2);
+  assert.ok(slot.portals.every(p => p.open && Math.abs(Math.abs(slot.x[p.at]) - 20) < 2.1), 'at the tunnel ends, open');
+  assert.equal(cutMeshes(slot, () => true).portals, 2);
+  // A low embankment (2 m): no lintel.
+  const low = slotCut(run, x => 2 * (1 - smooth((Math.abs(x) - 15) / 5)))!;
+  assert.equal(low.portals.length, 0);
 });
 
 test('locateCut / cutRelief: inside the strip the nearer wall top, behind a wall at least its top, outside nothing', () => {

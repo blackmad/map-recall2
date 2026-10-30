@@ -1,5 +1,434 @@
 # Canal Recall — what is built
 
+**`?world=v1` identical in the browser, decoded in the worker, cells published (2026-10-30, #136).**
+Why the first A/B showed ~4,400 extra buildings on four centre tiles: the
+cells were stale (the building tiles had been regenerated after L3 compiled;
+207 of 295 tiles differed) and, after a recompile, 47 buildings still differed
+by one ulp in `roofEavesHeightM` because Node 26 computes `Math.cos` with
+fdlibm while Chrome returns the correctly rounded value. The compiler, the
+verifier and the world tests now use the browser's cos/sin
+(`scripts/world/browserMath.ts`, checked against Chrome on 200,014 inputs), and
+`scripts/world/verify.ts` refuses stale cells before any publish. The cell
+reader moved into the three-buildings worker, so the "1.2 s decodes" (really
+gzip inflate wall time on page start) left the main thread: longest task
+3.3 ms at 1×, 7.3 ms at 4×. Format v2 drops ATTR and stores ids compactly
+(13.45 MB gz). A 90 s desktop ride ends at 688 MB heap under the flag against
+1,262 MB on the default path. The default path is untouched, pixel strips
+within the between-load noise. Cells live in
+`public/data/extracts/amsterdam/world-v1/` and must be recompiled with every
+building-data integration.
+
+**Guessed heights from AHN5, BAG and OSM type (2026-10-30).** 171 OSM-only
+outlines that AHN4 (2020) could not measure stood at the 9 m guess. They
+turned out to be genuinely low things (settling tanks, bunkers, switch
+cabinets, garage and tunnel entrances), houseboats, and blocks built after
+2020. Three more sources now decide, in `chooseGuessedHeight`
+(`src/canalRecall/guessedHeights.ts`, 9 tests).
+
+**Sources**
+- **AHN5** (2023 flight, CC0) is not on the PDOK WCS yet. Its 0.5 m sheets
+  are cloud GeoTIFFs on basisdata.nl; `scripts/data/ahn5-sheets.json` lists
+  164 sheets, found through geotiles.citg.tudelft.nl.
+  `readTiledTiffHeader` (`ownGround/geotiff.ts`) and `ahnFootprint.ts`
+  range-fetch only the 256 px tiles a footprint touches, into `.cache/ahn5/`.
+- **BAG** (PDOK WFS) gives the pand under an outline that has no OSM
+  `start_date`, with its build year and status.
+- **OSM `building=houseboat`** gets the small-building height (3.2 m),
+  because AHN measures a boat against the quay, not the water.
+
+**Rules**
+- An outline built in 2023 or later keeps its guess. BAG's build year (and
+  OSM's, copied from it) is often the permit year: 359 outlines dated 2023
+  and 250 dated 2022 were building sites in the flight.
+- A pand BAG lists as permitted or under construction is newer than any
+  flight.
+- A mixed AHN5 reading (ridge 10 m over p70) is a building going up. The
+  Robin (Amstelkwartier) has a 2.1 m p70 under a 19.8 m ridge.
+- A footprint under 25 m² reading over 6 m is someone else's roof, not its
+  own. One example is a 2017 shed under a 2022 45 m tower. This guard also
+  sends 21 earlier AHN4 measurements back to their guess, restored from the
+  tiles before that measurement.
+- Flat in both flights, for an outline not dated after 2019, gives a slab at
+  the measured ridge, 1–2 m.
+
+**Result.** Of the 4,429 guessed outlines:
+- 998 keep their AHN4 height, unchanged from before;
+- 132 take AHN5, among them Terrace Tower (Zuidas, 2021) at 35.7 m;
+- 81 are low slabs and 39 are houseboats;
+- 3,179 keep the guess.
+
+Named regressions in `check:guessed-heights` cover The Robin, The Martin,
+Terrace Tower, a Westpoort settling tank, the houseboat Doris and the shed
+under the tower.
+
+**Tunnel cuts round 3 (2026-10-30).**
+- Merged median gaps (at least 1.5 m) are draped as park at the trench floor.
+- Walls get a darker foot, a bright coping strip, a thicker parapet and a
+  gutter line.
+- Motor ramps search for walls up to 10 m out and step past low islands.
+- The portal roof sits where the relief first steps up within 40 m (Piet Hein
+  east under the sun screen).
+- Walled and open stations smooth separately, which removes the IJ east
+  coping wave.
+- Coverage: sunken motor approaches cut, 51/59 (49 before); motor mouths, 52
+  (43 before).
+- On the phone frame the IJ walls still read faintly (r3-phone shots).
+
+**`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
+engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
+canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a
+fixed-step `tick(dtFixed)` hook; `SharedFrame.drive(matrices)` lets it drive
+the existing participants, so facades, own ground and vehicles render
+unchanged while MapLibre is never constructed. `cameraMap.ts` evaluates
+MapLibre's camera model in metres about the view centre, which is why parity
+with `map.project` is exact (0.00 px over 22 samples on desktop and iPhone)
+rather than the 1.1–3.2 px of the 2026-10-10 prototype, whose frame used a
+linear latitude scale. `ownWorldView.ts` implements the typed `WorldView`
+interface that `vector-map.js` now declares it implements; `game.js` picks it
+under the flag. Rider cover, camera clearance and the game-camera solve were
+lifted into typed modules for both implementations. Under the flag a chase
+ride draws 140–146 calls with 29–30 programs on desktop (851 / 32 on the
+default path, where the basemap pass is included). Labels, overlays, trees,
+landmarks and themes are not drawn under the flag yet; the gate specs cannot
+run under it until they gain a switch.
+
+**Untagged streets under buildings opened; mixed-height gap fills reviewed (2026-10-30).**
+Every building `check-buildings-over-roads` finds standing over a street OSM
+does not tag as passing under it was checked against the PDOK orthophoto.
+Three kinds turned up. In the first, the BAG outline takes in a lane, car
+park or courtyard that the roofs do not cover: Gerard Ruttenhof,
+Staalmeesterslaan, Het Buitenhof, the VUmc, Ottho Heldringstraat and
+Stadionplein. In the second, a road enters a loading bay or garage under the
+building: Ankerweg, Cruquiusweg and Science Park `…063461`. In the third, OSM
+has a building part over a street: Oosterdoksstraat `w453809679` and
+`w779659694`, and Science Park `w1082655793` and `…164372`.
+
+- The ten pands of the first two kinds are listed in
+  `scripts/data/bag-gaps/over-road-pands.json`. `fill-over-road-holes.ts`
+  redraws them from their 3DBAG LoD1.3 roof faces, as it does Amstel station,
+  and drops the whole outline.
+- A high face with a road through it opens only the road strip
+  (`passagePieces`, `buildingPassages.ts`). Lifting the whole face would have
+  stood the one-face Ankerweg warehouse on 4.5 m stilts.
+- The four OSM outlines of the third kind are cut by
+  `scripts/data/passages/passage-overrides.json`. It names the routed street
+  that `cut-building-passages.ts` treats as a passage there.
+- Javakade is Hotel Jakarta, which a landmark model draws. A pand a model
+  hides keeps its one feature, because the runtime hides by exact id, and the
+  script now refuses to draw one.
+- `check-bag-gaps` pins every drawn pand: its parts are present, its outline
+  is gone, and Ankerweg keeps ground parts.
+
+The 13 published gap fills whose AHN ridge stands 10 m or more over their box
+were each reviewed on the orthophoto, with their AHN cells more than 8 m over
+the box plotted:
+
+- **Nine are edge spill**, under 10 m² each of a neighbour's wall or a tree
+  crown, and keep one box.
+- **Three are already drawn.** At Gelderlandplein (`…241555`) the towers are
+  OSM parts over the mall box. At Roeterseiland (`…082861`) the 38 m tower is
+  OSM parts `w751024386` and `w751024387`. At `…237890` the tall cells are the
+  neighbour `…238000`.
+- **The Overtoom 1874 house (`…159138`)** stood at 4.9 m, because its outline
+  runs back over a garden AHN sees at ground. Its 17.6 m street front is now a
+  `tower:` part from the box top up.
+
+This is a typed rule, not an edit by hand. `mixedFillTower`
+(`src/canalRecall/mixedFillTowers.ts`) finds the largest 4-connected group of
+tall cells. The group counts as a tower when it covers at least 50 m² and
+fills at least 60 % of its convex hull, which tree scatter does not.
+`scripts/split-mixed-gap-fills.ts` stages its decisions in
+`scripts/data/bag-gaps/mixed-fill-towers.json`, and `check:mixed-gap-fills`
+in `check:canal` keeps the Overtoom tower at 15–20 m.
+
+**Tunnel cuts round 2 (2026-10-30).**
+- Walls: weathered faces with a pale coping and lip, the wall line smoothed
+  over about 30 m, and headwalls ending halfway to the next carriageway, so
+  the IJ portal reads as one mouth.
+- Neighbouring cuts merge into one trench (`mergeNeighbours`) when the gap is
+  at most 12 m, the floors agree within 1.2 m and the ground between rises at
+  most 1.6 m. The IJ median wedge now sits at −2.3 m; it was a ridge at
+  −1.5 m.
+- A deep ramp carries on through its shallow start (at most 30 m). Slots get
+  lintels where the embankment stands at least 3 m above the floor.
+- False-cut guards: rideable roads are scanned within 120 m of a portal and
+  need walls on both sides for half the run (three Westerpark no-cut
+  regressions).
+- Coverage (`check-tunnels-coverage.ts`): sunken motor approaches cut, 49/59
+  (48 before); rideable mouths or lintels, 35 (5 before).
+- Cost: `prepareCell` at the IJ cell is +0.33 s median at load 7.5, against
+  +0.55 s before this round.
+- 15 named regressions.
+
+**Specs read `vectorMap.camera`, not MapLibre (2026-10-30, #128).** Engine
+programme P0: `vector-map.js` gained a camera facade (`project`, `unproject`,
+`center`, `zoom`, `bounds`, `pitch`, `bearing`, `onFrame`, `whenIdle`) and 41
+spec and script files read it instead of `vectorMap.map`, so a second
+`VectorMap` implementation can satisfy the same oracles. Why the two perf
+specs keep wrapping `map._render`: `DESKTOP_BUDGET` (median ≤ 4 ms, p95 ≤ 10)
+is MapLibre's main-thread render cost, and the lane's replacement (the
+render-to-render interval, 16.7 ms at vsync) would have changed the metric
+under the same budget; the wrap stays, guarded on `vm.map`, until the frame
+host exposes its own render owner. `tests/perf/budgets.json` records the P0
+baselines with dates and sources (draws 851 2026-10-24, programs 32
+2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
+MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
+budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
+perf scripts against it. Verified the same day: `ride-perf` default variants pass; the two
+migrated specs that fail (`bike-xray`, `complete-city`) fail identically with
+their pre-migration files, so they are reds on main (TODO). The lane's own
+run had been mis-scoped to all 638 tests and held the shared Playwright lock
+for two hours; the lane rules now ask for ≤ 20-minute runs.
+
+**What's New notes link screenshots (2026-10-30).** User: notes should link
+to screenshots, kept in a separate repository so this one does not grow with
+every release. Each note may carry `images: [{src, alt, caption?}]`;
+`whats-new.html` renders them as lazy thumbnails under the text (full row on
+phones), opening the full picture in a new tab, and drops a thumbnail whose
+file is missing so a half-pushed note never shows a broken image. `src` is a
+path in `github.com/blackmad/map-recall2-screenshots`
+(`whats-new/YYYY-MM-DD-slug[-before|-after].jpg`, served from
+raw.githubusercontent.com) or a full URL. The rule is in CLAUDE.md, TODO's
+tracking paragraph and the lane hand-back template (SCREENSHOTS line).
+Verified at 1280 and 390 px with a stub notes file; the "In progress" strip
+on the same page was found to be stale (TODO P2).
+
+**Continuous zebras, watertight Muntplein (2026-10-30).** User screenshots: "why do we still have these broken
+zebras?" (Prins Hendrikkade by Arcam) and "what is happening with the roads here" (Muntplein). Lane
+`zebra-munt-20261030`, two rounds.
+
+- Zebras are clipped per BGT polygon, so every polygon edge cut a crossing. Now one row runs across every
+  road-level surface (carriage, parking, cycle) and breaks only at a raised island; pieces of one crossing merge onto
+  one line; main roads take 4 m stripes. Fietspad crossings are kept where the walk crosses at ≥ 45°. The audit
+  measured against the clipped polygon and passed the broken rows; a new `short` category measures the row against
+  the whole walking line (1,369 → 604 city-wide, capped).
+- Photo evidence diluted long rows: one Fourier amplitude over a 15–20 m profile. Rows over 7.5 m now score their
+  strongest 5 m window after removing a ±0.8 m running median; threshold unchanged (0.07, the 95th percentile off
+  the rows). Drops 376 → 146; of 12 random newly kept, 9 are real zebras in the photo.
+- The Muntplein water: the Singel polygon runs under the whole plein and the measured deck was a 7 m strip, so the
+  water mask cut the road. `wetGround.ts`: an h0 BGT polygon over water with relief ≥ 2 m above it is a deck. The
+  "wireframe triangle" was the Muntsluis parapet placed against that water; parapets now face open water only.
+- Path join discs tested only their centre against the survey and drew over the BGT voetpad (Arcam steps); they
+  now skip when the rim reaches a survey polygon (2,295 discs city-wide).
+
+**Roads through buildings cut open; guessed heights measured (2026-10-30).**
+`scripts/cut-building-passages.ts` (`src/canalRecall/buildingPassages.ts`,
+polygon-clipping) takes every ridden OSM way tagged
+`tunnel=building_passage` or `covered=yes` (1,250 ways) and the tile features
+it runs through. Each becomes ground pieces either side of the road strip
+plus a deck over it: 474 buildings, 1,537 pieces, 573 decks. The deck starts
+4.5 m up over a street and 3.5 m over a poort, cycleway or service lane. A
+building too low to bridge the strip leaves it open, and a building a model
+hides is left whole. The pieces are `passage:<id>:<i>` features with the
+original id in `pand`. The originals are staged, so `--write` is idempotent
+and survives a tile rebuild. `check:building-passages` names Jan van
+Zutphenstraat, the Motorwal and Berchvliet. Tunnels (IJ-tunnel, Piet
+Heintunnel, Burgemeester Stramanweg under the ArenA) stay whole, since the
+ground layer cuts them. The over-road reviewed list drops from 43 to 29.
+
+The Jan van Zutphenstraat towers stood at 9 m: OSM-only outlines with no
+height or levels get the default. `osmHeightGuessed` (bagGaps.ts) now marks
+them, and `scripts/measure-guessed-heights.ts` measures each guess from AHN
+inside its own outline, unless OSM dates it after 2019, because AHN flew in
+2020; the gate's Elandsgracht kiosk (2023) caught that. 1,043 of 1,214 are
+measured (towers 37 m, sheds 2–3 m), stored in
+`scripts/data/osm-guessed-heights.json` and kept by `check:guessed-heights`.
+AHN sees the other 171 as flat, so they keep the guess. The gap survey no longer counts
+an OSM-only outline without a tagged height as drawing a pand (the 9 m default,
+or the new-build rules' 3.2 m / neighbour guesses), so an AHN-measured BAG
+fill replaces it (197 new fills; `appendSupplement` / `publish-bag-gaps` drop them in every tile). The
+exception is a gap whose AHN top stands ≥ 10 m over its p70
+(`mixed-under-guess`): there the guesses stay. The Jan van Zutphenstraat
+pands are an example: each covers its tower plus the garage under the lawn
+beside it, and one 37 m box would have stood on the lawn. The AHN raster
+code moved to `scripts/lib/ahnFootprint.ts`.
+
+**World compiler v1 merged, flag-off (2026-10-30, #130).** First piece of the
+engine programme's P2: `src/canalRecall/world/cellFormat.ts` (WRLD v1, 1 km
+own-ground cells, streams STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, decoders that
+throw on magic, version, offsets, counts, varints and trailing bytes) and
+`scripts/world/compile.ts`, which runs the runtime's own functions
+(`dropNestedDuplicates`, the years and roof-facts enrichers,
+`decorateBuildingFeature` and vector-map's decorator chain,
+`BuildingContextIndex`) at build time into `artifacts/world/staging/`. Under
+`?world=v1` the tile streamer reads cells instead of GeoJSON and does no
+decorating, facts fetching or MapLibre `setData` on the main thread; chunk
+arrays are byte-identical at Westerkerk, Bloemgracht 80, the Nassaukade
+145–152 row, a courtyard pand and the IJburg edge, and the resident set is
+identical through the real streamer (`test:world-format`). Why exact 1e-7°
+coordinates instead of the brief's 0.1 m grid: only the exact grid keeps
+decoded coordinates equal to the default path's, so identity can be proven;
+0.1 m saves 0.8 MB. Why Morton order was dropped: tile order is already
+spatially coherent and Morton made the file bigger. Measured: 15.79 MB gz for
+347,698 buildings (replaces 21.5 MB of inputs; the ≤ 4 MB target assumed
+slop's rate at 190k pands and is not met; ATTR + STRS, 4.5 MB, are the first
+cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p95
+4.5 ms on desktop. Cells are not published and the browser A/B
+(`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
+Playwright lock.
+
+**Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
+bespoke lanes today shipped sheets with a red IN GAME column and no gallery
+card. The cause was not the engine programme: on the default path the
+MapLibre vector map still fills `_signatureLandmarks.shown` (17 ids in 20 s
+on a ride). The game and `manual-landmarks.html` read the catalogue from
+the committed `js/signature-placement.bundle.js`, which leaf lanes may not
+rebuild, so a lane's new id was never listed and `shown.has(id)` could not
+come true; the gallery had `review.total` 0 and drew no canvas.
+`scripts/landmarks/fresh-signature-bundle.ts` now routes the bundle request
+in Playwright to an in-memory esbuild of `src/canalRecall/landmarks/
+browser.ts` (same entry and global as the npm build), the sheet calls it
+before `goto` and fails fast when the id is missing instead of waiting 60 s
+per wall, `ingame-capture.ts` takes desktop and phone in-game shots at the
+catalogue anchor for named bearings, and `tests/e2e/review-sheet-ingame.
+spec.ts` guards the wait (one desktop test, run standalone with `PW_PORT`).
+Verified on De Roos: the spec passes in 19 s, every wall's IN GAME shot is
+present, and the in-game captures from the P.C. Hooftstraat went into its
+What's New note. The disk filled during this lane (a 1.1 GB throwaway
+worktree and 3 GB of lane artifact dumps); the integrator staged the sheets
+to the screenshots repo and removed them.
+
+**Builder-declared material slots; eight landmarks re-tagged (2026-10-30, lane #138).**
+Every one of the 356 bespoke GLBs took its city-look material slots from
+`infer-material-slots.ts` (by palette name or colour word); none set them
+explicitly. `scripts/landmarks/material-slot-tags.ts` now holds a per-model,
+per-palette-name `{slot, why}` table that `build-manual-landmarks.ts` writes
+over the inferred slot on export, and `apply-material-slot-tags.ts`
+(`--write` / `--check`) patches the shipped GLB and lod1 JSON chunk without
+touching the BIN. Tags are written as `materialSlotSource: 'inferred'` plus
+`materialSlotTag: 'builder'` because `_dress` in the signature-landmarks
+source puts any non-inferred slot into the recipe look even with the flag
+off; the marker keeps flag-off rendering unchanged. Re-tagged against the
+photos: American Hotel (slate → roofTile, sandstone → brick, ochre → paint),
+Uilenburger synagoge (slate → roofTile), Straat museum (ochre, pink →
+paint), Pllek, REM-eiland, Faralda crane and Sea Palace (red → paint), Joods
+Verzetsmonument (dark → stone). Those eight go from +11.4 % / +12.6 % median
+Δluma (city on vs off, sun / shade) to +2.8 % / +2.5 %; the whole gallery
+moves only +13.5/+15.4 → +13.4/+14.6 because the brightening is the brick
+lift on every other model (#137). The lane patched the GLBs directly, which
+left `signature-landmarks.json` byte counts stale (check:manual-landmarks
+caught rem-eiland); the integrator re-exported the eight through the
+builder, which produced byte-identical GLBs and refreshed the manifest,
+`modelSourceHashes.json` (toolchain hash) and model dates. Still wrong by
+palette rule, not by tag: a warm-grey roofTile (Uilenburger #665f58,
+saturation under 0.2) takes the "black tile" slate tone. The slot
+vocabulary cannot say timber (houseboat museum cabin roof, Hannekes Boom,
+Vondeltuin, Hotel Jakarta, Odessa deckhouse) or metal roofs (Ronde Lutherse
+dome, American Hotel copper); left untagged for lack of evidence: Podium
+Mozaïek roof, He Hua temple red, Centrale Markthal and Symphony ochre, the
+Haparandaweg dark cladding.
+
+**De Roos, P.C. Hooftstraat 183 (2026-10-30, lane #133).** The 1880 villa on
+the Vondelpark corner, now Centrum De Roos, is a bespoke model
+(`scripts/landmarks/de-roos-builder.ts`, 15,884 triangles, 239 KB, every
+material with a slot). One BAG pand, `0363100012236970` (1880, 679 m²),
+covers the whole complex: the villa, the 1897 Van Arkel / 1912 Jacot wing
+along the Van Eeghenlaan and the 1943 Blomhert garage, so that one pand is
+suppressed and the 2003 and 1991 neighbours are untouched. The inventory has
+38 items (28 modelled, 8 simplified, 2 skipped as too small: the n-sign and
+the INGANG neon); the signature items are the console cornice, the arched
+attic, the garden risalit with pediment, two erkers, the five-light serre,
+the hip-roof tower with pirons, the thermenvenster, the timber serre, the
+mansard, the NW chamfer and the garage windows. The 156° SE wall has no
+panorama and is drawn from 3DBAG and the next wall's axes. Gates: audit:glb
+PASS 3.0, inventory 0 fail, compare:facades on the street front pass,
+check:manual-landmarks 344. The kit still cannot say: the carved door and
+wrought-iron grilles (ochre slats), leaded glass, the dome serre in its
+casing, truly curved arc windows on the rounded SE corner, carved consoles
+and garland friezes; and the audit's opening rules forced free-standing
+timber to the ochre slot and serre glass to green, which a "free-standing
+glazing" audit class would remove. Two tool breaks surfaced: the review
+sheet's IN GAME column times out for every landmark lane (it waits on
+`vectorMap._signatureLandmarks.shown`, see the lane issue filed with this
+entry), and the gallery-card capture finds no canvas on
+`manual-landmarks.html`; the four-side and street strips were rendered
+offline instead. Sources (37 Gemeente Amsterdam panoramas, register 222055,
+BAG and the 3DBAG tile) are archived in map-recall2-source-data under
+`models/de-roos/`.
+
+**City look re-levelled; flip pending (2026-10-30, lane #135, decision #137).**
+The opt-in city look (`?cityLook=1`: one facade shader drawing photo brick
+cells on chunks, recipe houses and bespoke landmarks alike) was dour against
+the sunny frame since the 2026-10-23 pass (whole-frame luma 7 to 16 points
+under the default). Lane #135 raised its level to 1 under the sunny rig (0.9
+stays under `?look=legacy`), gave city chunks the same `litFacadeWallGain`
+the default look uses, and gave unrecorded GLB brick and accent the #73
+sunlit gain, so a chunk in the city look now draws what the default draws:
+Dam 131→138, Kinkerbuurt 128→128, Osdorper Ban 141→141, Prinsengracht
+121→124 (off → on). Two landmark roof rules came with it: the kit's dark
+slate maps to the default measured slate, and level faces of an inferred
+`slate` material draw as bitumen flat roof (Theater Amsterdam, Stedelijk,
+Studio K, The Movies had painted decks). The cost is that landmarks brighten
+at gallery-card size, +13.6 % sun / +15.5 % shade median over 356 GLBs
+against the brief's ±2 %: flag-off landmarks draw raw kit hex with neither
+the brick lift nor the sunlit gain, and one shared brick cannot match both
+them and the chunks. Level 0.85 would hit ±2 % and make the chunks dour
+again, so the choice went to David as #137 with the strip (review/ in the
+screenshots repo). Ride perf is unchanged on desktop (16.7 ms median either
+way, 98 → 104 MB facade textures); iPhone is unmeasured. The gallery review
+now tells GLB-baked inferred slots from explicit tags and renders four-side
+close-ups (`--views`); it found that all 356 models are inferred and none
+explicit, and listed the wrong ones for the re-tag lane #138. The flag-off
+code path is unchanged (verified from the diff; a base-vs-base
+look-consistency control run was not possible with the browser lock
+contended), and the four bundles were rebuilt in the merge commit.
+
+**Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
+measurement blockers from the band kit lanes (#126, #127) are fixed in the
+judge and the measurer, with LIKENESS constants unchanged. `measureFacade`
+reads the washed mask row by row before computing the washed-out share: a
+run 0.2–1.8 m thick, washed across at least half the row, with clear rows
+within 1.5 m above and below, repeating at least three times at one storey
+spacing, is a painted floor band and counts as wall (063809's slab fronts go
+from 36 % washed to 8 %, and from NO EVIDENCE to a judged FAIL). The
+likeness elevation now carries a depth buffer, and on groups that draw
+`balconyBands` glass 0.35 m or more in front of the wall plane near an upper
+storey line is classed as trim, so parapet glass no longer inflates model
+glazing (247342 w1 0.41 to 0.25 against a photo 0.18). The rule is gated to
+balcony-band groups because the ungated version moved Houthavenkade 26 PASS
+to WARN and Politie Van Leijenberghlaan WARN to FAIL: on about twenty
+inferred installs ordinary kit windows sit 0.35 m proud of the modal wall
+material, which a kit or likeness lane should look at. `measure.ts` probes
+groups the triangle budget blanked, compiling them with the draft system
+through a `compileLargeHouse` override, and re-applies the budget after
+`--write`. Replay over the 253 measured inferred groups: identical verdicts
+and reasons (PASS 13, WARN 38, FAIL 151, NO EVIDENCE 51); over the 17
+ride-landmark drafts, 0 verdicts moved. What still blocks a PASS is now
+geometry the drafts draw wrong, not measurement: punched windows where the
+photo shows ribbons (063809, 247342), storey-2 opening widths (242968), a
+pale pink-grey brick that cell statistics cannot separate from AkzoNobel's
+glare (240435), and 063809 still 9,395 triangles over the 12k budget.
+
+**Amstel station drawn from its roofs; raised OSM parts lifted; over-road check (2026-10-30).**
+Amstel station (BAG `0363100012145715`) was held unfilled because its outline
+covers the Julianaplein busway. Measured with a 3 m edge inset, the bus lanes
+only run along the hall's edges, and the PDOK orthophoto agrees. So
+`scripts/fill-over-road-holes.ts` now draws it from its eight 3DBAG LoD1.3
+roof faces: six stand on the ground, the north canopy is a deck 4.5 m up, and
+one sliver is left out. These are the `part:` features, and `check-bag-gaps`
+pins them.
+
+`building:min_level` had been read as metres, so a part tagged min_level 4
+started 4 m up instead of 12 m. `osmMinHeightM`
+(`src/canalRecall/osmMinHeight.ts`) now converts storeys: the part's height ÷
+its levels, or 3 m a storey when the levels are not tagged. OSM `roof`
+outlines with no base, such as bus and petrol-station canopies (Overkapping
+IJsei), are now 1 m slabs under their top instead of solid blocks. The new
+`scripts/fix-osm-min-level.ts` applies both rules to the published tiles:
+1,419 parts, with the expected values kept in `scripts/data/osm-min-levels.json`.
+`check:osm-min-level` keeps them on the rule.
+
+`check:buildings-over-roads` turns the one-off scan into a gate. It fails on
+any feature lower than 2.5 m (a part a rider fits under) that has ≥ 20 m of
+car-road centreline more than 3 m inside its outline, unless that feature is
+reviewed in `scripts/data/buildings-over-roads.json`, which records a reason
+for each. The first read found five 2026-10-16 gap fills that were tunnel
+mouths and viaduct decks drawn as 3–5 m boxes: Piet Heinkade (two), Eerste
+Constantijn Huygensstraat over the Vondeltunnel, and Johan van Hasseltweg
+(two). They are out of the supplement (1,598 fills) and held in
+`check-bag-gaps`. The other 43 are real buildings. The check runs in about
+2 s and is part of `check:canal`.
+
 **Engine programme decided (2026-10-30).** The user asked whether the recurring
 performance and rendering trouble needs a larger architectural change (more
 game engine, less hand-written, less MapLibre). Three explore passes and a

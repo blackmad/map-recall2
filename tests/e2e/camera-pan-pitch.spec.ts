@@ -17,7 +17,7 @@ test('dragging the chase view keeps its tilt', async ({ page }) => {
     for (let i = 0; i < 40; i++) {
       g.camera.pan(14, -10);
       await new Promise(requestAnimationFrame);
-      seen.push(g.vectorMap.map.getPitch());
+      seen.push(g.vectorMap.camera.pitch());
     }
     return seen;
   });
@@ -39,7 +39,7 @@ test('turning and reversing in chase view never snaps the pitch', async ({ page 
   await page.waitForTimeout(2000);
   await page.evaluate(() => {
     const w = window as any; w.__pitches = [];
-    const tick = () => { w.__pitches.push(w.canalRecallGame.vectorMap.map.getPitch()); if (w.__pitches.length < 600) requestAnimationFrame(tick); };
+    const tick = () => { w.__pitches.push(w.canalRecallGame.vectorMap.camera.pitch()); if (w.__pitches.length < 600) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   });
   await page.keyboard.down('ArrowUp'); await page.waitForTimeout(1500);

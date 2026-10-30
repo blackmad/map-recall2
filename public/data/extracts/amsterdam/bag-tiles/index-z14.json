@@ -1,6 +1,6 @@
 {
   "zoom": 14,
-  "features": 348715,
+  "features": 349856,
   "tiles": 295,
   "tileList": [
     "14/8405/5378",
@@ -302,6 +302,6 @@
   "bagGapSupplement": {
     "version": "bag-gaps-v1",
     "source": "scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)",
-    "features": 1603
+    "features": 1795
   }
 }

@@ -27,15 +27,15 @@ const camParam = (c: MapCam) => `cam=${c.lng},${c.lat},${c.zoom},${c.pitch},${c.
 type Probe = { lng: number; lat: number; x: number; y: number };
 async function readCam(page: Page): Promise<MapCam & { probes: Probe[]; padding: unknown; canvas: { w: number; h: number; left: number; top: number } }> {
   return page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map, c = map.getCenter();
+    const map = (window as any).canalRecallGame.vectorMap.map, c = (window as any).canalRecallGame.vectorMap.camera.center();
     const r = map.getCanvas().getBoundingClientRect();
     // Ground points where MapLibre itself says they are, to check the own camera against.
     const probes = [[0.25, 0.3], [0.75, 0.3], [0.5, 0.5], [0.25, 0.8], [0.75, 0.8]].map(([fx, fy]) => {
-      const ll = map.unproject([r.width * fx, r.height * fy]);
-      const p = map.project(ll);
+      const ll = (window as any).canalRecallGame.vectorMap.camera.unproject([r.width * fx, r.height * fy]);
+      const p = (window as any).canalRecallGame.vectorMap.camera.project(ll);
       return { lng: ll.lng, lat: ll.lat, x: p.x, y: p.y };
     });
-    return { lng: c.lng, lat: c.lat, zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), fov: map.transform?.fov ?? 36.87,
+    return { lng: c.lng, lat: c.lat, zoom: (window as any).canalRecallGame.vectorMap.camera.zoom(), pitch: (window as any).canalRecallGame.vectorMap.camera.pitch(), bearing: (window as any).canalRecallGame.vectorMap.camera.bearing(), fov: map.transform?.fov ?? 36.87,
       probes, padding: map.getPadding?.(), canvas: { w: r.width, h: r.height, left: r.left, top: r.top } };
   });
 }

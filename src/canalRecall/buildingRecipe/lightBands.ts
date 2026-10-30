@@ -80,3 +80,47 @@ export function proposeBands(bands: readonly LightBand[]): NonNullable<StoneDres
   }
   return at.length ? {at, storeys: [...storeys].sort((a, b) => a - b)} : null;
 }
+
+/** A part-width light run along a storey's floor line (u in metres from the measured box's u0). */
+export interface LightRun { storey: number; u0: number; u1: number }
+/**
+ * Thresholds for `lightRuns`: the parapet zone from `belowM` under to `aboveM` over each floor line, the cell width, the
+ * share of a cell's pixels that are light, the shortest run, the widest gap (a post, a cheek) bridged inside a run.
+ */
+export const LIGHT_RUN = {belowM: 0.1, aboveM: 1.0, cellM: 0.25, share: 0.3, minRunM: 2.5, gapM: 0.5} as const;
+
+/**
+ * Part-width balcony fronts (GitHub #127): per upper floor line, the runs along the wall where the parapet zone (a slab
+ * edge with its upstand or glass panel, LIGHT_RUN.belowM..aboveM about the line) is lighter than the wall by
+ * LIGHT_BAND.lighterL, at least LIGHT_RUN.minRunM long. `lightBands` needs a band across half the row, so the staggered
+ * slabs of Dulcie Septemberpad (242968 walls[1]) and the balcony columns of Mary van der Sluisstraat (247342 walls[1])
+ * leave it empty. Floor lines whose zone reaches above the top line (sky over the eaves) are not read.
+ */
+export function lightRuns(photo: {image: FacadeImage; wall: Rgb}, lines: number[], uM: [number, number] = [0, photo.image.width / photo.image.ppm]): LightRun[] {
+  const im = photo.image, wallL = rgbToLab(photo.wall)[0], R = LIGHT_RUN, out: LightRun[] = [], top = lines[lines.length - 1];
+  for (let s = 1; s + 1 < lines.length; s++) {
+    const v0 = lines[s] - R.belowM, v1 = lines[s] + R.aboveM;
+    if (v1 > top) continue;
+    const y0 = Math.max(0, Math.round((im.topM - v1) * im.ppm)), y1 = Math.min(im.height, Math.round((im.topM - v0) * im.ppm));
+    const cols = Math.floor((uM[1] - uM[0]) / R.cellM), light: (boolean | null)[] = [];
+    for (let c = 0; c < cols; c++) {
+      const x0 = Math.max(0, Math.round((uM[0] + c * R.cellM) * im.ppm)), x1 = Math.min(im.width, Math.round((uM[0] + (c + 1) * R.cellM) * im.ppm));
+      let n = 0, l = 0;
+      for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+        const k = y * im.width + x;
+        if (im.valid && !im.valid[k]) continue;
+        n++; if (rgbToLab([im.rgb[k * 3], im.rgb[k * 3 + 1], im.rgb[k * 3 + 2]])[0] > wallL + LIGHT_BAND.lighterL) l++;
+      }
+      light.push(n ? l / n >= R.share : null);
+    }
+    let start = -1, gap = 0;
+    const close = (end: number) => { if (start >= 0 && (end - start) * R.cellM >= R.minRunM) out.push({storey: s, u0: +(uM[0] + start * R.cellM).toFixed(2), u1: +(uM[0] + end * R.cellM).toFixed(2)}); start = -1; gap = 0; };
+    for (let c = 0; c < cols; c++) {
+      if (light[c]) { if (start < 0) start = c; gap = 0; continue; }
+      if (start < 0) continue;
+      if (++gap * R.cellM > R.gapM) close(c - gap + 1);
+    }
+    close(cols - gap);
+  }
+  return out;
+}

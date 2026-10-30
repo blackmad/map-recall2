@@ -30,6 +30,7 @@ import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { mapHasStyle, mapRemoved } from './mapStyle.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
+import { WorldCellClient, readWorldIndex, worldV1Enabled } from './world/worldCells.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
 type GeoJsonSource = {
@@ -169,6 +170,11 @@ export class BuildingTileStreamer {
   /** Which published tile set this streamer reads; 'bag-tiles' only after a successful bag probe under `?bagTiles=1`. */
   private tileDir: TileSetDir = 'building-tiles';
   get usingBagTiles(): boolean { return this.tileDir === 'bag-tiles'; }
+  /** `?world=v1` with a published world-v1 index: tiles come from baked cells (world/worldCells.ts). */
+  private world: WorldCellClient | null = null;
+  get usingWorldCells(): boolean { return !!this.world; }
+  /** Baked styled copy of each world-v1 raw feature: the default decorator chain's output, computed at build time. */
+  private baked = new WeakMap<BuildingFeature, BuildingFeature>();
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
@@ -226,9 +232,27 @@ export class BuildingTileStreamer {
     // `?bagTiles=1` prefers the BAG-keyed tiles and falls back to today's when
     // they are not published, so the flag can never blank the city.
     const search = typeof location === 'undefined' ? '' : location.search;
+    this.world = null;
+    if (worldV1Enabled(search) && await this.probeWorld()) return this.available;
     if (bagTilesEnabled(search) && await this.probeDir('bag-tiles')) this.tileDir = 'bag-tiles';
     else await this.probeDir('building-tiles');
     return this.available;
+  }
+
+  /** `?world=v1`: the world-v1 index; absent or not an index falls back to the default tiles. */
+  private async probeWorld(): Promise<boolean> {
+    try {
+      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/world-v1/index.json`);
+      const index = response.ok ? readWorldIndex(await response.json()) : null;
+      if (!index) return false;
+      this.world = new WorldCellClient(index, this.baseUrl);
+      // MapLibre gets no copy of the buildings under world-v1: featuresAt / featuresById answer the lookups.
+      this.publishing = false;
+      this.available = true;
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   private async probeDir(dir: TileSetDir): Promise<boolean> {
@@ -379,8 +403,16 @@ export class BuildingTileStreamer {
   private styled(feature: BuildingFeature): BuildingFeature {
     let out = this.decorated.get(feature);
     if (!out) {
-      out = decorateBuildingFeature(feature, this.appearancePriors);
-      if (this.featureDecorator) out = this.featureDecorator(out);
+      // world-v1 carries the default chain's output (no appearance priors, the game decorator in force). A runtime
+      // cell (format v2) carries only that output, so its feature is its own styled copy and is never re-decorated
+      // (decorating a decorated bag is not the default path); a DEBUG cell also carries the source bag.
+      const known = this.baked.get(feature);
+      const baked = known === feature || this.featureDecorator && !this.appearancePriors.size ? known : undefined;
+      if (baked) out = baked;
+      else {
+        out = decorateBuildingFeature(feature, this.appearancePriors);
+        if (this.featureDecorator) out = this.featureDecorator(out);
+      }
       this.decorated.set(feature, out);
       this.styleVersion++;
     }
@@ -541,11 +573,23 @@ export class BuildingTileStreamer {
     const timeout = setTimeout(() => { timedOut = true; controller.abort(); }, BUILDING_TILE_TIMEOUT_MS);
     // Side data starts in parallel with the tile; its failure is swallowed so
     // a missing facts tile never costs the buildings themselves.
-    const enrichment = this.tileEnricher
+    // world-v1 cells carry the facts the enricher would stamp; it is not fetched.
+    const enrichment = this.tileEnricher && !this.world
       ? this.tileEnricher(tile, controller.signal).catch(() => undefined)
       : undefined;
     let retry = false;
     try {
+      if (this.world) {
+        const { features, styled } = await this.world.tile(`${tile.x}/${tile.y}`, controller.signal);
+        if (controller.signal.aborted || this.disposed) return;
+        if (!features.length) { this.empty.add(key); return; }
+        for (const [raw, out] of styled) this.baked.set(raw as BuildingFeature, out as BuildingFeature);
+        this.cache.adopt(key, features as BuildingFeature[]);
+        this.failures.delete(key);
+        this.firstTileLanded = true;
+        if (!this.disposed) this.scheduleFlush();
+        return;
+      }
       const response = await fetch(tileUrl(tile, this.baseUrl, this.tileDir), { signal: controller.signal });
       if (!response.ok) {
         // 404 is ordinary: most of the 382 tiles cover water, parks or the edge
@@ -710,6 +754,7 @@ export class BuildingTileStreamer {
   private publishing = true;
   get isPublishing(): boolean { return this.publishing; }
   setPublishing(on: boolean): void {
+    if (this.world) on = false;
     if (on === this.publishing) return;
     this.publishing = on;
     this.published = null;

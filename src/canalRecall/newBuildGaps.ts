@@ -47,8 +47,8 @@ const MAX_COVERED_SHARE = 0.3;
 /** Below this a footprint is a mapping fragment; a kiosk like Mr Blou's is 10 m². */
 const MIN_AREA_M2 = 6;
 /** A kiosk, shed or pavilion: one storey, whatever its taller neighbours measure. */
-const SMALL_AREA_M2 = 25;
-const SMALL_HEIGHT_M = 3.2;
+export const SMALL_AREA_M2 = 25;
+export const SMALL_HEIGHT_M = 3.2;
 /** Storey height for `building:levels`, matching Amsterdam's post-war housing. */
 const METRES_PER_LEVEL = 3.1;
 /** How far to look for neighbours whose measured height a new building borrows. */

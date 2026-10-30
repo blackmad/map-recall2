@@ -1,0 +1,17 @@
+{
+ "NL.IMBAG.Pand.0363100012244547": "3DBAG roofs over 100% of the outline (2018, 22.22 m): a real building over Nieuwe Leeuwarderweg (613 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012075730": "3DBAG roofs over 100% of the outline (1996, 58.32 m): a real building over Burgemeester Stramanweg (573 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012239949": "3DBAG roofs over 102% of the outline (2012, 26.66 m): a real building over Nieuwe Leeuwarderweg (417 m), the road runs under or through it",
+ "w1390692772": "OSM building:part=yes (21.7 m): built over IJ-tunnel (339 m)",
+ "w1390692765": "OSM building:part=yes (30.57 m): built over IJ-tunnel (108 m)",
+ "NL.IMBAG.Pand.0363100012243823": "3DBAG roofs over 37% of the outline (2016, 13.92 m): a real building over Johan van Hasseltweg (49 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012185420": "3DBAG roofs over 110% of the outline (1990, 39.1 m): a real building over Nieuwe Achtergracht (49 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012253754": "3DBAG roofs over 97% of the outline (1932, 19 m): a real building over Nieuwe Achtergracht (49 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012130987": "3DBAG roofs over 100% of the outline (2003, 9.51 m): a real building over Piet Heintunnel (47 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012142498": "3DBAG roofs over 128% of the outline (1973, 11.02 m): a real building over IJ-tunnel (40 m), the road runs under or through it",
+ "NL.IMBAG.Pand.0363100012201677": "3DBAG roofs over 100% of the outline (2004, 16.9 m): a real building over Piet Heintunnel (36 m), the road runs under or through it",
+ "w1390692763": "OSM building:part=yes (26.5 m): built over IJ-tunnel (33 m)",
+ "NL.IMBAG.Pand.0363100012144674": "3DBAG roofs over 100% of the outline (1991, 10.48 m): a real building over Potvisstraat (27 m), the road runs under or through it",
+ "passage:NL.IMBAG.Pand.0363100012075926:0": "Ground piece of the 1998 block over Iwan Kantemanplein: OSM tags that road a tunnel (the ground layer cuts it); its H. Diesveldsingel passage is cut (scripts/cut-building-passages.ts)",
+ "NL.IMBAG.Pand.0363100012247056": "Hotel Jakarta: the manual landmark model draws it and hides this pand (covers.json); the BAG outline takes in the Javakade strip, reviewed on the orthophoto 2026-10-30"
+}

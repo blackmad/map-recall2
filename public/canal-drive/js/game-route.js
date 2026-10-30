@@ -171,14 +171,10 @@ class GameRouteRuntime {
     // Briefing only: show the chosen city centre instead of Damrak defaults.
     if (previousCityId !== this.cityId && this.state === GameState.MENU) {
       const center = city.center;
-      if (center && this.vectorMap.map && typeof this.vectorMap.map.jumpTo === 'function') {
-        this.vectorMap.map.jumpTo({
-          center: [center.lng, center.lat],
-          zoom: 13,
-          bearing: 0,
-          pitch: 0,
-        });
-      }
+      // Through the world view (engine/worldViewApi.ts jumpToLngLat); `.map` only for a vector-map.js without it.
+      const view = { center: [center && center.lng, center && center.lat], zoom: 13, bearing: 0, pitch: 0 };
+      if (center && typeof this.vectorMap.jumpToLngLat === 'function') this.vectorMap.jumpToLngLat(view);
+      else if (center && this.vectorMap.map && typeof this.vectorMap.map.jumpTo === 'function') this.vectorMap.map.jumpTo(view);
       this._loadRoutePoiCatalog();
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       this._loadRoutePoiCatalog();
@@ -1961,8 +1957,9 @@ class GameRouteRuntime {
    */
   _waitForMapSettle(maxMs = 2500) {
     return new Promise((resolve) => {
+      const camera = this.vectorMap && this.vectorMap.camera;
       const map = this.vectorMap && this.vectorMap.map;
-      if (!map || !this.vectorMap.ready) {
+      if ((!camera && !map) || !this.vectorMap.ready) {
         setTimeout(resolve, Math.min(900, maxMs));
         return;
       }
@@ -1979,7 +1976,9 @@ class GameRouteRuntime {
         setTimeout(finish, 450);
       };
       try {
-        map.once('idle', onIdle);
+        // The world view's camera (engine/worldViewApi.ts) answers for either engine; `.map` until vector-map.js has it.
+        if (camera && typeof camera.whenIdle === 'function') camera.whenIdle().then(onIdle, onIdle);
+        else map.once('idle', onIdle);
       } catch (_) {
         clearTimeout(timer);
         setTimeout(finish, Math.min(900, maxMs));

@@ -9,7 +9,7 @@
 // profile started on a same-origin blank page before navigation (so the ~1.7 s Profiler.start stall is outside the
 // window), aligned to performance.now() with a busy-loop marker, then aggregated over the stalled frames by self
 // function, by category (gc, json, shader, upload, ...) and by owning app function.
-// BUNDLES_DIR=<dir> serves *.bundle.js from a local build. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
+// BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
 // profile next to the output.
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -117,6 +117,12 @@ async function run(browser, kind, throttle, context) {
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
+  // WORLD_DIR=<dir> serves staged world-v1 cells at /data/extracts/amsterdam/world-v1/ (for `--qs '?world=v1'`; nothing is
+  // published). On the context, so the cell fetches of a worker are routed too.
+  if (process.env.WORLD_DIR) await context.route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
+    const dir = path.resolve(process.env.WORLD_DIR), file = path.join(dir, /world-v1\/([^?]+)/.exec(route.request().url())[1]);
+    return file.startsWith(dir) && fs.existsSync(file) ? route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.fulfill({ status: 404, body: '' });
+  });
   if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
@@ -249,7 +255,9 @@ async function run(browser, kind, throttle, context) {
     const L = window.__ls; L.stop = true; const g = window.canalRecallGame, vm = g?.vectorMap;
     const og = vm?._ownGround?.status?.(); const mem = performance.memory;
     return { ...L, heapMB: mem ? Math.round(mem.usedJSHeapSize / 1048576) : null, distancePx: g?.player?.distancePx ?? null, state: g?.state,
-      ownGround: og ? { cells: og.cells && Object.keys(og.cells).length, built: og.built, buildMsMedian: og.buildMsMedian, installMsMedian: og.installMsMedian } : null };
+      ownGround: og ? { cells: og.cells && Object.keys(og.cells).length, built: og.built, buildMsMedian: og.buildMsMedian, installMsMedian: og.installMsMedian } : null,
+      // `?world=v1`: where cells decoded, the main-thread decode tasks (main) or reply messages (worker), ms.
+      world: (w => w ? { thread: w.decodeThread, cells: w.decodeMs.size, decodeMsMax: Math.round(Math.max(0, ...w.decodeMs.values()) * 10) / 10, inflateMsMax: Math.round(Math.max(0, ...w.inflateMs.values())), messages: w.messages ?? null, longestMessageMs: w.longestMessageMs != null ? Math.round(w.longestMessageMs * 10) / 10 : null } : null)(vm?._completeCity?.world) };
   });
   let profile = null;
   if (profiling) ({ profile } = await cdp.send('Profiler.stop'));
@@ -330,7 +338,7 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    worst, attribution, alignErrMs, heapMB: raw.heapMB, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround,
+    worst, attribution, alignErrMs, heapMB: raw.heapMB, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, world: raw.world,
   };
 }
 

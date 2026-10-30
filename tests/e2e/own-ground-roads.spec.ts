@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { openRoute } from './helpers';
 import { ROAD_SPOTS as DIAGNOSE_SPOTS, spotViewpoint } from '../../src/canalRecall/ownGround/roadRegressions';
@@ -110,6 +110,9 @@ async function settle(page: Page, ms = 3500): Promise<Record<string, any>> {
 test('roads: shots at the user spots and the deck regressions', async ({ page }, info) => {
   test.setTimeout(1_200_000);
   mkdirSync(OUT, { recursive: true });
+  // ROADS_EVIDENCE=<staged photo-evidence.json.gz>: shoot with staged photo evidence before it is published.
+  const staged = process.env.ROADS_EVIDENCE;
+  if (staged) await page.context().route('**/road-marks-v1/photo-evidence.json.gz', r => r.fulfill({ body: readFileSync(staged), contentType: 'application/gzip' }));
   const errors = await boot(page);
   const only = process.env.ROADS_ONLY?.split(',');
   const report: Record<string, unknown> = {};
@@ -137,11 +140,11 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
     // road-look-continuity 2026-10-29: the kerb edge must be >= 1.5 px on the phone frame).
     const spot = DIAGNOSE_SPOTS.find(q => q.id === name);
     const ppm = await page.evaluate(({ at, bearing }) => {
-      const m = (window as any).canalRecallGame.vectorMap.map, dpr = window.devicePixelRatio || 1;
+      const m = (window as any).canalRecallGame.vectorMap.camera, dpr = window.devicePixelRatio || 1;
       const [lng, lat] = at, k = 1 / (111320 * Math.cos(lat * Math.PI / 180)), b = bearing * Math.PI / 180;
       const p0 = m.project([lng, lat]), off = (e: number, n: number) => m.project([lng + e * k, lat + n / 111320]);
       const d = (q: { x: number; y: number }) => Math.hypot(q.x - p0.x, q.y - p0.y) * dpr;
-      return { across: +d(off(Math.cos(b), -Math.sin(b))).toFixed(2), along: +d(off(Math.sin(b), Math.cos(b))).toFixed(2), zoom: +m.getZoom().toFixed(2), pitch: +m.getPitch().toFixed(1), screen: [Math.round(p0.x * dpr), Math.round(p0.y * dpr)] };
+      return { across: +d(off(Math.cos(b), -Math.sin(b))).toFixed(2), along: +d(off(Math.sin(b), Math.cos(b))).toFixed(2), zoom: +m.zoom().toFixed(2), pitch: +m.pitch().toFixed(1), screen: [Math.round(p0.x * dpr), Math.round(p0.y * dpr)] };
     }, { at: spot ? spot.at : [place.lng, place.lat], bearing: place.bearing });
     report[name] = { place, ppm, cells: s.cells, triangles: s.triangles, geometryMB: s.geometryMB, errors: s.errors };
     expect(s.errors, `${name}: ${JSON.stringify(s.errors)}`).toEqual([]);
