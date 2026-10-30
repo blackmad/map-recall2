@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Analytics live (2026-10-30, #115).** The project is on Blaze, with a $0.00
+alert budget (an alert only, not a cap). `functions:analytics` is deployed in
+europe-west4, together with the Firestore rules and indexes, and container images
+are kept for 1 day. A `_Default` log-sink exclusion (`analytics-requests`) stops
+Cloud Run from keeping request logs with client IPs. The beacon goes straight to
+`https://europe-west4-map-recall2-blackmad.cloudfunctions.net/analytics`, because
+rideamsterdam.nl is served by Cloudflare Pages: a Firebase Hosting function rewrite
+crashed `build-pages-site.mjs`, which needs a `destination` on every rewrite (run
+41020836052), and Pages could not have used it anyway. A text/plain beacon needs no
+CORS, and the site sets no CSP. Checked on the live site: the bundle loads, the
+`session` beacon carries only allow-listed fields, and `analytics:report` counts it.
+
 **Modern side of the generic generator (#117, 2026-10-30).** The user approved it on 2026-10-29: "if we need a modern
 building side let it be modern". Before this, every dated post-1945 generic building drew smooth beige render with
 punched windows.
