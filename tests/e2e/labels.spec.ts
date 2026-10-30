@@ -113,8 +113,8 @@ test('labels: shots and counts at the review viewpoints', async ({ page }, info)
       const o = (window as any).canalRecallGame.vectorMap._labelOverlay;
       if (!o) return null;
       // Projection check: the overlay's ground projection against MapLibre's own.
-      const map = (window as any).canalRecallGame.vectorMap.map, c = map.getCenter();
-      const p = (o as any).projector(map)(c.lng, c.lat, 0), q = map.project(c);
+      const map = (window as any).canalRecallGame.vectorMap.map, c = (window as any).canalRecallGame.vectorMap.camera.center();
+      const p = (o as any).projector(map)(c.lng, c.lat, 0), q = (window as any).canalRecallGame.vectorMap.camera.project(c);
       return { ...o.stats, projectionErrorPx: Math.hypot(p.x - q.x, p.y - q.y) };
     });
     report[view.name] = { count: labels.length, overHud, labels, hud, overlay };

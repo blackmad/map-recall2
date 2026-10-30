@@ -23,6 +23,7 @@
 import {LIKENESS} from './likeness.ts';
 import {rgbToLab} from './measureFacade.ts';
 import type {LargeSystemName} from '../blockBuilding/systems.ts';
+import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from './intent.ts';
 
 /** measure.ts's glass test (since 2026-10-14): glass is at least this many L* darker than the wall ... */
 export const GLASS_MIN_DL = 10;
@@ -140,4 +141,53 @@ export function windowGroupProposal(m: WindowGroupInputs): {windowGroup: {count:
   if (m.foliage > LIKENESS.maxFoliage) why.push(`foliage ${Math.round(m.foliage * 100)} % > ${LIKENESS.maxFoliage * 100} %`);
   if (m.washedOut > LIKENESS.maxWashedOut) why.push(`washed out ${Math.round(m.washedOut * 100)} % > ${LIKENESS.maxWashedOut * 100} %`);
   return {windowGroup: why.length ? null : {count: n}, why};
+}
+
+/** JSON with sorted keys, for comparing intents and wall groups regardless of key order. */
+export const stableJson = (v: unknown): string => JSON.stringify(v, (_k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x));
+
+/**
+ * Idempotence (GitHub #127): a group measured before from the same crops, whose proposal changes nothing but the window
+ * shape, keeps the shape it has. The shape is the one field `--write` does not take from the photo alone: the glazing
+ * loop (refineGlazing) rescales it against the compiled model, and the photo grid it starts from is read at the shift
+ * that best fits the current model, so a second run on an already measured intent refolded and re-refined it and drifted
+ * (Pilotenstraat 103794 walls[2]: 0.817x0.525 PASS -> 0.77x0.592 FAIL, glazing 0.39 -> 0.43 vs photo 0.41).
+ * `sources` are the intent's sources, `crops` the group's crop sources this run (measure.ts cropSources).
+ */
+export function settledShape(w: LargeWallIntent, patch: Partial<LargeWallIntent>, o: {measuredBefore: boolean; sources: readonly IntentSource[]; crops: readonly IntentSource[]}): boolean {
+  if (!o.measuredBefore || !w.windowShape || !patch.windowShape) return false;
+  if (!o.crops.length || !o.crops.every(c => o.sources.some(s => s.id === c.id && (s.sha256 ?? null) === (c.sha256 ?? null)))) return false;
+  const {windowShape: _shape, ...rest} = patch;
+  return stableJson({...w, ...rest}) === stableJson(w);
+}
+
+/** True when `next` is `prev` except for the measurement record: measured.date and the "Measured" note (which lists what a run changed, so a second run that changes nothing words it differently). */
+export function sameMeasuredIntent(prev: LargeBuildingIntent, next: LargeBuildingIntent): boolean {
+  const norm = (i: LargeBuildingIntent) => stableJson({...i, measured: i.measured ? {...i.measured, date: '-'} : undefined, notes: (i.notes ?? []).filter(t => !t.startsWith('Measured '))});
+  return norm(prev) === norm(next);
+}
+
+/**
+ * Groups a draft's triangle budget drew blank (measure.ts `capDraftBudget`, its "Triangle budget: ... unphotographed
+ * groups a, b drawn blank" note) that are still blank: no crop paired them then, but a later one may (a set-back pairing,
+ * #127: Lelylaan 063809 walls[1], [2]), and the likeness skips blank groups, so they would never be measured again
+ * (GitHub #134). measure.ts compiles these with the draft's system to see whether a crop now pairs them.
+ */
+export function budgetBlankedGroups(intent: Pick<LargeBuildingIntent, 'notes' | 'walls'>): number[] {
+  const note = (intent.notes ?? []).find(t => t.startsWith('Triangle budget: '));
+  const m = note?.match(/unphotographed groups ([\d, ]+) drawn blank/);
+  if (!m) return [];
+  return [...new Set(m[1].split(',').map(s => Number(s.trim())).filter(g => Number.isInteger(g) && intent.walls[g]?.system === 'blank'))].sort((a, b) => a - b);
+}
+
+/** The budget note without the groups a crop now pairs (they are measured, not budget-blanked); other notes unchanged. */
+export function withoutBudgetBlanked(notes: readonly string[], groups: readonly number[]): string[] {
+  const drop = new Set(groups);
+  return notes.map(t => {
+    if (!t.startsWith('Triangle budget: ')) return t;
+    return t.replace(/unphotographed groups ([\d, ]+) drawn blank/, (_, list: string) => {
+      const keep = list.split(',').map(s => s.trim()).filter(s => s && !drop.has(Number(s)));
+      return `unphotographed groups ${keep.join(', ') || 'none'} drawn blank`;
+    });
+  });
 }

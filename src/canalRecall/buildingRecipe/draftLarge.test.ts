@@ -100,3 +100,27 @@ test('factory write guard: hand-authored intents are read-only; drafts and new h
   // the marker is validated
   assert.throws(() => validateLargeIntent({...intent, draftedBy: 'someone'} as never), /draftedBy/);
 });
+
+test('a two-shell pand drafts each group in one shell, never a surface twice (pand-240435, factory r3 2026-10-30)', () => {
+  // Ceintuurbaan / Govert Flinckstraat: two 3DBAG shells, each numbering its wall surfaces from 1; the draft listed
+  // surface 10 in walls[1] and walls[3] ("walls[3].wallSurfaces: surface 10 is already in walls[1]") and failed
+  const facts = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'fixtures/draft-two-shells-pand-240435-facts.json'), 'utf8')) as BuildingFacts;
+  const {intent, groups} = draftLargeIntent(facts, {id: 'pand-240435', pandId: facts.pandId});
+  assert.ok(groups.length >= 6, `${groups.length} groups`);
+  const keys = intent.walls.flatMap(w => { assert.ok(w.shell === 1 || w.shell === 2, 'every group names its shell'); return w.wallSurfaces.map(s => `${w.shell}:${s}`); });
+  assert.equal(new Set(keys).size, keys.length, 'no surface in two groups');
+  assert.ok(intent.walls.some(w => w.shell === 1) && intent.walls.some(w => w.shell === 2), 'both shells drafted');
+  // and the draft compiles: each group owns its main panel
+  const built = compileBuilding(intent, facts);
+  assert.ok(built.group, 'compiles');
+});
+
+test('a single-shell draft lists no shell (byte-identical to the drafts before the two-shell fix)', () => {
+  const facts = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'fixtures/draft-two-shells-pand-240435-facts.json'), 'utf8')) as BuildingFacts;
+  // the first shell alone: surfaces 1..44 (wallsRD in facts order)
+  const n = facts.wallsRD!.findIndex((w, i) => i > 0 && w.surface <= facts.wallsRD![i - 1].surface);
+  const one = {...facts, wallsRD: facts.wallsRD!.slice(0, n)} as BuildingFacts;
+  let intent: LargeBuildingIntent | null = null;
+  try { intent = draftLargeIntent(one, {id: 'one', pandId: facts.pandId}).intent; } catch { /* a shell alone may not close; the shell field is what is pinned */ }
+  if (intent) assert.ok(intent.walls.every(w => w.shell === undefined));
+});

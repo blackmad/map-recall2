@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {measureFacade, rgbToLab, MASK, type FacadeImage, type Rgb} from './measureFacade.ts';
+import {measureFacade, rgbToLab, washedFloorBandRows, MASK, type FacadeImage, type Rgb} from './measureFacade.ts';
 
 const PPM = 20;
 /** A synthetic rectified crop: `widthM` x `heightM`, filled with `wall`, a deterministic +-6 noise. */
@@ -147,4 +147,35 @@ test('self-trim rule: brick with white frames, a grey wall and a buff wall keep 
   const w = selfTrimWall([240, 240, 236], 0.86, [1, 1, 1]);
   assert.ok(Math.abs((w[0] + w[1] + w[2]) / 3 - 215) < 1, `the wall maps to 215: ${w}`);
   assert.deepEqual(selfTrimWall([200, 200, 196], 0.86, [1, 1, 1]), [200, 200, 196], 'under 215: raw, never lifted');
+});
+
+// #134: painted-white floor bands are wall, glare and sky are not (Lelylaan 063809 walls[1] read 36 % washed out from its
+// white parapet bands; AkzoNobel tower 240149 walls[0] and NFTA walls[1] are solid washed blocks and stay NO EVIDENCE)
+test('washedFloorBandRows: repeated thin bands with clear rows between count; a solid block, a lone band and the top row do not', () => {
+  const cols = 50, rows = 200, cell = 0.1, rowsOf = (on: (j: number) => boolean) => { const w = new Uint8Array(cols * rows); for (let j = 0; j < rows; j++) if (on(j)) w.fill(1, j * cols, (j + 1) * cols); return w; };
+  const seen = new Uint8Array(cols * rows).fill(1), count = (r: Uint8Array) => r.reduce((x, y) => x + y, 0);
+  // 1.0 m white bands every 2.8 m (the slab block's measured spacing), 1.8 m of windows between
+  const bands = rowsOf(j => j >= 10 && (j - 10) % 28 < 10);
+  assert.equal(count(washedFloorBandRows(bands, seen, cols, rows, cell)), 7 * 10, 'all seven bands');
+  // glare: the top 12 m solid
+  assert.equal(count(washedFloorBandRows(rowsOf(j => j < 120), seen, cols, rows, cell)), 0, 'a solid block is no band');
+  // two bands are not a repeated storey band
+  assert.equal(count(washedFloorBandRows(rowsOf(j => (j >= 40 && j < 50) || (j >= 68 && j < 78)), seen, cols, rows, cell)), 0, 'two bands do not repeat');
+  // a band touching the top row is sky over the eaves
+  const top = washedFloorBandRows(rowsOf(j => j < 10 || (j >= 38 && (j - 38) % 28 < 10)), seen, cols, rows, cell);
+  assert.equal(top.slice(0, 10).reduce((x, y) => x + y, 0), 0, 'the top band is not read');
+  // bands thicker than 1.8 m (a light storey, a light wall between dark rows) are not floor bands
+  assert.equal(count(washedFloorBandRows(rowsOf(j => (j % 40) < 25), seen, cols, rows, cell)), 0, '2.5 m light runs');
+});
+
+test('measureFacade: white parapet bands between window rows leave the washed-out share; a washed sky block stays washed', () => {
+  const W = 24, H = 18.3, slab = canvas(W, H, BRICK);
+  for (let s = 1; s + 1 < LINES.length; s++) { const lo = LINES[s]; slab.fill(0, W, lo - 0.1, lo + 1.0, TRIM); for (let b = 0; b < 8; b++) slab.fill(b * 3 + 0.4, b * 3 + 2.6, lo + 1.2, LINES[s + 1] - 0.4, GLASS); }
+  const m = measureFacade({image: slab.image, box: box(W, 16.8), lines: LINES});
+  assert.ok(m.washedOut!.raw > 0.2, `raw washed ${m.washedOut!.raw}`);
+  assert.ok(m.washedOutFraction < 0.05, `bands read as wall: ${m.washedOutFraction}`);
+  const sky = canvas(W, H, BRICK); sky.fill(0, W, 6, H, TRIM);
+  const s2 = measureFacade({image: sky.image, box: box(W, 16.8), lines: LINES});
+  assert.equal(s2.washedOutFraction, s2.washedOut!.raw, 'a solid light block is not a band');
+  assert.ok(s2.washedOutFraction > 0.3);
 });

@@ -1,0 +1,4384 @@
+[
+ {
+  "id": "NL.IMBAG.Pand.0393100000003741",
+  "height": 11.4,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000230876",
+  "height": 15.18,
+  "ways": [
+   "Polderplein",
+   "Tussenweg"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001002600",
+  "height": 20.13,
+  "ways": [
+   "Draverslaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001023180",
+  "height": 18.24,
+  "ways": [
+   "Nijverheidsstraat",
+   "Nijverheidsstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001021419",
+  "height": 15.12,
+  "ways": [
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001021420",
+  "height": 18.03,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001022335",
+  "height": 42.02,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012250194",
+  "height": 11.54,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0393100000003412",
+  "height": 19.42,
+  "ways": [
+   "Bietenpad",
+   "Turbineplaats",
+   "Turbineplaats"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000206753",
+  "height": 14.89,
+  "ways": [
+   "service",
+   "Rinse Hofstraweg",
+   "service",
+   "service",
+   "Rinse Hofstraweg",
+   "Randweg G",
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 5,
+  "decks": 9
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000207852",
+  "height": 15.14,
+  "ways": [
+   "Rinse Hofstraweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000211336",
+  "height": 15.8,
+  "ways": [
+   "service",
+   "Rinse Hofstraweg",
+   "Randweg F",
+   "Randweg F"
+  ],
+  "ground": 5,
+  "decks": 4
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001021609",
+  "height": 16.66,
+  "ways": [
+   "Koeriersplein"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001022160",
+  "height": 10.13,
+  "ways": [
+   "Rinse Hofstraweg",
+   "Rinse Hofstraweg"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w101153757",
+  "height": 15,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w268641337",
+  "height": 11.4,
+  "ways": [
+   "Rinse Hofstraweg",
+   "Rinse Hofstraweg"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w268641398",
+  "height": 13,
+  "ways": [
+   "Randweg D",
+   "Randweg D",
+   "Rinse Hofstraweg",
+   "Randweg E"
+  ],
+  "ground": 5,
+  "decks": 7
+ },
+ {
+  "id": "w528977297",
+  "height": 15,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w528977299",
+  "height": 45,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w528977301",
+  "height": 42,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 3,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000207783",
+  "height": 18.91,
+  "ways": [
+   "Rinse Hofstraweg"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000210867",
+  "height": 4.15,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000211337",
+  "height": 10.45,
+  "ways": [
+   "Randweg B",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001010377",
+  "height": 4.08,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001021927",
+  "height": 16.22,
+  "ways": [
+   "Westzijde"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w22962114",
+  "height": 10,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w48641865",
+  "height": 45,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w48641867",
+  "height": 45,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w97673584",
+  "height": 45,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w97673586",
+  "height": 45,
+  "ways": [
+   "De Traverse"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w101153756",
+  "height": 15,
+  "ways": [
+   "De Traverse",
+   "service"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "w101153759",
+  "height": 15,
+  "ways": [
+   "De Traverse",
+   "service"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "w101153760",
+  "height": 15,
+  "ways": [
+   "De Traverse",
+   "service"
+  ],
+  "ground": 6,
+  "decks": 5
+ },
+ {
+  "id": "w268641326",
+  "height": 9,
+  "ways": [
+   "service",
+   "Rinse Hofstraweg",
+   "Randweg C",
+   "Randweg C"
+  ],
+  "ground": 5,
+  "decks": 4
+ },
+ {
+  "id": "w268641409",
+  "height": 13,
+  "ways": [
+   "Rinse Hofstraweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w447227677",
+  "height": 10,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "r7490104",
+  "height": 44,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100001037762",
+  "height": 14.78,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100021500236",
+  "height": 5.15,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100005015969",
+  "height": 9.99,
+  "ways": [
+   "service",
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 5,
+  "decks": 5
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100021085544",
+  "height": 11.61,
+  "ways": [
+   "Gedempte sloot"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100021165167",
+  "height": 10.66,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000100340",
+  "height": 8.65,
+  "ways": [
+   "service",
+   "service",
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 5,
+  "decks": 6
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012227834",
+  "height": 42.4,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012066595",
+  "height": 8.49,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012091259",
+  "height": 8.4,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012110711",
+  "height": 8.32,
+  "ways": [
+   "Monte Adi"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012113771",
+  "height": 8.38,
+  "ways": [
+   "Monte Perdido"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123705",
+  "height": 5.07,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012126683",
+  "height": 8.49,
+  "ways": [
+   "Pasubio"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012075926",
+  "height": 18.26,
+  "ways": [
+   "H. Diesveldsingel"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012082205",
+  "height": 8.41,
+  "ways": [
+   "Allenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0394100000220796",
+  "height": 8.68,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012117062",
+  "height": 8.48,
+  "ways": [
+   "Kölpinstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012120948",
+  "height": 12.53,
+  "ways": [
+   "Pesetalaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012130385",
+  "height": 11.28,
+  "ways": [
+   "Kroonweg"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w516883761",
+  "height": 9,
+  "ways": [
+   "Randweg D",
+   "Randweg D",
+   "service",
+   "Randweg D",
+   "Randweg D",
+   "Randweg D",
+   "Randweg D"
+  ],
+  "ground": 6,
+  "decks": 7
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100020609440",
+  "height": 4.85,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "w319188870",
+  "height": 8.24,
+  "ways": [
+   "Kapelhof"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000085249",
+  "height": 15.04,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000008675",
+  "height": 11.1,
+  "ways": [
+   "Bossingschaaf"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w285617738",
+  "height": 27.68,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 1,
+  "decks": 2
+ },
+ {
+  "id": "w319188866",
+  "height": 9.09,
+  "ways": [
+   "Kapelhof"
+  ],
+  "ground": 0,
+  "decks": 1
+ },
+ {
+  "id": "w319188868",
+  "height": 8.29,
+  "ways": [
+   "Kapelhof"
+  ],
+  "ground": 0,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012132727",
+  "height": 12.67,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012128778",
+  "height": 9.02,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012138445",
+  "height": 10.56,
+  "ways": [
+   "Roesiel"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012202925",
+  "height": 21.75,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012223030",
+  "height": 11.51,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012063452",
+  "height": 7.55,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w478502467",
+  "height": 17.5,
+  "ways": [
+   "Berchvliet"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012249549",
+  "height": 12.29,
+  "ways": [
+   "Dirk Sonoystraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012249550",
+  "height": 12.25,
+  "ways": [
+   "Dirk Sonoystraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012066046",
+  "height": 16.5,
+  "ways": [
+   "Suze Groenewegplantsoen"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012062802",
+  "height": 16.87,
+  "ways": [
+   "Wildeman"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012242081",
+  "height": 9,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012103176",
+  "height": 4.94,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 0
+ },
+ {
+  "id": "w1313016955",
+  "height": 37.47,
+  "ways": [
+   "Jan van Zutphenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1313016956",
+  "height": 37.47,
+  "ways": [
+   "Jan van Zutphenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1313016958",
+  "height": 37.54,
+  "ways": [
+   "Jan van Zutphenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1313016960",
+  "height": 37.52,
+  "ways": [
+   "Jan van Zutphenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012098364",
+  "height": 17.96,
+  "ways": [
+   "Hageland"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0358100020154105",
+  "height": 9.23,
+  "ways": [
+   "Koningsstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w277563386",
+  "height": 10.72,
+  "ways": [
+   "Cotoneaster"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000315",
+  "height": 27.77,
+  "ways": [
+   "Spiekeroog"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000885",
+  "height": 24.45,
+  "ways": [
+   "Hoge Horn"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000992",
+  "height": 24.45,
+  "ways": [
+   "Hoge Horn"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000485",
+  "height": 9.13,
+  "ways": [
+   "Prinsenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000056",
+  "height": 30.81,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000108",
+  "height": 11.54,
+  "ways": [
+   "Rozenhof",
+   "Rozenhof"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000193",
+  "height": 25.79,
+  "ways": [
+   "Ankersmidplein"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000348",
+  "height": 28.03,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000000760",
+  "height": 35.2,
+  "ways": [
+   "Korte Hogendijk"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000080430",
+  "height": 31.07,
+  "ways": [
+   "pedestrian",
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000080433",
+  "height": 36.84,
+  "ways": [
+   "Provincialeweg",
+   "Provincialeweg",
+   "Provincialeweg",
+   "busway"
+  ],
+  "ground": 4,
+  "decks": 4
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000080434",
+  "height": 20.64,
+  "ways": [
+   "Hermitage"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000081660",
+  "height": 31.09,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000085371",
+  "height": 12.06,
+  "ways": [
+   "Provincialeweg"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000085372",
+  "height": 11.94,
+  "ways": [
+   "Provincialeweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000085375",
+  "height": 11.99,
+  "ways": [
+   "Provincialeweg",
+   "Provincialeweg"
+  ],
+  "ground": 0,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000044597",
+  "height": 7.73,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000013536",
+  "height": 26.87,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000002907",
+  "height": 11.45,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012134654",
+  "height": 7.96,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w880775206",
+  "height": 29.9,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012075475",
+  "height": 16.32,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012129291",
+  "height": 16.44,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012139694",
+  "height": 17.34,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012148991",
+  "height": 16.35,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012099492",
+  "height": 17.27,
+  "ways": [
+   "J.F. Berghoefplantsoen"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012126898",
+  "height": 4.15,
+  "ways": [
+   "Burgemeester Rendorpstraat"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012147091",
+  "height": 12.17,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012238935",
+  "height": 24.81,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012071927",
+  "height": 15.45,
+  "ways": [
+   "service",
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 5,
+  "decks": 4
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012120938",
+  "height": 5.27,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012244540",
+  "height": 21.88,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012233927",
+  "height": 4.18,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012065409",
+  "height": 26.54,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w28683601",
+  "height": 9,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100100091279",
+  "height": 8.72,
+  "ways": [
+   "Clingendael"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000044449",
+  "height": 7.67,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000007283",
+  "height": 12.12,
+  "ways": [
+   "Theodorus de Vriesstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000003000",
+  "height": 4.31,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0479100000087123",
+  "height": 7.35,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012148910",
+  "height": 10.08,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 1,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012138900",
+  "height": 32.11,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012111846",
+  "height": 17.37,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012136735",
+  "height": 17.33,
+  "ways": [
+   "Theodorus Dobbestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012084286",
+  "height": 41.39,
+  "ways": [
+   "motorway_link",
+   "motorway_link"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012227645",
+  "height": 14.26,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w276234161",
+  "height": 9,
+  "ways": [
+   "motorway_link"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012125427",
+  "height": 24.57,
+  "ways": [
+   "Jan Tooropstraat",
+   "Jan Tooropstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012128641",
+  "height": 20.49,
+  "ways": [
+   "Willem Schoutenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012133515",
+  "height": 18.97,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012255086",
+  "height": 16.41,
+  "ways": [
+   "Victoria Welbystraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012571511",
+  "height": 21.48,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1233871710",
+  "height": 33,
+  "ways": [
+   "Victoria Welbystraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012091344",
+  "height": 21.82,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012096320",
+  "height": 6.94,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012218844",
+  "height": 19.82,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w276908802",
+  "height": 26,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001056488",
+  "height": 8.43,
+  "ways": [
+   "pedestrian",
+   "pedestrian"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001069347",
+  "height": 8.43,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073040",
+  "height": 11.48,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012201369",
+  "height": 9.06,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012155154",
+  "height": 4.13,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012253937",
+  "height": 6.98,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012066120",
+  "height": 16.81,
+  "ways": [
+   "residential"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012101802",
+  "height": 16.88,
+  "ways": [
+   "residential"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012103590",
+  "height": 13.82,
+  "ways": [
+   "Zaanhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012117213",
+  "height": 14.51,
+  "ways": [
+   "Hembrugstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076680",
+  "height": 17.54,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012154507",
+  "height": 10.72,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012201367",
+  "height": 5.06,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012239475",
+  "height": 7.84,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012239974",
+  "height": 15.73,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012241970",
+  "height": 17.67,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012247876",
+  "height": 22.56,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076198",
+  "height": 14.08,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076322",
+  "height": 14.01,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012077195",
+  "height": 5.17,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012094325",
+  "height": 14.12,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012095508",
+  "height": 14.18,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012112601",
+  "height": 14.01,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012134030",
+  "height": 13.98,
+  "ways": [
+   "Anna van Burenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012062053",
+  "height": 15.29,
+  "ways": [
+   "Joan Melchior Kemperstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012137406",
+  "height": 15.37,
+  "ways": [
+   "Van Hogendorpstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012139650",
+  "height": 20.54,
+  "ways": [
+   "Antonie Heinsiusstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012141212",
+  "height": 8.3,
+  "ways": [
+   "Nicolaas Beetsstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012098626",
+  "height": 18.69,
+  "ways": [
+   "Hannie Dankbaarpassage"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012235229",
+  "height": 12.43,
+  "ways": [
+   "Hannie Dankbaarpassage"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012237310",
+  "height": 16,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012062355",
+  "height": 17.09,
+  "ways": [
+   "Krommertstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012081341",
+  "height": 14.63,
+  "ways": [
+   "Marcantilaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012118736",
+  "height": 14.52,
+  "ways": [
+   "Marcantilaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012120292",
+  "height": 15.23,
+  "ways": [
+   "Jan van Galenstraat",
+   "Jan van Galenstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012151538",
+  "height": 18.77,
+  "ways": [
+   "Jan van Galenstraat",
+   "Jan van Galenstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "w276302930",
+  "height": 9.6,
+  "ways": [
+   "Nicolaas Beetsstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012149878",
+  "height": 17.68,
+  "ways": [
+   "cycleway",
+   "cycleway"
+  ],
+  "ground": 1,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012136390",
+  "height": 14.97,
+  "ways": [
+   "Rijtuigenhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012571439",
+  "height": 13.7,
+  "ways": [
+   "Rijtuigenhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012137593",
+  "height": 15.8,
+  "ways": [
+   "Overtoom"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012077932",
+  "height": 17.45,
+  "ways": [
+   "Simsonstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012111195",
+  "height": 14.87,
+  "ways": [
+   "Hygiëastraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012117644",
+  "height": 16.23,
+  "ways": [
+   "Herculesstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012118468",
+  "height": 15.65,
+  "ways": [
+   "Discusstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012119156",
+  "height": 17.34,
+  "ways": [
+   "Simsonstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012120883",
+  "height": 15.87,
+  "ways": [
+   "Achillesstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123308",
+  "height": 16.35,
+  "ways": [
+   "Sportstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012130409",
+  "height": 16.38,
+  "ways": [
+   "Herculesstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012148124",
+  "height": 16.53,
+  "ways": [
+   "Achillesstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012243127",
+  "height": 23.77,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076454",
+  "height": 11.15,
+  "ways": [
+   "Gustav Mahlerplein"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012136538",
+  "height": 20.85,
+  "ways": [
+   "Cornelis Dopperkade"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012150001",
+  "height": 21.86,
+  "ways": [
+   "Cornelis Dopperkade"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w488909416",
+  "height": 21,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012078584",
+  "height": 13.34,
+  "ways": [
+   "Kastelenstraat",
+   "Kastelenstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012096091",
+  "height": 26.29,
+  "ways": [
+   "Assumburg",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012099648",
+  "height": 13.29,
+  "ways": [
+   "Kastelenstraat",
+   "Kastelenstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012098678",
+  "height": 26.34,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012126673",
+  "height": 17.2,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w99513804",
+  "height": 12,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w99513810",
+  "height": 12,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001089755",
+  "height": 28.35,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001058344",
+  "height": 9.03,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001092805",
+  "height": 7.55,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001111443",
+  "height": 16.6,
+  "ways": [
+   "Stadsplein"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001111445",
+  "height": 14.56,
+  "ways": [
+   "busway",
+   "busway",
+   "busway",
+   "busway",
+   "busway"
+  ],
+  "ground": 3,
+  "decks": 5
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100100084785",
+  "height": 12.69,
+  "ways": [
+   "Meester P.J.M. Aalberselaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001059844",
+  "height": 4.39,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001091510",
+  "height": 8.11,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w276217769",
+  "height": 9,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001078050",
+  "height": 12.51,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076367",
+  "height": 13.97,
+  "ways": [
+   "Reizigersweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012121619",
+  "height": 15.72,
+  "ways": [
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 1,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012147400",
+  "height": 31.12,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012101372",
+  "height": 6.98,
+  "ways": [
+   "Polluxstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012110039",
+  "height": 7.05,
+  "ways": [
+   "Castorstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012112566",
+  "height": 9.71,
+  "ways": [
+   "Zonneweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012128242",
+  "height": 7.08,
+  "ways": [
+   "Castorstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142437",
+  "height": 8.98,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012172976",
+  "height": 13.3,
+  "ways": [
+   "Concordiahofje-Noord"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012169269",
+  "height": 7.41,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012172991",
+  "height": 11.97,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012173567",
+  "height": 9.25,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012167722",
+  "height": 11.27,
+  "ways": [
+   "Van Brienenhofje"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012169237",
+  "height": 11.59,
+  "ways": [
+   "Broenshofje"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012173229",
+  "height": 15.73,
+  "ways": [
+   "Lindenhofje"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012176552",
+  "height": 14.61,
+  "ways": [
+   "pedestrian",
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012165747",
+  "height": 20.8,
+  "ways": [
+   "Dirk van Hasseltssteeg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012171104",
+  "height": 14.41,
+  "ways": [
+   "Wijde Ekstergang"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012171177",
+  "height": 23.69,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012148539",
+  "height": 16.65,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012173449",
+  "height": 20.34,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012168825",
+  "height": 8.9,
+  "ways": [
+   "Hofjen van de Weduwe Roosen"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012173536",
+  "height": 10.25,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012168932",
+  "height": 12.17,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012169898",
+  "height": 11.44,
+  "ways": [
+   "Sint Andrieshof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012171600",
+  "height": 16.89,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w266934434",
+  "height": 17.5,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012082824",
+  "height": 3.48,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012100762",
+  "height": 14.37,
+  "ways": [
+   "Hercules Seghersstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012158581",
+  "height": 16.45,
+  "ways": [
+   "Hercules Seghersstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012091624",
+  "height": 16.1,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012175092",
+  "height": 13.02,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012179801",
+  "height": 12.3,
+  "ways": [
+   "Hilmanhofje"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012098746",
+  "height": 16.01,
+  "ways": [
+   "Coöperatiehof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012141945",
+  "height": 15.99,
+  "ways": [
+   "Coöperatiehof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012096133",
+  "height": 17.8,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w268459136",
+  "height": 13.6,
+  "ways": [
+   "Hilmanhofje"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012242874",
+  "height": 16.36,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w277270888",
+  "height": 3,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "w277270889",
+  "height": 3,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 0
+ },
+ {
+  "id": "w806904234",
+  "height": 30,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1239602328",
+  "height": 11,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1241683740",
+  "height": 21,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012083415",
+  "height": 13.62,
+  "ways": [
+   "Kastelenstraat",
+   "Kastelenstraat"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012141040",
+  "height": 13.5,
+  "ways": [
+   "Kastelenstraat",
+   "Kastelenstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0362100001054494",
+  "height": 14.07,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w55159003",
+  "height": 13.61,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0415100000007856",
+  "height": 11.02,
+  "ways": [
+   "Uitgouw"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012089755",
+  "height": 4.5,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0415100000002590",
+  "height": 3.85,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "w663218690",
+  "height": 3,
+  "ways": [
+   "Nieuwe Gouw"
+  ],
+  "ground": 1,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012088775",
+  "height": 8.99,
+  "ways": [
+   "Bernard Leenepad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012090885",
+  "height": 8.92,
+  "ways": [
+   "Paavo Nurmipad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012238419",
+  "height": 18.33,
+  "ways": [
+   "Kopjachtplein"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012082342",
+  "height": 8.05,
+  "ways": [
+   "Pinksterbloemstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012079554",
+  "height": 10.44,
+  "ways": [
+   "Putterstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012087291",
+  "height": 8.59,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012101623",
+  "height": 15.27,
+  "ways": [
+   "Hollandia Kattenburgpad",
+   "Hollandia Kattenburgpad"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012113916",
+  "height": 11.87,
+  "ways": [
+   "Lijsterweg",
+   "Lijsterweg"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "w280838829",
+  "height": 12,
+  "ways": [
+   "Motorwal",
+   "pedestrian",
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012165619",
+  "height": 15.63,
+  "ways": [
+   "Zakslootje"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012185595",
+  "height": 26.8,
+  "ways": [
+   "residential",
+   "Nieuwe Kerkstraat"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012170746",
+  "height": 5.98,
+  "ways": [
+   "Laagte Kadijk"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012180578",
+  "height": 14.7,
+  "ways": [
+   "Olifantswerf"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012132692",
+  "height": 14.07,
+  "ways": [
+   "Topaasstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012251339",
+  "height": 18.9,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012112869",
+  "height": 17.48,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012165755",
+  "height": 33.69,
+  "ways": [
+   "Voormalige Stadstimmertuin"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012182123",
+  "height": 17.83,
+  "ways": [
+   "Voormalige Stadstimmertuin"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012070259",
+  "height": 12.75,
+  "ways": [
+   "Danie Theronstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012091658",
+  "height": 16.71,
+  "ways": [
+   "Kraaipanstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012102728",
+  "height": 14.87,
+  "ways": [
+   "Colensostraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012248052",
+  "height": 16.87,
+  "ways": [
+   "Uiterwaardenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012107499",
+  "height": 20.55,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000000207",
+  "height": 15.61,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000002070",
+  "height": 7.34,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012084610",
+  "height": 39.64,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012252231",
+  "height": 24.17,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012110701",
+  "height": 8.3,
+  "ways": [
+   "Nieuwendammerkade"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012126721",
+  "height": 4.16,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012145937",
+  "height": 11.1,
+  "ways": [
+   "Loenermark"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w373921577",
+  "height": 6,
+  "ways": [
+   "service",
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 4,
+  "decks": 4
+ },
+ {
+  "id": "w1370727964",
+  "height": 3,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012071449",
+  "height": 10.17,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012110901",
+  "height": 4.32,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012089340",
+  "height": 21.63,
+  "ways": [
+   "residential"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012064909",
+  "height": 24.11,
+  "ways": [
+   "Bogortuin"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012101207",
+  "height": 6.35,
+  "ways": [
+   "Vierde Vogelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012085288",
+  "height": 6.3,
+  "ways": [
+   "Derde Vogelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012092401",
+  "height": 6.29,
+  "ways": [
+   "Derde Vogelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012106658",
+  "height": 6.27,
+  "ways": [
+   "Derde Vogelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012185782",
+  "height": 6.31,
+  "ways": [
+   "Eerste Vogelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012169284",
+  "height": 20.76,
+  "ways": [
+   "Kruithuisstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012169344",
+  "height": 15.92,
+  "ways": [
+   "Tweede Wittenburgerdwarsstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012069173",
+  "height": 13.85,
+  "ways": [
+   "J.M. van der Meylaan"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012062862",
+  "height": 20.39,
+  "ways": [
+   "Dirk Vreekenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012087688",
+  "height": 19.01,
+  "ways": [
+   "Borneokade"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123967",
+  "height": 17.87,
+  "ways": [
+   "Borneokade"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012150792",
+  "height": 28.53,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w269074668",
+  "height": 18.4,
+  "ways": [
+   "Tweede Wittenburgerdwarsstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "r3694002",
+  "height": 38,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w1080816722",
+  "height": 39,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012253416",
+  "height": 14.28,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012106486",
+  "height": 14,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012120462",
+  "height": 14.22,
+  "ways": [
+   "Helmholtzstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012233630",
+  "height": 14.12,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012150639",
+  "height": 16.31,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w278610936",
+  "height": 14.8,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012069984",
+  "height": 6.6,
+  "ways": [
+   "Brinkstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012071237",
+  "height": 6.76,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073055",
+  "height": 6.78,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012084981",
+  "height": 9.65,
+  "ways": [
+   "Brink"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000000103",
+  "height": 11.88,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000000208",
+  "height": 22.23,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012091417",
+  "height": 37.13,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012204325",
+  "height": 4.95,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012240484",
+  "height": 33.47,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012070616",
+  "height": 9.49,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012221410",
+  "height": 4.67,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012095711",
+  "height": 7.67,
+  "ways": [
+   "Wijdenesserstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012105349",
+  "height": 8.02,
+  "ways": [
+   "Beemsterstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012122448",
+  "height": 7.14,
+  "ways": [
+   "Oudorperstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012132577",
+  "height": 7.63,
+  "ways": [
+   "Avenhornstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012133517",
+  "height": 7.72,
+  "ways": [
+   "Avenhornstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012137139",
+  "height": 7.66,
+  "ways": [
+   "Wijdenesserstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142612",
+  "height": 8.02,
+  "ways": [
+   "Beemsterstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012078153",
+  "height": 15.52,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012110795",
+  "height": 20.53,
+  "ways": [
+   "Barcelonaplein"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012184310",
+  "height": 5.68,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012191833",
+  "height": 10.77,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012070047",
+  "height": 13.91,
+  "ways": [
+   "Akkerstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012072174",
+  "height": 9.34,
+  "ways": [
+   "Brinkstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012092366",
+  "height": 13.9,
+  "ways": [
+   "Akkerstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012098848",
+  "height": 13.98,
+  "ways": [
+   "Weidestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012104510",
+  "height": 13.93,
+  "ways": [
+   "Weidestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012115612",
+  "height": 10.29,
+  "ways": [
+   "Kouterstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012115771",
+  "height": 13.87,
+  "ways": [
+   "Weidestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012133688",
+  "height": 13.91,
+  "ways": [
+   "Weidestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000004619",
+  "height": 9.15,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0437100000007472",
+  "height": 9.2,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012102993",
+  "height": 11.15,
+  "ways": [
+   "Gaffelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012103120",
+  "height": 10.2,
+  "ways": [
+   "Gaffelstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142264",
+  "height": 13.43,
+  "ways": [
+   "Harkstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000003667",
+  "height": 13.59,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000003668",
+  "height": 13.59,
+  "ways": [
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000003681",
+  "height": 13.94,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011583",
+  "height": 8.9,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000001250",
+  "height": 9.65,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011437",
+  "height": 20.24,
+  "ways": [
+   "Carel Willinkgracht"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011438",
+  "height": 23.3,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011446",
+  "height": 48.82,
+  "ways": [
+   "Jan Duikerhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011455",
+  "height": 21.06,
+  "ways": [
+   "Carel Willinkgracht"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011456",
+  "height": 20.33,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w1018851145",
+  "height": 12,
+  "ways": [
+   "Carel Willinkgracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1015044549",
+  "height": 17.54,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073393",
+  "height": 25.38,
+  "ways": [
+   "Hoekenrode",
+   "Hoekenrode",
+   "pedestrian"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012108073",
+  "height": 14.12,
+  "ways": [
+   "Hoptille"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012129958",
+  "height": 31.37,
+  "ways": [
+   "Bijlmerpleinpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012131132",
+  "height": 14.2,
+  "ways": [
+   "Foppingadreef"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123513",
+  "height": 14.74,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012149056",
+  "height": 27.15,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073878",
+  "height": 31.44,
+  "ways": [
+   "Bijlmerpleinpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012135452",
+  "height": 31.71,
+  "ways": [
+   "Bijlmerpleinpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012232848",
+  "height": 23.59,
+  "ways": [
+   "Flierbosdreef"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012096765",
+  "height": 4.56,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012139342",
+  "height": 4.95,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012238920",
+  "height": 16.67,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "w57853279",
+  "height": 26,
+  "ways": [
+   "Hoekenrode",
+   "Hoekenrode",
+   "pedestrian"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "w1487962802",
+  "height": 21,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w1487962805",
+  "height": 18,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "r20314633",
+  "height": 3,
+  "ways": [
+   "service",
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012249515",
+  "height": 26.17,
+  "ways": [
+   "Abcouderpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073071",
+  "height": 11.53,
+  "ways": [
+   "Heesterveld"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012078003",
+  "height": 3.95,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 0
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012081216",
+  "height": 15.43,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012084583",
+  "height": 22.71,
+  "ways": [
+   "service"
+  ],
+  "ground": 3,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012114400",
+  "height": 16.99,
+  "ways": [
+   "Heesterveld"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123222",
+  "height": 17.12,
+  "ways": [
+   "Heesterveld"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012071029",
+  "height": 11.53,
+  "ways": [
+   "Meibergpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w825838041",
+  "height": 9,
+  "ways": [
+   "Tafelbergweg"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012250807",
+  "height": 5.03,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012071792",
+  "height": 17.79,
+  "ways": [
+   "Pieter Holmplein"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012106287",
+  "height": 16.43,
+  "ways": [
+   "Steiger B",
+   "Steiger A",
+   "Steiger D",
+   "Steiger C"
+  ],
+  "ground": 5,
+  "decks": 4
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012160246",
+  "height": 9.47,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012151278",
+  "height": 11.75,
+  "ways": [
+   "John Napierstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012237501",
+  "height": 13.36,
+  "ways": [
+   "Edward Wrightstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000008228",
+  "height": 9.52,
+  "ways": [
+   "Karekiet"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011653",
+  "height": 17.55,
+  "ways": [
+   "Punt Sniep",
+   "Punt Sniep"
+  ],
+  "ground": 1,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000010871",
+  "height": 12.18,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000011980",
+  "height": 5.25,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0384100000001676",
+  "height": 12.93,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012112668",
+  "height": 31.35,
+  "ways": [
+   "Kraaiennestpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012127611",
+  "height": 31.29,
+  "ways": [
+   "Kraaiennestpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012127650",
+  "height": 31.54,
+  "ways": [
+   "Kraaiennestpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w57852955",
+  "height": 35.9,
+  "ways": [
+   "Kraaiennestpad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w282331251",
+  "height": 36,
+  "ways": [
+   "Gulden Kruispad",
+   "Gulden Kruispad"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "w282332320",
+  "height": 30,
+  "ways": [
+   "Gulden Kruispad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w282332538",
+  "height": 36,
+  "ways": [
+   "Gulden Kruispad",
+   "Gulden Kruispad",
+   "Nellesteinpad",
+   "Nellesteinpad"
+  ],
+  "ground": 5,
+  "decks": 4
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012111069",
+  "height": 6.72,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012073319",
+  "height": 11.61,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012072839",
+  "height": 11.47,
+  "ways": [
+   "Peursumstraat",
+   "Brinkiepad",
+   "Portengenstraat"
+  ],
+  "ground": 4,
+  "decks": 3
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012080133",
+  "height": 11.59,
+  "ways": [
+   "Papendrechtstraat",
+   "Peursumstraat"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012085114",
+  "height": 11.59,
+  "ways": [
+   "pedestrian",
+   "pedestrian"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012104202",
+  "height": 11.4,
+  "ways": [
+   "Poederooienstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012139923",
+  "height": 11.38,
+  "ways": [
+   "Portengenstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012141050",
+  "height": 11.5,
+  "ways": [
+   "Brinkiepad"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w941987440",
+  "height": 9.51,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 3,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012159742",
+  "height": 6.28,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012237444",
+  "height": 9.26,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012240970",
+  "height": 9.35,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012240984",
+  "height": 9.07,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012095260",
+  "height": 24.77,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012148683",
+  "height": 20.63,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012061309",
+  "height": 27.29,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012064437",
+  "height": 11.67,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012065730",
+  "height": 11.77,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012068721",
+  "height": 11.71,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012076844",
+  "height": 15.82,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012077777",
+  "height": 11.72,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012083544",
+  "height": 11.66,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012089426",
+  "height": 11.67,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012092538",
+  "height": 17.91,
+  "ways": [
+   "Nicolaas Hennemanhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012097626",
+  "height": 11.66,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012101436",
+  "height": 11.67,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012106701",
+  "height": 10.6,
+  "ways": [
+   "Kiekstraat"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012107065",
+  "height": 11.85,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012109534",
+  "height": 11.66,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012117493",
+  "height": 11.72,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012123624",
+  "height": 11.75,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012138667",
+  "height": 9.59,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012139736",
+  "height": 27.02,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142219",
+  "height": 11.66,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142359",
+  "height": 11.67,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012142389",
+  "height": 11.66,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012145331",
+  "height": 23.94,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012154393",
+  "height": 18.92,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012155004",
+  "height": 12.77,
+  "ways": [
+   "Alexandrine Tinnehof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012155102",
+  "height": 16.63,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012161227",
+  "height": 14.85,
+  "ways": [
+   "Theo Frenkelhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012209996",
+  "height": 11.67,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012224528",
+  "height": 11.8,
+  "ways": [
+   "Polygoongracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "r3724792",
+  "height": 24.7,
+  "ways": [
+   "Frits Rotganshof"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "r3724791",
+  "height": 13.6,
+  "ways": [
+   "service",
+   "service"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012118310",
+  "height": 14.84,
+  "ways": [
+   "service"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012253919",
+  "height": 5.07,
+  "ways": [
+   "cycleway"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012253894",
+  "height": 15.76,
+  "ways": [
+   "Virginiahof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012254202",
+  "height": 15.4,
+  "ways": [
+   "Virginiahof"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012254396",
+  "height": 18.41,
+  "ways": [
+   "Huiswoudhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w1186847311",
+  "height": 9.5,
+  "ways": [
+   "Paul Christiaan Fluhof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012241885",
+  "height": 17.1,
+  "ways": [
+   "Rini Ottehof"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012241927",
+  "height": 18.6,
+  "ways": [
+   "Rini Ottehof"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0424100000003720",
+  "height": 5.89,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0457100000062632",
+  "height": 15.19,
+  "ways": [
+   "Loes van Marlestraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0457100000025406",
+  "height": 11.25,
+  "ways": [
+   "Tussen de Grachten"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0457100000063577",
+  "height": 5.79,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0424100000005337",
+  "height": 8.41,
+  "ways": [
+   "Fortwoning Pampus"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0424100000004155",
+  "height": 8.61,
+  "ways": [
+   "Herengracht"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0424100000005151",
+  "height": 6.8,
+  "ways": [
+   "service"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0852100000002604",
+  "height": 8.09,
+  "ways": [
+   "Havenbuurt"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0852100000003070",
+  "height": 8.33,
+  "ways": [
+   "Havenbuurt"
+  ],
+  "ground": 1,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.1696100000030426",
+  "height": 11.74,
+  "ways": [
+   "De Boomgaard"
+  ],
+  "ground": 2,
+  "decks": 1
+ }
+]

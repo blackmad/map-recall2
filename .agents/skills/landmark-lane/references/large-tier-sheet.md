@@ -71,6 +71,18 @@ from the crop by `measure.ts`.
    modelled building, pands missing from the tiles. Triage removes these
    before any draft.
 
+8. **Band fronts (balcony bands, ribbon parapets, painted floor bands).**
+   Lanes #126/#127 added `balconyBands.spans` and band proposals; lane #134
+   fixed the measurement side (painted floor bands are wall, parapet glass is
+   trim on balcony-band groups, budget-blanked groups are re-probed). Across
+   the 17 ride-landmark drafts none passes yet: the drafts still draw punched
+   windows where the photo reads continuous ribbons 8–13 m wide, storey-2
+   opening widths are off (242968), 063809 is 9.4k triangles over budget, and
+   a pale pink-grey brick (240435) is indistinguishable by cell statistics
+   from a glare front that must stay rejected. Expect band pands to need a
+   per-house ribbon-windows draft, not a batch, until bandFronts proposes
+   bands for slab fronts like 063809 w1.
+
 ## Expected yield by front class and evidence
 
 | Photo front class | Judgeable crops on 2+ street walls | Expect |

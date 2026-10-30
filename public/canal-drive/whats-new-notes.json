@@ -1,6 +1,24 @@
 {
- "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
+ "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
  "notes": [
+  {
+   "date": "2026-10-30",
+   "title": "Ride through the poorts",
+   "text": "Streets, cycle paths and alleys that run under a building are open now, with the building carried over them: the poorts into Jordaan hofjes, the Motorwal, and the path under the Jan van Zutphenstraat towers. Buildings OSM left without a height are measured from the AHN height map instead of all standing at 9 m, so those towers rise to 37 m and garden sheds sit low.",
+   "where": [
+    4.7998,
+    52.3502
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "title": "Buildings out of the road",
+   "text": "Underground metro halls and car parks no longer stand across the Weesperstraat, Wibautstraat or the Albert Cuyp, and the Holocaust Namenmonument faces the right way. Amstel station stands again, with its bus canopy raised over the platforms. Canopies are thin roofs instead of solid blocks, and houses built over a street, as on the Kerkstraat, start at the right storey.",
+   "where": [
+    4.9075,
+    52.3655
+   ]
+  },
   {
    "date": "2026-10-30",
    "title": "Ride off from a standstill on squares",
@@ -8,6 +26,13 @@
    "where": [
     4.9003,
     52.3723
+   ],
+   "images": [
+    {
+     "src": "whats-new/2026-10-30-squares-standstill.jpg",
+     "alt": "The bike stopped on the Nieuwmarkt square in front of the Waag, chase view",
+     "caption": "Stopped on the Nieuwmarkt; it now pulls away forward"
+    }
    ]
   },
   {

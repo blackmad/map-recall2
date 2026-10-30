@@ -101,9 +101,9 @@ async function capture(page: Page, file: string, samples: Sample[]) {
   const pts = await page.evaluate(({ samples, patch }) => {
     const m = (window as any).canalRecallGame.vectorMap.map;
     return samples.map((s: { lng: number; lat: number }) => {
-      const p = m.project([s.lng, s.lat]);
+      const p = (window as any).canalRecallGame.vectorMap.camera.project([s.lng, s.lat]);
       const dLat = patch / 2 / 111320, dLng = patch / 2 / (111320 * Math.cos(s.lat * Math.PI / 180));
-      const a = m.project([s.lng - dLng, s.lat + dLat]), b = m.project([s.lng + dLng, s.lat - dLat]);
+      const a = (window as any).canalRecallGame.vectorMap.camera.project([s.lng - dLng, s.lat + dLat]), b = (window as any).canalRecallGame.vectorMap.camera.project([s.lng + dLng, s.lat - dLat]);
       // Flat layers drawn over our overview raster at this point (top first): what hides the tiles' colour.
       const order = m.getStyle().layers as { id: string; type: string }[];
       const tilesAt = order.findIndex(l => l.id === 'canal-overview-ground');
@@ -112,7 +112,7 @@ async function capture(page: Page, file: string, samples: Sample[]) {
       return { x: p.x, y: p.y, half: Math.max(1, Math.abs(b.x - a.x) / 2, Math.abs(b.y - a.y) / 2), over };
     });
   }, { samples, patch: PATCH_M });
-  const zoom = await page.evaluate(() => +(window as any).canalRecallGame.vectorMap.map.getZoom().toFixed(2));
+  const zoom = await page.evaluate(() => +(window as any).canalRecallGame.vectorMap.camera.zoom().toFixed(2));
   const png = await page.screenshot();
   fs.writeFileSync(file, png);
   const { data, info } = await sharp(png).removeAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -150,7 +150,7 @@ for (const name of spots) {
   await page.evaluate(v => { (window as any).__tz = v; }, { zoom: playZoom * 0.15, overview: 1 });
   await page.waitForTimeout(800);
   for (const z of zooms) {
-    const z0 = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getZoom() as number);
+    const z0 = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.zoom() as number);
     const c0 = await page.evaluate(() => (window as any).canalRecallGame.camera.zoom as number);
     await page.evaluate(v => { (window as any).__tz = v; }, { zoom: c0 * 2 ** (z - z0), overview: 1 });
     await settle(page);
