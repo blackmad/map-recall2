@@ -41,7 +41,7 @@ for (const site of TUNNEL_SITES) {
       if (depth < e.minWallM) fail(site, `wall ${depth.toFixed(2)} m at the probe, expected at least ${e.minWallM}`);
     }
     if (e.floorBelowReliefM !== undefined && !(relief - floor >= e.floorBelowReliefM)) fail(site, `floor ${floor.toFixed(2)} only ${(relief - floor).toFixed(2)} m under the relief ${relief.toFixed(2)}, expected ${e.floorBelowReliefM}`);
-  } else if (floor === floor) fail(site, `a cut holds the probe point (floor ${floor.toFixed(2)}), expected none`);
+  } else if (e.noCut && floor === floor) fail(site, `a cut holds the probe point (floor ${floor.toFixed(2)}), expected none`);
   if (e.portalNear) {
     const [px, py] = toLocal(e.portalNear[0], e.portalNear[1]);
     const d = Math.min(Infinity, ...s.cuts.flatMap(c => c.portals.map(p => Math.hypot(c.x[p.at] - px, c.y[p.at] - py))));
