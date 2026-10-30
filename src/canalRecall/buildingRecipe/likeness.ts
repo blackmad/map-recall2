@@ -61,6 +61,15 @@ const TRIM_SLOTS = new Set(['accent']);
 export interface PanelFrame { o: number[]; r: number[]; n: number[]; uMin: number; uMax: number }
 
 /**
+ * Parapet glass (#134): the photo pass reads a glass balustrade as wall-like (it shows the slab edge, the wall and the
+ * rooms behind it at the wall's tone; Mary van der Sluisstraat 247342 walls[1] reads 0.18 glazing where the model's
+ * `rail: glass` balconies drew 0.41), so in the likeness elevation an opening-slot cell (glass, frame) standing at least
+ * `proudM` in front of the panel's plane, from `belowM` under an upper storey line to `railM` over it, is trim: a balcony
+ * or balcony-band parapet, not a window. Windows sit in or behind the plane; the game mesh is not touched.
+ */
+export const PARAPET_GLASS = {proudM: 0.2, belowM: 0.1, railM: 1.3} as const;
+
+/**
  * Colour the game draws for a material (sRGB). A measured tint (`tintSource: "measured"` in the material extras, the
  * runtime bypass of lane B, or a tint listed in `measuredTints` until the exporter writes that extra) is drawn as is.
  */
@@ -98,13 +107,16 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
   const frontDepth = panel.o[0] * nx + panel.o[2] * nz + 1;
   const el = renderElevation(soup, {name: 'panel', bearing, span: [t0 - 0.05, t1 + 0.05], depthBand: 1 + Math.max(1.5, behindM), frontDepth}, cell);
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell)), N = cols * rows;
-  const matAt = new Int32Array(N).fill(-1), shade = new Float32Array(N);
+  const matAt = new Int32Array(N).fill(-1), shade = new Float32Array(N), depth = new Float64Array(N).fill(-Infinity);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
     const u = box.u0 + (i + 0.5) * cell, v = box.v1 - (j + 0.5) * cell;
     const px = Math.floor((tOf(u) - el.tMin) / cell), py = Math.floor((el.yMax - v) / cell);
     if (px < 0 || py < 0 || px >= el.W || py >= el.H) continue;
-    matAt[j * cols + i] = el.mat[py * el.W + px]; shade[j * cols + i] = el.shade[py * el.W + px];
+    matAt[j * cols + i] = el.mat[py * el.W + px]; shade[j * cols + i] = el.shade[py * el.W + px]; depth[j * cols + i] = el.depth[py * el.W + px];
   }
+  // a cell of a parapet in front of the plane (PARAPET_GLASS): proud of the panel, in the rail zone of an upper storey line
+  const planeD = frontDepth - 1, upper = lines.slice(1, -1);
+  const parapet = (k: number) => { if (!(depth[k] - planeD >= PARAPET_GLASS.proudM)) return false; const v = box.v1 - (Math.floor(k / cols) + 0.5) * cell; return upper.some(l => v >= l - PARAPET_GLASS.belowM && v <= l + PARAPET_GLASS.railM); };
   const colourOf = soup.materials.map(m => gameColour(m, measuredTints)), todayOf = soup.materials.map(m => gameColour(m));
   const slotOf = soup.materials.map(m => m.materialSlot ?? m.slot ?? '');
   // the wall: the modal wall-slot material over the cells above the ground band
@@ -124,8 +136,9 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
     if (WALL_SLOTS.has(slot) && !differs) { mask[k] = MASK.wall; continue; }
     // openings (glass, frames, railings, doors, curtain mullions) as the photo's opening pass reads them; a wall-slot
     // material of another colour (stone bands, sills, a rendered block) and accents are trim, not glazing
-    mask[k] = OPENING_SLOTS.has(slot) ? (!wallLab || lab[0] < wallLab[0] + 5 ? MASK.dark : MASK.frame) : MASK.trim;
-    if (slot === 'glass') glassCells.push(c);
+    // (parapet glass and rails in front of the plane read wall-like, as in the photo: trim)
+    mask[k] = OPENING_SLOTS.has(slot) && !parapet(k) ? (!wallLab || lab[0] < wallLab[0] + 5 ? MASK.dark : MASK.frame) : MASK.trim;
+    if (slot === 'glass' && mask[k] !== MASK.trim) glassCells.push(c);
   }
   const grid = analyseMask({mask, cols, rows, cell, box, lines});
   const curtain = curtainReading({matAt, cols, rows, cell, box, lines, slotOf, colourOf, todayOf, wallMat, system});
