@@ -190,11 +190,33 @@ ride-perf in-page A/B and `phone-memory` under the flag are unmeasured.
 Steps 4–6 (overlays + labels, the 2026-10-10 re-port incl. the own picker,
 `_makeLayer` deletions, a flag switch for the gate specs, the A/B) continue
 in the same lane.
-**L4 world streamer spawned 2026-10-30** (#136, `lane-world-streamer-20261030.md`,
-port 4529): browser identity for `?world=v1` first (the A/B found the world
-path holding ~4,400 more buildings on four centre tiles, and dense cells
-decoding on the main thread at ~1.24 s), then worker decode, ATTR/STRS cut,
-one streamer after L1, road CSR.
+State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
+`?world=v1` is identical to the default path in the browser (five spots,
+desktop and iPhone: same feature ids and styled features per tile; Node
+`world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
+difference was stale cells (207 of 295 tiles' inputs had changed since L3
+compiled; `scripts/world/verify.ts` now catches staleness and the A/B runs it
+first) plus one ulp of `Math.cos` (Node's fdlibm vs Chrome's correctly rounded
+cos; `scripts/world/browserMath.ts` gives the compiler the browser's cos/sin,
+358 buildings city-wide). Cells decode inside the three-buildings worker
+(`WorldCellReader`; main thread gets 400-feature batches, longest task 3.3 ms
+at 1× / 7.3 ms at 4×; `?worldWorker=0` falls back). Format v2 runtime cells:
+no ATTR, compact ids: 15.86 → 13.45 MB gz. JS heap at the end of a 90 s
+desktop ride: default 1,262 MB, world 688 MB. **Cells published** to
+`public/data/extracts/amsterdam/world-v1/` (format 2, 604 cells) after the
+integrator's A/B. **Integration rule from now on:** any change to building
+tiles, facts, covers, kits or decorators needs `npm run world:compile &&
+npm run world:verify` and the re-published cells in the same integration
+(`verify` reports `staleTiles`). Integrator's A/B on the published cells: 3/3, 0 differing tiles, but the
+default path held ~6,000 more buildings at snapshot time (36,352 vs 30,410 at
+Westerkerk: more tiles resident, not different styling) and pixels differed
+up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
+world path streams tiles in later at page start (inflate wall time), which is
+step 4's flush/regroup and look-ahead work; measure time-to-resident per
+tile both ways. Still open: ≤ 4 MB target (FOOT alone 7.4 MB
+gz); remaining long frames are the streamer's flush/regroup (step 4, waits
+for `engine/frameHost.ts` on main, which is there since step 3 of L1: resume
+L4 step 4); road CSR (step 5).
 **Reds on main found by the programme's runs (2026-10-30), not yet owned:**
 `tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
 draws after every building layer: expected > 128, got −1);
