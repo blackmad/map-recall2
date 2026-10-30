@@ -186,7 +186,7 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         facadeAttributes(g, cityTint('brick', hex), plainLayer, wallShade(normal[0], normal[1]));
         const lit = pipeline === 'city-generic';
         const material = createCityLookMaterial(THREE, { lit, kind: 'chunk' }, createCityUniforms(THREE, {
-          cells: { value: cityCells!.colour }, masks: { value: cityCells!.mask }, wallGain: { value: LOOK_VARIANTS.photo.litWallGain } }));
+          cells: { value: cityCells!.colour }, masks: { value: cityCells!.mask }, wallGain: { value: litFacadeWallGain(LOOK_VARIANTS.photo.litWallGain) } }));
         mesh = new THREE.Mesh(g, material);
       } else if (pipeline === 'city-recipe' || pipeline === 'city-recipe-unlit') {
         // Recipe GLB in the city look: UVs in metres, `materialSlot: brick`.
