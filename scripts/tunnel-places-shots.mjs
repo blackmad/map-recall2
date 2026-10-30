@@ -1,5 +1,6 @@
 // Screenshots of the named tunnel sites in the game (chase view, rider frozen at the place), for before/after review.
 //   PORT=4417 node scripts/tunnel-places-shots.mjs <tag> [only,ids]   -> artifacts/tunnel-places/<tag>/<id>.png
+// PHONE=1 shoots the phone frame (390×844, touch) into <tag>-phone/.
 // BUNDLES_DIR=<dir> serves bundles built with `node scripts/build-3d-bundles.mjs --only=own-ground-game,own-ground-worker --outdir=<dir>`.
 // The sites are the tunnel lane's survey (2026-10-30): motor tunnel approaches the rider cannot use (A) and underpasses they can (B).
 import { chromium } from 'playwright';
@@ -13,20 +14,21 @@ export const PLACES = {
   'ij-tunnel-ramp': [4.91150, 52.37235, 20],            // beside the ramp, looking at the portal under NEMO
   'ij-tunnel-south': [4.9112, 52.3713, 25],              // Prins Hendrikkade by the Foeliestraat, looking up the ramp
   'ij-tunnel-portal-quay': [4.91285, 52.37270, 345],     // the quay path east of the ramp, toward the portal
-  'piet-heintunnel-west': [4.9320, 52.37275, 90],       // Piet Heinkade, west portal
+  'piet-heintunnel-west': [4.93455, 52.37290, 100],     // beside the west ramp on the Piet Heinkade, looking east to the portal
   'spaarndammertunnel-west': [4.8728, 52.3937, 110],
   'michiel-de-ruijtertunnel-west': [4.8962, 52.3812, 120],
   // B: rideable underpasses
   'cuyperspassage': [4.89795, 52.37905, 35],
-  'wibautstraat-underpass': [4.9136, 52.35163, 130],
+  'wibautstraat-underpass': [4.91390, 52.35141, 128],   // on the cycle path at the north portal, looking along the slot under the railway
   'molukkenstraat-cycle-underpass': [4.9397, 52.35625, 38],
   'kruislaan-cycle-underpass': [4.9490, 52.35290, 50],
   'centraal-oosttunnel': [4.90105, 52.37805, 35],
 };
 if (process.argv[1].endsWith('tunnel-places-shots.mjs')) {
-  fs.mkdirSync(`artifacts/tunnel-places/${tag}`, { recursive: true });
+  const phone = !!process.env.PHONE, dir = `artifacts/tunnel-places/${tag}${phone ? '-phone' : ''}`;
+  fs.mkdirSync(dir, { recursive: true });
   const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
-  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  const page = await browser.newPage(phone ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true } : { viewport: { width: 1280, height: 800 } });
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
   if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
@@ -54,9 +56,9 @@ if (process.argv[1].endsWith('tunnel-places-shots.mjs')) {
     await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && s.basemapHidden && !s.queued && !Object.keys(s.pending).length; }, null, { timeout: 60000, polling: 16 }).catch(() => {});
     await page.waitForTimeout(3000);
     info[id] = await page.evaluate(() => { const vm = canalRecallGame.vectorMap; return { riderZ: vm._riderSurfaceZ ?? null, covered: vm.riderCovered ?? null }; }).catch(e => String(e));
-    await page.screenshot({ path: `artifacts/tunnel-places/${tag}/${id}.png` });
+    await page.screenshot({ path: `${dir}/${id}.png` });
   }
-  fs.writeFileSync(`artifacts/tunnel-places/${tag}/info.json`, JSON.stringify(info, null, 1));
+  fs.writeFileSync(`${dir}/info.json`, JSON.stringify(info, null, 1));
   console.log(JSON.stringify(info));
   await browser.close();
 }
