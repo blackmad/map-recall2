@@ -135,6 +135,30 @@ export function rowOpenings(a: {mask: Uint8Array; cols: number; rows: number; ce
     widthP50: widths.length ? +quantile(widths, 0.5).toFixed(2) : null, widthP90: widths.length ? +quantile(widths, 0.9).toFixed(2) : null, measured: measuredOpenings.length};
 }
 
+/** `other`'s openings lying (>= spanOverlap of their width) inside the ribbon's span are a punched row: two or more, all
+ *  under windowMaxM, covering under punchedCover of the span (see `compareRowOpenings`). */
+export function punchedUnder(rib: RowOpening, other: OpeningRow): boolean {
+  const R = ROW_OPENINGS;
+  const inside = other.openings.filter(o => Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0) >= R.spanOverlap * o.w);
+  const cover = inside.reduce((x, o) => x + Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0), 0) / Math.max(1e-6, rib.w);
+  return inside.length >= 2 && inside.every(o => o.w < R.windowMaxM) && cover < R.punchedCover;
+}
+
+/**
+ * The row-mismatch test within one photo (landmark triage, GitHub #119): storeys whose ribbon (an opening >= ribbonM)
+ * lies over a punched row on another window storey of the same front. A front of bands over punched windows (balcony
+ * bands, ribbon glazing or a shopfront strip over punched housing) is what the judge fails a one-grid model on.
+ */
+export function ribbonAgainstPunched(s: RowOpeningSummary): {storey: number; againstStorey: number; ribbonM: number}[] {
+  const out: {storey: number; againstStorey: number; ribbonM: number}[] = [];
+  for (const r of s.rows) for (const o of r.openings) {
+    if (o.w < ROW_OPENINGS.ribbonM) continue;
+    const other = s.rows.find(x => x.storey !== r.storey && punchedUnder(o, x));
+    if (other) { out.push({storey: r.storey, againstStorey: other.storey, ribbonM: o.w}); break; }
+  }
+  return out;
+}
+
 export interface RowOpeningsComparison {
   photo: {count: number | null; mix: Record<OpeningShape, number>; widthP50: number | null; widthP90: number | null; measured: number};
   model: {count: number | null; mix: Record<OpeningShape, number>; widthP50: number | null; widthP90: number | null; measured: number};
@@ -159,11 +183,6 @@ export function compareRowOpenings(photo: RowOpeningSummary, model: RowOpeningSu
     // ribbon's span are a punched row when there are two or more, all under windowMaxM, covering under punchedCover of
     // the span. Windows elsewhere in the storey do not contradict a ribbon (Stadsloket Zuidoost walls[0]: an 18 m window
     // box in a storey of punched windows, whose glass the photo reads as wall, against windows beside the box).
-    const punchedUnder = (rib: RowOpening, other: OpeningRow) => {
-      const inside = other.openings.filter(o => Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0) >= R.spanOverlap * o.w);
-      const cover = inside.reduce((x, o) => x + Math.min(o.u1, rib.u1) - Math.max(o.u0, rib.u0), 0) / Math.max(1e-6, rib.w);
-      return inside.length >= 2 && inside.every(o => o.w < R.windowMaxM) && cover < R.punchedCover;
-    };
     const against = (a: OpeningRow, b: OpeningRow) => a.openings.some(o => o.w >= R.ribbonM && punchedUnder(o, b));
     if (against(pr, mr) || against(mr, pr)) rowMismatch.push({storey: pr.storey, photoMaxM: pMax, modelMaxM: mMax});
   }

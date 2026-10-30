@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import sharp from 'sharp';
 import {analyseMask, MASK, type FacadeBox} from './measureFacade.ts';
-import {compareRowOpenings, ROW_OPENINGS, rowOpenings} from './rowOpenings.ts';
+import {compareRowOpenings, ribbonAgainstPunched, ROW_OPENINGS, rowOpenings} from './rowOpenings.ts';
 import {CAMERA_ABOVE_TERRAIN_M, cropsOfWallsJson, cropStreetShiftM} from './cropToPanel.ts';
 
 const fixture = (f: string) => new URL(`./fixtures/${f}`, import.meta.url);
@@ -113,4 +113,14 @@ test('cropStreetShiftM: an assumed 0.4 m NAP street is replaced by the terrain u
   assert.equal(cropStreetShiftM(byTag.get('w01-331L')!, terrain), 0, 'published camera height kept');
   assert.equal(cropStreetShiftM(byTag.get('w03-241')!, () => NaN), 0, 'no terrain: unchanged');
   assert.equal(cropStreetShiftM(byTag.get('w03-241')!, null), 0, 'no terrain field: unchanged');
+});
+
+test('ribbonAgainstPunched: a ribbon storey over a punched storey of the same photo (#119)', () => {
+  const op = (u0: number, w: number) => ({u0, u1: u0 + w, w, h: 1.5, shape: 'square' as const, partial: false});
+  const row = (storey: number, openings: ReturnType<typeof op>[]) => ({storey, lo: storey * 3, hi: storey * 3 + 3, share: 0.3, openings, cover: 0.3});
+  const punched = row(1, [op(1, 1.2), op(4, 1.2), op(7, 1.2), op(10, 1.2)]), ribbon = row(2, [op(0.5, 12)]);
+  const s = (rows: ReturnType<typeof row>[]) => ({rows, count: null, mix: {tall: 0, square: 1, wide: 0}, widthP50: null, widthP90: null, measured: 0});
+  assert.deepEqual(ribbonAgainstPunched(s([punched, ribbon])), [{storey: 2, againstStorey: 1, ribbonM: 12}]);
+  assert.deepEqual(ribbonAgainstPunched(s([ribbon, row(1, [op(0.5, 11)])])), []);
+  assert.deepEqual(ribbonAgainstPunched(s([punched, row(2, [op(1, 1.2), op(4, 1.2)])])), []);
 });
