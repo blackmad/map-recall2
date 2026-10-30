@@ -10,7 +10,7 @@ import { openRoute } from './helpers';
 test('pitched chase lifts landmark and shop labels onto the buildings', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
   const result = await page.evaluate(() => {
@@ -65,7 +65,7 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
 test('our own POI layer replaces the basemap and sits on each building\'s roofline', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._ownPoisActive ?? false), { timeout: 30000 }).toBe(true);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
@@ -113,4 +113,19 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
     return { ...state, after: vm.map.getLayoutProperty(labels, 'visibility') };
   });
   expect(quiet).toEqual({ dots: false, labels: 'none', after: 'visible' });
+});
+
+// Named regression (user report 2026-10-30, Zuiderkerk / Sint Antoniesbreestraat: "why two kinds of labels? too
+// distracting"): by default only the place pills draw; shop and café names stay hidden.
+test('shop and café names are hidden by default; place pills are the one label system', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
+  test.setTimeout(150000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._ownPoisActive ?? null), { timeout: 60000 }).not.toBeNull();
+  const shown = await page.evaluate(() => {
+    const map = (window as any).canalRecallGame.vectorMap.map;
+    return map.getStyle().layers.filter((l: any) => /^own-poi-labels-/.test(l.id) || l['source-layer'] === 'poi')
+      .filter((l: any) => map.getLayoutProperty(l.id, 'visibility') !== 'none').map((l: any) => l.id);
+  });
+  expect(shown).toEqual([]);
 });

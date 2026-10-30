@@ -1,426 +1,431 @@
 {
- "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
- "notes": [
-  {
-   "date": "2026-10-30",
-   "title": "Post-war buildings look modern",
-   "text": "Buildings from after 1945 no longer all wear the same beige render with small windows. 1960s offices get pale window bands, 1980s-90s housing takes brick or render in the colours measured in its own neighbourhood, and big glass blocks get curtain fronts."
-  },
-  {
-   "date": "2026-10-30",
-   "title": "Neighbourhoods keep their own brick tone",
-   "text": "Ordinary buildings no longer have every neighbourhood's brick lifted to one city lightness. A neighbourhood whose photos show darker brick now draws darker, so the city as a whole is a little darker and closer to the street photos."
-  },
-  {
-   "date": "2026-10-30",
-   "title": "First Jordaan row",
-   "text": "Bloemgracht 138-300 is now three Jordaan houses from its street photo: a neck gable and two cornice fronts in dark brick. Seven more Jordaan rows were held back because their photos were too close, oblique or wrongly matched."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Kit-row cards in their real colours",
-   "text": "The kit-row previews on this page showed every row's brick two shades too pale, so dark brown Kinkerstraat looked beige. They now use the measured brick colour, as the game always did."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Six more De Pijp rows",
-   "text": "Rows on Albert Cuypstraat, Van Woustraat, Jan van der Heijdenstraat and Van der Helststraat now follow their street photos: brick fronts, white cornices and window rhythm."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "More De Pijp rows",
-   "text": "Eleven more rows in De Pijp, on Albert Cuypstraat, Gerard Doustraat, Van der Helststraat, Eerste Jan Steenstraat, Van Woustraat, Van Campenstraat, Ruysdaelkade and Saenredamstraat, are now drawn from their street photos."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Turns you can see; no stuck answer card",
-   "text": "When you queue a turn on the phone pad, a pulsing chevron now marks the opening the bike will take. Boats follow the canals the same way, and slide along the quay instead of jerking sideways. An answered question card no longer stays on screen after a street that isn't asked about."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Each neighbourhood gets its own colours",
-   "text": "Ordinary buildings now take their brick colours, painted fronts and white trim from photos measured in their own neighbourhood. The Jordaan has more white and grey fronts, and Oud-West is a darker red-brown."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Calmer phone steering",
-   "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Less work for your graphics card",
-   "text": "The city now skips the ground and building fronts that are off screen. On desktop the picture is the same with about half the triangles. On iPad the busiest views drop to under a million triangles."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Around Centraal Station",
-   "text": "The pavilions on the Stationsplein island, the Noord-Zuid Hollandsch Koffiehuis among them, are now modelled with their mansard roofs and turret. The IJ-side canopy has its arched ribs, the Beurs van Berlage has proper bays, arches and a crest, and each ferry landing has one label."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Kinkerstraat rows",
-   "text": "Fifty Kinkerstraat houses in Oud-West are now drawn from their street photos: brick and painted fronts, white bands, shopfronts, and the dormer roofline behind the cornice, including arched and brick wall dormers."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Lighter on iPads and phones",
-   "text": "Phones and tablets now load only the ground they can actually see and skip what is off screen. That cuts about a third of the GPU work, so the map should crash less often on iPad and iPhone."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "De Pijp rows, first streets",
-   "text": "Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38 are now drawn from their street photos: white bands, iron wall anchors, keystones, window hoods and pediment dormers with hoist beams."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "Noord waterfront rebuilt",
-   "text": "The A'DAM Toren's windows now follow its floors, and its shaft turns on the podium as in real life. The EYE stairs are no longer buried, and its west wall no longer floats. Treehouse NDSM has its black fence and truer cabin colours, Pllek is stacked containers under a truss canopy, and Grasweg 41S is silver panels. The bumpy construction-site ground at NDSM-oost is flat again."
-  },
-  {
-   "date": "2026-10-29",
-   "title": "One name per place, and tidier Dam landmarks",
-   "text": "Free Ride no longer shows the same place name twice: Beurs van Berlage, De Bijenkorf, the National Monument and Centraal each get one label. The Beurs windows and arches sit on their walls, the Bijenkorf's Dam front shows its windows again, and the stray grey strip on the Dam corner is gone."
-  },
-  {
-   "date": "2026-10-28",
-   "title": "Ferries dock at any pier",
-   "text": "Steer the ferry onto any pier, from the water or up the quay, to step off. Buiksloterweg and NDSM-werf no longer leave you stuck aboard, the boat stays off the bank, and the cycle bridge by the Odebrug in Oosterdok is now reachable."
-  },
-  {
-   "date": "2026-10-28",
-   "title": "Helmersstraat rows: matching roofs and pointed dormers",
-   "text": "On Eerste Helmersstraat, 120 and 122 now share one roof line, so the dark slot of party wall between them is gone. On Derde Helmersstraat, 54 to 62 gain the small white pointed dormers beside their battlemented wall dormers, as in the street photos."
-  },
-  {
-   "date": "2026-10-26",
-   "title": "Free ride from the home page",
-   "text": "The rideamsterdam.nl home page now has a Free ride button that starts roaming straight away, with no route and no questions."
-  },
-  {
-   "date": "2026-10-26",
-   "title": "Quicker recovery when an iPhone drops the graphics",
-   "text": "If Safari loses the 3D graphics mid-ride, a Reload button now appears within a few seconds instead of leaving a frozen map."
-  },
-  {
-   "date": "2026-10-26",
-   "title": "Ride across open squares",
-   "text": "You can now cycle straight across open squares like the Dam and Leidseplein instead of being held to the street lines; lawns and parks stay off-limits."
-  },
-  {
-   "date": "2026-10-26",
-   "title": "Salt, the white tower at Westerpark West",
-   "text": "MVRDV's white Salt tower beside Pepper is modelled, with its grid facade and the top block cantilevering out over the water."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Pepper, the dark tower at Westerpark West",
-   "text": "MVRDV's dark-brick Pepper tower across the Haarlemmertrekvaart from the Haarlemmerweg is modelled, with its black box balconies scattered over the facades. Its white neighbour Salt and the stacked Blend tower are next."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Street names hide behind buildings",
-   "text": "In the 3D views, street names no longer float over the rooftops: a name is drawn only where its street is in view, not behind the buildings in front of it. Duplicate place labels (one English, one Dutch) are merged."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Ferry docks at NDSM reliably",
-   "text": "Following the ferry line into NDSM-werf could leave the boat stuck against the quay next to the stop; touching the quay near the stop now docks."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Terrasdorp, De Aker and Nieuw Sloten rows",
-   "text": "1,525 more houses now use designs measured from street photos: Terrasdorp's terraces, the shuttered rows and garage houses of De Aker, and Nieuw Sloten's white and glazed rows."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Chase camera can tilt lower",
-   "text": "The chase camera's tilt now goes down to 75° (it stopped at 60° before): push the tilt slider or ] to the end for a lower, more street-level view. The default angle is unchanged."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "The Da Vinci building on Nieuwpoortkade",
-   "text": "The long 1950s school block at Nieuwpoortkade 2 (now Da Vinci creatieve ruimtes) is modelled from street photos: white-framed windows with side lights, the lettering, the south wing on posts with its white panel band and the set-back glass top storey."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Faster ferries",
-   "text": "The IJ ferries now cruise a third faster, so the crossing to Noord and NDSM takes less waiting."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Eerste and Derde Helmersstraat rows",
-   "text": "33 houses on Eerste and Derde Helmersstraat are now built from street photos with a new kit: stone blocks set into the window sides, relieving arches, balconettes, wall dormers with battlements, deep white cornices with brackets, and the painted-black house at no. 122."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Carpetright on the Haarlemmerweg",
-   "text": "The big shop at Haarlemmerweg 337 by the Haarlemmertrekvaart is now modelled from its street photo: grey cladding, the glazed shopfront and its sign boards."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Sloterplas, De Klomp, Weesp and Sporenburg rows",
-   "text": "447 more houses now use designs measured from street photos: the garage-under-the-living-room rows of Oostoever Sloterplas, the 1970s and 1980s rows of De Klomp in Weesp, Weesp-Zuid's porches with round heads, diamond surrounds and portholes, and the Sporenburg garage rows."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "New pages: Building designs and a Dev log",
-   "text": "Building designs shows every repeated house design in the game next to the street photo it was measured from, how many houses use it and where they stand, with a link that drops you there in the game. The Dev log collects the progress notes from building the city, newest first."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Bos en Lommer's 1920s blocks and Osdorp's porthole rows",
-   "text": "Nearly 1,000 more houses now use designs measured from street photos: the banded brick portiek blocks of the Orteliusbuurt and Jan Maijenbuurt around the Mercatorplein, and the 1980s rows of the Middelveldsche Akerpolder with their round porthole windows and coloured doors.",
-   "where": [
-    4.8565,
-    52.3672
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Postjeskade's bay-window blocks and Kantershof's patio houses",
-   "text": "944 more houses now use designs measured from street photos: the four-storey brick blocks with bay windows and dormers around the Postjeskade, Kantershof's white patio houses with coloured fascias, the Grunder and Koningshoef rows in Zuidoost, and the red three-storey rows on the Hechtelstraat.",
-   "where": [
-    4.8508,
-    52.3622
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "White window frames are white again",
-   "text": "On the terraced-house designs, window frames, sills, door surrounds and fascias painted white in real life now draw a clean white instead of cream. The same houses also draw with far fewer draw calls, so busy neighbourhoods like Nieuwendam render more cheaply."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Speckled brick, and 1,600 more houses in Nieuwendam, Reigersbos and De Eendracht",
-   "text": "Brick can now be speckled in several tones, so the K-buurt rows show their grey-brown mottled brick instead of a flat brown. Tuindorp Nieuwendam's garden-village rows, Reigersbos 3 and 4, and De Eendracht in Geuzenveld now use designs measured from street photos."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Roof tiles in their real colours, and four more neighbourhoods",
-   "text": "Terraced rows now take their roof-tile colour from the photos, so Tuindorp Amstelstation's roofs are brown-red instead of orange and the Circus/Kermisbuurt's concrete tiles are olive. 547 more houses in the Dichtersbuurt, Gooise Kant, K-buurt and Buiksloterbreek use designs measured from street photos."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Slate roofs and brick fronts on big buildings read truer",
-   "text": "Sloped roofs on 82 of the big modelled buildings now take their colour from the aerial photo, and their brick fronts get the same sunlight as the streets around them, so they no longer look dimmer than their neighbours."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Four more neighbourhoods get their own houses",
-   "text": "855 houses in Tuindorp Amstelstation, the Circus/Kermisbuurt, Twiske-Oost and Vogeltjeswei now use designs measured from street photos: chimneyed brick rows with coloured balconies, single-slope roofs, striped brick and round bay windows."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Tuindorp Oostzaan and Blauwe Zand look like garden villages",
-   "text": "Nearly 2,000 houses in Amsterdam-Noord now use designs measured from street photos: the orange-tiled cottages of Tuindorp Oostzaan with their dormers and paired doors, and Blauwe Zand's brick rows and green boarded gables.",
-   "where": [
-    4.9045,
-    52.4115
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Lighter flat roofs on the big modelled buildings",
-   "text": "About a hundred large modelled buildings had dark tar-coloured flat roofs. They now take the roof colour seen in the aerial photo, or light gravel where there is none, so they sit better beside their neighbours.",
-   "where": [
-    4.878,
-    52.3848
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Zuidoost's terraced streets get their own houses",
-   "text": "About 1,500 terraced houses in Gein, Holendrecht and Kelbergen now use eight designs measured from street photos: red-clad and timber-and-brick rows, door hoods and canopies, low back roofs, and Kelbergen's yellow-banded patio rows. Each row keeps one roof line.",
-   "where": [
-    4.9735,
-    52.2975
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Haarlemmerweg's big blocks face the Westerpark properly",
-   "text": "Thirteen buildings on the Haarlemmerweg across the water from the Westerpark are now real models instead of plain boxes: the long GWL blocks with their glazed galleries, the 1983 and 1992 housing blocks with two-tone brick, and the 1921 office with its towers.",
-   "where": [
-    4.878,
-    52.3848
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Free ride: explore without a route",
-   "text": "Pick Free ride on the start screen to ride anywhere with no route and no questions. Nearby landmarks and named bridges get markers; tap a marker, a building, a street or a canal to open its card. Street names are shown freely. Tap Exit to go back."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Three more windmills: De Bloem, De Otter and D'Admiraal",
-   "text": "Every windmill inside the ring road now stands in the game. De Bloem on the Haarlemmerweg, the 1631 sawmill De Otter, and D'Admiraal on the Noordhollandschkanaaldijk join De Gooyer, each with its own card.",
-   "where": [
-    4.8692,
-    52.387
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "A page for every neighbourhood",
-   "text": "Each of the 78 neighbourhoods now has its own page with a postcard photo, in-game views, the buildings modelled there, trivia and the stories behind its street, canal and bridge names. Find them under Neighbourhoods at the bottom of the home page."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Six big villas and blocks on the Vondelpark's south edge",
-   "text": "Along Van Eeghenstraat, Koningslaan, Emmalaan and Koninginneweg the big houses facing the park are now real models: dark brick with slate mansards, verandas and loggias, and Park Plaza's white bay windows.",
-   "where": [
-    4.8745,
-    52.3561
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Asphalt and cycle paths have a fine grain up close",
-   "text": "Roads and red cycle paths now show a subtle texture when you are close to them, and markings that were guessed rather than mapped are gone."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "No more white flashes while riding",
-   "text": "When the game lowered its resolution to keep the frame rate up, the map went blank for one frame and the screen flashed white. The resize now happens together with the next frame, so the ride stays steady."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "A real railway viaduct west of Centraal",
-   "text": "The road and water under the tracks at the Droogbak now pass beneath a deck between white brick walls, at street level, instead of climbing over a hump in the embankment.",
-   "where": [
-    4.8961,
-    52.3804
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Tram rails, kerbs and cycle paths look more like the street, citywide",
-   "text": "Across the whole city, tram rails now show as dark grooves instead of white lines, cycle-path red is softer, every kerb casts a thin shadow line on its low side, and asphalt traffic islands are drawn as raised paving."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Stadsloket Zuidoost and the Houtmankade police station look like themselves",
-   "text": "The Zuidoost city office now has its wide-and-narrow window rhythm and the white-pillared double-height arcade, and the Houtmankade police station has its tall glazed ground floor and corner windows."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Stationsplein's paving is flat again",
-   "text": "The metro and bike-garage stairwells no longer show as craters in the square, and the road by the bus station on the IJ side no longer rises in lumps. The same fix levelled about 3,600 smaller pits across the city.",
-   "where": [
-    4.9003,
-    52.3784
-   ]
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Two more schools and buildings modelled",
-   "text": "Oostpoort Montessori in Oost and the brick school building at pand 165427 are now full models measured against their street photos."
-  },
-  {
-   "date": "2026-10-25",
-   "title": "Board the ferry anywhere along the Centraal pier",
-   "text": "Ride onto the edge of a ferry pier and you turn into a boat, not only at the two stop markers. At Centraal the whole quay behind the station works.",
-   "where": [
-    4.9006,
-    52.3801
-   ]
-  },
-  {
-   "date": "2026-10-24",
-   "title": "The chase camera starts further out",
-   "text": "The chase view now shows about a third more street around the bike, so you can see the junction coming before you reach it."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "The ride recovers after a graphics hiccup",
-   "text": "When the browser briefly loses its graphics context, your route, street highlights and nearby landmark models now come back. Before, up to eight landmarks stayed missing for the rest of the ride. A browser that blocks 3D graphics now opens the ride with a notice and no longer stops at a blank screen."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "The house behind Felix Meritis is back",
-   "text": "The rear house on the Keizersgracht block behind Felix Meritis was hidden under the landmark even though the model does not cover it. It now shows in the street again.",
-   "where": [
-    4.8843,
-    52.3708
-   ]
-  },
-  {
-   "date": "2026-10-24",
-   "title": "The bike's handlebars now sweep back toward you",
-   "text": "The omafiets and Swapfiets bars now come forward off the stem and curve back, with both grips level and pointing at the rider, like a real Dutch city bike. They used to curl up and forward."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Churches, mosques and cinemas get their own colours, windows and roofs",
-   "text": "Places of worship and cinemas now take their wall colour and window rows from street photos, and schools, churches and cinemas get a flat or pitched roof from the city's 3D roof survey, tinted from the aerial photo. Some housing blocks that were drawn as churches are now ordinary buildings again."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "School buildings get truer brick and their long window bands",
-   "text": "Schools no longer pick up a khaki tint from trees in front of them in the street photos. Many now show the long horizontal window bands and white top edge of post-war school buildings."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Schools, cinemas and places of worship look more like themselves",
-   "text": "School buildings now take their brick colour from street photos or from the era they were built in, instead of one beige for all. Pre-war schools get their tiled hipped roofs, and 143 cinemas, churches, mosques, synagogues and temples that showed only a plain block now have coping and a plinth."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Bridge cards say what the bridge register records again",
-   "text": "Named bridges such as the Blauwbrug once more show where the name comes from, the trivia, and the line from the city's bridge register (number, construction and year). The trivia had been replacing the whole card.",
-   "where": [
-    4.9013,
-    52.3671
-   ]
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Pavements, islands and verges fill the gaps beside roads",
-   "text": "Traffic islands, berms, verges and paved squares from the city's surface survey now fill what used to show as bare land next to the road. At the regression spots bare land beside carriageways fell by three quarters, and Mosplein no longer shows stray red."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Behind-bike camera tilts again; W no longer opens Wikipedia",
-   "text": "The chase camera had been set flatter than the top-down views, so 'behind bike' looked top-down and half the tilt slider did nothing. It now starts low behind the bike and the whole slider tilts. Steering with W no longer opens monument articles (that moved to E), and D no longer toggles street labels (now T)."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "The 3D city comes back after the graphics card resets",
-   "text": "When a phone dropped and regained its graphics context, the ground, trees, buildings and bike stayed blank until a reload. They now rebuild within a second; building facades repaint over the following seconds."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Roads: no more doubled lanes or guessed paint",
-   "text": "OSM road bands no longer draw over the measured road surfaces, so the stray red cycle pieces and double lanes are gone (De Clercqstraat, Rozengracht, Spiegelgracht). Cycle-lane red, centre dashes and zebras are now drawn only where the 8 cm aerial photo shows them; nearby zebras merge into one. Phones also keep only the ground they can see, which more than halves ground memory."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Nassaukade: the orange wedge above the cornice is gone",
-   "text": "A narrow, deep row house with no mapped roof type could be dealt a half-hip roof, whose bare street end showed as an orange wedge between taller crowned neighbours. Such plots now get the row's gable crown instead. Phones also keep fewer ground cells resident behind the rider."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Phones use far less memory",
-   "text": "The map no longer keeps a second copy of every streamed building on phones, and the painted facade canvases are freed once their textures are built. A frame error no longer freezes the ride."
-  },
-  {
-   "date": "2026-10-24",
-   "title": "Three roofs fixed from your feedback",
-   "text": "The Academie voor Theater en Dans roof had an open edge; the Booking.com block on Utrechtsestraat had a crumpled rooftop and is now flat above its fronts; the Anne Frank statue plate no longer flickers against its plinth."
-  },
-  {
-   "date": "2026-10-23",
-   "title": "Gables face the street",
-   "text": "Canal and 19th-century houses whose only street front was the long side had their ridge running along the street, so the gable faced the neighbour. Ridges now turn across the front; wide fronts split into several gables."
-  },
-  {
-   "date": "2026-10-23",
-   "title": "The ferry at Centraal works again",
-   "text": "Boarding at the Centraal pier could leave you stuck on a berth. The pier's berth shapes, the chain of stops and the access check were all fixed.",
-   "where": [
-    4.9003,
-    52.3804
-   ]
-  }
- ]
+  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional.",
+  "notes": [
+    {
+      "date": "2026-10-30",
+      "title": "One kind of map label",
+      "text": "Shop and café names no longer draw on the map beside the place labels, so landmarks and bridges are the only names you see while riding."
+    },
+    {
+      "date": "2026-10-30",
+      "title": "Post-war buildings look modern",
+      "text": "Buildings from after 1945 no longer all wear the same beige render with small windows. 1960s offices get pale window bands, 1980s-90s housing takes brick or render in the colours measured in its own neighbourhood, and big glass blocks get curtain fronts."
+    },
+    {
+      "date": "2026-10-30",
+      "title": "Neighbourhoods keep their own brick tone",
+      "text": "Ordinary buildings no longer have every neighbourhood's brick lifted to one city lightness. A neighbourhood whose photos show darker brick now draws darker, so the city as a whole is a little darker and closer to the street photos."
+    },
+    {
+      "date": "2026-10-30",
+      "title": "First Jordaan row",
+      "text": "Bloemgracht 138-300 is now three Jordaan houses from its street photo: a neck gable and two cornice fronts in dark brick. Seven more Jordaan rows were held back because their photos were too close, oblique or wrongly matched."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Kit-row cards in their real colours",
+      "text": "The kit-row previews on this page showed every row's brick two shades too pale, so dark brown Kinkerstraat looked beige. They now use the measured brick colour, as the game always did."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Six more De Pijp rows",
+      "text": "Rows on Albert Cuypstraat, Van Woustraat, Jan van der Heijdenstraat and Van der Helststraat now follow their street photos: brick fronts, white cornices and window rhythm."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "More De Pijp rows",
+      "text": "Eleven more rows in De Pijp, on Albert Cuypstraat, Gerard Doustraat, Van der Helststraat, Eerste Jan Steenstraat, Van Woustraat, Van Campenstraat, Ruysdaelkade and Saenredamstraat, are now drawn from their street photos."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Turns you can see; no stuck answer card",
+      "text": "When you queue a turn on the phone pad, a pulsing chevron now marks the opening the bike will take. Boats follow the canals the same way, and slide along the quay instead of jerking sideways. An answered question card no longer stays on screen after a street that isn't asked about."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Each neighbourhood gets its own colours",
+      "text": "Ordinary buildings now take their brick colours, painted fronts and white trim from photos measured in their own neighbourhood. The Jordaan has more white and grey fronts, and Oud-West is a darker red-brown."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Calmer phone steering",
+      "text": "On phones the bike now rides along the street by itself: tap ◀ or ▶ to take the next turn on that side, tap ↺ to turn round, hold it to stop. The camera no longer swings with every small correction. The old thumbstick is still under Settings → Controls → Steer."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Less work for your graphics card",
+      "text": "The city now skips the ground and building fronts that are off screen. On desktop the picture is the same with about half the triangles. On iPad the busiest views drop to under a million triangles."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Around Centraal Station",
+      "text": "The pavilions on the Stationsplein island, the Noord-Zuid Hollandsch Koffiehuis among them, are now modelled with their mansard roofs and turret. The IJ-side canopy has its arched ribs, the Beurs van Berlage has proper bays, arches and a crest, and each ferry landing has one label."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Kinkerstraat rows",
+      "text": "Fifty Kinkerstraat houses in Oud-West are now drawn from their street photos: brick and painted fronts, white bands, shopfronts, and the dormer roofline behind the cornice, including arched and brick wall dormers."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Lighter on iPads and phones",
+      "text": "Phones and tablets now load only the ground they can actually see and skip what is off screen. That cuts about a third of the GPU work, so the map should crash less often on iPad and iPhone."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "De Pijp rows, first streets",
+      "text": "Albert Cuypstraat 130–168, Van Woustraat 32–72 and Ferdinand Bolstraat 12–38 are now drawn from their street photos: white bands, iron wall anchors, keystones, window hoods and pediment dormers with hoist beams."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Noord waterfront rebuilt",
+      "text": "The A'DAM Toren's windows now follow its floors, and its shaft turns on the podium as in real life. The EYE stairs are no longer buried, and its west wall no longer floats. Treehouse NDSM has its black fence and truer cabin colours, Pllek is stacked containers under a truss canopy, and Grasweg 41S is silver panels. The bumpy construction-site ground at NDSM-oost is flat again."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "One name per place, and tidier Dam landmarks",
+      "text": "Free Ride no longer shows the same place name twice: Beurs van Berlage, De Bijenkorf, the National Monument and Centraal each get one label. The Beurs windows and arches sit on their walls, the Bijenkorf's Dam front shows its windows again, and the stray grey strip on the Dam corner is gone."
+    },
+    {
+      "date": "2026-10-28",
+      "title": "Ferries dock at any pier",
+      "text": "Steer the ferry onto any pier, from the water or up the quay, to step off. Buiksloterweg and NDSM-werf no longer leave you stuck aboard, the boat stays off the bank, and the cycle bridge by the Odebrug in Oosterdok is now reachable."
+    },
+    {
+      "date": "2026-10-28",
+      "title": "Helmersstraat rows: matching roofs and pointed dormers",
+      "text": "On Eerste Helmersstraat, 120 and 122 now share one roof line, so the dark slot of party wall between them is gone. On Derde Helmersstraat, 54 to 62 gain the small white pointed dormers beside their battlemented wall dormers, as in the street photos."
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Free ride from the home page",
+      "text": "The rideamsterdam.nl home page now has a Free ride button that starts roaming straight away, with no route and no questions."
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Quicker recovery when an iPhone drops the graphics",
+      "text": "If Safari loses the 3D graphics mid-ride, a Reload button now appears within a few seconds instead of leaving a frozen map."
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Ride across open squares",
+      "text": "You can now cycle straight across open squares like the Dam and Leidseplein instead of being held to the street lines; lawns and parks stay off-limits."
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Salt, the white tower at Westerpark West",
+      "text": "MVRDV's white Salt tower beside Pepper is modelled, with its grid facade and the top block cantilevering out over the water."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Pepper, the dark tower at Westerpark West",
+      "text": "MVRDV's dark-brick Pepper tower across the Haarlemmertrekvaart from the Haarlemmerweg is modelled, with its black box balconies scattered over the facades. Its white neighbour Salt and the stacked Blend tower are next."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Street names hide behind buildings",
+      "text": "In the 3D views, street names no longer float over the rooftops: a name is drawn only where its street is in view, not behind the buildings in front of it. Duplicate place labels (one English, one Dutch) are merged."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Ferry docks at NDSM reliably",
+      "text": "Following the ferry line into NDSM-werf could leave the boat stuck against the quay next to the stop; touching the quay near the stop now docks."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Terrasdorp, De Aker and Nieuw Sloten rows",
+      "text": "1,525 more houses now use designs measured from street photos: Terrasdorp's terraces, the shuttered rows and garage houses of De Aker, and Nieuw Sloten's white and glazed rows."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Chase camera can tilt lower",
+      "text": "The chase camera's tilt now goes down to 75° (it stopped at 60° before): push the tilt slider or ] to the end for a lower, more street-level view. The default angle is unchanged."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "The Da Vinci building on Nieuwpoortkade",
+      "text": "The long 1950s school block at Nieuwpoortkade 2 (now Da Vinci creatieve ruimtes) is modelled from street photos: white-framed windows with side lights, the lettering, the south wing on posts with its white panel band and the set-back glass top storey."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Faster ferries",
+      "text": "The IJ ferries now cruise a third faster, so the crossing to Noord and NDSM takes less waiting."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Eerste and Derde Helmersstraat rows",
+      "text": "33 houses on Eerste and Derde Helmersstraat are now built from street photos with a new kit: stone blocks set into the window sides, relieving arches, balconettes, wall dormers with battlements, deep white cornices with brackets, and the painted-black house at no. 122."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Carpetright on the Haarlemmerweg",
+      "text": "The big shop at Haarlemmerweg 337 by the Haarlemmertrekvaart is now modelled from its street photo: grey cladding, the glazed shopfront and its sign boards."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Sloterplas, De Klomp, Weesp and Sporenburg rows",
+      "text": "447 more houses now use designs measured from street photos: the garage-under-the-living-room rows of Oostoever Sloterplas, the 1970s and 1980s rows of De Klomp in Weesp, Weesp-Zuid's porches with round heads, diamond surrounds and portholes, and the Sporenburg garage rows."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "New pages: Building designs and a Dev log",
+      "text": "Building designs shows every repeated house design in the game next to the street photo it was measured from, how many houses use it and where they stand, with a link that drops you there in the game. The Dev log collects the progress notes from building the city, newest first."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Bos en Lommer's 1920s blocks and Osdorp's porthole rows",
+      "text": "Nearly 1,000 more houses now use designs measured from street photos: the banded brick portiek blocks of the Orteliusbuurt and Jan Maijenbuurt around the Mercatorplein, and the 1980s rows of the Middelveldsche Akerpolder with their round porthole windows and coloured doors.",
+      "where": [
+        4.8565,
+        52.3672
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Postjeskade's bay-window blocks and Kantershof's patio houses",
+      "text": "944 more houses now use designs measured from street photos: the four-storey brick blocks with bay windows and dormers around the Postjeskade, Kantershof's white patio houses with coloured fascias, the Grunder and Koningshoef rows in Zuidoost, and the red three-storey rows on the Hechtelstraat.",
+      "where": [
+        4.8508,
+        52.3622
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "White window frames are white again",
+      "text": "On the terraced-house designs, window frames, sills, door surrounds and fascias painted white in real life now draw a clean white instead of cream. The same houses also draw with far fewer draw calls, so busy neighbourhoods like Nieuwendam render more cheaply."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Speckled brick, and 1,600 more houses in Nieuwendam, Reigersbos and De Eendracht",
+      "text": "Brick can now be speckled in several tones, so the K-buurt rows show their grey-brown mottled brick instead of a flat brown. Tuindorp Nieuwendam's garden-village rows, Reigersbos 3 and 4, and De Eendracht in Geuzenveld now use designs measured from street photos."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Roof tiles in their real colours, and four more neighbourhoods",
+      "text": "Terraced rows now take their roof-tile colour from the photos, so Tuindorp Amstelstation's roofs are brown-red instead of orange and the Circus/Kermisbuurt's concrete tiles are olive. 547 more houses in the Dichtersbuurt, Gooise Kant, K-buurt and Buiksloterbreek use designs measured from street photos."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Slate roofs and brick fronts on big buildings read truer",
+      "text": "Sloped roofs on 82 of the big modelled buildings now take their colour from the aerial photo, and their brick fronts get the same sunlight as the streets around them, so they no longer look dimmer than their neighbours."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Four more neighbourhoods get their own houses",
+      "text": "855 houses in Tuindorp Amstelstation, the Circus/Kermisbuurt, Twiske-Oost and Vogeltjeswei now use designs measured from street photos: chimneyed brick rows with coloured balconies, single-slope roofs, striped brick and round bay windows."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Tuindorp Oostzaan and Blauwe Zand look like garden villages",
+      "text": "Nearly 2,000 houses in Amsterdam-Noord now use designs measured from street photos: the orange-tiled cottages of Tuindorp Oostzaan with their dormers and paired doors, and Blauwe Zand's brick rows and green boarded gables.",
+      "where": [
+        4.9045,
+        52.4115
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Lighter flat roofs on the big modelled buildings",
+      "text": "About a hundred large modelled buildings had dark tar-coloured flat roofs. They now take the roof colour seen in the aerial photo, or light gravel where there is none, so they sit better beside their neighbours.",
+      "where": [
+        4.878,
+        52.3848
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Zuidoost's terraced streets get their own houses",
+      "text": "About 1,500 terraced houses in Gein, Holendrecht and Kelbergen now use eight designs measured from street photos: red-clad and timber-and-brick rows, door hoods and canopies, low back roofs, and Kelbergen's yellow-banded patio rows. Each row keeps one roof line.",
+      "where": [
+        4.9735,
+        52.2975
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Haarlemmerweg's big blocks face the Westerpark properly",
+      "text": "Thirteen buildings on the Haarlemmerweg across the water from the Westerpark are now real models instead of plain boxes: the long GWL blocks with their glazed galleries, the 1983 and 1992 housing blocks with two-tone brick, and the 1921 office with its towers.",
+      "where": [
+        4.878,
+        52.3848
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Free ride: explore without a route",
+      "text": "Pick Free ride on the start screen to ride anywhere with no route and no questions. Nearby landmarks and named bridges get markers; tap a marker, a building, a street or a canal to open its card. Street names are shown freely. Tap Exit to go back."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Three more windmills: De Bloem, De Otter and D'Admiraal",
+      "text": "Every windmill inside the ring road now stands in the game. De Bloem on the Haarlemmerweg, the 1631 sawmill De Otter, and D'Admiraal on the Noordhollandschkanaaldijk join De Gooyer, each with its own card.",
+      "where": [
+        4.8692,
+        52.387
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "A page for every neighbourhood",
+      "text": "Each of the 78 neighbourhoods now has its own page with a postcard photo, in-game views, the buildings modelled there, trivia and the stories behind its street, canal and bridge names. Find them under Neighbourhoods at the bottom of the home page."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Six big villas and blocks on the Vondelpark's south edge",
+      "text": "Along Van Eeghenstraat, Koningslaan, Emmalaan and Koninginneweg the big houses facing the park are now real models: dark brick with slate mansards, verandas and loggias, and Park Plaza's white bay windows.",
+      "where": [
+        4.8745,
+        52.3561
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Asphalt and cycle paths have a fine grain up close",
+      "text": "Roads and red cycle paths now show a subtle texture when you are close to them, and markings that were guessed rather than mapped are gone."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "No more white flashes while riding",
+      "text": "When the game lowered its resolution to keep the frame rate up, the map went blank for one frame and the screen flashed white. The resize now happens together with the next frame, so the ride stays steady."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "A real railway viaduct west of Centraal",
+      "text": "The road and water under the tracks at the Droogbak now pass beneath a deck between white brick walls, at street level, instead of climbing over a hump in the embankment.",
+      "where": [
+        4.8961,
+        52.3804
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Tram rails, kerbs and cycle paths look more like the street, citywide",
+      "text": "Across the whole city, tram rails now show as dark grooves instead of white lines, cycle-path red is softer, every kerb casts a thin shadow line on its low side, and asphalt traffic islands are drawn as raised paving."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Stadsloket Zuidoost and the Houtmankade police station look like themselves",
+      "text": "The Zuidoost city office now has its wide-and-narrow window rhythm and the white-pillared double-height arcade, and the Houtmankade police station has its tall glazed ground floor and corner windows."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Stationsplein's paving is flat again",
+      "text": "The metro and bike-garage stairwells no longer show as craters in the square, and the road by the bus station on the IJ side no longer rises in lumps. The same fix levelled about 3,600 smaller pits across the city.",
+      "where": [
+        4.9003,
+        52.3784
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Two more schools and buildings modelled",
+      "text": "Oostpoort Montessori in Oost and the brick school building at pand 165427 are now full models measured against their street photos."
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Board the ferry anywhere along the Centraal pier",
+      "text": "Ride onto the edge of a ferry pier and you turn into a boat, not only at the two stop markers. At Centraal the whole quay behind the station works.",
+      "where": [
+        4.9006,
+        52.3801
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "title": "The chase camera starts further out",
+      "text": "The chase view now shows about a third more street around the bike, so you can see the junction coming before you reach it."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "The ride recovers after a graphics hiccup",
+      "text": "When the browser briefly loses its graphics context, your route, street highlights and nearby landmark models now come back. Before, up to eight landmarks stayed missing for the rest of the ride. A browser that blocks 3D graphics now opens the ride with a notice and no longer stops at a blank screen."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "The house behind Felix Meritis is back",
+      "text": "The rear house on the Keizersgracht block behind Felix Meritis was hidden under the landmark even though the model does not cover it. It now shows in the street again.",
+      "where": [
+        4.8843,
+        52.3708
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "title": "The bike's handlebars now sweep back toward you",
+      "text": "The omafiets and Swapfiets bars now come forward off the stem and curve back, with both grips level and pointing at the rider, like a real Dutch city bike. They used to curl up and forward."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Churches, mosques and cinemas get their own colours, windows and roofs",
+      "text": "Places of worship and cinemas now take their wall colour and window rows from street photos, and schools, churches and cinemas get a flat or pitched roof from the city's 3D roof survey, tinted from the aerial photo. Some housing blocks that were drawn as churches are now ordinary buildings again."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "School buildings get truer brick and their long window bands",
+      "text": "Schools no longer pick up a khaki tint from trees in front of them in the street photos. Many now show the long horizontal window bands and white top edge of post-war school buildings."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Schools, cinemas and places of worship look more like themselves",
+      "text": "School buildings now take their brick colour from street photos or from the era they were built in, instead of one beige for all. Pre-war schools get their tiled hipped roofs, and 143 cinemas, churches, mosques, synagogues and temples that showed only a plain block now have coping and a plinth."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Bridge cards say what the bridge register records again",
+      "text": "Named bridges such as the Blauwbrug once more show where the name comes from, the trivia, and the line from the city's bridge register (number, construction and year). The trivia had been replacing the whole card.",
+      "where": [
+        4.9013,
+        52.3671
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Pavements, islands and verges fill the gaps beside roads",
+      "text": "Traffic islands, berms, verges and paved squares from the city's surface survey now fill what used to show as bare land next to the road. At the regression spots bare land beside carriageways fell by three quarters, and Mosplein no longer shows stray red."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Behind-bike camera tilts again; W no longer opens Wikipedia",
+      "text": "The chase camera had been set flatter than the top-down views, so 'behind bike' looked top-down and half the tilt slider did nothing. It now starts low behind the bike and the whole slider tilts. Steering with W no longer opens monument articles (that moved to E), and D no longer toggles street labels (now T)."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "The 3D city comes back after the graphics card resets",
+      "text": "When a phone dropped and regained its graphics context, the ground, trees, buildings and bike stayed blank until a reload. They now rebuild within a second; building facades repaint over the following seconds."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Roads: no more doubled lanes or guessed paint",
+      "text": "OSM road bands no longer draw over the measured road surfaces, so the stray red cycle pieces and double lanes are gone (De Clercqstraat, Rozengracht, Spiegelgracht). Cycle-lane red, centre dashes and zebras are now drawn only where the 8 cm aerial photo shows them; nearby zebras merge into one. Phones also keep only the ground they can see, which more than halves ground memory."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Nassaukade: the orange wedge above the cornice is gone",
+      "text": "A narrow, deep row house with no mapped roof type could be dealt a half-hip roof, whose bare street end showed as an orange wedge between taller crowned neighbours. Such plots now get the row's gable crown instead. Phones also keep fewer ground cells resident behind the rider."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Phones use far less memory",
+      "text": "The map no longer keeps a second copy of every streamed building on phones, and the painted facade canvases are freed once their textures are built. A frame error no longer freezes the ride."
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Three roofs fixed from your feedback",
+      "text": "The Academie voor Theater en Dans roof had an open edge; the Booking.com block on Utrechtsestraat had a crumpled rooftop and is now flat above its fronts; the Anne Frank statue plate no longer flickers against its plinth."
+    },
+    {
+      "date": "2026-10-23",
+      "title": "Gables face the street",
+      "text": "Canal and 19th-century houses whose only street front was the long side had their ridge running along the street, so the gable faced the neighbour. Ridges now turn across the front; wide fronts split into several gables."
+    },
+    {
+      "date": "2026-10-23",
+      "title": "The ferry at Centraal works again",
+      "text": "Boarding at the Centraal pier could leave you stuck on a berth. The pier's berth shapes, the chain of stops and the access check were all fixed.",
+      "where": [
+        4.9003,
+        52.3804
+      ]
+    }
+  ]
 }
