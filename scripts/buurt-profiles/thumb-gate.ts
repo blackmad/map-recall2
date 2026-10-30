@@ -57,3 +57,28 @@ if (process.argv.includes('--spread')) {
   const sh = rows.map(r => r.s.gate.shadow);
   console.log('\nshadow quantiles p50/p75/p90/p95', [0.5, 0.75, 0.9, 0.95].map(p => q(sh, p)).join(' '), ' thresholds', JSON.stringify(THUMB_EVIDENCE));
 }
+
+// --sheet=<out.jpg>: Haarlemmer Houttuinen plus the first rejected and passed samples of its buurt, the measured centre
+// box outlined, the gate's numbers and the wall swatch derive would draw under each.
+const sheetOut = process.argv.find(a => a.startsWith('--sheet='))?.slice(8);
+if (sheetOut) {
+  const hh = rows.find(r => r.s.pand === '0363100012185423');
+  const buurt = hh?.s.buurt ?? rows[0].s.buurt, inB = rows.filter(r => r.s.buurt === buurt && r !== hh);
+  const pick = [...(hh ? [hh] : []), ...inB.filter(r => !r.s.gate.pass).slice(0, 4), ...inB.filter(r => r.s.gate.pass).slice(0, 5)];
+  const T = 200, CAP = 70, cols = 5, tiles: sharp.OverlayOptions[] = [];
+  for (const [k, r] of pick.entries()) {
+    const file = path.join(CACHE, crypto.createHash('sha1').update(r.s.url).digest('hex') + '.jpg');
+    const img = await sharp(file).resize(T, T).toBuffer(), sc = T / 320, g = r.s.gate, ok = g.pass;
+    const hex = (c: number[]) => `rgb(${c.join(',')})`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${T}" height="${T + CAP}"><rect x="${64 * sc}" y="${48 * sc}" width="${192 * sc}" height="${192 * sc}" fill="none" stroke="${ok ? '#1a9850' : '#d73027'}" stroke-width="2"/>`
+      + `<rect x="${T - 34}" y="4" width="30" height="30" fill="${hex(r.painted ? r.s.wall : r.s.brick)}" stroke="#fff"/>`
+      + `<text x="2" y="${T + 14}" font-size="12" font-family="Arial" font-weight="bold" fill="${ok ? '#1a9850' : '#d73027'}">${ok ? 'PASS' : 'REJECT'} ${r.s.pand.slice(-6)} (${r.s.year})</text>`
+      + `<text x="2" y="${T + 28}" font-size="10" font-family="Arial" fill="#222">${r.s.distM} m, pitch ${g.pitch}, shadow ${Math.round(g.shadow * 100)} %</text>`
+      + `<text x="2" y="${T + 41}" font-size="10" font-family="Arial" fill="#222">family ${r.s.family ?? '-'} / derive ${r.painted ? 'paint' : 'brick'}</text>`
+      + (ok ? '' : `<text x="2" y="${T + 54}" font-size="9" font-family="Arial" fill="#d73027">${g.reasons.join('; ').replace(/&/g, '&amp;').slice(0, 52)}</text>`) + '</svg>';
+    const tile = await sharp({ create: { width: T, height: T + CAP, channels: 3, background: '#ffffff' } }).composite([{ input: img, left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: 0 }]).png().toBuffer();
+    tiles.push({ input: tile, left: (k % cols) * (T + 8), top: Math.floor(k / cols) * (T + CAP + 8) });
+  }
+  await sharp({ create: { width: cols * (T + 8), height: Math.ceil(pick.length / cols) * (T + CAP + 8), channels: 3, background: '#ffffff' } }).composite(tiles).jpeg({ quality: 82 }).toFile(sheetOut);
+  console.log(`sheet ${sheetOut}: ${pick.length} samples of buurt ${buurt}`);
+}

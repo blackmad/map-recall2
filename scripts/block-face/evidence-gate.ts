@@ -30,7 +30,7 @@ async function installedRuns(): Promise<string[]> {
   return out;
 }
 
-export interface RunEvidence {run: string; spans: (SpanEvidence & {pandId: string; widthM: number; eavesM: number; pass: boolean; reasons: string[]})[]; pass: boolean; reasons: string[]}
+export interface RunEvidence {run: string; image: string; strip: {width: number; height: number; pixelsPerMetre: number}; spans: (SpanEvidence & {pandId: string; px: [number, number]; widthM: number; eavesM: number; roofM: number; pass: boolean; reasons: string[]})[]; pass: boolean; reasons: string[]}
 
 export async function runEvidence(run: string, stripsDir?: string): Promise<RunEvidence | null> {
   const sj = stripsDir && existsSync(path.join(stripsDir, run, 'strip.json')) ? path.join(stripsDir, run, 'strip.json') : path.join(FACES, run, 'strip.json');
@@ -46,9 +46,37 @@ export async function runEvidence(run: string, stripsDir?: string): Promise<RunE
     const eavesM = facts ? facts.fronts[0].eavesM : strip.heightM * 0.7, roofM = facts ? facts.heights.roofMaxM : eavesM + 3;
     const ev = measureSpanEvidence({rgb, width: info.width, height: info.height, px: s.px, pixelsPerMetre: strip.pixelsPerMetre, eavesM, roofM, panoramas: s.panoramas});
     const v = evidenceVerdict(ev);
-    spans.push({pandId: s.pandId, widthM: +(s.x1M - s.x0M).toFixed(2), eavesM: +eavesM.toFixed(2), ...ev, ...v});
+    spans.push({pandId: s.pandId, px: s.px, roofM, widthM: +(s.x1M - s.x0M).toFixed(2), eavesM: +eavesM.toFixed(2), ...ev, ...v});
   }
-  return {run, spans, ...runVerdict(spans)};
+  return {run, image: img, strip: {width: info.width, height: info.height, pixelsPerMetre: strip.pixelsPerMetre}, spans, ...runVerdict(spans)};
+}
+
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+/** Contact sheet: each run's strip at 230 px high, a pass/fail bar per span over it, the band-over-roof line dashed,
+ * and the gate's numbers and reasons under it. Rejected runs first. */
+async function writeSheet(results: RunEvidence[], out: string, max: number) {
+  const pick = [...results.filter(r => !r.pass), ...results.filter(r => r.pass)].slice(0, max);
+  const TH = 230, TW = 250, CAP = 64, cols = 5, tiles: sharp.OverlayOptions[] = [];
+  for (const [k, r] of pick.entries()) {
+    const sc = Math.min(TH / r.strip.height, TW / r.strip.width), w = Math.round(r.strip.width * sc), h = Math.round(r.strip.height * sc);
+    const img = await sharp(r.image).resize(w, h).toBuffer();
+    const bars = r.spans.map(s => {
+      const x0 = s.px[0] * sc, x1 = s.px[1] * sc, yb = (r.strip.height - (s.roofM + 0.7) * r.strip.pixelsPerMetre) * sc;
+      return `<rect x="${x0 + 1}" y="0" width="${Math.max(1, x1 - x0 - 2)}" height="6" fill="${s.pass ? '#1a9850' : '#d73027'}"/><line x1="${x0}" x2="${x1}" y1="${yb}" y2="${yb}" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    }).join('');
+    const reason = r.pass ? '' : r.spans.find(s => !s.pass)!.reasons[0].replace(/:.*/, '');
+    const cap = `<text x="2" y="${h + 14}" font-size="12" font-family="Arial" font-weight="bold" fill="${r.pass ? '#1a9850' : '#d73027'}">${r.pass ? 'PASS' : 'REJECT'} ${esc(r.run)}</text>`
+      + `<text x="2" y="${h + 29}" font-size="11" font-family="Arial" fill="#222">sky cols ${r.spans.map(s => s.skyCols.toFixed(2)).join(' / ')}</text>`
+      + `<text x="2" y="${h + 43}" font-size="10" font-family="Arial" fill="#444">obl ${r.spans.map(s => s.obliquityDeg ?? '-').join('/')} deg, ${r.spans.map(s => s.distanceM ?? '-').join('/')} m</text>`
+      + (reason ? `<text x="2" y="${h + 57}" font-size="10" font-family="Arial" fill="#d73027">${esc(reason)}</text>` : '');
+    const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${TW}" height="${TH + CAP}">${bars}${cap}</svg>`);
+    const tile = await sharp({create: {width: TW, height: TH + CAP, channels: 3, background: '#ffffff'}}).composite([{input: img, left: 0, top: 0}, {input: svg, left: 0, top: 0}]).png().toBuffer();
+    tiles.push({input: tile, left: (k % cols) * (TW + 8), top: Math.floor(k / cols) * (TH + CAP + 8)});
+  }
+  const rows = Math.ceil(pick.length / cols);
+  await fs.mkdir(path.dirname(out), {recursive: true});
+  await sharp({create: {width: cols * (TW + 8), height: rows * (TH + CAP + 8), channels: 3, background: '#ffffff'}}).composite(tiles).jpeg({quality: 82}).toFile(out);
+  console.log(`sheet ${out}: ${pick.length} runs`);
 }
 
 async function main() {
@@ -72,6 +100,8 @@ async function main() {
     console.log(`\nconfusion (runs): no-front rejected ${t.rr.length}, no-front passed ${t.rp.length} [${t.rp}], good passed ${t.pp.length}, good rejected ${t.pr.length} [${t.pr}]`);
   }
   for (const e of results) console.log(`${e.pass ? 'PASS' : 'REJECT'} ${e.run}${e.reasons.length ? ': ' + e.reasons.join('; ') : ''}`);
+  const sheet = arg('sheet');
+  if (sheet) await writeSheet(results, sheet, Number(arg('sheet-max') ?? 19));
   const out = arg('json');
   if (out) { await fs.mkdir(path.dirname(out), {recursive: true}); await fs.writeFile(out, JSON.stringify(results, null, 1) + '\n'); }
 }
