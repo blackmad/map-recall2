@@ -208,6 +208,11 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
   const near = others.filter(o => o.id !== way.id);
   const bb = way.points.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity]);
   const close = near.filter(o => o.points.some(p => p[0] > bb[0] - SCAN_M - 5 && p[0] < bb[2] + SCAN_M + 5 && p[1] > bb[1] - SCAN_M - 5 && p[1] < bb[3] + SCAN_M + 5));
+  // The neighbours' segments, each with its box: a station tests only those within reach of its scan line (the same
+  // answer as testing every polyline, at a fraction of the cost on a dense road graph).
+  const segs: [number, number, number, number][] = [];
+  for (const o of close) for (let k = 0; k + 1 < o.points.length; k++) segs.push([o.points[k][0], o.points[k][1], o.points[k + 1][0], o.points[k + 1][1]]);
+  const R = SCAN_M + 1;
   const floor: number[] = [], sides: [SideScan | null, SideScan | null][] = [];
   for (let i = 0; i < n; i++) {
     if (!inBox(st.p[i])) { floor.push(NaN); sides.push([null, null]); continue; }
@@ -216,7 +221,9 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
     for (let t = -way.half * 0.5; t <= way.half * 0.5 + 1e-6; t += Math.max(0.5, way.half * 0.25)) fs.push(ground(cx + nx * t, cy + ny * t));
     const f = median(fs);
     floor.push(f);
-    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, t => close.some(o => polylineDistance(o.points, cx + nx * sg * t, cy + ny * sg * t) < 0.75));
+    const local = segs.filter(([ax, ay, bx, by]) => Math.max(ax, bx) > cx - R && Math.min(ax, bx) < cx + R && Math.max(ay, by) > cy - R && Math.min(ay, by) < cy + R);
+    const onNeighbour = (x: number, y: number) => local.some(([ax, ay, bx, by]) => polylineDistance([[ax, ay], [bx, by]], x, y) < 0.75);
+    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, t => local.length > 0 && onNeighbour(cx + nx * sg * t, cy + ny * sg * t));
     sides.push([side(1), side(-1)]);
   }
   fillWallGaps(sides, floor, GAP_STATIONS);
