@@ -2011,6 +2011,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
+  - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
+  - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
+  - At Cuyperspassage the station hall still hides the rider; the covered-passage x-ray should treat a slot like a building passage (`game.js`).
+  - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
+  - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
+  - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
+  - Pre-existing on main (2026-10-30, not tunnels): `covered-passage.spec.ts` fails "the shed is back". After riding out, `_threeBuildings.hidden` still holds w451533149 among ~400 ids, so something else keeps a large hidden set.
+
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
   - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;

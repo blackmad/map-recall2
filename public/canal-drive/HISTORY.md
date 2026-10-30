@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Tunnel cuts: motor ramps and rideable underpasses (2026-10-30).** User
+report: the IJ-tunnel south ramp at Foeliestraat looked like an open street
+toward NEMO, and bikes are (rightly) banned from it. Tunnel ways had no ground
+at all (`osmGround.ts`). `src/canalRecall/ownGround/tunnels.ts` now plans cuts
+per cell from the OSM tunnel tags and the AHN relief:
+- Ramps: from each portal, side scans every 2 m find the walls. Strips follow
+  on to neighbouring roads in the same cut and split where a street at land
+  level crosses (Prins Hendrikkade). Motor portals get a dark mouth and a
+  headwall.
+- Slots: a rideable tunnel of at most 150 m whose relief rises at least 1 m
+  over its portal line gets a floor on that line, so the bike rides under the
+  embankment instead of over it (climb was 3.1–5.5 m, now ≤ 0.03 m).
+
+`surface.ts` keeps the raw relief and adds `cutFloor`; cells with no cut in
+reach are byte-identical (`check-tunnels-identity.ts`). There are 11 named
+regressions (`tunnelRegressions.ts`, `npm run check:tunnels`, also in
+`check:canal`): IJ-tunnel, Piet Hein, Spaarndammer, Michiel de Ruijter,
+Mauritskade, Molukkenstraat, Wibautstraat, Overschiestraat, a Kruislaan cycle
+underpass and Cuyperspassage. At the IJ cell, `prepareCell` takes 0.92 s
+against 0.39 s without tunnels (machine at load 30–45).
+
 **Facade far tier per CSS pixel (2026-10-30).** User, with screenshots of Weesperstraat, Wibautstraat × Ringdijk and
 Diemen zoomed out: "why are these buildings rendering such low detail even so close?" and "on my mac I think these
 buildings should be able to render windows/details at this zoom". The buildings were faced (the large-tier audit found
