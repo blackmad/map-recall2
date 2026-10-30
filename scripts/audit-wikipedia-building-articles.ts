@@ -8,8 +8,8 @@
  * (`docs/handoffs/lane-wikipedia-buildings-20261030.md`).
  *
  * Reads `.cache/osm-source/derived/amsterdam-buildings.geojsonseq`
- * (`npm run resolve:landmark-buildings` derives it) and the Wikidata CSV in
- * `staging/wikidata-articles-box.csv`, fetched once when missing.
+ * (`npm run resolve:landmark-buildings` derives it) and the Wikidata box
+ * (`lib/wikidata-articles-box.ts`, fetched once into staging).
  *
  * Writes `public/data/extracts/amsterdam/staging/wikipedia-building-articles.json`
  * and prints the summary. Usage: npm run audit:wikipedia-buildings
@@ -18,66 +18,22 @@ import { createReadStream } from 'node:fs';
 import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createInterface } from 'node:readline';
+import { isBuildingClass } from '../src/canalRecall/buildingArticles.ts';
+import { articleTitle, loadWikidataArticlesBox } from './lib/wikidata-articles-box.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
 const staging = path.join(directory, 'staging');
 const buildingsSeq = path.resolve('.cache/osm-source/derived/amsterdam-buildings.geojsonseq');
-const csvFile = path.join(staging, 'wikidata-articles-box.csv');
 const outFile = path.join(staging, 'wikipedia-building-articles.json');
 await mkdir(staging, { recursive: true });
 if (!await stat(buildingsSeq).catch(() => null)) throw new Error('Run `npm run resolve:landmark-buildings` first.');
 
-const SPARQL = `SELECT ?item ?itemLabel ?classLabel ?coord ?nl ?en ?sitelinks WHERE {
-  SERVICE wikibase:box { ?item wdt:P625 ?coord .
-    bd:serviceParam wikibase:cornerSouthWest "Point(4.73 52.28)"^^geo:wktLiteral .
-    bd:serviceParam wikibase:cornerNorthEast "Point(5.08 52.43)"^^geo:wktLiteral . }
-  ?item wikibase:sitelinks ?sitelinks .
-  OPTIONAL { ?nl schema:about ?item ; schema:isPartOf <https://nl.wikipedia.org/> . }
-  OPTIONAL { ?en schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }
-  FILTER(BOUND(?nl) || BOUND(?en))
-  OPTIONAL { ?item wdt:P31 ?class . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,nl". }
-}`;
-if (!await stat(csvFile).catch(() => null)) {
-  console.log('fetching Wikidata box query…');
-  const response = await fetch('https://query.wikidata.org/sparql', {
-    method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded', accept: 'text/csv', 'user-agent': 'map-recall (https://github.com/blackmad/map-recall2)' },
-    body: new URLSearchParams({ query: SPARQL }),
-  });
-  if (!response.ok) throw new Error(`Wikidata ${response.status}`);
-  await writeFile(csvFile, await response.text());
-}
-
-// Building-ish Wikidata classes; the negative list wins (a destroyed church, an event).
-const BUILDING_RE = /build|house|church|office|warehouse|hotel|theat|school|museum|windmill|station|synagogue|mosque|chapel|monaster|hospital|palace|castle|gate|tower|hall|cinema|library|brewery|factory|mill|bank|shop|store|university|college|gable|villa|mansion|squat|prison|court|embassy|fort|bunker|barracks|distillery|residen|apartment|complex|hofje|almshouse|orphanage|pavilion|stadium|arena|concert|opera|depot|pumping|lighthouse|observatory|laboratory|headquarters|skyscraper|high-rise|dwelling|farm|inn|cafe|restaurant|pub|bar\b|club/i;
-const EXCLUDE_RE = /destroyed|former|event|discipline|organization|club$|team|company|business|festival|competition|street|neighborhood|village|bridge|polder/i;
-
-function parseCsvLine(line: string): string[] {
-  const out: string[] = []; let cell = ''; let quoted = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (quoted) { if (ch === '"') { if (line[i + 1] === '"') { cell += '"'; i++; } else quoted = false; } else cell += ch; }
-    else if (ch === '"') quoted = true;
-    else if (ch === ',') { out.push(cell); cell = ''; }
-    else cell += ch;
-  }
-  out.push(cell); return out;
-}
-
-interface Item { q: string; label: string; classes: Set<string>; lng: number; lat: number; nl: string; en: string; sitelinks: number }
-const items = new Map<string, Item>();
-for (const line of (await readFile(csvFile, 'utf8')).trim().split('\n').slice(1)) {
-  const [item, label, cls, coord, nl, en, sitelinks] = parseCsvLine(line);
-  const point = /Point\(([-\d.]+) ([-\d.]+)\)/.exec(coord); if (!point) continue;
-  const q = item.split('/').pop()!;
-  const entry = items.get(q) ?? { q, label, classes: new Set<string>(), lng: Number(point[1]), lat: Number(point[2]), nl, en, sitelinks: Number(sitelinks) };
-  entry.classes.add(cls); items.set(q, entry);
-}
+const items = await loadWikidataArticlesBox(directory);
+type Item = (typeof items extends Map<string, infer T> ? T : never);
 
 // What the extracts already link, by Q-id, feature name and article title.
 const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
-const titleOf = (url: string) => norm(decodeURIComponent(url.split('/wiki/')[1] ?? '').replace(/_/g, ' '));
+const titleOf = (url: string) => norm(articleTitle(url));
 const haveQ = new Set<string>(); const haveNames = new Set<string>(); const haveTitles = new Set<string>();
 for (const file of await readdir(directory)) {
   if (!file.endsWith('.json')) continue;
@@ -132,8 +88,8 @@ for await (const raw of createInterface({ input: createReadStream(buildingsSeq) 
 
 const rows = [...items.values()].flatMap(item => {
   const hit = hits.get(item.q); if (!hit) return [];
-  const classes = [...item.classes];
-  if (!BUILDING_RE.test(classes.join('|')) || EXCLUDE_RE.test(classes.join('|'))) return [];
+  const classes = item.classes;
+  if (!isBuildingClass(classes)) return [];
   const linked = haveQ.has(item.q) || haveNames.has(norm(item.label)) || haveTitles.has(titleOf(item.nl)) || haveTitles.has(titleOf(item.en))
     || (hit.name != null && haveNames.has(norm(hit.name)));
   return [{ ...item, classes, linked, osm: hit }];
