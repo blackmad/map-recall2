@@ -10,7 +10,7 @@ import { encodeLine } from './parks';
 import type { MeshArrays } from './drape';
 import { kerbEdges, RoadIndex, surfaceLayer } from './roadSurfaces';
 import { prepareWays, ROAD_MARK_LIFT } from './streets';
-import { alignCycleCrossing, ALIGN_GAP_M, buildSurveyMarkings, CENTRE_CUT_M, crossingPaint, ZEBRA } from './surveyMarkings';
+import { alignCycleCrossing, ALIGN_GAP_M, buildSurveyMarkings, CENTRE_CUT_M, crossingPaint, ZEBRA, ZEBRA_WIDE_LEN_M } from './surveyMarkings';
 import { decodeMarks, encodeMarks, isRoadMarksCell, markOf, type RoadMark } from './roadMarks';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
@@ -74,14 +74,15 @@ test('road-marks-v1: node tags → marks, and the cell encoding round-trips', ()
   assert.equal(crossingPaint({ highway: 'footway', footway: 'crossing', crossing: 'unmarked' }), null);
 });
 
-test('a zebra at a crossing node: stripes across the whole carriageway, clipped to it, ZEBRA.len along the road', () => {
+test('a zebra at a crossing node: stripes across the whole road at road level (the fietspad too), clipped to it, zebraLen along the road', () => {
   const { paint, stats } = build([{ p: [0, 20], kind: 'zebra', signalised: false, dir: 0 }]);
   assert.equal(stats.zebras, 1);
-  assert.ok(stats.stripes >= 7, `stripes ${stats.stripes}`);
-  const zebra = centroids(paint).filter(c => Math.abs(c[1] - 20) <= ZEBRA.len / 2 + 0.01);
-  assert.ok(zebra.length >= 14);
-  for (const c of zebra) assert.ok(Math.abs(c[0]) <= 4, `stripe off the carriageway at x=${c[0].toFixed(2)}`);
-  assert.ok(Math.min(...zebra.map(c => c[0])) < -2.5 && Math.max(...zebra.map(c => c[0])) > 2.5, 'kerb to kerb');
+  assert.ok(stats.stripes >= 9, `stripes ${stats.stripes}`);
+  const zebra = centroids(paint).filter(c => Math.abs(c[1] - 20) <= ZEBRA_WIDE_LEN_M / 2 + 0.01);
+  assert.ok(zebra.length >= 18);
+  // The carriageway x ∈ [-4, 4] and the fietspad beside it x ∈ [4, 6] (lane zebra-munt 2026-10-30); never the pavement.
+  for (const c of zebra) assert.ok(c[0] >= -4 && c[0] <= 6, `stripe off the road at x=${c[0].toFixed(2)}`);
+  assert.ok(Math.min(...zebra.map(c => c[0])) < -2.5 && Math.max(...zebra.map(c => c[0])) > 4.5, 'kerb to kerb, over the fietspad');
 });
 
 test('guessed paint off (issue #63): an unmapped junction draws no teeth and no centre dashes without the photo', () => {

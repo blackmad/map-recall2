@@ -287,7 +287,10 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
    * there), and borders a carriageway along edges running across the road (within CROSS_EDGE_DEG of the normal to
    * `r`) on both sides of the point, at least `minEdge` metres each, and whose edges along the road meet no
    * carriageway for at least half their length (a strip runs kerb to kerb; a refuge island has road beside it and
-   * stays). Returns the count.
+   * stays). Returns the count. The road beside the strip may be any road-level class (KERB_LOW_CLASSES): BGT maps the
+   * zebra across a fietspad and between a cycle lane and the carriageway as voetpad strips too (user 2026-10-30 at the
+   * Prins Hendrikkade by Arcam: pale kerbed strips cut every zebra into pieces); the strip takes the class and mesh it
+   * borders most.
    */
   crossingStrips(points: readonly { p: Vec2; r: Vec2 }[], maxArea = CROSSING_STRIP_MAX_M2, minEdge = 1.5): number {
     let n = 0;
@@ -300,7 +303,7 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
         let a2 = 0;
         for (let i = 0; i < ring.length; i++) { const a = ring[i], b = ring[(i + 1) % ring.length]; a2 += a[0] * b[1] - b[0] * a[1]; }
         if (Math.abs(a2) / 2 > maxArea) continue;
-        const side = [0, 0], meshLen = new Map<RoadMesh, number>(), along = [0, 0];
+        const side = [0, 0], meshLen = new Map<RoadMesh, number>(), clsLen = new Map<RoadClass, number>(), along = [0, 0];
         for (let i = 0; i < ring.length; i++) {
           const a = ring[i], b = ring[(i + 1) % ring.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
           if (len < 1e-6) continue;
@@ -316,16 +319,17 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
           }
           for (const s of [1, -1]) {
             const hit = this.findAll(mx + s * nx * 0.3, my + s * ny * 0.3).find(j => j !== k && this.records[j].h === 0);
-            if (hit === undefined || this.drawClass(hit) !== 'carriage') continue;
+            if (hit === undefined || !isLow(this.drawClass(hit))) continue;
             // Which side of the crossing point (along the road) the edge lies on.
             side[(mx - p[0]) * r[0] + (my - p[1]) * r[1] >= 0 ? 0 : 1] += len;
             meshLen.set(this.mesh(hit), (meshLen.get(this.mesh(hit)) ?? 0) + len);
+            clsLen.set(this.drawClass(hit), (clsLen.get(this.drawClass(hit)) ?? 0) + len);
             break;
           }
         }
         if (side[0] < minEdge || side[1] < minEdge || along[0] > 0.5 * along[1]) continue;
-        const mesh = [...meshLen.entries()].sort((x, y) => y[1] - x[1])[0][0];
-        this.classOver.set(k, 'carriage'); this.meshOver.set(k, mesh); done.add(k); n++;
+        const mesh = [...meshLen.entries()].sort((x, y) => y[1] - x[1])[0][0], cls = [...clsLen.entries()].sort((x, y) => y[1] - x[1])[0][0];
+        this.classOver.set(k, cls); this.meshOver.set(k, mesh); done.add(k); n++;
       }
     }
     return n;
