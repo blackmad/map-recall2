@@ -30,6 +30,7 @@ import {cachedJson, findPands, lngLatToRd, neighbourhood, normId, rdToLngLat, ty
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {loadPano, wallHeight} from '../pand-reference/rectify.ts';
 import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
+import {gameListsModel, routeFreshSignatureBundle} from './fresh-signature-bundle.ts';
 import {matchWall, type InventoryItem, type InventoryWall, type LandmarkInventory} from '../../src/canalRecall/landmarks/ornamentInventory.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -167,8 +168,11 @@ async function gameShots(walls: Wall[], dir: string): Promise<Map<Wall, string>>
   const br = await chromium.launch({headless: true});
   try {
     const page: Page = await br.newPage({viewport: {width: 1100, height: 800}});
+    // The committed bundle lags a lane's catalogue entry; without this the game never lists `id` (#139).
+    await routeFreshSignatureBundle(page);
     await page.goto(`http://127.0.0.1:${port}/canal-drive/`);
     await page.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?._signatureLandmarks, null, {timeout: 90000});
+    if (!await gameListsModel(page, id)) throw new Error(`${id} is not in GAME_BUILDING_MODELS (manualCatalogue.json entry missing?)`);
     const poi = await page.evaluate(() => (window as any).canalRecallGame.routePois[0]?.id);
     await page.selectOption('#poi-destination', poi);
     await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
