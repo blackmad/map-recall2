@@ -9,6 +9,7 @@
  * compiler builds geometry.
  */
 import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
+import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
 import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
@@ -1268,6 +1269,12 @@ export interface LargeWallIntent {
   gallery?: GalleryIntent | GalleryIntent[];
   /** Closed box balconies on scattered (storey, bay) cells of the main panel (blockBuilding/boxBalcony.ts, Haarlemmerweg 778 "Pepper"). Absent: byte-identical. */
   boxBalconies?: BoxBalconyIntent;
+  /**
+   * Balcony bands (blockBuilding/balconyBands.ts, GitHub #126): on each listed storey one continuous slab across the
+   * group's walls with a parapet (solid, glass or bars) along its front, in front of the storey's own row, which it never
+   * cuts (ribbon glazing keeps its width behind the band). Gallery flats and post-war slab fronts. Absent: byte-identical.
+   */
+  balconyBands?: BalconyBandsIntent;
   /**
    * Stacked offset blocks on the main panel, written storey by storey (blockBuilding/stackedBlocks.ts, Blend,
    * Haarlemmerweg 518): `B` a block stepped `deepM` out with its own framed windows, `R` a recessed balcony with a glass

@@ -14,6 +14,7 @@ import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {drawWindowBox} from '../blockBuilding/windowBox.ts';
 import {drawGallery} from '../blockBuilding/gallery.ts';
 import {drawBoxBalconies} from '../blockBuilding/boxBalcony.ts';
+import {drawBalconyBands} from '../blockBuilding/balconyBands.ts';
 import {drawStackedBlocks} from '../blockBuilding/stackedBlocks.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {drawFalseFront, drawSignBoards} from '../blockBuilding/signBoards.ts';
@@ -25,7 +26,7 @@ import {FLAT_ROOF_TONES} from '../look/palette.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -162,6 +163,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.gallery && g.mainPanel === p.index) for (const gf of g.gallery) { const k = drawGallery(c, levels, gf, g.bays, underCornice); if (k) counts.galleries = (counts.galleries ?? 0) + k; }
   // Closed box balconies on their listed (storey, bay) cells (Pepper); absent, nothing is drawn.
   if (g.boxBalconies && g.mainPanel === p.index) { const k = drawBoxBalconies(c, levels, g.boxBalconies, g.bays, underCornice); if (k) counts.boxBalconies = (counts.boxBalconies ?? 0) + k; }
+  // Balcony bands: one slab and parapet per listed storey across every panel of the group, in front of the rows; absent, nothing is drawn.
+  if (g.balconyBands && p.uMax - p.uMin >= 2) { const k = drawBalconyBands(c, levels, g.balconyBands, underCornice); if (k) counts.balconyBands = (counts.balconyBands ?? 0) + k; }
   // Stacked offset blocks and their recessed balconies, storey by storey (Blend); absent, nothing is drawn.
   if (g.stackedBlocks && g.mainPanel === p.index) {
     const k = drawStackedBlocks(c, levels, g.stackedBlocks, g.bays, underCornice);
