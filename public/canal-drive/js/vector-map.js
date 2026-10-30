@@ -184,19 +184,6 @@ class VectorBasemap {
     this._detailedBuildingsVisible = false;
     this._signatureLandmarks = null;
     this._pyramidalRoofs = null;
-    this._studyRoofs = null;
-    this._studyFacades = null;
-    this._studyTrees = null;
-    this._studyPublicRealm = null;
-    this._studyRoofAreas = [];
-    this._studyFacadeAreas = [];
-    this._studyTreeAreas = [];
-    this._studyPublicRealmAreas = [];
-    this._activeAppearanceAreaId = null;
-    this._studyLayersAllowed = true;
-    this._studyResidencyListener = null;
-    this._appearanceAreas = [];
-    this._appearanceAreaFailures = [];
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
@@ -1573,10 +1560,6 @@ class VectorBasemap {
       this._bagCovers = await runtime.loadBagCovers('./models/covers.json');
     }
 
-    // The Da Costa appearance study (city-expansion) was retired on 2026-10-01;
-    // the game no longer loads the appearance catalog, so _appearanceAreas stays
-    // empty and none of the optional study renderers start.
-
     // Hand the verified priors to the complete-city source before optional
     // roofs, facades, trees and water start their independent loads. Waiting
     // for every decorative layer here left the old static neutral source on
@@ -1614,38 +1597,6 @@ class VectorBasemap {
     // finished; apply that aim now so tiles stream under the overlay.
     this._applyPendingAim();
 
-    if (this._appearanceAreas.length && this._completeCity.setAppearancePriors) {
-      const optional = [
-        { api: window.CanalRecallStudyRoofs, ctor: 'StudyRoofs', list: this._studyRoofAreas, alias: '_studyRoofs', label: 'roof geometry' },
-        { api: window.CanalRecallStudyFacades, ctor: 'StudyFacades', list: this._studyFacadeAreas, alias: '_studyFacades', label: 'facade geometry' },
-        { api: window.CanalRecallStudyTrees, ctor: 'StudyTrees', list: this._studyTreeAreas, alias: '_studyTrees', label: 'tree geometry' },
-        { api: window.CanalRecallStudyPublicRealm, ctor: 'StudyPublicRealm', list: this._studyPublicRealmAreas, alias: '_studyPublicRealm', label: 'public-realm geometry' },
-      ];
-      for (const area of this._appearanceAreas) for (const kind of optional) {
-        const Constructor = kind.api && kind.api[kind.ctor];
-        if (!Constructor) continue;
-        const renderer = new Constructor(this.map, maplibregl, area.id);
-        // Loading an index normally starts its tile requests immediately. Keep
-        // every catalog entry cold until the viewport-wide selector chooses
-        // one area, otherwise N overlapping areas each claim their own 12-tile
-        // cache during startup.
-        renderer.setEnabled(false);
-        try {
-          await renderer.load(area.pointerUrl);
-          kind.list.push(renderer);
-          if (!this[kind.alias]) this[kind.alias] = renderer;
-        } catch (error) {
-          renderer.dispose();
-          this._appearanceAreaFailures.push({ id: area.id, layer: kind.ctor, message: String(error && error.message || error) });
-          console.warn(`Optional ${kind.label} unavailable for ${area.id}.`, error);
-        }
-      }
-      this._updateStudyAreaResidency();
-      if (!this._studyResidencyListener) {
-        this._studyResidencyListener = () => this._updateStudyAreaResidency();
-        this.map.on('moveend', this._studyResidencyListener);
-      }
-    }
     return true;
   }
 
@@ -2040,7 +1991,6 @@ class VectorBasemap {
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
     }
-    this._updateStudyAreaResidency();
   }
 
   setDetailedBuildingsVisible(visible) {
@@ -2190,71 +2140,6 @@ class VectorBasemap {
     }
     if (this._pyramidalRoofs) this._pyramidalRoofs.setHidden(this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds());
     if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google && !this._measuredColoursOnly);
-    this._studyLayersAllowed = !detailed && !google;
-    this._updateStudyAreaResidency();
-  }
-
-  /**
-   * Keep one catalog area's detail streams resident for the whole viewport.
-   *
-   * Every area publishes the same z16 owner/context tile keys. Selecting from
-   * those keys is stricter than selecting the nearest area origin: outside all
-   * published coverage every optional stream is cleared and the complete-city
-   * building source remains the visual fallback. At overlaps, distance to the
-   * viewport centre gives a deterministic owner and prevents four independent
-   * renderers per area from multiplying their cache budgets.
-   */
-  _updateStudyAreaResidency() {
-    if (!this.map) return;
-    const groups = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas];
-    const layers = groups.flat();
-    if (!layers.length) return;
-    const bounds = this.map.getBounds();
-    const zoom = 16, scale = 2 ** zoom;
-    const x = lng => Math.floor((lng + 180) / 360 * scale);
-    const y = lat => {
-      const clipped = Math.max(-85.05112878, Math.min(85.05112878, lat));
-      const radians = clipped * Math.PI / 180;
-      return Math.floor((1 - Math.asinh(Math.tan(radians)) / Math.PI) / 2 * scale);
-    };
-    const west = x(bounds.getWest()), east = x(bounds.getEast());
-    const north = y(bounds.getNorth()), south = y(bounds.getSouth());
-    const wanted = new Set();
-    for (let tileX = west - 1; tileX <= east + 1; tileX++) for (let tileY = north - 1; tileY <= south + 1; tileY++) wanted.add(`${zoom}/${tileX}/${tileY}`);
-    const center = this.map.getCenter(), centerX = x(center.lng), centerY = y(center.lat);
-    const candidates = new Map();
-    for (const layer of layers) {
-      const areaId = layer.areaId || '';
-      if (!areaId || !layer.metas) continue;
-      let distance = Infinity;
-      for (const key of layer.metas.keys()) {
-        if (!wanted.has(key)) continue;
-        const [, tileX, tileY] = key.split('/').map(Number);
-        distance = Math.min(distance, (tileX - centerX) ** 2 + (tileY - centerY) ** 2);
-      }
-      if (Number.isFinite(distance)) candidates.set(areaId, Math.min(candidates.get(areaId) ?? Infinity, distance));
-    }
-    const active = this._studyLayersAllowed
-      ? [...candidates].sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]))[0]?.[0] || null
-      : null;
-    this._activeAppearanceAreaId = active;
-    for (const layer of layers) {
-      if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
-      const buildingDetail = this._studyRoofAreas.includes(layer) || this._studyFacadeAreas.includes(layer);
-      const treeDetail = this._studyTreeAreas.includes(layer);
-      const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail)
-        && !(treeDetail && this._inventoryTrees?.ready && this._inventoryTrees?.enabled));
-      // Resident streamers already update and evict on moveend. Re-enabling an
-      // active layer here clears every mesh on every camera sync, even when the
-      // viewport and selected area have not changed.
-      if (layer.enabled !== enabled) layer.setEnabled(enabled);
-    }
-    for (const [list, alias] of [
-      [this._studyRoofAreas, '_studyRoofs'],
-      [this._studyFacadeAreas, '_studyFacades'],
-      [this._studyTreeAreas, '_studyTrees'],
-      [this._studyPublicRealmAreas, '_studyPublicRealm'],
-    ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
   _absoluteExtractRoot() {
@@ -3393,34 +3278,17 @@ class VectorBasemap {
   }
 
   appearanceRenderStatus() {
-    const groups = {
-      roofs: this._studyRoofAreas,
-      facades: this._studyFacadeAreas,
-      trees: this._studyTreeAreas,
-      publicRealm: this._studyPublicRealmAreas,
-    };
-    const layers = Object.values(groups).flat();
     const city = this._completeCity && this._completeCity.status ? this._completeCity.status() : null;
-    const pending = (city ? city.inFlight + city.queued : 0) + layers.reduce(
-      (sum, layer) => sum + (layer.inFlight || 0) + (layer.queue ? layer.queue.length : 0), 0,
-    );
-    const detailBytes = layers.reduce((sum, layer) => sum + (layer.debugGeometryBytes || 0), 0);
-    const residents = Object.fromEntries(Object.entries(groups).map(([name, entries]) => [
-      name, entries.reduce((sum, layer) => sum + (layer.debugResident || 0), 0),
-    ]));
-    const painted = layers.every(layer => !layer.debugRenderable || (layer.debugResident > 0 && layer.debugPaints > 0));
+    const pending = city ? city.inFlight + city.queued : 0;
     const mapReady = Boolean(this.map && this.map.loaded && this.map.loaded() && (!this.map.isMoving || !this.map.isMoving()));
     return {
-      ready: Boolean(city && city.features > 0 && pending === 0 && painted && mapReady && detailBytes <= 11_000_000),
-      mapReady, pending, painted, detailBytes, residents,
-      withinBudget: detailBytes <= 11_000_000,
+      ready: Boolean(city && city.features > 0 && pending === 0 && mapReady),
+      mapReady, pending,
       cameraClearance: this._lastCameraClearance,
     };
   }
 
   whenAppearanceRenderReady(timeoutMs = 30_000) {
-    const layers = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas].flat();
-    const baseline = new Map(layers.map(layer => [layer, layer.debugPaints || 0]));
     return new Promise((resolve, reject) => {
       // Game updates dirty the style before MapLibre paints. Sampling in an
       // independent RAF can therefore miss every ready frame indefinitely.
@@ -3431,8 +3299,7 @@ class VectorBasemap {
       };
       const check = () => {
         const status = this.appearanceRenderStatus();
-        const paintedAfterCall = layers.every(layer => !layer.debugRenderable || (layer.debugPaints || 0) > (baseline.get(layer) || 0));
-        if (status.ready && paintedAfterCall) {
+        if (status.ready) {
           cleanup();
           resolve(status);
           return;
