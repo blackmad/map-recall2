@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
 import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEnds, kerbShadowTint, KERB_LINE_M, KERB_SHADOW_M, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
-import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
+import { buildStreets, carriageGrid, crossCuts, discOnSurvey, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import { cycleThrough } from './cycleThrough';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, luma709, ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId } from './groundLook';
@@ -329,4 +329,10 @@ test('road look: the options keep the asphalt hue, open a wide level gap, and co
   assert.ok(Math.abs(luma709(g) - (luma709(lawn) - 15)) < 1, `garden ${g}`);
   const chroma = (c: readonly number[]) => Math.max(...c) - Math.min(...c);
   assert.ok(chroma(g) < 0.7 * chroma(lawn), `garden chroma ${chroma(g)} against ${chroma(lawn)}`);
+});
+
+test('path join discs: none where the disc, not only its node, reaches over a survey polygon (Arcam steps, 2026-10-30)', () => {
+  const index = new RoadIndex([cellOf([{ c: 'foot', k: 'paving', ring: [[2, -10], [10, -10], [10, 10], [2, 10]] }])]);
+  assert.equal(discOnSurvey([0, 0], 1.6, index, false), false, 'a disc 0.4 m short of the voetpad');
+  assert.equal(discOnSurvey([1, 0], 1.6, index, false), true, 'its rim over the voetpad, the node off it');
 });
