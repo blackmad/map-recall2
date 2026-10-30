@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
+L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
+put the gate specs, ride-perf and phone-memory on either implementation;
+`ride-perf-owners.mjs` times the frame host as owner `engine`. Overlays
+(cycle tracks, transit, neighbourhood lines, route and active street draped
+on the own ground, active-landmark highlight and marker, ferry pins, the
+answered street) and the POI, landmark and branded labels now draw under the
+flag through `ownMap/labels.ts` with the spoiler rules in `labelPolicy.ts`;
+place labels are also screened by their Dutch Wikipedia name. First in-page
+A/B of the two implementations on the same ride (desktop chase, 12 s):
+main-thread CPU 6.61 → 1.97 ms a frame, draws 648 → 137, p95 22.5 → 17.8 ms,
+with the caveat that trees, landmarks and themes are not yet drawn under the
+flag. On the iPhone profile a 60 s ride holds a flat 246 MB heap with 0
+MapLibre workers. Found on the way: `streets-routing.json` names way
+`routing_15692` "New Market", an English translation in a street name (TODO
+P0).
+
 **`?world=v1` identical in the browser, decoded in the worker, cells published (2026-10-30, #136).**
 Why the first A/B showed ~4,400 extra buildings on four centre tiles: the
 cells were stale (the building tiles had been regenerated after L3 compiled;

@@ -184,16 +184,27 @@ picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
 Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
 and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
 programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
-**Not yet under the flag (no-ops):** landmark highlight, all labels, places,
-branded POIs, answered-street name, transit, cycle tracks, ferry pins, trees,
-signature landmarks, detailed buildings, palette themes, `inspectBuilding`
-lift. **Gate not met yet:** the named specs have no `?engine=own` switch, the
-ride-perf in-page A/B and `phone-memory` under the flag are unmeasured.
-`game-route.js` / `feedback/browser.ts` keep a `.map` fallback until
-`vector-map.js` gains `frameCanvas()`, `captureFrame()`, `jumpToLngLat()`.
-Steps 4–6 (overlays + labels, the 2026-10-10 re-port incl. the own picker,
-`_makeLayer` deletions, a flag switch for the gate specs, the A/B) continue
-in the same lane.
+Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
+specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
+overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
+dashed, route + active street draped, active-landmark highlight and marker,
+ferry pins, answered street) and POI / landmark / branded labels through
+`ownMap/labels.ts` + `labelPolicy.ts` (place labels also screened by their nl
+Wikipedia name, `engine/placeNames.ts`, Nieuwmarkt regression);
+`vector-map.js` gained `frameCanvas()`, `captureFrame()`, `jumpToLngLat()` so
+the `.map` fallbacks in `game-route.js` / `feedback/browser.ts` are gone.
+**Measured, in-page A/B desktop chase 12 s:** main-thread owned CPU 6.61 →
+1.97 ms/frame (gate ≥ 1.5 lower), draws 648 → 137, p95 22.5 → 17.8 ms, frame
+median vsync-bound both; not like-for-like (no trees, detailed buildings,
+signature landmarks, Google tiles, palette themes under the flag). iPhone
+`ENGINE=own`: engine-own, phone-memory, start-heading, context-restore green;
+60 s ride heap flat at 246 MB, textures 27 MB, buffers 78 MB, 0 MapLibre
+workers. Desktop gates green under the flag: context-restore, intro-perf,
+look-consistency (photo), open-squares, start-heading.
+**Still not under the flag:** trees, detailed buildings, signature landmarks,
+palette themes (Google tiles are being deleted). **Not done:** the 2026-10-10
+re-port (own picker, overview extract with rail/footway/landuse, ~2.7k lines)
+and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
@@ -1205,6 +1216,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **"New Market" is a street name (found by L1, 2026-10-30).** In
+  `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
+  (52.372955, 4.900113) is named "New Market": an English translation leaked
+  into a Dutch street name, so when Nieuwmarkt is asked and every name is
+  earned, "New Market" is drawn next to it on both engines. Fix in the
+  extract generator (`scripts/build-amsterdam-extract.ts` /
+  `translate-extracts-to-english.ts` must not write translations into the
+  name field), regenerate, and the own-map overview names; then pin a
+  regression (the engine's Nieuwmarkt test already screens nl names).
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1260,6 +1280,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Wikipedia articles on plain buildings never reach the card (2026-10-30).**
+  User, Emerald Empire / Venetiëhof on KNSM-eiland: the card says only
+  "Built 1995" although OSM relation r3679879 carries `wikipedia=nl:Emerald
+  Empire` and `wikidata=Q66764687`. `build-amsterdam-extract.ts`
+  `classify()` admits landmarks only via tourism/historic/civic amenity,
+  the POI layer filters amenity/shop/tourism/leisure, and
+  `build-building-facts.ts` ignores name/wikipedia/wikidata. Measured:
+  1,698 OSM buildings carry a wiki tag (8 joined to a landmark); 1,257
+  Wikidata building articles with coordinates land in an OSM footprint and
+  are linked nowhere (200 OSM-tagged, 1,057 by point; 126 English, 1,131
+  Dutch-only). Beyond buildings, 5,611 located Wikidata items with
+  articles share no Q-id with the extracts (942 bridges, 789 streets, 513
+  sculptures, 243 works of art, 127 statues, 88 murals…; bridges/streets
+  unverified by title). Lane brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`; audit
+  `npm run audit:wikipedia-buildings`. Open: the lane itself.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
