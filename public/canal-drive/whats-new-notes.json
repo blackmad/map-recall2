@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-10-30",
+      "title": "Fewer 9 m guesses",
+      "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",
+      "where": [
+        4.858,
+        52.4301
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-heights-from-ahn5-settling-tanks.jpg",
+          "alt": "The Westpoort water treatment plant from the air, its round settling tanks drawn flat on the ground",
+          "caption": "Westpoort: the settling tanks lie flat instead of standing 9 m tall"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
       "title": "More tunnel mouths, grass medians",
       "text": "The Piet Hein tunnel's eastern ramp sinks to its mouth under the sun screen, and nine more motor tunnels show a dark entrance. The medians between the IJ-tunnel carriageways sit down in the trench as grass, and the cut walls carry a bright coping edge and a dark gutter line.",
       "where": [

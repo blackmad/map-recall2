@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+**Guessed heights from AHN5, BAG and OSM type (2026-10-30).** 171 OSM-only
+outlines that AHN4 (2020) could not measure stood at the 9 m guess. They
+turned out to be genuinely low things (settling tanks, bunkers, switch
+cabinets, garage and tunnel entrances), houseboats, and blocks built after
+2020. Three more sources now decide, in `chooseGuessedHeight`
+(`src/canalRecall/guessedHeights.ts`, 9 tests).
+
+**Sources**
+- **AHN5** (2023 flight, CC0) is not on the PDOK WCS yet. Its 0.5 m sheets
+  are cloud GeoTIFFs on basisdata.nl; `scripts/data/ahn5-sheets.json` lists
+  164 sheets, found through geotiles.citg.tudelft.nl.
+  `readTiledTiffHeader` (`ownGround/geotiff.ts`) and `ahnFootprint.ts`
+  range-fetch only the 256 px tiles a footprint touches, into `.cache/ahn5/`.
+- **BAG** (PDOK WFS) gives the pand under an outline that has no OSM
+  `start_date`, with its build year and status.
+- **OSM `building=houseboat`** gets the small-building height (3.2 m),
+  because AHN measures a boat against the quay, not the water.
+
+**Rules**
+- An outline built in 2023 or later keeps its guess. BAG's build year (and
+  OSM's, copied from it) is often the permit year: 359 outlines dated 2023
+  and 250 dated 2022 were building sites in the flight.
+- A pand BAG lists as permitted or under construction is newer than any
+  flight.
+- A mixed AHN5 reading (ridge 10 m over p70) is a building going up. The
+  Robin (Amstelkwartier) has a 2.1 m p70 under a 19.8 m ridge.
+- A footprint under 25 m² reading over 6 m is someone else's roof, not its
+  own. One example is a 2017 shed under a 2022 45 m tower. This guard also
+  sends 21 earlier AHN4 measurements back to their guess, restored from the
+  tiles before that measurement.
+- Flat in both flights, for an outline not dated after 2019, gives a slab at
+  the measured ridge, 1–2 m.
+
+**Result.** Of the 4,429 guessed outlines:
+- 998 keep their AHN4 height, unchanged from before;
+- 132 take AHN5, among them Terrace Tower (Zuidas, 2021) at 35.7 m;
+- 81 are low slabs and 39 are houseboats;
+- 3,179 keep the guess.
+
+Named regressions in `check:guessed-heights` cover The Robin, The Martin,
+Terrace Tower, a Westpoort settling tank, the houseboat Doris and the shed
+under the tower.
+
 **Tunnel cuts round 3 (2026-10-30).**
 - Merged median gaps (at least 1.5 m) are draped as park at the trench floor.
 - Walls get a darker foot, a bright coping strip, a thicker parapet and a
