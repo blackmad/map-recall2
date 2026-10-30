@@ -64,10 +64,11 @@ export interface PanelFrame { o: number[]; r: number[]; n: number[]; uMin: numbe
  * Parapet glass (#134): the photo pass reads a glass balustrade as wall-like (it shows the slab edge, the wall and the
  * rooms behind it at the wall's tone; Mary van der Sluisstraat 247342 walls[1] reads 0.18 glazing where the model's
  * `rail: glass` balconies drew 0.41), so in the likeness elevation an opening-slot cell (glass, frame) standing at least
- * `proudM` in front of the panel's plane, from `belowM` under an upper storey line to `railM` over it, is trim: a balcony
- * or balcony-band parapet, not a window. Windows sit in or behind the plane; the game mesh is not touched.
+ * `proudM` in front of the wall's face (balcony bands project >= 0.5 m: BALCONY_BAND.minDeepM), from `belowM` under an upper storey line to `railM` over it, is trim: a balcony
+ * or balcony-band parapet, not a window: on groups that draw `balconyBands` (the caller's `parapets`). The game mesh is
+ * not touched.
  */
-export const PARAPET_GLASS = {proudM: 0.2, belowM: 0.1, railM: 1.3} as const;
+export const PARAPET_GLASS = {proudM: 0.35, belowM: 0.1, railM: 1.3} as const;
 
 /**
  * Colour the game draws for a material (sRGB). A measured tint (`tintSource: "measured"` in the material extras, the
@@ -96,7 +97,7 @@ export interface ModelElevation {
 export interface CurtainReading { mask: Uint8Array; wall: Rgb; wallToday: Rgb; wallSlot: string; mullion: Rgb; grid: MaskGrid }
 
 /** The model's elevation of one panel on the box (panel u, height above ground), classed like the photo. */
-export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>, behindM = 1.5, system?: string): ModelElevation {
+export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: FacadeBox, lines: number[], cell = 0.1, measuredTints?: Set<string>, behindM = 1.5, system?: string, parapets = false): ModelElevation {
   const bearing = (Math.atan2(panel.n[0], -panel.n[2]) * 180 / Math.PI + 360) % 360;
   const nx = Math.sin(bearing * Math.PI / 180), nz = -Math.cos(bearing * Math.PI / 180), tx = nz, tz = -nx;
   const tOf = (u: number) => (panel.o[0] + panel.r[0] * u) * tx + (panel.o[2] + panel.r[2] * u) * tz;
@@ -114,15 +115,21 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
     if (px < 0 || py < 0 || px >= el.W || py >= el.H) continue;
     matAt[j * cols + i] = el.mat[py * el.W + px]; shade[j * cols + i] = el.shade[py * el.W + px]; depth[j * cols + i] = el.depth[py * el.W + px];
   }
-  // a cell of a parapet in front of the plane (PARAPET_GLASS): proud of the panel, in the rail zone of an upper storey line
-  const planeD = frontDepth - 1, upper = lines.slice(1, -1);
-  const parapet = (k: number) => { if (!(depth[k] - planeD >= PARAPET_GLASS.proudM)) return false; const v = box.v1 - (Math.floor(k / cols) + 0.5) * cell; return upper.some(l => v >= l - PARAPET_GLASS.belowM && v <= l + PARAPET_GLASS.railM); };
+
   const colourOf = soup.materials.map(m => gameColour(m, measuredTints)), todayOf = soup.materials.map(m => gameColour(m));
   const slotOf = soup.materials.map(m => m.materialSlot ?? m.slot ?? '');
   // the wall: the modal wall-slot material over the cells above the ground band
   const votes = new Map<number, number>();
   for (let k = 0; k < N; k++) { const m = matAt[k]; if (m >= 0 && WALL_SLOTS.has(slotOf[m]) && box.v1 - (Math.floor(k / cols) + 0.5) * cell >= 2.5) votes.set(m, (votes.get(m) ?? 0) + 1); }
   const wallMat = [...votes].sort((a, b) => b[1] - a[1])[0]?.[0] ?? -1;
+  // a cell of a parapet in front of the wall (PARAPET_GLASS), only on a group that draws balcony bands (`parapets`): proud
+  // of the wall's face (the median depth of the wall material's cells), in the rail zone of an upper storey line. Read on
+  // every group, the same test moved 20 of the 95 inferred installs' groups whose windows, sills or bars stand proud of a
+  // recessed wall material (Houthavenkade 26 walls[0] PASS -> WARN), so it stays with the component it was made for.
+  const wallDs: number[] = []; for (let k = 0; parapets && k < N; k++) if (wallMat >= 0 && matAt[k] === wallMat && Number.isFinite(depth[k])) wallDs.push(depth[k]);
+  wallDs.sort((a, b) => a - b);
+  const wallD = wallDs.length ? wallDs[Math.floor(wallDs.length / 2)] : Infinity, upper = lines.slice(1, -1);
+  const parapet = (k: number) => { if (!(depth[k] - wallD >= PARAPET_GLASS.proudM)) return false; const v = box.v1 - (Math.floor(k / cols) + 0.5) * cell; return upper.some(l => v >= l - PARAPET_GLASS.belowM && v <= l + PARAPET_GLASS.railM); };
   const wall = wallMat >= 0 ? colourOf[wallMat] : null, wallToday = wallMat >= 0 ? todayOf[wallMat] : null, wallLab = wall ? rgbToLab(wall) : null;
   const mask = new Uint8Array(N).fill(MASK.unusable), colours = new Uint8Array(N * 3).fill(255);
   const glassCells: Rgb[] = [];

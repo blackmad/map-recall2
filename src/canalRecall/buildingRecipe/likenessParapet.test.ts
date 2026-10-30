@@ -22,7 +22,7 @@ test('modelElevation: proud parapet glass in the rail zone is trim, recessed win
     {name: 'brick', rgb: [150, 82, 62], materialSlot: 'brick', tint: '#96523e'},
     {name: 'glass', rgb: [60, 70, 80], materialSlot: 'glass', tint: '#3c4650'}]};
   const lines = [0, 3.5, 7, 10], box = {u0: 0, u1: 10, v0: 0, v1: 10};
-  const m = modelElevation(soup, {o: [0, 0, 0], r: [1, 0, 0], n: [0, 0, 1], uMin: 0, uMax: 10}, box, lines, 0.1);
+  const panel = {o: [0, 0, 0], r: [1, 0, 0], n: [0, 0, 1], uMin: 0, uMax: 10}, m = modelElevation(soup, panel, box, lines, 0.1, undefined, 1.5, undefined, true);
   const at = (u: number, v: number) => m.mask[Math.floor((box.v1 - v) / 0.1) * m.cols + Math.floor(u / 0.1)];
   assert.equal(at(7, 4.0), MASK.trim, 'parapet glass');
   assert.equal(at(2, 5.5), MASK.dark, 'window');
@@ -30,4 +30,6 @@ test('modelElevation: proud parapet glass in the rail zone is trim, recessed win
   assert.equal(at(7, 6.0), MASK.dark, 'proud glass above the rail zone');
   assert.equal(at(4, 8), MASK.wall, 'wall');
   assert.ok(PARAPET_GLASS.railM >= 1 && PARAPET_GLASS.proudM > 0);
+  // a group without balcony bands reads the same glass as glazing (byte-identical likeness for every other group)
+  assert.equal(modelElevation(soup, panel, box, lines, 0.1).mask[Math.floor((box.v1 - 4.0) / 0.1) * m.cols + 70], MASK.dark, 'no parapets without balcony bands');
 });
