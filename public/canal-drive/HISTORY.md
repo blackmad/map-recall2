@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Tunnel cuts round 3 (2026-10-30).**
+- Merged median gaps (at least 1.5 m) are draped as park at the trench floor.
+- Walls get a darker foot, a bright coping strip, a thicker parapet and a
+  gutter line.
+- Motor ramps search for walls up to 10 m out and step past low islands.
+- The portal roof sits where the relief first steps up within 40 m (Piet Hein
+  east under the sun screen).
+- Walled and open stations smooth separately, which removes the IJ east
+  coping wave.
+- Coverage: sunken motor approaches cut, 51/59 (49 before); motor mouths, 52
+  (43 before).
+- On the phone frame the IJ walls still read faintly (r3-phone shots).
+
 **`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
 engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
 canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a

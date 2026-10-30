@@ -2144,15 +2144,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after round 2).**
-  - On the phone frame the walls are still faint (the cut reads through the mouths and the coping), and a small wave remains in the IJ east coping.
-  - The merged median wedges sit in the trench but are drawn in the pale ground colour, not grass.
-  - Motor approaches still missed (10 of 59):
-    - Piet Hein east (sun screen and steel truss over the carriageways);
-    - Michiel de Ruijter west (mouth under the IJsei bus-station roof);
-    - the Kruislaan car underpass, a motorway link, Stationsweg;
-    - six service ramps in Noord.
-  - Phone shots are not re-shot after round 2's final fixes; run `PHONE=1 node scripts/tunnel-places-shots.mjs`.
+- **Tunnel cuts: follow-ups (2026-10-30, after round 3).**
+  - Phone-frame walls are still faint at the IJ ramp after round 3's coping and gutter line; the cut reads through the mouths. It may need a wall shadow or AO, not more colour.
+  - The IJ median wedge still looks pale on the phone, despite the park drape.
+  - Motor approaches still uncut (8/59), with reasons in `probe-portal-misses.ts`:
+    - Michiel de Ruijter west has no mouth (the DTM reads under the IJsei deck; it needs a structure layer);
+    - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
+  - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
