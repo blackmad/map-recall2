@@ -23,6 +23,7 @@
 import {LIKENESS} from './likeness.ts';
 import {rgbToLab} from './measureFacade.ts';
 import type {LargeSystemName} from '../blockBuilding/systems.ts';
+import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from './intent.ts';
 
 /** measure.ts's glass test (since 2026-10-14): glass is at least this many L* darker than the wall ... */
 export const GLASS_MIN_DL = 10;
@@ -140,4 +141,28 @@ export function windowGroupProposal(m: WindowGroupInputs): {windowGroup: {count:
   if (m.foliage > LIKENESS.maxFoliage) why.push(`foliage ${Math.round(m.foliage * 100)} % > ${LIKENESS.maxFoliage * 100} %`);
   if (m.washedOut > LIKENESS.maxWashedOut) why.push(`washed out ${Math.round(m.washedOut * 100)} % > ${LIKENESS.maxWashedOut * 100} %`);
   return {windowGroup: why.length ? null : {count: n}, why};
+}
+
+/** JSON with sorted keys, for comparing intents and wall groups regardless of key order. */
+export const stableJson = (v: unknown): string => JSON.stringify(v, (_k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x));
+
+/**
+ * Idempotence (GitHub #127): a group measured before from the same crops, whose proposal changes nothing but the window
+ * shape, keeps the shape it has. The shape is the one field `--write` does not take from the photo alone: the glazing
+ * loop (refineGlazing) rescales it against the compiled model, and the photo grid it starts from is read at the shift
+ * that best fits the current model, so a second run on an already measured intent refolded and re-refined it and drifted
+ * (Pilotenstraat 103794 walls[2]: 0.817x0.525 PASS -> 0.77x0.592 FAIL, glazing 0.39 -> 0.43 vs photo 0.41).
+ * `sources` are the intent's sources, `crops` the group's crop sources this run (measure.ts cropSources).
+ */
+export function settledShape(w: LargeWallIntent, patch: Partial<LargeWallIntent>, o: {measuredBefore: boolean; sources: readonly IntentSource[]; crops: readonly IntentSource[]}): boolean {
+  if (!o.measuredBefore || !w.windowShape || !patch.windowShape) return false;
+  if (!o.crops.length || !o.crops.every(c => o.sources.some(s => s.id === c.id && (s.sha256 ?? null) === (c.sha256 ?? null)))) return false;
+  const {windowShape: _shape, ...rest} = patch;
+  return stableJson({...w, ...rest}) === stableJson(w);
+}
+
+/** True when `next` is `prev` except for the measurement record: measured.date and the "Measured" note (which lists what a run changed, so a second run that changes nothing words it differently). */
+export function sameMeasuredIntent(prev: LargeBuildingIntent, next: LargeBuildingIntent): boolean {
+  const norm = (i: LargeBuildingIntent) => stableJson({...i, measured: i.measured ? {...i.measured, date: '-'} : undefined, notes: (i.notes ?? []).filter(t => !t.startsWith('Measured '))});
+  return norm(prev) === norm(next);
 }

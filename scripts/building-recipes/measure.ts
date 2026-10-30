@@ -1,7 +1,7 @@
 /**
  * Measure a `kind: large` house's photographed wall groups and (with --write) put the measurements into its intent.
  *
- *   MAP_RECALL_SOURCE_DATA=<checkout> node --import tsx scripts/building-recipes/measure.ts --house=<id>[,<id>] [--write] [--no-system] [--no-bays]
+ *   MAP_RECALL_SOURCE_DATA=<checkout> node --import tsx scripts/building-recipes/measure.ts --house=<id>[,<id>] [--write] [--no-system] [--no-bays] [--balcony-spans]
  *
  * Needs the archived crops (`all-walls.ts --pand=<pand> --archive --min-len=8 --max=12`). Compiles the house as it is
  * (large.ts `compileLargeHouse`: GLB, gates, likeness), pairs each group's main panel with a crop (cropToPanel.ts),
@@ -42,10 +42,10 @@ import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
-import {bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
+import {balconySpansProposal, bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
@@ -62,6 +62,10 @@ export interface ProposeOpts {
   rows?: Record<number, {widthM: number; roof: number[]}>;
   /** false for a building with `layeredKit: false` (no floor bands there) */
   layered?: boolean;
+  /** `--balcony-spans` (opt-in, #127): propose part-width balcony bands from the light parapet runs (bandFronts
+   *  `balconySpansProposal`) on ribbon fronts. Off by default: on Dulcie Septemberpad 242968 walls[1] the runs miss the
+   *  first balcony row and read the top storey's parapet, so the review turn checks them against the photo first. */
+  balconySpans?: boolean;
 }
 
 /** The system a group's front class proposes and, for a curtain class, why it is not trusted (`curtainEvidence`). */
@@ -117,6 +121,12 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     if (band.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies) { patch.balconyBands = band.balconyBands; notes.push(band.why[1]); }
   } else if (band?.glazedStoreys && w.glazedStoreys === undefined && !hand.has('glazedStoreys') && ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(system)) {
     patch.glazedStoreys = band.glazedStoreys; notes.push(`glazedStoreys ${band.glazedStoreys.join(',')}: ${band.why[0]}`);
+  }
+  // part-width (staggered) balcony bands from light parapet runs on the floor lines (bandFronts `balconySpansProposal`, #127)
+  if (opts.balconySpans && !patch.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies && !maskDistrusted && system === 'ribbon-windows') {
+    const bays = (opts.bays && !hand.has('baysPerStorey') && w.alignWith === undefined ? photoBays({measuredBays: m.bays, measuredWindow: m.window, gridColumns: L.columns.photo, gridWindow: L.photoGrid?.window}).bays : null) ?? w.baysPerStorey ?? null;
+    const sp = balconySpansProposal({runs: m.lightRuns, bays, storeys: storeyCount, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut, taken});
+    if (sp.balconyBands) { patch.balconyBands = sp.balconyBands; notes.push(sp.why[0]); }
   }
   // a row of separate houses (rowSplit `proposeHouses`, only on clear joints): replaces a two-colour split
   const row = opts.rows?.[g.group], rowFree = !w.houses && !hand.has('houses') && !hand.has('palette.brick') && !hand.has('palette') && ['brick-bay-grid', 'plinth-shopfronts'].includes(system)
@@ -196,13 +206,13 @@ export function groupGaps(w: LargeWallIntent, g: GroupLikeness): {kit: string[];
  * windowShape (width by photo / model, height only for what the width range cannot take, sill kept) until within 0.05, at most three rounds. Groups with
  * `windowShape` in `hand`, without a measured shape, or without evidence are left alone.
  */
-async function refineGlazing(id: string, file: string) {
+async function refineGlazing(id: string, file: string, keep: ReadonlySet<number> = new Set()) {
   for (let round = 1; round <= 3; round++) {
     const {likeness} = await compileLargeHouse(id), intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8'));
     let changed = 0;
     for (const g of likeness ?? []) {
       const w = intent.walls[g.group], L = g.likeness;
-      if (!L || L.verdict === 'NO EVIDENCE' || !w.windowShape || w.hand?.includes('windowShape') || !intent.measured?.groups.includes(g.group)) continue;
+      if (!L || L.verdict === 'NO EVIDENCE' || !w.windowShape || w.hand?.includes('windowShape') || !intent.measured?.groups.includes(g.group) || keep.has(g.group)) continue;
       const p = L.glazing.photoMean, m = L.glazing.modelMean;
       if (m < 0.02 || Math.abs(p - m) <= 0.05) continue;
       // width first (the storey lines fix the folded height better than the bay pitch fixes the width); height only for
@@ -250,7 +260,7 @@ async function capDraftBudget(id: string, file: string) {
   console.log(`  budget: ${total} > ${budget}: blanked groups ${blank.join(', ') || 'none'}${over ? `, still ${over} over` : ''}`);
 }
 
-export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string}) {
+export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string; balconySpans?: boolean}) {
   requireSourceData();
   const {likeness, report, built} = await compileLargeHouse(id);
   if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
@@ -291,9 +301,11 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   // row split evidence: the 3DBAG roof steps behind each measured group's main panel
   const rows: NonNullable<ProposeOpts['rows']> = {};
   for (const g of likeness) { const p = built.panels[g.panel]; if (p) rows[g.group] = {widthM: p.uMax - p.uMin, roof: roofSteps(roofProfile(built.facts.roofsRD, built.facts.heights.groundNAP, built.anchorRD, p))}; }
+  const before: LargeBuildingIntent = structuredClone(intent), keepShape = new Set<number>();
   for (const g of likeness) {
     const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, layered: intent.layeredKit !== false, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
     if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
+    if (settledShape(w, patch, {measuredBefore: !!before.measured?.groups.includes(g.group), sources: before.sources, crops: cropSources(g)})) { delete patch.windowShape; keepShape.add(g.group); }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
     for (const src of cropSources(g)) if (!sources.some(s => s.id === src.id)) sources.push(src);
   }
@@ -317,9 +329,11 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
     intent.measured = {date: today(), groups: [...measuredGroups, ...kept].sort((a, b) => a - b), ...(inherited ? {otherWalls: true} : {})};
     intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Measured ')), `Measured ${today()} (measure.ts, evidence in measured.json): groups ${measuredGroups.join(', ')} take the photo's wall and glass colour, window shape, bay count and front class${notes.length ? '; ' + notes.join('; ') : ''}.`];
     validateLargeIntent(intent);
+    // a second run on the same crops and intent writes nothing (GitHub #127): not even the date
+    if (sameMeasuredIntent(before, intent)) { console.log(`  unchanged: groups ${measuredGroups.join(', ')} measured from the same crops, intent left as it is`); return out; }
     await fs.writeFile(file, JSON.stringify(intent, null, 1));
-    console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}`);
-    await refineGlazing(id, file);
+    console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}${keepShape.size ? ` (window shape kept on ${[...keepShape].join(', ')}: measured before from the same crops)` : ''}`);
+    await refineGlazing(id, file, keepShape);
     if (isDraftIntent(intent)) await capDraftBudget(id, file);
   }
   return out;
@@ -331,6 +345,6 @@ if (process.argv[1]?.endsWith('building-recipes/measure.ts')) {
   try {
     const measuredOut = process.argv.find(a => a.startsWith('--measured-out='))?.slice(15);
     if (measuredOut && ids.length > 1) throw Error('--measured-out takes one --house');
-    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug'), measuredFile: measuredOut}); }
+    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug'), measuredFile: measuredOut, balconySpans: process.argv.includes('--balcony-spans')}); }
   } finally { await closeRenderer(); }
 }

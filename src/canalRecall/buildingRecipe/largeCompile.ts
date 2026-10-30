@@ -164,7 +164,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Closed box balconies on their listed (storey, bay) cells (Pepper); absent, nothing is drawn.
   if (g.boxBalconies && g.mainPanel === p.index) { const k = drawBoxBalconies(c, levels, g.boxBalconies, g.bays, underCornice); if (k) counts.boxBalconies = (counts.boxBalconies ?? 0) + k; }
   // Balcony bands: one slab and parapet per listed storey across every panel of the group, in front of the rows; absent, nothing is drawn.
-  if (g.balconyBands && p.uMax - p.uMin >= 2) { const k = drawBalconyBands(c, levels, g.balconyBands, underCornice); if (k) counts.balconyBands = (counts.balconyBands ?? 0) + k; }
+  if (g.balconyBands && p.uMax - p.uMin >= 2) { const k = drawBalconyBands(c, levels, g.balconyBands, underCornice, g.mainPanel === p.index ? g.bays : undefined); if (k) counts.balconyBands = (counts.balconyBands ?? 0) + k; }
   // Stacked offset blocks and their recessed balconies, storey by storey (Blend); absent, nothing is drawn.
   if (g.stackedBlocks && g.mainPanel === p.index) {
     const k = drawStackedBlocks(c, levels, g.stackedBlocks, g.bays, underCornice);
