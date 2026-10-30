@@ -80,6 +80,20 @@ for (const f of parts) {
   for (const dir of Object.keys(missing)) if (!idsIn(dir, key).has(f.properties.id)) missing[dir].push(f.properties.id);
 }
 if (!parts.some(f => f.properties.id.startsWith('part:NL.IMBAG.Pand.0363100012145715:'))) problems.push('Amstel station: no roof parts drawn (run scripts/fill-over-road-holes.ts --write)');
+// Drawn pands over untagged streets (over-road-pands.json): parts only, the whole outline gone; Ankerweg's shed stays on the ground.
+const drawnPands = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/over-road-pands.json'), 'utf8')) as Record<string, string>;
+for (const [id, why] of Object.entries(drawnPands)) {
+  const street = why.split(' (')[0];
+  const own = parts.filter(f => f.properties.id.startsWith(`part:${id}:`));
+  if (!own.length) { problems.push(`${street}: ${id} has no roof parts (run scripts/fill-over-road-holes.ts --write)`); continue; }
+  for (const f of own) {
+    const r = f.geometry.coordinates[0] as number[][];
+    const key = tileKey(tileFor(r[0][0], r[0][1], 14));
+    for (const dir of Object.keys(missing)) if (idsIn(dir, key).has(id)) problems.push(`${street}: whole ${id} still in ${dir} ${key}`);
+  }
+}
+const ankerweg = parts.filter(f => f.properties.id.startsWith('part:NL.IMBAG.Pand.0363100012255036:'));
+if (!ankerweg.some(f => !f.properties.minHeight)) problems.push('Ankerweg: the warehouse is all deck; only the road strip should be lifted');
 for (const [dir, ids] of Object.entries(missing)) if (ids.length) problems.push(`${ids.length}/${fills.length} fills not in ${dir} (${ids.slice(0, 4).join(', ')}${ids.length > 4 ? ', ...' : ''}): run \`node --import tsx scripts/publish-bag-gaps.ts --write\``);
 console.log(`bag-gaps: survey ${report.holes} holes, ${fills.length} fills; named ${NAMED.length}; ${problems.length} problems`);
 for (const p of problems) console.log(`  FAIL ${p}`);
