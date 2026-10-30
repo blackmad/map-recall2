@@ -326,6 +326,13 @@ export function placeLantern(facts: BuildingFacts, anchorRD: [number, number], p
   return {centre: [r3(c[0]), r3(c[1])], baseY: r3(Math.min(...hs) - 0.1), topY: r3(Math.max(best.h, ...hs) + LANTERN.riseM), size: LANTERN.sizeM, angleRad: +Math.atan2(p.r[2], p.r[0]).toFixed(6)};
 }
 
+/** The 3DBAG shell (1-based) of each surface-set wall: multi-shell pands number each shell's surfaces from 1 in facts order, so a surface index not above the previous one starts the next shell. */
+export function shellOfWalls(walls: readonly {surface?: number}[]): number[] {
+  const out: number[] = [];
+  walls.forEach((w, wi) => out.push(wi === 0 ? 1 : out[wi - 1] + (w.surface! <= walls[wi - 1].surface! ? 1 : 0)));
+  return out;
+}
+
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
 export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport} {
   const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
@@ -350,8 +357,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   // that shell only. Without `shell` anywhere, every wall takes its surface's group as before (byte-identical).
   const byShell = intent.walls.some(w => w.shell !== undefined);
   if (byShell && set.walls.length !== facts.wallsRD!.length) throw Error(`${intent.id}: walls[].shell needs every LoD2.2 wall in the surface set (not with groundClamp dropping walls)`);
-  const shellOf: number[] = [];
-  set.walls.forEach((w, wi) => shellOf.push(wi === 0 ? 1 : shellOf[wi - 1] + (w.surface! <= set.walls[wi - 1].surface! ? 1 : 0)));
+  const shellOf = shellOfWalls(set.walls);
   const groupOfWall = set.walls.map((w, wi) => {
     if (!byShell) return groupOfSurface.get(w.surface!);
     let g: number | undefined;

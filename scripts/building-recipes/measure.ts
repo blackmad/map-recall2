@@ -42,7 +42,7 @@ import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
 import {bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
@@ -196,13 +196,13 @@ export function groupGaps(w: LargeWallIntent, g: GroupLikeness): {kit: string[];
  * windowShape (width by photo / model, height only for what the width range cannot take, sill kept) until within 0.05, at most three rounds. Groups with
  * `windowShape` in `hand`, without a measured shape, or without evidence are left alone.
  */
-async function refineGlazing(id: string, file: string) {
+async function refineGlazing(id: string, file: string, keep: ReadonlySet<number> = new Set()) {
   for (let round = 1; round <= 3; round++) {
     const {likeness} = await compileLargeHouse(id), intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8'));
     let changed = 0;
     for (const g of likeness ?? []) {
       const w = intent.walls[g.group], L = g.likeness;
-      if (!L || L.verdict === 'NO EVIDENCE' || !w.windowShape || w.hand?.includes('windowShape') || !intent.measured?.groups.includes(g.group)) continue;
+      if (!L || L.verdict === 'NO EVIDENCE' || !w.windowShape || w.hand?.includes('windowShape') || !intent.measured?.groups.includes(g.group) || keep.has(g.group)) continue;
       const p = L.glazing.photoMean, m = L.glazing.modelMean;
       if (m < 0.02 || Math.abs(p - m) <= 0.05) continue;
       // width first (the storey lines fix the folded height better than the bay pitch fixes the width); height only for
@@ -291,9 +291,11 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   // row split evidence: the 3DBAG roof steps behind each measured group's main panel
   const rows: NonNullable<ProposeOpts['rows']> = {};
   for (const g of likeness) { const p = built.panels[g.panel]; if (p) rows[g.group] = {widthM: p.uMax - p.uMin, roof: roofSteps(roofProfile(built.facts.roofsRD, built.facts.heights.groundNAP, built.anchorRD, p))}; }
+  const before: LargeBuildingIntent = structuredClone(intent), keepShape = new Set<number>();
   for (const g of likeness) {
     const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, layered: intent.layeredKit !== false, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
     if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
+    if (settledShape(w, patch, {measuredBefore: !!before.measured?.groups.includes(g.group), sources: before.sources, crops: cropSources(g)})) { delete patch.windowShape; keepShape.add(g.group); }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
     for (const src of cropSources(g)) if (!sources.some(s => s.id === src.id)) sources.push(src);
   }
@@ -317,9 +319,11 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
     intent.measured = {date: today(), groups: [...measuredGroups, ...kept].sort((a, b) => a - b), ...(inherited ? {otherWalls: true} : {})};
     intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Measured ')), `Measured ${today()} (measure.ts, evidence in measured.json): groups ${measuredGroups.join(', ')} take the photo's wall and glass colour, window shape, bay count and front class${notes.length ? '; ' + notes.join('; ') : ''}.`];
     validateLargeIntent(intent);
+    // a second run on the same crops and intent writes nothing (GitHub #127): not even the date
+    if (sameMeasuredIntent(before, intent)) { console.log(`  unchanged: groups ${measuredGroups.join(', ')} measured from the same crops, intent left as it is`); return out; }
     await fs.writeFile(file, JSON.stringify(intent, null, 1));
-    console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}`);
-    await refineGlazing(id, file);
+    console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}${keepShape.size ? ` (window shape kept on ${[...keepShape].join(', ')}: measured before from the same crops)` : ''}`);
+    await refineGlazing(id, file, keepShape);
     if (isDraftIntent(intent)) await capDraftBudget(id, file);
   }
   return out;
