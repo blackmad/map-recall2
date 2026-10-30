@@ -73,6 +73,41 @@ cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
+**Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. Follow-ups:
+the review sheet's IN GAME column times out for every lane
+(`review-sheet.ts` waits on `vectorMap._signatureLandmarks.shown`, which
+the engine programme's frame may no longer fill) and the gallery-card
+capture finds no canvas on `manual-landmarks.html` within 30 s; both are the
+lane issue filed with De Roos. Then capture De Roos from the Vondelpark side
+and the P.C. Hooftstraat for the note, consider a POI or destination for it,
+run a blind counter on `de-roos-elevations.json`, and add a "free-standing
+glazing" class to audit:glb so serres and timber screens are not fitted to
+the ochre and green slots to dodge the opening count.
+
+**City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
+the city look (HISTORY "City look re-levelled; flip pending"); source and
+bundles are on main with the flag still off. A = flip on at level 1 (chunks
+match today, landmarks +14 % brighter at card size), B = level 0.85
+(landmarks within ±2 %, chunks dour), C = keep off. On A or B the integrator
+flips `cityLookEnabled` to default on with `?cityLook=0` as opt-out, rebuilds
+the four bundles, and writes the What's New note with the strip. Follow-ups
+regardless (#138 landed, HISTORY "Builder-declared material slots"): a
+`timber` and a `metalRoof` slot (houseboat museum, Hannekes Boom, Vondeltuin,
+Hotel Jakarta, Odessa; Ronde Lutherse dome, American Hotel copper), a
+warm-grey roofTile keeping its tone instead of the black-tile slate tone
+(Uilenburger), evidence for Podium Mozaïek / He Hua / Centrale Markthal /
+Symphony / Haparandaweg cladding, dropping the `materialSlotSource:
+'inferred'` marker on tagged materials once the flip is decided, a
+base-vs-base look-consistency control run when the browser lock is quiet,
+iPhone perf with the slot array at 128², and the missing bagYears (values
+in the #138 hand-back: olvg-west 1966, olvg-oost 1900, max-euwe-centrum
+1905, academie-theater-dans 1996, jodenbreestraat-11 1996, begijnhof 1697,
+europarking-marnixstraat 1972; `landmark-bag-years.ts` writes to staging
+only, and olvg-west/oost have no manualCatalogue entry). Note:
+`build-manual-landmarks.ts` changed, so its toolchain hash moved and the
+next full builder run re-exports every model.
+
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
 `docs/handoffs/slop-newyork-plan-20261029.md`, evidence
@@ -327,14 +362,16 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
-  **Zebras and the Muntplein (user 2026-10-30 screenshots)**: lane
-  `lane/zebra-munt-20261030` (opus), running. Zebras by Arcam (Prins
-  Hendrikkade × Kattenburgerstraat) break into pieces at every BGT polygon
-  edge; 45 crossings in cell 0_0 dropped on cycle lanes; the crossing audit
-  measures against the clipped polygon, so it passes them. Muntplein: water
-  through the bridge road, a brown klinker band, the tram wye reads as
-  wireframe, 3 of 5 zebras drawn. City-wide rule plus a new `short` audit
-  category; both spots pinned as regressions.
+  **Zebras and the Muntplein, left open** (shipped 2026-10-30, HISTORY
+  "Continuous zebras"): the Muntplein S zebra is planned along its stripes
+  instead of across them (surveyMarkings orient/roadDirOf at that node), so
+  evidence cannot confirm it; zebras wider than 4 m (Muntplein S is ~8–10 m);
+  faint zebras in deep shadow can drop; 604 `short` rows remain (island
+  breaks, nodes on one lane of a dual carriageway; +2 at 4.8364,52.3515 since
+  road look B, not investigated); the Muntplein klinker band (road look tone);
+  7 BRU0001 parapet posts remain. Game frames for the Arcam/Muntplein spots
+  with the new evidence were never shot (Playwright lock); shoot them on the
+  next ride review.
   **Road look, continuity, left open** (shipped 2026-10-30 as look B, HISTORY
   "Road look continuity"): the kerb edge is under 1.5 px on desktop at far
   junctions (an `fwidth` ground-shader edge was not prototyped); the east kerb
@@ -2154,15 +2191,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after round 2).**
-  - On the phone frame the walls are still faint (the cut reads through the mouths and the coping), and a small wave remains in the IJ east coping.
-  - The merged median wedges sit in the trench but are drawn in the pale ground colour, not grass.
-  - Motor approaches still missed (10 of 59):
-    - Piet Hein east (sun screen and steel truss over the carriageways);
-    - Michiel de Ruijter west (mouth under the IJsei bus-station roof);
-    - the Kruislaan car underpass, a motorway link, Stationsweg;
-    - six service ramps in Noord.
-  - Phone shots are not re-shot after round 2's final fixes; run `PHONE=1 node scripts/tunnel-places-shots.mjs`.
+- **Tunnel cuts: follow-ups (2026-10-30, after round 3).**
+  - Phone-frame walls are still faint at the IJ ramp after round 3's coping and gutter line; the cut reads through the mouths. It may need a wall shadow or AO, not more colour.
+  - The IJ median wedge still looks pale on the phone, despite the park drape.
+  - Motor approaches still uncut (8/59), with reasons in `probe-portal-misses.ts`:
+    - Michiel de Ruijter west has no mouth (the DTM reads under the IJsei deck; it needs a structure layer);
+    - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
+  - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
@@ -3503,11 +3538,13 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
-- **Re-measure the guessed heights when AHN5 is on PDOK (2026-10-30).**
-  171 OSM outlines AHN4 sees as flat stay at the 9 m guess, and outlines OSM
-  dates after 2019 keep the new-build rules' guess
-  (`scripts/measure-guessed-heights.ts`). New mixed gap fills from a survey
-  re-run go through `scripts/split-mixed-gap-fills.ts`.
+- **OSM outlines with nothing standing (2026-10-30).** AHN4 and AHN5 both
+  see bare ground under some OSM-only outlines, now drawn as 1 m slabs
+  (`source: "low"` in `scripts/data/osm-guessed-heights.json`). Examples are
+  a cleared lot (`w1343730490`), a paved yard (`w540078369`) and the
+  Romneyloods site (`w531438245`). Check them and delete them in OSM. The
+  3,179 outlines that keep a guess are mostly 2023+ new builds: re-run
+  `scripts/measure-guessed-heights.ts` when an AHN flight after 2023 is out.
 - **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
   paint and look from the orthophoto.** Surveyed roads draw no procedural
   paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural

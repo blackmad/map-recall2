@@ -15,6 +15,7 @@ export const PLACES = {
   'ij-tunnel-south': [4.9112, 52.3713, 25],              // Prins Hendrikkade by the Foeliestraat, looking up the ramp
   'ij-tunnel-portal-quay': [4.91285, 52.37270, 345],     // the quay path east of the ramp, toward the portal
   'piet-heintunnel-west': [4.93455, 52.37290, 100],     // beside the west ramp on the Piet Heinkade, looking east to the portal
+  'piet-heintunnel-east': [4.95900, 52.37260, 300],     // the south carriageway of the east ramp, toward the sun-screen portal
   'spaarndammertunnel-west': [4.8728, 52.3937, 110],
   'michiel-de-ruijtertunnel-west': [4.8962, 52.3812, 120],
   // B: rideable underpasses

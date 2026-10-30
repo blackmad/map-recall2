@@ -16,7 +16,7 @@ const PAD = 60;
 export interface CellCrossings { key: string; rect: [number, number, number, number]; ways: LocalWay[]; own: Set<number>; marks: readonly RoadMark[]; index: RoadIndex; crossings: DrawnCrossing[]; /** How the crossing candidates of the neighbourhood were planned (absent from the old generator). */ plan?: CrossingPlanStats }
 
 /** `build`: the markings generator (the audit's before run passes the old one). */
-export async function cellCrossings(store: GroundStore, key: string, build: typeof buildSurveyMarkings = buildSurveyMarkings, strips = true): Promise<CellCrossings | null> {
+export async function cellCrossings(store: GroundStore, key: string, build: typeof buildSurveyMarkings = buildSurveyMarkings, strips = true, evidence = false): Promise<CellCrossings | null> {
   const input = await store.cellInput(key, 0);
   if (!input.roads && !input.roadsAround?.some(r => r?.surfaces.length)) return null;
   const [x0, y0, x1, y1] = input.rect;
@@ -32,7 +32,7 @@ export async function cellCrossings(store: GroundStore, key: string, build: type
   if (strips) index.crossingStrips(crossingStripPoints(ways, marks));
   index.prepareFast([x0 - PAD, y0 - PAD, x1 + PAD, y1 + PAD]);
   const inCell = (p: Vec2) => p[0] >= x0 && p[0] < x1 && p[1] >= y0 && p[1] < y1;
-  const mk = build({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks, box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index, height: () => 0, lift: { paint: 0, red: 0 } });
+  const mk = build({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks, box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index, height: () => 0, lift: { paint: 0, red: 0 }, ...(evidence && input.evidence ? { evidence: input.evidence } : {}) });
   return { key, rect: [x0, y0, x1, y1], ways, own, marks, index, crossings: mk.crossings, plan: (mk as { plan?: CrossingPlanStats }).plan };
 }
 
@@ -42,13 +42,25 @@ export const exactGround = (index: RoadIndex): GroundAt => (x, y) => {
   return k === undefined ? null : { cls: index.drawClass(k), mesh: index.mesh(k) };
 };
 
-/** The direction of the nearest carriageway way within 3 m (its chord over ±4 m), for the audit's skew test. */
+/**
+ * The direction of the nearest carriageway way within 3 m (its chord over ±4 m), for the audit's skew test; where there
+ * is none, the nearest cycle path's within 1 m (a zebra across a fietspad runs along the path: lane zebra-munt 2026-10-30).
+ */
 export function roadDirOf(ways: readonly LocalWay[]): (p: Vec2) => Vec2 | null {
-  const grid = new SegGrid<LocalWay>(8);
-  for (const w of ways) if (w.section.bands[0]?.kind === 'carriageway' && (!w.tags.bridge || w.tags.bridge === 'no')) for (let i = 0; i + 1 < w.points.length; i++) grid.add(w.points[i], w.points[i + 1], w, 3);
-  return p => {
+  const grid = new SegGrid<LocalWay>(8), cycles = new SegGrid<LocalWay>(8);
+  const isCycle = (w: LocalWay) => w.tags.highway === 'cycleway' || (w.tags.highway === 'path' && w.tags.bicycle === 'designated');
+  for (const w of ways) {
+    if (w.tags.bridge && w.tags.bridge !== 'no') continue;
+    const g = w.section.bands[0]?.kind === 'carriageway' ? grid : isCycle(w) ? cycles : null;
+    if (g) for (let i = 0; i + 1 < w.points.length; i++) g.add(w.points[i], w.points[i + 1], w, 3);
+  }
+  const nearest = (g: SegGrid<LocalWay>, p: Vec2, within: number) => {
     let best: { w: LocalWay; d: number } | null = null;
-    for (const s of grid.near(p)) { const d = segDist(p, s.a, s.b); if (d <= 3 && (!best || d < best.d)) best = { w: s.item, d }; }
+    for (const s of g.near(p)) { const d = segDist(p, s.a, s.b); if (d <= within && (!best || d < best.d)) best = { w: s.item, d }; }
+    return best;
+  };
+  return p => {
+    const best = nearest(grid, p, 3) ?? nearest(cycles, p, 1);
     return best ? wayDirAt(best.w.points, p) : null;
   };
 }

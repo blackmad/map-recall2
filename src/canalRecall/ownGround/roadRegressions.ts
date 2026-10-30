@@ -246,8 +246,8 @@ export function zebraOffRoad(cells: readonly BuiltCell[], ways: readonly LocalWa
 /**
  * Road look v2 (2026-10-16, user: "our roads still don't look great"): the survey-aware markings (surveyMarkings.ts)
  * lie on ground carriageway polygons only, and the named junctions carry them. Within `radiusM` of `at` every paint
- * triangle's centroid must lie on a carriageway polygon (class carriage; a parking bay, inrit, cycle path or pavement
- * fails), and at least `minPaint` paint triangles must be there (the Nassaukade / Frederik Hendrikplantsoen zebras,
+ * triangle's centroid must lie on a road-level polygon (carriage, parking, cycle: zebras run across the fietspad and the
+ * parking strip since lane zebra-munt 2026-10-30; an inrit, island or pavement fails), and at least `minPaint` paint triangles must be there (the Nassaukade / Frederik Hendrikplantsoen zebras,
  * OSM crossing nodes with crossing:markings=zebra and crossing:signals=yes). The Bilderdijkgracht crossings and the
  * Marnixstraat busway were where the prior-based band paint shredded across pavements and the island.
  */
@@ -288,10 +288,14 @@ export function surveyPaint(cells: readonly BuiltCell[], centre: [number, number
  *    the Paleisstraat (a highway=cycleway on BGT rijbaan) zebra was dropped as a cycle crossing.
  *  - Leidseplein: BGT maps the zebras as voetpad strips across the road; they drew as raised pavement without stripes.
  */
-export interface CrossingRegression { id: string; label: string; at: [number, number]; radiusM: number; count: [number, number] }
+export interface CrossingRegression { id: string; label: string; at: [number, number]; radiusM: number; count: [number, number]; /** With zebras clipped to the carriageway class alone (main before lane zebra-munt) at least this many are `short` (the pin is live). */ pinShort?: number }
 export const CROSSINGS: CrossingRegression[] = [
   { id: 'magna-plaza-raadhuisstraat', label: 'Raadhuisstraat × Nieuwezijds Voorburgwal by Magna Plaza: the north lane zebra alone, no fan over the tram junction', at: [4.89032, 52.37318], radiusM: 12, count: [1, 1] },
   { id: 'nzvoorburgwal-dam-south', label: 'Nieuwezijds Voorburgwal × Dam (south) and the Paleisstraat: one zebra per crossing, not three interleaved', at: [4.89067, 52.37251], radiusM: 16, count: [2, 2] },
+  // User 2026-10-30 (artifacts/zebra-munt/user-arcam-zebras.png, "why do we still have these broken zebras?"): the
+  // Prins Hendrikkade crossing east of the Kattenburgerstraat by Arcam. The photo's zebra runs across the fietspad and
+  // both carriageways; clipped to the carriageway class it stopped at the fietspad and at BGT's voetpad strips.
+  { id: 'prins-hendrikkade-arcam-east', label: 'Prins Hendrikkade by Arcam (east crossing): one row over the fietspad and the lanes', at: [4.91290, 52.37095], radiusM: 12, count: [1, 3], pinShort: 1 },
   { id: 'leidseplein-voetpad-strips', label: 'Leidseplein: zebras on the BGT voetpad strips across the road', at: [4.8822, 52.3638], radiusM: 40, count: [3, 8] },
 ];
 
@@ -466,6 +470,30 @@ export function deckEndMisses(cells: readonly BuiltCell[], deck: DeckLine, offse
 }
 
 /**
+ * Surveyed ground over mapped water (user 2026-10-30 at the Muntplein: "what is happening with the roads here", blue
+ * water patches through the klinker by the Muntsluis). The Muntplein is one wide bridge over the Singel that BGT maps
+ * as ground road; the measured deck is a 7 m strip and the water mask cut every road triangle beside it (wetGround.ts).
+ * Within `radiusM` of `at`, on a 1 m grid, every point under a BGT ground polygon (h = 0) must show a surface: at most
+ * `maxWater` show only the water (topAcross 'none'); `pinMin`: with the wet-ground rule off at least this many (the pin is live).
+ */
+export interface WetDeckRegression { id: string; label: string; at: [number, number]; radiusM: number; maxWater: number; pinMin: number; /** A measured deck inside the plein: fewer parapet posts than with the rule off (no parapet over the plein's covered water). */ deck?: string }
+export const WET_DECKS: WetDeckRegression[] = [
+  { id: 'muntplein-singel', label: 'Muntplein over the Singel by the Muntsluis: no water through the plein', at: [4.89361, 52.36707], radiusM: 12, maxWater: 3, pinMin: 40, deck: 'BRU0001' },
+];
+export function wetDeckWater(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, index: RoadIndex): { probes: number; water: [number, number][] } {
+  const water: [number, number][] = [];
+  let probes = 0;
+  for (let dx = -radiusM; dx <= radiusM; dx++) for (let dy = -radiusM; dy <= radiusM; dy++) {
+    if (dx * dx + dy * dy > radiusM * radiusM) continue;
+    const x = centre[0] + dx, y = centre[1] + dy;
+    if (!index.findAll(x, y).some(k => index.records[k].h === 0)) continue;
+    probes++;
+    if (topAcross(cells, x, y) === 'none') water.push([dx, dy]);
+  }
+  return { probes, water };
+}
+
+/**
  * Road spots judged beside the 8 cm PDOK orthophoto (lane roads-diagnose 2026-10-23; user: "our roads still look like
  * shit: too many weird gaps and strange paints and multiple lanes where people don't expect"). Each is a junction
  * centre (`at`, the OSM node the named ways share) with the bearing a rider looks along; scripts/own-ground/
@@ -499,6 +527,12 @@ export const ROAD_SPOTS: RoadSpot[] = [
   // User phone screenshot 2026-10-29 (IMG_1482, riding north on the Witte de Withstraat at the Van Kinsbergenstraat
   // tram stop by the An-Nour mosque): "the roads still look weird and half broken, why isn't the grey continuous?".
   { id: 'witte-de-withstraat-van-kinsbergenstraat', label: 'Witte de Withstraat × Van Kinsbergenstraat (An-Nour mosque, tram 7 stop, looking north)', at: [4.85930, 52.36880], bearing: 0, halfM: 45, backM: 30 },
+  // User 2026-10-30 (artifacts/zebra-munt/user-arcam-zebras.png): "why do we still have these broken zebras?", riding
+  // north-east on the Prins Hendrikkade into the Kattenburgerstraat junction by Arcam (lane zebra-munt).
+  { id: 'prins-hendrikkade-arcam', label: 'Prins Hendrikkade × Kattenburgerstraat by Arcam (zebras across every lane, looking north-east)', at: [4.9130, 52.37105], bearing: 35, halfM: 40, backM: 25 },
+  // User 2026-10-30 (artifacts/zebra-munt/user-muntplein.png): "what is happening with the roads here": the Muntplein, one
+  // klinker bridge over the Singel with trams across it, drew water through the deck, a brown band, stray rails, three zebras of five.
+  { id: 'muntplein', label: 'Muntplein over the Singel (Munttoren, looking north to the Rokin)', at: [4.8937, 52.3672], bearing: 335, halfM: 45, backM: 30 },
   { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */

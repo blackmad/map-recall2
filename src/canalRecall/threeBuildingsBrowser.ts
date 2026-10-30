@@ -536,8 +536,8 @@ export class ThreeBuildings {
     material.uniforms.masks.value = set.mask;
     material.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
     material.uniforms.flatColour.value = LOOK_VARIANTS[look].flatColour ? 1 : 0;
-    // Lit facades take the sunny look's wall exposure (look/sunny.ts litFacadeWallGain); the opt-in city look keeps its own.
-    if (material.uniforms.wallGain) material.uniforms.wallGain.value = this.cityLook ? LOOK_VARIANTS[look].litWallGain : litFacadeWallGain(LOOK_VARIANTS[look].litWallGain);
+    // Lit facades take the sunny look's wall exposure (look/sunny.ts litFacadeWallGain), in the city look too since its re-level (2026-10-30).
+    if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[look].litWallGain);
     this.material = material;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     if (this.cityLook) {
@@ -1513,7 +1513,7 @@ export class ThreeBuildings {
       // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
       const variant = LOOK_VARIANTS[this.look];
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
-        bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
+        bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) },
       }));
     }

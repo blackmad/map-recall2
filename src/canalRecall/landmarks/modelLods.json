@@ -1,4 +1,10 @@
 {
+ "de-roos": {
+  "sourceHash": "af0caa99560518f7",
+  "buildVersion": 2,
+  "bytes": 61884,
+  "triangles": 2646
+ },
  "centraal-station": {
   "sourceHash": "7e828db6c9d7e0ad",
   "buildVersion": 2,
@@ -126,9 +132,9 @@
   "triangles": 2930
  },
  "rem-eiland": {
-  "sourceHash": "dd10910cbb955e71",
+  "sourceHash": "00b0beaeb4309cbf",
   "buildVersion": 2,
-  "bytes": 20244,
+  "bytes": 20272,
   "triangles": 842
  },
  "paradiso": {
@@ -732,9 +738,9 @@
   "triangles": 4149
  },
  "faralda-crane-hotel": {
-  "sourceHash": "cd3eeab58417f6b7",
+  "sourceHash": "9f71e96b68a985c7",
   "buildVersion": 2,
-  "bytes": 25864,
+  "bytes": 25892,
   "triangles": 918
  },
  "ing-house": {
@@ -972,15 +978,15 @@
   "triangles": 732
  },
  "straat-museum": {
-  "sourceHash": "2887b5f7609ea716",
+  "sourceHash": "6b165e582965dd13",
   "buildVersion": 2,
-  "bytes": 35352,
+  "bytes": 35380,
   "triangles": 1385
  },
  "pllek": {
-  "sourceHash": "104dc0d341d99262",
+  "sourceHash": "8f3c171c4624ad43",
   "buildVersion": 2,
-  "bytes": 37876,
+  "bytes": 37932,
   "triangles": 1614
  },
  "vinoly": {
@@ -1146,9 +1152,9 @@
   "triangles": 3034
  },
  "uilenburger-synagoge": {
-  "sourceHash": "acfdfaa151a8b256",
+  "sourceHash": "6b3bb1b5c5dbafbb",
   "buildVersion": 2,
-  "bytes": 47980,
+  "bytes": 48012,
   "triangles": 1977
  },
  "nieuwendammerkerk": {
@@ -1320,9 +1326,9 @@
   "triangles": 2682
  },
  "sea-palace": {
-  "sourceHash": "fa063155a88b0892",
+  "sourceHash": "01ec05d62e9fdde5",
   "buildVersion": 2,
-  "bytes": 94808,
+  "bytes": 94836,
   "triangles": 4385
  },
  "de-school": {
@@ -1368,9 +1374,9 @@
   "triangles": 2164
  },
  "american-hotel": {
-  "sourceHash": "cf9c236f426dff47",
+  "sourceHash": "7794d31dd20983cf",
   "buildVersion": 2,
-  "bytes": 201872,
+  "bytes": 201960,
   "triangles": 11292
  },
  "hotel-de-l-europe": {
