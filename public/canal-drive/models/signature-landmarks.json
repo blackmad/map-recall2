@@ -444,7 +444,7 @@
         "depthCoverage": 1.1107405026753743
       },
       "triangles": 720,
-      "bytes": 15464,
+      "bytes": 15492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "royal-palace": {
@@ -2612,12 +2612,12 @@
         "depthCoverage": 1.0787999685965817
       },
       "triangles": 4792,
-      "bytes": 62368,
+      "bytes": 62396,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dd10910cbb955e71",
+        "sourceHash": "00b0beaeb4309cbf",
         "buildVersion": 2,
-        "bytes": 20244,
+        "bytes": 20272,
         "triangles": 842
       }
     },
@@ -11979,12 +11979,12 @@
         "depthCoverage": 1.0422836882061388
       },
       "triangles": 5896,
-      "bytes": 88180,
+      "bytes": 88208,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "cd3eeab58417f6b7",
+        "sourceHash": "9f71e96b68a985c7",
         "buildVersion": 2,
-        "bytes": 25864,
+        "bytes": 25892,
         "triangles": 918
       }
     },
@@ -15471,12 +15471,12 @@
         "depthCoverage": 0.9164511342966778
       },
       "triangles": 8660,
-      "bytes": 146388,
+      "bytes": 146444,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2887b5f7609ea716",
+        "sourceHash": "6b165e582965dd13",
         "buildVersion": 2,
-        "bytes": 35352,
+        "bytes": 35380,
         "triangles": 1385
       }
     },
@@ -15552,12 +15552,12 @@
         "depthCoverage": 1.126339839054988
       },
       "triangles": 11034,
-      "bytes": 140908,
+      "bytes": 140964,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "104dc0d341d99262",
+        "sourceHash": "8f3c171c4624ad43",
         "buildVersion": 2,
-        "bytes": 37876,
+        "bytes": 37932,
         "triangles": 1614
       }
     },
@@ -20466,12 +20466,12 @@
         "depthCoverage": 1.9351589268651503
       },
       "triangles": 12822,
-      "bytes": 169860,
+      "bytes": 169888,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "acfdfaa151a8b256",
+        "sourceHash": "6b3bb1b5c5dbafbb",
         "buildVersion": 2,
-        "bytes": 47980,
+        "bytes": 48012,
         "triangles": 1977
       }
     },
@@ -29371,12 +29371,12 @@
         "depthCoverage": 1.6313146346329552
       },
       "triangles": 28488,
-      "bytes": 447812,
+      "bytes": 447840,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "fa063155a88b0892",
+        "sourceHash": "01ec05d62e9fdde5",
         "buildVersion": 2,
-        "bytes": 94808,
+        "bytes": 94836,
         "triangles": 4385
       }
     },
@@ -32449,12 +32449,12 @@
         "depthCoverage": 1.0051641966167248
       },
       "triangles": 37319,
-      "bytes": 499196,
+      "bytes": 499280,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "cf9c236f426dff47",
+        "sourceHash": "7794d31dd20983cf",
         "buildVersion": 2,
-        "bytes": 201872,
+        "bytes": 201960,
         "triangles": 11292
       }
     },
