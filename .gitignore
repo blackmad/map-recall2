@@ -96,3 +96,6 @@ firestore-debug.log
 !.dev.vars.example
 !.env.example
 /public/canal-drive/media/
+
+# per-worktree dev port written by scripts/worktrees/new.sh
+.worktree-port
