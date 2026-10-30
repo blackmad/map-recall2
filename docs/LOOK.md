@@ -204,7 +204,7 @@ under the rig) variants. Recipe houses, building types and landmarks go
 through it; the legacy landmark GLBs take the slot their material name says
 (`look/materialSlotInference.ts`). Slot tints pass through `cityLookTint`:
 `cityTint` (the one palette mapping) plus the gallery review's corrections
-below. Lit, the city look is levelled by `CITY_LIT_LEVEL` **0.9** (tinted
+below. Lit, the city look is levelled by `CITY_LIT_LEVEL` **0.9** under the legacy rig (**1** under the sunny rig since the 2026-10-30 re-level below) (tinted
 chunk texels and the wall/roof slot layers, each cell gained to a mean of 1),
 which brings the reference brick into the band above. Measured 2026-10-13
 (`tests/e2e/building-look.spec.ts`), mean sRGB luma:
@@ -296,6 +296,60 @@ sourced years, so no builder material was re-tagged in this pass.
 
 Flag on, slot materials follow the Building look (cartoon bands, untextured
 flat colour) and the active landmark highlights in the facade answer yellow.
+
+#### Re-level against the sunny frame (2026-10-30, lane citylook-relevel, #135)
+
+The 0.9 level was solved under the legacy rig (sun-side wall at 0.73 of albedo).
+The sunny rig's exposure is solved so that a wall facing the sun draws its albedo,
+so 0.9 only darkened the look. In the live frames, flag on read 3–12 luma under
+flag off on walls and 7–16 on the whole frame. The changes:
+
+- `CITY_LIT_LEVELS` is `{ sunny: 1, legacy: 0.9 }`, chosen by `?look=`.
+- The city look's chunks take the sunny wall exposure (`litFacadeWallGain`),
+  as the default look's do.
+- Unrecorded GLB brick and accent take the generic sunlit gain (#73)
+  (`slotTintBytes` → `photoMatchedWallTint`).
+
+City chunks now draw exactly what default-look chunks draw. Live frames
+(`scripts/look/sunny-frames.ts`, flag off → on), whole-frame luma: Kinkerbuurt
+aerial 128 → 128, Osdorper Ban 141 → 141, Prinsengracht 121 → 124, Dam 131 → 138
+(landmark-heavy). Walls: 119 → 118, 115 → 115, 110 → 114, 93 → 102.
+
+There are two landmark rules (flag on only):
+
+- **Kit slate.** The landmark kit's slate `#4a525d` takes the default measured
+  slate `#76808f`, not the lightest one (`#8c939c`, +80 % luma: the old
+  `cityRoofTint` thresholds). Near-black slate (L < 0.27) takes `#606b79`.
+- **Level faces.** On inferred `slate`, faces within ~14° of up sample the
+  flat-roof cell with the bitumen tint (`levelFacesAsFlatRoof`). The kit paints
+  flat decks `slate` too (Theater Amsterdam, the Stedelijk, Studio K).
+
+Gallery (356 GLBs, flag on vs off, median Δluma sun / shade, models beyond
+10 % / 15 %):
+
+| state | sun | shade | > 10 % | > 15 % |
+|---|---|---|---|---|
+| before (0.9 level, current palette) | +7.0 % | +9.7 % | 184 | 124 |
+| roof rules only, 0.9 level (diagnostic) | +2.3 % | +3.2 % | 87 | 24 |
+| re-level + roof rules (this lane) | +13.6 % | +15.5 % | 259 | 188 |
+
+Landmarks get brighter because flag-off landmarks are the outlier. They draw the
+kit's raw hex, with no city brick lift and no #73 gain. Recipe houses and chunks
+in the default look take both. The city look puts the three on one brick, which
+the parity spec asserts to 1 %. Bringing the gallery to ±2 % would need a level
+of ~0.85, which puts every chunk ~13 % under the default look again: the dour
+frame. The user decides on the strip.
+
+All 356 models resolve their slots by inference: 2,613 material rows are baked
+into the GLB by `infer-material-slots.ts`, 68 more are inferred at runtime, and
+none are explicit tags. Inferred wrong, for a re-tag lane:
+
+- Brown roofs named `slate`: Uilenburger synagoge `#665f58`, Podium Mozaïek
+  `#655348`, houseboat-museum `#4a3d36`.
+- American Hotel `sandstone` `#c4975f` reads as pale stone.
+- `ochre` `#dfb44f` trim is inferred as brick.
+- `red` `#ac624e` and `dark` `#303b43` are used for trim and walls alike, so
+  their inferred slot is a guess.
 
 #### Cost and the default flip (desktop, 2026-10-13, after the review)
 

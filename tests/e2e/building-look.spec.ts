@@ -216,9 +216,14 @@ test('shadow fill: brick in cast shadow stays readable, lit walls do not move', 
  * +1.2 to +1.6 (the stronger sky fill lights a sun-side wall's sky half a little more at the same sun-wall exposure).
  * Unmeasured GLB brick takes the generic walls' sunlit gain (c2852927e, HISTORY "Brighter large-tier walls and pitched
  * roofs", #73): recipe 119.2 -> 124.7, toward generic 129.7. The city look's slots do not take it, as its chunks do not
- * (look/cityLook.ts slotTintBytes, #76), so the city rows are unchanged.
+ * (look/cityLook.ts slotTintBytes, #76), so the city rows were unchanged.
+ * City look re-levelled against the sunny frame (2026-10-30, lane citylook-relevel): level 1 instead of the legacy
+ * rig's 0.9, and the chunks and unrecorded brick take the sunny wall exposure like the default look's, so the city's
+ * chunks draw exactly what the default look's do: city-generic 122.7 -> 143.0, city-recipe/landmark 127.3 -> 148.5
+ * (this harness feeds the plain-look `generic` row the raw hex and the city rows the lifted city tint, as the game's
+ * chunk data already carries it).
  */
-const SUN_SIDE_GREY: Record<string, number> = { generic: 129.7, recipe: 124.7, landmark: 122.9, 'city-generic': 122.7, 'city-recipe': 127.3, 'city-landmark': 127.3 };
+const SUN_SIDE_GREY: Record<string, number> = { generic: 129.7, recipe: 124.7, landmark: 122.9, 'city-generic': 143.0, 'city-recipe': 148.5, 'city-landmark': 148.5 };
 
 // A measured wall colour (material extras `tintSource: 'measured'`) survives the city look's brick clamp: the rendered brick swatch
 // lands on the authored colour (the paint slot keeps authored colours, so it is the reference), the unmeasured one stays clamped.
