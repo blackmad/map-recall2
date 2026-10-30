@@ -1,5 +1,10 @@
 # Lane: compact binary extracts for footprints and trees
 
+> **Absorbed 2026-10-30** into `lane-world-compiler-20261030.md` (programme
+> `engine-programme-20261030.md` §P2): the same formats and sentinels, inside
+> per-cell `world-v1` files that also carry roof plans, style, groups, hides,
+> landmarks, water, roads and labels baked at build time.
+
 Rules: `LANE-RULES.md`. Plan: `slop-newyork-plan-20261029.md` §4 lane C.
 Evidence: `docs/research/slop-newyork-20261029.md` §1 and §4. Model: opus
 for the format and its tests; haiku for the encoder run, the measurements
