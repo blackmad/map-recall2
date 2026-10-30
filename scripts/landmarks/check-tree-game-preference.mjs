@@ -13,7 +13,7 @@ try{
    await page.locator('[data-choice="live-view:'+mode+'"]').click();await page.waitForFunction(mode=>canalRecallGame.viewMode===mode,mode);
    if(await page.locator('#live-trees').isChecked())await toggle.click();assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.enabled),false);assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0);
    await toggle.click();await page.waitForFunction(()=>canalRecallGame.vectorMap._inventoryTrees.enabled&&canalRecallGame.vectorMap._inventoryTrees.debugTrees>0,{timeout:60000});
-   const stats=await page.evaluate(()=>{const g=canalRecallGame,t=g.vectorMap._inventoryTrees;return{mode:g.viewMode,prefs:g._prefs().trees,trees:t.debugTrees,draws:t.meshes.length,geometry:t.geometries.size,materials:t.materials.size,zoom:g.vectorMap.map.getZoom(),pitch:g.vectorMap.map.getPitch()};});assert.ok(stats.draws<=7);assert.ok(stats.geometry<=4);assert.equal(stats.materials,2);assert.equal(stats.prefs,true);reports.push({name,...stats});
+   const stats=await page.evaluate(()=>{const g=canalRecallGame,t=g.vectorMap._inventoryTrees;return{mode:g.viewMode,prefs:g._prefs().trees,trees:t.debugTrees,draws:t.meshes.length,geometry:t.geometries.size,materials:t.materials.size,zoom:g.vectorMap.camera.zoom(),pitch:g.vectorMap.camera.pitch()};});assert.ok(stats.draws<=7);assert.ok(stats.geometry<=4);assert.equal(stats.materials,2);assert.equal(stats.prefs,true);reports.push({name,...stats});
   }
   if(name==='fresh-mobile')await page.screenshot({path:'artifacts/tree-models/game-mobile-tree-settings.png'});
   await page.evaluate(()=>canalRecallGame._overlay.store.setSettingsOpen(false));await page.screenshot({path:`artifacts/tree-models/game-${name}-trees.png`});

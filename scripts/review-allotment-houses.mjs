@@ -20,7 +20,7 @@ try {
   if(process.argv.includes('--canopy')){await page.locator('#canopy').uncheck();await page.waitForFunction(()=>document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap._inventoryTrees.debugAuthoredTrees===0);await page.screenshot({path:`${output}/mapped-trees-only.png`});await page.locator('#canopy').check();await page.waitForFunction(()=>document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap._inventoryTrees.debugAuthoredTrees>0);}
 
   await page.locator('[data-place="nut"]').click();
-  await page.waitForFunction(()=>Math.abs(document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap.map.getCenter().lng-4.8603)<.0001);
+  await page.waitForFunction(()=>Math.abs(document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap.camera.center().lng-4.8603)<.0001);
   await page.locator('#look').selectOption('cartoon');
   await page.waitForFunction(()=>document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap._threeBuildings.look==='cartoon');
   report.demo=await page.evaluate(()=>{const v=document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap;return{pass:true,parkButton:true,lookSwitch:true,treeLayer:{ready:v._inventoryTrees?.ready,enabled:v._inventoryTrees?.enabled,trees:v._inventoryTrees?.debugTrees,authoredTrees:v._inventoryTrees?.debugAuthoredTrees,sourceTotal:v._inventoryTrees?.index?.trees},status:document.querySelector('#status').textContent,gardenResident:v._threeBuildings.lastFeatures.filter(f=>f.properties.allotmentHouse).length,chunks:v._threeBuildings.chunks.size,suspended:v._completeCity.suspended,facadesOutOfZoom:v._facadesOutOfZoom};});
