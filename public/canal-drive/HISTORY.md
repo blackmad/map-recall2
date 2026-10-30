@@ -27,6 +27,27 @@ crashed `build-pages-site.mjs`, which needs a `destination` on every rewrite (ru
 CORS, and the site sets no CSP. Checked on the live site: the bundle loads, the
 `session` beacon carries only allow-listed fields, and `analytics:report` counts it.
 
+**Road look continuity (#108, 2026-10-30).** User iPhone screenshot 2026-10-29 at the Witte de Withstraat ×
+Van Kinsbergenstraat: "why isn't the grey continuous? … focus on the look over accuracy". The partition was fine; the
+drawing was not. Seven greys, each its own material, a kerb under a pixel, asphalt as light as the pavement, no tram
+rails.
+
+Lane `road-look-continuity-20261029` (two rounds) changed these city-wide:
+- Every pavement-level class draws one `paving` material; the carriageway draws asphalt or klinker by surface;
+  `brick` is no longer drawn.
+- Look B, picked by the user on the strip: rendered road/pavement luma 96/176 on the iPhone frame (before 145/160).
+  Klinker follows the asphalt; bare land takes the pavement texture; the kerb shadow is a 0.8 m ramp from 0.35×
+  asphalt. `?roadLook=round1` draws the old palette for strips. Round 1's 144/130/118 options were too close to tell
+  apart, so the user sent it back. The orthophoto does not support a dark road (sunlit asphalt 167 vs pavement 165);
+  this is a look choice over accuracy.
+- Red cycle bands across 2,236 junction mouths where the fietspad continues, crossing up to 4 m of berm. The brief's
+  25 m rule broke the bilderdijkstraat-de-clercqstraat gate, so it is ≤ 15 m with ≥ 4 m of fietspad at each end.
+- Muted `garden` tone for courtyard green (no road polygon within 3 m).
+- Tram rails on 305 more ways (136 streets, 16.6 km). OSM has no `railway=tram` along the Witte de Withstraat, so
+  `patch-osm-trams.ts` matches BGT spoor within clamp(half-width + 1, 3, 8) m. A first pooled-offset pass wrote one
+  wrong 0.9 m offset and was replaced by per-track clusters. Rails draw dark: light steel read as the rejected thin
+  white lines of #52.
+
 **Modern side of the generic generator (#117, 2026-10-30).** The user approved it on 2026-10-29: "if we need a modern
 building side let it be modern". Before this, every dated post-1945 generic building drew smooth beige render with
 punched windows.
