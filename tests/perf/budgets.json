@@ -1,0 +1,13 @@
+{
+  "note": "P0 baselines copied from docs/handoffs/lane-oracle-migration-20261030.md step 5. Do not change a value without a new dated measurement and its source.",
+  "entries": {
+    "draws": { "value": 851, "unit": "draw calls (desktop ride)", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "programs": { "value": 32, "unit": "GL programs", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "motionBudget": { "value": [200, 1, 4], "unit": "MOTION_BUDGET tuple as written in the brief (meaning not verified against motion-stutter.mjs)", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "iphoneHeapMB": { "value": 245, "unit": "MB JS heap, iPhone profile", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "iphoneArrayBuffersMB": { "value": 67, "unit": "MB ArrayBuffers, iPhone profile", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "iphoneGlBuffersMB": { "value": 140, "unit": "MB GL buffers, iPhone profile", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "iphoneMapLibreWorkersMB": { "value": 94, "unit": "MB MapLibre workers, iPhone profile", "source": "P0 baseline, lane brief step 5", "date": "unknown; recorded in brief 2026-10-30" },
+    "timeToRideS": { "value": 7.5, "unit": "seconds", "source": "P0 baseline, lane brief step 5", "date": "2026-10-06" }
+  }
+}
