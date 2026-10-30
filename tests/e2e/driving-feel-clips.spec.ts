@@ -103,9 +103,8 @@ test('driving-feel clip: Molenpad T-junction and the Keizersgracht ring', async 
   await page.waitForTimeout(30_000);
   const log = await page.evaluate(() => (window as any).__clipLog as any[]);
   expect(log.length).toBeGreaterThan(100);
-  // Summary: yaw-rate (steady frames only: dt within 25 ms, as a long frame inflates nothing real),
+  // Summary: camera yaw rate (must stay under cameraYaw.ts's 80°/s cap),
   // camera-centre offset from the bike in the bike's frame (how much the view trails or surges).
-  const steady = log.filter(r => r.dtMs > 4 && r.dtMs < 25);
   const offsets = log.map(r => {
     const dx = r.camX - r.x, dy = r.camY - r.y, c = Math.cos(r.angle), s = Math.sin(r.angle);
     return { along: dx * c + dy * s, across: -dx * s + dy * c };
@@ -116,7 +115,12 @@ test('driving-feel clip: Molenpad T-junction and the Keizersgracht ring', async 
     label: LABEL, project: info.project.name, frames: log.length,
     distanceM: +(Math.hypot(log.at(-1).x - log[0].x, log.at(-1).y - log[0].y) / 3).toFixed(0),
     frameDtMedianMs: frameDt[Math.floor(frameDt.length / 2)], frameDtP95Ms: frameDt[Math.floor(frameDt.length * 0.95)],
-    camYawMaxDegPerS: Math.max(...steady.map(r => r.camRateDeg)),
+    // Row i's rotation is after frame i-1's camera step, which used row i-1's dt.
+    camYawMaxDegPerS: +Math.max(...log.slice(2).map((r, i) => {
+      const prev = log[i + 1], dt = prev.dtMs / 1000;
+      if (dt < 0.004 || dt > 0.05) return 0;
+      return Math.abs(Math.atan2(Math.sin(r.camRot - prev.camRot), Math.cos(r.camRot - prev.camRot))) / dt * 180 / Math.PI;
+    })).toFixed(1),
     offsetAlongSdPx: +sd(offsets.map(o => o.along)).toFixed(1), offsetAcrossSdPx: +sd(offsets.map(o => o.across)).toFixed(1),
     offsetAlongMeanPx: +(offsets.reduce((a, o) => a + o.along, 0) / offsets.length).toFixed(1),
   };
