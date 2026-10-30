@@ -236,3 +236,21 @@ test('roads R1 triangles: kerb stations follow the relief, coarse relief caps th
   const bp = built.layers.bollard!.positions;
   for (let i = 1; i < bp.length; i += 3) assert.ok(bp[i] > 0, `post at y ${bp[i]} by the berm`);
 });
+
+test('wetGround: a ground polygon over water at street height is a deck for the water mask; a canal-level one and a quay sliver are not', async () => {
+  const { wetGroundRings } = await import('./wetGround');
+  const surf = (c: RoadClass, ring: Vec2[]) => ({ k: 'klinker' as RoadMesh, c, h: 0, r: [encodeLine(ring)] });
+  const sq = (x0: number, y0: number, x1: number, y1: number): Vec2[] => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+  // Water: the canal x ∈ [0, 30]. A plein over it (x 5..25), its fietspad beside it (x 25..27, too narrow for the inset),
+  // a quay road whose edge overlaps the water by a metre (x -10..1), and a slab over open canal at canal level.
+  const wet = (x: number) => x >= 0 && x <= 30;
+  const plein = surf('carriage', sq(5, 0, 25, 20)), path = surf('cycle', sq(25, 0, 27, 20)), quay = surf('carriage', sq(-10, 0, 1, 20)), low = surf('carriage', sq(5, 40, 25, 60));
+  const ground = (_x: number, y: number) => (y >= 40 ? -1.0 : 0.9);
+  const rings = wetGroundRings([plein, path, quay, low], { wet: x => wet(x), ground, waterZ: () => -1.77 });
+  const has = (x: number, y: number) => rings.some(r => r.some(p => p[0] === x && p[1] === y));
+  assert.ok(has(5, 0) && has(25, 20), 'the plein over the canal');
+  assert.ok(has(27, 0), 'its narrow fietspad beside it');
+  assert.ok(!has(-10, 0), 'the quay sliver stays cut');
+  assert.ok(!has(5, 40), 'canal-level ground stays cut');
+  assert.equal(wetGroundRings([plein], { wet: () => false, ground, waterZ: () => -1.77 }).length, 0, 'no water, nothing');
+});
