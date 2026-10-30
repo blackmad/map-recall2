@@ -1,5 +1,10 @@
 # Lane: three.js owns the frame (revive drop-MapLibre in flag-gated steps)
 
+> **Superseded 2026-10-30** by `lane-engine-host-20261030.md` (programme
+> `engine-programme-20261030.md`): same goal, but as a second implementation
+> behind the `VectorMap` facade (`?engine=own`), not edits to `vector-map.js`.
+> The inventory and parity oracle below still apply.
+
 Rules: `LANE-RULES.md`. Plan: `slop-newyork-plan-20261029.md` §4 lane A.
 Model: opus. The user said go on 2026-10-10 ("why would we still keep
 MapLibre at all?"); the verdict and the work table are in

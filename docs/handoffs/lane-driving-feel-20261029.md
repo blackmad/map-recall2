@@ -35,6 +35,11 @@ Do not copy slop's bicycle: 19 m/s and a constant 2.15 rad/s yaw.
 
 ## Build
 
+Note (2026-10-30, `engine-programme-20261030.md`): the fixed-step accumulator
+will live in `src/canalRecall/engine/frameHost.ts` (lane L1). Build the pure
+model and its substep loop so `frameHost.tick(dtFixed)` can call it; until L1
+lands, `game.js _loop` drives it through the bundle global.
+
 1. `src/canalRecall/drive/steerModel.ts`, pure: lock from speed, yaw target,
    friction circle, substep integration with `1 − exp` responses; `car.js`
    calls it through a bundle global (new logic typed, legacy adapter small).
