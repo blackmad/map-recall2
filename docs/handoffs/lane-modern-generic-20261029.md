@@ -44,6 +44,34 @@ The gaps, before:
 - Buff brick is desaturated: the first pass read ochre-yellow at Derde Oosterparkstraat.
 - A/B: `?modernFacades=0`, passed to the chunk worker alongside `?buurtProfiles` (`threeBuildingsBrowser.ts`).
 
+## Review round (2026-10-30): walls from measured data
+
+The integrator's review found that a fixed city-wide wall family per era contradicts a share of the photos: spots 6,
+9 and 11. Lane #118 (`lane/buurt-lightness-20261029`, f61bbb1bf) is merged in first.
+
+- `scripts/buurt-profiles/sample-panos.ts --modern` measures BAG year >= 1945 pands (7-45 m high, 40-5,000 m2). It
+  wrote `staging/buurt-profiles/pano-samples-modern.json` (untracked): 1,635 fronts in 207 buurten.
+- `scripts/buurt-profiles/derive.ts` feeds those samples into the modern era only. The exposure fit, the profile
+  level, `n`, the older eras and the grid stay byte-identical to #118's staging set (checked: 0 of 209 profiles
+  differ outside `eras.modern`). Two further rules apply to modern-pass samples only:
+  - a front with thumbnail L >= 66 counts as paint;
+  - post-war brick takes 0.55 of the city chroma lift (`MODERN_BRICK_CHROMA`).
+  121 of 209 profiles now carry measured modern walls. `buurt-profiles.json` is republished, so it also carries
+  #118's recalibration.
+- `modernVocabulary(f, buurt.eras.modern)` draws the wall from that distribution. The measured material picks a
+  brick or smooth preset. Paint keeps 35 % of its tint (`PAINT_TINT`). Ribbon and curtain offices are unchanged.
+- Sheet columns are now photo | before | first | revised. Per spot, revised against the photo:
+  - Better: 6 Haarlemmer Houttuinen (now white render, as the photo), and 1 and 5 (kept).
+  - Unchanged: 3 and 10.
+  - Worse: 7 Derde Oosterparkstraat. Revised draws pale render where the photo shows dark brick.
+  - Not fixed: 9 Van Reigersbergenstraat, still dark brown where the photo is pale buff. 11 Sarphatistraat now reads
+    pale pinkish render where the photo shows dark grey brick, worse than "first".
+  - Mixed: 2 and 4 are now dark brick, which is partly right (brick behind, pale render with balconies in front).
+  - Same: 8 and 12, dark brick, plausible.
+- Root limit: a weighted draw from the buurt's distribution cannot hit an individual building. The next step is the
+  sampled pand's own measured wall where one exists (1,635 pands), or a per-street distribution. Peach casts remain
+  in the light swatches.
+
 ## Proofs
 
 - `node --import tsx --test src/canalRecall/modernFacades.test.ts` (7 tests). The preset indices match their presets

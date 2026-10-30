@@ -18,10 +18,17 @@
  * stay byte-identical; `check-modern-facades` / `modernFacades.test.ts` pin both.
  */
 import { isPaintedHex, pickWeighted, unitDraw, type EraProfile } from './buurtProfiles/profiles.js';
-import { rgbToLab } from './look/brickTone.js';
+import { labToRgb, rgbToLab } from './look/brickTone.js';
 
 /** CIE L* of a hex: a very light measured swatch (cream render, white panels) is paint whatever its tint. */
-const lightnessOf = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)))[0];
+const labOf = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
+const lightnessOf = (hex: string) => labOf(hex)[0];
+/**
+ * Render and paint keep PAINT_TINT of their measured chroma: the calibrated light swatches carry a peach cast from the
+ * thumbnails (Sarphatistrook #ffdfcf drew a pink block; review sheet 2026-10-30).
+ */
+export const PAINT_TINT = 0.35;
+const neutralised = (hex: string) => { const [L, a, b] = labOf(hex); return '#' + labToRgb([L, a * PAINT_TINT, b * PAINT_TINT]).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join(''); };
 
 /**
  * A/B: `?modernFacades=0` (passed to the chunk worker) draws every post-1945 building as before. A test can set
@@ -147,7 +154,7 @@ export function modernVocabulary(f: ModernFacts, measured?: EraProfile | null): 
       const same = options.filter(([s]) => fits(s) && s !== 'ribbon' && s !== 'curtain');
       style = same.length ? pick(f.id, 'modern-style-measured', same) : painted ? 'smoothDark' : 'brickDark';
     }
-    return { era, use, style, styleIndex: MODERN_STYLE[style], family: painted ? 'measured-paint' : 'measured-brick', wall };
+    return { era, use, style, styleIndex: MODERN_STYLE[style], family: painted ? 'measured-paint' : 'measured-brick', wall: painted ? neutralised(wall) : wall };
   }
   const walls = WALLS[era][BRICK.has(style) ? 'brick' : 'smooth'];
   const family = pick(f.id, 'modern-wall', walls) as keyof typeof MODERN_WALLS;

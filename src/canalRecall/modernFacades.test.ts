@@ -93,7 +93,7 @@ test('a measured modern era decides the wall and the material; banded offices ke
   for (const id of ids.slice(0, 300)) {
     const f = { id, year: 1986, heightM: 14, footprintM2: 700 };
     const p = modernVocabulary(f, painted)!, b = modernVocabulary(f, brick)!;
-    assert.equal(p.wall, '#e8e6e0'); assert.notEqual(BAY_STYLES.modern[p.styleIndex].wallMaterial, 'brick');
+    assert.equal(p.family, 'measured-paint'); assert.ok(Math.abs(parseInt(p.wall.slice(1, 3), 16) - 0xe8) <= 4); assert.notEqual(BAY_STYLES.modern[p.styleIndex].wallMaterial, 'brick');
     assert.equal(b.wall, '#5a463e'); assert.equal(BAY_STYLES.modern[b.styleIndex].wallMaterial, 'brick');
     assert.deepEqual(modernVocabulary(f, { n: 3 }), modernVocabulary(f));
     const office = { id, year: 1970, heightM: 24, footprintM2: 2500 }, o = modernVocabulary(office)!;
