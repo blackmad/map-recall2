@@ -183,6 +183,7 @@ import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
 import {buildDelamar} from './delamar-builder';
 import {buildEuroparkingMarnixstraat} from './europarking-marnixstraat-builder';
+import {buildHirschgebouw} from './hirschgebouw-builder';
 import {buildTheaterLandmark} from './theater-builders';
 import {buildHouseMuseumLandmark} from './house-museum-builders';
 import {buildCivicLandmark} from './civic-builders';
@@ -656,6 +657,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='silodam')buildSilodam(w,d,helpers);
     else if(id==='delamar')buildDelamar(w,d,helpers);
     else if(id==='europarking-marnixstraat')buildEuroparkingMarnixstraat(w,d,helpers);
+    else if(id==='hirschgebouw')buildHirschgebouw(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
     else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);
