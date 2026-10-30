@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Facade far tier per CSS pixel (2026-10-30).** User, with screenshots of Weesperstraat, Wibautstraat × Ringdijk and
+Diemen zoomed out: "why are these buildings rendering such low detail even so close?" and "on my mac I think these
+buildings should be able to render windows/details at this zoom". The buildings were faced (the large-tier audit found
+none of them bare); the facade far tier (`roofTier.ts`) was flattening their window cells to the mean colour. Its
+[16, 30] texels-per-pixel limits were measured per framebuffer pixel, so a Retina canvas (ratio 2) flattened windows
+that were still ~4 device px wide. The limits now scale with the canvas pixel ratio (`facadeTierUniform(ratio)`,
+ratio from `map.getPixelRatio()`); at ratio 1 nothing changes. Probe at ratio 2: at map zoom 16 over Wibautstraat the
+mid-distance blocks (Cygnus Gymnasium, Het Parool, the Oost blocks beyond) keep clean windows, the same as with the tier
+off; the full zoom-out over Diemen (zoom 14.7) stays flat with no stipple.
+
 **Analytics live (2026-10-30, #115).** The project is on Blaze, with a $0.00
 alert budget (an alert only, not a cap). `functions:analytics` is deployed in
 europe-west4, together with the Firestore rules and indexes, and container images

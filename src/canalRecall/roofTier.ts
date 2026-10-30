@@ -35,11 +35,20 @@ export const ROOF_TIER_FAR_FADE_M = 40;
  * "why such low detail from so close?" (user, Singelgracht, 2026-10-14). At [16, 30] they keep their windows up to
  * ~220 m from the eye and are flat again by ~300 m (windows ~4 x 5 px, where the dots read as stipple; the
  * 0.16-zoom aerial at ~770 m is flat as before). docs/images/live-play-20261014/item3-*.
+ *
+ * The rates are per CSS pixel and scale with the canvas pixel ratio: the shader measures texels per framebuffer
+ * pixel, so at a fixed [16, 30] a Retina screen (ratio 2) flattened windows still ~4 device px wide. At map zoom 16
+ * over Wibautstraat and Diemen the mid-distance blocks went to plain walls where the unflattened sample read as
+ * clean windows (user, 2026-10-30, "on my mac these buildings should be able to render windows at this zoom").
+ * At ratio 1 the tier is unchanged.
  */
 export const FACADE_TIER_FROM_TEXELS = 16;
 export const FACADE_TIER_TO_TEXELS = 30;
 export const FACADE_TIER_OFF: [number, number] = [-1, -1];
-export const facadeTierUniform = (): [number, number] => [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS];
+export const facadeTierUniform = (pixelRatio = 1): [number, number] => {
+  const k = Number.isFinite(pixelRatio) && pixelRatio > 1 ? pixelRatio : 1;
+  return [FACADE_TIER_FROM_TEXELS * k, FACADE_TIER_TO_TEXELS * k];
+};
 
 /** Uniform defaults: `[lo, hi)` is the layer range of the pantile and slate cells; lo < 0 turns the tiers off. */
 export const ROOF_LAYERS_OFF: [number, number] = [-1, -1];
