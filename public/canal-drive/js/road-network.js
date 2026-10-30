@@ -175,7 +175,10 @@ class RoadNetwork {
       const excess = SURFACE.filletedExcess(SURFACE.contactsAt(spans, x, y), x, y);
       if (excess < minDist - nearestWidth) minDist = nearestWidth + excess;
     }
-    const surface = SURFACE.classifySurface(minDist, nearestWidth);
+    let surface = SURFACE.classifySurface(minDist, nearestWidth);
+    // Open squares are paving here as in getGuardRoad: read as grass, their
+    // drag left a stopped bike able only to reverse (pedestrianAreas.ts).
+    if (this.plazaIndex && SURFACE.plazaSurface) surface = SURFACE.plazaSurface(surface, this.plazaIndex, x, y);
     this._frameCache.set(surfaceKey, surface);
     return surface;
   }

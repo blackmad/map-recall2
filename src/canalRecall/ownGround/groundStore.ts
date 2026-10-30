@@ -29,6 +29,10 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
+import { cutWays, isTunnelTags, planCuts } from './tunnels.js';
+
+/** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
+export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
 import { WAY_DECK_CLEAR_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
@@ -111,7 +115,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -328,6 +332,34 @@ export class GroundStore {
     // see the hump (their approach ends lie within the relief pad).
     for (const n of GroundStore.neighbours(key)) if (n !== key) this.placeDecks(n, [x0 - 60, y0 - 60, x1 + 60, y1 + 60]);
     if (this.options.wayDecks !== false) await this.placeWayDecks(key);
+    if (this.options.tunnels !== false) await Promise.all(GroundStore.neighbours(key).map(n => this.planCutsFor(n)));
+  }
+
+  /** Tunnel cuts planned per cell (the cell holding the portals), once each. */
+  private readonly cutPlans = new Map<string, Promise<void>>();
+  /** Way ids scanned for cuts (each scanned once, by the first plan that reaches it); negative ids: tunnel runs tried as slots. */
+  private readonly cutScanned = new Set<number>();
+  /**
+   * Plan the tunnel cuts whose portals lie in cell `n` (tunnels.ts planCuts) and place them on the surface: the OSM of
+   * its 3×3 neighbourhood is the road graph, the relief is ensured over the cell and CUT_REACH_M around it (a ramp runs
+   * a few hundred metres from its portal) and only stations in that box are scanned, so the worker and the main thread
+   * plan the same cuts whatever else they hold.
+   */
+  private planCutsFor(n: string): Promise<void> {
+    let p = this.cutPlans.get(n);
+    if (!p) {
+      p = (async () => {
+        const osm = await this.osmCell(n);
+        if (!osm?.ways.some(w => isTunnelTags(w.tags))) return;
+        const [x0, y0, x1, y1] = this.cellRect(n), box: Rect = [x0 - CUT_REACH_M, y0 - CUT_REACH_M, x1 + CUT_REACH_M, y1 + CUT_REACH_M];
+        const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.osmCell(k))), this.ensureRelief(box)]);
+        const ways = cutWays(around.flatMap(o => o?.ways ?? []), q => toLocal(q[0], q[1]));
+        const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
+        for (const c of planCuts(ways, this.surface.relief, inCell, this.cutScanned, box)) this.surface.addCut(c);
+      })();
+      this.cutPlans.set(n, p);
+    }
+    return p;
   }
 
   /** OSM bridge ways given a deck (wayDecks.ts), by way id. */
@@ -615,6 +647,7 @@ export class GroundStore {
       key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
       decks: this.decks(key), deckRingsAround,
+      cuts: this.surface.cuts.filter(c => near(c.bbox)),
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
       // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.

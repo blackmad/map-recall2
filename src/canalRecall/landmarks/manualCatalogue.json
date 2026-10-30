@@ -35371,7 +35371,7 @@
         4.904975,
         52.3657056
       ],
-      "northOffsetDegrees": -90,
+      "northOffsetDegrees": 0,
       "source": "OSM current surveyed steel-letter multipolygons; native x east / z south"
     },
     "groundAltitudeMetres": 0,

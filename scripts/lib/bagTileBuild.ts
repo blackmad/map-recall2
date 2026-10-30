@@ -16,8 +16,9 @@ import {
   factsTile, isPandId, matchOsm, midDescriptor, plausibleYear, shortPandId, tileFactProperties,
   type MidDescriptor, type OsmCandidate, type PandFacts,
 } from '../../src/canalRecall/bagTiles.js';
+import { isUndergroundOsm, isUndergroundPand, type UndergroundIndex } from '../../src/canalRecall/undergroundBuildings.js';
 
-export type OsmBuilding = OsmCandidate & { isPart: boolean; refBag: string | null };
+export type OsmBuilding = OsmCandidate & { isPart: boolean; refBag: string | null; underground: boolean };
 
 type Geometry = { type: 'Polygon'; coordinates: Ring[] } | { type: 'MultiPolygon'; coordinates: Ring[][] };
 type TileFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: Geometry };
@@ -46,6 +47,7 @@ export async function readOsmBuildings(seqFile: string): Promise<OsmBuilding[]> 
       rings,
       isPart: Boolean(props['building:part']) && !props.building,
       refBag: ref && /^\d{16}$/.test(ref) ? ref : null,
+      underground: isUndergroundOsm(props),
     });
   }
   return out;
@@ -66,6 +68,12 @@ export async function writeBagTiles(options: BagTileOptions): Promise<Record<str
   const { facts, osm, baseDir, zoom, outDir } = options;
   const grid = new FootprintGrid<OsmBuilding>();
   for (const building of osm) grid.add(building);
+  // Metro stations, car parks, tunnel shells: never drawn (src/canalRecall/undergroundBuildings.ts).
+  const underground: UndergroundIndex = {
+    osm: new Set(osm.filter(b => b.underground).map(b => b.osmId)),
+    refBag: new Set(osm.flatMap(b => (b.underground && b.refBag ? [b.refBag] : []))),
+  };
+  let undergroundDropped = 0;
 
   const tilesOut = path.join(outDir, 'bag-tiles', String(zoom));
   const factsOut = path.join(outDir, 'bag-facts', String(zoom));
@@ -93,14 +101,19 @@ export async function writeBagTiles(options: BagTileOptions): Promise<Record<str
       const features: string[] = [];
       for (const feature of collection.features) {
         const id = String(feature.properties.id ?? '');
-        if (!isPandId(id)) { osmOnly++; features.push(JSON.stringify(feature)); continue; }
-        pands++;
+        if (!isPandId(id)) {
+          if (underground.osm.has(id)) { undergroundDropped++; continue; }
+          osmOnly++; features.push(JSON.stringify(feature)); continue;
+        }
         const rings = outerRingsOf(feature.geometry);
+        const matches = matchOsm(rings, grid.near(rings));
+        const height = typeof feature.properties.height === 'number' ? feature.properties.height : null;
+        if (isUndergroundPand({ id, heightM: height, matchedOsm: matches }, underground)) { undergroundDropped++; continue; }
+        pands++;
         for (const ring of rings) for (const [lng, lat] of ring) {
           if (lng < west.w) west.w = lng; if (lng > west.e) west.e = lng;
           if (lat < west.s) west.s = lat; if (lat > west.n) west.n = lat;
         }
-        const matches = matchOsm(rings, grid.near(rings));
         for (const osmId of matches) matchedOsm.add(osmId);
         if (matches.length === 0) noOsm++;
         if (matches.length > 1) multiAlias++;
@@ -170,6 +183,7 @@ export async function writeBagTiles(options: BagTileOptions): Promise<Record<str
     features: pands + osmOnly,
     pands,
     osmOnlyFeatures: osmOnly,
+    undergroundDropped,
     pandsWith3dbagFacts: withFacts,
     pandsWithout3dbagFacts: noFacts,
     pandFactCoverage: Math.round((withFacts / pands) * 10000) / 10000,
