@@ -185,7 +185,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
-  const vocab: ModernVocabulary | null = modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }) : null;
+  const vocab: ModernVocabulary | null = modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern) : null;
   const era = vocab ? undefined : buurt?.eras[archetype], traits = era ? profileTraits(id, era) : null;
   const h = hashSeed(id), style = vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.

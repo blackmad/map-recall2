@@ -91,7 +91,7 @@ console.log('pands', pands.size);
 const buurten = await gebieden('wijken').then(() => gebieden('buurten')), wijken = await gebieden('wijken');
 const buurtOf = (lng: number, lat: number) => buurten.find(a => inArea(lng, lat, a)) ?? null;
 
-type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface'; era: Period | null; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
+type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
 const samples: Sample[] = [];
 const eraOf = (p: Pand | undefined) => p?.year ? periodForYear(p.year) : null;
 
@@ -141,13 +141,19 @@ console.log('pano walls', panoSeen, 'used', panoUsed);
 
 // 1b. Panorama thumbnails at the street front (sample-panos.ts).
 let thumbUsed = 0;
-const THUMBS = 'staging/buurt-profiles/pano-samples.json';
-if (fs.existsSync(THUMBS)) for (const r of JSON.parse(fs.readFileSync(THUMBS, 'utf8')).samples as any[]) {
+// pano-samples-modern.json (sample-panos.ts --modern, #117): the same measure on BAG year >= 1945 pands, for the modern era.
+const THUMBS = ['staging/buurt-profiles/pano-samples.json', 'staging/buurt-profiles/pano-samples-modern.json'];
+for (const file of THUMBS) if (fs.existsSync(file)) for (const r of JSON.parse(fs.readFileSync(file, 'utf8')).samples as any[]) {
   const pand = pands.get(r.pand);
   if (r.skipped || !pand || !r.wall) continue;
-  const painted = photoPainted(r.wall);
+  // Modern pass: a light front (L >= 66 in the thumbnail) is render, white panels or pale buff brick, and is kept
+  // as paint (half its tint); the brick calibration's chroma lift turned those peach (review 2026-10-30).
+  const painted = photoPainted(r.wall) || (file.endsWith('-modern.json') && lch(r.wall).L >= 66);
   if (!painted && !masonryFamily(r.brick) && lch(r.brick).C >= 4) continue;
-  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06 });
+  // The modern pass only ever adds to the modern era: it does not move the calibration, a profile's level, n or older eras.
+  const modernPass = file.endsWith('-modern.json') ? { modernPass: true as const } : {};
+  if (modernPass.modernPass && eraOf(pand) !== 'modern') continue;
+  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06, ...modernPass });
   thumbUsed++;
 }
 console.log('panorama thumbnails used', thumbUsed);
@@ -198,8 +204,17 @@ console.log('block-face houses', bfHouses, 'used', bfUsed);
 // measured lightness difference from the city whichever source measured it.
 const paletteBricks = (['canal', 'c19', 'school'] as const).flatMap(p => PERIOD_WALLS.photo[p] ?? []).map(h => hexLab(h)!).filter(l => masonryFamily(labToRgb(l)) === 'brick');
 const ref = { L: median(paletteBricks.map(l => l[0])), C: median(paletteBricks.map(chromaOf)), h: hueMedian(paletteBricks.map(hueOf)) };
-const exposure = fitExposure(samples, ref, { reference: 'thumb', chromaShare: BRICK_CHROMA_SHARE, liftShare: Number(arg('lift-share') ?? CITY_LIFT_SHARE) });
-const calibrate = (s: Sample): number[] => applyExposure(exposure, s.source, s.lab!, s.painted);
+const exposure = fitExposure(samples.filter(s => !s.modernPass), ref, { reference: 'thumb', chromaShare: BRICK_CHROMA_SHARE, liftShare: Number(arg('lift-share') ?? CITY_LIFT_SHARE) });
+/**
+ * Post-war brick is browner and greyer than the city palette's 19th-century orange-red that sets the chroma lift:
+ * the modern pass takes MODERN_BRICK_CHROMA of it (first run: Sarphatistrook's anthracite and Frederik Hendrik's
+ * buff read saturated red-brown and peach).
+ */
+const MODERN_BRICK_CHROMA = 0.55;
+const calibrate = (s: Sample): number[] => {
+  const lab = applyExposure(exposure, s.source, s.lab!, s.painted);
+  return s.modernPass && !s.painted ? [lab[0], lab[1] * MODERN_BRICK_CHROMA, lab[2] * MODERN_BRICK_CHROMA] : lab;
+};
 const toHex = (lab: number[]) => '#' + labToRgb(lab).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 
 /** Ten quantile swatches over lightness, each the median a/b of its slice. */
@@ -237,13 +252,14 @@ for (const p of pands.values()) {
   for (const key of [b.code, b.wijk ?? '']) { const m = yearMixOf.get(key) ?? {}; const e = periodForYear(p.year); m[e] = (m[e] ?? 0) + 1; yearMixOf.set(key, m); }
 }
 
-function profileFor(code: string, name: string, level: 'buurt' | 'wijk', list: Sample[]): BuurtProfile | null {
+function profileFor(code: string, name: string, level: 'buurt' | 'wijk', all: Sample[]): BuurtProfile | null {
+  const list = all.filter(s => !s.modernPass);
   if (list.length < MIN_N) return null;
   const eras: BuurtProfile['eras'] = {};
   const older = list.filter(s => s.era && s.era !== 'modern');
   for (const era of ['canal', 'c19', 'school', 'modern'] as const) {
     // An era with too few fronts borrows the area's pre-1945 pool (walls and traits), never the modern blocks'.
-    const own = eraProfile(list.filter(s => s.era === era));
+    const own = eraProfile((era === 'modern' ? all : list).filter(s => s.era === era));
     const e = own ?? (era !== 'modern' ? eraProfile(older) : undefined);
     if (e) eras[era] = e;
   }

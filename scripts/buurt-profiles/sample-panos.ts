@@ -1,8 +1,10 @@
 /**
  * Panorama wall samples for the buurt profiles (derive.ts source "thumb"; GitHub #102).
  *
- *   node --import tsx scripts/buurt-profiles/sample-panos.ts [--radius-km=3.5] [--per-buurt=20]
- *     -> staging/buurt-profiles/pano-samples.json
+ *   node --import tsx scripts/buurt-profiles/sample-panos.ts [--radius-km=3.5] [--per-buurt=20] [--modern]
+ *     -> staging/buurt-profiles/pano-samples.json (--modern: pano-samples-modern.json)
+ *
+ * `--modern` (GitHub #117): BAG year >= 1945, 7-45 m high, 40-5,000 m2, so the profiles carry a measured post-war era.
  *
  * For each Gemeente Amsterdam buurt whose centre is within --radius-km of the Dam, up to --per-buurt pre-1945 pands of
  * ordinary size (7-30 m high, 40-600 m2), taken in a pand-id hash order (deterministic, spread over the buurt). Per
@@ -23,7 +25,10 @@ import { isOliveShade, leafDominated, lch, masonryFamily } from '../../src/canal
 
 const arg = (k: string, d: number) => Number(process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1] ?? d);
 const RADIUS_KM = arg('radius-km', 3.5), PER = arg('per-buurt', 20), DAM = [4.8936, 52.3731];
-const OUT = path.resolve('staging/buurt-profiles/pano-samples.json');
+const MODERN = process.argv.includes('--modern');
+const OUT = path.resolve(MODERN ? 'staging/buurt-profiles/pano-samples-modern.json' : 'staging/buurt-profiles/pano-samples.json');
+const MAX_H = MODERN ? 45 : 30, MAX_AREA = MODERN ? 5000 : 600;
+const eraOk = (year: number) => MODERN ? year >= 1945 && year < 2100 : year > 1300 && year < 1945;
 const buurten = JSON.parse(fs.readFileSync('.cache/buurt-profiles/buurten.geojson', 'utf8')).features as any[];
 const hash = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
 const inRing = (x: number, y: number, ring: number[][]) => { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; };
@@ -39,13 +44,13 @@ for (const x of fs.readdirSync(root)) for (const f of fs.readdirSync(path.join(r
   if (!f.endsWith('.gz')) continue;
   for (const feat of JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(root, x, f))).toString()).features ?? []) {
     const pr = feat.properties ?? {}, year = Number(pr.year), height = Number(pr.height);
-    if (!(year > 1300 && year < 1945) || !(height >= 7 && height <= 30) || feat.geometry?.type !== 'Polygon') continue;
+    if (!eraOk(year) || !(height >= 7 && height <= MAX_H) || feat.geometry?.type !== 'Polygon') continue;
     const ring = feat.geometry.coordinates[0] as number[][], lng = ring.reduce((s, p) => s + p[0], 0) / ring.length, lat = ring.reduce((s, p) => s + p[1], 0) / ring.length;
     if (kmFromDam(lng, lat) > RADIUS_KM + 1) continue;
     const rd = ring.map(p => lngLatToRd([p[0], p[1]]));
     let area = 0; for (let i = 0, j = rd.length - 1; i < rd.length; j = i++) area += rd[j].x * rd[i].y - rd[i].x * rd[j].y;
     area = Math.abs(area) / 2;
-    if (area < 40 || area > 600) continue;
+    if (area < 40 || area > MAX_AREA) continue;
     const b = targets.find(t => t.polys.some((p: number[][][]) => inRing(lng, lat, p[0])));
     if (!b) continue;
     const list = byBuurt.get(b.code) ?? []; list.push({ id: String(pr.id).replace('NL.IMBAG.Pand.', ''), ring, height, year, lng, lat, area }); byBuurt.set(b.code, list);

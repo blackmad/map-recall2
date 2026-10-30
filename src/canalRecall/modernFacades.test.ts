@@ -86,3 +86,17 @@ test('deterministic, brick walls take brick swatches and smooth walls concrete o
 });
 
 function hash(s: string): number { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
+
+test('a measured modern era decides the wall and the material; banded offices keep concrete', () => {
+  const painted = { n: 20, walls: [['#e8e6e0', 1]] as const };
+  const brick = { n: 20, walls: [['#5a463e', 1]] as const };
+  for (const id of ids.slice(0, 300)) {
+    const f = { id, year: 1986, heightM: 14, footprintM2: 700 };
+    const p = modernVocabulary(f, painted)!, b = modernVocabulary(f, brick)!;
+    assert.equal(p.wall, '#e8e6e0'); assert.notEqual(BAY_STYLES.modern[p.styleIndex].wallMaterial, 'brick');
+    assert.equal(b.wall, '#5a463e'); assert.equal(BAY_STYLES.modern[b.styleIndex].wallMaterial, 'brick');
+    assert.deepEqual(modernVocabulary(f, { n: 3 }), modernVocabulary(f));
+    const office = { id, year: 1970, heightM: 24, footprintM2: 2500 }, o = modernVocabulary(office)!;
+    if (o.style === 'ribbon' || o.style === 'curtain') assert.deepEqual(modernVocabulary(office, brick), o);
+  }
+});
