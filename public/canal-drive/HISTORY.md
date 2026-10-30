@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**Tunnel cuts round 2 (2026-10-30).**
+- Walls: weathered faces with a pale coping and lip, the wall line smoothed
+  over about 30 m, and headwalls ending halfway to the next carriageway, so
+  the IJ portal reads as one mouth.
+- Neighbouring cuts merge into one trench (`mergeNeighbours`) when the gap is
+  at most 12 m, the floors agree within 1.2 m and the ground between rises at
+  most 1.6 m. The IJ median wedge now sits at −2.3 m; it was a ridge at
+  −1.5 m.
+- A deep ramp carries on through its shallow start (at most 30 m). Slots get
+  lintels where the embankment stands at least 3 m above the floor.
+- False-cut guards: rideable roads are scanned within 120 m of a portal and
+  need walls on both sides for half the run (three Westerpark no-cut
+  regressions).
+- Coverage (`check-tunnels-coverage.ts`): sunken motor approaches cut, 49/59
+  (48 before); rideable mouths or lintels, 35 (5 before).
+- Cost: `prepareCell` at the IJ cell is +0.33 s median at load 7.5, against
+  +0.55 s before this round.
+- 15 named regressions.
+
 **What's New notes link screenshots (2026-10-30).** User: notes should link
 to screenshots, kept in a separate repository so this one does not grow with
 every release. Each note may carry `images: [{src, alt, caption?}]`;
