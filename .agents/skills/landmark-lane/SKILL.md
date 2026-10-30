@@ -158,6 +158,35 @@ Stop early and hand back when:
 No automatic second rounds. A run that ends with a clear blocker report and
 no installs has done its job.
 
+## Loop mode (unattended nights)
+
+When the user starts `/loop`, run this recipe on a self-paced wake every 30
+to 60 minutes. The goal is **ride visibility covered**: the share of the
+top-250 ride-visibility score held by pands with a reviewed pass. Report that
+number, not a building count; a count rewards sheds, the share rewards the
+streets riders see.
+
+Each wake, in order, and only as far as the state allows:
+
+1. Integrate any lane that handed back: inspect the branch, merge, lint,
+   recipe tests, covers, census, `check:canal`, push, close the issue.
+2. Advance the pipeline one step: a re-crop finished means re-triage; rows
+   are buildable means factory; rows are compiled means one strip and one
+   review turn; passes exist means install and step 5.
+3. Nothing buildable means pick the one kit gap that blocks the most ride
+   visibility (sum the triage scores per gap) and spawn one Opus kit lane
+   for it. Never more than one kit lane and one modelling run at a time.
+4. Post the night's numbers on the dev-log issue (#68) after each
+   integration: reviewed, installed, held by gap, turns per reviewed
+   building, covered share before and after.
+
+Nightly budget about 150 of the integrator's turns plus two leaf lanes. Stop
+the night, and say why in the dev log, when a strip passes under 20 %, the
+same blocker appears three times, the budget is reached, or three
+consecutive wakes find nothing to do. Never in the loop: bespoke models,
+hand-tuned single houses, loosened gates, installs without a reviewed strip,
+or answering a `needs-david` question on the user's behalf.
+
 ## Hand back
 
 ```

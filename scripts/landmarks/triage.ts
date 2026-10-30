@@ -5,8 +5,8 @@
  *   node --import tsx scripts/landmarks/triage.ts [--queue=public/canal-drive/landmark-factory-queue.json]
  *        [--targets=docs/reports/landmark-targets-20261029.json] [--limit=40 (0 = all)] [--write]
  *        [--archives=<extra pand-reference-walls roots, comma separated>] [--houses=<extra houses dirs>]
- *        [--validate=<#105 staging houses dir>] [--selftest-out=docs/reports/landmark-triage-selftest-20261029.json]
- *        [--report=<json out>] [--no-measure]
+ *        [--validate=<#105 staging houses dir, or an earlier triage --report json whose validation rows name the #105 holds>] [--selftest-out=docs/reports/landmark-triage-selftest-20261029.json]
+ *        [--report=<json out>] [--no-measure] [--uncover=<pand,...> (validation: run the rules on installed passes as if not covered)]
  *
  * Per candidate: identity (BAG pand from the queue, the POI centre or the OSM parts of a #104 target; underground
  * stations and name merges dropped), `covered` (factory-queue.ts `coveredPands()`, covers.json twins included),
@@ -26,7 +26,9 @@ import {wallHeight} from '../pand-reference/rectify.ts';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
 import {measureFacade, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {curtainEvidence} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
-import {triageCandidate, TRIAGE_VERDICTS, wallFacesStreet, type TriageResult, type WallCrop, type WallInput} from '../../src/canalRecall/landmarks/triage.ts';
+import {ribbonAgainstPunched, ROW_OPENINGS, rowOpenings} from '../../src/canalRecall/buildingRecipe/rowOpenings.ts';
+import {measureFloorBands} from '../../src/canalRecall/buildingRecipe/floorBands.ts';
+import {cropOrder, triageCandidate, TRIAGE_VERDICTS, wallFacesStreet, type TriageResult, type WallCrop, type WallInput} from '../../src/canalRecall/landmarks/triage.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const has = (f: string) => process.argv.includes(f);
@@ -37,7 +39,7 @@ const pandOf = (s: unknown): string | null => { const m = /(\d{16})/.exec(String
 
 const sourceData = process.env.MAP_RECALL_SOURCE_DATA ?? '/Users/blackmad/Code/map-recall2-source-data';
 const archives = [sourceData, ...arg('archives').split(',').filter(Boolean)].map(r => r.endsWith('pand-reference-walls') ? r : path.join(r, 'pand-reference-walls'));
-const houseDirs = ['scripts/building-recipes/houses', ...arg('houses').split(',').filter(Boolean), ...(arg('validate') ? [arg('validate')] : [])];
+const houseDirs = ['scripts/building-recipes/houses', ...arg('houses').split(',').filter(Boolean), ...(arg('validate') && !arg('validate').endsWith('.json') ? [arg('validate')] : [])];
 const queueFile = arg('queue', QUEUE_FILE), targetsFile = arg('targets', 'docs/reports/landmark-targets-20261029.json');
 const limit = Number(arg('limit', '40'));
 
@@ -110,6 +112,7 @@ function streetOf(mid: [number, number], normal: [number, number]): string | nul
 
 // ---- covers: which model draws a pand (coveredPands plus the covers.json model name for the reason)
 const covered = coveredPands();
+for (const p of arg('uncover').split(',').filter(Boolean)) covered.delete(p);
 const coverName = new Map<string, string>();
 for (const [k, m] of Object.entries(read('public/canal-drive/models/covers.json').models as Record<string, {p?: string[]}>)) for (const p of m.p ?? []) { const id = pandOf(p); if (id && !coverName.has(id)) coverName.set(id, k); }
 
@@ -123,12 +126,16 @@ for (const dir of houseDirs) { if (!fs.existsSync(dir)) continue; for (const h o
 
 // ---- crop measurement (cached by sha256)
 const CACHE = 'artifacts/landmark-triage/measure-cache.json';
-const cache: Record<string, {usable: number; foliage: number; washedOut: number; frontClass: FrontClass; family: string | null; glazing: number; curtainDoubt?: string[]}> = fs.existsSync(CACHE) ? read(CACHE) : {};
+/** v3 (#119): + wall basis, the in-photo ribbon-over-punched storeys, the ribbon storeys, and a curtain crop's floor-band proposal; older rows re-measure */
+const CACHE_V = 3;
+type Cached = {v?: number; usable: number; foliage: number; washedOut: number; frontClass: FrontClass; family: string | null; glazing: number; curtainDoubt?: string[];
+  basis: string | null; bandStoreys: {storey: number; againstStorey: number; ribbonM: number}[]; ribbonStoreys: number[]; floorBands: boolean | null};
+const cache: Record<string, Cached> = fs.existsSync(CACHE) ? read(CACHE) : {};
 let measuredNow = 0;
 const saveCache = () => { fs.mkdirSync(path.dirname(CACHE), {recursive: true}); fs.writeFileSync(CACHE, JSON.stringify(cache)); };
 async function measureCrop(dir: string, row: any, heightM: number, storeys: number | null) {
   const key = row.sha256 ?? `${dir}/${row.tag}`;
-  if (cache[key]) return cache[key];
+  if (cache[key]?.v === CACHE_V) return cache[key];
   const jpg = path.join(dir, `${row.tag}.jpg`), maskF = path.join(dir, `${row.tag}.mask.png`);
   if (!fs.existsSync(jpg)) return null;
   const {data, info} = await sharp(jpg).removeAlpha().raw().toBuffer({resolveWithObject: true});
@@ -141,7 +148,11 @@ async function measureCrop(dir: string, row: any, heightM: number, storeys: numb
   let m;
   try { m = measureFacade({image: {width: info.width, height: info.height, rgb: new Uint8Array(data), valid, ppm, topM}, box: {u0: 0, u1: info.width / ppm, v0: 0, v1: top}, lines}); } catch (e) { console.log(`  measure failed ${dir}/${row.tag}: ${(e as Error).message}`); return null; }
   if (++measuredNow % 25 === 0) saveCache();
-  return cache[key] = {usable: +m.usableFraction.toFixed(3), foliage: +m.foliageFraction.toFixed(3), washedOut: +m.washedOutFraction.toFixed(3), frontClass: m.frontClass, family: m.material?.family ?? null, glazing: m.glazing,
+  const wallLike = m.labels && m.clusters ? Uint8Array.from(m.labels, c => (c >= 0 && m.clusters![c]?.wall ? 1 : 0)) : undefined;
+  const rowSummary = rowOpenings({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, box: m.box, lines, wallLike}), bandStoreys = ribbonAgainstPunched(rowSummary);
+  const ribbonStoreys = rowSummary.rows.filter(r => r.openings.some(o => o.w >= ROW_OPENINGS.ribbonM)).map(r => r.storey);
+  const floorBands = m.frontClass === 'curtain' ? measureFloorBands(m, lines).proposal !== null : null;
+  return cache[key] = {v: CACHE_V, basis: m.material?.basis ?? null, bandStoreys, ribbonStoreys, floorBands, usable: +m.usableFraction.toFixed(3), foliage: +m.foliageFraction.toFixed(3), washedOut: +m.washedOutFraction.toFixed(3), frontClass: m.frontClass, family: m.material?.family ?? null, glazing: m.glazing,
     ...(m.frontClass === 'curtain' ? {curtainDoubt: curtainEvidence({glass: m.glass?.hex ?? null, wall: m.wall.hex, usable: m.usableFraction, likenessUsable: m.usableFraction, foliage: m.foliageFraction, washedOut: m.washedOutFraction})} : {})};
 }
 
@@ -184,6 +195,9 @@ for (const c of work) {
   const {year, storeys} = c.pand ? bagFacts(c.pand, fp) : {year: null, storeys: null};
   const heightM = fp ? +fp.height.toFixed(1) : null;
   const mon = c.pand ? dominant.get(c.pand)?.identity?.monument : null, monNo = Number(mon?.number ?? 0);
+  // use: the BAG verblijfsobject functions (backlog `function`), else an OSM parking tag
+  const dom = c.pand ? dominant.get(c.pand) : null, tags = dom?.identity?.osmTags ?? {};
+  const use = (tags.building === 'parking' || tags.amenity === 'parking' || tags.parking) ? `osm parking (${tags.building ?? tags.amenity ?? tags.parking})` : dom?.function ?? null;
   const walls: WallInput[] = [];
   const dir = c.pand ? archives.map(a => path.join(a, c.pand!)).find(d => fs.existsSync(path.join(d, 'walls.json')) && fs.readdirSync(d).some(f => f.endsWith('.jpg'))) : undefined;
   if (dir && fp) {
@@ -193,19 +207,26 @@ for (const c of work) {
       const w0 = ws[0], a = w0.wallRD?.a, b = w0.wallRD?.b, nrm = w0.wallRD?.normal;
       const street = a && b && nrm ? streetOf([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], nrm) : null;
       const crops: WallCrop[] = [];
-      for (const w of ws.sort((p: any, q: any) => (p.obliquityDeg ?? 90) - (q.obliquityDeg ?? 90))) {
-        const crop: WallCrop = {tag: w.tag, lengthM: w.lengthM, crop: w.crop !== false && fs.existsSync(path.join(dir, `${w.tag}.jpg`)), capturedAt: w.capturedAt, cameraDistM: w.cameraDistM, obliquityDeg: w.obliquityDeg, foliage: w.foliage, washedOut: w.washedOut, missingFraction: w.missingFraction};
+      for (const w of ws) {
+        const crop: WallCrop = {tag: w.tag, lengthM: w.lengthM, crop: w.crop !== false && fs.existsSync(path.join(dir, `${w.tag}.jpg`)), capturedAt: w.capturedAt, cameraDistM: w.cameraDistM, obliquityDeg: w.obliquityDeg, foliage: w.foliage, washedOut: w.washedOut, missingFraction: w.missingFraction,
+          // the crop's own height; a row written before walls.json carried it was cut at the default cap
+          wallHeightM: Number(w.wallHeightM) > 0 ? Number(w.wallHeightM) : heightM != null ? +wallHeight(heightM).toFixed(2) : null};
         const prior = measuredByCrop.get(`${c.pand}/${w.tag}`);
         if (prior) { crop.frontClass = prior.frontClass; crop.usable = prior.usable; }
         crops.push(crop);
       }
+      crops.sort(cropOrder);
       // measure the straightest crops until one is judgeable (only those the walls.json fields do not already rule out)
       if (!has('--no-measure')) for (const crop of crops) {
         const pre = triageCandidate({inTiles: true, covered: null, builtYear: year, heightM, cropCapped: false, walls: [{wall: k, lengthM: crop.lengthM, street, crops: [crop]}]});
         if (!pre.walls[0]?.judgeable && pre.walls[0]?.reasons.length) continue;
         if (!crop.frontClass || crop.usable == null) {
           const m = await measureCrop(dir, ws.find((w: any) => w.tag === crop.tag), heightM ?? 10, storeys);
-          if (m) { crop.usable ??= m.usable; crop.frontClass ??= m.frontClass; crop.family = m.family; crop.foliage = m.foliage; crop.washedOut = m.washedOut; crop.glazing = m.glazing; crop.curtainDoubt = m.curtainDoubt; }
+          if (m) { crop.usable ??= m.usable; crop.frontClass ??= m.frontClass; crop.family = m.family; crop.foliage = m.foliage; crop.washedOut = m.washedOut; crop.glazing = m.glazing; crop.curtainDoubt = m.curtainDoubt; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = m.floorBands; }
+        } else {
+          // a measured.json prior gave the class: the #119 rules still need the crop's own measurement
+          const m = await measureCrop(dir, ws.find((w: any) => w.tag === crop.tag), heightM ?? 10, storeys);
+          if (m) { crop.family = m.family; crop.glazing = m.glazing; crop.basis = m.basis; crop.bandStoreys = m.bandStoreys; crop.ribbonStoreys = m.ribbonStoreys; crop.floorBands = crop.frontClass === 'curtain' ? m.floorBands : null; }
         }
         const post = triageCandidate({inTiles: true, covered: null, builtYear: year, heightM, cropCapped: false, walls: [{wall: k, lengthM: crop.lengthM, street, crops: [crop]}]});
         if (post.walls[0]?.judgeable) break;
@@ -213,9 +234,8 @@ for (const c of work) {
       walls.push({wall: k, lengthM: w0.lengthM, street, crops});
     }
   }
-  const capTop = heightM != null ? wallHeight(heightM) : null;
   const t = triageCandidate({dropped: c.dropped, inTiles: !!fp, covered: c.pand && covered.has(c.pand) ? coverName.get(c.pand) ?? 'a placed model or catalogue entry' : null,
-    builtYear: year, rijksmonument: monNo > 0 && (monNo < 200000 || monNo >= 500000), heightM, cropCapped: heightM != null && capTop! < heightM, cropTopM: capTop, walls});
+    builtYear: year, rijksmonument: monNo > 0 && (monNo < 200000 || monNo >= 500000), heightM, use, walls});
   if (c.identityNote) t.reasons.unshift(c.identityNote);
   if (fp && !dir && t.verdict === 'no-evidence' && !walls.length) t.reasons.push('no archived crops (pand-reference-walls/<pand>/walls.json): run the factory crops stage');
   rows.push({...c, heightM, builtYear: year, triage: {...t, date: today}});
@@ -235,7 +255,8 @@ let validation: any[] = [];
 if (arg('validate')) {
   const known = new Map<string, {name: string; recorded: string; note: string; from: string}>();
   for (const r of queue.items) if (r.verdict) known.set(r.pand, {name: r.name ?? r.id, recorded: r.verdict.outcome, note: r.verdict.note ?? '', from: 'factory'});
-  for (const h of fs.readdirSync(arg('validate'))) {
+  if (arg('validate').endsWith('.json')) for (const v of read(arg('validate')).validation ?? []) { if (v.from === '#105' && !known.has(v.pand)) known.set(v.pand, {name: v.name, recorded: v.recorded, note: v.recordedNote ?? '', from: '#105'}); }
+  else for (const h of fs.readdirSync(arg('validate'))) {
     const f = path.join(arg('validate'), h, 'draft.json'), i = path.join(arg('validate'), h, 'intent.json');
     if (!fs.existsSync(f) || !fs.existsSync(i)) continue;
     const p = pandOf(read(i).pandId); if (p && !known.has(p)) known.set(p, {name: h, recorded: 'hold', note: '#105: held, not installed', from: '#105'});
@@ -245,7 +266,7 @@ if (arg('validate')) {
     if (!r) { console.log(`  validate: ${pand} ${k.name} not in the triaged set (raise --limit)`); continue; }
     // a pass since installed is now covered: that is the recorded outcome too
     const predicted = r.triage.verdict, ok = k.recorded === 'pass' ? predicted === 'buildable' || predicted === 'covered' : predicted !== 'buildable';
-    validation.push({pand, name: k.name, from: k.from, recorded: k.recorded, predicted, ok, reasons: r.triage.reasons.slice(0, 4), recordedNote: k.note});
+    validation.push({pand, name: k.name, from: k.from, lane: (queue.items.find(i => i.pand === pand)?.verdict as any)?.lane ?? null, recorded: k.recorded, predicted, gaps: r.triage.gaps, ok, reasons: r.triage.reasons.slice(0, 4), recordedNote: k.note});
   }
   const bad = validation.filter(v => !v.ok);
   console.log(`validation: ${validation.length} known houses, ${validation.length - bad.length} predicted correctly; let through: ${bad.filter(v => v.recorded !== 'pass').map(v => `${v.name} (${v.pand.slice(-6)})`).join(', ') || 'none'}; passes refused: ${bad.filter(v => v.recorded === 'pass').map(v => `${v.name} [${v.predicted}]`).join(', ') || 'none'}`);
@@ -262,7 +283,8 @@ if (arg('selftest-out')) {
   console.log(`self-test batch: ${pick.length} pands -> ${arg('selftest-out')}`);
 }
 if (arg('report')) fs.writeFileSync(arg('report'), JSON.stringify({date: today, counts: count(rows), gaps: Object.fromEntries(gapCounts), validation,
-  rows: rows.map(r => ({id: r.id, pand: r.pand, name: r.name, source: r.source, rank: r.rank, heightM: r.heightM, builtYear: r.builtYear, verdict: r.triage.verdict, gaps: r.triage.gaps, reasons: r.triage.reasons}))}, null, 1) + '\n');
+  rows: rows.map(r => ({id: r.id, pand: r.pand, name: r.name, source: r.source, rank: r.rank, heightM: r.heightM, builtYear: r.builtYear, verdict: r.triage.verdict, gaps: r.triage.gaps, reasons: r.triage.reasons,
+    walls: r.triage.walls.filter(w => w.street).map(w => ({wall: w.wall, lengthM: w.lengthM, judgeable: w.judgeable, crop: w.crop, frontClass: w.frontClass, family: w.family, basis: w.basis, glazing: w.glazing, band: w.bandStoreys?.length ?? null, ribbons: w.ribbonStoreys ?? null, floorBands: w.floorBands, wallHeightM: w.wallHeightM}))}))}, null, 1) + '\n');
 
 if (has('--write')) {
   const byId = new Map(rows.filter(r => r.queueRow).map(r => [r.id, r]));
