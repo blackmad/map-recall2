@@ -13164,7 +13164,7 @@
     "name": "Houseboat Museum (Hendrika Maria)",
     "landmarkId": "extract_landmarks_941219842",
     "modelUrl": "./models/houseboat-museum.glb",
-    "suppressOsmIds": [],
+    "suppressOsmIds": ["w174999382"],
     "spatialSuppression": false,
     "footprint": {
       "centre": [
@@ -18538,7 +18538,7 @@
     "name": "Sea Palace",
     "landmarkId": "n13404202880",
     "modelUrl": "./models/sea-palace.glb",
-    "suppressOsmIds": [],
+    "suppressOsmIds": ["w454006714"],
     "spatialSuppression": false,
     "footprint": {
       "centre": [
@@ -35454,7 +35454,6 @@
     "modelUrl": "./models/academie-theater-dans.glb",
     "suppressOsmIds": [
       "NL.IMBAG.Pand.0363100012185844",
-      "0363100012185844",
       "w268782517"
     ],
     "spatialSuppression": false,
