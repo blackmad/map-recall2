@@ -93,7 +93,11 @@ export interface FacadeMeasurement {
   /** per upper storey band of `lines` (index = storey, ground null): the dominant wall material of that band and a runner-up
    *  of another family or colour when it holds >= 25 % of the band's wall (a spandrel-and-column front) */
   bands?: (BandMaterial | null)[];
-  usableFraction: number; foliageFraction: number; washedOutFraction: number;
+  usableFraction: number; foliageFraction: number;
+  /** washed-out share of the cells, after painted-white floor bands are read as wall (`washedFloorBandRows`, #134) */
+  washedOutFraction: number;
+  /** the washed-out reading: the raw share (every washed cell), the share read as floor bands, the band rows (#134) */
+  washedOut?: {raw: number; floorBands: number; bandRows: number};
   /** `selfTrim`: the wall is its own light trim (`wallIsOwnTrim`): its colour is not darkened under its own 215 mapping */
   normalisation: {method: string; ref: Rgb | null; gain: number; wb: [number, number, number]; selfTrim?: boolean};
   wall: {raw: Rgb; normalised: Rgb; hex: string; rawHex: string; cells: number};
@@ -347,10 +351,45 @@ export function selfTrimWall(wallRaw: Rgb, gain: number, wb: readonly number[]):
   return wallRaw.map((v, i) => Math.max(0, Math.min(255, v * g * wb[i]))) as Rgb;
 }
 
+/**
+ * Washed-out cells that are painted-white floor bands, not glare (GitHub #134). The washed-out test (a cell's mean with
+ * every channel over 150 and a spread under 55) also trips on the white parapet bands of a slab block (Lelylaan 063809
+ * walls[1]: 36 % "washed out" on a front the eye reads at once). This second reading looks at the rows of the washed
+ * mask: a band is a run of rows washed across at least `rowShare` of the row, `minM`..`maxM` thick, with a clear stretch
+ * (`clearM` of rows under `clearShare` washed) within `reachM` above and below it, never touching the box top or bottom
+ * (sky over the eaves); the bands count only when at least `minBands` of them repeat at one spacing (`periodM`, the storey
+ * range, within `tol`): the photo's own floor lines, so a fit whose storey lines are off still finds them. Glare and sky
+ * are solid blocks (AkzoNobel tower 240149, NFTA walls[1]): no clear rows between, no band. Returns 1 per band row.
+ */
+export const WASHED_BANDS = {rowShare: 0.5, minM: 0.2, maxM: 1.8, clearM: 0.3, clearShare: 0.25, reachM: 1.5, minBands: 3, tol: 0.25, periodM: [2, 6.5]} as const;
+export function washedFloorBandRows(washed: Uint8Array, seen: Uint8Array, cols: number, rows: number, cell: number): Uint8Array {
+  const B = WASHED_BANDS, out = new Uint8Array(rows), share: (number | null)[] = [];
+  for (let j = 0; j < rows; j++) { let w = 0, n = 0; for (let i = 0; i < cols; i++) { const k = j * cols + i; if (seen[k]) { n++; if (washed[k]) w++; } } share.push(n >= cols * 0.3 ? w / n : null); }
+  const clearRun = Math.max(1, Math.round(B.clearM / cell)), reach = Math.round(B.reachM / cell);
+  const clearNear = (from: number, step: number) => { let run = 0; for (let d = 1; d <= reach; d++) { const s = share[from + step * d]; if (s === undefined) return false; if (s !== null && s < B.clearShare) { if (++run >= clearRun) return true; } else run = 0; } return false; };
+  const runs: [number, number][] = [];
+  for (let j = 0; j < rows; j++) {
+    if (!(share[j] !== null && share[j]! >= B.rowShare)) continue;
+    let e = j;
+    while (e + 1 < rows && ((share[e + 1] ?? 0) >= B.rowShare || (e + 2 < rows && (share[e + 2] ?? 0) >= B.rowShare && share[e + 1] !== null))) e += (share[e + 1] ?? 0) >= B.rowShare ? 1 : 2;
+    const h = (e - j + 1) * cell;
+    if (j > 0 && e < rows - 1 && h >= B.minM && h <= B.maxM && clearNear(j, -1) && clearNear(e, 1)) runs.push([j, e]);
+    j = e;
+  }
+  if (runs.length < B.minBands) return out;
+  const c = runs.map(([a, b]) => (a + b + 1) / 2 * cell), gaps = c.slice(1).map((x, i) => x - c[i]).filter(g => g >= B.periodM[0] && g <= B.periodM[1]).sort((x, y) => x - y);
+  if (!gaps.length) return out;
+  const P = gaps[Math.floor(gaps.length / 2)], near = (g: number) => Math.abs(g - P) <= B.tol * P;
+  const keep = runs.filter((_, i) => (i > 0 && near(c[i] - c[i - 1])) || (i + 1 < runs.length && near(c[i + 1] - c[i])));
+  if (keep.length < B.minBands) return out;
+  for (const [a, b] of keep) for (let j = a; j <= b; j++) out[j] = 1;
+  return out;
+}
+
 export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const {image: im, box} = input, cell = input.cell ?? CELL_M, gb = input.groundBandM ?? GROUND_BAND_M;
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell));
-  const N = cols * rows, texture = new Float32Array(N), mean: Rgb[] = new Array(N), usable = new Uint8Array(N), foliage = new Uint8Array(N), washed = new Uint8Array(N), edgeX = new Float32Array(N), edgeY = new Float32Array(N);
+  const N = cols * rows, texture = new Float32Array(N), mean: Rgb[] = new Array(N), usable = new Uint8Array(N), foliage = new Uint8Array(N), washed = new Uint8Array(N), seen = new Uint8Array(N), edgeX = new Float32Array(N), edgeY = new Float32Array(N);
   const vOf = (j: number) => box.v1 - (j + 0.5) * cell; // cell centre height
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
     const x0 = Math.floor((box.u0 + i * cell) * im.ppm), x1 = Math.max(x0 + 1, Math.floor((box.u0 + (i + 1) * cell) * im.ppm));
@@ -372,7 +411,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     foliage[k] = n && leaf / n > 0.35 ? 1 : 0;
     usable[k] = n >= total * 0.6 && !foliage[k] && (!input.inside || input.inside(box.u0 + (i + 0.5) * cell, vt - cell / 2)) ? 1 : 0;
     const lo = Math.min(...mean[k]), hi = Math.max(...mean[k]);
-    washed[k] = n && lo > 150 && hi - lo < 55 ? 1 : 0;
+    washed[k] = n && lo > 150 && hi - lo < 55 ? 1 : 0; seen[k] = n ? 1 : 0;
   }
   const lab = mean.map(rgbToLab);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
@@ -393,7 +432,11 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const frac = (idx: number[], f: (k: number) => boolean) => (idx.length ? idx.filter(f).length / idx.length : 0);
   const usableFraction = frac(upperIdx, k => !!usable[k]);
   const foliageFraction = frac(allIdx, k => !!foliage[k]);
-  const washedOutFraction = frac(allIdx, k => !!washed[k]);
+  const washedRaw = frac(allIdx, k => !!washed[k]);
+  // the washed cells of painted-white floor bands are wall, not glare (washedFloorBandRows, #134)
+  const bandRow = washedFloorBandRows(washed, seen, cols, rows, cell);
+  const washedOutFraction = frac(allIdx, k => !!washed[k] && !bandRow[Math.floor(k / cols)]);
+  const washedOut = {raw: +washedRaw.toFixed(3), floorBands: +(washedRaw - washedOutFraction).toFixed(3), bandRows: bandRow.reduce((x, y) => x + y, 0)};
 
   // Exposure: the light trim as a near-white reference.
   const pool = upperUsable.length >= 50 ? upperUsable : allIdx.filter(k => usable[k]);
@@ -614,7 +657,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const split = wallSplit(allUsable.filter(k => mask[k] === MASK.wall && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const rowJoints = frontRows(allUsable.filter(k => (mask[k] === MASK.wall || mask[k] === MASK.trim) && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const clusters = centres.map((c, i) => ({solid: +solid[i].toFixed(2), lab: c.map(v => +v.toFixed(1)) as Rgb, share: +share[i].toFixed(3), warm: warm(c), score: +score[i].toFixed(4), mixed: mixed[i], enrich: +enrich[i].toFixed(2), conn: +shape[i].conn.toFixed(2), span: [+shape[i].spanW.toFixed(2), +shape[i].spanH.toFixed(2)], wall: wallSet[i]}));
-  return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3),
+  return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3), washedOut,
     normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number], ...(selfTrim ? {selfTrim: true} : {})},
     wall: {raw: wallRawFinal.map(Math.round) as Rgb, normalised: wallN.map(Math.round) as Rgb, hex: hex(wallN), rawHex: hex(wallRawFinal), cells: wallCells.length},
     clusterMask, ...(altMask ? {altMask} : {}), material, bands, wallSample: Int32Array.from(wallCells),

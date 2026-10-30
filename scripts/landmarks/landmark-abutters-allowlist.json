@@ -515,5 +515,12 @@
    "reason": "Separate rear house on the north edge of the Felix Meritis plot (BAG 0363100012174322, 14.66 m), behind the garden. The GLB covers 0 % of it; it sits in the hull only because the model's placement footprint is the whole 86 m plot. Deliberately un-suppressed on 2026-10-23 (4fe12b6c4) so the ordinary layer draws it; front house, oval hall, garden, rear house matches the PDOK 2023 aerial.",
    "evidence": "commit 4fe12b6c4 and HISTORY 'Felix Meritis: the length complaint was already fixed; the rear house returns'; ortho artifacts/landmark-abutters/felix-meritis.jpg; game frame integrator-lanes artifacts/felix-feedback/game-rear.png (rear house drawn past the garden)"
   }
+ },
+ "oba-oosterdok": {
+  "w1487606296": {
+   "verdict": "fine",
+   "reason": "South strip (12 m) of the separate block north of the OBA, under its own roof; it abuts the OBA north wall. Flagged on 2026-10-30 only because the OBA now also hides its podium outline w240467636, which widened the hull.",
+   "evidence": "ortho artifacts/landmark-abutters/crops/oba-oosterdok__w1487606296__ortho.jpg; pano artifacts/landmark-abutters/crops/oba-oosterdok__w1487606296__pano1.jpg (OBA rear entrance beside it)"
+  }
  }
 }

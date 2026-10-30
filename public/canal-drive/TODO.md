@@ -58,14 +58,20 @@ no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
-inferred-install policy; running under policy A meanwhile). Next spend, per
-the kill rule: a kit lane for floor bands on curtain walls (unlocks 19
-triage `curtain` candidates and the 95 inferred glass installs' FAILs), the
-32 m crop cap raised for the 95 `tower` candidates (`all-walls.ts
---max-height`, needs a re-crop), and the three self-test gaps (glazed
-pavilion under a deep roof, glazed sawtooth hall, painted-black front with
-white balconies). Self-test drafts sit in the skill worktree's
-`staging/landmark-lane-selftest/`, uncommitted (they would move fit-golden).
+inferred-install policy; running under policy A meanwhile). Spent since, per
+the kill rule: floor bands on curtain walls (#116), the 70 m crop cap for
+towers (round 3), band fronts (#126, #127: `balconyBands.spans`, ribbon and
+glazed-storey proposals) and the band measurement blockers (#134, HISTORY
+"Band fronts measured"): painted floor bands no longer count as washed-out
+glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
+groups are probed again when a crop pairs them. Measured result: 0 of 253
+inferred groups moved and none of the 17 ride-landmark drafts passes yet;
+what still blocks them is in the tier sheet (item 8). Next spend by blocked
+ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
+closer-crop or second-capture signal for pale brick fronts (240435) that the
+cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
+would move fit-golden).
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
@@ -95,6 +101,28 @@ world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
 shader (B) / L7 shadows (D). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
+State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
+`?world=v1`, cells NOT published yet): WRLD v1 format
+(STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
+`npm run world:compile` runs the runtime's own decorators/roof/grouping into
+`artifacts/world/staging/` (604 cells, 347,698 buildings, 14–19 s, `--changed`),
+the tile streamer under the flag reads cells with no GeoJSON, facts fetches,
+decorator chain or MapLibre `setData` on the main thread (per dense tile
+163–301 ms → 25–58 ms, Node). Chunk arrays byte-identical at five sentinels and
+the resident set identical through the real streamer. **Gates not met:**
+15.79 MB gz against the ≤ 4 MB target (replaces 21.5 MB of inputs; FOOT 7.5 MB
+at exact 1e-7° so decoded coordinates equal the default path's, 0.1 m would
+save 0.8 MB and move vertices; ATTR 2.45 MB + STRS 2.07 MB are runtime-unneeded
+once consumers read STYL only; floor at exact coords ≈ 9 MB) and decode ≤ 5 ms
+per cell at 4× (desktop p95 4.5 ms, max 9.5 ms; needs the worker-side read, L4).
+Open: browser A/B `WORLD_AB=1 … world-v1-ab` (waited 80 min on the Playwright
+lock, not run), publish the cells (16 MB in git; after the A/B), worker-side
+decode, LMRK/WATR/ROAD/TREE/LABL streams, non-default looks under the flag get
+the default look's style. Pre-existing red found on main:
+`scripts/check-building-look-transition.ts` throws
+`t.chunks.get(first.key)` undefined (`test:city-startup` step; fails on
+`72d48311c` too), not from this lane; CI is green because `check:canal` does
+not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
@@ -1047,17 +1075,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
-  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
-  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
-  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
-  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
-- **Buildings over roads: re-scan as a check (2026-10-30).** After the
-  underground and void drops, about 375 footprints still cover ≥ 6 m of a
-  car-road centreline. The ones looked at are real (IJ-tunnel portals,
-  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
-  bridges), but the list has not been read end to end. Make the one-off scan
-  a check with an allowlist.
+- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
+  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
+  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
+  street that OSM does not tag as passing under them, on the reviewed list in
+  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
+  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
+  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
+  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
+  street runs under the building, tag the way in OSM or add a passage
+  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
+  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
+  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
+  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
+  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
+  on PDOK.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding

@@ -19,15 +19,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { createHash } from 'node:crypto';
 import { tileBounds } from '../src/canalRecall/slippyTiles';
 import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles';
 import { readTileIndex } from '../src/canalRecall/bag3dTileIndex';
 import { lngLatToRd } from '../src/canalRecall/facade/rdNew';
-import { readGeoTiff, type Raster } from '../src/canalRecall/ownGround/geotiff';
+import { ahnForRings, fetchRetry } from './lib/ahnFootprint';
 import { centrelineInsideM } from '../src/canalRecall/undergroundBuildings';
-import { pointInRing, ringBounds, type LngLat, type Ring, type TileBuilding } from '../src/canalRecall/landmarks/osmUnderModels';
-import { ahnHeights, coveredShare, fillDecision, findBagGaps, supplementFeature, type BagGap, type RegisterPand, type SupplementFeature } from '../src/canalRecall/bagGaps';
+import { ringBounds, type LngLat, type Ring, type TileBuilding } from '../src/canalRecall/landmarks/osmUnderModels';
+import { coveredShare, fillDecision, findBagGaps, osmHeightGuessed, supplementFeature, type BagGap, type RegisterPand, type SupplementFeature } from '../src/canalRecall/bagGaps';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const flag = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -35,17 +34,9 @@ const withHeights = process.argv.includes('--heights');
 const limit = Number(flag('limit') ?? Infinity), onlyTile = flag('tile');
 const TILES = path.join(ROOT, 'public/data/extracts/amsterdam/bag-tiles');
 const STAGING = path.join(ROOT, 'scripts/data/bag-gaps');
-const WFS_CACHE = path.join(ROOT, '.cache/bag-wfs'), AHN_CACHE = path.join(ROOT, '.cache/bag-gaps-ahn');
+const WFS_CACHE = path.join(ROOT, '.cache/bag-wfs');
 const WFS = 'https://service.pdok.nl/lv/bag/wfs/v2_0', WCS = 'https://service.pdok.nl/rws/ahn/wcs/v1_0';
 
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-async function fetchRetry(url: string, accept: (r: Response) => boolean): Promise<Response> {
-  for (let attempt = 0; ; attempt++) {
-    try { const r = await fetch(url, { signal: AbortSignal.timeout(90_000) }); if (r.ok && accept(r)) return r; if (attempt >= 5) throw new Error(`HTTP ${r.status} ${url}`); }
-    catch (e) { if (attempt >= 5) throw e; }
-    await sleep(1500 * (attempt + 1));
-  }
-}
 async function pool<T, R>(items: T[], n: number, fn: (t: T, i: number) => Promise<R>): Promise<R[]> {
   const out: R[] = new Array(items.length); let next = 0;
   await Promise.all(Array.from({ length: n }, async () => { while (next < items.length) { const i = next++; out[i] = await fn(items[i], i); } }));
@@ -118,7 +109,22 @@ const inSurvey = (c: LngLat) => {
     && tileKeys.some(k => { const [z, tx, ty] = k.split('/').map(Number); const [w, s, e, n] = tileBounds({ z, x: tx, y: ty }); return c[0] >= w && c[0] < e && c[1] >= s && c[1] < n; });
 };
 console.log(`3DBAG ${BAG3D_VERSION}: built from ${builtFrom.length} cached tiles`);
-const gaps = findBagGaps(pands.values(), tileIds, tilesNear).filter(g => inSurvey(g.centre));
+// OSM-only outlines (tier 4) drawn at the default height do not draw a pand (osmHeightGuessed).
+const guessed = new Set<string>();
+{
+  const tier4 = new Set<string>();
+  for (const key of index.tileList) for (const f of (JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(TILES, `${key}.geojson.gz`))).toString()) as { features: { properties: { id?: string; tier?: number } }[] }).features)
+    if (f.properties.tier === 4 && /^[wr]\d/.test(String(f.properties.id))) tier4.add(String(f.properties.id));
+  const seq = path.join(ROOT, '.cache/osm-source/derived/amsterdam-buildings.geojsonseq');
+  for (const raw of fs.readFileSync(seq, 'utf8').split('\n')) {
+    const m = raw.match(/"@type":"(way|relation)","@id":(\d+)/) ?? raw.match(/"@id":(\d+)/);
+    if (!m) continue;
+    const id = `${raw.includes('"@type":"relation"') ? 'r' : 'w'}${m[m.length - 1]}`;
+    if (tier4.has(id) && osmHeightGuessed((JSON.parse(raw.replace(/^\u001e/, '')) as { properties: Record<string, unknown> }).properties)) guessed.add(id);
+  }
+  console.log(`tier-4 outlines: ${tier4.size}, ${guessed.size} at the guessed default height`);
+}
+const gaps = findBagGaps(pands.values(), tileIds, tilesNear, guessed).filter(g => inSurvey(g.centre));
 console.log(`register: ${pands.size} pands in ${cells.length} z16 cells; ${gaps.length} gaps`);
 
 // ---- placed models ---------------------------------------------------------------------------------------------
@@ -147,20 +153,6 @@ const modelled = new Map<string, string>();
 const holes = gaps.filter(g => !modelled.has(g.id));
 
 // ---- heights (AHN) ---------------------------------------------------------------------------------------------
-async function raster(coverage: 'dsm_05m' | 'dtm_05m', bbox: number[]): Promise<Raster> {
-  const url = `${WCS}?` + new URLSearchParams({ SERVICE: 'WCS', VERSION: '1.0.0', REQUEST: 'GetCoverage', COVERAGE: coverage, CRS: 'EPSG:28992', BBOX: bbox.join(','), RESX: '0.5', RESY: '0.5', FORMAT: 'GEOTIFF' });
-  const file = path.join(AHN_CACHE, `${createHash('sha1').update(url).digest('hex')}.tif`);
-  if (!fs.existsSync(file)) {
-    const res = await fetchRetry(url, r => (r.headers.get('content-type') ?? '').includes('tiff'));
-    fs.mkdirSync(AHN_CACHE, { recursive: true });
-    fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
-  }
-  return readGeoTiff(fs.readFileSync(file), b => zlib.inflateSync(b));
-}
-const sample = (r: Raster, x: number, y: number) => {
-  const col = Math.floor((x - r.originX) / r.pixelX), row = Math.floor((r.originY - y) / Math.abs(r.pixelY));
-  return col < 0 || row < 0 || col >= r.width || row >= r.height ? NaN : r.data[row * r.width + col];
-};
 const supplement: SupplementFeature[] = [];
 const decisions: Record<string, number> = {};
 const reviewList: unknown[] = [];
@@ -186,17 +178,7 @@ if (withHeights) {
   decisions['too-small'] = above.length - fill.length;
   await pool(fill, 4, async g => {
     const rings = pands.get(g.id.replace('NL.IMBAG.Pand.', ''))!.rings;
-    const rd = rings.map(r => r.map(p => { const q = lngLatToRd([p[0], p[1]]); return [q.x, q.y] as [number, number]; }));
-    const xs = rd.flat().map(p => p[0]), ys = rd.flat().map(p => p[1]), pad = 6;
-    const bbox = [Math.floor(Math.min(...xs) - pad), Math.floor(Math.min(...ys) - pad), Math.ceil(Math.max(...xs) + pad), Math.ceil(Math.max(...ys) + pad)];
-    const [dsm, dtm] = await Promise.all([raster('dsm_05m', bbox), raster('dtm_05m', bbox)]);
-    const roof: number[] = [], ground: number[] = [];
-    // Roof: cell centres inside the footprint, 0.5 m in from the walls is not needed at p70. Ground: DTM in the padded box.
-    for (let x = bbox[0] + 0.25; x < bbox[2]; x += 0.5) for (let y = bbox[1] + 0.25; y < bbox[3]; y += 0.5) {
-      const inside = rd.some(r => pointInRing([x, y], r as unknown as Ring));
-      if (inside) roof.push(sample(dsm, x, y)); else ground.push(sample(dtm, x, y));
-    }
-    const h = ahnHeights(roof, ground);
+    const h = await ahnForRings(rings);
     heightOf.set(g.id, h);
     const why = fillDecision(g, h);
     decisions[why] = (decisions[why] ?? 0) + 1;

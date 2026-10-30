@@ -166,3 +166,28 @@ export function sameMeasuredIntent(prev: LargeBuildingIntent, next: LargeBuildin
   const norm = (i: LargeBuildingIntent) => stableJson({...i, measured: i.measured ? {...i.measured, date: '-'} : undefined, notes: (i.notes ?? []).filter(t => !t.startsWith('Measured '))});
   return norm(prev) === norm(next);
 }
+
+/**
+ * Groups a draft's triangle budget drew blank (measure.ts `capDraftBudget`, its "Triangle budget: ... unphotographed
+ * groups a, b drawn blank" note) that are still blank: no crop paired them then, but a later one may (a set-back pairing,
+ * #127: Lelylaan 063809 walls[1], [2]), and the likeness skips blank groups, so they would never be measured again
+ * (GitHub #134). measure.ts compiles these with the draft's system to see whether a crop now pairs them.
+ */
+export function budgetBlankedGroups(intent: Pick<LargeBuildingIntent, 'notes' | 'walls'>): number[] {
+  const note = (intent.notes ?? []).find(t => t.startsWith('Triangle budget: '));
+  const m = note?.match(/unphotographed groups ([\d, ]+) drawn blank/);
+  if (!m) return [];
+  return [...new Set(m[1].split(',').map(s => Number(s.trim())).filter(g => Number.isInteger(g) && intent.walls[g]?.system === 'blank'))].sort((a, b) => a - b);
+}
+
+/** The budget note without the groups a crop now pairs (they are measured, not budget-blanked); other notes unchanged. */
+export function withoutBudgetBlanked(notes: readonly string[], groups: readonly number[]): string[] {
+  const drop = new Set(groups);
+  return notes.map(t => {
+    if (!t.startsWith('Triangle budget: ')) return t;
+    return t.replace(/unphotographed groups ([\d, ]+) drawn blank/, (_, list: string) => {
+      const keep = list.split(',').map(s => s.trim()).filter(s => s && !drop.has(Number(s)));
+      return `unphotographed groups ${keep.join(', ') || 'none'} drawn blank`;
+    });
+  });
+}
