@@ -157,6 +157,33 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**City look re-levelled; flip pending (2026-10-30, lane #135, decision #137).**
+The opt-in city look (`?cityLook=1`: one facade shader drawing photo brick
+cells on chunks, recipe houses and bespoke landmarks alike) was dour against
+the sunny frame since the 2026-10-23 pass (whole-frame luma 7 to 16 points
+under the default). Lane #135 raised its level to 1 under the sunny rig (0.9
+stays under `?look=legacy`), gave city chunks the same `litFacadeWallGain`
+the default look uses, and gave unrecorded GLB brick and accent the #73
+sunlit gain, so a chunk in the city look now draws what the default draws:
+Dam 131→138, Kinkerbuurt 128→128, Osdorper Ban 141→141, Prinsengracht
+121→124 (off → on). Two landmark roof rules came with it: the kit's dark
+slate maps to the default measured slate, and level faces of an inferred
+`slate` material draw as bitumen flat roof (Theater Amsterdam, Stedelijk,
+Studio K, The Movies had painted decks). The cost is that landmarks brighten
+at gallery-card size, +13.6 % sun / +15.5 % shade median over 356 GLBs
+against the brief's ±2 %: flag-off landmarks draw raw kit hex with neither
+the brick lift nor the sunlit gain, and one shared brick cannot match both
+them and the chunks. Level 0.85 would hit ±2 % and make the chunks dour
+again, so the choice went to David as #137 with the strip (review/ in the
+screenshots repo). Ride perf is unchanged on desktop (16.7 ms median either
+way, 98 → 104 MB facade textures); iPhone is unmeasured. The gallery review
+now tells GLB-baked inferred slots from explicit tags and renders four-side
+close-ups (`--views`); it found that all 356 models are inferred and none
+explicit, and listed the wrong ones for the re-tag lane #138. The flag-off
+code path is unchanged (verified from the diff; a base-vs-base
+look-consistency control run was not possible with the browser lock
+contended), and the four bundles were rebuilt in the merge commit.
+
 **Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
 measurement blockers from the band kit lanes (#126, #127) are fixed in the
 judge and the measurer, with LIKENESS constants unchanged. `measureFacade`

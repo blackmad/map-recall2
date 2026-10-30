@@ -73,6 +73,18 @@ cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
+**City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
+the city look (HISTORY "City look re-levelled; flip pending"); source and
+bundles are on main with the flag still off. A = flip on at level 1 (chunks
+match today, landmarks +14 % brighter at card size), B = level 0.85
+(landmarks within ±2 %, chunks dour), C = keep off. On A or B the integrator
+flips `cityLookEnabled` to default on with `?cityLook=0` as opt-out, rebuilds
+the four bundles, and writes the What's New note with the strip. Follow-ups
+regardless: re-tag lane #138 (wrong inferred slots: brown roofs as slate,
+ochre trim as brick, American Hotel sandstone), a base-vs-base
+look-consistency control run when the browser lock is quiet, iPhone perf
+with the slot array at 128², and the 9 missing bagYears.
+
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
 `docs/handoffs/slop-newyork-plan-20261029.md`, evidence
