@@ -7,9 +7,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { densifyOnRelief, emptyMesh, type MeshArrays } from './drape';
-import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowTint, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
+import { buildRoadSurfaces, coveredShare, drapeAdaptive, kerbEdges, kerbShadowEnds, kerbShadowTint, KERB_LINE_M, KERB_SHADOW_M, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
 import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
+import { cycleThrough } from './cycleThrough';
+import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, luma709, ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId } from './groundLook';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
 
@@ -75,25 +77,31 @@ test('road surfaces: the partition drapes without coplanar overlaps, at the clas
   assert.ok(!kerbs.some(run => run.every(([x]) => Math.abs(x - 4) < 1e-9) && run.every(([, y]) => y >= 4)), 'no kerb between the carriageway and the fietspad');
   assert.equal(stats.kerbUnsided, 0);
   assert.ok(stats.kerbs >= 4 && (layers.kerb?.indices.length ?? 0) > 0);
-  // The kerb faces stand on the carriageway side: every kerb-wall vertex is within 0.16 m of a kerb line (the 0.15 m granite line lies on the pavement side).
-  const kp = layers.kerb!.positions;
-  for (let i = 0; i < kp.length; i += 3) assert.ok(Math.abs(Math.abs(kp[i]) - 4) < 0.16 || Math.abs(Math.abs(kp[i + 1]) - 4) < 0.16 || Math.abs(kp[i] - 6) < 0.16, `kerb vertex off the kerb lines ${kp[i]},${kp[i + 1]}`);
+  // The kerb faces stand on the kerb lines: every kerb vertex is within the granite line (pavement side) or the shadow
+  // ramp (low side) of a kerb line, whichever is wider (lane road-look-continuity 2026-10-29: 0.25 m and 0.45 m).
+  const kp = layers.kerb!.positions, reach = Math.max(KERB_LINE_M, KERB_SHADOW_M) + 0.01;
+  for (let i = 0; i < kp.length; i += 3) assert.ok(Math.abs(Math.abs(kp[i]) - 4) < reach || Math.abs(Math.abs(kp[i + 1]) - 4) < reach || Math.abs(kp[i] - 6) < reach, `kerb vertex off the kerb lines ${kp[i]},${kp[i + 1]}`);
   // The kerb's shadow line (issue #52): kerb vertices tinted to the dark groove, on the low side of every kerb within
   // KERB_SHADOW_M, at the rails' lift, never on the pavement; the rest of the kerb is untinted (the kerb tone).
-  const kc = layers.kerb!.colors!, tint = kerbShadowTint();
+  // Since lane road-look-continuity 2026-10-29 the shadow is a KERB_SHADOW_M ramp: the groove tint at the face to the
+  // low side's own surface tone (over the kerb tone) at its outer edge, never the light kerb tone on the road.
+  const kc = layers.kerb!.colors!, tint = kerbShadowTint(), ends = Object.values(kerbShadowEnds());
   assert.ok(tint.every(v => v < 0.6), `tint ${tint}`);
-  let tinted = 0;
+  assert.ok(ends.every(e => e.every(v => v < 1) && e.some((v, c) => v > tint[c])), `ramp ends ${JSON.stringify(ends)}`);
+  let tinted = 0, faces = 0, outer = 0;
   for (let i = 0; i < kp.length; i += 3) {
     const t = [kc[i], kc[i + 1], kc[i + 2]];
     if (t.every(v => v === 1)) continue;
-    assert.deepEqual(t, tint);
+    const isFace = t.every((v, c) => Math.abs(v - tint[c]) < 1e-6), isEnd = ends.some(e => t.every((v, c) => Math.abs(v - e[c]) < 1e-6));
+    assert.ok(isFace || isEnd, `shadow vertex tint ${t}`);
+    if (isFace) faces++; else outer++;
     tinted++;
     const [x, y, z] = [kp[i], kp[i + 1], kp[i + 2]];
     assert.ok(Math.abs(z - ROAD_MARK_LIFT.rail) < 1e-6, `shadow line at z=${z}`);
     const cls = index.classAt(x + Math.sign(x) * -0.01, y + Math.sign(y) * -0.01);
     assert.ok(cls !== 'foot', `shadow line vertex on the pavement at ${x.toFixed(2)},${y.toFixed(2)}`);
   }
-  assert.ok(tinted >= 8, `tinted vertices ${tinted}`);
+  assert.ok(tinted >= 8 && faces === outer, `tinted vertices ${tinted} (face ${faces}, outer ${outer})`);
   // The index answers class, mesh, height and the road test.
   assert.equal(index.classAt(0, 20), 'carriage'); assert.equal(index.classAt(5, 20), 'cycle'); assert.equal(index.classAt(-20, 20), 'foot'); assert.equal(index.classAt(80, 80), null);
   assert.equal(index.meshAt(20, 0), 'klinker'); assert.equal(index.heightAt(0, 0), 0);
@@ -235,4 +243,72 @@ test('roads R1 triangles: kerb stations follow the relief, coarse relief caps th
   assert.ok(built.stats.kerbs === 2 && built.stats.bollards > 0, `kerbs ${built.stats.kerbs}, bollards ${built.stats.bollards}`);
   const bp = built.layers.bollard!.positions;
   for (let i = 1; i < bp.length; i += 3) assert.ok(bp[i] > 0, `post at y ${bp[i]} by the berm`);
+});
+
+test('cycle through: the fietspad red crosses a junction mouth the survey calls rijbaan, straight and short only', () => {
+  // A main road (x -4..4), the fietspad east of it (x 4..6) broken by a side street's mouth (y -h..h, the rijbaan).
+  const mouth = (h: number): Poly[] => [
+    { c: 'carriage', k: 'asphalt', ring: [[-4, -60], [4, -60], [4, 60], [-4, 60]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, -60], [6, -60], [6, -h], [4, -h]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, h], [6, h], [6, 60], [4, 60]] },
+    { c: 'carriage', k: 'asphalt', ring: [[4, -h], [50, -h], [50, h], [4, h]] },
+  ];
+  const run = (polys: Poly[], g: Vec2[]) => {
+    const index = new RoadIndex([cellOf(polys)]);
+    const ways = prepareWays([{ id: 1, tags: { highway: 'cycleway', oneway: 'yes' }, g }], ll);
+    const m = emptyMesh();
+    return { m, index, stats: cycleThrough(m, ways, () => true, index, flat) };
+  };
+  const straight = run(mouth(5), [[5, -50], [5, 50]]);
+  assert.equal(straight.stats.drawn, 1, JSON.stringify(straight.stats));
+  assert.ok(Math.abs(straight.stats.metres - 10) < 1.1, `run ${straight.stats.metres} m`);
+  const cs = centroids(straight.m);
+  assert.ok(cs.length > 0 && cs.every(([x, y, z]) => straight.index.classAt(x, y) === 'carriage' && x > 3 && x < 7 && Math.abs(y) <= 5.6 && Math.abs(z - ROAD_MARK_LIFT.lane) < 1e-9), 'the band lies on the mouth, at the lane lift');
+  // Too long a run is a street of its own, not a mouth.
+  assert.deepEqual(run(mouth(15), [[5, -50], [5, 50]]).stats.skipped.long, 1);
+  // A cycleway turning into the side street is not a crossing of it.
+  assert.equal(run(mouth(5), [[5, -50], [5, 0], [40, 0]]).stats.drawn, 0);
+  // No fietspad beyond the mouth (the way runs out onto the road): nothing drawn.
+  const open = run(mouth(5).slice(0, 2).concat([{ c: 'carriage', k: 'asphalt', ring: [[4, -5], [50, -5], [50, 60], [4, 60]] }]), [[5, -50], [5, 20]]);
+  assert.equal(open.stats.drawn, 0);
+  // Round 2, Witte de Withstraat × Van Kinsbergenstraat: 3 m of raised berm either side of the mouth's rijbaan. The band
+  // runs over them at the sidewalk top; a longer berm (a planted strip, not a mouth) still stops it.
+  const bermMouth = (b: number): Poly[] => [
+    { c: 'carriage', k: 'asphalt', ring: [[-4, -60], [4, -60], [4, 60], [-4, 60]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, -60], [6, -60], [6, -5 - b], [4, -5 - b]] },
+    { c: 'berm', k: 'paving', ring: [[4, -5 - b], [6, -5 - b], [6, -5], [4, -5]] },
+    { c: 'carriage', k: 'asphalt', ring: [[4, -5], [50, -5], [50, 5], [4, 5]] },
+    { c: 'berm', k: 'paving', ring: [[4, 5], [6, 5], [6, 5 + b], [4, 5 + b]] },
+    { c: 'cycle', k: 'cycle', ring: [[4, 5 + b], [6, 5 + b], [6, 60], [4, 60]] },
+  ];
+  const overBerm = run(bermMouth(3), [[5, -50], [5, 50]]);
+  assert.equal(overBerm.stats.drawn, 1, JSON.stringify(overBerm.stats));
+  const raised = centroids(overBerm.m).filter(([x, y]) => overBerm.index.classAt(x, y) === 'berm');
+  assert.ok(raised.length > 0 && raised.every(([, , z]) => Math.abs(z - (ROAD_MARK_LIFT.lane + SIDEWALK_TOP - LIFT.carriageway)) < 1e-9), 'the band lies on the berms at the sidewalk top');
+  assert.equal(run(bermMouth(8), [[5, -50], [5, 50]]).stats.drawn, 0, 'an 8 m planted strip is not a mouth');
+});
+
+test('road look: the options keep the asphalt hue, open a wide level gap, and courtyard green is muted', () => {
+  const street = groundPalette(GROUND_LOOK_DEFAULT).street, asphalt = street.asphalt.base;
+  const gaps: number[] = [];
+  for (const id of Object.keys(ROAD_LOOK_OPTIONS) as RoadLookId[]) {
+    const t = roadLookTones(street, id), L = ROAD_LOOK_OPTIONS[id].asphaltLuma;
+    assert.ok(Math.abs(luma709(t.asphalt) - L) < 1, `${id} asphalt ${t.asphalt} at luma ${L}`);
+    assert.ok(Math.abs(t.asphalt[0] / t.asphalt[2] - asphalt[0] / asphalt[2]) < 0.03, 'hue kept');
+    // The klinker carriageway sits on the road level, nearer the asphalt than the pavement.
+    assert.ok(luma709(t.klinker) - L < (luma709(t.pavement) - L) / 3, `${id} klinker ${t.klinker}`);
+    // Rails and the kerb's shadow read as dark lines on the dark carriageway (not light: issue #52).
+    assert.ok(L - luma709(t.rail) >= 30 && L - luma709(t.kerbShadow) >= 30, `${id} rail ${t.rail} shadow ${t.kerbShadow}`);
+    const tint = kerbShadowTint(groundPalette(GROUND_LOOK_DEFAULT), id), kerb = [1, 3, 5].map(i => parseInt(street.kerb.slice(i, i + 2), 16));
+    assert.ok(Math.abs(luma709(tint.map((v, c) => v * kerb[c])) - luma709(t.kerbShadow)) < 3, `${id} tint ${tint}`);
+    gaps.push(luma709(t.pavement) - L);
+  }
+  // Palette gaps at least 60 (rendered pavement sits ~20 under its palette luma; the target is a rendered 40) and apart.
+  assert.ok(gaps.every(g => g >= 60), `gaps ${gaps}`);
+  assert.ok(gaps[1] - gaps[0] >= 20 && gaps[2] - gaps[1] >= 15, `gaps ${gaps}`);
+  assert.deepEqual(roadLookTones(street, null).asphalt, [...asphalt], 'no option: the palette');
+  const lawn = [110, 154, 74], g = gardenTone(lawn);
+  assert.ok(Math.abs(luma709(g) - (luma709(lawn) - 15)) < 1, `garden ${g}`);
+  const chroma = (c: readonly number[]) => Math.max(...c) - Math.min(...c);
+  assert.ok(chroma(g) < 0.7 * chroma(lawn), `garden chroma ${chroma(g)} against ${chroma(lawn)}`);
 });

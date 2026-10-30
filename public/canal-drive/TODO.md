@@ -187,17 +187,22 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
-  **Road look, continuity (user 2026-10-29, iPhone at the Witte de
-  Withstraat × Van Kinsbergenstraat: "why isn't the grey continuous?",
-  look over accuracy): brief `docs/handoffs/lane-road-look-continuity-20261029.md`,
-  opus. Diagnosis at the pinned spot: partition fine (R1 14.7 m², R2 0,
-  R3 3.7), but seven greys in one material each, the kerb step under a
-  pixel on the phone, asphalt as light as the pavement (144 vs 175), no
-  tram rails (no `embedded_rails` on the way; `railway=tram` never
-  fetched), red notched at every junction mouth, saturated courtyard
-  lawns. Steps: one material per level, kerb edge ≥ 1.5 px on the
-  iPhone frame, darker asphalt (user picks of three), red through
-  junctions, rails from `railway=tram`, muted courtyards. Not started.
+  **Zebras and the Muntplein (user 2026-10-30 screenshots)**: lane
+  `lane/zebra-munt-20261030` (opus), running. Zebras by Arcam (Prins
+  Hendrikkade × Kattenburgerstraat) break into pieces at every BGT polygon
+  edge; 45 crossings in cell 0_0 dropped on cycle lanes; the crossing audit
+  measures against the clipped polygon, so it passes them. Muntplein: water
+  through the bridge road, a brown klinker band, the tram wye reads as
+  wireframe, 3 of 5 zebras drawn. City-wide rule plus a new `short` audit
+  category; both spots pinned as regressions.
+  **Road look, continuity, left open** (shipped 2026-10-30 as look B, HISTORY
+  "Road look continuity"): the kerb edge is under 1.5 px on desktop at far
+  junctions (an `fwidth` ground-shader edge was not prototyped); the east kerb
+  at the Witte de Withstraat shows no shadow dip; road-way `cycleway=track`
+  sides are not bridged at junction mouths; the red band is 2 m on the OSM line,
+  not the BGT fietspad width (a thin dark sliver at the Witte mouth); tram rails
+  use one offset per way, so tracks that wander against the OSM way (Witte
+  ±1.9 m) need rails drawn from BGT spoor lines (new extract).
 - **build-hash-skip**: done 2026-10-23 (3 s no-change run). Open: four
   committed GLBs (compagnietheater, levend-paardenmuseum, mountain-network,
   pathe-de-munt) are not reproducible from current source; 8 haparandaweg-*

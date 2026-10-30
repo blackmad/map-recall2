@@ -11,7 +11,7 @@
 
 import { groundTokens } from '../look/sunny.js';
 import { hexToRgb, type RGB } from '../look/palette.js';
-import type { GroundPalette } from '../ownGround/groundLook.js';
+import { gardenTone, type GroundPalette } from '../ownGround/groundLook.js';
 import type { GroundLayer } from '../ownGround/groundCell.js';
 import { QUAY } from '../ownGround/water.js';
 import { DECK_TOP } from '../ownGround/decks.js';
@@ -27,7 +27,7 @@ export function flatLayerTones(palette: GroundPalette): Partial<Record<GroundLay
     land: T.land, klinker: T.klinker, brick: S.brick.base, asphalt: T.road, cycle: T.cycle,
     paving: T.pavement, gravel: T.gravel, kerb: S.kerb, paint: T.road, tram: T.road,
     bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
-    lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
+    lawn: G.lawn, garden: gardenTone(G.lawn), bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
   };
 }
 
