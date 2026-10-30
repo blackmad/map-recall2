@@ -3457,11 +3457,13 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
-- **Re-measure the guessed heights when AHN5 is on PDOK (2026-10-30).**
-  171 OSM outlines AHN4 sees as flat stay at the 9 m guess, and outlines OSM
-  dates after 2019 keep the new-build rules' guess
-  (`scripts/measure-guessed-heights.ts`). New mixed gap fills from a survey
-  re-run go through `scripts/split-mixed-gap-fills.ts`.
+- **OSM outlines with nothing standing (2026-10-30).** AHN4 and AHN5 both
+  see bare ground under some OSM-only outlines, now drawn as 1 m slabs
+  (`source: "low"` in `scripts/data/osm-guessed-heights.json`). Examples are
+  a cleared lot (`w1343730490`), a paved yard (`w540078369`) and the
+  Romneyloods site (`w531438245`). Check them and delete them in OSM. The
+  3,179 outlines that keep a guess are mostly 2023+ new builds: re-run
+  `scripts/measure-guessed-heights.ts` when an AHN flight after 2023 is out.
 - **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
   paint and look from the orthophoto.** Surveyed roads draw no procedural
   paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural
