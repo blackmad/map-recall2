@@ -1,0 +1,138 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:20:21.050Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174748",
+   "addresses": [
+    "Bloemgracht 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 162-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010011942533"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1465651913,
+     "lngLat": [
+      4.8780648,
+      52.3741612
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "parking_space"
+     },
+     "fetchedAt": "2026-10-29T20:20:21.050Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174831",
+   "addresses": [
+    "Bloemgracht 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 160-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000588781"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174832",
+   "addresses": [
+    "Bloemgracht 158A",
+    "Bloemgracht 158B",
+    "Bloemgracht 158C",
+    "Bloemgracht 158D",
+    "Bloemgracht 158E",
+    "Bloemgracht 158F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 158A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001025030"
+    },
+    {
+     "address": "Bloemgracht 158B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001025031"
+    },
+    {
+     "address": "Bloemgracht 158C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001025032"
+    },
+    {
+     "address": "Bloemgracht 158E",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010001025034"
+    },
+    {
+     "address": "Bloemgracht 158F",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001025035"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11941611674,
+     "lngLat": [
+      4.8781583,
+      52.3741907
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687",
+      "ref": "AMS-4377"
+     },
+     "fetchedAt": "2026-10-29T20:20:21.050Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    },
+    {
+     "type": "node",
+     "id": 11941618050,
+     "lngLat": [
+      4.8781226,
+      52.3742539
+     ],
+     "tags": {
+      "fee": "no",
+      "name": "Galerie Staaf",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-29T20:20:21.050Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

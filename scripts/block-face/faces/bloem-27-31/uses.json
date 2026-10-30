@@ -1,0 +1,89 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:47:51.291Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172582",
+   "addresses": [
+    "Bloemstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588957"
+    },
+    {
+     "address": "Bloemstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012065607"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012239834",
+   "addresses": [
+    "Bloemstraat 29",
+    "Bloemstraat 31C",
+    "Bloemstraat 31D",
+    "Bloemstraat 31A",
+    "Bloemstraat 31B",
+    "Bloemstraat 31E",
+    "Bloemstraat 31F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001970964"
+    },
+    {
+     "address": "Bloemstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001970965"
+    },
+    {
+     "address": "Bloemstraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001970966"
+    },
+    {
+     "address": "Bloemstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001970967"
+    },
+    {
+     "address": "Bloemstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001970968"
+    },
+    {
+     "address": "Bloemstraat 31E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010001970969"
+    },
+    {
+     "address": "Bloemstraat 31F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001970976"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

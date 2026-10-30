@@ -1,0 +1,422 @@
+{
+ "face": "bloemgracht-99-117",
+ "street": "Bloemgracht",
+ "library": "jordaan",
+ "stripDate": "2024-12-17",
+ "seconds": 6.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012169841",
+   "address": "Bloemgracht 99",
+   "builtYear": 1861,
+   "widthM": 4.94,
+   "eavesM": 12.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2c21",
+    "wallRaw": "#55584a",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 105,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 0.88,
+      "topWidthM": 0.63,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.31 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.31,
+       "light": 0.2
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.15,
+       "widthM": 1.1,
+       "centre": 0.13
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.25,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 36 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012169841",
+    "ncc": null,
+    "nccRaw": 0.126,
+    "shiftM": [
+     -0.2,
+     0
+    ],
+    "usable": 0.36,
+    "abstain": "usable photo 36 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 36 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#2d2e21",
+     "model": "#875d4e",
+     "dL": 0.263
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.239
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": null
+   }
+  },
+  {
+   "pandId": "0363100012174266",
+   "address": "Bloemgracht 101",
+   "builtYear": 1887,
+   "widthM": 3.7,
+   "eavesM": 15.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514f3d",
+    "wallRaw": "#3d3d2f",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 68,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 0.9,
+      "topWidthM": 0.82,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 44 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012174266",
+    "ncc": null,
+    "nccRaw": 0.243,
+    "shiftM": [
+     0.05,
+     0
+    ],
+    "usable": 0.44,
+    "abstain": "usable photo 44 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#3b3629",
+     "model": "#956753",
+     "dL": 0.259
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.373
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174187",
+   "address": "Bloemgracht 103",
+   "builtYear": 1914,
+   "widthM": 8.88,
+   "eavesM": 15.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69583f",
+    "wallRaw": "#585445",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 87,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.87,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.25,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1914, type 1600-1870; frontage 8.88 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1600-1870",
+     "frontage 8.88 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.82 m = 4 storeys of 3.96 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169837",
+   "address": "Bloemgracht 109",
+   "builtYear": 1853,
+   "widthM": 5.64,
+   "eavesM": 8.41,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443727",
+    "wallRaw": "#453a2a",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 112,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 3.63,
+      "riseM": 2.6,
+      "topWidthM": 1.3,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.72,
+       "widthM": 1.07,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012169837",
+    "ncc": 0.241,
+    "nccRaw": 0.241,
+    "shiftM": [
+     0.2,
+     -0.15
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.31 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#453828",
+     "model": "#645139",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.31
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.475
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168004",
+   "address": "Bloemgracht 117",
+   "builtYear": 1877,
+   "widthM": 5.86,
+   "eavesM": 14.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aea685",
+    "wallRaw": "#5a5648",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.77,
+       "widthM": 1,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.085 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 27 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012168004",
+    "ncc": 0.085,
+    "nccRaw": 0.085,
+    "shiftM": [
+     0.25,
+     0.25
+    ],
+    "usable": 0.5,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#7e664e",
+     "model": "#aea684",
+     "dL": 0.2
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.333
+   },
+   "challengers": {}
+  }
+ ]
+}

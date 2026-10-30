@@ -1,0 +1,767 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "seed": "0363100012174245",
+ "members": [
+  "0363100012174264",
+  "0363100012174333",
+  "0363100012174418",
+  "0363100012174419",
+  "0363100012174420",
+  "0363100012174421",
+  "0363100012174422",
+  "0363100012174245"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012174264 (face continues: 174425)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012174245 (face continues: 168149)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168018",
+   "reason": "no frontage on Nieuwe Leliestraat: No footprint edge faces Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168019",
+   "reason": "frontage 75.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168025",
+   "reason": "frontage 123.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168026",
+   "reason": "frontage 116.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168071",
+   "reason": "frontage 120.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168072",
+   "reason": "no frontage on Nieuwe Leliestraat: No footprint edge faces Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168073",
+   "reason": "frontage 94.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168074",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168016"
+  },
+  {
+   "pandId": "0363100012168075",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174426"
+  },
+  {
+   "pandId": "0363100012168076",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169848"
+  },
+  {
+   "pandId": "0363100012168077",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174428"
+  },
+  {
+   "pandId": "0363100012168078",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174246"
+  },
+  {
+   "pandId": "0363100012168079",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174427"
+  },
+  {
+   "pandId": "0363100012168080",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169846"
+  },
+  {
+   "pandId": "0363100012168084",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169849"
+  },
+  {
+   "pandId": "0363100012168085",
+   "reason": "frontage 32.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168086",
+   "reason": "frontage 75.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168087",
+   "reason": "frontage 74.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168088",
+   "reason": "frontage 74.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168089",
+   "reason": "frontage 74.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168092",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174431"
+  },
+  {
+   "pandId": "0363100012168150",
+   "reason": "frontage 98.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168151",
+   "reason": "no frontage on Nieuwe Leliestraat: No footprint edge faces Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168152",
+   "reason": "frontage 74.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168153",
+   "reason": "frontage 74.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168154",
+   "reason": "frontage 73.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168155",
+   "reason": "frontage 31.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168156",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174246"
+  },
+  {
+   "pandId": "0363100012168157",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168148"
+  },
+  {
+   "pandId": "0363100012168158",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169910"
+  },
+  {
+   "pandId": "0363100012168159",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169909"
+  },
+  {
+   "pandId": "0363100012168160",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169984"
+  },
+  {
+   "pandId": "0363100012168162",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168161"
+  },
+  {
+   "pandId": "0363100012168163",
+   "reason": "frontage 73.7 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168653",
+   "reason": "frontage 30.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168690",
+   "reason": "frontage 30.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169087",
+   "reason": "frontage 74.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169088",
+   "reason": "frontage 38.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169829",
+   "reason": "frontage 37.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169833",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174427"
+  },
+  {
+   "pandId": "0363100012169834",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168092"
+  },
+  {
+   "pandId": "0363100012169836",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168092"
+  },
+  {
+   "pandId": "0363100012169838",
+   "reason": "frontage 36.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169839",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168083"
+  },
+  {
+   "pandId": "0363100012169840",
+   "reason": "frontage 30.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169897",
+   "reason": "frontage 74.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169898",
+   "reason": "frontage 39.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169900",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170034"
+  },
+  {
+   "pandId": "0363100012169901",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170040"
+  },
+  {
+   "pandId": "0363100012169902",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169975"
+  },
+  {
+   "pandId": "0363100012169905",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170042"
+  },
+  {
+   "pandId": "0363100012169906",
+   "reason": "frontage 30.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169907",
+   "reason": "frontage 31.9 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169908",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169902"
+  },
+  {
+   "pandId": "0363100012169911",
+   "reason": "frontage 35.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169912",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169901"
+  },
+  {
+   "pandId": "0363100012169913",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170042"
+  },
+  {
+   "pandId": "0363100012169914",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169988"
+  },
+  {
+   "pandId": "0363100012169915",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169988"
+  },
+  {
+   "pandId": "0363100012169916",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170036"
+  },
+  {
+   "pandId": "0363100012169917",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169987"
+  },
+  {
+   "pandId": "0363100012169918",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169966"
+  },
+  {
+   "pandId": "0363100012169967",
+   "reason": "frontage 32.0 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169968",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169971"
+  },
+  {
+   "pandId": "0363100012169969",
+   "reason": "frontage 35.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012169970",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169900"
+  },
+  {
+   "pandId": "0363100012169971",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170032"
+  },
+  {
+   "pandId": "0363100012169974",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170034"
+  },
+  {
+   "pandId": "0363100012169975",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169979"
+  },
+  {
+   "pandId": "0363100012169976",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012572336"
+  },
+  {
+   "pandId": "0363100012169978",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169975"
+  },
+  {
+   "pandId": "0363100012169979",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170044"
+  },
+  {
+   "pandId": "0363100012169987",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012170046"
+  },
+  {
+   "pandId": "0363100012170047",
+   "reason": "frontage 40.0 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170100",
+   "reason": "frontage 37.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170101",
+   "reason": "frontage 73.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170102",
+   "reason": "frontage 72.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170103",
+   "reason": "frontage 73.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170105",
+   "reason": "frontage 72.9 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170106",
+   "reason": "frontage 72.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170107",
+   "reason": "frontage 73.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170108",
+   "reason": "frontage 73.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170209",
+   "reason": "frontage 74.0 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170213",
+   "reason": "frontage 97.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170221",
+   "reason": "frontage 74.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170223",
+   "reason": "frontage 74.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012170224",
+   "reason": "frontage 74.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174040",
+   "reason": "frontage 74.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174041",
+   "reason": "frontage 74.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174174",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168082"
+  },
+  {
+   "pandId": "0363100012174176",
+   "reason": "frontage 31.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174178",
+   "reason": "frontage 74.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174186",
+   "reason": "frontage 30.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174242",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174246"
+  },
+  {
+   "pandId": "0363100012174243",
+   "reason": "frontage 31.0 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174244",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174420"
+  },
+  {
+   "pandId": "0363100012174247",
+   "reason": "frontage 33.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174248",
+   "reason": "frontage 33.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174249",
+   "reason": "frontage 33.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174250",
+   "reason": "frontage 33.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174251",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174422"
+  },
+  {
+   "pandId": "0363100012174252",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174245"
+  },
+  {
+   "pandId": "0363100012174253",
+   "reason": "frontage 30.7 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174254",
+   "reason": "frontage 34.8 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174255",
+   "reason": "frontage 31.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174257",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174418"
+  },
+  {
+   "pandId": "0363100012174258",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174419"
+  },
+  {
+   "pandId": "0363100012174259",
+   "reason": "frontage 33.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174260",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174263"
+  },
+  {
+   "pandId": "0363100012174261",
+   "reason": "frontage 33.6 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174262",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012169843"
+  },
+  {
+   "pandId": "0363100012174263",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174424"
+  },
+  {
+   "pandId": "0363100012174269",
+   "reason": "frontage 74.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174432",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174430"
+  },
+  {
+   "pandId": "0363100012174434",
+   "reason": "frontage 100.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174435",
+   "reason": "frontage 97.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174436",
+   "reason": "frontage 116.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174437",
+   "reason": "frontage 115.7 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174438",
+   "reason": "frontage 115.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174620",
+   "reason": "frontage 115.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174622",
+   "reason": "frontage 94.9 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174623",
+   "reason": "frontage 96.5 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174624",
+   "reason": "frontage 98.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174625",
+   "reason": "frontage 96.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174626",
+   "reason": "frontage 91.4 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174632",
+   "reason": "frontage 89.9 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174633",
+   "reason": "frontage 74.2 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174830",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012168016"
+  },
+  {
+   "pandId": "0363100012174913",
+   "reason": "sightline to Nieuwe Leliestraat crosses 0363100012174911"
+  },
+  {
+   "pandId": "0363100012174931",
+   "reason": "frontage 32.3 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012174933",
+   "reason": "no frontage on Nieuwe Leliestraat: No footprint edge faces Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012239635",
+   "reason": "frontage 74.1 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012253953",
+   "reason": "frontage 89.0 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012571976",
+   "reason": "frontage 30.7 m from Nieuwe Leliestraat"
+  },
+  {
+   "pandId": "0363100012168016",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168081",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168082",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168083",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168161",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169846",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169848",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169849",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169909",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169988",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170036",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170041",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170042",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170043",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170046",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174427",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174431",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174745",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174746",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174264",
+   "alongM": -36.93,
+   "widthM": 4.51,
+   "eavesM": 11.97,
+   "roofMaxM": 16.37,
+   "storeys3dbag": 5,
+   "builtYear": 1866,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174333",
+   "alongM": -32.42,
+   "widthM": 4.51,
+   "eavesM": 12.77,
+   "roofMaxM": 14.91,
+   "storeys3dbag": 5,
+   "builtYear": 1863,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012174418",
+   "alongM": -27.96,
+   "widthM": 4.4,
+   "eavesM": 11.56,
+   "roofMaxM": 13.61,
+   "storeys3dbag": 5,
+   "builtYear": 2004,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174419",
+   "alongM": -23.59,
+   "widthM": 4.35,
+   "eavesM": 11.45,
+   "roofMaxM": 14.5,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174420",
+   "alongM": -19.31,
+   "widthM": 4.21,
+   "eavesM": 13.62,
+   "roofMaxM": 15.27,
+   "storeys3dbag": 5,
+   "builtYear": 1871,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174421",
+   "alongM": -12.98,
+   "widthM": 8.45,
+   "eavesM": 9.74,
+   "roofMaxM": 10.41,
+   "storeys3dbag": 4,
+   "builtYear": 1966,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174422",
+   "alongM": -6.56,
+   "widthM": 4.41,
+   "eavesM": 8.8,
+   "roofMaxM": 12.01,
+   "storeys3dbag": 3,
+   "builtYear": 1862,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012174245",
+   "alongM": 0,
+   "widthM": 8.71,
+   "eavesM": 9.13,
+   "roofMaxM": 15.53,
+   "storeys3dbag": 4,
+   "builtYear": 1808,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -2,36 +2,36 @@
  "face": "overtoom-2-16",
  "image": "staging/block-face/overtoom-2-16/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 2977,
- "height": 935,
+ "width": 3271,
+ "height": 961,
  "groundNAP": 0.372,
- "heightM": 23.38,
+ "heightM": 24.02,
  "frame": {
   "midRD": [
-   120312.1963,
-   486322.5996
+   120311.634275,
+   486322.27615
   ],
   "uRD": [
-   0.8959856507224442,
-   0.4440830031643611
+   0.8830594673819604,
+   0.4692610969035134
   ],
   "nRD": [
-   0.4440830031643611,
-   -0.8959856507224442
+   0.4692610969035134,
+   -0.8830594673819604
   ]
  },
- "x0M": -29.66,
- "x1M": 44.77,
+ "x0M": -36.33,
+ "x1M": 45.44,
  "date": "2024-12-11",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012236942",
-   "x0M": -29.66,
-   "x1M": -14.87,
+   "x0M": -36.33,
+   "x1M": -13.4,
    "px": [
     0,
-    592
+    917
    ],
    "date": "2024-12-11",
    "fallbackDate": false,
@@ -39,33 +39,33 @@
     {
      "panoId": "b_20241211_0838_Track01_Sphere_00354",
      "timestamp": "2024-12-11T08:21:56Z",
-     "distanceM": 12.8,
-     "obliquityDeg": 9.5,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241211_0838_Track01_Sphere_00353",
-     "timestamp": "2024-12-11T08:21:56Z",
-     "distanceM": 13,
-     "obliquityDeg": 12.9,
+     "distanceM": 12.4,
+     "obliquityDeg": 5.3,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241211_0838_Track01_Sphere_00355",
      "timestamp": "2024-12-11T08:21:57Z",
-     "distanceM": 14.5,
-     "obliquityDeg": 29.6,
+     "distanceM": 12.9,
+     "obliquityDeg": 17.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track01_Sphere_00353",
+     "timestamp": "2024-12-11T08:21:56Z",
+     "distanceM": 13.8,
+     "obliquityDeg": 26.4,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012162339",
-   "x0M": -10.85,
-   "x1M": -4.39,
+   "x0M": -10.2,
+   "x1M": -3.75,
    "px": [
-    752,
-    1010
+    1045,
+    1303
    ],
    "date": "2024-12-11",
    "fallbackDate": false,
@@ -73,7 +73,7 @@
     {
      "panoId": "b_20241211_0838_Track01_Sphere_00351",
      "timestamp": "2024-12-11T08:21:55Z",
-     "distanceM": 12.6,
+     "distanceM": 12.7,
      "obliquityDeg": 7.9,
      "missingFraction": 0
     },
@@ -88,18 +88,18 @@
      "panoId": "b_20241211_0838_Track01_Sphere_00352",
      "timestamp": "2024-12-11T08:21:55Z",
      "distanceM": 14.2,
-     "obliquityDeg": 28.6,
+     "obliquityDeg": 28.4,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012167176",
-   "x0M": -4.41,
-   "x1M": 1.77,
+   "x0M": -3.76,
+   "x1M": 2.44,
    "px": [
-    1010,
-    1257
+    1302,
+    1550
    ],
    "date": "2024-12-11",
    "fallbackDate": false,
@@ -122,18 +122,18 @@
      "panoId": "b_20241211_0838_Track01_Sphere_00348",
      "timestamp": "2024-12-11T08:21:53Z",
      "distanceM": 14.3,
-     "obliquityDeg": 29.5,
+     "obliquityDeg": 29.4,
      "missingFraction": 0
     }
    ]
   },
   {
    "pandId": "0363100012166053",
-   "x0M": 1.8,
-   "x1M": 7.91,
+   "x0M": 2.44,
+   "x1M": 8.56,
    "px": [
-    1258,
-    1503
+    1551,
+    1796
    ],
    "date": "2024-12-11",
    "fallbackDate": false,
@@ -163,11 +163,11 @@
   },
   {
    "pandId": "0363100012072136",
-   "x0M": 7.92,
-   "x1M": 44.77,
+   "x0M": 8.56,
+   "x1M": 45.44,
    "px": [
-    1503,
-    2977
+    1796,
+    3271
    ],
    "date": "2024-12-11",
    "fallbackDate": false,
@@ -176,33 +176,33 @@
      "panoId": "b_20241211_0838_Track01_Sphere_00344",
      "timestamp": "2024-12-11T08:21:50Z",
      "distanceM": 12.6,
-     "obliquityDeg": 4.8,
+     "obliquityDeg": 4.7,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241211_0838_Track01_Sphere_00343",
      "timestamp": "2024-12-11T08:21:50Z",
      "distanceM": 12.9,
-     "obliquityDeg": 17.4,
+     "obliquityDeg": 17.5,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241211_0838_Track01_Sphere_00345",
      "timestamp": "2024-12-11T08:21:51Z",
      "distanceM": 14,
-     "obliquityDeg": 25.4,
+     "obliquityDeg": 25.3,
      "missingFraction": 0
     }
    ]
   }
  ],
  "candidatesByDate": {
-  "2024-12-11": 5,
   "2022-06-22": 5,
+  "2024-12-11": 5,
   "2021-03-26": 5,
   "2025-07-31": 5,
-  "2018-06-12": 5,
   "2018-06-07": 5,
+  "2018-06-12": 5,
   "2019-04-29": 5,
   "2019-01-07": 5,
   "2016-08-09": 5,

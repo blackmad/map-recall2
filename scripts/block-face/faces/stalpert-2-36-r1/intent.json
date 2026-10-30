@@ -1,0 +1,480 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "stalpert-2-36-r1",
+ "street": "Daniël Stalpertstraat",
+ "sources": [
+  {
+   "id": "strip-2022-01-26",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-26",
+   "image": "staging/block-face/stalpert-2-36-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frans Halsbuurt); scores and holds in scripts/block-face/faces/stalpert-2-36/auto-place.json"
+ },
+ "types": [
+  "pijp-1879-five-low"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160596",
+   "slug": "stalpert-160596",
+   "address": "Daniël Stalpertstraat 26",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#3e342f",
+     "evidence": "strip 2022-01-26 span 847-1015: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 847-1015"
+   }
+  },
+  {
+   "pandId": "0363100012069043",
+   "slug": "stalpert-069043",
+   "address": "Daniël Stalpertstraat 24",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#644c44",
+     "evidence": "strip 2022-01-26 span 1015-1173: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1; strip 2022-01-26 span 1015-1173"
+   }
+  },
+  {
+   "pandId": "0363100012164898",
+   "slug": "stalpert-164898",
+   "address": "Daniël Stalpertstraat 22",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#322825",
+     "evidence": "strip 2022-01-26 span 1173-1357: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 0.74 on eaves -, stucco 1, columns 0.4; strip 2022-01-26 span 1173-1357"
+   }
+  },
+  {
+   "pandId": "0363100012166489",
+   "slug": "stalpert-166489",
+   "address": "Daniël Stalpertstraat 20",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#2e2c2d",
+     "evidence": "strip 2022-01-26 span 1357-1531: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 1357-1531"
+   }
+  },
+  {
+   "pandId": "0363100012154148",
+   "slug": "stalpert-154148",
+   "address": "Daniël Stalpertstraat 18",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#2b2929",
+     "evidence": "strip 2022-01-26 span 1531-1690: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 1531-1690"
+   }
+  },
+  {
+   "pandId": "0363100012166226",
+   "slug": "stalpert-166226",
+   "address": "Daniël Stalpertstraat 16",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "ground": {
+     "shopfront": {
+      "colour": "#3a3530",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=bench); fascia colour measured on the strip 2022-01-26 span 1690-1922"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#332c28",
+     "evidence": "strip 2022-01-26 span 1690-1922: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "amenity=bench",
+    "osm": {
+     "type": "node",
+     "id": 13435950948
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 1690-1922"
+   }
+  },
+  {
+   "pandId": "0363100012162486",
+   "slug": "stalpert-162486",
+   "address": "Daniël Stalpertstraat 14",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#595650",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=bench); fascia colour measured on the strip 2022-01-26 span 1922-2111"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#2a2929",
+     "evidence": "strip 2022-01-26 span 1922-2111: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "amenity=bench",
+    "osm": {
+     "type": "node",
+     "id": 13435950948
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 1922-2111"
+   }
+  },
+  {
+   "pandId": "0363100012166627",
+   "slug": "stalpert-166627",
+   "address": "Daniël Stalpertstraat 12",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#483c37",
+     "evidence": "strip 2022-01-26 span 2111-2284: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 2111-2284"
+   }
+  },
+  {
+   "pandId": "0363100012163608",
+   "slug": "stalpert-163608",
+   "address": "Daniël Stalpertstraat 10",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#504641",
+     "evidence": "strip 2022-01-26 span 2285-2469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 2285-2469"
+   }
+  },
+  {
+   "pandId": "0363100012156061",
+   "slug": "stalpert-156061",
+   "address": "Daniël Stalpertstraat 8",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#443731",
+     "evidence": "strip 2022-01-26 span 2469-2654: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 2469-2654"
+   }
+  },
+  {
+   "pandId": "0363100012159244",
+   "slug": "stalpert-159244",
+   "address": "Daniël Stalpertstraat 6",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#3e2e32",
+     "evidence": "strip 2022-01-26 span 2654-2831: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 2654-2831"
+   }
+  },
+  {
+   "pandId": "0363100012162598",
+   "slug": "stalpert-162598",
+   "address": "Daniël Stalpertstraat 4",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#543f3a",
+     "evidence": "strip 2022-01-26 span 2831-3004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1, columns 1; strip 2022-01-26 span 2831-3004"
+   }
+  },
+  {
+   "pandId": "0363100012167015",
+   "slug": "stalpert-167015",
+   "address": "Daniël Stalpertstraat 2A",
+   "type": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#3b2b2a",
+     "evidence": "strip 2022-01-26 span 3004-3170: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: pijp-1879-five-low scored 1 on eaves -, stucco 1; strip 2022-01-26 span 3004-3170"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012160596",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.55 m"
+   },
+   {
+    "pand": "0363100012164898",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.74 m"
+   },
+   {
+    "pand": "0363100012166489",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.76 m"
+   },
+   {
+    "pand": "0363100012154148",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.83 m"
+   },
+   {
+    "pand": "0363100012166226",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.52 m"
+   },
+   {
+    "pand": "0363100012162486",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.21 m"
+   },
+   {
+    "pand": "0363100012166627",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.55 m"
+   },
+   {
+    "pand": "0363100012163608",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.3 m"
+   },
+   {
+    "pand": "0363100012162598",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the pijp-1879-five-low cornice line 13 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.52 m"
+   }
+  ]
+ }
+}

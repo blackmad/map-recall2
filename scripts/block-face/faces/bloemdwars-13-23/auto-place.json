@@ -1,0 +1,400 @@
+{
+ "face": "bloemdwars-13-23",
+ "street": "Eerste Bloemdwarsstraat",
+ "library": "jordaan",
+ "stripDate": "2020-04-24",
+ "seconds": 5.26,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174037",
+   "address": "Eerste Bloemdwarsstraat 13A",
+   "builtYear": 1931,
+   "widthM": 10.84,
+   "eavesM": 9.02,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#93795b",
+    "wallRaw": "#86715a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.04,
+     "balconies": true,
+     "why": "dark open axis 5.35 m at 0.27 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.35,
+       "centre": 0.27,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1931, type 1600-1870; frontage 10.84 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1600-1870",
+     "frontage 10.84 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 9.02 m = 3 storeys of 3.01 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.23 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.012 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172774",
+   "address": "Eerste Bloemdwarsstraat 15C",
+   "builtYear": 1896,
+   "widthM": 6.13,
+   "eavesM": 9.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b594d",
+    "wallRaw": "#746156",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012172774",
+    "ncc": 0.159,
+    "nccRaw": 0.159,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#7a655b",
+     "model": "#846e5f",
+     "dL": 0.027
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.387
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172772",
+   "address": "Eerste Bloemdwarsstraat 19",
+   "builtYear": 1846,
+   "widthM": 5.72,
+   "eavesM": 12.37,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f897e",
+    "wallRaw": "#847d6e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.261,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.63,
+       "widthM": 1.52,
+       "centre": 0.6
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.1,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 36 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012172772",
+    "ncc": 0.094,
+    "nccRaw": 0.094,
+    "shiftM": [
+     0,
+     0.35
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 36 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#867f73",
+     "model": "#9f9a90",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.407
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172771",
+   "address": "Eerste Bloemdwarsstraat 21",
+   "builtYear": 1811,
+   "widthM": 5.72,
+   "eavesM": 9.02,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b7164",
+    "wallRaw": "#7e7568",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.09 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.09,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.121 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.42 vs photo 0.06)",
+   "likeness": {
+    "pandId": "0363100012172771",
+    "ncc": 0.121,
+    "nccRaw": 0.121,
+    "shiftM": [
+     0.2,
+     -0.25
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.42 vs photo 0.06"
+    ],
+    "wall": {
+     "photo": "#7a7164",
+     "model": "#908576",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.06,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.094
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172581",
+   "address": "Eerste Bloemdwarsstraat 23",
+   "builtYear": 1839,
+   "widthM": 4.86,
+   "eavesM": 9.24,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39583",
+    "wallRaw": "#706253",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1.15,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.046 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34 mean 0.37 vs photo 0.53)",
+   "likeness": {
+    "pandId": "0363100012172581",
+    "ncc": 0.046,
+    "nccRaw": 0.046,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.37 vs photo 0.53"
+    ],
+    "wall": {
+     "photo": "#a79885",
+     "model": "#a89b8a",
+     "dL": 0.012
+    },
+    "glazing": {
+     "photo": 0.53,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.404
+   },
+   "challengers": {}
+  }
+ ]
+}

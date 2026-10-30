@@ -1,0 +1,549 @@
+{
+ "street": "Nieuwe Leliestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:43:22.526Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168805",
+   "addresses": [
+    "Nieuwe Leliestraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 32",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000756691"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012061162"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012061163"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012143218"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720972091,
+     "lngLat": [
+      4.8827638,
+      52.375781
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32",
+      "addr:postcode": "1015SR",
+      "addr:street": "Nieuwe Leliestraat",
+      "name": "Moo!zo",
+      "opening_hours": "Tu-Sa 12:00-17:00",
+      "phone": "+31 20 330 4881",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.mooizo-jordaan.nl"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174690",
+   "addresses": [
+    "Nieuwe Leliestraat 30C",
+    "Nieuwe Leliestraat 30A",
+    "Nieuwe Leliestraat 30B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 30C",
+     "use": "industriefunctie",
+     "areaM2": 46,
+     "bagId": "0363010000756689"
+    },
+    {
+     "address": "Nieuwe Leliestraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000984635"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11211150639,
+     "lngLat": [
+      4.882863,
+      52.3757938
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30",
+      "addr:postcode": "1015SR",
+      "addr:street": "Nieuwe Leliestraat",
+      "name": "Design Studio Lumineus",
+      "shop": "interior_decoration"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174692",
+   "addresses": [
+    "Nieuwe Leliestraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000984884"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174693",
+   "addresses": [
+    "Nieuwe Leliestraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000756680"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174694",
+   "addresses": [
+    "Nieuwe Leliestraat 24B",
+    "Nieuwe Leliestraat 24C",
+    "Nieuwe Leliestraat 24A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000756677"
+    },
+    {
+     "address": "Nieuwe Leliestraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000756678"
+    },
+    {
+     "address": "Nieuwe Leliestraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000756676"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174695",
+   "addresses": [
+    "Nieuwe Leliestraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000756672"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174696",
+   "addresses": [
+    "Nieuwe Leliestraat 18A",
+    "Nieuwe Leliestraat 18C",
+    "Nieuwe Leliestraat 18B",
+    "Nieuwe Leliestraat 20D",
+    "Nieuwe Leliestraat 20E",
+    "Nieuwe Leliestraat 20B",
+    "Nieuwe Leliestraat 20C",
+    "Nieuwe Leliestraat 20A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000756654"
+    },
+    {
+     "address": "Nieuwe Leliestraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000756656"
+    },
+    {
+     "address": "Nieuwe Leliestraat 20D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756668"
+    },
+    {
+     "address": "Nieuwe Leliestraat 20E",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000756669"
+    },
+    {
+     "address": "Nieuwe Leliestraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000756658"
+    },
+    {
+     "address": "Nieuwe Leliestraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000756667"
+    },
+    {
+     "address": "Nieuwe Leliestraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000756655"
+    },
+    {
+     "address": "Nieuwe Leliestraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000756657"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174981",
+   "addresses": [
+    "Nieuwe Leliestraat 16B",
+    "Nieuwe Leliestraat 16C",
+    "Nieuwe Leliestraat 16D",
+    "Nieuwe Leliestraat 16E",
+    "Nieuwe Leliestraat 16A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756646"
+    },
+    {
+     "address": "Nieuwe Leliestraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756647"
+    },
+    {
+     "address": "Nieuwe Leliestraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756648"
+    },
+    {
+     "address": "Nieuwe Leliestraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000756649"
+    },
+    {
+     "address": "Nieuwe Leliestraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000756645"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174982",
+   "addresses": [
+    "Nieuwe Leliestraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000756639"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720970299,
+     "lngLat": [
+      4.8834633,
+      52.3759175
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "craft": "photographer",
+      "name": "The Milkmaid Project",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://milkmaidproject.com"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174983",
+   "addresses": [
+    "Nieuwe Leliestraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 12-H",
+     "use": "kantoorfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000952777"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173564",
+   "addresses": [
+    "Nieuwe Leliestraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 10",
+     "use": "woonfunctie",
+     "areaM2": 286,
+     "bagId": "0363010010953668"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173565",
+   "addresses": [
+    "Nieuwe Leliestraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000756630"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11211150637,
+     "lngLat": [
+      4.8837242,
+      52.3758919
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2026-10-22",
+      "name": "Leliebieb",
+      "public_bookcase:type": "wooden_cabinet"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "frontage",
+     "distanceM": 7.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174700",
+   "addresses": [
+    "Nieuwe Leliestraat 6A",
+    "Nieuwe Leliestraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000980365"
+    },
+    {
+     "address": "Nieuwe Leliestraat 6B",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000980366"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6893999585,
+     "lngLat": [
+      4.883742,
+      52.3760225
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "name": "Almost Summer store",
+      "opening_hours": "Mo-Su 10:30-18:30",
+      "phone": "+31 20 422 8721",
+      "shop": "clothes",
+      "website": "http://www.universeonatshirt.com"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174701",
+   "addresses": [
+    "Nieuwe Leliestraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000756621"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720972352,
+     "lngLat": [
+      4.8838321,
+      52.3760019
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "check_date": "2025-03-17",
+      "name": "Quinta Absinthe",
+      "opening_hours": "Mo-Tu,Su 12:00-19:00; We-Sa 10:00-19:00",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174702",
+   "addresses": [
+    "Nieuwe Leliestraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Leliestraat 2",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756620"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720971344,
+     "lngLat": [
+      4.8838771,
+      52.3760284
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1015SP",
+      "addr:street": "Nieuwe Leliestraat",
+      "amenity": "cafe",
+      "check_date": "2025-03-17",
+      "indoor_seating": "yes",
+      "name": "Café Wester",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11377634987,
+     "lngLat": [
+      4.8839293,
+      52.3760556
+     ],
+     "tags": {
+      "name": "MenM",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-29T21:43:22.526Z",
+     "match": "frontage",
+     "distanceM": 5.1
+    }
+   ]
+  }
+ ]
+}

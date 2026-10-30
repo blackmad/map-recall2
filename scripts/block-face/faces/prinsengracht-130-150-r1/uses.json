@@ -1,0 +1,56 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:06:30.713Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174415",
+   "addresses": [
+    "Prinsengracht 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 150-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000783945"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7487205751,
+     "lngLat": [
+      4.883347,
+      52.3754325
+     ],
+     "tags": {
+      "amenity": "cafe"
+     },
+     "fetchedAt": "2026-10-29T22:06:30.713Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174416",
+   "addresses": [
+    "Prinsengracht 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 148-H",
+     "use": "kantoorfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000783941"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "street": "Quellijnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158625",
+   "addresses": [
+    "Quellijnstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000786814"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164504",
+   "addresses": [
+    "Quellijnstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Quellijnstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000991433"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

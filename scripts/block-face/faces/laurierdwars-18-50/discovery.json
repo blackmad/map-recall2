@@ -1,0 +1,713 @@
+{
+ "street": "Eerste Laurierdwarsstraat",
+ "seed": "0363100012170023",
+ "members": [
+  "0363100012169959",
+  "0363100012169956",
+  "0363100012169958",
+  "0363100012169957",
+  "0363100012169896",
+  "0363100012169595",
+  "0363100012169600",
+  "0363100012170023"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012169959 (face continues: 169960)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012170079 38.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012167869",
+   "reason": "frontage 89.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167870",
+   "reason": "frontage 70.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167871",
+   "reason": "frontage 51.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167872",
+   "reason": "frontage 55.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167873",
+   "reason": "frontage 57.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167874",
+   "reason": "frontage 66.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167939",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168548",
+   "reason": "frontage 45.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168553",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012168554"
+  },
+  {
+   "pandId": "0363100012168554",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169600"
+  },
+  {
+   "pandId": "0363100012168598",
+   "reason": "frontage 31.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168599",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169603"
+  },
+  {
+   "pandId": "0363100012168602",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170010"
+  },
+  {
+   "pandId": "0363100012168609",
+   "reason": "frontage 48.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168610",
+   "reason": "frontage 87.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168611",
+   "reason": "frontage 92.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168650",
+   "reason": "frontage 55.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168988",
+   "reason": "frontage 89.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168989",
+   "reason": "frontage 102.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168997",
+   "reason": "frontage 60.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169025",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169961"
+  },
+  {
+   "pandId": "0363100012169026",
+   "reason": "frontage 31.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169027",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169963"
+  },
+  {
+   "pandId": "0363100012169028",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169027"
+  },
+  {
+   "pandId": "0363100012169598",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169599",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170023"
+  },
+  {
+   "pandId": "0363100012169601",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169599"
+  },
+  {
+   "pandId": "0363100012169603",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170026"
+  },
+  {
+   "pandId": "0363100012169606",
+   "reason": "frontage 39.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169608",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012168594"
+  },
+  {
+   "pandId": "0363100012169609",
+   "reason": "frontage 35.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169610",
+   "reason": "frontage 41.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169611",
+   "reason": "frontage 47.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169889",
+   "reason": "frontage 37.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169890",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169955"
+  },
+  {
+   "pandId": "0363100012169891",
+   "reason": "frontage 58.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169892",
+   "reason": "frontage 47.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169893",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169894",
+   "reason": "frontage 77.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169895",
+   "reason": "frontage 88.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168637",
+   "reason": "frontage 97.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169604",
+   "reason": "frontage 63.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169942",
+   "reason": "frontage 42.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169943",
+   "reason": "frontage 32.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169944",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169890"
+  },
+  {
+   "pandId": "0363100012169945",
+   "reason": "frontage 43.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169946",
+   "reason": "frontage 51.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169947",
+   "reason": "frontage 37.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169948",
+   "reason": "frontage 68.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169949",
+   "reason": "frontage 59.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169950",
+   "reason": "frontage 53.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169951",
+   "reason": "frontage 48.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169952",
+   "reason": "frontage 63.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169953",
+   "reason": "frontage 64.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169955",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169960"
+  },
+  {
+   "pandId": "0363100012169962",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170029"
+  },
+  {
+   "pandId": "0363100012169963",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170018"
+  },
+  {
+   "pandId": "0363100012170015",
+   "reason": "frontage 55.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170016",
+   "reason": "frontage 32.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170017",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170029"
+  },
+  {
+   "pandId": "0363100012170018",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170019",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169961"
+  },
+  {
+   "pandId": "0363100012170020",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169961"
+  },
+  {
+   "pandId": "0363100012170021",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169961"
+  },
+  {
+   "pandId": "0363100012170025",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169964"
+  },
+  {
+   "pandId": "0363100012170027",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170026"
+  },
+  {
+   "pandId": "0363100012170028",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170030",
+   "reason": "frontage 50.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170080",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012170028"
+  },
+  {
+   "pandId": "0363100012173491",
+   "reason": "frontage 71.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173492",
+   "reason": "frontage 74.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173494",
+   "reason": "frontage 69.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173913",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173915",
+   "reason": "frontage 34.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173918",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012168594"
+  },
+  {
+   "pandId": "0363100012173919",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012168594"
+  },
+  {
+   "pandId": "0363100012173920",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169613"
+  },
+  {
+   "pandId": "0363100012173921",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169613"
+  },
+  {
+   "pandId": "0363100012173932",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173953",
+   "reason": "frontage 73.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173954",
+   "reason": "frontage 78.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173955",
+   "reason": "frontage 83.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173956",
+   "reason": "frontage 45.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173957",
+   "reason": "frontage 44.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173958",
+   "reason": "frontage 50.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173959",
+   "reason": "frontage 56.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173960",
+   "reason": "frontage 64.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173961",
+   "reason": "frontage 51.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173962",
+   "reason": "frontage 56.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173963",
+   "reason": "frontage 61.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173964",
+   "reason": "frontage 66.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173965",
+   "reason": "frontage 36.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173966",
+   "reason": "frontage 46.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173971",
+   "reason": "frontage 37.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173972",
+   "reason": "frontage 57.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174818",
+   "reason": "frontage 117.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174819",
+   "reason": "frontage 122.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174820",
+   "reason": "frontage 122.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174821",
+   "reason": "frontage 116.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174822",
+   "reason": "frontage 110.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174890",
+   "reason": "frontage 105.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174891",
+   "reason": "frontage 99.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173910",
+   "reason": "frontage 59.3 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173916",
+   "reason": "frontage 66.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173917",
+   "reason": "frontage 54.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173924",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173925",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173926",
+   "reason": "frontage 61.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173929",
+   "reason": "frontage 53.8 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173930",
+   "reason": "frontage 57.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173931",
+   "reason": "no frontage on Eerste Laurierdwarsstraat: No footprint edge faces Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173947",
+   "reason": "frontage 88.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173948",
+   "reason": "frontage 96.6 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173951",
+   "reason": "frontage 71.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173952",
+   "reason": "frontage 91.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173967",
+   "reason": "frontage 52.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173968",
+   "reason": "frontage 83.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173969",
+   "reason": "frontage 68.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173970",
+   "reason": "frontage 83.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174892",
+   "reason": "frontage 94.5 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174893",
+   "reason": "frontage 89.1 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174900",
+   "reason": "frontage 85.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012238689",
+   "reason": "frontage 30.2 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012238690",
+   "reason": "frontage 42.7 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012572096",
+   "reason": "frontage 68.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012572099",
+   "reason": "frontage 33.4 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100100092555",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169954"
+  },
+  {
+   "pandId": "0363100100092556",
+   "reason": "sightline to Eerste Laurierdwarsstraat crosses 0363100012169954"
+  },
+  {
+   "pandId": "0363100012249759",
+   "reason": "frontage 82.9 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012253926",
+   "reason": "frontage 52.0 m from Eerste Laurierdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168594",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169596",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169597",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169961",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169964",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169965",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170011",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170012",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170022",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170024",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170026",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170029",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173934",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012169959",
+   "alongM": -36.67,
+   "widthM": 4.07,
+   "eavesM": 8.98,
+   "roofMaxM": 11.97,
+   "storeys3dbag": 3,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169956",
+   "alongM": -32.37,
+   "widthM": 4.53,
+   "eavesM": 10.72,
+   "roofMaxM": 13.64,
+   "storeys3dbag": 4,
+   "builtYear": 1833,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169958",
+   "alongM": -27.26,
+   "widthM": 5.7,
+   "eavesM": 9.99,
+   "roofMaxM": 13.88,
+   "storeys3dbag": 4,
+   "builtYear": 1851,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169957",
+   "alongM": -20.13,
+   "widthM": 8.56,
+   "eavesM": 9.98,
+   "roofMaxM": 13.86,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169896",
+   "alongM": -13.92,
+   "widthM": 3.86,
+   "eavesM": 11.13,
+   "roofMaxM": 11.63,
+   "storeys3dbag": 4,
+   "builtYear": 1828,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169595",
+   "alongM": -10.07,
+   "widthM": 3.86,
+   "eavesM": 11.03,
+   "roofMaxM": 11.63,
+   "storeys3dbag": 4,
+   "builtYear": 1831,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169600",
+   "alongM": -6.23,
+   "widthM": 3.82,
+   "eavesM": 8.3,
+   "roofMaxM": 10.43,
+   "storeys3dbag": 3,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170023",
+   "alongM": 0,
+   "widthM": 8.63,
+   "eavesM": 9.75,
+   "roofMaxM": 14.34,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,605 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:18:08.704Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174186",
+   "addresses": [
+    "Bloemgracht 122A",
+    "Bloemgracht 122B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 122A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000788637"
+    },
+    {
+     "address": "Bloemgracht 122B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000588712"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168077",
+   "addresses": [
+    "Bloemgracht 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 120-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000588697"
+    },
+    {
+     "address": "Bloemgracht 120-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000588698"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782482119,
+     "lngLat": [
+      4.8796899,
+      52.3745347
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168076",
+   "addresses": [
+    "Bloemgracht 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 118-H",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001171659"
+    },
+    {
+     "address": "Bloemgracht 118-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012085254"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782482119,
+     "lngLat": [
+      4.8796899,
+      52.3745347
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168084",
+   "addresses": [
+    "Bloemgracht 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 116-H",
+     "use": "industriefunctie",
+     "areaM2": 104,
+     "bagId": "0363010000588685"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168078",
+   "addresses": [
+    "Bloemgracht 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000588683"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2626414942,
+     "lngLat": [
+      4.8798061,
+      52.3746719
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "112",
+      "addr:postcode": "1015TN",
+      "addr:street": "Bloemgracht",
+      "amenity": "doctors",
+      "check_date": "2025-10-21",
+      "healthcare": "doctor",
+      "name": "Expat Medical Centre",
+      "opening_hours": "Mo-Tu 09:00-18:00; We 09:00-20:00; Th 09:00-18:00; Fr 09:00-19:00; Sa-Su closed",
+      "website": "https://expatmc.net"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168155",
+   "addresses": [
+    "Bloemgracht 110",
+    "Bloemgracht 110A",
+    "Bloemgracht 110B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 110A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012156257"
+    },
+    {
+     "address": "Bloemgracht 110B",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012156258"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168156",
+   "addresses": [
+    "Bloemgracht 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 108",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000588679"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168157",
+   "addresses": [
+    "Bloemgracht 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 106",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000588678"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13074712907,
+     "lngLat": [
+      4.8799816,
+      52.3746554
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bench",
+      "armrest": "yes",
+      "backrest": "yes",
+      "colour": "red",
+      "level": "0",
+      "material": "wood",
+      "name": "Best Bench in Town",
+      "tourism": "attraction"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 0.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168162",
+   "addresses": [
+    "Bloemgracht 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 104",
+     "use": "logiesfunctie",
+     "areaM2": 879,
+     "bagId": "0363010010953865"
+    },
+    {
+     "address": "Bloemgracht 104",
+     "use": "logiesfunctie",
+     "areaM2": 1056,
+     "bagId": "0363010012146352"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168158",
+   "addresses": [
+    "Bloemgracht 102"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1049853312,
+     "lngLat": [
+      4.880092,
+      52.3748034
+     ],
+     "tags": {
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4851205229,
+     "lngLat": [
+      4.8801095,
+      52.3747507
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "102",
+      "addr:street": "Bloemgracht",
+      "check_date": "2025-10-21",
+      "name": "Mr Jordaan",
+      "tourism": "hotel",
+      "website": "https://mrjordaan.nl"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168159",
+   "addresses": [
+    "Bloemgracht 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 98",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 270,
+     "bagId": "0363010000588657"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782473441,
+     "lngLat": [
+      4.8803555,
+      52.3746775
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "4",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012571976",
+   "addresses": [
+    "Bloemgracht 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 96",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000588656"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11941606079,
+     "lngLat": [
+      4.8804182,
+      52.3746961
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "TotalEnergies",
+      "operator:wikidata": "Q154037",
+      "ref": "TNLP011129"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169912",
+   "addresses": [
+    "Bloemgracht 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 94",
+     "use": "woonfunctie",
+     "areaM2": 253,
+     "bagId": "0363010001983549"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11941606079,
+     "lngLat": [
+      4.8804182,
+      52.3746961
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "TotalEnergies",
+      "operator:wikidata": "Q154037",
+      "ref": "TNLP011129"
+     },
+     "fetchedAt": "2026-10-29T20:18:08.704Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169901",
+   "addresses": [
+    "Bloemgracht 90B",
+    "Bloemgracht 90C",
+    "Bloemgracht 90D",
+    "Bloemgracht 90",
+    "Bloemgracht 90K",
+    "Bloemgracht 90H",
+    "Bloemgracht 90G",
+    "Bloemgracht 90F",
+    "Bloemgracht 90E",
+    "Bloemgracht 90A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 90B",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000708339"
+    },
+    {
+     "address": "Bloemgracht 90C",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000708340"
+    },
+    {
+     "address": "Bloemgracht 90D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000708375"
+    },
+    {
+     "address": "Bloemgracht 90",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012592057"
+    },
+    {
+     "address": "Bloemgracht 90K",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012592056"
+    },
+    {
+     "address": "Bloemgracht 90H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012592055"
+    },
+    {
+     "address": "Bloemgracht 90G",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012592054"
+    },
+    {
+     "address": "Bloemgracht 90F",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012592053"
+    },
+    {
+     "address": "Bloemgracht 90E",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012592052"
+    },
+    {
+     "address": "Bloemgracht 90A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000708338"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169913",
+   "addresses": [
+    "Bloemgracht 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 88-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000588642"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169905",
+   "addresses": [
+    "Bloemgracht 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 86",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010000588640"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169914",
+   "addresses": [
+    "Bloemgracht 84A",
+    "Bloemgracht 84B",
+    "Bloemgracht 84C",
+    "Bloemgracht 84",
+    "Bloemgracht 84D",
+    "Bloemgracht 84E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 84A",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000588635"
+    },
+    {
+     "address": "Bloemgracht 84B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000588636"
+    },
+    {
+     "address": "Bloemgracht 84C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000588637"
+    },
+    {
+     "address": "Bloemgracht 84D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012062262"
+    },
+    {
+     "address": "Bloemgracht 84E",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012062263"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169915",
+   "addresses": [
+    "Bloemgracht 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 82-H",
+     "use": "kantoorfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000588628"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169916",
+   "addresses": [
+    "Bloemgracht 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 80-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000588618"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,999 @@
+{
+ "street": "Eerste Leliedwarsstraat",
+ "seed": "0363100012172613",
+ "members": [
+  "0363100012172603",
+  "0363100012172606",
+  "0363100012172607",
+  "0363100012172611",
+  "0363100012172613",
+  "0363100012172891"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012172603 (face continues: 172890)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164999",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012165000",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172616"
+  },
+  {
+   "pandId": "0363100012165018",
+   "reason": "frontage 55.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168709",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168759"
+  },
+  {
+   "pandId": "0363100012168751",
+   "reason": "frontage 49.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168763",
+   "reason": "frontage 37.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168764",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172602"
+  },
+  {
+   "pandId": "0363100012168799",
+   "reason": "frontage 34.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168800",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174412"
+  },
+  {
+   "pandId": "0363100012168803",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168800"
+  },
+  {
+   "pandId": "0363100012168804",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168800"
+  },
+  {
+   "pandId": "0363100012168814",
+   "reason": "frontage 52.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168815",
+   "reason": "frontage 51.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168838",
+   "reason": "frontage 47.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168840",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168842",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168843",
+   "reason": "frontage 33.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168844",
+   "reason": "frontage 47.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168853",
+   "reason": "frontage 55.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168886",
+   "reason": "frontage 54.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168887",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168888",
+   "reason": "frontage 52.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168889",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168654",
+   "reason": "frontage 100.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168655",
+   "reason": "frontage 108.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168657",
+   "reason": "frontage 89.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168692",
+   "reason": "frontage 103.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168693",
+   "reason": "frontage 99.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168694",
+   "reason": "frontage 95.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168750",
+   "reason": "frontage 59.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168752",
+   "reason": "frontage 96.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168753",
+   "reason": "frontage 89.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168756",
+   "reason": "frontage 104.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168760",
+   "reason": "frontage 80.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168761",
+   "reason": "frontage 84.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168762",
+   "reason": "frontage 53.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168808",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168809",
+   "reason": "frontage 83.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168810",
+   "reason": "frontage 108.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168839",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168841",
+   "reason": "frontage 65.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168845",
+   "reason": "frontage 96.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168846",
+   "reason": "frontage 77.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168890",
+   "reason": "frontage 80.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168893",
+   "reason": "frontage 60.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168894",
+   "reason": "frontage 71.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168895",
+   "reason": "frontage 76.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168896",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168897",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172584",
+   "reason": "frontage 77.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172602",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172603"
+  },
+  {
+   "pandId": "0363100012172604",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172605"
+  },
+  {
+   "pandId": "0363100012172605",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172607"
+  },
+  {
+   "pandId": "0363100012172609",
+   "reason": "frontage 44.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172610",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172891"
+  },
+  {
+   "pandId": "0363100012172618",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012172620",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012172621",
+   "reason": "frontage 38.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172622",
+   "reason": "frontage 34.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172693",
+   "reason": "frontage 30.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172777",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168754"
+  },
+  {
+   "pandId": "0363100012172778",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168754"
+  },
+  {
+   "pandId": "0363100012172780",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168709"
+  },
+  {
+   "pandId": "0363100012172781",
+   "reason": "frontage 58.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172857",
+   "reason": "frontage 54.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169089",
+   "reason": "frontage 82.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169973",
+   "reason": "frontage 104.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169981",
+   "reason": "frontage 117.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169982",
+   "reason": "frontage 111.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170037",
+   "reason": "frontage 117.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170163",
+   "reason": "frontage 91.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170165",
+   "reason": "frontage 89.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172589",
+   "reason": "frontage 81.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172591",
+   "reason": "frontage 80.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172593",
+   "reason": "frontage 90.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172608",
+   "reason": "frontage 55.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172612",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172614",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172619",
+   "reason": "frontage 54.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172694",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172858",
+   "reason": "frontage 96.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172859",
+   "reason": "frontage 73.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172860",
+   "reason": "frontage 92.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172861",
+   "reason": "frontage 99.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172862",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168709"
+  },
+  {
+   "pandId": "0363100012172872",
+   "reason": "frontage 70.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172874",
+   "reason": "frontage 64.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172875",
+   "reason": "frontage 53.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172877",
+   "reason": "frontage 57.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172885",
+   "reason": "frontage 38.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172897",
+   "reason": "frontage 75.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172900",
+   "reason": "frontage 53.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172902",
+   "reason": "frontage 54.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172903",
+   "reason": "frontage 70.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172953",
+   "reason": "frontage 64.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172954",
+   "reason": "frontage 67.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172974",
+   "reason": "frontage 72.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173044",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168709"
+  },
+  {
+   "pandId": "0363100012173057",
+   "reason": "frontage 46.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173058",
+   "reason": "frontage 41.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173130",
+   "reason": "frontage 36.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173131",
+   "reason": "frontage 30.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173132",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168754"
+  },
+  {
+   "pandId": "0363100012172867",
+   "reason": "frontage 94.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172868",
+   "reason": "frontage 90.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172869",
+   "reason": "frontage 85.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172882",
+   "reason": "frontage 49.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172883",
+   "reason": "frontage 46.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172884",
+   "reason": "frontage 42.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172886",
+   "reason": "frontage 76.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172887",
+   "reason": "frontage 71.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172888",
+   "reason": "frontage 67.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172889",
+   "reason": "frontage 57.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172893",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172895",
+   "reason": "frontage 87.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172896",
+   "reason": "frontage 85.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172901",
+   "reason": "frontage 67.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012172952",
+   "reason": "frontage 71.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173046",
+   "reason": "frontage 92.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173047",
+   "reason": "frontage 87.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173048",
+   "reason": "frontage 81.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173049",
+   "reason": "frontage 77.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173050",
+   "reason": "frontage 83.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173051",
+   "reason": "frontage 68.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173052",
+   "reason": "frontage 64.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173053",
+   "reason": "frontage 102.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173056",
+   "reason": "frontage 85.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173133",
+   "reason": "frontage 86.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173134",
+   "reason": "frontage 91.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173345",
+   "reason": "frontage 45.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173346",
+   "reason": "frontage 41.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173347",
+   "reason": "frontage 38.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173348",
+   "reason": "frontage 37.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173349",
+   "reason": "frontage 33.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173350",
+   "reason": "frontage 49.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173351",
+   "reason": "frontage 57.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173352",
+   "reason": "frontage 62.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173353",
+   "reason": "frontage 52.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173354",
+   "reason": "frontage 53.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173355",
+   "reason": "frontage 32.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173423",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012173424",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012173564",
+   "reason": "frontage 63.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173565",
+   "reason": "frontage 68.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173566",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173618",
+   "reason": "frontage 86.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173619",
+   "reason": "frontage 93.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173620",
+   "reason": "frontage 98.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173621",
+   "reason": "frontage 102.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173623",
+   "reason": "frontage 106.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173632",
+   "reason": "frontage 107.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173686",
+   "reason": "frontage 85.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173687",
+   "reason": "frontage 90.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173688",
+   "reason": "frontage 102.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173692",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173693",
+   "reason": "frontage 76.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173697",
+   "reason": "frontage 82.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173698",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174414",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174495"
+  },
+  {
+   "pandId": "0363100012174415",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174498"
+  },
+  {
+   "pandId": "0363100012174416",
+   "reason": "frontage 35.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174417",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174495",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174500"
+  },
+  {
+   "pandId": "0363100012174496",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174495"
+  },
+  {
+   "pandId": "0363100012173135",
+   "reason": "frontage 82.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173339",
+   "reason": "frontage 89.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173340",
+   "reason": "frontage 85.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173341",
+   "reason": "frontage 78.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173343",
+   "reason": "frontage 73.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173344",
+   "reason": "frontage 68.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173421",
+   "reason": "frontage 61.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173422",
+   "reason": "frontage 53.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174062",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174499",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012174495"
+  },
+  {
+   "pandId": "0363100012174502",
+   "reason": "frontage 45.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174503",
+   "reason": "frontage 40.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174690",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168805"
+  },
+  {
+   "pandId": "0363100012174691",
+   "reason": "frontage 74.6 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174692",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168805"
+  },
+  {
+   "pandId": "0363100012174693",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168805"
+  },
+  {
+   "pandId": "0363100012174694",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168805"
+  },
+  {
+   "pandId": "0363100012174695",
+   "reason": "frontage 30.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174696",
+   "reason": "frontage 35.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174698",
+   "reason": "frontage 55.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174700",
+   "reason": "frontage 74.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174701",
+   "reason": "frontage 80.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174702",
+   "reason": "frontage 82.9 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174703",
+   "reason": "frontage 85.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174704",
+   "reason": "frontage 74.7 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174775",
+   "reason": "frontage 80.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174778",
+   "reason": "frontage 90.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174781",
+   "reason": "frontage 61.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174965",
+   "reason": "frontage 65.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174966",
+   "reason": "frontage 56.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174967",
+   "reason": "frontage 70.0 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174968",
+   "reason": "frontage 56.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174969",
+   "reason": "no frontage on Eerste Leliedwarsstraat: No footprint edge faces Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174970",
+   "reason": "frontage 86.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174972",
+   "reason": "frontage 34.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174974",
+   "reason": "frontage 38.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174975",
+   "reason": "frontage 42.3 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174976",
+   "reason": "frontage 46.5 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174977",
+   "reason": "frontage 51.8 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174978",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012165000"
+  },
+  {
+   "pandId": "0363100012174979",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012165000"
+  },
+  {
+   "pandId": "0363100012174981",
+   "reason": "frontage 46.2 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174982",
+   "reason": "frontage 52.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174983",
+   "reason": "frontage 57.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012243821",
+   "reason": "sightline to Eerste Leliedwarsstraat crosses 0363100012168802"
+  },
+  {
+   "pandId": "0363100012571518",
+   "reason": "frontage 93.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012571519",
+   "reason": "frontage 97.4 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012239612",
+   "reason": "frontage 63.1 m from Eerste Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168765",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168766",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168802",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168805",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172615",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172616",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172892",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174409",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174410",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174500",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012172603",
+   "alongM": -20.47,
+   "widthM": 8.66,
+   "eavesM": 13.09,
+   "roofMaxM": 16.5,
+   "storeys3dbag": 5,
+   "builtYear": 1991,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172606",
+   "alongM": -13.75,
+   "widthM": 4.78,
+   "eavesM": 9.58,
+   "roofMaxM": 13.18,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172607",
+   "alongM": -8.8,
+   "widthM": 5.12,
+   "eavesM": 12.32,
+   "roofMaxM": 13.74,
+   "storeys3dbag": 4,
+   "builtYear": 1932,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172611",
+   "alongM": -4.14,
+   "widthM": 3.99,
+   "eavesM": 9.13,
+   "roofMaxM": 11.72,
+   "storeys3dbag": 3,
+   "builtYear": 1992,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172613",
+   "alongM": 0,
+   "widthM": 4.3,
+   "eavesM": 10.54,
+   "roofMaxM": 11.63,
+   "storeys3dbag": 4,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012172891",
+   "alongM": 6.76,
+   "widthM": 9.13,
+   "eavesM": 13.63,
+   "roofMaxM": 15.48,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "street": "Saenredamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152593",
+   "addresses": [
+    "Saenredamstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000802471"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164149",
+   "addresses": [
+    "Saenredamstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001002344"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155977",
+   "addresses": [
+    "Saenredamstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 5-O",
+     "use": "industriefunctie",
+     "areaM2": 39,
+     "bagId": "0363010000802503"
+    },
+    {
+     "address": "Saenredamstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000802502"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

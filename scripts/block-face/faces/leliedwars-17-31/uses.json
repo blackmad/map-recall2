@@ -1,0 +1,126 @@
+{
+ "street": "Tweede Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:27:59.267Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169989",
+   "addresses": [
+    "Tweede Leliedwarsstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000552621"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170037",
+   "addresses": [
+    "Tweede Leliedwarsstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000552628"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170038",
+   "addresses": [
+    "Tweede Leliedwarsstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001015042"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571514",
+   "addresses": [
+    "Tweede Leliedwarsstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000552638"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782470783,
+     "lngLat": [
+      4.8810799,
+      52.3750591
+     ],
+     "tags": {
+      "name": "van Ilse",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-29T22:27:59.267Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169899",
+   "addresses": [
+    "Tweede Leliedwarsstraat 25",
+    "Tweede Leliedwarsstraat 27",
+    "Tweede Leliedwarsstraat 29",
+    "Tweede Leliedwarsstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000552647"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000552648"
+    },
+    {
+     "address": "Bloemgracht 76",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012086509"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000552645"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,540 @@
+{
+ "street": "Akoleienstraat",
+ "seed": "0363100012174736",
+ "members": [
+  "0363100012174736",
+  "0363100012174739"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of akoleien-2-10: 174651 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of akoleien-2-10: 174639 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012167876",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174646"
+  },
+  {
+   "pandId": "0363100012168374",
+   "reason": "frontage 89.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168431",
+   "reason": "frontage 102.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168433",
+   "reason": "frontage 89.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168435",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168438",
+   "reason": "frontage 66.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168439",
+   "reason": "frontage 61.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168440",
+   "reason": "frontage 43.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168441",
+   "reason": "frontage 50.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168442",
+   "reason": "frontage 98.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168443",
+   "reason": "frontage 60.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168444",
+   "reason": "frontage 71.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168546",
+   "reason": "sightline to Akoleienstraat crosses 0363100012167876"
+  },
+  {
+   "pandId": "0363100012168549",
+   "reason": "frontage 40.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168550",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168975",
+   "reason": "frontage 44.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169772",
+   "reason": "frontage 99.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169773",
+   "reason": "frontage 106.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169774",
+   "reason": "frontage 101.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169778",
+   "reason": "frontage 112.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169779",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174074",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167880",
+   "reason": "frontage 42.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167881",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174650"
+  },
+  {
+   "pandId": "0363100012167882",
+   "reason": "frontage 45.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167883",
+   "reason": "frontage 35.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167884",
+   "reason": "frontage 48.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167885",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167946",
+   "reason": "frontage 84.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167947",
+   "reason": "frontage 96.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167948",
+   "reason": "frontage 62.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167949",
+   "reason": "frontage 36.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167950",
+   "reason": "frontage 55.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167951",
+   "reason": "frontage 76.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167952",
+   "reason": "frontage 81.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167953",
+   "reason": "frontage 83.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168004",
+   "reason": "frontage 88.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012168006",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169093",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012169392",
+   "reason": "frontage 48.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169783",
+   "reason": "frontage 95.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012169832",
+   "reason": "frontage 106.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174083",
+   "reason": "frontage 43.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174089",
+   "reason": "frontage 42.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174167",
+   "reason": "frontage 66.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174169",
+   "reason": "frontage 36.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174278",
+   "reason": "frontage 37.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174280",
+   "reason": "frontage 38.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174281",
+   "reason": "frontage 30.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174282",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174285",
+   "reason": "frontage 59.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174286",
+   "reason": "frontage 57.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174357",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174359",
+   "reason": "frontage 76.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174360",
+   "reason": "frontage 51.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174563",
+   "reason": "frontage 94.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174564",
+   "reason": "frontage 89.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174565",
+   "reason": "frontage 97.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174566",
+   "reason": "frontage 91.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174567",
+   "reason": "frontage 64.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174568",
+   "reason": "frontage 63.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174653",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174639"
+  },
+  {
+   "pandId": "0363100012174659",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174653"
+  },
+  {
+   "pandId": "0363100012174079",
+   "reason": "frontage 83.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174081",
+   "reason": "frontage 50.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174082",
+   "reason": "frontage 44.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174084",
+   "reason": "frontage 37.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174085",
+   "reason": "frontage 50.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174086",
+   "reason": "frontage 56.7 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174087",
+   "reason": "frontage 67.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174088",
+   "reason": "frontage 73.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174091",
+   "reason": "frontage 90.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174168",
+   "reason": "frontage 71.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174173",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174177",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174641",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174642",
+   "reason": "frontage 60.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174643",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174644",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174645",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174647",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012174648",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174650",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174735"
+  },
+  {
+   "pandId": "0363100012174656",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174655"
+  },
+  {
+   "pandId": "0363100012174657",
+   "reason": "frontage 34.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174658",
+   "reason": "frontage 38.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174737",
+   "reason": "frontage 54.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174902",
+   "reason": "frontage 34.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174993",
+   "reason": "frontage 50.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174997",
+   "reason": "frontage 59.5 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174998",
+   "reason": "frontage 68.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174999",
+   "reason": "frontage 44.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012175000",
+   "reason": "frontage 52.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012175001",
+   "reason": "sightline to Akoleienstraat crosses 0363100012167940"
+  },
+  {
+   "pandId": "0363100012175002",
+   "reason": "frontage 31.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012175006",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174077"
+  },
+  {
+   "pandId": "0363100012185684",
+   "reason": "frontage 106.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012240483",
+   "reason": "frontage 35.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012253787",
+   "reason": "frontage 79.4 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012572095",
+   "reason": "frontage 52.0 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174660",
+   "reason": "frontage 44.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174661",
+   "reason": "frontage 57.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174662",
+   "reason": "no frontage on Akoleienstraat: No footprint edge faces Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174733",
+   "reason": "frontage 65.1 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174735",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174741"
+  },
+  {
+   "pandId": "0363100012174738",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012174740",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012174741",
+   "reason": "sightline to Akoleienstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012174828",
+   "reason": "frontage 54.3 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174833",
+   "reason": "frontage 50.9 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012174834",
+   "reason": "frontage 53.2 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012185685",
+   "reason": "frontage 59.8 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012185686",
+   "reason": "frontage 77.6 m from Akoleienstraat"
+  },
+  {
+   "pandId": "0363100012167875",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167878",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167879",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173496",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174652",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174655",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174742",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174736",
+   "alongM": 0,
+   "widthM": 5.76,
+   "eavesM": 11.38,
+   "roofMaxM": 14.15,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174739",
+   "alongM": 4.91,
+   "widthM": 4.07,
+   "eavesM": 9.72,
+   "roofMaxM": 11.59,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "akoleien-2-10"
+}

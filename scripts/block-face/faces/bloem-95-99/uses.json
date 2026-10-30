@@ -1,0 +1,84 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:50:44.537Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170081",
+   "addresses": [
+    "Bloemstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 95-H",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000589090"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168007",
+   "addresses": [
+    "Bloemstraat 97",
+    "Bloemstraat 97A",
+    "Bloemstraat 97C",
+    "Bloemstraat 97B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 97-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000589097"
+    },
+    {
+     "address": "Bloemstraat 97-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000589098"
+    },
+    {
+     "address": "Bloemstraat 97A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012143063"
+    },
+    {
+     "address": "Bloemstraat 97C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012143065"
+    },
+    {
+     "address": "Bloemstraat 97B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012143064"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167941",
+   "addresses": [
+    "Bloemstraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 99-H",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000589099"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

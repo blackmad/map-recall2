@@ -1,0 +1,588 @@
+{
+ "street": "Derde Looiersdwarsstraat",
+ "seed": "0363100012174147",
+ "members": [
+  "0363100012174147",
+  "0363100012174154",
+  "0363100012174151",
+  "0363100012174547",
+  "0363100012174548",
+  "0363100012167471",
+  "0363100012167468"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012174562 13.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012167468 (face continues: 167469)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168918",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168919",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168920",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168921",
+   "reason": "frontage 57.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168926",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168927",
+   "reason": "frontage 56.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168928",
+   "reason": "frontage 40.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168929",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168930",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168932",
+   "reason": "frontage 83.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168933",
+   "reason": "frontage 81.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168935",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168936",
+   "reason": "frontage 40.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168937",
+   "reason": "frontage 39.8 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168938",
+   "reason": "frontage 39.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168940",
+   "reason": "frontage 55.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168949",
+   "reason": "frontage 93.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168950",
+   "reason": "frontage 98.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168951",
+   "reason": "frontage 103.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168952",
+   "reason": "frontage 65.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168953",
+   "reason": "frontage 60.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168954",
+   "reason": "frontage 87.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168956",
+   "reason": "frontage 109.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169552",
+   "reason": "frontage 42.8 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169620",
+   "reason": "frontage 43.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169621",
+   "reason": "frontage 117.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170008",
+   "reason": "frontage 107.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170009",
+   "reason": "frontage 55.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170054",
+   "reason": "frontage 69.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170055",
+   "reason": "frontage 73.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170056",
+   "reason": "frontage 60.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167470",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167471"
+  },
+  {
+   "pandId": "0363100012167889",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167469"
+  },
+  {
+   "pandId": "0363100012167890",
+   "reason": "frontage 45.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168916",
+   "reason": "frontage 62.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168917",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167468"
+  },
+  {
+   "pandId": "0363100012169550",
+   "reason": "frontage 86.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169618",
+   "reason": "frontage 68.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169619",
+   "reason": "frontage 80.1 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169999",
+   "reason": "frontage 34.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170000",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170002",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167469"
+  },
+  {
+   "pandId": "0363100012170004",
+   "reason": "frontage 44.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170005",
+   "reason": "frontage 44.1 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170006",
+   "reason": "frontage 43.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170059",
+   "reason": "frontage 71.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170060",
+   "reason": "frontage 78.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170061",
+   "reason": "frontage 83.3 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170120",
+   "reason": "frontage 88.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170121",
+   "reason": "frontage 83.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170122",
+   "reason": "frontage 111.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170124",
+   "reason": "frontage 78.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170125",
+   "reason": "frontage 83.1 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170126",
+   "reason": "frontage 87.3 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170127",
+   "reason": "frontage 90.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170128",
+   "reason": "frontage 94.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170129",
+   "reason": "frontage 74.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170130",
+   "reason": "frontage 89.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170131",
+   "reason": "frontage 95.8 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170186",
+   "reason": "frontage 102.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170187",
+   "reason": "frontage 108.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170188",
+   "reason": "frontage 112.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174096",
+   "reason": "frontage 88.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174097",
+   "reason": "frontage 85.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174098",
+   "reason": "frontage 68.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174099",
+   "reason": "frontage 77.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174145",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174562"
+  },
+  {
+   "pandId": "0363100012174146",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174145"
+  },
+  {
+   "pandId": "0363100012174160",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174151"
+  },
+  {
+   "pandId": "0363100012174161",
+   "reason": "frontage 41.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174164",
+   "reason": "frontage 59.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174165",
+   "reason": "frontage 55.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174166",
+   "reason": "frontage 41.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174341",
+   "reason": "frontage 78.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174342",
+   "reason": "frontage 82.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174343",
+   "reason": "frontage 86.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174344",
+   "reason": "frontage 90.1 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174346",
+   "reason": "frontage 72.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174347",
+   "reason": "frontage 76.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174348",
+   "reason": "frontage 71.1 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174349",
+   "reason": "frontage 63.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174350",
+   "reason": "frontage 68.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174351",
+   "reason": "frontage 49.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170064",
+   "reason": "frontage 78.9 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174148",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167886"
+  },
+  {
+   "pandId": "0363100012174149",
+   "reason": "frontage 30.8 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174152",
+   "reason": "frontage 30.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174153",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174159"
+  },
+  {
+   "pandId": "0363100012174352",
+   "reason": "frontage 55.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174549",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174145"
+  },
+  {
+   "pandId": "0363100012174550",
+   "reason": "frontage 32.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174551",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174552",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174553",
+   "reason": "frontage 37.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174554",
+   "reason": "no frontage on Derde Looiersdwarsstraat: No footprint edge faces Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174556",
+   "reason": "frontage 32.8 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174557",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174147"
+  },
+  {
+   "pandId": "0363100012174558",
+   "reason": "frontage 42.4 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174559",
+   "reason": "frontage 47.2 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174560",
+   "reason": "frontage 42.6 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174561",
+   "reason": "frontage 51.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241810",
+   "reason": "frontage 96.0 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012253731",
+   "reason": "frontage 113.7 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012254021",
+   "reason": "frontage 113.5 m from Derde Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174464",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174465",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174466",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174465"
+  },
+  {
+   "pandId": "0363100012174467",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174468",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174469",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174470",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174546",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012174548"
+  },
+  {
+   "pandId": "0363100012240264",
+   "reason": "sightline to Derde Looiersdwarsstraat crosses 0363100012167468"
+  },
+  {
+   "pandId": "0363100012167886",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174155",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174150",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174159",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174555",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174545",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174147",
+   "alongM": 0,
+   "widthM": 5,
+   "eavesM": 12.24,
+   "roofMaxM": 16.1,
+   "storeys3dbag": 4,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174154",
+   "alongM": 4.93,
+   "widthM": 4.88,
+   "eavesM": 11.92,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174151",
+   "alongM": 9.92,
+   "widthM": 5.1,
+   "eavesM": 12.03,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174547",
+   "alongM": 19.41,
+   "widthM": 14.02,
+   "eavesM": 14.83,
+   "roofMaxM": 14.85,
+   "storeys3dbag": 0,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174548",
+   "alongM": 30.07,
+   "widthM": 7.26,
+   "eavesM": 8.35,
+   "roofMaxM": 11.21,
+   "storeys3dbag": 4,
+   "builtYear": 1989,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167471",
+   "alongM": 40.95,
+   "widthM": 14.51,
+   "eavesM": 8.42,
+   "roofMaxM": 11.2,
+   "storeys3dbag": 4,
+   "builtYear": 1989,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167468",
+   "alongM": 58.81,
+   "widthM": 21.21,
+   "eavesM": 14.41,
+   "roofMaxM": 14.46,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

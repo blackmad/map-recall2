@@ -1,0 +1,171 @@
+{
+ "street": "Eerste Laurierdwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:30:55.907Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170013",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 3-H",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010000547284"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169965",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000547287"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170010",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000547289"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170011",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000547290"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170012",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000547294"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170022",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 13-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012067054"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170024",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001009580"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169961",
+   "addresses": [
+    "Eerste Laurierdwarsstraat 17B",
+    "Eerste Laurierdwarsstraat 17A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Laurierdwarsstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000547305"
+    },
+    {
+     "address": "Laurierstraat 76",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000719814"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721831423,
+     "lngLat": [
+      4.8810122,
+      52.3722773
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1016PN",
+      "addr:street": "Laurierstraat",
+      "amenity": "pub",
+      "description": "chess cafe",
+      "indoor_seating": "yes",
+      "name": "De Laurierboom",
+      "opening_hours": "Mo-Th 14:30-01:00; Fr 14:30-03:00; Sa 13:00-03:00; Su 13:00-01:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 623 3015",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-29T22:30:55.907Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

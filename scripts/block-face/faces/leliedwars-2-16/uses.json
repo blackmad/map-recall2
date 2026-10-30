@@ -1,0 +1,172 @@
+{
+ "street": "Tweede Leliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T22:25:04.913Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169979",
+   "addresses": [
+    "Tweede Leliedwarsstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000552620"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169975",
+   "addresses": [
+    "Tweede Leliedwarsstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000977546"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012063858"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169978",
+   "addresses": [
+    "Tweede Leliedwarsstraat 12A",
+    "Tweede Leliedwarsstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000552611"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000552612"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169902",
+   "addresses": [
+    "Tweede Leliedwarsstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 10-H",
+     "use": "industriefunctie",
+     "areaM2": 35,
+     "bagId": "0363010000552608"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14189993137,
+     "lngLat": [
+      4.8806572,
+      52.375503
+     ],
+     "tags": {
+      "amenity": "events_venue",
+      "name": "Villa Kakafonie"
+     },
+     "fetchedAt": "2026-10-29T22:25:04.913Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169908",
+   "addresses": [
+    "Tweede Leliedwarsstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000552604"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169907",
+   "addresses": [
+    "Tweede Leliedwarsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000959522"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169911",
+   "addresses": [
+    "Tweede Leliedwarsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Leliedwarsstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000959521"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169088",
+   "addresses": [
+    "Tweede Leliedwarsstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 103",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000629127"
+    },
+    {
+     "address": "Tweede Leliedwarsstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000552589"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

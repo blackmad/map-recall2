@@ -1,0 +1,41 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:18:08.704Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169915",
+   "addresses": [
+    "Bloemgracht 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 82-H",
+     "use": "kantoorfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000588628"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169916",
+   "addresses": [
+    "Bloemgracht 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 80-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000588618"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

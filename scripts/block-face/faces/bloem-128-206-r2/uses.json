@@ -1,0 +1,41 @@
+{
+ "street": "Bloemstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:40:37.539Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167946",
+   "addresses": [
+    "Bloemstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000977569"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174091",
+   "addresses": [
+    "Bloemstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemstraat 128-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000589133"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

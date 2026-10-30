@@ -1,0 +1,784 @@
+{
+ "street": "Eerste Looiersdwarsstraat",
+ "seed": "0363100012253731",
+ "members": [
+  "0363100012170074",
+  "0363100012170007",
+  "0363100012170123",
+  "0363100012170122",
+  "0363100012253731"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012170078 18.6 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012253731 (face continues: 169621)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168877",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170072"
+  },
+  {
+   "pandId": "0363100012168878",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168877"
+  },
+  {
+   "pandId": "0363100012168879",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168877"
+  },
+  {
+   "pandId": "0363100012168881",
+   "reason": "frontage 66.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168927",
+   "reason": "frontage 66.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168933",
+   "reason": "frontage 54.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168936",
+   "reason": "frontage 82.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168949",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168950"
+  },
+  {
+   "pandId": "0363100012168950",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168951"
+  },
+  {
+   "pandId": "0363100012168951",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170122"
+  },
+  {
+   "pandId": "0363100012168952",
+   "reason": "frontage 57.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168953",
+   "reason": "frontage 61.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168954",
+   "reason": "frontage 49.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168955",
+   "reason": "frontage 70.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168956",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012169621"
+  },
+  {
+   "pandId": "0363100012168957",
+   "reason": "frontage 74.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169356",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168877"
+  },
+  {
+   "pandId": "0363100012169357",
+   "reason": "frontage 38.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169358",
+   "reason": "frontage 41.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169401",
+   "reason": "frontage 44.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169403",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012169622"
+  },
+  {
+   "pandId": "0363100012169405",
+   "reason": "frontage 51.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169407",
+   "reason": "frontage 49.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169408",
+   "reason": "frontage 42.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169410",
+   "reason": "frontage 93.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169412",
+   "reason": "frontage 65.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169414",
+   "reason": "frontage 97.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169552",
+   "reason": "frontage 73.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169620",
+   "reason": "frontage 64.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169622",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170066"
+  },
+  {
+   "pandId": "0363100012169710",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170057"
+  },
+  {
+   "pandId": "0363100012170008",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170122"
+  },
+  {
+   "pandId": "0363100012170009",
+   "reason": "frontage 60.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167470",
+   "reason": "frontage 85.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167471",
+   "reason": "frontage 107.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012167890",
+   "reason": "frontage 59.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168836",
+   "reason": "frontage 30.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012168917",
+   "reason": "frontage 83.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169618",
+   "reason": "frontage 41.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012169619",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170067"
+  },
+  {
+   "pandId": "0363100012170004",
+   "reason": "frontage 66.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170005",
+   "reason": "frontage 68.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170006",
+   "reason": "frontage 53.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170054",
+   "reason": "frontage 52.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170055",
+   "reason": "frontage 42.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170056",
+   "reason": "frontage 51.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170060",
+   "reason": "frontage 41.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170061",
+   "reason": "frontage 35.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170075",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170076"
+  },
+  {
+   "pandId": "0363100012170076",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170078"
+  },
+  {
+   "pandId": "0363100012170119",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170118"
+  },
+  {
+   "pandId": "0363100012170120",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170075"
+  },
+  {
+   "pandId": "0363100012170121",
+   "reason": "frontage 36.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170124",
+   "reason": "frontage 43.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170125",
+   "reason": "frontage 39.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170126",
+   "reason": "frontage 32.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170127",
+   "reason": "frontage 33.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170128",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168950"
+  },
+  {
+   "pandId": "0363100012170129",
+   "reason": "frontage 48.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170130",
+   "reason": "frontage 30.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170131",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170007"
+  },
+  {
+   "pandId": "0363100012170132",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170007"
+  },
+  {
+   "pandId": "0363100012170133",
+   "reason": "frontage 73.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170134",
+   "reason": "frontage 72.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170135",
+   "reason": "frontage 64.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170136",
+   "reason": "frontage 68.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170137",
+   "reason": "frontage 55.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170138",
+   "reason": "frontage 37.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170139",
+   "reason": "frontage 72.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170182",
+   "reason": "frontage 54.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170183",
+   "reason": "frontage 50.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170059",
+   "reason": "frontage 45.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170064",
+   "reason": "frontage 39.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170067",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170063"
+  },
+  {
+   "pandId": "0363100012170184",
+   "reason": "frontage 41.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170186",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170187",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170188",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170190",
+   "reason": "frontage 56.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170191",
+   "reason": "frontage 64.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170192",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170195"
+  },
+  {
+   "pandId": "0363100012170193",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170192"
+  },
+  {
+   "pandId": "0363100012170194",
+   "reason": "frontage 34.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170196",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170195"
+  },
+  {
+   "pandId": "0363100012170197",
+   "reason": "frontage 50.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170198",
+   "reason": "frontage 52.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170199",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012170202",
+   "reason": "frontage 32.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173842",
+   "reason": "frontage 42.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173843",
+   "reason": "frontage 34.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173850",
+   "reason": "frontage 41.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173851",
+   "reason": "frontage 47.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173852",
+   "reason": "frontage 46.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173856",
+   "reason": "frontage 39.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173860",
+   "reason": "frontage 72.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173863",
+   "reason": "frontage 78.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173864",
+   "reason": "frontage 68.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173865",
+   "reason": "frontage 66.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173866",
+   "reason": "frontage 57.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173867",
+   "reason": "frontage 56.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173868",
+   "reason": "frontage 61.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173869",
+   "reason": "frontage 56.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173870",
+   "reason": "frontage 47.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173871",
+   "reason": "frontage 51.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173872",
+   "reason": "frontage 61.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173873",
+   "reason": "frontage 81.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173874",
+   "reason": "frontage 85.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174146",
+   "reason": "frontage 105.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174147",
+   "reason": "frontage 109.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174160",
+   "reason": "frontage 88.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174161",
+   "reason": "frontage 79.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173845",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012168831"
+  },
+  {
+   "pandId": "0363100012174151",
+   "reason": "frontage 109.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174154",
+   "reason": "frontage 109.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173848",
+   "reason": "frontage 75.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173854",
+   "reason": "frontage 57.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173855",
+   "reason": "frontage 59.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173862",
+   "reason": "frontage 97.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173844",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012173846",
+   "reason": "frontage 49.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174162",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174163",
+   "reason": "frontage 74.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174164",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174339",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174341",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174342",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174343",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174344",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174345",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174346",
+   "reason": "frontage 64.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174347",
+   "reason": "frontage 59.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174348",
+   "reason": "no frontage on Eerste Looiersdwarsstraat: No footprint edge faces Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174349",
+   "reason": "frontage 71.1 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174350",
+   "reason": "frontage 68.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174351",
+   "reason": "frontage 83.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174352",
+   "reason": "frontage 76.9 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174549",
+   "reason": "frontage 93.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174550",
+   "reason": "frontage 89.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174556",
+   "reason": "frontage 89.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174557",
+   "reason": "frontage 88.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174558",
+   "reason": "frontage 74.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174559",
+   "reason": "frontage 75.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174560",
+   "reason": "frontage 74.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174561",
+   "reason": "frontage 70.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012239392",
+   "reason": "frontage 81.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012239393",
+   "reason": "frontage 57.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241680",
+   "reason": "frontage 62.5 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241681",
+   "reason": "frontage 59.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241682",
+   "reason": "frontage 83.2 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241764",
+   "reason": "frontage 42.0 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012241810",
+   "reason": "frontage 47.3 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012242759",
+   "reason": "frontage 65.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012253930",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012170070"
+  },
+  {
+   "pandId": "0363100012254021",
+   "reason": "sightline to Eerste Looiersdwarsstraat crosses 0363100012169621"
+  },
+  {
+   "pandId": "0363100012174546",
+   "reason": "frontage 86.4 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174547",
+   "reason": "frontage 108.7 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012174548",
+   "reason": "frontage 107.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012253892",
+   "reason": "frontage 58.6 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012253893",
+   "reason": "frontage 57.8 m from Eerste Looiersdwarsstraat"
+  },
+  {
+   "pandId": "0363100012165428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168831",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168832",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170057",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170065",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170066",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170070",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170071",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170072",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170073",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170118",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170185",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170195",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170203",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012170074",
+   "alongM": -21.56,
+   "widthM": 3.23,
+   "eavesM": 10.31,
+   "roofMaxM": 12.62,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170007",
+   "alongM": -17.79,
+   "widthM": 4.3,
+   "eavesM": 10.06,
+   "roofMaxM": 12.73,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170123",
+   "alongM": -11.14,
+   "widthM": 9.02,
+   "eavesM": 9.8,
+   "roofMaxM": 12.9,
+   "storeys3dbag": 4,
+   "builtYear": 1952,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170122",
+   "alongM": -4.37,
+   "widthM": 4.52,
+   "eavesM": 9.8,
+   "roofMaxM": 13.4,
+   "storeys3dbag": 4,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012253731",
+   "alongM": 0,
+   "widthM": 4.23,
+   "eavesM": 11.1,
+   "roofMaxM": 14.39,
+   "storeys3dbag": 4,
+   "builtYear": 1672,
+   "uncertainty": []
+  }
+ ]
+}

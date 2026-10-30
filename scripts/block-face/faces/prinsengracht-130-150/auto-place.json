@@ -1,0 +1,661 @@
+{
+ "face": "prinsengracht-130-150",
+ "street": "Prinsengracht",
+ "library": "jordaan",
+ "stripDate": "2021-01-25",
+ "seconds": 5.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "prinsengracht-130-150-r1",
+   "pands": [
+    "0363100012174415",
+    "0363100012174416"
+   ],
+   "passed": true,
+   "triangles": 4247
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012174415",
+   "address": "Prinsengracht 150",
+   "builtYear": 1760,
+   "widthM": 5.84,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ebc79f",
+    "wallRaw": "#c9ab89",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 173,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 3.23,
+      "riseM": 4.32,
+      "topWidthM": 2.27,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.182,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.1,
+       "widthM": 1.2,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "jordaan-1750-neck-gable",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "jordaan-1850-cornice-house",
+    "score": 0.65
+   },
+   "placement": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#beab88",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, amenity=cafe); fascia colour measured on the strip 2021-01-25 span 0-234"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#ebc79f",
+     "evidence": "strip 2021-01-25 span 0-234: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 4: eaves 12.73 m at the type's 3.33 m pitch",
+    "door unread",
+    "crown neck: skyline rise 4.32 m, width 3.23 m, top 2.27 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012174415",
+    "ncc": 0.178,
+    "nccRaw": 0.178,
+    "shiftM": [
+     0.15,
+     0.3
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.17",
+     "glazing storey band off by 0.24"
+    ],
+    "wall": {
+     "photo": "#ebc69f",
+     "model": "#cc9c66",
+     "dL": -0.173
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.627
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.188
+   }
+  },
+  {
+   "pandId": "0363100012174416",
+   "address": "Prinsengracht 148",
+   "builtYear": 1760,
+   "widthM": 5.87,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745e53",
+    "wallRaw": "#847969",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 240,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 3.25,
+      "topWidthM": 0.33,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.133,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.37,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.2
+   },
+   "status": "placed",
+   "type": "jordaan-1750-neck-gable",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "jordaan-1850-cornice-house",
+    "score": 0.54
+   },
+   "placement": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "measuredPalette": {
+     "brick": "#745e53",
+     "evidence": "strip 2021-01-25 span 234-469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "bell"
+   },
+   "notes": [
+    "storeys 4: eaves 13.13 m at the type's 3.33 m pitch",
+    "door unread",
+    "crown bell: skyline rise 3.25 m, width 2.45 m, top 0.33 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012174416",
+    "ncc": 0.243,
+    "nccRaw": 0.243,
+    "shiftM": [
+     -0.2,
+     -0.25
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#725e52",
+     "model": "#8c7264",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.487
+   },
+   "challengers": {
+    "jordaan-1850-cornice-house": 0.271
+   }
+  },
+  {
+   "pandId": "0363100012174417",
+   "address": "Prinsengracht 146",
+   "builtYear": 1790,
+   "widthM": 5.45,
+   "eavesM": 15.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6051",
+    "wallRaw": "#947c66",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 229,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1,
+      "riseM": 5.73,
+      "topWidthM": 0.4,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.295,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.9,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.65 < 0.7 (skyline crown rise 5.73 m, top 0.4 m fits no crown of the type)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.82 m = 5 storeys of 3.16 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.229 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.73 m, top 0.4 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164999",
+   "address": "Prinsengracht 142",
+   "builtYear": 1966,
+   "widthM": 1.16,
+   "eavesM": 8.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d0b48c",
+    "wallRaw": "#ddbf9a",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 365,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.231,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1966, type 1600-1870; frontage 1.16 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1966, type 1600-1870",
+     "frontage 1.16 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 8.86 m = 3 storeys of 2.95 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.247 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165018",
+   "address": "Prinsengracht 136",
+   "builtYear": 1941,
+   "widthM": 14.27,
+   "eavesM": 14.8,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.5,
+    "toM": 14.24,
+    "depthM": 0.89,
+    "centre": 0.623,
+    "lineRD": [
+     [
+      120706.7595625,
+      487650.00149999995
+     ],
+     [
+      120709.3435625,
+      487655.1445
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d3ad8a",
+    "wallRaw": "#d1ad8a",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 225,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 5.47,
+      "topWidthM": 0.17,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 9,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.205,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1941, type 1600-1870; frontage 14.27 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1941, type 1600-1870",
+     "frontage 14.27 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.8 m = 4 storeys of 3.7 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.26 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.186 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.47 m, top 0.17 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174698",
+   "address": "Prinsengracht 134",
+   "builtYear": 1954,
+   "widthM": 6.75,
+   "eavesM": 13.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a48067",
+    "wallRaw": "#b69076",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 239,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 5.98,
+      "topWidthM": 0.07,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.109,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1954, type 1600-1870)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1954, type 1600-1870"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.92 m = 4 storeys of 3.48 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.41 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.98 m, top 0.07 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173566",
+   "address": "Prinsengracht 130",
+   "builtYear": 1954,
+   "widthM": 10.98,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b7a63",
+    "wallRaw": "#b08e74",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 260,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 6.43,
+      "topWidthM": 0.23,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.175,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1954, type 1600-1870; frontage 10.98 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1954, type 1600-1870",
+     "frontage 10.98 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.3 m = 4 storeys of 3.33 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.139 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 6.43 m, top 0.23 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

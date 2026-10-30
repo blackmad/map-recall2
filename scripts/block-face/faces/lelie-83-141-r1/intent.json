@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lelie-83-141-r1",
+ "street": "Nieuwe Leliestraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-16",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-16",
+   "image": "staging/block-face/lelie-83-141-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the jordaan library (buurt Bloemgrachtbuurt); scores and holds in scripts/block-face/faces/lelie-83-141/auto-place.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable",
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012168161",
+   "slug": "lelie-168161",
+   "address": "Nieuwe Leliestraat 115",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#5a4d47",
+     "evidence": "strip 2023-01-16 span 2747-2906: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1850-cornice-house scored 0.73 on eaves 1, stucco 1, crown -, columns 0; strip 2023-01-16 span 2747-2906"
+   }
+  },
+  {
+   "pandId": "0363100012168148",
+   "slug": "lelie-168148",
+   "address": "Nieuwe Leliestraat 117",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#716f70",
+     "evidence": "strip 2023-01-16 span 2906-3057: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: jordaan-1750-neck-gable scored 1 on eaves 1, roof 1, stucco 1, crown -; strip 2023-01-16 span 2906-3057"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

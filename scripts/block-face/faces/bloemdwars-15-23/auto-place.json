@@ -1,0 +1,235 @@
+{
+ "face": "bloemdwars-15-23",
+ "street": "Tweede Bloemdwarsstraat",
+ "library": "jordaan",
+ "stripDate": "2021-03-17",
+ "seconds": 0.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167942",
+   "address": "Tweede Bloemdwarsstraat 15",
+   "builtYear": 1991,
+   "widthM": 27.46,
+   "eavesM": 11.68,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#959290",
+    "wallRaw": "#83766c",
+    "skyline": {
+     "eavesM": 12.95,
+     "eavesRow": 46,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 1.13,
+      "topWidthM": 1.05,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 18,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.402,
+    "structure": {
+     "bayWidthM": 1.65,
+     "bayCentre": 0.03,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.25 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.25,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.78,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.6,
+       "widthM": 1.23,
+       "centre": 0.78
+      },
+      {
+       "atM": 8.3,
+       "widthM": 1.32,
+       "centre": 0.75
+      },
+      {
+       "atM": 7.92,
+       "widthM": 1.23,
+       "centre": 0.26
+      },
+      {
+       "atM": 5.67,
+       "widthM": 0.95,
+       "centre": 0.8
+      },
+      {
+       "atM": 5.07,
+       "widthM": 2.77,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1991, type 1600-1870; frontage 27.46 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1600-1870",
+     "frontage 27.46 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.68 m = 4 storeys of 2.92 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.316 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 18 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168008",
+   "address": "Tweede Bloemdwarsstraat 21",
+   "builtYear": 1873,
+   "widthM": 4.36,
+   "eavesM": 5.92,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c252b",
+    "wallRaw": "#2e2b31",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 564,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.5 < 0.7 (3DBAG eaves 5.92 m = 3 storeys of 1.97 m vs the type's 3.13 m)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 5.92 m = 3 storeys of 1.97 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168009",
+   "address": "Tweede Bloemdwarsstraat 23",
+   "builtYear": 1827,
+   "widthM": 4.65,
+   "eavesM": 8.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474246",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 564,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

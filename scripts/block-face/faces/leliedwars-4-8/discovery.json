@@ -1,0 +1,747 @@
+{
+ "street": "Derde Leliedwarsstraat",
+ "seed": "0363100012174260",
+ "members": [
+  "0363100012174430",
+  "0363100012174432",
+  "0363100012174263",
+  "0363100012174260"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012174431 17.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012174260 (face continues: 174261)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168015",
+   "reason": "frontage 77.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168016",
+   "reason": "frontage 40.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168017",
+   "reason": "frontage 72.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168018",
+   "reason": "frontage 42.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168019",
+   "reason": "frontage 36.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168020",
+   "reason": "frontage 59.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168021",
+   "reason": "frontage 53.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168022",
+   "reason": "frontage 68.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168023",
+   "reason": "frontage 64.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168024",
+   "reason": "frontage 37.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168025",
+   "reason": "frontage 72.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168026",
+   "reason": "frontage 65.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168071",
+   "reason": "frontage 69.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168072",
+   "reason": "frontage 43.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168073",
+   "reason": "frontage 45.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168074",
+   "reason": "frontage 40.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168075",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168079"
+  },
+  {
+   "pandId": "0363100012168076",
+   "reason": "frontage 35.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168077",
+   "reason": "frontage 30.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168078",
+   "reason": "frontage 44.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168080",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168075"
+  },
+  {
+   "pandId": "0363100012168081",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168091"
+  },
+  {
+   "pandId": "0363100012168082",
+   "reason": "frontage 31.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168083",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168081"
+  },
+  {
+   "pandId": "0363100012168084",
+   "reason": "frontage 39.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168085",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174259"
+  },
+  {
+   "pandId": "0363100012168089",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168090",
+   "reason": "frontage 32.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168091",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174431"
+  },
+  {
+   "pandId": "0363100012168147",
+   "reason": "frontage 54.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168148",
+   "reason": "frontage 58.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168149",
+   "reason": "frontage 54.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168150",
+   "reason": "frontage 48.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168152",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168153",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168154",
+   "reason": "frontage 86.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168155",
+   "reason": "frontage 49.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168156",
+   "reason": "frontage 52.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168157",
+   "reason": "frontage 56.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168158",
+   "reason": "frontage 66.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168160",
+   "reason": "frontage 68.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168161",
+   "reason": "frontage 62.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168162",
+   "reason": "frontage 60.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168163",
+   "reason": "frontage 98.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168504",
+   "reason": "frontage 93.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168506",
+   "reason": "frontage 80.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169030",
+   "reason": "frontage 81.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169031",
+   "reason": "frontage 59.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169032",
+   "reason": "frontage 80.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169087",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169833",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168079"
+  },
+  {
+   "pandId": "0363100012169838",
+   "reason": "frontage 40.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169839",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012169829"
+  },
+  {
+   "pandId": "0363100012169840",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012169829"
+  },
+  {
+   "pandId": "0363100012169842",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012169843"
+  },
+  {
+   "pandId": "0363100012169843",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174423"
+  },
+  {
+   "pandId": "0363100012169845",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012169842"
+  },
+  {
+   "pandId": "0363100012169846",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168079"
+  },
+  {
+   "pandId": "0363100012169847",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168075"
+  },
+  {
+   "pandId": "0363100012169848",
+   "reason": "frontage 35.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169849",
+   "reason": "frontage 39.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169897",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169910",
+   "reason": "frontage 66.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169983",
+   "reason": "frontage 70.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169984",
+   "reason": "frontage 74.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012169985",
+   "reason": "frontage 78.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170043",
+   "reason": "frontage 70.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170107",
+   "reason": "frontage 102.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170108",
+   "reason": "frontage 106.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173516",
+   "reason": "frontage 87.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173517",
+   "reason": "frontage 90.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173518",
+   "reason": "frontage 86.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173519",
+   "reason": "frontage 84.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173520",
+   "reason": "frontage 89.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173521",
+   "reason": "frontage 91.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012173522",
+   "reason": "frontage 81.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174041",
+   "reason": "frontage 58.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174174",
+   "reason": "frontage 33.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174178",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174179",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174180",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174186",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168075"
+  },
+  {
+   "pandId": "0363100012174242",
+   "reason": "frontage 49.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174243",
+   "reason": "frontage 51.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174244",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174257"
+  },
+  {
+   "pandId": "0363100012174245",
+   "reason": "frontage 45.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174246",
+   "reason": "frontage 42.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174247",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174253"
+  },
+  {
+   "pandId": "0363100012174248",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174247"
+  },
+  {
+   "pandId": "0363100012174249",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174247"
+  },
+  {
+   "pandId": "0363100012174250",
+   "reason": "frontage 34.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174251",
+   "reason": "frontage 43.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174252",
+   "reason": "frontage 47.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174253",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174254"
+  },
+  {
+   "pandId": "0363100012174255",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174253"
+  },
+  {
+   "pandId": "0363100012174258",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174257"
+  },
+  {
+   "pandId": "0363100012174259",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174261"
+  },
+  {
+   "pandId": "0363100012174262",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174259"
+  },
+  {
+   "pandId": "0363100012174264",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174425"
+  },
+  {
+   "pandId": "0363100012174269",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174333",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174264"
+  },
+  {
+   "pandId": "0363100012174418",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174264"
+  },
+  {
+   "pandId": "0363100012174419",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174264"
+  },
+  {
+   "pandId": "0363100012174420",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174264"
+  },
+  {
+   "pandId": "0363100012174421",
+   "reason": "frontage 32.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174422",
+   "reason": "frontage 41.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174423",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174424"
+  },
+  {
+   "pandId": "0363100012174424",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174430"
+  },
+  {
+   "pandId": "0363100012174426",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012174427"
+  },
+  {
+   "pandId": "0363100012174428",
+   "reason": "frontage 31.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174429",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012168079"
+  },
+  {
+   "pandId": "0363100012174434",
+   "reason": "frontage 49.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174435",
+   "reason": "frontage 48.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174436",
+   "reason": "frontage 65.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174437",
+   "reason": "frontage 66.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174438",
+   "reason": "frontage 68.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174622",
+   "reason": "frontage 48.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174623",
+   "reason": "frontage 52.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174624",
+   "reason": "frontage 56.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174625",
+   "reason": "no frontage on Derde Leliedwarsstraat: No footprint edge faces Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174626",
+   "reason": "frontage 40.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174632",
+   "reason": "frontage 85.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174633",
+   "reason": "frontage 53.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174743",
+   "reason": "frontage 70.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174744",
+   "reason": "frontage 68.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174745",
+   "reason": "frontage 53.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174746",
+   "reason": "frontage 47.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174747",
+   "reason": "frontage 88.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174748",
+   "reason": "frontage 82.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174749",
+   "reason": "frontage 89.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174750",
+   "reason": "frontage 100.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174751",
+   "reason": "frontage 95.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174752",
+   "reason": "frontage 89.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174753",
+   "reason": "frontage 83.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174754",
+   "reason": "frontage 79.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174823",
+   "reason": "frontage 105.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174829",
+   "reason": "frontage 70.5 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174830",
+   "reason": "frontage 62.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174831",
+   "reason": "frontage 79.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174832",
+   "reason": "frontage 74.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174835",
+   "reason": "frontage 94.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174836",
+   "reason": "frontage 104.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174837",
+   "reason": "frontage 100.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174838",
+   "reason": "frontage 82.6 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174839",
+   "reason": "frontage 56.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174840",
+   "reason": "frontage 46.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174841",
+   "reason": "frontage 45.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174911",
+   "reason": "frontage 42.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174912",
+   "reason": "frontage 48.1 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174913",
+   "reason": "frontage 39.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174918",
+   "reason": "frontage 80.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174919",
+   "reason": "frontage 81.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174920",
+   "reason": "frontage 75.8 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174921",
+   "reason": "frontage 68.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174922",
+   "reason": "frontage 63.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174923",
+   "reason": "frontage 53.3 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174925",
+   "reason": "frontage 76.0 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174931",
+   "reason": "frontage 34.2 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174932",
+   "reason": "frontage 91.9 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012174933",
+   "reason": "frontage 51.4 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012247880",
+   "reason": "sightline to Derde Leliedwarsstraat crosses 0363100012169842"
+  },
+  {
+   "pandId": "0363100012253953",
+   "reason": "frontage 65.7 m from Derde Leliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012168079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168088",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174254",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174257",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174427",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174430",
+   "alongM": -22.71,
+   "widthM": 9.1,
+   "eavesM": 12.72,
+   "roofMaxM": 15.74,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174432",
+   "alongM": -12.09,
+   "widthM": 12.15,
+   "eavesM": 11.11,
+   "roofMaxM": 11.15,
+   "storeys3dbag": 4,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174263",
+   "alongM": -4.02,
+   "widthM": 4,
+   "eavesM": 11.57,
+   "roofMaxM": 11.64,
+   "storeys3dbag": 4,
+   "builtYear": 1877,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174260",
+   "alongM": 0,
+   "widthM": 4.04,
+   "eavesM": 9.75,
+   "roofMaxM": 11.49,
+   "storeys3dbag": 4,
+   "builtYear": 1920,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

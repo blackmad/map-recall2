@@ -1,0 +1,331 @@
+{
+ "face": "rozengracht-90-112",
+ "street": "Rozengracht",
+ "library": "jordaan",
+ "stripDate": "2024-12-16",
+ "seconds": 3.49,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012174167",
+   "address": "Rozengracht 112",
+   "builtYear": 1856,
+   "widthM": 4.13,
+   "eavesM": 12.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#222821",
+    "wallRaw": "#6d7366",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.67,
+      "topWidthM": 1.48,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.22,
+       "widthM": 1,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.05,
+       "widthM": 1.02,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174168",
+   "address": "Rozengracht 104",
+   "builtYear": 1905,
+   "widthM": 6.17,
+   "eavesM": 14.12,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 5.92,
+    "depthM": 0.62,
+    "centre": 0.482,
+    "lineRD": [
+     [
+      120426.61,
+      487384.45749999996
+     ],
+     [
+      120428.98800000001,
+      487385.3165
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#484a44",
+    "wallRaw": "#3e4037",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 1.08,
+      "topWidthM": 1.55,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.155,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.38,
+       "widthM": 0.82,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.22,
+       "widthM": 0.97,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best jordaan-1850-cornice-house scores 0.5 < 0.7 (3DBAG eaves 14.12 m = 5 storeys of 2.82 m vs the type's 3.13 m)",
+   "best": {
+    "type": "jordaan-1850-cornice-house",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.12 m = 5 storeys of 2.82 m vs the type's 3.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174079",
+   "address": "Rozengracht 92",
+   "builtYear": 1891,
+   "widthM": 5.06,
+   "eavesM": 15.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#966850",
+    "wallRaw": "#c38a6c",
+    "skyline": {
+     "eavesM": 15.68,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.245,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.27,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.3,
+       "widthM": 1.05,
+       "centre": 0.23
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.57,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.052 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.33 mean 0.39 vs photo 0.09; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012174079",
+    "ncc": 0.052,
+    "nccRaw": 0.052,
+    "shiftM": [
+     0.4,
+     0.2
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.39 vs photo 0.09",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#976952",
+     "model": "#ab7b61",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.09,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.14
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174090",
+   "address": "Rozengracht 90",
+   "builtYear": 1850,
+   "widthM": 5.74,
+   "eavesM": 8.77,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ba8b6f",
+    "wallRaw": "#be9075",
+    "skyline": {
+     "eavesM": 11.38,
+     "eavesRow": 367,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.57,
+      "topWidthM": 0.72,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.537,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012174090",
+    "ncc": 0.53,
+    "nccRaw": 0.53,
+    "shiftM": [
+     0,
+     -0.05
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#b98669",
+     "model": "#bd9075",
+     "dL": 0.031
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.56
+   },
+   "challengers": {}
+  }
+ ]
+}

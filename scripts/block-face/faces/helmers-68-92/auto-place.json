@@ -3,7 +3,7 @@
  "street": "Derde Helmersstraat",
  "library": "helmersbuurt",
  "stripDate": "2023-01-12",
- "seconds": 2.11,
+ "seconds": 5.25,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,61 +24,51 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#a8a1a4",
+    "wall": "#a59fa1",
     "wallRaw": "#6c6a6b",
     "skyline": {
-     "eavesM": 15.07,
-     "eavesRow": 255,
+     "eavesM": 15.05,
+     "eavesRow": 256,
      "confidence": 1,
      "crown": {
       "widthM": 3.23,
-      "riseM": 2.78,
-      "topWidthM": 0.33,
+      "riseM": 2.8,
+      "topWidthM": 0.2,
       "centre": 0.57
      }
     },
     "stucco": false,
-    "bands": 8,
+    "bands": 7,
     "columns": null,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.33,
+    "accentShare": 0.326,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "balcony slabs stacked at 13.42 m (3.15 m wide), 10.05 m (2.08 m wide), 6.45 m (4.35 m wide)",
+     "why": "balcony slabs stacked at 13.47 m (1.38 m wide), 10.02 m (4.4 m wide), 6.5 m (4.63 m wide)",
      "openAxes": [],
      "slabs": [
       {
-       "atM": 13.88,
-       "widthM": 2.38,
-       "centre": 0.8
+       "atM": 13.92,
+       "widthM": 2.42,
+       "centre": 0.79
       },
       {
-       "atM": 13.42,
-       "widthM": 3.15,
-       "centre": 0.44
+       "atM": 13.47,
+       "widthM": 1.38,
+       "centre": 0.48
       },
       {
-       "atM": 12.07,
-       "widthM": 0.85,
-       "centre": 0.07
-      },
-      {
-       "atM": 10.05,
-       "widthM": 2.08,
-       "centre": 0.43
-      },
-      {
-       "atM": 9,
-       "widthM": 0.9,
-       "centre": 0.08
-      },
-      {
-       "atM": 6.45,
-       "widthM": 4.35,
+       "atM": 10.02,
+       "widthM": 4.4,
        "centre": 0.63
+      },
+      {
+       "atM": 6.5,
+       "widthM": 4.63,
+       "centre": 0.6
       }
      ]
     },
@@ -86,9 +76,39 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.20; glazing storey band off by 0.31; columns 3 vs photo 8)",
+   "likeness": {
+    "pandId": "0363100012154239",
+    "ncc": 0.088,
+    "nccRaw": 0.088,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.20",
+     "glazing storey band off by 0.31",
+     "columns 3 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#6b6161",
+     "model": "#9c9698",
+     "dL": 0.2
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.351
+   },
    "challengers": {}
   },
   {
@@ -105,81 +125,95 @@
     "centre": 0.938
    },
    "strip": {
-    "wall": null,
-    "wallRaw": "#564943",
+    "wall": "#584945",
+    "wallRaw": "#584a44",
     "skyline": {
-     "eavesM": 17.85,
-     "eavesRow": 144,
-     "confidence": 0.79,
+     "eavesM": 14.6,
+     "eavesRow": 274,
+     "confidence": 0.87,
      "crown": {
-      "widthM": 0.72,
-      "riseM": 0.82,
-      "topWidthM": 0.57,
-      "centre": 0.3
+      "widthM": 2.55,
+      "riseM": 6.85,
+      "topWidthM": 0.38,
+      "centre": 0.67
      }
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 4,
     "columns": 3,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.085,
+    "accentShare": 0.313,
     "structure": {
-     "bayWidthM": 0.55,
-     "bayCentre": 0.67,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
+     "bayWidthM": 0.93,
+     "bayCentre": 0.1,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.07 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.07,
+       "light": 0.46
+      },
+      {
+       "widthM": 1,
+       "centre": 0.7,
+       "light": 0.39
+      }
+     ],
      "slabs": [
       {
-       "atM": 9.15,
-       "widthM": 1,
+       "atM": 9.07,
+       "widthM": 1.15,
        "centre": 0.32
       },
       {
-       "atM": 6.75,
-       "widthM": 1.1,
-       "centre": 0.7
+       "atM": 5.85,
+       "widthM": 1.15,
+       "centre": 0.32
       },
       {
-       "atM": 5.92,
-       "widthM": 1.13,
-       "centre": 0.3
+       "atM": 5.1,
+       "widthM": 0.95,
+       "centre": 0.32
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 17.85 m vs the type's 14.9 m)",
-   "best": {
-    "type": "helmers-1896-transom-band",
-    "score": 0.64,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 17.85 m vs the type's 14.9 m"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.065 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.36 mean 0.40 vs photo 0.64)",
+   "likeness": {
+    "pandId": "0363100012155419",
+    "ncc": 0.109,
+    "nccRaw": 0.109,
+    "shiftM": [
+     -0.25,
+     0
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.40 vs photo 0.64"
+    ],
+    "wall": {
+     "photo": "#5f4d47",
+     "model": "#725e59",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.416
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -199,28 +233,28 @@
      "confidence": 1,
      "crown": {
       "widthM": 2.4,
-      "riseM": 1.7,
-      "topWidthM": 1.3,
+      "riseM": 1.68,
+      "topWidthM": 2,
       "centre": 0.37
      }
     },
     "stucco": false,
-    "bands": 4,
+    "bands": 3,
     "columns": 3,
     "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.16,
+    "accentShare": 0.159,
     "structure": {
-     "bayWidthM": 0.38,
-     "bayCentre": 0.71,
+     "bayWidthM": 0.85,
+     "bayCentre": 0.39,
      "balconies": false,
      "why": "no dark open axis, 1 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
        "atM": 7.22,
-       "widthM": 4.92,
-       "centre": 0.46
+       "widthM": 2.7,
+       "centre": 0.25
       }
      ]
     },
@@ -228,9 +262,38 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.035 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20; wall family unresolved (#494646 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012236624",
+    "ncc": 0.035,
+    "nccRaw": 0.035,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20",
+     "wall family unresolved (#494646 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#494646",
+     "model": "#605c5c",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.534
+   },
    "challengers": {}
   },
   {
@@ -242,25 +305,25 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#63544e",
+    "wall": "#64544e",
     "wallRaw": "#5b534f",
     "skyline": {
-     "eavesM": 13.3,
-     "eavesRow": 326,
+     "eavesM": 13.4,
+     "eavesRow": 322,
      "confidence": 1,
      "crown": {
-      "widthM": 0.8,
-      "riseM": 0.97,
-      "topWidthM": 0.68,
+      "widthM": 0.78,
+      "riseM": 0.85,
+      "topWidthM": 0.57,
       "centre": 0.42
      }
     },
     "stucco": false,
     "bands": 4,
-    "columns": 5,
+    "columns": 3,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.152,
+    "accentShare": 0.151,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -269,40 +332,40 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 7.15,
+       "atM": 7.17,
        "widthM": 1.07,
-       "centre": 0.42
+       "centre": 0.76
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.36 < 0.7 (strip cornice 13.3 m vs the type's 14.9 m; strip columns 5 vs 3 bays)",
+   "reason": "best helmers-1896-transom-band scores 0.64 < 0.7 (strip cornice 13.4 m vs the type's 14.9 m)",
    "best": {
     "type": "helmers-1896-transom-band",
-    "score": 0.36,
+    "score": 0.64,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 13.3 m vs the type's 14.9 m"
+      "note": "strip cornice 13.4 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.114 (brick)"
+      "note": "strip accent share 0.113 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -318,25 +381,25 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5b4b44",
+    "wall": "#5a4b43",
     "wallRaw": "#524743",
     "skyline": {
-     "eavesM": 15.7,
-     "eavesRow": 230,
+     "eavesM": 15.6,
+     "eavesRow": 234,
      "confidence": 1,
      "crown": {
-      "widthM": 2.8,
-      "riseM": 3.78,
-      "topWidthM": 0.75,
-      "centre": 0.42
+      "widthM": 2.6,
+      "riseM": 3.88,
+      "topWidthM": 0.7,
+      "centre": 0.41
      }
     },
     "stucco": false,
     "bands": 3,
-    "columns": 6,
+    "columns": 3,
     "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.137,
+    "accentShare": 0.135,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -355,33 +418,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.55 < 0.7 (strip cornice 15.7 m vs the type's 14.9 m; strip columns 6 vs 3 bays)",
-   "best": {
-    "type": "helmers-1896-transom-band",
-    "score": 0.55,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 15.7 m vs the type's 14.9 m"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.111 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 6 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   },
@@ -394,15 +432,15 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#675047",
+    "wall": "#675048",
     "wallRaw": "#5b4c47",
     "skyline": {
-     "eavesM": 15.32,
-     "eavesRow": 245,
-     "confidence": 0.89,
+     "eavesM": 15.45,
+     "eavesRow": 240,
+     "confidence": 0.88,
      "crown": {
       "widthM": 1.38,
-      "riseM": 5.73,
+      "riseM": 5.6,
       "topWidthM": 0.2,
       "centre": 0.23
      }
@@ -412,7 +450,7 @@
     "columns": 3,
     "doorSide": null,
     "accentSide": "left",
-    "accentShare": 0.135,
+    "accentShare": 0.136,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -435,29 +473,29 @@
    "address": "Derde Helmersstraat 80",
    "builtYear": 1895,
    "widthM": 5.75,
-   "eavesM": 15.03,
+   "eavesM": 15.62,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5e5550",
+    "wall": "#605752",
     "wallRaw": "#5e5652",
     "skyline": {
-     "eavesM": 15.03,
-     "eavesRow": 257,
+     "eavesM": 15.15,
+     "eavesRow": 252,
      "confidence": 1,
      "crown": {
       "widthM": 1.98,
-      "riseM": 2.05,
-      "topWidthM": 1.15,
-      "centre": 0.44
+      "riseM": 1.92,
+      "topWidthM": 1.27,
+      "centre": 0.45
      }
     },
     "stucco": false,
     "bands": 5,
-    "columns": 3,
+    "columns": 5,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.284,
+    "accentShare": 0.285,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -466,29 +504,29 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 13.45,
+       "atM": 13.42,
        "widthM": 1.45,
        "centre": 0.42
       },
       {
-       "atM": 11.88,
+       "atM": 11.93,
        "widthM": 1.02,
        "centre": 0.76
       },
       {
-       "atM": 8.8,
+       "atM": 8.77,
        "widthM": 1.07,
        "centre": 0.79
       },
       {
-       "atM": 6.55,
-       "widthM": 1.07,
+       "atM": 6.52,
+       "widthM": 1.05,
        "centre": 0.42
       },
       {
-       "atM": 5.05,
-       "widthM": 1.02,
-       "centre": 0.12
+       "atM": 5.1,
+       "widthM": 1.13,
+       "centre": 0.11
       }
      ]
     },
@@ -510,25 +548,25 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#5c504b",
+    "wall": "#5f514c",
     "wallRaw": "#574f4b",
     "skyline": {
-     "eavesM": 15.35,
-     "eavesRow": 244,
+     "eavesM": 15.3,
+     "eavesRow": 246,
      "confidence": 1,
      "crown": {
       "widthM": 2.38,
-      "riseM": 2.1,
-      "topWidthM": 0.63,
+      "riseM": 2.15,
+      "topWidthM": 0.68,
       "centre": 0.38
      }
     },
     "stucco": false,
     "bands": 1,
-    "columns": null,
+    "columns": 3,
     "doorSide": null,
     "accentSide": "left",
-    "accentShare": 0.102,
+    "accentShare": 0.103,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -537,24 +575,24 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 12.2,
-       "widthM": 0.88,
-       "centre": 0.41
+       "atM": 13.42,
+       "widthM": 1.1,
+       "centre": 0.71
       },
       {
-       "atM": 8.75,
+       "atM": 12.15,
+       "widthM": 0.97,
+       "centre": 0.09
+      },
+      {
+       "atM": 8.77,
        "widthM": 0.93,
        "centre": 0.78
       },
       {
-       "atM": 6.2,
-       "widthM": 1,
-       "centre": 0.81
-      },
-      {
-       "atM": 5.15,
-       "widthM": 2.33,
-       "centre": 0.4
+       "atM": 5.17,
+       "widthM": 2.35,
+       "centre": 0.41
       }
      ]
     },
@@ -576,7 +614,7 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#625551",
+    "wall": "#615450",
     "wallRaw": "#585250",
     "skyline": {
      "eavesM": 16.68,
@@ -584,8 +622,8 @@
      "confidence": 1,
      "crown": {
       "widthM": 2.77,
-      "riseM": 3.57,
-      "topWidthM": 0.38,
+      "riseM": 3.52,
+      "topWidthM": 0.4,
       "centre": 0.38
      }
     },
@@ -599,23 +637,23 @@
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
+     "why": "no dark open axis, 2 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
        "atM": 14.5,
-       "widthM": 2.05,
-       "centre": 0.8
+       "widthM": 2.15,
+       "centre": 0.79
       },
       {
        "atM": 13.3,
-       "widthM": 1,
-       "centre": 0.09
+       "widthM": 0.9,
+       "centre": 0.46
       },
       {
        "atM": 11.27,
-       "widthM": 0.95,
-       "centre": 0.56
+       "widthM": 1.43,
+       "centre": 0.52
       },
       {
        "atM": 10.38,
@@ -666,22 +704,22 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#685853",
-    "wallRaw": "#59544f",
+    "wall": "#665450",
+    "wallRaw": "#5a544f",
     "skyline": {
-     "eavesM": 16.5,
-     "eavesRow": 198,
+     "eavesM": 16.57,
+     "eavesRow": 195,
      "confidence": 0.89,
      "crown": {
-      "widthM": 1.57,
-      "riseM": 3.98,
-      "topWidthM": 0.3,
-      "centre": 0.43
+      "widthM": 1.77,
+      "riseM": 4.88,
+      "topWidthM": 0.1,
+      "centre": 0.41
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 6,
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.071,
@@ -693,9 +731,9 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 13.07,
+       "atM": 13.22,
        "widthM": 0.85,
-       "centre": 0.63
+       "centre": 0.61
       },
       {
        "atM": 10.38,
@@ -714,23 +752,29 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1896-transom-band scores 0.5 < 0.7 (strip cornice 16.5 m vs the type's 14.9 m)",
+   "reason": "best helmers-1896-transom-band scores 0.36 < 0.7 (strip cornice 16.57 m vs the type's 14.9 m; strip columns 6 vs 3 bays)",
    "best": {
     "type": "helmers-1896-transom-band",
-    "score": 0.5,
+    "score": 0.36,
     "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 16.5 m vs the type's 14.9 m"
+      "note": "strip cornice 16.57 m vs the type's 14.9 m"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.06 (brick)"
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
      }
     ]
    },
@@ -746,7 +790,7 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#372f29",
+    "wall": "#776157",
     "wallRaw": "#5e534d",
     "skyline": {
      "eavesM": 18.9,
@@ -755,16 +799,16 @@
      "crown": {
       "widthM": 1.32,
       "riseM": 2.45,
-      "topWidthM": 0.23,
+      "topWidthM": 0.28,
       "centre": 0.57
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 3,
     "doorSide": "right",
     "accentSide": "right",
-    "accentShare": 0.074,
+    "accentShare": 0.073,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -784,7 +828,7 @@
       },
       {
        "atM": 9.88,
-       "widthM": 1.15,
+       "widthM": 1.13,
        "centre": 0.45
       },
       {
@@ -800,14 +844,14 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 18.9 m vs the type's 14.3 m)",
+   "reason": "best helmers-1897-balconette-tall scores 0.64 < 0.7 (strip cornice 18.9 m vs the type's 14.3 m)",
    "best": {
     "type": "helmers-1897-balconette-tall",
-    "score": 0.5,
+    "score": 0.64,
     "veto": [],
     "criteria": [
      {
@@ -820,7 +864,13 @@
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.052 (brick)"
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -832,11 +882,11 @@
    "address": "Derde Helmersstraat 70",
    "builtYear": 1898,
    "widthM": 6.4,
-   "eavesM": 15.85,
+   "eavesM": 14.64,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#aaaca8",
+    "wall": "#a6a7a2",
     "wallRaw": "#6f5f57",
     "skyline": {
      "eavesM": 15.85,
@@ -845,7 +895,7 @@
      "crown": {
       "widthM": 2.8,
       "riseM": 2.3,
-      "topWidthM": 1.73,
+      "topWidthM": 2.08,
       "centre": 0.45
      }
     },
@@ -884,8 +934,8 @@
       },
       {
        "atM": 8.32,
-       "widthM": 2.17,
-       "centre": 0.47
+       "widthM": 2.23,
+       "centre": 0.46
       },
       {
        "atM": 7.2,
@@ -938,29 +988,29 @@
    "address": "Derde Helmersstraat 68",
    "builtYear": 1898,
    "widthM": 5.53,
-   "eavesM": 16.75,
+   "eavesM": 15.32,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#594842",
+    "wall": "#5a4943",
     "wallRaw": "#544742",
     "skyline": {
-     "eavesM": 16.75,
-     "eavesRow": 188,
-     "confidence": 0.92,
+     "eavesM": 16.65,
+     "eavesRow": 192,
+     "confidence": 0.94,
      "crown": {
-      "widthM": 0.68,
-      "riseM": 0.73,
-      "topWidthM": 0.4,
-      "centre": 0.41
+      "widthM": 1.57,
+      "riseM": 4.8,
+      "topWidthM": 0.2,
+      "centre": 0.82
      }
     },
     "stucco": false,
-    "bands": 1,
+    "bands": 0,
     "columns": null,
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.066,
+    "accentShare": 0.067,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -971,12 +1021,12 @@
       {
        "atM": 11.5,
        "widthM": 1.02,
-       "centre": 0.61
+       "centre": 0.62
       },
       {
        "atM": 8.35,
        "widthM": 1.23,
-       "centre": 0.6
+       "centre": 0.61
       }
      ]
     },
@@ -985,7 +1035,7 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 16.75 m vs the type's 14.3 m)",
+   "reason": "best helmers-1897-balconette-tall scores 0.5 < 0.7 (strip cornice 16.65 m vs the type's 14.3 m)",
    "best": {
     "type": "helmers-1897-balconette-tall",
     "score": 0.5,
@@ -995,7 +1045,7 @@
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 16.75 m vs the type's 14.3 m"
+      "note": "strip cornice 16.65 m vs the type's 14.3 m"
      },
      {
       "key": "stucco",

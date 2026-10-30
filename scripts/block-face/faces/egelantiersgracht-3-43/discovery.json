@@ -1,0 +1,2615 @@
+{
+ "street": "Egelantiersgracht",
+ "seed": "0363100012169252",
+ "members": [
+  "0363100012169252",
+  "0363100012174780",
+  "0363100012174779",
+  "0363100012174778",
+  "0363100012174703",
+  "0363100012174775",
+  "0363100012174704",
+  "0363100012174967",
+  "0363100012174965",
+  "0363100012174781",
+  "0363100012174968",
+  "0363100012174977",
+  "0363100012174976",
+  "0363100012174975",
+  "0363100012174974",
+  "0363100012174972",
+  "0363100012174979",
+  "0363100012174978",
+  "0363100012165000"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012169252 (face continues: 169267)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012165000 (face continues: 172892)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165031",
+   "reason": "frontage 120.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165056",
+   "reason": "frontage 148.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012164999",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165018",
+   "reason": "frontage 57.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165023",
+   "reason": "frontage 107.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165024",
+   "reason": "frontage 92.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165025",
+   "reason": "frontage 93.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165026",
+   "reason": "frontage 111.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165027",
+   "reason": "frontage 110.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165030",
+   "reason": "frontage 84.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165058",
+   "reason": "frontage 129.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165059",
+   "reason": "frontage 139.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165060",
+   "reason": "frontage 133.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012165061",
+   "reason": "frontage 141.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167647",
+   "reason": "frontage 175.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167648",
+   "reason": "frontage 174.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167651",
+   "reason": "frontage 175.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167652",
+   "reason": "frontage 175.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167653",
+   "reason": "frontage 175.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167689",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167690",
+   "reason": "frontage 162.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012167695",
+   "reason": "frontage 158.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168592",
+   "reason": "frontage 99.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168593",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168695",
+   "reason": "frontage 121.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168698",
+   "reason": "frontage 146.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168708",
+   "reason": "frontage 121.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168709",
+   "reason": "frontage 79.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168710",
+   "reason": "frontage 119.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168747",
+   "reason": "frontage 120.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168748",
+   "reason": "frontage 141.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168749",
+   "reason": "frontage 121.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168751",
+   "reason": "frontage 30.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168754",
+   "reason": "frontage 52.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168755",
+   "reason": "frontage 64.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168758",
+   "reason": "frontage 121.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168759",
+   "reason": "frontage 69.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168763",
+   "reason": "frontage 30.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168764",
+   "reason": "frontage 30.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168765",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172615"
+  },
+  {
+   "pandId": "0363100012168766",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168765"
+  },
+  {
+   "pandId": "0363100012168767",
+   "reason": "frontage 128.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168796",
+   "reason": "frontage 120.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168797",
+   "reason": "frontage 137.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168696",
+   "reason": "frontage 120.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168697",
+   "reason": "frontage 121.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168701",
+   "reason": "frontage 121.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168705",
+   "reason": "frontage 121.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168750",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173421"
+  },
+  {
+   "pandId": "0363100012168762",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172889"
+  },
+  {
+   "pandId": "0363100012168798",
+   "reason": "frontage 126.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168799",
+   "reason": "frontage 52.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168800",
+   "reason": "frontage 52.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168802",
+   "reason": "frontage 52.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168803",
+   "reason": "frontage 52.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168804",
+   "reason": "frontage 52.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168805",
+   "reason": "frontage 33.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168814",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173355"
+  },
+  {
+   "pandId": "0363100012168815",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172609"
+  },
+  {
+   "pandId": "0363100012168838",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172609"
+  },
+  {
+   "pandId": "0363100012168843",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172692"
+  },
+  {
+   "pandId": "0363100012168844",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168843"
+  },
+  {
+   "pandId": "0363100012168847",
+   "reason": "frontage 84.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168848",
+   "reason": "frontage 116.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168849",
+   "reason": "frontage 110.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168851",
+   "reason": "frontage 65.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168853",
+   "reason": "frontage 33.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168856",
+   "reason": "frontage 136.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168883",
+   "reason": "frontage 117.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168884",
+   "reason": "frontage 117.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168885",
+   "reason": "frontage 112.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168891",
+   "reason": "frontage 84.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168892",
+   "reason": "frontage 66.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168896",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168888"
+  },
+  {
+   "pandId": "0363100012168897",
+   "reason": "frontage 43.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168898",
+   "reason": "frontage 118.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169058",
+   "reason": "frontage 97.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169059",
+   "reason": "frontage 106.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169060",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169061",
+   "reason": "frontage 96.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169062",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169063",
+   "reason": "frontage 105.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169064",
+   "reason": "frontage 115.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169065",
+   "reason": "frontage 84.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169067",
+   "reason": "frontage 211.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169068",
+   "reason": "frontage 207.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169069",
+   "reason": "frontage 125.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168846",
+   "reason": "frontage 43.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168854",
+   "reason": "frontage 136.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169184",
+   "reason": "frontage 152.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169185",
+   "reason": "frontage 154.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169189",
+   "reason": "frontage 143.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169372",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169482",
+   "reason": "frontage 172.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172104",
+   "reason": "frontage 129.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169070",
+   "reason": "frontage 203.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169071",
+   "reason": "frontage 120.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169072",
+   "reason": "frontage 113.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169073",
+   "reason": "frontage 107.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169074",
+   "reason": "frontage 91.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169251",
+   "reason": "frontage 106.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169253",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012169252"
+  },
+  {
+   "pandId": "0363100012169254",
+   "reason": "frontage 69.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169255",
+   "reason": "frontage 84.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169256",
+   "reason": "frontage 85.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169257",
+   "reason": "frontage 55.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169258",
+   "reason": "frontage 51.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169259",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012169450"
+  },
+  {
+   "pandId": "0363100012169260",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012169259"
+  },
+  {
+   "pandId": "0363100012169261",
+   "reason": "frontage 86.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169262",
+   "reason": "frontage 88.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169263",
+   "reason": "frontage 85.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169264",
+   "reason": "frontage 92.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169265",
+   "reason": "frontage 83.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169266",
+   "reason": "frontage 40.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169268",
+   "reason": "frontage 41.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169269",
+   "reason": "frontage 60.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169307",
+   "reason": "frontage 45.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169445",
+   "reason": "frontage 88.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169446",
+   "reason": "frontage 70.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169447",
+   "reason": "frontage 73.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169448",
+   "reason": "frontage 76.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169449",
+   "reason": "frontage 73.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169450",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012169452"
+  },
+  {
+   "pandId": "0363100012169451",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012169450"
+  },
+  {
+   "pandId": "0363100012169453",
+   "reason": "frontage 93.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169454",
+   "reason": "frontage 85.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169455",
+   "reason": "frontage 89.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169456",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169457",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169582",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169583",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169584",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169585",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012169587",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172358",
+   "reason": "frontage 153.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172359",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172360",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172361",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172362",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172363",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172364",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172365",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172366",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172367",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172417",
+   "reason": "frontage 132.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172419",
+   "reason": "frontage 107.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172420",
+   "reason": "frontage 169.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172422",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172423",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172424",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172425",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172426",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172427",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172428",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172429",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172430",
+   "reason": "frontage 110.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172431",
+   "reason": "frontage 104.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172432",
+   "reason": "frontage 98.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172434",
+   "reason": "frontage 91.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172435",
+   "reason": "frontage 88.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172436",
+   "reason": "frontage 82.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172584",
+   "reason": "frontage 55.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172585",
+   "reason": "frontage 84.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172586",
+   "reason": "frontage 67.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172587",
+   "reason": "frontage 65.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172588",
+   "reason": "frontage 71.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172592",
+   "reason": "frontage 60.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172594",
+   "reason": "frontage 68.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172595",
+   "reason": "frontage 67.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172596",
+   "reason": "frontage 84.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172602",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172604"
+  },
+  {
+   "pandId": "0363100012172603",
+   "reason": "frontage 30.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172604",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173424"
+  },
+  {
+   "pandId": "0363100012172605",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172618"
+  },
+  {
+   "pandId": "0363100012172606",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172607"
+  },
+  {
+   "pandId": "0363100012172607",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012172609",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172617"
+  },
+  {
+   "pandId": "0363100012172611",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172610"
+  },
+  {
+   "pandId": "0363100012172589",
+   "reason": "frontage 58.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172590",
+   "reason": "frontage 63.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172591",
+   "reason": "frontage 58.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172593",
+   "reason": "frontage 60.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172608",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172614"
+  },
+  {
+   "pandId": "0363100012172612",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172893"
+  },
+  {
+   "pandId": "0363100012172613",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172891"
+  },
+  {
+   "pandId": "0363100012172615",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172892"
+  },
+  {
+   "pandId": "0363100012172616",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172615"
+  },
+  {
+   "pandId": "0363100012172621",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172617"
+  },
+  {
+   "pandId": "0363100012172622",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172617"
+  },
+  {
+   "pandId": "0363100012172666",
+   "reason": "frontage 84.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172667",
+   "reason": "frontage 95.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172668",
+   "reason": "frontage 102.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172669",
+   "reason": "frontage 102.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172670",
+   "reason": "frontage 107.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172671",
+   "reason": "frontage 115.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172777",
+   "reason": "frontage 52.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172778",
+   "reason": "frontage 52.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172779",
+   "reason": "frontage 120.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172780",
+   "reason": "frontage 69.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172781",
+   "reason": "frontage 78.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172857",
+   "reason": "frontage 82.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172862",
+   "reason": "frontage 69.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172863",
+   "reason": "frontage 120.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172866",
+   "reason": "frontage 115.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172872",
+   "reason": "frontage 48.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172873",
+   "reason": "frontage 84.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172874",
+   "reason": "frontage 42.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172875",
+   "reason": "frontage 31.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172877",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168842"
+  },
+  {
+   "pandId": "0363100012172672",
+   "reason": "frontage 101.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172673",
+   "reason": "frontage 106.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172674",
+   "reason": "frontage 112.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172675",
+   "reason": "frontage 115.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172676",
+   "reason": "frontage 117.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172694",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172619"
+  },
+  {
+   "pandId": "0363100012172858",
+   "reason": "frontage 70.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172859",
+   "reason": "frontage 78.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172860",
+   "reason": "frontage 70.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172864",
+   "reason": "frontage 123.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172865",
+   "reason": "frontage 119.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172867",
+   "reason": "frontage 67.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172868",
+   "reason": "frontage 64.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172869",
+   "reason": "frontage 60.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172870",
+   "reason": "frontage 84.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172871",
+   "reason": "frontage 84.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172876",
+   "reason": "frontage 123.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172878",
+   "reason": "frontage 84.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172956",
+   "reason": "frontage 169.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172879",
+   "reason": "frontage 84.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172890",
+   "reason": "frontage 30.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172897",
+   "reason": "frontage 54.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172900",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168840"
+  },
+  {
+   "pandId": "0363100012172902",
+   "reason": "frontage 31.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172903",
+   "reason": "frontage 43.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172917",
+   "reason": "frontage 71.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172918",
+   "reason": "frontage 70.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172919",
+   "reason": "frontage 83.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172921",
+   "reason": "frontage 40.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172922",
+   "reason": "frontage 56.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172923",
+   "reason": "frontage 75.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172924",
+   "reason": "frontage 62.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172925",
+   "reason": "frontage 61.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172926",
+   "reason": "frontage 48.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172927",
+   "reason": "frontage 64.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172928",
+   "reason": "frontage 68.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172953",
+   "reason": "frontage 43.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172954",
+   "reason": "frontage 43.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172974",
+   "reason": "frontage 43.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172990",
+   "reason": "frontage 70.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172991",
+   "reason": "frontage 46.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172992",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172993"
+  },
+  {
+   "pandId": "0363100012172994",
+   "reason": "frontage 48.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172995",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172997",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172998",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172996"
+  },
+  {
+   "pandId": "0363100012172955",
+   "reason": "frontage 180.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172894",
+   "reason": "frontage 124.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172895",
+   "reason": "frontage 59.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172896",
+   "reason": "frontage 59.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172898",
+   "reason": "frontage 93.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172901",
+   "reason": "frontage 43.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012172952",
+   "reason": "frontage 43.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173140",
+   "reason": "frontage 159.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173141",
+   "reason": "frontage 170.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173142",
+   "reason": "frontage 173.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173143",
+   "reason": "frontage 159.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173000",
+   "reason": "frontage 35.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173001",
+   "reason": "frontage 58.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173043",
+   "reason": "frontage 120.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173044",
+   "reason": "frontage 79.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173045",
+   "reason": "frontage 121.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173057",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173058",
+   "reason": "frontage 52.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173130",
+   "reason": "frontage 52.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173131",
+   "reason": "frontage 52.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173132",
+   "reason": "frontage 52.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173148",
+   "reason": "frontage 136.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173150",
+   "reason": "frontage 136.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173183",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172993"
+  },
+  {
+   "pandId": "0363100012173185",
+   "reason": "frontage 78.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173186",
+   "reason": "frontage 83.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173187",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173188",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012172996"
+  },
+  {
+   "pandId": "0363100012173189",
+   "reason": "frontage 36.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173190",
+   "reason": "frontage 31.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173191",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173192",
+   "reason": "frontage 45.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173144",
+   "reason": "frontage 171.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173048",
+   "reason": "frontage 78.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173049",
+   "reason": "frontage 78.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173050",
+   "reason": "frontage 30.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173051",
+   "reason": "frontage 77.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173052",
+   "reason": "frontage 32.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173054",
+   "reason": "frontage 81.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173055",
+   "reason": "frontage 82.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173056",
+   "reason": "frontage 82.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173133",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173134",
+   "reason": "frontage 52.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173135",
+   "reason": "frontage 52.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173136",
+   "reason": "frontage 141.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173137",
+   "reason": "frontage 147.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173138",
+   "reason": "frontage 159.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173139",
+   "reason": "frontage 155.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173145",
+   "reason": "frontage 168.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173146",
+   "reason": "frontage 159.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173149",
+   "reason": "frontage 141.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173151",
+   "reason": "frontage 155.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173152",
+   "reason": "frontage 151.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173153",
+   "reason": "frontage 147.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173154",
+   "reason": "frontage 151.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173196",
+   "reason": "frontage 138.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173203",
+   "reason": "frontage 128.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173389",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173394",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173395",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173396",
+   "reason": "frontage 150.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173401",
+   "reason": "frontage 127.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173193",
+   "reason": "frontage 50.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173194",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173195",
+   "reason": "frontage 74.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173204",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173205",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173233",
+   "reason": "frontage 136.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173303",
+   "reason": "frontage 97.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173304",
+   "reason": "frontage 101.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173305",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173342",
+   "reason": "frontage 120.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173345",
+   "reason": "frontage 79.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173346",
+   "reason": "frontage 74.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173347",
+   "reason": "frontage 68.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173348",
+   "reason": "frontage 80.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173349",
+   "reason": "frontage 76.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173350",
+   "reason": "frontage 79.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173351",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173352",
+   "reason": "frontage 70.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173353",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173354",
+   "reason": "frontage 70.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173383",
+   "reason": "frontage 105.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173384",
+   "reason": "frontage 109.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173385",
+   "reason": "frontage 93.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173386",
+   "reason": "frontage 95.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173387",
+   "reason": "frontage 98.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173388",
+   "reason": "frontage 101.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173391",
+   "reason": "frontage 91.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173392",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173393",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173397",
+   "reason": "frontage 122.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173398",
+   "reason": "frontage 123.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173399",
+   "reason": "frontage 124.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173400",
+   "reason": "frontage 126.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173234",
+   "reason": "frontage 136.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173339",
+   "reason": "frontage 70.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173340",
+   "reason": "frontage 70.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173341",
+   "reason": "frontage 52.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173343",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173344",
+   "reason": "frontage 52.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173487",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173488",
+   "reason": "frontage 115.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173564",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174965"
+  },
+  {
+   "pandId": "0363100012173565",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174967"
+  },
+  {
+   "pandId": "0363100012173566",
+   "reason": "frontage 51.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173567",
+   "reason": "frontage 65.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173615",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173688"
+  },
+  {
+   "pandId": "0363100012173616",
+   "reason": "frontage 67.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173617",
+   "reason": "frontage 67.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173618",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168895"
+  },
+  {
+   "pandId": "0363100012173619",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173686"
+  },
+  {
+   "pandId": "0363100012173620",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173687"
+  },
+  {
+   "pandId": "0363100012173621",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012571518"
+  },
+  {
+   "pandId": "0363100012173622",
+   "reason": "frontage 68.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173623",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012571519"
+  },
+  {
+   "pandId": "0363100012173624",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173625"
+  },
+  {
+   "pandId": "0363100012173625",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173636"
+  },
+  {
+   "pandId": "0363100012173626",
+   "reason": "frontage 84.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173627",
+   "reason": "frontage 84.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173628",
+   "reason": "frontage 84.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173629",
+   "reason": "frontage 84.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173630",
+   "reason": "frontage 74.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173631",
+   "reason": "frontage 74.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173637",
+   "reason": "frontage 62.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173638",
+   "reason": "frontage 58.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173685",
+   "reason": "frontage 54.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173689",
+   "reason": "frontage 63.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173690",
+   "reason": "frontage 67.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173691",
+   "reason": "frontage 59.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173692",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168886"
+  },
+  {
+   "pandId": "0363100012173693",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168893"
+  },
+  {
+   "pandId": "0363100012173694",
+   "reason": "frontage 65.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173695",
+   "reason": "frontage 65.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173696",
+   "reason": "frontage 60.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173697",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168894"
+  },
+  {
+   "pandId": "0363100012173698",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012168893"
+  },
+  {
+   "pandId": "0363100012173699",
+   "reason": "frontage 43.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173700",
+   "reason": "frontage 43.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173701",
+   "reason": "frontage 44.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173702",
+   "reason": "frontage 43.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173703",
+   "reason": "frontage 44.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174231",
+   "reason": "frontage 136.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174314",
+   "reason": "frontage 137.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174316",
+   "reason": "frontage 140.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174317",
+   "reason": "frontage 152.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174319",
+   "reason": "frontage 155.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174320",
+   "reason": "frontage 151.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174504",
+   "reason": "frontage 143.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174507",
+   "reason": "frontage 159.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174509",
+   "reason": "frontage 136.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174510",
+   "reason": "frontage 136.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174511",
+   "reason": "frontage 159.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174512",
+   "reason": "frontage 168.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012173704",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173624"
+  },
+  {
+   "pandId": "0363100012173705",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173624"
+  },
+  {
+   "pandId": "0363100012173706",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012173634"
+  },
+  {
+   "pandId": "0363100012173707",
+   "reason": "frontage 44.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174227",
+   "reason": "frontage 43.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174228",
+   "reason": "frontage 68.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174229",
+   "reason": "frontage 73.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174230",
+   "reason": "frontage 43.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174232",
+   "reason": "frontage 116.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174233",
+   "reason": "frontage 112.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174234",
+   "reason": "frontage 107.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174235",
+   "reason": "frontage 102.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174236",
+   "reason": "frontage 101.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174237",
+   "reason": "frontage 96.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174238",
+   "reason": "frontage 117.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174239",
+   "reason": "frontage 112.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174311",
+   "reason": "frontage 86.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174312",
+   "reason": "frontage 87.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174313",
+   "reason": "frontage 91.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174315",
+   "reason": "frontage 101.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174409",
+   "reason": "frontage 79.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174410",
+   "reason": "frontage 74.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174411",
+   "reason": "frontage 120.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174412",
+   "reason": "frontage 60.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174413",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174414",
+   "reason": "frontage 76.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174415",
+   "reason": "frontage 69.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174416",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174417",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174495",
+   "reason": "frontage 79.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174496",
+   "reason": "frontage 79.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174497",
+   "reason": "frontage 63.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174498",
+   "reason": "frontage 69.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174499",
+   "reason": "frontage 69.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174500",
+   "reason": "frontage 83.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174502",
+   "reason": "frontage 51.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174503",
+   "reason": "frontage 52.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174508",
+   "reason": "frontage 136.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174513",
+   "reason": "frontage 159.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174517",
+   "reason": "frontage 153.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174518",
+   "reason": "frontage 160.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174593",
+   "reason": "frontage 166.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174597",
+   "reason": "frontage 153.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174783",
+   "reason": "frontage 136.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174514",
+   "reason": "frontage 120.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174515",
+   "reason": "frontage 125.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174516",
+   "reason": "frontage 121.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174595",
+   "reason": "frontage 107.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174596",
+   "reason": "frontage 117.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174598",
+   "reason": "frontage 117.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174599",
+   "reason": "frontage 107.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174601",
+   "reason": "frontage 123.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174690",
+   "reason": "frontage 33.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174691",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174704"
+  },
+  {
+   "pandId": "0363100012174692",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012165000"
+  },
+  {
+   "pandId": "0363100012174693",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012165000"
+  },
+  {
+   "pandId": "0363100012174694",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174979"
+  },
+  {
+   "pandId": "0363100012174695",
+   "reason": "frontage 32.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174696",
+   "reason": "frontage 30.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174698",
+   "reason": "frontage 51.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174699",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174780"
+  },
+  {
+   "pandId": "0363100012174700",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174691"
+  },
+  {
+   "pandId": "0363100012174701",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174775"
+  },
+  {
+   "pandId": "0363100012174702",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174775"
+  },
+  {
+   "pandId": "0363100012174776",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174778"
+  },
+  {
+   "pandId": "0363100012174777",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174779"
+  },
+  {
+   "pandId": "0363100012174966",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174968"
+  },
+  {
+   "pandId": "0363100012174969",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174775"
+  },
+  {
+   "pandId": "0363100012174970",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174971",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176556",
+   "reason": "frontage 194.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176559",
+   "reason": "frontage 198.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176560",
+   "reason": "frontage 197.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174981",
+   "reason": "frontage 30.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012174982",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174977"
+  },
+  {
+   "pandId": "0363100012174983",
+   "reason": "sightline to Egelantiersgracht crosses 0363100012174966"
+  },
+  {
+   "pandId": "0363100012176411",
+   "reason": "frontage 227.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176412",
+   "reason": "frontage 222.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176413",
+   "reason": "frontage 200.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176414",
+   "reason": "frontage 211.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176415",
+   "reason": "frontage 177.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176416",
+   "reason": "frontage 232.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176417",
+   "reason": "frontage 189.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176418",
+   "reason": "frontage 203.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176419",
+   "reason": "frontage 194.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176421",
+   "reason": "frontage 197.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176422",
+   "reason": "frontage 176.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176423",
+   "reason": "frontage 190.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176424",
+   "reason": "frontage 237.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176425",
+   "reason": "frontage 242.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176426",
+   "reason": "frontage 191.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176427",
+   "reason": "frontage 196.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176428",
+   "reason": "frontage 215.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176429",
+   "reason": "frontage 178.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176477",
+   "reason": "frontage 101.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176478",
+   "reason": "frontage 109.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176479",
+   "reason": "frontage 85.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176480",
+   "reason": "frontage 104.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176481",
+   "reason": "frontage 124.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176482",
+   "reason": "frontage 97.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176483",
+   "reason": "frontage 98.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176484",
+   "reason": "frontage 99.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176486",
+   "reason": "frontage 83.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176487",
+   "reason": "frontage 103.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176488",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176489",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176490",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176491",
+   "reason": "frontage 97.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176492",
+   "reason": "frontage 100.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176493",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176494",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176541",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176542",
+   "reason": "frontage 93.4 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176543",
+   "reason": "frontage 96.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176545",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176546",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176548",
+   "reason": "frontage 126.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176549",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176550",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176551",
+   "reason": "frontage 110.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176561",
+   "reason": "frontage 196.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176607",
+   "reason": "frontage 200.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176610",
+   "reason": "frontage 177.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176611",
+   "reason": "frontage 176.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176623",
+   "reason": "frontage 174.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176626",
+   "reason": "frontage 164.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176629",
+   "reason": "frontage 178.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012241667",
+   "reason": "frontage 159.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012253897",
+   "reason": "frontage 143.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176608",
+   "reason": "frontage 176.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176609",
+   "reason": "frontage 174.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176612",
+   "reason": "frontage 180.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176613",
+   "reason": "frontage 181.9 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176614",
+   "reason": "frontage 156.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176617",
+   "reason": "frontage 162.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176619",
+   "reason": "frontage 146.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176620",
+   "reason": "frontage 152.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176621",
+   "reason": "frontage 167.3 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012176622",
+   "reason": "frontage 171.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012239606",
+   "reason": "frontage 33.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012240263",
+   "reason": "frontage 136.6 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012243821",
+   "reason": "frontage 52.0 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012250513",
+   "reason": "no frontage on Egelantiersgracht: No footprint edge faces Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012253842",
+   "reason": "frontage 111.8 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012253935",
+   "reason": "frontage 64.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012255142",
+   "reason": "frontage 97.2 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012571488",
+   "reason": "frontage 195.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012571489",
+   "reason": "frontage 196.5 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012253827",
+   "reason": "frontage 155.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012239612",
+   "reason": "frontage 52.7 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012252789",
+   "reason": "frontage 84.1 m from Egelantiersgracht"
+  },
+  {
+   "pandId": "0363100012168840",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168842",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168886",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168887",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168888",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168889",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168895",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168841",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172619",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172996",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173184",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173632",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173633",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173634",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173635",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173636",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173686",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173688",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571519",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012169252",
+   "alongM": 0,
+   "widthM": 8.69,
+   "eavesM": 10.02,
+   "roofMaxM": 15.75,
+   "storeys3dbag": 5,
+   "builtYear": 1865,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012174780",
+   "alongM": 8.53,
+   "widthM": 8.38,
+   "eavesM": 11.43,
+   "roofMaxM": 12.79,
+   "storeys3dbag": 4,
+   "builtYear": 1846,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174779",
+   "alongM": 15.86,
+   "widthM": 6.28,
+   "eavesM": 15.99,
+   "roofMaxM": 20.01,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012174778",
+   "alongM": 24.25,
+   "widthM": 2,
+   "eavesM": 14.63,
+   "roofMaxM": 18.28,
+   "storeys3dbag": 5,
+   "builtYear": 1855,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174703",
+   "alongM": 27.9,
+   "widthM": 5.28,
+   "eavesM": 12.78,
+   "roofMaxM": 13.44,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174775",
+   "alongM": 33.1,
+   "widthM": 5.12,
+   "eavesM": 12.51,
+   "roofMaxM": 13.83,
+   "storeys3dbag": 4,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174704",
+   "alongM": 38.57,
+   "widthM": 5.8,
+   "eavesM": 12.01,
+   "roofMaxM": 15.92,
+   "storeys3dbag": 5,
+   "builtYear": 1725,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012174967",
+   "alongM": 43.78,
+   "widthM": 4.62,
+   "eavesM": 13.8,
+   "roofMaxM": 18.13,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain."
+   ]
+  },
+  {
+   "pandId": "0363100012174965",
+   "alongM": 48.36,
+   "widthM": 4.55,
+   "eavesM": 10.45,
+   "roofMaxM": 13.5,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174781",
+   "alongM": 52.86,
+   "widthM": 4.45,
+   "eavesM": 8.21,
+   "roofMaxM": 11.22,
+   "storeys3dbag": 3,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174968",
+   "alongM": 57.34,
+   "widthM": 4.51,
+   "eavesM": 7.26,
+   "roofMaxM": 10.89,
+   "storeys3dbag": 3,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174977",
+   "alongM": 61.94,
+   "widthM": 4.68,
+   "eavesM": 10.69,
+   "roofMaxM": 10.73,
+   "storeys3dbag": 3,
+   "builtYear": 1871,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174976",
+   "alongM": 67.01,
+   "widthM": 5.47,
+   "eavesM": 12.68,
+   "roofMaxM": 14.82,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174975",
+   "alongM": 71.88,
+   "widthM": 4.27,
+   "eavesM": 12.56,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174974",
+   "alongM": 75.97,
+   "widthM": 3.92,
+   "eavesM": 12.41,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 4,
+   "builtYear": 1940,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174972",
+   "alongM": 79.92,
+   "widthM": 3.97,
+   "eavesM": 9.05,
+   "roofMaxM": 9.08,
+   "storeys3dbag": 3,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174979",
+   "alongM": 86.63,
+   "widthM": 9.46,
+   "eavesM": 9.2,
+   "roofMaxM": 12.28,
+   "storeys3dbag": 4,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174978",
+   "alongM": 93.45,
+   "widthM": 4.17,
+   "eavesM": 14.38,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165000",
+   "alongM": 98.35,
+   "widthM": 5.64,
+   "eavesM": 6.12,
+   "roofMaxM": 9.66,
+   "storeys3dbag": 3,
+   "builtYear": 1841,
+   "uncertainty": []
+  }
+ ]
+}

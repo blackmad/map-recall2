@@ -2000,6 +2000,23 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
   Spot review stays mandatory for each batch, on a 10 % sample.
 
+- **Batch evidence guard for narrow streets (#113 Jordaan, 2026-10-29).** Bloemgrachtbuurt installed 8 runs, and a review of all 8 kept 1. All 8 passed edge NCC (0.155–0.218). Four held runs had no usable front:
+  - close two-storey crops (bloem-128-206);
+  - oblique wall crops (akoleien-2-10, lelie-150-194);
+  - a fence (bloemgracht-53-95).
+
+  NCC needs an evidence floor before it scores. Candidates:
+  - a skyline read under clear sky on every pand of the run;
+  - the strip's metric height reaching the eaves;
+  - obliquity from the panorama heading.
+
+  The other three held runs were wrong paint or crown, which the type match misses:
+  - black paint drawn green;
+  - grey render drawn as brick;
+  - gables drawn as cornice houses.
+
+  The Jordaan library has only 2 types and their crown rules are loose. Until both are fixed, review every Jordaan run, not a 10 % sample.
+
 - **Batch installer yield (#103 follow-ups, 2026-10-29).**
   1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.
      - The Oud-West library has no `match` blocks, so only authored intents can use it.
@@ -2018,13 +2035,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp lightness: decided.** The user (2026-10-29): "if it's darker let it be darker". A buurt keeps its measured lightness; do not lift dark buurten to the city level. Lane buurt-lightness-20261029.
+  - **De Pijp colour: the type palettes, not the profile.** Since #118 a buurt keeps its measured L*. Saenredamstraat still draws saturated red and Tweede Jan Steenstraat rosy pink, because those fronts take the De Pijp block-face type palettes (light brick, L* 39–52, C* 22–26). Re-measure those palettes against the strips.
+  - **Painted test after exposure.** Kerkstraat's white and grey fronts read as brick. The thumbnails are underexposed (white render reads about L* 55–60, under the painted cut of 62). Decide "painted" after the shared-frame offset, against a city white point.
+  - **Buurt profile tests have no npm script.** `src/canalRecall/buurtProfiles/*.test.ts` run only by hand.
   - **Saturation.** Fronts are still more saturated than the muted photos.
   - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
-  - **Modern blocks: approved by the user (2026-10-29), lane modern-generic-20261029.** Add a modern side to the generator: glass and spandrel bands and concrete frames, by year and use. This is the cheap route for the large ride-visible modern buildings #105 could not install.
+  - **Modern blocks (#117, landed 2026-10-30). Open items:**
+    - **Per-pand modern walls are off.** `modern-pand-walls.json` is shipped empty. The 320 px thumbnail samples are too close and steep: at Haarlemmer Houttuinen, 8.6 m away at pitch 39°, balcony shadow read as dark brick. Gate on distance, pitch, shadow and whether the sampler's family agrees with derive's material before shipping per-pand walls.
+    - **Misses on the 12-spot sheet:** Van Reigersbergenstraat (pale buff, drawn dark brown) and Sarphatistraat (dark grey brick, drawn white). Neither building was sampled.
+    - **Use is thin.** OSM tags only about 4 % of post-1945 buildings. Add BAG `gebruiksdoel` (`.cache/bag-pand-uses`) to the building-facts rows.
+    - **Not drawn yet:** set-back top floors, glazed, recessed or arcaded ground floors, and floor bands on brick. These need the one spare texture layer, or a roof or extras hook.
+    - **BAG years disagree** between building-facts and bag-tiles (Kinkerstraat 0363100012078005: 1900 vs 1980s).
 
 - **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
   - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.

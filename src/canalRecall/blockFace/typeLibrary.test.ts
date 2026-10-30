@@ -62,3 +62,17 @@ test('fileTypeLoader checks the file against its path and finds nothing for malf
   assert.throws(() => load('twice'), /several districts/);
   assert.match(resolveTypeList(['twice'], load).problems[0], /several districts/);
 });
+
+test('every library type names a kit roof material (jordaan types had "tile", which failed every Bloemgrachtbuurt run at compile)', async () => {
+  const {ROOF_MATERIALS} = await import('../buildingRecipe/intent.ts');
+  const bad: string[] = [];
+  for (const district of fs.readdirSync(TYPE_LIBRARY_DIR)) {
+    const dir = path.join(TYPE_LIBRARY_DIR, district);
+    if (!fs.statSync(dir).isDirectory()) continue;
+    for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.json'))) {
+      const m = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).roof?.material;
+      if (m !== undefined && !(ROOF_MATERIALS as readonly string[]).includes(m)) bad.push(`${district}/${f}: ${m}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});

@@ -1,0 +1,7 @@
+{
+ "schemaVersion": 1,
+ "revision": "555c5e568d5cc6f9",
+ "licence": "measured from Gemeente Amsterdam panoramas, CC BY 4.0",
+ "walls": {},
+ "note": "Empty on purpose (2026-10-30): the 320 px thumbnail samples are too close and steep (Haarlemmer Houttuinen: 8.6 m at pitch 39 read balcony shadow as dark brick). Needs a quality gate before per-pand walls ship; see TODO."
+}

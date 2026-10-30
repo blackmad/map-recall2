@@ -3,7 +3,7 @@
  "street": "Eerste Constantijn Huygensstraat",
  "library": "helmersbuurt",
  "stripDate": "2024-11-29",
- "seconds": 3.28,
+ "seconds": 3.84,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,17 +24,17 @@
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
-    "wall": "#664e38",
+    "wall": "#654d38",
     "wallRaw": "#675742",
     "skyline": {
-     "eavesM": 17.55,
-     "eavesRow": 165,
-     "confidence": 0.91,
+     "eavesM": 17.57,
+     "eavesRow": 164,
+     "confidence": 0.9,
      "crown": {
-      "widthM": 1.68,
-      "riseM": 4.07,
-      "topWidthM": 0.38,
-      "centre": 0.76
+      "widthM": 1.57,
+      "riseM": 4.1,
+      "topWidthM": 0.2,
+      "centre": 0.75
      }
     },
     "stucco": false,
@@ -42,19 +42,13 @@
     "columns": null,
     "doorSide": null,
     "accentSide": "left",
-    "accentShare": 0.048,
+    "accentShare": 0.049,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 0.93 m at 0.32 (light 0.25): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 0.93,
-       "centre": 0.32,
-       "light": 0.25
-      }
-     ],
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
      "slabs": []
     },
     "voidShare": 0,
@@ -65,8 +59,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012126894",
-    "ncc": 0.189,
-    "nccRaw": 0.189,
+    "ncc": 0.171,
+    "nccRaw": 0.171,
     "shiftM": [
      0.1,
      -0.1
@@ -75,22 +69,22 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24"
+     "glazing storey band off by 0.26"
     ],
     "wall": {
-     "photo": "#624a35",
-     "model": "#836448",
-     "dL": 0.102
+     "photo": "#654d37",
+     "model": "#826348",
+     "dL": 0.09
     },
     "glazing": {
-     "photo": 0.43,
+     "photo": 0.5,
      "model": 0.46
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.439
+    "iou": 0.441
    },
    "challengers": {}
   },
@@ -106,13 +100,13 @@
     "wall": "#695039",
     "wallRaw": "#66513d",
     "skyline": {
-     "eavesM": 17.57,
-     "eavesRow": 164,
-     "confidence": 0.46,
+     "eavesM": 17.7,
+     "eavesRow": 159,
+     "confidence": 0.42,
      "crown": {
-      "widthM": 0.82,
-      "riseM": 4.1,
-      "topWidthM": 0.23,
+      "widthM": 0.85,
+      "riseM": 3.98,
+      "topWidthM": 0.07,
       "centre": 0.22
      }
     },
@@ -121,49 +115,55 @@
     "columns": 3,
     "doorSide": "left",
     "accentSide": "left",
-    "accentShare": 0.024,
+    "accentShare": 0.027,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 13.82,
+       "widthM": 0.8,
+       "centre": 0.77
+      }
+     ]
     },
     "voidShare": 0,
     "foliageShare": 0.09
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.22)",
+   "reason": "edge NCC 0.137 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17)",
    "likeness": {
     "pandId": "0363100012166619",
-    "ncc": 0.127,
-    "nccRaw": 0.127,
+    "ncc": 0.137,
+    "nccRaw": 0.137,
     "shiftM": [
      0.05,
      -0.1
     ],
-    "usable": 0.85,
+    "usable": 0.83,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22"
+     "glazing storey band off by 0.17"
     ],
     "wall": {
-     "photo": "#6d523a",
+     "photo": "#6c523a",
      "model": "#866649",
-     "dL": 0.078
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.52,
+     "photo": 0.49,
      "model": 0.46
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.505
+    "iou": 0.45
    },
    "challengers": {}
   },
@@ -187,12 +187,7 @@
      "eavesM": 19.7,
      "eavesRow": 79,
      "confidence": 1,
-     "crown": {
-      "widthM": 0.93,
-      "riseM": 1.28,
-      "topWidthM": 0.53,
-      "centre": 0.92
-     }
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
@@ -208,14 +203,9 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 8.4,
-       "widthM": 0.85,
-       "centre": 0.82
-      },
-      {
        "atM": 4.8,
-       "widthM": 2.75,
-       "centre": 0.34
+       "widthM": 2.5,
+       "centre": 0.37
       }
      ]
     },
@@ -252,27 +242,27 @@
    "address": "Eerste Constantijn Huygensstraat 71",
    "builtYear": 1903,
    "widthM": 12.23,
-   "eavesM": 15.7,
+   "eavesM": 16.56,
    "storeys3dbag": null,
    "bagBay": null,
    "strip": {
     "wall": "#4f3f37",
     "wallRaw": "#544f46",
     "skyline": {
-     "eavesM": 15.7,
-     "eavesRow": 239,
-     "confidence": 0.85,
+     "eavesM": 15.65,
+     "eavesRow": 241,
+     "confidence": 0.84,
      "crown": {
-      "widthM": 5.25,
-      "riseM": 5.93,
-      "topWidthM": 0.15,
-      "centre": 0.56
+      "widthM": 4.28,
+      "riseM": 5.97,
+      "topWidthM": 0.03,
+      "centre": 0.6
      }
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 1,
     "columns": 2,
-    "doorSide": "left",
+    "doorSide": null,
     "accentSide": null,
     "accentShare": 0.038,
     "structure": {
@@ -283,8 +273,8 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 8.2,
-       "widthM": 1.07,
+       "atM": 8.22,
+       "widthM": 1.23,
        "centre": 0.64
       }
      ]
@@ -294,20 +284,20 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best helmers-1893-jamb-blocks: built 1903, type 1893-1893; frontage 12.23 m, type 5.6-6.4 m)",
+   "reason": "every type vetoed (best helmers-1889-balconette-pediment: built 1903, type 1886-1892; frontage 12.23 m, type 5.4-6.6 m)",
    "best": {
-    "type": "helmers-1893-jamb-blocks",
+    "type": "helmers-1889-balconette-pediment",
     "score": 0,
     "veto": [
-     "built 1903, type 1893-1893",
-     "frontage 12.23 m, type 5.6-6.4 m"
+     "built 1903, type 1886-1892",
+     "frontage 12.23 m, type 5.4-6.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 15.7 m vs the type's 10.8 m (wall-dormer skyline 13.5 m)"
+      "score": 0.5,
+      "note": "strip cornice 15.65 m vs the type's 14.6 m (wall-dormer skyline 16.3 m)"
      },
      {
       "key": "stucco",

@@ -1,0 +1,557 @@
+{
+ "street": "Bloemstraat",
+ "seed": "0363100012174656",
+ "members": [
+  "0363100012174656",
+  "0363100012174655"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012174656 (face continues: 167944)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012174639 11.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012167875",
+   "reason": "frontage 82.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167876",
+   "reason": "sightline to Bloemstraat crosses 0363100012174653"
+  },
+  {
+   "pandId": "0363100012167877",
+   "reason": "frontage 42.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167878",
+   "reason": "frontage 44.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167879",
+   "reason": "sightline to Bloemstraat crosses 0363100012174652"
+  },
+  {
+   "pandId": "0363100012167939",
+   "reason": "frontage 79.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167940",
+   "reason": "frontage 82.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168374",
+   "reason": "sightline to Bloemstraat crosses 0363100012168435"
+  },
+  {
+   "pandId": "0363100012168431",
+   "reason": "frontage 49.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168433",
+   "reason": "sightline to Bloemstraat crosses 0363100012168374"
+  },
+  {
+   "pandId": "0363100012168435",
+   "reason": "sightline to Bloemstraat crosses 0363100012168444"
+  },
+  {
+   "pandId": "0363100012168438",
+   "reason": "frontage 36.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168439",
+   "reason": "sightline to Bloemstraat crosses 0363100012174737"
+  },
+  {
+   "pandId": "0363100012168440",
+   "reason": "sightline to Bloemstraat crosses 0363100012174659"
+  },
+  {
+   "pandId": "0363100012168441",
+   "reason": "frontage 35.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168442",
+   "reason": "no frontage on Bloemstraat: No footprint edge faces Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168546",
+   "reason": "frontage 37.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168548",
+   "reason": "frontage 121.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168550",
+   "reason": "frontage 82.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012173496",
+   "reason": "frontage 81.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174074",
+   "reason": "frontage 81.4 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174077",
+   "reason": "frontage 81.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167880",
+   "reason": "frontage 38.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167882",
+   "reason": "frontage 39.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167883",
+   "reason": "frontage 35.0 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167884",
+   "reason": "frontage 47.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167885",
+   "reason": "frontage 30.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012167950",
+   "reason": "sightline to Bloemstraat crosses 0363100012174085"
+  },
+  {
+   "pandId": "0363100012167951",
+   "reason": "sightline to Bloemstraat crosses 0363100012174087"
+  },
+  {
+   "pandId": "0363100012167952",
+   "reason": "sightline to Bloemstraat crosses 0363100012174088"
+  },
+  {
+   "pandId": "0363100012168004",
+   "reason": "sightline to Bloemstraat crosses 0363100012167947"
+  },
+  {
+   "pandId": "0363100012168006",
+   "reason": "frontage 42.2 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012169093",
+   "reason": "sightline to Bloemstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012169392",
+   "reason": "sightline to Bloemstraat crosses 0363100012174740"
+  },
+  {
+   "pandId": "0363100012169828",
+   "reason": "frontage 45.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012169830",
+   "reason": "sightline to Bloemstraat crosses 0363100012167945"
+  },
+  {
+   "pandId": "0363100012169831",
+   "reason": "sightline to Bloemstraat crosses 0363100012167945"
+  },
+  {
+   "pandId": "0363100012169832",
+   "reason": "sightline to Bloemstraat crosses 0363100012167945"
+  },
+  {
+   "pandId": "0363100012169837",
+   "reason": "frontage 44.0 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012169841",
+   "reason": "frontage 47.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174083",
+   "reason": "sightline to Bloemstraat crosses 0363100012174082"
+  },
+  {
+   "pandId": "0363100012174089",
+   "reason": "frontage 34.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174167",
+   "reason": "frontage 34.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174169",
+   "reason": "sightline to Bloemstraat crosses 0363100012167944"
+  },
+  {
+   "pandId": "0363100012174278",
+   "reason": "frontage 82.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174281",
+   "reason": "frontage 82.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174282",
+   "reason": "frontage 93.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174357",
+   "reason": "frontage 82.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174360",
+   "reason": "frontage 83.0 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174563",
+   "reason": "frontage 44.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174564",
+   "reason": "frontage 45.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174646",
+   "reason": "frontage 37.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174651",
+   "reason": "sightline to Bloemstraat crosses 0363100012174639"
+  },
+  {
+   "pandId": "0363100012174652",
+   "reason": "sightline to Bloemstraat crosses 0363100012174654"
+  },
+  {
+   "pandId": "0363100012174081",
+   "reason": "sightline to Bloemstraat crosses 0363100012174082"
+  },
+  {
+   "pandId": "0363100012174084",
+   "reason": "sightline to Bloemstraat crosses 0363100012167944"
+  },
+  {
+   "pandId": "0363100012174090",
+   "reason": "sightline to Bloemstraat crosses 0363100012174079"
+  },
+  {
+   "pandId": "0363100012174168",
+   "reason": "sightline to Bloemstraat crosses 0363100012185686"
+  },
+  {
+   "pandId": "0363100012174173",
+   "reason": "frontage 45.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174177",
+   "reason": "frontage 42.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174181",
+   "reason": "sightline to Bloemstraat crosses 0363100012174267"
+  },
+  {
+   "pandId": "0363100012174182",
+   "reason": "frontage 31.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174183",
+   "reason": "frontage 36.4 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174184",
+   "reason": "frontage 36.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174187",
+   "reason": "frontage 43.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174188",
+   "reason": "frontage 41.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174265",
+   "reason": "frontage 40.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174266",
+   "reason": "frontage 43.4 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174267",
+   "reason": "sightline to Bloemstraat crosses 0363100012174268"
+  },
+  {
+   "pandId": "0363100012174270",
+   "reason": "frontage 46.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174641",
+   "reason": "sightline to Bloemstraat crosses 0363100012174657"
+  },
+  {
+   "pandId": "0363100012174642",
+   "reason": "frontage 35.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174643",
+   "reason": "frontage 47.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174644",
+   "reason": "frontage 44.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174645",
+   "reason": "frontage 44.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174647",
+   "reason": "sightline to Bloemstraat crosses 0363100012174741"
+  },
+  {
+   "pandId": "0363100012174648",
+   "reason": "sightline to Bloemstraat crosses 0363100012174735"
+  },
+  {
+   "pandId": "0363100012174654",
+   "reason": "sightline to Bloemstraat crosses 0363100012174655"
+  },
+  {
+   "pandId": "0363100012174734",
+   "reason": "sightline to Bloemstraat crosses 0363100012174651"
+  },
+  {
+   "pandId": "0363100012174736",
+   "reason": "sightline to Bloemstraat crosses 0363100012174639"
+  },
+  {
+   "pandId": "0363100012174739",
+   "reason": "sightline to Bloemstraat crosses 0363100012174653"
+  },
+  {
+   "pandId": "0363100012174902",
+   "reason": "frontage 101.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174999",
+   "reason": "frontage 80.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012175000",
+   "reason": "frontage 80.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012175001",
+   "reason": "frontage 94.5 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012175002",
+   "reason": "frontage 80.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012175006",
+   "reason": "frontage 93.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012253787",
+   "reason": "sightline to Bloemstraat crosses 0363100012168444"
+  },
+  {
+   "pandId": "0363100012572095",
+   "reason": "frontage 80.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012572096",
+   "reason": "frontage 79.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174661",
+   "reason": "sightline to Bloemstraat crosses 0363100012168443"
+  },
+  {
+   "pandId": "0363100012174662",
+   "reason": "frontage 37.2 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174733",
+   "reason": "sightline to Bloemstraat crosses 0363100012168443"
+  },
+  {
+   "pandId": "0363100012174738",
+   "reason": "sightline to Bloemstraat crosses 0363100012174742"
+  },
+  {
+   "pandId": "0363100012174823",
+   "reason": "frontage 85.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174824",
+   "reason": "frontage 85.7 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174825",
+   "reason": "frontage 85.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174826",
+   "reason": "frontage 86.2 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174827",
+   "reason": "frontage 85.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174828",
+   "reason": "frontage 45.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174833",
+   "reason": "frontage 45.1 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174834",
+   "reason": "frontage 50.3 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174835",
+   "reason": "frontage 85.8 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174836",
+   "reason": "frontage 85.9 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012174837",
+   "reason": "frontage 85.6 m from Bloemstraat"
+  },
+  {
+   "pandId": "0363100012168443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167946",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167947",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167948",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167949",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167953",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167957",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174088",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174660",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174735",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174740",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174741",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174742",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174656",
+   "alongM": 0,
+   "widthM": 5.69,
+   "eavesM": 12.63,
+   "roofMaxM": 12.67,
+   "storeys3dbag": 4,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174655",
+   "alongM": 5.8,
+   "widthM": 5.89,
+   "eavesM": 12.5,
+   "roofMaxM": 15.99,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

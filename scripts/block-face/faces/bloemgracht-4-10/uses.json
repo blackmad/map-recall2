@@ -1,0 +1,115 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:15:47.246Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174500",
+   "addresses": [
+    "Bloemgracht 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 10",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000959371"
+    },
+    {
+     "address": "Eerste Leliedwarsstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000959373"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174495",
+   "addresses": [
+    "Bloemgracht 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 8-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000588451"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174496",
+   "addresses": [
+    "Bloemgracht 6D",
+    "Bloemgracht 6A",
+    "Bloemgracht 6C",
+    "Bloemgracht 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 6D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000711877"
+    },
+    {
+     "address": "Bloemgracht 6A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000946111"
+    },
+    {
+     "address": "Bloemgracht 6C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946113"
+    },
+    {
+     "address": "Bloemgracht 6B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946112"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174499",
+   "addresses": [
+    "Bloemgracht 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 4-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000588440"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7487205751,
+     "lngLat": [
+      4.883347,
+      52.3754325
+     ],
+     "tags": {
+      "amenity": "cafe"
+     },
+     "fetchedAt": "2026-10-29T20:15:47.246Z",
+     "match": "frontage",
+     "distanceM": 4.2
+    }
+   ]
+  }
+ ]
+}

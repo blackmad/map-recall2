@@ -1,0 +1,410 @@
+{
+ "face": "akoleien-2-10",
+ "street": "Akoleienstraat",
+ "library": "jordaan",
+ "stripDate": "2021-03-17",
+ "seconds": 3.15,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "akoleien-2-10-r1",
+   "pands": [
+    "0363100012174736",
+    "0363100012174739"
+   ],
+   "passed": true,
+   "triangles": 1884
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012174646",
+   "address": "Akoleienstraat 10",
+   "builtYear": 1905,
+   "widthM": 5.81,
+   "eavesM": 9.44,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b2b27",
+    "wallRaw": "#6b504a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.05,
+       "centre": 0.88
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.3,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174734",
+   "address": "Akoleienstraat 8",
+   "builtYear": 1905,
+   "widthM": 8.2,
+   "eavesM": 12.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#837f80",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174651",
+   "address": "Akoleienstraat 4",
+   "builtYear": 1777,
+   "widthM": 5.52,
+   "eavesM": 10.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174736",
+   "address": "Akoleienstraat 2A",
+   "builtYear": 1905,
+   "widthM": 5.76,
+   "eavesM": 11.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#42413e",
+    "wallRaw": "#4e4541",
+    "skyline": {
+     "eavesM": 18.07,
+     "eavesRow": 38,
+     "confidence": 0.31,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "jordaan-1850-cornice-house",
+   "score": 0.75,
+   "runnerUp": {
+    "typeId": "jordaan-1750-neck-gable",
+    "score": 0
+   },
+   "placement": {
+    "type": "jordaan-1850-cornice-house",
+    "measuredPalette": {
+     "brick": "#42413e",
+     "evidence": "strip 2021-03-17 span 781-1011: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown none: skyline unread (confidence 0.31)"
+   ],
+   "likeness": {
+    "pandId": "0363100012174736",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.35 vs photo 0.47"
+    ],
+    "wall": {
+     "photo": "#6b5b56",
+     "model": "#5b5a55",
+     "dL": -0.033
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.368
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174739",
+   "address": "Akoleienstraat 2",
+   "builtYear": 1902,
+   "widthM": 4.07,
+   "eavesM": 9.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776760",
+    "wallRaw": "#5c524d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 761,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "jordaan-1850-cornice-house",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "jordaan-1750-neck-gable",
+    "score": 0
+   },
+   "placement": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "bays": 2
+    },
+    "storeys": 3,
+    "measuredPalette": {
+     "brick": "#776760",
+     "evidence": "strip 2021-03-17 span 1012-1175: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 3: eaves 9.72 m at the type's 3.13 m pitch",
+    "door left",
+    "crown none: skyline unread (confidence 0.19)"
+   ],
+   "likeness": {
+    "pandId": "0363100012174739",
+    "ncc": 0.176,
+    "nccRaw": 0.176,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.50",
+     "glazing storey band off by 0.70 mean 0.33 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#8d7a72",
+     "dL": 0.5
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.365
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012174639",
+   "address": "Akoleienstraat 2A",
+   "builtYear": 1903,
+   "widthM": 8.74,
+   "eavesM": 12.73,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80685d",
+    "wallRaw": "#716158",
+    "skyline": {
+     "eavesM": 11.7,
+     "eavesRow": 293,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 7.32,
+      "topWidthM": 0.65,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.97,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best jordaan-1750-neck-gable: built 1903, type 1600-1870; frontage 8.74 m, type 3.6-6.6 m)",
+   "best": {
+    "type": "jordaan-1750-neck-gable",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1600-1870",
+     "frontage 8.74 m, type 3.6-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.73 m = 4 storeys of 3.18 m vs the type's 3.33 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.068 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

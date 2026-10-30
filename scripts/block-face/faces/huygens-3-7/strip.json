@@ -3,21 +3,21 @@
  "image": "staging/block-face/huygens-3-7/strip.jpg",
  "pixelsPerMetre": 40,
  "width": 577,
- "height": 773,
- "groundNAP": 0.091,
- "heightM": 19.33,
+ "height": 774,
+ "groundNAP": 0.082,
+ "heightM": 19.36,
  "frame": {
   "midRD": [
-   120031.79833333334,
-   486496.9183333333
+   120031.797125,
+   486496.9303333333
   ],
   "uRD": [
-   0.38111778818517805,
-   -0.9245264904419116
+   0.38112309779192666,
+   -0.9245243016435455
   ],
   "nRD": [
-   -0.9245264904419116,
-   -0.38111778818517805
+   -0.9245243016435455,
+   -0.38112309779192666
   ]
  },
  "x0M": -8.5,
@@ -40,14 +40,14 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00064",
      "timestamp": "2024-11-29T08:23:02Z",
      "distanceM": 10.3,
-     "obliquityDeg": 0.1,
+     "obliquityDeg": 0.2,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track05_Sphere_00065",
      "timestamp": "2024-11-29T08:23:03Z",
      "distanceM": 11.8,
-     "obliquityDeg": 27,
+     "obliquityDeg": 26.9,
      "missingFraction": 0
     },
     {
@@ -74,21 +74,21 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00063",
      "timestamp": "2024-11-29T08:23:01Z",
      "distanceM": 10.1,
-     "obliquityDeg": 3.9,
+     "obliquityDeg": 3.8,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track05_Sphere_00062",
      "timestamp": "2024-11-29T08:23:01Z",
      "distanceM": 10.3,
-     "obliquityDeg": 23.9,
+     "obliquityDeg": 24,
      "missingFraction": 0
     },
     {
      "panoId": "b_20241129_0829_Track05_Sphere_00064",
      "timestamp": "2024-11-29T08:23:02Z",
      "distanceM": 11.9,
-     "obliquityDeg": 29.3,
+     "obliquityDeg": 29.2,
      "missingFraction": 0
     }
    ]
@@ -122,7 +122,7 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00061",
      "timestamp": "2024-11-29T08:23:00Z",
      "distanceM": 9.8,
-     "obliquityDeg": 30.5,
+     "obliquityDeg": 30.6,
      "missingFraction": 0
     }
    ]

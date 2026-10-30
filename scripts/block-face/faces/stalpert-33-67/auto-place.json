@@ -1,0 +1,940 @@
+{
+ "face": "stalpert-33-67",
+ "street": "Daniël Stalpertstraat",
+ "library": "de-pijp",
+ "stripDate": "2022-03-21",
+ "seconds": 14.38,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "stalpert-33-67-r1",
+   "pands": [
+    "0363100012164142",
+    "0363100012157683",
+    "0363100012074388",
+    "0363100012237225",
+    "0363100012236571"
+   ],
+   "passed": true,
+   "triangles": 10602
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012071682",
+   "address": "Daniël Stalpertstraat 33E",
+   "builtYear": 1980,
+   "widthM": 17.02,
+   "eavesM": 11.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fba66b",
+    "wallRaw": "#dd9e6e",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 301,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 4.78,
+      "riseM": 7.53,
+      "topWidthM": 0.63,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.09 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.09,
+       "light": 0.34
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.15,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.22,
+       "light": 0.26
+      },
+      {
+       "widthM": 1.45,
+       "centre": 0.4,
+       "light": 0.23
+      },
+      {
+       "widthM": 1.8,
+       "centre": 0.6,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.81,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.13,
+       "widthM": 0.82,
+       "centre": 0.97
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1980, type 1875-1877; frontage 17.02 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1980, type 1875-1877",
+     "frontage 17.02 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.72 m = 3 storeys of 3.91 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.111 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012239265",
+   "address": "Daniël Stalpertstraat 35",
+   "builtYear": 2014,
+   "widthM": 35.72,
+   "eavesM": 16.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f1bb98",
+    "wallRaw": "#edc3a2",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 2.43,
+      "topWidthM": 0.07,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 17,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 1.5,
+     "bayCentre": 0.02,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.08 (light 0.44): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.02,
+       "light": 0.65
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.08,
+       "light": 0.44
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.15,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.21,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.26,
+       "light": 0.18
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.32,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.37,
+       "light": 0.29
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.42,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.49,
+       "light": 0.21
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.54,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.59,
+       "light": 0.14
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.66,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.72,
+       "light": 0.44
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.79,
+       "light": 0.5
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.86,
+       "light": 0.57
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.92,
+       "light": 0.61
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.99,
+       "light": 0.7
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 2014, type 1875-1877; frontage 35.72 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 2014, type 1875-1877",
+     "frontage 35.72 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.09 m = 3 storeys of 5.36 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.55 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.195 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 17 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164142",
+   "address": "Daniël Stalpertstraat 51",
+   "builtYear": 1879,
+   "widthM": 4.26,
+   "eavesM": 13.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f8cea4",
+    "wallRaw": "#f6d1a7",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 273,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.88,
+      "topWidthM": 1.27,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.238,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#f8cea4",
+     "evidence": "strip 2022-03-21 span 2110-2280: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012164142",
+    "ncc": 0.215,
+    "nccRaw": 0.215,
+    "shiftM": [
+     -0.15,
+     -0.3
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.21",
+     "glazing storey band off by 0.45 mean 0.33 vs photo 0.46"
+    ],
+    "wall": {
+     "photo": "#f9d0a5",
+     "model": "#cc9966",
+     "dL": -0.212
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.427
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.05,
+    "pijp-1876-hood-frieze": 0.085
+   }
+  },
+  {
+   "pandId": "0363100012157683",
+   "address": "Daniël Stalpertstraat 53",
+   "builtYear": 1879,
+   "widthM": 4.66,
+   "eavesM": 12.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7b28a",
+    "wallRaw": "#e7b58d",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.75,
+      "topWidthM": 1.4,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.09
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#e7b28a",
+     "evidence": "strip 2022-03-21 span 2280-2467: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157683",
+    "ncc": 0.267,
+    "nccRaw": 0.267,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue -17 deg",
+     "glazing storey band off by 0.25",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#aaa495",
+     "model": "#cc9266",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.231
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.034,
+    "pijp-1876-hood-frieze": 0.216
+   }
+  },
+  {
+   "pandId": "0363100012074388",
+   "address": "Daniël Stalpertstraat 55B",
+   "builtYear": 1879,
+   "widthM": 4.61,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e8c19e",
+    "wallRaw": "#e4bf9c",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 1.88,
+      "topWidthM": 0.68,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.185,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.68,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.1
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#e8c19e",
+     "evidence": "strip 2022-03-21 span 2466-2650: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012074388",
+    "ncc": 0.234,
+    "nccRaw": 0.234,
+    "shiftM": [
+     -0.2,
+     -0.3
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.34 vs photo 0.18",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#9ea39f",
+     "model": "#cc9666",
+     "dL": -0.029
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.2
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.057,
+    "pijp-1876-hood-frieze": 0.137,
+    "pijp-1885-segmental-keystone": 0.191
+   }
+  },
+  {
+   "pandId": "0363100012237225",
+   "address": "Daniël Stalpertstraat 57",
+   "builtYear": 1879,
+   "widthM": 4.43,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#deb390",
+    "wallRaw": "#d5ad8b",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 1.75,
+      "topWidthM": 1.48,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#deb390",
+     "evidence": "strip 2022-03-21 span 2651-2828: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012237225",
+    "ncc": 0.251,
+    "nccRaw": 0.251,
+    "shiftM": [
+     -0.2,
+     -0.35
+    ],
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27 mean 0.33 vs photo 0.14",
+     "wall family unresolved (#8a8e89 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#8a8e89",
+     "model": "#cc9466",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.143
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.104,
+    "pijp-1876-hood-frieze": 0.215,
+    "pijp-1885-segmental-keystone": 0.175
+   }
+  },
+  {
+   "pandId": "0363100012236571",
+   "address": "Daniël Stalpertstraat 61",
+   "builtYear": 1879,
+   "widthM": 5.97,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9ceac",
+    "wallRaw": "#f2caa6",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 247,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 1.78,
+      "topWidthM": 0.9,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.255,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "pijp-1879-five-low",
+   "score": 0.82,
+   "runnerUp": {
+    "typeId": "pijp-1875-shop-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "pijp-1879-five-low",
+    "ground": {
+     "shopfront": {
+      "colour": "#635f4d",
+      "fascia": true,
+      "name": "Locals Coffee",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2022-03-21 span 2828-3067"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#f9ceac",
+     "evidence": "strip 2022-03-21 span 2828-3067: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown pediment-dormer (type default)",
+    "the edges read closer to pijp-1875-shop-dormer (0.275 vs 0.218), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012236571",
+    "ncc": 0.218,
+    "nccRaw": 0.218,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.32",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#4e4a42",
+     "model": "#cc9366",
+     "dL": 0.318
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.249
+   },
+   "challengers": {
+    "pijp-1875-shop-dormer": 0.275,
+    "pijp-1876-hood-frieze": 0.198,
+    "pijp-1885-segmental-keystone": 0.204
+   }
+  },
+  {
+   "pandId": "0363100012233604",
+   "address": "Daniël Stalpertstraat 63",
+   "builtYear": 1879,
+   "widthM": 12.47,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d6b398",
+    "wallRaw": "#d5b195",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.65,
+      "topWidthM": 0.55,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.417,
+    "structure": {
+     "bayWidthM": 2.27,
+     "bayCentre": 0.6,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.07 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.07,
+       "light": 0.26
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.54,
+       "light": 0.87
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1879, type 1875-1877; frontage 12.47 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1879, type 1875-1877",
+     "frontage 12.47 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.3 m = 3 storeys of 4.43 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.89 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.306 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164510",
+   "address": "Daniël Stalpertstraat 67",
+   "builtYear": 1879,
+   "widthM": 5.99,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ecc1a1",
+    "wallRaw": "#e7bd9d",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 252,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.5,
+      "topWidthM": 0.93,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

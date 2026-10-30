@@ -1,0 +1,604 @@
+{
+ "street": "Prinsengracht",
+ "seed": "0363100012173566",
+ "members": [
+  "0363100012174415",
+  "0363100012174416"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012174411 50.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "run of prinsengracht-130-150: 174417 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165000",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168709",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168754",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168755",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168759",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168765",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168766",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168799",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168800",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168802",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168803",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168804",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168805",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168840",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168842",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168843",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168844",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168886",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168887",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168888",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168889",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168890",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168893",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168894",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168895",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168896",
+   "reason": "frontage 108.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012169058",
+   "reason": "sightline to Prinsengracht crosses 0363100012169065"
+  },
+  {
+   "pandId": "0363100012169059",
+   "reason": "sightline to Prinsengracht crosses 0363100012172419"
+  },
+  {
+   "pandId": "0363100012172358",
+   "reason": "frontage 46.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172360",
+   "reason": "frontage 46.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172361",
+   "reason": "frontage 41.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172362",
+   "reason": "frontage 62.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172365",
+   "reason": "frontage 60.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172366",
+   "reason": "sightline to Prinsengracht crosses 0363100012169058"
+  },
+  {
+   "pandId": "0363100012172367",
+   "reason": "frontage 35.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172417",
+   "reason": "frontage 32.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172424",
+   "reason": "frontage 57.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172425",
+   "reason": "frontage 64.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172426",
+   "reason": "frontage 70.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172427",
+   "reason": "frontage 61.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172428",
+   "reason": "frontage 63.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172429",
+   "reason": "frontage 52.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172603",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172606",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172607",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172611",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172613",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172615",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172616",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172692",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172777",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172778",
+   "reason": "frontage 58.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172780",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172862",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172877",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172881",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172890",
+   "reason": "frontage 64.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172891",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172892",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172900",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172902",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172922",
+   "reason": "sightline to Prinsengracht crosses 0363100012172921"
+  },
+  {
+   "pandId": "0363100012172923",
+   "reason": "frontage 35.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172924",
+   "reason": "sightline to Prinsengracht crosses 0363100012172926"
+  },
+  {
+   "pandId": "0363100012172927",
+   "reason": "sightline to Prinsengracht crosses 0363100012172926"
+  },
+  {
+   "pandId": "0363100012172928",
+   "reason": "sightline to Prinsengracht crosses 0363100012172926"
+  },
+  {
+   "pandId": "0363100012172990",
+   "reason": "sightline to Prinsengracht crosses 0363100012172926"
+  },
+  {
+   "pandId": "0363100012173044",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173132",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173349",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173564",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173565",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173632",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173633",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173634",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173686",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173687",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173688",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173692",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173693",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012173697",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174409",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174410",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174412",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174414",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174495",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174496",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174497",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174498",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174499",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174500",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174502",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174503",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174690",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174691",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174692",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174693",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174694",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174695",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174696",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174700",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174701",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174702",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174703",
+   "reason": "sightline to Prinsengracht crosses 0363100012174971"
+  },
+  {
+   "pandId": "0363100012174704",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174775",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174778",
+   "reason": "sightline to Prinsengracht crosses 0363100012174776"
+  },
+  {
+   "pandId": "0363100012174779",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174780",
+   "reason": "sightline to Prinsengracht crosses 0363100012174699"
+  },
+  {
+   "pandId": "0363100012174781",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174965",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174966",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174967",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174968",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174972",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174974",
+   "reason": "frontage 50.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174975",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174976",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174977",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174978",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174979",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174981",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174982",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012174983",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012243821",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012571518",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012571519",
+   "reason": "no frontage on Prinsengracht: No footprint edge faces Prinsengracht"
+  },
+  {
+   "pandId": "0363100012168592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169063",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169065",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169583",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169584",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169585",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172419",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172921",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172926",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174415",
+   "alongM": -50.29,
+   "widthM": 5.84,
+   "eavesM": 12.73,
+   "roofMaxM": 17.04,
+   "storeys3dbag": 5,
+   "builtYear": 1760,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174416",
+   "alongM": -44.44,
+   "widthM": 5.87,
+   "eavesM": 13.13,
+   "roofMaxM": 17.88,
+   "storeys3dbag": 5,
+   "builtYear": 1760,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "prinsengracht-130-150"
+}

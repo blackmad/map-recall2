@@ -2,7 +2,7 @@
  "name": "oud-west-helmersbuurt-oost",
  "buurt": "helmersbuurt-oost",
  "library": "helmersbuurt",
- "generatedAt": "2026-10-29T18:51:12.177Z",
+ "generatedAt": "2026-10-29T21:12:00.693Z",
  "method": "scripts/block-face/batch.ts",
  "totals": {
   "faces": 50,
@@ -11,8 +11,9 @@
   "installedPands": 0,
   "failed": 46,
   "byReason": {
-   "no-type": 46,
-   "already-installed": 4
+   "no-type": 44,
+   "already-installed": 4,
+   "glb-audit": 2
   }
  },
  "rows": [
@@ -38,9 +39,9 @@
    "stripDate": "2024-12-11",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (6x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 4x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 1x match: best helmers-#-checker-arch scores # < # (strip cornice # m vs the typ)"
+    "no-type: 0/12 placed (10x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x match: best helmers-#-checker-arch scores # < # (strip cornice # m vs the typ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 61.4
+   "seconds": 3.2
   },
   {
    "face": "overtoom-2-16",
@@ -64,9 +65,9 @@
    "stripDate": "2024-12-11",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 2x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: 0/5 placed (2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: every type vetoed (best helmers-#-balconette-pediment: frontage # m, t; 1x match: best helmers-#-balconette-pediment scores # < # (strip cornice # m vs )"
    ],
-   "seconds": 21.4
+   "seconds": 19.7
   },
   {
    "face": "huygens-65-73",
@@ -92,17 +93,14 @@
    "reasons": [
     "no-type: 0/4 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: best helmers-#-checker-arch scores # < # (strip cornice # m vs the typ)"
    ],
-   "seconds": 22.6
+   "seconds": 4.3
   },
   {
    "face": "nassaukade-378-381",
    "street": "Nassaukade",
    "ride": 29976,
    "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
+   "stripQuality": null,
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -113,12 +111,12 @@
    "run": "nassaukade-378-381",
    "pands": 2,
    "mode": "auto-place",
-   "stripDate": "2024-11-29",
+   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: 0/2 placed (2x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: no library year (built 1925; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
-   "seconds": 13.9
+   "seconds": 0
   },
   {
    "face": "huygens-45-57",
@@ -142,9 +140,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/4 placed (3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/4 placed (3x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 17
+   "seconds": 1.7
   },
   {
    "face": "huygens-31-43",
@@ -168,19 +166,16 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: best helmers-#-transom-band scores # < # (strip columns # vs # bays); 1x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ)"
+    "no-type: 0/5 placed (3x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x match: best helmers-#-transom-band scores # < # (strip columns # vs # bays); 1x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ)"
    ],
-   "seconds": 18.7
+   "seconds": 1.7
   },
   {
    "face": "nassaukade-387-391",
    "street": "Nassaukade",
    "ride": 21160,
    "restriped": null,
-   "stripQuality": {
-    "badShare": 0,
-    "reasons": []
-   },
+   "stripQuality": null,
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -191,12 +186,12 @@
    "run": "nassaukade-387-391",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": "2024-11-29",
+   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: 0/3 placed (2x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#))"
+    "no-type: no library year (built 1884; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
-   "seconds": 18.4
+   "seconds": 0
   },
   {
    "face": "huygens-21-29",
@@ -220,9 +215,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/4 placed (3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#))"
+    "no-type: 0/4 placed (4x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 13.5
+   "seconds": 1
   },
   {
    "face": "huygens-59-63",
@@ -246,9 +241,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/3 placed (1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: best helmers-#-balcony-axis scores # < # (strip cornice # m vs the typ; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/3 placed (1x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x match: best helmers-#-balcony-axis scores # < # (strip cornice # m vs the typ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 14.3
+   "seconds": 1
   },
   {
    "face": "lennepkade-49-75",
@@ -272,9 +267,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/14 placed (6x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 5x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 2x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/14 placed (6x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 5x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 38.7
+   "seconds": 2.8
   },
   {
    "face": "toussaint-2-24",
@@ -298,9 +293,9 @@
    "stripDate": "2022-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/11 placed (5x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 3x match: best helmers-#-jamb-blocks scores # < # (strip cornice # m vs the type; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: 0/11 placed (7x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 3x match: best helmers-#-jamb-blocks scores # < # (strip cornice # m vs the type; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 40.2
+   "seconds": 2.5
   },
   {
    "face": "huygens-3-7",
@@ -324,9 +319,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/3 placed (2x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: 0/3 placed (2x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 1x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 10.2
+   "seconds": 0.9
   },
   {
    "face": "toussaint-1-5",
@@ -350,9 +345,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/2 placed (1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#))"
+    "no-type: 0/2 placed (2x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 11.5
+   "seconds": 1.3
   },
   {
    "face": "nassaukade-373-375",
@@ -376,9 +371,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/2 placed (1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: 0/2 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: every type vetoed (best helmers-#-balconette-pediment: frontage # m, t)"
    ],
-   "seconds": 9.7
+   "seconds": 0.9
   },
   {
    "face": "huygens-9-13",
@@ -402,9 +397,9 @@
    "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/3 placed (2x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron)"
+    "no-type: 0/3 placed (2x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 1x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 12.8
+   "seconds": 1.1
   },
   {
    "face": "helmers-2-32",
@@ -425,7 +420,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1890/1965; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1890/1965; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -433,7 +428,7 @@
    "face": "helmers-2-10",
    "street": "Tweede Helmersstraat",
    "ride": 5285,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -451,9 +446,9 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 2x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#))"
+    "no-type: 0/5 placed (3x run: a single placed pand between held neighbours or the face end: a block ; 2x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 54.2
+   "seconds": 1.5
   },
   {
    "face": "huygens-15-17",
@@ -474,7 +469,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1894; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1894; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -520,7 +515,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1885/1893; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1885/1893; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -548,7 +543,7 @@
    "reasons": [
     "no-type: 0/13 placed (4x likeness: run did not compile; 3x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 3x match: best helmers-#-balconette-tall scores # < # (strip cornice # m vs the )"
    ],
-   "seconds": 42.3
+   "seconds": 5.7
   },
   {
    "face": "toussaint-53-71",
@@ -574,7 +569,7 @@
    "reasons": [
     "no-type: 0/10 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 2x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ)"
    ],
-   "seconds": 38.4
+   "seconds": 5.6
   },
   {
    "face": "nassaukade-356-356",
@@ -595,7 +590,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1884/1885; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1884/1885; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -667,9 +662,9 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/14 placed (4x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+    "no-type: 0/14 placed (5x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 49.7
+   "seconds": 8.8
   },
   {
    "face": "helmers-2-30",
@@ -693,15 +688,15 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/15 placed (12x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 1x match: best helmers-#-wall-dormer scores # < # (strip cornice # m vs the type; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/15 placed (10x match: best helmers-#-balconette-pediment scores # < # (strip cornice # m vs ; 2x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best helmers-#-wall-dormer scores # < # (strip cornice # m vs the type)"
    ],
-   "seconds": 51.6
+   "seconds": 2.6
   },
   {
    "face": "helmers-68-96",
    "street": "Tweede Helmersstraat",
    "ride": 2503,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -719,35 +714,35 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/12 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 2x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/12 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 89.2
+   "seconds": 8.3
   },
   {
    "face": "helmers-79-97",
    "street": "Tweede Helmersstraat",
    "ride": 2183,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
    },
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
-   "wallFits": 0,
+   "nccMin": 0.151,
+   "nccMedian": 0.185,
+   "stripOverDrawn": 1.171,
+   "wallFits": 4,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "helmers-79-97",
-   "pands": 10,
+   "triangles": 9016,
+   "sheet": "staging/block-face/helmers-79-97-r1/review/strip-sheet.png",
+   "stripDate": "2024-11-29",
+   "run": "helmers-79-97-r1",
+   "pands": 4,
    "mode": "auto-place",
-   "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/10 placed (8x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 2x run: a single placed pand between held neighbours or the face end: a block )"
+    "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 54.3
+   "seconds": 7.2
   },
   {
    "face": "toussaint-54-70",
@@ -771,9 +766,9 @@
    "stripDate": "2019-01-07",
    "status": "failed",
    "reasons": [
-    "no-type: 0/9 placed (5x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/9 placed (5x match: best helmers-#-transom-band scores # < # (strip cornice # m vs the typ; 3x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 27.8
+   "seconds": 2
   },
   {
    "face": "helmers-3-51",
@@ -794,7 +789,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1901/1917/1925/1926; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1901/1917/1925/1926; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -817,7 +812,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1932/1934/2005; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1932/1934/2005; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -843,16 +838,19 @@
    "stripDate": "2022-01-03",
    "status": "failed",
    "reasons": [
-    "no-type: 0/10 placed (7x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#); 2x match: best helmers-#-balconette-tall scores # < # (strip cornice # m vs the ; 1x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/10 placed (5x run: a single placed pand between held neighbours or the face end: a block ; 2x match: best helmers-#-balconette-tall scores # < # (strip cornice # m vs the ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
    ],
-   "seconds": 26.8
+   "seconds": 5.9
   },
   {
    "face": "lennepkade-1-17",
    "street": "Jacob van Lennepkade",
    "ride": 1089,
    "restriped": null,
-   "stripQuality": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
    "nccMin": null,
    "nccMedian": null,
    "stripOverDrawn": null,
@@ -863,12 +861,12 @@
    "run": "lennepkade-1-17",
    "pands": 9,
    "mode": "auto-place",
-   "stripDate": null,
+   "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1884/1885/1886; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: 0/9 placed (4x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: foliage )"
    ],
-   "seconds": 0
+   "seconds": 22
   },
   {
    "face": "thijm-30-188",
@@ -892,15 +890,15 @@
    "stripDate": "2021-03-24",
    "status": "failed",
    "reasons": [
-    "no-type: 0/5 placed (3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 2x match: best helmers-#-balcony-arch scores # < # (strip cornice # m vs the typ)"
+    "no-type: 0/5 placed (3x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x match: best helmers-#-balcony-arch scores # < # (strip cornice # m vs the typ)"
    ],
-   "seconds": 17
+   "seconds": 2
   },
   {
    "face": "thijm-5-9",
    "street": "Alberdingk Thijmstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2022-01-03",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -915,18 +913,18 @@
    "run": "thijm-5-9",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": "2022-01-03",
+   "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
     "no-type: 0/3 placed (1x review: review: ochre-banded front with a modern steel-framed shopfront over t; 1x review: review: a columned loggia with a balustrade on storey # and green glaz; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 31
+   "seconds": 1
   },
   {
    "face": "thijm-11-15",
    "street": "Alberdingk Thijmstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2021-03-24",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -941,12 +939,12 @@
    "run": "thijm-11-15",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": "2021-03-24",
+   "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
-    "no-type: 0/3 placed (1x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: washed o)"
+    "no-type: 0/3 placed (1x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: washed o)"
    ],
-   "seconds": 38.9
+   "seconds": 3.7
   },
   {
    "face": "thijm-19-21",
@@ -967,7 +965,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1920/1924; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1920/1924; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -993,9 +991,9 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/13 placed (11x likeness: run did not compile; 2x match: every type vetoed (best helmers-#-jamb-blocks: frontage # m, type #-# )"
+    "no-type: 0/13 placed (11x likeness: run did not compile; 2x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #)"
    ],
-   "seconds": 41.4
+   "seconds": 3
   },
   {
    "face": "toussaint-29-51",
@@ -1021,7 +1019,7 @@
    "reasons": [
     "no-type: 0/12 placed (7x likeness: run did not compile; 2x match: best helmers-#-balconette-tall scores # < # (strip cornice # m vs the ; 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 35.6
+   "seconds": 3
   },
   {
    "face": "genestet-2-4",
@@ -1049,13 +1047,13 @@
    "reasons": [
     "no-type: 0/2 placed (2x evidence: strip # % without panorama data)"
    ],
-   "seconds": 6.2
+   "seconds": 0.5
   },
   {
    "face": "genestet-6-10",
    "street": "De Genestetstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -1070,18 +1068,18 @@
    "run": "genestet-6-10",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": "2023-01-12",
+   "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
     "no-type: 0/3 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: best helmers-#-balconette-tall scores # < # (strip columns # vs # bays)"
    ],
-   "seconds": 30.2
+   "seconds": 3.6
   },
   {
    "face": "genestet-12-16",
    "street": "De Genestetstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -1096,12 +1094,12 @@
    "run": "genestet-12-16",
    "pands": 3,
    "mode": "auto-place",
-   "stripDate": "2023-01-12",
+   "stripDate": "2024-11-29",
    "status": "failed",
    "reasons": [
     "no-type: 0/3 placed (1x match: best helmers-#-balcony-arch scores # < # (strip cornice # m vs the typ; 1x match: best helmers-#-balcony-arch scores # < # (strip columns # vs # bays); 1x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 30.5
+   "seconds": 1.1
   },
   {
    "face": "genestet-1-3",
@@ -1122,7 +1120,7 @@
    "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1886/1894; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "no-type: no library year (built 1886/1894; helmersbuurt types 1886-1892, 1887-1892, 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
    ],
    "seconds": 0
   },
@@ -1130,7 +1128,7 @@
    "face": "genestet-5-9",
    "street": "De Genestetstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -1150,7 +1148,7 @@
    "reasons": [
     "no-type: 0/3 placed (3x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
    ],
-   "seconds": 27.9
+   "seconds": 3.8
   },
   {
    "face": "helmers-32-66",
@@ -1199,36 +1197,39 @@
    "reasons": [
     "no-type: 0/13 placed (5x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x likeness: edge NCC -# < # (photo vs model body; likeness#ts FAIL: glazing storey; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
    ],
-   "seconds": 45.4
+   "seconds": 8.6
   },
   {
    "face": "lennepkade-19-43",
    "street": "Jacob van Lennepkade",
    "ride": 0,
    "restriped": null,
-   "stripQuality": null,
-   "nccMin": null,
-   "nccMedian": null,
-   "stripOverDrawn": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.166,
+   "nccMedian": 0.283,
+   "stripOverDrawn": 1.008,
    "wallFits": 0,
    "droppedCorners": [],
-   "triangles": null,
-   "sheet": null,
-   "run": "lennepkade-19-43",
-   "pands": 13,
+   "triangles": 8847,
+   "sheet": "staging/block-face/lennepkade-19-43-r1/review/strip-sheet.png",
+   "stripDate": "2024-11-29",
+   "run": "lennepkade-19-43-r1",
+   "pands": 4,
    "mode": "auto-place",
-   "stripDate": null,
    "status": "failed",
    "reasons": [
-    "no-type: no library year (built 1887/1889/1891; helmersbuurt types 1893-1893, 1895-1896, 1896-1898, 1896-1898, 1896-1898, 1898-1900, 1899-1901, 1899-1900, 1900-1902, 1904-1906, 1909-1912)"
+    "glb-audit: failed (see report.json audit)"
    ],
-   "seconds": 0
+   "seconds": 3.6
   },
   {
    "face": "helmers-14-26",
    "street": "Tweede Helmersstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -1246,15 +1247,15 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/7 placed (2x likeness: run did not compile; 1x likeness: edge NCC -# < # (photo vs model body; likeness#ts FAIL: wall dL +#; gl; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+    "no-type: 0/7 placed (2x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x likeness: run did not compile; 1x likeness: edge NCC -# < # (photo vs model body; likeness#ts FAIL: wall dL +#; gl)"
    ],
-   "seconds": 62.1
+   "seconds": 4.2
   },
   {
    "face": "helmers-28-52",
    "street": "Tweede Helmersstraat",
    "ride": 0,
-   "restriped": "2024-11-29 -> 2023-01-12",
+   "restriped": null,
    "stripQuality": {
     "badShare": 0,
     "reasons": []
@@ -1272,9 +1273,9 @@
    "stripDate": "2023-01-12",
    "status": "failed",
    "reasons": [
-    "no-type: 0/13 placed (7x match: best helmers-#-balcony-arch scores # < # (strip cornice # m vs the typ; 3x match: every type vetoed (best helmers-#-jamb-blocks: built #, type #-#; fron; 2x run: a single placed pand between held neighbours or the face end: a block )"
+    "no-type: 0/13 placed (7x match: best helmers-#-balcony-arch scores # < # (strip cornice # m vs the typ; 3x match: every type vetoed (best helmers-#-balconette-pediment: built #, type #; 2x run: a single placed pand between held neighbours or the face end: a block )"
    ],
-   "seconds": 82.3
+   "seconds": 2.5
   }
  ]
 }

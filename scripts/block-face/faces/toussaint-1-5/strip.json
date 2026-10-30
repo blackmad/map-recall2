@@ -3,21 +3,21 @@
  "image": "staging/block-face/toussaint-1-5/strip.jpg",
  "pixelsPerMetre": 40,
  "width": 1145,
- "height": 863,
- "groundNAP": 0.445,
- "heightM": 21.57,
+ "height": 862,
+ "groundNAP": 0.453,
+ "heightM": 21.54,
  "frame": {
   "midRD": [
-   120289.34575000001,
-   486568.01125
+   120289.3473125,
+   486568.00925
   ],
   "uRD": [
-   -0.9146086235134427,
-   -0.4043402846549498
+   -0.9146016688532839,
+   -0.40435601557388495
   ],
   "nRD": [
-   -0.4043402846549498,
-   0.9146086235134427
+   -0.40435601557388495,
+   0.9146016688532839
   ]
  },
  "x0M": -18.27,
@@ -40,7 +40,7 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00003",
      "timestamp": "2024-11-29T08:21:17Z",
      "distanceM": 12.6,
-     "obliquityDeg": 1.5,
+     "obliquityDeg": 1.4,
      "missingFraction": 0
     },
     {
@@ -54,7 +54,7 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00004",
      "timestamp": "2024-11-29T08:21:19Z",
      "distanceM": 13.6,
-     "obliquityDeg": 23,
+     "obliquityDeg": 22.9,
      "missingFraction": 0
     }
    ]
@@ -88,7 +88,7 @@
      "panoId": "b_20241129_0829_Track05_Sphere_00007",
      "timestamp": "2024-11-29T08:21:24Z",
      "distanceM": 13.9,
-     "obliquityDeg": 29.1,
+     "obliquityDeg": 29,
      "missingFraction": 0
     }
    ]

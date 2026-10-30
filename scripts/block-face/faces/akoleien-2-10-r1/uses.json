@@ -1,0 +1,75 @@
+{
+ "street": "Akoleienstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:14:05.293Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174736",
+   "addresses": [
+    "Akoleienstraat 2A",
+    "Akoleienstraat 2K",
+    "Akoleienstraat 2L",
+    "Akoleienstraat 2N",
+    "Akoleienstraat 2M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Akoleienstraat 2A-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000562968"
+    },
+    {
+     "address": "Akoleienstraat 2K",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012128024"
+    },
+    {
+     "address": "Akoleienstraat 2L",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012128025"
+    },
+    {
+     "address": "Akoleienstraat 2N",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012128027"
+    },
+    {
+     "address": "Akoleienstraat 2M",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012128026"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174739",
+   "addresses": [
+    "Akoleienstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Akoleienstraat 2-H",
+     "use": "kantoorfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000562965"
+    },
+    {
+     "address": "Akoleienstraat 2",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010012120526"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

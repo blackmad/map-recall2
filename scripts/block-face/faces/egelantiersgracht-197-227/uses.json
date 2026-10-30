@@ -1,0 +1,362 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:41:58.912Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174261",
+   "addresses": [
+    "Egelantiersgracht 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 197",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000984259"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6063305585,
+     "lngLat": [
+      4.8787029,
+      52.3753207
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:41:58.912Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    },
+    {
+     "type": "node",
+     "id": 12064951860,
+     "lngLat": [
+      4.8786504,
+      52.3753201
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T21:41:58.912Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174259",
+   "addresses": [
+    "Egelantiersgracht 197A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 197A-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000949358"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174262",
+   "addresses": [
+    "Egelantiersgracht 199",
+    "Egelantiersgracht 199A",
+    "Egelantiersgracht 199B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 199",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000629193"
+    },
+    {
+     "address": "Egelantiersgracht 199A",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010012117525"
+    },
+    {
+     "address": "Egelantiersgracht 199B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012117526"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168085",
+   "addresses": [
+    "Egelantiersgracht 201",
+    "Egelantiersgracht 203",
+    "Egelantiersgracht 205",
+    "Egelantiersgracht 207",
+    "Egelantiersgracht 209",
+    "Egelantiersgracht 211",
+    "Egelantiersgracht 213"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 201",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000629194"
+    },
+    {
+     "address": "Egelantiersgracht 203",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000629195"
+    },
+    {
+     "address": "Egelantiersgracht 205",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000629196"
+    },
+    {
+     "address": "Egelantiersgracht 207",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000629197"
+    },
+    {
+     "address": "Egelantiersgracht 209",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000629198"
+    },
+    {
+     "address": "Egelantiersgracht 211",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000629199"
+    },
+    {
+     "address": "Egelantiersgracht 213-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000629200"
+    },
+    {
+     "address": "Egelantiersgracht 213-O",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000629201"
+    },
+    {
+     "address": "Egelantiersgracht 213-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012603357"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12064961744,
+     "lngLat": [
+      4.8782521,
+      52.3752288
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:41:58.912Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174931",
+   "addresses": [
+    "Egelantiersgracht 215"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 215-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000629203"
+    },
+    {
+     "address": "Egelantiersgracht 215-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000629204"
+    },
+    {
+     "address": "Egelantiersgracht 215-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012603359"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174913",
+   "addresses": [
+    "Egelantiersgracht 217"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 217-H",
+     "use": "industriefunctie",
+     "areaM2": 340,
+     "bagId": "0363010003720684"
+    },
+    {
+     "address": "Egelantiersgracht 217-H",
+     "use": "industriefunctie",
+     "areaM2": 208,
+     "bagId": "0363010012102739"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174912",
+   "addresses": [
+    "Egelantiersgracht 219"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 219",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000629209"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174923",
+   "addresses": [
+    "Egelantiersgracht 221",
+    "Egelantiersgracht 223"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 223-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000629216"
+    },
+    {
+     "address": "Egelantiersgracht 223-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000629217"
+    },
+    {
+     "address": "Egelantiersgracht 221",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000953138"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989994199,
+     "lngLat": [
+      4.8778222,
+      52.3751412
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "4",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-29T21:41:58.912Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174922",
+   "addresses": [
+    "Egelantiersgracht 225"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 225",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000629220"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174921",
+   "addresses": [
+    "Egelantiersgracht 227B",
+    "Egelantiersgracht 227C",
+    "Egelantiersgracht 227D",
+    "Egelantiersgracht 227A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 227B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000979322"
+    },
+    {
+     "address": "Egelantiersgracht 227C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000979323"
+    },
+    {
+     "address": "Egelantiersgracht 227D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000979324"
+    },
+    {
+     "address": "Egelantiersgracht 227A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001019554"
+    },
+    {
+     "address": "Lijnbaansgracht 89",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001019555"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "street": "Saenredamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T17:51:10.472064Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167431",
+   "addresses": [
+    "Saenredamstraat 40",
+    "Saenredamstraat 40A",
+    "Saenredamstraat 40E",
+    "Saenredamstraat 40C",
+    "Saenredamstraat 40G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000802650"
+    },
+    {
+     "address": "Saenredamstraat 40-O",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000802651"
+    },
+    {
+     "address": "Saenredamstraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010011943660"
+    },
+    {
+     "address": "Saenredamstraat 40E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011943662"
+    },
+    {
+     "address": "Saenredamstraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010011943664"
+    },
+    {
+     "address": "Saenredamstraat 40G",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010011943666"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166655",
+   "addresses": [
+    "Saenredamstraat 38A",
+    "Saenredamstraat 40D",
+    "Saenredamstraat 40B",
+    "Saenredamstraat 40F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 38A-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000802642"
+    },
+    {
+     "address": "Saenredamstraat 40D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010011943661"
+    },
+    {
+     "address": "Saenredamstraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010011943663"
+    },
+    {
+     "address": "Saenredamstraat 40F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010011943665"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152867",
+   "addresses": [
+    "Saenredamstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Saenredamstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000802638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

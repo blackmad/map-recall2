@@ -1,0 +1,299 @@
+{
+ "street": "Frans Halsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:53:14.176Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153280",
+   "addresses": [
+    "Frans Halsstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 5-H",
+     "use": "industriefunctie",
+     "areaM2": 95,
+     "bagId": "0363010000638290"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162907",
+   "addresses": [
+    "Frans Halsstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 7",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 434,
+     "bagId": "0363010001003205"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152579",
+   "addresses": [
+    "Frans Halsstraat 9B",
+    "Frans Halsstraat 9C",
+    "Frans Halsstraat 9E",
+    "Frans Halsstraat 9F",
+    "Frans Halsstraat 9A",
+    "Frans Halsstraat 9D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001003207"
+    },
+    {
+     "address": "Frans Halsstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001003208"
+    },
+    {
+     "address": "Frans Halsstraat 9E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001003212"
+    },
+    {
+     "address": "Frans Halsstraat 9F",
+     "use": "industriefunctie",
+     "areaM2": 59,
+     "bagId": "0363010001003214"
+    },
+    {
+     "address": "Frans Halsstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001003206"
+    },
+    {
+     "address": "Frans Halsstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001003210"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159558",
+   "addresses": [
+    "Frans Halsstraat 11A",
+    "Frans Halsstraat 11B",
+    "Frans Halsstraat 11C",
+    "Frans Halsstraat 11D",
+    "Frans Halsstraat 11E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001003286"
+    },
+    {
+     "address": "Frans Halsstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001003287"
+    },
+    {
+     "address": "Frans Halsstraat 11C",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001003288"
+    },
+    {
+     "address": "Frans Halsstraat 11D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001003289"
+    },
+    {
+     "address": "Frans Halsstraat 11E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001003290"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13273976491,
+     "lngLat": [
+      4.889,
+      52.3580198
+     ],
+     "tags": {
+      "amenity": "bench",
+      "armrest": "no",
+      "backrest": "yes",
+      "check_date": "2026-01-04",
+      "material": "wood",
+      "seats": "4"
+     },
+     "fetchedAt": "2026-10-29T20:53:14.176Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163052",
+   "addresses": [
+    "Frans Halsstraat 13C",
+    "Frans Halsstraat 13D",
+    "Frans Halsstraat 13E",
+    "Frans Halsstraat 13F",
+    "Frans Halsstraat 13B",
+    "Frans Halsstraat 13A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001003293"
+    },
+    {
+     "address": "Frans Halsstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001003294"
+    },
+    {
+     "address": "Frans Halsstraat 13E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001003295"
+    },
+    {
+     "address": "Frans Halsstraat 13F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001003296"
+    },
+    {
+     "address": "Frans Halsstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001003292"
+    },
+    {
+     "address": "Frans Halsstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001003291"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4552593190,
+     "lngLat": [
+      4.8890133,
+      52.3579381
+     ],
+     "tags": {
+      "artwork_type": "sculpture",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-10-29T20:53:14.176Z",
+     "match": "frontage",
+     "distanceM": 3.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163556",
+   "addresses": [
+    "Frans Halsstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000638311"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157291",
+   "addresses": [
+    "Frans Halsstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000638323"
+    },
+    {
+     "address": "Frans Halsstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010012582058"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153361",
+   "addresses": [
+    "Frans Halsstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans Halsstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000638355"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13430506296,
+     "lngLat": [
+      4.8889563,
+      52.3577319
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:cardboard": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container",
+      "ref": "PAK02717"
+     },
+     "fetchedAt": "2026-10-29T20:53:14.176Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  }
+ ]
+}

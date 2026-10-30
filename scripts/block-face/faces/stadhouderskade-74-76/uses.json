@@ -1,0 +1,71 @@
+{
+ "street": "Stadhouderskade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:42:32.279Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157625",
+   "addresses": [
+    "Stadhouderskade 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Stadhouderskade 76",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 421,
+     "bagId": "0363010000818688"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2817456038,
+     "lngLat": [
+      4.8905557,
+      52.3579643
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1072AE",
+      "addr:street": "Stadhouderskade",
+      "alt_name": "Hotel Blossoms",
+      "name": "Blossoms City Hotel",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-10-29T20:42:32.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237129",
+   "addresses": [
+    "Stadhouderskade 74",
+    "Stadhouderskade 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Stadhouderskade 74-H",
+     "use": "winkelfunctie",
+     "areaM2": 1179,
+     "bagId": "0363010001003500"
+    },
+    {
+     "address": "Stadhouderskade 75-H",
+     "use": "sportfunctie",
+     "areaM2": 1411,
+     "bagId": "0363010012105070"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}
