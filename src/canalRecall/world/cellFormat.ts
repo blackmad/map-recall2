@@ -211,16 +211,13 @@ function readBags(r: Reader, strings: readonly string[], expected: number): Prop
     shapes.push(keys);
   }
   const n = r.count(MAX_BUILDINGS, 'bags'); if (n !== expected) r.fail(`expected ${expected} bags, got ${n}`);
-  const rows: number[] = [], counts = new Map<number, number>();
-  for (let i = 0; i < n; i++) { const si = r.uvar(); if (si >= shapes.length) r.fail(`shape index ${si}`); rows.push(si); for (const k of shapes[si]) counts.set(k, (counts.get(k) ?? 0) + 1); }
-  const columns = new Map<number, unknown[]>();
-  for (const k of [...counts.keys()].sort((a, b) => a - b)) { const c = counts.get(k)!, col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns.set(k, col); }
-  const cursor = new Map<number, number>();
-  return rows.map(si => {
-    const bag: Props = {};
-    for (const k of shapes[si]) { const at = cursor.get(k) ?? 0; cursor.set(k, at + 1); bag[strings[k]] = columns.get(k)![at]; }
-    return bag;
-  });
+  const rows = new Array<number>(n), counts = new Uint32Array(strings.length);
+  for (let i = 0; i < n; i++) { const si = r.uvar(); if (si >= shapes.length) r.fail(`shape index ${si}`); rows[i] = si; for (const k of shapes[si]) counts[k]++; }
+  const columns: unknown[][] = new Array(strings.length);
+  for (let k = 0; k < strings.length; k++) { const c = counts[k]; if (!c) continue; const col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns[k] = col; }
+  const cursor = new Uint32Array(strings.length), out = new Array<Props>(n);
+  for (let i = 0; i < n; i++) { const bag: Props = {}; for (const k of shapes[rows[i]]) bag[strings[k]] = columns[k][cursor[k]++]; out[i] = bag; }
+  return out;
 }
 
 /** Same keys, same order, same values (NaN equal, -0 distinct), recursively: what the encoder must reproduce. */
@@ -237,11 +234,12 @@ export function sameValue(a: unknown, b: unknown): boolean {
 // --- STYL ------------------------------------------------------------------
 
 const S_SAME = 0, S_DELTA = 1, S_FULL = 2;
-/** Apply a delta the way the decoder does: copy, delete removed, assign set keys in order. */
+/** Apply a delta: base keys in order (minus removed, set values replacing), then new set keys in order.
+ *  Built by plain assignment in final order (no spread + delete, which leaves slow dictionary objects). */
 function applyDelta(base: Props, set: Props, removed: readonly string[]): Props {
-  const out: Props = { ...base };
-  for (const k of removed) delete out[k];
-  for (const k of Object.keys(set)) out[k] = set[k];
+  const out: Props = {}, has = Object.prototype.hasOwnProperty;
+  for (const k in base) { if (removed.length && removed.includes(k)) continue; out[k] = has.call(set, k) ? set[k] : base[k]; }
+  for (const k in set) if (!has.call(base, k)) out[k] = set[k];
   return out;
 }
 type Style = { mode: number; set?: Props; removed?: string[]; full?: Props };
