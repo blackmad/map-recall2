@@ -165,8 +165,12 @@ const decisions: Record<string, number> = {};
 const reviewList: unknown[] = [];
 const heightOf = new Map<string, ReturnType<typeof ahnHeights>>();
 if (withHeights) {
-  const fill = holes.filter(g => g.areaM2 >= 10);
-  decisions['too-small'] = holes.length - fill.length;
+  // Underground shells (metro halls, car parks) are holes by design: drawn, they stand in the road.
+  const underground = new Set((JSON.parse(fs.readFileSync(path.join('public', 'data', 'extracts', 'amsterdam', 'underground-buildings.json'), 'utf8')) as { refBag: string[] }).refBag);
+  const above = holes.filter(g => !underground.has(g.id.replace('NL.IMBAG.Pand.', '')));
+  decisions.underground = holes.length - above.length;
+  const fill = above.filter(g => g.areaM2 >= 10);
+  decisions['too-small'] = above.length - fill.length;
   await pool(fill, 4, async g => {
     const rings = pands.get(g.id.replace('NL.IMBAG.Pand.', ''))!.rings;
     const rd = rings.map(r => r.map(p => { const q = lngLatToRd([p[0], p[1]]); return [q.x, q.y] as [number, number]; }));

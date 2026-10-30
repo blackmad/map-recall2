@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Underground buildings out of the road; Namenmonument turned back
+(2026-10-30).** User screenshots on Weesperstraat, Weesperplein and Wibautstraat
+showed buildings standing in the carriageway. They were Oostlijn metro halls
+(`w268998785` Weesperplein, `w268999073` by the Vaz Diasbrug, `w278085618` and
+BAG `…102589` at Wibautstraat), mapped in OSM as `location=underground` /
+`layer=-1 level=-1` and extruded from street level. The Amstel Tower car park
+(`w1302928107`, 90 m over Julianaplein) had the same cause. The rule is
+`src/canalRecall/undergroundBuildings.ts`: an explicit `location` wins,
+`parking=underground`/tunnel, or a negative layer *and* level. A bare
+`layer=-1` is not enough (De Spreeuwen apartments, Oku Office). A BAG pand
+goes only when it is ≤ 8 m and every OSM match is underground, so the tower
+over a garage and house rows over a shared garage keep their pand. 41 features
+were dropped in place by `scripts/drop-underground-buildings.ts --publish`.
+`build-osm-buildings`, `bagTileBuild` and `survey-bag-gaps` apply the same
+rule on rebuild, and `check:underground-buildings` (in `check:canal`) fails
+if one comes back. The Namenmonument's catalogue offset was −90° on a model
+whose native frame is x east / z south (the 162 other such models use 0), so
+its 89 m north–south plaza lay east–west across Weesperstraat. It is 0 now,
+pinned by `surveyedFrame.test.ts`, which checks the site outline against its
+surveyed lon/lat.
+
 **Mariniersbrug: green basement bascule with truss sides (2026-10-30).** The
 register lists BRU0272 as timber, so the material rule drew a white
 Magere Brug-style portal; the panorama shows a green steel basement bascule

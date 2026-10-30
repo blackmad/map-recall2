@@ -1005,6 +1005,25 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Pauwenpad: the 1960 Wibautstraat 150 office (Volkshotel block) is missing
+  (user, 2026-10-30).** BAG `0363100012110168`, 5,557 m², AHN 20 m (eaves
+  15.6, ridge 26.4). The lod1 merge let one OSM part (`w496986960`, height
+  tagged `28'`) stand in for it at 12.7% cover, and the gap survey holds it
+  as `too-large` (> `MAX_FILL_AREA_M2` 5,000) in `notFilledForReview`, which
+  nobody reviews. Of the 12 too-large holds, 4 have AHN ≥ 5 m (this one,
+  `…241555` 3.2 ha at 7.7 m, `…249515` 26 m, `…1053891` 18 m); the rest are
+  underground at < 1 m. Fix: fill large holes with AHN ≥ 5 m from 3DBAG/AHN
+  roof zones rather than one p70 box, then re-run `survey-bag-gaps --heights`
+  (needs PDOK WFS/AHN fetches) and `publish-bag-gaps --write`. Pin the pand in
+  `check-bag-gaps` NAMED.
+- **Buildings over roads: 385 footprints still cover ≥ 6 m of a car-road
+  centreline (2026-10-30 scan).** Most are real (IJ-tunnel portals,
+  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
+  bridges), but the scan found underground shells. Unchecked leads:
+  BAG `0363100012240435` (Ceintuurbaan, 18 m over 520 m of de Pijp streets;
+  probably the Albert Cuyp garage under 3DBAG roofs) and `…242075` (Museumplein
+  garage), which no OSM tag marks underground. The scan script was a
+  one-off; make it a check with an allowlist.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
