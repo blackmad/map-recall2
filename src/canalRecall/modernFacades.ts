@@ -18,17 +18,12 @@
  * stay byte-identical; `check-modern-facades` / `modernFacades.test.ts` pin both.
  */
 import { isPaintedHex, pickWeighted, unitDraw, type EraProfile } from './buurtProfiles/profiles.js';
-import { labToRgb, rgbToLab } from './look/brickTone.js';
+import { rgbToLab } from './look/brickTone.js';
+import type { OwnWall } from './buurtProfiles/modernPandWalls.js';
 
 /** CIE L* of a hex: a very light measured swatch (cream render, white panels) is paint whatever its tint. */
 const labOf = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
 const lightnessOf = (hex: string) => labOf(hex)[0];
-/**
- * Render and paint keep PAINT_TINT of their measured chroma: the calibrated light swatches carry a peach cast from the
- * thumbnails (Sarphatistrook #ffdfcf drew a pink block; review sheet 2026-10-30).
- */
-export const PAINT_TINT = 0.35;
-const neutralised = (hex: string) => { const [L, a, b] = labOf(hex); return '#' + labToRgb([L, a * PAINT_TINT, b * PAINT_TINT]).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join(''); };
 
 /**
  * A/B: `?modernFacades=0` (passed to the chunk worker) draws every post-1945 building as before. A test can set
@@ -48,7 +43,7 @@ export type ModernStyle = keyof typeof MODERN_STYLE;
 
 export type ModernEra = 'reconstruction' | 'late-modern' | 'renewal' | 'contemporary';
 export type ModernUse = 'housing' | 'office' | 'shop' | 'industrial';
-export type WallFamily = 'brick-buff' | 'brick-red' | 'brick-dark' | 'concrete' | 'render' | 'measured-brick' | 'measured-paint';
+export type WallFamily = 'brick-buff' | 'brick-red' | 'brick-dark' | 'concrete' | 'render' | 'measured-brick' | 'measured-paint' | 'own-brick' | 'own-paint';
 
 export const modernEraFor = (year: number): ModernEra | null =>
   year < 1945 ? null : year < 1965 ? 'reconstruction' : year < 1980 ? 'late-modern' : year < 2000 ? 'renewal' : 'contemporary';
@@ -77,7 +72,7 @@ export function modernUseFor(f: ModernFacts): ModernUse {
  * Wall colours per family, photo look. Brick is kept to the city palette's brightness band (L* <= 72, as the
  * buurt profiles calibrate), concrete and render to the existing modern swatches.
  */
-export const MODERN_WALLS: Record<Exclude<WallFamily, 'measured-brick' | 'measured-paint'>, readonly string[]> = {
+export const MODERN_WALLS: Record<Exclude<WallFamily, 'measured-brick' | 'measured-paint' | 'own-brick' | 'own-paint'>, readonly string[]> = {
   // Buff and yellow brick, desaturated: the first pass (#b08a62, #c09a6c) read ochre-yellow beside the photos' brown.
   'brick-buff': ['#a08a70', '#968068', '#ab9478', '#8e7a66'],
   'brick-red': ['#9a5240', '#8c4a38', '#a85a44', '#7e4636'],
@@ -136,7 +131,7 @@ export type ModernVocabulary = { era: ModernEra; use: ModernUse; style: ModernSt
  * drew Haarlemmer Houttuinen's white render and Van Reigersbergenstraat's buff as dark brick). Ribbon and curtain
  * offices keep their concrete and pale spandrels. Without walls the city distribution stands.
  */
-export function modernVocabulary(f: ModernFacts, measured?: EraProfile | null): ModernVocabulary | null {
+export function modernVocabulary(f: ModernFacts, measured?: EraProfile | null, own?: OwnWall | null): ModernVocabulary | null {
   if (f.year === null || !Number.isFinite(f.year)) return null;
   const era = modernEraFor(f.year);
   if (!era) return null;
@@ -146,15 +141,17 @@ export function modernVocabulary(f: ModernFacts, measured?: EraProfile | null): 
   let style = pick(f.id, 'modern-style', options);
   const banded = style === 'ribbon' || style === 'curtain';
   const accent = banded ? { accent: SPANDREL_ACCENTS[Math.floor(unitDraw(f.id, 'modern-spandrel') * SPANDREL_ACCENTS.length)] } : {};
-  if (!banded && measured?.walls?.length) {
-    const wall = pickWeighted(measured.walls, unitDraw(f.id, 'modern-measured-wall')), painted = isPaintedHex(wall) || lightnessOf(wall) >= 78;
+  if (!banded && (own || measured?.walls?.length)) {
+    // The building's own measured wall (modernPandWalls.ts) first, else a draw from the buurt's measured mix.
+    const wall = own ? own.hex : pickWeighted(measured!.walls!, unitDraw(f.id, 'modern-measured-wall'));
+    const painted = own ? own.painted : isPaintedHex(wall) || lightnessOf(wall) >= 78;
     const fits = (s: ModernStyle) => BRICK.has(s) !== painted;
     if (!fits(style)) {
       // The same era x use weights, restricted to the presets of the measured material.
       const same = options.filter(([s]) => fits(s) && s !== 'ribbon' && s !== 'curtain');
       style = same.length ? pick(f.id, 'modern-style-measured', same) : painted ? 'smoothDark' : 'brickDark';
     }
-    return { era, use, style, styleIndex: MODERN_STYLE[style], family: painted ? 'measured-paint' : 'measured-brick', wall: painted ? neutralised(wall) : wall };
+    return { era, use, style, styleIndex: MODERN_STYLE[style], family: own ? (painted ? 'own-paint' : 'own-brick') : painted ? 'measured-paint' : 'measured-brick', wall };
   }
   const walls = WALLS[era][BRICK.has(style) ? 'brick' : 'smooth'];
   const family = pick(f.id, 'modern-wall', walls) as keyof typeof MODERN_WALLS;

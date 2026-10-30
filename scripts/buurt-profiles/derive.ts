@@ -20,6 +20,7 @@
  * #118), so a buurt keeps its measured lightness, hue and painted share relative to the city.
  */
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
@@ -211,7 +212,19 @@ const exposure = fitExposure(samples.filter(s => !s.modernPass), ref, { referenc
  * buff read saturated red-brown and peach).
  */
 const MODERN_BRICK_CHROMA = 0.55;
+/**
+ * The thumbnails' white point for paint (modern pass): the median a/b of every painted modern front. Sunlit render
+ * reads warm in the 2019-2025 captures, and keeping half of that tint drew Sarphatistrook's pale swatches peach
+ * (#ffdfcf). Paint never takes the brick hue rotation or chroma lift (applyExposure's painted branch); it takes this
+ * cast out before the half tint, so a white wall stays white and a cream or grey one keeps its own difference.
+ */
+const paintCast = (() => {
+  const p = samples.filter(s => s.modernPass && s.painted && s.lab);
+  return p.length ? [median(p.map(s => s.lab![1])), median(p.map(s => s.lab![2]))] : [0, 0];
+})();
+console.log('modern paint cast a/b', paintCast.map(v => v.toFixed(1)).join(' '));
 const calibrate = (s: Sample): number[] => {
+  if (s.modernPass && s.painted) return applyExposure(exposure, s.source, [s.lab![0], s.lab![1] - paintCast[0], s.lab![2] - paintCast[1]], true);
   const lab = applyExposure(exposure, s.source, s.lab!, s.painted);
   return s.modernPass && !s.painted ? [lab[0], lab[1] * MODERN_BRICK_CHROMA, lab[2] * MODERN_BRICK_CHROMA] : lab;
 };
@@ -301,6 +314,16 @@ const body = { profiles, grid: { west: +gb.west.toFixed(6), south: +gb.south.toF
 const revision = (await import('node:crypto')).createHash('sha256').update(JSON.stringify(body)).digest('hex').slice(0, 16);
 const set: BuurtProfileSet = validateProfileSet({ schemaVersion: 1, revision, ...body });
 fs.writeFileSync(path.join(OUT, 'buurt-profiles.json'), JSON.stringify(set));
+
+// Per-pand modern walls (#117): every modern-pass front measured on its own pand, calibrated as above, as
+// "<b|p><hex>" by 16-digit pand id (b brick, p paint or render). The generator reads its own wall before the buurt mix.
+const own: Record<string, string> = {};
+for (const s of samples) if (s.modernPass && s.lab) own[s.pand] = (s.painted ? 'p' : 'b') + toHex(calibrate(s)).slice(1);
+const ownBody = { walls: Object.fromEntries(Object.entries(own).sort(([a], [b]) => a.localeCompare(b))) };
+const ownRevision = crypto.createHash('sha256').update(JSON.stringify(ownBody)).digest('hex').slice(0, 16);
+fs.writeFileSync(path.join(OUT, 'modern-pand-walls.json'), JSON.stringify({ schemaVersion: 1, revision: ownRevision, licence: 'measured from Gemeente Amsterdam panoramas, CC BY 4.0', ...ownBody }));
+console.log('modern pand walls', Object.keys(own).length, ownRevision);
+if (process.argv.includes('--publish')) fs.copyFileSync(path.join(OUT, 'modern-pand-walls.json'), 'src/canalRecall/buurtProfiles/modern-pand-walls.json');
 
 // Report.
 const lines = [`# Buurt profiles ${revision}`, '', `Samples: ${samples.length} (panorama walls ${panoUsed} of ${panoSeen} pands archived; panorama thumbnails ${thumbUsed}; block-face houses ${bfUsed} of ${bfHouses}).`,
