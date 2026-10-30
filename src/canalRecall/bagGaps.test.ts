@@ -34,8 +34,10 @@ test('AHN heights: p70 roof over the median ground; void or underground stays em
   assert.equal(supplementFeature({ ...gap, areaM2: 4 }, [lot], h), null, 'sliver');
   assert.equal(supplementFeature({ ...gap, tileCover: 0.3 }, [lot], h), null, 'a third drawn already: would z-fight');
   assert.equal(fillDecision({ ...gap, year: 2024 }, h), 'newer-than-ahn');
-  assert.equal(fillDecision({ ...gap, areaM2: 32000 }, h), 'too-large');
+  assert.equal(fillDecision({ ...gap, areaM2: 5557 }, h), 'fill', 'Wibautstraat 150 at Pauwenpad: AHN sees a 16-20 m mass');
+  assert.equal(fillDecision({ ...gap, areaM2: 7800 }, ahnHeights(Array(50).fill(3.5), [0.6, 0.6, 0.6])), 'too-large', 'low and large: a car-park roof, look first');
   assert.equal(fillDecision({ ...gap, modelCover: 0.3 }, h), 'under-model', 'Nieuwe Kerk notch annex');
+  assert.equal(fillDecision({ ...gap, roadInsideM: 286 }, h), 'over-road', 'Amstel station hole across Julianaplein');
   assert.equal(fillDecision(gap, h), 'fill');
   const f = supplementFeature(gap, [lot], h)!;
   assert.equal(f.properties.tier, 3);

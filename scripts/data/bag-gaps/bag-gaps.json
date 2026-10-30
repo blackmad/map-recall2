@@ -18,7 +18,7 @@
   "10-50": 2469,
   "<10": 4647
  },
- "filled": 1601,
+ "filled": 1603,
  "fillDecisions": {
   "too-small": 4647,
   "too-large": 12,
@@ -85178,5 +85178,182 @@
    ],
    "modelledBy": "het-schip"
   }
- ]
+ ],
+ "rerun20261030": {
+  "note": "Re-survey after underground drops and the large-hole/over-road rules; its fills are appended to the supplement, the 2026-10-16 survey above stands.",
+  "holes": 6612,
+  "fillDecisions": {
+   "underground": 39,
+   "too-small": 4647,
+   "fill": 3,
+   "newer-than-ahn": 1325,
+   "half-drawn": 130,
+   "too-large": 6,
+   "over-road": 8,
+   "under-model": 4,
+   "ahn-flat": 448,
+   "no-ahn": 2
+  },
+  "added": [
+   "NL.IMBAG.Pand.0363100012110168",
+   "NL.IMBAG.Pand.0363100012241555",
+   "NL.IMBAG.Pand.0363100012249515"
+  ],
+  "notFilledForReview": [
+   {
+    "id": "NL.IMBAG.Pand.0394100000227191",
+    "why": "too-large",
+    "year": 2001,
+    "areaM2": 10347.9,
+    "centre": [
+     4.752400056262979,
+     52.2793547703246
+    ],
+    "height": 3.59
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012240258",
+    "why": "too-large",
+    "year": 2018,
+    "areaM2": 7819.6,
+    "centre": [
+     4.892640198546283,
+     52.37058705370252
+    ],
+    "height": 0.09
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012244844",
+    "why": "too-large",
+    "year": 2018,
+    "areaM2": 7420.7,
+    "centre": [
+     4.886648261646689,
+     52.35644160402346
+    ],
+    "height": 0.05
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012145715",
+    "why": "over-road",
+    "year": 1939,
+    "areaM2": 7003.7,
+    "centre": [
+     4.917808569874302,
+     52.346524603422374
+    ],
+    "height": 8.53
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012244554",
+    "why": "too-large",
+    "year": 2015,
+    "areaM2": 6285.5,
+    "centre": [
+     4.891235159028035,
+     52.36059711012367
+    ],
+    "height": 0.36
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012240075",
+    "why": "too-large",
+    "year": 2018,
+    "areaM2": 5765.7,
+    "centre": [
+     4.891496085652357,
+     52.341502275491415
+    ],
+    "height": 0.15
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100100093286",
+    "why": "too-large",
+    "year": 2018,
+    "areaM2": 5250,
+    "centre": [
+     4.896100085228906,
+     52.379030465218946
+    ],
+    "height": 0.89
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012246895",
+    "why": "over-road",
+    "year": 2019,
+    "areaM2": 4543.4,
+    "centre": [
+     4.8850661660066095,
+     52.39150617432288
+    ],
+    "height": 1.41
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182043",
+    "why": "over-road",
+    "year": 2003,
+    "areaM2": 4484.1,
+    "centre": [
+     4.904390866908159,
+     52.36797939912224
+    ],
+    "height": 0.91
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012240882",
+    "why": "over-road",
+    "year": 2009,
+    "areaM2": 440.7,
+    "centre": [
+     4.91258006087951,
+     52.377376074558704
+    ],
+    "height": -0.04
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012104076",
+    "why": "over-road",
+    "year": 2001,
+    "areaM2": 357.7,
+    "centre": [
+     4.949667125236585,
+     52.31279713192308
+    ],
+    "height": 0.73
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012076349",
+    "why": "over-road",
+    "year": 2002,
+    "areaM2": 355,
+    "centre": [
+     4.949403716277394,
+     52.313089077065946
+    ],
+    "height": 0.56
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012244549",
+    "why": "over-road",
+    "year": 2018,
+    "areaM2": 293.9,
+    "centre": [
+     4.931270258888725,
+     52.40097491811676
+    ],
+    "height": 0.52
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012244548",
+    "why": "over-road",
+    "year": 2018,
+    "areaM2": 293.6,
+    "centre": [
+     4.930984228840304,
+     52.40109536318509
+    ],
+    "height": 0.55
+   }
+  ]
+ }
 }

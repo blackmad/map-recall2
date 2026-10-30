@@ -1023,6 +1023,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
+  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
+  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
+  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
+  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
+- **Buildings over roads: re-scan as a check (2026-10-30).** After the
+  underground and void drops, about 375 footprints still cover ≥ 6 m of a
+  car-road centreline. The ones looked at are real (IJ-tunnel portals,
+  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
+  bridges), but the list has not been read end to end. Make the one-off scan
+  a check with an allowlist.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1999,6 +2010,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
+  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
+  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
+  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
+  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
+  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
+
+  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;
