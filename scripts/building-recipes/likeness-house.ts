@@ -5,7 +5,7 @@
  * FAIL / NO EVIDENCE on a photographed group). Crops come from `$MAP_RECALL_SOURCE_DATA/pand-reference-walls/<pand>/`
  * (`all-walls.ts --archive`); without that variable the house has no likeness (`null`).
  */
-import {lightBands, type LightBand} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
+import {lightBands, lightRuns, type LightBand} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {measureFloorBands} from '../../src/canalRecall/buildingRecipe/floorBands.ts';
 import {rowOpenings} from '../../src/canalRecall/buildingRecipe/rowOpenings.ts';
 import {photoRowBands, type RowBands} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
@@ -47,7 +47,9 @@ export interface GroupLikeness {
     /** floor bands at the storey lines of a glazed front (floorBands.ts `measureFloorBands`), with the wall colour; absent when none */
     floorBands?: {share: number; lift: number; roof?: boolean; colour: string; heightM: number; liftM: number};
     /** the photo's ribbon storeys (bandFronts.ts `photoRowBands` on rowOpenings, the triage measurement); absent in older reports */
-    rowBands?: RowBands};
+    rowBands?: RowBands;
+    /** part-width light runs along the floor lines (lightBands.ts `lightRuns`, fractions of the panel width from uMin); absent in older reports */
+    lightRuns?: {storey: number; from: number; to: number}[]};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -133,7 +135,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
         lightBands: lightBands(photo, g.lines, {image, wall: photo.wall.raw}),
         split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
         ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {}),
-        ...floorBandsOf(photo, g.lines, box.v1), rowBands: rowBandsOf(photo, g.lines)}});
+        ...floorBandsOf(photo, g.lines, box.v1), rowBands: rowBandsOf(photo, g.lines),
+        lightRuns: lightRuns({image, wall: photo.wall.raw}, g.lines, [PAD_M, PAD_M + box.u1 - box.u0]).map(r => ({storey: r.storey, from: toPanel(r.u0 / W), to: toPanel(r.u1 / W)}))}});
   }
   return out;
 }

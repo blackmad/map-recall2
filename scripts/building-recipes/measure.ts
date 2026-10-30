@@ -1,7 +1,7 @@
 /**
  * Measure a `kind: large` house's photographed wall groups and (with --write) put the measurements into its intent.
  *
- *   MAP_RECALL_SOURCE_DATA=<checkout> node --import tsx scripts/building-recipes/measure.ts --house=<id>[,<id>] [--write] [--no-system] [--no-bays]
+ *   MAP_RECALL_SOURCE_DATA=<checkout> node --import tsx scripts/building-recipes/measure.ts --house=<id>[,<id>] [--write] [--no-system] [--no-bays] [--balcony-spans]
  *
  * Needs the archived crops (`all-walls.ts --pand=<pand> --archive --min-len=8 --max=12`). Compiles the house as it is
  * (large.ts `compileLargeHouse`: GLB, gates, likeness), pairs each group's main panel with a crop (cropToPanel.ts),
@@ -45,7 +45,7 @@ import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
-import {bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
+import {balconySpansProposal, bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
@@ -62,6 +62,10 @@ export interface ProposeOpts {
   rows?: Record<number, {widthM: number; roof: number[]}>;
   /** false for a building with `layeredKit: false` (no floor bands there) */
   layered?: boolean;
+  /** `--balcony-spans` (opt-in, #127): propose part-width balcony bands from the light parapet runs (bandFronts
+   *  `balconySpansProposal`) on ribbon fronts. Off by default: on Dulcie Septemberpad 242968 walls[1] the runs miss the
+   *  first balcony row and read the top storey's parapet, so the review turn checks them against the photo first. */
+  balconySpans?: boolean;
 }
 
 /** The system a group's front class proposes and, for a curtain class, why it is not trusted (`curtainEvidence`). */
@@ -117,6 +121,12 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     if (band.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies) { patch.balconyBands = band.balconyBands; notes.push(band.why[1]); }
   } else if (band?.glazedStoreys && w.glazedStoreys === undefined && !hand.has('glazedStoreys') && ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(system)) {
     patch.glazedStoreys = band.glazedStoreys; notes.push(`glazedStoreys ${band.glazedStoreys.join(',')}: ${band.why[0]}`);
+  }
+  // part-width (staggered) balcony bands from light parapet runs on the floor lines (bandFronts `balconySpansProposal`, #127)
+  if (opts.balconySpans && !patch.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies && !maskDistrusted && system === 'ribbon-windows') {
+    const bays = (opts.bays && !hand.has('baysPerStorey') && w.alignWith === undefined ? photoBays({measuredBays: m.bays, measuredWindow: m.window, gridColumns: L.columns.photo, gridWindow: L.photoGrid?.window}).bays : null) ?? w.baysPerStorey ?? null;
+    const sp = balconySpansProposal({runs: m.lightRuns, bays, storeys: storeyCount, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut, taken});
+    if (sp.balconyBands) { patch.balconyBands = sp.balconyBands; notes.push(sp.why[0]); }
   }
   // a row of separate houses (rowSplit `proposeHouses`, only on clear joints): replaces a two-colour split
   const row = opts.rows?.[g.group], rowFree = !w.houses && !hand.has('houses') && !hand.has('palette.brick') && !hand.has('palette') && ['brick-bay-grid', 'plinth-shopfronts'].includes(system)
@@ -250,7 +260,7 @@ async function capDraftBudget(id: string, file: string) {
   console.log(`  budget: ${total} > ${budget}: blanked groups ${blank.join(', ') || 'none'}${over ? `, still ${over} over` : ''}`);
 }
 
-export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string}) {
+export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string; balconySpans?: boolean}) {
   requireSourceData();
   const {likeness, report, built} = await compileLargeHouse(id);
   if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
@@ -335,6 +345,6 @@ if (process.argv[1]?.endsWith('building-recipes/measure.ts')) {
   try {
     const measuredOut = process.argv.find(a => a.startsWith('--measured-out='))?.slice(15);
     if (measuredOut && ids.length > 1) throw Error('--measured-out takes one --house');
-    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug'), measuredFile: measuredOut}); }
+    for (const id of ids) { console.log(id); await measureHouse(id, {write: process.argv.includes('--write'), system: !process.argv.includes('--no-system'), bays: !process.argv.includes('--no-bays'), debug: process.argv.includes('--debug'), measuredFile: measuredOut, balconySpans: process.argv.includes('--balcony-spans')}); }
   } finally { await closeRenderer(); }
 }
