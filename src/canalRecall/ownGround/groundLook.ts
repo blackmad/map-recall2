@@ -96,3 +96,72 @@ export function groundPalette(look: GroundLook = 'default'): GroundPalette {
   cache.set(look, out);
   return out;
 }
+
+/** Rec. 709 luma of an sRGB triple (0..255), as scripts/ground-look-sheet.mjs measures frames. */
+export const luma709 = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+/** `c` scaled (hue and saturation kept) to Rec. 709 luma `target`, rounded and clamped to 0..255. */
+export function atLuma(c: readonly number[], target: number): number[] {
+  const k = target / Math.max(1, luma709(c));
+  return [0, 1, 2].map(i => Math.max(0, Math.min(255, Math.round(c[i] * k))));
+}
+/**
+ * The road looks on the review strip (lane road-look-continuity 2026-10-29, round 2; user: the asphalt reads as light as
+ * the pavement where the neighbourhood photo shows dark asphalt). Round 1's 144/130/118 asphalt lumas barely differed on
+ * the phone: the pavement's palette luma 175 renders ~155 (its paver joints, 0.72 of the base over ~17 % of the area,
+ * and the building shadows; there is no tone map or fog, FLAT_GROUND_GAIN draws level sunlit ground at its palette
+ * luma), so the rendered road/pavement gap was 10-25. Each option sets the carriageway luma (hue kept), the pavement
+ * tone and its joint fraction; the klinker carriageway follows the asphalt (`klinkerOver` luma above it, half its hue),
+ * so a side street's mouth stays on the road level rather than a brown wedge, and the bare land draws the pavement
+ * (beside a lighter pavement the land's 185,174,156 would be the seam). The orthophoto measures sunlit asphalt and
+ * pavement alike (luma 167 and 165, measure-spot-tones): a dark road is a look choice. The user picks; the default
+ * (no option) stays round 1's.
+ */
+export interface RoadLookOption {
+  readonly asphaltLuma: number;
+  /** null: the palette's pavement. */
+  readonly pavement: readonly [number, number, number] | null;
+  readonly pavementJoint: number;
+  readonly klinkerOver: number;
+  /**
+   * The tram rail groove, a fraction of the asphalt's luma: the palette's groove (luma ~91) vanishes on a dark
+   * carriageway. Darker, not lighter: the user rejected light steel rails as "thin white lines" (2026-10-24, issue #52),
+   * and the orthophoto has the rails under the asphalt (Kinkerstraat 93 against 126).
+   */
+  readonly railK: number;
+  /** The kerb shadow line at the face, a fraction of the asphalt, and its width (roadSurfaces KERB_SHADOW_M by default). */
+  readonly kerbShadow: number;
+  readonly kerbShadowM: number;
+}
+export const ROAD_LOOK_OPTIONS = {
+  /** Dark asphalt, today's pavement. */
+  A: { asphaltLuma: 105, pavement: null, pavementJoint: 0.8, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
+  /** Darker asphalt, a lighter warm-grey pavement. */
+  B: { asphaltLuma: 95, pavement: [200, 195, 186], pavementJoint: 0.86, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
+  /** Darkest asphalt, a cool pale pavement. */
+  C: { asphaltLuma: 85, pavement: [212, 212, 207], pavementJoint: 0.88, klinkerOver: 12, railK: 0.6, kerbShadow: 0.35, kerbShadowM: 0.8 },
+} as const satisfies Record<string, RoadLookOption>;
+export type RoadLookId = keyof typeof ROAD_LOOK_OPTIONS;
+export const isRoadLookId = (v: unknown): v is RoadLookId => typeof v === 'string' && v in ROAD_LOOK_OPTIONS;
+
+/** The tones an option draws, from the palette's: asphalt, pavement (and the land under it), its joint, the klinker carriageway. */
+export function roadLookTones(street: { asphalt: { base: readonly number[] }; pavement: { base: readonly number[] }; klinker: { base: readonly number[] }; rail: string }, id: RoadLookId | null): { asphalt: number[]; pavement: number[]; pavementJoint: string | null; klinker: number[]; rail: number[]; kerbShadow: number[] } {
+  const groove = [1, 3, 5].map(i => parseInt(street.rail.slice(i, i + 2), 16));
+  if (id === null) return { asphalt: [...street.asphalt.base], pavement: [...street.pavement.base], pavementJoint: null, klinker: [...street.klinker.base], rail: groove, kerbShadow: groove };
+  const o: RoadLookOption = ROAD_LOOK_OPTIONS[id];
+  const asphalt = atLuma(street.asphalt.base, o.asphaltLuma), pavement = o.pavement ? [...o.pavement] : [...street.pavement.base];
+  const half = street.klinker.base.map((c, i) => (c + asphalt[i]) / 2);
+  const hex2 = (v: number) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+  return {
+    asphalt, pavement, pavementJoint: `#${pavement.map(c => hex2(c * o.pavementJoint)).join('')}`, klinker: atLuma(half, o.asphaltLuma + o.klinkerOver),
+    rail: atLuma(groove, o.asphaltLuma * o.railK), kerbShadow: asphalt.map(c => Math.round(c * o.kerbShadow)),
+  };
+}
+
+/**
+ * Courtyard green (lane road-look-continuity 2026-10-29, step 6): the lawn desaturated 40 % toward its own luma and
+ * 15 luma darker. Block-interior gardens read as saturated park lawn against the grey street corridor.
+ */
+export function gardenTone(lawn: readonly number[]): number[] {
+  const L = luma709(lawn), grey = lawn.map(c => c + 0.4 * (L - c));
+  return atLuma(grey, L - 15);
+}

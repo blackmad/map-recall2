@@ -590,7 +590,8 @@ async function zooRegressions(): Promise<void> {
  * on open BGT terrain inside a block (the extractor's ray test). Over 40 % of them read vegetated (lawn, bed, shrub,
  * bark, OSM park/wood) with the extract, under 5 % without it (the pin is live).
  */
-const VEGETATED_LAYERS = new Set(['lawn', 'bed', 'shrub', 'bark', 'park', 'wood']);
+// `garden`: courtyard green since lane road-look-continuity 2026-10-29 (the muted lawn of block interiors).
+const VEGETATED_LAYERS = new Set(['lawn', 'garden', 'bed', 'shrub', 'bark', 'park', 'wood']);
 async function courtyardRegressions(): Promise<void> {
   const fixture = JSON.parse(readFileSync('scripts/own-ground/j4-courtyard-probes.json', 'utf8')) as { probes: [number, number][] };
   const probes = fixture.probes.map(([x, y]) => [x / 10, y / 10] as [number, number]);
