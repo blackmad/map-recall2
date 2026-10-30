@@ -48,7 +48,9 @@ installed large recipes: 7 likeness-pass, 95 inferred, 14 gates-only).
 #110, #111 and #114 landed 2026-10-29 (HISTORY "Landmark lane, first run").
 First run: 10 buildable pands, 1 installed (Molenwerf 1), 7 held, 1
 no-evidence; round 2: 20 pands, 1 installed (094874), 18 held, 1
-no-evidence; 1.8 turns per reviewed building. Triage follow-up (HISTORY
+no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
+10 held, 4 of them on the 12k triangle budget alone (#125 needs-david);
+1.8 turns per reviewed building. Triage follow-up (HISTORY
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
