@@ -75,6 +75,23 @@ ride after B (user 2026-10-29: "a cute thing"). User decided 2026-10-29:
 no NPC traffic or pedestrians, no audio or music. Drop-MapLibre pace still
 open on #107. None started.
 
+**Engine programme (2026-10-30, user approved the plan):** one frame, one
+world model. `docs/handoffs/engine-programme-20261030.md` is the programme;
+branch `integrate/engine-programme-20261030` (worktree `integrator-engine`,
+port 4519) integrates it. Decisions: a second `VectorMap` implementation
+behind `?engine=own` (not edits to `vector-map.js`, which is frozen to fixes
+and deleted at the flip); all of MapLibre goes (ride, overview, picker);
+gates on the emulator and SwiftShader proxy, no real-device rides for now;
+Google tiles deleted; content lanes keep merging with a `world:compile` step.
+Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
+migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
+4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
+world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
+#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Gates per
+phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
+This supersedes the lane-A delivery shape below and closes #107 question 1.
+
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
@@ -978,9 +995,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Drop MapLibre** — lives on its own long-lived branch
-  `render/drop-maplibre-step1-20261010` (own worktree), merging main in;
-  not merged to main until ready (user, 2026-10-10). (go; ~3–4 weeks after city-wide own ground;
+- **Drop MapLibre** — since 2026-10-30 this is P1/P5 of
+  `docs/handoffs/engine-programme-20261030.md` (lane L1, `?engine=own`, weekly
+  flag-gated steps on main; the long-lived-branch rule of 2026-10-10 is
+  withdrawn). The local branch `render/drop-maplibre-step1-20261010` (8
+  commits, 2,129 behind) is re-ported commit by commit, then deleted. Original
+  notes (go; ~3–4 weeks after city-wide own ground;
   `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
   overview/route preview/street labels from our own extracts match the game's
   MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:
@@ -2014,11 +2034,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
   - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
   - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
-  - At Cuyperspassage the station hall still hides the rider; the covered-passage x-ray should treat a slot like a building passage (`game.js`).
   - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
   - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
   - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
-  - Pre-existing on main (2026-10-30, not tunnels): `covered-passage.spec.ts` fails "the shed is back". After riding out, `_threeBuildings.hidden` still holds w451533149 among ~400 ids, so something else keeps a large hidden set.
 
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;

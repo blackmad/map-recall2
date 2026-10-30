@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+**Engine programme decided (2026-10-30).** The user asked whether the recurring
+performance and rendering trouble needs a larger architectural change (more
+game engine, less hand-written, less MapLibre). Three explore passes and a
+design pass over the October perf work (`docs/performance/desktop-20261014.md`,
+`docs/perf-motion-stutter-20261016.md`, `docs/perf-pop-in-20261016.md`, the
+2026-10-09 renderer spike, the 2026-10-10 drop-MapLibre proof, the 2026-10-29
+slop-newyork plan) found the same three causes under every remaining stall:
+no frame ownership (MapLibre owns context, camera, cadence and context loss;
+three.js is a guest; the Liberty basemap is drawn full-screen under the own
+ground; 94 MB of MapLibre workers on phones), a world computed at runtime from
+GeoJSON in parallel models with six streamers, and no engine-level quality
+tiers. Verified seams: `sharedFrame.ts` touches MapLibre only at its
+custom-layer driver, game code reaches `vectorMap.map` at two lines, 101 specs
+read it as their oracle. The user chose: a second `VectorMap` implementation
+behind `?engine=own` (weekly flag-gated steps on main; `vector-map.js` frozen
+then deleted whole), all of MapLibre removed, emulator/SwiftShader gates for
+now, Google tiles deleted, content lanes keep merging with a `world:compile`
+step. Programme, phases P0–P5, gates and lanes:
+`docs/handoffs/engine-programme-20261030.md`; briefs
+`lane-engine-host-20261030.md`, `lane-oracle-migration-20261030.md`,
+`lane-world-compiler-20261030.md`. The lane-A brief and lane C are annotated
+as superseded/absorbed; `render/drop-maplibre-step1-20261010` is re-ported,
+not merged. Honest limit recorded in the doc: the M4 is already vsync-bound,
+so the win there is stalls, heap and startup, not fps.
+
+**Covered-passage spec matched to the landmark era (2026-10-30).** The
+Cuyperspassage spec failed with "the shed is back". The train shed
+(w451533149) is one of the buildings the Centraal landmark model replaces, so
+it stays hidden for the `signature` reason, and the cover itself now names the
+streamed city's building id. The spec now checks that the cover reason
+releases everything after riding out. Probe at the passage with tunnel cuts
+on: the rider is visible in the slot, and part of the shed is cut away over
+it.
+
 **Labels fade, one look, hidden behind buildings, along their streets (2026-10-30, #122).**
 Canvas street names and Free Ride pills had no fade, and MapLibre had `fadeDuration: 0`.
 `labelFade.ts` fades every label over 300 ms, holds a label that lost its place for 250 ms,
