@@ -15,6 +15,8 @@
  *   (punched -> brick-bay-grid, ribbon -> ribbon-windows, curtain -> curtain-wall; measured glazed columns keep the
  *   group's system: `glazed-columns` needs its column bays placed by hand; --no-system keeps the system), plus
  *   windowGroup (2..4 alike windows folded into one bay of the photo grid: measureWriteback `windowGroupProposal`),
+ *   band fronts (bandFronts.ts, #126: a ribbon on most judged storeys -> `ribbon-windows`, plus `balconyBands` where light
+ *   slab edges sit on two or more floor lines; a glazed ribbon storey over punched rows -> `glazedStoreys`),
  *   `measured: {date, groups}` and the crops as sources. Groups measured before whose `hand` keeps a palette colour
  *   (hand-sampled from the crops) stay in `measured.groups` when this run has no evidence for them.
  * Storey counts are reported, never written (the fit's storey lines come from 3DBAG eaves; the hand count stays).
@@ -43,6 +45,7 @@ import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
 import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
+import {bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
@@ -104,6 +107,17 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     } else if (proposed && proposed !== w.system && w.system !== 'plinth-shopfronts') system = proposed;
     if (system !== w.system) { patch.system = system; notes.push(`system ${w.system} -> ${system} (measured ${m.frontClass})`); }
   }
+  // band fronts (bandFronts.ts, #126): ribbons in the photo's own rows where the bay grid reads punched windows
+  const storeyCount = typeof w.storeys === 'number' ? w.storeys : m.storeyGlazing.length;
+  const taken = [...(w.blankStoreys ?? []), ...(w.loggias?.storeys ?? []), ...(w.plinth ? w.plinth.storeys ?? [0] : []), ...(w.windowGroup?.storeys ?? []), ...(w.storeyShapes ?? []).flatMap(x => x.storeys),
+    ...(w.balconies?.storeys ?? []), ...(w.loggiaBands ?? []).flatMap(b => Array.from({length: b.storeys[1] - b.storeys[0] + 1}, (_, k) => b.storeys[0] + k))];
+  const band = maskDistrusted ? null : bandFrontProposal({rowBands: m.rowBands, system, storeys: storeyCount, usable: Math.min(m.usable, L.evidence.usable), foliage: m.foliage, washedOut: m.washedOut, lightBands: m.lightBands, trim: m.trim, storeyGlazing: m.storeyGlazing, taken});
+  if (band?.system && opts.system && !hand.has('system') && w.system !== 'plinth-shopfronts' && !w.screen) {
+    system = band.system; patch.system = system; notes.push(`system ${w.system} -> ${system} (${band.why[0]})`);
+    if (band.balconyBands && w.balconyBands === undefined && !hand.has('balconyBands') && !w.balconies) { patch.balconyBands = band.balconyBands; notes.push(band.why[1]); }
+  } else if (band?.glazedStoreys && w.glazedStoreys === undefined && !hand.has('glazedStoreys') && ['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(system)) {
+    patch.glazedStoreys = band.glazedStoreys; notes.push(`glazedStoreys ${band.glazedStoreys.join(',')}: ${band.why[0]}`);
+  }
   // a row of separate houses (rowSplit `proposeHouses`, only on clear joints): replaces a two-colour split
   const row = opts.rows?.[g.group], rowFree = !w.houses && !hand.has('houses') && !hand.has('palette.brick') && !hand.has('palette') && ['brick-bay-grid', 'plinth-shopfronts'].includes(system)
     && !(['wallSplit', 'curve', 'columns', 'hall', 'screen', 'meshScreen', 'spandrels', 'alignWith', 'windowPattern', 'tiltedBays', 'openBays', 'hoist', 'gateways', 'hallDoors', 'garageBays', 'garageDoors', 'piers'] as const).some(k => w[k] !== undefined && w[k] !== false)
@@ -149,7 +163,7 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
   // light bands across the wall (speklagen, stone courses) seen at the same place in two or more storeys: stone bands,
   // never over bands drawn another way (string courses, courses) or a hand `dressings`
   const bands = m.lightBands ? proposeBands(m.lightBands) : null;
-  if (bands && !hand.has('dressings') && !hand.has('dressings.bands') && !w.dressings?.bands && !w.stringCourses && !w.courses && !w.stoneStoreys) {
+  if (bands && !patch.balconyBands && !hand.has('dressings') && !hand.has('dressings.bands') && !w.dressings?.bands && !w.stringCourses && !w.courses && !w.stoneStoreys) {
     patch.dressings = {...(w.dressings ?? {}), bands};
     notes.push(`light bands: ${bands.at.join('+')} on storeys ${bands.storeys.join(',')} (${m.lightBands!.map(b => `${b.at}@${b.v0}-${b.v1} m ${Math.round(b.share * 100)} %`).join(', ')})`);
   }

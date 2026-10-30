@@ -7,6 +7,7 @@ import {arcadePiersProblems} from '../blockBuilding/arcadePiers.ts';
 import {windowBoxProblems} from '../blockBuilding/windowBox.ts';
 import {galleryProblems} from '../blockBuilding/gallery.ts';
 import {boxBalconyProblems} from '../blockBuilding/boxBalcony.ts';
+import {balconyBandsProblems} from '../blockBuilding/balconyBands.ts';
 import {stackedBlocksProblems} from '../blockBuilding/stackedBlocks.ts';
 import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
@@ -17,7 +18,7 @@ import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -175,6 +176,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     }
     bool(w.falseFront, `${at}.falseFront`);
     if (w.boxBalconies !== undefined) problems.push(...boxBalconyProblems(w.boxBalconies, `${at}.boxBalconies`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
+    if (w.balconyBands !== undefined) {
+      problems.push(...balconyBandsProblems(w.balconyBands, `${at}.balconyBands`, typeof w.storeys === 'number' ? w.storeys : undefined));
+      if (['curtain-wall', 'glazed-hall', 'blank'].includes(w.system)) problems.push(`${at}.balconyBands: on a wall with storeys of openings (not curtain-wall, glazed-hall or blank)`);
+      if (w.balconies?.storeys.some(s => w.balconyBands!.storeys?.includes?.(s))) problems.push(`${at}.balconyBands: not on a storey that also has balconies`);
+    }
     if (w.stackedBlocks !== undefined) {
       problems.push(...stackedBlocksProblems(w.stackedBlocks, `${at}.stackedBlocks`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.baysPerStorey === undefined) problems.push(`${at}.stackedBlocks: needs baysPerStorey (one cell per bay)`);

@@ -1,0 +1,27 @@
+{
+ "source": "pand-145366 walls[4] photo opening mask as measured (measureFacade, padded box), crop w02-66 2024-08-29; MASK values as grey",
+ "cell": 0.1,
+ "box": {
+  "u0": 0,
+  "u1": 171.94371388199602,
+  "v0": -0.499,
+  "v1": 12.871
+ },
+ "lines": [
+  0,
+  3.957,
+  7.914,
+  11.871,
+  12.371
+ ],
+ "storeys": null,
+ "storeyGlazing": [
+  null,
+  0.558,
+  0.58,
+  null
+ ],
+ "usable": 0.828,
+ "foliage": 0.111,
+ "washedOut": 0.017
+}
