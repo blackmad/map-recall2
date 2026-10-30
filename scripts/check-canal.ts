@@ -83,6 +83,7 @@ const CHECKS = [
   'test:postcard-pacing',
   'test:landmark-buildings',
   'test:three-buildings',
+  'test:coplanar-surfaces',
   'test:landmark-fronts',
   'test:houseboats',
   'test:facade-extras',
