@@ -97,6 +97,33 @@ world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
 shader (B) / L7 shadows (D). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
+State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
+fixes): `vectorMap.camera` (project, unproject, center, zoom, bounds, pitch,
+bearing, onFrame, whenIdle) over MapLibre in `vector-map.js`; 41 spec/script
+files read it instead of `vectorMap.map` for those members (inventory
+`docs/handoffs/oracle-inventory-20261030.md`). Still on `.map`: `jumpTo` 69,
+`getCanvas` 29, `setMaxPitch` 27, `calculateCameraOptionsFromTo` 22,
+`triggerRepaint` 29, `getStyle` 23, `stop` 19, `getLayoutProperty` 24,
+`once('render')` ×4 (L1 decides which become `WorldView` methods). Integrator
+reverted the lane's change of `mapRender` in `ride-perf` / `landmark-lod-perf`
+to the render-to-render interval: `DESKTOP_BUDGET` is main-thread ms, so the
+MapLibre `_render` wrap stays (guarded on `vm.map`) until the frame host has
+its own render owner. `tests/perf/budgets.json` + `scripts/perf-gate.mjs`
+landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser
+verification pending:** the lane's run was mis-scoped to every spec (426/638
+in 2 h, lock held); two migrated specs failed there (`bike-xray` chase
+colours, `complete-city` contextualFeatures 0) and are classified
+not-migration-caused by reading only; a `ride-perf` + those two specs run is
+queued behind the lock. P0 deletions still open: study layers and Google
+tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
+`scripts/city-appearance/publish-area-geometry-demo.ts`,
+`scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
+`wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
+`tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
+(`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
+and the build chain), `index.html` script tags, the bundles. Lesson for
+`LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
+representative subset, not every touched spec.
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
