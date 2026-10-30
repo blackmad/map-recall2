@@ -53,60 +53,28 @@ class Car {
     if (this.surfaceType === 'curb') { surfaceGrip = CURB_GRIP; surfaceDrag = CURB_DRAG; }
     else if (this.surfaceType === 'grass') { surfaceGrip = GRASS_GRIP; surfaceDrag = GRASS_DRAG; }
 
-    // longitudinal
-    let fwd = 0;
-    if (this.throttle > 0) fwd = this.accel * this.throttle * surfaceGrip;
-    if (this.brake > 0) fwd -= this.brakeForce * this.brake;
-    fwd -= this.speed * Math.abs(this.speed) * this.drag;
-    fwd -= this.rollingResist * Math.sign(this.speed || 0.001);
-    // Toy physics: lifting off should stop the car almost at once. A constant
-    // rolling resistance is negligible next to a 200 px/s cruise, so coasting
-    // damps proportionally to current speed instead.
-    if (this.liftOffBraking > 0 && this.throttle === 0 && this.brake === 0) {
-      fwd -= this.speed * this.liftOffBraking;
+    const model = window.CanalRecallUi && window.CanalRecallUi.advanceSteer;
+    if (model) {
+      // Typed fixed-step model (src/canalRecall/drive/steerModel.ts): equal
+      // substeps of at most 1/120 s, so every display rate drives the same
+      // vehicle. The surface is read once a frame, as before.
+      const state = this._steerState || (this._steerState = window.CanalRecallUi.initialSteerState());
+      state.x = this.x; state.y = this.y; state.angle = this.angle;
+      state.speed = this.speed; state.vx = this.vx; state.vy = this.vy;
+      state.distance = this.distancePx;
+      const input = this._steerInputs || (this._steerInputs = {});
+      input.throttle = this.throttle; input.brake = this.brake; input.steer = this.steerInput;
+      input.handbrake = !!this.handbrake; input.surfaceGrip = surfaceGrip; input.surfaceDrag = surfaceDrag;
+      model(state, input, dt, this._steerParams());
+      this.x = state.x; this.y = state.y; this.angle = state.angle;
+      this.speed = state.speed; this.vx = state.vx; this.vy = state.vy;
+      this.distancePx = state.distance;
+      this.angularVel = state.yawRate;
+      this.steerApplied = state.steer;
+      this.isDrifting = Math.abs(state.lateral) > DRIFT_THRESHOLD;
+    } else {
+      this._legacyIntegrate(dt, surfaceGrip, surfaceDrag);
     }
-    fwd -= surfaceDrag * Math.sign(this.speed || 0.001);
-    this.speed += fwd * dt;
-    this.speed = clamp(this.speed, CAR_REVERSE_MAX, this.maxSpeed);
-
-    // steering
-    // Toy physics, not vehicle simulation: a car floored at 0 could not turn at
-    // all while stopped, so pulling away from a kerb or lining up a junction
-    // meant rolling forward first. Cars keep most of their steering authority
-    // at a standstill. Boats too: stuck against a quay, a weak helm at rest
-    // left the boat grinding for seconds before it could turn away.
-    const steerFloor = this.isBoat ? BOAT_MIN_STEER_FACTOR : CAR_MIN_STEER_FACTOR;
-    const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, steerFloor, 1);
-    let effectiveTurn = this.turnRate * (1 - Math.abs(this.speed) / this.maxSpeed * TURN_REDUCTION_AT_SPEED);
-    if (this.isBoat && this.speed < 0) effectiveTurn *= 1.18;
-    if (this.handbrake) effectiveTurn *= HANDBRAKE_TURN_MULT;
-    this.angularVel = this.steerInput * effectiveTurn * speedFactor;
-    this.angle += this.angularVel * dt;
-
-    // velocity decomposition (drift model)
-    const fx = Math.cos(this.angle), fy = Math.sin(this.angle);
-    const rx = -Math.sin(this.angle), ry = Math.cos(this.angle);
-    if (Math.abs(this.vx) + Math.abs(this.vy) < 0.1 && Math.abs(this.speed) > 0.1) {
-      this.vx = fx * this.speed;
-      this.vy = fy * this.speed;
-    }
-    let fwdComp = dot(this.vx, this.vy, fx, fy);
-    let latComp = dot(this.vx, this.vy, rx, ry);
-
-    fwdComp = this.speed;
-    let df = this.driftFactor * surfaceGrip;
-    if (this.handbrake) df = HANDBRAKE_DRIFT;
-    latComp *= df;
-
-    this.isDrifting = Math.abs(latComp) > DRIFT_THRESHOLD;
-    this.vx = fx * fwdComp + rx * latComp;
-    this.vy = fy * fwdComp + ry * latComp;
-
-    this.x += this.vx * dt;
-    this.y += this.vy * dt;
-
-    // odometer
-    this.distancePx += Math.abs(this.speed) * dt;
 
     // progress tracking
     if (track.isOpenTrack) {
@@ -144,6 +112,85 @@ class Car {
 
       this.raceProgress = this.currentLap + this.lapProgress;
     }
+  }
+
+  /** One Euler step per frame: the pre-2026-10-30 integrator, kept for a page
+   *  that loads car.js without the game-ui bundle. */
+  _legacyIntegrate(dt, surfaceGrip, surfaceDrag) {
+      // longitudinal
+      let fwd = 0;
+      if (this.throttle > 0) fwd = this.accel * this.throttle * surfaceGrip;
+      if (this.brake > 0) fwd -= this.brakeForce * this.brake;
+      fwd -= this.speed * Math.abs(this.speed) * this.drag;
+      fwd -= this.rollingResist * Math.sign(this.speed || 0.001);
+      // Toy physics: lifting off should stop the car almost at once. A constant
+      // rolling resistance is negligible next to a 200 px/s cruise, so coasting
+      // damps proportionally to current speed instead.
+      if (this.liftOffBraking > 0 && this.throttle === 0 && this.brake === 0) {
+        fwd -= this.speed * this.liftOffBraking;
+      }
+      fwd -= surfaceDrag * Math.sign(this.speed || 0.001);
+      this.speed += fwd * dt;
+      this.speed = clamp(this.speed, CAR_REVERSE_MAX, this.maxSpeed);
+
+      // steering
+      // Toy physics, not vehicle simulation: a car floored at 0 could not turn at
+      // all while stopped, so pulling away from a kerb or lining up a junction
+      // meant rolling forward first. Cars keep most of their steering authority
+      // at a standstill. Boats too: stuck against a quay, a weak helm at rest
+      // left the boat grinding for seconds before it could turn away.
+      const steerFloor = this.isBoat ? BOAT_MIN_STEER_FACTOR : CAR_MIN_STEER_FACTOR;
+      const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, steerFloor, 1);
+      let effectiveTurn = this.turnRate * (1 - Math.abs(this.speed) / this.maxSpeed * TURN_REDUCTION_AT_SPEED);
+      if (this.isBoat && this.speed < 0) effectiveTurn *= 1.18;
+      if (this.handbrake) effectiveTurn *= HANDBRAKE_TURN_MULT;
+      this.angularVel = this.steerInput * effectiveTurn * speedFactor;
+      this.angle += this.angularVel * dt;
+
+      // velocity decomposition (drift model)
+      const fx = Math.cos(this.angle), fy = Math.sin(this.angle);
+      const rx = -Math.sin(this.angle), ry = Math.cos(this.angle);
+      if (Math.abs(this.vx) + Math.abs(this.vy) < 0.1 && Math.abs(this.speed) > 0.1) {
+        this.vx = fx * this.speed;
+        this.vy = fy * this.speed;
+      }
+      let fwdComp = dot(this.vx, this.vy, fx, fy);
+      let latComp = dot(this.vx, this.vy, rx, ry);
+
+      fwdComp = this.speed;
+      let df = this.driftFactor * surfaceGrip;
+      if (this.handbrake) df = HANDBRAKE_DRIFT;
+      latComp *= df;
+
+      this.isDrifting = Math.abs(latComp) > DRIFT_THRESHOLD;
+      this.vx = fx * fwdComp + rx * latComp;
+      this.vy = fy * fwdComp + ry * latComp;
+
+      this.x += this.vx * dt;
+      this.y += this.vy * dt;
+      this.distancePx += Math.abs(this.speed) * dt;
+  }
+
+  /** The model's parameters from this vehicle's (mutable) tuning fields. */
+  _steerParams() {
+    const p = this._steerParamsCache || (this._steerParamsCache = {});
+    p.steering = this.isBoat ? 'legacy' : 'bicycle';
+    p.maxSpeed = this.maxSpeed; p.reverseMax = CAR_REVERSE_MAX;
+    p.accel = this.accel; p.brakeForce = this.brakeForce;
+    p.drag = this.drag; p.rollingResist = this.rollingResist;
+    p.liftOffBraking = this.liftOffBraking;
+    p.driftFactor = this.driftFactor; p.handbrakeDrift = HANDBRAKE_DRIFT;
+    p.handbrakeTurnMult = HANDBRAKE_TURN_MULT;
+    p.turnRate = this.turnRate; p.turnReductionAtSpeed = TURN_REDUCTION_AT_SPEED;
+    p.speedFactorDivisor = SPEED_FACTOR_DIVISOR;
+    p.minSteerFactor = this.isBoat ? BOAT_MIN_STEER_FACTOR : CAR_MIN_STEER_FACTOR;
+    p.reverseTurnMult = this.isBoat ? 1.18 : 1;
+    p.wheelbase = BIKE_WHEELBASE; p.maxLock = BIKE_MAX_LOCK;
+    p.cornering = BIKE_CORNERING; p.gripMax = BIKE_GRIP_MAX;
+    p.steerRate = BIKE_STEER_RATE;
+    p.restYawRate = this.turnRate * CAR_MIN_STEER_FACTOR;
+    p.restFadeSpeed = BIKE_REST_FADE_SPEED;
+    return p;
   }
 
   collideWithBoundary(track) {

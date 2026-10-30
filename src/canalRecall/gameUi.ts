@@ -12,3 +12,7 @@ export { openOnboarding, maybeShowOnboarding, isOnboardingOpen } from './onboard
 export { ONBOARDING_STORAGE_KEY, onboardingSteps } from './onboarding/steps.ts';
 export * from './streetFollow.ts';
 export * from './cameraYaw.ts';
+export {
+  advance as advanceSteer, step as stepSteer, initialSteerState, bikeLean, bicycleYawLimit,
+  BIKE as BIKE_STEER, LEGACY_BASE as LEGACY_STEER, STEP_MAX as STEER_STEP_MAX,
+} from './drive/steerModel.ts';
