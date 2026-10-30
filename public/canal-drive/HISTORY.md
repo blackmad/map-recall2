@@ -206,6 +206,36 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**Builder-declared material slots; eight landmarks re-tagged (2026-10-30, lane #138).**
+Every one of the 356 bespoke GLBs took its city-look material slots from
+`infer-material-slots.ts` (by palette name or colour word); none set them
+explicitly. `scripts/landmarks/material-slot-tags.ts` now holds a per-model,
+per-palette-name `{slot, why}` table that `build-manual-landmarks.ts` writes
+over the inferred slot on export, and `apply-material-slot-tags.ts`
+(`--write` / `--check`) patches the shipped GLB and lod1 JSON chunk without
+touching the BIN. Tags are written as `materialSlotSource: 'inferred'` plus
+`materialSlotTag: 'builder'` because `_dress` in the signature-landmarks
+source puts any non-inferred slot into the recipe look even with the flag
+off; the marker keeps flag-off rendering unchanged. Re-tagged against the
+photos: American Hotel (slate → roofTile, sandstone → brick, ochre → paint),
+Uilenburger synagoge (slate → roofTile), Straat museum (ochre, pink →
+paint), Pllek, REM-eiland, Faralda crane and Sea Palace (red → paint), Joods
+Verzetsmonument (dark → stone). Those eight go from +11.4 % / +12.6 % median
+Δluma (city on vs off, sun / shade) to +2.8 % / +2.5 %; the whole gallery
+moves only +13.5/+15.4 → +13.4/+14.6 because the brightening is the brick
+lift on every other model (#137). The lane patched the GLBs directly, which
+left `signature-landmarks.json` byte counts stale (check:manual-landmarks
+caught rem-eiland); the integrator re-exported the eight through the
+builder, which produced byte-identical GLBs and refreshed the manifest,
+`modelSourceHashes.json` (toolchain hash) and model dates. Still wrong by
+palette rule, not by tag: a warm-grey roofTile (Uilenburger #665f58,
+saturation under 0.2) takes the "black tile" slate tone. The slot
+vocabulary cannot say timber (houseboat museum cabin roof, Hannekes Boom,
+Vondeltuin, Hotel Jakarta, Odessa deckhouse) or metal roofs (Ronde Lutherse
+dome, American Hotel copper); left untagged for lack of evidence: Podium
+Mozaïek roof, He Hua temple red, Centrale Markthal and Symphony ochre, the
+Haparandaweg dark cladding.
+
 **De Roos, P.C. Hooftstraat 183 (2026-10-30, lane #133).** The 1880 villa on
 the Vondelpark corner, now Centrum De Roos, is a bespoke model
 (`scripts/landmarks/de-roos-builder.ts`, 15,884 triangles, 239 KB, every

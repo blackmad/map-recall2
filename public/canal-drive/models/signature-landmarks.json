@@ -444,7 +444,7 @@
         "depthCoverage": 1.1107405026753743
       },
       "triangles": 720,
-      "bytes": 15464,
+      "bytes": 15492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "royal-palace": {
@@ -2612,7 +2612,7 @@
         "depthCoverage": 1.0787999685965817
       },
       "triangles": 4792,
-      "bytes": 62368,
+      "bytes": 62396,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "00b0beaeb4309cbf",
@@ -11979,7 +11979,7 @@
         "depthCoverage": 1.0422836882061388
       },
       "triangles": 5896,
-      "bytes": 88180,
+      "bytes": 88208,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "9f71e96b68a985c7",
@@ -15471,7 +15471,7 @@
         "depthCoverage": 0.9164511342966778
       },
       "triangles": 8660,
-      "bytes": 146388,
+      "bytes": 146444,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "6b165e582965dd13",
@@ -15552,7 +15552,7 @@
         "depthCoverage": 1.126339839054988
       },
       "triangles": 11034,
-      "bytes": 140908,
+      "bytes": 140964,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "8f3c171c4624ad43",
@@ -20466,7 +20466,7 @@
         "depthCoverage": 1.9351589268651503
       },
       "triangles": 12822,
-      "bytes": 169860,
+      "bytes": 169888,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "6b3bb1b5c5dbafbb",
@@ -29371,7 +29371,7 @@
         "depthCoverage": 1.6313146346329552
       },
       "triangles": 28488,
-      "bytes": 447812,
+      "bytes": 447840,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "01ec05d62e9fdde5",
@@ -32449,7 +32449,7 @@
         "depthCoverage": 1.0051641966167248
       },
       "triangles": 37319,
-      "bytes": 499196,
+      "bytes": 499280,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "7794d31dd20983cf",
