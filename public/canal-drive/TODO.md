@@ -224,10 +224,24 @@ Westerkerk: more tiles resident, not different styling) and pixels differed
 up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
 world path streams tiles in later at page start (inflate wall time), which is
 step 4's flush/regroup and look-ahead work; measure time-to-resident per
-tile both ways. Still open: ≤ 4 MB target (FOOT alone 7.4 MB
-gz); remaining long frames are the streamer's flush/regroup (step 4, waits
-for `engine/frameHost.ts` on main, which is there since step 3 of L1: resume
-L4 step 4); road CSR (step 5).
+tile both ways. **Step 4 merged 2026-10-30** (`21a8d01db`):
+`engine/worldStreamer.ts` holds one `CellQueue` (plan order, ahead rank from
+the rider's motion, ≤ 2 reads per worker in flight, 36 resident cells,
+off-plan eviction), a pool of min(cores−1, 3) decode workers with cell
+affinity, and a per-frame `FrameBudget` (4 ms / 1 MiB) that chunk installs
+spend (`?uploadBudget=0` = one per frame); the compiler writes a 39 KB
+runtime `tiles.json`. Measured: last of the first four tiles resident at
+page start default 3,870 ms vs world 3,791 ms (was ~120 ms behind); 40 s
+cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
+0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
+JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
+start, which the script does not yet sample; the 36 resident cells plus
+per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
+7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+(12/18/24/36 resident cells, one decoded cell shared across tiles,
+transfer not copy), then chunk and own-ground builds onto the pool so
+`chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
+and the second own-ground worker can go, then road CSR (step 5).
 **Reds on main found by the programme's runs (2026-10-30), not yet owned:**
 `tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
 draws after every building layer: expected > 128, got −1);

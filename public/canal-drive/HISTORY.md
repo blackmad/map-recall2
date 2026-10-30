@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**`?world=v1` streams through one cell queue and a worker pool (2026-10-30, #136, L4 step 4).**
+`src/canalRecall/engine/worldStreamer.ts`: a `CellQueue` ordered by the tile
+plan and by how far ahead of the rider a cell lies (its `MotionEstimate`), at
+most two reads in flight per worker, unwanted queued reads dropped, residency
+above 36 cells evicted off-plan furthest first; decoding on a pool of
+min(cores−1, 3) workers with cell→worker affinity; a `FrameBudget` (4 ms and
+1 MiB a frame, first chunk always) that chunk installs now spend instead of
+one chunk a frame. The world client reads cells ahead of their tiles, a tile
+spread over several cells is read by several workers at once and merged by
+ordinal, and the page reads the compiler's new 39 KB `tiles.json` before the
+372 KB `index.json`. Why: after steps 1–3 the world path was ~120 ms behind
+the default path at page start and held ~6,000 fewer buildings at the A/B
+snapshot. Now the last of the first four tiles is resident at 3,791 ms vs
+default 3,870 ms, the A/B shows 0 differing tiles with Westerkerk at 36,352
+buildings both ways, and a 40 s cold desktop ride stalls 2.6 s instead of
+3.63 s (p99 frame 83.4 → 66.6 ms). Not met: the heap gate (ride end default
+977 MB, world 1,019 MB; the ≤ 500 MB ride-start sample is L4's next step),
+the ≤ 4 MB bytes target; the old queues (`chunkBuildQueue.ts`, the residency
+modules, the second own-ground worker) still run beside the pool. Cells
+recompiled and republished with `tiles.json` (verify: fresh, 0 stale, 0
+differing).
+
 **`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
 L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
 put the gate specs, ride-perf and phone-memory on either implementation;
