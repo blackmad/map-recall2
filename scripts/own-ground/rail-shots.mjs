@@ -11,13 +11,13 @@ const FRAME_MS = Number(process.env.FRAME_MS ?? 4000);
 // [lng, lat, bearing]: the rider stands beside the corridor, looking along / across it.
 const SPOTS = {
   // The user's report (2026-10-30): the raised corridor between Piet Heinkade and the Dijksgracht.
-  'dijksgracht': [4.9168, 52.3746, 290],
+  'dijksgracht': [4.9180, 52.3757, 300],
   // Centraal's eastern approach, from the Piet Heinkade towards the station.
-  'centraal-approach': [4.9085, 52.3778, 280],
-  // Muiderpoort station's viaducts over the Wijttenbachstraat / Pretoriusstraat.
-  'muiderpoort': [4.9395, 52.3612, 40],
-  // Amstel station: the rail and metro on the embankment.
-  'amstel': [4.9160, 52.3465, 20],
+  'centraal-approach': [4.9075, 52.3782, 260],
+  // Muiderpoort station: the Gooilijn viaducts over the street south of the station.
+  'muiderpoort': [4.9300, 52.3598, 20],
+  // Amstel station: the rail and metro viaducts on the embankment.
+  'amstel': [4.9185, 52.3455, 330],
 };
 const DEVICES = {
   desktop: { viewport: { width: 1280, height: 800 } },
@@ -25,11 +25,18 @@ const DEVICES = {
 };
 fs.mkdirSync(out, { recursive: true });
 const frames = fs.existsSync(`${out}/frames.json`) ? JSON.parse(fs.readFileSync(`${out}/frames.json`, 'utf8')) : {};
-const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+// Uncapped frames (no vsync): the rAF interval is the frame's real cost, not the display's 16.7 ms.
+const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--disable-gpu-vsync', '--disable-frame-rate-limit'] });
 for (const [device, ctxOpts] of Object.entries(process.env.DEVICES ? Object.fromEntries(Object.entries(DEVICES).filter(([k]) => process.env.DEVICES.split(',').includes(k))) : DEVICES)) {
   for (const rails of [false, true]) {
     const ctx = await browser.newContext(ctxOpts);
     const page = await ctx.newPage();
+    // Busy time per frame: the main thread's work inside the rAF callbacks (the render submits its draw calls there).
+    await page.addInitScript(() => {
+      const raf = window.requestAnimationFrame.bind(window), busy = new Map();
+      window.__railBusy = busy;
+      window.requestAnimationFrame = cb => raf(ts => { const t = performance.now(); try { cb(ts); } finally { busy.set(ts, (busy.get(ts) ?? 0) + performance.now() - t); } });
+    });
     await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
     await page.goto(`http://127.0.0.1:${process.env.PORT || 4734}/canal-drive/?ownGround=1&sharedFrame=1${rails ? '' : '&rails=0'}`);
     await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, { timeout: 90000 });
@@ -54,7 +61,9 @@ for (const [device, ctxOpts] of Object.entries(process.env.DEVICES ? Object.from
       await page.screenshot({ path: `${out}/${device}-${rails ? 'rails' : 'norails'}-${id}.png` });
       const f = await page.evaluate(ms => new Promise(done => {
         const d = []; let last = performance.now(); const end = last + ms;
-        const tick = now => { d.push(now - last); last = now; if (now < end) requestAnimationFrame(tick); else { d.sort((a, b) => a - b); done({ n: d.length, mean: d.reduce((s, v) => s + v, 0) / d.length, p50: d[Math.floor(d.length / 2)], p95: d[Math.floor(d.length * 0.95)] }); } };
+        window.__railBusy.clear();
+        const stat = a => { a.sort((x, y) => x - y); return { mean: a.reduce((s, v) => s + v, 0) / a.length, p50: a[Math.floor(a.length / 2)], p95: a[Math.floor(a.length * 0.95)] }; };
+        const tick = now => { d.push(now - last); last = now; if (now < end) requestAnimationFrame(tick); else { const b = stat([...window.__railBusy.values()]); const i = stat(d); done({ n: d.length, mean: i.mean, p50: i.p50, p95: i.p95, busyMean: b.mean, busyP95: b.p95 }); } };
         requestAnimationFrame(tick);
       }), FRAME_MS);
       (frames[device] ??= {})[`${rails ? 'rails' : 'norails'}:${id}`] = Object.fromEntries(Object.entries(f).map(([k, v]) => [k, Math.round(v * 10) / 10]));

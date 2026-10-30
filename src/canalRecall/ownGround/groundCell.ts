@@ -482,7 +482,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (input.rails?.length) {
     const atGrade: [Vec2, Vec2][] = [];
     for (const w of ways) if (AT_GRADE_HIGHWAYS.has(w.tags.highway) && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')) for (let i = 0; i + 1 < w.points.length; i++) atGrade.push([w.points[i], w.points[i + 1]]);
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, rails: !touch });
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1 });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab);
     railStats = r.stats;
   }
