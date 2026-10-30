@@ -1140,9 +1140,10 @@ export class ThreeBuildings {
     this.worker = null;
     if (typeof Worker === 'undefined' || !WORKER_URL) return null;
     try {
-      // The buurt-profile A/B (buurtProfiles/data.ts) reads the worker's own URL there.
-      const profilesFlag = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('buurtProfiles') : null;
-      const worker = new Worker(profilesFlag ? `${WORKER_URL}${WORKER_URL.includes('?') ? '&' : '?'}buurtProfiles=${encodeURIComponent(profilesFlag)}` : WORKER_URL);
+      // The buurt-profile and modern-facade A/Bs (buurtProfiles/data.ts, modernFacades.ts) read the worker's own URL there.
+      const search = typeof location !== 'undefined' ? new URLSearchParams(location.search) : null;
+      const flags = ['buurtProfiles', 'modernFacades'].flatMap(name => { const v = search?.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+      const worker = new Worker(flags.length ? `${WORKER_URL}${WORKER_URL.includes('?') ? '&' : '?'}${flags.join('&')}` : WORKER_URL);
       worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[] }>) => {
         const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
         this.workerBusy = false;

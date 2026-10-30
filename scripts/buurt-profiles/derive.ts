@@ -20,6 +20,7 @@
  * #118), so a buurt keeps its measured lightness, hue and painted share relative to the city.
  */
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
@@ -91,7 +92,7 @@ console.log('pands', pands.size);
 const buurten = await gebieden('wijken').then(() => gebieden('buurten')), wijken = await gebieden('wijken');
 const buurtOf = (lng: number, lat: number) => buurten.find(a => inArea(lng, lat, a)) ?? null;
 
-type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface'; era: Period | null; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
+type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
 const samples: Sample[] = [];
 const eraOf = (p: Pand | undefined) => p?.year ? periodForYear(p.year) : null;
 
@@ -141,13 +142,19 @@ console.log('pano walls', panoSeen, 'used', panoUsed);
 
 // 1b. Panorama thumbnails at the street front (sample-panos.ts).
 let thumbUsed = 0;
-const THUMBS = 'staging/buurt-profiles/pano-samples.json';
-if (fs.existsSync(THUMBS)) for (const r of JSON.parse(fs.readFileSync(THUMBS, 'utf8')).samples as any[]) {
+// pano-samples-modern.json (sample-panos.ts --modern, #117): the same measure on BAG year >= 1945 pands, for the modern era.
+const THUMBS = ['staging/buurt-profiles/pano-samples.json', 'staging/buurt-profiles/pano-samples-modern.json'];
+for (const file of THUMBS) if (fs.existsSync(file)) for (const r of JSON.parse(fs.readFileSync(file, 'utf8')).samples as any[]) {
   const pand = pands.get(r.pand);
   if (r.skipped || !pand || !r.wall) continue;
-  const painted = photoPainted(r.wall);
+  // Modern pass: a light front (L >= 66 in the thumbnail) is render, white panels or pale buff brick, and is kept
+  // as paint (half its tint); the brick calibration's chroma lift turned those peach (review 2026-10-30).
+  const painted = photoPainted(r.wall) || (file.endsWith('-modern.json') && lch(r.wall).L >= 66);
   if (!painted && !masonryFamily(r.brick) && lch(r.brick).C >= 4) continue;
-  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06 });
+  // The modern pass only ever adds to the modern era: it does not move the calibration, a profile's level, n or older eras.
+  const modernPass = file.endsWith('-modern.json') ? { modernPass: true as const } : {};
+  if (modernPass.modernPass && eraOf(pand) !== 'modern') continue;
+  samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06, ...modernPass });
   thumbUsed++;
 }
 console.log('panorama thumbnails used', thumbUsed);
@@ -198,8 +205,29 @@ console.log('block-face houses', bfHouses, 'used', bfUsed);
 // measured lightness difference from the city whichever source measured it.
 const paletteBricks = (['canal', 'c19', 'school'] as const).flatMap(p => PERIOD_WALLS.photo[p] ?? []).map(h => hexLab(h)!).filter(l => masonryFamily(labToRgb(l)) === 'brick');
 const ref = { L: median(paletteBricks.map(l => l[0])), C: median(paletteBricks.map(chromaOf)), h: hueMedian(paletteBricks.map(hueOf)) };
-const exposure = fitExposure(samples, ref, { reference: 'thumb', chromaShare: BRICK_CHROMA_SHARE, liftShare: Number(arg('lift-share') ?? CITY_LIFT_SHARE) });
-const calibrate = (s: Sample): number[] => applyExposure(exposure, s.source, s.lab!, s.painted);
+const exposure = fitExposure(samples.filter(s => !s.modernPass), ref, { reference: 'thumb', chromaShare: BRICK_CHROMA_SHARE, liftShare: Number(arg('lift-share') ?? CITY_LIFT_SHARE) });
+/**
+ * Post-war brick is browner and greyer than the city palette's 19th-century orange-red that sets the chroma lift:
+ * the modern pass takes MODERN_BRICK_CHROMA of it (first run: Sarphatistrook's anthracite and Frederik Hendrik's
+ * buff read saturated red-brown and peach).
+ */
+const MODERN_BRICK_CHROMA = 0.55;
+/**
+ * The thumbnails' white point for paint (modern pass): the median a/b of every painted modern front. Sunlit render
+ * reads warm in the 2019-2025 captures, and keeping half of that tint drew Sarphatistrook's pale swatches peach
+ * (#ffdfcf). Paint never takes the brick hue rotation or chroma lift (applyExposure's painted branch); it takes this
+ * cast out before the half tint, so a white wall stays white and a cream or grey one keeps its own difference.
+ */
+const paintCast = (() => {
+  const p = samples.filter(s => s.modernPass && s.painted && s.lab);
+  return p.length ? [median(p.map(s => s.lab![1])), median(p.map(s => s.lab![2]))] : [0, 0];
+})();
+console.log('modern paint cast a/b', paintCast.map(v => v.toFixed(1)).join(' '));
+const calibrate = (s: Sample): number[] => {
+  if (s.modernPass && s.painted) return applyExposure(exposure, s.source, [s.lab![0], s.lab![1] - paintCast[0], s.lab![2] - paintCast[1]], true);
+  const lab = applyExposure(exposure, s.source, s.lab!, s.painted);
+  return s.modernPass && !s.painted ? [lab[0], lab[1] * MODERN_BRICK_CHROMA, lab[2] * MODERN_BRICK_CHROMA] : lab;
+};
 const toHex = (lab: number[]) => '#' + labToRgb(lab).map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 
 /** Ten quantile swatches over lightness, each the median a/b of its slice. */
@@ -237,13 +265,14 @@ for (const p of pands.values()) {
   for (const key of [b.code, b.wijk ?? '']) { const m = yearMixOf.get(key) ?? {}; const e = periodForYear(p.year); m[e] = (m[e] ?? 0) + 1; yearMixOf.set(key, m); }
 }
 
-function profileFor(code: string, name: string, level: 'buurt' | 'wijk', list: Sample[]): BuurtProfile | null {
+function profileFor(code: string, name: string, level: 'buurt' | 'wijk', all: Sample[]): BuurtProfile | null {
+  const list = all.filter(s => !s.modernPass);
   if (list.length < MIN_N) return null;
   const eras: BuurtProfile['eras'] = {};
   const older = list.filter(s => s.era && s.era !== 'modern');
   for (const era of ['canal', 'c19', 'school', 'modern'] as const) {
     // An era with too few fronts borrows the area's pre-1945 pool (walls and traits), never the modern blocks'.
-    const own = eraProfile(list.filter(s => s.era === era));
+    const own = eraProfile((era === 'modern' ? all : list).filter(s => s.era === era));
     const e = own ?? (era !== 'modern' ? eraProfile(older) : undefined);
     if (e) eras[era] = e;
   }
@@ -285,6 +314,16 @@ const body = { profiles, grid: { west: +gb.west.toFixed(6), south: +gb.south.toF
 const revision = (await import('node:crypto')).createHash('sha256').update(JSON.stringify(body)).digest('hex').slice(0, 16);
 const set: BuurtProfileSet = validateProfileSet({ schemaVersion: 1, revision, ...body });
 fs.writeFileSync(path.join(OUT, 'buurt-profiles.json'), JSON.stringify(set));
+
+// Per-pand modern walls (#117): every modern-pass front measured on its own pand, calibrated as above, as
+// "<b|p><hex>" by 16-digit pand id (b brick, p paint or render). The generator reads its own wall before the buurt mix.
+const own: Record<string, string> = {};
+for (const s of samples) if (s.modernPass && s.lab) own[s.pand] = (s.painted ? 'p' : 'b') + toHex(calibrate(s)).slice(1);
+const ownBody = { walls: Object.fromEntries(Object.entries(own).sort(([a], [b]) => a.localeCompare(b))) };
+const ownRevision = crypto.createHash('sha256').update(JSON.stringify(ownBody)).digest('hex').slice(0, 16);
+fs.writeFileSync(path.join(OUT, 'modern-pand-walls.json'), JSON.stringify({ schemaVersion: 1, revision: ownRevision, licence: 'measured from Gemeente Amsterdam panoramas, CC BY 4.0', ...ownBody }));
+console.log('modern pand walls', Object.keys(own).length, ownRevision);
+if (process.argv.includes('--publish')) fs.copyFileSync(path.join(OUT, 'modern-pand-walls.json'), 'src/canalRecall/buurtProfiles/modern-pand-walls.json');
 
 // Report.
 const lines = [`# Buurt profiles ${revision}`, '', `Samples: ${samples.length} (panorama walls ${panoUsed} of ${panoSeen} pands archived; panorama thumbnails ${thumbUsed}; block-face houses ${bfUsed} of ${bfHouses}).`,
