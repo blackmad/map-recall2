@@ -39,13 +39,22 @@ export const MAX_FILL_TILE_COVER = 0.2;
  * predecessor or a building site, so it is listed for review, not filled.
  */
 export const MAX_FILL_YEAR = 2019;
-/** Bigger complexes (a 3 ha campus slab) need a look before one flat p70 box stands in for them. */
+/**
+ * Bigger complexes need a look before one flat p70 box stands in for them,
+ * unless AHN sees a real mass over them: the held list hid Wibautstraat 150
+ * (5,557 m², 20 m, Pauwenpad) and Gelderlandplein (3.2 ha, 7.7 m), while the
+ * low ones are car parks under a square (< 1 m).
+ */
 export const MAX_FILL_AREA_M2 = 5000;
+export const MIN_LARGE_FILL_HEIGHT_M = 5;
 
 /** A gap partly under a drawn model (an annex in a church's notch) is the model lane's call, not a box's. */
 export const MAX_FILL_MODEL_COVER = 0.05;
 
-export type FillDecision = 'fill' | 'too-small' | 'half-drawn' | 'under-model' | 'newer-than-ahn' | 'too-large' | 'no-ahn' | 'ahn-flat';
+/** A fill across this much car-road centreline stands in the road (Amstel station's hole spans Julianaplein); look first. */
+export const MAX_FILL_ROAD_M = 20;
+
+export type FillDecision = 'fill' | 'too-small' | 'half-drawn' | 'under-model' | 'newer-than-ahn' | 'too-large' | 'over-road' | 'no-ahn' | 'ahn-flat';
 
 /** Whether a gap is filled from BAG + AHN, or why not (bounded and explainable: each reason is a count in the report). */
 export function fillDecision(gap: BagGap, heights: AhnHeights | null): FillDecision {
@@ -53,7 +62,8 @@ export function fillDecision(gap: BagGap, heights: AhnHeights | null): FillDecis
   if (gap.tileCover > MAX_FILL_TILE_COVER) return 'half-drawn';
   if ((gap.modelCover ?? 0) > MAX_FILL_MODEL_COVER) return 'under-model';
   if (gap.year !== null && gap.year > MAX_FILL_YEAR) return 'newer-than-ahn';
-  if (gap.areaM2 > MAX_FILL_AREA_M2) return 'too-large';
+  if (gap.areaM2 > MAX_FILL_AREA_M2 && !(heights && heights.height >= MIN_LARGE_FILL_HEIGHT_M)) return 'too-large';
+  if ((gap.roadInsideM ?? 0) >= MAX_FILL_ROAD_M) return 'over-road';
   if (!heights) return 'no-ahn';
   if (heights.height < MIN_FILL_HEIGHT_M) return 'ahn-flat';
   return 'fill';
@@ -71,6 +81,8 @@ export interface BagGap {
   centre: LngLat;
   /** Largest share of the pand under one drawn model's footprint (set by the survey). */
   modelCover?: number;
+  /** Metres of car-road centreline inside the pand (set by the survey). */
+  roadInsideM?: number;
 }
 
 export const pandAreaM2 = (rings: readonly Ring[]): number => rings.reduce((a, r) => a + ringAreaM2(r), 0);
