@@ -1781,7 +1781,7 @@ test('courtyards: a yard enclosed by buildings is a block interior, a front gard
   assert.equal(closedRays(new SegmentIndex(streets), 0, 0), 0);
 });
 
-test('regression (streamed cell): a courtyards-v1 lawn draws in the lawn layer over the land', { skip: !haveCells }, async () => {
+test('regression (streamed cell): a courtyards-v1 lawn draws in the muted garden layer over the land', { skip: !haveCells }, async () => {
   const store = fsStore();
   await store.init();
   const [x, y] = storeToLocal(4.88513, 52.37724), key = store.cellAt(x, y);
@@ -1790,7 +1790,8 @@ test('regression (streamed cell): a courtyards-v1 lawn draws in the lawn layer o
   const yard: CourtyardsCell = { version: 1, key, areas: [{ id: 'test', k: 'lawn', r: [ring] }] };
   const cell = buildCell({ ...input, courtyards: yard, courtyardsAround: [yard], pockets: false });
   assert.equal(cell.stats.courtyards, 1);
-  assert.equal(layersAt(cell, x - 25, y - 25).top, 'lawn');
+  // Courtyard green (lane road-look-continuity 2026-10-29): block-interior grass is the muted garden, not park lawn.
+  assert.equal(layersAt(cell, x - 25, y - 25).top, 'garden');
   assert.ok(!layersAt(cell, x - 25, y - 25).hits.some(h => h.layer === 'land'), 'the land under a 30 m yard is culled');
 });
 
@@ -2027,6 +2028,14 @@ test('RAIL_VIADUCTS: rings are quads with two abutments, decks cover their passa
     assert.ok(insideRing(deck, c[0], c[1]));
     assert.ok(floorZone(v, p => [p[0] * 67960, p[1] * 111250]).length === 4);
   }
+});
+
+test('tram rails: measured BGT track offsets replace the ±1.5 m prior (lane road-look-continuity 2026-10-29)', () => {
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': '-1.9;1.9' })!.rails, [-1.9, 1.9]);
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': '2.4' })!.rails, [2.4]);
+  const prior = crossSection({ highway: 'residential', embedded_rails: 'tram' })!.rails;
+  assert.ok(prior.length >= 1 && prior.every(v => v === 0 || Math.abs(v) === 1.5), `prior ${prior}`);
+  assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': 'x;40' })!.rails, prior, 'nonsense offsets: the prior');
 });
 
 // Railway tracks (rail-v1, railTracks.ts; issue #124, user 2026-10-30: "we need to draw train tracks especially where
