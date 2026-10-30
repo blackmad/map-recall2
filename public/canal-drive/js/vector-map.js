@@ -134,6 +134,7 @@ function canalRecallBuildings3dLook() {
   return null;
 }
 
+/** @implements {import("../../../src/canalRecall/engine/worldViewApi").WorldView} */
 class VectorBasemap {
   constructor(container) {
     this.container = container;
