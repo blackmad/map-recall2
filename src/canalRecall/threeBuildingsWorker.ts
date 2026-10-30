@@ -9,10 +9,16 @@ import { buildSpecialKits, buildSpecialBoats, type KitLayers } from './buildingS
 import type { Houseboat } from './houseboats.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
+import { WorldCellWorkerHost, isWorldRequest, type WorldRequest } from './world/worldCells.js';
 
 type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string };
 
-self.onmessage = (event: MessageEvent<Job>) => {
+// world-v1 (`?world=v1`): the streamer's cell reads (fetch, inflate, decode, decoded-cell cache) run here, off the
+// main thread, and come back as batches of styled features (world/worldCells.ts).
+const world = new WorldCellWorkerHost(reply => (self as unknown as Worker).postMessage(reply));
+
+self.onmessage = (event: MessageEvent<Job | WorldRequest>) => {
+  if (isWorldRequest(event.data)) { world.handle(event.data); return; }
   const { key, gen, look, features, contextFeatures, mode, streets, profiles, appearanceRevision, hostOpenings, hostOpeningRevision, surveyedEnvelopeRevision } = event.data;
   const t0 = performance.now();
   const {chunk,boundParentIds} = event.data.special === 'kits' ? {chunk:buildSpecialKits(features, look, event.data.layers),boundParentIds:[]}
