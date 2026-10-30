@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**Near-coplanar walls and boat suppression (2026-10-30, #123).** Oosterdokseiland
+striped because `coplanarSurfaces.ts` only culled shared walls matching within
+2 mm: duplicated OSM building parts and sliver-overlapping BAG/OSM footprints
+left same-facing walls 5 mm–0.3 m apart, both textured. Now a same-facing wall
+within 0.5 m and 2° behind another is cut over the shared height (front kept,
+deeper setbacks and back-to-back party walls untouched). City-wide pairs 2,274
+→ 4 (`scripts/audit-near-coplanar-walls.ts`); `test:coplanar-surfaces` joined
+`check:canal`. Sea Palace drew a generic box because the 2026-10-13 stale-suppress
+prune deleted its houseboat id (`w454006714`); boats come from the houseboat
+extract, not BAG tiles, so `check-covers` called them stale. Houseboat Museum lost
+`w174999382` the same way. Both restored; `check-covers` now classes boat ids
+separately and requires both.
+
+**Photo evidence gates (2026-10-30, #120).** `stripEvidence.ts`: a strip whose
+band above the 3DBAG roof is not open sky (`skyCols ≥ 0.75`) saw a nearer wall,
+fence or tree, and `auto-place` now holds that pand at stage `evidence`
+(`--no-evidence-gate` disables). Calibration: rejects all 4 reviewed no-front runs,
+passes all 24 reviewed installs; falsely rejects fronts under dense bare tree
+crowns (held, never mis-installed). `thumbEvidence.ts` gates per-pand modern
+thumbnail walls on shade share ≤ 0.25 and sampler/material agreement; Haarlemmer
+Houttuinen is rejected. Per-pand walls stay unshipped: gated they change ≤ 1.2 %
+of pixels, and 2 of 5 passing AA05 samples were the wrong building or scaffolding.
+
 **Railway tracks (2026-10-30, #124).** The own-ground extract fetched only
 highways and areas, so separated rail corridors (Dijksgracht beside Piet
 Heinkade, the Centraal approach, Muiderpoort, Amstel) drew as empty sand.

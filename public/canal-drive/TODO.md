@@ -2032,6 +2032,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
+
 - **Rail follow-ups (#124, 2026-10-30).**
   - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
   - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.
@@ -2051,7 +2053,6 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
   - **Modern blocks (#117, landed 2026-10-30). Open items:**
-    - **Per-pand modern walls are off.** `modern-pand-walls.json` is shipped empty. The 320 px thumbnail samples are too close and steep: at Haarlemmer Houttuinen, 8.6 m away at pitch 39°, balcony shadow read as dark brick. Gate on distance, pitch, shadow and whether the sampler's family agrees with derive's material before shipping per-pand walls.
     - **Misses on the 12-spot sheet:** Van Reigersbergenstraat (pale buff, drawn dark brown) and Sarphatistraat (dark grey brick, drawn white). Neither building was sampled.
     - **Use is thin.** OSM tags only about 4 % of post-1945 buildings. Add BAG `gebruiksdoel` (`.cache/bag-pand-uses`) to the building-facts rows.
     - **Not drawn yet:** set-back top floors, glazed, recessed or arcaded ground floors, and floor bands on brick. These need the one spare texture layer, or a roof or extras hook.
