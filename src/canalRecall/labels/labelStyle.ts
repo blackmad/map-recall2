@@ -10,6 +10,7 @@
 //  - The destination reuses the destination card: a paper chip, copper
 //    arrowhead, uppercase plaque face.
 
+import { hudSurface } from '../hudTheme';
 import { LABEL_INK, labelInk } from '../look/palette';
 import type { LabelClass } from './labelPlan';
 
@@ -34,6 +35,18 @@ export function labelFont(cls: LabelClass): string {
 
 export const LABEL_ROOT_CLASS = 'cr-map-labels';
 
+/** Fade in / out of an overlay label, ms (matches labels/labelFade.ts LABEL_FADE_MS). */
+export const LABEL_FADE_CSS_MS = 300;
+
+/**
+ * Free Ride's place pill (freeRideRuntime.ts `_renderFreeRideMarkers`): a
+ * paper plate with a coral dot, the stem and the anchor dot below. The overlay
+ * wears it for a place Free Ride marks, so the place keeps one look whether
+ * its marker or the overlay names it (#122, Klimmuur Centraal).
+ */
+export const PILL_CLASS = 'pill';
+export const PILL_FONT = `700 12px ${hudSurface.fontUi}`;
+
 /** The overlay's stylesheet. One rule per class; positions are set inline per frame. */
 export function labelCss(): string {
   const ink = labelInk();
@@ -42,7 +55,7 @@ export function labelCss(): string {
   const rules = [
     `${root}{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;overflow:hidden;z-index:2}`,
     `${root} .l{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;white-space:nowrap;`
-      + `transition:opacity 220ms linear;will-change:transform,opacity;color:${ink.text};text-shadow:${halo}}`,
+      + `transition:opacity ${LABEL_FADE_CSS_MS}ms ease;will-change:transform,opacity;color:${ink.text};text-shadow:${halo}}`,
     `${root} .l .n{line-height:1.05;max-width:180px;overflow:hidden;text-overflow:ellipsis}`,
     `${root} .l .s{width:1px;height:5px;background:${ink.text};opacity:.55}`,
     `${root} .l .d{width:5px;height:5px;border-radius:50%;background:${ink.dot};box-shadow:0 0 0 1.5px ${ink.halo}}`,
@@ -59,5 +72,15 @@ export function labelCss(): string {
   for (const [cls, t] of Object.entries(LABEL_TYPE)) {
     rules.push(`${root} .l.${cls} .n{font:${t.weight} ${t.size}px ${t.font};letter-spacing:${t.tracking}em;${t.caps ? 'text-transform:uppercase;' : ''}}`);
   }
+  // After the class rules: the pill's face wins over the landmark plaque's.
+  const pill = `${root} .l.${PILL_CLASS}`;
+  rules.push(
+    `${pill} .n{font:${PILL_FONT};letter-spacing:0;text-transform:none;color:${hudSurface.ink};text-shadow:none;background:${hudSurface.cardSolid};`
+      + `border:1px solid ${hudSurface.border};border-radius:11px;height:22px;box-sizing:border-box;padding:0 9px 0 6px;display:flex;align-items:center;gap:5px;`
+      + `box-shadow:0 1px 6px ${hudSurface.shadow}}`,
+    `${pill} .n::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:${hudSurface.arrow}}`,
+    `${pill} .s{background:${hudSurface.ink};opacity:.55;width:1.5px;height:8px}`,
+    `${pill} .d{width:7px;height:7px;background:${hudSurface.arrow};box-shadow:none}`,
+  );
   return rules.join('\n');
 }

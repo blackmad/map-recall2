@@ -142,6 +142,26 @@ export type LadderDecision = {
  * When tier 2 wins, parent outlines are dropped from `osmIds` so the parts own
  * the pixels alone; see `compositionDrawIds`.
  */
+/**
+ * Share of a pand the drawn parts of a composition must cover to stand in for
+ * it. Below this the parts are a fragment, and the pand is drawn instead:
+ * Wibautstraat 150 (5,557 m²) vanished behind one 28 m part covering 13%.
+ */
+export const MIN_COMPOSITION_COVER = 0.6;
+
+/** Area share of `ring` inside any of `parts`, sampled on a 24×24 grid over its bbox. */
+export function compositionCover(ring: Ring, parts: readonly OsmFootprint[]): number {
+  const [west, south, east, north] = ringBbox(ring);
+  let inside = 0, covered = 0;
+  for (let i = 0; i < 24; i++) for (let j = 0; j < 24; j++) {
+    const point: [number, number] = [west + ((i + 0.5) / 24) * (east - west), south + ((j + 0.5) / 24) * (north - south)];
+    if (!pointInRing(point, ring)) continue;
+    inside++;
+    if (parts.some(part => part.rings.some(partRing => pointInRing(point, partRing)))) covered++;
+  }
+  return inside ? covered / inside : 0;
+}
+
 export function decideTier(pand: BagFootprint, candidates: OsmFootprint[]): LadderDecision {
   const pandRing = pand.rings[0];
   const pandCentroid = ringCentroid(pandRing);
@@ -155,7 +175,9 @@ export function decideTier(pand: BagFootprint, candidates: OsmFootprint[]): Ladd
 
   const matchedOsmIds = matches.map(match => match.osmId);
   if (isHandMappedComposition(matches)) {
-    return { tier: 2, osmIds: compositionDrawIds(matches), matchedOsmIds };
+    const osmIds = compositionDrawIds(matches);
+    const drawn = matches.filter(match => osmIds.includes(match.osmId));
+    if (compositionCover(pandRing, drawn) >= MIN_COMPOSITION_COVER) return { tier: 2, osmIds, matchedOsmIds };
   }
   return { tier: 3, osmIds: [], matchedOsmIds };
 }

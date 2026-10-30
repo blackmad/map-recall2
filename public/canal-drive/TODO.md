@@ -1023,6 +1023,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
+  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
+  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
+  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
+  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
+- **Buildings over roads: re-scan as a check (2026-10-30).** After the
+  underground and void drops, about 375 footprints still cover ≥ 6 m of a
+  car-road centreline. The ones looked at are real (IJ-tunnel portals,
+  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
+  bridges), but the list has not been read end to end. Make the one-off scan
+  a check with an allowlist.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -2000,6 +2011,24 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
+  - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
+  - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
+  - At Cuyperspassage the station hall still hides the rider; the covered-passage x-ray should treat a slot like a building passage (`game.js`).
+  - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
+  - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
+  - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
+  - Pre-existing on main (2026-10-30, not tunnels): `covered-passage.spec.ts` fails "the shed is back". After riding out, `_threeBuildings.hidden` still holds w451533149 among ~400 ids, so something else keeps a large hidden set.
+
+- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
+  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
+  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
+  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
+  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
+  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
+
+  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;
   - window head shape: measureFacade reads no arched heads; dou-1-7 drew arches over flat-headed windows;
@@ -2039,6 +2068,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
      - oculi are missing.
   6. **The spot-review sheet** should hold a 10 % sample. It currently holds one face.
 
+- **MapLibre symbol labels draw over 3D buildings (#122 follow-up).** Neighbourhood names ("Oosterdokseiland") now fade but are not occluded by buildings. Also add `labelFade.test.ts` to `test:hud` explicitly (it runs today only via the `labelsOcclusion.test.ts` import).
+
+- **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
+
+- **Rail follow-ups (#124, 2026-10-30).**
+  - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
+  - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.
+  - Separate tram beds draw as ballast, but many are grass or concrete in Amsterdam (Piet Heinkade).
+  - No catenary masts.
+  - Fold the rail ways into the main own-ground Overpass query in `fetch-osm-ground.ts`.
+  - Measure the phone cost on a real iPhone (emulated +0.2–0.9 ms).
+
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
@@ -2050,7 +2091,6 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
   - **Modern blocks (#117, landed 2026-10-30). Open items:**
-    - **Per-pand modern walls are off.** `modern-pand-walls.json` is shipped empty. The 320 px thumbnail samples are too close and steep: at Haarlemmer Houttuinen, 8.6 m away at pitch 39°, balcony shadow read as dark brick. Gate on distance, pitch, shadow and whether the sampler's family agrees with derive's material before shipping per-pand walls.
     - **Misses on the 12-spot sheet:** Van Reigersbergenstraat (pale buff, drawn dark brown) and Sarphatistraat (dark grey brick, drawn white). Neither building was sampled.
     - **Use is thin.** OSM tags only about 4 % of post-1945 buildings. Add BAG `gebruiksdoel` (`.cache/bag-pand-uses`) to the building-facts rows.
     - **Not drawn yet:** set-back top floors, glazed, recessed or arcaded ground floors, and floor bands on brick. These need the one spare texture layer, or a roof or extras hook.

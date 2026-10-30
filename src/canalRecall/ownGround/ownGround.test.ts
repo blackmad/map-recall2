@@ -2037,3 +2037,67 @@ test('tram rails: measured BGT track offsets replace the ±1.5 m prior (lane roa
   assert.ok(prior.length >= 1 && prior.every(v => v === 0 || Math.abs(v) === 1.5), `prior ${prior}`);
   assert.deepEqual(crossSection({ highway: 'residential', embedded_rails: 'tram', 'embedded_rails:offsets': 'x;40' })!.rails, prior, 'nonsense offsets: the prior');
 });
+
+// Railway tracks (rail-v1, railTracks.ts; issue #124, user 2026-10-30: "we need to draw train tracks especially where
+// they are separated otherwise it looks incorrectly empty" at Dijksgracht / Piet Heinkade).
+test('rail tracks: tunnels dropped, bridges and yard tracks flagged, cells round-trip', async () => {
+  const { decodeRail, encodeRail, railOf, RAIL_VERSION } = await import('./railTracks');
+  assert.equal(railOf({ railway: 'rail', tunnel: 'yes' }), null);
+  assert.equal(railOf({ railway: 'subway', layer: '-1' }), null);
+  assert.equal(railOf({ railway: 'platform' }), null);
+  assert.deepEqual(railOf({ railway: 'rail', bridge: 'yes', layer: '1' }), { kind: 'rail', bridge: true, service: false });
+  assert.deepEqual(railOf({ railway: 'rail', service: 'crossover' }), { kind: 'rail', bridge: false, service: true });
+  assert.ok(railOf({ railway: 'subway', bridge: 'viaduct', layer: '-1' }), 'a bridge is drawn whatever its layer');
+  const ways = [{ kind: 'rail' as const, bridge: true, service: false, points: [[1.2, -3.4], [50.5, 7.1]] as Vec2[] }, { kind: 'tram' as const, bridge: false, service: true, points: [[0, 0], [10, 0], [20, 5]] as Vec2[] }];
+  assert.deepEqual(decodeRail({ version: RAIL_VERSION, key: 'k', w: encodeRail(ways) }), ways);
+});
+
+test('rail tracks: a bridge rides the line between its ends, a level crossing is flat, two cells draw each piece once', async () => {
+  const { railMeshes, crossingTest, RAIL_SECTION } = await import('./railTracks');
+  // A 100 m bridge over a 6 m dip: the bed never follows the dip.
+  const dip = (x: number) => (x > 20 && x < 80 ? -6 : 0);
+  const bridge = railMeshes({ ways: [{ kind: 'rail', bridge: true, service: false, points: [[0, 0], [100, 0]] }], inCell: () => true, height: x => dip(x) });
+  for (let i = 0; i < bridge.ballast.positions.length; i += 3) assert.ok(bridge.ballast.positions[i + 2] > -0.01, `bed vertex at ${bridge.ballast.positions[i]} sank to ${bridge.ballast.positions[i + 2]}`);
+  assert.ok(bridge.slab.indices.length > 0 && bridge.stats.bridgeMetres === 100);
+  // At grade across a street at x = 50: the bed there is flat with the road, elsewhere it stands topLift over it.
+  const flat = railMeshes({ ways: [{ kind: 'rail', bridge: false, service: false, points: [[0, 0], [48, 0], [100, 0]] }], inCell: () => true, height: () => 0, atGrade: crossingTest([[[50, -10], [50, 10]]]) });
+  const tops = (x: number) => { const z: number[] = []; for (let i = 0; i < flat.ballast.positions.length; i += 3) if (Math.abs(flat.ballast.positions[i] - x) < 0.01) z.push(flat.ballast.positions[i + 2]); return Math.max(...z); };
+  assert.ok(Math.abs(tops(48) - RAIL_SECTION.flatLift) < 1e-6, `flat at the crossing (${tops(48)})`);
+  assert.ok(Math.abs(tops(0) - RAIL_SECTION.topLift) < 1e-6, `raised away from it (${tops(0)})`);
+  assert.ok(flat.track.indices.length > 0 && flat.stats.levelCrossingMetres > 0);
+  // Split at x = 37: the two halves draw every piece exactly once.
+  const way = [{ kind: 'rail' as const, bridge: false, service: false, points: [[0, 0], [100, 3]] as Vec2[] }];
+  const whole = railMeshes({ ways: way, inCell: () => true, height: () => 0 });
+  const west = railMeshes({ ways: way, inCell: x => x < 37, height: () => 0 }), east = railMeshes({ ways: way, inCell: x => x >= 37, height: () => 0 });
+  assert.equal(west.ballast.indices.length + east.ballast.indices.length, whole.ballast.indices.length);
+  assert.ok(Math.abs(west.stats.metres + east.stats.metres - whole.stats.metres) < 1e-6);
+});
+
+// Named regression (user 2026-10-30, screenshot at Dijksgracht / Piet Heinkade): the raised corridor between Piet
+// Heinkade and the Dijksgracht drew as empty sand. OSM there: eight-plus parallel railway=rail ways (usage=main,
+// electrified=contact_line) on the embankment east of Centraal.
+test('rail tracks: Dijksgracht corridor has tracks (ballast and rails over the embankment)', { skip: !haveCells || !existsSync('public/data/extracts/amsterdam/rail-v1/cells.json') }, async () => {
+  const store = new GroundStore(async path => { const b = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, { roads: true });
+  await store.init();
+  const [cx, cy] = storeToLocal(4.9150, 52.3765), key = store.cellAt(cx, cy);
+  const input = await store.cellInput(key, 0);
+  const near = (input.rails ?? []).filter(w => !w.bridge && w.points.some(p => Math.hypot(p[0] - cx, p[1] - cy) < 150));
+  assert.ok(near.length >= 6, `parallel tracks in the corridor: ${near.length}`);
+  const cell = buildCell(input);
+  assert.ok((cell.stats.rails?.metres ?? 0) > 5000, `track metres in ${key}: ${cell.stats.rails?.metres}`);
+  const ballast = cell.layers.ballast!, track = cell.layers.track!;
+  assert.ok(ballast && track, 'ballast and rail layers drawn');
+  // The bed covers the corridor: ballast within 3 m of every sample along the corridor's tracks near the spot,
+  // standing over the land (top ≥ 0.25 m over the riding surface).
+  let samples = 0, covered = 0, raised = 0;
+  for (const w of near) for (const p of w.points) {
+    if (Math.hypot(p[0] - cx, p[1] - cy) > 150 || !(p[0] >= cell.rect[0] && p[0] < cell.rect[2] && p[1] >= cell.rect[1] && p[1] < cell.rect[3])) continue;
+    samples++;
+    let best = Infinity, bz = -Infinity;
+    for (let i = 0; i < ballast.positions.length; i += 3) { const d = Math.hypot(ballast.positions[i] - p[0], ballast.positions[i + 1] - p[1]); if (d < best) { best = d; bz = ballast.positions[i + 2]; } }
+    if (best < 3) covered++;
+    if (bz - input.surface.ground(p[0], p[1]) > 0.2) raised++;
+  }
+  assert.ok(samples >= 6 && covered === samples, `ballast over ${covered}/${samples} corridor track vertices`);
+  assert.ok(raised >= samples * 0.8, `bed raised over the land at ${raised}/${samples}`);
+});

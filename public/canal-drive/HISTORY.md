@@ -1,6 +1,157 @@
 # Canal Recall — what is built
 
+**Labels fade, one look, hidden behind buildings, along their streets (2026-10-30, #122).**
+Canvas street names and Free Ride pills had no fade, and MapLibre had `fadeDuration: 0`.
+`labelFade.ts` fades every label over 300 ms, holds a label that lost its place for 250 ms,
+places last frame's labels first, and drops quiz spoilers at once. Snaps on a De Ruijterkade
+ride went 3.5/s → 0 on desktop. Klimmuur Centraal switched between the canvas marker pill
+(< 320 m) and the DOM landmark plaque; Free Ride catalogue landmarks now draw as the pill at
+any distance. Street-name occlusion was gated on chase/cockpit only, although north-up and
+heading-up tilt 14°; it now follows the real pitch (≥ 5°) and tests both text ends at 70 %.
+Names sat across their streets because the angle was map bearing minus camera rotation;
+`screenTextAngle()` projects the street onscreen. Shop and café names are hidden by default
+(`?shopNames=1`).
+
+**Near-coplanar walls and boat suppression (2026-10-30, #123).** Oosterdokseiland
+striped because `coplanarSurfaces.ts` only culled shared walls matching within
+2 mm: duplicated OSM building parts and sliver-overlapping BAG/OSM footprints
+left same-facing walls 5 mm–0.3 m apart, both textured. Now a same-facing wall
+within 0.5 m and 2° behind another is cut over the shared height (front kept,
+deeper setbacks and back-to-back party walls untouched). City-wide pairs 2,274
+→ 4 (`scripts/audit-near-coplanar-walls.ts`); `test:coplanar-surfaces` joined
+`check:canal`. Sea Palace drew a generic box because the 2026-10-13 stale-suppress
+prune deleted its houseboat id (`w454006714`); boats come from the houseboat
+extract, not BAG tiles, so `check-covers` called them stale. Houseboat Museum lost
+`w174999382` the same way. Both restored; `check-covers` now classes boat ids
+separately and requires both.
+
+**Photo evidence gates (2026-10-30, #120).** `stripEvidence.ts`: a strip whose
+band above the 3DBAG roof is not open sky (`skyCols ≥ 0.75`) saw a nearer wall,
+fence or tree, and `auto-place` now holds that pand at stage `evidence`
+(`--no-evidence-gate` disables). Calibration: rejects all 4 reviewed no-front runs,
+passes all 24 reviewed installs; falsely rejects fronts under dense bare tree
+crowns (held, never mis-installed). `thumbEvidence.ts` gates per-pand modern
+thumbnail walls on shade share ≤ 0.25 and sampler/material agreement; Haarlemmer
+Houttuinen is rejected. Per-pand walls stay unshipped: gated they change ≤ 1.2 %
+of pixels, and 2 of 5 passing AA05 samples were the wrong building or scaffolding.
+
+**Railway tracks (2026-10-30, #124).** The own-ground extract fetched only
+highways and areas, so separated rail corridors (Dijksgracht beside Piet
+Heinkade, the Centraal approach, Muiderpoort, Amstel) drew as empty sand.
+`scripts/own-ground/build-rail-tracks.ts` cuts rail, metro and own-bed tram
+ways from the archived Amsterdam PBF into a versioned `rail-v1` extract (139
+cells, 226 KB gz). Tunnels are dropped, and street-running trams are left to
+`embedded_rails`. `railTracks.ts` draws a raised ballast bed with a sleeper
+texture and two ridge rails, merged per cell into `ballast`/`track` layers.
+Bridges run on a straight line between their end heights over a deck slab, and
+level crossings are flat. Desktop frame time is unchanged within noise. `?rails=0`
+turns it off. Regression: the Dijksgracht corridor has ≥ 6 tracks.
+**Tunnel cuts: motor ramps and rideable underpasses (2026-10-30).** User
+report: the IJ-tunnel south ramp at Foeliestraat looked like an open street
+toward NEMO, and bikes are (rightly) banned from it. Tunnel ways had no ground
+at all (`osmGround.ts`). `src/canalRecall/ownGround/tunnels.ts` now plans cuts
+per cell from the OSM tunnel tags and the AHN relief:
+- Ramps: from each portal, side scans every 2 m find the walls. Strips follow
+  on to neighbouring roads in the same cut and split where a street at land
+  level crosses (Prins Hendrikkade). Motor portals get a dark mouth and a
+  headwall.
+- Slots: a rideable tunnel of at most 150 m whose relief rises at least 1 m
+  over its portal line gets a floor on that line, so the bike rides under the
+  embankment instead of over it (climb was 3.1–5.5 m, now ≤ 0.03 m).
+
+`surface.ts` keeps the raw relief and adds `cutFloor`; cells with no cut in
+reach are byte-identical (`check-tunnels-identity.ts`). There are 11 named
+regressions (`tunnelRegressions.ts`, `npm run check:tunnels`, also in
+`check:canal`): IJ-tunnel, Piet Hein, Spaarndammer, Michiel de Ruijter,
+Mauritskade, Molukkenstraat, Wibautstraat, Overschiestraat, a Kruislaan cycle
+underpass and Cuyperspassage. At the IJ cell, `prepareCell` takes 0.92 s
+against 0.39 s without tunnels (machine at load 30–45).
+
+**Facade far tier per CSS pixel (2026-10-30).** User, with screenshots of Weesperstraat, Wibautstraat × Ringdijk and
+Diemen zoomed out: "why are these buildings rendering such low detail even so close?" and "on my mac I think these
+buildings should be able to render windows/details at this zoom". The buildings were faced (the large-tier audit found
+none of them bare); the facade far tier (`roofTier.ts`) was flattening their window cells to the mean colour. Its
+[16, 30] texels-per-pixel limits were measured per framebuffer pixel, so a Retina canvas (ratio 2) flattened windows
+that were still ~4 device px wide. The limits now scale with the canvas pixel ratio (`facadeTierUniform(ratio)`,
+ratio from `map.getPixelRatio()`); at ratio 1 nothing changes. Probe at ratio 2: at map zoom 16 over Wibautstraat the
+mid-distance blocks (Cygnus Gymnasium, Het Parool, the Oost blocks beyond) keep clean windows, the same as with the tier
+off; the full zoom-out over Diemen (zoom 14.7) stays flat with no stipple.
+
 **Landmark lane, round 3: the first towers (2026-10-30, #119).** The triage-rules lane landed (61 of 73 known outcomes predicted, was 44; painted/clad, band, curtain-needs-floor-bands rules; tower judged by the crop's own height) and the 95 tower candidates were re-cropped at 70 m (`all-walls.ts --max-height=70 --suffix=h70`, 95 of 95, 25 minutes). Re-triage: buildable 20, kit-gap 158 (painted-or-clad 82, band 79, tower 19, curtain 18, blank 8), no-evidence 107. Eleven newly buildable pands, nine of them towers, went through the factory and one strip: 1 pass after a fix (pand 137174, a slender dark tower; its plinth group is now blank as the photo shows), 10 held. Four holds are the 12k triangle budget, two of them with passing street fronts (123762 passes likeness on both; decision #125). Five are glass or band towers the kit still cannot draw. Cost 1.8 turns per reviewed building; three installs from 40 reviewed since the skill exists.
+
+**Squares are paving to the physics too (2026-10-30).** User report: on the
+Nieuwmarkt south of the Waag the bike "can't go forward, only backwards". The
+2026-10-25 squares fix taught only the road guard (`getGuardRoad`) that
+`squares.json` plazas are rideable; `getSurface` still read the paving off
+every corridor as grass. Grass drag (80 px/s²) beats the bike's thrust at
+grass grip (168 × 0.45 ≈ 76 px/s²), and reverse thrust is not scaled by grip,
+so a bike that stopped there could only back up. `plazaSurface`
+(`pedestrianAreas.ts`) now reports a square as asphalt in `getSurface`, the
+same index the guard uses, so park squares (Frederiksplein) stay grass.
+Pinned in `scripts/check-canal-car.ts` (Nieuwmarkt paving within 20 m of the
+report: grass without squares, asphalt and unblocked with them) and in
+`open-squares.spec.ts` (the running game's `getSurface`).
+
+**Underground buildings out of the road; Namenmonument turned back
+(2026-10-30).** User screenshots on Weesperstraat, Weesperplein and Wibautstraat
+showed buildings standing in the carriageway. They were Oostlijn metro halls
+(`w268998785` Weesperplein, `w268999073` by the Vaz Diasbrug, `w278085618` and
+BAG `…102589` at Wibautstraat), mapped in OSM as `location=underground` /
+`layer=-1 level=-1` and extruded from street level. The Amstel Tower car park
+(`w1302928107`, 90 m over Julianaplein) had the same cause. The rule is
+`src/canalRecall/undergroundBuildings.ts`: an explicit `location` wins,
+`parking=underground`/tunnel, or a negative layer *and* level. A bare
+`layer=-1` is not enough (De Spreeuwen apartments, Oku Office). A BAG pand
+goes only when it is ≤ 8 m and every OSM match is underground, so the tower
+over a garage and house rows over a shared garage keep their pand. 41 features
+were dropped in place by `scripts/drop-underground-buildings.ts --publish`.
+`build-osm-buildings`, `bagTileBuild` and `survey-bag-gaps` apply the same
+rule on rebuild, and `check:underground-buildings` (in `check:canal`) fails
+if one comes back. The Namenmonument's catalogue offset was −90° on a model
+whose native frame is x east / z south (the 162 other such models use 0), so
+its 89 m north–south plaza lay east–west across Weesperstraat. It is 0 now,
+pinned by `surveyedFrame.test.ts`, which checks the site outline against its
+surveyed lon/lat.
+
+**Void pands, held gap fills and the Pauwenpad block (2026-10-30, round 2).**
+Two BAG pands that no OSM tag marks as underground were drawn over de Pijp
+and Museumplein streets: the Albert Cuypgarage (`…240435`, 18 m over 614 m of
+street) and the Museumplein garage (`…242075`). The register outline includes
+the car park; 3DBAG's LoD2.2 roofs cover 12% and 15% of it, because lidar reads
+the street as ground (a 55 m Zuidas tower keeps 75%). `isVoidOverRoad` drops
+a pand that crosses ≥ 20 m of car-road centreline with roof cover < 15% and was
+built before the lidar (`--survey-voids`, `roofCoverOf` in bag3dCityJson). The
+rule matched only those two in the city. OSM's own garage way
+(`w1497713631`, `layer=-1 amenity=parking`) was a 9 m box over the
+Boerenwetering, so car parks below layer 0 now count as underground (7 more).
+Wibautstraat 150 at the Pauwenpad (`…110168`, 5,557 m², 20 m) was missing for
+two reasons. The lod1 merge let one OSM part covering 13% stand in for it, so
+`decideTier` now needs the drawn parts to cover ≥ 60% (`MIN_COMPOSITION_COVER`).
+The gap survey then held it as `too-large`, so large holes are filled when AHN
+sees ≥ 5 m. That also restored Gelderlandplein (3.2 ha) and a 2017 block near
+the ArenA. A new `over-road` hold keeps fills off streets: Amstel station's
+hole spans Julianaplein. The survey skips underground and dropped pands
+(`droppedPands`, `voidPands` in `underground-buildings.json`). Pinned in
+`check-bag-gaps` NAMED/HELD and `check-building-ladder`.
+
+**Mariniersbrug: green basement bascule with truss sides (2026-10-30).** The
+register lists BRU0272 as timber, so the material rule drew a white
+Magere Brug-style portal; the panorama shows a green steel basement bascule
+with signal masts and Pratt lattice trusses for parapets. Hand override in
+`BASCULE_STYLE`/`BASCULE_COLOUR`, and a new kit component: `TRUSS_PARAPET`
+(hand-listed ids) draws a top chord, verticals and one diagonal per 3.6 m bay
+sloping toward midspan, in the bridge's colour, with its triangles added to
+the near-ring budget (`trussTriangles`) so the bridge keeps its level. Every
+other bridge's mesh is unchanged. Likeness sheet: `npx tsx
+scripts/bridge-reference/sheet.ts BRU0272`. Still missing: the real top chord
+is arched (deeper at midspan), and the truss runs past the brick abutments.
+The register's "Hout" is unreliable for movable bridges (Bullebak too). An
+audit of 48 timber/blank rows from aimed panoramas added overrides: 3 more
+basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
+for now, and green for steel lattice portals. Unknown material now renders
+white like timber; it was green before, and the Weesp portals are white. Kit
+gaps are in TODO P2.
+
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type

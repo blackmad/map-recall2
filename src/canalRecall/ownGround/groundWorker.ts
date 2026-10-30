@@ -28,7 +28,7 @@ import { GroundBuildQueue } from './buildQueue.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
+  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -82,7 +82,7 @@ async function pump(s: GroundStore): Promise<void> {
 ctx.onmessage = event => {
   const msg = event.data;
   if (msg.type === 'init') {
-    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true });
+    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false });
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
     setKerbShadowRoadLook(isRoadLookId(msg.roadLook) ? msg.roadLook : null);

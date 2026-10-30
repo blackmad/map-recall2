@@ -2187,6 +2187,117 @@
     return b >= reach ? b : b * REACH_BUCKET_STEP;
   }
 
+  // src/canalRecall/labels/labelFade.ts
+  var LABEL_FADE_MS = 300;
+  var LABEL_HOLD_MS = 250;
+  var LabelFade = class {
+    constructor(fadeMs = LABEL_FADE_MS, holdMs = LABEL_HOLD_MS) {
+      this.fadeMs = fadeMs;
+      this.holdMs = holdMs;
+    }
+    states = /* @__PURE__ */ new Map();
+    now = 0;
+    dt = 0;
+    frameNo = 0;
+    begin(nowMs) {
+      this.dt = this.now ? Math.max(0, Math.min(100, nowMs - this.now)) : 16;
+      this.now = nowMs;
+      this.frameNo++;
+    }
+    /** Alpha the label had at the end of the last frame (0 when not shown). */
+    alpha(key) {
+      return this.states.get(key)?.alpha ?? 0;
+    }
+    /** True while the label is placed: shown, or held after losing its place. */
+    placed(key) {
+      const s = this.states.get(key);
+      return !!s && s.alpha > 0 && this.now - s.wantedAt <= this.holdMs;
+    }
+    /**
+     * This frame's alpha for `key`. `shown`: the label won its place this
+     * frame. Returns 0 when it should not be drawn. A label that lost its place
+     * but is within its hold returns its alpha unchanged and stays `placed`.
+     */
+    want(key, shown, options = {}) {
+      let s = this.states.get(key);
+      if (!s) {
+        if (!shown) return 0;
+        s = { alpha: 0, seen: this.now, wantedAt: this.now, frame: 0 };
+        this.states.set(key, s);
+      }
+      if (s.frame === this.frameNo) return s.alpha;
+      s.frame = this.frameNo;
+      const step = this.fadeMs > 0 ? this.dt / this.fadeMs : 1;
+      if (shown) {
+        s.wantedAt = this.now;
+        s.alpha = Math.min(1, s.alpha + step);
+      } else if (!options.noHold && this.now - s.wantedAt <= this.holdMs) {
+        if (s.alpha < 1) s.alpha = Math.min(1, s.alpha + step);
+      } else {
+        s.alpha = Math.max(0, s.alpha - step);
+        if (s.alpha === 0) {
+          this.states.delete(key);
+          return 0;
+        }
+      }
+      return s.alpha;
+    }
+    /** Forget a label at once (a spoiler, a label that no longer exists). */
+    drop(key) {
+      this.states.delete(key);
+    }
+    /** Labels with state not considered this frame. */
+    leftovers() {
+      const out = [];
+      for (const [key, s] of this.states) if (s.frame !== this.frameNo) out.push(key);
+      return out;
+    }
+    /** `items` with the ones placed last frame first (stable otherwise): placement hysteresis. */
+    order(items) {
+      if (!this.states.size) return items;
+      const first = [], rest = [];
+      for (const item of items) (this.states.has(item) ? first : rest).push(item);
+      return first.length ? first.concat(rest) : items;
+    }
+    get size() {
+      return this.states.size;
+    }
+  };
+  var DIRECTION_STEP = 24;
+  var UPRIGHT_SLACK = 12 * Math.PI / 180;
+  function uprightAngle(angle) {
+    let a = Math.atan2(Math.sin(angle), Math.cos(angle));
+    if (a > Math.PI / 2) a -= Math.PI;
+    else if (a <= -Math.PI / 2) a += Math.PI;
+    return a;
+  }
+  function screenTextAngle(project, x, y, worldAngle, previous) {
+    const c = Math.cos(worldAngle) * DIRECTION_STEP, s = Math.sin(worldAngle) * DIRECTION_STEP;
+    const a = project(x - c, y - s), b = project(x + c, y + s);
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len = Math.hypot(dx, dy);
+    if (!Number.isFinite(len) || len < 1e-3) return null;
+    let angle = uprightAngle(Math.atan2(dy, dx));
+    if (previous != null && Number.isFinite(previous) && Math.abs(Math.abs(angle) - Math.PI / 2) < UPRIGHT_SLACK) {
+      const flipped = angle > 0 ? angle - Math.PI : angle + Math.PI;
+      const d = (p, q) => Math.abs(Math.atan2(Math.sin(p - q), Math.cos(p - q)));
+      if (d(flipped, previous) < d(angle, previous)) angle = flipped;
+    }
+    return { angle, scale: len / (2 * DIRECTION_STEP) };
+  }
+  var StreetLabelPlacement = class {
+    fade = new LabelFade();
+    angles = /* @__PURE__ */ new WeakMap();
+    /** Upright screen angle of `label`'s street, and px per world px along it. */
+    place(camera, label) {
+      const prev = this.angles.get(label);
+      const hit = screenTextAngle((x, y) => camera.worldToScreen(x, y), label.x, label.y, label.angle, prev);
+      const out = hit ?? { angle: prev ?? uprightAngle(label.angle - (camera.rotation || 0)), scale: 1 };
+      this.angles.set(label, out.angle);
+      return out;
+    }
+  };
+
   // src/canalRecall/game/freeRideRuntime.ts
   var WAY_TAP_SLOP_PX = 15;
   var BRIDGE_COLOUR = "#2f6f9f";
@@ -2296,8 +2407,14 @@
      *  the vehicle. Their boxes are the tap targets until the next frame. */
     _renderFreeRideMarkers() {
       this._freeRideMarkers = [];
+      const fade = this._freeRideMarkerFade ||= new LabelFade();
+      const last = this._freeRideMarkerLast ||= /* @__PURE__ */ new Map();
+      fade.begin(performance.now());
       const nearby = this._freeRideNearby;
-      if (!this.freeRide || !this.player || !nearby?.length) return;
+      if (!this.freeRide || !this.player) {
+        for (const key of fade.leftovers()) fade.drop(key);
+        return;
+      }
       const ctx = this.ctx;
       const surface = window.CanalRecallUi.hudSurface;
       const compact = this.viewport?.mode === "compact";
@@ -2307,19 +2424,14 @@
       ctx.save();
       ctx.font = font;
       const requests = [];
-      for (const place of nearby) {
+      for (const place of nearby || []) {
         const at = this.camera.worldToScreen(place.x, place.y);
         const label = markerLabel(place.name);
-        requests.push({
-          key: place.key,
-          kind: place.kind,
-          label,
-          anchorX: at.x,
-          anchorY: at.y,
-          width: Math.ceil(ctx.measureText(label).width) + height + 8,
-          height
-        });
+        const width = Math.ceil(ctx.measureText(label).width) + height + 8;
+        requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
+        last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
       }
+      requests.sort((a, b) => Number(fade.alpha(b.key) > 0) - Number(fade.alpha(a.key) > 0));
       const layout = this._hudRects();
       const rect = (r) => r && r.width > 0 && r.height > 0 ? { x: r.x, y: r.y, w: r.width, h: r.height } : null;
       const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
@@ -2334,22 +2446,20 @@
       ].filter((r) => !!r);
       const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
       const activeId = this._landmarkNotice?.id || "";
-      for (const marker of placed) {
-        const request = requests.find((r) => r.key === marker.key);
-        const active = activeId === marker.key || request.kind === "bridge" && this._landmarkNotice?.name === nearby.find((p) => p.key === marker.key)?.name;
-        const dot = request.kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
-        const { box } = marker;
+      const draw = (key, kind, label, anchorX, anchorY, box, alpha) => {
+        const active = activeId === key || kind === "bridge" && this._landmarkNotice?.name === nearby?.find((p) => p.key === key)?.name;
+        const dot = kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
         ctx.strokeStyle = surface.ink;
-        ctx.globalAlpha = 0.55;
+        ctx.globalAlpha = 0.55 * alpha;
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.moveTo(marker.anchorX, box.y + box.h);
-        ctx.lineTo(marker.anchorX, marker.anchorY);
+        ctx.moveTo(anchorX, box.y + box.h);
+        ctx.lineTo(anchorX, anchorY);
         ctx.stroke();
-        ctx.globalAlpha = 1;
+        ctx.globalAlpha = alpha;
         ctx.fillStyle = dot;
         ctx.beginPath();
-        ctx.arc(marker.anchorX, marker.anchorY, 3.5, 0, Math.PI * 2);
+        ctx.arc(anchorX, anchorY, 3.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowColor = surface.shadow;
         ctx.shadowBlur = 6;
@@ -2369,7 +2479,30 @@
         ctx.font = font;
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
-        ctx.fillText(request.label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+        ctx.fillText(label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+        ctx.globalAlpha = 1;
+      };
+      const shown = /* @__PURE__ */ new Set();
+      for (const marker of placed) {
+        shown.add(marker.key);
+        const request = requests.find((r) => r.key === marker.key);
+        draw(marker.key, request.kind, request.label, marker.anchorX, marker.anchorY, marker.box, fade.want(marker.key, true));
+      }
+      const fading = (key, anchorX, anchorY, item, noHold) => {
+        const alpha = fade.want(key, false, { noHold });
+        if (alpha <= 0) return;
+        const box = { x: anchorX - item.width / 2, y: anchorY - MARKER_STEM - item.height, w: item.width, h: item.height };
+        draw(key, item.kind, item.label, anchorX, anchorY, box, alpha);
+      };
+      for (const request of requests) if (!shown.has(request.key)) fading(request.key, request.anchorX, request.anchorY, request, false);
+      for (const key of fade.leftovers()) {
+        const item = last.get(key);
+        if (!item) {
+          fade.drop(key);
+          continue;
+        }
+        const at = this.camera.worldToScreen(item.x, item.y);
+        fading(key, at.x, at.y, item, true);
       }
       ctx.restore();
       this._freeRideMarkers = placed;
@@ -3049,6 +3182,10 @@
   var HOLD_FRAMES = 2;
   var RETEST_FRAMES = 8;
   var BUILD_BUDGET_MS = 2;
+  var OCCLUSION_MIN_PITCH_DEG = 5;
+  function occlusionWanted(pitchedView, mapPitchDeg) {
+    return pitchedView || Number.isFinite(mapPitchDeg) && mapPitchDeg >= OCCLUSION_MIN_PITCH_DEG;
+  }
   var StreetLabelOcclusion = class {
     index = new SightlineIndex();
     verdicts = /* @__PURE__ */ new WeakMap();
@@ -3080,7 +3217,12 @@
       const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
       if (!at || !Number.isFinite(altM)) return null;
       const camera = { lng: at.lng, lat: at.lat, altM };
-      return (label) => {
+      const blockedAt = (p) => {
+        const ll = toLngLat(p.x, p.y, loader);
+        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
+        return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+      };
+      return (label, ends) => {
         const t0 = performance.now();
         let v = this.verdicts.get(label);
         const fresh = !v || v.frame !== this.frameNo - 1;
@@ -3093,9 +3235,7 @@
           this.stats.ms += performance.now() - t0;
           return v.hidden;
         }
-        const ll = toLngLat(label.x, label.y, loader);
-        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
-        const now = this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+        const now = blockedAt(label) || !!ends && ends.some(blockedAt);
         if (!v || fresh) {
           v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
           this.verdicts.set(label, v);
@@ -3281,6 +3421,90 @@
     parkPath: [110, 110, 112],
     pond: "#46707c"
   };
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/labels/labelStyle.ts
+  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
@@ -7817,8 +8041,10 @@
         }
         return hit;
       };
-      const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, pitched);
-      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText, hiddenBy);
+      const tilted = occlusionWanted(pitched, this.vectorMap?.map?.getPitch?.());
+      const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, tilted);
+      const placement = this._streetLabelPlacement ||= new StreetLabelPlacement();
+      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
       else this.track.drawLabels(
         ctx,
         this.camera,
@@ -7827,7 +8053,8 @@
         player,
         (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach),
         shownText,
-        hiddenBy
+        hiddenBy,
+        placement
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();

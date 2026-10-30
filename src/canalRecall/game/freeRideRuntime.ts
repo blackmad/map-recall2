@@ -20,6 +20,7 @@ import {
   secondMarkerIds,
   isFreeRidePattern,
   layoutMarkers,
+  MARKER_STEM,
   markerAt,
   markerLabel,
   nearbyPlaces,
@@ -40,6 +41,7 @@ import type { LandmarkNotice, WorldPoint } from './worldTypes';
 import type { HudLayout } from '../hudLayout';
 import { StreetLabelCandidates, type StreetLabelAnchor } from './streetLabelCandidates';
 import { t as tr } from '../../i18n/index.ts';
+import { LabelFade } from '../labels/labelFade';
 
 /** A tap within this many world px of a way's edge names it (~5 m). */
 const WAY_TAP_SLOP_PX = 15;
@@ -58,6 +60,9 @@ export interface FreeRideHost extends LandmarkHost {
   _freeRideNearby?: FreeRideNearby[];
   _freeRideRefresh?: number;
   _freeRideMarkers?: PlacedMarker[];
+  /** Marker fade (labels/labelFade.ts) and where each faded marker last stood. */
+  _freeRideMarkerFade?: LabelFade<string>;
+  _freeRideMarkerLast?: Map<string, { x: number; y: number; label: string; kind: FreeRideNearby['kind']; width: number; height: number }>;
   _freeRideOpened?: Set<string>;
   _freeRideRestore?: { labels: boolean } | null;
   _freeRideBar?: HTMLElement | null;
@@ -190,8 +195,11 @@ export class GameFreeRideRuntime {
    *  the vehicle. Their boxes are the tap targets until the next frame. */
   _renderFreeRideMarkers(): void {
     this._freeRideMarkers = [];
+    const fade = (this._freeRideMarkerFade ||= new LabelFade<string>());
+    const last = (this._freeRideMarkerLast ||= new Map());
+    fade.begin(performance.now());
     const nearby = this._freeRideNearby;
-    if (!this.freeRide || !this.player || !nearby?.length) return;
+    if (!this.freeRide || !this.player) { for (const key of fade.leftovers()) fade.drop(key); return; }
     const ctx = this.ctx;
     const surface = window.CanalRecallUi.hudSurface;
     const compact = this.viewport?.mode === 'compact';
@@ -201,16 +209,16 @@ export class GameFreeRideRuntime {
     ctx.save();
     ctx.font = font;
     const requests: Array<MarkerRequest & { label: string; kind: FreeRideNearby['kind'] }> = [];
-    for (const place of nearby) {
+    for (const place of nearby || []) {
       const at = this.camera.worldToScreen(place.x, place.y);
       const label = markerLabel(place.name);
-      requests.push({
-        key: place.key, kind: place.kind, label,
-        anchorX: at.x, anchorY: at.y,
-        width: Math.ceil(ctx.measureText(label).width) + height + 8,
-        height,
-      });
+      const width = Math.ceil(ctx.measureText(label).width) + height + 8;
+      requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
+      last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
     }
+    // Markers on screen a moment ago claim their place first (placement
+    // hysteresis): a neighbour cannot take it on a one-frame jitter (#122).
+    requests.sort((a, b) => Number(fade.alpha(b.key) > 0) - Number(fade.alpha(a.key) > 0));
     const layout = this._hudRects();
     const rect = (r: { x: number; y: number; width: number; height: number } | null | undefined): ScreenRect | null =>
       r && r.width > 0 && r.height > 0 ? { x: r.x, y: r.y, w: r.width, h: r.height } : null;
@@ -224,23 +232,21 @@ export class GameFreeRideRuntime {
     ].filter((r): r is ScreenRect => !!r);
     const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
     const activeId = this._landmarkNotice?.id || '';
-    for (const marker of placed) {
-      const request = requests.find(r => r.key === marker.key)!;
-      const active = activeId === marker.key || (request.kind === 'bridge' && this._landmarkNotice?.name === nearby.find(p => p.key === marker.key)?.name);
-      const dot = request.kind === 'bridge' ? BRIDGE_COLOUR : surface.arrow;
-      const { box } = marker;
+    const draw = (key: string, kind: FreeRideNearby['kind'], label: string, anchorX: number, anchorY: number, box: ScreenRect, alpha: number) => {
+      const active = activeId === key || (kind === 'bridge' && this._landmarkNotice?.name === nearby?.find(p => p.key === key)?.name);
+      const dot = kind === 'bridge' ? BRIDGE_COLOUR : surface.arrow;
       // Stem and the anchor dot on the place itself.
       ctx.strokeStyle = surface.ink;
-      ctx.globalAlpha = 0.55;
+      ctx.globalAlpha = 0.55 * alpha;
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.moveTo(marker.anchorX, box.y + box.h);
-      ctx.lineTo(marker.anchorX, marker.anchorY);
+      ctx.moveTo(anchorX, box.y + box.h);
+      ctx.lineTo(anchorX, anchorY);
       ctx.stroke();
-      ctx.globalAlpha = 1;
+      ctx.globalAlpha = alpha;
       ctx.fillStyle = dot;
       ctx.beginPath();
-      ctx.arc(marker.anchorX, marker.anchorY, 3.5, 0, Math.PI * 2);
+      ctx.arc(anchorX, anchorY, 3.5, 0, Math.PI * 2);
       ctx.fill();
       // The label plate.
       ctx.shadowColor = surface.shadow;
@@ -261,7 +267,29 @@ export class GameFreeRideRuntime {
       ctx.font = font;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
-      ctx.fillText(request.label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+      ctx.fillText(label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+      ctx.globalAlpha = 1;
+    };
+    // Markers fade in and out over LABEL_FADE_MS (user 2026-10-30: "they at least need a fade").
+    const shown = new Set<string>();
+    for (const marker of placed) {
+      shown.add(marker.key);
+      const request = requests.find(r => r.key === marker.key)!;
+      draw(marker.key, request.kind, request.label, marker.anchorX, marker.anchorY, marker.box, fade.want(marker.key, true));
+    }
+    // Lost the layout, or out of range: fade where it stands (above its anchor, as layoutMarkers puts it).
+    const fading = (key: string, anchorX: number, anchorY: number, item: { label: string; kind: FreeRideNearby['kind']; width: number; height: number }, noHold: boolean) => {
+      const alpha = fade.want(key, false, { noHold });
+      if (alpha <= 0) return;
+      const box = { x: anchorX - item.width / 2, y: anchorY - MARKER_STEM - item.height, w: item.width, h: item.height };
+      draw(key, item.kind, item.label, anchorX, anchorY, box, alpha);
+    };
+    for (const request of requests) if (!shown.has(request.key)) fading(request.key, request.anchorX, request.anchorY, request, false);
+    for (const key of fade.leftovers()) {
+      const item = last.get(key);
+      if (!item) { fade.drop(key); continue; }
+      const at = this.camera.worldToScreen(item.x, item.y);
+      fading(key, at.x, at.y, item, true);
     }
     ctx.restore();
     this._freeRideMarkers = placed;

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { ROOF_CELL_SD_MAX, paintRoofCell } from './roofCells.ts';
-import { ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
+import { FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS, facadeTierUniform, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
 
 const stats = (data: Uint8ClampedArray) => {
   let n = 0, s = 0, s2 = 0;
@@ -38,4 +38,14 @@ test('the shader function leaves other layers alone and the uniforms default to 
   assert.match(ROOF_TIER_GLSL, /textureLod\(cells, vec3\(uv, layer\), 8\.0\)/, 'the far tier is the cell mean (last mip)');
   assert.deepEqual(ROOF_LAYERS_OFF, [-1, -1]);
   assert.deepEqual(roofTierUniform(), [ROOF_TIER_MID_M, ROOF_TIER_FAR_M, 0.5]);
+});
+
+test('the facade tier is per CSS pixel: unchanged at ratio 1, scaled on a Retina canvas', () => {
+  assert.deepEqual(facadeTierUniform(), [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS]);
+  assert.deepEqual(facadeTierUniform(1), [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS]);
+  assert.deepEqual(facadeTierUniform(2), [FACADE_TIER_FROM_TEXELS * 2, FACADE_TIER_TO_TEXELS * 2]);
+  assert.deepEqual(facadeTierUniform(1.25), [FACADE_TIER_FROM_TEXELS * 1.25, FACADE_TIER_TO_TEXELS * 1.25]);
+  // Below 1 or nonsense never flattens earlier than the desktop tier.
+  assert.deepEqual(facadeTierUniform(0.5), [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS]);
+  assert.deepEqual(facadeTierUniform(NaN), [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS]);
 });

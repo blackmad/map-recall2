@@ -175,7 +175,10 @@ class RoadNetwork {
       const excess = SURFACE.filletedExcess(SURFACE.contactsAt(spans, x, y), x, y);
       if (excess < minDist - nearestWidth) minDist = nearestWidth + excess;
     }
-    const surface = SURFACE.classifySurface(minDist, nearestWidth);
+    let surface = SURFACE.classifySurface(minDist, nearestWidth);
+    // Open squares are paving here as in getGuardRoad: read as grass, their
+    // drag left a stopped bike able only to reverse (pedestrianAreas.ts).
+    if (this.plazaIndex && SURFACE.plazaSurface) surface = SURFACE.plazaSurface(surface, this.plazaIndex, x, y);
     this._frameCache.set(surfaceKey, surface);
     return surface;
   }
@@ -643,7 +646,13 @@ class RoadNetwork {
   // camera and the label's anchor (src/canalRecall/labels/streetLabelOcclusion.ts):
   // the HUD canvas paints over every map layer, so without it the alleys behind
   // a canal row were named across its roofs (user 2026-10-25).
-  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null, shownText = null, hiddenBy = null) {
+  // `placement`, when given (src/canalRecall/labels/labelFade.ts
+  // StreetLabelPlacement): names fade in and out and hold their place for a
+  // moment instead of snapping (user 2026-10-30, #122), and each name follows
+  // its street's direction on screen, which in a pitched camera is not the
+  // world angle less the camera's rotation. A withheld name never fades: it
+  // is dropped at once.
+  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null, shownText = null, hiddenBy = null, placement = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -664,66 +673,101 @@ class RoadNetwork {
     const reach = Math.hypot(halfW, halfH) * (camera.projector ? 4 : 1.2);
     const cx = camera.x, cy = camera.y;
 
-    const labels = candidatesFor ? candidatesFor(this.labels, cx, cy, reach) : this.labels;
+    const fade = placement ? placement.fade : null;
+    if (fade) fade.begin(performance.now());
+    const allowed = (lbl) => !(isLabelled && !isLabelled(lbl.text, lbl.x, lbl.y)) && !(hiddenName && lbl.text === hiddenName);
+    // Every name painted this frame with its strength, held and fading ones included (for the e2e).
+    const painted = [];
+    this.lastPaintedLabels = painted;
+    const draw = (lbl, screenX, screenY, printed, textAngle, alpha) => {
+      painted.push({ text: lbl.text, wx: lbl.x, wy: lbl.y, alpha });
+      ctx.save();
+      if (alpha < 1) ctx.globalAlpha = alpha;
+      ctx.translate(screenX, screenY);
+      ctx.rotate(textAngle);
+      // Match the basemap rather than laying black UI capsules over roads.
+      // A quiet paper halo remains readable above route geometry and roofs.
+      ctx.strokeStyle = 'rgba(250,249,244,.92)';
+      ctx.lineWidth = 4;
+      ctx.lineJoin = 'round';
+      ctx.strokeText(printed, 0, 0);
+      ctx.fillStyle = 'rgba(38,56,59,.78)';
+      ctx.fillText(printed, 0, 0);
+      ctx.restore();
+    };
+    // Upright whichever way the camera faces: a heading-up or chase camera
+    // turned the text upside down on half the streets.
+    const angleOf = (lbl) => {
+      if (placement) return placement.place(camera, lbl);
+      let textAngle = lbl.angle - (camera.rotation || 0);
+      textAngle = Math.atan2(Math.sin(textAngle), Math.cos(textAngle));
+      if (textAngle > Math.PI / 2) textAngle -= Math.PI;
+      else if (textAngle < -Math.PI / 2) textAngle += Math.PI;
+      return { angle: textAngle, scale: z };
+    };
+
+    const found = candidatesFor ? candidatesFor(this.labels, cx, cy, reach) : this.labels;
+    // Names on screen last frame claim their place first: a neighbour cannot take it on a one-frame jitter.
+    const labels = fade && found ? fade.order(found) : found;
     if (labels && labels.length > 0) {
       for (const lbl of labels) {
         if (Math.abs(lbl.x - cx) > reach || Math.abs(lbl.y - cy) > reach) continue;
-        if (isLabelled && !isLabelled(lbl.text, lbl.x, lbl.y)) continue;
-        if (hiddenName && lbl.text === hiddenName) continue;
+        if (!allowed(lbl)) { if (fade) fade.drop(lbl); continue; }
         const screen = camera.worldToScreen(lbl.x, lbl.y);
         const screenX = screen.x;
         const screenY = screen.y;
         if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) continue;
-        if (player && Math.hypot(lbl.x - player.x, lbl.y - player.y) * z < 145) continue;
-
-        // Estimate label bounding box in screen space for overlap check
         const printed = shownText ? shownText(lbl.text) : lbl.text;
         const tw = ctx.measureText(printed).width;
         const pad = 5;
         const rectW = tw + pad * 2 + 10; // margin
         const rectH = fontSize + 10;
+        let shown = true, noHold = false;
+        if (player && Math.hypot(lbl.x - player.x, lbl.y - player.y) * z < 145) shown = false;
 
         // Check overlap with any drawn label AND same-name proximity
-        let skip = false;
         const minNameDist = 520; // one readable label per nearby connected run
-        for (const r of drawnRects) {
+        if (shown) for (const r of drawnRects) {
           const dx = Math.abs(screenX - r.x), dy = Math.abs(screenY - r.y);
           // Axis-aligned overlap
-          if (dx < (rectW + r.w) / 2 && dy < (rectH + r.h) / 2) {
-            skip = true;
-            break;
-          }
+          if (dx < (rectW + r.w) / 2 && dy < (rectH + r.h) / 2) { shown = false; break; }
           // Same road name too close
-          if (r.text === lbl.text && dx * dx + dy * dy < minNameDist * minNameDist) {
-            skip = true;
-            break;
-          }
+          if (r.text === lbl.text && dx * dx + dy * dy < minNameDist * minNameDist) { shown = false; break; }
         }
-        if (skip) continue;
+        // Lost its place and not on screen before: nothing to draw, nothing to fade.
+        if (!shown && (!fade || fade.alpha(lbl) <= 0)) continue;
+        const at = angleOf(lbl);
         // After the cheap screen tests: only a label that would otherwise draw pays for a sightline.
-        if (hiddenBy && hiddenBy(lbl)) continue;
-
-        drawnRects.push({ x: screenX, y: screenY, w: rectW, h: rectH, text: lbl.text, wx: lbl.x, wy: lbl.y });
-
-        ctx.save();
-        ctx.translate(screenX, screenY);
-        // Upright whichever way the camera faces: a heading-up or chase camera
-        // turned the text upside down on half the streets.
-        let textAngle = lbl.angle - (camera.rotation || 0);
-        textAngle = Math.atan2(Math.sin(textAngle), Math.cos(textAngle));
-        if (textAngle > Math.PI / 2) textAngle -= Math.PI;
-        else if (textAngle < -Math.PI / 2) textAngle += Math.PI;
-        ctx.rotate(textAngle);
-
-        // Match the basemap rather than laying black UI capsules over roads.
-        // A quiet paper halo remains readable above route geometry and roofs.
-        ctx.strokeStyle = 'rgba(250,249,244,.92)';
-        ctx.lineWidth = 4;
-        ctx.lineJoin = 'round';
-        ctx.strokeText(printed, 0, 0);
-        ctx.fillStyle = 'rgba(38,56,59,.78)';
-        ctx.fillText(printed, 0, 0);
-        ctx.restore();
+        // The text's two ends are tested as well as its middle: a name whose
+        // end runs across a facade in front is hidden too (#122, Oosterdok).
+        if (shown && hiddenBy) {
+          // Most of the text, not its last letters: a tail over a facade corner is tolerable, a lost name is not.
+          const half = 0.7 * tw / 2 / Math.max(1e-3, at.scale);
+          const c = Math.cos(lbl.angle) * half, s = Math.sin(lbl.angle) * half;
+          if (hiddenBy(lbl, [{ x: lbl.x - c, y: lbl.y - s }, { x: lbl.x + c, y: lbl.y + s }])) { shown = false; noHold = true; }
+        }
+        if (!fade) {
+          if (!shown) continue;
+          drawnRects.push({ x: screenX, y: screenY, w: rectW, h: rectH, text: lbl.text, wx: lbl.x, wy: lbl.y, screenAngle: at.angle, alpha: 1 });
+          draw(lbl, screenX, screenY, printed, at.angle, 1);
+          continue;
+        }
+        const alpha = fade.want(lbl, shown, { noHold });
+        if (alpha <= 0) continue;
+        // A held name keeps its room; a fading one gives it up.
+        if (shown || fade.placed(lbl)) drawnRects.push({ x: screenX, y: screenY, w: rectW, h: rectH, text: lbl.text, wx: lbl.x, wy: lbl.y, screenAngle: at.angle, alpha });
+        draw(lbl, screenX, screenY, printed, at.angle, alpha);
+      }
+    }
+    // Names shown a moment ago and now out of reach or off the candidate list fade out where they are,
+    // unless they are withheld now: those go at once.
+    if (fade) {
+      for (const lbl of fade.leftovers()) {
+        if (!allowed(lbl)) { fade.drop(lbl); continue; }
+        const alpha = fade.want(lbl, false, { noHold: true });
+        if (alpha <= 0) continue;
+        const screen = camera.worldToScreen(lbl.x, lbl.y);
+        draw(lbl, screen.x, screen.y, shownText ? shownText(lbl.text) : lbl.text, angleOf(lbl).angle, alpha);
       }
     }
 

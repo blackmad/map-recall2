@@ -5,6 +5,16 @@ export type WallFace = {x0:number;y0:number;x1:number;y1:number;len:number;nx:nu
 export type WallOwner = {id:string;minHeightM:number;heightM:number};
 export type WallCut = {a0:number;a1:number;z0:number;z1:number;other:string};
 const EPS = .002; // 2 mm: floating point noise, not a facade inset.
+/**
+ * Same-facing walls of two buildings this close to one plane stripe at game distance: depth
+ * precision at 100 m+ is coarser than a few centimetres (a 0.35 m inset still striped on the
+ * Muziekgebouw, 2026-09-29). OSM building:parts drawn twice and BAG/OSM footprints that overlap by
+ * a sliver leave such pairs 5 mm to 0.3 m apart (Oosterdokseiland, issue #123, 2026-10-30).
+ * The wall BEHIND the other one stands inside the front building's volume, so it is cut; the
+ * front facade is never moved or dropped, so a real setback deeper than this keeps both walls.
+ */
+export const NEAR_COPLANAR_M = .5;
+const NEAR_COS = Math.cos(2 * Math.PI / 180);
 export function sharedWallCuts(groups: readonly {b:WallOwner;edges:readonly WallFace[]}[]): Map<WallFace,WallCut[]> {
   const faces=groups.flatMap(({b,edges})=>edges.map(e=>({b,e})));
   const grid=new SegmentGrid(faces.flatMap(({e})=>[e.x0,e.y0,e.x1,e.y1]));
@@ -14,13 +24,28 @@ export function sharedWallCuts(groups: readonly {b:WallOwner;edges:readonly Wall
     for(const index of grid.near(Math.min(e.x0,e.x1)-EPS,Math.min(e.y0,e.y1)-EPS,Math.max(e.x0,e.x1)+EPS,Math.max(e.y0,e.y1)+EPS)){
       const {b:o,e:f}=faces[index];if(index===ownIndex)continue;
       const z0=Math.max(b.minHeightM,o.minHeightM),z1=Math.min(b.heightM,o.heightM);if(z1-z0<=EPS)continue;
-      const dot=e.nx*f.nx+e.ny*f.ny;if(Math.abs(dot)<.999999)continue;
-      if(Math.max(Math.abs((f.x0-e.x0)*e.nx+(f.y0-e.y0)*e.ny),Math.abs((f.x1-e.x0)*e.nx+(f.y1-e.y0)*e.ny))>EPS)continue;
-      // Opposite facing party walls are internal. Same facing walls keep the taller
-      // owner, then the lexical id, independent of tile/worker arrival order.
-      if(dot>0 && (b.heightM>o.heightM || b.heightM===o.heightM&&(b.id<o.id || b.id===o.id&&ownIndex<index)))continue;
+      const dot=e.nx*f.nx+e.ny*f.ny;
+      const exact=Math.abs(dot)>=.999999&&Math.max(Math.abs((f.x0-e.x0)*e.nx+(f.y0-e.y0)*e.ny),Math.abs((f.x1-e.x0)*e.nx+(f.y1-e.y0)*e.ny))<=EPS;
+      if(!exact&&dot<NEAR_COS)continue; // near-coplanar applies to same-facing walls only: back-to-back walls are unseen
       const t0=((f.x0-e.x0)*ux+(f.y0-e.y0)*uy)/e.len,t1=((f.x1-e.x0)*ux+(f.y1-e.y0)*uy)/e.len;
       const a0=Math.max(0,Math.min(t0,t1)),a1=Math.min(1,Math.max(t0,t1));if((a1-a0)*e.len<=EPS)continue;
+      if(exact){
+        // Opposite facing party walls are internal. Same facing walls keep the taller
+        // owner, then the lexical id, independent of tile/worker arrival order.
+        if(dot>0 && (b.heightM>o.heightM || b.heightM===o.heightM&&(b.id<o.id || b.id===o.id&&ownIndex<index)))continue;
+      }else{
+        // f's offset in front of e (along e's outward normal) at both ends of the shared stretch.
+        const flen=f.len||Math.hypot(f.x1-f.x0,f.y1-f.y0);
+        const offsetAt=(a:number)=>{const px=e.x0+(e.x1-e.x0)*a,py=e.y0+(e.y1-e.y0)*a;
+          const s=Math.max(0,Math.min(1,((px-f.x0)*(f.x1-f.x0)+(py-f.y0)*(f.y1-f.y0))/(flen*flen)));
+          return (f.x0+(f.x1-f.x0)*s-px)*e.nx+(f.y0+(f.y1-f.y0)*s-py)*e.ny;};
+        const d0=offsetAt(a0),d1=offsetAt(a1);
+        if(Math.max(Math.abs(d0),Math.abs(d1))>NEAR_COPLANAR_M)continue;
+        const front=Math.min(d0,d1)>EPS,behind=Math.max(d0,d1)<-EPS;
+        if(behind)continue; // e is the front facade: it stays, f is cut when f is visited
+        // Crossing at a sliver angle: same tie-break as the exact case.
+        if(!front && (b.heightM>o.heightM || b.heightM===o.heightM&&(b.id<o.id || b.id===o.id&&ownIndex<index)))continue;
+      }
       const cuts=out.get(e)??[];cuts.push({a0,a1,z0,z1,other:o.id});out.set(e,cuts);
     }
   }

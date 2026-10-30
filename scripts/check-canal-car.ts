@@ -4,8 +4,8 @@ import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContac
 import { ROUTE_QUIZ_SETTLE_METRES, routePlaqueName } from '../src/canalRecall/game/recallRules';
 import { bridgeNameAskable } from '../src/canalRecall/game/notableBridges';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
-import { buildRoadSpatialIndex, contactsAt, pickGuardContact, roadsNear, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
-import { buildPlazaIndex, plazaAt, plazaGuardContact, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
+import { buildRoadSpatialIndex, classifySurface, contactsAt, pickGuardContact, roadsNear, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
+import { buildPlazaIndex, plazaAt, plazaGuardContact, plazaSurface, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
 import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
 import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
@@ -375,7 +375,15 @@ const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
     for (let i = 0; i <= steps; i++) if (blocked(a.x + (b.x - a.x) * i / steps, a.y + (b.y - a.y) * i / steps, withPlazas)) stops++;
     return { steps, stops };
   };
-  return { plazas, toWorld, blocked, ride };
+  // The surface the car physics reads (road-network.js getSurface), without
+  // its corner fillet: the nearest corridor's class, then squares as paving.
+  const surface = (x: number, y: number, withPlazas: PlazaIndex | null) => {
+    let nearest: { dist: number; width: number } | null = null;
+    for (const c of contactsAt(roadsNear(index, x, y), x, y)) if (!nearest || c.dist < nearest.dist) nearest = c;
+    const corridor = nearest ? classifySurface(nearest.dist, nearest.width) : 'grass';
+    return plazaSurface(corridor, withPlazas, x, y);
+  };
+  return { plazas, toWorld, blocked, ride, surface };
 };
 let plazaSummary = '';
 {
@@ -426,6 +434,32 @@ let plazaSummary = '';
       assert.equal(world.ride([at[0], at[1]], away, world.plazas).stops, 0, `${label}: the bike leaves the reported position towards ${away.join(',')}`);
     }
   }
+  // Named regression (user report 2026-10-30, "bike can't go forward here
+  // only backwards"): on the Nieuwmarkt south of the Waag, among the trees.
+  // The guard allowed the paving but the physics read it as grass, whose drag
+  // beats the bike's thrust at grass grip from a standstill; reverse is not
+  // scaled by grip. Squares must read as paving to the surface check too.
+  const nieuwmarktReport: [number, number] = [52.37235, 4.90030];
+  const nm = plazaWorld(nieuwmarktReport);
+  const nmOffCorridor: Array<[number, number]> = [];
+  for (let dy = -20; dy <= 20; dy += 2) for (let dx = -20; dx <= 20; dx += 2) {
+    const q: [number, number] = [nieuwmarktReport[0] + dy / 111_320, nieuwmarktReport[1] + dx / (111_320 * Math.cos(nieuwmarktReport[0] * Math.PI / 180))];
+    const w = nm.toWorld(...q);
+    if (plazaAt(nm.plazas, w.x, w.y) && nm.surface(w.x, w.y, null) === 'grass') nmOffCorridor.push(q);
+  }
+  assert.ok(nmOffCorridor.length > 20, `Nieuwmarkt paving near the report reads as grass without the squares (${nmOffCorridor.length} points)`);
+  for (const q of nmOffCorridor) {
+    const w = nm.toWorld(...q);
+    assert.equal(nm.surface(w.x, w.y, nm.plazas), 'asphalt', `Nieuwmarkt (2026-10-30): the paving at ${q.map(v => v.toFixed(6)).join(',')} is asphalt to the physics`);
+    assert.equal(nm.blocked(w.x, w.y, nm.plazas), false, `Nieuwmarkt (2026-10-30): the paving at ${q.map(v => v.toFixed(6)).join(',')} is rideable`);
+  }
+  // The Frederiksplein lawn stays grass (park square, not paving).
+  const lawn = squares.find(square => square.name === 'Frederiksplein')!;
+  const lawnRing = (lawn.paths ?? [lawn.path!])[0];
+  const lawnAt: [number, number] = [lawnRing.reduce((t, q) => t + q[0], 0) / lawnRing.length, lawnRing.reduce((t, q) => t + q[1], 0) / lawnRing.length];
+  const lw = plazaWorld(lawnAt);
+  const lp = lw.toWorld(...lawnAt);
+  assert.equal(lw.surface(lp.x, lp.y, lw.plazas), 'grass', 'the Frederiksplein lawn still reads as grass');
   // Named regression (feedback 3e7f0aa4, 2026-10-25, "I should probably be
   // able to bike to this red path but I'm blocked"): on the paving between the
   // Oosterdok busway and the quay at 52.377294,4.903152, the cycle bridge Brug

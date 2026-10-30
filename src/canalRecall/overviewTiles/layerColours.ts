@@ -9,6 +9,7 @@
 // Tones come from look/sunny.ts `groundTokens` and the ground look's palette (ownGround/groundLook.ts), the same
 // strings the basemap patches use (ownGround/basemapPalette.ts). Vertex-coloured layers take their vertex tone.
 
+import { RAIL_TONES } from '../ownGround/railTracks.js';
 import { groundTokens } from '../look/sunny.js';
 import { hexToRgb, type RGB } from '../look/palette.js';
 import { gardenTone, type GroundPalette } from '../ownGround/groundLook.js';
@@ -28,6 +29,7 @@ export function flatLayerTones(palette: GroundPalette): Partial<Record<GroundLay
     paving: T.pavement, gravel: T.gravel, kerb: S.kerb, paint: T.road, tram: T.road,
     bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
     lawn: G.lawn, garden: gardenTone(G.lawn), bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
+    ballast: [...RAIL_TONES.ballast], track: [...RAIL_TONES.track],
   };
 }
 
@@ -44,7 +46,7 @@ export const VERTEX_TOP_TONES: Partial<Record<GroundLayer, RGB>> = {
  * Layers the overview raster leaves out: lines narrower than a tile pixel at z16 (1.5 m), which would alias into
  * specks (paint 0.15 m, rails, kerb tops 0.11 m), and the point furniture. The layer beneath shows instead.
  */
-export const OVERVIEW_SKIPPED: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['paint', 'tram', 'bollard', 'kerb', 'furniture']);
+export const OVERVIEW_SKIPPED: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['paint', 'tram', 'track', 'bollard', 'kerb', 'furniture']);
 
 /** Parse a CSS `rgb(r,g,b)` / hex string or pass an RGB triple through (sRGB 0..255, rounded). */
 export function toneRgb(tone: string | readonly number[]): RGB {

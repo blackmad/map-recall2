@@ -19,6 +19,7 @@ import sharp from 'sharp';
 import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
+import {evidenceVerdict, measureSpanEvidence} from '../../src/canalRecall/blockFace/stripEvidence.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
 import {isLeaf, measureFacade, type FacadeImage, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult} from '../../src/canalRecall/buildingRecipe/likeness.ts';
@@ -112,6 +113,8 @@ async function loadTypes(district: string): Promise<MatchableType[]> {
   return Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))));
 }
 
+/** The strip evidence gate (#120) runs by default; --no-evidence-gate reproduces the pre-gate placements. */
+const EVIDENCE_GATE = !process.argv.includes('--no-evidence-gate');
 const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
 /** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
@@ -171,7 +174,8 @@ async function faceEvidence(faceId: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
-      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
+      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
+      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }

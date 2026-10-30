@@ -7,7 +7,9 @@
  *   hidden bugs  pands a model covers by footprint that its suppress list does not hide today
  *   alias-only   suppress ids that name an OSM way/relation of a pand, not the pand's tile id,
  *                so they hide nothing in the BAG-keyed tiles today but covers will hide the pand
- *   stale        suppress ids that match no tile feature and no pand alias (no covering pand)
+ *   houseboats   suppress ids that name a boat in houseboats.json: boats are drawn from their own chunk,
+ *                never from the BAG tiles, so they are live ids, not stale (prune-stale-suppress must keep them)
+ *   stale        suppress ids that match no tile feature, no pand alias and no houseboat (no covering pand)
  * and fails (exit 1) on covers.json inconsistencies: a pand listed that is not in the tiles,
  * a directly-suppressed pand missing from its model's entry, a pand listed that covers-review.json keeps drawn, or a model with no entry at all
  * whose suppress list resolves to something. `--strict` also fails on hidden bugs.
@@ -30,6 +32,8 @@ if (!tilesDir || !coversFile) { console.error('missing bag tiles or covers.json:
 const index = loadBagTiles(tilesDir);
 const review = loadCoversReview();
 const covers = JSON.parse(fs.readFileSync(coversFile, 'utf8')) as CoversFile;
+const boatIds = new Set<string>((JSON.parse(fs.readFileSync(path.join(ROOT, 'public/data/extracts/amsterdam/houseboats.json'), 'utf8')).boats as {id: string}[]).map(b => b.id));
+const houseboats: string[] = [];
 const problems: string[] = [];
 const hidden: string[] = [], reviewedHide: string[] = [], aliasOnly: string[] = [], stale: string[] = [];
 let suppressIds = 0, effective = 0;
@@ -55,7 +59,16 @@ for (const spec of allSpecs()) {
     else if (review[reviewKey(spec.id, id)]?.decision === 'hide') reviewedHide.push(`${spec.id} ${id}`);
     else hidden.push(`${spec.id} ${id}`);
   }
-  for (const id of resolved.unresolved) stale.push(`${spec.id} ${id}`);
+  for (const id of resolved.unresolved) (boatIds.has(id) ? houseboats : stale).push(`${spec.id} ${id}`);
+}
+// Named regressions (issue #123, 2026-10-30): a 2026-10-13 stale-prune deleted these boat ids because boats are not in the
+// BAG tiles, and the generic houseboat box drew through the Sea Palace pagoda and the Houseboat Museum model.
+const REQUIRED_BOAT_SUPPRESS: Record<string, string> = { 'sea-palace': 'w454006714', 'houseboat-museum': 'w174999382' };
+for (const [model, boat] of Object.entries(REQUIRED_BOAT_SUPPRESS)) {
+  const spec = allSpecs().find(s => s.id === model);
+  if (!spec) problems.push(`${model}: spec missing (regression REQUIRED_BOAT_SUPPRESS)`);
+  else if (!spec.suppressOsmIds.map(String).includes(boat)) problems.push(`${model}: must suppress its houseboat ${boat}, or the generic boat box draws through the model`);
+  if (!boatIds.has(boat)) problems.push(`${model}: houseboat ${boat} is no longer in houseboats.json; re-key REQUIRED_BOAT_SUPPRESS`);
 }
 const btCovered = new Set(covers.buildingTypes.map(fullPandId));
 for (const id of btCovered) if (!index.pands.has(id)) stale.push(`building-types ${id} (instance pand not in the tiles)`);
@@ -69,6 +82,7 @@ console.log(`covers join: ${Object.keys(covers.models).length} model entries, ${
 show('reviewed hide (footprint-only, decided in scripts/covers-review.json: part of the model)', reviewedHide);
 show('hidden bugs (covered by footprint, not hidden by suppressOsmIds today)', hidden);
 show('alias-only (suppress id is an OSM alias of a covered pand, hides nothing in BAG-keyed tiles today)', aliasOnly);
+show('houseboats (suppress id is a houseboats.json boat, hidden in the boats chunk)', houseboats);
 show('stale (suppress id matches no tile feature and no pand alias)', stale);
 for (const p of problems.slice(0, 30)) console.log(`PROBLEM ${p}`);
 const fail = problems.length > 0 || (strict && hidden.length > 0);
