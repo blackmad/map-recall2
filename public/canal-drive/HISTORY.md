@@ -33,9 +33,11 @@ baselines with dates and sources (draws 851 2026-10-24, programs 32
 2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
 MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
 budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
-perf scripts against it. Browser verification of the migration is still
-pending: the lane's run was mis-scoped to all 638 tests and held the shared
-Playwright lock for two hours.
+perf scripts against it. Verified the same day: `ride-perf` default variants pass; the two
+migrated specs that fail (`bike-xray`, `complete-city`) fail identically with
+their pre-migration files, so they are reds on main (TODO). The lane's own
+run had been mis-scoped to all 638 tests and held the shared Playwright lock
+for two hours; the lane rules now ask for ≤ 20-minute runs.
 
 **What's New notes link screenshots (2026-10-30).** User: notes should link
 to screenshots, kept in a separate repository so this one does not grow with
