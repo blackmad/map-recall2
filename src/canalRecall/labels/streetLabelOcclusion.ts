@@ -19,6 +19,20 @@ const RETEST_FRAMES = 8;
 /** Index build budget per frame while the resident set changes. */
 const BUILD_BUDGET_MS = 2;
 
+/** Map pitch from which buildings can stand between the camera and a street. */
+export const OCCLUSION_MIN_PITCH_DEG = 5;
+
+/**
+ * Whether street names need the sightline test this frame. Not only the chase
+ * and cockpit views: north-up and heading-up tilt the map too (14°), and on
+ * Oosterdokseiland the 30–50 m blocks covered the streets behind them while
+ * their names were still painted across the facades (#122). The map's actual
+ * pitch decides.
+ */
+export function occlusionWanted(pitchedView: boolean, mapPitchDeg: number | null | undefined): boolean {
+  return pitchedView || (Number.isFinite(mapPitchDeg) && (mapPitchDeg as number) >= OCCLUSION_MIN_PITCH_DEG);
+}
+
 type AnyMap = any;
 interface VectorMapLike {
   map?: AnyMap;
@@ -41,7 +55,7 @@ export class StreetLabelOcclusion {
    * The per-label test for this frame, or null when there is nothing to test
    * against (top-down view, no resident buildings yet, no camera).
    */
-  frame(host: unknown, loader: unknown, pitched: boolean): ((label: LabelAnchor & { text?: string }) => boolean) | null {
+  frame(host: unknown, loader: unknown, pitched: boolean): ((label: LabelAnchor & { text?: string }, ends?: readonly LabelAnchor[]) => boolean) | null {
     this.frameNo++;
     this.stats.tested = 0; this.stats.hidden = 0; this.stats.ms = 0;
     this.lastHidden = [];
@@ -57,7 +71,15 @@ export class StreetLabelOcclusion {
     const at = t?.getCameraLngLat?.(), altM = t?.getCameraAltitude?.();
     if (!at || !Number.isFinite(altM)) return null;
     const camera = { lng: at.lng, lat: at.lat, altM };
-    return (label) => {
+    const blockedAt = (p: LabelAnchor): boolean => {
+      const ll = toLngLat(p.x, p.y, loader);
+      const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
+      return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+    };
+    // The middle, then each end of the text along its street (road-network.js
+    // passes them): a name whose end runs behind a facade in front is drawn
+    // across that facade (#122, Oosterdok), so any blocked point hides it.
+    return (label, ends) => {
       const t0 = performance.now();
       let v = this.verdicts.get(label);
       const fresh = !v || v.frame !== this.frameNo - 1;
@@ -68,9 +90,7 @@ export class StreetLabelOcclusion {
         this.stats.ms += performance.now() - t0;
         return v.hidden;
       }
-      const ll = toLngLat(label.x, label.y, loader);
-      const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
-      const now = this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+      const now = blockedAt(label) || (!!ends && ends.some(blockedAt));
       // New, or not drawn-tested last frame (off screen, crowded out): take the fresh verdict.
       if (!v || fresh) { v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ }; this.verdicts.set(label, v); }
       v.frame = this.frameNo;

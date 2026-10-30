@@ -18,7 +18,7 @@ import {
   categoryClass, distanceFade, labelAllowed, labelBudget, labelPriority, planLabels, VENUE_RADIUS_M,
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
 } from './labelPlan';
-import { labelCss, labelFont, LABEL_ROOT_CLASS } from './labelStyle';
+import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, PILL_FONT } from './labelStyle';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
 
 /** The MapLibre layers this overlay replaces. */
@@ -137,11 +137,16 @@ export class LabelOverlay {
   private ownReach = new Map<string, number>();
   private sourceKey: unknown[] = [];
   private drawn = new Map<string, number>();
+  /** When each undrawn element started fading out. */
+  private retired = new Map<string, number>();
   private occlusion = new Map<string, { occluded: boolean; votes: number }>();
   private lastPlan = 0;
   private job: PlanJob | null = null;
   private placeWarned = false;
   private hiddenName = '';
+  /** Free Ride places (landmark ids) that wear the place pill, as their marker does. */
+  private pillIds = new Set<string>();
+  private pillSource: unknown = null;
   private hiddenIndex: SpoilerIndex | null = null;
   /** Candidates dropped as a second label of a place, for the e2e. */
   duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
@@ -404,17 +409,18 @@ export class LabelOverlay {
 
   private element(c: LabelCandidate): HTMLDivElement {
     let el = this.elements.get(c.id);
-    if (el && el.dataset.mapLabel === c.name) return el;
+    const pill = this.pillIds.has(c.id);
+    if (el && el.dataset.mapLabel === c.name && el.classList.contains(PILL_CLASS) === pill) return el;
     el?.remove();
     el = document.createElement('div');
-    el.className = `l ${c.cls}`;
+    el.className = pill ? `l ${c.cls} ${PILL_CLASS}` : `l ${c.cls}`;
     el.dataset.mapLabel = c.name;
     el.dataset.labelClass = c.cls;
     el.style.opacity = '0';
     const name = document.createElement('div');
     name.className = 'n';
     name.textContent = c.name;
-    name.style.font = labelFont(c.cls);
+    name.style.font = pill ? PILL_FONT : labelFont(c.cls);
     el.append(name, Object.assign(document.createElement('div'), { className: 's' }), Object.assign(document.createElement('div'), { className: 'd' }));
     this.root.appendChild(el);
     this.elements.set(c.id, el);
@@ -438,6 +444,25 @@ export class LabelOverlay {
       out.push({ id: String(place.key), name: place.name, ...(Number.isFinite(lng) && Number.isFinite(lat) ? { lng, lat } : {}) });
     }
     return out;
+  }
+
+  /**
+   * In Free Ride a place with a marker wears the marker's pill here too. Near
+   * the rider the marker names it; further off this overlay did, as an
+   * uppercase plaque, so a place switched look as the rider came and went
+   * (user 2026-10-30, Klimmuur Centraal, #122). One look per place: the pill.
+   */
+  private syncPills(game: GameLike): void {
+    const catalog = game?.freeRide ? game._freeRideCatalog?.() ?? null : null;
+    if (catalog === this.pillSource) return;
+    this.pillSource = catalog;
+    const next = new Set<string>((catalog || []).filter((p: { kind: string }) => p.kind === 'landmark').map((p: { key: unknown }) => String(p.key)));
+    // Labels whose look changes are rebuilt (and re-measured) on their next plan.
+    for (const id of new Set([...this.pillIds, ...next])) {
+      if (this.pillIds.has(id) === next.has(id)) continue;
+      this.elements.get(id)?.remove(); this.elements.delete(id); this.sizes.delete(id);
+    }
+    this.pillIds = next;
   }
 
   /** Screen and rule pass for every candidate; queues the best few for occlusion picks. */
@@ -470,6 +495,7 @@ export class LabelOverlay {
       if (c.cls !== 'destination' && distanceFade(p.distM, cameraHeightM) <= 0.05) continue;
       screen.push({ ...c, x: p.x, y: p.y, width: 0, height: 0, distM: p.distM, riderDistM, occluded: false, ndcZ: p.ndcZ, w: p.w });
     }
+    this.syncPills(game);
     // One label per place on screen: not beside a Free Ride marker for it, nor beside its other spelling.
     const twice = screenDuplicateIds(screen, this.markedPlaces(game));
     if (twice.size) for (let i = screen.length - 1; i >= 0; i--) if (twice.has(screen[i].id)) screen.splice(i, 1);
@@ -518,10 +544,15 @@ export class LabelOverlay {
     });
     const previous = this.drawn;
     this.drawn = new Map(plan.map(p => [p.id, p.opacity]));
-    // Elements neither drawn now nor fading out from the last plan go.
+    // Elements not drawn go once their fade-out has run its course (the plan
+    // interval is shorter than the fade, so "not in the last plan" cut the
+    // fade short and the label blinked out at a third strength).
+    const now = performance.now();
     for (const [id, el] of this.elements) {
-      if (this.drawn.has(id) || previous.has(id)) continue;
-      el.remove(); this.elements.delete(id); this.sizes.delete(id);
+      if (this.drawn.has(id)) { this.retired.delete(id); continue; }
+      if (previous.has(id) || !this.retired.has(id)) { if (!this.retired.has(id)) this.retired.set(id, now); continue; }
+      if (now - (this.retired.get(id) ?? now) < LABEL_FADE_CSS_MS + 50) continue;
+      el.remove(); this.elements.delete(id); this.sizes.delete(id); this.retired.delete(id);
     }
     this.stats = { candidates: this.candidates.length, inView: screen.length, occluded: job.occluded, drawn: plan.length, budget: labelBudget(cameraHeightM, width * height) };
   }
