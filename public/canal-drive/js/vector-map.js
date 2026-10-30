@@ -20,19 +20,16 @@ const STYLISED_TREES_DEFAULT = true;
 // Phase 1 of docs/archive/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
-// rendererShared/), with lit facades and sun shadows. On in practice: the own
-// ground (default since 2026-10-14) implies it. `?sharedFrame=0` (with the own
-// ground off) keeps the legacy per-layer frame for A/B specs. Inside it,
+// rendererShared/), with lit facades and sun shadows. Unconditional since
+// 2026-10-30 (the `?sharedFrame=0` legacy per-layer frame is gone). Inside it,
 // `?shadows=0` turns the sun shadows off (ride-perf SHADOWS=0).
-const SHARED_FRAME_DEFAULT = false;
 // Phase 2 (2026-10-10): three.js draws the riding-view ground itself — AHN
 // relief, streets by OSM cross-section, quays, sunken water and measured
 // bridge decks — streamed per 1 km cell from a worker, with the route line
 // and the question street draped on it (src/canalRecall/ownGround/,
 // docs/research/own-ground-20261009.md). On by default since 2026-10-14 (user);
-// `?ownGround=0` or window.__canalRecallOwnGround = false opts out, and an
-// explicit `?sharedFrame=0` does too unless `?ownGround=1` is also given.
-// Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
+// `?ownGround=0` or window.__canalRecallOwnGround = false opts out.
+// (It replaced the 2026-10-09 `?elevation=1`
 // stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261030-rails-tunnels';
@@ -155,15 +152,10 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
-    this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
-    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround',
-      OWN_GROUND_DEFAULT && canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', null) !== false);
-    if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
+    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
     // ?recipeTiles=1: the recipe-tile near tier (src/canalRecall/tileBuildings/) is a shared-frame participant.
     this._recipeTilesEnabled = canalRecallLookFlag('recipeTiles', '__canalRecallRecipeTiles', false);
-    if (this._recipeTilesEnabled) this._sharedFrameEnabled = true;
     this._sculpturesEnabled = canalRecallLookFlag('sculptures', '__canalRecallSculptures', false);
-    if (this._sculpturesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
     this._riderSurfaceM = 0;
@@ -312,7 +304,7 @@ class VectorBasemap {
     // an explicit `?dpr=` keeps its ratio. Status: `vectorMap._renderGovernor`.
     if (window.CanalMapGuard && window.CanalMapGuard.governMapRender && canalRecallLookFlag('governor', '__canalRecallGovernor', true)) {
       const explicitDpr = new URLSearchParams(window.location.search).has('dpr');
-      const shadows = this._sharedFrameEnabled && canalRecallLookFlag('shadows', '__canalRecallShadows', true);
+      const shadows = canalRecallLookFlag('shadows', '__canalRecallShadows', true);
       this._renderGovernor = window.CanalMapGuard.governMapRender(this.map, {
         fixedPixelRatio: explicitDpr,
         // Riding only: loading and the intro fly-in are busy for other reasons.
@@ -415,13 +407,13 @@ class VectorBasemap {
   }
 
   /**
-   * The one three.js frame every 3D layer draws through (`?sharedFrame=1`).
+   * The one three.js frame every 3D layer draws through.
    * Its main pass takes the slot the facade layer had — under the coloured
    * building layers and the game's labels — and its overlay pass (the
    * vehicles) stays last. Participants find it on `map._canalSharedFrame`.
    */
   _ensureSharedFrame() {
-    if (!this._sharedFrameEnabled || this._sharedFrame) return this._sharedFrame;
+    if (this._sharedFrame) return this._sharedFrame;
     const api = window.CanalRecallThree;
     if (!api || !api.SharedFrame || !api.THREE) return null;
     const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;

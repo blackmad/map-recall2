@@ -9,7 +9,6 @@ import { openRoute } from './helpers';
 // houses (Bilderdijkstraat) and generic streamed extrusions.
 //
 //   LOOK_SHOTS_OUT=artifacts/look/before PW_OFFLINE_MAP=1 PW_PORT=4424 npx playwright test look-consistency --project=desktop
-//   LOOK_SHOTS_QUERY='?sharedFrame=1' … for the shared-frame rig.
 //   LOOK_SHOTS_LOOKS=photo,cartoon picks the Building looks (default photo).
 //   LOOK_BUNDLES_DIR=<dir> serves any *.bundle.js found there instead of the
 //   committed one (A/B of a source change before the integrator rebuilds).
@@ -77,7 +76,7 @@ test('shared frame: 3DBAG detailed buildings join the frame and bring no light',
     const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: process.env.LOOK_DETAILED_QUERY ?? '?sharedFrame=1' });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: process.env.LOOK_DETAILED_QUERY ?? '' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setDetailedBuildingsVisible(true));
   await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._detailedBuildings?.ready, null, { timeout: 120_000 });

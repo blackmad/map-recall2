@@ -7,7 +7,7 @@
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 
-const [device = 'desktop', nArg = '240', stylesArg = 'yellow,a,b,c', framesArg = 'default,shared'] = process.argv.slice(2);
+const [device = 'desktop', nArg = '240', stylesArg = 'yellow,a,b,c', framesArg = 'default'] = process.argv.slice(2);
 const N = Number(nArg), PORT = process.env.PORT || 4451;
 const SPOTS = [
   { name: 'westermarkt', id: 'extract_landmarks_614625734', deg: 115, m: 75 },
@@ -23,7 +23,7 @@ for (const frame of framesArg.split(',')) for (const style of stylesArg.split(',
   const page = await browser.newPage(device === 'touch' ? devices['iPhone 13'] : { viewport: { width: 1440, height: 900 } });
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-  const query = [frame === 'shared' ? 'sharedFrame=1' : '', `highlight=${style}`].filter(Boolean).join('&');
+  const query = `highlight=${style}`;
   await page.goto(`http://127.0.0.1:${PORT}/canal-drive/${query ? '?' + query : ''}`);
   await page.waitForFunction(() => !!window.canalRecallGame, null, { timeout: 60000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });
