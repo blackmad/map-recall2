@@ -178,7 +178,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
       }
     }
   }
-  return {W, H, cell, tMin, yMax, yMin, mat, shade, facing: facingPx};
+  return {W, H, cell, tMin, yMax, yMin, mat, shade, facing: facingPx, depth: zbuf};
 }
 
 /** 4-connected components of a boolean mask; returns pixel bounding boxes and areas. */

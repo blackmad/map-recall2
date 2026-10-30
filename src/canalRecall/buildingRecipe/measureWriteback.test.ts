@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays, windowGroupProposal} from './measureWriteback.ts';
+import {budgetBlankedGroups, cropPredatesBuilding, curtainEvidence, glassReadsAsGlass, majoritySystem, photoBays, windowGroupProposal, withoutBudgetBlanked} from './measureWriteback.ts';
+import type {LargeBuildingIntent} from './intent.ts';
 
 test('cropPredatesBuilding: a crop in or before the construction year is not evidence', () => {
   assert.equal(cropPredatesBuilding('2018-01-08', 2019), true); // OBA Postjesweg
@@ -51,4 +52,16 @@ test('windowGroupProposal: paired windows in the photo grid group a punched fron
   assert.match(windowGroupProposal({...clean, system: 'ribbon-windows'}).why.join(), /not grouped/);
   assert.match(windowGroupProposal({...clean, foliage: 0.4}).why.join(), /foliage 40 %/);
   assert.match(windowGroupProposal({...clean, usable: 0.2}).why.join(), /usable 20 %/);
+});
+
+test('budgetBlankedGroups: the still-blank groups of the triangle budget note; withoutBudgetBlanked drops the ones a crop now pairs (#134)', () => {
+  const walls = ['blank', 'blank', 'blank', 'brick-bay-grid', 'blank', 'brick-bay-grid'].map(system => ({system})) as unknown as LargeBuildingIntent['walls'];
+  const notes = ['Drafted by draftLarge.ts', 'Triangle budget: 27213 > 12000; unphotographed groups 1, 2, 4, 0 drawn blank (draftBudgetCap).'];
+  assert.deepEqual(budgetBlankedGroups({notes, walls}), [0, 1, 2, 4]);
+  // a group drawn again since (measured, not blank) is not listed; no note, no groups
+  assert.deepEqual(budgetBlankedGroups({notes, walls: walls.map((w, i) => (i === 1 ? {...w, system: 'ribbon-windows'} : w)) as LargeBuildingIntent['walls']}), [0, 2, 4]);
+  assert.deepEqual(budgetBlankedGroups({notes: ['Drafted'], walls}), []);
+  assert.deepEqual(budgetBlankedGroups({notes: ['Triangle budget: 9000 > 12000; unphotographed groups none drawn blank (draftBudgetCap).'], walls}), []);
+  assert.deepEqual(withoutBudgetBlanked(notes, [1, 2]), ['Drafted by draftLarge.ts', 'Triangle budget: 27213 > 12000; unphotographed groups 4, 0 drawn blank (draftBudgetCap).']);
+  assert.deepEqual(withoutBudgetBlanked(notes, [0, 1, 2, 4])[1], 'Triangle budget: 27213 > 12000; unphotographed groups none drawn blank (draftBudgetCap).');
 });

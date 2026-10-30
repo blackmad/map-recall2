@@ -24,6 +24,62 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
+measurement blockers from the band kit lanes (#126, #127) are fixed in the
+judge and the measurer, with LIKENESS constants unchanged. `measureFacade`
+reads the washed mask row by row before computing the washed-out share: a
+run 0.2–1.8 m thick, washed across at least half the row, with clear rows
+within 1.5 m above and below, repeating at least three times at one storey
+spacing, is a painted floor band and counts as wall (063809's slab fronts go
+from 36 % washed to 8 %, and from NO EVIDENCE to a judged FAIL). The
+likeness elevation now carries a depth buffer, and on groups that draw
+`balconyBands` glass 0.35 m or more in front of the wall plane near an upper
+storey line is classed as trim, so parapet glass no longer inflates model
+glazing (247342 w1 0.41 to 0.25 against a photo 0.18). The rule is gated to
+balcony-band groups because the ungated version moved Houthavenkade 26 PASS
+to WARN and Politie Van Leijenberghlaan WARN to FAIL: on about twenty
+inferred installs ordinary kit windows sit 0.35 m proud of the modal wall
+material, which a kit or likeness lane should look at. `measure.ts` probes
+groups the triangle budget blanked, compiling them with the draft system
+through a `compileLargeHouse` override, and re-applies the budget after
+`--write`. Replay over the 253 measured inferred groups: identical verdicts
+and reasons (PASS 13, WARN 38, FAIL 151, NO EVIDENCE 51); over the 17
+ride-landmark drafts, 0 verdicts moved. What still blocks a PASS is now
+geometry the drafts draw wrong, not measurement: punched windows where the
+photo shows ribbons (063809, 247342), storey-2 opening widths (242968), a
+pale pink-grey brick that cell statistics cannot separate from AkzoNobel's
+glare (240435), and 063809 still 9,395 triangles over the 12k budget.
+
+**Amstel station drawn from its roofs; raised OSM parts lifted; over-road check (2026-10-30).**
+Amstel station (BAG `0363100012145715`) was held unfilled because its outline
+covers the Julianaplein busway. Measured with a 3 m edge inset, the bus lanes
+only run along the hall's edges, and the PDOK orthophoto agrees. So
+`scripts/fill-over-road-holes.ts` now draws it from its eight 3DBAG LoD1.3
+roof faces: six stand on the ground, the north canopy is a deck 4.5 m up, and
+one sliver is left out. These are the `part:` features, and `check-bag-gaps`
+pins them.
+
+`building:min_level` had been read as metres, so a part tagged min_level 4
+started 4 m up instead of 12 m. `osmMinHeightM`
+(`src/canalRecall/osmMinHeight.ts`) now converts storeys: the part's height ÷
+its levels, or 3 m a storey when the levels are not tagged. OSM `roof`
+outlines with no base, such as bus and petrol-station canopies (Overkapping
+IJsei), are now 1 m slabs under their top instead of solid blocks. The new
+`scripts/fix-osm-min-level.ts` applies both rules to the published tiles:
+1,419 parts, with the expected values kept in `scripts/data/osm-min-levels.json`.
+`check:osm-min-level` keeps them on the rule.
+
+`check:buildings-over-roads` turns the one-off scan into a gate. It fails on
+any feature lower than 2.5 m (a part a rider fits under) that has ≥ 20 m of
+car-road centreline more than 3 m inside its outline, unless that feature is
+reviewed in `scripts/data/buildings-over-roads.json`, which records a reason
+for each. The first read found five 2026-10-16 gap fills that were tunnel
+mouths and viaduct decks drawn as 3–5 m boxes: Piet Heinkade (two), Eerste
+Constantijn Huygensstraat over the Vondeltunnel, and Johan van Hasseltweg
+(two). They are out of the supplement (1,598 fills) and held in
+`check-bag-gaps`. The other 43 are real buildings. The check runs in about
+2 s and is part of `check:canal`.
+
 **Engine programme decided (2026-10-30).** The user asked whether the recurring
 performance and rendering trouble needs a larger architectural change (more
 game engine, less hand-written, less MapLibre). Three explore passes and a

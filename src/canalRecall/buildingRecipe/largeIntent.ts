@@ -177,9 +177,9 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     bool(w.falseFront, `${at}.falseFront`);
     if (w.boxBalconies !== undefined) problems.push(...boxBalconyProblems(w.boxBalconies, `${at}.boxBalconies`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
     if (w.balconyBands !== undefined) {
-      problems.push(...balconyBandsProblems(w.balconyBands, `${at}.balconyBands`, typeof w.storeys === 'number' ? w.storeys : undefined));
+      problems.push(...balconyBandsProblems(w.balconyBands, `${at}.balconyBands`, typeof w.storeys === 'number' ? w.storeys : undefined, typeof w.baysPerStorey === 'number' ? w.baysPerStorey : undefined));
       if (['curtain-wall', 'glazed-hall', 'blank'].includes(w.system)) problems.push(`${at}.balconyBands: on a wall with storeys of openings (not curtain-wall, glazed-hall or blank)`);
-      if (w.balconies?.storeys.some(s => w.balconyBands!.storeys?.includes?.(s))) problems.push(`${at}.balconyBands: not on a storey that also has balconies`);
+      if (w.balconies?.storeys.some(s => w.balconyBands!.storeys?.includes?.(s) || (Array.isArray(w.balconyBands!.spans) && w.balconyBands!.spans.some(x => x?.storey === s)))) problems.push(`${at}.balconyBands: not on a storey that also has balconies`);
     }
     if (w.stackedBlocks !== undefined) {
       problems.push(...stackedBlocksProblems(w.stackedBlocks, `${at}.stackedBlocks`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));

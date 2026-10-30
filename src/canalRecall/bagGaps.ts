@@ -193,3 +193,48 @@ export function appendSupplement<T extends { properties: { id?: unknown }; geome
   }
   return { features, added, skipped };
 }
+
+/**
+ * Clearance under a pand's roof face that a car road runs beneath at grade.
+ * Amstel station's 3DBAG roofs cover the Julianaplein underpass below the rail
+ * viaduct; drawn from the ground they close the road, so they start here.
+ */
+export const DECK_CLEARANCE_M = 4.5;
+/** Road metres under one roof face that make it a deck rather than a wall. */
+export const DECK_MIN_ROAD_M = 5;
+/** Only road this far inside a face's edge counts: roads hugging a wall are beside it, not under it. */
+export const DECK_ROAD_INSET_M = 3;
+
+export interface PartFace { rings: Ring[]; topM: number; roadInsideM: number; areaM2: number }
+export interface PartFeature {
+  type: 'Feature';
+  properties: { id: string; pand: string; tier: 3; minHeight: number; height: number; heightSource: '3dbag-lod13-face'; bagGap: true; year?: number };
+  geometry: { type: 'Polygon'; coordinates: number[][][] };
+}
+
+/** Tile id for one roof part of a pand (not a pand id: `isPandId` is a prefix test). */
+export const partFeatureId = (pandId: string, index: number): string => `part:${pandId}:${index}`;
+
+/**
+ * An over-road hole drawn as its LoD1.3 roof parts: faces with no road under
+ * them stand on the ground, faces over a road become decks above the
+ * clearance, and a face too low to clear it is left out.
+ */
+export function overRoadPartFeatures(pandId: string, faces: readonly PartFace[], year: number | null): PartFeature[] {
+  const r6 = (v: number) => Math.round(v * 1e6) / 1e6, r2 = (v: number) => Math.round(v * 100) / 100;
+  const out: PartFeature[] = [];
+  faces.forEach((face, i) => {
+    if (face.areaM2 < MIN_FILL_AREA_M2 || face.topM < MIN_FILL_HEIGHT_M) return;
+    const deck = face.roadInsideM >= DECK_MIN_ROAD_M;
+    if (deck && face.topM < DECK_CLEARANCE_M + 1.5) return;
+    out.push({
+      type: 'Feature',
+      properties: {
+        id: partFeatureId(pandId, i), pand: pandId, tier: 3, minHeight: deck ? DECK_CLEARANCE_M : 0, height: r2(face.topM),
+        heightSource: '3dbag-lod13-face', bagGap: true, ...(year !== null ? { year } : {}),
+      },
+      geometry: { type: 'Polygon', coordinates: face.rings.map(r => r.map(([x, y]) => [r6(x), r6(y)])) },
+    });
+  });
+  return out;
+}

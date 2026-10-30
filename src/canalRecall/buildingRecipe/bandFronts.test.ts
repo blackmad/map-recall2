@@ -13,7 +13,8 @@ import fs from 'node:fs';
 import sharp from 'sharp';
 import type {FacadeBox} from './measureFacade.ts';
 import {rowOpenings} from './rowOpenings.ts';
-import {bandFrontProposal, GLAZED_STOREY_MIN, photoRowBands, RIBBON_FRONT, type RowBands} from './bandFronts.ts';
+import {BALCONY_SPANS, balconySpansProposal, bandFrontProposal, GLAZED_STOREY_MIN, photoRowBands, RIBBON_FRONT, type RowBands} from './bandFronts.ts';
+import {LIGHT_RUN, lightRuns} from './lightBands.ts';
 import type {LightBand} from './lightBands.ts';
 import {validateLargeIntent} from './largeIntent.ts';
 import {compileBuilding} from './compile.ts';
@@ -108,4 +109,63 @@ test('balconyBands compile: drawn when present, absent compiles without it (byte
   const b = compileBuilding(validateLargeIntent(banded), f);
   assert.ok((b.components.balconyBands ?? 0) >= 2, `runs ${b.components.balconyBands}`);
   assert.notEqual(meshHashOf(b.group), meshHashOf(plain.group));
+});
+
+// ---- part-width balcony bands (GitHub #127) ------------------------------------------------------------------------
+test('balconyBands.spans schema: bay ranges per storey, in the bay grid, no overlap, a storey in storeys or spans', () => {
+  const ok = {storeys: [], spans: [{storey: 1, bays: [[0, 1], [3, 5]]}, {storey: 2, bays: [[7, 9]]}], kind: 'glass'};
+  assert.deepEqual(balconyBandsProblems(ok, 'b', 5, 17), []);
+  assert.deepEqual(balconyBandsProblems({storeys: [3], spans: ok.spans}, 'b', 5, 17), [], 'full-width storeys beside spans');
+  assert.match(balconyBandsProblems({storeys: [], spans: [{storey: 1, bays: [[0, 17]]}]}, 'b', 5, 17).join(), /bay ranges/);
+  assert.match(balconyBandsProblems({storeys: [], spans: [{storey: 1, bays: [[0, 3], [2, 5]]}]}, 'b', 5, 17).join(), /overlap/);
+  assert.match(balconyBandsProblems({storeys: [1], spans: [{storey: 1, bays: [[0, 1]]}]}, 'b', 5, 17).join(), /also a full-width band/);
+  assert.match(balconyBandsProblems({storeys: [], spans: [{storey: 1, bays: [[0, 1]]}, {storey: 1, bays: [[4, 5]]}]}, 'b', 5, 17).join(), /two span rows/);
+  assert.match(balconyBandsProblems({storeys: []}, 'b', 5, 17).join(), /storeys: list/, 'empty storeys need spans');
+  assert.match(balconyBandsProblems({storeys: [], spans: [{storey: 5, bays: [[0, 1]]}]}, 'b', 5, 17).join(), /storeys 1\.\.4/);
+});
+
+test('balconyBands.spans runs: one slab per bay range on the main panel only; none without the bay count', () => {
+  const levels = [0, 3.5, 7, 10.5, 14], f = fitBalconyBands({storeys: [], spans: [{storey: 2, bays: [[7, 9]]}, {storey: 1, bays: [[3, 5], [0, 1]]}]}, {slab: 's', rail: 'r', glass: 'g'});
+  const runs = balconyBandRuns({uMin: 0, uMax: 17}, levels, f, 15, () => true, 17);
+  assert.deepEqual(runs.map(r => [r.storey, r.u0, r.u1]), [[1, 0, 2], [1, 3, 6], [2, 7, 10]]);
+  assert.deepEqual(balconyBandRuns({uMin: 0, uMax: 17}, levels, f, 15, () => true), [], 'another panel of the group draws no spans');
+  // a run shorter than BALCONY_BAND.minRunM is not drawn (one 1 m bay)
+  assert.deepEqual(balconyBandRuns({uMin: 0, uMax: 17}, levels, fitBalconyBands({storeys: [], spans: [{storey: 1, bays: [[0, 0]]}]}, {slab: 's', rail: 'r', glass: 'g'}), 15, () => true, 17), []);
+});
+
+test('balconyBands.spans compile: spans draw on the main panel; the same intent without spans is the plain band mesh', () => {
+  const HOUSES = 'scripts/building-recipes/houses', id = 'haarlemmerweg-778';
+  const raw = () => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8')), f: BuildingFacts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+  const banded = raw(), gi = banded.walls.findIndex((w: any) => ['brick-bay-grid', 'ribbon-windows'].includes(w.system) && !w.balconies);
+  banded.walls[gi].balconyBands = {storeys: [1], kind: 'glass'};
+  const plain = compileBuilding(validateLargeIntent(banded), f);
+  const spanned = raw(), bays = compileBuilding(validateLargeIntent(raw()), f).recipe.groups[gi].bays;
+  assert.ok(bays >= 4, `bays ${bays}`);
+  spanned.walls[gi].balconyBands = {storeys: [1], spans: [{storey: 2, bays: [[0, 1], [bays - 2, bays - 1]]}], kind: 'glass'};
+  const b = compileBuilding(validateLargeIntent(spanned), f);
+  assert.ok((b.components.balconyBands ?? 0) > (plain.components.balconyBands ?? 0), `runs ${b.components.balconyBands} vs ${plain.components.balconyBands}`);
+  assert.notEqual(meshHashOf(b.group), meshHashOf(plain.group));
+});
+
+test('lightRuns: part-width light parapets on the floor lines, gaps under LIGHT_RUN.gapM bridged, sky over the top line not read', () => {
+  // a 20 m x 10 m wall at 20 px/m, dark wall, storey lines every 3 m; light slabs on storey 1 at 2..6 m (a 0.25 m post
+  // gap at 4 m) and storey 2 at 10..14 m; a lone 1 m light frame on storey 2 at 17 m
+  const ppm = 20, W = 20, H = 10, width = W * ppm, height = H * ppm, rgb = new Uint8Array(width * height * 3).fill(50), valid = new Uint8Array(width * height).fill(255), topM = H;
+  const paint = (u0: number, u1: number, v0: number, v1: number) => { for (let y = Math.round((topM - v1) * ppm); y < Math.round((topM - v0) * ppm); y++) for (let x = Math.round(u0 * ppm); x < Math.round(u1 * ppm); x++) rgb.fill(220, (y * width + x) * 3, (y * width + x) * 3 + 3); };
+  paint(2, 4, 3, 4); paint(4.25, 6, 3, 4); paint(10, 14, 6, 7); paint(17, 18, 6, 7);
+  const runs = lightRuns({image: {width, height, rgb, valid, ppm, topM}, wall: [50, 50, 50]}, [0, 3, 6, 9, 9.5]);
+  assert.deepEqual(runs, [{storey: 1, u0: 2, u1: 6}, {storey: 2, u0: 10, u1: 14}]);
+  assert.ok(LIGHT_RUN.minRunM > 1, 'a lone light frame is not a run');
+});
+
+test('balconySpansProposal: bay ranges of the part-width storeys; full-width storeys, lone bays and thin evidence propose nothing', () => {
+  const base = {bays: 17, storeys: 5, usable: 0.8, foliage: 0.05, washedOut: 0.1};
+  const runs = [{storey: 1, from: 0.18, to: 0.35}, {storey: 1, from: 0.65, to: 0.77}, {storey: 2, from: 0.41, to: 0.53}, {storey: 3, from: 0.02, to: 0.98}];
+  const p = balconySpansProposal({...base, runs});
+  assert.deepEqual(p.balconyBands, {storeys: [], spans: [{storey: 1, bays: [[3, 5], [11, 12]]}, {storey: 2, bays: [[7, 8]]}], kind: 'glass'});
+  assert.match(p.why.join(), /storey 3: light across 96 %/);
+  assert.equal(balconySpansProposal({...base, runs: runs.filter(r => r.storey !== 2)}).balconyBands, null, `under ${BALCONY_SPANS.minStoreys} part-width storeys`);
+  assert.equal(balconySpansProposal({...base, runs: [{storey: 1, from: 0.1, to: 0.13}, {storey: 2, from: 0.5, to: 0.53}]}).balconyBands, null, 'lone light bays');
+  assert.equal(balconySpansProposal({...base, washedOut: 0.5, runs}).balconyBands, null, 'washed out');
+  assert.equal(balconySpansProposal({...base, runs, taken: [1]}).balconyBands, null, 'storey 1 claimed by another field');
 });

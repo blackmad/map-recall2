@@ -77,3 +77,26 @@ test('panelCoverageStraight: an oblique last piece is dropped when the straight 
   // nothing oblique: identical to panelCoverage
   assert.deepEqual(panelCoverageStraight(straight, panelOn(a, b), anchor), panelCoverage(straight, panelOn(a, b), anchor));
 });
+
+test('setbackCoverage: a slab behind a low plinth on the crop edge pairs by central projection (063809, #127)', async () => {
+  const {setbackCoverage, SETBACK, matchCropToPanel: match} = await import('./cropToPanel.ts');
+  // Burgemeester Hogguerstraat in miniature: the BAG edge (x = 0, outward +x) is the 2.9 m plinth's front, the slab
+  // stands 6 m behind it, the camera 25 m out at 1.1 m NAP
+  const crop = {tag: 'w01', file: 'w01.jpg', a: [0, 0] as [number, number], b: [0, 88] as [number, number], normal: [1, 0] as [number, number], ppm: 25, widthPx: 2200, heightPx: 1100,
+    wallHeightM: 45, baseZ: -1.3, obliquityDeg: 3.7, cameraDistM: 25, cameraRD: [25, 44, 1.1]};
+  const panel = (index: number, x: number, vMax: number) => ({index, o: [x, 0, 0], r: [0, 0, -1], n: [1, 0, 0], uMin: 0, uMax: 88, vMax});
+  const slab = panel(8, -6, 43.8), plinth = panel(13, 0, 2.9);
+  assert.equal(match(crop, slab, [0, 0]).relation, 'offset', 'the slab alone pairs nothing');
+  const sb = setbackCoverage([crop], slab, [0, 0], [plinth, slab], 45, 42.5);
+  assert.ok(sb.coverage >= 0.99, `coverage ${sb.coverage}`);
+  const m = sb.pieces[0].match;
+  assert.equal(m.setback!.setbackM, 6);
+  assert.ok(Math.abs(m.setback!.depthScale - 25 / 31) < 1e-3);
+  // the slab's ends project towards the camera's foot (along 44)
+  assert.ok(Math.abs(m.alongAtUMin - (44 - 44 * 25 / 31)) < 0.01 && Math.abs(m.alongAtUMax - (44 + 44 * 25 / 31)) < 0.01, `${m.alongAtUMin}..${m.alongAtUMax}`);
+  // a tall front on the edge hides the slab; a crop too short for the projected top, or a panel in front, pairs nothing
+  assert.equal(setbackCoverage([crop], slab, [0, 0], [panel(13, 0, SETBACK.frontMaxM + 1), slab], 45, 42.5).pieces.length, 0);
+  assert.equal(setbackCoverage([{...crop, wallHeightM: 32}], slab, [0, 0], [plinth, slab], 45, 42.5).pieces.length, 0);
+  assert.equal(setbackCoverage([crop], panel(9, 3, 20), [0, 0], [plinth], 45).pieces.length, 0);
+  assert.equal(setbackCoverage([crop], panel(9, -(SETBACK.maxM + 1), 20), [0, 0], [plinth], 45).pieces.length, 0);
+});

@@ -54,14 +54,20 @@ no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
-inferred-install policy; running under policy A meanwhile). Next spend, per
-the kill rule: a kit lane for floor bands on curtain walls (unlocks 19
-triage `curtain` candidates and the 95 inferred glass installs' FAILs), the
-32 m crop cap raised for the 95 `tower` candidates (`all-walls.ts
---max-height`, needs a re-crop), and the three self-test gaps (glazed
-pavilion under a deep roof, glazed sawtooth hall, painted-black front with
-white balconies). Self-test drafts sit in the skill worktree's
-`staging/landmark-lane-selftest/`, uncommitted (they would move fit-golden).
+inferred-install policy; running under policy A meanwhile). Spent since, per
+the kill rule: floor bands on curtain walls (#116), the 70 m crop cap for
+towers (round 3), band fronts (#126, #127: `balconyBands.spans`, ribbon and
+glazed-storey proposals) and the band measurement blockers (#134, HISTORY
+"Band fronts measured"): painted floor bands no longer count as washed-out
+glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
+groups are probed again when a crop pairs them. Measured result: 0 of 253
+inferred groups moved and none of the 17 ride-landmark drafts passes yet;
+what still blocks them is in the tier sheet (item 8). Next spend by blocked
+ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
+closer-crop or second-capture signal for pale brick fronts (240435) that the
+cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
+would move fit-golden).
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
@@ -1065,17 +1071,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
-  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
-  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
-  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
-  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
-- **Buildings over roads: re-scan as a check (2026-10-30).** After the
-  underground and void drops, about 375 footprints still cover ≥ 6 m of a
-  car-road centreline. The ones looked at are real (IJ-tunnel portals,
-  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
-  bridges), but the list has not been read end to end. Make the one-off scan
-  a check with an allowlist.
+- **Real buildings over car roads are solid to the ground (2026-10-30).**
+  `check:buildings-over-roads` lists 43 reviewed footprints on ≥ 20 m of car
+  road (`scripts/data/buildings-over-roads.json`): the ArenA over
+  Burgemeester Stramanweg, Station Noord over the Nieuwe Leeuwarderweg,
+  Oosterdokseiland, the IJ-tunnel and Piet Heintunnel portals, Science Park.
+  Each has a real roof (3DBAG roof cover ≥ 37 %), but it is drawn from the
+  ground, so a rider on a road that passes under it at street level rides
+  into a wall. Tunnelled roads (IJ-tunnel, Piet Heintunnel) are fine. Draw
+  the street-level passages from 3DBAG LoD1.3 parts, as Amstel station is
+  (`scripts/fill-over-road-holes.ts`, decks above `DECK_CLEARANCE_M`), and
+  take each one off the reviewed list. Also: the four Jan van Zutphenstraat
+  towers (`w1313016955`–`60`, no BAG match) are drawn at the 9 m default,
+  but the orthophoto shadows show high-rise blocks.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
