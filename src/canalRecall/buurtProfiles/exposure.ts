@@ -68,6 +68,12 @@ export function fitExposure(samples: ExposureSample[], target: { L: number; C: n
   return { reference, referenceMedian, target, city, sources: out };
 }
 
+/**
+ * The lightest bare brick a profile draws (#121). Thumbnail brick reads L* 25-55 (median 35); a brick reading above
+ * 60 is sunlit glare (Leidsebuurt red brick in sun reads L* 65), and at the old bound (72) with the brick chroma lift it
+ * drew as salmon L* 72 C* 34 (`#e3a280`-like swatches in most centre profiles, against the darker photos).
+ */
+export const BRICK_MAX_L = 60;
 /** Brick hues stay red to brown (Lab hue 32-56; #102 sheets: 24 drew salmon-pink, 66 ochre); a near-grey wall's hue is noise and takes the city's. */
 export const brickHue = (h: number): number => { const x = ((h % 360) + 360) % 360; return x > 200 ? 32 : Math.max(32, Math.min(56, x)); };
 
@@ -78,9 +84,9 @@ export function applyExposure(model: ExposureModel, source: string, lab: Lab, pa
   const L2 = Math.max(14, Math.min(92, L + s.dL + model.city.lift));
   if (painted) return [L2, a * 0.5, b * 0.5];
   if (s.via === 'none') return [L2, a, b];
-  // Bare brick is never lighter than L* 72 (sun glare or a pale stone band) nor greyer than C* 12 (a shaded wall's
-  // lost colour; its hue still says red or brown), and stays inside cropWallColour's brick family (C* <= 0.9 L* + 8).
-  const Lb = Math.min(72, L2);
+  // Bare brick is never lighter than BRICK_MAX_L (sun glare or a pale stone band) nor greyer than C* 12 (a shaded
+  // wall's lost colour; its hue still says red or brown), and stays inside cropWallColour's brick family (C* <= 0.9 L* + 8).
+  const Lb = Math.min(BRICK_MAX_L, L2);
   const C = Math.max(12, Math.min(34, 0.9 * Lb + 8, chromaOf(lab) * s.chroma * model.city.chroma));
   const h = brickHue(chromaOf(lab) < 4 ? model.target.h : hueOf(lab) + s.dh + model.city.dh) * Math.PI / 180;
   return [Lb, C * Math.cos(h), C * Math.sin(h)];

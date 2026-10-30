@@ -52,7 +52,7 @@ test('too few shared pands falls back to median-to-median against the reference'
 
 test('only physically impossible brick is clamped; paint keeps half its tint', () => {
   const model = fitExposure(city(), TARGET, { reference: 'thumb' });
-  assert.equal(applyExposure(model, 'thumb', brick(85))[0], 72, 'glare');
+  assert.equal(applyExposure(model, 'thumb', brick(85))[0], 60, 'glare');
   assert.equal(applyExposure(model, 'thumb', brick(5))[0], 14, 'deep shadow');
   const grey = applyExposure(model, 'thumb', brick(30, 1));
   assert.ok(Math.hypot(grey[1], grey[2]) >= 12 - 1e-9, 'a shaded wall keeps brick colour');
