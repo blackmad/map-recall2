@@ -42,13 +42,15 @@ import {requireSourceData} from './sourceData.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {LARGE_BUDGET_TRIANGLES} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import {proposeBands} from '../../src/canalRecall/buildingRecipe/lightBands.ts';
-import {cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
+import {budgetBlankedGroups, withoutBudgetBlanked, cropPredatesBuilding, sameMeasuredIntent, settledShape, curtainEvidence, glassReadsAsGlass, glazedPlinth, majoritySystem, photoBays, windowGroupProposal} from '../../src/canalRecall/buildingRecipe/measureWriteback.ts';
 import {draftBudgetCap, inheritedWall, isDraftIntent} from '../../src/canalRecall/buildingRecipe/draftLarge.ts';
 import {proposeHouses, roofProfile, roofSteps} from '../../src/canalRecall/buildingRecipe/rowSplit.ts';
 import {balconySpansProposal, bandFrontProposal} from '../../src/canalRecall/buildingRecipe/bandFronts.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
+/** the system draftLarge.ts gives every group (a budget-blanked group is probed with it, #134) */
+const DRAFT_SYSTEM = 'brick-bay-grid' as const;
 const SYSTEM_OF = {punched: 'brick-bay-grid', ribbon: 'ribbon-windows', curtain: 'curtain-wall'} as const;
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
@@ -262,9 +264,25 @@ async function capDraftBudget(id: string, file: string) {
 
 export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean; measuredFile?: string; balconySpans?: boolean}) {
   requireSourceData();
-  const {likeness, report, built} = await compileLargeHouse(id);
-  if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
   const file = path.join(HOUSES, id, 'intent.json'), intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8'));
+  let {likeness, report, built} = await compileLargeHouse(id);
+  if (!likeness) throw Error(`${id}: no archived crops for pand ${report.pandId} (all-walls.ts --pand=${report.pandId} --archive)`);
+  // groups the draft's triangle budget drew blank (#134): compiled with the draft's system, a group a crop now pairs is
+  // drawn and measured again; the budget is re-applied after measuring (capDraftBudget). No such group: nothing changes.
+  const blanked = isDraftIntent(intent) ? budgetBlankedGroups(intent) : [], unblanked: number[] = [];
+  if (blanked.length) {
+    const probe: LargeBuildingIntent = structuredClone(intent);
+    for (const gi of blanked) probe.walls[gi] = {...probe.walls[gi], system: DRAFT_SYSTEM};
+    const p = await compileLargeHouse(id, probe);
+    unblanked.push(...blanked.filter(gi => p.likeness?.some(g => g.group === gi && g.status === 'measured')));
+    if (unblanked.length) {
+      for (const gi of unblanked) intent.walls[gi] = {...intent.walls[gi], system: DRAFT_SYSTEM};
+      intent.notes = withoutBudgetBlanked(intent.notes ?? [], unblanked);
+      ({likeness, report, built} = unblanked.length === blanked.length ? p : await compileLargeHouse(id, intent));
+      console.log(`  budget-blanked groups ${unblanked.join(', ')} now pair a crop: drawn as ${DRAFT_SYSTEM} and measured`);
+    }
+  }
+  if (!likeness) throw Error(`${id}: no likeness`);
   const summary = likenessSummary(likeness);
   const out = {id, pandId: intent.pandId, date: today(), method: 'measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation',
     groups: summary.map((row, i) => ({...row, gaps: groupGaps(intent.walls[likeness[i].group], likeness[i])}))};
@@ -304,6 +322,7 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
   const before: LargeBuildingIntent = structuredClone(intent), keepShape = new Set<number>();
   for (const g of likeness) {
     const w = intent.walls[g.group], {patch, notes: n} = proposeGroup(w, g, {...opts, builtYear, rows, layered: intent.layeredKit !== false, fallbackSystem: trusted.length ? majoritySystem(trusted, w.system) : undefined});
+    if (unblanked.includes(g.group)) n.unshift(`un-blanked: drawn blank by the triangle budget, a crop (${g.crop?.tag ?? '-'}) now pairs it`);
     if (!Object.keys(patch).length) { notes.push(...n.map(t => `walls[${g.group}] ${t}`)); continue; }
     if (settledShape(w, patch, {measuredBefore: !!before.measured?.groups.includes(g.group), sources: before.sources, crops: cropSources(g)})) { delete patch.windowShape; keepShape.add(g.group); }
     Object.assign(w, patch); measuredGroups.push(g.group); notes.push(...n.map(t => `walls[${g.group}] ${t}`));
