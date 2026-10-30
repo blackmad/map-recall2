@@ -246,7 +246,9 @@ class VectorBasemap {
       interactive: false,
       pixelRatio: canalRecallPixelRatio(),
       attributionControl: false,
-      fadeDuration: 0,
+      // Symbol labels (neighbourhoods, the basemap's names) fade in and out
+      // rather than snap as the camera moves (user 2026-10-30, #122).
+      fadeDuration: 300,
       // MapLibre's default maxPitch is 60; Chase may sit lower (game/preferences.ts MAP_MAX_PITCH).
       maxPitch: canalRecallMaxPitch()
     });

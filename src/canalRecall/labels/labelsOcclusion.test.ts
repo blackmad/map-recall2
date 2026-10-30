@@ -83,3 +83,6 @@ test('screen duplicates: a marked place and its other spelling are left out', ()
   // Destinations always stay.
   assert.equal(screenDuplicateIds([c('destination', 'Central Station', 4.8998, 52.37846, 'destination', 999)], [{ id: 'cs', name: 'Central Station' }]).size, 0);
 });
+
+// The fade, on-screen angle, end-point occlusion and pill tests (#122) run with this suite in test:hud.
+import './labelFade.test.ts';

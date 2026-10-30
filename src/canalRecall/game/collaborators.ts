@@ -4,6 +4,7 @@
 // `vector-map.js` stay untyped JavaScript, and satisfying these interfaces is
 // what makes the typed subsystems safe to install onto them.
 
+import type { StreetLabelPlacement } from '../labels/labelFade';
 import type { LandmarkCardLayout, PostcardLayout } from '../noticeCards';
 import type { BuildingHit, LandmarkNotice, WorldPoint } from './worldTypes';
 import type { StreetLabelAnchor } from './streetLabelCandidates';
@@ -171,7 +172,9 @@ export interface Track {
      *  every test above still runs on the raw name. */
     shownText?: (text: string) => string,
     /** True when a building hides the label's anchor from the camera (labels/streetLabelOcclusion.ts). */
-    hiddenBy?: ((label: StreetLabelAnchor) => boolean) | null,
+    hiddenBy?: ((label: StreetLabelAnchor, ends?: readonly WorldPoint[]) => boolean) | null,
+    /** Fade, placement hysteresis and on-screen angle per name (labels/labelFade.ts, #122). */
+    placement?: StreetLabelPlacement | null,
   ): void;
 }
 
