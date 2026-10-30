@@ -15,6 +15,7 @@ import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
+import { KERB_LOW_CLASSES } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
@@ -23,7 +24,7 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_SPOTS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_SPOTS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, WET_DECKS, wetDeckWater, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
@@ -782,7 +783,8 @@ async function roadRegressions(): Promise<void> {
       // all the polygons around them).
       if (ways.length < reg.ways.length || !n.index || roadsStore.cellAt(ways[0].points[0][0], ways[0].points[0][1]) !== key) continue;
       found = true;
-      const index = n.index, onRoad = (x: number, y: number) => index.onRoad(x, y) || index.classAt(x, y) === null;
+      // Road level: the zebra is painted across the fietspad and the parking strip too (lane zebra-munt 2026-10-30).
+      const index = n.index, onRoad = (x: number, y: number) => index.onRoad(x, y) || index.classAt(x, y) === null || index.classAt(x, y) === 'cycle';
       const r = zebraOffRoad(n.cells, ways, reg, onRoad);
       check(r.off.length === 0, `${reg.id} roads-v1: ${r.dashes} paint triangles at the crossings, ${r.off.length} off the carriageway polygons${r.off.length ? ` ${JSON.stringify(r.off.slice(0, 6))}` : ''}`);
       const before = await neighbourhood(store, ...c), b = zebraOffRoad(before.cells, before.ways.filter(w => reg.ways.includes(w.id)), reg, onRoad);
@@ -794,7 +796,9 @@ async function roadRegressions(): Promise<void> {
   for (const reg of SURVEY_PAINT) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
     if (!roadsStore.roadCells.has(n.key) || !n.index) { console.log(`skip ${reg.id} (cell ${n.key} not in roads-v1)`); continue; }
-    const index = n.index, onCarriage = (px: number, py: number) => { const k = index.findAtLevel(px, py, false); return k >= 0 && index.records[k].h === 0 && index.drawClass(k) === 'carriage'; };
+    // Road level (KERB_LOW_CLASSES): zebras run across the fietspad and the parking strip (lane zebra-munt 2026-10-30);
+    // the rest of the survey paint stays on the carriageway by construction (surveyMarkings bar / onCarriage).
+    const index = n.index, onCarriage = (px: number, py: number) => { const k = index.findAtLevel(px, py, false); return k >= 0 && index.records[k].h === 0 && (KERB_LOW_CLASSES as readonly string[]).includes(index.drawClass(k)); };
     const r = surveyPaint(n.cells, [x, y], reg.radiusM, onCarriage);
     check(r.off.length === 0 && r.paint >= reg.minPaint, `${reg.id} roads-v1: ${r.paint} paint triangles within ${reg.radiusM} m (≥ ${reg.minPaint}), ${r.off.length} off the carriageway polygons${r.off.length ? ` ${JSON.stringify(r.off.slice(0, 6))}` : ''}`);
   }
@@ -823,6 +827,16 @@ async function roadRegressions(): Promise<void> {
     const off = await neighbourhood(noEnds, x, y), offDeck = noEnds.surface.decks.find(d => d.profile.id === reg.id)!;
     const p = deckEndMisses(off.cells, offDeck);
     check(p.misses.length >= reg.pinMin, `${reg.id}: without the deck-end fix ${p.misses.length} misses (≥ ${reg.pinMin}, the pin is live)`);
+  }
+  // Surveyed ground over mapped water (user 2026-10-30, the Muntplein over the Singel; wetGround.ts).
+  const dry = new GroundStore(readExtract, { roads: true, wetGround: false });
+  await dry.init();
+  for (const reg of WET_DECKS) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
+    if (!n.index) { check(false, `${reg.id}: cell ${n.key} not in roads-v1`); continue; }
+    const r = wetDeckWater(n.cells, [x, y], reg.radiusM, n.index), off = wetDeckWater((await neighbourhood(dry, x, y)).cells, [x, y], reg.radiusM, n.index);
+    check(r.water.length <= reg.maxWater, `${reg.id} (${reg.label}): ${r.water.length}/${r.probes} probes on BGT ground show only water (≤ ${reg.maxWater})${r.water.length ? ` ${JSON.stringify(r.water.slice(0, 6))}` : ''}`);
+    check(off.water.length >= reg.pinMin, `${reg.id}: without the wet-ground rule ${off.water.length} probes show water (≥ ${reg.pinMin}, the pin is live)`);
   }
   // Doubled lanes (lane roads-lanes 2026-10-23, R2) and the R4 artefact: at every ROAD_SPOTS crop no red lane ribbon
   // over a BGT cycle polygon and no OSM band surface over any BGT polygon; artifacts/roads/<spot>-vs-ortho.jpg written
