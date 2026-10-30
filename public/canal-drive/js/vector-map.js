@@ -191,10 +191,6 @@ class VectorBasemap {
     this._basemapProximityHideIds = [];
     this._basemapDuplicateScanQueued = false;
     this._buildingsFromTiles = false;
-    this._googleTiles = null;
-    this._googleTilesEnabled = false;
-    this._googleTilesActive = false;
-    this._lastCameraZoom = null;
     this._quizQuietMap = false;
     this._activeLandmark = null;
     this._playerBike = null;
@@ -1409,7 +1405,7 @@ class VectorBasemap {
 
   /**
    * MapLibre's own building layers show only when nothing else draws the city: they hide under
-   * 3DBAG or Google photoreal, and whenever the three.js layer draws every building.
+   * 3DBAG, and whenever the three.js layer draws every building.
    */
   _syncMaplibreBuildingVisibility() {
     if (!this.map) return;
@@ -2000,12 +1996,6 @@ class VectorBasemap {
     this.setActiveLandmark(this._activeLandmark);
   }
 
-  setGoogleTilesEnabled(enabled) {
-    this._googleTilesEnabled = !!enabled;
-    if (!this._googleTilesEnabled && this._googleTiles) this._googleTiles.setEnabled(false);
-    this._updateGoogleTiles();
-  }
-
   /**
    * Camera height above the ground, in metres.
    *
@@ -2022,48 +2012,6 @@ class VectorBasemap {
     } catch (err) {
       return null;
     }
-  }
-
-  /**
-   * Google's mesh earns its place only from the overview camera: at street
-   * zoom it is a smear without building identity. The player-facing quantity
-   * is `camera.zoom` (default 0.50 stays on 3DBAG); MapLibre altitude never
-   * drops to the spike's 25 m cycling height.
-   *
-   * The zoom rule itself, including its hysteresis band, is
-   * `src/canalRecall/building/photorealGate.ts` and is covered by
-   * `npm run test:photoreal-gate`.
-   */
-  _updateGoogleTiles() {
-    if (!this.map) return;
-    const api = window.CanalRecallGoogleTiles;
-    const gate = window.CanalRecallPhotorealGate;
-    if (!gate) return;
-    const want = gate.shouldShowPhotoreal({
-      enabled: this._googleTilesEnabled,
-      cameraZoom: this._lastCameraZoom ?? null,
-      active: this._googleTilesActive,
-    });
-
-    if (want && !this._googleTiles && api && api.GooglePhotorealTiles) {
-      // Built on first use, so a player who never turns it on never pays for
-      // the tileset session, and never sends a request Google would bill.
-      this._googleTiles = new api.GooglePhotorealTiles(this.map, maplibregl, text => this.setGoogleAttribution(text));
-    }
-    if (this._googleTiles) this._googleTiles.setEnabled(want);
-
-    const active = !!(want && this._googleTiles && this._googleTiles.ready);
-    if (active === this._googleTilesActive) return;
-    this._googleTilesActive = active;
-    if (!active) this.setGoogleAttribution('');
-    this._syncDetailedBuildingLayers();
-  }
-
-  setGoogleAttribution(text) {
-    const el = document.getElementById('google-tiles-attribution');
-    if (!el) return;
-    el.textContent = text || '';
-    el.style.display = text ? 'block' : 'none';
   }
 
   setMeasuredColoursOnly(enabled) {
@@ -2113,33 +2061,30 @@ class VectorBasemap {
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     if (this._styleGone()) { this._detailedLayersStale = true; return; }
-    const google = this._googleTilesActive;
-    // 3DBAG and Google must never draw together: they are the same buildings
-    // twice, z-fighting into a shimmer.
-    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google && !this._measuredColoursOnly);
-    const detailed = !this._measuredColoursOnly && !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !this._measuredColoursOnly);
+    const detailed = !this._measuredColoursOnly && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     // The streamed complete city owns every building once its first real tile
     // lands. Never resurrect the basemap copy during a later settings/readiness
     // sync; before that first tile, keep it as the no-empty-city fallback.
-    const hideBasemap = this._measuredColoursOnly || detailed || google || (!!this._completeCityHasBuildings && this._streamedCityDraws());
+    const hideBasemap = this._measuredColoursOnly || detailed || (!!this._completeCityHasBuildings && this._streamedCityDraws());
     // A hard swap: fading the extrusion's opacity does not dissolve it, since its depth still hides the streamed
     // shells (measured: 400 ms of a near-empty city, docs/perf-pop-in-20261016.md).
     if (this.map.getLayer('building-3d')) {
       this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
     }
-    this._facadesHiddenByDetail = detailed || google;
+    this._facadesHiddenByDetail = detailed;
     this._applyFacadeState();
     this._syncMaplibreBuildingVisibility();
     // Signature models are the LoD1 replacement for a handful of landmarks.
-    // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
+    // Hide them under 3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.
     if (this._signatureLandmarks) {
       this._signatureLandmarks.setDepthBiasEnabled(!hideBasemap);
-      this._signatureLandmarks.setEnabled(!detailed && !google && !this._measuredColoursOnly);
+      this._signatureLandmarks.setEnabled(!detailed && !this._measuredColoursOnly);
       this._refreshBuildingSuppression();
     }
     if (this._pyramidalRoofs) this._pyramidalRoofs.setHidden(this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds());
-    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google && !this._measuredColoursOnly);
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !this._measuredColoursOnly);
   }
 
   _absoluteExtractRoot() {
@@ -3025,7 +2970,6 @@ class VectorBasemap {
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
-    this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
     // Not during the start flight: every half-step of zoom re-planned and
@@ -3042,7 +2986,6 @@ class VectorBasemap {
       if (!detached && typeof this._completeCity.setRider === 'function') this._completeCity.setRider(subject[0], subject[1]);
       this._completeCity.followCamera();
     }
-    this._updateGoogleTiles();
     // The start flight's overview is flat, but its pins must still go through
     // MapLibre's projection: the flat camera maths drew them at half the map's
     // scale on a retina desktop, so START sat mid-way along the route line and
