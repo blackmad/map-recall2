@@ -73,6 +73,18 @@ cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
+**Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. Follow-ups:
+the review sheet's IN GAME column times out for every lane
+(`review-sheet.ts` waits on `vectorMap._signatureLandmarks.shown`, which
+the engine programme's frame may no longer fill) and the gallery-card
+capture finds no canvas on `manual-landmarks.html` within 30 s; both are the
+lane issue filed with De Roos. Then capture De Roos from the Vondelpark side
+and the P.C. Hooftstraat for the note, consider a POI or destination for it,
+run a blind counter on `de-roos-elevations.json`, and add a "free-standing
+glazing" class to audit:glb so serres and timber screens are not fitted to
+the ochre and green slots to dodge the opening count.
+
 **City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
 the city look (HISTORY "City look re-levelled; flip pending"); source and
 bundles are on main with the flag still off. A = flip on at level 1 (chunks

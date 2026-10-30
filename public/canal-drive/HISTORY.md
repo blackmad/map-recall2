@@ -193,6 +193,34 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**De Roos, P.C. Hooftstraat 183 (2026-10-30, lane #133).** The 1880 villa on
+the Vondelpark corner, now Centrum De Roos, is a bespoke model
+(`scripts/landmarks/de-roos-builder.ts`, 15,884 triangles, 239 KB, every
+material with a slot). One BAG pand, `0363100012236970` (1880, 679 m²),
+covers the whole complex: the villa, the 1897 Van Arkel / 1912 Jacot wing
+along the Van Eeghenlaan and the 1943 Blomhert garage, so that one pand is
+suppressed and the 2003 and 1991 neighbours are untouched. The inventory has
+38 items (28 modelled, 8 simplified, 2 skipped as too small: the n-sign and
+the INGANG neon); the signature items are the console cornice, the arched
+attic, the garden risalit with pediment, two erkers, the five-light serre,
+the hip-roof tower with pirons, the thermenvenster, the timber serre, the
+mansard, the NW chamfer and the garage windows. The 156° SE wall has no
+panorama and is drawn from 3DBAG and the next wall's axes. Gates: audit:glb
+PASS 3.0, inventory 0 fail, compare:facades on the street front pass,
+check:manual-landmarks 344. The kit still cannot say: the carved door and
+wrought-iron grilles (ochre slats), leaded glass, the dome serre in its
+casing, truly curved arc windows on the rounded SE corner, carved consoles
+and garland friezes; and the audit's opening rules forced free-standing
+timber to the ochre slot and serre glass to green, which a "free-standing
+glazing" audit class would remove. Two tool breaks surfaced: the review
+sheet's IN GAME column times out for every landmark lane (it waits on
+`vectorMap._signatureLandmarks.shown`, see the lane issue filed with this
+entry), and the gallery-card capture finds no canvas on
+`manual-landmarks.html`; the four-side and street strips were rendered
+offline instead. Sources (37 Gemeente Amsterdam panoramas, register 222055,
+BAG and the 3DBAG tile) are archived in map-recall2-source-data under
+`models/de-roos/`.
+
 **City look re-levelled; flip pending (2026-10-30, lane #135, decision #137).**
 The opt-in city look (`?cityLook=1`: one facade shader drawing photo brick
 cells on chunks, recipe houses and bespoke landmarks alike) was dour against
