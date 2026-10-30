@@ -74,7 +74,11 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. The review
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
+"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
+live, a POI or destination card, a re-measured copper tint, and the bounded
+Beeldbank search. The review
 sheet's IN GAME column and the gallery card work again in lane worktrees
 (#139, HISTORY "Review sheet sees the lane's own landmark"); the guard spec
 `tests/e2e/review-sheet-ingame.spec.ts` runs standalone, not in

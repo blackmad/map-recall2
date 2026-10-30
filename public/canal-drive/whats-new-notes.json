@@ -3,6 +3,32 @@
   "notes": [
     {
       "date": "2026-10-30",
+      "title": "The Hirschgebouw on the Leidseplein",
+      "text": "The 1912 Hirsch & Cie department store on the Leidseplein is a bespoke model: the corner tower with its copper dome, gallery and lantern, the raised HIRSCH & Cie lettering on the drum, the round corner with its glazed arch and curved balconies, the giant fluted half-columns, the ground-floor arcade, the triple windows between stone stiles with their iron balconies, the dentil entablature, attic storey and ribbed slate mansards. Fronts measured bay by bay from 14 city panoramas; the rear keeps its 3DBAG shell.",
+      "where": [
+        4.8826,
+        52.3641
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-corner.jpg",
+          "alt": "The Hirschgebouw in the game from the Leidsestraat corner: round corner, dome and the Leidseplein front",
+          "caption": "From the Leidsestraat corner"
+        },
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-leidseplein.jpg",
+          "alt": "The Hirschgebouw's Leidseplein front in the game with the dome behind",
+          "caption": "The Leidseplein front"
+        },
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-corner-phone.jpg",
+          "alt": "The Hirschgebouw in the game on a phone screen",
+          "caption": "Phone"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
       "title": "Fewer 9 m guesses",
       "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",
       "where": [
