@@ -45,7 +45,7 @@ import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
 import type { Rect } from './groundStore.js';
 import { RAIL_VIADUCTS, viaductMesh, type ViaductBuild } from './railViaducts.js';
-import { cutMeshes, cutRing, type Cut } from './tunnels.js';
+import { cutMedianQuads, cutMeshes, cutRing, type Cut } from './tunnels.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
@@ -612,6 +612,13 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const c of cuts) {
     const m = cutMeshes(c, inCell);
     add('deckBody', m.walls, 'deck'); add('asphalt', m.floor, 'band');
+    // The verges between merged carriageways (tunnels.ts cutMedianQuads): grass on the land, which lies on the floors.
+    const quads = cutMedianQuads(c, inCell);
+    if (quads.length) {
+      const g = emptyMesh();
+      for (const q of quads) drapeBisect(g, q.flatMap(p => [p[0], p[1]]), [0, 1, 2, 0, 2, 3], onLand, LIFT.area, fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
+      add('park', g, 'osmArea');
+    }
   }
 
   phase('waterDecks');

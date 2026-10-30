@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GroundField, type LocalToRd } from './heightField';
 import { GroundSurface, type Vec2 } from './surface';
-import { cutMeshes, cutRelief, mergeNeighbours, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
+import { MIN_RISE_M, WALL_REACH_MOTOR_M, cutMeshes, cutRelief, mergeNeighbours, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
 import { buildCell } from './groundCell';
 
 const IDENTITY: LocalToRd = { cx: 0, cy: 0, r: 1, a: [0, 1, 0, 0, 0, 0], b: [0, 0, 1, 0, 0, 0] };
@@ -119,6 +119,16 @@ test('splitAtCrossings: a street at grade over a ramp breaks the strip and marks
   assert.deepEqual(pieces[0].crossed, [false, true]);
   assert.deepEqual(pieces[1].crossed, [true, false]);
   assert.ok(pieces.every(p => p.cut.y.every(y => Math.abs(y - 50) > 4)), 'nothing left under the street');
+});
+
+test('scanSide steps past a low island the relief falls back from, to the wall behind it (motor reach)', () => {
+  // A 0.5 m island at 4-8 m, the floor again to 12 m, then an 8 m wall smeared over 12-16 m.
+  const g = (t: number) => (t > 4 && t < 8 ? 0.5 : 0) + 8 * smooth((t - 12) / 4);
+  const s = scanSide(g, 0, 3.3, null, MIN_RISE_M, WALL_REACH_MOTOR_M)!;
+  assert.ok(s && s.wall && s.depth > 7 && Math.abs(s.reach - 14) < 1, `the wall behind (${JSON.stringify(s)})`);
+  // The low rise alone with nothing behind (a taper's end): it is the side's wall after all.
+  const lone = scanSide(t => (t > 4 && t < 8 ? 0.5 : 0), 0, 3.3, null)!;
+  assert.ok(lone && lone.wall && Math.abs(lone.depth - 0.5) < 0.05 && Math.abs(lone.reach - 4.5) < 1, `the low rise (${JSON.stringify(lone)})`);
 });
 
 test('mergeNeighbours: two carriageways with a median between are one trench, the median on the floor', () => {
