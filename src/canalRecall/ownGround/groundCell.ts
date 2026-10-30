@@ -44,6 +44,7 @@ import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
 import type { Rect } from './groundStore.js';
 import { RAIL_VIADUCTS, viaductMesh, type ViaductBuild } from './railViaducts.js';
+import { cutMeshes, cutRing, type Cut } from './tunnels.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
@@ -96,6 +97,8 @@ export interface CellInput {
   /** Water of the 3×3 neighbourhood (for the mask's distances at seams). */
   waterAround: WaterGeometry[];
   decks: readonly DeckSurface[];
+  /** Tunnel cuts near the cell (tunnels.ts, placed on `surface`): their strips cut the land, their walls are drawn here. */
+  cuts?: readonly Cut[];
   /** Every placed deck's footprint near the cell (street mask exceptions). */
   deckRingsAround: readonly Vec2[][];
   flatDecks: readonly Vec2[][];
@@ -260,6 +263,11 @@ export function buildCell(input: CellInput): BuiltCell {
   const geoAround: WaterGeometry = { polygons: input.waterAround.flatMap(g => g.polygons), shores: input.waterAround.flatMap(g => g.shores), levels: input.waterAround.flatMap(g => g.levels ?? g.polygons.map(() => CANAL_WATER_Z)) };
   const hasWater = geoAround.polygons.length > 0;
   const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, MASK_RANGE_M, input.deckRingsAround) : null;
+  // Tunnel cuts (tunnels.ts): their strips join the land's cut (the mask's R channel) as the water does at a quay; the
+  // street bands (G) and the water tests (overWater) stay as they are.
+  const cuts = (input.cuts ?? []).filter(c => c.bbox[2] >= mx0 && c.bbox[0] <= mx1 && c.bbox[3] >= my0 && c.bbox[1] <= my1);
+  const cutRings = cuts.map(cutRing);
+  const cutMask = cutRings.length ? buildWaterMask({ polygons: cutRings.map(r => [r]), shores: cutRings.map(r => [...r, r[0]]) }, mx0, my0, mx1, my1, res, MASK_RANGE_M) : null;
   const overWater = (x: number, y: number) => !!mask && maskDistance(mask, x, y) < 0;
   const step = fine ? 5 : 10;
   // Everything flat on the land (areas, street bands) drapes on the land grid's own surface plus
@@ -268,8 +276,9 @@ export function buildCell(input: CellInput): BuiltCell {
   // On a deck the measured surface wins (blended over the deck's lateral blend).
   const onLand = (x: number, y: number) => {
     const w = surface.deckWeight(x, y);
-    // Off every deck (nearly every vertex) the riding surface is the relief: the land grid's own surface, one lookup.
-    if (w <= 0) return landZ(x, y);
+    // Off every deck (nearly every vertex) the riding surface is the relief: the land grid's own surface, one lookup;
+    // in a tunnel cut's strip, its floor.
+    if (w <= 0) { if (cuts.length) { const f = surface.cutFloor(x, y); if (f === f) return f; } return landZ(x, y); }
     const h = surface.height(x, y);
     return w >= 1 ? h : h * w + (landZ(x, y) + h - surface.ground(x, y)) * (1 - w);
   };
@@ -584,6 +593,12 @@ export function buildCell(input: CellInput): BuiltCell {
     viaducts.push(built.info);
   }
 
+  // Tunnel cuts: walls, parapets and portals (deckBody, vertex-coloured), the floor under the bands (asphalt).
+  for (const c of cuts) {
+    const m = cutMeshes(c, inCell);
+    add('deckBody', m.walls, 'deck'); add('asphalt', m.floor, 'band');
+  }
+
   phase('waterDecks');
   // Land pockets near junctions (pockets.ts): bare land every layer around encloses, paved under the bands. Near ring only.
   let pockets: PocketStats | null = null;
@@ -626,7 +641,8 @@ export function buildCell(input: CellInput): BuiltCell {
     triangles += byLayer[layer];
     bytes += packedBytes(p);
   }
-  const maskOut: GroundMask | null = mask ? { x0: mask.x0, y0: mask.y0, res: mask.res, width: mask.width, height: mask.height, texels: maskTexels(mask) } : null;
+  const landMask = cutMask ? { ...cutMask, sdf: mask ? cutMask.sdf.map((d, k) => Math.min(d, mask.sdf[k])) : cutMask.sdf, sdfStreets: mask ? mask.sdfStreets : new Float32Array(cutMask.sdf.length).fill(MASK_RANGE_M) } : mask;
+  const maskOut: GroundMask | null = landMask ? { x0: landMask.x0, y0: landMask.y0, res: landMask.res, width: landMask.width, height: landMask.height, texels: maskTexels(landMask) } : null;
   if (maskOut) bytes += maskOut.texels.byteLength;
   phase('pack');
   return {

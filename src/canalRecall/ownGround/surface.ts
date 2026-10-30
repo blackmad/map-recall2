@@ -18,6 +18,7 @@
 
 import { applyLocalToRd, type GroundField, type LocalToRd } from './heightField.js';
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
+import { cutRelief, insideCut, locateCut, type Cut } from './tunnels.js';
 
 export type Vec2 = [number, number];
 export type HeightFn = (x: number, y: number) => number;
@@ -73,6 +74,9 @@ export class GroundSurface {
   private readonly buckets = new Map<number, DeckSurface[]>();
   /** Height used where the field has no tile (keeps a missing tile flat, not a hole). */
   fallbackZ = 0;
+  /** Tunnel cuts (tunnels.ts): ramps into tunnels and slots through embankments, placed once each. */
+  readonly cuts: Cut[] = [];
+  private readonly cutBuckets = new Map<number, Cut[]>();
 
   constructor(readonly field: GroundField, readonly localToRd: LocalToRd, readonly datumNAP: number) {}
 
@@ -82,11 +86,58 @@ export class GroundSurface {
     return this.field.dataStepRd(rx, ry);
   }
 
-  /** Relief only (no decks), scene z. */
-  ground = (x: number, y: number): number => {
+  /** The measured relief alone (no decks, no tunnel cuts), scene z. */
+  relief = (x: number, y: number): number => {
     const [rx, ry] = applyLocalToRd(this.localToRd, x, y);
     const h = this.field.heightRd(rx, ry);
     return h === h ? h - this.datumNAP : this.fallbackZ;
+  };
+
+  /**
+   * Relief (no decks), scene z: the measured relief, except where a tunnel cut says otherwise (tunnels.ts cutRelief:
+   * the wall-top level over the cut's strip, the land behind its walls and over its portals lifted to their tops).
+   */
+  ground = (x: number, y: number): number => {
+    const r = this.relief(x, y);
+    if (!this.cutBuckets.size) return r;
+    const list = this.cutBuckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
+    if (!list) return r;
+    let z = NaN;
+    for (const c of list) {
+      const [x0, y0, x1, y1] = c.bbox;
+      if (x < x0 || x > x1 || y < y0 || y > y1) continue;
+      const h = locateCut(c, x, y);
+      if (!h) continue;
+      const v = cutRelief(c, h, r);
+      if (v === v) z = z === z ? Math.max(z, v) : v;
+    }
+    return z === z ? z : r;
+  };
+
+  /** Place a tunnel cut (tunnels.ts) and index it for `ground`, `height` and `cutFloor`. */
+  addCut(cut: Cut): void {
+    this.cuts.push(cut);
+    const [x0, y0, x1, y1] = cut.bbox;
+    for (let bx = Math.floor(x0 / BUCKET_M); bx <= Math.floor(x1 / BUCKET_M); bx++)
+      for (let by = Math.floor(y0 / BUCKET_M); by <= Math.floor(y1 / BUCKET_M); by++) {
+        const k = bucketKey(bx, by);
+        (this.cutBuckets.get(k) ?? this.cutBuckets.set(k, []).get(k)!).push(cut);
+      }
+  }
+
+  /** The riding floor of a tunnel cut whose strip holds (x, y), or NaN (the lowest where strips overlap). */
+  cutFloor = (x: number, y: number): number => {
+    if (!this.cutBuckets.size) return NaN;
+    const list = this.cutBuckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
+    if (!list) return NaN;
+    let z = NaN;
+    for (const c of list) {
+      const [x0, y0, x1, y1] = c.bbox;
+      if (x < x0 || x > x1 || y < y0 || y > y1) continue;
+      const h = locateCut(c, x, y);
+      if (h && insideCut(c, h)) z = z === z ? Math.min(z, h.floor) : h.floor;
+    }
+    return z;
   };
 
   /** Stations → (x, y, hump above the deck-end chord) at station s. */
@@ -173,10 +224,12 @@ export class GroundSurface {
     return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s, lateral: Math.sqrt(best) };
   }
 
-  /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M). */
+  /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M); a tunnel cut's floor in its strip. */
   height = (x: number, y: number): number => {
     const g = this.ground(x, y);
     const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
+    // In a tunnel cut's strip the floor, unless a deck crosses over it (a street bridged over a ramp keeps its deck).
+    if (this.cutBuckets.size && !(list && this.deckWeight(x, y) > 0)) { const floor = this.cutFloor(x, y); if (floor === floor) return floor; }
     if (!list) return g;
     let z = g;
     for (const deck of list) {
