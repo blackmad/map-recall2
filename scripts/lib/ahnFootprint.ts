@@ -41,17 +41,23 @@ const sample = (r: Raster, x: number, y: number) => {
   return col < 0 || row < 0 || col >= r.width || row >= r.height ? NaN : r.data[row * r.width + col];
 };
 
-/** p70 roof (and eaves/ridge) over the median ground around the footprint; null when AHN has too few samples. */
-export async function ahnForRings(rings: readonly Ring[]): Promise<AhnHeights | null> {
+/** The DSM cells inside the footprint (RD metres, NAP) and the DTM ground around it, in a 6 m pad. */
+export async function ahnCellsForRings(rings: readonly Ring[]): Promise<{ roof: [number, number, number][]; ground: number[] }> {
   const rd = rings.map(r => r.map(p => { const q = lngLatToRd([p[0], p[1]]); return [q.x, q.y] as [number, number]; }));
   const xs = rd.flat().map(p => p[0]), ys = rd.flat().map(p => p[1]), pad = 6;
   const bbox = [Math.floor(Math.min(...xs) - pad), Math.floor(Math.min(...ys) - pad), Math.ceil(Math.max(...xs) + pad), Math.ceil(Math.max(...ys) + pad)];
   const [dsm, dtm] = await Promise.all([raster('dsm_05m', bbox), raster('dtm_05m', bbox)]);
-  const roof: number[] = [], ground: number[] = [];
+  const roof: [number, number, number][] = [], ground: number[] = [];
   // Roof: cell centres inside the footprint, 0.5 m in from the walls is not needed at p70. Ground: DTM in the padded box.
   for (let x = bbox[0] + 0.25; x < bbox[2]; x += 0.5) for (let y = bbox[1] + 0.25; y < bbox[3]; y += 0.5) {
     const inside = rd.some(r => pointInRing([x, y], r as unknown as Ring));
-    if (inside) roof.push(sample(dsm, x, y)); else ground.push(sample(dtm, x, y));
+    if (inside) roof.push([x, y, sample(dsm, x, y)]); else ground.push(sample(dtm, x, y));
   }
-  return ahnHeights(roof, ground);
+  return { roof, ground };
+}
+
+/** p70 roof (and eaves/ridge) over the median ground around the footprint; null when AHN has too few samples. */
+export async function ahnForRings(rings: readonly Ring[]): Promise<AhnHeights | null> {
+  const { roof, ground } = await ahnCellsForRings(rings);
+  return ahnHeights(roof.map(c => c[2]), ground);
 }

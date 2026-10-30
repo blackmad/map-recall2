@@ -30,7 +30,7 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { cutWays, isTunnelTags, planCuts } from './tunnels.js';
+import { cutWays, isTunnelTags, planCuts, type CutWay } from './tunnels.js';
 
 /** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
 export const CUT_REACH_M = 600;
@@ -346,15 +346,24 @@ export class GroundStore {
    * a few hundred metres from its portal) and only stations in that box are scanned, so the worker and the main thread
    * plan the same cuts whatever else they hold.
    */
-  private planCutsFor(n: string): Promise<void> {
+  /** A cell's candidate roads for the cuts (tunnels.ts cutWays), converted once (each plan reads its 3×3). */
+  private readonly cutWayCells = new Map<string, Promise<CutWay[]>>();
+  private cutWaysOf(k: string): Promise<CutWay[]> {
+    let p = this.cutWayCells.get(k);
+    if (!p) { p = this.osmCell(k).then(o => cutWays(o?.ways ?? [], q => toLocal(q[0], q[1]))); this.cutWayCells.set(k, p); }
+    return p;
+  }
+
+  planCutsFor(n: string): Promise<void> {
     let p = this.cutPlans.get(n);
     if (!p) {
       p = (async () => {
         const osm = await this.osmCell(n);
         if (!osm?.ways.some(w => isTunnelTags(w.tags))) return;
         const [x0, y0, x1, y1] = this.cellRect(n), box: Rect = [x0 - CUT_REACH_M, y0 - CUT_REACH_M, x1 + CUT_REACH_M, y1 + CUT_REACH_M];
-        const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.osmCell(k))), this.ensureRelief(box)]);
-        const ways = cutWays(around.flatMap(o => o?.ways ?? []), q => toLocal(q[0], q[1]));
+        const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.cutWaysOf(k))), this.ensureRelief(box)]);
+        // A way crossing a cell edge is in both cells' extracts: once each.
+        const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
         const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
         for (const c of planCuts(ways, this.surface.relief, inCell, this.cutScanned, box)) this.surface.addCut(c);
       })();
@@ -611,7 +620,7 @@ export class GroundStore {
 
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
-    for (const map of [this.water, this.osm, this.parks, this.roads, this.marks, this.rail, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
+    for (const map of [this.water, this.osm, this.parks, this.roads, this.marks, this.rail, this.courtyards, this.waterResident, this.cutWayCells] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
   }
 
   /**

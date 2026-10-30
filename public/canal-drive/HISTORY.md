@@ -1,5 +1,91 @@
 # Canal Recall — what is built
 
+**`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
+engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
+canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a
+fixed-step `tick(dtFixed)` hook; `SharedFrame.drive(matrices)` lets it drive
+the existing participants, so facades, own ground and vehicles render
+unchanged while MapLibre is never constructed. `cameraMap.ts` evaluates
+MapLibre's camera model in metres about the view centre, which is why parity
+with `map.project` is exact (0.00 px over 22 samples on desktop and iPhone)
+rather than the 1.1–3.2 px of the 2026-10-10 prototype, whose frame used a
+linear latitude scale. `ownWorldView.ts` implements the typed `WorldView`
+interface that `vector-map.js` now declares it implements; `game.js` picks it
+under the flag. Rider cover, camera clearance and the game-camera solve were
+lifted into typed modules for both implementations. Under the flag a chase
+ride draws 140–146 calls with 29–30 programs on desktop (851 / 32 on the
+default path, where the basemap pass is included). Labels, overlays, trees,
+landmarks and themes are not drawn under the flag yet; the gate specs cannot
+run under it until they gain a switch.
+
+**Untagged streets under buildings opened; mixed-height gap fills reviewed (2026-10-30).**
+Every building `check-buildings-over-roads` finds standing over a street OSM
+does not tag as passing under it was checked against the PDOK orthophoto.
+Three kinds turned up. In the first, the BAG outline takes in a lane, car
+park or courtyard that the roofs do not cover: Gerard Ruttenhof,
+Staalmeesterslaan, Het Buitenhof, the VUmc, Ottho Heldringstraat and
+Stadionplein. In the second, a road enters a loading bay or garage under the
+building: Ankerweg, Cruquiusweg and Science Park `…063461`. In the third, OSM
+has a building part over a street: Oosterdoksstraat `w453809679` and
+`w779659694`, and Science Park `w1082655793` and `…164372`.
+
+- The ten pands of the first two kinds are listed in
+  `scripts/data/bag-gaps/over-road-pands.json`. `fill-over-road-holes.ts`
+  redraws them from their 3DBAG LoD1.3 roof faces, as it does Amstel station,
+  and drops the whole outline.
+- A high face with a road through it opens only the road strip
+  (`passagePieces`, `buildingPassages.ts`). Lifting the whole face would have
+  stood the one-face Ankerweg warehouse on 4.5 m stilts.
+- The four OSM outlines of the third kind are cut by
+  `scripts/data/passages/passage-overrides.json`. It names the routed street
+  that `cut-building-passages.ts` treats as a passage there.
+- Javakade is Hotel Jakarta, which a landmark model draws. A pand a model
+  hides keeps its one feature, because the runtime hides by exact id, and the
+  script now refuses to draw one.
+- `check-bag-gaps` pins every drawn pand: its parts are present, its outline
+  is gone, and Ankerweg keeps ground parts.
+
+The 13 published gap fills whose AHN ridge stands 10 m or more over their box
+were each reviewed on the orthophoto, with their AHN cells more than 8 m over
+the box plotted:
+
+- **Nine are edge spill**, under 10 m² each of a neighbour's wall or a tree
+  crown, and keep one box.
+- **Three are already drawn.** At Gelderlandplein (`…241555`) the towers are
+  OSM parts over the mall box. At Roeterseiland (`…082861`) the 38 m tower is
+  OSM parts `w751024386` and `w751024387`. At `…237890` the tall cells are the
+  neighbour `…238000`.
+- **The Overtoom 1874 house (`…159138`)** stood at 4.9 m, because its outline
+  runs back over a garden AHN sees at ground. Its 17.6 m street front is now a
+  `tower:` part from the box top up.
+
+This is a typed rule, not an edit by hand. `mixedFillTower`
+(`src/canalRecall/mixedFillTowers.ts`) finds the largest 4-connected group of
+tall cells. The group counts as a tower when it covers at least 50 m² and
+fills at least 60 % of its convex hull, which tree scatter does not.
+`scripts/split-mixed-gap-fills.ts` stages its decisions in
+`scripts/data/bag-gaps/mixed-fill-towers.json`, and `check:mixed-gap-fills`
+in `check:canal` keeps the Overtoom tower at 15–20 m.
+
+**Tunnel cuts round 2 (2026-10-30).**
+- Walls: weathered faces with a pale coping and lip, the wall line smoothed
+  over about 30 m, and headwalls ending halfway to the next carriageway, so
+  the IJ portal reads as one mouth.
+- Neighbouring cuts merge into one trench (`mergeNeighbours`) when the gap is
+  at most 12 m, the floors agree within 1.2 m and the ground between rises at
+  most 1.6 m. The IJ median wedge now sits at −2.3 m; it was a ridge at
+  −1.5 m.
+- A deep ramp carries on through its shallow start (at most 30 m). Slots get
+  lintels where the embankment stands at least 3 m above the floor.
+- False-cut guards: rideable roads are scanned within 120 m of a portal and
+  need walls on both sides for half the run (three Westerpark no-cut
+  regressions).
+- Coverage (`check-tunnels-coverage.ts`): sunken motor approaches cut, 49/59
+  (48 before); rideable mouths or lintels, 35 (5 before).
+- Cost: `prepareCell` at the IJ cell is +0.33 s median at load 7.5, against
+  +0.55 s before this round.
+- 15 named regressions.
+
 **Specs read `vectorMap.camera`, not MapLibre (2026-10-30, #128).** Engine
 programme P0: `vector-map.js` gained a camera facade (`project`, `unproject`,
 `center`, `zoom`, `bounds`, `pitch`, `bearing`, `onFrame`, `whenIdle`) and 41
@@ -14,9 +100,11 @@ baselines with dates and sources (draws 851 2026-10-24, programs 32
 2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
 MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
 budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
-perf scripts against it. Browser verification of the migration is still
-pending: the lane's run was mis-scoped to all 638 tests and held the shared
-Playwright lock for two hours.
+perf scripts against it. Verified the same day: `ride-perf` default variants pass; the two
+migrated specs that fail (`bike-xray`, `complete-city`) fail identically with
+their pre-migration files, so they are reds on main (TODO). The lane's own
+run had been mis-scoped to all 638 tests and held the shared Playwright lock
+for two hours; the lane rules now ask for ≤ 20-minute runs.
 
 **What's New notes link screenshots (2026-10-30).** User: notes should link
 to screenshots, kept in a separate repository so this one does not grow with
@@ -104,6 +192,33 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**City look re-levelled; flip pending (2026-10-30, lane #135, decision #137).**
+The opt-in city look (`?cityLook=1`: one facade shader drawing photo brick
+cells on chunks, recipe houses and bespoke landmarks alike) was dour against
+the sunny frame since the 2026-10-23 pass (whole-frame luma 7 to 16 points
+under the default). Lane #135 raised its level to 1 under the sunny rig (0.9
+stays under `?look=legacy`), gave city chunks the same `litFacadeWallGain`
+the default look uses, and gave unrecorded GLB brick and accent the #73
+sunlit gain, so a chunk in the city look now draws what the default draws:
+Dam 131→138, Kinkerbuurt 128→128, Osdorper Ban 141→141, Prinsengracht
+121→124 (off → on). Two landmark roof rules came with it: the kit's dark
+slate maps to the default measured slate, and level faces of an inferred
+`slate` material draw as bitumen flat roof (Theater Amsterdam, Stedelijk,
+Studio K, The Movies had painted decks). The cost is that landmarks brighten
+at gallery-card size, +13.6 % sun / +15.5 % shade median over 356 GLBs
+against the brief's ±2 %: flag-off landmarks draw raw kit hex with neither
+the brick lift nor the sunlit gain, and one shared brick cannot match both
+them and the chunks. Level 0.85 would hit ±2 % and make the chunks dour
+again, so the choice went to David as #137 with the strip (review/ in the
+screenshots repo). Ride perf is unchanged on desktop (16.7 ms median either
+way, 98 → 104 MB facade textures); iPhone is unmeasured. The gallery review
+now tells GLB-baked inferred slots from explicit tags and renders four-side
+close-ups (`--views`); it found that all 356 models are inferred and none
+explicit, and listed the wrong ones for the re-tag lane #138. The flag-off
+code path is unchanged (verified from the diff; a base-vs-base
+look-consistency control run was not possible with the browser lock
+contended), and the four bundles were rebuilt in the merge commit.
 
 **Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
 measurement blockers from the band kit lanes (#126, #127) are fixed in the
