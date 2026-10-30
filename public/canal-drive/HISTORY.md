@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**What's New notes link screenshots (2026-10-30).** User: notes should link
+to screenshots, kept in a separate repository so this one does not grow with
+every release. Each note may carry `images: [{src, alt, caption?}]`;
+`whats-new.html` renders them as lazy thumbnails under the text (full row on
+phones), opening the full picture in a new tab, and drops a thumbnail whose
+file is missing so a half-pushed note never shows a broken image. `src` is a
+path in `github.com/blackmad/map-recall2-screenshots`
+(`whats-new/YYYY-MM-DD-slug[-before|-after].jpg`, served from
+raw.githubusercontent.com) or a full URL. The rule is in CLAUDE.md, TODO's
+tracking paragraph and the lane hand-back template (SCREENSHOTS line).
+Verified at 1280 and 390 px with a stub notes file; the "In progress" strip
+on the same page was found to be stale (TODO P2).
+
 **Engine programme decided (2026-10-30).** The user asked whether the recurring
 performance and rendering trouble needs a larger architectural change (more
 game engine, less hand-written, less MapLibre). Three explore passes and a
