@@ -293,7 +293,13 @@
       },
       "triangles": 15884,
       "bytes": 239172,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "af0caa99560518f7",
+        "buildVersion": 2,
+        "bytes": 61884,
+        "triangles": 2646
+      }
     },
     "figure-decoupee": {
       "id": "figure-decoupee",
@@ -23082,7 +23088,9 @@
       "name": "Houseboat Museum (Hendrika Maria)",
       "landmarkId": "extract_landmarks_941219842",
       "modelUrl": "./models/houseboat-museum.glb",
-      "suppressOsmIds": ["w174999382"],
+      "suppressOsmIds": [
+        "w174999382"
+      ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
@@ -29181,7 +29189,9 @@
       "name": "Sea Palace",
       "landmarkId": "n13404202880",
       "modelUrl": "./models/sea-palace.glb",
-      "suppressOsmIds": ["w454006714"],
+      "suppressOsmIds": [
+        "w454006714"
+      ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
