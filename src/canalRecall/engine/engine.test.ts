@@ -115,3 +115,44 @@ test('FrameHost: fixed ticks, render on demand, context loss and restore, guarde
   assert.deepEqual(reports, ['webgl-context-lost']);
   host.stop();
 });
+
+test('isWater over the overview water: Singelgracht at the Da Costagracht mouth (named regression)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { decodeOverview } = await import('../ownMap/overviewFormat');
+  const { WaterIndex } = await import('./waterIndex');
+  const file = JSON.parse(gunzipSync(readFileSync(new URL('../../../public/data/extracts/amsterdam/own-map-v1/overview.json.gz', import.meta.url))).toString());
+  const water = new WaterIndex(decodeOverview(file).water);
+  // The Da Costagracht's south end, where it opens into the Singelgracht (OSM waterway end node).
+  assert.equal(water.isWater(4.874311, 52.366508), true, 'Da Costagracht mouth');
+  assert.equal(water.isWater(4.87359, 52.367539), true, 'Da Costagracht');
+  assert.equal(water.isWater(4.877533, 52.366766), true, 'Singelgracht east of the mouth');
+  assert.equal(water.isWater(4.8749, 52.3668), false, 'Da Costakade block beside it');
+});
+
+test('camera clearance: lowers the pitch until the sightline clears, at most CLEARANCE_MAX_DROP', async () => {
+  const { clearCamera, CLEARANCE_MAX_DROP } = await import('./cameraClearance');
+  const square = (w: number, s: number, e: number, n: number, height: number) => ({ properties: { id: 'b', height }, geometry: { type: 'Polygon', coordinates: [[[w, s], [e, s], [e, n], [w, n], [w, s]]] } });
+  const rider: [number, number] = [4.9, 52.37];
+  // A 12 m building 10–20 m south of the rider; the camera sits south, behind it.
+  const mLat = 111320;
+  const wall = square(4.8998, 52.37 - 20 / mLat, 4.9002, 52.37 - 10 / mLat, 12);
+  const eyeAt = (pitch: number) => { const d = 60; const h = d * Math.cos(pitch * Math.PI / 180), back = d * Math.sin(pitch * Math.PI / 180); return { lngLat: [4.9, 52.37 - back / mLat] as [number, number], altitude: h }; };
+  const r = clearCamera(70, rider, rider, eyeAt, () => [wall])!;
+  assert.ok(r.constrained && r.safePitch < 70 && r.safePitch >= 70 - CLEARANCE_MAX_DROP, JSON.stringify(r));
+  const open = clearCamera(70, rider, rider, eyeAt, () => [])!;
+  assert.equal(open.constrained, false);
+});
+
+test('rider cover: covered after the enter hold, cleared after the leave hold', async () => {
+  const { RiderCoverTracker } = await import('./riderCover');
+  const shed = { properties: { id: 'cs', min_height: 0 }, geometry: { type: 'Polygon', coordinates: [[[4.89, 52.37], [4.91, 52.37], [4.91, 52.38], [4.89, 52.38], [4.89, 52.37]]] } };
+  const t = new RiderCoverTracker();
+  let r = t.update([4.9, 52.375], true, 0, () => [shed]);
+  assert.equal(r.covered, false);
+  r = t.update([4.9, 52.375], true, 0.5, () => [shed]);
+  assert.ok(r.covered && r.changed && r.id === 'cs');
+  r = t.update([4.95, 52.375], true, 0.7, () => []);
+  r = t.update([4.95, 52.375], true, 1.5, () => []);
+  assert.equal(r.covered, false);
+});
