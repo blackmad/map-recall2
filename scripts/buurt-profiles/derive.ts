@@ -141,7 +141,7 @@ if (fs.existsSync(WALLS)) for (const dir of fs.readdirSync(WALLS)) {
 console.log('pano walls', panoSeen, 'used', panoUsed);
 
 // 1b. Panorama thumbnails at the street front (sample-panos.ts).
-let thumbUsed = 0;
+let thumbUsed = 0, thumbGated = 0;
 // pano-samples-modern.json (sample-panos.ts --modern, #117): the same measure on BAG year >= 1945 pands, for the modern era.
 const THUMBS = ['staging/buurt-profiles/pano-samples.json', 'staging/buurt-profiles/pano-samples-modern.json'];
 for (const file of THUMBS) if (fs.existsSync(file)) for (const r of JSON.parse(fs.readFileSync(file, 'utf8')).samples as any[]) {
@@ -154,10 +154,13 @@ for (const file of THUMBS) if (fs.existsSync(file)) for (const r of JSON.parse(f
   // The modern pass only ever adds to the modern era: it does not move the calibration, a profile's level, n or older eras.
   const modernPass = file.endsWith('-modern.json') ? { modernPass: true as const } : {};
   if (modernPass.modernPass && eraOf(pand) !== 'modern') continue;
+  // Thumbnail evidence gate (#120, scripts/buurt-profiles/thumb-gate.ts): a modern sample whose view read shade, or
+  // whose sampler family and material disagree, is not measured. Samples without a gate are kept as before.
+  if (modernPass.modernPass && r.gate && !r.gate.pass) { thumbGated++; continue; }
   samples.push({ pand: r.pand, source: 'thumb', era: eraOf(pand), lab: rgbToLab(painted ? r.wall : r.brick), painted, pale: painted ? undefined : r.paleShare >= 0.06, ...modernPass });
   thumbUsed++;
 }
-console.log('panorama thumbnails used', thumbUsed);
+console.log('panorama thumbnails used', thumbUsed, 'modern samples held by the thumbnail gate', thumbGated);
 
 // 2. Block-face houses through their types.
 const types = new Map<string, any>();
