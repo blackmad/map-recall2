@@ -206,6 +206,27 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
+bespoke lanes today shipped sheets with a red IN GAME column and no gallery
+card. The cause was not the engine programme: on the default path the
+MapLibre vector map still fills `_signatureLandmarks.shown` (17 ids in 20 s
+on a ride). The game and `manual-landmarks.html` read the catalogue from
+the committed `js/signature-placement.bundle.js`, which leaf lanes may not
+rebuild, so a lane's new id was never listed and `shown.has(id)` could not
+come true; the gallery had `review.total` 0 and drew no canvas.
+`scripts/landmarks/fresh-signature-bundle.ts` now routes the bundle request
+in Playwright to an in-memory esbuild of `src/canalRecall/landmarks/
+browser.ts` (same entry and global as the npm build), the sheet calls it
+before `goto` and fails fast when the id is missing instead of waiting 60 s
+per wall, `ingame-capture.ts` takes desktop and phone in-game shots at the
+catalogue anchor for named bearings, and `tests/e2e/review-sheet-ingame.
+spec.ts` guards the wait (one desktop test, run standalone with `PW_PORT`).
+Verified on De Roos: the spec passes in 19 s, every wall's IN GAME shot is
+present, and the in-game captures from the P.C. Hooftstraat went into its
+What's New note. The disk filled during this lane (a 1.1 GB throwaway
+worktree and 3 GB of lane artifact dumps); the integrator staged the sheets
+to the screenshots repo and removed them.
+
 **Builder-declared material slots; eight landmarks re-tagged (2026-10-30, lane #138).**
 Every one of the 356 bespoke GLBs took its city-look material slots from
 `infer-material-slots.ts` (by palette name or colour word); none set them

@@ -74,16 +74,16 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. Follow-ups:
-the review sheet's IN GAME column times out for every lane
-(`review-sheet.ts` waits on `vectorMap._signatureLandmarks.shown`, which
-the engine programme's frame may no longer fill) and the gallery-card
-capture finds no canvas on `manual-landmarks.html` within 30 s; both are the
-lane issue filed with De Roos. Then capture De Roos from the Vondelpark side
-and the P.C. Hooftstraat for the note, consider a POI or destination for it,
-run a blind counter on `de-roos-elevations.json`, and add a "free-standing
-glazing" class to audit:glb so serres and timber screens are not fitted to
-the ochre and green slots to dodge the opening count.
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. The review
+sheet's IN GAME column and the gallery card work again in lane worktrees
+(#139, HISTORY "Review sheet sees the lane's own landmark"); the guard spec
+`tests/e2e/review-sheet-ingame.spec.ts` runs standalone, not in
+`check:canal`, because it needs a browser and the shared lock. Follow-ups:
+a POI or destination for De Roos, a blind counter on
+`de-roos-elevations.json`, a "free-standing glazing" class in audit:glb so
+serres and timber screens are not fitted to the ochre and green slots to
+dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
+waited 3 h behind 25 others today; the lock is not fair).
 
 **City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
 the city look (HISTORY "City look re-levelled; flip pending"); source and
