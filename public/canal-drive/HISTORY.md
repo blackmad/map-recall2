@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+**Landmark lane, round 3: the first towers (2026-10-30, #119).** The triage-rules lane landed (61 of 73 known outcomes predicted, was 44; painted/clad, band, curtain-needs-floor-bands rules; tower judged by the crop's own height) and the 95 tower candidates were re-cropped at 70 m (`all-walls.ts --max-height=70 --suffix=h70`, 95 of 95, 25 minutes). Re-triage: buildable 20, kit-gap 158 (painted-or-clad 82, band 79, tower 19, curtain 18, blank 8), no-evidence 107. Eleven newly buildable pands, nine of them towers, went through the factory and one strip: 1 pass after a fix (pand 137174, a slender dark tower; its plinth group is now blank as the photo shows), 10 held. Four holds are the 12k triangle budget, two of them with passing street fronts (123762 passes likeness on both; decision #125). Five are glass or band towers the kit still cannot draw. Cost 1.8 turns per reviewed building; three installs from 40 reviewed since the skill exists.
+
 **Squares are paving to the physics too (2026-10-30).** User report: on the
 Nieuwmarkt south of the Waag the bike "can't go forward, only backwards". The
 2026-10-25 squares fix taught only the road guard (`getGuardRoad`) that
@@ -72,6 +74,8 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
+
+
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
 palettes (kit colours tuned for chunk likeness) as photo measurements; the
