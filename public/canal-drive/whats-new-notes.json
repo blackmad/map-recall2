@@ -3,6 +3,15 @@
  "notes": [
   {
    "date": "2026-10-30",
+   "title": "Zebras across the whole road",
+   "text": "Zebra crossings run as one row across the whole street, cycle lanes included, instead of breaking into stubs at every lane edge, and about 230 real zebras that were dropped now show. The Muntplein no longer shows canal water through the road or stray railing lines across the square.",
+   "where": [
+    4.9117,
+    52.371
+   ]
+  },
+  {
+   "date": "2026-10-30",
    "title": "Ride through the poorts",
    "text": "Streets, cycle paths and alleys that run under a building are open now, with the building carried over them: the poorts into Jordaan hofjes, the Motorwal, and the path under the Jan van Zutphenstraat towers. Buildings OSM left without a height are measured from the AHN height map instead of all standing at 9 m, so those towers rise to 37 m and garden sheds sit low.",
    "where": [

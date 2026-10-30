@@ -21,6 +21,7 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FILE, type PhotoEvidence } from './photoEvidence.js';
+import { wetGroundRings } from './wetGround.js';
 import { decodeRoadLine, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import { decodeRail, isRailCell, RAIL_EXTRACT, type RailManifest, type RailWay } from './railTracks.js';
@@ -115,7 +116,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -594,6 +595,20 @@ export class GroundStore {
     return p;
   }
 
+  private readonly wetGroundMemo = new WeakMap<RoadCell, Vec2[][]>();
+  /** The road cell's ground polygons over water that stand as a deck (wetGround.ts), memoised per loaded cell. */
+  private wetGroundOf(cell: RoadCell | null, waterAround: readonly (WaterGeometry | null)[]): Vec2[][] {
+    if (!cell) return [];
+    const hit = this.wetGroundMemo.get(cell);
+    if (hit) return hit;
+    const geos = waterAround.filter((g): g is WaterGeometry => !!g), polys = geos.flatMap(g => g.polygons);
+    let box: [number, number, number, number] | null = null;
+    for (const poly of polys) for (const [x, y] of poly[0] ?? []) box = box ? [Math.min(box[0], x), Math.min(box[1], y), Math.max(box[2], x), Math.max(box[3], y)] : [x, y, x, y];
+    const rings = wetGroundRings(cell.surfaces, { wet: waterTest(polys), ground: (x, y) => this.surface.ground(x, y), waterZ: (x, y) => waterZAt(geos, x, y, WATER_Z), waterBox: box });
+    this.wetGroundMemo.set(cell, rings);
+    return rings;
+  }
+
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
     for (const map of [this.water, this.osm, this.parks, this.roads, this.marks, this.rail, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
@@ -637,16 +652,20 @@ export class GroundStore {
     // water, and the street mask cut them there, leaving the grey deck top as a jagged band across the road at both
     // ends (user 2026-10-16, a Prinsengracht bridge). The reach is read off the water polygons (the mask is built from these rings).
     const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []));
+    const wetGround = this.options.wetGround === false ? [] : this.wetGroundOf(roadsAround[around.indexOf(key)] ?? null, waterAround);
     const deckRingsAround: Vec2[][] = [
       ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
+      // Ground polygons standing over mapped water at street height (a plein over a canal: the Muntplein over the Singel,
+      // wetGround.ts): decks too, so the water mask never cuts them (user 2026-10-30, water through the Muntplein).
+      ...wetGround,
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
     ];
     return {
       key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.decks(key), deckRingsAround,
+      decks: this.decks(key), deckRingsAround, wetGround,
       cuts: this.surface.cuts.filter(c => near(c.bbox)),
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],

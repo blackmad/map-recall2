@@ -6,8 +6,9 @@
 // centreline) and then clipped; here each mark is placed from what is mapped and measured on the polygon it lies on:
 //
 //   zebra          an OSM crossing node (road-marks-v1, roadMarks.ts) or a footway crossing way whose markings say
-//                  zebra: 0.5 m stripes with 0.5 m gaps, ZEBRA.len long along the road, across the whole carriageway
-//                  at the node (islands up to ISLAND_GAP_M are bridged; the stripes are clipped to the polygons);
+//                  zebra: 0.5 m stripes with 0.5 m gaps, zebraLen long along the road, across every road-level surface
+//                  at the node (carriageway, parking strip, cycle lane or fietspad: KERB_LOW_CLASSES; islands up to
+//                  ISLAND_GAP_M are bridged and break the row; the stripes are clipped to the road-level polygons);
 //                  `dashes` / `dots` crossings: two lines of blocks instead.
 //   cycle crossing a cycleway running across a carriageway polygon (in and out of it, ≤ CYCLE_CROSS_MAX_M on it): red
 //                  under the path's width with white blocks along both edges (blokmarkering).
@@ -23,7 +24,10 @@
 //
 // Every mark is clipped to ground carriageway polygons (class carriage, h = 0): a bar is sampled along its length every
 // CLIP_STEP_M and only the runs where its centre and both edges lie on a carriageway are drawn, so no paint lands on a
-// pavement, cycle path, parking bay or inrit. Bridges carry none (their decks are drawn on the deck surface).
+// pavement, cycle path, parking bay or inrit. Zebras are the exception: Amsterdam paints them across the whole road at
+// road level, fietspaden and parking strips included (lane zebra-munt 2026-10-30), so they clip to every road-level
+// polygon (onRoadLevelExact) and break only at a raised island, berm or footway strip. Bridges carry none (their
+// decks are drawn on the deck surface).
 
 import { drapeTriangles, emptyMesh, pointAt, stations, triangleCount, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
@@ -33,12 +37,27 @@ import type { RoadMark } from './roadMarks.js';
 import { convexOverlap, lineAngle } from './crossingAudit.js';
 import { traceMark } from './sourceTrace.js';
 import { inRuns, zebraEvidenceAt, type PhotoEvidence } from './photoEvidence.js';
+import { KERB_LOW_CLASSES, type RoadClass } from './roadCells.js';
 import { BLOCK, GUESSED_PAINT, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, SIGNAL_REACH_M, STOP_LINE_M, type MarkFrame } from './roadMarkings.js';
 
 /** The surveyed carriageway draws these marks (streets.ts PAINT_ON_SURVEY keeps the old band paint off there). */
 export const SURVEY_MARKINGS = true;
 
 export const ZEBRA = { stripe: 0.5, gap: 0.5, len: 3.0 } as const;
+/**
+ * Stripe length of a wide crossing (a row of at least ZEBRA_WIDE_ROW_M, or on a trunk / primary / secondary road): the
+ * 8 cm orthophoto at the Prins Hendrikkade by Arcam shows 4.5–5 m stripes and the Muntplein's up to 9 m, against our
+ * 3 m, which read as stubs from the chase camera (user 2026-10-30, "broken zebras"). Side streets keep ZEBRA.len.
+ */
+export const ZEBRA_WIDE_LEN_M = 4.0;
+export const ZEBRA_WIDE_ROW_M = 8;
+const MAIN_ROADS: ReadonlySet<string> = new Set(['trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link']);
+/** A zebra's stripe length along the road: ZEBRA_WIDE_LEN_M on a main road or across a wide row, ZEBRA.len elsewhere. */
+export const zebraLen = (road: Pick<RoadHit, 'way'> | null | undefined, row = 0): number => ((road && MAIN_ROADS.has(road.way.tags.highway)) || row >= ZEBRA_WIDE_ROW_M ? ZEBRA_WIDE_LEN_M : ZEBRA.len);
+/** Surfaces a zebra is painted across (the classes drawn at carriageway level). */
+export const ZEBRA_CLASSES: ReadonlySet<RoadClass> = new Set(KERB_LOW_CLASSES);
+/** Walking way through a crossing node on a fietspad: at least this far off the cycle path (a crossing of it, not along it). */
+export const CYCLE_WALK_DEG = 45;
 export const CENTRE_DASH: readonly [number, number] = [3, 6];
 export const CENTRE_LINE_M = 0.12;
 export const CENTRE_MIN_WIDTH_M = 6;
@@ -79,6 +98,10 @@ export const JUNCTION_ROW_M = 12;
 export const JUNCTION_NODE_M = 5;
 /** Two crossings closer than this along the same road, rows overlapping by half: one crossing (planCrossings). */
 export const ZEBRA_CLUSTER_M = 8;
+/** Two pieces of one crossing's row (abutting across ≤ ISLAND_GAP_M) merge or align when this close along the road. */
+export const ZEBRA_ALIGN_M = 4;
+/** Crossing strips (RoadIndex.crossingStrips) are looked for along the walking line this far either side of the node, at this step. */
+export const STRIP_REACH_M = 14, STRIP_STEP_M = 0.5;
 /** The carriageway's shortest chord through a crossing is clear when under this share of the chord across it. */
 export const CHORD_CLEAR = 0.6;
 
@@ -98,6 +121,10 @@ export interface DrawnCrossing {
   r: Vec2;
   from: number;
   to: number;
+  /** Stripe length along r (zebraLen; ZEBRA.len when absent). */
+  len?: number;
+  /** The row stops short of a tram or bus lane on purpose (the audit's `short` does not count it). */
+  tramCut?: boolean;
   stripes: { i: number; pieces: [Vec2, Vec2][] }[];
 }
 
@@ -111,6 +138,10 @@ export interface CrossingPlan {
   r: Vec2;
   from: number;
   to: number;
+  /** Stripe length along r (zebraLen). */
+  len: number;
+  /** The row stops short of a tram or bus lane it has no crossing node on (TRAM_CLEAR_M). */
+  tramCut?: boolean;
   signalised: boolean;
   road: RoadHit | null;
   owned: boolean;
@@ -137,6 +168,8 @@ export interface SurveyMarkingInput {
   evidence?: PhotoEvidence;
   /** Graph-inferred teeth and, without evidence, centre dashes on every wide two-way road (default GUESSED_PAINT: off). */
   guessedPaint?: boolean;
+  /** Classes a zebra is painted across (default ZEBRA_CLASSES; the regressions' pin passes the carriageway alone). */
+  zebraClasses?: ReadonlySet<RoadClass>;
 }
 
 const isBridge = (w: LocalWay) => !!w.tags.bridge && w.tags.bridge !== 'no';
@@ -219,14 +252,23 @@ export class SurveyMarker {
   };
 
   /**
-   * Carriageway chord through p along ±d (exact): 0.25 m steps to the edge, then bisected to a centimetre, each side
+   * On a ground road-level polygon (carriageway, parking, cycle lane or fietspad: ZEBRA_CLASSES), exactly: what a zebra
+   * is painted across. Planned, oriented and clipped with it, so a crossing is one row across the whole road.
+   */
+  onRoadLevelExact = (x: number, y: number): boolean => {
+    const ix = this.input.index, k = ix.findAll(x, y).find(j => ix.records[j].h === 0);
+    return k !== undefined && (this.input.zebraClasses ?? ZEBRA_CLASSES).has(ix.drawClass(k));
+  };
+
+  /**
+   * Road-level chord through p along ±d (exact): 0.25 m steps to the edge, then bisected to a centimetre, each side
    * up to `max`. (At 0.25 m the chord across an 8 m road is the same length over ±14°, and the shortest chord's
    * direction wandered that far.)
    */
   chord(p: Vec2, d: Vec2, max = 20): number {
     let len = 0;
     for (const sgn of [1, -1]) {
-      const on = (t: number) => this.onCarriageExact(p[0] + d[0] * sgn * t, p[1] + d[1] * sgn * t);
+      const on = (t: number) => this.onRoadLevelExact(p[0] + d[0] * sgn * t, p[1] + d[1] * sgn * t);
       let lo = 0, hi = -1;
       for (let t = 0.25; t <= max; t += 0.25) { if (!on(t)) { hi = t; break; } lo = t; }
       if (hi < 0) { len += lo; continue; }
@@ -238,7 +280,7 @@ export class SurveyMarker {
 
   /** The direction of the shortest carriageway chord through p (6° steps, refined to 1°) and its length; null off the carriageway. */
   shortestChord(p: Vec2): { dir: Vec2; len: number } | null {
-    if (!this.onCarriageExact(p[0], p[1])) return null;
+    if (!this.onRoadLevelExact(p[0], p[1])) return null;
     const at = (deg: number, max: number) => this.chord(p, [Math.cos(deg * Math.PI / 180), Math.sin(deg * Math.PI / 180)], max);
     let best = { deg: 0, len: Infinity };
     for (let deg = 0; deg < 180; deg += 6) { const len = at(deg, Math.min(20, best.len)); if (len < best.len) best = { deg, len }; }
@@ -248,7 +290,7 @@ export class SurveyMarker {
   }
 
   /**
-   * One zebra stripe centred on c along r, `len` long, clipped exactly to the carriageway: the run (centre line and
+   * One zebra stripe centred on c along r, `len` long, clipped exactly to the road-level polygons: the run (centre line and
    * both edges on it, 0.1 m steps) through the stripe's middle, else its longest run; null under STRIPE_MIN_M.
    */
   stripe(c: Vec2, r: Vec2, len: number, width: number): [Vec2, Vec2] | null {
@@ -257,7 +299,7 @@ export class SurveyMarker {
     const ok: boolean[] = [];
     for (let i = 0; i <= steps; i++) {
       const p = add(c, r, -len / 2 + (i * len) / steps);
-      ok.push(this.onCarriageExact(p[0], p[1]) && this.onCarriageExact(p[0] + n[0] * h, p[1] + n[1] * h) && this.onCarriageExact(p[0] - n[0] * h, p[1] - n[1] * h));
+      ok.push(this.onRoadLevelExact(p[0], p[1]) && this.onRoadLevelExact(p[0] + n[0] * h, p[1] + n[1] * h) && this.onRoadLevelExact(p[0] - n[0] * h, p[1] - n[1] * h));
     }
     const runs: [number, number][] = [];
     for (let i = 0, start = -1; i <= steps + 1; i++) {
@@ -266,6 +308,21 @@ export class SurveyMarker {
     const mid = steps / 2, run = runs.find(([a, b]) => a <= mid && b >= mid) ?? runs.sort((x, y) => (y[1] - y[0]) - (x[1] - x[0]))[0];
     if (!run || ((run[1] - run[0]) * len) / steps < STRIPE_MIN_M) return null;
     return [add(c, r, -len / 2 + (run[0] * len) / steps), add(c, r, -len / 2 + (run[1] * len) / steps)];
+  }
+
+  /**
+   * Every run of a zebra stripe on the road-level polygons at least STRIPE_MIN_M long (stripe() keeps one): a stripe
+   * crossing a polygon seam or a sliver hole in the middle keeps both halves (the long stripes of a wide crossing).
+   */
+  stripeRuns(c: Vec2, r: Vec2, len: number, width: number): [Vec2, Vec2][] {
+    const n = left(r), h = width / 2 - 0.05, steps = Math.round(len / 0.1), out: [Vec2, Vec2][] = [];
+    const ok = (i: number) => { const p = add(c, r, -len / 2 + (i * len) / steps); return this.onRoadLevelExact(p[0], p[1]) && this.onRoadLevelExact(p[0] + n[0] * h, p[1] + n[1] * h) && this.onRoadLevelExact(p[0] - n[0] * h, p[1] - n[1] * h); };
+    for (let i = 0, start = -1; i <= steps + 1; i++) {
+      if (i <= steps && ok(i)) { if (start < 0) start = i; continue; }
+      if (start >= 0 && ((i - 1 - start) * len) / steps >= STRIPE_MIN_M) out.push([add(c, r, -len / 2 + (start * len) / steps), add(c, r, -len / 2 + ((i - 1) * len) / steps)]);
+      start = -1;
+    }
+    return out;
   }
 
   /** A bar from a to b of `width`, unclipped. */
@@ -376,18 +433,23 @@ export function crossingStripPoints(ways: readonly LocalWay[], marks: readonly R
   for (const m of pts) {
     let best: { w: LocalWay; d: number } | null = null;
     for (const sg of grid.near(m.p)) { const d = segDist(m.p, sg.a, sg.b); if (d <= NODE_ON_WAY_M && (!best || d < best.d)) best = { w: sg.item, d }; }
-    if (best) out.push({ p: m.p, r: wayDirAt(best.w.points, m.p) });
+    if (!best) continue;
+    const r = wayDirAt(best.w.points, m.p), n = left(r);
+    out.push({ p: m.p, r });
+    // And along the walking line across the road: the voetpad strips BGT maps between the lanes and across the
+    // fietspad lie off the node (lane zebra-munt 2026-10-30, Arcam), each tested as a strip on its own.
+    for (let v = STRIP_STEP_M; v <= STRIP_REACH_M; v += STRIP_STEP_M) for (const s of [1, -1]) out.push({ p: add(m.p, n, s * v), r });
   }
   return out;
 }
 
 /** The planned footprint of a crossing: ±len/2 along r, [from, to] along n. */
-function planFoot(c: Pick<CrossingPlan, 'centre' | 'r' | 'from' | 'to'>): Vec2[] {
-  const n = left(c.r), at = (u: number, v: number) => add(add(c.centre, c.r, u), n, v), h = ZEBRA.len / 2;
+function planFoot(c: Pick<CrossingPlan, 'centre' | 'r' | 'from' | 'to'> & { len?: number }): Vec2[] {
+  const n = left(c.r), at = (u: number, v: number) => add(add(c.centre, c.r, u), n, v), h = (c.len ?? ZEBRA.len) / 2;
   return [at(-h, c.from), at(h, c.from), at(h, c.to), at(-h, c.to)];
 }
 
-export interface CrossingPlanStats { nodes: number; offRoad: number; onCycle: number; tooLong: number; tooShort: number; inJunction: number; ways: number; merged: number }
+export interface CrossingPlanStats { nodes: number; offRoad: number; onCycle: number; tooLong: number; tooShort: number; inJunction: number; ways: number; merged: number; /** Pieces of one row merged into it or slid onto its line (lane zebra-munt). */ aligned?: number }
 
 /**
  * Every zebra / block-line crossing of the neighbourhood, one per real crossing:
@@ -406,7 +468,9 @@ export interface CrossingPlanStats { nodes: number; offRoad: number; onCycle: nu
  * Planned with exact polygon tests, so the two cells at an edge plan the same crossings.
  */
 export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCycle: (p: Vec2) => boolean, stats?: CrossingPlanStats): CrossingPlan[] {
-  const { ways, marks } = input, exact = mk.onCarriageExact;
+  // Planned across every road-level surface (lane zebra-munt 2026-10-30): clipped to the carriageway class alone, a row
+  // stopped at the cycle lane or the parking strip and the crossing drew as short pieces (Prins Hendrikkade by Arcam).
+  const { ways, marks } = input, exact = mk.onRoadLevelExact;
   const st: CrossingPlanStats = stats ?? { nodes: 0, offRoad: 0, onCycle: 0, tooLong: 0, tooShort: 0, inJunction: 0, ways: 0, merged: 0 };
   const walks = new SegGrid<LocalWay>(8);
   const bx = input.box, inBox = (p: Vec2) => !bx || (p[0] >= bx[0] && p[0] <= bx[2] && p[1] >= bx[1] && p[1] <= bx[3]);
@@ -455,7 +519,7 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
   for (const w of ways) if ((w.tags.embedded_rails || w.tags.highway === 'busway') && isCarriageWay(w)) for (let i = 0; i + 1 < w.points.length; i++) if (inBox(w.points[i]) || inBox(w.points[i + 1])) rails.push([w.points[i], w.points[i + 1]]);
   const markedAt = new SegGrid<true>(8);
   for (const m of marks) if ((m.kind === 'zebra' || m.kind === 'blocks') && !onCycle(m.p)) markedAt.add(m.p, m.p, true, TRAM_MARK_M);
-  const row = (p: Vec2, r: Vec2): [number, number] | null => {
+  const row = (p: Vec2, r: Vec2): [number, number, boolean] | null => {
     const n = left(r);
     let to = mk.span(p, n, ISLAND_GAP_M, 24, exact), from = -mk.span(p, neg(n), ISLAND_GAP_M, 24, exact);
     if (to - from > MAX_ROW_M) { to = mk.span(p, n, 0, 24, exact); from = -mk.span(p, neg(n), 0, 24, exact); }
@@ -475,8 +539,12 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
     if (cutFrom) from = Math.max(from, -mk.span(p, neg(n), 0, Math.max(0, -from), exact));
     if (to - from > MAX_ROW_M) { st.tooLong++; return null; }
     if (to - from < MIN_ROW_M) { st.tooShort++; return null; }
-    return [from, to];
+    return [from, to, cutTo || cutFrom];
   };
+  const ix = input.index;
+  const classAt = (p: Vec2) => { const k = ix.findAll(p[0], p[1]).find(j => ix.records[j].h === 0); return k === undefined ? null : ix.drawClass(k); };
+  const onCarriageClass = (p: Vec2) => classAt(p) === 'carriage';
+  const onCyclePolygon = (p: Vec2) => classAt(p) === 'cycle';
   const junctionPts = carriageJunctions(ways.filter(w => w.points.some(inBox))).map(j => j.p);
   /** Within JUNCTION_NODE_M of a carriageway junction node: on the junction itself, not on an arm. */
   const nearJunction = (p: Vec2) => junctionPts.some(q => dist(p, q) <= JUNCTION_NODE_M);
@@ -485,23 +553,30 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
     if (m.kind !== 'zebra' && m.kind !== 'blocks') continue;
     if (!inBox(m.p)) continue;
     st.nodes++;
-    let road = mk.roadAt(m.p, NODE_ON_WAY_M);
+    let road = mk.roadAt(m.p, NODE_ON_WAY_M), fietspad = false;
     if (onCycle(m.p)) {
       // A cycle path's crossing of a road: the cycle crossing pass draws it (red and blocks). But a cycleway on a
       // carriageway polygon with no road way under the node is the street crossed (Paleisstraat by the Dam, a car-free
-      // street mapped highway=cycleway on BGT rijbaan, zebra in the photo).
+      // street mapped highway=cycleway on BGT rijbaan, zebra in the photo). And a node on a fietspad polygon with a
+      // footway crossing the path there is the zebra painted across the fietspad, which Amsterdam does at crossings
+      // (lane zebra-munt 2026-10-30: 5,266 such nodes were dropped city-wide; its row joins the carriageway's).
       const cyc = road || !exact(m.p[0], m.p[1]) ? null : cycleAt(m.p);
-      if (!cyc) { st.onCycle++; continue; }
+      const walk = cyc && onCyclePolygon(m.p) ? walkAt(m.p) : null;
+      if (!cyc || (!onCarriageClass(m.p) && !(walk && lineAngle(walk, cyc.dir) >= CYCLE_WALK_DEG))) { st.onCycle++; continue; }
       road = cyc;
+      fietspad = !onCarriageClass(m.p);
     }
     if (!road || !exact(road.at[0], road.at[1])) { st.offRoad++; continue; }
     const r0 = align(wayDirAt(road.way.points, road.at), road.dir), r = orient(road.at, r0, walkAt(m.p));
+    // On a fietspad the stripes must run along the path, on a clear chord (a path crossing open junction asphalt, or
+    // one the kerbs disagree with, would lay a zebra askew): else it stays the cycle crossing pass's.
+    if (fietspad && (!clear || lineAngle(r, road.dir) > ROAD_WALK_DEG)) { st.onCycle++; continue; }
     const span = row(road.at, r);
     if (!span) continue;
     // A node out on open junction asphalt (no clear chord, or on the junction node) with a long row: a footway mapped
     // through the junction, whose zebra would run diagonally across it (Slotermeer: 20 m over the middle). The arms' stay.
     if ((!clear || nearJunction(road.at)) && span[1] - span[0] > JUNCTION_ROW_M) { st.inJunction++; continue; }
-    cands.push({ kind: m.kind, source: 'node', ref: m.p, centre: road.at, r, from: span[0], to: span[1], signalised: m.signalised, road: { ...road, dir: align(r, road.dir) }, owned: input.ownsPoint(m.p), merged: 1, prio: m.kind === 'zebra' ? 0 : 1 });
+    cands.push({ kind: m.kind, source: 'node', ref: m.p, centre: road.at, r, from: span[0], to: span[1], len: zebraLen(road, span[1] - span[0]), ...(span[2] ? { tramCut: true } : {}), signalised: m.signalised, road: { ...road, dir: align(r, road.dir) }, owned: input.ownsPoint(m.p), merged: 1, prio: m.kind === 'zebra' ? 0 : 1 });
   }
   for (const w of ways) {
     if (!isCrossingWay(w) || isBridge(w) || isCycleWay(w)) continue;
@@ -516,11 +591,16 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
       const r = orient(mid, r0, d), span = row(mid, r);
       if (!span) continue;
       if (!clear && span[1] - span[0] > JUNCTION_ROW_M) { st.inJunction++; continue; }
-      cands.push({ kind, source: 'way', ref: w.id, centre: mid, r, from: span[0], to: span[1], signalised: isSignalCrossing(w.tags), road: road ? { ...road, dir: align(r, road.dir) } : null, owned: input.ownsWay(w), merged: 1, prio: 2 });
+      cands.push({ kind, source: 'way', ref: w.id, centre: mid, r, from: span[0], to: span[1], len: zebraLen(road, span[1] - span[0]), ...(span[2] ? { tramCut: true } : {}), signalised: isSignalCrossing(w.tags), road: road ? { ...road, dir: align(r, road.dir) } : null, owned: input.ownsWay(w), merged: 1, prio: 2 });
     }
   }
   cands.sort((a, b) => a.prio - b.prio || a.centre[0] - b.centre[0] || a.centre[1] - b.centre[1]);
   const out: CrossingPlan[] = [], feet: Vec2[][] = [];
+  /** c's row [lo, hi] in a's frame (its r may point the other way along the road), and how far along a's r it sits. */
+  const inFrame = (a: CrossingPlan, c: CrossingPlan) => {
+    const n = left(a.r), d = sub(c.centre, a.centre), v = dot(d, n), same = dot(a.r, c.r) >= 0;
+    return { lo: same ? v + c.from : v - c.to, hi: same ? v + c.to : v - c.from, along: dot(d, a.r) };
+  };
   for (const c of cands) {
     const foot = planFoot(c);
     let k = feet.findIndex(f => convexOverlap(f, foot));
@@ -528,16 +608,40 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
     // crossing mapped twice (a node per carriageway half or per tram track): drawn once (Linnaeusstraat, 2026-10-23).
     if (k < 0) k = out.findIndex(a => {
       if (lineAngle(a.r, c.r) >= 15 || Math.abs(dot(sub(c.centre, a.centre), a.r)) >= ZEBRA_CLUSTER_M) return false;
-      const n = left(a.r), v = dot(sub(c.centre, a.centre), n), same = dot(a.r, c.r) >= 0;
-      const lo = same ? v + c.from : v - c.to, hi = same ? v + c.to : v - c.from;
+      const { lo, hi } = inFrame(a, c);
       return Math.min(hi, a.to) - Math.max(lo, a.from) >= Math.min(hi - lo, a.to - a.from) * 0.5;
     });
+    // A piece of the same row: a crossing on the next surface of the walking line (the fietspad's node beside the
+    // carriageway's, the far carriageway past an island), running the same way within ZEBRA_ALIGN_M along the road and
+    // abutting its row across at most ISLAND_GAP_M (lane zebra-munt 2026-10-30, Arcam: staggered pieces of one crossing).
+    let piece = -1;
+    if (k < 0) piece = out.findIndex(a => {
+      if (lineAngle(a.r, c.r) >= 15) return false;
+      const { lo, hi, along } = inFrame(a, c);
+      return Math.abs(along) < ZEBRA_ALIGN_M && Math.max(lo - a.to, a.from - hi) <= ISLAND_GAP_M + 0.5;
+    });
+    if (piece >= 0) {
+      const a = out[piece], { lo, hi, along } = inFrame(a, c), from = Math.min(a.from, lo), to = Math.max(a.to, hi);
+      const grown = planFoot({ ...a, from, to });
+      if (to - from <= MAX_ROW_M && !feet.some((f, j) => j !== piece && convexOverlap(f, grown))) {
+        a.from = from; a.to = to; a.len = Math.max(a.len, c.len); a.tramCut ||= c.tramCut; feet[piece] = planFoot(a);
+        a.signalised ||= c.signalised; a.merged++; st.merged++; st.aligned = (st.aligned ?? 0) + 1;
+        continue;
+      }
+      // Too long for one row (an island between two wide carriageways): its own crossing, slid along the road onto
+      // the first's line so the two pieces read as one row broken at the island.
+      const slid = { ...c, centre: add(c.centre, a.r, -along), road: c.road ? { ...c.road, at: add(c.road.at, a.r, -along) } : null };
+      const sf = planFoot(slid);
+      if (!feet.some(f => convexOverlap(f, sf))) {
+        const { prio: _p, ...plan } = slid;
+        out.push(plan); feet.push(sf); st.aligned = (st.aligned ?? 0) + 1;
+        continue;
+      }
+    }
     if (k >= 0) {
-      const a = out[k], n = left(a.r);
+      const a = out[k];
       if (lineAngle(a.r, c.r) < 15 && Math.abs(dot(sub(c.centre, a.centre), a.r)) < ZEBRA.len) {
-        // c's row in a's frame (its r may point the other way along the road).
-        const v = dot(sub(c.centre, a.centre), n), same = dot(a.r, c.r) >= 0;
-        const lo = Math.min(a.from, same ? v + c.from : v - c.to), hi = Math.max(a.to, same ? v + c.to : v - c.from);
+        const { lo: clo, hi: chi } = inFrame(a, c), lo = Math.min(a.from, clo), hi = Math.max(a.to, chi);
         const grown = planFoot({ ...a, from: lo, to: hi });
         // Extended only while it stays plausible and clear of the other crossings (it would grow over a neighbour).
         if (hi - lo <= MAX_ROW_M && !feet.some((f, j) => j !== k && convexOverlap(f, grown))) { a.from = lo; a.to = hi; feet[k] = grown; }
@@ -548,6 +652,13 @@ export function planCrossings(mk: SurveyMarker, input: SurveyMarkingInput, onCyc
     const { prio: _prio, ...plan } = c;
     out.push(plan); feet.push(foot);
   }
+  // A row grown by its pieces past ZEBRA_WIDE_ROW_M takes the wide stripes, where that stays clear of its neighbours.
+  out.forEach((a, i) => {
+    const len = Math.max(a.len, zebraLen(a.road, a.to - a.from));
+    if (len === a.len) return;
+    const grown = planFoot({ ...a, len });
+    if (!feet.some((f, j) => j !== i && convexOverlap(f, grown))) { a.len = len; feet[i] = grown; }
+  });
   return out;
 }
 
@@ -613,7 +724,7 @@ export const ALIGN_GAP_M = 0.3;
  * as separate skewed pieces; on the orthophoto they are one band across the road, zebra then red. Returns the run
  * moved onto the zebra's frame (its own extent across the road kept), or null when no zebra is that close.
  */
-export function alignCycleCrossing(plans: readonly Pick<CrossingPlan, 'kind' | 'centre' | 'r' | 'from' | 'to'>[], a: Vec2, b: Vec2, width: number): [Vec2, Vec2] | null {
+export function alignCycleCrossing(plans: readonly (Pick<CrossingPlan, 'kind' | 'centre' | 'r' | 'from' | 'to'> & { len?: number })[], a: Vec2, b: Vec2, width: number): [Vec2, Vec2] | null {
   const u = unit(sub(b, a)), mid: Vec2 = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], cos = Math.cos(ALIGN_DEG * Math.PI / 180);
   let best: { p: (typeof plans)[number]; along: number } | null = null;
   for (const p of plans) {
@@ -621,11 +732,11 @@ export function alignCycleCrossing(plans: readonly Pick<CrossingPlan, 'kind' | '
     const n = left(p.r);
     if (Math.abs(dot(u, n)) < cos) continue;
     const d = sub(mid, p.centre), along = dot(d, p.r), lateral = dot(d, n);
-    if (Math.abs(along) > ZEBRA.len / 2 + width / 2 + ALIGN_REACH_M || lateral < p.from - 3 || lateral > p.to + 3) continue;
+    if (Math.abs(along) > (p.len ?? ZEBRA.len) / 2 + width / 2 + ALIGN_REACH_M || lateral < p.from - 3 || lateral > p.to + 3) continue;
     if (!best || Math.abs(along) < Math.abs(best.along)) best = { p, along };
   }
   if (!best) return null;
-  const { p } = best, n = left(p.r), side = best.along >= 0 ? 1 : -1, off = side * (ZEBRA.len / 2 + ALIGN_GAP_M + width / 2);
+  const { p } = best, n = left(p.r), side = best.along >= 0 ? 1 : -1, off = side * ((p.len ?? ZEBRA.len) / 2 + ALIGN_GAP_M + width / 2);
   const at = (q: Vec2): Vec2 => add(add(p.centre, p.r, off), n, dot(sub(q, p.centre), n));
   return [at(a), at(b)];
 }
@@ -697,26 +808,26 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
   // (crossing audit 2026-10-17, crossingAudit.ts). Every candidate is planned first (where, which way the stripes
   // run, how far across), then candidates whose footprints overlap merge into one crossing, then each is drawn once.
   const zebra = (c: CrossingPlan): boolean => {
-    const { centre, r, from, to, kind } = c;
+    const { centre, r, from, to, kind, len } = c;
     const n = left(r), a = add(centre, n, from), L = to - from;
     if (L < MIN_ROW_M) return false;
     if (kind === 'zebra') {
       const pitch = ZEBRA.stripe + ZEBRA.gap, count = Math.floor((L + ZEBRA.gap) / pitch), s0 = (L - (count * pitch - ZEBRA.gap)) / 2 + ZEBRA.stripe / 2;
-      let drawn = 0;
-      const rec: DrawnCrossing = { kind, source: c.source, ref: c.ref, centre, r, from, to, stripes: [] };
+      const rec: DrawnCrossing = { kind, source: c.source, ref: c.ref, centre, r, from, to, len, ...(c.tramCut ? { tramCut: true } : {}), stripes: [] };
       for (let i = 0; i < count; i++) {
-        const sc = add(a, n, s0 + i * pitch), piece = mk.stripe(sc, r, ZEBRA.len, ZEBRA.stripe);
-        if (!piece) continue;
-        mk.quadBar(mk.paint, piece[0], piece[1], ZEBRA.stripe, lift.paint);
-        rec.stripes.push({ i, pieces: [piece] });
-        drawn++;
+        const pieces = mk.stripeRuns(add(a, n, s0 + i * pitch), r, len, ZEBRA.stripe);
+        if (pieces.length) rec.stripes.push({ i, pieces });
       }
-      if (drawn) { st.zebras++; st.stripes += drawn; mk.crossings.push(rec); }
-      return drawn > 0;
+      // A row of a stripe or two (a fietspad node whose road-level run the stripes barely fit): not a zebra.
+      const is = rec.stripes.map(s => s.i);
+      if (!is.length || (Math.max(...is) - Math.min(...is)) * pitch + ZEBRA.stripe < MIN_ROW_M) return false;
+      for (const s of rec.stripes) for (const [p, q] of s.pieces) mk.quadBar(mk.paint, p, q, ZEBRA.stripe, lift.paint);
+      st.zebras++; st.stripes += rec.stripes.length; mk.crossings.push(rec);
+      return true;
     }
     let drawn = 0;
     for (const side of [-1, 1]) {
-      const o = (ZEBRA.len / 2 - BLOCK.size / 2) * side, pitch = BLOCK.size + BLOCK.gap;
+      const o = (len / 2 - BLOCK.size / 2) * side, pitch = BLOCK.size + BLOCK.gap;
       for (let s = BLOCK.gap / 2; s + BLOCK.size <= L; s += pitch) drawn += mk.bar(mk.paint, add(add(a, r, o), n, s), add(add(a, r, o), n, s + BLOCK.size), BLOCK.size, lift.paint, BLOCK.size * 0.75);
     }
     st.blocks += drawn;
@@ -724,23 +835,23 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
     return drawn > 0;
   };
   /** Stop lines before a signalised crossing: on the approach toward the junction, or both sides mid-block. */
-  const crossingStops = (centre: Vec2, road: RoadHit) => {
+  const crossingStops = (centre: Vec2, road: RoadHit, len: number) => {
     const j = nearestJunction(centre, 40);
     for (const t of [road.dir, neg(road.dir)]) {
       if (j && dot(sub(j.p, centre), t) <= 0) continue; // traffic leaving the junction meets no stop line here
-      stopLine(add(centre, t, -(ZEBRA.len / 2 + STOP_GAP_M + STOP_LINE_M / 2)), t, road);
+      stopLine(add(centre, t, -(len / 2 + STOP_GAP_M + STOP_LINE_M / 2)), t, road);
     }
   };
   const plan: CrossingPlanStats = { nodes: 0, offRoad: 0, onCycle: 0, tooLong: 0, tooShort: 0, inJunction: 0, ways: 0, merged: 0 };
   const plans = placeByPhoto(planCrossings(mk, input, cycleVertexNear, plan), input.evidence, st);
   for (const c of plans) {
     const n = left(c.r);
-    addCrossing(add(c.centre, n, c.from), add(c.centre, n, c.to), ZEBRA.len / 2);
+    addCrossing(add(c.centre, n, c.from), add(c.centre, n, c.to), c.len / 2);
   }
   traceMark(mk.paint, 'nodePaint');
   for (const c of plans) {
     if (!c.owned) continue;
-    if (zebra(c) && c.signalised && c.road) crossingStops(c.centre, c.road);
+    if (zebra(c) && c.signalised && c.road) crossingStops(c.centre, c.road, c.len);
   }
 
   // ---- cycle crossings: red with blocks along both edges, where a cycle path crosses a carriageway
@@ -780,7 +891,7 @@ export function buildSurveyMarkings(input: SurveyMarkingInput): { paint: MeshArr
           st.blocks += mk.bar(mk.paint, a, add(a, ru, BLOCK.size), BLOCK.size, lift.paint, BLOCK.size * 0.75);
         }
       }
-      if (node?.signalised || isSignalCrossing(w.tags)) crossingStops(mid, road);
+      if (node?.signalised || isSignalCrossing(w.tags)) crossingStops(mid, road, ZEBRA.len);
     }
   }
 

@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**Continuous zebras, watertight Muntplein (2026-10-30).** User screenshots: "why do we still have these broken
+zebras?" (Prins Hendrikkade by Arcam) and "what is happening with the roads here" (Muntplein). Lane
+`zebra-munt-20261030`, two rounds.
+
+- Zebras are clipped per BGT polygon, so every polygon edge cut a crossing. Now one row runs across every
+  road-level surface (carriage, parking, cycle) and breaks only at a raised island; pieces of one crossing merge onto
+  one line; main roads take 4 m stripes. Fietspad crossings are kept where the walk crosses at ≥ 45°. The audit
+  measured against the clipped polygon and passed the broken rows; a new `short` category measures the row against
+  the whole walking line (1,369 → 604 city-wide, capped).
+- Photo evidence diluted long rows: one Fourier amplitude over a 15–20 m profile. Rows over 7.5 m now score their
+  strongest 5 m window after removing a ±0.8 m running median; threshold unchanged (0.07, the 95th percentile off
+  the rows). Drops 376 → 146; of 12 random newly kept, 9 are real zebras in the photo.
+- The Muntplein water: the Singel polygon runs under the whole plein and the measured deck was a 7 m strip, so the
+  water mask cut the road. `wetGround.ts`: an h0 BGT polygon over water with relief ≥ 2 m above it is a deck. The
+  "wireframe triangle" was the Muntsluis parapet placed against that water; parapets now face open water only.
+- Path join discs tested only their centre against the survey and drew over the BGT voetpad (Arcam steps); they
+  now skip when the rim reaches a survey polygon (2,295 discs city-wide).
+
 **Roads through buildings cut open; guessed heights measured (2026-10-30).**
 `scripts/cut-building-passages.ts` (`src/canalRecall/buildingPassages.ts`,
 polygon-clipping) takes every ridden OSM way tagged
