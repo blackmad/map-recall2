@@ -1,10 +1,10 @@
 {
  "version": 1,
- "generatedAt": "2026-10-29T22:31:38.555Z",
+ "generatedAt": "2026-10-30T08:37:57.610Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 495,
- "strict": 167,
+ "headline": 496,
+ "strict": 168,
  "byTier": {
   "bespoke": {
    "models": 323,
@@ -19,9 +19,9 @@
    "unreviewed": 0
   },
   "largeRecipe": {
-   "models": 118,
-   "counts": 57,
-   "strict": 57,
+   "models": 119,
+   "counts": 58,
+   "strict": 58,
    "unreviewed": 14
   },
   "landmarkKit": {
@@ -35,7 +35,7 @@
   "legacy-gallery": 393,
   "likeness-gate": 100,
   "none": 324,
-  "strip-review": 114
+  "strip-review": 115
  },
  "rows": [
   {
@@ -7184,6 +7184,21 @@
    "held": false,
    "review": "strip-review",
    "reviewDate": "2026-10-29",
+   "counts": true,
+   "countsStrict": true
+  },
+  {
+   "key": "model:ordinary-0363100012137174",
+   "name": "BAG pand 0363100012137174",
+   "tier": "largeRecipe",
+   "pands": [
+    "0363100012137174"
+   ],
+   "namedPoi": false,
+   "rideVisible": true,
+   "held": false,
+   "review": "strip-review",
+   "reviewDate": "2026-10-30",
    "counts": true,
    "countsStrict": true
   },
