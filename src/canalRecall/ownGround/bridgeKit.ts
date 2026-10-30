@@ -833,7 +833,12 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
  * a basement.
  */
 export type BasculeStyle = 'portal' | 'basement';
-export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement', BRU0272: 'basement' };
+export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement', BRU0272: 'basement',
+  // Movable-bridge audit 2026-10-30 (aimed panoramas, artifacts/bridge-audit): the register's material misleads both ways.
+  BRU0314: 'basement', BRU0429: 'basement', BRU5046: 'basement', BRU0222: 'portal', BRU0277: 'portal',
+  // Swing bridges (draaibrug) have no kind yet; a basement bascule (no portal) is the nearer look.
+  BRU2205: 'basement', BRU2361: 'basement',
+};
 export const basculeStyle = (id: string | null | undefined, hint: RegisterHint | null): BasculeStyle =>
   (id && BASCULE_STYLE[id]) || (hint && hint.material !== 'wood' && hint.material !== 'other' ? 'basement' : 'portal');
 
@@ -858,5 +863,11 @@ export function basementEnd(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
 /** Bascule colour from the register: traditional timber ophaalbruggen (the Magere Brug) white, steel and concrete ones Amsterdam green. */
 /** Hand colours from the aimed panoramas where the register rule is wrong (the Zoutkeetsgracht bridge's leaf and tube railings are white). */
 // The Mariniersbrug (BRU0272, user 2026-10-30) is registered as timber but is a green steel basement bascule with masts.
-export const BASCULE_COLOUR: Readonly<Record<string, 'white' | 'green'>> = { BRU0345: 'white', BRU0272: 'green' };
-export const basculeColour = (hint: RegisterHint | null, id?: string | null): RGB => (id && BASCULE_COLOUR[id] ? KIT_COLOURS[BASCULE_COLOUR[id]] : hint?.material === 'wood' ? KIT_COLOURS.white : KIT_COLOURS.green);
+// Audit 2026-10-30: steel lattice portals registered as timber (Oranjebrug, Peperbrug, Ezelsbrug …) are dark green.
+export const BASCULE_COLOUR: Readonly<Record<string, 'white' | 'green'>> = {
+  BRU0345: 'white', BRU0272: 'green',
+  BRU0146: 'green', BRU0148: 'green', BRU0193: 'green', BRU0281: 'green', BRU1904: 'green', BRU0429: 'green', BRU2205: 'green', BRU2361: 'green',
+  BRU0314: 'white', BRU5046: 'white', BRU0277: 'white',
+};
+/** Unknown material ('other') follows its portal style: white like timber (the Weesp portals, audit 2026-10-30), not green. */
+export const basculeColour = (hint: RegisterHint | null, id?: string | null): RGB => (id && BASCULE_COLOUR[id] ? KIT_COLOURS[BASCULE_COLOUR[id]] : hint?.material === 'wood' || hint?.material === 'other' ? KIT_COLOURS.white : KIT_COLOURS.green);

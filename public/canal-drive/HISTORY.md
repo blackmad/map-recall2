@@ -11,8 +11,12 @@ the near-ring budget (`trussTriangles`) so the bridge keeps its level. Every
 other bridge's mesh is unchanged. Likeness sheet: `npx tsx
 scripts/bridge-reference/sheet.ts BRU0272`. Still missing: the real top chord
 is arched (deeper at midspan), and the truss runs past the brick abutments.
-The register's "Hout" is unreliable for movable bridges (Bullebak too); an
-audit of the other timber/unknown movable bridges is in progress.
+The register's "Hout" is unreliable for movable bridges (Bullebak too). An
+audit of 48 timber/blank rows from aimed panoramas added overrides: 3 more
+basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
+for now, and green for steel lattice portals. Unknown material now renders
+white like timber; it was green before, and the Weesp portals are white. Kit
+gaps are in TODO P2.
 
 **Street following aims down the street (2026-10-29).** Ways are often
 digitised as short pieces whose bearings zig-zag (Prinsengracht at the

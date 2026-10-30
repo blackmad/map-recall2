@@ -1982,6 +1982,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
+  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
+  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
+  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
+  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
+  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
+
+  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+
 - **Batch likeness discrimination (#113, 2026-10-29).** Edge NCC accepted an interwar ribbon-window block as an 1889 row (flinck-265-287, NCC 0.21). Before scaling the batch further, add an era guard:
   - compare the photo's window aspect and row structure with the type's;
   - veto when the strip shows horizontal ribbons or a flat modern crown;

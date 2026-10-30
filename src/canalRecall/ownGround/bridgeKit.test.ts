@@ -138,6 +138,12 @@ test('bascules: portal or basement by the panoramas, then the register', () => {
   // User 2026-10-30: the Mariniersbrug (Dijksgracht) is registered as timber, so the rule drew a white portal; the
   // panorama shows a green steel basement bascule with red-and-white masts.
   assert.deepEqual(basculeColour(registerHint('BRU0272'), 'BRU0272'), KIT_COLOURS.green, 'Mariniersbrug green');
+  // Audit 2026-10-30 (artifacts/bridge-audit, aimed panoramas): Omvalbrug basement, Pelikaanbrug portal; the Oranjebrug's
+  // steel lattice portal is green; a Weesp portal with no register material (Lange Vechtbrug) is white.
+  assert.equal(basculeStyle('BRU0429', registerHint('BRU0429')), 'basement', 'Omvalbrug');
+  assert.equal(basculeStyle('BRU0277', registerHint('BRU0277')), 'portal', 'Pelikaanbrug');
+  assert.deepEqual(basculeColour(registerHint('BRU0146'), 'BRU0146'), KIT_COLOURS.green, 'Oranjebrug green');
+  assert.deepEqual(basculeColour(registerHint('BRU5043'), 'BRU5043'), KIT_COLOURS.white, 'Lange Vechtbrug white');
   assert.equal(basculeStyle(null, null), 'portal');
   const m = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] };
   basementEnd(m, (a, b) => [a, b], [1, 0], 0, [3, -3], () => 1);
