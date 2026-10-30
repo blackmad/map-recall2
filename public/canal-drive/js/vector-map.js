@@ -2997,7 +2997,8 @@ class VectorBasemap {
     const lon = loader._lastCenterLng + (camera.x - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
     const lat = loader._lastCenterLat - (camera.y - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
     const displayScale = canvas.getBoundingClientRect().width / CANVAS_W;
-    const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * displayScale;
+    // speedZoomScale: the follow camera's speed pull-back (drive/cameraFollow.ts), 1 at rest.
+    const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * (camera.speedZoomScale || 1) * displayScale;
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
     const viewMode = camera.viewMode || 'north';
     const bearing = camera.rotation * 180 / Math.PI;

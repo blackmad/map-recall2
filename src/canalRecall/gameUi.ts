@@ -16,3 +16,4 @@ export {
   advance as advanceSteer, step as stepSteer, initialSteerState, bikeLean, bicycleYawLimit,
   BIKE as BIKE_STEER, LEGACY_BASE as LEGACY_STEER, STEP_MAX as STEER_STEP_MAX,
 } from './drive/steerModel.ts';
+export { initialCameraFollow, stepCameraFollow, pullBackZoomScale } from './drive/cameraFollow.ts';

@@ -217,6 +217,23 @@ export interface CanalPreferences {
   cameraBearing: number;
 }
 
+/**
+ * Follow camera (drive/cameraFollow.ts). The centre is the vehicle plus an
+ * offset eased in the view's frame, so it no longer trails by speed / rate
+ * (~80 px at the bike's top speed with the old 0.07-per-frame world ease).
+ * `lookahead` is slop-newyork's 5.2 m (16 px) at top speed; `pullBack` widens
+ * the map zoom by up to 10 % at top speed (slop: 25 % of the chase distance).
+ * Neither turns the view: yaw stays with cameraYaw.ts (dead band, 80°/s cap),
+ * checked in check-street-follow.ts.
+ */
+export const CAMERA_FOLLOW_DEFAULTS = {
+  lookahead: 16,
+  lookaheadRate: 1.2,
+  offsetRate: 4.35,
+  pullBack: 0.1,
+  pullBackRate: 0.8,
+} as const;
+
 export interface ZoomClamp {
   min: number;
   max: number;
