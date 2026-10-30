@@ -32,6 +32,7 @@ import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
 import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
 import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
+import { placeAliases } from './placeNames';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -666,7 +667,7 @@ export class OwnWorldView {
   /** Prominent extract landmarks as POI labels, and the neighbourhood boundaries as lines (vector-map.js setPlaces). */
   setPlaces(landmarks: any[], boundaries: any[]): void {
     this.placePois = (landmarks || []).filter(item => item.center && (item.manualPoi || item.nativeKitPoi || (item.prominenceScore || 0) >= 220))
-      .map(item => ({ id: `l:${item.id}`, text: item.name, kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
+      .map(item => ({ id: `l:${item.id}`, text: item.name, aliases: placeAliases(item), kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
     this.pushPois();
     const lines: LngLatLine[] = [];
     for (const b of (boundaries || []).filter(item => item.kind === 'neighbourhood' && item.geometry)) {

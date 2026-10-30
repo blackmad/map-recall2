@@ -156,3 +156,17 @@ test('rider cover: covered after the enter hold, cleared after the leave hold', 
   r = t.update([4.95, 52.375], true, 1.5, () => []);
   assert.equal(r.covered, false);
 });
+
+// Regression (Nieuwmarkt, 4.90009, 52.37255): asking "Nieuwmarkt" while the extract square is labelled
+// "New Market" (wikipedia nl:Nieuwmarkt (Amsterdam)) drew the answer in English.
+test('a place label is screened by its Dutch name too', async () => {
+  const { placeAliases } = await import('./placeNames');
+  const { poiLabelVisible } = await import('../ownMap/labelPolicy');
+  const square = { name: 'New Market', wikipedia: 'nl:Nieuwmarkt (Amsterdam)' };
+  assert.deepEqual(placeAliases(square), ['Nieuwmarkt']);
+  assert.deepEqual(placeAliases({ name: 'Dam', wikipedia: 'nl:Dam' }), []);
+  assert.deepEqual(placeAliases({ name: 'Westerkerk' }), []);
+  const ctx = { isLabelled: () => true, hiddenName: 'Nieuwmarkt', spoilerIndex: null, quizQuiet: false };
+  assert.equal(poiLabelVisible(ctx, square.name), true, 'the English name alone does not match');
+  assert.equal(placeAliases(square).every(a => poiLabelVisible(ctx, a)), false, 'the alias does');
+});

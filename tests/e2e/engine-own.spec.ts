@@ -79,10 +79,14 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     for (const s of g.track.segments) if (s.name) g._mapLabelNames.add(s.name);
     // The game's own question if it has one, else the first named street of the route.
     g.quizPromptName = g.quizPromptName || g.quizCandidateName || g.track.segments.find((s: any) => s.name)?.name;
-    return new Promise<{ asked: string; labels: string[] }>(r => vm.camera.onFrame(() => r({ asked: g.quizPromptName, labels: vm._labels.placed.map((l: any) => l.text) })));
+    // Places whose other name is the asked one ("New Market" is nl:Nieuwmarkt) must stay quiet too.
+    const asked = String(g.quizPromptName).toLowerCase();
+    const aliasOf = (vm.placePois as any[]).filter(p => (p.aliases || []).some((a: string) => a.toLowerCase() === asked)).map(p => p.text);
+    return new Promise<{ asked: string; labels: string[]; aliasOf: string[] }>(r => vm.camera.onFrame(() => r({ asked: g.quizPromptName, aliasOf, labels: vm._labels.placed.map((l: any) => l.text) })));
   });
   console.log('labels with every name earned', allEarned.labels.length, JSON.stringify(allEarned.labels.slice(0, 12)));
   expect(allEarned.labels).not.toContain(allEarned.asked);
+  for (const other of allEarned.aliasOf) expect(allEarned.labels).not.toContain(other);
 });
 
 // The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera

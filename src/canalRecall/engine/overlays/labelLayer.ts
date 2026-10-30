@@ -30,7 +30,11 @@ const fontSize = (kind: LabelKind, z: number) => Math.round(kind === 'hood' ? in
   : kind === 'poi' ? interpolateStops([[16.5, 10], [18, 12]], z)
   : interpolateStops([[13, 10.5], [16, 12], [18, 14.5]], z));
 
-export interface PointLabel { id: string; text: string; kind: LabelKind; lngLat: readonly [number, number]; priority: number; minZoom?: number }
+export interface PointLabel {
+  id: string; text: string; kind: LabelKind; lngLat: readonly [number, number]; priority: number; minZoom?: number;
+  /** Other names of the same place (the Dutch name behind an English one): screened like `text`. */
+  aliases?: readonly string[];
+}
 
 export class LabelLayer {
   readonly canvas: HTMLCanvasElement;
@@ -81,7 +85,7 @@ export class LabelLayer {
       });
       if (neighbourhoodLabelVisible(ctx)) d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }));
     }
-    for (const p of this.pois) if (poiLabelVisible(ctx, p.text)) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 });
+    for (const p of this.pois) if (poiLabelVisible(ctx, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(ctx, a))) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 });
   }
 
   private advance(ch: string, kind: LabelKind): number {
