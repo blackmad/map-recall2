@@ -32,6 +32,30 @@ pands are an example: each covers its tower plus the garage under the lawn
 beside it, and one 37 m box would have stood on the lawn. The AHN raster
 code moved to `scripts/lib/ahnFootprint.ts`.
 
+**World compiler v1 merged, flag-off (2026-10-30, #130).** First piece of the
+engine programme's P2: `src/canalRecall/world/cellFormat.ts` (WRLD v1, 1 km
+own-ground cells, streams STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, decoders that
+throw on magic, version, offsets, counts, varints and trailing bytes) and
+`scripts/world/compile.ts`, which runs the runtime's own functions
+(`dropNestedDuplicates`, the years and roof-facts enrichers,
+`decorateBuildingFeature` and vector-map's decorator chain,
+`BuildingContextIndex`) at build time into `artifacts/world/staging/`. Under
+`?world=v1` the tile streamer reads cells instead of GeoJSON and does no
+decorating, facts fetching or MapLibre `setData` on the main thread; chunk
+arrays are byte-identical at Westerkerk, Bloemgracht 80, the Nassaukade
+145–152 row, a courtyard pand and the IJburg edge, and the resident set is
+identical through the real streamer (`test:world-format`). Why exact 1e-7°
+coordinates instead of the brief's 0.1 m grid: only the exact grid keeps
+decoded coordinates equal to the default path's, so identity can be proven;
+0.1 m saves 0.8 MB. Why Morton order was dropped: tile order is already
+spatially coherent and Morton made the file bigger. Measured: 15.79 MB gz for
+347,698 buildings (replaces 21.5 MB of inputs; the ≤ 4 MB target assumed
+slop's rate at 190k pands and is not met; ATTR + STRS, 4.5 MB, are the first
+cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p95
+4.5 ms on desktop. Cells are not published and the browser A/B
+(`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
+Playwright lock.
+
 **Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
 measurement blockers from the band kit lanes (#126, #127) are fixed in the
 judge and the measurer, with LIKENESS constants unchanged. `measureFacade`
