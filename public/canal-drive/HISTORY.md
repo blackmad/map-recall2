@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+**Buurt lightness from the photos (#118, 2026-10-30).** The user decided on 2026-10-29: "if it's darker let it be darker".
+`buurtProfiles/exposure.ts` now calibrates every photo source on one shared reference, the panorama thumbnails. The
+offsets are measured on pands two sources share. The one city-wide transform no longer lifts lightness
+(`CITY_LIFT_SHARE = 0`; it was +8.2 L*), so each buurt keeps the L* its photos measure.
+
+Over all profiles, the median c19 brick went from L* 45.9 to 37.8. Block faces were never over-lifted: on 35 shared
+pands they read 0.3–0.6 L* from the thumbnails. The table is in `docs/handoffs/lane-buurt-lightness-20261029.md`
+and the sheet in `docs/images/look/buurt-lightness-12spot-20261029.jpg`.
+
 **Jordaan batch, Bloemgrachtbuurt (#113, 2026-10-29).** The first Jordaan batch installed nothing, for two kit bugs:
 - `houseType.ts` kept a type's per-storey lists (`storeyHeights`, `windowHeights`, `headLines`) at the type's storey
   count when a house drew more or fewer storeys, so validation failed. `resizePerStorey` now keeps the ground and the

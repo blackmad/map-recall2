@@ -2035,7 +2035,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Chunk GLB colour factors are sRGB, not linear (2026-10-29).** `streetChunks/gltf.ts` writes `parseInt(hex)/255` as `baseColorFactor`. Plain loaders (building-gallery, Storybook, external viewers) therefore draw every kit row about two stops too pale. The game and What's New use the `tint` extra. Fix the writer to linearise at the next full chunk rebuild, so every sha moves once, together with covers and goldens. Then drop the `tint` override in `whats-new.html` if nothing else needs it.
 
 - **Generic generator, next (#102 follow-ups, 2026-10-29).**
-  - **De Pijp lightness: decided.** The user (2026-10-29): "if it's darker let it be darker". A buurt keeps its measured lightness; do not lift dark buurten to the city level. Lane buurt-lightness-20261029.
+  - **De Pijp colour: the type palettes, not the profile.** Since #118 a buurt keeps its measured L*. Saenredamstraat still draws saturated red and Tweede Jan Steenstraat rosy pink, because those fronts take the De Pijp block-face type palettes (light brick, L* 39–52, C* 22–26). Re-measure those palettes against the strips.
+  - **Painted test after exposure.** Kerkstraat's white and grey fronts read as brick. The thumbnails are underexposed (white render reads about L* 55–60, under the painted cut of 62). Decide "painted" after the shared-frame offset, against a city white point.
+  - **Buurt profile tests have no npm script.** `src/canalRecall/buurtProfiles/*.test.ts` run only by hand.
   - **Saturation.** Fronts are still more saturated than the muted photos.
   - **Kerkstraat** may have lost the white and grey fronts it had before; check it.
   - **Tweede Jan Steenstraat** still has an ochre front.
