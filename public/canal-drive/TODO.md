@@ -32,7 +32,11 @@ with "continue from the branch", model per `LANE-RULES.md`. The plan is
 bullet list below; the per-building state is
 `public/canal-drive/landmark-factory-queue.json` and the census. Visible
 changes go to `public/canal-drive/whats-new-notes.json` in the same commit
-that ships them (the What's New page renders it). Tracking (user, 2026-10-24):
+that ships them (the What's New page renders it), with a screenshot when the
+change can be seen (user, 2026-10-30): push the picture to
+`github.com/blackmad/map-recall2-screenshots` (`whats-new/<date>-<slug>.jpg`,
+before/after pairs welcome) and list it under the note's `images`; the game
+repository holds no new screenshots. Tracking (user, 2026-10-24):
 every question or action for the user is a GitHub issue labelled
 `needs-david` and assigned to blackmad, never only a chat line; each lane is
 an issue labelled `lane` (+ `programme`), commented with its hand-back and
@@ -54,14 +58,20 @@ no-evidence; round 3 (towers at 70 m crops): 11 pands, 1 installed (137174),
 "round 2"): an unresolved wall family on a wide street wall is a kit-gap,
 not buildable; read balcony/ribbon bands; nine of twenty r2 holds were
 sheds and retail fronts triage should have filtered. Open: #112 (needs-david:
-inferred-install policy; running under policy A meanwhile). Next spend, per
-the kill rule: a kit lane for floor bands on curtain walls (unlocks 19
-triage `curtain` candidates and the 95 inferred glass installs' FAILs), the
-32 m crop cap raised for the 95 `tower` candidates (`all-walls.ts
---max-height`, needs a re-crop), and the three self-test gaps (glazed
-pavilion under a deep roof, glazed sawtooth hall, painted-black front with
-white balconies). Self-test drafts sit in the skill worktree's
-`staging/landmark-lane-selftest/`, uncommitted (they would move fit-golden).
+inferred-install policy; running under policy A meanwhile). Spent since, per
+the kill rule: floor bands on curtain walls (#116), the 70 m crop cap for
+towers (round 3), band fronts (#126, #127: `balconyBands.spans`, ribbon and
+glazed-storey proposals) and the band measurement blockers (#134, HISTORY
+"Band fronts measured"): painted floor bands no longer count as washed-out
+glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
+groups are probed again when a crop pairs them. Measured result: 0 of 253
+inferred groups moved and none of the 17 ride-landmark drafts passes yet;
+what still blocks them is in the tier sheet (item 8). Next spend by blocked
+ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
+closer-crop or second-capture signal for pale brick fronts (240435) that the
+cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
+would move fit-golden).
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
@@ -83,12 +93,63 @@ behind `?engine=own` (not edits to `vector-map.js`, which is frozen to fixes
 and deleted at the flip); all of MapLibre goes (ride, overview, picker);
 gates on the emulator and SwiftShader proxy, no real-device rides for now;
 Google tiles deleted; content lanes keep merging with a `world:compile` step.
-Lanes: L2 oracle migration + P0 deletions (`lane-oracle-migration-20261030.md`,
-haiku) → L1 engine host (`lane-engine-host-20261030.md`) ∥ L3 world compiler
-(`lane-world-compiler-20261030.md`, absorbs lane C) ∥ L8 driving feel (lane E)
-→ L4 streamer / L5 overlays → L6 facade shader (B) / L7 shadows (D). Gates per
+Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
+migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
+4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
+world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
+#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
+State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
+fixes): `vectorMap.camera` (project, unproject, center, zoom, bounds, pitch,
+bearing, onFrame, whenIdle) over MapLibre in `vector-map.js`; 41 spec/script
+files read it instead of `vectorMap.map` for those members (inventory
+`docs/handoffs/oracle-inventory-20261030.md`). Still on `.map`: `jumpTo` 69,
+`getCanvas` 29, `setMaxPitch` 27, `calculateCameraOptionsFromTo` 22,
+`triggerRepaint` 29, `getStyle` 23, `stop` 19, `getLayoutProperty` 24,
+`once('render')` ×4 (L1 decides which become `WorldView` methods). Integrator
+reverted the lane's change of `mapRender` in `ride-perf` / `landmark-lod-perf`
+to the render-to-render interval: `DESKTOP_BUDGET` is main-thread ms, so the
+MapLibre `_render` wrap stays (guarded on `vm.map`) until the frame host has
+its own render owner. `tests/perf/budgets.json` + `scripts/perf-gate.mjs`
+landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser
+verification pending:** the lane's run was mis-scoped to every spec (426/638
+in 2 h, lock held); two migrated specs failed there (`bike-xray` chase
+colours, `complete-city` contextualFeatures 0) and are classified
+not-migration-caused by reading only; a `ride-perf` + those two specs run is
+queued behind the lock. P0 deletions still open: study layers and Google
+tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
+`scripts/city-appearance/publish-area-geometry-demo.ts`,
+`scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
+`wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
+`tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
+(`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
+and the build chain), `index.html` script tags, the bundles. Lesson for
+`LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
+representative subset, not every touched spec.
+State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
+`?world=v1`, cells NOT published yet): WRLD v1 format
+(STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
+`npm run world:compile` runs the runtime's own decorators/roof/grouping into
+`artifacts/world/staging/` (604 cells, 347,698 buildings, 14–19 s, `--changed`),
+the tile streamer under the flag reads cells with no GeoJSON, facts fetches,
+decorator chain or MapLibre `setData` on the main thread (per dense tile
+163–301 ms → 25–58 ms, Node). Chunk arrays byte-identical at five sentinels and
+the resident set identical through the real streamer. **Gates not met:**
+15.79 MB gz against the ≤ 4 MB target (replaces 21.5 MB of inputs; FOOT 7.5 MB
+at exact 1e-7° so decoded coordinates equal the default path's, 0.1 m would
+save 0.8 MB and move vertices; ATTR 2.45 MB + STRS 2.07 MB are runtime-unneeded
+once consumers read STYL only; floor at exact coords ≈ 9 MB) and decode ≤ 5 ms
+per cell at 4× (desktop p95 4.5 ms, max 9.5 ms; needs the worker-side read, L4).
+Open: browser A/B `WORLD_AB=1 … world-v1-ab` (waited 80 min on the Playwright
+lock, not run), publish the cells (16 MB in git; after the A/B), worker-side
+decode, LMRK/WATR/ROAD/TREE/LABL streams, non-default looks under the flag get
+the default look's style. Pre-existing red found on main:
+`scripts/check-building-look-transition.ts` throws
+`t.chunks.get(first.key)` undefined (`test:city-startup` step; fails on
+`72d48311c` too), not from this lane; CI is green because `check:canal` does
+not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
@@ -1041,17 +1102,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Amstel station is still a hole (2026-10-30).** BAG `0363100012145715`
-  (1939, 7,004 m², AHN 8.5 m, ridge 15 m) is held as `over-road`: its outline
-  takes in 286 m of the Julianaplein busway. Compare the bus platforms and hall
-  with the panorama, then draw the hall (a recipe, or the BAG outline minus the
-  bus lanes). Pinned in `check-bag-gaps` HELD so it is not filled as one box.
-- **Buildings over roads: re-scan as a check (2026-10-30).** After the
-  underground and void drops, about 375 footprints still cover ≥ 6 m of a
-  car-road centreline. The ones looked at are real (IJ-tunnel portals,
-  Oosterdokseiland over Oosterdoksstraat, Bijlmerdreef decks, hospital
-  bridges), but the list has not been read end to end. Make the one-off scan
-  a check with an allowlist.
+- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
+  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
+  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
+  street that OSM does not tag as passing under them, on the reviewed list in
+  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
+  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
+  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
+  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
+  street runs under the building, tag the way in OSM or add a passage
+  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
+  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
+  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
+  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
+  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
+  on PDOK.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -2028,6 +2093,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **What's New "In progress" strip is stale (found 2026-10-30).** It renders
+  `poi-work-queue.json` rows whose status matches draft/in-progress/awaiting,
+  a queue nobody has written to since 2026-10-10. Of the nine rows shown, none
+  is live: the Jan Evertsenstraat generator pilot was retired 2026-10-14; the
+  Keizersgracht 73/Herengracht 54 and Leidsestraat/Kerkstraat one-off
+  ordinary builders were frozen (no model exists); the Nassaukade roof task,
+  street-profile entrances/crowns, dominant-building triage and the
+  large-ordinary pilot were all superseded by the kit lanes and the
+  dominant-building backlog; the signage policy has no owner; UvA
+  Roeterseiland shows REC B/C/D as a CPU draft while REC-A is installed and
+  the remaining builder is held. Decide the source (open `lane` issues, the
+  programme bullets above, or drop the strip) and point the page at it.
 
 - **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
   - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.

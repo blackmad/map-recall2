@@ -51,4 +51,9 @@ test('centreline metres inside a footprint', () => {
   const across = centrelineInsideM([square], [[[4.899, 52.3603], [4.902, 52.3603]]]);
   assert.ok(Math.abs(across - 68) < 2, `${across}`);
   assert.equal(centrelineInsideM([square], [[[4.899, 52.362], [4.902, 52.362]]]), 0);
+  // A road 2 m inside the south edge (along the wall) counts only without an inset.
+  const along: [[number, number], [number, number]] = [[4.899, 52.360018], [4.902, 52.360018]];
+  assert.ok(centrelineInsideM([square], [along]) > 60);
+  assert.equal(centrelineInsideM([square], [along], 3), 0);
+  assert.ok(Math.abs(centrelineInsideM([square], [[[4.899, 52.3603], [4.902, 52.3603]]], 3) - 62) < 2);
 });

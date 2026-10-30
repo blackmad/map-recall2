@@ -33,6 +33,11 @@ const NAMED: { id: string; place: string; minHeight: number; maxHeight: number }
 /** Holes that must stay unfilled: a box here would stand across the road. */
 const HELD: { id: string; place: string; why: string }[] = [
   { id: 'NL.IMBAG.Pand.0363100012145715', place: 'Amstel station hole across Julianaplein', why: 'over-road' },
+  { id: 'NL.IMBAG.Pand.0363100012170698', place: 'Piet Heinkade tunnel mouth (filled 2026-10-16 as a 4.6 m box)', why: 'over-road' },
+  { id: 'NL.IMBAG.Pand.0363100012170750', place: 'Piet Heinkade tunnel deck', why: 'over-road' },
+  { id: 'NL.IMBAG.Pand.0363100012241657', place: 'Eerste Constantijn Huygensstraat over the Vondeltunnel (1947)', why: 'over-road' },
+  { id: 'NL.IMBAG.Pand.0363100012142986', place: 'Johan van Hasseltweg viaduct (1968)', why: 'over-road' },
+  { id: 'NL.IMBAG.Pand.0363100012251792', place: 'Johan van Hasseltweg deck (1990)', why: 'over-road' },
 ];
 const report = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/bag-gaps.json'), 'utf8')) as { holes: number; filled: number; holeList: { id: string }[] };
 const fills = (JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/bag-gaps-supplement.geojson'), 'utf8')) as { features: SupplementFeature[] }).features;
@@ -57,12 +62,24 @@ const idsIn = (dir: string, key: string): Set<string> => {
   return ids;
 };
 const missing: Record<string, string[]> = { 'building-tiles': [], 'bag-tiles': [] };
+// A fill a passage runs through is drawn as its pieces (scripts/cut-building-passages.ts; check:building-passages checks them).
+const cutByPassage = new Set((JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/passages/passage-pieces.geojson'), 'utf8')) as { features: { properties: { pand: string } }[] }).features.map(f => f.properties.pand));
 for (const f of fills) {
+  if (cutByPassage.has(f.properties.id)) continue;
   const r = (f.geometry.type === 'Polygon' ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0]) as number[][];
   const c = r.reduce((a, p) => [a[0] + p[0] / r.length, a[1] + p[1] / r.length], [0, 0]);
   const key = tileKey(tileFor(c[0], c[1], 14));
   for (const dir of Object.keys(missing)) if (!idsIn(dir, key).has(f.properties.id)) missing[dir].push(f.properties.id);
 }
+// Held over-road holes drawn as 3DBAG roof parts (scripts/fill-over-road-holes.ts).
+const parts = (JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/bag-gaps/over-road-parts.geojson'), 'utf8')) as { features: SupplementFeature[] }).features;
+for (const f of parts) {
+  const r = f.geometry.coordinates[0] as number[][];
+  const c = r.reduce((a, p) => [a[0] + p[0] / r.length, a[1] + p[1] / r.length], [0, 0]);
+  const key = tileKey(tileFor(c[0], c[1], 14));
+  for (const dir of Object.keys(missing)) if (!idsIn(dir, key).has(f.properties.id)) missing[dir].push(f.properties.id);
+}
+if (!parts.some(f => f.properties.id.startsWith('part:NL.IMBAG.Pand.0363100012145715:'))) problems.push('Amstel station: no roof parts drawn (run scripts/fill-over-road-holes.ts --write)');
 for (const [dir, ids] of Object.entries(missing)) if (ids.length) problems.push(`${ids.length}/${fills.length} fills not in ${dir} (${ids.slice(0, 4).join(', ')}${ids.length > 4 ? ', ...' : ''}): run \`node --import tsx scripts/publish-bag-gaps.ts --write\``);
 console.log(`bag-gaps: survey ${report.holes} holes, ${fills.length} fills; named ${NAMED.length}; ${problems.length} problems`);
 for (const p of problems) console.log(`  FAIL ${p}`);

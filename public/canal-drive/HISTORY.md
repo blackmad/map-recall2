@@ -1,5 +1,148 @@
 # Canal Recall — what is built
 
+**Specs read `vectorMap.camera`, not MapLibre (2026-10-30, #128).** Engine
+programme P0: `vector-map.js` gained a camera facade (`project`, `unproject`,
+`center`, `zoom`, `bounds`, `pitch`, `bearing`, `onFrame`, `whenIdle`) and 41
+spec and script files read it instead of `vectorMap.map`, so a second
+`VectorMap` implementation can satisfy the same oracles. Why the two perf
+specs keep wrapping `map._render`: `DESKTOP_BUDGET` (median ≤ 4 ms, p95 ≤ 10)
+is MapLibre's main-thread render cost, and the lane's replacement (the
+render-to-render interval, 16.7 ms at vsync) would have changed the metric
+under the same budget; the wrap stays, guarded on `vm.map`, until the frame
+host exposes its own render owner. `tests/perf/budgets.json` records the P0
+baselines with dates and sources (draws 851 2026-10-24, programs 32
+2026-10-26, iPhone profile heap 245 / ArrayBuffers 67 / GL buffers 140 /
+MapLibre workers 94 MB 2026-10-24, time-to-ride 7.5 s 2026-10-06, motion
+budget {200, 1, 4} 2026-10-16); `scripts/perf-gate.mjs` collects the three
+perf scripts against it. Browser verification of the migration is still
+pending: the lane's run was mis-scoped to all 638 tests and held the shared
+Playwright lock for two hours.
+
+**What's New notes link screenshots (2026-10-30).** User: notes should link
+to screenshots, kept in a separate repository so this one does not grow with
+every release. Each note may carry `images: [{src, alt, caption?}]`;
+`whats-new.html` renders them as lazy thumbnails under the text (full row on
+phones), opening the full picture in a new tab, and drops a thumbnail whose
+file is missing so a half-pushed note never shows a broken image. `src` is a
+path in `github.com/blackmad/map-recall2-screenshots`
+(`whats-new/YYYY-MM-DD-slug[-before|-after].jpg`, served from
+raw.githubusercontent.com) or a full URL. The rule is in CLAUDE.md, TODO's
+tracking paragraph and the lane hand-back template (SCREENSHOTS line).
+Verified at 1280 and 390 px with a stub notes file; the "In progress" strip
+on the same page was found to be stale (TODO P2).
+
+**Roads through buildings cut open; guessed heights measured (2026-10-30).**
+`scripts/cut-building-passages.ts` (`src/canalRecall/buildingPassages.ts`,
+polygon-clipping) takes every ridden OSM way tagged
+`tunnel=building_passage` or `covered=yes` (1,250 ways) and the tile features
+it runs through. Each becomes ground pieces either side of the road strip
+plus a deck over it: 474 buildings, 1,537 pieces, 573 decks. The deck starts
+4.5 m up over a street and 3.5 m over a poort, cycleway or service lane. A
+building too low to bridge the strip leaves it open, and a building a model
+hides is left whole. The pieces are `passage:<id>:<i>` features with the
+original id in `pand`. The originals are staged, so `--write` is idempotent
+and survives a tile rebuild. `check:building-passages` names Jan van
+Zutphenstraat, the Motorwal and Berchvliet. Tunnels (IJ-tunnel, Piet
+Heintunnel, Burgemeester Stramanweg under the ArenA) stay whole, since the
+ground layer cuts them. The over-road reviewed list drops from 43 to 29.
+
+The Jan van Zutphenstraat towers stood at 9 m: OSM-only outlines with no
+height or levels get the default. `osmHeightGuessed` (bagGaps.ts) now marks
+them, and `scripts/measure-guessed-heights.ts` measures each guess from AHN
+inside its own outline, unless OSM dates it after 2019, because AHN flew in
+2020; the gate's Elandsgracht kiosk (2023) caught that. 1,043 of 1,214 are
+measured (towers 37 m, sheds 2–3 m), stored in
+`scripts/data/osm-guessed-heights.json` and kept by `check:guessed-heights`.
+AHN sees the other 171 as flat, so they keep the guess. The gap survey no longer counts
+an OSM-only outline without a tagged height as drawing a pand (the 9 m default,
+or the new-build rules' 3.2 m / neighbour guesses), so an AHN-measured BAG
+fill replaces it (197 new fills; `appendSupplement` / `publish-bag-gaps` drop them in every tile). The
+exception is a gap whose AHN top stands ≥ 10 m over its p70
+(`mixed-under-guess`): there the guesses stay. The Jan van Zutphenstraat
+pands are an example: each covers its tower plus the garage under the lawn
+beside it, and one 37 m box would have stood on the lawn. The AHN raster
+code moved to `scripts/lib/ahnFootprint.ts`.
+
+**World compiler v1 merged, flag-off (2026-10-30, #130).** First piece of the
+engine programme's P2: `src/canalRecall/world/cellFormat.ts` (WRLD v1, 1 km
+own-ground cells, streams STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, decoders that
+throw on magic, version, offsets, counts, varints and trailing bytes) and
+`scripts/world/compile.ts`, which runs the runtime's own functions
+(`dropNestedDuplicates`, the years and roof-facts enrichers,
+`decorateBuildingFeature` and vector-map's decorator chain,
+`BuildingContextIndex`) at build time into `artifacts/world/staging/`. Under
+`?world=v1` the tile streamer reads cells instead of GeoJSON and does no
+decorating, facts fetching or MapLibre `setData` on the main thread; chunk
+arrays are byte-identical at Westerkerk, Bloemgracht 80, the Nassaukade
+145–152 row, a courtyard pand and the IJburg edge, and the resident set is
+identical through the real streamer (`test:world-format`). Why exact 1e-7°
+coordinates instead of the brief's 0.1 m grid: only the exact grid keeps
+decoded coordinates equal to the default path's, so identity can be proven;
+0.1 m saves 0.8 MB. Why Morton order was dropped: tile order is already
+spatially coherent and Morton made the file bigger. Measured: 15.79 MB gz for
+347,698 buildings (replaces 21.5 MB of inputs; the ≤ 4 MB target assumed
+slop's rate at 190k pands and is not met; ATTR + STRS, 4.5 MB, are the first
+cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p95
+4.5 ms on desktop. Cells are not published and the browser A/B
+(`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
+Playwright lock.
+
+**Band fronts measured, not yet passing (2026-10-30, lane #134).** Three
+measurement blockers from the band kit lanes (#126, #127) are fixed in the
+judge and the measurer, with LIKENESS constants unchanged. `measureFacade`
+reads the washed mask row by row before computing the washed-out share: a
+run 0.2–1.8 m thick, washed across at least half the row, with clear rows
+within 1.5 m above and below, repeating at least three times at one storey
+spacing, is a painted floor band and counts as wall (063809's slab fronts go
+from 36 % washed to 8 %, and from NO EVIDENCE to a judged FAIL). The
+likeness elevation now carries a depth buffer, and on groups that draw
+`balconyBands` glass 0.35 m or more in front of the wall plane near an upper
+storey line is classed as trim, so parapet glass no longer inflates model
+glazing (247342 w1 0.41 to 0.25 against a photo 0.18). The rule is gated to
+balcony-band groups because the ungated version moved Houthavenkade 26 PASS
+to WARN and Politie Van Leijenberghlaan WARN to FAIL: on about twenty
+inferred installs ordinary kit windows sit 0.35 m proud of the modal wall
+material, which a kit or likeness lane should look at. `measure.ts` probes
+groups the triangle budget blanked, compiling them with the draft system
+through a `compileLargeHouse` override, and re-applies the budget after
+`--write`. Replay over the 253 measured inferred groups: identical verdicts
+and reasons (PASS 13, WARN 38, FAIL 151, NO EVIDENCE 51); over the 17
+ride-landmark drafts, 0 verdicts moved. What still blocks a PASS is now
+geometry the drafts draw wrong, not measurement: punched windows where the
+photo shows ribbons (063809, 247342), storey-2 opening widths (242968), a
+pale pink-grey brick that cell statistics cannot separate from AkzoNobel's
+glare (240435), and 063809 still 9,395 triangles over the 12k budget.
+
+**Amstel station drawn from its roofs; raised OSM parts lifted; over-road check (2026-10-30).**
+Amstel station (BAG `0363100012145715`) was held unfilled because its outline
+covers the Julianaplein busway. Measured with a 3 m edge inset, the bus lanes
+only run along the hall's edges, and the PDOK orthophoto agrees. So
+`scripts/fill-over-road-holes.ts` now draws it from its eight 3DBAG LoD1.3
+roof faces: six stand on the ground, the north canopy is a deck 4.5 m up, and
+one sliver is left out. These are the `part:` features, and `check-bag-gaps`
+pins them.
+
+`building:min_level` had been read as metres, so a part tagged min_level 4
+started 4 m up instead of 12 m. `osmMinHeightM`
+(`src/canalRecall/osmMinHeight.ts`) now converts storeys: the part's height ÷
+its levels, or 3 m a storey when the levels are not tagged. OSM `roof`
+outlines with no base, such as bus and petrol-station canopies (Overkapping
+IJsei), are now 1 m slabs under their top instead of solid blocks. The new
+`scripts/fix-osm-min-level.ts` applies both rules to the published tiles:
+1,419 parts, with the expected values kept in `scripts/data/osm-min-levels.json`.
+`check:osm-min-level` keeps them on the rule.
+
+`check:buildings-over-roads` turns the one-off scan into a gate. It fails on
+any feature lower than 2.5 m (a part a rider fits under) that has ≥ 20 m of
+car-road centreline more than 3 m inside its outline, unless that feature is
+reviewed in `scripts/data/buildings-over-roads.json`, which records a reason
+for each. The first read found five 2026-10-16 gap fills that were tunnel
+mouths and viaduct decks drawn as 3–5 m boxes: Piet Heinkade (two), Eerste
+Constantijn Huygensstraat over the Vondeltunnel, and Johan van Hasseltweg
+(two). They are out of the supplement (1,598 fills) and held in
+`check-bag-gaps`. The other 43 are real buildings. The check runs in about
+2 s and is part of `check:canal`.
+
 **Engine programme decided (2026-10-30).** The user asked whether the recurring
 performance and rendering trouble needs a larger architectural change (more
 game engine, less hand-written, less MapLibre). Three explore passes and a

@@ -154,7 +154,7 @@ test('labels 2026-10-30: Oosterdok and Kattenburg in pitched Free Ride', async (
   await page.waitForTimeout(3000);
   report.headingOcclusion = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
-    return { pitch: g.vectorMap.map.getPitch(), active: g._streetLabelOcclusion.index.ready && (g._streetLabelOcclusion.stats.tested + g._streetLabelOcclusion.stats.hidden) > 0, stats: g._streetLabelOcclusion.stats };
+    return { pitch: g.vectorMap.camera.pitch(), active: g._streetLabelOcclusion.index.ready && (g._streetLabelOcclusion.stats.tested + g._streetLabelOcclusion.stats.hidden) > 0, stats: g._streetLabelOcclusion.stats };
   });
   await page.screenshot({ path: `${dir}/oosterdok-heading-${TAG}.png` });
   await page.evaluate(() => { const g = (window as any).canalRecallGame; g.viewMode = 'chase'; g.camera.viewMode = 'chase'; });

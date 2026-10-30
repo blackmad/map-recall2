@@ -111,15 +111,32 @@ const insideRing = (x: number, y: number, ring: readonly LngLat[]): boolean => {
 const insidePolygon = (x: number, y: number, polygon: Polygon): boolean =>
   insideRing(x, y, polygon[0]) && !polygon.slice(1).some(hole => insideRing(x, y, hole));
 
-/** Metres of the given `[lng, lat]` segments inside the polygons, sampled every metre. */
-export function centrelineInsideM(polygons: readonly Polygon[], segments: readonly (readonly [LngLat, LngLat])[]): number {
+/** Metres from a point to the nearest edge of a polygon (local equirectangular). */
+const edgeDistanceM = (x: number, y: number, polygon: Polygon): number => {
+  const kx = 111_320 * Math.cos((y * Math.PI) / 180), ky = 111_320;
+  let best = Infinity;
+  for (const ring of polygon) for (let i = 1; i < ring.length; i++) {
+    const ax = (ring[i - 1][0] - x) * kx, ay = (ring[i - 1][1] - y) * ky, bx = (ring[i][0] - x) * kx, by = (ring[i][1] - y) * ky;
+    const dx = bx - ax, dy = by - ay, t = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy || 1)));
+    best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+  }
+  return best;
+};
+
+/**
+ * Metres of the given `[lng, lat]` segments inside the polygons, sampled every
+ * metre. `insetM` counts only samples at least that far inside an edge: OSM
+ * roads hug building outlines that BAG digitised a metre or two wider
+ * (Julianaplein along Amstel station's hall).
+ */
+export function centrelineInsideM(polygons: readonly Polygon[], segments: readonly (readonly [LngLat, LngLat])[], insetM = 0): number {
   let metres = 0;
   for (const [a, b] of segments) {
     const kx = 111_320 * Math.cos((a[1] * Math.PI) / 180), length = Math.hypot((b[0] - a[0]) * kx, (b[1] - a[1]) * 111_320);
     const steps = Math.max(1, Math.round(length));
     for (let i = 0; i < steps; i++) {
       const t = (i + 0.5) / steps, x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t;
-      if (polygons.some(polygon => insidePolygon(x, y, polygon))) metres += length / steps;
+      if (polygons.some(polygon => insidePolygon(x, y, polygon) && (insetM <= 0 || edgeDistanceM(x, y, polygon) >= insetM))) metres += length / steps;
     }
   }
   return metres;

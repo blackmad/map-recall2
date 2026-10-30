@@ -102,7 +102,7 @@ export const SWEEP_FROM = 13.8, SWEEP_TO = 16.2, SWEEP_STEP = 0.1;
 async function sweepSwitch(page: Page, name: string, playZoom: number) {
   const camAt = async (mapZoom: number) => {
     // In plan view (`introOverview` 1) the map zoom is log2 of the camera zoom plus a constant.
-    const z0 = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getZoom() as number);
+    const z0 = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.zoom() as number);
     const c0 = await page.evaluate(() => (window as any).canalRecallGame.camera.zoom as number);
     return c0 * 2 ** (mapZoom - z0);
   };

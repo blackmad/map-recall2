@@ -3,7 +3,7 @@
  * survey-bag-gaps.ts --heights) to the z14 city tiles: building-tiles (drawing keys
  * only) and bag-tiles (with year/eaves/ridge). Idempotent and disjoint
  * (bagGaps.ts appendSupplement): an id already present, or a footprint already
- * >= 50% drawn, is skipped, so a later 3DBAG release that reconstructs the pand wins.
+ * >= 50% drawn, is skipped; guessed-height outlines a fill `replaces` are dropped from every tile, so a later 3DBAG release that reconstructs the pand wins.
  * Re-run after any full tile rebuild (build-lod1-city.ts drops these pands; see bagGaps.ts).
  *
  * Usage: node --import tsx scripts/publish-bag-gaps.ts [--write] [--root=<dir holding building-tiles/ and bag-tiles/>]
@@ -35,27 +35,40 @@ for (const f of supplement) {
   byTile.set(key, [...(byTile.get(key) ?? []), f]);
 }
 const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
-const summary: Record<string, { added: number; skipped: number; tiles: number }> = {};
+const summary: Record<string, { added: number; skipped: number; replaced: number; tiles: number }> = {};
 for (const dir of ['building-tiles', 'bag-tiles'] as const) {
   const srcIndex = path.join(extract, dir, 'index-z14.json');
   const index = JSON.parse(fs.readFileSync(srcIndex, 'utf8')) as { features: number; tileList: string[]; tiles: number; totalBytes?: number; totalGzipBytes?: number; bagGapSupplement?: unknown };
-  let added = 0, skipped = 0;
+  let added = 0, skipped = 0, replaced = 0;
   const changed: { tile: string; before: string; after: string; added: string[] }[] = [];
+  // Guessed outlines a fill replaces can sit in a neighbouring tile (or span two): drop them wherever they are.
+  const replace = new Set(supplement.flatMap(f => f.properties.replaces ?? []));
+  if (replace.size) for (const key of index.tileList.filter(k => !byTile.has(k))) {
+    const src = path.join(extract, dir, `${key}.geojson.gz`), raw = fs.readFileSync(src), text = zlib.gunzipSync(raw).toString();
+    if (![...replace].some(id => text.includes(`"${id}"`))) continue;
+    const fc = JSON.parse(text) as { features: { properties: { id?: unknown } }[] };
+    const kept = fc.features.filter(f => !replace.has(String(f.properties.id ?? '')));
+    if (kept.length === fc.features.length) continue;
+    replaced += fc.features.length - kept.length;
+    const gz = zlib.gzipSync(`${JSON.stringify({ ...fc, features: kept })}\n`);
+    changed.push({ tile: key, before: sha(raw), after: sha(gz), added: [] });
+    if (write) { const out = path.join(outRoot, dir, `${key}.geojson.gz`); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, gz); }
+  }
   for (const [key, adds] of byTile) {
     const src = path.join(extract, dir, `${key}.geojson.gz`);
     const raw = fs.existsSync(src) ? fs.readFileSync(src) : null;
     const fc = raw ? JSON.parse(zlib.gunzipSync(raw).toString()) : { type: 'FeatureCollection', features: [] };
     const res = appendSupplement(fc.features, dir === 'building-tiles' ? adds.map(forBuildingTiles) : adds, ringsOf);
-    added += res.added.length; skipped += res.skipped.length;
-    if (!res.added.length) continue;
+    added += res.added.length; skipped += res.skipped.length; replaced += res.replaced.length;
+    if (!res.added.length && !res.replaced.length) continue;
     const gz = zlib.gzipSync(`${JSON.stringify({ ...fc, features: res.features })}\n`);
     changed.push({ tile: key, before: raw ? sha(raw) : '', after: sha(gz), added: res.added });
     if (write) { const out = path.join(outRoot, dir, `${key}.geojson.gz`); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, gz); }
     if (!index.tileList.includes(key)) index.tileList.push(key);
   }
-  summary[dir] = { added, skipped, tiles: changed.length };
+  summary[dir] = { added, skipped, replaced, tiles: changed.length };
   if (write && changed.length) {
-    index.features += added; index.tileList.sort(); index.tiles = index.tileList.length;
+    index.features += added - replaced; index.tileList.sort(); index.tiles = index.tileList.length;
     if (index.totalBytes !== undefined) {
       let total = 0, gzip = 0;
       for (const key of index.tileList) { const p = [path.join(outRoot, dir, `${key}.geojson.gz`), path.join(extract, dir, `${key}.geojson.gz`)].find(fs.existsSync)!; const b = fs.readFileSync(p); gzip += b.length; total += zlib.gunzipSync(b).length; }

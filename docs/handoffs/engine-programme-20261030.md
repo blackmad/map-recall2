@@ -174,14 +174,14 @@ time-to-ride, worker heap.
 | Lane | Brief | Files | Days | Model |
 |---|---|---|---|---|
 | L0 integrator | this doc | `game.js`, `index.html`, `package.json`, bundles, flags, budgets baselines, cell publishing, TODO/HISTORY, issues | ongoing | opus |
-| L1 engine host | `lane-engine-host-20261030.md` | `src/canalRecall/engine/*`, `rendererShared/sharedFrame.ts` (sole owner), `ownMap/*`, participants' shared paths | 12–15 | opus |
-| L2 oracle migration + P0 deletions | `lane-oracle-migration-20261030.md` | `tests/e2e/*`, `scripts/*` readers, study/Google files, `vector-map.js` only for `camera` and deletions | 3 | haiku |
-| L3 world compiler | `lane-world-compiler-20261030.md` | `scripts/world/*`, `src/canalRecall/world/*` | 8–10 | opus format, haiku runs |
+| L1 engine host (#129) | `lane-engine-host-20261030.md` | `src/canalRecall/engine/*`, `rendererShared/sharedFrame.ts` (sole owner), `ownMap/*`, participants' shared paths | 12–15 | opus |
+| L2 oracle migration + P0 deletions (#128) | `lane-oracle-migration-20261030.md` | `tests/e2e/*`, `scripts/*` readers, study/Google files, `vector-map.js` only for `camera` and deletions | 3 | haiku |
+| L3 world compiler (#130) | `lane-world-compiler-20261030.md` | `scripts/world/*`, `src/canalRecall/world/*` | 8–10 | opus format, haiku runs |
 | L4 streamer, pool, road CSR | (after L3) | `engine/worldStreamer.ts`, `threeBuildingsWorker.ts`, `ownGround/groundWorker.ts`, `routing/*` | 8 | opus |
 | L5 overlays + labels | (after L1 host) | `engine/overlays/*`, `ownMap/labels.ts`, `labelPolicy.ts` | 5 | opus |
 | L6 facade shader | `lane-facade-shader-20261029.md` (after FOOT/STYL) | `litFacadeMaterial.ts`, new facade material files | 7–10 | opus |
 | L7 shadows, culling, loading | `lane-shadow-standins-culling-20261029.md` | `lightRig.ts`, `shadowFit.ts`, `compileBudget.ts` | 5 | opus |
-| L8 driving feel | `lane-driving-feel-20261029.md` | typed physics substep, `cameraYaw.ts`, `camera.js` | 4 | opus |
+| L8 driving feel (#131) | `lane-driving-feel-20261029.md` | typed physics substep, `cameraYaw.ts`, `camera.js` | 4 | opus |
 
 Order: L2 first (week 1); L1 + L3 + L8 in parallel; L4 and L5 once L3's format
 and L1's host exist; L6/L7 after L4. Lane F (ground raster) stays a spike.
