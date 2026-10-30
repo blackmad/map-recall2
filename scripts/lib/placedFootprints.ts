@@ -109,5 +109,5 @@ export function buildingTypesPlaced(): Placed[] {
   if (!fs.existsSync(file)) return [];
   const inst = readJson(file) as {pand: string; anchor: [number, number]}[];
   // Each instance replaces its own pand; the game suppresses `NL.IMBAG.Pand.<pand>` (runtime.ts suppression ids).
-  return inst.map(i => ({id: `building-type:${i.pand}`, kind: 'building-type', suppress: new Set([`NL.IMBAG.Pand.${i.pand}`]), footprint: [], source: 'bag-pand', centre: i.anchor}));
+  return inst.map(i => ({id: `building-type:${i.pand}`, kind: 'building-type', suppress: new Set([`NL.IMBAG.Pand.${i.pand}`]), fp: null, source: 'bag-pand', centre: i.anchor}));
 }
