@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**Modern side of the generic generator (#117, 2026-10-30).** The user approved it on 2026-10-29: "if we need a modern
+building side let it be modern". Before this, every dated post-1945 generic building drew smooth beige render with
+punched windows.
+
+`modernFacades.ts` now picks a look by era × use (1945–64, 1965–79, 1980–99, 2000+; office or housing from the OSM
+building type or footprint and height), using the nine modern presets already in the texture array, with no new layers:
+- ribbon and curtain offices, with pale spandrels;
+- brick, dark-frame brick, render and galleries for housing.
+
+Housing walls come from the buurt profiles' new measured post-1945 era: 124 of 209 profiles, sampled from 3,334
+panorama thumbnails. Paint is white-balanced against the thumbnails' warm cast.
+
+Pre-1945 buildings are byte-identical (geometry hash), and triangles change by 0 %.
+
+On the 12-spot sheet against the photos:
+- better at 5 spots: Borneolaan, Kinkerstraat, Nieuwe Herengracht, Reguliersdwarsstraat, Weesperstraat;
+- worse at 2: Van Reigersbergenstraat and Sarphatistraat;
+- about the same at the rest.
+
+Per-pand walls were built and then shipped empty. The lane's round-2 pick (a random draw from the buurt mix) could not
+match single buildings, so round 3 added each measured building's own wall. The one spot building that had been
+measured read its balcony shadow as dark brick.
+
 **Buurt lightness from the photos (#118, 2026-10-30).** The user decided on 2026-10-29: "if it's darker let it be darker".
 `buurtProfiles/exposure.ts` now calibrates every photo source on one shared reference, the panorama thumbnails. The
 offsets are measured on pands two sources share. The one city-wide transform no longer lifts lightness

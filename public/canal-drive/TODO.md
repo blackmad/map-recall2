@@ -2043,7 +2043,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - **Tweede Jan Steenstraat** still has an ochre front.
   - **Window traits** are measured only in the block-face districts. The Jordaan and centre profiles have palette and accent shares only.
   - **Crown mix** is stored but not drawn yet; it needs a hook in `roofMesh` `planRoof`.
-  - **Modern blocks: approved by the user (2026-10-29), lane modern-generic-20261029.** Add a modern side to the generator: glass and spandrel bands and concrete frames, by year and use. This is the cheap route for the large ride-visible modern buildings #105 could not install.
+  - **Modern blocks (#117, landed 2026-10-30). Open items:**
+    - **Per-pand modern walls are off.** `modern-pand-walls.json` is shipped empty. The 320 px thumbnail samples are too close and steep: at Haarlemmer Houttuinen, 8.6 m away at pitch 39°, balcony shadow read as dark brick. Gate on distance, pitch, shadow and whether the sampler's family agrees with derive's material before shipping per-pand walls.
+    - **Misses on the 12-spot sheet:** Van Reigersbergenstraat (pale buff, drawn dark brown) and Sarphatistraat (dark grey brick, drawn white). Neither building was sampled.
+    - **Use is thin.** OSM tags only about 4 % of post-1945 buildings. Add BAG `gebruiksdoel` (`.cache/bag-pand-uses`) to the building-facts rows.
+    - **Not drawn yet:** set-back top floors, glazed, recessed or arcaded ground floors, and floor bands on brick. These need the one spare texture layer, or a roof or extras hook.
+    - **BAG years disagree** between building-facts and bag-tiles (Kinkerstraat 0363100012078005: 1900 vs 1980s).
 
 - **Large-recipe tier is blocked for modern ride-visible buildings (#105, 2026-10-29).**
   - **Result:** 17 buildings drafted from the #104 ranks 1–40, 0 installed. Without `--allow-inferred` nothing passes. State note: `docs/handoffs/ride-landmarks-20261029.md`. Drafts are in that worktree's `staging/` and not committed.
