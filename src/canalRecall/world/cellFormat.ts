@@ -12,22 +12,31 @@
  * Layout (all integers LEB128 varints unless noted; signed values zigzag):
  *   "WRLD" u8 version u8 flags  zz(i) zz(j)  streamCount  { tag[4] byteLength }*  payload*
  * The payloads follow the table in order and must use every remaining byte (trailing bytes throw).
- * Streams in v1:
+ * Flags (v2): bit 0 = DEBUG, the cell carries ATTR. A runtime cell (the default) has no ATTR: its STYL
+ * holds the full styled bag of every building, which is all the runtime reads, and the enriched source
+ * bags (what the decorators started from) are written only by `world:compile -- --debug`, for
+ * diagnosis. v2 dropped ATTR from the runtime read path (lane L4, 2026-10-30): the fetched bytes went
+ * from FOOT + STRS + ATTR + STYL(delta) + GRP + HIDE to FOOT + STRS + STYL(full) + GRP + HIDE.
+ * Streams (ATTR only in a DEBUG cell):
  *   STRS  string table: count { len utf8 }*; every other stream refers to strings by index.
- *   FOOT  footprints: tiles (source z14 tile list), per building id, source tile + ordinal,
+ *   FOOT  footprints: tiles (source z14 tile list), per building id (v2: prefix string + digit count +
+ *         zigzag delta of the number, e.g. "NL.IMBAG.Pand.0" + 15 digits; else a string index), source tile + ordinal,
  *         geometry kind and ring structure; then the X block and Y block of coordinates as zigzag
  *         deltas running across ring and building boundaries, in units of 1e-7 degree. The source
  *         tiles carry at most 7 decimals, and integer/1e7 is correctly rounded, so this grid is
  *         exact: decoded coordinates are the same doubles JSON.parse gave the default path.
  *   ATTR  per building, the enriched source property bag (tile properties + building-facts year +
  *         roof facts): what the streamer adopts before decorating.
- *   STYL  per building, how the default decorator chain changed that bag: 0 = unchanged,
- *         1 = delta (set keys in order, then removed keys), 2 = full bag (key order changed).
+ *   STYL  runtime cell: the styled bags (columnar, as ATTR). DEBUG cell: per building, how the default
+ *         decorator chain changed the ATTR bag: 0 = unchanged, 1 = delta (set keys in order, then
+ *         removed keys), 2 = full bag (key order changed).
  *   ROOF  per building, `roofPlanForFeature(decorated)` (a RoofPlan or null) as a generic value.
  *   GRP   per building, the coarse group (index into FOOT's tile list, by first vertex, as
  *         `setFeatures` keys it) and party-wall neighbours from `BuildingContextIndex`
  *         (local index + 1, or 0 + string index for a neighbour in another cell).
  *   HIDE  ids standing in this cell that installed models hide: id, reason bits, model names.
+ * Bags (ATTR, runtime STYL) are columnar; an `id` column that equals the buildings' ids is not written (v2), which
+ * took the 350 k id strings out of STRS.
  * Generic values (ATTR/STYL/ROOF): tag byte, then undefined | null | false | true | int (zz) |
  * decimal (u8 places 1..7, zz mantissa; only when mantissa / 10^places reproduces the double) |
  * float64 LE | string (index) | array (n values) | object (n {key index, value}).
@@ -35,7 +44,9 @@
  * indices, tags and leftover bytes all throw.
  */
 
-export const WORLD_FORMAT_VERSION = 1;
+export const WORLD_FORMAT_VERSION = 2;
+/** Flag bit: the cell carries ATTR (a `--debug` compile). */
+export const FLAG_DEBUG = 1;
 export const WORLD_MAGIC = 'WRLD';
 /** Units per degree of FOOT coordinates (exact for sources with <= 7 decimals). */
 export const COORD_SCALE = 1e7;
@@ -57,6 +68,8 @@ export type CellBuilding = {
   /** Source z14 tile `x/y` and position in that tile after dropNestedDuplicates (the default path's order). */
   tile: string; ordinal: number;
   geometry: Geometry;
+  /** The enriched source bag. Decoded from a runtime cell (no ATTR) this is the styled bag itself and
+   *  `styled` is undefined, so `rawFeature` and `styledFeature` give the same object. */
   attr: Props;
   /** The decorated bag; undefined means the chain returned the bag unchanged. */
   styled?: Props;
@@ -64,7 +77,8 @@ export type CellBuilding = {
   /** Coarse group tile (`x/y`) and party-wall neighbours. */
   group?: string; neighbours?: Neighbour[];
 };
-export type Cell = { i: number; j: number; buildings: CellBuilding[]; hide: HideEntry[] };
+/** `debug`: decoded from (or to be encoded as) a DEBUG cell, so `attr` is the enriched source bag. */
+export type Cell = { i: number; j: number; buildings: CellBuilding[]; hide: HideEntry[]; debug?: boolean };
 
 // --- bytes -----------------------------------------------------------------
 
@@ -186,24 +200,29 @@ function readBag(r: Reader, strings: readonly string[], depth = 0): Props {
 // values follow as one column (bags in order). Neighbouring values of one key compress far better than
 // row-wise bags, and key order is reproduced exactly.
 
-function writeBags(w: Writer, s: StringTable, bags: readonly Props[]): void {
+/** `ids` (the buildings' ids, row for row): when every bag's `id` is its building's id, the `id` column is
+ *  written as one key reference instead of 350 k repeated strings (a third of the styled bytes before v2). */
+function writeBags(w: Writer, s: StringTable, bags: readonly Props[], ids?: readonly string[]): void {
   const shapes: number[][] = [], shapeIndex = new Map<string, number>(), rows: number[] = [];
   const columns = new Map<number, unknown[]>();
+  const selfId = !!ids && bags.some(b => Object.prototype.hasOwnProperty.call(b, 'id')) && bags.every((b, i) => !Object.prototype.hasOwnProperty.call(b, 'id') || b.id === ids[i]);
+  const selfKey = selfId ? s.ref('id') : -1;
   for (const bag of bags) {
     const keys = Object.keys(bag).map(k => s.ref(k)), sig = keys.join(',');
     let si = shapeIndex.get(sig);
     if (si === undefined) { si = shapes.length; shapes.push(keys); shapeIndex.set(sig, si); }
     rows.push(si);
-    for (const k of keys) { let c = columns.get(k); if (!c) columns.set(k, c = []); c.push(bag[s.list[k]]); }
+    for (const k of keys) { if (k === selfKey) continue; let c = columns.get(k); if (!c) columns.set(k, c = []); c.push(bag[s.list[k]]); }
   }
   w.uvar(shapes.length);
   for (const keys of shapes) { w.uvar(keys.length); for (const k of keys) w.uvar(k); }
   w.uvar(rows.length); for (const si of rows) w.uvar(si);
+  if (ids) w.uvar(selfKey + 1);
   // Columns in ascending key index so the decoder knows the order without a table.
   for (const k of [...columns.keys()].sort((a, b) => a - b)) for (const v of columns.get(k)!) writeValue(w, s, v, 1);
 }
 
-function readBags(r: Reader, strings: readonly string[], expected: number): Props[] {
+function readBags(r: Reader, strings: readonly string[], expected: number, ids?: readonly string[]): Props[] {
   const shapeCount = r.count(expected + 1, 'shapes'), shapes: number[][] = [];
   for (let i = 0; i < shapeCount; i++) {
     const n = r.count(4096, 'shape size'), keys: number[] = [], seen = new Set<number>();
@@ -213,10 +232,13 @@ function readBags(r: Reader, strings: readonly string[], expected: number): Prop
   const n = r.count(MAX_BUILDINGS, 'bags'); if (n !== expected) r.fail(`expected ${expected} bags, got ${n}`);
   const rows = new Array<number>(n), counts = new Uint32Array(strings.length);
   for (let i = 0; i < n; i++) { const si = r.uvar(); if (si >= shapes.length) r.fail(`shape index ${si}`); rows[i] = si; for (const k of shapes[si]) counts[k]++; }
+  const selfKey = ids ? r.uvar() - 1 : -1;
+  if (selfKey >= strings.length || (selfKey >= 0 && strings[selfKey] !== 'id')) r.fail(`self id key ${selfKey}`);
+  if (selfKey >= 0) counts[selfKey] = 0;
   const columns: unknown[][] = new Array(strings.length);
   for (let k = 0; k < strings.length; k++) { const c = counts[k]; if (!c) continue; const col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns[k] = col; }
   const cursor = new Uint32Array(strings.length), out = new Array<Props>(n);
-  for (let i = 0; i < n; i++) { const bag: Props = {}; for (const k of shapes[rows[i]]) bag[strings[k]] = columns[k][cursor[k]++]; out[i] = bag; }
+  for (let i = 0; i < n; i++) { const bag: Props = {}; for (const k of shapes[rows[i]]) bag[strings[k]] = k === selfKey ? ids![i] : columns[k][cursor[k]++]; out[i] = bag; }
   return out;
 }
 
@@ -279,12 +301,32 @@ const toUnits = (v: number, what: string): number => {
   return u;
 };
 
+// Ids: "NL.IMBAG.Pand.0363100012164998", "w268043846". A prefix (string index), the digit count, and the
+// number as a delta from the previous numbered id; anything else is a plain string index.
+const ID_STRING = 0, ID_NUMBERED = 1, ID_DIGITS = /^(.*?)(\d{1,15})$/;
+class IdWriter { prev = 0; write(w: Writer, s: StringTable, id: string) {
+  const m = ID_DIGITS.exec(id);
+  if (!m) { w.byte(ID_STRING); w.uvar(s.ref(id)); return; }
+  const n = Number(m[2]);
+  w.byte(ID_NUMBERED); w.uvar(s.ref(m[1])); w.uvar(m[2].length); w.zvar(n - this.prev); this.prev = n;
+} }
+class IdReader { prev = 0; read(r: Reader, strings: readonly string[]): string {
+  const kind = r.byte();
+  if (kind === ID_STRING) return str(r, strings);
+  if (kind !== ID_NUMBERED) r.fail(`bad id kind ${kind}`);
+  const prefix = str(r, strings), len = r.uvar(); if (len < 1 || len > 15) r.fail(`id digits ${len}`);
+  const n = this.prev + r.zvar(); if (n < 0 || !Number.isSafeInteger(n)) r.fail(`id number ${n}`);
+  this.prev = n;
+  const digits = String(n); if (digits.length > len) r.fail(`id ${n} longer than ${len} digits`);
+  return prefix + digits.padStart(len, '0');
+} }
+
 function writeFoot(w: Writer, s: StringTable, buildings: readonly CellBuilding[], tiles: StringTable): void {
   w.uvar(buildings.length);
-  const xs = new Writer(), ys = new Writer();
+  const xs = new Writer(), ys = new Writer(), ids = new IdWriter();
   let px = 0, py = 0;
   for (const b of buildings) {
-    w.uvar(s.ref(b.id)); w.uvar(tiles.ref(b.tile)); w.uvar(b.ordinal);
+    ids.write(w, s, b.id); w.uvar(tiles.ref(b.tile)); w.uvar(b.ordinal);
     const polys = polygonsOf(b.geometry);
     w.byte(b.geometry.type === 'Polygon' ? G_POLYGON : G_MULTI);
     if (b.geometry.type === 'MultiPolygon') w.uvar(polys.length);
@@ -313,8 +355,9 @@ function readFoot(r: Reader, strings: readonly string[], tiles: readonly string[
   const n = r.count(MAX_BUILDINGS, 'buildings');
   const shapes: { id: string; tile: string; ordinal: number; multi: boolean; rings: { n: number; closed: boolean }[][] }[] = [];
   let vertices = 0;
+  const ids = new IdReader();
   for (let i = 0; i < n; i++) {
-    const id = str(r, strings), ti = r.uvar(); if (ti >= tiles.length) r.fail(`tile index ${ti}`);
+    const id = ids.read(r, strings), ti = r.uvar(); if (ti >= tiles.length) r.fail(`tile index ${ti}`);
     const ordinal = r.count(MAX_COUNT, 'ordinal'), kind = r.byte();
     if (kind !== G_POLYGON && kind !== G_MULTI) r.fail(`bad geometry kind ${kind}`);
     const polyCount = kind === G_MULTI ? r.count(10_000, 'polygons') : 1, polys: { n: number; closed: boolean }[][] = [];
@@ -347,8 +390,10 @@ function readFoot(r: Reader, strings: readonly string[], tiles: readonly string[
 
 export type EncodedCell = { bytes: Uint8Array; streams: { tag: StreamTag; offset: number; bytes: number }[] };
 
-/** Encode a cell. Deterministic: the same buildings in the same order give the same bytes. */
+/** Encode a cell. Deterministic: the same buildings in the same order give the same bytes. A runtime
+ *  cell unless `cell.debug` (then ATTR is written and STYL is the delta against it). */
 export function encodeCell(cell: Cell): EncodedCell {
+  const debug = !!cell.debug;
   const s = new StringTable(), tiles = new StringTable();
   // Tile list first so its strings are stable; FOOT carries the tile list ahead of its buildings.
   for (const b of cell.buildings) tiles.ref(b.tile);
@@ -357,8 +402,10 @@ export function encodeCell(cell: Cell): EncodedCell {
   foot.uvar(tiles.list.length); for (const t of tiles.list) { const [x, y] = t.split('/').map(Number); if (!Number.isSafeInteger(x) || !Number.isSafeInteger(y) || x < 0 || y < 0 || `${x}/${y}` !== t) throw Error(`bad tile ${t}`); foot.uvar(x); foot.uvar(y); }
   writeFoot(foot, s, cell.buildings, tiles);
   const attr = new Writer(), styl = new Writer(), roof = new Writer(), grp = new Writer(), hide = new Writer();
-  writeBags(attr, s, cell.buildings.map(b => b.attr));
-  writeStyles(styl, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.styled));
+  if (debug) {
+    writeBags(attr, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.id));
+    writeStyles(styl, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.styled));
+  } else writeBags(styl, s, cell.buildings.map(b => b.styled ?? b.attr), cell.buildings.map(b => b.id));
   // ROOF is optional (a mode byte): the chunk worker still plans roofs itself in v1, and the plans are
   // the largest stream, so the compiler writes them only when asked (--roof) until a consumer reads them.
   const withRoof = cell.buildings.some(b => b.roof !== undefined);
@@ -377,8 +424,9 @@ export function encodeCell(cell: Cell): EncodedCell {
   hide.uvar(cell.hide.length);
   for (const h of cell.hide) { hide.uvar(s.ref(h.id)); hide.uvar(h.reasons); hide.uvar(h.models.length); for (const m of h.models) hide.uvar(s.ref(m)); }
   const payloads: [StreamTag, Uint8Array][] = [['STRS', writeStrings(s)], ['FOOT', foot.done()], ['ATTR', attr.done()], ['STYL', styl.done()], ['ROOF', roof.done()], ['GRP ', grp.done()], ['HIDE', hide.done()]];
+  if (!debug) payloads.splice(2, 1);
   const w = new Writer();
-  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(WORLD_FORMAT_VERSION); w.byte(0); w.zvar(cell.i); w.zvar(cell.j);
+  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(WORLD_FORMAT_VERSION); w.byte(debug ? FLAG_DEBUG : 0); w.zvar(cell.i); w.zvar(cell.j);
   w.uvar(payloads.length);
   for (const [tag, bytes] of payloads) { w.bytes(encoder.encode(tag)); w.uvar(bytes.length); }
   const streams: EncodedCell['streams'] = [];
@@ -392,12 +440,13 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell'): Cell {
   const magic = String.fromCharCode(...r.take(4));
   if (magic !== WORLD_MAGIC) r.fail(`bad magic ${JSON.stringify(magic)}`);
   const version = r.byte(); if (version !== WORLD_FORMAT_VERSION) r.fail(`unsupported version ${version}`);
-  const flags = r.byte(); if (flags !== 0) r.fail(`unknown flags ${flags}`);
+  const flags = r.byte(); if (flags & ~FLAG_DEBUG) r.fail(`unknown flags ${flags}`);
+  const debug = (flags & FLAG_DEBUG) !== 0, tags = debug ? STREAM_TAGS : STREAM_TAGS.filter(t => t !== 'ATTR');
   const i = r.zvar(), j = r.zvar();
   const n = r.count(STREAM_TAGS.length, 'streams');
-  if (n !== STREAM_TAGS.length) r.fail(`expected ${STREAM_TAGS.length} streams, got ${n}`);
+  if (n !== tags.length) r.fail(`expected ${tags.length} streams, got ${n}`);
   const table: [string, number][] = [];
-  for (let k = 0; k < n; k++) { const tag = String.fromCharCode(...r.take(4)); if (tag !== STREAM_TAGS[k]) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected ${STREAM_TAGS[k]}`); table.push([tag, r.count(bytes.length, 'stream length')]); }
+  for (let k = 0; k < n; k++) { const tag = String.fromCharCode(...r.take(4)); if (tag !== tags[k]) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected ${tags[k]}`); table.push([tag, r.count(bytes.length, 'stream length')]); }
   const sub = new Map<string, Reader>();
   for (const [tag, len] of table) sub.set(tag, new Reader(r.take(len), `${what} ${tag.trim()}`));
   r.end();
@@ -406,8 +455,10 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell'): Cell {
   const tileCount = fr.count(10_000, 'tiles'), tiles: string[] = [];
   for (let k = 0; k < tileCount; k++) tiles.push(`${fr.uvar()}/${fr.uvar()}`);
   const rows = readFoot(fr, strings, tiles); fr.end();
-  const ar = sub.get('ATTR')!, sr = sub.get('STYL')!, rr = sub.get('ROOF')!, gr = sub.get('GRP ')!, hr = sub.get('HIDE')!;
-  const attrs = readBags(ar, strings, rows.length), styles = readStyles(sr, strings, attrs);
+  const ar = sub.get('ATTR'), sr = sub.get('STYL')!, rr = sub.get('ROOF')!, gr = sub.get('GRP ')!, hr = sub.get('HIDE')!;
+  const ids = rows.map(row => row.id);
+  const attrs = readBags(ar ?? sr, strings, rows.length, ids);
+  const styles = ar ? readStyles(sr, strings, attrs) : [];
   const roofMode = rr.byte(); if (roofMode > 1) rr.fail(`bad roof mode ${roofMode}`);
   const buildings: CellBuilding[] = rows.map((row, k) => {
     const b: CellBuilding = { ...row, attr: attrs[k] };
@@ -425,18 +476,20 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell'): Cell {
   }
   const hn = hr.count(MAX_COUNT, 'hidden ids'), hide: HideEntry[] = [];
   for (let k = 0; k < hn; k++) { const id = str(hr, strings), reasons = hr.uvar(); if (reasons === 0 || reasons > 7) hr.fail(`bad hide reasons ${reasons}`); const mc = hr.count(1000, 'models'), models: string[] = []; for (let q = 0; q < mc; q++) models.push(str(hr, strings)); hide.push({ id, reasons, models }); }
-  for (const x of [ar, sr, rr, gr, hr]) x.end();
-  return { i, j, buildings, hide };
+  for (const x of [ar, sr, rr, gr, hr]) x?.end();
+  return debug ? { i, j, buildings, hide, debug } : { i, j, buildings, hide };
 }
 
-/** Inflate when gzipped (the host may already have decoded Content-Encoding), then decode. */
+/** Inflate when gzipped (the host may already have decoded Content-Encoding); other bytes pass through. */
+export async function inflateCell(bytes: Uint8Array): Promise<Uint8Array> {
+  if (!(bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b)) return bytes;
+  if (typeof DecompressionStream === 'undefined') throw Error('gzip world cells need DecompressionStream');
+  const stream = new Blob([bytes as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+/** Inflate when gzipped, then decode. */
 export async function decodeCellResponse(bytes: Uint8Array, what?: string): Promise<Cell> {
-  if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) {
-    if (typeof DecompressionStream === 'undefined') throw Error('gzip world cells need DecompressionStream');
-    const stream = new Blob([bytes as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'));
-    bytes = new Uint8Array(await new Response(stream).arrayBuffer());
-  }
-  return decodeCell(bytes, what);
+  return decodeCell(await inflateCell(bytes), what);
 }
 
 /** The feature the default tile path adopts (enriched, undecorated) for a cell building. */

@@ -1,6 +1,7 @@
 // world-v1 cell format: exact round trips on real pands, sentinels pinned by id and first vertex,
 // strict rejection of damaged input, and chunk arrays identical to the default tile path.
 // Run: node --import tsx --test src/canalRecall/world/cellFormat.test.ts
+import '../../../scripts/world/useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
@@ -13,7 +14,7 @@ let rowsPromise: Promise<Row[]> | null = null;
 const rows = () => rowsPromise ??= (async () => { const chain = gameChain(), out: Row[] = []; for (const t of TILES) out.push(...await loadTile(t, chain)); return out; })();
 const toBuilding = (r: Row): CellBuilding => ({ id: String(r.raw.properties.id), tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties });
 function cellsOf(list: Row[]): Map<string, Row[]> { const m = new Map<string, Row[]>(); for (const r of list) { let l = m.get(r.cell); if (!l) m.set(r.cell, l = []); l.push(r); } return m; }
-const cellFrom = (key: string, list: Row[]): Cell => { const [i, j] = parseCellKey(key); return { i, j, buildings: list.map(toBuilding), hide: [] }; };
+const cellFrom = (key: string, list: Row[], debug = true): Cell => { const [i, j] = parseCellKey(key); return debug ? { i, j, buildings: list.map(toBuilding), hide: [], debug } : { i, j, buildings: list.map(toBuilding), hide: [] }; };
 
 /** Sentinels: id, cell, source tile, first vertex exactly as the tile JSON has it. */
 const SENTINELS = [
@@ -57,6 +58,39 @@ test('10,000 random real pands round-trip exactly (geometry doubles, bags, key o
     assert.deepEqual(encodeCell(back).bytes, bytes, `${key}: re-encoding the decoded cell is byte-identical`);
   }
   assert.equal(checked, 10_000);
+});
+
+test('runtime cells (no ATTR) give back the styled bags, ids and geometry exactly, and are smaller', async () => {
+  const all = await rows();
+  let checked = 0, runtimeBytes = 0, debugBytes = 0;
+  for (const [key, list] of cellsOf(all)) {
+    const { bytes } = encodeCell(cellFrom(key, list, false)), back = decodeCell(bytes, key);
+    assert.equal(back.debug, undefined);
+    back.buildings.forEach((b, k) => {
+      const src = list[k], raw = rawFeature(b), styled = styledFeature(b, raw);
+      assert.equal(styled, raw, `${b.id}: a runtime cell's feature is its own styled copy`);
+      assert.equal(b.id, String(src.raw.properties.id));
+      assert.ok(sameValue(raw.geometry, src.raw.geometry), `${b.id} geometry`);
+      assert.ok(sameValue(styled.properties, src.styled.properties), `${b.id} styled`);
+      checked++;
+    });
+    assert.deepEqual(encodeCell(back).bytes, bytes, `${key}: runtime re-encode is byte-identical`);
+    runtimeBytes += bytes.length; debugBytes += encodeCell(cellFrom(key, list)).bytes.length;
+  }
+  assert.ok(checked > 10_000);
+  assert.ok(runtimeBytes < debugBytes, `runtime ${runtimeBytes} < debug ${debugBytes}`);
+});
+
+test('ids: numbered ids keep their leading zeros and length; others are strings; a bag id that is not the building id survives', () => {
+  const ids = ['NL.IMBAG.Pand.0363100012164998', 'NL.IMBAG.Pand.0000000000000001', 'w268043846', 'w1', 'r7', 'plain', '', '0', '007', '1234567890123456789', 'NL.IMBAG.Pand.0363100012164997'];
+  const g = (u: number) => u / 1e7, square = (x: number) => ({ type: 'Polygon' as const, coordinates: [[[g(48_000_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_001_000)], [g(48_000_000 + x * 1000), g(523_000_000)]]] });
+  for (const odd of [false, true]) for (const debug of [false, true]) {
+    const cell: Cell = { i: 0, j: 0, hide: [], buildings: ids.map((id, k) => ({ id, tile: '8414/5384', ordinal: k, geometry: square(k), attr: { id: odd && k === 3 ? 'other' : id, height: k } })) };
+    if (debug) cell.debug = true;
+    const back = decodeCell(encodeCell(cell).bytes);
+    assert.deepEqual(back.buildings.map(b => b.id), ids);
+    back.buildings.forEach((b, k) => assert.ok(sameValue(b.attr, cell.buildings[k].attr), `${b.id} bag (odd=${odd}, debug=${debug})`));
+  }
 });
 
 test('sentinel pands are pinned by id, cell and first vertex', async () => {
@@ -104,7 +138,8 @@ test('damaged input is rejected: truncation, magic, version, flags, tags, traili
   const mut = (at: number, v: number) => { const c = bytes.slice(); c[at] = v; return c; };
   assert.throws(() => decodeCell(mut(0, 'X'.charCodeAt(0))), /bad magic/);
   assert.throws(() => decodeCell(mut(4, WORLD_FORMAT_VERSION + 1)), /unsupported version/);
-  assert.throws(() => decodeCell(mut(5, 1)), /unknown flags/);
+  assert.throws(() => decodeCell(mut(5, 2)), /unknown flags/);
+  assert.throws(() => decodeCell(mut(5, 0)), /stream|expected/, 'a DEBUG cell read as a runtime cell');
   const trailing = new Uint8Array(bytes.length + 1); trailing.set(bytes); assert.throws(() => decodeCell(trailing), /trailing/);
   // A stream tag renamed in the table.
   const tagAt = bytes.indexOf('F'.charCodeAt(0), 6); assert.throws(() => decodeCell(mut(tagAt, 'G'.charCodeAt(0))), /stream/);

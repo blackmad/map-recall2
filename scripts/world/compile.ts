@@ -4,6 +4,8 @@
  *   npm run world:compile                 # every cell -> artifacts/world/staging/
  *   npm run world:compile -- --changed    # only cells whose inputs changed since the last staging run
  *   npm run world:compile -- --tiles=8414/5384,8415/5384   # a subset (tests, quick looks)
+ *   npm run world:compile -- --debug      # DEBUG cells: also the enriched source bags (ATTR), for diagnosis;
+ *                                         # the runtime never needs them (cellFormat.ts, flags)
  *
  * It reads what the default runtime path reads (building-tiles z14, building-facts years, roof-facts,
  * monument gables, landmark ids, shopfronts, covers.json, the kit tables) and runs the runtime's own
@@ -14,11 +16,12 @@
  * Output goes to staging only; publishing into public/data/extracts/amsterdam/world-v1/ is the
  * integrator's step (see the publish command in the report).
  */
+import './useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
-import { ROOT, EXTRACT, COVERS, gameChain, loadTile, readJson, tileFile, tileInputs, type Feature, type Row, type TileStats } from './pipeline.js';
+import { ROOT, EXTRACT, gameChain, loadTile, readJson, tileFile, tileInputs, inputHash, CODE, GLOBAL_INPUTS, COVERS, type Feature, type Row, type TileStats } from './pipeline.js';
 import { roofPlanForFeature } from '../../src/canalRecall/roofMesh.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
@@ -33,24 +36,13 @@ const value = (name: string) => flag(name)?.split('=').slice(1).join('=');
 const OUT = path.resolve(value('out') ?? path.join(ROOT, 'artifacts/world/staging'));
 const CHANGED = !!flag('changed');
 const WITH_ROOF = !!flag('roof');
+const DEBUG = !!flag('debug');
 const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
 const gz = (b: Uint8Array) => zlib.gzipSync(b, { level: 6 }); // Node writes mtime 0, so output is reproducible
 const exists = (p: string) => fs.existsSync(p);
 void tileFile;
-
-function inputHash(files: string[]): string {
-  const h = crypto.createHash('sha256');
-  for (const f of files) { h.update(path.relative(ROOT, f)); h.update(exists(f) ? fs.readFileSync(f) : Buffer.from('absent')); }
-  return h.digest('hex');
-}
-
-/** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
-const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
-  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts',
-  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'scripts/world/compile.ts'].map(f => path.join(ROOT, f));
-const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
 
 async function main() {
   const t0 = performance.now();
@@ -72,14 +64,15 @@ async function main() {
     const changedTiles = new Set(tileList.filter(t => prevTiles[t] !== tileHash.get(t)));
     for (const t of Object.keys(prevTiles)) if (!tileHash.has(t)) changedTiles.add(t);
     rebuild = new Set();
-    for (const [key, entry] of Object.entries<any>(previous.cells)) if (previous.globalHash !== globalHash || entry.tiles.some((t: string) => changedTiles.has(t))) rebuild.add(key);
+    const allStale = previous.globalHash !== globalHash || !!previous.debug !== DEBUG;
+    for (const [key, entry] of Object.entries<any>(previous.cells)) if (allStale || entry.tiles.some((t: string) => changedTiles.has(t))) rebuild.add(key);
     const newTiles = [...changedTiles].filter(t => !Object.values<any>(previous.cells).some(e => e.tiles.includes(t)));
     const ring = new Set<string>();
     for (const key of rebuild) { const [i, j] = parseCellKey(key); for (let di = -1; di <= 1; di++) for (let dj = -1; dj <= 1; dj++) ring.add(`${i + di}_${j + dj}`); }
     const want = new Set<string>(newTiles);
     for (const key of ring) for (const t of previous.cells[key]?.tiles ?? []) want.add(t);
     load = tileList.filter(t => want.has(t));
-    console.log(`--changed: ${changedTiles.size} tiles changed, ${rebuild.size} cells to rebuild, loading ${load.length} tiles${previous.globalHash !== globalHash ? ' (code or global inputs changed: all cells)' : ''}`);
+    console.log(`--changed: ${changedTiles.size} tiles changed, ${rebuild.size} cells to rebuild, loading ${load.length} tiles${allStale ? ' (code, global inputs or --debug changed: all cells)' : ''}`);
     if (!rebuild.size && !newTiles.length) { console.log('nothing changed'); return; }
   }
 
@@ -141,13 +134,14 @@ async function main() {
     const ids = new Set(buildings.map(b => b.id));
     const hide = [...hides.values()].filter(h => ids.has(h.id));
     for (const h of hide) hiddenPlaced.add(h.id);
-    const cell: Cell = { i, j, buildings, hide };
+    const cell: Cell = DEBUG ? { i, j, buildings, hide, debug: true } : { i, j, buildings, hide };
     const encoded = encodeCell(cell);
     // Verify before writing: the decoded cell must give back the exact raw and styled features.
     const back = decodeCell(encoded.bytes, key);
     back.buildings.forEach((b, k) => {
       const src = list[k], raw = rawFeature(b), styled = styledFeature(b, raw);
-      if (!sameValue(raw.properties, src.raw.properties) || !sameValue(raw.geometry, src.raw.geometry) || !sameValue(styled.properties, src.styled.properties)) throw Error(`${key}: ${b.id} does not round-trip`);
+      // A runtime cell gives back the styled bag only (raw === styled); a DEBUG cell also the source bag.
+      if ((DEBUG && !sameValue(raw.properties, src.raw.properties)) || !sameValue(raw.geometry, src.raw.geometry) || !sameValue(styled.properties, src.styled.properties)) throw Error(`${key}: ${b.id} does not round-trip`);
     });
     const zipped = gz(encoded.bytes);
     fs.writeFileSync(path.join(OUT, 'cells', `${key}.bin`), zipped);
@@ -170,7 +164,7 @@ async function main() {
   for (const f of [...GLOBAL_INPUTS, path.join(EXTRACT, 'building-tiles/index-z14.json'), path.join(EXTRACT, 'elevation-v1/index.json'), path.join(EXTRACT, 'roads-v1/cells.json')]) sources[path.relative(ROOT, f)] = exists(f) ? sha(fs.readFileSync(f)) : 'absent';
   sources['building-tiles+building-facts+roof-facts (per tile, combined)'] = sha([...tileHash.entries()].sort().map(e => e.join(':')).join('\n'));
   sources['code'] = inputHash(CODE);
-  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
+  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(indexOut));
 
   const allGz = Object.values<any>(cellsOut).reduce((s, c) => s + c.gzBytes, 0);
