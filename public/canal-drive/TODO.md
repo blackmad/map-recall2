@@ -131,6 +131,30 @@ tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 and the build chain), `index.html` script tags, the bundles. Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
+State: **L1 engine host step 3 merged 2026-10-30** (#129, `bc3f9e664`):
+`?engine=own` rides with three.js owning the frame and no `maplibregl.Map`
+constructed. `src/canalRecall/engine/`: `worldViewApi.ts` (the `WorldView`
+interface, `vector-map.js` `@implements` it), `frameHost.ts` (one canvas, one
+renderer, one rAF with `tick(dtFixed)` for L8, context loss/restore, mapGuard
+and the governor attached; `SharedFrame.drive`), `cameraMap.ts` (MapLibre-exact
+camera in metres about the view centre: parity 0.00 px over 22 samples,
+desktop and iPhone), `ownWorldView.ts` (facades, own ground, vehicles,
+own-map overview as far field, `isWater`, clearance, rider cover, facade
+picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
+(`vector-map.js` still runs its own copies: swap-in is a fix-level edit).
+Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
+and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
+programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
+**Not yet under the flag (no-ops):** landmark highlight, all labels, places,
+branded POIs, answered-street name, transit, cycle tracks, ferry pins, trees,
+signature landmarks, detailed buildings, palette themes, `inspectBuilding`
+lift. **Gate not met yet:** the named specs have no `?engine=own` switch, the
+ride-perf in-page A/B and `phone-memory` under the flag are unmeasured.
+`game-route.js` / `feedback/browser.ts` keep a `.map` fallback until
+`vector-map.js` gains `frameCanvas()`, `captureFrame()`, `jumpToLngLat()`.
+Steps 4–6 (overlays + labels, the 2026-10-10 re-port incl. the own picker,
+`_makeLayer` deletions, a flag switch for the gate specs, the A/B) continue
+in the same lane.
 **L4 world streamer spawned 2026-10-30** (#136, `lane-world-streamer-20261030.md`,
 port 4529): browser identity for `?world=v1` first (the A/B found the world
 path holding ~4,400 more buildings on four centre tiles, and dense cells
