@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**`?engine=own`: three.js owns the frame, flag-off (2026-10-30, #129).** The
+engine programme's P1 step 3. `src/canalRecall/engine/frameHost.ts` runs one
+canvas, one `WebGLRenderer` and one requestAnimationFrame loop with a
+fixed-step `tick(dtFixed)` hook; `SharedFrame.drive(matrices)` lets it drive
+the existing participants, so facades, own ground and vehicles render
+unchanged while MapLibre is never constructed. `cameraMap.ts` evaluates
+MapLibre's camera model in metres about the view centre, which is why parity
+with `map.project` is exact (0.00 px over 22 samples on desktop and iPhone)
+rather than the 1.1–3.2 px of the 2026-10-10 prototype, whose frame used a
+linear latitude scale. `ownWorldView.ts` implements the typed `WorldView`
+interface that `vector-map.js` now declares it implements; `game.js` picks it
+under the flag. Rider cover, camera clearance and the game-camera solve were
+lifted into typed modules for both implementations. Under the flag a chase
+ride draws 140–146 calls with 29–30 programs on desktop (851 / 32 on the
+default path, where the basemap pass is included). Labels, overlays, trees,
+landmarks and themes are not drawn under the flag yet; the gate specs cannot
+run under it until they gain a switch.
+
 **Untagged streets under buildings opened; mixed-height gap fills reviewed (2026-10-30).**
 Every building `check-buildings-over-roads` finds standing over a street OSM
 does not tag as passing under it was checked against the PDOK orthophoto.

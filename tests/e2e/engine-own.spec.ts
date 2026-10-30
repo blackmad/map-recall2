@@ -1,0 +1,102 @@
+import { expect, test, type Page } from '@playwright/test';
+import { openRoute } from './helpers';
+
+// Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
+// is the second world view. Three.js owns the canvas; MapLibre is never
+// constructed. Needs the engine bundle in index.html and the game.js choice
+// (integrator lines in the lane hand-back).
+
+async function countMapLibre(page: Page): Promise<void> {
+  await page.addInitScript(() => {
+    (window as any).__maplibreMaps = 0;
+    let lib: any;
+    Object.defineProperty(window, 'maplibregl', {
+      configurable: true,
+      get: () => lib,
+      set: (value) => {
+        lib = value;
+        const Map = value.Map;
+        value.Map = function (...args: unknown[]) { (window as any).__maplibreMaps++; return new Map(...args); };
+        value.Map.prototype = Map.prototype;
+      },
+    });
+  });
+}
+
+test('?engine=own rides with three.js owning the frame; maplibregl.Map is never constructed', async ({ page }) => {
+  test.setTimeout(180_000);
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(String(e)));
+  await countMapLibre(page);
+  await openRoute(page, { query: '?engine=own', viewMode: 'chase' });
+  const view = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    return { engine: vm.engine, hasCamera: typeof vm.camera?.project === 'function', canvas: !!vm.frameCanvas?.() };
+  });
+  expect(view).toEqual({ engine: 'own', hasCamera: true, canvas: true });
+  // Ride: hold forward for a few seconds.
+  await page.keyboard.down('ArrowUp');
+  await page.waitForTimeout(6000);
+  await page.keyboard.up('ArrowUp');
+  await expect.poll(() => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    return !!vm.status.booted && !!vm._ownGround?.ready;
+  }), { timeout: 60_000 }).toBe(true);
+  await page.waitForTimeout(2000);
+  const stats = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    const r = vm.host.renderer;
+    const game = (window as any).canalRecallGame;
+    return {
+      maplibreMaps: (window as any).__maplibreMaps,
+      frames: vm.host.stats.frames,
+      calls: vm._sharedFrame.stats.main.calls + vm._sharedFrame.stats.overlay.calls,
+      programs: r.info.programs.length,
+      failed: vm.status.failed ?? [],
+      zoom: vm.camera.zoom(), pitch: vm.camera.pitch(),
+      water: vm.status.overview,
+      moved: Math.hypot(game.player.x - game.track.startPoint?.x || 0, game.player.y - game.track.startPoint?.y || 0),
+      facades: !!vm._threeBuildings?.ready,
+    };
+  });
+  console.log('engine=own', JSON.stringify(stats));
+  await page.screenshot({ path: test.info().outputPath('engine-own-chase.png') });
+  expect(stats.maplibreMaps).toBe(0);
+  expect(stats.frames).toBeGreaterThan(30);
+  expect(stats.failed).toEqual([]);
+  expect(stats.calls).toBeLessThanOrEqual(700);
+  expect(stats.programs).toBeLessThanOrEqual(32);
+  expect(errors).toEqual([]);
+});
+
+// The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera
+// (engine/cameraMap.ts EngineCamera) projects the same ground points to within 3.2 px.
+test('engine camera matches MapLibre within 3.2 px along the intro and a ride', async ({ page }) => {
+  test.setTimeout(180_000);
+  await openRoute(page, { viewMode: 'chase', enterRacing: false });
+  const samples: number[][] = [];
+  const sample = () => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    const map = vm.map, E = (window as any).CanalRecallEngine;
+    const el = map.getCanvas();
+    const c = map.getCenter();
+    const cam = new E.EngineCamera(() => ({ width: el.clientWidth, height: el.clientHeight }), {
+      center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch(), maxPitch: 85,
+      elevation: map.transform.elevation ?? 0,
+    });
+    const out: number[] = [];
+    for (const [fx, fy] of [[0.5, 0.5], [0.2, 0.8], [0.8, 0.8], [0.5, 0.95], [0.3, 0.6], [0.7, 0.55]]) {
+      const ll = map.unproject([fx * el.clientWidth, fy * el.clientHeight]);
+      const a = map.project(ll), b = cam.project([ll.lng, ll.lat]);
+      if (b.depth > 0) out.push(Math.hypot(a.x - b.x, a.y - b.y));
+    }
+    return [map.getZoom(), map.getPitch(), Math.max(...out)];
+  });
+  await page.evaluate(() => { (window as any).canalRecallGame.state = 4; });
+  for (let i = 0; i < 12; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
+  await page.keyboard.down('ArrowUp');
+  for (let i = 0; i < 10; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
+  await page.keyboard.up('ArrowUp');
+  console.log('parity (zoom, pitch, max px):', JSON.stringify(samples.map(s => s.map(v => Math.round(v * 100) / 100))));
+  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(3.2);
+});
