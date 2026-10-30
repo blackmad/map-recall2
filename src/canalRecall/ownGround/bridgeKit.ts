@@ -798,7 +798,7 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
  * a basement.
  */
 export type BasculeStyle = 'portal' | 'basement';
-export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement' };
+export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement', BRU0272: 'basement' };
 export const basculeStyle = (id: string | null | undefined, hint: RegisterHint | null): BasculeStyle =>
   (id && BASCULE_STYLE[id]) || (hint && hint.material !== 'wood' && hint.material !== 'other' ? 'basement' : 'portal');
 
@@ -822,5 +822,6 @@ export function basementEnd(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
 
 /** Bascule colour from the register: traditional timber ophaalbruggen (the Magere Brug) white, steel and concrete ones Amsterdam green. */
 /** Hand colours from the aimed panoramas where the register rule is wrong (the Zoutkeetsgracht bridge's leaf and tube railings are white). */
-export const BASCULE_COLOUR: Readonly<Record<string, 'white' | 'green'>> = { BRU0345: 'white' };
+// The Mariniersbrug (BRU0272, user 2026-10-30) is registered as timber but is a green steel basement bascule with masts.
+export const BASCULE_COLOUR: Readonly<Record<string, 'white' | 'green'>> = { BRU0345: 'white', BRU0272: 'green' };
 export const basculeColour = (hint: RegisterHint | null, id?: string | null): RGB => (id && BASCULE_COLOUR[id] ? KIT_COLOURS[BASCULE_COLOUR[id]] : hint?.material === 'wood' ? KIT_COLOURS.white : KIT_COLOURS.green);

@@ -225,6 +225,7 @@ const BASCULE_NOTES: Record<string, string> = {
   BRU0151: 'photo: basement bascule, no portal; red-and-white signal masts and barrier boxes at both ends, bridge-keeper\'s house | model: basement style (masts, barrier boxes, leaf kerbs)',
   BRU0149: 'photo: basement bascule under tram wires, no portal; red-and-white masts, barrier boxes, signals | model: basement style',
   BRU0345: 'photo: basement bascule, no portal (the overhead "balance-beam" in the report is not in the panoramas); masts, barrier boxes, white tube railings | model: basement style',
+  BRU0272: 'photo (Mariniersbrug, Dijksgracht): green steel basement bascule, red-and-white masts, green lattice truss parapets, brick piers; register says timber | model: basement style, green (the kit has no truss parapet)',
 };
 
 async function main(): Promise<void> {

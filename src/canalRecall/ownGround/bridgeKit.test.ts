@@ -1,7 +1,7 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { basculeStyle, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
+import { basculeColour, basculeStyle, KIT_COLOURS, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
 import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, measuredDeckTop, movableFrame, underDeck } from './decks';
 import { decodeProfile, sideWidths } from '../elevation/bridgeDeck';
@@ -134,7 +134,10 @@ test('bridge facts: the kit honours count, shape, family and the named budget', 
 // bascules, no portal: signal masts and barrier boxes. The Magere Brug keeps its portals.
 test('bascules: portal or basement by the panoramas, then the register', () => {
   assert.equal(basculeStyle('BRU0242', registerHint('BRU0242')), 'portal', 'Magere Brug');
-  for (const id of ['BRU0151', 'BRU0149', 'BRU0345']) assert.equal(basculeStyle(id, registerHint(id)), 'basement', id);
+  for (const id of ['BRU0151', 'BRU0149', 'BRU0345', 'BRU0272']) assert.equal(basculeStyle(id, registerHint(id)), 'basement', id);
+  // User 2026-10-30: the Mariniersbrug (Dijksgracht) is registered as timber, so the rule drew a white portal; the
+  // panorama shows a green steel basement bascule with red-and-white masts.
+  assert.deepEqual(basculeColour(registerHint('BRU0272'), 'BRU0272'), KIT_COLOURS.green, 'Mariniersbrug green');
   assert.equal(basculeStyle(null, null), 'portal');
   const m = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] };
   basementEnd(m, (a, b) => [a, b], [1, 0], 0, [3, -3], () => 1);
