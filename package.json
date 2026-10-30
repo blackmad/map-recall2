@@ -134,6 +134,7 @@
     "test:own-pois": "tsx scripts/check-own-pois.ts",
     "test:building-facts": "tsx scripts/check-building-facts.mts",
     "build:building-facts": "tsx scripts/build-building-facts.ts",
+    "audit:wikipedia-buildings": "tsx scripts/audit-wikipedia-building-articles.ts",
     "fetch:amsterdam-monuments": "tsx scripts/fetch-amsterdam-monuments.ts",
     "fetch:amsterdam-bridge-register": "tsx scripts/fetch-amsterdam-bridge-register.ts",
     "build:bridge-register": "tsx scripts/build-bridge-register.ts",
