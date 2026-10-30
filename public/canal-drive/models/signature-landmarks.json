@@ -2315,9 +2315,9 @@
       "bytes": 62368,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dd10910cbb955e71",
+        "sourceHash": "00b0beaeb4309cbf",
         "buildVersion": 2,
-        "bytes": 20244,
+        "bytes": 20272,
         "triangles": 842
       }
     },
@@ -11682,9 +11682,9 @@
       "bytes": 88180,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "cd3eeab58417f6b7",
+        "sourceHash": "9f71e96b68a985c7",
         "buildVersion": 2,
-        "bytes": 25864,
+        "bytes": 25892,
         "triangles": 918
       }
     },
@@ -15174,9 +15174,9 @@
       "bytes": 146388,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2887b5f7609ea716",
+        "sourceHash": "6b165e582965dd13",
         "buildVersion": 2,
-        "bytes": 35352,
+        "bytes": 35380,
         "triangles": 1385
       }
     },
@@ -15255,9 +15255,9 @@
       "bytes": 140908,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "104dc0d341d99262",
+        "sourceHash": "8f3c171c4624ad43",
         "buildVersion": 2,
-        "bytes": 37876,
+        "bytes": 37932,
         "triangles": 1614
       }
     },
@@ -20169,9 +20169,9 @@
       "bytes": 169860,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "acfdfaa151a8b256",
+        "sourceHash": "6b3bb1b5c5dbafbb",
         "buildVersion": 2,
-        "bytes": 47980,
+        "bytes": 48012,
         "triangles": 1977
       }
     },
@@ -22788,7 +22788,9 @@
       "name": "Houseboat Museum (Hendrika Maria)",
       "landmarkId": "extract_landmarks_941219842",
       "modelUrl": "./models/houseboat-museum.glb",
-      "suppressOsmIds": ["w174999382"],
+      "suppressOsmIds": [
+        "w174999382"
+      ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
@@ -28887,7 +28889,9 @@
       "name": "Sea Palace",
       "landmarkId": "n13404202880",
       "modelUrl": "./models/sea-palace.glb",
-      "suppressOsmIds": ["w454006714"],
+      "suppressOsmIds": [
+        "w454006714"
+      ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
@@ -29070,9 +29074,9 @@
       "bytes": 447812,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "fa063155a88b0892",
+        "sourceHash": "01ec05d62e9fdde5",
         "buildVersion": 2,
-        "bytes": 94808,
+        "bytes": 94836,
         "triangles": 4385
       }
     },
@@ -32148,9 +32152,9 @@
       "bytes": 499196,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "cf9c236f426dff47",
+        "sourceHash": "7794d31dd20983cf",
         "buildVersion": 2,
-        "bytes": 201872,
+        "bytes": 201960,
         "triangles": 11292
       }
     },
