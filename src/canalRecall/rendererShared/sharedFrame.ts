@@ -19,6 +19,7 @@
 //
 // THREE is injected: the page's one copy (window.CanalRecallThree).
 
+import { SHADOW_STAND_IN_SOURCE, shadowOnlyLayerPass } from './shadowStandIns.js';
 import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator, type FrameMatrices, type Mat4, type Vec3 } from './frameMath.js';
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
 import { mapLibreSky } from '../look/sunny.js';
@@ -219,6 +220,7 @@ export class SharedFrame {
 
   /** The renderer exists: attach new participants, or after a restore let every participant rebuild. */
   private rendererReady(): void {
+    shadowOnlyLayerPass(this.renderer);
     const restored = this.restorePending;
     this.restorePending = false;
     for (const entry of this.registry.all()) {
@@ -321,7 +323,8 @@ export class SharedFrame {
   static setShadows(object: any, cast: boolean, receive: boolean): void {
     object.traverse((child: any) => {
       if (!child.isMesh) return;
-      child.castShadow = cast;
+      // A mesh whose shadow a stand-in casts (shadowStandIns.ts) stays out of the shadow pass.
+      child.castShadow = cast && !child.userData?.[SHADOW_STAND_IN_SOURCE];
       child.receiveShadow = receive;
       // Double-sided GLB materials would otherwise draw their light-facing
       // faces into the shadow map too. Measured on the surveyed Haparandaweg
