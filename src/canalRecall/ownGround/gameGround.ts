@@ -36,6 +36,10 @@
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
+import { poolReliefLoader } from './reliefDecode.js';
+import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
+/** The page's worker pool runs the building worker bundle next to this one (engine/workerPool.ts). */
+const POOL_WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
 import { boundingSphereOf } from '../geometryBounds.js';
 import { compileWithinBudget, precompileBudget, precompileStepDue } from '../rendererShared/compileBudget.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
@@ -43,7 +47,7 @@ import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
-import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
+import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -51,7 +55,7 @@ import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, isRoadLookId, roadLookTones, type GroundLook, type RoadLookId } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
-import { RAIL_TONES, SLEEPER_TILE_M } from './railTracks.js';
+import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
@@ -365,37 +369,20 @@ export class OwnGround {
   }
 
   /**
-   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in a
-   * second instance of the ground worker, not on the main thread. Falls back to the main thread without workers.
+   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in the page's
+   * worker pool (engine/workerPool.ts, ownGround/reliefDecode.ts), not on the main thread and no longer in a second
+   * own-ground worker. Falls back to the main thread without a pool.
    */
-  private reliefWorker: Worker | null = null;
-  private readonly reliefWaiting = new Map<number, { resolve: (v: { heights: Float32Array; bytes: number }) => void; reject: (e: Error) => void }>();
-  private reliefIds = 0;
+  private relief: { loader: ReliefTileLoader; dispose: () => void } | null = null;
   private reliefLoader(root: string): ReliefTileLoader | undefined {
-    if (typeof Worker === 'undefined' || !this.opts.workerUrl) return undefined;
-    return (path, index, entry) => {
-      if (!this.reliefWorker) {
-        try {
-          const worker = new Worker(this.opts.workerUrl);
-          worker.onmessage = event => {
-            const msg = event.data, waiting = this.reliefWaiting.get(msg.id);
-            if (msg.type !== 'relief' || !waiting) return;
-            this.reliefWaiting.delete(msg.id);
-            if (msg.heights) waiting.resolve({ heights: msg.heights, bytes: msg.bytes });
-            else waiting.reject(new Error(msg.error ?? 'relief tile failed'));
-          };
-          this.reliefWorker = worker;
-        } catch (error) {
-          this.stats.errors.push(`relief worker unavailable: ${String(error)}`);
-          return httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength }));
-        }
-      }
-      const id = ++this.reliefIds;
-      return new Promise((resolve, reject) => {
-        this.reliefWaiting.set(id, { resolve, reject });
-        this.reliefWorker!.postMessage({ type: 'relief', id, url: `${root}/${path}`, index: { stepM: index.stepM, tileSizeM: index.tileSizeM, samples: index.samples, predictor: index.predictor }, entry: [...entry] });
-      });
-    };
+    if (typeof Worker === 'undefined') return undefined;
+    this.relief?.dispose();
+    this.relief = poolReliefLoader(sharedWorkerPool(POOL_WORKER_URL), root);
+    const relief = this.relief;
+    if (!relief) return undefined;
+    // A pool worker that dies mid-tile: that tile decodes here instead.
+    return (path, index, entry) => relief.loader(path, index, entry)
+      .catch(() => httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength })));
   }
 
   dispose(full = true): void {
@@ -408,10 +395,8 @@ export class OwnGround {
     this.prepared.clear();
     this.worker?.terminate();
     this.worker = null;
-    this.reliefWorker?.terminate();
-    this.reliefWorker = null;
-    for (const w of this.reliefWaiting.values()) w.reject(new Error('own ground disposed'));
-    this.reliefWaiting.clear();
+    this.relief?.dispose();
+    this.relief = null;
     this.workerReady = false;
     this.gen++;
     if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; this.precompileQueue = null; }
@@ -776,6 +761,9 @@ export class OwnGround {
           g.fillStyle = `rgb(${sl[0] + v},${sl[1] + v},${sl[2] + v})`;
           g.fillRect(0.25 * px, (y + 0.17) * px, (SLEEPER_TILE_M - 0.5) * px, 0.26 * px);
         }
+        // The rails as dark stripes along the track (issue #145): continuous at chase distance, under the ridge rails up close.
+        g.fillStyle = `rgb(${RAIL_STRIPE.tone.join(',')})`;
+        for (const [u0, u1] of railStripes()) g.fillRect(u0 * px, 0, (u1 - u0) * px, s);
       }), roughness: 1 }),
       track: std({ color: `rgb(${RAIL_TONES.track.join(',')})`, roughness: 0.55, metalness: 0.2 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
@@ -1018,7 +1006,8 @@ export class OwnGround {
       // The uv is the position's x, y (compactMesh.ts): one GPU buffer, two views. Normals and linear colours normalised.
       const shared = new THREE.InterleavedBuffer(p.positions, 3);
       g.setAttribute('position', new THREE.InterleavedBufferAttribute(shared, 3, 0));
-      g.setAttribute('uv', new THREE.InterleavedBufferAttribute(shared, 2, 0));
+      // A track's bed keeps its own uv (compactMesh UV_LAYERS: sleepers across, rails along the track).
+      g.setAttribute('uv', p.uvs ? new THREE.BufferAttribute(p.uvs, 2) : new THREE.InterleavedBufferAttribute(shared, 2, 0));
       g.setAttribute('normal', new THREE.BufferAttribute(p.normals, 3, true));
       if (p.colors) g.setAttribute('color', new THREE.BufferAttribute(p.colors, 3, true));
       g.setIndex(new THREE.BufferAttribute(p.indices, 1));

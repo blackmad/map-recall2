@@ -1215,6 +1215,12 @@ export interface LargeWallIntent {
     /** with `wallSplit`: clad the `left` (the group's own colour, default) or the `right` (the split colour) side */
     side?: 'left' | 'right'};
   /**
+   * A painted or metal-clad wall (buildingRecipe/wallFamily.ts, GitHub #146): `paint` the whole wall in one flat measured
+   * colour (no brick courses), `metal` the sheet in the measured colour with vertical ribs at `ribPitch` metres (ribs in
+   * `lines`, default a shade darker). Drawn with the city look's flat `paint` slot; `from` keeps a plinth in the wall colour.
+   */
+  wallFamily?: {kind: 'paint' | 'metal'; colour: string; ribPitch?: number; lines?: string; from?: number};
+  /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
    * facet restarts its own grid.

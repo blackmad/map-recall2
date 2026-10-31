@@ -74,6 +74,8 @@ export interface FerryPlayer extends Point {
   ferryUnarmed?: string[];
   /** The nearest dockable pier and its distance in px, for the aboard notice. */
   ferryNearest?: { name: string; distance: number } | null;
+  /** The side the hull is turning to while a touch blocks it, kept until it is free again. */
+  ferryTurn?: -1 | 1;
   ferryDestinations?: string;
   _bikeMaxSpeed?: number;
   _bikeSize?: { length: number; width: number };
@@ -83,6 +85,8 @@ export interface FerryTrack {
   segments: readonly Segment[];
   getNearestRoad(x: number, y: number, angle: number | null): { segIdx: number } | null;
   getSurface?(x: number, y: number): string;
+  /** Street following (streetFollow.ts) reads these; on water there are none. */
+  getRoadContacts?(x: number, y: number): unknown[];
   _ferryLinks?: FerryLink[];
   _ferryAccesses?: Segment[];
   _ferryPiers?: Terminal[][];
@@ -174,10 +178,52 @@ export function boardingTerminal(player: FerryPlayer, access: Segment | undefine
 }
 
 /**
- * Launch with the stern ramp at the quay rather than half the hull ashore:
- * move out along the heading by up to half a hull length while still afloat.
+ * The launch heading may swing this far either side of the boarding heading
+ * towards open water. Wide: a GTFS stop over the water beside its pontoon
+ * (Centraal's F2 landing by the NACO house) has its access pointing straight
+ * into the pontoon, and the open IJ is 100° round from it.
  */
-function launchBerth(water: Point, angle: number, isWater: WaterTest): Point & { angle: number } {
+export const LAUNCH_SWEEP = (120 * Math.PI) / 180;
+/** How far ahead open water is probed for when choosing the launch heading. */
+export const LAUNCH_REACH = 240; // 80 m
+/** Beyond this lead the whole hull width must be afloat along the launch line (the quay is beside the berth itself). */
+export const LAUNCH_LEAD = 36; // 12 m
+
+/**
+ * The heading, within LAUNCH_SWEEP of `angle`, with the longest run of open
+ * water ahead of `from` for the whole hull width beyond LAUNCH_LEAD (three
+ * parallel lines, so a line skimming along a quay does not count); ties go to
+ * the heading nearest `angle`. The shore normal (or the access direction at a stop over water)
+ * points across the water at a quay-edge stop, but into the opposite quay of
+ * an inlet at Zamenhofstraat (16 m) and along the quay itself at Pontsteiger,
+ * where the vessel drove ashore (2026-10-31). A ferry leaves towards open water.
+ */
+export function openWaterHeading(from: Point, angle: number, isWater: WaterTest): number {
+  let best = angle, bestRun = -1;
+  const steps = 6, half = FERRY_SIZE.width / 2 + 3;
+  for (let i = 0; i <= 2 * steps; i++) {
+    // 0, -1, 1, -2, 2, …: ties keep the heading nearest the boarding heading.
+    const k = i === 0 ? 0 : (i % 2 ? -(i + 1) / 2 : i / 2);
+    const a = angle + (k / steps) * LAUNCH_SWEEP;
+    const hx = Math.cos(a), hy = Math.sin(a);
+    let run = 0;
+    for (let d = 12; d <= LAUNCH_REACH; d += 12) {
+      const x = from.x + hx * d, y = from.y + hy * d;
+      if (!isWater(x, y) || (d >= LAUNCH_LEAD && (!isWater(x - hy * half, y + hx * half) || !isWater(x + hy * half, y - hx * half)))) break;
+      run = d;
+    }
+    if (run > bestRun) { bestRun = run; best = a; }
+  }
+  return best;
+}
+
+/**
+ * Launch towards open water (openWaterHeading), with the stern ramp at the
+ * quay rather than half the hull ashore: move out along the heading by up to
+ * half a hull length while still afloat.
+ */
+function launchBerth(water: Point, heading: number, isWater: WaterTest): Point & { angle: number } {
+  const angle = openWaterHeading(water, heading, isWater);
   let berth = { x: water.x, y: water.y, angle };
   for (let d = 6; d <= FERRY_SIZE.length / 2; d += 6) {
     const x = water.x + Math.cos(angle) * d, y = water.y + Math.sin(angle) * d;
@@ -242,6 +288,7 @@ export function ferryTerminalsOf(links: readonly FerryLink[]): Terminal[] {
 /** Back on the bike at the pier's land access (GTFS stops can be offshore). */
 export function disembark(player: FerryPlayer, pier: Terminal): void {
   player.ferryOrigin = null;
+  player.ferryTurn = undefined;
   player.ferryDeparted = false;
   player.ferryUnarmed = undefined;
   player.ferryNearest = null;
@@ -279,11 +326,18 @@ export function beginFerryFrame(game: FerryGame, isWater: WaterTest): boolean {
   return true;
 }
 
-/** Free steering on water: no street-heading assistance towards the nearest bank. */
+/**
+ * Free steering on water: no street-heading assistance towards the nearest
+ * bank, and no street contacts. Street following (the phone default since
+ * 2026-10-29) read the terminal access underfoot as a dead end and held the
+ * vessel at the pier with its speed at zero; off the network it steers by
+ * the buttons and cruises.
+ */
 export function ferryMotionTrack<T extends FerryTrack>(track: T): T {
   const water = Object.create(track) as T;
   water.getSurface = () => 'asphalt';
   water.getNearestRoad = () => null;
+  water.getRoadContacts = () => [];
   return water;
 }
 
@@ -303,15 +357,46 @@ export type FerryMoveResult = 'sailing' | 'blocked' | 'docked' | 'ashore';
 export function leadingEdge(p: FerryPlayer, previous: Point): Point[] | null {
   const mx = p.x - previous.x, my = p.y - previous.y;
   if (Math.abs(mx) + Math.abs(my) < 1e-6) return null;
+  return hullEdge(p, mx * Math.cos(p.angle) + my * Math.sin(p.angle) >= 0 ? 1 : -1);
+}
+
+/** The bow (forward 1) or stern (-1) end of the hull: its centre and two corners. */
+function hullEdge(p: FerryPlayer, forward: 1 | -1): Point[] {
   const hx = Math.cos(p.angle), hy = Math.sin(p.angle);
-  const ahead = (mx * hx + my * hy >= 0 ? 1 : -1) * (p.length || FERRY_SIZE.length) / 2;
+  const ahead = forward * (p.length || FERRY_SIZE.length) / 2;
   const side = 0.8 * (p.width || FERRY_SIZE.width) / 2;
   const bx = p.x + hx * ahead, by = p.y + hy * ahead;
   return [{ x: bx, y: by }, { x: bx - hy * side, y: by + hx * side }, { x: bx + hy * side, y: by - hx * side }];
 }
 
-/** Degrees the heading eases away from the shore when one bow corner grazes it. */
+/** Degrees the heading eases away from the shore on each frame it touches. */
 const GRAZE_TURN = (4 * Math.PI) / 180;
+
+const countWet = (wet: readonly boolean[]) => wet.reduce((n, w) => n + (w ? 1 : 0), 0);
+
+/**
+ * Which side of the leading end has more water: +1 for corner 1 (starboard
+ * when moving ahead; screen space has y down), -1 for corner 2. The corners
+ * decide when they differ; otherwise wider probes beside the leading end and
+ * the hull's centre, one and two hull widths out, decide; a tie (head-on
+ * against a flat bank, or the tip of a point with water both sides) turns
+ * to starboard, so that a touch never holds the vessel still.
+ */
+export function wetterSide(p: FerryPlayer, forward: 1 | -1, edgeWet: readonly boolean[], isWater: WaterTest): -1 | 1 {
+  if (edgeWet[1] !== edgeWet[2]) return edgeWet[1] ? 1 : -1;
+  const hx = Math.cos(p.angle), hy = Math.sin(p.angle);
+  const ahead = forward * (p.length || FERRY_SIZE.length) / 2;
+  const width = p.width || FERRY_SIZE.width;
+  let score = 0;
+  for (const along of [ahead, 0]) {
+    for (const out of [width, 2 * width]) {
+      const x = p.x + hx * along, y = p.y + hy * along;
+      if (isWater(x - hy * out, y + hx * out)) score++;
+      if (isWater(x + hy * out, y - hx * out)) score--;
+    }
+  }
+  return score < 0 ? -1 : 1;
+}
 
 /**
  * Called after the vehicle moved: dock, or keep the hull on water.
@@ -321,8 +406,12 @@ const GRAZE_TURN = (4 * Math.PI) / 180;
  * ferry"): within DOCK_RADIUS on water while heading in, or on touching land
  * within QUAY_DOCK_RADIUS. Piers close to the boarding point re-arm only past
  * REARM_RADIUS. Elsewhere the hull's centre and leading edge must stay on
- * water (feedback f80d47da, "boat tears through the ground"); a single bow
- * corner on land glances off instead of stopping dead.
+ * water (feedback f80d47da, "boat tears through the ground"). A touch never
+ * strands the vessel (2026-10-31: dead-stopped 16 m out at Zamenhofstraat and
+ * Pontsteiger and against the Buiksloterweg point, with no way free): the
+ * heading eases towards the wetter side and keeps way on, a move that puts
+ * more of the hull on water is always allowed, and the pier exemption lets
+ * the quay be passable but never lets the centre go ashore from the water.
  */
 export function afterFerryMove(game: FerryGame, previous: Point, isWater: WaterTest): FerryMoveResult {
   const p = game.player, origin = p.ferryOrigin;
@@ -358,21 +447,31 @@ export function afterFerryMove(game: FerryGame, previous: Point, isWater: WaterT
       return 'docked';
     }
   }
-  // Leaving a pier not yet re-armed (launching, turning out): the old corridor rule, centre only.
+  if (!touching) { p.ferryTurn = undefined; return 'sailing'; }
+  const previousCentreWet = isWater(previous.x, previous.y);
+  // Leaving a pier not yet re-armed (launching, turning out): the quay is
+  // passable, but the centre does not go ashore from the water.
   const leaving = terminals.some(t => unarmed.has(t.id) && (distance(t) < PIER_APPROACH_RADIUS || nearAccess(p, t)));
-  if (leaving || !touching) return 'sailing';
-  const grazed = centreWet && edgeWet[0] && edgeWet[1] !== edgeWet[2];
+  if (leaving && (centreWet || !previousCentreWet)) return 'sailing';
   const forward = (p.x - previous.x) * Math.cos(p.angle) + (p.y - previous.y) * Math.sin(p.angle) >= 0 ? 1 : -1;
-  p.x = previous.x; p.y = previous.y;
-  if (grazed) {
-    // Screen space has y down, so corner 1 is to starboard and a growing
-    // angle turns the bow to starboard (and swings the stern to port).
-    // Turn the leading end away from whichever corner touched.
-    p.angle += (edgeWet[1] ? 1 : -1) * forward * GRAZE_TURN;
-    p.speed *= 0.6;
-    p.vx = Math.cos(p.angle) * p.speed; p.vy = Math.sin(p.angle) * p.speed;
-    return 'blocked';
+  // Getting free: more of the hull on water than before (backing off a
+  // bank, turning out of a corner) is always allowed.
+  if (edge) {
+    const beforeEdge = hullEdge({ ...p, x: previous.x, y: previous.y }, forward);
+    const wetBefore = countWet([previousCentreWet, ...beforeEdge.map(q => isWater(q.x, q.y))]);
+    if (countWet([centreWet, ...edgeWet]) > wetBefore) return 'sailing';
   }
-  p.speed = 0; p.vx = 0; p.vy = 0;
+  // Judged at the touching pose, before the move is undone. Screen space has
+  // y down, so corner 1 is to starboard and a growing angle turns the bow to
+  // starboard (and swings the stern to port). Turn the leading end towards
+  // the wetter side and keep way on; keep turning the same way while the
+  // touch lasts (a bow corner straddling a pontoon's edge flipped the pick
+  // every frame and the vessel rocked in place).
+  const side = p.ferryTurn ?? wetterSide(p, forward, edgeWet, isWater);
+  p.ferryTurn = side;
+  p.x = previous.x; p.y = previous.y;
+  p.angle += side * forward * GRAZE_TURN;
+  p.speed *= 0.6;
+  p.vx = Math.cos(p.angle) * p.speed; p.vy = Math.sin(p.angle) * p.speed;
   return 'blocked';
 }

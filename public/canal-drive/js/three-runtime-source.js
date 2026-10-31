@@ -21,7 +21,7 @@ export { blendAtZoom, transitionOn, OverviewBlend } from '../../../src/canalReca
 // The one sun, for plain scripts with their own lights (artis-animals.js).
 export { SUN_DIRECTION, enuDirectionInLocal } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 export { createLitFacadeMaterial, createFacadeDepthMaterial } from '../../../src/canalRecall/rendererShared/litFacadeMaterial.ts';
-export { withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
+export { withinView } from '../../../src/canalRecall/engine/worldStreamer.ts';
 export { PARTICIPANT_ORDER } from '../../../src/canalRecall/rendererShared/layerRegistry.ts';
 
 // The landmark highlight (default a; `?highlight=yellow|b|c`): the page's ground ring / beacon, the style and its

@@ -3,8 +3,8 @@
  "generated": "2026-10-31",
  "articles": [
   {
-   "name": "Dam Square",
-   "kind": "square",
+   "name": "Dam",
+   "kind": "street",
    "wikidata": "Q839050",
    "sitelinks": 33,
    "title": "Dam Square",
@@ -12,7 +12,7 @@
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Dam_Square_2026.jpg/960px-Dam_Square_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "lng": 4.892777777,
    "lat": 52.373055555,
-   "distanceM": 35,
+   "distanceM": 21,
    "extract": "Dam Square, also known as the Dam (Dutch pronunciation: [dɑm]), is a town square in Amsterdam, the capital and most populous city of the Netherlands. Its notable buildings and frequent events make it one of the best-known and most important locations in the city and the country.",
    "extractLang": "en",
    "extractSource": "wikipedia-en",
@@ -44,7 +44,7 @@
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Nieuwmarkt_Amsterdam_during_Koningsdag_2020.jpg/960px-Nieuwmarkt_Amsterdam_during_Koningsdag_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "lng": 4.900503,
    "lat": 52.372573,
-   "distanceM": 52,
+   "distanceM": 22,
    "extract": "Nieuwmarkt (Dutch pronunciation: [ˈniuˌmɑr(ə)kt]; English: New Market) is a square in the centre of Amsterdam, Netherlands. The surrounding area is known as the Lastage neighborhood. It is situated in the borough of Amsterdam-Centrum. The square is considered part of Amsterdam's Chinatown, next to the De Wallen (Red Light District).",
    "extractLang": "en",
    "extractSource": "wikipedia-en",
