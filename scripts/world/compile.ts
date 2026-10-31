@@ -7,6 +7,9 @@
  *   npm run world:compile -- --debug      # DEBUG cells: also the enriched source bags (ATTR), for diagnosis;
  *                                         # the runtime never needs them (cellFormat.ts, flags)
  *   npm run world:compile -- --against=none   # skip the reference check below (an intended decorator change)
+ *   npm run world:compile -- --no-policy  # cells exactly as the default path (no centimetre heights, no 5 cm
+ *                                         # collinear-vertex removal: src/canalRecall/world/cellPolicy.ts)
+ * Format 4 also writes strings.bin, the shared string table (strings two or more cells use).
  *
  * Reference check (P2 bytes gate): every written cell is decoded and compared, whole (buildings, geometry,
  * styled bags, groups, party walls, hidden ids), with the same cell in --against (default: the published
@@ -33,8 +36,10 @@ import { roofPlanForFeature } from '../../src/canalRecall/roofMesh.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
-import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, WORLD_FORMAT_VERSION, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
+import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, WORLD_FORMAT_VERSION, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../../src/canalRecall/world/cellGrid.js';
+import { applyPolicy, emptyPolicyReport, summarisePolicy, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
+import { readGlobalStrings } from './cellFiles.js';
 
 export const COMPILER_VERSION = 'world-compiler-1';
 const args = process.argv.slice(2);
@@ -45,6 +50,7 @@ const CHANGED = !!flag('changed');
 const WITH_ROOF = !!flag('roof');
 const DEBUG = !!flag('debug');
 const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
+const NO_POLICY = !!flag('no-policy');
 const AGAINST = value('against') === 'none' ? null : path.resolve(value('against') ?? path.join(EXTRACT, 'world-v1'));
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
@@ -134,6 +140,7 @@ async function main() {
   const cellsOut: Record<string, any> = previous && rebuild ? { ...previous.cells } : {};
   const streamTotals: Record<string, { raw: number; gz: number }> = {};
   const hiddenPlaced = new Set<string>();
+  const built: { key: string; list: Row[]; cell: Cell }[] = [], policyReport = emptyPolicyReport();
   let written = 0, rawTotal = 0, gzTotal = 0, maxGz = 0;
   for (const [key, list] of [...byCell].sort(([a], [b]) => a.localeCompare(b))) {
     if (rebuild && !rebuild.has(key) && previous.cells[key]) continue;
@@ -147,16 +154,39 @@ async function main() {
         .map(f => { const at = localIndex.get(f)!; return at.cell === key ? at.index : String(f.properties.id); });
       const polygons = asPolygons(own.geometry), [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
       const n = 2 ** 14, rad = lat * Math.PI / 180, group = `${Math.floor(((lng + 180) / 360) * n)}/${Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n)}`;
-      return { id: ownId, tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry as Geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties, roof: roof ?? undefined, group, neighbours };
+      // As the decoder gives a building back (the whole-cell round-trip check compares keys): a runtime cell carries
+      // the styled bag as its only bag; absent keys are absent, not undefined.
+      const b: CellBuilding = { id: ownId, tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry as Geometry, attr: DEBUG ? r.raw.properties : r.styled.properties };
+      if (DEBUG && r.styled !== r.raw) b.styled = r.styled.properties;
+      if (roof) b.roof = roof;
+      b.group = group; b.neighbours = neighbours;
+      return b;
     });
     const ids = new Set(buildings.map(b => b.id));
     const hide = [...hides.values()].filter(h => ids.has(h.id));
     for (const h of hide) hiddenPlaced.add(h.id);
     const cell: Cell = DEBUG ? { i, j, buildings, hide, debug: true } : { i, j, buildings, hide };
-    const encoded = encodeCell(cell);
-    // Verify before writing: the decoded cell must give back the exact raw and styled features.
-    const back = decodeCell(encoded.bytes, key);
-    back.buildings.forEach((b, k) => {
+    // The compile policy (cellPolicy.ts): heights to the centimetre, near-collinear vertices within 5 cm removed.
+    built.push({ key, list, cell: NO_POLICY ? cell : applyPolicy(cell, policyReport) });
+  }
+
+  // The shared string table (format 4): strings two or more cells use. A --changed run keeps the table it
+  // compiled before (cells it does not rewrite were encoded against it); new strings stay in their cell.
+  let globals: GlobalStrings | undefined, globalsBytes: Uint8Array | undefined;
+  const keepTable = !!rebuild && previous?.strings && exists(path.join(OUT, GLOBAL_STRINGS_FILE));
+  if (keepTable) globals = readGlobalStrings(OUT);
+  else ({ bytes: globalsBytes, table: globals } = encodeGlobalStrings(chooseGlobalStrings(built.map(b => encodeCell(b.cell).strings), 2)));
+  const referenceGlobals = reference ? readGlobalStrings(AGAINST!) : undefined;
+
+  for (const { key, list, cell } of built) {
+    const [i, j] = parseCellKey(key), buildings = cell.buildings, hide = cell.hide;
+    const encoded = encodeCell(cell, WORLD_FORMAT_VERSION, globals);
+    // Verify before writing: the decoded cell must give back exactly the cell (the default path's raw and styled
+    // features, through the policy).
+    const back = decodeCell(encoded.bytes, key, globals);
+    back.buildings.forEach((b, k) => { if (!sameValue(b, buildings[k])) throw Error(`${key}: ${b.id} does not round-trip`); });
+    if (!sameValue(back, cell)) throw Error(`${key}: the cell does not round-trip`);
+    if (NO_POLICY) back.buildings.forEach((b, k) => {
       const src = list[k], raw = rawFeature(b), styled = styledFeature(b, raw);
       // A runtime cell gives back the styled bag only (raw === styled); a DEBUG cell also the source bag.
       if ((DEBUG && !sameValue(raw.properties, src.raw.properties)) || !sameValue(raw.geometry, src.raw.geometry) || !sameValue(styled.properties, src.styled.properties)) throw Error(`${key}: ${b.id} does not round-trip`);
@@ -167,7 +197,9 @@ async function main() {
       if (!entry || !exists(file)) against.missing.push(key);
       else if (!fresh) against.skippedStale.push(key);
       else {
-        const old = decodeCell(zlib.gunzipSync(fs.readFileSync(file)), `reference ${key}`);
+        // A reference compiled without the policy is compared through it (the policy is applied once).
+        const decoded = decodeCell(zlib.gunzipSync(fs.readFileSync(file)), `reference ${key}`, referenceGlobals);
+        const old = reference.policy || NO_POLICY ? decoded : applyPolicy(decoded);
         if (!!old.debug !== DEBUG) against.skippedStale.push(key);
         else {
           if (old.buildings.length !== back.buildings.length) throw Error(`${key}: ${back.buildings.length} buildings, the reference cell has ${old.buildings.length}`);
@@ -198,11 +230,15 @@ async function main() {
   for (const f of [...GLOBAL_INPUTS, path.join(EXTRACT, 'building-tiles/index-z14.json'), path.join(EXTRACT, 'elevation-v1/index.json'), path.join(EXTRACT, 'roads-v1/cells.json')]) sources[path.relative(ROOT, f)] = exists(f) ? sha(fs.readFileSync(f)) : 'absent';
   sources['building-tiles+building-facts+roof-facts (per tile, combined)'] = sha([...tileHash.entries()].sort().map(e => e.join(':')).join('\n'));
   sources['code'] = inputHash(CODE);
-  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
+  if (globalsBytes) fs.writeFileSync(path.join(OUT, GLOBAL_STRINGS_FILE), gz(globalsBytes));
+  const stringsFile = path.join(OUT, GLOBAL_STRINGS_FILE);
+  const strings = globals ? { file: GLOBAL_STRINGS_FILE, count: globals.list.length, hash: globals.hash, gzBytes: fs.statSync(stringsFile).size, sha256: sha(fs.readFileSync(stringsFile)) } : undefined;
+  const policy = NO_POLICY ? undefined : POLICY_VERSION;
+  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy } : {}), ...(strings ? { strings } : {}), debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(indexOut));
   // The runtime's probe reads only this (tileCells and the cell list, ~5 % of index.json): the 400 KB index cost
   // world-v1 ~150 ms against the default path at page start (lane L4 time-to-resident).
-  const runtime = { version: 1, format: WORLD_FORMAT_VERSION, compiler: COMPILER_VERSION, globalHash, tileCells, cells: Object.fromEntries(Object.entries<any>(cellsOut).map(([k, c]) => [k, { buildings: c.buildings, gzBytes: c.gzBytes }])) };
+  const runtime = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy } : {}), ...(strings ? { strings } : {}), compiler: COMPILER_VERSION, globalHash, tileCells, cells: Object.fromEntries(Object.entries<any>(cellsOut).map(([k, c]) => [k, { buildings: c.buildings, gzBytes: c.gzBytes }])) };
   fs.writeFileSync(path.join(OUT, 'tiles.json'), JSON.stringify(runtime));
 
   const allGz = Object.values<any>(cellsOut).reduce((s, c) => s + c.gzBytes, 0);
@@ -210,8 +246,8 @@ async function main() {
     compiler: COMPILER_VERSION, format: WORLD_FORMAT_VERSION, changedMode: CHANGED, tilesLoaded: load.length,
     cellsWritten: written, cellsTotal: Object.keys(cellsOut).length, cellsOutsideRoadsV1: Object.entries<any>(cellsOut).filter(([, c]) => !c.inRoadsV1).map(([k]) => k),
     buildings: rows.length, ...stats, pipelineMs: Math.round(pipelineMs), roofMs: Math.round(roofMs), hiddenIds: hides.size, hiddenPlaced: hiddenPlaced.size,
-    against,
-    bytes: { writtenRaw: rawTotal, writtenGz: gzTotal, maxCellGz: maxGz, allCellsGz: allGz, perStream: streamTotals },
+    against, policy: NO_POLICY ? null : summarisePolicy(policyReport), strings: strings ?? null,
+    bytes: { writtenRaw: rawTotal, writtenGz: gzTotal, maxCellGz: maxGz, allCellsGz: allGz, stringsGz: strings?.gzBytes ?? 0, cityTotalGz: allGz + (strings?.gzBytes ?? 0), perStream: streamTotals },
     ms: Math.round(performance.now() - t0),
   };
   fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 2));
