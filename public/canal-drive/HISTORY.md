@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
+`SharedFrame.shaderErrors()` counts programs three.js failed to compile or
+link since the renderer attached, via `renderer.debug.onShaderError`
+(chained if one is set; otherwise it logs the program and shader info logs
+as "Shader Error"; three's source-context lines are no longer printed, the
+error lines with their line numbers remain), exposed as
+`window.__canalPerf.shaderErrors()`. Counting from `info.programs`
+diagnostics read 0 on the broken bundle because the failing fade clone's
+program is released when the fade ends, so the error hook is the source.
+The ride test waits up to 60 s after landing for visible facade chunk
+meshes (> 0), and after the ride asserts `shaderErrors() === 0` and that the
+meshes are still there. Proof: with main's broken three-buildings and
+signature-landmarks bundles (def37ced0) it fails with 3 shader errors on
+desktop and 2 on iPhone while the old checks still read `facades:true,
+failed:[]`; with the fixed bundles (1c304f694) it passes on both.
+
 **`?engine=own` drew no facades on main for about four hours; the fade clone now keeps its shader defines (2026-10-31, #129).**
 Between the materials merge (64dfac399, ~16:00) and this fix every facade
 chunk under the own engine compiled to nothing: the chunk fade-in clones the
