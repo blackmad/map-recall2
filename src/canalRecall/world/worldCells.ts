@@ -33,7 +33,7 @@ export function readWorldIndex(value: unknown): WorldIndex | null {
 /** Decoded cells kept for neighbouring tiles; a z14 tile spans ~2x2 cells, and the streamer holds 9-12 tiles. */
 export const WORLD_CELL_CACHE = 24;
 /** Decoded cells per worker when a pool shares them by affinity (engine/worldStreamer.ts): the pool holds about 36. */
-export const worldCellCachePerWorker = (workers: number): number => Math.max(8, Math.ceil(36 / Math.max(1, workers)));
+export const worldCellCachePerWorker = (workers: number, resident = WORLD_RESIDENT_CELLS): number => Math.max(4, Math.ceil(resident / Math.max(1, workers)));
 /** Buildings per worker message: a batch is one main-thread task (structured-clone deserialise + adopt). */
 export const WORLD_BATCH = 400;
 
@@ -160,6 +160,11 @@ type Pending = { cell: string; tile: string | null; worker: number; share: Share
 
 /** Resident decoded cells kept across the pool (the streamer evicts above this, off-plan and furthest first). */
 export const WORLD_RESIDENT_CELLS = 36;
+/** The resident-cell budget, or `?worldCells=N` (4..256) for the heap sweep of issue #136. */
+export function worldResidentCells(search: string = typeof location !== 'undefined' ? location.search : ''): number {
+  try { const n = Number(new URLSearchParams(search).get('worldCells')); if (Number.isInteger(n) && n >= 4 && n <= 256) return n; } catch { /* no location */ }
+  return WORLD_RESIDENT_CELLS;
+}
 
 export class WorldCellClient {
   private readonly reader: WorldCellReader;
@@ -177,9 +182,11 @@ export class WorldCellClient {
   /** Where cells are decoded: 'worker', or 'main' (no worker, `?worldWorker=0`, or the workers failed). */
   get decodeThread(): 'worker' | 'main' { return this.workers.length ? 'worker' : 'main'; }
   get workerCount(): number { return this.workers.length; }
+  /** Resident decoded cells across the pool (`worldResidentCells`). */
+  readonly residentBudget = worldResidentCells();
 
   constructor(readonly index: WorldIndex, private readonly baseUrl: string, fetcher: typeof fetch = (...a) => fetch(...a), workerUrl: string = WORLD_WORKER_URL, workers = poolSize()) {
-    this.reader = new WorldCellReader(baseUrl, fetcher);
+    this.reader = new WorldCellReader(baseUrl, fetcher, Math.min(WORLD_CELL_CACHE, worldResidentCells()));
     let off = false;
     try { off = typeof location !== 'undefined' && new URLSearchParams(location.search).get('worldWorker') === '0'; } catch { /* no location */ }
     if (!off && workerUrl && typeof Worker !== 'undefined') {
@@ -247,7 +254,7 @@ export class WorldCellClient {
         this.workers[w]?.postMessage({ kind: 'world-abort', id } satisfies WorldRequest);
         reject(new DOMException('aborted', 'AbortError'));
       }, { once: true });
-      worker.postMessage({ kind: 'world-cell', id, baseUrl: this.absoluteBase(), cell, tile, cache: worldCellCachePerWorker(this.workers.length) } satisfies WorldRequest);
+      worker.postMessage({ kind: 'world-cell', id, baseUrl: this.absoluteBase(), cell, tile, cache: worldCellCachePerWorker(this.workers.length, this.residentBudget) } satisfies WorldRequest);
     });
   }
 
@@ -261,7 +268,7 @@ export class WorldCellClient {
     for (const t of tiles) for (const c of this.index.tileCells[t] ?? []) planned.push(c);
     const ranked = rankCells(planned, rider, direction);
     this.queue.want(ranked);
-    const evict = this.queue.evictions(WORLD_RESIDENT_CELLS, rider, key => ranked.has(key));
+    const evict = this.queue.evictions(this.residentBudget, rider, key => ranked.has(key));
     if (!evict.length) return;
     for (const k of evict) this.queue.forget(k);
     if (this.workers.length) {

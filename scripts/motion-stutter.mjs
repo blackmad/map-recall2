@@ -14,6 +14,7 @@
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
+import { heapSample, heapOwners, startHeapSampling } from './heap-sample.mjs';
 
 const argv = process.argv.slice(2);
 const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/load-stutter.json';
@@ -35,6 +36,10 @@ const railSpeed = Number(opt('speed', '120'));
 const port = process.env.PORT || 4544;
 const origin = `http://127.0.0.1:${port}`;
 const profiling = process.env.PROFILE !== '0';
+// HEAP=0 skips the GC'd heap samples at ride start and end of ride (each forces a GC in the page and its workers).
+const heapRows = process.env.HEAP !== '0';
+// HEAP_OWNERS=1: sampling heap profiler from navigation; live bytes by allocating app frame at ride start (use unminified bundles).
+const heapOwnerRows = process.env.HEAP_OWNERS === '1';
 
 const pick = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
 const r1 = v => +v.toFixed(1);
@@ -145,6 +150,7 @@ async function run(browser, kind, throttle, context) {
     await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start');
     await page.waitForTimeout(2500); // the Profiler.start stall lands here, before navigation
   }
+  if (heapOwnerRows) await startHeapSampling(cdp);
   const navAt = Date.now();
   await page.goto(`${origin}/canal-drive/${qs}`);
   const sync = async label => page.evaluate(label => {
@@ -155,7 +161,7 @@ async function run(browser, kind, throttle, context) {
   const mark = label => page.evaluate(label => { window.__ls.marks[label] = performance.now(); }, label);
   let deadline = navAt + (warmup != null ? 180_000 : seconds * 1000);
   const left = () => Math.max(1000, deadline - Date.now());
-  let reached = 'nav';
+  let reached = 'nav', heapAtStart = null;
   try {
     await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [startPoi, destPoi], { timeout: left() });
     await mark('menuReady'); reached = 'menu';
@@ -178,6 +184,12 @@ async function run(browser, kind, throttle, context) {
     await mark('player'); reached = 'player';
     await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, { timeout: left() });
     await mark('racing'); reached = 'racing';
+    // Ride-start heap (L4 gate, issue #136): once the first four building tiles are resident, before the rail moves the rider.
+    if (heapRows) {
+      await page.waitForFunction(() => [...(canalRecallGame.vectorMap?._completeCity?.tileTimes?.values() ?? [])].filter(t => t.resident != null).length >= 4, null, { timeout: left() }).catch(() => {});
+      heapAtStart = { atS: +(((await page.evaluate(() => performance.now())) / 1000).toFixed(2)), ...(await heapSample(cdp)) };
+      if (heapOwnerRows) heapAtStart.owners = await heapOwners(cdp);
+    }
     await page.evaluate(([viaIds, speed]) => { window.__via = viaIds; window.__railSpeed = speed; }, [via, railSpeed]);
     await page.evaluate(() => {
       const g = canalRecallGame, p = g.player, L = window.__ls, vm = g.vectorMap, map = vm.map;
@@ -259,6 +271,7 @@ async function run(browser, kind, throttle, context) {
       // `?world=v1`: where cells decoded, the main-thread decode tasks (main) or reply messages (worker), ms.
       world: (w => w ? { thread: w.decodeThread, cells: w.decodeMs.size, decodeMsMax: Math.round(Math.max(0, ...w.decodeMs.values()) * 10) / 10, inflateMsMax: Math.round(Math.max(0, ...w.inflateMs.values())), messages: w.messages ?? null, longestMessageMs: w.longestMessageMs != null ? Math.round(w.longestMessageMs * 10) / 10 : null } : null)(vm?._completeCity?.world) };
   });
+  const heapAtEnd = heapRows ? await heapSample(cdp).catch(e => ({ error: e.message })) : null;
   let profile = null;
   if (profiling) ({ profile } = await cdp.send('Profiler.stop'));
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
@@ -338,7 +351,7 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    worst, attribution, alignErrMs, heapMB: raw.heapMB, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, world: raw.world,
+    worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, world: raw.world,
   };
 }
 
@@ -351,6 +364,7 @@ for (const throttle of throttles) {
     results.push(r);
     const f = r.frames;
     if (r.motion) { const m = r.motion, f = m.frames; console.log(`motion ${kind} x${throttle}: ${m.seconds}s p50 ${f.p50} p95 ${f.p95} p99 ${f.p99} >50/min ${m.hitchesPerMin.over50} >100/min ${m.hitchesPerMin.over100} longest ${f.longestMs} stalled ${f.stalledS}s LT ${m.longTasks.n} aligned ${m.bursts.alignedWithStreaming}/${m.bursts.hitches} renders/frame ${m.cadence.renderPerFrame} dist ${r.distanceM}m errors ${r.errors.join(';')}`); }
+    if (r.heapAtStart) console.log(`heap ${kind} x${throttle}: start main ${r.heapAtStart.main.usedMB} MB (+${r.heapAtStart.main.backingMB ?? '?'} buffers) workers ${r.heapAtStart.workersUsedMB} MB @${r.heapAtStart.atS}s; end main ${r.heapAtEnd?.main?.usedMB} MB (+${r.heapAtEnd?.main?.backingMB ?? '?'}) workers ${r.heapAtEnd?.workersUsedMB} MB`);
     console.log(`${kind} x${throttle}: p50 ${f.p50} p95 ${f.p95} p99 ${f.p99} >50 ${f.over50} >100 ${f.over100} longest ${f.longestMs} stalled ${f.stalledS}s racing@${r.marksS.racing} align ${r.alignErrMs} errors ${r.errors.length}`);
   }
   await context.close();
