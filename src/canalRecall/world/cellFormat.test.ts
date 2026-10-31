@@ -176,8 +176,14 @@ test('a field a building does not carry costs no bytes (content-lane rule)', asy
 // --- v3 (P2 bytes gate): the same decoded cells as v2, from the published world-v1 cells -----------------
 // The published cells carry what the synthetic cells above do not: party-wall neighbours (local and in other
 // cells), coarse groups, hidden ids. Whatever version they are published in, v2 and v3 must decode alike.
-const PUBLISHED = path.resolve('public/data/extracts/amsterdam/world-v1/cells');
-const published = (key: string): Cell => decodeCell(zlib.gunzipSync(fs.readFileSync(path.join(PUBLISHED, `${key}.bin`))), key);
+// The published world-v1 directory (WORLD_CELLS_DIR=<dir> runs the same tests against a staging compile). From format
+// 4 on, published cells refer to the shared string table, so it is read whenever the index says format >= 4.
+const PUBLISHED_DIR = path.resolve(process.env.WORLD_CELLS_DIR || 'public/data/extracts/amsterdam/world-v1');
+const PUBLISHED = path.join(PUBLISHED_DIR, 'cells');
+const publishedFormat = (JSON.parse(fs.readFileSync(path.join(PUBLISHED_DIR, 'index.json'), 'utf8')) as { format?: number }).format ?? 1;
+const PUBLISHED_STRINGS = publishedFormat >= 4 && fs.existsSync(path.join(PUBLISHED_DIR, 'strings.bin'))
+  ? decodeGlobalStrings(zlib.gunzipSync(fs.readFileSync(path.join(PUBLISHED_DIR, 'strings.bin'))), 'strings.bin') : undefined;
+const published = (key: string): Cell => decodeCell(zlib.gunzipSync(fs.readFileSync(path.join(PUBLISHED, `${key}.bin`))), key, PUBLISHED_STRINGS);
 const keepOnly = (cell: Cell, keep: Set<number>): Cell => {
   // A sub-cell of the picked buildings; neighbours re-indexed, a dropped local neighbour kept as its id.
   const order = [...keep].sort((a, b) => a - b), at = new Map(order.map((k, n) => [k, n]));
