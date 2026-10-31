@@ -68,7 +68,7 @@ if (BUNDLES) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/,
   return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
 });
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-const query = ['highlight=a', frame === 'shared' ? 'sharedFrame=1' : ''].filter(Boolean).join('&');
+const query = 'highlight=a';
 await page.goto(`http://127.0.0.1:${PORT}/canal-drive/?${query}`);
 await page.waitForFunction(() => !!window.canalRecallGame, null, { timeout: 60000 });
 await page.locator('#travel-mode').selectOption('car', { force: true });

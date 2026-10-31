@@ -5,7 +5,7 @@
  * Not part of check:canal: a before/after record for look changes.
  *
  *   PW_PORT=4450 MOOD_OUT=artifacts/mood/before npx playwright test mood-shots --project=desktop
- *   MOOD_QUERIES=',?sharedFrame=1&cityLook=1' picks the frames; MOOD_SPOTS=dam,canal picks spots;
+ *   MOOD_QUERIES=',?cityLook=1' picks the frames; MOOD_SPOTS=dam,canal picks spots;
  *   LOOK_BUNDLES_DIR=<dir> serves freshly built *.bundle.js (as look-consistency).
  *
  * mood.json per frame and spot/side: mean sRGB luma and HSV saturation of the
@@ -20,7 +20,7 @@ import { openRoute } from './helpers';
 import { DEFAULT_LIGHT_RIG } from '../../src/canalRecall/rendererShared/lightRig';
 
 const OUT = process.env.MOOD_OUT || 'artifacts/mood';
-const QUERIES = (process.env.MOOD_QUERIES ?? ',?sharedFrame=1&cityLook=1,?ownGround=1&cityLook=1').split(',').map(s => s.trim());
+const QUERIES = (process.env.MOOD_QUERIES ?? ',?cityLook=1,?ownGround=1&cityLook=1').split(',').map(s => s.trim());
 const ONLY = process.env.MOOD_SPOTS?.split(',').filter(Boolean);
 
 type Spot = { name: string; target: [number, number]; standM: number; view: 'chase' | 'cockpit' | 'aerial' };

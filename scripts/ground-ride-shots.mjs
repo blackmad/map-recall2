@@ -4,7 +4,7 @@
 // artifacts/ground-ride/<label>/NN.png plus positions.json (lng/lat/bearing/speed per shot).
 import { chromium } from 'playwright';
 import fs from 'node:fs';
-const [label = 'ride', qs = '?ownGround=1&sharedFrame=1', secs = '40', every = '2.5'] = process.argv.slice(2);
+const [label = 'ride', qs = '?ownGround=1', secs = '40', every = '2.5'] = process.argv.slice(2);
 const out = `artifacts/ground-ride/${label}`;
 fs.mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });

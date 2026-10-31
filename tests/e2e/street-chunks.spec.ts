@@ -7,8 +7,7 @@ import { openRoute } from './helpers';
 //   PW_PORT=4403 npx playwright test street-chunks --project=desktop --project=iphone
 // Each mode (off = ?streetChunks=0, per-house models; on = ?streetChunks=1) screenshots the same free-camera views and
 // records what the layer holds: entries, meshes, triangles, requests, suppression, hover resolution, frame times.
-// SHARED_FRAME=1 repeats the run with ?sharedFrame=1 (one three.js frame for the page).
-const OUT = process.env.SHARED_FRAME ? 'artifacts/street-chunks/in-game-shared' : 'artifacts/street-chunks/in-game';
+const OUT = 'artifacts/street-chunks/in-game';
 const manifest = JSON.parse(readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8'));
 // The largest per-house chunk (build.ts, `chunk-bilder-*`): authored block faces (`chunk-face-*`) have their own spec, block-face.spec.ts.
 const chunk = manifest.chunks.filter((c: any) => c.id.startsWith('chunk-bilder-')).sort((a: any, b: any) => b.pands.length - a.pands.length)[0];
@@ -41,7 +40,7 @@ for (const mode of ['off', 'on'] as const) {
     mkdirSync(OUT, { recursive: true });
     const requests: string[] = [];
     page.on('request', r => { if (/\.glb/.test(r.url()) && /recipe-bilder|chunk-/.test(r.url())) requests.push(r.url().split('?')[0].split('/').pop()!); });
-    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: [mode === 'off' ? 'streetChunks=0' : 'streetChunks=1', process.env.SHARED_FRAME ? 'sharedFrame=1' : ''].filter(Boolean).map((q, i, a) => (i ? '&' : '?') + q).join('') });
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: mode === 'off' ? '?streetChunks=0' : '?streetChunks=1' });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     const at = ahead(ahead(chunk.instance.anchor, bearing, -12), outward, 9);
     await parkAt(page, at, ahead(at, bearing, 40));
@@ -108,7 +107,7 @@ for (const mode of ['off', 'on'] as const) {
     // Layer render cost: the custom layer's own render(), CPU submit time and with a GPU sync (gl.finish).
     const layerCost = await page.evaluate(async () => {
       const vm = (window as any).canalRecallGame.vectorMap, layer = vm._signatureLandmarks.layer, map = vm.map;
-      if (!layer || vm._signatureLandmarks.sharedFrame) return null; // ?sharedFrame=1: no own custom layer to time
+      if (!layer || vm._signatureLandmarks.sharedFrame) return null; // shared frame: no own custom layer to time
       const original = layer.render, submit: number[] = [], synced: number[] = [];
       layer.render = function (gl: WebGLRenderingContext, args: unknown) {
         const t0 = performance.now(); original.call(this, gl, args); const t1 = performance.now(); gl.finish(); const t2 = performance.now();

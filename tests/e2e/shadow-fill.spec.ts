@@ -30,8 +30,8 @@ import { SHADOW_FILL } from '../../src/canalRecall/rendererShared/lightRig';
 const OUT = process.env.SHADOW_OUT || 'artifacts/shadow-fill';
 const ALL_MODES = [
   // `cityLook=0` since the flip (#137): this row pins the legacy flat-colour path, which is now the opt-out.
-  { label: 'plain', query: '?sharedFrame=1&streetChunks=1&cityLook=0' },
-  { label: 'citylook', query: '?sharedFrame=1&streetChunks=1&cityLook=1' },
+  { label: 'plain', query: '?streetChunks=1&cityLook=0' },
+  { label: 'citylook', query: '?streetChunks=1&cityLook=1' },
 ];
 const MODES = ALL_MODES.filter(m => !process.env.SHADOW_MODES || process.env.SHADOW_MODES.split(',').includes(m.label));
 /** Sun shadow normal bias override (default: the rig's 0.25); the Palace sweep of the inward-normals lane ran 0.25 and 0.5. */

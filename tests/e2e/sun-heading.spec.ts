@@ -12,7 +12,7 @@
  * sunlit side flips from screen-left to screen-right as the rider turns.
  *
  *   PW_PORT=4450 npx playwright test sun-heading --project=desktop
- *   SUN_QUERIES=',?sharedFrame=1,?cityLook=1' picks the frames (default all three);
+ *   SUN_QUERIES=',?cityLook=1' picks the frames (default both);
  *   SUN_OUT=<dir> keeps the shots and sun-heading.json;
  *   LOOK_BUNDLES_DIR=<dir> serves freshly built *.bundle.js (as look-consistency).
  */
@@ -24,7 +24,7 @@ import { openRoute } from './helpers';
 import { DEFAULT_LIGHT_RIG } from '../../src/canalRecall/rendererShared/lightRig';
 
 const OUT = process.env.SUN_OUT || 'artifacts/sun-heading';
-const QUERIES = (process.env.SUN_QUERIES ?? ',?sharedFrame=1,?cityLook=1').split(',').map(s => s.trim());
+const QUERIES = (process.env.SUN_QUERIES ?? ',?cityLook=1').split(',').map(s => s.trim());
 /** Relative luma difference a world-fixed wall may show between its two headings (texture sampling, parallax). */
 const SAME_WALL_TOLERANCE = 0.1;
 
@@ -40,12 +40,23 @@ async function teleport(page: Page, p: { lng: number; lat: number; bearing: numb
   await page.evaluate(({ lng, lat, bearing }) => {
     const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number;
     const b = bearing * Math.PI / 180;
+    // Unpin from the previous teleport before moving.
+    for (const key of ['x', 'y', 'angle', 'speed', 'vx', 'vy']) {
+      if (Object.getOwnPropertyDescriptor(g.player, key)?.get) Object.defineProperty(g.player, key, { value: 0, writable: true, configurable: true, enumerable: true });
+    }
     g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
     g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
     g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b));
     Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
     g.player.handleInput = () => {};
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
+    // Pin the rider. Parked off the street, the road guard's shoulder pull moved the bike ~70 px in
+    // 1.5 s, so the grab and the bike-hidden grab 0.4 s later showed two different scenes and the
+    // background leaked into the bike mask. Pinned, both grabs see one rider pose.
+    const pose: Record<string, number> = { x: g.player.x, y: g.player.y, angle: g.player.angle, speed: 0, vx: 0, vy: 0 };
+    for (const [key, value] of Object.entries(pose)) {
+      Object.defineProperty(g.player, key, { configurable: true, enumerable: true, get: () => value, set: () => {} });
+    }
   }, p);
 }
 
@@ -154,6 +165,19 @@ async function facePoints(page: Page, faces: Face[]): Promise<{ face: number; pt
   }, { faces });
 }
 
+/** Where the rider, the camera and the bike on screen are right now (diagnostics in sun-heading.json). */
+async function poseNow(page: Page): Promise<any> {
+  return page.evaluate(() => {
+    const g = (window as any).canalRecallGame, c = g.camera, b = g.vectorMap._playerBike, map = g.vectorMap.map;
+    const at = b?.lngLat ? map.project(b.lngLat) : null;
+    const r = (v: number, d = 2) => +Number(v).toFixed(d);
+    return { player: { x: r(g.player.x), y: r(g.player.y), angle: r(g.player.angle, 4) },
+      camera: { x: r(c.x), y: r(c.y), zoom: r(c.zoom, 4), speedZoomScale: r(c.speedZoomScale ?? 1, 4), rotation: r(c.rotation, 4) },
+      map: { zoom: r(map.getZoom(), 4), bearing: r(map.getBearing(), 2), pitch: r(map.getPitch(), 2) },
+      bikeScreen: at ? [r(at.x, 1), r(at.y, 1)] : null };
+  });
+}
+
 const lumaOf = (r: number, g: number, b: number) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
 type Grab = { data: Buffer; width: number; height: number; ox: number; oy: number };
@@ -232,6 +256,7 @@ for (const query of QUERIES) {
         await settle(page);
         await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) { const c = (window as any).canalRecallGame.vectorMap.map.getCanvas(); if (e !== c && !e.contains(c)) (e as HTMLElement).style.visibility = 'hidden'; } });
         await page.waitForTimeout(800);
+        const poseAtImg = await poseNow(page);
         const img = await grab(page);
         await page.screenshot({ path: join(dir, `${spot.name}-h${Math.round(heading)}.png`) });
         const faces = await facePoints(page, building.faces);
@@ -251,14 +276,29 @@ for (const query of QUERIES) {
         const hidden = await page.evaluate(() => { const b = (window as any).canalRecallGame.vectorMap._playerBike; if (!b?._modelRoot || !b.lngLat) return null; const at = b.map.project(b.lngLat); b._modelRoot.visible = false; b.map.triggerRepaint(); return [at.x, at.y]; });
         if (hidden) {
           await page.waitForTimeout(400);
+          const poseAtBare = await poseNow(page);
           const bare = await grab(page);
           await page.evaluate(() => { const b = (window as any).canalRecallGame.vectorMap._playerBike; b._modelRoot.visible = true; b.map.triggerRepaint(); });
+          // Changed pixels in a window round the bike. A still frame re-rendered still flickers in single
+          // pixels (texture filtering); one stray pixel at the window's edge moved the bbox midpoint by
+          // tens of px and split the bike in the wrong place, so keep only pixels with >= 4 changed
+          // neighbours: the bike is a solid blob, the flicker is isolated.
+          const x0 = Math.max(0, Math.round(img.ox + hidden[0] - 90)), x1 = Math.min(img.width - 1, Math.round(img.ox + hidden[0] + 90));
+          const y0 = Math.max(0, Math.round(img.oy + hidden[1] - 120)), y1 = Math.min(img.height - 1, Math.round(img.oy + hidden[1] + 120));
+          const changed = (x: number, y: number) => {
+            if (x < x0 || x > x1 || y < y0 || y > y1) return false;
+            const k = (y * img.width + x) * 3;
+            return Math.abs(img.data[k] - bare.data[k]) + Math.abs(img.data[k + 1] - bare.data[k + 1]) + Math.abs(img.data[k + 2] - bare.data[k + 2]) > 24;
+          };
           let minX = Infinity, maxX = -Infinity;
           const px: [number, number, number][] = [];
-          for (let y = 0; y < img.height; y++) for (let x = 0; x < img.width; x++) {
+          for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
+            if (!changed(x, y)) continue;
+            let neighbours = 0;
+            for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if ((dx || dy) && changed(x + dx, y + dy)) neighbours++;
+            if (neighbours < 4) continue;
             const k = (y * img.width + x) * 3;
-            const d = Math.abs(img.data[k] - bare.data[k]) + Math.abs(img.data[k + 1] - bare.data[k + 1]) + Math.abs(img.data[k + 2] - bare.data[k + 2]);
-            if (d > 24 && Math.abs(x - img.ox - hidden[0]) < 90 && Math.abs(y - img.oy - hidden[1]) < 120) { px.push([x, y, lumaOf(img.data[k], img.data[k + 1], img.data[k + 2])]); minX = Math.min(minX, x); maxX = Math.max(maxX, x); }
+            px.push([x, y, lumaOf(img.data[k], img.data[k + 1], img.data[k + 2])]); minX = Math.min(minX, x); maxX = Math.max(maxX, x);
           }
           const mid = (minX + maxX) / 2;
           const left = px.filter(p => p[0] < mid), right = px.filter(p => p[0] >= mid);
@@ -270,7 +310,17 @@ for (const query of QUERIES) {
             const x = m[0] * p.x + m[4] * p.y + m[8] * p.z, y = -(m[1] * p.x + m[5] * p.y + m[9] * p.z);
             return Math.round(((Math.atan2(x, y) * 180 / Math.PI) + 360) % 360);
           });
-          bike.push({ heading, pixels: px.length, luma: mean(px), left: mean(left), right: mean(right), sunAzimuthDeg });
+          let minY = Infinity, maxY = -Infinity;
+          for (const p of px) { minY = Math.min(minY, p[1]); maxY = Math.max(maxY, p[1]); }
+          if (px.length) {
+            // The bike's crop as captured and the same window with the bike hidden, side by side.
+            const crop = { left: Math.max(0, Math.round(img.ox + hidden[0] - 90)), top: Math.max(0, Math.round(img.oy + hidden[1] - 120)), width: 180, height: 240 };
+            const raw = { raw: { width: img.width, height: img.height, channels: 3 as const } };
+            const a = await sharp(img.data, raw).extract(crop).png().toBuffer(), z = await sharp(bare.data, raw).extract(crop).png().toBuffer();
+            await sharp({ create: { width: 370, height: 240, channels: 3, background: '#ffffff' } }).composite([{ input: a, left: 0, top: 0 }, { input: z, left: 190, top: 0 }]).png().toFile(join(dir, `${spot.name}-bike-h${Math.round(heading)}.png`));
+          }
+          bike.push({ heading, pixels: px.length, luma: mean(px), left: mean(left), right: mean(right), sunAzimuthDeg,
+            hidden, mask: { minX, maxX, minY, maxY, mid }, poseAtImg, poseAtBare });
         }
       }
       // Pair each wall's two views.

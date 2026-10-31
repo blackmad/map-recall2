@@ -2,6 +2,110 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-10-31",
+      "title": "Railway tracks that read as rails",
+      "text": "Three of your reports from last night, all on the rail corridors east of Centraal: the ballast beds sank into the beige land, the sleeper texture lay along the map's east-west axis whatever way the track ran (that was the grey hatch), and in the station throat every yard track had its own bed a few centimetres lower, which drew dark ridges. Now each track shows two dark rails along its own direction on a grey-brown bed that stands clear of the ground, tracks closer than 7 m share one yard bed, and bridge tracks share one slab. Land drawn over a bed fell from 3–4 % of samples to under 0.6 % at all three spots; frame time is unchanged within noise. Still beige: the verge between track groups more than 7 m apart; platforms and catenary masts are not drawn yet.",
+      "where": [
+        4.9038,
+        52.3769
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-rail-look-oostertoegang-before.jpg",
+          "alt": "Oostertoegang station throat before: a grey hatched plane with dark ridges",
+          "caption": "Oostertoegang before: the throat as a hatch"
+        },
+        {
+          "src": "whats-new/2026-10-31-rail-look-oostertoegang-after.jpg",
+          "alt": "Oostertoegang after: tracks as pairs of dark rails on ballast",
+          "caption": "Oostertoegang after"
+        },
+        {
+          "src": "whats-new/2026-10-31-rail-look-piet-heinkade-east-before.jpg",
+          "alt": "Piet Heinkade corridor before: beds sunk into beige land",
+          "caption": "Piet Heinkade before: beds buried by the land"
+        },
+        {
+          "src": "whats-new/2026-10-31-rail-look-piet-heinkade-east-after.jpg",
+          "alt": "Piet Heinkade corridor after: beds stand clear with rails along the track",
+          "caption": "Piet Heinkade after"
+        },
+        {
+          "src": "whats-new/2026-10-31-rail-look-zeeburg-curve-before.jpg",
+          "alt": "Zeeburg curve before",
+          "caption": "Zeeburg curve before"
+        },
+        {
+          "src": "whats-new/2026-10-31-rail-look-zeeburg-curve-after.jpg",
+          "alt": "Zeeburg curve after",
+          "caption": "Zeeburg curve after"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Ferries get clear of the pier",
+      "text": "A ferry used to stop dead a few metres out when its bow touched a quay or it drove up onto the pier, with no way free: at Zamenhofstraat and Pontsteiger 16 m from the stop, and against the point by the Buiksloterweg landing from Centraal. The boat now leaves towards open water, never drives ashore at its own pier, and on any touch turns towards the water and keeps moving; backing off a bank is always allowed. On phones the Follow controls now cruise on the water instead of holding the boat at the pier.",
+      "where": [
+        4.9029,
+        52.3822
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-ferry-stuck-before.jpg",
+          "alt": "The Centraal ferry pressed against the tip of the Buiksloterweg point, stopped",
+          "caption": "Before: stopped dead against the point, 121 m from the landing"
+        },
+        {
+          "src": "whats-new/2026-10-31-ferry-clear-after.jpg",
+          "alt": "The same ferry well clear of the pier on open water",
+          "caption": "After: clear of the pier"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Buildings with a Wikipedia article open it",
+      "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
+      "where": [
+        4.94757,
+        52.37717
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-building-articles-before.jpg",
+          "alt": "The Venetiëhof ring on KNSM-eiland with a card that says only Built 1995",
+          "caption": "Before: the ring on KNSM-eiland said only \"Built 1995\""
+        },
+        {
+          "src": "whats-new/2026-10-31-building-articles-after.jpg",
+          "alt": "The same ring with a card titled Emerald Empire, its English lede, photo and Wikipedia link",
+          "caption": "After: Emerald Empire, with its article"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Steel lattice drawbridges and swing bridges",
+      "text": "The steel drawbridges with open lattice frames, such as the Oranjebrug, Westergasbrug, Peperbrug, Ezelsbrug and Aluminiumbrug, are drawn with lattice posts and beams in their own paint instead of a white timber frame, and the Westergasbrug and its neighbour have one portal, not two. Swing bridges are their own kind now: the Commandantsbrug and Oosterdoksdraaibrug turn on a pivot pier between fender piles under arched trusses, and the Buiksloterdraaibrug pivots at its bank.",
+      "where": [
+        4.8888,
+        52.3829
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-BRU0146.jpg",
+          "alt": "Oranjebrug: panorama, model and overlay of the steel lattice portal",
+          "caption": "Oranjebrug: photo | model | overlay"
+        },
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-BRU2361.jpg",
+          "alt": "Commandantsbrug: panorama, model and overlay of the swing bridge with arched truss",
+          "caption": "Commandantsbrug: photo | model | overlay"
+        }
+      ]
+    },
+    {
       "date": "2026-10-30",
       "title": "Steering that feels the same on every screen",
       "text": "The bike now drives the same on a 30 Hz laptop, a 60 Hz desktop and a 120 Hz phone: the physics steps in fixed 1/120 s substeps, so a corner taken at the same speed lands in the same place everywhere (within 5 cm; before, 30 Hz could be off by 2.6 m). Steering lock depends on speed, as on a real bicycle: full lock when you are almost stopped, a grip cap when you are quick, and the bike leans into turns. The camera follows the rider in the rider's own frame, so it no longer trails behind at speed or surges when a frame runs long, looks 16 px ahead along the street and pulls back 10 % as you speed up. Keyboard and touch steer are blended, and held keys release when the tab loses focus.",
