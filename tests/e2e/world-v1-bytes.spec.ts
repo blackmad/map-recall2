@@ -11,8 +11,8 @@ import { openRoute, setHiddenSelect } from './helpers';
 //     /tmp/canal-pw.sh perl -e 'alarm 1200; exec @ARGV' npx playwright test world-v1-bytes --project=desktop --workers=1 --trace off
 // WORLD_DIR serves cells at /data/extracts/amsterdam/world-v1/ (default: staging; pass the published directory
 // to measure what is live). BUNDLES_DIR serves *.bundle.js built from this checkout (a new cell format needs a
-// decoder that reads it). Rides: `seeded` is the seeded default route ridden with the throttle held for 90 s
-// (street-follow steers); `free` is Free Ride, the same 90 s; `tour` parks and settles at the world-compiler
+// decoder that reads it). Rides: `seeded` is the seeded default route replayed along routePath at 8 m/s for up to
+// 90 s; `free` is Free Ride, throttle held 90 s with a turn tapped whenever the rider stands at a junction; `tour` parks and settles at the world-compiler
 // sentinels in order (Westerkerk, Bloemgracht 80, Nassaukade, the Leidsegracht courtyard, IJburg's edge).
 // Variants: `world-main` is `?world=v1&worldWorker=0`: cells decode on the main thread, which the CPU throttle
 // reaches (Playwright cannot throttle a dedicated worker's target), so its decode ms are the 4x-CPU decode cost;
@@ -37,6 +37,8 @@ const pick = (env: string | undefined, all: string[]) => (env ?? '').split(',').
 const VARIANTS = ALL_VARIANTS.filter(v => (pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)).length ? pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)) : ['default', 'world']).includes(v.name));
 const RIDES = pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']).length ? pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']) : ['seeded', 'free'];
 const RIDE_MS = Number(process.env.WORLD_BYTES_RIDE_MS ?? 90_000);
+/** Seeded-ride replay speed, m/s (a brisk cyclist / town car). */
+const RIDE_SPEED = Number(process.env.WORLD_BYTES_RIDE_SPEED ?? 8);
 
 const sizeCache = new Map<string, { raw: number; sent: number }>();
 function bytesOf(file: string): { raw: number; sent: number } {
@@ -123,15 +125,45 @@ for (const ride of RIDES) for (const variant of VARIANTS) {
       await park(page, spot.at, spot.face); await page.waitForTimeout(3000);
       await park(page, spot.at, spot.face); await settle(page);
       steps[spot.name] = tally();
+    } else if (ride === 'seeded') {
+      // The seeded route, replayed at RIDE_SPEED along the game's own routePath (4 steps a second), so the streamer
+      // sees a rider's progress without the autopilot: a held throttle stops at the first T-junction.
+      const t0 = Date.now();
+      while (Date.now() - t0 < RIDE_MS) {
+        const step = await page.evaluate((m: number) => {
+          const g = (window as any).canalRecallGame, path = (g.routePath ?? []).map((q: any) => Array.isArray(q) ? q : [q.x, q.y]);
+          const ppm = (window as any).PIXELS_PER_METER || 1;
+          if (path.length < 2) return { done: true, moved: 0 };
+          g._rideAt ??= 0; let left = m * ppm, at = g._rideAt, moved = 0;
+          let x = g.player.x, y = g.player.y, angle = g.player.angle;
+          while (left > 0 && at < path.length - 1) {
+            const [ax, ay] = path[at], [bx, by] = path[at + 1], seg = Math.hypot(bx - ax, by - ay), from = Math.hypot(x - ax, y - ay);
+            const go = Math.min(left, Math.max(0, seg - from));
+            angle = Math.atan2(by - ay, bx - ax);
+            if (go <= 0 || seg === 0) { at++; x = bx; y = by; continue; }
+            x += Math.cos(angle) * go; y += Math.sin(angle) * go; left -= go; moved += go;
+            if (seg - from - go <= 1e-6) at++;
+          }
+          g._rideAt = at; g.player.x = x; g.player.y = y; g.player.angle = angle; g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
+          return { done: at >= path.length - 1, moved: moved / ppm };
+        }, RIDE_SPEED / 4);
+        metres += step.moved;
+        if (step.done) break;
+        await page.waitForTimeout(250);
+      }
+      await settle(page);
+      steps.ride = tally();
     } else {
-      // Hold the throttle; street-follow takes the turns. Distance is the player's path length.
+      // Free Ride: hold the throttle; when the rider stands still (a junction waiting for a choice), tap a turn,
+      // alternating right and left. Distance is the player's path length.
       await page.locator('#gameCanvas').focus();
-      const t0 = Date.now(); let last = await page.evaluate(() => { const p = (window as any).canalRecallGame.player; return [p.x, p.y]; });
+      const t0 = Date.now(); let last = await page.evaluate(() => { const p = (window as any).canalRecallGame.player; return [p.x, p.y]; }), turn = 0;
       await page.keyboard.down('ArrowUp');
       while (Date.now() - t0 < RIDE_MS) {
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(1500);
         const now = await page.evaluate(() => { const p = (window as any).canalRecallGame.player; return [p.x, p.y, (window as any).PIXELS_PER_METER]; });
-        metres += Math.hypot(now[0] - last[0], now[1] - last[1]) / (now[2] || 1); last = now;
+        const d = Math.hypot(now[0] - last[0], now[1] - last[1]) / (now[2] || 1); if (d < 60) metres += d; last = now; // a jump is a respawn, not riding
+        if (d < 2) { const key = turn++ % 2 ? 'ArrowLeft' : 'ArrowRight'; await page.keyboard.down(key); await page.waitForTimeout(400); await page.keyboard.up(key); }
       }
       await page.keyboard.up('ArrowUp');
       await settle(page);
