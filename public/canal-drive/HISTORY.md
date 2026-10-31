@@ -94,6 +94,17 @@ engine-own` desktop green except the programs line; `no-maplibre` +
 `start-heading` default 11 passed; lint, 37 engine/ownMap unit tests,
 `check:site-imports`.
 
+**Rail decks level, beds never under the land (2026-10-31).** The three player notes on build 04e3c88 ("train
+tracks buried by surface", "more bad train tracks", "ooof, these rails look really bad") were fixed twice in parallel:
+#145 shipped 6 m pieces and a per-station edge lift; lane `rail-look-20261031` measured main after #145 and found the
+far LOD still buried (Club Panama 9.2 %, Oostertoegang 9.7 %) and the Oostertoegang decks still stepping 2.72 m at
+slope 0.675, because each bridge way rode the smeared relief at its own two ends (AHN has no ground under a deck).
+`railProfile.ts` solves track levels on the 3×3 cells' graph: linked bridge ways form one deck between their
+approaches, no track below the land allowed at its kind's steepest grade (tunnel boxes keep their floor), lifted
+approaches stand on slabs; a chord floor raises any piece that dips under land sampled every 2 m. After: buried ≤
+0.02 % at all three RAIL_SPOTS, deck step 0.15 m / slope 0.059. Rail triangles +1.0 % (LOD 0), +4.7 % (LOD 1);
+rail build ~10 → 21 ms per cell. The pins' "live" checks rebuild rail-v1 as shipped (`railLegacy`), not main.
+
 **The road graph is flat arrays (CSR) behind the same API (2026-10-31, #136, L4 step 5).**
 `src/canalRecall/routing/roadGraph.ts` stores nodes and edges as `Int32Array`
 offsets, targets and edge→link indexes, `Float64Array` x, y and link
