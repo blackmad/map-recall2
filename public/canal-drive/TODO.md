@@ -1555,6 +1555,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   palette is about twice as light as measured walls. Next: measured colours
   for generic facades next to chunks (facade-colour pipeline). Whether shade
   sides go past 0.55 toward flat overcast light is the user's call.
+- **Bridges still bare after the bridge-roads lane** (2026-10-31, HISTORY "Roads across unregistered road
+  bridges"): 166 OSM highway bridge ways draw a land patch (paving under look B) where the road should be, all over
+  land: Westrandweg/Ringweg/Gooiseweg viaducts, Schiphol Vertrekpassage, Piet Heinkade, 11 De Ruijterkade busways,
+  Johan van Hasseltweg, cycle culvert 118576817 west of the Kinkerbrug. Needs a way deck over land or the h 1 BGT
+  polygons on the relief (which would paint roads under viaducts). Also: Beltbrug cycle/median bands stop at the
+  abutments (covered OSM cycleways emit no bands), thin pale seams at Beltbrug ends, water specks at skewed deck
+  corners (Nassauplein, Postjesweg), measured decks narrower than the survey (BRU0034, BRU0117, BRU0108).
+  Lists: `artifacts/bridge-roads/work/undecked-after.txt` in the lane worktree; `probe-undecked-bridges.ts`.
 - **Bridge follow-ups** (2026-10-17, HISTORY "Way decks: level over
   underpasses, chained ways, parapets at the road edges"): 22 of 1,200 street
   bridge ways still draw no surface. **PAUSED by the user (2026-10-17):**

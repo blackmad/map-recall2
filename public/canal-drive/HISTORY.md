@@ -106,6 +106,18 @@ next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
 desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
 `start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
 
+**Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
+Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
+classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
+(a 20 m land band under the bridge), no BRU outline or footprint covers it so the OSM bridge way crosses no water and
+gets no way deck, BGT's deck-level (h 1) carriageway is skipped off a deck, the way is in `coverWays` so no OSM bands
+draw, and look B paints the bare land as paving. Lane `bridge-roads-20261031`: `withOpenings` opens the water under
+OSM bridge ways no measured deck or footprint claims (side-by-side ways bundled, 0.5 m past the ends, never over a
+ground-level crossing street), the way-deck path then builds a real deck, re-centred on the BGT deck-level outline.
+Bare OSM highway bridge ways 205 → 166 (with the water cut at the bridge 19 → 1); +0.18 % triangles in 19 cells.
+Pinned: `BRIDGE_ROADS` (Kinkerbrug 743740428, Beltbrug 27316608) and ROAD_SPOTS kinkerbrug-postjesweg,
+beltbrug-jan-van-galenstraat; `probe-undecked-bridges.ts` for the city count.
+
 **World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
 `cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
 2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
@@ -892,7 +904,6 @@ BASCULES list grew, `build-bridge-hints.ts --write` changes only the
 named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
-
 
 **Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
 Reproduced on `main` by boarding at every IJ pier with the real controller
@@ -1812,7 +1823,6 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
-
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
@@ -15361,7 +15371,6 @@ first twelve already measured the camera model.
 ## 2026-09-13 — Roof-focused review and keyboard workflow
 
 
-
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
 upper source view with the candidate's upper roof/gable area, while Full façade
@@ -17938,7 +17947,6 @@ building. Searching in Dutch roughly doubles the hit rate, because nobody
 uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
-
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and
