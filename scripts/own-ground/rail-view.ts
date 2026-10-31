@@ -3,7 +3,7 @@
 // shader: no textures, no polygon offsets, no shadows. The ballast gets its sleepers back from the bed's UV (v along
 // the track), so the tracks read as tracks.
 //
-//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before]
+//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy]
 //
 // The camera stands `distM` behind the spot (against the bearing) and `heightM` up, looking at the spot.
 import sharp from 'sharp';
@@ -38,7 +38,7 @@ export function renderView(cells: readonly BuiltCell[], at: [number, number], v:
   const sun = [0.35, -0.45, 0.82]; const sl = Math.hypot(...sun); const S = sun.map(c => c / sl);
   for (const cell of cells) for (const [layer, m] of Object.entries(cell.layers) as [GroundLayer, BuiltCell['layers'][GroundLayer]][]) {
     if (!m) continue;
-    const base = C[layer] ?? [255, 0, 255], P = m.positions, I = m.indices, UV = (m as { uvs?: Float32Array | number[] }).uvs, ch = CUT_CHANNEL[layer];
+    const base = C[layer] ?? [255, 0, 255], CO = (m as { colors?: Float32Array | number[] }).colors, P = m.positions, I = m.indices, UV = (m as { uvs?: Float32Array | number[] }).uvs, ch = CUT_CHANNEL[layer];
     const cam = new Float32Array(P.length);
     for (let i = 0; i < P.length; i += 3) {
       const dx = P[i] - eye[0], dy = P[i + 1] - eye[1], dz = P[i + 2] - eye[2];
@@ -69,7 +69,8 @@ export function renderView(cells: readonly BuiltCell[], at: [number, number], v:
         const wx = (l0 * iza * P[a] + l1 * izb * P[bb] + l2 * izc * P[c]) * z, wy = (l0 * iza * P[a + 1] + l1 * izb * P[bb + 1] + l2 * izc * P[c + 1]) * z;
         if (ch !== undefined && cell.mask && maskChannelAt(cell.mask, wx, wy, ch) < 0.5) continue;
         zb[k] = z;
-        let col = base;
+        // Vertex-coloured layers (deckBody: slab, piers, girders, platforms) by the face's first vertex.
+        let col: readonly number[] = CO && layer === 'deckBody' ? [CO[I[t] * 3] * 255, CO[I[t] * 3 + 1] * 255, CO[I[t] * 3 + 2] * 255] : base;
         if (layer === 'ballast' && UV) {
           // Sleepers every 0.6 m on the top (u inside the shoulders' gravel column).
           const uu = (l0 * iza * UV[I[t] * 2] + l1 * izb * UV[I[t + 1] * 2] + l2 * izc * UV[I[t + 2] * 2]) * z;
@@ -92,7 +93,7 @@ async function main(): Promise<void> {
   const out = args[5] ?? `artifacts/rail-look/view-${lng}-${lat}.png`;
   const w = opt('w', 960), h = opt('h', 540), lod = process.argv.includes('--lod=1') ? 1 : 0;
   // --before: main's #145 beds without railProfile.ts (`railLevels: false`); --legacy: rail-v1 of build 04e3c88.
-  const { cells, x, y } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : {});
+  const { cells, x, y } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : {});
   const own = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
   void own;
   const img = renderView(cells, [x, y], { lng, lat, bearing, dist, height, w, h }, 2);

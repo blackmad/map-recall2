@@ -176,3 +176,14 @@ export function stationLevels(cells: readonly BuiltCell[], rails: readonly RailW
   }
   return { samples: zs.length, p10: +q(0.1).toFixed(2), median: +median.toFixed(2), platforms: tops };
 }
+
+/**
+ * Rail bridge structure (railBridge.ts, lane rail-look round 3: "rail decks have no piers, girders or parapets"): the
+ * cells around the spot draw at least `minPiers` piers and `minGirderM` metres of through girder over water and
+ * `minRailingM` of viaduct railing. Live: without railBridge.ts (`railBridges: false`, the round-2 build) none.
+ */
+export interface RailBridgeSpot { id: string; label: string; at: [number, number]; radiusM: number; minPiers: number; minGirderM: number; minRailingM: number }
+export const RAIL_BRIDGE_SPOTS: readonly RailBridgeSpot[] = [
+  { id: 'rail-bridge-oostertoegang', label: 'Oostertoegang: the rail bridges over the Piet Heinkade and the Oosterdok mouth', at: [4.9036, 52.3772], radiusM: 150, minPiers: 6, minGirderM: 150, minRailingM: 50 },
+  { id: 'rail-bridge-weesper', label: 'Amstel: the rail bridge over the Weespertrekvaart north of the station', at: [4.9155, 52.3495], radiusM: 120, minPiers: 2, minGirderM: 60, minRailingM: 0 },
+];

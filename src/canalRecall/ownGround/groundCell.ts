@@ -40,6 +40,7 @@ import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { AT_GRADE_HIGHWAYS, crossingTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay } from './railTracks.js';
 import { PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels } from './railProfile.js';
+import { streetHalfWidth, underTest } from './railBridge.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -138,6 +139,8 @@ export interface CellInput {
   railsAround?: readonly RailWay[];
   /** Railway platforms of the 3×3 above ground (railTracks.ts RailPlatform): the track beside them levelled, the platforms drawn. */
   railPlatforms?: readonly RailPlatform[];
+  /** Piers, girders and railings under and beside the rail decks (railBridge.ts; default on, off: the round-2 build, for measuring). */
+  railBridges?: boolean;
   /** railProfile.ts levels and the never-under-the-ground floor (default on; off: the #145 build, for measuring). */
   railLevels?: boolean;
   /** rail-v1 as it shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */
@@ -531,8 +534,11 @@ export function buildCell(input: CellInput): BuiltCell {
     // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
     const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
     const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], onLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured, (x, y) => surface.deckWeight(x, y) > 0.5, input.railPlatforms);
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
-    add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab);
+    // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
+    const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
+    const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
+    add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
     if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, onLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
     railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
