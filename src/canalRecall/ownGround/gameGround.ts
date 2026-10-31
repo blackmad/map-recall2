@@ -57,6 +57,7 @@ import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { fadeClone, groundProgram } from './groundMaterial.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
 
@@ -827,7 +828,7 @@ export class OwnGround {
   }
 
   /**
-   * Every ground program a cell can use (each layer's base, its water cut, and the dissolve of either),
+   * Every ground program a cell can use (each layer's base and its water cut; a dissolving clone shares these),
    * compiled once when the frame first draws, and held by keeper materials for the session. Before this,
    * each arriving cell compiled its dissolve programs in the frame it first drew, and released them when
    * its dissolve ended, so the next cell compiled them again: ~90 program links in the first seconds of a
@@ -857,7 +858,7 @@ export class OwnGround {
       if (!base) continue;
       const variants = [base];
       if (CUT[layer]) variants.push(this.cutMaterial(layer, uniforms));
-      for (const v of [...variants]) variants.push(this.fadeMaterial(v, { value: 1 }));
+      // No dissolve variants: a fading clone shares its source's program (groundMaterial.ts fadeClone).
       for (const m of variants) {
         const mesh = new THREE.Mesh(m.vertexColors ? coloured : plain, m);
         mesh.receiveShadow = true;
@@ -930,42 +931,24 @@ export class OwnGround {
   }
 
   /**
-   * Patch a base ground material for the overview blend (transition on; no-op otherwise): its alpha is the presence
+   * Patch a base ground material with the ground's shader edits (groundMaterial.ts): the dissolve always, and for the
+   * overview blend (transition on) its alpha is the presence
    * (`presenceOf(b)`, blended only while `setGroundTransparent`), and its output colour mixes from `flat` (the palette tone the basemap draws, sRGB; 'vertex' =
    * its own vertex colour) to the lit, textured ground by `b`.
    */
   private blendMaterial(m: any, flat: readonly number[] | string | 'vertex'): void {
-    if (!this.opts.transition) return;
-    const { blendUniform: blend, presenceUniform: presence } = this;
-    const vertex = flat === 'vertex';
-    const rgb = vertex ? [0, 0, 0] : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
-    const tone = { value: rgb };
-    m.onBeforeCompile = (shader: any) => {
-      shader.uniforms.ownBlend = blend;
-      shader.uniforms.ownPresence = presence;
-      shader.uniforms.ownFlat = tone;
-      const flatExpr = vertex ? 'pow(max(vColor.rgb, vec3(0.0)), vec3(1.0 / 2.2))' : 'ownFlat';
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;')
-        .replace('#include <dithering_fragment>', `#include <dithering_fragment>\nif (ownBlend < 1.0) gl_FragColor.rgb = mix(${flatExpr}, gl_FragColor.rgb, ownBlend);\ngl_FragColor.a = ownPresence;`);
-    };
-    m.customProgramCacheKey = () => `ownGround-blend3-${m.type}-${vertex ? 'vc' : 'flat'}`;
+    if (!this.opts.transition) { groundProgram(m, null); return; }
+    const rgb = flat === 'vertex' ? 'vertex' : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
+    groundProgram(m, { blend: this.blendUniform, presence: this.presenceUniform, flat: rgb });
   }
 
   /**
    * A per-cell clone of `source` that dissolves by `fade.value` (0 → 1): a screen-door dither discard, so no blending
-   * (no sorting against the map's own layers) and no change to the depth buffer. Chains the source's own shader edits.
+   * (no sorting against the map's own layers) and no change to the depth buffer. The dissolve is compiled into every
+   * ground program (groundMaterial.ts), so the clone shares the source's program and only swaps the uniform.
    */
   private fadeMaterial(source: any, fade: { value: number }): any {
-    const m = source.clone();
-    m.onBeforeCompile = (shader: any, renderer: any) => {
-      source.onBeforeCompile?.(shader, renderer);
-      shader.uniforms.ownFade = fade;
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownFade;')
-        .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (ownFade < 1.0 && fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) > ownFade) discard;');
-    };
-    const key = source.customProgramCacheKey ? source.customProgramCacheKey() : `base-${source.type}`;
-    m.customProgramCacheKey = () => `${key}-ownFade`;
-    return m;
+    return fadeClone(source, fade);
   }
 
   /** Advance the dissolve of arriving cells; nothing runs (and nothing repaints) when no cell is fading. */
