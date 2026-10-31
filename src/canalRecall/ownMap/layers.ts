@@ -9,6 +9,7 @@
 
 import * as THREE from 'three';
 import earcut from 'earcut';
+import { footprintArrays, type FootprintArrays, type FootprintFeature } from './footprints';
 import type { Vec2 } from './frame';
 import { fromLocal } from './frame';
 
@@ -160,42 +161,23 @@ export function rasterMaterial(texture: THREE.Texture, color: string, z: number)
 }
 
 // --- Footprints from the z14 building tiles, extruded --------------------------
+// Arrays come from footprints.ts (built in footprintWorker.ts on the page).
 
-export interface FootprintFeature { properties: { height?: number; minHeight?: number }; geometry: { type: string; coordinates: unknown } }
+export type { FootprintFeature } from './footprints';
 
-/** Extruded footprints with baked shading (tops light, walls by facing). `heightScale` 0 gives flat footprints. */
-export function footprintGeometry(features: readonly FootprintFeature[], toLocal: (lng: number, lat: number) => Vec2, top: string, wall: string): THREE.BufferGeometry {
-  const pos: number[] = [], col: number[] = [], idx: number[] = [];
-  const cTop = new THREE.Color(top), cWall = new THREE.Color(wall);
-  const sun = new THREE.Vector2(-0.6, 0.8).normalize();
-  for (const f of features) {
-    const g = f.geometry;
-    const polys = (g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : []) as number[][][][];
-    const h = Math.max(3, Number(f.properties.height) || 9);
-    for (const poly of polys) {
-      const flat: number[] = [], holes: number[] = [];
-      const rings = poly.map(r => r.map(([lng, lat]) => toLocal(lng, lat)));
-      rings.forEach((ring, i) => { if (i) holes.push(flat.length / 2); for (const [x, y] of ring) flat.push(x, y); });
-      let base = pos.length / 3;
-      for (let i = 0; i < flat.length; i += 2) { pos.push(flat[i], flat[i + 1], h); col.push(cTop.r, cTop.g, cTop.b); }
-      for (const t of earcut(flat, holes, 2)) idx.push(base + t);
-      for (const ring of rings) for (let i = 1; i < ring.length; i++) {
-        const [ax, ay] = ring[i - 1], [bx, by] = ring[i];
-        const len = Math.hypot(bx - ax, by - ay) || 1;
-        const shade = 0.72 + 0.22 * Math.max(0, ((by - ay) * sun.x - (bx - ax) * sun.y) / len);
-        base = pos.length / 3;
-        pos.push(ax, ay, 0, bx, by, 0, bx, by, h, ax, ay, h);
-        for (let k = 0; k < 4; k++) col.push(cWall.r * shade, cWall.g * shade, cWall.b * shade);
-        idx.push(base, base + 1, base + 2, base, base + 2, base + 3);
-      }
-    }
-  }
+/** A geometry from footprint arrays (worker output, or footprintArrays on the main thread). */
+export function footprintGeometryFromArrays(a: FootprintArrays): THREE.BufferGeometry {
   const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-  geo.setIndex(pos.length / 3 > 65535 ? new THREE.Uint32BufferAttribute(idx, 1) : new THREE.Uint16BufferAttribute(idx, 1));
+  geo.setAttribute('position', new THREE.BufferAttribute(a.position, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(a.color, 3));
+  geo.setIndex(new THREE.BufferAttribute(a.index, 1));
   geo.computeBoundingSphere();
   return geo;
+}
+
+/** Main-thread fallback (no worker). */
+export function footprintGeometry(features: readonly FootprintFeature[], toLocal: (lng: number, lat: number) => Vec2, top: string, wall: string): THREE.BufferGeometry {
+  return footprintGeometryFromArrays(footprintArrays(features, toLocal, top, wall));
 }
 
 /** z14 tile keys (x/y) covering a local box. */
