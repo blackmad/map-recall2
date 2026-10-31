@@ -42688,5 +42688,307 @@
         ]
       ]
     }
+  },
+  {
+    "id": "kalvertoren",
+    "name": "Kalvertoren (Kalverpassage)",
+    "modelUrl": "./models/kalvertoren.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012165086"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8914715,
+        52.3674545
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 130.4,
+      "widthMetres": 74.2
+    },
+    "surveyed": {
+      "anchor": [
+        4.8914715,
+        52.3674545
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Vertex average of the BAG 0363100012165086 footprint (RD); street front lines, the tower circle and the 3DBAG LoD2.2 shell in native east/south metres (scripts/landmarks/kalvertoren-prepare.ts). Storey lines, bays, gables, portals, colonnade and attic measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/kalvertoren-inventory.json)."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "heightMetres": 30.9,
+    "bagYear": 1997,
+    "materialOverrides": {
+      "brick": "#8f5a4a",
+      "white": "#ddd8cc",
+      "sandstone": "#8f8a83",
+      "stone": "#d6ccb6",
+      "greyBrick": "#a0968c",
+      "glass": "#5f6e72",
+      "canopyGlass": "#9ca198",
+      "frame": "#4a5a52",
+      "dark": "#3a4048",
+      "bronze": "#45474a",
+      "concrete": "#a19f97",
+      "red": "#9d6857",
+      "gold": "#c9a23a",
+      "pink": "#a8382f",
+      "slate": "#5d6168"
+    },
+    "attribution": {
+      "title": "Kalvertoren / Kalverpassage (Pi de Bruijn and George de Jong, 1995-97)",
+      "author": "Map Recall",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Kalverpassage",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Original texture-free flat-colour geometry: hand-modelled Singel, Kalverstraat and Heiligeweg fronts, roof colonnade, glazed attic and glass tower from rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only) and Wikipedia nl:Kalverpassage (CC BY-SA 4.0); the courtyard and rear are the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8921521,
+            52.3676073
+          ],
+          [
+            4.8920286,
+            52.3675462
+          ],
+          [
+            4.8919793,
+            52.3675808
+          ],
+          [
+            4.8919318,
+            52.3675582
+          ],
+          [
+            4.8918082,
+            52.3676479
+          ],
+          [
+            4.891879,
+            52.3676794
+          ],
+          [
+            4.8918723,
+            52.3676851
+          ],
+          [
+            4.8919592,
+            52.3677238
+          ],
+          [
+            4.8919155,
+            52.3677499
+          ],
+          [
+            4.8918969,
+            52.3677615
+          ],
+          [
+            4.8918538,
+            52.3677881
+          ],
+          [
+            4.8917057,
+            52.3677223
+          ],
+          [
+            4.8916137,
+            52.3677891
+          ],
+          [
+            4.8915494,
+            52.3677559
+          ],
+          [
+            4.8914812,
+            52.3678055
+          ],
+          [
+            4.8912858,
+            52.367725
+          ],
+          [
+            4.8912949,
+            52.3677153
+          ],
+          [
+            4.8911604,
+            52.367668
+          ],
+          [
+            4.8910822,
+            52.3677512
+          ],
+          [
+            4.8910247,
+            52.3677305
+          ],
+          [
+            4.8910777,
+            52.3676739
+          ],
+          [
+            4.8910151,
+            52.3676513
+          ],
+          [
+            4.8910261,
+            52.3676396
+          ],
+          [
+            4.8909657,
+            52.3676177
+          ],
+          [
+            4.8910084,
+            52.3675736
+          ],
+          [
+            4.8909359,
+            52.3675473
+          ],
+          [
+            4.8909698,
+            52.3675126
+          ],
+          [
+            4.8908243,
+            52.3674582
+          ],
+          [
+            4.8908097,
+            52.3674731
+          ],
+          [
+            4.8907506,
+            52.3674523
+          ],
+          [
+            4.8907331,
+            52.367471
+          ],
+          [
+            4.8906507,
+            52.367442
+          ],
+          [
+            4.8906581,
+            52.3674342
+          ],
+          [
+            4.890604,
+            52.3674152
+          ],
+          [
+            4.8907127,
+            52.3672996
+          ],
+          [
+            4.8907025,
+            52.3672692
+          ],
+          [
+            4.8907032,
+            52.3672683
+          ],
+          [
+            4.8909183,
+            52.3672403
+          ],
+          [
+            4.8909186,
+            52.3672413
+          ],
+          [
+            4.8914022,
+            52.36718
+          ],
+          [
+            4.8914029,
+            52.3671822
+          ],
+          [
+            4.8914323,
+            52.3671773
+          ],
+          [
+            4.8916815,
+            52.3671485
+          ],
+          [
+            4.8917114,
+            52.3671467
+          ],
+          [
+            4.8917118,
+            52.3671496
+          ],
+          [
+            4.891744,
+            52.3671477
+          ],
+          [
+            4.8917436,
+            52.3671447
+          ],
+          [
+            4.8917642,
+            52.3671435
+          ],
+          [
+            4.8917719,
+            52.367145
+          ],
+          [
+            4.8917893,
+            52.3671437
+          ],
+          [
+            4.8917963,
+            52.3671416
+          ],
+          [
+            4.8918183,
+            52.3671402
+          ],
+          [
+            4.891821,
+            52.3671407
+          ],
+          [
+            4.8919071,
+            52.3671888
+          ],
+          [
+            4.8921684,
+            52.3673273
+          ],
+          [
+            4.8922372,
+            52.3672742
+          ],
+          [
+            4.8925183,
+            52.3673917
+          ],
+          [
+            4.8925135,
+            52.3673935
+          ],
+          [
+            4.8924263,
+            52.367435
+          ],
+          [
+            4.8921521,
+            52.3676073
+          ]
+        ]
+      ]
+    }
   }
 ]

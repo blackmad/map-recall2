@@ -2250,6 +2250,79 @@ ${register}` : article.e,
     };
   }
 
+  // src/canalRecall/streetArt.ts
+  var STREET_ART_CLICK_METRES = 14;
+  var metresBetween = (aLng, aLat, bLng, bLat) => {
+    const kx = 111320 * Math.cos(aLat * Math.PI / 180);
+    return Math.hypot((aLng - bLng) * kx, (aLat - bLat) * 110540);
+  };
+  var cellOf = (lng, lat) => `${Math.floor(lng * 2e3)}:${Math.floor(lat * 4e3)}`;
+  var StreetArtIndex = class {
+    cells = /* @__PURE__ */ new Map();
+    size;
+    constructor(file) {
+      let n = 0;
+      for (const point of file?.points ?? []) {
+        if (!point || typeof point.name !== "string" || !Number.isFinite(point.lng) || !Number.isFinite(point.lat)) continue;
+        const key = cellOf(point.lng, point.lat);
+        (this.cells.get(key) ?? this.cells.set(key, []).get(key)).push(point);
+        n++;
+      }
+      this.size = n;
+    }
+    nearest(lng, lat, radiusMetres = STREET_ART_CLICK_METRES) {
+      const cx = Math.floor(lng * 2e3), cy = Math.floor(lat * 4e3);
+      let best = null, bestD = radiusMetres;
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+        for (const point of this.cells.get(`${cx + dx}:${cy + dy}`) ?? []) {
+          const d = metresBetween(lng, lat, point.lng, point.lat);
+          if (d < bestD || d === bestD && best && !best.e && point.e) {
+            best = point;
+            bestD = d;
+          }
+        }
+      }
+      return best;
+    }
+  };
+  var osmUrl2 = (id) => /^n\d+$/.test(id) ? `https://www.openstreetmap.org/node/${id.slice(1)}` : /^w\d+$/.test(id) ? `https://www.openstreetmap.org/way/${id.slice(1)}` : "";
+  var KIND_LABEL = {
+    sculpture: "A sculpture",
+    statue: "A statue",
+    mural: "A mural",
+    memorial: "A memorial",
+    fountain: "A fountain",
+    monument: "A monument",
+    relief: "A relief",
+    installation: "An art installation",
+    artwork: "An artwork"
+  };
+  function streetArtFallbackDetail(point) {
+    const by = point.a ? ` by ${point.a}` : "";
+    const year = point.y ? ` (${point.y})` : "";
+    return `${KIND_LABEL[point.k] ?? "An artwork"}${by}${year}, mapped here.`;
+  }
+  function streetArtCard(point, titleSpoils = false) {
+    const detail = point.e || streetArtFallbackDetail(point);
+    const register = point.e && (point.a || point.y) ? streetArtFallbackDetail(point) : "";
+    return {
+      id: `street-art-${point.id}`,
+      name: titleSpoils ? KIND_LABEL[point.k] ?? "An artwork" : point.name,
+      type: point.k,
+      detail,
+      longDetail: register ? `${detail}
+
+${register}` : detail,
+      ...point.u ? { wikipediaUrl: point.u } : {},
+      ...osmUrl2(point.id) ? { sourceUrl: osmUrl2(point.id) } : {},
+      imageUrl: point.i ?? "",
+      extractLang: point.l ?? "en",
+      ...point.q ? { wikidata: point.q } : {},
+      lngLat: [point.lng, point.lat],
+      featureTarget: null
+    };
+  }
+
   // src/canalRecall/landmarks/surveyedLandmarks.json
   var surveyedLandmarks_default = [
     {
@@ -5754,6 +5827,10 @@ ${register}` : article.e,
         if (building) nearest = this._cardForClickedBuilding(building);
       }
       if (!nearest || !isWorthACard(nearest)) {
+        const art = this._streetArtAt(clientX - rect.left, clientY - rect.top, rect);
+        if (art) nearest = art;
+      }
+      if (!nearest || !isWorthACard(nearest)) {
         this.vectorMap.setActiveLandmark(null);
         this._landmarkNotice = null;
         this._lastDriveByAt = this.raceTime;
@@ -5821,12 +5898,27 @@ ${register}` : article.e,
       this._landmarkCardBounds = null;
       this._landmarkCloseBounds = null;
     }
+    /** The piece of street art under a ground click, as a card; null when none is near. */
+    _streetArtAt(cssX, cssY, rect) {
+      const index = this._streetArt;
+      const loader = this.osmLoader;
+      if (!index?.size || loader._lastCenterLat == null || loader._lastCenterLng == null) return null;
+      const world = this.vectorMap.screenToWorld?.(cssX, cssY, rect, loader);
+      if (!world) return null;
+      const centerLat = loader._lastCenterLat, centerLng = loader._lastCenterLng;
+      const lng = (world.x - loader._lastOffsetX) / (111320 * Math.cos(centerLat * Math.PI / 180) * PIXELS_PER_METER) + centerLng;
+      const lat = centerLat - (world.y - loader._lastOffsetY) / (111320 * PIXELS_PER_METER);
+      const point = index.nearest(lng, lat);
+      if (!point) return null;
+      const spoils = this.vectorMap._spoils;
+      return streetArtCard(point, !!spoils?.call(this.vectorMap, point.name));
+    }
     /** Exact researched owner first, then mapped places inside the actual plan. */
     _cardForClickedBuilding(building) {
       const buildingName = building.name || "";
       const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
       if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
-      const article = this._buildingFacts?.article(building.id) ?? null;
+      const article = typeof this._buildingFacts?.article === "function" ? this._buildingFacts.article(building.id) ?? null : null;
       const spoils = this.vectorMap._spoils;
       const mapped = this._clickPoiInfo?.card(building);
       if (mapped) {
@@ -5969,6 +6061,7 @@ ${register}` : article.e,
         const url = (name) => new URL(`${city.extractPath}/${name}`, base);
         const factBase = new URL(`${city.extractPath}/`, base).href;
         this._clickPoiInfo = null;
+        this._streetArt = null;
         if (this._buildingFacts) this._buildingFacts.setBase(factBase);
         else this._buildingFacts = new BuildingFactStore(factBase);
         const [
@@ -6015,10 +6108,12 @@ ${register}` : article.e,
           deferredJson("facts.json"),
           deferredJson("branded-pois.json"),
           deferredJson("landmark-buildings.json"),
-          deferredJson("click-poi-info.json")
-        ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo]) => {
+          deferredJson("click-poi-info.json"),
+          deferredJson("street-art.json")
+        ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo, streetArt]) => {
           if (this.streetKnowledge !== knowledge) return;
           this._clickPoiInfo = new ClickPoiIndex(clickPoiInfo);
+          this._streetArt = new StreetArtIndex(streetArt);
           if (factsFile) this._facts = buildFactIndex(factsFile);
           if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
             this.streetKnowledge = buildRouteKnowledgeIndex(

@@ -18,7 +18,9 @@ export const RADIAL = ['BRU0042', 'BRU0051', 'BRU0106', 'BRU0022', 'BRU0024', 'B
 /** Named bascules (user screenshots 2026-10-14): the Magere Brug, the Haarlemmerpoort pair (Willemsbrug, Bullebak), the Zoutkeetsgracht bridge; the Mariniersbrug (2026-10-30). */
 export const BASCULES = ['BRU0242', 'BRU0151', 'BRU0149', 'BRU0345', 'BRU0272',
   // Swing bridges and steel lattice portals (lane bridge-kit, 2026-10-30).
-  'BRU2205', 'BRU2361', 'BRU2270', 'BRU0146', 'BRU0148', 'BRU0193', 'BRU0281', 'BRU1904', 'BRU0222'];
+  'BRU2205', 'BRU2361', 'BRU2270', 'BRU0146', 'BRU0148', 'BRU0193', 'BRU0281', 'BRU1904', 'BRU0222',
+  // Round 2 (2026-10-31): the Berlagebrug's tower, the plain timber lift footbridges.
+  'BRU0423', 'BRU0379', 'BRU0380', 'BRU0483', 'BRU0850'];
 export const NAMED: readonly string[] = [...new Set([...SEVEN_BRIDGES, ...LANDMARKS, ...AMSTEL, ...RADIAL, ...BASCULES])];
 
 if (import.meta.url === `file://${process.argv[1]}`) {
