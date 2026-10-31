@@ -12,7 +12,7 @@ import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAN
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
-import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from './residency';
+import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from '../engine/worldStreamer.js';
 import { splitIntoTiles } from './cellTiles';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_LOOK_DEFAULT, groundPalette } from './groundLook';

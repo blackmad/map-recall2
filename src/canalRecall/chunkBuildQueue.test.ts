@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {ChunkBuildQueue} from './chunkBuildQueue.js';
+import {ChunkBuildQueue} from './engine/worldStreamer.js';
 
 test('tile bursts retain only the latest inputs and keep other chunks in order',()=>{
  const queue=new ChunkBuildQueue(),drawn:string[]=[];

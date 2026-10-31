@@ -19,6 +19,30 @@
   0423, 0483, 0850.
 - Every other bridge hashes identical over 568 frames.
 
+**One worker pool; the world path's heap measured with a GC (2026-10-31, #136, L4).**
+The 977 / 1,019 MB "heap at ride end" of step 4 were readings without a
+garbage collection. `scripts/heap-sample.mjs` forces a GC over CDP in the
+page and in every worker, then reads the main heap, ArrayBuffer storage and
+each worker; `motion-stutter.mjs` samples at ride start (first four tiles
+resident, before motion) and at ride end, `HEAP_OWNERS=1` attributes the live
+heap to the allocating code. Desktop, 1×: default 330 MB main / 153 buffers /
+95 workers at ride start and 366 / 258 at ride end; world (36 cells) 303 /
+89 / 160 and 345 / 215. The ≤ 500 MB ride-start gate is met on the world
+path (392 MB with buffers), and the world path sits below default at ride
+end. Fewer resident cells (24/18/12) only shrink the worker heap (−22 MB at
+12), so 36 stays. The road stack owns ~125 MB of main heap at ride start, the
+road graph alone 54 MB (35 MB of node/edge objects): step 5's CSR target.
+`src/canalRecall/engine/workerPool.ts` is now the one pool (min(cores−1, 3))
+for cell reads, building chunk builds (up to 3 at once, `?chunkBuilds=N`) and
+the own ground's relief-tile decodes; the second own-ground worker is gone,
+and `chunkBuildQueue.ts`, `ownGround/residency.ts` and
+`rendererShared/residency.ts` moved into `engine/worldStreamer.ts`. The main
+own-ground cell build keeps its own worker: its store would load three times
+in the pool and its 250–800 ms builds would block cell reads. Workers: world
+path 7 → 5, default 4 → 5 (idle pool workers start at ~10 MB each). A/B at
+five spots: 0 tiles with different features; relief through the pool sets
+10,278 buildings on the ground with the same height range as before.
+
 **Three reds on main were checks that fell behind the game (2026-10-31, #144).**
 None was a player-visible regression. `bike-xray.spec.ts` broke at 3342e6b3c
 (own ground on by default, 2026-10-14): in the shared frame the bike draws
