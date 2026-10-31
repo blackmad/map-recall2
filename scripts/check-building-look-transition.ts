@@ -23,11 +23,14 @@ class WorkerStub {
     this.onmessage({ data: { key: message.key, gen: message.gen, appearanceRevision: message.appearanceRevision, surveyedEnvelopeRevision: message.surveyedEnvelopeRevision, hostOpeningRevision: message.hostOpeningRevision, boundParentIds: [], chunk, ms: 1 } });
   }
 }
-const THREE = { Camera: class {}, Scene, WebGLRenderer: class {}, RawShaderMaterial: Material, Matrix4: Matrix, Vector3: class { constructor(..._xyz: number[]) {} }, Sphere: class { constructor(public center: any, public radius: number) {} }, BufferGeometry: Geometry, BufferAttribute: Attribute, Mesh: class { constructor(public geometry: any, public material: any) {} } };
+const THREE = { Camera: class {}, Scene, WebGLRenderer: class {}, RawShaderMaterial: Material, Matrix4: Matrix, Vector3: class { constructor(..._xyz: number[]) {} }, Vector4: class { constructor(..._xyzw: number[]) {} }, Matrix3: class {}, ShaderMaterial: Material, FrontSide: 0, Sphere: class { constructor(public center: any, public radius: number) {} }, BufferGeometry: Geometry, BufferAttribute: Attribute, Mesh: class { constructor(public geometry: any, public material: any) {} } };
 (globalThis as any).window = { CanalRecallThree: { THREE } };
 (globalThis as any).document = { currentScript: { src: 'https://test.local/three-buildings.bundle.js' } };
 (globalThis as any).Worker = WorkerStub;
 const { ThreeBuildings } = await import('../src/canalRecall/threeBuildingsBrowser.ts');
+// The stub document only supplies the bundle URL at import. Without it, the city look (default since #137) takes its
+// node path: materials and uniforms, no brick photo or atlas painting.
+delete (globalThis as any).document;
 const deferred = () => { let resolve!: (value: any) => void; const promise = new Promise(r => resolve = r); return { promise, resolve }; };
 const textures = (name: string) => ({ colour: { name, userData: { bytes: 1 } }, mask: { name, userData: { bytes: 1 } } });
 const map = { getCanvas: () => ({ addEventListener() {} }), triggerRepaint() {}, getZoom: () => 18 };
