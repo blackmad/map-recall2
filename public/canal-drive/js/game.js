@@ -245,7 +245,14 @@ class Game {
       this.canvas.style.cursor = hovering ? 'pointer' : 'default';
     });
 
-    requestAnimationFrame(t => this._loop(t));
+    // Engine programme (2026-10-31, #129): under `?engine=own` the frame host owns
+    // requestAnimationFrame and the fixed-step accumulator; the game hands it
+    // its per-frame body (`_frame`). Default MapLibre path keeps its own rAF.
+    if (this.vectorMap && typeof this.vectorMap.setLoop === 'function') {
+      this.vectorMap.setLoop({ frame: dt => this._frame(dt) });
+    } else {
+      requestAnimationFrame(t => this._loop(t));
+    }
     this._checkShareLink();
   }
 
@@ -342,8 +349,14 @@ class Game {
   }
 
   _loop(timestamp) {
-    let dt = (timestamp - this.lastTime) / 1000;
+    const dt = (timestamp - this.lastTime) / 1000;
     this.lastTime = timestamp;
+    try { this._frame(dt); } finally { requestAnimationFrame(t => this._loop(t)); }
+  }
+
+  /** One game frame of `rawDt` seconds: caches, update, render, input clear. Called by `_loop` (MapLibre) or the frame host (`?engine=own`). */
+  _frame(rawDt) {
+    let dt = rawDt;
     this._cameraDt = dt > 0 ? dt : 1 / 60;
     dt = Math.min(dt, 0.05);
     if (dt <= 0) dt = 1/60;
@@ -363,7 +376,6 @@ class Game {
       this._reportFrameError(error);
     } finally {
       this.input.clear();
-      requestAnimationFrame(t => this._loop(t));
     }
   }
 
