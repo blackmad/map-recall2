@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 // Pier-edge geometry runs under `npm run test:ferry` through this import.
 import './pierEdge.test';
 import type { FerryLink, Segment, Terminal } from './network';
-import { afterFerryMove, beginFerryFrame, boardingTerminal, edgeBoarding, FERRY_SIZE, type FerryGame, type FerryPlayer } from './travel';
+import { afterFerryMove, beginFerryFrame, boardingTerminal, edgeBoarding, FERRY_SIZE, ferryMotionTrack, LAUNCH_REACH, LAUNCH_SWEEP, openWaterHeading, type FerryGame, type FerryPlayer } from './travel';
 
 // Synthetic IJ: land south of y = -5 and north of y = -595; two piers, plus an
 // unrelated third pier on the north bank. Pier A's stop sits on the quay edge
@@ -156,7 +156,8 @@ assert.deepEqual([back.player.x, back.player.y], [A.land.x, A.land.y]);
   p.angle = -Math.PI / 2; p.x = 200; p.y = -595 + p.length / 2 - 3; p.speed = 100;
   assert.ok(water(p.x, p.y), 'centre afloat');
   assert.equal(afterFerryMove(shore, { x: 200, y: p.y + 6 }, water), 'blocked', 'bow on the bank');
-  assert.equal(p.speed, 0);
+  assert.deepEqual([p.x, p.y], [200, -595 + p.length / 2 + 3], 'the move is undone');
+  assert.ok(p.speed > 0 && p.speed < 100, 'slowed, not stopped');
   // Sailing east 5 px off the north bank (y = -595): the port bow corner,
   // 4 m to the north, is on land while the bow centre is afloat.
   const glance = aboard();
@@ -212,6 +213,96 @@ assert.deepEqual([back.player.x, back.player.y], [A.land.x, A.land.y]);
   probes = 0;
   assert.equal(edgeBoarding(at({ x: 1200, y: 3 }).player, at({}).track, wet), null);
   assert.equal(probes, 0, 'no water probes away from a pier');
+}
+
+// 2026-10-31: ferries dead-stopped 16 m out (Zamenhofstraat, Pontsteiger)
+// and against the Buiksloterweg point, with no way free.
+{
+  // The launch heads for open water: a 55 px basin with the IJ to the east.
+  const basin = (x: number, y: number) => (y < -5 && y > -60) || (x > 20 && y < -5 && y > -595);
+  const straight = -Math.PI / 2;
+  const out = openWaterHeading({ x: 0, y: -6 }, straight, basin);
+  assert.ok(Math.abs(out - straight) > 0.5 && Math.abs(out - straight) <= LAUNCH_SWEEP + 1e-9, `swings towards the open side (${out.toFixed(2)})`);
+  assert.ok(basin(Math.cos(out) * LAUNCH_REACH, -6 + Math.sin(out) * LAUNCH_REACH), 'open water for 80 m along it');
+  assert.equal(openWaterHeading({ x: 0, y: -6 }, straight, water), straight, 'ties keep the boarding heading');
+  const inlet = game({ x: 0, y: 2 });
+  assert.equal(beginFerryFrame(inlet, basin), true);
+  assert.ok(Math.abs(inlet.player.angle - straight) > 0.5, 'boards facing the open side');
+  assert.ok(basin(inlet.player.x, inlet.player.y), 'afloat');
+
+  // Under the pier exemption the quay is passable, but the centre never goes
+  // ashore from the water (Pontsteiger: the hull drove 16 m onto the quay).
+  const launch = game({ x: 0, y: 2 });
+  beginFerryFrame(launch, water);
+  assert.deepEqual(launch.player.ferryUnarmed, ['A']);
+  launch.player.angle = Math.PI / 2; launch.player.x = 0; launch.player.y = -2;
+  assert.equal(afterFerryMove(launch, { x: 0, y: -8 }, water), 'blocked', 'centre onto the quay at the pier');
+  assert.deepEqual([launch.player.x, launch.player.y], [0, -8]);
+  launch.player.angle = -Math.PI / 2; launch.player.x = 0; launch.player.y = -20;
+  assert.equal(afterFerryMove(launch, { x: 0, y: -8 }, water), 'sailing', 'out again');
+
+  // A head-on touch with water to one side turns that way and keeps way on
+  // (the Centraal west boat against the Buiksloterweg point).
+  const point = (x: number, y: number) => y < -5 && (y > -595 || x > 300);
+  const pressed = aboard();
+  const r = pressed.player;
+  r.angle = -Math.PI / 2; r.x = 250; r.y = -595 + r.length / 2 - 3; r.speed = 100;
+  assert.equal(afterFerryMove(pressed, { x: 250, y: r.y + 6 }, point), 'blocked');
+  assert.ok(r.angle > -Math.PI / 2, 'turns to starboard, where the water is');
+  assert.ok(r.speed > 0, 'keeps way on');
+  // Head-on against a flat bank (water on both sides alike): turns all the
+  // same, to starboard, rather than holding the vessel still.
+  const flat = aboard();
+  const f = flat.player;
+  f.angle = -Math.PI / 2; f.x = 200; f.y = -595 + f.length / 2 - 3; f.speed = 100;
+  assert.equal(afterFerryMove(flat, { x: 200, y: f.y + 6 }, water), 'blocked');
+  assert.ok(f.angle > -Math.PI / 2 && f.speed > 0, 'turns and keeps way on');
+  // A line of water skimming along a quay is no launch heading: the whole
+  // hull must fit beyond the lead (the first cut launched a Centraal boat
+  // along its quay into the next pier). Straight out across a 55 px band
+  // (48 px of hull-wide water) beats along the quay (24 px).
+  const band = (_x: number, y: number) => y < -5 && y > -60;
+  const across = openWaterHeading({ x: 0, y: -6 }, straight, band);
+  assert.ok(Math.abs(Math.sin(across)) > 0.5, `at least 30° off the quay line (${across.toFixed(2)})`);
+  assert.ok(band(Math.cos(across) * 48, -6 + Math.sin(across) * 48), 'a hull length of water ahead');
+  // A stop over the water with its access pointing into the pontoon: the
+  // open water 100° round is found (the sweep is wide).
+  const pontoon = (x: number, y: number) => y < -5 && !(x < -12 && x > -40 && y > -80);
+  const west = Math.PI;
+  const round = openWaterHeading({ x: 0, y: -12 }, west, pontoon);
+  assert.ok(Math.abs(Math.atan2(Math.sin(round - west), Math.cos(round - west))) > 1.2, `swings well round from the pontoon (${round.toFixed(2)})`);
+  assert.ok(pontoon(Math.cos(round) * LAUNCH_REACH, -12 + Math.sin(round) * LAUNCH_REACH), 'open water for 80 m along it');
+  // While a touch lasts the turn keeps its side, even when the corners'
+  // verdict flips frame to frame.
+  const rocking = aboard();
+  const k = rocking.player;
+  k.angle = -Math.PI / 2; k.x = 250; k.y = -595 + k.length / 2 - 3; k.speed = 100;
+  assert.equal(afterFerryMove(rocking, { x: 250, y: k.y + 6 }, point), 'blocked');
+  assert.equal(k.ferryTurn, 1);
+  const mirror = (x: number, y: number) => y < -5 && (y > -595 || x < 200);
+  const before = k.angle; k.x = 250; k.y = -595 + k.length / 2 - 3;
+  assert.equal(afterFerryMove(rocking, { x: 250, y: k.y + 6 }, mirror), 'blocked');
+  assert.ok(k.angle > before, 'still turning to starboard');
+  k.x = 250; k.y = -300;
+  assert.equal(afterFerryMove(rocking, { x: 250, y: -294 }, water), 'sailing');
+  assert.equal(k.ferryTurn, undefined, 'free again');
+
+  // Getting free: a move that puts more of the hull on water goes through
+  // even though the hull still touches; the move back ashore does not.
+  const corner = (x: number, y: number) => x > 0 && y < -5 && y > -595;
+  const freeing = aboard();
+  const q = freeing.player;
+  q.angle = -Math.PI / 2; q.x = -6; q.y = -300; q.speed = 40;
+  assert.equal(afterFerryMove(freeing, { x: -12, y: -300 }, corner), 'sailing', 'a corner finds water: allowed');
+  assert.deepEqual([q.x, q.y], [-6, -300]);
+  q.x = -12;
+  assert.equal(afterFerryMove(freeing, { x: -6, y: -300 }, corner), 'blocked', 'back onto the land: not');
+  assert.deepEqual([q.x, q.y], [-6, -300]);
+
+  // Street following sees no street on the water.
+  const motion = ferryMotionTrack({ ...game({}).track, getRoadContacts: (_x: number, _y: number) => [{ dist: 0 }] });
+  assert.deepEqual(motion.getRoadContacts!(0, 0), []);
+  assert.equal(motion.getNearestRoad(0, 0, null), null);
 }
 
 console.log('Ferry boarding, water steering and docking passed');

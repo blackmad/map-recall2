@@ -6,6 +6,49 @@ named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
 
+
+**Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
+Reproduced on `main` by boarding at every IJ pier with the real controller
+(`tests/e2e/ferry-launch.spec.ts`): the vessel dead-stopped 16 m out at
+Zamenhofstraat (bow into the inlet's opposite quay) and at Pontsteiger (hull
+driven onto the quay, centre ashore), and against the tip of the Buiksloterweg
+point from the Centraal west stop. One mechanism: a non-grazing land touch set
+the speed to zero and undid the move, and no later move was allowed that still
+touched, so forward-only riders (every phone) and keyboard riders alike had no
+way free. Four changes in `src/canalRecall/ferry/travel.ts`:
+- `openWaterHeading`: the launch heads for open water, the heading within
+  ±120° (20° steps) of the boarding heading with the longest run of water
+  (80 m probed) for the whole hull width beyond a 12 m lead; ties keep the
+  boarding heading. A line skimming along the quay does not count (the first
+  cut launched the Centraal F2 landing's boat along its quay into the
+  NACO-house pontoon), and the sweep is wide because that landing's GTFS stop
+  sits over the water beside its pontoon with the access pointing straight
+  into it; the open IJ is 100° round. The old code drove through the pontoon
+  under the pier exemption and got away with it.
+- The pier exemption (quay passable within 16 m of the departure pier) no
+  longer lets the hull's centre go ashore from the water.
+- Any touch turns the leading end towards the wetter side (`wetterSide`:
+  corners first, then probes one and two hull widths out beside the bow and
+  the centre; a tie turns to starboard) and keeps 60 % of the speed, where a
+  bow-centre touch or a tie used to stop dead. The side is kept
+  (`ferryTurn`) until the hull is free: a bow corner straddling a pontoon
+  edge flipped the pick every frame and the vessel rocked in place.
+- A move that puts more of the hull on water than before is always allowed
+  (backing off a bank, turning out of a corner).
+- `ferryMotionTrack` also hides road contacts: street following (the phone
+  default since 2026-10-29) read the terminal access underfoot as a dead end
+  and held the vessel at the pier at zero speed; off the network it steers by
+  the buttons and cruises.
+Measured: all 12 piers get ≥100 m clear within 12 s under keyboard and
+street-follow controls (desktop project); `ferry-crossings`,
+`ferry-centraal-pier` and `ferry-docking-feedback` unchanged. Unit cases in
+`travel.test.ts` (inlet launch, quay-channel rejection, no going ashore at the
+pier, head-on turn with water to one side and against a flat bank, freeing
+move, no street contacts on water). Open, found on the way: from the
+`?ferry=F3` land access, holding forward on the keyboard rides along De
+Ruijterkade instead of boarding (the road guard turns the bike onto the quay
+cycleway before it reaches the stop), and street following stands at the pier
+end "awaiting a choice" instead of rolling onto the ferry; both in TODO.
 **Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
 User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
 although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
