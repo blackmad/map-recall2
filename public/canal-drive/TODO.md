@@ -279,12 +279,12 @@ and the second own-ground worker can go, then road CSR (step 5). **Heap and
 pool merged 2026-10-31** (`5f64e3292`, HISTORY "One worker pool"): heap gate
 met with a GC-forced sample (303 MB main at ride start, world below default
 at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
-cell build keeps its own worker. Open for L4: step 5 road graph as CSR
-(`Int32Array` offsets/targets, `Float32Array` x/y/distance, segment table,
-node views behind the current API; callers roadGraph routers,
-`ferry/network.ts`, `ownGround/route.ts`, `road-network.js`, check scripts;
-gates road-graph heap ≤ 30 MB from 54, time to ride ≤ 4 s, `test:canal-car`
-and `test:reachability` green); the ≤ 4 MB bytes target.
+cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
+(`922496ea7`, HISTORY "The road graph is flat arrays"): road-graph heap
+50 → 8 MB (+7.3 MB typed arrays), routes identical. **Not met:** time to
+ride ≤ 4 s (5.56 s median; the graph build is 1.4 s, the rest is
+osm-loader/projection/surface: profile submit → player next); the ≤ 4 MB
+bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs

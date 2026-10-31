@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**The road graph is flat arrays (CSR) behind the same API (2026-10-31, #136, L4 step 5).**
+`src/canalRecall/routing/roadGraph.ts` stores nodes and edges as `Int32Array`
+offsets, targets and edge→link indexes, `Float64Array` x, y and link
+distance (Float64, not the brief's Float32, so coordinates and tie-breaks are
+bit-equal), `Uint8Array` kind, a link→segments table and one metadata array
+by segment; node views are cached per index, edge-cost callbacks receive
+reused cursors (do not keep `edge`/`from`/`to` after the call), Dijkstra runs
+on the arrays, ferries append through `appendRoadGraph`, junction keys are
+`junction:<index>`. Callers moved one commit each (`cityAppearanceRoute` to
+`roadGraphEdgeBetween`, `ride-visibility` to `tree.dist[end.index]`);
+`road-network.js` and the check scripts read through the views unchanged.
+Route identity (`scripts/road-graph-route-identity.ts --compare`, before
+from main's modules frozen in a scratch dir): the whole-city graph (102,089
+nodes, 322,568 edges, 69,766 connectors), 3 shortest-path trees, 71 route
+pairs across all four planners, 8 `compileAreaRoute` configs and
+`sampleRoutes(80, 7)` all identical. Heap at ride start: the road-graph
+bundle's live JS 47–52 → 7–8.5 MB plus 7.3 MB of typed arrays (gate ≤ 30
+met); the road stack ~125 → 80–85 MB; 4.2 MB of connector objects remain
+because the surface index references them. Time to ride (navigation to in
+control) 5.78 → 5.56 s median, inside noise: the ≤ 4 s gate is not met and
+the graph build (1.4 s for the city) is no longer the owner; the submit →
+player profile is the next step.
+
 **`?engine=own` now beats MapLibre on frame CPU; the legacy per-layer code is gone (2026-10-31, #129, L1 hand-back 2).**
 Fair A/B (desktop chase, MapLibre then own back to back): before the fixes
 7.76 vs 7.52 ms owned frame CPU; after them 8.26 vs 5.07 and 11.91 (loaded
