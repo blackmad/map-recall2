@@ -336,3 +336,27 @@ test('FrameHost render on change: a still simulation frame draws nothing; a came
   host.renderOnChange = false; step(10); assert.equal(renders, 12, 'renderOnChange off: every simulation frame draws');
   host.stop();
 });
+
+test('CameraMap.jumpTo: a sub-millimetre creep is not a move, real motion and accumulated drift are (render on change, #129)', async () => {
+  const { CameraMap } = await import('./cameraMap');
+  let repaints = 0, moves = 0;
+  const host: any = { viewport: () => ({ width: 800, height: 600 }), on() {}, off() {}, once() {}, fire: (t: string) => { if (t === 'move') moves++; }, triggerRepaint: () => { repaints++; } };
+  const cm = new CameraMap(host, {});
+  const at = { center: [4.890243805168056, 52.35848155860159] as [number, number], zoom: 17.808254834882085, bearing: 113.9, pitch: 60, elevation: -1.77 };
+  cm.jumpTo(at);
+  const r0 = repaints;
+  // The measured creep of a rider at rest: 1.1e-10 degrees and 1e-12 zoom a frame.
+  for (let i = 1; i <= 60; i++) cm.jumpTo({ ...at, center: [at.center[0] + i * 1.1e-10, at.center[1] - i * 3e-11], zoom: at.zoom + i * 1e-12 });
+  assert.equal(repaints, r0, 'a second of creep draws nothing');
+  assert.equal(cm.getCenter().lng, at.center[0], 'and is not applied');
+  cm.jumpTo({ ...at, center: [at.center[0] + 2e-8, at.center[1]] });
+  assert.equal(repaints, r0 + 1, 'drift past the tolerance moves the camera');
+  assert.equal(cm.getCenter().lng, at.center[0] + 2e-8);
+  cm.jumpTo({ ...at, center: [at.center[0] + 2e-8, at.center[1]], bearing: 114 });
+  assert.equal(repaints, r0 + 2, 'turning moves it');
+  assert.ok(moves >= 3);
+  cm.jumpTo({ ...at, bearing: 180 });
+  const r1 = repaints;
+  cm.jumpTo({ ...at, bearing: -179.9999995 });
+  assert.equal(repaints, r1, 'the wrap at ±180 compares as one angle');
+});

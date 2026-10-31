@@ -14,10 +14,19 @@ test('standing still draws nothing, the still frame equals a redraw, and riding 
   await page.evaluate(() => { const p = (window as any).canalRecallGame.player; Object.assign(p, { speed: 0, vx: 0, vy: 0 }); });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.pendingWork().length), { timeout: 120_000, intervals: [500] }).toBe(0);
   // Fades and late installs finish; then two quiet seconds draw nothing while the simulation keeps running.
+  // On failure the poll's last value names who kept asking for repaints (the first app frames of each caller).
   await expect.poll(() => page.evaluate(async () => {
-    const host = (window as any).canalRecallGame.vectorMap.host, a = { ...host.stats };
+    const host = (window as any).canalRecallGame.vectorMap.host, a = { ...host.stats }, callers: Record<string, number> = {};
+    const own = host.triggerRepaint;
+    host.triggerRepaint = function (...args: unknown[]) {
+      const k = (new Error().stack ?? '').split('\n').slice(2, 4).map(l => l.trim().replace(/\(.*\//, '(').replace(/\?[^:)]*/, '')).join(' < ');
+      callers[k] = (callers[k] ?? 0) + 1;
+      return own.apply(this, args);
+    };
     await new Promise(r => setTimeout(r, 2000));
-    return { renders: host.stats.frames - a.frames, simulated: host.stats.idleFrames - a.idleFrames > 0 };
+    host.triggerRepaint = own;
+    const renders = host.stats.frames - a.frames;
+    return { renders, simulated: host.stats.idleFrames - a.idleFrames > 0, ...(renders ? { callers } : {}) };
   }), { timeout: 90_000, intervals: [0] }).toEqual({ renders: 0, simulated: true });
 
   const canvas = page.locator('canvas.engine-canvas');
