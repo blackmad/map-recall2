@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-10-31",
+      "title": "Drawbridges as photographed",
+      "text": "The Ezelsbrug stands on its concrete piers with red stays and pull rods, its two frames where they really are. The Berlagebrug has its brick keeper's tower, the Peperbrug's overhead beams close into a box, the Aluminiumbrug has its arched braces, and the Mariniersbrug's truss arches over its span. The Oosterdoksdraaibrug keeps its arched truss in one piece, and small lifting footbridges no longer carry a frame they don't have.",
+      "where": [
+        4.9235,
+        52.3755
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-r2-BRU1904.jpg",
+          "alt": "Ezelsbrug: panorama, model and overlay with red stays and concrete piers",
+          "caption": "Ezelsbrug: photo | model | overlay"
+        },
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-r2-BRU0423.jpg",
+          "alt": "Berlagebrug: panorama, model and overlay with the brick keeper's tower",
+          "caption": "Berlagebrug: photo | model | overlay"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Squares and streets carry the name on the sign",
       "text": "The Nieuwmarkt was called \"New Market\" in the ride, and ten more squares, streets and one bridge wore their English Wikipedia names: Dam Square, Flower Market, Museum Square, Rembrandt Square, Albert Cuyp market, Waterlooplein Market, Coen Tunnel, Python Bridge, Vincent van Gogh Street, Kiss and Ride. The extract generator had preferred OpenStreetMap's English name for roads and places; it now takes the local name for streets, squares, waterways and bridges, and a scripted patch applied exactly those 11 renames to the published data (features added or removed: none). Landmarks keep their English names on purpose, so the Weepers' Tower and the Royal Palace read as before.",
       "where": [

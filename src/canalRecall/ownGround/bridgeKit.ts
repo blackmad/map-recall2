@@ -120,7 +120,7 @@ export const KIT_COLOURS = {
   iron: hex('#26392e'), lampPole: hex('#1f2a25'), lantern: hex('#efe1b0'),
   steel: hex('#3f4d47'), concrete: hex('#a9a49b'), wood: hex('#6f5338'), woodRail: hex('#5c432d'),
   soffit: hex('#4d4843'), abutment: hex('#7b5a4a'), pier: hex('#8f877b'), joint: hex('#262624'),
-  white: hex('#ecebe4'), green: hex('#2c4136'),
+  white: hex('#ecebe4'), green: hex('#2c4136'), pierLight: hex('#b9b6ae'),
   // Movable-bridge paints read from the aimed panoramas (lane bridge-kit swing/lattice, 2026-10-30): the Commandantsbrug's
   // dark blue-grey, the Ezelsbrug's light blue-grey frame and red deck and cables, the Buiksloterdraaibrug's grey-green.
   slate: hex('#3b4652'), blueGrey: hex('#6a7c88'), red: hex('#a8322b'), greyGreen: hex('#434d48'),
@@ -310,7 +310,10 @@ export const RAILING = { height: 1.05, post: 0.07, rail: 0.05, plinthWidth: 0.28
  */
 export const TRUSS = { height: 1.7, bay: 3.6, chord: 0.07, web: 0.035 };
 /** Triangles a truss parapet adds on both sides of a `len` m span at full detail (a vertical, a diagonal and a chord per bay): the budget allowance. */
-export const trussTriangles = (len: number, shape?: TrussShape): number => 2 * (Math.ceil(len / TRUSS.bay) + 1) * 14 + (shape?.brace ? (Math.ceil(len / TRUSS.bay) + 1) * 8 : 0);
+export const trussTriangles = (len: number, shape?: TrussShape): number => { const n = Math.ceil(len / (shape?.bay ?? TRUSS.bay)) + 1; return 2 * n * 14 + (shape?.brace ? n * (shape.archBrace ? 18 : 8) : 0); };
+/** Triangles of a shaped truss's far-ring silhouette (both sides: TRUSS_FAR_SEGS chord segments and two end posts). */
+export const TRUSS_FAR_SEGS = 8;
+export const TRUSS_FAR_TRIS = 2 * (TRUSS_FAR_SEGS * 6 + 2 * 4);
 /**
  * Swing bridges (lane bridge-kit, 2026-10-30): the Commandantsbrug BRU2361's dark blue-grey lattice sides, the
  * Oosterdoksdraaibrug BRU2270's white arched through-truss (aimed panoramas, artifacts/bridge-audit).
@@ -321,13 +324,39 @@ export const TRUSS_PARAPET: ReadonlySet<string> = new Set(['BRU0272', 'BRU2361',
  * `brace`: a cross member between the two sides' top chords at every panel point over TRUSS_BRACE_CLEAR_M (a through
  * truss, the Oosterdoksdraaibrug). Unlisted trusses stand TRUSS.height level.
  */
-export interface TrussShape { end: number; crown: number; brace?: boolean }
+export interface TrussShape {
+  end: number; crown: number; brace?: boolean;
+  /** Panel length, metres (default TRUSS.bay): the Oosterdoksdraaibrug's web is twice as dense. */
+  bay?: number;
+  /** Overhead cross members arched up ARCH_BRACE_RISE_M in the middle (curved top lateral bracing). */
+  archBrace?: boolean;
+  /** One steel span between brick abutments (the Mariniersbrug): no bay piers, the truss over the water spans only. */
+  oneSpan?: boolean;
+  /** A one-span truss ends this far inside the water's ends, metres (the mask's water runs on past the abutment faces). */
+  inset?: number;
+}
 export const TRUSS_SHAPE: Readonly<Record<string, TrussShape>> = {
   // Commandantsbrug: the top chord ~1.4 m at the ends, ~2.3 m (a head over the people on it) at the middle.
   BRU2361: { end: 1.4, crown: 2.3 },
   // Oosterdoksdraaibrug: a white bowstring over the deck, ~6 m at the crown, cross-braced overhead.
-  BRU2270: { end: 1.2, crown: 6, brace: true },
+  BRU2270: { end: 1.2, crown: 6, brace: true, bay: 1.8, archBrace: true },
+  // Mariniersbrug (round 2, 2026-10-31): the truss sides arch from ~0.7 m at the brick abutments to ~2.4 m at midspan, one span.
+  BRU0272: { end: 0.7, crown: 2.3, oneSpan: true, inset: 6 },
 };
+/** Rise of an arched overhead cross member at its middle, metres. */
+export const ARCH_BRACE_RISE_M = 0.7;
+/** The station range a shaped truss covers: a swing bridge's leaf, a one-span bridge's water, else the parapet. Null for an unshaped truss. */
+function trussSpanOf(input: KitInput, g0: number, g1: number): [number, number] | null {
+  const shape = TRUSS_SHAPE[input.id];
+  if (shape && input.swing && input.leaves?.length) return [Math.max(g0, input.leaves[0][0]), Math.min(g1, input.leaves[0][1])];
+  if (shape?.oneSpan && input.spans.length) { const i = shape.inset ?? 0; return [Math.max(g0, Math.min(...input.spans.map(w => w[0])) + i), Math.min(g1, Math.max(...input.spans.map(w => w[1])) - i)]; }
+  return null;
+}
+/** Extra triangles a bridge's hand-listed parts may add over its budget (truss parapet near and far, swing pier): the builder's allowance. */
+export function kitAllowance(input: KitInput): number {
+  const truss = !TRUSS_PARAPET.has(input.id) ? 0 : input.lod === 0 ? trussTriangles(input.parapet[1] - input.parapet[0], TRUSS_SHAPE[input.id]) : TRUSS_SHAPE[input.id] ? TRUSS_FAR_TRIS : 0;
+  return truss + (input.swing ? swingTriangles(input.swing.leafLen, input.swing.fenders, input.lod) : 0);
+}
 /** Headroom over the deck for a through truss's overhead cross members, metres. */
 export const TRUSS_BRACE_CLEAR_M = 4.6;
 /** The brick-rail parapet (ParapetClass 'brick-rail'): wall height and width over the deck edge, end piers (half size, height, stone cap), metres. */
@@ -423,10 +452,8 @@ export function buildKit(raw: KitInput): { mesh: MeshArrays; info: KitInfo } {
   kitTrace.input?.(input);
   const named = !!raw.facts?.named;
   // A hand-listed truss parapet is the bridge's silhouette: the near ring gets its triangles on top of the budget.
-  const truss = input.lod === 0 && TRUSS_PARAPET.has(input.id) ? trussTriangles(input.parapet[1] - input.parapet[0], TRUSS_SHAPE[input.id]) : 0;
-  // A swing bridge's pivot drum and fenders are its own allowance as well (swingTriangles).
-  const swing = input.swing ? swingTriangles(input.swing.leafLen, input.swing.fenders, input.lod) : 0;
-  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = truss + swing + (input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)));
+  // A swing bridge's pivot drum and fenders are its own allowance as well (swingTriangles), and so is a shaped truss's far silhouette.
+  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = kitAllowance(input) + (input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)));
   let last: { mesh: MeshArrays; info: KitInfo } | null = null;
   for (let k = 0; k < levels.length; k++) {
     last = buildAt(input, levels[k], k);
@@ -523,7 +550,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
         const R = (half * half + rise * rise) / (2 * rise);
         arches.push({ s0, s1, spring, crown, R, mid, shape: 'segmental' });
       }
-    } else if (!input.swing && span > (kind === 'footbridge' ? 20 : PIER_SPAN_M)) { // a light footbridge spans a canal-belt canal in one
+    } else if (!input.swing && !TRUSS_SHAPE[input.id]?.oneSpan && span > (kind === 'footbridge' ? 20 : PIER_SPAN_M)) { // a light footbridge spans a canal-belt canal in one
       const nb = Math.max(2, Math.min(7, Math.round(span / BAY_M)));
       for (let j = 1; j < nb; j++) piers.push(w0 + span * j / nb);
     }
@@ -643,9 +670,29 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   const tEnds = m.indices.length / 3;
   // Parapet and railings over the deck span.
   if (lv.railings || lv.inner) parapet(m, arches.length > 1 ? { ...input, lampsAt: arches.slice(1).map((a, j) => (arches[j].s1 + a.s0) / 2) } : input, lv, spine, info, fascia);
+  // The far ring keeps a shaped truss as its silhouette: the top chord along each side and the two end posts.
+  if (input.lod === 1 && TRUSS_SHAPE[input.id] && TRUSS_PARAPET.has(input.id)) trussSilhouette(m, input, fascia);
   info.triangles = m.indices.length / 3;
   kitTrace.fn?.(input.id, level, { stations: st.length, spine: spine.length, faces: tFaces, endsAndPiers: tEnds - tFaces, parapet: info.triangles - tEnds, posts: info.railingPosts });
   return { mesh: m, info };
+}
+
+/** A shaped truss in the far ring: its parabolic top chord along both deck edges and an end post at each end (TRUSS_FAR_TRIS). */
+function trussSilhouette(m: MeshArrays, input: KitInput, fascia: RGB): void {
+  const { rows } = input, shape = TRUSS_SHAPE[input.id];
+  const g0 = Math.max(rows[0].s, input.parapet[0]), g1 = Math.min(rows[rows.length - 1].s, input.parapet[1]);
+  if (!shape || g1 - g0 < 1) return;
+  const [t0, t1] = trussSpanOf(input, g0, g1) ?? [g0, g1], col = input.railColour ?? input.colour ?? fascia;
+  for (const side of [1, -1] as const) {
+    const pts: V3[] = [];
+    for (let i = 0; i <= TRUSS_FAR_SEGS; i++) {
+      const s = t0 + (t1 - t0) * i / TRUSS_FAR_SEGS, r = rowAt(rows, s), e = side > 0 ? r.L : r.R, z = side > 0 ? r.zL : r.zR, t = (2 * i) / TRUSS_FAR_SEGS - 1;
+      pts.push([e[0] - r.n[0] * side * 0.15, e[1] - r.n[1] * side * 0.15, z + 0.14 + shape.end + (shape.crown - shape.end) * (1 - t * t)]);
+    }
+    for (let i = 0; i < TRUSS_FAR_SEGS; i++) beam(m, pts[i], pts[i + 1], TRUSS.chord * 1.5, col, true);
+    const o = rowAt(rows, t0).n;
+    for (const p of [pts[0], pts[TRUSS_FAR_SEGS]]) flatBar(m, [p[0], p[1], p[2] - shape.end], p, [o[0] * side, o[1] * side, 0], TRUSS.chord * 1.5, col);
+  }
 }
 
 /** Parapet (plinth, coping or edge upstand), posts, rails and lamps on both edges of the deck span. */
@@ -692,10 +739,12 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     const runs: [number, number][] = railRuns(rows, r0, r1, side, input.crossing);
     // A swing bridge's shaped truss stands over its turning leaf only (the Oosterdoksdraaibrug's arch over the fixed
     // approaches drew 2.5x too long): the runs split at the leaf ends, a railing on the fixed parts.
-    const trussSpan = TRUSS_SHAPE[input.id] && input.swing && input.leaves?.length ? [Math.max(g0, input.leaves[0][0]), Math.min(g1, input.leaves[0][1])] : null;
-    if (trussSpan) for (let k = runs.length - 1; k >= 0; k--) {
-      const [a, b] = runs[k], cut = [a, ...trussSpan.filter(x => x > a + 0.5 && x < b - 0.5), b];
-      runs.splice(k, 1, ...cut.slice(1).map((x, j): [number, number] => [cut[j], x]));
+    const trussSpan = trussSpanOf(input, g0, g1);
+    if (trussSpan && runs.some(([a, b]) => b > trussSpan[0] && a < trussSpan[1])) {
+      // The truss is one piece over its whole span (a run broken over a mid-channel island left a gap in the chord, the
+      // Oosterdoksdraaibrug); railings keep the runs' parts outside it.
+      const outside = runs.flatMap(([a, b]): [number, number][] => [[a, Math.min(b, trussSpan[0])], [Math.max(a, trussSpan[1]), b]]).filter(([a, b]) => b - a >= 0.5);
+      runs.splice(0, runs.length, ...[...outside, [trussSpan[0], trussSpan[1]] as [number, number]].sort((x, y) => x[0] - y[0]));
     }
     for (let piece = 0; piece < runs.length; piece++) {
     const [p0, p1] = runs[piece];
@@ -727,7 +776,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       // Lattice truss (Pratt): panel points at even spacing on the plinth, a top chord between them, a vertical at each
       // point and one diagonal per bay sloping down toward midspan. Web members are flat bars facing water and road;
       // the plinth is the bottom chord.
-      const count = Math.max(1, Math.round(len / Math.min(len, TRUSS.bay * lv.postStep)));
+      const count = Math.max(1, Math.round(len / Math.min(len, (TRUSS_SHAPE[input.id]?.bay ?? TRUSS.bay) * lv.postStep)));
       const pts = Array.from({ length: count + 1 }, (_, i) => { const r = rowAt(rows, p0 + len * i / count); return { c: inward(r, style.width / 2), z: zt(r) + style.plinth, o: out(r) }; });
       const bar = (a: V3, b: V3, o: Vec2): void => {
         const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], w = [-d[2] * o[1], d[2] * o[0], d[0] * o[1] - d[1] * o[0]], wl = Math.hypot(w[0], w[1], w[2]) || 1;
@@ -812,7 +861,14 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     }
   }
   // Overhead cross members of a through truss where both sides stand over the headroom.
-  for (const [k, l] of braceTops[0]) { const r = braceTops[1].get(k); if (r) beam(m, l, r, TRUSS.chord, railColour, true); }
+  const arched = TRUSS_SHAPE[input.id]?.archBrace;
+  for (const [k, l] of braceTops[0]) {
+    const r = braceTops[1].get(k);
+    if (!r) continue;
+    if (!arched) { beam(m, l, r, TRUSS.chord, railColour, true); continue; }
+    const at = (t: number): V3 => [l[0] + (r[0] - l[0]) * t, l[1] + (r[1] - l[1]) * t, l[2] + (r[2] - l[2]) * t + ARCH_BRACE_RISE_M * Math.sin(Math.PI * t)];
+    for (let j = 0; j < 3; j++) beam(m, at(j / 3), at((j + 1) / 3), TRUSS.chord, railColour, true);
+  }
 }
 
 // ------------------------------------------------------------------ movable frames
@@ -857,14 +913,15 @@ export function singleLeafPlan<T extends { leaves: [number, number][]; double: b
  * `P(a, b)` maps (along, across) to the scene; `dir` points over the leaf.
  */
 export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u: Vec2, at: number, dir: 1 | -1, reach: number, side: readonly [number, number], base: number, deckZ: (q: Vec2) => number, col: RGB, far = false, look?: FrameLook): void {
-  const H = FRAME.postHeight, Ph = FRAME.post / 2, Bh = FRAME.beamHeight / 2, dark = KIT_COLOURS.joint;
-  const pivot = base + H + 0.1, slope = 0.1, back = 3.2;
+  const H = look?.height ?? FRAME.postHeight, Ph = FRAME.post / 2, Bh = FRAME.beamHeight / 2, dark = KIT_COLOURS.joint;
+  const pivot = base + H + 0.1, slope = 0.1, back = look?.back ?? 3.2;
   if (far) {
     // The far ring: posts and balance beams only (24 triangles a unit; a beam is its outer face and its top).
     for (const b of side) {
       const out = Math.sign(b - (side[0] + side[1]) / 2) * Bh, z0 = pivot + slope * back, z1 = pivot - slope * reach;
       const pb = P(at - dir * back, b + out), pt = P(at + dir * reach, b + out), ib = P(at - dir * back, b - out), it = P(at + dir * reach, b - out);
       box(m, P(at, b), u, Ph, Ph, base, base + H, col, false);
+      if (look?.piers) box(m, P(at, b), u, PORTAL_PIER.half, PORTAL_PIER.half, base - PORTAL_PIER.below, base + PORTAL_PIER.above, KIT_COLOURS.pierLight, false);
       const o = [pb[0] - ib[0], pb[1] - ib[1], 0];
       face(m, [[pb[0], pb[1], z0 - Bh], [pt[0], pt[1], z1 - Bh], [pt[0], pt[1], z1 + Bh], [pb[0], pb[1], z0 + Bh]], col, o);
       face(m, [[pb[0], pb[1], z0 + Bh], [pt[0], pt[1], z1 + Bh], [it[0], it[1], z1 + Bh], [ib[0], ib[1], z0 + Bh]], col, [0, 0, 1]);
@@ -874,6 +931,8 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
   const lat = look?.lattice, rodCol = look?.rods ?? dark;
   for (const b of side) {
     const q = P(at, b);
+    // A concrete pier under the post, standing in the water beside the deck (the Ezelsbrug).
+    if (look?.piers) box(m, q, u, PORTAL_PIER.half, PORTAL_PIER.half, base - PORTAL_PIER.below, base + PORTAL_PIER.above, KIT_COLOURS.pierLight);
     box(m, q, u, Ph, Ph, base - 0.3, base + 0.6, dark);
     if (lat?.posts) latticePost(m, P, at, b, base + 0.6, base + H, col);
     else box(m, q, u, Ph * 0.85, Ph * 0.85, base + 0.6, base + H, col);
@@ -882,6 +941,11 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
     else beam(m, [pb[0], pb[1], pivot + slope * back], [pt[0], pt[1], pivot - slope * reach], Bh, col);
     const foot = deckZ(pt) + 0.15;
     beam(m, [pt[0], pt[1], pivot - slope * reach - (lat?.beams ? LATTICE.tip : Bh)], [pt[0], pt[1], foot], 0.045, rodCol, true);
+    // Stays from the post head to the deck behind the post and to the leaf's heel (the Ezelsbrug's red cables).
+    if (look?.stays) for (const d of [-back * 0.9, reach * 0.35]) {
+      const g = P(at + dir * d, b);
+      beam(m, [q[0], q[1], base + H - 0.3], [g[0], g[1], deckZ(g) + 0.1], 0.03, look.stays, true);
+    }
   }
   const pl = P(at, side[0]), pr = P(at, side[1]);
   if (lat?.beams) {
@@ -893,6 +957,16 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
   }
   if (lat?.cross) latticeGirder(m, [pl[0], pl[1], base + H - 0.25 + 0.18], [pr[0], pr[1], base + H - 0.25 + 0.18], LATTICE.crossDepth, [u[0], u[1], 0], col);
   else beam(m, [pl[0], pl[1], base + H - 0.25], [pr[0], pr[1], base + H - 0.25], 0.18, col);
+  if (look?.ornate) {
+    // The Aluminiumbrug: a solid girder under the lattice band and an arched brace from each post up into it.
+    const zg = base + H - ORNATE.girderDrop;
+    beam(m, [pl[0], pl[1], zg], [pr[0], pr[1], zg], ORNATE.girder, col);
+    for (const [b, inward] of [[side[0], -1], [side[1], 1]] as const) {
+      const z0 = zg - ORNATE.rise, z1 = zg - ORNATE.girder, n = ORNATE.segs;
+      const pt = (k: number): V3 => { const t = (k / n) * Math.PI / 2, q = P(at, b + inward * ORNATE.reach * (1 - Math.cos(t))); return [q[0], q[1], z0 + (z1 - z0) * Math.sin(t)]; };
+      for (let k = 0; k < n; k++) beam(m, pt(k), pt(k + 1), 0.07, col, true);
+    }
+  } else
   // Knee braces under the cross beam.
   for (const [b, inward] of [[side[0], -1], [side[1], 1]] as const) {
     const lo = P(at, b), hi = P(at, b + inward * 1.1);
@@ -900,9 +974,15 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
   }
   // The beams' front ends are joined (the head), the back ends carry the counterweight box (ballastkist).
   const tl = P(at + dir * reach, side[0]), tr = P(at + dir * reach, side[1]);
-  beam(m, [tl[0], tl[1], pivot - slope * reach], [tr[0], tr[1], pivot - slope * reach], 0.1, col);
+  if (lat?.box) {
+    // A closed overhead box (the Peperbrug): lattice end frames across the beams' heads and tails.
+    for (const a of [at + dir * reach, at - dir * back]) {
+      const l = P(a, side[0]), r = P(a, side[1]), z = pivot + Bh - slope * dir * (a - at);
+      latticeGirder(m, [l[0], l[1], z], [r[0], r[1], z], LATTICE.boxDepth, [u[0], u[1], 0], col);
+    }
+  } else beam(m, [tl[0], tl[1], pivot - slope * reach], [tr[0], tr[1], pivot - slope * reach], 0.1, col);
   const bc = P(at - dir * (back - 0.5), (side[0] + side[1]) / 2), across = Math.abs(side[0] - side[1]) / 2;
-  box(m, bc, u, 0.5, across - 0.1, pivot + slope * back - 1.0, pivot + slope * back - Bh, col);
+  if (!look?.noBallast) box(m, bc, u, 0.5, across - 0.1, pivot + slope * back - 1.0, pivot + slope * back - Bh, col);
 }
 
 /**
@@ -913,12 +993,14 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
  * Zoutkeetsgracht bridge). Hand readings first, then the register: timber or unknown is a portal, steel and concrete
  * a basement.
  */
-export type BasculeStyle = 'portal' | 'basement' | 'swing';
+export type BasculeStyle = 'portal' | 'basement' | 'swing' | 'plain';
 export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement', BRU0272: 'basement',
   // Movable-bridge audit 2026-10-30 (aimed panoramas, artifacts/bridge-audit): the register's material misleads both ways.
   BRU0314: 'basement', BRU0429: 'basement', BRU5046: 'basement', BRU0222: 'portal', BRU0277: 'portal',
   // Swing bridges (draaibrug): one leaf turning on a pivot drum, no portal (SWING; lane bridge-kit 2026-10-30).
   BRU2205: 'swing', BRU2361: 'swing', BRU2270: 'swing',
+  // Small timber lift footbridges (wipbrug) with no portal and no masts: a leaf with its railing (round 2, 2026-10-31).
+  BRU0379: 'plain', BRU0380: 'plain', BRU0483: 'plain', BRU0850: 'plain',
 };
 export const basculeStyle = (id: string | null | undefined, hint: RegisterHint | null): BasculeStyle =>
   (id && BASCULE_STYLE[id]) || (hint && hint.material !== 'wood' && hint.material !== 'other' ? 'basement' : 'portal');
@@ -941,6 +1023,30 @@ export const SWING: Readonly<Record<string, SwingSpec>> = {
 /** Pivot drum (radius, sides, turntable band), fender piles (half section, step, offset along the axis from the pivot, top over the water), metres. */
 export const SWING_PIER = { radius: 2.2, sides: 8, band: 0.3, pile: 0.14, pileStep: 2.4, fenderOff: 1.7, fenderTop: 1.4 };
 const COMPASS: Record<NonNullable<SwingSpec['end']>, Vec2> = { N: [0, 1], E: [1, 0], S: [0, -1], W: [-1, 0] };
+/** True when the scene direction `d` points toward compass `c` (scene x east, y north). */
+export const towardCompass = (d: Vec2, c: 'N' | 'E' | 'S' | 'W'): boolean => d[0] * COMPASS[c][0] + d[1] * COMPASS[c][1] > 0;
+
+/**
+ * A brick bridge-keeper's tower on a pier beside a bascule's heel (round 2, 2026-10-31; the Berlagebrug BRU0423's aimed
+ * panoramas): a brick block from the water to over the deck, a narrower tower on it with a dark window band and a stone
+ * cap. `along`/`across`: the compass ends of the heel and the face it stands on; `base`, `tower`: half length (along
+ * the axis) and half width, metres; heights over the deck.
+ */
+export interface TowerSpec { along: 'N' | 'E' | 'S' | 'W'; across: 'N' | 'E' | 'S' | 'W'; base: [number, number]; tower: [number, number]; baseTop: number; top: number; windows: [number, number] }
+export const BRIDGE_TOWER: Readonly<Record<string, TowerSpec>> = {
+  BRU0423: { along: 'W', across: 'N', base: [4.0, 2.2], tower: [1.5, 1.4], baseTop: 2.2, top: 8.5, windows: [5.6, 6.6] },
+};
+export const towerTriangles = (far: boolean): number => (far ? 8 : 10 * 5);
+/** Draw a TowerSpec at station `at`, its centre `b` across, on a deck at `z`. */
+export function bridgeTower(m: MeshArrays, P: (a: number, b: number) => Vec2, u: Vec2, at: number, b: number, z: number, t: TowerSpec, far = false): void {
+  const brick = KIT_COLOURS.brick, stone = KIT_COLOURS.stone, c = P(at, b);
+  if (far) { box(m, c, u, t.tower[0], t.tower[1], z - 2, z + t.top, brick, false); return; }
+  box(m, c, u, t.base[0], t.base[1], z - 3.2, z + t.baseTop, brick);
+  box(m, c, u, t.base[0] + 0.08, t.base[1] + 0.08, z + t.baseTop - 0.15, z + t.baseTop + 0.05, stone);
+  box(m, c, u, t.tower[0], t.tower[1], z + t.baseTop, z + t.top, brick);
+  box(m, c, u, t.tower[0] + 0.03, t.tower[1] + 0.03, z + t.windows[0], z + t.windows[1], KIT_COLOURS.joint, false);
+  box(m, c, u, t.tower[0] + 0.12, t.tower[1] + 0.12, z + t.top, z + t.top + 0.3, stone);
+}
 /** The pivot's station on a leaf [l0, l1] along the crossing axis `u` (scene x east, y north). */
 export function swingPivot(spec: SwingSpec, leaf: readonly [number, number], u: Vec2): number {
   if (spec.pivot === 'centre' || !spec.end) return (leaf[0] + leaf[1]) / 2;
@@ -988,16 +1094,39 @@ function swingPier(m: MeshArrays, input: KitInput, sw: NonNullable<KitInput['swi
  * cross girder between the posts is a lattice band. Hand-listed by register id; every other portal stays the solid
  * timber frame. Far ring: the solid silhouette.
  */
-export interface LatticeFrame { posts: boolean; beams: boolean; cross: boolean }
+export interface LatticeFrame { posts: boolean; beams: boolean; cross: boolean; box?: boolean }
 export const LATTICE_FRAME: Readonly<Record<string, LatticeFrame>> = {
   BRU0146: { posts: true, beams: true, cross: false }, BRU0148: { posts: true, beams: true, cross: false },
-  BRU0193: { posts: true, beams: true, cross: false }, BRU0281: { posts: true, beams: true, cross: true },
+  BRU0193: { posts: true, beams: true, cross: false }, BRU0281: { posts: true, beams: true, cross: true, box: true },
   BRU1904: { posts: false, beams: true, cross: false }, BRU0222: { posts: false, beams: false, cross: true },
 };
 /** Lattice members, metres: post half width, chord and web half sections, beam depth over the post and at its ends, cross girder depth, web panel length. */
-export const LATTICE = { post: 0.3, chord: 0.05, web: 0.03, depth: 0.95, tip: 0.3, crossDepth: 0.7, panel: 0.9 };
-/** What a portal frame draws beyond the timber default: lattice members, the pull rods' colour (the Ezelsbrug's red). */
-export interface FrameLook { lattice?: LatticeFrame; rods?: RGB }
+export const LATTICE = { post: 0.3, chord: 0.05, web: 0.03, depth: 0.95, tip: 0.3, crossDepth: 0.7, panel: 0.9, boxDepth: 1.0 };
+/**
+ * What a portal frame draws beyond the timber default: lattice members, the pull rods' colour (the Ezelsbrug's red),
+ * stays from the post heads (their colour), concrete piers under the posts, the ornate girder and arched braces
+ * (Aluminiumbrug), and a post height and balance-beam tail other than FRAME's.
+ */
+export interface FrameLook { lattice?: LatticeFrame; rods?: RGB; stays?: RGB; piers?: boolean; ornate?: boolean; height?: number; back?: number; noBallast?: boolean }
+/** A portal's concrete pier: half size, depth under the deck, height over it, metres. */
+export const PORTAL_PIER = { half: 0.65, below: 2.6, above: 1.7 };
+/** The Aluminiumbrug's ornate frame: solid girder drop under the post head and half section, arched brace rise, reach across and segments. */
+export const ORNATE = { girderDrop: 1.6, girder: 0.16, rise: 2.2, reach: 2.2, segs: 5 };
+/**
+ * Per-bridge portal fit from the aimed panoramas (round 2, 2026-10-31): post height, balance-beam tail and reach (a
+ * factor on the leaf), the gap between a double bascule's beam heads, stays, piers and the ornate frame. Any bridge
+ * not listed keeps FRAME.
+ */
+export interface PortalFit { height?: number; back?: number; reach?: number; tipGap?: number; stays?: KitColour; piers?: boolean; ornate?: boolean; noBallast?: boolean }
+export const PORTAL_FIT: Readonly<Record<string, PortalFit>> = {
+  // Ezelsbrug: tails reaching ~4.5 m back past the posts, heads ~1.5 m apart, red stays, posts on concrete piers.
+  // Its tails carry no ballast box (the counterweight hides in the lattice tail).
+  BRU1904: { back: 5.6, tipGap: 1.5, stays: 'red', piers: true, height: 7.6, noBallast: true },
+  // Westergasbrug: a taller portal (the beams ~8 m over the deck) whose beams reach most of the way across.
+  BRU0193: { height: 8, back: 5, reach: 1.15 },
+  // Aluminiumbrug: the solid girder and arched braces under its lattice band.
+  BRU0222: { ornate: true },
+};
 
 /** A flat bar from `a` to `b` whose faces look along +-`o` (4 triangles), `half` its half width. */
 export function flatBar(m: MeshArrays, a: V3, b: V3, o: V3, half: number, col: RGB): void {

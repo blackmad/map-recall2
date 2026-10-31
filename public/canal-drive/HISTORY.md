@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**Bridge kit round 2 (2026-10-31).**
+- `PORTAL_FIT`: per-bridge post height, tail, head gap, piers, stays and
+  ballast box. Ezelsbrug gets red stays and concrete piers; Westergasbrug a
+  taller portal.
+- Lattice end frames close the Peperbrug's overhead beam box.
+- Aluminiumbrug: arched braces and a solid lower girder.
+- Shaped trusses:
+  - Mariniersbrug arches 0.7 to 2.3 m over one span and ends at the
+    abutments;
+  - Oosterdoksdraaibrug has 1.8 m panels, arched overhead members, and one
+    piece over the swing leaf;
+  - shaped trusses keep a far-ring outline.
+- `BRIDGE_TOWER`: the Berlagebrug's brick keeper block and tower.
+- A `'plain'` style with no portal and no masts for small lifting footbridges
+  (BRU0379, 0380, 0483, 0850).
+- Bridge hints regenerated: only the named flag is added for BRU0379, 0380,
+  0423, 0483, 0850.
+- Every other bridge hashes identical over 568 frames.
+
 **Every Firebase deploy failed for a day on a JSDoc import (2026-10-31).** From L1 step 3
 (2026-10-30 afternoon) to 1429440dc, `Deploy to Firebase Hosting` failed in
 "Upload Canal Recall source maps to Sentry": `scripts/sentry/
