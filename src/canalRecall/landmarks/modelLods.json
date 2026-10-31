@@ -1858,5 +1858,11 @@
   "buildVersion": 2,
   "bytes": 38616,
   "triangles": 1563
+ },
+ "hirschgebouw": {
+  "sourceHash": "eb6fd7c5b1488f96",
+  "buildVersion": 2,
+  "bytes": 108260,
+  "triangles": 5676
  }
 }

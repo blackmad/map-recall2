@@ -306,6 +306,49 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**City look on by default (2026-10-30, decision #137 = A).** David chose
+option A on the #135 strip: flip at level 1, accept the +14 % landmark
+brightening at card size as the new baseline, and let the re-tag lane
+(#138, landed first) fix the wrong slots. `cityLookEnabled` now returns
+true unless `?cityLook=0` (or `window.__canalRecallCityLook === false`)
+opts out; the four look bundles and the building-style bundle were rebuilt
+with it. The shadow-fill spec's "plain" row pins the legacy flat-colour
+path and now passes `cityLook=0` explicitly; the frame specs (sun heading,
+mood shots, demo shots) keep their empty "default" query, which now means
+what players see. Desktop first: the slot array draws at 128² on touch
+(+1.4 MB) and iPhone perf is unmeasured (TODO). What's New: "Brick and
+stone on every building".
+
+**Hirschgebouw, Leidseplein (2026-10-30, lane #132).** The 1912 Hirsch & Cie
+store (pand `0363100012165488`, Rijksmonument 518447) is a bespoke model
+(`scripts/landmarks/hirschgebouw-builder.ts`, 36,491 triangles, 499,936 B,
+just under the 500 KB check, every material with a slot and a measured
+tint). Fronts: the NW (Leidseplein), NE (Leidsestraat/Kerkstraat) and SE
+fronts and the twelve-facet round corner match the panoramas bay by bay;
+the rear is the kept 3DBAG LoD2.2 shell (219 of 437 walls, 42 of 65 roofs),
+as on the American Hotel. Modelled: the corner dome tower (two drums, ring
+cornices, a 22-baluster gallery, lathe copper dome, lantern, ball finial),
+the raised HIRSCH & Cie lettering, the round corner (pilasters, glazed arch,
+tangent windows, curved balconies, balustrade), giant fluted Ionic
+half-columns, the ground arcade, triple windows with white frames, iron
+balconies on storeys 2–3, stone balustrades on storey 1, dentil entablature,
+attic storey and balustrade, ribbed slate mansards, the NE two-bay risalit.
+Simplified: drum consoles, five inferred SE bays, arcade glazing bars. The
+NE front has 7 bays in the photo against the register's 8; the photo won.
+No mansard dormers are visible in any panorama, so none are drawn. The
+elevations spec passes compare:facades 6/6 but is parked as
+`hirschgebouw-elevations-pending.json`: under the live name the audit's
+window-rhythm check reads the narrow-wide-narrow triple lights between
+0.38 m stone stiles as off-size and missing windows. The kit cannot say:
+grouped lights per bay in the rhythm audit, a seriffed lettering font, an
+Ionic volute capital, glazing bars and fanlights for arcade arches. The
+large recipe hirschpassage-2-165488 on the same pand was already held.
+The copper tint #4c5062 reads blue-violet at gallery size against the
+panoramas' weather-dependent grey-green. Sources (14 panoramas, register
+518447, BAG, 3DBAG) are archived under `models/hirschgebouw/` in
+map-recall2-source-data. The covers were rebuilt from the published z14
+extract because the integrator worktree's tile cache had been pruned.
+
 **Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
 bespoke lanes today shipped sheets with a red IN GAME column and no gallery
 card. The cause was not the engine programme: on the default path the

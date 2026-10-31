@@ -1,0 +1,53 @@
+{
+ "id": "hirschgebouw",
+ "source": "Counted by the hirschgebouw lane (#132) on rectified crops of Gemeente Amsterdam panoramas (CC BY 4.0): NW front from b_20241211_0954_Track09_Sphere_00187 and TMX7316010203-001660_pano_0000_000562, NE front from TMX7316010203-001681_pano_0000_006726. Three lights per bay and storey (a triple window between half-columns, counted light by light), one arch per bay at ground; the round corner and its dome are outside both crops.",
+ "countedBy": "lane, from the photo before reading the model",
+ "facades": [
+  {
+   "name": "Leidseplein front (NW)",
+   "bearing": 322.5,
+   "alongM": [
+    8.6,
+    60
+   ],
+   "rows": [
+    8,
+    24,
+    24,
+    24,
+    24
+   ],
+   "columns": 24,
+   "gables": 0,
+   "photo": "artifacts/landmark-briefs/hirschgebouw/w16-322.jpg",
+   "note": "Eight bays between giant Ionic half-columns: ground arcade of eight round arches, three window storeys, attic storey, curved slate mansard with no dormers visible. Crop starts after the round corner (the elevation frame begins at the drum silhouette).",
+   "heightM": [
+    0,
+    24.5
+   ]
+  },
+  {
+   "name": "Leidsestraat-Kerkstraat front (NE)",
+   "bearing": 52.5,
+   "alongM": [
+    0,
+    41.0
+   ],
+   "rows": [
+    7,
+    21,
+    21,
+    21,
+    21
+   ],
+   "columns": 21,
+   "gables": 0,
+   "photo": "artifacts/landmark-briefs/hirschgebouw/w02-52.jpg",
+   "note": "Seven bays counted in the photo (the register says eight per front); two-bay risalit projecting about 1 m.",
+   "heightM": [
+    0,
+    24.5
+   ]
+  }
+ ]
+}
