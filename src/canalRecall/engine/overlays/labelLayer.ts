@@ -56,7 +56,29 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0 };
+  /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
+  private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
+  /** Next drawn POI winner to re-test between full placements. */
+  private occlusionCursor = 0;
+  setOcclusion(test: ((c: LabelCandidate) => boolean) | null, frontOf: ((id: string) => Vec2 | null) | null = null, lineTest: ((id: string, anchors: readonly Vec2[]) => boolean) | null = null): void {
+    if (!test !== !this.occludedTest) { this.rev++; this.drawAt.clear(); }
+    this.occludedTest = test; this.frontOf = test ? frontOf : null; this.lineTest = test ? lineTest : null;
+  }
+  /** Street and water names: hidden when a building stands between the eye and any of their anchors (start, middle, end). */
+  private lineTest: ((id: string, anchors: readonly Vec2[]) => boolean) | null = null;
+  /** Where a shown POI's frontage is (own-map local metres), from its last occlusion test. */
+  private frontOf: ((id: string) => Vec2 | null) | null = null;
+  /** POIs drawn at their visible frontage instead of the anchor (by id); refreshed whenever one is tested. */
+  private readonly drawAt = new Map<string, Vec2>();
+  /** Test one candidate (its own anchor); record where it is drawn. True when hidden; `moved` when the spot changed. */
+  private testOcclusion(c: LabelCandidate): { hidden: boolean; moved: boolean } {
+    const hidden = this.occludedTest!(c);
+    const front = hidden ? null : this.frontOf?.(c.id) ?? null, prior = this.drawAt.get(c.id);
+    if (front) this.drawAt.set(c.id, front); else this.drawAt.delete(c.id);
+    const moved = !front !== !prior || (!!front && !!prior && Math.hypot(front[0] - prior[0], front[1] - prior[1]) > 0.5);
+    return { hidden, moved };
+  }
   /** Every label drawn in the last frame (specs read it: nothing under question may be among them). */
   placed: PlacedLabel[] = [];
   visible = true;
@@ -142,12 +164,59 @@ export class LabelLayer {
         for (const c of this.buckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
-    const candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
-    this.placed = placeLabels(candidates, {
+    const options = {
       project, width: vp.width, height: vp.height, zoom,
-      advance: (ch, kind) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
-    });
+      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
+    };
+    let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
+    const original = new Map(candidates.map(c => [c.id, c] as const));
+    const shifted = (list: LabelCandidate[]) => list.map(c => { const at = this.drawAt.get(c.id); return at && c.at ? { ...c, at } : c; });
+    this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
+    // Occlusion (full placements only): test the POIs that won, drop the hidden ones and place again, so the tests
+    // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
+    // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
+    // street, water and neighbourhood names are exempt.
+    let occluded = 0;
+    if (full && this.occludedTest) {
+      const tested = new Set<string>(), hidden = new Set<string>();
+      for (let round = 0; ; round++) {
+        let dropped = 0, moved = 0;
+        for (const l of this.placed) {
+          const c = original.get(l.id);
+          if (!c || tested.has(c.id) || c.priority >= 1e6) continue;
+          if ((c.kind === 'street' || c.kind === 'water') && l.anchors && this.lineTest) {
+            tested.add(c.id);
+            if (this.lineTest(c.id, l.anchors)) { hidden.add(c.id); dropped++; }
+            continue;
+          }
+          if (c.kind !== 'poi' || !c.at) continue;
+          tested.add(c.id);
+          const r = this.testOcclusion(c);
+          if (r.hidden) { hidden.add(c.id); dropped++; } else if (r.moved) moved++;
+        }
+        if (!dropped && !moved) break;
+        // Out of rounds: drop the hidden newcomers without filling their places.
+        if (round === OCCLUSION_ROUNDS) { this.placed = this.placed.filter(l => !hidden.has(l.id)); break; }
+        candidates = candidates.filter(c => !hidden.has(c.id));
+        this.placed = placeLabels(shifted(candidates), options);
+      }
+      occluded = hidden.size;
+    } else if (!full && this.occludedTest) {
+      // Between full placements the camera still moves (up to 400 ms, or 24 px / 2°): re-test a few of the drawn POI
+      // winners per frame, in turn, and drop one that went behind a building since (the next full pass re-tests it
+      // and may place another in its room). The test's own hysteresis keeps an edge label from blinking.
+      const pois = this.placed.filter(l => { const c = original.get(l.id); return !!c && c.kind === 'poi' && !!c.at && c.priority < 1e6; });
+      for (let i = 0; i < Math.min(OCCLUSION_PER_FRAME, pois.length); i++) {
+        const l = pois[(this.occlusionCursor + i) % pois.length];
+        // Hidden: dropped now. A frontage that moved is drawn there from the next full placement (no re-place here).
+        if (this.testOcclusion(original.get(l.id)!).hidden) this.winners.delete(l.id);
+      }
+      this.occlusionCursor = pois.length ? (this.occlusionCursor + OCCLUSION_PER_FRAME) % pois.length : 0;
+      if (pois.length) this.placed = this.placed.filter(l => this.winners.has(l.id));
+    }
     if (full) {
+      const ms = performance.now() - now;
+      this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
       this.fullPose = pose ?? null; this.fullAt = now; this.fullRev = rev;
       this.winners = new Set(this.placed.map(l => l.id));
       this.stats.full++;
@@ -159,6 +228,11 @@ export class LabelLayer {
 
 /** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
 export type LabelPose = readonly [number, number, number, number, number];
+
+/** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
+const OCCLUSION_ROUNDS = 3;
+/** Drawn POI winners re-tested per frame between full placements (a sightline is ~10-30 us). */
+const OCCLUSION_PER_FRAME = 4;
 
 export function samePose(a: LabelPose, b: LabelPose): boolean {
   return Math.abs(a[0] - b[0]) < 0.01 && Math.abs(a[1] - b[1]) < 0.01 && Math.abs(a[2] - b[2]) < 1e-4 && Math.abs(a[3] - b[3]) < 0.01 && Math.abs(a[4] - b[4]) < 0.01;

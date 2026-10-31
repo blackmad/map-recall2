@@ -25,7 +25,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera } from './cameraClearance';
+import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { fetchOverview, OverviewLayer } from './overviewLayer';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
@@ -39,6 +39,7 @@ import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
 import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
 import { LandmarkHighlight } from './landmarkHighlight';
+import { LabelOcclusion } from './labelOcclusion';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -148,6 +149,9 @@ export class OwnWorldView {
   readonly _labels: LabelLayer;
   _highlightMarker: any = null;
   private readonly landmarkHighlight = new LandmarkHighlight();
+  readonly labelOcclusion = new LabelOcclusion();
+  /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
+  labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   private quizQuiet = false;
   private spoilersSuspended = false;
   private loader: LoaderFrame | null = null;
@@ -418,6 +422,26 @@ export class OwnWorldView {
     const frame = cameraFrame({ center: [lx, ly], zoom, bearing: cam.bearing, pitch: cam.pitch, fovDeg: cam.fovDeg, elevation: cam.elevation }, this.host.viewport(), cam.lat);
     const b = cam.bounds();
     const [x0, y0] = toLocal(b.west, b.south), [x1, y1] = toLocal(b.east, b.north);
+    // POI labels behind nearer buildings are not drawn (engine/labelOcclusion.ts), tested against the resident
+    // footprints at each full placement only (the grid is (re)built lazily there, not per frame). Every resident, not
+    // sampleFeatures' first 20,000: the city holds ~36,000 and the cap dropped the blocks around the camera.
+    // `?labelOcclusion=0` turns it off.
+    const city = this._completeCity;
+    if (this.labelOcclusionOn && city?.residentFeatures) {
+      const eye = cam.eye();
+      let indexed = false;
+      this._labels.setOcclusion(c => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        const [lng, lat] = fromLocal(c.at![0], c.at![1]);
+        return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
+      }, id => { const f = this.labelOcclusion.front.get(id); return f ? toLocal(f[0], f[1]) : null; }, (id, anchors) => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        // Any blocked point hides the name (the default engine's street-name rule, labels/streetLabelOcclusion.ts).
+        let blocked = false;
+        anchors.forEach((a, k) => { if (this.labelOcclusion.occluded(`${id}#${k}`, fromLocal(a[0], a[1]), eye)) blocked = true; });
+        return blocked;
+      });
+    } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
   }
 
@@ -527,7 +551,7 @@ export class OwnWorldView {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
         return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
-      }, () => this._completeCity.sampleFeatures(20_000));
+      }, () => clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] }));
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
@@ -579,6 +603,8 @@ export class OwnWorldView {
     return lngLatToWorld(hit.lng, hit.lat, loader);
   }
   worldToLngLat(worldX: number, worldY: number, loader: LoaderFrame): [number, number] { return worldToLngLat(worldX, worldY, loader); }
+  /** The camera eye (lng/lat, metres up): the HUD street-name pass's occlusion test reads it (labels/streetLabelOcclusion.ts). */
+  cameraEye(): { lng: number; lat: number; altitudeM: number } { return this.cameraMap.camera.eye(); }
 
   isWater(worldX: number, worldY: number, loader: LoaderFrame): boolean {
     if (!this._overview || !loader || loader._lastCenterLat == null) return false;

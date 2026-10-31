@@ -212,6 +212,14 @@ export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, defaultWaterZ
 /** The part of a measured deck the openings rule reads (elevation/bridgeDeck.ts DeckProfile). */
 export interface OpeningDeck { id: string; x: ArrayLike<number>; y: ArrayLike<number>; s: ArrayLike<number>; halfWidth: ArrayLike<number>; deck: readonly [number, number] }
 
+/**
+ * The openings rule for another kind of deck: `maxWidth` (default OPENING_MAX_WIDTH_M) and `reach` (default
+ * OPENING_REACH_M); `under` true where something the bridge crosses lies under the centreline at (x, y), the deck's
+ * axis along (ux, uy) (a street or a track at ground level: a viaduct between two ponds is not a bridge over cut
+ * water), so that station is not opened.
+ */
+export interface OpeningOptions { maxWidth?: number; reach?: number; under?: (x: number, y: number, ux: number, uy: number) => boolean }
+
 /** Footbridges only: a deck at most this wide (median over the span) may get water opened under it. */
 export const OPENING_MAX_WIDTH_M = 6;
 /** How far beside the deck edge the water must be found, metres. */
@@ -283,22 +291,24 @@ export function clipRing(ring: readonly Vec2[], rect: readonly [number, number, 
  * road on a dam is not a bridge with the water cut). Returns a new geometry
  * and the decks it opened.
  */
-export function openUnderFootbridges(geo: WaterGeometry, decks: readonly OpeningDeck[], rect: readonly [number, number, number, number], fallbackZ: number): { geo: WaterGeometry; opened: string[] } {
+export function openUnderFootbridges(geo: WaterGeometry, decks: readonly OpeningDeck[], rect: readonly [number, number, number, number], fallbackZ: number, opts: OpeningOptions = {}): { geo: WaterGeometry; opened: string[]; sides: Map<string, [number, number]> } {
+  const maxWidth = opts.maxWidth ?? OPENING_MAX_WIDTH_M, reach = opts.reach ?? OPENING_REACH_M, under = opts.under;
   const inWater = (x: number, y: number) => geo.polygons.findIndex(p => inPolygon(p, x, y));
-  const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [];
+  const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [], sides = new Map<string, [number, number]>();
+  const median = (v: number[]) => { const q = [...v].sort((a, b) => a - b); return q[q.length >> 1]; };
   for (const d of decks) {
     const idx: number[] = [];
     for (let i = 0; i < d.s.length; i++) if (d.s[i] >= d.deck[0] && d.s[i] <= d.deck[1]) idx.push(i);
     if (idx.length < 3) continue;
     const widths = idx.map(i => 2 * d.halfWidth[i]).sort((a, b) => a - b);
-    if (widths[widths.length >> 1] > OPENING_MAX_WIDTH_M) continue;
+    if (widths[widths.length >> 1] > maxWidth) continue;
     const rows: { i: number; l: number; r: number; poly: number }[] = [];
     for (const i of idx) {
       const a = Math.max(0, i - 2), b = Math.min(d.s.length - 1, i + 2), dx = d.x[b] - d.x[a], dy = d.y[b] - d.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
       const cx = d.x[i], cy = d.y[i];
-      if (inWater(cx, cy) >= 0) continue;
+      if (inWater(cx, cy) >= 0 || under?.(cx, cy, ny, -nx)) continue;
       // First water beside each edge, searched outward in 0.25 m steps.
-      const find = (sg: number) => { for (let o = d.halfWidth[i] * 0.5; o <= d.halfWidth[i] + OPENING_REACH_M; o += 0.25) { const k = inWater(cx + nx * o * sg, cy + ny * o * sg); if (k >= 0) return { o, k }; } return null; };
+      const find = (sg: number) => { for (let o = d.halfWidth[i] * 0.5; o <= d.halfWidth[i] + reach; o += 0.25) { const k = inWater(cx + nx * o * sg, cy + ny * o * sg); if (k >= 0) return { o, k }; } return null; };
       const L = find(1), R = find(-1);
       if (L && R) rows.push({ i, l: L.o + OPENING_OVERLAP_M, r: R.o + OPENING_OVERLAP_M, poly: L.k });
     }
@@ -317,8 +327,10 @@ export function openUnderFootbridges(geo: WaterGeometry, decks: readonly Opening
     added.push(ring);
     addedLevels.push(geo.levels?.[best[best.length >> 1].poly] ?? fallbackZ);
     opened.push(d.id);
+    // How far the water lies beside each edge (left of the axis, right): the bridge's own edges.
+    sides.set(d.id, [median(best.map(r => r.l)), median(best.map(r => r.r))]);
   }
-  if (!added.length) return { geo, opened };
+  if (!added.length) return { geo, opened, sides };
   // Shores: drop the pieces whose midpoint lies in an opening (the walls that crossed the canal).
   const shores: Vec2[][] = [], shoreLevels: number[] = [];
   geo.shores.forEach((line, k) => {
@@ -335,5 +347,6 @@ export function openUnderFootbridges(geo: WaterGeometry, decks: readonly Opening
   return {
     geo: { polygons: [...geo.polygons, ...added.map(r => [r])], shores, ...(geo.levels ? { levels: [...geo.levels, ...addedLevels] } : {}), ...(geo.shoreLevels ? { shoreLevels } : {}) },
     opened,
+    sides,
   };
 }

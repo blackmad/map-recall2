@@ -1,5 +1,150 @@
 # Canal Recall — what is built
 
+**Label occlusion round 2 under `?engine=own`: labels through buildings 16 → 1 at the user's pose; street and water names occluded too (2026-11-01, #129).**
+The materials lane extended L1's `engine/labelOcclusion.ts`: the sightline
+starts where the label is drawn (1.5 m above the street, not half way up the
+facade); POIs draw at their visible shopfront instead of deep inside the
+block (`drawAt` in `overlays/labelLayer.ts`); party walls no longer count as
+frontages; pitched roofs count from between eaves and ridge; four drawn POI
+labels per frame are re-tested between full placements (`OCCLUSION_PER_FRAME`)
+so a label that went behind a building while riding drops within a few
+frames; own-engine street and water names are tested at their first, middle
+and last glyph (`lineTest`); and the HUD street-name occlusion runs under the
+own engine via `OwnWorldView.cameraEye()` and `residentFeatures()`. Counted
+independently with the facades' own pick at each drawn label, POI labels drawn
+through a building, off → on: Eerste Constantijn Huygensstraat 16 → 1 (L1's
+first pass: 6; the one left is Cafe Kompleet at a row-house corner the walk
+misses), Dam 27 → 0, Westerkerk 14 → 0–1; riding 6 s from each pose the names
+ever drawn through a building: 18 → 4, 10 → 2–3, 14 → 7.
+`street-label-occlusion.spec` now passes under ENGINE=own (44 → 6 names
+drawn, 0.26–0.35 ms per frame) and unchanged on the default engine (44 → 7).
+Cost: a full placement 0.68–0.82 ms with occlusion on vs 0.65–0.83 off,
+roughly every 400 ms, plus 4 sightlines per frame between passes; the
+occlusion step alone was not isolated, so the ≤ 0.3 ms per-frame budget is
+not demonstrated directly. `label-occlusion.spec` counts independently (off
+≥ 4, on ≤ 1) on desktop and iPhone. Before/after frames:
+`map-recall2-screenshots/whats-new/2026-11-01-label-occlusion-{ech,dam,
+westerkerk}-{before,after}.jpg` (for the flip note; no What's New entry while
+the engine is behind the flag).
+
+**Building facts load on the first card, not at ride start; maplibre-gl loader applied in index.html; fixed-camera pixel harness (2026-11-01, #130, #129).**
+`buildingFacts.ts` (road lane): `prefetchAround` only remembers the rider's
+position until the first card asks for facts, then the 3×3 tile window
+follows the rider as before and the first card fills through the existing
+`_requestBuildingFacts` path; card code unchanged, `check-building-facts`
+asserts no request before the first card and nine tiles once after it. Per
+ride under `?world=v1`: seeded 1.33 → 1.11 MB, free ride 2.30 → 1.96 MB, so
+the ≤ 2 MB per-ride gate is met; the default path still loads 133–272 KB of
+facts for the construction-year enricher that world cells bake in. The city
+gate stays red: census of the 9.13 MB (FOOT 5.74 MB: coordinate deltas 3.01,
+first vertices 1.02, shared-vertex back-refs 0.82, ids 0.51; STYL 2.34 MB:
+height 0.46, roofMeasured 0.43, roofFurniture 0.36 for 16 K rows, eaves 0.21,
+year 0.20; GRP 0.62; STRS 0.35) and the integrator's decision: build the
+lossless roofFurniture column and 1 dm heights/eaves (the format before v3
+stored them at 0.25 m) for ≈ 8.65 MB, never footprints coarser than the
+source, so ≤ 8 MB stays unmet and says so. `world-v1-ab` gains
+`AB_CAMERA=fixed` (holds sync and `aimAtWorld`, `jumpToLngLat`, settle,
+`captureFrame`): default-vs-default noise 0.65–1.1 M → 56–80 K px of 1.3 M,
+cm-heights world vs default 69–102 K px; the leftover is edge speckle that
+looks like chunk draw order (three.js layer, parked for the materials lane).
+P5 B1 is now applied: `index.html` runs `js/maplibre-loader.bundle.js` (592
+bytes, built by `scripts/build-canal-engine.mjs`) in place of the static
+maplibre-gl tags; `engine-own.spec` asserts 0 maplibre-gl requests under the
+flag and that the default path still loads the script and stylesheet.
+
+**World cell format v4 published: shared string table, centimetre heights; 10.43 → 9.13 MB (2026-11-01, #130).**
+`world-v1/strings.bin` (1,324 strings, 5.8 KB gzip) replaces the per-cell
+string tables; each cell carries the table's count and FNV hash and refuses a
+missing or wrong table, and `WorldCellReader` (`world/worldCells.ts`) fetches
+it once, so the streamer needed no patch. v4 also stores a `C_SAME` column
+where `groundColour` equals `sideColour` (99.8 % of buildings) and interleaves
+FOOT x/y; the decoder reads v2–v4. A compile policy (`world/cellPolicy.ts`,
+recorded in `index.policy` / `policyOptions` and applied identically by
+`world:verify`) stores heights to the centimetre; its second option, removing
+near-collinear vertices within 5 cm (area change ≤ 1 %, shared corners and
+T-junctions kept), is off by default (`--collinear` opts in) by integrator
+decision: it saves 0.14 MB of the 1.13 MB gap to the 8 MB city gate and the
+world-v1-ab pixel harness cannot prove it (its noise floor is 0.65–1.1 M of
+1.3 M px because the camera lands sub-pixel differently each run; a
+fixed-camera variant is the lane's next item). Published from a full compile
+(604 cells, 349,282 buildings identical to v3 through the policy, `world:verify`
+fresh with 0 differing tiles, `check:covers` ok): cells 9,128,132 B +
+strings 5,847 B gzip. Gates: city ≤ 8 MB not met (9.13); per ride under
+`?world=v1` seeded 1.51 MB (met), free ride 2.30 MB (gate 2 MB, not met) with
+`building-facts` 0.43–0.65 MB fetched whole by `buildingFacts.ts` the next
+cut. Cell decode: worker median 5 ms, max 14 ms; at 4× CPU on the main-thread
+proxy median 14 ms, max 24–42 ms (gate ≤ 5 ms in the worker at 4× is not yet
+measurable because Playwright cannot throttle worker targets).
+
+**Stutter owners under `?engine=own` named and the first three fixed; camera clearance sees every resident; maplibre-gl not fetched under the flag (2026-11-01, #129).**
+L1 ran `motion-stutter.mjs` on the Jordaan free ride (rails, 120 px/s, 60 s
+after a 10 s warm-up, headed Chrome on the M4 Pro at DPR 2, readable bundles
+via `--no-minify` and `BUNDLES_DIR`) and attributed every frame over 16 ms
+through the V8 profile. Owners before: own-ground cell preparation after its
+fetch (50–91 ms long animation frames: `placeWayDecks` earcutting the road
+polygons of the full 3×3 cells ≈ 150 ms, relief tile insert and decks ≈ 100
+ms, `lngLatToRd` 20 ms), signature-landmark ground re-base
+`_applyChunkPandBases` ≈ 200 ms, GC 77 ms, the three.js render pass 82 ms,
+facade `setFeatures` + chunk install ≈ 60 ms, trees 26 ms. Fixes:
+`GroundStore` yields to a frame (`scheduler.yield`) between relief, deck,
+way-deck and cut steps and per relief tile (page only, workers unchanged);
+`placeWayDecks` indexes only the road polygons inside the profiles' reach (all
+236 way decks in the test box byte-identical, node prepare 6.7 → 4.2 s);
+landmark re-bases run in 4 ms slices with each chunk's ground points projected
+once. Motion window p50/p95/p99 8.3/10.0/10.4 → 8.3/9.9/10.3 ms, frames > 50
+ms 7 → 0, long tasks 7 (462 ms) → 0, longest frame 92 → 40 ms. The P3 gate (no
+streaming task over 16 ms at 1×) is still not met: 13 frames of 17–40 ms
+remain (`_applyChunkPandBases` on a new street chunk ≈ 100 ms total, render +
+shadow ≈ 70 ms, GC 49 ms, main-thread `splitIntoTiles`/`cutMesh` 30 ms, the
+wayOpening deck index still on the full 3×3 ≈ 32 ms, facade `t4` 24 ms); they
+are on TODO. The own ground is the default ground in both engines, so this is
+the one engine-programme change so far with a What's New note. Also: camera
+clearance under the own engine used `sampleFeatures(20_000)`, the first 20k of
+~34k residents, so a wall past that index never lowered the camera;
+`clearanceResidents()` returns all of them (test: a wall at index 30,000).
+P5 step B1 behind the flag: `engine/mapLibreLoader.ts` does not fetch
+maplibre-gl under `?engine=own` (`engine-own.spec` asserts no request). The
+haiku brief for oracle migration 2 (124 files off `vectorMap.map`) is at
+`docs/handoffs/lane-oracle-migration-2-20261031.md`.
+
+**Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
+The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
+drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label
+anchor against the resident building footprints and heights: a frontage that
+faces away from the camera, or has a nearer taller pand between it and the
+camera, does not draw. It runs inside the full-placement winners loop of
+`engine/overlays/labelLayer.ts` (≈ 0.4 ms per pass) over
+`BuildingTileStreamer.residentFeatures()`; `tests/e2e/label-occlusion.spec.ts`
+pins the pose. The user has since said more occlusion is needed; the gaps are
+on TODO. `scripts/motion-stutter.mjs` now runs under the own engine (it
+wrapped `vm.map._render`, which is null under the flag, so every earlier
+own-engine stutter run idled to its deadline and one held the browser lock for
+an hour), with `WATCHDOG=<s>` (debugger pause + stack dump when the page stops
+answering), `STALL_MS`, `DPR`, `VIEWPORT`, `HEADED`. Measured the same evening
+by the materials lane on the M4 Pro at DPR 2, headed, tier high: GPU frame p50
+5.2 ms at the Dam and 5.3 at the Westerkerk; the own ground is 1.3–1.5 ms of
+that across 31 lit layers and ≈ 3.0 M triangles (paving 501k, land 421k, quay
+418k); front-to-back ordering was 0.2 ms slower and flipped coplanar ties, a
+depth prepass would cost more than the < 1 ms it could save, so nothing landed
+and the ≈ 9.5 ms figure from the earlier table is withdrawn (GPU contention
+between lanes). Conclusion for the user's "still stuttery" report: the GPU
+frame is ≈ 5 ms, so the owners are main-thread hitches; L1 names them per task
+next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
+desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
+`start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
+
+**Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
+Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
+classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
+(a 20 m land band under the bridge), no BRU outline or footprint covers it so the OSM bridge way crosses no water and
+gets no way deck, BGT's deck-level (h 1) carriageway is skipped off a deck, the way is in `coverWays` so no OSM bands
+draw, and look B paints the bare land as paving. Lane `bridge-roads-20261031`: `withOpenings` opens the water under
+OSM bridge ways no measured deck or footprint claims (side-by-side ways bundled, 0.5 m past the ends, never over a
+ground-level crossing street), the way-deck path then builds a real deck, re-centred on the BGT deck-level outline.
+Bare OSM highway bridge ways 205 → 166 (with the water cut at the bridge 19 → 1); +0.18 % triangles in 19 cells.
+Pinned: `BRIDGE_ROADS` (Kinkerbrug 743740428, Beltbrug 27316608) and ROAD_SPOTS kinkerbrug-postjesweg,
+beltbrug-jan-van-galenstraat; `probe-undecked-bridges.ts` for the city count.
+
 **World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
 `cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
 2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
@@ -786,7 +931,6 @@ BASCULES list grew, `build-bridge-hints.ts --write` changes only the
 named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
-
 
 **Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
 Reproduced on `main` by boarding at every IJ pier with the real controller
@@ -1706,7 +1850,6 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
-
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
@@ -15255,7 +15398,6 @@ first twelve already measured the camera model.
 ## 2026-09-13 — Roof-focused review and keyboard workflow
 
 
-
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
 upper source view with the candidate's upper roof/gable area, while Full façade
@@ -17832,7 +17974,6 @@ building. Searching in Dutch roughly doubles the hit rate, because nobody
 uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
-
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and

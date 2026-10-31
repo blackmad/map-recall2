@@ -230,7 +230,11 @@ camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
 iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
 P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
 in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
-Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
+Hand-back (6) merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
+named"): stutter owner table + three fixes (What's New "Fewer hitches when
+new ground streams in"), `clearanceResidents()`, P5 B1 (no maplibre-gl fetch
+under the flag), the oracle-migration-2 haiku brief; render-on-change WIP
+held. Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
 shadows through one merged stand-in per level"): shadow draws ÷3, no visible
 change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
 :228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
@@ -300,10 +304,18 @@ JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
 start, which the script does not yet sample; the 36 resident cells plus
 per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31 after format v3
 (HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
-cells (10.4 MB lossless v3 today; v4 with a shared string table, 1 cm
-heights and ≤ 5 cm collinear vertex removal is the lane's next step) plus a
-per-ride download gate ≤ 2 MB under `?world=v1` (browser table pending);
-both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
+cells (v4 published 2026-11-01: 9.13 MB, HISTORY "World cell format v4";
+collinear removal held; next cuts need a byte census by stream, lane) plus a
+per-ride download gate ≤ 2 MB under `?world=v1` (met 2026-11-01: seeded
+1.11 MB, free ride 1.96 MB after facts load on the first card); both in
+`budgets.json`. City: format v5 (lossless roofFurniture integer-list column
++ FOOT refs run symbol) → 8.92 MB, publishing next; decimetre heights/eaves
+are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
+fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
+runtime derives storeys, window rows and the facade kit from the fine value
+(a Westerkerk brick gable turned grey). A safe variant would round only where
+the derived storey/kit decision is unchanged; parked. The gate stays red by
+decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -1344,14 +1356,34 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
   localhost build "looks great". Root cause found: stale cached bundles (18
   stale `?v=` stamps), fixed by content-hash stamping at deploy (HISTORY
-  "Deployed pages stamp every asset"). Still owed: one measured default-vs-own
-  table on the real GPU at DPR 2 in a full window (frame/GPU time, governor
-  state, backing-store size, pop-in timing); every own-engine number so far is
-  headless DPR 1 or an emulator profile (L1, #129).
-- **POI/business labels draw through buildings under `?engine=own`** (user
-  screenshot, Eerste Constantijn Huygensstraat looking north): labels need an
-  occlusion test at the facade-height anchor with hysteresis; pin the pose as
-  a regression (L1, after the table).
+  "Deployed pages stamp every asset"). Real-GPU table delivered (M4 Pro,
+  DPR 2, #129): own engine frame p99 9–19 ms vs default 58–75, sharp, no
+  governor step-down; GPU frame ≈ 5 ms p50 at the Dam/Westerkerk, own ground
+  1.3–1.5 ms of it (materials lane 2026-10-31, nothing pixel-identical saves
+  anything measurable, so fill is not the owner on this Mac). The user still
+  feels stutter on localhost `?engine=own`: owners are main-thread hitches,
+  named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
+  owners under `?engine=own` named"); the first three are fixed on main
+  (frames > 50 ms 7 → 0, long tasks 7 → 0 on the Jordaan ride). Still above
+  16 ms, 13 frames of 17–40 ms per 60 s: `_applyChunkPandBases` on a newly
+  added street chunk (≈ 100 ms total: first separation + relief sampling),
+  three.js render + `shadowMap.render` (≈ 70 ms), GC (49 ms), main-thread
+  own-ground `splitIntoTiles`/`cutMesh` (30 ms), the wayOpening deck index
+  still on the full 3×3 road cells (≈ 32 ms), facade `t4` (24 ms); P3 gate
+  "no streaming task > 16 ms at 1×" not met (L1, seeded-route run pending).
+  Both engines also render every idle frame (fan): render-on-change WIP on
+  L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
+  frames; spec not green yet, stays out of main until it is).
+- **POI/business labels through buildings under `?engine=own`** (user
+  screenshot, Eerste Constantijn Huygensstraat; "we still need more
+  occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
+  at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
+  occluded too; `street-label-occlusion.spec` passes under both engines.
+  Left: Cafe Kompleet at a row-house corner the frontage walk misses; names
+  ever drawn through a building while riding 6 s from the Westerkerk still
+  14 → 7 (between-pass re-tests cover 4 POIs per frame, not street names);
+  the occlusion step's own per-frame cost is not isolated against the ≤ 0.3
+  ms budget. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways
@@ -1524,6 +1556,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   palette is about twice as light as measured walls. Next: measured colours
   for generic facades next to chunks (facade-colour pipeline). Whether shade
   sides go past 0.55 toward flat overcast light is the user's call.
+- **Bridges still bare after the bridge-roads lane** (2026-10-31, HISTORY "Roads across unregistered road
+  bridges"): 166 OSM highway bridge ways draw a land patch (paving under look B) where the road should be, all over
+  land: Westrandweg/Ringweg/Gooiseweg viaducts, Schiphol Vertrekpassage, Piet Heinkade, 11 De Ruijterkade busways,
+  Johan van Hasseltweg, cycle culvert 118576817 west of the Kinkerbrug. Needs a way deck over land or the h 1 BGT
+  polygons on the relief (which would paint roads under viaducts). Also: Beltbrug cycle/median bands stop at the
+  abutments (covered OSM cycleways emit no bands), thin pale seams at Beltbrug ends, water specks at skewed deck
+  corners (Nassauplein, Postjesweg), measured decks narrower than the survey (BRU0034, BRU0117, BRU0108).
+  Lists: `artifacts/bridge-roads/work/undecked-after.txt` in the lane worktree; `probe-undecked-bridges.ts`.
 - **Bridge follow-ups** (2026-10-17, HISTORY "Way decks: level over
   underpasses, chained ways, parapets at the road edges"): 22 of 1,200 street
   bridge ways still draw no surface. **PAUSED by the user (2026-10-17):**

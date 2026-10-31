@@ -46,6 +46,8 @@ const levelUrl = (spec, level) => {
  *  asked about. Matching it exactly matters more than picking a nicer colour:
  *  a player learns "yellow means this one". */
 const HIGHLIGHT_COLOUR = 0xffd21f;
+/** Main-thread milliseconds one slice of the ground re-base pass may take before yielding to a frame (#129). */
+const GROUND_BASE_SLICE_MS = 4;
 
 /**
  * Rotation about the vertical axis, in radians, that points the model's wide
@@ -783,9 +785,25 @@ export class SignatureLandmarks {
     this.refreshGroundBases();
   }
 
+  /**
+   * Re-stand every model on the relief, a few milliseconds per task (#129 stutter: street chunks sample the relief
+   * under every ground vertex, and one pass over all of them ran 80-130 ms in a single task while riding). A new
+   * call restarts the pass. Returns the models moved in its first slice.
+   */
   refreshGroundBases() {
+    this._groundPass = { list: [...(this._entries || [])], i: 0 };
+    return this._continueGroundBases(this._groundPass);
+  }
+
+  _continueGroundBases(pass) {
+    if (this._groundPass !== pass || this._removed) return 0;
+    const end = performance.now() + GROUND_BASE_SLICE_MS;
     let changed = 0;
-    for (const entry of this._entries || []) if (this._applyGroundBase(entry)) changed++;
+    while (pass.i < pass.list.length) {
+      if (this._applyGroundBase(pass.list[pass.i++])) changed++;
+      if (pass.i < pass.list.length && performance.now() > end) { setTimeout(() => this._continueGroundBases(pass), 0); break; }
+    }
+    if (pass.i >= pass.list.length) this._groundPass = null;
     if (changed) this.map.triggerRepaint();
     return changed;
   }
@@ -840,12 +858,23 @@ export class SignatureLandmarks {
     const bases = new Map();
     const v = new THREE.Vector3();
     for (const m of entry.chunkPands.meshes) {
-      const p = m.base;
-      const ground = api.groundVertices(m.owner, i => v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator).z / entry.units);
-      for (const [pand, list] of ground) for (const i of list) {
-        v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator);
-        const lngLat = new this.maplibregl.MercatorCoordinate(v.x, v.y, 0).toLngLat();
-        const z = this._groundBase([lngLat.lng, lngLat.lat], 0);
+      // Each pand's ground-level points as lng/lat, once per mesh (the unlifted positions never change) and without
+      // repeats: the primitives share their footprint corners, and every re-base used to redo the projections (#129).
+      if (!m.groundPoints) {
+        const p = m.base, seen = new Set();
+        m.groundPoints = [];
+        const ground = api.groundVertices(m.owner, i => v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator).z / entry.units);
+        for (const [pand, list] of ground) for (const i of list) {
+          v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator);
+          const lngLat = new this.maplibregl.MercatorCoordinate(v.x, v.y, 0).toLngLat();
+          const key = `${pand}|${lngLat.lng.toFixed(7)}|${lngLat.lat.toFixed(7)}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          m.groundPoints.push([pand, [lngLat.lng, lngLat.lat]]);
+        }
+      }
+      for (const [pand, lngLat] of m.groundPoints) {
+        const z = this._groundBase(lngLat, 0);
         if (z === undefined) return false;
         bases.set(pand, Math.min(bases.has(pand) ? bases.get(pand) : Infinity, z ?? 0));
       }

@@ -36,8 +36,10 @@ export function occlusionWanted(pitchedView: boolean, mapPitchDeg: number | null
 type AnyMap = any;
 interface VectorMapLike {
   map?: AnyMap;
-  _completeCity?: { sampleFeatures?: (limit?: number) => readonly FootprintFeature[] } | null;
+  _completeCity?: { sampleFeatures?: (limit?: number) => readonly FootprintFeature[]; residentFeatures?: () => readonly FootprintFeature[] } | null;
   worldToLngLat?(x: number, y: number, loader: unknown): [number, number] | { lng: number; lat: number };
+  /** The own engine (`?engine=own`, no MapLibre `map`): its camera eye (engine/ownWorldView.ts `cameraEye`). */
+  cameraEye?(): { lng: number; lat: number; altitudeM: number } | null;
 }
 interface LabelAnchor { x: number; y: number }
 
@@ -60,17 +62,25 @@ export class StreetLabelOcclusion {
     this.stats.tested = 0; this.stats.hidden = 0; this.stats.ms = 0;
     this.lastHidden = [];
     const vm = host as VectorMapLike | null | undefined;
-    if (!pitched || !vm?.map || !vm.worldToLngLat || !loader) return null;
+    if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
     const toLngLat = vm.worldToLngLat.bind(vm);
-    const features = vm._completeCity?.sampleFeatures?.(1_000_000);
+    // The own engine: every resident (cached by the streamer, so the index is rebuilt only when the set changes).
+    const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1_000_000);
     this.index.refresh(features, BUILD_BUDGET_MS);
     this.stats.features = this.index.stats.features;
     this.stats.buildMs = this.index.stats.buildMs;
     if (!this.index.ready) return null;
-    const t = vm.map.transform;
-    const at = t?.getCameraLngLat?.(), altM = t?.getCameraAltitude?.();
-    if (!at || !Number.isFinite(altM)) return null;
-    const camera = { lng: at.lng, lat: at.lat, altM };
+    let camera: { lng: number; lat: number; altM: number };
+    if (vm.map) {
+      const t = vm.map.transform;
+      const at = t?.getCameraLngLat?.(), altM = t?.getCameraAltitude?.();
+      if (!at || !Number.isFinite(altM)) return null;
+      camera = { lng: at.lng, lat: at.lat, altM };
+    } else {
+      const eye = vm.cameraEye!();
+      if (!eye || !Number.isFinite(eye.altitudeM)) return null;
+      camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
+    }
     const blockedAt = (p: LabelAnchor): boolean => {
       const ll = toLngLat(p.x, p.y, loader);
       const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];

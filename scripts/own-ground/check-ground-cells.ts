@@ -414,6 +414,7 @@ async function main(): Promise<void> {
   await bridgeSurfaceRegressions();
   await wayDeckHoleRegressions();
   await wayDeckCarriageRegressions();
+  await bridgeRoadRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -1180,6 +1181,44 @@ async function wayDeckCarriageRegressions(): Promise<void> {
     const at = pts.filter(({ p, out }) => carriage(p[0] - out[0] * CARRIAGE_EDGE_M, p[1] - out[1] * CARRIAGE_EDGE_M) && !carriage(p[0] + out[0] * CARRIAGE_EDGE_M, p[1] + out[1] * CARRIAGE_EDGE_M)).length;
     const share = pts.length ? at / pts.length : 0, ok = share >= CARRIAGE_EDGE_SHARE, live = mode === 'half-width';
     check(pts.length > 0 && (live ? !ok : ok), `${id} (${label}, ${mode}): ${at} of ${pts.length} parapet points within ${CARRIAGE_EDGE_M} m of the carriageway's outer edge (${(share * 100).toFixed(0)}%)${live ? ' (at the way half-width: the pin is live)' : ''}`);
+  }
+}
+
+/**
+ * Road bridges over water cut at the bridge (user 2026-10-31, "why missing road" / "recent bridge work made something
+ * weird here", artifacts/bridge-roads/): the OpenFreeMap water stops at both deck edges, no register outline carries the
+ * bridge, so the way crossed no water and got no way deck, and the survey's deck-level polygons (h 1) had nothing to lie
+ * on: the carriageway stopped at both abutments over bare land, which look B draws with the paving texture. The water
+ * opened under the way (groundStore withOpenings, wayDecks.ts WAY_OPENING_REACH_M) gives each a way deck: along the
+ * way (a quarter, half and three quarters) the deck carries the point and the top is road; without the openings the
+ * same probes read land (the pin is live).
+ */
+const BRIDGE_ROADS: [number, number, number, string][] = [
+  [743740428, 4.86005, 52.36460, 'Kinkerbrug: Postjesweg over the Kostverlorenvaart (Het Sieraad, The Coffee Bridge)'],
+  [27316608, 4.86982, 52.37539, 'Beltbrug: Jan van Galenstraat over the Kostverlorenvaart (De Otter)'],
+];
+const ROAD_TOPS = ['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'kerb', 'paint', 'tram'];
+async function bridgeRoadRegressions(): Promise<void> {
+  const closed = new GroundStore(readExtract, { roads: true, wayOpenings: false });
+  await closed.init();
+  await roadsStore.init();
+  for (const [id, lng, lat, label] of BRIDGE_ROADS) {
+    const [x, y] = toLocal(lng, lat);
+    const probe = async (s: GroundStore) => {
+      const keys = GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k));
+      const osm = (await Promise.all(keys.map(k => s.osmCell(k)))).flatMap(o => o?.ways ?? []).find(w => w.id === id);
+      if (!osm) return null;
+      const pts = osm.g.map(q => toLocal(q[0], q[1]));
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      return [0.25, 0.5, 0.75].map(f => {
+        const [a, b] = [pts[0], pts[pts.length - 1]], px = a[0] + (b[0] - a[0]) * f, py = a[1] + (b[1] - a[1]) * f;
+        return { deck: s.surface.deckWeight(px, py) > 0, top: cells.map(c => layersAt(c, px, py)).find(r => r.top)?.top ?? 'none' };
+      });
+    };
+    const on = await probe(roadsStore), off = await probe(closed);
+    check(!!on && on.every(r => r.deck && ROAD_TOPS.includes(r.top)), `bridge road ${id} (${label}): deck and road top along the way (${on?.map(r => `${r.deck ? 'deck' : 'no deck'}/${r.top}`).join(', ') ?? 'way not found'})`);
+    check(!!off && off.some(r => !r.deck && r.top === 'land'), `bridge road ${id}: without the openings ${off?.map(r => `${r.deck ? 'deck' : 'no deck'}/${r.top}`).join(', ') ?? 'way not found'} (the pin is live)`);
   }
 }
 
