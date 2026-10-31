@@ -14,11 +14,20 @@
 // is listed in every own-ground cell it passes through; the mesh keeps only the pieces whose middle lies in the cell.
 //
 // Mesh (one track = one way): a ballast bed (a 3.1 m top carrying the sleepers as a texture, shoulders sloping to the
-// ground 0.75 m further out) and two rails at standard gauge. A bridge way's bed rides on a straight line between its
-// ends' heights (never under the surface it crosses) on a concrete slab. Where the track crosses a street at grade
-// (a level crossing) the bed is flat with the road and only the rails show.
+// ground 0.75 m further out) and two rails at standard gauge. The bed's level comes from railProfile.ts (`levels`: the
+// relief's envelope at the track's grade, bridge decks between their approaches); a bridge way's bed rides on a
+// concrete slab, and so does a track the envelope lifts clear of the relief (an approach over the fill's dip). Where
+// the track crosses a street at grade (a level crossing) the bed is flat with the road and only the rails show.
+//
+// Never under the ground (lane rail-look 2026-10-31, "train tracks buried by surface" at the Piet Heinkade): the bed
+// is a chord between stations 12 m apart (24 m far), the land a 5 m (10 m) grid, so where the land bulged between
+// two stations, or rose across the bed on an embankment's flank, it drew over the ballast and the rails. The level
+// (railProfile.ts) is already the highest land across the bed every 4 m; each piece's chord is then checked against
+// the land sampled every FLOOR_SAMPLE_M along it (centre and both top edges) and both its stations raised by the
+// worst deficit, and each toe stands `toeLift` over the highest land along its edge.
 
 import { emptyMesh, vertexNormals, type MeshArrays } from './drape.js';
+import { levelAt, type WayLevel } from './railProfile.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
 export const RAIL_VERSION = 1 as const;
@@ -77,6 +86,12 @@ export const isRailCell = (c: unknown): c is RailCell => !!c && typeof c === 'ob
 
 /** Cross-section (metres): half the bed's top, the shoulder's toe, the top over the ground, the rails. */
 export const RAIL_SECTION = { topHalf: 1.55, toeHalf: 2.3, topLift: 0.32, serviceDrop: 0.03, toeLift: 0.03, gauge: 1.435, railWidth: 0.14, railHeight: 0.16, flatLift: 0.05, slabDepth: 1.1, slabHalf: 2.45 } as const;
+/** A track this far over the relief (metres, the envelope's lift) stands on a slab whose sides reach down to the ground. */
+export const RAISED_M = 0.8;
+/** A piece takes the level's stations where the level leaves its chord by more than this (metres): fine and far builds. */
+export const LEVEL_TOL_M = { fine: 0.1, far: 0.3 } as const;
+/** Spacing of the land samples under a piece (metres) for the never-under-the-ground floor (the land grid is 5 m). */
+export const FLOOR_SAMPLE_M = 2;
 /** Max piece length along a track (metres): fine and far builds. */
 export const RAIL_STEP_M = { fine: 12, far: 24 } as const;
 /** The sleeper texture's tile (metres): the bed top's u runs 0..2·topHalf across it, v along the track. */
@@ -87,7 +102,7 @@ export const RAIL_TONES = { ballast: [126, 117, 106] as const, sleeper: [170, 16
 export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number], soffit: [0.46, 0.46, 0.44] as [number, number, number] };
 
 export interface RailMeshes { ballast: MeshArrays; track: MeshArrays; slab: MeshArrays; stats: RailBuildStats }
-export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number> }
+export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number>; /** Bridge metres drawn on the relief without a slab (railProfile.ts `plain`: no approach places the deck). */ plainBridgeMetres?: number; /** Metres on a slab off a bridge (the envelope lifted the track over RAISED_M). */ raisedMetres?: number; /** railProfile.ts stats. */ profile?: import('./railProfile.js').RailProfileStats }
 
 export interface RailBuildInput {
   ways: readonly RailWay[];
@@ -101,6 +116,12 @@ export interface RailBuildInput {
   far?: boolean;
   /** Draw the rails (default true; off far away on touch devices). */
   rails?: boolean;
+  /** The beds' levels (railProfile.ts railLevels); a way without one rides the relief (a bridge: the line between its ends). */
+  levels?: ReadonlyMap<RailWay, WayLevel>;
+  /** The bed never under the land (default true; false only for the regression's pin). */
+  floor?: boolean;
+  /** Points whose floor is measured (a tunnel cut's box): no floor raise there (the trench's sides are not under the bed). */
+  measured?: (x: number, y: number) => boolean;
 }
 
 /** Split every segment into equal pieces of at most `step` metres (deterministic per way, so neighbour cells meet). */
@@ -128,39 +149,80 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
   const stats: RailBuildStats = { ways: 0, metres: 0, bridgeMetres: 0, levelCrossingMetres: 0, byKind: {} };
   const drawRails = input.rails !== false && !input.far;
   for (const way of input.ways) {
-    const pts = densifyEven(way.points, input.far ? RAIL_STEP_M.far : RAIL_STEP_M.fine);
-    const n = pts.length;
-    // Which pieces are the cell's own; nothing to do when none is.
-    const own: boolean[] = [];
+    const coarse = densifyEven(way.points, input.far ? RAIL_STEP_M.far : RAIL_STEP_M.fine);
+    // Which pieces are the cell's own (by the even piece's middle); nothing to do when none is.
+    const coarseOwn: boolean[] = [];
     let any = false;
-    for (let i = 0; i + 1 < n; i++) { const o = input.inCell((pts[i][0] + pts[i + 1][0]) / 2, (pts[i][1] + pts[i + 1][1]) / 2); own.push(o); any ||= o; }
+    for (let i = 0; i + 1 < coarse.length; i++) { const o = input.inCell((coarse[i][0] + coarse[i + 1][0]) / 2, (coarse[i][1] + coarse[i + 1][1]) / 2); coarseOwn.push(o); any ||= o; }
     if (!any) continue;
     stats.ways++;
+    // Where the level bends inside a piece (a deck meeting its approach, a ramp's foot), the piece takes the level's
+    // own stations, so the bed follows it and two ways meeting there meet at one height.
+    const level = input.levels?.get(way);
+    const pts: Vec2[] = [coarse[0]], own: boolean[] = [];
+    for (let i = 0, s0 = 0; i + 1 < coarse.length; i++) {
+      const a = coarse[i], b = coarse[i + 1], len = Math.hypot(b[0] - a[0], b[1] - a[1]), s1 = s0 + len;
+      if (level) {
+        const inner = level.s.map((s, j) => j).filter(j => level.s[j] > s0 + 0.05 && level.s[j] < s1 - 0.05);
+        const za = levelAt(level, s0), zb = levelAt(level, s1);
+        if (inner.some(j => Math.abs(level.z[j] - (za + (zb - za) * (level.s[j] - s0) / (len || 1))) > (input.far ? LEVEL_TOL_M.far : LEVEL_TOL_M.fine))) {
+          for (const j of inner) { const f = (level.s[j] - s0) / (len || 1); pts.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); own.push(coarseOwn[i]); }
+        }
+      }
+      pts.push(b); own.push(coarseOwn[i]);
+      s0 = s1;
+    }
+    const n = pts.length;
     const normals = vertexNormals(pts, 1.6);
     const along: number[] = [0];
     for (let i = 1; i < n; i++) along.push(along[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
     const total = along[n - 1];
-    // Ground under the centreline; a bridge rides the straight line between its ends (never under what it crosses).
+    // Ground under the centreline; the bed's level from the profile (a bridge without one rides the straight line
+    // between its ends' heights, never under the surface it crosses).
     const ground = pts.map(p => input.height(p[0], p[1]));
-    const z = way.bridge ? ground.map((g, i) => Math.max(g, ground[0] + (ground[n - 1] - ground[0]) * (total > 0 ? along[i] / total : 0))) : ground;
+    const bridge = way.bridge && !level?.plain;
+    const z = level ? along.map(s => levelAt(level, s)) : way.bridge ? ground.map((g, i) => Math.max(g, ground[0] + (ground[n - 1] - ground[0]) * (total > 0 ? along[i] / total : 0))) : ground;
     const flat = pts.map(() => false);
     if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if ((own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
-    const top = (i: number) => z[i] + (flat[i] ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
+    // Never under the ground: each piece's chord (centre and both top edges) stays over the land sampled along it,
+    // both its stations raised by the piece's worst deficit; each toe over the highest land along its edge.
+    const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
+    const raise = new Float64Array(n), toeL = new Float64Array(n - 1).fill(-Infinity), toeR = new Float64Array(n - 1).fill(-Infinity);
+    const zb = (i: number) => (flat[i] ? ground[i] : z[i]);
+    if (input.floor !== false) for (let i = 0; i + 1 < n; i++) {
+      if ((!needed(i) && !needed(i + 1)) || input.measured?.(pts[i][0], pts[i][1]) || input.measured?.(pts[i + 1][0], pts[i + 1][1])) continue;
+      const [ax, ay] = pts[i], [bx, by] = pts[i + 1], len = along[i + 1] - along[i], nx = -(by - ay) / (len || 1), ny = (bx - ax) / (len || 1);
+      const k = Math.max(1, Math.ceil(len / FLOOR_SAMPLE_M));
+      let deficit = 0;
+      for (let j = 0; j <= k; j++) {
+        const f = j / k, x = ax + (bx - ax) * f, y = ay + (by - ay) * f, chord = zb(i) * (1 - f) + zb(i + 1) * f;
+        for (const o of [-S.topHalf, 0, S.topHalf]) deficit = Math.max(deficit, input.height(x + nx * o, y + ny * o) - chord);
+        toeL[i] = Math.max(toeL[i], input.height(x + nx * S.toeHalf, y + ny * S.toeHalf));
+        toeR[i] = Math.max(toeR[i], input.height(x - nx * S.toeHalf, y - ny * S.toeHalf));
+      }
+      if (!flat[i]) raise[i] = Math.max(raise[i], deficit);
+      if (!flat[i + 1]) raise[i + 1] = Math.max(raise[i + 1], deficit);
+    }
+    const both = (a: Float64Array, i: number) => Math.max(i > 0 ? a[i - 1] : -Infinity, i < n - 1 ? a[i] : -Infinity);
+    const base = (i: number) => zb(i) + raise[i];
+    const top = (i: number) => base(i) + (flat[i] ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
+    // On a slab: a bridge, or a track lifted clear of the land across its bed (an approach over the fill's dip).
+    const across = (i: number) => { const [nx, ny, k] = normals[i]; return Math.max(ground[i], input.height(pts[i][0] + nx * S.topHalf * k, pts[i][1] + ny * S.topHalf * k), input.height(pts[i][0] - nx * S.topHalf * k, pts[i][1] - ny * S.topHalf * k)); };
+    const slabbed = (i: number) => bridge || (!flat[i] && z[i] - across(i) > RAISED_M);
     const at = (i: number, off: number): Vec2 => { const [nx, ny, k] = normals[i]; return [pts[i][0] + nx * off * k, pts[i][1] + ny * off * k]; };
     // Per station: the bed's five vertices (toe, top edge, top edge, toe) and the rails.
     const bedIdx: number[][] = [], railIdx: number[][] = [], slabIdx: number[][] = [];
-    const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
     for (let i = 0; i < n; i++) {
       if (!needed(i)) { bedIdx.push([]); railIdx.push([]); slabIdx.push([]); continue; }
-      const t = top(i), vv = along[i];
-      const toeZ = (p: Vec2) => (way.bridge ? t - S.topLift + S.toeLift : flat[i] ? t : Math.min(t, input.height(p[0], p[1]) + S.toeLift));
+      const t = top(i), vv = along[i], onSlab = slabbed(i);
+      const toeZ = (p: Vec2, edge: Float64Array) => (onSlab ? t - S.topLift + S.toeLift : flat[i] ? t : Math.min(t, Math.max(input.height(p[0], p[1]), both(edge, i)) + S.toeLift));
       const lt = at(i, S.toeHalf), le = at(i, S.topHalf), re = at(i, -S.topHalf), rt = at(i, -S.toeHalf);
       // u: the shoulders sample the gravel column at the tile's edge, the top runs across the sleepers.
       bedIdx.push([
-        v(ballast, lt[0], lt[1], toeZ(lt), 0.05, vv),
+        v(ballast, lt[0], lt[1], toeZ(lt, toeL), 0.05, vv),
         v(ballast, le[0], le[1], t, 0, vv),
         v(ballast, re[0], re[1], t, 2 * S.topHalf, vv),
-        v(ballast, rt[0], rt[1], toeZ(rt), 2 * S.topHalf - 0.05, vv),
+        v(ballast, rt[0], rt[1], toeZ(rt, toeR), 2 * S.topHalf - 0.05, vv),
         // The shoulders' own copies of the top edges (u in the gravel column, so no sleeper ends smear down the slope).
         v(ballast, le[0], le[1], t, 0.05, vv),
         v(ballast, re[0], re[1], t, 2 * S.topHalf - 0.05, vv),
@@ -174,8 +236,9 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
         }
         railIdx.push(r);
       } else railIdx.push([]);
-      if (way.bridge) {
-        const sl = at(i, S.slabHalf), sr = at(i, -S.slabHalf), st = t - S.topLift, sb = st - S.slabDepth;
+      if (onSlab) {
+        // A bridge's slab is slabDepth deep; a raised track's reaches down into the ground beside it.
+        const sl = at(i, S.slabHalf), sr = at(i, -S.slabHalf), st = t - S.topLift, sb = bridge ? st - S.slabDepth : Math.min(st - S.slabDepth, input.height(sl[0], sl[1]), input.height(sr[0], sr[1])) - 0.2;
         slabIdx.push([
           v(slab, sl[0], sl[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sl[0], sl[1], sb, 0, vv, RAIL_COLOURS.slab),
           v(slab, sr[0], sr[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sr[0], sr[1], sb, 0, vv, RAIL_COLOURS.slab),
@@ -191,6 +254,8 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
       stats.metres += len;
       stats.byKind[way.kind] = (stats.byKind[way.kind] ?? 0) + len;
       if (way.bridge) stats.bridgeMetres += len;
+      if (way.bridge && !bridge) stats.plainBridgeMetres = (stats.plainBridgeMetres ?? 0) + len;
+      if (!bridge && slabbed(i) && slabbed(i + 1)) stats.raisedMetres = (stats.raisedMetres ?? 0) + len;
       if (flat[i] && flat[i + 1]) stats.levelCrossingMetres += len;
       const a = bedIdx[i], b = bedIdx[i + 1];
       // Left normal is +offset: a[0] toe left, a[1] top left, a[2] top right, a[3] toe right. CCW from above.

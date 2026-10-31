@@ -28,6 +28,8 @@ import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, 
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
+import { buriedShare, deckBreaks, RAIL_SPOTS } from '../../src/canalRecall/ownGround/railRegressions.ts';
+import type { RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
 import { gridHeight } from '../../src/canalRecall/ownGround/drape.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -132,6 +134,41 @@ async function viaductRegressions(): Promise<void> {
   }
 }
 
+/**
+ * Railway tracks (railTracks.ts, railProfile.ts; three player notes on build 04e3c88, lane rail-look 2026-10-31):
+ * at each RAIL_SPOTS place, at both LODs, no ground fill draws over the bed's top; at the Oostertoegang the rail
+ * bridge decks run on from their approaches without a step or a tilt. The pin is live: the build without the levels
+ * and the floor (`railLevels: false`, rail-v1 as it was) buries the beds there, and tilts and breaks the decks.
+ */
+async function railRegressions(): Promise<void> {
+  const on = new GroundStore(readExtract, { roads: true }), off = new GroundStore(readExtract, { roads: true, railLevels: false });
+  await on.init(); await off.init();
+  const cellsNear = async (s: GroundStore, x: number, y: number, r: number, lod: 0 | 1) => {
+    const keys = new Set<string>();
+    for (let dx = -r - 60; dx <= r + 60; dx += 30) for (let dy = -r - 60; dy <= r + 60; dy += 30) keys.add(s.cellAt(x + dx, y + dy));
+    const cells: BuiltCell[] = [], rails: RailWay[] = [], seen = new Set<string>();
+    for (const k of keys) {
+      if (!s.covers(k)) continue;
+      cells.push(buildCell(await s.cellInput(k, lod)));
+      for (const w of await s.railCell(k)) { const id = JSON.stringify(w.points); if (!seen.has(id)) { seen.add(id); rails.push(w); } }
+    }
+    return { cells, rails };
+  };
+  for (const spot of RAIL_SPOTS) {
+    const [x, y] = toLocal(spot.at[0], spot.at[1]);
+    for (const lod of [0, 1] as const) {
+      const after = await cellsNear(on, x, y, spot.radiusM, lod), before = await cellsNear(off, x, y, spot.radiusM, lod);
+      const a = buriedShare(after.cells, after.rails, [x, y], spot.radiusM), b = buriedShare(before.cells, before.rails, [x, y], spot.radiusM);
+      check(a.samples > 500 && a.share <= spot.maxBuried, `rail ${spot.id} LOD ${lod}: ground over the bed at ${a.buried}/${a.samples} samples (${(a.share * 100).toFixed(2)} %, ≤ ${spot.maxBuried * 100} %) — ${spot.label}`);
+      if (lod === 1) check(b.share >= spot.minBuriedBefore, `rail ${spot.id}: the pin is live (rail-v1 without levels buries ${(b.share * 100).toFixed(1)} % at LOD 1, ≥ ${spot.minBuriedBefore * 100} %)`);
+      if (!spot.deck) continue;
+      const da = deckBreaks(after.cells, after.rails, [x, y], spot.radiusM), db = deckBreaks(before.cells, before.rails, [x, y], spot.radiusM);
+      check(da.ways >= 4 && da.maxStepM <= spot.deck.maxStepM && da.maxSlope <= spot.deck.maxSlope, `rail ${spot.id} LOD ${lod}: ${da.ways} bridge decks continuous, largest step ${da.maxStepM} m (≤ ${spot.deck.maxStepM}), steepest 4 m slope ${da.maxSlope} (≤ ${spot.deck.maxSlope})${da.maxStepM > spot.deck.maxStepM ? ` — ${da.worst}` : ''}`);
+      if (lod === 0) check(db.maxSlope >= spot.deck.minSlopeBefore, `rail ${spot.id}: the deck pin is live (rail-v1 decks tilt to ${db.maxSlope}, ≥ ${spot.deck.minSlopeBefore}; step ${db.maxStepM} m)`);
+    }
+  }
+}
+
 async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
@@ -139,6 +176,7 @@ async function main(): Promise<void> {
   if (process.argv.includes('--bare-land')) { await bareLandCity(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--relief')) { await reliefRegressions(); if (failed) process.exit(1); return; }
+  if (process.argv.includes('--rails')) { await railRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
@@ -153,6 +191,7 @@ async function main(): Promise<void> {
     return;
   }
   await reliefRegressions();
+  await railRegressions();
   // Named bridges (lane bridges-elevation 2026-10-13): the user's Westerkerk bridge (Nieuwe-Wercksbrug, Rozengracht
   // over the Prinsengracht), Rijckerbrug, the Blauwbrug, plus the earlier three. Crown rise over the approaches
   // (our relief + the AHN profile, ±0.15 m), and the deck attached: its top fills the footprint out to the railings.

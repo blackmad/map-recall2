@@ -39,6 +39,7 @@ import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } fr
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { AT_GRADE_HIGHWAYS, crossingTest, railMeshes, type RailBuildStats, type RailWay } from './railTracks.js';
+import { PROFILE_PAD_M, railLevels } from './railProfile.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -133,6 +134,10 @@ export interface CellInput {
   marks?: readonly RoadMark[];
   /** rail-v1 tracks through the cell (railTracks.ts): ballast bed, rails, a slab under bridge track. */
   rails?: readonly RailWay[];
+  /** The 3×3 neighbourhood's tracks (railProfile.ts solves the levels on their graph, so cells agree at a seam). */
+  railsAround?: readonly RailWay[];
+  /** railProfile.ts levels and the never-under-the-ground floor (default on; off only for the regression's pin). */
+  railLevels?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -518,9 +523,13 @@ export function buildCell(input: CellInput): BuiltCell {
   if (input.rails?.length) {
     const atGrade: [Vec2, Vec2][] = [];
     for (const w of ways) if (AT_GRADE_HIGHWAYS.has(w.tags.highway) && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')) for (let i = 0; i + 1 < w.points.length; i++) atGrade.push([w.points[i], w.points[i + 1]]);
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1 });
+    // Levels (railProfile.ts): the relief's envelope at the track's grade, bridge decks between their approaches.
+    // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
+    const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
+    const profile = input.railLevels === false ? null : railLevels(input.rails, input.railsAround ?? [], onLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured);
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}) } : { floor: false }) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab);
-    railStats = r.stats;
+    railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
   }
   phase('rails');
   // roads-v1: markings placed from the mapped crossings and the junction graph, measured on and clipped to the

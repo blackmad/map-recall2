@@ -7,6 +7,7 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, capLargeHoles, coarsenTile, dropSpecks, decodeTile, dilateMask, downsample, encodeTile, extendTile, findPits, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, PIT_DEFAULTS, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
+import type { RailWay } from './railTracks';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
@@ -2071,6 +2072,78 @@ test('rail tracks: a bridge rides the line between its ends, a level crossing is
   const west = railMeshes({ ways: way, inCell: x => x < 37, height: () => 0 }), east = railMeshes({ ways: way, inCell: x => x >= 37, height: () => 0 });
   assert.equal(west.ballast.indices.length + east.ballast.indices.length, whole.ballast.indices.length);
   assert.ok(Math.abs(west.stats.metres + east.stats.metres - whole.stats.metres) < 1e-6);
+});
+
+// Rail levels (railProfile.ts; lane rail-look 2026-10-31, three player notes on build 04e3c88).
+test('rail levels: a bridge chain runs level between its embankments, whatever the fill under its ends', async () => {
+  const { railLevels, levelAt } = await import('./railProfile');
+  // Embankment at +4.4 west of x = 40 and east of x = 160; the fill smears it down to −0.7 over the water between.
+  const relief = (x: number) => (x <= 40 || x >= 160 ? 4.4 : x < 60 ? 4.4 - (x - 40) * 0.25 : x > 140 ? 4.4 - (160 - x) * 0.25 : -0.7);
+  const ways: RailWay[] = [
+    { kind: 'rail', bridge: false, service: false, points: [[0, 0], [50, 0]] },
+    // Three bridge ways end to end, split where OSM splits them (the Oostertoegang: 17 m, 46 m, 10 m).
+    { kind: 'rail', bridge: true, service: false, points: [[50, 0], [67, 0]] },
+    { kind: 'rail', bridge: true, service: false, points: [[67, 0], [113, 0]] },
+    { kind: 'rail', bridge: true, service: false, points: [[113, 0], [150, 0]] },
+    { kind: 'rail', bridge: false, service: false, points: [[150, 0], [200, 0]] },
+  ];
+  const { levels, stats } = railLevels(ways, [], x => relief(x));
+  assert.equal(stats.components, 1);
+  assert.equal(stats.anchored, 1);
+  for (const w of ways) {
+    const l = levels.get(w)!;
+    for (let s = 0; s <= l.s[l.s.length - 1]; s += 1) assert.ok(Math.abs(levelAt(l, s) - 4.4) < 0.35, `${w.points[0]}: ${levelAt(l, s).toFixed(2)} at ${s} m`);
+  }
+  // The approach's smeared last metres (relief 1.9 at x = 50) are lifted to the embankment's line at grade.
+  assert.ok(levelAt(levels.get(ways[0])!, 50) > 4.0, `approach end ${levelAt(levels.get(ways[0])!, 50)}`);
+});
+
+test('rail levels: a ramp at grade is left on the relief, an unanchored bridge is drawn plain on it', async () => {
+  const { railLevels, levelAt, RAIL_GRADE } = await import('./railProfile');
+  const ramp: RailWay = { kind: 'subway', bridge: false, service: false, points: [[0, 0], [200, 0]] };
+  const g = RAIL_GRADE.subway * 0.8, relief = (x: number) => -x * g;
+  const l = railLevels([ramp], [], x => relief(x)).levels.get(ramp)!;
+  for (let s = 0; s <= 200; s += 10) assert.ok(Math.abs(levelAt(l, s) - relief(s)) < 1e-9, `ramp at ${s}: ${levelAt(l, s)} vs ${relief(s)}`);
+  const lone: RailWay = { kind: 'rail', bridge: true, service: false, points: [[0, 50], [40, 50]] };
+  const r = railLevels([lone], [], () => 1);
+  assert.equal(r.levels.get(lone)!.plain, true);
+  assert.equal(r.stats.plain, 1);
+});
+
+test('rail tracks: the bed never under the land between its stations, nor on an embankment flank', async () => {
+  const { railMeshes, RAIL_SECTION } = await import('./railTracks');
+  // A 0.6 m bump between two 12 m stations, and the land rising 0.8 m across the bed (a flank).
+  const land = (x: number, y: number) => Math.max(0, 0.6 - Math.abs(x - 6) * 0.3) + Math.max(0, y) * 0.5;
+  const way: RailWay = { kind: 'rail', bridge: false, service: false, points: [[0, 0], [48, 0]] };
+  const m = railMeshes({ ways: [way], inCell: () => true, height: land });
+  const old = railMeshes({ ways: [way], inCell: () => true, height: land, floor: false });
+  // Sample the bed top (u inside the sleepers) against the land under it.
+  const worst = (mesh: typeof m) => {
+    const p = mesh.ballast.positions, idx = mesh.ballast.indices;
+    let w = Infinity;
+    for (let t = 0; t < idx.length; t += 3) {
+      const [a, b, c] = [idx[t] * 3, idx[t + 1] * 3, idx[t + 2] * 3];
+      for (const [u, v] of [[1 / 3, 1 / 3], [0.5, 0.25], [0.25, 0.5], [0.25, 0.25]]) {
+        const x = p[a] * u + p[b] * v + p[c] * (1 - u - v), y = p[a + 1] * u + p[b + 1] * v + p[c + 1] * (1 - u - v), z = p[a + 2] * u + p[b + 2] * v + p[c + 2] * (1 - u - v);
+        if (Math.abs(y) <= RAIL_SECTION.topHalf) w = Math.min(w, z - land(x, y));
+      }
+    }
+    return w;
+  };
+  assert.ok(worst(m) >= RAIL_SECTION.topLift - 0.02, `bed top over the land by ${worst(m).toFixed(2)} m`);
+  assert.ok(worst(old) < 0, `the pin is live: the old chord dips ${worst(old).toFixed(2)} m under`);
+});
+
+test('rail tracks: with levels, a bent piece takes the level stations and two cells still draw each piece once', async () => {
+  const { railMeshes } = await import('./railTracks');
+  const way: RailWay = { kind: 'rail', bridge: false, service: false, points: [[0, 0], [100, 0]] };
+  const level = { s: [0, 20, 24, 28, 100], z: [0, 0, 1, 0, 0] };
+  const levels = new Map([[way, level]]);
+  const whole = railMeshes({ ways: [way], inCell: () => true, height: () => 0, levels });
+  const top = Math.max(...Array.from({ length: whole.ballast.positions.length / 3 }, (_, i) => (Math.abs(whole.ballast.positions[i * 3] - 24) < 1e-6 ? whole.ballast.positions[i * 3 + 2] : -Infinity)));
+  assert.ok(top >= 1.3, `the bed follows the level's bend at 24 m (${top})`);
+  const west = railMeshes({ ways: [way], inCell: x => x < 25, height: () => 0, levels }), east = railMeshes({ ways: [way], inCell: x => x >= 25, height: () => 0, levels });
+  assert.equal(west.ballast.indices.length + east.ballast.indices.length, whole.ballast.indices.length);
 });
 
 // Named regression (user 2026-10-30, screenshot at Dijksgracht / Piet Heinkade): the raised corridor between Piet
