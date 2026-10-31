@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
+The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
+drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label
+anchor against the resident building footprints and heights: a frontage that
+faces away from the camera, or has a nearer taller pand between it and the
+camera, does not draw. It runs inside the full-placement winners loop of
+`engine/overlays/labelLayer.ts` (≈ 0.4 ms per pass) over
+`BuildingTileStreamer.residentFeatures()`; `tests/e2e/label-occlusion.spec.ts`
+pins the pose. The user has since said more occlusion is needed; the gaps are
+on TODO. `scripts/motion-stutter.mjs` now runs under the own engine (it
+wrapped `vm.map._render`, which is null under the flag, so every earlier
+own-engine stutter run idled to its deadline and one held the browser lock for
+an hour), with `WATCHDOG=<s>` (debugger pause + stack dump when the page stops
+answering), `STALL_MS`, `DPR`, `VIEWPORT`, `HEADED`. Measured the same evening
+by the materials lane on the M4 Pro at DPR 2, headed, tier high: GPU frame p50
+5.2 ms at the Dam and 5.3 at the Westerkerk; the own ground is 1.3–1.5 ms of
+that across 31 lit layers and ≈ 3.0 M triangles (paving 501k, land 421k, quay
+418k); front-to-back ordering was 0.2 ms slower and flipped coplanar ties, a
+depth prepass would cost more than the < 1 ms it could save, so nothing landed
+and the ≈ 9.5 ms figure from the earlier table is withdrawn (GPU contention
+between lanes). Conclusion for the user's "still stuttery" report: the GPU
+frame is ≈ 5 ms, so the owners are main-thread hitches; L1 names them per task
+next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
+desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
+`start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
+
 **World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
 `cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
 2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL

@@ -1344,14 +1344,27 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
   localhost build "looks great". Root cause found: stale cached bundles (18
   stale `?v=` stamps), fixed by content-hash stamping at deploy (HISTORY
-  "Deployed pages stamp every asset"). Still owed: one measured default-vs-own
-  table on the real GPU at DPR 2 in a full window (frame/GPU time, governor
-  state, backing-store size, pop-in timing); every own-engine number so far is
-  headless DPR 1 or an emulator profile (L1, #129).
+  "Deployed pages stamp every asset"). Real-GPU table delivered (M4 Pro,
+  DPR 2, #129): own engine frame p99 9–19 ms vs default 58–75, sharp, no
+  governor step-down; GPU frame ≈ 5 ms p50 at the Dam/Westerkerk, own ground
+  1.3–1.5 ms of it (materials lane 2026-10-31, nothing pixel-identical saves
+  anything measurable, so fill is not the owner on this Mac). The user still
+  feels stutter on localhost `?engine=own`: owners are main-thread hitches,
+  being named per task by `motion-stutter.mjs` under own at DPR 2 (L1); both
+  engines also render every idle frame (fan), render-on-change WIP on L1's
+  branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, spec not green yet).
 - **POI/business labels draw through buildings under `?engine=own`** (user
-  screenshot, Eerste Constantijn Huygensstraat looking north): labels need an
-  occlusion test at the facade-height anchor with hysteresis; pin the pose as
-  a regression (L1, after the table).
+  screenshot, Eerste Constantijn Huygensstraat looking north; user: "we still
+  need more occlusion"). First pass on main (HISTORY "Label occlusion under
+  `?engine=own`"): `engine/labelOcclusion.ts` hides a shopfront label whose
+  frontage faces away or sits behind a nearer resident building, ≈ 0.4 ms per
+  full placement pass, pinned in `label-occlusion.spec.ts`. Open: the gaps
+  the user still sees (far side of a block, anchors above a lower front
+  building's eave, labels resolved between full passes while moving,
+  flicker hysteresis) with before/after counts at the pinned pose and the
+  Dam/Westerkerk cameras (materials lane, on L1's module); `sampleFeatures(
+  20_000)` keeps only the first 20k of ~34k residents so the camera-clearance
+  guard is blind around the camera (L1).
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways
