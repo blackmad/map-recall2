@@ -6,6 +6,13 @@
  *   npm run world:compile -- --tiles=8414/5384,8415/5384   # a subset (tests, quick looks)
  *   npm run world:compile -- --debug      # DEBUG cells: also the enriched source bags (ATTR), for diagnosis;
  *                                         # the runtime never needs them (cellFormat.ts, flags)
+ *   npm run world:compile -- --against=none   # skip the reference check below (an intended decorator change)
+ *
+ * Reference check (P2 bytes gate): every written cell is decoded and compared, whole (buildings, geometry,
+ * styled bags, groups, party walls, hidden ids), with the same cell in --against (default: the published
+ * public/data/extracts/amsterdam/world-v1, any format version) when that cell was compiled from the same
+ * tile and global inputs (hidden ids only when covers.json is also unchanged); a difference throws. A format change must not change one decoded value.
+ * Skipped on a --tiles subset (party walls into unloaded tiles are missing there).
  *
  * It reads what the default runtime path reads (building-tiles z14, building-facts years, roof-facts,
  * monument gables, landmark ids, shopfronts, covers.json, the kit tables) and runs the runtime's own
@@ -38,6 +45,7 @@ const CHANGED = !!flag('changed');
 const WITH_ROOF = !!flag('roof');
 const DEBUG = !!flag('debug');
 const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
+const AGAINST = value('against') === 'none' ? null : path.resolve(value('against') ?? path.join(EXTRACT, 'world-v1'));
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
 const gz = (b: Uint8Array) => zlib.gzipSync(b, { level: 6 }); // Node writes mtime 0, so output is reproducible
@@ -76,6 +84,16 @@ async function main() {
     if (!rebuild.size && !newTiles.length) { console.log('nothing changed'); return; }
   }
 
+  // The reference cells (published world-v1) and which of them came from the inputs this run reads.
+  // Not on a --tiles subset: party walls into tiles that were not loaded are missing there, so cells legitimately differ.
+  const reference = AGAINST && AGAINST !== OUT && !ONLY_TILES && exists(path.join(AGAINST, 'index.json')) ? readJson(path.join(AGAINST, 'index.json')) : null;
+  const ownSources: Record<string, string> = {};
+  for (const f of GLOBAL_INPUTS) ownSources[path.relative(ROOT, f)] = exists(f) ? sha(fs.readFileSync(f)) : 'absent';
+  // covers.json feeds only the hidden ids: when it alone changed, buildings are still compared, HIDE is not.
+  const coversKey = path.relative(ROOT, COVERS);
+  const referenceGlobalsMatch = !!reference && Object.entries(ownSources).every(([f, h]) => f === coversKey || reference.sources?.[f] === h);
+  const referenceCoversMatch = !!reference && reference.sources?.[coversKey] === ownSources[coversKey];
+  const against = { dir: reference ? path.relative(ROOT, AGAINST!) : null, referenceFormat: reference?.format ?? null, globalInputsMatch: referenceGlobalsMatch, coversMatch: referenceCoversMatch, compared: 0, buildings: 0, skippedStale: [] as string[], missing: [] as string[] };
   const chain = gameChain();
   // 1. Tiles -> raw (enriched) features and their styled copies, as BuildingTileStreamer adopts and styles them.
   const rows: Row[] = [];
@@ -143,6 +161,22 @@ async function main() {
       // A runtime cell gives back the styled bag only (raw === styled); a DEBUG cell also the source bag.
       if ((DEBUG && !sameValue(raw.properties, src.raw.properties)) || !sameValue(raw.geometry, src.raw.geometry) || !sameValue(styled.properties, src.styled.properties)) throw Error(`${key}: ${b.id} does not round-trip`);
     });
+    if (reference) {
+      const entry = reference.cells?.[key], file = path.join(AGAINST!, 'cells', `${key}.bin`);
+      const fresh = referenceGlobalsMatch && !!entry && entry.tiles.every((t: string) => reference.tileHashes?.[t] === tileHash.get(t)) && entry.tiles.join() === [...new Set(list.map(r => r.tile))].sort().join();
+      if (!entry || !exists(file)) against.missing.push(key);
+      else if (!fresh) against.skippedStale.push(key);
+      else {
+        const old = decodeCell(zlib.gunzipSync(fs.readFileSync(file)), `reference ${key}`);
+        if (!!old.debug !== DEBUG) against.skippedStale.push(key);
+        else {
+          if (old.buildings.length !== back.buildings.length) throw Error(`${key}: ${back.buildings.length} buildings, the reference cell has ${old.buildings.length}`);
+          back.buildings.forEach((b, k) => { if (!sameValue(b, old.buildings[k])) throw Error(`${key}: ${b.id} decodes differently from the reference cell (${against.dir})`); });
+          if (!sameValue(referenceCoversMatch ? back : { ...back, hide: [] }, referenceCoversMatch ? old : { ...old, hide: [] })) throw Error(`${key}: the decoded cell differs from the reference cell (${referenceCoversMatch ? 'hidden ids or ' : ''}cell fields)`);
+          against.compared++; against.buildings += back.buildings.length;
+        }
+      }
+    }
     const zipped = gz(encoded.bytes);
     fs.writeFileSync(path.join(OUT, 'cells', `${key}.bin`), zipped);
     const streams: Record<string, { offset: number; bytes: number; gz: number }> = {};
@@ -176,6 +210,7 @@ async function main() {
     compiler: COMPILER_VERSION, format: WORLD_FORMAT_VERSION, changedMode: CHANGED, tilesLoaded: load.length,
     cellsWritten: written, cellsTotal: Object.keys(cellsOut).length, cellsOutsideRoadsV1: Object.entries<any>(cellsOut).filter(([, c]) => !c.inRoadsV1).map(([k]) => k),
     buildings: rows.length, ...stats, pipelineMs: Math.round(pipelineMs), roofMs: Math.round(roofMs), hiddenIds: hides.size, hiddenPlaced: hiddenPlaced.size,
+    against,
     bytes: { writtenRaw: rawTotal, writtenGz: gzTotal, maxCellGz: maxGz, allCellsGz: allGz, perStream: streamTotals },
     ms: Math.round(performance.now() - t0),
   };

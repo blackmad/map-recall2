@@ -6,6 +6,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
+import { readWorldIndex } from './worldCells.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import zlib from 'node:zlib';
 import { gameChain, loadTile, type Row } from '../../../scripts/world/pipeline.js';
 import { buildFeatureChunk } from '../threeBuildingFeatures.js';
 
@@ -165,4 +169,84 @@ test('a field a building does not carry costs no bytes (content-lane rule)', asy
   assert.notDeepEqual(after, before);
   delete b.styled.kitNewAttribute;
   assert.deepEqual(encodeCell(withField).bytes, before, 'removing the field restores the exact bytes');
+});
+
+// --- v3 (P2 bytes gate): the same decoded cells as v2, from the published world-v1 cells -----------------
+// The published cells carry what the synthetic cells above do not: party-wall neighbours (local and in other
+// cells), coarse groups, hidden ids. Whatever version they are published in, v2 and v3 must decode alike.
+const PUBLISHED = path.resolve('public/data/extracts/amsterdam/world-v1/cells');
+const published = (key: string): Cell => decodeCell(zlib.gunzipSync(fs.readFileSync(path.join(PUBLISHED, `${key}.bin`))), key);
+const keepOnly = (cell: Cell, keep: Set<number>): Cell => {
+  // A sub-cell of the picked buildings; neighbours re-indexed, a dropped local neighbour kept as its id.
+  const order = [...keep].sort((a, b) => a - b), at = new Map(order.map((k, n) => [k, n]));
+  const buildings = order.map(k => { const b = cell.buildings[k]; return { ...b, neighbours: b.neighbours?.map(n => typeof n === 'number' ? (at.get(n) ?? cell.buildings[n].id) : n) }; });
+  return { ...cell, buildings };
+};
+const sameCell = (a: Cell, b: Cell, what: string) => {
+  assert.equal(a.buildings.length, b.buildings.length, `${what}: buildings`);
+  a.buildings.forEach((x, k) => assert.ok(sameValue(x, b.buildings[k]), `${what}: ${x.id}`));
+  assert.ok(sameValue(a.hide, b.hide), `${what}: hide`);
+  assert.ok(sameValue(a, b), `${what}: cell`);
+};
+
+test('v3: 10,000 random published pands decode exactly as v2 (neighbours, groups, hidden ids), and v3 is smaller', () => {
+  const keys = fs.readdirSync(PUBLISHED).filter(f => f.endsWith('.bin')).map(f => f.slice(0, -4)).sort();
+  const cells = keys.map(published), total = cells.reduce((s, c) => s + c.buildings.length, 0);
+  let seed = 3130 >>> 0;
+  const rand = () => { seed ^= seed << 13; seed >>>= 0; seed ^= seed >>> 17; seed ^= seed << 5; seed >>>= 0; return seed / 4294967296; };
+  const picked = new Map<number, Set<number>>(); let n = 0;
+  while (n < 10_000) { let g = Math.floor(rand() * total), c = 0; while (g >= cells[c].buildings.length) g -= cells[c++].buildings.length; const s = picked.get(c) ?? new Set(); if (!s.has(g)) { s.add(g); n++; } picked.set(c, s); }
+  let v2 = 0, v3 = 0, checked = 0;
+  for (const [c, keep] of picked) {
+    const cell = keepOnly(cells[c], keep), a = encodeCell(cell, 2).bytes, b = encodeCell(cell, 3).bytes;
+    const fromV2 = decodeCell(a, keys[c]), fromV3 = decodeCell(b, keys[c]);
+    sameCell(fromV3, fromV2, keys[c]); sameCell(fromV3, cell, keys[c]);
+    assert.equal(a[4], 2); assert.equal(b[4], 3);
+    assert.deepEqual(encodeCell(fromV3, 3).bytes, b, `${keys[c]}: v3 re-encode is byte-identical`);
+    v2 += zlib.gzipSync(a).length; v3 += zlib.gzipSync(b).length; checked += keep.size;
+  }
+  assert.equal(checked, 10_000);
+  assert.ok(v3 < v2, `v3 ${v3} B gzip < v2 ${v2} B`);
+});
+
+test('v3: whole published sentinel cells decode exactly as v2; sentinels pinned with their party walls', () => {
+  for (const key of [...new Set(SENTINELS.map(s => s.cell))]) {
+    const cell = published(key), v3 = decodeCell(encodeCell(cell, 3).bytes, key);
+    sameCell(v3, decodeCell(encodeCell(cell, 2).bytes, key), key);
+    for (const s of SENTINELS.filter(x => x.cell === key)) {
+      const b = v3.buildings.find(x => x.id === s.id); assert.ok(b, `${s.name}: ${s.id} not in published ${key}`);
+      const rings = b!.geometry.type === 'Polygon' ? b!.geometry.coordinates : b!.geometry.coordinates[0];
+      assert.deepEqual(rings[0][0], s.first, `${s.name}: first vertex`);
+      if (s.holes) assert.equal(rings.length - 1, s.holes, `${s.name}: courtyard ring`);
+      assert.ok(sameValue(b!.neighbours, cell.buildings.find(x => x.id === s.id)!.neighbours), `${s.name}: party walls`);
+    }
+  }
+  const westerkerk = published('-2_0').buildings.find(b => b.id === SENTINELS[0].id)!;
+  assert.ok((westerkerk.neighbours ?? []).length > 0, 'Westerkerk has party-wall neighbours to pin');
+});
+
+test('v3: asymmetric, unsorted, self and cross-cell neighbours, odd coordinates and columns survive', () => {
+  const sq = (x: number, fine: boolean) => { const o = fine ? 3 : 0; const g = (u: number) => u / 1e7; return { type: 'Polygon' as const, coordinates: [[[g(48_000_000 + x * 1000 + o), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_001_000 - o)], [g(48_000_000 + x * 1000 + o), g(523_000_000)]], [], [[g(48_000_500 + x * 1000), g(523_000_500)]]] }; };
+  const neighbours = [[1, 2], [0], [5, 0, 'NL.IMBAG.Pand.0363100012000001'], [3], ['w1', 4], [2], [], [0, 1, 2]];
+  const cell: Cell = { i: -3, j: 4, buildings: neighbours.map((ns, k) => ({ id: `NL.IMBAG.Pand.03631000120000${10 + k}`, tile: k === 6 ? '8413/5384' : '8414/5384', ordinal: [5, 6, 2, 0, 9, 10, 0, 7][k], geometry: sq(k, k % 2 === 1),
+    attr: { colour: ['#a1b2c3', '#000000', '#ffffff', '#123456', '#abcdef', '#fedcba', '#0a0b0c', '#A1B2C3'][k], year: 1600 + k * 37, h: [3.5, 7.25, 1e-7, -2, 12.832327708732336, 0.1, 5, 6][k], flat: k % 3 === 0, mixed: k % 2 ? 'x' : 1, ...(k === 4 ? { only: [1, { a: null }] } : {}) },
+    group: k === 7 ? undefined : k === 5 ? '8413/5384' : k === 6 ? '8413/5384' : '8414/5384', neighbours: k === 7 ? undefined : ns as (number | string)[] })), hide: [{ id: 'w1', reasons: 3, models: ['m'] }] };
+  delete cell.buildings[7].neighbours; delete cell.buildings[7].group; // ungrouped: neither key, as the decoder gives back
+  const back = decodeCell(encodeCell(cell, 3).bytes);
+  sameCell(back, decodeCell(encodeCell(cell, 2).bytes), 'synthetic');
+  sameCell(back, cell, 'synthetic');
+});
+
+test('v3: every single-byte change is rejected or decodes without crashing; v2 still decodes; index accepts both', () => {
+  const cell = published('8_-2'), small = keepOnly(cell, new Set(cell.buildings.slice(0, 60).map((_, k) => k)));
+  const bytes = encodeCell(small, 3).bytes;
+  for (let at = 0; at < bytes.length; at++) for (const v of [0, 1, 0x7f, 0x80, 0xff]) {
+    if (bytes[at] === v) continue;
+    const c = bytes.slice(); c[at] = v;
+    try { decodeCell(c); } catch (e) { assert.ok(e instanceof Error && /^world cell/.test(e.message), `byte ${at}=${v}: ${String(e)}`); }
+  }
+  assert.ok(decodeCell(encodeCell(small, 2).bytes));
+  assert.throws(() => encodeCell(small, 1), /cannot encode/);
+  for (const format of [2, 3]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
+  assert.equal(readWorldIndex({ version: 1, format: 4, tileCells: {}, cells: {} }), null);
 });
