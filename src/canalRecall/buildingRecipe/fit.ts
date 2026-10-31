@@ -10,6 +10,7 @@
 import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, CanalhouseFacadeBlock, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
+import {parapetBandBlocks} from './parapetBand.ts';
 import {stairLightOpenings} from './stairLight.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
@@ -1051,6 +1052,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves));
     // Horizontal brick stripes (`brickStripes`, brickStripes.ts): band-brick facings the library cuts around the openings.
     if (front.brickStripes) elevation.bands.value.push(...brickStripeBlocks(front.brickStripes, width, flipX));
+    // A dark band of the parapet's top courses (`parapet.band`, parapetBand.ts), stopped at a tower and laid under its top.
+    if (parapetM !== null && front.parapet!.band) elevation.bands.value.push(...parapetBandBlocks(front.parapet!.band, {count, mw, eaves, copingM: front.parapet!.coping ? DE_BAARSJES.copingM : 0, tower: towerSpan ? {span: towerSpan, top: towerTop} : null, place, flipX}));
     if (layout.groundBlocks?.length) elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...Array.from({length: count}, (_, k) => layout.groundBlocks!.map(b => ({...b, id: idFor(k, b.id), leftM: round(flipX(place(k, b.leftM, b.widthM), b.widthM))}))).flat()]);
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
       const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];

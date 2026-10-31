@@ -1,0 +1,26 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-10-31",
+ "holds": [
+  {
+   "pandId": "0363100012117142",
+   "address": "Christiaan de Wetstraat 37",
+   "reason": "Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)"
+  },
+  {
+   "pandId": "0363100012099286",
+   "address": "Christiaan de Wetstraat 41",
+   "reason": "Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)"
+  },
+  {
+   "pandId": "0363100012086761",
+   "address": "Christiaan de Wetstraat 45",
+   "reason": "Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)"
+  },
+  {
+   "pandId": "0363100012082258",
+   "address": "Christiaan de Wetstraat 49",
+   "reason": "Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)"
+  }
+ ]
+}

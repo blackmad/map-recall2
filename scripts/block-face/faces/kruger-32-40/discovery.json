@@ -1,0 +1,660 @@
+{
+ "street": "Krugerstraat",
+ "seed": "0363100012114784",
+ "members": [
+  "0363100012132444",
+  "0363100012083941",
+  "0363100012150686",
+  "0363100012114784"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012132444 (face continues: 133198)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012114784 (face continues: 062612)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012068825",
+   "reason": "frontage 32.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012070168",
+   "reason": "frontage 43.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012071769",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "frontage 58.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012073654",
+   "reason": "frontage 42.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012073977",
+   "reason": "frontage 62.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012074114",
+   "reason": "frontage 55.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "frontage 54.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012079506",
+   "reason": "sightline to Krugerstraat crosses 0363100012083847"
+  },
+  {
+   "pandId": "0363100012081369",
+   "reason": "sightline to Krugerstraat crosses 0363100012088655"
+  },
+  {
+   "pandId": "0363100012082258",
+   "reason": "frontage 34.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012084510",
+   "reason": "frontage 57.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012086761",
+   "reason": "frontage 34.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "frontage 35.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012088081",
+   "reason": "sightline to Krugerstraat crosses 0363100012088873"
+  },
+  {
+   "pandId": "0363100012088339",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "sightline to Krugerstraat crosses 0363100012062612"
+  },
+  {
+   "pandId": "0363100012088873",
+   "reason": "sightline to Krugerstraat crosses 0363100012131601"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "frontage 58.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012090850",
+   "reason": "sightline to Krugerstraat crosses 0363100012137594"
+  },
+  {
+   "pandId": "0363100012090866",
+   "reason": "frontage 43.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012092661",
+   "reason": "frontage 53.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "frontage 35.4 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012093680",
+   "reason": "frontage 30.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012094272",
+   "reason": "frontage 60.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012095081",
+   "reason": "frontage 68.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012096065",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012096148",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012099286",
+   "reason": "frontage 34.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012101363",
+   "reason": "frontage 61.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "sightline to Krugerstraat crosses 0363100012145599"
+  },
+  {
+   "pandId": "0363100012105200",
+   "reason": "frontage 53.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012107235",
+   "reason": "frontage 52.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012108545",
+   "reason": "frontage 35.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012108752",
+   "reason": "frontage 63.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012108831",
+   "reason": "frontage 38.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "frontage 42.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "frontage 58.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "frontage 48.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "frontage 40.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012116889",
+   "reason": "frontage 62.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "frontage 35.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012119983",
+   "reason": "sightline to Krugerstraat crosses 0363100012079506"
+  },
+  {
+   "pandId": "0363100012120724",
+   "reason": "frontage 51.4 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "frontage 52.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012122087",
+   "reason": "frontage 66.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012122445",
+   "reason": "frontage 36.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "frontage 59.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012123328",
+   "reason": "frontage 30.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012124743",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012125852",
+   "reason": "frontage 50.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012126814",
+   "reason": "frontage 44.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012127658",
+   "reason": "frontage 90.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012128866",
+   "reason": "frontage 40.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012129254",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 89.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012131601",
+   "reason": "sightline to Krugerstraat crosses 0363100012133198"
+  },
+  {
+   "pandId": "0363100012132149",
+   "reason": "frontage 37.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012134742",
+   "reason": "frontage 82.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012135114",
+   "reason": "frontage 88.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012135231",
+   "reason": "sightline to Krugerstraat crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012135489",
+   "reason": "frontage 61.4 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012137594",
+   "reason": "sightline to Krugerstraat crosses 0363100012088655"
+  },
+  {
+   "pandId": "0363100012139681",
+   "reason": "frontage 79.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012140132",
+   "reason": "frontage 104.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012140934",
+   "reason": "frontage 98.4 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012142206",
+   "reason": "frontage 48.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012144506",
+   "reason": "frontage 84.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012145010",
+   "reason": "frontage 45.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "sightline to Krugerstraat crosses 0363100012103508"
+  },
+  {
+   "pandId": "0363100012148607",
+   "reason": "frontage 83.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012149403",
+   "reason": "frontage 69.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012150126",
+   "reason": "sightline to Krugerstraat crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012150301",
+   "reason": "frontage 70.7 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012150397",
+   "reason": "frontage 35.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "sightline to Krugerstraat crosses 0363100012088765"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "frontage 59.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012154531",
+   "reason": "frontage 49.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012154575",
+   "reason": "sightline to Krugerstraat crosses 0363100012079506"
+  },
+  {
+   "pandId": "0363100012159280",
+   "reason": "frontage 85.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012191096",
+   "reason": "sightline to Krugerstraat crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012191097",
+   "reason": "sightline to Krugerstraat crosses 0363100012119150"
+  },
+  {
+   "pandId": "0363100012191098",
+   "reason": "sightline to Krugerstraat crosses 0363100012119150"
+  },
+  {
+   "pandId": "0363100012191099",
+   "reason": "frontage 44.0 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012191100",
+   "reason": "sightline to Krugerstraat crosses 0363100012119150"
+  },
+  {
+   "pandId": "0363100012191101",
+   "reason": "frontage 30.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012191102",
+   "reason": "frontage 41.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012193352",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "sightline to Krugerstraat crosses 0363100012093949"
+  },
+  {
+   "pandId": "0363100012194534",
+   "reason": "sightline to Krugerstraat crosses 0363100012085617"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "sightline to Krugerstraat crosses 0363100012085617"
+  },
+  {
+   "pandId": "0363100012194536",
+   "reason": "sightline to Krugerstraat crosses 0363100012063602"
+  },
+  {
+   "pandId": "0363100012194537",
+   "reason": "sightline to Krugerstraat crosses 0363100012136455"
+  },
+  {
+   "pandId": "0363100012194538",
+   "reason": "sightline to Krugerstraat crosses 0363100012236731"
+  },
+  {
+   "pandId": "0363100012194539",
+   "reason": "sightline to Krugerstraat crosses 0363100012093949"
+  },
+  {
+   "pandId": "0363100012194540",
+   "reason": "sightline to Krugerstraat crosses 0363100012063602"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "frontage 78.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "frontage 78.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199314",
+   "reason": "frontage 35.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199315",
+   "reason": "frontage 43.6 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199316",
+   "reason": "frontage 46.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199317",
+   "reason": "frontage 41.4 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199318",
+   "reason": "frontage 36.9 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199319",
+   "reason": "frontage 35.8 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012199389",
+   "reason": "frontage 47.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012206387",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012206968",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012214503",
+   "reason": "frontage 46.2 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012214504",
+   "reason": "frontage 44.1 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012214505",
+   "reason": "frontage 30.5 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "frontage 58.3 m from Krugerstraat"
+  },
+  {
+   "pandId": "0363100012223677",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012223678",
+   "reason": "sightline to Krugerstraat crosses 0363100012110306"
+  },
+  {
+   "pandId": "0363100012223680",
+   "reason": "sightline to Krugerstraat crosses 0363100012146315"
+  },
+  {
+   "pandId": "0363100012223683",
+   "reason": "sightline to Krugerstraat crosses 0363100012072682"
+  },
+  {
+   "pandId": "0363100012223684",
+   "reason": "sightline to Krugerstraat crosses 0363100012072682"
+  },
+  {
+   "pandId": "0363100012223685",
+   "reason": "sightline to Krugerstraat crosses 0363100012133223"
+  },
+  {
+   "pandId": "0363100012223686",
+   "reason": "sightline to Krugerstraat crosses 0363100012133223"
+  },
+  {
+   "pandId": "0363100012223689",
+   "reason": "sightline to Krugerstraat crosses 0363100012146315"
+  },
+  {
+   "pandId": "0363100012223690",
+   "reason": "sightline to Krugerstraat crosses 0363100012075751"
+  },
+  {
+   "pandId": "0363100012223691",
+   "reason": "sightline to Krugerstraat crosses 0363100012133223"
+  },
+  {
+   "pandId": "0363100012223692",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012223693",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012223694",
+   "reason": "sightline to Krugerstraat crosses 0363100012075751"
+  },
+  {
+   "pandId": "0363100012223695",
+   "reason": "sightline to Krugerstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012223696",
+   "reason": "sightline to Krugerstraat crosses 0363100012075751"
+  },
+  {
+   "pandId": "0363100012223697",
+   "reason": "sightline to Krugerstraat crosses 0363100012075751"
+  },
+  {
+   "pandId": "0363100012223698",
+   "reason": "sightline to Krugerstraat crosses 0363100012133223"
+  },
+  {
+   "pandId": "0363100012224399",
+   "reason": "sightline to Krugerstraat crosses 0363100012093949"
+  },
+  {
+   "pandId": "0363100012224400",
+   "reason": "sightline to Krugerstraat crosses 0363100012085617"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "sightline to Krugerstraat crosses 0363100012085617"
+  },
+  {
+   "pandId": "0363100012224402",
+   "reason": "sightline to Krugerstraat crosses 0363100012063602"
+  },
+  {
+   "pandId": "0363100012224403",
+   "reason": "sightline to Krugerstraat crosses 0363100012093949"
+  },
+  {
+   "pandId": "0363100012224404",
+   "reason": "sightline to Krugerstraat crosses 0363100012063602"
+  },
+  {
+   "pandId": "0363100012229480",
+   "reason": "no frontage on Krugerstraat: No footprint edge faces Krugerstraat"
+  },
+  {
+   "pandId": "0363100012230879",
+   "reason": "sightline to Krugerstraat crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012072682",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075751",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088655",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114066",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119150",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133223",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133761",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150331",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012132444",
+   "alongM": -19.44,
+   "widthM": 6.4,
+   "eavesM": 13.51,
+   "roofMaxM": 17.19,
+   "storeys3dbag": 0,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012083941",
+   "alongM": -13.04,
+   "widthM": 6.4,
+   "eavesM": 13.51,
+   "roofMaxM": 17.14,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012150686",
+   "alongM": -6.64,
+   "widthM": 6.4,
+   "eavesM": 13.56,
+   "roofMaxM": 17.16,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114784",
+   "alongM": 0,
+   "widthM": 6.91,
+   "eavesM": 13.01,
+   "roofMaxM": 17.68,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

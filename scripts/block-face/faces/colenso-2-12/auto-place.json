@@ -1,0 +1,154 @@
+{
+ "face": "colenso-2-12",
+ "street": "Colensostraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012126367",
+   "address": "Colensostraat 6",
+   "builtYear": 1900,
+   "widthM": 3.21,
+   "eavesM": 3.32,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64564f",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 4.25,
+     "eavesRow": 372,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.53,
+      "topWidthM": 0.38,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113844",
+   "address": "Colensostraat 2",
+   "builtYear": 1922,
+   "widthM": 10.64,
+   "eavesM": 10.26,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624d48",
+    "wallRaw": "#64524b",
+    "skyline": {
+     "eavesM": 9.85,
+     "eavesRow": 148,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 3.7,
+      "topWidthM": 0.1,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.4 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.4,
+       "light": 0.17
+      },
+      {
+       "widthM": 2.38,
+       "centre": 0.59,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.63,
+       "widthM": 0.93,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: strip shows balconies (dark open axis 1.15 m at 0.4 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 1.15 m at 0.4 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.021 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

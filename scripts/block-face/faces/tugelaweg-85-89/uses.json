@@ -1,0 +1,147 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108401",
+   "addresses": [
+    "Tugelaweg 85A",
+    "Tugelaweg 85B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 85A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 430,
+     "bagId": "0363010003684123"
+    },
+    {
+     "address": "Tugelaweg 85B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 521,
+     "bagId": "0363010003684124"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098414",
+   "addresses": [
+    "Tugelaweg 89A",
+    "Tugelaweg 89D",
+    "Tugelaweg 89H",
+    "Tugelaweg 89K",
+    "Tugelaweg 89L",
+    "Tugelaweg 89C",
+    "Tugelaweg 89G",
+    "Tugelaweg 89B",
+    "Tugelaweg 89F",
+    "Tugelaweg 89E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 89A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000831538"
+    },
+    {
+     "address": "Tugelaweg 89D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000831541"
+    },
+    {
+     "address": "Tugelaweg 89H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000831545"
+    },
+    {
+     "address": "Tugelaweg 89K",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000790623"
+    },
+    {
+     "address": "Reitzstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000791020"
+    },
+    {
+     "address": "Reitzstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000791021"
+    },
+    {
+     "address": "Reitzstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000791022"
+    },
+    {
+     "address": "Reitzstraat 1D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000791023"
+    },
+    {
+     "address": "Reitzstraat 1E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000791024"
+    },
+    {
+     "address": "Reitzstraat 1F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000791025"
+    },
+    {
+     "address": "Tugelaweg 89L",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989442"
+    },
+    {
+     "address": "Tugelaweg 89C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831540"
+    },
+    {
+     "address": "Tugelaweg 89G",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831544"
+    },
+    {
+     "address": "Tugelaweg 89B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000831539"
+    },
+    {
+     "address": "Tugelaweg 89F",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000831543"
+    },
+    {
+     "address": "Tugelaweg 89E",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831542"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

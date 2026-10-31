@@ -1,0 +1,515 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237243",
+   "addresses": [
+    "Retiefstraat 24A",
+    "Retiefstraat 24B",
+    "Retiefstraat 24C",
+    "Retiefstraat 24D",
+    "Retiefstraat 24E",
+    "Retiefstraat 26A",
+    "Retiefstraat 26B",
+    "Retiefstraat 26C",
+    "Retiefstraat 26D",
+    "Retiefstraat 26E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000791613"
+    },
+    {
+     "address": "Retiefstraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791614"
+    },
+    {
+     "address": "Retiefstraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791615"
+    },
+    {
+     "address": "Retiefstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000791620"
+    },
+    {
+     "address": "Retiefstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791621"
+    },
+    {
+     "address": "Retiefstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791622"
+    },
+    {
+     "address": "Retiefstraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791623"
+    },
+    {
+     "address": "Retiefstraat 26E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012130742"
+    },
+    {
+     "address": "Retiefstraat 24E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130743"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236802",
+   "addresses": [
+    "Retiefstraat 20A",
+    "Retiefstraat 20B",
+    "Retiefstraat 20C",
+    "Retiefstraat 20D",
+    "Retiefstraat 20E",
+    "Retiefstraat 22A",
+    "Retiefstraat 22B",
+    "Retiefstraat 22C",
+    "Retiefstraat 22D",
+    "Retiefstraat 22E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791596"
+    },
+    {
+     "address": "Retiefstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791597"
+    },
+    {
+     "address": "Retiefstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791598"
+    },
+    {
+     "address": "Retiefstraat 20D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791599"
+    },
+    {
+     "address": "Retiefstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000791605"
+    },
+    {
+     "address": "Retiefstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791606"
+    },
+    {
+     "address": "Retiefstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791607"
+    },
+    {
+     "address": "Retiefstraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130744"
+    },
+    {
+     "address": "Retiefstraat 20E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130745"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236810",
+   "addresses": [
+    "Retiefstraat 16A",
+    "Retiefstraat 16B",
+    "Retiefstraat 16C",
+    "Retiefstraat 16D",
+    "Retiefstraat 16E",
+    "Retiefstraat 18A",
+    "Retiefstraat 18C",
+    "Retiefstraat 18D",
+    "Retiefstraat 18E",
+    "Retiefstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000791580"
+    },
+    {
+     "address": "Retiefstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791581"
+    },
+    {
+     "address": "Retiefstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791582"
+    },
+    {
+     "address": "Retiefstraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791583"
+    },
+    {
+     "address": "Retiefstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791588"
+    },
+    {
+     "address": "Retiefstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791590"
+    },
+    {
+     "address": "Retiefstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791591"
+    },
+    {
+     "address": "Retiefstraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130746"
+    },
+    {
+     "address": "Retiefstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130747"
+    },
+    {
+     "address": "Retiefstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791589"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236977",
+   "addresses": [
+    "Retiefstraat 12A",
+    "Retiefstraat 12B",
+    "Retiefstraat 12C",
+    "Retiefstraat 12D",
+    "Retiefstraat 12E",
+    "Retiefstraat 14A",
+    "Retiefstraat 14B",
+    "Retiefstraat 14C",
+    "Retiefstraat 14E",
+    "Retiefstraat 14D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791564"
+    },
+    {
+     "address": "Retiefstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791565"
+    },
+    {
+     "address": "Retiefstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791566"
+    },
+    {
+     "address": "Retiefstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791567"
+    },
+    {
+     "address": "Retiefstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000791572"
+    },
+    {
+     "address": "Retiefstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791573"
+    },
+    {
+     "address": "Retiefstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791574"
+    },
+    {
+     "address": "Retiefstraat 12E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012130138"
+    },
+    {
+     "address": "Retiefstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012130139"
+    },
+    {
+     "address": "Retiefstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000791575"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236983",
+   "addresses": [
+    "Retiefstraat 8A",
+    "Retiefstraat 8B",
+    "Retiefstraat 8C",
+    "Retiefstraat 8D",
+    "Retiefstraat 8E",
+    "Retiefstraat 10A",
+    "Retiefstraat 10B",
+    "Retiefstraat 10C",
+    "Retiefstraat 10E",
+    "Retiefstraat 10D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000791548"
+    },
+    {
+     "address": "Retiefstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791549"
+    },
+    {
+     "address": "Retiefstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791550"
+    },
+    {
+     "address": "Retiefstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791551"
+    },
+    {
+     "address": "Retiefstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791556"
+    },
+    {
+     "address": "Retiefstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791557"
+    },
+    {
+     "address": "Retiefstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791558"
+    },
+    {
+     "address": "Retiefstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012130136"
+    },
+    {
+     "address": "Retiefstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012130137"
+    },
+    {
+     "address": "Retiefstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791559"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236732",
+   "addresses": [
+    "Retiefstraat 4A",
+    "Retiefstraat 4B",
+    "Retiefstraat 4C",
+    "Retiefstraat 4D",
+    "Retiefstraat 4E",
+    "Retiefstraat 6A",
+    "Retiefstraat 6B",
+    "Retiefstraat 6C",
+    "Retiefstraat 6D",
+    "Retiefstraat 6E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000791532"
+    },
+    {
+     "address": "Retiefstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791533"
+    },
+    {
+     "address": "Retiefstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791534"
+    },
+    {
+     "address": "Retiefstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791535"
+    },
+    {
+     "address": "Retiefstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000791540"
+    },
+    {
+     "address": "Retiefstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791541"
+    },
+    {
+     "address": "Retiefstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791542"
+    },
+    {
+     "address": "Retiefstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000791543"
+    },
+    {
+     "address": "Retiefstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012130134"
+    },
+    {
+     "address": "Retiefstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012130135"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087286",
+   "addresses": [
+    "Retiefstraat 2A",
+    "Retiefstraat 2E",
+    "Retiefstraat 2D",
+    "Retiefstraat 2C",
+    "Retiefstraat 2B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000791524"
+    },
+    {
+     "address": "Retiefstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012130133"
+    },
+    {
+     "address": "Retiefstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000791527"
+    },
+    {
+     "address": "Retiefstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000791526"
+    },
+    {
+     "address": "Retiefstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000791525"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

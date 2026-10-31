@@ -1,0 +1,181 @@
+{
+ "face": "kraaipan-47-51",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.12,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012141339",
+   "address": "Kraaipanstraat 47A",
+   "builtYear": 1921,
+   "widthM": 6.01,
+   "eavesM": 7.95,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 560,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144506",
+   "address": "Kraaipanstraat 49A",
+   "builtYear": 1921,
+   "widthM": 5.97,
+   "eavesM": 6.65,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b836b",
+    "wallRaw": "#5f534a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 560,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.3 m at 0.49 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.3,
+       "centre": 0.49,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.97 m, type 8.8-12.9 m; strip shows balconies (dark open axis 2.3 m at 0.49 (light 0.32): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.97 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 2.3 m at 0.49 (light 0.32): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 6.65 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.082 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148607",
+   "address": "Kraaipanstraat 51A",
+   "builtYear": 1921,
+   "widthM": 6.09,
+   "eavesM": 6.43,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f4f44",
+    "wallRaw": "#5c4e41",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 560,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 5.6 m at 0.5 (light 0.09): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.6,
+       "centre": 0.5,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 1 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "street": "Transvaalkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:54:11.573Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155848",
+   "addresses": [
+    "Transvaalkade 8A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalkade 8A-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000830118"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086954031,
+     "lngLat": [
+      4.9269804,
+      52.3549322
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T15:54:11.573Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162569",
+   "addresses": [
+    "Transvaalkade 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalkade 8-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000830116"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

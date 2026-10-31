@@ -1,0 +1,545 @@
+{
+ "street": "Schalk Burgerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:41:00.697Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012112723",
+   "addresses": [
+    "Schalk Burgerstraat 130",
+    "Schalk Burgerstraat 132",
+    "Schalk Burgerstraat 134",
+    "Schalk Burgerstraat 136",
+    "Schalk Burgerstraat 138",
+    "Schalk Burgerstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 130",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000805942"
+    },
+    {
+     "address": "Schalk Burgerstraat 132",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990498"
+    },
+    {
+     "address": "Schalk Burgerstraat 134",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990499"
+    },
+    {
+     "address": "Schalk Burgerstraat 136",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990500"
+    },
+    {
+     "address": "Schalk Burgerstraat 138",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990501"
+    },
+    {
+     "address": "Schalk Burgerstraat 140",
+     "use": "industriefunctie",
+     "areaM2": 76,
+     "bagId": "0363010001169284"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155070",
+   "addresses": [
+    "Schalk Burgerstraat 122",
+    "Schalk Burgerstraat 126",
+    "Schalk Burgerstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 126",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805938"
+    },
+    {
+     "address": "Schalk Burgerstraat 128",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805940"
+    },
+    {
+     "address": "Schalk Burgerstraat 122",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000997461"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150772",
+   "addresses": [
+    "Schalk Burgerstraat 90",
+    "Schalk Burgerstraat 94",
+    "Schalk Burgerstraat 96",
+    "Schalk Burgerstraat 98",
+    "Schalk Burgerstraat 100",
+    "Schalk Burgerstraat 102",
+    "Schalk Burgerstraat 104",
+    "Schalk Burgerstraat 106",
+    "Schalk Burgerstraat 108",
+    "Schalk Burgerstraat 110",
+    "Schalk Burgerstraat 112",
+    "Schalk Burgerstraat 114",
+    "Schalk Burgerstraat 118",
+    "Schalk Burgerstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 94",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805906"
+    },
+    {
+     "address": "Schalk Burgerstraat 96",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805908"
+    },
+    {
+     "address": "Schalk Burgerstraat 100",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000805912"
+    },
+    {
+     "address": "Schalk Burgerstraat 102",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000805914"
+    },
+    {
+     "address": "Schalk Burgerstraat 104",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000805916"
+    },
+    {
+     "address": "Schalk Burgerstraat 106",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000805918"
+    },
+    {
+     "address": "Schalk Burgerstraat 108",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000805920"
+    },
+    {
+     "address": "Schalk Burgerstraat 110",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000805922"
+    },
+    {
+     "address": "Schalk Burgerstraat 112",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000805924"
+    },
+    {
+     "address": "Schalk Burgerstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805930"
+    },
+    {
+     "address": "Schalk Burgerstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805932"
+    },
+    {
+     "address": "Schalk Burgerstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000997459"
+    },
+    {
+     "address": "Schalk Burgerstraat 114",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000997460"
+    },
+    {
+     "address": "Schalk Burgerstraat 98",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000805910"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091658",
+   "addresses": [
+    "Schalk Burgerstraat 60",
+    "Schalk Burgerstraat 62",
+    "Schalk Burgerstraat 64",
+    "Schalk Burgerstraat 66",
+    "Schalk Burgerstraat 68",
+    "Schalk Burgerstraat 70",
+    "Schalk Burgerstraat 72",
+    "Schalk Burgerstraat 74",
+    "Schalk Burgerstraat 78",
+    "Schalk Burgerstraat 80",
+    "Schalk Burgerstraat 82",
+    "Schalk Burgerstraat 84",
+    "Schalk Burgerstraat 86",
+    "Schalk Burgerstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000805872"
+    },
+    {
+     "address": "Schalk Burgerstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000805874"
+    },
+    {
+     "address": "Schalk Burgerstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000805876"
+    },
+    {
+     "address": "Schalk Burgerstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000805878"
+    },
+    {
+     "address": "Schalk Burgerstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000805880"
+    },
+    {
+     "address": "Schalk Burgerstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000805882"
+    },
+    {
+     "address": "Schalk Burgerstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000805884"
+    },
+    {
+     "address": "Schalk Burgerstraat 78",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000805890"
+    },
+    {
+     "address": "Schalk Burgerstraat 80",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000805892"
+    },
+    {
+     "address": "Schalk Burgerstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000805894"
+    },
+    {
+     "address": "Schalk Burgerstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805896"
+    },
+    {
+     "address": "Schalk Burgerstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805898"
+    },
+    {
+     "address": "Schalk Burgerstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805900"
+    },
+    {
+     "address": "Schalk Burgerstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000981017"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114204",
+   "addresses": [
+    "Schalk Burgerstraat 52",
+    "Schalk Burgerstraat 54",
+    "Schalk Burgerstraat 56",
+    "Schalk Burgerstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000805864"
+    },
+    {
+     "address": "Schalk Burgerstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805866"
+    },
+    {
+     "address": "Schalk Burgerstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805868"
+    },
+    {
+     "address": "Schalk Burgerstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805870"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088147",
+   "addresses": [
+    "Schalk Burgerstraat 44",
+    "Schalk Burgerstraat 46",
+    "Schalk Burgerstraat 48",
+    "Schalk Burgerstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000805848"
+    },
+    {
+     "address": "Schalk Burgerstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000805850"
+    },
+    {
+     "address": "Schalk Burgerstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805860"
+    },
+    {
+     "address": "Schalk Burgerstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000805862"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098793",
+   "addresses": [
+    "Schalk Burgerstraat 28",
+    "Schalk Burgerstraat 30",
+    "Schalk Burgerstraat 32",
+    "Schalk Burgerstraat 34",
+    "Schalk Burgerstraat 36",
+    "Schalk Burgerstraat 38",
+    "Schalk Burgerstraat 40",
+    "Schalk Burgerstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000805840"
+    },
+    {
+     "address": "Schalk Burgerstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000805841"
+    },
+    {
+     "address": "Schalk Burgerstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000805842"
+    },
+    {
+     "address": "Schalk Burgerstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000805843"
+    },
+    {
+     "address": "Schalk Burgerstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000805844"
+    },
+    {
+     "address": "Schalk Burgerstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000805847"
+    },
+    {
+     "address": "Schalk Burgerstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000805845"
+    },
+    {
+     "address": "Schalk Burgerstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000805846"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068244",
+   "addresses": [
+    "Schalk Burgerstraat 18",
+    "Schalk Burgerstraat 20",
+    "Schalk Burgerstraat 22",
+    "Schalk Burgerstraat 24",
+    "Schalk Burgerstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000805835"
+    },
+    {
+     "address": "Schalk Burgerstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000805836"
+    },
+    {
+     "address": "Schalk Burgerstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000805837"
+    },
+    {
+     "address": "Schalk Burgerstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000805839"
+    },
+    {
+     "address": "Schalk Burgerstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000805838"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084950",
+   "addresses": [
+    "Schalk Burgerstraat 2",
+    "Schalk Burgerstraat 6",
+    "Schalk Burgerstraat 8",
+    "Schalk Burgerstraat 10",
+    "Schalk Burgerstraat 12",
+    "Schalk Burgerstraat 14",
+    "Schalk Burgerstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000805829"
+    },
+    {
+     "address": "Schalk Burgerstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000805830"
+    },
+    {
+     "address": "Schalk Burgerstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000805831"
+    },
+    {
+     "address": "Schalk Burgerstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000805832"
+    },
+    {
+     "address": "Schalk Burgerstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000805833"
+    },
+    {
+     "address": "Schalk Burgerstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000805834"
+    },
+    {
+     "address": "Schalk Burgerstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000981018"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

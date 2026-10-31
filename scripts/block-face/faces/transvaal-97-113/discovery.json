@@ -1,0 +1,718 @@
+{
+ "street": "Transvaalstraat",
+ "seed": "0363100012129365",
+ "members": [
+  "0363100012129365",
+  "0363100012117872",
+  "0363100012119456",
+  "0363100012125612",
+  "0363100012137762",
+  "0363100012070208",
+  "0363100012114599",
+  "0363100012099869",
+  "0363100012139277"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012129365 (face continues: 233525)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012139277 (face continues: 086823)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061814",
+   "reason": "frontage 56.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012063556",
+   "reason": "frontage 113.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012065491",
+   "reason": "frontage 121.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012065492",
+   "reason": "frontage 113.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012065605",
+   "reason": "frontage 114.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012066211",
+   "reason": "frontage 64.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012069186",
+   "reason": "frontage 64.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012069699",
+   "reason": "sightline to Transvaalstraat crosses 0363100012119914"
+  },
+  {
+   "pandId": "0363100012069809",
+   "reason": "sightline to Transvaalstraat crosses 0363100012122306"
+  },
+  {
+   "pandId": "0363100012074011",
+   "reason": "sightline to Transvaalstraat crosses 0363100012086823"
+  },
+  {
+   "pandId": "0363100012075886",
+   "reason": "frontage 34.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012077968",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012079318",
+   "reason": "frontage 34.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012080633",
+   "reason": "frontage 35.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012083706",
+   "reason": "frontage 36.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012084193",
+   "reason": "frontage 33.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012084518",
+   "reason": "frontage 32.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012097625",
+   "reason": "sightline to Transvaalstraat crosses 0363100012097703"
+  },
+  {
+   "pandId": "0363100012098254",
+   "reason": "frontage 131.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012098505",
+   "reason": "frontage 97.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012099282",
+   "reason": "frontage 115.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012099459",
+   "reason": "frontage 50.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012102346",
+   "reason": "frontage 41.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012109431",
+   "reason": "frontage 36.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012109474",
+   "reason": "frontage 30.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012114338",
+   "reason": "sightline to Transvaalstraat crosses 0363100012069809"
+  },
+  {
+   "pandId": "0363100012118171",
+   "reason": "sightline to Transvaalstraat crosses 0363100012116776"
+  },
+  {
+   "pandId": "0363100012122306",
+   "reason": "sightline to Transvaalstraat crosses 0363100012134756"
+  },
+  {
+   "pandId": "0363100012123559",
+   "reason": "frontage 32.0 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012136338",
+   "reason": "frontage 48.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012138083",
+   "reason": "sightline to Transvaalstraat crosses 0363100012097625"
+  },
+  {
+   "pandId": "0363100012138121",
+   "reason": "frontage 32.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012138328",
+   "reason": "frontage 58.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012142932",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012144421",
+   "reason": "frontage 40.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012145188",
+   "reason": "frontage 40.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012150822",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "frontage 97.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012151157",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012152803",
+   "reason": "sightline to Transvaalstraat crosses 0363100012233525"
+  },
+  {
+   "pandId": "0363100012153402",
+   "reason": "frontage 42.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012153820",
+   "reason": "sightline to Transvaalstraat crosses 0363100012152803"
+  },
+  {
+   "pandId": "0363100012154137",
+   "reason": "frontage 50.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012155469",
+   "reason": "frontage 41.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012155905",
+   "reason": "frontage 43.5 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012156274",
+   "reason": "sightline to Transvaalstraat crosses 0363100012116776"
+  },
+  {
+   "pandId": "0363100012156344",
+   "reason": "frontage 41.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012157135",
+   "reason": "frontage 40.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012158482",
+   "reason": "frontage 42.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012158579",
+   "reason": "frontage 42.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012159004",
+   "reason": "frontage 44.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012159207",
+   "reason": "frontage 62.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012159444",
+   "reason": "frontage 41.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012159497",
+   "reason": "frontage 116.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012160544",
+   "reason": "frontage 40.0 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012161047",
+   "reason": "frontage 41.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012161485",
+   "reason": "frontage 50.5 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012161796",
+   "reason": "frontage 36.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012162231",
+   "reason": "frontage 41.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012162370",
+   "reason": "frontage 41.5 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012162652",
+   "reason": "frontage 42.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012162806",
+   "reason": "frontage 50.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012163771",
+   "reason": "sightline to Transvaalstraat crosses 0363100012116776"
+  },
+  {
+   "pandId": "0363100012164042",
+   "reason": "frontage 41.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012165604",
+   "reason": "frontage 32.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012166234",
+   "reason": "frontage 42.1 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012166608",
+   "reason": "frontage 115.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012167317",
+   "reason": "frontage 41.0 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012167400",
+   "reason": "frontage 45.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012184503",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012184989",
+   "reason": "frontage 44.5 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012186352",
+   "reason": "frontage 40.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012186353",
+   "reason": "frontage 39.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012188354",
+   "reason": "sightline to Transvaalstraat crosses 0363100012075600"
+  },
+  {
+   "pandId": "0363100012190730",
+   "reason": "sightline to Transvaalstraat crosses 0363100012085974"
+  },
+  {
+   "pandId": "0363100012193223",
+   "reason": "frontage 37.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012193224",
+   "reason": "frontage 38.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012196328",
+   "reason": "frontage 45.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012198226",
+   "reason": "frontage 33.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012198821",
+   "reason": "frontage 32.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012200949",
+   "reason": "frontage 43.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012200950",
+   "reason": "frontage 42.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012201120",
+   "reason": "frontage 34.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012201483",
+   "reason": "sightline to Transvaalstraat crosses 0363100012132274"
+  },
+  {
+   "pandId": "0363100012204348",
+   "reason": "sightline to Transvaalstraat crosses 0363100012110214"
+  },
+  {
+   "pandId": "0363100012205096",
+   "reason": "frontage 38.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012205672",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012205787",
+   "reason": "sightline to Transvaalstraat crosses 0363100012217926"
+  },
+  {
+   "pandId": "0363100012206043",
+   "reason": "frontage 60.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012206044",
+   "reason": "frontage 62.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012207035",
+   "reason": "frontage 51.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012208466",
+   "reason": "sightline to Transvaalstraat crosses 0363100012066368"
+  },
+  {
+   "pandId": "0363100012209092",
+   "reason": "sightline to Transvaalstraat crosses 0363100012205787"
+  },
+  {
+   "pandId": "0363100012209352",
+   "reason": "frontage 39.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012209709",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012211143",
+   "reason": "frontage 82.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012211578",
+   "reason": "frontage 127.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012211579",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012211649",
+   "reason": "sightline to Transvaalstraat crosses 0363100012136413"
+  },
+  {
+   "pandId": "0363100012211925",
+   "reason": "frontage 37.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012212819",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012217361",
+   "reason": "sightline to Transvaalstraat crosses 0363100012139150"
+  },
+  {
+   "pandId": "0363100012217558",
+   "reason": "sightline to Transvaalstraat crosses 0363100012074719"
+  },
+  {
+   "pandId": "0363100012217926",
+   "reason": "sightline to Transvaalstraat crosses 0363100012233572"
+  },
+  {
+   "pandId": "0363100012218251",
+   "reason": "frontage 82.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012220774",
+   "reason": "sightline to Transvaalstraat crosses 0363100012132273"
+  },
+  {
+   "pandId": "0363100012221336",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221337",
+   "reason": "sightline to Transvaalstraat crosses 0363100012114599"
+  },
+  {
+   "pandId": "0363100012221338",
+   "reason": "no frontage on Transvaalstraat: No footprint edge faces Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221339",
+   "reason": "frontage 39.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221340",
+   "reason": "frontage 48.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221341",
+   "reason": "frontage 41.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221342",
+   "reason": "frontage 48.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221343",
+   "reason": "frontage 52.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221344",
+   "reason": "frontage 54.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221345",
+   "reason": "frontage 43.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221347",
+   "reason": "frontage 46.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221348",
+   "reason": "frontage 44.3 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012221405",
+   "reason": "sightline to Transvaalstraat crosses 0363100012129869"
+  },
+  {
+   "pandId": "0363100012224774",
+   "reason": "frontage 34.4 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012225284",
+   "reason": "frontage 39.0 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012233418",
+   "reason": "frontage 58.2 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012233567",
+   "reason": "frontage 70.7 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012236300",
+   "reason": "frontage 55.6 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012236318",
+   "reason": "frontage 39.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012237053",
+   "reason": "frontage 52.8 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012250801",
+   "reason": "frontage 41.9 m from Transvaalstraat"
+  },
+  {
+   "pandId": "0363100012066368",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074719",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077155",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085974",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098835",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110214",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130233",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132273",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132274",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134756",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136413",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139150",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233572",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236740",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012129365",
+   "alongM": 0,
+   "widthM": 7.28,
+   "eavesM": 8.87,
+   "roofMaxM": 8.87,
+   "storeys3dbag": 3,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012117872",
+   "alongM": 6.92,
+   "widthM": 6.55,
+   "eavesM": 8.84,
+   "roofMaxM": 11.71,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  },
+  {
+   "pandId": "0363100012119456",
+   "alongM": 13.46,
+   "widthM": 6.55,
+   "eavesM": 9.06,
+   "roofMaxM": 11.72,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012125612",
+   "alongM": 20.01,
+   "widthM": 6.55,
+   "eavesM": 8.98,
+   "roofMaxM": 11.7,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012137762",
+   "alongM": 26.56,
+   "widthM": 6.55,
+   "eavesM": 8.88,
+   "roofMaxM": 11.7,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012070208",
+   "alongM": 33.11,
+   "widthM": 6.55,
+   "eavesM": 6.43,
+   "roofMaxM": 8.9,
+   "storeys3dbag": 3,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114599",
+   "alongM": 39.4,
+   "widthM": 6.04,
+   "eavesM": 6.35,
+   "roofMaxM": 9.34,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099869",
+   "alongM": 45.06,
+   "widthM": 5.27,
+   "eavesM": 6.37,
+   "roofMaxM": 9.38,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012139277",
+   "alongM": 50.74,
+   "widthM": 6.07,
+   "eavesM": 6.3,
+   "roofMaxM": 9.37,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ]
+}

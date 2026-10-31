@@ -1,0 +1,157 @@
+{
+ "street": "Joubertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:58:47.783Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012069611",
+   "addresses": [
+    "Joubertstraat 22",
+    "Joubertstraat 24",
+    "Joubertstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000696153"
+    },
+    {
+     "address": "Joubertstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000696158"
+    },
+    {
+     "address": "Joubertstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000696163"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068716",
+   "addresses": [
+    "Joubertstraat 16",
+    "Joubertstraat 18",
+    "Joubertstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000696143"
+    },
+    {
+     "address": "Joubertstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000696148"
+    },
+    {
+     "address": "Joubertstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001016803"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154472",
+   "addresses": [
+    "Joubertstraat 4",
+    "Joubertstraat 6",
+    "Joubertstraat 8",
+    "Joubertstraat 10",
+    "Joubertstraat 12",
+    "Joubertstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000696111"
+    },
+    {
+     "address": "Joubertstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000696116"
+    },
+    {
+     "address": "Joubertstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000696121"
+    },
+    {
+     "address": "Joubertstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000696126"
+    },
+    {
+     "address": "Joubertstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000696131"
+    },
+    {
+     "address": "Joubertstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000696136"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 73066826,
+     "lngLat": [
+      4.9167483,
+      52.3530636
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "check_date": "2023-12-25",
+      "designation": "Ondergrondse Afval Container",
+      "recycling:batteries": "no",
+      "recycling:books": "no",
+      "recycling:cans": "no",
+      "recycling:cardboard": "yes",
+      "recycling:clothes": "no",
+      "recycling:electrical_appliances": "no",
+      "recycling:glass_bottles": "yes",
+      "recycling:green_waste": "no",
+      "recycling:magazines": "yes",
+      "recycling:newspaper": "yes",
+      "recycling:paper": "yes",
+      "recycling:paper_packaging": "yes",
+      "recycling:plastic": "no",
+      "recycling:plastic_bottles": "no",
+      "recycling:plastic_packaging": "no",
+      "recycling:scrap_metal": "no",
+      "recycling:small_appliances": "no",
+      "recycling:waste": "yes",
+      "recycling:wood": "no",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-31T14:58:47.783Z",
+     "match": "frontage",
+     "distanceM": 6.1
+    }
+   ]
+  }
+ ]
+}

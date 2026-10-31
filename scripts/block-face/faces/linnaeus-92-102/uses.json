@@ -1,0 +1,234 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:24:47.589Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150033",
+   "addresses": [
+    "Linnaeusstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 102-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000726504"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393136467,
+     "lngLat": [
+      4.9276134,
+      52.3558199
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "102",
+      "addr:postcode": "1092CP",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "pub",
+      "check_date": "2026-10-25",
+      "name": "Cafe Sport",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134183",
+   "addresses": [
+    "Linnaeusstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 100-H",
+     "use": "winkelfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000726495"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364980786,
+     "lngLat": [
+      4.9276014,
+      52.3558965
+     ],
+     "tags": {
+      "name": "the Bike Shop Hanmoof",
+      "service:bicycle:pump": "no",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105526",
+   "addresses": [
+    "Linnaeusstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 98-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001007036"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578697243,
+     "lngLat": [
+      4.9275572,
+      52.3559673
+     ],
+     "tags": {
+      "name": "Nomi by Naomi",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164326",
+   "addresses": [
+    "Linnaeusstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000726479"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364976580,
+     "lngLat": [
+      4.9275267,
+      52.3560308
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96-H",
+      "addr:postcode": "1092CP",
+      "addr:street": "Linnaeusstraat",
+      "craft": "caterer",
+      "name": "Domino's",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826206318,
+     "lngLat": [
+      4.9275342,
+      52.3560373
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96-2",
+      "addr:postcode": "1092CP",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "fast_food",
+      "brand": "Domino's",
+      "brand:wikidata": "Q839466",
+      "check_date": "2026-09-25",
+      "check_date:opening_hours": "2026-09-25",
+      "cuisine": "pizza",
+      "opening_hours": "Mo-Th 16:00-01:00; Fr-Sa 11:00-03:00, Su 11:00-01:00",
+      "phone": "+31 20 240 4225",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.dominos.nl/winkel/nl-amsterdamlinnaeusstraat-30791"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236460",
+   "addresses": [
+    "Linnaeusstraat 92",
+    "Linnaeusstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 92-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000726467"
+    },
+    {
+     "address": "Linnaeusstraat 94",
+     "use": "winkelfunctie",
+     "areaM2": 144,
+     "bagId": "0363010001007035"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1308933300,
+     "lngLat": [
+      4.9274267,
+      52.3560684
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "94",
+      "addr:postcode": "1092CP",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "fast_food",
+      "brand": "FEBO",
+      "brand:wikidata": "Q582245",
+      "brand:wikipedia": "nl:Febo (snackbar)",
+      "check_date": "2026-09-25",
+      "check_date:opening_hours": "2026-09-25",
+      "cuisine": "friture",
+      "name": "FEBO",
+      "opening_hours": "Su-Th 11:30-01:00, Fr-Sa 11:30-03:00",
+      "phone": "+31 20 693 7956",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.febo.nl/locaties/amsterdam-linnaeusstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

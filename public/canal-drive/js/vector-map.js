@@ -217,6 +217,19 @@ class VectorBasemap {
     this._installMap();
   }
 
+  /** project / unproject that agree with the drawn frame while the rider is on a deck: MapLibre's own ignore the
+   *  camera's elevation lift (rendererShared/drawnProjection.ts). queryPixel turns a tap into the pixel MapLibre's
+   *  feature query expects. Without the three bundle's helper they are MapLibre's. */
+  _drawn() {
+    const map = this.map;
+    if (this._drawnFor !== map) {
+      this._drawnFor = map;
+      const make = window.CanalRecallThree && window.CanalRecallThree.drawnProjector;
+      this._drawnProjector = make && map ? make(map) : (map ? { project: p => map.project(p), unproject: p => map.unproject(p), queryPixel: p => p } : null);
+    }
+    return this._drawnProjector;
+  }
+
   // The camera surface specs read instead of `vectorMap.map` (MapLibre-backed).
   // Reads go through `basemap.map` at call time, so it works before and after
   // the map exists; onFrame is one callback per MapLibre render.
@@ -224,8 +237,8 @@ class VectorBasemap {
     const basemap = this;
     const map = () => basemap.map;
     return {
-      project: lngLat => map().project(lngLat),
-      unproject: px => map().unproject(px),
+      project: lngLat => basemap._drawn().project(lngLat),
+      unproject: px => basemap._drawn().unproject(px),
       center: () => map().getCenter(),
       zoom: () => map().getZoom(),
       bounds: () => map().getBounds(),
@@ -2422,14 +2435,16 @@ class VectorBasemap {
     let poiResult = this._labelOverlay ? this._labelOverlay.hitTest(pixel.x, pixel.y) : null;
     if (poiResult) return poiResult;
     const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
+    // MapLibre's feature query and unproject ignore the deck lift; the tap is on what was drawn (_drawn).
+    const queryPixel = this._drawn().queryPixel(pixel);
     if (poiLayers.length) {
       const hitRadius = 8;
       const poi = this.map.queryRenderedFeatures([
-        [pixel.x - hitRadius, pixel.y - hitRadius],
-        [pixel.x + hitRadius, pixel.y + hitRadius]
+        [queryPixel.x - hitRadius, queryPixel.y - hitRadius],
+        [queryPixel.x + hitRadius, queryPixel.y + hitRadius]
       ], { layers: poiLayers }).find(candidate => candidate.properties && candidate.properties.name);
       if (poi) {
-        const lngLat = this.map.unproject(pixel);
+        const lngLat = this._drawn().unproject(pixel);
         const coordinates = poi.geometry && poi.geometry.type === 'Point' ? poi.geometry.coordinates : [lngLat.lng, lngLat.lat];
         poiResult = { id: poi.properties.id, landmarkId: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true, featureTarget: null };
       }
@@ -2441,10 +2456,10 @@ class VectorBasemap {
     // The hidden basemap cannot stand in for the complete city's actual mesh.
     if (this._completeCityHasBuildings && this._threeBuildings?.ready) return poiResult;
     const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
-    const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
+    const feature = this.map.queryRenderedFeatures(queryPixel, layers.length ? { layers } : undefined)
       .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');
     if (!feature) return poiResult;
-    const lngLat = this.map.unproject(pixel);
+    const lngLat = this._drawn().unproject(pixel);
     const properties = feature.properties || {};
     const geometry = feature.geometry && ['Polygon', 'MultiPolygon'].includes(feature.geometry.type)
       ? { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: feature.geometry }] }
@@ -3306,7 +3321,7 @@ class VectorBasemap {
   screenToWorld(cssX, cssY, canvasRect, loader) {
     if (!this.ready || !this.map || !canvasRect || !loader || loader._lastCenterLat == null) return null;
     const mapCanvas = this.map.getCanvas();
-    const lngLat = this.map.unproject([
+    const lngLat = this._drawn().unproject([
       cssX * mapCanvas.clientWidth / canvasRect.width,
       cssY * mapCanvas.clientHeight / canvasRect.height,
     ]);
@@ -3323,7 +3338,7 @@ class VectorBasemap {
     const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
     const lon = loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
     const lat = loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
-    const projected = this.map.project([lon, lat]);
+    const projected = this._drawn().project([lon, lat]);
     // Own ground: canvas pins (destination, question feature) stand on the
     // relief/deck there, not at MapLibre's z = 0.
     const lift = this._ownGround && this._ownGround.ready ? this._ownGround.screenLift([lon, lat]) : null;

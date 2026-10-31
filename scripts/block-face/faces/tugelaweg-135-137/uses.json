@@ -1,0 +1,93 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:50:08.526Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012068422",
+   "addresses": [
+    "Tugelaweg 135",
+    "Tugelaweg 136A",
+    "Tugelaweg 136B",
+    "Tugelaweg 136C",
+    "Tugelaweg 136D",
+    "Tugelaweg 136E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 135",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000831698"
+    },
+    {
+     "address": "Tugelaweg 136A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000831699"
+    },
+    {
+     "address": "Tugelaweg 136B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000831705"
+    },
+    {
+     "address": "Tugelaweg 136C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000831706"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069221",
+   "addresses": [
+    "Tugelaweg 137A",
+    "Tugelaweg 137B",
+    "Tugelaweg 137C",
+    "Tugelaweg 137D",
+    "Tugelaweg 137E",
+    "Tugelaweg 137F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 137A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000831708"
+    },
+    {
+     "address": "Tugelaweg 137B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000831709"
+    },
+    {
+     "address": "Tugelaweg 137C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000831710"
+    },
+    {
+     "address": "Tugelaweg 137D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831711"
+    },
+    {
+     "address": "Tugelaweg 137F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000989453"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

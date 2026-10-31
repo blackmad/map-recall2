@@ -1,0 +1,153 @@
+{
+ "face": "cilliers-44-94",
+ "street": "Cilliersstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.89,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012075924",
+   "address": "Cilliersstraat 64",
+   "builtYear": 1994,
+   "widthM": 9.79,
+   "eavesM": 15.29,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 7.17,
+    "toM": 9.76,
+    "depthM": 0.73,
+    "centre": 0.867,
+    "lineRD": [
+     [
+      123603.727375,
+      485463.86525
+     ],
+     [
+      123599.27537500001,
+      485469.77025
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#997566",
+    "wallRaw": "#635749",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 694,
+     "confidence": 0.14,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2 m at 0.63 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2,
+       "centre": 0.63,
+       "light": 0.14
+      },
+      {
+       "widthM": 1.45,
+       "centre": 0.92,
+       "light": 0.39
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 68 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091536",
+   "address": "Cilliersstraat 44",
+   "builtYear": 1994,
+   "widthM": 13.81,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.56,
+    "toM": 13.69,
+    "depthM": 1.83,
+    "centre": 0.703,
+    "lineRD": [
+     [
+      123597.228375,
+      485477.62124999997
+     ],
+     [
+      123594.614375,
+      485482.63724999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#c2ac8a",
+    "wallRaw": "#7f856c",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 50,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 1.25,
+      "topWidthM": 0.23,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.25,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.25 m at 0.55 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.25,
+       "centre": 0.55,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 49 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

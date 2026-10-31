@@ -1,0 +1,188 @@
+{
+ "street": "Krugerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:23:34.982Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012132444",
+   "addresses": [
+    "Krugerstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000715075"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4205599890,
+     "lngLat": [
+      4.9178995,
+      52.3526446
+     ],
+     "tags": {
+      "male": "yes",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012083941",
+   "addresses": [
+    "Krugerstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000715071"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150686",
+   "addresses": [
+    "Krugerstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000715059"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13053887449,
+     "lngLat": [
+      4.9181666,
+      52.3526737
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012114784",
+   "addresses": [
+    "Krugerstraat 32",
+    "Krugerstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000715047"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13051009214,
+     "lngLat": [
+      4.9183047,
+      52.3527558
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    },
+    {
+     "type": "node",
+     "id": 13051009215,
+     "lngLat": [
+      4.9182806,
+      52.3527402
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    },
+    {
+     "type": "node",
+     "id": 13053887449,
+     "lngLat": [
+      4.9181666,
+      52.3526737
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    },
+    {
+     "type": "node",
+     "id": 13053887450,
+     "lngLat": [
+      4.9181996,
+      52.3526929
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "operator:wikidata": "Q9899",
+      "recycling:glass_bottles": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-31T15:23:34.982Z",
+     "match": "frontage",
+     "distanceM": 6
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,904 @@
+{
+ "face": "viljoen-1-73",
+ "street": "Ben Viljoenstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 1.81,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012148086",
+   "address": "Ben Viljoenstraat 1",
+   "builtYear": 1929,
+   "widthM": 7.54,
+   "eavesM": 12.59,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.84,
+    "toM": 7.52,
+    "depthM": 0.61,
+    "centre": 0.888,
+    "lineRD": [
+     [
+      122856.050375,
+      485114.43775
+     ],
+     [
+      122861.744375,
+      485113.13075
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#aa9f84",
+    "wallRaw": "#89877b",
+    "skyline": {
+     "eavesM": 12.7,
+     "eavesRow": 268,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 0.65,
+      "topWidthM": 1.23,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.348,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.57 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.57,
+       "light": 0.27
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 1.25,
+       "centre": 0.91
+      },
+      {
+       "atM": 10.72,
+       "widthM": 1.57,
+       "centre": 0.3
+      },
+      {
+       "atM": 10.43,
+       "widthM": 1.23,
+       "centre": 0.73
+      },
+      {
+       "atM": 9.45,
+       "widthM": 1.35,
+       "centre": 0.31
+      },
+      {
+       "atM": 8.55,
+       "widthM": 0.8,
+       "centre": 0.94
+      },
+      {
+       "atM": 8.18,
+       "widthM": 1.55,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 7.54 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.88 m at 0.57 (light 0.27): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 7.54 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.88 m at 0.57 (light 0.27): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.7 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.294 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091211",
+   "address": "Ben Viljoenstraat 9",
+   "builtYear": 1929,
+   "widthM": 6.73,
+   "eavesM": 12.63,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.11,
+    "depthM": 0.6,
+    "centre": 0.083,
+    "lineRD": [
+     [
+      122864.461375,
+      485112.50675
+     ],
+     [
+      122869.910375,
+      485111.25375
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#aea288",
+    "wallRaw": "#aea58f",
+    "skyline": {
+     "eavesM": 12.3,
+     "eavesRow": 284,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 1.05,
+      "topWidthM": 0.82,
+      "centre": 0.84
+     }
+    },
+    "stucco": true,
+    "bands": 5,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.509,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.4 m at 0.64 (light 0.02): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.64,
+       "light": 0.02
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.88,
+       "widthM": 1.02,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.73 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.4 m at 0.64 (light 0.02): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.73 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.4 m at 0.64 (light 0.02): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.3 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.507 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148195",
+   "address": "Ben Viljoenstraat 13",
+   "builtYear": 1929,
+   "widthM": 6.23,
+   "eavesM": 12.56,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.14,
+    "toM": 6.2,
+    "depthM": 0.6,
+    "centre": 0.914,
+    "lineRD": [
+     [
+      122869.910375,
+      485111.25375
+     ],
+     [
+      122874.912375,
+      485110.10475
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#b4a88d",
+    "wallRaw": "#b2a890",
+    "skyline": {
+     "eavesM": 12.8,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 7,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.485,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.75,
+       "widthM": 1,
+       "centre": 0.91
+      },
+      {
+       "atM": 10.3,
+       "widthM": 0.97,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.23 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.23 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.8 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.547 (stucco)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133204",
+   "address": "Ben Viljoenstraat 21",
+   "builtYear": 1929,
+   "widthM": 6.26,
+   "eavesM": 12.56,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.72,
+    "depthM": 0.6,
+    "centre": 0.138,
+    "lineRD": [
+     [
+      122877.617375,
+      485109.48375
+     ],
+     [
+      122882.022375,
+      485108.47174999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#b6aa8f",
+    "wallRaw": "#b2a993",
+    "skyline": {
+     "eavesM": 12.63,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.78,
+      "topWidthM": 0.53,
+      "centre": 0.9
+     }
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.533,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.52 m (2.3 m wide), 8.35 m (2.38 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 2.3,
+       "centre": 0.7
+      },
+      {
+       "atM": 10.22,
+       "widthM": 0.88,
+       "centre": 0.27
+      },
+      {
+       "atM": 8.35,
+       "widthM": 2.38,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.67,
+       "widthM": 1.05,
+       "centre": 0.29
+      },
+      {
+       "atM": 5.2,
+       "widthM": 0.82,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.26 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 10.52 m (2.3 m wide), 8.35 m (2.38 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.26 m, type 8.8-12.9 m",
+     "strip shows balconies (balcony slabs stacked at 10.52 m (2.3 m wide), 8.35 m (2.38 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.605 (stucco)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093263",
+   "address": "Ben Viljoenstraat 27",
+   "builtYear": 1950,
+   "widthM": 7.61,
+   "eavesM": 12.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67574d",
+    "wallRaw": "#5b4e47",
+    "skyline": {
+     "eavesM": 12.88,
+     "eavesRow": 261,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 1.35,
+      "topWidthM": 0.78,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 2,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 7.61 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 7.61 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.88 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138431",
+   "address": "Ben Viljoenstraat 35",
+   "builtYear": 1950,
+   "widthM": 6.75,
+   "eavesM": 12.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a574e",
+    "wallRaw": "#5e5049",
+    "skyline": {
+     "eavesM": 12.8,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.263,
+    "structure": {
+     "bayWidthM": 2.23,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 6.75 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 6.75 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.8 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.211 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076498",
+   "address": "Ben Viljoenstraat 43",
+   "builtYear": 1950,
+   "widthM": 6.75,
+   "eavesM": 12.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a564d",
+    "wallRaw": "#5f514a",
+    "skyline": {
+     "eavesM": 12.85,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 2.08,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 6.75 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 6.75 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.121 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154913",
+   "address": "Ben Viljoenstraat 51",
+   "builtYear": 1950,
+   "widthM": 6.74,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5a4f",
+    "wallRaw": "#5f5149",
+    "skyline": {
+     "eavesM": 12.93,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.223,
+    "structure": {
+     "bayWidthM": 2.15,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 6.74 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 6.74 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.93 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.153 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154068",
+   "address": "Ben Viljoenstraat 59",
+   "builtYear": 1950,
+   "widthM": 6.77,
+   "eavesM": 12.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#645149",
+    "wallRaw": "#5b4d45",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.259,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 6.77 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 6.77 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.178 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068957",
+   "address": "Ben Viljoenstraat 67",
+   "builtYear": 1950,
+   "widthM": 6.95,
+   "eavesM": 12.69,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.56,
+    "toM": 6.56,
+    "depthM": 0.47,
+    "centre": 0.945,
+    "lineRD": [
+     [
+      122916.672375,
+      485100.51574999996
+     ],
+     [
+      122922.61137500001,
+      485099.66575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6d5951",
+    "wallRaw": "#5a4c44",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.8,
+      "topWidthM": 0.53,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.118,
+    "structure": {
+     "bayWidthM": 2.25,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1950, type 1921-1924; frontage 6.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1950, type 1921-1924",
+     "frontage 6.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

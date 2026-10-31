@@ -30,11 +30,13 @@ var CanalRecallRoadProjection = (() => {
     buildRoadSegmentsAsync: () => buildRoadSegmentsAsync,
     centringOffset: () => centringOffset,
     closestPointOnSegment: () => closestPointOnSegment,
+    decodeRoadExtract: () => decodeRoadExtract,
     findStartFinish: () => findStartFinish,
     haversineMetres: () => haversineMetres,
     isMotorOnlyHighway: () => isMotorOnlyHighway,
     latToTileY: () => latToTileY,
     lngToTileX: () => lngToTileX,
+    loadRoadExtract: () => loadRoadExtract,
     metresPerDegreeLng: () => metresPerDegreeLng,
     motorOnlyNames: () => motorOnlyNames,
     projectToWorld: () => projectToWorld,
@@ -214,6 +216,165 @@ var CanalRecallRoadProjection = (() => {
     const names = /* @__PURE__ */ new Set();
     for (const [name, length] of motor) if (length > share * (total.get(name) ?? 0)) names.add(name);
     return names;
+  }
+
+  // src/canalRecall/routing/roadExtract.ts
+  var ROAD_EXTRACT_MAGIC = "CRRX";
+  var ROAD_EXTRACT_VERSION = 1;
+  var HEADER_BYTES = 88;
+  var GRID = 1e6;
+  var FLAG_BRIDGE = 1;
+  var FLAG_BICYCLE_RESTRICTED = 2;
+  var FLAG_PATHS = 4;
+  var FLAG_EXACT = 8;
+  var FLAG_RAILWAY = 16;
+  var FLAG_BICYCLE = 32;
+  var FLAG_ONEWAY = 64;
+  var KNOWN_FLAGS = 127;
+  var ID_PREFIXES = ["routing_", "routing_restricted_"];
+  function fail(message) {
+    throw new Error(`road extract: ${message}`);
+  }
+  function readRoadExtractHeader(data) {
+    const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+    if (bytes.length < HEADER_BYTES) fail(`${bytes.length} bytes is shorter than the header`);
+    for (let i = 0; i < 4; i++) if (bytes[i] !== ROAD_EXTRACT_MAGIC.charCodeAt(i)) fail("bad magic");
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const version = view.getUint16(4, true);
+    if (version !== ROAD_EXTRACT_VERSION) fail(`version ${version}, this decoder reads ${ROAD_EXTRACT_VERSION}`);
+    if (view.getUint16(6, true) !== 0) fail("reserved header field is not zero");
+    const u = (i) => view.getUint32(8 + i * 4, true);
+    const header = {
+      version,
+      byteLength: u(0),
+      featureCount: u(1),
+      pathCount: u(2),
+      pointCount: u(3),
+      stringCount: u(4),
+      exactCount: u(5),
+      stringsOffset: u(6),
+      stringsLength: u(7),
+      featuresOffset: u(8),
+      featuresLength: u(9),
+      exactOffset: u(10),
+      exactLength: u(11),
+      sourceSha256: Array.from(bytes.subarray(56, 88), (b) => b.toString(16).padStart(2, "0")).join("")
+    };
+    if (header.byteLength !== bytes.length) fail(`header says ${header.byteLength} bytes, buffer has ${bytes.length}`);
+    if (header.stringsOffset !== HEADER_BYTES) fail("strings do not follow the header");
+    if (header.featuresOffset !== header.stringsOffset + header.stringsLength) fail("features do not follow the strings");
+    if (header.exactOffset % 8 || header.exactOffset < header.featuresOffset + header.featuresLength || header.exactOffset - (header.featuresOffset + header.featuresLength) >= 8) fail("exact section is misplaced");
+    if (header.exactLength !== header.exactCount * 8) fail("exact length does not match its count");
+    if (header.exactOffset + header.exactLength !== bytes.length) fail("leftover bytes after the exact section");
+    return header;
+  }
+  function decodeRoadExtract(data) {
+    const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+    const header = readRoadExtractHeader(bytes);
+    let pos = 0;
+    let end = 0;
+    const uvarint = () => {
+      let result = 0, scale = 1;
+      for (; ; ) {
+        if (pos >= end) fail("truncated varint");
+        const byte = bytes[pos++];
+        result += (byte & 127) * scale;
+        if (byte < 128) break;
+        scale *= 128;
+        if (scale > 2 ** 49) fail("varint too long");
+      }
+      return result;
+    };
+    const svarint = () => {
+      const z = uvarint();
+      return z % 2 ? -(z + 1) / 2 : z / 2;
+    };
+    const utf8 = new TextDecoder("utf-8", { fatal: true });
+    const strings = new Array(header.stringCount);
+    pos = header.stringsOffset;
+    end = header.stringsOffset + header.stringsLength;
+    for (let i = 0; i < header.stringCount; i++) {
+      const length = uvarint();
+      if (pos + length > end) fail("string runs past its section");
+      strings[i] = utf8.decode(bytes.subarray(pos, pos + length));
+      pos += length;
+    }
+    if (pos !== end) fail("leftover bytes in the string section");
+    const string = () => {
+      const index = uvarint();
+      if (index >= strings.length) fail(`string index ${index} out of range`);
+      return strings[index];
+    };
+    const exactView = new DataView(bytes.buffer, bytes.byteOffset + header.exactOffset, header.exactLength);
+    let exactIndex = 0;
+    const exactValue = () => {
+      if (exactIndex >= header.exactCount) fail("exact coordinates exhausted");
+      return exactView.getFloat64(8 * exactIndex++, true);
+    };
+    const features = new Array(header.featureCount);
+    pos = header.featuresOffset;
+    end = header.featuresOffset + header.featuresLength;
+    let lastLat = 0, lastLon = 0;
+    let pathCount = 0, pointCount = 0;
+    for (let f = 0; f < header.featureCount; f++) {
+      const idKind = uvarint();
+      let id;
+      if (idKind === 2) id = string();
+      else if (idKind < ID_PREFIXES.length) id = ID_PREFIXES[idKind] + uvarint();
+      else fail(`unknown id kind ${idKind}`);
+      const name = string();
+      const type = string();
+      const cityId = string();
+      const highway = string();
+      const flags = uvarint();
+      if (flags & ~KNOWN_FLAGS) fail(`unknown flags ${flags}`);
+      const railway = flags & FLAG_RAILWAY ? string() : void 0;
+      const bicycle = flags & FLAG_BICYCLE ? string() : void 0;
+      const pathTotal = flags & FLAG_PATHS ? uvarint() : 1;
+      const isExact = (flags & FLAG_EXACT) !== 0;
+      const paths = new Array(pathTotal);
+      let first = null;
+      for (let p = 0; p < pathTotal; p++) {
+        const count = uvarint();
+        if (count > end - pos + header.exactCount) fail("path longer than the file");
+        const path = new Array(count);
+        for (let i = 0; i < count; i++) {
+          if (isExact) {
+            path[i] = [exactValue(), exactValue()];
+          } else {
+            lastLat += svarint();
+            lastLon += svarint();
+            path[i] = [lastLat / GRID, lastLon / GRID];
+          }
+          if (!first) first = path[i];
+        }
+        paths[p] = path;
+        pathCount++;
+        pointCount += count;
+      }
+      if (!first) fail(`feature ${id} has no points`);
+      const center = isExact ? [exactValue(), exactValue()] : [(Math.round(first[0] * GRID) + svarint()) / GRID, (Math.round(first[1] * GRID) + svarint()) / GRID];
+      const feature = { id, name, type, cityId, center, highway, path: paths[0] };
+      if (flags & FLAG_PATHS) feature.paths = paths;
+      if (flags & FLAG_BRIDGE) feature.bridge = true;
+      if (railway !== void 0) feature.railway = railway;
+      if (flags & FLAG_BICYCLE_RESTRICTED) feature.bicycleRestricted = true;
+      if (bicycle !== void 0) feature.bicycle = bicycle;
+      if (flags & FLAG_ONEWAY) feature.oneway = true;
+      features[f] = feature;
+    }
+    if (pos !== end) fail("leftover bytes in the feature section");
+    if (exactIndex !== header.exactCount) fail("leftover exact coordinates");
+    if (pathCount !== header.pathCount || pointCount !== header.pointCount) fail("path or point count does not match the header");
+    return { header, features };
+  }
+  async function loadRoadExtract(data) {
+    const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+    if (bytes.length >= 2 && bytes[0] === 31 && bytes[1] === 139) {
+      const inflated = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
+      return decodeRoadExtract(inflated);
+    }
+    return decodeRoadExtract(bytes);
   }
 
   // src/canalRecall/osm/roadProjection.ts

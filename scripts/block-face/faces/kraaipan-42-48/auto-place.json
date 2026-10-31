@@ -1,0 +1,182 @@
+{
+ "face": "kraaipan-42-48",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.24,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012135489",
+   "address": "Kraaipanstraat 48",
+   "builtYear": 1920,
+   "widthM": 6.03,
+   "eavesM": 8.19,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62584f",
+    "wallRaw": "#5d534a",
+    "skyline": {
+     "eavesM": 12.3,
+     "eavesRow": 70,
+     "confidence": 0.34,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.65,
+       "widthM": 0.95,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 47 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101363",
+   "address": "Kraaipanstraat 46",
+   "builtYear": 1920,
+   "widthM": 5.92,
+   "eavesM": 8.09,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c534b",
+    "wallRaw": "#5c5348",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 562,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 1 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012116889",
+   "address": "Kraaipanstraat 44",
+   "builtYear": 1920,
+   "widthM": 5.95,
+   "eavesM": 8.31,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4f46",
+    "wallRaw": "#564c44",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 562,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 7 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073977",
+   "address": "Kraaipanstraat 42B",
+   "builtYear": 1920,
+   "widthM": 5.94,
+   "eavesM": 8.17,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81807d",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 562,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

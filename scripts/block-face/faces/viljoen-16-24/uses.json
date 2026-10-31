@@ -1,0 +1,89 @@
+{
+ "street": "Ben Viljoenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:23:09.621Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108935",
+   "addresses": [
+    "Ben Viljoenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000580335"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096496",
+   "addresses": [
+    "Ben Viljoenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000580330"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068521",
+   "addresses": [
+    "Ben Viljoenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000580325"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062552",
+   "addresses": [
+    "Ben Viljoenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000580320"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065386",
+   "addresses": [
+    "Ben Viljoenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000580315"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

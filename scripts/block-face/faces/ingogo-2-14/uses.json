@@ -1,0 +1,229 @@
+{
+ "street": "Ingogostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:11:53.295Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012063449",
+   "addresses": [
+    "Ingogostraat 14A",
+    "Ingogostraat 14B",
+    "Ingogostraat 14C",
+    "Ingogostraat 14D",
+    "Ingogostraat 14E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 14A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000677289"
+    },
+    {
+     "address": "Ingogostraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000677290"
+    },
+    {
+     "address": "Ingogostraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000677291"
+    },
+    {
+     "address": "Ingogostraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000677292"
+    },
+    {
+     "address": "Ingogostraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001027214"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393137999,
+     "lngLat": [
+      4.9257723,
+      52.3552228
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14A",
+      "addr:postcode": "1092HZ",
+      "addr:street": "Ingogostraat",
+      "amenity": "restaurant",
+      "contact:instagram": "https://www.instagram.com/fuku_ramen_amsterdam",
+      "cuisine": "ramen",
+      "diet:halal": "no",
+      "name": "Fuku Ramen",
+      "opening_hours": "Th-Sa 18:00-23:00; Su 13:00-19:30",
+      "phone": "+31 6 42608596",
+      "reservation": "recommended",
+      "website": "https://www.fukuramenamsterdam.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:11:53.295Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131135",
+   "addresses": [
+    "Ingogostraat 12A",
+    "Ingogostraat 12B",
+    "Ingogostraat 12D",
+    "Ingogostraat 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000677281"
+    },
+    {
+     "address": "Ingogostraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001021213"
+    },
+    {
+     "address": "Ingogostraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010001021214"
+    },
+    {
+     "address": "Ingogostraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000677284"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131136",
+   "addresses": [
+    "Ingogostraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000677273"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127724",
+   "addresses": [
+    "Ingogostraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000677265"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093692",
+   "addresses": [
+    "Ingogostraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000677257"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109699",
+   "addresses": [
+    "Ingogostraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000677239"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233455",
+   "addresses": [
+    "Ingogostraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 2-H",
+     "use": "kantoorfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000556449"
+    },
+    {
+     "address": "Pretoriusstraat 35-H",
+     "use": "kantoorfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001025478"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3831330982,
+     "lngLat": [
+      4.9254428,
+      52.355701
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35",
+      "addr:postcode": "1092EZ",
+      "addr:street": "Pretoriusstraat",
+      "diet:gluten_free": "only",
+      "name": "Flour.ish De Glutenvrije Winkel",
+      "opening_hours": "Tu,We,Fr,Sa 09:00-15:00",
+      "organic": "only",
+      "shop": "supermarket",
+      "website": "https://www.glutenvrijewinkelamsterdam.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:11:53.295Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

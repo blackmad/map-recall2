@@ -105,6 +105,8 @@ jobs:
       - run: find dist dist-quiz public/canal-drive/js -name '*.map' -delete
       - run: rm -rf .tmp/sentry-canal-recall
       - run: node scripts/assemble-canalrecall-site.mjs
+      - name: Stamp page assets with their content hash
+        run: node --import tsx scripts/stamp-canal-assets.ts dist-canalrecall
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e:smoke
       - name: Stamp deployed revision

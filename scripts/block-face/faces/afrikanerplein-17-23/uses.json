@@ -1,0 +1,58 @@
+{
+ "street": "Afrikanerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:12:24.817Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012088873",
+   "addresses": [
+    "Afrikanerplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 17-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000562009"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131601",
+   "addresses": [
+    "Afrikanerplein 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000562017"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133198",
+   "addresses": [
+    "Afrikanerplein 21",
+    "Afrikanerplein 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 23",
+     "use": "industriefunctie",
+     "areaM2": 69,
+     "bagId": "0363010001003764"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

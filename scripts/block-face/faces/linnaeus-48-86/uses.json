@@ -1,0 +1,565 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:23:14.327Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147495",
+   "addresses": [
+    "Linnaeusstraat 80",
+    "Linnaeusstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 82-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001000711"
+    },
+    {
+     "address": "Linnaeusstraat 80",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010001005602"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160053",
+   "addresses": [
+    "Linnaeusstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000726433"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826204459,
+     "lngLat": [
+      4.9271792,
+      52.3566421
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78-H",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "check_date": "2026-10-25",
+      "name": "Heno",
+      "opening_hours": "Mo-Fr 09:00-17:30; Sa 10:00-17:00; Su off",
+      "shop": "photo",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161630",
+   "addresses": [
+    "Linnaeusstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000726427"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 410291535,
+     "lngLat": [
+      4.9271456,
+      52.3567032
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76-H",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "cafe",
+      "name": "The Cottage Shop & Deli",
+      "opening_hours": "Tu-Th 10:00-18:00; Fr 09:00-18:00; Sa 09:00-17:00; Su 10:00-17:00; Mo off",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159570",
+   "addresses": [
+    "Linnaeusstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 74-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000726423"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826204245,
+     "lngLat": [
+      4.9271066,
+      52.356753
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "74-H",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "restaurant",
+      "name": "Marina Plaza",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141723",
+   "addresses": [
+    "Linnaeusstraat 70",
+    "Linnaeusstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 342,
+     "bagId": "0363010000726413"
+    },
+    {
+     "address": "Linnaeusstraat 70-1",
+     "use": "sportfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000726414"
+    },
+    {
+     "address": "Linnaeusstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 509,
+     "bagId": "0363010012090212"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7835724726,
+     "lngLat": [
+      4.9270394,
+      52.3568365
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70-72",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "brand": "Biolicious",
+      "brand:website": "https://www.biolicious.nl",
+      "fixme": "Filiaal wordt niet weergegeven op website Biolicious. Bestaat deze nog?",
+      "name": "Biolicious",
+      "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-18:00; Su 10:00-18:00",
+      "organic": "only",
+      "shop": "convenience",
+      "website": "https://www.biolicious.nl/info-oostpoort.html"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012071071",
+   "addresses": [
+    "Linnaeusstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000726408"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826203660,
+     "lngLat": [
+      4.9269969,
+      52.3569352
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68-H",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "fast_food",
+      "brand": "New York Pizza",
+      "brand:website": "https://www.newyorkpizza.nl",
+      "brand:wikidata": "Q2639128",
+      "cuisine": "pizza",
+      "name": "New York Pizza",
+      "opening_hours": "Mo-Su 16:00-24:00",
+      "phone": "+31 20 4681200",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.newyorkpizza.nl/vestigingen/pizza-bestellen-amsterdam-linnaeusstraat"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144205",
+   "addresses": [
+    "Linnaeusstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000726400"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 412300763,
+     "lngLat": [
+      4.926973,
+      52.3569804
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1092CN",
+      "addr:street": "Linnaeusstraat",
+      "craft": "electronics_repair",
+      "name": "Bêkes PhoneFix",
+      "shop": "repair",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012077129",
+   "addresses": [
+    "Linnaeusstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000726393"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826203141,
+     "lngLat": [
+      4.9269363,
+      52.3570307
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1092CM",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "restaurant",
+      "cuisine": "vietnamese",
+      "name": "Phở Việt",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pho-viet.nl"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154030",
+   "addresses": [
+    "Linnaeusstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000726385"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12804158061,
+     "lngLat": [
+      4.9268864,
+      52.357079
+     ],
+     "tags": {
+      "name": "Universal Nails",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012127345",
+   "addresses": [
+    "Linnaeusstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001975588"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12804184034,
+     "lngLat": [
+      4.9268597,
+      52.357129
+     ],
+     "tags": {
+      "name": "Mr. Elias",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012118460",
+   "addresses": [
+    "Linnaeusstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000726372"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578742164,
+     "lngLat": [
+      4.92682,
+      52.3571782
+     ],
+     "tags": {
+      "amenity": "post_office",
+      "check_date": "2024-09-06",
+      "name": "Gebroeders Winter",
+      "shop": "stationery",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012136776",
+   "addresses": [
+    "Linnaeusstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 56-H",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000726367"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578734069,
+     "lngLat": [
+      4.9267923,
+      52.3572251
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56",
+      "addr:postcode": "1092CM",
+      "addr:street": "Linnaeusstraat",
+      "name": "helly",
+      "note": "2e-hands kleding etc.",
+      "second_hand": "only",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012102698",
+   "addresses": [
+    "Linnaeusstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 54-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000726361"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118011",
+   "addresses": [
+    "Linnaeusstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 52-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001020224"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12804183047,
+     "lngLat": [
+      4.926732,
+      52.3573275
+     ],
+     "tags": {
+      "name": "Clinic Lara's",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012108145",
+   "addresses": [
+    "Linnaeusstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 50-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001000509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082984",
+   "addresses": [
+    "Linnaeusstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 48-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000726341"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578742163,
+     "lngLat": [
+      4.9266379,
+      52.3574255
+     ],
+     "tags": {
+      "amenity": "pub",
+      "check_date": "2025-07-15",
+      "check_date:opening_hours": "2025-07-15",
+      "name": "Ruk en Pluk",
+      "opening_hours": "We,Th,Su 15:00-01:00, Fr,Sa 15:00-02:00",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:23:14.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

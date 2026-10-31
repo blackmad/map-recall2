@@ -1,0 +1,323 @@
+{
+ "street": "President Brandstraat",
+ "seed": "0363100012146384",
+ "members": [
+  "0363100012146384",
+  "0363100012071902",
+  "0363100012114579"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063198",
+   "reason": "frontage 65.3 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012064088",
+   "reason": "frontage 36.8 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012077637",
+   "reason": "frontage 72.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012077740",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012081213",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012081491",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012087880",
+   "reason": "frontage 43.5 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012087937",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012088610",
+   "reason": "frontage 65.1 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012088651",
+   "reason": "frontage 61.8 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "frontage 73.7 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012089270",
+   "reason": "frontage 71.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012090381",
+   "reason": "sightline to President Brandstraat crosses 0363100012110455"
+  },
+  {
+   "pandId": "0363100012091006",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012092418",
+   "reason": "frontage 66.8 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012098414",
+   "reason": "frontage 36.0 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012102500",
+   "reason": "frontage 71.4 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012105745",
+   "reason": "frontage 77.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012105823",
+   "reason": "frontage 70.7 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012106599",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012107568",
+   "reason": "frontage 99.1 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012108336",
+   "reason": "frontage 66.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012108401",
+   "reason": "frontage 35.0 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012109806",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012110455",
+   "reason": "sightline to President Brandstraat crosses 0363100012114579"
+  },
+  {
+   "pandId": "0363100012116532",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "frontage 93.4 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012118192",
+   "reason": "frontage 101.8 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012122164",
+   "reason": "frontage 63.5 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012122165",
+   "reason": "frontage 64.4 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012124305",
+   "reason": "frontage 48.4 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012126742",
+   "reason": "frontage 62.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012127064",
+   "reason": "frontage 51.2 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012127468",
+   "reason": "frontage 34.0 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012129083",
+   "reason": "frontage 52.5 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 52.5 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012136133",
+   "reason": "sightline to President Brandstraat crosses 0363100012081213"
+  },
+  {
+   "pandId": "0363100012140943",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012142103",
+   "reason": "frontage 49.8 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012142519",
+   "reason": "frontage 49.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012143825",
+   "reason": "frontage 49.9 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012144119",
+   "reason": "frontage 30.0 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012144368",
+   "reason": "frontage 68.9 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012145014",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012146881",
+   "reason": "frontage 56.9 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012188432",
+   "reason": "frontage 110.1 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "frontage 68.5 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012212279",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012216884",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012217225",
+   "reason": "frontage 48.0 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012220433",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012228286",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012233416",
+   "reason": "frontage 80.2 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012233492",
+   "reason": "frontage 86.6 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012233548",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012236816",
+   "reason": "sightline to President Brandstraat crosses 0363100012087937"
+  },
+  {
+   "pandId": "0363100012236980",
+   "reason": "no frontage on President Brandstraat: No footprint edge faces President Brandstraat"
+  },
+  {
+   "pandId": "0363100012251277",
+   "reason": "frontage 59.9 m from President Brandstraat"
+  },
+  {
+   "pandId": "0363100012075983",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089099",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089241",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123028",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127958",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012146384",
+   "alongM": 0,
+   "widthM": 19.17,
+   "eavesM": 14.05,
+   "roofMaxM": 14.11,
+   "storeys3dbag": 4,
+   "builtYear": 1992,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012071902",
+   "alongM": 32.77,
+   "widthM": 38.94,
+   "eavesM": 13.01,
+   "roofMaxM": 13.89,
+   "storeys3dbag": 0,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114579",
+   "alongM": 65.34,
+   "widthM": 18.94,
+   "eavesM": 14.09,
+   "roofMaxM": 14.13,
+   "storeys3dbag": 5,
+   "builtYear": 1992,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

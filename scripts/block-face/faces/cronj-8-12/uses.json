@@ -1,0 +1,62 @@
+{
+ "street": "Cronjéstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:09:03.235Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012096932",
+   "addresses": [
+    "Cronjéstraat 10B",
+    "Cronjéstraat 10A",
+    "Cronjéstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000611507"
+    },
+    {
+     "address": "Cronjéstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000611510"
+    },
+    {
+     "address": "Cronjéstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000611506"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103686",
+   "addresses": [
+    "Cronjéstraat 8B",
+    "Cronjéstraat 8A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000611503"
+    },
+    {
+     "address": "Cronjéstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000611502"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

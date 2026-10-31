@@ -17,6 +17,25 @@ class OSMLoader {
   // Load the curated Amsterdam waterways shipped with Map Recall. The return
   // shape intentionally matches Smokey's Overpass road loader so the original
   // game engine can remain unchanged.
+  // `?roads=bin`: read the street extract from the compiled binary
+  // (src/canalRecall/routing/roadExtract.ts, roads-v2/streets-routing.bin.gz)
+  // instead of the 14 MB JSON. It decodes to the same features, bit for bit, so everything after
+  // this point is unchanged. Any failure — no flag, no file for this city, a
+  // stale bundle, a damaged file — returns null and the JSON path runs.
+  async _fetchRoadExtract(city) {
+    if (new URLSearchParams(window.location.search).get('roads') !== 'bin') return null;
+    if (!PROJECT || typeof PROJECT.loadRoadExtract !== 'function') return null;
+    try {
+      const response = await fetch(new URL(`${city.extractPath}/roads-v2/streets-routing.bin.gz`, window.location.href));
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const { features } = await PROJECT.loadRoadExtract(await response.arrayBuffer());
+      return features;
+    } catch (error) {
+      console.warn(`${city.name} binary road extract unavailable; reading streets-routing.json.`, error);
+      return null;
+    }
+  }
+
   async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat', cityId = 'amsterdam') {
     const Prefs = window.CanalRecallPreferences;
     const city = Prefs && Prefs.cityById ? Prefs.cityById(cityId) : { id: cityId || 'amsterdam', extractPath: `../data/extracts/${cityId || 'amsterdam'}`, name: cityId || 'amsterdam' };
@@ -29,10 +48,29 @@ class OSMLoader {
         return this._fetchTransitWays(city);
       }
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
-      const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
-      const response = await fetch(dataUrl);
-      if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
-      const features = await response.json();
+      // The squares and the ferry network are small and independent of the
+      // streets, so they download alongside them instead of after them. Each
+      // settles to { value } or { error } and is applied below at the same
+      // point, in the same order, as when they were fetched one by one.
+      const settle = (promise) => promise.then(value => ({ value }), error => ({ error }));
+      const squaresLoad = travelMode === 'car'
+        ? settle(fetch(new URL(`${city.extractPath}/squares.json`, window.location.href))
+          .then(response => (response.ok ? response.json() : null)))
+        : null;
+      const ferryLoad = travelMode === 'car' && city.id === 'amsterdam'
+        ? settle(fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href))
+          .then(response => {
+            if (!response.ok) throw new Error(`Ferry network: HTTP ${response.status}`);
+            return response.json();
+          }))
+        : null;
+      let features = travelMode === 'car' ? await this._fetchRoadExtract(city) : null;
+      if (!features) {
+        const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
+        const response = await fetch(dataUrl);
+        if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
+        features = await response.json();
+      }
       const ways = [];
       // Stable per-name identity for the spaced-repetition store. The review
       // key hashes the feature's centre, so it has to come from the extract
@@ -99,19 +137,16 @@ class OSMLoader {
       // Open squares are rideable paving (pedestrianAreas.ts); the guard
       // reads them after projection. Missing data only loses the squares.
       this.plazaFeatures = null;
-      if (travelMode === 'car') {
-        try {
-          const squaresResponse = await fetch(new URL(`${city.extractPath}/squares.json`, window.location.href));
-          if (squaresResponse.ok) this.plazaFeatures = await squaresResponse.json();
-        } catch (error) { console.warn('Squares unavailable; open plazas ride as corridors only.', error); }
+      if (squaresLoad) {
+        const squares = await squaresLoad;
+        if (squares.error) console.warn('Squares unavailable; open plazas ride as corridors only.', squares.error);
+        else if (squares.value) this.plazaFeatures = squares.value;
       }
       this.ferryNetwork = null;
-      if (travelMode === 'car' && city.id === 'amsterdam') {
-        try {
-          const ferryResponse = await fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href));
-          if (!ferryResponse.ok) throw new Error(`Ferry network: HTTP ${ferryResponse.status}`);
-          this.ferryNetwork = await ferryResponse.json();
-        } catch (error) { console.warn('Ferry connections unavailable; cycling remains on land.', error); }
+      if (ferryLoad) {
+        const ferry = await ferryLoad;
+        if (ferry.error) console.warn('Ferry connections unavailable; cycling remains on land.', ferry.error);
+        else this.ferryNetwork = ferry.value;
       }
       console.log(`Loaded ${ways.length} curated ${city.name} ${dataset} paths`);
       return ways;

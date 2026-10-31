@@ -16,16 +16,19 @@
  *
  *   node --import tsx scripts/road-graph-route-identity.ts --out=a.json [--graph=<roadGraph.ts>] [--ferry=<network.ts>]
  *   node --import tsx scripts/road-graph-route-identity.ts --compare=a.json   (exit 1 on any difference)
+ *   node --import tsx scripts/road-graph-route-identity.ts --compare=a.json --roads=artifacts/roads/staging/amsterdam/streets-routing.bin
  *
  * `--graph`/`--ferry` point at another copy of the modules (e.g. main's,
  * frozen in a scratch dir) so one snapshot can be taken before a change.
  */
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { buildRoadSegments, projectToWorld, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import type { TransitNetwork } from '../src/canalRecall/transit/network';
+import { decodeRoadExtract } from '../src/canalRecall/routing/roadExtract';
 
 const arg = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 const load = async (file: string | undefined, fallback: string) =>
@@ -35,7 +38,14 @@ const F = await load(arg('ferry'), 'src/canalRecall/ferry/network.ts');
 
 type Point = { x: number; y: number };
 type RoutingStreet = { name: string; highway?: string; path?: [number, number][]; paths?: [number, number][][] };
-const routing = JSON.parse(readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
+// `--roads=<file.bin>` reads the streets from a compiled binary road extract
+// (scripts/roads/build-road-extract.ts; .bin or the published .bin.gz)
+// instead of the JSON, so a snapshot of
+// the JSON can be compared against the binary.
+const roadsBin = arg('roads');
+const routing = (roadsBin
+  ? decodeRoadExtract(roadsBin.endsWith('.gz') ? gunzipSync(readFileSync(roadsBin)) : readFileSync(roadsBin)).features
+  : JSON.parse(readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8'))) as RoutingStreet[];
 const network = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json', 'utf8')) as TransitNetwork;
 
 // osm-loader.js widths (as check-canal-car.ts's plaza world).

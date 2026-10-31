@@ -1,0 +1,277 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:23:49.787Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012136733",
+   "addresses": [
+    "Pretoriusstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 37-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000782541"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816782532,
+     "lngLat": [
+      4.9253268,
+      52.3556756
+     ],
+     "tags": {
+      "amenity": "language_school",
+      "education": "language_school",
+      "name": "Chit Chat"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131128",
+   "addresses": [
+    "Pretoriusstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 39-HV",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000960263"
+    },
+    {
+     "address": "Pretoriusstraat 39-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012065652"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133526",
+   "addresses": [
+    "Pretoriusstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000782557"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393092635,
+     "lngLat": [
+      4.9251045,
+      52.3556072
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:postcode": "1092EZ",
+      "addr:street": "Pretoriusstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Kissami",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012112805",
+   "addresses": [
+    "Pretoriusstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001018577"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 73066821,
+     "lngLat": [
+      4.9250023,
+      52.3555886
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "name": "Joe's Garage",
+      "recycling:batteries": "no",
+      "recycling:books": "yes",
+      "recycling:cans": "no",
+      "recycling:cardboard": "no",
+      "recycling:clothes": "yes",
+      "recycling:electrical_appliances": "yes",
+      "recycling:glass": "no",
+      "recycling:glass_bottles": "no",
+      "recycling:green_waste": "no",
+      "recycling:magazines": "no",
+      "recycling:newspaper": "no",
+      "recycling:paper": "no",
+      "recycling:paper_packaging": "no",
+      "recycling:plastic": "no",
+      "recycling:plastic_bottles": "no",
+      "recycling:plastic_packaging": "no",
+      "recycling:scrap_metal": "no",
+      "recycling:small_appliances": "yes",
+      "recycling:waste": "no",
+      "recycling:wood": "no",
+      "recycling_type": "centre",
+      "source": "knowledge"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 147554488,
+     "lngLat": [
+      4.9249982,
+      52.3555662
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1092EZ",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "community_centre",
+      "building": "yes",
+      "check_date": "2025-10-20",
+      "diet:vegan": "only",
+      "diet:vegetarian": "yes",
+      "drink:club-mate": "yes",
+      "email": "joe@squat.net",
+      "height": "16.6",
+      "name": "Joe's Garage",
+      "ref:bag": "0363100012112805",
+      "source": "BAG;Bing, knowledge",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "squatted": "yes",
+      "start_date": "1908",
+      "toilets:wheelchair": "no",
+      "website": "https://joesgarage.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012087836",
+   "addresses": [
+    "Pretoriusstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 45-H",
+     "use": "winkelfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012073580"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5276120726,
+     "lngLat": [
+      4.9248376,
+      52.3556406
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "4",
+      "covered": "no",
+      "operator": "Amsterdam Council"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "frontage",
+     "distanceM": 7
+    },
+    {
+     "type": "node",
+     "id": 12816767240,
+     "lngLat": [
+      4.9248796,
+      52.3555448
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "Hand- en Voetverzorgingspraktijk Oost",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099620",
+   "addresses": [
+    "Pretoriusstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 47-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000782581"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2363297294,
+     "lngLat": [
+      4.9247639,
+      52.3555171
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "De Remise 2.0"
+     },
+     "fetchedAt": "2026-10-31T17:23:49.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

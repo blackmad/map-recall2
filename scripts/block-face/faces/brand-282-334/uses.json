@@ -1,0 +1,240 @@
+{
+ "street": "President Brandstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:29:44.624Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079489",
+   "addresses": [
+    "President Brandstraat 330",
+    "President Brandstraat 332",
+    "President Brandstraat 334"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 330",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000781427"
+    },
+    {
+     "address": "President Brandstraat 332",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000781428"
+    },
+    {
+     "address": "President Brandstraat 334",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000781429"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10868960570,
+     "lngLat": [
+      4.9167258,
+      52.3531691
+     ],
+     "tags": {
+      "artwork_type": "statue",
+      "name": "Daarom moet ik wenen",
+      "tourism": "artwork",
+      "wikidata": "Q101623716",
+      "wikimedia_commons": "Category:Daarom moet ik wenen",
+      "wikipedia": "nl:Daarom moet ik wenen"
+     },
+     "fetchedAt": "2026-10-31T15:29:44.624Z",
+     "match": "frontage",
+     "distanceM": 0.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012113965",
+   "addresses": [
+    "President Brandstraat 316",
+    "President Brandstraat 318",
+    "President Brandstraat 320",
+    "President Brandstraat 322",
+    "President Brandstraat 324",
+    "President Brandstraat 326",
+    "President Brandstraat 328"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 322",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000597837"
+    },
+    {
+     "address": "President Brandstraat 316",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000781420"
+    },
+    {
+     "address": "President Brandstraat 318",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000781421"
+    },
+    {
+     "address": "President Brandstraat 324",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000781424"
+    },
+    {
+     "address": "President Brandstraat 326",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000781425"
+    },
+    {
+     "address": "President Brandstraat 328",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000781426"
+    },
+    {
+     "address": "President Brandstraat 320",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000781422"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079840",
+   "addresses": [
+    "President Brandstraat 298",
+    "President Brandstraat 300",
+    "President Brandstraat 302",
+    "President Brandstraat 304",
+    "President Brandstraat 308",
+    "President Brandstraat 310",
+    "President Brandstraat 312"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 300",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000781412"
+    },
+    {
+     "address": "President Brandstraat 302",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781413"
+    },
+    {
+     "address": "President Brandstraat 304",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781414"
+    },
+    {
+     "address": "President Brandstraat 308",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000781416"
+    },
+    {
+     "address": "President Brandstraat 310",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781417"
+    },
+    {
+     "address": "President Brandstraat 312",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781418"
+    },
+    {
+     "address": "President Brandstraat 298",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000991515"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149042",
+   "addresses": [
+    "President Brandstraat 282",
+    "President Brandstraat 284",
+    "President Brandstraat 286",
+    "President Brandstraat 288",
+    "President Brandstraat 290",
+    "President Brandstraat 292",
+    "President Brandstraat 294",
+    "President Brandstraat 296"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 282",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000781403"
+    },
+    {
+     "address": "President Brandstraat 284",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000781404"
+    },
+    {
+     "address": "President Brandstraat 286",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000781405"
+    },
+    {
+     "address": "President Brandstraat 288",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000781406"
+    },
+    {
+     "address": "President Brandstraat 290",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000781407"
+    },
+    {
+     "address": "President Brandstraat 292",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000781408"
+    },
+    {
+     "address": "President Brandstraat 294",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781409"
+    },
+    {
+     "address": "President Brandstraat 296",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000781410"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

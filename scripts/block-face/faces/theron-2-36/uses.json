@@ -1,0 +1,394 @@
+{
+ "street": "Danie Theronstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:31:58.588Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133939",
+   "addresses": [
+    "Danie Theronstraat 32",
+    "Danie Theronstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000614924"
+    },
+    {
+     "address": "Danie Theronstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000614934"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069116",
+   "addresses": [
+    "Danie Theronstraat 28",
+    "Danie Theronstraat 30A",
+    "Danie Theronstraat 30B",
+    "Danie Theronstraat 30C",
+    "Danie Theronstraat 30D",
+    "Danie Theronstraat 30E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001006671"
+    },
+    {
+     "address": "Danie Theronstraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006672"
+    },
+    {
+     "address": "Danie Theronstraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006673"
+    },
+    {
+     "address": "Danie Theronstraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001006674"
+    },
+    {
+     "address": "Danie Theronstraat 30D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001006675"
+    },
+    {
+     "address": "Danie Theronstraat 30E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001006676"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116701",
+   "addresses": [
+    "Danie Theronstraat 24",
+    "Danie Theronstraat 26A",
+    "Danie Theronstraat 26B",
+    "Danie Theronstraat 26C",
+    "Danie Theronstraat 26D",
+    "Danie Theronstraat 26E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001006665"
+    },
+    {
+     "address": "Danie Theronstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006666"
+    },
+    {
+     "address": "Danie Theronstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006667"
+    },
+    {
+     "address": "Danie Theronstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001006668"
+    },
+    {
+     "address": "Danie Theronstraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001006669"
+    },
+    {
+     "address": "Danie Theronstraat 26E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001006670"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115092",
+   "addresses": [
+    "Danie Theronstraat 20",
+    "Danie Theronstraat 22A",
+    "Danie Theronstraat 22B",
+    "Danie Theronstraat 22C",
+    "Danie Theronstraat 22D",
+    "Danie Theronstraat 22E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001006659"
+    },
+    {
+     "address": "Danie Theronstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006660"
+    },
+    {
+     "address": "Danie Theronstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001006661"
+    },
+    {
+     "address": "Danie Theronstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001006662"
+    },
+    {
+     "address": "Danie Theronstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001006663"
+    },
+    {
+     "address": "Danie Theronstraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001006664"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112858",
+   "addresses": [
+    "Danie Theronstraat 18A",
+    "Danie Theronstraat 18B",
+    "Danie Theronstraat 18C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000999846"
+    },
+    {
+     "address": "Danie Theronstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000999848"
+    },
+    {
+     "address": "Danie Theronstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000999849"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089089",
+   "addresses": [
+    "Danie Theronstraat 16A",
+    "Danie Theronstraat 16B",
+    "Danie Theronstraat 16C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000999842"
+    },
+    {
+     "address": "Danie Theronstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000999843"
+    },
+    {
+     "address": "Danie Theronstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000999844"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065292",
+   "addresses": [
+    "Danie Theronstraat 14A",
+    "Danie Theronstraat 14B",
+    "Danie Theronstraat 14C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000999839"
+    },
+    {
+     "address": "Danie Theronstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000999840"
+    },
+    {
+     "address": "Danie Theronstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000999841"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100541",
+   "addresses": [
+    "Danie Theronstraat 12A",
+    "Danie Theronstraat 12B",
+    "Danie Theronstraat 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000991522"
+    },
+    {
+     "address": "Danie Theronstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001023285"
+    },
+    {
+     "address": "Danie Theronstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001023286"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102719",
+   "addresses": [
+    "Danie Theronstraat 10A",
+    "Danie Theronstraat 10B",
+    "Danie Theronstraat 10C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000999836"
+    },
+    {
+     "address": "Danie Theronstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000999837"
+    },
+    {
+     "address": "Danie Theronstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000999838"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070259",
+   "addresses": [
+    "Danie Theronstraat 2",
+    "Danie Theronstraat 8A",
+    "Danie Theronstraat 8B",
+    "Danie Theronstraat 8C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000580310"
+    },
+    {
+     "address": "Danie Theronstraat 2",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1962,
+     "bagId": "0363010000614833"
+    },
+    {
+     "address": "Danie Theronstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000998219"
+    },
+    {
+     "address": "Danie Theronstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000999834"
+    },
+    {
+     "address": "Danie Theronstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000999835"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14119884234,
+     "lngLat": [
+      4.9158617,
+      52.352643
+     ],
+     "tags": {
+      "amenity": "community_centre",
+      "name": "BOOST"
+     },
+     "fetchedAt": "2026-10-31T14:31:58.588Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

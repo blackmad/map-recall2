@@ -1,0 +1,483 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:12:18.529Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012062590",
+   "addresses": [
+    "Transvaalstraat 36A",
+    "Transvaalstraat 36B",
+    "Transvaalstraat 36C",
+    "Transvaalstraat 36D",
+    "Transvaalstraat 36E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 36A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994625"
+    },
+    {
+     "address": "Transvaalstraat 36B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994626"
+    },
+    {
+     "address": "Transvaalstraat 36C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994628"
+    },
+    {
+     "address": "Transvaalstraat 36D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994629"
+    },
+    {
+     "address": "Transvaalstraat 36E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994630"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112570",
+   "addresses": [
+    "Transvaalstraat 34A",
+    "Transvaalstraat 34B",
+    "Transvaalstraat 34C",
+    "Transvaalstraat 34D",
+    "Transvaalstraat 34E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994620"
+    },
+    {
+     "address": "Transvaalstraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994621"
+    },
+    {
+     "address": "Transvaalstraat 34C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994622"
+    },
+    {
+     "address": "Transvaalstraat 34D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994623"
+    },
+    {
+     "address": "Transvaalstraat 34E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000994624"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070650",
+   "addresses": [
+    "Transvaalstraat 32A",
+    "Transvaalstraat 32B",
+    "Transvaalstraat 32C",
+    "Transvaalstraat 32D",
+    "Transvaalstraat 32E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 32A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994611"
+    },
+    {
+     "address": "Transvaalstraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994612"
+    },
+    {
+     "address": "Transvaalstraat 32C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994617"
+    },
+    {
+     "address": "Transvaalstraat 32D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000994618"
+    },
+    {
+     "address": "Transvaalstraat 32E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000994619"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151478",
+   "addresses": [
+    "Transvaalstraat 30A",
+    "Transvaalstraat 30B",
+    "Transvaalstraat 30C",
+    "Transvaalstraat 30D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994607"
+    },
+    {
+     "address": "Transvaalstraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994608"
+    },
+    {
+     "address": "Transvaalstraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000994609"
+    },
+    {
+     "address": "Transvaalstraat 30D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994610"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126589",
+   "addresses": [
+    "Transvaalstraat 24",
+    "Transvaalstraat 26A",
+    "Transvaalstraat 26E",
+    "Transvaalstraat 26B",
+    "Transvaalstraat 26C",
+    "Transvaalstraat 26D",
+    "Transvaalstraat 28B",
+    "Transvaalstraat 28C",
+    "Transvaalstraat 28D",
+    "Transvaalstraat 28E",
+    "Transvaalstraat 28A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000592209"
+    },
+    {
+     "address": "Transvaalstraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000591279"
+    },
+    {
+     "address": "Transvaalstraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000591372"
+    },
+    {
+     "address": "Transvaalstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000593663"
+    },
+    {
+     "address": "Transvaalstraat 28D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000713613"
+    },
+    {
+     "address": "Transvaalstraat 26E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000733422"
+    },
+    {
+     "address": "Transvaalstraat 28E",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000946595"
+    },
+    {
+     "address": "Transvaalstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000948674"
+    },
+    {
+     "address": "Transvaalstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000948675"
+    },
+    {
+     "address": "Transvaalstraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000596794"
+    },
+    {
+     "address": "Transvaalstraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000591899"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120345",
+   "addresses": [
+    "Transvaalstraat 14",
+    "Transvaalstraat 16",
+    "Transvaalstraat 18D",
+    "Transvaalstraat 18A",
+    "Transvaalstraat 18B",
+    "Transvaalstraat 18C",
+    "Transvaalstraat 20B",
+    "Transvaalstraat 20C",
+    "Transvaalstraat 20D",
+    "Transvaalstraat 20A",
+    "Transvaalstraat 22D",
+    "Transvaalstraat 22A",
+    "Transvaalstraat 22B",
+    "Transvaalstraat 22C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000544125"
+    },
+    {
+     "address": "Transvaalstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000544126"
+    },
+    {
+     "address": "Transvaalstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000593480"
+    },
+    {
+     "address": "Transvaalstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000597321"
+    },
+    {
+     "address": "Transvaalstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000629275"
+    },
+    {
+     "address": "Transvaalstraat 20D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000733424"
+    },
+    {
+     "address": "Transvaalstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948665"
+    },
+    {
+     "address": "Transvaalstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948666"
+    },
+    {
+     "address": "Transvaalstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948667"
+    },
+    {
+     "address": "Transvaalstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000948668"
+    },
+    {
+     "address": "Transvaalstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948669"
+    },
+    {
+     "address": "Transvaalstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948670"
+    },
+    {
+     "address": "Transvaalstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000948671"
+    },
+    {
+     "address": "Transvaalstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000948676"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074363",
+   "addresses": [
+    "Transvaalstraat 8C",
+    "Transvaalstraat 8B",
+    "Transvaalstraat 8D",
+    "Transvaalstraat 8A",
+    "Transvaalstraat 10A",
+    "Transvaalstraat 10B",
+    "Transvaalstraat 10C",
+    "Transvaalstraat 10D",
+    "Transvaalstraat 10E",
+    "Transvaalstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000592736"
+    },
+    {
+     "address": "Transvaalstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000589762"
+    },
+    {
+     "address": "Transvaalstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000591278"
+    },
+    {
+     "address": "Transvaalstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000591403"
+    },
+    {
+     "address": "Transvaalstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000593664"
+    },
+    {
+     "address": "Transvaalstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000948672"
+    },
+    {
+     "address": "Transvaalstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000948673"
+    },
+    {
+     "address": "Transvaalstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000595739"
+    },
+    {
+     "address": "Transvaalstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000733423"
+    },
+    {
+     "address": "Transvaalstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000591837"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147737",
+   "addresses": [
+    "Transvaalstraat 4",
+    "Transvaalstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 4",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000830405"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816638487,
+     "lngLat": [
+      4.9274571,
+      52.3557754
+     ],
+     "tags": {
+      "healthcare": "midwife",
+      "name": "Verloskundigen"
+     },
+     "fetchedAt": "2026-10-31T16:12:18.529Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

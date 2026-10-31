@@ -1,0 +1,185 @@
+{
+ "face": "kraaipan-63-65",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012108224",
+   "address": "Kraaipanstraat 63A",
+   "builtYear": 1931,
+   "widthM": 8.22,
+   "eavesM": 6.03,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 5.86,
+    "toM": 8.19,
+    "depthM": 0.66,
+    "centre": 0.858,
+    "lineRD": [
+     [
+      123053.430375,
+      484966.63800000004
+     ],
+     [
+      123048.70237500001,
+      484963.178
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5d4a40",
+    "wallRaw": "#5f4d42",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 450,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1931, type 1921-1924; frontage 8.22 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1921-1924",
+     "frontage 8.22 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 6.03 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145617",
+   "address": "Kraaipanstraat 65A",
+   "builtYear": 1931,
+   "widthM": 8.19,
+   "eavesM": 6.07,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.28,
+    "depthM": 0.66,
+    "centre": 0.139,
+    "lineRD": [
+     [
+      123044.98225,
+      484960.456
+     ],
+     [
+      123040.22925,
+      484956.978
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5e4d42",
+    "wallRaw": "#614f43",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 450,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1931, type 1921-1924; frontage 8.19 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1921-1924",
+     "frontage 8.19 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 6.07 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

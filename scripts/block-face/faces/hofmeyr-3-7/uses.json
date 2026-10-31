@@ -1,0 +1,55 @@
+{
+ "street": "Hofmeyrstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012097697",
+   "addresses": [
+    "Hofmeyrstraat 3C",
+    "Hofmeyrstraat 3D",
+    "Hofmeyrstraat 3A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000668941"
+    },
+    {
+     "address": "Hofmeyrstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000668942"
+    },
+    {
+     "address": "Hofmeyrstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000668939"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074676",
+   "addresses": [
+    "Hofmeyrstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000668952"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

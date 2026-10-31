@@ -1,0 +1,115 @@
+{
+ "street": "Smitstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:34:35.545Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012110956",
+   "addresses": [
+    "Smitstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000812810"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089520",
+   "addresses": [
+    "Smitstraat 38C",
+    "Smitstraat 38B",
+    "Smitstraat 38A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 38C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000812809"
+    },
+    {
+     "address": "Smitstraat 38B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000812808"
+    },
+    {
+     "address": "Smitstraat 38A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000812807"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073938",
+   "addresses": [
+    "Smitstraat 36A",
+    "Smitstraat 36D",
+    "Smitstraat 36C",
+    "Smitstraat 36B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 36A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000812803"
+    },
+    {
+     "address": "Smitstraat 36D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000812806"
+    },
+    {
+     "address": "Smitstraat 36C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000812805"
+    },
+    {
+     "address": "Smitstraat 36B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000812804"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114474",
+   "addresses": [
+    "Smitstraat 34A",
+    "Smitstraat 34B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000812797"
+    },
+    {
+     "address": "Smitstraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000812798"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

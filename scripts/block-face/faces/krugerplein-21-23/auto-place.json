@@ -1,0 +1,190 @@
+{
+ "face": "krugerplein-21-23",
+ "street": "Krugerplein",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-30",
+ "seconds": 0.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012080889",
+   "address": "Krugerplein 21",
+   "builtYear": 1914,
+   "widthM": 8.96,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6a63",
+    "wallRaw": "#584c43",
+    "skyline": {
+     "eavesM": 18.27,
+     "eavesRow": 48,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.1,
+      "topWidthM": 0.72,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.044,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.53 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.53,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 0.93,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 13.81 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012120128",
+   "address": "Krugerplein 23",
+   "builtYear": 1914,
+   "widthM": 6.97,
+   "eavesM": 13.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746158",
+    "wallRaw": "#5e564e",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 2,
+      "topWidthM": 0.17,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.72,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 3.17,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 6.97 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 6.97 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

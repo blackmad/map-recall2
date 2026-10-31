@@ -1,0 +1,449 @@
+{
+ "street": "Christiaan de Wetstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:26:33.384Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012113458",
+   "addresses": [
+    "Christiaan de Wetstraat 208",
+    "Christiaan de Wetstraat 210",
+    "Christiaan de Wetstraat 212",
+    "Christiaan de Wetstraat 214",
+    "Christiaan de Wetstraat 216",
+    "Christiaan de Wetstraat 218",
+    "Christiaan de Wetstraat 220"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 212",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000736646"
+    },
+    {
+     "address": "Christiaan de Wetstraat 216",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000736649"
+    },
+    {
+     "address": "Christiaan de Wetstraat 214",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000736652"
+    },
+    {
+     "address": "Christiaan de Wetstraat 218",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000938988"
+    },
+    {
+     "address": "Christiaan de Wetstraat 220",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000938986"
+    },
+    {
+     "address": "Christiaan de Wetstraat 210",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000736625"
+    },
+    {
+     "address": "Christiaan de Wetstraat 208",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000736622"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089130",
+   "addresses": [
+    "Christiaan de Wetstraat 194",
+    "Christiaan de Wetstraat 196",
+    "Christiaan de Wetstraat 198",
+    "Christiaan de Wetstraat 200",
+    "Christiaan de Wetstraat 202",
+    "Christiaan de Wetstraat 204",
+    "Christiaan de Wetstraat 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 198",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000736645"
+    },
+    {
+     "address": "Christiaan de Wetstraat 202",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000736648"
+    },
+    {
+     "address": "Christiaan de Wetstraat 204",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000736653"
+    },
+    {
+     "address": "Christiaan de Wetstraat 206",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000938985"
+    },
+    {
+     "address": "Christiaan de Wetstraat 194",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000736621"
+    },
+    {
+     "address": "Christiaan de Wetstraat 196",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000736624"
+    },
+    {
+     "address": "Christiaan de Wetstraat 200",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000736651"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072943",
+   "addresses": [
+    "Christiaan de Wetstraat 180",
+    "Christiaan de Wetstraat 182",
+    "Christiaan de Wetstraat 184",
+    "Christiaan de Wetstraat 186",
+    "Christiaan de Wetstraat 188",
+    "Christiaan de Wetstraat 190",
+    "Christiaan de Wetstraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 182",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000736620"
+    },
+    {
+     "address": "Christiaan de Wetstraat 186",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000736626"
+    },
+    {
+     "address": "Christiaan de Wetstraat 188",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000736647"
+    },
+    {
+     "address": "Christiaan de Wetstraat 192",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000736654"
+    },
+    {
+     "address": "Christiaan de Wetstraat 190",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000736650"
+    },
+    {
+     "address": "Christiaan de Wetstraat 184",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000736623"
+    },
+    {
+     "address": "Christiaan de Wetstraat 180",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000938984"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152184",
+   "addresses": [
+    "Christiaan de Wetstraat 160",
+    "Christiaan de Wetstraat 162",
+    "Christiaan de Wetstraat 164",
+    "Christiaan de Wetstraat 166",
+    "Christiaan de Wetstraat 168",
+    "Christiaan de Wetstraat 170",
+    "Christiaan de Wetstraat 172",
+    "Christiaan de Wetstraat 174",
+    "Christiaan de Wetstraat 176",
+    "Christiaan de Wetstraat 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000938967"
+    },
+    {
+     "address": "Christiaan de Wetstraat 160",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000938970"
+    },
+    {
+     "address": "Christiaan de Wetstraat 164",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000938972"
+    },
+    {
+     "address": "Christiaan de Wetstraat 168",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000938976"
+    },
+    {
+     "address": "Christiaan de Wetstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000938980"
+    },
+    {
+     "address": "Christiaan de Wetstraat 174",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000938981"
+    },
+    {
+     "address": "Christiaan de Wetstraat 176",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000938982"
+    },
+    {
+     "address": "Christiaan de Wetstraat 178",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000938983"
+    },
+    {
+     "address": "Christiaan de Wetstraat 162",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000938964"
+    },
+    {
+     "address": "Christiaan de Wetstraat 166",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000938979"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123055",
+   "addresses": [
+    "Christiaan de Wetstraat 146",
+    "Christiaan de Wetstraat 148",
+    "Christiaan de Wetstraat 150",
+    "Christiaan de Wetstraat 152",
+    "Christiaan de Wetstraat 154",
+    "Christiaan de Wetstraat 156",
+    "Christiaan de Wetstraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 148",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000938969"
+    },
+    {
+     "address": "Christiaan de Wetstraat 152",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000938973"
+    },
+    {
+     "address": "Christiaan de Wetstraat 154",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000938975"
+    },
+    {
+     "address": "Christiaan de Wetstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000938978"
+    },
+    {
+     "address": "Christiaan de Wetstraat 146",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000938966"
+    },
+    {
+     "address": "Christiaan de Wetstraat 158",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000737601"
+    },
+    {
+     "address": "Christiaan de Wetstraat 150",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000938963"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089052",
+   "addresses": [
+    "Christiaan de Wetstraat 132",
+    "Christiaan de Wetstraat 134",
+    "Christiaan de Wetstraat 136",
+    "Christiaan de Wetstraat 138",
+    "Christiaan de Wetstraat 140",
+    "Christiaan de Wetstraat 142",
+    "Christiaan de Wetstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 144",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000938965"
+    },
+    {
+     "address": "Christiaan de Wetstraat 142",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000737600"
+    },
+    {
+     "address": "Christiaan de Wetstraat 140",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938974"
+    },
+    {
+     "address": "Christiaan de Wetstraat 138",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938977"
+    },
+    {
+     "address": "Christiaan de Wetstraat 134",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938962"
+    },
+    {
+     "address": "Christiaan de Wetstraat 132",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938968"
+    },
+    {
+     "address": "Christiaan de Wetstraat 136",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938971"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078181",
+   "addresses": [
+    "Christiaan de Wetstraat 116",
+    "Christiaan de Wetstraat 118",
+    "Christiaan de Wetstraat 120",
+    "Christiaan de Wetstraat 122",
+    "Christiaan de Wetstraat 124",
+    "Christiaan de Wetstraat 126",
+    "Christiaan de Wetstraat 128",
+    "Christiaan de Wetstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000604607"
+    },
+    {
+     "address": "Christiaan de Wetstraat 128",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000604611"
+    },
+    {
+     "address": "Christiaan de Wetstraat 130",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000604612"
+    },
+    {
+     "address": "Christiaan de Wetstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000604606"
+    },
+    {
+     "address": "Christiaan de Wetstraat 124",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000604609"
+    },
+    {
+     "address": "Christiaan de Wetstraat 122",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000604608"
+    },
+    {
+     "address": "Reitzstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000791062"
+    },
+    {
+     "address": "Christiaan de Wetstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000604605"
+    },
+    {
+     "address": "Christiaan de Wetstraat 126",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000604610"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

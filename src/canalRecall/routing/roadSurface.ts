@@ -39,7 +39,8 @@ export interface RoadSpan {
 
 export interface RoadSpatialIndex {
   cellSize: number;
-  cells: Map<string, RoadSpan[]>;
+  /** Buckets by cell key (see `cellKey`); read them through `roadsNear`. */
+  cells: Map<number | string, RoadSpan[]>;
 }
 
 /** px — the grid cell, matching `ROAD_GRID_CELL` in constants.js. */
@@ -60,7 +61,15 @@ export const NAME_MERGE_SIZE = 18;
 
 export type Surface = 'asphalt' | 'curb' | 'grass';
 
-const cellKey = (gx: number, gy: number) => `${gx},${gy}`;
+/**
+ * Integer cell coordinates as one exact number key, as in `roadGraph.ts`: a
+ * `"gx,gy"` string per cell cost a string per bucket insert (141,000 cells,
+ * ~400,000 inserts at ride start) and nine to eighty-one strings per surface
+ * query every frame (#136). Out of range (or NaN) falls back to the string.
+ */
+const CELL_LIMIT = 2 ** 25;
+const cellKey = (gx: number, gy: number): number | string =>
+  Math.abs(gx) < CELL_LIMIT && Math.abs(gy) < CELL_LIMIT ? (gx + CELL_LIMIT) * 2 ** 26 + (gy + CELL_LIMIT) : `${gx},${gy}`;
 
 /** Squared length is enough wherever only ordering matters. */
 function closestPointOnSpan(px: number, py: number, a: RoadPoint, b: RoadPoint) {
@@ -86,7 +95,7 @@ function* roadSurfaceStages(
   cellSize: number = ROAD_GRID_CELL,
   connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = [],
 ): Generator<void, RoadSpatialIndex> {
-  const cells = new Map<string, RoadSpan[]>();
+  const cells = new Map<number | string, RoadSpan[]>();
   const add = (span: RoadSpan) => {
     const { a, b, width } = span;
     const pad = width + 10;

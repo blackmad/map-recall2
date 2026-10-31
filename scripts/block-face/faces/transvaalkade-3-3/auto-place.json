@@ -1,0 +1,207 @@
+{
+ "face": "transvaalkade-3-3",
+ "street": "Transvaalkade",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167367",
+   "address": "Transvaalkade 3A",
+   "builtYear": 1878,
+   "widthM": 5.45,
+   "eavesM": 15.29,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.4,
+    "toM": 5.4,
+    "depthM": 0.75,
+    "centre": 0.908,
+    "lineRD": [
+     [
+      123681.79637499999,
+      485354.53725
+     ],
+     [
+      123684.964375,
+      485356.81525
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8f7068",
+    "wallRaw": "#9e8479",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 193,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.7,
+      "topWidthM": 0.57,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1878, type 1921-1924; frontage 5.45 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1921-1924",
+     "frontage 5.45 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 16.2 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.14 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165928",
+   "address": "Transvaalkade 3",
+   "builtYear": 1878,
+   "widthM": 5.03,
+   "eavesM": 16.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907669",
+    "wallRaw": "#987e6e",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 241,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.07,
+      "topWidthM": 0.72,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.212,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.52 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.52,
+       "light": 0.17
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 1.9,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1878, type 1921-1924; frontage 5.03 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.9 m at 0.52 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1878, type 1921-1924",
+     "frontage 5.03 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.9 m at 0.52 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.191 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

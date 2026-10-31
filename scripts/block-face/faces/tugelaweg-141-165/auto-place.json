@@ -1,0 +1,144 @@
+{
+ "face": "tugelaweg-141-165",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2022-04-25",
+ "seconds": 0.63,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012088780",
+   "address": "Tugelaweg 141",
+   "builtYear": 1992,
+   "widthM": 14.05,
+   "eavesM": 14.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68574e",
+    "wallRaw": "#726b5e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 799,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.12,
+    "structure": {
+     "bayWidthM": 3.63,
+     "bayCentre": 0.37,
+     "balconies": true,
+     "why": "dark open axis 2.5 m at 0.83 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.43,
+       "centre": 0.4,
+       "light": 0.83
+      },
+      {
+       "widthM": 2.5,
+       "centre": 0.83,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.82,
+       "widthM": 0.9,
+       "centre": 0.12
+      },
+      {
+       "atM": 8.63,
+       "widthM": 1,
+       "centre": 0.17
+      },
+      {
+       "atM": 5.92,
+       "widthM": 1.45,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 45 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063471",
+   "address": "Tugelaweg 153",
+   "builtYear": 1994,
+   "widthM": 6.02,
+   "eavesM": 17.93,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.04,
+    "toM": 5.04,
+    "depthM": 0.51,
+    "centre": 0.838
+   },
+   "strip": {
+    "wall": "#635751",
+    "wallRaw": "#7d6f63",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 799,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 4.58,
+     "bayCentre": 0.59,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.78,
+       "widthM": 0.85,
+       "centre": 0.34
+      },
+      {
+       "atM": 12.52,
+       "widthM": 0.9,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 2 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

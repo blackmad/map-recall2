@@ -1,0 +1,150 @@
+{
+ "street": "Majubastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:44:03.814Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012116871",
+   "addresses": [
+    "Majubastraat 153",
+    "Majubastraat 155",
+    "Majubastraat 157",
+    "Majubastraat 159",
+    "Majubastraat 159B",
+    "Majubastraat 159A",
+    "Majubastraat 161",
+    "Majubastraat 163",
+    "Majubastraat 165",
+    "Majubastraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 155",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000733328"
+    },
+    {
+     "address": "Majubastraat 157",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000733329"
+    },
+    {
+     "address": "Majubastraat 159",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000733330"
+    },
+    {
+     "address": "Majubastraat 161",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000733331"
+    },
+    {
+     "address": "Majubastraat 163",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000733332"
+    },
+    {
+     "address": "Majubastraat 165",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000733333"
+    },
+    {
+     "address": "Majubastraat 159B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012589195"
+    },
+    {
+     "address": "Majubastraat 159A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012589194"
+    },
+    {
+     "address": "Majubastraat 167",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000733334"
+    },
+    {
+     "address": "Majubastraat 153",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000733327"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074634",
+   "addresses": [
+    "Majubastraat 169",
+    "Majubastraat 171",
+    "Majubastraat 173",
+    "Majubastraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 75",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000714164"
+    },
+    {
+     "address": "Majubastraat 171",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000733336"
+    },
+    {
+     "address": "Majubastraat 169",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000733335"
+    },
+    {
+     "address": "Majubastraat 173",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000733341"
+    },
+    {
+     "address": "Majubastraat 175",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000723824"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1595408044,
+     "lngLat": [
+      4.9204599,
+      52.3537649
+     ],
+     "tags": {
+      "check_date": "2023-08-14",
+      "name": "Stomerij Kalver",
+      "opening_hours": "Mo 13:00-18:00; Tu-Sa 09:30-18:00",
+      "phone": "+31 6 26766484",
+      "shop": "tailor"
+     },
+     "fetchedAt": "2026-10-31T14:44:03.814Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

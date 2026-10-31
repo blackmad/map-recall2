@@ -1,0 +1,358 @@
+{
+ "street": "Ben Viljoenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148086",
+   "addresses": [
+    "Ben Viljoenstraat 1",
+    "Ben Viljoenstraat 3",
+    "Ben Viljoenstraat 5",
+    "Ben Viljoenstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580298"
+    },
+    {
+     "address": "Ben Viljoenstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000580300"
+    },
+    {
+     "address": "Ben Viljoenstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000580305"
+    },
+    {
+     "address": "Ben Viljoenstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000580309"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091211",
+   "addresses": [
+    "Ben Viljoenstraat 9",
+    "Ben Viljoenstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000580311"
+    },
+    {
+     "address": "Ben Viljoenstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580312"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148195",
+   "addresses": [
+    "Ben Viljoenstraat 13",
+    "Ben Viljoenstraat 15",
+    "Ben Viljoenstraat 17",
+    "Ben Viljoenstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000580313"
+    },
+    {
+     "address": "Ben Viljoenstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580314"
+    },
+    {
+     "address": "Ben Viljoenstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580319"
+    },
+    {
+     "address": "Ben Viljoenstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000580324"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133204",
+   "addresses": [
+    "Ben Viljoenstraat 21",
+    "Ben Viljoenstraat 23",
+    "Ben Viljoenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580329"
+    },
+    {
+     "address": "Ben Viljoenstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580334"
+    },
+    {
+     "address": "Ben Viljoenstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000580339"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093263",
+   "addresses": [
+    "Ben Viljoenstraat 27",
+    "Ben Viljoenstraat 29",
+    "Ben Viljoenstraat 31",
+    "Ben Viljoenstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000580340"
+    },
+    {
+     "address": "Ben Viljoenstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580341"
+    },
+    {
+     "address": "Ben Viljoenstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580342"
+    },
+    {
+     "address": "Ben Viljoenstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580343"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138431",
+   "addresses": [
+    "Ben Viljoenstraat 35",
+    "Ben Viljoenstraat 37",
+    "Ben Viljoenstraat 39",
+    "Ben Viljoenstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580344"
+    },
+    {
+     "address": "Ben Viljoenstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580345"
+    },
+    {
+     "address": "Ben Viljoenstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580346"
+    },
+    {
+     "address": "Ben Viljoenstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580347"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076498",
+   "addresses": [
+    "Ben Viljoenstraat 43",
+    "Ben Viljoenstraat 45",
+    "Ben Viljoenstraat 47",
+    "Ben Viljoenstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000580348"
+    },
+    {
+     "address": "Ben Viljoenstraat 45",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580349"
+    },
+    {
+     "address": "Ben Viljoenstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580350"
+    },
+    {
+     "address": "Ben Viljoenstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580351"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154913",
+   "addresses": [
+    "Ben Viljoenstraat 51",
+    "Ben Viljoenstraat 53",
+    "Ben Viljoenstraat 55",
+    "Ben Viljoenstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580352"
+    },
+    {
+     "address": "Ben Viljoenstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580353"
+    },
+    {
+     "address": "Ben Viljoenstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580354"
+    },
+    {
+     "address": "Ben Viljoenstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580355"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154068",
+   "addresses": [
+    "Ben Viljoenstraat 59",
+    "Ben Viljoenstraat 61",
+    "Ben Viljoenstraat 63",
+    "Ben Viljoenstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580356"
+    },
+    {
+     "address": "Ben Viljoenstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000580357"
+    },
+    {
+     "address": "Ben Viljoenstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580358"
+    },
+    {
+     "address": "Ben Viljoenstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000580359"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068957",
+   "addresses": [
+    "Ben Viljoenstraat 67",
+    "Ben Viljoenstraat 69",
+    "Ben Viljoenstraat 71",
+    "Ben Viljoenstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000580361"
+    },
+    {
+     "address": "Ben Viljoenstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000580362"
+    },
+    {
+     "address": "Ben Viljoenstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000580363"
+    },
+    {
+     "address": "Ben Viljoenstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580360"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,299 @@
+{
+ "street": "Hofmeyrstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114813",
+   "addresses": [
+    "Hofmeyrstraat 14D",
+    "Hofmeyrstraat 14E",
+    "Hofmeyrstraat 14B",
+    "Hofmeyrstraat 14A",
+    "Hofmeyrstraat 14C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000727481"
+    },
+    {
+     "address": "Hofmeyrstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001170038"
+    },
+    {
+     "address": "Hofmeyrstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000726241"
+    },
+    {
+     "address": "Hofmeyrstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000726240"
+    },
+    {
+     "address": "Hofmeyrstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000727480"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073427",
+   "addresses": [
+    "Hofmeyrstraat 12D",
+    "Hofmeyrstraat 12A",
+    "Hofmeyrstraat 12E",
+    "Hofmeyrstraat 12C",
+    "Hofmeyrstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000726085"
+    },
+    {
+     "address": "Hofmeyrstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000725653"
+    },
+    {
+     "address": "Hofmeyrstraat 12E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001170037"
+    },
+    {
+     "address": "Hofmeyrstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000726055"
+    },
+    {
+     "address": "Hofmeyrstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000726054"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154803",
+   "addresses": [
+    "Hofmeyrstraat 8C",
+    "Hofmeyrstraat 10B",
+    "Hofmeyrstraat 10D",
+    "Hofmeyrstraat 10E",
+    "Hofmeyrstraat 10C",
+    "Hofmeyrstraat 10A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000725373"
+    },
+    {
+     "address": "Hofmeyrstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000725591"
+    },
+    {
+     "address": "Hofmeyrstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000988598"
+    },
+    {
+     "address": "Hofmeyrstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000725370"
+    },
+    {
+     "address": "Hofmeyrstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000725374"
+    },
+    {
+     "address": "Hofmeyrstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000725372"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105783",
+   "addresses": [
+    "Hofmeyrstraat 6",
+    "Hofmeyrstraat 8D",
+    "Hofmeyrstraat 8E",
+    "Hofmeyrstraat 8A",
+    "Hofmeyrstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000725371"
+    },
+    {
+     "address": "Hofmeyrstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000988597"
+    },
+    {
+     "address": "Hofmeyrstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000725343"
+    },
+    {
+     "address": "Hofmeyrstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000725342"
+    },
+    {
+     "address": "Hofmeyrstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000725369"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077463",
+   "addresses": [
+    "Hofmeyrstraat 2A",
+    "Hofmeyrstraat 2C",
+    "Hofmeyrstraat 2E",
+    "Hofmeyrstraat 2G",
+    "Hofmeyrstraat 2B",
+    "Hofmeyrstraat 2D",
+    "Hofmeyrstraat 2F",
+    "Hofmeyrstraat 2H",
+    "Hofmeyrstraat 2K",
+    "Hofmeyrstraat 2M",
+    "Hofmeyrstraat 4D",
+    "Hofmeyrstraat 4A",
+    "Hofmeyrstraat 4B",
+    "Hofmeyrstraat 4C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000937290"
+    },
+    {
+     "address": "Hofmeyrstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000937291"
+    },
+    {
+     "address": "Hofmeyrstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000937292"
+    },
+    {
+     "address": "Hofmeyrstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000937293"
+    },
+    {
+     "address": "Hofmeyrstraat 2G",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000937294"
+    },
+    {
+     "address": "Hofmeyrstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000937296"
+    },
+    {
+     "address": "Hofmeyrstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000937297"
+    },
+    {
+     "address": "Hofmeyrstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000937298"
+    },
+    {
+     "address": "Hofmeyrstraat 2H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000937299"
+    },
+    {
+     "address": "Hofmeyrstraat 2K",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010001170036"
+    },
+    {
+     "address": "Hofmeyrstraat 2M",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000937300"
+    },
+    {
+     "address": "Hofmeyrstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937287"
+    },
+    {
+     "address": "Hofmeyrstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937288"
+    },
+    {
+     "address": "Hofmeyrstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937289"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

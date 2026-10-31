@@ -1,0 +1,136 @@
+{
+ "street": "Laing's Nekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:19:21.744Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156274",
+   "addresses": [
+    "Laing's Nekstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000717059"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163771",
+   "addresses": [
+    "Laing's Nekstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000717065"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118171",
+   "addresses": [
+    "Laing's Nekstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001002103"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165604",
+   "addresses": [
+    "Laing's Nekstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000717076"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161796",
+   "addresses": [
+    "Laing's Nekstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000717080"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156344",
+   "addresses": [
+    "Laing's Nekstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000717082"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167400",
+   "addresses": [
+    "Laing's Nekstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001015258"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086961141,
+     "lngLat": [
+      4.9247575,
+      52.354002
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T14:19:21.744Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  }
+ ]
+}

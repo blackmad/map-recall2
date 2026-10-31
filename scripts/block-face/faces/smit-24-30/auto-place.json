@@ -1,0 +1,401 @@
+{
+ "face": "smit-24-30",
+ "street": "Smitstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.83,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012114180",
+   "address": "Smitstraat 30",
+   "builtYear": 1912,
+   "widthM": 11.05,
+   "eavesM": 13.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71605b",
+    "wallRaw": "#725f5a",
+    "skyline": {
+     "eavesM": 12.63,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.03,
+      "riseM": 2.1,
+      "topWidthM": 3.15,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.28,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.82,
+       "widthM": 1.5,
+       "centre": 0.07
+      },
+      {
+       "atM": 5.57,
+       "widthM": 1.07,
+       "centre": 0.51
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1.18,
+       "centre": 0.06
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.208 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069344",
+   "address": "Smitstraat 28",
+   "builtYear": 1912,
+   "widthM": 5.99,
+   "eavesM": 13.67,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.52,
+    "toM": 0.86,
+    "depthM": 0.29,
+    "centre": 0.115,
+    "lineRD": [
+     [
+      123310.964375,
+      485272.40475000005
+     ],
+     [
+      123309.59437499999,
+      485275.32275
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6d5e57",
+    "wallRaw": "#7c6d66",
+    "skyline": {
+     "eavesM": 12.57,
+     "eavesRow": 245,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 6.13,
+      "topWidthM": 0.07,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.316,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.6,
+       "widthM": 1.27,
+       "centre": 0.12
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1.52,
+       "centre": 0.35
+      },
+      {
+       "atM": 5.38,
+       "widthM": 0.82,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.99 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.99 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.25 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143928",
+   "address": "Smitstraat 26",
+   "builtYear": 1912,
+   "widthM": 7.13,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72625c",
+    "wallRaw": "#81716b",
+    "skyline": {
+     "eavesM": 12.6,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.9,
+      "topWidthM": 1.75,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.28,
+    "structure": {
+     "bayWidthM": 1.7,
+     "bayCentre": 0.63,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.4,
+       "widthM": 2.92,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.65,
+       "widthM": 1.55,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 7.13 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 7.13 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.6 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.22 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099888",
+   "address": "Smitstraat 24",
+   "builtYear": 1912,
+   "widthM": 7.98,
+   "eavesM": 14.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725e57",
+    "wallRaw": "#7d6963",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 3,
+      "topWidthM": 0.17,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.259,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.4,
+       "widthM": 1.9,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.1,
+       "widthM": 1.1,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 7.98 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 7.98 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.178 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

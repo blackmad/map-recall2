@@ -1,0 +1,111 @@
+{
+ "face": "transvaalplein-4-6",
+ "image": "staging/block-face/transvaalplein-4-6/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 351,
+ "height": 486,
+ "groundNAP": 0.322,
+ "heightM": 12.15,
+ "frame": {
+  "midRD": [
+   123405.39587499999,
+   485208.4425
+  ],
+  "uRD": [
+   -0.22556402331676859,
+   -0.9742283466339666
+  ],
+  "nRD": [
+   -0.9742283466339666,
+   0.22556402331676859
+  ]
+ },
+ "x0M": -3.61,
+ "x1M": 5.18,
+ "date": "2020-04-29",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012074011",
+   "x0M": -3.61,
+   "x1M": -0.78,
+   "px": [
+    0,
+    113
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001641",
+     "timestamp": "2020-04-29T09:07:29.267650Z",
+     "distanceM": 5.5,
+     "obliquityDeg": 5.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001555",
+     "timestamp": "2020-04-29T09:05:54.908370Z",
+     "distanceM": 28.1,
+     "obliquityDeg": 11.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001556",
+     "timestamp": "2020-04-29T09:05:55.463340Z",
+     "distanceM": 25.3,
+     "obliquityDeg": 20.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012151157",
+   "x0M": -0.78,
+   "x1M": 5.18,
+   "px": [
+    113,
+    351
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001555",
+     "timestamp": "2020-04-29T09:05:54.908370Z",
+     "distanceM": 29.3,
+     "obliquityDeg": 19.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001556",
+     "timestamp": "2020-04-29T09:05:55.463340Z",
+     "distanceM": 27.1,
+     "obliquityDeg": 28.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001557",
+     "timestamp": "2020-04-29T09:05:56.003510Z",
+     "distanceM": 25.7,
+     "obliquityDeg": 39.3,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-06-08": 2,
+  "2021-05-28": 2,
+  "2022-06-13": 2,
+  "2024-10-02": 2,
+  "2025-06-20": 2,
+  "2018-05-15": 2,
+  "2017-04-06": 2,
+  "2019-05-16": 2,
+  "2020-04-29": 2,
+  "2019-12-19": 2
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

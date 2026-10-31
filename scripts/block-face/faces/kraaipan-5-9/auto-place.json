@@ -1,0 +1,250 @@
+{
+ "face": "kraaipan-5-9",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 0.21,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012115531",
+   "address": "Kraaipanstraat 5A",
+   "builtYear": 1921,
+   "widthM": 6.04,
+   "eavesM": 10.39,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.37,
+    "toM": 2.94,
+    "depthM": 0.33,
+    "centre": 0.357
+   },
+   "strip": {
+    "wall": "#645c4d",
+    "wallRaw": "#715346",
+    "skyline": {
+     "eavesM": 8.38,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 3.2,
+      "topWidthM": 0.15,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.485,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.5 m at 0.45 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.5,
+       "centre": 0.45,
+       "light": 0.22
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.93,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.04 m, type 8.8-12.9 m; strip shows balconies (dark open axis 3.5 m at 0.45 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 6.04 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 3.5 m at 0.45 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 8.38 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.072 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098646",
+   "address": "Kraaipanstraat 7",
+   "builtYear": 1921,
+   "widthM": 6.08,
+   "eavesM": 11.3,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.28,
+    "toM": 3.84,
+    "depthM": 0.33,
+    "centre": 0.503
+   },
+   "strip": {
+    "wall": "#978c78",
+    "wallRaw": "#72684f",
+    "skyline": {
+     "eavesM": 8.38,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 4.8,
+      "topWidthM": 1.18,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.66,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012135365",
+   "address": "Kraaipanstraat 9B",
+   "builtYear": 1921,
+   "widthM": 6,
+   "eavesM": 10.79,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.15,
+    "toM": 4.7,
+    "depthM": 0.33,
+    "centre": 0.654
+   },
+   "strip": {
+    "wall": "#88765e",
+    "wallRaw": "#634c40",
+    "skyline": {
+     "eavesM": 10.57,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 2.2,
+      "topWidthM": 0.07,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.421,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.62,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 0.95,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 6 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

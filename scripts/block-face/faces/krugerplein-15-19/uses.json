@@ -1,0 +1,84 @@
+{
+ "street": "Krugerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:14:09.603Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012137011",
+   "addresses": [
+    "Krugerplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000714880"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1209555339,
+     "lngLat": [
+      4.9205911,
+      52.354195
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15",
+      "addr:street": "Krugerplein",
+      "male": "yes",
+      "name": "Serhat",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:14:09.603Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012133749",
+   "addresses": [
+    "Krugerplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 17-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000714887"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148341",
+   "addresses": [
+    "Krugerplein 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000714895"
+    },
+    {
+     "address": "Krugerplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012133831"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,5 +1,182 @@
 # Canal Recall — what is built
 
+**Deployed pages stamp every asset with its content hash; the "slow, blurry, pop-in" `?engine=own` ride was a stale cached bundle (2026-10-31).**
+The user rode `?engine=own` on the deployed site and found it slow, janky,
+blurry (the whole world frame upscaled ~2×) with heavy pop-in, while a lane's
+fresh localhost build "looks great". The deploy was current (8727f0e2e), but
+Hosting caches `/js/**` for an hour and the pages cache-bust by hand: 18 of
+the 25 `?v=` stamps in `index.html` were older than their file's last change
+(`engine.bundle.js?v=20261030-engine` after five rebuilds that day, also
+three, three-buildings, signature-placement, vector-map.js, game.js), so the
+browser mixed yesterday's engine bundle with today's everything else.
+`scripts/stamp-canal-assets.ts` now rewrites every local `?v=` in the
+assembled site's HTML to the first 10 hex digits of the asset's SHA-256
+(unchanged files keep their URL; remote and rooted URLs untouched; a missing
+asset fails the step), run by the deploy workflow right after
+`assemble-canalrecall-site.mjs`; `test:stamps` pins the rewrite in
+`check:canal`. The committed stamps stay human-readable and no longer matter
+for players. Lesson: every bundle rebuild in an integration must ship with a
+new URL; from now on the deploy does it. The user's real-GPU observations
+(DPR 2, full window) still get one measured table from L1 before the own
+engine is judged on a Mac. Also from that ride: POI/business labels draw
+through buildings under the own engine (occlusion item, L1).
+
+**`fetchRoads` downloads its three files at once; the road surface index keys cells by number (2026-10-31, #136).**
+`squares.json` and `transit-network.json` download alongside the street
+extract and are applied at the same point in the same order (plaza, then
+ferry): fetchRoads at 20 Mbit JSON 4,262 → 4,152 ms, binary 2,681 → 2,445;
+localhost binary 93 → 65 ms; submit → racing at 20 Mbit JSON 7,236 → 7,155,
+binary 6,388 → 6,160 (bandwidth-bound, so small). `roadSurface.ts` uses
+numeric cell keys: Node build 218 → 140 ms, ring-2 queries 2.5× faster,
+`roadsNear` identical over 180k queries; in game `prepareSurfaceIndex` 130 →
+92 ms (JSON) / 266 → 142 (binary) under load. The JSON parse (~220 ms) is
+mostly the dev server gzipping 15 MB per request and `?roads=bin` removes it;
+the next CPU owner is the feature → ways loop (~60–120 ms, 340k node
+objects), held because `vectorMap` reads the ways shape.
+
+**Transvaalbuurt kit: the first Oud-Oost type library, the `parapet.band` component and the Albert Luthulistraat 25–39 row (2026-10-31, #149).**
+The user photographed Albert Luthulistraat 29–31 and asked for a buurt
+generator; Oud-Oost had none (Transvaalbuurt-West 0.2 %, -Oost 0.1 %
+modelled). The lane surveyed both buurten (`transvaalbuurt-west.json`,
+`transvaalbuurt-oost.json`, 160 intaked faces committed as clustering input)
+and found the survey's proposed faces ran past the 11-degree bend the chunk
+tolerates, so `buurtFaces.ts` now splits a proposed face where the frontage
+bends; the exemplar face `luthuli-21-41` intakes only because of that.
+Against the nearest libraries auto-place placed 8/309 (West) and 11/460
+(Oost) with indische-buurt and 0 with rivierenbuurt. The new library
+`scripts/block-face/types/transvaalbuurt/` holds two 1923 portiek types
+(plain and tower), measured on the 2017-04-06 and 2020-04-29 strips at
+40 px/m: sills 0.58/3.45/6.3/9.3 m, heads 2.03/4.95/7.9/10.9 m, wall top
+12 m, tower top 15.9 m, windows 2.0 m wide, two windows plus the stair axis
+per pand. `FrontIntent.parapet.band` (`buildingRecipe/parapetBand.ts`,
+tested) draws the near-black top courses of the parapet with hanging
+dentils and keeps the tower-top band 5 mm inside the tower's flanks; absent,
+fit-golden is byte-identical. Installed by hand: run face `luthuli-21-41-r1`
+(pands 105200, 142206, 126814, 128866; 6,260 tris; all gates and the GLB
+audit pass), reviewed beside the user's photo: pass. Auto-place with the new
+library placed 6 pands in the two buurten and all 6 were false positives
+(Christiaan de Wetstraat 37–49, a different 1925 design with canopies on
+columns and a crenellated parapet, edge NCC 0.25–0.46; Tugelaweg 50/52, a
+plain cornice front): held in the `-review-holds.json` files, so the library
+yields 0 by auto-place today. Hold reasons over both buurten: 695 faces with
+every type vetoed by build year, 65 with no front on the strip, 17
+single-pand runs, 12 below 0.7, 3 edge NCC, 2 compile. What the kit still
+cannot say on this row: the setback fifth storey behind the parapet with its
+white terrace railings (drawn as a low grey recipe roof because the 3DBAG
+roof drew a bare brick slab: the largest visible gap), the lighter
+header-course brick ladders beside the stair windows (`brickStripes` allows
+one band colour per house, taken by the parapet brick), stair windows half a
+storey above the main line, the tower's two small top lights, slit windows
+and rounded corners, the tower standing 0.63 m proud (drawn flush), number
+plates, mailboxes, rainwater pipes and vents. Integration: exposure rows
+regenerated, covers rebuilt from the published BAG tiles (597/630 models,
+check ok), buurt pages unchanged (78), strips and the user photo archived in
+`map-recall2-source-data` `block-face-strips/luthuli-21-41` (cdd6d94ef),
+What's New note with the photo | strip | model sheet. Next in the buurt: the
+1925 de Wetstraat / Krugerstraat 14–24 design, the 1920–22 three-storey
+pitched rows (85 pands on 46 faces), the Oost 1911–13 five-storey pitched
+rows (about 110 pands), and a flat-roof-with-setback crown.
+**Pins and picks follow the drawn camera when the deck is lifted; the own engine highlights once per change; the flip inventory exists (2026-10-31, #129, L1 hand-back 5).**
+Deck lift: maplibre-gl 5.24 builds the `project`/`unproject` matrix before
+the camera is lifted by the rider's deck elevation, so canvas pins and taps
+were up to ~6 px off what is drawn. `rendererShared/drawnProjection.ts`
+(exported as `drawnProjector` on `CanalRecallThree`) projects with the drawn
+matrix; `vector-map.js` uses it for `vectorMap.camera`, `projectWorld`
+(canvas pins), `screenToWorld` (Free Ride taps) and building/POI picking,
+while picking still goes through `queryPixel` so MapLibre's feature query
+keeps its own pixels; at elevation 0 nothing changes. The regression check in
+`engine-parity.spec` reads 3e-8 px with the fix and 5.69 px without.
+`free-ride.spec` passes; `building-click-perf` fails at :228 (0.82 vs 0.95,
+Westermarkt clicks land on "Guy Olivier") and :146 (10-min timeout) with and
+without the fix, so it is a pre-existing red (TODO). Highlight:
+`engine/landmarkHighlight.ts` makes `ownWorldView.setActiveLandmark` call
+`threeBuildings.setHighlighted` only when the lit ids or the card's point
+change (the marker and its footprint scan follow the same rule, except while
+the footprint has not loaded); the repeats came from `relight()` on every
+landmark model shown and from the game sending fresh notice objects for the
+same place, not from a per-frame call: 39 sends → 1 `setHighlighted`.
+iPhone ride: the seeded spawn faces a T-junction where street following
+waits for a side (a tap only queues the turn, holding goes), so the spec's
+ride now holds a side and asserts movement: iPhone 236 draws, 21 programs,
+heap 803 MB, moved 566 m; desktop 249 draws, 23 programs, heap 946–1,286 MB
+(noisy). For the routing lane: a phone player who taps a turn at a
+T-junction instead of holding it stays stopped. Flip inventory:
+`docs/handoffs/flip-inventory-20261031.md`: under `?engine=own` nothing reads
+`window.maplibregl` and no map is constructed, but maplibre-gl is still
+downloaded (2 unpkg requests); the `index.html` tag and the default switch
+in `game.js` are the only real blockers; `CameraMap` shim calls by caller,
+B1–B14 with file:line and replacements, a 7-step P5 deletion order, 75 specs
+(218 reads) and 49 scripts still reading `vectorMap.map`. Corrections to the
+programme's P5 list: `mapGuard.ts` cannot go whole (own uses
+`guardMapRender`); maplibre-gl and leaflet stay in `package.json` while 8 lab
+pages, `liveTiles.ts` and `MapComponent.tsx` use them. `test:engine` runs
+`src/canalRecall/engine/*.test.ts` inside `check:canal`.
+
+**Landmarks cast their shadows through one merged stand-in per level: shadow draws ÷3, nothing visible changes (2026-10-31, #129, P4 lane D step 1).**
+`src/canalRecall/rendererShared/shadowStandIns.ts`: each drawn landmark level
+casts through one merged position-only mesh per shadow side on
+`SHADOW_ONLY_LAYER` 30, and the original meshes stop casting;
+`sharedFrame.ts` turns layer 30 on only while `shadowMap.render` runs and
+`setShadows` no longer switches a stand-in's sources back on; hooks in
+`signature-landmarks-source.js` at install, LOD swap, context restore and
+dispose. Every triangle is kept so towers and spires keep their shadows.
+The brief's route B (swap geometry in `onBeforeShadow`) cannot work because
+three fetches the geometry before calling it. Step 1b rounds positions to a
+16-bit grid, merges duplicate vertices and uses the smallest index type:
+stand-in memory at the Dam 14.1 → 8.0 MB desktop, 11.2 → 5.9 MB iPhone (the
+first float version was 30 MB). Shadow draws desktop Dam 310 → 92,
+Westerkerk 179 → 57, Paleis 280 → 73 (shadow ms ~1.0 → 0.5); iPhone Dam 229
+→ 71, Westerkerk 171 → 71, Paleis 224 → 77 (~0.8 → 0.5); steady ride draws
+per shadow redraw 185 → 80 desktop, 217 → 82 iPhone; triangles unchanged.
+Pixel diff on vs off: desktop 30/0/4 px of 1.3 M (≤ 4 levels per channel),
+iPhone 1/0/0; the same state repeated gives 0. Still casting one mesh at a
+time: shared-mesh clones, street chunks, alpha-tested / multi-material /
+instanced / custom-depth meshes; not done: facade chunks (already 9 draws; a
+walls-only version changes gable shadows and needs a worker change) and
+own-ground chunk bases (~6 draws). Measured only, no code: world-matrix
+updates cost 0.066 ms desktop / 0.099 ms iPhone per frame (so
+`matrixWorldAutoUpdate` off saves < 0.1 ms); the only instanced props are
+the 4 tree meshes and nothing uses DynamicDrawUsage; the brief's cull rule
+gives 5.5–8.8 km, beyond where trees load; bollards, railings and houseboats
+are not instanced under `?engine=own`; after warm-up desktop has 0 B uploads
+and 0 compiles, iPhone 146 KB/frame from streaming (149 before) and 4
+compiles, as main; two programs still compile mid-ride on the iPhone
+(`city-look/lit|slot|uv|-|0` and a landmark GLB material `masonry`), the next
+step being `renderer.compileAsync` before a landmark joins the scene and a
+precompiled slot|uv variant. `modulepreload` does not apply (classic
+scripts); `compileAsync` with progress and the `[init]` boot line need the
+loading screen, `index.html` and `game.js` (integrator).
+
+**The road network ships as a compact binary extract behind `?roads=bin` (2026-10-31, #136, P3 road graph as CSR binary).**
+`src/canalRecall/routing/roadExtract.ts` is the format and decoder: header
+with magic `CRRX`, version, section offsets, counts and the source SHA-256;
+coordinates as zigzag-varint deltas on a 1e-6° grid with Float64 for the 14
+off-grid restricted corridors; a name/value string table and per-way flags;
+every section rejects leftover bytes. The file ships gzip-wrapped
+(`roads-v2/streets-routing.bin.gz`) and is inflated with
+`DecompressionStream`, because hosting does not compress octet-stream.
+`scripts/roads/build-road-extract.ts` writes to `artifacts/roads/staging/`
+and refuses to write unless `JSON.stringify(decoded)` equals the source text;
+the integrator publishes to `public/data/extracts/amsterdam/roads-v2/` and
+must regenerate whenever `streets-routing.json` changes. `osm-loader.js
+_fetchRoadExtract` reads it under `?roads=bin` and falls back to the JSON on
+any failure; without the flag the JSON path is unchanged. Tests: 5 in
+`roadExtract.test.ts` (full Amsterdam round trip, 6 sentinel ways pinned by
+id), in `test:city-startup`; `road-graph-route-identity.ts --roads=<bin>`:
+graph (102,089 nodes, 322,568 edges), connectors, 3 trees, 71 pairs × 4
+planners, 8 area configs and `sampleRoutes(80, 7)` byte-equal. Size 2.84 →
+1.47 MB gzip (−48 %; 15.1 → 1.98 MB raw). Fetch + decode cold in Chrome:
+localhost 196 → 32 ms, 20 Mbit/40 ms 1,268 → 662 ms. Time to ride, medians
+of 3, JSON → binary: submit → rider 1,808 → 1,595 ms localhost and 6,310 →
+5,160 at 20 Mbit; submit → racing 3,427 → 2,728 and 8,208 → 7,134;
+`fetchRoads` 231 → 97 and 4,178 → 2,499. Held: skipping the
+quantise-and-stitch pass at build time, because junctions merge by
+`Math.round(world / 18)` in a world space projected about each ride's own
+centre, so precompiled junctions would be right for one centre only; doing
+it needs a fixed projection centre, which changes routes (decision). Next
+owner at 20 Mbit: `squares.json` and `transit-network.json` load one after
+the other inside `fetchRoads`.
+
 **The landmark highlight no longer rebuilds its shaders every frame; the material registry is keyed per family (2026-10-31, #129, materials lane round 2).**
 Program churn: `setActiveLandmark` runs every frame (152 calls in 10 s) and
 `HighlightMarker` plus its outline/roof passes rebuilt their `ShaderMaterial`s

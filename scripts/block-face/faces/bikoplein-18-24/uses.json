@@ -1,0 +1,73 @@
+{
+ "street": "Steve Bikoplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:39:37.900Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012077968",
+   "addresses": [
+    "Steve Bikoplein 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 24-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000903465"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150822",
+   "addresses": [
+    "Steve Bikoplein 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 22-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000903461"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142932",
+   "addresses": [
+    "Steve Bikoplein 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 20-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000903453"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098505",
+   "addresses": [
+    "Steve Bikoplein 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 18-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000903445"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

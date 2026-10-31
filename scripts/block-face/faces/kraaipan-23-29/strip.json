@@ -1,0 +1,106 @@
+{
+ "face": "kraaipan-23-29",
+ "image": "staging/block-face/kraaipan-23-29/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 986,
+ "height": 603,
+ "groundNAP": 0.349,
+ "heightM": 15.07,
+ "frame": {
+  "midRD": [
+   123169.05162500002,
+   485053.53312499996
+  ],
+  "uRD": [
+   -0.8132471655951153,
+   -0.5819184200998548
+  ],
+  "nRD": [
+   -0.5819184200998548,
+   0.8132471655951153
+  ]
+ },
+ "x0M": -12.09,
+ "x1M": 12.55,
+ "date": "2017-04-06",
+ "coverage": 0.25,
+ "spans": [
+  {
+   "pandId": "0363100012082203",
+   "x0M": -12.09,
+   "x1M": -6.05,
+   "px": [
+    0,
+    242
+   ],
+   "date": "2017-04-06",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012086048",
+   "x0M": -6.05,
+   "x1M": -0.1,
+   "px": [
+    242,
+    480
+   ],
+   "date": "2017-04-06",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012103446",
+   "x0M": -0.1,
+   "x1M": 6,
+   "px": [
+    480,
+    724
+   ],
+   "date": "2017-04-06",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012061216",
+   "x0M": 5.85,
+   "x1M": 12.55,
+   "px": [
+    718,
+    986
+   ],
+   "date": "2017-04-06",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000248_pano_0000_002595",
+     "timestamp": "2017-04-06T09:29:38.751860Z",
+     "distanceM": 10.4,
+     "obliquityDeg": 13,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000248_pano_0000_002594",
+     "timestamp": "2017-04-06T09:29:35.126900Z",
+     "distanceM": 12.7,
+     "obliquityDeg": 36.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-05-16": 1,
+  "2018-05-15": 1,
+  "2020-09-04": 1,
+  "2025-06-20": 1,
+  "2016-06-08": 1,
+  "2021-05-28": 1,
+  "2024-09-16": 1,
+  "2017-04-06": 1,
+  "2019-05-15": 0,
+  "2017-03-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

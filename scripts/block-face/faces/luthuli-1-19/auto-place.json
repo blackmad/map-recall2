@@ -1,0 +1,363 @@
+{
+ "face": "luthuli-1-19",
+ "street": "Albert Luthulistraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 6.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012138010",
+   "address": "Albert Luthulistraat 1C",
+   "builtYear": 1923,
+   "widthM": 8.83,
+   "eavesM": 12.28,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.1,
+    "toM": 8.82,
+    "depthM": 0.7,
+    "centre": 0.732,
+    "lineRD": [
+     [
+      123169.323375,
+      485143.01574999996
+     ],
+     [
+      123167.42237500001,
+      485138.07474999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#76594e",
+    "wallRaw": "#654d44",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 111,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 2.5,
+      "topWidthM": 2.13,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.013 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.22)",
+   "likeness": {
+    "pandId": "0363100012138010",
+    "ncc": 0.013,
+    "nccRaw": 0.013,
+    "shiftM": [
+     0.4,
+     -0.05
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.22"
+    ],
+    "wall": {
+     "photo": "#785b51",
+     "model": "#8f6c5f",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.14
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142304",
+   "address": "Albert Luthulistraat 5A",
+   "builtYear": 1923,
+   "widthM": 12.79,
+   "eavesM": 12.24,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.8,
+    "toM": 7.83,
+    "depthM": 0.29,
+    "centre": 0.494
+   },
+   "strip": {
+    "wall": "#634b41",
+    "wallRaw": "#604c42",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 100,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 2.35,
+      "topWidthM": 0.33,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.57,
+       "widthM": 0.97,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012142304",
+    "ncc": 0.233,
+    "nccRaw": 0.233,
+    "shiftM": [
+     -0.3,
+     0.3
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.234 < 0.45"
+    ],
+    "wall": {
+     "photo": "#654d44",
+     "model": "#7e5f53",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.234
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110043",
+   "address": "Albert Luthulistraat 9A",
+   "builtYear": 1923,
+   "widthM": 12.55,
+   "eavesM": 12.25,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.4,
+    "toM": 9.02,
+    "depthM": 0.71,
+    "centre": 0.495
+   },
+   "strip": {
+    "wall": "#6d5247",
+    "wallRaw": "#6d5449",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 700,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.083,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.6,
+       "widthM": 1.48,
+       "centre": 0.06
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 48 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074323",
+   "address": "Albert Luthulistraat 13A",
+   "builtYear": 1923,
+   "widthM": 12.71,
+   "eavesM": 11.74,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.83,
+    "toM": 7.86,
+    "depthM": 0.29,
+    "centre": 0.499
+   },
+   "strip": {
+    "wall": "#6d5449",
+    "wallRaw": "#745b50",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 111,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.104,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.05,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "transvaal-1923-portiek": 0.275
+   }
+  },
+  {
+   "pandId": "0363100012145564",
+   "address": "Albert Luthulistraat 17A",
+   "builtYear": 1923,
+   "widthM": 9.11,
+   "eavesM": 13.44,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.57,
+    "depthM": 0.72,
+    "centre": 0.196,
+    "lineRD": [
+     [
+      123145.76737500001,
+      485098.49874999997
+     ],
+     [
+      123142.489375,
+      485093.93675
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#755e53",
+    "wallRaw": "#735d52",
+    "skyline": {
+     "eavesM": 16.6,
+     "eavesRow": 36,
+     "confidence": 0.67,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.089,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.45,
+       "widthM": 0.8,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "transvaal-1923-portiek": 0.103
+   }
+  }
+ ]
+}

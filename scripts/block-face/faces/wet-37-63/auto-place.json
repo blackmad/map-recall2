@@ -1,0 +1,293 @@
+{
+ "face": "wet-37-63",
+ "street": "Christiaan de Wetstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 9.29,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012117142",
+   "address": "Christiaan de Wetstraat 37",
+   "builtYear": 1925,
+   "widthM": 12.74,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.93,
+    "toM": 1.93,
+    "depthM": 0.42,
+    "centre": 0.151
+   },
+   "strip": {
+    "wall": "#5b4b41",
+    "wallRaw": "#695851",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 0.68,
+      "topWidthM": 0.88,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.189,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099286",
+   "address": "Christiaan de Wetstraat 41",
+   "builtYear": 1925,
+   "widthM": 12.74,
+   "eavesM": 15.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67564f",
+    "wallRaw": "#726059",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 128,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.82,
+      "topWidthM": 0.47,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.204,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086761",
+   "address": "Christiaan de Wetstraat 45",
+   "builtYear": 1925,
+   "widthM": 12.74,
+   "eavesM": 15.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4b41",
+    "wallRaw": "#736058",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 132,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.5,
+      "topWidthM": 0.28,
+      "centre": 0.04
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082258",
+   "address": "Christiaan de Wetstraat 49",
+   "builtYear": 1925,
+   "widthM": 12.74,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 10.82,
+    "toM": 10.82,
+    "depthM": 0.38,
+    "centre": 0.849
+   },
+   "strip": {
+    "wall": "#605048",
+    "wallRaw": "#705f57",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 131,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.88,
+      "topWidthM": 0.88,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.217,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Christiaan de Wetstraat 37-51 (BAG 1925) is its own design: wide portiek canopies on columns, paired brick lisenes rising through a crenellated parapet, white trapezoid attic lights and corner oriels; transvaal-1923-portiek (raised stair panel, two windows a side) passed the edge-NCC gate but draws none of it, and the rows sit a storey-share off the photo's (wet-37-63-r1 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146692",
+   "address": "Christiaan de Wetstraat 53",
+   "builtYear": 1929,
+   "widthM": 17.8,
+   "eavesM": 15.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5650",
+    "wallRaw": "#7a635d",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.05,
+      "riseM": 1.13,
+      "topWidthM": 3.38,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.319,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 17.8 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 17.8 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.216 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

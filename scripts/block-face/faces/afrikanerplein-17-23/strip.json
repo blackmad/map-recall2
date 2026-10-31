@@ -1,0 +1,153 @@
+{
+ "face": "afrikanerplein-17-23",
+ "image": "staging/block-face/afrikanerplein-17-23/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 637,
+ "height": 796,
+ "groundNAP": 0.378,
+ "heightM": 19.9,
+ "frame": {
+  "midRD": [
+   123008.84570833335,
+   485069.99325
+  ],
+  "uRD": [
+   0.8094097991943481,
+   -0.5872442225924109
+  ],
+  "nRD": [
+   -0.5872442225924109,
+   -0.8094097991943481
+  ]
+ },
+ "x0M": -9.17,
+ "x1M": 6.76,
+ "date": "2024-12-20",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012088873",
+   "x0M": -9.17,
+   "x1M": -2.49,
+   "px": [
+    0,
+    267
+   ],
+   "date": "2024-12-20",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07112",
+     "timestamp": "2024-12-20T11:55:31Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 13.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07111",
+     "timestamp": "2024-12-20T11:55:30Z",
+     "distanceM": 7.3,
+     "obliquityDeg": 28.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07113",
+     "timestamp": "2024-12-20T11:55:32Z",
+     "distanceM": 9.4,
+     "obliquityDeg": 43.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131601",
+   "x0M": -2.49,
+   "x1M": 3.69,
+   "px": [
+    267,
+    514
+   ],
+   "date": "2024-12-20",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07110",
+     "timestamp": "2024-12-20T11:55:29Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 17.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07111",
+     "timestamp": "2024-12-20T11:55:30Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 23.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07109",
+     "timestamp": "2024-12-20T11:55:27Z",
+     "distanceM": 10.1,
+     "obliquityDeg": 44.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012133198",
+   "x0M": 3.69,
+   "x1M": 6.76,
+   "px": [
+    515,
+    638
+   ],
+   "date": "2024-12-20",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07110",
+     "timestamp": "2024-12-20T11:55:29Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 15.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07109",
+     "timestamp": "2024-12-20T11:55:27Z",
+     "distanceM": 7.5,
+     "obliquityDeg": 24.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2024-12-20_09-04-31_07111",
+     "timestamp": "2024-12-20T11:55:30Z",
+     "distanceM": 9.8,
+     "obliquityDeg": 44.5,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-04-29": 3,
+  "2019-05-15": 3,
+  "2020-01-29": 3,
+  "2021-05-28": 3,
+  "2022-08-31": 3,
+  "2023-01-02": 3,
+  "2024-12-20": 3,
+  "2017-04-06": 3,
+  "2017-03-31": 3,
+  "2016-06-08": 3,
+  "2024-09-16": 2,
+  "2025-06-20": 2,
+  "2018-05-15": 2,
+  "2020-09-04": 0,
+  "2022-06-13": 1,
+  "2019-05-16": 2,
+  "2022-01-17": 2,
+  "2018-12-12": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

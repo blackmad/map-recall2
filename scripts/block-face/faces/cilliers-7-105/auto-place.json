@@ -1,0 +1,537 @@
+{
+ "face": "cilliers-7-105",
+ "street": "Cilliersstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.73,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012130864",
+   "address": "Cilliersstraat 7",
+   "builtYear": 1994,
+   "widthM": 9,
+   "eavesM": 11.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e1cdaf",
+    "wallRaw": "#857664",
+    "skyline": {
+     "eavesM": 10.75,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.2,
+      "topWidthM": 1.98,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.54,
+     "balconies": true,
+     "why": "balcony slabs stacked at 7.67 m (1.88 m wide), 5.05 m (2.8 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 1.88,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.05,
+       "widthM": 2.8,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; strip shows balconies (balcony slabs stacked at 7.67 m (1.88 m wide), 5.05 m (2.8 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924",
+     "strip shows balconies (balcony slabs stacked at 7.67 m (1.88 m wide), 5.05 m (2.8 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.248 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076335",
+   "address": "Cilliersstraat 27",
+   "builtYear": 1994,
+   "widthM": 8.1,
+   "eavesM": 11.05,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.02,
+    "depthM": 0.94,
+    "centre": 0.188,
+    "lineRD": [
+     [
+      123599.359375,
+      485535.73575
+     ],
+     [
+      123600.36237500001,
+      485531.45975000004
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d3bca1",
+    "wallRaw": "#776d5e",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 208,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 5,
+      "topWidthM": 0.95,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.26,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.37,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.65,
+       "widthM": 2.42,
+       "centre": 0.84
+      },
+      {
+       "atM": 4.95,
+       "widthM": 2.42,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 8.1 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924",
+     "frontage 8.1 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.261 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126613",
+   "address": "Cilliersstraat 47",
+   "builtYear": 1994,
+   "widthM": 7.32,
+   "eavesM": 11.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e0d3b5",
+    "wallRaw": "#908779",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 1.22,
+      "topWidthM": 2.02,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.05 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.05,
+       "light": 0
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.24,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.67,
+       "widthM": 2.27,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 7.32 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.7 m at 0.05 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924",
+     "frontage 7.32 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.7 m at 0.05 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.251 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102599",
+   "address": "Cilliersstraat 67",
+   "builtYear": 1994,
+   "widthM": 6.54,
+   "eavesM": 11.22,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.42,
+    "depthM": 0.7,
+    "centre": 0.263,
+    "lineRD": [
+     [
+      123609.201375,
+      485508.49175
+     ],
+     [
+      123610.048375,
+      485504.71975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#c4b49c",
+    "wallRaw": "#686848",
+    "skyline": {
+     "eavesM": 11.13,
+     "eavesRow": 192,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 4.43,
+      "topWidthM": 0.13,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.386,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.16 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.16,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.53,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.73,
+       "light": 0.54
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.93,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.15,
+       "widthM": 0.85,
+       "centre": 0.77
+      },
+      {
+       "atM": 7.6,
+       "widthM": 0.93,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 6.54 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924",
+     "frontage 6.54 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.13 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012129676",
+   "address": "Cilliersstraat 87",
+   "builtYear": 1994,
+   "widthM": 5.87,
+   "eavesM": 11.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7cfb3",
+    "wallRaw": "#7b6f61",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.03,
+      "topWidthM": 0.65,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.91,
+     "balconies": true,
+     "why": "dark open axis 1.45 m at 0.13 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.45,
+       "centre": 0.13,
+       "light": 0.4
+      },
+      {
+       "widthM": 2.8,
+       "centre": 0.56,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.57,
+       "widthM": 2.63,
+       "centre": 0.54
+      },
+      {
+       "atM": 5.85,
+       "widthM": 0.9,
+       "centre": 0.91
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 5.87 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.45 m at 0.13 (light 0.4): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924",
+     "frontage 5.87 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.45 m at 0.13 (light 0.4): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

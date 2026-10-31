@@ -1,0 +1,134 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:44:50.533Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233564",
+   "addresses": [
+    "Tugelaweg 63B",
+    "Tugelaweg 63A",
+    "Tugelaweg 63C",
+    "Tugelaweg 64A",
+    "Tugelaweg 64B",
+    "Tugelaweg 64C",
+    "Tugelaweg 64D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000816505"
+    },
+    {
+     "address": "Tugelaweg 63B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000831443"
+    },
+    {
+     "address": "Tugelaweg 64A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000831445"
+    },
+    {
+     "address": "Tugelaweg 64B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000831446"
+    },
+    {
+     "address": "Tugelaweg 64C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000831447"
+    },
+    {
+     "address": "Tugelaweg 64D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000831448"
+    },
+    {
+     "address": "Tugelaweg 63A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000831442"
+    },
+    {
+     "address": "Tugelaweg 63C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000831444"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103605",
+   "addresses": [
+    "Tugelaweg 65A",
+    "Tugelaweg 65C",
+    "Tugelaweg 65B",
+    "Tugelaweg 65D",
+    "Tugelaweg 69A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 65A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000831449"
+    },
+    {
+     "address": "Tugelaweg 69A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001014226"
+    },
+    {
+     "address": "Tugelaweg 65C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000831451"
+    },
+    {
+     "address": "Tugelaweg 65B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000831450"
+    },
+    {
+     "address": "Tugelaweg 65D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000831452"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10538728285,
+     "lngLat": [
+      4.9198828,
+      52.3554056
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "noname": "yes",
+      "panoramax": "ec0d5075-0a8b-4907-bebd-dae48d8ce651"
+     },
+     "fetchedAt": "2026-10-31T16:44:50.533Z",
+     "match": "frontage",
+     "distanceM": 0.7
+    }
+   ]
+  }
+ ]
+}
