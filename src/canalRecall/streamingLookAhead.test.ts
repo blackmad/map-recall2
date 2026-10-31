@@ -12,11 +12,11 @@ test('ground build queue: arrival order unranked; a newer request replaces; orde
   q.build('a', 1, 1); q.build('b', 1, 1); q.build('c', 1, 1); q.requestFar('F', 1);
   q.build('a', 0, 1); // now near: one job, LOD 0, behind b and c in arrival order
   assert.equal(q.size, 4);
-  assert.deepEqual(q.next(), { kind: 'cell', key: 'b', lod: 1, gen: 1 });
+  assert.deepEqual(q.next(), { kind: 'cell', key: 'b', lod: 1, gen: 1, detail: 'full' });
   q.order(['a', 'd']); // the rider moved: c is no longer wanted, a is first
   q.build('d', 1, 2);
-  assert.deepEqual(q.next(), { kind: 'cell', key: 'a', lod: 0, gen: 1 });
-  assert.deepEqual(q.next(), { kind: 'cell', key: 'd', lod: 1, gen: 2 });
+  assert.deepEqual(q.next(), { kind: 'cell', key: 'a', lod: 0, gen: 1, detail: 'full' });
+  assert.deepEqual(q.next(), { kind: 'cell', key: 'd', lod: 1, gen: 2, detail: 'full' });
   assert.deepEqual(q.next(), { kind: 'far', key: 'F', gen: 1 }, 'far blocks after cells');
   assert.equal(q.next(), null);
 });
