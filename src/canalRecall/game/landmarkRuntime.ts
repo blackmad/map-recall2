@@ -48,6 +48,7 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
+import { articleCard, type BuildingArticle } from '../buildingArticles';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
@@ -199,14 +200,21 @@ export class GameLandmarkRuntime {
     const matched = this.landmarks.find(landmark => landmark.id === String(building.id)
       || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
     if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
+    // A Wikipedia article about this very building (buildingArticles.ts):
+    // an apartment ring or a church no landmark or POI layer ever claimed.
+    const article = this._buildingFacts?.article(building.id) ?? null;
+    const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     const mapped = this._clickPoiInfo?.card(building);
-    if (mapped) return mapped;
+    if (mapped) {
+      // The article tile may still be in flight: the POI card gains the lede on arrival.
+      if (!article) this._requestBuildingFacts(building);
+      return article ? this._poiCardWithArticle(mapped, article) : mapped;
+    }
     // Not a landmark: say what the register knows (year, type, listing, size)
     // rather than "no building details".
     // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
     // screen it like every other label before it becomes a title.
     let row = this._buildingFacts?.lookup(building.id) ?? null;
-    const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     const monument = row && row.length > 3 ? row[3] : undefined;
     if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
       const { n: _hidden, ...rest } = monument;
@@ -222,9 +230,18 @@ export class GameLandmarkRuntime {
     // architect or function opened a card, so a click on most of the city
     // did nothing at all, which reads as broken. The year, period, type and
     // size are what the register knows; `describeBuilding` never invents more.
-    if (!row) this._requestBuildingFacts(building);
+    if (!row || !article) this._requestBuildingFacts(building);
+    const id = `clicked-${building.id || building.lngLat.join('-')}`;
+    if (article) {
+      // The article names the building and opens the card; the register line
+      // follows in the expanded panel. Its title is screened like any label.
+      return {
+        id, type: 'building', lngLat: building.lngLat, featureTarget: building.featureTarget,
+        ...articleCard(article, facts, !!spoils?.call(this.vectorMap, article.t)),
+      };
+    }
     return {
-      id: `clicked-${building.id || building.lngLat.join('-')}`,
+      id,
       name: facts.name,
       type: 'building',
       detail: facts.detail,
@@ -233,16 +250,38 @@ export class GameLandmarkRuntime {
     };
   }
 
+  /** A mapped venue whose building also has an article: the lede leads, the
+   *  mapped places follow, and the card gains the Wikipedia link and photo. */
+  _poiCardWithArticle(mapped: LandmarkNotice, article: BuildingArticle): LandmarkNotice {
+    return {
+      ...mapped,
+      detail: article.e,
+      longDetail: [article.e, mapped.longDetail || ''].filter(Boolean).join('\n\n'),
+      factTexts: [article.e, ...(mapped.factTexts ?? [])],
+      wikipediaUrl: article.u,
+      imageUrl: mapped.imageUrl || article.i || '',
+      extractLang: article.l ?? 'en',
+      ...(article.q ? { wikidata: article.q } : {}),
+    };
+  }
+
   /** The card opens at once with what is known; when the clicked building's
    *  fact tile was not resident yet, its year and type fill in on arrival. */
   _requestBuildingFacts(building: BuildingHit): void {
     const store = this._buildingFacts;
     if (!store || !building.lngLat) return;
-    const cardId = `clicked-${building.id || building.lngLat.join('-')}`;
+    // The plain card or the mapped place's card: either one is refreshed in place.
+    const cardIds = new Set([`clicked-${building.id || building.lngLat.join('-')}`, `clicked-poi-${building.id}`]);
+    const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
     void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-      if (this._landmarkNotice?.id !== cardId || !store.lookup(building.id)) return;
+      if (!stillOpen() || (!store.lookup(building.id) && !store.article(building.id))) return;
       const card = this._cardForClickedBuilding(building);
-      if (card && this._landmarkNotice?.id === cardId) this._landmarkNotice = { ...this._landmarkNotice, name: card.name, detail: card.detail };
+      const open = this._landmarkNotice;
+      if (!card || !open || !cardIds.has(open.id)) return;
+      // The article's name, lede, link and photo land with the tile too.
+      const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
+      this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
+      this._ensureLandmarkImage(this._landmarkNotice);
     });
   }
 

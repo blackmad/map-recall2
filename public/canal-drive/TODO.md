@@ -194,6 +194,11 @@ picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
 Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
 and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
 programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
+Lane hand-back (1) merged 2026-10-31 (`693d767cf`, HISTORY "`?engine=own`
+draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
+themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
+doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
+programs (37–39 > 32)** by decision until the landmark materials are merged.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -1313,22 +1318,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Wikipedia articles on plain buildings never reach the card (2026-10-30).**
-  User, Emerald Empire / Venetiëhof on KNSM-eiland: the card says only
-  "Built 1995" although OSM relation r3679879 carries `wikipedia=nl:Emerald
-  Empire` and `wikidata=Q66764687`. `build-amsterdam-extract.ts`
-  `classify()` admits landmarks only via tourism/historic/civic amenity,
-  the POI layer filters amenity/shop/tourism/leisure, and
-  `build-building-facts.ts` ignores name/wikipedia/wikidata. Measured:
-  1,698 OSM buildings carry a wiki tag (8 joined to a landmark); 1,257
-  Wikidata building articles with coordinates land in an OSM footprint and
-  are linked nowhere (200 OSM-tagged, 1,057 by point; 126 English, 1,131
-  Dutch-only). Beyond buildings, 5,611 located Wikidata items with
-  articles share no Q-id with the extracts (942 bridges, 789 streets, 513
-  sculptures, 243 works of art, 127 statues, 88 murals…; bridges/streets
-  unverified by title). Lane brief
-  `docs/handoffs/lane-wikipedia-buildings-20261030.md`; audit
-  `npm run audit:wikipedia-buildings`. Open: the lane itself.
+- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
+  articles on ordinary buildings open from the click card (HISTORY
+  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
+  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
+  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
+  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
+  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
+  click POI, not a building; bridges/streets in the Wikidata box should be
+  audited by title before counting them missing. Brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
+  `npm run audit:wikipedia-buildings`, issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.

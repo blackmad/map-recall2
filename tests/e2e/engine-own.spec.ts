@@ -60,6 +60,10 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
       hoodLines: vm._lines.hoods.lineCount, cycleLines: vm._lines.cycle.lineCount,
       labels: vm._labels.placed.map((l: any) => l.text),
       asked: [game.quizPromptName, game.quizCandidateName].filter(Boolean),
+      // The participants that make the ride like-for-like with MapLibre's (engine/cityExtras.ts).
+      landmarks: vm._signatureLandmarks ? vm._signatureLandmarks.describe().length : null,
+      trees: vm._inventoryTrees ? { ready: !!vm._inventoryTrees.ready, enabled: !!vm._inventoryTrees.enabled, draws: vm._inventoryTrees.debugDraws ?? 0 } : null,
+      roofs: !!vm._pyramidalRoofs, artis: !!vm._artisAnimals,
     };
   });
   console.log('engine=own', JSON.stringify(stats));
@@ -67,6 +71,9 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.maplibreMaps).toBe(0);
   expect(stats.frames).toBeGreaterThan(30);
   expect(stats.failed).toEqual([]);
+  expect(stats.landmarks).not.toBeNull();
+  expect(stats.trees).not.toBeNull();
+  expect(stats.roofs).toBe(true);
   expect(stats.calls).toBeLessThanOrEqual(700);
   expect(stats.programs).toBeLessThanOrEqual(32);
   expect(errors).toEqual([]);

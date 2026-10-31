@@ -1,5 +1,70 @@
 # Canal Recall — what is built
 
+**Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
+User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
+although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
+Wikidata has the item with coordinates. Three layers each dropped a plain
+`building=*` with an article: `build-amsterdam-extract.ts` `classify()`
+admits landmarks only via tourism/historic/civic amenity, the POI layer
+filters amenity/shop/tourism/leisure and carries no encyclopedia text, and
+`build-building-facts.ts` read only year/type/heritage. Now
+`scripts/build-building-articles.ts` joins two sources to the streamed pands
+with the same `BuildingGrid` join landmarks use: the footprint's own
+`wikipedia`/`wikidata` tag (260 footprints) and a Wikidata item of a building
+class whose P625 point falls inside the footprint (977; class guards in
+`src/canalRecall/buildingArticles.ts`, a footprint tagged with another item
+refuses the point, the mapper's tag beats a point, more sitelinks beat
+fewer). Pands a landmark already lights up are left to the landmark card
+(197 footprints). Result: 1,237 articles on 1,785 pands in 121 z14 tiles
+(`building-articles/14/x/y.json.gz` + `index.json`, 181 KB gzipped), loaded
+by `BuildingFactStore` beside the fact tile only where the index lists one.
+Text: the English article when it exists (133), else the Dutch lede, clipped
+at a sentence end under 360 characters (an initial such as "Ferdinand B." is
+not a sentence end), translated through
+`building-articles-translation-batch.ts` → haiku batch agents →
+`scripts/english-translations.json` (hash of the Dutch display text; years
+kept and the place not renamed, with `--force` for reviewed cases where the
+article title is a generic word like Raadhuis or Watertoren). Dutch original
+and provenance stay in `scripts/data/amsterdam-building-articles.json`. Card:
+`_cardForClickedBuilding` names the building after the article (screened by
+`_spoils` like monument names), opens with the lede, keeps the register line
+in the expanded panel, and gets the W WIKIPEDIA link and the photo; a mapped
+venue's POI card (Paradiso) keeps its name and gains the lede. Kicker stays
+BUILDING: no quiz or distractor pool changes. Regressions:
+`check-building-facts.mts` (module, store, published Emerald Empire /
+Rembrandt Tower / Huis met de Kabouters / Ronde Lutherse Kerk tiles) and
+`tests/e2e/building-article-card.spec.ts` (click → card). Audit of what is
+still unlinked city-wide: `npm run audit:wikipedia-buildings` (brief
+`docs/handoffs/lane-wikipedia-buildings-20261030.md`, issue #142). Not done:
+200 article footprints outside the streamed tiles (Pampus, Nederhorst den
+Berg), 7 with no readable lede, landmark promotion of the famous ones, and
+the ~1,050 located sculptures/murals/memorials, which belong to a street-side
+POI rather than a building.
+
+**`?engine=own` draws the whole ride; the fair A/B says where the time goes (2026-10-31, #129, L1).**
+`src/canalRecall/engine/cityExtras.ts` hands the existing participants
+(signature landmarks with their `landmarkResidency.ts` budget, inventory
+trees, detailed buildings, pyramidal roofs, ARTIS) the engine's camera and
+shared frame with the same rules `vector-map.js` applies: pause during the
+start flight, stand on the own-ground heights, a shown model hides the plain
+buildings it replaces and cuts host openings, covers.json suppression, tap
+picks the model first, detailed buildings replace models, measured-colours
+mode hides both. `engine/themePalette.ts` applies the palette table to the
+map's land, park, water and street materials. With everything drawn, the
+honest A/B (desktop chase, 12 s, back to back): main-thread CPU 7.76 →
+7.52 ms a frame, draws 636 → 218, triangles 1.73 → 2.54 M, shader compiles
+60 → 132, p99 44 → 58 ms, programs 33 → 39. Dropping MapLibre's render saves
+2.11 ms, and most comes back: 0.38 ms of three.js render from the flat map
+fills under the ground ring, 0.40 ms of label placement every frame, 0.38 ms
+of landmark ground-height refresh at 6× the old rate, plus rider cover, water
+sampling and feature syncs. The earlier 6.61 → 1.97 ms figure measured an
+engine that skipped trees and landmarks. Decision (integrator): the programs
+≤ 32 budget is not re-stated; it moves to `tests/perf/budgets.json` and
+`engine-own.spec.ts` stays red under the flag until the ~20 landmark material
+variants are merged onto shared programs (a P4 materials item). L1's order
+now: the doubled shader compiles, throttle the landmark height refresh,
+place labels only when the camera moved, skip flat fills inside the ring,
+then step 6 (the legacy `_makeLayer` branches), then the re-port.
 **Bridge kit: swing bridges and steel lattice portals (2026-10-31).**
 - A `'swing'` bascule style (`SWING` table): the deck turns as one leaf on a
   pivot drum, midstream or at a named bank, with fender piles and masts where
