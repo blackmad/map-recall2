@@ -1265,25 +1265,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **"New Market" is a street name (found by L1, 2026-10-30).** In
-  `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
-  (52.372955, 4.900113) is named "New Market": an English translation leaked
-  into a Dutch street name, so when Nieuwmarkt is asked and every name is
-  earned, "New Market" is drawn next to it on both engines. Cause found
-  2026-10-31: `scripts/build-amsterdam-extract.ts` l.260 took `name:en`
-  before `name` for roads and places (landmarks and venues keep English on
-  purpose). The line now prefers the local name; lane #147
-  (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
-  from the archived PBF, reviews every changed name, fixes English pins and
-  hands back a Nieuwmarkt screenshot for What's New; then pin a regression
-  (the engine's Nieuwmarkt test already screens nl names). Lane finding
-  (2026-10-31, #147): the one-line rule also renamed 59 landmarks (Weepers'
-  Tower → Schreierstoren), so the rule is scoped by `classify()` to streets,
-  squares, water, bridges and routing; like-for-like it changes 11 names
-  (Nieuwmarkt, Dam, Bloemenmarkt, Museumplein, Rembrandtplein, Albert
-  Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug, Vincent van
-  Goghstraat, K+R). Publishing goes through a scripted name-only patch
-  (`scripts/patch-local-street-names.ts`, staging + `--publish`), because:
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

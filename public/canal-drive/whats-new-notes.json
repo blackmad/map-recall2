@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-10-31",
+      "title": "Squares and streets carry the name on the sign",
+      "text": "The Nieuwmarkt was called \"New Market\" in the ride, and ten more squares, streets and one bridge wore their English Wikipedia names: Dam Square, Flower Market, Museum Square, Rembrandt Square, Albert Cuyp market, Waterlooplein Market, Coen Tunnel, Python Bridge, Vincent van Gogh Street, Kiss and Ride. The extract generator had preferred OpenStreetMap's English name for roads and places; it now takes the local name for streets, squares, waterways and bridges, and a scripted patch applied exactly those 11 renames to the published data (features added or removed: none). Landmarks keep their English names on purpose, so the Weepers' Tower and the Royal Palace read as before.",
+      "where": [
+        4.900113,
+        52.372955
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-dutch-street-names-before.jpg",
+          "alt": "The ride labelling the Nieuwmarkt as NEW MARKET",
+          "caption": "Before: \"New Market\""
+        },
+        {
+          "src": "whats-new/2026-10-31-dutch-street-names-after.jpg",
+          "alt": "The ride labelling the Nieuwmarkt and the street card reading Nieuwmarkt",
+          "caption": "After: Nieuwmarkt on the label and the street card"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Railway tracks that read as rails",
       "text": "Three of your reports from last night, all on the rail corridors east of Centraal: the ballast beds sank into the beige land, the sleeper texture lay along the map's east-west axis whatever way the track ran (that was the grey hatch), and in the station throat every yard track had its own bed a few centimetres lower, which drew dark ridges. Now each track shows two dark rails along its own direction on a grey-brown bed that stands clear of the ground, tracks closer than 7 m share one yard bed, and bridge tracks share one slab. Land drawn over a bed fell from 3–4 % of samples to under 0.6 % at all three spots; frame time is unchanged within noise. Still beige: the verge between track groups more than 7 m apart; platforms and catenary masts are not drawn yet.",
       "where": [
