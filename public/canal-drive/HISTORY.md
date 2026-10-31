@@ -1,5 +1,60 @@
 # Canal Recall — what is built
 
+**World cell format v4 published: shared string table, centimetre heights; 10.43 → 9.13 MB (2026-11-01, #130).**
+`world-v1/strings.bin` (1,324 strings, 5.8 KB gzip) replaces the per-cell
+string tables; each cell carries the table's count and FNV hash and refuses a
+missing or wrong table, and `WorldCellReader` (`world/worldCells.ts`) fetches
+it once, so the streamer needed no patch. v4 also stores a `C_SAME` column
+where `groundColour` equals `sideColour` (99.8 % of buildings) and interleaves
+FOOT x/y; the decoder reads v2–v4. A compile policy (`world/cellPolicy.ts`,
+recorded in `index.policy` / `policyOptions` and applied identically by
+`world:verify`) stores heights to the centimetre; its second option, removing
+near-collinear vertices within 5 cm (area change ≤ 1 %, shared corners and
+T-junctions kept), is off by default (`--collinear` opts in) by integrator
+decision: it saves 0.14 MB of the 1.13 MB gap to the 8 MB city gate and the
+world-v1-ab pixel harness cannot prove it (its noise floor is 0.65–1.1 M of
+1.3 M px because the camera lands sub-pixel differently each run; a
+fixed-camera variant is the lane's next item). Published from a full compile
+(604 cells, 349,282 buildings identical to v3 through the policy, `world:verify`
+fresh with 0 differing tiles, `check:covers` ok): cells 9,128,132 B +
+strings 5,847 B gzip. Gates: city ≤ 8 MB not met (9.13); per ride under
+`?world=v1` seeded 1.51 MB (met), free ride 2.30 MB (gate 2 MB, not met) with
+`building-facts` 0.43–0.65 MB fetched whole by `buildingFacts.ts` the next
+cut. Cell decode: worker median 5 ms, max 14 ms; at 4× CPU on the main-thread
+proxy median 14 ms, max 24–42 ms (gate ≤ 5 ms in the worker at 4× is not yet
+measurable because Playwright cannot throttle worker targets).
+
+**Stutter owners under `?engine=own` named and the first three fixed; camera clearance sees every resident; maplibre-gl not fetched under the flag (2026-11-01, #129).**
+L1 ran `motion-stutter.mjs` on the Jordaan free ride (rails, 120 px/s, 60 s
+after a 10 s warm-up, headed Chrome on the M4 Pro at DPR 2, readable bundles
+via `--no-minify` and `BUNDLES_DIR`) and attributed every frame over 16 ms
+through the V8 profile. Owners before: own-ground cell preparation after its
+fetch (50–91 ms long animation frames: `placeWayDecks` earcutting the road
+polygons of the full 3×3 cells ≈ 150 ms, relief tile insert and decks ≈ 100
+ms, `lngLatToRd` 20 ms), signature-landmark ground re-base
+`_applyChunkPandBases` ≈ 200 ms, GC 77 ms, the three.js render pass 82 ms,
+facade `setFeatures` + chunk install ≈ 60 ms, trees 26 ms. Fixes:
+`GroundStore` yields to a frame (`scheduler.yield`) between relief, deck,
+way-deck and cut steps and per relief tile (page only, workers unchanged);
+`placeWayDecks` indexes only the road polygons inside the profiles' reach (all
+236 way decks in the test box byte-identical, node prepare 6.7 → 4.2 s);
+landmark re-bases run in 4 ms slices with each chunk's ground points projected
+once. Motion window p50/p95/p99 8.3/10.0/10.4 → 8.3/9.9/10.3 ms, frames > 50
+ms 7 → 0, long tasks 7 (462 ms) → 0, longest frame 92 → 40 ms. The P3 gate (no
+streaming task over 16 ms at 1×) is still not met: 13 frames of 17–40 ms
+remain (`_applyChunkPandBases` on a new street chunk ≈ 100 ms total, render +
+shadow ≈ 70 ms, GC 49 ms, main-thread `splitIntoTiles`/`cutMesh` 30 ms, the
+wayOpening deck index still on the full 3×3 ≈ 32 ms, facade `t4` 24 ms); they
+are on TODO. The own ground is the default ground in both engines, so this is
+the one engine-programme change so far with a What's New note. Also: camera
+clearance under the own engine used `sampleFeatures(20_000)`, the first 20k of
+~34k residents, so a wall past that index never lowered the camera;
+`clearanceResidents()` returns all of them (test: a wall at index 30,000).
+P5 step B1 behind the flag: `engine/mapLibreLoader.ts` does not fetch
+maplibre-gl under `?engine=own` (`engine-own.spec` asserts no request). The
+haiku brief for oracle migration 2 (124 files off `vectorMap.map`) is at
+`docs/handoffs/lane-oracle-migration-2-20261031.md`.
+
 **Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
 The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
 drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label

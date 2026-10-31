@@ -230,7 +230,11 @@ camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
 iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
 P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
 in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
-Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
+Hand-back (6) merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
+named"): stutter owner table + three fixes (What's New "Fewer hitches when
+new ground streams in"), `clearanceResidents()`, P5 B1 (no maplibre-gl fetch
+under the flag), the oracle-migration-2 haiku brief; render-on-change WIP
+held. Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
 shadows through one merged stand-in per level"): shadow draws ÷3, no visible
 change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
 :228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
@@ -300,10 +304,11 @@ JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
 start, which the script does not yet sample; the 36 resident cells plus
 per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31 after format v3
 (HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
-cells (10.4 MB lossless v3 today; v4 with a shared string table, 1 cm
-heights and ≤ 5 cm collinear vertex removal is the lane's next step) plus a
-per-ride download gate ≤ 2 MB under `?world=v1` (browser table pending);
-both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
+cells (v4 published 2026-11-01: 9.13 MB, HISTORY "World cell format v4";
+collinear removal held; next cuts need a byte census by stream, lane) plus a
+per-ride download gate ≤ 2 MB under `?world=v1` (seeded 1.51 MB met, free
+ride 2.30 MB not met: `building-facts` fetched whole, lazy/per-cell is the
+lane's next item); both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -1350,9 +1355,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   1.3–1.5 ms of it (materials lane 2026-10-31, nothing pixel-identical saves
   anything measurable, so fill is not the owner on this Mac). The user still
   feels stutter on localhost `?engine=own`: owners are main-thread hitches,
-  being named per task by `motion-stutter.mjs` under own at DPR 2 (L1); both
-  engines also render every idle frame (fan), render-on-change WIP on L1's
-  branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, spec not green yet).
+  named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
+  owners under `?engine=own` named"); the first three are fixed on main
+  (frames > 50 ms 7 → 0, long tasks 7 → 0 on the Jordaan ride). Still above
+  16 ms, 13 frames of 17–40 ms per 60 s: `_applyChunkPandBases` on a newly
+  added street chunk (≈ 100 ms total: first separation + relief sampling),
+  three.js render + `shadowMap.render` (≈ 70 ms), GC (49 ms), main-thread
+  own-ground `splitIntoTiles`/`cutMesh` (30 ms), the wayOpening deck index
+  still on the full 3×3 road cells (≈ 32 ms), facade `t4` (24 ms); P3 gate
+  "no streaming task > 16 ms at 1×" not met (L1, seeded-route run pending).
+  Both engines also render every idle frame (fan): render-on-change WIP on
+  L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
+  frames; spec not green yet, stays out of main until it is).
 - **POI/business labels draw through buildings under `?engine=own`** (user
   screenshot, Eerste Constantijn Huygensstraat looking north; user: "we still
   need more occlusion"). First pass on main (HISTORY "Label occlusion under
@@ -1362,9 +1376,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   the user still sees (far side of a block, anchors above a lower front
   building's eave, labels resolved between full passes while moving,
   flicker hysteresis) with before/after counts at the pinned pose and the
-  Dam/Westerkerk cameras (materials lane, on L1's module); `sampleFeatures(
-  20_000)` keeps only the first 20k of ~34k residents so the camera-clearance
-  guard is blind around the camera (L1).
+  Dam/Westerkerk cameras (materials lane, on L1's module), plus the own
+  engine's earned street/water names, which have no building occlusion at all
+  (`street-label-occlusion.spec` fails under ENGINE=own, passes on the default
+  engine; the materials lane makes it engine-aware without weakening it).
+  Fixed on main: `sampleFeatures(20_000)` blinded the camera-clearance guard
+  past the first 20k residents (`clearanceResidents()`, tested).
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways
