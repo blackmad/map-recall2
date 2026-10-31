@@ -201,6 +201,14 @@ draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
 themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
 doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
 programs (37–39 > 32)** by decision until the landmark materials are merged.
+Hand-back (2) merged 2026-10-31 (`5bc4bc0dc`, HISTORY "`?engine=own` now beats
+MapLibre on frame CPU"): own 4.1–5.1 vs MapLibre 7.6–8.3 ms owned frame CPU,
+step 6 legacy layers gone, `setLoop` hook, Leaflet picker deleted. **Integrator
+next:** wire `vectorMap.setLoop` in `game.js` under `?engine=own` and
+`CanalRecallUi.stepSteer` in `car.js`; drop the `leaflet`/`@types/leaflet`
+dependencies at the flip. L1 next: the v2 overview extract (rail, footway,
+landuse) and footprint worker re-port; the own-ground material variants go to
+the P4 materials lane (programs 36 > 32).
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not

@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**`?engine=own` now beats MapLibre on frame CPU; the legacy per-layer code is gone (2026-10-31, #129, L1 hand-back 2).**
+Fair A/B (desktop chase, MapLibre then own back to back): before the fixes
+7.76 vs 7.52 ms owned frame CPU; after them 8.26 vs 5.07 and 11.91 (loaded
+machine) vs 4.14, p99 54 → 43 and 86 → 34 ms. What changed: the landmark
+ground-height refresh runs at most every 1.5 s with a trailing pass
+(`_applyChunkPandBases` 57 → 9 calls), a full label placement only when the
+camera moved or every 400 ms (engineLabels 0.40 → 0.29 ms), and the overview
+discards its flat map fills inside the radius the own ground fully covers.
+The suspected shader double-compile was not real: both engines compile 53–56
+programs after landing and the count swings with what loads in the window.
+The programs budget now lives in `tests/perf/budgets.json` (32); the own
+engine measures 36, and the ~20 variants are the own-ground materials
+(textured or not, layer bitmasks, `customProgramCacheKey` blend3/cut3, each
+with an `-ownFade` twin), not the landmark materials: a P4 materials item.
+Step 6 removed the per-participant custom layers, renderers and lights from
+signature landmarks, detailed buildings, player vehicles, pyramidal roofs,
+three-buildings, the highlight marker, inventory trees and ARTIS (net −930
+lines), `landmarks/batchedLegacyFrame.ts` and the facades fallback in
+`vector-map.js`; lab pages create their own SharedFrame; headless checks
+still load and place models. `vectorMap.setLoop({ tick(dtFixed), frame(dt,
+alpha) })` is the fixed-step hook for the steer model (game.js/car.js wiring
+is the integrator's next step). The Leaflet map picker (`map-picker.js`, 424
+lines) was unreachable: nothing called `show` or entered `MAP_SELECT`; deleted
+with its script tag instead of ported. Not yet re-ported: the v2 overview
+extract (rail, footway, landuse) and the footprint worker.
+
 **Every Firebase deploy failed for a day on a JSDoc import (2026-10-31).** From L1 step 3
 (2026-10-30 afternoon) to 1429440dc, `Deploy to Firebase Hosting` failed in
 "Upload Canal Recall source maps to Sentry": `scripts/sentry/
