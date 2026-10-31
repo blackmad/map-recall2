@@ -30,11 +30,24 @@ async function countMapLibre(page: Page): Promise<void> {
 }
 
 /**
- * Hold forward for `ms`, as a player would. Street following (the default) stops at a T-junction until a side is
- * chosen (streetFollow.ts); the iPhone spawn faces one, so that rider stood still (moved 0.002) and the iPhone numbers
- * were of a parked frame. Holding a side there, as with the phone's turn button, pivots onto that street and goes; a
- * tap only queues the turn and the rider still waits at speed 0.
+ * Hold forward for `ms`, as a player would. Street following (the default) stops where there is no straight on until a
+ * side is chosen (streetFollow.ts); the iPhone spawn stands across Polonceaukade, so that rider stood still (moved
+ * 0.002) and the iPhone numbers were of a parked frame. Choosing a side there goes: since the T-junction tap fix (#136)
+ * a single tap commits the turn as a hold does (street-follow-tap.spec.ts); holding it here is just as good.
  */
+/**
+ * Installed facade chunk meshes with geometry that are attached and not hidden (threeBuildingsBrowser.ts `chunks`).
+ * Ancestors are not checked: the shared frame toggles its participant wrappers per pass.
+ */
+function facadeMeshCount(): number {
+  const tb = (window as any).canalRecallGame?.vectorMap?._threeBuildings;
+  let count = 0;
+  for (const chunk of tb?.chunks?.values?.() ?? []) {
+    if (chunk.mesh?.parent && chunk.mesh.visible !== false && chunk.info?.vertexCount > 0) count++;
+  }
+  return count;
+}
+
 async function ride(page: Page, ms: number): Promise<void> {
   await page.keyboard.down('ArrowUp');
   const end = Date.now() + ms;
@@ -69,6 +82,10 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     const vm = (window as any).canalRecallGame.vectorMap;
     return !!vm.status.booted && !!vm._ownGround?.ready;
   }), { timeout: 60_000 }).toBe(true);
+  // Facades must actually draw (#129 P0): every facade chunk program once failed to compile under ?engine=own (a
+  // Material.clone dropped the city-look defines) while this spec reported facades:true and failed:[] for four hours.
+  // Facade chunk meshes installed and visible, and no program three.js could not compile or link.
+  await expect.poll(() => page.evaluate(facadeMeshCount), { timeout: 60_000, message: 'facade chunk meshes are installed and visible' }).toBeGreaterThan(0);
   await page.waitForTimeout(2000);
   const stats = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
@@ -85,6 +102,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
       moved: Math.hypot(game.player.x - game.track.startPoint?.x || 0, game.player.y - game.track.startPoint?.y || 0),
       heapMB: Math.round(((performance as any).memory?.usedJSHeapSize ?? 0) / 1e5) / 10,
       facades: !!vm._threeBuildings?.ready,
+      shaderErrors: (window as any).__canalPerf?.shaderErrors?.() ?? null,
       hoodLines: vm._lines.hoods.lineCount, cycleLines: vm._lines.cycle.lineCount,
       labels: vm._labels.placed.map((l: any) => l.text),
       asked: [game.quizPromptName, game.quizCandidateName].filter(Boolean),
@@ -100,6 +118,8 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.frames).toBeGreaterThan(30);
   expect(stats.moved, 'the rider rode (not a parked frame)').toBeGreaterThan(50);
   expect(stats.failed).toEqual([]);
+  expect(stats.shaderErrors, 'no shader program failed to compile or link (__canalPerf.shaderErrors, sharedFrame.ts)').toBe(0);
+  expect(await page.evaluate(facadeMeshCount), 'facade chunk meshes still visible after the ride').toBeGreaterThan(0);
   expect(stats.landmarks).not.toBeNull();
   expect(stats.trees).not.toBeNull();
   expect(stats.roofs).toBe(true);
