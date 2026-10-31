@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Every Firebase deploy failed for a day on a JSDoc import (2026-10-31).** From L1 step 3
+(2026-10-30 afternoon) to 1429440dc, `Deploy to Firebase Hosting` failed in
+"Upload Canal Recall source maps to Sentry": `scripts/sentry/
+collect-canal-bundles.mjs` follows every `import("…")` in the ride's scripts
+and refuses paths outside the site, and `vector-map.js` had gained
+`/** @implements {import("../../../src/canalRecall/engine/worldViewApi").WorldView} */`.
+Nothing merged in that window (L1 steps 4–5, L4, L8, the deletions, the
+rail look) reached rideamsterdam.nl until the comment became plain prose.
+Nobody noticed because CI runs lint and the boot smoke, not the deploy's
+collector. Now `npm run check:site-imports` (the collector with
+`--imports-only` against `public/canal-drive`) is part of `check:canal`, so
+the same mistake fails the pre-integration gate and CI. The deploy's own
+failure still needs a human reading the Actions tab; the integrator checks
+`gh run list` after every push from now on.
+
 **Streets, squares and waterways carry the name on the sign (2026-10-31, #147).**
 L1 found `routing_15692` named "New Market" while screening labels for the
 Nieuwmarkt spoiler. Cause: `scripts/build-amsterdam-extract.ts` took
