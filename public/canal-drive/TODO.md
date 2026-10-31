@@ -130,8 +130,18 @@ Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
 migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
 4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
 world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
-#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
-shader (B) / L7 shadows (D). Gates per
+#131 L8 driving feel (lane E, 4527; **merged 2026-10-30**, user on #140: keep
+the toy bike speed, keep the 10 % pull-back; `BIKE_TRUE_SCALE` stays unwired;
+the `frameHost.tick(dtFixed)` hook for `CanalRecallUi.stepSteer` is L1's when
+the engine owns the loop) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
+(`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
+`SHARED_FRAME_DEFAULT`), #144 reds triage (`lane-reds-triage-20261030.md`,
+4535: bike-xray, complete-city, check-building-look-transition), #145 rail
+look (`lane-rail-look-20261030.md`, 4537) from the user's three in-game
+reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
+bad train tracks", "ooof, these rails look really bad": feedback ids
+5d3fb497, d49a15b0, 5d5b56c4, resolve them when #145 merges). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
 State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
@@ -222,17 +232,37 @@ Westerkerk: more tiles resident, not different styling) and pixels differed
 up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
 world path streams tiles in later at page start (inflate wall time), which is
 step 4's flush/regroup and look-ahead work; measure time-to-resident per
-tile both ways. Still open: ≤ 4 MB target (FOOT alone 7.4 MB
-gz); remaining long frames are the streamer's flush/regroup (step 4, waits
-for `engine/frameHost.ts` on main, which is there since step 3 of L1: resume
-L4 step 4); road CSR (step 5).
+tile both ways. **Step 4 merged 2026-10-30** (`21a8d01db`):
+`engine/worldStreamer.ts` holds one `CellQueue` (plan order, ahead rank from
+the rider's motion, ≤ 2 reads per worker in flight, 36 resident cells,
+off-plan eviction), a pool of min(cores−1, 3) decode workers with cell
+affinity, and a per-frame `FrameBudget` (4 ms / 1 MiB) that chunk installs
+spend (`?uploadBudget=0` = one per frame); the compiler writes a 39 KB
+runtime `tiles.json`. Measured: last of the first four tiles resident at
+page start default 3,870 ms vs world 3,791 ms (was ~120 ms behind); 40 s
+cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
+0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
+JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
+start, which the script does not yet sample; the 36 resident cells plus
+per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
+7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+(12/18/24/36 resident cells, one decoded cell shared across tiles,
+transfer not copy), then chunk and own-ground builds onto the pool so
+`chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
+and the second own-ground worker can go, then road CSR (step 5).
 **Reds on main found by the programme's runs (2026-10-30), not yet owned:**
 `tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
 draws after every building layer: expected > 128, got −1);
 `tests/e2e/complete-city.spec.ts` "the streamed city loads …"
 (contextualFeatures 0, want > 50 % of features: the citywide display prior is
 not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
-throws (`test:city-startup`). CI runs only lint and the boot smoke, so none of
+throws (`test:city-startup`); `tests/e2e/sun-heading.spec.ts` desktop `default`
+and `cityLook-1` (2026-10-30 23:00: on plain main both time out in `settle`
+on a loaded machine; on the L8 merge both fail the bike lit-half sign at
+nieuw-west-slab, heading 134, which the lane traced to the parked bike
+drifting under the road guard between the two grabs in both versions; L8
+(#131) owns making that measurement deterministic, `sharedFrame-1` passes).
+CI runs only lint and the boot smoke, so none of
 these block a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
