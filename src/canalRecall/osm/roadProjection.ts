@@ -27,6 +27,7 @@ import { hasSeparatedCycleTrack } from '../routing/cycleTrack.ts';
 import { isBicycleRestricted } from '../routing/bikeAccess.ts';
 
 export { isMotorOnlyHighway, motorOnlyNames } from '../routing/bikeAccess.ts';
+export { decodeRoadExtract, loadRoadExtract } from '../routing/roadExtract.ts';
 
 /** A point in world (pixel) space. */
 export interface WorldPoint { x: number; y: number }
