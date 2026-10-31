@@ -262,13 +262,13 @@ draws after every building layer: expected > 128, got −1);
 `tests/e2e/complete-city.spec.ts` "the streamed city loads …"
 (contextualFeatures 0, want > 50 % of features: the citywide display prior is
 not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
-throws (`test:city-startup`); `tests/e2e/sun-heading.spec.ts` desktop `default`
-and `cityLook-1` (2026-10-30 23:00: on plain main both time out in `settle`
-on a loaded machine; on the L8 merge both fail the bike lit-half sign at
-nieuw-west-slab, heading 134, which the lane traced to the parked bike
-drifting under the road guard between the two grabs in both versions; L8
-(#131) owns making that measurement deterministic, `sharedFrame-1` passes).
-CI runs only lint and the boot smoke, so none of
+throws (`test:city-startup`). The `sun-heading` desktop red of 2026-10-30
+(bike lit-half at nieuw-west-slab) was the spec's own measurement: the road
+guard turned the parked bike after each teleport and stray flicker pixels
+moved the mask midpoint; fixed 2026-10-31 (L8, pose pinned at both grabs,
+mask keeps pixels with ≥ 4 changed neighbours, threshold and sign check
+unchanged), 3/3 variants green; settle timeouts at load > 12 remain machine
+load. CI runs only lint and the boot smoke, so none of
 these block a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format

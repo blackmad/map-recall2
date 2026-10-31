@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**The sun-heading bike check measures one pose (2026-10-31, #131).** The
+desktop `sun-heading` red that appeared with the driving-feel merge was the
+spec, not the game: after each teleport the road guard turned the parked
+bike (a nominal 44° heading was 97° at the grab), and the bike mask's
+left/right split was the midpoint of every changed pixel in a 180 × 240
+window, so one flickering pixel at the window edge moved it ~20 px and
+flipped the sign; the pre-L8 bundles passed by luck with the same stray
+pixel. The spec now pins the rider's pose with no-op setters so both grabs
+see one pose at the heading asked for, keeps only changed pixels with at
+least four changed neighbours, and records the poses, hidden centre and
+mask bbox per heading in `sun-heading.json` (crops with `SUN_OUT`). The
+lit-half threshold, spot and sign check are unchanged; before and after
+bundles both pass 3/3. Settle timeouts at load averages above 12 are the
+machine, not the check.
+
 **`?engine=own` draws the whole ride; the fair A/B says where the time goes (2026-10-31, #129, L1).**
 `src/canalRecall/engine/cityExtras.ts` hands the existing participants
 (signature landmarks with their `landmarkResidency.ts` budget, inventory
