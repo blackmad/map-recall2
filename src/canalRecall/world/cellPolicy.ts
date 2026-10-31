@@ -1,11 +1,13 @@
 /**
  * World-cell compile policy (P2 bytes gate, format v4, decisions on #130 2026-10-31): the two value changes
  * the cells may make against the default tile path, both below what the look or collision can see.
- *   - Heights (`height`, `minHeight`, `roofEavesHeightM`) to a fixed step: the decimetre by default (decision on
- *     #130 2026-10-31: the published format before v3 stored eaves/ridge at 0.25 m, so a 5 cm bound is finer
- *     than the game ever drew; -251 KB gzip city-wide against centimetres), the centimetre on request
- *     (`--height-step=0.01`, and every index written before `policyOptions.heightStepM` existed). The eaves are
- *     a computed double (`height - plan.riseM`, roofMesh.ts) and were the largest STYL column (0.95 MB gzip).
+ *   - Heights (`height`, `minHeight`, `roofEavesHeightM`) to a fixed step: the centimetre (`heightStepM`,
+ *     `eavesStepM`). The decimetre is built and measured but HELD (2026-11-01, #130): it saves 252 KB gzip
+ *     city-wide (height/minHeight 171 KB, eaves 78 KB), but the runtime derives storeys, window rows and the
+ *     facade kit from these values, and the fixed-camera A/B shows whole facades changing (a brick gable front
+ *     turning grey) at Westerkerk: pixels over 30 rise from 1.5-4 K (cm) to 7-9 K (height at dm) and 13-22 K
+ *     (eaves at dm), against a 0.1-1.3 K noise floor. `--height-step=0.1` / `--eaves-step=0.1` opt in.
+ *     The eaves are a computed double (`height - plan.riseM`, roofMesh.ts) and were the largest STYL column.
  *   - Collinear vertices removed from footprints when every removed vertex lies within 5 cm of the edge that
  *     replaces it (measured against the original vertices, so removals never accumulate), a ring keeps at
  *     least three vertices, and a vertex another building of the cell also has (a party-wall corner or
@@ -20,7 +22,8 @@ export const POLICY_VERSION = 'world-policy-1';
 export const HEIGHT_KEYS = ['height', 'minHeight', 'roofEavesHeightM'] as const;
 /** Steps a policy may round heights to, metres. */
 export const HEIGHT_STEPS_M = [0.01, 0.1] as const;
-export const HEIGHT_STEP_M = 0.1;
+export const HEIGHT_STEP_M = 0.01;
+export const EAVES_STEP_M = 0.01;
 export const COLLINEAR_TOLERANCE_M = 0.05;
 const M_PER_DEG_LAT = 111_320;
 
@@ -33,13 +36,14 @@ export const toStep = (v: number, step: number): number => {
 /** A number rounded to the centimetre. */
 export const toCentimetre = (v: number): number => toStep(v, 0.01);
 
-/** The bag with its height keys at `step` metres (same key order; the input is not modified). */
-export function quantiseHeights(bag: Props, step: number = 0.01): Props {
+/** The bag with `height` and `minHeight` at `step` metres and `roofEavesHeightM` at `eavesStep` (same key order;
+ *  the input is not modified). */
+export function quantiseHeights(bag: Props, step: number = 0.01, eavesStep: number = step): Props {
   let out: Props | null = null;
   for (const k of HEIGHT_KEYS) {
     const v = bag[k];
     if (typeof v !== 'number' || !Number.isFinite(v)) continue;
-    const q = toStep(v, step);
+    const q = toStep(v, k === 'roofEavesHeightM' ? eavesStep : step);
     if (q === v) continue;
     out ??= { ...bag };
     out[k] = q;
@@ -120,20 +124,22 @@ export function areaM2(g: Geometry): number {
 
 export const MAX_AREA_CHANGE = 0.01;
 /** Which parts of the policy a compile applies; recorded as index.policyOptions so world:verify applies the same.
- *  Collinear-vertex removal is off by default (held 2026-10-31, #130: 0.14 MB, no pixel proof yet); heights go to
- *  the decimetre (`heightStepM`). */
-export type PolicyOptions = { collinear: boolean; heightStepM: number };
-export const DEFAULT_POLICY_OPTIONS: PolicyOptions = { collinear: false, heightStepM: HEIGHT_STEP_M };
+ *  Collinear-vertex removal is off by default (held 2026-10-31, #130: 0.14 MB, no pixel proof yet); heights stay
+ *  at the centimetre (decimetre held, see the header). */
+export type PolicyOptions = { collinear: boolean; heightStepM: number; eavesStepM: number };
+export const DEFAULT_POLICY_OPTIONS: PolicyOptions = { collinear: false, heightStepM: HEIGHT_STEP_M, eavesStepM: EAVES_STEP_M };
 /** index.policyOptions as written: absent on the first policy stagings (collinear removed, centimetres); without
  *  `heightStepM` on the 2026-10-31 ones (centimetres). */
 export const policyOptionsOf = (index: { policy?: unknown; policyOptions?: Partial<PolicyOptions> }): PolicyOptions | null =>
-  index.policy ? { collinear: index.policyOptions?.collinear ?? true, heightStepM: index.policyOptions?.heightStepM ?? 0.01 } : null;
+  index.policy ? { collinear: index.policyOptions?.collinear ?? true, heightStepM: index.policyOptions?.heightStepM ?? 0.01,
+    eavesStepM: index.policyOptions?.eavesStepM ?? index.policyOptions?.heightStepM ?? 0.01 } : null;
 /** Policy options from command-line flags (`--collinear`, `--height-step=0.01`). */
 export function policyOptionsFromArgs(args: readonly string[]): PolicyOptions {
-  const step = args.find(a => a.startsWith('--height-step='))?.slice('--height-step='.length);
-  const heightStepM = step === undefined ? HEIGHT_STEP_M : Number(step);
-  toStep(1, heightStepM); // throws on an unsupported step
-  return { collinear: args.includes('--collinear'), heightStepM };
+  const arg = (name: string) => args.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
+  const heightStepM = arg('height-step') === undefined ? HEIGHT_STEP_M : Number(arg('height-step'));
+  const eavesStepM = arg('eaves-step') === undefined ? EAVES_STEP_M : Number(arg('eaves-step'));
+  toStep(1, heightStepM); toStep(1, eavesStepM); // throw on an unsupported step
+  return { collinear: args.includes('--collinear'), heightStepM, eavesStepM };
 }
 export type PolicyReport = { buildings: number; heightsRounded: number; footprintsSimplified: number; verticesBefore: number; verticesAfter: number; keptForArea: number; areaChangeM2: number[]; areaChangeRel: number[] };
 export const emptyPolicyReport = (): PolicyReport => ({ buildings: 0, heightsRounded: 0, footprintsSimplified: 0, verticesBefore: 0, verticesAfter: 0, keptForArea: 0, areaChangeM2: [], areaChangeRel: [] });
@@ -158,7 +164,7 @@ export function applyPolicy(cell: Cell, report: PolicyReport = emptyPolicyReport
   const shared = options.collinear ? sharedVertices(cell.buildings.map(b => b.geometry)) : new Set<string>();
   const buildings = cell.buildings.map(b => {
     report.buildings++;
-    const attr = quantiseHeights(b.attr, options.heightStepM), styled = b.styled && quantiseHeights(b.styled, options.heightStepM);
+    const attr = quantiseHeights(b.attr, options.heightStepM, options.eavesStepM), styled = b.styled && quantiseHeights(b.styled, options.heightStepM, options.eavesStepM);
     if (attr !== b.attr || styled !== b.styled) report.heightsRounded++;
     const geometry = options.collinear ? policyFootprint(b.geometry, shared, report) : b.geometry;
     const out = { ...b, geometry, attr };

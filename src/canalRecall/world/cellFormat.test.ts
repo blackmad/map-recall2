@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { cellGlobalRef, chooseGlobalStrings, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
 import { readWorldIndex } from './worldCells.js';
-import { applyPolicy, areaM2, emptyPolicyReport, HEIGHT_KEYS, policyOptionsFromArgs, policyOptionsOf, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
+import { applyPolicy, areaM2, DEFAULT_POLICY_OPTIONS, emptyPolicyReport, HEIGHT_KEYS, policyOptionsFromArgs, policyOptionsOf, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -300,16 +300,19 @@ test('policy: heights to the centimetre; near-collinear vertices within 5 cm go,
   assert.equal(q.height, 9.33); assert.equal(q.minHeight, 0); assert.ok(Object.is(q.roofEavesHeightM, 0)); assert.equal(q.tier, 3);
   assert.equal(quantiseHeights({ height: 8.33 }).height, 8.33);
   const same = { height: 8.33 }; assert.equal(quantiseHeights(same), same, 'an already-centimetre bag is returned as is');
-  // The default compile step (decision on #130): the decimetre, never more than 5 cm off.
+  // The held decimetre step: never more than 5 cm off.
   const dm = quantiseHeights(bag, 0.1);
   assert.equal(dm.height, 9.3); assert.equal(dm.minHeight, 0); assert.ok(Object.is(dm.roofEavesHeightM, 0));
   assert.equal(quantiseHeights({ height: 12.35 }, 0.1).height, 12.4);
   assert.equal(quantiseHeights({ height: 0.3 }, 0.1).height, 0.3, 'no 0.30000000000000004');
   assert.throws(() => quantiseHeights({ height: 1 }, 0.25), /height step/);
-  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false } }), { collinear: false, heightStepM: 0.01 }, 'indexes before heightStepM were centimetres');
-  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false, heightStepM: 0.1 } }), { collinear: false, heightStepM: 0.1 });
-  assert.deepEqual(policyOptionsFromArgs([]), { collinear: false, heightStepM: 0.1 });
-  assert.deepEqual(policyOptionsFromArgs(['--collinear', '--height-step=0.01']), { collinear: true, heightStepM: 0.01 });
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false } }), { collinear: false, heightStepM: 0.01, eavesStepM: 0.01 }, 'indexes before heightStepM were centimetres');
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false, heightStepM: 0.1 } }), { collinear: false, heightStepM: 0.1, eavesStepM: 0.1 });
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false, heightStepM: 0.01, eavesStepM: 0.1 } }), { collinear: false, heightStepM: 0.01, eavesStepM: 0.1 });
+  const split = quantiseHeights({ height: 9.328, roofEavesHeightM: 6.27, minHeight: 0.04 }, 0.01, 0.1);
+  assert.deepEqual(split, { height: 9.33, roofEavesHeightM: 6.3, minHeight: 0.04 }, 'eaves at their own step');
+  assert.deepEqual(policyOptionsFromArgs([]), DEFAULT_POLICY_OPTIONS);
+  assert.deepEqual(policyOptionsFromArgs(['--collinear', '--height-step=0.01', '--eaves-step=0.1']), { collinear: true, heightStepM: 0.01, eavesStepM: 0.1 });
   // A 20 m x 10 m rectangle at 52.37 N with an extra vertex on the long south edge, offset north by `off` metres.
   const lat = 52.37, lng = 4.88, kx = 111_320 * Math.cos(lat * Math.PI / 180), my = (m: number) => m / 111_320, mx = (m: number) => m / kx;
   const ring = (off: number) => [[lng, lat], [lng + mx(10), lat + my(off)], [lng + mx(20), lat], [lng + mx(20), lat + my(10)], [lng, lat + my(10)], [lng, lat]];
@@ -335,12 +338,17 @@ test('policy: heights to the centimetre; near-collinear vertices within 5 cm go,
 
 test('policy: published sentinel cells keep ids, order, first vertices, party walls and every shared corner; area change <= 1%', () => {
   for (const key of [...new Set(SENTINELS.map(s => s.cell))]) {
-    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report, { collinear: true, heightStepM: 0.01 });
-    // The default policy (collinear removal held, #130) leaves every footprint exactly as it was; heights within 5 cm.
+    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report, { collinear: true, heightStepM: 0.01, eavesStepM: 0.01 });
+    // The default policy (collinear removal held, #130) leaves every footprint exactly as it was; heights within 5 mm.
     const heightsOnly = applyPolicy(cell);
     heightsOnly.buildings.forEach((b, k) => {
       const o = cell.buildings[k];
       assert.equal(b.geometry, o.geometry, `${b.id}: footprint untouched by default`);
+      for (const k2 of HEIGHT_KEYS) { const v = (o.styled ?? o.attr)[k2]; if (typeof v === 'number') { const q = (b.styled ?? b.attr)[k2] as number; assert.ok(Math.abs(q - v) <= 0.005 + 1e-9 && Math.round(q * 100) / 100 === q, `${o.id} ${k2}: ${v} -> ${q}`); } }
+    });
+    // The held decimetre option stays within 5 cm.
+    applyPolicy(cell, undefined, { collinear: false, heightStepM: 0.1, eavesStepM: 0.1 }).buildings.forEach((b, k) => {
+      const o = cell.buildings[k];
       for (const k2 of HEIGHT_KEYS) { const v = (o.styled ?? o.attr)[k2]; if (typeof v === 'number') { const q = (b.styled ?? b.attr)[k2] as number; assert.ok(Math.abs(q - v) <= 0.05 + 1e-9 && Math.round(q * 10) / 10 === q, `${o.id} ${k2}: ${v} -> ${q}`); } }
     });
     assert.equal(p.buildings.length, cell.buildings.length);

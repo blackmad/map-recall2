@@ -10,7 +10,7 @@
  *   npm run world:compile -- --no-policy  # cells exactly as the default path (no centimetre heights:
  *                                         # src/canalRecall/world/cellPolicy.ts)
  *   npm run world:compile -- --collinear  # also remove near-collinear vertices within 5 cm (held, #130)
- *   npm run world:compile -- --height-step=0.01  # heights to the centimetre instead of the decimetre
+ *   npm run world:compile -- --height-step=0.1 --eaves-step=0.1  # height/minHeight, eaves to the decimetre (held, #130)
  * Format 4 also writes strings.bin, the shared string table (strings two or more cells use).
  *
  * Reference check (P2 bytes gate): every written cell is decoded and compared, whole (buildings, geometry,
@@ -197,7 +197,7 @@ async function main() {
     if (reference) {
       const entry = reference.cells?.[key], file = path.join(AGAINST!, 'cells', `${key}.bin`);
       // A reference compiled under a different policy (or a policy when this run has none) cannot be compared.
-      const refOptions = policyOptionsOf(reference), policyClash = !!refOptions && (NO_POLICY || refOptions.collinear !== POLICY_OPTIONS.collinear || refOptions.heightStepM !== POLICY_OPTIONS.heightStepM);
+      const refOptions = policyOptionsOf(reference), policyClash = !!refOptions && (NO_POLICY || refOptions.collinear !== POLICY_OPTIONS.collinear || refOptions.heightStepM !== POLICY_OPTIONS.heightStepM || refOptions.eavesStepM !== POLICY_OPTIONS.eavesStepM);
       const fresh = !policyClash && referenceGlobalsMatch && !!entry && entry.tiles.every((t: string) => reference.tileHashes?.[t] === tileHash.get(t)) && entry.tiles.join() === [...new Set(list.map(r => r.tile))].sort().join();
       if (!entry || !exists(file)) against.missing.push(key);
       else if (!fresh) against.skippedStale.push(key);
