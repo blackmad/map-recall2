@@ -28,8 +28,12 @@ export type WallFamilyKind = typeof WALL_FAMILY_KINDS[number];
 export interface WallFamilyIntent {kind: WallFamilyKind; colour: string; ribPitch?: number; lines?: string; from?: number}
 const KEYS = ['kind', 'colour', 'ribPitch', 'lines', 'from'];
 const HEX = /^#[0-9a-f]{6}$/i;
-/** Rib pitch range: the kit's `ribs` profile (cladding.ts CLADDING.ribs, 0.25..2 m). */
-export const RIB_PITCH = {min: CLADDING.ribs.min, max: CLADDING.ribs.max} as const;
+/**
+ * Measured rib pitch range (m): trapezoidal sheet profiles run 0.15..0.33 m (Praxis Draaierweg 124847 walls[0] ~0.2 m,
+ * below cladding.ts's 0.25 m drawing minimum, which is moot: wall-family ribs are drawn at >= DRAWN_RIB_MIN_M) up to the
+ * kit's 2 m.
+ */
+export const RIB_PITCH = {min: 0.15, max: CLADDING.ribs.max} as const;
 
 /** Problems with `walls[i].wallFamily`; `w` is the wall group (system, other wall fields it excludes). */
 export function wallFamilyProblems(input: unknown, at: string, w: {system?: string; cladding?: unknown; wallMaterial?: unknown; houses?: unknown; wallSplit?: unknown}): string[] {

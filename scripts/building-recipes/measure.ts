@@ -140,7 +140,7 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     notes.push(`row of ${proposal.houses.length} houses: joints ${proposal.joints.map(j => `${Math.round(j.at * 100)} % (${j.by})`).join(', ')}`);
   }
   // two wall materials along the main panel: left = palette.brick, right = wallSplit.brick (bay-snapped in the fit)
-  if (!proposal && m.split && m.split.at >= 0.1 && m.split.at <= 0.9 && system !== 'curtain-wall' && !w.screen && !hand.has('wallSplit') && !hand.has('palette.brick') && !hand.has('palette')) {
+  if (!proposal && !w.houses && m.split && m.split.at >= 0.1 && m.split.at <= 0.9 && system !== 'curtain-wall' && !w.screen && !hand.has('wallSplit') && !hand.has('palette.brick') && !hand.has('palette')) {
     palette.brick = m.split.left; patch.wallSplit = {at: m.split.at, brick: m.split.right};
     notes.push(`wall split ${m.split.left} | ${m.split.right} at ${Math.round(m.split.at * 100)} % (dE ${m.split.dE})`);
   }
@@ -178,7 +178,10 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     const p = m.wallFamily.proposal, blocked = hand.has('wallFamily') ? 'hand wallFamily' : w.cladding ? 'cladding' : w.wallMaterial ? 'wallMaterial' : w.houses || patch.houses ? 'houses' : w.wallSplit || patch.wallSplit ? 'wallSplit'
       : ['curtain-wall', 'glazed-hall'].includes(system) ? system : null;
     if (p && !blocked) { patch.wallFamily = {kind: p.kind, colour: p.colour, ...(p.ribPitch !== undefined ? {ribPitch: p.ribPitch} : {})}; notes.push(`wall family: ${p.why}`); }
-    else notes.push(`wall family unresolved: ${p && blocked ? `${p.kind} proposed but ${blocked} kept` : m.wallFamily.why}`);
+    // a painted or clad wall the photo shows without windows (front class blank: a shed or retail hall) is drawn blank under its finish
+    if (p && !blocked && m.frontClass === 'blank' && opts.system && !hand.has('system') && system !== 'blank') { patch.system = 'blank'; notes.push(`system ${system} -> blank (measured blank front under ${p.kind})`); }
+    else if (p && blocked) { if (!hand.has('wallFamily') || !w.wallFamily) notes.push(`wall family: ${p.kind} proposed but ${blocked} kept`); }
+    else if (!p) notes.push(`wall family unresolved: ${m.wallFamily.why}`);
   }
   // light bands across the wall (speklagen, stone courses) seen at the same place in two or more storeys: stone bands,
   // never over bands drawn another way (string courses, courses) or a hand `dressings`
