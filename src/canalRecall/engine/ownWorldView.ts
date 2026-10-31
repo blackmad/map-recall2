@@ -430,6 +430,12 @@ export class OwnWorldView {
         if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
         const [lng, lat] = fromLocal(c.at![0], c.at![1]);
         return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
+      }, id => { const f = this.labelOcclusion.front.get(id); return f ? toLocal(f[0], f[1]) : null; }, (id, anchors) => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        // Any blocked point hides the name (the default engine's street-name rule, labels/streetLabelOcclusion.ts).
+        let blocked = false;
+        anchors.forEach((a, k) => { if (this.labelOcclusion.occluded(`${id}#${k}`, fromLocal(a[0], a[1]), eye)) blocked = true; });
+        return blocked;
       });
     } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
@@ -593,6 +599,8 @@ export class OwnWorldView {
     return lngLatToWorld(hit.lng, hit.lat, loader);
   }
   worldToLngLat(worldX: number, worldY: number, loader: LoaderFrame): [number, number] { return worldToLngLat(worldX, worldY, loader); }
+  /** The camera eye (lng/lat, metres up): the HUD street-name pass's occlusion test reads it (labels/streetLabelOcclusion.ts). */
+  cameraEye(): { lng: number; lat: number; altitudeM: number } { return this.cameraMap.camera.eye(); }
 
   isWater(worldX: number, worldY: number, loader: LoaderFrame): boolean {
     if (!this._overview || !loader || loader._lastCenterLat == null) return false;
