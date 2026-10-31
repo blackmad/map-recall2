@@ -79,8 +79,13 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
-"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) and the Kalvertoren (#148, HISTORY "Kalvertoren /
+Kalverpassage, Singel") landed. Kalvertoren follow-ups: review the Rasphuispoort
+`hostWallOpenings` at the Heiligeweg mouth (edge 18-19, open below 6.4 m) now
+that pand 165086 is suppressed; one street-level look at the Kalverstraat side
+(bare 3DBAG roof planes from above); the queue row for 165086 reads `error` /
+kit-gap until the next triage `--write` marks it covered; the large-tier draft
+singel-457-165086 stays uninstalled. Hirschgebouw: still to do there, a grouped-lights mode in
 the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
 live, a POI or destination card, a re-measured copper tint, and the bounded
 Beeldbank search. The review

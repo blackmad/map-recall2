@@ -5918,7 +5918,7 @@ ${register}` : detail,
       const buildingName = building.name || "";
       const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
       if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
-      const article = this._buildingFacts?.article(building.id) ?? null;
+      const article = typeof this._buildingFacts?.article === "function" ? this._buildingFacts.article(building.id) ?? null : null;
       const spoils = this.vectorMap._spoils;
       const mapped = this._clickPoiInfo?.card(building);
       if (mapped) {

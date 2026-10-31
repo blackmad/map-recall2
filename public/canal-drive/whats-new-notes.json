@@ -93,6 +93,27 @@
     },
     {
       "date": "2026-10-31",
+      "title": "The Kalvertoren on the Singel",
+      "text": "The Kalverpassage block by the Munt is a bespoke model: the red-brick Singel range with its two neck gables, gilt balls, white bands and the Amsterdam arms over the portal; the 1997 stone block with its half-round glazed attic and bronze cap; the 30 m glass tower with the café storey and dome in the middle of the block; the Kalverstraat passage portal with its vertical KALVERPASSAGE board; and the Heiligeweg lattice screen. Fronts measured from 18 city panoramas; the roofscape keeps its 3DBAG shell.",
+      "where": [
+        4.891564,
+        52.367475
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-kalvertoren-singel.jpg",
+          "alt": "The Kalvertoren block in the game from the Singel: brick range with two gables, the stone block with its glazed attic and the glass tower behind",
+          "caption": "From the Singel"
+        },
+        {
+          "src": "whats-new/2026-10-31-kalvertoren-singel-phone.jpg",
+          "alt": "The Kalvertoren in the game on a phone screen",
+          "caption": "Phone"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Railway tracks that read as rails",
       "text": "Three of your reports from last night, all on the rail corridors east of Centraal: the ballast beds sank into the beige land, the sleeper texture lay along the map's east-west axis whatever way the track ran (that was the grey hatch), and in the station throat every yard track had its own bed a few centimetres lower, which drew dark ridges. Now each track shows two dark rails along its own direction on a grey-brown bed that stands clear of the ground, tracks closer than 7 m share one yard bed, and bridge tracks share one slab. Land drawn over a bed fell from 3–4 % of samples to under 0.6 % at all three spots; frame time is unchanged within noise. Still beige: the verge between track groups more than 7 m apart; platforms and catenary masts are not drawn yet.",
       "where": [

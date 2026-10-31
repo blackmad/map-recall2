@@ -1864,5 +1864,11 @@
   "buildVersion": 2,
   "bytes": 108260,
   "triangles": 5676
+ },
+ "kalvertoren": {
+  "sourceHash": "2a2010e69de4af5e",
+  "buildVersion": 2,
+  "bytes": 75072,
+  "triangles": 3500
  }
 }
