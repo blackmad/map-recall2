@@ -22,8 +22,7 @@
 //   `whenAppearanceRenderReady`, `elevationStatus`, `ownGroundStatus`,
 //   `setBuildingLook`/`setBuildingsLook` (specs only), `worldToLngLat`
 //   (internal; `camera.project` replaces its spec uses), `resize` (only
-//   `resizeToViewport` is called), `setGoogleTilesEnabled` (deleted in P0 by
-//   lane L2; optional here until then).
+//   `resizeToViewport` is called).
 // Private fields the game still reads, kept as optional readonly members until
 // the game stops reading them: `_cameraTilt` (game-route.js preferences),
 // `_pitchSmoothed` (written by game-route.js after `aimAtWorld`; folded into
@@ -104,7 +103,6 @@ export interface WorldView extends VectorMap {
   setMeasuredColoursOnly(enabled: boolean): void;
   setBuildingLookPreference?(look: string): void;
   buildingLook?(): string;
-  setGoogleTilesEnabled?(enabled: boolean): void;
   toggleLabels(): boolean;
   _spoils?(name: string): boolean;
 }

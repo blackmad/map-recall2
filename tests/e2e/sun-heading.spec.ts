@@ -12,7 +12,7 @@
  * sunlit side flips from screen-left to screen-right as the rider turns.
  *
  *   PW_PORT=4450 npx playwright test sun-heading --project=desktop
- *   SUN_QUERIES=',?sharedFrame=1,?cityLook=1' picks the frames (default all three);
+ *   SUN_QUERIES=',?cityLook=1' picks the frames (default both);
  *   SUN_OUT=<dir> keeps the shots and sun-heading.json;
  *   LOOK_BUNDLES_DIR=<dir> serves freshly built *.bundle.js (as look-consistency).
  */
@@ -24,7 +24,7 @@ import { openRoute } from './helpers';
 import { DEFAULT_LIGHT_RIG } from '../../src/canalRecall/rendererShared/lightRig';
 
 const OUT = process.env.SUN_OUT || 'artifacts/sun-heading';
-const QUERIES = (process.env.SUN_QUERIES ?? ',?sharedFrame=1,?cityLook=1').split(',').map(s => s.trim());
+const QUERIES = (process.env.SUN_QUERIES ?? ',?cityLook=1').split(',').map(s => s.trim());
 /** Relative luma difference a world-fixed wall may show between its two headings (texture sampling, parallax). */
 const SAME_WALL_TOLERANCE = 0.1;
 

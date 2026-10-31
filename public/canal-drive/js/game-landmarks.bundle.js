@@ -2158,14 +2158,18 @@ Map source: ${osmUrl(places[i][0])}`);
       this.fetchImpl = fetchImpl;
     }
     rows = /* @__PURE__ */ new Map();
+    articles = /* @__PURE__ */ new Map();
     requested = /* @__PURE__ */ new Set();
+    articleTiles = null;
     lastCentre = "";
     setBase(base) {
       if (base === this.base) return;
       this.base = base;
       this.rows.clear();
+      this.articles.clear();
       this.requested.clear();
       this.loads.clear();
+      this.articleTiles = null;
       this.lastCentre = "";
     }
     /** Load the tile under a point and its eight neighbours. Cheap when unchanged. */
@@ -2178,6 +2182,10 @@ Map source: ${osmUrl(places[i][0])}`);
     }
     lookup(id) {
       return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
+    }
+    /** The Wikipedia article about this building, when its tile carries one. */
+    article(id) {
+      return id == null ? null : this.articles.get(shortBuildingId(String(id))) ?? null;
     }
     /** The tile under a point, for a click outside the prefetched 3×3 or before
      *  it has arrived. Resolves when that tile's rows are in (or known absent). */
@@ -2195,18 +2203,52 @@ Map source: ${osmUrl(places[i][0])}`);
     async fetchTile(key) {
       if (this.requested.has(key)) return;
       this.requested.add(key);
+      await Promise.all([this.fetchFacts(key), this.fetchArticles(key)]);
+    }
+    async fetchFacts(key) {
+      const tile = await this.fetchJson(`building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+      for (const [id, row] of Object.entries(tile?.buildings || {})) this.rows.set(id, row);
+    }
+    /** Article tiles exist only where an article is; the index says where, so
+     *  the other ~1,000 tiles cost no request. */
+    async fetchArticles(key) {
+      this.articleTiles ??= this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/index.json`).then((index) => new Set(index?.tiles || []));
+      if (!(await this.articleTiles).has(key)) return;
+      const tile = await this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+      for (const [id, article] of Object.entries(tile?.buildings || {})) this.articles.set(id, article);
+    }
+    async fetchJson(file) {
       try {
-        const response = await this.fetchImpl(`${this.base.replace(/\/$/, "")}/building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
-        if (!response.ok) return;
+        const response = await this.fetchImpl(`${this.base.replace(/\/$/, "")}/${file}`);
+        if (!response.ok) return null;
         const bytes = new Uint8Array(await response.arrayBuffer());
         const gzipped = bytes.length >= 2 && bytes[0] === 31 && bytes[1] === 139;
         const text = gzipped && typeof DecompressionStream !== "undefined" ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text() : new TextDecoder().decode(bytes);
-        const tile = JSON.parse(text);
-        for (const [id, row] of Object.entries(tile.buildings || {})) this.rows.set(id, row);
+        return JSON.parse(text);
       } catch {
+        return null;
       }
     }
   };
+
+  // src/canalRecall/buildingArticles.ts
+  function registerLineUnderArticle(factDetail) {
+    return /^This building has no /.test(factDetail) ? "" : factDetail;
+  }
+  function articleCard(article, facts, titleSpoils = false) {
+    const register = registerLineUnderArticle(facts.detail);
+    return {
+      name: titleSpoils ? facts.name : article.t,
+      detail: article.e,
+      longDetail: register ? `${article.e}
+
+${register}` : article.e,
+      wikipediaUrl: article.u,
+      imageUrl: article.i ?? "",
+      extractLang: article.l ?? "en",
+      ...article.q ? { wikidata: article.q } : {}
+    };
+  }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
   var surveyedLandmarks_default = [
@@ -5784,10 +5826,14 @@ Map source: ${osmUrl(places[i][0])}`);
       const buildingName = building.name || "";
       const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
       if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
-      const mapped = this._clickPoiInfo?.card(building);
-      if (mapped) return mapped;
-      let row = this._buildingFacts?.lookup(building.id) ?? null;
+      const article = this._buildingFacts?.article(building.id) ?? null;
       const spoils = this.vectorMap._spoils;
+      const mapped = this._clickPoiInfo?.card(building);
+      if (mapped) {
+        if (!article) this._requestBuildingFacts(building);
+        return article ? this._poiCardWithArticle(mapped, article) : mapped;
+      }
+      let row = this._buildingFacts?.lookup(building.id) ?? null;
       const monument = row && row.length > 3 ? row[3] : void 0;
       if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
         const { n: _hidden, ...rest } = monument;
@@ -5795,9 +5841,19 @@ Map source: ${osmUrl(places[i][0])}`);
       }
       const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
       const facts = describeBuilding(row, building.height, safeName);
-      if (!row) this._requestBuildingFacts(building);
+      if (!row || !article) this._requestBuildingFacts(building);
+      const id = `clicked-${building.id || building.lngLat.join("-")}`;
+      if (article) {
+        return {
+          id,
+          type: "building",
+          lngLat: building.lngLat,
+          featureTarget: building.featureTarget,
+          ...articleCard(article, facts, !!spoils?.call(this.vectorMap, article.t))
+        };
+      }
       return {
-        id: `clicked-${building.id || building.lngLat.join("-")}`,
+        id,
         name: facts.name,
         type: "building",
         detail: facts.detail,
@@ -5805,16 +5861,35 @@ Map source: ${osmUrl(places[i][0])}`);
         featureTarget: building.featureTarget
       };
     }
+    /** A mapped venue whose building also has an article: the lede leads, the
+     *  mapped places follow, and the card gains the Wikipedia link and photo. */
+    _poiCardWithArticle(mapped, article) {
+      return {
+        ...mapped,
+        detail: article.e,
+        longDetail: [article.e, mapped.longDetail || ""].filter(Boolean).join("\n\n"),
+        factTexts: [article.e, ...mapped.factTexts ?? []],
+        wikipediaUrl: article.u,
+        imageUrl: mapped.imageUrl || article.i || "",
+        extractLang: article.l ?? "en",
+        ...article.q ? { wikidata: article.q } : {}
+      };
+    }
     /** The card opens at once with what is known; when the clicked building's
      *  fact tile was not resident yet, its year and type fill in on arrival. */
     _requestBuildingFacts(building) {
       const store = this._buildingFacts;
       if (!store || !building.lngLat) return;
-      const cardId = `clicked-${building.id || building.lngLat.join("-")}`;
+      const cardIds = /* @__PURE__ */ new Set([`clicked-${building.id || building.lngLat.join("-")}`, `clicked-poi-${building.id}`]);
+      const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
       void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-        if (this._landmarkNotice?.id !== cardId || !store.lookup(building.id)) return;
+        if (!stillOpen() || !store.lookup(building.id) && !store.article(building.id)) return;
         const card = this._cardForClickedBuilding(building);
-        if (card && this._landmarkNotice?.id === cardId) this._landmarkNotice = { ...this._landmarkNotice, name: card.name, detail: card.detail };
+        const open = this._landmarkNotice;
+        if (!card || !open || !cardIds.has(open.id)) return;
+        const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
+        this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
+        this._ensureLandmarkImage(this._landmarkNotice);
       });
     }
     // ---- Encyclopedia text ----

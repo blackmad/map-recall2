@@ -1,11 +1,11 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { basculeColour, basculeStyle, KIT_COLOURS, TRUSS, trussTriangles, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
+import { basculeColour, basculeStyle, basculeUnit, BASCULE_TRIM, LATTICE_FRAME, SWING, SWING_PIER, swingPivot, swingTriangles, TRUSS_SHAPE, KIT_COLOURS, TRUSS, trussTriangles, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
 import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, measuredDeckTop, movableFrame, underDeck } from './decks';
 import { decodeProfile, sideWidths } from '../elevation/bridgeDeck';
-import type { DeckSurface } from './surface';
+import type { DeckSurface, Vec2 } from './surface';
 
 /** A 24 m humped deck along +x, 8 m wide, over `water` metres of canal centred at x = 20. */
 function rows(water = 16, crown = 1.2, halfWidth = 4): KitRow[] {
@@ -239,4 +239,113 @@ test('Berensluis: side faces end level at the abutments, the steel girder is one
   const plain = measuredDeckTop(deck, () => 1, 4, 2, [5, 25]), sunk = measuredDeckTop(deck, () => 1, 4, 2, [5, 25], undefined, 0.06);
   assert.ok(zs(sunk, false).length > 0 && zs(sunk, false).every(z => Math.abs(z - 0.94) < 1e-9), 'past the span: 6 cm under the riding surface');
   assert.deepEqual(zs(sunk, true), zs(plain, true), 'over the span: unchanged');
+});
+
+// ------------------------------------------------------------------ swing bridges and lattice portals (lane bridge-kit, 2026-10-30)
+// Named regressions from the aimed panoramas (artifacts/bridge-audit): a ring centred on each bridge's register point
+// (FLAT_HINTS) builds the way the photo reads.
+const hintAt = (id: string): Vec2 => {
+  for (let i = 0; i + 2 < FLAT_HINTS.length; i += 3) if (`BRU${String(FLAT_HINTS[i]).padStart(4, '0')}` === id) return [FLAT_HINTS[i + 1] / 10, FLAT_HINTS[i + 2] / 10];
+  throw new Error(`${id} not in FLAT_HINTS`);
+};
+/** A footprint `len` m along +x (8 m wide) centred on `c`, over water in its middle `water` m. */
+const ringAt = (c: Vec2, len = 24): Vec2[] => [[c[0] - len / 2, c[1] - 4], [c[0] + len / 2, c[1] - 4], [c[0] + len / 2, c[1] + 4], [c[0] - len / 2, c[1] + 4]];
+const waterAt = (c: Vec2, water = 16) => (x: number) => Math.abs(x - c[0]) < water / 2;
+const tris = (m: { indices: ArrayLike<number> }) => m.indices.length / 3;
+
+test('swing bridges: the Buiksloter-, Commandants- and Oosterdoksdraaibrug turn on a pivot, no portal, no bay piers', () => {
+  for (const id of ['BRU2205', 'BRU2361', 'BRU2270']) assert.equal(basculeStyle(id, registerHint(id)), 'swing', id);
+  assert.deepEqual(basculeColour(registerHint('BRU2361'), 'BRU2361'), KIT_COLOURS.slate, 'Commandantsbrug dark blue-grey');
+  assert.deepEqual(basculeColour(registerHint('BRU2205'), 'BRU2205'), KIT_COLOURS.greyGreen, 'Buiksloterdraaibrug grey-green');
+  // Pivots: the Commandantsbrug midstream, the others at their heel on the bank the photo shows (compass end).
+  assert.equal(swingPivot(SWING.BRU2361, [0, 20], [1, 0]), 10);
+  assert.equal(swingPivot(SWING.BRU2205, [0, 20], [1, 0]), 20, 'east end along +x');
+  assert.equal(swingPivot(SWING.BRU2205, [0, 20], [-1, 0]), 0, 'east end along -x');
+  assert.equal(swingPivot(SWING.BRU2270, [0, 20], [1, 0]), 0, 'west end');
+  // The kit: one leaf, the drum at the pivot under the deck, no bay piers over 16 m of water, within budget + allowance.
+  const base = { ...input('bascule', 0), colour: KIT_COLOURS.slate, leaves: [[11.7, 28.3]] as [number, number][] };
+  const plain = buildKit(base), sw = buildKit({ ...base, swing: { pivot: 20, leafLen: 16.6, fenders: true } });
+  assert.ok(plain.info.piers > 0, 'a girder over 16 m has bay piers');
+  assert.equal(sw.info.piers, 0, 'a swing leaf has none');
+  assert.ok(sw.info.triangles <= KIT_BUDGET.near + swingTriangles(16.6, true, 0), `${sw.info.triangles}`);
+  const p = sw.mesh.positions;
+  let drum = 0, piles = 0;
+  for (let i = 0; i < p.length; i += 3) {
+    const d = Math.hypot(p[i] - 20, p[i + 1]);
+    if (Math.abs(d - SWING_PIER.radius) < 0.02 && p[i + 2] < 0) drum++;
+    if (Math.abs(p[i + 1]) > 5 && Math.abs(Math.abs(p[i] - 20) - SWING_PIER.fenderOff) < 0.3) piles++;
+  }
+  assert.ok(drum >= 16, `drum faces (${drum})`);
+  assert.ok(piles > 0, 'fender rows along the canal past the deck');
+  // Far ring: the drum as one box.
+  const far = buildKit({ ...base, lod: 1, swing: { pivot: 20, leafLen: 16.6, fenders: true } });
+  assert.ok(far.info.triangles <= KIT_BUDGET.far + swingTriangles(16.6, true, 1));
+  // The game path: no portal units; masts only where the photo has them (Commandantsbrug yes, Buiksloter no).
+  for (const [id, masts] of [['BRU2361', true], ['BRU2205', false], ['BRU2270', false]] as const) {
+    const c = hintAt(id), f = movableFrame(ringAt(c), () => 0.5);
+    assert.equal(f.units, 0, id);
+    assert.equal(tris(f.mesh) > 0, masts, `${id} masts`);
+    const body = flatDeckBody(ringAt(c), () => 0.5, waterAt(c), 0.02, 0.45);
+    assert.equal(body.kind, 'bascule', id);
+  }
+});
+
+test('truss shapes: the Commandantsbrug sides rise to the middle, the Oosterdoksdraaibrug is an arched through truss', () => {
+  const plain = { ...input('bascule', 0), colour: KIT_COLOURS.slate };
+  const RAILING_TOP = 1.2;
+  const zMax = (m: { positions: ArrayLike<number> }, x0: number, x1: number) => { let z = -Infinity; for (let i = 0; i < m.positions.length; i += 3) if (m.positions[i] >= x0 && m.positions[i] <= x1) z = Math.max(z, m.positions[i + 2]); return z; };
+  for (const id of ['BRU2361', 'BRU2270'] as const) {
+    const { mesh, info } = buildKit({ ...plain, id }), s = TRUSS_SHAPE[id];
+    const deck = 1.3 + 1.2 + 0.14;
+    assert.ok(Math.abs(zMax(mesh, 0, 40) - (deck + s.crown + TRUSS.chord)) < 0.3, `${id} crown ${zMax(mesh, 0, 40).toFixed(2)}`);
+    assert.ok(zMax(mesh, 7.5, 9) < deck + s.end + 0.6, `${id} ends low`);
+    assert.ok(info.triangles <= KIT_BUDGET.near + trussTriangles(24, s), `${id} ${info.triangles}`);
+  }
+  // Overhead braces only on the through truss: a vertex at the crown height on the centre line.
+  const onAxis = (m: { positions: ArrayLike<number>; indices: ArrayLike<number> }) => {
+    const P = m.positions, I = m.indices;
+    for (let t = 0; t < I.length; t += 3) { const ys = [0, 1, 2].map(k => P[I[t + k] * 3 + 1]), zs = [0, 1, 2].map(k => P[I[t + k] * 3 + 2]); if (Math.min(...zs) > 5 && Math.max(...ys) > 2 && Math.min(...ys) < -2) return true; }
+    return false;
+  };
+  assert.ok(onAxis(buildKit({ ...plain, id: 'BRU2270' }).mesh), 'Oosterdoksdraaibrug braced overhead');
+  // On a swing bridge the shaped truss stands over its turning leaf only; the fixed approaches keep a railing.
+  const leafOnly = buildKit({ ...plain, id: 'BRU2270', leaves: [[14, 26]], swing: { pivot: 14, leafLen: 12, fenders: false } }).mesh;
+  assert.ok(zMax(leafOnly, 7.5, 12.5) < 1.3 + 1.2 + 0.14 + RAILING_TOP, 'no truss over the approach');
+  assert.ok(zMax(leafOnly, 14, 26) > 1.3 + 1.2 + 4, 'the arch over the leaf');
+  assert.ok(!onAxis(buildKit({ ...plain, id: 'BRU2361' }).mesh), 'Commandantsbrug open');
+});
+
+test('lattice portals: the Oranjebrug, Peperbrug, Westergasbrug, BRU0148, Ezelsbrug and Aluminiumbrug frames are open lattice', () => {
+  const solid = movableFrame(ringAt([0, 0]), () => 0.5); // nothing listed at the origin: the timber frame
+  for (const id of ['BRU0146', 'BRU0148', 'BRU0193', 'BRU0281', 'BRU1904', 'BRU0222']) {
+    assert.ok(LATTICE_FRAME[id], id);
+    const c = hintAt(id), f = movableFrame(ringAt(c), () => 0.5), shifted = movableFrame(ringAt([c[0] + 400, c[1] + 400]), () => 0.5);
+    assert.ok(f.units >= 1, `${id} still a portal`);
+    assert.ok(tris(f.mesh) > tris(shifted.mesh) + 30, `${id} lattice ${tris(f.mesh)} vs solid ${tris(shifted.mesh)}`);
+    // Lattice stays within the frame's own envelope: nothing above the solid frame's top by more than a chord.
+    const zTop = (m: { positions: ArrayLike<number> }) => Math.max(...Array.from(m.positions).filter((_, i) => i % 3 === 2));
+    assert.ok(zTop(f.mesh) <= zTop(shifted.mesh) + 0.1, `${id} height`);
+  }
+  // Westergasbrug and BRU0148: one portal in the photos, where the footprint length guessed a double bascule.
+  for (const id of ['BRU0193', 'BRU0148']) assert.equal(movableFrame(ringAt(hintAt(id), 30), () => 0.5).units, 1, `${id} one portal`);
+  assert.equal(movableFrame(ringAt([0, 0], 30), () => 0.5).units, 2, 'an unlisted 30 m footprint stays double');
+  // The Westergasbrug's portal stands at its north heel: along +y its posts are on the +y half of the footprint.
+  const c193 = hintAt('BRU0193'), nRing: Vec2[] = [[c193[0] - 4, c193[1] - 15], [c193[0] + 4, c193[1] - 15], [c193[0] + 4, c193[1] + 15], [c193[0] - 4, c193[1] + 15]];
+  const wg = movableFrame(nRing, () => 0.5).mesh.positions;
+  let posts = 0;
+  for (let i = 0; i < wg.length; i += 3) if (wg[i + 2] > 3 && wg[i + 2] < 5) posts += Math.sign(wg[i + 1] - c193[1]);
+  assert.ok(posts > 0, `Westergasbrug heel north (${posts})`);
+  // Ezelsbrug: blue-grey frame, red leaf, red rods.
+  assert.deepEqual(basculeColour(registerHint('BRU1904'), 'BRU1904'), KIT_COLOURS.blueGrey);
+  assert.equal(BASCULE_TRIM.BRU1904.leaf, 'red');
+  const ez = movableFrame(ringAt(hintAt('BRU1904')), () => 0.5).mesh, cols = ez.colors!;
+  let red = 0;
+  for (let i = 0; i < cols.length; i += 3) if (Math.abs(cols[i] - KIT_COLOURS.red[0]) < 1e-6 && Math.abs(cols[i + 1] - KIT_COLOURS.red[1]) < 1e-6) red++;
+  assert.ok(red > 0, 'Ezelsbrug red pull rods');
+  // The timber frame without a look is unchanged by the lattice code: same mesh as a unit built with an empty look.
+  const a = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] }, b = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] };
+  basculeUnit(a, (x, y) => [x, y], [1, 0], 0, 1, 7, [4.5, -4.5], 0.5, () => 0.5, KIT_COLOURS.white);
+  basculeUnit(b, (x, y) => [x, y], [1, 0], 0, 1, 7, [4.5, -4.5], 0.5, () => 0.5, KIT_COLOURS.white, false, {});
+  assert.deepEqual(a, b);
+  assert.ok(tris(solid.mesh) > 0);
 });

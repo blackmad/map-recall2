@@ -257,7 +257,11 @@ const localFoodCandidates: OrientationPoi[] = [];
 
 for (const item of source.features) {
   const tags = item.properties || {};
-  const roadOrPlaceName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+  // Streets, squares and waterways keep the name on the sign: the game teaches
+  // Amsterdam's geography, so `name:en` ("New Market" for the Nieuwmarkt,
+  // TODO P0 2026-10-30) only fills in when OSM has no local name. Landmarks and
+  // venues (civicName above, local food below) stay English.
+  const roadOrPlaceName = (tags.name || tags['name:nl'] || tags['name:en'] || '').trim();
   const classification = classify(tags);
   if (!item.geometry) continue;
   const paths = pathsFromGeometry(item).filter((line) => line.length > 1);

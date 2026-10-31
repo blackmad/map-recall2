@@ -24,6 +24,7 @@ import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {MESH_SCREEN} from '../blockBuilding/components.ts';
 import {CLADDING, PANEL_ROW_M, claddingHeights, type CladdingFit} from '../blockBuilding/cladding.ts';
+import {wallFamilyCladding} from './wallFamily.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
 import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
@@ -406,7 +407,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     // Cladding (GitHub #49): the group's wall gets a slot of its own (its triangles move to the sheet slot after compose),
     // the sheet and its lines their own slots; an authored colour is a measured one.
-    const clad = w.cladding, cladSlot = clad ? `${clad.kind === 'paint' ? 'painted' : 'clad'}@g${gi}` : undefined, cladLine = clad ? `cladline@g${gi}` : undefined;
+    // a painted or metal wall family (wallFamily.ts, #146) compiles to the same cladding with its own `paint`-slot names
+    const fam = w.wallFamily ? wallFamilyCladding(w.wallFamily) : undefined;
+    const clad = w.cladding ?? fam, cladSlot = fam ? `${fam.slot}@g${gi}` : clad ? `${clad.kind === 'paint' ? 'painted' : 'clad'}@g${gi}` : undefined, cladLine = fam ? `${fam.lineSlot}@g${gi}` : clad ? `cladline@g${gi}` : undefined;
     if (clad && cladSlot && cladLine) {
       if (slots.wall === 'wall') { slots.wall = `wall@g${gi}`; palette[slots.wall] = palette.wall; }
       palette[cladSlot] = clad.colour ? swatch(clad.colour) : palette[slots.wall];

@@ -75,7 +75,7 @@ export const MERCATOR = { MercatorCoordinate };
 
 /** VectorMap members that are no-ops under the flag (the hand-back's list; checked by the engine spec). */
 export const UNIMPLEMENTED = [
-  'setGoogleTilesEnabled (third-party tiles: not planned)', 'park landscape (MapLibre style layers; the overview parks stand in)',
+  'park landscape (MapLibre style layers; the overview parks stand in)',
   'recipe tiles (?recipeTiles=1)', 'sculptures (?sculptures=1)', 'neighbourhood lines are solid (MapLibre drew them dashed)',
 ] as const;
 
@@ -784,7 +784,6 @@ export class OwnWorldView {
   /** The flat 2D tree layer's data: the inventory trees load their own (inventory-trees-source.js). */
   setTrees(): void {}
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
-  setGoogleTilesEnabled(): void {}
 }
 
 function globalNum(name: string, fallback: number): number {

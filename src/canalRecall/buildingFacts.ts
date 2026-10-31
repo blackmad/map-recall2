@@ -7,6 +7,8 @@
 // (a warehouse, a church) and a few a heritage listing. That is real data
 // about the city's growth, so the card says it instead of nothing.
 
+import type { BuildingArticle, BuildingArticleIndex, BuildingArticleTile } from './buildingArticles';
+
 /** Building values worth naming; anything else (`yes`, `house`, `apartments`)
  *  says nothing a rider cannot see. */
 export const BUILDING_TYPES = [
@@ -194,7 +196,9 @@ export function factTileOf(lng: number, lat: number): { x: number; y: number } {
  */
 export class BuildingFactStore {
   private readonly rows = new Map<string, BuildingFactRow>();
+  private readonly articles = new Map<string, BuildingArticle>();
   private readonly requested = new Set<string>();
+  private articleTiles: Promise<ReadonlySet<string>> | null = null;
   private lastCentre = '';
   constructor(private base: string, private readonly fetchImpl: typeof fetch = (...args) => fetch(...args)) {}
 
@@ -202,8 +206,10 @@ export class BuildingFactStore {
     if (base === this.base) return;
     this.base = base;
     this.rows.clear();
+    this.articles.clear();
     this.requested.clear();
     this.loads.clear();
+    this.articleTiles = null;
     this.lastCentre = '';
   }
 
@@ -218,6 +224,11 @@ export class BuildingFactStore {
 
   lookup(id: string | number | null | undefined): BuildingFactRow | null {
     return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
+  }
+
+  /** The Wikipedia article about this building, when its tile carries one. */
+  article(id: string | number | null | undefined): BuildingArticle | null {
+    return id == null ? null : this.articles.get(shortBuildingId(String(id))) ?? null;
   }
 
   /** The tile under a point, for a click outside the prefetched 3×3 or before
@@ -239,18 +250,37 @@ export class BuildingFactStore {
   private async fetchTile(key: string): Promise<void> {
     if (this.requested.has(key)) return;
     this.requested.add(key);
+    await Promise.all([this.fetchFacts(key), this.fetchArticles(key)]);
+  }
+
+  private async fetchFacts(key: string): Promise<void> {
+    const tile = await this.fetchJson<BuildingFactTile>(`building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+    for (const [id, row] of Object.entries(tile?.buildings || {})) this.rows.set(id, row);
+  }
+
+  /** Article tiles exist only where an article is; the index says where, so
+   *  the other ~1,000 tiles cost no request. */
+  private async fetchArticles(key: string): Promise<void> {
+    this.articleTiles ??= this.fetchJson<BuildingArticleIndex>(`building-articles/${BUILDING_FACT_ZOOM}/index.json`)
+      .then(index => new Set(index?.tiles || []));
+    if (!(await this.articleTiles).has(key)) return;
+    const tile = await this.fetchJson<BuildingArticleTile>(`building-articles/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+    for (const [id, article] of Object.entries(tile?.buildings || {})) this.articles.set(id, article);
+  }
+
+  private async fetchJson<T>(file: string): Promise<T | null> {
     try {
-      const response = await this.fetchImpl(`${this.base.replace(/\/$/, '')}/building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
-      if (!response.ok) return;
+      const response = await this.fetchImpl(`${this.base.replace(/\/$/, '')}/${file}`);
+      if (!response.ok) return null;
       const bytes = new Uint8Array(await response.arrayBuffer());
       const gzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
       const text = gzipped && typeof DecompressionStream !== 'undefined'
         ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text()
         : new TextDecoder().decode(bytes);
-      const tile = JSON.parse(text) as BuildingFactTile;
-      for (const [id, row] of Object.entries(tile.buildings || {})) this.rows.set(id, row);
+      return JSON.parse(text) as T;
     } catch {
-      // A history fallback answering index.html, or no network: no facts here.
+      // A history fallback answering index.html, or no network: nothing here.
+      return null;
     }
   }
 }

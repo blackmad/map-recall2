@@ -66,10 +66,15 @@ glazed-storey proposals) and the band measurement blockers (#134, HISTORY
 glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
 groups are probed again when a crop pairs them. Measured result: 0 of 253
 inferred groups moved and none of the 17 ride-landmark drafts passes yet;
-what still blocks them is in the tier sheet (item 8). Next spend by blocked
-ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
-closer-crop or second-capture signal for pale brick fronts (240435) that the
-cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+what still blocks them is in the tier sheet (item 8). The `painted-or-clad`
+gap got its kit (#146, HISTORY "Painted and clad fronts in the large
+tier"): `walls[].wallFamily` paint/metal, but only 3 of 82 moved and 0
+passed; 78 of 116 unresolved crops are dark textured walls that cell
+statistics cannot split from dark brick in shade. Next spend: propose
+`paint` for a pale resolved family (241496 w0), make the factory mosaic and
+the triage crop measure the wall family the same way, a closer-crop or
+second-capture signal for dark and pale fronts (240435, the 78 above), and
+the `band` gap's draft geometry (ribbon windows on slab fronts). Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
@@ -136,7 +141,8 @@ the `frameHost.tick(dtFixed)` hook for `CanalRecallUi.stepSteer` is L1's when
 the engine owns the loop) → L4 streamer / L5 overlays → L6 facade
 shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
 (`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
-`SHARED_FRAME_DEFAULT`), #144 reds triage (`lane-reds-triage-20261030.md`,
+`SHARED_FRAME_DEFAULT`; **merged 2026-10-31**, HISTORY "P0 deletions"; the
+legacy `_makeLayer` branches table in that entry is L1 step 6's list), #144 reds triage (`lane-reds-triage-20261030.md`,
 4535: bike-xray, complete-city, check-building-look-transition), #145 rail
 look (`lane-rail-look-20261030.md`, 4537) from the user's three in-game
 reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
@@ -164,14 +170,14 @@ tree, so they are reds on main, not from the migration (listed under "Reds
 on main" below); the `ride-perf` motion variant read 8 frames > 50 ms against
 a budget of 4 (p95 16.8, 0 > 100 ms, longest 100 ms) on a machine running
 three other browser lanes: load-induced by the 2026-10-16 doc's own spread,
-re-measure on a quiet machine before calling it a regression. P0 deletions still open: study layers and Google
+re-measure on a quiet machine before calling it a regression. P0 deletions done 2026-10-31 (#143; was: study layers and Google
 tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 `scripts/city-appearance/publish-area-geometry-demo.ts`,
 `scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
 `wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
 `tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
 (`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
-and the build chain), `index.html` script tags, the bundles. Lesson for
+and the build chain), `index.html` script tags, the bundles). Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
 State: **L1 engine host step 3 merged 2026-10-30** (#129, `bc3f9e664`):
@@ -188,6 +194,11 @@ picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
 Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
 and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
 programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
+Lane hand-back (1) merged 2026-10-31 (`693d767cf`, HISTORY "`?engine=own`
+draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
+themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
+doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
+programs (37–39 > 32)** by decision until the landmark materials are merged.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -1244,11 +1255,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
   (52.372955, 4.900113) is named "New Market": an English translation leaked
   into a Dutch street name, so when Nieuwmarkt is asked and every name is
-  earned, "New Market" is drawn next to it on both engines. Fix in the
-  extract generator (`scripts/build-amsterdam-extract.ts` /
-  `translate-extracts-to-english.ts` must not write translations into the
-  name field), regenerate, and the own-map overview names; then pin a
-  regression (the engine's Nieuwmarkt test already screens nl names).
+  earned, "New Market" is drawn next to it on both engines. Cause found
+  2026-10-31: `scripts/build-amsterdam-extract.ts` l.260 took `name:en`
+  before `name` for roads and places (landmarks and venues keep English on
+  purpose). The line now prefers the local name; lane #147
+  (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
+  from the archived PBF, reviews every changed name, fixes English pins and
+  hands back a Nieuwmarkt screenshot for What's New; then pin a regression
+  (the engine's Nieuwmarkt test already screens nl names).
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1304,22 +1318,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Wikipedia articles on plain buildings never reach the card (2026-10-30).**
-  User, Emerald Empire / Venetiëhof on KNSM-eiland: the card says only
-  "Built 1995" although OSM relation r3679879 carries `wikipedia=nl:Emerald
-  Empire` and `wikidata=Q66764687`. `build-amsterdam-extract.ts`
-  `classify()` admits landmarks only via tourism/historic/civic amenity,
-  the POI layer filters amenity/shop/tourism/leisure, and
-  `build-building-facts.ts` ignores name/wikipedia/wikidata. Measured:
-  1,698 OSM buildings carry a wiki tag (8 joined to a landmark); 1,257
-  Wikidata building articles with coordinates land in an OSM footprint and
-  are linked nowhere (200 OSM-tagged, 1,057 by point; 126 English, 1,131
-  Dutch-only). Beyond buildings, 5,611 located Wikidata items with
-  articles share no Q-id with the extracts (942 bridges, 789 streets, 513
-  sculptures, 243 works of art, 127 statues, 88 murals…; bridges/streets
-  unverified by title). Lane brief
-  `docs/handoffs/lane-wikipedia-buildings-20261030.md`; audit
-  `npm run audit:wikipedia-buildings`. Open: the lane itself.
+- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
+  articles on ordinary buildings open from the click card (HISTORY
+  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
+  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
+  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
+  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
+  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
+  click POI, not a building; bridges/streets in the Wikidata box should be
+  audited by title before counting them missing. Brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
+  `npm run audit:wikipedia-buildings`, issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
@@ -2263,14 +2272,21 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
     - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
   - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
-- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
-  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
-  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
-  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
-  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
-  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
-
-  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+- **Movable bridges: what the kit still cannot say (after the swing/lattice lane, 2026-10-31).**
+  - Ezelsbrug's red backstay cables and the piers under its posts; its frames sit too close to midspan.
+  - Arched girder undersides (Buiksloterdraaibrug).
+  - The Oosterdoksdraaibrug's dense web and curved overhead bracing; shaped trusses vanish in the far ring.
+  - Peperbrug's closed overhead beam box.
+  - The Aluminiumbrug's ornate knee braces.
+  - Per-bridge portal height and reach (the Westergasbrug's is taller).
+  - Denser fenders; a swing tail and counterweight.
+  - Brick towers (Berlagebrug BRU0423).
+  - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
+  - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
+  - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
+  - `bridgeHints.ts` was not regenerated: the 9 new BASCULES ids get the named budget tier only after a reviewed rebuild, and that script's output already differs from the committed file.
+  - `check:bridge-railings` did not finish in the lane; run it.
+  - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;

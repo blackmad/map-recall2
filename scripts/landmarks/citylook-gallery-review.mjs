@@ -3,7 +3,7 @@
 //   node scripts/landmarks/citylook-gallery-review.mjs [--out=artifacts/citylook-review/gallery] [--years=artifacts/citylook-review/landmark-bag-years.json] [--only=id,id]
 //
 // Renders every landmark GLB in public/canal-drive/models (not lod1) with src/canalRecall/look/galleryReview.ts:
-// flag off (shared rig, own materials) beside flag on (`?cityLook=1&sharedFrame=1`: inferred slots, era brick),
+// flag off (shared rig, own materials) beside flag on (`?cityLook=1`: inferred slots, era brick),
 // from the sun side and the shade side, at gallery-card size (320×240). Writes per-model PNGs, `review.json`
 // (luma, colour, material table per model) and contact sheets of 30 models (`sheet-NN.png`: per row, flag off
 // sun | flag on sun | flag off shade | flag on shade).

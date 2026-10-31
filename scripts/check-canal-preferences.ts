@@ -136,7 +136,7 @@ const memory = () => {
   const retired = parsePreferences({ themeMode: '8bit', detailed3d: true, googleTiles: true }, zoom);
   assert.equal(retired.themeMode, 'clean');
   assert.equal(retired.detailed3d, false);
-  assert.equal(retired.googleTiles, false);
+  assert.equal('googleTiles' in retired, false, 'the retired Photoreal key is ignored');
 }
 
 {
