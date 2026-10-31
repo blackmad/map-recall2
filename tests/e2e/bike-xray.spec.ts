@@ -17,10 +17,26 @@ test('the chase bike keeps its own colours in the open and draws after the build
   await page.keyboard.up('ArrowUp');
   await page.waitForTimeout(1500);
 
-  const order = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.style._order as string[]);
-  const bikeIndex = order.indexOf('player-bike-3d');
+  // Under the shared frame (implied by the own ground, the default since 3342e6b3c) the bike is not a MapLibre
+  // layer: it registers in the frame's overlay pass, and the frame's `shared-frame-overlay` layer is the one that
+  // must come after every building layer. The frame's main pass (facades, landmarks, roofs) draws before it.
+  const layering = await page.evaluate(() => {
+    const map = (window as any).canalRecallGame.vectorMap.map;
+    const frame = map._canalSharedFrame;
+    const entries = frame ? frame.registry.all().map((e: any) => ({ id: e.id, pass: e.pass })) : null;
+    return { order: map.style._order as string[], entries };
+  });
+  const { order, entries } = layering;
   const lastBuilding = Math.max(...order.map((id, index) => (/building|facade|roof/.test(id) ? index : -1)));
-  expect.soft(bikeIndex, 'bike draws after every building layer').toBeGreaterThan(lastBuilding);
+  if (entries) {
+    const bike = entries.find(entry => entry.id === 'player-bike-3d');
+    expect.soft(bike?.pass, 'the bike draws in the shared frame overlay pass').toBe('overlay');
+    expect.soft(entries.filter(entry => entry.pass === 'overlay' && !/^player-.*-3d$/.test(entry.id)).map(entry => entry.id),
+      'only vehicles share the overlay pass with the bike').toEqual([]);
+    expect.soft(order.indexOf('shared-frame-overlay'), 'the overlay pass draws after every building layer').toBeGreaterThan(lastBuilding);
+  } else {
+    expect.soft(order.indexOf('player-bike-3d'), 'bike draws after every building layer').toBeGreaterThan(lastBuilding);
+  }
 
   // Three renders of the same frozen frame: normal (A), x-ray colour off (B),
   // bike hidden (C). B minus C is where the bike is genuinely visible; in A

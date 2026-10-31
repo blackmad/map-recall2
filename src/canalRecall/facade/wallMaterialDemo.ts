@@ -41,8 +41,6 @@ async function main(){
   const trialFilter=isolated?['all',eligibleFilter,['==',['get','id'],selectedId()]]:eligibleFilter;
   m.setFilter('wall-material-trial',trialFilter);m.setFilter('wall-material-trial-caps',trialFilter);
  };
- const studyRenderers=()=>['_studyRoofAreas','_studyFacadeAreas','_studyTreeAreas','_studyPublicRealmAreas'].flatMap(key=>Array.isArray(v?.[key])?v[key]:[]);
- const setStudyRenderers=(enabled:boolean)=>{for(const renderer of studyRenderers())if(renderer?.enabled!==enabled)renderer.setEnabled(enabled);};
  const apply=()=>{if(!m)return;const on=mode==='preview';v._refreshColoredBuildingFilter();
   m.setLayoutProperty('wall-material-trial','visibility',on?'visible':'none');m.setLayoutProperty('wall-material-trial-caps','visibility',on?'visible':'none');m.setLight(on?light:originalLight);
   $('current').setAttribute('aria-pressed',String(!on));$('preview').setAttribute('aria-pressed',String(on));
@@ -81,8 +79,7 @@ async function main(){
  const trialPattern=m.getPaintProperty('wall-material-trial','fill-extrusion-pattern'),wallPaint=m.getPaintProperty('osm-colored-buildings','fill-extrusion-color');
  const identity=async(on:boolean)=>{const id=`NL.IMBAG.Pand.${entries[selected].buildingId}`;m.setPaintProperty('wall-material-trial','fill-extrusion-pattern',on?['case',['==',['get','id'],id],'wall-trial-identity',trialPattern]:trialPattern);m.setPaintProperty('osm-colored-buildings','fill-extrusion-color',on?['case',['==',['get','id'],id],'#ff00ff',wallPaint]:wallPaint);m.triggerRepaint();await sleep(350);};
  const refresh=v._refreshColoredBuildingFilter.bind(v);v._refreshColoredBuildingFilter=()=>{refresh();rememberBaseFilters();applyFilters();};
- const updateResidency=v._updateStudyAreaResidency.bind(v);v._updateStudyAreaResidency=()=>{if(isolated){setStudyRenderers(false);return;}updateResidency();};
- const setIsolation=async(value:boolean)=>{isolated=Boolean(value);if(isolated)setStudyRenderers(false);else v._updateStudyAreaResidency();return show(selected,oblique,true);};
+ const setIsolation=async(value:boolean)=>{isolated=Boolean(value);return show(selected,oblique,true);};
  $('isolate').onclick=()=>void setIsolation(!isolated);
  window.wallMaterialDemo={identity,data,colourTrials,ready:false,map:m,vectorMap:v,show,setIsolation,setMode:async(value:string)=>{mode=value;return show(selected,oblique);},state:()=>({selected,mode,oblique,isolated,scope,eligible:ids.length,spriteRatio}),light};
  const requested=Number(params.get('owner')??0);await show(Number.isInteger(requested)&&requested>=0&&requested<entries.length?requested:0);if(params.get('isolated')==='1')await setIsolation(true);window.wallMaterialDemo.ready=true;

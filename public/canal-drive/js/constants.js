@@ -70,6 +70,16 @@ const TURN_REDUCTION_AT_SPEED = 0.3;
 const HANDBRAKE_TURN_MULT = 1.6;               // steering multiplier during handbrake
 const HANDBRAKE_DRIFT = 0.96;                  // grip multiplier during handbrake
 const DRIFT_THRESHOLD = 25;                    // lateral speed for isDrifting flag
+// Bicycle steering (src/canalRecall/drive/steerModel.ts, BIKE): the lock
+// shrinks with speed so lateral acceleration stays under BIKE_CORNERING, and a
+// friction circle of BIKE_GRIP_MAX takes turn away while braking. Toy units:
+// at the bike's ~350 px/s top speed this lands on the old curve's 1.47 rad/s.
+const BIKE_WHEELBASE = 3.3;                    // px (1.1 m)
+const BIKE_MAX_LOCK = 0.6;                     // rad, parking lock
+const BIKE_CORNERING = 500;                    // px/s²
+const BIKE_GRIP_MAX = 560;                     // px/s²
+const BIKE_STEER_RATE = 10;                    // 1/s — bars follow the input
+const BIKE_REST_FADE_SPEED = 60;               // px/s — standstill turn fades out by here
 
 // --- Surface Physics ---
 const CURB_GRIP = 0.85;                        // grip multiplier on curbs

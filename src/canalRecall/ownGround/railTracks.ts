@@ -76,15 +76,83 @@ export function decodeRail(cell: RailCell): RailWay[] {
 export const isRailCell = (c: unknown): c is RailCell => !!c && typeof c === 'object' && (c as RailCell).version === RAIL_VERSION && Array.isArray((c as RailCell).w);
 
 /** Cross-section (metres): half the bed's top, the shoulder's toe, the top over the ground, the rails. */
-export const RAIL_SECTION = { topHalf: 1.55, toeHalf: 2.3, topLift: 0.32, serviceDrop: 0.03, toeLift: 0.03, gauge: 1.435, railWidth: 0.14, railHeight: 0.16, flatLift: 0.05, slabDepth: 1.1, slabHalf: 2.45 } as const;
-/** Max piece length along a track (metres): fine and far builds. */
-export const RAIL_STEP_M = { fine: 12, far: 24 } as const;
+// serviceDrop 0 (issue #145): the 3 cm step under the yard tracks drew dark ridges across Centraal's throat.
+export const RAIL_SECTION = { topHalf: 1.55, toeHalf: 2.3, topLift: 0.32, serviceDrop: 0, toeLift: 0.03, gauge: 1.435, railWidth: 0.14, railHeight: 0.16, flatLift: 0.05, slabDepth: 1.1, slabHalf: 2.45 } as const;
+/** Max piece length along a track (metres): fine and far builds. Fine 6 (was 12, issue #145): a 12 m chord sagged under the 5 m land grid on the embankment crowns and the land drew over the bed (4.2 % of the Oostertoegang bed samples, 0.6 % at 6 m). */
+export const RAIL_STEP_M = { fine: 6, far: 24 } as const;
 /** The sleeper texture's tile (metres): the bed top's u runs 0..2·topHalf across it, v along the track. */
 export const SLEEPER_TILE_M = 3.1;
 /** Tones (sRGB 0..255): the ballast's grey-brown gravel, the concrete sleepers on it, the rails (also the flat overview tones). */
-export const RAIL_TONES = { ballast: [126, 117, 106] as const, sleeper: [170, 165, 156] as const, track: [88, 82, 77] as const };
+// Issue #145: the sleepers were +44 levels over the ballast and read as a grey hatch from the chase camera (5-10 px a
+// sleeper at 40-80 m); now +16, a texture up close that the mips average away, and the rails are what stays dark.
+export const RAIL_TONES = { ballast: [126, 117, 106] as const, sleeper: [142, 136, 127] as const, track: [88, 82, 77] as const };
+/**
+ * The rails painted into the bed's texture (issue #145): a dark stripe per rail at the gauge, `half` m each side of the
+ * rail's centre (head, foot and its shadow), in `tone`. Constant along the track, so the mips keep it a continuous
+ * dark line far past where the 0.14 m ridge rail is a pixel (it broke into dashes there, or vanished).
+ */
+export const RAIL_STRIPE = { half: 0.12, tone: [62, 56, 52] as const };
+/** The stripes' u ranges across the bed's top (u 0..2·topHalf = one SLEEPER_TILE_M tile). */
+export function railStripes(): [number, number][] {
+  const c = RAIL_SECTION.topHalf, g = RAIL_SECTION.gauge / 2;
+  return [c - g, c + g].map(u => [u - RAIL_STRIPE.half, u + RAIL_STRIPE.half] as [number, number]);
+}
 /** Colours (sRGB): the bridge slab's concrete sides and soffit. */
 export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number], soffit: [0.46, 0.46, 0.44] as [number, number, number] };
+
+/**
+ * Yard beds (issue #145, Oostertoegang / Dijksgracht: separate beds with beige sand and water between them read as
+ * ribbons, not a railway). Where another track of the same deck (both on a bridge, or both not) runs within
+ * `maxM` metres centre to centre on one side, roughly parallel (within `maxDeg`), the bed's top runs on as plain ballast
+ * to the midpoint (plus `overlap`) and that side has no shoulder: adjacent tracks share one bed, one shoulder pair
+ * for the group. Real yard and main-line centres are 4.0-6.5 m; separate corridors are 10 m+ apart.
+ */
+export const RAIL_MERGE = { maxM: 7, maxDeg: 25, overlap: 0.05 } as const;
+
+/** Segments of every way, bucketed for the side-gap ray test. */
+export interface RailSegIndex { grid: Map<string, { way: number; a: Vec2; b: Vec2 }[]>; cellM: number }
+export function railSegIndex(ways: readonly RailWay[], cellM = 16): RailSegIndex {
+  const grid = new Map<string, { way: number; a: Vec2; b: Vec2 }[]>();
+  ways.forEach((w, way) => {
+    for (let i = 0; i + 1 < w.points.length; i++) {
+      const a = w.points[i], b = w.points[i + 1];
+      const gx0 = Math.floor(Math.min(a[0], b[0]) / cellM), gx1 = Math.floor(Math.max(a[0], b[0]) / cellM);
+      const gy0 = Math.floor(Math.min(a[1], b[1]) / cellM), gy1 = Math.floor(Math.max(a[1], b[1]) / cellM);
+      if ((gx1 - gx0 + 1) * (gy1 - gy0 + 1) > 400) continue;
+      for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) { const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way, a, b }); }
+    }
+  });
+  return { grid, cellM };
+}
+
+/**
+ * Distance (m) from `p` along the unit direction `dir` to the nearest segment of another way of the same deck that
+ * runs within RAIL_MERGE.maxDeg of `tangent`; Infinity when none lies within RAIL_MERGE.maxM.
+ */
+export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: number, p: Vec2, dir: Vec2, tangent: Vec2): number {
+  const max = RAIL_MERGE.maxM, cos = Math.cos(RAIL_MERGE.maxDeg * Math.PI / 180), c = index.cellM;
+  const q: Vec2 = [p[0] + dir[0] * max, p[1] + dir[1] * max];
+  const gx0 = Math.floor(Math.min(p[0], q[0]) / c), gx1 = Math.floor(Math.max(p[0], q[0]) / c);
+  const gy0 = Math.floor(Math.min(p[1], q[1]) / c), gy1 = Math.floor(Math.max(p[1], q[1]) / c);
+  let best = Infinity;
+  for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) for (const s of index.grid.get(`${gx}:${gy}`) ?? []) {
+    if (s.way === self || ways[s.way].bridge !== ways[self].bridge) continue;
+    const ex = s.b[0] - s.a[0], ey = s.b[1] - s.a[1], el = Math.hypot(ex, ey);
+    if (el < 1e-6 || Math.abs((ex * tangent[0] + ey * tangent[1]) / el) < cos) continue;
+    // p + t·dir = a + u·e
+    const den = dir[0] * ey - dir[1] * ex;
+    if (Math.abs(den) < 1e-9) continue;
+    const wx = s.a[0] - p[0], wy = s.a[1] - p[1];
+    const t = (wx * ey - wy * ex) / den, u = (wx * dir[1] - wy * dir[0]) / den;
+    if (t > 0.01 && t < best && u >= 0 && u <= 1) best = t;
+  }
+  return best <= max ? best : Infinity;
+}
+
+/** How far the bed's top reaches on one side (m from the centreline) for a side gap: the midpoint, never under topHalf. */
+export function yardReach(gap: number): number | null {
+  return gap < RAIL_MERGE.maxM ? Math.max(RAIL_SECTION.topHalf, gap / 2 + RAIL_MERGE.overlap) : null;
+}
 
 export interface RailMeshes { ballast: MeshArrays; track: MeshArrays; slab: MeshArrays; stats: RailBuildStats }
 export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number> }
@@ -127,7 +195,9 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
   const ballast = emptyMesh(), track = emptyMesh(), slab = emptyMesh(true);
   const stats: RailBuildStats = { ways: 0, metres: 0, bridgeMetres: 0, levelCrossingMetres: 0, byKind: {} };
   const drawRails = input.rails !== false && !input.far;
-  for (const way of input.ways) {
+  const segs = railSegIndex(input.ways);
+  for (let wi = 0; wi < input.ways.length; wi++) {
+    const way = input.ways[wi];
     const pts = densifyEven(way.points, input.far ? RAIL_STEP_M.far : RAIL_STEP_M.fine);
     const n = pts.length;
     // Which pieces are the cell's own; nothing to do when none is.
@@ -145,26 +215,47 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const z = way.bridge ? ground.map((g, i) => Math.max(g, ground[0] + (ground[n - 1] - ground[0]) * (total > 0 ? along[i] / total : 0))) : ground;
     const flat = pts.map(() => false);
     if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if ((own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
-    const top = (i: number) => z[i] + (flat[i] ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
     const at = (i: number, off: number): Vec2 => { const [nx, ny, k] = normals[i]; return [pts[i][0] + nx * off * k, pts[i][1] + ny * off * k]; };
+    // The bed stands topLift over the highest land under its top (centre and both edges, issue #145: on the
+    // embankment's crown the 5 m land grid rose 0.2-0.3 m over a bed lifted from the centreline alone and buried it).
+    const ridge = (i: number) => (way.bridge || flat[i] ? z[i] : Math.max(z[i], ...[S.topHalf, -S.topHalf].map(o => { const p = at(i, o); return input.height(p[0], p[1]); })));
+    const top = (i: number) => (flat[i] ? z[i] + S.flatLift : ridge(i) + S.topLift - (way.service ? S.serviceDrop : 0));
+    // Yard beds: the top runs on to the midpoint where a neighbouring track lies within RAIL_MERGE.maxM (not at a level crossing).
+    const reach = (i: number, side: 1 | -1): number | null => {
+      if (flat[i]) return null;
+      const [nx, ny] = normals[i], j = Math.min(i, n - 2), tx = pts[j + 1][0] - pts[j][0], ty = pts[j + 1][1] - pts[j][1], tl = Math.hypot(tx, ty) || 1;
+      return yardReach(sideGap(segs, input.ways, wi, pts[i], [nx * side, ny * side], [tx / tl, ty / tl]));
+    };
     // Per station: the bed's five vertices (toe, top edge, top edge, toe) and the rails.
+    const bedReach: [number | null, number | null][] = [];
     const bedIdx: number[][] = [], railIdx: number[][] = [], slabIdx: number[][] = [];
     const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
     for (let i = 0; i < n; i++) {
-      if (!needed(i)) { bedIdx.push([]); railIdx.push([]); slabIdx.push([]); continue; }
+      if (!needed(i)) { bedReach.push([null, null]); bedIdx.push([]); railIdx.push([]); slabIdx.push([]); continue; }
       const t = top(i), vv = along[i];
       const toeZ = (p: Vec2) => (way.bridge ? t - S.topLift + S.toeLift : flat[i] ? t : Math.min(t, input.height(p[0], p[1]) + S.toeLift));
-      const lt = at(i, S.toeHalf), le = at(i, S.topHalf), re = at(i, -S.topHalf), rt = at(i, -S.toeHalf);
+      const le = at(i, S.topHalf), re = at(i, -S.topHalf);
+      // Yard bed: the top's plain-ballast run to the midpoint (its height there the neighbour's, so the two meet),
+      // and no shoulder on that side (the toe sits on the run's edge).
+      const lr = reach(i, 1), rr = reach(i, -1);
+      const lx = at(i, lr ?? S.topHalf), rx = at(i, -(rr ?? S.topHalf));
+      const runZ = (p: Vec2) => (way.bridge ? t : Math.max(t - 0.25, input.height(p[0], p[1]) + S.topLift));
+      const lxz = lr == null ? t : runZ(lx), rxz = rr == null ? t : runZ(rx);
+      const lt = lr == null ? at(i, S.toeHalf) : lx, rt = rr == null ? at(i, -S.toeHalf) : rx;
       // u: the shoulders sample the gravel column at the tile's edge, the top runs across the sleepers.
       bedIdx.push([
-        v(ballast, lt[0], lt[1], toeZ(lt), 0.05, vv),
+        v(ballast, lt[0], lt[1], lr == null ? toeZ(lt) : lxz, 0.05, vv),
         v(ballast, le[0], le[1], t, 0, vv),
         v(ballast, re[0], re[1], t, 2 * S.topHalf, vv),
-        v(ballast, rt[0], rt[1], toeZ(rt), 2 * S.topHalf - 0.05, vv),
+        v(ballast, rt[0], rt[1], rr == null ? toeZ(rt) : rxz, 2 * S.topHalf - 0.05, vv),
         // The shoulders' own copies of the top edges (u in the gravel column, so no sleeper ends smear down the slope).
         v(ballast, le[0], le[1], t, 0.05, vv),
         v(ballast, re[0], re[1], t, 2 * S.topHalf - 0.05, vv),
+        // The yard runs' outer edges (on the top edge when the side has no neighbour).
+        v(ballast, lx[0], lx[1], lxz, 0.05, vv),
+        v(ballast, rx[0], rx[1], rxz, 2 * S.topHalf - 0.05, vv),
       ]);
+      bedReach.push([lr, rr]);
       if (drawRails) {
         const r: number[] = [];
         for (const c of [S.gauge / 2, -S.gauge / 2]) {
@@ -175,7 +266,8 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
         railIdx.push(r);
       } else railIdx.push([]);
       if (way.bridge) {
-        const sl = at(i, S.slabHalf), sr = at(i, -S.slabHalf), st = t - S.topLift, sb = st - S.slabDepth;
+        // A yard of bridge tracks shares one deck: the slab runs on under the bed's yard run (no water between tracks).
+        const sl = at(i, lr == null ? S.slabHalf : lr + RAIL_MERGE.overlap), sr = at(i, -(rr == null ? S.slabHalf : rr + RAIL_MERGE.overlap)), st = t - S.topLift, sb = st - S.slabDepth;
         slabIdx.push([
           v(slab, sl[0], sl[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sl[0], sl[1], sb, 0, vv, RAIL_COLOURS.slab),
           v(slab, sr[0], sr[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sr[0], sr[1], sb, 0, vv, RAIL_COLOURS.slab),
@@ -194,9 +286,14 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
       if (flat[i] && flat[i + 1]) stats.levelCrossingMetres += len;
       const a = bedIdx[i], b = bedIdx[i + 1];
       // Left normal is +offset: a[0] toe left, a[1] top left, a[2] top right, a[3] toe right. CCW from above.
+      // Left: the yard run (top edge → run edge), then the shoulder (run edge → toe); right mirrored. A run or
+      // shoulder that is degenerate at both ends (no neighbour / merged on that side) is skipped.
       quad(ballast, a[2], b[2], b[1], a[1]);
-      quad(ballast, a[4], b[4], b[0], a[0]);
-      quad(ballast, a[3], b[3], b[5], a[5]);
+      const [ra0, rb0] = [bedReach[i], bedReach[i + 1]];
+      if (ra0[0] != null || rb0[0] != null) quad(ballast, a[4], b[4], b[6], a[6]);
+      if (ra0[0] == null || rb0[0] == null) quad(ballast, a[6], b[6], b[0], a[0]);
+      if (ra0[1] != null || rb0[1] != null) quad(ballast, a[7], b[7], b[5], a[5]);
+      if (ra0[1] == null || rb0[1] == null) quad(ballast, a[3], b[3], b[7], a[7]);
       const ra = railIdx[i], rb = railIdx[i + 1];
       if (ra.length && rb.length) for (const o of [0, 3]) {
         // Per rail: the face towards +normal, the face towards -normal.

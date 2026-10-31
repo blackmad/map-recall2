@@ -1,7 +1,7 @@
 // Fixed-route ride frame cost for A/B of render flags (method of ride-perf.spec.ts /
 // facade-trees-perf.spec.ts; route fixed as in review-city-performance.mjs).
 //   PORT=4402 node scripts/ride-perf-fixed-route.mjs <label> "<query>" [touch|desktop] [seconds]
-// e.g. "?sharedFrame=1" vs "". Same route every run (Anne Frank Huis -> Rijksmuseum),
+// e.g. "?cityLook=1" vs "". Same route every run (Anne Frank Huis -> Rijksmuseum),
 // iPhone 13 with 4x CPU throttle for touch; appends to artifacts/shared-frame/perf/ride.jsonl.
 // BUNDLES_DIR=<dir> serves any *.bundle.js found there instead of the committed one
 // (measure a source change before the integrator rebuilds the bundles).
