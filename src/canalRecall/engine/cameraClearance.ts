@@ -90,6 +90,15 @@ export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, cente
 }
 
 /**
+ * Every resident building for the clearance walk. `sampleFeatures(20_000)` took the first 20,000 of the city's
+ * ~34,000 residents in cache order, so the blocks around the camera were often among the ones dropped and the camera
+ * sank into them (#129). The sightline walk prefilters by box, so the whole list costs one box test per resident.
+ */
+export function clearanceResidents<T extends FootprintFeature = FootprintFeature>(city: { sampleFeatures(limit: number): readonly T[] }): readonly T[] {
+  return city.sampleFeatures(Number.POSITIVE_INFINITY);
+}
+
+/**
  * Lower `pitch` in 4° steps until the sightline clears (or the floor is reached). `eyeAt(pitch)` returns the camera
  * position for the requested view at that pitch; the route centre stays fixed, so the canvas overlays stay registered.
  */
