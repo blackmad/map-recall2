@@ -1327,6 +1327,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
+  fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
+  localhost build "looks great". Root cause found: stale cached bundles (18
+  stale `?v=` stamps), fixed by content-hash stamping at deploy (HISTORY
+  "Deployed pages stamp every asset"). Still owed: one measured default-vs-own
+  table on the real GPU at DPR 2 in a full window (frame/GPU time, governor
+  state, backing-store size, pop-in timing); every own-engine number so far is
+  headless DPR 1 or an emulator profile (L1, #129).
+- **POI/business labels draw through buildings under `?engine=own`** (user
+  screenshot, Eerste Constantijn Huygensstraat looking north): labels need an
+  occlusion test at the facade-height anchor with hysteresis; pin the pose as
+  a regression (L1, after the table).
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

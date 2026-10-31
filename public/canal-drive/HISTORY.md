@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+**Deployed pages stamp every asset with its content hash; the "slow, blurry, pop-in" `?engine=own` ride was a stale cached bundle (2026-10-31).**
+The user rode `?engine=own` on the deployed site and found it slow, janky,
+blurry (the whole world frame upscaled ~2×) with heavy pop-in, while a lane's
+fresh localhost build "looks great". The deploy was current (8727f0e2e), but
+Hosting caches `/js/**` for an hour and the pages cache-bust by hand: 18 of
+the 25 `?v=` stamps in `index.html` were older than their file's last change
+(`engine.bundle.js?v=20261030-engine` after five rebuilds that day, also
+three, three-buildings, signature-placement, vector-map.js, game.js), so the
+browser mixed yesterday's engine bundle with today's everything else.
+`scripts/stamp-canal-assets.ts` now rewrites every local `?v=` in the
+assembled site's HTML to the first 10 hex digits of the asset's SHA-256
+(unchanged files keep their URL; remote and rooted URLs untouched; a missing
+asset fails the step), run by the deploy workflow right after
+`assemble-canalrecall-site.mjs`; `test:stamps` pins the rewrite in
+`check:canal`. The committed stamps stay human-readable and no longer matter
+for players. Lesson: every bundle rebuild in an integration must ship with a
+new URL; from now on the deploy does it. The user's real-GPU observations
+(DPR 2, full window) still get one measured table from L1 before the own
+engine is judged on a Mac. Also from that ride: POI/business labels draw
+through buildings under the own engine (occlusion item, L1).
+
+**`fetchRoads` downloads its three files at once; the road surface index keys cells by number (2026-10-31, #136).**
+`squares.json` and `transit-network.json` download alongside the street
+extract and are applied at the same point in the same order (plaza, then
+ferry): fetchRoads at 20 Mbit JSON 4,262 → 4,152 ms, binary 2,681 → 2,445;
+localhost binary 93 → 65 ms; submit → racing at 20 Mbit JSON 7,236 → 7,155,
+binary 6,388 → 6,160 (bandwidth-bound, so small). `roadSurface.ts` uses
+numeric cell keys: Node build 218 → 140 ms, ring-2 queries 2.5× faster,
+`roadsNear` identical over 180k queries; in game `prepareSurfaceIndex` 130 →
+92 ms (JSON) / 266 → 142 (binary) under load. The JSON parse (~220 ms) is
+mostly the dev server gzipping 15 MB per request and `?roads=bin` removes it;
+the next CPU owner is the feature → ways loop (~60–120 ms, 340k node
+objects), held because `vectorMap` reads the ways shape.
+
 **Pins and picks follow the drawn camera when the deck is lifted; the own engine highlights once per change; the flip inventory exists (2026-10-31, #129, L1 hand-back 5).**
 Deck lift: maplibre-gl 5.24 builds the `project`/`unproject` matrix before
 the camera is lifted by the rider's deck elevation, so canvas pins and taps
