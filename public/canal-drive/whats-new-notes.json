@@ -3,6 +3,16 @@
  "notes": [
   {
    "date": "2026-10-31",
+   "title": "Pins sit on the bridge deck you see",
+   "text": "When the bike is on a lifted bridge deck, the destination pin, taps in Free Ride and building picks now use the same camera the map is drawn with. They used to land up to about six pixels off the drawn spot on a raised deck; at street level nothing changes.",
+   "where": [
+    4.8936,
+    52.3702
+   ],
+   "images": []
+  },
+  {
+   "date": "2026-10-31",
    "title": "Rail bridges carry the tracks level",
    "text": "The railway bridges east of Centraal are one level deck between their embankments instead of tilted, broken slabs, and the tracks along the Piet Heinkade no longer sink into the ground when seen from further away.",
    "where": [

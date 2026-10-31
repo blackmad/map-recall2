@@ -1,5 +1,76 @@
 # Canal Recall — what is built
 
+**Pins and picks follow the drawn camera when the deck is lifted; the own engine highlights once per change; the flip inventory exists (2026-10-31, #129, L1 hand-back 5).**
+Deck lift: maplibre-gl 5.24 builds the `project`/`unproject` matrix before
+the camera is lifted by the rider's deck elevation, so canvas pins and taps
+were up to ~6 px off what is drawn. `rendererShared/drawnProjection.ts`
+(exported as `drawnProjector` on `CanalRecallThree`) projects with the drawn
+matrix; `vector-map.js` uses it for `vectorMap.camera`, `projectWorld`
+(canvas pins), `screenToWorld` (Free Ride taps) and building/POI picking,
+while picking still goes through `queryPixel` so MapLibre's feature query
+keeps its own pixels; at elevation 0 nothing changes. The regression check in
+`engine-parity.spec` reads 3e-8 px with the fix and 5.69 px without.
+`free-ride.spec` passes; `building-click-perf` fails at :228 (0.82 vs 0.95,
+Westermarkt clicks land on "Guy Olivier") and :146 (10-min timeout) with and
+without the fix, so it is a pre-existing red (TODO). Highlight:
+`engine/landmarkHighlight.ts` makes `ownWorldView.setActiveLandmark` call
+`threeBuildings.setHighlighted` only when the lit ids or the card's point
+change (the marker and its footprint scan follow the same rule, except while
+the footprint has not loaded); the repeats came from `relight()` on every
+landmark model shown and from the game sending fresh notice objects for the
+same place, not from a per-frame call: 39 sends → 1 `setHighlighted`.
+iPhone ride: the seeded spawn faces a T-junction where street following
+waits for a side (a tap only queues the turn, holding goes), so the spec's
+ride now holds a side and asserts movement: iPhone 236 draws, 21 programs,
+heap 803 MB, moved 566 m; desktop 249 draws, 23 programs, heap 946–1,286 MB
+(noisy). For the routing lane: a phone player who taps a turn at a
+T-junction instead of holding it stays stopped. Flip inventory:
+`docs/handoffs/flip-inventory-20261031.md`: under `?engine=own` nothing reads
+`window.maplibregl` and no map is constructed, but maplibre-gl is still
+downloaded (2 unpkg requests); the `index.html` tag and the default switch
+in `game.js` are the only real blockers; `CameraMap` shim calls by caller,
+B1–B14 with file:line and replacements, a 7-step P5 deletion order, 75 specs
+(218 reads) and 49 scripts still reading `vectorMap.map`. Corrections to the
+programme's P5 list: `mapGuard.ts` cannot go whole (own uses
+`guardMapRender`); maplibre-gl and leaflet stay in `package.json` while 8 lab
+pages, `liveTiles.ts` and `MapComponent.tsx` use them. `test:engine` runs
+`src/canalRecall/engine/*.test.ts` inside `check:canal`.
+
+**Landmarks cast their shadows through one merged stand-in per level: shadow draws ÷3, nothing visible changes (2026-10-31, #129, P4 lane D step 1).**
+`src/canalRecall/rendererShared/shadowStandIns.ts`: each drawn landmark level
+casts through one merged position-only mesh per shadow side on
+`SHADOW_ONLY_LAYER` 30, and the original meshes stop casting;
+`sharedFrame.ts` turns layer 30 on only while `shadowMap.render` runs and
+`setShadows` no longer switches a stand-in's sources back on; hooks in
+`signature-landmarks-source.js` at install, LOD swap, context restore and
+dispose. Every triangle is kept so towers and spires keep their shadows.
+The brief's route B (swap geometry in `onBeforeShadow`) cannot work because
+three fetches the geometry before calling it. Step 1b rounds positions to a
+16-bit grid, merges duplicate vertices and uses the smallest index type:
+stand-in memory at the Dam 14.1 → 8.0 MB desktop, 11.2 → 5.9 MB iPhone (the
+first float version was 30 MB). Shadow draws desktop Dam 310 → 92,
+Westerkerk 179 → 57, Paleis 280 → 73 (shadow ms ~1.0 → 0.5); iPhone Dam 229
+→ 71, Westerkerk 171 → 71, Paleis 224 → 77 (~0.8 → 0.5); steady ride draws
+per shadow redraw 185 → 80 desktop, 217 → 82 iPhone; triangles unchanged.
+Pixel diff on vs off: desktop 30/0/4 px of 1.3 M (≤ 4 levels per channel),
+iPhone 1/0/0; the same state repeated gives 0. Still casting one mesh at a
+time: shared-mesh clones, street chunks, alpha-tested / multi-material /
+instanced / custom-depth meshes; not done: facade chunks (already 9 draws; a
+walls-only version changes gable shadows and needs a worker change) and
+own-ground chunk bases (~6 draws). Measured only, no code: world-matrix
+updates cost 0.066 ms desktop / 0.099 ms iPhone per frame (so
+`matrixWorldAutoUpdate` off saves < 0.1 ms); the only instanced props are
+the 4 tree meshes and nothing uses DynamicDrawUsage; the brief's cull rule
+gives 5.5–8.8 km, beyond where trees load; bollards, railings and houseboats
+are not instanced under `?engine=own`; after warm-up desktop has 0 B uploads
+and 0 compiles, iPhone 146 KB/frame from streaming (149 before) and 4
+compiles, as main; two programs still compile mid-ride on the iPhone
+(`city-look/lit|slot|uv|-|0` and a landmark GLB material `masonry`), the next
+step being `renderer.compileAsync` before a landmark joins the scene and a
+precompiled slot|uv variant. `modulepreload` does not apply (classic
+scripts); `compileAsync` with progress and the `[init]` boot line need the
+loading screen, `index.html` and `game.js` (integrator).
+
 **The road network ships as a compact binary extract behind `?roads=bin` (2026-10-31, #136, P3 road graph as CSR binary).**
 `src/canalRecall/routing/roadExtract.ts` is the format and decoder: header
 with magic `CRRX`, version, section offsets, counts and the source SHA-256;
