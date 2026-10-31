@@ -40,7 +40,8 @@ const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number): [numbe
 /** Only the 3D frame is under review: labels (collision fades), the HUD and the minimap differ run to run. */
 async function quiet(page: Page): Promise<void> {
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    // MapLibre, or the engine's MapLibre-shaped camera (`ENGINE=own`).
+    const vm0 = (window as any).canalRecallGame.vectorMap, map = vm0.map ?? vm0.cameraMap;
     for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
@@ -51,7 +52,7 @@ async function settle(page: Page): Promise<void> {
   // Streamed buildings idle, landmarks idle, then a few frames for textures and shadows.
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const map = vm.map ?? vm.cameraMap, c = map.getCenter(); map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     // Landmarks load in batches of two on moveend and tiles keep arriving; the
@@ -62,7 +63,7 @@ async function settle(page: Page): Promise<void> {
     return w.__lookIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
   // The polls nudged the centre to trigger moveend; return to the exact camera.
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__lookCamera); });
+  await page.evaluate(() => { const w = window as any; const vm = w.canalRecallGame.vectorMap; (vm.map ?? vm.cameraMap).jumpTo(w.__lookCamera); });
   await page.waitForTimeout(5000);
 }
 
@@ -125,7 +126,7 @@ test.describe('look consistency shots', () => {
     for (const view of LOOK_VIEWS) {
       const eye = ahead(view.target, view.bearing, view.distM);
       await page.evaluate(({ eye, view }) => {
-        const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+        const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
         g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__lookIdle = 0;
         g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -135,7 +136,7 @@ test.describe('look consistency shots', () => {
       await settle(page);
       await quiet(page);
       await page.waitForTimeout(1500);
-      await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${dir}/${view.name}.png` });
+      await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${dir}/${view.name}.png` });
     }
     if (meta.sharedFrame) {
       // One rig for every layer: the frame's scene holds the sun and the sky and no private light.

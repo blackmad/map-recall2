@@ -3456,6 +3456,21 @@ class VectorBasemap {
    * Safe to call before the tile streamer has probed: the aim is remembered
    * and applied again when `_ensureCompleteCity` finishes attach.
    */
+  /** WorldView (engine/worldViewApi.ts): the canvas the world draws into. */
+  frameCanvas() { return this.map ? this.map.getCanvas() : null; }
+
+  /** WorldView: the canvas right after a fresh frame, while its drawing buffer is readable. */
+  captureFrame() {
+    return new Promise(resolve => {
+      if (!this.map) { resolve(null); return; }
+      this.map.once('render', () => resolve(this.map.getCanvas()));
+      this.map.triggerRepaint();
+    });
+  }
+
+  /** WorldView: show a lng/lat directly (the briefing's city centre, before a loader exists). */
+  jumpToLngLat(options) { if (this.map) this.map.jumpTo(options); }
+
   aimAtWorld(worldX, worldY, loader, options = {}) {
     this._pendingAim = { worldX, worldY, loader, options };
     this._applyPendingAim();

@@ -20,15 +20,15 @@
   },
   "stats": {
     "buildingsModelled": {
-      "count": 517,
-      "note": "Buildings with their own individually modelled 3D model in the ride: 317 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "count": 518,
+      "note": "Buildings with their own individually modelled 3D model in the ride: 318 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
       ]
     },
     "landmarkModels": {
-      "count": 317,
+      "count": 318,
       "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"

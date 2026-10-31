@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openRoute } from './helpers';
+import { openRoute, useEngine } from './helpers';
 
 // GPU loss and regain (2026-10-24, lane-perf-phones item 2). MapLibre answers a restored WebGL context by rebuilding
 // its style from a serialised copy, which drops custom layers: until this the shared three.js frame (ground, trees,
@@ -20,7 +20,7 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
   await page.evaluate(() => { (window as any).canalRecallGame.maxAsksPerMinute = 0; });
   const state = () => page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap, frame = vm._sharedFrame;
-    vm.map.triggerRepaint();
+    (vm.host ?? vm.map).triggerRepaint(); // the engine's frame host, or MapLibre
     const visible = (id: string) => !!frame?.registry.all().find((e: any) => e.id === id)?.participant.wrapper.visible;
     const ground = vm._ownGround?.status?.();
     return {
@@ -39,7 +39,7 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
   expect(before.renderer).toBe(true);
 
   await page.evaluate(() => {
-    const gl = (window as any).canalRecallGame.vectorMap.map.painter.context.gl;
+    const gl = ((vm: any) => { const c = vm.frameCanvas?.() ?? vm.map.getCanvas(); return c.getContext('webgl2') || c.getContext('webgl'); })((window as any).canalRecallGame.vectorMap);
     (window as any).__loseContext = gl.getExtension('WEBGL_lose_context');
     (window as any).__loseContext.loseContext();
   });
@@ -74,6 +74,7 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
 // briefing's resident set as it was (buildingTilesBrowser.ts, `aimed`).
 test('a context restore on the briefing streams no buildings the briefing had not', async ({ page }) => {
   test.setTimeout(120_000);
+  await useEngine(page);
   await page.goto('/canal-drive/');
   await page.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?._sharedFrame?.renderer && (window as any).canalRecallGame?.vectorMap?._completeCity, null, { timeout: 90_000 });
   await page.waitForTimeout(3000);
@@ -84,7 +85,7 @@ test('a context restore on the briefing streams no buildings the briefing had no
   const before = await resident();
   expect(before.state).toBe(0);
   await page.evaluate(() => new Promise<void>(resolve => {
-    const gl = (window as any).canalRecallGame.vectorMap.map.painter.context.gl, ext = gl.getExtension('WEBGL_lose_context');
+    const gl = ((vm: any) => { const c = vm.frameCanvas?.() ?? vm.map.getCanvas(); return c.getContext('webgl2') || c.getContext('webgl'); })((window as any).canalRecallGame.vectorMap), ext = gl.getExtension('WEBGL_lose_context');
     ext.loseContext();
     setTimeout(() => { ext.restoreContext(); resolve(); }, 173);
   }));

@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
+L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
+put the gate specs, ride-perf and phone-memory on either implementation;
+`ride-perf-owners.mjs` times the frame host as owner `engine`. Overlays
+(cycle tracks, transit, neighbourhood lines, route and active street draped
+on the own ground, active-landmark highlight and marker, ferry pins, the
+answered street) and the POI, landmark and branded labels now draw under the
+flag through `ownMap/labels.ts` with the spoiler rules in `labelPolicy.ts`;
+place labels are also screened by their Dutch Wikipedia name. First in-page
+A/B of the two implementations on the same ride (desktop chase, 12 s):
+main-thread CPU 6.61 → 1.97 ms a frame, draws 648 → 137, p95 22.5 → 17.8 ms,
+with the caveat that trees, landmarks and themes are not yet drawn under the
+flag. On the iPhone profile a 60 s ride holds a flat 246 MB heap with 0
+MapLibre workers. Found on the way: `streets-routing.json` names way
+`routing_15692` "New Market", an English translation in a street name (TODO
+P0).
+
 **`?world=v1` identical in the browser, decoded in the worker, cells published (2026-10-30, #136).**
 Why the first A/B showed ~4,400 extra buildings on four centre tiles: the
 cells were stale (the building tiles had been regenerated after L3 compiled;
@@ -266,6 +283,70 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**City look on by default (2026-10-30, decision #137 = A).** David chose
+option A on the #135 strip: flip at level 1, accept the +14 % landmark
+brightening at card size as the new baseline, and let the re-tag lane
+(#138, landed first) fix the wrong slots. `cityLookEnabled` now returns
+true unless `?cityLook=0` (or `window.__canalRecallCityLook === false`)
+opts out; the four look bundles and the building-style bundle were rebuilt
+with it. The shadow-fill spec's "plain" row pins the legacy flat-colour
+path and now passes `cityLook=0` explicitly; the frame specs (sun heading,
+mood shots, demo shots) keep their empty "default" query, which now means
+what players see. Desktop first: the slot array draws at 128² on touch
+(+1.4 MB) and iPhone perf is unmeasured (TODO). What's New: "Brick and
+stone on every building".
+
+**Hirschgebouw, Leidseplein (2026-10-30, lane #132).** The 1912 Hirsch & Cie
+store (pand `0363100012165488`, Rijksmonument 518447) is a bespoke model
+(`scripts/landmarks/hirschgebouw-builder.ts`, 36,491 triangles, 499,936 B,
+just under the 500 KB check, every material with a slot and a measured
+tint). Fronts: the NW (Leidseplein), NE (Leidsestraat/Kerkstraat) and SE
+fronts and the twelve-facet round corner match the panoramas bay by bay;
+the rear is the kept 3DBAG LoD2.2 shell (219 of 437 walls, 42 of 65 roofs),
+as on the American Hotel. Modelled: the corner dome tower (two drums, ring
+cornices, a 22-baluster gallery, lathe copper dome, lantern, ball finial),
+the raised HIRSCH & Cie lettering, the round corner (pilasters, glazed arch,
+tangent windows, curved balconies, balustrade), giant fluted Ionic
+half-columns, the ground arcade, triple windows with white frames, iron
+balconies on storeys 2–3, stone balustrades on storey 1, dentil entablature,
+attic storey and balustrade, ribbed slate mansards, the NE two-bay risalit.
+Simplified: drum consoles, five inferred SE bays, arcade glazing bars. The
+NE front has 7 bays in the photo against the register's 8; the photo won.
+No mansard dormers are visible in any panorama, so none are drawn. The
+elevations spec passes compare:facades 6/6 but is parked as
+`hirschgebouw-elevations-pending.json`: under the live name the audit's
+window-rhythm check reads the narrow-wide-narrow triple lights between
+0.38 m stone stiles as off-size and missing windows. The kit cannot say:
+grouped lights per bay in the rhythm audit, a seriffed lettering font, an
+Ionic volute capital, glazing bars and fanlights for arcade arches. The
+large recipe hirschpassage-2-165488 on the same pand was already held.
+The copper tint #4c5062 reads blue-violet at gallery size against the
+panoramas' weather-dependent grey-green. Sources (14 panoramas, register
+518447, BAG, 3DBAG) are archived under `models/hirschgebouw/` in
+map-recall2-source-data. The covers were rebuilt from the published z14
+extract because the integrator worktree's tile cache had been pruned.
+
+**Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
+bespoke lanes today shipped sheets with a red IN GAME column and no gallery
+card. The cause was not the engine programme: on the default path the
+MapLibre vector map still fills `_signatureLandmarks.shown` (17 ids in 20 s
+on a ride). The game and `manual-landmarks.html` read the catalogue from
+the committed `js/signature-placement.bundle.js`, which leaf lanes may not
+rebuild, so a lane's new id was never listed and `shown.has(id)` could not
+come true; the gallery had `review.total` 0 and drew no canvas.
+`scripts/landmarks/fresh-signature-bundle.ts` now routes the bundle request
+in Playwright to an in-memory esbuild of `src/canalRecall/landmarks/
+browser.ts` (same entry and global as the npm build), the sheet calls it
+before `goto` and fails fast when the id is missing instead of waiting 60 s
+per wall, `ingame-capture.ts` takes desktop and phone in-game shots at the
+catalogue anchor for named bearings, and `tests/e2e/review-sheet-ingame.
+spec.ts` guards the wait (one desktop test, run standalone with `PW_PORT`).
+Verified on De Roos: the spec passes in 19 s, every wall's IN GAME shot is
+present, and the in-game captures from the P.C. Hooftstraat went into its
+What's New note. The disk filled during this lane (a 1.1 GB throwaway
+worktree and 3 GB of lane artifact dumps); the integrator staged the sheets
+to the screenshots repo and removed them.
 
 **Builder-declared material slots; eight landmarks re-tagged (2026-10-30, lane #138).**
 Every one of the 356 bespoke GLBs took its city-look material slots from

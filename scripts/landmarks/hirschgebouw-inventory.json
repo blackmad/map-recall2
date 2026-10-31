@@ -1,0 +1,652 @@
+{
+ "schemaVersion": 1,
+ "id": "hirschgebouw",
+ "pand": "0363100012165488",
+ "brief": "scripts/landmarks/hirschgebouw-brief.md",
+ "signature": [
+  "corner-dome-tower",
+  "giant-half-columns",
+  "ground-arcade",
+  "hirsch-lettering",
+  "round-corner",
+  "curved-mansard",
+  "iron-balconies",
+  "attic-balustrade"
+ ],
+ "walls": [
+  {
+   "tag": "w01-233",
+   "bearing": 233,
+   "lengthM": 18.8,
+   "centre": [
+    4.8821435,
+    52.363119
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000714_pano_0001_004373",
+   "capturedAt": "2018-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-house-portal",
+     "kind": "window-shape",
+     "where": "brick wing on the Hirschpassage with a carved stone porch, rosette pilasters and a stoop",
+     "approxSizeM": [
+      3,
+      5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "inside the narrow Hirschpassage behind the block, out of sight from the riding corridor; the wing is the 3DBAG shell in brick"
+     },
+     "seenIn": "TMX7316010203-000714_pano_0001_004373"
+    }
+   ]
+  },
+  {
+   "tag": "w02-52",
+   "bearing": 52,
+   "lengthM": 12.4,
+   "centre": [
+    4.882797,
+    52.363483
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_005656",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-risalit",
+     "kind": "colonnade",
+     "where": "the two-bay part of the Kleine-Gartmanplantsoen front stands 1.03 m proud (BAG facet 12.4 m) with half-columns at both ends and in the middle and richer carved arcade spandrels",
+     "approxSizeM": [
+      12.9,
+      23
+     ],
+     "plan": "simplified",
+     "how": "bays 3-4 and their three half-columns on a 1.03 m offset with the entablature broken forward; the carved spandrels and consoles are reduced to the archivolt and keystone",
+     "seenIn": "TMX7316010203-001675_pano_0000_005656"
+    }
+   ]
+  },
+  {
+   "tag": "w03-134",
+   "bearing": 134,
+   "lengthM": 12.1,
+   "centre": [
+    4.8823755,
+    52.3630245
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: the south wall of the low wing inside the block, 3DBAG shell"
+  },
+  {
+   "tag": "w04-143",
+   "bearing": 143,
+   "lengthM": 9.8,
+   "centre": [
+    4.882494,
+    52.3630905
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: south wall inside the block, 3DBAG shell"
+  },
+  {
+   "tag": "w05-232",
+   "bearing": 232,
+   "lengthM": 7.6,
+   "centre": [
+    4.8822795,
+    52.363012
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002363_pano_0005_000665",
+   "capturedAt": "2021-12-29",
+   "checked": true,
+   "items": [],
+   "note": "passage entrance wall in dark stone, nothing notable; 3DBAG shell"
+  },
+  {
+   "tag": "w06-323",
+   "bearing": 323,
+   "lengthM": 4.4,
+   "centre": [
+    4.8820845,
+    52.363198
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002857_pano_0006_000004",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-wing-shopfront",
+     "kind": "window-shape",
+     "where": "brick wing front at the mouth of the Hirschpassage: shop window, sash windows with stone surrounds, an iron balcony",
+     "approxSizeM": [
+      4.4,
+      10
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "4.4 m front set back in the passage mouth behind the Leidsekade houses; seen only from 34 m down the passage; the wing is the 3DBAG shell in brick"
+     },
+     "seenIn": "TMX7316010203-002857_pano_0006_000004"
+    }
+   ]
+  },
+  {
+   "tag": "w07-323",
+   "bearing": 323,
+   "lengthM": 4.4,
+   "centre": [
+    4.8823215,
+    52.363532
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001660_pano_0000_000567",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w08-323",
+   "bearing": 323,
+   "lengthM": 4.4,
+   "centre": [
+    4.8823895,
+    52.363564
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00195",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w09-53",
+   "bearing": 53,
+   "lengthM": 4.4,
+   "centre": [
+    4.8828625,
+    52.3634145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0024_000017",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w10-53",
+   "bearing": 53,
+   "lengthM": 4.4,
+   "centre": [
+    4.8826535,
+    52.3635805
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002996_pano_0003_000140",
+   "capturedAt": "2023-03-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "round-corner",
+     "kind": "window-shape",
+     "where": "one-bay round corner (r 7.9 m) between two flat colossal pilasters: one wide arch, three coupled windows per storey, curved balconies, the cornice and a raised balustrade running round",
+     "approxSizeM": [
+      12,
+      24
+     ],
+     "plan": "modelled",
+     "how": "twelve facets: pilasters on the two outer facets each side, arch glazed in four facet strips, windows and three-piece balconies on tangent frames, corner balustrade at 23.8-24.6 m",
+     "seenIn": "TMX7316010203-001660_pano_0000_000556"
+    }
+   ]
+  },
+  {
+   "tag": "w11-142",
+   "bearing": 142,
+   "lengthM": 4.3,
+   "centre": [
+    4.882618,
+    52.363125
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: a Hirschpassage bay, drawn with the inferred bay system"
+  },
+  {
+   "tag": "w12-142",
+   "bearing": 142,
+   "lengthM": 4.3,
+   "centre": [
+    4.882822,
+    52.363222
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00213",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "crop shows the red-brick building across the Hirschpassage, which hides this bay; inferred bay system"
+  },
+  {
+   "tag": "w13-142",
+   "bearing": 142,
+   "lengthM": 4.3,
+   "centre": [
+    4.88289,
+    52.363254
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00214",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "crop shows the red-brick building across the Hirschpassage; inferred bay system"
+  },
+  {
+   "tag": "w14-322",
+   "bearing": 322,
+   "lengthM": 4.3,
+   "centre": [
+    4.881982,
+    52.363371
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01947",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w15-322",
+   "bearing": 322,
+   "lengthM": 4.3,
+   "centre": [
+    4.88205,
+    52.363403
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0001_000655",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w16-322",
+   "bearing": 322,
+   "lengthM": 4.3,
+   "centre": [
+    4.882117,
+    52.363435
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01982",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ground-arcade",
+     "kind": "window-shape",
+     "where": "rusticated arcade storey, one round-arched shop opening per bay (0-5.3 m)",
+     "approxSizeM": [
+      3.3,
+      5.0
+     ],
+     "plan": "modelled",
+     "how": "arcadeArch(): glazed round arch, moulded archivolt to the ground, keystone; rustication() courses on the piers",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "giant-half-columns",
+     "kind": "colonnade",
+     "where": "colossal fluted Ionic half-columns between the bays over storeys 1-3 (6.9-17.4 m); register: kolossale Ionische gecanneleerde halfzuilen",
+     "approxSizeM": [
+      1.2,
+      10.5
+     ],
+     "plan": "modelled",
+     "how": "halfColumn(): pedestal, base, seven-flute half shaft r 0.58 m, echinus/abacus with two volutes",
+     "seenIn": "TMX7316010203-001660_pano_0000_000562"
+    },
+    {
+     "id": "first-floor-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "stone balustrade with candelabra balusters across each bay over the arcade (5.5-6.9 m)",
+     "approxSizeM": [
+      4.3,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "balustrade(): plinth, rail and turned balusters (3-sided) every 0.46 m",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "iron-balconies",
+     "kind": "balcony-ironwork",
+     "where": "black wrought-iron balconies in front of the coupled windows of storeys 2 and 3 (9.45 m, 13.45 m)",
+     "approxSizeM": [
+      3.7,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "ironBalcony(): stone slab, top/mid/bottom rails and nine bars in #26292b; the scrollwork pattern is reduced to bars",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "coupled-windows",
+     "kind": "window-shape",
+     "where": "three coupled windows per bay (narrow-wide-narrow) between broad stone stiles, white frames with upper lights, storeys 1-3",
+     "approxSizeM": [
+      3.55,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "tripleWindow(): glass, transom and bar in white, stone stiles, sill and head band",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "entablature",
+     "kind": "other",
+     "where": "architrave, plain frieze and a deep cornice with dentils over storey 3 (17.4-20.6 m); register: tand- en eierlijst",
+     "approxSizeM": [
+      47,
+      3.2
+     ],
+     "plan": "simplified",
+     "how": "bands(): stepped architrave/frieze/cornice slabs, dentils() as ledge strips every 0.34 m; the egg-and-dart moulding is not cut",
+     "seenIn": "TMX7316010203-001178_pano_0001_003573"
+    },
+    {
+     "id": "attic-storey",
+     "kind": "window-shape",
+     "where": "attic storey (atelierverdieping) with three small coupled windows per bay, pilaster strips over the columns, attic cornice (20.6-22.7 m)",
+     "approxSizeM": [
+      47,
+      2.1
+     ],
+     "plan": "modelled",
+     "how": "front(): attic windows, pilaster strips, attic cornice band",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00187"
+    },
+    {
+     "id": "attic-balustrade",
+     "kind": "other",
+     "where": "balustrade with pedestals over the attic cornice (22.7-23.75 m); register: de vierde verdieping is voorzien van een balustrade",
+     "approxSizeM": [
+      47,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "balustrade() plus a pedestal over every column",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00187"
+    },
+    {
+     "id": "curved-mansard",
+     "kind": "other",
+     "where": "curved slate mansard behind the balustrade, light zinc rolls over the bay lines (23.45-27.44 m); register: gebogen mansardekap met leien",
+     "approxSizeM": [
+      47,
+      4.0
+     ],
+     "plan": "modelled",
+     "how": "sweep() of a five-point curved profile along the fronts, end caps, rib() rolls over the columns; no dormers are visible on nw-full3 / ne-full3",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00187"
+    },
+    {
+     "id": "wc-kiosk",
+     "kind": "other",
+     "where": "public toilet kiosk on the pavement in front of the arcade",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not part of the building"
+     },
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    }
+   ]
+  },
+  {
+   "tag": "w17-322",
+   "bearing": 322,
+   "lengthM": 4.3,
+   "centre": [
+    4.882457,
+    52.363596
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01988",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-dome-tower",
+     "kind": "dome",
+     "where": "domed tower over the round corner: drum with windows (22-28 m), ring cornice, balustraded gallery, upper drum (28.2-31.6 m), copper dome to 35.4 m, lantern with ball finial to 38.2 m; register: hoge koepeltoren, koepel op hoge tamboer met koper bekleed, lantaarn met bolvormige bekroning",
+     "approxSizeM": [
+      9.5,
+      16.5
+     ],
+     "plan": "modelled",
+     "how": "drum(): open cylinders r 4.75 / 4.05 m, ring cornices, 22 gallery balusters, lathe dome (quarter ellipse 3.95 x 3.85 m), lantern with four openings, lathe cap and sphere; dome ribs not drawn",
+     "seenIn": "TMX7316010203-001660_pano_0000_000556"
+    },
+    {
+     "id": "hirsch-lettering",
+     "kind": "lettering",
+     "where": "HIRSCH & Cie in raised letters round the lower drum, 26.7-27.6 m, centred on the corner, the \"ie\" small and high",
+     "approxSizeM": [
+      6.2,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "raisedLettering() per glyph (stroke font, approximate match to the seriffed capitals) set on the drum radius, 0.85 m capitals and 0.45 m \"IE\"",
+     "seenIn": "TMX7316010203-001660_pano_0000_000556"
+    },
+    {
+     "id": "drum-consoles",
+     "kind": "sculpture",
+     "where": "carved scroll consoles flanking the drum base over the corner pilasters (23.8-25.6 m)",
+     "approxSizeM": [
+      0.9,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "a stone block with a horizontal scroll cylinder each side",
+     "seenIn": "TMX7316010203-001660_pano_0000_000556"
+    }
+   ]
+  },
+  {
+   "tag": "w18-54",
+   "bearing": 54,
+   "lengthM": 4.3,
+   "centre": [
+    4.882968,
+    52.3633315
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02002",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-corner-pier",
+     "kind": "colonnade",
+     "where": "square east corner with colossal pilasters on both fronts over a rusticated pier (register: pilasters aan de uiterste hoeken)",
+     "approxSizeM": [
+      2.0,
+      17
+     ],
+     "plan": "modelled",
+     "how": "one corner prism, a capital ring and rustication on both faces",
+     "seenIn": "recording_2025-07-14_05-25-22_02002"
+    }
+   ]
+  },
+  {
+   "tag": "w19-142",
+   "bearing": 142,
+   "lengthM": 4.3,
+   "centre": [
+    4.8829585,
+    52.363286
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00214",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-bays",
+     "kind": "colonnade",
+     "where": "the Hirschpassage front continues the arcade, half-column and balcony system (first bay seen; five more behind the passage)",
+     "approxSizeM": [
+      35,
+      23
+     ],
+     "plan": "simplified",
+     "how": "the first bay full detail; the five inferred bays with lite windows, solid balustrades and four-bar balconies",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00214"
+    }
+   ]
+  },
+  {
+   "tag": "w20-52",
+   "bearing": 52,
+   "lengthM": 4.3,
+   "centre": [
+    4.8829155,
+    52.363373
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0022_000015",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w21-52",
+   "bearing": 52,
+   "lengthM": 4.3,
+   "centre": [
+    4.8827055,
+    52.363539
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01996",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w22-143",
+   "bearing": 143,
+   "lengthM": 4.3,
+   "centre": [
+    4.882686,
+    52.3631575
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: a Hirschpassage bay, drawn with the inferred bay system"
+  },
+  {
+   "tag": "w23-143",
+   "bearing": 143,
+   "lengthM": 4.3,
+   "centre": [
+    4.882754,
+    52.3631895
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00215",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "crop shows the brick building across the passage; inferred bay system"
+  },
+  {
+   "tag": "w24-323",
+   "bearing": 323,
+   "lengthM": 4.3,
+   "centre": [
+    4.882185,
+    52.3634675
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_06-43-08_00447",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  },
+  {
+   "tag": "w25-323",
+   "bearing": 323,
+   "lengthM": 4.3,
+   "centre": [
+    4.882253,
+    52.3634995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002545_pano_0000_000005",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [],
+   "note": "one 4.3 m bay facet of a front whose items are listed on w16-322 (NW), w02-52 (NE) or w19-142 (SE)"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (ids per wall and item; extra views: TMX7316010203-001660_pano_0000_000556 2020-04-21, TMX7316010203-001681_pano_0000_006726 2020-04-29, b_20241211_0954_Track09_Sphere_00187 2024-12-11, TMX7316010203-001178_pano_0001_003573 2019-05-13)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 518447 (Hirschgebouw), description",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518447",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012165488",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165488",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012165488",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165488/",
+   "licence": "CC0"
+  }
+ ]
+}
