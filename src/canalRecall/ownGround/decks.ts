@@ -17,8 +17,8 @@
 import earcut from 'earcut';
 import { drapeTriangles, emptyMesh, vertex, type MeshArrays } from './drape.js';
 import {
-  basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
-  type BridgeFacts, type BridgeKind, type KitRow, type RegisterHint, type RGB,
+  basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, BASCULE_TRIM, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, LATTICE_FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
+  heelAtEnd, singleLeafPlan, SWING, swingPivot, type BasculeStyle, type BridgeFacts, type FrameLook, type BridgeKind, type KitRow, type RegisterHint, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
 import { sideWidths } from '../elevation/bridgeDeck.js';
@@ -476,31 +476,41 @@ export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: read
   const m = emptyMesh(true), ax = footprintAxis(ring, ways), { u } = ax, v: Vec2 = [-u[1], u[0]];
   const half = Math.max(1.5, (ax.across[1] - ax.across[0]) / 2), vc = (ax.across[0] + ax.across[1]) / 2;
   const P = (a: number, b: number): Vec2 => [ax.centre[0] + u[0] * a + v[0] * b, ax.centre[1] + u[1] * a + v[1] * b];
-  const { double, leaf, mid } = plan ?? basculeLeaves(ax.along);
   const found = flatHintAt(ax.centre[0], ax.centre[1]), colour = basculeColour(found?.hint ?? null, found?.id);
+  const { double, leaf, mid } = singleLeafPlan(plan ?? basculeLeaves(ax.along), found?.id);
   const deckZ = (q: Vec2) => height(q[0], q[1]) + topLift;
   const side = [vc + half + 0.45, vc - half - 0.45] as const;
-  if (basculeStyle(found?.id, found?.hint ?? null) === 'basement') {
+  const style = basculeStyle(found?.id, found?.hint ?? null);
+  if (style === 'swing') {
+    // A swing bridge: no portal; its pivot drum is the body's (bridgeKit swingPier). Signal masts where the photo has them.
+    if (found && SWING[found.id]?.masts) for (const at of [ax.along[0] - 1.2, ax.along[1] + 1.2]) basementEnd(m, P, u, at, [vc + half - 0.3, vc - half + 0.3], deckZ, !detail);
+    return { mesh: m, units: 0 };
+  }
+  if (style === 'basement') {
     // No portal: signal masts and barrier boxes just off each end of the footprint, on the approach.
     const masts = [ax.along[0] - 1.2, ax.along[1] + 1.2], mastSide = [vc + half - 0.3, vc - half + 0.3] as const;
     for (const at of masts) basementEnd(m, P, u, at, mastSide, deckZ, !detail);
     return { mesh: m, units: 0 };
   }
+  // Hand-listed lattice members and rod colour (LATTICE_FRAME, BASCULE_TRIM); absent for every other portal.
+  const lattice = found ? LATTICE_FRAME[found.id] : undefined, rods = found ? BASCULE_TRIM[found.id]?.rods : undefined;
+  const look: FrameLook | undefined = lattice || rods ? { ...(lattice ? { lattice } : {}), ...(rods ? { rods: KIT_COLOURS[rods] } : {}) } : undefined;
   const units: { at: number; dir: 1 | -1; reach: number }[] = double
     ? [{ at: mid - leaf, dir: 1, reach: Math.max(1.5, leaf - FRAME.tipGap / 2) }, { at: mid + leaf, dir: -1, reach: Math.max(1.5, leaf - FRAME.tipGap / 2) }]
-    : [{ at: mid - leaf / 2, dir: 1, reach: leaf * 0.85 }];
+    : heelAtEnd(found?.id, u) ? [{ at: mid + leaf / 2, dir: -1, reach: leaf * 0.85 }] : [{ at: mid - leaf / 2, dir: 1, reach: leaf * 0.85 }];
   for (const { at, dir, reach } of units) {
     // The posts stand on the deck: its level at the heel (beside the footprint the surface is the canal's relief, and a
     // base taken there left the portal floating or sunk: the Haarlemmerpoort report, 2026-10-14).
     const base = deckZ(P(at, vc));
-    basculeUnit(m, P, u, at, dir, reach, side, base, deckZ, colour, !detail);
+    basculeUnit(m, P, u, at, dir, reach, side, base, deckZ, colour, !detail, look);
   }
   return { mesh: m, units: units.length };
 }
 
 /** Triangles of movableFrame's portals for a footprint this long along its axis. */
-function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal', plan?: LeafPlan | null): number {
+function frameTriangles(along: readonly [number, number], detail: boolean, style: BasculeStyle = 'portal', plan?: LeafPlan | null, id?: string): number {
   const L = plan ? (plan.double ? FRAME.doubleOver + 6 : Math.min(along[1] - along[0], FRAME.doubleOver)) : along[1] - along[0];
+  if (style === 'swing') return id && SWING[id]?.masts ? frameTriangles(along, detail, 'basement') : 0;
   if (style === 'basement') { const m = emptyMesh(true); for (const at of [0, L]) basementEnd(m, (a, b) => [a, b], [1, 0], at, [3, -3], () => 0, !detail); return m.indices.length / 3; }
   return movableFrame([[0, -3], [L, -3], [L, 3], [0, 3]], () => 0, [], 0.02, detail).mesh.indices.length / 3;
 }
@@ -582,17 +592,25 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
   const widths = rows.map(r => Math.hypot(r.L[0] - r.R[0], r.L[1] - r.R[1])).sort((a, b) => a - b);
   const facts = found ? bridgeFacts(found.id) : null;
   const kind = flatKind(false, widths[widths.length >> 1], hint, facts);
-  const plan = kind === 'bascule' ? movableLeaves(ring, u, opts.movableWays ?? []) : null;
-  const leaves = kind === 'bascule' ? (plan ?? basculeLeaves(ringFrame(ring, u).along)).leaves : undefined;
+  const style = kind === 'bascule' ? basculeStyle(found?.id, hint) : null, swing = style === 'swing' && found ? SWING[found.id] : undefined;
+  const plan = kind === 'bascule' && !swing ? movableLeaves(ring, u, opts.movableWays ?? []) : null;
+  // A swing bridge turns as one leaf: the OSM movable way's stretch (bridge=movable), else the whole water; its pivot
+  // read from the photo (SwingSpec).
+  const moving = swing ? movableLeaves(ring, u, opts.movableWays ?? []) : null;
+  const swingLeaf: [number, number] | null = !swing ? null : moving ? [moving.leaves[0][0], moving.leaves[moving.leaves.length - 1][1]] : [all[first].s - 0.3, all[last].s + 0.3];
+  const leaves = swingLeaf ? [swingLeaf] : kind === 'bascule' ? singleLeafPlan(plan ?? basculeLeaves(ringFrame(ring, u).along), found?.id).leaves : undefined;
+  const trim = found ? BASCULE_TRIM[found.id] : undefined;
   const { mesh, info } = buildKit({
     id: found?.id ?? '', kind, material: kind === 'arch' ? 'masonry' : hint?.material ?? 'concrete', rows,
-    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness: plan ? Math.max(thickness, LEAF_DEPTH_M) : thickness,
-    leaves, colour: kind === 'bascule' ? basculeColour(hint, found?.id) : undefined, lateralTol: 0.5, facts, ...(opts.crossing ? { crossing: opts.crossing } : {}),
+    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness: plan || swing ? Math.max(thickness, LEAF_DEPTH_M) : thickness,
+    leaves, colour: kind === 'bascule' ? (trim?.leaf ? KIT_COLOURS[trim.leaf] : basculeColour(hint, found?.id)) : undefined, lateralTol: 0.5, facts, ...(opts.crossing ? { crossing: opts.crossing } : {}),
+    ...(kind === 'bascule' && trim?.rail ? { railColour: KIT_COLOURS[trim.rail] } : {}),
+    ...(swing && swingLeaf ? { swing: { pivot: swingPivot(swing, swingLeaf, u), leafLen: swingLeaf[1] - swingLeaf[0], fenders: swing.fenders } } : {}),
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
-    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint), plan) : undefined,
+    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint), plan, found?.id) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint), plan)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint), plan, found?.id)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 
