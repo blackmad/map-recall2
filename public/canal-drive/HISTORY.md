@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+**The road-graph build is 40 % faster with routes unchanged; time to ride 5.41 → 4.75 s, still over the 4 s gate (2026-10-31, #136, L4 step 5b).**
+`roadGraph.ts` keys quantised nodes and span-grid cells by number (string
+fallback beyond ±2^25), drops duplicate spans in `spansNear` with a per-span
+stamp instead of a Set plus spread (same order), and skips a stitch candidate
+whose bounding box plus radius misses the endpoint before projecting. New
+`scripts/time-to-ride-phases.mjs` times every awaited step from submit
+(catalogue, `fetchRoads`, `buildRoadSegmentsAsync`, landmarks,
+`prepareRoutingGraph`, surface index, `planRoute`), polls for the first
+building tile, the rider and racing, and sums CPU self time; it accepts
+`BUNDLES_DIR`. Desktop cold medians of 3: `prepareRoutingGraph` 1,863 → 1,112
+ms, submit → rider 3,430 → 2,837, rider → racing (the overview landing
+animation) ~1.3–1.5 s unchanged, navigation → racing 5,410 → 4,753. CPU self
+time submit → racing: road-graph 930 → 501 ms; three-buildings ~880, maplibre
+~500, road-projection ~180, building-tiles ~175, GC ~160. The build's wall
+time is about twice its CPU because building-tile work runs on the main
+thread between its slices; no ground cell is built before racing. Route
+identity against main's frozen modules on the merged data: graph, connectors,
+3 trees, 71 pairs × 4 planners, 8 area configs and `sampleRoutes(80, 7)` all
+identical. The span-grid key strings no longer stay live after GC (road-graph
+bundle 5.2 MB live, 4.6 MB of it the connectors the surface keeps). What is
+left for the gate: the landing animation (product decision, asked on an
+issue), building tiles competing with the road builds, `buildRoadSegmentsAsync`,
+and the catalogue and extract fetches running serially when cold.
+
 **The own-map overview carries rail, footways, landuse and piers; the far field no longer needs the Liberty basemap (2026-10-31, #129, L1 hand-back 3).**
 `scripts/own-map/fetch-osm-extras.ts` reads the cached BBBike Amsterdam PBF
 with osmium and `build-own-map.ts` writes a v2 `overview.json.gz` with rail
