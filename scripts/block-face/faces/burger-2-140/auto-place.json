@@ -3,7 +3,7 @@
  "street": "Schalk Burgerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-30",
- "seconds": 2.56,
+ "seconds": 8.04,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -57,37 +57,44 @@
     "foliageShare": 0.05
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.2 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 5.2 m, type 8.8-12.9 m"
+   "stage": "likeness",
+   "reason": "edge NCC 0.105 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.23 vs photo 0.50)",
+   "likeness": {
+    "pandId": "0363100012112723",
+    "ncc": 0.105,
+    "nccRaw": 0.105,
+    "shiftM": [
+     0.4,
+     -0.4
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 16.43 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.07 (brick)"
-     }
-    ]
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.23 vs photo 0.50"
+    ],
+    "wall": {
+     "photo": "#8d756c",
+     "model": "#a28373",
+     "dL": 0.055
+    },
+    "glazing": {
+     "photo": 0.5,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.276
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.105,
+    "transvaal-1911-five-storey-tall": 0.113,
+    "transvaal-1911-five-storey-tall~m": 0.063,
+    "transvaal-1911-five-storey": 0.164,
+    "transvaal-1911-five-storey~m": 0.073
+   }
   },
   {
    "pandId": "0363100012155070",
@@ -161,37 +168,44 @@
     "foliageShare": 0.08
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.67 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 7.67 m, type 8.8-12.9 m"
+   "stage": "likeness",
+   "reason": "edge NCC -0.069 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.26 mean 0.22 vs photo 0.33)",
+   "likeness": {
+    "pandId": "0363100012155070",
+    "ncc": -0.069,
+    "nccRaw": -0.069,
+    "shiftM": [
+     -0.4,
+     0.4
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "strip cornice 15.55 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.115 (brick)"
-     }
-    ]
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.22 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#967a6c",
+     "model": "#a58674",
+     "dL": 0.045
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.115
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek-tower": -0.069,
+    "transvaal-1911-five-storey-tall": 0.055,
+    "transvaal-1911-five-storey-tall~m": 0.055,
+    "transvaal-1911-five-storey": 0.068,
+    "transvaal-1911-five-storey~m": 0.068
+   }
   },
   {
    "pandId": "0363100012150772",
@@ -230,13 +244,11 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.63 m, type 8.8-12.9 m)",
+   "reason": "best transvaal-1923-portiek-tower scores 0.6 < 0.7 (strip cornice 16.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m))",
    "best": {
     "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 5.63 m, type 8.8-12.9 m"
-    ],
+    "score": 0.6,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
@@ -507,35 +519,8 @@
     "foliageShare": 0.06
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.46 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 6.46 m, type 8.8-12.9 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "strip cornice 15.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.076 (brick)"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -580,35 +565,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.61 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 5.61 m, type 8.8-12.9 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 16.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.012 (brick)"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: Schalk Burgerstraat 2-140 splits the 1923 portiek front at the stair: the 5.6 m stair pands (28) carry only the stair windows between brick ladders and the raised panel, the 10 m window pands (18) two big white windows and no tower; transvaal-1923-portiek-tower (stair-block frontage, 2026-10-31) passed edge NCC 0.17/0.29 but draws big side windows on the stair pand and a tower over the window pand (burger-2-140-r1 sheet, 2026-10-31)",
    "likeness": null,
    "challengers": {}
   },
@@ -654,8 +612,8 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: Schalk Burgerstraat 2-140 splits the 1923 portiek front at the stair: the 5.6 m stair pands (28) carry only the stair windows between brick ladders and the raised panel, the 10 m window pands (18) two big white windows and no tower; transvaal-1923-portiek-tower (stair-block frontage, 2026-10-31) passed edge NCC 0.17/0.29 but draws big side windows on the stair pand and a tower over the window pand (burger-2-140-r1 sheet, 2026-10-31)",
    "likeness": null,
    "challengers": {}
   },
@@ -695,35 +653,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.6 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 5.6 m, type 8.8-12.9 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 16.65 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.014 (brick)"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }

@@ -3,7 +3,7 @@
  "street": "Steve Bikoplein",
  "library": "transvaalbuurt",
  "stripDate": "2016-06-08",
- "seconds": 0.96,
+ "seconds": 0.99,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -78,25 +78,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924)",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.33 < 0.7 (3DBAG eaves 16.57 m = 4 storeys of 4.14 m vs the type's 3.55 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1913, type 1921-1924"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.33,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 15.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 0,
+      "note": "3DBAG eaves 16.57 m = 4 storeys of 4.14 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -244,25 +242,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1915, type 1921-1924)",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.67 < 0.7 (3DBAG eaves 12.62 m = 4 storeys of 3.15 m vs the type's 3.55 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1915, type 1921-1924"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.67,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "strip cornice 16.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 0.5,
+      "note": "3DBAG eaves 12.62 m = 4 storeys of 3.15 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",

@@ -3,7 +3,7 @@
  "street": "Tugelaweg",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.42,
+ "seconds": 0.44,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -105,25 +105,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1994, type 1908-1914)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1994, type 1921-1924"
+     "built 1994, type 1908-1914"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 1,
-      "note": "strip cornice 12.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 14.13 m = 4 storeys of 3.53 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -134,8 +134,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
      }
     ]
    },

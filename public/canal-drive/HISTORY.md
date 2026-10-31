@@ -1,5 +1,103 @@
 # Canal Recall — what is built
 
+**World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
+`cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
+2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
+3.58 → 3.13 MB, GRP 1.34 → 0.61 MB (ROOF and HIDE unchanged); 604 cells,
+349,282 buildings, 2.71 M vertices. `scripts/world/transcode.ts` re-encodes
+published cells and matched 604/604; a full `world:compile` against the
+published v2 cells compared 349,282 buildings with no differences. Decode in
+Node: median 0.23 ms per cell, p95 4.36, max 9.85 (1.6 µs per building, as
+v2). Published to `world-v1/` after rebuilding `building-tiles` and the
+three-buildings worker bundle, which rejected v3 before and read both now.
+The 4 MB target cannot be met this way: the brief's lossy grid (0.1 m
+footprints, 0.25 m heights) still gives 9.69 MB and 0.5 m gives 8.61,
+because 1e-6° is already a 7 × 11 cm grid and slop's 441 KB for 37k
+footprints scales to ~4.1 MB for 349k buildings before any style. Decision
+(integrator): the gate becomes city total ≤ 8 MB gzip for the building cells
+plus a per-ride download gate (target ≤ 2 MB for a seeded and a free ride
+under `?world=v1`, measured by the browser table that follows); the lane
+does a shared global string/key table fetched once (lossless, needs a
+streamer patch), heights/eaves/minHeight at 1 cm, and collinear vertex
+removal at ≤ 5 cm with pixel diff 0 and the sentinel pands, as v4; deriving
+palette fields at runtime is deferred. Lock rule from the same evening: lock-
+held commands are capped at 20 minutes (`perl -e 'alarm 1200; exec @ARGV'`,
+there is no `timeout` binary on the Mac) after an engine-host stutter run
+spun for an hour.
+
+**Quality tiers from a startup probe; landmarks precompile before they join the scene; the facade shader has no cheap win left except resolution (2026-10-31, #129, materials lane round 4).**
+`renderGovernor.ts` gains `chooseTier`, `TIER_SETTINGS` and `TIER_FRAME_MS`:
+high = native DPR, 2048 shadow map, stand-ins on; mid = DPR 1.5, 1024
+shadows, touch facade detail; low = DPR 1, no shadows, no stand-ins. The
+governor steps the pixel ratio back up within the tier's cap (it only
+stepped down before). `tierProbe.ts` runs a ~1 s fixed probe at startup; the
+M4 Pro at DPR 2 takes 1.5 ms (high), SwiftShader 13–14 ms (low, flagged as a
+software renderer); the mid (> 8 ms) and low (> 25 ms) thresholds are not
+yet calibrated on real mid-class hardware. `?tier=low|mid|high` forces one;
+`__canalPerf` exposes tier, tierReasons, tierSettings and tierProbe.
+`weak-gpu-perf` runs on the own engine with tier variants; on SwiftShader
+every tier sits near 2 fps (low auto median 424 ms / p95 1,373; mid 158 /
+2,360; high 216 / 2,955), so the proxy shows no tier difference and no budget
+was raised. `SharedFrame.compileAsync(scene)` and a `shadowStandIns` flag;
+landmarks and their LODs precompile before placement: in-frame program links
+after warm-up iPhone 4 → 0, desktop 4 → 1–3. Facade shader A/B on the real
+GPU (change in GPU ms, Dam / Westerkerk): no discard +0.4 / +0.4, cell tier
+off +0.5 / +0.7, shadow receive off −0.4 / −1.1, anisotropy 1–8 within ±1,
+so the Apple hidden-surface-removal hypothesis is refuted and no shader
+change landed; the cost is the base fetch plus lighting over ~8 Mpx and the
+only lever is DPR (1.5: Dam 15.8 → 12.1 ms, Westerkerk 12.4 → 12.6). Pixel
+diff tier high vs pre-tier (governor off): Dam 891, Westerkerk 3,294, Paleis
+13,032 px, against 185k / 2,860 / 67 for the same build against itself (the
+animated pin and streaming differences), so not a clean 0 but inside the
+run-to-run noise. Decision kept: no DPR cap on machines that pass the probe
+at native resolution.
+
+**Transvaalbuurt round 2 (2026-10-31, #151): stair-block frontage, the 1911 five-storey twins, nothing installed.**
+Round 1 (#149) reported "0 placed" because 695 of 769 pands were vetoed on
+build year or house width before any photo comparison. Round 2 fixed the
+method, not the number. `match.frontage {mode: "stair-block", widthM,
+storeys, axisPitchM}` on a type turns off the Bellamy house-width veto
+(`AUTO_PLACE.widthSlackM`) and vetoes on storey count (3DBAG eaves over the
+type's storey pitch) and window-axis pitch instead; both 1923 portiek types
+opt in, every other library is byte-identical. `transvaal-1911-five-storey`
+and its `-tall` twin (ground-floor height) were measured on gridded strips
+of Transvaalstraat 3–47, Retiefstraat 45–75 and 3–41 and Pretoriusstraat
+72–120; `batch.ts` passes `--photo-decides` so the photo picks the twin.
+`resizePerStorey` now remaps balcony storeys when a placement draws fewer
+storeys than its type (more storeys keep the list; Hasebroekstraat 1–41
+unchanged, roof-golden 0). Outcome split, pands on photographed faces:
+West vetoed 272→263 / held 27→36 / placed 0→0; Oost vetoed 423→147 / held
+13→279 / placed 0→15. The 1908–1914 family (274 pands) went from all vetoed
+to all compared. Every placement was reviewed at gallery size: 14 held
+(gables drawn on flat fronts, a portiek panel on a plain front, oriel
+fronts, BAG splitting the 1923 design into 5.6 m stair pands and 10 m
+window pands on Schalk Burgerstraat 18 and 28), and the one batch install
+(Laing's Nekstraat 34–56, five gables on a flat-roofed block) was reverted.
+The four runs that passed review are blocked by the GLB audit: a point
+gable beside a cornice or dormer neighbour leaves 1.2–2.3 m² of coplanar
+brick/tile overlap. Two gate findings, not loosened: the crown read needs a
+clean sky and reads trees at 15.5–18.4 m as gables; the ribbon era guard
+holds whole same-year rows (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat
+72–96) because one pand has wide three-light windows. Strips archived in
+source-data `block-face-strips/` (11 re-striped faces, two strip-over-model
+sheets under `transvaalbuurt-round2/`). Nothing visible changed in the game.
+
+**`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
+`SharedFrame.shaderErrors()` counts programs three.js failed to compile or
+link since the renderer attached, via `renderer.debug.onShaderError`
+(chained if one is set; otherwise it logs the program and shader info logs
+as "Shader Error"; three's source-context lines are no longer printed, the
+error lines with their line numbers remain), exposed as
+`window.__canalPerf.shaderErrors()`. Counting from `info.programs`
+diagnostics read 0 on the broken bundle because the failing fade clone's
+program is released when the fade ends, so the error hook is the source.
+The ride test waits up to 60 s after landing for visible facade chunk
+meshes (> 0), and after the ride asserts `shaderErrors() === 0` and that the
+meshes are still there. Proof: with main's broken three-buildings and
+signature-landmarks bundles (def37ced0) it fails with 3 shader errors on
+desktop and 2 on iPhone while the old checks still read `facades:true,
+failed:[]`; with the fixed bundles (1c304f694) it passes on both.
+
 **`?engine=own` drew no facades on main for about four hours; the fade clone now keeps its shader defines (2026-10-31, #129).**
 Between the materials merge (64dfac399, ~16:00) and this fix every facade
 chunk under the own engine compiled to nothing: the chunk fade-in clones the

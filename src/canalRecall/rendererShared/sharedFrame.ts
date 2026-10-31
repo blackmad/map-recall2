@@ -220,6 +220,19 @@ export class SharedFrame {
 
   /** The renderer exists: attach new participants, or after a restore let every participant rebuild. */
   private rendererReady(): void {
+    const g = globalThis as { __canalPerf?: Record<string, unknown> };
+    g.__canalPerf = Object.assign(g.__canalPerf ?? {}, { shaderErrors: () => this.shaderErrors() });
+    const debug = this.renderer.debug;
+    if (debug && !debug.onShaderError?.__counted) {
+      // Replaces three's report (which also prints source context) with the info logs, counted.
+      const next = debug.onShaderError;
+      const count = (gl: WebGL2RenderingContext, program: WebGLProgram, vs: WebGLShader, fs: WebGLShader) => {
+        this.shaderErrorCount++;
+        if (next) return next(gl, program, vs, fs);
+        console.error(`THREE.WebGLProgram: Shader Error (${this.shaderErrorCount} since attach)\nProgram Info Log: ${gl.getProgramInfoLog(program)}\nVERTEX: ${gl.getShaderInfoLog(vs)}\nFRAGMENT: ${gl.getShaderInfoLog(fs)}`);
+      };
+      debug.onShaderError = Object.assign(count, { __counted: true });
+    }
     shadowOnlyLayerPass(this.renderer);
     const restored = this.restorePending;
     this.restorePending = false;
@@ -257,6 +270,15 @@ export class SharedFrame {
   }
 
   /** Host driver: adopt the host's renderer (first attach, or a new one after a context restore). */
+  /**
+   * Programs three.js failed to compile or link since the renderer attached. A failed program draws nothing and says
+   * so only in the console: every facade chunk failed under ?engine=own for four hours while engine-own.spec passed
+   * (#129). Counted in `debug.onShaderError`, not from `info.programs`: the failing fade clone's program is released
+   * when the fade ends. Specs read it as `window.__canalPerf.shaderErrors()`.
+   */
+  shaderErrors(): number { return this.shaderErrorCount; }
+  private shaderErrorCount = 0;
+
   private attachHost(): void {
     if (!this.coverWatch && typeof document !== 'undefined' && typeof this.map.getCanvas === 'function' && coverPauseFlag()) {
       const canvas = this.map.getCanvas();
@@ -317,6 +339,25 @@ export class SharedFrame {
     try { this.renderer.compile(object, this.camera, this.scene); }
     catch (error) { console.warn('Shared frame: could not precompile', error); }
     this.renderer.resetState();
+  }
+
+  /**
+   * Compile an object's programs before it joins the scene, without stalling a frame where the driver can
+   * (`renderer.compileAsync`, KHR_parallel_shader_compile). Resolves when every program reports ready, or
+   * after `timeoutMs` (a lost context never reports): a model may then show a little later, never not at
+   * all. Behind a covering card, or without a renderer, it resolves at once and the first draw compiles.
+   * The object's state that keys a program (receiveShadow, instancing) must already be final.
+   */
+  compileAsync(object: any, timeoutMs = 2000): Promise<void> {
+    const renderer = this.renderer;
+    if (!renderer?.compileAsync || this.coverPaused) return Promise.resolve();
+    let ready: Promise<unknown>;
+    try { ready = renderer.compileAsync(object, this.camera, this.scene); }
+    catch (error) { console.warn('Shared frame: could not precompile', error); return Promise.resolve(); }
+    finally { renderer.resetState(); }
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<void>(resolve => { timer = setTimeout(resolve, timeoutMs); });
+    return Promise.race([ready.then(() => undefined, () => undefined), timeout]).finally(() => clearTimeout(timer));
   }
 
   /** Set cast/receive on every mesh under `object`. */
@@ -394,6 +435,9 @@ export class SharedFrame {
     }
     return sig;
   }
+
+  /** Landmark shadow stand-ins (shadowStandIns.ts); the quality tier turns them off where shadows are off anyway. */
+  shadowStandIns = true;
 
   /** Force the shadow map to be redrawn next frame. */
   invalidateShadows(): void { this.shadowKey = ''; this.map.triggerRepaint?.(); }
