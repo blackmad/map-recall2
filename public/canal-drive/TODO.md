@@ -1245,11 +1245,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
   (52.372955, 4.900113) is named "New Market": an English translation leaked
   into a Dutch street name, so when Nieuwmarkt is asked and every name is
-  earned, "New Market" is drawn next to it on both engines. Fix in the
-  extract generator (`scripts/build-amsterdam-extract.ts` /
-  `translate-extracts-to-english.ts` must not write translations into the
-  name field), regenerate, and the own-map overview names; then pin a
-  regression (the engine's Nieuwmarkt test already screens nl names).
+  earned, "New Market" is drawn next to it on both engines. Cause found
+  2026-10-31: `scripts/build-amsterdam-extract.ts` l.260 took `name:en`
+  before `name` for roads and places (landmarks and venues keep English on
+  purpose). The line now prefers the local name; lane #147
+  (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
+  from the archived PBF, reviews every changed name, fixes English pins and
+  hands back a Nieuwmarkt screenshot for What's New; then pin a regression
+  (the engine's Nieuwmarkt test already screens nl names).
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
