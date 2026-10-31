@@ -25,6 +25,7 @@
  * Cells that are not usable (missing panorama pixels, leaf green) are left out of everything; the ground band
  * (0..`groundBandM`) is measured on its own and never pooled with the upper storeys. Pure: no I/O.
  */
+import {proposeWallFamily, wallFamilyEvidence, type WallFamilyEvidence, type WallFamilyProposal} from './wallFamily.ts';
 import {classifyOpenings} from './facadeOpenings.ts';
 import {brickFaceColour, cellTexture, poolTexture, type PooledTexture} from './facadeTexture.ts';
 import {wallFamily} from '../facade/materials.ts';
@@ -90,6 +91,9 @@ export interface FacadeMeasurement {
   /** what the wall is made of: brick when the course lines are resolved (facadeTexture.ts), else the colour's family;
    *  null (unresolved) when the colour alone says paint only because it is dark and neutral and the texture is not smooth */
   material?: WallMaterial;
+  /** only where `material.basis` is 'unresolved' (wallFamily.ts, #146): the wall cells' flatness and rib period, and the
+   *  painted or metal wall they propose (null with the reason when neither) */
+  wallFamily?: {evidence: WallFamilyEvidence; proposal: WallFamilyProposal | null; why: string};
   /** per upper storey band of `lines` (index = storey, ground null): the dominant wall material of that band and a runner-up
    *  of another family or colour when it holds >= 25 % of the band's wall (a spandrel-and-column front) */
   bands?: (BandMaterial | null)[];
@@ -653,6 +657,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const selfTrim = wallIsOwnTrim(wallRawFinal, ref, gain);
   const wallN = selfTrim ? selfTrimWall(wallRawFinal, gain, wb) : norm(wallRawFinal), glassN = glassRaw ? norm(glassRaw) : null;
   const material = wallMaterialOf(wallN, wallTex);
+  const wallFamily = material.basis === 'unresolved' ? (() => { const evidence = wallFamilyEvidence(im, box, cell, wallCells); return {evidence, ...proposeWallFamily(material, hex(wallN), evidence)}; })() : null;
   const bands = bandMaterials({mask, label: fullLabel, cols, rows, cell, box, lines: input.lines, gb, colour: k => norm(mean[k]), tex, interior});
   const split = wallSplit(allUsable.filter(k => mask[k] === MASK.wall && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const rowJoints = frontRows(allUsable.filter(k => (mask[k] === MASK.wall || mask[k] === MASK.trim) && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
@@ -664,7 +669,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     openings: {count: op.openings.length, regularity: op.regularity, surrounds: op.surrounds, range: op.range, abstain: op.abstain, frameLike: op.frameLike.flatMap((f, i) => (f ? [i] : [])), accessory: op.accessory, secondMaterial: op.secondMaterial, bands: op.bands, ambiguous: op.ambiguous},
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
-    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, windowColumns, storeyM, window, frontClass, split, rowJoints};
+    glazing, storeyGlazing, ground, pitchM, pitchScore, columns, windowColumns, storeyM, window, frontClass, split, rowJoints, ...(wallFamily ? {wallFamily} : {})};
 }
 
 /**
