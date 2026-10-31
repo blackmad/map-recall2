@@ -227,3 +227,26 @@ test('FrameHost.setSimulation: the same fixed steps at every display rate, one f
     host.stop();
   }
 });
+
+test('overview v2 layers: landuse, piers and rail add meshes on the shared flat programs; a v1 file adds none', async () => {
+  const { decodeOverview, encodeLine, LANDUSE_CLASSES, RAIL_KINDS, RAIL_TUNNEL } = await import('../ownMap/overviewFormat');
+  const { OverviewLayer } = await import('./overviewLayer');
+  const sq = (x: number, y: number, s: number) => encodeLine([[x, y], [x + s, y], [x + s, y + s], [x, y + s], [x, y]], 0.5);
+  const line = (x: number) => encodeLine([[x, 0], [x, 500]], 0.5);
+  const base = { frame: { origin: [4.9, 52.37] as [number, number], kx: 1, ky: 1 }, unit: 0.5, bounds: [-1000, -1000, 1000, 1000] as [number, number, number, number], names: [], water: [], parks: [], streets: [], waterLines: [], hoods: [], sources: [] };
+  const v2 = decodeOverview({ ...base, version: 2,
+    landuse: [[[LANDUSE_CLASSES.indexOf('cemetery')], sq(0, 0, 200)], [[LANDUSE_CLASSES.indexOf('industrial')], sq(300, 0, 200)]],
+    rail: [[RAIL_KINDS.indexOf('rail'), 0, ...line(0)], [RAIL_KINDS.indexOf('rail'), RAIL_TUNNEL, ...line(50)], [RAIL_KINDS.indexOf('tram'), 0, ...line(100)]],
+    piers: [sq(600, 0, 20)], pierLines: [line(700)] });
+  const view = { center: () => ({ lng: 4.9, lat: 52.37 }), zoom: () => 15 };
+  const count = (l: InstanceType<typeof OverviewLayer>) => l.root.children.length;
+  const withV2 = new OverviewLayer(v2, view), withV1 = new OverviewLayer(decodeOverview({ ...base, version: 1 }), view);
+  // 2 landuse classes + pier fill + pier lines + 3 rail groups (rail, rail tunnel, tram).
+  assert.equal(count(withV2) - count(withV1), 7);
+  withV2.beforeRender({} as never);
+  const programs = new Set<string>();
+  withV2.root.traverse(o => { const m = (o as any).material; if (m) programs.add(m.vertexShader + m.fragmentShader); });
+  assert.equal(programs.size, 2, 'fills and lines: two shader sources, whatever the layer count');
+  const tunnel = withV2.root.children.find(o => o.renderOrder === 9) as any;
+  assert.ok(tunnel && tunnel.material.uniforms.uOpacity.value < 0.5, 'tunnels faint');
+});
