@@ -11,6 +11,7 @@ import { BuildingTileStreamer } from '../buildingTilesBrowser.js';
 import { encodeCell, sameValue, WORLD_FORMAT_VERSION, type Cell } from './cellFormat.js';
 import { WorldCellClient, WorldCellWorkerHost, readWorldIndex, WORLD_BATCH } from './worldCells.js';
 import { parseCellKey } from './cellGrid.js';
+import { WorkerPool } from '../engine/workerPool.js';
 import { EXTRACT, gameChain, loadTile, type Row } from '../../../scripts/world/pipeline.js';
 
 const TILES = ['8414/5384', '8413/5384'];
@@ -108,7 +109,7 @@ for (const debug of [true, false]) test(`world-v1 tiles through the worker proto
   (globalThis as any).Worker = class extends FakeWorker { constructor() { super(); fakes.push(this); } };
   try {
     const index = readWorldIndex(JSON.parse(new TextDecoder().decode(files.get('world-v1/index.json'))))!;
-    const viaWorker = new WorldCellClient(index, BASE, globalThis.fetch, 'fake-worker.js', 3), inThread = new WorldCellClient(index, BASE, globalThis.fetch, '');
+    const viaWorker = new WorldCellClient(index, BASE, globalThis.fetch, new WorkerPool('fake-worker.js', 3)), inThread = new WorldCellClient(index, BASE, globalThis.fetch, null);
     assert.equal(viaWorker.workerCount, 3);
     // The plan reads every cell of the first tile ahead (prefetch), so the tile request then cuts cached cells.
     viaWorker.plan([TILES[0]], [4.885, 52.37], [1, 0]);

@@ -15,9 +15,11 @@ class Geometry {
   setIndex() {} computeBoundingSphere() {} dispose() {}
 }
 class Scene { children: any[] = []; add(m: any) { this.children.push(m); } remove(m: any) { this.children = this.children.filter(x => x !== m); } }
+/** Every stubbed worker, in start order: chunk builds now go to the page's worker pool (engine/workerPool.ts). */
+const stubs: WorkerStub[] = [];
 class WorkerStub {
   onmessage: any; onerror: any; messages: any[] = [];
-  constructor(_url: string) {} postMessage(message: any) { this.messages.push(message); } terminate() {}
+  constructor(_url: string) { stubs.push(this); } postMessage(message: any) { this.messages.push(message); } terminate() {}
   reply(message: any) {
     const chunk = { positions: new Float32Array(9), uvs: new Float32Array(6), layers: new Float32Array(3), tints: new Uint8Array(12), accents: new Uint8Array(12), indices: new Uint16Array([0, 1, 2]), vertexCount: 3, buildingCount: 1, wallCount: 1, quadCount: 0, ranges: [{ id: message.features[0].properties.id, start: 0, count: 3 }] };
     this.onmessage({ data: { key: message.key, gen: message.gen, appearanceRevision: message.appearanceRevision, surveyedEnvelopeRevision: message.surveyedEnvelopeRevision, hostOpeningRevision: message.hostOpeningRevision, boundParentIds: [], chunk, ms: 1 } });
@@ -40,7 +42,10 @@ const t: any = new ThreeBuildings(map as any, ml as any, 'procedural');
 t.pump = () => {}; // Run queued adapter jobs explicitly, keeping the production queue and worker handler.
 // Worker replies stage and install on later frames (6370811e7); drain the real staging queue as those frames would.
 t.scheduleStage = () => {};
-const deliver = (message: any) => { (t.worker as WorkerStub).reply(message); while (t.staged.length) t.drainStaged(); };
+// The pool sends a build to its first idle worker; this check has at most one build in flight, so that is worker 0.
+// Its replies reach the layer through the pool's own message handler.
+const poolWorker = (): WorkerStub => { assert.ok(stubs.length, 'chunk builds started the worker pool'); return stubs[0]; };
+const deliver = (message: any) => { poolWorker().reply(message); while (t.staged.length) t.drainStaged(); };
 t.texturesFor = (look: string) => look === 'procedural' ? initial.promise : photo.promise;
 // What the shared frame's onAttach does (the facades' own layer went with L1 step 6).
 t.THREE = THREE; t.setup(map, new THREE.WebGLRenderer(), new THREE.Camera(), new THREE.Scene());
@@ -51,7 +56,7 @@ assert.equal(t.material.uniforms.cells.value.name, 'photo', 'late initial atlas 
 assert.equal(t.ready, true, 'newest mode can become ready without waiting for obsolete initialization');
 const f = { type: 'Feature', properties: { id: 'w100', height: 12 }, geometry: { type: 'Polygon', coordinates: [[[4.89, 52.37], [4.8901, 52.37], [4.8901, 52.3701], [4.89, 52.3701], [4.89, 52.37]]] } };
 t.setFeatures([f]); while (t.pending.length) t.pending.shift()();
-const worker: WorkerStub = t.worker, first = worker.messages.at(-1); deliver(first);
+const worker: WorkerStub = poolWorker(), first = worker.messages.at(-1); deliver(first);
 const firstMesh = t.chunks.get(first.key).mesh;
 assert.equal(firstMesh.material.uniforms.cells.value.name, 'photo');
 // An old PHOTO job is in flight when CARTOON is requested.

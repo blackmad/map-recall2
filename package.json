@@ -231,7 +231,7 @@
     "world:compile": "node --max-old-space-size=12000 --import tsx scripts/world/compile.ts",
     "world:verify": "node --import tsx scripts/world/verify.ts",
     "world:browser-math": "node --import tsx scripts/world/check-browser-math.ts",
-    "test:world-format": "node --import tsx --test src/canalRecall/world/cellFormat.test.ts src/canalRecall/world/worldStreamer.test.ts",
+    "test:world-format": "node --import tsx --test src/canalRecall/world/cellFormat.test.ts src/canalRecall/world/worldStreamer.test.ts src/canalRecall/engine/worldStreamer.test.ts src/canalRecall/engine/workerPool.test.ts",
     "test:three-buildings": "tsx scripts/check-three-buildings.ts && node --import tsx --test src/canalRecall/landmarkKits.test.ts",
     "test:roof-shapes": "tsx scripts/check-roof-shapes.ts",
     "build:supermarkets": "tsx scripts/build-supermarkets.ts",

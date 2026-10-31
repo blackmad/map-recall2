@@ -12,7 +12,7 @@
 //
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
-import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
+import { plainBounds, withinView } from '../../../src/canalRecall/engine/worldStreamer.ts';
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';

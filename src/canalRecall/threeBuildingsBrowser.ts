@@ -1,7 +1,8 @@
 import { BuildingContextIndex } from './buildingContextIndex.js';
 import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
 import { footprintTone } from './overviewTransition/basemapOverview.js';
-import { ChunkBuildQueue } from './chunkBuildQueue.js';
+import { ChunkBuildQueue } from './engine/worldStreamer.js';
+import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from './engine/workerPool.js';
 import { FrameBudget } from './engine/worldStreamer.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
@@ -254,7 +255,8 @@ const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
-const WORKER_URL = typeof document !== 'undefined' ? ((document.currentScript as HTMLScriptElement | null)?.src ?? '').replace(/three-buildings\.bundle\.js(\?.*)?$/, 'three-buildings-worker.bundle.js$1') : '';
+const WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
+type ChunkReply = { key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[] };
 const KIT_HIDE_SET: ReadonlySet<string> = new Set(KIT_HIDE_IDS);
 
 
@@ -412,7 +414,9 @@ export class ThreeBuildings {
   private hidden = new Set<string>();
   private highlighted = new Set<string>();
   private readonly pending = new ChunkBuildQueue();
-  private workerBusy = false;
+  /** Pool worker -> the chunk key it is building. */
+  private readonly busy = new Map<number, string>();
+  private unsubscribePool: (() => void) | null = null;
   private pumping = false;
   private lastBuildMs = 0;
   private transform: any = null;
@@ -433,7 +437,7 @@ export class ThreeBuildings {
   private appearanceProfiles: readonly StreetAppearanceProfile[] = [];
   private appearanceStreets: SegmentGrid | null = null;
   private appearanceLoaded = false;
-  private worker: Worker | null | undefined;
+  private pool: WorkerPool | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
   private readonly inflightOptions = new Map<string, BuildOptions>();
@@ -563,7 +567,6 @@ export class ThreeBuildings {
 
   /** Invalidate work at request time, before awaiting textures or pumping queued jobs. */
   private invalidateBuilds(): void {
-    this.workerBusy = false;
     for (const key of new Set([...this.gens.keys(), ...this.inflight.keys(), ...this.sourceGroups.keys()])) {
       this.gens.set(key, (this.gens.get(key) ?? 0) + 1);
     }
@@ -907,8 +910,11 @@ export class ThreeBuildings {
     ++this.appearanceToken;
     this.appearanceLoaded = false;
     this.invalidateBuilds();
-    this.worker?.terminate();
-    this.worker = undefined;
+    // Leave the shared pool (the other layers keep it); replies to builds in flight are then ignored.
+    this.unsubscribePool?.();
+    this.unsubscribePool = null;
+    this.busy.clear();
+    this.pool = undefined;
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
@@ -922,7 +928,9 @@ export class ThreeBuildings {
   private ready = false;
 
   private pump(): void {
-    if (this.pumping || this.workerBusy || !this.pending.length || !this.THREE || !this.ready) return;
+    if (this.pumping || !this.pending.length || !this.THREE || !this.ready) return;
+    const pool = this.chunkPool();
+    if (pool && this.idleWorker(pool) < 0) return;
     this.pumping = true;
     // One chunk per task: a z14 tile is ~10-30 ms of layout and fill, so
     // spreading them keeps a tile arrival from stalling a frame.
@@ -1122,16 +1130,16 @@ export class ThreeBuildings {
 
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
-    const worker = this.chunkWorker();
+    const pool = this.chunkPool(), w = pool ? this.idleWorker(pool) : -1;
     const gen = (this.gens.get(key) ?? 0) + 1;
     this.gens.set(key, gen);
-    if (worker) {
+    if (pool && w >= 0) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
       const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
-      this.workerBusy = true;
-      worker.postMessage({ key, gen, ...options, features: source, mode: this.modeFor(key),
+      this.busy.set(w, key);
+      pool.post(w, { key, gen, ...options, features: source, mode: this.modeFor(key),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
         layers: this.kitLayers() });
@@ -1145,41 +1153,52 @@ export class ThreeBuildings {
     this.install(key, source, result.chunk, performance.now() - t0, options, result.boundParentIds);
   }
 
-  /** The chunk worker, started on first use; null where workers are unavailable (then chunks build inline). */
-  private chunkWorker(): Worker | null {
-    if (this.worker !== undefined) return this.worker;
-    this.worker = null;
-    if (typeof Worker === 'undefined' || !WORKER_URL) return null;
-    try {
-      // The buurt-profile and modern-facade A/Bs (buurtProfiles/data.ts, modernFacades.ts) read the worker's own URL there.
-      const search = typeof location !== 'undefined' ? new URLSearchParams(location.search) : null;
-      const flags = ['buurtProfiles', 'modernFacades'].flatMap(name => { const v = search?.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
-      const worker = new Worker(flags.length ? `${WORKER_URL}${WORKER_URL.includes('?') ? '&' : '?'}${flags.join('&')}` : WORKER_URL);
-      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[] }>) => {
-        const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
-        this.workerBusy = false;
-        if (this.gens.get(key) !== gen || !source) { this.pump(); return; }
-        const options = this.inflightOptions.get(key);
-        if (!options || event.data.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || event.data.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
-        this.inflight.delete(key);
-        this.inflightOptions.delete(key);
-        this.stage({ key, source, chunk, ms, options, boundParentIds: event.data.boundParentIds });
-        this.pump();
-      };
-      worker.onerror = (error) => {
-        // Fall back to inline builds for good, and redo whatever was in flight.
-        console.warn('three.js building worker failed; building chunks inline', error);
-        this.worker = null; this.workerBusy = false; worker.terminate();
-        for (const [key, source] of this.inflight) this.pending.push(key, () => this.rebuild(key, source));
-        this.inflight.clear();
-        this.inflightOptions.clear();
-        this.pump();
-      };
-      this.worker = worker;
-    } catch (error) {
-      console.warn('three.js building worker unavailable; building chunks inline', error);
-    }
-    return this.worker;
+  /**
+   * The page's worker pool (engine/workerPool.ts), joined on first use; null where workers are unavailable (then
+   * chunks build inline). Chunk builds go to idle pool workers, one at a time each, so up to `pool.live` build at once.
+   */
+  private chunkPool(): WorkerPool | null {
+    if (this.pool !== undefined) return this.pool?.live ? this.pool : null;
+    const pool = sharedWorkerPool(WORKER_URL);
+    this.pool = pool;
+    if (!pool) return null;
+    this.unsubscribePool = pool.subscribe((data, w) => {
+      const reply = data as ChunkReply | null;
+      if (!reply || typeof reply !== 'object' || typeof reply.key !== 'string' || !reply.chunk) return false;
+      this.onChunk(reply, w);
+      return true;
+    }, w => {
+      // That worker's build is redone (another worker, or inline once none is left).
+      const key = this.busy.get(w);
+      this.busy.delete(w);
+      if (key !== undefined) { const source = this.inflight.get(key); if (source) { this.inflight.delete(key); this.inflightOptions.delete(key); this.pending.push(key, () => this.rebuild(key, source)); } }
+      if (!pool.live) console.warn('three.js building workers failed; building chunks inline');
+      this.pump();
+    });
+    return pool.live ? pool : null;
+  }
+
+  /** Chunk builds at once across the pool: every live worker, or `?chunkBuilds=N` (1 = the old single chunk worker's pace). */
+  private readonly chunkBuildCap = (() => {
+    try { const n = Number(new URLSearchParams(typeof location !== 'undefined' ? location.search : '').get('chunkBuilds')); return Number.isInteger(n) && n >= 1 ? n : Infinity; } catch { return Infinity; }
+  })();
+  /** An idle live pool worker, or -1 (also while `chunkBuildCap` builds are in flight). */
+  private idleWorker(pool: WorkerPool): number {
+    if (this.busy.size >= this.chunkBuildCap) return -1;
+    for (let w = 0; w < pool.size; w++) if (pool.alive(w) && !this.busy.has(w)) return w;
+    return -1;
+  }
+
+  private onChunk(reply: ChunkReply, worker: number): void {
+    const { key, gen, chunk, ms } = reply, source = this.inflight.get(key);
+    if (this.busy.get(worker) === key) this.busy.delete(worker);
+    if (this.gens.get(key) !== gen || !source) { this.pump(); return; }
+    const options = this.inflightOptions.get(key);
+    if (!options || reply.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || reply.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || reply.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
+    this.inflight.delete(key);
+    this.inflightOptions.delete(key);
+    this.stage({ key, source, chunk, ms, options, boundParentIds: reply.boundParentIds });
+    this.pump();
   }
 
   /**
