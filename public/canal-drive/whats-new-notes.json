@@ -44,6 +44,27 @@
     },
     {
       "date": "2026-10-31",
+      "title": "Buildings with a Wikipedia article open it",
+      "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
+      "where": [
+        4.94757,
+        52.37717
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-building-articles-before.jpg",
+          "alt": "The Venetiëhof ring on KNSM-eiland with a card that says only Built 1995",
+          "caption": "Before: the ring on KNSM-eiland said only \"Built 1995\""
+        },
+        {
+          "src": "whats-new/2026-10-31-building-articles-after.jpg",
+          "alt": "The same ring with a card titled Emerald Empire, its English lede, photo and Wikipedia link",
+          "caption": "After: Emerald Empire, with its article"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Steel lattice drawbridges and swing bridges",
       "text": "The steel drawbridges with open lattice frames, such as the Oranjebrug, Westergasbrug, Peperbrug, Ezelsbrug and Aluminiumbrug, are drawn with lattice posts and beams in their own paint instead of a white timber frame, and the Westergasbrug and its neighbour have one portal, not two. Swing bridges are their own kind now: the Commandantsbrug and Oosterdoksdraaibrug turn on a pivot pier between fender piles under arched trusses, and the Buiksloterdraaibrug pivots at its bank.",
       "where": [

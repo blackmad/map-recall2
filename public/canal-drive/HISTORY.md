@@ -36,6 +36,46 @@ mask bbox per heading in `sun-heading.json` (crops with `SUN_OUT`). The
 lit-half threshold, spot and sign check are unchanged; before and after
 bundles both pass 3/3. Settle timeouts at load averages above 12 are the
 machine, not the check.
+**Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
+User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
+although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
+Wikidata has the item with coordinates. Three layers each dropped a plain
+`building=*` with an article: `build-amsterdam-extract.ts` `classify()`
+admits landmarks only via tourism/historic/civic amenity, the POI layer
+filters amenity/shop/tourism/leisure and carries no encyclopedia text, and
+`build-building-facts.ts` read only year/type/heritage. Now
+`scripts/build-building-articles.ts` joins two sources to the streamed pands
+with the same `BuildingGrid` join landmarks use: the footprint's own
+`wikipedia`/`wikidata` tag (260 footprints) and a Wikidata item of a building
+class whose P625 point falls inside the footprint (977; class guards in
+`src/canalRecall/buildingArticles.ts`, a footprint tagged with another item
+refuses the point, the mapper's tag beats a point, more sitelinks beat
+fewer). Pands a landmark already lights up are left to the landmark card
+(197 footprints). Result: 1,237 articles on 1,785 pands in 121 z14 tiles
+(`building-articles/14/x/y.json.gz` + `index.json`, 181 KB gzipped), loaded
+by `BuildingFactStore` beside the fact tile only where the index lists one.
+Text: the English article when it exists (133), else the Dutch lede, clipped
+at a sentence end under 360 characters (an initial such as "Ferdinand B." is
+not a sentence end), translated through
+`building-articles-translation-batch.ts` → haiku batch agents →
+`scripts/english-translations.json` (hash of the Dutch display text; years
+kept and the place not renamed, with `--force` for reviewed cases where the
+article title is a generic word like Raadhuis or Watertoren). Dutch original
+and provenance stay in `scripts/data/amsterdam-building-articles.json`. Card:
+`_cardForClickedBuilding` names the building after the article (screened by
+`_spoils` like monument names), opens with the lede, keeps the register line
+in the expanded panel, and gets the W WIKIPEDIA link and the photo; a mapped
+venue's POI card (Paradiso) keeps its name and gains the lede. Kicker stays
+BUILDING: no quiz or distractor pool changes. Regressions:
+`check-building-facts.mts` (module, store, published Emerald Empire /
+Rembrandt Tower / Huis met de Kabouters / Ronde Lutherse Kerk tiles) and
+`tests/e2e/building-article-card.spec.ts` (click → card). Audit of what is
+still unlinked city-wide: `npm run audit:wikipedia-buildings` (brief
+`docs/handoffs/lane-wikipedia-buildings-20261030.md`, issue #142). Not done:
+200 article footprints outside the streamed tiles (Pampus, Nederhorst den
+Berg), 7 with no readable lede, landmark promotion of the famous ones, and
+the ~1,050 located sculptures/murals/memorials, which belong to a street-side
+POI rather than a building.
 
 **`?engine=own` draws the whole ride; the fair A/B says where the time goes (2026-10-31, #129, L1).**
 `src/canalRecall/engine/cityExtras.ts` hands the existing participants
@@ -427,6 +467,32 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**Painted and clad fronts in the large tier; 3 of 82 moved, 0 passed (2026-10-31, lane #146).**
+The largest triage gap after band fronts was `painted-or-clad` (82 pands,
+5.9 M blocked ride visibility): wide street walls whose photo wall family
+is unresolved. The kit now has `walls[i].wallFamily` (`paint` or `metal`
+with a measured colour, rib pitch and lines; `src/canalRecall/buildingRecipe/
+wallFamily.ts`), reusing the cladding geometry and exporting through the
+city look's `paint` slot; byte-identical when absent (fit-golden 207,
+large-mesh 166). `measureFacade` proposes `metal` for a rib period of 0.6 m
+or less and `paint` when the wall cells are even (spread ≤ 0.12, course
+texture ≤ 0.035, not a warm dark), thresholds calibrated on 116 unresolved
+crops and 45 brick controls (`scripts/landmarks/calibrate-wall-family.ts`);
+the judge scores a painted wall on tint and no longer warns about courses;
+triage counts a measured tint as not-a-gap. Measured result: painted-or-clad
+80 → 62, buildable 20 → 24, but only 3 of the 24 came from this gap
+(Praxis Draaierweg 124847, Johan Huizingalaan 241496, Tolhuis pavilion
+119827) and the batch held all three (a second blank clad wall drawn with 27
+windows, an open parking deck read as pale paint, a glazed pavilion under a
+deep roof). The lane stopped on the skill's 20 % rule. Why the rest did not
+move: 78 of the 116 unresolved crops have cell spread above 0.12, dark
+textured walls where cell statistics cannot tell dark paint from dark brick
+in shade. Also fixed: `measure.ts` proposed a `wallSplit` over `houses`, so
+re-measuring a house threw. The measure cache is v4. Next steps in TODO:
+propose `paint` for a pale resolved family too (241496 w0 is drawn as brick
+in paint colour), and make the factory mosaic and the triage crop measure
+the wall family the same way.
 
 **City look on by default (2026-10-30, decision #137 = A).** David chose
 option A on the #135 strip: flip at level 1, accept the +14 % landmark
