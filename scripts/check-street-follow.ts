@@ -116,6 +116,44 @@ const street = (angle: number, dist = 0, width = 18, length?: number, along?: nu
   assert.equal(deadEnd.speedFraction, 0, 'a dead end stops the bike');
 }
 {
+  // T-junction tap (L1's iPhone ride, 2026-10-31): stopped at a T, one frame
+  // of a side button commits the turn and the bike goes. It used to only
+  // queue it: stopped short of the cross street's centreline the bike never
+  // came within COMMIT_MIN, so it waited until the side was held long enough
+  // to pivot. A phone player taps.
+  const stem = { ...street(0, 0, 18, 100, 99), segIdx: 1, name: 'Stem' };
+  const cross = { ...street(Math.PI / 2, 12, 18), segIdx: 2, name: 'Cross' };
+  const ctx = { heading: 0, speed: 0, contacts: [stem, cross], dt: 1 / 60 };
+  const waiting = stepStreetFollow(riding(), none, ctx);
+  assert.ok(waiting.command.awaitingChoice && waiting.command.speedFraction === 0, 'stopped at the T, waiting for a side');
+  const tap = stepStreetFollow(waiting.state, { ...none, right: true }, ctx);
+  assert.ok(tap.state.turning != null && Math.abs(normalizeAngle(tap.state.turning - Math.PI / 2)) < 1e-9, 'one frame of right commits the right turn');
+  assert.ok(tap.command.speedFraction > 0 && !tap.command.awaitingChoice && tap.state.queuedTurn === 0, 'and rides: no longer waiting, nothing left queued');
+  const after = stepStreetFollow(tap.state, none, { ...ctx, heading: deg(20) });
+  assert.ok(after.state.turning != null && after.command.speedFraction > 0, 'released, the turn carries on');
+  // A tap queued before stopping commits the moment the bike is slow.
+  const early = stepStreetFollow(riding(), { ...none, left: true }, { ...ctx, speed: 120, contacts: [{ ...street(0, 0, 18, 200, 100), segIdx: 1 }] }).state;
+  const arrive = stepStreetFollow(early, none, { ...ctx, speed: 20 });
+  assert.ok(arrive.state.turning != null && Math.abs(normalizeAngle(arrive.state.turning + Math.PI / 2)) < 1e-9, 'a left tapped on the way in is taken once stopped at the T');
+  // Standing across a street (a spawn): both ways along the way underfoot are
+  // sides, and a tap picks one.
+  const across = { ...street(Math.PI, 0, 16, 745, 452), segIdx: 9, name: 'Polonceau-kade' };
+  const spawn = { heading: -Math.PI / 2, speed: 0, contacts: [across], dt: 1 / 60 };
+  const asked = stepStreetFollow(riding(), none, spawn);
+  assert.ok(asked.command.awaitingChoice, 'across a street: waiting for a side');
+  const go = stepStreetFollow(asked.state, { ...none, right: true }, spawn);
+  assert.ok(go.state.turning != null && Math.abs(normalizeAngle(go.state.turning - 0)) < 1e-9, 'a right tap rides along the street to the right');
+  // Moving, the way underfoot bending is still never a queued turn.
+  const bendMoving = stepStreetFollow(riding(), { ...none, left: true }, {
+    heading: 0, speed: 60, dt: 1 / 60,
+    contacts: [{ ...street(0, 0, 18, 100, 99), segIdx: 7 }, { ...street(-deg(60), 2, 18, 100, 0), segIdx: 7 }],
+  });
+  assert.equal(bendMoving.state.turning, null, 'at speed a same-way bend does not spend the queue');
+  // A tap toward a side with no street at the T: nothing to take; still waits.
+  const noStreet = stepStreetFollow(waiting.state, { ...none, left: true }, { ...ctx, contacts: [stem, { ...cross, angle: Math.PI / 2, length: 100, along: 0 }] });
+  assert.equal(noStreet.state.turning, null, 'no street on the tapped side: no turn');
+}
+{
   // Back: a tap turns round once slow; a hold stops.
   let step = stepStreetFollow(riding(), { ...none, back: true }, { heading: 0, speed: 200, contacts: [street(0)], dt: 1 / 60 });
   step = stepStreetFollow(step.state, none, { heading: 0, speed: 200, contacts: [street(0)], dt: 1 / 60 });
@@ -253,32 +291,37 @@ function world(centre: [number, number], radius = 400, onWater = false) {
 /** rad — the smallest turn whose undoing counts as a heading reversal. */
 const WOBBLE_LEG = (0.5 * Math.PI) / 180;
 
-type Ride = { finalName: string; maxExcess: number; seconds: number; headingReversals: number; maxCameraRate: number; cameraTravel: number };
+type Ride = { finalName: string; maxExcess: number; seconds: number; headingReversals: number; maxCameraRate: number; cameraTravel: number; moved: number; waitedBeforePress: boolean };
+/** `pressFrom`: when the press starts (s); `keepHeading`: start facing `toward` exactly (a spawn across the street). */
+type RideOptions = { pressFrom?: number; keepHeading?: boolean };
 
 /** Ride from `from` toward `toward` along `startStreet`, pressing `press`
  *  for the first `pressSeconds`, for `seconds`. */
-function ride(w: ReturnType<typeof world>, from: [number, number], toward: [number, number], press: Partial<StreetFollowButtons>, seconds: number, pressSeconds = 0.4, startName = ''): Ride {
+function ride(w: ReturnType<typeof world>, from: [number, number], toward: [number, number], press: Partial<StreetFollowButtons>, seconds: number, pressSeconds = 0.4, startName = '', options: RideOptions = {}): Ride {
+  const pressFrom = options.pressFrom ?? 0;
   const a = w.toWorld(from[0], from[1]);
   const b = w.toWorld(toward[0], toward[1]);
   let x = a.x, y = a.y, heading = Math.atan2(b.y - a.y, b.x - a.x);
   // Start on the street's own tangent, as the game does.
   // On the named street, as a route start is.
   const start = w.contacts(x, y).filter(c => !startName || w.nameOf(c.segIdx) === startName).sort((p, q) => p.dist - q.dist)[0];
-  if (start) {
+  if (start && !options.keepHeading) {
     const along = [start.angle, start.angle + Math.PI].sort((p, q) => Math.abs(normalizeAngle(p - heading)) - Math.abs(normalizeAngle(q - heading)))[0];
     heading = along;
   }
   let state = riding();
   const yaw = { following: false };
   let camera = heading;
+  let waitedBeforePress = false;
   let speed = 0, maxExcess = 0, maxCameraRate = 0, cameraTravel = 0, legSign = 0, leg = 0, reversals = 0;
   const dt = 1 / 60, maxSpeed = 260;
   for (let t = 0; t < seconds; t += dt) {
-    const buttons = { ...none, ...(t < pressSeconds ? press : {}) };
+    const buttons = { ...none, ...(t >= pressFrom && t < pressFrom + pressSeconds ? press : {}) };
     const contacts = w.contacts(x, y);
     const step = stepStreetFollow(state, buttons, { heading, speed, contacts, dt, probe: smooth ? w.contacts : undefined });
     state = step.state;
     const c = step.command;
+    if (t < pressFrom && c.awaitingChoice && Math.abs(speed) < 1) waitedBeforePress = true;
     let cruise = c.brake > 0 ? 0 : c.speedFraction;
     if (c.targetHeading != null) {
       cruise *= alignmentSpeedScale(c.targetHeading - heading);
@@ -308,7 +351,7 @@ function ride(w: ReturnType<typeof world>, from: [number, number], toward: [numb
     cameraTravel += Math.abs(normalizeAngle(nextCamera - camera));
     camera = nextCamera;
   }
-  return { finalName: w.nameAt(x, y, heading), maxExcess, seconds, headingReversals: reversals, maxCameraRate, cameraTravel };
+  return { finalName: w.nameAt(x, y, heading), maxExcess, seconds, headingReversals: reversals, maxCameraRate, cameraTravel, moved: Math.hypot(x - a.x, y - a.y), waitedBeforePress };
 }
 
 const summary: string[] = [];
@@ -416,6 +459,27 @@ const report = (label: string, r: Ride) => summary.push(`${label}: on ${r.finalN
     assert.ok(r.maxExcess < 6, `inside the water through the turn (${r.maxExcess.toFixed(1)} px)`);
     assert.ok(r.maxCameraRate <= CAMERA_YAW_DEFAULT.maxRate + 1e-6, 'camera yaw capped');
   }
+}
+
+{
+  // L1's iPhone spawn (engine-own.spec ride(), seeded route, 2026-10-31): the
+  // bike starts across Polonceaukade facing north, so street following waits
+  // for a side. A single tap of right now rides east along it; nothing pressed
+  // still waits; holding right (the old way out) still goes.
+  const spawn: [number, number] = [52.385753, 4.872158];
+  const north: [number, number] = [spawn[0] + 0.001, spawn[1]];
+  const w = world(spawn, 300);
+  const opts = { pressFrom: 1, keepHeading: true };
+  const tap = ride(w, spawn, north, { right: true }, 4, 1 / 60, '', opts);
+  report('Polonceaukade spawn, one-frame right tap', tap);
+  assert.ok(tap.waitedBeforePress, 'the spawn waits for a side');
+  assert.ok(tap.moved > 150, `one tap and the bike rides (${tap.moved.toFixed(0)} px)`);
+  assert.equal(tap.finalName, 'Polonceau-kade', 'along Polonceaukade');
+  const still = ride(w, spawn, north, {}, 4, 0, '', opts);
+  assert.ok(still.moved < 1, `hands off it keeps waiting (${still.moved.toFixed(1)} px)`);
+  const hold = ride(w, spawn, north, { right: true }, 4, 1.2, '', opts);
+  report('Polonceaukade spawn, right held 1.2 s', hold);
+  assert.ok(hold.moved > 150 && hold.finalName === 'Polonceau-kade', `holding right still goes (${hold.moved.toFixed(0)} px)`);
 }
 
 console.log(summary.join('\n'));
