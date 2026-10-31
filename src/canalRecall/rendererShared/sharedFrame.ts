@@ -220,6 +220,19 @@ export class SharedFrame {
 
   /** The renderer exists: attach new participants, or after a restore let every participant rebuild. */
   private rendererReady(): void {
+    const g = globalThis as { __canalPerf?: Record<string, unknown> };
+    g.__canalPerf = Object.assign(g.__canalPerf ?? {}, { shaderErrors: () => this.shaderErrors() });
+    const debug = this.renderer.debug;
+    if (debug && !debug.onShaderError?.__counted) {
+      // Replaces three's report (which also prints source context) with the info logs, counted.
+      const next = debug.onShaderError;
+      const count = (gl: WebGL2RenderingContext, program: WebGLProgram, vs: WebGLShader, fs: WebGLShader) => {
+        this.shaderErrorCount++;
+        if (next) return next(gl, program, vs, fs);
+        console.error(`THREE.WebGLProgram: Shader Error (${this.shaderErrorCount} since attach)\nProgram Info Log: ${gl.getProgramInfoLog(program)}\nVERTEX: ${gl.getShaderInfoLog(vs)}\nFRAGMENT: ${gl.getShaderInfoLog(fs)}`);
+      };
+      debug.onShaderError = Object.assign(count, { __counted: true });
+    }
     shadowOnlyLayerPass(this.renderer);
     const restored = this.restorePending;
     this.restorePending = false;
@@ -257,6 +270,15 @@ export class SharedFrame {
   }
 
   /** Host driver: adopt the host's renderer (first attach, or a new one after a context restore). */
+  /**
+   * Programs three.js failed to compile or link since the renderer attached. A failed program draws nothing and says
+   * so only in the console: every facade chunk failed under ?engine=own for four hours while engine-own.spec passed
+   * (#129). Counted in `debug.onShaderError`, not from `info.programs`: the failing fade clone's program is released
+   * when the fade ends. Specs read it as `window.__canalPerf.shaderErrors()`.
+   */
+  shaderErrors(): number { return this.shaderErrorCount; }
+  private shaderErrorCount = 0;
+
   private attachHost(): void {
     if (!this.coverWatch && typeof document !== 'undefined' && typeof this.map.getCanvas === 'function' && coverPauseFlag()) {
       const canvas = this.map.getCanvas();
