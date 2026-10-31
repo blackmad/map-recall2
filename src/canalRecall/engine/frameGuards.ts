@@ -22,6 +22,8 @@ export interface FrameGuardOptions {
   /** An explicit `?dpr=`: keep the pixel ratio, only the shadow step. */
   fixedPixelRatio?: boolean;
   report?: MapGuardOptions['report'];
+  /** The quality tier's pixel-ratio ceiling: the governor may step back up to it. */
+  maxPixelRatio?: number;
 }
 
 export function guardFrameHost(host: FrameHost, options: FrameGuardOptions = {}): { guarded: boolean; governor: RenderGovernor | null } {
@@ -34,6 +36,7 @@ export function guardFrameHost(host: FrameHost, options: FrameGuardOptions = {})
     fixedPixelRatio: options.fixedPixelRatio,
     active: options.active,
     setShadows: options.setShadows,
+    maxPixelRatio: options.maxPixelRatio,
     onStep: step => console.info('[canal-recall] render budget step', step),
   });
   return { guarded, governor };
