@@ -154,7 +154,13 @@ async function main() {
         .map(f => { const at = localIndex.get(f)!; return at.cell === key ? at.index : String(f.properties.id); });
       const polygons = asPolygons(own.geometry), [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
       const n = 2 ** 14, rad = lat * Math.PI / 180, group = `${Math.floor(((lng + 180) / 360) * n)}/${Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n)}`;
-      return { id: ownId, tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry as Geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties, roof: roof ?? undefined, group, neighbours };
+      // As the decoder gives a building back (the whole-cell round-trip check compares keys): a runtime cell carries
+      // the styled bag as its only bag; absent keys are absent, not undefined.
+      const b: CellBuilding = { id: ownId, tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry as Geometry, attr: DEBUG ? r.raw.properties : r.styled.properties };
+      if (DEBUG && r.styled !== r.raw) b.styled = r.styled.properties;
+      if (roof) b.roof = roof;
+      b.group = group; b.neighbours = neighbours;
+      return b;
     });
     const ids = new Set(buildings.map(b => b.id));
     const hide = [...hides.values()].filter(h => ids.has(h.id));
