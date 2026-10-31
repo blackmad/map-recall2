@@ -14,6 +14,9 @@ class InputManager {
     // buttons, streetFollow.ts); 'stick' keeps the analog stick.
     this._padMode = 'stick';
     this._padTouches = new Map(); // touch id -> 'left' | 'right' | 'back'
+    // Buttons touched since the last frame. A quick phone tap can start and
+    // end between two frames; without this the bike never saw it.
+    this._padTapped = new Set();
     // The hint is a one-line "steer with the pad" nudge now, not a diagram of
     // an invisible scheme; the pad itself is the documentation.
     this._showTouchHint = this._isMobile;
@@ -66,6 +69,7 @@ class InputManager {
   resetTouches() {
     this._stickTouch = null;
     this._padTouches.clear();
+    this._padTapped.clear();
     this._touchActive = false;
   }
 
@@ -141,7 +145,9 @@ class InputManager {
         if (this._padMode === 'street') {
           const point = this._canvasPoint(touch, canvas);
           if (this._dpad && window.CanalRecallUi.isInsideDpad(point, this._dpad)) {
-            this._padTouches.set(touch.identifier, window.CanalRecallUi.streetPadButtonAt(point, this._dpad));
+            const button = window.CanalRecallUi.streetPadButtonAt(point, this._dpad);
+            this._padTouches.set(touch.identifier, button);
+            this._padTapped.add(button);
             claimed = true;
           }
           continue;
@@ -209,10 +215,11 @@ class InputManager {
 
   get padMode() { return this._padMode; }
 
-  /** The street-follow pad's buttons held right now. */
+  /** The street-follow pad's buttons held right now, or tapped since the last frame. */
   get streetButtons() {
     const buttons = { left: false, right: false, back: false };
     for (const button of this._padTouches.values()) buttons[button] = true;
+    for (const button of this._padTapped) buttons[button] = true;
     return buttons;
   }
 
@@ -252,6 +259,7 @@ class InputManager {
   clear() {
     this.justPressed = {};
     this._touchedThisFrame = false;
+    this._padTapped.clear();
     if (this._showTouchHint && this._touchHintTimer > 0) {
       this._touchHintTimer -= 1 / 60;
       if (this._touchHintTimer <= 0) this._showTouchHint = false;

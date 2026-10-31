@@ -1328,6 +1328,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ## P0 — Red, or actively teaching something false
 
+- **`engine-own.spec` must fail when facades do not draw** (2026-10-31): it said
+  `facades:true, failed:[]` while every facade program failed to compile for
+  four hours (HISTORY "`?engine=own` drew no facades"). Assert the renderer's
+  shader-error count is 0 and that visible facade chunk meshes > 0 after
+  landing, desktop and iPhone (materials lane or L1, whoever touches the spec
+  next).
+
 - **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
   localhost build "looks great". Root cause found: stale cached bundles (18
