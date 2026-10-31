@@ -16,7 +16,7 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
-import {accentSideOf, AUTO_PLACE, frontEavesFor, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, ribbonRowHolds, RIBBON_GUARD, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {accentSideOf, AUTO_PLACE, frontageVetoes, frontEavesFor, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, ribbonRowHolds, RIBBON_GUARD, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {measureSkyline} from './stripSkyline.ts';
 import {measureStripStructure, type StripStructure} from './stripStructure.ts';
 import {bestNcc, gradient, type Gray} from './stripLikeness.ts';
@@ -308,4 +308,24 @@ test('frontEavesM (Eerste Helmersstraat 209-243): the strip cornice is scored ag
   assert.deepEqual(frontEavesFor(merlon, at60), {eavesM: 14.3, source: 'type'});
   // yearSlack 0: the 1897 types do not reach the 1899 houses.
   assert.match(scoreType(balconette, pand({builtYear: 1899, widthM: 5.95})).veto.join(), /built 1899/);
+});
+
+test('stair-block frontage (match.frontage): a 7 m and a 14 m stair block of the 1923 Transvaal portiek type are not vetoed on width', () => {
+  const portiek = defaultTypeLoader('transvaal-1923-portiek') as MatchableType;
+  assert.equal(portiek.match?.frontage?.mode, 'stair-block');
+  const tv = (o: Partial<PandEvidence> = {}) => pand({pandId: '0363100012098793', address: 'Schalk Burgerstraat 28', builtYear: 1923, eavesM: 12.4, roofMaxM: 15.2, storeys3dbag: 5, strip: strip({columns: null}), ...o});
+  for (const widthM of [7, 14]) {
+    const s = scoreType(portiek, tv({widthM}));
+    assert.ok(!s.veto.some(v => /frontage|stair block/.test(v)), `${widthM} m: ${s.veto.join('; ')}`);
+    assert.deepEqual(frontageVetoes(portiek, tv({widthM})), []);
+  }
+  // What identifies the design vetoes instead: the storey count over the eaves and the window-axis pitch.
+  assert.match(frontageVetoes(portiek, tv({widthM: 9, eavesM: 9.6})).join(), /3 storeys/); // a three-storey 1920-22 row
+  assert.match(frontageVetoes(portiek, tv({widthM: 9, eavesM: 16.8})).join(), /5 storeys/); // a five-storey 1911-13 row
+  assert.match(frontageVetoes(portiek, tv({widthM: 9.38, strip: strip({columns: 12})})).join(), /axis pitch 0.78/); // Retiefstraat 220
+  assert.deepEqual(frontageVetoes(portiek, tv({widthM: 5.6, strip: strip({columns: 3})})), []);
+  assert.match(frontageVetoes(portiek, tv({widthM: 27.66})).join(), /stair block 27.66/); // Schalk Burgerstraat 60 corner block
+  // Every house type keeps the fit-width veto: Hasebroekstraat 2 (16.7 m) and a 7 m balcony house.
+  assert.match(frontageVetoes(types[0], pand({widthM: 16.71})).join(), /^frontage 16.71 m/);
+  assert.deepEqual(frontageVetoes(types[0], pand()), []);
 });

@@ -116,7 +116,47 @@ export interface TypeMatchRule {
    * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
    */
   frontSkylineM?: number;
+  /**
+   * How the frontage is judged. Absent: the pand is one house, and a width outside the type's `fit.widthM` by more than
+   * AUTO_PLACE.widthSlackM vetoes the type (Bellamy 1904-1937). `stair-block`: the pand is a BAG stair block, and one
+   * design runs over blocks of very different widths (Transvaalbuurt 1921-1923 portiek rows: Schalk Burgerstraat 2-140
+   * 5.2-10 m, Albert Luthulistraat 21-41 5.2-12.4 m for one front). The width then vetoes only outside `widthM`, and
+   * what identifies the design vetoes instead: the storey count (3DBAG eaves over the type's storey pitch, rounded,
+   * must be one of `storeys`) and, when the strip reads window columns, the axis pitch (width / columns within
+   * `axisPitchM`). Absent = the house rule, byte-identical.
+   */
+  frontage?: StairBlockFrontage;
   note?: string;
+}
+
+/** `match.frontage` of a portiek type (TypeMatchRule.frontage). */
+export interface StairBlockFrontage {
+  mode: 'stair-block';
+  /** Stair-block widths the design is seen at (m); outside vetoes (a 27 m corner block, a 4 m passage). */
+  widthM: [number, number];
+  /** Storeys of the front: round(3DBAG eaves / storeyPitch) outside this list vetoes. */
+  storeys: number[];
+  /** Window-axis pitch (m): pand width over the strip's upper window columns, when read, outside this range vetoes. */
+  axisPitchM: [number, number];
+}
+
+/** The frontage vetoes of a type for one pand (`match.frontage`, else the house fit width). */
+export function frontageVetoes(t: MatchableType, ev: PandEvidence): string[] {
+  const f = t.match?.frontage;
+  if (!f) {
+    const fw = t.fit?.widthM;
+    return fw && (ev.widthM < fw[0] - AUTO_PLACE.widthSlackM || ev.widthM > fw[1] + AUTO_PLACE.widthSlackM) ? [`frontage ${ev.widthM} m, type ${fw.join('-')} m`] : [];
+  }
+  const veto: string[] = [];
+  if (ev.widthM < f.widthM[0] || ev.widthM > f.widthM[1]) veto.push(`stair block ${ev.widthM} m, type ${f.widthM.join('-')} m`);
+  const p = storeyPitch(t), n = Math.round(ev.eavesM / p);
+  if (!f.storeys.includes(n)) veto.push(`3DBAG eaves ${r2(ev.eavesM)} m = ${n} storeys of the type's ${r2(p)} m, type ${f.storeys.join('/')}`);
+  const cols = ev.strip?.columns;
+  if (cols) {
+    const pitch = ev.widthM / cols;
+    if (pitch < f.axisPitchM[0] || pitch > f.axisPitchM[1]) veto.push(`axis pitch ${r2(pitch)} m (${cols} strip columns over ${ev.widthM} m), type ${f.axisPitchM.join('-')} m`);
+  }
+  return veto;
 }
 
 export const FRONT_EAVES = {tolM: 1.0} as const;
@@ -192,7 +232,7 @@ export const AUTO_PLACE = {
   /** Body pixels that are placeholder grey or foliage beyond this: no photo evidence. */
   maxVoid: 0.35, maxFoliage: 0.3,
   yearSlack: 2,
-  /** Frontage beyond the type's fit by more than this vetoes it. */
+  /** Frontage beyond the type's fit by more than this vetoes it (house types; `match.frontage` stair blocks judge otherwise). */
   widthSlackM: 0.4,
   flatRoofRiseM: 1.5,
 } as const;
@@ -234,8 +274,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   const slack = m.yearSlack ?? AUTO_PLACE.yearSlack;
   if (ev.builtYear === null) veto.push('no build year');
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
-  const fw = t.fit?.widthM;
-  if (fw && (ev.widthM < fw[0] - AUTO_PLACE.widthSlackM || ev.widthM > fw[1] + AUTO_PLACE.widthSlackM)) veto.push(`frontage ${ev.widthM} m, type ${fw.join('-')} m`);
+  veto.push(...frontageVetoes(t, ev));
   if (m.frontEavesM !== undefined) {
     const sky = ev.strip?.skyline, read = sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE ? sky.eavesM : null;
     const off = read === null ? null : Math.min(Math.abs(read - m.frontEavesM), m.frontSkylineM === undefined ? Infinity : Math.abs(read - m.frontSkylineM));
