@@ -1,0 +1,416 @@
+{
+ "street": "Krugerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:24:32.954Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012110306",
+   "addresses": [
+    "Krugerstraat 5A",
+    "Krugerstraat 5B",
+    "Krugerstraat 5C",
+    "Krugerstraat 5D",
+    "Krugerstraat 7A",
+    "Krugerstraat 7B",
+    "Krugerstraat 7C",
+    "Krugerstraat 7D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714955"
+    },
+    {
+     "address": "Krugerstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714956"
+    },
+    {
+     "address": "Krugerstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714957"
+    },
+    {
+     "address": "Krugerstraat 7D",
+     "use": "kantoorfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000714958"
+    },
+    {
+     "address": "Krugerstraat 5A",
+     "use": "kantoorfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000714951"
+    },
+    {
+     "address": "Krugerstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000714952"
+    },
+    {
+     "address": "Krugerstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000714953"
+    },
+    {
+     "address": "Krugerstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000714954"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14232435228,
+     "lngLat": [
+      4.9192585,
+      52.3534723
+     ],
+     "tags": {
+      "name": "Shiatsu Massage",
+      "opening_hours": "Tu,Th,Fr 09:30-18:30; Mo 09:30-21:00",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-31T15:24:32.954Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072682",
+   "addresses": [
+    "Krugerstraat 9A",
+    "Krugerstraat 9B",
+    "Krugerstraat 9C",
+    "Krugerstraat 11A",
+    "Krugerstraat 11B",
+    "Krugerstraat 11C",
+    "Krugerstraat 11D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714962"
+    },
+    {
+     "address": "Krugerstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714963"
+    },
+    {
+     "address": "Krugerstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714964"
+    },
+    {
+     "address": "Krugerstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000714966"
+    },
+    {
+     "address": "Krugerstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714967"
+    },
+    {
+     "address": "Krugerstraat 11C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714977"
+    },
+    {
+     "address": "Krugerstraat 11D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714978"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146315",
+   "addresses": [
+    "Krugerstraat 13A",
+    "Krugerstraat 13B",
+    "Krugerstraat 13C",
+    "Krugerstraat 13D",
+    "Krugerstraat 15A",
+    "Krugerstraat 15B",
+    "Krugerstraat 15C",
+    "Krugerstraat 15D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000714982"
+    },
+    {
+     "address": "Krugerstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714983"
+    },
+    {
+     "address": "Krugerstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714984"
+    },
+    {
+     "address": "Krugerstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714985"
+    },
+    {
+     "address": "Krugerstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000714990"
+    },
+    {
+     "address": "Krugerstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714991"
+    },
+    {
+     "address": "Krugerstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714992"
+    },
+    {
+     "address": "Krugerstraat 15D",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000714993"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133223",
+   "addresses": [
+    "Krugerstraat 17A",
+    "Krugerstraat 17B",
+    "Krugerstraat 17C",
+    "Krugerstraat 17D",
+    "Krugerstraat 19A",
+    "Krugerstraat 19B",
+    "Krugerstraat 19C",
+    "Krugerstraat 19D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714998"
+    },
+    {
+     "address": "Krugerstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714999"
+    },
+    {
+     "address": "Krugerstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715000"
+    },
+    {
+     "address": "Krugerstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715001"
+    },
+    {
+     "address": "Krugerstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000715006"
+    },
+    {
+     "address": "Krugerstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000715007"
+    },
+    {
+     "address": "Krugerstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000715008"
+    },
+    {
+     "address": "Krugerstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000715009"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075751",
+   "addresses": [
+    "Krugerstraat 21A",
+    "Krugerstraat 21B",
+    "Krugerstraat 21C",
+    "Krugerstraat 21D",
+    "Krugerstraat 23A",
+    "Krugerstraat 23B",
+    "Krugerstraat 23C",
+    "Krugerstraat 23D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000715014"
+    },
+    {
+     "address": "Krugerstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715015"
+    },
+    {
+     "address": "Krugerstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715016"
+    },
+    {
+     "address": "Krugerstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000715022"
+    },
+    {
+     "address": "Krugerstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715023"
+    },
+    {
+     "address": "Krugerstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715024"
+    },
+    {
+     "address": "Krugerstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000715025"
+    },
+    {
+     "address": "Krugerstraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000715017"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123446",
+   "addresses": [
+    "Krugerstraat 25A",
+    "Krugerstraat 25B",
+    "Krugerstraat 25C",
+    "Krugerstraat 27A",
+    "Krugerstraat 27F",
+    "Krugerstraat 27D",
+    "Krugerstraat 27E",
+    "Krugerstraat 27C",
+    "Krugerstraat 27B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000715030"
+    },
+    {
+     "address": "Krugerstraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000715031"
+    },
+    {
+     "address": "Krugerstraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000715032"
+    },
+    {
+     "address": "Krugerstraat 27F",
+     "use": "industriefunctie",
+     "areaM2": 29,
+     "bagId": "0363010000715039"
+    },
+    {
+     "address": "De la Reijstraat 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001014343"
+    },
+    {
+     "address": "Krugerstraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012077398"
+    },
+    {
+     "address": "Krugerstraat 27E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012077399"
+    },
+    {
+     "address": "Krugerstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012077400"
+    },
+    {
+     "address": "Krugerstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012077402"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

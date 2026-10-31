@@ -1,0 +1,1532 @@
+{
+ "face": "retief-45-75",
+ "street": "Retiefstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 3.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012068243",
+   "address": "Retiefstraat 45",
+   "builtYear": 1911,
+   "widthM": 13.35,
+   "eavesM": 15.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695c57",
+    "wallRaw": "#534c4b",
+    "skyline": {
+     "eavesM": 16.7,
+     "eavesRow": 55,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 1.28,
+      "topWidthM": 0.13,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.35,
+       "widthM": 3.05,
+       "centre": 0.49
+      },
+      {
+       "atM": 9.6,
+       "widthM": 0.85,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.3,
+       "widthM": 1.3,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1911, type 1921-1924; frontage 13.35 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1921-1924",
+     "frontage 13.35 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.7 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123300",
+   "address": "Retiefstraat 47",
+   "builtYear": 1911,
+   "widthM": 10.1,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574d48",
+    "wallRaw": "#4e4744",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 54,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.35,
+      "topWidthM": 0.05,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.38 m (2.02 m wide), 9.32 m (1.5 m wide), 6.25 m (2.65 m wide), 5.95 m (2.65 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 2.02,
+       "centre": 0.29
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.5,
+       "centre": 0.69
+      },
+      {
+       "atM": 8.88,
+       "widthM": 0.97,
+       "centre": 0.67
+      },
+      {
+       "atM": 6.25,
+       "widthM": 2.65,
+       "centre": 0.65
+      },
+      {
+       "atM": 5.95,
+       "widthM": 2.65,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1911, type 1921-1924; strip shows balconies (balcony slabs stacked at 13.38 m (2.02 m wide), 9.32 m (1.5 m wide), 6.25 m (2.65 m wide), 5.95 m (2.65 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1921-1924",
+     "strip shows balconies (balcony slabs stacked at 13.38 m (2.02 m wide), 9.32 m (1.5 m wide), 6.25 m (2.65 m wide), 5.95 m (2.65 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.73 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080801",
+   "address": "Retiefstraat 49",
+   "builtYear": 1911,
+   "widthM": 7.39,
+   "eavesM": 16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#463c38",
+    "wallRaw": "#524a47",
+    "skyline": {
+     "eavesM": 16.57,
+     "eavesRow": 60,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 1.5,
+      "topWidthM": 0.55,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.072,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 1.55,
+       "centre": 0.47
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.73,
+       "centre": 0.67
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.8,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1911, type 1921-1924; frontage 7.39 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1921-1924",
+     "frontage 7.39 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.01 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133126",
+   "address": "Retiefstraat 51",
+   "builtYear": 1912,
+   "widthM": 6.42,
+   "eavesM": 13.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524744",
+    "wallRaw": "#5e5350",
+    "skyline": {
+     "eavesM": 16.57,
+     "eavesRow": 60,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.25,
+      "topWidthM": 0.63,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.028,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.19,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.21 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.21,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.77,
+       "widthM": 2.5,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.22,
+       "widthM": 2.2,
+       "centre": 0.7
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.65,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 6.42 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.6 m at 0.21 (light 0.49): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 6.42 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.6 m at 0.21 (light 0.49): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119451",
+   "address": "Retiefstraat 53",
+   "builtYear": 1912,
+   "widthM": 6.2,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554a48",
+    "wallRaw": "#5f5957",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 57,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.35,
+      "topWidthM": 0.4,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.82,
+       "widthM": 2.45,
+       "centre": 0.65
+      },
+      {
+       "atM": 9.35,
+       "widthM": 1.15,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.8,
+       "centre": 0.16
+      },
+      {
+       "atM": 5.52,
+       "widthM": 1.45,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 6.2 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 6.2 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.65 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105469",
+   "address": "Retiefstraat 55",
+   "builtYear": 1912,
+   "widthM": 6.42,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#76635d",
+    "wallRaw": "#5e5351",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 52,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 0.88,
+      "topWidthM": 0.57,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.31,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.85,
+       "widthM": 2.4,
+       "centre": 0.2
+      },
+      {
+       "atM": 8.55,
+       "widthM": 1.2,
+       "centre": 0.65
+      },
+      {
+       "atM": 6.3,
+       "widthM": 2.25,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.2,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 6.42 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 6.42 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.77 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154435",
+   "address": "Retiefstraat 57",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 13.29,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6a63",
+    "wallRaw": "#544e4c",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 36,
+     "confidence": 0.82,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.1 m (1.43 m wide), 6.25 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.55,
+       "widthM": 1.55,
+       "centre": 0.39
+      },
+      {
+       "atM": 9.85,
+       "widthM": 0.93,
+       "centre": 0.19
+      },
+      {
+       "atM": 9.1,
+       "widthM": 1.43,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.77,
+       "widthM": 0.93,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.35,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 9.1 m (1.43 m wide), 6.25 m (1.35 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m",
+     "strip shows balconies (balcony slabs stacked at 9.1 m (1.43 m wide), 6.25 m (1.35 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.18 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136245",
+   "address": "Retiefstraat 59",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 15.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e5350",
+    "wallRaw": "#6b615e",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 27,
+     "confidence": 0.76,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.47,
+       "widthM": 0.82,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1.13,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.038 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144201",
+   "address": "Retiefstraat 61",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 13.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70605a",
+    "wallRaw": "#57504e",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 27,
+     "confidence": 0.71,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 0.9,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.13,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012092019",
+   "address": "Retiefstraat 63",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 15.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725c52",
+    "wallRaw": "#655956",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 27,
+     "confidence": 0.63,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.13,
+       "widthM": 1,
+       "centre": 0.37
+      },
+      {
+       "atM": 6.2,
+       "widthM": 1.02,
+       "centre": 0.38
+      },
+      {
+       "atM": 5.67,
+       "widthM": 0.9,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.032 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074312",
+   "address": "Retiefstraat 65A",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 13.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75615a",
+    "wallRaw": "#5b504c",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 36,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 0.75,
+      "topWidthM": 0.68,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 0.8,
+       "centre": 0.82
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.15,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.18 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012120175",
+   "address": "Retiefstraat 67B",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a554d",
+    "wallRaw": "#60534d",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 24,
+     "confidence": 0.71,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.23,
+       "centre": 0.7
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.95,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.48 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012112323",
+   "address": "Retiefstraat 69C",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 13.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a3c37",
+    "wallRaw": "#594b45",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 16,
+     "confidence": 0.55,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.83,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.56 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.56,
+       "light": 0.3
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.84,
+       "light": 0.45
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 1.02,
+       "centre": 0.82
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.23,
+       "centre": 0.54
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.5,
+       "centre": 0.82
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.25,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.78 m at 0.56 (light 0.3): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.78 m at 0.56 (light 0.3): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 13.24 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012129491",
+   "address": "Retiefstraat 71D",
+   "builtYear": 1914,
+   "widthM": 6.49,
+   "eavesM": 13.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#56453f",
+    "wallRaw": "#5a4b45",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 16,
+     "confidence": 0.66,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.64,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.64 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.64,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 1.45,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 6.49 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.05 m at 0.64 (light 0.42): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 6.49 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.05 m at 0.64 (light 0.42): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.68 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012067013",
+   "address": "Retiefstraat 73A",
+   "builtYear": 1914,
+   "widthM": 6.01,
+   "eavesM": 13.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4842",
+    "wallRaw": "#5a4c46",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 27,
+     "confidence": 0.59,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.26 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.26,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 1.25,
+       "centre": 0.28
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.82,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 6.01 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.02 m at 0.26 (light 0.33): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 6.01 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.02 m at 0.26 (light 0.33): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 13.33 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.01 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138910",
+   "address": "Retiefstraat 75A",
+   "builtYear": 1914,
+   "widthM": 5.5,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4b47",
+    "wallRaw": "#635350",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 56,
+     "confidence": 0.43,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 1.25,
+      "topWidthM": 0.4,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.34 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.34,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.18,
+       "widthM": 1.52,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.47,
+       "widthM": 2.65,
+       "centre": 0.65
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.43,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 5.5 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.7 m at 0.34 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 5.5 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.7 m at 0.34 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 13.15 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

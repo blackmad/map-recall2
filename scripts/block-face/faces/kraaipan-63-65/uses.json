@@ -1,0 +1,55 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:18:11.418Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108224",
+   "addresses": [
+    "Kraaipanstraat 63A",
+    "Kraaipanstraat 63B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 63A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000712059"
+    },
+    {
+     "address": "Kraaipanstraat 63B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000712060"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145617",
+   "addresses": [
+    "Kraaipanstraat 65A",
+    "Kraaipanstraat 65B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000712061"
+    },
+    {
+     "address": "Kraaipanstraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000712062"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

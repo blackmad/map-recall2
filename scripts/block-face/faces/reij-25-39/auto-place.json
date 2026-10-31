@@ -1,0 +1,562 @@
+{
+ "face": "reij-25-39",
+ "street": "De la Reijstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.64,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012127658",
+   "address": "De la Reijstraat 25",
+   "builtYear": 1900,
+   "widthM": 7.03,
+   "eavesM": 10.56,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0.96,
+    "toM": 6.12,
+    "depthM": 1.04,
+    "centre": 0.504,
+    "lineRD": [
+     [
+      123120.325375,
+      485007.87175
+     ],
+     [
+      123122.941375,
+      485002.50575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#684e43",
+    "wallRaw": "#614d45",
+    "skyline": {
+     "eavesM": 12,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 1.8,
+      "topWidthM": 0.13,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 0.97,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1900, type 1921-1924; frontage 7.03 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1921-1924",
+     "frontage 7.03 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.038 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140934",
+   "address": "De la Reijstraat 29A",
+   "builtYear": 1921,
+   "widthM": 5.71,
+   "eavesM": 10.45,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.13,
+    "toM": 2.83,
+    "depthM": 0.33,
+    "centre": 0.346
+   },
+   "strip": {
+    "wall": "#836256",
+    "wallRaw": "#65504a",
+    "skyline": {
+     "eavesM": 9.9,
+     "eavesRow": 204,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.52,
+      "riseM": 2.5,
+      "topWidthM": 1.13,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.101,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 2.33,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.71 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.71 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140132",
+   "address": "De la Reijstraat 31A",
+   "builtYear": 1921,
+   "widthM": 5.83,
+   "eavesM": 10.64,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.15,
+    "toM": 4.71,
+    "depthM": 0.34,
+    "centre": 0.674
+   },
+   "strip": {
+    "wall": "#805e56",
+    "wallRaw": "#634e48",
+    "skyline": {
+     "eavesM": 9.82,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 2.78,
+      "topWidthM": 1.38,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.32,
+       "widthM": 1.13,
+       "centre": 0.66
+      },
+      {
+       "atM": 6.6,
+       "widthM": 2.23,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.83 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.83 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.82 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.053 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098320",
+   "address": "De la Reijstraat 33A",
+   "builtYear": 1921,
+   "widthM": 5.63,
+   "eavesM": 10.68,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.05,
+    "toM": 2.61,
+    "depthM": 0.34,
+    "centre": 0.324
+   },
+   "strip": {
+    "wall": "#745a53",
+    "wallRaw": "#65514b",
+    "skyline": {
+     "eavesM": 9.82,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.78,
+      "topWidthM": 0.78,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.15,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.1,
+       "widthM": 1.32,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.52,
+       "widthM": 1.88,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.63 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.63 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.82 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134611",
+   "address": "De la Reijstraat 35A",
+   "builtYear": 1921,
+   "widthM": 5.66,
+   "eavesM": 10.79,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.15,
+    "toM": 4.7,
+    "depthM": 0.34,
+    "centre": 0.694
+   },
+   "strip": {
+    "wall": "#7f5a52",
+    "wallRaw": "#67514b",
+    "skyline": {
+     "eavesM": 9.8,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 0.82,
+      "topWidthM": 0.82,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.64,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 0.85,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.66 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.66 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.8 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.057 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123796",
+   "address": "De la Reijstraat 37",
+   "builtYear": 1921,
+   "widthM": 7.19,
+   "eavesM": 10.61,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.21,
+    "toM": 2.78,
+    "depthM": 0.42,
+    "centre": 0.278
+   },
+   "strip": {
+    "wall": "#6d4f4a",
+    "wallRaw": "#64514b",
+    "skyline": {
+     "eavesM": 10.8,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 2.22,
+      "topWidthM": 1.2,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.176,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.63,
+       "widthM": 2,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.19 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 7.19 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.8 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.056 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,271 @@
+{
+ "street": "Krugerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:21:30.971Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012145599",
+   "addresses": [
+    "Krugerstraat 26",
+    "Krugerstraat 28A",
+    "Krugerstraat 28D",
+    "Krugerstraat 28G",
+    "Krugerstraat 28N",
+    "Krugerstraat 28F",
+    "Krugerstraat 28K",
+    "Krugerstraat 28E",
+    "Krugerstraat 28C",
+    "Krugerstraat 28L",
+    "Krugerstraat 28H",
+    "Krugerstraat 28B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000797583"
+    },
+    {
+     "address": "Krugerstraat 28D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000797584"
+    },
+    {
+     "address": "Krugerstraat 28G",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000797585"
+    },
+    {
+     "address": "Krugerstraat 28N",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000776503"
+    },
+    {
+     "address": "Krugerstraat 28F",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000768993"
+    },
+    {
+     "address": "Krugerstraat 28K",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000768994"
+    },
+    {
+     "address": "Krugerstraat 28E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000795855"
+    },
+    {
+     "address": "Krugerstraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000768992"
+    },
+    {
+     "address": "Krugerstraat 28L",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001020426"
+    },
+    {
+     "address": "Krugerstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000834152"
+    },
+    {
+     "address": "Krugerstraat 28H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000795856"
+    },
+    {
+     "address": "Krugerstraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000794742"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085617",
+   "addresses": [
+    "Krugerstraat 22",
+    "Krugerstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000715018"
+    },
+    {
+     "address": "Krugerstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000715026"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093949",
+   "addresses": [
+    "Krugerstraat 18",
+    "Krugerstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000715002"
+    },
+    {
+     "address": "Krugerstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000715010"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063602",
+   "addresses": [
+    "Krugerstraat 14",
+    "Krugerstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000714986"
+    },
+    {
+     "address": "Krugerstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000714994"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1595408043,
+     "lngLat": [
+      4.9186846,
+      52.353339
+     ],
+     "tags": {
+      "name": "Taibah",
+      "opening_hours": "Tu-Sa 10:00-18:00; Mo 11:00-18:00",
+      "shop": "butcher"
+     },
+     "fetchedAt": "2026-10-31T15:21:30.971Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012136455",
+   "addresses": [
+    "Krugerstraat 8",
+    "Krugerstraat 10",
+    "Krugerstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 10",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000714965"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236731",
+   "addresses": [
+    "Krugerstraat 4D",
+    "Krugerstraat 4F",
+    "Krugerstraat 4G",
+    "Krugerstraat 4C",
+    "Krugerstraat 4B",
+    "Krugerstraat 4E",
+    "Krugerstraat 4A",
+    "Krugerstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000738129"
+    },
+    {
+     "address": "Krugerstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000736701"
+    },
+    {
+     "address": "Krugerstraat 4F",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000750745"
+    },
+    {
+     "address": "Krugerstraat 4G",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000761370"
+    },
+    {
+     "address": "Krugerstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000737355"
+    },
+    {
+     "address": "Krugerstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000736704"
+    },
+    {
+     "address": "Krugerstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000746153"
+    },
+    {
+     "address": "Krugerstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000736703"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

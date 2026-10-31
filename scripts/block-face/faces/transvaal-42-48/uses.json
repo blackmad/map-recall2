@@ -1,0 +1,84 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:13:39.956Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012138748",
+   "addresses": [
+    "Transvaalstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000830570"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3426809060,
+     "lngLat": [
+      4.9255565,
+      52.3550182
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T16:13:39.956Z",
+     "match": "frontage",
+     "distanceM": 3.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141451",
+   "addresses": [
+    "Transvaalstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000830562"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140529",
+   "addresses": [
+    "Transvaalstraat 44"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071217",
+   "addresses": [
+    "Transvaalstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010003701645"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

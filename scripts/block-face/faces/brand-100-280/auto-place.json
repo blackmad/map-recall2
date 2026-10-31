@@ -1,0 +1,750 @@
+{
+ "face": "brand-100-280",
+ "street": "President Brandstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 4.93,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012126906",
+   "address": "President Brandstraat 236",
+   "builtYear": 1985,
+   "widthM": 14.33,
+   "eavesM": 11.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b7bab3",
+    "wallRaw": "#535648",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 58,
+     "confidence": 0.58,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.33,
+      "topWidthM": 0.65,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.398,
+    "structure": {
+     "bayWidthM": 2.95,
+     "bayCentre": 0.24,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.21 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.15,
+       "light": 0.97
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.21,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.88,
+       "light": 0.05
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.5,
+       "widthM": 1.38,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.57,
+       "centre": 0.31
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.35,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 69 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070809",
+   "address": "President Brandstraat 216",
+   "builtYear": 1985,
+   "widthM": 18,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b6b7b4",
+    "wallRaw": "#b6b6b2",
+    "skyline": {
+     "eavesM": 12.85,
+     "eavesRow": 145,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 3.63,
+      "topWidthM": 0.38,
+      "centre": 0.45
+     }
+    },
+    "stucco": true,
+    "bands": 4,
+    "columns": 11,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.669,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.4 m (1.77 m wide), 6.4 m (3.1 m wide), 5.05 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.13,
+       "widthM": 1.23,
+       "centre": 0.71
+      },
+      {
+       "atM": 9.4,
+       "widthM": 1.77,
+       "centre": 0.88
+      },
+      {
+       "atM": 8.5,
+       "widthM": 1,
+       "centre": 0.67
+      },
+      {
+       "atM": 6.4,
+       "widthM": 3.1,
+       "centre": 0.9
+      },
+      {
+       "atM": 5.35,
+       "widthM": 0.97,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.05,
+       "widthM": 1.32,
+       "centre": 0.7
+      },
+      {
+       "atM": 4.75,
+       "widthM": 1.45,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1985, type 1921-1924; frontage 18 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 9.4 m (1.77 m wide), 6.4 m (3.1 m wide), 5.05 m (1.32 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1985, type 1921-1924",
+     "frontage 18 m, type 8.8-12.9 m",
+     "strip shows balconies (balcony slabs stacked at 9.4 m (1.77 m wide), 6.4 m (3.1 m wide), 5.05 m (1.32 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.583 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100982",
+   "address": "President Brandstraat 196",
+   "builtYear": 1985,
+   "widthM": 15,
+   "eavesM": 14.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b8b7b2",
+    "wallRaw": "#b7b7b1",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 659,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.79,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.68,
+       "centre": 0.22
+      },
+      {
+       "atM": 8.57,
+       "widthM": 1.23,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.15,
+       "centre": 0.23
+      },
+      {
+       "atM": 4.82,
+       "widthM": 0.82,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 5 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078183",
+   "address": "President Brandstraat 176",
+   "builtYear": 1985,
+   "widthM": 18,
+   "eavesM": 14.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bcbab5",
+    "wallRaw": "#b9b8b3",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 51,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 1.07,
+      "topWidthM": 1.43,
+      "centre": 0.9
+     }
+    },
+    "stucco": true,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.656,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.28,
+       "widthM": 1.38,
+       "centre": 0.59
+      },
+      {
+       "atM": 12.22,
+       "widthM": 2.65,
+       "centre": 0.17
+      },
+      {
+       "atM": 11.55,
+       "widthM": 0.95,
+       "centre": 0.4
+      },
+      {
+       "atM": 10.88,
+       "widthM": 1.02,
+       "centre": 0.64
+      },
+      {
+       "atM": 9.3,
+       "widthM": 3,
+       "centre": 0.8
+      },
+      {
+       "atM": 8.32,
+       "widthM": 1.02,
+       "centre": 0.57
+      },
+      {
+       "atM": 4.95,
+       "widthM": 1.45,
+       "centre": 0.38
+      },
+      {
+       "atM": 4.65,
+       "widthM": 1.35,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 46 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012111793",
+   "address": "President Brandstraat 156",
+   "builtYear": 1985,
+   "widthM": 14.5,
+   "eavesM": 14.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b5b2ad",
+    "wallRaw": "#b2b0ab",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 29,
+     "confidence": 0.71,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 7,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.638,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.07,
+       "widthM": 1.8,
+       "centre": 0.45
+      },
+      {
+       "atM": 11.88,
+       "widthM": 1.65,
+       "centre": 0.94
+      },
+      {
+       "atM": 11.35,
+       "widthM": 1.4,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.13,
+       "widthM": 1.8,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1985, type 1921-1924; frontage 14.5 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1985, type 1921-1924",
+     "frontage 14.5 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.578 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148298",
+   "address": "President Brandstraat 136",
+   "builtYear": 1985,
+   "widthM": 18,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c0bdb9",
+    "wallRaw": "#bfbdb8",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 61,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 0.75,
+      "topWidthM": 2.2,
+      "centre": 0.82
+     }
+    },
+    "stucco": true,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.779,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.9 m (1.6 m wide), 8.97 m (2.95 m wide), 8.15 m (2.35 m wide), 6.05 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.9,
+       "widthM": 1.6,
+       "centre": 0.11
+      },
+      {
+       "atM": 11.22,
+       "widthM": 0.8,
+       "centre": 0.37
+      },
+      {
+       "atM": 8.97,
+       "widthM": 2.95,
+       "centre": 0.76
+      },
+      {
+       "atM": 8.15,
+       "widthM": 2.35,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.47,
+       "widthM": 1.18,
+       "centre": 0.96
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.3,
+       "centre": 0.11
+      },
+      {
+       "atM": 5.07,
+       "widthM": 1.13,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1985, type 1921-1924; frontage 18 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 11.9 m (1.6 m wide), 8.97 m (2.95 m wide), 8.15 m (2.35 m wide), 6.05 m (1.3 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1985, type 1921-1924",
+     "frontage 18 m, type 8.8-12.9 m",
+     "strip shows balconies (balcony slabs stacked at 11.9 m (1.6 m wide), 8.97 m (2.95 m wide), 8.15 m (2.35 m wide), 6.05 m (1.3 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.705 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139291",
+   "address": "President Brandstraat 118",
+   "builtYear": 1985,
+   "widthM": 14.5,
+   "eavesM": 14.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#adaaa5",
+    "wallRaw": "#acaaa5",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 44,
+     "confidence": 0.94,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 4,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.624,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.13,
+       "widthM": 0.85,
+       "centre": 0.19
+      },
+      {
+       "atM": 11.47,
+       "widthM": 2.98,
+       "centre": 0.89
+      },
+      {
+       "atM": 8.93,
+       "widthM": 2.73,
+       "centre": 0.14
+      },
+      {
+       "atM": 8.02,
+       "widthM": 1.7,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1985, type 1921-1924; frontage 14.5 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1985, type 1921-1924",
+     "frontage 14.5 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.38 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.51 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012075983",
+   "address": "President Brandstraat 100",
+   "builtYear": 1985,
+   "widthM": 15,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a4a9a5",
+    "wallRaw": "#5b5c50",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 659,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.43 m at 0.33 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.43,
+       "centre": 0.33,
+       "light": 0
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.44,
+       "light": 0.22
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.59,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 1.35,
+       "centre": 0.62
+      },
+      {
+       "atM": 8.68,
+       "widthM": 0.85,
+       "centre": 0.9
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1.52,
+       "centre": 0.65
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1.4,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 8 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

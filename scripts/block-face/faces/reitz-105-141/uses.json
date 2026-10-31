@@ -1,0 +1,169 @@
+{
+ "street": "Reitzstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:38:54.424Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012090381",
+   "addresses": [
+    "Reitzstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Reitzstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000854419"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109806",
+   "addresses": [
+    "Reitzstraat 107",
+    "Reitzstraat 109",
+    "Reitzstraat 111",
+    "Reitzstraat 113",
+    "Reitzstraat 115",
+    "Reitzstraat 117",
+    "Reitzstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Reitzstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000664878"
+    },
+    {
+     "address": "Reitzstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000664880"
+    },
+    {
+     "address": "Reitzstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000664431"
+    },
+    {
+     "address": "Reitzstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000680432"
+    },
+    {
+     "address": "Reitzstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000680436"
+    },
+    {
+     "address": "Reitzstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000664428"
+    },
+    {
+     "address": "Reitzstraat 119",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000664879"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116532",
+   "addresses": [
+    "Reitzstraat 121",
+    "Reitzstraat 123",
+    "Reitzstraat 125",
+    "Reitzstraat 127",
+    "Reitzstraat 129",
+    "Reitzstraat 131",
+    "Reitzstraat 133",
+    "Reitzstraat 135",
+    "Reitzstraat 137",
+    "Reitzstraat 139",
+    "Reitzstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Reitzstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000664883"
+    },
+    {
+     "address": "Reitzstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000664885"
+    },
+    {
+     "address": "Reitzstraat 129",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000680433"
+    },
+    {
+     "address": "Reitzstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000680434"
+    },
+    {
+     "address": "Reitzstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000680437"
+    },
+    {
+     "address": "Reitzstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000680438"
+    },
+    {
+     "address": "Reitzstraat 121",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000664882"
+    },
+    {
+     "address": "Reitzstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000680439"
+    },
+    {
+     "address": "Reitzstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000680435"
+    },
+    {
+     "address": "Reitzstraat 123",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000664881"
+    },
+    {
+     "address": "Reitzstraat 127",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000664884"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

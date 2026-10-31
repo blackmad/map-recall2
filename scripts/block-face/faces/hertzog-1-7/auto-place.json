@@ -1,0 +1,220 @@
+{
+ "face": "hertzog-1-7",
+ "street": "Hertzogstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 0.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012233692",
+   "address": "Hertzogstraat 1A",
+   "builtYear": 1922,
+   "widthM": 24.82,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.23,
+    "toM": 13.66,
+    "depthM": 0.55,
+    "centre": 0.34,
+    "lineRD": [
+     [
+      123450.45137499999,
+      485508.80275
+     ],
+     [
+      123460.605375,
+      485486.46074999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#836653",
+    "wallRaw": "#5b4b3f",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 178,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 7.4,
+      "riseM": 4.45,
+      "topWidthM": 0.23,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 2.8,
+     "bayCentre": 0.82,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.46 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.46,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.97,
+       "widthM": 0.8,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 24.82 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.72 m at 0.46 (light 0.23): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 24.82 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.72 m at 0.46 (light 0.23): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 12 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012061441",
+   "address": "Hertzogstraat 7A",
+   "builtYear": 1922,
+   "widthM": 7.87,
+   "eavesM": 12.55,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.19,
+    "toM": 6.57,
+    "depthM": 0.7,
+    "centre": 0.684,
+    "lineRD": [
+     [
+      123460.605375,
+      485486.46074999997
+     ],
+     [
+      123462.820375,
+      485482.00175
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#534134",
+    "wallRaw": "#564539",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 184,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 1.95,
+      "topWidthM": 1.05,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.08,
+     "bayCentre": 0.7,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.87 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 7.87 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.25 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

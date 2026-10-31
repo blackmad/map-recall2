@@ -34,6 +34,48 @@ mostly the dev server gzipping 15 MB per request and `?roads=bin` removes it;
 the next CPU owner is the feature → ways loop (~60–120 ms, 340k node
 objects), held because `vectorMap` reads the ways shape.
 
+**Transvaalbuurt kit: the first Oud-Oost type library, the `parapet.band` component and the Albert Luthulistraat 25–39 row (2026-10-31, #149).**
+The user photographed Albert Luthulistraat 29–31 and asked for a buurt
+generator; Oud-Oost had none (Transvaalbuurt-West 0.2 %, -Oost 0.1 %
+modelled). The lane surveyed both buurten (`transvaalbuurt-west.json`,
+`transvaalbuurt-oost.json`, 160 intaked faces committed as clustering input)
+and found the survey's proposed faces ran past the 11-degree bend the chunk
+tolerates, so `buurtFaces.ts` now splits a proposed face where the frontage
+bends; the exemplar face `luthuli-21-41` intakes only because of that.
+Against the nearest libraries auto-place placed 8/309 (West) and 11/460
+(Oost) with indische-buurt and 0 with rivierenbuurt. The new library
+`scripts/block-face/types/transvaalbuurt/` holds two 1923 portiek types
+(plain and tower), measured on the 2017-04-06 and 2020-04-29 strips at
+40 px/m: sills 0.58/3.45/6.3/9.3 m, heads 2.03/4.95/7.9/10.9 m, wall top
+12 m, tower top 15.9 m, windows 2.0 m wide, two windows plus the stair axis
+per pand. `FrontIntent.parapet.band` (`buildingRecipe/parapetBand.ts`,
+tested) draws the near-black top courses of the parapet with hanging
+dentils and keeps the tower-top band 5 mm inside the tower's flanks; absent,
+fit-golden is byte-identical. Installed by hand: run face `luthuli-21-41-r1`
+(pands 105200, 142206, 126814, 128866; 6,260 tris; all gates and the GLB
+audit pass), reviewed beside the user's photo: pass. Auto-place with the new
+library placed 6 pands in the two buurten and all 6 were false positives
+(Christiaan de Wetstraat 37–49, a different 1925 design with canopies on
+columns and a crenellated parapet, edge NCC 0.25–0.46; Tugelaweg 50/52, a
+plain cornice front): held in the `-review-holds.json` files, so the library
+yields 0 by auto-place today. Hold reasons over both buurten: 695 faces with
+every type vetoed by build year, 65 with no front on the strip, 17
+single-pand runs, 12 below 0.7, 3 edge NCC, 2 compile. What the kit still
+cannot say on this row: the setback fifth storey behind the parapet with its
+white terrace railings (drawn as a low grey recipe roof because the 3DBAG
+roof drew a bare brick slab: the largest visible gap), the lighter
+header-course brick ladders beside the stair windows (`brickStripes` allows
+one band colour per house, taken by the parapet brick), stair windows half a
+storey above the main line, the tower's two small top lights, slit windows
+and rounded corners, the tower standing 0.63 m proud (drawn flush), number
+plates, mailboxes, rainwater pipes and vents. Integration: exposure rows
+regenerated, covers rebuilt from the published BAG tiles (597/630 models,
+check ok), buurt pages unchanged (78), strips and the user photo archived in
+`map-recall2-source-data` `block-face-strips/luthuli-21-41` (cdd6d94ef),
+What's New note with the photo | strip | model sheet. Next in the buurt: the
+1925 de Wetstraat / Krugerstraat 14–24 design, the 1920–22 three-storey
+pitched rows (85 pands on 46 faces), the Oost 1911–13 five-storey pitched
+rows (about 110 pands), and a flat-roof-with-setback crown.
 **Pins and picks follow the drawn camera when the deck is lifted; the own engine highlights once per change; the flip inventory exists (2026-10-31, #129, L1 hand-back 5).**
 Deck lift: maplibre-gl 5.24 builds the `project`/`unproject` matrix before
 the camera is lifted by the rider's deck elevation, so canvas pins and taps

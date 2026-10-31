@@ -20,7 +20,7 @@ import {accentSideOf, AUTO_PLACE, frontEavesFor, baysFor, crownFor, decidePand, 
 import {measureSkyline} from './stripSkyline.ts';
 import {measureStripStructure, type StripStructure} from './stripStructure.ts';
 import {bestNcc, gradient, type Gray} from './stripLikeness.ts';
-import {pointInPolygon, proposeFaces, streetPrefix, type BuurtPand} from './buurtFaces.ts';
+import {bendRuns, pointInPolygon, proposeFaces, streetPrefix, type BuurtPand} from './buurtFaces.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
 import {validateBlockFace} from './intent.ts';
 import type {StripPalette} from './stripPalette.ts';
@@ -186,6 +186,11 @@ test('buurt faces: parity sides joined by party walls, prefixes', () => {
     rings: [[[x * 5, 0], [x * 5, 10], [x * 5 + 5, 10], [x * 5 + 5, 0], [x * 5, 0]]]});
   const faces = proposeFaces([box(0), box(1), box(2), box(4)]);
   assert.deepEqual(faces.map(f => f.members.length).sort(), [1, 3]);
+  // A bend of 25 degrees (Albert Luthulistraat 19|21) splits the face where a chunk could not hold both fronts.
+  const turn = (b: BuurtPand, deg: number): BuurtPand => ({...b, normal: [Math.sin(deg * Math.PI / 180), -Math.cos(deg * Math.PI / 180)]});
+  const bent = proposeFaces([box(0), box(1), turn(box(2), 25), turn(box(3), 26)]);
+  assert.deepEqual(bent.map(f => [f.id, f.members]), [['s-1-3', ['p0', 'p1']], ['s-5-7', ['p2', 'p3']]]);
+  assert.deepEqual(bendRuns([{normal: [0, -1] as [number, number]}, {normal: [0.1, -0.995] as [number, number]}]).length, 1);
 });
 
 test('green-tile vs tile-bay by the exposure-normalised bay width, not the accent share (Van Effenstraat 9 read 0.48)', () => {

@@ -1,0 +1,210 @@
+{
+ "face": "tugelaweg-132-134",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012093712",
+   "address": "Tugelaweg 132",
+   "builtYear": 1989,
+   "widthM": 4,
+   "eavesM": 14.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a5a4a5",
+    "wallRaw": "#696b5c",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 96,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 2.4,
+      "topWidthM": 0.6,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.174,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.89,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.73,
+       "centre": 0.32
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.07,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924; frontage 4 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924",
+     "frontage 4 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.134 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115065",
+   "address": "Tugelaweg 134A",
+   "builtYear": 1989,
+   "widthM": 8.73,
+   "eavesM": 14.56,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.57,
+    "toM": 2.57,
+    "depthM": 0.65,
+    "centre": 0.294,
+    "lineRD": [
+     [
+      122820.94537500001,
+      485021.77475
+     ],
+     [
+      122820.13037500001,
+      485015.15275
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6f6157",
+    "wallRaw": "#686058",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 72,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 1.8,
+      "topWidthM": 0.45,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.173,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1.5,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.139 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

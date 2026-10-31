@@ -15,6 +15,7 @@ import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
+import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
 import {entablatureProblems} from './entablature.ts';
@@ -580,7 +581,10 @@ export interface FrontIntent {
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
    * top. A crown field; needs `cornice: "none"` and a `flat` or `cornice` gable.
    */
-  parapet?: {courses: number; coping?: boolean};
+  parapet?: {courses: number; coping?: boolean;
+    /** The top `courses` of the parapet in the palette's band brick, with optional hanging dentils (Transvaalbuurt
+     * 1925-30; buildingRecipe/parapetBand.ts). Absent = byte-identical. */
+    band?: ParapetBandIntent};
   /**
    * Flat roof run out over the front as a deep eaves overhang (Plan Zuid rows of 1930-1936, Rivierenbuurt): a slab
    * `fascia` metres thick hanging from the eaves, `projection` metres out, its ends on the party planes so a row reads as

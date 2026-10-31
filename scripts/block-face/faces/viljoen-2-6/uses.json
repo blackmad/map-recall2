@@ -1,0 +1,113 @@
+{
+ "street": "Ben Viljoenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:22:19.598Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147863",
+   "addresses": [
+    "Ben Viljoenstraat 6A",
+    "Ben Viljoenstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000580306"
+    },
+    {
+     "address": "Ben Viljoenstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000580307"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067320",
+   "addresses": [
+    "Ben Viljoenstraat 4A",
+    "Ben Viljoenstraat 4B",
+    "Ben Viljoenstraat 4C",
+    "Ben Viljoenstraat 4D",
+    "Ben Viljoenstraat 6C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580301"
+    },
+    {
+     "address": "Ben Viljoenstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580302"
+    },
+    {
+     "address": "Ben Viljoenstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580303"
+    },
+    {
+     "address": "Ben Viljoenstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000580304"
+    },
+    {
+     "address": "Ben Viljoenstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000580308"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135592",
+   "addresses": [
+    "Ben Viljoenstraat 2A",
+    "Ben Viljoenstraat 2C",
+    "Ben Viljoenstraat 2E",
+    "Ben Viljoenstraat 2F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ben Viljoenstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001030206"
+    },
+    {
+     "address": "Ben Viljoenstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001030207"
+    },
+    {
+     "address": "Ben Viljoenstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001030208"
+    },
+    {
+     "address": "Ben Viljoenstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012152912"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "street": "Transvaalplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012120511",
+   "addresses": [
+    "Transvaalplein 26",
+    "Transvaalplein 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 26",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000830389"
+    },
+    {
+     "address": "Transvaalplein 27",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000830390"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143983",
+   "addresses": [
+    "Transvaalplein 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 28",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000830391"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

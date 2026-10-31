@@ -1,0 +1,112 @@
+{
+ "street": "Christiaan de Wetstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:29:28.086Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126742",
+   "addresses": [
+    "Christiaan de Wetstraat 29A",
+    "Christiaan de Wetstraat 29B",
+    "Christiaan de Wetstraat 29D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000938953"
+    },
+    {
+     "address": "Christiaan de Wetstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000938954"
+    },
+    {
+     "address": "Christiaan de Wetstraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000938957"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092418",
+   "addresses": [
+    "Christiaan de Wetstraat 29C",
+    "Christiaan de Wetstraat 29E",
+    "Christiaan de Wetstraat 29G",
+    "Christiaan de Wetstraat 29F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000938958"
+    },
+    {
+     "address": "Christiaan de Wetstraat 29E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000938959"
+    },
+    {
+     "address": "Christiaan de Wetstraat 29G",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000938960"
+    },
+    {
+     "address": "Christiaan de Wetstraat 29F",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000938961"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102500",
+   "addresses": [
+    "Christiaan de Wetstraat 31A",
+    "Christiaan de Wetstraat 31B",
+    "Christiaan de Wetstraat 31C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Reitzstraat 145",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000938947"
+    },
+    {
+     "address": "Christiaan de Wetstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000938950"
+    },
+    {
+     "address": "Christiaan de Wetstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000938951"
+    },
+    {
+     "address": "Christiaan de Wetstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000938952"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

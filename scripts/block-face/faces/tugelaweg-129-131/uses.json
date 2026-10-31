@@ -1,0 +1,111 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:49:29.075Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012086208",
+   "addresses": [
+    "Tugelaweg 129",
+    "Tugelaweg 130A",
+    "Tugelaweg 130C",
+    "Tugelaweg 130D",
+    "Tugelaweg 130E",
+    "Tugelaweg 130B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 129",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000831678"
+    },
+    {
+     "address": "Tugelaweg 130A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000831679"
+    },
+    {
+     "address": "Tugelaweg 130C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831681"
+    },
+    {
+     "address": "Tugelaweg 130D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000831682"
+    },
+    {
+     "address": "Tugelaweg 130E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000989448"
+    },
+    {
+     "address": "Tugelaweg 130B",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000831680"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126387",
+   "addresses": [
+    "Tugelaweg 131A",
+    "Tugelaweg 131B",
+    "Tugelaweg 131C",
+    "Tugelaweg 131D",
+    "Tugelaweg 131E",
+    "Tugelaweg 131F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 131A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000831683"
+    },
+    {
+     "address": "Tugelaweg 131B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000831684"
+    },
+    {
+     "address": "Tugelaweg 131C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000831685"
+    },
+    {
+     "address": "Tugelaweg 131D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000831686"
+    },
+    {
+     "address": "Tugelaweg 131E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000831687"
+    },
+    {
+     "address": "Tugelaweg 131F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000989449"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

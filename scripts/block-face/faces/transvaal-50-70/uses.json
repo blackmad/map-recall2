@@ -1,0 +1,121 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:14:44.620Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012132650",
+   "addresses": [
+    "Transvaalstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000830637"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233572",
+   "addresses": [
+    "Transvaalstraat 62",
+    "Transvaalstraat 64",
+    "Transvaalstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000830613"
+    },
+    {
+     "address": "Transvaalstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000830628"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236740",
+   "addresses": [
+    "Transvaalstraat 58",
+    "Transvaalstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000830604"
+    },
+    {
+     "address": "Transvaalstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000830609"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066368",
+   "addresses": [
+    "Transvaalstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000830598"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098835",
+   "addresses": [
+    "Transvaalstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000830590"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097703",
+   "addresses": [
+    "Transvaalstraat 50",
+    "Transvaalstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 50",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000830578"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

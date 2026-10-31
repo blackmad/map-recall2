@@ -1,0 +1,319 @@
+{
+ "street": "President Steynstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079037",
+   "addresses": [
+    "President Steynstraat 56",
+    "President Steynstraat 58",
+    "President Steynstraat 60",
+    "President Steynstraat 62",
+    "President Steynstraat 64",
+    "President Steynstraat 66",
+    "President Steynstraat 68",
+    "President Steynstraat 70",
+    "President Steynstraat 72",
+    "President Steynstraat 74",
+    "President Steynstraat 76",
+    "President Steynstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000716309"
+    },
+    {
+     "address": "President Steynstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000717638"
+    },
+    {
+     "address": "President Steynstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000717639"
+    },
+    {
+     "address": "President Steynstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000716677"
+    },
+    {
+     "address": "President Steynstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000716678"
+    },
+    {
+     "address": "President Steynstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000716030"
+    },
+    {
+     "address": "President Steynstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000718972"
+    },
+    {
+     "address": "President Steynstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000718974"
+    },
+    {
+     "address": "President Steynstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000719643"
+    },
+    {
+     "address": "President Steynstraat 78",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000719673"
+    },
+    {
+     "address": "President Steynplantsoen 4",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000722988"
+    },
+    {
+     "address": "President Steynplantsoen 5",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000723082"
+    },
+    {
+     "address": "President Steynplantsoen 6",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000723144"
+    },
+    {
+     "address": "President Steynstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000715937"
+    },
+    {
+     "address": "President Steynplantsoen 7",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000723236"
+    },
+    {
+     "address": "President Steynstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000715689"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141663",
+   "addresses": [
+    "President Steynstraat 32",
+    "President Steynstraat 34",
+    "President Steynstraat 36",
+    "President Steynstraat 38",
+    "President Steynstraat 40",
+    "President Steynstraat 42",
+    "President Steynstraat 44",
+    "President Steynstraat 46",
+    "President Steynstraat 48",
+    "President Steynstraat 52",
+    "President Steynstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000724166"
+    },
+    {
+     "address": "President Steynstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000724383"
+    },
+    {
+     "address": "President Steynstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000724474"
+    },
+    {
+     "address": "President Steynstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000724475"
+    },
+    {
+     "address": "President Steynstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000725311"
+    },
+    {
+     "address": "President Steynstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001014336"
+    },
+    {
+     "address": "President Steynstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000989359"
+    },
+    {
+     "address": "President Steynstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000723299"
+    },
+    {
+     "address": "President Steynstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000724413"
+    },
+    {
+     "address": "President Steynstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000724476"
+    },
+    {
+     "address": "President Steynstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000723298"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091191",
+   "addresses": [
+    "President Steynstraat 4",
+    "President Steynstraat 6",
+    "President Steynstraat 8",
+    "President Steynstraat 10",
+    "President Steynstraat 12",
+    "President Steynstraat 14",
+    "President Steynstraat 16",
+    "President Steynstraat 18",
+    "President Steynstraat 20",
+    "President Steynstraat 22",
+    "President Steynstraat 24",
+    "President Steynstraat 26",
+    "President Steynstraat 28",
+    "President Steynstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000727482"
+    },
+    {
+     "address": "President Steynstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000728194"
+    },
+    {
+     "address": "President Steynstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000729961"
+    },
+    {
+     "address": "President Steynstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000727883"
+    },
+    {
+     "address": "President Steynstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000727884"
+    },
+    {
+     "address": "President Steynstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000730457"
+    },
+    {
+     "address": "President Steynstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000732410"
+    },
+    {
+     "address": "President Steynstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000732530"
+    },
+    {
+     "address": "President Steynstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000732531"
+    },
+    {
+     "address": "President Steynstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000732532"
+    },
+    {
+     "address": "President Steynstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000732533"
+    },
+    {
+     "address": "President Steynstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000732534"
+    },
+    {
+     "address": "President Steynstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000732286"
+    },
+    {
+     "address": "President Steynstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000732782"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

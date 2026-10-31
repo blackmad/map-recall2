@@ -1,0 +1,150 @@
+{
+ "street": "Laing's Nekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:17:11.809Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012084518",
+   "addresses": [
+    "Laing's Nekstraat 150",
+    "Laing's Nekstraat 152",
+    "Laing's Nekstraat 154",
+    "Laing's Nekstraat 156",
+    "Laing's Nekstraat 158",
+    "Laing's Nekstraat 160",
+    "Laing's Nekstraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 150",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000946375"
+    },
+    {
+     "address": "Laing's Nekstraat 152",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000946376"
+    },
+    {
+     "address": "Laing's Nekstraat 154",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000946377"
+    },
+    {
+     "address": "Laing's Nekstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000946378"
+    },
+    {
+     "address": "Laing's Nekstraat 158",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000946379"
+    },
+    {
+     "address": "Laing's Nekstraat 160",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000946380"
+    },
+    {
+     "address": "Laing's Nekstraat 162",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000946381"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086961141,
+     "lngLat": [
+      4.9247575,
+      52.354002
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T14:17:11.809Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153820",
+   "addresses": [
+    "Laing's Nekstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001019064"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152803",
+   "addresses": [
+    "Laing's Nekstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000717088"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233525",
+   "addresses": [
+    "Laing's Nekstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 95",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000830734"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4909407291,
+     "lngLat": [
+      4.9243238,
+      52.3542701
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "95",
+      "addr:postcode": "1092HG",
+      "addr:street": "Transvaalstraat",
+      "craft": "caterer",
+      "name": "Tandoori Hoek"
+     },
+     "fetchedAt": "2026-10-31T14:17:11.809Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

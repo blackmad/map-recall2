@@ -1,0 +1,105 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:48:40.165Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012086284",
+   "addresses": [
+    "Tugelaweg 123",
+    "Tugelaweg 124A",
+    "Tugelaweg 124B",
+    "Tugelaweg 124C",
+    "Tugelaweg 124D",
+    "Tugelaweg 124E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 123",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000831653"
+    },
+    {
+     "address": "Tugelaweg 124A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000831654"
+    },
+    {
+     "address": "Tugelaweg 124B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000831655"
+    },
+    {
+     "address": "Tugelaweg 124C",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000831656"
+    },
+    {
+     "address": "Tugelaweg 124E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000989444"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079451",
+   "addresses": [
+    "Tugelaweg 125A",
+    "Tugelaweg 125B",
+    "Tugelaweg 125C",
+    "Tugelaweg 125D",
+    "Tugelaweg 125E",
+    "Tugelaweg 125F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 125A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000831658"
+    },
+    {
+     "address": "Tugelaweg 125B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000831659"
+    },
+    {
+     "address": "Tugelaweg 125C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000831660"
+    },
+    {
+     "address": "Tugelaweg 125D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000831661"
+    },
+    {
+     "address": "Tugelaweg 125E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000831662"
+    },
+    {
+     "address": "Tugelaweg 125F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000989445"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

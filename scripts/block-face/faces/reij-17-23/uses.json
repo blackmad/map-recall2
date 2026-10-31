@@ -1,0 +1,85 @@
+{
+ "street": "De la Reijstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:44:56.576Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107235",
+   "addresses": [
+    "De la Reijstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 17",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000617889"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074114",
+   "addresses": [
+    "De la Reijstraat 19",
+    "De la Reijstraat 21",
+    "De la Reijstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000617891"
+    },
+    {
+     "address": "De la Reijstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000617893"
+    },
+    {
+     "address": "De la Reijstraat 23",
+     "use": "industriefunctie",
+     "areaM2": 4,
+     "bagId": "0363010000617895"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14108473644,
+     "lngLat": [
+      4.9190574,
+      52.3521951
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:44:56.576Z",
+     "match": "frontage",
+     "distanceM": 6.9
+    },
+    {
+     "type": "node",
+     "id": 14232418491,
+     "lngLat": [
+      4.9190765,
+      52.3522019
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-31T14:44:56.576Z",
+     "match": "frontage",
+     "distanceM": 6.8
+    }
+   ]
+  }
+ ]
+}

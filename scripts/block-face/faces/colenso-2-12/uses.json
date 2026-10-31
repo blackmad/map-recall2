@@ -1,0 +1,48 @@
+{
+ "street": "Colensostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126367",
+   "addresses": [
+    "Colensostraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 6",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 6,
+     "bagId": "0363010000606424"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113844",
+   "addresses": [
+    "Colensostraat 2",
+    "Colensostraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 2",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000606420"
+    },
+    {
+     "address": "Colensostraat 4",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000606422"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

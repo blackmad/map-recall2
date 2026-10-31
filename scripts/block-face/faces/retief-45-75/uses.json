@@ -1,0 +1,427 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:17:52.539Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012068243",
+   "addresses": [
+    "Retiefstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000791664"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123300",
+   "addresses": [
+    "Retiefstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000791672"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080801",
+   "addresses": [
+    "Retiefstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000791680"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133126",
+   "addresses": [
+    "Retiefstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000791688"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119451",
+   "addresses": [
+    "Retiefstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000791694"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105469",
+   "addresses": [
+    "Retiefstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000791702"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154435",
+   "addresses": [
+    "Retiefstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000791710"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136245",
+   "addresses": [
+    "Retiefstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000791717"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144201",
+   "addresses": [
+    "Retiefstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000791724"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10979435695,
+     "lngLat": [
+      4.9221198,
+      52.3555106
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "capacity": "60",
+      "noname": "yes",
+      "panoramax": "b1c3da85-aab6-4c6f-91a5-737d306fff5f"
+     },
+     "fetchedAt": "2026-10-31T15:17:52.539Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092019",
+   "addresses": [
+    "Retiefstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001002047"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10979435695,
+     "lngLat": [
+      4.9221198,
+      52.3555106
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "capacity": "60",
+      "noname": "yes",
+      "panoramax": "b1c3da85-aab6-4c6f-91a5-737d306fff5f"
+     },
+     "fetchedAt": "2026-10-31T15:17:52.539Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012074312",
+   "addresses": [
+    "Retiefstraat 65A",
+    "Retiefstraat 65B",
+    "Retiefstraat 65C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791738"
+    },
+    {
+     "address": "Retiefstraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791739"
+    },
+    {
+     "address": "Retiefstraat 65C",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000791740"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120175",
+   "addresses": [
+    "Retiefstraat 67B",
+    "Retiefstraat 67C",
+    "Retiefstraat 67D",
+    "Retiefstraat 67E",
+    "Retiefstraat 67A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 67B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791745"
+    },
+    {
+     "address": "Retiefstraat 67C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791746"
+    },
+    {
+     "address": "Retiefstraat 67D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791747"
+    },
+    {
+     "address": "Retiefstraat 67E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000791748"
+    },
+    {
+     "address": "Retiefstraat 67A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000791744"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112323",
+   "addresses": [
+    "Retiefstraat 69C",
+    "Retiefstraat 69A",
+    "Retiefstraat 69B",
+    "Retiefstraat 69D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 69C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791751"
+    },
+    {
+     "address": "Retiefstraat 69A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000791749"
+    },
+    {
+     "address": "Retiefstraat 69B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791750"
+    },
+    {
+     "address": "Retiefstraat 69D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791752"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129491",
+   "addresses": [
+    "Retiefstraat 71D",
+    "Retiefstraat 71A",
+    "Retiefstraat 71B",
+    "Retiefstraat 71C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 71D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791756"
+    },
+    {
+     "address": "Retiefstraat 71A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791753"
+    },
+    {
+     "address": "Retiefstraat 71B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791754"
+    },
+    {
+     "address": "Retiefstraat 71C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791755"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067013",
+   "addresses": [
+    "Retiefstraat 73A",
+    "Retiefstraat 73C",
+    "Retiefstraat 73B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 73A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000791757"
+    },
+    {
+     "address": "Retiefstraat 73C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000791759"
+    },
+    {
+     "address": "Retiefstraat 73B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000791758"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138910",
+   "addresses": [
+    "Retiefstraat 75A",
+    "Retiefstraat 75E",
+    "Retiefstraat 75B",
+    "Retiefstraat 75C",
+    "Retiefstraat 75D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 75A",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001024060"
+    },
+    {
+     "address": "Retiefstraat 75E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001024062"
+    },
+    {
+     "address": "Retiefstraat 75B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791761"
+    },
+    {
+     "address": "Retiefstraat 75C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000791762"
+    },
+    {
+     "address": "Retiefstraat 75D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000791763"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

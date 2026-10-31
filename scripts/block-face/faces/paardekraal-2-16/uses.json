@@ -1,0 +1,143 @@
+{
+ "street": "Paardekraalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:46:22.472Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012097625",
+   "addresses": [
+    "Paardekraalstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000770290"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138083",
+   "addresses": [
+    "Paardekraalstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000770282"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075886",
+   "addresses": [
+    "Paardekraalstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000770274"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145188",
+   "addresses": [
+    "Paardekraalstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000770270"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087890",
+   "addresses": [
+    "Paardekraalstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000770262"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139936",
+   "addresses": [
+    "Paardekraalstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000770254"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115848",
+   "addresses": [
+    "Paardekraalstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000770246"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144997",
+   "addresses": [
+    "Paardekraalstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010002005033"
+    },
+    {
+     "address": "Paardekraalstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012161848"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

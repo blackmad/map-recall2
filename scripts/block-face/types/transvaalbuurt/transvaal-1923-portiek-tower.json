@@ -1,0 +1,202 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1923-portiek-tower",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt-West 1922-23 portiek blocks (Albert Luthulistraat 29-31 and 37-39): a dark red-brown brick front of four storeys, one big white three-light window either side of a broad brick stair tower that rises about 4 m over the 11.8 m wall top; the tower's stair windows sit on its axis between header-course brick ladders, a flat concrete canopy over the portiek door at its foot; a dark glazed-brick parapet band with hanging dentils under a thin coping runs the row and crowns the tower",
+ "fit": {
+  "widthM": [
+   8.8,
+   12.9
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1921,
+   1924
+  ],
+  "eavesM": [
+   11.4,
+   15.8
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "frontEavesM": 12.1,
+  "note": "the tower pands of the 1922-23 Albert Luthulistraat rows (BAG 1923; 3DBAG eaves 15.2-15.3 m read the tower); the strip skyline reads the tower top (15.7 m on 128866), 3DBAG eaves 15.2-15.3 m. No roof criterion: the setback fifth storey behind the parapet reads as a 3.0-3.6 m roof rise on 3DBAG. The two types are told apart by that skyline (frontSkylineM)",
+  "frontSkylineM": 15.7
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "axisGrid": 5,
+  "cornice": "none",
+  "windows": "casement-triple",
+  "storeyHeights": [
+   3.0,
+   2.85,
+   2.85,
+   2.66
+  ],
+  "windowHeights": [
+   0.48,
+   0.53,
+   0.56,
+   0.6
+  ],
+  "headLines": [
+   0.68,
+   0.68,
+   0.72,
+   0.83
+  ],
+  "bayWidths": [
+   2.4,
+   2.75,
+   1.2,
+   2.75,
+   3.3
+  ],
+  "bayFill": [
+   0.9,
+   0.3,
+   0.72,
+   0.3,
+   0.62
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    2,
+    4
+   ],
+   "1": [
+    0,
+    2,
+    4
+   ],
+   "2": [
+    0,
+    2,
+    4
+   ],
+   "3": [
+    0,
+    2,
+    4
+   ]
+  },
+  "axisWindows": {
+   "2": "plain"
+  }
+ },
+ "crowns": {
+  "tower": {
+   "gable": "flat",
+   "parapet": {
+    "courses": 8,
+    "coping": true,
+    "band": {
+     "courses": 5,
+     "dentils": {
+      "pitch": 0.5,
+      "courses": 2
+     }
+    }
+   },
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 3
+    },
+    "rise": 1.44,
+    "cap": "flat"
+   },
+   "note": "Albert Luthulistraat 29-31 (142206): wall top 11.8 m, tower 2.25-8.95 m from the pand's left, top 15.9 m (rise 4.1 m = 1.44 upper storeys), the dark band with dentils under the coping and again under the tower top"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 1,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.2,
+    "overhang": 0.2,
+    "gap": 0.2,
+    "doorOverhang": 0.4,
+    "colour": "#8e8c86"
+   },
+   "note": "the portiek door on the stair axis under a flat concrete canopy (2.65-3.15 m, about 3.5 m wide); mailboxes either side"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7c4b3e",
+   "frame": "#e8e6de",
+   "door": "#8a2a2c",
+   "stone": "#8e8c86",
+   "band": "#2e2826",
+   "cornice": "#3a3432"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "rhythm": {
+  "bays": "a window bay, the broad stair tower, a window bay",
+  "identicalBays": "no: the tower bay is broad",
+  "windowsPerStorey": "ground: window + portiek door + window | 1-3: window + stair window + window",
+  "symmetry": "near symmetric about the tower",
+  "groundFloor": "one portiek door under a flat concrete canopy, two windows",
+  "signage": "none",
+  "roofline": "flat, a dark brick parapet band with dentils; the tower a storey and a half over it",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "luthuli-21-41",
+   "pands": [
+    "142206",
+    "128866"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, pavement at y 638 px: 142206 (12.4 m) windows 0.1-2.1 and 9.2-11.2 m, 2.0 m wide; sills 0.58 / 3.45 / 6.3 / 9.3 m, heads 2.03 / 4.95 / 7.9 / 10.9 m; wall top 11.8 m; tower 2.25-8.95 m, top 15.9 m, stair windows 0.87 m wide on its axis; canopy 2.65-3.15 m over the door 0.08-2.45 m. 128866 (9.2 m) the same at 9.2 m with a 6 m tower"
+  },
+  {
+   "face": "luthuli-21-41",
+   "pands": [
+    "142206"
+   ],
+   "citation": "user photo 2026-10-31 (staging/block-face/transvaalbuurt/user-photo-albert-luthulistraat-29-31.png): the near-black glazed parapet band with hanging dentils under a thin coping, white frames, the brick ladder up the tower, the concrete canopy"
+  }
+ ],
+ "schemaLimits": [
+  "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn",
+  "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn",
+  "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line",
+  "the narrow slit lights flanking the tower and the tower's two small square top lights (drawn as one centred light)",
+  "the tower projects a little and its top corners are rounded; drawn flush and square"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}
