@@ -89,8 +89,16 @@ export const TUNNEL_FLOOR_TOL_M = 1;
 /** Parapet on the wall top, metres high and thick. */
 export const PARAPET_M = 1.0;
 export const PARAPET_T = 0.45;
-/** The gutter along a wall's foot, metres wide: a dark line that draws the wall's base on the phone frame. */
-export const GUTTER_M = 0.4;
+/**
+ * The shade band on the floor along a wall (the wall's own shadow and the occlusion of its corner): this share of the
+ * wall's depth wide, within [SHADE_MIN_M, SHADE_MAX_M], darkest at the foot. It lies over the carriageway's bands (at
+ * SHADE_LIFT_M over the floor, above their 0.03 m), which otherwise cover the foot to the wall (round 3's gutter did not
+ * show on the phone frame for that reason).
+ */
+export const SHADE_PER_M = 0.35;
+export const SHADE_MIN_M = 0.6;
+export const SHADE_MAX_M = 2.5;
+export const SHADE_LIFT_M = 0.06;
 /** Clear height of a portal's mouth (motor tunnel), metres. */
 export const PORTAL_CLEAR_M = 4.6;
 /** A slot's portal lintel: the embankment must stand this far over the floor at the tunnel's end, metres; its clear height. */
@@ -109,20 +117,29 @@ export const MERGE_GAP_M = 12;
 export const MERGE_FLOOR_M = 1.2;
 /** …and the relief between them stands at most this over the higher floor (a median island or barrier, not a berm). */
 export const MERGE_BERM_M = 1.6;
+/** A wider gap (up to this, metres) merges only when its relief lies flat on the floors (within MERGE_FLAT_M): a
+ *  sunken verge where the carriageways part toward the portal (the IJ-tunnel south ramp's 12-14 m wedge, round 4). */
+export const MERGE_WIDE_GAP_M = 20;
+export const MERGE_FLAT_M = 0.5;
 /** Coping lip on the trench face, metres, and its overhang. */
 export const COPING_LIP_M = 0.18;
 export const COPING_OVER_M = 0.08;
 
 /**
- * Colours (sRGB), after the aimed panoramas (data.amsterdam.nl, IJ-tunnel south ramp): weathered in-situ concrete,
- * stained dark at the foot (run-off, tyre spray) and paler toward the top, under a pale precast coping that draws the
- * cut's edge as a line at chase distance; the land-side face of the parapet is the paler concrete; the mouth is dark.
+ * Colours (sRGB): weathered in-situ concrete, stained dark at the foot (run-off, tyre spray) and paler toward the
+ * top, under a dark grey coping. The panoramas (data.amsterdam.nl, IJ-tunnel south ramp) show a paler face in
+ * sunlight, but at the chase camera's distance on a phone the cut reads only by contrast with the pale pavement around
+ * it, so the face and coping are kept darker than the photo. The land-side face of the parapet is the paler concrete;
+ * the mouth is dark.
  */
 export const TUNNEL_COLOURS = {
-  wallFoot: [0.22, 0.215, 0.205] as RGB, wallTop: [0.46, 0.455, 0.44] as RGB, coping: [0.9, 0.895, 0.87] as RGB, parapet: [0.64, 0.63, 0.6] as RGB,
-  /** The parapet's top: weathered mid-grey, so the pale lip and the pale pavement behind it frame a dark line from above. */
-  cap: [0.5, 0.495, 0.48] as RGB,
-  gutter: [0.12, 0.12, 0.125] as RGB,
+  wallFoot: [0.2, 0.195, 0.185] as RGB, wallTop: [0.38, 0.375, 0.36] as RGB, coping: [0.42, 0.415, 0.4] as RGB, parapet: [0.64, 0.63, 0.6] as RGB,
+  /** The parapet's top: dark weathered grey. From the chase camera the wall nearest it shows only its top, so the
+   *  coping and cap draw the trench's edge as a dark line against the pale pavement (round 4: a pale coping and a
+   *  pale face vanished into the quay on the phone frame). */
+  cap: [0.34, 0.335, 0.32] as RGB,
+  /** The shade band: darkest at the wall's foot, its outer edge still darker than the carriageway. */
+  shadeFoot: [0.07, 0.07, 0.08] as RGB, shadeEdge: [0.2, 0.2, 0.21] as RGB,
   mouth: [0.04, 0.045, 0.05] as RGB, headwall: [0.52, 0.515, 0.495] as RGB,
 };
 
@@ -182,6 +199,12 @@ export interface Cut {
    * merged), and the neighbour's floor there. The gap (a median between carriageways) lies on the floors.
    */
   gapL?: number[]; gapR?: number[]; nfL?: number[]; nfR?: number[];
+  /**
+   * A raised median toward a neighbouring cut of the same trench that did not merge (its relief stands over
+   * MERGE_BERM_M): the width from this strip's edge to the neighbour's, metres (0: none). Drawn as grass on the land
+   * between the two walls (cutMedianQuads).
+   */
+  medL?: number[]; medR?: number[];
   portals: CutPortal[];
   bbox: [number, number, number, number];
 }
@@ -682,14 +705,15 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
 export function mergeNeighbours(cuts: readonly Cut[], ground?: HeightFn): number {
   let merged = 0;
   for (const c of cuts) {
-    const n = c.x.length, others = cuts.filter(o => o !== c && o.bbox[0] <= c.bbox[2] + MERGE_GAP_M && o.bbox[2] >= c.bbox[0] - MERGE_GAP_M && o.bbox[1] <= c.bbox[3] + MERGE_GAP_M && o.bbox[3] >= c.bbox[1] - MERGE_GAP_M);
+    const G = MERGE_WIDE_GAP_M, n = c.x.length, others = cuts.filter(o => o !== c && o.bbox[0] <= c.bbox[2] + G && o.bbox[2] >= c.bbox[0] - G && o.bbox[1] <= c.bbox[3] + G && o.bbox[3] >= c.bbox[1] - G);
     c.gapL = new Array(n).fill(0); c.gapR = new Array(n).fill(0); c.nfL = c.floor.slice(); c.nfR = c.floor.slice();
+    c.medL = new Array(n).fill(0); c.medR = new Array(n).fill(0);
     if (!others.length) continue;
     for (const sg of [1, -1] as const) {
-      const gap = sg > 0 ? c.gapL : c.gapR, nf = sg > 0 ? c.nfL : c.nfR;
+      const gap = sg > 0 ? c.gapL : c.gapR, nf = sg > 0 ? c.nfL : c.nfR, med = sg > 0 ? c.medL : c.medR;
       for (let i = 0; i < n; i++) {
         const [nx, ny] = normalAt(c, i), r = sg > 0 ? c.left[i] : c.right[i];
-        for (let d = 0.25; d <= MERGE_GAP_M; d += 0.5) {
+        for (let d = 0.25; d <= MERGE_WIDE_GAP_M; d += 0.5) {
           const px = c.x[i] + nx * sg * (r + d), py = c.y[i] + ny * sg * (r + d);
           let hit: CutHit | null = null;
           for (const o of others) {
@@ -701,7 +725,7 @@ export function mergeNeighbours(cuts: readonly Cut[], ground?: HeightFn): number
           if (Math.abs(hit.floor - c.floor[i]) > MERGE_FLOOR_M) break;
           let rise = 0;
           if (ground) for (let e = 0.5; e < d; e += 1) rise = Math.max(rise, ground(c.x[i] + nx * sg * (r + e), c.y[i] + ny * sg * (r + e)) - Math.max(hit.floor, c.floor[i]));
-          if (rise > MERGE_BERM_M) break;
+          if (rise > (d > MERGE_GAP_M ? MERGE_FLAT_M : MERGE_BERM_M)) { if (d <= MERGE_GAP_M) med[i] = d; break; }
           gap[i] = Math.max(d, 0.01); nf[i] = hit.floor;
           break;
         }
@@ -828,12 +852,13 @@ export function cutMedianQuads(c: Cut, owns: (x: number, y: number) => boolean):
   const out: Vec2[][] = [];
   if (!c.gapL || !c.gapR) return out;
   for (const sg of [1, -1] as const) {
-    const gap = sg > 0 ? c.gapL : c.gapR, reach = sg > 0 ? c.left : c.right;
+    const gap = sg > 0 ? c.gapL : c.gapR, med = (sg > 0 ? c.medL : c.medR) ?? [], wall = sg > 0 ? c.wallL : c.wallR, reach = sg > 0 ? c.left : c.right;
     for (let i = 0; i + 1 < c.x.length; i++) {
-      if (gap[i] < MEDIAN_GRASS_MIN_M || gap[i + 1] < MEDIAN_GRASS_MIN_M) continue;
       if (!owns((c.x[i] + c.x[i + 1]) / 2, (c.y[i] + c.y[i + 1]) / 2)) continue;
       const at = (k: number, extra: number): Vec2 => { const [nx, ny] = normalAt(c, k), r = reach[k] + extra; return [c.x[k] + nx * sg * r, c.y[k] + ny * sg * r]; };
-      out.push([at(i, 0), at(i + 1, 0), at(i + 1, gap[i + 1] / 2 + 0.05), at(i, gap[i] / 2 + 0.05)]);
+      if (gap[i] >= MEDIAN_GRASS_MIN_M && gap[i + 1] >= MEDIAN_GRASS_MIN_M) out.push([at(i, 0), at(i + 1, 0), at(i + 1, gap[i + 1] / 2 + 0.05), at(i, gap[i] / 2 + 0.05)]);
+      // A raised median between two walls: grass from behind this wall's parapet to the middle.
+      else if (wall[i] && wall[i + 1] && Math.min(med[i] ?? 0, med[i + 1] ?? 0) / 2 - PARAPET_T >= MEDIAN_GRASS_MIN_M / 2) out.push([at(i, PARAPET_T), at(i + 1, PARAPET_T), at(i + 1, med[i + 1] / 2 + 0.05), at(i, med[i] / 2 + 0.05)]);
     }
   }
   return out;
@@ -882,9 +907,10 @@ export function cutMeshes(c: Cut, owns: (x: number, y: number) => boolean): CutM
       quad(walls, [[ao[0], ao[1], ta], [bo[0], bo[1], tb], [bm[0], bm[1], tb], [am[0], am[1], ta]], [0, 0, 1], C.coping);
       quad(walls, [[am[0], am[1], ta], [bm[0], bm[1], tb], [b2[0], b2[1], tb], [a2[0], a2[1], ta]], [0, 0, 1], C.cap);
       quad(walls, [[a2[0], a2[1], ta], [b2[0], b2[1], tb], [b2[0], b2[1], rim[i + 1] - 0.4], [a2[0], a2[1], rim[i] - 0.4]], [-into[0], -into[1], 0], C.parapet);
-      // The gutter: a dark strip on the floor along the foot (under the bands' lift, over the floor's).
-      const ag = edge(i, sg, -GUTTER_M), bg = edge(i + 1, sg, -GUTTER_M), zg = FLOOR_LIFT_M + 0.008;
-      quad(walls, [[ag[0], ag[1], c.floor[i] + zg], [bg[0], bg[1], c.floor[i + 1] + zg], [b[0], b[1], c.floor[i + 1] + zg], [a[0], a[1], c.floor[i] + zg]], [0, 0, 1], C.gutter);
+      // The shade band: on the floor along the foot, over the carriageway's bands, as wide as a share of the depth.
+      const wa = Math.max(SHADE_MIN_M, Math.min(SHADE_MAX_M, SHADE_PER_M * (rim[i] - c.floor[i]))), wb = Math.max(SHADE_MIN_M, Math.min(SHADE_MAX_M, SHADE_PER_M * (rim[i + 1] - c.floor[i + 1])));
+      const ag = edge(i, sg, -wa), bg = edge(i + 1, sg, -wb), za = c.floor[i] + SHADE_LIFT_M, zb = c.floor[i + 1] + SHADE_LIFT_M;
+      quad(walls, [[ag[0], ag[1], za], [bg[0], bg[1], zb], [b[0], b[1], zb], [a[0], a[1], za]], [0, 0, 1], [C.shadeEdge, C.shadeEdge, C.shadeFoot, C.shadeFoot]);
       walled++;
     }
   }

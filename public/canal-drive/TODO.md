@@ -2288,13 +2288,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after round 3).**
-  - Phone-frame walls are still faint at the IJ ramp after round 3's coping and gutter line; the cut reads through the mouths. It may need a wall shadow or AO, not more colour.
-  - The IJ median wedge still looks pale on the phone, despite the park drape.
-  - Motor approaches still uncut (8/59), with reasons in `probe-portal-misses.ts`:
-    - Michiel de Ruijter west has no mouth (the DTM reads under the IJsei deck; it needs a structure layer);
-    - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
-  - The Piet Hein east camera frames the ramp from the side; re-aim it.
+- **Tunnel cuts: follow-ups (2026-10-31, after round 4).**
+  - Phone walls read only modestly. The near wall's face is out of view from the chase camera; the next idea is a vertical face that catches the key light, tested with the rider inside the trench, which needs a camera override.
+  - Stationsweg (outside the city): a wall-plus-bank profile would give it a cut.
+  - The Piet Hein east west-facing shot needs a camera override; the rider spawns on the path west of the portal.
+  - `tunnel-places-shots.mjs` `BUNDLES_DIR` does not reach the own-ground worker. Stage bundles into `public/canal-drive/js` for after-shots, or fix the harness by serving the worker from a swapped path.
 
 - **Movable bridges: what the kit still cannot say (after bridge kit round 2, 2026-10-31).**
   - Ezelsbrug: more fanning stays; round-ended piers.

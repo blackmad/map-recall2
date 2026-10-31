@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
+import { cutMedianQuads, insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
 import { describeCut } from './probe-cuts.ts';
 import { TUNNEL_SITES, type TunnelSite } from '../../src/canalRecall/ownGround/tunnelRegressions.ts';
 
@@ -60,6 +60,13 @@ for (const site of TUNNEL_SITES) {
     for (let a = 0; a < 16; a++) for (const r of [2, 4, 6, 8]) { const v = s.cutFloor(qx + Math.cos(a * Math.PI / 8) * r, qy + Math.sin(a * Math.PI / 8) * r); if (v === v) { lo = Math.min(lo, v); hi = Math.max(hi, v); } }
     console.log(`  ground at ${q.join(',')}: ${g.toFixed(2)}, cut floors around ${lo.toFixed(2)}..${hi.toFixed(2)} (relief ${s.relief(qx, qy).toFixed(2)})`);
     if (!(lo <= hi) || g < lo - 0.1 || g > hi + 0.3) fail(site, `ground at ${q.join(',')} ${g.toFixed(2)} is not on the cut floors ${lo.toFixed(2)}..${hi.toFixed(2)}`);
+  }
+  for (const q of e.grassAt ?? []) {
+    const [qx, qy] = toLocal(q[0], q[1]);
+    const inQuad = (r: [number, number][]) => { let k = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) if ((r[i][1] > qy) !== (r[j][1] > qy) && qx < r[j][0] + (r[i][0] - r[j][0]) * (qy - r[j][1]) / (r[i][1] - r[j][1])) k = !k; return k; };
+    const hit = s.cuts.some(c => cutMedianQuads(c, () => true).some(inQuad));
+    console.log(`  median grass at ${q.join(',')}: ${hit ? 'yes' : 'no'}`);
+    if (!hit) fail(site, `no median grass at ${q.join(',')}`);
   }
   if (e.rideMaxClimbM !== undefined && e.ride) {
     // The riding height along the routed way through the passage: the climb above the lower portal level.
