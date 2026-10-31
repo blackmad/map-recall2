@@ -14,7 +14,7 @@ await build({
   globalName: 'CanalRecallEngine',
   outfile: `${outdir}/engine.bundle.js`,
   sourcemap: 'external',
-  minify: true,
+  minify: !process.argv.includes('--no-minify'), // --no-minify: readable names for a profile
   plugins: [{ name: 'share-three', setup(b) { b.onResolve({ filter: /^three$/ }, () => ({ path: shim })); } }],
 });
 console.log(`built ${outdir}/engine.bundle.js`);

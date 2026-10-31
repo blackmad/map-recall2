@@ -33,10 +33,22 @@ import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { cutWays, isTunnelTags, planCuts, type CutWay } from './tunnels.js';
 
 /** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
+
+/**
+ * End the current task so a frame can run (#129 stutter: a cell's relief, decks, way decks and tunnel cuts ran as one
+ * microtask chain after its fetch, 50-90 ms on the main thread at 1x). On the page only; a worker has no frames to keep.
+ * scheduler.yield where the browser has it (continues ahead of other tasks), else a zero-delay timeout.
+ */
+export const yieldToFrame = (): Promise<void> => {
+  const g = globalThis as { document?: unknown; scheduler?: { yield?: () => Promise<void> } };
+  if (!g.document) return Promise.resolve();
+  return g.scheduler?.yield ? g.scheduler.yield() : new Promise(resolve => setTimeout(resolve, 0));
+};
+
 export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
@@ -283,7 +295,8 @@ export class GroundStore {
         const load = this.options.reliefTile
           ? this.options.reliefTile(path, this.relief, entry)
           : this.fetchBytes(path).then(bytes => ({ heights: readGroundTile(this.relief, entry, bytes), bytes: bytes.byteLength }));
-        p = load.then(({ heights, bytes }) => {
+        p = load.then(async ({ heights, bytes }) => {
+          await yieldToFrame(); // one relief tile's field insert per task, not every tile of the batch in one
           this.loadedBytes.relief += bytes;
           const [tx, ty] = k.split('_').map(Number);
           this.field.addTile(tx, ty, heights, entry[3] ?? this.relief.stepM);
@@ -327,12 +340,15 @@ export class GroundStore {
   async prepareCell(key: string): Promise<void> {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M;
     await this.ensureRelief([x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
+    await yieldToFrame();
     this.placeDecks(key);
     // A bridge belongs to the cell of its first station but may reach into
     // this one: place neighbours' decks too, so streets and the rider here
     // see the hump (their approach ends lie within the relief pad).
     for (const n of GroundStore.neighbours(key)) if (n !== key) this.placeDecks(n, [x0 - 60, y0 - 60, x1 + 60, y1 + 60]);
+    await yieldToFrame();
     if (this.options.wayDecks !== false) await this.placeWayDecks(key);
+    await yieldToFrame();
     if (this.options.tunnels !== false) await Promise.all(GroundStore.neighbours(key).map(n => this.planCutsFor(n)));
   }
 
@@ -362,6 +378,7 @@ export class GroundStore {
         if (!osm?.ways.some(w => isTunnelTags(w.tags))) return;
         const [x0, y0, x1, y1] = this.cellRect(n), box: Rect = [x0 - CUT_REACH_M, y0 - CUT_REACH_M, x1 + CUT_REACH_M, y1 + CUT_REACH_M];
         const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.cutWaysOf(k))), this.ensureRelief(box)]);
+        await yieldToFrame();
         // A way crossing a cell edge is in both cells' extracts: once each.
         const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
         const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
@@ -383,6 +400,7 @@ export class GroundStore {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
+    await yieldToFrame(); // the cells' JSON decode above and the deck grouping below are separate tasks
     // Each polygon with its box: a station tests only the polygons around it.
     const wet = waterTest(waters.flatMap(w => w?.polygons ?? []));
     const flats = around.flatMap(k => this.flatDecks(k));
@@ -412,7 +430,17 @@ export class GroundStore {
     for (const w of ways) this.wayDeckIds.add(w.id);
     // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
     if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
-      const index = new RoadIndex(await Promise.all(around.map(k => this.roadCell(k))));
+      const cells = await Promise.all(around.map(k => this.roadCell(k)));
+      await yieldToFrame();
+      // Only the road polygons the edge search can reach (the profiles' boxes, padded by the widest reach): the full
+      // 3×3 earcut was the largest main-thread task while riding (#129, 50-90 ms). A null first cell, because
+      // SurfaceIndex keeps every polygon of its first cell.
+      const reach = Math.max(...profiles.map(p => Math.max(...p.halfWidth))) + ROAD_EDGE_REACH_MAX_M + 2;
+      const within: Rect = [
+        Math.min(...profiles.map(p => p.bbox[0])) - reach, Math.min(...profiles.map(p => p.bbox[1])) - reach,
+        Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach,
+      ];
+      const index = new RoadIndex([null, ...cells], within);
       const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
       for (const profile of profiles) {
         const sides = roadEdgeSides(profile, onRoad);

@@ -88,7 +88,8 @@ for (const target of selected) {
     bundle: true,
     format: target.format || 'iife',
     ...(target.globalName ? { globalName: target.globalName } : {}),
-    minify: true,
+    // --no-minify: readable function names for a profile (motion-stutter BUNDLES_DIR).
+    minify: !process.argv.includes('--no-minify'),
     // External maps (no sourceMappingURL comment) for the deploy-time Sentry
     // upload; the workflow deletes them before the site is assembled.
     sourcemap: 'external',
