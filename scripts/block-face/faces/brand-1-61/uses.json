@@ -1,0 +1,293 @@
+{
+ "street": "President Brandstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:30:51.423Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012146384",
+   "addresses": [
+    "President Brandstraat 1",
+    "President Brandstraat 3",
+    "President Brandstraat 5",
+    "President Brandstraat 7",
+    "President Brandstraat 9",
+    "President Brandstraat 11",
+    "President Brandstraat 13",
+    "President Brandstraat 15",
+    "President Brandstraat 17",
+    "President Brandstraat 19",
+    "President Brandstraat 21",
+    "President Brandstraat 23",
+    "President Brandstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000832223"
+    },
+    {
+     "address": "President Brandstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000834302"
+    },
+    {
+     "address": "President Brandstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000834303"
+    },
+    {
+     "address": "President Brandstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000834304"
+    },
+    {
+     "address": "President Brandstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000834305"
+    },
+    {
+     "address": "President Brandstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000841462"
+    },
+    {
+     "address": "Christiaan de Wetstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000846579"
+    },
+    {
+     "address": "President Brandstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000846451"
+    },
+    {
+     "address": "President Brandstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000846452"
+    },
+    {
+     "address": "President Brandstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000846453"
+    },
+    {
+     "address": "President Brandstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000846484"
+    },
+    {
+     "address": "President Brandstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000846486"
+    },
+    {
+     "address": "President Brandstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000846546"
+    },
+    {
+     "address": "President Brandstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000846547"
+    },
+    {
+     "address": "Christiaan de Wetstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000846548"
+    },
+    {
+     "address": "Christiaan de Wetstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000854418"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071902",
+   "addresses": [
+    "President Brandstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 29",
+     "use": "onderwijsfunctie",
+     "areaM2": 1766,
+     "bagId": "0363010000941338"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1174703197,
+     "lngLat": [
+      4.9181252,
+      52.3543515
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1091XD",
+      "addr:street": "President Brandstraat",
+      "amenity": "school",
+      "check_date": "2025-06-06",
+      "education": "school",
+      "isced:level": "0;1",
+      "landuse": "education",
+      "max_age": "12",
+      "min_age": "4",
+      "name": "De Vijgenboom",
+      "operator": "Stichting IBA",
+      "religion": "muslim",
+      "school": "primary",
+      "website": "https://www.ibsdevijgenboom.nl"
+     },
+     "fetchedAt": "2026-10-31T15:30:51.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012114579",
+   "addresses": [
+    "President Brandstraat 33",
+    "President Brandstraat 35",
+    "President Brandstraat 37",
+    "President Brandstraat 39",
+    "President Brandstraat 41",
+    "President Brandstraat 43",
+    "President Brandstraat 45",
+    "President Brandstraat 47",
+    "President Brandstraat 49",
+    "President Brandstraat 51",
+    "President Brandstraat 53",
+    "President Brandstraat 55",
+    "President Brandstraat 57",
+    "President Brandstraat 59",
+    "President Brandstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Brandstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000834212"
+    },
+    {
+     "address": "President Brandstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000841488"
+    },
+    {
+     "address": "President Brandstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000841489"
+    },
+    {
+     "address": "President Brandstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000841490"
+    },
+    {
+     "address": "President Brandstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000841491"
+    },
+    {
+     "address": "President Brandstraat 45",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000841492"
+    },
+    {
+     "address": "President Brandstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000841493"
+    },
+    {
+     "address": "President Brandstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000846422"
+    },
+    {
+     "address": "President Brandstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000846423"
+    },
+    {
+     "address": "President Brandstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000846424"
+    },
+    {
+     "address": "President Brandstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000846450"
+    },
+    {
+     "address": "President Brandstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000846485"
+    },
+    {
+     "address": "President Brandstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000846516"
+    },
+    {
+     "address": "President Brandstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000846517"
+    },
+    {
+     "address": "Reitzstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000855745"
+    },
+    {
+     "address": "President Brandstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000855746"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

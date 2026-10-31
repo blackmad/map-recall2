@@ -1,0 +1,63 @@
+{
+ "street": "Joubertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:59:50.400Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012071769",
+   "addresses": [
+    "Joubertstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000696144"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129254",
+   "addresses": [
+    "Joubertstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000696149"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096148",
+   "addresses": [
+    "Joubertstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000696154"
+    },
+    {
+     "address": "Joubertstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012578604"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

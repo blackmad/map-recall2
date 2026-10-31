@@ -1,0 +1,118 @@
+{
+ "face": "tugelaweg-50-53",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 1.62,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012093743",
+   "address": "Tugelaweg 50A",
+   "builtYear": 1921,
+   "widthM": 11.82,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796056",
+    "wallRaw": "#5b4a44",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.65,
+       "widthM": 0.88,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a plain flat four-storey front with a light cornice and five window axes, no stair panel: transvaal-1923-portiek passed the edge-NCC gate but draws a raised dentil panel and the 1923 bay rhythm (tugelaweg-50-53 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066147",
+   "address": "Tugelaweg 52C",
+   "builtYear": 1921,
+   "widthM": 12.21,
+   "eavesM": 12.49,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.64,
+    "toM": 8.39,
+    "depthM": 0.33,
+    "centre": 0.493
+   },
+   "strip": {
+    "wall": "#79625a",
+    "wallRaw": "#62514a",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 1.57,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a plain flat four-storey front with a light cornice and five window axes, no stair panel: transvaal-1923-portiek passed the edge-NCC gate but draws a raised dentil panel and the 1923 bay rhythm (tugelaweg-50-53 sheet, 2026-10-31)",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

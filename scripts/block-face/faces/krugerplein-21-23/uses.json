@@ -1,0 +1,64 @@
+{
+ "street": "Krugerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:15:02.868Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080889",
+   "addresses": [
+    "Krugerplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 21-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000714899"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120128",
+   "addresses": [
+    "Krugerplein 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 36",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000994982"
+    },
+    {
+     "address": "Krugerplein 23-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001003619"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4205599891,
+     "lngLat": [
+      4.9206486,
+      52.3539215
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Omri",
+      "note": "Horecagroep 3WO"
+     },
+     "fetchedAt": "2026-10-31T14:15:02.868Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

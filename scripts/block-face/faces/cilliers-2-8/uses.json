@@ -1,0 +1,176 @@
+{
+ "street": "Cilliersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092790",
+   "addresses": [
+    "Cilliersstraat 8A",
+    "Cilliersstraat 8B",
+    "Cilliersstraat 8C",
+    "Cilliersstraat 8D",
+    "Cilliersstraat 8E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cilliersstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000605854"
+    },
+    {
+     "address": "Cilliersstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605855"
+    },
+    {
+     "address": "Cilliersstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605856"
+    },
+    {
+     "address": "Cilliersstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605857"
+    },
+    {
+     "address": "Cilliersstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012130141"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233594",
+   "addresses": [
+    "Cilliersstraat 4A",
+    "Cilliersstraat 4B",
+    "Cilliersstraat 4C",
+    "Cilliersstraat 4D",
+    "Cilliersstraat 4E",
+    "Cilliersstraat 6A",
+    "Cilliersstraat 6B",
+    "Cilliersstraat 6C",
+    "Cilliersstraat 6D",
+    "Cilliersstraat 6E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cilliersstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000605836"
+    },
+    {
+     "address": "Cilliersstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000605837"
+    },
+    {
+     "address": "Cilliersstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000605838"
+    },
+    {
+     "address": "Cilliersstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000605839"
+    },
+    {
+     "address": "Cilliersstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000605840"
+    },
+    {
+     "address": "Cilliersstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000605845"
+    },
+    {
+     "address": "Cilliersstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000605846"
+    },
+    {
+     "address": "Cilliersstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000605847"
+    },
+    {
+     "address": "Cilliersstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000605848"
+    },
+    {
+     "address": "Cilliersstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000605849"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148553",
+   "addresses": [
+    "Cilliersstraat 2B",
+    "Cilliersstraat 2C",
+    "Cilliersstraat 2D",
+    "Cilliersstraat 2E",
+    "Cilliersstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cilliersstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605830"
+    },
+    {
+     "address": "Cilliersstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605831"
+    },
+    {
+     "address": "Cilliersstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000605832"
+    },
+    {
+     "address": "Cilliersstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012130140"
+    },
+    {
+     "address": "Cilliersstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000605829"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

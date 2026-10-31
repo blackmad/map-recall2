@@ -1,0 +1,249 @@
+{
+ "street": "De la Reijstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:39:36.313Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092661",
+   "addresses": [
+    "De la Reijstraat 20",
+    "De la Reijstraat 22",
+    "De la Reijstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 24",
+     "use": "industriefunctie",
+     "areaM2": 4,
+     "bagId": "0363010000617900"
+    },
+    {
+     "address": "De la Reijstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000617894"
+    },
+    {
+     "address": "De la Reijstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000617892"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14108473629,
+     "lngLat": [
+      4.9189441,
+      52.3521453
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:39:36.313Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    },
+    {
+     "type": "node",
+     "id": 14232396995,
+     "lngLat": [
+      4.9189258,
+      52.3521326
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-31T14:39:36.313Z",
+     "match": "frontage",
+     "distanceM": 6.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154531",
+   "addresses": [
+    "De la Reijstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 18",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000617890"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073654",
+   "addresses": [
+    "De la Reijstraat 16A",
+    "De la Reijstraat 16B",
+    "De la Reijstraat 16C"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000617886"
+    },
+    {
+     "address": "De la Reijstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000617887"
+    },
+    {
+     "address": "De la Reijstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000617888"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150397",
+   "addresses": [
+    "De la Reijstraat 14A",
+    "De la Reijstraat 14B",
+    "De la Reijstraat 14C"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000617883"
+    },
+    {
+     "address": "De la Reijstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000617884"
+    },
+    {
+     "address": "De la Reijstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000617885"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154575",
+   "addresses": [
+    "De la Reijstraat 12A",
+    "De la Reijstraat 12B",
+    "De la Reijstraat 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000617880"
+    },
+    {
+     "address": "De la Reijstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000617881"
+    },
+    {
+     "address": "De la Reijstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000617882"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119983",
+   "addresses": [
+    "De la Reijstraat 10A",
+    "De la Reijstraat 10B",
+    "De la Reijstraat 10C",
+    "De la Reijstraat 10D"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000617876"
+    },
+    {
+     "address": "De la Reijstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000617877"
+    },
+    {
+     "address": "De la Reijstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000617878"
+    },
+    {
+     "address": "De la Reijstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000617879"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079506",
+   "addresses": [
+    "De la Reijstraat 8A",
+    "De la Reijstraat 8C",
+    "De la Reijstraat 8D",
+    "De la Reijstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000617872"
+    },
+    {
+     "address": "De la Reijstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000617874"
+    },
+    {
+     "address": "De la Reijstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000617875"
+    },
+    {
+     "address": "De la Reijstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000617873"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

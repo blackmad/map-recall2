@@ -1,0 +1,470 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:57:06.054Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161892",
+   "addresses": [
+    "Pretoriusstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012078109"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816772227,
+     "lngLat": [
+      4.9271093,
+      52.3561221
+     ],
+     "tags": {
+      "name": "Drankerij",
+      "opening_hours": "We,Th 12:00-18:00; Fr 12:00-19:00; Sa 10:30-19:00; Su 12:00-17:00",
+      "shop": "alcohol"
+     },
+     "fetchedAt": "2026-10-31T14:57:06.054Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012128170",
+   "addresses": [
+    "Pretoriusstraat 3A",
+    "Pretoriusstraat 3D",
+    "Pretoriusstraat 3G",
+    "Pretoriusstraat 3C",
+    "Pretoriusstraat 3F",
+    "Pretoriusstraat 3K",
+    "Pretoriusstraat 3H",
+    "Pretoriusstraat 3E",
+    "Pretoriusstraat 3B",
+    "Pretoriusstraat 3L",
+    "Pretoriusstraat 3M",
+    "Pretoriusstraat 3P",
+    "Pretoriusstraat 3N",
+    "Pretoriusstraat 5",
+    "Pretoriusstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946581"
+    },
+    {
+     "address": "Pretoriusstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946582"
+    },
+    {
+     "address": "Pretoriusstraat 3G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946583"
+    },
+    {
+     "address": "Pretoriusstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946584"
+    },
+    {
+     "address": "Pretoriusstraat 3F",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946585"
+    },
+    {
+     "address": "Pretoriusstraat 3K",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000946586"
+    },
+    {
+     "address": "Pretoriusstraat 3H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000946587"
+    },
+    {
+     "address": "Pretoriusstraat 3E",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000946588"
+    },
+    {
+     "address": "Pretoriusstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000946589"
+    },
+    {
+     "address": "Pretoriusstraat 3L",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000946590"
+    },
+    {
+     "address": "Pretoriusstraat 3M",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000946591"
+    },
+    {
+     "address": "Pretoriusstraat 3P",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000946593"
+    },
+    {
+     "address": "Pretoriusstraat 5",
+     "use": "winkelfunctie",
+     "areaM2": 1032,
+     "bagId": "0363010000946594"
+    },
+    {
+     "address": "Pretoriusstraat 9",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000946596"
+    },
+    {
+     "address": "Pretoriusstraat 9",
+     "use": "winkelfunctie",
+     "areaM2": 1249,
+     "bagId": "0363010012079298"
+    },
+    {
+     "address": "Pretoriusstraat 3N",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000946592"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158656",
+   "addresses": [
+    "Pretoriusstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000782438"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158314",
+   "addresses": [
+    "Pretoriusstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000782446"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158418",
+   "addresses": [
+    "Pretoriusstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 15-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000782454"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2052027474,
+     "lngLat": [
+      4.9265383,
+      52.3559916
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15",
+      "addr:postcode": "1092EW",
+      "addr:street": "Pretoriusstraat",
+      "name": "Rum Baba",
+      "opening_hours": "Mo-Fr 09:00-16:30; Sa-Su 10:00-17:00",
+      "payment:cash": "no",
+      "shop": "coffee",
+      "website": "https://rumbaba.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-31T14:57:06.054Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162490",
+   "addresses": [
+    "Pretoriusstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000782462"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152368",
+   "addresses": [
+    "Pretoriusstraat 19",
+    "Pretoriusstraat 19B",
+    "Pretoriusstraat 19C",
+    "Pretoriusstraat 19D",
+    "Pretoriusstraat 19E",
+    "Pretoriusstraat 19F",
+    "Pretoriusstraat 19G",
+    "Pretoriusstraat 19A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000782470"
+    },
+    {
+     "address": "Pretoriusstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012080808"
+    },
+    {
+     "address": "Pretoriusstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012080809"
+    },
+    {
+     "address": "Pretoriusstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012080810"
+    },
+    {
+     "address": "Pretoriusstraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012080811"
+    },
+    {
+     "address": "Pretoriusstraat 19F",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012080812"
+    },
+    {
+     "address": "Pretoriusstraat 19G",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012080813"
+    },
+    {
+     "address": "Pretoriusstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012080814"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156362",
+   "addresses": [
+    "Pretoriusstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 196,
+     "bagId": "0363010012073601"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826191760,
+     "lngLat": [
+      4.9262968,
+      52.3559267
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21-H",
+      "addr:postcode": "1092EX",
+      "addr:street": "Pretoriusstraat",
+      "name": "Glamour pets",
+      "opening_hours": "Mo-Sa 09:00-18:00",
+      "shop": "pet",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:57:06.054Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167293",
+   "addresses": [
+    "Pretoriusstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000782485"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165600",
+   "addresses": [
+    "Pretoriusstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000782493"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160793",
+   "addresses": [
+    "Pretoriusstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000782501"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128128",
+   "addresses": [
+    "Pretoriusstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000782509"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150452",
+   "addresses": [
+    "Pretoriusstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000782517"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134100",
+   "addresses": [
+    "Pretoriusstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 33-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000782526"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3801797662,
+     "lngLat": [
+      4.925747,
+      52.3557711
+     ],
+     "tags": {
+      "addr:housenumber": "33",
+      "addr:street": "Pretoriusstraat",
+      "name": "MAS Atelier",
+      "opening_hours": "We-Sa 08:30-15:00",
+      "shop": "bakery",
+      "website": "https://www.bakkerijmas.nl/"
+     },
+     "fetchedAt": "2026-10-31T14:57:06.054Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

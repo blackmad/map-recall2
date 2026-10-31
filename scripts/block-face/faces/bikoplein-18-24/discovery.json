@@ -1,0 +1,685 @@
+{
+ "street": "Steve Bikoplein",
+ "seed": "0363100012098505",
+ "members": [
+  "0363100012077968",
+  "0363100012150822",
+  "0363100012142932",
+  "0363100012098505"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061814",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012066211"
+  },
+  {
+   "pandId": "0363100012062150",
+   "reason": "frontage 68.8 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012062315",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012063111",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012066681",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012067013",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012068243",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012110022"
+  },
+  {
+   "pandId": "0363100012069186",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012233567"
+  },
+  {
+   "pandId": "0363100012069344",
+   "reason": "frontage 104.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012069699",
+   "reason": "frontage 46.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012069809",
+   "reason": "frontage 56.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012070199",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012071924",
+   "reason": "frontage 60.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012074312",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012074719",
+   "reason": "frontage 68.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012075049",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012098505"
+  },
+  {
+   "pandId": "0363100012075600",
+   "reason": "frontage 70.0 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012075910",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012076148",
+   "reason": "frontage 75.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012080540",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012080801",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012084193",
+   "reason": "frontage 44.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012084324",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012085974",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012086038",
+   "reason": "frontage 122.7 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012086971",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012087298",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012087384",
+   "reason": "frontage 77.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012088417",
+   "reason": "frontage 44.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012092019",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012092816",
+   "reason": "frontage 43.7 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012094192",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012137945"
+  },
+  {
+   "pandId": "0363100012095458",
+   "reason": "frontage 30.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012098524",
+   "reason": "frontage 68.2 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012099888",
+   "reason": "frontage 100.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012105469",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012109431",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012109508",
+   "reason": "frontage 52.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012110022",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012150483"
+  },
+  {
+   "pandId": "0363100012110214",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012112323",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012114180",
+   "reason": "frontage 107.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012114338",
+   "reason": "frontage 50.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012117340",
+   "reason": "frontage 74.2 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012117872",
+   "reason": "frontage 91.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012119451",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012119914",
+   "reason": "frontage 54.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012120175",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012122306",
+   "reason": "frontage 62.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012123300",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012126266"
+  },
+  {
+   "pandId": "0363100012123913",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012137945"
+  },
+  {
+   "pandId": "0363100012124615",
+   "reason": "frontage 98.8 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012126391",
+   "reason": "frontage 84.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012129296",
+   "reason": "frontage 52.0 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012129365",
+   "reason": "frontage 91.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012129491",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012129869",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012130233",
+   "reason": "frontage 75.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012131309",
+   "reason": "frontage 80.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012132273",
+   "reason": "frontage 69.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012132650",
+   "reason": "frontage 58.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012133126",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012134576",
+   "reason": "frontage 114.7 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012134756",
+   "reason": "frontage 68.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012136245",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012136338",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012061814"
+  },
+  {
+   "pandId": "0363100012136413",
+   "reason": "frontage 68.5 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012138121",
+   "reason": "frontage 38.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012138328",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012069186"
+  },
+  {
+   "pandId": "0363100012139150",
+   "reason": "frontage 71.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012139205",
+   "reason": "frontage 38.0 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012141435",
+   "reason": "frontage 79.2 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012142562",
+   "reason": "frontage 104.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012143928",
+   "reason": "frontage 102.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012144201",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012144337",
+   "reason": "frontage 60.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012144421",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012061814"
+  },
+  {
+   "pandId": "0363100012144997",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012133895"
+  },
+  {
+   "pandId": "0363100012149666",
+   "reason": "frontage 38.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012098505"
+  },
+  {
+   "pandId": "0363100012154435",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012184503",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012077968"
+  },
+  {
+   "pandId": "0363100012184989",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012119923"
+  },
+  {
+   "pandId": "0363100012187535",
+   "reason": "frontage 67.2 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012187682",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012187683",
+   "reason": "frontage 74.8 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012188354",
+   "reason": "frontage 59.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012190730",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012192592",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012192593",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012196231",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012146593"
+  },
+  {
+   "pandId": "0363100012196312",
+   "reason": "frontage 54.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012196328",
+   "reason": "frontage 40.4 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012197578",
+   "reason": "frontage 53.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012198821",
+   "reason": "frontage 53.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012200725",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012201483",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012203111",
+   "reason": "frontage 58.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012203811",
+   "reason": "frontage 31.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012204348",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012205672",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012142932"
+  },
+  {
+   "pandId": "0363100012205745",
+   "reason": "frontage 67.8 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012205904",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012149374"
+  },
+  {
+   "pandId": "0363100012206043",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012206044",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012207035",
+   "reason": "frontage 35.2 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012207244",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012209709",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012077968"
+  },
+  {
+   "pandId": "0363100012211143",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012211649",
+   "reason": "frontage 64.0 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012212488",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012212712",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012093100"
+  },
+  {
+   "pandId": "0363100012212819",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012150822"
+  },
+  {
+   "pandId": "0363100012213859",
+   "reason": "frontage 71.7 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012213860",
+   "reason": "frontage 68.9 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012215081",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012121531"
+  },
+  {
+   "pandId": "0363100012217361",
+   "reason": "frontage 65.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012217558",
+   "reason": "frontage 62.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012218251",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012220774",
+   "reason": "frontage 58.6 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012221405",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012221962",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012221963",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012224774",
+   "reason": "frontage 51.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012230754",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012146593"
+  },
+  {
+   "pandId": "0363100012233511",
+   "reason": "frontage 85.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012233525",
+   "reason": "frontage 91.1 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012233640",
+   "reason": "frontage 80.3 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012235160",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012236318",
+   "reason": "sightline to Steve Bikoplein crosses 0363100012069186"
+  },
+  {
+   "pandId": "0363100012236877",
+   "reason": "no frontage on Steve Bikoplein: No footprint edge faces Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012237322",
+   "reason": "frontage 103.8 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012241220",
+   "reason": "frontage 52.0 m from Steve Bikoplein"
+  },
+  {
+   "pandId": "0363100012066211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078226",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078977",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086628",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089136",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105544",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119923",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121531",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126266",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133895",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146593",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149663",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233567",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012077968",
+   "alongM": -27.89,
+   "widthM": 9.07,
+   "eavesM": 16.57,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012150822",
+   "alongM": -18.65,
+   "widthM": 9.42,
+   "eavesM": 16.57,
+   "roofMaxM": 16.59,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012142932",
+   "alongM": -9.27,
+   "widthM": 9.34,
+   "eavesM": 12.62,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012098505",
+   "alongM": 0,
+   "widthM": 9.24,
+   "eavesM": 12.45,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

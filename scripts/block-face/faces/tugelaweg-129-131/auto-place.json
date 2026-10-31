@@ -1,0 +1,209 @@
+{
+ "face": "tugelaweg-129-131",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.56,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012086208",
+   "address": "Tugelaweg 129",
+   "builtYear": 1989,
+   "widthM": 8.77,
+   "eavesM": 14.58,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.64,
+    "toM": 8.75,
+    "depthM": 0.58,
+    "centre": 0.708,
+    "lineRD": [
+     [
+      122823.705375,
+      485049.93675000005
+     ],
+     [
+      122823.47937500001,
+      485045.54375
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#aeadac",
+    "wallRaw": "#695f5b",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 47,
+     "confidence": 0.96,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.219,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.98,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 1.2,
+       "centre": 0.13
+      },
+      {
+       "atM": 13,
+       "widthM": 0.97,
+       "centre": 0.94
+      },
+      {
+       "atM": 4.9,
+       "widthM": 2.23,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.177 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126387",
+   "address": "Tugelaweg 131A",
+   "builtYear": 1989,
+   "widthM": 8.77,
+   "eavesM": 14.56,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0.92,
+    "toM": 0.92,
+    "depthM": 0.88,
+    "centre": 0.104
+   },
+   "strip": {
+    "wall": "#826f69",
+    "wallRaw": "#6d645c",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 37,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 1.18,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.7 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

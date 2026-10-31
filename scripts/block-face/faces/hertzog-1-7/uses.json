@@ -1,0 +1,167 @@
+{
+ "street": "Hertzogstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233692",
+   "addresses": [
+    "Hertzogstraat 1A",
+    "Hertzogstraat 1B",
+    "Hertzogstraat 1C",
+    "Hertzogstraat 1D",
+    "Hertzogstraat 1E",
+    "Hertzogstraat 3A",
+    "Hertzogstraat 3B",
+    "Hertzogstraat 3C",
+    "Hertzogstraat 3D",
+    "Hertzogstraat 3E",
+    "Hertzogstraat 5A",
+    "Hertzogstraat 5B",
+    "Hertzogstraat 5C",
+    "Hertzogstraat 5D",
+    "Hertzogstraat 5E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hertzogstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000666175"
+    },
+    {
+     "address": "Hertzogstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000666176"
+    },
+    {
+     "address": "Hertzogstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000666177"
+    },
+    {
+     "address": "Hertzogstraat 1D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000666178"
+    },
+    {
+     "address": "Hertzogstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000666180"
+    },
+    {
+     "address": "Hertzogstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000666181"
+    },
+    {
+     "address": "Hertzogstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000666182"
+    },
+    {
+     "address": "Hertzogstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000666183"
+    },
+    {
+     "address": "Hertzogstraat 3E",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000666184"
+    },
+    {
+     "address": "Hertzogstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000666186"
+    },
+    {
+     "address": "Hertzogstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000666187"
+    },
+    {
+     "address": "Hertzogstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000666188"
+    },
+    {
+     "address": "Hertzogstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000666189"
+    },
+    {
+     "address": "Hertzogstraat 5E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000666190"
+    },
+    {
+     "address": "Hertzogstraat 1E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012122257"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061441",
+   "addresses": [
+    "Hertzogstraat 7A",
+    "Hertzogstraat 7B",
+    "Hertzogstraat 7C",
+    "Hertzogstraat 7D",
+    "Hertzogstraat 7E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hertzogstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000666192"
+    },
+    {
+     "address": "Hertzogstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000666193"
+    },
+    {
+     "address": "Hertzogstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000666194"
+    },
+    {
+     "address": "Hertzogstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000666195"
+    },
+    {
+     "address": "Hertzogstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012130740"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

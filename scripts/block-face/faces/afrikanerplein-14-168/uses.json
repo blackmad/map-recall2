@@ -1,0 +1,436 @@
+{
+ "street": "Afrikanerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:00:59.825Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148898",
+   "addresses": [
+    "Afrikanerplein 150",
+    "Afrikanerplein 152",
+    "Afrikanerplein 154",
+    "Afrikanerplein 156",
+    "Afrikanerplein 158",
+    "Afrikanerplein 160",
+    "Afrikanerplein 162",
+    "Afrikanerplein 164",
+    "Afrikanerplein 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 150",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000937278"
+    },
+    {
+     "address": "Afrikanerplein 154",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000937279"
+    },
+    {
+     "address": "Afrikanerplein 158",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000937280"
+    },
+    {
+     "address": "Afrikanerplein 160",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000937285"
+    },
+    {
+     "address": "Afrikanerplein 164",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001170041"
+    },
+    {
+     "address": "Afrikanerplein 152",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000937283"
+    },
+    {
+     "address": "Afrikanerplein 162",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000937281"
+    },
+    {
+     "address": "Afrikanerplein 156",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000937284"
+    },
+    {
+     "address": "Afrikanerplein 168",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001170042"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137582",
+   "addresses": [
+    "Afrikanerplein 104",
+    "Afrikanerplein 106",
+    "Afrikanerplein 108",
+    "Afrikanerplein 110",
+    "Afrikanerplein 112",
+    "Afrikanerplein 114",
+    "Afrikanerplein 116",
+    "Afrikanerplein 118",
+    "Afrikanerplein 120",
+    "Afrikanerplein 122",
+    "Afrikanerplein 124",
+    "Afrikanerplein 126",
+    "Afrikanerplein 128",
+    "Afrikanerplein 130",
+    "Afrikanerplein 132",
+    "Afrikanerplein 134",
+    "Afrikanerplein 136",
+    "Afrikanerplein 138",
+    "Afrikanerplein 140",
+    "Afrikanerplein 142",
+    "Afrikanerplein 144",
+    "Afrikanerplein 146",
+    "Afrikanerplein 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 110",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000579473"
+    },
+    {
+     "address": "Afrikanerplein 114",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000631534"
+    },
+    {
+     "address": "Afrikanerplein 116",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000687068"
+    },
+    {
+     "address": "Afrikanerplein 112",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000744392"
+    },
+    {
+     "address": "Afrikanerplein 108",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000836938"
+    },
+    {
+     "address": "Afrikanerplein 104",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000841494"
+    },
+    {
+     "address": "Afrikanerplein 122",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000942734"
+    },
+    {
+     "address": "Afrikanerplein 120",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000942735"
+    },
+    {
+     "address": "Afrikanerplein 118",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000942736"
+    },
+    {
+     "address": "Afrikanerplein 128",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000942737"
+    },
+    {
+     "address": "Afrikanerplein 132",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000942738"
+    },
+    {
+     "address": "Afrikanerplein 136",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000942739"
+    },
+    {
+     "address": "Afrikanerplein 126",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000942740"
+    },
+    {
+     "address": "Afrikanerplein 134",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000942744"
+    },
+    {
+     "address": "Afrikanerplein 146",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000942745"
+    },
+    {
+     "address": "Afrikanerplein 144",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000942746"
+    },
+    {
+     "address": "Afrikanerplein 130",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000942747"
+    },
+    {
+     "address": "Afrikanerplein 142",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000942748"
+    },
+    {
+     "address": "Afrikanerplein 106",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000579472"
+    },
+    {
+     "address": "Afrikanerplein 124",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000631535"
+    },
+    {
+     "address": "Afrikanerplein 148",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000942743"
+    },
+    {
+     "address": "Afrikanerplein 140",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000942741"
+    },
+    {
+     "address": "Afrikanerplein 138",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000942742"
+    }
+   ],
+   "units": 23,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131433",
+   "addresses": [
+    "Afrikanerplein 92",
+    "Afrikanerplein 94",
+    "Afrikanerplein 96",
+    "Afrikanerplein 98",
+    "Afrikanerplein 100",
+    "Afrikanerplein 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 102",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000675981"
+    },
+    {
+     "address": "Afrikanerplein 94",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000675982"
+    },
+    {
+     "address": "Afrikanerplein 98",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000677005"
+    },
+    {
+     "address": "Afrikanerplein 92",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000675237"
+    },
+    {
+     "address": "Afrikanerplein 96",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000675238"
+    },
+    {
+     "address": "Afrikanerplein 100",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000687067"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066447",
+   "addresses": [
+    "Afrikanerplein 68",
+    "Afrikanerplein 70",
+    "Afrikanerplein 72",
+    "Afrikanerplein 74",
+    "Afrikanerplein 76",
+    "Afrikanerplein 78",
+    "Afrikanerplein 80",
+    "Afrikanerplein 82",
+    "Afrikanerplein 84",
+    "Afrikanerplein 86",
+    "Afrikanerplein 88",
+    "Afrikanerplein 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 68",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000665041"
+    },
+    {
+     "address": "Afrikanerplein 70",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000665258"
+    },
+    {
+     "address": "Afrikanerplein 74",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000665259"
+    },
+    {
+     "address": "Afrikanerplein 76",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000665289"
+    },
+    {
+     "address": "Afrikanerplein 78",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000667800"
+    },
+    {
+     "address": "Afrikanerplein 90",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000674805"
+    },
+    {
+     "address": "Afrikanerplein 82",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000672790"
+    },
+    {
+     "address": "Afrikanerplein 72",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000672848"
+    },
+    {
+     "address": "Afrikanerplein 86",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000672883"
+    },
+    {
+     "address": "Afrikanerplein 80",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000675234"
+    },
+    {
+     "address": "Afrikanerplein 84",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000675235"
+    },
+    {
+     "address": "Afrikanerplein 88",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000675236"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098180",
+   "addresses": [
+    "Afrikanerplein 14",
+    "Afrikanerplein 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 14",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000562001"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826188603,
+     "lngLat": [
+      4.9165948,
+      52.3526601
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1091PT",
+      "addr:street": "Afrikanerplein",
+      "amenity": "fast_food",
+      "check_date": "2024-08-29",
+      "cuisine": "surinamese;javanese",
+      "name": "Eethuis Parie",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:00:59.825Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

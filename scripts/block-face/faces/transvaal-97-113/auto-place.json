@@ -1,0 +1,779 @@
+{
+ "face": "transvaal-97-113",
+ "street": "Transvaalstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012129365",
+   "address": "Transvaalstraat 97A",
+   "builtYear": 1981,
+   "widthM": 7.28,
+   "eavesM": 8.87,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5e57",
+    "wallRaw": "#5d5956",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 72,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1,
+      "topWidthM": 1.98,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.73 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.73,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 7.28 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.8 m at 0.73 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 7.28 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.8 m at 0.73 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 11.93 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012117872",
+   "address": "Transvaalstraat 99A",
+   "builtYear": 1981,
+   "widthM": 6.55,
+   "eavesM": 8.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5e58",
+    "wallRaw": "#625b56",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 24,
+     "confidence": 0.33,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.11 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.11,
+       "light": 0
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.94,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 0.9,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 6.55 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.8 m at 0.11 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 6.55 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.8 m at 0.11 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 8.84 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.075 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119456",
+   "address": "Transvaalstraat 101B",
+   "builtYear": 1981,
+   "widthM": 6.55,
+   "eavesM": 9.06,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b7b4b2",
+    "wallRaw": "#5f5853",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 124,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.72,
+      "topWidthM": 0.3,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.46,
+     "balconies": true,
+     "why": "bay-less open axis 1.02 m at 0.45 (light 0.64): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.45,
+       "light": 0.64
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 6.55 m, type 8.8-12.9 m; strip shows balconies (bay-less open axis 1.02 m at 0.45 (light 0.64): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 6.55 m, type 8.8-12.9 m",
+     "strip shows balconies (bay-less open axis 1.02 m at 0.45 (light 0.64): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125612",
+   "address": "Transvaalstraat 103D",
+   "builtYear": 1981,
+   "widthM": 6.55,
+   "eavesM": 8.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9c9493",
+    "wallRaw": "#605955",
+    "skyline": {
+     "eavesM": 11.13,
+     "eavesRow": 104,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 2,
+      "topWidthM": 0.97,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.229,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 6.55 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 6.55 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.13 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137762",
+   "address": "Transvaalstraat 105A",
+   "builtYear": 1981,
+   "widthM": 6.55,
+   "eavesM": 8.88,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bdb9b8",
+    "wallRaw": "#625b56",
+    "skyline": {
+     "eavesM": 12.53,
+     "eavesRow": 48,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 0.8,
+      "topWidthM": 0.95,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.202,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.73 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.73,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.17,
+       "widthM": 1,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 6.55 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.88 m at 0.73 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 6.55 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.88 m at 0.73 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.53 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070208",
+   "address": "Transvaalstraat 107A",
+   "builtYear": 1981,
+   "widthM": 6.55,
+   "eavesM": 6.43,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e7d7a",
+    "wallRaw": "#534b45",
+    "skyline": {
+     "eavesM": 12.22,
+     "eavesRow": 60,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 1.1,
+      "topWidthM": 0.82,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 6.05 m at 0.5 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 6.05,
+       "centre": 0.5,
+       "light": 0.11
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1981, type 1921-1924; frontage 6.55 m, type 8.8-12.9 m; strip shows balconies (dark open axis 6.05 m at 0.5 (light 0.11): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1981, type 1921-1924",
+     "frontage 6.55 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 6.05 m at 0.5 (light 0.11): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.22 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114599",
+   "address": "Transvaalstraat 109",
+   "builtYear": 1913,
+   "widthM": 6.04,
+   "eavesM": 6.35,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64534a",
+    "wallRaw": "#6b5d54",
+    "skyline": {
+     "eavesM": 12.03,
+     "eavesRow": 68,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1.3,
+      "topWidthM": 0.82,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.73,
+     "balconies": true,
+     "why": "dark open axis 5.55 m at 0.5 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.55,
+       "centre": 0.5,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 6.04 m, type 8.8-12.9 m; strip shows balconies (dark open axis 5.55 m at 0.5 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924",
+     "frontage 6.04 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 5.55 m at 0.5 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.03 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099869",
+   "address": "Transvaalstraat 111",
+   "builtYear": 1913,
+   "widthM": 5.27,
+   "eavesM": 6.37,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4d46",
+    "wallRaw": "#494138",
+    "skyline": {
+     "eavesM": 12.32,
+     "eavesRow": 56,
+     "confidence": 0.73,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.37,
+     "balconies": true,
+     "why": "dark open axis 4.88 m at 0.5 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.88,
+       "centre": 0.5,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 5.27 m, type 8.8-12.9 m; strip shows balconies (dark open axis 4.88 m at 0.5 (light 0.12): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924",
+     "frontage 5.27 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 4.88 m at 0.5 (light 0.12): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.32 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139277",
+   "address": "Transvaalstraat 113",
+   "builtYear": 1913,
+   "widthM": 6.07,
+   "eavesM": 6.3,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#615148",
+    "wallRaw": "#5e5147",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 549,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.1,
+     "balconies": true,
+     "why": "dark open axis 5.58 m at 0.5 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.58,
+       "centre": 0.5,
+       "light": 0.17
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 6.07 m, type 8.8-12.9 m; strip shows balconies (dark open axis 5.58 m at 0.5 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924",
+     "frontage 6.07 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 5.58 m at 0.5 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 6.3 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

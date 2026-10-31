@@ -1,0 +1,415 @@
+{
+ "face": "joubert-3-17",
+ "street": "Joubertstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 2.89,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012142519",
+   "address": "Joubertstraat 3A",
+   "builtYear": 1928,
+   "widthM": 10.27,
+   "eavesM": 15.51,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 8.05,
+    "depthM": 0.77,
+    "centre": 0.393,
+    "lineRD": [
+     [
+      123009.974375,
+      485209.05775
+     ],
+     [
+      123005.689375,
+      485201.96674999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#645046",
+    "wallRaw": "#79675f",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 148,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 1.45,
+      "topWidthM": 1.1,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.272,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1928, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.272 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127064",
+   "address": "Joubertstraat 7",
+   "builtYear": 1925,
+   "widthM": 12.77,
+   "eavesM": 15.26,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.91,
+    "toM": 1.91,
+    "depthM": 0.45,
+    "centre": 0.15
+   },
+   "strip": {
+    "wall": "#69584e",
+    "wallRaw": "#74635a",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 170,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 1.88,
+      "topWidthM": 0.7,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.1 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.1,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: strip shows balconies (dark open axis 0.78 m at 0.1 (light 0.29): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 0.78 m at 0.1 (light 0.29): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.2 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.157 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131556",
+   "address": "Joubertstraat 11",
+   "builtYear": 1925,
+   "widthM": 12.78,
+   "eavesM": 15.28,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 10.9,
+    "toM": 10.9,
+    "depthM": 0.5,
+    "centre": 0.853
+   },
+   "strip": {
+    "wall": "#77655d",
+    "wallRaw": "#75645e",
+    "skyline": {
+     "eavesM": 15.15,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 0.72,
+      "topWidthM": 1.25,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.166,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159280",
+   "address": "Joubertstraat 15A",
+   "builtYear": 2011,
+   "widthM": 46.04,
+   "eavesM": 13.13,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5d56",
+    "wallRaw": "#64574d",
+    "skyline": {
+     "eavesM": 13.2,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.05,
+      "topWidthM": 1.98,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 47,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.55,
+       "widthM": 1.02,
+       "centre": 0.61
+      },
+      {
+       "atM": 5.92,
+       "widthM": 1.38,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 2011, type 1921-1924; frontage 46.04 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 2011, type 1921-1924",
+     "frontage 46.04 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.2 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 47 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134742",
+   "address": "Joubertstraat 17",
+   "builtYear": 1929,
+   "widthM": 7.83,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#644d41",
+    "wallRaw": "#5a483e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 778,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.95 m at 0.23 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.23,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 7.83 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.95 m at 0.23 (light 0.2): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 7.83 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.95 m at 0.23 (light 0.2): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 13.05 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.101 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

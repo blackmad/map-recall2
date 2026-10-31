@@ -1,0 +1,346 @@
+{
+ "face": "bikoplein-18-24",
+ "street": "Steve Bikoplein",
+ "library": "transvaalbuurt",
+ "stripDate": "2016-06-08",
+ "seconds": 0.96,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012077968",
+   "address": "Steve Bikoplein 24",
+   "builtYear": 1913,
+   "widthM": 9.07,
+   "eavesM": 16.57,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.89,
+    "toM": 2.54,
+    "depthM": 0.7,
+    "centre": 0.189,
+    "lineRD": [
+     [
+      123414.438375,
+      485330.52174999996
+     ],
+     [
+      123406.35737499999,
+      485333.54374999995
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#604e48",
+    "wallRaw": "#433e34",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 145,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 3.15,
+      "topWidthM": 0.57,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.04 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.04,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150822",
+   "address": "Steve Bikoplein 22",
+   "builtYear": 1913,
+   "widthM": 9.42,
+   "eavesM": 16.57,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.61,
+    "toM": 8.27,
+    "depthM": 0.7,
+    "centre": 0.79,
+    "lineRD": [
+     [
+      123405.52737499999,
+      485333.85475
+     ],
+     [
+      123397.123375,
+      485336.99974999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3b3126",
+    "wallRaw": "#42442c",
+    "skyline": {
+     "eavesM": 17.05,
+     "eavesRow": 66,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.65,
+      "topWidthM": 0.6,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 1.07,
+       "centre": 0.77
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.07,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.68
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 71 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142932",
+   "address": "Steve Bikoplein 20",
+   "builtYear": 1915,
+   "widthM": 9.34,
+   "eavesM": 12.62,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.15,
+    "toM": 2.8,
+    "depthM": 0.7,
+    "centre": 0.211,
+    "lineRD": [
+     [
+      123397.123375,
+      485336.99975
+     ],
+     [
+      123388.790375,
+      485340.11675
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3f3930",
+    "wallRaw": "#424731",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 106,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 2.55,
+      "topWidthM": 0.23,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.4 m at 0.78 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.4,
+       "centre": 0.78,
+       "light": 0.03
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.73
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1915, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 16.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098505",
+   "address": "Steve Bikoplein 18",
+   "builtYear": 1915,
+   "widthM": 9.24,
+   "eavesM": 12.45,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.78,
+    "toM": 7.8,
+    "depthM": 0.54,
+    "centre": 0.789,
+    "lineRD": [
+     [
+      123387.96637499999,
+      485340.42374999996
+     ],
+     [
+      123380.34437499999,
+      485342.65075
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#423a33",
+    "wallRaw": "#444432",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 748,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.24 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.24,
+       "light": 0.24
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.4,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.63
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 71 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

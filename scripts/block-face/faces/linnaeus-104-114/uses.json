@@ -1,0 +1,213 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:28:22.458Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236825",
+   "addresses": [
+    "Linnaeusstraat 112",
+    "Linnaeusstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 114",
+     "use": "winkelfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000726533"
+    },
+    {
+     "address": "Linnaeusstraat 114",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012149420"
+    },
+    {
+     "address": "Transvaalkade 1-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012149421"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1308926299,
+     "lngLat": [
+      4.9279124,
+      52.3554464
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "112-H",
+      "addr:postcode": "1092CR",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "cafe",
+      "branch": "Linnaeusstraat",
+      "brand": "Cafecito",
+      "contact:instagram": "cafecito_nl",
+      "cuisine": "coffee",
+      "email": "coffee@cafecito.nl",
+      "name": "Cafecito",
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa-Su 09:00-18:00",
+      "website": "https://cafecito.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:28:22.458Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10079246806,
+     "lngLat": [
+      4.9280365,
+      52.3554766
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "15",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T14:28:22.458Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233681",
+   "addresses": [
+    "Linnaeusstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000726526"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578711113,
+     "lngLat": [
+      4.9278372,
+      52.3555141
+     ],
+     "tags": {
+      "laundry_service": "yes",
+      "name": "Tip Top",
+      "self_service": "no",
+      "shop": "laundry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:28:22.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105918",
+   "addresses": [
+    "Linnaeusstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 106-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000726521"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578697239,
+     "lngLat": [
+      4.9278211,
+      52.3555898
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "106-H",
+      "addr:postcode": "1092CR",
+      "addr:street": "Linnaeusstraat",
+      "branch": "Amsterdam Oost",
+      "brand": "Grapedistrict",
+      "brand:website": "https://www.grapedistrict.nl",
+      "brand:wikidata": "Q140023063",
+      "email": "oost@grapedistrict.nl",
+      "name": "Grapedistrict",
+      "phone": "+31 20 4630957",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.grapedistrict.nl/winkel-amsterdam-oost",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:28:22.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012062871",
+   "addresses": [
+    "Linnaeusstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 104-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000726513"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578711108,
+     "lngLat": [
+      4.9277217,
+      52.3556427
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "104-H",
+      "addr:postcode": "1092CR",
+      "addr:street": "Linnaeusstraat",
+      "alt_name": "Pearle Opticiens",
+      "branch": "Amsterdam - Oost",
+      "brand": "Pearle",
+      "brand:website": "https://www.pearle.nl",
+      "brand:wikidata": "Q2231148",
+      "brand:wikipedia": "nl:Pearle",
+      "check_date": "2026-10-25",
+      "name": "Pearle",
+      "opening_hours": "Mo 11:00-18:00; Tu-We 09:30-18:00; Th-Fr 09:30-17:00",
+      "phone": "+31 20 463 6062",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pearle.nl/opticien/amsterdam/linnaeusstraat-104",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T14:28:22.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

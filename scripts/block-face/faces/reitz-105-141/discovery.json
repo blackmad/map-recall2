@@ -1,0 +1,354 @@
+{
+ "street": "Reitzstraat",
+ "seed": "0363100012090381",
+ "members": [
+  "0363100012090381",
+  "0363100012109806",
+  "0363100012116532"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012116532 (face continues: 087880)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063602",
+   "reason": "frontage 44.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012064088",
+   "reason": "frontage 33.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012069284",
+   "reason": "frontage 52.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012071902",
+   "reason": "sightline to Reitzstraat crosses 0363100012114579"
+  },
+  {
+   "pandId": "0363100012072682",
+   "reason": "frontage 40.6 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "frontage 61.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012075050",
+   "reason": "frontage 39.2 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012078183",
+   "reason": "frontage 63.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012079840",
+   "reason": "frontage 110.5 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012081213",
+   "reason": "frontage 105.7 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012082258",
+   "reason": "frontage 58.0 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012086761",
+   "reason": "frontage 46.0 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012087937",
+   "reason": "no frontage on Reitzstraat: No footprint edge faces Reitzstraat"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "sightline to Reitzstraat crosses 0363100012078181"
+  },
+  {
+   "pandId": "0363100012089099",
+   "reason": "sightline to Reitzstraat crosses 0363100012127958"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "frontage 72.7 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012089241",
+   "reason": "frontage 49.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012092418",
+   "reason": "sightline to Reitzstraat crosses 0363100012102500"
+  },
+  {
+   "pandId": "0363100012093949",
+   "reason": "frontage 57.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012099286",
+   "reason": "frontage 33.9 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012100982",
+   "reason": "frontage 81.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012108401",
+   "reason": "frontage 35.9 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012111793",
+   "reason": "frontage 52.4 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "sightline to Reitzstraat crosses 0363100012233492"
+  },
+  {
+   "pandId": "0363100012123028",
+   "reason": "no frontage on Reitzstraat: No footprint edge faces Reitzstraat"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "frontage 32.7 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012126742",
+   "reason": "sightline to Reitzstraat crosses 0363100012092418"
+  },
+  {
+   "pandId": "0363100012127064",
+   "reason": "sightline to Reitzstraat crosses 0363100012142519"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 31.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012136133",
+   "reason": "frontage 105.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012136455",
+   "reason": "frontage 32.2 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012139291",
+   "reason": "sightline to Reitzstraat crosses 0363100012075983"
+  },
+  {
+   "pandId": "0363100012140943",
+   "reason": "no frontage on Reitzstraat: No footprint edge faces Reitzstraat"
+  },
+  {
+   "pandId": "0363100012144119",
+   "reason": "frontage 44.6 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012144774",
+   "reason": "sightline to Reitzstraat crosses 0363100012100819"
+  },
+  {
+   "pandId": "0363100012146315",
+   "reason": "frontage 53.2 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012146384",
+   "reason": "frontage 56.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "frontage 70.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012148298",
+   "reason": "frontage 35.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "frontage 44.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012159280",
+   "reason": "frontage 43.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "frontage 56.8 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "frontage 65.0 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012194536",
+   "reason": "frontage 40.4 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012194537",
+   "reason": "sightline to Reitzstraat crosses 0363100012194538"
+  },
+  {
+   "pandId": "0363100012194538",
+   "reason": "sightline to Reitzstraat crosses 0363100012233548"
+  },
+  {
+   "pandId": "0363100012194539",
+   "reason": "frontage 54.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012194540",
+   "reason": "frontage 43.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012198834",
+   "reason": "frontage 31.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "sightline to Reitzstraat crosses 0363100012101809"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "frontage 41.1 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "frontage 39.5 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012203117",
+   "reason": "frontage 38.5 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012203119",
+   "reason": "frontage 43.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012224399",
+   "reason": "frontage 57.3 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "frontage 65.5 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012224402",
+   "reason": "frontage 40.9 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012224403",
+   "reason": "frontage 53.2 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012224404",
+   "reason": "frontage 43.6 m from Reitzstraat"
+  },
+  {
+   "pandId": "0363100012236731",
+   "reason": "sightline to Reitzstraat crosses 0363100012106599"
+  },
+  {
+   "pandId": "0363100012236816",
+   "reason": "sightline to Reitzstraat crosses 0363100012091006"
+  },
+  {
+   "pandId": "0363100012075983",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110455",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114579",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127958",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145014",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233492",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233548",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012090381",
+   "alongM": 0,
+   "widthM": 5.74,
+   "eavesM": 13.99,
+   "roofMaxM": 14.03,
+   "storeys3dbag": 3,
+   "builtYear": 1992,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109806",
+   "alongM": 8.92,
+   "widthM": 12.1,
+   "eavesM": 15.26,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116532",
+   "alongM": 24.01,
+   "widthM": 18.08,
+   "eavesM": 15.24,
+   "roofMaxM": 15.25,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  }
+ ]
+}

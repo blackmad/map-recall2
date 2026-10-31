@@ -20,6 +20,7 @@ import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlight
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { landmarkResidencyBudget, pickEvictions } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
+import { buildShadowStandIn, disposeShadowStandIn } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -232,7 +233,7 @@ export class SignatureLandmarks {
       onAttach: () => this._setup(this.map),
       // A context loss empties MapLibre's style until the restored one loads; models that landed in that gap
       // failed on its calls (`getLayer` of a null style) and would keep their extrusions for the session.
-      onContextRestored: () => { this._failed.clear(); this._applyBasemapFilter(); this._requestModels(); },
+      onContextRestored: () => { this._rebuildShadowStandIns(); this._failed.clear(); this._applyBasemapFilter(); this._requestModels(); },
       beforeRender: ctx => {
         if (this._removed || !this.enabled || !this._entries.length) return false;
         let any = false;
@@ -740,6 +741,7 @@ export class SignatureLandmarks {
   _disposeResources(group) {
     const geometries = new Set(), materials = new Set(), textures = new Set();
     group.traverse(child => {
+      if (child.userData?.shadowStandIn) { disposeShadowStandIn(child.userData.shadowStandIn); child.userData.shadowStandIn = null; }
       if (!child.isMesh) return;
       if (child.geometry) geometries.add(child.geometry);
       for (const material of Array.isArray(child.material) ? child.material : [child.material]) {
@@ -922,6 +924,7 @@ export class SignatureLandmarks {
       level, imported, spare: null, spareLevel: null, levelLoading: false,
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
+    this._attachShadowStandIn(entry);
     if (this._groundBase) this._applyGroundBase(entry);
     this.shown.add(spec.id);
     // Only now is it safe to take the grey box away.
@@ -1006,7 +1009,42 @@ export class SignatureLandmarks {
     this._applySuppression();
     if (active) this.setActiveLandmark(this._highlightLandmark || { id: this.activeLandmarkId });
     if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
+    this._attachShadowStandIn(entry);
     this.map.triggerRepaint();
+  }
+
+  /**
+   * Shared frame: the drawn level casts its shadow through one merged,
+   * position-only stand-in (rendererShared/shadowStandIns.ts) instead of a draw
+   * per mesh. Built once per level and kept with it (a spare level keeps its
+   * own). Shared-mesh clones and street chunks (whose pands are lifted in
+   * place) keep casting per mesh.
+   */
+  _attachShadowStandIn(entry) {
+    if (entry.standIn) { entry.holder.remove(entry.standIn.object); entry.standIn = null; }
+    if (!this.sharedFrame || entry.spec.sharedModel || entry.spec.chunkPands) return;
+    const imported = entry.imported;
+    if (imported.userData.shadowStandIn === undefined) imported.userData.shadowStandIn = buildShadowStandIn(THREE, imported);
+    const standIn = imported.userData.shadowStandIn;
+    if (!standIn) return;
+    standIn.object.matrix.multiplyMatrices(entry.group.matrix, imported.matrix);
+    standIn.object.matrixWorldNeedsUpdate = true;
+    entry.holder.add(standIn.object);
+    entry.standIn = standIn;
+  }
+
+  /** After a context restore: stand-in buffers were freed from the CPU on upload, so build them again from their sources. */
+  _rebuildShadowStandIns() {
+    for (const entry of this._entries || []) {
+      for (const level of [entry.imported, entry.spare]) {
+        const standIn = level?.userData.shadowStandIn;
+        if (standIn) disposeShadowStandIn(standIn, true);
+        if (level) delete level.userData.shadowStandIn;
+      }
+      entry.standIn = null;
+      if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
+      this._attachShadowStandIn(entry);
+    }
   }
 
   _disposeSpare(entry) {

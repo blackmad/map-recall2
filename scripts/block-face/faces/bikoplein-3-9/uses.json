@@ -1,0 +1,128 @@
+{
+ "street": "Steve Bikoplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:40:41.516Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012105544",
+   "addresses": [
+    "Steve Bikoplein 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 3-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001007750"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149663",
+   "addresses": [
+    "Steve Bikoplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 5-H",
+     "use": "kantoorfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001007751"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826200469,
+     "lngLat": [
+      4.9238751,
+      52.3557191
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-H",
+      "addr:postcode": "1092GM",
+      "addr:street": "Steve Bikoplein",
+      "amenity": "dentist",
+      "email": "info@operatandarts.nl",
+      "healthcare": "dentist",
+      "name": "Operatandarts de By & de By",
+      "opening_hours": "\"only by appoityment\"",
+      "phone": "+31 20 694 8057",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.operatandarts.nl"
+     },
+     "fetchedAt": "2026-10-31T15:40:41.516Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012078226",
+   "addresses": [
+    "Steve Bikoplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 7-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001963681"
+    },
+    {
+     "address": "Steve Bikoplein 7-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000903413"
+    },
+    {
+     "address": "Steve Bikoplein 7-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 191,
+     "bagId": "0363010012608130"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816805618,
+     "lngLat": [
+      4.9239956,
+      52.3556875
+     ],
+     "tags": {
+      "check_date": "2026-09-13",
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-10-31T15:40:41.516Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012080020",
+   "addresses": [
+    "Steve Bikoplein 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 9-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000903422"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

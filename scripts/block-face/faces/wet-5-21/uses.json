@@ -1,0 +1,164 @@
+{
+ "street": "Christiaan de Wetstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:28:30.743Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081213",
+   "addresses": [
+    "Christiaan de Wetstraat 5",
+    "Christiaan de Wetstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000604542"
+    },
+    {
+     "address": "Christiaan de Wetstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000604546"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123028",
+   "addresses": [
+    "Christiaan de Wetstraat 9",
+    "Christiaan de Wetstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000604550"
+    },
+    {
+     "address": "Christiaan de Wetstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000604554"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140943",
+   "addresses": [
+    "Christiaan de Wetstraat 13",
+    "Christiaan de Wetstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000604558"
+    },
+    {
+     "address": "Christiaan de Wetstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000604574"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087937",
+   "addresses": [
+    "Christiaan de Wetstraat 17",
+    "Christiaan de Wetstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000604578"
+    },
+    {
+     "address": "Christiaan de Wetstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000604582"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236816",
+   "addresses": [
+    "Christiaan de Wetstraat 21",
+    "Christiaan de Wetstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Christiaan de Wetstraat 21",
+     "use": "onderwijsfunctie",
+     "areaM2": 2141,
+     "bagId": "0363010000604586"
+    },
+    {
+     "address": "Christiaan de Wetstraat 23",
+     "use": "onderwijsfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000604604"
+    },
+    {
+     "address": "Christiaan de Wetstraat 21",
+     "use": "bijeenkomstfunctie,onderwijsfunctie,sportfunctie",
+     "areaM2": 1954,
+     "bagId": "0363010012108532"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1174703198,
+     "lngLat": [
+      4.9190998,
+      52.3543548
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23",
+      "addr:postcode": "1091NG",
+      "addr:street": "Christiaan de Wetstraat",
+      "amenity": "school",
+      "check_date": "2025-06-06",
+      "education": "school",
+      "email": "directie@dekaap.amsterdam",
+      "isced:level": "0;1",
+      "landuse": "education",
+      "max_age": "12",
+      "min_age": "2",
+      "name": "De Kaap",
+      "official_name": "Integraal Kindcentrum De Kaap",
+      "operator": "Staij",
+      "operator:website": "https://www.staij.nl",
+      "operator:wikidata": "Q138758033",
+      "phone": "+31 20 6939375",
+      "school": "primary",
+      "website": "https://dekaap.amsterdam"
+     },
+     "fetchedAt": "2026-10-31T14:28:30.743Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

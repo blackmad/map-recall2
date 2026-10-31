@@ -1,0 +1,200 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012088780",
+   "addresses": [
+    "Tugelaweg 141",
+    "Tugelaweg 142",
+    "Tugelaweg 143",
+    "Tugelaweg 144",
+    "Tugelaweg 145",
+    "Tugelaweg 146",
+    "Tugelaweg 147",
+    "Tugelaweg 148",
+    "Tugelaweg 149",
+    "Tugelaweg 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 146",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000937304"
+    },
+    {
+     "address": "Tugelaweg 143",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937305"
+    },
+    {
+     "address": "Tugelaweg 145",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937306"
+    },
+    {
+     "address": "Tugelaweg 147",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937307"
+    },
+    {
+     "address": "Tugelaweg 149",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000937308"
+    },
+    {
+     "address": "Tugelaweg 150",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001170040"
+    },
+    {
+     "address": "Tugelaweg 144",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000937303"
+    },
+    {
+     "address": "Tugelaweg 142",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000937302"
+    },
+    {
+     "address": "Tugelaweg 141",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000937301"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063471",
+   "addresses": [
+    "Tugelaweg 153",
+    "Tugelaweg 154",
+    "Tugelaweg 155",
+    "Tugelaweg 156",
+    "Tugelaweg 157",
+    "Tugelaweg 158",
+    "Tugelaweg 159",
+    "Tugelaweg 160",
+    "Tugelaweg 161",
+    "Tugelaweg 162",
+    "Tugelaweg 163",
+    "Tugelaweg 164",
+    "Tugelaweg 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 158",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000715658"
+    },
+    {
+     "address": "Tugelaweg 155",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000714913"
+    },
+    {
+     "address": "Tugelaweg 156",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000714914"
+    },
+    {
+     "address": "Tugelaweg 157",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000714945"
+    },
+    {
+     "address": "Tugelaweg 163",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000719860"
+    },
+    {
+     "address": "Tugelaweg 161",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000721158"
+    },
+    {
+     "address": "Tugelaweg 164",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000722276"
+    },
+    {
+     "address": "President Steynplantsoen 1",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000722896"
+    },
+    {
+     "address": "President Steynplantsoen 2",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000722927"
+    },
+    {
+     "address": "President Steynplantsoen 3",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000722958"
+    },
+    {
+     "address": "Tugelaweg 162",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000720849"
+    },
+    {
+     "address": "Tugelaweg 160",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000721656"
+    },
+    {
+     "address": "Tugelaweg 165",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000989457"
+    },
+    {
+     "address": "Tugelaweg 153",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000721965"
+    },
+    {
+     "address": "Tugelaweg 154",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000721966"
+    },
+    {
+     "address": "Tugelaweg 159",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000722121"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

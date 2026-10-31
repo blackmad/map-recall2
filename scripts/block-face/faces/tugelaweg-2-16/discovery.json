@@ -1,0 +1,285 @@
+{
+ "street": "Tugelaweg",
+ "seed": "0363100012147121",
+ "members": [
+  "0363100012147121",
+  "0363100012102476"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012147121 (face continues: 082984 099560)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012065101 47.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069443",
+   "reason": "frontage 118.9 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012071071",
+   "reason": "frontage 66.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012076335",
+   "reason": "frontage 41.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012077129",
+   "reason": "frontage 55.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012092782",
+   "reason": "frontage 105.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012102599",
+   "reason": "frontage 68.1 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012102698",
+   "reason": "sightline to Tugelaweg crosses 0363100012082984"
+  },
+  {
+   "pandId": "0363100012108145",
+   "reason": "sightline to Tugelaweg crosses 0363100012082984"
+  },
+  {
+   "pandId": "0363100012110310",
+   "reason": "frontage 64.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012113895",
+   "reason": "frontage 133.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012118011",
+   "reason": "sightline to Tugelaweg crosses 0363100012082984"
+  },
+  {
+   "pandId": "0363100012118460",
+   "reason": "frontage 37.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012126613",
+   "reason": "frontage 54.5 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012127345",
+   "reason": "frontage 43.1 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012129676",
+   "reason": "frontage 81.9 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012130864",
+   "reason": "no frontage on Tugelaweg: No footprint edge faces Tugelaweg"
+  },
+  {
+   "pandId": "0363100012136776",
+   "reason": "frontage 31.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012141723",
+   "reason": "frontage 72.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012144205",
+   "reason": "frontage 61.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012147495",
+   "reason": "frontage 105.1 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012154030",
+   "reason": "frontage 49.2 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012157112",
+   "reason": "frontage 98.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012159570",
+   "reason": "frontage 87.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012160053",
+   "reason": "frontage 99.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012161630",
+   "reason": "frontage 93.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012084132",
+   "reason": "frontage 61.2 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012087286",
+   "reason": "frontage 48.1 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012092790",
+   "reason": "frontage 40.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012097228",
+   "reason": "frontage 71.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012098323",
+   "reason": "frontage 64.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012098471",
+   "reason": "frontage 67.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012102267",
+   "reason": "frontage 63.7 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012122086",
+   "reason": "frontage 61.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012128682",
+   "reason": "frontage 61.5 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012148553",
+   "reason": "sightline to Tugelaweg crosses 0363100012065101"
+  },
+  {
+   "pandId": "0363100012157355",
+   "reason": "frontage 90.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012157428",
+   "reason": "frontage 89.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012160682",
+   "reason": "frontage 88.9 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012162621",
+   "reason": "frontage 89.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012162655",
+   "reason": "frontage 88.5 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012163534",
+   "reason": "frontage 90.1 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012164685",
+   "reason": "frontage 90.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012166074",
+   "reason": "frontage 88.7 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012166137",
+   "reason": "frontage 93.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012193766",
+   "reason": "frontage 86.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012212948",
+   "reason": "sightline to Tugelaweg crosses 0363100012147121"
+  },
+  {
+   "pandId": "0363100012213937",
+   "reason": "frontage 80.9 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012216385",
+   "reason": "frontage 53.4 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012226257",
+   "reason": "frontage 91.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012242645",
+   "reason": "frontage 76.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012242646",
+   "reason": "frontage 80.6 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012242647",
+   "reason": "no frontage on Tugelaweg: No footprint edge faces Tugelaweg"
+  },
+  {
+   "pandId": "0363100012249643",
+   "reason": "frontage 60.0 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012254023",
+   "reason": "frontage 59.7 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012233594",
+   "reason": "sightline to Tugelaweg crosses 0363100012065101"
+  },
+  {
+   "pandId": "0363100012236732",
+   "reason": "frontage 48.3 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012236810",
+   "reason": "frontage 46.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012236977",
+   "reason": "frontage 46.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012236983",
+   "reason": "frontage 46.8 m from Tugelaweg"
+  },
+  {
+   "pandId": "0363100012131469",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012147121",
+   "alongM": 0,
+   "widthM": 6.11,
+   "eavesM": 13.45,
+   "roofMaxM": 13.45,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012102476",
+   "alongM": 8.18,
+   "widthM": 10.25,
+   "eavesM": 14.13,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1994,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,489 @@
+{
+ "street": "Retiefstraat",
+ "seed": "0363100012063111",
+ "members": [
+  "0363100012082879",
+  "0363100012137027",
+  "0363100012096769",
+  "0363100012085212",
+  "0363100012236876",
+  "0363100012070004",
+  "0363100012066390",
+  "0363100012066681",
+  "0363100012063111"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012082879 (face continues: 141884)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012063111 (face continues: 075910)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062150",
+   "reason": "frontage 42.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062315",
+   "reason": "frontage 42.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062960",
+   "reason": "frontage 35.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012064816",
+   "reason": "frontage 45.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012066147",
+   "reason": "frontage 48.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012071924",
+   "reason": "frontage 42.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072390",
+   "reason": "frontage 35.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072572",
+   "reason": "frontage 35.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075049",
+   "reason": "frontage 74.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012076819",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012081370",
+   "reason": "sightline to Retiefstraat crosses 0363100012095054"
+  },
+  {
+   "pandId": "0363100012082556",
+   "reason": "frontage 35.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012084324",
+   "reason": "sightline to Retiefstraat crosses 0363100012075910"
+  },
+  {
+   "pandId": "0363100012086971",
+   "reason": "frontage 32.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087298",
+   "reason": "frontage 43.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087384",
+   "reason": "frontage 39.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012088417",
+   "reason": "frontage 74.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012089136",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012092816",
+   "reason": "frontage 43.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012093743",
+   "reason": "frontage 47.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012095458",
+   "reason": "frontage 75.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012098505",
+   "reason": "frontage 74.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012098524",
+   "reason": "frontage 74.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012107351",
+   "reason": "frontage 41.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012108133",
+   "reason": "frontage 44.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012109508",
+   "reason": "frontage 74.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012112873",
+   "reason": "sightline to Retiefstraat crosses 0363100012081370"
+  },
+  {
+   "pandId": "0363100012116585",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012117340",
+   "reason": "frontage 74.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012121531",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126266",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126391",
+   "reason": "sightline to Retiefstraat crosses 0363100012138910"
+  },
+  {
+   "pandId": "0363100012126785",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012129296",
+   "reason": "frontage 42.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131309",
+   "reason": "sightline to Retiefstraat crosses 0363100012126391"
+  },
+  {
+   "pandId": "0363100012134096",
+   "reason": "frontage 30.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137732",
+   "reason": "frontage 36.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012139205",
+   "reason": "frontage 74.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012141435",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142310",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142932",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142961",
+   "reason": "frontage 48.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012144337",
+   "reason": "frontage 74.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149374",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149666",
+   "reason": "frontage 32.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012150483",
+   "reason": "sightline to Retiefstraat crosses 0363100012068243"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "frontage 74.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012151291",
+   "reason": "sightline to Retiefstraat crosses 0363100012141884"
+  },
+  {
+   "pandId": "0363100012154820",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012198507",
+   "reason": "sightline to Retiefstraat crosses 0363100012076911"
+  },
+  {
+   "pandId": "0363100012200725",
+   "reason": "sightline to Retiefstraat crosses 0363100012080801"
+  },
+  {
+   "pandId": "0363100012205904",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012207244",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012211143",
+   "reason": "frontage 96.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012212488",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012213083",
+   "reason": "sightline to Retiefstraat crosses 0363100012083997"
+  },
+  {
+   "pandId": "0363100012215081",
+   "reason": "sightline to Retiefstraat crosses 0363100012080801"
+  },
+  {
+   "pandId": "0363100012218251",
+   "reason": "frontage 96.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233606",
+   "reason": "frontage 42.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012234548",
+   "reason": "sightline to Retiefstraat crosses 0363100012141204"
+  },
+  {
+   "pandId": "0363100012240693",
+   "reason": "frontage 67.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012067013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068543",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070879",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076911",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080801",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095054",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103856",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105469",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110022",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112323",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119451",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120175",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123300",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129491",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136245",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140469",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142255",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144201",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154435",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012082879",
+   "alongM": -71.38,
+   "widthM": 6.19,
+   "eavesM": 12.98,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012137027",
+   "alongM": -65.21,
+   "widthM": 6.15,
+   "eavesM": 13.02,
+   "roofMaxM": 16.87,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096769",
+   "alongM": -59.05,
+   "widthM": 6.18,
+   "eavesM": 13.06,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012085212",
+   "alongM": -51.6,
+   "widthM": 8.69,
+   "eavesM": 12.49,
+   "roofMaxM": 17.29,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236876",
+   "alongM": -35.7,
+   "widthM": 9.38,
+   "eavesM": 13.18,
+   "roofMaxM": 17.38,
+   "storeys3dbag": 4,
+   "builtYear": 1921,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012070004",
+   "alongM": -19.78,
+   "widthM": 8.7,
+   "eavesM": 12.42,
+   "roofMaxM": 17.6,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012066390",
+   "alongM": -12.34,
+   "widthM": 6.19,
+   "eavesM": 13.01,
+   "roofMaxM": 16.84,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012066681",
+   "alongM": -6.17,
+   "widthM": 6.15,
+   "eavesM": 13.08,
+   "roofMaxM": 16.82,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063111",
+   "alongM": 0,
+   "widthM": 6.18,
+   "eavesM": 13.08,
+   "roofMaxM": 16.82,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": []
+  }
+ ]
+}

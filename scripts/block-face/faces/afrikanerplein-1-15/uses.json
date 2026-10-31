@@ -1,0 +1,158 @@
+{
+ "street": "Afrikanerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:11:28.498Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012094272",
+   "addresses": [
+    "Afrikanerplein 1",
+    "Afrikanerplein 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 1",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000561977"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11216254006,
+     "lngLat": [
+      4.9169357,
+      52.3527973
+     ],
+     "tags": {
+      "check_date": "2025-10-27",
+      "name": "Stichting Here To Support",
+      "office": "ngo",
+      "website": "https://www.heretosupport.nl/"
+     },
+     "fetchedAt": "2026-10-31T17:11:28.498Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11216254007,
+     "lngLat": [
+      4.9169309,
+      52.3528155
+     ],
+     "tags": {
+      "check_date": "2025-10-27",
+      "name": "Amsterdam City Rights",
+      "office": "ngo",
+      "opening_hours": "Mo 13:00-17:00",
+      "website": "https://www.amsterdamcityrights.org/"
+     },
+     "fetchedAt": "2026-10-31T17:11:28.498Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012074671",
+   "addresses": [
+    "Afrikanerplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 5-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000561981"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113463",
+   "addresses": [
+    "Afrikanerplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 7-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000561985"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110028",
+   "addresses": [
+    "Afrikanerplein 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 9-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000561989"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122445",
+   "addresses": [
+    "Afrikanerplein 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 11-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000561993"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123328",
+   "addresses": [
+    "Afrikanerplein 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 13-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000561997"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088081",
+   "addresses": [
+    "Afrikanerplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 15-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000562002"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

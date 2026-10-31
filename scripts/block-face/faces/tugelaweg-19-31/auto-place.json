@@ -1,0 +1,609 @@
+{
+ "face": "tugelaweg-19-31",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 3.36,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237245",
+   "address": "Tugelaweg 19A",
+   "builtYear": 1922,
+   "widthM": 18,
+   "eavesM": 13.32,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 4.68,
+    "toM": 13.43,
+    "depthM": 0.5,
+    "centre": 0.503
+   },
+   "strip": {
+    "wall": "#726358",
+    "wallRaw": "#7a6960",
+    "skyline": {
+     "eavesM": 13.35,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.28,
+      "topWidthM": 2.75,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.397,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.64,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.45,
+       "widthM": 1.25,
+       "centre": 0.08
+      },
+      {
+       "atM": 11.15,
+       "widthM": 1.2,
+       "centre": 0.08
+      },
+      {
+       "atM": 9.65,
+       "widthM": 2.45,
+       "centre": 0.29
+      },
+      {
+       "atM": 9.35,
+       "widthM": 3.83,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.02,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 18 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 18 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.35 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.295 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237041",
+   "address": "Tugelaweg 21A",
+   "builtYear": 1922,
+   "widthM": 17.82,
+   "eavesM": 12.65,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.54,
+    "toM": 13.07,
+    "depthM": 0.5,
+    "centre": 0.494
+   },
+   "strip": {
+    "wall": "#78675a",
+    "wallRaw": "#7b685f",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 0.88,
+      "topWidthM": 1.8,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.268,
+    "structure": {
+     "bayWidthM": 1.85,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.6,
+       "widthM": 6.22,
+       "centre": 0.46
+      },
+      {
+       "atM": 11.3,
+       "widthM": 2.67,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 17.82 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 17.82 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.203 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236929",
+   "address": "Tugelaweg 23A",
+   "builtYear": 1922,
+   "widthM": 18.03,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.76,
+    "toM": 13.27,
+    "depthM": 0.5,
+    "centre": 0.5
+   },
+   "strip": {
+    "wall": "#776659",
+    "wallRaw": "#7c6b60",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 0.68,
+      "topWidthM": 2.52,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.262,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 3.63,
+       "centre": 0.11
+      },
+      {
+       "atM": 11.32,
+       "widthM": 1.9,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 18.03 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 18.03 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.198 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236751",
+   "address": "Tugelaweg 25A",
+   "builtYear": 1922,
+   "widthM": 18,
+   "eavesM": 12.67,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.75,
+    "toM": 13.24,
+    "depthM": 0.5,
+    "centre": 0.5
+   },
+   "strip": {
+    "wall": "#7a695d",
+    "wallRaw": "#76655c",
+    "skyline": {
+     "eavesM": 14.05,
+     "eavesRow": 246,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.243,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 7.03,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 18 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 18 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.179 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236807",
+   "address": "Tugelaweg 27A",
+   "builtYear": 1922,
+   "widthM": 17.84,
+   "eavesM": 12.65,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.74,
+    "toM": 13.24,
+    "depthM": 0.5,
+    "centre": 0.504
+   },
+   "strip": {
+    "wall": "#756356",
+    "wallRaw": "#78665e",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 261,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 0.95,
+      "topWidthM": 1.63,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.249,
+    "structure": {
+     "bayWidthM": 1.85,
+     "bayCentre": 0.31,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 8.65,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 17.84 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 17.84 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.68 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.196 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233676",
+   "address": "Tugelaweg 29A",
+   "builtYear": 1922,
+   "widthM": 17.98,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.09,
+    "toM": 13.34,
+    "depthM": 0.5,
+    "centre": 0.512
+   },
+   "strip": {
+    "wall": "#6c5d50",
+    "wallRaw": "#6e5e55",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 0.97,
+      "topWidthM": 1.73,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.287,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 3.7,
+       "centre": 0.11
+      },
+      {
+       "atM": 11.32,
+       "widthM": 1.25,
+       "centre": 0.93
+      },
+      {
+       "atM": 10.72,
+       "widthM": 0.85,
+       "centre": 0.53
+      },
+      {
+       "atM": 9.75,
+       "widthM": 1.5,
+       "centre": 0.3
+      },
+      {
+       "atM": 9.45,
+       "widthM": 3.15,
+       "centre": 0.53
+      },
+      {
+       "atM": 7.95,
+       "widthM": 1.07,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 17.98 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 17.98 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.65 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.202 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

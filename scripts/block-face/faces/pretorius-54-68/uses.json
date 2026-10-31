@@ -1,0 +1,342 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:53:37.626Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012087384",
+   "addresses": [
+    "Pretoriusstraat 68D",
+    "Pretoriusstraat 68C",
+    "Pretoriusstraat 68A",
+    "Pretoriusstraat 68B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 68D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000782658"
+    },
+    {
+     "address": "Pretoriusstraat 68C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782657"
+    },
+    {
+     "address": "Pretoriusstraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000782655"
+    },
+    {
+     "address": "Pretoriusstraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782656"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2917254743,
+     "lngLat": [
+      4.9219343,
+      52.3549625
+     ],
+     "tags": {
+      "name": "Cave de l'Est",
+      "opening_hours": "Tu-Sa 11:00-19:00; Su 11:00-17:00",
+      "shop": "wine",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:53:37.626Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012062150",
+   "addresses": [
+    "Pretoriusstraat 66A",
+    "Pretoriusstraat 66D",
+    "Pretoriusstraat 66E",
+    "Pretoriusstraat 66B",
+    "Pretoriusstraat 66C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 66A",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782646"
+    },
+    {
+     "address": "Pretoriusstraat 66D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782649"
+    },
+    {
+     "address": "Pretoriusstraat 66E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000782650"
+    },
+    {
+     "address": "Pretoriusstraat 66B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782647"
+    },
+    {
+     "address": "Pretoriusstraat 66C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782648"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071924",
+   "addresses": [
+    "Pretoriusstraat 64C",
+    "Pretoriusstraat 64D",
+    "Pretoriusstraat 64A",
+    "Pretoriusstraat 64B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 64C",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000782640"
+    },
+    {
+     "address": "Pretoriusstraat 64D",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782641"
+    },
+    {
+     "address": "Pretoriusstraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782638"
+    },
+    {
+     "address": "Pretoriusstraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000782639"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129296",
+   "addresses": [
+    "Pretoriusstraat 62A",
+    "Pretoriusstraat 62B",
+    "Pretoriusstraat 62C",
+    "Pretoriusstraat 62D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 62A",
+     "use": "kantoorfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000782630"
+    },
+    {
+     "address": "Pretoriusstraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000782631"
+    },
+    {
+     "address": "Pretoriusstraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000782632"
+    },
+    {
+     "address": "Pretoriusstraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000782633"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1300002705,
+     "lngLat": [
+      4.9222791,
+      52.355051
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "social_facility",
+      "check_date": "2026-09-13",
+      "name": "Permens"
+     },
+     "fetchedAt": "2026-10-31T14:53:37.626Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092816",
+   "addresses": [
+    "Pretoriusstraat 60A",
+    "Pretoriusstraat 60B",
+    "Pretoriusstraat 60C",
+    "Pretoriusstraat 60D",
+    "Pretoriusstraat 60E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 60A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000782621"
+    },
+    {
+     "address": "Pretoriusstraat 60B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000782622"
+    },
+    {
+     "address": "Pretoriusstraat 60C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000782623"
+    },
+    {
+     "address": "Pretoriusstraat 60D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000782624"
+    },
+    {
+     "address": "Pretoriusstraat 60E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000782625"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149666",
+   "addresses": [
+    "Pretoriusstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 58-H",
+     "use": "overige gebruiksfunctie,winkelfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000782613"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1208568401,
+     "lngLat": [
+      4.9225142,
+      52.3551277
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "post_office",
+      "name": "Canbind pick-up café",
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 10:00-17:00"
+     },
+     "fetchedAt": "2026-10-31T14:53:37.626Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012087298",
+   "addresses": [
+    "Pretoriusstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000782606"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062315",
+   "addresses": [
+    "Pretoriusstraat 54C",
+    "Pretoriusstraat 54D",
+    "Pretoriusstraat 54E",
+    "Pretoriusstraat 54A",
+    "Pretoriusstraat 54B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 54C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000782600"
+    },
+    {
+     "address": "Pretoriusstraat 54D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000782601"
+    },
+    {
+     "address": "Pretoriusstraat 54E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001018551"
+    },
+    {
+     "address": "Pretoriusstraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001018549"
+    },
+    {
+     "address": "Pretoriusstraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001018550"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

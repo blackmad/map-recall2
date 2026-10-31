@@ -1,0 +1,82 @@
+{
+ "street": "President Steynstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:16:37.880Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074817",
+   "addresses": [
+    "President Steynstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 5-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000782341"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2052032729,
+     "lngLat": [
+      4.9164823,
+      52.3512674
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1091NB",
+      "addr:street": "President Steynstraat",
+      "amenity": "fast_food",
+      "check_date": "2024-09-12",
+      "name": "Presidente"
+     },
+     "fetchedAt": "2026-10-31T17:16:37.880Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111423",
+   "addresses": [
+    "President Steynstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 7-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001010419"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1595389728,
+     "lngLat": [
+      4.9163435,
+      52.3512642
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7 HS",
+      "addr:postcode": "1091NB",
+      "addr:street": "President Steynstraat",
+      "amenity": "restaurant",
+      "name": "La Due Sicilie"
+     },
+     "fetchedAt": "2026-10-31T17:16:37.880Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

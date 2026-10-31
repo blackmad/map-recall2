@@ -1,0 +1,554 @@
+{
+ "street": "Christiaan de Wetstraat",
+ "seed": "0363100012117142",
+ "members": [
+  "0363100012117142",
+  "0363100012099286",
+  "0363100012086761",
+  "0363100012082258",
+  "0363100012146692"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012117142 (face continues: 233492)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063198",
+   "reason": "frontage 37.9 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012063602",
+   "reason": "frontage 38.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012068825",
+   "reason": "frontage 47.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012071769",
+   "reason": "frontage 38.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012071902",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012146384"
+  },
+  {
+   "pandId": "0363100012072682",
+   "reason": "frontage 64.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012073273",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012074323",
+   "reason": "frontage 86.3 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012075103",
+   "reason": "frontage 88.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012075751",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012123446"
+  },
+  {
+   "pandId": "0363100012075983",
+   "reason": "frontage 98.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012077637",
+   "reason": "frontage 34.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012085617",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012145599"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012088339",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012088610",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012090381",
+   "reason": "frontage 46.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012091006",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012102500"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012093949",
+   "reason": "frontage 38.2 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012094272",
+   "reason": "frontage 48.7 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012096065",
+   "reason": "frontage 46.2 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012096148",
+   "reason": "frontage 42.8 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012097026",
+   "reason": "frontage 92.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012078181"
+  },
+  {
+   "pandId": "0363100012105745",
+   "reason": "frontage 33.8 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012105823",
+   "reason": "frontage 33.9 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012106599",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012233492"
+  },
+  {
+   "pandId": "0363100012109806",
+   "reason": "frontage 35.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "frontage 41.7 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012110306",
+   "reason": "frontage 67.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012110455",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012114066",
+   "reason": "frontage 67.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012114579",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012116532",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012087880"
+  },
+  {
+   "pandId": "0363100012127064",
+   "reason": "frontage 37.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012127958",
+   "reason": "frontage 70.7 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012129254",
+   "reason": "frontage 40.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 37.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012133223",
+   "reason": "frontage 38.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012134742",
+   "reason": "frontage 37.7 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012136455",
+   "reason": "frontage 32.9 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012139291",
+   "reason": "frontage 100.6 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012142519",
+   "reason": "frontage 35.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012145564",
+   "reason": "frontage 80.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012146315",
+   "reason": "frontage 51.6 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012159280",
+   "reason": "frontage 35.8 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012188432",
+   "reason": "frontage 71.8 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012086761"
+  },
+  {
+   "pandId": "0363100012194534",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012082258"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012082258"
+  },
+  {
+   "pandId": "0363100012194536",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012099286"
+  },
+  {
+   "pandId": "0363100012194537",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012117142"
+  },
+  {
+   "pandId": "0363100012194538",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012117142"
+  },
+  {
+   "pandId": "0363100012194539",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012086761"
+  },
+  {
+   "pandId": "0363100012194540",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012099286"
+  },
+  {
+   "pandId": "0363100012198834",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012123055"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012123055"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012152184"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012152184"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223677",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223678",
+   "reason": "frontage 82.9 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223680",
+   "reason": "frontage 68.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223683",
+   "reason": "frontage 81.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223684",
+   "reason": "frontage 80.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223685",
+   "reason": "frontage 57.7 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223686",
+   "reason": "frontage 56.3 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223689",
+   "reason": "frontage 69.2 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223690",
+   "reason": "frontage 44.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223691",
+   "reason": "frontage 45.8 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223692",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223693",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223694",
+   "reason": "frontage 34.4 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223695",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223696",
+   "reason": "no frontage on Christiaan de Wetstraat: No footprint edge faces Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223697",
+   "reason": "frontage 45.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223698",
+   "reason": "frontage 46.9 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223699",
+   "reason": "frontage 88.6 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223700",
+   "reason": "frontage 86.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223701",
+   "reason": "frontage 86.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223702",
+   "reason": "frontage 86.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223704",
+   "reason": "frontage 88.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012223705",
+   "reason": "frontage 88.5 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012224399",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012086761"
+  },
+  {
+   "pandId": "0363100012224400",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012082258"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012082258"
+  },
+  {
+   "pandId": "0363100012224402",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012099286"
+  },
+  {
+   "pandId": "0363100012224403",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012086761"
+  },
+  {
+   "pandId": "0363100012224404",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012099286"
+  },
+  {
+   "pandId": "0363100012228286",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012236816"
+  },
+  {
+   "pandId": "0363100012233416",
+   "reason": "frontage 34.0 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012233548",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012233492"
+  },
+  {
+   "pandId": "0363100012236731",
+   "reason": "frontage 34.6 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012236980",
+   "reason": "sightline to Christiaan de Wetstraat crosses 0363100012091006"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "frontage 62.1 m from Christiaan de Wetstraat"
+  },
+  {
+   "pandId": "0363100012062612",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012064088",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114784",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144119",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146384",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236816",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012117142",
+   "alongM": 0,
+   "widthM": 12.74,
+   "eavesM": 15.19,
+   "roofMaxM": 15.2,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099286",
+   "alongM": 12.74,
+   "widthM": 12.74,
+   "eavesM": 15.17,
+   "roofMaxM": 15.17,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012086761",
+   "alongM": 25.48,
+   "widthM": 12.74,
+   "eavesM": 15.17,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082258",
+   "alongM": 38.22,
+   "widthM": 12.74,
+   "eavesM": 15.19,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012146692",
+   "alongM": 53.49,
+   "widthM": 17.8,
+   "eavesM": 15.4,
+   "roofMaxM": 15.45,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "face": "kraaipan-31-33",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 0.09,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012154076",
+   "address": "Kraaipanstraat 31B",
+   "builtYear": 1921,
+   "widthM": 5.95,
+   "eavesM": 6.73,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.21,
+    "toM": 3.77,
+    "depthM": 0.33,
+    "centre": 0.502
+   },
+   "strip": {
+    "wall": "#7d6952",
+    "wallRaw": "#696751",
+    "skyline": {
+     "eavesM": 10,
+     "eavesRow": 166,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 3.35,
+      "topWidthM": 0.6,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.13 m at 0.19 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.13,
+       "centre": 0.19,
+       "light": 0.28
+      },
+      {
+       "widthM": 3.13,
+       "centre": 0.71,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127519",
+   "address": "Kraaipanstraat 33",
+   "builtYear": 1921,
+   "widthM": 6.06,
+   "eavesM": 6.39,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.21,
+    "toM": 4.76,
+    "depthM": 0.33,
+    "centre": 0.657
+   },
+   "strip": {
+    "wall": null,
+    "wallRaw": "#504a3c",
+    "skyline": {
+     "eavesM": 9.75,
+     "eavesRow": 176,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 4.2,
+      "topWidthM": 0.8,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 5.55 m at 0.5 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.55,
+       "centre": 0.5,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.06 m, type 8.8-12.9 m; strip shows balconies (dark open axis 5.55 m at 0.5 (light 0.24): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 6.06 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 5.55 m at 0.5 (light 0.24): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

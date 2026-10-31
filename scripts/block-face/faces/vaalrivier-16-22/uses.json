@@ -1,0 +1,142 @@
+{
+ "street": "Vaalrivierstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:59:54.233Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131537",
+   "addresses": [
+    "Vaalrivierstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000849485"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086972685,
+     "lngLat": [
+      4.9187988,
+      52.3516262
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T15:59:54.233Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012076039",
+   "addresses": [
+    "Vaalrivierstraat 20A",
+    "Vaalrivierstraat 20B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849481"
+    },
+    {
+     "address": "Vaalrivierstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849482"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086972685,
+     "lngLat": [
+      4.9187988,
+      52.3516262
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T15:59:54.233Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092908",
+   "addresses": [
+    "Vaalrivierstraat 18A",
+    "Vaalrivierstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849477"
+    },
+    {
+     "address": "Vaalrivierstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849478"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076608",
+   "addresses": [
+    "Vaalrivierstraat 16A",
+    "Vaalrivierstraat 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000849473"
+    },
+    {
+     "address": "Vaalrivierstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000849474"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086948403,
+     "lngLat": [
+      4.918431,
+      52.3517882
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T15:59:54.233Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    }
+   ]
+  }
+ ]
+}

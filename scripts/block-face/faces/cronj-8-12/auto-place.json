@@ -1,0 +1,131 @@
+{
+ "face": "cronj-8-12",
+ "street": "Cronjéstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.31,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012096932",
+   "address": "Cronjéstraat 10B",
+   "builtYear": 1922,
+   "widthM": 14.32,
+   "eavesM": 10.69,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 3.29,
+    "toM": 12.56,
+    "depthM": 0.45,
+    "centre": 0.553
+   },
+   "strip": {
+    "wall": "#805749",
+    "wallRaw": "#6a4b3e",
+    "skyline": {
+     "eavesM": 10.53,
+     "eavesRow": 192,
+     "confidence": 0.4,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 0.82,
+      "topWidthM": 0.63,
+      "centre": 0.02
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0.8,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 1.23 m at 0.05 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.05,
+       "light": 0
+      },
+      {
+       "widthM": 1.57,
+       "centre": 0.26,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.37,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 0.9,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 44 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103686",
+   "address": "Cronjéstraat 8B",
+   "builtYear": 1922,
+   "widthM": 8.37,
+   "eavesM": 10.44,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.74,
+    "toM": 5.07,
+    "depthM": 0.45,
+    "centre": 0.466
+   },
+   "strip": {
+    "wall": "#857f7a",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 613,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

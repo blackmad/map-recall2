@@ -1,0 +1,203 @@
+{
+ "street": "Smitstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:36:07.682Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012076148",
+   "addresses": [
+    "Smitstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000812773"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233640",
+   "addresses": [
+    "Smitstraat 29",
+    "Smitstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000812781"
+    },
+    {
+     "address": "Smitstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000812788"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233511",
+   "addresses": [
+    "Smitstraat 33",
+    "Smitstraat 35",
+    "Smitstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000812793"
+    },
+    {
+     "address": "Smitstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000812799"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236877",
+   "addresses": [
+    "Smitstraat 43",
+    "Smitstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000812815"
+    },
+    {
+     "address": "Smitstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000812819"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3426809057,
+     "lngLat": [
+      4.922445,
+      52.3542321
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T15:36:07.682Z",
+     "match": "frontage",
+     "distanceM": 3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237322",
+   "addresses": [
+    "Smitstraat 47",
+    "Smitstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000812827"
+    },
+    {
+     "address": "Smitstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000812823"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088106",
+   "addresses": [
+    "Smitstraat 51A",
+    "Smitstraat 51B",
+    "Smitstraat 51C",
+    "Smitstraat 51D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 51A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000812831"
+    },
+    {
+     "address": "Smitstraat 51B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000812832"
+    },
+    {
+     "address": "Smitstraat 51C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000812833"
+    },
+    {
+     "address": "Smitstraat 51D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000812834"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087381",
+   "addresses": [
+    "Smitstraat 53A",
+    "Smitstraat 53B",
+    "Smitstraat 53C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 53A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000812835"
+    },
+    {
+     "address": "Smitstraat 53B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000812836"
+    },
+    {
+     "address": "Smitstraat 53C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000812837"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

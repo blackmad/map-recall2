@@ -1,0 +1,165 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:36:57.305Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147121",
+   "addresses": [
+    "Tugelaweg 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 2-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000831292"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102476",
+   "addresses": [
+    "Tugelaweg 12",
+    "Tugelaweg 13A",
+    "Tugelaweg 13B",
+    "Tugelaweg 13D",
+    "Tugelaweg 13C",
+    "Tugelaweg 14C",
+    "Tugelaweg 14A",
+    "Tugelaweg 14B",
+    "Tugelaweg 14D",
+    "Tugelaweg 15B",
+    "Tugelaweg 15D",
+    "Tugelaweg 15C",
+    "Tugelaweg 15A",
+    "Tugelaweg 16A",
+    "Tugelaweg 16B",
+    "Tugelaweg 16D",
+    "Tugelaweg 16C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 14C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000635813"
+    },
+    {
+     "address": "Tugelaweg 12",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000876759"
+    },
+    {
+     "address": "Tugelaweg 13A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000876760"
+    },
+    {
+     "address": "Cilliersstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000876388"
+    },
+    {
+     "address": "Cilliersstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000875148"
+    },
+    {
+     "address": "Tugelaweg 13B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000877967"
+    },
+    {
+     "address": "Tugelaweg 15B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000879173"
+    },
+    {
+     "address": "Tugelaweg 15D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000879174"
+    },
+    {
+     "address": "Tugelaweg 16A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000879175"
+    },
+    {
+     "address": "Tugelaweg 13D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000878091"
+    },
+    {
+     "address": "Tugelaweg 14A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000878182"
+    },
+    {
+     "address": "Tugelaweg 16B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000879254"
+    },
+    {
+     "address": "Tugelaweg 16D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000879255"
+    },
+    {
+     "address": "Tugelaweg 16C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000879256"
+    },
+    {
+     "address": "Tugelaweg 15C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000879257"
+    },
+    {
+     "address": "Tugelaweg 13C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000879258"
+    },
+    {
+     "address": "Tugelaweg 14B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000878212"
+    },
+    {
+     "address": "Tugelaweg 14D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000878244"
+    },
+    {
+     "address": "Tugelaweg 15A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000878245"
+    }
+   ],
+   "units": 19,
+   "osm": []
+  }
+ ]
+}

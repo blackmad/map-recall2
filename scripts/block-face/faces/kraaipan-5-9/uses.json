@@ -1,0 +1,82 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:04:33.319Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012115531",
+   "addresses": [
+    "Kraaipanstraat 5A",
+    "Kraaipanstraat 5B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001008133"
+    },
+    {
+     "address": "Kraaipanstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001008134"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086973430,
+     "lngLat": [
+      4.9203858,
+      52.352616
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:glass_bottles": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-31T15:04:33.319Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012098646",
+   "addresses": [
+    "Kraaipanstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001016804"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135365",
+   "addresses": [
+    "Kraaipanstraat 9B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000986819"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

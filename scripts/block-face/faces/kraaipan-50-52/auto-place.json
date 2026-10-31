@@ -1,0 +1,178 @@
+{
+ "face": "kraaipan-50-52",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.12,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012084269",
+   "address": "Kraaipanstraat 52A",
+   "builtYear": 1931,
+   "widthM": 8.2,
+   "eavesM": 6.3,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 5.88,
+    "toM": 8.18,
+    "depthM": 0.66,
+    "centre": 0.86,
+    "lineRD": [
+     [
+      123031.310375,
+      484969.35900000005
+     ],
+     [
+      123036.060375,
+      484972.825
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5c4b40",
+    "wallRaw": "#5e4d42",
+    "skyline": {
+     "eavesM": 9.57,
+     "eavesRow": 65,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 7.53 m at 0.5 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 7.53,
+       "centre": 0.5,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1931, type 1921-1924; frontage 8.2 m, type 8.8-12.9 m; strip shows balconies (dark open axis 7.53 m at 0.5 (light 0.19): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1921-1924",
+     "frontage 8.2 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 7.53 m at 0.5 (light 0.19): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.013 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118763",
+   "address": "Kraaipanstraat 50A",
+   "builtYear": 1931,
+   "widthM": 8.2,
+   "eavesM": 6.3,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.32,
+    "depthM": 0.66,
+    "centre": 0.142,
+    "lineRD": [
+     [
+      123039.785375,
+      484975.542
+     ],
+     [
+      123044.52037500001,
+      484978.998
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#55443a",
+    "wallRaw": "#58473c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 448,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 7.53 m at 0.5 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 7.53,
+       "centre": 0.5,
+       "light": 0.17
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 54 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

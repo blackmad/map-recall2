@@ -1,0 +1,211 @@
+{
+ "street": "Spitskopstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107351",
+   "addresses": [
+    "Spitskopstraat 1",
+    "Spitskopstraat 3",
+    "Spitskopstraat 5",
+    "Spitskopstraat 7",
+    "Spitskopstraat 7A",
+    "Spitskopstraat 7B",
+    "Spitskopstraat 7C",
+    "Spitskopstraat 9",
+    "Spitskopstraat 11",
+    "Spitskopstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000816504"
+    },
+    {
+     "address": "Spitskopstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000816510"
+    },
+    {
+     "address": "Spitskopstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816512"
+    },
+    {
+     "address": "Spitskopstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816513"
+    },
+    {
+     "address": "Spitskopstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816514"
+    },
+    {
+     "address": "Spitskopstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000816508"
+    },
+    {
+     "address": "Spitskopstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000816506"
+    },
+    {
+     "address": "Spitskopstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012577232"
+    },
+    {
+     "address": "Spitskopstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012577233"
+    },
+    {
+     "address": "Spitskopstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012576704"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151291",
+   "addresses": [
+    "Spitskopstraat 15",
+    "Spitskopstraat 17",
+    "Spitskopstraat 19",
+    "Spitskopstraat 19A",
+    "Spitskopstraat 21",
+    "Spitskopstraat 23",
+    "Spitskopstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816515"
+    },
+    {
+     "address": "Spitskopstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816516"
+    },
+    {
+     "address": "Spitskopstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000816521"
+    },
+    {
+     "address": "Spitskopstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000816517"
+    },
+    {
+     "address": "Spitskopstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000816520"
+    },
+    {
+     "address": "Spitskopstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000816518"
+    },
+    {
+     "address": "Spitskopstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012577234"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141884",
+   "addresses": [
+    "Spitskopstraat 27",
+    "Spitskopstraat 29",
+    "Spitskopstraat 31",
+    "Spitskopstraat 31A",
+    "Spitskopstraat 31B",
+    "Spitskopstraat 33",
+    "Spitskopstraat 35",
+    "Spitskopstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000816524"
+    },
+    {
+     "address": "Spitskopstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000816526"
+    },
+    {
+     "address": "Spitskopstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000816527"
+    },
+    {
+     "address": "Spitskopstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000816523"
+    },
+    {
+     "address": "Spitskopstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000816522"
+    },
+    {
+     "address": "Spitskopstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000816525"
+    },
+    {
+     "address": "Spitskopstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012577235"
+    },
+    {
+     "address": "Spitskopstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012577236"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

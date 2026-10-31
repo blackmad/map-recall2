@@ -1,0 +1,112 @@
+{
+ "street": "Smitstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:31:10.968Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114180",
+   "addresses": [
+    "Smitstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 4",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001015252"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3426809058,
+     "lngLat": [
+      4.9221895,
+      52.3542681
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T15:31:10.968Z",
+     "match": "frontage",
+     "distanceM": 7
+    },
+    {
+     "type": "node",
+     "id": 13755706458,
+     "lngLat": [
+      4.92209,
+      52.354327
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1092KG",
+      "addr:street": "Majubastraat",
+      "amenity": "restaurant",
+      "cuisine": "mexican",
+      "name": "Tomatillo Oost",
+      "website": "https://www.tomatillo.nl/oost"
+     },
+     "fetchedAt": "2026-10-31T15:31:10.968Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012069344",
+   "addresses": [
+    "Smitstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000812777"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143928",
+   "addresses": [
+    "Smitstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000812769"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099888",
+   "addresses": [
+    "Smitstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 24-H",
+     "use": "industriefunctie",
+     "areaM2": 73,
+     "bagId": "0363010000812762"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

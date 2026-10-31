@@ -1,0 +1,262 @@
+{
+ "street": "Albert Luthulistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:15:47.953Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012105200",
+   "addresses": [
+    "Albert Luthulistraat 25C",
+    "Albert Luthulistraat 25D",
+    "Albert Luthulistraat 25A",
+    "Albert Luthulistraat 27A",
+    "Albert Luthulistraat 27B",
+    "Albert Luthulistraat 27C",
+    "Albert Luthulistraat 27D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000928618"
+    },
+    {
+     "address": "Albert Luthulistraat 25D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928619"
+    },
+    {
+     "address": "Albert Luthulistraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928624"
+    },
+    {
+     "address": "Albert Luthulistraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928625"
+    },
+    {
+     "address": "Albert Luthulistraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000928626"
+    },
+    {
+     "address": "Albert Luthulistraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000928627"
+    },
+    {
+     "address": "Albert Luthulistraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000984333"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142206",
+   "addresses": [
+    "Albert Luthulistraat 29A",
+    "Albert Luthulistraat 29B",
+    "Albert Luthulistraat 29C",
+    "Albert Luthulistraat 29D",
+    "Albert Luthulistraat 31A",
+    "Albert Luthulistraat 31B",
+    "Albert Luthulistraat 31C",
+    "Albert Luthulistraat 31D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928632"
+    },
+    {
+     "address": "Albert Luthulistraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928633"
+    },
+    {
+     "address": "Albert Luthulistraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000928634"
+    },
+    {
+     "address": "Albert Luthulistraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000928635"
+    },
+    {
+     "address": "Albert Luthulistraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000928640"
+    },
+    {
+     "address": "Albert Luthulistraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928641"
+    },
+    {
+     "address": "Albert Luthulistraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928642"
+    },
+    {
+     "address": "Albert Luthulistraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000928643"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126814",
+   "addresses": [
+    "Albert Luthulistraat 33A",
+    "Albert Luthulistraat 33B",
+    "Albert Luthulistraat 33C",
+    "Albert Luthulistraat 33D",
+    "Albert Luthulistraat 35A",
+    "Albert Luthulistraat 35B",
+    "Albert Luthulistraat 35C",
+    "Albert Luthulistraat 35D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000928648"
+    },
+    {
+     "address": "Albert Luthulistraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928649"
+    },
+    {
+     "address": "Albert Luthulistraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000928650"
+    },
+    {
+     "address": "Albert Luthulistraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928651"
+    },
+    {
+     "address": "Albert Luthulistraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000928652"
+    },
+    {
+     "address": "Albert Luthulistraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928653"
+    },
+    {
+     "address": "Albert Luthulistraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928654"
+    },
+    {
+     "address": "Albert Luthulistraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928655"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128866",
+   "addresses": [
+    "Albert Luthulistraat 37A",
+    "Albert Luthulistraat 37B",
+    "Albert Luthulistraat 37C",
+    "Albert Luthulistraat 37D",
+    "Albert Luthulistraat 39A",
+    "Albert Luthulistraat 39B",
+    "Albert Luthulistraat 39C",
+    "Albert Luthulistraat 39D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000928656"
+    },
+    {
+     "address": "Albert Luthulistraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000928657"
+    },
+    {
+     "address": "Albert Luthulistraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928658"
+    },
+    {
+     "address": "Albert Luthulistraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928659"
+    },
+    {
+     "address": "Albert Luthulistraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000928660"
+    },
+    {
+     "address": "Albert Luthulistraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928661"
+    },
+    {
+     "address": "Albert Luthulistraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928662"
+    },
+    {
+     "address": "Albert Luthulistraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000928663"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "face": "luthuli-22-32",
+ "street": "Albert Luthulistraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 1.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012124743",
+   "address": "Albert Luthulistraat 30A",
+   "builtYear": 1930,
+   "widthM": 16.22,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.69,
+    "toM": 11.46,
+    "depthM": 0.5,
+    "centre": 0.56
+   },
+   "strip": {
+    "wall": "#765f53",
+    "wallRaw": "#6e5b52",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 79,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 0.8,
+      "topWidthM": 1.27,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 68 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088339",
+   "address": "Albert Luthulistraat 26A",
+   "builtYear": 1930,
+   "widthM": 12.63,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f574a",
+    "wallRaw": "#726152",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 81,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 0.72,
+      "topWidthM": 0.88,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.085,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1930, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1930, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068825",
+   "address": "Albert Luthulistraat 22A",
+   "builtYear": 1930,
+   "widthM": 16.54,
+   "eavesM": 14.76,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.85,
+    "toM": 9.59,
+    "depthM": 0.49,
+    "centre": 0.436
+   },
+   "strip": {
+    "wall": "#665347",
+    "wallRaw": "#675a48",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 70,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.75,
+      "topWidthM": 0.35,
+      "centre": 0.96
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 57 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

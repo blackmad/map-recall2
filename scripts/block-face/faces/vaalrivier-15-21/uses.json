@@ -1,0 +1,117 @@
+{
+ "street": "Vaalrivierstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:01:41.890Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012151603",
+   "addresses": [
+    "Vaalrivierstraat 15B",
+    "Vaalrivierstraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000849472"
+    },
+    {
+     "address": "Vaalrivierstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000849471"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086645",
+   "addresses": [
+    "Vaalrivierstraat 17B",
+    "Vaalrivierstraat 17A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000849476"
+    },
+    {
+     "address": "Vaalrivierstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000849475"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086972685,
+     "lngLat": [
+      4.9187988,
+      52.3516262
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T16:01:41.890Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012069560",
+   "addresses": [
+    "Vaalrivierstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010002005403"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086972685,
+     "lngLat": [
+      4.9187988,
+      52.3516262
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-10-31T16:01:41.890Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072652",
+   "addresses": [
+    "Vaalrivierstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001002116"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
