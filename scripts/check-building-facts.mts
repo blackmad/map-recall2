@@ -71,7 +71,14 @@ const store = new BuildingFactStore('/data/amsterdam', async (url) => {
   return new Response('missing', { status: 404 });
 });
 store.prefetchAround(4.8835, 52.3745);
+await new Promise(resolve => setTimeout(resolve, 20));
+// Per-ride bytes gate (2026-10-31): riding past buildings nobody clicks
+// fetched 0.43-0.65 MB of facts. Nothing loads until a card asks.
+assert.equal(requested.length, 0, 'no fact or article request before the first card needs one');
+const firstCard = store.ensureAt(4.8835, 52.3745);
+store.prefetchAround(4.8835, 52.3745);
 store.prefetchAround(4.8836, 52.3745);
+await firstCard;
 // Wait for the async gunzip to land rather than a fixed 20 ms, which failed
 // 3 in 5 runs on a loaded machine (2026-10-09).
 for (const deadline = Date.now() + 2000; !store.lookup('NL.IMBAG.Pand.0363100012061542') && Date.now() < deadline;) {
