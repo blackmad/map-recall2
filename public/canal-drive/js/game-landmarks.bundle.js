@@ -2162,6 +2162,9 @@ Map source: ${osmUrl(places[i][0])}`);
     requested = /* @__PURE__ */ new Set();
     articleTiles = null;
     lastCentre = "";
+    /** Set by the first card need; until then `prefetchAround` only remembers where the rider is. */
+    engaged = false;
+    riderAt = null;
     setBase(base) {
       if (base === this.base) return;
       this.base = base;
@@ -2171,9 +2174,14 @@ Map source: ${osmUrl(places[i][0])}`);
       this.loads.clear();
       this.articleTiles = null;
       this.lastCentre = "";
+      this.engaged = false;
+      this.riderAt = null;
     }
-    /** Load the tile under a point and its eight neighbours. Cheap when unchanged. */
+    /** Load the tile under a point and its eight neighbours once a card has
+     *  asked for facts. Cheap when unchanged; free before the first card. */
     prefetchAround(lng, lat) {
+      this.riderAt = [lng, lat];
+      if (!this.engaged) return;
       const { x, y } = factTileOf(lng, lat);
       const centre = `${x}/${y}`;
       if (centre === this.lastCentre) return;
@@ -2191,7 +2199,12 @@ Map source: ${osmUrl(places[i][0])}`);
      *  it has arrived. Resolves when that tile's rows are in (or known absent). */
     ensureAt(lng, lat) {
       const { x, y } = factTileOf(lng, lat);
-      return this.load(x, y);
+      const pending = this.load(x, y);
+      if (!this.engaged) {
+        this.engaged = true;
+        if (this.riderAt) this.prefetchAround(this.riderAt[0], this.riderAt[1]);
+      }
+      return pending;
     }
     loads = /* @__PURE__ */ new Map();
     load(x, y) {

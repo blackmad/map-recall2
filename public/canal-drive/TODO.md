@@ -306,9 +306,10 @@ per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31
 (HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
 cells (v4 published 2026-11-01: 9.13 MB, HISTORY "World cell format v4";
 collinear removal held; next cuts need a byte census by stream, lane) plus a
-per-ride download gate ≤ 2 MB under `?world=v1` (seeded 1.51 MB met, free
-ride 2.30 MB not met: `building-facts` fetched whole, lazy/per-cell is the
-lane's next item); both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
+per-ride download gate ≤ 2 MB under `?world=v1` (met 2026-11-01: seeded
+1.11 MB, free ride 1.96 MB after facts load on the first card); both in
+`budgets.json`. City next: lossless roofFurniture column + 1 dm heights →
+≈ 8.65 MB (lane), then the gate stays red by decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`

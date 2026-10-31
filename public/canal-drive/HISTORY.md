@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**Building facts load on the first card, not at ride start; maplibre-gl loader applied in index.html; fixed-camera pixel harness (2026-11-01, #130, #129).**
+`buildingFacts.ts` (road lane): `prefetchAround` only remembers the rider's
+position until the first card asks for facts, then the 3×3 tile window
+follows the rider as before and the first card fills through the existing
+`_requestBuildingFacts` path; card code unchanged, `check-building-facts`
+asserts no request before the first card and nine tiles once after it. Per
+ride under `?world=v1`: seeded 1.33 → 1.11 MB, free ride 2.30 → 1.96 MB, so
+the ≤ 2 MB per-ride gate is met; the default path still loads 133–272 KB of
+facts for the construction-year enricher that world cells bake in. The city
+gate stays red: census of the 9.13 MB (FOOT 5.74 MB: coordinate deltas 3.01,
+first vertices 1.02, shared-vertex back-refs 0.82, ids 0.51; STYL 2.34 MB:
+height 0.46, roofMeasured 0.43, roofFurniture 0.36 for 16 K rows, eaves 0.21,
+year 0.20; GRP 0.62; STRS 0.35) and the integrator's decision: build the
+lossless roofFurniture column and 1 dm heights/eaves (the format before v3
+stored them at 0.25 m) for ≈ 8.65 MB, never footprints coarser than the
+source, so ≤ 8 MB stays unmet and says so. `world-v1-ab` gains
+`AB_CAMERA=fixed` (holds sync and `aimAtWorld`, `jumpToLngLat`, settle,
+`captureFrame`): default-vs-default noise 0.65–1.1 M → 56–80 K px of 1.3 M,
+cm-heights world vs default 69–102 K px; the leftover is edge speckle that
+looks like chunk draw order (three.js layer, parked for the materials lane).
+P5 B1 is now applied: `index.html` runs `js/maplibre-loader.bundle.js` (592
+bytes, built by `scripts/build-canal-engine.mjs`) in place of the static
+maplibre-gl tags; `engine-own.spec` asserts 0 maplibre-gl requests under the
+flag and that the default path still loads the script and stylesheet.
+
 **World cell format v4 published: shared string table, centimetre heights; 10.43 → 9.13 MB (2026-11-01, #130).**
 `world-v1/strings.bin` (1,324 strings, 5.8 KB gzip) replaces the per-cell
 string tables; each cell carries the table's count and FNV hash and refuses a

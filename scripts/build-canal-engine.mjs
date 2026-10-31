@@ -18,3 +18,13 @@ await build({
   plugins: [{ name: 'share-three', setup(b) { b.onResolve({ filter: /^three$/ }, () => ({ path: shim })); } }],
 });
 console.log(`built ${outdir}/engine.bundle.js`);
+// The maplibre-gl loader (#129 P5 B1): a few-hundred-byte classic script that index.html runs in place of the static
+// maplibre-gl tags; it document.writes them under the MapLibre engine and nothing under ?engine=own.
+await build({
+  entryPoints: ['src/canalRecall/engine/mapLibreLoader.ts'],
+  bundle: true,
+  format: 'iife',
+  outfile: `${outdir}/maplibre-loader.bundle.js`,
+  minify: true,
+});
+console.log(`built ${outdir}/maplibre-loader.bundle.js`);
