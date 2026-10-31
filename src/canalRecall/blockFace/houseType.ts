@@ -50,11 +50,12 @@ export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeigh
   if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
   if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
   if (Array.isArray(f.bays)) out.bays = fit(f.bays);
-  // Balcony storeys follow the same rule (Transvaalstraat 74-104, 1913: the four-storey balcony-axis row drawn with three
-  // storeys keeps balconies on 1-2): storey n of the new front takes old storey src(n). Before this, a balcony storey at or
-  // over the new count failed validation, so no installed face changes.
-  if (f.balconies && from >= 2 && to >= 2 && from !== to) {
-    const src = (n: number) => n === 0 ? 0 : n === to - 1 ? from - 1 : Math.min(n, from - 2), b = f.balconies;
+  // Fewer storeys: balcony storeys follow the same rule (a four-storey balcony-axis type drawn with three keeps balconies
+  // on 1-2): storey n of the new front takes old storey src(n). Before this, a balcony storey at or over the new count
+  // failed validation, so no installed face changes. More storeys keep the type's list (Hasebroekstraat 1-37: the
+  // 1904 balcony type drawn with five storeys has balconies on 1-3, the installed look).
+  if (f.balconies && from >= 2 && to >= 2 && to < from) {
+    const src = (n: number) => n === 0 ? 0 : n === to - 1 ? from - 1 : n, b = f.balconies;
     const keep = (l: number[]) => Array.from({length: to}, (_, n) => n).filter(n => l.includes(src(n)));
     const storeyBays = b.storeyBays && Object.fromEntries(Array.from({length: to}, (_, n) => n).filter(n => b.storeyBays![String(src(n))]).map(n => [String(n), b.storeyBays![String(src(n))]]));
     out.balconies = {...b, storeys: keep(b.storeys), ...(b.styleStoreys ? {styleStoreys: keep(b.styleStoreys)} : {}), ...(storeyBays ? {storeyBays} : {})};
