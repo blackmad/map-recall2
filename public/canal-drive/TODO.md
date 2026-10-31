@@ -308,8 +308,14 @@ cells (v4 published 2026-11-01: 9.13 MB, HISTORY "World cell format v4";
 collinear removal held; next cuts need a byte census by stream, lane) plus a
 per-ride download gate ≤ 2 MB under `?world=v1` (met 2026-11-01: seeded
 1.11 MB, free ride 1.96 MB after facts load on the first card); both in
-`budgets.json`. City next: lossless roofFurniture column + 1 dm heights →
-≈ 8.65 MB (lane), then the gate stays red by decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
+`budgets.json`. City: format v5 (lossless roofFurniture integer-list column
++ FOOT refs run symbol) → 8.92 MB, publishing next; decimetre heights/eaves
+are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
+fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
+runtime derives storeys, window rows and the facade kit from the fine value
+(a Westerkerk brick gable turned grey). A safe variant would round only where
+the derived storey/kit decision is unchanged; parked. The gate stays red by
+decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
