@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+**The own-map overview carries rail, footways, landuse and piers; the far field no longer needs the Liberty basemap (2026-10-31, #129, L1 hand-back 3).**
+`scripts/own-map/fetch-osm-extras.ts` reads the cached BBBike Amsterdam PBF
+with osmium and `build-own-map.ts` writes a v2 `overview.json.gz` with rail
+(grouped by kind, service track at 60 % width, tunnels faint under the
+streets), footways, landuse (between land and parks), piers (over water) and
+neighbourhood rings; published to `public/data/extracts/amsterdam/own-map-v1/`
+at 2.13 MB gzip against 1.58 MB for v1 (+0.55 MB, reviewed). The engine
+overview draws the new layers through the two existing flat programs, so the
+step adds 25 meshes (15 → 40) and ~22 median draws but no shader programs; a
+unit test pins the program count and that a v1 file still loads. The
+no-maplibre page builds its footprints in a worker
+(`ownMap/footprintWorker.ts`, bundle `own-map-footprints.worker.js`): 36 → 5 ms
+on the main thread at z15.5 over the Leidseplein; the engine itself draws
+buildings through the facades and the own ground, so this path is the lab
+page only. Fair A/B 5 (desktop chase, 12 s, back to back): MapLibre 8.56 ms
+owned frame CPU, p95/p99 29.2/59.9, 616 draws; own with v1 overview 4.69 ms,
+20.3/34.8, 222 draws; own with v2 overview 3.14 ms, 17.8/21.2, 244 draws, 1
+frame > 33 ms in 12 s. The lower buffers, compiles and GC of the v2 run are
+probably load-timing noise from running third and are not claimed. Programs
+under the flag still 37 against the budget of 32 (red by decision); the
+materials brief `docs/handoffs/lane-materials-20261031.md` lists the 10 own
+-ground base programs and their 10 `-ownFade` twins and the uniform-based
+merge order (fade → cut channel → tone → untextured), expected ride total
+36 → ~18–21; the lane runs from it. Verified on the merge: `ENGINE=own
+engine-own` desktop green except the programs line; `no-maplibre` +
+`start-heading` default 11 passed; lint, 37 engine/ownMap unit tests,
+`check:site-imports`.
+
 **The road graph is flat arrays (CSR) behind the same API (2026-10-31, #136, L4 step 5).**
 `src/canalRecall/routing/roadGraph.ts` stores nodes and edges as `Int32Array`
 offsets, targets and edge→link indexes, `Float64Array` x, y and link

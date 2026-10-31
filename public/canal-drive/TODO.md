@@ -208,12 +208,19 @@ doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
 programs (37–39 > 32)** by decision until the landmark materials are merged.
 Hand-back (2) merged 2026-10-31 (`5bc4bc0dc`, HISTORY "`?engine=own` now beats
 MapLibre on frame CPU"): own 4.1–5.1 vs MapLibre 7.6–8.3 ms owned frame CPU,
-step 6 legacy layers gone, `setLoop` hook, Leaflet picker deleted. **Integrator
-next:** wire `vectorMap.setLoop` in `game.js` under `?engine=own` and
-`CanalRecallUi.stepSteer` in `car.js`; drop the `leaflet`/`@types/leaflet`
-dependencies at the flip. L1 next: the v2 overview extract (rail, footway,
-landuse) and footprint worker re-port; the own-ground material variants go to
-the P4 materials lane (programs 36 > 32).
+step 6 legacy layers gone, `setLoop` hook (wired in `game.js` under the flag,
+`972302ce4`), Leaflet picker deleted. Hand-back (3) merged 2026-10-31
+(HISTORY "The own-map overview carries rail, footways, landuse and piers"):
+v2 overview extract published (2.13 MB gz), footprint worker for the lab page,
+fair A/B 5 MapLibre 8.56 vs own v1 4.69 vs own v2 3.14 ms owned frame CPU;
+the materials lane runs from `lane-materials-20261031.md` (programs 37 > 32,
+expected 36 → ~18–21 after the uniform merge). **Integrator next:** merge the
+materials lane and re-run `engine-own` at budget 32; `CanalRecallUi.stepSteer`
+in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
+dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
+px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
+own-map extracts with water, `_waitForMapSettle` replacement) and a fair A/B
+after each.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
