@@ -1,18 +1,21 @@
 // rail-v1 (src/canalRecall/ownGround/railTracks.ts): railway tracks per own-ground cell, from the archived OSM extract
 // (no network). Staged, with a coverage report; `--publish` copies the staged cells into the extract.
 //
-//   npx tsx scripts/own-ground/build-rail-tracks.ts [--pbf .cache/osm-source/Amsterdam.osm.pbf] [--publish]
+//   npx tsx scripts/own-ground/build-rail-tracks.ts [--pbf .cache/osm-source/Amsterdam.osm.pbf] [--publish | --publish-platforms]
+//
+// `--publish-platforms` writes only the staged platforms (`p`) into the published cells, their tracks (`w`) unchanged.
 //
 // Cells: those of the own-ground OSM extract (the ground is drawn there only). A tram way is kept only where it runs on
 // its own bed: where at most a third of its length lies within TRAM_ON_STREET_M of a street way that draws its rails
 // (embedded_rails=tram) or of any carriageway, it is separated; otherwise the street draws it already.
+// Platforms (railTracks.ts RailPlatform): railway=platform areas above ground, outer ring, in each rail cell they touch.
 import { execFileSync } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { encodeRail, railOf, RAIL_ATTRIBUTION, RAIL_EXTRACT, RAIL_VERSION, type RailCell, type RailManifest, type RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
+import { encodePlatforms, encodeRail, isRailPlatform, railOf, RAIL_ATTRIBUTION, RAIL_EXTRACT, RAIL_VERSION, type RailCell, type RailManifest, type RailPlatform, type RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
 
 type Vec2 = [number, number];
 const argOf = (k: string) => { const i = process.argv.indexOf(k); return i >= 0 ? process.argv[i + 1] : undefined; };
@@ -34,7 +37,7 @@ async function main(): Promise<void> {
   const work = join(tmpdir(), `rail-v1-${process.pid}`);
   mkdirSync(work, { recursive: true });
   const filtered = join(work, 'rail.osm.pbf'), seq = join(work, 'rail.geojsonseq');
-  execFileSync('osmium', ['tags-filter', '--overwrite', '-o', filtered, PBF, 'w/railway=rail,light_rail,subway,narrow_gauge,tram']);
+  execFileSync('osmium', ['tags-filter', '--overwrite', '-o', filtered, PBF, 'w/railway=rail,light_rail,subway,narrow_gauge,tram', 'wr/railway=platform']);
   execFileSync('osmium', ['export', '--overwrite', '-f', 'geojsonseq', '-x', 'print_record_separator=false', '-o', seq, filtered]);
   const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
   await store.init();
@@ -61,9 +64,17 @@ async function main(): Promise<void> {
   const byCell = new Map<string, RailWay[]>();
   const counts: Record<string, number> = {}, km: Record<string, number> = {}, dropped: Record<string, number> = {};
   let ways = 0;
+  const platformRings: Vec2[][] = [];
   for (const line of readFileSync(seq, 'utf8').split('\n')) {
     if (!line.trim()) continue;
-    const f = JSON.parse(line) as { geometry: { type: string; coordinates: [number, number][] }; properties: Record<string, string> };
+    const f = JSON.parse(line) as { geometry: { type: string; coordinates: any }; properties: Record<string, string> };
+    if (f.properties.railway === 'platform') {
+      if (!isRailPlatform(f.properties)) { dropped['platform:underground'] = (dropped['platform:underground'] ?? 0) + 1; continue; }
+      const polys: [number, number][][][] = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+      if (!polys.length) { dropped['platform:line'] = (dropped['platform:line'] ?? 0) + 1; continue; }
+      for (const poly of polys) platformRings.push(poly[0].slice(0, -1).map(([lng, lat]) => toLocal(lng, lat)));
+      continue;
+    }
     if (f.geometry?.type !== 'LineString') continue;
     ways++;
     const r = railOf(f.properties);
@@ -90,12 +101,25 @@ async function main(): Promise<void> {
     counts[label] = (counts[label] ?? 0) + 1;
     km[label] = (km[label] ?? 0) + metres(points) / 1000;
   }
+  // Platforms: into every rail cell their outline touches (samples every 25 m along it).
+  const platformsByCell = new Map<string, RailPlatform[]>();
+  for (const ring of platformRings) {
+    const keys = new Set<string>();
+    for (let i = 0; i < ring.length; i++) {
+      const a = ring[i], b = ring[(i + 1) % ring.length], n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 25));
+      for (let k = 0; k <= n; k++) keys.add(store.cellAt(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n));
+    }
+    let inside = false;
+    for (const key of keys) if (byCell.has(key)) { (platformsByCell.get(key) ?? platformsByCell.set(key, []).get(key)!).push({ ring }); inside = true; }
+    if (inside) counts.platform = (counts.platform ?? 0) + 1; else dropped['platform:outside'] = (dropped['platform:outside'] ?? 0) + 1;
+  }
   rmSync(OUT, { recursive: true, force: true });
   mkdirSync(join(OUT, 'cells'), { recursive: true });
   let bytes = 0;
   const cells = [...byCell.keys()].sort();
   for (const key of cells) {
-    const cell: RailCell = { version: RAIL_VERSION, key, w: encodeRail(byCell.get(key)!) };
+    const platforms = platformsByCell.get(key);
+    const cell: RailCell = { version: RAIL_VERSION, key, w: encodeRail(byCell.get(key)!), ...(platforms ? { p: encodePlatforms(platforms) } : {}) };
     const gz = gzipSync(JSON.stringify(cell), { level: 9 });
     bytes += gz.byteLength;
     writeFileSync(join(OUT, 'cells', `${key}.json.gz`), gz);
@@ -106,7 +130,18 @@ async function main(): Promise<void> {
   writeFileSync(join(OUT, 'report.json'), JSON.stringify(report, null, 1));
   console.log(JSON.stringify(report, null, 1));
   rmSync(work, { recursive: true, force: true });
-  if (process.argv.includes('--publish')) {
+  if (process.argv.includes('--publish-platforms')) {
+    const dest = join(ROOT, RAIL_EXTRACT);
+    let n = 0;
+    for (const key of (JSON.parse(readFileSync(join(dest, 'cells.json'), 'utf8')) as RailManifest).cells) {
+      const file = join(dest, 'cells', `${key}.json.gz`), cell = JSON.parse(gunzipSync(readFileSync(file)).toString()) as RailCell;
+      const platforms = platformsByCell.get(key);
+      delete cell.p;
+      if (platforms) { cell.p = encodePlatforms(platforms); n++; }
+      writeFileSync(file, gzipSync(JSON.stringify(cell), { level: 9 }));
+    }
+    console.log('published platforms into', n, 'cells of', dest);
+  } else if (process.argv.includes('--publish')) {
     const dest = join(ROOT, RAIL_EXTRACT);
     rmSync(dest, { recursive: true, force: true });
     cpSync(OUT, dest, { recursive: true });

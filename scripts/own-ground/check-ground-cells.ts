@@ -28,8 +28,9 @@ import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, 
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
-import { buriedShare, deckBreaks, RAIL_SPOTS } from '../../src/canalRecall/ownGround/railRegressions.ts';
+import { buriedShare, deckBreaks, RAIL_BRIDGE_SPOTS, RAIL_LEVEL_SPOTS, RAIL_SPOTS, stationLevels } from '../../src/canalRecall/ownGround/railRegressions.ts';
 import type { RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
+import { applyRailInfra, isRailInfraTable, pieceShare, RAIL_INFRA_FILE, RAIL_INFRA_SPOTS, type Vec2 as InfraVec2 } from '../../src/canalRecall/railInfraBuildings.ts';
 import { gridHeight } from '../../src/canalRecall/ownGround/drape.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -40,8 +41,12 @@ import { OrthoTiles } from './ortho.ts';
 import { bareLandCell } from './render-road-sources.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
+// OWN_GROUND_STAGE=<extract prefix>=<dir>[,…]: staged files under <dir> stand in for the published ones under the prefix
+// (a lane's regenerated cells checked before the integrator publishes them; files missing there come from the extract).
+const STAGE = (process.env.OWN_GROUND_STAGE ?? '').split(',').filter(Boolean).map(s => s.split('=') as [string, string]);
 const readExtract = async (path: string) => {
-  const file = join(ROOT, path);
+  const staged = STAGE.map(([prefix, dir]) => (path === prefix ? dir : path.startsWith(`${prefix}/`) ? join(dir, path.slice(prefix.length + 1)) : '')).find(f => f && existsSync(f));
+  const file = staged ?? join(ROOT, path);
   if (!existsSync(file)) throw new Error(`${path}: missing`);
   const bytes = readFileSync(file);
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
@@ -141,20 +146,78 @@ async function viaductRegressions(): Promise<void> {
  * 04e3c88 (`railLegacy`: 12 m pieces, beds on the centreline's relief, bridges on their ends' line) buries the beds
  * there, and tilts and breaks the decks.
  */
+/**
+ * Railway infrastructure registered as buildings (railInfraBuildings.ts, lane rail-look round 3): at each pinned
+ * station the table drops the viaduct and deck pands, cuts the canopy outline to the platforms and keeps the halls.
+ * Live: the published building tiles draw every pinned id (without the table they are all drawn as they are).
+ */
+async function railInfraRegressions(): Promise<void> {
+  const raw = await readExtract(RAIL_INFRA_FILE).catch(() => null), table = raw ? JSON.parse(new TextDecoder().decode(raw)) : null;
+  check(isRailInfraTable(table), `rail infra: ${RAIL_INFRA_FILE} readable (published, or OWN_GROUND_STAGE=${RAIL_INFRA_FILE}=<staged file>)`);
+  if (!isRailInfraTable(table)) return;
+  for (const spot of RAIL_INFRA_SPOTS) {
+    const features: { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } | null }[] = [], seen = new Set<string>();
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+      const bytes = await readExtract(`building-tiles/14/${spot.tile[0] + dx}/${spot.tile[1] + dy}.geojson.gz`).catch(() => null);
+      if (!bytes) continue;
+      for (const f of JSON.parse(new TextDecoder().decode(bytes)).features ?? []) { const id = String(f.properties?.id); if (!seen.has(id)) { seen.add(id); features.push(f); } }
+    }
+    const want = Object.keys(spot.expect), before = want.filter(id => seen.has(id));
+    check(before.length === want.length, `rail infra ${spot.id}: the pin is live (the tiles draw ${before.length}/${want.length} pinned buildings as they are)`);
+    const outline = new Map(features.map(f => [String(f.properties.id), f]));
+    applyRailInfra(features, table);
+    const after = new Set(features.map(f => String(f.properties.id)));
+    const wrong = want.filter(id => { const e = spot.expect[id], got = table.ids[id] ?? 'kept'; return got !== e || (e === 'kept' ? !after.has(id) : after.has(id)); });
+    check(!wrong.length, `rail infra ${spot.id}: ${want.length} buildings as expected${wrong.length ? ` — wrong: ${wrong.map(id => `${id} ${table.ids[id] ?? 'kept'} (want ${spot.expect[id]})`).join(', ')}` : ''} — ${spot.label}`);
+    for (const id of want.filter(i => spot.expect[i] === 'canopy')) {
+      const g = outline.get(id)?.geometry as { type: string; coordinates: InfraVec2[][] } | undefined, pieces = table.canopies[id] ?? [];
+      const share = g?.type === 'Polygon' ? pieceShare(g.coordinates[0], pieces) : NaN;
+      check(pieces.length >= 2 && share <= (spot.canopyMaxShare ?? 1), `rail infra ${spot.id}: ${id} drawn as ${pieces.length} canopies over the platforms, ${(share * 100).toFixed(0)} % of its outline (≤ ${((spot.canopyMaxShare ?? 1) * 100).toFixed(0)} %: the tracks between open)`);
+    }
+  }
+}
+
 async function railRegressions(): Promise<void> {
+  await railInfraRegressions();
   const on = new GroundStore(readExtract, { roads: true }), off = new GroundStore(readExtract, { roads: true, railLegacy: true });
   await on.init(); await off.init();
   const cellsNear = async (s: GroundStore, x: number, y: number, r: number, lod: 0 | 1) => {
     const keys = new Set<string>();
     for (let dx = -r - 60; dx <= r + 60; dx += 30) for (let dy = -r - 60; dy <= r + 60; dy += 30) keys.add(s.cellAt(x + dx, y + dy));
-    const cells: BuiltCell[] = [], rails: RailWay[] = [], seen = new Set<string>();
+    const cells: BuiltCell[] = [], rails: RailWay[] = [], platforms: { ring: [number, number][] }[] = [], seen = new Set<string>();
     for (const k of keys) {
       if (!s.covers(k)) continue;
       cells.push(buildCell(await s.cellInput(k, lod)));
       for (const w of await s.railCell(k)) { const id = JSON.stringify(w.points); if (!seen.has(id)) { seen.add(id); rails.push(w); } }
+      for (const p of await s.railPlatformCell(k)) { const id = JSON.stringify(p.ring); if (!seen.has(id)) { seen.add(id); platforms.push(p); } }
     }
-    return { cells, rails };
+    return { cells, rails, platforms };
   };
+  const round2 = new GroundStore(readExtract, { roads: true, railBridges: false });
+  await round2.init();
+  for (const spot of RAIL_BRIDGE_SPOTS) {
+    const [x, y] = toLocal(spot.at[0], spot.at[1]);
+    const sum = (cells: BuiltCell[]) => cells.reduce((t, c) => { const s = c.stats.rails?.structure; return s ? { piers: t.piers + s.piers, girder: t.girder + s.girderMetres, railing: t.railing + s.railingMetres, tris: t.tris + s.triangles } : t; }, { piers: 0, girder: 0, railing: 0, tris: 0 });
+    for (const lod of [0, 1] as const) {
+      const a = sum((await cellsNear(on, x, y, spot.radiusM, lod)).cells);
+      check(a.piers >= spot.minPiers && a.girder >= spot.minGirderM && a.railing >= spot.minRailingM, `rail ${spot.id} LOD ${lod}: ${a.piers} piers (≥ ${spot.minPiers}), ${Math.round(a.girder)} m through girder (≥ ${spot.minGirderM}), ${Math.round(a.railing)} m railing (≥ ${spot.minRailingM}), ${a.tris} triangles — ${spot.label}`);
+    }
+    const b = sum((await cellsNear(round2, x, y, spot.radiusM, 0)).cells);
+    check(b.piers === 0 && b.tris === 0, `rail ${spot.id}: the pin is live (the round-2 build draws ${b.piers} piers, ${b.tris} structure triangles)`);
+  }
+  for (const spot of RAIL_LEVEL_SPOTS) {
+    const [x, y] = toLocal(spot.at[0], spot.at[1]);
+    for (const lod of [0, 1] as const) {
+      const after = await cellsNear(on, x, y, spot.radiusM, lod), a = stationLevels(after.cells, after.rails, after.platforms, [x, y], spot.radiusM);
+      const [lo, hi] = spot.platformRise, bad = a.platforms.filter(r => !(r >= lo && r <= hi));
+      check(a.samples > 100 && a.p10 >= spot.minBedZ, `rail ${spot.id} LOD ${lod}: bed top p10 ${a.p10} m, median ${a.median} m over ${a.samples} samples (≥ ${spot.minBedZ}) — ${spot.label}`);
+      check(a.platforms.length >= 4 && !bad.length, `rail ${spot.id} LOD ${lod}: ${a.platforms.length} platforms drawn ${lo}-${hi} m over the bed${bad.length ? ` — off: ${bad.join(', ')}` : ''}`);
+      if (lod === 1) {
+        const before = await cellsNear(off, x, y, spot.radiusM, lod), b = stationLevels(before.cells, before.rails, before.platforms, [x, y], spot.radiusM);
+        check(b.p10 <= spot.maxBedZBefore, `rail ${spot.id}: the pin is live (rail-v1 of build 04e3c88 has the bed's p10 at ${b.p10} m, ≤ ${spot.maxBedZBefore})`);
+      }
+    }
+  }
   for (const spot of RAIL_SPOTS) {
     const [x, y] = toLocal(spot.at[0], spot.at[1]);
     for (const lod of [0, 1] as const) {
@@ -351,6 +414,7 @@ async function main(): Promise<void> {
   await bridgeSurfaceRegressions();
   await wayDeckHoleRegressions();
   await wayDeckCarriageRegressions();
+  await bridgeRoadRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -1117,6 +1181,44 @@ async function wayDeckCarriageRegressions(): Promise<void> {
     const at = pts.filter(({ p, out }) => carriage(p[0] - out[0] * CARRIAGE_EDGE_M, p[1] - out[1] * CARRIAGE_EDGE_M) && !carriage(p[0] + out[0] * CARRIAGE_EDGE_M, p[1] + out[1] * CARRIAGE_EDGE_M)).length;
     const share = pts.length ? at / pts.length : 0, ok = share >= CARRIAGE_EDGE_SHARE, live = mode === 'half-width';
     check(pts.length > 0 && (live ? !ok : ok), `${id} (${label}, ${mode}): ${at} of ${pts.length} parapet points within ${CARRIAGE_EDGE_M} m of the carriageway's outer edge (${(share * 100).toFixed(0)}%)${live ? ' (at the way half-width: the pin is live)' : ''}`);
+  }
+}
+
+/**
+ * Road bridges over water cut at the bridge (user 2026-10-31, "why missing road" / "recent bridge work made something
+ * weird here", artifacts/bridge-roads/): the OpenFreeMap water stops at both deck edges, no register outline carries the
+ * bridge, so the way crossed no water and got no way deck, and the survey's deck-level polygons (h 1) had nothing to lie
+ * on: the carriageway stopped at both abutments over bare land, which look B draws with the paving texture. The water
+ * opened under the way (groundStore withOpenings, wayDecks.ts WAY_OPENING_REACH_M) gives each a way deck: along the
+ * way (a quarter, half and three quarters) the deck carries the point and the top is road; without the openings the
+ * same probes read land (the pin is live).
+ */
+const BRIDGE_ROADS: [number, number, number, string][] = [
+  [743740428, 4.86005, 52.36460, 'Kinkerbrug: Postjesweg over the Kostverlorenvaart (Het Sieraad, The Coffee Bridge)'],
+  [27316608, 4.86982, 52.37539, 'Beltbrug: Jan van Galenstraat over the Kostverlorenvaart (De Otter)'],
+];
+const ROAD_TOPS = ['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'kerb', 'paint', 'tram'];
+async function bridgeRoadRegressions(): Promise<void> {
+  const closed = new GroundStore(readExtract, { roads: true, wayOpenings: false });
+  await closed.init();
+  await roadsStore.init();
+  for (const [id, lng, lat, label] of BRIDGE_ROADS) {
+    const [x, y] = toLocal(lng, lat);
+    const probe = async (s: GroundStore) => {
+      const keys = GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k));
+      const osm = (await Promise.all(keys.map(k => s.osmCell(k)))).flatMap(o => o?.ways ?? []).find(w => w.id === id);
+      if (!osm) return null;
+      const pts = osm.g.map(q => toLocal(q[0], q[1]));
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      return [0.25, 0.5, 0.75].map(f => {
+        const [a, b] = [pts[0], pts[pts.length - 1]], px = a[0] + (b[0] - a[0]) * f, py = a[1] + (b[1] - a[1]) * f;
+        return { deck: s.surface.deckWeight(px, py) > 0, top: cells.map(c => layersAt(c, px, py)).find(r => r.top)?.top ?? 'none' };
+      });
+    };
+    const on = await probe(roadsStore), off = await probe(closed);
+    check(!!on && on.every(r => r.deck && ROAD_TOPS.includes(r.top)), `bridge road ${id} (${label}): deck and road top along the way (${on?.map(r => `${r.deck ? 'deck' : 'no deck'}/${r.top}`).join(', ') ?? 'way not found'})`);
+    check(!!off && off.some(r => !r.deck && r.top === 'land'), `bridge road ${id}: without the openings ${off?.map(r => `${r.deck ? 'deck' : 'no deck'}/${r.top}`).join(', ') ?? 'way not found'} (the pin is live)`);
   }
 }
 

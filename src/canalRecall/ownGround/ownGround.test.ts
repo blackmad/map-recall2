@@ -27,8 +27,8 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { roadEdgeSides, joinChains, wayDeckGroups, wayDeckProfile } from './wayDecks';
-import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
+import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, wayDeckGroups, wayDeckProfile, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
+import { pointInRing, canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { CAP_M, RAIL_VIADUCTS, STRIP_M, TOP_LIFT_M, capViaductFloor, floorZone, insideRing, planarRing, viaductMesh, type RailViaduct } from './railViaducts';
 import { routeAhead } from './route';
@@ -990,7 +990,7 @@ test('regression: relief is present (Postjeskade polder side lower than the Here
 });
 
 // ------------------------------------------------------------- streaming in the game (groundStore / groundCell)
-import { GroundStore, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
+import { GroundStore, groundCrossing, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
 import { buildCell, layersAt, packMesh, vertexNormals } from './groundCell';
 import { ORIGIN } from '../threeBuildingFeatures';
 
@@ -1406,6 +1406,72 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
   assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
   assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('water opens under an OSM road bridge whose water stops at it (Kinkerbrug, Postjesweg, OSM 743740428), and the way deck then finds it', () => {
+  // A canal along x (y 0..20) cut by a 20 m land band at x 20..40, as the OpenFreeMap water stops at both deck edges;
+  // a 15 m road along y at x = 30 with its end nodes on the banks.
+  const west: Vec2[] = [[0, 0], [20, 0], [20, 20], [0, 20]], east: Vec2[] = [[40, 0], [60, 0], [60, 20], [40, 20]];
+  const geo = { polygons: [[west], [east]], shores: [[[20, 20], [20, 0]], [[40, 0], [40, 20]], [[0, 0], [60, 0]], [[0, 20], [60, 20]]] as Vec2[][] };
+  const way = { id: 743740428, name: 'Postjesweg', points: [[30, 0], [30, 20]] as Vec2[], halfWidth: 7.5 };
+  const rect = [0, -10, 60, 30] as [number, number, number, number], opts = { maxWidth: Infinity, reach: WAY_OPENING_REACH_M };
+  assert.equal(openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77).opened.length, 0, 'the footbridge rule alone leaves a 15 m deck (the cause)');
+  const before = (x: number, y: number) => geo.polygons.some(p => pointInRing(p[0], x, y));
+  assert.equal(wayDeckProfile('OSM743740428', 'Postjesweg', way.points, 7.5, before, () => false), null, 'no water under the way: no way deck');
+  const r = openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77, opts);
+  assert.deepEqual(r.opened, ['OSM743740428']);
+  const [l, rr] = r.sides.get('OSM743740428')!;
+  assert.ok(Math.abs(l - 10.5) < 0.3 && Math.abs(rr - 10.5) < 0.3, `water 10 m beside each edge (+0.5 overlap): ${l}, ${rr}`);
+  const wet = (x: number, y: number) => r.geo.polygons.some(p => pointInRing(p[0], x, y));
+  for (const y of [1, 10, 19]) assert.ok(wet(30, y), `water under the bridge at y ${y}`);
+  assert.ok(!wet(30, 21) && !wet(30, -1), 'the opening stops at the ends (WAY_OPENING_PAST_M), not on the quays');
+  assert.ok(Math.max(...r.geo.polygons[2][0].map(p => p[1])) <= 20 + WAY_OPENING_PAST_M + 1e-6);
+  const p = wayDeckProfile('OSM743740428', 'Postjesweg', way.points, 7.5, wet, () => false)!;
+  assert.ok(p && p.water![1] - p.water![0] > 18, 'a way deck over the whole crossing');
+  // A street at ground level crossing under the bridge (a viaduct between two ponds): not opened there.
+  const under = openUnderFootbridges(geo, [wayOpeningDeck(way)], rect, -1.77, { ...opts, under: (x, y, ux, uy) => Math.abs(y - 10) < 1.5 && Math.abs(ux) < 0.9 && Math.abs(uy) > 0.1 });
+  assert.ok(!under.geo.polygons.slice(2).some(q => pointInRing(q[0], 30, 10)), 'the station over the street below stays land');
+});
+
+test('groundCrossing: a ground street across the bridge axis counts, its approach along the axis and a bridge way do not', () => {
+  const ll = (x: number, y: number) => storeFromLocal(x, y) as [number, number];
+  const osm = { version: 1, box: '', centre: ll(0, 0), fetched: '', attribution: '', areas: [], ways: [
+    { id: 1, tags: { highway: 'residential' }, g: [ll(-20, 10), ll(20, 10)] },
+    { id: 2, tags: { highway: 'tertiary' }, g: [ll(0, 20), ll(0, 40)] },
+    { id: 3, tags: { highway: 'footway', bridge: 'yes' }, g: [ll(-20, 5), ll(20, 5)] },
+  ] } as unknown as OsmGroundExtract;
+  const under = groundCrossing([osm]);
+  assert.ok(under(0, 10, 0, 1), 'the street across');
+  assert.ok(!under(0, 21, 0, 1), 'the approach carries on along the axis');
+  assert.ok(!under(0, 5, 0, 1), 'another bridge is not at ground level');
+});
+
+test('bridgeWayBundles: the Beltbrug\'s two carriageways and two cycle paths are one line over the crossing; a bridge 40 m off stays apart', () => {
+  const way = (id: number, x: number, hw: number) => ({ id, name: '', points: [[x, 0], [x, 12]] as Vec2[], halfWidth: hw });
+  const out = bridgeWayBundles([way(1, 27, 2.6), way(2, 33, 2.6), way(3, 23.5, 0.75), way(4, 36.5, 0.75), way(5, 75, 2)]);
+  assert.equal(out.length, 2);
+  const b = out.find(w => w.id !== 5)!;
+  assert.ok(Math.abs(b.points[0][0] - 30) < 1e-6 && Math.abs(b.halfWidth - 7.25) < 1e-6, `centred on the crossing: x ${b.points[0][0]}, half ${b.halfWidth}`);
+  assert.deepEqual(out.find(w => w.id === 5)!.points, [[75, 0], [75, 12]]);
+});
+
+test('setDeckSides / deckEdgeSides: a way deck over opened water re-centres on the deck-level survey outline (De Clercqstraat, OSM 38282912)', () => {
+  // A bundle axis along x at y = 0 with a 20 m half-width; the bridge's deck-level polygons run from y = -3 to y = 23.
+  const n = 41, prof = (): DeckProfile => ({ id: 'OSM38282912', name: '', family: 'way-deck', x: Float64Array.from({ length: n }, (_, i) => i * 0.5), y: new Float64Array(n), s: Float64Array.from({ length: n }, (_, i) => i * 0.5), h: new Float64Array(n), halfWidth: new Float64Array(n).fill(20), water: [4, 16], deck: [3, 17], bbox: [-20, -20, 40, 20] });
+  const onDeck = (_x: number, y: number) => y >= -3 && y <= 23 && !(y > 6 && y < 7);
+  const e = deckEdgeSides(prof(), onDeck, 32);
+  assert.ok(Math.abs(e[0]! - 23.1) < 0.2 && Math.abs(e[1]! - 3.1) < 0.2, `left ${e[0]}, right ${e[1]} (a 1 m verge gap crossed)`);
+  const p = prof();
+  setDeckSides(p, [e[0]!, e[1]!]);
+  assert.ok(Math.abs(p.y[10] - 10) < 0.15 && Math.abs(p.halfWidth[10] - 13.1) < 0.15 && !p.sides, `axis y ${p.y[10]}, half ${p.halfWidth[10]}`);
+  assert.ok(p.bbox[1] < -3 && p.bbox[3] > 23);
+  // Without the survey: capped at the water beside the opening; a deck already inside stays as it was.
+  const q = prof();
+  capDeckSides(q, [12, 12]);
+  assert.ok(Math.abs(q.halfWidth[0] - 12) < 1e-9 && Math.abs(q.y[0]) < 1e-9);
+  const k = prof();
+  capDeckSides(k, [25, 25]);
+  assert.equal(k.halfWidth[0], 20);
 });
 
 test('mid-span land: a short land run under a deck with water both sides along it (BRU0067), not a dam', () => {
@@ -2098,16 +2164,67 @@ test('rail levels: a bridge chain runs level between its embankments, whatever t
   assert.ok(levelAt(levels.get(ways[0])!, 50) > 4.0, `approach end ${levelAt(levels.get(ways[0])!, 50)}`);
 });
 
-test('rail levels: a ramp at grade is left on the relief, an unanchored bridge is drawn plain on it', async () => {
+test('rail levels: a ramp at grade is left on the relief, a bridge on a measured road deck is drawn plain on it', async () => {
   const { railLevels, levelAt, RAIL_GRADE } = await import('./railProfile');
   const ramp: RailWay = { kind: 'subway', bridge: false, service: false, points: [[0, 0], [200, 0]] };
   const g = RAIL_GRADE.subway * 0.8, relief = (x: number) => -x * g;
   const l = railLevels([ramp], [], x => relief(x)).levels.get(ramp)!;
   for (let s = 0; s <= 200; s += 10) assert.ok(Math.abs(levelAt(l, s) - relief(s)) < 1e-9, `ramp at ${s}: ${levelAt(l, s)} vs ${relief(s)}`);
   const lone: RailWay = { kind: 'rail', bridge: true, service: false, points: [[0, 50], [40, 50]] };
-  const r = railLevels([lone], [], () => 1);
+  // A tram bridge riding a measured road deck: the deck surface already carries it.
+  const r = railLevels([lone], [], () => 1, undefined, undefined, () => true);
   assert.equal(r.levels.get(lone)!.plain, true);
   assert.equal(r.stats.plain, 1);
+  assert.equal(r.stats.onDeck, 1);
+});
+
+test('rail levels: an approachless bridge levels between the land at its ends; a bridge end short of its approach snaps on', async () => {
+  const { railLevels, levelAt } = await import('./railProfile');
+  // A tram bridge over a polder ditch whose street approaches are not in rail-v1: the relief dips to -0.5 between banks at +0.6.
+  const relief = (x: number) => (x < 8 || x > 22 ? 0.6 : -0.5);
+  const lone: RailWay = { kind: 'tram', bridge: true, service: false, points: [[0, 0], [30, 0]] };
+  const r = railLevels([lone], [], x => relief(x), undefined, undefined, () => false);
+  const l = r.levels.get(lone)!;
+  assert.ok(!l.plain, 'drawn as a bridge');
+  assert.equal(r.stats.endAnchored, 1);
+  for (let s = 0; s <= 30; s += 2) assert.ok(Math.abs(levelAt(l, s) - 0.6) < 0.05, `deck at ${s}: ${levelAt(l, s)}`);
+  // The same bridge 2.4 m short of the track it joins (an OSM gap): snapped, anchored on the embankment at +3.
+  const bank = (x: number) => (x < 50 ? 3 : -1);
+  const track: RailWay = { kind: 'tram', bridge: false, service: false, points: [[0, 0], [50, 0]] };
+  const span: RailWay = { kind: 'tram', bridge: true, service: false, points: [[52.4, 0], [90, 0]] };
+  const t = railLevels([track, span], [], x => bank(x), undefined, undefined, () => false);
+  assert.equal(t.stats.snapped, 1);
+  assert.equal(t.stats.anchored, 1);
+  assert.ok(levelAt(t.levels.get(span)!, 0) > 2.5, `span start ${levelAt(t.levels.get(span)!, 0)}`);
+});
+
+test('rail levels: track beside a station platform under a roof stands at the measured track past its ends; the platform drawn over its rails', async () => {
+  const { railLevels, levelAt, stationHulls } = await import('./railProfile');
+  const { platformMeshes, PLATFORM_HEIGHT_M, RAIL_SECTION } = await import('./railTracks');
+  // A hall from x = 0 to 300: AHN has no ground under it and the fill is the quay at +1.2; the measured track bed
+  // outside is +5. A platform beside the track (its edge 1.7 m off the centreline), a and b halves 20 m apart.
+  const relief = (x: number, y: number) => (x < 0 || x > 300 ? 5 : y > 1.7 && y < 9.7 && (x < 140 || x > 160) ? 5.5 : 1.2);
+  const track: RailWay = { kind: 'rail', bridge: false, service: false, points: [[-150, 0], [450, 0]] };
+  const a = { ring: [[10, 1.7], [140, 1.7], [140, 9.7], [10, 9.7]] as [number, number][] }, b = { ring: [[160, 1.7], [290, 1.7], [290, 9.7], [160, 9.7]] as [number, number][] };
+  assert.equal(stationHulls([a, b]).length, 1, 'the two halves are one station');
+  const flat = railLevels([track], [], (x, y) => relief(x, y)).levels.get(track)!;
+  assert.ok(levelAt(flat, 300) < 2, `without the platforms the track sags into the hall: ${levelAt(flat, 300).toFixed(2)}`);
+  const r = railLevels([track], [], (x, y) => relief(x, y), undefined, undefined, undefined, [a, b]);
+  const l = r.levels.get(track)!;
+  // Level through the hall at the track's level where the platforms begin (the grade envelope's 12 m into the hall, −0.36).
+  for (let s = 150; s <= 450; s += 10) assert.ok(Math.abs(levelAt(l, s) - 4.8) < 0.25, `level at x = ${s - 150}: ${levelAt(l, s).toFixed(2)}`);
+  for (let s = 170; s <= 430; s += 10) assert.ok(Math.abs(levelAt(l, s) - levelAt(l, s - 10)) < 1e-6 + 0.3 * (s < 180 || s > 420 ? 1 : 0), `level along the platforms at x = ${s - 150}`);
+  assert.ok((r.stats.platformNodes ?? 0) > 50);
+  // The platform tops' AHN (+5.5) is not land under the bed: the level is not lifted to it.
+  const { mesh, stats } = platformMeshes([a, b], [track], r.levels, (x, y) => relief(x, y), () => true);
+  assert.equal(stats.platforms, 2);
+  const zs = mesh.positions.filter((_, k) => k % 3 === 2), top = Math.max(...zs);
+  assert.ok(Math.abs(top - (levelAt(l, 300) + RAIL_SECTION.topLift + RAIL_SECTION.railHeight + PLATFORM_HEIGHT_M)) < 0.05, `platform top ${top.toFixed(2)}`);
+  assert.ok(Math.min(...zs) < 1.2, 'walls reach the fill under the hall');
+  // A platform beside a metro line only is left out (its height is not the NS one).
+  const metro: RailWay = { ...track, kind: 'subway' };
+  const m = railLevels([metro], [], (x, y) => relief(x, y), undefined, undefined, undefined, [a]);
+  assert.equal(platformMeshes([a], [metro], m.levels, (x, y) => relief(x, y), () => true).stats.platforms, 0);
 });
 
 test('rail tracks: the bed never under the land between its stations, nor on an embankment flank', async () => {

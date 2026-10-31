@@ -44,15 +44,18 @@
  * indices, tags and leftover bytes all throw.
  */
 
-export const WORLD_FORMAT_VERSION = 3;
+export const WORLD_FORMAT_VERSION = 4;
+// v4 (2026-10-31): v3 plus an optional shared string table (FLAG_GLOBAL, strings.bin), fetched once per page.
 // v3 (P2 bytes gate, 2026-10-31): the same decoded cell as v2, laid out for gzip: FOOT in columns with
 // per-building 1e-6 units, vertex back-references and per-tile ordinal deltas; typed bag columns (no
 // per-value tag, column dictionaries, numeric deltas, packed colours and booleans); GRP with symmetric
 // party walls written once. City total 13.46 MB -> 10.37 MB gzip; see the "v3 streams" section.
 /** Versions `decodeCell` reads: v2 cells (published before the v3 bytes gate) stay readable until world-v1 is recompiled. */
-export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3];
+export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3, 4];
 /** Flag bit: the cell carries ATTR (a `--debug` compile). */
 export const FLAG_DEBUG = 1;
+/** Flag bit (v4): the cell's string indices start with the shared table (strings.bin). */
+export const FLAG_GLOBAL = 2;
 export const WORLD_MAGIC = 'WRLD';
 /** Units per degree of FOOT coordinates (exact for sources with <= 7 decimals). */
 export const COORD_SCALE = 1e7;
@@ -128,9 +131,58 @@ export class Reader {
 
 // --- strings ---------------------------------------------------------------
 
+/** A cell's strings. With `globals` (v4), a string in the shared table is its global index, any other string
+ *  global count + its index in `list` (the cell's own STRS). */
 export class StringTable {
   readonly list: string[] = []; private readonly index = new Map<string, number>();
-  ref(s: string): number { let i = this.index.get(s); if (i === undefined) { i = this.list.length; this.list.push(s); this.index.set(s, i); } return i; }
+  constructor(readonly globals?: GlobalStrings) {}
+  ref(s: string): number {
+    const g = this.globals?.index.get(s); if (g !== undefined) return g;
+    let i = this.index.get(s); if (i === undefined) { i = this.list.length; this.list.push(s); this.index.set(s, i); }
+    return i + (this.globals?.list.length ?? 0);
+  }
+  at(k: number): string { const n = this.globals?.list.length ?? 0; return k < n ? this.globals!.list[k] : this.list[k - n]; }
+}
+
+// --- shared string table (v4) ----------------------------------------------
+// world-v1/strings.bin: the strings many cells use (bag keys, palette values, style sources, tile-independent
+// ids), fetched once per page instead of once per cell. Layout (gzip): "WSTR" u8 version count { len utf8 }*.
+// A v4 cell that uses it carries FLAG_GLOBAL and, after i/j, the table's count and FNV-1a 32 hash: a cell is
+// never decoded against a different table.
+export const GLOBAL_MAGIC = 'WSTR';
+export const GLOBAL_STRINGS_FILE = 'strings.bin';
+export type GlobalStrings = { list: readonly string[]; index: Map<string, number>; hash: number };
+const fnv1a = (b: Uint8Array): number => { let h = 0x811c9dc5; for (let i = 0; i < b.length; i++) { h ^= b[i]; h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; };
+export function encodeGlobalStrings(list: readonly string[]): { bytes: Uint8Array; table: GlobalStrings } {
+  const w = new Writer(); w.bytes(encoder.encode(GLOBAL_MAGIC)); w.byte(1); w.uvar(list.length);
+  const index = new Map<string, number>();
+  list.forEach((s, i) => { if (index.has(s)) throw Error(`duplicate global string ${JSON.stringify(s)}`); index.set(s, i); const b = encoder.encode(s); w.uvar(b.length); w.bytes(b); });
+  const bytes = w.done();
+  return { bytes, table: { list, index, hash: fnv1a(bytes) } };
+}
+export function decodeGlobalStrings(bytes: Uint8Array, what = 'world strings'): GlobalStrings {
+  const r = new Reader(bytes, what);
+  if (String.fromCharCode(...r.take(4)) !== GLOBAL_MAGIC) r.fail('bad magic');
+  const v = r.byte(); if (v !== 1) r.fail(`unsupported version ${v}`);
+  const list = readStrings(r), index = new Map<string, number>();
+  list.forEach((s, i) => { if (index.has(s)) r.fail(`duplicate string ${JSON.stringify(s)}`); index.set(s, i); });
+  return { list, index, hash: fnv1a(bytes) };
+}
+/** The shared table a cell needs (count + hash), or null: lets a reader fetch strings.bin only when needed. */
+export function cellGlobalRef(bytes: Uint8Array): { count: number; hash: number } | null {
+  const r = new Reader(bytes, 'world cell header');
+  if (String.fromCharCode(...r.take(4)) !== WORLD_MAGIC) r.fail('bad magic');
+  const version = r.byte(), flags = r.byte();
+  if (version < 4 || !(flags & FLAG_GLOBAL)) return null;
+  r.zvar(); r.zvar();
+  const count = r.uvar(), b = r.take(4);
+  return { count, hash: (b[0] | (b[1] << 8) | (b[2] << 16) | (b[3] << 24)) >>> 0 };
+}
+/** Strings used by at least `minCells` of the cells, most used first (ties by string): the shared table. */
+export function chooseGlobalStrings(cellLists: Iterable<readonly string[]>, minCells = 2): string[] {
+  const cells = new Map<string, number>();
+  for (const list of cellLists) for (const s of new Set(list)) cells.set(s, (cells.get(s) ?? 0) + 1);
+  return [...cells].filter(([, n]) => n >= minCells).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)).map(([s]) => s);
 }
 const encoder = new TextEncoder();
 const decoder = new TextDecoder('utf-8', { fatal: true });
@@ -208,7 +260,8 @@ function readBag(r: Reader, strings: readonly string[], depth = 0): Props {
 
 /** `ids` (the buildings' ids, row for row): when every bag's `id` is its building's id, the `id` column is
  *  written as one key reference instead of 350 k repeated strings (a third of the styled bytes before v2). */
-function writeBags(w: Writer, s: StringTable, bags: readonly Props[], ids: readonly string[] | undefined, v3: boolean): void {
+function writeBags(w: Writer, s: StringTable, bags: readonly Props[], ids: readonly string[] | undefined, ver: number): void {
+  const v3 = ver >= 3, v4 = ver >= 4;
   const shapes: number[][] = [], shapeIndex = new Map<string, number>(), rows: number[] = [];
   const columns = new Map<number, unknown[]>();
   const selfId = !!ids && bags.some(b => Object.prototype.hasOwnProperty.call(b, 'id')) && bags.every((b, i) => !Object.prototype.hasOwnProperty.call(b, 'id') || b.id === ids[i]);
@@ -218,17 +271,54 @@ function writeBags(w: Writer, s: StringTable, bags: readonly Props[], ids: reado
     let si = shapeIndex.get(sig);
     if (si === undefined) { si = shapes.length; shapes.push(keys); shapeIndex.set(sig, si); }
     rows.push(si);
-    for (const k of keys) { if (k === selfKey) continue; let c = columns.get(k); if (!c) columns.set(k, c = []); c.push(bag[s.list[k]]); }
+    for (const k of keys) { if (k === selfKey) continue; let c = columns.get(k); if (!c) columns.set(k, c = []); c.push(bag[s.at(k)]); }
   }
   w.uvar(shapes.length);
   for (const keys of shapes) { w.uvar(keys.length); for (const k of keys) w.uvar(k); }
   w.uvar(rows.length); for (const si of rows) w.uvar(si);
   if (ids) w.uvar(selfKey + 1);
   // Columns in ascending key index so the decoder knows the order without a table.
-  for (const k of [...columns.keys()].sort((a, b) => a - b)) { const col = columns.get(k)!; if (v3) writeColumn(w, s, col); else for (const v of col) writeValue(w, s, v, 1); }
+  const order = [...columns.keys()].sort((a, b) => a - b), same = v4 ? sameColumns(bags, s, order, selfKey) : new Map<number, number>();
+  for (const k of order) {
+    const col = columns.get(k)!, ref = same.get(k);
+    if (ref !== undefined) {
+      // C_SAME: per row, whether the value equals the row's `ref` value; then the other values as a column.
+      const refName = s.at(ref), name = s.at(k), flags: boolean[] = [], rest: unknown[] = [];
+      for (const bag of bags) if (Object.prototype.hasOwnProperty.call(bag, name)) { const eq = isPrimitive(bag[name]) && Object.prototype.hasOwnProperty.call(bag, refName) && Object.is(bag[name], bag[refName]); flags.push(eq); if (!eq) rest.push(bag[name]); }
+      w.byte(C_SAME); w.uvar(ref); writeBits(w, flags);
+      if (rest.length) writeColumn(w, s, rest);
+      continue;
+    }
+    if (v3) writeColumn(w, s, col); else for (const v of col) writeValue(w, s, v, 1);
+  }
 }
 
-function readBags(r: Reader, strings: readonly string[], expected: number, ids: readonly string[] | undefined, v3: boolean): Props[] {
+const isPrimitive = (v: unknown): boolean => typeof v === 'string' || typeof v === 'boolean' || (typeof v === 'number' && !Number.isNaN(v));
+/** v4: columns that mostly repeat another key of the same row (groundColour = sideColour in 99.8% of the city),
+ *  each with the key it repeats. A reference is never itself a C_SAME column, and never the implied id. */
+function sameColumns(bags: readonly Props[], s: StringTable, order: readonly number[], selfKey: number): Map<number, number> {
+  const names = order.map(k => s.at(k)), has = Object.prototype.hasOwnProperty, out = new Map<number, number>();
+  const rowsOf = new Map<string, number>();
+  for (const bag of bags) for (const k of names) if (has.call(bag, k)) rowsOf.set(k, (rowsOf.get(k) ?? 0) + 1);
+  const best = new Map<number, [number, number]>();
+  for (let a = 0; a < order.length; a++) {
+    const n = rowsOf.get(names[a]) ?? 0; if (n < 8) continue;
+    for (let b = 0; b < order.length; b++) {
+      if (a === b || order[b] === selfKey) continue;
+      let eq = 0;
+      for (const bag of bags) if (has.call(bag, names[a]) && has.call(bag, names[b]) && isPrimitive(bag[names[a]]) && Object.is(bag[names[a]], bag[names[b]])) eq++;
+      if (eq * 2 >= n && eq > (best.get(order[a])?.[1] ?? 0)) best.set(order[a], [order[b], eq]);
+    }
+  }
+  for (const k of order) { const hit = best.get(k); if (hit && !out.has(hit[0])) out.set(k, hit[0]); }
+  for (const [k, ref] of [...out]) if (out.has(ref)) out.delete(k);
+  return out;
+}
+function writeBits(w: Writer, bits: readonly boolean[]): void { for (let i = 0; i < bits.length; i += 8) { let b = 0; for (let k = 0; k < 8 && i + k < bits.length; k++) if (bits[i + k]) b |= 1 << k; w.byte(b); } }
+function readBits(r: Reader, n: number): boolean[] { const out = new Array<boolean>(n); for (let i = 0; i < n; i += 8) { const b = r.byte(), m = Math.min(8, n - i); if (b >> m) r.fail('bit padding'); for (let k = 0; k < m; k++) out[i + k] = ((b >> k) & 1) === 1; } return out; }
+
+function readBags(r: Reader, strings: readonly string[], expected: number, ids: readonly string[] | undefined, ver: number): Props[] {
+  const v3 = ver >= 3, v4 = ver >= 4;
   const shapeCount = r.count(expected + 1, 'shapes'), shapes: number[][] = [];
   for (let i = 0; i < shapeCount; i++) {
     const n = r.count(4096, 'shape size'), keys: number[] = [], seen = new Set<number>();
@@ -242,9 +332,38 @@ function readBags(r: Reader, strings: readonly string[], expected: number, ids: 
   if (selfKey >= strings.length || (selfKey >= 0 && strings[selfKey] !== 'id')) r.fail(`self id key ${selfKey}`);
   if (selfKey >= 0) counts[selfKey] = 0;
   const columns: unknown[][] = new Array(strings.length);
-  for (let k = 0; k < strings.length; k++) { const c = counts[k]; if (!c) continue; if (v3) { columns[k] = readColumn(r, strings, c); continue; } const col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns[k] = col; }
-  const cursor = new Uint32Array(strings.length), out = new Array<Props>(n);
-  for (let i = 0; i < n; i++) { const bag: Props = {}; for (const k of shapes[rows[i]]) bag[strings[k]] = k === selfKey ? ids![i] : columns[k][cursor[k]++]; out[i] = bag; }
+  const same = new Map<number, { ref: number; flags: boolean[]; rest: unknown[] }>();
+  for (let k = 0; k < strings.length; k++) {
+    const c = counts[k]; if (!c) continue;
+    if (v4 && r.buf[r.pos] === C_SAME) {
+      r.byte(); const ref = r.uvar();
+      if (ref >= strings.length || ref === k || ref === selfKey) r.fail(`same-as key ${ref}`);
+      const flags = readBits(r, c), m = flags.reduce((x, f) => x + (f ? 0 : 1), 0);
+      same.set(k, { ref, flags, rest: m ? readColumn(r, strings, m) : [] });
+      continue;
+    }
+    if (v3) { columns[k] = readColumn(r, strings, c); continue; }
+    const col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns[k] = col;
+  }
+  for (const { ref } of same.values()) if (same.has(ref) || !counts[ref] && ref !== selfKey) r.fail(`same-as key ${ref} is not a plain column`);
+  const cursor = new Uint32Array(strings.length), restAt = new Uint32Array(strings.length), out = new Array<Props>(n);
+  for (let i = 0; i < n; i++) {
+    const bag: Props = {}, keys = shapes[rows[i]];
+    let patch = false;
+    for (const k of keys) {
+      if (k === selfKey) { bag[strings[k]] = ids![i]; continue; }
+      const sm = same.get(k);
+      if (!sm) { bag[strings[k]] = columns[k][cursor[k]++]; continue; }
+      if (sm.flags[cursor[k]++]) { bag[strings[k]] = undefined; patch = true; } else bag[strings[k]] = sm.rest[restAt[k]++];
+    }
+    if (patch) for (const k of keys) {
+      const sm = same.get(k); if (!sm || !sm.flags[cursor[k] - 1]) continue;
+      if (!keys.includes(sm.ref)) r.fail(`same-as ${strings[sm.ref]} missing from the row`);
+      const v = bag[strings[sm.ref]]; if (!isPrimitive(v)) r.fail('same-as a non-primitive value');
+      bag[strings[k]] = v;
+    }
+    out[i] = bag;
+  }
   return out;
 }
 
@@ -278,21 +397,21 @@ function styleOf(attr: Props, styled: Props | undefined): Style {
   for (const k of Object.keys(attr)) if (!Object.prototype.hasOwnProperty.call(styled, k)) removed.push(k);
   return sameValue(applyDelta(attr, set, removed), styled) ? { mode: S_DELTA, set, removed } : { mode: S_FULL, full: styled };
 }
-function writeStyles(w: Writer, s: StringTable, attrs: readonly Props[], styled: readonly (Props | undefined)[], v3: boolean): void {
+function writeStyles(w: Writer, s: StringTable, attrs: readonly Props[], styled: readonly (Props | undefined)[], ver: number): void {
   const styles = attrs.map((a, i) => styleOf(a, styled[i]));
   for (const st of styles) w.byte(st.mode);
   const deltas = styles.filter(st => st.mode === S_DELTA), fulls = styles.filter(st => st.mode === S_FULL);
-  writeBags(w, s, deltas.map(st => st.set!), undefined, v3);
+  writeBags(w, s, deltas.map(st => st.set!), undefined, ver);
   for (const st of deltas) { w.uvar(st.removed!.length); for (const k of st.removed!) w.uvar(s.ref(k)); }
-  writeBags(w, s, fulls.map(st => st.full!), undefined, v3);
+  writeBags(w, s, fulls.map(st => st.full!), undefined, ver);
 }
-function readStyles(r: Reader, strings: readonly string[], attrs: readonly Props[], v3: boolean): (Props | undefined)[] {
+function readStyles(r: Reader, strings: readonly string[], attrs: readonly Props[], ver: number): (Props | undefined)[] {
   const modes: number[] = [];
   for (let i = 0; i < attrs.length; i++) { const m = r.byte(); if (m > S_FULL) r.fail(`bad style mode ${m}`); modes.push(m); }
   const deltaCount = modes.filter(m => m === S_DELTA).length, fullCount = modes.filter(m => m === S_FULL).length;
-  const sets = readBags(r, strings, deltaCount, undefined, v3), removed: string[][] = [];
+  const sets = readBags(r, strings, deltaCount, undefined, ver), removed: string[][] = [];
   for (let i = 0; i < deltaCount; i++) { const n = r.count(4096, 'removed keys'), list: string[] = []; for (let k = 0; k < n; k++) list.push(str(r, strings)); removed.push(list); }
-  const fulls = readBags(r, strings, fullCount, undefined, v3);
+  const fulls = readBags(r, strings, fullCount, undefined, ver);
   let d = 0, f = 0;
   return modes.map((m, i) => m === S_SAME ? undefined : m === S_DELTA ? (d++, applyDelta(attrs[i], sets[d - 1], removed[d - 1])) : fulls[f++]);
 }
@@ -405,7 +524,7 @@ function readFoot(r: Reader, strings: readonly string[], tiles: readonly string[
 //   C_BOOL all booleans: bits, least significant first, zero padding
 //   C_HEX  all "#rrggbb" (lowercase) with many distinct values (> 1 in 8 rows): three bytes each instead of
 //          a dictionary (measured roof colours); C_STR wins for the palette colours, which repeat
-const C_GEN = 0, C_STR = 1, C_NUM = 2, C_BOOL = 3, C_HEX = 4, C_NUM_DELTA = 5;
+const C_GEN = 0, C_STR = 1, C_NUM = 2, C_BOOL = 3, C_HEX = 4, C_NUM_DELTA = 5, C_SAME = 6;
 const varintBytes = (xs: readonly number[]): number => { let n = 0; for (const x of xs) { let u = x >= 0 ? x * 2 : -x * 2 - 1; n++; while (u >= 128) { n++; u = Math.floor(u / 128); } } return n; };
 const HEX = /^#[0-9a-f]{6}$/;
 const HEX_DISTINCT = 8;
@@ -488,9 +607,10 @@ function readColumn(r: Reader, strings: readonly string[], n: number): unknown[]
 // city's coordinates sit on the 1e-6 grid), else 1e-7 (geometry kind bit FOOT_FINE). Exact either way.
 // Ordinals are a delta from the previous building of the same tile (+1 is the common step).
 const FOOT_FINE = 2;
-function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding[], tiles: StringTable): void {
+function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding[], tiles: StringTable, interleave: boolean): void {
   w.uvar(buildings.length);
-  const idw = new Writer(), src = new Writer(), shape = new Writer(), refs = new Writer(), x0 = new Writer(), y0 = new Writer(), xd = new Writer(), yd = new Writer();
+  // v4 interleaves X and Y (one first-vertex block, one delta block): -80 KB gzip city-wide.
+  const idw = new Writer(), src = new Writer(), shape = new Writer(), refs = new Writer(), x0 = new Writer(), y0 = interleave ? x0 : new Writer(), xd = new Writer(), yd = interleave ? xd : new Writer();
   const ids = new IdWriter(), lastOrdinal = new Map<number, number>(), seen = new Map<string, number>();
   let fx = 0, fy = 0, vertex = 0;
   for (const b of buildings) {
@@ -530,11 +650,13 @@ function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding
       else { xd.zvar((units[k] - units[k - 2]) / unit); yd.zvar((units[k + 1] - units[k - 1]) / unit); }
     }
   }
-  for (const block of [idw, src, shape, refs, x0, y0, xd, yd]) { const b = block.done(); w.uvar(b.length); w.bytes(b); }
+  for (const block of interleave ? [idw, src, shape, refs, x0, xd] : [idw, src, shape, refs, x0, y0, xd, yd]) { const b = block.done(); w.uvar(b.length); w.bytes(b); }
 }
-function readFootV3(r: Reader, strings: readonly string[], tiles: readonly string[]): FootRow[] {
+function readFootV3(r: Reader, strings: readonly string[], tiles: readonly string[], interleave: boolean): FootRow[] {
   const n = r.count(MAX_BUILDINGS, 'buildings');
-  const [idr, src, shr, refs, x0, y0, xd, yd] = ['ids', 'source', 'shape', 'refs', 'x0', 'y0', 'x', 'y'].map(name => new Reader(r.take(r.count(r.buf.length, `${name} block`)), `${r.what} FOOT ${name}`));
+  const block = (name: string) => new Reader(r.take(r.count(r.buf.length, `${name} block`)), `${r.what} FOOT ${name}`);
+  const idr = block('ids'), src = block('source'), shr = block('shape'), refs = block('refs');
+  const x0 = block(interleave ? 'xy0' : 'x0'), y0 = interleave ? x0 : block('y0'), xd = block(interleave ? 'xy' : 'x'), yd = interleave ? xd : block('y');
   const ids = new IdReader(), lastOrdinal = new Map<number, number>(), out: FootRow[] = new Array(n);
   let fx = 0, fy = 0, vertices = 0;
   const hx: number[] = [], hy: number[] = [];
@@ -567,7 +689,7 @@ function readFootV3(r: Reader, strings: readonly string[], tiles: readonly strin
     const geometry: Geometry = kind === G_MULTI ? { type: 'MultiPolygon', coordinates: polys } : { type: 'Polygon', coordinates: polys[0] };
     out[i] = { id, tile: tiles[ti], ordinal, geometry };
   }
-  for (const x of [idr, src, shr, refs, x0, y0, xd, yd]) x.end();
+  for (const x of new Set([idr, src, shr, refs, x0, y0, xd, yd])) x.end();
   return out;
 }
 
@@ -632,25 +754,27 @@ function readGroupsV3(r: Reader, strings: readonly string[], tiles: readonly str
 
 // --- container -------------------------------------------------------------
 
-export type EncodedCell = { bytes: Uint8Array; streams: { tag: StreamTag; offset: number; bytes: number }[] };
+/** `strings`: the cell's own STRS entries (what a shared table could take over). */
+export type EncodedCell = { bytes: Uint8Array; streams: { tag: StreamTag; offset: number; bytes: number }[]; strings: readonly string[] };
 
 /** Encode a cell. Deterministic: the same buildings in the same order give the same bytes. A runtime
  *  cell unless `cell.debug` (then ATTR is written and STYL is the delta against it). */
-export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION): EncodedCell {
+export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION, globals?: GlobalStrings): EncodedCell {
   if (!WORLD_FORMAT_VERSIONS.includes(version)) throw Error(`cannot encode world format ${version}`);
   const debug = !!cell.debug, v3 = version >= 3;
-  const s = new StringTable(), tiles = new StringTable();
+  if (globals && version < 4) throw Error(`a shared string table needs format 4, not ${version}`);
+  const s = new StringTable(globals), tiles = new StringTable();
   // Tile list first so its strings are stable; FOOT carries the tile list ahead of its buildings.
   for (const b of cell.buildings) tiles.ref(b.tile);
   for (const b of cell.buildings) if (b.group !== undefined) tiles.ref(b.group);
   const foot = new Writer();
   foot.uvar(tiles.list.length); for (const t of tiles.list) { const [x, y] = t.split('/').map(Number); if (!Number.isSafeInteger(x) || !Number.isSafeInteger(y) || x < 0 || y < 0 || `${x}/${y}` !== t) throw Error(`bad tile ${t}`); foot.uvar(x); foot.uvar(y); }
-  if (v3) writeFootV3(foot, s, cell.buildings, tiles); else writeFoot(foot, s, cell.buildings, tiles);
+  if (v3) writeFootV3(foot, s, cell.buildings, tiles, version >= 4); else writeFoot(foot, s, cell.buildings, tiles);
   const attr = new Writer(), styl = new Writer(), roof = new Writer(), grp = new Writer(), hide = new Writer();
   if (debug) {
-    writeBags(attr, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.id), v3);
-    writeStyles(styl, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.styled), v3);
-  } else writeBags(styl, s, cell.buildings.map(b => b.styled ?? b.attr), cell.buildings.map(b => b.id), v3);
+    writeBags(attr, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.id), version);
+    writeStyles(styl, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.styled), version);
+  } else writeBags(styl, s, cell.buildings.map(b => b.styled ?? b.attr), cell.buildings.map(b => b.id), version);
   // ROOF is optional (a mode byte): the chunk worker still plans roofs itself in v1, and the plans are
   // the largest stream, so the compiler writes them only when asked (--roof) until a consumer reads them.
   const withRoof = cell.buildings.some(b => b.roof !== undefined);
@@ -672,24 +796,32 @@ export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION): 
   const payloads: [StreamTag, Uint8Array][] = [['STRS', writeStrings(s)], ['FOOT', foot.done()], ['ATTR', attr.done()], ['STYL', styl.done()], ['ROOF', roof.done()], ['GRP ', grp.done()], ['HIDE', hide.done()]];
   if (!debug) payloads.splice(2, 1);
   const w = new Writer();
-  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(version); w.byte(debug ? FLAG_DEBUG : 0); w.zvar(cell.i); w.zvar(cell.j);
+  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(version); w.byte((debug ? FLAG_DEBUG : 0) | (globals ? FLAG_GLOBAL : 0)); w.zvar(cell.i); w.zvar(cell.j);
+  if (globals) { w.uvar(globals.list.length); for (let k = 0; k < 4; k++) w.byte(globals.hash >>> (8 * k)); }
   w.uvar(payloads.length);
   for (const [tag, bytes] of payloads) { w.bytes(encoder.encode(tag)); w.uvar(bytes.length); }
   const streams: EncodedCell['streams'] = [];
   for (const [tag, bytes] of payloads) { streams.push({ tag, offset: w.length, bytes: bytes.length }); w.bytes(bytes); }
-  return { bytes: w.done(), streams };
+  return { bytes: w.done(), streams, strings: s.list };
 }
 
 /** Decode a cell (already inflated). Throws on any structural problem; never returns a partial cell. */
-export function decodeCell(bytes: Uint8Array, what = 'world cell'): Cell {
+export function decodeCell(bytes: Uint8Array, what = 'world cell', globals?: GlobalStrings): Cell {
   const r = new Reader(bytes, what);
   const magic = String.fromCharCode(...r.take(4));
   if (magic !== WORLD_MAGIC) r.fail(`bad magic ${JSON.stringify(magic)}`);
   const version = r.byte(); if (!WORLD_FORMAT_VERSIONS.includes(version)) r.fail(`unsupported version ${version}`);
   const v3 = version >= 3;
-  const flags = r.byte(); if (flags & ~FLAG_DEBUG) r.fail(`unknown flags ${flags}`);
+  const flags = r.byte(); if (flags & ~(version >= 4 ? FLAG_DEBUG | FLAG_GLOBAL : FLAG_DEBUG)) r.fail(`unknown flags ${flags}`);
   const debug = (flags & FLAG_DEBUG) !== 0, tags = debug ? STREAM_TAGS : STREAM_TAGS.filter(t => t !== 'ATTR');
   const i = r.zvar(), j = r.zvar();
+  let shared: readonly string[] = [];
+  if (flags & FLAG_GLOBAL) {
+    const count = r.uvar(), hb = r.take(4), hash = (hb[0] | (hb[1] << 8) | (hb[2] << 16) | (hb[3] << 24)) >>> 0;
+    const g = globals ?? r.fail('needs the shared string table (strings.bin)');
+    if (g.list.length !== count || g.hash !== hash) r.fail(`shared string table mismatch: cell wants ${count} strings #${hash.toString(16)}, have ${g.list.length} #${g.hash.toString(16)}`);
+    shared = g.list;
+  }
   const n = r.count(STREAM_TAGS.length, 'streams');
   if (n !== tags.length) r.fail(`expected ${tags.length} streams, got ${n}`);
   const table: [string, number][] = [];
@@ -697,15 +829,15 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell'): Cell {
   const sub = new Map<string, Reader>();
   for (const [tag, len] of table) sub.set(tag, new Reader(r.take(len), `${what} ${tag.trim()}`));
   r.end();
-  const strings = readStrings(sub.get('STRS')!);
+  const own = readStrings(sub.get('STRS')!), strings = shared.length ? shared.concat(own) : own;
   const fr = sub.get('FOOT')!;
   const tileCount = fr.count(10_000, 'tiles'), tiles: string[] = [];
   for (let k = 0; k < tileCount; k++) tiles.push(`${fr.uvar()}/${fr.uvar()}`);
-  const rows = v3 ? readFootV3(fr, strings, tiles) : readFoot(fr, strings, tiles); fr.end();
+  const rows = v3 ? readFootV3(fr, strings, tiles, version >= 4) : readFoot(fr, strings, tiles); fr.end();
   const ar = sub.get('ATTR'), sr = sub.get('STYL')!, rr = sub.get('ROOF')!, gr = sub.get('GRP ')!, hr = sub.get('HIDE')!;
   const ids = rows.map(row => row.id);
-  const attrs = readBags(ar ?? sr, strings, rows.length, ids, v3);
-  const styles = ar ? readStyles(sr, strings, attrs, v3) : [];
+  const attrs = readBags(ar ?? sr, strings, rows.length, ids, version);
+  const styles = ar ? readStyles(sr, strings, attrs, version) : [];
   const roofMode = rr.byte(); if (roofMode > 1) rr.fail(`bad roof mode ${roofMode}`);
   const buildings: CellBuilding[] = rows.map((row, k) => {
     const b: CellBuilding = { ...row, attr: attrs[k] };

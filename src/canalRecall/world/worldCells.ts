@@ -11,7 +11,7 @@
  * thread receives a tile's styled features in batches of `WORLD_BATCH` buildings, each its own small task,
  * so no cell is ever one long main-thread task. Without a worker (Node, a worker that failed) it all runs here.
  */
-import { decodeCell, inflateCell, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
+import { decodeCell, decodeGlobalStrings, cellGlobalRef, GLOBAL_STRINGS_FILE, inflateCell, type GlobalStrings, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
 import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
@@ -46,7 +46,20 @@ export class WorldCellReader {
    *  "decodes" of the first A/B, 2026-10-30, were this wall time during page start, not decode work). */
   readonly decodeMs = new Map<string, number>();
   readonly inflateMs = new Map<string, number>();
+  /** world-v1/strings.bin (format v4's shared string table): fetched once, on the first cell that needs it. */
+  private globals: Promise<GlobalStrings> | null = null;
   constructor(private readonly baseUrl: string, private readonly fetcher: typeof fetch = (...a) => fetch(...a), private readonly capacity = WORLD_CELL_CACHE) {}
+
+  /** Not tied to one cell's abort signal: every cell of the page shares it. A failure is not cached. */
+  private sharedStrings(): Promise<GlobalStrings> {
+    this.globals ??= (async () => {
+      const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/${GLOBAL_STRINGS_FILE}`);
+      if (!response.ok) throw Error(`world strings: HTTP ${response.status}`);
+      return decodeGlobalStrings(await inflateCell(new Uint8Array(await response.arrayBuffer())));
+    })();
+    this.globals.catch(() => { this.globals = null; });
+    return this.globals;
+  }
 
   cell(key: string, signal?: AbortSignal): Promise<Cell> {
     let hit = this.cells.get(key);
@@ -57,8 +70,9 @@ export class WorldCellReader {
       const bytes = new Uint8Array(await response.arrayBuffer());
       const t0 = performance.now();
       const inflated = await inflateCell(bytes);
+      const ref = cellGlobalRef(inflated), globals = ref ? await this.sharedStrings() : undefined;
       const t1 = performance.now();
-      const cell = decodeCell(inflated, `world cell ${key}`);
+      const cell = decodeCell(inflated, `world cell ${key}`, globals);
       this.inflateMs.set(key, t1 - t0);
       this.decodeMs.set(key, performance.now() - t1);
       return cell;

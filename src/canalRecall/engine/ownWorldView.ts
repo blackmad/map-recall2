@@ -25,7 +25,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera } from './cameraClearance';
+import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { fetchOverview, OverviewLayer } from './overviewLayer';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
@@ -37,6 +37,7 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
+import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
 
@@ -313,7 +314,10 @@ export class OwnWorldView {
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
       const years = Facades.constructionYearEnricher(this.extractPath);
-      city.setTileEnricher(Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years);
+      const facts = Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years;
+      // Railway infrastructure registered as buildings (railInfraBuildings.ts, rail-infra-buildings.json): viaduct pands
+      // dropped for the track's own structure, platform canopies as open canopies over the platforms. After the facts.
+      city.setTileEnricher(composeTileEnrichers(facts, railInfraEnricher(this.extractPath)) as any);
       const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(Facades.decorateFacade(f)) : Facades.decorateFacade;
       const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
@@ -553,7 +557,7 @@ export class OwnWorldView {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
         return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
-      }, () => this._completeCity.sampleFeatures(20_000));
+      }, () => clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] }));
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
