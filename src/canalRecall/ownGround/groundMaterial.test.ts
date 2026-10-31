@@ -68,3 +68,15 @@ test('cut clones (either channel) share the base program; the base never samples
   assert.ok((src.uniforms.maskOrigin.value as number[])[0] > 1e6);
   assert.match(src.fragmentShader, /dot\(texture2D\(waterMask, vMaskUV\), maskChannel\) < 0\.5\) discard;/);
 });
+
+test('the flat tone and the vertex tone are one program; the choice is ownFlatFromVertex', () => {
+  const flat = new THREE.MeshStandardMaterial({ vertexColors: true }), vc = new THREE.MeshStandardMaterial({ vertexColors: true });
+  groundProgram(flat, { ...blend, flat: [0.1, 0.2, 0.3] });
+  groundProgram(vc, { ...blend, flat: 'vertex' });
+  assert.equal(flat.customProgramCacheKey(), vc.customProgramCacheKey());
+  const a = compiled(flat), b = compiled(vc);
+  assert.equal(a.fragmentShader, b.fragmentShader);
+  assert.equal(a.uniforms.ownFlatFromVertex.value, 0);
+  assert.equal(b.uniforms.ownFlatFromVertex.value, 1);
+  assert.deepEqual(a.uniforms.ownFlat.value, [0.1, 0.2, 0.3]);
+});

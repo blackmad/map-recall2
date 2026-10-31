@@ -61,6 +61,19 @@ const FADE_GLSL = 'if (ownFade < 1.0 && fract(sin(dot(gl_FragCoord.xy, vec2(12.9
  */
 const CUT_GLSL = 'if (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0 && dot(texture2D(waterMask, vMaskUV), maskChannel) < 0.5) discard;';
 
+/**
+ * The overview crossfade: from the flat tone (`ownFlat`, or with `ownFlatFromVertex` = 1 the vertex colour in sRGB) to
+ * the lit ground by `ownBlend`; alpha is `ownPresence`. The flat/vertex choice is a uniform (mix by exactly 0 or 1,
+ * so either side is bit-identical to the old per-kind expression), one program for both.
+ */
+const BLEND_GLSL = `#if defined( USE_COLOR ) || defined( USE_COLOR_ALPHA )
+vec3 ownFlatTone = mix(ownFlat, pow(max(vColor.rgb, vec3(0.0)), vec3(1.0 / 2.2)), ownFlatFromVertex);
+#else
+vec3 ownFlatTone = ownFlat;
+#endif
+if (ownBlend < 1.0) gl_FragColor.rgb = mix(ownFlatTone, gl_FragColor.rgb, ownBlend);
+gl_FragColor.a = ownPresence;`;
+
 /** The overview → city blend a ground material takes (OwnGround.blendMaterial). */
 export interface GroundBlend {
   blend: Uniform<number>;
@@ -77,6 +90,7 @@ export interface GroundBlend {
 export function groundProgram(m: GroundShaderMaterial, blend: GroundBlend | null): void {
   const vertex = blend?.flat === 'vertex';
   const tone = blend ? { value: vertex ? [0, 0, 0] : [...(blend.flat as readonly number[])] } : null;
+  const fromVertex = { value: vertex ? 1 : 0 };
   m.onBeforeCompile = (shader: ShaderSource) => {
     shader.uniforms.ownFade = OPAQUE_FADE as Uniform;
     Object.assign(shader.uniforms, NO_CUT);
@@ -90,14 +104,14 @@ export function groundProgram(m: GroundShaderMaterial, blend: GroundBlend | null
       shader.uniforms.ownBlend = blend.blend;
       shader.uniforms.ownPresence = blend.presence;
       shader.uniforms.ownFlat = tone;
-      common += '\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;';
-      const flatExpr = vertex ? 'pow(max(vColor.rgb, vec3(0.0)), vec3(1.0 / 2.2))' : 'ownFlat';
-      fragment = fragment.replace('#include <dithering_fragment>', `#include <dithering_fragment>\nif (ownBlend < 1.0) gl_FragColor.rgb = mix(${flatExpr}, gl_FragColor.rgb, ownBlend);\ngl_FragColor.a = ownPresence;`);
+      shader.uniforms.ownFlatFromVertex = fromVertex;
+      common += '\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;\nuniform float ownFlatFromVertex;';
+      fragment = fragment.replace('#include <dithering_fragment>', `#include <dithering_fragment>\n${BLEND_GLSL}`);
     }
     shader.fragmentShader = fragment.replace('#include <common>', common)
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\n${CUT_GLSL}\n${FADE_GLSL}`);
   };
-  const key = blend ? `ownGround-ground4-${m.type}-${vertex ? 'vc' : 'flat'}` : `ownGround-ground4-${m.type}`;
+  const key = `ownGround-ground4-${m.type}${blend ? '-blend' : ''}`;
   m.customProgramCacheKey = () => key;
 }
 
