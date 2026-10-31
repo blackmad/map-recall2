@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1923-portiek",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt-West 1922-23 portiek blocks (Albert Luthulistraat 25-27 and 33-35): the same four-storey dark red-brown brick front as the tower blocks, one big white three-light window either side of a narrow stair axis whose windows stand between header-course brick ladders, the portiek door under a flat concrete canopy at its foot; over the stair axis the parapet rises about 1.8 m in a short raised panel; the dark glazed-brick parapet band with dentils runs the row",
+ "fit": {
+  "widthM": [
+   8.8,
+   12.9
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1921,
+   1924
+  ],
+  "eavesM": [
+   11.4,
+   15.8
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "frontEavesM": 12.1,
+  "note": "the stair-axis pands without a tower (BAG 1922-23, 3DBAG eaves 12.2 m); the strip skyline reads the setback fifth storey or the raised stair panel (13.3-13.7 m). No roof criterion: the setback fifth storey behind the parapet reads as a 3.0-3.6 m roof rise on 3DBAG. The two types are told apart by that skyline (frontSkylineM)",
+  "frontSkylineM": 13.5
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "axisGrid": 5,
+  "cornice": "none",
+  "windows": "casement-triple",
+  "storeyHeights": [
+   3.0,
+   2.85,
+   2.85,
+   2.66
+  ],
+  "windowHeights": [
+   0.48,
+   0.53,
+   0.56,
+   0.6
+  ],
+  "headLines": [
+   0.68,
+   0.68,
+   0.72,
+   0.83
+  ],
+  "bayWidths": [
+   3.45,
+   1.0,
+   1.2,
+   0.8,
+   4.35
+  ],
+  "bayFill": [
+   0.6,
+   0.3,
+   0.68,
+   0.3,
+   0.44
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    2,
+    4
+   ],
+   "1": [
+    0,
+    2,
+    4
+   ],
+   "2": [
+    0,
+    2,
+    4
+   ],
+   "3": [
+    0,
+    2,
+    4
+   ]
+  },
+  "axisWindows": {
+   "2": "plain"
+  }
+ },
+ "crowns": {
+  "raised": {
+   "gable": "flat",
+   "parapet": {
+    "courses": 8,
+    "coping": true,
+    "band": {
+     "courses": 5,
+     "dentils": {
+      "pitch": 0.5,
+      "courses": 2
+     }
+    }
+   },
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 3
+    },
+    "rise": 0.65,
+    "cap": "flat"
+   },
+   "note": "Albert Luthulistraat 33-35 (126814): the raised stair panel 3.45-6.45 m from the pand's left, top 13.65 m (1.85 m = 0.65 upper storeys over the 11.8 m wall top)"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 1,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.2,
+    "overhang": 0.2,
+    "gap": 0.2,
+    "doorOverhang": 0.4,
+    "colour": "#8e8c86"
+   },
+   "note": "the portiek door on the stair axis under a flat concrete canopy (2.65-3.15 m, about 3.5 m wide); mailboxes either side"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7c4b3e",
+   "frame": "#e8e6de",
+   "door": "#8a2a2c",
+   "stone": "#8e8c86",
+   "band": "#2e2826",
+   "cornice": "#3a3432"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "rhythm": {
+  "bays": "a window bay, the narrow stair axis, a window bay",
+  "identicalBays": "no: the stair axis is narrow",
+  "windowsPerStorey": "ground: window + portiek door + window | 1-3: window + stair window + window",
+  "symmetry": "near symmetric about the tower",
+  "groundFloor": "one portiek door under a flat concrete canopy, two windows",
+  "signage": "none",
+  "roofline": "flat, a dark brick parapet band with dentils, a short raised panel over the stair axis",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "luthuli-21-41",
+   "pands": [
+    "126814",
+    "105200"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, pavement at y 638 px: 126814 (10.8 m) windows 0.6-2.7 and 7.2-9.1 m; stair windows 4.6-5.4 m between brick ladders; raised panel 3.45-6.45 m to 13.65 m; sills/heads and wall top as the tower type. 105200 (10.9 m, BAG 1949 rebuild of the same front) the same"
+  }
+ ],
+ "schemaLimits": [
+  "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn",
+  "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn",
+  "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line",
+  "the raised stair panel's own dentil frieze"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

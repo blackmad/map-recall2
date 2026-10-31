@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "luthuli-21-41-r1",
+ "street": "Albert Luthulistraat",
+ "sources": [
+  {
+   "id": "strip-2017-04-06",
+   "kind": "street-panorama",
+   "capturedAt": "2017-04-06",
+   "image": "staging/block-face/luthuli-21-41-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "user-photo-2026-10-31",
+   "kind": "street-panorama",
+   "capturedAt": "2026-10-31",
+   "image": "staging/block-face/transvaalbuurt/user-photo-albert-luthulistraat-29-31.png",
+   "license": "the maintainer's own photo"
+  }
+ ],
+ "authoring": {
+  "author": "lane transvaalbuurt-kit-20261031 (issue #149)",
+  "passes": 1,
+  "note": "placed from the transvaalbuurt library by hand: auto-place holds 29-31 on the strip evidence gate (the tower and bare branches fill the band over the 3DBAG roof) and vetoes 25-27 on BAG year 1949 (a rebuild of the same 1923 front); 21-23 (1949, 9.1 m, cut by the strip's left edge) and 41 (5.2 m end pand) are left to the 3DBAG box"
+ },
+ "types": [
+  "transvaal-1923-portiek",
+  "transvaal-1923-portiek-tower"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "a low attic behind the parapet: the strip shows the flat-roofed setback fifth storey (12.0-13.3 m, white roof-terrace railings), which the kit cannot draw; 3DBAG roofs (source survey) drew a bare brick slab over 33-35 and slopes elsewhere (tried 2026-10-31)"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012105200",
+    "stripRow": 208,
+    "frontRoof": {},
+    "evidence": "the transvaal-1923 wall-top line 12.1 m (luthuli-21-41 strips 2020-04-29 and 2017-04-06: wall top 11.8-12.2 m under the dark band); 3DBAG/PDOK eaves 13.4 m read the tower or the setback fifth storey"
+   },
+   {
+    "pand": "0363100012142206",
+    "stripRow": 208,
+    "frontRoof": {},
+    "evidence": "the transvaal-1923 wall-top line 12.1 m (luthuli-21-41 strips 2020-04-29 and 2017-04-06: wall top 11.8-12.2 m under the dark band); 3DBAG/PDOK eaves 15.3 m read the tower or the setback fifth storey"
+   },
+   {
+    "pand": "0363100012128866",
+    "stripRow": 208,
+    "frontRoof": {},
+    "evidence": "the transvaal-1923 wall-top line 12.1 m (luthuli-21-41 strips 2020-04-29 and 2017-04-06: wall top 11.8-12.2 m under the dark band); 3DBAG/PDOK eaves 15.2 m read the tower or the setback fifth storey"
+   }
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012105200",
+   "slug": "luthuli-105200",
+   "address": "Albert Luthulistraat 25, 27",
+   "type": {
+    "type": "transvaal-1923-portiek",
+    "measuredPalette": {
+     "brick": "#765f53",
+     "evidence": "strip 2017-04-06 (luthuli-21-41, 40 px/m): trim-normalised wall (auto-place strip evidence)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-04-06",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel woonfunctie; portiek flats (A-D per number)"
+   },
+   "rhythm": {
+    "citation": "transvaal-1923-portiek: BAG 1949 rebuild of the 1923 front: the same stair-axis design on the strip (raised stair panel to 14.1 m, two windows either side)"
+   }
+  },
+  {
+   "pandId": "0363100012142206",
+   "slug": "luthuli-142206",
+   "address": "Albert Luthulistraat 29, 31",
+   "type": {
+    "type": "transvaal-1923-portiek-tower",
+    "measuredPalette": {
+     "brick": "#73574c",
+     "evidence": "strip 2017-04-06 (luthuli-21-41, 40 px/m): trim-normalised wall (auto-place strip evidence)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-04-06",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel woonfunctie; portiek flats (A-D per number)"
+   },
+   "rhythm": {
+    "citation": "transvaal-1923-portiek-tower: the user's photo of 2026-10-31: the tower block; tower 3.36-8.98 m in the BAG outline, 0.63 m proud"
+   }
+  },
+  {
+   "pandId": "0363100012126814",
+   "slug": "luthuli-126814",
+   "address": "Albert Luthulistraat 33, 35",
+   "type": {
+    "type": "transvaal-1923-portiek",
+    "measuredPalette": {
+     "brick": "#6e5146",
+     "evidence": "strip 2017-04-06 (luthuli-21-41, 40 px/m): trim-normalised wall (auto-place strip evidence)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-04-06",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel woonfunctie; portiek flats (A-D per number)"
+   },
+   "rhythm": {
+    "citation": "transvaal-1923-portiek: raised stair panel 3.45-6.45 m to 13.7 m (skyline)"
+   }
+  },
+  {
+   "pandId": "0363100012128866",
+   "slug": "luthuli-128866",
+   "address": "Albert Luthulistraat 37, 39",
+   "type": {
+    "type": "transvaal-1923-portiek-tower",
+    "measuredPalette": {
+     "brick": "#856659",
+     "evidence": "strip 2017-04-06 (luthuli-21-41, 40 px/m): trim-normalised wall (auto-place strip evidence)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-04-06",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel woonfunctie; portiek flats (A-D per number)"
+   },
+   "rhythm": {
+    "citation": "transvaal-1923-portiek-tower: the tower on the right of the 9.2 m pand (BAG bay 0-3.56 m from the far end, skyline 16.05 m): mirrored"
+   }
+  }
+ ]
+}
