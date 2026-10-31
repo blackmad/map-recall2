@@ -2272,14 +2272,21 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
     - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
   - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
-- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
-  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
-  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
-  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
-  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
-  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
-
-  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+- **Movable bridges: what the kit still cannot say (after the swing/lattice lane, 2026-10-31).**
+  - Ezelsbrug's red backstay cables and the piers under its posts; its frames sit too close to midspan.
+  - Arched girder undersides (Buiksloterdraaibrug).
+  - The Oosterdoksdraaibrug's dense web and curved overhead bracing; shaped trusses vanish in the far ring.
+  - Peperbrug's closed overhead beam box.
+  - The Aluminiumbrug's ornate knee braces.
+  - Per-bridge portal height and reach (the Westergasbrug's is taller).
+  - Denser fenders; a swing tail and counterweight.
+  - Brick towers (Berlagebrug BRU0423).
+  - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
+  - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
+  - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
+  - `bridgeHints.ts` was not regenerated: the 9 new BASCULES ids get the named budget tier only after a reviewed rebuild, and that script's output already differs from the committed file.
+  - `check:bridge-railings` did not finish in the lane; run it.
+  - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;

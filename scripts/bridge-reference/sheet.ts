@@ -200,9 +200,9 @@ export async function aimedSheet(id: string, verdictNote: string): Promise<{ id:
   parts.push({ input: label(`${id} ${face.name} — aimed panorama views (Gemeente Amsterdam, CC BY 4.0) | the own ground from the same camera (heading, pitch 4°, fov) | 50 % overlay`), top: y, left: 0 }); y += 26;
   for (const v of views) {
     const params = new URL(v.url).searchParams, heading = Number(params.get('heading')), fov = Number(params.get('fov')), pitch = Number(params.get('pitch'));
-    const { cachedJson } = await import('../pand-reference/core.ts');
-    const record = await cachedJson(`https://api.data.amsterdam.nl/panorama/panoramas/${v.pano}/`);
-    const [lng, lat, hPub] = record.geometry.coordinates, rd = (await import('../../src/canalRecall/facade/rdNew.ts')).lngLatToRd([lng, lat]);
+    // The listing's geometry carries the camera (lng, lat, height): no second request per view (the record endpoint
+    // timed out for hours on 2026-10-30 while the listings and thumbnails were cached).
+    const [lng, lat, hPub] = v.cam, rd = (await import('../../src/canalRecall/facade/rdNew.ts')).lngLatToRd([lng, lat]);
     const zNAP = Number.isFinite(hPub) && hPub > 0 ? hPub - 43.5 : topAt(face, 0) + 2.4;
     const r = await renderAimed(face, { x: rd.x, y: rd.y, zNAP }, heading, pitch, fov, PW, PH);
     const photo = await sharp(v.file).resize(PW, PH, { fit: 'fill' }).ensureAlpha().raw().toBuffer();
@@ -226,6 +226,15 @@ const BASCULE_NOTES: Record<string, string> = {
   BRU0149: 'photo: basement bascule under tram wires, no portal; red-and-white masts, barrier boxes, signals | model: basement style',
   BRU0345: 'photo: basement bascule, no portal (the overhead "balance-beam" in the report is not in the panoramas); masts, barrier boxes, white tube railings | model: basement style',
   BRU0272: 'photo (Mariniersbrug, Dijksgracht): green steel basement bascule, red-and-white masts, green lattice truss parapets, brick piers; register says timber | model: basement style, green, Pratt truss parapet (TRUSS_PARAPET)',
+  BRU2205: 'photo (Buiksloterdraaibrug): grey-green plate-girder swing bridge, light tube railing, heel and control house on the east bank, no portal, no masts; its soffit arches up to midspan | model: swing style, grey-green leaf, white railing, pivot drum at the east heel, no bay piers. Close; the arched soffit is drawn flat',
+  BRU2361: 'photo (Commandantsbrug): dark blue-grey lattice-truss sides rising to midspan, midstream pivot pier, timber fender rows along the Oosterdok, red-and-white masts | model: swing style, slate leaf, parabolic Pratt truss (TRUSS_SHAPE 1.4-2.3 m), pivot drum, fender piles with walings, masts. Good; the photo\'s fenders are denser (three walings, close piles)',
+  BRU2270: 'photo (Oosterdoksdraaibrug): white arched through-truss (~6 m) over a grey steel deck, keeper\'s house at the west heel | model: swing style, steel leaf, white parabolic through truss with overhead cross members, drum at the west heel. Arch reads; the photo\'s arch is denser (K-web, curved top lateral bracing) and ends closer to the deck',
+  BRU0146: 'photo (Oranjebrug): green-grey steel lattice portal, lattice posts, fish-bellied lattice balance beams with X plan bracing, ballast box | model: portal, LATTICE_FRAME posts+beams, green. Good; photo paint is a lighter grey-green',
+  BRU0148: 'photo: grey-green lattice portal, lattice posts and beams with X bracing between the beams | model: one portal (SINGLE_LEAF, was two), lattice posts+beams, green. Good',
+  BRU0193: 'photo (Westergasbrug): dark grey heavy lattice portal over a wide canal, lattice posts, long lattice balance beams | model: one portal (SINGLE_LEAF, was two facing portals) at the north heel (PORTAL_HEEL), lattice posts+beams, green. Silhouette reads; the photo portal is taller with longer beams, its paint darker grey',
+  BRU0281: 'photo (Peperbrug): dark green heavy lattice posts, lattice beam box with cross bracing overhead | model: portal, lattice posts, beams and cross girder. Lattice posts read; the photo\'s beams form a closed overhead box (end frames) the kit draws as an X only',
+  BRU1904: 'photo (Ezelsbrug): double bascule, light blue-grey columns under lattice balance beams, red deck girders, red pull rods and red backstays | model: portal x2, lattice beams, blue-grey frame and railing, red leaf, red rods. Good; red backstays and the posts\' concrete piers in the water are missing',
+  BRU0222: 'photo (Aluminiumbrug): dark green ornate portal, I-section posts, an X-lattice band under the head, arched knee braces | model: portal, lattice cross girder (LATTICE_FRAME cross). The band reads; the ornate arched braces and the solid lower girder are not in the kit',
 };
 
 async function main(): Promise<void> {
