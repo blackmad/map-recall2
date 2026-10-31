@@ -5,7 +5,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
-const [tag = 'x', qs = '?ownGround=1&sharedFrame=1', only] = process.argv.slice(2);
+const [tag = 'x', qs = '?ownGround=1', only] = process.argv.slice(2);
 // [lng, lat, bearing°] on the quay street, looking along the moored boats.
 const PLACES = {
   'prinsengracht-noordermarkt': [4.88736, 52.37913, 202], // east quay, looking SSW at w266604434/36/50

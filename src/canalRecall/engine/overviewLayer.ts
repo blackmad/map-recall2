@@ -12,6 +12,7 @@ import * as THREE from 'three';
 import { decodeOverview, STREET_CLASSES, type OverviewData, type OverviewFile, type StreetClass } from '../ownMap/overviewFormat';
 import { fillMaterial, lineGeometry, lineMaterial, polygonGeometry, handover } from '../ownMap/layers';
 import { interpolateStops, MIN_LINE_PX, PALETTE, STREET_STYLE } from '../ownMap/style';
+import { overviewColours } from './themePalette';
 import { KX, KY, ORIGIN, toLocal } from '../ownMap/frame';
 import { metresPerPixel } from '../ownMap/mapCamera';
 import { WaterIndex } from './waterIndex';
@@ -50,6 +51,8 @@ export class OverviewLayer implements FrameParticipant {
   readonly water: WaterIndex;
   private readonly lines: Lines[] = [];
   private readonly land: THREE.Mesh;
+  private readonly parks: THREE.Mesh;
+  private readonly waterMesh: THREE.Mesh;
   private centreLat: number = ORIGIN.lat;
 
   constructor(readonly data: OverviewData, private readonly view: { center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null }) {
@@ -61,6 +64,7 @@ export class OverviewLayer implements FrameParticipant {
     this.land.renderOrder = -1;
     const water = new THREE.Mesh(polygonGeometry(data.water), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
     const parks = new THREE.Mesh(polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r]))), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
+    this.parks = parks; this.waterMesh = water;
     for (const m of [this.land, parks, water]) m.frustumCulled = false;
     this.root.add(this.land, parks, water);
     const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
@@ -75,6 +79,20 @@ export class OverviewLayer implements FrameParticipant {
     }
     // The overview sits under everything; nothing casts.
     this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
+  }
+
+  /** A palette theme (themePalette.ts) as the flat materials' colours; 'clean' restores the own map's. */
+  setTheme(theme: string): void {
+    const t = overviewColours(theme);
+    const set = (m: THREE.Mesh, c: string) => { ((m.material as THREE.ShaderMaterial).uniforms.uColor.value as THREE.Color).setStyle(c, THREE.LinearSRGBColorSpace); };
+    set(this.land, t ? t.land : PALETTE.land);
+    set(this.parks, t ? t.park : PALETTE.park);
+    set(this.waterMesh, t ? t.water : PALETTE.water);
+    for (const l of this.lines) {
+      const st = STREET_STYLE[l.cls];
+      set(l.fill, t ? t.streetFill : st.fill);
+      if (l.casing && st.casing) set(l.casing, t ? t.streetCasing : st.casing);
+    }
   }
 
   isWater(lng: number, lat: number): boolean { return this.water.isWater(lng, lat); }

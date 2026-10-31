@@ -67,15 +67,6 @@ const targets = [
     out: 'public/canal-drive/js/pyramidal-roofs.bundle.js',
     globalName: 'CanalRecallPyramidalRoofs',
   },
-  {
-    // ESM, and so no globalName: three's DRACOLoader resolves its decoder paths
-    // at module top level via `new URL(..., import.meta.url)`, which esbuild
-    // stubs out of an IIFE and throws "Invalid URL" before any code runs. The
-    // module publishes its own global on the way out instead.
-    entry: 'public/canal-drive/js/google-tiles-source.js',
-    out: 'public/canal-drive/js/google-tiles.bundle.js',
-    format: 'esm',
-  },
 ];
 
 const only = process.argv.find(arg => arg.startsWith('--only='))?.slice(7).split(',');

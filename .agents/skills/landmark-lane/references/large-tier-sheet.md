@@ -83,6 +83,15 @@ from the crop by `measure.ts`.
    per-house ribbon-windows draft, not a batch, until bandFronts proposes
    bands for slab fronts like 063809 w1.
 
+9. **Painted and clad fronts (lane #146, 2026-10-31).** `walls[].wallFamily`
+   (paint or metal with measured colour and rib pitch) draws them through the
+   city look's `paint` slot; measurement proposes a family only when the wall
+   cells are even or ribbed. Triage painted-or-clad 80 → 62, 3 buildable, batch
+   0/3 (a second blank clad wall, an open parking deck, a glazed pavilion).
+   The remaining 62 are mostly dark textured walls in shade that cell
+   statistics cannot separate from dark brick; expect no batch yield here
+   until a closer crop or a second capture gives a texture signal.
+
 ## Expected yield by front class and evidence
 
 | Photo front class | Judgeable crops on 2+ street walls | Expect |

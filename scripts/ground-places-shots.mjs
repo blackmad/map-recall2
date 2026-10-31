@@ -4,7 +4,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
-const [tag = 'x', qs = '?ownGround=1&sharedFrame=1', only] = process.argv.slice(2);
+const [tag = 'x', qs = '?ownGround=1', only] = process.argv.slice(2);
 const PLACES = {
   'rozengracht-marnixstraat': [4.8760, 52.3722, 100],   // junction by the fire station
   'rozengracht-lijnbaansgracht': [4.8742, 52.3718, 100],

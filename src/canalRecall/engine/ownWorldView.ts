@@ -33,6 +33,7 @@ import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
 import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
+import { CityExtras } from './cityExtras';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -74,8 +75,8 @@ export const MERCATOR = { MercatorCoordinate };
 
 /** VectorMap members that are no-ops under the flag (the hand-back's list; checked by the engine spec). */
 export const UNIMPLEMENTED = [
-  'setTreesVisible (no trees yet)', 'setDetailedBuildingsVisible', 'setGoogleTilesEnabled', 'applyTheme (palette themes)',
-  'signature landmarks', 'neighbourhood lines are solid (MapLibre drew them dashed)',
+  'park landscape (MapLibre style layers; the overview parks stand in)',
+  'recipe tiles (?recipeTiles=1)', 'sculptures (?sculptures=1)', 'neighbourhood lines are solid (MapLibre drew them dashed)',
 ] as const;
 
 type Vehicle = any;
@@ -98,6 +99,14 @@ export class OwnWorldView {
   _ownGround: any = null;
   _threeBuildings: any = null;
   _completeCity: any = null;
+  /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
+  readonly extras: CityExtras;
+  get _signatureLandmarks(): any { return this.extras.signature; }
+  get _inventoryTrees(): any { return this.extras.trees; }
+  get _detailedBuildings(): any { return this.extras.detailed; }
+  get _pyramidalRoofs(): any { return this.extras.roofs; }
+  get _artisAnimals(): any { return this.extras.artis; }
+  private activeLandmark: any = null;
   _overview: OverviewLayer | null = null;
   _playerBike: Vehicle = null;
   _playerBoat: Vehicle = null;
@@ -196,6 +205,17 @@ export class OwnWorldView {
         });
       } catch (error) { this.fail('highlight marker', error); }
     }
+    this.extras = new CityExtras({
+      cameraMap: this.cameraMap, sharedFrame: this._sharedFrame, mercator: MERCATOR,
+      extractPath: () => this.absoluteExtractRoot(),
+      threeBuildings: () => this._threeBuildings,
+      completeCity: () => this._completeCity,
+      measuredColoursOnly: () => this.measuredColoursOnly,
+      trees3d: flag('trees3d', '__canalRecallTrees3d', true),
+      repaint: () => this.host.triggerRepaint(),
+      relight: () => this.setActiveLandmark(this.activeLandmark),
+      fail: (what, error) => this.fail(what, error),
+    });
     this.host.start();
     void this.boot();
   }
@@ -212,9 +232,10 @@ export class OwnWorldView {
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.cameraMap, MERCATOR);
       } catch (error) { this.fail('vehicles', error); }
     }
+    this.extras.start();
     this.ready = true;
     this.applyPendingAim();
-    await Promise.all([this.loadOverview(), this.loadBuildings(), this.loadOwnGround()]);
+    await Promise.all([this.loadOverview(), this.loadBuildings().then(() => this.extras.loadBagCovers()), this.loadOwnGround()]);
     this.status.booted = true;
   }
 
@@ -235,6 +256,7 @@ export class OwnWorldView {
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
       this._labels.setOverview(data);
+      this._overview.setTheme(this.theme);
     } catch (error) { this.fail('overview', error); }
   }
 
@@ -262,6 +284,7 @@ export class OwnWorldView {
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
       city.attach(() => { this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
         this._tileFeatures = features;
+        this.extras.setBuildingFeatures(features);
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
       });
       this.applyPendingAim();
@@ -317,12 +340,14 @@ export class OwnWorldView {
         return ring && ring.length >= 3 ? ground.footprintBase(ring) : null;
       });
     }
+    this.extras.hookGround(ground);
     if (ground.surfaceRevision === this.groundRevision) return;
     const now = performance.now();
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
     this.groundRefreshAt = now;
     this.groundRevision = ground.surfaceRevision;
     tb?.refreshGroundBases?.();
+    this.extras.refreshGroundBases();
   }
 
   // ---- the frame ----
@@ -482,12 +507,15 @@ export class OwnWorldView {
       city.setSuspended(true);
       if (!this.introLanding) { this.introLanding = true; city.preloadAt?.(view.subject[0], view.subject[1]); }
     }
+    // Landmark models and trees hold what the driving view loaded: "visible" at city scale is all of Amsterdam.
+    if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) { this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch); this.syncGroundConsumers(); }
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     this.lastSubject = view.subject;
     this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
+    if (view.introFlat === 0) this.extras.setSuspended(false);
     if (view.introFlat === 0 && city) {
       city.setSuspended?.(false);
       if (!view.detached) city.setRider?.(view.subject[0], view.subject[1]);
@@ -532,7 +560,8 @@ export class OwnWorldView {
     if (!this.ready || !canvasRect) return null;
     const vp = this.host.viewport();
     const x = cssX * vp.width / canvasRect.width, y = cssY * vp.height / canvasRect.height;
-    return this._threeBuildings?.inspectAtScreen?.(x, y, vp.width, vp.height) ?? null;
+    // Landmark models first; the nearer surface wins (vector-map.js inspectBuilding).
+    return this.extras.pick(x, y, vp.width, vp.height, this._threeBuildings?.inspectAtScreen?.(x, y, vp.width, vp.height) ?? null);
   }
 
   // ---- vehicles ----
@@ -627,7 +656,7 @@ export class OwnWorldView {
   setStreetFronts(ways: unknown): void { this.streetFronts = ways; this._threeBuildings?.setStreets?.(ways); }
   setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
-  setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; }
+  setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
   setBuildingLookPreference(look: string): void { this.buildingLookPref = look || 'photo'; }
   buildingLook(): string { return this.buildingLookPref; }
   /** Read by the look specs; the own view draws one look until the look switch is ported. */
@@ -639,6 +668,10 @@ export class OwnWorldView {
     const body = W().document?.body;
     body?.classList.remove('theme-8bit', 'theme-16bit', 'theme-psx', 'theme-cyberpunk');
     if (this.theme !== 'clean') body?.classList.add(`theme-${this.theme}`);
+    // Palette themes as material parameters (themePalette.ts): the overview's flat materials and the trees.
+    this._overview?.setTheme(this.theme);
+    this.extras?.setTheme(this.theme);
+    this.host.triggerRepaint();
   }
   toggleLabels(): boolean { this._labelsVisible = !this._labelsVisible; this.host.triggerRepaint(); return this._labelsVisible; }
   setLabelsVisible(v: boolean): void { this._labelsVisible = !!v; this.host.triggerRepaint(); }
@@ -647,6 +680,8 @@ export class OwnWorldView {
 
   /** The card's landmark: its building(s) lit through the facades, and the marker (look/highlightMarker.ts). */
   setActiveLandmark(landmark: any): void {
+    this.activeLandmark = landmark || null;
+    const { modelLit, detailed } = this.extras.setActiveLandmark(landmark);
     let ids: string[] = [];
     if (landmark && Array.isArray(landmark.buildingIds) && landmark.buildingIds.length) ids = landmark.buildingIds.map(String);
     else if (landmark?.featureTarget?.id != null) ids = [String(landmark.featureTarget.id)];
@@ -658,8 +693,11 @@ export class OwnWorldView {
       const boat = this._threeBuildings.boatForLandmark(landmark.lngLat, landmark.type);
       if (boat) ids = [String(boat)];
     }
+    // Detailed tiles light their own mesh; the streamed prisms stay plain.
+    if (detailed) ids = [];
     const focus = landmark && landmark.lngLat ? { lngLat: landmark.lngLat, ids } : null;
     this._threeBuildings?.setHighlighted?.(ids, focus);
+    if (modelLit && focus) { this._highlightMarker?.set(this._threeBuildings?.highlightFootprint?.(ids) || focus); this.host.triggerRepaint(); return; }
     this._highlightMarker?.set(focus ? (this._threeBuildings?.highlightFootprint?.(ids) || focus) : null);
     this.host.triggerRepaint();
   }
@@ -734,11 +772,11 @@ export class OwnWorldView {
     this._lines.transit.set([...byColour].map(([color, lines]) => ({ lines, style: { color, width: [[11, 1.5], [15, 3], [18, 6]], opacity: 0.85 } })));
   }
 
-  // Not yet under the flag (UNIMPLEMENTED): no-ops so the game runs.
-  setTreesVisible(): void {}
-  setDetailedBuildingsVisible(): void {}
-  setGoogleTilesEnabled(): void {}
+  setTreesVisible(visible: boolean): void { this.extras.setTreesVisible(visible); }
+  setDetailedBuildingsVisible(visible: boolean): void { this.extras.setDetailedVisible(visible); }
+  /** The flat 2D tree layer's data: the inventory trees load their own (inventory-trees-source.js). */
   setTrees(): void {}
+  // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
 }
 
 function globalNum(name: string, fallback: number): number {

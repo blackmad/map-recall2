@@ -45,6 +45,28 @@ class InputManager {
     if (this._isMobile) {
       this._setupTouch();
     }
+
+    // A key or thumb released while the page was not looking (another app, a
+    // tab switch, a rotation) never sends its keyup/touchend here, so the bike
+    // rode on with the arrow "held". Reset on blur and when hidden; a resize
+    // or rotation moves the pad, so it drops the touches only.
+    window.addEventListener('blur', () => this.resetAll());
+    document.addEventListener('visibilitychange', () => { if (document.hidden) this.resetAll(); });
+    window.addEventListener('resize', () => this.resetTouches());
+  }
+
+  /** Release every key and touch (blur, hidden page). */
+  resetAll() {
+    this.keys = {};
+    this.justPressed = {};
+    this.resetTouches();
+  }
+
+  /** Release the stick and the street-follow pad. */
+  resetTouches() {
+    this._stickTouch = null;
+    this._padTouches.clear();
+    this._touchActive = false;
   }
 
   /**
@@ -133,7 +155,8 @@ class InputManager {
       }
       // Only swallow the gesture when it is ours; otherwise the map keeps its
       // pan and pinch.
-      if (claimed) e.preventDefault();
+      // Ours: it must not bubble on to the page's own gesture handlers.
+      if (claimed) { e.preventDefault(); e.stopPropagation(); }
       this._touchActive = true;
       // A quick tap can start and end between two frames; remember it.
       this._touchedThisFrame = true;
