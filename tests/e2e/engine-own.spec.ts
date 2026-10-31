@@ -12,6 +12,22 @@ const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 // constructed. Needs the engine bundle in index.html and the game.js choice
 // (integrator lines in the lane hand-back).
 
+/** The maplibre-gl script and stylesheet (unpkg, or a self-hosted copy). */
+const MAPLIBRE_ASSET = /maplibre-gl(@[\d.]+)?\/dist\/maplibre-gl(-csp)?\.(js|css)|\/maplibre-gl(-csp)?\.(js|css)(\?|$)/;
+
+test('the default path still loads maplibre-gl (script and stylesheet) and builds its map', async ({ page }) => {
+  test.setTimeout(120_000);
+  const requests: string[] = [];
+  page.on('request', r => { if (MAPLIBRE_ASSET.test(r.url())) requests.push(r.url()); });
+  test.skip(process.env.ENGINE === 'own', 'the default path only');
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame?.vectorMap?.map), { timeout: 90_000 }).toBe(true);
+  expect(requests.some(u => /\.js(\?|$)/.test(u)), 'maplibre-gl.js requested').toBe(true);
+  expect(requests.some(u => /\.css(\?|$)/.test(u)), 'maplibre-gl.css requested').toBe(true);
+  expect(await page.evaluate(() => ({ lib: typeof (window as any).maplibregl, engine: (window as any).canalRecallGame.vectorMap.engine ?? 'maplibre' })))
+    .toEqual({ lib: 'object', engine: 'maplibre' });
+});
+
 async function countMapLibre(page: Page): Promise<void> {
   await page.addInitScript(() => {
     (window as any).__maplibreMaps = 0;
@@ -63,6 +79,9 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   test.setTimeout(180_000);
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
+  // P5 B1 (engine/mapLibreLoader.ts): under the flag maplibre-gl is not even fetched.
+  const mapLibreRequests: string[] = [];
+  page.on('request', r => { if (MAPLIBRE_ASSET.test(r.url())) mapLibreRequests.push(r.url()); });
   await countMapLibre(page);
   // BUNDLES_DIR=<dir>: serve *.bundle.js from a local build (a lane's source change before the integrator rebuilds).
   const bundles = process.env.BUNDLES_DIR;
@@ -115,6 +134,8 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   console.log('engine=own', JSON.stringify(stats));
   await page.screenshot({ path: test.info().outputPath('engine-own-chase.png') });
   expect(stats.maplibreMaps).toBe(0);
+  expect(mapLibreRequests, 'no maplibre-gl request under ?engine=own').toEqual([]);
+  expect(await page.evaluate(() => typeof (window as any).maplibregl)).toBe('undefined');
   expect(stats.frames).toBeGreaterThan(30);
   expect(stats.moved, 'the rider rode (not a parked frame)').toBeGreaterThan(50);
   expect(stats.failed).toEqual([]);
