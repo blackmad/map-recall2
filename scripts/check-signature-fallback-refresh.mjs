@@ -5,9 +5,12 @@ import * as THREE from 'three';
 
 // Exercise the actual host composer and browser classes without a GPU. The
 // resident chunk uses the same hidden vertex attribute as the runtime shader.
+// Since the engine programme's step 6 (2026-10-31) the browser class builds its GLTF loader in the constructor
+// (`_setup`) when no shared frame drives it, so the context needs a loader class too; nothing here loads a model.
+class GLTFLoaderStub { setMeshoptDecoder() {} load() {} }
 const context = vm.createContext({
   window: {
-    CanalRecallThree: { THREE },
+    CanalRecallThree: { THREE, GLTFLoader: GLTFLoaderStub, MeshoptDecoder: null },
   },
   console,
 });
@@ -43,6 +46,14 @@ function fixture({ tiles, style = true, sidecar = [] }) {
     setFilter: (id, filter) => { filters.set(id, filter); writes.push(id); },
     addLayer() {},
     triggerRepaint() {},
+    // `_setup` subscribes to camera events and asks the view once; the fixture never moves (Dam, z16).
+    on() {}, off() {},
+    getZoom: () => 16,
+    getCenter: () => ({ lng: 4.8931, lat: 52.3731 }),
+    getBounds: () => ({
+      getWest: () => 4.88, getEast: () => 4.906, getSouth: () => 52.368, getNorth: () => 52.378,
+      getCenter: () => ({ lng: 4.8931, lat: 52.3731 }), contains: () => true,
+    }),
   };
   const buildings = new context.CanalRecallThreeBuildings.ThreeBuildings(map, {});
   const hidden = new THREE.BufferAttribute(new Uint8Array(4), 1);

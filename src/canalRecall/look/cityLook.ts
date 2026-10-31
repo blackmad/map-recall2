@@ -357,11 +357,25 @@ export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.ki
 export function variantDefines(v: CityVariant): Record<string, string> {
   const d: Record<string, string> = { CITY_SLOT_COUNT: String(SLOT_LAYER_COUNT) };
   if (v.kind === 'slot') d.CITY_SLOT = '';
+  if (v.lit) {
+    // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
+    // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
+    d.CITY_VARIANT_UNIFORMS = '';
+    return { ...d, ...highlightDefines() };
+  }
   if (v.kind === 'slot' && v.uv === 'box') d.CITY_BOX_UV = '';
   if (v.highlight) d.CITY_HIGHLIGHT = '';
   else if (v.dim) d.CITY_DIM = '';
   return { ...d, ...highlightDefines() };
 }
+
+/** A lit variant's own uniforms: `cityForce` 0 plain, 1 highlight (wins), 2 dim; `cityBoxUv` 1 for box-projected slots. */
+export function cityVariantUniforms(v: CityVariant): { cityForce: { value: number }; cityBoxUv: { value: number } } {
+  return { cityForce: { value: v.highlight ? 1 : v.dim ? 2 : 0 }, cityBoxUv: { value: v.kind === 'slot' && v.uv === 'box' ? 1 : 0 } };
+}
+
+/** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -405,6 +419,10 @@ varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
 varying float vFacDist;
+#ifdef CITY_VARIANT_UNIFORMS
+uniform float cityForce;
+uniform float cityBoxUv;
+#endif
 ${HIGHLIGHT_GLSL}`;
 
 /**
@@ -415,6 +433,9 @@ ${HIGHLIGHT_GLSL}`;
 const VERTEX_BODY = /* glsl */ `
 vTint = tint.rgb; vAccent = accent.rgb;
 vHighlight = hlState(hidden);
+#ifdef CITY_VARIANT_UNIFORMS
+if (cityForce > 0.5) vHighlight = cityForce;
+#endif
 #ifdef CITY_HIGHLIGHT
 vHighlight = 1.0;
 #endif
@@ -425,7 +446,17 @@ vHighlight = 2.0;
   int cityS = int(clamp(layer + 0.5, 0.0, float(CITY_SLOT_COUNT - 1)));
   vSlot = slotParams[cityS];
   vLayer = slotBase + float(cityS);
-  #ifdef CITY_BOX_UV
+  #if defined(CITY_VARIANT_UNIFORMS)
+  if (cityBoxUv > 0.5) {
+    vec3 cityN = abs(normal);
+    vec3 cityQ = position * length(modelMatrix[0].xyz);
+    vec2 cityUv = cityN.y > max(cityN.x, cityN.z) ? cityQ.xz : (cityN.x > cityN.z ? cityQ.zy : cityQ.xy);
+    vFacUv = cityUv * vSlot.x;
+    vSlot.y = 0.0;
+  } else {
+    vFacUv = vSlot.y > 0.5 ? uv : uv * vSlot.x;
+  }
+  #elif defined(CITY_BOX_UV)
     vec3 cityN = abs(normal);
     vec3 cityQ = position * length(modelMatrix[0].xyz);
     vec2 cityUv = cityN.y > max(cityN.x, cityN.z) ? cityQ.xz : (cityN.x > cityN.z ? cityQ.zy : cityQ.xy);
@@ -580,8 +611,10 @@ export function createCityLookMaterial(THREE: any, variant: CityVariant, uniform
   } else {
     material = new THREE.MeshLambertMaterial({ side, flatShading: variant.kind === 'chunk' });
     material.defines = { ...(material.defines ?? {}), ...defines };
+    const own = cityVariantUniforms(variant);
     material.onBeforeCompile = (shader: any) => {
       for (const key of Object.keys(uniforms) as (keyof CityLookUniforms)[]) shader.uniforms[key] = uniforms[key];
+      Object.assign(shader.uniforms, own);
       shader.vertexShader = shader.vertexShader
         .replace('#include <common>', `#include <common>${VERTEX_DECLS}`)
         .replace('#include <begin_vertex>', `#include <begin_vertex>${VERTEX_BODY}`)
@@ -608,7 +641,8 @@ else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLuma)) * (1.0 - cityM.r);
 #endif`);
     };
-    material.customProgramCacheKey = () => `city-look-v3|${variantKey({ ...variant, side: 0 })}`;
+    const programKey = cityProgramKey(variant);
+    material.customProgramCacheKey = () => programKey;
     // ThreeBuildings reads and writes these like a ShaderMaterial's uniforms.
     material.uniforms = uniforms;
   }

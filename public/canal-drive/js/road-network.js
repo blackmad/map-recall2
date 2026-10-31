@@ -37,12 +37,12 @@ const connectFerries = (graph, segments) => (window.CanalRecallFerry
 class RoadNetwork {
   static async prepareRoutingGraph(segments, cancelled) {
     const graph = await GRAPH.buildRoadGraphAsync(routingSegmentsOf(landOnly(segments)),
-      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled });
+      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
     return connectFerries(graph, segments);
   }
 
   static prepareSurfaceIndex(segments, routingGraph, cancelled) {
-    return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
+    return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
   }
 
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {

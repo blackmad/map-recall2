@@ -1775,7 +1775,6 @@
       trees: true,
       measuredColoursOnly: false,
       detailed3d: false,
-      googleTiles: false,
       reducedMotion: false,
       skipMastered: true,
       maxAsksPerMinute: DEFAULT_ASK_BUDGET,

@@ -1,5 +1,95 @@
 # Canal Recall — what is built
 
+**The landmark highlight no longer rebuilds its shaders every frame; the material registry is keyed per family (2026-10-31, #129, materials lane round 2).**
+Program churn: `setActiveLandmark` runs every frame (152 calls in 10 s) and
+`HighlightMarker` plus its outline/roof passes rebuilt their `ShaderMaterial`s
+on each call; a disposed ShaderMaterial frees three's shader-stage ids, so
+every rebuild got a new program key and a fresh link. `set()` now returns
+early when the focus is equal by value, the marker keeps its materials and
+pass materials come from a pool: programs created during a 10 s zoom-out
+with the highlight on 61 → 4 desktop, 68 → 9 iPhone; ordinary riding with a
+highlighted landmark 56–69 short-lived keys per ride → 0. Registry, one
+commit per family with a one-key/one-source test: city look's lit uv/box and
+highlight/dim are uniforms (`city-look-v4|lit|<kind>`, 5 → 4 programs on the
+ride), the building-types lit-merged material always uses MAX samplers,
+building-types dim is an `hlDimAll` uniform, lit facade was already one key.
+Session keys 25 → 24 desktop, 24 → 23 iPhone; resident programs at 14 s after
+landing unchanged (desktop 20, iPhone 21). Pixels at the three spots, main vs
+this round, desktop: Dam 30 px (tree noise), Munt 0, Westerkerk 1; iPhone
+within readback noise; highlighted frames not compared because the highlight
+state varies run to run. 162 unit tests; engine-own green desktop (18) and
+iPhone (23) with this build. For L1: `setActiveLandmark` still runs every
+frame and calls `threeBuildings.setHighlighted`; the marker ignores repeats
+but the per-frame call is wasted work.
+
+**`?engine=own` matches MapLibre's drawn camera to 2e-8 px, settles through the API, and has own-map extracts for three more cities (2026-10-31, #129, L1 hand-back 4).**
+Camera parity: `tests/e2e/engine-parity.spec.ts` (desktop + iPhone) rides the
+forced start flight and the seeded Anne Frank House → Rijksmuseum route under
+the own engine, records every distinct camera with six ground points, and
+replays them in a separate MapLibre page; the budget is
+`tests/perf/budgets.json cameraParityPx` 3.2 and the measured maximum is
+2e-8 px. Found on the way: in maplibre-gl 5.24 `map.project`/`unproject`
+use a matrix built before the camera is lifted by the rider's deck
+elevation, so with the deck at ±1 m they miss the drawn frame by up to 6.0
+px desktop / 4.8 px iPhone; both parity tests compare against the matrix
+MapLibre draws with, and the old MapLibre-side check in `engine-own.spec`
+(5.1 px on iPhone) reads 0 px. Under the default engine anything placed or
+picked through `map.project` is off by a few px while the deck is lifted
+(TODO). Settle: `CameraMap.addIdleCheck(name, busy)` registers named loading
+checks polled every 100 ms; `engine/settle.ts` registers overview (loaded or
+failed), ownGround (cells within 300 m of the view centre only; the ring
+builds ~1.5 cells/s), buildingTiles (fetches in flight or queued), facades
+(zoom ≥ 14) and landmarks (GLBs pending); a loader that failed or never
+started is not waited on, `vectorMap.pendingWork()` lists what is pending.
+`game-route.js _waitForMapSettle` drops the 450 ms breath after idle under
+the own engine (idle now means settled; MapLibre keeps it) and records
+`game._lastMapSettle = { ms, timedOut, engine, pending }`. Desktop, forced
+flight: own spawn settle 451 ms with nothing pending, flight overview 94 ms,
+time to RACING 2.5 s (1.1 s warm); MapLibre falls back at 900 ms (not
+ready), times out at 1,800 ms, 3.6 s. Bounds: the engine map shim's
+`getBounds()` gained `contains` (inclusive edges, antimeridian wrap), the
+corner getters, `getCenter` and `isEmpty`, so `artis-animals.js` and
+`park-landscape.js` run on the iPhone ride under the flag (unit test pins
+the ARTIS anchor). Extracts: `fetch-osm-extras.ts --city` and
+`build-own-map.ts --city` build Utrecht (998 KB gz, 5,930 water polygons),
+Rotterdam (2.01 MB, 15,014; the Oude Maas and Dok 5/6 lie outside the
+routed-streets + 1 km box) and Den Haag (840 KB, 4,529) with water areas
+from natural=water / riverbank / basin / reservoir; 59–72 % of each city's
+named-waterway points fall inside the polygons (Amsterdam 62 %); published
+to `public/data/extracts/<city>/own-map-v1/overview.json.gz`. Amsterdam
+rebuilds byte-identical to the published v2. Open: the iPhone engine-own
+ride barely moves (`moved` 0.0017 m) with or without the patch, so the spec
+likely needs touch input; no test fails on it.
+
+**Road setup no longer waits behind the building look: submit → rider 3.1 → 1.9 s (2026-10-31, #136, L4 step 5c).**
+Three changes, each measured with `scripts/time-to-ride-phases.mjs` (localhost,
+desktop cold, medians of 3). (1) `ROAD_SETUP_SLICE_MS = 48` in `constants.js`
+is the budget for the segment, snap-index, routing-graph and surface builds
+(`osm-loader.js`, `road-network.js`), so the building look's texture slices
+no longer halve them: submit → rider 3,133 → 2,023 ms. The alternative,
+holding building tiles until road setup is done, was not taken because the
+first tile would land > 300 ms after the rider; it stays 86–100 ms after
+throughout. (2) `roadSnapIndex.ts` builds the snap tree in place over one
+index array with typed midpoint keys and a quickselect instead of slicing
+the span list at every level and yielding per partition step: 135 → 40 ms
+for the city, 72,390 `nearest()` queries deep-equal to the old index.
+`buildRoadSegmentsAsync` 374 → 83 ms. (3) `_ensureRoutePoiCatalog` in
+`game-route.js` reuses a catalogue load done or in flight for the same city
+and mode; before, every ride start re-downloaded the 0.8 MB catalogue the
+briefing had just loaded, and the travel-mode change at submit started a
+second download beside it. At an emulated 20 Mbit/s with the player 6 s on
+the briefing, submit → rider 3,020 → 2,790 ms; the street extract (4.3 s on
+that link) dominates for remote players and `streets-routing.json`'s size is
+the lever there. Running the extract and catalogue downloads in parallel
+gave nothing (they share the link) and was dropped. Navigation → racing
+4,676 → ~4,000 ms, but the landing animation varies 1.0–1.7 s between runs
+(#150), so submit → rider is the cleaner measure. The script gained `--net
+<kbit/s>,<ms>` and `--settle <ms>`. What remains: the routing graph takes
+1.0–1.2 s wall for ~500 ms CPU because textures (~360 ms) and tile installs
+run between its slices (holding the textures would save ~0.5 s at the cost
+of a later first tile; unsliced would freeze the loading card ~0.5 s), then
+`fetchRoads` ~220, surface index ~150, segments ~100 ms.
+
 **Own-ground materials share programs through uniforms: `?engine=own` rides at 20 programs, under the 32 budget (2026-10-31, #129, P4 materials lane steps 1–3).**
 `src/canalRecall/ownGround/groundMaterial.ts` now holds the shader edits the
 own ground used to make per clone: the dissolve (`-ownFade`), the water cut

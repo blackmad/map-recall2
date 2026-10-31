@@ -173,9 +173,10 @@ class GameRouteRuntime {
       const center = city.center;
       // Through the world view (engine/worldViewApi.ts), either engine.
       if (center) this.vectorMap.jumpToLngLat({ center: [center.lng, center.lat], zoom: 13, bearing: 0, pitch: 0 });
-      this._loadRoutePoiCatalog();
+      this._ensureRoutePoiCatalog();
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
-      this._loadRoutePoiCatalog();
+      // Bike and boat share the landmark catalogue; only transit has its own.
+      this._ensureRoutePoiCatalog();
     }
     if (this._setPlayerZoom) this._setPlayerZoom(prefs.zoom);
     else this.camera.zoom = prefs.zoom;
@@ -495,7 +496,7 @@ class GameRouteRuntime {
     const prefs = this._prefs();
     this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
     // City may have changed on the briefing since the last catalog fetch.
-    await this._loadRoutePoiCatalog();
+    await this._ensureRoutePoiCatalog();
     const curated = this._curatedRoutePois();
     if (this.travelMode === 'transit' && this.routePois.length >= 2) {
       this.routeFrom = this.routePois[0];
@@ -866,15 +867,35 @@ class GameRouteRuntime {
   }
 
   /** Loads the destination pool; `_routePoiCatalogReady` lets a share-link boot wait for it to name its ends. */
+  _routePoiCatalogKey() {
+    return `${this._activeCity().id}:${this.travelMode === 'transit' ? 'transit' : 'landmarks'}`;
+  }
+
   _loadRoutePoiCatalog() {
     const ready = this._loadRoutePoiCatalogNow();
     this._routePoiCatalogReady = ready.catch(() => {});
+    this._routePoiCatalogLoading = { key: this._routePoiCatalogKey(), ready: this._routePoiCatalogReady };
     return ready;
+  }
+
+  /**
+   * The catalogue for this city and mode, loading it only if the briefing has
+   * not already (or the last load fell back to the curated list). Starting a
+   * ride re-downloaded and re-parsed the 0.8 MB landmark extract the menu had
+   * just loaded: ~0.7 s of the time to ride at 20 Mbit/s (#136).
+   */
+  async _ensureRoutePoiCatalog() {
+    const key = this._routePoiCatalogKey();
+    if (this._routePoiCatalogLoading && this._routePoiCatalogLoading.key === key) await this._routePoiCatalogLoading.ready;
+    if (this._routePoiCatalogLoadedKey === key) return;
+    await this._loadRoutePoiCatalog();
   }
 
   async _loadRoutePoiCatalogNow() {
     const city = this._activeCity();
     if (this.travelMode === 'transit') {
+      // Transit anchors replace routePois, so the landmark catalogue is no longer the one loaded.
+      this._routePoiCatalogLoadedKey = null;
       await this._loadTransitRoutePois(city);
       return;
     }
@@ -935,7 +956,9 @@ class GameRouteRuntime {
         if (this.routeTo) this._routeTo.value = this.routeTo.id;
       }
       console.info(`Route destinations (${city.name}): ${this.routePois.length} (${curated.length} curated + ${extras.length} from the extract)`);
+      this._routePoiCatalogLoadedKey = `${city.id}:landmarks`;
     } catch (error) {
+      this._routePoiCatalogLoadedKey = null;
       this.routePois = [...curated];
       this._overlay.store.setRoutePois(this.routePois);
       console.warn('Landmark route catalog unavailable, using the curated list:', error);
@@ -1948,35 +1971,47 @@ class GameRouteRuntime {
   }
 
   /**
-   * Wait for the basemap to finish its first idle at the aimed spawn, or until
-   * maxMs — whichever comes first. Prevents racing into a still-loading tile
-   * cascade.
+   * Wait for the world view to settle at the aimed spawn, or until maxMs — whichever comes first. Prevents racing
+   * into a still-loading tile cascade. Either engine answers through the WorldView API: MapLibre's camera resolves
+   * `whenIdle` on its `idle` event (tiles may still follow, hence the short breath); the own engine's resolves only
+   * once its loaders have caught up with the view (engine/settle.ts), so it needs none. The outcome is kept on
+   * `_lastMapSettle` ({ ms, timedOut, pending }) for the perf scripts.
    */
   _waitForMapSettle(maxMs = 2500) {
+    const started = performance.now();
+    const vectorMap = this.vectorMap;
+    const own = !!vectorMap && vectorMap.engine === 'own';
+    const report = (timedOut) => {
+      this._lastMapSettle = {
+        ms: Math.round(performance.now() - started), timedOut, engine: own ? 'own' : 'maplibre',
+        pending: own && vectorMap.pendingWork ? vectorMap.pendingWork() : [],
+      };
+    };
     return new Promise((resolve) => {
-      const camera = this.vectorMap && this.vectorMap.camera;
-      if (!camera || !this.vectorMap.ready) {
-        setTimeout(resolve, Math.min(900, maxMs));
+      const camera = vectorMap && vectorMap.camera;
+      if (!camera || !vectorMap.ready) {
+        setTimeout(() => { report(true); resolve(); }, Math.min(900, maxMs));
         return;
       }
       let done = false;
-      const finish = () => {
+      const finish = (timedOut) => {
         if (done) return;
         done = true;
+        report(timedOut);
         resolve();
       };
-      const timer = setTimeout(finish, maxMs);
+      const timer = setTimeout(() => finish(true), maxMs);
       const onIdle = () => {
         clearTimeout(timer);
-        // One short breath after idle so follow-on tile requests can land.
-        setTimeout(finish, 450);
+        if (own) finish(false);
+        // MapLibre: one short breath after idle so follow-on tile requests can land.
+        else setTimeout(() => finish(false), 450);
       };
       try {
-        // The world view's camera (engine/worldViewApi.ts) answers for either engine.
         camera.whenIdle().then(onIdle, onIdle);
       } catch (_) {
         clearTimeout(timer);
-        setTimeout(finish, Math.min(900, maxMs));
+        setTimeout(() => finish(true), Math.min(900, maxMs));
       }
     });
   }

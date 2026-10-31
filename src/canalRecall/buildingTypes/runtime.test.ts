@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import * as THREE from 'three';
-import {areaAnchor, createBuildingTypes, farMassing, nearMetresFor, mergedShaders, mergeParts, instanceMatrix, mercator, metreUnits, offsetMetres, pandOsmId, partitionByDistance, suppressionIds, yawOf, type RuntimeInstance} from './runtime.ts';
+import {litMergedMaterial, MAX_LIT_MERGED_SAMPLERS, areaAnchor, createBuildingTypes, farMassing, nearMetresFor, mergedShaders, mergeParts, instanceMatrix, mercator, metreUnits, offsetMetres, pandOsmId, partitionByDistance, suppressionIds, yawOf, type RuntimeInstance} from './runtime.ts';
 
 const inst = (over: Partial<RuntimeInstance> = {}): RuntimeInstance => ({pand: '0363100012061842', unit: 'u', anchor: [4.8, 52.364], northOffsetDegrees: 0, scale: [1, 1, 1], variant: 'v', groundAltitudeMetres: 0, ...over});
 const apply = (m: number[], p: number[]) => [m[0] * p[0] + m[4] * p[1] + m[8] * p[2] + m[12], m[1] * p[0] + m[5] * p[1] + m[9] * p[2] + m[13], m[2] * p[0] + m[6] * p[1] + m[10] * p[2] + m[14]];
@@ -220,5 +220,13 @@ test('createBuildingTypes (#78): lit (shared-frame) Lambert slot materials merge
   assert.equal(shader.uniforms.btT1.value, tex[1]);
   const c = m.clone();
   assert.ok(c.btTextures.length === 3 && c.onBeforeCompile === m.onBeforeCompile && c.customProgramCacheKey() === m.customProgramCacheKey());
+  // One program whatever the area's texture count (#129 P4): the padding samplers bind the first texture.
+  const two = litMergedMaterial(THREE, tex.slice(0, 2), THREE.FrontSide);
+  assert.equal(two.customProgramCacheKey(), m.customProgramCacheKey());
+  const shader2 = {uniforms: {} as Record<string, any>, vertexShader: '#include <common>\n#include <uv_vertex>', fragmentShader: '#include <common>\n#include <map_fragment>'};
+  two.onBeforeCompile(shader2);
+  assert.equal(shader2.fragmentShader, shader.fragmentShader);
+  assert.equal(shader2.uniforms[`btT${MAX_LIT_MERGED_SAMPLERS - 1}`].value, tex[0]);
+  assert.equal(shader2.uniforms.btT1.value, tex[1]);
   area.dispose();
 });

@@ -512,3 +512,21 @@ test('shared frame, host driver: no custom layers, drive() draws both passes, a 
   assert.equal(frame.renderer, current);
   assert.deepEqual(calls, ['attach', 'restore']);
 });
+
+test('lit facade: every instance shares one program (fixed key, same source; uniforms carry the per-layer state)', () => {
+  const compiled = (m: any, lib: any) => {
+    const shader = { vertexShader: lib.vertexShader, fragmentShader: lib.fragmentShader, uniforms: THREE.UniformsUtils.clone(lib.uniforms) };
+    m.onBeforeCompile(shader, null);
+    return shader;
+  };
+  const a = createLitFacadeMaterial(THREE), b = createLitFacadeMaterial(THREE, { cityTone: { value: 0.5 } });
+  assert.equal(a.customProgramCacheKey(), b.customProgramCacheKey());
+  assert.deepEqual(a.defines, b.defines);
+  const ca = compiled(a, THREE.ShaderLib.lambert), cb = compiled(b, THREE.ShaderLib.lambert);
+  assert.equal(ca.fragmentShader, cb.fragmentShader);
+  assert.equal(ca.vertexShader, cb.vertexShader);
+  assert.equal(cb.uniforms.cityTone.value, 0.5);
+  const da = createFacadeDepthMaterial(THREE), db = createFacadeDepthMaterial(THREE);
+  assert.equal(da.customProgramCacheKey(), db.customProgramCacheKey());
+  assert.equal(compiled(da, THREE.ShaderLib.depth).vertexShader, compiled(db, THREE.ShaderLib.depth).vertexShader);
+});

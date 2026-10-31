@@ -154,6 +154,12 @@ const ROAD_GRID_CELL = 100;                    // px — spatial grid cell size 
 // still count as a junction. Matched to the 3 m Douglas-Peucker tolerance the
 // extract builder uses, which is what displaces these endpoints in the first place.
 const JUNCTION_STITCH_RADIUS = 10;
+// ms of main thread each batched road-setup step (segments, snap index,
+// routing graph, surface index) takes before yielding. Behind the loading card
+// a longer slice is fine; at the default 8 ms the road builds alternated with
+// the building look's 6 ms texture slices and took about twice their CPU in
+// wall time before the rider could start (time to ride, #136).
+const ROAD_SETUP_SLICE_MS = 48;
 // Seconds between bridge questions. Amsterdam has a bridge every hundred
 // metres; asking about each one buries the street recall the route is there to
 // teach, so crossings stay an occasional highlight.
