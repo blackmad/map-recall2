@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { sunlitMeasuredWall } from './sunny.ts';
 import * as THREE from 'three';
 import { MATERIAL_SLOTS, CITY_ROOF, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
-import { BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { cityProgramKey, createCityLookMaterial, createCityUniforms, BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { photoMatchedWallTint } from './chunkWallExposure.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
@@ -62,8 +62,39 @@ test('variants: one program per (lit, kind, uv, highlight); side does not split 
   assert.equal(new Set(all.map(variantKey)).size, all.length);
   // HL_* defines follow the page's highlight style (look/highlight.ts; default a adds HL_KEEP), not the variant.
   const own = (v: CityVariant) => Object.keys(variantDefines(v)).filter(k => !k.startsWith('HL_')).sort();
-  assert.deepEqual(own({ lit: true, kind: 'slot', uv: 'box', highlight: true }), ['CITY_BOX_UV', 'CITY_HIGHLIGHT', 'CITY_SLOT', 'CITY_SLOT_COUNT']);
+  assert.deepEqual(own({ lit: false, kind: 'slot', uv: 'box', highlight: true }), ['CITY_BOX_UV', 'CITY_HIGHLIGHT', 'CITY_SLOT', 'CITY_SLOT_COUNT']);
+  // Lit: box UVs and the highlight state are uniforms (cityVariantUniforms), not defines.
+  assert.deepEqual(own({ lit: true, kind: 'slot', uv: 'box', highlight: true }), ['CITY_SLOT', 'CITY_SLOT_COUNT', 'CITY_VARIANT_UNIFORMS']);
   assert.deepEqual(own({ lit: false, kind: 'chunk' }), ['CITY_SLOT_COUNT']);
+});
+
+test('lit variants of a kind share one program: same key, defines and shader source; only cityForce/cityBoxUv differ', () => {
+  const uniforms = createCityUniforms(THREE);
+  const compiled = (m: any) => {
+    const lib = THREE.ShaderLib.lambert;
+    const shader = { vertexShader: lib.vertexShader, fragmentShader: lib.fragmentShader, uniforms: THREE.UniformsUtils.clone(lib.uniforms) };
+    m.onBeforeCompile(shader, null);
+    return shader;
+  };
+  for (const kind of ['slot', 'chunk'] as const) {
+    const variants: CityVariant[] = kind === 'slot'
+      ? [{ lit: true, kind, uv: 'uv' }, { lit: true, kind, uv: 'box' }, { lit: true, kind, uv: 'uv', highlight: true }, { lit: true, kind, uv: 'box', dim: true }, { lit: true, kind, uv: 'uv', side: 2 }]
+      : [{ lit: true, kind }, { lit: true, kind, highlight: true }, { lit: true, kind, dim: true }];
+    const ms = variants.map(v => createCityLookMaterial(THREE, v, uniforms));
+    const ref = compiled(ms[0]);
+    for (const m of ms) {
+      assert.equal(m.customProgramCacheKey(), ms[0].customProgramCacheKey());
+      assert.deepEqual(m.defines, ms[0].defines);
+      const c = compiled(m);
+      assert.equal(c.vertexShader, ref.vertexShader);
+      assert.equal(c.fragmentShader, ref.fragmentShader);
+      assert.equal(c.uniforms.cells, uniforms.cells, 'the atlas stays shared');
+    }
+    assert.deepEqual(ms.map(m => compiled(m).uniforms.cityForce.value), variants.map(v => (v.highlight ? 1 : v.dim ? 2 : 0)));
+    assert.deepEqual(ms.map(m => compiled(m).uniforms.cityBoxUv.value), variants.map(v => (v.uv === 'box' ? 1 : 0)));
+  }
+  assert.notEqual(cityProgramKey({ lit: true, kind: 'slot' }), cityProgramKey({ lit: true, kind: 'chunk' }));
+  assert.notEqual(cityProgramKey({ lit: false, kind: 'slot', uv: 'box' }), cityProgramKey({ lit: false, kind: 'slot', uv: 'uv' }), 'unlit keeps its defines');
 });
 
 test('dress: a legacy landmark mesh (no UVs, untagged "brick") takes the brick slot, box UVs and attributes', () => {
