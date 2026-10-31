@@ -262,7 +262,16 @@ per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
-and the second own-ground worker can go, then road CSR (step 5).
+and the second own-ground worker can go, then road CSR (step 5). **Heap and
+pool merged 2026-10-31** (`5f64e3292`, HISTORY "One worker pool"): heap gate
+met with a GC-forced sample (303 MB main at ride start, world below default
+at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
+cell build keeps its own worker. Open for L4: step 5 road graph as CSR
+(`Int32Array` offsets/targets, `Float32Array` x/y/distance, segment table,
+node views behind the current API; callers roadGraph routers,
+`ferry/network.ts`, `ownGround/route.ts`, `road-network.js`, check scripts;
+gates road-graph heap ≤ 30 MB from 54, time to ride ≤ 4 s, `test:canal-car`
+and `test:reachability` green); the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs
