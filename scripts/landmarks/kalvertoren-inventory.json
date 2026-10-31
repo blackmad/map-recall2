@@ -1,0 +1,589 @@
+{
+ "schemaVersion": 1,
+ "id": "kalvertoren",
+ "pand": "0363100012165086",
+ "brief": "scripts/landmarks/kalvertoren-brief.md",
+ "signature": [
+  "e-gable",
+  "w-gable",
+  "arms-relief",
+  "colonnade",
+  "attic-crown",
+  "glass-tower",
+  "k-arch",
+  "kalverpassage-sign",
+  "white-bands",
+  "block-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-192",
+   "bearing": 192,
+   "lengthM": 33.7,
+   "centre": [
+    4.891163,
+    52.3672125
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000214",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-gable",
+     "kind": "other",
+     "where": "east stepped gable over bays t 23.4-28.6: gable storey with three arched lights, scroll claws, neck, segmental top",
+     "approxSizeM": [
+      9.4,
+      8.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "gable(): brick masses 1 m deep, white bands, arched glass with white rings, balcony rail, quarter-round claws with curls, neck window, segmental top"
+    },
+    {
+     "id": "gilt-balls",
+     "kind": "other",
+     "where": "gilt balls on the gable storey corners, neck corners and finial",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000212",
+     "how": "gold spheres r 0.18-0.22"
+    },
+    {
+     "id": "arms-relief",
+     "kind": "crest",
+     "where": "Amsterdam arms (two gold lions, red shield, black pale, three white saltires, crown) over the west portal",
+     "approxSizeM": [
+      1.8,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214",
+     "how": "arms(): red slab shield, black pale, three white saltires from crossed bars, two gold lathe lions and heads, gold crown with three balls"
+    },
+    {
+     "id": "w-portal",
+     "kind": "window-shape",
+     "where": "west portal: white stone surround, round-arched door",
+     "approxSizeM": [
+      2.7,
+      5.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "white slab, dark arched door slab"
+    },
+    {
+     "id": "k-arch",
+     "kind": "window-shape",
+     "where": "central wide segmental passage arch with white voussoirs",
+     "approxSizeM": [
+      3.5,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "dark segment opening, seven white voussoir blocks, white jambs"
+    },
+    {
+     "id": "e-portal",
+     "kind": "window-shape",
+     "where": "east portal: white surround, scrolled segmental pediment, cartouche, round-arched door",
+     "approxSizeM": [
+      3.0,
+      6.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "white slab, segment pediment, cartouche slab; the scroll carving is not modelled"
+    },
+    {
+     "id": "cartouches",
+     "kind": "relief",
+     "where": "white cartouche plaques over the arch (5.6 m) and in place of two storey-2 windows",
+     "approxSizeM": [
+      1.4,
+      0.55
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "layered white slabs"
+    },
+    {
+     "id": "white-bands",
+     "kind": "other",
+     "where": "white bands at sill, mid-light and head height on all three storeys",
+     "approxSizeM": [
+      33.6,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "ledge strips at the measured heights"
+    },
+    {
+     "id": "relieving-arches",
+     "kind": "window-shape",
+     "where": "segmental relieving arches with white keystones over ground and first-floor windows",
+     "approxSizeM": [
+      1.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "segment arch band in brick + white keystone"
+    },
+    {
+     "id": "block-cornice",
+     "kind": "other",
+     "where": "cornice of alternating white blocks 13.2-13.9 m",
+     "approxSizeM": [
+      33.6,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "white blocks every 0.7 m and white coping"
+    },
+    {
+     "id": "colonnade",
+     "kind": "colonnade",
+     "where": "concrete colonnade on the roof behind the cornice, columns 13.9-16.3 m, beam to 17.3 m",
+     "approxSizeM": [
+      24.4,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "colonnade(): eight columns at 2.85 m pitch set back 0.5 m (two-camera parallax), beam"
+    },
+    {
+     "id": "sawtooth-glass",
+     "kind": "other",
+     "where": "glass sawtooth gables behind the colonnade (peaks about 22 m)",
+     "approxSizeM": [
+      16,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214",
+     "how": "3DBAG roof strips 568/570/582/609/621 and their end walls coloured glass"
+    },
+    {
+     "id": "k-sign",
+     "kind": "sign",
+     "where": "KO logo sign over the passage arch (2017)",
+     "approxSizeM": [
+      1.0,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign, absent in the 2021 view"
+     }
+    },
+    {
+     "id": "plinth",
+     "kind": "other",
+     "where": "grey stone plinth 0-1.1 m",
+     "approxSizeM": [
+      33.6,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000106",
+     "how": "sandstone slab"
+    }
+   ]
+  },
+  {
+   "tag": "w02-46",
+   "bearing": 46,
+   "lengthM": 26.7,
+   "centre": [
+    4.892292,
+    52.367523
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_000568",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "portal",
+     "kind": "canopy",
+     "where": "two-storey passage portal on two stone-clad columns with the illuminated lattice ceiling",
+     "approxSizeM": [
+      14.5,
+      8.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568",
+     "how": "3.2 m recess with dark glass back, soffit, a glass ceiling plane and two stone cylinders"
+    },
+    {
+     "id": "kalverpassage-sign",
+     "kind": "lettering",
+     "where": "vertical KALVERPASSAGE board in the gap between the blocks",
+     "approxSizeM": [
+      0.8,
+      8.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568",
+     "how": "dark board with raised white letters turned 90 degrees"
+    },
+    {
+     "id": "balconies",
+     "kind": "balcony-ironwork",
+     "where": "balconies with glass parapets at 8.7 m",
+     "approxSizeM": [
+      5.3,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568",
+     "how": "stone slab and glass parapet"
+    },
+    {
+     "id": "deep-windows",
+     "kind": "window-shape",
+     "where": "deep-set windows in the grey-brown brick, white sills",
+     "approxSizeM": [
+      1.15,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568",
+     "how": "glass, jambs and head 0.3 m proud"
+    },
+    {
+     "id": "shop-banner",
+     "kind": "sign",
+     "where": "ART OF THE BRICK banner",
+     "approxSizeM": [
+      4.7,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568",
+     "skip": {
+      "reason": "temporary",
+      "note": "exhibition banner"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-190",
+   "bearing": 190,
+   "lengthM": 19.3,
+   "centre": [
+    4.8915745,
+    52.367164
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000217",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "attic-crown",
+     "kind": "dome",
+     "where": "semicircular glazed attic on the stone block with dark shallow cap; its eaves read as an arc from the Singel and the Munt",
+     "approxSizeM": [
+      26,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001353",
+     "how": "attic(): 20-segment glazed band with posts on a 13 m radius half circle, cone cap to a flat top at 20.9 m, fascia; plan radius inferred from the 3DBAG roof outline"
+    },
+    {
+     "id": "french-windows",
+     "kind": "balcony-ironwork",
+     "where": "French windows with glass balustrades on storeys 2 and 3",
+     "approxSizeM": [
+      1.6,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001355",
+     "how": "glass, dark frames, glass panel and rail"
+    },
+    {
+     "id": "deep-reveals",
+     "kind": "window-shape",
+     "where": "large first-floor windows in deep stone reveals",
+     "approxSizeM": [
+      1.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001355",
+     "how": "jambs and head 0.32 m proud of the glass"
+    },
+    {
+     "id": "string-courses",
+     "kind": "other",
+     "where": "projecting stone string courses at 9.5 and 13.5 m and the cornice",
+     "approxSizeM": [
+      26.8,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001355",
+     "how": "ledge strips and a cornice slab"
+    },
+    {
+     "id": "singel-entrance",
+     "kind": "window-shape",
+     "where": "tall Singel passage entrance with grille under the east group",
+     "approxSizeM": [
+      3.9,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001353",
+     "how": "dark slab with frame bars"
+    },
+    {
+     "id": "shopfront-sign",
+     "kind": "sign",
+     "where": "CALF & BLOOM restaurant fascia",
+     "approxSizeM": [
+      6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001355",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant fascia lettering"
+     }
+    },
+    {
+     "id": "awnings",
+     "kind": "canopy",
+     "where": "roller awnings over storey-3 windows",
+     "approxSizeM": [
+      1.5,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000217",
+     "skip": {
+      "reason": "temporary",
+      "note": "retractable awnings, out in one view only"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-192",
+   "bearing": 192,
+   "lengthM": 15,
+   "centre": [
+    4.8908135,
+    52.367256
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000212",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-gable",
+     "kind": "other",
+     "where": "west stepped gable, identical to the east gable, centred on the bay at t 7.2",
+     "approxSizeM": [
+      9.4,
+      8.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000212",
+     "how": "gable() at t 7.15"
+    },
+    {
+     "id": "garage-opening",
+     "kind": "window-shape",
+     "where": "wide ground opening (bicycle/garage entrance) under the gable with white jambs and cartouche",
+     "approxSizeM": [
+      6.4,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000212",
+     "how": "dark slab, white jambs and head, cartouche with segment top"
+    },
+    {
+     "id": "lamp",
+     "kind": "lamp",
+     "where": "street lamp on the quay in front",
+     "approxSizeM": [
+      0.5,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000212",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-45",
+   "bearing": 45,
+   "lengthM": 10.1,
+   "centre": [
+    4.891909,
+    52.367758
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000719",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "curtain-front",
+     "kind": "window-shape",
+     "where": "dark glass curtain front with grey spandrels over a dark stone shop storey",
+     "approxSizeM": [
+      8,
+      13
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001054_pano_0000_000719",
+     "how": "glass and spandrel bands with dark mullions; the bowed north corner is drawn flat"
+    }
+   ]
+  },
+  {
+   "tag": "w06-38",
+   "bearing": 38,
+   "lengthM": 7.5,
+   "centre": [
+    4.8924725,
+    52.3674165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_000567",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-pier",
+     "kind": "other",
+     "where": "pale stone corner pier between the two Kalverstraat faces",
+     "approxSizeM": [
+      0.6,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_000567",
+     "how": "stone slab"
+    }
+   ]
+  },
+  {
+   "tag": "w07-331",
+   "bearing": 331,
+   "lengthM": 4.5,
+   "centre": [
+    4.891056,
+    52.367743
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002932_pano_0003_000021",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "lattice-canopy",
+     "kind": "canopy",
+     "where": "diamond-lattice glass canopy over the Heiligeweg passage, about 6-12.6 m",
+     "approxSizeM": [
+      4.5,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002932_pano_0003_000021",
+     "how": "glass end screen with frame and crossed lattice bars; the passage roof strip in glass"
+    },
+    {
+     "id": "rasphuispoort",
+     "kind": "sculpture",
+     "where": "Rasphuispoort gate with figure group in front of the passage",
+     "approxSizeM": [
+      4,
+      9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002932_pano_0003_000021",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate installed model (rasphuispoort); this model keeps the mouth open below 6.4 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "tower",
+   "bearing": 0,
+   "lengthM": 18.3,
+   "centre": [
+    4.89147,
+    52.36741
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-001975_pano_0000_001349",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "no panorama sees the shaft; Wikipedia nl:Kalverpassage: 30 m glass tower in the middle with a cafe; 3DBAG 29-31 m",
+   "items": [
+    {
+     "id": "glass-tower",
+     "kind": "tower",
+     "where": "round glass tower in the centre of the block, 3DBAG 29-31 m",
+     "approxSizeM": [
+      18.3,
+      21
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001349",
+     "how": "tower(): glass cylinder r 9.2 m from 10 m, floor rings, 28 mullions, lighter cafe storey, ring cornice and dark shallow dome cap; shaft finish inferred from the cited text"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (per wall and item; extra views in artifacts/landmark-lanes/kalvertoren/views/index.json, e.g. TMX7316010203-001975_pano_0000_001353 and _001349 2021-01-22)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikipedia nl:Kalverpassage (Kalvertoren: Pi de Bruijn and George de Jong, 1995-97, 30 m glass tower)",
+   "url": "https://nl.wikipedia.org/wiki/Kalverpassage",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012165086",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165086",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012165086",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165086/",
+   "licence": "CC0"
+  }
+ ]
+}
