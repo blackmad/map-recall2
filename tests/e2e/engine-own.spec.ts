@@ -29,6 +29,23 @@ async function countMapLibre(page: Page): Promise<void> {
   });
 }
 
+/**
+ * Hold forward for `ms`, as a player would. Street following (the default) stops at a T-junction until a side is
+ * chosen (streetFollow.ts); the iPhone spawn faces one, so that rider stood still (moved 0.002) and the iPhone numbers
+ * were of a parked frame. Holding a side there, as with the phone's turn button, pivots onto that street and goes; a
+ * tap only queues the turn and the rider still waits at speed 0.
+ */
+async function ride(page: Page, ms: number): Promise<void> {
+  await page.keyboard.down('ArrowUp');
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    const p = await page.evaluate(() => { const p = (window as any).canalRecallGame.player; return { w: !!p?.streetFollowView?.awaitingChoice, q: p?.streetFollowView?.queuedTurn ?? 0, v: p.speed }; });
+    if (p.w || (p.q && Math.abs(p.v) < 1)) { await page.keyboard.down('ArrowRight'); await page.waitForTimeout(1200); await page.keyboard.up('ArrowRight'); }
+    await page.waitForTimeout(250);
+  }
+  await page.keyboard.up('ArrowUp');
+}
+
 test('?engine=own rides with three.js owning the frame; maplibregl.Map is never constructed', async ({ page }) => {
   test.setTimeout(180_000);
   const errors: string[] = [];
@@ -47,9 +64,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   });
   expect(view).toEqual({ engine: 'own', hasCamera: true, canvas: true });
   // Ride: hold forward for a few seconds.
-  await page.keyboard.down('ArrowUp');
-  await page.waitForTimeout(6000);
-  await page.keyboard.up('ArrowUp');
+  await ride(page, 6000);
   await expect.poll(() => page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     return !!vm.status.booted && !!vm._ownGround?.ready;
@@ -68,6 +83,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
       zoom: vm.camera.zoom(), pitch: vm.camera.pitch(),
       water: vm.status.overview,
       moved: Math.hypot(game.player.x - game.track.startPoint?.x || 0, game.player.y - game.track.startPoint?.y || 0),
+      heapMB: Math.round(((performance as any).memory?.usedJSHeapSize ?? 0) / 1e5) / 10,
       facades: !!vm._threeBuildings?.ready,
       hoodLines: vm._lines.hoods.lineCount, cycleLines: vm._lines.cycle.lineCount,
       labels: vm._labels.placed.map((l: any) => l.text),
@@ -82,6 +98,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   await page.screenshot({ path: test.info().outputPath('engine-own-chase.png') });
   expect(stats.maplibreMaps).toBe(0);
   expect(stats.frames).toBeGreaterThan(30);
+  expect(stats.moved, 'the rider rode (not a parked frame)').toBeGreaterThan(50);
   expect(stats.failed).toEqual([]);
   expect(stats.landmarks).not.toBeNull();
   expect(stats.trees).not.toBeNull();
