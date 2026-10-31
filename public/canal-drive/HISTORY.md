@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Three reds on main were checks that fell behind the game (2026-10-31, #144).**
+None was a player-visible regression. `bike-xray.spec.ts` broke at 3342e6b3c
+(own ground on by default, 2026-10-14): in the shared frame the bike draws
+in the frame's overlay pass through `shared-frame-overlay`, not as the
+MapLibre layer `player-bike-3d`, so the layer-order lookup returned −1; the
+spec now reads the shared-frame registry and asserts the bike is in the
+overlay pass, that only `player-*-3d` share it, and that the overlay layer
+follows every building/facade/roof layer (the old check stays for
+`?sharedFrame=0`). `complete-city.spec.ts` broke at 6ae8f702c (tile flush
+time-sliced, 2026-10-16): `status()` recounts only after a flush, so the
+spec read `contextualFeatures` 0 of 2,913 a few frames too early (15,959 of
+16,049 after the first flush: the citywide prior was applied all along); it
+now waits for `_completeCityHasBuildings` and `_streamedCityDrawn`, and
+rebuilds the expected roof filter through `coloredBuildingLayerFilter`.
+`check-building-look-transition.ts` broke at 6370811e7 (chunk installs split
+across frames, 2026-10-16): worker replies go to a staging queue and chunks
+carry `THREE.Sphere`; the check drains `drainStaged()` after each reply and
+its stub gained `Sphere`, `Vector4`, `Matrix3`, `ShaderMaterial` for the
+city-look default. No bound, skip or allowlist changed. Left to #131 (now
+fixed): the sun-heading measurement.
+
 **Railway tracks read as rails from the chase camera (2026-10-31, #145).** The user
 filed three in-game reports on 2026-10-30 evening, hours after `rail-v1`
 shipped ("train tracks buried by surface" at Piet Heinkade east, "more bad

@@ -143,7 +143,8 @@ shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
 (`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
 `SHARED_FRAME_DEFAULT`; **merged 2026-10-31**, HISTORY "P0 deletions"; the
 legacy `_makeLayer` branches table in that entry is L1 step 6's list), #144 reds triage (`lane-reds-triage-20261030.md`,
-4535: bike-xray, complete-city, check-building-look-transition), #145 rail
+4535: bike-xray, complete-city, check-building-look-transition; **merged
+2026-10-31**), #145 rail
 look (`lane-rail-look-20261030.md`, 4537; **merged 2026-10-31**, HISTORY "Railway
 tracks read as rails") from the user's three in-game
 reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
@@ -262,20 +263,11 @@ per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
 and the second own-ground worker can go, then road CSR (step 5).
-**Reds on main found by the programme's runs (2026-10-30), not yet owned:**
-`tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
-draws after every building layer: expected > 128, got −1);
-`tests/e2e/complete-city.spec.ts` "the streamed city loads …"
-(contextualFeatures 0, want > 50 % of features: the citywide display prior is
-not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
-throws (`test:city-startup`). The `sun-heading` desktop red of 2026-10-30
-(bike lit-half at nieuw-west-slab) was the spec's own measurement: the road
-guard turned the parked bike after each teleport and stray flicker pixels
-moved the mask midpoint; fixed 2026-10-31 (L8, pose pinned at both grabs,
-mask keeps pixels with ≥ 4 changed neighbours, threshold and sign check
-unchanged), 3/3 variants green; settle timeouts at load > 12 remain machine
-load. CI runs only lint and the boot smoke, so none of
-these block a push. Triage lane wanted: are they product-visible?
+**Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
+(#144, HISTORY "Three reds on main were checks that fell behind the game";
+#131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs
+35 > 32 under `ENGINE=own` (landmark materials, see L1 state). CI runs only
+lint and the boot smoke, so no e2e red blocks a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
