@@ -12,7 +12,7 @@
 // (the brief's "walls only" variant would lose towers, spires and gables).
 // Positions are quantised to normalised int16 over the model's largest half
 // extent (2.3 mm steps on a 150 m model, far below a shadow texel) to keep the
-// copy small: 6 bytes a vertex plus the index.
+// copy small: 6 bytes a vertex plus the index, vertices welded on that grid.
 //
 // Kept casting as they were (never merged): instanced, skinned and morphed
 // meshes, multi-material meshes, and materials whose shadow is not a plain
@@ -125,33 +125,48 @@ export function buildShadowStandIn(THREE: any, root: any): ShadowStandIn | null 
     const centre = [(min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2];
     const half = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2], 1e-6) / 2;
     const q = 32767 / half;
-    const positions = new Int16Array(vertexCount * 3);
-    const index = vertexCount > 65535 ? new Uint32Array(indexCount) : new Uint16Array(indexCount);
-    let vo = 0, io = 0;
+    // Weld on the quantised position: GLB vertices are split by normal and uv, the depth pass needs neither
+    // (a flat-shaded box's 24 corners are 8). Key: three 16-bit fields in one exact double.
+    const welded = new Map<number, number>();
+    const quantised = new Int16Array(vertexCount * 3);
+    const remap = new Uint32Array(vertexCount);
+    const index = new Uint32Array(indexCount);
+    let vo = 0, unique = 0, io = 0;
     for (const { mesh, matrix } of parts) {
       const geometry = mesh.geometry, position = geometry.attributes.position;
       // A mirrored part turns its triangles inside out: swap two corners to keep the cast side.
       const flip = matrix.determinant() < 0;
       for (let i = 0; i < position.count; i++) {
         v.fromBufferAttribute(position, i).applyMatrix4(matrix);
-        positions[(vo + i) * 3] = Math.round((v.x - centre[0]) * q);
-        positions[(vo + i) * 3 + 1] = Math.round((v.y - centre[1]) * q);
-        positions[(vo + i) * 3 + 2] = Math.round((v.z - centre[2]) * q);
+        const x = Math.round((v.x - centre[0]) * q), y = Math.round((v.y - centre[1]) * q), z = Math.round((v.z - centre[2]) * q);
+        const key = ((x + 32768) * 65536 + (y + 32768)) * 65536 + (z + 32768);
+        let at = welded.get(key);
+        if (at === undefined) {
+          at = unique++;
+          welded.set(key, at);
+          quantised[at * 3] = x; quantised[at * 3 + 1] = y; quantised[at * 3 + 2] = z;
+        }
+        remap[vo + i] = at;
       }
       const source = geometry.index ? geometry.index.array : null;
       const count = source ? source.length : position.count;
       for (let i = 0; i + 2 < count; i += 3) {
-        const a = source ? source[i] : i, b = source ? source[i + 1] : i + 1, c = source ? source[i + 2] : i + 2;
-        index[io++] = vo + a; index[io++] = vo + (flip ? c : b); index[io++] = vo + (flip ? b : c);
+        const a = remap[vo + (source ? source[i] : i)], b = remap[vo + (source ? source[i + 1] : i + 1)], c = remap[vo + (source ? source[i + 2] : i + 2)];
+        // Welding can collapse a sliver to a line or point: it casts nothing, drop it.
+        if (a === b || b === c || a === c) continue;
+        index[io++] = a; index[io++] = flip ? c : b; index[io++] = flip ? b : c;
       }
       vo += position.count;
       mesh.castShadow = false;
       mesh.userData[SHADOW_STAND_IN_SOURCE] = true;
       sources.push(mesh);
     }
+    if (!io) continue;
+    const positions = quantised.slice(0, unique * 3);
+    const indices = unique > 65535 ? index.slice(0, io) : Uint16Array.from(index.subarray(0, io));
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3, true));
-    geometry.setIndex(new THREE.BufferAttribute(index.subarray(0, io), 1));
+    geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     geometry.computeBoundingSphere();
     geometry.computeBoundingBox();
     // The CPU copies are not needed once uploaded.
@@ -167,7 +182,7 @@ export function buildShadowStandIn(THREE: any, root: any): ShadowStandIn | null 
     mesh.raycast = () => {};
     object.add(mesh);
     triangles += io / 3;
-    bytes += positions.byteLength + io * index.BYTES_PER_ELEMENT;
+    bytes += positions.byteLength + indices.byteLength;
   }
   return object.children.length ? { object, sources, triangles, bytes } : null;
 }

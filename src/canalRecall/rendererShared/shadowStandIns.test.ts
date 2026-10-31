@@ -87,6 +87,8 @@ test('the stand-in casts the same triangles, one mesh per shadow side, and the s
   for (const mesh of standIn.sources) { assert.equal(mesh.castShadow, false); assert.equal(mesh.userData[SHADOW_STAND_IN_SOURCE], true); }
   assert.equal(cutout.castShadow, true, 'alpha-tested part still casts itself');
   assert.equal(standIn.triangles, 36);
+  // Welded: each box's 24 split corners are its 8 positions.
+  assert.deepEqual((standIn.object.children as THREE.Mesh[]).map(m => m.geometry.attributes.position.count).sort(), [16, 8].sort());
   for (const mesh of standIn.object.children as THREE.Mesh[]) {
     assert.equal(mesh.layers.mask, 1 << SHADOW_ONLY_LAYER);
     assert.ok((mesh.geometry.attributes.position.array as unknown) instanceof Int16Array);
