@@ -60,6 +60,16 @@ while (queue.length > 0) {
   }
 }
 
+// --imports-only: run the walk (index.html scripts, relative imports, the
+// outside-the-site check) against the checked-in site and stop before the
+// source-map copy. `npm run check:site-imports` runs it in check:canal so a
+// JSDoc `import("../../../src/...")` cannot break the deploy again
+// (2026-10-30/31: every Firebase deploy failed on vector-map.js for a day).
+if (process.argv.includes('--imports-only')) {
+  console.log(`Site imports ok: ${collected.size} ride scripts reachable from index.html, none import outside ${path.relative(root, source)}`);
+  process.exit(0);
+}
+
 const missingMaps = [];
 const skipped = [];
 let maps = 0;
