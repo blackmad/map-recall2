@@ -117,3 +117,32 @@ read 0.4–0.6 for both types.
   from 0.05 to 0.55 on measurement alone.
 - Add the kit components the photos need.
 - Review the run sheets at gallery size for false positives that pass the gate.
+
+## Transvaalbuurt lessons (2026-10-31, #149)
+
+The first Oud-Oost buurt showed three things the Bellamy recipe got wrong.
+
+1. **A "0 placed" number is not a result.** Auto-place vetoes on build year (±2) and frontage
+   (±0.4 m) before it compares a single photo. In Transvaalbuurt 695 of 769 intaked pands were
+   vetoed that way and only ~20 were ever compared with the strip. Every hand-back must split the
+   outcome into *vetoed before comparison*, *compared and held*, and *placed*, and must show the
+   strips grouped by build-year family. The user looked at the strips and saw at once that the
+   buurt is five repeated designs; the lane's report read as if nothing repeated.
+2. **In interwar buurten a pand is a stair block, not a house.** One design spans pand widths of
+   7–17 m (Schalk Burgerstraat 2–140 is the same 1923 portiek design as the installed Albert
+   Luthulistraat row and was refused on width alone). The frontage veto must not apply to portiek
+   types; veto on bay rhythm and storey count instead (round 2 lane).
+3. **Cluster first, then author, then auto-place.** Running auto-place against a library from
+   another buurt is only a null measurement. The productive order is: survey with intake, group the
+   faces by build-year family (the survey's `builtYear` mode per face; a family of 8 or more
+   faces is a type), look at three strips per family, author one measured type per family, and
+   only then auto-place. Transvaalbuurt families: 1908–1914 five-storey rows (274 pands, 37
+   faces), 1920–1922 three-storey rows (129, 28), 1921–1925 portiek blocks (64, 11; the installed
+   design), 1926–1928 band-window rows (50, 8), 1929–1931 blocks with round corner towers (120, 22).
+4. **Split proposed faces at bends.** The survey's proposed faces ran past the 11-degree bend the
+   chunk tolerates, so the exemplar face failed intake until `buurtFaces.ts` split faces where the
+   frontage bends. Expect this on any buurt with curved streets or squares.
+5. **Strips are the lane's evidence; carry them forward.** `staging/block-face/<face>/strip.jpg` is
+   untracked and a buurt-wide auto-place run deletes the run-face staging dirs. Copy the strips
+   into the next lane's worktree and archive the exemplar strips in `map-recall2-source-data`
+   `block-face-strips/<face>/` at integration.

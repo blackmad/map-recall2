@@ -18,6 +18,11 @@ decade is 1880–1930.
 
 ## Per buurt
 
+Read "Transvaalbuurt lessons" in `docs/buurt-generator-20261016.md` first: cluster the intaked
+faces by build-year family before any auto-place run, treat a pand as a stair block in interwar
+buurten (no frontage veto on portiek types), and report outcomes split into vetoed-before-
+comparison / compared-and-held / placed, with the strips grouped by family.
+
 **Haiku:** survey with `--intake`; auto-place with the nearest district
 library and `--review`; calibrate; report placed / held counts per face and
 the faces that place nothing, with their strips.
