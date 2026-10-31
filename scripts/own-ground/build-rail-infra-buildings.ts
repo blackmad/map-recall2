@@ -130,6 +130,20 @@ async function main(): Promise<void> {
       table.canopies[id] = pieces.filter(p => ringArea(p[0]) >= 8).map(p => ({ ring: p[0].slice(0, -1).map(([x, y]) => fromLocal(x, y).map(q => +q.toFixed(7)) as Vec2) }));
     }
   }
+  // Row coherence: a viaduct pand touching (ROW_TOUCH_M) a building kept under the same tracks (an arch in use) is one
+  // more arch of that row and stays a building (the Westerpark viaduct's arches: dropping the empty ones left holes).
+  const ringsOf = new Map(pending.map(q => [q.id, q.rings]));
+  const keptUnder = new Set(report.filter(r => !r.kind && /^in use/.test(r.why)).map(r => r.id));
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const r of report) {
+      if (r.kind !== 'viaduct' || /platforms/.test(r.why)) continue;
+      const mine = ringsOf.get(r.id)!;
+      const touch = [...keptUnder].find(k => ringsTouch(mine, ringsOf.get(k)!, ROW_TOUCH_M));
+      if (!touch) continue;
+      r.kind = null; r.why = `an arch in a row with ${touch} (in use)`; delete table.ids[r.id]; keptUnder.add(r.id); changed = true;
+    }
+  }
   mkdirSync(OUT, { recursive: true });
   writeFileSync(join(OUT, RAIL_INFRA_FILE), JSON.stringify(table));
   const counts = { candidates, viaduct: report.filter(r => r.kind === 'viaduct').length, canopy: report.filter(r => r.kind === 'canopy').length, kept: report.filter(r => !r.kind).length, canopyPieces: Object.values(table.canopies).reduce((n, p) => n + p.length, 0), unknownUse, tracks: tracks.length, platforms: platforms.length };
@@ -153,6 +167,13 @@ async function osmTagsOf(ids: string[]): Promise<Map<string, Record<string, stri
   return out;
 }
 const unopl = (s: string) => s.replace(/%([0-9a-f]+)%/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)));
+
+const ROW_TOUCH_M = 1.5;
+/** Do two outlines come within `d` metres (a vertex of one near an edge of the other)? */
+function ringsTouch(a: Vec2[][], b: Vec2[][], d: number): boolean {
+  const near = (p: Vec2, r: Vec2[]) => r.some((q, i) => { const n = r[(i + 1) % r.length], dx = n[0] - q[0], dy = n[1] - q[1], l2 = dx * dx + dy * dy, t = l2 > 0 ? Math.max(0, Math.min(1, ((p[0] - q[0]) * dx + (p[1] - q[1]) * dy) / l2)) : 0; return Math.hypot(q[0] + dx * t - p[0], q[1] + dy * t - p[1]) <= d; });
+  return a.some(ra => b.some(rb => ra.some(p => near(p, rb)) || rb.some(p => near(p, ra))));
+}
 
 function ringArea(r: readonly number[][]): number {
   let a = 0;

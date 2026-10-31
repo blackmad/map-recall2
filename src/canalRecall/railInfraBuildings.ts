@@ -45,6 +45,7 @@ export const FLOAT_M = 2.5;
 export const COVER_VIADUCT = 0.7;
 export const COVER_CANOPY = 0.6;
 export const VIADUCT_MAX_M = 10;
+export const VIADUCT_MIN_M = 3;
 export const CANOPY_MAX_THICK_M = 3.5;
 /** Uses that mean people work or shop in the pand (BAG gebruiksdoel): such a pand keeps its building. */
 export const LIVE_USES: readonly string[] = ['winkelfunctie', 'kantoorfunctie', 'bijeenkomstfunctie', 'woonfunctie', 'onderwijsfunctie', 'gezondheidszorgfunctie', 'logiesfunctie', 'industriefunctie', 'sportfunctie'];
@@ -85,6 +86,8 @@ export function classifyRailInfra(c: InfraCandidate, s: InfraShares, use?: PandU
   // Mostly on platforms: the platform canopies, measured by 3DBAG from the street to their roof.
   if (s.platform >= PLATFORM_CANOPY.platform && s.cover >= PLATFORM_CANOPY.cover && c.height <= PLATFORM_CANOPY.maxM) return { kind: 'canopy', top: true, why: `standing, ${(s.platform * 100).toFixed(0)} % on platforms, roof at ${c.height} m` };
   if (c.height > VIADUCT_MAX_M) return { kind: null, why: `${c.height} m: taller than a viaduct (a station hall)` };
+  // Lower than any passage under a track: a hut, a tunnel's vent or stair head (a tunnel's track runs under it).
+  if (c.height < VIADUCT_MIN_M) return { kind: null, why: `${c.height} m: too low to stand under a track` };
   return { kind: 'viaduct', why: `${(s.cover * 100).toFixed(0)} % under track, ${c.height} m` };
 }
 
