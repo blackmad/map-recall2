@@ -647,19 +647,28 @@ export class SignatureLandmarks {
         }
         // Replaced by a street chunk while it was loading.
         if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
-        try { this._add(spec, gltf.scene, this.map, url, level); }
-        catch (error) {
-          this._failed.add(spec.id);
-          // Placement or the host callback can fail after insertion. Give the
-          // extrusion back before freeing its model so no hidden shell remains.
-          for (const entry of this._entries) if (entry.spec.id === spec.id) entry.holder?.parent?.remove(entry.holder);
-          this._entries = this._entries.filter(entry => entry.spec.id !== spec.id);
-          this.shown.delete(spec.id);
-          this._applySuppression();
-          this._disposeModel(gltf.scene, spec, url);
-          console.warn(`Signature model for ${spec.name} could not be placed; keeping the OSM extrusion.`, error);
-        }
-        finally { finish(); }
+        const place = () => {
+          try { this._add(spec, gltf.scene, this.map, url, level); }
+          catch (error) {
+            this._failed.add(spec.id);
+            // Placement or the host callback can fail after insertion. Give the
+            // extrusion back before freeing its model so no hidden shell remains.
+            for (const entry of this._entries) if (entry.spec.id === spec.id) entry.holder?.parent?.remove(entry.holder);
+            this._entries = this._entries.filter(entry => entry.spec.id !== spec.id);
+            this.shown.delete(spec.id);
+            this._applySuppression();
+            this._disposeModel(gltf.scene, spec, url);
+            console.warn(`Signature model for ${spec.name} could not be placed; keeping the OSM extrusion.`, error);
+          }
+          finally { finish(); }
+        };
+        // Compile its programs before it joins the scene (off the frame where the driver allows): a landmark
+        // that streams in mid-ride no longer links its shaders inside a draw.
+        this._precompile(gltf.scene).then(() => {
+          if (this._removed || generation !== this._generation) { this._disposeModel(gltf.scene, spec, url); return; }
+          if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
+          place();
+        });
       };
       const onError = error => {
         if (this._removed || generation !== this._generation) return;
@@ -676,6 +685,13 @@ export class SignatureLandmarks {
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
       } else loader.load(url, gltf => { const dressing = this._dress(gltf, spec); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
+  }
+
+  /** Shared frame: compile a decoded model's programs (as it will draw: receiving shadows) before it is placed. */
+  _precompile(scene) {
+    if (!this.sharedFrame?.compileAsync) return Promise.resolve();
+    this.sharedFrame.constructor.setShadows(scene, true, true);
+    return this.sharedFrame.compileAsync(scene);
   }
 
   /**
@@ -979,9 +995,14 @@ export class SignatureLandmarks {
     const done = () => { if (generation === this._generation) { entry.levelLoading = false; this._lodLoads--; } };
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
-      this._swapLevel(entry, this._shade(this._dressLevel(gltf, spec)).scene, level);
-      done();
-      this._updateLevels();
+      const scene = this._shade(this._dressLevel(gltf, spec)).scene;
+      // As for a first load: its programs compile before the swap, not inside the frame that shows it.
+      this._precompile(scene).then(() => {
+        if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(scene); done(); return; }
+        this._swapLevel(entry, scene, level);
+        done();
+        this._updateLevels();
+      });
     }, undefined, error => {
       // Keep what is drawn; never retry a level that will not load.
       entry.lodFailed = true; done();
@@ -1022,7 +1043,7 @@ export class SignatureLandmarks {
    */
   _attachShadowStandIn(entry) {
     if (entry.standIn) { entry.holder.remove(entry.standIn.object); entry.standIn = null; }
-    if (!this.sharedFrame || entry.spec.sharedModel || entry.spec.chunkPands) return;
+    if (!this.sharedFrame || this.sharedFrame.shadowStandIns === false || entry.spec.sharedModel || entry.spec.chunkPands) return;
     const imported = entry.imported;
     if (imported.userData.shadowStandIn === undefined) imported.userData.shadowStandIn = buildShadowStandIn(THREE, imported);
     const standIn = imported.userData.shadowStandIn;

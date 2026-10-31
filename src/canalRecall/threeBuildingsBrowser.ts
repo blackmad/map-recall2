@@ -1417,6 +1417,10 @@ export class ThreeBuildings {
     if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return;
     const fade = { value: 0 };
     const clone = source.clone();
+    // Material.copy does not carry `defines` (only ShaderMaterial's does), and three keys a program by them:
+    // without this the clone compiled a program of its own, freed when the last fade ended and linked again
+    // inside the frame of the next chunk's fade (2 of the iPhone ride's 4 in-frame links, lane D 2026-10-31).
+    if (source.defines) clone.defines = source.defines;
     clone.uniforms = { ...source.uniforms, cityFade: fade };
     clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
     clone.customProgramCacheKey = () => source.customProgramCacheKey();
