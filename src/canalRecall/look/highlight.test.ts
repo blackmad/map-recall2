@@ -379,3 +379,20 @@ test('outline passes of whole meshes leave their screen extent; merged chunks an
   assert.equal(reg.size, 0, 'a merged chunk\'s box is the tile, not the building');
   void SMALL_TARGET_UNLATCH_SHARE;
 });
+
+test('dim of a shader that reads hlDimAll (building-types merged) is a uniform: same source, defines and key', async () => {
+  const { mergedShaders } = await import('../buildingTypes/runtime.ts');
+  const shared = { enuFromWorld: { value: new THREE.Matrix3() }, t0: { value: null }, hlDimAll: { value: 0 } };
+  const base = new THREE.ShaderMaterial({ uniforms: shared, ...mergedShaders(1) });
+  const dim = highlightMaterialFor(THREE, base, 'dim', 'c');
+  assert.notEqual(dim, base);
+  assert.equal(dim.fragmentShader, base.fragmentShader);
+  assert.deepEqual(dim.defines, base.defines);
+  assert.equal(dim.customProgramCacheKey(), base.customProgramCacheKey());
+  assert.equal(dim.uniforms.hlDimAll.value, 1);
+  assert.equal(base.uniforms.hlDimAll.value, 0);
+  assert.equal(dim.uniforms.enuFromWorld, shared.enuFromWorld, 'the other uniforms stay shared');
+  // A shader without the uniform keeps the define (its own program).
+  const other = new THREE.ShaderMaterial({ uniforms: {}, vertexShader: 'void main(){}', fragmentShader: 'void main(){}' });
+  assert.equal(highlightMaterialFor(THREE, other, 'dim', 'c').defines.HL_DIM_ALL, '');
+});

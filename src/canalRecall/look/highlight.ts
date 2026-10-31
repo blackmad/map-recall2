@@ -679,6 +679,10 @@ export function highlightMaterialFor(THREE: any, material: any, state: 'plain' |
     // Recipe look: per-material tint uniform; shared textures and frame stay shared.
     out = material.clone();
     out.uniforms = { ...material.uniforms, tint: { value: desatVector(material.uniforms.tint.value.clone()) } };
+  } else if (material.isShaderMaterial && material.uniforms?.hlDimAll) {
+    // A shader that reads `hlDimAll` (building-types merged): the dim is a uniform, so the variant shares the program.
+    out = material.clone();
+    out.uniforms = { ...material.uniforms, hlDimAll: { value: 1 } };
   } else if (material.isShaderMaterial) {
     out = material.clone();
     out.uniforms = material.uniforms;
