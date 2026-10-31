@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**Tunnel cuts round 4 (2026-10-31).**
+- **Why the phone walls didn't show:** the chase camera sits high over the
+  quay, so the near wall shows only its top.
+- **Round 3 gutter:** it lay under the carriageway bands (0.02 m against
+  0.03 m), so it never showed.
+- **New in round 4:**
+  - a floor shade band along each wall foot (0.06 m up, 35 % of the wall
+    depth);
+  - a dark coping and cap;
+  - a stained face.
+- **Median merges:** gaps up to 20 m merge when their ground lies flat on
+  the floors, and draw as grass (IJ median north; `grassAt` check).
+- **Uncut approaches:** the 8 remaining sunken motor approaches were judged
+  from panoramas to need no cut. They are open courts or wide cuts with
+  banks, plus Stationsweg's wall-plus-bank outside the city. Michiel de
+  Ruijter west has no mouth because the station is the cover.
+- **Shot harness bug:** Playwright routes never reach the dedicated
+  own-ground worker, so every `BUNDLES_DIR` "after" shot before this showed
+  the checkout's own geometry. Round 3's phone verdict ("looks like round 2")
+  was taken from such shots, and the round-3 Piet Hein What's New image was
+  replaced with a valid one. The note is in the header of
+  `scripts/tunnel-places-shots.mjs`.
+
 **Street art, street articles and promoted landmarks (2026-10-31).** The
 four follow-ups of the building-article lane, in one pass.
 - *Street-side art is clickable from the ground.* `scripts/build-street-art.ts`
