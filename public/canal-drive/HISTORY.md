@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**Quality tiers from a startup probe; landmarks precompile before they join the scene; the facade shader has no cheap win left except resolution (2026-10-31, #129, materials lane round 4).**
+`renderGovernor.ts` gains `chooseTier`, `TIER_SETTINGS` and `TIER_FRAME_MS`:
+high = native DPR, 2048 shadow map, stand-ins on; mid = DPR 1.5, 1024
+shadows, touch facade detail; low = DPR 1, no shadows, no stand-ins. The
+governor steps the pixel ratio back up within the tier's cap (it only
+stepped down before). `tierProbe.ts` runs a ~1 s fixed probe at startup; the
+M4 Pro at DPR 2 takes 1.5 ms (high), SwiftShader 13–14 ms (low, flagged as a
+software renderer); the mid (> 8 ms) and low (> 25 ms) thresholds are not
+yet calibrated on real mid-class hardware. `?tier=low|mid|high` forces one;
+`__canalPerf` exposes tier, tierReasons, tierSettings and tierProbe.
+`weak-gpu-perf` runs on the own engine with tier variants; on SwiftShader
+every tier sits near 2 fps (low auto median 424 ms / p95 1,373; mid 158 /
+2,360; high 216 / 2,955), so the proxy shows no tier difference and no budget
+was raised. `SharedFrame.compileAsync(scene)` and a `shadowStandIns` flag;
+landmarks and their LODs precompile before placement: in-frame program links
+after warm-up iPhone 4 → 0, desktop 4 → 1–3. Facade shader A/B on the real
+GPU (change in GPU ms, Dam / Westerkerk): no discard +0.4 / +0.4, cell tier
+off +0.5 / +0.7, shadow receive off −0.4 / −1.1, anisotropy 1–8 within ±1,
+so the Apple hidden-surface-removal hypothesis is refuted and no shader
+change landed; the cost is the base fetch plus lighting over ~8 Mpx and the
+only lever is DPR (1.5: Dam 15.8 → 12.1 ms, Westerkerk 12.4 → 12.6). Pixel
+diff tier high vs pre-tier (governor off): Dam 891, Westerkerk 3,294, Paleis
+13,032 px, against 185k / 2,860 / 67 for the same build against itself (the
+animated pin and streaming differences), so not a clean 0 but inside the
+run-to-run noise. Decision kept: no DPR cap on machines that pass the probe
+at native resolution.
+
 **`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
 `SharedFrame.shaderErrors()` counts programs three.js failed to compile or
 link since the renderer attached, via `renderer.debug.onShaderError`

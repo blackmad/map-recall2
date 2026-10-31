@@ -1328,6 +1328,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ## P0 — Red, or actively teaching something false
 
+- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low
+  > 25 ms on the ~1 s probe come from one M4 Pro (1.5 ms) and SwiftShader
+  (13–14 ms); a real mid-class laptop and an Android phone have never run the
+  probe. Until they do, `?tier=` forcing and the Sentry graphics-failure
+  counts are the only check that nobody lands in the wrong tier. Also: on the
+  SwiftShader proxy every tier sits near 2 fps, so `weak-gpu-perf` cannot
+  show a tier difference (the proxy is too slow to be a mid-class stand-in).
+
 - **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
   localhost build "looks great". Root cause found: stale cached bundles (18
