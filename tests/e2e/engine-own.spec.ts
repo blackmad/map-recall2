@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
-const PROGRAMS_BUDGET: number = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries.programs.value;
+const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
+const PROGRAMS_BUDGET: number = BUDGETS.programs.value;
+const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
 // is the second world view. Three.js owns the canvas; MapLibre is never
@@ -101,8 +103,9 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
 });
 
 // The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera
-// (engine/cameraMap.ts EngineCamera) projects the same ground points to within 3.2 px.
-test('engine camera matches MapLibre within 3.2 px along the intro and a ride', async ({ page }) => {
+// (engine/cameraMap.ts EngineCamera) projects the same ground points to within the budget (tests/perf/budgets.json cameraParityPx).
+// Under `?engine=own` itself: engine-parity.spec.ts.
+test('engine camera matches MapLibre within the parity budget along the intro and a ride', async ({ page }) => {
   test.skip(process.env.ENGINE === 'own', 'the oracle is MapLibre: run without ENGINE=own');
   test.setTimeout(180_000);
   await openRoute(page, { viewMode: 'chase', enterRacing: false });
@@ -130,5 +133,5 @@ test('engine camera matches MapLibre within 3.2 px along the intro and a ride', 
   for (let i = 0; i < 10; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
   await page.keyboard.up('ArrowUp');
   console.log('parity (zoom, pitch, max px):', JSON.stringify(samples.map(s => s.map(v => Math.round(v * 100) / 100))));
-  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(3.2);
+  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(PARITY_PX);
 });
