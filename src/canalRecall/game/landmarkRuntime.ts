@@ -202,7 +202,8 @@ export class GameLandmarkRuntime {
     if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
     // A Wikipedia article about this very building (buildingArticles.ts):
     // an apartment ring or a church no landmark or POI layer ever claimed.
-    const article = this._buildingFacts?.article(building.id) ?? null;
+    // Older facts objects (and the click-selection check's fake) carry no article index.
+    const article = typeof this._buildingFacts?.article === 'function' ? this._buildingFacts.article(building.id) ?? null : null;
     const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     const mapped = this._clickPoiInfo?.card(building);
     if (mapped) {
