@@ -13,7 +13,7 @@
  * directory `<face>-r<k>` with the members' facts, uses and a cropped strip), and scripts/block-face/buurten/<buurt>-placement.json.
  */
 import fs from 'node:fs/promises';
-import {existsSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
@@ -321,6 +321,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const coveredByOther = !!coverIntent && !String(coverIntent.authoring?.author ?? '').startsWith('auto-place');
     if (coveredByOther || (only && !only.includes(f.id))) continue;
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
+    // A run face authored by hand from the library (Albert Luthulistraat 25-39, #149: authoring.author is not auto-place)
+    // is kept: re-placing the face would delete or overwrite it. Remove that run face to let auto-place own the face again.
+    const handRuns = (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && existsSync(path.join(FACES, d, 'intent.json')))
+      .filter(d => !/^auto-place/.test(JSON.parse(readFileSync(path.join(FACES, d, 'intent.json'), 'utf8')).authoring?.author ?? 'auto-place'));
+    if (handRuns.length) { console.log(`${f.id}: skipped, hand-authored run face ${handRuns.join(', ')}`); summary.push({face: f.id, status: `hand-authored ${handRuns.join(', ')}`}); continue; }
     const tf = performance.now();
     if (types !== library) console.log(`${f.id}: types pinned to ${types.map(t => t.id).join(', ')}`);
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);

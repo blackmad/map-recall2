@@ -1,0 +1,1779 @@
+{
+ "buurt": "transvaalbuurt-oost",
+ "library": "transvaalbuurt",
+ "generatedAt": "2026-10-31T17:35:16.833Z",
+ "seconds": 1.63,
+ "totals": {
+  "faces": 82,
+  "pands": 489,
+  "placed": 0
+ },
+ "faces": [
+  {
+   "face": "bikoplein-11-11",
+   "status": "no intake"
+  },
+  {
+   "face": "bikoplein-13-15",
+   "status": "no intake"
+  },
+  {
+   "face": "bikoplein-17-21",
+   "street": "Steve Bikoplein",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.57,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bikoplein-18-24",
+   "street": "Steve Bikoplein",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.96,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bikoplein-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "bikoplein-3-9",
+   "street": "Steve Bikoplein",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.16,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bikoplein-4-12",
+   "street": "Steve Bikoplein",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.19,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "burger-1-43",
+   "status": "no intake"
+  },
+  {
+   "face": "burger-45-131",
+   "street": "Schalk Burgerstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 2.49,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cilliers-12-42",
+   "status": "no intake"
+  },
+  {
+   "face": "cilliers-12-94",
+   "status": "no intake"
+  },
+  {
+   "face": "cilliers-2-8",
+   "street": "Cilliersstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.87,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cilliers-44-94",
+   "street": "Cilliersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.89,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cilliers-47-47",
+   "status": "no intake"
+  },
+  {
+   "face": "cilliers-7-105",
+   "street": "Cilliersstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.73,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "colenso-1-11",
+   "status": "no intake"
+  },
+  {
+   "face": "colenso-13-25",
+   "street": "Colensostraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.31,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "colenso-14-28",
+   "street": "Colensostraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.31,
+   "byType": {},
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "colenso-2-12",
+   "street": "Colensostraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.2,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cronj-1-17",
+   "street": "Cronjéstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.13,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 5,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "cronj-2-6",
+   "street": "Cronjéstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "cronj-8-12",
+   "street": "Cronjéstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.31,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hertzog-1-7",
+   "street": "Hertzogstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.95,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "ingogo-1-13",
+   "street": "Ingogostraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.37,
+   "byType": {},
+   "holds": {
+    "evidence": 4,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "ingogo-2-14",
+   "street": "Ingogostraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.95,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "krugerplein-15-19",
+   "street": "Krugerplein",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.63,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "krugerplein-21-23",
+   "street": "Krugerplein",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "linnaeus-104-114",
+   "street": "Linnaeusstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.7,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "linnaeus-48-86",
+   "street": "Linnaeusstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 3.34,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "linnaeus-88-90",
+   "status": "no intake"
+  },
+  {
+   "face": "linnaeus-92-102",
+   "street": "Linnaeusstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.81,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "magersfontein-4-42",
+   "street": "Magersfonteinstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.97,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "majuba-1-151",
+   "street": "Majubastraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 2.72,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "majuba-153-175",
+   "street": "Majubastraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.55,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "majuba-6-34",
+   "street": "Majubastraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 2.71,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "maritz-1-47",
+   "street": "Maritzstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.35,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "nek-1-17",
+   "status": "no intake"
+  },
+  {
+   "face": "nek-29-29",
+   "status": "no intake"
+  },
+  {
+   "face": "nek-30-30",
+   "status": "no intake"
+  },
+  {
+   "face": "nek-31-43",
+   "street": "Laing's Nekstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 2.34,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nek-34-56",
+   "street": "Laing's Nekstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 1.79,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nek-44-44",
+   "status": "no intake"
+  },
+  {
+   "face": "nek-49-61",
+   "street": "Laing's Nekstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.39,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nek-60-162",
+   "street": "Laing's Nekstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.58,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "paardekraal-1-15",
+   "street": "Paardekraalstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.74,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "paardekraal-2-16",
+   "street": "Paardekraalstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 1.8,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-1-33",
+   "street": "Pretoriusstraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 3.16,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-14-48",
+   "street": "Pretoriusstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 3.69,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-2-10",
+   "street": "Pretoriusstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.64,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-37-47",
+   "street": "Pretoriusstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.46,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-37-49",
+   "status": "no intake"
+  },
+  {
+   "face": "pretorius-49-49",
+   "status": "no intake"
+  },
+  {
+   "face": "pretorius-53-69",
+   "status": "no intake"
+  },
+  {
+   "face": "pretorius-54-68",
+   "street": "Pretoriusstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.21,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-71-95",
+   "street": "Pretoriusstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 2.91,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pretorius-72-120",
+   "street": "Pretoriusstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 3.03,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-194-268",
+   "street": "Retiefstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 1.8,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-2-28",
+   "street": "Retiefstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 3.06,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-272-292",
+   "street": "Retiefstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.64,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-3-41",
+   "street": "Retiefstraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 3.44,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "retief-83-105",
+   "street": "Retiefstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 1.98,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "smit-12-18",
+   "street": "Smitstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.71,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "smit-15-19",
+   "street": "Smitstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.61,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "smit-24-30",
+   "street": "Smitstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.83,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "smit-27-53",
+   "street": "Smitstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.85,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "smit-34-40",
+   "street": "Smitstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.58,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "spitskop-1-37",
+   "street": "Spitskopstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.72,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "spitskop-4-8",
+   "street": "Spitskopstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.11,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-106-140",
+   "street": "Transvaalstraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 3.42,
+   "byType": {},
+   "holds": {
+    "evidence": 4,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-125-129",
+   "street": "Transvaalstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.28,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-131-143",
+   "street": "Transvaalstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-3-47",
+   "street": "Transvaalstraat",
+   "pands": 17,
+   "placed": 0,
+   "held": 17,
+   "runs": [],
+   "seconds": 3.52,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 17,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-3-63",
+   "street": "Transvaalstraat",
+   "pands": 17,
+   "placed": 0,
+   "held": 17,
+   "runs": [],
+   "seconds": 3.12,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 17,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-4-36",
+   "street": "Transvaalstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 1.45,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-42-48",
+   "street": "Transvaalstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.77,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-49-63",
+   "street": "Transvaalstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.17,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-50-70",
+   "street": "Transvaalstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.52,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-65-93",
+   "street": "Transvaalstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 1.8,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-74-104",
+   "street": "Transvaalstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 2.07,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaal-97-113",
+   "street": "Transvaalstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 0.61,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-10-10",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-11-11",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-12-12",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-13-13",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-14-14",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-15-15",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-16-16",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-18-18",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-19-19",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-2-2",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.33,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-20-20",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-21-21",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-22-22",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-23-23",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-24-24",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-25-25",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-26-26",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-27-27",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-28-28",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-29-29",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-3-3",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.39,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-30-30",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-31-31",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-32-32",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-33-33",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-34-34",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-35-35",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-36-36",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-37-37",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-4-4",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.21,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-41-41",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-42-42",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-43-43",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-44-44",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-45-45",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-46-46",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-47-47",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-48-48",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-49-49",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-5-5",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.22,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-50-50",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-51-53",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-54-56",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-57-59",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-6-6",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-61-61",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-62-62",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-63-63",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-64-64",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-65-65",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-66-66",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-67-67",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-68-68",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-69-69",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-7-7",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.2,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-70-70",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-71-71",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-72-72",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-73-73",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-74-74",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-75-75",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-76-76",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-79-79",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-8-8",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.22,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-80-80",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-81-81",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-82-82",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-83-83",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalkade-9-9",
+   "street": "Transvaalkade",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalkade-9-9-167393",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalplein-1-3",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalplein-10-14",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalplein-15-17",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalplein-18-22",
+   "street": "Transvaalplein",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.21,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalplein-23-25",
+   "street": "Transvaalplein",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.11,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalplein-26-28",
+   "street": "Transvaalplein",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.06,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalplein-29-37",
+   "street": "Transvaalplein",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalplein-4-6",
+   "street": "Transvaalplein",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.06,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "transvaalplein-7-8",
+   "status": "no intake"
+  },
+  {
+   "face": "transvaalplein-9-9",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-18-18",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-19-31",
+   "street": "Tugelaweg",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 3.36,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "tugelaweg-2-16",
+   "street": "Tugelaweg",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.42,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "tugelaweg-41-49",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-50-53",
+   "street": "Tugelaweg",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 1.62,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "tugelaweg-53-59",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-59-59",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-60-60",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-61-61",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-62-62",
+   "status": "no intake"
+  },
+  {
+   "face": "tugelaweg-63-65",
+   "street": "Tugelaweg",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.52,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}
