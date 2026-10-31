@@ -197,6 +197,9 @@ export class CameraMap {
   /** Pending fetches / builds the view is waiting on (participants report through `busy`). */
   private busyCount = 0;
   private readonly idleWaiters: Array<() => void> = [];
+  /** Named "still loading" checks (the own view's overview, ground, facades, landmarks); idle waits for all of them. */
+  private readonly idleChecks = new Map<string, () => boolean>();
+  private idlePoll: ReturnType<typeof setTimeout> | null = null;
 
   constructor(readonly host: FrameHost, options: MapCameraOptions = {}) {
     this.camera = new EngineCamera(() => host.viewport(), options);
@@ -306,8 +309,24 @@ export class CameraMap {
   whenIdle(): Promise<void> {
     return new Promise(resolve => { this.idleWaiters.push(resolve); this.host.triggerRepaint(); });
   }
+  /** Register a named check that answers true while its work is still loading; `whenIdle` waits for every one. */
+  addIdleCheck(name: string, busy: () => boolean): () => void {
+    this.idleChecks.set(name, busy);
+    return () => { this.idleChecks.delete(name); };
+  }
+  /** What the view is still waiting on: the counted `busy` work and every named check that is busy. */
+  pendingWork(): string[] {
+    const out = this.busyCount ? [`busy×${this.busyCount}`] : [];
+    for (const [name, busy] of this.idleChecks) { try { if (busy()) out.push(name); } catch (_) { /* a broken check never holds the view */ } }
+    return out;
+  }
   private checkIdle(): void {
-    if (this.busyCount || !this.idleWaiters.length) return;
+    if (!this.idleWaiters.length) return;
+    if (this.pendingWork().length) {
+      // Loading finishes off-frame (fetches, workers): look again shortly rather than rendering continuously.
+      if (!this.idlePoll) this.idlePoll = setTimeout(() => { this.idlePoll = null; this.host.triggerRepaint(); }, 100);
+      return;
+    }
     const waiters = this.idleWaiters.splice(0);
     this.host.fire('idle');
     for (const resolve of waiters) resolve();

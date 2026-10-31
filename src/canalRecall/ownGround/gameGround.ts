@@ -485,6 +485,9 @@ export class OwnGround {
    * (the engine overview, engine/overviewLayer.ts) cannot show there. Sampled every 250 m (cells are ~1 km). False
    * while the ground is hidden at this zoom or a cell has no data.
    */
+  /** Cells asked for and not yet installed; 0 when the ground has caught up with the view or is not drawn at this zoom. */
+  get loadingCells(): number { return this.visibleAtZoom(this.zoom) ? this.pending.size + this.installQueue.length : 0; }
+
   coversRect(x0: number, y0: number, x1: number, y1: number): boolean {
     if (!this.ready || !this.visibleAtZoom(this.zoom) || !this.resident.size) return false;
     const step = 250, nx = Math.max(1, Math.ceil((x1 - x0) / step)), ny = Math.max(1, Math.ceil((y1 - y0) / step));

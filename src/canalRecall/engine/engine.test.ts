@@ -251,6 +251,38 @@ test('overview v2 layers: landuse, piers and rail add meshes on the shared flat 
   assert.ok(tunnel && tunnel.material.uniforms.uOpacity.value < 0.5, 'tunnels faint');
 });
 
+test('settled: whenIdle waits for every named loader check, polling while work finishes off-frame', async () => {
+  const { CameraMap } = await import('./cameraMap');
+  const { settlePending } = await import('./settle');
+  const listeners: Record<string, Array<() => void>> = {};
+  let repaints = 0;
+  const host: any = {
+    viewport: () => ({ width: 800, height: 600 }),
+    on: (t: string, l: () => void) => { (listeners[t] ??= []).push(l); },
+    off() {}, once() {}, fire() {},
+    triggerRepaint: () => { repaints++; queueMicrotask(() => listeners.render?.forEach(l => l())); },
+  };
+  const cm = new CameraMap(host, {});
+  let tiles = 2;
+  cm.addIdleCheck('facades', () => tiles > 0);
+  let settled = false;
+  const done = cm.whenIdle().then(() => { settled = true; });
+  await new Promise(r => setTimeout(r, 250));
+  assert.equal(settled, false, 'held while the facades load');
+  assert.deepEqual(cm.pendingWork(), ['facades']);
+  assert.ok(repaints < 10, `polls, not a render loop (${repaints} repaints)`);
+  tiles = 0;
+  await done;
+  assert.equal(settled, true);
+  assert.deepEqual(cm.pendingWork(), []);
+  // The own view's checks: a loader that failed or never started is not waited on.
+  let covered = false;
+  const view: any = { camera: { center: () => ({ lng: 4.9, lat: 52.37 }) }, _overview: null, status: { failed: ['overview: 404'] }, _ownGround: { ready: true, loadingCells: 3, coversRect: () => covered }, _threeBuildings: null, _completeCity: { status: () => ({ inFlight: 0, queued: 1 }) }, _signatureLandmarks: { _pending: { size: 0 } } };
+  assert.deepEqual(settlePending(view), ['ownGround', 'buildingTiles']);
+  covered = true;
+  assert.deepEqual(settlePending(view), ['buildingTiles'], 'the cells round the view are in: the ring edge does not hold the view');
+});
+
 test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animals.js), getWest… (park-landscape.js)', async () => {
   const { boundsObject } = await import('./cameraMap');
   const b = boundsObject({ west: 4.910, south: 52.362, east: 4.920, north: 52.369 });
