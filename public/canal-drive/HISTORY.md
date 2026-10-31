@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Bridge kit: swing bridges and steel lattice portals (2026-10-31).**
+- A `'swing'` bascule style (`SWING` table): the deck turns as one leaf on a
+  pivot drum, midstream or at a named bank, with fender piles and masts where
+  the photo shows them. Applies to BRU2205, BRU2361 and BRU2270.
+- `TRUSS_SHAPE` gives a truss a parabolic top chord, plus overhead members on
+  a through truss.
+- `LATTICE_FRAME` draws portal posts, beams and cross girders as open
+  lattice: Oranjebrug, BRU0148, Westergasbrug, Peperbrug, Ezelsbrug,
+  Aluminiumbrug.
+- `SINGLE_LEAF` and `PORTAL_HEEL` give one portal where the footprint length
+  had drawn two (BRU0148, BRU0193).
+- New kit colours and a `BASCULE_TRIM` table (Ezelsbrug: red deck and rods).
+- Every other bridge's frame and deck body hashes identical to before. The 9
+  verdicts are in `sheet.ts` `BASCULE_NOTES`.
+
 **P0 deletions: study layers, Google photoreal tiles, the shared-frame flag (2026-10-31, #143).**
 The four study overlays (roofs, facades, trees, public realm: research
 layers nobody rode with, each a participant `vector-map.js` constructed and
