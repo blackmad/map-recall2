@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Pythonbrug's askable id follows its name again (2026-10-31, CI red after #147).**
+Askable bridge ids are `extract_bridges_<hash of the lowercased name>`
+(`askableBridges.ts bridgeFeatureId`), and `bridgeStreetName.test.ts` pins
+that every entry in `bridges.json` keeps the generator's id. The scripted
+street-name patch (#147) renamed the bridge from "Python Bridge" to
+"Pythonbrug" but left the old hash, so `check:canal` failed on main from
+b17520e53 to ea0f960a8 (`test:bridge-street-name`, one assertion). The id is
+now `extract_bridges_460091649` in `bridges.json`, `all.json`,
+`bridge-crossings.json`, the bridges sidecar and `facts-review.json`; a
+player's review history for that one bridge starts over. Lesson for the
+"extract refresh drift" item: a name-only patch must re-derive hashed ids, or
+the generator must run.
+
 **The road-graph build is 40 % faster with routes unchanged; time to ride 5.41 → 4.75 s, still over the 4 s gate (2026-10-31, #136, L4 step 5b).**
 `roadGraph.ts` keys quantised nodes and span-grid cells by number (string
 fallback beyond ±2^25), drops duplicate spans in `spansNear` with a per-span
@@ -51,6 +64,17 @@ merge order (fade → cut channel → tone → untextured), expected ride total
 engine-own` desktop green except the programs line; `no-maplibre` +
 `start-heading` default 11 passed; lint, 37 engine/ownMap unit tests,
 `check:site-imports`.
+
+**Rail decks level, beds never under the land (2026-10-31).** The three player notes on build 04e3c88 ("train
+tracks buried by surface", "more bad train tracks", "ooof, these rails look really bad") were fixed twice in parallel:
+#145 shipped 6 m pieces and a per-station edge lift; lane `rail-look-20261031` measured main after #145 and found the
+far LOD still buried (Club Panama 9.2 %, Oostertoegang 9.7 %) and the Oostertoegang decks still stepping 2.72 m at
+slope 0.675, because each bridge way rode the smeared relief at its own two ends (AHN has no ground under a deck).
+`railProfile.ts` solves track levels on the 3×3 cells' graph: linked bridge ways form one deck between their
+approaches, no track below the land allowed at its kind's steepest grade (tunnel boxes keep their floor), lifted
+approaches stand on slabs; a chord floor raises any piece that dips under land sampled every 2 m. After: buried ≤
+0.02 % at all three RAIL_SPOTS, deck step 0.15 m / slope 0.059. Rail triangles +1.0 % (LOD 0), +4.7 % (LOD 1);
+rail build ~10 → 21 ms per cell. The pins' "live" checks rebuild rail-v1 as shipped (`railLegacy`), not main.
 
 **The road graph is flat arrays (CSR) behind the same API (2026-10-31, #136, L4 step 5).**
 `src/canalRecall/routing/roadGraph.ts` stores nodes and edges as `Int32Array`
