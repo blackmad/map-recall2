@@ -28,3 +28,5 @@ export { PARTICIPANT_ORDER } from '../../../src/canalRecall/rendererShared/layer
 // accent, and the per-feature outline for 3DBAG detailed mode (detailed-buildings-source.js).
 export { HighlightMarker } from '../../../src/canalRecall/look/highlightMarker.ts';
 export { highlightStyle, highlightAccent, highlightFeature, detachHighlightPasses } from '../../../src/canalRecall/look/highlight.ts';
+// Screen <-> ground through the matrix MapLibre draws with: map.project ignores the deck lift (vector-map.js _drawn).
+export { drawnProjector } from '../../../src/canalRecall/rendererShared/drawnProjection.ts';

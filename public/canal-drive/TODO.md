@@ -224,12 +224,19 @@ longer rebuilds its shaders every frame"). L1 hand-back (4) merged 2026-10-31
 (HISTORY "`?engine=own` matches MapLibre's drawn camera to 2e-8 px"): camera
 parity gate (`engine-parity.spec.ts`, budget `cameraParityPx` 3.2), settle
 through the WorldView API with the `game-route.js` patch applied, bounds shim,
-Utrecht / Rotterdam / Den Haag own-map extracts published. Open from it: under
-the default engine anything placed or picked through `map.project` is off by
-up to 6 px while the rider's deck is lifted (maplibre-gl 5.24 builds that
-matrix before the lift); the iPhone engine-own ride barely moves (`moved`
-0.0017 m, needs touch input in the spec); `setActiveLandmark` runs every frame
-(L1). **Integrator next:** `CanalRecallUi.stepSteer`
+Utrecht / Rotterdam / Den Haag own-map extracts published. Hand-back (5) merged 2026-10-31 (HISTORY "Pins and picks follow the drawn
+camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
+(What's New "Pins sit on the bridge deck you see"), highlight dedupe, the
+iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
+P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
+in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
+Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
+shadows through one merged stand-in per level"): shadow draws ÷3, no visible
+change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
+:228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
+timeout), same with and without the fix. Phone players who tap a turn at a
+T-junction instead of holding it stay stopped (routing lane). **Integrator
+next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
 px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
@@ -315,8 +322,18 @@ remains: the landing animation (#150); the routing graph's 1.0–1.2 s wall for
 slices; holding the textures saves ~0.5 s but puts the first building tile
 > 300 ms after the rider, unsliced freezes the loading card ~0.5 s: decide
 with #150); then `fetchRoads` ~220, surface index ~150, segments ~100 ms. For
-remote players the 4.3 s `streets-routing.json` download at 20 Mbit/s is the
-lever (size, not parallelism). Also not met: the ≤ 4 MB bytes target.
+remote players the `streets-routing.json` download was the lever: **binary
+road extract merged 2026-10-31** (HISTORY "The road network ships as a compact
+binary extract"), `roads-v2/streets-routing.bin.gz` 1.47 MB gz vs 2.84 MB
+JSON, behind `?roads=bin` (JSON path unchanged; regenerate with
+`npx tsx scripts/roads/build-road-extract.ts` and copy from
+`artifacts/roads/staging/amsterdam/` whenever `streets-routing.json` changes);
+fetchRoads 231 → 97 ms localhost, 4,178 → 2,499 at 20 Mbit; submit → rider
+1,808 → 1,595 / 6,310 → 5,160. Make it the default once a few rides on the
+deployed site confirm the gzip-wrapped fetch and the fallback. Held: build-time
+quantise-and-stitch (needs a fixed projection centre, which changes routes).
+Next at 20 Mbit: `squares.json` and `transit-network.json` load serially inside
+`fetchRoads`. Also not met: the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). The `engine-own.spec.ts` programs red is gone 2026-10-31

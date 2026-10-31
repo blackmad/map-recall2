@@ -84,20 +84,33 @@ test('?engine=own camera matches MapLibre along the start flight and the Anne Fr
         const cx = vp[0] * X + vp[4] * Y + vp[12], cy = vp[1] * X + vp[5] * Y + vp[13], cw = vp[3] * X + vp[7] * Y + vp[15];
         return { x: (cx / cw + 1) / 2 * el.clientWidth, y: (1 - cy / cw) / 2 * el.clientHeight };
       };
-      let worst = 0, projectWorst = 0;
+      // The default engine's own camera surface (vector-map.js _drawn) must agree with the drawn frame too: it places
+      // the canvas pins and resolves taps. `unproject` must give the ground point back.
+      const facade = (window as any).canalRecallGame.vectorMap.camera;
+      let worst = 0, projectWorst = 0, facadeWorst = 0, facadeBackM = 0;
       for (const [lng, lat, x, y] of p.probes) {
         const q = drawn(lng, lat); worst = Math.max(worst, Math.hypot(q.x - x, q.y - y));
         const r = map.project([lng, lat]); projectWorst = Math.max(projectWorst, Math.hypot(r.x - x, r.y - y));
+        const f = facade.project([lng, lat]); facadeWorst = Math.max(facadeWorst, Math.hypot(f.x - q.x, f.y - q.y));
+        const b = facade.unproject([q.x, q.y]);
+        facadeBackM = Math.max(facadeBackM, Math.hypot((b.lng - lng) * 111320 * Math.cos(lat * Math.PI / 180), (b.lat - lat) * 110540));
       }
-      return { phase: p.phase, zoom: p.zoom, pitch: p.pitch, px: worst, size: '', elevation: p.elevation, projectPx: projectWorst };
+      return { phase: p.phase, zoom: p.zoom, pitch: p.pitch, px: worst, size: '', elevation: p.elevation, projectPx: projectWorst, facadePx: facadeWorst, facadeBackM };
     });
   }, poses);
   await oracle.close();
   const worst = (phase: Pose['phase']) => Math.max(...misfits.filter(m => m.phase === phase).map(m => m.px));
   console.log('engine parity', JSON.stringify({ budgetPx: PARITY_PX, samples: misfits.length, introMaxPx: worst('intro'), rideMaxPx: worst('ride'),
     projectMaxPx: Math.max(...misfits.map((m: any) => m.projectPx)),
+    facadeMaxPx: Math.max(...misfits.map((m: any) => m.facadePx)), facadeBackMaxM: Math.max(...misfits.map((m: any) => m.facadeBackM)),
+    liftedSamples: misfits.filter((m: any) => Math.abs(m.elevation) > 0.05).length,
     trace: misfits.map((m: any) => [m.phase[0], Math.round(m.zoom * 100) / 100, Math.round(m.pitch), Math.round(m.px * 100) / 100, Math.round(m.elevation * 100) / 100]) }));
   for (const m of misfits) expect(m.size, 'oracle viewport matches').toBe('');
   expect(worst('intro'), 'start flight').toBeLessThanOrEqual(PARITY_PX);
   expect(worst('ride'), 'Anne Frank → Rijksmuseum ride').toBeLessThanOrEqual(PARITY_PX);
+  // Regression (#129): MapLibre's map.project ignores the deck lift (up to 6 px off); vectorMap.camera must not.
+  for (const m of misfits as any[]) {
+    expect(m.facadePx, `default-engine camera.project on the drawn frame (elevation ${m.elevation})`).toBeLessThanOrEqual(0.05);
+    expect(m.facadeBackM, 'camera.unproject returns the ground point').toBeLessThanOrEqual(0.05);
+  }
 });

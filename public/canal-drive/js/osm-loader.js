@@ -17,6 +17,25 @@ class OSMLoader {
   // Load the curated Amsterdam waterways shipped with Map Recall. The return
   // shape intentionally matches Smokey's Overpass road loader so the original
   // game engine can remain unchanged.
+  // `?roads=bin`: read the street extract from the compiled binary
+  // (src/canalRecall/routing/roadExtract.ts, roads-v2/streets-routing.bin.gz)
+  // instead of the 14 MB JSON. It decodes to the same features, bit for bit, so everything after
+  // this point is unchanged. Any failure — no flag, no file for this city, a
+  // stale bundle, a damaged file — returns null and the JSON path runs.
+  async _fetchRoadExtract(city) {
+    if (new URLSearchParams(window.location.search).get('roads') !== 'bin') return null;
+    if (!PROJECT || typeof PROJECT.loadRoadExtract !== 'function') return null;
+    try {
+      const response = await fetch(new URL(`${city.extractPath}/roads-v2/streets-routing.bin.gz`, window.location.href));
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const { features } = await PROJECT.loadRoadExtract(await response.arrayBuffer());
+      return features;
+    } catch (error) {
+      console.warn(`${city.name} binary road extract unavailable; reading streets-routing.json.`, error);
+      return null;
+    }
+  }
+
   async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat', cityId = 'amsterdam') {
     const Prefs = window.CanalRecallPreferences;
     const city = Prefs && Prefs.cityById ? Prefs.cityById(cityId) : { id: cityId || 'amsterdam', extractPath: `../data/extracts/${cityId || 'amsterdam'}`, name: cityId || 'amsterdam' };
@@ -29,10 +48,13 @@ class OSMLoader {
         return this._fetchTransitWays(city);
       }
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
-      const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
-      const response = await fetch(dataUrl);
-      if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
-      const features = await response.json();
+      let features = travelMode === 'car' ? await this._fetchRoadExtract(city) : null;
+      if (!features) {
+        const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
+        const response = await fetch(dataUrl);
+        if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
+        features = await response.json();
+      }
       const ways = [];
       // Stable per-name identity for the spaced-repetition store. The review
       // key hashes the feature's centre, so it has to come from the extract
