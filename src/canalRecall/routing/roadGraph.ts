@@ -222,7 +222,18 @@ type IndexedSpan = Readonly<{
   a: RoadGraphPoint;
   b: RoadGraphPoint;
   segmentIndex: number;
+  /** Position in build order, for de-duplicating spans that sit in several grid cells. */
+  id: number;
 }>;
+
+/**
+ * Integer grid coordinates as one exact number key: string keys (`"x,y"`) cost
+ * a string per lookup, and the build looks up two per span and nine cells per
+ * endpoint (time to ride, #136). Out of range falls back to the string.
+ */
+const CELL_LIMIT = 2 ** 25;
+const cellKey = (gx: number, gy: number): number | string =>
+  Math.abs(gx) < CELL_LIMIT && Math.abs(gy) < CELL_LIMIT ? (gx + CELL_LIMIT) * 2 ** 26 + (gy + CELL_LIMIT) : `${gx},${gy}`;
 
 /**
  * The graph under construction: plain arrays that grow, released when the
@@ -320,14 +331,16 @@ function* roadGraphStages<TMetadata>(
 
   const builder = newBuilder();
   const { x: xs, y: ys, adjacency } = builder;
-  const nodeIndex = new Map<string, number>();
+  const nodeIndex = new Map<number | string, number>();
   const connectors: RoadGraphConnector[] = [];
   // Below this a merge is the same vertex; above it the gap is rideable only
   // through a connector span.
   const CONNECTOR_MIN = 0.5;
-  const spanGrid = new Map<string, IndexedSpan[]>();
-  const keyFor = (point: RoadGraphPoint): string =>
-    `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
+  const spanGrid = new Map<number | string, IndexedSpan[]>();
+  let spanCount = 0;
+  // Junction projections use string keys ('junction:...'), so they never meet these.
+  const keyFor = (point: RoadGraphPoint): number | string =>
+    cellKey(Math.round(point.x / mergeSize), Math.round(point.y / mergeSize));
   const nodeFor = (point: RoadGraphPoint, segmentIndex = -1): number => {
     const key = keyFor(point);
     let node = nodeIndex.get(key);
@@ -398,7 +411,7 @@ function* roadGraphStages<TMetadata>(
     const gy1 = Math.floor((Math.max(span.a.y, span.b.y) + pad) / gridCellSize);
     for (let gx = gx0; gx <= gx1; gx++) {
       for (let gy = gy0; gy <= gy1; gy++) {
-        const key = `${gx},${gy}`;
+        const key = cellKey(gx, gy);
         const bucket = spanGrid.get(key) ?? [];
         bucket.push(span);
         spanGrid.set(key, bucket);
@@ -422,7 +435,7 @@ function* roadGraphStages<TMetadata>(
       if (Math.hypot(a.x - xs[from], a.y - ys[from]) > CONNECTOR_MIN || Math.hypot(b.x - xs[to], b.y - ys[to]) > CONNECTOR_MIN) {
         connectors.push({ a: { x: xs[from], y: ys[from] }, b: { x: xs[to], y: ys[to] }, segmentIndex });
       }
-      addSpanToGrid({ a, b, segmentIndex }, segment.width ?? 0);
+      addSpanToGrid({ a, b, segmentIndex, id: spanCount++ }, segment.width ?? 0);
     }
     if (segmentIndex % 32 === 0) yield;
   }
@@ -432,12 +445,26 @@ function* roadGraphStages<TMetadata>(
     const gy = Math.floor(point.y / gridCellSize);
     // A long/wide span belongs to several cells. Stitch it once per endpoint;
     // repeated projections added identical links and duplicate surface connectors.
-    const found = new Set<IndexedSpan>();
+    // First-seen order across the nine cells, as a Set gave, with a stamp per span instead.
+    stamp++;
+    const found: IndexedSpan[] = [];
     for (let dx = -1; dx <= 1; dx++) {
-      for (let dy = -1; dy <= 1; dy++) for (const span of spanGrid.get(`${gx + dx},${gy + dy}`) ?? []) found.add(span);
+      for (let dy = -1; dy <= 1; dy++) {
+        const bucket = spanGrid.get(cellKey(gx + dx, gy + dy));
+        if (!bucket) continue;
+        for (const span of bucket) {
+          if (seen[span.id] === stamp) continue;
+          seen[span.id] = stamp;
+          found.push(span);
+        }
+      }
     }
-    return [...found];
+    return found;
   };
+  const seen = new Int32Array(spanCount);
+  let stamp = 0;
+  // Beyond the radius plus a hair on either axis, the projection is too: skip it.
+  const reach = junctionStitchRadius + 1e-6;
 
   for (let segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
     const segment = segments[segmentIndex];
@@ -448,6 +475,8 @@ function* roadGraphStages<TMetadata>(
       if (from === undefined) continue;
       for (const span of spansNear(endpoint)) {
         if (span.segmentIndex === segmentIndex) continue;
+        if (endpoint.x < Math.min(span.a.x, span.b.x) - reach || endpoint.x > Math.max(span.a.x, span.b.x) + reach
+          || endpoint.y < Math.min(span.a.y, span.b.y) - reach || endpoint.y > Math.max(span.a.y, span.b.y) + reach) continue;
         const projection = closestPointOnSegment(endpoint, span.a, span.b);
         if (projection.distance > junctionStitchRadius) continue;
         // Split the through span at the actual projected junction. Linking the
