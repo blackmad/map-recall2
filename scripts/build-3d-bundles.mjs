@@ -63,6 +63,11 @@ const targets = [
     out: 'public/canal-drive/js/own-ground-worker.bundle.js',
   },
   {
+    // The own map page's footprint builder (no-maplibre.html, ownMap/main.ts), in a worker (DOM-free).
+    entry: 'src/canalRecall/ownMap/footprintWorker.ts',
+    out: 'public/canal-drive/js/own-map-footprints.worker.js',
+  },
+  {
     entry: 'public/canal-drive/js/pyramidal-roofs-source.js',
     out: 'public/canal-drive/js/pyramidal-roofs.bundle.js',
     globalName: 'CanalRecallPyramidalRoofs',
