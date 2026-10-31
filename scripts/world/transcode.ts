@@ -1,7 +1,7 @@
 /**
  * Re-encode compiled world-v1 cells in another cell format version, without recompiling (P2 bytes gate):
  *   node --import tsx scripts/world/transcode.ts [--from=public/data/extracts/amsterdam/world-v1]
- *     [--out=artifacts/world/staging] [--format=4] [--policy [--collinear]] [--no-globals]
+ *     [--out=artifacts/world/staging] [--format=4] [--policy [--collinear] [--height-step=0.01]] [--no-globals]
  * Every cell is decoded, (with --policy) put through the compile policy (src/canalRecall/world/cellPolicy.ts:
  * heights to the centimetre, near-collinear vertices within 5 cm removed), encoded at --format, decoded again
  * and compared whole with the source cell (or the policy's output); a difference throws before anything is
@@ -16,7 +16,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import { decodeCell, encodeCell, sameValue, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, WORLD_FORMAT_VERSION, type Cell, type GlobalStrings } from '../../src/canalRecall/world/cellFormat.js';
-import { applyPolicy, emptyPolicyReport, summarisePolicy, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
+import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsFromArgs, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readCell, readGlobalStrings } from './cellFiles.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -26,7 +26,7 @@ const FROM = path.resolve(value('from') ?? path.join(ROOT, 'public/data/extracts
 const OUT = path.resolve(value('out') ?? path.join(ROOT, 'artifacts/world/staging'));
 const FORMAT = Number(value('format') ?? WORLD_FORMAT_VERSION);
 const POLICY = args.includes('--policy');
-const POLICY_OPTIONS: PolicyOptions = { collinear: args.includes('--collinear') };
+const POLICY_OPTIONS: PolicyOptions = policyOptionsFromArgs(args);
 const GLOBALS = FORMAT >= 4 && !args.includes('--no-globals');
 if (FROM === OUT) throw Error('--out must differ from --from');
 

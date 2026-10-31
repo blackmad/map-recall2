@@ -39,7 +39,7 @@ async function main() {
   const sharedOf = (k: string) => { let s = shared.get(k); if (!s) shared.set(k, s = sharedVertices(cell(k).buildings.map(b => b.geometry))); return s; };
   const options = policyOptionsOf(index);
   const policyGeometry = (g: Geometry, k: string): Geometry => options?.collinear ? policyFootprint(g, sharedOf(k)) : g;
-  const policyBag = (p: Props): Props => index.policy ? quantiseHeights(p) : p;
+  const policyBag = (p: Props): Props => options ? quantiseHeights(p, options.heightStepM) : p;
   const verdicts: TileVerdict[] = [];
   for (const t of tiles) {
     const rows = await loadTile(t, chain);
