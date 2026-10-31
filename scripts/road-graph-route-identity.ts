@@ -23,6 +23,7 @@
  */
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { buildRoadSegments, projectToWorld, type OsmWay } from '../src/canalRecall/osm/roadProjection';
@@ -38,11 +39,12 @@ const F = await load(arg('ferry'), 'src/canalRecall/ferry/network.ts');
 type Point = { x: number; y: number };
 type RoutingStreet = { name: string; highway?: string; path?: [number, number][]; paths?: [number, number][][] };
 // `--roads=<file.bin>` reads the streets from a compiled binary road extract
-// (scripts/roads/build-road-extract.ts) instead of the JSON, so a snapshot of
+// (scripts/roads/build-road-extract.ts; .bin or the published .bin.gz)
+// instead of the JSON, so a snapshot of
 // the JSON can be compared against the binary.
 const roadsBin = arg('roads');
 const routing = (roadsBin
-  ? decodeRoadExtract(readFileSync(roadsBin)).features
+  ? decodeRoadExtract(roadsBin.endsWith('.gz') ? gunzipSync(readFileSync(roadsBin)) : readFileSync(roadsBin)).features
   : JSON.parse(readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8'))) as RoutingStreet[];
 const network = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json', 'utf8')) as TransitNetwork;
 
