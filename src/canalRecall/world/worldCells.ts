@@ -11,7 +11,7 @@
  * thread receives a tile's styled features in batches of `WORLD_BATCH` buildings, each its own small task,
  * so no cell is ever one long main-thread task. Without a worker (Node, a worker that failed) it all runs here.
  */
-import { decodeCell, inflateCell, rawFeature, styledFeature, WORLD_FORMAT_VERSION, type Cell, type Props, type Geometry } from './cellFormat.js';
+import { decodeCell, inflateCell, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
 import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
@@ -27,7 +27,7 @@ export function worldV1Enabled(search: string = typeof location !== 'undefined' 
 /** Parse and check index.json; null when it is not a world-v1 index (a host answering with the app page). */
 export function readWorldIndex(value: unknown): WorldIndex | null {
   const v = value as Partial<WorldIndex> | null;
-  if (!v || v.version !== 1 || v.format !== WORLD_FORMAT_VERSION || !v.tileCells || typeof v.tileCells !== 'object' || !v.cells || typeof v.cells !== 'object') return null;
+  if (!v || v.version !== 1 || !WORLD_FORMAT_VERSIONS.includes(v.format as number) || !v.tileCells || typeof v.tileCells !== 'object' || !v.cells || typeof v.cells !== 'object') return null;
   return v as WorldIndex;
 }
 
