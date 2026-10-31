@@ -301,6 +301,8 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
+**Transvaalbuurt kit, in flight (user, 2026-10-31, #149):** the user photographed Albert Luthulistraat 29–31 (dark red brick, four storeys, flat roof with a black-brick parapet band, white two-light frames, round stair tower with a brick ladder) and asked for a buurt generator; Oud-Oost has none (MD01/MD02 are 0.2 %/0.1 % modelled, clusters of 41/38/67 near-identical 1910–25 pands). Lane `lane/transvaalbuurt-kit-20261031` (brief `docs/handoffs/lane-transvaalbuurt-kit-20261031.md`): survey both buurten, auto-place against rivierenbuurt/indische-buurt, author a `transvaalbuurt` type library from measured strips, add the parapet-band and stair-tower kit components, batch-install in ride order. Acceptance is likeness to the user's photo on that row. Integrator after hand-back: covers, exposure rows, buurt pages, strip archive, What's New with the before/after strip.
+
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
 **Usage pause 2026-10-25 (95 % weekly).** Lanes in flight, their state, the
