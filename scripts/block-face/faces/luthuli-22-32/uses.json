@@ -1,0 +1,228 @@
+{
+ "street": "Albert Luthulistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:12:56.825Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012124743",
+   "addresses": [
+    "Albert Luthulistraat 30A",
+    "Albert Luthulistraat 30B",
+    "Albert Luthulistraat 30C",
+    "Albert Luthulistraat 30D",
+    "Albert Luthulistraat 32A",
+    "Albert Luthulistraat 32D",
+    "Albert Luthulistraat 32C",
+    "Albert Luthulistraat 32B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000644022"
+    },
+    {
+     "address": "De la Reijstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000644023"
+    },
+    {
+     "address": "Albert Luthulistraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928636"
+    },
+    {
+     "address": "Albert Luthulistraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000928637"
+    },
+    {
+     "address": "Albert Luthulistraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000928638"
+    },
+    {
+     "address": "Albert Luthulistraat 30D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928639"
+    },
+    {
+     "address": "Albert Luthulistraat 32A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928644"
+    },
+    {
+     "address": "Albert Luthulistraat 32D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928647"
+    },
+    {
+     "address": "De la Reijstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000644025"
+    },
+    {
+     "address": "Albert Luthulistraat 32C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000928646"
+    },
+    {
+     "address": "Albert Luthulistraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000928645"
+    },
+    {
+     "address": "De la Reijstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000644024"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088339",
+   "addresses": [
+    "Albert Luthulistraat 26A",
+    "Albert Luthulistraat 26B",
+    "Albert Luthulistraat 26C",
+    "Albert Luthulistraat 26D",
+    "Albert Luthulistraat 28A",
+    "Albert Luthulistraat 28B",
+    "Albert Luthulistraat 28C",
+    "Albert Luthulistraat 28D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928620"
+    },
+    {
+     "address": "Albert Luthulistraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000928621"
+    },
+    {
+     "address": "Albert Luthulistraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928622"
+    },
+    {
+     "address": "Albert Luthulistraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000928628"
+    },
+    {
+     "address": "Albert Luthulistraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928629"
+    },
+    {
+     "address": "Albert Luthulistraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928630"
+    },
+    {
+     "address": "Albert Luthulistraat 28D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928631"
+    },
+    {
+     "address": "Albert Luthulistraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928623"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068825",
+   "addresses": [
+    "Albert Luthulistraat 22A",
+    "Albert Luthulistraat 22B",
+    "Albert Luthulistraat 22C",
+    "Albert Luthulistraat 22D",
+    "Albert Luthulistraat 24A",
+    "Albert Luthulistraat 24B",
+    "Albert Luthulistraat 24C",
+    "Albert Luthulistraat 24D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000928604"
+    },
+    {
+     "address": "Albert Luthulistraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000928605"
+    },
+    {
+     "address": "Albert Luthulistraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000928606"
+    },
+    {
+     "address": "Albert Luthulistraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928607"
+    },
+    {
+     "address": "Albert Luthulistraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000928612"
+    },
+    {
+     "address": "Albert Luthulistraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928613"
+    },
+    {
+     "address": "Albert Luthulistraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928614"
+    },
+    {
+     "address": "Albert Luthulistraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000928615"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

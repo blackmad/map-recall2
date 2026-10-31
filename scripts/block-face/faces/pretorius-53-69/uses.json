@@ -1,0 +1,183 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:59:21.091Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012151006",
+   "addresses": [
+    "Pretoriusstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000782594"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075049",
+   "addresses": [
+    "Pretoriusstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 55-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000782602"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095458",
+   "addresses": [
+    "Pretoriusstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000782610"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139205",
+   "addresses": [
+    "Pretoriusstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000782617"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088417",
+   "addresses": [
+    "Pretoriusstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001002143"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109508",
+   "addresses": [
+    "Pretoriusstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001006306"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144337",
+   "addresses": [
+    "Pretoriusstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 65-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000782642"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098524",
+   "addresses": [
+    "Pretoriusstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 67-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000782651"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117340",
+   "addresses": [
+    "Pretoriusstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000782659"
+    },
+    {
+     "address": "Smitstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010011909572"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826203681,
+     "lngLat": [
+      4.9221114,
+      52.3547529
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "69-H",
+      "addr:postcode": "1092GB",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "fast_food",
+      "cuisine": "oriental",
+      "name": "Goldfish Sushi & Poke",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.goldfishsushi.nl/"
+     },
+     "fetchedAt": "2026-10-31T14:59:21.091Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

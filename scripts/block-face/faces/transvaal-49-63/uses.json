@@ -1,0 +1,143 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:09:59.512Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133339",
+   "addresses": [
+    "Transvaalstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000830574"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119314",
+   "addresses": [
+    "Transvaalstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000830579"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103345",
+   "addresses": [
+    "Transvaalstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001012617"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083320",
+   "addresses": [
+    "Transvaalstraat 63K",
+    "Transvaalstraat 63G",
+    "Transvaalstraat 63L",
+    "Transvaalstraat 63F",
+    "Transvaalstraat 63H",
+    "Transvaalstraat 63M",
+    "Transvaalstraat 63A",
+    "Transvaalstraat 63B",
+    "Transvaalstraat 63C",
+    "Transvaalstraat 63D",
+    "Transvaalstraat 63E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 63K",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000946515"
+    },
+    {
+     "address": "Transvaalstraat 63G",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000946512"
+    },
+    {
+     "address": "Transvaalstraat 63L",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000989441"
+    },
+    {
+     "address": "Transvaalstraat 63F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000946510"
+    },
+    {
+     "address": "Transvaalstraat 63H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000946513"
+    },
+    {
+     "address": "Transvaalstraat 63M",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000946514"
+    },
+    {
+     "address": "Transvaalstraat 63A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000684215"
+    },
+    {
+     "address": "Transvaalstraat 63B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000684216"
+    },
+    {
+     "address": "Transvaalstraat 63C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000684836"
+    },
+    {
+     "address": "Transvaalstraat 63D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000684898"
+    },
+    {
+     "address": "Transvaalstraat 63E",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000946511"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

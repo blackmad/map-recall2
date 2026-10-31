@@ -1,0 +1,367 @@
+{
+ "face": "kruger-32-40",
+ "street": "Krugerstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2022-01-17",
+ "seconds": 0.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012132444",
+   "address": "Krugerstraat 40",
+   "builtYear": 1929,
+   "widthM": 6.4,
+   "eavesM": 13.51,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725448",
+    "wallRaw": "#876657",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.72,
+       "widthM": 0.85,
+       "centre": 0.66
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.3,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.4 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.4 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.7 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.181 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012083941",
+   "address": "Krugerstraat 38",
+   "builtYear": 1929,
+   "widthM": 6.4,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69554a",
+    "wallRaw": "#876d5d",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 238,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 1.3,
+       "centre": 0.68
+      },
+      {
+       "atM": 10.65,
+       "widthM": 0.88,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.35,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.4 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.4 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.176 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150686",
+   "address": "Krugerstraat 36",
+   "builtYear": 1929,
+   "widthM": 6.4,
+   "eavesM": 13.56,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735648",
+    "wallRaw": "#966f5c",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 236,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11,
+       "widthM": 0.82,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 6.4 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 6.4 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.78 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114784",
+   "address": "Krugerstraat 32",
+   "builtYear": 1930,
+   "widthM": 6.91,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.17,
+    "toM": 1.77,
+    "depthM": 0.53,
+    "centre": 0.213,
+    "lineRD": [
+     [
+      123041.013375,
+      485083.56875000003
+     ],
+     [
+      123045.741375,
+      485086.90775
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6f594d",
+    "wallRaw": "#896f60",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.172,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.34,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1930, type 1921-1924; frontage 6.91 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1930, type 1921-1924",
+     "frontage 6.91 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.6 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.182 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

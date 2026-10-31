@@ -1,0 +1,367 @@
+{
+ "street": "Transvaalkade",
+ "seed": "0363100012081211",
+ "members": [
+  "0363100012147517",
+  "0363100012081211"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012147517 (face continues: 131566 117095 084768 099797)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012240889 44.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061566",
+   "reason": "sightline to Transvaalkade crosses 0363100012117095"
+  },
+  {
+   "pandId": "0363100012065134",
+   "reason": "frontage 44.4 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012066850",
+   "reason": "frontage 57.6 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012068401",
+   "reason": "frontage 38.5 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012074773",
+   "reason": "frontage 50.7 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012076615",
+   "reason": "frontage 38.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012087691",
+   "reason": "sightline to Transvaalkade crosses 0363100012131566"
+  },
+  {
+   "pandId": "0363100012101555",
+   "reason": "sightline to Transvaalkade crosses 0363100012081211"
+  },
+  {
+   "pandId": "0363100012102524",
+   "reason": "frontage 68.4 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012115391",
+   "reason": "sightline to Transvaalkade crosses 0363100012081211"
+  },
+  {
+   "pandId": "0363100012119583",
+   "reason": "frontage 32.3 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012120470",
+   "reason": "frontage 44.8 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012138579",
+   "reason": "sightline to Transvaalkade crosses 0363100012087691"
+  },
+  {
+   "pandId": "0363100012139463",
+   "reason": "frontage 62.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012139944",
+   "reason": "frontage 57.1 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012140448",
+   "reason": "sightline to Transvaalkade crosses 0363100012087691"
+  },
+  {
+   "pandId": "0363100012144037",
+   "reason": "frontage 62.4 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012144655",
+   "reason": "frontage 73.4 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012063929",
+   "reason": "frontage 88.8 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012073365",
+   "reason": "frontage 86.7 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012074817",
+   "reason": "frontage 88.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012079037",
+   "reason": "frontage 103.5 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012081737",
+   "reason": "frontage 43.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012091191",
+   "reason": "frontage 129.8 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012098724",
+   "reason": "frontage 81.6 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012105582",
+   "reason": "frontage 43.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012111423",
+   "reason": "frontage 92.8 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012121657",
+   "reason": "frontage 44.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012125720",
+   "reason": "frontage 63.1 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012128261",
+   "reason": "frontage 44.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012135794",
+   "reason": "frontage 50.7 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012136673",
+   "reason": "frontage 69.2 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012137886",
+   "reason": "frontage 56.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012138134",
+   "reason": "no frontage on Transvaalkade: No footprint edge faces Transvaalkade"
+  },
+  {
+   "pandId": "0363100012141663",
+   "reason": "frontage 111.5 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012141876",
+   "reason": "frontage 93.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012145744",
+   "reason": "no frontage on Transvaalkade: No footprint edge faces Transvaalkade"
+  },
+  {
+   "pandId": "0363100012240285",
+   "reason": "frontage 55.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012155546",
+   "reason": "frontage 42.7 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199221",
+   "reason": "frontage 41.4 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199222",
+   "reason": "frontage 37.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199223",
+   "reason": "no frontage on Transvaalkade: No footprint edge faces Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199224",
+   "reason": "frontage 35.8 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199225",
+   "reason": "no frontage on Transvaalkade: No footprint edge faces Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199228",
+   "reason": "frontage 30.6 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199229",
+   "reason": "frontage 33.2 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199230",
+   "reason": "no frontage on Transvaalkade: No footprint edge faces Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199231",
+   "reason": "sightline to Transvaalkade crosses 0363100012146282"
+  },
+  {
+   "pandId": "0363100012199232",
+   "reason": "sightline to Transvaalkade crosses 0363100012146282"
+  },
+  {
+   "pandId": "0363100012199290",
+   "reason": "frontage 37.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199291",
+   "reason": "sightline to Transvaalkade crosses 0363100012135963"
+  },
+  {
+   "pandId": "0363100012199292",
+   "reason": "frontage 37.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199293",
+   "reason": "sightline to Transvaalkade crosses 0363100012146282"
+  },
+  {
+   "pandId": "0363100012199294",
+   "reason": "sightline to Transvaalkade crosses 0363100012146282"
+  },
+  {
+   "pandId": "0363100012199298",
+   "reason": "sightline to Transvaalkade crosses 0363100012138441"
+  },
+  {
+   "pandId": "0363100012199299",
+   "reason": "sightline to Transvaalkade crosses 0363100012067045"
+  },
+  {
+   "pandId": "0363100012199306",
+   "reason": "frontage 94.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199307",
+   "reason": "frontage 96.3 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012199311",
+   "reason": "sightline to Transvaalkade crosses 0363100012127111"
+  },
+  {
+   "pandId": "0363100012207723",
+   "reason": "sightline to Transvaalkade crosses 0363100012087418"
+  },
+  {
+   "pandId": "0363100012224983",
+   "reason": "sightline to Transvaalkade crosses 0363100012127111"
+  },
+  {
+   "pandId": "0363100012224984",
+   "reason": "sightline to Transvaalkade crosses 0363100012127111"
+  },
+  {
+   "pandId": "0363100012224985",
+   "reason": "sightline to Transvaalkade crosses 0363100012127111"
+  },
+  {
+   "pandId": "0363100012224986",
+   "reason": "sightline to Transvaalkade crosses 0363100012135963"
+  },
+  {
+   "pandId": "0363100012224987",
+   "reason": "sightline to Transvaalkade crosses 0363100012135963"
+  },
+  {
+   "pandId": "0363100012224988",
+   "reason": "frontage 33.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012224989",
+   "reason": "frontage 33.9 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012224990",
+   "reason": "frontage 34.2 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012224991",
+   "reason": "frontage 34.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012224992",
+   "reason": "frontage 34.0 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012224993",
+   "reason": "sightline to Transvaalkade crosses 0363100012135876"
+  },
+  {
+   "pandId": "0363100012224994",
+   "reason": "sightline to Transvaalkade crosses 0363100012135876"
+  },
+  {
+   "pandId": "0363100012224995",
+   "reason": "sightline to Transvaalkade crosses 0363100012087418"
+  },
+  {
+   "pandId": "0363100012224996",
+   "reason": "sightline to Transvaalkade crosses 0363100012087418"
+  },
+  {
+   "pandId": "0363100012224997",
+   "reason": "sightline to Transvaalkade crosses 0363100012087418"
+  },
+  {
+   "pandId": "0363100012224998",
+   "reason": "sightline to Transvaalkade crosses 0363100012135876"
+  },
+  {
+   "pandId": "0363100012240887",
+   "reason": "frontage 71.5 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012240888",
+   "reason": "sightline to Transvaalkade crosses 0363100012240889"
+  },
+  {
+   "pandId": "0363100012243120",
+   "reason": "frontage 92.2 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012243121",
+   "reason": "frontage 95.5 m from Transvaalkade"
+  },
+  {
+   "pandId": "0363100012243122",
+   "reason": "sightline to Transvaalkade crosses 0363100012138441"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012147517",
+   "alongM": -7.57,
+   "widthM": 6.8,
+   "eavesM": 14.74,
+   "roofMaxM": 14.89,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012081211",
+   "alongM": 0,
+   "widthM": 8.33,
+   "eavesM": 15.07,
+   "roofMaxM": 18.23,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  }
+ ]
+}

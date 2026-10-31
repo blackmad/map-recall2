@@ -1,0 +1,173 @@
+{
+ "street": "Laing's Nekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:15:53.047Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122306",
+   "addresses": [
+    "Laing's Nekstraat 56A",
+    "Laing's Nekstraat 56B",
+    "Laing's Nekstraat 56C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 56A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000717077"
+    },
+    {
+     "address": "Laing's Nekstraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000717078"
+    },
+    {
+     "address": "Laing's Nekstraat 56C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000717079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069809",
+   "addresses": [
+    "Laing's Nekstraat 54B",
+    "Laing's Nekstraat 54C",
+    "Laing's Nekstraat 54A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000717074"
+    },
+    {
+     "address": "Laing's Nekstraat 54C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000717075"
+    },
+    {
+     "address": "Laing's Nekstraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000717073"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114338",
+   "addresses": [
+    "Laing's Nekstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000717067"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084193",
+   "addresses": [
+    "Laing's Nekstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000717061"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236318",
+   "addresses": [
+    "Laing's Nekstraat 40",
+    "Laing's Nekstraat 42",
+    "Laing's Nekstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000717055"
+    },
+    {
+     "address": "Laing's Nekstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000717040"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138328",
+   "addresses": [
+    "Laing's Nekstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000717032"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069186",
+   "addresses": [
+    "Laing's Nekstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000994859"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233567",
+   "addresses": [
+    "Laing's Nekstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Laing's Nekstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000717016"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

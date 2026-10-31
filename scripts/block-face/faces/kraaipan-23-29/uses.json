@@ -1,0 +1,96 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:06:44.007Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012082203",
+   "addresses": [
+    "Kraaipanstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000997033"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086048",
+   "addresses": [
+    "Kraaipanstraat 25B",
+    "Kraaipanstraat 25A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000711994"
+    },
+    {
+     "address": "Kraaipanstraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000711993"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103446",
+   "addresses": [
+    "Kraaipanstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010001007755"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061216",
+   "addresses": [
+    "Kraaipanstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001019686"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10688998802,
+     "lngLat": [
+      4.9198489,
+      52.3523459
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "panoramax": "f63c7bed-51b1-4913-9837-3f9feb78da8e"
+     },
+     "fetchedAt": "2026-10-31T15:06:44.007Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "face": "transvaalplein-26-28",
+ "street": "Transvaalplein",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.06,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012120511",
+   "address": "Transvaalplein 26",
+   "builtYear": 1913,
+   "widthM": 2.4,
+   "eavesM": 6.43,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685950",
+    "wallRaw": "#695d53",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 452,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.2 m at 0.5 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.2,
+       "centre": 0.5,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 2.4 m, type 8.8-12.9 m; strip shows balconies (dark open axis 2.2 m at 0.5 (light 0.2): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924",
+     "frontage 2.4 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 2.2 m at 0.5 (light 0.2): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 6.43 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.033 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143983",
+   "address": "Transvaalplein 28",
+   "builtYear": 1913,
+   "widthM": 6.2,
+   "eavesM": 6.46,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#896f61",
+    "wallRaw": "#6c6157",
+    "skyline": {
+     "eavesM": 9.85,
+     "eavesRow": 58,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.93,
+     "balconies": true,
+     "why": "dark open axis 5.7 m at 0.5 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.7,
+       "centre": 0.5,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 6.2 m, type 8.8-12.9 m; strip shows balconies (dark open axis 5.7 m at 0.5 (light 0.28): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1921-1924",
+     "frontage 6.2 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 5.7 m at 0.5 (light 0.28): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

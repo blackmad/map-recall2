@@ -1,0 +1,202 @@
+{
+ "street": "Vaalrivierstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:58:46.512Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012109842",
+   "addresses": [
+    "Vaalrivierstraat 14A",
+    "Vaalrivierstraat 14B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000849469"
+    },
+    {
+     "address": "Vaalrivierstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000849470"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086976448,
+     "lngLat": [
+      4.918394,
+      52.3518338
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T15:58:46.512Z",
+     "match": "frontage",
+     "distanceM": 4.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120724",
+   "addresses": [
+    "Vaalrivierstraat 12A",
+    "Vaalrivierstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849466"
+    },
+    {
+     "address": "Vaalrivierstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849467"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090866",
+   "addresses": [
+    "Vaalrivierstraat 10A",
+    "Vaalrivierstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849463"
+    },
+    {
+     "address": "Vaalrivierstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849464"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108545",
+   "addresses": [
+    "Vaalrivierstraat 8A",
+    "Vaalrivierstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849458"
+    },
+    {
+     "address": "Vaalrivierstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849459"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090850",
+   "addresses": [
+    "Vaalrivierstraat 6A",
+    "Vaalrivierstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849454"
+    },
+    {
+     "address": "Vaalrivierstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849455"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137594",
+   "addresses": [
+    "Vaalrivierstraat 4A",
+    "Vaalrivierstraat 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000849450"
+    },
+    {
+     "address": "Vaalrivierstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849451"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088655",
+   "addresses": [
+    "Vaalrivierstraat 2A",
+    "Vaalrivierstraat 2B",
+    "Vaalrivierstraat 2D",
+    "Vaalrivierstraat 2C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000849443"
+    },
+    {
+     "address": "Vaalrivierstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000849444"
+    },
+    {
+     "address": "Vaalrivierstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000849446"
+    },
+    {
+     "address": "Vaalrivierstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000849445"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

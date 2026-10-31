@@ -1,0 +1,134 @@
+{
+ "face": "reij-17-23",
+ "street": "De la Reijstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.04,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012107235",
+   "address": "De la Reijstraat 17",
+   "builtYear": 1923,
+   "widthM": 3.75,
+   "eavesM": 3.29,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a3e37",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 10.28,
+     "eavesRow": 144,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 3.22,
+      "topWidthM": 0.3,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074114",
+   "address": "De la Reijstraat 19",
+   "builtYear": 1900,
+   "widthM": 2.9,
+   "eavesM": 6.59,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3e35",
+    "wallRaw": "#514137",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 130,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.5 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.5,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1900, type 1921-1924; frontage 2.9 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.82 m at 0.5 (light 0.33): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1900, type 1921-1924",
+     "frontage 2.9 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.82 m at 0.5 (light 0.33): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.021 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,179 @@
+{
+ "face": "transvaalkade-8-8",
+ "street": "Transvaalkade",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012155848",
+   "address": "Transvaalkade 8A",
+   "builtYear": 1882,
+   "widthM": 5.02,
+   "eavesM": 11.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f786c",
+    "wallRaw": "#a08172",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.7,
+      "topWidthM": 1.45,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.256,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1882, type 1921-1924; frontage 5.02 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1921-1924",
+     "frontage 5.02 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.93 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.245 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162569",
+   "address": "Transvaalkade 8",
+   "builtYear": 1882,
+   "widthM": 5.02,
+   "eavesM": 11.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d6c63",
+    "wallRaw": "#92776a",
+    "skyline": {
+     "eavesM": 10.88,
+     "eavesRow": 142,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.7,
+      "topWidthM": 1.43,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.273,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1882, type 1921-1924; frontage 5.02 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1921-1924",
+     "frontage 5.02 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.88 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.23 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

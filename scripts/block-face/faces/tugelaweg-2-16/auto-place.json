@@ -1,0 +1,146 @@
+{
+ "face": "tugelaweg-2-16",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012147121",
+   "address": "Tugelaweg 2",
+   "builtYear": 1923,
+   "widthM": 6.11,
+   "eavesM": 13.45,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#91816c",
+    "wallRaw": "#7d6e5f",
+    "skyline": {
+     "eavesM": 12.35,
+     "eavesRow": 200,
+     "confidence": 0.44,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.13,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 64 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102476",
+   "address": "Tugelaweg 12",
+   "builtYear": 1994,
+   "widthM": 10.25,
+   "eavesM": 14.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5246",
+    "wallRaw": "#786059",
+    "skyline": {
+     "eavesM": 12.05,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.349,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.07,
+       "widthM": 1.13,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.14 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

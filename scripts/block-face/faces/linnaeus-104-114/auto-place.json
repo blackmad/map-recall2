@@ -1,0 +1,404 @@
+{
+ "face": "linnaeus-104-114",
+ "street": "Linnaeusstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.7,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236825",
+   "address": "Linnaeusstraat 112",
+   "builtYear": 1912,
+   "widthM": 5.44,
+   "eavesM": 13.85,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.42,
+    "toM": 5.34,
+    "depthM": 1.06,
+    "centre": 0.633,
+    "lineRD": [
+     [
+      123712.9468125,
+      485383.55724999995
+     ],
+     [
+      123711.5568125,
+      485385.19425
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3f3835",
+    "wallRaw": "#4a4240",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 126,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.8,
+      "topWidthM": 0.28,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.82,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.3,
+       "widthM": 1.1,
+       "centre": 0.78
+      },
+      {
+       "atM": 8.22,
+       "widthM": 1.45,
+       "centre": 0.74
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.15,
+       "centre": 0.64
+      },
+      {
+       "atM": 5.15,
+       "widthM": 1.85,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.44 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.44 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233681",
+   "address": "Linnaeusstraat 108",
+   "builtYear": 1914,
+   "widthM": 7.34,
+   "eavesM": 13.02,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.22,
+    "toM": 2.9,
+    "depthM": 0.6,
+    "centre": 0.213,
+    "lineRD": [
+     [
+      123709.1208125,
+      485391.51324999996
+     ],
+     [
+      123707.7298125,
+      485395.27625
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#76605a",
+    "wallRaw": "#554d4a",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 173,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.53,
+      "topWidthM": 0.9,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.42,
+       "widthM": 1.05,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 7.34 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 7.34 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105918",
+   "address": "Linnaeusstraat 106",
+   "builtYear": 1914,
+   "widthM": 9.95,
+   "eavesM": 13.07,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.38,
+    "toM": 6.95,
+    "depthM": 0.59,
+    "centre": 0.569
+   },
+   "strip": {
+    "wall": "#453d39",
+    "wallRaw": "#46403c",
+    "skyline": {
+     "eavesM": 16.57,
+     "eavesRow": 128,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.52,
+      "riseM": 2.13,
+      "topWidthM": 0.97,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062871",
+   "address": "Linnaeusstraat 104",
+   "builtYear": 1914,
+   "widthM": 4.96,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.02,
+    "toM": 4.95,
+    "depthM": 0.42,
+    "centre": 0.906,
+    "lineRD": [
+     [
+      123703.9768125,
+      485404.95525
+     ],
+     [
+      123702.9878125,
+      485407.55425
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8a7269",
+    "wallRaw": "#584f4c",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 0.88,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 4.96 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 4.96 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

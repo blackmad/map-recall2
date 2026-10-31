@@ -1,0 +1,229 @@
+{
+ "street": "Joubertstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:55:26.655Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012142519",
+   "addresses": [
+    "Joubertstraat 3A",
+    "Joubertstraat 3B",
+    "Joubertstraat 3C",
+    "Joubertstraat 3D",
+    "Joubertstraat 5C",
+    "Joubertstraat 5D",
+    "Joubertstraat 5B",
+    "Joubertstraat 5A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000696107"
+    },
+    {
+     "address": "Joubertstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000696108"
+    },
+    {
+     "address": "Joubertstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000696109"
+    },
+    {
+     "address": "Joubertstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000696114"
+    },
+    {
+     "address": "Joubertstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000696115"
+    },
+    {
+     "address": "Reitzstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000791037"
+    },
+    {
+     "address": "Joubertstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000696113"
+    },
+    {
+     "address": "Joubertstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000696112"
+    },
+    {
+     "address": "Joubertstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000696110"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127064",
+   "addresses": [
+    "Joubertstraat 7",
+    "Joubertstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000696122"
+    },
+    {
+     "address": "Joubertstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000696117"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131556",
+   "addresses": [
+    "Joubertstraat 11",
+    "Joubertstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000696127"
+    },
+    {
+     "address": "Joubertstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000696132"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159280",
+   "addresses": [
+    "Joubertstraat 15A",
+    "Joubertstraat 15C",
+    "Joubertstraat 15D",
+    "Joubertstraat 15B",
+    "Joubertstraat 15E",
+    "Joubertstraat 15F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 15A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 377,
+     "bagId": "0363010003696025"
+    },
+    {
+     "address": "Joubertstraat 15C",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 204,
+     "bagId": "0363010003696026"
+    },
+    {
+     "address": "Joubertstraat 15D",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 163,
+     "bagId": "0363010003696027"
+    },
+    {
+     "address": "Joubertstraat 15B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 369,
+     "bagId": "0363010003696028"
+    },
+    {
+     "address": "Joubertstraat 15E",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 177,
+     "bagId": "0363010003696029"
+    },
+    {
+     "address": "Joubertstraat 15F",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 185,
+     "bagId": "0363010003696030"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1302368887,
+     "lngLat": [
+      4.9173065,
+      52.353468
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "check_date": "2026-08-16",
+      "name": "Eyub Sultan",
+      "religion": "muslim"
+     },
+     "fetchedAt": "2026-10-31T16:55:26.655Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1302368903,
+     "lngLat": [
+      4.9172045,
+      52.3533648
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "check_date": "2026-08-16",
+      "name": "Moskee Al Fath Al Moebien",
+      "religion": "muslim",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T16:55:26.655Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134742",
+   "addresses": [
+    "Joubertstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joubertstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000696139"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

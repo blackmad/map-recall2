@@ -1,0 +1,213 @@
+{
+ "street": "Maritzstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:45:05.316Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118192",
+   "addresses": [
+    "Maritzstraat 1",
+    "Maritzstraat 3",
+    "Maritzstraat 5",
+    "Maritzstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000735465"
+    },
+    {
+     "address": "Maritzstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000735470"
+    },
+    {
+     "address": "Maritzstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000735475"
+    },
+    {
+     "address": "Maritzstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000735463"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107568",
+   "addresses": [
+    "Maritzstraat 9",
+    "Maritzstraat 11",
+    "Maritzstraat 13",
+    "Maritzstraat 15",
+    "Maritzstraat 17",
+    "Maritzstraat 19",
+    "Maritzstraat 21",
+    "Maritzstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000735497"
+    },
+    {
+     "address": "Maritzstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735490"
+    },
+    {
+     "address": "Maritzstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735495"
+    },
+    {
+     "address": "Maritzstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001002385"
+    },
+    {
+     "address": "Maritzstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735502"
+    },
+    {
+     "address": "Maritzstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000735480"
+    },
+    {
+     "address": "Maritzstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735507"
+    },
+    {
+     "address": "Maritzstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735485"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133240",
+   "addresses": [
+    "Maritzstraat 25",
+    "Maritzstraat 27",
+    "Maritzstraat 29",
+    "Maritzstraat 31",
+    "Maritzstraat 33",
+    "Maritzstraat 35",
+    "Maritzstraat 37",
+    "Maritzstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000735513"
+    },
+    {
+     "address": "Maritzstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735527"
+    },
+    {
+     "address": "Maritzstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000735529"
+    },
+    {
+     "address": "Maritzstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735523"
+    },
+    {
+     "address": "Maritzstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735518"
+    },
+    {
+     "address": "Maritzstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735530"
+    },
+    {
+     "address": "Maritzstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735531"
+    },
+    {
+     "address": "Maritzstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000735532"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115114",
+   "addresses": [
+    "Maritzstraat 41",
+    "Maritzstraat 43",
+    "Maritzstraat 45",
+    "Maritzstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000735534"
+    },
+    {
+     "address": "Maritzstraat 45",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000735535"
+    },
+    {
+     "address": "Maritzstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000735536"
+    },
+    {
+     "address": "Maritzstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000735533"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

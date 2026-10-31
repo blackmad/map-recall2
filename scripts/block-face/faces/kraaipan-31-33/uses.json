@@ -1,0 +1,48 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:07:34.614Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154076",
+   "addresses": [
+    "Kraaipanstraat 31B",
+    "Kraaipanstraat 31A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000712006"
+    },
+    {
+     "address": "Kraaipanstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000712005"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127519",
+   "addresses": [
+    "Kraaipanstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001019688"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

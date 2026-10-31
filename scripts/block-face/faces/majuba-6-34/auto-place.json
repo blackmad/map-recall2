@@ -1,0 +1,485 @@
+{
+ "face": "majuba-6-34",
+ "street": "Majubastraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 2.71,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012141114",
+   "address": "Majubastraat 26",
+   "builtYear": 1999,
+   "widthM": 36.03,
+   "eavesM": 14.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68504d",
+    "wallRaw": "#5b4d46",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 95,
+     "confidence": 1,
+     "crown": {
+      "widthM": 8,
+      "riseM": 1.2,
+      "topWidthM": 7.45,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 20,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.096,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.24,
+     "balconies": true,
+     "why": "dark open axis 3.5 m at 0.95 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.5,
+       "centre": 0.95,
+       "light": 0.2
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.27,
+       "widthM": 0.88,
+       "centre": 0.24
+      },
+      {
+       "atM": 9.35,
+       "widthM": 1.7,
+       "centre": 0.12
+      },
+      {
+       "atM": 8.15,
+       "widthM": 0.88,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.47,
+       "widthM": 0.97,
+       "centre": 0.24
+      },
+      {
+       "atM": 7.1,
+       "widthM": 0.95,
+       "centre": 0.24
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.32,
+       "centre": 0.11
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1.07,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1999, type 1921-1924; frontage 36.03 m, type 8.8-12.9 m; strip shows balconies (dark open axis 3.5 m at 0.95 (light 0.2): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1999, type 1921-1924",
+     "frontage 36.03 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 3.5 m at 0.95 (light 0.2): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.85 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 20 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012085405",
+   "address": "Majubastraat 20",
+   "builtYear": 1996,
+   "widthM": 17.07,
+   "eavesM": 11.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70554c",
+    "wallRaw": "#554844",
+    "skyline": {
+     "eavesM": 11.82,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.2,
+      "riseM": 2.03,
+      "topWidthM": 1.6,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.31 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.31,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.88,
+       "centre": 0.49,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.65,
+       "light": 0.01
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1996, type 1921-1924; frontage 17.07 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.97 m at 0.31 (light 0.11): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1921-1924",
+     "frontage 17.07 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.97 m at 0.31 (light 0.11): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 11.82 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062237",
+   "address": "Majubastraat 14",
+   "builtYear": 1996,
+   "widthM": 16.53,
+   "eavesM": 12.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735850",
+    "wallRaw": "#5a4b49",
+    "skyline": {
+     "eavesM": 11.82,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.57,
+      "riseM": 1.9,
+      "topWidthM": 5.2,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1996, type 1921-1924; frontage 16.53 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1921-1924",
+     "frontage 16.53 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 11.82 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.033 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086038",
+   "address": "Majubastraat 8",
+   "builtYear": 1996,
+   "widthM": 16.91,
+   "eavesM": 11.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876961",
+    "wallRaw": "#5a4c48",
+    "skyline": {
+     "eavesM": 11.72,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.6,
+      "riseM": 2.85,
+      "topWidthM": 0.35,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.95 m at 0.5 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.5,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1996, type 1921-1924; frontage 16.91 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.95 m at 0.5 (light 0.12): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1921-1924",
+     "frontage 16.91 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.95 m at 0.5 (light 0.12): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 11.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134576",
+   "address": "Majubastraat 6A",
+   "builtYear": 1996,
+   "widthM": 9.01,
+   "eavesM": 11.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#654a40",
+    "wallRaw": "#624c49",
+    "skyline": {
+     "eavesM": 11.28,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 2.45,
+      "topWidthM": 2.42,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1996, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.28 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.055 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

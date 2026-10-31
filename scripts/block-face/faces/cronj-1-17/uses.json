@@ -1,0 +1,203 @@
+{
+ "street": "Cronjéstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:09:36.090Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012129435",
+   "addresses": [
+    "Cronjéstraat 1B",
+    "Cronjéstraat 1A",
+    "Cronjéstraat 3A",
+    "Cronjéstraat 3B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000611490"
+    },
+    {
+     "address": "Cronjéstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000611493"
+    },
+    {
+     "address": "Cronjéstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000611494"
+    },
+    {
+     "address": "Cronjéstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000611489"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090011",
+   "addresses": [
+    "Cronjéstraat 5B",
+    "Cronjéstraat 5A",
+    "Cronjéstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000611498"
+    },
+    {
+     "address": "Cronjéstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000611501"
+    },
+    {
+     "address": "Cronjéstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000611497"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082509",
+   "addresses": [
+    "Cronjéstraat 9B",
+    "Cronjéstraat 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000611505"
+    },
+    {
+     "address": "Cronjéstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000611504"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082065",
+   "addresses": [
+    "Cronjéstraat 11A",
+    "Cronjéstraat 11B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000611508"
+    },
+    {
+     "address": "Cronjéstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000611509"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144602",
+   "addresses": [
+    "Cronjéstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000611511"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141046",
+   "addresses": [
+    "Cronjéstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000611514"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098579",
+   "addresses": [
+    "Cronjéstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cronjéstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000611517"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13086968718,
+     "lngLat": [
+      4.9222854,
+      52.3528975
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-31T14:09:36.090Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    },
+    {
+     "type": "node",
+     "id": 13086971968,
+     "lngLat": [
+      4.9223896,
+      52.3528623
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_loops",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-31T14:09:36.090Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  }
+ ]
+}

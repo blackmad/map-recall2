@@ -1,0 +1,172 @@
+{
+ "face": "hofmeyr-3-7",
+ "street": "Hofmeyrstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.36,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012097697",
+   "address": "Hofmeyrstraat 3C",
+   "builtYear": 1989,
+   "widthM": 8.98,
+   "eavesM": 11.94,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.91,
+    "toM": 3.91,
+    "depthM": 0.9,
+    "centre": 0.436
+   },
+   "strip": {
+    "wall": "#55473f",
+    "wallRaw": "#5e594b",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 127,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.97,
+      "topWidthM": 0.78,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.182,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.02,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.78 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074676",
+   "address": "Hofmeyrstraat 7",
+   "builtYear": 1928,
+   "widthM": 5.74,
+   "eavesM": 13.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66514a",
+    "wallRaw": "#625149",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 106,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.257,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1928, type 1921-1924; frontage 5.74 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1921-1924",
+     "frontage 5.74 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.3 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.233 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

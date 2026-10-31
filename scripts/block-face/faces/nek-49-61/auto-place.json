@@ -1,0 +1,615 @@
+{
+ "face": "nek-49-61",
+ "street": "Laing's Nekstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012156274",
+   "address": "Laing's Nekstraat 49",
+   "builtYear": 1914,
+   "widthM": 4.62,
+   "eavesM": 6.71,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695a4e",
+    "wallRaw": "#796759",
+    "skyline": {
+     "eavesM": 10.6,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 6.53,
+      "topWidthM": 0.07,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 4.28 m at 0.5 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.28,
+       "centre": 0.5,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 4.62 m, type 8.8-12.9 m; strip shows balconies (dark open axis 4.28 m at 0.5 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1921-1924",
+     "frontage 4.62 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 4.28 m at 0.5 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.6 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163771",
+   "address": "Laing's Nekstraat 51",
+   "builtYear": 1912,
+   "widthM": 4.56,
+   "eavesM": 9.05,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5e5a",
+    "wallRaw": "#806f69",
+    "skyline": {
+     "eavesM": 9.07,
+     "eavesRow": 353,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.399,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.79,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.56 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.56 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.285 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118171",
+   "address": "Laing's Nekstraat 53",
+   "builtYear": 1912,
+   "widthM": 4.73,
+   "eavesM": 9.05,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d6360",
+    "wallRaw": "#87756f",
+    "skyline": {
+     "eavesM": 7.67,
+     "eavesRow": 409,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 6.25,
+      "topWidthM": 0.13,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.312,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.82 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.82,
+       "light": 0.48
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.7,
+       "widthM": 3.08,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.73 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.6 m at 0.82 (light 0.48): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.73 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.6 m at 0.82 (light 0.48): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 7.67 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.302 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165604",
+   "address": "Laing's Nekstraat 55",
+   "builtYear": 1912,
+   "widthM": 4.64,
+   "eavesM": 6.86,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3b40",
+    "wallRaw": "#4a464a",
+    "skyline": {
+     "eavesM": 9.22,
+     "eavesRow": 347,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 4.65,
+      "topWidthM": 0.23,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.11 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.11,
+       "light": 0.24
+      },
+      {
+       "widthM": 3.33,
+       "centre": 0.61,
+       "light": 0.17
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.57,
+       "widthM": 1.18,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.64 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.78 m at 0.11 (light 0.24): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.64 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.78 m at 0.11 (light 0.24): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.22 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.148 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161796",
+   "address": "Laing's Nekstraat 57",
+   "builtYear": 1912,
+   "widthM": 4.64,
+   "eavesM": 6.32,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675556",
+    "wallRaw": "#926a5f",
+    "skyline": {
+     "eavesM": 9.28,
+     "eavesRow": 345,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 4.57,
+      "topWidthM": 0.25,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.73,
+     "balconies": true,
+     "why": "dark open axis 4.28 m at 0.5 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.28,
+       "centre": 0.5,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.64 m, type 8.8-12.9 m; strip shows balconies (dark open axis 4.28 m at 0.5 (light 0.25): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.64 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 4.28 m at 0.5 (light 0.25): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.28 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.165 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156344",
+   "address": "Laing's Nekstraat 59",
+   "builtYear": 1912,
+   "widthM": 4.51,
+   "eavesM": 6.88,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5f5e",
+    "wallRaw": "#867067",
+    "skyline": {
+     "eavesM": 8.22,
+     "eavesRow": 387,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 7.83,
+      "topWidthM": 0.05,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.05,
+     "balconies": true,
+     "why": "dark open axis 3.85 m at 0.46 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.85,
+       "centre": 0.46,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.51 m, type 8.8-12.9 m; strip shows balconies (dark open axis 3.85 m at 0.46 (light 0.16): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.51 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 3.85 m at 0.46 (light 0.16): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 8.22 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.155 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167400",
+   "address": "Laing's Nekstraat 61",
+   "builtYear": 1912,
+   "widthM": 4.74,
+   "eavesM": 9.09,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6e69",
+    "wallRaw": "#8b756e",
+    "skyline": {
+     "eavesM": 9,
+     "eavesRow": 356,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 4.7,
+      "topWidthM": 0.15,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.317,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.35 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.35,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.74 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.68 m at 0.35 (light 0.31): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.74 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 0.68 m at 0.35 (light 0.31): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.247 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

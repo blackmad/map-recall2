@@ -1,0 +1,269 @@
+{
+ "street": "Albert Luthulistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:13:46.696Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092667",
+   "addresses": [
+    "Albert Luthulistraat 18A",
+    "Albert Luthulistraat 18C",
+    "Albert Luthulistraat 18D",
+    "Albert Luthulistraat 18B",
+    "Albert Luthulistraat 20A",
+    "Albert Luthulistraat 20C",
+    "Albert Luthulistraat 20D",
+    "Albert Luthulistraat 20B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000928588"
+    },
+    {
+     "address": "Albert Luthulistraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928590"
+    },
+    {
+     "address": "Albert Luthulistraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000928591"
+    },
+    {
+     "address": "Albert Luthulistraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000928596"
+    },
+    {
+     "address": "Albert Luthulistraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000928598"
+    },
+    {
+     "address": "Albert Luthulistraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928589"
+    },
+    {
+     "address": "Albert Luthulistraat 20D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928599"
+    },
+    {
+     "address": "Albert Luthulistraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928597"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087850",
+   "addresses": [
+    "Albert Luthulistraat 14A",
+    "Albert Luthulistraat 14B",
+    "Albert Luthulistraat 14C",
+    "Albert Luthulistraat 14D",
+    "Albert Luthulistraat 16A",
+    "Albert Luthulistraat 16B",
+    "Albert Luthulistraat 16C",
+    "Albert Luthulistraat 16D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000928572"
+    },
+    {
+     "address": "Albert Luthulistraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928573"
+    },
+    {
+     "address": "Albert Luthulistraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000928574"
+    },
+    {
+     "address": "Albert Luthulistraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000928580"
+    },
+    {
+     "address": "Albert Luthulistraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928581"
+    },
+    {
+     "address": "Albert Luthulistraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000928582"
+    },
+    {
+     "address": "Albert Luthulistraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928575"
+    },
+    {
+     "address": "Albert Luthulistraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928583"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073273",
+   "addresses": [
+    "Albert Luthulistraat 10A",
+    "Albert Luthulistraat 10C",
+    "Albert Luthulistraat 10B",
+    "Albert Luthulistraat 10D",
+    "Albert Luthulistraat 12A",
+    "Albert Luthulistraat 12B",
+    "Albert Luthulistraat 12C",
+    "Albert Luthulistraat 12D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928556"
+    },
+    {
+     "address": "Albert Luthulistraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928564"
+    },
+    {
+     "address": "Albert Luthulistraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928565"
+    },
+    {
+     "address": "Albert Luthulistraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928566"
+    },
+    {
+     "address": "Albert Luthulistraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928558"
+    },
+    {
+     "address": "Albert Luthulistraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928557"
+    },
+    {
+     "address": "Albert Luthulistraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928559"
+    },
+    {
+     "address": "Albert Luthulistraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000928567"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097026",
+   "addresses": [
+    "Albert Luthulistraat 6A",
+    "Albert Luthulistraat 6B",
+    "Albert Luthulistraat 6D",
+    "Albert Luthulistraat 6C",
+    "Albert Luthulistraat 8A",
+    "Albert Luthulistraat 8B",
+    "Albert Luthulistraat 8D",
+    "Albert Luthulistraat 8C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Albert Luthulistraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000928540"
+    },
+    {
+     "address": "Albert Luthulistraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000928548"
+    },
+    {
+     "address": "Albert Luthulistraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928549"
+    },
+    {
+     "address": "Albert Luthulistraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000928551"
+    },
+    {
+     "address": "Albert Luthulistraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928541"
+    },
+    {
+     "address": "Albert Luthulistraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928543"
+    },
+    {
+     "address": "Albert Luthulistraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928550"
+    },
+    {
+     "address": "Albert Luthulistraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000928542"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,690 @@
+{
+ "street": "Kraaipanstraat",
+ "seed": "0363100012115531",
+ "members": [
+  "0363100012115531",
+  "0363100012098646",
+  "0363100012135365"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012093454 11.6 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062594",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012099522"
+  },
+  {
+   "pandId": "0363100012062795",
+   "reason": "frontage 60.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012064734",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012093454"
+  },
+  {
+   "pandId": "0363100012068244",
+   "reason": "frontage 35.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012068825",
+   "reason": "frontage 57.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012070507",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012102819"
+  },
+  {
+   "pandId": "0363100012070736",
+   "reason": "frontage 42.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012072680",
+   "reason": "frontage 46.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012072682",
+   "reason": "frontage 99.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012073273",
+   "reason": "frontage 72.2 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012073386",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012074323",
+   "reason": "frontage 35.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012075103",
+   "reason": "frontage 83.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012076140",
+   "reason": "frontage 36.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012077542",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012142786"
+  },
+  {
+   "pandId": "0363100012077743",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012084950",
+   "reason": "frontage 48.1 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "frontage 66.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012088147",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012091658"
+  },
+  {
+   "pandId": "0363100012091456",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012091658",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "frontage 60.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012092784",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012094468",
+   "reason": "frontage 46.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012094578",
+   "reason": "frontage 31.2 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012096202",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012084592"
+  },
+  {
+   "pandId": "0363100012097026",
+   "reason": "frontage 78.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012097376",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012066732"
+  },
+  {
+   "pandId": "0363100012098146",
+   "reason": "frontage 41.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012098320",
+   "reason": "frontage 30.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012098793",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012088147"
+  },
+  {
+   "pandId": "0363100012102728",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012102791",
+   "reason": "frontage 66.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012103278",
+   "reason": "frontage 57.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012103780",
+   "reason": "frontage 53.1 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012105195",
+   "reason": "frontage 51.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012105200",
+   "reason": "frontage 31.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012107101",
+   "reason": "frontage 31.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012109924",
+   "reason": "frontage 32.1 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012110043",
+   "reason": "frontage 45.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012110210",
+   "reason": "frontage 65.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012110306",
+   "reason": "frontage 105.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012112723",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012113350",
+   "reason": "frontage 54.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012113844",
+   "reason": "frontage 57.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012117331",
+   "reason": "frontage 30.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012117405",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012117780",
+   "reason": "frontage 57.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012117986",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012119424",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012121170",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012142786"
+  },
+  {
+   "pandId": "0363100012122976",
+   "reason": "frontage 49.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012123734",
+   "reason": "frontage 58.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012123796",
+   "reason": "frontage 39.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012123924",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012126318",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012126367",
+   "reason": "frontage 54.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012126379",
+   "reason": "frontage 30.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012126814",
+   "reason": "frontage 32.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012127557",
+   "reason": "frontage 40.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012130894",
+   "reason": "frontage 46.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012130923",
+   "reason": "frontage 54.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012132467",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012099522"
+  },
+  {
+   "pandId": "0363100012134611",
+   "reason": "frontage 36.2 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012135892",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012136060",
+   "reason": "frontage 47.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012138010",
+   "reason": "frontage 55.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012140132",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012127658"
+  },
+  {
+   "pandId": "0363100012140152",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012140934",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012127658"
+  },
+  {
+   "pandId": "0363100012141486",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012102819"
+  },
+  {
+   "pandId": "0363100012142199",
+   "reason": "frontage 40.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012142206",
+   "reason": "frontage 32.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012142304",
+   "reason": "frontage 51.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012143885",
+   "reason": "frontage 64.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012144607",
+   "reason": "frontage 51.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012145564",
+   "reason": "frontage 34.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012147463",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012102819"
+  },
+  {
+   "pandId": "0363100012147649",
+   "reason": "frontage 34.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012148504",
+   "reason": "frontage 58.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012149524",
+   "reason": "frontage 65.2 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012150006",
+   "reason": "frontage 58.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012150310",
+   "reason": "frontage 97.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012150447",
+   "reason": "frontage 42.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012151169",
+   "reason": "frontage 54.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012154844",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012084592"
+  },
+  {
+   "pandId": "0363100012154997",
+   "reason": "frontage 30.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012155070",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012195479",
+   "reason": "frontage 43.1 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012204376",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012204378",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012204377"
+  },
+  {
+   "pandId": "0363100012205299",
+   "reason": "frontage 39.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012205300",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012076994"
+  },
+  {
+   "pandId": "0363100012205301",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012093454"
+  },
+  {
+   "pandId": "0363100012205302",
+   "reason": "frontage 41.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012205303",
+   "reason": "frontage 52.2 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012205304",
+   "reason": "frontage 54.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012205305",
+   "reason": "frontage 57.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012205308",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012076994"
+  },
+  {
+   "pandId": "0363100012205309",
+   "reason": "sightline to Kraaipanstraat crosses 0363100012076994"
+  },
+  {
+   "pandId": "0363100012223678",
+   "reason": "frontage 90.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223680",
+   "reason": "frontage 86.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223683",
+   "reason": "frontage 89.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223684",
+   "reason": "frontage 92.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223685",
+   "reason": "frontage 79.0 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223689",
+   "reason": "frontage 84.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223699",
+   "reason": "frontage 95.5 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223700",
+   "reason": "frontage 97.8 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223701",
+   "reason": "frontage 98.7 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223702",
+   "reason": "frontage 99.6 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223704",
+   "reason": "frontage 96.4 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012223705",
+   "reason": "frontage 97.3 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012229480",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012233534",
+   "reason": "frontage 43.9 m from Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012236989",
+   "reason": "no frontage on Kraaipanstraat: No footprint edge faces Kraaipanstraat"
+  },
+  {
+   "pandId": "0363100012061216",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012061600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012061769",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012062562",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074901",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078376",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082203",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086048",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095081",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099522",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101968",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106188",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107303",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111001",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119532",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119746",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125853",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127247",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130038",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134073",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141339",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144506",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149403",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012204377",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012115531",
+   "alongM": 0,
+   "widthM": 6.04,
+   "eavesM": 5.87,
+   "roofMaxM": 13.18,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012098646",
+   "alongM": 6.06,
+   "widthM": 6.08,
+   "eavesM": 5.8,
+   "roofMaxM": 12.75,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135365",
+   "alongM": 12.1,
+   "widthM": 6,
+   "eavesM": 5.71,
+   "roofMaxM": 12.04,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  }
+ ]
+}

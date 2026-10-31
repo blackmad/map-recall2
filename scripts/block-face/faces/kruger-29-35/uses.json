@@ -1,0 +1,150 @@
+{
+ "street": "Krugerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:25:35.307Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083847",
+   "addresses": [
+    "Krugerstraat 29A",
+    "Krugerstraat 29B",
+    "Krugerstraat 29C",
+    "Krugerstraat 29D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000715040"
+    },
+    {
+     "address": "Krugerstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000715041"
+    },
+    {
+     "address": "Krugerstraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000715042"
+    },
+    {
+     "address": "Krugerstraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000715043"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150331",
+   "addresses": [
+    "Krugerstraat 31A",
+    "Krugerstraat 31B",
+    "Krugerstraat 31C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000715044"
+    },
+    {
+     "address": "Krugerstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000715045"
+    },
+    {
+     "address": "Krugerstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000715046"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119150",
+   "addresses": [
+    "Krugerstraat 33A",
+    "Krugerstraat 33B",
+    "Krugerstraat 33C",
+    "Krugerstraat 33D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000715048"
+    },
+    {
+     "address": "Krugerstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000715049"
+    },
+    {
+     "address": "Krugerstraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000715050"
+    },
+    {
+     "address": "Krugerstraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000715051"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133761",
+   "addresses": [
+    "Krugerstraat 35A",
+    "Krugerstraat 35B",
+    "Krugerstraat 35C",
+    "Krugerstraat 35D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000715055"
+    },
+    {
+     "address": "Krugerstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000715056"
+    },
+    {
+     "address": "Krugerstraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000715057"
+    },
+    {
+     "address": "Krugerstraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000715058"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

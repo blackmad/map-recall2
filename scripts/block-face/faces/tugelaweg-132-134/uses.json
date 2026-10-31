@@ -1,0 +1,99 @@
+{
+ "street": "Tugelaweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:45:16.838Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093712",
+   "addresses": [
+    "Tugelaweg 132",
+    "Tugelaweg 133A",
+    "Tugelaweg 133B",
+    "Tugelaweg 133C",
+    "Tugelaweg 133D",
+    "Tugelaweg 133E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 132",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000831688"
+    },
+    {
+     "address": "Tugelaweg 133A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000831689"
+    },
+    {
+     "address": "Tugelaweg 133B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831690"
+    },
+    {
+     "address": "Tugelaweg 133C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000831691"
+    },
+    {
+     "address": "Tugelaweg 133E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000989450"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115065",
+   "addresses": [
+    "Tugelaweg 134A",
+    "Tugelaweg 134B",
+    "Tugelaweg 134C",
+    "Tugelaweg 134D",
+    "Tugelaweg 134E",
+    "Tugelaweg 134F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tugelaweg 134A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000831693"
+    },
+    {
+     "address": "Tugelaweg 134B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000831694"
+    },
+    {
+     "address": "Tugelaweg 134C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000831695"
+    },
+    {
+     "address": "Tugelaweg 134D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000831696"
+    },
+    {
+     "address": "Tugelaweg 134F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000989451"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

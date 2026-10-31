@@ -1,0 +1,655 @@
+{
+ "street": "Smitstraat",
+ "seed": "0363100012099888",
+ "members": [
+  "0363100012114180",
+  "0363100012069344",
+  "0363100012143928",
+  "0363100012099888"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012112800 26.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012099888 (face continues: 124615)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061274",
+   "reason": "frontage 61.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012061648",
+   "reason": "frontage 35.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012062150",
+   "reason": "sightline to Smitstraat crosses 0363100012087384"
+  },
+  {
+   "pandId": "0363100012062237",
+   "reason": "frontage 40.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012062315",
+   "reason": "frontage 68.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012062960",
+   "reason": "frontage 36.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012063216",
+   "reason": "frontage 54.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012064816",
+   "reason": "sightline to Smitstraat crosses 0363100012137732"
+  },
+  {
+   "pandId": "0363100012065205",
+   "reason": "frontage 40.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012066961",
+   "reason": "sightline to Smitstraat crosses 0363100012124615"
+  },
+  {
+   "pandId": "0363100012067013",
+   "reason": "sightline to Smitstraat crosses 0363100012138910"
+  },
+  {
+   "pandId": "0363100012068336",
+   "reason": "frontage 74.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012068543",
+   "reason": "frontage 43.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012070879",
+   "reason": "frontage 72.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012071924",
+   "reason": "sightline to Smitstraat crosses 0363100012062150"
+  },
+  {
+   "pandId": "0363100012072109",
+   "reason": "frontage 90.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012072390",
+   "reason": "sightline to Smitstraat crosses 0363100012072572"
+  },
+  {
+   "pandId": "0363100012072572",
+   "reason": "sightline to Smitstraat crosses 0363100012064816"
+  },
+  {
+   "pandId": "0363100012073931",
+   "reason": "frontage 35.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012074312",
+   "reason": "frontage 38.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012074634",
+   "reason": "frontage 133.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012075049",
+   "reason": "frontage 61.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012076187",
+   "reason": "frontage 99.9 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012076819",
+   "reason": "frontage 56.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012076837",
+   "reason": "frontage 47.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012076911",
+   "reason": "frontage 61.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012077155",
+   "reason": "sightline to Smitstraat crosses 0363100012120818"
+  },
+  {
+   "pandId": "0363100012080889",
+   "reason": "frontage 102.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012082556",
+   "reason": "frontage 42.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012082879",
+   "reason": "frontage 35.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012083997",
+   "reason": "frontage 55.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012085212",
+   "reason": "no frontage on Smitstraat: No footprint edge faces Smitstraat"
+  },
+  {
+   "pandId": "0363100012085405",
+   "reason": "frontage 57.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012086038",
+   "reason": "sightline to Smitstraat crosses 0363100012114180"
+  },
+  {
+   "pandId": "0363100012087223",
+   "reason": "frontage 67.9 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012087298",
+   "reason": "frontage 59.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012088417",
+   "reason": "frontage 39.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012089136",
+   "reason": "no frontage on Smitstraat: No footprint edge faces Smitstraat"
+  },
+  {
+   "pandId": "0363100012090964",
+   "reason": "sightline to Smitstraat crosses 0363100012112800"
+  },
+  {
+   "pandId": "0363100012092019",
+   "reason": "frontage 44.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012092816",
+   "reason": "frontage 41.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012093825",
+   "reason": "frontage 90.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012095458",
+   "reason": "frontage 54.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012096769",
+   "reason": "sightline to Smitstraat crosses 0363100012085212"
+  },
+  {
+   "pandId": "0363100012097203",
+   "reason": "sightline to Smitstraat crosses 0363100012076100"
+  },
+  {
+   "pandId": "0363100012098189",
+   "reason": "frontage 57.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012098505",
+   "reason": "frontage 78.9 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012098524",
+   "reason": "sightline to Smitstraat crosses 0363100012117340"
+  },
+  {
+   "pandId": "0363100012100947",
+   "reason": "frontage 89.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012102141",
+   "reason": "frontage 42.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012102414",
+   "reason": "frontage 76.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012102458",
+   "reason": "frontage 97.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012103856",
+   "reason": "sightline to Smitstraat crosses 0363100012095054"
+  },
+  {
+   "pandId": "0363100012106537",
+   "reason": "frontage 82.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012108133",
+   "reason": "frontage 77.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012108540",
+   "reason": "sightline to Smitstraat crosses 0363100012090964"
+  },
+  {
+   "pandId": "0363100012109431",
+   "reason": "frontage 30.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012109508",
+   "reason": "frontage 31.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012109786",
+   "reason": "frontage 30.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012110214",
+   "reason": "frontage 48.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012112323",
+   "reason": "sightline to Smitstraat crosses 0363100012067013"
+  },
+  {
+   "pandId": "0363100012113269",
+   "reason": "sightline to Smitstraat crosses 0363100012095054"
+  },
+  {
+   "pandId": "0363100012113637",
+   "reason": "sightline to Smitstraat crosses 0363100012112800"
+  },
+  {
+   "pandId": "0363100012115710",
+   "reason": "frontage 83.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012116871",
+   "reason": "frontage 121.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012118282",
+   "reason": "frontage 37.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012118441",
+   "reason": "frontage 46.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012120128",
+   "reason": "frontage 110.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012120175",
+   "reason": "frontage 32.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012120308",
+   "reason": "frontage 67.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012120818",
+   "reason": "sightline to Smitstraat crosses 0363100012147945"
+  },
+  {
+   "pandId": "0363100012125077",
+   "reason": "frontage 31.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012125880",
+   "reason": "frontage 110.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012128986",
+   "reason": "sightline to Smitstraat crosses 0363100012076100"
+  },
+  {
+   "pandId": "0363100012129296",
+   "reason": "frontage 32.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012129491",
+   "reason": "sightline to Smitstraat crosses 0363100012067013"
+  },
+  {
+   "pandId": "0363100012129869",
+   "reason": "frontage 41.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012129967",
+   "reason": "sightline to Smitstraat crosses 0363100012076100"
+  },
+  {
+   "pandId": "0363100012132274",
+   "reason": "frontage 34.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012133749",
+   "reason": "frontage 99.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012134576",
+   "reason": "sightline to Smitstraat crosses 0363100012114180"
+  },
+  {
+   "pandId": "0363100012135080",
+   "reason": "frontage 65.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012137011",
+   "reason": "frontage 101.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012137027",
+   "reason": "sightline to Smitstraat crosses 0363100012085212"
+  },
+  {
+   "pandId": "0363100012139205",
+   "reason": "frontage 47.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012140305",
+   "reason": "frontage 78.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012140437",
+   "reason": "sightline to Smitstraat crosses 0363100012120818"
+  },
+  {
+   "pandId": "0363100012140469",
+   "reason": "frontage 78.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012141114",
+   "reason": "frontage 74.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012141204",
+   "reason": "frontage 49.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012141884",
+   "reason": "frontage 40.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012142255",
+   "reason": "frontage 67.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012142310",
+   "reason": "frontage 63.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012142562",
+   "reason": "sightline to Smitstraat crosses 0363100012124615"
+  },
+  {
+   "pandId": "0363100012142932",
+   "reason": "no frontage on Smitstraat: No footprint edge faces Smitstraat"
+  },
+  {
+   "pandId": "0363100012144337",
+   "reason": "sightline to Smitstraat crosses 0363100012098524"
+  },
+  {
+   "pandId": "0363100012148341",
+   "reason": "frontage 99.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012149374",
+   "reason": "no frontage on Smitstraat: No footprint edge faces Smitstraat"
+  },
+  {
+   "pandId": "0363100012149642",
+   "reason": "frontage 70.0 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012149666",
+   "reason": "frontage 50.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "frontage 69.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012151291",
+   "reason": "frontage 53.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012154820",
+   "reason": "frontage 49.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012184817",
+   "reason": "frontage 90.5 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012187535",
+   "reason": "sightline to Smitstraat crosses 0363100012117340"
+  },
+  {
+   "pandId": "0363100012187682",
+   "reason": "sightline to Smitstraat crosses 0363100012233511"
+  },
+  {
+   "pandId": "0363100012187683",
+   "reason": "sightline to Smitstraat crosses 0363100012233511"
+  },
+  {
+   "pandId": "0363100012191554",
+   "reason": "sightline to Smitstraat crosses 0363100012088106"
+  },
+  {
+   "pandId": "0363100012191612",
+   "reason": "frontage 89.9 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012192592",
+   "reason": "sightline to Smitstraat crosses 0363100012237322"
+  },
+  {
+   "pandId": "0363100012192593",
+   "reason": "sightline to Smitstraat crosses 0363100012237322"
+  },
+  {
+   "pandId": "0363100012196312",
+   "reason": "frontage 38.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012197578",
+   "reason": "frontage 44.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012198507",
+   "reason": "frontage 63.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012201282",
+   "reason": "frontage 96.7 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012201483",
+   "reason": "frontage 39.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012203111",
+   "reason": "frontage 34.4 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012205672",
+   "reason": "frontage 80.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012205745",
+   "reason": "sightline to Smitstraat crosses 0363100012117340"
+  },
+  {
+   "pandId": "0363100012211143",
+   "reason": "frontage 72.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012211606",
+   "reason": "sightline to Smitstraat crosses 0363100012089520"
+  },
+  {
+   "pandId": "0363100012213083",
+   "reason": "frontage 55.2 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012213859",
+   "reason": "sightline to Smitstraat crosses 0363100012233640"
+  },
+  {
+   "pandId": "0363100012213860",
+   "reason": "sightline to Smitstraat crosses 0363100012233640"
+  },
+  {
+   "pandId": "0363100012218251",
+   "reason": "frontage 76.1 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012221405",
+   "reason": "frontage 41.6 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012221962",
+   "reason": "sightline to Smitstraat crosses 0363100012236877"
+  },
+  {
+   "pandId": "0363100012221963",
+   "reason": "sightline to Smitstraat crosses 0363100012236877"
+  },
+  {
+   "pandId": "0363100012228689",
+   "reason": "sightline to Smitstraat crosses 0363100012088106"
+  },
+  {
+   "pandId": "0363100012233531",
+   "reason": "frontage 50.3 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012234548",
+   "reason": "frontage 50.8 m from Smitstraat"
+  },
+  {
+   "pandId": "0363100012235162",
+   "reason": "sightline to Smitstraat crosses 0363100012073938"
+  },
+  {
+   "pandId": "0363100012076148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087384",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088106",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117340",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126391",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131309",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233511",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236877",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237322",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012114180",
+   "alongM": -22.62,
+   "widthM": 11.05,
+   "eavesM": 13.59,
+   "roofMaxM": 16.52,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012069344",
+   "alongM": -14.11,
+   "widthM": 5.99,
+   "eavesM": 13.67,
+   "roofMaxM": 16.52,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012143928",
+   "alongM": -7.55,
+   "widthM": 7.13,
+   "eavesM": 13.26,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012099888",
+   "alongM": 0,
+   "widthM": 7.98,
+   "eavesM": 14.25,
+   "roofMaxM": 16.65,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

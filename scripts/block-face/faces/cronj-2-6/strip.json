@@ -1,0 +1,89 @@
+{
+ "face": "cronj-2-6",
+ "image": "staging/block-face/cronj-2-6/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 907,
+ "height": 579,
+ "groundNAP": 0.386,
+ "heightM": 14.47,
+ "frame": {
+  "midRD": [
+   123291.818875,
+   485147.61275000003
+  ],
+  "uRD": [
+   -0.4568623153914335,
+   0.8895374217958332
+  ],
+  "nRD": [
+   0.8895374217958332,
+   0.4568623153914335
+  ]
+ },
+ "x0M": -11.34,
+ "x1M": 11.34,
+ "date": "2020-04-29",
+ "coverage": 0.33,
+ "spans": [
+  {
+   "pandId": "0363100012149524",
+   "x0M": -11.34,
+   "x1M": -2.97,
+   "px": [
+    0,
+    335
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012110210",
+   "x0M": -2.97,
+   "x1M": 2.98,
+   "px": [
+    335,
+    573
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012102791",
+   "x0M": 2.98,
+   "x1M": 11.34,
+   "px": [
+    573,
+    907
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001680",
+     "timestamp": "2020-04-29T09:08:11.762300Z",
+     "distanceM": 28.1,
+     "obliquityDeg": 44.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-05-16": 0,
+  "2022-06-13": 0,
+  "2020-04-29": 0,
+  "2021-05-28": 0,
+  "2025-06-20": 0,
+  "2019-12-19": 0,
+  "2018-05-15": 0,
+  "2016-06-08": 0,
+  "2024-10-02": 0,
+  "2017-04-06": 0,
+  "2019-05-15": 0,
+  "2017-03-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

@@ -1,0 +1,191 @@
+{
+ "face": "transvaalkade-5-5",
+ "street": "Transvaalkade",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237090",
+   "address": "Transvaalkade 5A",
+   "builtYear": 1912,
+   "widthM": 5.11,
+   "eavesM": 11.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#88796d",
+    "wallRaw": "#a5897b",
+    "skyline": {
+     "eavesM": 12.82,
+     "eavesRow": 153,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 3.73,
+      "topWidthM": 0.1,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.325,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.9,
+       "widthM": 1.13,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.11 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.11 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.82 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.29 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236056",
+   "address": "Transvaalkade 5",
+   "builtYear": 1912,
+   "widthM": 4.99,
+   "eavesM": 11.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#927364",
+    "wallRaw": "#a78878",
+    "skyline": {
+     "eavesM": 12.68,
+     "eavesRow": 159,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 3.65,
+      "topWidthM": 0.17,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.309,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.25,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.99 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.99 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.68 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.267 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

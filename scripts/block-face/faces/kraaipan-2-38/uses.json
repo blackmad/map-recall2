@@ -1,0 +1,393 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:01:31.673Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122087",
+   "addresses": [
+    "Kraaipanstraat 38A",
+    "Kraaipanstraat 38B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 38A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000712019"
+    },
+    {
+     "address": "Kraaipanstraat 38B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000712020"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14108473647,
+     "lngLat": [
+      4.9191618,
+      52.3521919
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-31T15:01:31.673Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012095081",
+   "addresses": [
+    "Kraaipanstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000997035"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149403",
+   "addresses": [
+    "Kraaipanstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000997034"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150301",
+   "addresses": [
+    "Kraaipanstraat 32A",
+    "Kraaipanstraat 32B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 32A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000712007"
+    },
+    {
+     "address": "Kraaipanstraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000712008"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107303",
+   "addresses": [
+    "Kraaipanstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001019687"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119746",
+   "addresses": [
+    "Kraaipanstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000986822"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141566",
+   "addresses": [
+    "Kraaipanstraat 26A",
+    "Kraaipanstraat 26B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000711995"
+    },
+    {
+     "address": "Kraaipanstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711996"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073809",
+   "addresses": [
+    "Kraaipanstraat 24A",
+    "Kraaipanstraat 24B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711991"
+    },
+    {
+     "address": "Kraaipanstraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000711992"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092315",
+   "addresses": [
+    "Kraaipanstraat 22A",
+    "Kraaipanstraat 22B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000711987"
+    },
+    {
+     "address": "Kraaipanstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711988"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119532",
+   "addresses": [
+    "Kraaipanstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010002005715"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062562",
+   "addresses": [
+    "Kraaipanstraat 18A",
+    "Kraaipanstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000711979"
+    },
+    {
+     "address": "Kraaipanstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000711980"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074901",
+   "addresses": [
+    "Kraaipanstraat 16A",
+    "Kraaipanstraat 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000711975"
+    },
+    {
+     "address": "Kraaipanstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000711976"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149786",
+   "addresses": [
+    "Kraaipanstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000997032"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101968",
+   "addresses": [
+    "Kraaipanstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001017373"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111001",
+   "addresses": [
+    "Kraaipanstraat 10A",
+    "Kraaipanstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000711962"
+    },
+    {
+     "address": "Kraaipanstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711963"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061769",
+   "addresses": [
+    "Kraaipanstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000997031"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069468",
+   "addresses": [
+    "Kraaipanstraat 6A",
+    "Kraaipanstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000711953"
+    },
+    {
+     "address": "Kraaipanstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711954"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134073",
+   "addresses": [
+    "Kraaipanstraat 4A",
+    "Kraaipanstraat 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000711949"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125853",
+   "addresses": [
+    "Kraaipanstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000981020"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

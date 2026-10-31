@@ -1,0 +1,195 @@
+{
+ "face": "transvaalkade-6-6",
+ "street": "Transvaalkade",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 0.19,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012152734",
+   "address": "Transvaalkade 6A",
+   "builtYear": 1882,
+   "widthM": 4.95,
+   "eavesM": 11.16,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a58478",
+    "wallRaw": "#a58576",
+    "skyline": {
+     "eavesM": 10.7,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.75,
+      "topWidthM": 1.45,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.323,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.45,
+       "widthM": 0.82,
+       "centre": 0.89
+      },
+      {
+       "atM": 8.15,
+       "widthM": 0.82,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1882, type 1921-1924; frontage 4.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1921-1924",
+     "frontage 4.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.7 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.308 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157134",
+   "address": "Transvaalkade 6",
+   "builtYear": 1882,
+   "widthM": 5.05,
+   "eavesM": 11.12,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#987a67",
+    "wallRaw": "#948373",
+    "skyline": {
+     "eavesM": 10.55,
+     "eavesRow": 158,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.7,
+      "topWidthM": 1.55,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.432,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 0.88,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.18,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1882, type 1921-1924; frontage 5.05 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1921-1924",
+     "frontage 5.05 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.55 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.351 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

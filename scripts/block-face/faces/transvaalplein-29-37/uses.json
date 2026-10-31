@@ -1,0 +1,108 @@
+{
+ "street": "Transvaalplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:11:17.864Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012125334",
+   "addresses": [
+    "Transvaalplein 29",
+    "Transvaalplein 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 29",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000830392"
+    },
+    {
+     "address": "Transvaalplein 30",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000830393"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071950",
+   "addresses": [
+    "Transvaalplein 31",
+    "Transvaalplein 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 31",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000830394"
+    },
+    {
+     "address": "Transvaalplein 32",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000830395"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086112",
+   "addresses": [
+    "Transvaalplein 33",
+    "Transvaalplein 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 34",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000830397"
+    },
+    {
+     "address": "Transvaalplein 33",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000830396"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073091",
+   "addresses": [
+    "Transvaalplein 35",
+    "Transvaalplein 36",
+    "Transvaalplein 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalplein 36",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000830399"
+    },
+    {
+     "address": "Transvaalplein 37",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000830400"
+    },
+    {
+     "address": "Transvaalplein 35",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000830398"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

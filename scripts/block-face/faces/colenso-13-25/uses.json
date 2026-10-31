@@ -1,0 +1,94 @@
+{
+ "street": "Colensostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012105195",
+   "addresses": [
+    "Colensostraat 13",
+    "Colensostraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 15",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000606433"
+    },
+    {
+     "address": "Colensostraat 13",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000606431"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072680",
+   "addresses": [
+    "Colensostraat 17",
+    "Colensostraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 17",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000606435"
+    },
+    {
+     "address": "Colensostraat 19",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000606437"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098146",
+   "addresses": [
+    "Colensostraat 21",
+    "Colensostraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 23",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000606441"
+    },
+    {
+     "address": "Colensostraat 21",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000606439"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117405",
+   "addresses": [
+    "Colensostraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Colensostraat 25",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010002005014"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

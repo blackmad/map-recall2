@@ -1,0 +1,176 @@
+{
+ "face": "spitskop-4-8",
+ "street": "Spitskopstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.11,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012083980",
+   "address": "Spitskopstraat 8",
+   "builtYear": 1919,
+   "widthM": 9.03,
+   "eavesM": 6.24,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675347",
+    "wallRaw": "#65554f",
+    "skyline": {
+     "eavesM": 9.65,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.63,
+      "riseM": 2.45,
+      "topWidthM": 0.05,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.73,
+     "bayCentre": 0.84,
+     "balconies": true,
+     "why": "dark open axis 8.32 m at 0.5 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 8.32,
+       "centre": 0.5,
+       "light": 0.43
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: strip shows balconies (dark open axis 8.32 m at 0.5 (light 0.43): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 8.32 m at 0.5 (light 0.43): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.65 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 2 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.056 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076117",
+   "address": "Spitskopstraat 6",
+   "builtYear": 1919,
+   "widthM": 9.03,
+   "eavesM": 5.65,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4c41",
+    "wallRaw": "#685955",
+    "skyline": {
+     "eavesM": 11.2,
+     "eavesRow": 116,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 1.5,
+      "topWidthM": 0.63,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0.94,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 94 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079185",
+   "address": "Spitskopstraat 4",
+   "builtYear": 1919,
+   "widthM": 9.03,
+   "eavesM": 5.58,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5147",
+    "wallRaw": "#564949",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.2,
+      "topWidthM": 1,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0.87,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 87 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

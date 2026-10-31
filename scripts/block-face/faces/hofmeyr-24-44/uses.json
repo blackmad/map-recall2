@@ -1,0 +1,188 @@
+{
+ "street": "Hofmeyrstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:51:01.954Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012101555",
+   "addresses": [
+    "Hofmeyrstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000669080"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115391",
+   "addresses": [
+    "Hofmeyrstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000669073"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119583",
+   "addresses": [
+    "Hofmeyrstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000669066"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068401",
+   "addresses": [
+    "Hofmeyrstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000669058"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120470",
+   "addresses": [
+    "Hofmeyrstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000669051"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135794",
+   "addresses": [
+    "Hofmeyrstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000669044"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137886",
+   "addresses": [
+    "Hofmeyrstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000669037"
+    },
+    {
+     "address": "Hofmeyrstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012068219"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125720",
+   "addresses": [
+    "Hofmeyrstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000669031"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136673",
+   "addresses": [
+    "Hofmeyrstraat 26",
+    "Hofmeyrstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 26-H",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010000669017"
+    },
+    {
+     "address": "Hofmeyrstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011290377"
+    },
+    {
+     "address": "Hofmeyrstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011290378"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098724",
+   "addresses": [
+    "Hofmeyrstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hofmeyrstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000669000"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

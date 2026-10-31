@@ -1,0 +1,182 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:49:00.947Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156039",
+   "addresses": [
+    "Pretoriusstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000782434"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393091529,
+     "lngLat": [
+      4.9266467,
+      52.3562767
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10-H",
+      "addr:postcode": "1092GE",
+      "addr:street": "Pretoriusstraat",
+      "name": "Konet",
+      "shop": "butcher",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:49:00.947Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153576",
+   "addresses": [
+    "Pretoriusstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000782426"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1578742266,
+     "lngLat": [
+      4.9267267,
+      52.3562961
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-H",
+      "addr:postcode": "1092GE",
+      "addr:street": "Pretoriusstraat",
+      "check_date": "2024-11-04",
+      "email": "info@hrc-amsterdam.nl",
+      "name": "Radio Holi",
+      "opening_hours": "Tu-Fr 11:00-17:30; Sa 11:00-17:00",
+      "phone": "+31 20 6946388",
+      "shop": "electronics",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hrc-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-31T14:49:00.947Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158921",
+   "addresses": [
+    "Pretoriusstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000782418"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1300002710,
+     "lngLat": [
+      4.9268056,
+      52.3563216
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1092GE",
+      "addr:street": "Pretoriusstraat",
+      "name": "Stomerij Halis",
+      "shop": "dry_cleaning",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:49:00.947Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159660",
+   "addresses": [
+    "Pretoriusstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000782410"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826195574,
+     "lngLat": [
+      4.9268878,
+      52.3563416
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1092GE",
+      "addr:street": "Pretoriusstraat",
+      "name": "Golden Touch",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:49:00.947Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155371",
+   "addresses": [
+    "Pretoriusstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 2-H",
+     "use": "winkelfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000782402"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

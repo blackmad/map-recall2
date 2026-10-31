@@ -1,0 +1,640 @@
+{
+ "face": "wet-116-220",
+ "street": "Christiaan de Wetstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 2.99,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012113458",
+   "address": "Christiaan de Wetstraat 208",
+   "builtYear": 1929,
+   "widthM": 10.91,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.4,
+    "toM": 7.38,
+    "depthM": 0.51,
+    "centre": 0.494
+   },
+   "strip": {
+    "wall": "#283d3b",
+    "wallRaw": "#45463c",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.85,
+      "topWidthM": 0.68,
+      "centre": 0.04
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.3 m at 0.84 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.3,
+       "centre": 0.84,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.97,
+       "widthM": 1.55,
+       "centre": 0.08
+      },
+      {
+       "atM": 4.67,
+       "widthM": 1.27,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; strip shows balconies (dark open axis 3.3 m at 0.84 (light 0.21): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "strip shows balconies (dark open axis 3.3 m at 0.84 (light 0.21): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.18 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089130",
+   "address": "Christiaan de Wetstraat 194",
+   "builtYear": 1929,
+   "widthM": 12.04,
+   "eavesM": 12.22,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.07,
+    "toM": 8.03,
+    "depthM": 0.51,
+    "centre": 0.502
+   },
+   "strip": {
+    "wall": "#3c5754",
+    "wallRaw": "#3a4331",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 71,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012072943",
+   "address": "Christiaan de Wetstraat 180",
+   "builtYear": 1929,
+   "widthM": 12.04,
+   "eavesM": 12.22,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.1,
+    "toM": 8.09,
+    "depthM": 0.58,
+    "centre": 0.506
+   },
+   "strip": {
+    "wall": "#3e5a57",
+    "wallRaw": "#3d493b",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 68,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.52 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152184",
+   "address": "Christiaan de Wetstraat 160",
+   "builtYear": 1929,
+   "widthM": 18.06,
+   "eavesM": 15.6,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.76,
+    "toM": 15.12,
+    "depthM": 0.76,
+    "centre": 0.467
+   },
+   "strip": {
+    "wall": "#77675e",
+    "wallRaw": "#7f7065",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 88,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.171,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 0.9,
+       "centre": 0.51
+      },
+      {
+       "atM": 5.47,
+       "widthM": 1.15,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924; frontage 18.06 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924",
+     "frontage 18.06 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.02 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.137 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123055",
+   "address": "Christiaan de Wetstraat 146",
+   "builtYear": 1929,
+   "widthM": 12.04,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.13,
+    "toM": 9.07,
+    "depthM": 0.42,
+    "centre": 0.507
+   },
+   "strip": {
+    "wall": "#7c6a60",
+    "wallRaw": "#817168",
+    "skyline": {
+     "eavesM": 17.32,
+     "eavesRow": 76,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 0.7,
+      "topWidthM": 0.33,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.257,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.82,
+       "widthM": 0.95,
+       "centre": 0.35
+      },
+      {
+       "atM": 5.52,
+       "widthM": 0.9,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.32 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.211 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089052",
+   "address": "Christiaan de Wetstraat 132",
+   "builtYear": 1929,
+   "widthM": 12.04,
+   "eavesM": 15.68,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.08,
+    "toM": 9.01,
+    "depthM": 0.42,
+    "centre": 0.502
+   },
+   "strip": {
+    "wall": "#7a675d",
+    "wallRaw": "#7a6c63",
+    "skyline": {
+     "eavesM": 17.5,
+     "eavesRow": 69,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.7,
+       "widthM": 1.23,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1929, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1929, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.5 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.185 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078181",
+   "address": "Christiaan de Wetstraat 116",
+   "builtYear": 1928,
+   "widthM": 13.9,
+   "eavesM": 15.49,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.02,
+    "toM": 9.03,
+    "depthM": 0.42,
+    "centre": 0.433
+   },
+   "strip": {
+    "wall": "#77635b",
+    "wallRaw": "#837067",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 73,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 0.65,
+      "topWidthM": 1.07,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.194,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.65,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 0.93,
+       "centre": 0.27
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.13,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1928, type 1921-1924; frontage 13.9 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1921-1924",
+     "frontage 13.9 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.157 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

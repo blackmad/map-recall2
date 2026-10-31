@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "joubert-3-25-r1",
+ "street": "Joubertstraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/joubert-3-25-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/joubert-3-25/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-white-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012071769",
+   "slug": "joubert-071769",
+   "address": "Joubertstraat 19",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco -; strip 2020-04-29 span 3575-3821"
+   }
+  },
+  {
+   "pandId": "0363100012129254",
+   "slug": "joubert-129254",
+   "address": "Joubertstraat 21",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6e5248",
+     "evidence": "strip 2020-04-29 span 3821-4072: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2020-04-29 span 3821-4072"
+   }
+  },
+  {
+   "pandId": "0363100012096148",
+   "slug": "joubert-096148",
+   "address": "Joubertstraat 23",
+   "type": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco -; strip 2020-04-29 span 4072-4317"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

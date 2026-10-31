@@ -1,0 +1,200 @@
+{
+ "face": "kraaipan-23-29",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 0.13,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012082203",
+   "address": "Kraaipanstraat 23",
+   "builtYear": 1920,
+   "widthM": 6.04,
+   "eavesM": 8,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 603,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086048",
+   "address": "Kraaipanstraat 25B",
+   "builtYear": 1921,
+   "widthM": 5.95,
+   "eavesM": 6.57,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 603,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103446",
+   "address": "Kraaipanstraat 27",
+   "builtYear": 1921,
+   "widthM": 6.1,
+   "eavesM": 8.02,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f6764",
+    "wallRaw": "#7f8084",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 603,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0.99,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 99 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012061216",
+   "address": "Kraaipanstraat 29",
+   "builtYear": 1921,
+   "widthM": 6.7,
+   "eavesM": 10.45,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746258",
+    "wallRaw": "#5e5047",
+    "skyline": {
+     "eavesM": 9.43,
+     "eavesRow": 226,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 3.92,
+      "riseM": 5.5,
+      "topWidthM": 0.2,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.28,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.7 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 6.7 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 9.43 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+{
+ "street": "Smitstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:22:12.710Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012134096",
+   "addresses": [
+    "Smitstraat 18C",
+    "Smitstraat 18A",
+    "Smitstraat 18D",
+    "Smitstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000812750"
+    },
+    {
+     "address": "Smitstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000812753"
+    },
+    {
+     "address": "Smitstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000812751"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112873",
+   "addresses": [
+    "Smitstraat 16D",
+    "Smitstraat 16E",
+    "Smitstraat 16A",
+    "Smitstraat 16B",
+    "Smitstraat 16C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012578537"
+    },
+    {
+     "address": "Smitstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000812742"
+    },
+    {
+     "address": "Smitstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000812743"
+    },
+    {
+     "address": "Smitstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000812744"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081370",
+   "addresses": [
+    "Smitstraat 14D",
+    "Smitstraat 14B",
+    "Smitstraat 14C",
+    "Smitstraat 14A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000812739"
+    },
+    {
+     "address": "Smitstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000812737"
+    },
+    {
+     "address": "Smitstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000812738"
+    },
+    {
+     "address": "Smitstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000812736"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095054",
+   "addresses": [
+    "Smitstraat 12D",
+    "Smitstraat 12A",
+    "Smitstraat 12C",
+    "Smitstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000812735"
+    },
+    {
+     "address": "Smitstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000812732"
+    },
+    {
+     "address": "Smitstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000812734"
+    },
+    {
+     "address": "Smitstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000812733"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
