@@ -144,6 +144,21 @@ test('camera clearance: lowers the pitch until the sightline clears, at most CLE
   assert.equal(open.constrained, false);
 });
 
+test('camera clearance sees every resident: a wall among the ~14,000 that sampleFeatures(20_000) dropped still lowers the camera', async () => {
+  const { clearCamera, clearanceResidents } = await import('./cameraClearance');
+  const square = (id: string, w: number, s: number, e: number, n: number, height: number) => ({ properties: { id, height }, geometry: { type: 'Polygon', coordinates: [[[w, s], [e, s], [e, n], [w, n], [w, s]]] } });
+  const mLat = 111320, rider: [number, number] = [4.9, 52.37];
+  // 34,000 residents in cache order (like BuildingTileStreamer's list): far houses first, the wall behind the rider at 30,000.
+  const list: any[] = [];
+  for (let i = 0; i < 34_000; i++) list.push(square(`far${i}`, 5.0 + (i % 200) * 1e-4, 52.40 + Math.floor(i / 200) * 1e-4, 5.0 + (i % 200) * 1e-4 + 5e-5, 52.40 + Math.floor(i / 200) * 1e-4 + 5e-5, 10));
+  list[30_000] = square('wall', 4.8998, 52.37 - 20 / mLat, 4.9002, 52.37 - 10 / mLat, 12);
+  const city = { sampleFeatures: (limit: number) => list.slice(0, Math.min(list.length, limit)) };
+  const eyeAt = (pitch: number) => { const d = 60; const h = d * Math.cos(pitch * Math.PI / 180), back = d * Math.sin(pitch * Math.PI / 180); return { lngLat: [4.9, 52.37 - back / mLat] as [number, number], altitude: h }; };
+  assert.equal(clearCamera(70, rider, rider, eyeAt, () => city.sampleFeatures(20_000))!.constrained, false, 'the old 20,000 cap: blind to the wall');
+  const r = clearCamera(70, rider, rider, eyeAt, () => clearanceResidents(city))!;
+  assert.ok(r.constrained && r.safePitch < 70, `every resident: the camera is lowered clear of the wall ${JSON.stringify(r)}`);
+});
+
 test('rider cover: covered after the enter hold, cleared after the leave hold', async () => {
   const { RiderCoverTracker } = await import('./riderCover');
   const shed = { properties: { id: 'cs', min_height: 0 }, geometry: { type: 'Polygon', coordinates: [[[4.89, 52.37], [4.91, 52.37], [4.91, 52.38], [4.89, 52.38], [4.89, 52.37]]] } };
