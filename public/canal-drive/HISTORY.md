@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+**Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
+The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
+drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label
+anchor against the resident building footprints and heights: a frontage that
+faces away from the camera, or has a nearer taller pand between it and the
+camera, does not draw. It runs inside the full-placement winners loop of
+`engine/overlays/labelLayer.ts` (≈ 0.4 ms per pass) over
+`BuildingTileStreamer.residentFeatures()`; `tests/e2e/label-occlusion.spec.ts`
+pins the pose. The user has since said more occlusion is needed; the gaps are
+on TODO. `scripts/motion-stutter.mjs` now runs under the own engine (it
+wrapped `vm.map._render`, which is null under the flag, so every earlier
+own-engine stutter run idled to its deadline and one held the browser lock for
+an hour), with `WATCHDOG=<s>` (debugger pause + stack dump when the page stops
+answering), `STALL_MS`, `DPR`, `VIEWPORT`, `HEADED`. Measured the same evening
+by the materials lane on the M4 Pro at DPR 2, headed, tier high: GPU frame p50
+5.2 ms at the Dam and 5.3 at the Westerkerk; the own ground is 1.3–1.5 ms of
+that across 31 lit layers and ≈ 3.0 M triangles (paving 501k, land 421k, quay
+418k); front-to-back ordering was 0.2 ms slower and flipped coplanar ties, a
+depth prepass would cost more than the < 1 ms it could save, so nothing landed
+and the ≈ 9.5 ms figure from the earlier table is withdrawn (GPU contention
+between lanes). Conclusion for the user's "still stuttery" report: the GPU
+frame is ≈ 5 ms, so the owners are main-thread hitches; L1 names them per task
+next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
+desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
+`start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
+
+**Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
+Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
+classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
+(a 20 m land band under the bridge), no BRU outline or footprint covers it so the OSM bridge way crosses no water and
+gets no way deck, BGT's deck-level (h 1) carriageway is skipped off a deck, the way is in `coverWays` so no OSM bands
+draw, and look B paints the bare land as paving. Lane `bridge-roads-20261031`: `withOpenings` opens the water under
+OSM bridge ways no measured deck or footprint claims (side-by-side ways bundled, 0.5 m past the ends, never over a
+ground-level crossing street), the way-deck path then builds a real deck, re-centred on the BGT deck-level outline.
+Bare OSM highway bridge ways 205 → 166 (with the water cut at the bridge 19 → 1); +0.18 % triangles in 19 cells.
+Pinned: `BRIDGE_ROADS` (Kinkerbrug 743740428, Beltbrug 27316608) and ROAD_SPOTS kinkerbrug-postjesweg,
+beltbrug-jan-van-galenstraat; `probe-undecked-bridges.ts` for the city count.
+
 **World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
 `cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
 2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
@@ -81,6 +119,23 @@ holds whole same-year rows (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat
 72–96) because one pand has wide three-light windows. Strips archived in
 source-data `block-face-strips/` (11 re-striped faces, two strip-over-model
 sheets under `transvaalbuurt-round2/`). Nothing visible changed in the game.
+
+**Rail bridges, Centraal shed and railway pands (2026-10-31).** User at Amsterdam Amstel: "that big flat white
+thing is weird" and "the houses under the tracks here are probably wrong"; plus the open items of the rail-look lane.
+Round 3 of `rail-look-20261031`:
+- `railBridge.ts`: rail decks get piers, through plate girders over water (≥ 4 m) and railings; viaducts get column
+  rows under a crosshead. Piers only on land, never in a street band or beside track at grade. +285k triangles LOD 0
+  (+0.57 % of ground), no extra draw calls.
+- Centraal: AHN has no ground under the shed, so the relief was a fill from the quay (+1.2) and the tracks sat in a
+  pit. Track beside a station's platforms is levelled from the measured track past the platform ends; OSM
+  `railway=platform` rings now ride in rail-v1 and draw 0.76 m above the rails.
+- `railInfraBuildings.ts` + `rail-infra-buildings.json`: pands that are railway structure, decided from data (share
+  over track/platforms, minHeight, OSM building/roof tags, BAG use from PDOK), are dropped (viaduct/deck) or cut to
+  the platforms (canopies): 45 pands. Amstel's `building=roof` slab becomes two platform canopies; the pand part and
+  two pavilions under the platforms (drawn as brick houses) are dropped. Station halls, shed arches, building parts,
+  pands with ≥ 25 % live use and arches in use stay.
+- Unanchored rail decks were 5 real components (17 per-cell counts): OSM split gaps snap within 3 m; three tram
+  bridges without approaches span their own ends.
 
 **`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
 `SharedFrame.shaderErrors()` counts programs three.js failed to compile or
@@ -769,7 +824,6 @@ BASCULES list grew, `build-bridge-hints.ts --write` changes only the
 named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
-
 
 **Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
 Reproduced on `main` by boarding at every IJ pier with the real controller
@@ -1689,7 +1743,6 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
-
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
@@ -15238,7 +15291,6 @@ first twelve already measured the camera model.
 ## 2026-09-13 — Roof-focused review and keyboard workflow
 
 
-
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
 upper source view with the candidate's upper roof/gable area, while Full façade
@@ -17815,7 +17867,6 @@ building. Searching in Dutch roughly doubles the hit rate, because nobody
 uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
-
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and
