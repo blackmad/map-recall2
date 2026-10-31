@@ -2098,16 +2098,67 @@ test('rail levels: a bridge chain runs level between its embankments, whatever t
   assert.ok(levelAt(levels.get(ways[0])!, 50) > 4.0, `approach end ${levelAt(levels.get(ways[0])!, 50)}`);
 });
 
-test('rail levels: a ramp at grade is left on the relief, an unanchored bridge is drawn plain on it', async () => {
+test('rail levels: a ramp at grade is left on the relief, a bridge on a measured road deck is drawn plain on it', async () => {
   const { railLevels, levelAt, RAIL_GRADE } = await import('./railProfile');
   const ramp: RailWay = { kind: 'subway', bridge: false, service: false, points: [[0, 0], [200, 0]] };
   const g = RAIL_GRADE.subway * 0.8, relief = (x: number) => -x * g;
   const l = railLevels([ramp], [], x => relief(x)).levels.get(ramp)!;
   for (let s = 0; s <= 200; s += 10) assert.ok(Math.abs(levelAt(l, s) - relief(s)) < 1e-9, `ramp at ${s}: ${levelAt(l, s)} vs ${relief(s)}`);
   const lone: RailWay = { kind: 'rail', bridge: true, service: false, points: [[0, 50], [40, 50]] };
-  const r = railLevels([lone], [], () => 1);
+  // A tram bridge riding a measured road deck: the deck surface already carries it.
+  const r = railLevels([lone], [], () => 1, undefined, undefined, () => true);
   assert.equal(r.levels.get(lone)!.plain, true);
   assert.equal(r.stats.plain, 1);
+  assert.equal(r.stats.onDeck, 1);
+});
+
+test('rail levels: an approachless bridge levels between the land at its ends; a bridge end short of its approach snaps on', async () => {
+  const { railLevels, levelAt } = await import('./railProfile');
+  // A tram bridge over a polder ditch whose street approaches are not in rail-v1: the relief dips to -0.5 between banks at +0.6.
+  const relief = (x: number) => (x < 8 || x > 22 ? 0.6 : -0.5);
+  const lone: RailWay = { kind: 'tram', bridge: true, service: false, points: [[0, 0], [30, 0]] };
+  const r = railLevels([lone], [], x => relief(x), undefined, undefined, () => false);
+  const l = r.levels.get(lone)!;
+  assert.ok(!l.plain, 'drawn as a bridge');
+  assert.equal(r.stats.endAnchored, 1);
+  for (let s = 0; s <= 30; s += 2) assert.ok(Math.abs(levelAt(l, s) - 0.6) < 0.05, `deck at ${s}: ${levelAt(l, s)}`);
+  // The same bridge 2.4 m short of the track it joins (an OSM gap): snapped, anchored on the embankment at +3.
+  const bank = (x: number) => (x < 50 ? 3 : -1);
+  const track: RailWay = { kind: 'tram', bridge: false, service: false, points: [[0, 0], [50, 0]] };
+  const span: RailWay = { kind: 'tram', bridge: true, service: false, points: [[52.4, 0], [90, 0]] };
+  const t = railLevels([track, span], [], x => bank(x), undefined, undefined, () => false);
+  assert.equal(t.stats.snapped, 1);
+  assert.equal(t.stats.anchored, 1);
+  assert.ok(levelAt(t.levels.get(span)!, 0) > 2.5, `span start ${levelAt(t.levels.get(span)!, 0)}`);
+});
+
+test('rail levels: track beside a station platform under a roof stands at the measured track past its ends; the platform drawn over its rails', async () => {
+  const { railLevels, levelAt, stationHulls } = await import('./railProfile');
+  const { platformMeshes, PLATFORM_HEIGHT_M, RAIL_SECTION } = await import('./railTracks');
+  // A hall from x = 0 to 300: AHN has no ground under it and the fill is the quay at +1.2; the measured track bed
+  // outside is +5. A platform beside the track (its edge 1.7 m off the centreline), a and b halves 20 m apart.
+  const relief = (x: number, y: number) => (x < 0 || x > 300 ? 5 : y > 1.7 && y < 9.7 && (x < 140 || x > 160) ? 5.5 : 1.2);
+  const track: RailWay = { kind: 'rail', bridge: false, service: false, points: [[-150, 0], [450, 0]] };
+  const a = { ring: [[10, 1.7], [140, 1.7], [140, 9.7], [10, 9.7]] as [number, number][] }, b = { ring: [[160, 1.7], [290, 1.7], [290, 9.7], [160, 9.7]] as [number, number][] };
+  assert.equal(stationHulls([a, b]).length, 1, 'the two halves are one station');
+  const flat = railLevels([track], [], (x, y) => relief(x, y)).levels.get(track)!;
+  assert.ok(levelAt(flat, 300) < 2, `without the platforms the track sags into the hall: ${levelAt(flat, 300).toFixed(2)}`);
+  const r = railLevels([track], [], (x, y) => relief(x, y), undefined, undefined, undefined, [a, b]);
+  const l = r.levels.get(track)!;
+  // Level through the hall at the track's level where the platforms begin (the grade envelope's 12 m into the hall, −0.36).
+  for (let s = 150; s <= 450; s += 10) assert.ok(Math.abs(levelAt(l, s) - 4.8) < 0.25, `level at x = ${s - 150}: ${levelAt(l, s).toFixed(2)}`);
+  for (let s = 170; s <= 430; s += 10) assert.ok(Math.abs(levelAt(l, s) - levelAt(l, s - 10)) < 1e-6 + 0.3 * (s < 180 || s > 420 ? 1 : 0), `level along the platforms at x = ${s - 150}`);
+  assert.ok((r.stats.platformNodes ?? 0) > 50);
+  // The platform tops' AHN (+5.5) is not land under the bed: the level is not lifted to it.
+  const { mesh, stats } = platformMeshes([a, b], [track], r.levels, (x, y) => relief(x, y), () => true);
+  assert.equal(stats.platforms, 2);
+  const zs = mesh.positions.filter((_, k) => k % 3 === 2), top = Math.max(...zs);
+  assert.ok(Math.abs(top - (levelAt(l, 300) + RAIL_SECTION.topLift + RAIL_SECTION.railHeight + PLATFORM_HEIGHT_M)) < 0.05, `platform top ${top.toFixed(2)}`);
+  assert.ok(Math.min(...zs) < 1.2, 'walls reach the fill under the hall');
+  // A platform beside a metro line only is left out (its height is not the NS one).
+  const metro: RailWay = { ...track, kind: 'subway' };
+  const m = railLevels([metro], [], (x, y) => relief(x, y), undefined, undefined, undefined, [a]);
+  assert.equal(platformMeshes([a], [metro], m.levels, (x, y) => relief(x, y), () => true).stats.platforms, 0);
 });
 
 test('rail tracks: the bed never under the land between its stations, nor on an embankment flank', async () => {

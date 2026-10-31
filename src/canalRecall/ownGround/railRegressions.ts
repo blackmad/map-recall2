@@ -123,3 +123,67 @@ export function deckBreaks(cells: readonly BuiltCell[], rails: readonly RailWay[
   }
   return { ways, maxStepM: +maxStepM.toFixed(2), maxSlope: +maxSlope.toFixed(3), worst };
 }
+
+/**
+ * Track levels at a station (lane rail-look round 3): under Centraal's train shed AHN has no ground and the field is
+ * the hall's fill, capped at its rim's median (heightField.ts capLargeHoles, issue #53): +1.2 to +0.6 against the
+ * measured track at +4.5 past the platforms' ends. The tracks sagged 3-4 m into the hall and the platforms were not
+ * drawn. `bed`: the 10th percentile of the bed top (ballast) every 5 m along the heavy-rail track near the spot; the
+ * platforms (railTracks.ts platformMeshes) stand `platformRise` over the median bed there.
+ */
+export interface RailLevelSpot {
+  id: string;
+  label: string;
+  note: string;
+  at: [number, number];
+  radiusM: number;
+  /** After: the bed's 10th percentile at least this (scene metres, NAP). */
+  minBedZ: number;
+  /** The pin is live: rail-v1 of build 04e3c88 (`railLegacy`) has its 10th percentile at most this. */
+  maxBedZBefore: number;
+  /** Platform tops over the median bed top, metres (rails 0.16 + 0.76 over the rail top). */
+  platformRise: [number, number];
+}
+
+export const RAIL_LEVEL_SPOTS: readonly RailLevelSpot[] = [
+  { id: 'rail-centraal-shed', label: 'Amsterdam Centraal: the tracks and platforms under the train shed', note: 'the Centraal shed tracks sit at the quay fill (+1.2) where the platforms stand at about +4.5 (coordinator, rail-look round 3, 2026-10-31)', at: [4.9004, 52.3791], radiusM: 90, minBedZ: 3.6, maxBedZBefore: 2.5, platformRise: [0.7, 1.3] },
+];
+
+/** The bed top along heavy-rail track near `centre` (every 5 m) and the platform tops over it. */
+export function stationLevels(cells: readonly BuiltCell[], rails: readonly RailWay[], platforms: readonly { ring: Vec2[] }[], centre: Vec2, radiusM: number): { samples: number; p10: number; median: number; platforms: number[] } {
+  const half = radiusM + 20, w = Math.round(2 * half / RES), x0 = centre[0] - half, y0 = centre[1] - half;
+  const bed = zRaster(cells, 'ballast', x0, y0, w, w), body = zRaster(cells, 'deckBody', x0, y0, w, w);
+  const at = (z: Float32Array, x: number, y: number) => { const px = Math.floor((x - x0) / RES), py = Math.floor((y0 + w * RES - y) / RES); return px >= 0 && py >= 0 && px < w && py < w ? z[py * w + px] : -Infinity; };
+  const zs: number[] = [];
+  for (const r of rails) if (r.kind === 'rail') walk(r.points, 5, (x, y) => { if (Math.hypot(x - centre[0], y - centre[1]) <= radiusM) { const z = at(bed, x, y); if (Number.isFinite(z)) zs.push(z); } });
+  zs.sort((a, b) => a - b);
+  const q = (f: number) => (zs.length ? zs[Math.floor(f * (zs.length - 1))] : -Infinity), median = q(0.5);
+  const tops: number[] = [];
+  // Each platform: the median top (deckBody) over its inside within the radius, every 2 m.
+  const inside = (r: readonly Vec2[], x: number, y: number) => { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) if ((r[i][1] > y) !== (r[j][1] > y) && x < ((r[j][0] - r[i][0]) * (y - r[i][1])) / (r[j][1] - r[i][1]) + r[i][0]) c = !c; return c; };
+  for (const p of platforms) {
+    const xs = p.ring.map(v => v[0]), ys = p.ring.map(v => v[1]), got: number[] = [];
+    let any = false;
+    for (let x = Math.min(...xs); x <= Math.max(...xs); x += 2) for (let y = Math.min(...ys); y <= Math.max(...ys); y += 2) {
+      if (Math.hypot(x - centre[0], y - centre[1]) > radiusM || !inside(p.ring, x, y)) continue;
+      any = true;
+      const z = at(body, x, y);
+      if (Number.isFinite(z)) got.push(z);
+    }
+    if (!any) continue;
+    got.sort((a, b) => a - b);
+    tops.push(got.length ? +(got[got.length >> 1] - median).toFixed(2) : NaN);
+  }
+  return { samples: zs.length, p10: +q(0.1).toFixed(2), median: +median.toFixed(2), platforms: tops };
+}
+
+/**
+ * Rail bridge structure (railBridge.ts, lane rail-look round 3: "rail decks have no piers, girders or parapets"): the
+ * cells around the spot draw at least `minPiers` piers and `minGirderM` metres of through girder over water and
+ * `minRailingM` of viaduct railing. Live: without railBridge.ts (`railBridges: false`, the round-2 build) none.
+ */
+export interface RailBridgeSpot { id: string; label: string; at: [number, number]; radiusM: number; minPiers: number; minGirderM: number; minRailingM: number }
+export const RAIL_BRIDGE_SPOTS: readonly RailBridgeSpot[] = [
+  { id: 'rail-bridge-oostertoegang', label: 'Oostertoegang: the rail bridges over the Piet Heinkade and the Oosterdok mouth', at: [4.9036, 52.3772], radiusM: 150, minPiers: 6, minGirderM: 150, minRailingM: 50 },
+  { id: 'rail-bridge-weesper', label: 'Amstel: the rail bridge over the Weespertrekvaart north of the station', at: [4.9155, 52.3495], radiusM: 120, minPiers: 2, minGirderM: 60, minRailingM: 0 },
+];
