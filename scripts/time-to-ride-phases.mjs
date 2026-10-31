@@ -1,5 +1,5 @@
 // Time to ride by phase (issue #136): navigation -> route submitted -> rider in control, desktop, cold cache.
-//   PORT=4543 node scripts/time-to-ride-phases.mjs <out.json> [--runs 3] [--qs '?x=1']
+//   PORT=4543 node scripts/time-to-ride-phases.mjs <out.json> [--runs 3] [--qs '?x=1'] [--net 20000,40] [--settle 6000]
 // Same route as motion-stutter.mjs (Anne Frank Huis -> Rijksmuseum, car, chase, seeded Math.random), submitted as
 // soon as the route card is ready. Phases are timed by wrapping the load steps the game awaits (osmLoader.fetchRoads,
 // buildRoadSegmentsAsync, _loadLandmarks, RoadNetwork.prepareRoutingGraph / prepareSurfaceIndex, planRoute) and by
@@ -15,6 +15,10 @@ const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/tim
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
 const runs = Number(opt('runs', '3'));
 const qs = opt('qs', '');
+// --net <down kbit/s>,<latency ms>: emulate a remote connection (localhost hides download time), e.g. 20000,40.
+// --settle <ms>: wait on the briefing after picking car/chase before submitting, as a player would (default 0).
+const settle = Number(opt('settle', '0'));
+const net = opt('net', '') ? opt('net').split(',').map(Number) : null;
 const origin = `http://127.0.0.1:${process.env.PORT || 4543}`;
 const startPoi = 'anne-frank', destPoi = 'rijksmuseum';
 
@@ -52,6 +56,7 @@ async function run(browser) {
   });
   await page.goto(`${origin}/canal-drive/js/build-stamp.js`).catch(() => {});
   const cdp = await context.newCDPSession(page);
+  if (net) await cdp.send('Network.enable'), await cdp.send('Network.emulateNetworkConditions', { offline: false, downloadThroughput: net[0] * 125, uploadThroughput: net[0] * 125, latency: net[1] });
   await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start');
   await page.waitForTimeout(2500);
   await page.goto(`${origin}/canal-drive/${qs}`);
@@ -88,6 +93,7 @@ async function run(browser) {
     if (sel && ![...sel.options].some(o => o.value === b)) { const o = document.createElement('option'); o.value = b; o.textContent = b; sel.appendChild(o); }
     if (sel) sel.value = b;
   }, [startPoi, destPoi]);
+  if (settle) await page.waitForTimeout(settle);
   const submitted = await page.evaluate(() => performance.now());
   await page.locator('#route-card').evaluate(f => f.requestSubmit());
   await page.waitForFunction(() => window.__ttr.firsts.racing != null, null, { timeout: 120_000, polling: 100 });
