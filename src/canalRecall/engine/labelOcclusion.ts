@@ -9,8 +9,8 @@
  * - A place inside a building is seen through its frontage: the host footprint's edge nearest the place (any edge
  *   within FRONTAGE_TIE_M of the nearest, so a corner shop has two). A frontage that faces away from the camera
  *   hides the label (the shop on the far side of the block whose roof the label would float over).
- * - The sightline starts just outside that frontage, half way up the facade (the host's eaves × 0.5), or at the
- *   place itself 3 m up with no host. The host never blocks its own frontage.
+ * - The sightline starts just outside that frontage, LABEL_ALT_M above the street, or at the
+ *   place itself with no host, LABEL_ALT_M up (where the label is drawn). The host never blocks its own frontage.
  * - A label is hidden when a nearer building rises above the line by more than a margin. The margin swaps sign
  *   with the label's last state (hysteresis), so a label at the occlusion edge does not flicker.
  * - Only POI point labels are tested. Streets, water, neighbourhoods and the game's own points (the answered
@@ -22,14 +22,21 @@
  */
 import { footprintContains, type FootprintFeature } from '../coveredPassage';
 import { featureBox } from './cameraClearance';
+import { occluderTopM } from '../labels/sightlineOcclusion';
 
 type LngLat = readonly [number, number];
 const CELL_LNG = 0.0006, CELL_LAT = 0.0004; // ~40 × 45 m
 const key = (x: number, y: number) => x * 1_000_003 + y; // cell indices are < 20,000 in the city's lng/lat
 const STEP_M = 2;
 export const OCCLUSION_MARGIN_M = 1.5;
-export const ANCHOR_FACADE_SHARE = 0.5;
-export const ANCHOR_DEFAULT_M = 3;
+/**
+ * The sightline ends where the label is drawn: the label layer projects a POI at its anchor on the ground, so the
+ * line starts LABEL_ALT_M above the street (outside the host's frontage). It used to start half way up the host's
+ * facade (or 3 m up with no host): a line from 7-8 m cleared a lower front building whose face the label, drawn at
+ * the ground, was printed across (lane materials 2026-10-31: 6-10 such labels per pose at Eerste Constantijn
+ * Huygensstraat, the Dam and the Westerkerk).
+ */
+export const LABEL_ALT_M = 1.5;
 /** Edges this close to the nearest one also count as the place's frontage (corner shops). */
 export const FRONTAGE_TIE_M = 3;
 /** Metres the eye must sit in front of (or behind) the frontage's plane to flip its facing state (hysteresis). */
@@ -47,10 +54,20 @@ const outerRings = (f: FootprintFeature): Ring[] => {
   return [];
 };
 
-const topOf = (f: FootprintFeature): number => {
+/** The facade's top: the eaves (where the shopfront's wall ends), else the height. */
+const eavesOf = (f: FootprintFeature): number => {
   const p = (f.properties || {}) as Record<string, unknown>;
   const top = Number(p.roofEavesHeightM ?? p.height ?? 5);
   return Number.isFinite(top) ? top : 5;
+};
+/**
+ * The height a sightline must clear over a building: a pitched roof rises above the eaves (a label anchored above a
+ * lower front building's eave line was drawn through its roof), so between eaves and ridge, as the default engine's
+ * street-name test (labels/sightlineOcclusion.ts occluderTopM); flat roofs and unknown shapes keep the height.
+ */
+const topOf = (f: FootprintFeature): number => {
+  const top = occluderTopM(f.properties as Record<string, unknown> | null | undefined);
+  return top > 0 ? top : eavesOf(f);
 };
 
 export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
@@ -59,6 +76,12 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
   private cellTop = new Map<number, number>();
   private indexed: readonly F[] | null = null;
   private tallest = 0;
+  /**
+   * Where a shown place hosted by a building is seen: just outside its visible frontage (lng/lat), by id. The label
+   * layer draws the name there, at the shopfront the sightline was tested from, not at the anchor deep inside the
+   * block, where it was printed over the roofs (its own or a neighbour's) of a block whose frontage was in view.
+   */
+  readonly front = new Map<string, LngLat>();
   /** Ids hidden at the last test (the hysteresis state). */
   private readonly hidden = new Set<string>();
   /** Read by the perf probe: sightline tests, grid rebuilds and their total ms. */
@@ -136,16 +159,19 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
           edges.push({ d: Math.hypot(px, py), px, py, nx: sign * dy / len, ny: -sign * dx / len });
         }
       }
-      const near = edges.length ? Math.min(...edges.map(e => e.d)) : 0;
-      starts = edges
+      // A party wall is no frontage: just outside it stands the neighbour (Westerkerk, 2026-10-31: names drawn
+      // across the next house in the row, whose wall the line started inside). The frontage is the nearest open edge.
+      const open = edges.filter(e => !this.at([anchor[0] + (e.px + e.nx * OUT_M) / mLng, anchor[1] + (e.py + e.ny * OUT_M) / mLat], host, LABEL_ALT_M));
+      const near = open.length ? Math.min(...open.map(e => e.d)) : 0;
+      starts = open
         .filter(e => e.d <= near + FRONTAGE_TIE_M && (ex - e.px) * e.nx + (ey - e.py) * e.ny > facingMin)
         .map(e => [e.px + e.nx * OUT_M, e.py + e.ny * OUT_M] as const);
     }
-    const anchorAlt = host ? topOf(host) * ANCHOR_FACADE_SHARE : ANCHOR_DEFAULT_M;
+    const anchorAlt = LABEL_ALT_M;
     // Hidden stays hidden until the line clears by the margin; shown stays shown until it is blocked by the margin.
     const margin = wasHidden ? -OCCLUSION_MARGIN_M : OCCLUSION_MARGIN_M;
     // Visible when any frontage facing the eye has a clear sightline.
-    const blocked = !starts.some(([sx, sy]) => {
+    const clear = starts.find(([sx, sy]) => {
       const east = ex - sx, north = ey - sy, dist = Math.hypot(east, north);
       for (let s = STEP_M; s < dist; s += STEP_M) {
         const t = s / dist;
@@ -154,8 +180,11 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
         if (this.at([anchor[0] + (sx + east * t) / mLng, anchor[1] + (sy + north * t) / mLat], host, lineAlt + margin)) return false;
       }
       return true;
-    });
+    }) ?? null;
+    const blocked = !clear;
     if (blocked) this.hidden.add(id); else this.hidden.delete(id);
+    if (!blocked && host && clear) this.front.set(id, [anchor[0] + clear[0] / mLng, anchor[1] + clear[1] / mLat]);
+    else this.front.delete(id);
     return blocked;
   }
 }

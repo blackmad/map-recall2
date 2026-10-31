@@ -25,6 +25,35 @@ async function teleport(page: Page, p: typeof STAND): Promise<void> {
   }, p);
 }
 
+/**
+ * Drawn POI labels the rendered city hides: the facades' own pick (prismPick) at the label's pixel hits another
+ * building more than 6 m nearer than the spot the label is drawn at (its frontage, or its anchor), on the ground.
+ * Independent of engine/labelOcclusion.ts's footprint walk; the user's question, "is it printed across a building?".
+ */
+const throughBuildings = (page: Page): Promise<string[]> => page.evaluate(() => {
+  const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, L = vm._labels, T = vm._sharedFrame.THREE;
+  const { width: W, height: H } = vm.host.viewport();
+  const chunk = [...tb.chunks.values()].find((c: any) => c.mesh);
+  const M = chunk.mesh.matrixWorld, upm = new T.Vector3().setFromMatrixColumn(M, 0).length();
+  const inv = tb.camera.projectionMatrix.clone().invert();
+  const pois = new Map<string, any>((L.pois ?? []).map((p: any) => [p.id, p]));
+  const out: string[] = [];
+  for (const l of L.placed) {
+    const p = pois.get(l.id);
+    if (l.kind !== 'poi' || !p) continue;
+    const at = L.drawAt?.get(l.id) ?? (() => { const c = [...L.buckets.values()].flat().find((c: any) => c.id === l.id); return c?.at; })();
+    const hit = at && tb.inspectAtScreen(l.x, l.y, W, H);
+    if (!hit) continue;
+    const host = vm.labelOcclusion.at(p.lngLat);
+    if (host && String(host.properties?.id) === String(hit.id)) continue;
+    const nx = l.x / W * 2 - 1, ny = 1 - l.y / H * 2, near = new T.Vector3(nx, ny, -1).applyMatrix4(inv);
+    const da = new T.Vector3(at[0], at[1], 0).applyMatrix4(M).distanceTo(near) / upm;
+    const dh = new T.Vector3(nx, ny, hit.depth).applyMatrix4(inv).distanceTo(near) / upm;
+    if (dh < da - 6) out.push(`${l.text} (${Math.round(da - dh)} m)`);
+  }
+  return out;
+});
+
 const placedPois = (page: Page, occlusion: boolean): Promise<string[]> => page.evaluate(async on => {
   const vm = (window as any).canalRecallGame.vectorMap;
   vm.labelOcclusionOn = on;
@@ -49,6 +78,17 @@ test('a POI label behind a nearer building is not drawn; the street-frontage lab
   const on = await placedPois(page, true);
   if (out) await page.screenshot({ path: `${out}/after-occlusion.png` });
   console.log(JSON.stringify({ off, on }));
+
+  // Every drawn POI the city hides, counted at the same pose (lane materials 2026-10-31): with the test off most of
+  // the street's POIs are printed across a nearer block; with it on, at most the one corner case left (Cafe Kompleet:
+  // the line from its frontage passes the corner of the row house in front, which the pick sees and the walk does not).
+  await placedPois(page, false);
+  const throughOff = await throughBuildings(page);
+  await placedPois(page, true);
+  const throughOn = await throughBuildings(page);
+  console.log(JSON.stringify({ throughOff, throughOn }));
+  expect(throughOff.length, 'the pose shows the bug without the test').toBeGreaterThanOrEqual(4);
+  expect(throughOn.length, `POI labels printed across a nearer building: ${throughOn.join(', ')}`).toBeLessThanOrEqual(1);
 
   for (const name of HIDDEN) {
     expect(off, `${name} competes at this pose with occlusion off (the user's report)`).toContain(name);

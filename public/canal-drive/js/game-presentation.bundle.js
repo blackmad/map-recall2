@@ -3155,10 +3155,8 @@
     wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
       if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
       if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
-      for (const ring of p.rings) {
-        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
-      }
-      for (const ring of p.rings) {
+      let above = false;
+      outer: for (const ring of p.rings) {
         const n = ring.length / 2;
         for (let i = 0, j = n - 1; i < n; j = i++) {
           const cx = ring[j * 2], cy = ring[j * 2 + 1];
@@ -3170,10 +3168,17 @@
           const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
           if (u < 0 || u > 1) continue;
           const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
-          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) return true;
+          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) {
+            above = true;
+            break outer;
+          }
         }
       }
-      return false;
+      if (!above) return false;
+      for (const ring of p.rings) {
+        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
+      }
+      return true;
     }
   };
 
@@ -3206,17 +3211,24 @@
       this.stats.ms = 0;
       this.lastHidden = [];
       const vm = host;
-      if (!pitched || !vm?.map || !vm.worldToLngLat || !loader) return null;
+      if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
       const toLngLat = vm.worldToLngLat.bind(vm);
-      const features = vm._completeCity?.sampleFeatures?.(1e6);
+      const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1e6);
       this.index.refresh(features, BUILD_BUDGET_MS);
       this.stats.features = this.index.stats.features;
       this.stats.buildMs = this.index.stats.buildMs;
       if (!this.index.ready) return null;
-      const t2 = vm.map.transform;
-      const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
-      if (!at || !Number.isFinite(altM)) return null;
-      const camera = { lng: at.lng, lat: at.lat, altM };
+      let camera;
+      if (vm.map) {
+        const t2 = vm.map.transform;
+        const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
+        if (!at || !Number.isFinite(altM)) return null;
+        camera = { lng: at.lng, lat: at.lat, altM };
+      } else {
+        const eye = vm.cameraEye();
+        if (!eye || !Number.isFinite(eye.altitudeM)) return null;
+        camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
+      }
       const blockedAt = (p) => {
         const ll = toLngLat(p.x, p.y, loader);
         const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];

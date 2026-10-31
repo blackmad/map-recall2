@@ -1,4 +1,5 @@
-import { resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { expect, type Page } from '@playwright/test';
 
 declare global {
@@ -38,6 +39,20 @@ export type OpenRouteOptions = {
  */
 export async function useEngine(page: Page): Promise<void> {
   if (process.env.ENGINE === 'own') await page.addInitScript(() => { (window as any).__canalRecallEngine = 'own'; });
+  await useBundlesDir(page);
+}
+
+/**
+ * `BUNDLES_DIR=<dir>` serves the game's `*.bundle.js` from a scratch build instead of the committed ones (lanes build
+ * their bundles outside the tree; the integrator rebuilds the committed ones). Bundles missing there are served as usual.
+ */
+export async function useBundlesDir(page: Page): Promise<void> {
+  const dir = process.env.BUNDLES_DIR;
+  if (!dir) return;
+  await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(dir, new URL(route.request().url()).pathname.split('/').pop()!);
+    return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'application/javascript' }) : route.continue();
+  });
 }
 
 /** Boot Canal Recall, set prefs via the hidden selects, and start a route. */
