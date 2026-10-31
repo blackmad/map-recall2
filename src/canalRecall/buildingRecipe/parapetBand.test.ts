@@ -28,7 +28,7 @@ test('a tower span breaks the band; the tower top carries its own', () => {
   const blocks = parapetBandBlocks({courses: 8}, {count: 2, mw: 5, eaves: 12, copingM: 0, tower: {span: [2, 3], top: 15}, place: (k, x) => k * 5 + x, flipX: flip});
   assert.equal(blocks.length, 6);
   const t = blocks.filter(b => b.id.endsWith('-t'));
-  assert.deepEqual(t.map(b => [b.leftM, b.widthM, b.bottomM]), [[2, 1, 14.56], [7, 1, 14.56]]);
+  assert.deepEqual(t.map(b => [b.leftM, b.widthM, b.bottomM]), [[2.005, 0.99, 14.56], [7.005, 0.99, 14.56]]);
   const l = blocks.find(b => b.id === 'parapet-band-m1-l')!;
   assert.deepEqual([l.leftM, l.widthM, l.bottomM], [5, 2, 11.56]);
 });

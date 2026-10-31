@@ -19,7 +19,9 @@ export interface ParapetBandIntent {
   dentils?: {pitch: number; courses: number};
 }
 
-export const PARAPET_BAND = {courseM: 0.055, depthM: BRICK_STRIPE_DEPTH_M} as const;
+/** `towerInsetM`: the band under the tower top stays this far inside the tower's flanks, so millimetre rounding never
+ * carries it past the tower's wall onto the lower parapet (the library's wall-support check). */
+export const PARAPET_BAND = {courseM: 0.055, depthM: BRICK_STRIPE_DEPTH_M, towerInsetM: 0.005} as const;
 const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
 
 /** Problems with `parapet.band` (`parapetCourses`: the parapet's own course count; `band`: the band brick colour). */
@@ -70,7 +72,7 @@ export function parapetBandBlocks(b: ParapetBandIntent, o: {count: number; mw: n
   const out: CanalhouseFacadeBlock[] = [];
   for (let k = 0; k < o.count; k++) {
     const runs: {x0: number; x1: number; top: number; tag: string}[] = o.tower
-      ? [{x0: 0, x1: o.tower.span[0], top: o.eaves - o.copingM, tag: `m${k}-l`}, {x0: o.tower.span[0], x1: o.tower.span[1], top: o.tower.top - o.copingM, tag: `m${k}-t`}, {x0: o.tower.span[1], x1: o.mw, top: o.eaves - o.copingM, tag: `m${k}-r`}]
+      ? [{x0: 0, x1: o.tower.span[0], top: o.eaves - o.copingM, tag: `m${k}-l`}, {x0: o.tower.span[0] + PARAPET_BAND.towerInsetM, x1: o.tower.span[1] - PARAPET_BAND.towerInsetM, top: o.tower.top - o.copingM, tag: `m${k}-t`}, {x0: o.tower.span[1], x1: o.mw, top: o.eaves - o.copingM, tag: `m${k}-r`}]
       : [{x0: 0, x1: o.mw, top: o.eaves - o.copingM, tag: `m${k}`}];
     for (const run of runs) for (const blk of runBlocks(b, run.x0, run.x1, run.top, run.tag)) {
       const left = o.place(k, blk.leftM, blk.widthM);
