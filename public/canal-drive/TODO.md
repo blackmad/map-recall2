@@ -298,8 +298,12 @@ cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
 0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
 JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
 start, which the script does not yet sample; the 36 resident cells plus
-per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
-7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31 after format v3
+(HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
+cells (10.4 MB lossless v3 today; v4 with a shared string table, 1 cm
+heights and ≤ 5 cm collinear vertex removal is the lane's next step) plus a
+per-ride download gate ≤ 2 MB under `?world=v1` (browser table pending);
+both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`

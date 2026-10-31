@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
+`cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
+2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
+3.58 → 3.13 MB, GRP 1.34 → 0.61 MB (ROOF and HIDE unchanged); 604 cells,
+349,282 buildings, 2.71 M vertices. `scripts/world/transcode.ts` re-encodes
+published cells and matched 604/604; a full `world:compile` against the
+published v2 cells compared 349,282 buildings with no differences. Decode in
+Node: median 0.23 ms per cell, p95 4.36, max 9.85 (1.6 µs per building, as
+v2). Published to `world-v1/` after rebuilding `building-tiles` and the
+three-buildings worker bundle, which rejected v3 before and read both now.
+The 4 MB target cannot be met this way: the brief's lossy grid (0.1 m
+footprints, 0.25 m heights) still gives 9.69 MB and 0.5 m gives 8.61,
+because 1e-6° is already a 7 × 11 cm grid and slop's 441 KB for 37k
+footprints scales to ~4.1 MB for 349k buildings before any style. Decision
+(integrator): the gate becomes city total ≤ 8 MB gzip for the building cells
+plus a per-ride download gate (target ≤ 2 MB for a seeded and a free ride
+under `?world=v1`, measured by the browser table that follows); the lane
+does a shared global string/key table fetched once (lossless, needs a
+streamer patch), heights/eaves/minHeight at 1 cm, and collinear vertex
+removal at ≤ 5 cm with pixel diff 0 and the sentinel pands, as v4; deriving
+palette fields at runtime is deferred. Lock rule from the same evening: lock-
+held commands are capped at 20 minutes (`perl -e 'alarm 1200; exec @ARGV'`,
+there is no `timeout` binary on the Mac) after an engine-host stutter run
+spun for an hour.
+
 **Quality tiers from a startup probe; landmarks precompile before they join the scene; the facade shader has no cheap win left except resolution (2026-10-31, #129, materials lane round 4).**
 `renderGovernor.ts` gains `chooseTier`, `TIER_SETTINGS` and `TIER_FRAME_MS`:
 high = native DPR, 2048 shadow map, stand-ins on; mid = DPR 1.5, 1024
