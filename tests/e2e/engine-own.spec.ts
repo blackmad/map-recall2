@@ -1,5 +1,9 @@
 import { expect, test, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+
+// The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
+const PROGRAMS_BUDGET: number = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries.programs.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
 // is the second world view. Three.js owns the canvas; MapLibre is never
@@ -75,7 +79,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.trees).not.toBeNull();
   expect(stats.roofs).toBe(true);
   expect(stats.calls).toBeLessThanOrEqual(700);
-  expect(stats.programs).toBeLessThanOrEqual(32);
+  expect(stats.programs).toBeLessThanOrEqual(PROGRAMS_BUDGET);
   expect(errors).toEqual([]);
   // Spoiler rule: the name under question is never on the map.
   for (const name of stats.asked) expect(stats.labels.map((t: string) => t.toLowerCase())).not.toContain(String(name).toLowerCase());
