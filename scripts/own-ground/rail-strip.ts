@@ -1,5 +1,5 @@
-// The rail-look strip (lane rail-look 2026-10-31): per RAIL_SPOTS place, PDOK orthophoto | before (rail-v1 without
-// railProfile.ts levels and floor) | after | the player's screenshot. The views are rail-view.ts's offline renders
+// The rail-look strip (lane rail-look 2026-10-31): per RAIL_SPOTS place, PDOK orthophoto | before (main with issue
+// #145's beds, railProfile.ts off: `railLevels: false`) | after | the player's screenshot. The views are rail-view.ts's offline renders
 // (flat colours, no textures), not game frames.
 //
 //   npx tsx scripts/own-ground/rail-strip.ts [--out=artifacts/rail-look/strip-rail-look.jpg]
@@ -25,7 +25,7 @@ const label = (w: number, h: number, t: string, size = 16) => Buffer.from(`<svg 
 async function main(): Promise<void> {
   const o = new OrthoTiles(), rows = RAIL_SPOTS.filter(s => VIEWS[s.id]);
   const total = { w: H + 3 * W + 3 * GAP, h: rows.length * (H + HEAD + GAP) + 34 };
-  const parts: sharp.OverlayOptions[] = [{ input: label(total.w, 34, `rail look: orthophoto | before (rail-v1, build 04e3c88) | after (lane rail-look) | player screenshot · offline renders, not game frames · ${ORTHO_ATTRIBUTION}`, 15), left: 0, top: 0 }];
+  const parts: sharp.OverlayOptions[] = [{ input: label(total.w, 34, `rail look: orthophoto | before (main 980154966, #145) | after (lane rail-look on main) | player screenshot · offline renders, not game frames · ${ORTHO_ATTRIBUTION}`, 15), left: 0, top: 0 }];
   let top = 34;
   for (const spot of rows) {
     const v = VIEWS[spot.id], [x, y] = toLocal(v.at[0], v.at[1]);

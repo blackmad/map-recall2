@@ -136,8 +136,10 @@ export interface CellInput {
   rails?: readonly RailWay[];
   /** The 3×3 neighbourhood's tracks (railProfile.ts solves the levels on their graph, so cells agree at a seam). */
   railsAround?: readonly RailWay[];
-  /** railProfile.ts levels and the never-under-the-ground floor (default on; off only for the regression's pin). */
+  /** railProfile.ts levels and the never-under-the-ground floor (default on; off: the #145 build, for measuring). */
   railLevels?: boolean;
+  /** rail-v1 as it shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */
+  railLegacy?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -526,8 +528,8 @@ export function buildCell(input: CellInput): BuiltCell {
     // Levels (railProfile.ts): the relief's envelope at the track's grade, bridge decks between their approaches.
     // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
     const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
-    const profile = input.railLevels === false ? null : railLevels(input.rails, input.railsAround ?? [], onLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured);
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}) } : { floor: false }) });
+    const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], onLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured);
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab);
     railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
   }

@@ -110,3 +110,16 @@ test('wallFacesStreet: in front within 30 m only', () => {
   assert.equal(wallFacesStreet([0, 0], [0, -1], path), null);
   assert.equal(wallFacesStreet([0, -40], [0, 1], path), null);
 });
+
+test('#146 painted-or-clad with a measured tint: buildable with a note (the kit draws walls[].wallFamily)', () => {
+  const paint = {basis: 'unresolved', family: null, wallFamily: 'paint' as const}, u = {basis: 'unresolved', family: null, wallFamily: null};
+  const p = triageCandidate(base([wall('w01', paint, 'T', 40), wall('w02')]));
+  assert.equal(p.verdict, 'buildable', p.reasons.join(' | '));
+  assert.ok(p.reasons.some(r => /measured tint on w01 \(paint\)/.test(r)));
+  assert.equal(triageCandidate(base([wall('w01', {...paint, wallFamily: 'metal'}, 'T', 40), wall('w02')])).verdict, 'buildable');
+  // no tint measured (null): the gap stays
+  assert.deepEqual(triageCandidate(base([wall('w01', u, 'T', 40), wall('w02')])).gaps, ['painted-or-clad']);
+  // the share counts only the walls without a tint
+  assert.equal(triageCandidate(base([wall('w01', {}, 'T', 30), wall('w02', paint, 'T', 15), wall('w03', u, 'T', 15)])).verdict, 'buildable');
+  assert.deepEqual(triageCandidate(base([wall('w01', {}, 'T', 20), wall('w02', u, 'T', 15), wall('w03', u, 'T', 15)])).gaps, ['painted-or-clad']);
+});

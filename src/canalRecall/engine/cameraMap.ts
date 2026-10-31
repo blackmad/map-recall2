@@ -216,6 +216,27 @@ export class CameraMap {
     for (let yy = y; yy < vp.height; yy += vp.height / 32) { const h = this.camera.unproject(x, yy); if (h) return lngLatObject(h.lng, h.lat); }
     return this.getCenter();
   }
+  /**
+   * MapLibre's `calculateCameraOptionsFromTo`: the camera at `from` (+`altitudeFrom` m) looking at `to` (+`altitudeTo` m),
+   * as centre/elevation/zoom/pitch/bearing. Uses this map's viewport and field of view.
+   */
+  calculateCameraOptionsFromTo(from: LngLatLike, altitudeFrom: number, to: LngLatLike, altitudeTo = 0): MapCameraOptions {
+    const [fl, fa] = asLngLat(from), [tl, ta] = asLngLat(to);
+    const u = unitsPerMetre(ta);
+    const dx = (mercatorX(tl) - mercatorX(fl)) / u, dy = -(mercatorY(ta) - mercatorY(fa)) / u, dz = altitudeTo - altitudeFrom;
+    const distance = Math.hypot(dx, dy, dz);
+    const vp = this.host.viewport();
+    const focal = 0.5 * vp.height / Math.tan((this.camera.fovDeg * Math.PI / 180) / 2);
+    // distance = focal · metres-per-pixel, and metres-per-pixel = 2π R cos(lat) / (512 · 2^zoom).
+    const zoom = Math.log2((2 * Math.PI * 6371008.8 * Math.cos(ta * Math.PI / 180) * focal) / (512 * distance));
+    const pitch = Math.atan2(Math.hypot(dx, dy), -dz) * 180 / Math.PI;
+    const bearing = Math.atan2(dx, dy) * 180 / Math.PI;
+    return { center: [tl, ta], elevation: altitudeTo, zoom, pitch, bearing };
+  }
+  /** MapLibre's camera knobs the look specs set; padding is always zero here. */
+  stop(): this { return this; }
+  setPadding(): this { return this; }
+  setVerticalFieldOfView(deg: number): this { this.camera.set({ fovDeg: deg }); this.host.triggerRepaint(); return this; }
   getMaxPitch(): number { return this.camera.maxPitch; }
   setMaxPitch(p: number): this { this.camera.maxPitch = Math.min(MAX_PITCH_DEG, p); return this; }
   /** MapLibre's transform: the two members the camera clearance reads. */

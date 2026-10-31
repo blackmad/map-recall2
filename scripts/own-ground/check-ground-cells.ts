@@ -137,11 +137,12 @@ async function viaductRegressions(): Promise<void> {
 /**
  * Railway tracks (railTracks.ts, railProfile.ts; three player notes on build 04e3c88, lane rail-look 2026-10-31):
  * at each RAIL_SPOTS place, at both LODs, no ground fill draws over the bed's top; at the Oostertoegang the rail
- * bridge decks run on from their approaches without a step or a tilt. The pin is live: the build without the levels
- * and the floor (`railLevels: false`, rail-v1 as it was) buries the beds there, and tilts and breaks the decks.
+ * bridge decks run on from their approaches without a step or a tilt. The pin is live: rail-v1 as it shipped in build
+ * 04e3c88 (`railLegacy`: 12 m pieces, beds on the centreline's relief, bridges on their ends' line) buries the beds
+ * there, and tilts and breaks the decks.
  */
 async function railRegressions(): Promise<void> {
-  const on = new GroundStore(readExtract, { roads: true }), off = new GroundStore(readExtract, { roads: true, railLevels: false });
+  const on = new GroundStore(readExtract, { roads: true }), off = new GroundStore(readExtract, { roads: true, railLegacy: true });
   await on.init(); await off.init();
   const cellsNear = async (s: GroundStore, x: number, y: number, r: number, lod: 0 | 1) => {
     const keys = new Set<string>();
@@ -160,7 +161,7 @@ async function railRegressions(): Promise<void> {
       const after = await cellsNear(on, x, y, spot.radiusM, lod), before = await cellsNear(off, x, y, spot.radiusM, lod);
       const a = buriedShare(after.cells, after.rails, [x, y], spot.radiusM), b = buriedShare(before.cells, before.rails, [x, y], spot.radiusM);
       check(a.samples > 500 && a.share <= spot.maxBuried, `rail ${spot.id} LOD ${lod}: ground over the bed at ${a.buried}/${a.samples} samples (${(a.share * 100).toFixed(2)} %, ≤ ${spot.maxBuried * 100} %) — ${spot.label}`);
-      if (lod === 1) check(b.share >= spot.minBuriedBefore, `rail ${spot.id}: the pin is live (rail-v1 without levels buries ${(b.share * 100).toFixed(1)} % at LOD 1, ≥ ${spot.minBuriedBefore * 100} %)`);
+      if (lod === 1) check(b.share >= spot.minBuriedBefore, `rail ${spot.id}: the pin is live (rail-v1 of build 04e3c88 buries ${(b.share * 100).toFixed(1)} % at LOD 1, ≥ ${spot.minBuriedBefore * 100} %)`);
       if (!spot.deck) continue;
       const da = deckBreaks(after.cells, after.rails, [x, y], spot.radiusM), db = deckBreaks(before.cells, before.rails, [x, y], spot.radiusM);
       check(da.ways >= 4 && da.maxStepM <= spot.deck.maxStepM && da.maxSlope <= spot.deck.maxSlope, `rail ${spot.id} LOD ${lod}: ${da.ways} bridge decks continuous, largest step ${da.maxStepM} m (≤ ${spot.deck.maxStepM}), steepest 4 m slope ${da.maxSlope} (≤ ${spot.deck.maxSlope})${da.maxStepM > spot.deck.maxStepM ? ` — ${da.worst}` : ''}`);

@@ -91,8 +91,8 @@ async function main(): Promise<void> {
   const [lng, lat, bearing, dist = 90, height = 40] = args.slice(0, 5).map(Number);
   const out = args[5] ?? `artifacts/rail-look/view-${lng}-${lat}.png`;
   const w = opt('w', 960), h = opt('h', 540), lod = process.argv.includes('--lod=1') ? 1 : 0;
-  // --before: rail-v1 as it was (no railProfile.ts levels, no never-under-the-ground floor).
-  const { cells, x, y } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--before') ? { railLevels: false } : {});
+  // --before: main's #145 beds without railProfile.ts (`railLevels: false`); --legacy: rail-v1 of build 04e3c88.
+  const { cells, x, y } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : {});
   const own = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
   void own;
   const img = renderView(cells, [x, y], { lng, lat, bearing, dist, height, w, h }, 2);

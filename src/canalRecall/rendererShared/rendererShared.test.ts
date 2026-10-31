@@ -6,7 +6,7 @@ import { eyeOfClipMatrix, frameMatrices, invert, mercatorFromWorld, mercatorOfLn
 import { fitShadowCamera, lightBasis, shadowHalfSizeForZoom } from './shadowFit.js';
 import { BAKED_LID_SHADE, BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade, createLightRig, DEFAULT_LIGHT_RIG, enuDirectionInLocal, mapLibreSunPosition, SHADOW_FILL, SUN_DIRECTION, sunDirection } from './lightRig.js';
 import { LayerRegistry, PARTICIPANT_ORDER } from './layerRegistry.js';
-import { withinView } from './residency.js';
+import { withinView } from '../engine/worldStreamer.js';
 import { fullDepthRangeForShadowMap, renderLosingContext, SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
 import { createLitFacadeMaterial, createFacadeDepthMaterial } from './litFacadeMaterial.js';
 

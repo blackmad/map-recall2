@@ -1,5 +1,300 @@
 # Canal Recall — what is built
 
+**One worker pool; the world path's heap measured with a GC (2026-10-31, #136, L4).**
+The 977 / 1,019 MB "heap at ride end" of step 4 were readings without a
+garbage collection. `scripts/heap-sample.mjs` forces a GC over CDP in the
+page and in every worker, then reads the main heap, ArrayBuffer storage and
+each worker; `motion-stutter.mjs` samples at ride start (first four tiles
+resident, before motion) and at ride end, `HEAP_OWNERS=1` attributes the live
+heap to the allocating code. Desktop, 1×: default 330 MB main / 153 buffers /
+95 workers at ride start and 366 / 258 at ride end; world (36 cells) 303 /
+89 / 160 and 345 / 215. The ≤ 500 MB ride-start gate is met on the world
+path (392 MB with buffers), and the world path sits below default at ride
+end. Fewer resident cells (24/18/12) only shrink the worker heap (−22 MB at
+12), so 36 stays. The road stack owns ~125 MB of main heap at ride start, the
+road graph alone 54 MB (35 MB of node/edge objects): step 5's CSR target.
+`src/canalRecall/engine/workerPool.ts` is now the one pool (min(cores−1, 3))
+for cell reads, building chunk builds (up to 3 at once, `?chunkBuilds=N`) and
+the own ground's relief-tile decodes; the second own-ground worker is gone,
+and `chunkBuildQueue.ts`, `ownGround/residency.ts` and
+`rendererShared/residency.ts` moved into `engine/worldStreamer.ts`. The main
+own-ground cell build keeps its own worker: its store would load three times
+in the pool and its 250–800 ms builds would block cell reads. Workers: world
+path 7 → 5, default 4 → 5 (idle pool workers start at ~10 MB each). A/B at
+five spots: 0 tiles with different features; relief through the pool sets
+10,278 buildings on the ground with the same height range as before.
+
+**Three reds on main were checks that fell behind the game (2026-10-31, #144).**
+None was a player-visible regression. `bike-xray.spec.ts` broke at 3342e6b3c
+(own ground on by default, 2026-10-14): in the shared frame the bike draws
+in the frame's overlay pass through `shared-frame-overlay`, not as the
+MapLibre layer `player-bike-3d`, so the layer-order lookup returned −1; the
+spec now reads the shared-frame registry and asserts the bike is in the
+overlay pass, that only `player-*-3d` share it, and that the overlay layer
+follows every building/facade/roof layer (the old check stays for
+`?sharedFrame=0`). `complete-city.spec.ts` broke at 6ae8f702c (tile flush
+time-sliced, 2026-10-16): `status()` recounts only after a flush, so the
+spec read `contextualFeatures` 0 of 2,913 a few frames too early (15,959 of
+16,049 after the first flush: the citywide prior was applied all along); it
+now waits for `_completeCityHasBuildings` and `_streamedCityDrawn`, and
+rebuilds the expected roof filter through `coloredBuildingLayerFilter`.
+`check-building-look-transition.ts` broke at 6370811e7 (chunk installs split
+across frames, 2026-10-16): worker replies go to a staging queue and chunks
+carry `THREE.Sphere`; the check drains `drainStaged()` after each reply and
+its stub gained `Sphere`, `Vector4`, `Matrix3`, `ShaderMaterial` for the
+city-look default. No bound, skip or allowlist changed. Left to #131 (now
+fixed): the sun-heading measurement.
+
+**Railway tracks read as rails from the chase camera (2026-10-31, #145).** The user
+filed three in-game reports on 2026-10-30 evening, hours after `rail-v1`
+shipped ("train tracks buried by surface" at Piet Heinkade east, "more bad
+train tracks" at the Zeeburg curve, "ooof, these rails look really bad" at
+the Oostertoegang throat). Causes, judged against the user's screenshots:
+compact cells dropped uvs (uv = x, y), so the sleeper texture lay along world
+x whatever the track's heading and read as a hatch; the bed was lifted from
+the centreline only, in 12 m chords, so the draped land rose over it; beige
+sand showed between close tracks; the 3 cm `serviceDrop` under yard tracks
+drew dark ridges. `compactMesh.ts` keeps the ballast uv, the texture paints
+the rails as dark stripes along the track with faint sleepers, beds stand
+`topLift` above the highest land under the whole top in 6 m pieces, tracks
+with centres under 7 m share one yard bed (bridge tracks one slab),
+`serviceDrop` is 0. Land drawn over a bed (`probe-rail-cover.ts`): 3.0 → 0.5 %,
+3.0 → 0.4 %, 4.2 → 0.6 %; frame time within noise at the seven rail spots
+(`rail-shots.mjs`, desktop and phone); `test:own-ground` 188 pass incl. the
+Dijksgracht ≥ 6 tracks regression. Not built: a concrete edge beam against
+streets (the dark bed already reads as separate); open: the verge between
+track groups > 7 m apart is still beige, platforms and catenary are not in
+`rail-v1`, and whether the water between the Oostertoegang bridge groups
+matches the real separate bridges is unchecked against a photo.
+
+**The sun-heading bike check measures one pose (2026-10-31, #131).** The
+desktop `sun-heading` red that appeared with the driving-feel merge was the
+spec, not the game: after each teleport the road guard turned the parked
+bike (a nominal 44° heading was 97° at the grab), and the bike mask's
+left/right split was the midpoint of every changed pixel in a 180 × 240
+window, so one flickering pixel at the window edge moved it ~20 px and
+flipped the sign; the pre-L8 bundles passed by luck with the same stray
+pixel. The spec now pins the rider's pose with no-op setters so both grabs
+see one pose at the heading asked for, keeps only changed pixels with at
+least four changed neighbours, and records the poses, hidden centre and
+mask bbox per heading in `sun-heading.json` (crops with `SUN_OUT`). The
+lit-half threshold, spot and sign check are unchanged; before and after
+bundles both pass 3/3. Settle timeouts at load averages above 12 are the
+machine, not the check.
+**Bridge hints regenerated for the named bascules (2026-10-31).** After the
+BASCULES list grew, `build-bridge-hints.ts --write` changes only the
+named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
+0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
+Register codes and flat hints are unchanged (decoded diff).
+
+
+**Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
+Reproduced on `main` by boarding at every IJ pier with the real controller
+(`tests/e2e/ferry-launch.spec.ts`): the vessel dead-stopped 16 m out at
+Zamenhofstraat (bow into the inlet's opposite quay) and at Pontsteiger (hull
+driven onto the quay, centre ashore), and against the tip of the Buiksloterweg
+point from the Centraal west stop. One mechanism: a non-grazing land touch set
+the speed to zero and undid the move, and no later move was allowed that still
+touched, so forward-only riders (every phone) and keyboard riders alike had no
+way free. Four changes in `src/canalRecall/ferry/travel.ts`:
+- `openWaterHeading`: the launch heads for open water, the heading within
+  ±120° (20° steps) of the boarding heading with the longest run of water
+  (80 m probed) for the whole hull width beyond a 12 m lead; ties keep the
+  boarding heading. A line skimming along the quay does not count (the first
+  cut launched the Centraal F2 landing's boat along its quay into the
+  NACO-house pontoon), and the sweep is wide because that landing's GTFS stop
+  sits over the water beside its pontoon with the access pointing straight
+  into it; the open IJ is 100° round. The old code drove through the pontoon
+  under the pier exemption and got away with it.
+- The pier exemption (quay passable within 16 m of the departure pier) no
+  longer lets the hull's centre go ashore from the water.
+- Any touch turns the leading end towards the wetter side (`wetterSide`:
+  corners first, then probes one and two hull widths out beside the bow and
+  the centre; a tie turns to starboard) and keeps 60 % of the speed, where a
+  bow-centre touch or a tie used to stop dead. The side is kept
+  (`ferryTurn`) until the hull is free: a bow corner straddling a pontoon
+  edge flipped the pick every frame and the vessel rocked in place.
+- A move that puts more of the hull on water than before is always allowed
+  (backing off a bank, turning out of a corner).
+- `ferryMotionTrack` also hides road contacts: street following (the phone
+  default since 2026-10-29) read the terminal access underfoot as a dead end
+  and held the vessel at the pier at zero speed; off the network it steers by
+  the buttons and cruises.
+Measured: all 12 piers get ≥100 m clear within 12 s under keyboard and
+street-follow controls (desktop project); `ferry-crossings`,
+`ferry-centraal-pier` and `ferry-docking-feedback` unchanged. Unit cases in
+`travel.test.ts` (inlet launch, quay-channel rejection, no going ashore at the
+pier, head-on turn with water to one side and against a flat bank, freeing
+move, no street contacts on water). Open, found on the way: from the
+`?ferry=F3` land access, holding forward on the keyboard rides along De
+Ruijterkade instead of boarding (the road guard turns the bike onto the quay
+cycleway before it reaches the stop), and street following stands at the pier
+end "awaiting a choice" instead of rolling onto the ferry; both in TODO.
+**Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
+User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
+although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
+Wikidata has the item with coordinates. Three layers each dropped a plain
+`building=*` with an article: `build-amsterdam-extract.ts` `classify()`
+admits landmarks only via tourism/historic/civic amenity, the POI layer
+filters amenity/shop/tourism/leisure and carries no encyclopedia text, and
+`build-building-facts.ts` read only year/type/heritage. Now
+`scripts/build-building-articles.ts` joins two sources to the streamed pands
+with the same `BuildingGrid` join landmarks use: the footprint's own
+`wikipedia`/`wikidata` tag (260 footprints) and a Wikidata item of a building
+class whose P625 point falls inside the footprint (977; class guards in
+`src/canalRecall/buildingArticles.ts`, a footprint tagged with another item
+refuses the point, the mapper's tag beats a point, more sitelinks beat
+fewer). Pands a landmark already lights up are left to the landmark card
+(197 footprints). Result: 1,237 articles on 1,785 pands in 121 z14 tiles
+(`building-articles/14/x/y.json.gz` + `index.json`, 181 KB gzipped), loaded
+by `BuildingFactStore` beside the fact tile only where the index lists one.
+Text: the English article when it exists (133), else the Dutch lede, clipped
+at a sentence end under 360 characters (an initial such as "Ferdinand B." is
+not a sentence end), translated through
+`building-articles-translation-batch.ts` → haiku batch agents →
+`scripts/english-translations.json` (hash of the Dutch display text; years
+kept and the place not renamed, with `--force` for reviewed cases where the
+article title is a generic word like Raadhuis or Watertoren). Dutch original
+and provenance stay in `scripts/data/amsterdam-building-articles.json`. Card:
+`_cardForClickedBuilding` names the building after the article (screened by
+`_spoils` like monument names), opens with the lede, keeps the register line
+in the expanded panel, and gets the W WIKIPEDIA link and the photo; a mapped
+venue's POI card (Paradiso) keeps its name and gains the lede. Kicker stays
+BUILDING: no quiz or distractor pool changes. Regressions:
+`check-building-facts.mts` (module, store, published Emerald Empire /
+Rembrandt Tower / Huis met de Kabouters / Ronde Lutherse Kerk tiles) and
+`tests/e2e/building-article-card.spec.ts` (click → card). Audit of what is
+still unlinked city-wide: `npm run audit:wikipedia-buildings` (brief
+`docs/handoffs/lane-wikipedia-buildings-20261030.md`, issue #142). Not done:
+200 article footprints outside the streamed tiles (Pampus, Nederhorst den
+Berg), 7 with no readable lede, landmark promotion of the famous ones, and
+the ~1,050 located sculptures/murals/memorials, which belong to a street-side
+POI rather than a building.
+
+**`?engine=own` draws the whole ride; the fair A/B says where the time goes (2026-10-31, #129, L1).**
+`src/canalRecall/engine/cityExtras.ts` hands the existing participants
+(signature landmarks with their `landmarkResidency.ts` budget, inventory
+trees, detailed buildings, pyramidal roofs, ARTIS) the engine's camera and
+shared frame with the same rules `vector-map.js` applies: pause during the
+start flight, stand on the own-ground heights, a shown model hides the plain
+buildings it replaces and cuts host openings, covers.json suppression, tap
+picks the model first, detailed buildings replace models, measured-colours
+mode hides both. `engine/themePalette.ts` applies the palette table to the
+map's land, park, water and street materials. With everything drawn, the
+honest A/B (desktop chase, 12 s, back to back): main-thread CPU 7.76 →
+7.52 ms a frame, draws 636 → 218, triangles 1.73 → 2.54 M, shader compiles
+60 → 132, p99 44 → 58 ms, programs 33 → 39. Dropping MapLibre's render saves
+2.11 ms, and most comes back: 0.38 ms of three.js render from the flat map
+fills under the ground ring, 0.40 ms of label placement every frame, 0.38 ms
+of landmark ground-height refresh at 6× the old rate, plus rider cover, water
+sampling and feature syncs. The earlier 6.61 → 1.97 ms figure measured an
+engine that skipped trees and landmarks. Decision (integrator): the programs
+≤ 32 budget is not re-stated; it moves to `tests/perf/budgets.json` and
+`engine-own.spec.ts` stays red under the flag until the ~20 landmark material
+variants are merged onto shared programs (a P4 materials item). L1's order
+now: the doubled shader compiles, throttle the landmark height refresh,
+place labels only when the camera moved, skip flat fills inside the ring,
+then step 6 (the legacy `_makeLayer` branches), then the re-port.
+**Bridge kit: swing bridges and steel lattice portals (2026-10-31).**
+- A `'swing'` bascule style (`SWING` table): the deck turns as one leaf on a
+  pivot drum, midstream or at a named bank, with fender piles and masts where
+  the photo shows them. Applies to BRU2205, BRU2361 and BRU2270.
+- `TRUSS_SHAPE` gives a truss a parabolic top chord, plus overhead members on
+  a through truss.
+- `LATTICE_FRAME` draws portal posts, beams and cross girders as open
+  lattice: Oranjebrug, BRU0148, Westergasbrug, Peperbrug, Ezelsbrug,
+  Aluminiumbrug.
+- `SINGLE_LEAF` and `PORTAL_HEEL` give one portal where the footprint length
+  had drawn two (BRU0148, BRU0193).
+- New kit colours and a `BASCULE_TRIM` table (Ezelsbrug: red deck and rods).
+- Every other bridge's frame and deck body hashes identical to before. The 9
+  verdicts are in `sheet.ts` `BASCULE_NOTES`.
+
+**P0 deletions: study layers, Google photoreal tiles, the shared-frame flag (2026-10-31, #143).**
+The four study overlays (roofs, facades, trees, public realm: research
+layers nobody rode with, each a participant `vector-map.js` constructed and
+streamed through `_updateStudyAreaResidency`) are gone from the ride with
+their bundles and build lines; the city-appearance release scripts still
+write and validate the `studyRoofs`/`studyFacades`/… manifest sections, so
+the data on disk is untouched. The Google photoreal tiles layer, its spike,
+`setGoogleTilesEnabled`, the `googleTiles` preference (the parser still
+ignores the stored key) and the photoreal gate (`photorealGate.ts`, its
+check and bundle, which had no other reader) are deleted per the user's
+2026-10-30 decision; `npm run build` had been failing on the already-missing
+`canal:google-tiles-config` script and works again. The shared frame is
+unconditional: `SHARED_FRAME_DEFAULT` and the `?sharedFrame` read are gone and
+the specs lost their `sharedFrame=1` rows (they were copies of the default).
+54 files, +68 / −5,192 lines; `vector-map.js` −198. Left measured, not
+deleted: the participants' legacy per-layer `_makeLayer` branches (signature
+landmarks 105 lines, detailed buildings 66, player vehicles 44, pyramidal
+roofs 27, three-buildings 21, highlight marker 27, trees 7, ARTIS 7), now
+reachable only when `window.CanalRecallThree` is missing; they go with L1's
+step 6 when those bundles are rebuilt anyway. `scripts/review/
+capture-thousand-building-game.mjs` is dead (reads the deleted study bundle,
+clicks the retired `route:study`); not deleted in this lane.
+
+**Driving feel: fixed substeps, a speed-dependent lock, the camera in the rider's frame (2026-10-30, #131, lane E / L8).**
+`src/canalRecall/drive/steerModel.ts` is the pure steer model: equal
+substeps of at most 1/120 s, RK2 speed, exact steer ease, trapezoid yaw and
+position, lateral grip as a rate, the bicycle lock from speed (full lock at
+parking speed, `v·ω ≤ cornering` above it, a friction circle while braking);
+the boat keeps its legacy curve, substepped. `car.js` calls it through
+`CanalRecallUi.advanceSteer`. The display-rate agreement test
+(`test:steer-model`, in `check:canal`) runs five scripts on bike and boat at
+30/60/144 Hz against 120 Hz: worst 5.5 cm, 0.0013 rad, 0.0013 m/s (gate 10 cm,
+0.01 rad, 0.05 m/s); the old one-Euler-step loop was off by up to 265 cm at
+30 Hz. `drive/cameraFollow.ts` eases the follow offset in the view's own
+frame (no speed trailing, no surge on a long frame: offset jitter on the
+desktop clip 4.3 → 2.8 px, mean lead at speed 57 → 70 px), with a 16 px
+look-ahead and a 10 % speed pull-back as `CAMERA_FOLLOW_DEFAULTS`; the one
+`vector-map.js` line multiplies the zoom by `camera.speedZoomScale`. Bike
+lean `steer·min(1,|v|/9)·0.34`. Keyboard and the touch stick blend by max;
+keys and touches reset on blur, hidden and resize. User decided on #140:
+keep the toy bike speed (351 px/s; the brief's 7–8 m/s would make rides
+15× slower, `BIKE_TRUE_SCALE` exists unwired) and keep the pull-back on.
+`cameraYaw.ts`, `streetFollow.ts` and Follow mode are untouched; camera yaw
+stayed ≤ 80°/s on both clips. Clips: `tests/e2e/driving-feel-clips.spec.ts`
+(opt-in, `DRIVE_CLIPS=1`). The omafiets GLB has no crank node, so no
+freewheel cadence.
+**`?world=v1` streams through one cell queue and a worker pool (2026-10-30, #136, L4 step 4).**
+`src/canalRecall/engine/worldStreamer.ts`: a `CellQueue` ordered by the tile
+plan and by how far ahead of the rider a cell lies (its `MotionEstimate`), at
+most two reads in flight per worker, unwanted queued reads dropped, residency
+above 36 cells evicted off-plan furthest first; decoding on a pool of
+min(cores−1, 3) workers with cell→worker affinity; a `FrameBudget` (4 ms and
+1 MiB a frame, first chunk always) that chunk installs now spend instead of
+one chunk a frame. The world client reads cells ahead of their tiles, a tile
+spread over several cells is read by several workers at once and merged by
+ordinal, and the page reads the compiler's new 39 KB `tiles.json` before the
+372 KB `index.json`. Why: after steps 1–3 the world path was ~120 ms behind
+the default path at page start and held ~6,000 fewer buildings at the A/B
+snapshot. Now the last of the first four tiles is resident at 3,791 ms vs
+default 3,870 ms, the A/B shows 0 differing tiles with Westerkerk at 36,352
+buildings both ways, and a 40 s cold desktop ride stalls 2.6 s instead of
+3.63 s (p99 frame 83.4 → 66.6 ms). Not met: the heap gate (ride end default
+977 MB, world 1,019 MB; the ≤ 500 MB ride-start sample is L4's next step),
+the ≤ 4 MB bytes target; the old queues (`chunkBuildQueue.ts`, the residency
+modules, the second own-ground worker) still run beside the pool. Cells
+recompiled and republished with `tiles.json` (verify: fresh, 0 stale, 0
+differing).
+
+**`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
+L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
+put the gate specs, ride-perf and phone-memory on either implementation;
+`ride-perf-owners.mjs` times the frame host as owner `engine`. Overlays
+(cycle tracks, transit, neighbourhood lines, route and active street draped
+on the own ground, active-landmark highlight and marker, ferry pins, the
+answered street) and the POI, landmark and branded labels now draw under the
+flag through `ownMap/labels.ts` with the spoiler rules in `labelPolicy.ts`;
+place labels are also screened by their Dutch Wikipedia name. First in-page
+A/B of the two implementations on the same ride (desktop chase, 12 s):
+main-thread CPU 6.61 → 1.97 ms a frame, draws 648 → 137, p95 22.5 → 17.8 ms,
+with the caveat that trees, landmarks and themes are not yet drawn under the
+flag. On the iPhone profile a 60 s ride holds a flat 246 MB heap with 0
+MapLibre workers. Found on the way: `streets-routing.json` names way
+`routing_15692` "New Market", an English translation in a street name (TODO
+P0).
+
 **`?world=v1` identical in the browser, decoded in the worker, cells published (2026-10-30, #136).**
 Why the first A/B showed ~4,400 extra buildings on four centre tiles: the
 cells were stale (the building tiles had been regenerated after L3 compiled;
@@ -266,6 +561,75 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**Painted and clad fronts in the large tier; 3 of 82 moved, 0 passed (2026-10-31, lane #146).**
+The largest triage gap after band fronts was `painted-or-clad` (82 pands,
+5.9 M blocked ride visibility): wide street walls whose photo wall family
+is unresolved. The kit now has `walls[i].wallFamily` (`paint` or `metal`
+with a measured colour, rib pitch and lines; `src/canalRecall/buildingRecipe/
+wallFamily.ts`), reusing the cladding geometry and exporting through the
+city look's `paint` slot; byte-identical when absent (fit-golden 207,
+large-mesh 166). `measureFacade` proposes `metal` for a rib period of 0.6 m
+or less and `paint` when the wall cells are even (spread ≤ 0.12, course
+texture ≤ 0.035, not a warm dark), thresholds calibrated on 116 unresolved
+crops and 45 brick controls (`scripts/landmarks/calibrate-wall-family.ts`);
+the judge scores a painted wall on tint and no longer warns about courses;
+triage counts a measured tint as not-a-gap. Measured result: painted-or-clad
+80 → 62, buildable 20 → 24, but only 3 of the 24 came from this gap
+(Praxis Draaierweg 124847, Johan Huizingalaan 241496, Tolhuis pavilion
+119827) and the batch held all three (a second blank clad wall drawn with 27
+windows, an open parking deck read as pale paint, a glazed pavilion under a
+deep roof). The lane stopped on the skill's 20 % rule. Why the rest did not
+move: 78 of the 116 unresolved crops have cell spread above 0.12, dark
+textured walls where cell statistics cannot tell dark paint from dark brick
+in shade. Also fixed: `measure.ts` proposed a `wallSplit` over `houses`, so
+re-measuring a house threw. The measure cache is v4. Next steps in TODO:
+propose `paint` for a pale resolved family too (241496 w0 is drawn as brick
+in paint colour), and make the factory mosaic and the triage crop measure
+the wall family the same way.
+
+**City look on by default (2026-10-30, decision #137 = A).** David chose
+option A on the #135 strip: flip at level 1, accept the +14 % landmark
+brightening at card size as the new baseline, and let the re-tag lane
+(#138, landed first) fix the wrong slots. `cityLookEnabled` now returns
+true unless `?cityLook=0` (or `window.__canalRecallCityLook === false`)
+opts out; the four look bundles and the building-style bundle were rebuilt
+with it. The shadow-fill spec's "plain" row pins the legacy flat-colour
+path and now passes `cityLook=0` explicitly; the frame specs (sun heading,
+mood shots, demo shots) keep their empty "default" query, which now means
+what players see. Desktop first: the slot array draws at 128² on touch
+(+1.4 MB) and iPhone perf is unmeasured (TODO). What's New: "Brick and
+stone on every building".
+
+**Hirschgebouw, Leidseplein (2026-10-30, lane #132).** The 1912 Hirsch & Cie
+store (pand `0363100012165488`, Rijksmonument 518447) is a bespoke model
+(`scripts/landmarks/hirschgebouw-builder.ts`, 36,491 triangles, 499,936 B,
+just under the 500 KB check, every material with a slot and a measured
+tint). Fronts: the NW (Leidseplein), NE (Leidsestraat/Kerkstraat) and SE
+fronts and the twelve-facet round corner match the panoramas bay by bay;
+the rear is the kept 3DBAG LoD2.2 shell (219 of 437 walls, 42 of 65 roofs),
+as on the American Hotel. Modelled: the corner dome tower (two drums, ring
+cornices, a 22-baluster gallery, lathe copper dome, lantern, ball finial),
+the raised HIRSCH & Cie lettering, the round corner (pilasters, glazed arch,
+tangent windows, curved balconies, balustrade), giant fluted Ionic
+half-columns, the ground arcade, triple windows with white frames, iron
+balconies on storeys 2–3, stone balustrades on storey 1, dentil entablature,
+attic storey and balustrade, ribbed slate mansards, the NE two-bay risalit.
+Simplified: drum consoles, five inferred SE bays, arcade glazing bars. The
+NE front has 7 bays in the photo against the register's 8; the photo won.
+No mansard dormers are visible in any panorama, so none are drawn. The
+elevations spec passes compare:facades 6/6 but is parked as
+`hirschgebouw-elevations-pending.json`: under the live name the audit's
+window-rhythm check reads the narrow-wide-narrow triple lights between
+0.38 m stone stiles as off-size and missing windows. The kit cannot say:
+grouped lights per bay in the rhythm audit, a seriffed lettering font, an
+Ionic volute capital, glazing bars and fanlights for arcade arches. The
+large recipe hirschpassage-2-165488 on the same pand was already held.
+The copper tint #4c5062 reads blue-violet at gallery size against the
+panoramas' weather-dependent grey-green. Sources (14 panoramas, register
+518447, BAG, 3DBAG) are archived under `models/hirschgebouw/` in
+map-recall2-source-data. The covers were rebuilt from the published z14
+extract because the integrator worktree's tile cache had been pruned.
 
 **Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
 bespoke lanes today shipped sheets with a red IN GAME column and no gallery

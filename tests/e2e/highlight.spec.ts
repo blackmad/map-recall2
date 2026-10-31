@@ -58,7 +58,6 @@ async function park(page: Page, waitForThree = true): Promise<any> {
 
 const FRAMES = [
   { name: 'default frame', query: '' },
-  { name: 'shared frame', query: '?sharedFrame=1' },
   { name: 'MapLibre fallback', query: '?buildings3d=off' },
 ];
 for (const frame of FRAMES) {

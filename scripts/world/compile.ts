@@ -166,6 +166,10 @@ async function main() {
   sources['code'] = inputHash(CODE);
   const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(indexOut));
+  // The runtime's probe reads only this (tileCells and the cell list, ~5 % of index.json): the 400 KB index cost
+  // world-v1 ~150 ms against the default path at page start (lane L4 time-to-resident).
+  const runtime = { version: 1, format: WORLD_FORMAT_VERSION, compiler: COMPILER_VERSION, globalHash, tileCells, cells: Object.fromEntries(Object.entries<any>(cellsOut).map(([k, c]) => [k, { buildings: c.buildings, gzBytes: c.gzBytes }])) };
+  fs.writeFileSync(path.join(OUT, 'tiles.json'), JSON.stringify(runtime));
 
   const allGz = Object.values<any>(cellsOut).reduce((s, c) => s + c.gzBytes, 0);
   const report = {

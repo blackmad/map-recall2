@@ -18,6 +18,13 @@ const SPOTS = {
   'muiderpoort': [4.9300, 52.3598, 20],
   // Amstel station: the rail and metro viaducts on the embankment.
   'amstel': [4.9185, 52.3455, 330],
+  // Issue #145 (user feedback 2026-10-30, build 04e3c88): the three spots the rider reported the tracks from.
+  // 5d3fb497 'train tracks buried by surface': Piet Heinkade, looking east along the Dijksgracht corridor.
+  'piet-heinkade-east': [4.919002, 52.376640, 100],
+  // d49a15b0 'more bad train tracks': Panamalaan / Czaar Peterstraat, looking east along the corridor to the Zeeburg curve.
+  'zeeburg-curve': [4.931068, 52.374300, 90],
+  // 5d5b56c4 'ooof, these rails look really bad': Oostertoegang, Centraal's eastern throat over the Oosterdok mouth.
+  'oostertoegang': [4.903754, 52.376897, 240],
 };
 const DEVICES = {
   desktop: { viewport: { width: 1280, height: 800 } },
@@ -38,7 +45,7 @@ for (const [device, ctxOpts] of Object.entries(process.env.DEVICES ? Object.from
       window.requestAnimationFrame = cb => raf(ts => { const t = performance.now(); try { cb(ts); } finally { busy.set(ts, (busy.get(ts) ?? 0) + performance.now() - t); } });
     });
     await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-    await page.goto(`http://127.0.0.1:${process.env.PORT || 4734}/canal-drive/?ownGround=1&sharedFrame=1${rails ? '' : '&rails=0'}`);
+    await page.goto(`http://127.0.0.1:${process.env.PORT || 4734}/canal-drive/?ownGround=1${rails ? '' : '&rails=0'}`);
     await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, { timeout: 90000 });
     await page.locator('#travel-mode').selectOption('car', { force: true }); await page.locator('#view-mode').selectOption('chase', { force: true });
     await page.waitForFunction(() => canalRecallGame.routePois.some(p => p.id === 'anne-frank') && canalRecallGame.routePois.some(p => p.id === 'rijksmuseum'));

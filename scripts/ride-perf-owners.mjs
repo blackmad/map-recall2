@@ -1,7 +1,7 @@
 // Per-owner frame profile of the fixed ride (Anne Frank Huis -> Rijksmuseum), desktop first.
 //   PORT=4465 node scripts/ride-perf-owners.mjs <label> "<query>" [chase|aerial] [seconds] [desktop|touch]
 // e.g. "" (own ground, the default since 2026-10-14) / "?ownGround=0" (the old flat default) /
-// "?sharedFrame=1&cityLook=1", and `aerial` (camera held ~300 m up, rider stopped).
+// "?cityLook=1", and `aerial` (camera held ~300 m up, rider stopped).
 //
 // Same route and seeded Math.random as ride-perf-fixed-route.mjs. On top of its frame and map
 // timers it records, per rAF frame:
@@ -50,7 +50,7 @@ await page.waitForFunction(() => canalRecallGame.player?.x && canalRecallGame.st
 if (view === 'aerial') {
   // Zoom the game camera out until MapLibre's camera stands ~300 m above the ground.
   const alt = await page.evaluate(async () => {
-    const g = canalRecallGame, map = g.vectorMap.map, wait = () => new Promise(r => setTimeout(r, 400));
+    const g = canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap, wait = () => new Promise(r => setTimeout(r, 400));
     let lo = g.camera.minZoom, hi = g.camera.zoom;
     for (let i = 0; i < 14; i++) {
       const z = (lo + hi) / 2; g.camera.zoom = z; g._zoomTouchedByPlayer = true; await wait();
@@ -71,6 +71,7 @@ const start = await page.evaluate(() => ({x: canalRecallGame.player.x, y: canalR
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: device === 'touch' ? 4 : 1});
 if (process.env.LAYER_TIMES) await page.evaluate(mode => { window.__layerTimes = mode === 'gpu' ? 'gpu' : true; }, process.env.LAYER_TIMES);
 const tStart = await page.evaluate((noWrap) => {
+  // Under ?engine=own there is no MapLibre map: the frame host's render is the frame owner.
   const w = window, game = canalRecallGame, vm = game.vectorMap, map = vm.map;
   const P = w.__own = {frames: [], methods: {}, loaf: [], heap: []};
   let cur = {owners: {}, calls: {}, gl: {draws: 0, tris: 0, tex: 0, texMB: 0, bufMB: 0, compile: 0, link: 0}};
@@ -112,20 +113,23 @@ const tStart = await page.evaluate((noWrap) => {
       highlight: vm._highlightMarker, landmarks: vm._signatureLandmarks, trees: vm._inventoryTrees, artis: vm._artisAnimals, roofs: vm._pyramidalRoofs,
       parks: vm._parkLandscape, detailed: vm._detailedBuildings, tileBuildings: vm._tileBuildings, completeCity: vm._completeCity, elevation: vm._elevation,
       bike: vm._playerBike, ferry: vm._playerFerry, boat: vm._playerBoat, transit: vm._playerTransit,
+      overview: vm._overview, engineLabels: vm._labels, cameraMap: vm.cameraMap,
+      cycleLines: vm._lines?.cycle, transitLines: vm._lines?.transit, hoodLines: vm._lines?.hoods,
     };
     for (const [owner, obj] of Object.entries(comps)) wrapAll(obj, owner);
     // Every custom layer by id (the legacy per-feature layers, or the shared frame's two passes).
-    for (const id of map.style._order) {
+    if (map) for (const id of map.style._order) {
       const impl = map.style._layers[id]?.implementation; if (!impl) continue;
       for (const fn of ['render', 'prerender']) if (typeof impl[fn] === 'function') impl[fn] = timed(`layer:${id}.${fn}`, `layer:${id}`, impl[fn], impl);
     }
   }
-  map._render = timed('maplibre._render', 'maplibre', map._render, map);
+  if (map) map._render = timed('maplibre._render', 'maplibre', map._render, map);
+  else vm.host._render = timed('engine._render', 'engine', vm.host._render, vm.host);
   // LAYER_TIMES=1: MapLibre's own render by style layer (painter.renderLayer: CPU ms and draw calls per layer per
   // frame, all render passes; custom layers included but already timed above). GPU time is not in it.
   // With LAYER_TIMES=gpu each call is also wrapped in an EXT_disjoint_timer_query_webgl2 query (GPU ms per layer,
   // collected as the queries resolve; disjoint results are dropped).
-  if (w.__layerTimes) {
+  if (w.__layerTimes && map) {
     const painter = map.painter, renderLayer = painter.renderLayer, glc = painter.context.gl;
     const ext = w.__layerTimes === 'gpu' ? glc.getExtension('EXT_disjoint_timer_query_webgl2') : null;
     const queries = [], free = [];
@@ -154,7 +158,7 @@ const tStart = await page.evaluate((noWrap) => {
     };
   }
   // GL work, counted on the one context MapLibre and every three.js renderer share.
-  const gl = map.painter.context.gl;
+  const gl = map ? map.painter.context.gl : vm.host.renderer.getContext();
   const tri = (mode, count) => mode === 4 ? count / 3 : (mode === 5 || mode === 6) ? Math.max(0, count - 2) : 0;
   const hook = (fn, f) => { const o = gl[fn]?.bind(gl); if (o) gl[fn] = (...a) => { f(a); return o(...a); }; };
   hook('drawArrays', a => { cur.gl.draws++; cur.gl.tris += tri(a[0], a[2]); });
@@ -271,7 +275,7 @@ const ab = !(process.env.AB_ON && process.env.AB_OFF) ? null : Object.fromEntrie
 }));
 let layerTimes = null;
 if (process.env.LAYER_TIMES) {
-  const style = await page.evaluate(() => Object.fromEntries(canalRecallGame.vectorMap.map.getStyle().layers.map(l => [l.id, {type: l.type, source: l.source, sourceLayer: l['source-layer'], minzoom: l.minzoom}])));
+  const style = await page.evaluate(() => Object.fromEntries((canalRecallGame.vectorMap.map?.getStyle().layers ?? []).map(l => [l.id, {type: l.type, source: l.source, sourceLayer: l['source-layer'], minzoom: l.minzoom}])));
   const acc = {};
   for (const f of frames) for (const [id, [ms, draws]] of Object.entries(f.layers || {})) { const e = acc[id] || (acc[id] = {ms: 0, draws: 0, frames: 0}); e.ms += ms; e.draws += draws; e.frames++; }
   const gpu = raw.P.gpu || {};

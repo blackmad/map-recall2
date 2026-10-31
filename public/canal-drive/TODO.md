@@ -66,15 +66,24 @@ glazed-storey proposals) and the band measurement blockers (#134, HISTORY
 glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
 groups are probed again when a crop pairs them. Measured result: 0 of 253
 inferred groups moved and none of the 17 ride-landmark drafts passes yet;
-what still blocks them is in the tier sheet (item 8). Next spend by blocked
-ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
-closer-crop or second-capture signal for pale brick fronts (240435) that the
-cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+what still blocks them is in the tier sheet (item 8). The `painted-or-clad`
+gap got its kit (#146, HISTORY "Painted and clad fronts in the large
+tier"): `walls[].wallFamily` paint/metal, but only 3 of 82 moved and 0
+passed; 78 of 116 unresolved crops are dark textured walls that cell
+statistics cannot split from dark brick in shade. Next spend: propose
+`paint` for a pale resolved family (241496 w0), make the factory mosaic and
+the triage crop measure the wall family the same way, a closer-crop or
+second-capture signal for dark and pale fronts (240435, the 78 above), and
+the `band` gap's draft geometry (ribbon windows on slab fronts). Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. The review
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
+"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
+live, a POI or destination card, a re-measured copper tint, and the bounded
+Beeldbank search. The review
 sheet's IN GAME column and the gallery card work again in lane worktrees
 (#139, HISTORY "Review sheet sees the lane's own landmark"); the guard spec
 `tests/e2e/review-sheet-ingame.spec.ts` runs standalone, not in
@@ -85,28 +94,22 @@ serres and timber screens are not fitted to the ochre and green slots to
 dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
 waited 3 h behind 25 others today; the lock is not fair).
 
-**City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
-the city look (HISTORY "City look re-levelled; flip pending"); source and
-bundles are on main with the flag still off. A = flip on at level 1 (chunks
-match today, landmarks +14 % brighter at card size), B = level 0.85
-(landmarks within ±2 %, chunks dour), C = keep off. On A or B the integrator
-flips `cityLookEnabled` to default on with `?cityLook=0` as opt-out, rebuilds
-the four bundles, and writes the What's New note with the strip. Follow-ups
-regardless (#138 landed, HISTORY "Builder-declared material slots"): a
-`timber` and a `metalRoof` slot (houseboat museum, Hannekes Boom, Vondeltuin,
-Hotel Jakarta, Odessa; Ronde Lutherse dome, American Hotel copper), a
-warm-grey roofTile keeping its tone instead of the black-tile slate tone
-(Uilenburger), evidence for Podium Mozaïek / He Hua / Centrale Markthal /
-Symphony / Haparandaweg cladding, dropping the `materialSlotSource:
-'inferred'` marker on tagged materials once the flip is decided, a
-base-vs-base look-consistency control run when the browser lock is quiet,
-iPhone perf with the slot array at 128², and the missing bagYears (values
-in the #138 hand-back: olvg-west 1966, olvg-oost 1900, max-euwe-centrum
-1905, academie-theater-dans 1996, jodenbreestraat-11 1996, begijnhof 1697,
-europarking-marnixstraat 1972; `landmark-bag-years.ts` writes to staging
-only, and olvg-west/oost have no manualCatalogue entry). Note:
-`build-manual-landmarks.ts` changed, so its toolchain hash moved and the
-next full builder run re-exports every model.
+**City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
+default"):** measure iPhone perf with the slot array at 128² (desktop was
+16.7 ms either way); a `timber` and a `metalRoof` slot (houseboat museum,
+Hannekes Boom, Vondeltuin, Hotel Jakarta, Odessa; Ronde Lutherse dome,
+American Hotel copper); a warm-grey roofTile keeping its tone instead of the
+black-tile slate tone (Uilenburger); evidence for Podium Mozaïek / He Hua /
+Centrale Markthal / Symphony / Haparandaweg cladding; drop the
+`materialSlotSource: 'inferred'` marker on tagged materials now that the
+default is the city look (check `_dress` first); a base-vs-base
+look-consistency control run when the browser lock is quiet; the missing
+bagYears (values in the #138 hand-back: olvg-west 1966, olvg-oost 1900,
+max-euwe-centrum 1905, academie-theater-dans 1996, jodenbreestraat-11 1996,
+begijnhof 1697, europarking-marnixstraat 1972; `landmark-bag-years.ts`
+writes to staging only, and olvg-west/oost have no manualCatalogue entry).
+Note: `build-manual-landmarks.ts` changed in #138, so its toolchain hash
+moved and the next full builder run re-exports every model.
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
@@ -132,8 +135,21 @@ Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
 migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
 4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
 world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
-#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
-shader (B) / L7 shadows (D). Gates per
+#131 L8 driving feel (lane E, 4527; **merged 2026-10-30**, user on #140: keep
+the toy bike speed, keep the 10 % pull-back; `BIKE_TRUE_SCALE` stays unwired;
+the `frameHost.tick(dtFixed)` hook for `CanalRecallUi.stepSteer` is L1's when
+the engine owns the loop) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
+(`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
+`SHARED_FRAME_DEFAULT`; **merged 2026-10-31**, HISTORY "P0 deletions"; the
+legacy `_makeLayer` branches table in that entry is L1 step 6's list), #144 reds triage (`lane-reds-triage-20261030.md`,
+4535: bike-xray, complete-city, check-building-look-transition; **merged
+2026-10-31**), #145 rail
+look (`lane-rail-look-20261030.md`, 4537; **merged 2026-10-31**, HISTORY "Railway
+tracks read as rails") from the user's three in-game
+reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
+bad train tracks", "ooof, these rails look really bad": feedback ids
+5d3fb497, d49a15b0, 5d5b56c4, resolve them when #145 merges). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
 State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
@@ -156,14 +172,14 @@ tree, so they are reds on main, not from the migration (listed under "Reds
 on main" below); the `ride-perf` motion variant read 8 frames > 50 ms against
 a budget of 4 (p95 16.8, 0 > 100 ms, longest 100 ms) on a machine running
 three other browser lanes: load-induced by the 2026-10-16 doc's own spread,
-re-measure on a quiet machine before calling it a regression. P0 deletions still open: study layers and Google
+re-measure on a quiet machine before calling it a regression. P0 deletions done 2026-10-31 (#143; was: study layers and Google
 tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 `scripts/city-appearance/publish-area-geometry-demo.ts`,
 `scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
 `wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
 `tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
 (`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
-and the build chain), `index.html` script tags, the bundles. Lesson for
+and the build chain), `index.html` script tags, the bundles). Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
 State: **L1 engine host step 3 merged 2026-10-30** (#129, `bc3f9e664`):
@@ -180,16 +196,32 @@ picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
 Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
 and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
 programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
-**Not yet under the flag (no-ops):** landmark highlight, all labels, places,
-branded POIs, answered-street name, transit, cycle tracks, ferry pins, trees,
-signature landmarks, detailed buildings, palette themes, `inspectBuilding`
-lift. **Gate not met yet:** the named specs have no `?engine=own` switch, the
-ride-perf in-page A/B and `phone-memory` under the flag are unmeasured.
-`game-route.js` / `feedback/browser.ts` keep a `.map` fallback until
-`vector-map.js` gains `frameCanvas()`, `captureFrame()`, `jumpToLngLat()`.
-Steps 4–6 (overlays + labels, the 2026-10-10 re-port incl. the own picker,
-`_makeLayer` deletions, a flag switch for the gate specs, the A/B) continue
-in the same lane.
+Lane hand-back (1) merged 2026-10-31 (`693d767cf`, HISTORY "`?engine=own`
+draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
+themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
+doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
+programs (37–39 > 32)** by decision until the landmark materials are merged.
+Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
+specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
+overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
+dashed, route + active street draped, active-landmark highlight and marker,
+ferry pins, answered street) and POI / landmark / branded labels through
+`ownMap/labels.ts` + `labelPolicy.ts` (place labels also screened by their nl
+Wikipedia name, `engine/placeNames.ts`, Nieuwmarkt regression);
+`vector-map.js` gained `frameCanvas()`, `captureFrame()`, `jumpToLngLat()` so
+the `.map` fallbacks in `game-route.js` / `feedback/browser.ts` are gone.
+**Measured, in-page A/B desktop chase 12 s:** main-thread owned CPU 6.61 →
+1.97 ms/frame (gate ≥ 1.5 lower), draws 648 → 137, p95 22.5 → 17.8 ms, frame
+median vsync-bound both; not like-for-like (no trees, detailed buildings,
+signature landmarks, Google tiles, palette themes under the flag). iPhone
+`ENGINE=own`: engine-own, phone-memory, start-heading, context-restore green;
+60 s ride heap flat at 246 MB, textures 27 MB, buffers 78 MB, 0 MapLibre
+workers. Desktop gates green under the flag: context-restore, intro-perf,
+look-consistency (photo), open-squares, start-heading.
+**Still not under the flag:** trees, detailed buildings, signature landmarks,
+palette themes (Google tiles are being deleted). **Not done:** the 2026-10-10
+re-port (own picker, overview extract with rail/footway/landuse, ~2.7k lines)
+and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
@@ -213,18 +245,38 @@ Westerkerk: more tiles resident, not different styling) and pixels differed
 up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
 world path streams tiles in later at page start (inflate wall time), which is
 step 4's flush/regroup and look-ahead work; measure time-to-resident per
-tile both ways. Still open: ≤ 4 MB target (FOOT alone 7.4 MB
-gz); remaining long frames are the streamer's flush/regroup (step 4, waits
-for `engine/frameHost.ts` on main, which is there since step 3 of L1: resume
-L4 step 4); road CSR (step 5).
-**Reds on main found by the programme's runs (2026-10-30), not yet owned:**
-`tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
-draws after every building layer: expected > 128, got −1);
-`tests/e2e/complete-city.spec.ts` "the streamed city loads …"
-(contextualFeatures 0, want > 50 % of features: the citywide display prior is
-not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
-throws (`test:city-startup`). CI runs only lint and the boot smoke, so none of
-these block a push. Triage lane wanted: are they product-visible?
+tile both ways. **Step 4 merged 2026-10-30** (`21a8d01db`):
+`engine/worldStreamer.ts` holds one `CellQueue` (plan order, ahead rank from
+the rider's motion, ≤ 2 reads per worker in flight, 36 resident cells,
+off-plan eviction), a pool of min(cores−1, 3) decode workers with cell
+affinity, and a per-frame `FrameBudget` (4 ms / 1 MiB) that chunk installs
+spend (`?uploadBudget=0` = one per frame); the compiler writes a 39 KB
+runtime `tiles.json`. Measured: last of the first four tiles resident at
+page start default 3,870 ms vs world 3,791 ms (was ~120 ms behind); 40 s
+cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
+0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
+JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
+start, which the script does not yet sample; the 36 resident cells plus
+per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
+7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+(12/18/24/36 resident cells, one decoded cell shared across tiles,
+transfer not copy), then chunk and own-ground builds onto the pool so
+`chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
+and the second own-ground worker can go, then road CSR (step 5). **Heap and
+pool merged 2026-10-31** (`5f64e3292`, HISTORY "One worker pool"): heap gate
+met with a GC-forced sample (303 MB main at ride start, world below default
+at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
+cell build keeps its own worker. Open for L4: step 5 road graph as CSR
+(`Int32Array` offsets/targets, `Float32Array` x/y/distance, segment table,
+node views behind the current API; callers roadGraph routers,
+`ferry/network.ts`, `ownGround/route.ts`, `road-network.js`, check scripts;
+gates road-graph heap ≤ 30 MB from 54, time to ride ≤ 4 s, `test:canal-car`
+and `test:reachability` green); the ≤ 4 MB bytes target.
+**Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
+(#144, HISTORY "Three reds on main were checks that fell behind the game";
+#131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs
+35 > 32 under `ENGINE=own` (landmark materials, see L1 state). CI runs only
+lint and the boot smoke, so no e2e red blocks a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
@@ -249,6 +301,8 @@ the default look's style. Pre-existing red found on main:
 not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
+
+**Transvaalbuurt kit, in flight (user, 2026-10-31, #149):** the user photographed Albert Luthulistraat 29–31 (dark red brick, four storeys, flat roof with a black-brick parapet band, white two-light frames, round stair tower with a brick ladder) and asked for a buurt generator; Oud-Oost has none (MD01/MD02 are 0.2 %/0.1 % modelled, clusters of 41/38/67 near-identical 1910–25 pands). Lane `lane/transvaalbuurt-kit-20261031` (brief `docs/handoffs/lane-transvaalbuurt-kit-20261031.md`): survey both buurten, auto-place against rivierenbuurt/indische-buurt, author a `transvaalbuurt` type library from measured strips, add the parapet-band and stair-tower kit components, batch-install in ride order. Acceptance is likeness to the user's photo on that row. Integrator after hand-back: covers, exposure rows, buurt pages, strip archive, What's New with the before/after strip.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -281,6 +335,16 @@ Open, in order:
     (HISTORY; three faults, e2e `ferry-centraal-pier.spec.ts`). Open: the
     iPhone project of the ferry specs was not run; the user rides it after
     deploy and closes the note.
+  - ferries stuck a few metres out (user, 2026-10-31): fixed 2026-10-31
+    (HISTORY; launch towards open water, no stranding on a touch,
+    street-follow cruises on water; `ferry-launch.spec.ts` boards at all 12
+    piers). Open from the same probe: from the `?ferry=F3` land access,
+    holding forward on the keyboard rides off along De Ruijterkade instead of
+    boarding (the road guard turns the bike onto the quay cycleway short of
+    the stop); street following stands at the pier end "awaiting a choice"
+    instead of rolling onto the ferry (streetFollow.ts treats the access end
+    as a junction with no way on). Both need a boarding rule: at a pier end
+    facing the water, forward boards.
   - wiggly green patches on J.D. Meijerplein (53b04137) and the user's
     Spiegelgracht × Prinsengracht frame (one brown klinker mass, no kerb or
     sidewalk tone, red cycle fragments): added as spots to R0
@@ -1201,6 +1265,37 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **"New Market" is a street name (found by L1, 2026-10-30).** In
+  `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
+  (52.372955, 4.900113) is named "New Market": an English translation leaked
+  into a Dutch street name, so when Nieuwmarkt is asked and every name is
+  earned, "New Market" is drawn next to it on both engines. Cause found
+  2026-10-31: `scripts/build-amsterdam-extract.ts` l.260 took `name:en`
+  before `name` for roads and places (landmarks and venues keep English on
+  purpose). The line now prefers the local name; lane #147
+  (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
+  from the archived PBF, reviews every changed name, fixes English pins and
+  hands back a Nieuwmarkt screenshot for What's New; then pin a regression
+  (the engine's Nieuwmarkt test already screens nl names). Lane finding
+  (2026-10-31, #147): the one-line rule also renamed 59 landmarks (Weepers'
+  Tower → Schreierstoren), so the rule is scoped by `classify()` to streets,
+  squares, water, bridges and routing; like-for-like it changes 11 names
+  (Nieuwmarkt, Dam, Bloemenmarkt, Museumplein, Rembrandtplein, Albert
+  Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug, Vincent van
+  Goghstraat, K+R). Publishing goes through a scripted name-only patch
+  (`scripts/patch-local-street-names.ts`, staging + `--publish`), because:
+- **Extract refresh drift (found 2026-10-31, #147).** `scripts/
+  refresh-amsterdam-extract.sh` from the same archived PBF no longer
+  reproduces the committed extract: streets-routing 47,259 → 45,620 ways
+  (centres/paths differ on 45,136, highway class on 34,701), streets 343 →
+  500, trees moved on all 35,000 with 2,623 species changes, enrichment
+  text/images/distractors on hundreds of features, neighbourhoods 87 → 85,
+  331 new Ollama translations (some outside Amsterdam). The committed data
+  carries later curation the refresh discards. Before the next full refresh:
+  find which steps drifted (routing filter, tree source, enrichment caches),
+  make the refresh reproduce the committed extract from the archive, and
+  only then let it move data. Staged outputs from the comparison were under
+  the lane session's scratchpad (`regen/`, `stage/`), not kept.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1256,6 +1351,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
+  articles on ordinary buildings open from the click card (HISTORY
+  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
+  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
+  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
+  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
+  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
+  click POI, not a building; bridges/streets in the Wikidata box should be
+  audited by title before counting them missing. Brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
+  `npm run audit:wikipedia-buildings`, issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
@@ -2199,14 +2305,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
     - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
   - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
-- **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
-  - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
-  - a swing (draaibrug) kind: BRU2205, Commandantsbrug BRU2361 (also has truss sides, a `TRUSS_PARAPET` candidate after a sheet check), Oosterdoksdraaibrug BRU2270. The first two are basement bascules as a stopgap;
-  - small low timber or wip footbridges with no portal and no masts: BRU0379, BRU0380, BRU0483, BRU0850;
-  - modern sculptural portals and blue steel: Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277; tall pylons on Omvalbrug BRU0429; brick towers on Berlagebrug BRU0423;
-  - Mariniersbrug truss: the real top chord arches deeper at midspan, and the truss runs past the brick abutments.
-
-  No panorama view: BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; bridge hidden by trees: BRU0375, 0592, 2294, 2410, 2481.
+- **Movable bridges: what the kit still cannot say (after the swing/lattice lane, 2026-10-31).**
+  - Ezelsbrug's red backstay cables and the piers under its posts; its frames sit too close to midspan.
+  - Arched girder undersides (Buiksloterdraaibrug).
+  - The Oosterdoksdraaibrug's dense web and curved overhead bracing; shaped trusses vanish in the far ring.
+  - Peperbrug's closed overhead beam box.
+  - The Aluminiumbrug's ornate knee braces.
+  - Per-bridge portal height and reach (the Westergasbrug's is taller).
+  - Denser fenders; a swing tail and counterweight.
+  - Brick towers (Berlagebrug BRU0423).
+  - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
+  - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
+  - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
+  - `check:bridge-railings` did not finish in the lane; run it.
+  - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;

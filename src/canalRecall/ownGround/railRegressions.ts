@@ -28,7 +28,7 @@ export interface RailSpot {
   radiusM: number;
   /** After the fix: largest buried share of the bed top (each LOD). */
   maxBuried: number;
-  /** The pin is live: the build without railProfile.ts levels and floor buries at least this share (at LOD 1). */
+  /** The pin is live: rail-v1 as it shipped in build 04e3c88 (`railLegacy`) buries at least this share (at LOD 1). */
   minBuriedBefore: number;
   /** Bridge decks (note 3): largest step between metre samples and steepest 4 m slope along the decks, after. */
   deck?: { maxStepM: number; maxSlope: number; /** The pin is live: the old build's steepest slope is at least this. */ minSlopeBefore: number };

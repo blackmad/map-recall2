@@ -13,7 +13,7 @@ import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAN
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
-import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from './residency';
+import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from '../engine/worldStreamer.js';
 import { splitIntoTiles } from './cellTiles';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_LOOK_DEFAULT, groundPalette } from './groundLook';
@@ -2116,7 +2116,7 @@ test('rail tracks: the bed never under the land between its stations, nor on an 
   const land = (x: number, y: number) => Math.max(0, 0.6 - Math.abs(x - 6) * 0.3) + Math.max(0, y) * 0.5;
   const way: RailWay = { kind: 'rail', bridge: false, service: false, points: [[0, 0], [48, 0]] };
   const m = railMeshes({ ways: [way], inCell: () => true, height: land });
-  const old = railMeshes({ ways: [way], inCell: () => true, height: land, floor: false });
+  const old = railMeshes({ ways: [way], inCell: () => true, height: land, legacy: true });
   // Sample the bed top (u inside the sleepers) against the land under it.
   const worst = (mesh: typeof m) => {
     const p = mesh.ballast.positions, idx = mesh.ballast.indices;
@@ -2131,7 +2131,11 @@ test('rail tracks: the bed never under the land between its stations, nor on an 
     return w;
   };
   assert.ok(worst(m) >= RAIL_SECTION.topLift - 0.02, `bed top over the land by ${worst(m).toFixed(2)} m`);
-  assert.ok(worst(old) < 0, `the pin is live: the old chord dips ${worst(old).toFixed(2)} m under`);
+  assert.ok(worst(old) < 0, `the pin is live: rail-v1 (build 04e3c88) dips ${worst(old).toFixed(2)} m under`);
+  // The far build's 24 m chords: issue #145's per-station ridge still dips under the bump; the floor does not.
+  const farMain = railMeshes({ ways: [way], inCell: () => true, height: land, far: true, floor: false }), far = railMeshes({ ways: [way], inCell: () => true, height: land, far: true });
+  assert.ok(worst(far) >= RAIL_SECTION.topLift - 0.02, `far bed over the land by ${worst(far).toFixed(2)} m`);
+  assert.ok(worst(farMain) < RAIL_SECTION.topLift - 0.1, `#145's far chord sits only ${worst(farMain).toFixed(2)} m over the land`);
 });
 
 test('rail tracks: with levels, a bent piece takes the level stations and two cells still draw each piece once', async () => {

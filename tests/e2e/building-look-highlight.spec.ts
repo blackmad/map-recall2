@@ -18,9 +18,7 @@ const SPOTS: Spot[] = [
 // The yellow under review: `?highlight=yellow` (the default highlight is the outline since 2026-10-13, highlight.spec.ts).
 const FLAGS = [
   { name: 'default', query: '?highlight=yellow' },
-  { name: 'shared-frame', query: '?highlight=yellow&sharedFrame=1' },
   { name: 'citylook', query: '?highlight=yellow&cityLook=1' },
-  { name: 'citylook-shared-frame', query: '?highlight=yellow&cityLook=1&sharedFrame=1' },
 ];
 const OUT = process.env.HIGHLIGHT_OUT ?? 'artifacts/citylook-review/highlight';
 const only = process.env.HIGHLIGHT_FLAGS?.split(',').filter(Boolean);

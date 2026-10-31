@@ -198,7 +198,6 @@ export interface CanalPreferences {
   trees: boolean;
   measuredColoursOnly: boolean;
   detailed3d: boolean;
-  googleTiles: boolean;
   reducedMotion: boolean;
   skipMastered: boolean;
   /** Route questions asked per minute while riding; 0 turns them off. */
@@ -216,6 +215,23 @@ export interface CanalPreferences {
   /** Orbit angle around the vehicle in a 3D view, in degrees. */
   cameraBearing: number;
 }
+
+/**
+ * Follow camera (drive/cameraFollow.ts). The centre is the vehicle plus an
+ * offset eased in the view's frame, so it no longer trails by speed / rate
+ * (~80 px at the bike's top speed with the old 0.07-per-frame world ease).
+ * `lookahead` is slop-newyork's 5.2 m (16 px) at top speed; `pullBack` widens
+ * the map zoom by up to 10 % at top speed (slop: 25 % of the chase distance).
+ * Neither turns the view: yaw stays with cameraYaw.ts (dead band, 80°/s cap),
+ * checked in check-street-follow.ts.
+ */
+export const CAMERA_FOLLOW_DEFAULTS = {
+  lookahead: 16,
+  lookaheadRate: 1.2,
+  offsetRate: 4.35,
+  pullBack: 0.1,
+  pullBackRate: 0.8,
+} as const;
 
 export interface ZoomClamp {
   min: number;
@@ -242,7 +258,6 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     trees: true,
     measuredColoursOnly: false,
     detailed3d: false,
-    googleTiles: false,
     reducedMotion: false,
     skipMastered: true,
     maxAsksPerMinute: DEFAULT_ASK_BUDGET,
@@ -335,7 +350,6 @@ function fillPreferences(
     trees: parseBoolean(source.trees, base.trees),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: base.detailed3d,
-    googleTiles: base.googleTiles,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     maxAsksPerMinute: parseAskBudget(source.maxAsksPerMinute, base.maxAsksPerMinute),
