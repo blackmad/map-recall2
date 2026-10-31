@@ -341,6 +341,25 @@ export class SharedFrame {
     this.renderer.resetState();
   }
 
+  /**
+   * Compile an object's programs before it joins the scene, without stalling a frame where the driver can
+   * (`renderer.compileAsync`, KHR_parallel_shader_compile). Resolves when every program reports ready, or
+   * after `timeoutMs` (a lost context never reports): a model may then show a little later, never not at
+   * all. Behind a covering card, or without a renderer, it resolves at once and the first draw compiles.
+   * The object's state that keys a program (receiveShadow, instancing) must already be final.
+   */
+  compileAsync(object: any, timeoutMs = 2000): Promise<void> {
+    const renderer = this.renderer;
+    if (!renderer?.compileAsync || this.coverPaused) return Promise.resolve();
+    let ready: Promise<unknown>;
+    try { ready = renderer.compileAsync(object, this.camera, this.scene); }
+    catch (error) { console.warn('Shared frame: could not precompile', error); return Promise.resolve(); }
+    finally { renderer.resetState(); }
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<void>(resolve => { timer = setTimeout(resolve, timeoutMs); });
+    return Promise.race([ready.then(() => undefined, () => undefined), timeout]).finally(() => clearTimeout(timer));
+  }
+
   /** Set cast/receive on every mesh under `object`. */
   static setShadows(object: any, cast: boolean, receive: boolean): void {
     object.traverse((child: any) => {
@@ -416,6 +435,9 @@ export class SharedFrame {
     }
     return sig;
   }
+
+  /** Landmark shadow stand-ins (shadowStandIns.ts); the quality tier turns them off where shadows are off anyway. */
+  shadowStandIns = true;
 
   /** Force the shadow map to be redrawn next frame. */
   invalidateShadows(): void { this.shadowKey = ''; this.map.triggerRepaint?.(); }
