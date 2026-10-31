@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**`?engine=own` draws the whole ride; the fair A/B says where the time goes (2026-10-31, #129, L1).**
+`src/canalRecall/engine/cityExtras.ts` hands the existing participants
+(signature landmarks with their `landmarkResidency.ts` budget, inventory
+trees, detailed buildings, pyramidal roofs, ARTIS) the engine's camera and
+shared frame with the same rules `vector-map.js` applies: pause during the
+start flight, stand on the own-ground heights, a shown model hides the plain
+buildings it replaces and cuts host openings, covers.json suppression, tap
+picks the model first, detailed buildings replace models, measured-colours
+mode hides both. `engine/themePalette.ts` applies the palette table to the
+map's land, park, water and street materials. With everything drawn, the
+honest A/B (desktop chase, 12 s, back to back): main-thread CPU 7.76 →
+7.52 ms a frame, draws 636 → 218, triangles 1.73 → 2.54 M, shader compiles
+60 → 132, p99 44 → 58 ms, programs 33 → 39. Dropping MapLibre's render saves
+2.11 ms, and most comes back: 0.38 ms of three.js render from the flat map
+fills under the ground ring, 0.40 ms of label placement every frame, 0.38 ms
+of landmark ground-height refresh at 6× the old rate, plus rider cover, water
+sampling and feature syncs. The earlier 6.61 → 1.97 ms figure measured an
+engine that skipped trees and landmarks. Decision (integrator): the programs
+≤ 32 budget is not re-stated; it moves to `tests/perf/budgets.json` and
+`engine-own.spec.ts` stays red under the flag until the ~20 landmark material
+variants are merged onto shared programs (a P4 materials item). L1's order
+now: the doubled shader compiles, throttle the landmark height refresh,
+place labels only when the camera moved, skip flat fills inside the ring,
+then step 6 (the legacy `_makeLayer` branches), then the re-port.
+
 **P0 deletions: study layers, Google photoreal tiles, the shared-frame flag (2026-10-31, #143).**
 The four study overlays (roofs, facades, trees, public realm: research
 layers nobody rode with, each a participant `vector-map.js` constructed and

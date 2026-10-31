@@ -189,6 +189,11 @@ picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
 Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
 and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
 programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
+Lane hand-back (1) merged 2026-10-31 (`693d767cf`, HISTORY "`?engine=own`
+draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
+themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
+doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
+programs (37–39 > 32)** by decision until the landmark materials are merged.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
