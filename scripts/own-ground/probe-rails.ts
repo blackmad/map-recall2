@@ -4,7 +4,7 @@
 //
 // Rasterises the built cells top-down twice: rails only (the footprint of ballast and rails), and everything. Prints
 // per covering layer the share of the rail footprint it wins, and how far above the bed top it stands.
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import sharp from 'sharp';
@@ -13,7 +13,9 @@ import { buildCell, GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../.
 import { layerOfId, rasterLayerIds } from '../../src/canalRecall/overviewTiles/raster.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
-export const readExtract = async (path: string) => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
+// OWN_GROUND_STAGE=<extract prefix>=<dir>[,…]: staged files stand in for the published ones (check-ground-cells.ts).
+const STAGE = (process.env.OWN_GROUND_STAGE ?? '').split(',').filter(Boolean).map(s => s.split('=') as [string, string]);
+export const readExtract = async (path: string) => { const st = STAGE.map(([p, d]) => (path.startsWith(`${p}/`) ? join(d, path.slice(p.length + 1)) : '')).find(f => f && existsSync(f)); const b = readFileSync(st ?? join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
 
 export async function railCells(lng: number, lat: number, half: number, lod: 0 | 1 = 0, opts: Record<string, unknown> = {}): Promise<{ cells: BuiltCell[]; x: number; y: number; store: GroundStore }> {
   const store = new GroundStore(readExtract, { roads: true, ...opts });

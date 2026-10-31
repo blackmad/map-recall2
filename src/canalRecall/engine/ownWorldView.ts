@@ -35,6 +35,7 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
+import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
 import { LandmarkHighlight } from './landmarkHighlight';
 
 declare const CANVAS_W: number;
@@ -282,7 +283,10 @@ export class OwnWorldView {
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
       const years = Facades.constructionYearEnricher(this.extractPath);
-      city.setTileEnricher(Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years);
+      const facts = Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years;
+      // Railway infrastructure registered as buildings (railInfraBuildings.ts, rail-infra-buildings.json): viaduct pands
+      // dropped for the track's own structure, platform canopies as open canopies over the platforms. After the facts.
+      city.setTileEnricher(composeTileEnrichers(facts, railInfraEnricher(this.extractPath)) as any);
       const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(Facades.decorateFacade(f)) : Facades.decorateFacade;
       const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);

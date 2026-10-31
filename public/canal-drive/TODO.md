@@ -2412,14 +2412,17 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 - **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
 
-- **Rail look, left open (lane rail-look-20261031, 2026-10-31).** Rail
-  bridges have no piers, girders or parapets; 17 bridge decks no approach
-  meets draw plain on the relief (170 m: −7_-2, −8_-2, −1_-2); lifted
-  approaches have plain walls and the land beside keeps the fill's smeared
-  slope; tracks in Centraal's train shed sit on wrong 1.2 m relief (lifted to
-  ~4.5); a metro node north of the IJ (4.9163, 52.3876) spans a one-point
-  relief pit; switches can meet at slightly different heights. Game frames at
-  the three RAIL_SPOTS not shot yet (scripts/own-ground/rail-shots.mjs).
+- **Rail look, left open (lane rail-look-20261031, round 3 shipped 2026-10-31).**
+  Brick arch viaducts and masonry piers are not modelled (viaducts are
+  concrete column rows); long river spans have no piers; canopies are thin
+  flat slabs with no columns or roof profile; a kiosk on an elevated platform
+  cannot stand; lifted approaches have plain walls. The Oostertoegang,
+  Dijksgracht and Droogbak bridge types are inferred, not checked against
+  panoramas. 5 rail bridge components (65 m, −1_-2, −7_-2) ride road decks.
+  Doubtful rail-infra drops: Amstel kiosk NL.IMBAG.Pand.0363100012253545
+  (58 m² shop), Westerpark lone arch 0363100012173021. `?world=v1` and the
+  legacy MapLibre path do not apply rail-infra-buildings.json. Game frames at
+  Amstel and Centraal not shot yet.
 - **Rail follow-ups (#124, 2026-10-30).**
   - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
   - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.
