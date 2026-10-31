@@ -1257,7 +1257,26 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
   from the archived PBF, reviews every changed name, fixes English pins and
   hands back a Nieuwmarkt screenshot for What's New; then pin a regression
-  (the engine's Nieuwmarkt test already screens nl names).
+  (the engine's Nieuwmarkt test already screens nl names). Lane finding
+  (2026-10-31, #147): the one-line rule also renamed 59 landmarks (Weepers'
+  Tower → Schreierstoren), so the rule is scoped by `classify()` to streets,
+  squares, water, bridges and routing; like-for-like it changes 11 names
+  (Nieuwmarkt, Dam, Bloemenmarkt, Museumplein, Rembrandtplein, Albert
+  Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug, Vincent van
+  Goghstraat, K+R). Publishing goes through a scripted name-only patch
+  (`scripts/patch-local-street-names.ts`, staging + `--publish`), because:
+- **Extract refresh drift (found 2026-10-31, #147).** `scripts/
+  refresh-amsterdam-extract.sh` from the same archived PBF no longer
+  reproduces the committed extract: streets-routing 47,259 → 45,620 ways
+  (centres/paths differ on 45,136, highway class on 34,701), streets 343 →
+  500, trees moved on all 35,000 with 2,623 species changes, enrichment
+  text/images/distractors on hundreds of features, neighbourhoods 87 → 85,
+  331 new Ollama translations (some outside Amsterdam). The committed data
+  carries later curation the refresh discards. Before the next full refresh:
+  find which steps drifted (routing filter, tree source, enrichment caches),
+  make the refresh reproduce the committed extract from the archive, and
+  only then let it move data. Staged outputs from the comparison were under
+  the lane session's scratchpad (`regen/`, `stage/`), not kept.
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
