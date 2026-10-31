@@ -4,9 +4,10 @@
 import '../../../scripts/world/useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
+import { cellGlobalRef, chooseGlobalStrings, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
 import { readWorldIndex } from './worldCells.js';
+import { applyPolicy, areaM2, emptyPolicyReport, HEIGHT_KEYS, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -142,7 +143,8 @@ test('damaged input is rejected: truncation, magic, version, flags, tags, traili
   const mut = (at: number, v: number) => { const c = bytes.slice(); c[at] = v; return c; };
   assert.throws(() => decodeCell(mut(0, 'X'.charCodeAt(0))), /bad magic/);
   assert.throws(() => decodeCell(mut(4, WORLD_FORMAT_VERSION + 1)), /unsupported version/);
-  assert.throws(() => decodeCell(mut(5, 2)), /unknown flags/);
+  assert.throws(() => decodeCell(mut(5, 4)), /unknown flags/);
+  assert.throws(() => decodeCell(mut(5, 3)), /shared string table/, 'FLAG_GLOBAL without a table');
   assert.throws(() => decodeCell(mut(5, 0)), /stream|expected/, 'a DEBUG cell read as a runtime cell');
   const trailing = new Uint8Array(bytes.length + 1); trailing.set(bytes); assert.throws(() => decodeCell(trailing), /trailing/);
   // A stream tag renamed in the table.
@@ -247,6 +249,101 @@ test('v3: every single-byte change is rejected or decodes without crashing; v2 s
   }
   assert.ok(decodeCell(encodeCell(small, 2).bytes));
   assert.throws(() => encodeCell(small, 1), /cannot encode/);
-  for (const format of [2, 3]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
-  assert.equal(readWorldIndex({ version: 1, format: 4, tileCells: {}, cells: {} }), null);
+  for (const format of [2, 3, 4]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
+  assert.equal(readWorldIndex({ version: 1, format: 5, tileCells: {}, cells: {} }), null);
+});
+
+// --- v4: shared string table, C_SAME columns, interleaved FOOT; the compile policy ----------------------------
+test('v4: a shared string table round-trips the published cells exactly, smaller; a wrong or missing table is rejected', () => {
+  const keys = ['-2_0', '-1_-1', '8_-2', '0_0'].filter(k => fs.existsSync(path.join(PUBLISHED, `${k}.bin`)));
+  const cells = keys.map(published);
+  const { bytes, table } = encodeGlobalStrings(chooseGlobalStrings(cells.map(c => encodeCell(c, 4).strings), 2));
+  assert.ok(table.list.length > 100, `${table.list.length} shared strings`);
+  assert.ok(sameValue(decodeGlobalStrings(bytes).list, table.list));
+  let own = 0, shared = 0;
+  cells.forEach((cell, n) => {
+    const plain = encodeCell(cell, 4).bytes, withTable = encodeCell(cell, 4, table).bytes;
+    sameCell(decodeCell(withTable, keys[n], table), cell, `${keys[n]} with the table`);
+    sameCell(decodeCell(plain, keys[n]), cell, `${keys[n]} without`);
+    assert.deepEqual(cellGlobalRef(withTable), { count: table.list.length, hash: table.hash });
+    assert.equal(cellGlobalRef(plain), null);
+    assert.throws(() => decodeCell(withTable, keys[n]), /shared string table/);
+    const other = encodeGlobalStrings([...table.list.slice(0, -1), 'something else']).table;
+    assert.throws(() => decodeCell(withTable, keys[n], other), /mismatch/);
+    assert.deepEqual(encodeCell(decodeCell(withTable, keys[n], table), 4, table).bytes, withTable, 'v4 re-encode is byte-identical');
+    own += zlib.gzipSync(plain).length; shared += zlib.gzipSync(withTable).length;
+  });
+  assert.ok(shared < own, `cells with the table ${shared} B < without ${own} B`);
+  const bad = bytes.slice(); bad[4] = 2; assert.throws(() => decodeGlobalStrings(bad), /unsupported version/);
+  assert.throws(() => encodeGlobalStrings(['a', 'a']), /duplicate/);
+  assert.throws(() => encodeCell(cells[0], 3, table), /needs format 4/);
+});
+
+test('v4: a column that repeats another key (groundColour = sideColour) survives every mix of equal and different rows', () => {
+  const g = (u: number) => u / 1e7, sq = (x: number) => ({ type: 'Polygon' as const, coordinates: [[[g(48_000_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_001_000)], [g(48_000_000 + x * 1000), g(523_000_000)]]] });
+  const bags = Array.from({ length: 40 }, (_, k) => {
+    const side = ['#6a3b2e', '#7b7b7b', '#a1a1a1'][k % 3];
+    // ground before side in some rows (the reference can come later in the row), missing in others, different in a few
+    const ground = k % 11 === 0 ? '#000000' : side;
+    return k % 7 === 0 ? { id: `w${k}`, sideColour: side } : k % 5 === 0 ? { id: `w${k}`, groundColour: ground, sideColour: side, n: k } : { id: `w${k}`, sideColour: side, groundColour: ground, flag: k % 2 === 0 };
+  });
+  const cell: Cell = { i: 0, j: 0, buildings: bags.map((attr, k) => ({ id: attr.id, tile: '8414/5384', ordinal: k, geometry: sq(k), attr })), hide: [] };
+  const v4 = encodeCell(cell, 4).bytes, v3 = encodeCell(cell, 3).bytes;
+  sameCell(decodeCell(v4), cell, 'same-as v4'); sameCell(decodeCell(v3), cell, 'same-as v3');
+  assert.ok(v4.length < v3.length, `C_SAME saves bytes (${v4.length} < ${v3.length})`);
+});
+
+test('policy: heights to the centimetre; near-collinear vertices within 5 cm go, 6 cm stays, shared corners and three-vertex rings stay', () => {
+  const bag = { id: 'x', height: 9.328842230662703, minHeight: 0, roofEavesHeightM: -0.004, tier: 3, roofShape: 'flat' };
+  const q = quantiseHeights(bag);
+  assert.deepEqual(Object.keys(q), Object.keys(bag));
+  assert.equal(q.height, 9.33); assert.equal(q.minHeight, 0); assert.ok(Object.is(q.roofEavesHeightM, 0)); assert.equal(q.tier, 3);
+  assert.equal(quantiseHeights({ height: 8.33 }).height, 8.33);
+  const same = { height: 8.33 }; assert.equal(quantiseHeights(same), same, 'an already-centimetre bag is returned as is');
+  // A 20 m x 10 m rectangle at 52.37 N with an extra vertex on the long south edge, offset north by `off` metres.
+  const lat = 52.37, lng = 4.88, kx = 111_320 * Math.cos(lat * Math.PI / 180), my = (m: number) => m / 111_320, mx = (m: number) => m / kx;
+  const ring = (off: number) => [[lng, lat], [lng + mx(10), lat + my(off)], [lng + mx(20), lat], [lng + mx(20), lat + my(10)], [lng, lat + my(10)], [lng, lat]];
+  const poly = (off: number): Geometry => ({ type: 'Polygon', coordinates: [ring(off)] });
+  const none = new Set<string>();
+  assert.equal((simplifyGeometry(poly(0.04), none) as any).coordinates[0].length, 5, '4 cm off the edge: removed');
+  assert.equal((simplifyGeometry(poly(0.06), none) as any).coordinates[0].length, 6);
+  const shared = new Set([`${ring(0.04)[1][0]},${ring(0.04)[1][1]}`]);
+  assert.equal((simplifyGeometry(poly(0.04), shared) as any).coordinates[0].length, 6, 'a shared T-junction stays');
+  // Removals never accumulate: a gentle 20 cm arc over the 20 m edge (each step is nearly straight) keeps vertices,
+  // and every original vertex stays within 5 cm of the simplified ring; same-side wobbles under 5 cm all go.
+  const near = (p: number[], r: number[][]) => Math.min(...r.slice(0, -1).map((a, i) => { const b = r[i + 1], ax = 0, bx = (b[0] - a[0]) * kx, by = (b[1] - a[1]) * 111_320, px = (p[0] - a[0]) * kx, py = (p[1] - a[1]) * 111_320, l = bx * bx + by * by, tt = l ? Math.max(0, Math.min(1, (px * bx + py * by) / l)) : 0; void ax; return Math.hypot(px - tt * bx, py - tt * by); }));
+  const arc = [[lng, lat], ...Array.from({ length: 19 }, (_, k) => { const x = k + 1; return [lng + mx(x), lat - my(0.2 * (1 - ((x - 10) / 10) ** 2))]; }), [lng + mx(20), lat], [lng + mx(20), lat + my(10)], [lng, lat + my(10)], [lng, lat]];
+  const as = (simplifyGeometry({ type: 'Polygon', coordinates: [arc] }, none) as any).coordinates[0];
+  assert.ok(as.length > 5 && as.length < arc.length, `arc: ${as.length} of ${arc.length} vertices kept`);
+  for (const p of arc) assert.ok(near(p, as) <= 0.05 + 1e-9, `arc vertex ${near(p, as)} m from the simplified ring`);
+  const wobble = [[lng, lat], ...Array.from({ length: 9 }, (_, k) => [lng + mx(2 * (k + 1)), lat + my([0.01, 0.04, 0.02, 0.03, 0.01, 0.04, 0.02, 0.0, 0.03][k])]), [lng + mx(20), lat], [lng + mx(20), lat + my(10)], [lng, lat + my(10)], [lng, lat]];
+  assert.equal((simplifyGeometry({ type: 'Polygon', coordinates: [wobble] }, none) as any).coordinates[0].length, 5, 'same-side wobbles under 5 cm all go');
+  const tri: Geometry = { type: 'Polygon', coordinates: [[[lng, lat], [lng + mx(10), lat + my(0.01)], [lng + mx(20), lat], [lng, lat]]] };
+  assert.equal(simplifyGeometry(tri, none), tri, 'a three-vertex ring keeps its vertices');
+  assert.ok(Math.abs(areaM2(poly(0)) - 200) < 0.01, `area ${areaM2(poly(0))}`);
+});
+
+test('policy: published sentinel cells keep ids, order, first vertices, party walls and every shared corner; area change <= 1%', () => {
+  for (const key of [...new Set(SENTINELS.map(s => s.cell))]) {
+    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report);
+    assert.equal(p.buildings.length, cell.buildings.length);
+    const before = sharedVertices(cell.buildings.map(b => b.geometry)), after = sharedVertices(p.buildings.map(b => b.geometry));
+    assert.deepEqual([...after].sort(), [...before].sort(), `${key}: shared corners unchanged`);
+    p.buildings.forEach((b, k) => {
+      const o = cell.buildings[k];
+      assert.equal(b.id, o.id); assert.ok(sameValue(b.neighbours, o.neighbours)); assert.equal(b.group, o.group);
+      const first = (g: Geometry) => (g.type === 'Polygon' ? g.coordinates : g.coordinates[0])[0][0];
+      assert.deepEqual(first(b.geometry), first(o.geometry), `${o.id}: first vertex`);
+      const a0 = areaM2(o.geometry); assert.ok(Math.abs(areaM2(b.geometry) - a0) <= 0.01 * a0 + 1e-9, `${o.id}: area`);
+      for (const k2 of HEIGHT_KEYS) { const v = (o.styled ?? o.attr)[k2]; if (typeof v === 'number') assert.ok(Math.abs(((b.styled ?? b.attr)[k2] as number) - v) <= 0.005 + 1e-12, `${o.id} ${k2}`); }
+    });
+    for (const s of SENTINELS.filter(x => x.cell === key)) {
+      const b = p.buildings.find(x => x.id === s.id)!;
+      const rings = b.geometry.type === 'Polygon' ? b.geometry.coordinates : b.geometry.coordinates[0];
+      assert.deepEqual(rings[0][0], s.first, `${s.name}: first vertex under the policy`);
+      if (s.holes) assert.equal(rings.length - 1, s.holes, `${s.name}: courtyard ring under the policy`);
+    }
+    const back = decodeCell(encodeCell(p, 4).bytes, key); sameCell(back, p, `${key} policy round trip`);
+    assert.ok(report.verticesAfter <= report.verticesBefore);
+  }
 });

@@ -10,9 +10,10 @@
 import './useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import fs from 'node:fs';
 import path from 'node:path';
-import zlib from 'node:zlib';
 import { ROOT, EXTRACT, CODE, GLOBAL_INPUTS, gameChain, inputHash, loadTile, readJson, tileInputs } from './pipeline.js';
-import { decodeCell, rawFeature, sameValue, styledFeature, type Cell, type CellBuilding } from '../../src/canalRecall/world/cellFormat.js';
+import { rawFeature, sameValue, styledFeature, type Cell, type CellBuilding, type Geometry, type Props } from '../../src/canalRecall/world/cellFormat.js';
+import { quantiseHeights, sharedVertices, policyFootprint, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
+import { readCell, readGlobalStrings } from './cellFiles.js';
 
 const args = process.argv.slice(2);
 const value = (name: string) => args.find(a => a.startsWith(`--${name}=`))?.split('=').slice(1).join('=');
@@ -28,7 +29,16 @@ async function main() {
   const globalFresh = index.globalHash === inputHash([...CODE, ...GLOBAL_INPUTS]);
   const staleTiles = tiles.filter(t => (index.tileHashes?.[t] ?? 'absent') !== (all.includes(t) ? inputHash(tileInputs(t)) : 'absent'));
   const chain = gameChain(), cells = new Map<string, Cell>();
-  const cell = (k: string) => { let c = cells.get(k); if (!c) cells.set(k, c = decodeCell(zlib.gunzipSync(fs.readFileSync(path.join(DIR, 'cells', `${k}.bin`))), k)); return c; };
+  const globals = readGlobalStrings(DIR);
+  const cell = (k: string) => { let c = cells.get(k); if (!c) cells.set(k, c = readCell(DIR, k, globals)); return c; };
+  // Cells compiled with the compile policy (index.policy) are compared with the default path put through the same
+  // policy (cellPolicy.ts), exactly; the shared-vertex set is the cell's (shared vertices are never removed, so the
+  // decoded cell has the same set as the compiled one).
+  if (index.policy && index.policy !== POLICY_VERSION) throw Error(`cells carry ${index.policy}; this checkout applies ${POLICY_VERSION}`);
+  const shared = new Map<string, Set<string>>();
+  const sharedOf = (k: string) => { let s = shared.get(k); if (!s) shared.set(k, s = sharedVertices(cell(k).buildings.map(b => b.geometry))); return s; };
+  const policyGeometry = (g: Geometry, k: string): Geometry => index.policy ? policyFootprint(g, sharedOf(k)) : g;
+  const policyBag = (p: Props): Props => index.policy ? quantiseHeights(p) : p;
   const verdicts: TileVerdict[] = [];
   for (const t of tiles) {
     const rows = await loadTile(t, chain);
@@ -41,8 +51,8 @@ async function main() {
       const p = b.get(id); if (!p) continue;
       const raw = rawFeature(p);
       // Runtime cells carry no source bag (raw === styled): only a DEBUG cell's raw properties can be compared.
-      if ((index.debug && !sameValue(raw.properties, r.raw.properties)) || !sameValue(raw.geometry, r.raw.geometry)) v.rawDiffer.push(id);
-      if (!sameValue(styledFeature(p, raw).properties, r.styled.properties)) v.styledDiffer.push(id);
+      if ((index.debug && !sameValue(raw.properties, policyBag(r.raw.properties))) || !sameValue(raw.geometry, policyGeometry(r.raw.geometry, r.cell))) v.rawDiffer.push(id);
+      if (!sameValue(styledFeature(p, raw).properties, policyBag(r.styled.properties))) v.styledDiffer.push(id);
     }
     v.orderDiffers = rows.length === picked.length && rows.some((r, i) => String(r.raw.properties.id) !== picked[i].id);
     verdicts.push(v);
