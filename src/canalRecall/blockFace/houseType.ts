@@ -38,7 +38,7 @@ type GroundKey = typeof GROUND_KEYS[number];
  * repeats the one under the top, a removed one is taken from under the top. Before this, such a house failed validation
  * ("one share per storey"), so no installed face changes.
  */
-export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeights?: 'diminishing' | number[]; headLines?: number[]; bays: number | number[]}>(f: F, from: number, to: number): F {
+export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeights?: 'diminishing' | number[]; headLines?: number[]; bays: number | number[]; balconies?: FrontIntent['balconies']}>(f: F, from: number, to: number): F {
   const fit = (a: number[]) => {
     if (a.length !== from || from < 2 || to < 2) return a;
     const mid = a.slice(1, -1), top = a[a.length - 1];
@@ -50,6 +50,15 @@ export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeigh
   if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
   if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
   if (Array.isArray(f.bays)) out.bays = fit(f.bays);
+  // Balcony storeys follow the same rule (Transvaalstraat 74-104, 1913: the four-storey balcony-axis row drawn with three
+  // storeys keeps balconies on 1-2): storey n of the new front takes old storey src(n). Before this, a balcony storey at or
+  // over the new count failed validation, so no installed face changes.
+  if (f.balconies && from >= 2 && to >= 2 && from !== to) {
+    const src = (n: number) => n === 0 ? 0 : n === to - 1 ? from - 1 : Math.min(n, from - 2), b = f.balconies;
+    const keep = (l: number[]) => Array.from({length: to}, (_, n) => n).filter(n => l.includes(src(n)));
+    const storeyBays = b.storeyBays && Object.fromEntries(Array.from({length: to}, (_, n) => n).filter(n => b.storeyBays![String(src(n))]).map(n => [String(n), b.storeyBays![String(src(n))]]));
+    out.balconies = {...b, storeys: keep(b.storeys), ...(b.styleStoreys ? {styleStoreys: keep(b.styleStoreys)} : {}), ...(storeyBays ? {storeyBays} : {})};
+  }
   return out;
 }
 
