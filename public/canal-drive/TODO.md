@@ -2284,7 +2284,6 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
   - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
   - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
-  - `bridgeHints.ts` was not regenerated: the 9 new BASCULES ids get the named budget tier only after a reviewed rebuild, and that script's output already differs from the committed file.
   - `check:bridge-railings` did not finish in the lane; run it.
   - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 

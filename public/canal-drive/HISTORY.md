@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**Bridge hints regenerated for the named bascules (2026-10-31).** After the
+BASCULES list grew, `build-bridge-hints.ts --write` changes only the
+named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
+0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
+Register codes and flat hints are unchanged (decoded diff).
+
 **Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
 User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
 although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
