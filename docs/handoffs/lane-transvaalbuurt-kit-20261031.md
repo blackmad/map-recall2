@@ -79,3 +79,25 @@ Checks before hand-back: `npm run -s test:block-face`, `npm run -s test:building
 `node --import tsx scripts/block-face/roof-golden.ts`, `npm run lint`. Integrator steps to
 list: exposure rows, covers, frontages, buurt pages, strip archiving to
 `map-recall2-source-data`, What's New note with the before/after strip.
+
+## State (2026-10-31, lane hand-back)
+
+- Exemplar: face `luthuli-21-41` (Transvaalbuurt-West, odd side; was `luthuli-1-41` before faces were split at the
+  street's 25 degree bend), run face `luthuli-21-41-r1` = 25-27, 29-31, 33-35, 37-39 (pands 105200, 142206, 126814,
+  128866), installed. Placed by hand from the library: auto-place holds 29-31 on the strip evidence gate and vetoes
+  25-27 (BAG 1949, a rebuild of the same front). Review beside the user's photo: **pass** (parapet band with dentils,
+  white frames, the tower, two windows plus the stair axis per pand, the canopy). Sheet:
+  `staging/block-face/transvaalbuurt/luthuli-29-31-photo-strip-model.png` (untracked).
+- Library `scripts/block-face/types/transvaalbuurt/`: `transvaal-1923-portiek-tower`, `transvaal-1923-portiek`.
+- Kit: `parapet.band` (buildingRecipe/parapetBand.ts); reused `tower` (flat cap, over axes 1-3), `parapet` + coping,
+  `groundCanopy`, `axisGrid`/`bayWidths`/`bayFill`/`storeyAxes`, `axisWindows`. Not reused: `brickStripes` (one
+  band colour per house, already the dark parapet brick), `stairLight` (one continuous light, the photo has separate
+  stair windows), `orielHoist`.
+- Survey: `proposeFaces` splits faces at frontage bends (the chunk's own mean-direction test); 9 faces that failed
+  intake now intake. auto-place skips faces with a hand-authored run face.
+- Placed share: before (indische-buurt library) West 8/309, Oost 11/460; rivierenbuurt 0/0. After (transvaalbuurt
+  library) auto-place 0 in both after review holds (de Wetstraat 37-49 and Tugelaweg 50-52 were false positives);
+  installed by hand: West 4 pands (luthuli-21-41-r1). Batch not run: nothing left to install.
+- Next: the 1925 Christiaan de Wetstraat / Krugerstraat 14-24 design (lisenes through the parapet, column canopies,
+  trapezoid attic lights), the 1920-22 three-storey pitched rows (85 pands, 46 faces) and the Oost 1911-13 five-storey
+  pitched rows (70+40 pands); the 695 "every type vetoed" holds are years no type covers.
