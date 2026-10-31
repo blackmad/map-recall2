@@ -57,6 +57,13 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
       water: vm.status.overview,
       moved: Math.hypot(game.player.x - game.track.startPoint?.x || 0, game.player.y - game.track.startPoint?.y || 0),
       facades: !!vm._threeBuildings?.ready,
+      hoodLines: vm._lines.hoods.lineCount, cycleLines: vm._lines.cycle.lineCount,
+      labels: vm._labels.placed.map((l: any) => l.text),
+      asked: [game.quizPromptName, game.quizCandidateName].filter(Boolean),
+      // The participants that make the ride like-for-like with MapLibre's (engine/cityExtras.ts).
+      landmarks: vm._signatureLandmarks ? vm._signatureLandmarks.describe().length : null,
+      trees: vm._inventoryTrees ? { ready: !!vm._inventoryTrees.ready, enabled: !!vm._inventoryTrees.enabled, draws: vm._inventoryTrees.debugDraws ?? 0 } : null,
+      roofs: !!vm._pyramidalRoofs, artis: !!vm._artisAnimals,
     };
   });
   console.log('engine=own', JSON.stringify(stats));
@@ -64,14 +71,35 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.maplibreMaps).toBe(0);
   expect(stats.frames).toBeGreaterThan(30);
   expect(stats.failed).toEqual([]);
+  expect(stats.landmarks).not.toBeNull();
+  expect(stats.trees).not.toBeNull();
+  expect(stats.roofs).toBe(true);
   expect(stats.calls).toBeLessThanOrEqual(700);
   expect(stats.programs).toBeLessThanOrEqual(32);
   expect(errors).toEqual([]);
+  // Spoiler rule: the name under question is never on the map.
+  for (const name of stats.asked) expect(stats.labels.map((t: string) => t.toLowerCase())).not.toContain(String(name).toLowerCase());
+  // With every name earned (labels on, every street learned), the asked one still is not drawn.
+  const allEarned = await page.evaluate(() => {
+    const g = (window as any).canalRecallGame, vm = g.vectorMap;
+    vm.setLabelsVisible(true);
+    for (const s of g.track.segments) if (s.name) g._mapLabelNames.add(s.name);
+    // The game's own question if it has one, else the first named street of the route.
+    g.quizPromptName = g.quizPromptName || g.quizCandidateName || g.track.segments.find((s: any) => s.name)?.name;
+    // Places whose other name is the asked one ("New Market" is nl:Nieuwmarkt) must stay quiet too.
+    const asked = String(g.quizPromptName).toLowerCase();
+    const aliasOf = (vm.placePois as any[]).filter(p => (p.aliases || []).some((a: string) => a.toLowerCase() === asked)).map(p => p.text);
+    return new Promise<{ asked: string; labels: string[]; aliasOf: string[] }>(r => vm.camera.onFrame(() => r({ asked: g.quizPromptName, aliasOf, labels: vm._labels.placed.map((l: any) => l.text) })));
+  });
+  console.log('labels with every name earned', allEarned.labels.length, JSON.stringify(allEarned.labels.slice(0, 12)));
+  expect(allEarned.labels).not.toContain(allEarned.asked);
+  for (const other of allEarned.aliasOf) expect(allEarned.labels).not.toContain(other);
 });
 
 // The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera
 // (engine/cameraMap.ts EngineCamera) projects the same ground points to within 3.2 px.
 test('engine camera matches MapLibre within 3.2 px along the intro and a ride', async ({ page }) => {
+  test.skip(process.env.ENGINE === 'own', 'the oracle is MapLibre: run without ENGINE=own');
   test.setTimeout(180_000);
   await openRoute(page, { viewMode: 'chase', enterRacing: false });
   const samples: number[][] = [];

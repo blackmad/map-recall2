@@ -20,19 +20,16 @@ const STYLISED_TREES_DEFAULT = true;
 // Phase 1 of docs/archive/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
-// rendererShared/), with lit facades and sun shadows. On in practice: the own
-// ground (default since 2026-10-14) implies it. `?sharedFrame=0` (with the own
-// ground off) keeps the legacy per-layer frame for A/B specs. Inside it,
+// rendererShared/), with lit facades and sun shadows. Unconditional since
+// 2026-10-30 (the `?sharedFrame=0` legacy per-layer frame is gone). Inside it,
 // `?shadows=0` turns the sun shadows off (ride-perf SHADOWS=0).
-const SHARED_FRAME_DEFAULT = false;
 // Phase 2 (2026-10-10): three.js draws the riding-view ground itself — AHN
 // relief, streets by OSM cross-section, quays, sunken water and measured
 // bridge decks — streamed per 1 km cell from a worker, with the route line
 // and the question street draped on it (src/canalRecall/ownGround/,
 // docs/research/own-ground-20261009.md). On by default since 2026-10-14 (user);
-// `?ownGround=0` or window.__canalRecallOwnGround = false opts out, and an
-// explicit `?sharedFrame=0` does too unless `?ownGround=1` is also given.
-// Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
+// `?ownGround=0` or window.__canalRecallOwnGround = false opts out.
+// (It replaced the 2026-10-09 `?elevation=1`
 // stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js?v=20261030-rails-tunnels';
@@ -155,15 +152,10 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
-    this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
-    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround',
-      OWN_GROUND_DEFAULT && canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', null) !== false);
-    if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
+    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
     // ?recipeTiles=1: the recipe-tile near tier (src/canalRecall/tileBuildings/) is a shared-frame participant.
     this._recipeTilesEnabled = canalRecallLookFlag('recipeTiles', '__canalRecallRecipeTiles', false);
-    if (this._recipeTilesEnabled) this._sharedFrameEnabled = true;
     this._sculpturesEnabled = canalRecallLookFlag('sculptures', '__canalRecallSculptures', false);
-    if (this._sculpturesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
     this._riderSurfaceM = 0;
@@ -184,19 +176,6 @@ class VectorBasemap {
     this._detailedBuildingsVisible = false;
     this._signatureLandmarks = null;
     this._pyramidalRoofs = null;
-    this._studyRoofs = null;
-    this._studyFacades = null;
-    this._studyTrees = null;
-    this._studyPublicRealm = null;
-    this._studyRoofAreas = [];
-    this._studyFacadeAreas = [];
-    this._studyTreeAreas = [];
-    this._studyPublicRealmAreas = [];
-    this._activeAppearanceAreaId = null;
-    this._studyLayersAllowed = true;
-    this._studyResidencyListener = null;
-    this._appearanceAreas = [];
-    this._appearanceAreaFailures = [];
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
@@ -204,10 +183,6 @@ class VectorBasemap {
     this._basemapProximityHideIds = [];
     this._basemapDuplicateScanQueued = false;
     this._buildingsFromTiles = false;
-    this._googleTiles = null;
-    this._googleTilesEnabled = false;
-    this._googleTilesActive = false;
-    this._lastCameraZoom = null;
     this._quizQuietMap = false;
     this._activeLandmark = null;
     this._playerBike = null;
@@ -329,7 +304,7 @@ class VectorBasemap {
     // an explicit `?dpr=` keeps its ratio. Status: `vectorMap._renderGovernor`.
     if (window.CanalMapGuard && window.CanalMapGuard.governMapRender && canalRecallLookFlag('governor', '__canalRecallGovernor', true)) {
       const explicitDpr = new URLSearchParams(window.location.search).has('dpr');
-      const shadows = this._sharedFrameEnabled && canalRecallLookFlag('shadows', '__canalRecallShadows', true);
+      const shadows = canalRecallLookFlag('shadows', '__canalRecallShadows', true);
       this._renderGovernor = window.CanalMapGuard.governMapRender(this.map, {
         fixedPixelRatio: explicitDpr,
         // Riding only: loading and the intro fly-in are busy for other reasons.
@@ -432,13 +407,13 @@ class VectorBasemap {
   }
 
   /**
-   * The one three.js frame every 3D layer draws through (`?sharedFrame=1`).
+   * The one three.js frame every 3D layer draws through.
    * Its main pass takes the slot the facade layer had — under the coloured
    * building layers and the game's labels — and its overlay pass (the
    * vehicles) stays last. Participants find it on `map._canalSharedFrame`.
    */
   _ensureSharedFrame() {
-    if (!this._sharedFrameEnabled || this._sharedFrame) return this._sharedFrame;
+    if (this._sharedFrame) return this._sharedFrame;
     const api = window.CanalRecallThree;
     if (!api || !api.SharedFrame || !api.THREE) return null;
     const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
@@ -1422,7 +1397,7 @@ class VectorBasemap {
 
   /**
    * MapLibre's own building layers show only when nothing else draws the city: they hide under
-   * 3DBAG or Google photoreal, and whenever the three.js layer draws every building.
+   * 3DBAG, and whenever the three.js layer draws every building.
    */
   _syncMaplibreBuildingVisibility() {
     if (!this.map) return;
@@ -1573,10 +1548,6 @@ class VectorBasemap {
       this._bagCovers = await runtime.loadBagCovers('./models/covers.json');
     }
 
-    // The Da Costa appearance study (city-expansion) was retired on 2026-10-01;
-    // the game no longer loads the appearance catalog, so _appearanceAreas stays
-    // empty and none of the optional study renderers start.
-
     // Hand the verified priors to the complete-city source before optional
     // roofs, facades, trees and water start their independent loads. Waiting
     // for every decorative layer here left the old static neutral source on
@@ -1614,38 +1585,6 @@ class VectorBasemap {
     // finished; apply that aim now so tiles stream under the overlay.
     this._applyPendingAim();
 
-    if (this._appearanceAreas.length && this._completeCity.setAppearancePriors) {
-      const optional = [
-        { api: window.CanalRecallStudyRoofs, ctor: 'StudyRoofs', list: this._studyRoofAreas, alias: '_studyRoofs', label: 'roof geometry' },
-        { api: window.CanalRecallStudyFacades, ctor: 'StudyFacades', list: this._studyFacadeAreas, alias: '_studyFacades', label: 'facade geometry' },
-        { api: window.CanalRecallStudyTrees, ctor: 'StudyTrees', list: this._studyTreeAreas, alias: '_studyTrees', label: 'tree geometry' },
-        { api: window.CanalRecallStudyPublicRealm, ctor: 'StudyPublicRealm', list: this._studyPublicRealmAreas, alias: '_studyPublicRealm', label: 'public-realm geometry' },
-      ];
-      for (const area of this._appearanceAreas) for (const kind of optional) {
-        const Constructor = kind.api && kind.api[kind.ctor];
-        if (!Constructor) continue;
-        const renderer = new Constructor(this.map, maplibregl, area.id);
-        // Loading an index normally starts its tile requests immediately. Keep
-        // every catalog entry cold until the viewport-wide selector chooses
-        // one area, otherwise N overlapping areas each claim their own 12-tile
-        // cache during startup.
-        renderer.setEnabled(false);
-        try {
-          await renderer.load(area.pointerUrl);
-          kind.list.push(renderer);
-          if (!this[kind.alias]) this[kind.alias] = renderer;
-        } catch (error) {
-          renderer.dispose();
-          this._appearanceAreaFailures.push({ id: area.id, layer: kind.ctor, message: String(error && error.message || error) });
-          console.warn(`Optional ${kind.label} unavailable for ${area.id}.`, error);
-        }
-      }
-      this._updateStudyAreaResidency();
-      if (!this._studyResidencyListener) {
-        this._studyResidencyListener = () => this._updateStudyAreaResidency();
-        this.map.on('moveend', this._studyResidencyListener);
-      }
-    }
     return true;
   }
 
@@ -2040,7 +1979,6 @@ class VectorBasemap {
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
     }
-    this._updateStudyAreaResidency();
   }
 
   setDetailedBuildingsVisible(visible) {
@@ -2048,12 +1986,6 @@ class VectorBasemap {
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
     this._syncDetailedBuildingLayers();
     this.setActiveLandmark(this._activeLandmark);
-  }
-
-  setGoogleTilesEnabled(enabled) {
-    this._googleTilesEnabled = !!enabled;
-    if (!this._googleTilesEnabled && this._googleTiles) this._googleTiles.setEnabled(false);
-    this._updateGoogleTiles();
   }
 
   /**
@@ -2072,48 +2004,6 @@ class VectorBasemap {
     } catch (err) {
       return null;
     }
-  }
-
-  /**
-   * Google's mesh earns its place only from the overview camera: at street
-   * zoom it is a smear without building identity. The player-facing quantity
-   * is `camera.zoom` (default 0.50 stays on 3DBAG); MapLibre altitude never
-   * drops to the spike's 25 m cycling height.
-   *
-   * The zoom rule itself, including its hysteresis band, is
-   * `src/canalRecall/building/photorealGate.ts` and is covered by
-   * `npm run test:photoreal-gate`.
-   */
-  _updateGoogleTiles() {
-    if (!this.map) return;
-    const api = window.CanalRecallGoogleTiles;
-    const gate = window.CanalRecallPhotorealGate;
-    if (!gate) return;
-    const want = gate.shouldShowPhotoreal({
-      enabled: this._googleTilesEnabled,
-      cameraZoom: this._lastCameraZoom ?? null,
-      active: this._googleTilesActive,
-    });
-
-    if (want && !this._googleTiles && api && api.GooglePhotorealTiles) {
-      // Built on first use, so a player who never turns it on never pays for
-      // the tileset session, and never sends a request Google would bill.
-      this._googleTiles = new api.GooglePhotorealTiles(this.map, maplibregl, text => this.setGoogleAttribution(text));
-    }
-    if (this._googleTiles) this._googleTiles.setEnabled(want);
-
-    const active = !!(want && this._googleTiles && this._googleTiles.ready);
-    if (active === this._googleTilesActive) return;
-    this._googleTilesActive = active;
-    if (!active) this.setGoogleAttribution('');
-    this._syncDetailedBuildingLayers();
-  }
-
-  setGoogleAttribution(text) {
-    const el = document.getElementById('google-tiles-attribution');
-    if (!el) return;
-    el.textContent = text || '';
-    el.style.display = text ? 'block' : 'none';
   }
 
   setMeasuredColoursOnly(enabled) {
@@ -2163,98 +2053,30 @@ class VectorBasemap {
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     if (this._styleGone()) { this._detailedLayersStale = true; return; }
-    const google = this._googleTilesActive;
-    // 3DBAG and Google must never draw together: they are the same buildings
-    // twice, z-fighting into a shimmer.
-    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google && !this._measuredColoursOnly);
-    const detailed = !this._measuredColoursOnly && !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !this._measuredColoursOnly);
+    const detailed = !this._measuredColoursOnly && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     // The streamed complete city owns every building once its first real tile
     // lands. Never resurrect the basemap copy during a later settings/readiness
     // sync; before that first tile, keep it as the no-empty-city fallback.
-    const hideBasemap = this._measuredColoursOnly || detailed || google || (!!this._completeCityHasBuildings && this._streamedCityDraws());
+    const hideBasemap = this._measuredColoursOnly || detailed || (!!this._completeCityHasBuildings && this._streamedCityDraws());
     // A hard swap: fading the extrusion's opacity does not dissolve it, since its depth still hides the streamed
     // shells (measured: 400 ms of a near-empty city, docs/perf-pop-in-20261016.md).
     if (this.map.getLayer('building-3d')) {
       this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
     }
-    this._facadesHiddenByDetail = detailed || google;
+    this._facadesHiddenByDetail = detailed;
     this._applyFacadeState();
     this._syncMaplibreBuildingVisibility();
     // Signature models are the LoD1 replacement for a handful of landmarks.
-    // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
+    // Hide them under 3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.
     if (this._signatureLandmarks) {
       this._signatureLandmarks.setDepthBiasEnabled(!hideBasemap);
-      this._signatureLandmarks.setEnabled(!detailed && !google && !this._measuredColoursOnly);
+      this._signatureLandmarks.setEnabled(!detailed && !this._measuredColoursOnly);
       this._refreshBuildingSuppression();
     }
     if (this._pyramidalRoofs) this._pyramidalRoofs.setHidden(this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds());
-    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google && !this._measuredColoursOnly);
-    this._studyLayersAllowed = !detailed && !google;
-    this._updateStudyAreaResidency();
-  }
-
-  /**
-   * Keep one catalog area's detail streams resident for the whole viewport.
-   *
-   * Every area publishes the same z16 owner/context tile keys. Selecting from
-   * those keys is stricter than selecting the nearest area origin: outside all
-   * published coverage every optional stream is cleared and the complete-city
-   * building source remains the visual fallback. At overlaps, distance to the
-   * viewport centre gives a deterministic owner and prevents four independent
-   * renderers per area from multiplying their cache budgets.
-   */
-  _updateStudyAreaResidency() {
-    if (!this.map) return;
-    const groups = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas];
-    const layers = groups.flat();
-    if (!layers.length) return;
-    const bounds = this.map.getBounds();
-    const zoom = 16, scale = 2 ** zoom;
-    const x = lng => Math.floor((lng + 180) / 360 * scale);
-    const y = lat => {
-      const clipped = Math.max(-85.05112878, Math.min(85.05112878, lat));
-      const radians = clipped * Math.PI / 180;
-      return Math.floor((1 - Math.asinh(Math.tan(radians)) / Math.PI) / 2 * scale);
-    };
-    const west = x(bounds.getWest()), east = x(bounds.getEast());
-    const north = y(bounds.getNorth()), south = y(bounds.getSouth());
-    const wanted = new Set();
-    for (let tileX = west - 1; tileX <= east + 1; tileX++) for (let tileY = north - 1; tileY <= south + 1; tileY++) wanted.add(`${zoom}/${tileX}/${tileY}`);
-    const center = this.map.getCenter(), centerX = x(center.lng), centerY = y(center.lat);
-    const candidates = new Map();
-    for (const layer of layers) {
-      const areaId = layer.areaId || '';
-      if (!areaId || !layer.metas) continue;
-      let distance = Infinity;
-      for (const key of layer.metas.keys()) {
-        if (!wanted.has(key)) continue;
-        const [, tileX, tileY] = key.split('/').map(Number);
-        distance = Math.min(distance, (tileX - centerX) ** 2 + (tileY - centerY) ** 2);
-      }
-      if (Number.isFinite(distance)) candidates.set(areaId, Math.min(candidates.get(areaId) ?? Infinity, distance));
-    }
-    const active = this._studyLayersAllowed
-      ? [...candidates].sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]))[0]?.[0] || null
-      : null;
-    this._activeAppearanceAreaId = active;
-    for (const layer of layers) {
-      if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
-      const buildingDetail = this._studyRoofAreas.includes(layer) || this._studyFacadeAreas.includes(layer);
-      const treeDetail = this._studyTreeAreas.includes(layer);
-      const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail)
-        && !(treeDetail && this._inventoryTrees?.ready && this._inventoryTrees?.enabled));
-      // Resident streamers already update and evict on moveend. Re-enabling an
-      // active layer here clears every mesh on every camera sync, even when the
-      // viewport and selected area have not changed.
-      if (layer.enabled !== enabled) layer.setEnabled(enabled);
-    }
-    for (const [list, alias] of [
-      [this._studyRoofAreas, '_studyRoofs'],
-      [this._studyFacadeAreas, '_studyFacades'],
-      [this._studyTreeAreas, '_studyTrees'],
-      [this._studyPublicRealmAreas, '_studyPublicRealm'],
-    ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !this._measuredColoursOnly);
   }
 
   _absoluteExtractRoot() {
@@ -3023,7 +2845,8 @@ class VectorBasemap {
     const lon = loader._lastCenterLng + (camera.x - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
     const lat = loader._lastCenterLat - (camera.y - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
     const displayScale = canvas.getBoundingClientRect().width / CANVAS_W;
-    const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * displayScale;
+    // speedZoomScale: the follow camera's speed pull-back (drive/cameraFollow.ts), 1 at rest.
+    const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * (camera.speedZoomScale || 1) * displayScale;
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
     const viewMode = camera.viewMode || 'north';
     const bearing = camera.rotation * 180 / Math.PI;
@@ -3140,7 +2963,6 @@ class VectorBasemap {
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
-    this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
     // Not during the start flight: every half-step of zoom re-planned and
@@ -3157,7 +2979,6 @@ class VectorBasemap {
       if (!detached && typeof this._completeCity.setRider === 'function') this._completeCity.setRider(subject[0], subject[1]);
       this._completeCity.followCamera();
     }
-    this._updateGoogleTiles();
     // The start flight's overview is flat, but its pins must still go through
     // MapLibre's projection: the flat camera maths drew them at half the map's
     // scale on a retina desktop, so START sat mid-way along the route line and
@@ -3393,34 +3214,17 @@ class VectorBasemap {
   }
 
   appearanceRenderStatus() {
-    const groups = {
-      roofs: this._studyRoofAreas,
-      facades: this._studyFacadeAreas,
-      trees: this._studyTreeAreas,
-      publicRealm: this._studyPublicRealmAreas,
-    };
-    const layers = Object.values(groups).flat();
     const city = this._completeCity && this._completeCity.status ? this._completeCity.status() : null;
-    const pending = (city ? city.inFlight + city.queued : 0) + layers.reduce(
-      (sum, layer) => sum + (layer.inFlight || 0) + (layer.queue ? layer.queue.length : 0), 0,
-    );
-    const detailBytes = layers.reduce((sum, layer) => sum + (layer.debugGeometryBytes || 0), 0);
-    const residents = Object.fromEntries(Object.entries(groups).map(([name, entries]) => [
-      name, entries.reduce((sum, layer) => sum + (layer.debugResident || 0), 0),
-    ]));
-    const painted = layers.every(layer => !layer.debugRenderable || (layer.debugResident > 0 && layer.debugPaints > 0));
+    const pending = city ? city.inFlight + city.queued : 0;
     const mapReady = Boolean(this.map && this.map.loaded && this.map.loaded() && (!this.map.isMoving || !this.map.isMoving()));
     return {
-      ready: Boolean(city && city.features > 0 && pending === 0 && painted && mapReady && detailBytes <= 11_000_000),
-      mapReady, pending, painted, detailBytes, residents,
-      withinBudget: detailBytes <= 11_000_000,
+      ready: Boolean(city && city.features > 0 && pending === 0 && mapReady),
+      mapReady, pending,
       cameraClearance: this._lastCameraClearance,
     };
   }
 
   whenAppearanceRenderReady(timeoutMs = 30_000) {
-    const layers = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas].flat();
-    const baseline = new Map(layers.map(layer => [layer, layer.debugPaints || 0]));
     return new Promise((resolve, reject) => {
       // Game updates dirty the style before MapLibre paints. Sampling in an
       // independent RAF can therefore miss every ready frame indefinitely.
@@ -3431,8 +3235,7 @@ class VectorBasemap {
       };
       const check = () => {
         const status = this.appearanceRenderStatus();
-        const paintedAfterCall = layers.every(layer => !layer.debugRenderable || (layer.debugPaints || 0) > (baseline.get(layer) || 0));
-        if (status.ready && paintedAfterCall) {
+        if (status.ready) {
           cleanup();
           resolve(status);
           return;
@@ -3456,6 +3259,21 @@ class VectorBasemap {
    * Safe to call before the tile streamer has probed: the aim is remembered
    * and applied again when `_ensureCompleteCity` finishes attach.
    */
+  /** WorldView (engine/worldViewApi.ts): the canvas the world draws into. */
+  frameCanvas() { return this.map ? this.map.getCanvas() : null; }
+
+  /** WorldView: the canvas right after a fresh frame, while its drawing buffer is readable. */
+  captureFrame() {
+    return new Promise(resolve => {
+      if (!this.map) { resolve(null); return; }
+      this.map.once('render', () => resolve(this.map.getCanvas()));
+      this.map.triggerRepaint();
+    });
+  }
+
+  /** WorldView: show a lng/lat directly (the briefing's city centre, before a loader exists). */
+  jumpToLngLat(options) { if (this.map) this.map.jumpTo(options); }
+
   aimAtWorld(worldX, worldY, loader, options = {}) {
     this._pendingAim = { worldX, worldY, loader, options };
     this._applyPendingAim();

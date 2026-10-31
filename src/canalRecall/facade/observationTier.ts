@@ -146,7 +146,7 @@ export function evidenceCeiling(tier: ObservationTier, hasMeasuredAppearance: bo
 /**
  * Distance bands, in metres from the camera.
  *
- * Asymmetric on purpose, for the same reason `photorealGate.ts` is: riding a
+ * Asymmetric on purpose (hysteresis): riding a
  * canal holds a building at a near-constant distance, which parks it on a
  * single threshold and flips it every few frames. Releasing further out than
  * it promotes costs one band of extra detail and removes the churn.

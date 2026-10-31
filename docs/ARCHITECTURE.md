@@ -40,7 +40,7 @@ Each bundle has its own `build:canal-*` npm script. Representative bundles (all 
 | `build:canal-road-surface` | `src/canalRecall/routing/roadSurface.ts` | `road-surface.bundle.js` | `CanalRecallRoadSurface` |
 | `build:canal-road-projection` | `src/canalRecall/osm/roadProjection.ts` | `road-projection.bundle.js` | `CanalRecallRoadProjection` |
 | `build:canal-three` | `public/canal-drive/js/three-runtime-source.js` | `three.bundle.js` | `CanalRecallThree` |
-| `build:canal-vehicles` / `build:canal-3d` | `scripts/build-3d-bundles.mjs` | `player-vehicles`, `detailed-buildings`, `pyramidal-roofs`, `signature-landmarks`, `facade-recipe`, `inventory-trees`, `google-tiles` | `CanalRecall…` |
+| `build:canal-vehicles` / `build:canal-3d` | `scripts/build-3d-bundles.mjs` | `player-vehicles`, `detailed-buildings`, `pyramidal-roofs`, `signature-landmarks`, `facade-recipe`, `inventory-trees` | `CanalRecall…` |
 | `build:canal-preferences` | `src/canalRecall/game/preferences.ts` | `preferences.bundle.js` | `CanalRecallPreferences` |
 | `build:canal-overlay` | `src/canalRecall/overlay/mount.tsx` | `overlay.bundle.js` | `CanalRecallOverlay` |
 | `build:canal-ui` | `src/canalRecall/gameUi.ts` | `game-ui.bundle.js` | `CanalRecallUi` |

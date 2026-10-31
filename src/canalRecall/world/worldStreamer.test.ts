@@ -104,11 +104,15 @@ for (const debug of [true, false]) test(`world-v1 tiles through the worker proto
   const files = await worldFiles(debug);
   const realFetch = globalThis.fetch, realWorker = (globalThis as any).Worker;
   globalThis.fetch = (async (input: any) => { const url = String(input), rel = url.slice(BASE.length + 1); return files.has(rel) ? new Response(files.get(rel) as BodyInit) : new Response(null, { status: 404 }); }) as typeof fetch;
-  let fake: FakeWorker | null = null;
-  (globalThis as any).Worker = class extends FakeWorker { constructor() { super(); fake = this; } };
+  const fakes: FakeWorker[] = [];
+  (globalThis as any).Worker = class extends FakeWorker { constructor() { super(); fakes.push(this); } };
   try {
     const index = readWorldIndex(JSON.parse(new TextDecoder().decode(files.get('world-v1/index.json'))))!;
-    const viaWorker = new WorldCellClient(index, BASE, globalThis.fetch, 'fake-worker.js'), inThread = new WorldCellClient(index, BASE, globalThis.fetch, '');
+    const viaWorker = new WorldCellClient(index, BASE, globalThis.fetch, 'fake-worker.js', 3), inThread = new WorldCellClient(index, BASE, globalThis.fetch, '');
+    assert.equal(viaWorker.workerCount, 3);
+    // The plan reads every cell of the first tile ahead (prefetch), so the tile request then cuts cached cells.
+    viaWorker.plan([TILES[0]], [4.885, 52.37], [1, 0]);
+    assert.ok(viaWorker.queue.running + viaWorker.queue.queued > 0, 'plan queued cell reads');
     assert.equal(viaWorker.decodeThread, 'worker'); assert.equal(inThread.decodeThread, 'main');
     let n = 0;
     for (const t of TILES) {
@@ -123,7 +127,9 @@ for (const debug of [true, false]) test(`world-v1 tiles through the worker proto
       });
       assert.ok(viaWorker.decodeMs.size > 0, 'decode times come back from the worker');
     }
-    assert.ok(fake!.messages > n / WORLD_BATCH, `${fake!.messages} messages for ${n} buildings: batched`);
+    const messages = fakes.reduce((s, f) => s + f.messages, 0);
+    assert.ok(messages > n / WORLD_BATCH, `${messages} messages for ${n} buildings: batched`);
+    assert.ok(fakes.filter(f => f.messages > 0).length > 1, 'cells spread over the pool');
     // An aborted request rejects and its late batches are dropped.
     const controller = new AbortController(), late = viaWorker.tile(TILES[0], controller.signal); controller.abort();
     await assert.rejects(late, /abort/);

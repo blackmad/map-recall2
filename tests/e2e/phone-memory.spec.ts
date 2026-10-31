@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
-import { openRoute } from './helpers';
+import { openRoute, useEngine } from './helpers';
 
 // Phone memory over a ride (2026-10-23, "crashing their phones"). Opt-in:
 //   PERF_PHONE_MEMORY=1 PW_PORT=4391 npx playwright test phone-memory --project=iphone
@@ -98,13 +98,14 @@ test('phone memory over a ride', async ({ page }, info) => {
         for (const a of Object.values(g.attributes ?? {}) as any[]) landmarkGeom += a.array?.byteLength ?? 0;
         landmarkGeom += g.index?.array?.byteLength ?? 0;
       });
-      return { ...t, tiles: vm?._buildingTiles?.status?.()?.tiles ?? null, landmarks: vm?._signatureLandmarks?.shown?.size ?? null, evicted: vm?._signatureLandmarks?.evictions ?? null, pixelRatio: vm?.map?.getPixelRatio?.() ?? null, landmarkGeomMB: Math.round(landmarkGeom / 1048576), ground: (() => { const g = vm?._ownGround?.status?.(); return g ? { radiusM: g.radiusM, cells: Object.keys(g.cells).length, lod0: Object.values(g.cells).filter((l: any) => l === 0).length, geometryMB: g.geometryMB, far: g.far.geometryMB, farRadiusM: g.far.radiusM } : null; })(), state: w.canalRecallGame?.state, player: w.canalRecallGame?.player ? [Math.round(w.canalRecallGame.player.x), Math.round(w.canalRecallGame.player.y)] : null };
+      return { ...t, tiles: vm?._buildingTiles?.status?.()?.tiles ?? null, landmarks: vm?._signatureLandmarks?.shown?.size ?? null, evicted: vm?._signatureLandmarks?.evictions ?? null, pixelRatio: (vm?.host ?? vm?.map)?.getPixelRatio?.() ?? null, landmarkGeomMB: Math.round(landmarkGeom / 1048576), ground: (() => { const g = vm?._ownGround?.status?.(); return g ? { radiusM: g.radiusM, cells: Object.keys(g.cells).length, lod0: Object.values(g.cells).filter((l: any) => l === 0).length, geometryMB: g.geometryMB, far: g.far.geometryMB, farRadiusM: g.far.radiusM } : null; })(), state: w.canalRecallGame?.state, player: w.canalRecallGame?.player ? [Math.round(w.canalRecallGame.player.x), Math.round(w.canalRecallGame.player.y)] : null };
     });
     const mb = (n: number) => Math.round(n / 1048576);
     const row = { label, heapMB: mb(metrics.JSHeapUsedSize), arrayBuffersMB: usage.backingStorageSize == null ? null : mb(usage.backingStorageSize), heapTotalMB: mb(metrics.JSHeapTotalSize), texturesMB: mb(gl.textures), buffersMB: mb(gl.buffers), nTextures: gl.nTextures, nBuffers: gl.nBuffers, nodes: metrics.Nodes, tiles: gl.tiles, landmarks: gl.landmarks, evicted: gl.evicted, pixelRatio: gl.pixelRatio, landmarkGeomMB: gl.landmarkGeomMB, ground: gl.ground, state: gl.state, player: gl.player };
     console.log(JSON.stringify(row));
     return row;
   };
+  await useEngine(page);
   await page.goto(`/canal-drive/${process.env.PHONE_QUERY ?? ''}`);
   await page.waitForFunction(() => Boolean((window as any).canalRecallGame), null, { timeout: 90_000 });
   await page.waitForTimeout(3000);

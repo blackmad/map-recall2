@@ -68,12 +68,23 @@ class PlayerCar extends Car {
 
     if (stickHeld) {
       const command = ui.relativeCommand(stick);
-      this.steerInput = command.steer;
-      this.brake = command.brake;
+      // Keyboard and stick are separate input maps blended by max
+      // (touchControls.blendDriveLevers): an arrow held with a thumb resting on
+      // the stick still steers or brakes instead of the stick silently winning.
+      const keys = {
+        throttle: keyboard.ArrowUp ? 1 : 0,
+        brake: keyboard.ArrowDown ? 1 : 0,
+        steer: (keyboard.ArrowRight ? 1 : 0) - (keyboard.ArrowLeft ? 1 : 0),
+      };
+      const blended = ui.blendDriveLevers
+        ? ui.blendDriveLevers({ throttle: 0, brake: command.brake, steer: command.steer }, keys)
+        : { throttle: 0, brake: command.brake, steer: command.steer };
+      this.steerInput = blended.steer;
+      this.brake = blended.brake;
       this.throttle = 0;
-      this._cruiseFraction = command.brake > 0 ? null : command.speedFraction;
-      this._stickBraking = command.brake > 0;
-      this._stickHardSteer = Math.abs(command.steer) > 0.6;
+      this._cruiseFraction = blended.brake > 0 ? null : keys.throttle ? 1 : command.speedFraction;
+      this._stickBraking = blended.brake > 0;
+      this._stickHardSteer = Math.abs(blended.steer) > 0.6;
       this._pivot = command.pivot;
       // One swing per pull: the stick must come off "back" to arm another.
       this._turnAroundHeld = command.turnAround;
