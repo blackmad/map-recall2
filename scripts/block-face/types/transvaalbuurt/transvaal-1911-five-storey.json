@@ -3,41 +3,124 @@
  "kind": "house-type",
  "id": "transvaal-1911-five-storey",
  "district": "transvaalbuurt",
- "description": "Transvaalbuurt 1908-1914 speculative rows (Transvaalstraat 3-47, Retiefstraat 45-75 and 3-41, Pretoriusstraat 72-120): 5-7 m dark red-brown brick fronts of a 3.8 m ground storey and three 3.15 m upper storeys (five bouwlagen with the attic) under a light simple cornice at 12.8-14.2 m; three axes of tall white-framed windows with a top light, the centre axis a balcony door with an iron-railed projecting balcony on storeys 1-3; over the cornice a pointed brick gable, a brick wall dormer over the centre axis, or a white pointed timber dormer, on a pitched tile roof",
+ "description": "Transvaalbuurt 1908-1914 speculative rows, low-ground variant (Retiefstraat 45-75, Pretoriusstraat 72-120): 5-7 m dark red-brown brick fronts of a 3.35 m ground storey and three 3.15 m upper storeys under a light simple cornice at about 13.4 m (five bouwlagen with the attic); three axes of white-framed windows with a top light, the centre axis a balcony door with an iron-railed projecting balcony on storeys 1-3; over the cornice a pointed brick gable, a brick wall dormer over the centre axis, or a white pointed timber dormer, on a pitched tile roof. Its twin transvaal-1911-five-storey-tall has the 4.0 m ground storey of Transvaalstraat 3-47 and Retiefstraat 3-41; the photo decides between them (auto-place --photo-decides)",
  "fit": {
-  "widthM": [4.8, 11.0],
-  "storeys": [3, 4]
+  "widthM": [
+   4.8,
+   11
+  ],
+  "storeys": [
+   4
+  ]
  },
  "match": {
-  "years": [1908, 1914],
-  "eavesM": [11.8, 15.2],
-  "roof": "pitched",
+  "years": [
+   1908,
+   1914
+  ],
+  "eavesM": [
+   12,
+   16.4
+  ],
+  "storeys3dbag": [
+   5
+  ],
   "stucco": false,
   "baysByWidth": [
-   {"maxWidthM": 5.4, "bays": 2},
-   {"maxWidthM": 7.6, "bays": 3},
-   {"maxWidthM": 9.4, "bays": 4},
-   {"maxWidthM": 99, "bays": 5}
+   {
+    "maxWidthM": 5.4,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 9.6,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
   ],
   "mirrorForDoor": "left",
   "crowns": {
-   "point-gable": {"topWidthM": [0, 1.0], "riseM": [1.4, 4.2], "widthM": [3.0, 9.5]},
-   "wall-dormer": {"topWidthM": [1.0, 2.8], "riseM": [1.6, 4.0], "widthM": [1.0, 3.2]},
-   "dormer": {"riseM": [0.6, 2.4], "widthM": [0.6, 2.6]},
-   "none": {"none": true}
+   "point-gable": {
+    "topWidthM": [
+     0,
+     1
+    ],
+    "riseM": [
+     1.4,
+     4.2
+    ],
+    "widthM": [
+     3,
+     9.5
+    ]
+   },
+   "wall-dormer": {
+    "topWidthM": [
+     1,
+     2.8
+    ],
+    "riseM": [
+     1.6,
+     4
+    ],
+    "widthM": [
+     1,
+     3.2
+    ]
+   },
+   "dormer": {
+    "riseM": [
+     0.6,
+     2.4
+    ],
+    "widthM": [
+     0.6,
+     2.6
+    ]
+   },
+   "none": {
+    "none": true
+   }
   },
-  "note": "3DBAG eaves 12-16.6 m and bouwlagen 5 on these rows (the attic counts); the eaves over the type's 3.375 m pitch give 4 storeys, the 1913 three-storey rows of Transvaalstraat 74-104 (9.7 m) 3. BAG 1908-1914 on all 37 photographed faces. No balcony veto (the type has them). Crown by the skyline: a narrow-topped tall crown is a pointed gable (Retiefstraat 45-75, Pretoriusstraat 72-120), a 1-2.8 m flat top a brick wall dormer (Retiefstraat 3-41, 45-51), a small low crown a white timber dormer (Transvaalstraat 3-47, Majubastraat 1-151)"
+  "note": "Cornice line 12.8-14.3 m on the strips (Retiefstraat 45-75 12.8, Pretoriusstraat 72-120 13.4, Transvaalstraat 3-47 14.0-14.3), gable and dormer tops 15.5-16.7 m. The strip skyline is no guide on these rows: it reads the dormer, gable and chimney tops or the street trees at 15.5-18.4 m (Retiefstraat 3-75, Transvaalstraat 25-45), so the eaves criterion is 3DBAG: 12-16.6 m on the family (the gables on some pands, 15.5-16.2 m on Retiefstraat 47-67 and Transvaalstraat 7-19) at the type pitch of 4 storeys, and 3DBAG bouwlagen 5 (234 of 276 pands; the attic counts). 3DBAG roof rise reads 0-0.1 m (flat) over the pitched tile roofs: no roof criterion. BAG 1908-1914 on all 37 photographed faces. The 8.5 m Retiefstraat 3-41 fronts keep three wide axes. No balcony veto (the type has them). Crown by the skyline: a narrow-topped tall crown is a pointed gable (Retiefstraat 45-75, Pretoriusstraat 72-120), a 1-2.8 m flat top a brick wall dormer (Retiefstraat 3-41, 45-51), a small low crown a white timber dormer (Transvaalstraat 3-47, Majubastraat 1-151). Two variants of one design that facts cannot tell apart (3DBAG eaves and bouwlagen agree): this one has the low 3.35 m ground storey (window heads 5.7-6.0, 8.9-9.2, 11.9-12.5 m, cornice 13.3-13.5 m), transvaal-1911-five-storey-tall the 4.0 m one (heads 6.7, 9.9-10.0, 13.1-13.5 m, cornice 14.2-15.0 m); run auto-place with --photo-decides"
  },
  "body": {
   "storeys": 4,
   "bays": 3,
-  "storeyHeights": [3.8, 3.15, 3.15, 3.15],
+  "storeyHeights": [
+   3.35,
+   3.15,
+   3.15,
+   3.75
+  ],
   "windows": "t-window",
-  "windowSurround": "sill",
-  "windowHeights": [0.58, 0.65, 0.65, 0.64],
-  "headLines": [0.84, 0.84, 0.84, 0.82],
+  "windowSurround": "stone-lintel",
+  "windowHeights": [
+   0.57,
+   0.57,
+   0.68,
+   0.57
+  ],
+  "headLines": [
+   0.87,
+   0.79,
+   0.81,
+   0.67
+  ],
   "cornice": "simple",
-  "balconies": {"storeys": [1, 2, 3], "bays": [1], "projecting": true}
+  "balconies": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
  },
  "crowns": {
   "point-gable": {
@@ -47,7 +130,17 @@
   },
   "wall-dormer": {
    "gable": "cornice",
-   "tower": {"bays": {"from": 1, "to": 1}, "rise": 0.75, "cap": "flat", "lights": "per-axis", "lightSill": 0.1, "lightRise": 0.45},
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 1
+    },
+    "rise": 0.75,
+    "cap": "flat",
+    "lights": "per-axis",
+    "lightSill": 0.1,
+    "lightRise": 0.45
+   },
    "note": "Retiefstraat 45-51 (068243 123300), Retiefstraat 3-41 (068730 081061): a brick wall dormer over the centre axis, about 1.8 m wide, rising 2.3-2.6 m over the cornice, one light, flat cap"
   },
   "dormer": {
@@ -78,49 +171,55 @@
   }
  },
  "roof": {
-  "material": "black-tile"
+  "material": "red-tile"
  },
  "rhythm": {
-  "bays": "window, balcony door, window (two axes at 5 m, four or five on the 8.5-10.8 m double fronts)",
+  "bays": "window, balcony door, window (two axes at 5 m, four on the 10.8 m double fronts)",
   "identicalBays": "near: the centre balcony door is a little narrower",
   "windowsPerStorey": "ground: door + windows | 1-3: window + balcony door + window",
   "symmetry": "near symmetric; the door side alternates along the row",
   "groundFloor": "house door on an outer axis, windows or a shop",
   "signage": "shops on Pretoriusstraat and Transvaalstraat corners",
   "roofline": "a light simple cornice; a pointed gable, a brick wall dormer or a white dormer over it",
-  "photoRows": [3, 3, 3, 3],
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
   "photoGroundRows": 1
  },
  "evidence": [
   {
-   "face": "transvaal-3-47",
-   "pands": ["072312", "084571", "149583", "108858", "121884"],
-   "citation": "strip.jpg 2023-01-02 at 40 px/m, ground at the strip foot: 5 m pands, two axes (a 1.9 m window with a balconette, a 1.1 m window); ground storey to 4.2 m, door heads 3.4 m; sills/heads 4.7/6.7, 7.8/10.0, 11.0/13.1 m; cornice band 14.0-14.3 m; white pointed dormers to 16.0-16.7 m"
-  },
-  {
    "face": "retief-45-75",
-   "pands": ["154435", "136245", "144201", "092019", "074312"],
-   "citation": "strip.jpg 2023-01-02 at 40 px/m: 5.95 m pands, three axes (window, balcony door with an iron balcony on storeys 1-3, window); round-arched house doors on the outer axis, alternating; window heads 6.1, 9.25, 12.0 m (2.95-3.15 m pitch); sills 4.5, 7.2, 10.1 m; cornice 12.8 m; pointed gables or brick wall dormers to 15.5 m"
+   "pands": [
+    "154435",
+    "136245",
+    "144201",
+    "092019",
+    "074312"
+   ],
+   "citation": "strip.jpg 2023-01-02 at 40 px/m, ground at the strip foot: 5.95 m pands (Retiefstraat 69-71 gridded), three axes (a 1.2 m window, a 1.5 m balcony door with an iron balcony on storeys 1-3, a 1.2 m window); house door on an outer axis, alternating, head 2.9 m; ground windows 1.1-2.9 m; upper windows 4.2-5.7, 7.1-8.9, 10.1-11.9 m; white cornice 13.1-13.4 m; a steep tile roof face with white dormers or brick wall dormers to 15.9 m, a pointed gable over two axes to 16 m"
   },
   {
    "face": "pretorius-72-120",
-   "pands": ["102414", "149642", "142310", "076819"],
-   "citation": "strip.jpg 2023-01-02 at 40 px/m: 6.8 m pands; shop or house ground to 3.4 m; window rows 3.9-5.9, 7.0-9.2, 10.2-12.5 m (3.3 m pitch); iron balconies projecting on storeys 1-2 of the balcony axis; cornice 13.4 m; pointed brick gables to 16.5 m with an attic light"
-  },
-  {
-   "face": "retief-3-41",
-   "pands": ["068730", "081061", "141977"],
-   "citation": "strip.jpg 2023-01-02 at 40 px/m: 8.5 m double fronts; window heads 6.95, 10.2, 13.5 m (3.27 m pitch); brick wall dormers with a flat cap and pointed gables over the cornice"
+   "pands": [
+    "102414",
+    "149642",
+    "142310",
+    "076819"
+   ],
+   "citation": "strip.jpg 2023-01-02 at 40 px/m: 6.8 m pands (Pretoriusstraat 92A gridded); shop or house ground to 2.8 m; window rows 3.9-6.0, 6.7-9.2, 9.9-12.4 m (3.2 m pitch); iron balconies projecting on storeys 1-2 of the balcony axis; cornice 13.5 m; pointed brick gables to 16.2 m with three attic lights"
   }
  ],
  "schemaLimits": [
   "the 6.8 m Pretoriusstraat fronts have four openings (two windows, a wide balcony door pair, a window): drawn as three axes",
-  "the segmental brick relieving arches over the Transvaalstraat windows and the round-arched house doors of Retiefstraat 45-75 are flat heads",
-  "the white bands at the sill and head lines of Retiefstraat 45-75 are not drawn",
-  "a pointed gable with an attic light is drawn over the whole front; on Retiefstraat 45-75 it covers about two thirds",
-  "the 8.5-10.8 m double fronts (two houses under one BAG pand, two dormers) are one module with four or five axes"
+  "the round-arched house doors of Retiefstraat 45-75 are flat heads",
+  "a pointed gable is drawn over the whole front; on Retiefstraat 45-75 it covers about two thirds and stands beside a steep tile roof face with dormers",
+  "Pretoriusstraat 72-120 gables carry three attic lights; one is drawn"
  ],
  "notes": [
-  "Palette: the type default is a mid dark red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+  "Palette: the type default is a mid dark red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",
+  "Retiefstraat 45-75 sheet (2026-10-31): every window has a white stone lintel block and sill (windowSurround stone-lintel); the roof face behind the cornice is orange-red tile (Retiefstraat 45-75, Transvaalstraat 74-104)"
  ]
 }
