@@ -1,0 +1,86 @@
+{
+ "face": "transvaalplein-18-22",
+ "image": "staging/block-face/transvaalplein-18-22/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 676,
+ "height": 453,
+ "groundNAP": 0.344,
+ "heightM": 11.33,
+ "frame": {
+  "midRD": [
+   123368.69987499999,
+   485175.16925000004
+  ],
+  "uRD": [
+   -0.807601473883823,
+   -0.5897286319831156
+  ],
+  "nRD": [
+   -0.5897286319831156,
+   0.807601473883823
+  ]
+ },
+ "x0M": -7.13,
+ "x1M": 9.78,
+ "date": "2020-04-29",
+ "coverage": 0.5,
+ "spans": [
+  {
+   "pandId": "0363100012080633",
+   "x0M": -7.13,
+   "x1M": -1.33,
+   "px": [
+    0,
+    232
+   ],
+   "date": "2024-10-02",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-10-02_12-17-27_01158",
+     "timestamp": "2024-10-02T12:52:01Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 44.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012083706",
+   "x0M": -1.33,
+   "x1M": 9.78,
+   "px": [
+    232,
+    676
+   ],
+   "date": "2020-04-29",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001679_pano_0000_001651",
+     "timestamp": "2020-04-29T09:07:36.587580Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 42,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-06-13": 0,
+  "2016-06-08": 0,
+  "2024-10-02": 0,
+  "2018-05-15": 0,
+  "2021-05-28": 0,
+  "2025-06-20": 0,
+  "2020-04-29": 0,
+  "2019-05-16": 0,
+  "2017-04-06": 0,
+  "2019-12-19": 0,
+  "2018-12-11": 0,
+  "2025-09-30": 0,
+  "2021-05-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

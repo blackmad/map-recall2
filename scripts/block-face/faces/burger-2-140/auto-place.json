@@ -1,0 +1,731 @@
+{
+ "face": "burger-2-140",
+ "street": "Schalk Burgerstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-30",
+ "seconds": 2.56,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012112723",
+   "address": "Schalk Burgerstraat 130",
+   "builtYear": 1923,
+   "widthM": 5.2,
+   "eavesM": 15.2,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907060",
+    "wallRaw": "#977b6d",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 93,
+     "confidence": 0.96,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.073,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.63,
+       "widthM": 0.82,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.2 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.2 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.43 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.07 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155070",
+   "address": "Schalk Burgerstraat 122",
+   "builtYear": 1923,
+   "widthM": 7.67,
+   "eavesM": 15.27,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.73,
+    "toM": 7.67,
+    "depthM": 0.51,
+    "centre": 0.743,
+    "lineRD": [
+     [
+      123253.00037499999,
+      485055.95775
+     ],
+     [
+      123250.537375,
+      485058.80874999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#947360",
+    "wallRaw": "#977f70",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 128,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 3.2,
+      "topWidthM": 0.45,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.52,
+       "widthM": 0.82,
+       "centre": 0.8
+      },
+      {
+       "atM": 10.4,
+       "widthM": 2.15,
+       "centre": 0.31
+      },
+      {
+       "atM": 8.52,
+       "widthM": 0.85,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.67 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 7.67 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.55 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.115 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150772",
+   "address": "Schalk Burgerstraat 90",
+   "builtYear": 1923,
+   "widthM": 5.63,
+   "eavesM": 15.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b7c6f",
+    "wallRaw": "#9a7c6e",
+    "skyline": {
+     "eavesM": 16.95,
+     "eavesRow": 72,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.63 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.63 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091658",
+   "address": "Schalk Burgerstraat 60",
+   "builtYear": 1923,
+   "widthM": 27.66,
+   "eavesM": 11.91,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.52,
+    "toM": 23.7,
+    "depthM": 0.56,
+    "centre": 0.492,
+    "lineRD": [
+     [
+      123231.173375,
+      485085.31475
+     ],
+     [
+      123215.816375,
+      485106.30975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7c665c",
+    "wallRaw": "#79665a",
+    "skyline": {
+     "eavesM": 15.15,
+     "eavesRow": 144,
+     "confidence": 0.43,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 3.22,
+      "topWidthM": 0.33,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.35,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.38 m (1.82 m wide), 7.42 m (2.23 m wide), 5.85 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.57,
+       "widthM": 1.82,
+       "centre": 0.36
+      },
+      {
+       "atM": 10.27,
+       "widthM": 0.88,
+       "centre": 0.78
+      },
+      {
+       "atM": 9.38,
+       "widthM": 1.82,
+       "centre": 0.64
+      },
+      {
+       "atM": 7.42,
+       "widthM": 2.23,
+       "centre": 0.34
+      },
+      {
+       "atM": 5.85,
+       "widthM": 1.27,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 49 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114204",
+   "address": "Schalk Burgerstraat 52",
+   "builtYear": 1923,
+   "widthM": 9.27,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.4,
+    "toM": 9.24,
+    "depthM": 0.76,
+    "centre": 0.738,
+    "lineRD": [
+     [
+      123216.295375,
+      485106.47775
+     ],
+     [
+      123213.284375,
+      485109.76575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#765c52",
+    "wallRaw": "#7f665b",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 165,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 3.73,
+      "topWidthM": 0.05,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.2,
+       "widthM": 1.15,
+       "centre": 0.23
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.82,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best transvaal-1923-portiek-tower scores 0.6 < 0.7 (strip cornice 14.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088147",
+   "address": "Schalk Burgerstraat 44",
+   "builtYear": 1923,
+   "widthM": 6.46,
+   "eavesM": 15.18,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.05,
+    "toM": 2.05,
+    "depthM": 0.53,
+    "centre": 0.317,
+    "lineRD": [
+     [
+      123209.344375,
+      485115.16675000003
+     ],
+     [
+      123207.159375,
+      485119.06575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#71554a",
+    "wallRaw": "#766053",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 112,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.8,
+      "topWidthM": 0.53,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.07,
+       "widthM": 1.23,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.46 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 6.46 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.076 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098793",
+   "address": "Schalk Burgerstraat 28",
+   "builtYear": 1923,
+   "widthM": 5.61,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796155",
+    "wallRaw": "#7b6356",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 85,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1,
+      "riseM": 2.13,
+      "topWidthM": 0.42,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.61 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.61 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.012 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068244",
+   "address": "Schalk Burgerstraat 18",
+   "builtYear": 1923,
+   "widthM": 9.97,
+   "eavesM": 12.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745f59",
+    "wallRaw": "#715d54",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 147,
+     "confidence": 0.91,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 2.4,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084950",
+   "address": "Schalk Burgerstraat 2",
+   "builtYear": 1923,
+   "widthM": 5.6,
+   "eavesM": 15.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786258",
+    "wallRaw": "#796359",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 84,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.6 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.6 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.65 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

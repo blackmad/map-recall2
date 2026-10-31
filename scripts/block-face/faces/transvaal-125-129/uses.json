@@ -1,0 +1,78 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:24:41.140Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012109512",
+   "addresses": [
+    "Transvaalstraat 125A",
+    "Transvaalstraat 125B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 125A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000830804"
+    },
+    {
+     "address": "Transvaalstraat 125B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000830805"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095824",
+   "addresses": [
+    "Transvaalstraat 127B",
+    "Transvaalstraat 127A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 127B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000830811"
+    },
+    {
+     "address": "Transvaalstraat 127A",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000830810"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127104",
+   "addresses": [
+    "Transvaalstraat 129B",
+    "Transvaalstraat 129A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 129B",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000830817"
+    },
+    {
+     "address": "Transvaalstraat 129A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000830816"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

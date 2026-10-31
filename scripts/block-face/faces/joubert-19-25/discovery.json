@@ -1,0 +1,497 @@
+{
+ "street": "Joubertstraat",
+ "seed": "0363100012071769",
+ "members": [
+  "0363100012071769",
+  "0363100012129254",
+  "0363100012096148",
+  "0363100012096065"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012071769 (face continues: 142519 127064 131556 159280 134742)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012096065 (face continues: 094272)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062552",
+   "reason": "frontage 34.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012062612",
+   "reason": "frontage 78.5 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012065386",
+   "reason": "frontage 39.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012066447",
+   "reason": "sightline to Joubertstraat crosses 0363100012098180"
+  },
+  {
+   "pandId": "0363100012068521",
+   "reason": "sightline to Joubertstraat crosses 0363100012096496"
+  },
+  {
+   "pandId": "0363100012068957",
+   "reason": "sightline to Joubertstraat crosses 0363100012069611"
+  },
+  {
+   "pandId": "0363100012070259",
+   "reason": "frontage 48.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012070809",
+   "reason": "frontage 56.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "frontage 37.5 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "sightline to Joubertstraat crosses 0363100012094272"
+  },
+  {
+   "pandId": "0363100012076498",
+   "reason": "frontage 48.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "frontage 32.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012078183",
+   "reason": "frontage 52.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012079489",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012079506",
+   "reason": "frontage 114.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012079840",
+   "reason": "sightline to Joubertstraat crosses 0363100012079489"
+  },
+  {
+   "pandId": "0363100012082258",
+   "reason": "frontage 62.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012083847",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012083941",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012085617",
+   "reason": "frontage 92.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012086761",
+   "reason": "frontage 61.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012087880",
+   "reason": "frontage 42.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012088081",
+   "reason": "frontage 49.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "frontage 71.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012088873",
+   "reason": "frontage 55.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "frontage 35.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "frontage 38.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012093263",
+   "reason": "frontage 61.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012094499",
+   "reason": "frontage 87.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012096496",
+   "reason": "sightline to Joubertstraat crosses 0363100012108935"
+  },
+  {
+   "pandId": "0363100012098180",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012099286",
+   "reason": "frontage 60.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012100982",
+   "reason": "frontage 54.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "sightline to Joubertstraat crosses 0363100012142519"
+  },
+  {
+   "pandId": "0363100012102941",
+   "reason": "frontage 88.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "frontage 88.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012108935",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "sightline to Joubertstraat crosses 0363100012074671"
+  },
+  {
+   "pandId": "0363100012111793",
+   "reason": "frontage 51.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "frontage 37.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "sightline to Joubertstraat crosses 0363100012074671"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "frontage 48.5 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012113965",
+   "reason": "sightline to Joubertstraat crosses 0363100012079489"
+  },
+  {
+   "pandId": "0363100012114231",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012114784",
+   "reason": "frontage 82.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012116100",
+   "reason": "frontage 88.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "frontage 60.0 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012119150",
+   "reason": "frontage 97.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012119983",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "frontage 39.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012122445",
+   "reason": "frontage 36.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "frontage 35.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012123328",
+   "reason": "frontage 42.5 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012126906",
+   "reason": "frontage 53.0 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012131433",
+   "reason": "frontage 45.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012131601",
+   "reason": "frontage 61.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012132444",
+   "reason": "frontage 69.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012133198",
+   "reason": "frontage 67.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012133204",
+   "reason": "frontage 69.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012133761",
+   "reason": "frontage 93.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012135231",
+   "reason": "frontage 95.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012137443",
+   "reason": "frontage 88.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012138289",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012138431",
+   "reason": "frontage 55.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012145599",
+   "reason": "frontage 92.0 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "frontage 62.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012148172",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012149042",
+   "reason": "frontage 39.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012150331",
+   "reason": "frontage 100.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012150686",
+   "reason": "no frontage on Joubertstraat: No footprint edge faces Joubertstraat"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "frontage 60.0 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "frontage 36.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012154068",
+   "reason": "frontage 34.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012154913",
+   "reason": "frontage 41.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012183372",
+   "reason": "frontage 33.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012183373",
+   "reason": "frontage 32.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012191096",
+   "reason": "frontage 107.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012191097",
+   "reason": "frontage 111.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012191098",
+   "reason": "frontage 112.5 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012191100",
+   "reason": "frontage 119.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "frontage 79.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012194534",
+   "reason": "frontage 80.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "frontage 80.0 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012194539",
+   "reason": "frontage 79.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012198834",
+   "reason": "sightline to Joubertstraat crosses 0363100012127064"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "sightline to Joubertstraat crosses 0363100012127064"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "sightline to Joubertstraat crosses 0363100012131556"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "sightline to Joubertstraat crosses 0363100012131556"
+  },
+  {
+   "pandId": "0363100012203118",
+   "reason": "frontage 54.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012203119",
+   "reason": "frontage 64.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "sightline to Joubertstraat crosses 0363100012094272"
+  },
+  {
+   "pandId": "0363100012224399",
+   "reason": "frontage 81.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012224400",
+   "reason": "frontage 82.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "frontage 81.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012224403",
+   "reason": "frontage 81.2 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231402",
+   "reason": "frontage 49.3 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231403",
+   "reason": "frontage 47.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231404",
+   "reason": "frontage 30.6 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231405",
+   "reason": "frontage 37.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231406",
+   "reason": "frontage 35.7 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231407",
+   "reason": "frontage 33.4 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231408",
+   "reason": "frontage 31.8 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012231409",
+   "reason": "frontage 30.1 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012233492",
+   "reason": "frontage 59.9 m from Joubertstraat"
+  },
+  {
+   "pandId": "0363100012068716",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154472",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012071769",
+   "alongM": 0,
+   "widthM": 6.25,
+   "eavesM": 12.97,
+   "roofMaxM": 17.1,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012129254",
+   "alongM": 6.31,
+   "widthM": 6.37,
+   "eavesM": 13,
+   "roofMaxM": 17.18,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096148",
+   "alongM": 12.62,
+   "widthM": 6.24,
+   "eavesM": 13,
+   "roofMaxM": 17.19,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096065",
+   "alongM": 18.84,
+   "widthM": 6.19,
+   "eavesM": 12.98,
+   "roofMaxM": 17.21,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,206 @@
+{
+ "face": "tugelaweg-135-137",
+ "street": "Tugelaweg",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.41,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012068422",
+   "address": "Tugelaweg 135",
+   "builtYear": 1989,
+   "widthM": 8.74,
+   "eavesM": 11.63,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.59,
+    "toM": 4.97,
+    "depthM": 0.82,
+    "centre": 0.547
+   },
+   "strip": {
+    "wall": "#6c5d57",
+    "wallRaw": "#5d544e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 770,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.96,
+     "balconies": true,
+     "why": "bay-less open axis 0.6 m at 0.96 (light 0.94): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.96,
+       "light": 0.94
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.77,
+       "widthM": 1.95,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924; strip shows balconies (bay-less open axis 0.6 m at 0.96 (light 0.94): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924",
+     "strip shows balconies (bay-less open axis 0.6 m at 0.96 (light 0.94): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 11.63 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.11 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069221",
+   "address": "Tugelaweg 137A",
+   "builtYear": 1989,
+   "widthM": 8.74,
+   "eavesM": 11.62,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0.55,
+    "toM": 2.84,
+    "depthM": 0.89,
+    "centre": 0.194
+   },
+   "strip": {
+    "wall": "#5d5048",
+    "wallRaw": "#665d56",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 146,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.45,
+      "topWidthM": 0.6,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.85,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1989, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.6 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

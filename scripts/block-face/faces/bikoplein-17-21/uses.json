@@ -1,0 +1,73 @@
+{
+ "street": "Steve Bikoplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:41:45.951Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012078977",
+   "addresses": [
+    "Steve Bikoplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 17-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000903441"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086628",
+   "addresses": [
+    "Steve Bikoplein 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000903449"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119923",
+   "addresses": [
+    "Steve Bikoplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 21-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000903457"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816809811,
+     "lngLat": [
+      4.9240912,
+      52.3550566
+     ],
+     "tags": {
+      "name": "Olives & More",
+      "shop": "deli"
+     },
+     "fetchedAt": "2026-10-31T15:41:45.951Z",
+     "match": "frontage",
+     "distanceM": 7
+    }
+   ]
+  }
+ ]
+}

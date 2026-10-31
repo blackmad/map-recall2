@@ -1,0 +1,113 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012061780",
+   "addresses": [
+    "Retiefstraat 286",
+    "Retiefstraat 288",
+    "Retiefstraat 290",
+    "Retiefstraat 292"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 288",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791870"
+    },
+    {
+     "address": "Retiefstraat 286",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000791869"
+    },
+    {
+     "address": "Retiefstraat 292",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791872"
+    },
+    {
+     "address": "Retiefstraat 290",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791871"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072967",
+   "addresses": [
+    "Retiefstraat 278",
+    "Retiefstraat 280",
+    "Retiefstraat 282",
+    "Retiefstraat 284"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 282",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791867"
+    },
+    {
+     "address": "Retiefstraat 284",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791868"
+    },
+    {
+     "address": "Retiefstraat 278",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000791865"
+    },
+    {
+     "address": "Retiefstraat 280",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000791866"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105196",
+   "addresses": [
+    "Retiefstraat 272",
+    "Retiefstraat 274",
+    "Retiefstraat 276"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 272",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791862"
+    },
+    {
+     "address": "Retiefstraat 276",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000791864"
+    },
+    {
+     "address": "Retiefstraat 274",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000791863"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

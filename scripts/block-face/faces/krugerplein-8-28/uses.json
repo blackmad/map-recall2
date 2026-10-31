@@ -1,0 +1,301 @@
+{
+ "street": "Krugerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:20:13.158Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233416",
+   "addresses": [
+    "Krugerplein 24B",
+    "Krugerplein 24C",
+    "Krugerplein 24D",
+    "Krugerplein 24E",
+    "Krugerplein 24A",
+    "Krugerplein 26C",
+    "Krugerplein 26D",
+    "Krugerplein 26A",
+    "Krugerplein 26B",
+    "Krugerplein 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 24B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000714917"
+    },
+    {
+     "address": "Krugerplein 24C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000714918"
+    },
+    {
+     "address": "Krugerplein 26C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000714923"
+    },
+    {
+     "address": "Krugerplein 26D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000714924"
+    },
+    {
+     "address": "Krugerplein 28",
+     "use": "kantoorfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000714925"
+    },
+    {
+     "address": "Krugerplein 24D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000714919"
+    },
+    {
+     "address": "Krugerplein 26A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000714921"
+    },
+    {
+     "address": "Krugerplein 26B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000714922"
+    },
+    {
+     "address": "Krugerplein 24E",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000714920"
+    },
+    {
+     "address": "Krugerplein 24A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000714916"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105745",
+   "addresses": [
+    "Krugerplein 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 22-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 71,
+     "bagId": "0363010011950805"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14232435945,
+     "lngLat": [
+      4.9193296,
+      52.3540154
+     ],
+     "tags": {
+      "name": "Nachtegaal",
+      "shop": "cannabis"
+     },
+     "fetchedAt": "2026-10-31T15:20:13.158Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012077637",
+   "addresses": [
+    "Krugerplein 20A",
+    "Krugerplein 20C",
+    "Krugerplein 20B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 20A",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000588549"
+    },
+    {
+     "address": "Krugerplein 20C",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000664608"
+    },
+    {
+     "address": "Krugerplein 20B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000650378"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105823",
+   "addresses": [
+    "Krugerplein 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 18-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000714891"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063198",
+   "addresses": [
+    "Krugerplein 8B",
+    "Krugerplein 8A",
+    "Krugerplein 10A",
+    "Krugerplein 10D",
+    "Krugerplein 10C",
+    "Krugerplein 10B",
+    "Krugerplein 12A",
+    "Krugerplein 12D",
+    "Krugerplein 12C",
+    "Krugerplein 12B",
+    "Krugerplein 14A",
+    "Krugerplein 14D",
+    "Krugerplein 14C",
+    "Krugerplein 14B",
+    "Krugerplein 16D",
+    "Krugerplein 16C",
+    "Krugerplein 16B",
+    "Krugerplein 16A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 8B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000952932"
+    },
+    {
+     "address": "Krugerplein 8A",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000952933"
+    },
+    {
+     "address": "Krugerplein 10A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000952934"
+    },
+    {
+     "address": "Krugerplein 12A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000952935"
+    },
+    {
+     "address": "Krugerplein 14A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000952936"
+    },
+    {
+     "address": "Krugerplein 10D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000952937"
+    },
+    {
+     "address": "Krugerplein 12D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000952938"
+    },
+    {
+     "address": "Krugerplein 14D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000952939"
+    },
+    {
+     "address": "Krugerplein 16D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000952940"
+    },
+    {
+     "address": "Krugerplein 16C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000952941"
+    },
+    {
+     "address": "Krugerplein 16B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000952942"
+    },
+    {
+     "address": "Krugerplein 16A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000952943"
+    },
+    {
+     "address": "Krugerplein 10C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000952944"
+    },
+    {
+     "address": "Krugerplein 12C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000952945"
+    },
+    {
+     "address": "Krugerplein 14C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000952946"
+    },
+    {
+     "address": "Krugerplein 10B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000952947"
+    },
+    {
+     "address": "Krugerplein 12B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000952948"
+    },
+    {
+     "address": "Krugerplein 14B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000952949"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  }
+ ]
+}

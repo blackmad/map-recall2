@@ -1,0 +1,203 @@
+{
+ "face": "colenso-14-28",
+ "street": "Colensostraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.31,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012064734",
+   "address": "Colensostraat 26",
+   "builtYear": 1922,
+   "widthM": 5.91,
+   "eavesM": 10.81,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.65,
+    "toM": 4.55,
+    "depthM": 0.66,
+    "centre": 0.609
+   },
+   "strip": {
+    "wall": "#554e49",
+    "wallRaw": "#8b695f",
+    "skyline": {
+     "eavesM": 7.72,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.746,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.38,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 38 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147649",
+   "address": "Colensostraat 22",
+   "builtYear": 1922,
+   "widthM": 5.69,
+   "eavesM": 10.77,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.36,
+    "toM": 2.72,
+    "depthM": 0.66,
+    "centre": 0.359
+   },
+   "strip": {
+    "wall": "#504339",
+    "wallRaw": "#84665d",
+    "skyline": {
+     "eavesM": 7.7,
+     "eavesRow": 261,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.728,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.39,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 39 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127557",
+   "address": "Colensostraat 18",
+   "builtYear": 1922,
+   "widthM": 5.95,
+   "eavesM": 10.8,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.97,
+    "toM": 4.84,
+    "depthM": 0.66,
+    "centre": 0.656
+   },
+   "strip": {
+    "wall": "#554940",
+    "wallRaw": "#826159",
+    "skyline": {
+     "eavesM": 7.67,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.726,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.4,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 40 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012094468",
+   "address": "Colensostraat 14",
+   "builtYear": 1922,
+   "widthM": 6.08,
+   "eavesM": 10.71,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.11,
+    "toM": 2.97,
+    "depthM": 0.66,
+    "centre": 0.336
+   },
+   "strip": {
+    "wall": "#625751",
+    "wallRaw": "#8a635b",
+    "skyline": {
+     "eavesM": 7.72,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.693,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.38,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 38 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

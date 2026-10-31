@@ -1,0 +1,437 @@
+{
+ "face": "bikoplein-3-9",
+ "street": "Steve Bikoplein",
+ "library": "transvaalbuurt",
+ "stripDate": "2023-01-02",
+ "seconds": 1.16,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012105544",
+   "address": "Steve Bikoplein 3",
+   "builtYear": 1910,
+   "widthM": 8.17,
+   "eavesM": 16.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61524d",
+    "wallRaw": "#4a4747",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 170,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.55,
+      "riseM": 2.4,
+      "topWidthM": 0.72,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.22,
+       "widthM": 1.05,
+       "centre": 0.35
+      },
+      {
+       "atM": 10.3,
+       "widthM": 1.32,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.63,
+       "widthM": 1.13,
+       "centre": 0.8
+      },
+      {
+       "atM": 6.7,
+       "widthM": 0.97,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.07,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1910, type 1921-1924; frontage 8.17 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1921-1924",
+     "frontage 8.17 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.47 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149663",
+   "address": "Steve Bikoplein 5",
+   "builtYear": 1910,
+   "widthM": 8.75,
+   "eavesM": 14.19,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 8.41,
+    "toM": 8.74,
+    "depthM": 0.31,
+    "centre": 0.981,
+    "lineRD": [
+     [
+      123429.73237499999,
+      485411.45174999995
+     ],
+     [
+      123435.65237499999,
+      485409.27074999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#49423f",
+    "wallRaw": "#544f4c",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.43,
+      "topWidthM": 0.38,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.22 m (1.4 m wide), 6.92 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.22,
+       "widthM": 1.4,
+       "centre": 0.33
+      },
+      {
+       "atM": 9.55,
+       "widthM": 1.15,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.92,
+       "widthM": 1.32,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.18,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1910, type 1921-1924; strip shows balconies (balcony slabs stacked at 10.22 m (1.4 m wide), 6.92 m (1.32 m wide)))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1921-1924",
+     "strip shows balconies (balcony slabs stacked at 10.22 m (1.4 m wide), 6.92 m (1.32 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.3 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078226",
+   "address": "Steve Bikoplein 7",
+   "builtYear": 1910,
+   "widthM": 8.75,
+   "eavesM": 13.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e605d",
+    "wallRaw": "#544e4a",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 2.28,
+      "topWidthM": 0.42,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.38,
+       "widthM": 1.13,
+       "centre": 0.89
+      },
+      {
+       "atM": 9.47,
+       "widthM": 0.8,
+       "centre": 0.68
+      },
+      {
+       "atM": 7.07,
+       "widthM": 0.85,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.2,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1910, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.35 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.012 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080020",
+   "address": "Steve Bikoplein 9",
+   "builtYear": 1910,
+   "widthM": 8.18,
+   "eavesM": 16.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#48413e",
+    "wallRaw": "#534d4a",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 165,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 2.7,
+      "topWidthM": 0.57,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 1.73,
+       "centre": 0.17
+      },
+      {
+       "atM": 9.68,
+       "widthM": 1.07,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.1,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1910, type 1921-1924; frontage 8.18 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1921-1924",
+     "frontage 8.18 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.6 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,557 @@
+{
+ "street": "Majubastraat",
+ "seed": "0363100012116871",
+ "members": [
+  "0363100012116871",
+  "0363100012074634"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061274",
+   "reason": "frontage 40.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012062795",
+   "reason": "frontage 104.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012063198",
+   "reason": "frontage 68.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012063216",
+   "reason": "frontage 40.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012064734",
+   "reason": "frontage 87.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012065205",
+   "reason": "frontage 40.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012068244",
+   "reason": "frontage 70.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012068336",
+   "reason": "frontage 41.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012069344",
+   "reason": "sightline to Majubastraat crosses 0363100012134576"
+  },
+  {
+   "pandId": "0363100012070736",
+   "reason": "frontage 61.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012072109",
+   "reason": "frontage 62.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012072680",
+   "reason": "frontage 104.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012073273",
+   "reason": "frontage 84.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012073386",
+   "reason": "frontage 62.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012073931",
+   "reason": "frontage 36.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012074323",
+   "reason": "frontage 106.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012075103",
+   "reason": "frontage 57.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012076837",
+   "reason": "frontage 40.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012076994",
+   "reason": "frontage 82.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012077637",
+   "reason": "frontage 68.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012080889",
+   "reason": "sightline to Majubastraat crosses 0363100012120128"
+  },
+  {
+   "pandId": "0363100012084950",
+   "reason": "frontage 62.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012087223",
+   "reason": "frontage 40.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "frontage 99.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012088147",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012088610",
+   "reason": "frontage 76.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012090011",
+   "reason": "frontage 82.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012091658",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "frontage 111.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012093454",
+   "reason": "frontage 89.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012093825",
+   "reason": "frontage 48.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012094468",
+   "reason": "frontage 85.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012095824",
+   "reason": "frontage 61.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012096932",
+   "reason": "frontage 117.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012097026",
+   "reason": "frontage 71.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012098146",
+   "reason": "frontage 105.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012098793",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012099888",
+   "reason": "frontage 34.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012102141",
+   "reason": "frontage 36.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012102458",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012102728",
+   "reason": "frontage 95.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012102791",
+   "reason": "frontage 67.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012103278",
+   "reason": "frontage 105.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012103686",
+   "reason": "frontage 108.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012103780",
+   "reason": "frontage 61.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012105195",
+   "reason": "frontage 104.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012105823",
+   "reason": "frontage 67.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012106537",
+   "reason": "frontage 46.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012110043",
+   "reason": "frontage 94.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012110210",
+   "reason": "frontage 75.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012113350",
+   "reason": "frontage 91.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012113844",
+   "reason": "frontage 87.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012114066",
+   "reason": "frontage 66.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012114204",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012117284",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012117405",
+   "reason": "frontage 106.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012117986",
+   "reason": "frontage 65.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012120105",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012121701",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012123734",
+   "reason": "frontage 61.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012125077",
+   "reason": "frontage 44.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012125853",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012126367",
+   "reason": "frontage 92.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012127104",
+   "reason": "frontage 61.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012127557",
+   "reason": "frontage 86.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012129435",
+   "reason": "frontage 67.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012130894",
+   "reason": "frontage 40.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012130923",
+   "reason": "frontage 89.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012133749",
+   "reason": "frontage 34.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012135080",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012136060",
+   "reason": "frontage 61.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012137011",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012138010",
+   "reason": "frontage 67.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012140152",
+   "reason": "frontage 77.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012142199",
+   "reason": "frontage 61.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012142304",
+   "reason": "frontage 81.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012142372",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012143885",
+   "reason": "frontage 61.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012143928",
+   "reason": "sightline to Majubastraat crosses 0363100012069344"
+  },
+  {
+   "pandId": "0363100012144368",
+   "reason": "frontage 79.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012144483",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012144607",
+   "reason": "frontage 37.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012145564",
+   "reason": "frontage 119.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012147649",
+   "reason": "frontage 86.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012148341",
+   "reason": "sightline to Majubastraat crosses 0363100012080889"
+  },
+  {
+   "pandId": "0363100012148504",
+   "reason": "frontage 108.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012149524",
+   "reason": "frontage 81.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012150006",
+   "reason": "frontage 107.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012151169",
+   "reason": "frontage 88.1 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012184817",
+   "reason": "sightline to Majubastraat crosses 0363100012100947"
+  },
+  {
+   "pandId": "0363100012188432",
+   "reason": "frontage 42.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012191612",
+   "reason": "frontage 35.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012201282",
+   "reason": "no frontage on Majubastraat: No footprint edge faces Majubastraat"
+  },
+  {
+   "pandId": "0363100012205300",
+   "reason": "frontage 82.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012205301",
+   "reason": "frontage 85.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012205305",
+   "reason": "frontage 103.9 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012205308",
+   "reason": "frontage 70.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012205309",
+   "reason": "frontage 72.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223678",
+   "reason": "frontage 89.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223683",
+   "reason": "frontage 91.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223684",
+   "reason": "frontage 92.2 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223699",
+   "reason": "frontage 78.6 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223700",
+   "reason": "frontage 79.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223701",
+   "reason": "frontage 77.5 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223702",
+   "reason": "frontage 75.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223704",
+   "reason": "frontage 76.7 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012223705",
+   "reason": "frontage 74.8 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012227743",
+   "reason": "frontage 31.0 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012233531",
+   "reason": "frontage 36.3 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012233534",
+   "reason": "sightline to Majubastraat crosses 0363100012074634"
+  },
+  {
+   "pandId": "0363100012236989",
+   "reason": "frontage 36.4 m from Majubastraat"
+  },
+  {
+   "pandId": "0363100012061648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012062237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076187",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085405",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086038",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090964",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100947",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114180",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120308",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134576",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141114",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012116871",
+   "alongM": 0,
+   "widthM": 6.13,
+   "eavesM": 12.62,
+   "roofMaxM": 15.89,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012074634",
+   "alongM": 10.25,
+   "widthM": 14.36,
+   "eavesM": 12.48,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 5,
+   "builtYear": 1914,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

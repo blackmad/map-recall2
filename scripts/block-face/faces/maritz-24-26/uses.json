@@ -1,0 +1,64 @@
+{
+ "street": "Maritzstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:27:30.254Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122164",
+   "addresses": [
+    "Maritzstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000735514"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1300002688,
+     "lngLat": [
+      4.9197846,
+      52.3547005
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1091KW",
+      "addr:street": "Maritzstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-08-16",
+      "diet:halal": "only",
+      "name": "Wonny's Eethuis",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T15:27:30.254Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012251277",
+   "addresses": [
+    "Maritzstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000735509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

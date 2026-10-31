@@ -1,0 +1,380 @@
+{
+ "street": "Magersfonteinstraat",
+ "seed": "0363100012086971",
+ "members": [
+  "0363100012075910",
+  "0363100012084324",
+  "0363100012086971"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012086971 (face continues: 093743)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062150",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012062315",
+   "reason": "frontage 44.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012063111",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012075910"
+  },
+  {
+   "pandId": "0363100012066147",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012093743"
+  },
+  {
+   "pandId": "0363100012066390",
+   "reason": "frontage 30.4 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012066681",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012063111"
+  },
+  {
+   "pandId": "0363100012067013",
+   "reason": "frontage 38.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012068243",
+   "reason": "frontage 49.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012068543",
+   "reason": "frontage 101.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012070004",
+   "reason": "frontage 36.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012071924",
+   "reason": "frontage 51.4 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012074312",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012092019"
+  },
+  {
+   "pandId": "0363100012075638",
+   "reason": "frontage 72.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012080801",
+   "reason": "frontage 33.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012081370",
+   "reason": "frontage 67.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012082879",
+   "reason": "frontage 89.5 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012083980",
+   "reason": "frontage 122.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012083997",
+   "reason": "frontage 112.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012085212",
+   "reason": "frontage 68.4 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012087298",
+   "reason": "frontage 44.2 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012087384",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012088349",
+   "reason": "frontage 80.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012089136",
+   "reason": "frontage 51.5 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012090239",
+   "reason": "frontage 70.9 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012092019",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012092816",
+   "reason": "frontage 44.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012095054",
+   "reason": "frontage 65.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012096769",
+   "reason": "frontage 77.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012098505",
+   "reason": "frontage 79.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012103856",
+   "reason": "frontage 81.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012104385",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012105196",
+   "reason": "frontage 122.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012105469",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012107351",
+   "reason": "frontage 96.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012108133",
+   "reason": "frontage 51.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012109786",
+   "reason": "frontage 88.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012110022",
+   "reason": "frontage 62.5 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012112323",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012074312"
+  },
+  {
+   "pandId": "0363100012112873",
+   "reason": "frontage 70.5 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012113269",
+   "reason": "frontage 74.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012114764",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012116585",
+   "reason": "frontage 83.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012118282",
+   "reason": "frontage 94.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012119451",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012105469"
+  },
+  {
+   "pandId": "0363100012120175",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012121531",
+   "reason": "frontage 50.4 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012123300",
+   "reason": "frontage 40.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012126266",
+   "reason": "frontage 53.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012126391",
+   "reason": "frontage 47.3 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012126785",
+   "reason": "frontage 90.0 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012129296",
+   "reason": "frontage 47.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012129491",
+   "reason": "frontage 32.9 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012131309",
+   "reason": "frontage 48.5 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012133126",
+   "reason": "sightline to Magersfonteinstraat crosses 0363100012105469"
+  },
+  {
+   "pandId": "0363100012134096",
+   "reason": "frontage 73.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012137027",
+   "reason": "frontage 83.3 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012138910",
+   "reason": "frontage 44.4 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012141204",
+   "reason": "frontage 107.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012141435",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012141884",
+   "reason": "frontage 95.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012142961",
+   "reason": "frontage 71.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012149374",
+   "reason": "frontage 50.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012149666",
+   "reason": "frontage 32.3 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012150483",
+   "reason": "frontage 56.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "frontage 76.8 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012151291",
+   "reason": "frontage 99.6 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012153943",
+   "reason": "frontage 82.9 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012154435",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012200725",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012205904",
+   "reason": "frontage 41.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012207244",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012212488",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012215081",
+   "reason": "frontage 41.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012233606",
+   "reason": "frontage 30.7 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012236876",
+   "reason": "no frontage on Magersfonteinstraat: No footprint edge faces Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012240693",
+   "reason": "frontage 73.9 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012241221",
+   "reason": "frontage 90.1 m from Magersfonteinstraat"
+  },
+  {
+   "pandId": "0363100012136245",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144201",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241220",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012075910",
+   "alongM": -24.54,
+   "widthM": 16.02,
+   "eavesM": 12.96,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012084324",
+   "alongM": -12.03,
+   "widthM": 9.01,
+   "eavesM": 12.87,
+   "roofMaxM": 16.79,
+   "storeys3dbag": 5,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012086971",
+   "alongM": 0,
+   "widthM": 15.05,
+   "eavesM": 12.94,
+   "roofMaxM": 16.8,
+   "storeys3dbag": 5,
+   "builtYear": 1921,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

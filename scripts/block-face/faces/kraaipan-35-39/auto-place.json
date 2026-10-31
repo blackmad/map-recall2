@@ -1,0 +1,261 @@
+{
+ "face": "kraaipan-35-39",
+ "street": "Kraaipanstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 0.34,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012106188",
+   "address": "Kraaipanstraat 35A",
+   "builtYear": 1921,
+   "widthM": 8.97,
+   "eavesM": 10.3,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 4.85,
+    "toM": 7.16,
+    "depthM": 0.44,
+    "centre": 0.669
+   },
+   "strip": {
+    "wall": "#5d5448",
+    "wallRaw": "#554c3a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 589,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.016,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.22 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.22,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best transvaal-1923-portiek-tower scores 0 < 0.7 (3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 10.3 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102819",
+   "address": "Kraaipanstraat 37A",
+   "builtYear": 1921,
+   "widthM": 3.83,
+   "eavesM": 10.7,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.77,
+    "depthM": 0.43,
+    "centre": 0.232,
+    "lineRD": [
+     [
+      123167.63937500001,
+      485018.85075000004
+     ],
+     [
+      123165.69237500001,
+      485017.97875
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#775849",
+    "wallRaw": "#58483d",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 20,
+     "confidence": 0.31,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.52,
+       "widthM": 0.97,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 3.83 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 3.83 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 10.7 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084592",
+   "address": "Kraaipanstraat 39",
+   "builtYear": 1921,
+   "widthM": 9.02,
+   "eavesM": 9.86,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1.77,
+    "toM": 4.08,
+    "depthM": 0.44,
+    "centre": 0.324
+   },
+   "strip": {
+    "wall": "#745d48",
+    "wallRaw": "#5b573f",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 40,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.9,
+      "topWidthM": 0.78,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.55
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best transvaal-1923-portiek-tower scores 0 < 0.7 (3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 9.86 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,462 @@
+{
+ "face": "luthuli-21-41",
+ "street": "Albert Luthulistraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2017-04-06",
+ "seconds": 1.75,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012109924",
+   "address": "Albert Luthulistraat 21A",
+   "builtYear": 1949,
+   "widthM": 5.66,
+   "eavesM": 15.14,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.6,
+    "toM": 9.14,
+    "depthM": 0.63,
+    "centre": 0.806,
+    "lineRD": [
+     [
+      123138.128375,
+      485088.97274999996
+     ],
+     [
+      123133.942375,
+      485085.15774999995
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#80695d",
+    "wallRaw": "#65544c",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 47,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 0.8,
+      "topWidthM": 0.85,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1949, type 1921-1924; frontage 5.66 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1949, type 1921-1924",
+     "frontage 5.66 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 16.13 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.032 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105200",
+   "address": "Albert Luthulistraat 25C",
+   "builtYear": 1949,
+   "widthM": 10.9,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765f53",
+    "wallRaw": "#625148",
+    "skyline": {
+     "eavesM": 14.1,
+     "eavesRow": 128,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 3.8,
+      "riseM": 3.2,
+      "topWidthM": 0.4,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1949, type 1921-1924)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1949, type 1921-1924"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.1 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.069 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142206",
+   "address": "Albert Luthulistraat 29A",
+   "builtYear": 1923,
+   "widthM": 12.42,
+   "eavesM": 15.26,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.36,
+    "toM": 8.98,
+    "depthM": 0.63,
+    "centre": 0.497
+   },
+   "strip": {
+    "wall": "#73574c",
+    "wallRaw": "#634d44",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 95,
+     "confidence": 0.4,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.38,
+      "topWidthM": 0.42,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.88,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.2,
+       "widthM": 0.8,
+       "centre": 0.57
+      },
+      {
+       "atM": 9.4,
+       "widthM": 2.15,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 48 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126814",
+   "address": "Albert Luthulistraat 33A",
+   "builtYear": 1922,
+   "widthM": 10.8,
+   "eavesM": 12.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5146",
+    "wallRaw": "#634b41",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 144,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 3.6,
+      "topWidthM": 1.18,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.35,
+       "widthM": 1.98,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012128866",
+   "address": "Albert Luthulistraat 37A",
+   "builtYear": 1923,
+   "widthM": 5.67,
+   "eavesM": 15.17,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.56,
+    "depthM": 0.68,
+    "centre": 0.194,
+    "lineRD": [
+     [
+      123100.641375,
+      485061.03274999995
+     ],
+     [
+      123095.701375,
+      485058.24775
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#856659",
+    "wallRaw": "#6b5449",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 50,
+     "confidence": 0.89,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.036,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.67 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.67 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 16.05 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108831",
+   "address": "Albert Luthulistraat 41A",
+   "builtYear": 1923,
+   "widthM": 5.22,
+   "eavesM": 15.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59463d",
+    "wallRaw": "#5f4b40",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 73,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 1.83,
+      "topWidthM": 0.17,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 5.22 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 5.22 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 15.18 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

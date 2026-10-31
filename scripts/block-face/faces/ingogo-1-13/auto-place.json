@@ -1,0 +1,525 @@
+{
+ "face": "ingogo-1-13",
+ "street": "Ingogostraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 1.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012062620",
+   "address": "Ingogostraat 1",
+   "builtYear": 1908,
+   "widthM": 6.67,
+   "eavesM": 14.68,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.27,
+    "depthM": 0.85,
+    "centre": 0.323,
+    "lineRD": [
+     [
+      123564.656375,
+      485406.94875
+     ],
+     [
+      123565.698375,
+      485403.71575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5b4d44",
+    "wallRaw": "#4b4c39",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.07 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.07,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.15,
+       "widthM": 1.13,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 21 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070813",
+   "address": "Ingogostraat 3A",
+   "builtYear": 1910,
+   "widthM": 9.13,
+   "eavesM": 13.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d6d5f",
+    "wallRaw": "#5d5340",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 192,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.05,
+      "topWidthM": 0.4,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.19 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.19,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.52,
+       "widthM": 1,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.1,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 62 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105384",
+   "address": "Ingogostraat 5A",
+   "builtYear": 1910,
+   "widthM": 7.94,
+   "eavesM": 14.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5447",
+    "wallRaw": "#64554a",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 194,
+     "confidence": 0.31,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.9,
+       "widthM": 1.68,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.23,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 65 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012097925",
+   "address": "Ingogostraat 7",
+   "builtYear": 1912,
+   "widthM": 6.02,
+   "eavesM": 12.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4f49",
+    "wallRaw": "#4e4b3f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.35,
+       "widthM": 1.35,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 1 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119806",
+   "address": "Ingogostraat 9",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 15.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786763",
+    "wallRaw": "#766863",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 231,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 2.18,
+      "topWidthM": 0.78,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.196,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 1.3,
+       "centre": 0.78
+      },
+      {
+       "atM": 9.27,
+       "widthM": 1.18,
+       "centre": 0.41
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.02,
+       "centre": 0.39
+      },
+      {
+       "atM": 4.85,
+       "widthM": 0.85,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.93 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.121 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079342",
+   "address": "Ingogostraat 11",
+   "builtYear": 1912,
+   "widthM": 5.95,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5d56",
+    "wallRaw": "#726660",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.2,
+      "topWidthM": 1.65,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.263,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.58,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 2.05,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.18,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 5.95 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 5.95 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.93 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.223 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012095627",
+   "address": "Ingogostraat 13",
+   "builtYear": 1912,
+   "widthM": 4.79,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5f5b",
+    "wallRaw": "#50553a",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 150,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 0.98,
+      "topWidthM": 1.13,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.3 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.3,
+       "light": 0.07
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.81,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.68
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 4.79 m, type 8.8-12.9 m)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1921-1924",
+     "frontage 4.79 m, type 8.8-12.9 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

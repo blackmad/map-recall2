@@ -1,0 +1,160 @@
+{
+ "street": "Steve Bikoplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:38:29.196Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108133",
+   "addresses": [
+    "Steve Bikoplein 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 12-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000903433"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2052015527,
+     "lngLat": [
+      4.9228914,
+      52.3552513
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12",
+      "addr:postcode": "1092GN",
+      "addr:street": "Steve Bikoplein",
+      "amenity": "restaurant",
+      "check_date": "2025-10-20",
+      "contact:facebook": "PazziAmsterdam",
+      "contact:instagram": "pazziamsterdam",
+      "cuisine": "italian",
+      "diet:halal": "no",
+      "email": "andrea@pazziamsterdam.nl",
+      "name": "Pazzi",
+      "opening_hours": "Mo-Su 17:00-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 705 1008",
+      "website": "https://www.pazziamsterdam.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-31T15:38:29.196Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012089136",
+   "addresses": [
+    "Steve Bikoplein 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 10-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000903426"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1298779781,
+     "lngLat": [
+      4.9229386,
+      52.3553156
+     ],
+     "tags": {
+      "check_date": "2026-03-14",
+      "name": "Scooter Oost",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "shop": "motorcycle"
+     },
+     "fetchedAt": "2026-10-31T15:38:29.196Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012149374",
+   "addresses": [
+    "Steve Bikoplein 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 8-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000903418"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121531",
+   "addresses": [
+    "Steve Bikoplein 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 6-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012061534"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126266",
+   "addresses": [
+    "Steve Bikoplein 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Steve Bikoplein 4-H",
+     "use": "kantoorfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000903403"
+    },
+    {
+     "address": "Steve Bikoplein 4-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie,winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012145258"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12816787190,
+     "lngLat": [
+      4.9231636,
+      52.3556138
+     ],
+     "tags": {
+      "amenity": "community_centre",
+      "name": "Biko"
+     },
+     "fetchedAt": "2026-10-31T15:38:29.196Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  }
+ ]
+}

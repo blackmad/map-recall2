@@ -1,0 +1,193 @@
+{
+ "street": "Ingogostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:13:11.327Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012062620",
+   "addresses": [
+    "Ingogostraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000677227"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070813",
+   "addresses": [
+    "Ingogostraat 3A",
+    "Ingogostraat 3B",
+    "Ingogostraat 3C",
+    "Ingogostraat 3D",
+    "Ingogostraat 3E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000677234"
+    },
+    {
+     "address": "Ingogostraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000677235"
+    },
+    {
+     "address": "Ingogostraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000677236"
+    },
+    {
+     "address": "Ingogostraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000677237"
+    },
+    {
+     "address": "Ingogostraat 3E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000994846"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105384",
+   "addresses": [
+    "Ingogostraat 5A",
+    "Ingogostraat 5B",
+    "Ingogostraat 5C",
+    "Ingogostraat 5E",
+    "Ingogostraat 5D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000677243"
+    },
+    {
+     "address": "Ingogostraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000677244"
+    },
+    {
+     "address": "Ingogostraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000677254"
+    },
+    {
+     "address": "Ingogostraat 5E",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000677256"
+    },
+    {
+     "address": "Ingogostraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000994855"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097925",
+   "addresses": [
+    "Ingogostraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000677261"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119806",
+   "addresses": [
+    "Ingogostraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000677269"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079342",
+   "addresses": [
+    "Ingogostraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000677277"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095627",
+   "addresses": [
+    "Ingogostraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ingogostraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000677285"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13002028360,
+     "lngLat": [
+      4.9260923,
+      52.3553428
+     ],
+     "tags": {
+      "name": "Woonboot Specialist",
+      "office": "insurance"
+     },
+     "fetchedAt": "2026-10-31T14:13:11.327Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

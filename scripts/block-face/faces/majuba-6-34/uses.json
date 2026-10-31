@@ -1,0 +1,362 @@
+{
+ "street": "Majubastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:36:18.978Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012141114",
+   "addresses": [
+    "Majubastraat 26",
+    "Majubastraat 28A",
+    "Majubastraat 28B",
+    "Majubastraat 28C",
+    "Majubastraat 30A",
+    "Majubastraat 30B",
+    "Majubastraat 30C",
+    "Majubastraat 32A",
+    "Majubastraat 32B",
+    "Majubastraat 32C",
+    "Majubastraat 34A",
+    "Majubastraat 34B",
+    "Majubastraat 34C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 26",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000993305"
+    },
+    {
+     "address": "Majubastraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000993309"
+    },
+    {
+     "address": "Majubastraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993317"
+    },
+    {
+     "address": "Majubastraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000993319"
+    },
+    {
+     "address": "Majubastraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000993332"
+    },
+    {
+     "address": "Majubastraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993333"
+    },
+    {
+     "address": "Majubastraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000993334"
+    },
+    {
+     "address": "Majubastraat 32A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000993335"
+    },
+    {
+     "address": "Majubastraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993336"
+    },
+    {
+     "address": "Majubastraat 32C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000993337"
+    },
+    {
+     "address": "Majubastraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000993338"
+    },
+    {
+     "address": "Majubastraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993339"
+    },
+    {
+     "address": "Majubastraat 34C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000993340"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085405",
+   "addresses": [
+    "Majubastraat 20",
+    "Majubastraat 22A",
+    "Majubastraat 22B",
+    "Majubastraat 22C",
+    "Majubastraat 22D",
+    "Majubastraat 24A",
+    "Majubastraat 24B",
+    "Majubastraat 24C",
+    "Majubastraat 24D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952735"
+    },
+    {
+     "address": "Majubastraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000952736"
+    },
+    {
+     "address": "Majubastraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952742"
+    },
+    {
+     "address": "Majubastraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000952743"
+    },
+    {
+     "address": "Majubastraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952749"
+    },
+    {
+     "address": "Majubastraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000952750"
+    },
+    {
+     "address": "Majubastraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000952756"
+    },
+    {
+     "address": "Majubastraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000952757"
+    },
+    {
+     "address": "Majubastraat 20",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000952760"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062237",
+   "addresses": [
+    "Majubastraat 14",
+    "Majubastraat 16A",
+    "Majubastraat 16B",
+    "Majubastraat 16C",
+    "Majubastraat 16D",
+    "Majubastraat 18A",
+    "Majubastraat 18B",
+    "Majubastraat 18C",
+    "Majubastraat 18D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000867247"
+    },
+    {
+     "address": "Majubastraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952734"
+    },
+    {
+     "address": "Majubastraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952740"
+    },
+    {
+     "address": "Majubastraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952741"
+    },
+    {
+     "address": "Majubastraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952747"
+    },
+    {
+     "address": "Majubastraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952748"
+    },
+    {
+     "address": "Majubastraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000952754"
+    },
+    {
+     "address": "Majubastraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000952755"
+    },
+    {
+     "address": "Majubastraat 14",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000952759"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086038",
+   "addresses": [
+    "Majubastraat 8",
+    "Majubastraat 10A",
+    "Majubastraat 10B",
+    "Majubastraat 10C",
+    "Majubastraat 10D",
+    "Majubastraat 12A",
+    "Majubastraat 12B",
+    "Majubastraat 12C",
+    "Majubastraat 12D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000867245"
+    },
+    {
+     "address": "Majubastraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000867246"
+    },
+    {
+     "address": "Majubastraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952738"
+    },
+    {
+     "address": "Majubastraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952739"
+    },
+    {
+     "address": "Majubastraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952745"
+    },
+    {
+     "address": "Majubastraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952746"
+    },
+    {
+     "address": "Majubastraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000952752"
+    },
+    {
+     "address": "Majubastraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000952753"
+    },
+    {
+     "address": "Majubastraat 8",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000952758"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134576",
+   "addresses": [
+    "Majubastraat 6A",
+    "Majubastraat 6B",
+    "Majubastraat 6C",
+    "Majubastraat 6D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Majubastraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000777671"
+    },
+    {
+     "address": "Majubastraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952737"
+    },
+    {
+     "address": "Majubastraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952744"
+    },
+    {
+     "address": "Majubastraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000952751"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "face": "transvaalkade-7-7",
+ "image": "staging/block-face/transvaalkade-7-7/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 399,
+ "height": 582,
+ "groundNAP": -1.184,
+ "heightM": 14.56,
+ "frame": {
+  "midRD": [
+   123653.350875,
+   485333.9805
+  ],
+  "uRD": [
+   0.8112245032051747,
+   0.5847348163052354
+  ],
+  "nRD": [
+   0.5847348163052354,
+   -0.8112245032051747
+  ]
+ },
+ "x0M": -5,
+ "x1M": 4.97,
+ "date": "2023-01-02",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012155354",
+   "x0M": -5,
+   "x1M": 0.01,
+   "px": [
+    0,
+    200
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000149",
+     "timestamp": "2023-01-02T10:07:26.405340Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 20.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000148",
+     "timestamp": "2023-01-02T10:07:25.850340Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 29.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167228",
+   "x0M": 0.01,
+   "x1M": 4.97,
+   "px": [
+    200,
+    398
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000150",
+     "timestamp": "2023-01-02T10:07:26.965370Z",
+     "distanceM": 5.9,
+     "obliquityDeg": 21.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000149",
+     "timestamp": "2023-01-02T10:07:26.405340Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 28.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-06-08": 0,
+  "2020-04-29": 0,
+  "2018-05-15": 2,
+  "2021-05-28": 2,
+  "2017-04-06": 1,
+  "2019-12-19": 2,
+  "2023-01-02": 2,
+  "2025-09-30": 2,
+  "2022-06-13": 1,
+  "2024-09-16": 2,
+  "2021-05-31": 2,
+  "2019-05-16": 2
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

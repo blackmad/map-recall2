@@ -1,0 +1,48 @@
+{
+ "street": "Transvaalkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:42:07.878Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147517",
+   "addresses": [
+    "Transvaalkade 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalkade 132-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000830344"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081211",
+   "addresses": [
+    "Transvaalkade 130",
+    "Transvaalkade 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalkade 130-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000830336"
+    },
+    {
+     "address": "Transvaalkade 131-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000830340"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

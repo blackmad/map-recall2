@@ -1,0 +1,401 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:51:47.650Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012096974",
+   "addresses": [
+    "Pretoriusstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000782569"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089528",
+   "addresses": [
+    "Pretoriusstraat 42",
+    "Pretoriusstraat 42A",
+    "Pretoriusstraat 42B",
+    "Pretoriusstraat 42C",
+    "Pretoriusstraat 42D",
+    "Pretoriusstraat 42E",
+    "Pretoriusstraat 42F",
+    "Pretoriusstraat 42G",
+    "Pretoriusstraat 42H",
+    "Pretoriusstraat 42K",
+    "Pretoriusstraat 42L",
+    "Pretoriusstraat 42M",
+    "Pretoriusstraat 42N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000782561"
+    },
+    {
+     "address": "Pretoriusstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012132781"
+    },
+    {
+     "address": "Pretoriusstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012132782"
+    },
+    {
+     "address": "Pretoriusstraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012132783"
+    },
+    {
+     "address": "Pretoriusstraat 42D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012132784"
+    },
+    {
+     "address": "Pretoriusstraat 42E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012132785"
+    },
+    {
+     "address": "Pretoriusstraat 42F",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012132786"
+    },
+    {
+     "address": "Pretoriusstraat 42G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012132787"
+    },
+    {
+     "address": "Pretoriusstraat 42H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012132788"
+    },
+    {
+     "address": "Pretoriusstraat 42K",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012132789"
+    },
+    {
+     "address": "Pretoriusstraat 42L",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012132790"
+    },
+    {
+     "address": "Pretoriusstraat 42M",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012145627"
+    },
+    {
+     "address": "Pretoriusstraat 42N",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012145628"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073177",
+   "addresses": [
+    "Pretoriusstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000782553"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126873",
+   "addresses": [
+    "Pretoriusstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000782545"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132653",
+   "addresses": [
+    "Pretoriusstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 36-H",
+     "use": "winkelfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000782537"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826196279,
+     "lngLat": [
+      4.92502,
+      52.3558381
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36-H",
+      "addr:postcode": "1092GH",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "fast_food",
+      "cuisine": "sandwich",
+      "name": "Beruchte Broodjes",
+      "opening_hours": "Tu-Su 11:00-18:00",
+      "phone": "+31 6 57575518",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-31T14:51:47.650Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012063736",
+   "addresses": [
+    "Pretoriusstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000782530"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121521",
+   "addresses": [
+    "Pretoriusstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000782521"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082846",
+   "addresses": [
+    "Pretoriusstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000782513"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091272",
+   "addresses": [
+    "Pretoriusstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010001000410"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164603",
+   "addresses": [
+    "Pretoriusstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000782497"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161532",
+   "addresses": [
+    "Pretoriusstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 24-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000782489"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155931",
+   "addresses": [
+    "Pretoriusstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000782481"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 95288389,
+     "lngLat": [
+      4.9255949,
+      52.3560114
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22-H",
+      "addr:postcode": "1092GG",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "restaurant",
+      "cuisine": "turkish",
+      "diet:halal": "only",
+      "name": "Meram",
+      "phone": "+31 20 3626420",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://meram.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:51:47.650Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072896",
+   "addresses": [
+    "Pretoriusstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000782474"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102991",
+   "addresses": [
+    "Pretoriusstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000782466"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094749",
+   "addresses": [
+    "Pretoriusstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000782458"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100672",
+   "addresses": [
+    "Pretoriusstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000782450"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

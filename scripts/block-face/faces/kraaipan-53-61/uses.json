@@ -1,0 +1,131 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:17:17.311Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012139681",
+   "addresses": [
+    "Kraaipanstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000712047"
+    },
+    {
+     "address": "De la Reijstraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000617905"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14232396972,
+     "lngLat": [
+      4.9190189,
+      52.3520349
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-31T15:17:17.311Z",
+     "match": "frontage",
+     "distanceM": 6.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012089391",
+   "addresses": [
+    "Kraaipanstraat 55A",
+    "Kraaipanstraat 55B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000712048"
+    },
+    {
+     "address": "Kraaipanstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000712049"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088316",
+   "addresses": [
+    "Kraaipanstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001002115"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134600",
+   "addresses": [
+    "Kraaipanstraat 59A",
+    "Kraaipanstraat 59B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 59A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000712054"
+    },
+    {
+     "address": "Kraaipanstraat 59B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000712055"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151300",
+   "addresses": [
+    "Kraaipanstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000712057"
+    },
+    {
+     "address": "Vaalrivierstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000849468"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

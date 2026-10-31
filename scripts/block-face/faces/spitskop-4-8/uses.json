@@ -1,0 +1,57 @@
+{
+ "street": "Spitskopstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:36:59.972Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083980",
+   "addresses": [
+    "Spitskopstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000816511"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076117",
+   "addresses": [
+    "Spitskopstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000816509"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079185",
+   "addresses": [
+    "Spitskopstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spitskopstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000816507"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

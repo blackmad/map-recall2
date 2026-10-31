@@ -1,0 +1,308 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:00:24.414Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012124615",
+   "addresses": [
+    "Pretoriusstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012086809"
+    },
+    {
+     "address": "Smitstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000812761"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14157461834,
+     "lngLat": [
+      4.9219038,
+      52.3547193
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-31T15:00:24.414Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012142562",
+   "addresses": [
+    "Pretoriusstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 73-H",
+     "use": "kantoorfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000782670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066961",
+   "addresses": [
+    "Pretoriusstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000782678"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125077",
+   "addresses": [
+    "Pretoriusstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000782686"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065205",
+   "addresses": [
+    "Pretoriusstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000782694"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076837",
+   "addresses": [
+    "Pretoriusstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000782702"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063216",
+   "addresses": [
+    "Pretoriusstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000782710"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061274",
+   "addresses": [
+    "Pretoriusstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000782718"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087223",
+   "addresses": [
+    "Pretoriusstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 87-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010011290774"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068336",
+   "addresses": [
+    "Pretoriusstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 89-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000782732"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11115143373,
+     "lngLat": [
+      4.9209204,
+      52.354389
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89-H",
+      "addr:postcode": "1092GD",
+      "addr:street": "Pretoriusstraat",
+      "amenity": "ice_cream",
+      "check_date": "2026-10-29",
+      "check_date:opening_hours": "2026-10-29",
+      "name": "Massimo Gelato Oost",
+      "opening_hours": "We-Su 14:00-17:30, 18:00-22:00",
+      "phone": "+31 20 737 0564",
+      "website": "https://www.massimogelato.nl/#our-locations"
+     },
+     "fetchedAt": "2026-10-31T15:00:24.414Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012106537",
+   "addresses": [
+    "Pretoriusstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 91-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000782741"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093825",
+   "addresses": [
+    "Pretoriusstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000782749"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1208568397,
+     "lngLat": [
+      4.9207139,
+      52.3543306
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "93",
+      "addr:street": "Pretoriusstraat",
+      "check_date": "2024-11-03",
+      "craft": "shoemaker",
+      "name": "Wazgo"
+     },
+     "fetchedAt": "2026-10-31T15:00:24.414Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012102458",
+   "addresses": [
+    "Pretoriusstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krugerplein 13",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000994858"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1208560339,
+     "lngLat": [
+      4.9205593,
+      52.3542507
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1092KA",
+      "addr:street": "Krugerplein",
+      "amenity": "veterinary",
+      "check_date": "2026-01-18",
+      "check_date:opening_hours": "2026-01-18",
+      "name": "Sterkliniek dierenartsen",
+      "old_name": "Goverts, Winius en Zwart",
+      "opening_hours": "Mo,Th,Fr 09:00-19:00; Tu 09:00-14:00; We 14:00-19:00; Sa 11:00-16:00",
+      "website": "https://www.sterkliniekamsterdam.nl/"
+     },
+     "fetchedAt": "2026-10-31T15:00:24.414Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

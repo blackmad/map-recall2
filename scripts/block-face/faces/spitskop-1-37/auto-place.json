@@ -1,0 +1,345 @@
+{
+ "face": "spitskop-1-37",
+ "street": "Spitskopstraat",
+ "library": "transvaalbuurt",
+ "stripDate": "2020-04-29",
+ "seconds": 0.72,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012107351",
+   "address": "Spitskopstraat 1",
+   "builtYear": 1919,
+   "widthM": 15.96,
+   "eavesM": 9.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6259",
+    "wallRaw": "#62504a",
+    "skyline": {
+     "eavesM": 11.53,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 4.1,
+      "topWidthM": 0.3,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.95,
+     "balconies": true,
+     "why": "bay-less open axis 1.05 m at 0.8 (light 0.5): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.8,
+       "light": 0.5
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.95,
+       "light": 0.55
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 3.88,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 15.96 m, type 8.8-12.9 m; strip shows balconies (bay-less open axis 1.05 m at 0.8 (light 0.5): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 15.96 m, type 8.8-12.9 m",
+     "strip shows balconies (bay-less open axis 1.05 m at 0.8 (light 0.5): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.53 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.033 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151291",
+   "address": "Spitskopstraat 15",
+   "builtYear": 1919,
+   "widthM": 18.04,
+   "eavesM": 9.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3d44",
+    "wallRaw": "#614f49",
+    "skyline": {
+     "eavesM": 8.38,
+     "eavesRow": 418,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.92,
+      "riseM": 6.05,
+      "topWidthM": 0.33,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.258,
+    "structure": {
+     "bayWidthM": 2.45,
+     "bayCentre": 0.13,
+     "balconies": true,
+     "why": "dark open axis 1.2 m at 0.36 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.58,
+       "centre": 0.13,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.36,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.51,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.8,
+       "light": 0.53
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.96,
+       "light": 0.54
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 2.83,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.95,
+       "widthM": 2.77,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 18.04 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.2 m at 0.36 (light 0.48): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 18.04 m, type 8.8-12.9 m",
+     "strip shows balconies (dark open axis 1.2 m at 0.36 (light 0.48): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 8.38 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012141884",
+   "address": "Spitskopstraat 27",
+   "builtYear": 1919,
+   "widthM": 15.95,
+   "eavesM": 9.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493939",
+    "wallRaw": "#625246",
+    "skyline": {
+     "eavesM": 8.68,
+     "eavesRow": 406,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.35,
+      "riseM": 2.75,
+      "topWidthM": 0.55,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.17,
+     "balconies": true,
+     "why": "bay-less open axis 1.27 m at 0.17 (light 0.5): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.27,
+       "centre": 0.17,
+       "light": 0.5
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.39,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.5,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.98,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.32,
+       "widthM": 2.95,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.27,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 15.95 m, type 8.8-12.9 m; strip shows balconies (bay-less open axis 1.27 m at 0.17 (light 0.5): no brick spandrel between the storeys))",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0,
+    "veto": [
+     "frontage 15.95 m, type 8.8-12.9 m",
+     "strip shows balconies (bay-less open axis 1.27 m at 0.17 (light 0.5): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 8.68 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

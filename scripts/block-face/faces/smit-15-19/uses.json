@@ -1,0 +1,106 @@
+{
+ "street": "Smitstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:35:26.666Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126391",
+   "addresses": [
+    "Smitstraat 15B",
+    "Smitstraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000812741"
+    },
+    {
+     "address": "Smitstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000812740"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131309",
+   "addresses": [
+    "Smitstraat 17A",
+    "Smitstraat 17D",
+    "Smitstraat 17C",
+    "Smitstraat 17B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000812746"
+    },
+    {
+     "address": "Smitstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000812749"
+    },
+    {
+     "address": "Smitstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000812748"
+    },
+    {
+     "address": "Smitstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000812747"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141435",
+   "addresses": [
+    "Smitstraat 19D",
+    "Smitstraat 19A",
+    "Smitstraat 19B",
+    "Smitstraat 19C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Smitstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000812757"
+    },
+    {
+     "address": "Smitstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000812754"
+    },
+    {
+     "address": "Smitstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000812755"
+    },
+    {
+     "address": "Smitstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000812756"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,686 @@
+{
+ "street": "Laing's Nekstraat",
+ "seed": "0363100012156274",
+ "members": [
+  "0363100012156274",
+  "0363100012163771",
+  "0363100012118171",
+  "0363100012165604",
+  "0363100012161796",
+  "0363100012156344",
+  "0363100012167400"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012156274 (face continues: 116776)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012167400 (face continues: 099459)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063275",
+   "reason": "frontage 91.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012063556",
+   "reason": "frontage 54.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012065491",
+   "reason": "frontage 63.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012065492",
+   "reason": "frontage 54.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012065605",
+   "reason": "frontage 55.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012066368",
+   "reason": "frontage 57.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012069586",
+   "reason": "frontage 78.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012070208",
+   "reason": "frontage 44.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012071134",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012116776"
+  },
+  {
+   "pandId": "0363100012071346",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012074011",
+   "reason": "frontage 72.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012074719",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012134756"
+  },
+  {
+   "pandId": "0363100012075600",
+   "reason": "frontage 30.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012075886",
+   "reason": "frontage 55.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012077968",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012080540",
+   "reason": "frontage 58.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012082375",
+   "reason": "frontage 88.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012083320",
+   "reason": "frontage 105.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012084486",
+   "reason": "frontage 78.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012085974",
+   "reason": "frontage 65.7 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012086823",
+   "reason": "frontage 69.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012087890",
+   "reason": "frontage 49.7 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012093536",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012097625",
+   "reason": "frontage 65.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012097703",
+   "reason": "frontage 67.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012098254",
+   "reason": "frontage 72.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012098835",
+   "reason": "frontage 65.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012099869",
+   "reason": "frontage 57.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012100102",
+   "reason": "frontage 46.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012102346",
+   "reason": "frontage 56.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012103345",
+   "reason": "frontage 122.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012106889",
+   "reason": "frontage 41.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012109151",
+   "reason": "frontage 56.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012109431",
+   "reason": "frontage 49.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012109474",
+   "reason": "frontage 91.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012114599",
+   "reason": "frontage 51.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012117872",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012129365"
+  },
+  {
+   "pandId": "0363100012117935",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012156274"
+  },
+  {
+   "pandId": "0363100012119314",
+   "reason": "frontage 128.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012119456",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012117872"
+  },
+  {
+   "pandId": "0363100012119923",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012066211"
+  },
+  {
+   "pandId": "0363100012122747",
+   "reason": "frontage 30.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012123559",
+   "reason": "frontage 97.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012125612",
+   "reason": "frontage 31.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012128321",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012129365",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012233525"
+  },
+  {
+   "pandId": "0363100012130233",
+   "reason": "frontage 51.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012132273",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012074719"
+  },
+  {
+   "pandId": "0363100012132650",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012119914"
+  },
+  {
+   "pandId": "0363100012132989",
+   "reason": "frontage 61.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012133339",
+   "reason": "frontage 134.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012135798",
+   "reason": "frontage 35.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012136413",
+   "reason": "frontage 37.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012137762",
+   "reason": "frontage 38.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012138083",
+   "reason": "frontage 57.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012138748",
+   "reason": "frontage 94.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012139150",
+   "reason": "frontage 44.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012139277",
+   "reason": "frontage 63.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012140529",
+   "reason": "frontage 109.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012141451",
+   "reason": "frontage 102.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012145188",
+   "reason": "frontage 52.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012146829",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012147942",
+   "reason": "frontage 51.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012150822",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012151157",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012153402",
+   "reason": "frontage 71.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012154137",
+   "reason": "frontage 49.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012155463",
+   "reason": "frontage 81.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012155469",
+   "reason": "frontage 41.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012155547",
+   "reason": "frontage 106.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012155905",
+   "reason": "frontage 40.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012155918",
+   "reason": "frontage 76.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012157135",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012084518"
+  },
+  {
+   "pandId": "0363100012158482",
+   "reason": "frontage 66.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012158579",
+   "reason": "frontage 36.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012159004",
+   "reason": "frontage 45.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012159444",
+   "reason": "frontage 35.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012160544",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012084518"
+  },
+  {
+   "pandId": "0363100012161047",
+   "reason": "frontage 30.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012161485",
+   "reason": "frontage 59.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012162231",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012084518"
+  },
+  {
+   "pandId": "0363100012162370",
+   "reason": "frontage 46.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012162652",
+   "reason": "frontage 61.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012162806",
+   "reason": "frontage 54.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012164042",
+   "reason": "frontage 51.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012165261",
+   "reason": "frontage 86.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012166191",
+   "reason": "frontage 90.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012166234",
+   "reason": "frontage 32.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012167317",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012167400"
+  },
+  {
+   "pandId": "0363100012184503",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012184989",
+   "reason": "frontage 31.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012188354",
+   "reason": "frontage 30.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012193223",
+   "reason": "frontage 90.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012193224",
+   "reason": "frontage 90.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012196328",
+   "reason": "frontage 32.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012198154",
+   "reason": "frontage 84.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012198226",
+   "reason": "frontage 67.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012198821",
+   "reason": "frontage 32.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012201120",
+   "reason": "frontage 36.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012205096",
+   "reason": "frontage 55.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012205787",
+   "reason": "frontage 31.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012206043",
+   "reason": "frontage 32.2 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012206044",
+   "reason": "frontage 32.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012207035",
+   "reason": "frontage 32.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012208383",
+   "reason": "frontage 105.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012208466",
+   "reason": "frontage 54.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012209092",
+   "reason": "frontage 31.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012209352",
+   "reason": "frontage 30.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012209658",
+   "reason": "frontage 106.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012209709",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012211649",
+   "reason": "frontage 42.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012211925",
+   "reason": "frontage 49.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012212819",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012217361",
+   "reason": "frontage 44.9 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012217558",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012069809"
+  },
+  {
+   "pandId": "0363100012217926",
+   "reason": "frontage 30.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012220774",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012069809"
+  },
+  {
+   "pandId": "0363100012221336",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221337",
+   "reason": "frontage 54.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221338",
+   "reason": "no frontage on Laing's Nekstraat: No footprint edge faces Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221339",
+   "reason": "frontage 90.5 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221340",
+   "reason": "frontage 68.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221341",
+   "reason": "frontage 86.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221343",
+   "reason": "frontage 88.1 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221344",
+   "reason": "frontage 105.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012221345",
+   "reason": "frontage 103.4 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012224774",
+   "reason": "frontage 32.3 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012225284",
+   "reason": "frontage 60.0 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012233418",
+   "reason": "frontage 98.6 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012233572",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012119914"
+  },
+  {
+   "pandId": "0363100012236300",
+   "reason": "frontage 81.7 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012236740",
+   "reason": "frontage 46.8 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012237053",
+   "reason": "frontage 64.7 m from Laing's Nekstraat"
+  },
+  {
+   "pandId": "0363100012250801",
+   "reason": "sightline to Laing's Nekstraat crosses 0363100012167400"
+  },
+  {
+   "pandId": "0363100012069186",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114338",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134756",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152803",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153820",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233525",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233567",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236318",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012156274",
+   "alongM": 0,
+   "widthM": 4.62,
+   "eavesM": 6.71,
+   "roofMaxM": 15.9,
+   "storeys3dbag": 3,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163771",
+   "alongM": 4.59,
+   "widthM": 4.56,
+   "eavesM": 9.05,
+   "roofMaxM": 9.13,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012118171",
+   "alongM": 9.24,
+   "widthM": 4.73,
+   "eavesM": 5.72,
+   "roofMaxM": 9.09,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165604",
+   "alongM": 13.92,
+   "widthM": 4.64,
+   "eavesM": 6.86,
+   "roofMaxM": 9.11,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161796",
+   "alongM": 18.55,
+   "widthM": 4.64,
+   "eavesM": 6.32,
+   "roofMaxM": 9.25,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156344",
+   "alongM": 23.12,
+   "widthM": 4.51,
+   "eavesM": 6.88,
+   "roofMaxM": 9.65,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167400",
+   "alongM": 27.75,
+   "widthM": 4.74,
+   "eavesM": 9.09,
+   "roofMaxM": 9.18,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

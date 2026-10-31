@@ -1,0 +1,78 @@
+{
+ "street": "Maritzstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012142103",
+   "addresses": [
+    "Maritzstraat 12",
+    "Maritzstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000735486"
+    },
+    {
+     "address": "Maritzstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000735491"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143825",
+   "addresses": [
+    "Maritzstraat 8",
+    "Maritzstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000735476"
+    },
+    {
+     "address": "Maritzstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000735481"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129083",
+   "addresses": [
+    "Maritzstraat 4",
+    "Maritzstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maritzstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000735466"
+    },
+    {
+     "address": "Maritzstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000735471"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "street": "Magersfonteinstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:29:31.134Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012075910",
+   "addresses": [
+    "Magersfonteinstraat 28",
+    "Magersfonteinstraat 30",
+    "Magersfonteinstraat 32",
+    "Magersfonteinstraat 34",
+    "Magersfonteinstraat 34A",
+    "Magersfonteinstraat 34B",
+    "Magersfonteinstraat 36",
+    "Magersfonteinstraat 38",
+    "Magersfonteinstraat 40",
+    "Magersfonteinstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Magersfonteinstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733077"
+    },
+    {
+     "address": "Magersfonteinstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733079"
+    },
+    {
+     "address": "Magersfonteinstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733081"
+    },
+    {
+     "address": "Magersfonteinstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733084"
+    },
+    {
+     "address": "Magersfonteinstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733085"
+    },
+    {
+     "address": "Magersfonteinstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733086"
+    },
+    {
+     "address": "Magersfonteinstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000733083"
+    },
+    {
+     "address": "Magersfonteinstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000733075"
+    },
+    {
+     "address": "Magersfonteinstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012576693"
+    },
+    {
+     "address": "Magersfonteinstraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012576694"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084324",
+   "addresses": [
+    "Magersfonteinstraat 20",
+    "Magersfonteinstraat 22",
+    "Magersfonteinstraat 24",
+    "Magersfonteinstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Magersfonteinstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733069"
+    },
+    {
+     "address": "Magersfonteinstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733071"
+    },
+    {
+     "address": "Magersfonteinstraat 20",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733067"
+    },
+    {
+     "address": "Magersfonteinstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000733073"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086971",
+   "addresses": [
+    "Magersfonteinstraat 4",
+    "Magersfonteinstraat 6",
+    "Magersfonteinstraat 8",
+    "Magersfonteinstraat 10",
+    "Magersfonteinstraat 10A",
+    "Magersfonteinstraat 12",
+    "Magersfonteinstraat 14",
+    "Magersfonteinstraat 16",
+    "Magersfonteinstraat 18",
+    "Magersfonteinstraat 26A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Magersfonteinstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733057"
+    },
+    {
+     "address": "Magersfonteinstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000733063"
+    },
+    {
+     "address": "Magersfonteinstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000733053"
+    },
+    {
+     "address": "Magersfonteinstraat 18",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000733065"
+    },
+    {
+     "address": "Magersfonteinstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000733055"
+    },
+    {
+     "address": "Magersfonteinstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000733059"
+    },
+    {
+     "address": "Magersfonteinstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000733061"
+    },
+    {
+     "address": "Magersfonteinstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000733051"
+    },
+    {
+     "address": "Magersfonteinstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012576691"
+    },
+    {
+     "address": "Magersfonteinstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012576692"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

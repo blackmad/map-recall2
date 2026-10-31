@@ -1,0 +1,86 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:03:03.023Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012135489",
+   "addresses": [
+    "Kraaipanstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000712038"
+    },
+    {
+     "address": "Vaalrivierstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000849465"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101363",
+   "addresses": [
+    "Kraaipanstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000997039"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116889",
+   "addresses": [
+    "Kraaipanstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000997038"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073977",
+   "addresses": [
+    "Kraaipanstraat 42B",
+    "Kraaipanstraat 42A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000712027"
+    },
+    {
+     "address": "Kraaipanstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000712026"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,402 @@
+{
+ "street": "Spitskopstraat",
+ "seed": "0363100012079185",
+ "members": [
+  "0363100012083980",
+  "0363100012076117",
+  "0363100012079185"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012083980 (face continues: 105196)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012079185 (face continues: 233564)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061780",
+   "reason": "sightline to Spitskopstraat crosses 0363100012072967"
+  },
+  {
+   "pandId": "0363100012062960",
+   "reason": "frontage 38.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012063216",
+   "reason": "frontage 73.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012064816",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012065205",
+   "reason": "frontage 74.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012066147",
+   "reason": "frontage 83.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012066390",
+   "reason": "frontage 77.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012066961",
+   "reason": "frontage 79.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012068543",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012070004",
+   "reason": "frontage 68.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012070879",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012072109",
+   "reason": "frontage 44.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012072390",
+   "reason": "frontage 45.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012072572",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012072967",
+   "reason": "sightline to Spitskopstraat crosses 0363100012105196"
+  },
+  {
+   "pandId": "0363100012076819",
+   "reason": "frontage 34.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012076837",
+   "reason": "frontage 73.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012076911",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012081370",
+   "reason": "frontage 45.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012081491",
+   "reason": "frontage 104.7 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012082556",
+   "reason": "frontage 37.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012082879",
+   "reason": "sightline to Spitskopstraat crosses 0363100012141884"
+  },
+  {
+   "pandId": "0363100012085212",
+   "reason": "frontage 37.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012087937",
+   "reason": "frontage 125.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012088610",
+   "reason": "frontage 93.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012088651",
+   "reason": "frontage 73.7 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012089270",
+   "reason": "frontage 75.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012093743",
+   "reason": "frontage 95.8 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012095054",
+   "reason": "frontage 42.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012096769",
+   "reason": "frontage 30.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012102414",
+   "reason": "frontage 44.2 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012103605",
+   "reason": "sightline to Spitskopstraat crosses 0363100012233564"
+  },
+  {
+   "pandId": "0363100012103856",
+   "reason": "sightline to Spitskopstraat crosses 0363100012109786"
+  },
+  {
+   "pandId": "0363100012107568",
+   "reason": "frontage 35.2 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012108336",
+   "reason": "frontage 82.8 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012109786",
+   "reason": "sightline to Spitskopstraat crosses 0363100012068543"
+  },
+  {
+   "pandId": "0363100012109982",
+   "reason": "frontage 30.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012110312",
+   "reason": "frontage 78.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012112873",
+   "reason": "frontage 46.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012113269",
+   "reason": "frontage 35.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012115114",
+   "reason": "frontage 34.8 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012115710",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012116585",
+   "reason": "sightline to Spitskopstraat crosses 0363100012107351"
+  },
+  {
+   "pandId": "0363100012118192",
+   "reason": "frontage 34.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012118282",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012122164",
+   "reason": "frontage 73.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012122165",
+   "reason": "frontage 74.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012124305",
+   "reason": "frontage 94.4 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012125077",
+   "reason": "frontage 76.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012126785",
+   "reason": "sightline to Spitskopstraat crosses 0363100012107351"
+  },
+  {
+   "pandId": "0363100012127468",
+   "reason": "frontage 104.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012127927",
+   "reason": "frontage 83.4 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012129083",
+   "reason": "frontage 83.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012133240",
+   "reason": "frontage 35.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012134096",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012137027",
+   "reason": "sightline to Spitskopstraat crosses 0363100012082879"
+  },
+  {
+   "pandId": "0363100012137732",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012138352",
+   "reason": "frontage 91.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012138910",
+   "reason": "frontage 66.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012140469",
+   "reason": "sightline to Spitskopstraat crosses 0363100012070879"
+  },
+  {
+   "pandId": "0363100012140943",
+   "reason": "frontage 125.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012141204",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012142103",
+   "reason": "frontage 83.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012142255",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012142310",
+   "reason": "frontage 36.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012142961",
+   "reason": "frontage 30.4 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012143825",
+   "reason": "frontage 83.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012144368",
+   "reason": "frontage 87.9 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012146881",
+   "reason": "frontage 83.2 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012149642",
+   "reason": "frontage 38.3 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012154820",
+   "reason": "frontage 35.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012198507",
+   "reason": "frontage 30.8 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012212279",
+   "reason": "frontage 101.8 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012213083",
+   "reason": "sightline to Spitskopstraat crosses 0363100012083997"
+  },
+  {
+   "pandId": "0363100012216884",
+   "reason": "frontage 97.1 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012217225",
+   "reason": "frontage 101.2 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012220433",
+   "reason": "frontage 102.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012233606",
+   "reason": "frontage 42.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012234548",
+   "reason": "frontage 30.0 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012236816",
+   "reason": "frontage 118.5 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012236876",
+   "reason": "no frontage on Spitskopstraat: No footprint edge faces Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012240693",
+   "reason": "frontage 31.4 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012251277",
+   "reason": "frontage 73.6 m from Spitskopstraat"
+  },
+  {
+   "pandId": "0363100012083997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107351",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141884",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151291",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012083980",
+   "alongM": -18.06,
+   "widthM": 9.03,
+   "eavesM": 3.57,
+   "roofMaxM": 12.11,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012076117",
+   "alongM": -9.03,
+   "widthM": 9.03,
+   "eavesM": 3.62,
+   "roofMaxM": 6.6,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079185",
+   "alongM": 0,
+   "widthM": 9.03,
+   "eavesM": 3.55,
+   "roofMaxM": 6.55,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  }
+ ]
+}
