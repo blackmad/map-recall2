@@ -15,7 +15,7 @@ const poi = { id: 'museum', name: 'Real museum', detail: 'A museum with a resear
   buildingIds: ['own'], lngLat: [4.9, 52.37], x: 0, y: 0 };
 let shown: any = null, active: any = null;
 const host: any = { raceTime: 37, player: {}, landmarks: [poi], quizFeedback: 'Follow your route', _prompt: { style: { display: 'block' } }, canvas: { getBoundingClientRect: () => ({ left: 0, top: 0, width: 800, height: 600 }) },
-  _landmarkNotice: poi, _buildingFacts: { lookup: () => [1895, -1, 0] },
+  _landmarkNotice: poi, _buildingFacts: { lookup: () => [1895, -1, 0], article: () => null }, _requestBuildingFacts: () => {}, _streetArt: null, _streetArtAt: GameLandmarkRuntime.prototype._streetArtAt,
   vectorMap: { inspectBuilding: () => ({ id: 'neighbor', lngLat: [4.900001, 52.370001], featureTarget: null }), setActiveLandmark: (value: any) => { active = value; } },
   _cardForClickedBuilding: GameLandmarkRuntime.prototype._cardForClickedBuilding,
   _showLandmarkNotice: (value: any) => { shown = value; } };

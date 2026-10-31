@@ -79,8 +79,13 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
-"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) and the Kalvertoren (#148, HISTORY "Kalvertoren /
+Kalverpassage, Singel") landed. Kalvertoren follow-ups: review the Rasphuispoort
+`hostWallOpenings` at the Heiligeweg mouth (edge 18-19, open below 6.4 m) now
+that pand 165086 is suppressed; one street-level look at the Kalverstraat side
+(bare 3DBAG roof planes from above); the queue row for 165086 reads `error` /
+kit-gap until the next triage `--write` marks it covered; the large-tier draft
+singel-457-165086 stays uninstalled. Hirschgebouw: still to do there, a grouped-lights mode in
 the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
 live, a POI or destination card, a re-measured copper tint, and the bounded
 Beeldbank search. The review
@@ -1332,17 +1337,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
-  articles on ordinary buildings open from the click card (HISTORY
-  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
-  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
-  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
-  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
-  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
-  click POI, not a building; bridges/streets in the Wikidata box should be
-  audited by title before counting them missing. Brief
-  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
-  `npm run audit:wikipedia-buildings`, issue #142.
+- **Building articles, remainder (2026-10-31).** Shipped: article cards on
+  1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
+  7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints
+  are not in the streamed tiles (`staging/building-articles-untiled.json`;
+  167 outside the Amsterdam box, 18 inside and mostly non-buildings) and
+  stay silent until the tiles grow; street-art points with no article (439)
+  show only kind/artist/year from OSM; the `art` orientation category has no
+  own icon yet (culture label class). Issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
@@ -2286,20 +2288,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
     - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
   - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
-- **Movable bridges: what the kit still cannot say (after the swing/lattice lane, 2026-10-31).**
-  - Ezelsbrug's red backstay cables and the piers under its posts; its frames sit too close to midspan.
-  - Arched girder undersides (Buiksloterdraaibrug).
-  - The Oosterdoksdraaibrug's dense web and curved overhead bracing; shaped trusses vanish in the far ring.
-  - Peperbrug's closed overhead beam box.
-  - The Aluminiumbrug's ornate knee braces.
-  - Per-bridge portal height and reach (the Westergasbrug's is taller).
-  - Denser fenders; a swing tail and counterweight.
-  - Brick towers (Berlagebrug BRU0423).
-  - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
-  - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
+- **Movable bridges: what the kit still cannot say (after bridge kit round 2, 2026-10-31).**
+  - Ezelsbrug: more fanning stays; round-ended piers.
+  - Oosterdoksdraaibrug: the K-pattern web.
+  - Mariniersbrug: the lower chord also arches; the web is Warren, not Pratt; the abutment inset is approximate.
+  - Peperbrug: the portal is as wide as the footprint, wider than in the photo.
+  - Aluminiumbrug: cast scrollwork; a steeper beam slope.
+  - Per-bridge paint shades (Westergasbrug darker grey).
+  - Berlagebrug: the stepped tower top, the block's eastern extent, brick piers, arched approach spans.
+  - Barrier gates (BRU0379); BRU0850's two lift posts; Buiksloterdraaibrug's arched underside.
   - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
-  - `check:bridge-railings` did not finish in the lane; run it.
-  - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
+  - Some boat-view sheets draw no water (sheet renderer).
+  - No panoramas for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;

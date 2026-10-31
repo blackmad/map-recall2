@@ -134,7 +134,7 @@ for await (const raw of createInterface({ input: createReadStream(placesSeq) }))
     dropped.duplicate++; continue;
   }
   // Parks and markets are outdoors: their label stays on the ground.
-  const outdoors = poiClass.category === 'leisure' || poiClass.category === 'market';
+  const outdoors = poiClass.category === 'leisure' || poiClass.category === 'market' || poiClass.category === 'art';
   pois.push({
     name: renamedPoi(tags.name, lng, lat), lng: Math.round(lng * 1e6) / 1e6, lat: Math.round(lat * 1e6) / 1e6,
     category: poiClass.category,
