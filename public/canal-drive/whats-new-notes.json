@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-10-31",
+      "title": "Squares and streets carry the name on the sign",
+      "text": "The Nieuwmarkt was called \"New Market\" in the ride, and ten more squares, streets and one bridge wore their English Wikipedia names: Dam Square, Flower Market, Museum Square, Rembrandt Square, Albert Cuyp market, Waterlooplein Market, Coen Tunnel, Python Bridge, Vincent van Gogh Street, Kiss and Ride. The extract generator had preferred OpenStreetMap's English name for roads and places; it now takes the local name for streets, squares, waterways and bridges, and a scripted patch applied exactly those 11 renames to the published data (features added or removed: none). Landmarks keep their English names on purpose, so the Weepers' Tower and the Royal Palace read as before.",
+      "where": [
+        4.900113,
+        52.372955
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-dutch-street-names-before.jpg",
+          "alt": "The ride labelling the Nieuwmarkt as NEW MARKET",
+          "caption": "Before: \"New Market\""
+        },
+        {
+          "src": "whats-new/2026-10-31-dutch-street-names-after.jpg",
+          "alt": "The ride labelling the Nieuwmarkt and the street card reading Nieuwmarkt",
+          "caption": "After: Nieuwmarkt on the label and the street card"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "The Kalvertoren on the Singel",
       "text": "The Kalverpassage block by the Munt is a bespoke model: the red-brick Singel range with its two neck gables, gilt balls, white bands and the Amsterdam arms over the portal; the 1997 stone block with its half-round glazed attic and bronze cap; the 30 m glass tower with the café storey and dome in the middle of the block; the Kalverstraat passage portal with its vertical KALVERPASSAGE board; and the Heiligeweg lattice screen. Fronts measured from 18 city panoramas; the roofscape keeps its 3DBAG shell.",
       "where": [

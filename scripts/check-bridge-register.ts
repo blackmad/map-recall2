@@ -70,6 +70,7 @@ check('choosing the register bridge: by name, by painted number, by a lone outli
   const hoge = row('BRU1998', 'Hoge brug');
   assert.equal(chooseRegisterBridge('Python Bridge', [hoge]), hoge, 'a reviewed alias: the Python Bridge is officially Hoge brug');
   assert.equal(chooseRegisterBridge('Python Bridge', [magere]), null, 'an alias still needs its outline under the way');
+  assert.equal(chooseRegisterBridge('Pythonbrug', [hoge]), hoge, 'the local name takes the same reviewed alias');
 });
 
 check('bridge cards: the register sentence stands alone or follows the origin, never cut', () => {
@@ -104,7 +105,7 @@ check('published: named bridges carry their register entries', () => {
   assert.equal(published.bridges.Berlagebrug?.movable, true);
   assert.equal(published.bridges['Oosterdokse Spoorbrug'], undefined, 'railway bridges are not the city\'s and stay undescribed');
   assert.equal(published.bridges.Ryckerbrug?.nr, 167, 'a spelling variant joins');
-  assert.equal(published.bridges['Python Bridge']?.nr, 1998, 'reviewed alias: Hoge brug');
+  assert.equal(published.bridges.Pythonbrug?.nr, 1998, 'reviewed alias: Hoge brug (the extract names it Pythonbrug since 2026-10-31)');
   assert.equal(published.bridges.Zeilbrug?.nr, 348, 'reviewed alias: Zeilstraatbrug');
   assert.equal(published.bridges.Zouthavenbrug?.nr, 2326, 'reviewed alias: Willem Breukerbrug');
   assert.equal(published.bridges.Entrepotdok, undefined, 'a quay name on a way is not the Armand Sunierbrug it touches');
