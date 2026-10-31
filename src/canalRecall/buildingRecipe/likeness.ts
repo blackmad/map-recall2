@@ -54,7 +54,8 @@ export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.0
   shadeMaxDL: 0.35, panelMinLift: 15, panelMaxDE: 20, panelMinSolid: 0.5} as const;
 /** Mean of the game's glass texture (look/slotCells.ts `paintGlassCanvas` gradient #8aa1b0 / #4d606c / #3c474e), drawn under a white tint. */
 export const GAME_GLASS: Rgb = [88, 106, 117];
-const WALL_SLOTS = new Set(['brick', 'stucco', 'stone']);
+/** `paint`: a painted or metal-clad wall family (wallFamily.ts, #146), the city look's flat paint slot. */
+const WALL_SLOTS = new Set(['brick', 'stucco', 'stone', 'paint']);
 const OPENING_SLOTS = new Set(['glass', 'frame', 'door']);
 const TRIM_SLOTS = new Set(['accent']);
 
@@ -391,7 +392,9 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const warns: string[] = [];
   if (glazingAbstain) warns.push(`glazing not judged (${glazingAbstain})`);
   if (shaded) warns.push(`wall judged on chromaticity: the photo's exposure is not normalised and the wall reads ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)} darker than the model's in shade or overcast light`);
-  if (pFamResolved === null) warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
+  // a model wall drawn as paint or metal (wallFamily.ts, #146) claims no courses: an unresolved photo family is what a
+  // painted or clad wall reads as, so it is judged on its tint (dL, hue) without the warning
+  if (pFamResolved === null && model.wallSlot !== 'paint') warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
   if (colPass === false) warns.push(`columns ${mW ?? 'none'} vs photo ${pW}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
   // a storey that is a ribbon on one side and windows on the other (rowOpenings `rowMismatch`): a FAIL whatever the fold says

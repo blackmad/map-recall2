@@ -172,6 +172,14 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: Propose
     patch.floorBands = fb;
     notes.push(`floor bands ${heightM} m (${fb.share} of a storey) centred ${liftM >= 0 ? '+' : ''}${liftM} m over the storey lines${fb.roof ? ' and under the roof edge' : ''} in ${fb.colour}`);
   }
+  // a painted or metal-clad wall (wallFamily.ts, #146): only where the photo's family is unresolved and the cells are
+  // flat or ribbed; never over a hand finish, another wall finish, or a glass skin. The decision is noted per wall.
+  if (m.wallFamily) {
+    const p = m.wallFamily.proposal, blocked = hand.has('wallFamily') ? 'hand wallFamily' : w.cladding ? 'cladding' : w.wallMaterial ? 'wallMaterial' : w.houses || patch.houses ? 'houses' : w.wallSplit || patch.wallSplit ? 'wallSplit'
+      : ['curtain-wall', 'glazed-hall'].includes(system) ? system : null;
+    if (p && !blocked) { patch.wallFamily = {kind: p.kind, colour: p.colour, ...(p.ribPitch !== undefined ? {ribPitch: p.ribPitch} : {})}; notes.push(`wall family: ${p.why}`); }
+    else notes.push(`wall family unresolved: ${p && blocked ? `${p.kind} proposed but ${blocked} kept` : m.wallFamily.why}`);
+  }
   // light bands across the wall (speklagen, stone courses) seen at the same place in two or more storeys: stone bands,
   // never over bands drawn another way (string courses, courses) or a hand `dressings`
   const bands = m.lightBands ? proposeBands(m.lightBands) : null;

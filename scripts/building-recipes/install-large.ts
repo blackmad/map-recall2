@@ -75,7 +75,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
   if (advisory.length) console.log(`${id}: advisory gates not passing: ${advisory.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ')}`);
   if (bad.length) throw Error(`${id}: gates failed (${bad.map(g => g.id).join(', ')}); not installing`);
   // likeness gate (likenessGate.ts): street-facing groups must look like their photo, or be allowed as inferred with a note
-  const gate = likenessGate(likeness && likeness.map(g => ({group: g.group, system: intent.walls[g.group].system, street: intent.walls[g.group].street, ...(intent.walls[g.group].cladding ? {clad: true} : {}),
+  const gate = likenessGate(likeness && likeness.map(g => ({group: g.group, system: intent.walls[g.group].system, street: intent.walls[g.group].street, ...(intent.walls[g.group].cladding || intent.walls[g.group].wallFamily ? {clad: true} : {}),
     verdict: g.status === 'no-photo' ? 'NO PHOTO' as const : g.likeness!.verdict, reasons: g.likeness?.reasons})), allowInferred);
   if (!gate.ok) throw Error(`${id}: likeness gate refused (${gate.refused.join('; ')}); fix the intent, or --allow-inferred=<group>:<note> for a group the photo cannot judge`);
   const glb = await fs.readFile(path.join(ARTIFACTS, id, 'model.glb')), b = await bounds(glb);

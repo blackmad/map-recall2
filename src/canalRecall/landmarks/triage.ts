@@ -70,6 +70,8 @@ export interface WallCrop {
   floorBands?: boolean | null;
   /** the crop's height above its base (walls.json `wallHeightM`; rectify.ts cap) */
   wallHeightM?: number | null;
+  /** on an unresolved family: the painted or metal wall its cells propose (wallFamily.ts `proposeWallFamily`, #146), null when neither */
+  wallFamily?: 'paint' | 'metal' | null;
   /** measureWriteback `curtainEvidence` on a curtain reading: why the curtain class is not trusted (empty = trusted) */
   curtainDoubt?: string[];
 }
@@ -79,6 +81,7 @@ export interface WallEvidence {
   /** the crop judged (best judgeable, else the straightest) and why it abstains (empty when judgeable) */
   crop: string | null; reasons: string[]; frontClass: FrontClass | null; family: string | null;
   basis?: string | null; glazing?: number | null; bandStoreys?: WallCrop['bandStoreys']; ribbonStoreys?: number[] | null; floorBands?: boolean | null; wallHeightM?: number | null;
+  wallFamily?: 'paint' | 'metal' | null;
 }
 
 /** Why the judge would abstain on this crop (empty = judgeable), the likeness judge's thresholds verbatim. */
@@ -109,7 +112,7 @@ export function judgeWall(w: WallInput, builtYear: number | null): WallEvidence 
   const doubt = best.c.frontClass === 'curtain' && best.c.curtainDoubt?.length ? best.c.curtainDoubt : null;
   return {wall: w.wall, lengthM: w.lengthM, street: w.street, judgeable: !best.why.length, crop: best.c.tag, reasons: doubt ? [`curtain reading untrusted: ${doubt.join('; ')}`] : best.why,
     frontClass: best.why.length || doubt ? null : best.c.frontClass ?? null, family: best.why.length ? null : best.c.family ?? null,
-    ...(best.why.length ? {} : {basis: best.c.basis ?? null, glazing: best.c.glazing ?? null, bandStoreys: best.c.bandStoreys ?? null, ribbonStoreys: best.c.ribbonStoreys ?? null, floorBands: best.c.floorBands ?? null}), wallHeightM: best.c.wallHeightM ?? null};
+    ...(best.why.length ? {} : {basis: best.c.basis ?? null, glazing: best.c.glazing ?? null, bandStoreys: best.c.bandStoreys ?? null, ribbonStoreys: best.c.ribbonStoreys ?? null, floorBands: best.c.floorBands ?? null, ...(best.c.wallFamily !== undefined ? {wallFamily: best.c.wallFamily} : {})}), wallHeightM: best.c.wallHeightM ?? null};
 }
 
 export interface TriageInput {
@@ -163,11 +166,15 @@ export function triageCandidate(t: TriageInput): TriageResult {
       if (w.lengthM < LIKENESS.wideWallM) reasons.push(`${why}; short wall: noted, not a gap`); else gap('band', why);
     }
   }
-  // painted or clad: unresolved on the main front, or on PAINTED_SHARE of the judgeable street-wall length
+  // painted or clad: unresolved on the main front, or on PAINTED_SHARE of the judgeable street-wall length. An unresolved
+  // wall whose crop measures a flat or ribbed tint (wallFamily.ts, #146) is drawn by the kit as paint or metal: noted, no gap.
   const wide = ok.filter(w => w.lengthM >= PAINTED_WALL_M), main = [...wide].sort((a, b) => b.lengthM - a.lengthM)[0];
-  const unresolved = wide.filter(w => w.basis === 'unresolved'), total = wide.reduce((x, w) => x + w.lengthM, 0), share = total ? unresolved.reduce((x, w) => x + w.lengthM, 0) / total : 0;
-  if (main && !gaps.includes('open-deck') && (main.basis === 'unresolved' || share >= PAINTED_SHARE))
-    gap('painted-or-clad', `wall family unresolved (dark, neutral, brick courses not resolved) on ${main.basis === 'unresolved' ? `the main front ${main.wall} (${main.street ?? 'no street'}, ${Math.round(main.lengthM)} m)` : ''}${main.basis === 'unresolved' && share < 1 ? ', ' : ''}${Math.round(share * 100)} % of ${Math.round(total)} m of street wall (${unresolved.map(w => w.wall).join(', ')}): painted or clad`);
+  const tinted = wide.filter(w => w.basis === 'unresolved' && w.wallFamily);
+  if (tinted.length) reasons.push(`wall family unresolved but a measured tint on ${tinted.map(w => `${w.wall} (${w.wallFamily})`).join(', ')}: the kit draws it (walls[].wallFamily)`);
+  const unresolved = wide.filter(w => w.basis === 'unresolved' && !w.wallFamily), total = wide.reduce((x, w) => x + w.lengthM, 0), share = total ? unresolved.reduce((x, w) => x + w.lengthM, 0) / total : 0;
+  const mainUnresolved = !!main && main.basis === 'unresolved' && !main.wallFamily;
+  if (main && !gaps.includes('open-deck') && (mainUnresolved || share >= PAINTED_SHARE))
+    gap('painted-or-clad', `wall family unresolved (dark, neutral, brick courses not resolved) on ${mainUnresolved ? `the main front ${main.wall} (${main.street ?? 'no street'}, ${Math.round(main.lengthM)} m)` : ''}${mainUnresolved && share < 1 ? ', ' : ''}${Math.round(share * 100)} % of ${Math.round(total)} m of street wall (${unresolved.map(w => w.wall).join(', ')}): painted or clad`);
   if (gaps.length) return out('kit-gap', reasons.filter(r => !r.endsWith('noted, not a gap')), gaps, walls);
   const blank = street.filter(w => !w.judgeable && w.lengthM >= LONG_BLANK_WALL_M);
   if (ok.length < MIN_JUDGEABLE_STREET_WALLS || blank.length) {
