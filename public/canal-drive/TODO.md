@@ -74,7 +74,11 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) is in flight. The review
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
+"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
+live, a POI or destination card, a re-measured copper tint, and the bounded
+Beeldbank search. The review
 sheet's IN GAME column and the gallery card work again in lane worktrees
 (#139, HISTORY "Review sheet sees the lane's own landmark"); the guard spec
 `tests/e2e/review-sheet-ingame.spec.ts` runs standalone, not in
@@ -85,28 +89,22 @@ serres and timber screens are not fitted to the ochre and green slots to
 dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
 waited 3 h behind 25 others today; the lock is not fair).
 
-**City look flip (needs-david #137, 2026-10-30):** lane #135 re-levelled
-the city look (HISTORY "City look re-levelled; flip pending"); source and
-bundles are on main with the flag still off. A = flip on at level 1 (chunks
-match today, landmarks +14 % brighter at card size), B = level 0.85
-(landmarks within ±2 %, chunks dour), C = keep off. On A or B the integrator
-flips `cityLookEnabled` to default on with `?cityLook=0` as opt-out, rebuilds
-the four bundles, and writes the What's New note with the strip. Follow-ups
-regardless (#138 landed, HISTORY "Builder-declared material slots"): a
-`timber` and a `metalRoof` slot (houseboat museum, Hannekes Boom, Vondeltuin,
-Hotel Jakarta, Odessa; Ronde Lutherse dome, American Hotel copper), a
-warm-grey roofTile keeping its tone instead of the black-tile slate tone
-(Uilenburger), evidence for Podium Mozaïek / He Hua / Centrale Markthal /
-Symphony / Haparandaweg cladding, dropping the `materialSlotSource:
-'inferred'` marker on tagged materials once the flip is decided, a
-base-vs-base look-consistency control run when the browser lock is quiet,
-iPhone perf with the slot array at 128², and the missing bagYears (values
-in the #138 hand-back: olvg-west 1966, olvg-oost 1900, max-euwe-centrum
-1905, academie-theater-dans 1996, jodenbreestraat-11 1996, begijnhof 1697,
-europarking-marnixstraat 1972; `landmark-bag-years.ts` writes to staging
-only, and olvg-west/oost have no manualCatalogue entry). Note:
-`build-manual-landmarks.ts` changed, so its toolchain hash moved and the
-next full builder run re-exports every model.
+**City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
+default"):** measure iPhone perf with the slot array at 128² (desktop was
+16.7 ms either way); a `timber` and a `metalRoof` slot (houseboat museum,
+Hannekes Boom, Vondeltuin, Hotel Jakarta, Odessa; Ronde Lutherse dome,
+American Hotel copper); a warm-grey roofTile keeping its tone instead of the
+black-tile slate tone (Uilenburger); evidence for Podium Mozaïek / He Hua /
+Centrale Markthal / Symphony / Haparandaweg cladding; drop the
+`materialSlotSource: 'inferred'` marker on tagged materials now that the
+default is the city look (check `_dress` first); a base-vs-base
+look-consistency control run when the browser lock is quiet; the missing
+bagYears (values in the #138 hand-back: olvg-west 1966, olvg-oost 1900,
+max-euwe-centrum 1905, academie-theater-dans 1996, jodenbreestraat-11 1996,
+begijnhof 1697, europarking-marnixstraat 1972; `landmark-bag-years.ts`
+writes to staging only, and olvg-west/oost have no manualCatalogue entry).
+Note: `build-manual-landmarks.ts` changed in #138, so its toolchain hash
+moved and the next full builder run re-exports every model.
 
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
@@ -234,10 +232,24 @@ Westerkerk: more tiles resident, not different styling) and pixels differed
 up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
 world path streams tiles in later at page start (inflate wall time), which is
 step 4's flush/regroup and look-ahead work; measure time-to-resident per
-tile both ways. Still open: ≤ 4 MB target (FOOT alone 7.4 MB
-gz); remaining long frames are the streamer's flush/regroup (step 4, waits
-for `engine/frameHost.ts` on main, which is there since step 3 of L1: resume
-L4 step 4); road CSR (step 5).
+tile both ways. **Step 4 merged 2026-10-30** (`21a8d01db`):
+`engine/worldStreamer.ts` holds one `CellQueue` (plan order, ahead rank from
+the rider's motion, ≤ 2 reads per worker in flight, 36 resident cells,
+off-plan eviction), a pool of min(cores−1, 3) decode workers with cell
+affinity, and a per-frame `FrameBudget` (4 ms / 1 MiB) that chunk installs
+spend (`?uploadBudget=0` = one per frame); the compiler writes a 39 KB
+runtime `tiles.json`. Measured: last of the first four tiles resident at
+page start default 3,870 ms vs world 3,791 ms (was ~120 ms behind); 40 s
+cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
+0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
+JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
+start, which the script does not yet sample; the 36 resident cells plus
+per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
+7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+(12/18/24/36 resident cells, one decoded cell shared across tiles,
+transfer not copy), then chunk and own-ground builds onto the pool so
+`chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
+and the second own-ground worker can go, then road CSR (step 5).
 **Reds on main found by the programme's runs (2026-10-30), not yet owned:**
 `tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
 draws after every building layer: expected > 128, got −1);

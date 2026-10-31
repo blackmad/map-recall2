@@ -23,6 +23,27 @@ keep the toy bike speed (351 px/s; the brief's 7–8 m/s would make rides
 stayed ≤ 80°/s on both clips. Clips: `tests/e2e/driving-feel-clips.spec.ts`
 (opt-in, `DRIVE_CLIPS=1`). The omafiets GLB has no crank node, so no
 freewheel cadence.
+**`?world=v1` streams through one cell queue and a worker pool (2026-10-30, #136, L4 step 4).**
+`src/canalRecall/engine/worldStreamer.ts`: a `CellQueue` ordered by the tile
+plan and by how far ahead of the rider a cell lies (its `MotionEstimate`), at
+most two reads in flight per worker, unwanted queued reads dropped, residency
+above 36 cells evicted off-plan furthest first; decoding on a pool of
+min(cores−1, 3) workers with cell→worker affinity; a `FrameBudget` (4 ms and
+1 MiB a frame, first chunk always) that chunk installs now spend instead of
+one chunk a frame. The world client reads cells ahead of their tiles, a tile
+spread over several cells is read by several workers at once and merged by
+ordinal, and the page reads the compiler's new 39 KB `tiles.json` before the
+372 KB `index.json`. Why: after steps 1–3 the world path was ~120 ms behind
+the default path at page start and held ~6,000 fewer buildings at the A/B
+snapshot. Now the last of the first four tiles is resident at 3,791 ms vs
+default 3,870 ms, the A/B shows 0 differing tiles with Westerkerk at 36,352
+buildings both ways, and a 40 s cold desktop ride stalls 2.6 s instead of
+3.63 s (p99 frame 83.4 → 66.6 ms). Not met: the heap gate (ride end default
+977 MB, world 1,019 MB; the ≤ 500 MB ride-start sample is L4's next step),
+the ≤ 4 MB bytes target; the old queues (`chunkBuildQueue.ts`, the residency
+modules, the second own-ground worker) still run beside the pool. Cells
+recompiled and republished with `tiles.json` (verify: fresh, 0 stale, 0
+differing).
 
 **`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
 L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
@@ -307,6 +328,49 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**City look on by default (2026-10-30, decision #137 = A).** David chose
+option A on the #135 strip: flip at level 1, accept the +14 % landmark
+brightening at card size as the new baseline, and let the re-tag lane
+(#138, landed first) fix the wrong slots. `cityLookEnabled` now returns
+true unless `?cityLook=0` (or `window.__canalRecallCityLook === false`)
+opts out; the four look bundles and the building-style bundle were rebuilt
+with it. The shadow-fill spec's "plain" row pins the legacy flat-colour
+path and now passes `cityLook=0` explicitly; the frame specs (sun heading,
+mood shots, demo shots) keep their empty "default" query, which now means
+what players see. Desktop first: the slot array draws at 128² on touch
+(+1.4 MB) and iPhone perf is unmeasured (TODO). What's New: "Brick and
+stone on every building".
+
+**Hirschgebouw, Leidseplein (2026-10-30, lane #132).** The 1912 Hirsch & Cie
+store (pand `0363100012165488`, Rijksmonument 518447) is a bespoke model
+(`scripts/landmarks/hirschgebouw-builder.ts`, 36,491 triangles, 499,936 B,
+just under the 500 KB check, every material with a slot and a measured
+tint). Fronts: the NW (Leidseplein), NE (Leidsestraat/Kerkstraat) and SE
+fronts and the twelve-facet round corner match the panoramas bay by bay;
+the rear is the kept 3DBAG LoD2.2 shell (219 of 437 walls, 42 of 65 roofs),
+as on the American Hotel. Modelled: the corner dome tower (two drums, ring
+cornices, a 22-baluster gallery, lathe copper dome, lantern, ball finial),
+the raised HIRSCH & Cie lettering, the round corner (pilasters, glazed arch,
+tangent windows, curved balconies, balustrade), giant fluted Ionic
+half-columns, the ground arcade, triple windows with white frames, iron
+balconies on storeys 2–3, stone balustrades on storey 1, dentil entablature,
+attic storey and balustrade, ribbed slate mansards, the NE two-bay risalit.
+Simplified: drum consoles, five inferred SE bays, arcade glazing bars. The
+NE front has 7 bays in the photo against the register's 8; the photo won.
+No mansard dormers are visible in any panorama, so none are drawn. The
+elevations spec passes compare:facades 6/6 but is parked as
+`hirschgebouw-elevations-pending.json`: under the live name the audit's
+window-rhythm check reads the narrow-wide-narrow triple lights between
+0.38 m stone stiles as off-size and missing windows. The kit cannot say:
+grouped lights per bay in the rhythm audit, a seriffed lettering font, an
+Ionic volute capital, glazing bars and fanlights for arcade arches. The
+large recipe hirschpassage-2-165488 on the same pand was already held.
+The copper tint #4c5062 reads blue-violet at gallery size against the
+panoramas' weather-dependent grey-green. Sources (14 panoramas, register
+518447, BAG, 3DBAG) are archived under `models/hirschgebouw/` in
+map-recall2-source-data. The covers were rebuilt from the published z14
+extract because the integrator worktree's tile cache had been pruned.
 
 **Review sheet sees the lane's own landmark (2026-10-30, lane #139).** Both
 bespoke lanes today shipped sheets with a red IN GAME column and no gallery

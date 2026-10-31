@@ -176,6 +176,15 @@ export class BuildingTileStreamer {
   /** Baked styled copy of each world-v1 raw feature: the default decorator chain's output, computed at build time. */
   private baked = new WeakMap<BuildingFeature, BuildingFeature>();
   private readonly cache = new BuildingTileCache();
+  /** Per tile, ms since page start: first requested, and first resident (adopted). Diagnostics: time-to-resident,
+   *  default vs `?world=v1` (lane L4). Kept for the first 64 tiles. */
+  readonly tileTimes = new Map<string, { requested: number; resident?: number; buildings?: number }>();
+  private markTile(key: string, what: 'requested' | 'resident', buildings?: number): void {
+    const now = typeof performance !== 'undefined' ? performance.now() : 0;
+    let t = this.tileTimes.get(key);
+    if (!t) { if (this.tileTimes.size >= 64) return; this.tileTimes.set(key, t = { requested: now }); }
+    if (what === 'resident' && t.resident === undefined) { t.resident = now; t.buildings = buildings; }
+  }
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
   /** Transient failures per tile (network, 5xx, timeout), retried with backoff. */
@@ -242,8 +251,11 @@ export class BuildingTileStreamer {
   /** `?world=v1`: the world-v1 index; absent or not an index falls back to the default tiles. */
   private async probeWorld(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/world-v1/index.json`);
-      const index = response.ok ? readWorldIndex(await response.json()) : null;
+      // tiles.json is the runtime slice of index.json (tileCells + cell list); older stagings have only the index.
+      const base = `${this.baseUrl.replace(/\/$/, '')}/world-v1`;
+      let response = await fetch(`${base}/tiles.json`);
+      let index = response.ok ? readWorldIndex(await response.json().catch(() => null)) : null;
+      if (!index) { response = await fetch(`${base}/index.json`); index = response.ok ? readWorldIndex(await response.json()) : null; }
       if (!index) return false;
       this.world = new WorldCellClient(index, this.baseUrl);
       // MapLibre gets no copy of the buildings under world-v1: featuresAt / featuresById answer the lookups.
@@ -472,12 +484,14 @@ export class BuildingTileStreamer {
    * arrived under the rider (docs/perf-pop-in-20261016.md). `?lookAhead=0` plans from the view alone, as before.
    */
   setRider(lng: number, lat: number, nowMs = (typeof performance !== 'undefined' ? performance.now() : Date.now())): void {
+    this.riderAt = [lng, lat];
     if (!(this.lookAheadOn ??= lookAheadEnabled())) return;
     this.motion.update(lng, lat, nowMs);
     const points = lookAheadPoints([lng, lat], this.motion, { seconds: [5, 12], maxM: 1200, minM: 200 });
     this.lookAhead = points.map(p => boxAround(p, LOOK_AHEAD_HALF_M));
   }
   private readonly motion = new MotionEstimate();
+  private riderAt: [number, number] | null = null;
   private lookAheadOn: boolean | undefined;
   private lookAhead: Bounds[] = [];
 
@@ -544,12 +558,21 @@ export class BuildingTileStreamer {
       return !this.empty.has(key) && !this.cache.has(key) && !inFlightKeys.has(key);
     });
 
+    // world-v1: the one cell queue reads every cell the plan needs ahead of its tile, in plan order (view, then
+    // look-ahead), across the worker pool (engine/worldStreamer.ts), so a tile's adopt waits on no fetch.
+    if (this.world) {
+      const order: string[] = [];
+      for (const tile of this.queue) order.push(`${tile.x}/${tile.y}`);
+      for (const key of plan.wanted) { const m = /(\d+)\/(\d+)$/.exec(key); if (m) order.push(`${m[1]}/${m[2]}`); }
+      this.world.plan(order, this.riderAt, this.motion.direction);
+    }
     if (changed) this.scheduleFlush();
     this.pump();
   }
 
   private pump(): void {
-    const limit = this.firstTileLanded ? BUILDING_TILE_LOAD_CONCURRENCY : 1;
+    // world-v1 tiles are cut from cells the queue already reads in parallel: more of them may assemble at once.
+    const limit = this.firstTileLanded ? BUILDING_TILE_LOAD_CONCURRENCY * (this.world ? 2 : 1) : 1;
     while (
       !this.disposed
       && this.inFlight < limit
@@ -567,6 +590,7 @@ export class BuildingTileStreamer {
 
     const controller = new AbortController();
     this.controllers.set(key, controller);
+    this.markTile(key, 'requested');
     this.inFlight++;
     // A stalled request must not hold the single-slot pipe forever.
     let timedOut = false;
@@ -585,6 +609,7 @@ export class BuildingTileStreamer {
         if (!features.length) { this.empty.add(key); return; }
         for (const [raw, out] of styled) this.baked.set(raw as BuildingFeature, out as BuildingFeature);
         this.cache.adopt(key, features as BuildingFeature[]);
+        this.markTile(key, 'resident', features.length);
         this.failures.delete(key);
         this.firstTileLanded = true;
         if (!this.disposed) this.scheduleFlush();
@@ -618,6 +643,7 @@ export class BuildingTileStreamer {
         try { if (apply) apply(features); } catch (error) { console.warn('Building tile enrichment failed', key, error); }
       }
       this.cache.adopt(key, features);
+      this.markTile(key, 'resident', features.length);
       this.failures.delete(key);
       this.firstTileLanded = true;
       if (!this.disposed) this.scheduleFlush();

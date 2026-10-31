@@ -214,6 +214,15 @@ onmessage = e => {
 async function run(browser, n) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 });
   const page = await context.newPage();
+  // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells (worker fetches too).
+  if (process.env.WORLD_DIR) await context.route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
+    const dir = path.resolve(process.env.WORLD_DIR), file = path.join(dir, /world-v1\/([^?]+)/.exec(route.request().url())[1]);
+    return file.startsWith(dir) && fs.existsSync(file) ? route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.fulfill({ status: 404, body: '' });
+  });
+  if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
+    return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
   const errors = [];
   page.on('pageerror', e => errors.push((e.stack || e.message).split('\n').slice(0, 14).join(' | ')));
   let bytes = 0, requests = 0;

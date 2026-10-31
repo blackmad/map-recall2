@@ -8,11 +8,12 @@ import { BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTi
 import { photoMatchedWallTint } from './chunkWallExposure.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
-test('flag: only ?cityLook=1 turns the city look on', () => {
+test('flag: the city look is on unless ?cityLook=0 opts out', () => {
   assert.equal(cityLookEnabled('?cityLook=1'), true);
   assert.equal(cityLookEnabled('?cityLook=0'), false);
-  assert.equal(cityLookEnabled('?sharedFrame=1'), false);
-  assert.equal(cityLookEnabled(''), false);
+  // On by default (#137, 2026-10-30): a page without the parameter draws the city look.
+  assert.equal(cityLookEnabled('?sharedFrame=1'), true);
+  assert.equal(cityLookEnabled(''), true);
 });
 
 test('slot table: every material slot samples a layer; frame and paint read plain white; glass panes clamp', () => {
