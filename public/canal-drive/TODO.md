@@ -290,6 +290,16 @@ Open, in order:
     (HISTORY; three faults, e2e `ferry-centraal-pier.spec.ts`). Open: the
     iPhone project of the ferry specs was not run; the user rides it after
     deploy and closes the note.
+  - ferries stuck a few metres out (user, 2026-10-31): fixed 2026-10-31
+    (HISTORY; launch towards open water, no stranding on a touch,
+    street-follow cruises on water; `ferry-launch.spec.ts` boards at all 12
+    piers). Open from the same probe: from the `?ferry=F3` land access,
+    holding forward on the keyboard rides off along De Ruijterkade instead of
+    boarding (the road guard turns the bike onto the quay cycleway short of
+    the stop); street following stands at the pier end "awaiting a choice"
+    instead of rolling onto the ferry (streetFollow.ts treats the access end
+    as a junction with no way on). Both need a boarding rule: at a pier end
+    facing the water, forward boards.
   - wiggly green patches on J.D. Meijerplein (53b04137) and the user's
     Spiegelgracht × Prinsengracht frame (one brown klinker mass, no kerb or
     sidewalk tone, red cycle fragments): added as spots to R0

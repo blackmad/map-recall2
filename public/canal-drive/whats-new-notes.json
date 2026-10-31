@@ -2,6 +2,27 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-10-31",
+      "title": "Ferries get clear of the pier",
+      "text": "A ferry used to stop dead a few metres out when its bow touched a quay or it drove up onto the pier, with no way free: at Zamenhofstraat and Pontsteiger 16 m from the stop, and against the point by the Buiksloterweg landing from Centraal. The boat now leaves towards open water, never drives ashore at its own pier, and on any touch turns towards the water and keeps moving; backing off a bank is always allowed. On phones the Follow controls now cruise on the water instead of holding the boat at the pier.",
+      "where": [
+        4.9029,
+        52.3822
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-ferry-stuck-before.jpg",
+          "alt": "The Centraal ferry pressed against the tip of the Buiksloterweg point, stopped",
+          "caption": "Before: stopped dead against the point, 121 m from the landing"
+        },
+        {
+          "src": "whats-new/2026-10-31-ferry-clear-after.jpg",
+          "alt": "The same ferry well clear of the pier on open water",
+          "caption": "After: clear of the pier"
+        }
+      ]
+    },
+    {
       "date": "2026-10-30",
       "title": "Brick and stone on every building",
       "text": "The city look is on for everyone: streets, recipe houses and the bespoke landmarks now draw one photo brick with real coursing, measured stone, slate and tile, instead of flat colour. It was re-levelled against the sunny frame first, so a street reads as bright as before (whole-frame brightness is unchanged on the Kinkerbuurt, Osdorper Ban and Prinsengracht, and a touch brighter on the landmark-heavy Dam); landmarks come out lighter at close range, with mid blue-grey slate and warmer brick. Eight landmarks had their materials corrected on the way (the American Hotel's tile roof and buff brick, painted steel at Pllek, REM-eiland and the Faralda crane, the Uilenburger synagogue's tiled roof). Add ?cityLook=0 to the address to see the old flat look.",
