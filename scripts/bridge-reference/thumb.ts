@@ -6,7 +6,7 @@ import { cachedBytes, lngLatToRd, rdToLngLat } from '../pand-reference/core.ts';
 import { listPanos } from '../pand-reference/select.ts';
 import { bridgeFace } from './geometry.ts';
 
-export async function aimedViews(id: string, count = 3): Promise<{ file: string; pano: string; url: string; distM: number; angleDeg: number }[]> {
+export async function aimedViews(id: string, count = 3): Promise<{ file: string; pano: string; url: string; distM: number; angleDeg: number; cam: number[] }[]> {
   const face = bridgeFace(id);
   if (!face) return [];
   const panos = [...await listPanos(face.mid, 70), ...await listPanos(face.mid, 70, 'surface-water')];
@@ -16,7 +16,7 @@ export async function aimedViews(id: string, count = 3): Promise<{ file: string;
     const along = Math.abs(dx * face.u.x + dy * face.u.y) / (d || 1);
     return { p, d, angle: Math.acos(Math.min(1, along)) * 180 / Math.PI, year: Number(p.mission_year) };
   }).filter(c => c.d > 18 && c.d < 60 && c.angle > 35).sort((a, b) => b.angle - a.angle + (b.year - a.year) * 2);
-  const out: { file: string; pano: string; url: string; distM: number; angleDeg: number }[] = [];
+  const out: { file: string; pano: string; url: string; distM: number; angleDeg: number; cam: number[] }[] = [];
   const picked: typeof cands = [];
   for (const c of cands) { if (picked.every(q => Math.abs(q.angle - c.angle) > 8 || q.year !== c.year)) picked.push(c); if (picked.length >= count) break; }
   mkdirSync(`artifacts/bridges/${id}`, { recursive: true });
@@ -28,7 +28,7 @@ export async function aimedViews(id: string, count = 3): Promise<{ file: string;
     try {
       const bytes = await cachedBytes(url, '.jpg'), file = `artifacts/bridges/${id}/aimed-${i}.jpg`;
       writeFileSync(file, bytes);
-      out.push({ file, pano: c.p.pano_id, url, distM: Math.round(c.d), angleDeg: Math.round(c.angle) });
+      out.push({ file, pano: c.p.pano_id, url, distM: Math.round(c.d), angleDeg: Math.round(c.angle), cam: c.p.geometry.coordinates });
     } catch { /* next */ }
   }
   return out;

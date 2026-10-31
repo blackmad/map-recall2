@@ -52,13 +52,17 @@ import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts'
 
 export const CITY_LOOK_PARAM = 'cityLook';
 
-/** `?cityLook=1` (or `window.__canalRecallCityLook = true` before the bundles run). */
+/**
+ * On by default since 2026-10-30 (#137, decision A: level 1 after the #135 re-level). `?cityLook=0`, or
+ * `window.__canalRecallCityLook = false` before the bundles run, is the opt-out that draws the legacy flat-colour path.
+ */
 export function cityLookEnabled(search?: string): boolean {
   try {
     const g = globalThis as any;
+    if (search === undefined && g.__canalRecallCityLook === false) return false;
     if (search === undefined && g.__canalRecallCityLook === true) return true;
-    return new URLSearchParams(search ?? g.location?.search ?? '').get(CITY_LOOK_PARAM) === '1';
-  } catch { return false; }
+    return new URLSearchParams(search ?? g.location?.search ?? '').get(CITY_LOOK_PARAM) !== '0';
+  } catch { return true; }
 }
 
 // ---------------------------------------------------------------------------

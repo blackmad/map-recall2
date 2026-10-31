@@ -2,6 +2,116 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-10-31",
+      "title": "Buildings with a Wikipedia article open it",
+      "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
+      "where": [
+        4.94757,
+        52.37717
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-building-articles-before.jpg",
+          "alt": "The Venetiëhof ring on KNSM-eiland with a card that says only Built 1995",
+          "caption": "Before: the ring on KNSM-eiland said only \"Built 1995\""
+        },
+        {
+          "src": "whats-new/2026-10-31-building-articles-after.jpg",
+          "alt": "The same ring with a card titled Emerald Empire, its English lede, photo and Wikipedia link",
+          "caption": "After: Emerald Empire, with its article"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Steel lattice drawbridges and swing bridges",
+      "text": "The steel drawbridges with open lattice frames, such as the Oranjebrug, Westergasbrug, Peperbrug, Ezelsbrug and Aluminiumbrug, are drawn with lattice posts and beams in their own paint instead of a white timber frame, and the Westergasbrug and its neighbour have one portal, not two. Swing bridges are their own kind now: the Commandantsbrug and Oosterdoksdraaibrug turn on a pivot pier between fender piles under arched trusses, and the Buiksloterdraaibrug pivots at its bank.",
+      "where": [
+        4.8888,
+        52.3829
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-BRU0146.jpg",
+          "alt": "Oranjebrug: panorama, model and overlay of the steel lattice portal",
+          "caption": "Oranjebrug: photo | model | overlay"
+        },
+        {
+          "src": "whats-new/2026-10-31-bridge-kit-BRU2361.jpg",
+          "alt": "Commandantsbrug: panorama, model and overlay of the swing bridge with arched truss",
+          "caption": "Commandantsbrug: photo | model | overlay"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "title": "Steering that feels the same on every screen",
+      "text": "The bike now drives the same on a 30 Hz laptop, a 60 Hz desktop and a 120 Hz phone: the physics steps in fixed 1/120 s substeps, so a corner taken at the same speed lands in the same place everywhere (within 5 cm; before, 30 Hz could be off by 2.6 m). Steering lock depends on speed, as on a real bicycle: full lock when you are almost stopped, a grip cap when you are quick, and the bike leans into turns. The camera follows the rider in the rider's own frame, so it no longer trails behind at speed or surges when a frame runs long, looks 16 px ahead along the street and pulls back 10 % as you speed up. Keyboard and touch steer are blended, and held keys release when the tab loses focus.",
+      "where": [
+        4.8826,
+        52.3667
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-driving-feel-before-after-desktop.jpg",
+          "alt": "Two frames of the same ride along the Keizersgracht, before on the left and after on the right, the camera leading the rider further on the right",
+          "caption": "Keizersgracht ring, desktop: before (left) and after (right), 14 s into the ride"
+        },
+        {
+          "src": "whats-new/2026-10-30-driving-feel-before-after-iphone.jpg",
+          "alt": "The same ride on the phone layout, before and after side by side",
+          "caption": "The same spot on the phone: the follow camera no longer trails the bike"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "title": "Brick and stone on every building",
+      "text": "The city look is on for everyone: streets, recipe houses and the bespoke landmarks now draw one photo brick with real coursing, measured stone, slate and tile, instead of flat colour. It was re-levelled against the sunny frame first, so a street reads as bright as before (whole-frame brightness is unchanged on the Kinkerbuurt, Osdorper Ban and Prinsengracht, and a touch brighter on the landmark-heavy Dam); landmarks come out lighter at close range, with mid blue-grey slate and warmer brick. Eight landmarks had their materials corrected on the way (the American Hotel's tile roof and buff brick, painted steel at Pllek, REM-eiland and the Faralda crane, the Uilenburger synagogue's tiled roof). Add ?cityLook=0 to the address to see the old flat look.",
+      "where": [
+        4.8896,
+        52.3731
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-city-look-strip.jpg",
+          "alt": "Four frames, flat look left and city look right: Kinkerbuurt from the air, the Dam, Prinsengracht by the Westerkerk, Osdorper Ban, then Westerkerk and Noorderkerk close-ups",
+          "caption": "Left the old flat look, right the city look"
+        },
+        {
+          "src": "whats-new/2026-10-30-city-look-landmarks.jpg",
+          "alt": "Westerkerk and Noorderkerk from four sides, flat look above each pair and city look below",
+          "caption": "Westerkerk and Noorderkerk, four sides"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "title": "The Hirschgebouw on the Leidseplein",
+      "text": "The 1912 Hirsch & Cie department store on the Leidseplein is a bespoke model: the corner tower with its copper dome, gallery and lantern, the raised HIRSCH & Cie lettering on the drum, the round corner with its glazed arch and curved balconies, the giant fluted half-columns, the ground-floor arcade, the triple windows between stone stiles with their iron balconies, the dentil entablature, attic storey and ribbed slate mansards. Fronts measured bay by bay from 14 city panoramas; the rear keeps its 3DBAG shell.",
+      "where": [
+        4.8826,
+        52.3641
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-corner.jpg",
+          "alt": "The Hirschgebouw in the game from the Leidsestraat corner: round corner, dome and the Leidseplein front",
+          "caption": "From the Leidsestraat corner"
+        },
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-leidseplein.jpg",
+          "alt": "The Hirschgebouw's Leidseplein front in the game with the dome behind",
+          "caption": "The Leidseplein front"
+        },
+        {
+          "src": "whats-new/2026-10-30-hirschgebouw-corner-phone.jpg",
+          "alt": "The Hirschgebouw in the game on a phone screen",
+          "caption": "Phone"
+        }
+      ]
+    },
+    {
       "date": "2026-10-30",
       "title": "Fewer 9 m guesses",
       "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",

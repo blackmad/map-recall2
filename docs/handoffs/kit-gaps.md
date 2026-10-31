@@ -121,3 +121,16 @@ Identity noise in the ranked list (not kit): one office drawn by four OSM parts,
 | Blank wide street front (cladding or mural; not detected separately) | 8 | Forum 125840, 080532, 119400, 242116, 240481, 237888, 095940, 239598 |
 
 Triage cannot yet tell cladding, mural and channel-glass fronts apart: the measured wall families are brick, paint and stone only. Y-Helling reads `curtain` but is a graffiti mural. Factory pairing ignores better `L`/`R` alternate crops (OBA Buitenveldert 135359 has judgeable 2022 crops the factory never used).
+
+## Painted and clad fronts (#146, 2026-10-31)
+
+Kit: `walls[].wallFamily` (`paint` flat measured colour, `metal` ribbed sheet with a measured rib pitch; city look `paint` slot). Measure proposes it only where the photo family is unresolved and the cells are flat (spread <= 0.12, course texture <= 0.035, not a warm dark) or ribbed (period <= 0.6 m). Triage: painted-or-clad 80 -> 62; 14 pands lost the gap on a measured tint, 3 of them buildable (124847, 241496, 119827), the rest still blocked by band/curtain gaps or long unjudgeable walls. Batch of 3: 0 pass.
+
+| Gap | Pands | Example |
+|---|---|---|
+| Dark textured unresolved walls (cell spread > 0.12: 78 of 116 unresolved crops): dark brick in shade and dark paint are not told apart by cell statistics | ~45 | 111954 w04, 173447 w01, 117498 w02 |
+| Factory mosaic vs triage crop: the padded multi-crop mosaic reads a higher spread or another family than the single crop triage measured, so triage admits a tint the house measurement then does not propose | 2 | 119827 w05 (triage paint, house spread 0.22), 241496 w01 (house reads pale resolved paint) |
+| Resolved pale `paint` family is still drawn as brick in that colour (judge: "family brick vs photo paint") | 1 seen | 241496 walls[0] |
+| Second blank clad wall not proposed (the photo class is punched by a few dark panels) | 1 | 124847 walls[4] |
+| Signage bands and murals on clad halls | 1 | 124847 walls[0] (Praxis sign boards) |
+| Open parking decks on a pand whose BAG use is not parking (open-deck rule misses it) | 1 | 241496 walls[0] |

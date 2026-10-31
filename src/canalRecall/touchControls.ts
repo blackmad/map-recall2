@@ -279,3 +279,23 @@ export function cruiseThrottle(speed: number, targetSpeed: number, maxSpeed: num
 export function normalizeAngle(angle: number): number {
   return Math.atan2(Math.sin(angle), Math.cos(angle));
 }
+
+/** One input source's driving levers (keyboard, stick, a future gamepad). */
+export type DriveLevers = { throttle: number; brake: number; steer: number };
+
+/**
+ * Blend input sources by `max`, after slop-newyork's per-source input maps:
+ * throttle and brake take the strongest source, steer the source with the
+ * larger deflection (its sign kept). So a keyboard arrow held while a thumb
+ * rests on the stick still steers, instead of the stick silently winning.
+ */
+export function blendDriveLevers(...sources: ReadonlyArray<DriveLevers | null | undefined>): DriveLevers {
+  const out: DriveLevers = { throttle: 0, brake: 0, steer: 0 };
+  for (const source of sources) {
+    if (!source) continue;
+    out.throttle = Math.max(out.throttle, source.throttle || 0);
+    out.brake = Math.max(out.brake, source.brake || 0);
+    if (Math.abs(source.steer || 0) > Math.abs(out.steer)) out.steer = source.steer;
+  }
+  return out;
+}

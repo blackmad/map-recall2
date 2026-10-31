@@ -53,6 +53,11 @@ const MAX_STEER = 0.42;
 // Omafiets is authored straight: `Lenker` is upright (+Y), wheel axles are +Z.
 const AUTHORED_STEER_OFFSET = 0;
 const STEER_EASING = 0.18;
+/** Lean into a turn, after slop-newyork's cyclist: steer × min(1, |v| / 9 m/s)
+ *  × 0.34 rad, eased at 9/s (bikeLean in src/canalRecall/drive/steerModel.ts). */
+const LEAN_MAX = 0.34;
+const LEAN_FULL_SPEED_PX = 9 * 3;
+const LEAN_RATE = 9;
 const WHEEL_RADIUS_M = 0.35;
 /** The world scale the game uses; kept local so the bundle stays standalone. */
 const PIXELS_PER_METER_FALLBACK = 3;
@@ -481,9 +486,26 @@ export class PlayerBike3D extends Vehicle3D {
     const target = -Math.max(-1, Math.min(1, steerInput || 0)) * MAX_STEER;
     this.steerAngle += (target - this.steerAngle) * STEER_EASING;
     this.wheelSpin = (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M);
+    // Speed from the odometer, so the lean needs nothing new from the game.
+    const now = performance.now();
+    const seconds = this._leanAt ? Math.min(0.25, (now - this._leanAt) / 1000) : 0;
+    this._leanAt = now;
+    if (seconds > 0) {
+      const speed = Math.abs((distancePx || 0) - (this._leanDistance || 0)) / seconds;
+      const steer = Math.max(-1, Math.min(1, steerInput || 0));
+      const target = steer * Math.min(1, speed / LEAN_FULL_SPEED_PX) * LEAN_MAX;
+      this.lean = (this.lean || 0) + (target - (this.lean || 0)) * (1 - Math.exp(-LEAN_RATE * seconds));
+    }
+    this._leanDistance = distancePx || 0;
   }
 
-  _pose() {
+  _pose(model) {
+    // Roll about the bike's long axis (+X), into the turn: the opposite sense
+    // to the boat's heel, which leans out of it.
+    if (model) {
+      model.rotation.set(0, 0, 0);
+      model.rotateX(-(this.lean || 0));
+    }
     const { steer, frontWheel, rearWheel } = this.parts;
     if (steer) {
       steer.quaternion.copy(steer.userData.restQuaternion)

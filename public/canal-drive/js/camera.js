@@ -28,6 +28,9 @@ class Camera {
     this.anchorY = 0;
     this.reducedMotion = false;
     this._lookahead = 0;
+    /** Map zoom multiplier for the speed pull-back (drive/cameraFollow.ts). */
+    this.speedZoomScale = 1;
+    this._followState = null;
   }
   followPosition(target) {
     const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
@@ -49,6 +52,8 @@ class Camera {
     this.bearingOffset = 0;
     this.heldRotation = target.angle + Math.PI / 2;
     this._lookahead = 0;
+    this._followState = null;
+    this.speedZoomScale = 1;
     this.detached = false;
     this.panX = this.panY = 0;
     this.targetX = target.x;
@@ -73,22 +78,61 @@ class Camera {
     // leads it in chase and cockpit).
     this.targetX = target.x;
     this.targetY = target.y;
-    const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
-    // Ease the lookahead instead of binding it straight to speed, so the view
-    // no longer surges forward and back with the throttle.
-    const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
-    this._lookahead += (wantedLookahead - this._lookahead) * ease(CAMERA_LOOKAHEAD_SMOOTHING);
+    const ui = window.CanalRecallUi;
+    const prefs = window.CanalRecallPreferences;
+    const followOptions = prefs && prefs.CAMERA_FOLLOW_DEFAULTS;
+    // drive/cameraFollow.ts: the centre is the vehicle plus an offset eased in
+    // the view's frame, not a world position eased toward a point ahead (which
+    // trailed by speed and surged on uneven frames). Without the bundles, the
+    // old world-space ease below.
+    const typedFollow = !!(ui && ui.stepCameraFollow && followOptions);
+    if (!typedFollow) {
+      const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
+      // Ease the lookahead instead of binding it straight to speed, so the view
+      // no longer surges forward and back with the throttle.
+      const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
+      this._lookahead += (wantedLookahead - this._lookahead) * ease(CAMERA_LOOKAHEAD_SMOOTHING);
+    }
+    this._updateRotation(target, seconds, ease);
     const position = this.followPosition(target);
     this._followX = position.x;
     this._followY = position.y;
-    const tx = this.detached ? this.anchorX : this._followX;
-    const ty = this.detached ? this.anchorY : this._followY;
-    this.x += (tx - this.x) * ease(this.smoothing);
-    this.y += (ty - this.y) * ease(this.smoothing);
+    if (typedFollow && !this.detached) {
+      const state = this._followState || (this._followState = ui.initialCameraFollow());
+      if (!state.primed) {
+        state.lookahead = this._lookahead;
+        state.ox = position.x - target.x;
+        state.oy = position.y - target.y;
+        state.primed = true;
+      }
+      const followsView = !this.northUp && !this.holdHeading && Number.isFinite(this._yawBase)
+        && this._yawState && this._yawApplied === this.rotation;
+      const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
+      const chaseLead = typeof CHASE_LOOKAHEAD === 'number' ? CHASE_LOOKAHEAD : 0;
+      const fixedLead = this.viewMode === 'cockpit' ? cockpitLead : this.viewMode === 'chase' ? chaseLead : 0;
+      // A heading-following view leads along its own (dead-banded, capped)
+      // forward, so the vehicle holds its place on screen; others along the heading.
+      const forward = followsView ? this._yawBase - Math.PI / 2 : target.angle;
+      const centre = ui.stepCameraFollow(state, target, fixedLead, forward, seconds, followOptions,
+        followsView, this.reducedMotion);
+      this._lookahead = state.lookahead;
+      this.x = centre.x;
+      this.y = centre.y;
+      this.speedZoomScale = ui.pullBackZoomScale(state);
+    } else {
+      const tx = this.detached ? this.anchorX : this._followX;
+      const ty = this.detached ? this.anchorY : this._followY;
+      this.x += (tx - this.x) * ease(this.smoothing);
+      this.y += (ty - this.y) * ease(this.smoothing);
+      // Detached, the next follow starts from the live position again.
+      if (this._followState) this._followState.primed = false;
+    }
     // Reported for the re-centre affordance and the debug panel: how far the
     // view has drifted from the vehicle, which keeps growing while detached.
     this.panX = this.detached ? this.x - target.x : 0;
     this.panY = this.detached ? this.y - target.y : 0;
+  }
+  _updateRotation(target, seconds, ease) {
     // A panned map holds still: rotating it under the vehicle's heading while
     // the player is looking somewhere else is disorienting.
     const wantedRotation = this.detached

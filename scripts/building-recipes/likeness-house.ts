@@ -49,7 +49,9 @@ export interface GroupLikeness {
     /** the photo's ribbon storeys (bandFronts.ts `photoRowBands` on rowOpenings, the triage measurement); absent in older reports */
     rowBands?: RowBands;
     /** part-width light runs along the floor lines (lightBands.ts `lightRuns`, fractions of the panel width from uMin); absent in older reports */
-    lightRuns?: {storey: number; from: number; to: number}[]};
+    lightRuns?: {storey: number; from: number; to: number}[];
+    /** an unresolved wall family's painted or metal proposal and why (wallFamily.ts, #146); absent when the family resolved */
+    wallFamily?: {proposal: FacadeMeasurement['wallFamily'] extends infer W ? W extends {proposal: infer P} ? P : never : never; why: string; cellCv: number; rib: {pitchM: number; score: number; prominence: number} | null}};
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -136,6 +138,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
         split: photo.split ? {...photo.split, at: r3(Math.max(0, Math.min(1, (box.u0 - PAD_M + photo.split.at * W - p.uMin) / Math.max(1e-6, p.uMax - p.uMin))))} : null,
         ...(photo.rowJoints ? {rowJoints: photo.rowJoints.map(s => ({...s, from: toPanel(s.from), to: toPanel(s.to)}))} : {}),
         ...floorBandsOf(photo, g.lines, box.v1), rowBands: rowBandsOf(photo, g.lines),
+        ...(photo.wallFamily ? {wallFamily: {proposal: photo.wallFamily.proposal, why: photo.wallFamily.why, cellCv: photo.wallFamily.evidence.cellCv, rib: photo.wallFamily.evidence.rib}} : {}),
         lightRuns: lightRuns({image, wall: photo.wall.raw}, g.lines, [PAD_M, PAD_M + box.u1 - box.u0]).map(r => ({storey: r.storey, from: toPanel(r.u0 / W), to: toPanel(r.u1 / W)}))}});
   }
   return out;

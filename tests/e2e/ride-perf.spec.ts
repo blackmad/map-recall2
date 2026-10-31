@@ -91,7 +91,7 @@ async function instrument(page: Page) {
     const layer = vm._signatureLandmarks?.layer;
     if (layer?.render && !vm._sharedFrame) wrap(layer, 'render', 'landmarkRender');
     // All of our three.js drawing, either as the legacy per-feature layers or
-    // as the shared frame's two passes (SHARED_FRAME=1), for a like-for-like total.
+    // as the shared frame's two passes, for a like-for-like total.
     const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
       : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._artisAnimals?.layer, vm._pyramidalRoofs?.layer,
         vm._playerBike?.layer, vm._playerFerry?.layer, vm._playerBoat?.layer, vm._playerTransit?.layer];
@@ -117,8 +117,7 @@ for (const variant of variants) {
     test.setTimeout(300_000);
     // OWN_GROUND=1|0 forces the own ground (default on since 2026-10-14) on or off.
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
-    // SHARED_FRAME=1|0 forces the shared three.js frame (rendererShared/) on or off; SHADOWS=0 drops its sun shadows.
-    if (process.env.SHARED_FRAME) await page.addInitScript((on: boolean) => { (window as any).__canalRecallSharedFrame = on; }, process.env.SHARED_FRAME === '1');
+    // SHADOWS=0 drops the shared frame's sun shadows.
     if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
     // OWN_GROUND=1|0 and RECIPE_TILES=1|0 force the own ground and the recipe-tile near tier (both imply the shared frame).
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
@@ -191,9 +190,9 @@ for (const variant of variants) {
     results.push(sample);
     console.log(JSON.stringify(sample));
     mkdirSync('artifacts/perf', { recursive: true });
-    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.OWN_GROUND ? `-ownGround${process.env.OWN_GROUND}` : ''}${process.env.SHARED_FRAME ? `-shared${process.env.SHARED_FRAME}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}${process.env.RECIPE_TILES ? `-recipe${process.env.RECIPE_TILES}` : ''}${process.env.BUILDING_TYPES ? `-types${process.env.BUILDING_TYPES}` : ''}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.OWN_GROUND ? `-ownGround${process.env.OWN_GROUND}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}${process.env.RECIPE_TILES ? `-recipe${process.env.RECIPE_TILES}` : ''}${process.env.BUILDING_TYPES ? `-types${process.env.BUILDING_TYPES}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
-    if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.SHARED_FRAME && !process.env.OWN_GROUND && !process.env.RECIPE_TILES && !process.env.BUILDING_TYPES) {
+    if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.OWN_GROUND && !process.env.RECIPE_TILES && !process.env.BUILDING_TYPES) {
       expect(sample.mapRender.median, 'map render median (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderMedianMs);
       expect(sample.mapRender.p95, 'map render p95 (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderP95Ms);
       if (raw.t.labelFrame.length) {

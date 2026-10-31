@@ -32,7 +32,7 @@ function shares(frame, style) {
 async function sheet(frame, view) {
   const cols = styles.length, rows = spots.length;
   const W = 150 + cols * (width + gutter), H = header + label + rows * (height + label + gutter);
-  const layers = [{ input: text(`${frame === 'shared' ? 'shared frame (?sharedFrame=1)' : 'default frame'} — ${view === 'saddle' ? 'from the saddle' : 'chase view'}`, W, header, 24, 700), left: 0, top: 0 }];
+  const layers = [{ input: text(`${'default frame'} — ${view === 'saddle' ? 'from the saddle' : 'chase view'}`, W, header, 24, 700), left: 0, top: 0 }];
   styles.forEach((s, c) => layers.push({ input: text(names[s] ?? s, width, label, 17, 700), left: 150 + c * (width + gutter), top: header }));
   for (let r = 0; r < rows; r++) {
     const top = header + label + r * (height + label + gutter);

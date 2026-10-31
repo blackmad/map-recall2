@@ -55,6 +55,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     // panels in their own colour, like the screen; painted brick keeps the brick texture in the paint colour
     case 'clad': case 'cladline': return {materialSlot: 'stone', surface: 'wall'};
     case 'painted': return {materialSlot: 'brick', surface: 'wall'};
+    // a painted or metal-clad wall family (wallFamily.ts, #146): the city look's flat `paint` slot in the measured colour
+    case 'paintwall': case 'paintline': case 'metalwall': case 'metalrib': return {materialSlot: 'paint', surface: 'wall'};
     case 'plinth': return {materialSlot: 'stucco', surface: 'wall'};
     // a mansard's steep face in a wall plane (`mansard`): the slate texture, lit as a wall
     case 'mansard': return {materialSlot: 'slate', surface: 'wall'};
