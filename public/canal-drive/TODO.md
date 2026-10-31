@@ -66,10 +66,15 @@ glazed-storey proposals) and the band measurement blockers (#134, HISTORY
 glass, parapet glass reads as trim on balcony-band groups, and budget-blanked
 groups are probed again when a crop pairs them. Measured result: 0 of 253
 inferred groups moved and none of the 17 ride-landmark drafts passes yet;
-what still blocks them is in the tier sheet (item 8). Next spend by blocked
-ride visibility: the `painted-or-clad` triage gap (82 pands, 5.9 M), then a
-closer-crop or second-capture signal for pale brick fronts (240435) that the
-cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
+what still blocks them is in the tier sheet (item 8). The `painted-or-clad`
+gap got its kit (#146, HISTORY "Painted and clad fronts in the large
+tier"): `walls[].wallFamily` paint/metal, but only 3 of 82 moved and 0
+passed; 78 of 116 unresolved crops are dark textured walls that cell
+statistics cannot split from dark brick in shade. Next spend: propose
+`paint` for a pale resolved family (241496 w0), make the factory mosaic and
+the triage crop measure the wall family the same way, a closer-crop or
+second-capture signal for dark and pale fronts (240435, the 78 above), and
+the `band` gap's draft geometry (ribbon windows on slab fronts). Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 

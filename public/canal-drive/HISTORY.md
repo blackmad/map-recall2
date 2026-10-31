@@ -367,6 +367,32 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**Painted and clad fronts in the large tier; 3 of 82 moved, 0 passed (2026-10-31, lane #146).**
+The largest triage gap after band fronts was `painted-or-clad` (82 pands,
+5.9 M blocked ride visibility): wide street walls whose photo wall family
+is unresolved. The kit now has `walls[i].wallFamily` (`paint` or `metal`
+with a measured colour, rib pitch and lines; `src/canalRecall/buildingRecipe/
+wallFamily.ts`), reusing the cladding geometry and exporting through the
+city look's `paint` slot; byte-identical when absent (fit-golden 207,
+large-mesh 166). `measureFacade` proposes `metal` for a rib period of 0.6 m
+or less and `paint` when the wall cells are even (spread ≤ 0.12, course
+texture ≤ 0.035, not a warm dark), thresholds calibrated on 116 unresolved
+crops and 45 brick controls (`scripts/landmarks/calibrate-wall-family.ts`);
+the judge scores a painted wall on tint and no longer warns about courses;
+triage counts a measured tint as not-a-gap. Measured result: painted-or-clad
+80 → 62, buildable 20 → 24, but only 3 of the 24 came from this gap
+(Praxis Draaierweg 124847, Johan Huizingalaan 241496, Tolhuis pavilion
+119827) and the batch held all three (a second blank clad wall drawn with 27
+windows, an open parking deck read as pale paint, a glazed pavilion under a
+deep roof). The lane stopped on the skill's 20 % rule. Why the rest did not
+move: 78 of the 116 unresolved crops have cell spread above 0.12, dark
+textured walls where cell statistics cannot tell dark paint from dark brick
+in shade. Also fixed: `measure.ts` proposed a `wallSplit` over `houses`, so
+re-measuring a house threw. The measure cache is v4. Next steps in TODO:
+propose `paint` for a pale resolved family too (241496 w0 is drawn as brick
+in paint colour), and make the factory mosaic and the triage crop measure
+the wall family the same way.
+
 **City look on by default (2026-10-30, decision #137 = A).** David chose
 option A on the #135 strip: flip at level 1, accept the +14 % landmark
 brightening at card size as the new baseline, and let the re-tag lane
