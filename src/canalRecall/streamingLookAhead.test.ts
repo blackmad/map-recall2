@@ -4,7 +4,7 @@ import { MotionEstimate, aheadRank, aheadRankXY, boxAround, lookAheadPoints, off
 import { planTiles, planTilesAhead } from './buildingTileSource.ts';
 import { tileFor, tileKey } from './slippyTiles.ts';
 import { detailBlock, metresToTile } from './detailRing.ts';
-import { ChunkBuildQueue } from './chunkBuildQueue.ts';
+import { ChunkBuildQueue } from './engine/worldStreamer.ts';
 import { GroundBuildQueue } from './ownGround/buildQueue.ts';
 
 test('ground build queue: arrival order unranked; a newer request replaces; order re-ranks and drops cells left behind', () => {
