@@ -55,7 +55,19 @@ export class OverviewLayer implements FrameParticipant {
   private readonly waterMesh: THREE.Mesh;
   private centreLat: number = ORIGIN.lat;
 
-  constructor(readonly data: OverviewData, private readonly view: { center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null }) {
+  /**
+   * The overview's own near-field uniforms (not ownMap/layers.ts's shared `handover`, which the engine's overlay
+   * lines also read): fragments inside the radius the own ground fully covers round the rider are discarded.
+   */
+  private readonly near = { uRider: { value: new THREE.Vector2() }, uNearR: { value: 600 }, uNear: { value: 0 } };
+  private coverCheckAt = -Infinity;
+  private coveredR = 0;
+
+  constructor(readonly data: OverviewData, private readonly view: {
+    center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
+    /** The own ground (gameGround.ts coversRect), when there is one. */
+    ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean } | null;
+  }) {
     this.root.name = 'engine-overview';
     this.water = new WaterIndex(data.water);
     const [x0, y0, x1, y1] = data.bounds;
@@ -78,6 +90,10 @@ export class OverviewLayer implements FrameParticipant {
       this.lines.push({ cls, fill, casing });
     }
     // The overview sits under everything; nothing casts.
+    this.root.traverse(o => {
+      const u = ((o as THREE.Mesh).material as THREE.ShaderMaterial | undefined)?.uniforms;
+      if (u?.uNear) { u.uRider = this.near.uRider; u.uNearR = this.near.uNearR; u.uNear = this.near.uNear; }
+    });
     this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
   }
 
@@ -117,10 +133,28 @@ export class OverviewLayer implements FrameParticipant {
         (l.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + st.casingExtra) / 2 * mpp;
       }
     }
-    // The own ground covers the rider's ring; no screen-door handover needed (it is opaque and above).
+    // Inside the radius the own ground fully covers round the rider the flat fills and lines would only be overdraw:
+    // discard them there (checked twice a second; the ground's ring changes a cell at a time).
     const rider = this.view.rider?.();
-    if (rider) { const [x, y] = toLocal(rider[0], rider[1]); handover.uRider.value.set(x, y); }
-    handover.uNear.value = 0;
+    const ground = this.view.ground?.();
+    if (rider && ground) {
+      const [x, y] = toLocal(rider[0], rider[1]);
+      this.near.uRider.value.set(x, y);
+      const now = performance.now();
+      if (now - this.coverCheckAt > 500) { this.coverCheckAt = now; this.coveredR = coveredRadius(ground, x, y); }
+    } else this.coveredR = 0;
+    this.near.uNearR.value = this.coveredR;
+    this.near.uNear.value = this.coveredR > 0 ? 1 : 0;
+    void handover;
     return true;
   }
+}
+
+/** Candidate radii (m) for the covered disc round the rider, largest first. */
+const COVER_RADII = [1200, 900, 600, 400, 250] as const;
+
+/** The largest candidate radius whose bounding square the own ground fully covers round (x, y); 0 if none. */
+export function coveredRadius(ground: { coversRect(x0: number, y0: number, x1: number, y1: number): boolean }, x: number, y: number): number {
+  for (const r of COVER_RADII) if (ground.coversRect(x - r, y - r, x + r, y + r)) return r;
+  return 0;
 }

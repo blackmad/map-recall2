@@ -18,7 +18,7 @@
 
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
-import { FrameHost } from './frameHost';
+import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
@@ -251,7 +251,7 @@ export class OwnWorldView {
   private async loadOverview(): Promise<void> {
     try {
       const data = await fetchOverview(this.absoluteExtractRoot());
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject });
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) });
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -388,7 +388,7 @@ export class OwnWorldView {
     const frame = cameraFrame({ center: [lx, ly], zoom, bearing: cam.bearing, pitch: cam.pitch, fovDeg: cam.fovDeg, elevation: cam.elevation }, this.host.viewport(), cam.lat);
     const b = cam.bounds();
     const [x0, y0] = toLocal(b.west, b.south), [x1, y1] = toLocal(b.east, b.north);
-    this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); });
+    this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
   }
 
   private async loadPois(): Promise<void> {
@@ -514,6 +514,7 @@ export class OwnWorldView {
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     this.lastSubject = view.subject;
     this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
+    this.extras.tick();
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
     if (view.introFlat === 0) this.extras.setSuspended(false);
     if (view.introFlat === 0 && city) {
@@ -772,6 +773,12 @@ export class OwnWorldView {
     this._lines.transit.set([...byColour].map(([color, lines]) => ({ lines, style: { color, width: [[11, 1.5], [15, 3], [18, 6]], opacity: 0.85 } })));
   }
 
+  /**
+   * The engine owns the loop: game.js hands its per-frame update/render as `frame`, and the driving model's fixed
+   * substep as `tick` (CanalRecallUi.stepSteer at `loopStep` seconds), instead of its own requestAnimationFrame.
+   */
+  setLoop(sim: FrameSimulation | null): void { this.host.setSimulation(sim); }
+  get loopStep(): number { return this.host.clock.dt; }
   setTreesVisible(visible: boolean): void { this.extras.setTreesVisible(visible); }
   setDetailedBuildingsVisible(visible: boolean): void { this.extras.setDetailedVisible(visible); }
   /** The flat 2D tree layer's data: the inventory trees load their own (inventory-trees-source.js). */

@@ -496,6 +496,21 @@ export class OwnGround {
   drapesOverlays(): boolean { return this.visibleAtZoom(this.zoom) && this.resident.size > 0 && this.coversRider(); }
 
   /**
+   * Every ground cell under the local rect is resident and fully dissolved in, so whatever flat layer lies beneath
+   * (the engine overview, engine/overviewLayer.ts) cannot show there. Sampled every 250 m (cells are ~1 km). False
+   * while the ground is hidden at this zoom or a cell has no data.
+   */
+  coversRect(x0: number, y0: number, x1: number, y1: number): boolean {
+    if (!this.ready || !this.visibleAtZoom(this.zoom) || !this.resident.size) return false;
+    const step = 250, nx = Math.max(1, Math.ceil((x1 - x0) / step)), ny = Math.max(1, Math.ceil((y1 - y0) / step));
+    for (let i = 0; i <= nx; i++) for (let j = 0; j <= ny; j++) {
+      const key = this.store.cellAt(x0 + (x1 - x0) * i / nx, y0 + (y1 - y0) * j / ny);
+      if (!this.resident.has(key) || this.fading.has(key)) return false;
+    }
+    return true;
+  }
+
+  /**
    * The rider's cell and those of its 8 neighbours the ring wants are drawn: the basemap's ground underneath is
    * redundant. With the 1400 m desktop ring that is all 8; the phone ring (a few hundred metres, the chase view's
    * reach) wants only the neighbours near the rider.

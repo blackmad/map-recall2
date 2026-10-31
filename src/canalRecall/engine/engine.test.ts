@@ -170,3 +170,60 @@ test('a place label is screened by its Dutch name too', async () => {
   assert.equal(poiLabelVisible(ctx, square.name), true, 'the English name alone does not match');
   assert.equal(placeAliases(square).every(a => poiLabelVisible(ctx, a)), false, 'the alias does');
 });
+
+test('landmark ground re-bases are throttled with a trailing pass; trees re-base at once', async () => {
+  const { CityExtras, LANDMARK_REBASE_MS } = await import('./cityExtras');
+  let landmark = 0, trees = 0;
+  const extras = new CityExtras({ cameraMap: {}, sharedFrame: {}, mercator: {}, extractPath: () => '', threeBuildings: () => null, completeCity: () => null,
+    measuredColoursOnly: () => false, trees3d: false, repaint: () => {}, relight: () => {}, fail: () => {} });
+  extras.signature = { refreshGroundBases: () => { landmark++; } };
+  extras.trees = { refreshGroundBases: () => { trees++; } };
+  for (let t = 0; t < 1000; t += 100) extras.refreshGroundBases(t);
+  assert.equal(trees, 10);
+  assert.equal(landmark, 1, 'one re-base inside the window');
+  extras.tick(LANDMARK_REBASE_MS - 1); assert.equal(landmark, 1);
+  extras.tick(LANDMARK_REBASE_MS); assert.equal(landmark, 2, 'the trailing pass');
+  extras.tick(LANDMARK_REBASE_MS * 3); assert.equal(landmark, 2, 'nothing due');
+});
+
+test('labels: full placement only after real camera movement', async () => {
+  const { movedEnough, samePose } = await import('./overlays/labelLayer');
+  const a = [0, 0, 18, 30, 60] as const;
+  assert.equal(samePose(a, [0, 0, 18, 30, 60]), true);
+  assert.equal(movedEnough(a, [2, 0, 18, 30, 60]), false, '2 m at z18 is ~6 px');
+  assert.equal(movedEnough(a, [12, 0, 18, 30, 60]), true);
+  assert.equal(movedEnough(a, [0, 0, 18, 31, 60]), false);
+  assert.equal(movedEnough(a, [0, 0, 18, 33, 60]), true);
+  assert.equal(movedEnough([0, 0, 18, 359, 60], [0, 0, 18, 1, 60]), false, 'bearing wraps');
+});
+
+test('overview: the covered disc is the largest radius the ground covers', async () => {
+  const { coveredRadius } = await import('./overviewLayer');
+  const ground = (r: number) => ({ coversRect: (x0: number, _y0: number, x1: number) => (x1 - x0) / 2 <= r });
+  assert.equal(coveredRadius(ground(1000), 0, 0), 900);
+  assert.equal(coveredRadius(ground(100), 0, 0), 0);
+  assert.equal(coveredRadius(ground(5000), 0, 0), 1200);
+});
+
+test('FrameHost.setSimulation: the same fixed steps at every display rate, one frame call per animation frame', async () => {
+  const { FrameHost } = await import('./frameHost');
+  for (const hz of [30, 60, 120, 144]) {
+    const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+    const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+    const createRenderer = () => ({ autoClear: true, getContext: () => ({ isContextLost: () => false }), clear() {}, setViewport() {}, setRenderTarget() {}, dispose() {} });
+    let frames: Array<(t: number) => void> = [];
+    const host = new FrameHost({}, container, { render: () => {} }, { createRenderer, requestFrame: cb => { frames.push(cb); return 1; }, cancelFrame() {} });
+    let ticks = 0, simulated = 0, frameCalls = 0, frameSeconds = 0;
+    host.setSimulation({ tick: dt => { ticks++; simulated += dt; }, frame: dt => { frameCalls++; frameSeconds += dt; } });
+    host.start();
+    const n = hz * 2; // two seconds
+    for (let i = 0; i <= n; i++) { const f = frames; frames = []; for (const cb of f) cb(i * 1000 / hz); }
+    assert.ok(Math.abs(simulated - 2) <= 1 / 120 + 1e-9, `${hz} Hz simulated ${simulated}`);
+    assert.equal(frameCalls, n + 1, `${hz} Hz frame calls`);
+    assert.ok(Math.abs(frameSeconds - 2) < 1e-6);
+    host.setSimulation(null);
+    const before = ticks; { const f = frames; frames = []; for (const cb of f) cb((n + 1) * 1000 / hz); }
+    assert.equal(ticks, before, 'handed back: no more ticks');
+    host.stop();
+  }
+});

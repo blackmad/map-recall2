@@ -46,6 +46,17 @@ export class LabelLayer {
   private pois: PointLabel[] = [];
   private extra = new Map<string, PointLabel[]>();
   private ctxKey = '';
+  /** Bumped on every input change (overview, POIs, game points, policy): the next draw places afresh. */
+  private rev = 0;
+  private drawnRev = -1;
+  /** Camera pose of the last draw and of the last full placement, and the ids that won it. */
+  private drawnPose: LabelPose | null = null;
+  private fullPose: LabelPose | null = null;
+  private fullAt = -Infinity;
+  private winners = new Set<string>();
+  private fullRev = -1;
+  /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0 };
   /** Every label drawn in the last frame (specs read it: nothing under question may be among them). */
   placed: PlacedLabel[] = [];
   visible = true;
@@ -59,10 +70,10 @@ export class LabelLayer {
     this.ctx = this.canvas.getContext('2d')!;
   }
 
-  setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; }
-  setPois(pois: PointLabel[]): void { this.pois = pois; this.ctxKey = ''; }
+  setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; this.rev++; }
+  setPois(pois: PointLabel[]): void { this.pois = pois; this.ctxKey = ''; this.rev++; }
   /** Game point labels by group (answered street name, ferry landings). */
-  setPoints(group: string, points: PointLabel[]): void { this.extra.set(group, points); }
+  setPoints(group: string, points: PointLabel[]): void { this.extra.set(group, points); this.rev++; }
 
   private rebuild(ctx: LabelContext): void {
     this.buckets.clear();
@@ -100,18 +111,30 @@ export class LabelLayer {
    * Draw for this frame. `frame` is the camera in own-map local metres (cameraFrame of the local centre), `bounds`
    * the visible local box, `ratio` the canvas pixel ratio.
    */
-  draw(frame: CameraFrame, bounds: readonly [number, number, number, number], zoom: number, ratio: number, project: (p: Vec2) => { x: number; y: number; depth: number }): void {
+  draw(frame: CameraFrame, bounds: readonly [number, number, number, number], zoom: number, ratio: number, project: (p: Vec2) => { x: number; y: number; depth: number }, pose?: LabelPose): void {
     const vp = frame.viewport;
     const w = Math.round(vp.width * ratio), h = Math.round(vp.height * ratio);
-    if (this.canvas.width !== w) this.canvas.width = w;
-    if (this.canvas.height !== h) this.canvas.height = h;
+    let resized = false;
+    if (this.canvas.width !== w) { this.canvas.width = w; resized = true; }
+    if (this.canvas.height !== h) { this.canvas.height = h; resized = true; }
+    const policy = this.visible ? this.policy() : null;
+    if (policy) {
+      const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
+      if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); this.rev++; }
+    }
+    const rev = this.visible ? this.rev : -2;
+    // A still camera and unchanged inputs: the canvas already holds this frame.
+    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
+    this.drawnRev = rev;
+    this.drawnPose = pose ?? null;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, w, h);
     this.placed = [];
     if (!this.visible) return;
-    const policy = this.policy();
-    const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
-    if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); }
+    // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
+    // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
+    const now = performance.now();
+    const full = !pose || !this.fullPose || rev !== this.fullRev || movedEnough(pose, this.fullPose) || now - this.fullAt > 400;
     this.zoom = zoom;
     const seen = new Set<LabelCandidate>();
     for (let x = Math.floor(bounds[0] / BUCKET); x <= Math.floor(bounds[2] / BUCKET); x++)
@@ -119,11 +142,31 @@ export class LabelLayer {
         for (const c of this.buckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
-    this.placed = placeLabels([...seen], {
+    const candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
+    this.placed = placeLabels(candidates, {
       project, width: vp.width, height: vp.height, zoom,
       advance: (ch, kind) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
     });
+    if (full) {
+      this.fullPose = pose ?? null; this.fullAt = now; this.fullRev = rev;
+      this.winners = new Set(this.placed.map(l => l.id));
+      this.stats.full++;
+    } else this.stats.winnersOnly++;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     drawPlacedLabels(this.ctx, this.placed, LABEL_PAINT);
   }
+}
+
+/** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
+export type LabelPose = readonly [number, number, number, number, number];
+
+export function samePose(a: LabelPose, b: LabelPose): boolean {
+  return Math.abs(a[0] - b[0]) < 0.01 && Math.abs(a[1] - b[1]) < 0.01 && Math.abs(a[2] - b[2]) < 1e-4 && Math.abs(a[3] - b[3]) < 0.01 && Math.abs(a[4] - b[4]) < 0.01;
+}
+
+/** Far enough to re-run the full placement: ~24 px of travel at the zoom, 0.1 zoom, or 2° of bearing or pitch. */
+export function movedEnough(a: LabelPose, b: LabelPose): boolean {
+  const metresPerPx = 156543.03 * Math.cos(52.37 * Math.PI / 180) / 2 ** a[2];
+  const bearing = Math.abs(((a[3] - b[3] + 540) % 360) - 180);
+  return Math.hypot(a[0] - b[0], a[1] - b[1]) > 24 * metresPerPx || Math.abs(a[2] - b[2]) > 0.1 || bearing > 2 || Math.abs(a[4] - b[4]) > 2;
 }

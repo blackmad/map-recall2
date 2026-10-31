@@ -31,6 +31,16 @@ export interface FrameHostHooks {
   wantsFrame?(): boolean;
 }
 
+/**
+ * The game's simulation when the engine owns the loop (`FrameHost.setSimulation`): `tick` runs per fixed step of
+ * `clock.dt` (1/120 s, steerModel.ts STEP_MAX: `CanalRecallUi.stepSteer` takes it as `h`), then `frame` once per
+ * animation frame with the frame's seconds (capped at 0.25) and the unsimulated fraction, before the render.
+ */
+export interface FrameSimulation {
+  tick?(dtFixed: number): void;
+  frame?(dtSeconds: number, alpha: number): void;
+}
+
 export interface FrameHostOptions {
   antialias?: boolean;
   pixelRatio?: number;
@@ -76,6 +86,7 @@ export class FrameHost {
   /** Frames drawn, and the last frame's render time (ms, main thread). */
   readonly stats = { frames: 0, renderMs: 0, ticks: 0 };
   private readonly hooks: FrameHostHooks;
+  private sim: FrameSimulation | null = null;
   private readonly options: FrameHostOptions;
   private readonly listeners = new Map<string, Set<FrameListener>>();
   private pixelRatio: number;
@@ -208,18 +219,30 @@ export class FrameHost {
     const dt = this.lastT == null ? 0 : (t - this.lastT) / 1000;
     this.lastT = t;
     const { steps, alpha } = this.clock.advance(dt);
-    if (this.hooks.tick) {
+    const sim = this.sim;
+    if (this.hooks.tick || sim?.tick) {
       for (let i = 0; i < steps; i++) {
-        try { this.hooks.tick(this.clock.dt); } catch (error) { console.warn('frame host: tick failed', error); }
+        try { this.hooks.tick?.(this.clock.dt); sim?.tick?.(this.clock.dt); } catch (error) { console.warn('frame host: tick failed', error); }
         this.stats.ticks++;
       }
       if (steps) this.dirty = true;
     }
     this.alpha = alpha;
+    if (sim?.frame) {
+      try { sim.frame(Math.max(0, Math.min(dt, 0.25)), alpha); } catch (error) { console.warn('frame host: frame failed', error); }
+      this.dirty = true;
+    }
     if (this.dirty || this.hooks.wantsFrame?.()) this._render();
     this.schedule();
   }
   private alpha = 0;
+
+  /** Hand the game's loop to the host (null gives it back): see FrameSimulation. Resets the step accumulator. */
+  setSimulation(sim: FrameSimulation | null): void {
+    this.sim = sim;
+    this.clock.reset();
+    this.dirty = true;
+  }
 
   /**
    * Clear and draw one frame, then fire `render`. Named like MapLibre's so `guardMapRender` can wrap it (a dead-GPU
