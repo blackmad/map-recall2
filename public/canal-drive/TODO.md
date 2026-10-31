@@ -136,7 +136,8 @@ the `frameHost.tick(dtFixed)` hook for `CanalRecallUi.stepSteer` is L1's when
 the engine owns the loop) → L4 streamer / L5 overlays → L6 facade
 shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
 (`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
-`SHARED_FRAME_DEFAULT`), #144 reds triage (`lane-reds-triage-20261030.md`,
+`SHARED_FRAME_DEFAULT`; **merged 2026-10-31**, HISTORY "P0 deletions"; the
+legacy `_makeLayer` branches table in that entry is L1 step 6's list), #144 reds triage (`lane-reds-triage-20261030.md`,
 4535: bike-xray, complete-city, check-building-look-transition), #145 rail
 look (`lane-rail-look-20261030.md`, 4537) from the user's three in-game
 reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
@@ -164,14 +165,14 @@ tree, so they are reds on main, not from the migration (listed under "Reds
 on main" below); the `ride-perf` motion variant read 8 frames > 50 ms against
 a budget of 4 (p95 16.8, 0 > 100 ms, longest 100 ms) on a machine running
 three other browser lanes: load-induced by the 2026-10-16 doc's own spread,
-re-measure on a quiet machine before calling it a regression. P0 deletions still open: study layers and Google
+re-measure on a quiet machine before calling it a regression. P0 deletions done 2026-10-31 (#143; was: study layers and Google
 tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 `scripts/city-appearance/publish-area-geometry-demo.ts`,
 `scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
 `wallMaterialDemo.ts:84`, `preferences.ts googleTiles`,
 `tests/e2e/google-tiles-option.spec.ts`), then `package.json` lines
 (`build:canal-study-*`, `canal:google-tiles-config`, `build:google-tiles-spike`
-and the build chain), `index.html` script tags, the bundles. Lesson for
+and the build chain), `index.html` script tags, the bundles). Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
 State: **L1 engine host step 3 merged 2026-10-30** (#129, `bc3f9e664`):

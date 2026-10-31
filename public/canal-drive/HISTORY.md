@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**P0 deletions: study layers, Google photoreal tiles, the shared-frame flag (2026-10-31, #143).**
+The four study overlays (roofs, facades, trees, public realm: research
+layers nobody rode with, each a participant `vector-map.js` constructed and
+streamed through `_updateStudyAreaResidency`) are gone from the ride with
+their bundles and build lines; the city-appearance release scripts still
+write and validate the `studyRoofs`/`studyFacades`/… manifest sections, so
+the data on disk is untouched. The Google photoreal tiles layer, its spike,
+`setGoogleTilesEnabled`, the `googleTiles` preference (the parser still
+ignores the stored key) and the photoreal gate (`photorealGate.ts`, its
+check and bundle, which had no other reader) are deleted per the user's
+2026-10-30 decision; `npm run build` had been failing on the already-missing
+`canal:google-tiles-config` script and works again. The shared frame is
+unconditional: `SHARED_FRAME_DEFAULT` and the `?sharedFrame` read are gone and
+the specs lost their `sharedFrame=1` rows (they were copies of the default).
+54 files, +68 / −5,192 lines; `vector-map.js` −198. Left measured, not
+deleted: the participants' legacy per-layer `_makeLayer` branches (signature
+landmarks 105 lines, detailed buildings 66, player vehicles 44, pyramidal
+roofs 27, three-buildings 21, highlight marker 27, trees 7, ARTIS 7), now
+reachable only when `window.CanalRecallThree` is missing; they go with L1's
+step 6 when those bundles are rebuilt anyway. `scripts/review/
+capture-thousand-building-game.mjs` is dead (reads the deleted study bundle,
+clicks the retired `route:study`); not deleted in this lane.
+
 **Driving feel: fixed substeps, a speed-dependent lock, the camera in the rider's frame (2026-10-30, #131, lane E / L8).**
 `src/canalRecall/drive/steerModel.ts` is the pure steer model: equal
 substeps of at most 1/120 s, RK2 speed, exact steer ease, trapezoid yaw and
