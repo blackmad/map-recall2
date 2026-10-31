@@ -24,7 +24,7 @@ import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FI
 import { wetGroundRings } from './wetGround.js';
 import { decodeRoadLine, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
-import { decodeRail, isRailCell, RAIL_EXTRACT, type RailManifest, type RailWay } from './railTracks.js';
+import { decodePlatforms, decodeRail, isRailCell, RAIL_EXTRACT, type RailManifest, type RailPlatform, type RailWay } from './railTracks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import { openUnderHouseboats, type Boat } from './moorings.js';
@@ -91,7 +91,7 @@ export class GroundStore {
   private readonly marks = new Map<string, Promise<RoadMark[]>>();
   markCells = new Set<string>();
   /** rail-v1 (railTracks.ts): railway tracks on their own corridor, per cell (default on; off for the regression's before). */
-  private readonly rail = new Map<string, Promise<RailWay[]>>();
+  private readonly rail = new Map<string, Promise<{ ways: RailWay[]; platforms: RailPlatform[] }>>();
   railCells = new Set<string>();
   /** road-marks-v1 photo-evidence.json (photoEvidence.ts), loaded with the roads. */
   evidence: PhotoEvidence = EMPTY_EVIDENCE;
@@ -116,7 +116,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -582,11 +582,21 @@ export class GroundStore {
 
   /** A cell's railway tracks (empty: none, or rails off). */
   railCell(key: string): Promise<RailWay[]> {
+    return this.railData(key).then(r => r.ways);
+  }
+
+  /** A cell's railway platforms above ground (railTracks.ts RailPlatform; empty: none, or an extract without them). */
+  railPlatformCell(key: string): Promise<RailPlatform[]> {
+    return this.railData(key).then(r => r.platforms);
+  }
+
+  private railData(key: string): Promise<{ ways: RailWay[]; platforms: RailPlatform[] }> {
     let p = this.rail.get(key);
     if (!p) {
+      const none = { ways: [], platforms: [] };
       p = this.railCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? decodeRail(c) : []; }).catch(() => [])
-        : Promise.resolve([]);
+        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? { ways: decodeRail(c), platforms: decodePlatforms(c) } : none; }).catch(() => none)
+        : Promise.resolve(none);
       this.rail.set(key, p);
     }
     return p;
@@ -642,6 +652,8 @@ export class GroundStore {
       Promise.all(around.map(k => this.railCell(k))),
     ]);
     const rails = railsAround[around.indexOf(key)] ?? [];
+    // Platforms of the 3×3 (a platform crossing a seam is in both cells' lists: once here).
+    const platformSeen = new Set<string>(), railPlatforms = rails.length ? (await Promise.all(around.map(k => this.railPlatformCell(k)))).flat().filter(p => { const k = p.ring.map(q => `${q[0]},${q[1]}`).join(';'); return !platformSeen.has(k) && !!platformSeen.add(k); }) : [];
     // Path ways a park's BGT path polygons replace may run into the neighbours' junction graph: drop them everywhere.
     const dropWays = parksAround.flatMap(p => p?.dropWays ?? []);
     // Ways the road polygons cover (roads-v1) likewise: a covered way's bands are gone wherever it is drawn.
@@ -685,7 +697,7 @@ export class GroundStore {
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}),
       ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat(), evidence: this.evidence } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
-      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}) } : {}),
+      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(railPlatforms.length ? { railPlatforms } : {}), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railBridges === false ? { railBridges: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}) } : {}),
       project: p => toLocal(p[0], p[1]),
     };
   }

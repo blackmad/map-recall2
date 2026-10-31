@@ -3,7 +3,7 @@
  "street": "Reitzstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.61,
+ "seconds": 0.53,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -73,26 +73,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1990, type 1921-1924; frontage 18.62 m, type 8.8-12.9 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1990, type 1908-1914; frontage 18.62 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1990, type 1921-1924",
-     "frontage 18.62 m, type 8.8-12.9 m"
+     "built 1990, type 1908-1914",
+     "frontage 18.62 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 13.9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 11.6 m = 4 storeys of 2.9 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -104,7 +104,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 6 vs 3 bays"
+      "note": "strip columns 6 vs 4 bays"
      }
     ]
    },
@@ -148,26 +148,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1990, type 1921-1924; frontage 3.59 m, type 8.8-12.9 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1990, type 1908-1914; frontage 3.59 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1990, type 1921-1924",
-     "frontage 3.59 m, type 8.8-12.9 m"
+     "built 1990, type 1908-1914",
+     "frontage 3.59 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 12.1 m; 3DBAG 14.36 m not compared)"
+      "score": 1,
+      "note": "3DBAG eaves 14.36 m = 4 storeys of 3.59 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -178,8 +178,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
      }
     ]
    },

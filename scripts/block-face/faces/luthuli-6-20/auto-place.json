@@ -3,7 +3,7 @@
  "street": "Albert Luthulistraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 1.76,
+ "seconds": 1.79,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -124,25 +124,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1930, type 1921-1924)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914; frontage 12.75 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1930, type 1921-1924"
+     "built 1930, type 1908-1914",
+     "frontage 12.75 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 12.1 m; 3DBAG 12.73 m not compared)"
+      "score": 0.5,
+      "note": "3DBAG eaves 12.73 m = 4 storeys of 3.18 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -255,25 +256,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1930, type 1921-1924)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914; frontage 12.93 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1930, type 1921-1924"
+     "built 1930, type 1908-1914",
+     "frontage 12.93 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 0.5,
+      "note": "3DBAG eaves 12.75 m = 4 storeys of 3.19 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -284,8 +286,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
      }
     ]
    },

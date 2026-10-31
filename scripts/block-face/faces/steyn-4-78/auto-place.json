@@ -3,7 +3,7 @@
  "street": "President Steynstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 1.36,
+ "seconds": 1.14,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -63,26 +63,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; strip shows balconies (dark open axis 1.7 m at 0.79 (light 0.46): no brick spandrel between the storeys))",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1994, type 1908-1914; frontage 12.89 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1994, type 1921-1924",
-     "strip shows balconies (dark open axis 1.7 m at 0.79 (light 0.46): no brick spandrel between the storeys)"
+     "built 1994, type 1908-1914",
+     "frontage 12.89 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.55 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 1,
+      "note": "3DBAG eaves 15.29 m = 4 storeys of 3.82 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -93,8 +93,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
      }
     ]
    },
@@ -143,26 +143,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 16.75 m, type 8.8-12.9 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1994, type 1908-1914; frontage 16.75 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1994, type 1921-1924",
-     "frontage 16.75 m, type 8.8-12.9 m"
+     "built 1994, type 1908-1914",
+     "frontage 16.75 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0.5,
-      "note": "strip cornice 12.97 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 12.69 m = 4 storeys of 3.17 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -173,8 +173,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
      }
     ]
    },
@@ -223,26 +223,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 13.62 m, type 8.8-12.9 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1994, type 1908-1914; frontage 13.62 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1994, type 1921-1924",
-     "frontage 13.62 m, type 8.8-12.9 m"
+     "built 1994, type 1908-1914",
+     "frontage 13.62 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "strip cornice 12.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 0,
+      "note": "3DBAG eaves 11.89 m = 4 storeys of 2.97 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -253,8 +253,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
      }
     ]
    },

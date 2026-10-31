@@ -101,4 +101,13 @@ test('resizePerStorey: more or fewer storeys than the type keep the ground and t
   assert.deepEqual(three.windowHeights, [0.58, 0.66, 0.62]);
   assert.deepEqual(resizePerStorey({...f, windowHeights: 'diminishing' as const}, 4, 5).windowHeights, 'diminishing');
   assert.deepEqual(resizePerStorey({bays: [2, 3, 3]}, 3, 4).bays, [2, 3, 3, 3]);
+  assert.equal('balconies' in resizePerStorey(f, 4, 3), false);
+});
+
+test('resizePerStorey: balcony storeys follow the ground/top rule (transvaal-1911-five-storey on the three-storey Transvaalstraat 74-104)', () => {
+  const f = {bays: 3, balconies: {storeys: [1, 2, 3], bays: [1], projecting: true, storeyBays: {'3': [0, 1, 2]}}};
+  assert.deepEqual(resizePerStorey(f, 4, 3).balconies, {storeys: [1, 2], bays: [1], projecting: true, storeyBays: {'2': [0, 1, 2]}});
+  assert.equal(resizePerStorey(f, 4, 5).balconies, f.balconies); // more storeys: the type's list (Hasebroekstraat 1-37, roof-golden)
+  assert.deepEqual(resizePerStorey({bays: 3, balconies: {storeys: [1], bays: [1]}}, 4, 3).balconies!.storeys, [1]);
+  assert.equal(resizePerStorey(f, 4, 4).balconies, f.balconies);
 });

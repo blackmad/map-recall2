@@ -29,7 +29,21 @@
   "stucco": false,
   "balconies": false,
   "frontEavesM": 12.1,
-  "note": "the stair-axis pands without a tower (BAG 1922-23, 3DBAG eaves 12.2 m); the strip skyline reads the setback fifth storey or the raised stair panel (13.3-13.7 m). No roof criterion: the setback fifth storey behind the parapet reads as a 3.0-3.6 m roof rise on 3DBAG. The two types are told apart by that skyline (frontSkylineM)",
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    5,
+    18
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    1.6,
+    6.5
+   ]
+  },
+  "note": "the stair-axis pands without a tower (BAG 1922-23, 3DBAG eaves 12.2 m); the strip skyline reads the setback fifth storey or the raised stair panel (13.3-13.7 m). No roof criterion: the setback fifth storey behind the parapet reads as a 3.0-3.6 m roof rise on 3DBAG. The two types are told apart by that skyline (frontSkylineM). Frontage: BAG cuts the 1921-1923 portiek rows into stair blocks of 5.2-12.4 m (Albert Luthulistraat 21-41: 5.2-5.7 m stair pands beside 9.2-12.4 m window pands; Schalk Burgerstraat 2-140 5.2-10 m) for one front, so the house width is no veto; four storeys at the type pitch and a 1.6-6.5 m window-axis pitch (3 axes over 5.6-12.4 m) are. A 0.8 m pitch (Retiefstraat 220: 12 columns over 9.4 m) is a plain window grid, not this front",
   "frontSkylineM": 13.5
  },
  "body": {
@@ -44,7 +58,7 @@
   "cornice": "none",
   "windows": "casement-triple",
   "storeyHeights": [
-   3.0,
+   3,
    2.85,
    2.85,
    2.66
@@ -63,7 +77,7 @@
   ],
   "bayWidths": [
    3.45,
-   1.0,
+   1,
    1.2,
    0.8,
    4.35
