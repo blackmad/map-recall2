@@ -68,56 +68,70 @@ var CanalRecallRoadProjection = (() => {
     const spans = [];
     for (const segment of segments) for (let i = 1; i < segment.points.length; i++) {
       spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
-      if (spans.length % 1024 === 0) yield;
+      if (spans.length % 4096 === 0) yield;
     }
-    function* partition(items, middle, axis) {
-      const coordinate = (span) => span.a[axis] + span.b[axis];
-      let left = 0, right = items.length - 1, steps = 0;
+    const count = spans.length;
+    if (!count) return void 0;
+    yield;
+    const keyX = new Float64Array(count), keyY = new Float64Array(count);
+    for (let i = 0; i < count; i++) {
+      keyX[i] = spans[i].a.x + spans[i].b.x;
+      keyY[i] = spans[i].a.y + spans[i].b.y;
+    }
+    const ids = new Int32Array(count);
+    for (let i = 0; i < count; i++) ids[i] = i;
+    const select = (lo, hi, middle, key) => {
+      let left = lo, right = hi;
       while (left < right) {
-        const pivot = coordinate(items[left + right >>> 1]);
+        const pivot = key[ids[left + right >>> 1]];
         let i = left, j = right;
         while (i <= j) {
-          while (coordinate(items[i]) < pivot) {
-            i++;
-            if (++steps % 1024 === 0) yield;
-          }
-          while (coordinate(items[j]) > pivot) {
-            j--;
-            if (++steps % 1024 === 0) yield;
-          }
+          while (key[ids[i]] < pivot) i++;
+          while (key[ids[j]] > pivot) j--;
           if (i <= j) {
-            [items[i], items[j]] = [items[j], items[i]];
+            const t = ids[i];
+            ids[i] = ids[j];
+            ids[j] = t;
             i++;
             j--;
           }
-          if (++steps % 1024 === 0) yield;
         }
         if (middle <= j) right = j;
         else if (middle >= i) left = i;
         else break;
+      }
+    };
+    let work = 0;
+    function* build(lo, hi) {
+      const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+      for (let k = lo; k < hi; k++) {
+        const { a, b } = spans[ids[k]];
+        if (a.x < node.minX) node.minX = a.x;
+        if (b.x < node.minX) node.minX = b.x;
+        if (a.y < node.minY) node.minY = a.y;
+        if (b.y < node.minY) node.minY = b.y;
+        if (a.x > node.maxX) node.maxX = a.x;
+        if (b.x > node.maxX) node.maxX = b.x;
+        if (a.y > node.maxY) node.maxY = a.y;
+        if (b.y > node.maxY) node.maxY = b.y;
+      }
+      work += hi - lo;
+      if (work >= 8192) {
+        work = 0;
         yield;
       }
-    }
-    function* build(items) {
-      const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
-      for (let i = 0; i < items.length; i++) {
-        const { a, b } = items[i];
-        node.minX = Math.min(node.minX, a.x, b.x);
-        node.minY = Math.min(node.minY, a.y, b.y);
-        node.maxX = Math.max(node.maxX, a.x, b.x);
-        node.maxY = Math.max(node.maxY, a.y, b.y);
-        if (i % 1024 === 0) yield;
-      }
-      if (items.length <= 8) node.spans = items;
-      else {
-        const middle = Math.floor(items.length / 2);
-        yield* partition(items, middle, node.maxX - node.minX >= node.maxY - node.minY ? "x" : "y");
-        node.left = yield* build(items.slice(0, middle));
-        node.right = yield* build(items.slice(middle));
+      if (hi - lo <= 8) {
+        node.spans = [];
+        for (let k = lo; k < hi; k++) node.spans.push(spans[ids[k]]);
+      } else {
+        const middle = lo + Math.floor((hi - lo) / 2);
+        select(lo, hi - 1, middle, node.maxX - node.minX >= node.maxY - node.minY ? keyX : keyY);
+        node.left = yield* build(lo, middle);
+        node.right = yield* build(middle, hi);
       }
       return node;
     }
-    return spans.length ? yield* build(spans) : void 0;
+    return yield* build(0, count);
   }
   var RoadSnapIndex = class _RoadSnapIndex {
     root;

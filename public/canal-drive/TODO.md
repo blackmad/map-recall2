@@ -296,14 +296,18 @@ cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
 50 → 8 MB (+7.3 MB typed arrays), routes identical. **Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
-per-step table; navigation → racing 5.41 → 4.75 s. **Not met:** time to ride
-≤ 4 s. What remains, in order: the overview landing animation after the rider
-appears (~1.3–1.5 s; shorten or overlap it is a product call, asked as a
-needs-david issue), building-tile CPU (~0.9 s) competing with the road builds
-on the main thread (hold tiles until road setup is done, or give the road
-builds priority), `buildRoadSegmentsAsync` (0.4–0.8 s), and the route
-catalogue and extract fetches (~0.6 s each cold) running serially. Also not
-met: the ≤ 4 MB bytes target.
+per-step table; navigation → racing 5.41 → 4.75 s. **Step 5c merged
+2026-10-31** (HISTORY "Road setup no longer waits behind the building look"):
+48 ms road-setup slices, in-place snap-index build, catalogue loaded once;
+submit → rider 3.13 → 1.92 s, navigation → racing ~4.0 s (landing animation
+varies 1.0–1.7 s, #150 needs-david). **Not met:** time to ride ≤ 4 s. What
+remains: the landing animation (#150); the routing graph's 1.0–1.2 s wall for
+~500 ms CPU (building-look textures ~360 ms and tile installs run between its
+slices; holding the textures saves ~0.5 s but puts the first building tile
+> 300 ms after the rider, unsliced freezes the loading card ~0.5 s: decide
+with #150); then `fetchRoads` ~220, surface index ~150, segments ~100 ms. For
+remote players the 4.3 s `streets-routing.json` download at 20 Mbit/s is the
+lever (size, not parallelism). Also not met: the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). The `engine-own.spec.ts` programs red is gone 2026-10-31

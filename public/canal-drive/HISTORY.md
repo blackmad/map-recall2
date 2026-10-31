@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+**Road setup no longer waits behind the building look: submit → rider 3.1 → 1.9 s (2026-10-31, #136, L4 step 5c).**
+Three changes, each measured with `scripts/time-to-ride-phases.mjs` (localhost,
+desktop cold, medians of 3). (1) `ROAD_SETUP_SLICE_MS = 48` in `constants.js`
+is the budget for the segment, snap-index, routing-graph and surface builds
+(`osm-loader.js`, `road-network.js`), so the building look's texture slices
+no longer halve them: submit → rider 3,133 → 2,023 ms. The alternative,
+holding building tiles until road setup is done, was not taken because the
+first tile would land > 300 ms after the rider; it stays 86–100 ms after
+throughout. (2) `roadSnapIndex.ts` builds the snap tree in place over one
+index array with typed midpoint keys and a quickselect instead of slicing
+the span list at every level and yielding per partition step: 135 → 40 ms
+for the city, 72,390 `nearest()` queries deep-equal to the old index.
+`buildRoadSegmentsAsync` 374 → 83 ms. (3) `_ensureRoutePoiCatalog` in
+`game-route.js` reuses a catalogue load done or in flight for the same city
+and mode; before, every ride start re-downloaded the 0.8 MB catalogue the
+briefing had just loaded, and the travel-mode change at submit started a
+second download beside it. At an emulated 20 Mbit/s with the player 6 s on
+the briefing, submit → rider 3,020 → 2,790 ms; the street extract (4.3 s on
+that link) dominates for remote players and `streets-routing.json`'s size is
+the lever there. Running the extract and catalogue downloads in parallel
+gave nothing (they share the link) and was dropped. Navigation → racing
+4,676 → ~4,000 ms, but the landing animation varies 1.0–1.7 s between runs
+(#150), so submit → rider is the cleaner measure. The script gained `--net
+<kbit/s>,<ms>` and `--settle <ms>`. What remains: the routing graph takes
+1.0–1.2 s wall for ~500 ms CPU because textures (~360 ms) and tile installs
+run between its slices (holding the textures would save ~0.5 s at the cost
+of a later first tile; unsliced would freeze the loading card ~0.5 s), then
+`fetchRoads` ~220, surface index ~150, segments ~100 ms.
+
 **Own-ground materials share programs through uniforms: `?engine=own` rides at 20 programs, under the 32 budget (2026-10-31, #129, P4 materials lane steps 1–3).**
 `src/canalRecall/ownGround/groundMaterial.ts` now holds the shader edits the
 own ground used to make per clone: the dissolve (`-ownFade`), the water cut
