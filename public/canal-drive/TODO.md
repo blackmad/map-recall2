@@ -1368,21 +1368,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Both engines also render every idle frame (fan): render-on-change WIP on
   L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
   frames; spec not green yet, stays out of main until it is).
-- **POI/business labels draw through buildings under `?engine=own`** (user
-  screenshot, Eerste Constantijn Huygensstraat looking north; user: "we still
-  need more occlusion"). First pass on main (HISTORY "Label occlusion under
-  `?engine=own`"): `engine/labelOcclusion.ts` hides a shopfront label whose
-  frontage faces away or sits behind a nearer resident building, ≈ 0.4 ms per
-  full placement pass, pinned in `label-occlusion.spec.ts`. Open: the gaps
-  the user still sees (far side of a block, anchors above a lower front
-  building's eave, labels resolved between full passes while moving,
-  flicker hysteresis) with before/after counts at the pinned pose and the
-  Dam/Westerkerk cameras (materials lane, on L1's module), plus the own
-  engine's earned street/water names, which have no building occlusion at all
-  (`street-label-occlusion.spec` fails under ENGINE=own, passes on the default
-  engine; the materials lane makes it engine-aware without weakening it).
-  Fixed on main: `sampleFeatures(20_000)` blinded the camera-clearance guard
-  past the first 20k residents (`clearanceResidents()`, tested).
+- **POI/business labels through buildings under `?engine=own`** (user
+  screenshot, Eerste Constantijn Huygensstraat; "we still need more
+  occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
+  at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
+  occluded too; `street-label-occlusion.spec` passes under both engines.
+  Left: Cafe Kompleet at a row-house corner the frontage walk misses; names
+  ever drawn through a building while riding 6 s from the Westerkerk still
+  14 → 7 (between-pass re-tests cover 4 POIs per frame, not street names);
+  the occlusion step's own per-frame cost is not isolated against the ≤ 0.3
+  ms budget. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

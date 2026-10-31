@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**Label occlusion round 2 under `?engine=own`: labels through buildings 16 → 1 at the user's pose; street and water names occluded too (2026-11-01, #129).**
+The materials lane extended L1's `engine/labelOcclusion.ts`: the sightline
+starts where the label is drawn (1.5 m above the street, not half way up the
+facade); POIs draw at their visible shopfront instead of deep inside the
+block (`drawAt` in `overlays/labelLayer.ts`); party walls no longer count as
+frontages; pitched roofs count from between eaves and ridge; four drawn POI
+labels per frame are re-tested between full placements (`OCCLUSION_PER_FRAME`)
+so a label that went behind a building while riding drops within a few
+frames; own-engine street and water names are tested at their first, middle
+and last glyph (`lineTest`); and the HUD street-name occlusion runs under the
+own engine via `OwnWorldView.cameraEye()` and `residentFeatures()`. Counted
+independently with the facades' own pick at each drawn label, POI labels drawn
+through a building, off → on: Eerste Constantijn Huygensstraat 16 → 1 (L1's
+first pass: 6; the one left is Cafe Kompleet at a row-house corner the walk
+misses), Dam 27 → 0, Westerkerk 14 → 0–1; riding 6 s from each pose the names
+ever drawn through a building: 18 → 4, 10 → 2–3, 14 → 7.
+`street-label-occlusion.spec` now passes under ENGINE=own (44 → 6 names
+drawn, 0.26–0.35 ms per frame) and unchanged on the default engine (44 → 7).
+Cost: a full placement 0.68–0.82 ms with occlusion on vs 0.65–0.83 off,
+roughly every 400 ms, plus 4 sightlines per frame between passes; the
+occlusion step alone was not isolated, so the ≤ 0.3 ms per-frame budget is
+not demonstrated directly. `label-occlusion.spec` counts independently (off
+≥ 4, on ≤ 1) on desktop and iPhone. Before/after frames:
+`map-recall2-screenshots/whats-new/2026-11-01-label-occlusion-{ech,dam,
+westerkerk}-{before,after}.jpg` (for the flip note; no What's New entry while
+the engine is behind the flag).
+
 **Building facts load on the first card, not at ride start; maplibre-gl loader applied in index.html; fixed-camera pixel harness (2026-11-01, #130, #129).**
 `buildingFacts.ts` (road lane): `prefetchAround` only remembers the rider's
 position until the first card asks for facts, then the 3×3 tile window
