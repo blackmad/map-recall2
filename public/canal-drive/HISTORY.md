@@ -1,5 +1,74 @@
 # Canal Recall — what is built
 
+**`?engine=own` drew no facades on main for about four hours; the fade clone now keeps its shader defines (2026-10-31, #129).**
+Between the materials merge (64dfac399, ~16:00) and this fix every facade
+chunk under the own engine compiled to nothing: the chunk fade-in clones the
+city-look material with `Material.clone()`, which does not carry `defines`
+(only `ShaderMaterial`'s copy does), so the clone's `city-look/lit|chunk`
+program failed with "'CITY_SLOT_COUNT' undeclared" and the chunk drew
+nothing while landmarks, trees and labels still rendered; the user saw a
+grey city on a lane's reference server and asked whether the tests were
+"over-drawing the screen". `threeBuildingsBrowser.ts` copies `defines` onto
+the fade clone (one line; the same omission was the program churn fixed in
+materials round 2). `engine-own.spec` reported `facades:true` and
+`failed:[]` through all of it, so it did not guard this: the spec needs the
+renderer's shader-error count and a visible facade-chunk count (TODO P0).
+Landmarks also precompile their programs before joining the scene when the
+shared frame offers `compileAsync` (no-op until that lands).
+
+**One tap turns the bike at a junction where it was waiting (2026-10-31, #136).**
+At a stop with nothing straight on (the seeded iPhone spawn across the
+Polonceaukade facing north), a tapped turn stayed queued forever: the commit
+distance is 4 px at speed 0 and a bike short of the cross street's
+centreline never got that close, and the "a way never branches" rule ruled
+out both sides because both are the street underfoot; only the 0.6 s stuck
+pivot of a held button went. `streetFollow.ts`: when stopped with nothing
+straight on, a queued side commits on the same frame to its opening anywhere
+in the corridor, including along the street underfoot, waiting is released
+and the queue spent; nothing changes while moving; a hold commits at once
+too. `input.js` latches pad buttons touched since the last frame for one
+frame and `player.js` counts a key pressed and released within one frame
+(`input.wasPressed`) in street mode, since a tap shorter than a frame was
+dropped. `test:street-follow` gained unit cases and a ride at the spawn
+(one-frame tap rides > 150 px, hands off waits, a 1.2 s hold goes);
+`tests/e2e/street-follow-tap.spec.ts` (iPhone) taps for real from the spawn
+and from the waiting state and fails on the old bundle. What's New note by
+the lane.
+
+**Deployed pages stamp every asset with its content hash; the "slow, blurry, pop-in" `?engine=own` ride was a stale cached bundle (2026-10-31).**
+The user rode `?engine=own` on the deployed site and found it slow, janky,
+blurry (the whole world frame upscaled ~2×) with heavy pop-in, while a lane's
+fresh localhost build "looks great". The deploy was current (8727f0e2e), but
+Hosting caches `/js/**` for an hour and the pages cache-bust by hand: 18 of
+the 25 `?v=` stamps in `index.html` were older than their file's last change
+(`engine.bundle.js?v=20261030-engine` after five rebuilds that day, also
+three, three-buildings, signature-placement, vector-map.js, game.js), so the
+browser mixed yesterday's engine bundle with today's everything else.
+`scripts/stamp-canal-assets.ts` now rewrites every local `?v=` in the
+assembled site's HTML to the first 10 hex digits of the asset's SHA-256
+(unchanged files keep their URL; remote and rooted URLs untouched; a missing
+asset fails the step), run by the deploy workflow right after
+`assemble-canalrecall-site.mjs`; `test:stamps` pins the rewrite in
+`check:canal`. The committed stamps stay human-readable and no longer matter
+for players. Lesson: every bundle rebuild in an integration must ship with a
+new URL; from now on the deploy does it. The user's real-GPU observations
+(DPR 2, full window) still get one measured table from L1 before the own
+engine is judged on a Mac. Also from that ride: POI/business labels draw
+through buildings under the own engine (occlusion item, L1).
+
+**`fetchRoads` downloads its three files at once; the road surface index keys cells by number (2026-10-31, #136).**
+`squares.json` and `transit-network.json` download alongside the street
+extract and are applied at the same point in the same order (plaza, then
+ferry): fetchRoads at 20 Mbit JSON 4,262 → 4,152 ms, binary 2,681 → 2,445;
+localhost binary 93 → 65 ms; submit → racing at 20 Mbit JSON 7,236 → 7,155,
+binary 6,388 → 6,160 (bandwidth-bound, so small). `roadSurface.ts` uses
+numeric cell keys: Node build 218 → 140 ms, ring-2 queries 2.5× faster,
+`roadsNear` identical over 180k queries; in game `prepareSurfaceIndex` 130 →
+92 ms (JSON) / 266 → 142 (binary) under load. The JSON parse (~220 ms) is
+mostly the dev server gzipping 15 MB per request and `?roads=bin` removes it;
+the next CPU owner is the feature → ways loop (~60–120 ms, 340k node
+objects), held because `vectorMap` reads the ways shape.
+
 **Transvaalbuurt kit: the first Oud-Oost type library, the `parapet.band` component and the Albert Luthulistraat 25–39 row (2026-10-31, #149).**
 The user photographed Albert Luthulistraat 29–31 and asked for a buurt
 generator; Oud-Oost had none (Transvaalbuurt-West 0.2 %, -Oost 0.1 %

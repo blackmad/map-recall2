@@ -364,7 +364,7 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt kit, next (user, 2026-10-31, #149, HISTORY "Transvaalbuurt kit"):** the Albert Luthulistraat 25–39 row is installed and passed beside the user's photo; the buurt-wide auto-place yield is 0 (the two 1923 portiek types fit only that row; 6 matches were false positives and are held). Both buurten are surveyed and 160 faces intaked. Next, in order: (1) a flat-roof-with-setback crown (white terrace railings) so this row stops drawing a low pitched roof, the largest visible gap; (2) the 1925 Christiaan de Wetstraat / Krugerstraat 14–24 design (canopies on columns, lisenes through a crenellated parapet, trapezoid attic lights, corner oriels); (3) the 1920–22 three-storey pitched rows (85 pands on 46 faces); (4) the Oost 1911–13 five-storey pitched rows (~110 pands). Kit gaps on the row: a second band colour for the header-course brick ladders, stair windows half a storey above the main line, the tower's two top lights, slit windows, rounded corners and 0.63 m projection. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 2, in flight (user, 2026-10-31, #151; round 1 #149 in HISTORY "Transvaalbuurt kit"):** the strips grouped by build-year family (comparison page 2026-10-31) showed the "0 placed" of round 1 was a library-coverage number: 695 of 769 pands were vetoed on year or width before any photo comparison, and the installed 1923 portiek design also stands on Schalk Burgerstraat 2–140, Krugerstraat 4–28, Retiefstraat 194–268 and Tugelaweg 19–31, refused only by the frontage veto (a pand here is a 7–17 m stair block). Lane `lane/transvaalbuurt-types-2-20261031` (brief `docs/handoffs/lane-transvaalbuurt-types-2-20261031.md`): replace the width veto with a bay-rhythm veto for portiek types, rerun auto-place, author the 1908–1914 five-storey type (274 pands on 37 faces) from three measured faces, batch-install in ride order. After it: the 1929–1931 blocks with round corner towers (120 pands), the 1920–1922 three-storey rows (129), the 1926–1928 band-window rows (50), and a flat-roof-with-setback crown for the installed design (its grey pitched roof is the largest visible gap). Method changes are in `docs/buurt-generator-20261016.md` "Transvaalbuurt lessons": cluster by family before auto-place; hand-backs split vetoed-before-comparison / compared-and-held / placed. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1327,6 +1327,26 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **`engine-own.spec` must fail when facades do not draw** (2026-10-31): it said
+  `facades:true, failed:[]` while every facade program failed to compile for
+  four hours (HISTORY "`?engine=own` drew no facades"). Assert the renderer's
+  shader-error count is 0 and that visible facade chunk meshes > 0 after
+  landing, desktop and iPhone (materials lane or L1, whoever touches the spec
+  next).
+
+- **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
+  fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
+  localhost build "looks great". Root cause found: stale cached bundles (18
+  stale `?v=` stamps), fixed by content-hash stamping at deploy (HISTORY
+  "Deployed pages stamp every asset"). Still owed: one measured default-vs-own
+  table on the real GPU at DPR 2 in a full window (frame/GPU time, governor
+  state, backing-store size, pop-in timing); every own-engine number so far is
+  headless DPR 1 or an emulator profile (L1, #129).
+- **POI/business labels draw through buildings under `?engine=own`** (user
+  screenshot, Eerste Constantijn Huygensstraat looking north): labels need an
+  occlusion test at the facade-height anchor with hysteresis; pin the pose as
+  a regression (L1, after the table).
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

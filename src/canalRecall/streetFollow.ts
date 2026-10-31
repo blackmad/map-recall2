@@ -258,14 +258,18 @@ function straightest(choices: readonly StreetChoice[]): StreetChoice | null {
  *  the corner at cruise speed. The one closest to a right angle wins (a
  *  fork's gentle branch loses to a real cross street, but is taken when it is
  *  the only one). */
-export function queuedTurnChoice(choices: readonly StreetChoice[], side: number, speed = 0, currentSeg?: number, currentName = ''): StreetChoice | null {
+export function queuedTurnChoice(choices: readonly StreetChoice[], side: number, speed = 0, currentSeg?: number, currentName = '', atStop = false): StreetChoice | null {
   const radius = Math.abs(speed) / STREET_TURN_RATE;
   let best: StreetChoice | null = null;
   for (const choice of choices) {
     if (Math.sign(choice.turn) !== side || Math.abs(choice.turn) < MIN_TURN) continue;
+    if (backtracks(choice, currentName)) continue;
     // The way underfoot bending (Prinsengracht before the Leidsegracht, 35°,
-    // took a queued left in the 2026-10-29 sim): not a turn.
-    if (sameWay(choice.segIdx, currentSeg) || backtracks(choice, currentName)) continue;
+    // took a queued left in the 2026-10-29 sim): not a turn. Stopped with
+    // nothing straight on, though, the way underfoot is a real choice: a
+    // bike standing across a street (a ride's spawn) picks which way along
+    // it to go.
+    if (!atStop && sameWay(choice.segIdx, currentSeg)) continue;
     // A slight bend is a turn only at a fork, where another way runs on
     // further to the other side; otherwise it is the street itself kinking
     // (a bridge approach), which straight-on already follows.
@@ -273,7 +277,11 @@ export function queuedTurnChoice(choices: readonly StreetChoice[], side: number,
       Math.abs(other.turn) <= STRAIGHT_TOLERANCE && !sameWay(other.segIdx, choice.segIdx)
       && !(choice.name && choice.name === other.name)
       && (choice.turn - other.turn) * side > FORK_SPLIT)) continue;
-    const commitAt = Math.max(COMMIT_MIN, radius * Math.sin(Math.min(Math.PI / 2, Math.abs(choice.turn))));
+    // Stopped, the bike turns on the spot: anywhere inside the corridor (the
+    // choices are) is close enough. Otherwise a tap at a T-junction only
+    // queued the turn and the bike, stopped short of the cross street's
+    // centreline, never reached the commit distance.
+    const commitAt = atStop ? Infinity : Math.max(COMMIT_MIN, radius * Math.sin(Math.min(Math.PI / 2, Math.abs(choice.turn))));
     if (choice.dist > commitAt) continue;
     const score = Math.abs(Math.abs(choice.turn) - Math.PI / 2);
     if (!best || score < Math.abs(Math.abs(best.turn) - Math.PI / 2)) best = choice;
@@ -411,8 +419,13 @@ export function stepStreetFollow(
     return { state, command };
   }
 
+  // Stopped with nothing straight on (a T-junction, or standing across a
+  // street): the bike is waiting for a side, and a queued one commits at once.
+  const straightOn = choices.some(choice => Math.abs(choice.turn) <= STRAIGHT_TOLERANCE);
+  const atStop = slow && !straightOn;
   if (state.queuedTurn) {
-    const turn = queuedTurnChoice(choices, state.queuedTurn, speed, currentSeg, currentName);
+    const turn = queuedTurnChoice(choices, state.queuedTurn, speed, currentSeg, currentName)
+      ?? (atStop ? queuedTurnChoice(choices, state.queuedTurn, speed, currentSeg, currentName, true) : null);
     if (turn) {
       state.turning = turn.heading;
       if (held === state.queuedTurn) state.spentSide = held;

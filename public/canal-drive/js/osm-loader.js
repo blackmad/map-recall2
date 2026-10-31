@@ -48,6 +48,22 @@ class OSMLoader {
         return this._fetchTransitWays(city);
       }
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
+      // The squares and the ferry network are small and independent of the
+      // streets, so they download alongside them instead of after them. Each
+      // settles to { value } or { error } and is applied below at the same
+      // point, in the same order, as when they were fetched one by one.
+      const settle = (promise) => promise.then(value => ({ value }), error => ({ error }));
+      const squaresLoad = travelMode === 'car'
+        ? settle(fetch(new URL(`${city.extractPath}/squares.json`, window.location.href))
+          .then(response => (response.ok ? response.json() : null)))
+        : null;
+      const ferryLoad = travelMode === 'car' && city.id === 'amsterdam'
+        ? settle(fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href))
+          .then(response => {
+            if (!response.ok) throw new Error(`Ferry network: HTTP ${response.status}`);
+            return response.json();
+          }))
+        : null;
       let features = travelMode === 'car' ? await this._fetchRoadExtract(city) : null;
       if (!features) {
         const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
@@ -121,19 +137,16 @@ class OSMLoader {
       // Open squares are rideable paving (pedestrianAreas.ts); the guard
       // reads them after projection. Missing data only loses the squares.
       this.plazaFeatures = null;
-      if (travelMode === 'car') {
-        try {
-          const squaresResponse = await fetch(new URL(`${city.extractPath}/squares.json`, window.location.href));
-          if (squaresResponse.ok) this.plazaFeatures = await squaresResponse.json();
-        } catch (error) { console.warn('Squares unavailable; open plazas ride as corridors only.', error); }
+      if (squaresLoad) {
+        const squares = await squaresLoad;
+        if (squares.error) console.warn('Squares unavailable; open plazas ride as corridors only.', squares.error);
+        else if (squares.value) this.plazaFeatures = squares.value;
       }
       this.ferryNetwork = null;
-      if (travelMode === 'car' && city.id === 'amsterdam') {
-        try {
-          const ferryResponse = await fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href));
-          if (!ferryResponse.ok) throw new Error(`Ferry network: HTTP ${ferryResponse.status}`);
-          this.ferryNetwork = await ferryResponse.json();
-        } catch (error) { console.warn('Ferry connections unavailable; cycling remains on land.', error); }
+      if (ferryLoad) {
+        const ferry = await ferryLoad;
+        if (ferry.error) console.warn('Ferry connections unavailable; cycling remains on land.', ferry.error);
+        else this.ferryNetwork = ferry.value;
       }
       console.log(`Loaded ${ways.length} curated ${city.name} ${dataset} paths`);
       return ways;

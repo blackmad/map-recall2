@@ -2004,7 +2004,8 @@
   }
 
   // src/canalRecall/routing/roadSurface.ts
-  var cellKey = (gx, gy) => `${gx},${gy}`;
+  var CELL_LIMIT = 2 ** 25;
+  var cellKey = (gx, gy) => Math.abs(gx) < CELL_LIMIT && Math.abs(gy) < CELL_LIMIT ? (gx + CELL_LIMIT) * 2 ** 26 + (gy + CELL_LIMIT) : `${gx},${gy}`;
   function closestPointOnSpan(px, py, a, b) {
     const abx = b.x - a.x;
     const aby = b.y - a.y;
@@ -4216,7 +4217,7 @@
     {
       modelId: "fire-station-willem",
       name: "Kazerne Willem",
-      description: "Willem preserves the W of Weesper: the station began at Weesperplein in 1873, moved to Nieuwe Achtergracht in 1909, and has operated from Ringdijk since 1984. The renovated panels above the fire-engine doors use charred Marugame wood selected by ENZO architects for its durability.",
+      description: "Amsterdam names its fire stations from the old telephone spelling alphabet, after the first letter of the street where each began: Willem is the W of the Weesperplein, where this post opened in 1873. It moved to the Nieuwe Achtergracht in 1909 and has stood on the Ringdijk since 1984. The renovated panels above the fire-engine doors use charred Marugame wood selected by ENZO architects for its durability.",
       sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-willem/",
       center: [
         52.348947095579625,

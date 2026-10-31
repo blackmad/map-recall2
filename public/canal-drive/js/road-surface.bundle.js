@@ -183,7 +183,8 @@ var CanalRecallRoadSurface = (() => {
   var CURB_INNER_MARGIN = 6;
   var CURB_OUTER_MARGIN = 2;
   var NAME_MERGE_SIZE = 18;
-  var cellKey = (gx, gy) => `${gx},${gy}`;
+  var CELL_LIMIT = 2 ** 25;
+  var cellKey = (gx, gy) => Math.abs(gx) < CELL_LIMIT && Math.abs(gy) < CELL_LIMIT ? (gx + CELL_LIMIT) * 2 ** 26 + (gy + CELL_LIMIT) : `${gx},${gy}`;
   function closestPointOnSpan(px, py, a, b) {
     const abx = b.x - a.x;
     const aby = b.y - a.y;

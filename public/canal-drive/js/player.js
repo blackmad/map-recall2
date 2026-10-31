@@ -35,9 +35,12 @@ class PlayerCar extends Car {
       // Follow the street; buttons queue the next turn (streetFollow.ts). The
       // command is computed in update(), where the track is to hand.
       const pad = input.streetButtons || ui.noStreetButtons();
+      // A key tapped between two frames counts for one frame, like a pad tap:
+      // one frame of a side is enough to choose it (a tap at a T-junction).
+      const tapped = (code, alt) => !!(input.wasPressed && (input.wasPressed(code) || input.wasPressed(alt)));
       this._streetButtons = {
-        left: pad.left || keyboard.ArrowLeft,
-        right: pad.right || keyboard.ArrowRight,
+        left: pad.left || keyboard.ArrowLeft || tapped('ArrowLeft', 'KeyA'),
+        right: pad.right || keyboard.ArrowRight || tapped('ArrowRight', 'KeyD'),
         back: pad.back || keyboard.ArrowDown,
         forward: keyboard.ArrowUp,
       };
