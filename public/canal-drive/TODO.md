@@ -315,8 +315,18 @@ remains: the landing animation (#150); the routing graph's 1.0–1.2 s wall for
 slices; holding the textures saves ~0.5 s but puts the first building tile
 > 300 ms after the rider, unsliced freezes the loading card ~0.5 s: decide
 with #150); then `fetchRoads` ~220, surface index ~150, segments ~100 ms. For
-remote players the 4.3 s `streets-routing.json` download at 20 Mbit/s is the
-lever (size, not parallelism). Also not met: the ≤ 4 MB bytes target.
+remote players the `streets-routing.json` download was the lever: **binary
+road extract merged 2026-10-31** (HISTORY "The road network ships as a compact
+binary extract"), `roads-v2/streets-routing.bin.gz` 1.47 MB gz vs 2.84 MB
+JSON, behind `?roads=bin` (JSON path unchanged; regenerate with
+`npx tsx scripts/roads/build-road-extract.ts` and copy from
+`artifacts/roads/staging/amsterdam/` whenever `streets-routing.json` changes);
+fetchRoads 231 → 97 ms localhost, 4,178 → 2,499 at 20 Mbit; submit → rider
+1,808 → 1,595 / 6,310 → 5,160. Make it the default once a few rides on the
+deployed site confirm the gzip-wrapped fetch and the fallback. Held: build-time
+quantise-and-stitch (needs a fixed projection centre, which changes routes).
+Next at 20 Mbit: `squares.json` and `transit-network.json` load serially inside
+`fetchRoads`. Also not met: the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). The `engine-own.spec.ts` programs red is gone 2026-10-31

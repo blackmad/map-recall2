@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+**The road network ships as a compact binary extract behind `?roads=bin` (2026-10-31, #136, P3 road graph as CSR binary).**
+`src/canalRecall/routing/roadExtract.ts` is the format and decoder: header
+with magic `CRRX`, version, section offsets, counts and the source SHA-256;
+coordinates as zigzag-varint deltas on a 1e-6° grid with Float64 for the 14
+off-grid restricted corridors; a name/value string table and per-way flags;
+every section rejects leftover bytes. The file ships gzip-wrapped
+(`roads-v2/streets-routing.bin.gz`) and is inflated with
+`DecompressionStream`, because hosting does not compress octet-stream.
+`scripts/roads/build-road-extract.ts` writes to `artifacts/roads/staging/`
+and refuses to write unless `JSON.stringify(decoded)` equals the source text;
+the integrator publishes to `public/data/extracts/amsterdam/roads-v2/` and
+must regenerate whenever `streets-routing.json` changes. `osm-loader.js
+_fetchRoadExtract` reads it under `?roads=bin` and falls back to the JSON on
+any failure; without the flag the JSON path is unchanged. Tests: 5 in
+`roadExtract.test.ts` (full Amsterdam round trip, 6 sentinel ways pinned by
+id), in `test:city-startup`; `road-graph-route-identity.ts --roads=<bin>`:
+graph (102,089 nodes, 322,568 edges), connectors, 3 trees, 71 pairs × 4
+planners, 8 area configs and `sampleRoutes(80, 7)` byte-equal. Size 2.84 →
+1.47 MB gzip (−48 %; 15.1 → 1.98 MB raw). Fetch + decode cold in Chrome:
+localhost 196 → 32 ms, 20 Mbit/40 ms 1,268 → 662 ms. Time to ride, medians
+of 3, JSON → binary: submit → rider 1,808 → 1,595 ms localhost and 6,310 →
+5,160 at 20 Mbit; submit → racing 3,427 → 2,728 and 8,208 → 7,134;
+`fetchRoads` 231 → 97 and 4,178 → 2,499. Held: skipping the
+quantise-and-stitch pass at build time, because junctions merge by
+`Math.round(world / 18)` in a world space projected about each ride's own
+centre, so precompiled junctions would be right for one centre only; doing
+it needs a fixed projection centre, which changes routes (decision). Next
+owner at 20 Mbit: `squares.json` and `transit-network.json` load one after
+the other inside `fetchRoads`.
+
 **The landmark highlight no longer rebuilds its shaders every frame; the material registry is keyed per family (2026-10-31, #129, materials lane round 2).**
 Program churn: `setActiveLandmark` runs every frame (152 calls in 10 s) and
 `HighlightMarker` plus its outline/roof passes rebuilt their `ShaderMaterial`s
