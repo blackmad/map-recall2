@@ -119,10 +119,19 @@ test('engine camera matches MapLibre within the parity budget along the intro an
       center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch(), maxPitch: 85,
       elevation: map.transform.elevation ?? 0,
     });
+    // What MapLibre draws: its view-projection matrix lifts the camera by the centre elevation, which `map.project`
+    // (`_pixelMatrix`) leaves out (engine-parity.spec.ts); off by ~5 px on the iPhone ride's deck.
+    const T = map.transform, vp = T._viewProjMatrix ?? T.currentTransform?._viewProjMatrix, ws = T.worldSize;
+    const MC = (window as any).maplibregl.MercatorCoordinate;
+    const drawn = (lng: number, lat: number) => {
+      const q = MC.fromLngLat([lng, lat], 0), X = q.x * ws, Y = q.y * ws;
+      const cx = vp[0] * X + vp[4] * Y + vp[12], cy = vp[1] * X + vp[5] * Y + vp[13], cw = vp[3] * X + vp[7] * Y + vp[15];
+      return { x: (cx / cw + 1) / 2 * el.clientWidth, y: (1 - cy / cw) / 2 * el.clientHeight };
+    };
     const out: number[] = [];
     for (const [fx, fy] of [[0.5, 0.5], [0.2, 0.8], [0.8, 0.8], [0.5, 0.95], [0.3, 0.6], [0.7, 0.55]]) {
       const ll = map.unproject([fx * el.clientWidth, fy * el.clientHeight]);
-      const a = map.project(ll), b = cam.project([ll.lng, ll.lat]);
+      const a = drawn(ll.lng, ll.lat), b = cam.project([ll.lng, ll.lat]);
       if (b.depth > 0) out.push(Math.hypot(a.x - b.x, a.y - b.y));
     }
     return [map.getZoom(), map.getPitch(), Math.max(...out)];
