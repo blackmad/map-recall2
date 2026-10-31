@@ -126,14 +126,18 @@ export const COPING_LIP_M = 0.18;
 export const COPING_OVER_M = 0.08;
 
 /**
- * Colours (sRGB), after the aimed panoramas (data.amsterdam.nl, IJ-tunnel south ramp): weathered in-situ concrete,
- * stained dark at the foot (run-off, tyre spray) and paler toward the top, under a pale precast coping that draws the
- * cut's edge as a line at chase distance; the land-side face of the parapet is the paler concrete; the mouth is dark.
+ * Colours (sRGB): weathered in-situ concrete, stained dark at the foot (run-off, tyre spray) and paler toward the
+ * top, under a dark grey coping. The panoramas (data.amsterdam.nl, IJ-tunnel south ramp) show a paler face in
+ * sunlight, but at the chase camera's distance on a phone the cut reads only by contrast with the pale pavement around
+ * it, so the face and coping are kept darker than the photo. The land-side face of the parapet is the paler concrete;
+ * the mouth is dark.
  */
 export const TUNNEL_COLOURS = {
-  wallFoot: [0.4, 0.395, 0.38] as RGB, wallTop: [0.68, 0.675, 0.65] as RGB, coping: [0.9, 0.895, 0.87] as RGB, parapet: [0.64, 0.63, 0.6] as RGB,
-  /** The parapet's top: weathered mid-grey, so the pale lip and the pale pavement behind it frame a dark line from above. */
-  cap: [0.5, 0.495, 0.48] as RGB,
+  wallFoot: [0.2, 0.195, 0.185] as RGB, wallTop: [0.38, 0.375, 0.36] as RGB, coping: [0.42, 0.415, 0.4] as RGB, parapet: [0.64, 0.63, 0.6] as RGB,
+  /** The parapet's top: dark weathered grey. From the chase camera the wall nearest it shows only its top, so the
+   *  coping and cap draw the trench's edge as a dark line against the pale pavement (round 4: a pale coping and a
+   *  pale face vanished into the quay on the phone frame). */
+  cap: [0.34, 0.335, 0.32] as RGB,
   /** The shade band: darkest at the wall's foot, its outer edge still darker than the carriageway. */
   shadeFoot: [0.07, 0.07, 0.08] as RGB, shadeEdge: [0.2, 0.2, 0.21] as RGB,
   mouth: [0.04, 0.045, 0.05] as RGB, headwall: [0.52, 0.515, 0.495] as RGB,
@@ -195,6 +199,12 @@ export interface Cut {
    * merged), and the neighbour's floor there. The gap (a median between carriageways) lies on the floors.
    */
   gapL?: number[]; gapR?: number[]; nfL?: number[]; nfR?: number[];
+  /**
+   * A raised median toward a neighbouring cut of the same trench that did not merge (its relief stands over
+   * MERGE_BERM_M): the width from this strip's edge to the neighbour's, metres (0: none). Drawn as grass on the land
+   * between the two walls (cutMedianQuads).
+   */
+  medL?: number[]; medR?: number[];
   portals: CutPortal[];
   bbox: [number, number, number, number];
 }
@@ -697,9 +707,10 @@ export function mergeNeighbours(cuts: readonly Cut[], ground?: HeightFn): number
   for (const c of cuts) {
     const G = MERGE_WIDE_GAP_M, n = c.x.length, others = cuts.filter(o => o !== c && o.bbox[0] <= c.bbox[2] + G && o.bbox[2] >= c.bbox[0] - G && o.bbox[1] <= c.bbox[3] + G && o.bbox[3] >= c.bbox[1] - G);
     c.gapL = new Array(n).fill(0); c.gapR = new Array(n).fill(0); c.nfL = c.floor.slice(); c.nfR = c.floor.slice();
+    c.medL = new Array(n).fill(0); c.medR = new Array(n).fill(0);
     if (!others.length) continue;
     for (const sg of [1, -1] as const) {
-      const gap = sg > 0 ? c.gapL : c.gapR, nf = sg > 0 ? c.nfL : c.nfR;
+      const gap = sg > 0 ? c.gapL : c.gapR, nf = sg > 0 ? c.nfL : c.nfR, med = sg > 0 ? c.medL : c.medR;
       for (let i = 0; i < n; i++) {
         const [nx, ny] = normalAt(c, i), r = sg > 0 ? c.left[i] : c.right[i];
         for (let d = 0.25; d <= MERGE_WIDE_GAP_M; d += 0.5) {
@@ -714,7 +725,7 @@ export function mergeNeighbours(cuts: readonly Cut[], ground?: HeightFn): number
           if (Math.abs(hit.floor - c.floor[i]) > MERGE_FLOOR_M) break;
           let rise = 0;
           if (ground) for (let e = 0.5; e < d; e += 1) rise = Math.max(rise, ground(c.x[i] + nx * sg * (r + e), c.y[i] + ny * sg * (r + e)) - Math.max(hit.floor, c.floor[i]));
-          if (rise > (d > MERGE_GAP_M ? MERGE_FLAT_M : MERGE_BERM_M)) break;
+          if (rise > (d > MERGE_GAP_M ? MERGE_FLAT_M : MERGE_BERM_M)) { if (d <= MERGE_GAP_M) med[i] = d; break; }
           gap[i] = Math.max(d, 0.01); nf[i] = hit.floor;
           break;
         }
@@ -841,12 +852,13 @@ export function cutMedianQuads(c: Cut, owns: (x: number, y: number) => boolean):
   const out: Vec2[][] = [];
   if (!c.gapL || !c.gapR) return out;
   for (const sg of [1, -1] as const) {
-    const gap = sg > 0 ? c.gapL : c.gapR, reach = sg > 0 ? c.left : c.right;
+    const gap = sg > 0 ? c.gapL : c.gapR, med = (sg > 0 ? c.medL : c.medR) ?? [], wall = sg > 0 ? c.wallL : c.wallR, reach = sg > 0 ? c.left : c.right;
     for (let i = 0; i + 1 < c.x.length; i++) {
-      if (gap[i] < MEDIAN_GRASS_MIN_M || gap[i + 1] < MEDIAN_GRASS_MIN_M) continue;
       if (!owns((c.x[i] + c.x[i + 1]) / 2, (c.y[i] + c.y[i + 1]) / 2)) continue;
       const at = (k: number, extra: number): Vec2 => { const [nx, ny] = normalAt(c, k), r = reach[k] + extra; return [c.x[k] + nx * sg * r, c.y[k] + ny * sg * r]; };
-      out.push([at(i, 0), at(i + 1, 0), at(i + 1, gap[i + 1] / 2 + 0.05), at(i, gap[i] / 2 + 0.05)]);
+      if (gap[i] >= MEDIAN_GRASS_MIN_M && gap[i + 1] >= MEDIAN_GRASS_MIN_M) out.push([at(i, 0), at(i + 1, 0), at(i + 1, gap[i + 1] / 2 + 0.05), at(i, gap[i] / 2 + 0.05)]);
+      // A raised median between two walls: grass from behind this wall's parapet to the middle.
+      else if (wall[i] && wall[i + 1] && Math.min(med[i] ?? 0, med[i + 1] ?? 0) / 2 - PARAPET_T >= MEDIAN_GRASS_MIN_M / 2) out.push([at(i, PARAPET_T), at(i + 1, PARAPET_T), at(i + 1, med[i + 1] / 2 + 0.05), at(i, med[i] / 2 + 0.05)]);
     }
   }
   return out;

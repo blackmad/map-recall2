@@ -1,7 +1,10 @@
 // Screenshots of the named tunnel sites in the game (chase view, rider frozen at the place), for before/after review.
 //   PORT=4417 node scripts/tunnel-places-shots.mjs <tag> [only,ids]   -> artifacts/tunnel-places/<tag>/<id>.png
 // PHONE=1 shoots the phone frame (390×844, touch) into <tag>-phone/.
-// BUNDLES_DIR=<dir> serves bundles built with `node scripts/build-3d-bundles.mjs --only=own-ground-game,own-ground-worker --outdir=<dir>`.
+// BUNDLES_DIR=<dir> serves bundles built with `node scripts/build-3d-bundles.mjs --only=own-ground-game,own-ground-worker --outdir=<dir>`
+// for the page's own requests only: Chrome loads a dedicated worker's script outside Playwright's routes, so the
+// own-ground worker (which builds the cells, walls included) stays the checkout's. To shoot other worker code, stage the
+// bundles into public/canal-drive/js for the run and restore them from git after (never commit them from a lane).
 // The sites are the tunnel lane's survey (2026-10-30): motor tunnel approaches the rider cannot use (A) and underpasses they can (B).
 import { chromium } from 'playwright';
 import fs from 'node:fs';
@@ -15,7 +18,7 @@ export const PLACES = {
   'ij-tunnel-south': [4.9112, 52.3713, 25],              // Prins Hendrikkade by the Foeliestraat, looking up the ramp
   'ij-tunnel-portal-quay': [4.91285, 52.37270, 345],     // the quay path east of the ramp, toward the portal
   'piet-heintunnel-west': [4.93455, 52.37290, 100],     // beside the west ramp on the Piet Heinkade, looking east to the portal
-  'piet-heintunnel-east': [4.96030, 52.37246, 288],     // east of the east ramp's south carriageway, looking west down the trench to the sun-screen portal
+  'piet-heintunnel-east': [4.95889, 52.37275, 288],     // on the east ramp's south carriageway (the regression's probe), looking west to the sun-screen portal
   'spaarndammertunnel-west': [4.8728, 52.3937, 110],
   'michiel-de-ruijtertunnel-west': [4.8962, 52.3812, 120],
   // B: rideable underpasses
@@ -31,7 +34,7 @@ if (process.argv[1].endsWith('tunnel-places-shots.mjs')) {
   const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
   const page = await browser.newPage(phone ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true } : { viewport: { width: 1280, height: 800 } });
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-  if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+  if (process.env.BUNDLES_DIR) await page.context().route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
