@@ -325,7 +325,10 @@ test('policy: heights to the centimetre; near-collinear vertices within 5 cm go,
 
 test('policy: published sentinel cells keep ids, order, first vertices, party walls and every shared corner; area change <= 1%', () => {
   for (const key of [...new Set(SENTINELS.map(s => s.cell))]) {
-    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report);
+    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report, { collinear: true });
+    // The default policy (collinear removal held, #130) leaves every footprint exactly as it was.
+    const heightsOnly = applyPolicy(cell);
+    heightsOnly.buildings.forEach((b, k) => assert.equal(b.geometry, cell.buildings[k].geometry, `${b.id}: footprint untouched by default`));
     assert.equal(p.buildings.length, cell.buildings.length);
     const before = sharedVertices(cell.buildings.map(b => b.geometry)), after = sharedVertices(p.buildings.map(b => b.geometry));
     assert.deepEqual([...after].sort(), [...before].sort(), `${key}: shared corners unchanged`);

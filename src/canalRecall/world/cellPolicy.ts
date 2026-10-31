@@ -108,6 +108,13 @@ export function areaM2(g: Geometry): number {
 }
 
 export const MAX_AREA_CHANGE = 0.01;
+/** Which parts of the policy a compile applies; recorded as index.policyOptions so world:verify applies the same.
+ *  Collinear-vertex removal is off by default (held 2026-10-31, #130: 0.14 MB, no pixel proof yet). */
+export type PolicyOptions = { collinear: boolean };
+export const DEFAULT_POLICY_OPTIONS: PolicyOptions = { collinear: false };
+/** index.policyOptions as written (absent on the first policy stagings, which removed collinear vertices). */
+export const policyOptionsOf = (index: { policy?: unknown; policyOptions?: Partial<PolicyOptions> }): PolicyOptions | null =>
+  index.policy ? { collinear: index.policyOptions?.collinear ?? true } : null;
 export type PolicyReport = { buildings: number; heightsRounded: number; footprintsSimplified: number; verticesBefore: number; verticesAfter: number; keptForArea: number; areaChangeM2: number[]; areaChangeRel: number[] };
 export const emptyPolicyReport = (): PolicyReport => ({ buildings: 0, heightsRounded: 0, footprintsSimplified: 0, verticesBefore: 0, verticesAfter: 0, keptForArea: 0, areaChangeM2: [], areaChangeRel: [] });
 const vertexCount = (g: Geometry) => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates).reduce((n, rings) => n + rings.reduce((m, r) => m + r.length, 0), 0);
@@ -127,13 +134,13 @@ export function policyFootprint(g: Geometry, shared: Set<string>, report?: Polic
 
 /** The cell as the policy writes it (a new cell; the input is not modified). Apply it once, to a cell compiled
  *  without it: simplifying an already simplified footprint measures against the simplified vertices. */
-export function applyPolicy(cell: Cell, report: PolicyReport = emptyPolicyReport()): Cell {
-  const shared = sharedVertices(cell.buildings.map(b => b.geometry));
+export function applyPolicy(cell: Cell, report: PolicyReport = emptyPolicyReport(), options: PolicyOptions = DEFAULT_POLICY_OPTIONS): Cell {
+  const shared = options.collinear ? sharedVertices(cell.buildings.map(b => b.geometry)) : new Set<string>();
   const buildings = cell.buildings.map(b => {
     report.buildings++;
     const attr = quantiseHeights(b.attr), styled = b.styled && quantiseHeights(b.styled);
     if (attr !== b.attr || styled !== b.styled) report.heightsRounded++;
-    const geometry = policyFootprint(b.geometry, shared, report);
+    const geometry = options.collinear ? policyFootprint(b.geometry, shared, report) : b.geometry;
     const out = { ...b, geometry, attr };
     if (styled) out.styled = styled;
     return out;
