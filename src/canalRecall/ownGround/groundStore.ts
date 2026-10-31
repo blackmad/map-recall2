@@ -511,12 +511,23 @@ export class GroundStore {
     // Over water opened under the way (withOpenings), the deck stops where the water beside the bridge begins: a bundle's
     // half-width or the road edges can reach past it (the De Clercqstraat's four ways, 41 m, over a 30 m bridge).
     let deckIndex: RoadIndex | null = null;
+    // Only the polygons deckEdgeSides can probe: each opened profile's box padded by its reach (onDeck asks which
+    // polygons contain a point, so the rest cannot answer). The full 3x3 earcut was a 100+ ms task while riding (#129).
+    let deckWithin: Rect | null = null;
+    for (const profile of profiles) {
+      const open = this.wayOpeningSides.get(profile.id);
+      if (!open) continue;
+      const r = Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M + 2, b = profile.bbox;
+      deckWithin = deckWithin
+        ? [Math.min(deckWithin[0], b[0] - r), Math.min(deckWithin[1], b[1] - r), Math.max(deckWithin[2], b[2] + r), Math.max(deckWithin[3], b[3] + r)]
+        : [b[0] - r, b[1] - r, b[2] + r, b[3] + r];
+    }
     for (const profile of profiles) {
       const open = this.wayOpeningSides.get(profile.id);
       if (!open) continue;
       // The survey's deck-level polygons outline the bridge (wayDecks.ts deckEdgeSides); the opening's water is the cap.
       if (this.options.roads === true) {
-        deckIndex ??= new RoadIndex(await Promise.all(around.map(k => this.roadCell(k))));
+        deckIndex ??= new RoadIndex([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined);
         const idx = deckIndex, e = deckEdgeSides(profile, (x, y) => idx.onDeck(x, y), Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M);
         if (e[0] !== undefined || e[1] !== undefined) setDeckSides(profile, [e[0] ?? open[0], e[1] ?? open[1]]);
         else capDeckSides(profile, open);
