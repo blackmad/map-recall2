@@ -35,6 +35,7 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
+import { LandmarkHighlight } from './landmarkHighlight';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -141,6 +142,7 @@ export class OwnWorldView {
   readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
   readonly _labels: LabelLayer;
   _highlightMarker: any = null;
+  private readonly landmarkHighlight = new LandmarkHighlight();
   private quizQuiet = false;
   private spoilersSuspended = false;
   private loader: LoaderFrame | null = null;
@@ -701,11 +703,17 @@ export class OwnWorldView {
     }
     // Detailed tiles light their own mesh; the streamed prisms stay plain.
     if (detailed) ids = [];
-    const focus = landmark && landmark.lngLat ? { lngLat: landmark.lngLat, ids } : null;
-    this._threeBuildings?.setHighlighted?.(ids, focus);
-    if (modelLit && focus) { this._highlightMarker?.set(this._threeBuildings?.highlightFootprint?.(ids) || focus); this.host.triggerRepaint(); return; }
-    this._highlightMarker?.set(focus ? (this._threeBuildings?.highlightFootprint?.(ids) || focus) : null);
-    this.host.triggerRepaint();
+    // By value: relight() and the game re-send the same landmark (engine/landmarkHighlight.ts). A landmark model
+    // lighting it (`modelLit`) still gets the marker, so it does not change what is sent.
+    void modelLit;
+    const tb = this._threeBuildings;
+    const sent = this.landmarkHighlight.apply(ids, landmark && Array.isArray(landmark.lngLat) ? [landmark.lngLat[0], landmark.lngLat[1]] : null, {
+      owner: tb,
+      setHighlighted: (lit, focus) => tb?.setHighlighted?.(lit, focus),
+      footprint: lit => tb?.highlightFootprint?.(lit) || null,
+      marker: focus => this._highlightMarker?.set(focus),
+    });
+    if (sent) this.host.triggerRepaint();
   }
 
   /** Prominent extract landmarks as POI labels, and the neighbourhood boundaries as lines (vector-map.js setPlaces). */
