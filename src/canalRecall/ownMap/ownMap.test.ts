@@ -173,3 +173,19 @@ test('style: MapLibre-like exponential stops', () => {
   near(interpolateStops([[14, 2], [16, 8]], 15), 4, 1e-9);
   near(interpolateStops([[14, 2], [16, 8]], 10), 2, 1e-9);
 });
+
+test('footprints: the worker arrays match three.js colour management and extrude every ring', async () => {
+  const THREE = await import('three');
+  const { footprintArrays, linearRgb } = await import('./footprints');
+  for (const hex of ['#e3dcd2', '#cbbfb2', '#000000', '#ffffff']) {
+    const c = new THREE.Color(hex), [r, g, b] = linearRgb(hex);
+    assert.ok(Math.abs(c.r - r) < 1e-6 && Math.abs(c.g - g) < 1e-6 && Math.abs(c.b - b) < 1e-6, hex);
+  }
+  const square = { properties: { height: 12 }, geometry: { type: 'Polygon', coordinates: [[[4.9, 52.37], [4.9001, 52.37], [4.9001, 52.3701], [4.9, 52.3701], [4.9, 52.37]]] } };
+  const a = footprintArrays([square], (lng, lat) => [(lng - 4.9) * 1e5, (lat - 52.37) * 1e5], '#e3dcd2', '#cbbfb2');
+  // 5 roof vertices (the ring closes on itself) + 4 walls × 4; a roof of 2 triangles + 4 walls × 2.
+  assert.equal(a.position.length / 3, 5 + 16);
+  assert.equal(a.index.length, 2 * 3 + 8 * 3);
+  assert.ok(a.index instanceof Uint16Array);
+  assert.equal(Math.max(...Array.from(a.position).filter((_, i) => i % 3 === 2)), 12);
+});

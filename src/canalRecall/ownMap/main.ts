@@ -17,7 +17,7 @@ import { fromLocal, toLocal, type Vec2 } from './frame';
 import { decodeOverview, type OverviewData, type OverviewFile, STREET_CLASSES, type StreetClass } from './overviewFormat';
 import { cameraFrame, cameraForPoints, easeCamera, project, unproject, visibleBounds, type CameraState, type Viewport } from './mapCamera';
 import { bindGestures, clampCamera, type CameraLimits } from './gestures';
-import { fillMaterial, footprintGeometry, handover, lineGeometry, lineMaterial, polygonGeometry, rasterMaterial, tileQuadGeometry, z14TilesFor, type FootprintFeature } from './layers';
+import { fillMaterial, footprintGeometry, footprintGeometryFromArrays, handover, lineGeometry, lineMaterial, polygonGeometry, rasterMaterial, tileQuadGeometry, z14TilesFor, type FootprintFeature } from './layers';
 import { BUILDING_RASTER_FADE, FOOTPRINT_MIN_ZOOM, MIN_LINE_PX, NEAR_FIELD_FADE, PALETTE, ROUTE_WIDTH, STREET_STYLE, fade, interpolateStops } from './style';
 import { drawPlacedLabels, placeLabels, type LabelCandidate, type LabelKind, type LabelPaint } from './labels';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from './labelPolicy';
@@ -28,6 +28,7 @@ import { boxFor, buildNearField, waterFromCells } from './nearField';
 import { cellsNear, lngLatToLocal, validateIndex, type WaterCell } from '../elevation/elevationData';
 import type { OsmGroundExtract } from '../ownGround/osmGround';
 import { lineLength } from './geometry';
+import type { FootprintReply, FootprintRequest } from './footprintWorker';
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const EXTRACT = '../data/extracts/amsterdam';
@@ -37,7 +38,7 @@ const coarse = matchMedia('(pointer: coarse)').matches;
 const opts = {
   view: q.get('view') ?? 'city',
   route: q.get('route') ?? 'game-desktop',
-  path: flag('path', false), near: flag('near', true), mini: flag('mini', true), hud: flag('hud', true),
+  path: flag('path', false), near: flag('near', true), mini: flag('mini', true), hud: flag('hud', true), worker: flag('worker', true),
   dpr: Number(q.get('dpr')) || Math.min(devicePixelRatio || 1, coarse ? 1.5 : 2),
   labelsAll: q.get('labels') === 'all', quiet: flag('quiet', false),
   ask: q.get('ask') ?? 'Kinkerstraat',
@@ -187,9 +188,39 @@ async function loadRoute(): Promise<void> {
   status.route = { points: routeLocal.length, lengthM: Math.round(lineLength(routeLocal)), fixture: !!fixture };
 }
 
-// --- Vector footprints (z14 building tiles) near the view -------------------
+// --- Vector footprints (z14 building tiles), built in a worker -----------------
+// `?worker=0` builds them on the main thread (the old path, for A/B).
+const FOOT_TOP = '#e3dcd2', FOOT_WALL = '#cbbfb2';
 const footprintTiles = new Map<string, THREE.Mesh | null>();
 const footprintGroup = new THREE.Group(); scene.add(footprintGroup);
+let worker: Worker | null = null, workerSerial = 0;
+const pendingReplies = new Map<number, (r: FootprintReply) => void>();
+if (opts.worker) {
+  try {
+    worker = new Worker(new URL('js/own-map-footprints.worker.js', location.href));
+    worker.onmessage = (e: MessageEvent<FootprintReply>) => { pendingReplies.get(e.data.id)?.(e.data); pendingReplies.delete(e.data.id); };
+  } catch { worker = null; }
+}
+status.footprintWorker = !!worker;
+async function footprintTile(key: string): Promise<THREE.BufferGeometry> {
+  const url = new URL(`${EXTRACT}/building-tiles/14/${key}.geojson.gz`, location.href).href;
+  if (worker) {
+    const id = ++workerSerial;
+    const reply = await new Promise<FootprintReply>(resolve => { pendingReplies.set(id, resolve); worker!.postMessage({ id, url, top: FOOT_TOP, wall: FOOT_WALL } satisfies FootprintRequest); });
+    if (!reply.ok) throw new Error(reply.error);
+    bytes.buildingTiles = (bytes.buildingTiles ?? 0) + reply.bytes;
+    ms.footprintWorkerBuild = (ms.footprintWorkerBuild ?? 0) + Math.round(reply.buildMs);
+    const t = performance.now();
+    const g = footprintGeometryFromArrays(reply);
+    ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
+    return g;
+  }
+  const fc = await gunzipJson<{ features: FootprintFeature[] }>(await fetchBytes(url, 'buildingTiles'));
+  const t = performance.now();
+  const g = footprintGeometry(fc.features, toLocal, FOOT_TOP, FOOT_WALL);
+  ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
+  return g;
+}
 function updateFootprints(bounds: [number, number, number, number]): void {
   if (cam.zoom < FOOTPRINT_MIN_ZOOM) { footprintGroup.visible = false; return; }
   footprintGroup.visible = true;
@@ -199,12 +230,8 @@ function updateFootprints(bounds: [number, number, number, number]): void {
     footprintTiles.set(key, null);
     void (async () => {
       try {
-        const b = await fetchBytes(`${EXTRACT}/building-tiles/14/${key}.geojson.gz`, 'buildingTiles');
-        const fc = await gunzipJson<{ features: FootprintFeature[] }>(b);
-        const t = performance.now();
-        const m = new THREE.Mesh(footprintGeometry(fc.features, toLocal, '#e3dcd2', '#cbbfb2'), new THREE.MeshBasicMaterial({ vertexColors: true }));
+        const m = new THREE.Mesh(await footprintTile(key), new THREE.MeshBasicMaterial({ vertexColors: true }));
         m.renderOrder = 50;
-        ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
         footprintTiles.set(key, m); footprintGroup.add(m);
       } catch { /* tile outside the extract */ }
     })();

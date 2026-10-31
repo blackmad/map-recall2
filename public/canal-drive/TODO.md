@@ -208,12 +208,19 @@ doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
 programs (37–39 > 32)** by decision until the landmark materials are merged.
 Hand-back (2) merged 2026-10-31 (`5bc4bc0dc`, HISTORY "`?engine=own` now beats
 MapLibre on frame CPU"): own 4.1–5.1 vs MapLibre 7.6–8.3 ms owned frame CPU,
-step 6 legacy layers gone, `setLoop` hook, Leaflet picker deleted. **Integrator
-next:** wire `vectorMap.setLoop` in `game.js` under `?engine=own` and
-`CanalRecallUi.stepSteer` in `car.js`; drop the `leaflet`/`@types/leaflet`
-dependencies at the flip. L1 next: the v2 overview extract (rail, footway,
-landuse) and footprint worker re-port; the own-ground material variants go to
-the P4 materials lane (programs 36 > 32).
+step 6 legacy layers gone, `setLoop` hook (wired in `game.js` under the flag,
+`972302ce4`), Leaflet picker deleted. Hand-back (3) merged 2026-10-31
+(HISTORY "The own-map overview carries rail, footways, landuse and piers"):
+v2 overview extract published (2.13 MB gz), footprint worker for the lab page,
+fair A/B 5 MapLibre 8.56 vs own v1 4.69 vs own v2 3.14 ms owned frame CPU;
+the materials lane runs from `lane-materials-20261031.md` (programs 37 > 32,
+expected 36 → ~18–21 after the uniform merge). **Integrator next:** merge the
+materials lane and re-run `engine-own` at budget 32; `CanalRecallUi.stepSteer`
+in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
+dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
+px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
+own-map extracts with water, `_waitForMapSettle` replacement) and a fair A/B
+after each.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -281,10 +288,17 @@ met with a GC-forced sample (303 MB main at ride start, world below default
 at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
 cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
 (`922496ea7`, HISTORY "The road graph is flat arrays"): road-graph heap
-50 → 8 MB (+7.3 MB typed arrays), routes identical. **Not met:** time to
-ride ≤ 4 s (5.56 s median; the graph build is 1.4 s, the rest is
-osm-loader/projection/surface: profile submit → player next); the ≤ 4 MB
-bytes target.
+50 → 8 MB (+7.3 MB typed arrays), routes identical. **Step 5b merged
+2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
+a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
+per-step table; navigation → racing 5.41 → 4.75 s. **Not met:** time to ride
+≤ 4 s. What remains, in order: the overview landing animation after the rider
+appears (~1.3–1.5 s; shorten or overlap it is a product call, asked as a
+needs-david issue), building-tile CPU (~0.9 s) competing with the road builds
+on the main thread (hold tiles until road setup is done, or give the road
+builds priority), `buildRoadSegmentsAsync` (0.4–0.8 s), and the route
+catalogue and extract fetches (~0.6 s each cold) running serially. Also not
+met: the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
 #131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs
