@@ -26,7 +26,8 @@
 // the land sampled every FLOOR_SAMPLE_M along it (centre and both top edges) and both its stations raised by the
 // worst deficit, and each toe stands `toeLift` over the highest land along its edge.
 
-import { emptyMesh, vertexNormals, type MeshArrays } from './drape.js';
+import earcut from 'earcut';
+import { emptyMesh, vertex, vertexNormals, type MeshArrays } from './drape.js';
 import { levelAt, type WayLevel } from './railProfile.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
@@ -41,7 +42,8 @@ export const RAIL_BRIDGE = 16;
 /** Added to the kind code of a siding, yard track, spur or crossover (drawn a hair lower, under the running lines). */
 export const RAIL_SERVICE = 32;
 
-export interface RailCell { version: typeof RAIL_VERSION; key: string; w: number[] }
+/** `p` (optional): the cell's railway platforms (railPlatforms below), each `n, x0, y0, …` in decimetres. */
+export interface RailCell { version: typeof RAIL_VERSION; key: string; w: number[]; p?: number[] }
 export interface RailManifest { version: typeof RAIL_VERSION; cells: string[]; source: string; attribution: string; counts?: Record<string, number> }
 export interface RailWay { kind: RailKind; bridge: boolean; service: boolean; points: Vec2[] }
 
@@ -78,6 +80,38 @@ export function decodeRail(cell: RailCell): RailWay[] {
     i += 2 + 2 * n;
     const kind = KIND_OF[code & 15];
     if (kind && points.length >= 2) out.push({ kind, bridge: (code & RAIL_BRIDGE) !== 0, service: (code & RAIL_SERVICE) !== 0, points });
+  }
+  return out;
+}
+
+/**
+ * A railway platform above ground (OSM railway=platform area, outer ring, game frame). Under a station roof AHN has no
+ * ground and the 2 m field is a fill from the rim (Centraal's hall: the quay's +1.2 against platforms at +4.5); the
+ * platforms say where the tracks stand at the station's level (railProfile.ts) and are drawn as blocks (platformMeshes).
+ */
+export interface RailPlatform { ring: Vec2[] }
+
+/** The platform's tags kept: an area railway=platform not underground (layer or level below 0, location underground, a tunnel). */
+export function isRailPlatform(tags: Record<string, string>): boolean {
+  if (tags.railway !== 'platform') return false;
+  if (tags.location === 'underground' || (tags.tunnel && tags.tunnel !== 'no')) return false;
+  const low = (v: string | undefined) => (v ?? '0').split(';').some(x => Number(x) < 0);
+  return !low(tags.layer) && !low(tags.level);
+}
+
+export function encodePlatforms(platforms: readonly RailPlatform[]): number[] {
+  const out: number[] = [];
+  for (const p of platforms) { out.push(p.ring.length); for (const [x, y] of p.ring) out.push(Math.round(x * 10), Math.round(y * 10)); }
+  return out;
+}
+
+export function decodePlatforms(cell: RailCell): RailPlatform[] {
+  const out: RailPlatform[] = [], w = cell.p ?? [];
+  for (let i = 0; i < w.length;) {
+    const n = w[i], ring: Vec2[] = [];
+    for (let j = 0; j < n; j++) ring.push([w[i + 1 + 2 * j] / 10, w[i + 2 + 2 * j] / 10]);
+    i += 1 + 2 * n;
+    if (ring.length >= 3) out.push({ ring });
   }
   return out;
 }
@@ -172,7 +206,7 @@ export function yardReach(gap: number): number | null {
 }
 
 export interface RailMeshes { ballast: MeshArrays; track: MeshArrays; slab: MeshArrays; stats: RailBuildStats }
-export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number>; /** Bridge metres drawn on the relief without a slab (railProfile.ts `plain`: no approach places the deck). */ plainBridgeMetres?: number; /** Metres on a slab off a bridge (the envelope lifted the track over RAISED_M). */ raisedMetres?: number; /** railProfile.ts stats. */ profile?: import('./railProfile.js').RailProfileStats }
+export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number>; /** Bridge metres drawn on the relief without a slab (railProfile.ts `plain`: no approach places the deck). */ plainBridgeMetres?: number; /** Metres on a slab off a bridge (the envelope lifted the track over RAISED_M). */ raisedMetres?: number; /** railProfile.ts stats. */ profile?: import('./railProfile.js').RailProfileStats; /** platformMeshes stats. */ platforms?: PlatformBuildStats }
 
 export interface RailBuildInput {
   ways: readonly RailWay[];
@@ -194,6 +228,8 @@ export interface RailBuildInput {
   legacy?: boolean;
   /** Points whose floor is measured (a tunnel cut's box): no floor raise there (the trench's sides are not under the bed). */
   measured?: (x: number, y: number) => boolean;
+  /** Points on a platform (railProfile.ts platformTest): AHN's ground there is the platform's top, not land under the bed. */
+  onPlatform?: (x: number, y: number) => boolean;
 }
 
 /** Split every segment into equal pieces of at most `step` metres (deterministic per way, so neighbour cells meet). */
@@ -270,9 +306,10 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
       let deficit = 0;
       for (let j = 0; j <= k; j++) {
         const f = j / k, x = ax + (bx - ax) * f, y = ay + (by - ay) * f, chord = zb(i) * (1 - f) + zb(i + 1) * f;
-        for (const o of [-S.topHalf, 0, S.topHalf]) deficit = Math.max(deficit, input.height(x + nx * o, y + ny * o) - chord);
-        toeL[i] = Math.max(toeL[i], input.height(x + nx * S.toeHalf, y + ny * S.toeHalf));
-        toeR[i] = Math.max(toeR[i], input.height(x - nx * S.toeHalf, y - ny * S.toeHalf));
+        const land = (o: number) => { const px = x + nx * o, py = y + ny * o; return o && input.onPlatform?.(px, py) ? -Infinity : input.height(px, py); };
+        for (const o of [-S.topHalf, 0, S.topHalf]) deficit = Math.max(deficit, land(o) - chord);
+        toeL[i] = Math.max(toeL[i], land(S.toeHalf));
+        toeR[i] = Math.max(toeR[i], land(-S.toeHalf));
       }
       if (!flat[i]) raise[i] = Math.max(raise[i], deficit);
       if (!flat[i + 1]) raise[i + 1] = Math.max(raise[i + 1], deficit);
@@ -408,3 +445,80 @@ export function crossingTest(segments: readonly [Vec2, Vec2][], cellM = 32): (a:
 
 /** Highway classes whose surface a track crosses at grade (a level crossing): carriageways and the paths beside them. */
 export const AT_GRADE_HIGHWAYS: ReadonlySet<string> = new Set(['motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service', 'road', 'busway', 'pedestrian', 'cycleway', 'footway', 'path', 'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link']);
+
+/** NS platform height over the top of rail, metres (ProRail standard 0.76 m). */
+export const PLATFORM_HEIGHT_M = 0.76;
+/** A platform outline point takes the level of the heavy-rail track within this distance, metres (centre to edge 1.65-1.75 m, plus a wide platform's far side seen from its own track). */
+export const PLATFORM_TRACK_M = 12;
+/** Outline points every this many metres at most, so the top follows the track's level. */
+export const PLATFORM_STEP_M = 10;
+/** Concrete platform top, its edge band and the wall under it (sRGB). */
+export const PLATFORM_COLOURS = { top: [0.64, 0.63, 0.6] as [number, number, number], wall: [0.5, 0.49, 0.47] as [number, number, number] };
+
+export interface PlatformBuildStats { platforms: number; skipped: number }
+
+/**
+ * Railway platforms beside heavy-rail track as blocks (vertex-coloured, the deckBody layer): the top `PLATFORM_HEIGHT_M`
+ * over the rails of the nearest track (its level from railProfile.ts), walls down into the land. A platform with no
+ * heavy-rail track beside it (a metro or tram stop: their heights differ and are not surveyed here) is left out.
+ * A platform belongs to the cell holding its outline's mean point.
+ */
+export function platformMeshes(platforms: readonly RailPlatform[], ways: readonly RailWay[], levels: ReadonlyMap<RailWay, WayLevel>, height: HeightFn, inCell: (x: number, y: number) => boolean): { mesh: MeshArrays; stats: PlatformBuildStats } {
+  const mesh = emptyMesh(true), stats: PlatformBuildStats = { platforms: 0, skipped: 0 };
+  const heavy = ways.filter(w => (w.kind === 'rail' || w.kind === 'narrow_gauge') && levels.has(w));
+  const rise = RAIL_SECTION.topLift + RAIL_SECTION.railHeight + PLATFORM_HEIGHT_M;
+  // The nearest heavy-rail track's rail level at p, or null.
+  const trackTop = (p: Vec2): { z: number; d: number } | null => {
+    let best: { z: number; d: number } | null = null;
+    for (const w of heavy) {
+      let acc = 0;
+      for (let i = 0; i + 1 < w.points.length; i++) {
+        const a = w.points[i], b = w.points[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy);
+        if (l > 0 && Math.min(a[0], b[0]) - PLATFORM_TRACK_M <= p[0] && p[0] <= Math.max(a[0], b[0]) + PLATFORM_TRACK_M && Math.min(a[1], b[1]) - PLATFORM_TRACK_M <= p[1] && p[1] <= Math.max(a[1], b[1]) + PLATFORM_TRACK_M) {
+          const t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (l * l))), d = Math.hypot(a[0] + dx * t - p[0], a[1] + dy * t - p[1]);
+          if (d <= PLATFORM_TRACK_M && (!best || d < best.d)) best = { z: levelAt(levels.get(w)!, acc + t * l) + rise, d };
+        }
+        acc += l;
+      }
+    }
+    return best;
+  };
+  for (const p of platforms) {
+    const r = p.ring;
+    const cx = r.reduce((s, q) => s + q[0], 0) / r.length, cy = r.reduce((s, q) => s + q[1], 0) / r.length;
+    if (!inCell(cx, cy)) continue;
+    // Counter-clockwise, densified.
+    const area = r.reduce((s, q, i) => { const n = r[(i + 1) % r.length]; return s + q[0] * n[1] - n[0] * q[1]; }, 0);
+    const ring0 = area < 0 ? [...r].reverse() : r, ring: Vec2[] = [];
+    for (let i = 0; i < ring0.length; i++) {
+      const a = ring0[i], b = ring0[(i + 1) % ring0.length], n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / PLATFORM_STEP_M));
+      for (let k = 0; k < n; k++) ring.push([a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n]);
+    }
+    const tops = ring.map(trackTop);
+    if (!tops.some(Boolean)) { stats.skipped++; continue; }
+    // A point with no track near takes its nearest neighbour's along the outline.
+    const z = tops.map((t, i) => {
+      if (t) return t.z;
+      for (let k = 1; k < ring.length; k++) { const a = tops[(i + k) % ring.length], b = tops[(i - k + ring.length) % ring.length]; if (a || b) return (a ?? b)!.z; }
+      return 0;
+    });
+    stats.platforms++;
+    const top = ring.map((q, i) => vertex(mesh, q[0], q[1], z[i], PLATFORM_COLOURS.top));
+    const tris = earcut(ring.flat());
+    for (let t = 0; t < tris.length; t += 3) {
+      const [a, b, c] = [tris[t], tris[t + 1], tris[t + 2]], [pa, pb, pc] = [ring[a], ring[b], ring[c]];
+      const ccw = (pb[0] - pa[0]) * (pc[1] - pa[1]) - (pb[1] - pa[1]) * (pc[0] - pa[0]) > 0;
+      mesh.indices.push(top[a], ccw ? top[b] : top[c], ccw ? top[c] : top[b]);
+    }
+    // Walls, outward (the ring runs counter-clockwise: outside on the right).
+    for (let i = 0; i < ring.length; i++) {
+      const j = (i + 1) % ring.length, [a, b] = [ring[i], ring[j]];
+      const bot = Math.min(height(a[0], a[1]), height(b[0], b[1]), height((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)) - 0.3;
+      if (bot >= Math.max(z[i], z[j])) continue;
+      const at = vertex(mesh, a[0], a[1], z[i], PLATFORM_COLOURS.wall), ab = vertex(mesh, a[0], a[1], bot, PLATFORM_COLOURS.wall);
+      const bt = vertex(mesh, b[0], b[1], z[j], PLATFORM_COLOURS.wall), bb = vertex(mesh, b[0], b[1], bot, PLATFORM_COLOURS.wall);
+      mesh.indices.push(ab, bb, bt, ab, bt, at);
+    }
+  }
+  return { mesh, stats };
+}

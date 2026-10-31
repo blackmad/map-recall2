@@ -28,7 +28,7 @@ import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, 
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
-import { buriedShare, deckBreaks, RAIL_SPOTS } from '../../src/canalRecall/ownGround/railRegressions.ts';
+import { buriedShare, deckBreaks, RAIL_LEVEL_SPOTS, RAIL_SPOTS, stationLevels } from '../../src/canalRecall/ownGround/railRegressions.ts';
 import type { RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
 import { gridHeight } from '../../src/canalRecall/ownGround/drape.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
@@ -40,8 +40,12 @@ import { OrthoTiles } from './ortho.ts';
 import { bareLandCell } from './render-road-sources.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
+// OWN_GROUND_STAGE=<extract prefix>=<dir>[,…]: staged files under <dir> stand in for the published ones under the prefix
+// (a lane's regenerated cells checked before the integrator publishes them; files missing there come from the extract).
+const STAGE = (process.env.OWN_GROUND_STAGE ?? '').split(',').filter(Boolean).map(s => s.split('=') as [string, string]);
 const readExtract = async (path: string) => {
-  const file = join(ROOT, path);
+  const staged = STAGE.map(([prefix, dir]) => (path.startsWith(`${prefix}/`) ? join(dir, path.slice(prefix.length + 1)) : '')).find(f => f && existsSync(f));
+  const file = staged ?? join(ROOT, path);
   if (!existsSync(file)) throw new Error(`${path}: missing`);
   const bytes = readFileSync(file);
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
@@ -147,14 +151,28 @@ async function railRegressions(): Promise<void> {
   const cellsNear = async (s: GroundStore, x: number, y: number, r: number, lod: 0 | 1) => {
     const keys = new Set<string>();
     for (let dx = -r - 60; dx <= r + 60; dx += 30) for (let dy = -r - 60; dy <= r + 60; dy += 30) keys.add(s.cellAt(x + dx, y + dy));
-    const cells: BuiltCell[] = [], rails: RailWay[] = [], seen = new Set<string>();
+    const cells: BuiltCell[] = [], rails: RailWay[] = [], platforms: { ring: [number, number][] }[] = [], seen = new Set<string>();
     for (const k of keys) {
       if (!s.covers(k)) continue;
       cells.push(buildCell(await s.cellInput(k, lod)));
       for (const w of await s.railCell(k)) { const id = JSON.stringify(w.points); if (!seen.has(id)) { seen.add(id); rails.push(w); } }
+      for (const p of await s.railPlatformCell(k)) { const id = JSON.stringify(p.ring); if (!seen.has(id)) { seen.add(id); platforms.push(p); } }
     }
-    return { cells, rails };
+    return { cells, rails, platforms };
   };
+  for (const spot of RAIL_LEVEL_SPOTS) {
+    const [x, y] = toLocal(spot.at[0], spot.at[1]);
+    for (const lod of [0, 1] as const) {
+      const after = await cellsNear(on, x, y, spot.radiusM, lod), a = stationLevels(after.cells, after.rails, after.platforms, [x, y], spot.radiusM);
+      const [lo, hi] = spot.platformRise, bad = a.platforms.filter(r => !(r >= lo && r <= hi));
+      check(a.samples > 100 && a.p10 >= spot.minBedZ, `rail ${spot.id} LOD ${lod}: bed top p10 ${a.p10} m, median ${a.median} m over ${a.samples} samples (≥ ${spot.minBedZ}) — ${spot.label}`);
+      check(a.platforms.length >= 4 && !bad.length, `rail ${spot.id} LOD ${lod}: ${a.platforms.length} platforms drawn ${lo}-${hi} m over the bed${bad.length ? ` — off: ${bad.join(', ')}` : ''}`);
+      if (lod === 1) {
+        const before = await cellsNear(off, x, y, spot.radiusM, lod), b = stationLevels(before.cells, before.rails, before.platforms, [x, y], spot.radiusM);
+        check(b.p10 <= spot.maxBedZBefore, `rail ${spot.id}: the pin is live (rail-v1 of build 04e3c88 has the bed's p10 at ${b.p10} m, ≤ ${spot.maxBedZBefore})`);
+      }
+    }
+  }
   for (const spot of RAIL_SPOTS) {
     const [x, y] = toLocal(spot.at[0], spot.at[1]);
     for (const lod of [0, 1] as const) {
