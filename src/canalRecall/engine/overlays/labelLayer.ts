@@ -56,7 +56,10 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0 };
+  /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
+  private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
+  setOcclusion(test: ((c: LabelCandidate) => boolean) | null): void { if (!test !== !this.occludedTest) this.rev++; this.occludedTest = test; }
   /** Every label drawn in the last frame (specs read it: nothing under question may be among them). */
   placed: PlacedLabel[] = [];
   visible = true;
@@ -142,12 +145,39 @@ export class LabelLayer {
         for (const c of this.buckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
-    const candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
-    this.placed = placeLabels(candidates, {
+    const options = {
       project, width: vp.width, height: vp.height, zoom,
-      advance: (ch, kind) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
-    });
+      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
+    };
+    let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
+    this.placed = placeLabels(candidates, options);
+    // Occlusion (full placements only): test the POIs that won, drop the hidden ones and place again, so the tests
+    // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
+    // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
+    // street, water and neighbourhood names are exempt.
+    let occluded = 0;
+    if (full && this.occludedTest) {
+      const byId = new Map(candidates.map(c => [c.id, c] as const));
+      const tested = new Set<string>(), hidden = new Set<string>();
+      for (let round = 0; ; round++) {
+        let dropped = 0;
+        for (const l of this.placed) {
+          const c = byId.get(l.id);
+          if (!c || tested.has(c.id) || c.kind !== 'poi' || !c.at || c.priority >= 1e6) continue;
+          tested.add(c.id);
+          if (this.occludedTest(c)) { hidden.add(c.id); dropped++; }
+        }
+        if (!dropped) break;
+        // Out of rounds: drop the hidden newcomers without filling their places.
+        if (round === OCCLUSION_ROUNDS) { this.placed = this.placed.filter(l => !hidden.has(l.id)); break; }
+        candidates = candidates.filter(c => !hidden.has(c.id));
+        this.placed = placeLabels(candidates, options);
+      }
+      occluded = hidden.size;
+    }
     if (full) {
+      const ms = performance.now() - now;
+      this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
       this.fullPose = pose ?? null; this.fullAt = now; this.fullRev = rev;
       this.winners = new Set(this.placed.map(l => l.id));
       this.stats.full++;
@@ -159,6 +189,9 @@ export class LabelLayer {
 
 /** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
 export type LabelPose = readonly [number, number, number, number, number];
+
+/** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
+const OCCLUSION_ROUNDS = 3;
 
 export function samePose(a: LabelPose, b: LabelPose): boolean {
   return Math.abs(a[0] - b[0]) < 0.01 && Math.abs(a[1] - b[1]) < 0.01 && Math.abs(a[2] - b[2]) < 1e-4 && Math.abs(a[3] - b[3]) < 0.01 && Math.abs(a[4] - b[4]) < 0.01;

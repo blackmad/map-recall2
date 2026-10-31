@@ -9,6 +9,8 @@
 // profile started on a same-origin blank page before navigation (so the ~1.7 s Profiler.start stall is outside the
 // window), aligned to performance.now() with a busy-loop marker, then aggregated over the stalled frames by self
 // function, by category (gc, json, shader, upload, ...) and by owning app function.
+// STALL_MS=16 attributes every frame over 16 ms (default 50). DPR=2 sets the desktop device scale, VIEWPORT=1800x1100
+// the desktop viewport, HEADED=1 runs a visible Chrome window (the real-GPU set-up of #129).
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
 // profile next to the output.
 import { chromium, devices } from 'playwright';
@@ -40,6 +42,7 @@ const profiling = process.env.PROFILE !== '0';
 const heapRows = process.env.HEAP !== '0';
 // HEAP_OWNERS=1: sampling heap profiler from navigation; live bytes by allocating app frame at ride start (use unminified bundles).
 const heapOwnerRows = process.env.HEAP_OWNERS === '1';
+const stallMs = Number(process.env.STALL_MS || 50);
 
 const pick = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
 const r1 = v => +v.toFixed(1);
@@ -151,6 +154,32 @@ async function run(browser, kind, throttle, context) {
     await page.waitForTimeout(2500); // the Profiler.start stall lands here, before navigation
   }
   if (heapOwnerRows) await startHeapSampling(cdp);
+  // WATCHDOG=<s>: when the page stops answering for that long, pause it through the debugger and print where its
+  // main thread is (a JS loop that never yields), with the last 2 s of console, then end the run.
+  const consoleLog = [];
+  page.on('console', m => { consoleLog.push({ t: Date.now(), text: `${m.type()} ${m.text().slice(0, 300)}` }); if (consoleLog.length > 400) consoleLog.shift(); });
+  let watchdog = null;
+  if (process.env.WATCHDOG) {
+    const limitMs = Number(process.env.WATCHDOG) * 1000;
+    await cdp.send('Debugger.enable');
+    let busy = false;
+    watchdog = setInterval(async () => {
+      if (busy) return; busy = true;
+      const alive = await Promise.race([page.evaluate(() => 1).then(() => true, () => true), new Promise(r => setTimeout(() => r(false), limitMs))]);
+      if (!alive) {
+        clearInterval(watchdog);
+        const paused = new Promise(r => cdp.once('Debugger.paused', r));
+        await cdp.send('Debugger.pause').catch(e => console.error('pause failed', e.message));
+        const ev = await Promise.race([paused, new Promise(r => setTimeout(() => r(null), 10_000))]);
+        const frames = ev ? ev.callFrames.map(f => `${f.functionName || '(anon)'} ${f.url.split('/').pop()}:${f.location.lineNumber + 1}:${f.location.columnNumber + 1}`) : ['(no pause event)'];
+        const now = Date.now();
+        console.error(JSON.stringify({ watchdog: `page did not answer for ${limitMs / 1000} s`, frames, console: consoleLog.filter(c => now - c.t < limitMs + 2000).map(c => c.text) }, null, 1));
+        if (process.env.WATCHDOG_OUT) fs.writeFileSync(process.env.WATCHDOG_OUT, JSON.stringify({ frames, callFrames: ev?.callFrames?.map(f => ({ fn: f.functionName, url: f.url, line: f.location.lineNumber, col: f.location.columnNumber, scopes: f.scopeChain.map(s => s.type) })) }, null, 1));
+        process.exit(3);
+      }
+      busy = false;
+    }, 2000);
+  }
   const navAt = Date.now();
   await page.goto(`${origin}/canal-drive/${qs}`);
   const sync = async label => page.evaluate(label => {
@@ -192,7 +221,7 @@ async function run(browser, kind, throttle, context) {
     }
     await page.evaluate(([viaIds, speed]) => { window.__via = viaIds; window.__railSpeed = speed; }, [via, railSpeed]);
     await page.evaluate(() => {
-      const g = canalRecallGame, p = g.player, L = window.__ls, vm = g.vectorMap, map = vm.map;
+      const g = canalRecallGame, p = g.player, L = window.__ls, vm = g.vectorMap, map = vm.map ?? vm.host; // ?engine=own: the frame host's _render
       // Questions still appear (their cards and layout are part of play) but do not hold the rider for an answer.
       g._quizFreezesRide = () => false;
       // Cadence: each MapLibre render with the rider pose it drew, each game-loop tick, and timed streaming events.
@@ -201,6 +230,8 @@ async function run(browser, kind, throttle, context) {
       map._render = (...a) => { L.renders.push([performance.now(), p.x, p.y, p.speed]); return render(...a); };
       const loop = g._loop.bind(g);
       g._loop = (t) => { L.ticks.push(performance.now()); return loop(t); };
+      // ?engine=own: the frame host calls the game's `_frame` (through an arrow that looks it up each frame).
+      if (vm.engine === 'own' && typeof g._frame === 'function') { const frame = g._frame.bind(g); g._frame = (dt) => { L.ticks.push(performance.now()); return frame(dt); }; }
       const ev = (obj, key, label) => {
         if (!obj || typeof obj[key] !== 'function') return;
         const o = obj[key].bind(obj);
@@ -289,7 +320,7 @@ async function run(browser, kind, throttle, context) {
   }
   const phase = (a, b) => frameStats(iv.filter(f => f.at >= (raw.marks[a] ?? Infinity) && f.at < (b ? (raw.marks[b] ?? end) : end)).map(f => f.ms));
   const inMotion = f => warmup == null || (f.at >= raw.marks.motionStart && f.at < raw.marks.motionEnd);
-  const stallWindows = iv.filter(f => f.ms > 50 && inMotion(f)).map(f => ({ start: f.at, end: f.at + f.ms }));
+  const stallWindows = iv.filter(f => f.ms > stallMs && inMotion(f)).map(f => ({ start: f.at, end: f.at + f.ms }));
   let motion = null;
   if (warmup != null && raw.marks.motionStart != null) {
     const a = raw.marks.motionStart, b = raw.marks.motionEnd ?? end, mins = (b - a) / 60000;
@@ -341,10 +372,11 @@ async function run(browser, kind, throttle, context) {
   const entries = new Map();
   for (const l of raw.loaf) if (l.dur > 50) for (const s of l.scripts) { const k = `${s.type} ${s.inv} @ ${s.src}${s.fn ? ` ${s.fn}` : ''}`; entries.set(k, (entries.get(k) || 0) + s.dur); }
   const loafRender = raw.loaf.filter(l => l.dur > 50).reduce((a, l) => a + (l.start + l.dur - (l.renderStart || l.start + l.dur)), 0);
-  const worst = iv.filter(f => f.ms > 50 && inMotion(f)).sort((a, b) => b.ms - a.ms).map(f => {
+  const worst = iv.filter(f => f.ms > stallMs && inMotion(f)).sort((a, b) => b.ms - a.ms).map(f => {
     const l = raw.loaf.filter(x => x.start < f.at + f.ms && x.start + x.dur > f.at).sort((a, b) => b.dur - a.dur)[0];
     return { atS: r1(f.at / 1000), ms: Math.round(f.ms), scripts: l ? l.scripts.sort((a, b) => b.dur - a.dur).slice(0, 3).map(s => `${Math.round(s.dur)}ms ${s.inv}${s.fn ? ` ${s.fn}` : ''} @${s.src}`) : [] };
   });
+  if (watchdog) clearInterval(watchdog);
   return {
     kind, throttle, device, qs, errors: errors.slice(0, 5), reached,
     marksS: Object.fromEntries(Object.entries(raw.marks).map(([k, v]) => [k, +(v / 1000).toFixed(2)])),
@@ -356,10 +388,10 @@ async function run(browser, kind, throttle, context) {
   };
 }
 
-const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
+const browser = await chromium.launch({ headless: process.env.HEADED !== '1', executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const results = [];
 for (const throttle of throttles) {
-  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1280, height: 800 } });
+  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: Number((process.env.VIEWPORT || '1280x800').split('x')[0]), height: Number((process.env.VIEWPORT || '1280x800').split('x')[1]) }, deviceScaleFactor: Number(process.env.DPR || 1) });
   for (const kind of runKinds) {
     const r = await run(browser, kind, throttle, context);
     results.push(r);

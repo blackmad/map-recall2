@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
+The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
+drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label
+anchor against the resident building footprints and heights: a frontage that
+faces away from the camera, or has a nearer taller pand between it and the
+camera, does not draw. It runs inside the full-placement winners loop of
+`engine/overlays/labelLayer.ts` (≈ 0.4 ms per pass) over
+`BuildingTileStreamer.residentFeatures()`; `tests/e2e/label-occlusion.spec.ts`
+pins the pose. The user has since said more occlusion is needed; the gaps are
+on TODO. `scripts/motion-stutter.mjs` now runs under the own engine (it
+wrapped `vm.map._render`, which is null under the flag, so every earlier
+own-engine stutter run idled to its deadline and one held the browser lock for
+an hour), with `WATCHDOG=<s>` (debugger pause + stack dump when the page stops
+answering), `STALL_MS`, `DPR`, `VIEWPORT`, `HEADED`. Measured the same evening
+by the materials lane on the M4 Pro at DPR 2, headed, tier high: GPU frame p50
+5.2 ms at the Dam and 5.3 at the Westerkerk; the own ground is 1.3–1.5 ms of
+that across 31 lit layers and ≈ 3.0 M triangles (paving 501k, land 421k, quay
+418k); front-to-back ordering was 0.2 ms slower and flipped coplanar ties, a
+depth prepass would cost more than the < 1 ms it could save, so nothing landed
+and the ≈ 9.5 ms figure from the earlier table is withdrawn (GPU contention
+between lanes). Conclusion for the user's "still stuttery" report: the GPU
+frame is ≈ 5 ms, so the owners are main-thread hitches; L1 names them per task
+next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
+desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
+`start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
+
 **Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
 Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
 classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
@@ -798,7 +824,6 @@ BASCULES list grew, `build-bridge-hints.ts --write` changes only the
 named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
-
 
 **Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
 Reproduced on `main` by boarding at every IJ pier with the real controller
@@ -1718,7 +1743,6 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
-
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
@@ -15267,7 +15291,6 @@ first twelve already measured the camera model.
 ## 2026-09-13 — Roof-focused review and keyboard workflow
 
 
-
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
 upper source view with the candidate's upper roof/gable area, while Full façade
@@ -17844,7 +17867,6 @@ building. Searching in Dutch roughly doubles the hit rate, because nobody
 uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
-
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and

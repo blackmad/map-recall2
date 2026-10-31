@@ -816,6 +816,12 @@ export class BuildingTileStreamer {
     return out;
   }
 
+  /**
+   * Every resident building as loaded (unstyled: footprint and heights). The array is the source's cached list, so
+   * its identity changes only when the resident set does (label occlusion re-indexes on that).
+   */
+  residentFeatures(): readonly BuildingFeature[] { return this.cache.collection().features; }
+
   /** Resident buildings (styled) with these ids (`properties.id`, the source's promoted id). */
   featuresById(ids: readonly (string | number)[]): BuildingFeature[] {
     const wanted = new Set(ids.map(String));
