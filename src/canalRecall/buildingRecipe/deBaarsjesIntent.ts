@@ -7,6 +7,7 @@
  * imports, so there is no runtime cycle.
  */
 import type {FrontIntent, PaletteIntent, ShopAwningIntent, WindowKind} from './intent.ts';
+import {parapetBandProblems} from './parapetBand.ts';
 
 /** Window kinds an `axisWindows` entry may name (kept in step with intent.ts WINDOWS; a type-only import keeps the cycle out). */
 export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'];
@@ -45,8 +46,9 @@ export function deBaarsjesProblems(f: FrontIntent, palette: PaletteIntent | unde
   }
   if (f.parapet !== undefined) {
     const q = f.parapet as unknown as Record<string, unknown>;
-    if (!q || typeof q !== 'object' || Object.keys(q).some(k => !['courses', 'coping'].includes(k)) || !(Number.isInteger(q.courses) && (q.courses as number) >= 4 && (q.courses as number) <= 90)) p.push(`${at}.parapet: {courses: 4..90 brick courses, coping?: boolean}`);
+    if (!q || typeof q !== 'object' || Object.keys(q).some(k => !['courses', 'coping', 'band'].includes(k)) || !(Number.isInteger(q.courses) && (q.courses as number) >= 4 && (q.courses as number) <= 90)) p.push(`${at}.parapet: {courses: 4..90 brick courses, coping?: boolean}`);
     if (q && q.coping !== undefined && typeof q.coping !== 'boolean') p.push(`${at}.parapet.coping must be boolean`);
+    if (q && q.band !== undefined) p.push(...parapetBandProblems(q.band, Number.isInteger(q.courses) ? q.courses as number : 0, f.palette?.band ?? palette?.band, at));
     if (f.cornice !== 'none') p.push(`${at}.parapet: a plain parapet has no cornice (cornice "none"; coping: true lays its cap)`);
     if (f.gable !== 'flat' && f.gable !== 'cornice') p.push(`${at}.parapet: only on a flat or cornice front`);
   }
