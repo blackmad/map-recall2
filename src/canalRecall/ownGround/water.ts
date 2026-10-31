@@ -227,6 +227,32 @@ export const OPENING_REACH_M = 6;
 /** The opening reaches this far into the water found beside the deck (overlap, so no land strip is left). */
 export const OPENING_OVERLAP_M = 0.5;
 
+/**
+ * inPolygon with the edges bucketed into horizontal bands: only an edge whose y-range holds y can flip the even-odd
+ * count, and every such edge lies in y's band, so the answer is the same with far fewer edges per point.
+ */
+export function bandedInPolygon(poly: readonly (readonly Vec2[])[], band = 2): (x: number, y: number) => boolean {
+  let y0 = Infinity, y1 = -Infinity;
+  for (const ring of poly) for (const p of ring) { if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }
+  if (!(y1 >= y0)) return () => false;
+  const n = Math.floor((y1 - y0) / band) + 1, bands: number[][] = Array.from({ length: n }, () => []), edges: number[] = [];
+  for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j], e = edges.length / 4;
+    edges.push(xi, yi, xj, yj);
+    const b0 = Math.floor((Math.min(yi, yj) - y0) / band), b1 = Math.floor((Math.max(yi, yj) - y0) / band);
+    for (let b = b0; b <= b1; b++) bands[b].push(e);
+  }
+  return (x, y) => {
+    if (y < y0 || y > y1) return false;
+    let c = false;
+    for (const e of bands[Math.floor((y - y0) / band)]) {
+      const xi = edges[4 * e], yi = edges[4 * e + 1], xj = edges[4 * e + 2], yj = edges[4 * e + 3];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+    }
+    return c;
+  };
+}
+
 const inPolygon = (poly: readonly (readonly Vec2[])[], x: number, y: number) => {
   let c = false;
   for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; }
@@ -301,11 +327,13 @@ export function openUnderFootbridges(geo: WaterGeometry, decks: readonly Opening
     for (const ring of p) for (const [x, y] of ring) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
     return [x0, y0, x1, y1] as const;
   });
+  // A canal polygon's box covers most of the cell, so its edges are banded by y as well (bandedInPolygon), lazily.
+  const banded: (((x: number, y: number) => boolean) | undefined)[] = [];
   const inWater = (x: number, y: number) => {
     for (let k = 0; k < geo.polygons.length; k++) {
       const b = boxes[k];
       if (x < b[0] || x > b[2] || y < b[1] || y > b[3]) continue;
-      if (inPolygon(geo.polygons[k], x, y)) return k;
+      if ((banded[k] ??= bandedInPolygon(geo.polygons[k]))(x, y)) return k;
     }
     return -1;
   };
