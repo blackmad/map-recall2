@@ -44,6 +44,27 @@
     },
     {
       "date": "2026-10-31",
+      "title": "Ferries get clear of the pier",
+      "text": "A ferry used to stop dead a few metres out when its bow touched a quay or it drove up onto the pier, with no way free: at Zamenhofstraat and Pontsteiger 16 m from the stop, and against the point by the Buiksloterweg landing from Centraal. The boat now leaves towards open water, never drives ashore at its own pier, and on any touch turns towards the water and keeps moving; backing off a bank is always allowed. On phones the Follow controls now cruise on the water instead of holding the boat at the pier.",
+      "where": [
+        4.9029,
+        52.3822
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-ferry-stuck-before.jpg",
+          "alt": "The Centraal ferry pressed against the tip of the Buiksloterweg point, stopped",
+          "caption": "Before: stopped dead against the point, 121 m from the landing"
+        },
+        {
+          "src": "whats-new/2026-10-31-ferry-clear-after.jpg",
+          "alt": "The same ferry well clear of the pier on open water",
+          "caption": "After: clear of the pier"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Buildings with a Wikipedia article open it",
       "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
       "where": [

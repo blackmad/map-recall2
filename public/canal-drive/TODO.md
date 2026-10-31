@@ -332,6 +332,16 @@ Open, in order:
     (HISTORY; three faults, e2e `ferry-centraal-pier.spec.ts`). Open: the
     iPhone project of the ferry specs was not run; the user rides it after
     deploy and closes the note.
+  - ferries stuck a few metres out (user, 2026-10-31): fixed 2026-10-31
+    (HISTORY; launch towards open water, no stranding on a touch,
+    street-follow cruises on water; `ferry-launch.spec.ts` boards at all 12
+    piers). Open from the same probe: from the `?ferry=F3` land access,
+    holding forward on the keyboard rides off along De Ruijterkade instead of
+    boarding (the road guard turns the bike onto the quay cycleway short of
+    the stop); street following stands at the pier end "awaiting a choice"
+    instead of rolling onto the ferry (streetFollow.ts treats the access end
+    as a junction with no way on). Both need a boarding rule: at a pier end
+    facing the water, forward boards.
   - wiggly green patches on J.D. Meijerplein (53b04137) and the user's
     Spiegelgracht × Prinsengracht frame (one brown klinker mass, no kerb or
     sidewalk tone, red cycle fragments): added as spots to R0
@@ -2304,7 +2314,6 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
   - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
   - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
-  - `bridgeHints.ts` was not regenerated: the 9 new BASCULES ids get the named budget tier only after a reviewed rebuild, and that script's output already differs from the committed file.
   - `check:bridge-railings` did not finish in the lane; run it.
   - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
