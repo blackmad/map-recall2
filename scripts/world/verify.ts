@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, EXTRACT, CODE, GLOBAL_INPUTS, gameChain, inputHash, loadTile, readJson, tileInputs } from './pipeline.js';
 import { rawFeature, sameValue, styledFeature, type Cell, type CellBuilding, type Geometry, type Props } from '../../src/canalRecall/world/cellFormat.js';
-import { quantiseHeights, sharedVertices, policyFootprint, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
+import { quantiseHeights, sharedVertices, policyFootprint, policyOptionsOf, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
 import { readCell, readGlobalStrings } from './cellFiles.js';
 
 const args = process.argv.slice(2);
@@ -37,7 +37,8 @@ async function main() {
   if (index.policy && index.policy !== POLICY_VERSION) throw Error(`cells carry ${index.policy}; this checkout applies ${POLICY_VERSION}`);
   const shared = new Map<string, Set<string>>();
   const sharedOf = (k: string) => { let s = shared.get(k); if (!s) shared.set(k, s = sharedVertices(cell(k).buildings.map(b => b.geometry))); return s; };
-  const policyGeometry = (g: Geometry, k: string): Geometry => index.policy ? policyFootprint(g, sharedOf(k)) : g;
+  const options = policyOptionsOf(index);
+  const policyGeometry = (g: Geometry, k: string): Geometry => options?.collinear ? policyFootprint(g, sharedOf(k)) : g;
   const policyBag = (p: Props): Props => index.policy ? quantiseHeights(p) : p;
   const verdicts: TileVerdict[] = [];
   for (const t of tiles) {

@@ -1,7 +1,7 @@
 /**
  * Re-encode compiled world-v1 cells in another cell format version, without recompiling (P2 bytes gate):
  *   node --import tsx scripts/world/transcode.ts [--from=public/data/extracts/amsterdam/world-v1]
- *     [--out=artifacts/world/staging] [--format=4] [--policy] [--no-globals]
+ *     [--out=artifacts/world/staging] [--format=4] [--policy [--collinear]] [--no-globals]
  * Every cell is decoded, (with --policy) put through the compile policy (src/canalRecall/world/cellPolicy.ts:
  * heights to the centimetre, near-collinear vertices within 5 cm removed), encoded at --format, decoded again
  * and compared whole with the source cell (or the policy's output); a difference throws before anything is
@@ -16,7 +16,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import { decodeCell, encodeCell, sameValue, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, WORLD_FORMAT_VERSION, type Cell, type GlobalStrings } from '../../src/canalRecall/world/cellFormat.js';
-import { applyPolicy, emptyPolicyReport, summarisePolicy, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
+import { applyPolicy, emptyPolicyReport, summarisePolicy, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readCell, readGlobalStrings } from './cellFiles.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -26,6 +26,7 @@ const FROM = path.resolve(value('from') ?? path.join(ROOT, 'public/data/extracts
 const OUT = path.resolve(value('out') ?? path.join(ROOT, 'artifacts/world/staging'));
 const FORMAT = Number(value('format') ?? WORLD_FORMAT_VERSION);
 const POLICY = args.includes('--policy');
+const POLICY_OPTIONS: PolicyOptions = { collinear: args.includes('--collinear') };
 const GLOBALS = FORMAT >= 4 && !args.includes('--no-globals');
 if (FROM === OUT) throw Error('--out must differ from --from');
 
@@ -40,7 +41,7 @@ const keys = Object.keys(index.cells).sort();
 const sourceGlobals = readGlobalStrings(FROM);
 const policyReport = emptyPolicyReport();
 const cells = new Map<string, Cell>();
-for (const key of keys) { const c = readCell(FROM, key, sourceGlobals); cells.set(key, POLICY ? applyPolicy(c, policyReport) : c); }
+for (const key of keys) { const c = readCell(FROM, key, sourceGlobals); cells.set(key, POLICY ? applyPolicy(c, policyReport, POLICY_OPTIONS) : c); }
 
 /** The strings each cell would carry on its own: the shared table is the ones two or more cells repeat. */
 let globals: GlobalStrings | undefined, globalsBytes: Uint8Array | undefined;
@@ -75,12 +76,12 @@ for (const [key, bytes] of staged) fs.writeFileSync(path.join(OUT, 'cells', `${k
 const stringsGz = globalsBytes ? gz(globalsBytes) : null;
 if (stringsGz) fs.writeFileSync(path.join(OUT, GLOBAL_STRINGS_FILE), stringsGz); else fs.rmSync(path.join(OUT, GLOBAL_STRINGS_FILE), { force: true });
 const strings = globals && stringsGz ? { file: GLOBAL_STRINGS_FILE, count: globals.list.length, hash: globals.hash, gzBytes: stringsGz.length, sha256: sha(stringsGz) } : undefined;
-const policy = POLICY ? POLICY_VERSION : index.policy;
+const policy = POLICY ? POLICY_VERSION : index.policy, policyOptions = POLICY ? POLICY_OPTIONS : index.policyOptions;
 const { strings: _s, ...indexRest } = index; void _s;
-fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify({ ...indexRest, format: FORMAT, ...(policy ? { policy } : {}), ...(strings ? { strings } : {}), cells: entries }));
+fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify({ ...indexRest, format: FORMAT, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), cells: entries }));
 const tiles = readJson(path.join(FROM, 'tiles.json'));
 const { strings: _t, ...tilesRest } = tiles; void _t;
-fs.writeFileSync(path.join(OUT, 'tiles.json'), JSON.stringify({ ...tilesRest, format: FORMAT, ...(policy ? { policy } : {}), ...(strings ? { strings } : {}), cells: Object.fromEntries(Object.entries<any>(tiles.cells).map(([k, c]) => [k, { ...c, gzBytes: entries[k]?.gzBytes ?? c.gzBytes }])) }));
+fs.writeFileSync(path.join(OUT, 'tiles.json'), JSON.stringify({ ...tilesRest, format: FORMAT, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), cells: Object.fromEntries(Object.entries<any>(tiles.cells).map(([k, c]) => [k, { ...c, gzBytes: entries[k]?.gzBytes ?? c.gzBytes }])) }));
 const report = { from: path.relative(ROOT, FROM), out: path.relative(ROOT, OUT), fromFormat: index.format, format: FORMAT, policy: POLICY ? summarisePolicy(policyReport) : index.policy ?? null, cells: keys.length, buildings, identical: true,
   bytes: { gzBefore: before, gzAfter: after, stringsGz: stringsGz?.length ?? 0, totalAfter: after + (stringsGz?.length ?? 0), rawBefore, rawAfter, perStream: totals }, strings: strings ?? null, decodeMs: Math.round(decodeMs), ms: Math.round(performance.now() - t0) };
 fs.writeFileSync(path.join(OUT, 'transcode-report.json'), JSON.stringify(report, null, 2));
