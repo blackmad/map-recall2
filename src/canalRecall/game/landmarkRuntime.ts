@@ -205,7 +205,11 @@ export class GameLandmarkRuntime {
     const article = this._buildingFacts?.article(building.id) ?? null;
     const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     const mapped = this._clickPoiInfo?.card(building);
-    if (mapped) return article ? this._poiCardWithArticle(mapped, article) : mapped;
+    if (mapped) {
+      // The article tile may still be in flight: the POI card gains the lede on arrival.
+      if (!article) this._requestBuildingFacts(building);
+      return article ? this._poiCardWithArticle(mapped, article) : mapped;
+    }
     // Not a landmark: say what the register knows (year, type, listing, size)
     // rather than "no building details".
     // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
@@ -266,14 +270,17 @@ export class GameLandmarkRuntime {
   _requestBuildingFacts(building: BuildingHit): void {
     const store = this._buildingFacts;
     if (!store || !building.lngLat) return;
-    const cardId = `clicked-${building.id || building.lngLat.join('-')}`;
+    // The plain card or the mapped place's card: either one is refreshed in place.
+    const cardIds = new Set([`clicked-${building.id || building.lngLat.join('-')}`, `clicked-poi-${building.id}`]);
+    const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
     void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-      if (this._landmarkNotice?.id !== cardId || (!store.lookup(building.id) && !store.article(building.id))) return;
+      if (!stillOpen() || (!store.lookup(building.id) && !store.article(building.id))) return;
       const card = this._cardForClickedBuilding(building);
-      if (!card || this._landmarkNotice?.id !== cardId) return;
+      const open = this._landmarkNotice;
+      if (!card || !open || !cardIds.has(open.id)) return;
       // The article's name, lede, link and photo land with the tile too.
       const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
-      this._landmarkNotice = { ...this._landmarkNotice, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
+      this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
       this._ensureLandmarkImage(this._landmarkNotice);
     });
   }

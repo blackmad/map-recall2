@@ -84,8 +84,10 @@ export function clipExtract(text: string, max = ARTICLE_EXTRACT_CHARS): string {
   let cut = -1;
   for (const m of head.matchAll(/[.!?]["”’)]?(?=\s)/g)) {
     const end = m.index! + m[0].length;
-    // "St. Nicolaas" and "c. 1660" are not sentence ends.
-    if (/\b(?:St|c|ca|nr|no|dr|ir|mr|prof|jr|sr)\.$/i.test(head.slice(0, end))) continue;
+    // "St. Nicolaas", "c. 1660" and an initial ("architect Ferdinand B.
+    // Ingwersen", "J.J.F. van Dijk") are not sentence ends.
+    const before = head.slice(0, end);
+    if (/\b(?:St|c|ca|nr|no|dr|ir|mr|prof|jr|sr)\.$/i.test(before) || /(?:^|[\s(])(?:[A-Z]\.)+$/.test(before)) continue;
     cut = end;
   }
   if (cut >= Math.min(80, max / 3)) return head.slice(0, cut).trim();

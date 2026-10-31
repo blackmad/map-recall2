@@ -157,7 +157,7 @@ async function fetchPages(language: string, titles: string[]): Promise<Map<strin
     url.search = new URLSearchParams({
       action: 'query', format: 'json', redirects: '1', titles: batch.join('|'),
       prop: 'extracts|info|pageimages|pageprops|langlinks', inprop: 'url', lllang: 'en', lllimit: '20',
-      exintro: '1', explaintext: '1', exchars: '1200', exlimit: '20', piprop: 'thumbnail', pithumbsize: '640', ppprop: 'disambiguation',
+      exintro: '1', explaintext: '1', exchars: '2400', exlimit: '20', piprop: 'thumbnail', pithumbsize: '640', ppprop: 'disambiguation',
     }).toString();
     let data: any;
     try {

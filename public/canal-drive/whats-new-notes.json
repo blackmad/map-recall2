@@ -2,6 +2,27 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-10-31",
+      "title": "Buildings with a Wikipedia article open it",
+      "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
+      "where": [
+        4.94757,
+        52.37717
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-building-articles-before.jpg",
+          "alt": "The Venetiëhof ring on KNSM-eiland with a card that says only Built 1995",
+          "caption": "Before: the ring on KNSM-eiland said only \"Built 1995\""
+        },
+        {
+          "src": "whats-new/2026-10-31-building-articles-after.jpg",
+          "alt": "The same ring with a card titled Emerald Empire, its English lede, photo and Wikipedia link",
+          "caption": "After: Emerald Empire, with its article"
+        }
+      ]
+    },
+    {
       "date": "2026-10-30",
       "title": "Fewer 9 m guesses",
       "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",

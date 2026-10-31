@@ -5829,7 +5829,10 @@ ${register}` : article.e,
       const article = this._buildingFacts?.article(building.id) ?? null;
       const spoils = this.vectorMap._spoils;
       const mapped = this._clickPoiInfo?.card(building);
-      if (mapped) return article ? this._poiCardWithArticle(mapped, article) : mapped;
+      if (mapped) {
+        if (!article) this._requestBuildingFacts(building);
+        return article ? this._poiCardWithArticle(mapped, article) : mapped;
+      }
       let row = this._buildingFacts?.lookup(building.id) ?? null;
       const monument = row && row.length > 3 ? row[3] : void 0;
       if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
@@ -5877,13 +5880,15 @@ ${register}` : article.e,
     _requestBuildingFacts(building) {
       const store = this._buildingFacts;
       if (!store || !building.lngLat) return;
-      const cardId = `clicked-${building.id || building.lngLat.join("-")}`;
+      const cardIds = /* @__PURE__ */ new Set([`clicked-${building.id || building.lngLat.join("-")}`, `clicked-poi-${building.id}`]);
+      const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
       void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-        if (this._landmarkNotice?.id !== cardId || !store.lookup(building.id) && !store.article(building.id)) return;
+        if (!stillOpen() || !store.lookup(building.id) && !store.article(building.id)) return;
         const card = this._cardForClickedBuilding(building);
-        if (!card || this._landmarkNotice?.id !== cardId) return;
+        const open = this._landmarkNotice;
+        if (!card || !open || !cardIds.has(open.id)) return;
         const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
-        this._landmarkNotice = { ...this._landmarkNotice, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
+        this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
         this._ensureLandmarkImage(this._landmarkNotice);
       });
     }

@@ -103,6 +103,9 @@ assert.ok(clipped.length <= 360 && clipped.endsWith('Jo Coenen.'), `clips at the
 assert.equal(clipExtract('Short.'), 'Short.');
 assert.equal(clipExtract('St. Nicolaaskerk is a church. '.repeat(30)).includes('St. Nicolaaskerk'), true);
 assert.ok(!/St\.$/.test(clipExtract(`${'word '.repeat(60)}the St. ${'x'.repeat(300)}`)), 'an abbreviation is not a sentence end');
+assert.equal(clipExtract(`Augustanakerk is a church in Bos en Lommer. ${'x'.repeat(250)}. The 1956 building was designed by the architect Ferdinand B. Ingwersen and ${'y'.repeat(100)}.`).endsWith('Ferdinand B.'), false,
+  'a truncated initial is not a sentence end');
+assert.equal(clipExtract(`${'a '.repeat(120)}designed by J.J.F. ${'b'.repeat(200)}.`).endsWith('J.J.F.'), false);
 assert.equal(registerLineUnderArticle('This building has no name or date in the map data.'), '', 'the nothing-known fallback is not a register line');
 const emerald = { t: 'Emerald Empire', u: 'https://nl.wikipedia.org/wiki/Emerald_Empire', e: clipped, i: 'https://upload.wikimedia.org/x.jpg', q: 'Q66764687' };
 const built = describeBuilding([1995, -1, 0], 27);
@@ -135,5 +138,36 @@ assert.deepEqual(articleStore.lookup('NL.IMBAG.Pand.0363100012102098'), [1995, -
 assert.equal(articleRequests.filter(u => u.includes('/building-articles/14/index.json')).length, 1, 'the index is read once');
 assert.equal(articleRequests.filter(u => u.includes('/building-articles/14/') && u.endsWith('.json.gz')).length, 1,
   'a tile the index does not list is never requested');
+
+// Published article tiles: the named regressions from the lane brief
+// (docs/handoffs/lane-wikipedia-buildings-20261030.md) must be in the data
+// the game serves, in English.
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import type { BuildingArticleIndex, BuildingArticleTile } from '../src/canalRecall/buildingArticles';
+const articleRoot = 'public/data/extracts/amsterdam/building-articles/14';
+const publishedIndex = JSON.parse(readFileSync(`${articleRoot}/index.json`, 'utf8')) as BuildingArticleIndex;
+const publishedTile = (lng: number, lat: number): BuildingArticleTile => {
+  const t = factTileOf(lng, lat);
+  assert.ok(publishedIndex.tiles.includes(`${t.x}/${t.y}`), `article tile ${t.x}/${t.y} is in the index`);
+  return JSON.parse(gunzipSync(readFileSync(`${articleRoot}/${t.x}/${t.y}.json.gz`)).toString('utf8')) as BuildingArticleTile;
+};
+const expectArticle = (pand: string, lng: number, lat: number, title: string, mentions: RegExp) => {
+  const article = publishedTile(lng, lat).buildings[shortBuildingId(pand)];
+  assert.ok(article, `${title}: pand ${pand} carries an article`);
+  assert.equal(article.t, title);
+  assert.ok(!article.l, `${title}: the lede is English (got lang ${article.l})`);
+  assert.match(article.e, mentions, `${title}: lede says what the article says`);
+  assert.ok(article.e.length <= 360 && /[.!?…]$/.test(article.e), `${title}: lede clipped at a sentence`);
+  assert.match(article.u, /^https:\/\/(nl|en)\.wikipedia\.org\/wiki\//);
+};
+// User 2026-10-30: the Venetiëhof ring said only "Built 1995".
+expectArticle('NL.IMBAG.Pand.0363100012102098', 4.94757, 52.37717, 'Emerald Empire', /Jo Coenen/);
+// OSM-tagged footprints with Dutch-only articles.
+expectArticle('w754399963', 4.91706, 52.34512, 'Rembrandt Tower', /Rembrandt|1995/);
+expectArticle('NL.IMBAG.Pand.0363100012236309', 4.90422, 52.35594, 'Huis met de Kabouters', /Kabouters|gnome|house/i);
+// A point join: the Koepelkerk's tag sits on nothing the tiles draw.
+expectArticle('w749586949', 4.89378, 52.37791, 'Ronde Lutherse Kerk', /Luther|church/i);
+process.stdout.write(`${publishedIndex.tiles.length} article tiles published\n`);
 
 process.stdout.write('Building fact checks passed\n');

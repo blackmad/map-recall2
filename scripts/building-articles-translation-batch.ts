@@ -7,9 +7,12 @@
  *
  *   npx tsx scripts/building-articles-translation-batch.ts next [--count=40] [--out=dir]
  *     writes batch-NN.json files of {"id","name","nl"} still missing an English
- *   npx tsx scripts/building-articles-translation-batch.ts ingest <file.json> …
+ *   npx tsx scripts/building-articles-translation-batch.ts ingest <file.json> … [--force]
  *     reads [{"id","en"}], checks each (years kept, the place not renamed,
- *     ≤360 chars) and appends the good ones to the cache
+ *     ≤360 chars) and appends the good ones to the cache. `--force` waives
+ *     the rename and year checks for a reviewed file: an article titled
+ *     "Raadhuis van Ransdorp" is rightly "the town hall of Ransdorp" in the
+ *     lede, since the card's title stays the Dutch article name.
  *   npx tsx scripts/building-articles-translation-batch.ts status
  */
 import { createHash } from 'node:crypto';
@@ -54,6 +57,7 @@ if (command === 'next') {
   process.stdout.write(`${pending.length} Dutch ledes pending in ${n} batch files under ${path.relative(process.cwd(), out)}\n`);
 } else if (command === 'ingest') {
   const files = process.argv.slice(3).filter(file => !file.startsWith('--'));
+  const force = process.argv.includes('--force');
   let added = 0;
   const problems: string[] = [];
   for (const file of files) {
@@ -62,10 +66,12 @@ if (command === 'next') {
       const group = groups.get(id);
       if (!group) { problems.push(`${path.basename(file)}: unknown id ${id}`); continue; }
       if (done.has(id)) continue;
-      const english = trimToSentence(en.replace(/\s+/g, ' ').trim());
+      // Typographic dashes and quotes break the name check against the Dutch
+      // ("Weteringschans 219–223", "Zon’s Hofje"); the names are hyphenated.
+      const english = trimToSentence(en.replace(/\s+/g, ' ').replace(/[\u2018\u2019]/g, "'").replace(/(\d)\s*[\u2013\u2014]\s*(\d)/g, '$1-$2').trim());
       if (!english) { problems.push(`${group.name}: empty`); continue; }
-      if (!keepsNumbers(group.nl, english)) { problems.push(`${group.name}: a year went missing`); continue; }
-      const dropped = droppedProperNames(group.nl, english, [group.name]);
+      if (!force && !keepsNumbers(group.nl, english)) { problems.push(`${group.name}: a year went missing`); continue; }
+      const dropped = force ? [] : droppedProperNames(group.nl, english, [group.name]);
       if (dropped.length) { problems.push(`${group.name}: renamed (${dropped.join(', ')})`); continue; }
       if (/^(here is|the translation|translation:)/i.test(english)) { problems.push(`${group.name}: commentary`); continue; }
       cache.push({ name: group.name, lang: 'nl', hash: id, en: english });
