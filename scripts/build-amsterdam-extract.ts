@@ -7,6 +7,7 @@ import { supplementBridges, type RoutingWay } from '../src/canalRecall/askableBr
 import { renamedPoi, unusedPoiRenames } from '../src/canalRecall/poiRenames.ts';
 import { isBikeRoutingHighway, isBicycleRestricted } from '../src/canalRecall/routing/bikeAccess.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
+import { classify, extractName, localName as localNameOf } from './lib/extractNaming.ts';
 
 type Position = [number, number];
 interface GeoJsonFeature {
@@ -118,16 +119,6 @@ function pathsFromGeometry(feature: GeoJsonFeature): [number, number][][] {
   return [];
 }
 
-// OSM amenity value -> the type the card shows on its badge.
-const CIVIC_TYPES: Record<string, FeatureType> = {
-  cinema: 'cinema',
-  library: 'library',
-  university: 'university',
-  college: 'university',
-  music_venue: 'music venue',
-  community_centre: 'landmark',
-};
-
 // A prominence floor per civic class. Without it a cinema with no Wikidata
 // link scores 12 - mapped length is nil for a node - against a landmark tail
 // that starts at 35, so LAB111 was never going to be in the extract however
@@ -142,32 +133,6 @@ const CIVIC_CLASS_SCORE: Record<string, number> = {
   community_centre: 25,
   marketplace: 35,
 };
-
-function classify(tags: Record<string, string | undefined>): { type: FeatureType; category: FeatureCategory } | null {
-  if (tags.bridge === 'yes' || tags.man_made === 'bridge') return { type: 'bridge', category: 'bridges' };
-  if (tags.waterway || tags.natural === 'water' || tags.water || tags.landuse === 'basin') {
-    return { type: tags.waterway === 'river' || tags.natural === 'water' ? 'water' : 'canal', category: 'water' };
-  }
-  if (tags.place === 'square' || tags.amenity === 'marketplace') return { type: 'square', category: 'squares' };
-  if (tags.leisure || ['forest', 'meadow', 'grass'].includes(tags.landuse || '')) return { type: 'park', category: 'parks' };
-  if (tags.tourism === 'museum') return { type: 'museum', category: 'landmarks' };
-  if (tags.tourism === 'zoo') return { type: 'landmark', category: 'landmarks' };
-  // Everyday civic venues. A cinema, a library or a faculty building is often
-  // the thing a resident actually navigates by, and OSM rarely gives any of
-  // them a Wikidata link, so they need both a class of their own and a
-  // prominence floor (CIVIC_CLASS_SCORE) to survive the per-category cap.
-  const civic = CIVIC_TYPES[tags.amenity || ''];
-  // "P" is a real OSM name on a university building. It is not a name anyone
-  // can learn a city by, and unlike a canal or a street a civic venue has no
-  // geometry to make it recognisable, so hold them to a readable name.
-  if (civic) {
-    const civicName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
-    return civicName.length >= 3 ? { type: civic, category: 'landmarks' } : null;
-  }
-  if (tags.tourism || tags.historic || ['theatre', 'arts_centre', 'townhall', 'place_of_worship'].includes(tags.amenity || '')) return { type: 'landmark', category: 'landmarks' };
-  if (tags.highway) return { type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street', category: 'streets' };
-  return null;
-}
 
 const source = JSON.parse(await readFile(inputFile, 'utf8')) as { features: GeoJsonFeature[] };
 type CuratedLandmark = {
@@ -257,19 +222,11 @@ const localFoodCandidates: OrientationPoi[] = [];
 
 for (const item of source.features) {
   const tags = item.properties || {};
-  // Streets, squares, waterways and bridges keep the name on the sign: the game
-  // teaches Amsterdam's geography, so `name:en` ("New Market" for the
-  // Nieuwmarkt, TODO P0 2026-10-30) only fills in when OSM has no local name.
-  // Landmarks and parks stay English ("Weepers' Tower", "Royal Palace"), as do
-  // venues (civicName above, local food below). This name also feeds every
-  // category below, so the rule has to be scoped by category: applied to all
-  // features it renamed 59 landmarks to Dutch (Schreierstoren, Koninklijk Paleis).
-  const localName = (tags.name || tags['name:nl'] || tags['name:en'] || '').trim();
-  const englishName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+  // Streets, squares, waterways and bridges keep the local name; landmarks and
+  // parks keep English (scripts/lib/extractNaming.ts says why).
   const classification = classify(tags);
-  const roadOrPlaceName = !classification || ['streets', 'squares', 'water', 'bridges'].includes(classification.category)
-    ? localName
-    : englishName;
+  const localName = localNameOf(tags);
+  const roadOrPlaceName = extractName(tags, classification?.category);
   if (!item.geometry) continue;
   const paths = pathsFromGeometry(item).filter((line) => line.length > 1);
   let pointCenter: [number, number] | undefined;
