@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+**Driving feel: fixed substeps, a speed-dependent lock, the camera in the rider's frame (2026-10-30, #131, lane E / L8).**
+`src/canalRecall/drive/steerModel.ts` is the pure steer model: equal
+substeps of at most 1/120 s, RK2 speed, exact steer ease, trapezoid yaw and
+position, lateral grip as a rate, the bicycle lock from speed (full lock at
+parking speed, `v·ω ≤ cornering` above it, a friction circle while braking);
+the boat keeps its legacy curve, substepped. `car.js` calls it through
+`CanalRecallUi.advanceSteer`. The display-rate agreement test
+(`test:steer-model`, in `check:canal`) runs five scripts on bike and boat at
+30/60/144 Hz against 120 Hz: worst 5.5 cm, 0.0013 rad, 0.0013 m/s (gate 10 cm,
+0.01 rad, 0.05 m/s); the old one-Euler-step loop was off by up to 265 cm at
+30 Hz. `drive/cameraFollow.ts` eases the follow offset in the view's own
+frame (no speed trailing, no surge on a long frame: offset jitter on the
+desktop clip 4.3 → 2.8 px, mean lead at speed 57 → 70 px), with a 16 px
+look-ahead and a 10 % speed pull-back as `CAMERA_FOLLOW_DEFAULTS`; the one
+`vector-map.js` line multiplies the zoom by `camera.speedZoomScale`. Bike
+lean `steer·min(1,|v|/9)·0.34`. Keyboard and the touch stick blend by max;
+keys and touches reset on blur, hidden and resize. User decided on #140:
+keep the toy bike speed (351 px/s; the brief's 7–8 m/s would make rides
+15× slower, `BIKE_TRUE_SCALE` exists unwired) and keep the pull-back on.
+`cameraYaw.ts`, `streetFollow.ts` and Follow mode are untouched; camera yaw
+stayed ≤ 80°/s on both clips. Clips: `tests/e2e/driving-feel-clips.spec.ts`
+(opt-in, `DRIVE_CLIPS=1`). The omafiets GLB has no crank node, so no
+freewheel cadence.
+
 **`?engine=own` draws overlays and labels; the gate specs can run under it (2026-10-30, #129).**
 L1 steps 4–5. `tests/e2e/helpers.ts useEngine` plus an `ENGINE=own` switch
 put the gate specs, ride-perf and phone-memory on either implementation;

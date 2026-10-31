@@ -132,8 +132,18 @@ Lanes (spawned 2026-10-30, worktrees `<name>-20261030`): #128 L2 oracle
 migration + P0 deletions (`lane-oracle-migration-20261030.md`, haiku, port
 4521) → #129 L1 engine host (`lane-engine-host-20261030.md`, 4523) ∥ #130 L3
 world compiler (`lane-world-compiler-20261030.md`, absorbs lane C, 4525) ∥
-#131 L8 driving feel (lane E, 4527) → L4 streamer / L5 overlays → L6 facade
-shader (B) / L7 shadows (D). Gates per
+#131 L8 driving feel (lane E, 4527; **merged 2026-10-30**, user on #140: keep
+the toy bike speed, keep the 10 % pull-back; `BIKE_TRUE_SCALE` stays unwired;
+the `frameHost.tick(dtFixed)` hook for `CanalRecallUi.stepSteer` is L1's when
+the engine owns the loop) → L4 streamer / L5 overlays → L6 facade
+shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
+(`lane-p0-deletions-20261030.md`, 4533: study layers, Google tiles,
+`SHARED_FRAME_DEFAULT`), #144 reds triage (`lane-reds-triage-20261030.md`,
+4535: bike-xray, complete-city, check-building-look-transition), #145 rail
+look (`lane-rail-look-20261030.md`, 4537) from the user's three in-game
+reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
+bad train tracks", "ooof, these rails look really bad": feedback ids
+5d3fb497, d49a15b0, 5d5b56c4, resolve them when #145 merges). Gates per
 phase are in the programme doc; the P0 baselines go to `tests/perf/budgets.json`.
 This supersedes the lane-A delivery shape below and closes #107 question 1.
 State: **L2 oracle migration merged 2026-10-30** (#128, `dba569e22` + integrator
@@ -234,7 +244,13 @@ draws after every building layer: expected > 128, got −1);
 `tests/e2e/complete-city.spec.ts` "the streamed city loads …"
 (contextualFeatures 0, want > 50 % of features: the citywide display prior is
 not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
-throws (`test:city-startup`). CI runs only lint and the boot smoke, so none of
+throws (`test:city-startup`); `tests/e2e/sun-heading.spec.ts` desktop `default`
+and `cityLook-1` (2026-10-30 23:00: on plain main both time out in `settle`
+on a loaded machine; on the L8 merge both fail the bike lit-half sign at
+nieuw-west-slab, heading 134, which the lane traced to the parked bike
+drifting under the road guard between the two grabs in both versions; L8
+(#131) owns making that measurement deterministic, `sharedFrame-1` passes).
+CI runs only lint and the boot smoke, so none of
 these block a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format

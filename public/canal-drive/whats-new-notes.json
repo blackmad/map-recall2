@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-10-30",
+      "title": "Steering that feels the same on every screen",
+      "text": "The bike now drives the same on a 30 Hz laptop, a 60 Hz desktop and a 120 Hz phone: the physics steps in fixed 1/120 s substeps, so a corner taken at the same speed lands in the same place everywhere (within 5 cm; before, 30 Hz could be off by 2.6 m). Steering lock depends on speed, as on a real bicycle: full lock when you are almost stopped, a grip cap when you are quick, and the bike leans into turns. The camera follows the rider in the rider's own frame, so it no longer trails behind at speed or surges when a frame runs long, looks 16 px ahead along the street and pulls back 10 % as you speed up. Keyboard and touch steer are blended, and held keys release when the tab loses focus.",
+      "where": [
+        4.8826,
+        52.3667
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-30-driving-feel-before-after-desktop.jpg",
+          "alt": "Two frames of the same ride along the Keizersgracht, before on the left and after on the right, the camera leading the rider further on the right",
+          "caption": "Keizersgracht ring, desktop: before (left) and after (right), 14 s into the ride"
+        },
+        {
+          "src": "whats-new/2026-10-30-driving-feel-before-after-iphone.jpg",
+          "alt": "The same ride on the phone layout, before and after side by side",
+          "caption": "The same spot on the phone: the follow camera no longer trails the bike"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
       "title": "Fewer 9 m guesses",
       "text": "Buildings the old height map could not measure no longer all stand at 9 m. Blocks finished by 2022, such as Terrace Tower on the Zuidas, are measured from the 2023 AHN flight. Houseboats sit at houseboat height. Settling tanks, bunkers, switch cabinets and garage entrances lie low instead of standing as boxes.",
       "where": [
