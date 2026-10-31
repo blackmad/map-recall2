@@ -1212,13 +1212,9 @@ class VectorBasemap {
       if (this._streetFrontWays && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
     }
     this._ensureSharedFrame();
-    if (this._sharedFrame && this._threeBuildings.attachToSharedFrame) {
-      if (!this._threeBuildings.inSharedFrame) {
-        this._threeBuildings.attachToSharedFrame(this._sharedFrame);
-        if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
-      }
-    } else if (!this.map.getLayer(this._threeBuildings.layer.id)) {
-      this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
+    // The facades draw only through the shared frame (their own custom layer went with L1 step 6).
+    if (this._sharedFrame && !this._threeBuildings.inSharedFrame) {
+      this._threeBuildings.attachToSharedFrame(this._sharedFrame);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);

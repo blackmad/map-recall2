@@ -26,7 +26,7 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     };
     const read = (steer: number) => {
       for (let i = 0; i < 120; i++) bike.update(ll, g.player.angle, true, steer, 0);
-      try { bike.layer.render(null, { defaultProjectionData: { mainMatrix: new Array(16).fill(0) } }); } catch (e) { /* pose is applied before projection */ }
+      bike._pose(bike._modelRoot); // what the shared frame's beforeRender does each frame
       return { front: axleOf(bike.parts.frontWheel), rear: axleOf(bike.parts.rearWheel) };
     };
     // Local +X spins as the wheel rolls about +Z.
@@ -40,10 +40,10 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     const straight = read(0);
     const right = read(1);
     for (let i = 0; i < 120; i++) bike.update(ll, g.player.angle, true, 0, 0);
-    try { bike.layer.render(null, { defaultProjectionData: { mainMatrix: new Array(16).fill(0) } }); } catch (e) { /* pose applied first */ }
+    bike._pose(bike._modelRoot); // what the shared frame's beforeRender does each frame
     const rollAt0 = spinOf(bike.parts.frontWheel);
     bike.update(ll, g.player.angle, true, 0, 400);
-    try { bike.layer.render(null, { defaultProjectionData: { mainMatrix: new Array(16).fill(0) } }); } catch (e) { /* pose applied first */ }
+    bike._pose(bike._modelRoot); // what the shared frame's beforeRender does each frame
     const rollAt400 = spinOf(bike.parts.frontWheel);
     const ang = (a: number[], b: number[]) =>
       (Math.acos(Math.max(-1, Math.min(1, a[0]*b[0]+a[1]*b[1]+a[2]*b[2]))) * 180 / Math.PI);

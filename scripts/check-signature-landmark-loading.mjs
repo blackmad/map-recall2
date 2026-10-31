@@ -9,7 +9,7 @@ globalThis.window={location:{href:'http://localhost/canal-drive/'},CanalRecallTh
 const {SignatureLandmarks}=await import('../public/canal-drive/js/signature-landmarks-source.js');
 let lng=4.9;
 const listeners=new Map(),filters=[],callbacks=[];
-const map={addLayer(layer){layer.onAdd(this,null);},getCanvas(){},getBounds:()=>({getWest:()=>lng-.001,getEast:()=>lng+.001,getNorth:()=>52.371,getSouth:()=>52.369}),getCenter:()=>({lng,lat:52.37}),on:(event,fn)=>listeners.set(event,fn),off:event=>listeners.delete(event),getLayer:()=>true,getFilter:()=>null,setFilter:(_id,filter)=>filters.push(filter),triggerRepaint(){}};
+const map={getZoom:()=>17,getCanvas(){},getBounds:()=>({getWest:()=>lng-.001,getEast:()=>lng+.001,getNorth:()=>52.371,getSouth:()=>52.369}),getCenter:()=>({lng,lat:52.37}),on:(event,fn)=>listeners.set(event,fn),off:event=>listeners.delete(event),getLayer:()=>true,getFilter:()=>null,setFilter:(_id,filter)=>filters.push(filter),triggerRepaint(){}};
 const projection={MercatorCoordinate:{fromLngLat:([x,y],z)=>({x,y,z,meterInMercatorCoordinateUnits:()=>1})}};
 const spec=(id,x,length=20)=>({id,name:id,modelUrl:`./models/${id}.glb`,landmarkId:id,footprint:{centre:[x,52.37],lengthMetres:length,widthMetres:20},suppressOsmIds:[`w${id}`]});
 const models=[spec('a',4.9),spec('b',4.901),spec('c',4.902),spec('large',4.907,1000),spec('far',5.1)];
@@ -28,20 +28,20 @@ listeners.get('moveend')();assert.equal(requests.length,4,'failed models do not 
 requests[3].done({scene:imported()});assert.equal(requests.length,4,'distant model not fetched');
 lng=5.1;listeners.get('moveend')();assert.equal(requests.length,5);assert.ok(requests[4].url.includes('far.glb'));
 const late=imported();let disposed=0;late.children[0].geometry.addEventListener('dispose',()=>disposed++);
-const before=callbacks.length;layer.layer.onRemove(map);requests[4].done({scene:late});
+const before=callbacks.length;layer.remove();requests[4].done({scene:late});
 assert.equal(disposed,1);assert.equal(callbacks.length,before,'removed layer receives no late callbacks');assert.equal(layer.describe().length,0);assert.deepEqual(filters.at(-1),[]);assert.equal(listeners.size,0);
 // The default demo still queues every model without any movement.
 requests.length=0;lng=4.9;
 const eager=new SignatureLandmarks(map,projection,{models});
 assert.equal(requests.length,2);
 for(let i=0;i<models.length;i++)requests[i].done({scene:imported()});
-assert.equal(requests.length,models.length);assert.equal(eager.describe().length,models.length);eager.layer.onRemove(map);
+assert.equal(requests.length,models.length);assert.equal(eager.describe().length,models.length);eager.remove();
 requests.length=0;
 const broken=new SignatureLandmarks(map,projection,{models:[spec('host-failure',4.9),{...spec('placement-failure',4.9),failPlacement:true}],onModelShown:()=>{throw Error('Host callback failed');}});
 console.warn=()=>{};
 requests[0].done({scene:imported()});requests[1].done({scene:imported()});console.warn=warn;
 assert.equal(broken.describe().length,0,'failed insertion is rolled back');assert.equal(broken.shown.size,0);assert.deepEqual(broken.shownSuppressOsmIds(),[]);assert.deepEqual(filters.at(-1),[],'failed placement and host callbacks restore extrusion');
-broken.layer.onRemove(map);
+broken.remove();
 // Shared meshes (recipe-pipeline houses): one decode per URL, a clone per instance, mirror flips X, resources freed with the last instance.
 {
   const shared=(id,x,mirror)=>({...spec(id,x),modelUrl:'./models/ordinary-buildings/recipe-shared.glb',sharedModel:true,...(mirror?{mirror:true}:{})});
@@ -62,6 +62,6 @@ broken.layer.onRemove(map);
   assert.equal(geometryDisposed,0,'shared geometry survives while another instance uses it');
   instanced._disposeModel(entries[1].group,entries[1].spec,entries[1].url);
   assert.equal(geometryDisposed,1,'the last instance frees the shared geometry');
-  instanced._entries=[];instanced.layer.onRemove(map);
+  instanced._entries=[];instanced.remove();
 }
 console.log('Passed: opt-in nearby loading, footprint extent, two concurrent loads, no duplicate/failure loops, loaded-only suppression, toggles, late disposal and eager demos.');

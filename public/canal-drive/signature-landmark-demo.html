@@ -113,7 +113,13 @@ map.on('load', () => {
   map.addLayer({ id: 'fitted-footprint', type: 'line', source: 'fitted-footprint',
     paint: { 'line-color': '#38BDF8', 'line-width': 2, 'line-dasharray': [2, 2], 'line-opacity': 0.85 } });
 
+  // The models draw only through a shared three.js frame (their own layer went with L1 step 6).
+  const three = window.CanalRecallThree;
+  const sharedFrame = new three.SharedFrame(three.THREE, map, {});
+  sharedFrame.attach();
+  map._canalSharedFrame = sharedFrame;
   landmarks = new window.CanalRecallSignature3D.SignatureLandmarks(map, maplibregl, {
+    sharedFrame,
     models: specs,
     // The layer suppresses the extrusions itself, once the model is drawn.
     onModelShown: (shownSpec, placement) => report(shownSpec, placement),

@@ -26,24 +26,14 @@ export class DetailedBuildings {
     this.onReady = onReady;
     this.activeLandmark = null;
     this._highlightedMesh = null;
-    // `?sharedFrame=1`: tiles draw in the page's one three.js frame, lit by its
-    // rig (no private ambient light), instead of in their own custom layer.
+    // Tiles draw in the page's one three.js frame, lit by its rig (no frame: nothing to draw into).
     this.sharedFrame = map._canalSharedFrame || null;
     this._sharedAttached = false;
-    this.layer = this.sharedFrame ? null : this._makeLayer();
   }
 
   setEnabled(enabled) {
     this.enabled = !!enabled;
-    if (this.sharedFrame) {
-      if (this.enabled && !this._sharedAttached) this._attachShared();
-      this.map.triggerRepaint();
-      return;
-    }
-    if (this.enabled && !this.map.getLayer(this.layer.id) && !this.loading) {
-      this.loading = true;
-      this.map.addLayer(this.layer);
-    }
+    if (this.sharedFrame && this.enabled && !this._sharedAttached) this._attachShared();
     this.map.triggerRepaint();
   }
 
@@ -223,72 +213,5 @@ export class DetailedBuildings {
         return true;
       },
     }, { order: 25 });
-  }
-
-  _makeLayer() {
-    const owner = this;
-    let scene, camera, tilesCamera, renderer, tiles, localTransform;
-    const updateLocalTransform = ([lng, lat, altitude]) => {
-      const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat([lng, lat], altitude);
-      localTransform = new THREE.Matrix4()
-        .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
-        .scale(new THREE.Vector3(coordinate.meterInMercatorCoordinateUnits(), -coordinate.meterInMercatorCoordinateUnits(), coordinate.meterInMercatorCoordinateUnits()))
-        .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
-    };
-    return {
-      id: 'detailed-buildings-3dbag', type: 'custom', renderingMode: '3d',
-      onAdd(map, gl) {
-        camera = new THREE.PerspectiveCamera();
-        tilesCamera = new THREE.PerspectiveCamera();
-        scene = new THREE.Scene();
-        scene.add(new THREE.AmbientLight(0xffffff, 2.4));
-        renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        renderer.autoClear = false;
-        tiles = new TilesRenderer(TILESET_URL);
-        tiles.registerPlugin(new GLTFExtensionsPlugin({ meshoptDecoder: MeshoptDecoder }));
-        tiles.group.name = '3DBAG LoD2.2';
-        tiles.setCamera(tilesCamera);
-        tiles.setResolutionFromRenderer(tilesCamera, renderer);
-        scene.add(tiles.group);
-        let handled = false;
-        tiles.addEventListener('load-tileset', () => {
-          if (handled) return;
-          handled = true;
-          const sphere = new THREE.Sphere();
-          tiles.getBoundingSphere(sphere);
-          const center = sphere.center.clone();
-          const rootTransform = tiles.root && tiles.root.transform || [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-          const origin = ecefToLngLatAlt(center.x, center.y, center.z);
-          updateLocalTransform([origin.lng, origin.lat, origin.alt]);
-          const rotation = new THREE.Matrix3().set(rootTransform[0], rootTransform[1], rootTransform[2], rootTransform[8], rootTransform[9], rootTransform[10], -rootTransform[4], -rootTransform[5], -rootTransform[6]);
-          tiles.group.matrix.copy(new THREE.Matrix4().setFromMatrix3(rotation).multiply(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z)));
-          tiles.group.matrixAutoUpdate = false;
-          tiles.group.updateMatrixWorld(true);
-          owner.ready = true;
-          owner.loading = false;
-          owner.setEnabled(owner.enabled);
-          owner.onReady();
-        });
-        tiles.addEventListener('load-error', event => {
-          owner.loading = false;
-          owner.ready = false;
-          console.warn('Detailed 3D BAG buildings unavailable; retaining OSM extrusions.', event.error || event);
-        });
-      },
-      render(_gl, args) {
-        if (!owner.enabled || !owner.ready || !localTransform) return;
-        camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(localTransform);
-        const projection = new THREE.Matrix4().fromArray(args.projectionMatrix);
-        const view = projection.clone().invert().multiply(camera.projectionMatrix);
-        tilesCamera.projectionMatrix.copy(projection);
-        tilesCamera.matrixWorldInverse.copy(view);
-        tilesCamera.matrixWorld.copy(view).invert();
-        renderer.resetState();
-        renderer.render(scene, camera);
-        tiles.update();
-        owner._highlightLandmark(tiles, localTransform);
-        owner.map.triggerRepaint();
-      }
-    };
   }
 }

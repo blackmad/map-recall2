@@ -1,5 +1,4 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
-import { enuDirectionInLocal, SUN_DIRECTION } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 import { multiplyMat4, projectLocalBox } from '../../../src/canalRecall/game/vehicleScreenBox.ts';
 
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
@@ -20,8 +19,6 @@ const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
  * piece rather than reverting to a screen-space icon. The boat is a far bigger
  * object seen over open water, so it needs much less exaggeration.
  */
-/** Legacy-layer key light. Was 4.2 while it sat under the model; from above, 4.2 burns the saddle and frame white. */
-const VEHICLE_SUN_INTENSITY = 1.6;
 const BIKE_GAME_SCALE = 4.5;
 /**
  * A world-space piece draws at one CSS size on every screen, so a bike that
@@ -120,26 +117,10 @@ class Vehicle3D {
     /** CSS-pixel box of the drawn mesh, updated each frame it draws; null otherwise. */
     this.screenBox = null;
     this._localBox = null;
-    this.layer = this._makeLayer();
-    // `?sharedFrame=1`: draw in the shared frame's overlay pass, which runs
-    // last in MapLibre's frame (so the x-ray still sees every building's
-    // depth) and is lit by the same rig as the city.
+    // Draw in the shared frame's overlay pass, which runs last in the frame (so the x-ray still sees every
+    // building's depth) and is lit by the same rig as the city. No frame: nothing to draw into.
     this.sharedFrame = map._canalSharedFrame || null;
-    if (this.sharedFrame) { this._attachShared(); return; }
-    map.addLayer(this.layer);
-    // Buildings and other 3D layers are added after the vehicles. Keep the
-    // vehicle last so their depth is already in the buffer: that is what lets
-    // the x-ray pass show the bike through a building instead of the building
-    // simply painting over it.
-    this._keepOnTop = () => {
-      const order = map.style && map.style._order;
-      if (!order || !map.getLayer(this.layer.id)) return;
-      const vehicleIds = order.filter(id => /^player-.*-3d$/.test(id));
-      const tail = order.slice(order.length - vehicleIds.length);
-      if (tail.every(id => vehicleIds.includes(id))) return;
-      map.moveLayer(this.layer.id);
-    };
-    map.on('styledata', this._keepOnTop);
+    if (this.sharedFrame) this._attachShared();
   }
 
   _attachShared() {
@@ -309,17 +290,7 @@ class Vehicle3D {
   /** Compile the model's shaders (and the x-ray's) now, while the ride is
    *  still loading, instead of on the first frame the vehicle is visible. */
   _precompile() {
-    if (this.sharedFrame) { this.sharedFrame.compile(this._scene); return; }
-    const renderer = this._renderer;
-    if (!renderer || !this._scene) return;
-    try {
-      // The x-ray twins are in the scene: one compile covers both looks.
-      renderer.compile(this._scene, new THREE.Camera());
-      renderer.resetState();
-    } catch (error) {
-      this._scene.overrideMaterial = null;
-      console.warn('Could not precompile vehicle shaders', error);
-    }
+    this.sharedFrame?.compile(this._scene);
   }
 
   /**
@@ -348,51 +319,6 @@ class Vehicle3D {
       undefined,
       error => console.warn(`3D ${label} unavailable; retaining canvas marker.`, error),
     );
-  }
-
-  _makeLayer() {
-    const owner = this;
-    const { id, modelUrl, label } = this.options;
-    let camera, renderer, occlusionMaterial, sun, sky;
-    return {
-      id,
-      type: 'custom',
-      renderingMode: '3d',
-      onAdd(map, gl) {
-        camera = new THREE.Camera();
-        owner._scene = new THREE.Scene();
-        // The heading is folded into the camera (`_transform`), so these lights
-        // live in the model's frame; `render` re-aims them from the rig's world
-        // sun every frame. Before 2026-10-13 they were fixed in model space: the
-        // sun turned with the bike ("the sun moves with me"), and sat below it.
-        sky = new THREE.HemisphereLight(0xffffff, 0x59636a, 3.2);
-        owner._scene.add(sky);
-        sun = new THREE.DirectionalLight(0xffffff, VEHICLE_SUN_INTENSITY);
-        owner._scene.add(sun);
-        occlusionMaterial = owner._makeOcclusionMaterial();
-        renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        renderer.autoClear = false;
-        owner._renderer = renderer;
-        owner._occlusionMaterial = occlusionMaterial;
-        owner._loadModel(modelUrl);
-      },
-      render(_gl, args) {
-        if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
-        owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale() * (owner.zoomScale || 1));
-        owner._pose(owner._modelRoot);
-        const transform = owner._transform();
-        owner._updateScreenBox(Array.from(args.defaultProjectionData.mainMatrix));
-        camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
-        sun.position.fromArray(enuDirectionInLocal(transform.elements, SUN_DIRECTION));
-        sky.position.fromArray(enuDirectionInLocal(transform.elements, [0, 0, 1]));
-        renderer.resetState();
-        // One render: the x-ray twins (see `addXrayTwins`) sort ahead of the model and paint, against the
-        // map's depth alone, only where nearer map geometry covers it; the model then draws every visible
-        // fragment over them. (Two renders, x-ray then normal, until 2026-10-14.)
-        renderer.render(owner._scene, camera);
-        owner.map.triggerRepaint();
-      },
-    };
   }
 }
 

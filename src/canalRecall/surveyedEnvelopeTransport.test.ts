@@ -47,16 +47,17 @@ test('roof ownership requires installed chunks, survives another owner, and rest
 test('render zoom and readiness changes restore fallback while source chunks remain resident',()=>{
  let zoom=17;const map:any={getZoom:()=>zoom,triggerRepaint(){}};const browser:any=new ThreeBuildings(map,{}as any);
  browser.ready=true;browser.chunks.set('coarse:a',{mesh:{userData:{boundParentIds:[candidate.nativeParentId]}}});
- const layer=browser.makeLayer();layer.render(null,{});assert.deepEqual(map._surveyedEnvelopeRoofIds,[candidate.nativeParentId]);
- for(const z of [14,13]){zoom=z;layer.render(null,{});assert.deepEqual(map._surveyedEnvelopeRoofIds,[]);}
- zoom=17;layer.render(null,{});assert.deepEqual(map._surveyedEnvelopeRoofIds,[candidate.nativeParentId]);
- browser.ready=false;layer.render(null,{});assert.deepEqual(map._surveyedEnvelopeRoofIds,[]);
+ // The shared frame's beforeRender runs prepareFrame (the facades' own layer went with L1 step 6).
+ const layer={render:()=>browser.prepareFrame()};layer.render();assert.deepEqual(map._surveyedEnvelopeRoofIds,[candidate.nativeParentId]);
+ for(const z of [14,13]){zoom=z;layer.render();assert.deepEqual(map._surveyedEnvelopeRoofIds,[]);}
+ zoom=17;layer.render();assert.deepEqual(map._surveyedEnvelopeRoofIds,[candidate.nativeParentId]);
+ browser.ready=false;layer.render();assert.deepEqual(map._surveyedEnvelopeRoofIds,[]);
 });
 test('pyramid reason union preserves landmark hiding and supports late renderer attachment',()=>{
  const raw=readFileSync(new URL('../../public/canal-drive/js/pyramidal-roofs-source.js',import.meta.url),'utf8');
- // Strip every import (1c78b5a5 added the batched-frame import and a THREE.Scene in the constructor; the reason union is unchanged).
+ // Strip every import; the constructor makes the shared-frame root group (L1 step 6). The reason union is unchanged.
  const source=raw.replace(/import \{[\s\S]*?\} from [^;]+;/g,'').replace('export class PyramidalRoofs','class PyramidalRoofs');
- const window:any={CanalRecallThree:{THREE:{Matrix4:class{},Scene:class{}}}};runInNewContext(source,{window,eavesHeightM(){},effectiveRoofHeightM(){},wantsPyramidalRoof(){}});
+ const window:any={CanalRecallThree:{THREE:{Matrix4:class{},Scene:class{},Group:class{}}}};runInNewContext(source,{window,eavesHeightM(){},effectiveRoofHeightM(){},wantsPyramidalRoof(){}});
  const map:any={_surveyedEnvelopeRoofIds:['surveyed'],getLayer:()=>true,triggerRepaint(){}};
  const roofs=new window.CanalRecallPyramidalRoofs.PyramidalRoofs(map,{});roofs._entries=[{ids:['surveyed'],mesh:{}},{ids:['landmark'],mesh:{}}];
  roofs.setHidden(['landmark']);assert.equal(roofs._entries[0].mesh.visible,false);assert.equal(roofs._entries[1].mesh.visible,false);

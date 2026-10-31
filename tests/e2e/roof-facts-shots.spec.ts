@@ -57,10 +57,10 @@ test(`roof facts ${label}`, async ({ page }, info) => {
     await page.evaluate(() => {
       const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map, t: number[] = [], layerMs: number[] = [];
       w.__frames = t; w.__layer = layerMs; w.__stop = false;
-      // The building layer's own CPU cost per frame (its render() call), where the roof work lands.
-      const layer = vm._threeBuildings.layer, orig = layer.render;
-      layer.render = (...a: unknown[]) => { const s = performance.now(); try { return orig.apply(layer, a); } finally { layerMs.push(performance.now() - s); } };
-      w.__unwrap = () => { layer.render = orig; };
+      // The facades' own CPU cost per frame (their shared-frame prepareFrame), where the roof work lands.
+      const facades = vm._threeBuildings, orig = facades.prepareFrame;
+      facades.prepareFrame = (...a: unknown[]) => { const s = performance.now(); try { return orig.apply(facades, a); } finally { layerMs.push(performance.now() - s); } };
+      w.__unwrap = () => { facades.prepareFrame = orig; };
       let prev = performance.now();
       const tick = (now: number) => { t.push(now - prev); prev = now; if (!w.__stop) { map.triggerRepaint(); requestAnimationFrame(tick); } };
       requestAnimationFrame(tick);
