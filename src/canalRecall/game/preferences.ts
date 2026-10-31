@@ -198,7 +198,6 @@ export interface CanalPreferences {
   trees: boolean;
   measuredColoursOnly: boolean;
   detailed3d: boolean;
-  googleTiles: boolean;
   reducedMotion: boolean;
   skipMastered: boolean;
   /** Route questions asked per minute while riding; 0 turns them off. */
@@ -259,7 +258,6 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     trees: true,
     measuredColoursOnly: false,
     detailed3d: false,
-    googleTiles: false,
     reducedMotion: false,
     skipMastered: true,
     maxAsksPerMinute: DEFAULT_ASK_BUDGET,
@@ -352,7 +350,6 @@ function fillPreferences(
     trees: parseBoolean(source.trees, base.trees),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: base.detailed3d,
-    googleTiles: base.googleTiles,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     maxAsksPerMinute: parseAskBudget(source.maxAsksPerMinute, base.maxAsksPerMinute),

@@ -20,7 +20,7 @@ async function boot(page: Page, sculptures: boolean): Promise<{ errors: string[]
   const errors: string[] = [], sculptureRequests: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   page.on('request', r => { if (/\/canal-drive\/sculptures\//.test(r.url())) sculptureRequests.push(r.url()); });
-  await page.addInitScript((on: boolean) => { (window as any).__canalRecallSharedFrame = true; (window as any).__canalRecallSculptures = on; }, sculptures);
+  await page.addInitScript((on: boolean) => { (window as any).__canalRecallSculptures = on; }, sculptures);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   // Freeze the game's camera; the test drives MapLibre directly.

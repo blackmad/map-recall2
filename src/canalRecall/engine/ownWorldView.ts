@@ -74,7 +74,7 @@ export const MERCATOR = { MercatorCoordinate };
 
 /** VectorMap members that are no-ops under the flag (the hand-back's list; checked by the engine spec). */
 export const UNIMPLEMENTED = [
-  'setTreesVisible (no trees yet)', 'setDetailedBuildingsVisible', 'setGoogleTilesEnabled', 'applyTheme (palette themes)',
+  'setTreesVisible (no trees yet)', 'setDetailedBuildingsVisible', 'applyTheme (palette themes)',
   'signature landmarks', 'neighbourhood lines are solid (MapLibre drew them dashed)',
 ] as const;
 
@@ -737,7 +737,6 @@ export class OwnWorldView {
   // Not yet under the flag (UNIMPLEMENTED): no-ops so the game runs.
   setTreesVisible(): void {}
   setDetailedBuildingsVisible(): void {}
-  setGoogleTilesEnabled(): void {}
   setTrees(): void {}
 }
 

@@ -38,7 +38,7 @@ for (const [device, ctxOpts] of Object.entries(process.env.DEVICES ? Object.from
       window.requestAnimationFrame = cb => raf(ts => { const t = performance.now(); try { cb(ts); } finally { busy.set(ts, (busy.get(ts) ?? 0) + performance.now() - t); } });
     });
     await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-    await page.goto(`http://127.0.0.1:${process.env.PORT || 4734}/canal-drive/?ownGround=1&sharedFrame=1${rails ? '' : '&rails=0'}`);
+    await page.goto(`http://127.0.0.1:${process.env.PORT || 4734}/canal-drive/?ownGround=1${rails ? '' : '&rails=0'}`);
     await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, { timeout: 90000 });
     await page.locator('#travel-mode').selectOption('car', { force: true }); await page.locator('#view-mode').selectOption('chase', { force: true });
     await page.waitForFunction(() => canalRecallGame.routePois.some(p => p.id === 'anne-frank') && canalRecallGame.routePois.some(p => p.id === 'rijksmuseum'));

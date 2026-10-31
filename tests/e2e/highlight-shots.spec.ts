@@ -28,7 +28,7 @@ export const HIGHLIGHT_SPOTS: HighlightSpot[] = [
   { name: 'oudwest-terrace', pand: 'NL.IMBAG.Pand.0363100012236453', pick: [4.87177, 52.36696], standDeg: 7, standM: 60, saddleM: 35 },
 ];
 const STYLES = (process.env.HIGHLIGHT_STYLES || 'yellow,a,b,c').split(',').filter(Boolean);
-const FRAMES = [{ name: 'default', query: '' }, { name: 'shared', query: 'sharedFrame=1' }].filter(f => !process.env.HIGHLIGHT_FRAMES || process.env.HIGHLIGHT_FRAMES.split(',').includes(f.name));
+const FRAMES = [{ name: 'default', query: '' }].filter(f => !process.env.HIGHLIGHT_FRAMES || process.env.HIGHLIGHT_FRAMES.split(',').includes(f.name));
 const VIEWS = (process.env.HIGHLIGHT_VIEWS || 'chase,saddle').split(',');
 const OUT = process.env.HIGHLIGHT_SHOTS_OUT || 'artifacts/highlight-redesign/shots';
 // Styles may carry `-hud` (`a-hud`): the same candidate with the HUD accent (`?highlightAccent=hud`, #b4682c).
