@@ -309,7 +309,7 @@ collinear removal held; next cuts need a byte census by stream, lane) plus a
 per-ride download gate ≤ 2 MB under `?world=v1` (met 2026-11-01: seeded
 1.11 MB, free ride 1.96 MB after facts load on the first card); both in
 `budgets.json`. City: format v5 (lossless roofFurniture integer-list column
-+ FOOT refs run symbol) → 8.92 MB, publishing next; decimetre heights/eaves
++ FOOT refs run symbol) published 2026-11-01 at 8.92 MB; decimetre heights/eaves
 are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
 fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
 runtime derives storeys, window rows and the facade kit from the fine value
