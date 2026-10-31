@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.64,
+ "seconds": 1.81,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -51,37 +51,40 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.37 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 7.37 m, type 8.8-12.9 m"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012061780",
+    "ncc": 0.211,
+    "nccRaw": 0.211,
+    "shiftM": [
+     -0.15,
+     0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 13.8 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.041 (brick)"
-     }
-    ]
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.261 < 0.45"
+    ],
+    "wall": {
+     "photo": "#6b514e",
+     "model": "#89675d",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.261
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek": 0.211
+   }
   },
   {
    "pandId": "0363100012072967",
@@ -119,37 +122,41 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.37 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "frontage 7.37 m, type 8.8-12.9 m"
+   "stage": "likeness",
+   "reason": "edge NCC 0.095 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 20 deg; glazing storey band off by 0.33 mean 0.24 vs photo 0.48)",
+   "likeness": {
+    "pandId": "0363100012072967",
+    "ncc": 0.095,
+    "nccRaw": 0.095,
+    "shiftM": [
+     -0.4,
+     0.35
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 13.78 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.061 (brick)"
-     }
-    ]
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 20 deg",
+     "glazing storey band off by 0.33 mean 0.24 vs photo 0.48"
+    ],
+    "wall": {
+     "photo": "#675252",
+     "model": "#896b5c",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.261
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek": 0.095
+   }
   },
   {
    "pandId": "0363100012105196",

@@ -3,7 +3,7 @@
  "street": "Cilliersstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.87,
+ "seconds": 0.86,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -159,25 +159,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 4.2 m, type 8.8-12.9 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914; frontage 4.2 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "frontage 4.2 m, type 8.8-12.9 m"
+     "built 1922, type 1908-1914",
+     "frontage 4.2 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "strip cornice 16.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 1,
+      "note": "3DBAG eaves 13.52 m = 4 storeys of 3.38 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -188,8 +189,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
      }
     ]
    },

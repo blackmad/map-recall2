@@ -3,7 +3,7 @@
  "street": "Maritzstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 0.34,
+ "seconds": 0.32,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -67,42 +67,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 5.93 m, type 8.8-12.9 m)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924",
-     "frontage 5.93 m, type 8.8-12.9 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: Maritzstraat 24-26: brick wall dormers over both pands and a residential ground; transvaal-1911-five-storey-tall passed edge NCC but draws a pointed gable, a roof dormer and a shopfront (review at gallery size, strip over model ortho, 2026-10-31)",
    "likeness": null,
    "challengers": {}
   },
@@ -163,43 +129,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924; frontage 6.2 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 9.93 m (1.38 m wide), 6.55 m (1.35 m wide)))",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924",
-     "frontage 6.2 m, type 8.8-12.9 m",
-     "strip shows balconies (balcony slabs stacked at 9.93 m (1.38 m wide), 6.55 m (1.35 m wide))"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.28 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: Maritzstraat 24-26: brick wall dormers over both pands and a residential ground; transvaal-1911-five-storey-tall passed edge NCC but draws a pointed gable, a roof dormer and a shopfront (review at gallery size, strip over model ortho, 2026-10-31)",
    "likeness": null,
    "challengers": {}
   }
