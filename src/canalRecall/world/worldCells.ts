@@ -12,7 +12,8 @@
  * so no cell is ever one long main-thread task. Without a worker (Node, a worker that failed) it all runs here.
  */
 import { decodeCell, inflateCell, rawFeature, styledFeature, WORLD_FORMAT_VERSION, type Cell, type Props, type Geometry } from './cellFormat.js';
-import { CellQueue, affinity, poolSize, rankCells } from '../engine/worldStreamer.js';
+import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
+import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
 
 export type WorldIndex = { version: 1; format: number; compiler: string; tileCells: Record<string, string[]>; cells: Record<string, { gzBytes: number; buildings: number; sha256: string }> };
@@ -151,9 +152,7 @@ export class WorldCellWorkerHost {
 }
 
 /** The three.js building worker bundle next to this script, which also reads world cells. */
-export const WORLD_WORKER_URL = typeof document !== 'undefined'
-  ? ((document.currentScript as HTMLScriptElement | null)?.src ?? '').replace(/[\w-]+\.bundle\.js(\?.*)?$/, 'three-buildings-worker.bundle.js$1')
-  : '';
+export const WORLD_WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
 
 type Share = { ordinals: number[]; raw: WorldFeature[]; styled: (Props | null)[] };
 type Pending = { cell: string; tile: string | null; worker: number; share: Share; resolve: (s: Share) => void; reject: (e: Error) => void };
@@ -168,7 +167,9 @@ export function worldResidentCells(search: string = typeof location !== 'undefin
 
 export class WorldCellClient {
   private readonly reader: WorldCellReader;
-  private workers: Worker[] = [];
+  /** The page's worker pool (engine/workerPool.ts), shared with chunk builds and relief decodes; null: main thread. */
+  private pool: WorkerPool | null;
+  private unsubscribe: (() => void) | null = null;
   private nextId = 1;
   private readonly pending = new Map<number, Pending>();
   /** The one cell queue (engine/worldStreamer.ts): cells the planned tiles need, read ahead in rank order. */
@@ -176,36 +177,30 @@ export class WorldCellClient {
   /** Per cell, ms (diagnostics: the `?world=v1` decode table), from whichever thread decoded it. */
   readonly decodeMs = new Map<string, number>();
   readonly inflateMs = new Map<string, number>();
-  /** Main-thread cost of the worker replies: messages received and the longest one (deserialise + collect), ms. */
+  /** Main-thread cost of the cell replies: messages received and the longest one (deserialise + collect), ms. */
   messages = 0;
   longestMessageMs = 0;
-  /** Where cells are decoded: 'worker', or 'main' (no worker, `?worldWorker=0`, or the workers failed). */
-  get decodeThread(): 'worker' | 'main' { return this.workers.length ? 'worker' : 'main'; }
-  get workerCount(): number { return this.workers.length; }
+  /** Where cells are decoded: 'worker', or 'main' (no pool, `?worldWorker=0`, or every worker failed). */
+  get decodeThread(): 'worker' | 'main' { return this.pool?.live ? 'worker' : 'main'; }
+  get workerCount(): number { return this.pool?.live ?? 0; }
   /** Resident decoded cells across the pool (`worldResidentCells`). */
   readonly residentBudget = worldResidentCells();
 
-  constructor(readonly index: WorldIndex, private readonly baseUrl: string, fetcher: typeof fetch = (...a) => fetch(...a), workerUrl: string = WORLD_WORKER_URL, workers = poolSize()) {
+  /** `pool` undefined: the page's shared pool (started on first use); null: decode on the main thread. */
+  constructor(readonly index: WorldIndex, private readonly baseUrl: string, fetcher: typeof fetch = (...a) => fetch(...a), pool?: WorkerPool | null) {
     this.reader = new WorldCellReader(baseUrl, fetcher, Math.min(WORLD_CELL_CACHE, worldResidentCells()));
     let off = false;
     try { off = typeof location !== 'undefined' && new URLSearchParams(location.search).get('worldWorker') === '0'; } catch { /* no location */ }
-    if (!off && workerUrl && typeof Worker !== 'undefined') {
-      try {
-        for (let w = 0; w < workers; w++) {
-          const worker = new Worker(workerUrl);
-          worker.onmessage = event => {
-            const t0 = performance.now(), data = event.data; // reading .data deserialises the batch: timed with it
-            if (!isWorldReply(data)) return;
-            this.receive(data);
-            const ms = performance.now() - t0;
-            this.messages++; if (ms > this.longestMessageMs) this.longestMessageMs = ms;
-          };
-          worker.onerror = error => { console.warn('world-v1 cell worker failed; decoding on the main thread', error); this.dropWorkers(); };
-          this.workers.push(worker);
-        }
-      } catch (error) { console.warn('world-v1 cell workers unavailable; decoding on the main thread', error); this.dropWorkers(); }
-    }
-    this.queue = new CellQueue(key => this.read(key, null).then(() => undefined), Math.max(2, this.workers.length * 2));
+    this.pool = off ? null : pool === undefined ? sharedWorkerPool(WORLD_WORKER_URL) : pool;
+    this.unsubscribe = this.pool?.subscribe(data => {
+      if (!isWorldReply(data)) return false;
+      const t0 = performance.now();
+      this.receive(data);
+      const ms = performance.now() - t0;
+      this.messages++; if (ms > this.longestMessageMs) this.longestMessageMs = ms;
+      return true;
+    }, worker => this.workerFailed(worker)) ?? null;
+    this.queue = new CellQueue(key => this.read(key, null).then(() => undefined), Math.max(2, (this.pool?.size ?? 0) * 2));
   }
 
   /** Absolute cell base for the workers (their own URL is the bundle's, not the page's). */
@@ -225,12 +220,11 @@ export class WorldCellClient {
     job.resolve(job.share);
   }
 
-  private dropWorkers(): void {
-    const workers = this.workers;
-    this.workers = [];
-    for (const w of workers) w.terminate();
-    // Whatever was in flight there is redone here.
+  /** A worker died: whatever was in flight there is redone on the main thread, as are its later cells. */
+  private workerFailed(worker: number): void {
+    console.warn(`world-v1: pool worker ${worker} failed; its cells decode on the main thread`);
     for (const [id, job] of this.pending) {
+      if (job.worker !== worker) continue;
       this.pending.delete(id);
       (job.tile === null ? this.reader.cell(job.cell).then(() => ({ ordinals: [], raw: [], styled: [] })) : this.reader.cellTile(job.cell, job.tile)).then(job.resolve, job.reject);
     }
@@ -238,23 +232,24 @@ export class WorldCellClient {
 
   /** One cell's share of a tile (or, with `tile` null, just the cell read into its worker's cache). */
   private read(cell: string, tile: string | null, signal?: AbortSignal): Promise<Share> {
-    if (!this.workers.length) {
+    const w = this.pool ? affinity(cell, this.pool.size) : -1;
+    if (!this.pool || !this.pool.alive(w)) {
       return (tile === null ? this.reader.cell(cell, signal).then(() => ({ ordinals: [], raw: [], styled: [] })) : this.reader.cellTile(cell, tile, signal)).then(share => {
         const d = this.reader.decodeMs.get(cell), f = this.reader.inflateMs.get(cell);
         if (d !== undefined) this.decodeMs.set(cell, d); if (f !== undefined) this.inflateMs.set(cell, f);
         return share;
       });
     }
-    const id = this.nextId++, w = affinity(cell, this.workers.length), worker = this.workers[w];
+    const id = this.nextId++, pool = this.pool;
     return new Promise<Share>((resolve, reject) => {
       if (signal?.aborted) { reject(new DOMException('aborted', 'AbortError')); return; }
       this.pending.set(id, { cell, tile, worker: w, share: { ordinals: [], raw: [], styled: [] }, resolve, reject });
       signal?.addEventListener('abort', () => {
         if (!this.pending.delete(id)) return;
-        this.workers[w]?.postMessage({ kind: 'world-abort', id } satisfies WorldRequest);
+        pool.post(w, { kind: 'world-abort', id } satisfies WorldRequest);
         reject(new DOMException('aborted', 'AbortError'));
       }, { once: true });
-      worker.postMessage({ kind: 'world-cell', id, baseUrl: this.absoluteBase(), cell, tile, cache: worldCellCachePerWorker(this.workers.length, this.residentBudget) } satisfies WorldRequest);
+      pool.post(w, { kind: 'world-cell', id, baseUrl: this.absoluteBase(), cell, tile, cache: worldCellCachePerWorker(pool.size, this.residentBudget) } satisfies WorldRequest);
     });
   }
 
@@ -271,10 +266,11 @@ export class WorldCellClient {
     const evict = this.queue.evictions(this.residentBudget, rider, key => ranked.has(key));
     if (!evict.length) return;
     for (const k of evict) this.queue.forget(k);
-    if (this.workers.length) {
+    const pool = this.pool;
+    if (pool) {
       const byWorker = new Map<number, string[]>();
-      for (const k of evict) { const w = affinity(k, this.workers.length); let l = byWorker.get(w); if (!l) byWorker.set(w, l = []); l.push(k); }
-      for (const [w, cells] of byWorker) this.workers[w].postMessage({ kind: 'world-evict', cells } satisfies WorldRequest);
+      for (const k of evict) { const w = affinity(k, pool.size); let l = byWorker.get(w); if (!l) byWorker.set(w, l = []); l.push(k); }
+      for (const [w, cells] of byWorker) if (!pool.post(w, { kind: 'world-evict', cells } satisfies WorldRequest)) this.reader.evict(cells);
     } else this.reader.evict(evict);
   }
 
@@ -285,7 +281,7 @@ export class WorldCellClient {
   async tile(tileKey: string, signal?: AbortSignal): Promise<WorldTile> {
     const keys = this.index.tileCells[tileKey] ?? [];
     if (!keys.length) return { features: [], styled: new Map() };
-    if (!this.workers.length) {
+    if (!this.pool?.live) {
       const out = await this.reader.tile(tileKey, keys, signal);
       for (const k of keys) { const d = this.reader.decodeMs.get(k), i = this.reader.inflateMs.get(k); if (d !== undefined) this.decodeMs.set(k, d); if (i !== undefined) this.inflateMs.set(k, i); this.queue.noteResident(k); }
       return out;
@@ -301,5 +297,6 @@ export class WorldCellClient {
     return { features: picked.map(p => p.raw), styled };
   }
 
-  dispose(): void { for (const w of this.workers) w.terminate(); this.workers = []; }
+  /** Leave the shared pool (it stays up for the other layers); in-flight replies are then ignored. */
+  dispose(): void { this.unsubscribe?.(); this.unsubscribe = null; this.pool = null; }
 }

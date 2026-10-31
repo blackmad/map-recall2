@@ -23,7 +23,7 @@ import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
 import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
-import { plainBounds, type LngLatBounds } from './residency.js';
+import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
 import { chooseTileDraws } from './tiledGeometry.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';

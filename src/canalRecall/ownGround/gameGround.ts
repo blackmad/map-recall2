@@ -36,6 +36,10 @@
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
+import { poolReliefLoader } from './reliefDecode.js';
+import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
+/** The page's worker pool runs the building worker bundle next to this one (engine/workerPool.ts). */
+const POOL_WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
 import { boundingSphereOf } from '../geometryBounds.js';
 import { compileWithinBudget, precompileBudget, precompileStepDue } from '../rendererShared/compileBudget.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
@@ -43,7 +47,7 @@ import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
-import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from './residency.js';
+import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -365,37 +369,20 @@ export class OwnGround {
   }
 
   /**
-   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in a
-   * second instance of the ground worker, not on the main thread. Falls back to the main thread without workers.
+   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in the page's
+   * worker pool (engine/workerPool.ts, ownGround/reliefDecode.ts), not on the main thread and no longer in a second
+   * own-ground worker. Falls back to the main thread without a pool.
    */
-  private reliefWorker: Worker | null = null;
-  private readonly reliefWaiting = new Map<number, { resolve: (v: { heights: Float32Array; bytes: number }) => void; reject: (e: Error) => void }>();
-  private reliefIds = 0;
+  private relief: { loader: ReliefTileLoader; dispose: () => void } | null = null;
   private reliefLoader(root: string): ReliefTileLoader | undefined {
-    if (typeof Worker === 'undefined' || !this.opts.workerUrl) return undefined;
-    return (path, index, entry) => {
-      if (!this.reliefWorker) {
-        try {
-          const worker = new Worker(this.opts.workerUrl);
-          worker.onmessage = event => {
-            const msg = event.data, waiting = this.reliefWaiting.get(msg.id);
-            if (msg.type !== 'relief' || !waiting) return;
-            this.reliefWaiting.delete(msg.id);
-            if (msg.heights) waiting.resolve({ heights: msg.heights, bytes: msg.bytes });
-            else waiting.reject(new Error(msg.error ?? 'relief tile failed'));
-          };
-          this.reliefWorker = worker;
-        } catch (error) {
-          this.stats.errors.push(`relief worker unavailable: ${String(error)}`);
-          return httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength }));
-        }
-      }
-      const id = ++this.reliefIds;
-      return new Promise((resolve, reject) => {
-        this.reliefWaiting.set(id, { resolve, reject });
-        this.reliefWorker!.postMessage({ type: 'relief', id, url: `${root}/${path}`, index: { stepM: index.stepM, tileSizeM: index.tileSizeM, samples: index.samples, predictor: index.predictor }, entry: [...entry] });
-      });
-    };
+    if (typeof Worker === 'undefined') return undefined;
+    this.relief?.dispose();
+    this.relief = poolReliefLoader(sharedWorkerPool(POOL_WORKER_URL), root);
+    const relief = this.relief;
+    if (!relief) return undefined;
+    // A pool worker that dies mid-tile: that tile decodes here instead.
+    return (path, index, entry) => relief.loader(path, index, entry)
+      .catch(() => httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength })));
   }
 
   dispose(full = true): void {
@@ -408,10 +395,8 @@ export class OwnGround {
     this.prepared.clear();
     this.worker?.terminate();
     this.worker = null;
-    this.reliefWorker?.terminate();
-    this.reliefWorker = null;
-    for (const w of this.reliefWaiting.values()) w.reject(new Error('own ground disposed'));
-    this.reliefWaiting.clear();
+    this.relief?.dispose();
+    this.relief = null;
     this.workerReady = false;
     this.gen++;
     if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; this.precompileQueue = null; }
