@@ -3,7 +3,9 @@ import { existsSync, readFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
-const PROGRAMS_BUDGET: number = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries.programs.value;
+const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
+const PROGRAMS_BUDGET: number = BUDGETS.programs.value;
+const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
 // is the second world view. Three.js owns the canvas; MapLibre is never
@@ -107,8 +109,9 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
 });
 
 // The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera
-// (engine/cameraMap.ts EngineCamera) projects the same ground points to within 3.2 px.
-test('engine camera matches MapLibre within 3.2 px along the intro and a ride', async ({ page }) => {
+// (engine/cameraMap.ts EngineCamera) projects the same ground points to within the budget (tests/perf/budgets.json cameraParityPx).
+// Under `?engine=own` itself: engine-parity.spec.ts.
+test('engine camera matches MapLibre within the parity budget along the intro and a ride', async ({ page }) => {
   test.skip(process.env.ENGINE === 'own', 'the oracle is MapLibre: run without ENGINE=own');
   test.setTimeout(180_000);
   await openRoute(page, { viewMode: 'chase', enterRacing: false });
@@ -122,10 +125,19 @@ test('engine camera matches MapLibre within 3.2 px along the intro and a ride', 
       center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch(), maxPitch: 85,
       elevation: map.transform.elevation ?? 0,
     });
+    // What MapLibre draws: its view-projection matrix lifts the camera by the centre elevation, which `map.project`
+    // (`_pixelMatrix`) leaves out (engine-parity.spec.ts); off by ~5 px on the iPhone ride's deck.
+    const T = map.transform, vp = T._viewProjMatrix ?? T.currentTransform?._viewProjMatrix, ws = T.worldSize;
+    const MC = (window as any).maplibregl.MercatorCoordinate;
+    const drawn = (lng: number, lat: number) => {
+      const q = MC.fromLngLat([lng, lat], 0), X = q.x * ws, Y = q.y * ws;
+      const cx = vp[0] * X + vp[4] * Y + vp[12], cy = vp[1] * X + vp[5] * Y + vp[13], cw = vp[3] * X + vp[7] * Y + vp[15];
+      return { x: (cx / cw + 1) / 2 * el.clientWidth, y: (1 - cy / cw) / 2 * el.clientHeight };
+    };
     const out: number[] = [];
     for (const [fx, fy] of [[0.5, 0.5], [0.2, 0.8], [0.8, 0.8], [0.5, 0.95], [0.3, 0.6], [0.7, 0.55]]) {
       const ll = map.unproject([fx * el.clientWidth, fy * el.clientHeight]);
-      const a = map.project(ll), b = cam.project([ll.lng, ll.lat]);
+      const a = drawn(ll.lng, ll.lat), b = cam.project([ll.lng, ll.lat]);
       if (b.depth > 0) out.push(Math.hypot(a.x - b.x, a.y - b.y));
     }
     return [map.getZoom(), map.getPitch(), Math.max(...out)];
@@ -136,5 +148,5 @@ test('engine camera matches MapLibre within 3.2 px along the intro and a ride', 
   for (let i = 0; i < 10; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
   await page.keyboard.up('ArrowUp');
   console.log('parity (zoom, pitch, max px):', JSON.stringify(samples.map(s => s.map(v => Math.round(v * 100) / 100))));
-  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(3.2);
+  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(PARITY_PX);
 });

@@ -20,6 +20,7 @@ import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
+import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera } from './cameraClearance';
@@ -171,6 +172,8 @@ export class OwnWorldView {
     const prefs = W().CanalRecallPreferences;
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
+    // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
+    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
     this.camera = this.cameraMap.api;
     const shadows = flag('shadows', '__canalRecallShadows', true);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
@@ -618,6 +621,8 @@ export class OwnWorldView {
 
   // ---- route and question street: draped on the own ground (routeRibbon) ----
   ownGroundDrapesOverlays(): boolean { return !!this._ownGround?.drapesOverlays?.(); }
+  /** What `camera.whenIdle()` is still waiting on (engine/settle.ts); [] when the view is settled. */
+  pendingWork(): string[] { return this.cameraMap.pendingWork(); }
   ownGroundStatus(): Record<string, unknown> { return this._ownGround ? this._ownGround.status() : { enabled: true, ready: false }; }
   elevationStatus(): Record<string, unknown> { return this.ownGroundStatus(); }
 

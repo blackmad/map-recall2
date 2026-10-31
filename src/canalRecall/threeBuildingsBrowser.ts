@@ -1607,6 +1607,9 @@ export class ThreeBuildings {
     }, { order: options.order ?? 0 });
   }
 
+  /** Chunks still queued, building in the worker or staged for install; 0 when settled or not drawn at this zoom. */
+  get loadingCount(): number { return this.visible && this.map.getZoom() >= MIN_ZOOM ? this.pending.length + this.inflight.size + this.staged.length : 0; }
+
   /** Whether this layer draws through the shared frame. */
   get inSharedFrame(): boolean { return !!this.sharedFrame; }
 }

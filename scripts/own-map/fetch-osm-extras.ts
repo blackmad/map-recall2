@@ -20,9 +20,27 @@ import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fromLocal } from '../../src/canalRecall/ownMap/frame.ts';
 
-const OUT = 'artifacts/own-map/staging';
-// The overview's bounds (report.json `bounds`, local metres) in degrees.
-const [W, S] = fromLocal(-13448, -11258), [E, N] = fromLocal(14928, 8028);
+// `--city <id>` (default amsterdam): the other playable cities have no elevation-v1 water cells, so their extras also
+// carry the water polygons (natural=water, waterway=riverbank, landuse=basin/reservoir). Amsterdam's output is
+// unchanged: same path, no water field.
+const argOf = (flag: string) => { const i = process.argv.indexOf(flag); return i >= 0 ? process.argv[i + 1] : undefined; };
+const CITY = argOf('--city') ?? 'amsterdam';
+const AMSTERDAM = CITY === 'amsterdam';
+const OUT = AMSTERDAM ? 'artifacts/own-map/staging' : `artifacts/own-map/staging/${CITY}`;
+/** The cached PBF that covers each city (BBBike Amsterdam/Utrecht, Geofabrik Zuid-Holland). */
+const CITY_PBF: Record<string, string> = { amsterdam: 'Amsterdam.osm.pbf', utrecht: 'Utrecht.osm.pbf', rotterdam: 'zuid-holland-latest.osm.pbf', 'den-haag': 'zuid-holland-latest.osm.pbf' };
+const WATER_LANDUSE = ['basin', 'reservoir'];
+
+/** The extract's box in degrees: Amsterdam's overview bounds; elsewhere the city's routed streets plus 1 km. */
+function cityBox(): [number, number, number, number] {
+  if (AMSTERDAM) { const [w, s] = fromLocal(-13448, -11258), [e, n] = fromLocal(14928, 8028); return [w, s, e, n]; }
+  const streets = JSON.parse(readFileSync(`public/data/extracts/${CITY}/streets-routing.json`, 'utf8')) as Array<{ path?: [number, number][]; paths?: [number, number][][] }>;
+  let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+  for (const st of streets) for (const r of st.paths?.length ? st.paths : st.path ? [st.path] : []) for (const [lat, lng] of r) { w = Math.min(w, lng); e = Math.max(e, lng); s = Math.min(s, lat); n = Math.max(n, lat); }
+  const dLat = 1000 / 110540, dLng = 1000 / (111320 * Math.cos(((s + n) / 2) * Math.PI / 180));
+  return [w - dLng, s - dLat, e + dLng, n + dLat];
+}
+const [W, S, E, N] = cityBox();
 
 const RAIL = ['rail', 'light_rail', 'subway', 'tram', 'narrow_gauge', 'monorail', 'funicular'];
 const PATHS = ['footway', 'path', 'steps', 'track', 'bridleway'];
@@ -44,6 +62,8 @@ export interface OsmExtras {
   landuse: Array<{ kind: string; rings: [number, number][][] }>;
   /** Piers: areas as rings, open ways as lines. */
   piers: Array<{ area: boolean; g: [number, number][] }>;
+  /** Water areas (outer ring first), for cities without elevation-v1 water cells (`--city`, not Amsterdam). */
+  water?: Array<{ rings: [number, number][][] }>;
 }
 
 type Geometry = { type: string; coordinates: unknown };
@@ -62,9 +82,10 @@ function landuseKind(t: Record<string, string>): string | null {
 }
 
 function main(): void {
-  const ai = process.argv.indexOf('--pbf');
-  const pbf = resolve(ai >= 0 ? process.argv[ai + 1] : '.cache/osm-source/Amsterdam.osm.pbf');
-  const pbfPath = existsSync(pbf) ? pbf : resolve('/Users/blackmad/Code/map-recall2/.cache/osm-source/Amsterdam.osm.pbf');
+  const file = CITY_PBF[CITY];
+  if (!file) throw new Error(`no PBF known for --city ${CITY}`);
+  const pbf = resolve(argOf('--pbf') ?? `.cache/osm-source/${file}`);
+  const pbfPath = existsSync(pbf) ? pbf : resolve(`/Users/blackmad/Code/map-recall2/.cache/osm-source/${file}`);
   if (!existsSync(pbfPath)) throw new Error(`no PBF at ${pbf}; pass --pbf <file>`);
   const tmp = mkdtempSync(join(tmpdir(), 'own-map-osm-'));
   const run = (...args: string[]) => execFileSync('osmium', args, { stdio: ['ignore', 'pipe', 'inherit'] }).toString();
@@ -73,10 +94,11 @@ function main(): void {
   run('tags-filter', '-O', join(tmp, 'bbox.pbf'),
     `w/railway=${RAIL.join(',')}`, `w/highway=${PATHS.join(',')}`,
     `nwr/landuse=${LANDUSE.join(',')}`, `nwr/natural=${NATURAL.join(',')}`, `nwr/leisure=${LEISURE.join(',')}`,
-    'nwr/amenity=grave_yard', 'nwr/man_made=pier', '-o', join(tmp, 'filtered.pbf'));
+    'nwr/amenity=grave_yard', 'nwr/man_made=pier',
+    ...(AMSTERDAM ? [] : ['nwr/natural=water', 'nwr/waterway=riverbank', `nwr/landuse=${WATER_LANDUSE.join(',')}`]), '-o', join(tmp, 'filtered.pbf'));
   run('export', '-O', join(tmp, 'filtered.pbf'), '-f', 'geojsonseq', '-a', 'type,id', '-o', join(tmp, 'extras.geojsonseq'));
 
-  const out: OsmExtras = { version: 1, source: `BBBike Amsterdam PBF (${pbfPath.split('/').pop()})`, timestamp, attribution: '© OpenStreetMap contributors (ODbL)', bbox: [round(W), round(S), round(E), round(N)], rail: [], paths: [], landuse: [], piers: [] };
+  const out: OsmExtras = { version: 1, source: AMSTERDAM ? `BBBike Amsterdam PBF (${pbfPath.split('/').pop()})` : `${CITY}: ${pbfPath.split('/').pop()}`, timestamp, attribution: '© OpenStreetMap contributors (ODbL)', bbox: [round(W), round(S), round(E), round(N)], rail: [], paths: [], landuse: [], piers: [], ...(AMSTERDAM ? {} : { water: [] }) };
   const counts: Record<string, number> = {};
   const bump = (k: string) => { counts[k] = (counts[k] ?? 0) + 1; };
   for (const raw of readFileSync(join(tmp, 'extras.geojsonseq'), 'utf8').split('\n')) {
@@ -100,6 +122,11 @@ function main(): void {
       else if (g.type === 'MultiPolygon') for (const p of g.coordinates as number[][][][]) out.piers.push({ area: true, g: pts(p[0]) });
       bump('pier'); continue;
     }
+    if (out.water && (t.natural === 'water' || t.waterway === 'riverbank' || WATER_LANDUSE.includes(t.landuse))) {
+      const polys = g.type === 'Polygon' ? [g.coordinates as number[][][]] : g.type === 'MultiPolygon' ? g.coordinates as number[][][][] : [];
+      for (const p of polys) out.water.push({ rings: p.map(pts) });
+      if (polys.length) bump('water'); continue;
+    }
     const kind = landuseKind(t);
     if (!kind) continue;
     const polys = g.type === 'Polygon' ? [g.coordinates as number[][][]] : g.type === 'MultiPolygon' ? g.coordinates as number[][][][] : [];
@@ -108,7 +135,7 @@ function main(): void {
   }
   mkdirSync(OUT, { recursive: true });
   writeFileSync(join(OUT, 'osm-extras.json'), JSON.stringify(out));
-  const report = { source: out.source, timestamp, bbox: out.bbox, rail: out.rail.length, paths: out.paths.length, landuse: out.landuse.length, piers: out.piers.length, counts };
+  const report = { source: out.source, timestamp, bbox: out.bbox, rail: out.rail.length, paths: out.paths.length, landuse: out.landuse.length, piers: out.piers.length, ...(out.water ? { water: out.water.length } : {}), counts };
   writeFileSync(join(OUT, 'osm-extras-report.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
 }

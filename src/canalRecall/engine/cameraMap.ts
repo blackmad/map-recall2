@@ -33,13 +33,38 @@ const asLngLat = (p: LngLatLike): [number, number] => Array.isArray(p) ? [p[0], 
 
 export type MapCameraOptions = { center?: LngLatLike; zoom?: number; bearing?: number; pitch?: number; elevation?: number; fovDeg?: number; minZoom?: number; maxZoom?: number; maxPitch?: number };
 
-type BoundsLike = ViewBounds & { getWest(): number; getEast(): number; getSouth(): number; getNorth(): number; toArray(): [[number, number], [number, number]] };
-const boundsObject = (b: ViewBounds): BoundsLike => ({
+const lngLatObject = (lng: number, lat: number) => ({ lng, lat, toArray: () => [lng, lat] as [number, number] });
+type LngLatObject = ReturnType<typeof lngLatObject>;
+type BoundsLike = ViewBounds & {
+  getWest(): number; getEast(): number; getSouth(): number; getNorth(): number;
+  getNorthEast(): LngLatObject; getSouthWest(): LngLatObject;
+  getNorthWest(): LngLatObject; getSouthEast(): LngLatObject;
+  getCenter(): LngLatObject;
+  contains(lngLat: LngLatLike | { lon: number; lat: number }): boolean;
+  isEmpty(): boolean;
+  toArray(): [[number, number], [number, number]];
+};
+/**
+ * MapLibre's LngLatBounds surface over the view's box: the participants call it on `map.getBounds()`
+ * (artis-animals.js `contains`, park-landscape.js `getWest()`…). `contains` follows LngLatBounds.contains:
+ * inclusive edges, and a box whose west lies east of its east wraps the antimeridian.
+ */
+export const boundsObject = (b: ViewBounds): BoundsLike => ({
   ...b,
   getWest: () => b.west, getEast: () => b.east, getSouth: () => b.south, getNorth: () => b.north,
+  getNorthEast: () => lngLatObject(b.east, b.north), getSouthWest: () => lngLatObject(b.west, b.south),
+  getNorthWest: () => lngLatObject(b.west, b.north), getSouthEast: () => lngLatObject(b.east, b.south),
+  getCenter: () => lngLatObject((b.west + b.east) / 2, (b.south + b.north) / 2),
+  contains: (p) => {
+    const o = p as { lng?: number; lon?: number; lat?: number } & ArrayLike<number>;
+    const lng = Array.isArray(p) ? o[0] : (o.lng ?? o.lon ?? NaN);
+    const lat = Array.isArray(p) ? o[1] : (o.lat ?? NaN);
+    if (!Number.isFinite(lng) || !Number.isFinite(lat) || lat < b.south || lat > b.north) return false;
+    return b.west <= b.east ? lng >= b.west && lng <= b.east : lng >= b.west || lng <= b.east;
+  },
+  isEmpty: () => !(Number.isFinite(b.west) && Number.isFinite(b.east) && Number.isFinite(b.south) && Number.isFinite(b.north)),
   toArray: () => [[b.west, b.south], [b.east, b.north]],
 });
-const lngLatObject = (lng: number, lat: number) => ({ lng, lat, toArray: () => [lng, lat] as [number, number] });
 
 /**
  * The camera state as MapLibre holds it (lng/lat centre), plus the derived frame. Pure maths over a viewport; the
@@ -172,6 +197,9 @@ export class CameraMap {
   /** Pending fetches / builds the view is waiting on (participants report through `busy`). */
   private busyCount = 0;
   private readonly idleWaiters: Array<() => void> = [];
+  /** Named "still loading" checks (the own view's overview, ground, facades, landmarks); idle waits for all of them. */
+  private readonly idleChecks = new Map<string, () => boolean>();
+  private idlePoll: ReturnType<typeof setTimeout> | null = null;
 
   constructor(readonly host: FrameHost, options: MapCameraOptions = {}) {
     this.camera = new EngineCamera(() => host.viewport(), options);
@@ -281,8 +309,24 @@ export class CameraMap {
   whenIdle(): Promise<void> {
     return new Promise(resolve => { this.idleWaiters.push(resolve); this.host.triggerRepaint(); });
   }
+  /** Register a named check that answers true while its work is still loading; `whenIdle` waits for every one. */
+  addIdleCheck(name: string, busy: () => boolean): () => void {
+    this.idleChecks.set(name, busy);
+    return () => { this.idleChecks.delete(name); };
+  }
+  /** What the view is still waiting on: the counted `busy` work and every named check that is busy. */
+  pendingWork(): string[] {
+    const out = this.busyCount ? [`busy×${this.busyCount}`] : [];
+    for (const [name, busy] of this.idleChecks) { try { if (busy()) out.push(name); } catch (_) { /* a broken check never holds the view */ } }
+    return out;
+  }
   private checkIdle(): void {
-    if (this.busyCount || !this.idleWaiters.length) return;
+    if (!this.idleWaiters.length) return;
+    if (this.pendingWork().length) {
+      // Loading finishes off-frame (fetches, workers): look again shortly rather than rendering continuously.
+      if (!this.idlePoll) this.idlePoll = setTimeout(() => { this.idlePoll = null; this.host.triggerRepaint(); }, 100);
+      return;
+    }
     const waiters = this.idleWaiters.splice(0);
     this.host.fire('idle');
     for (const resolve of waiters) resolve();

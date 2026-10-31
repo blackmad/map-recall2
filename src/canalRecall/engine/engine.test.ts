@@ -250,3 +250,54 @@ test('overview v2 layers: landuse, piers and rail add meshes on the shared flat 
   const tunnel = withV2.root.children.find(o => o.renderOrder === 9) as any;
   assert.ok(tunnel && tunnel.material.uniforms.uOpacity.value < 0.5, 'tunnels faint');
 });
+
+test('settled: whenIdle waits for every named loader check, polling while work finishes off-frame', async () => {
+  const { CameraMap } = await import('./cameraMap');
+  const { settlePending } = await import('./settle');
+  const listeners: Record<string, Array<() => void>> = {};
+  let repaints = 0;
+  const host: any = {
+    viewport: () => ({ width: 800, height: 600 }),
+    on: (t: string, l: () => void) => { (listeners[t] ??= []).push(l); },
+    off() {}, once() {}, fire() {},
+    triggerRepaint: () => { repaints++; queueMicrotask(() => listeners.render?.forEach(l => l())); },
+  };
+  const cm = new CameraMap(host, {});
+  let tiles = 2;
+  cm.addIdleCheck('facades', () => tiles > 0);
+  let settled = false;
+  const done = cm.whenIdle().then(() => { settled = true; });
+  await new Promise(r => setTimeout(r, 250));
+  assert.equal(settled, false, 'held while the facades load');
+  assert.deepEqual(cm.pendingWork(), ['facades']);
+  assert.ok(repaints < 10, `polls, not a render loop (${repaints} repaints)`);
+  tiles = 0;
+  await done;
+  assert.equal(settled, true);
+  assert.deepEqual(cm.pendingWork(), []);
+  // The own view's checks: a loader that failed or never started is not waited on.
+  let covered = false;
+  const view: any = { camera: { center: () => ({ lng: 4.9, lat: 52.37 }) }, _overview: null, status: { failed: ['overview: 404'] }, _ownGround: { ready: true, loadingCells: 3, coversRect: () => covered }, _threeBuildings: null, _completeCity: { status: () => ({ inFlight: 0, queued: 1 }) }, _signatureLandmarks: { _pending: { size: 0 } } };
+  assert.deepEqual(settlePending(view), ['ownGround', 'buildingTiles']);
+  covered = true;
+  assert.deepEqual(settlePending(view), ['buildingTiles'], 'the cells round the view are in: the ring edge does not hold the view');
+});
+
+test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animals.js), getWest… (park-landscape.js)', async () => {
+  const { boundsObject } = await import('./cameraMap');
+  const b = boundsObject({ west: 4.910, south: 52.362, east: 4.920, north: 52.369 });
+  // ARTIS, the anchor artis-animals.js tests every frame on the iPhone ride (Plantage Kerklaan).
+  assert.equal(b.contains([4.9155, 52.3660]), true);
+  assert.equal(b.contains({ lng: 4.9155, lat: 52.3660 }), true);
+  assert.equal(b.contains({ lon: 4.9155, lat: 52.3660 }), true);
+  assert.equal(b.contains([4.905, 52.366]), false, 'west of the box');
+  assert.equal(b.contains([4.915, 52.370]), false, 'north of the box');
+  assert.equal(b.contains([4.910, 52.362]), true, 'edges inclusive, as LngLatBounds');
+  assert.deepEqual([b.getWest(), b.getSouth(), b.getEast(), b.getNorth()], [4.910, 52.362, 4.920, 52.369]);
+  assert.deepEqual(b.getCenter().toArray(), [4.915, 52.3655]);
+  assert.deepEqual([b.getNorthEast().lng, b.getSouthWest().lat], [4.920, 52.362]);
+  assert.equal(b.isEmpty(), false);
+  const wrap = boundsObject({ west: 179, south: -1, east: -179, north: 1 });
+  assert.equal(wrap.contains([179.5, 0]), true, 'antimeridian-wrapped box');
+  assert.equal(wrap.contains([0, 0]), false);
+});

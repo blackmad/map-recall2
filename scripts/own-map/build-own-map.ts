@@ -18,8 +18,16 @@ import { simplify, ringArea } from '../../src/canalRecall/ownMap/geometry.ts';
 import { encodeLine, landuseClassOf, streetClassOf, LANDUSE_CLASSES, RAIL_KINDS, RAIL_BRIDGE, RAIL_SERVICE, RAIL_TUNNEL, STREET_CLASSES, type LanduseClass, type OverviewFile } from '../../src/canalRecall/ownMap/overviewFormat.ts';
 import type { OsmExtras } from './fetch-osm-extras.ts';
 
-const SRC = 'public/data/extracts/amsterdam';
-const OUT = 'artifacts/own-map/staging/own-map-v1';
+// `--city <id>` (default amsterdam): Utrecht, Rotterdam and Den Haag build from their own extracts into
+// artifacts/own-map/staging/<city>/own-map-v1, with water polygons from their OSM extras (fetch-osm-extras.ts
+// --city), since only Amsterdam has elevation-v1 water cells. Coordinates stay in the one own-map frame
+// (ownMap/frame.ts, origin Amsterdam), which the engine's overview layer places with.
+const cityArg = process.argv.indexOf('--city');
+const CITY = cityArg >= 0 ? process.argv[cityArg + 1] : 'amsterdam';
+const AMSTERDAM = CITY === 'amsterdam';
+const SRC = `public/data/extracts/${CITY}`;
+const STAGING = AMSTERDAM ? 'artifacts/own-map/staging' : `artifacts/own-map/staging/${CITY}`;
+const OUT = `${STAGING}/own-map-v1`;
 const UNIT = 0.5;
 const TOL = { street: 1.0, water: 1.2, park: 2.0, waterLine: 4.0, path: 3.0, rail: 2.0, landuse: 6.0, pier: 1.0, hood: 3.0 };
 const MIN_WATER_AREA = 40;
@@ -27,7 +35,7 @@ const MIN_WATER_AREA = 40;
 // dropped per class: Amsterdam maps ~29k grass strips, most under a street's
 // width at overview zoom, and they would double the file for nothing visible
 // before the near field takes over at z16.
-const EXTRAS = 'artifacts/own-map/staging/osm-extras.json';
+const EXTRAS = `${STAGING}/osm-extras.json`;
 const MIN_LANDUSE_AREA: Record<LanduseClass, number> = { green: 15000, wood: 8000, wetland: 10000, sport: 2000, cemetery: 1000, allotments: 2000, farmland: 8000, industrial: 5000, construction: 5000, sand: 1000 };
 const MIN_PATH_LENGTH = 60;
 const MIN_PIER_AREA = 15;
@@ -49,29 +57,40 @@ function main(): void {
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
   const grow = (pts: Vec2[]) => { for (const [x, y] of pts) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); } };
 
-  // Water polygons: elevation-v1 cells (1 km, 0.1 m quantised, elevation frame).
-  const index = json('elevation-v1/index.json');
-  const quant = index.quantization.xy, size = index.cellSizeM;
-  const [ox, oy] = index.origin as [number, number], [mx, my] = index.metresPerDegree as [number, number];
+  // Water polygons: elevation-v1 cells (1 km, 0.1 m quantised, elevation frame) where the city has them (Amsterdam);
+  // elsewhere the OSM water areas in the city's extras.
   const water: number[][][] = [];
   let waterIn = 0, waterOut = 0, waterDropped = 0;
-  for (const file of readdirSync(join(SRC, 'elevation-v1/cells'))) {
-    const cell = json(`elevation-v1/cells/${file}`) as { cell: [number, number]; water: number[][][] };
-    const cx = cell.cell[0] * size, cy = cell.cell[1] * size;
-    for (const poly of cell.water) {
-      const rings: number[][] = [];
-      poly.forEach((flat, ri) => {
+  const addWater = (ringsIn: Vec2[][]) => {
+    const rings: number[][] = [];
+    ringsIn.forEach((pts, ri) => {
+      waterIn += pts.length;
+      const s = simplify(pts, TOL.water);
+      if (s.length < 3 || Math.abs(ringArea(s)) < MIN_WATER_AREA) { if (ri === 0) waterDropped++; return; }
+      if (ri === 0 || rings.length) { rings.push(encodeLine(s, UNIT)); waterOut += s.length; if (ri === 0) grow(s); }
+    });
+    if (rings.length) water.push(rings);
+  };
+  const waterSource = existsSync(join(SRC, 'elevation-v1/index.json')) ? 'elevation-v1' : 'osm-extras';
+  if (waterSource === 'elevation-v1') {
+    const index = json('elevation-v1/index.json');
+    const quant = index.quantization.xy, size = index.cellSizeM;
+    const [ox, oy] = index.origin as [number, number], [mx, my] = index.metresPerDegree as [number, number];
+    for (const file of readdirSync(join(SRC, 'elevation-v1/cells'))) {
+      const cell = json(`elevation-v1/cells/${file}`) as { cell: [number, number]; water: number[][][] };
+      const cx = cell.cell[0] * size, cy = cell.cell[1] * size;
+      for (const poly of cell.water) addWater(poly.map(flat => {
         const pts: Vec2[] = [];
         for (let i = 0; i + 1 < flat.length; i += 2) pts.push(toLocal(ox + (cx + flat[i] * quant) / mx, oy + (cy + flat[i + 1] * quant) / my));
-        waterIn += pts.length;
-        const s = simplify(pts, TOL.water);
-        if (s.length < 3 || Math.abs(ringArea(s)) < MIN_WATER_AREA) { if (ri === 0) waterDropped++; return; }
-        if (ri === 0 || rings.length) { rings.push(encodeLine(s, UNIT)); waterOut += s.length; if (ri === 0) grow(s); }
-      });
-      if (rings.length) water.push(rings);
+        return pts;
+      }));
     }
+  } else {
+    if (!existsSync(EXTRAS)) throw new Error(`${CITY}: no elevation-v1 water and no ${EXTRAS}; run fetch-osm-extras.ts --city ${CITY} first`);
+    const extrasWater = (JSON.parse(readFileSync(EXTRAS, 'utf8')) as OsmExtras).water ?? [];
+    for (const w of extrasWater) addWater(w.rings.map(r => r.map(([lng, lat]) => toLocal(lng, lat))));
   }
-  report.water = { polygons: water.length, pointsIn: waterIn, pointsOut: waterOut, droppedSmall: waterDropped };
+  report.water = { source: waterSource, polygons: water.length, pointsIn: waterIn, pointsOut: waterOut, droppedSmall: waterDropped };
 
   // Parks: parks.json outlines (path / paths are closed rings, lat/lng).
   const parks: OverviewFile['parks'] = [];
@@ -202,7 +221,7 @@ function main(): void {
     bounds: [Math.floor(x0), Math.floor(y0), Math.ceil(x1), Math.ceil(y1)],
     names, water, parks, streets, waterLines, hoods,
     ...(extras ? { landuse, rail, piers, pierLines } : {}), hoodRings,
-    sources: ['elevation-v1 water (OpenFreeMap z14 shoreline, cached)', 'parks.json', 'streets-routing.json', 'water.json', 'boundaries.json',
+    sources: [waterSource === 'elevation-v1' ? 'elevation-v1 water (OpenFreeMap z14 shoreline, cached)' : 'water areas: OSM (natural=water, waterway=riverbank, landuse=basin/reservoir)', 'parks.json', 'streets-routing.json', 'water.json', 'boundaries.json',
       ...(extras ? [`rail/footways/landuse/piers: ${extras.source}, ${extras.timestamp}`] : []), '© OpenStreetMap contributors (ODbL)'],
   };
   const text = JSON.stringify(file);
