@@ -396,3 +396,46 @@ test('dim of a shader that reads hlDimAll (building-types merged) is a uniform: 
   const other = new THREE.ShaderMaterial({ uniforms: {}, vertexShader: 'void main(){}', fragmentShader: 'void main(){}' });
   assert.equal(highlightMaterialFor(THREE, other, 'dim', 'c').defines.HL_DIM_ALL, '');
 });
+
+test('pass materials are pooled: a re-attach reuses the released material (no new program key), uniforms reset', async () => {
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
+  const [first] = attachHighlightPasses(THREE, mesh, { style: 'a', centre: [1, 2, 3] });
+  const material = first.material;
+  material.uniforms.hlWash.value = 0.7;
+  detachHighlightPasses(mesh);
+  const other = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2));
+  const [again] = attachHighlightPasses(THREE, other, { style: 'a', centre: [4, 5, 6] });
+  assert.equal(again.material, material, 'same material, so the same shader stages and program');
+  assert.equal(again.material.uniforms.hlWash.value, 0);
+  assert.deepEqual(again.material.uniforms.hlCentre.value.toArray(), [4, 5, 6]);
+  // A merged pass is another program: never handed a non-merged material.
+  detachHighlightPasses(other);
+  const [merged] = attachHighlightPasses(THREE, other, { style: 'a', merged: true });
+  assert.notEqual(merged.material, material);
+  assert.ok('HL_MERGED' in merged.material.defines);
+  detachHighlightPasses(other);
+});
+
+test('marker: the same landmark set again (a new but equal focus object) keeps its meshes and materials', async () => {
+  const { HighlightMarker, focusKey } = await import('./highlightMarker.ts');
+  const g = globalThis as any;
+  g.cancelAnimationFrame ??= () => {}; g.requestAnimationFrame ??= () => 0;
+  const marker = new HighlightMarker(THREE, { triggerRepaint() {} }, { style: 'a' });
+  const square: [number, number][] = [[4.89, 52.37], [4.8901, 52.37], [4.8901, 52.3701], [4.89, 52.3701], [4.89, 52.37]];
+  const focus = () => ({ lngLat: [4.89005, 52.37005] as [number, number], ids: ['1'], polygons: [[square]], heightM: 12, hull: true });
+  marker.set(focus());
+  const children = [...marker.root.children];
+  assert.ok(children.length >= 3, 'ring, hull and beacon');
+  marker.set(focus());
+  assert.deepEqual(marker.root.children, children, 'nothing rebuilt');
+  assert.equal(focusKey(focus()), focusKey(focus()));
+  // Another landmark rebuilds, on the same ring/beacon materials.
+  const ringMaterial = children.find((c: any) => c.name === 'highlight-marker/ring').material;
+  marker.set({ ...focus(), ids: ['2'], heightM: 30 });
+  const ring = marker.root.children.find((c: any) => c.name === 'highlight-marker/ring');
+  assert.notEqual(ring, children[0]);
+  assert.equal(ring.material, ringMaterial);
+  marker.set(null);
+  assert.equal(marker.root.children.length, 0);
+  marker.dispose();
+});
