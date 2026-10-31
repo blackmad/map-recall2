@@ -51,8 +51,29 @@ export function pointInPolygon(p: readonly number[], ring: readonly (readonly nu
 /** Short face-id prefix of a street: the last word without `straat` ("Jan Pieter Heijestraat" -> "heije"). */
 export const streetPrefix = (street: string) => street.toLowerCase().split(/\s+/).at(-1)!.replace(/straat$/, '').replace(/[^a-z0-9]/g, '') || 'street';
 
-export function proposeFaces(pands: BuurtPand[], o: {minPartyM?: number; minDot?: number; existingIds?: Set<string>} = {}): ProposedFace[] {
-  const minParty = o.minPartyM ?? 1, minDot = o.minDot ?? 0.8;
+/**
+ * Split a face (members in street order) where its frontage bends: a chunk compiles only houses whose fronts are within
+ * ~11 degrees (streetChunks/compileChunk.ts, dot 0.98), so a curved street (Albert Luthulistraat, Transvaalbuurt: 151 deg
+ * on 1-19, 126 deg on 21-41) is proposed as one face per straight run. A run grows in street order while every member's
+ * normal stays within `chunkDot` of the run's mean normal (the chunk's own test). A straight face is one run (unchanged).
+ */
+export function bendRuns<P extends {normal?: [number, number]}>(members: P[], chunkDot = 0.98): P[][] {
+  // The chunk tests every front against the run's MEAN direction (chunkFrame), so a run grows while that holds.
+  const holds = (run: P[]) => {
+    const ns = run.map(m => m.normal).filter((n): n is [number, number] => !!n);
+    const sx = ns.reduce((a, n) => a + n[0], 0), sy = ns.reduce((a, n) => a + n[1], 0), len = Math.hypot(sx, sy);
+    return len > 0 && ns.every(n => (n[0] * sx + n[1] * sy) / len >= chunkDot);
+  };
+  const runs: P[][] = [];
+  for (const m of members) {
+    const run = runs.at(-1);
+    if (run && holds([...run, m])) run.push(m); else runs.push([m]);
+  }
+  return runs;
+}
+
+export function proposeFaces(pands: BuurtPand[], o: {minPartyM?: number; minDot?: number; chunkDot?: number; existingIds?: Set<string>} = {}): ProposedFace[] {
+  const minParty = o.minPartyM ?? 1, minDot = o.minDot ?? 0.8, chunkDot = o.chunkDot ?? 0.98;
   const out: ProposedFace[] = [], used = new Set(o.existingIds ?? []);
   const groups = new Map<string, BuurtPand[]>();
   for (const p of pands) if (p.normal && p.rings) { const k = `${p.street}|${p.side}`; groups.set(k, [...(groups.get(k) ?? []), p]); }
@@ -71,13 +92,16 @@ export function proposeFaces(pands: BuurtPand[], o: {minPartyM?: number; minDot?
       const n0 = seed.normal!, u = [-n0[1], n0[0]];
       const along = (p: BuurtPand) => p.frontMidRD![0] * u[0] + p.frontMidRD![1] * u[1];
       comp.sort((a, b) => along(a) - along(b));
-      const nums = comp.flatMap(c => c.numbers);
-      const covered = comp.filter(c => c.face);
-      let id = `${streetPrefix(street)}-${Math.min(...nums)}-${Math.max(...nums)}`;
-      if (used.has(id)) id += `-${seed.pandId.slice(-6)}`;
-      used.add(id);
-      out.push({id, street, side, seed: seed.pandId, members: comp.map(c => c.pandId), numbers: [Math.min(...nums), Math.max(...nums)],
-        lengthM: +comp.reduce((s, c) => s + (c.frontWidthM ?? 0), 0).toFixed(1), ...(covered.length * 2 >= comp.length ? {covered: covered[0].face} : {})});
+      for (const run of bendRuns(comp, chunkDot)) {
+        const nums = run.flatMap(c => c.numbers);
+        const covered = run.filter(c => c.face);
+        const runSeed = run.includes(seed) ? seed : run[0];
+        let id = `${streetPrefix(street)}-${Math.min(...nums)}-${Math.max(...nums)}`;
+        if (used.has(id)) id += `-${runSeed.pandId.slice(-6)}`;
+        used.add(id);
+        out.push({id, street, side, seed: runSeed.pandId, members: run.map(c => c.pandId), numbers: [Math.min(...nums), Math.max(...nums)],
+          lengthM: +run.reduce((s, c) => s + (c.frontWidthM ?? 0), 0).toFixed(1), ...(covered.length * 2 >= run.length ? {covered: covered[0].face} : {})});
+      }
     }
   }
   return out;
