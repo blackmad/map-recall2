@@ -139,7 +139,8 @@ shader (B) / L7 shadows (D). Spawned 2026-10-30 evening: #143 P0 deletions
 `SHARED_FRAME_DEFAULT`; **merged 2026-10-31**, HISTORY "P0 deletions"; the
 legacy `_makeLayer` branches table in that entry is L1 step 6's list), #144 reds triage (`lane-reds-triage-20261030.md`,
 4535: bike-xray, complete-city, check-building-look-transition), #145 rail
-look (`lane-rail-look-20261030.md`, 4537) from the user's three in-game
+look (`lane-rail-look-20261030.md`, 4537; **merged 2026-10-31**, HISTORY "Railway
+tracks read as rails") from the user's three in-game
 reports of 2026-10-30 20:26–20:33 ("train tracks buried by surface", "more
 bad train tracks", "ooof, these rails look really bad": feedback ids
 5d3fb497, d49a15b0, 5d5b56c4, resolve them when #145 merges). Gates per

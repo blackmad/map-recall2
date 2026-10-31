@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**Railway tracks read as rails from the chase camera (2026-10-31, #145).** The user
+filed three in-game reports on 2026-10-30 evening, hours after `rail-v1`
+shipped ("train tracks buried by surface" at Piet Heinkade east, "more bad
+train tracks" at the Zeeburg curve, "ooof, these rails look really bad" at
+the Oostertoegang throat). Causes, judged against the user's screenshots:
+compact cells dropped uvs (uv = x, y), so the sleeper texture lay along world
+x whatever the track's heading and read as a hatch; the bed was lifted from
+the centreline only, in 12 m chords, so the draped land rose over it; beige
+sand showed between close tracks; the 3 cm `serviceDrop` under yard tracks
+drew dark ridges. `compactMesh.ts` keeps the ballast uv, the texture paints
+the rails as dark stripes along the track with faint sleepers, beds stand
+`topLift` above the highest land under the whole top in 6 m pieces, tracks
+with centres under 7 m share one yard bed (bridge tracks one slab),
+`serviceDrop` is 0. Land drawn over a bed (`probe-rail-cover.ts`): 3.0 → 0.5 %,
+3.0 → 0.4 %, 4.2 → 0.6 %; frame time within noise at the seven rail spots
+(`rail-shots.mjs`, desktop and phone); `test:own-ground` 188 pass incl. the
+Dijksgracht ≥ 6 tracks regression. Not built: a concrete edge beam against
+streets (the dark bed already reads as separate); open: the verge between
+track groups > 7 m apart is still beige, platforms and catenary are not in
+`rail-v1`, and whether the water between the Oostertoegang bridge groups
+matches the real separate bridges is unchecked against a photo.
+
 **The sun-heading bike check measures one pose (2026-10-31, #131).** The
 desktop `sun-heading` red that appeared with the driving-feel merge was the
 spec, not the game: after each teleport the road guard turned the parked
