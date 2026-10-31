@@ -40,3 +40,21 @@ test('projection, nearest-road index and surface stages stop when loading is can
   await assert.rejects(build({budgetMs:0,cancelled:()=>cancelled,yieldToBrowser:async()=>{cancelled=true}}),{name:'AbortError'});
  }
 });
+
+test('surface index cell keys: neighbouring, negative and far-out-of-range cells stay distinct',()=>{
+ const far=2**25*ROAD_GRID_CELL;
+ const segs=[
+  {points:[{x:-150,y:-150},{x:-120,y:-150}],width:4},
+  {points:[{x:150,y:150},{x:180,y:150}],width:4},
+  {points:[{x:far*3,y:5},{x:far*3+30,y:5}],width:4},
+  {points:[{x:5,y:-far*3},{x:35,y:-far*3}],width:4},
+ ];
+ const index=buildRoadSpatialIndex(segs);
+ const at=(x:number,y:number,ring=0)=>roadsNear(index,x,y,ring).map(s=>s.segIdx);
+ assert.deepEqual(at(-140,-150),[0]);
+ assert.deepEqual(at(160,150),[1]);
+ assert.deepEqual(at(far*3+10,5),[2],'beyond the numeric key range the string key still finds its span');
+ assert.deepEqual(at(20,-far*3),[3]);
+ assert.deepEqual(at(0,0),[],'cell (0,0) is empty');
+ assert.deepEqual(at(0,0,2).sort(),[0,1]);
+});
