@@ -257,8 +257,19 @@ const localFoodCandidates: OrientationPoi[] = [];
 
 for (const item of source.features) {
   const tags = item.properties || {};
-  const roadOrPlaceName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+  // Streets, squares, waterways and bridges keep the name on the sign: the game
+  // teaches Amsterdam's geography, so `name:en` ("New Market" for the
+  // Nieuwmarkt, TODO P0 2026-10-30) only fills in when OSM has no local name.
+  // Landmarks and parks stay English ("Weepers' Tower", "Royal Palace"), as do
+  // venues (civicName above, local food below). This name also feeds every
+  // category below, so the rule has to be scoped by category: applied to all
+  // features it renamed 59 landmarks to Dutch (Schreierstoren, Koninklijk Paleis).
+  const localName = (tags.name || tags['name:nl'] || tags['name:en'] || '').trim();
+  const englishName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
   const classification = classify(tags);
+  const roadOrPlaceName = !classification || ['streets', 'squares', 'water', 'bridges'].includes(classification.category)
+    ? localName
+    : englishName;
   if (!item.geometry) continue;
   const paths = pathsFromGeometry(item).filter((line) => line.length > 1);
   let pointCenter: [number, number] | undefined;
@@ -324,7 +335,7 @@ for (const item of source.features) {
       bicycleRestricted?: boolean;
       bicycle?: string;
     } = {
-      id: `routing_${routingRoadCandidates.length}`, name: roadOrPlaceName, type: majorHighways.has(tags.highway) ? 'avenue' : 'street',
+      id: `routing_${routingRoadCandidates.length}`, name: localName, type: majorHighways.has(tags.highway) ? 'avenue' : 'street',
       cityId, center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
     };
     if (tags.bridge === 'yes') routingFeature.bridge = true;
