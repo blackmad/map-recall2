@@ -1180,8 +1180,13 @@ export class ThreeBuildings {
     return pool.live ? pool : null;
   }
 
-  /** An idle live pool worker, or -1. */
+  /** Chunk builds at once across the pool: every live worker, or `?chunkBuilds=N` (1 = the old single chunk worker's pace). */
+  private readonly chunkBuildCap = (() => {
+    try { const n = Number(new URLSearchParams(typeof location !== 'undefined' ? location.search : '').get('chunkBuilds')); return Number.isInteger(n) && n >= 1 ? n : Infinity; } catch { return Infinity; }
+  })();
+  /** An idle live pool worker, or -1 (also while `chunkBuildCap` builds are in flight). */
   private idleWorker(pool: WorkerPool): number {
+    if (this.busy.size >= this.chunkBuildCap) return -1;
     for (let w = 0; w < pool.size; w++) if (pool.alive(w) && !this.busy.has(w)) return w;
     return -1;
   }
