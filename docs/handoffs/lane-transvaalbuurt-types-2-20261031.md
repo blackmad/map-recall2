@@ -72,3 +72,36 @@ Budget about 250 tool turns. Commit as you go; do not push or merge; do not touc
 `HISTORY.md`, `whats-new-notes.json`, bundles, `covers.json`, goldens. Checks before hand-back:
 `npm run -s test:block-face`, `npm run -s test:building-recipes`,
 `node --import tsx scripts/block-face/roof-golden.ts`, `npm run lint`.
+
+## State (2026-10-31, lane hand-back)
+
+- **Width veto (step 1)**: `match.frontage: {mode: "stair-block", widthM, storeys, axisPitchM}` (`autoPlace.ts`
+  `frontageVetoes`). Absent = the house fit-width veto, byte-identical. Both 1923 portiek types opt in (5-18 m blocks,
+  4 storeys at the type pitch, 1.6-6.5 m axis pitch). Test: a 7 m and a 14 m stair block, Retiefstraat 220's 0.78 m
+  pitch, a 27.7 m corner block, 3- and 5-storey eaves.
+- **Step 2 result**: the premise held on Schalk Burgerstraat 2-140 only. Retiefstraat 194-268, Tugelaweg 19-31,
+  Transvaalstraat 106-140 and Krugerstraat 4-28 are other designs (plain flat rows, oriel rows with roof dormers, the
+  1925 lisene design); the edge-NCC gate held most of them. Schalk Burgerstraat 18 and 28 passed (NCC 0.29/0.17) but are
+  held at review: BAG splits that design into 5.6 m stair pands and 10 m window pands, and the 1923 types draw window +
+  stair + window on each. A stair-only and a window-only variant are what the street needs.
+- **Types (step 3)**: `transvaal-1911-five-storey` (low ground storey 3.35 m, Retiefstraat 45-75 + Pretoriusstraat
+  72-120) and `transvaal-1911-five-storey-tall` (4.05 m, Transvaalstraat 3-47 + Retiefstraat 3-41), measured on 1 m
+  gridded strips; facts cannot separate them, so auto-place runs with `--photo-decides` (batch.ts passes it through).
+  The strip skyline reads dormer/gable/chimney tops and trees at 15.5-18.4 m on these rows, so the eaves criterion is
+  3DBAG (12-16.4 m) plus bouwlagen 5; 3DBAG roof rise reads flat over the tile roofs (no roof criterion). Strip storey
+  height (measureFacade `storeyM`) was tried and reads 2.9-3.5 m without separating the twins: not wired.
+- **Kit (step 4)**: `resizePerStorey` remaps balcony storeys when a placement draws fewer storeys (tested; more storeys
+  unchanged, roof-golden clean). Reused: `balconies` (projecting, centre axis), `tower` per-axis lights (wall dormer),
+  `dormers` pointed + `dormerBody: stone`, `gable: point` + `atticWindows`, `windowSurround: stone-lintel`, `baysByWidth`.
+- **Yield** (pands on the photographed faces): see the hand-back NUMBERS. Oost placed 15 after review (Retiefstraat 69C,
+  71D, 73A; Pretoriusstraat 79-87; Paardekraalstraat 1-15 pair; Transvaalstraat 43B-45A; Transvaalstraat 42-48), none
+  installed: every one of those runs fails the GLB audit with a 1.2-2.3 m2 brick/roof-tile coplanar overlap where a
+  `point` gable stands beside a cornice/dormer neighbour (zfight-tight / geometry-regression). All-gable runs pass
+  (Laing's Nekstraat 34-56 installed, then reverted at review: a flat-roofed block drawn with five gables).
+- **Review holds** (`*-review-holds.json`): West Schalk Burgerstraat 18, 28, Maritzstraat 24-26; Oost Retiefstraat 51,
+  53, 75A, Smitstraat 36A-38C, Transvaalstraat 54-56, 100A-102B, 124C-126A, Laing's Nekstraat 36-54B.
+- **Crown choice is the weak point**: the skyline picks point gables on flat-topped fronts (Smitstraat, Transvaalstraat
+  50-70 and 74-104, Laing's Nekstraat). A crown read that does not depend on clean sky is the next step, then the
+  gable/neighbour roof overlap in the kit.
+- **Strips for the user**: `staging/block-face/transvaalbuurt/round2/transvaalstraat-3-47-strip-over-model.png`,
+  `staging/block-face/transvaalbuurt/round2/schalk-burgerstraat-2-140-strip-over-model.png` (untracked).
