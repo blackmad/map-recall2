@@ -1,5 +1,111 @@
 # Canal Recall — what is built
 
+**Three reds on main were checks that fell behind the game (2026-10-31, #144).**
+None was a player-visible regression. `bike-xray.spec.ts` broke at 3342e6b3c
+(own ground on by default, 2026-10-14): in the shared frame the bike draws
+in the frame's overlay pass through `shared-frame-overlay`, not as the
+MapLibre layer `player-bike-3d`, so the layer-order lookup returned −1; the
+spec now reads the shared-frame registry and asserts the bike is in the
+overlay pass, that only `player-*-3d` share it, and that the overlay layer
+follows every building/facade/roof layer (the old check stays for
+`?sharedFrame=0`). `complete-city.spec.ts` broke at 6ae8f702c (tile flush
+time-sliced, 2026-10-16): `status()` recounts only after a flush, so the
+spec read `contextualFeatures` 0 of 2,913 a few frames too early (15,959 of
+16,049 after the first flush: the citywide prior was applied all along); it
+now waits for `_completeCityHasBuildings` and `_streamedCityDrawn`, and
+rebuilds the expected roof filter through `coloredBuildingLayerFilter`.
+`check-building-look-transition.ts` broke at 6370811e7 (chunk installs split
+across frames, 2026-10-16): worker replies go to a staging queue and chunks
+carry `THREE.Sphere`; the check drains `drainStaged()` after each reply and
+its stub gained `Sphere`, `Vector4`, `Matrix3`, `ShaderMaterial` for the
+city-look default. No bound, skip or allowlist changed. Left to #131 (now
+fixed): the sun-heading measurement.
+
+**Railway tracks read as rails from the chase camera (2026-10-31, #145).** The user
+filed three in-game reports on 2026-10-30 evening, hours after `rail-v1`
+shipped ("train tracks buried by surface" at Piet Heinkade east, "more bad
+train tracks" at the Zeeburg curve, "ooof, these rails look really bad" at
+the Oostertoegang throat). Causes, judged against the user's screenshots:
+compact cells dropped uvs (uv = x, y), so the sleeper texture lay along world
+x whatever the track's heading and read as a hatch; the bed was lifted from
+the centreline only, in 12 m chords, so the draped land rose over it; beige
+sand showed between close tracks; the 3 cm `serviceDrop` under yard tracks
+drew dark ridges. `compactMesh.ts` keeps the ballast uv, the texture paints
+the rails as dark stripes along the track with faint sleepers, beds stand
+`topLift` above the highest land under the whole top in 6 m pieces, tracks
+with centres under 7 m share one yard bed (bridge tracks one slab),
+`serviceDrop` is 0. Land drawn over a bed (`probe-rail-cover.ts`): 3.0 → 0.5 %,
+3.0 → 0.4 %, 4.2 → 0.6 %; frame time within noise at the seven rail spots
+(`rail-shots.mjs`, desktop and phone); `test:own-ground` 188 pass incl. the
+Dijksgracht ≥ 6 tracks regression. Not built: a concrete edge beam against
+streets (the dark bed already reads as separate); open: the verge between
+track groups > 7 m apart is still beige, platforms and catenary are not in
+`rail-v1`, and whether the water between the Oostertoegang bridge groups
+matches the real separate bridges is unchecked against a photo.
+
+**The sun-heading bike check measures one pose (2026-10-31, #131).** The
+desktop `sun-heading` red that appeared with the driving-feel merge was the
+spec, not the game: after each teleport the road guard turned the parked
+bike (a nominal 44° heading was 97° at the grab), and the bike mask's
+left/right split was the midpoint of every changed pixel in a 180 × 240
+window, so one flickering pixel at the window edge moved it ~20 px and
+flipped the sign; the pre-L8 bundles passed by luck with the same stray
+pixel. The spec now pins the rider's pose with no-op setters so both grabs
+see one pose at the heading asked for, keeps only changed pixels with at
+least four changed neighbours, and records the poses, hidden centre and
+mask bbox per heading in `sun-heading.json` (crops with `SUN_OUT`). The
+lit-half threshold, spot and sign check are unchanged; before and after
+bundles both pass 3/3. Settle timeouts at load averages above 12 are the
+machine, not the check.
+**Bridge hints regenerated for the named bascules (2026-10-31).** After the
+BASCULES list grew, `build-bridge-hints.ts --write` changes only the
+named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
+0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
+Register codes and flat hints are unchanged (decoded diff).
+
+
+**Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
+Reproduced on `main` by boarding at every IJ pier with the real controller
+(`tests/e2e/ferry-launch.spec.ts`): the vessel dead-stopped 16 m out at
+Zamenhofstraat (bow into the inlet's opposite quay) and at Pontsteiger (hull
+driven onto the quay, centre ashore), and against the tip of the Buiksloterweg
+point from the Centraal west stop. One mechanism: a non-grazing land touch set
+the speed to zero and undid the move, and no later move was allowed that still
+touched, so forward-only riders (every phone) and keyboard riders alike had no
+way free. Four changes in `src/canalRecall/ferry/travel.ts`:
+- `openWaterHeading`: the launch heads for open water, the heading within
+  ±120° (20° steps) of the boarding heading with the longest run of water
+  (80 m probed) for the whole hull width beyond a 12 m lead; ties keep the
+  boarding heading. A line skimming along the quay does not count (the first
+  cut launched the Centraal F2 landing's boat along its quay into the
+  NACO-house pontoon), and the sweep is wide because that landing's GTFS stop
+  sits over the water beside its pontoon with the access pointing straight
+  into it; the open IJ is 100° round. The old code drove through the pontoon
+  under the pier exemption and got away with it.
+- The pier exemption (quay passable within 16 m of the departure pier) no
+  longer lets the hull's centre go ashore from the water.
+- Any touch turns the leading end towards the wetter side (`wetterSide`:
+  corners first, then probes one and two hull widths out beside the bow and
+  the centre; a tie turns to starboard) and keeps 60 % of the speed, where a
+  bow-centre touch or a tie used to stop dead. The side is kept
+  (`ferryTurn`) until the hull is free: a bow corner straddling a pontoon
+  edge flipped the pick every frame and the vessel rocked in place.
+- A move that puts more of the hull on water than before is always allowed
+  (backing off a bank, turning out of a corner).
+- `ferryMotionTrack` also hides road contacts: street following (the phone
+  default since 2026-10-29) read the terminal access underfoot as a dead end
+  and held the vessel at the pier at zero speed; off the network it steers by
+  the buttons and cruises.
+Measured: all 12 piers get ≥100 m clear within 12 s under keyboard and
+street-follow controls (desktop project); `ferry-crossings`,
+`ferry-centraal-pier` and `ferry-docking-feedback` unchanged. Unit cases in
+`travel.test.ts` (inlet launch, quay-channel rejection, no going ashore at the
+pier, head-on turn with water to one side and against a flat bank, freeing
+move, no street contacts on water). Open, found on the way: from the
+`?ferry=F3` land access, holding forward on the keyboard rides along De
+Ruijterkade instead of boarding (the road guard turns the bike onto the quay
+cycleway before it reaches the stop), and street following stands at the pier
+end "awaiting a choice" instead of rolling onto the ferry; both in TODO.
 **Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
 User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
 although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and

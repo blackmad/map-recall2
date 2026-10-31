@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { flatRoofFilter } from '../../src/canalRecall/buildingStyle.ts';
+import { coloredBuildingLayerFilter, flatRoofFilter } from '../../src/canalRecall/buildingStyle.ts';
 
 // The complete LoD1 city is 336,784 BAG-keyed buildings at AHN-measured
 // heights, streamed as z14 tiles instead of the single 5.5 MB file that
@@ -40,6 +40,18 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
       { timeout: 60000 }
     )
     .toBeGreaterThan(0);
+  // A resident tile is not yet a published one: since 6ae8f702c arrivals are styled a few ms a frame and the
+  // first flush (which publishes them and refreshes the provenance counters below) lands frames later. Wait for
+  // that flush (`_completeCityHasBuildings`, set by the streamer's first-buildings callback) before reading counts.
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?._completeCityHasBuildings)), { timeout: 60000 })
+    .toBe(true);
+  // The basemap extrusion is then held on purpose until the three.js shells around the rider draw (bf97ae744:
+  // at most 400 ms after the first shell, 8 s after the first tile), so the ride never starts in an empty city.
+  // Wait for that latched hand-over (`_streamedCityDrawn`) before asserting the extrusion is gone.
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?._streamedCityDrawn)), { timeout: 30000 })
+    .toBe(true);
 
   const loaded = await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap;
@@ -66,7 +78,11 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   expect(loaded.roofFilter?.[0], 'the roof cap is a filter, not a paint').toBe('all');
   // The current filter allows flat/unspecified roofs, so it excludes pyramids
   // without spelling out every non-flat shape. Check the runtime wiring.
-  expect(loaded.roofFilter, 'the renderer uses the tested flat-roof cap filter').toEqual(flatRoofFilter());
+  // The runtime wraps the cap filter with coloredBuildingLayerFilter's suppression clause once the landmark,
+  // signature and kit replacements are known (vector-map _refreshColoredBuildingFilter). Rebuild the expected
+  // filter through that same tested helper, taking only the live hide-id list from the runtime.
+  const hideIds: string[] = loaded.roofFilter?.[2]?.[1]?.[1]?.[2]?.[1] ?? [];
+  expect(loaded.roofFilter, 'the renderer uses the tested flat-roof cap filter').toEqual(coloredBuildingLayerFilter(flatRoofFilter(), hideIds));
   expect(loaded.basemapVisibility, 'the basemap extrusion stays hidden after a layer sync').toBe('none');
   expect(loaded.wallsVisible, 'the merged source is what draws').toBe('visible');
   expect(loaded.roofFilter?.[0], 'the roof cap is a filter, not a paint').toBe('all');

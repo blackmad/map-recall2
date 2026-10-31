@@ -51,7 +51,7 @@ import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, isRoadLookId, roadLookTones, type GroundLook, type RoadLookId } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
-import { RAIL_TONES, SLEEPER_TILE_M } from './railTracks.js';
+import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
@@ -791,6 +791,9 @@ export class OwnGround {
           g.fillStyle = `rgb(${sl[0] + v},${sl[1] + v},${sl[2] + v})`;
           g.fillRect(0.25 * px, (y + 0.17) * px, (SLEEPER_TILE_M - 0.5) * px, 0.26 * px);
         }
+        // The rails as dark stripes along the track (issue #145): continuous at chase distance, under the ridge rails up close.
+        g.fillStyle = `rgb(${RAIL_STRIPE.tone.join(',')})`;
+        for (const [u0, u1] of railStripes()) g.fillRect(u0 * px, 0, (u1 - u0) * px, s);
       }), roughness: 1 }),
       track: std({ color: `rgb(${RAIL_TONES.track.join(',')})`, roughness: 0.55, metalness: 0.2 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
@@ -1033,7 +1036,8 @@ export class OwnGround {
       // The uv is the position's x, y (compactMesh.ts): one GPU buffer, two views. Normals and linear colours normalised.
       const shared = new THREE.InterleavedBuffer(p.positions, 3);
       g.setAttribute('position', new THREE.InterleavedBufferAttribute(shared, 3, 0));
-      g.setAttribute('uv', new THREE.InterleavedBufferAttribute(shared, 2, 0));
+      // A track's bed keeps its own uv (compactMesh UV_LAYERS: sleepers across, rails along the track).
+      g.setAttribute('uv', p.uvs ? new THREE.BufferAttribute(p.uvs, 2) : new THREE.InterleavedBufferAttribute(shared, 2, 0));
       g.setAttribute('normal', new THREE.BufferAttribute(p.normals, 3, true));
       if (p.colors) g.setAttribute('color', new THREE.BufferAttribute(p.colors, 3, true));
       g.setIndex(new THREE.BufferAttribute(p.indices, 1));
