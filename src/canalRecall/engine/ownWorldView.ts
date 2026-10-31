@@ -16,6 +16,8 @@
 // `UNIMPLEMENTED` and answers as a no-op until its step lands (overlays,
 // labels, landmarks, trees: steps 4–5, lane L5).
 
+import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
+import { tierProbe } from './tierProbe';
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
@@ -94,6 +96,8 @@ export class OwnWorldView {
   readonly camera: WorldCamera;
   readonly _sharedFrame: SharedFrame;
   _renderGovernor: any = null;
+  /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
+  qualityTier: { tier: QualityTier; reasons: string[]; settings: Record<string, unknown>; probe: unknown } | null = null;
   _cameraTilt = 0;
   theme = 'clean';
   riderCovered = false;
@@ -172,19 +176,35 @@ export class OwnWorldView {
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear });
+    // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
+    // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
+    const search = new URLSearchParams(W().location?.search ?? '');
+    const asked = search.get('tier');
+    const ratio = this.host.getPixelRatio();
+    const probe = asked ? null : tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
+      { width: Math.max(container.clientWidth, W().innerWidth || 0) * ratio, height: Math.max(container.clientHeight, W().innerHeight || 0) * ratio });
+    const { tier, reasons } = probe ? chooseTier(probe) : chooseTier({ frameMs: null, gpu: '', deviceMemory: null, hardwareConcurrency: null, dpr, coarse: coarse() }, asked);
+    const settings = TIER_SETTINGS[tier];
+    const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
+    if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);
+    if (settings.facadeDetail && W().__canalRecallFacadeDetail === undefined && !search.has('facadeDetail')) W().__canalRecallFacadeDetail = settings.facadeDetail;
+    this.qualityTier = { tier, reasons, settings: { ...settings, dprCap: Number.isFinite(settings.dprCap) ? settings.dprCap : null }, probe };
+    W().__canalPerf = { ...(W().__canalPerf ?? {}), tier, tierReasons: reasons, tierSettings: this.qualityTier.settings, tierProbe: probe };
+    console.info('[canal-recall] quality tier', tier, reasons.join(', ') || '-', probe ? `probe ${probe.frameMs} ms @${probe.fill.width}x${probe.fill.height}` : '');
     const prefs = W().CanalRecallPreferences;
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
     for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
     this.camera = this.cameraMap.api;
-    const shadows = flag('shadows', '__canalRecallShadows', true);
+    const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
       host: { renderer: () => this.host.renderer },
       shadows,
-      shadowMapSize: coarse() ? 1024 : 2048,
+      shadowMapSize: Math.min(coarse() ? 1024 : 2048, settings.shadowMapSize),
       shadowRamp: flag('transition', '__canalRecallTransition', true) && three.blendAtZoom ? (z: number) => three.blendAtZoom(z) : undefined,
     });
+    this._sharedFrame.shadowStandIns = settings.standIns;
     (this.cameraMap as any)._canalSharedFrame = this._sharedFrame;
     this._sharedFrame.attach();
     const guards = guardFrameHost(this.host, {
@@ -194,6 +214,7 @@ export class OwnWorldView {
       setShadows: shadows ? on => this._sharedFrame.setShadows(on) : undefined,
       restoredOk: () => !!this._sharedFrame.renderer,
       probe: () => this.graphicsProbe(),
+      maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
     const view = { center: () => this.camera.center(), zoom: () => this.camera.zoom() };
@@ -417,7 +438,7 @@ export class OwnWorldView {
   private graphicsProbe(): Record<string, unknown> {
     const r = this.host.renderer;
     return {
-      engine: 'own', zoom: Math.round(this.camera.zoom() * 10) / 10, pitch: Math.round(this.camera.pitch()),
+      engine: 'own', tier: this.qualityTier?.tier ?? null, zoom: Math.round(this.camera.zoom() * 10) / 10, pitch: Math.round(this.camera.pitch()),
       programs: r?.info?.programs?.length ?? null, geometries: r?.info?.memory?.geometries ?? null, textures: r?.info?.memory?.textures ?? null,
       lastFrameCalls: this._sharedFrame.stats.main.calls, lastFrameTriangles: this._sharedFrame.stats.main.triangles,
     };

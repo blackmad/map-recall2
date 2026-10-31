@@ -2,7 +2,7 @@
  "face": "colenso-14-28",
  "street": "Colensostraat",
  "library": "transvaalbuurt",
- "stripDate": "2020-04-29",
+ "stripDate": "2019-12-19",
  "seconds": 0.31,
  "thresholds": {
   "minScore": 0.7,
@@ -29,21 +29,26 @@
     "centre": 0.609
    },
    "strip": {
-    "wall": "#554e49",
-    "wallRaw": "#8b695f",
+    "wall": "#43322a",
+    "wallRaw": "#7b4c3b",
     "skyline": {
-     "eavesM": 7.72,
-     "eavesRow": 260,
+     "eavesM": 7.97,
+     "eavesRow": 250,
      "confidence": 1,
-     "crown": null
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 1.25,
+      "topWidthM": 0.47,
+      "centre": 0.06
+     }
     },
     "stucco": false,
-    "bands": 2,
-    "columns": null,
-    "frontClass": "punched",
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.746,
+    "accentSide": "left",
+    "accentShare": 0.013,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -52,12 +57,45 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.38,
+    "voidShare": 0,
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 38 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1922, type 1908-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.04 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -75,21 +113,21 @@
     "centre": 0.359
    },
    "strip": {
-    "wall": "#504339",
-    "wallRaw": "#84665d",
+    "wall": "#c4c7cb",
+    "wallRaw": "#7a5041",
     "skyline": {
-     "eavesM": 7.7,
-     "eavesRow": 261,
+     "eavesM": 7.95,
+     "eavesRow": 251,
      "confidence": 1,
      "crown": null
     },
     "stucco": false,
-    "bands": 2,
-    "columns": 7,
-    "frontClass": "punched",
+    "bands": 4,
+    "columns": 4,
+    "frontClass": "ribbon",
     "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.728,
+    "accentSide": "right",
+    "accentShare": 0.052,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -98,12 +136,45 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.39,
-    "foliageShare": 0.02
+    "voidShare": 0,
+    "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 39 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1922, type 1908-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.77 m = 4 storeys of 2.69 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.08 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -121,21 +192,21 @@
     "centre": 0.656
    },
    "strip": {
-    "wall": "#554940",
-    "wallRaw": "#826159",
+    "wall": "#c2c5c9",
+    "wallRaw": "#794d3e",
     "skyline": {
-     "eavesM": 7.67,
-     "eavesRow": 262,
+     "eavesM": 8.03,
+     "eavesRow": 248,
      "confidence": 1,
      "crown": null
     },
     "stucco": false,
     "bands": 1,
-    "columns": null,
-    "frontClass": "curtain",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.726,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.019,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -144,12 +215,45 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.4,
-    "foliageShare": 0.01
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 40 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1922, type 1908-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.8 m = 4 storeys of 2.7 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.044 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -167,21 +271,26 @@
     "centre": 0.336
    },
    "strip": {
-    "wall": "#625751",
-    "wallRaw": "#8a635b",
+    "wall": "#d0cccc",
+    "wallRaw": "#7a4836",
     "skyline": {
-     "eavesM": 7.72,
-     "eavesRow": 260,
+     "eavesM": 8.13,
+     "eavesRow": 244,
      "confidence": 1,
-     "crown": null
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.15,
+      "topWidthM": 0.53,
+      "centre": 0.95
+     }
     },
     "stucco": false,
     "bands": 1,
     "columns": null,
-    "frontClass": "ribbon",
+    "frontClass": "punched",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.693,
+    "accentShare": 0.015,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -190,12 +299,39 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.38,
-    "foliageShare": 0.01
+    "voidShare": 0,
+    "foliageShare": 0
    },
    "status": "held",
-   "stage": "evidence",
-   "reason": "strip 38 % without panorama data",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1922, type 1908-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.71 m = 4 storeys of 2.68 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.034 (brick)"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   }

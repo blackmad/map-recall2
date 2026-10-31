@@ -4,13 +4,13 @@
     "draws": {
       "value": 851,
       "unit": "draw calls (desktop ride)",
-      "source": "TODO.md desktop ride at 60\u00b0 chase pitch, ride-perf fixed route",
+      "source": "TODO.md desktop ride at 60° chase pitch, ride-perf fixed route",
       "date": "2026-10-24"
     },
     "programs": {
       "value": 32,
       "unit": "GL programs",
-      "source": "HISTORY 'Own ground compiles half the shaders' (68 -> 32); slop plan \u00a76",
+      "source": "HISTORY 'Own ground compiles half the shaders' (68 -> 32); slop plan §6",
       "date": "2026-10-26"
     },
     "motionBudget": {
@@ -56,8 +56,20 @@
     "cameraParityPx": {
       "value": 3.2,
       "unit": "CSS px (max ground-point misfit, engine camera vs MapLibre)",
-      "source": "docs/research/drop-maplibre-20261010.md \u00a73 (own camera 1.1-3.2 px of MapLibre); engine-own.spec parity test",
+      "source": "docs/research/drop-maplibre-20261010.md §3 (own camera 1.1-3.2 px of MapLibre); engine-own.spec parity test",
       "date": "2026-10-10"
+    },
+    "worldCellsCityMB": {
+      "value": 8,
+      "unit": "MB gzip, all building cells in public/data/extracts/amsterdam/world-v1 (sum of cells/*.bin gzipped)",
+      "source": "#130 format v3 hand-back 2026-10-31: lossless v3 is 10.4 MB, the brief's 4 MB came from slop's footprint density without styles; restated by the integrator",
+      "date": "2026-10-31"
+    },
+    "worldRideDownloadMB": {
+      "value": 2,
+      "unit": "MB gzip fetched for one ride under ?world=v1 (seeded Anne Frank → Rijksmuseum and one free ride), from the lane's browser table",
+      "source": "#130 part 2 (pending)",
+      "date": "2026-10-31"
     }
   }
 }

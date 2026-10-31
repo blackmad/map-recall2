@@ -18,6 +18,8 @@
  *   node --import tsx scripts/block-face/batch.ts --name=<batch> (--buurt=<slug> --district=<library> | --faces=<id>,...)
  *        [--install] [--ride[=<routes>]] [--limit=<n>] [--skip=<id>,...] [--strip-cache=<worktree>,...] [--redo] [--no-restrip]
  *        [--intake-only]   only intake + strip checks (network; safe beside a placing run: no browser, no manifest writes)
+ *        [--photo-decides] passed to auto-place: where two library types of one row tie on the facts, the strip's edges pick
+ *                          (Transvaalbuurt 1911 low/tall-ground twins; absent = the auto-place call is unchanged)
  *
  * --strip-cache: other checkouts whose staging/block-face/<face>/strip.jpg may be reused when its size matches the
  *   committed strip.json (strip images are untracked). Without one the strip is re-taken from the panoramas.
@@ -330,7 +332,7 @@ async function main() {
     else if (!doc || !district) { fail(f.id, mode, ['no-type: no authored intent and no --buurt/--district to auto-place from'], stripInfo); await save(); continue; }
     else {
       const log = path.join(STAGING, 'batch', name, `${f.id}-auto-place.log`);
-      try { await fs.writeFile(log, execFileSync(process.execPath, ['--import', 'tsx', 'scripts/block-face/auto-place.ts', `--buurt=${buurt}`, `--district=${district}`, `--only=${f.id}`], {encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe']})); }
+      try { await fs.writeFile(log, execFileSync(process.execPath, ['--import', 'tsx', 'scripts/block-face/auto-place.ts', `--buurt=${buurt}`, `--district=${district}`, `--only=${f.id}`, ...(flag('photo-decides') ? ['--photo-decides'] : [])], {encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe']})); }
       catch (e: any) { await fs.writeFile(log, String(e.stdout ?? '') + String(e.stderr ?? '')); fail(f.id, mode, [`auto-place-error: ${String(e.stderr ?? e.message).trim().split('\n').at(-1)?.slice(0, 160)}`], stripInfo); await save(); continue; }
       const ap = await readJson(path.join(FACES, f.id, 'auto-place.json'));
       runs = ap.runs.map((r: any) => r.face);
