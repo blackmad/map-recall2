@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**Pythonbrug's askable id follows its name again (2026-10-31, CI red after #147).**
+Askable bridge ids are `extract_bridges_<hash of the lowercased name>`
+(`askableBridges.ts bridgeFeatureId`), and `bridgeStreetName.test.ts` pins
+that every entry in `bridges.json` keeps the generator's id. The scripted
+street-name patch (#147) renamed the bridge from "Python Bridge" to
+"Pythonbrug" but left the old hash, so `check:canal` failed on main from
+b17520e53 to ea0f960a8 (`test:bridge-street-name`, one assertion). The id is
+now `extract_bridges_460091649` in `bridges.json`, `all.json`,
+`bridge-crossings.json`, the bridges sidecar and `facts-review.json`; a
+player's review history for that one bridge starts over. Lesson for the
+"extract refresh drift" item: a name-only patch must re-derive hashed ids, or
+the generator must run.
+
 **The road-graph build is 40 % faster with routes unchanged; time to ride 5.41 → 4.75 s, still over the 4 s gate (2026-10-31, #136, L4 step 5b).**
 `roadGraph.ts` keys quantised nodes and span-grid cells by number (string
 fallback beyond ±2^25), drops duplicate spans in `spansNear` with a per-span
