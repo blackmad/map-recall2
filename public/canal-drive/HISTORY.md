@@ -52,6 +52,36 @@ animated pin and streaming differences), so not a clean 0 but inside the
 run-to-run noise. Decision kept: no DPR cap on machines that pass the probe
 at native resolution.
 
+**Transvaalbuurt round 2 (2026-10-31, #151): stair-block frontage, the 1911 five-storey twins, nothing installed.**
+Round 1 (#149) reported "0 placed" because 695 of 769 pands were vetoed on
+build year or house width before any photo comparison. Round 2 fixed the
+method, not the number. `match.frontage {mode: "stair-block", widthM,
+storeys, axisPitchM}` on a type turns off the Bellamy house-width veto
+(`AUTO_PLACE.widthSlackM`) and vetoes on storey count (3DBAG eaves over the
+type's storey pitch) and window-axis pitch instead; both 1923 portiek types
+opt in, every other library is byte-identical. `transvaal-1911-five-storey`
+and its `-tall` twin (ground-floor height) were measured on gridded strips
+of Transvaalstraat 3–47, Retiefstraat 45–75 and 3–41 and Pretoriusstraat
+72–120; `batch.ts` passes `--photo-decides` so the photo picks the twin.
+`resizePerStorey` now remaps balcony storeys when a placement draws fewer
+storeys than its type (more storeys keep the list; Hasebroekstraat 1–41
+unchanged, roof-golden 0). Outcome split, pands on photographed faces:
+West vetoed 272→263 / held 27→36 / placed 0→0; Oost vetoed 423→147 / held
+13→279 / placed 0→15. The 1908–1914 family (274 pands) went from all vetoed
+to all compared. Every placement was reviewed at gallery size: 14 held
+(gables drawn on flat fronts, a portiek panel on a plain front, oriel
+fronts, BAG splitting the 1923 design into 5.6 m stair pands and 10 m
+window pands on Schalk Burgerstraat 18 and 28), and the one batch install
+(Laing's Nekstraat 34–56, five gables on a flat-roofed block) was reverted.
+The four runs that passed review are blocked by the GLB audit: a point
+gable beside a cornice or dormer neighbour leaves 1.2–2.3 m² of coplanar
+brick/tile overlap. Two gate findings, not loosened: the crown read needs a
+clean sky and reads trees at 15.5–18.4 m as gables; the ribbon era guard
+holds whole same-year rows (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat
+72–96) because one pand has wide three-light windows. Strips archived in
+source-data `block-face-strips/` (11 re-striped faces, two strip-over-model
+sheets under `transvaalbuurt-round2/`). Nothing visible changed in the game.
+
 **`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
 `SharedFrame.shaderErrors()` counts programs three.js failed to compile or
 link since the renderer attached, via `renderer.debug.onShaderError`

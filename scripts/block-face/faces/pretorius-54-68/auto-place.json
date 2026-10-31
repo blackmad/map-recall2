@@ -3,7 +3,7 @@
  "street": "Pretoriusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 2.21,
+ "seconds": 18.36,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -67,45 +67,46 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; frontage 7.97 m, type 8.8-12.9 m; strip shows balconies (balcony slabs stacked at 10.05 m (2.83 m wide), 6.67 m (2.98 m wide)))",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1912, type 1921-1924",
-     "frontage 7.97 m, type 8.8-12.9 m",
-     "strip shows balconies (balcony slabs stacked at 10.05 m (2.83 m wide), 6.67 m (2.98 m wide))"
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20; window shape tall vs photo square; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012087384",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     -0.4,
+     -0.05
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 14.75 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20",
+     "window shape tall vs photo square",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#3e312e",
+     "model": "#5a4844",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.409
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1911-five-storey-tall~m": 0.135,
+    "transvaal-1911-five-storey-tall": 0.135,
+    "transvaal-1911-five-storey~m": 0.125,
+    "transvaal-1911-five-storey": 0.125,
+    "transvaal-1923-portiek": 0.058
+   }
   },
   {
    "pandId": "0363100012062150",
@@ -164,44 +165,44 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; strip shows balconies (balcony slabs stacked at 10.05 m (3.58 m wide), 6.82 m (3.45 m wide), 6.52 m (3.33 m wide)))",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1912, type 1921-1924",
-     "strip shows balconies (balcony slabs stacked at 10.05 m (3.58 m wide), 6.82 m (3.45 m wide), 6.52 m (3.33 m wide))"
+   "stage": "likeness",
+   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23 mean 0.42 vs photo 0.30)",
+   "likeness": {
+    "pandId": "0363100012062150",
+    "ncc": 0.094,
+    "nccRaw": 0.094,
+    "shiftM": [
+     0.3,
+     -0.05
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "strip cornice 14.95 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.42 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#574541",
+     "model": "#5b463f",
+     "dL": 0.004
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.301
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.094,
+    "transvaal-1911-five-storey-tall~m": 0.094,
+    "transvaal-1911-five-storey": 0.119,
+    "transvaal-1911-five-storey~m": 0.119,
+    "transvaal-1923-portiek": 0.073
+   }
   },
   {
    "pandId": "0363100012071924",
@@ -260,44 +261,45 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; strip shows balconies (balcony slabs stacked at 10 m (3.3 m wide), 6.77 m (3.23 m wide), 6.47 m (2.08 m wide)))",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1912, type 1921-1924",
-     "strip shows balconies (balcony slabs stacked at 10 m (3.3 m wide), 6.77 m (3.23 m wide), 6.47 m (2.08 m wide))"
+   "stage": "likeness",
+   "reason": "edge NCC 0.09 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012071924",
+    "ncc": 0.09,
+    "nccRaw": 0.09,
+    "shiftM": [
+     -0.3,
+     0.05
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "strip cornice 14.68 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#564542",
+     "model": "#5a4741",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.373
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1911-five-storey-tall~m": 0.09,
+    "transvaal-1911-five-storey-tall": 0.09,
+    "transvaal-1911-five-storey~m": 0.098,
+    "transvaal-1911-five-storey": 0.098,
+    "transvaal-1923-portiek": 0.064
+   }
   },
   {
    "pandId": "0363100012129296",
@@ -356,44 +358,44 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1912, type 1921-1924; strip shows balconies (balcony slabs stacked at 9.88 m (3.42 m wide), 6.5 m (3.4 m wide)))",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1912, type 1921-1924",
-     "strip shows balconies (balcony slabs stacked at 9.88 m (3.42 m wide), 6.5 m (3.4 m wide))"
+   "stage": "likeness",
+   "reason": "edge NCC 0.144 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38 mean 0.43 vs photo 0.67)",
+   "likeness": {
+    "pandId": "0363100012129296",
+    "ncc": 0.144,
+    "nccRaw": 0.144,
+    "shiftM": [
+     0.4,
+     0
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "strip cornice 15.57 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38 mean 0.43 vs photo 0.67"
+    ],
+    "wall": {
+     "photo": "#423430",
+     "model": "#594943",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.67,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.448
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.144,
+    "transvaal-1911-five-storey-tall~m": 0.144,
+    "transvaal-1911-five-storey": 0.186,
+    "transvaal-1911-five-storey~m": 0.186,
+    "transvaal-1923-portiek": 0.093
+   }
   },
   {
    "pandId": "0363100012092816",
@@ -452,43 +454,45 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
-   "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012092816",
+    "ncc": 0.212,
+    "nccRaw": 0.212,
+    "shiftM": [
+     0.4,
+     0
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "strip cornice 15.5 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#423631",
+     "model": "#624e47",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.369
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1911-five-storey-tall~m": 0.212,
+    "transvaal-1911-five-storey-tall": 0.212,
+    "transvaal-1911-five-storey~m": 0.202,
+    "transvaal-1911-five-storey": 0.202,
+    "transvaal-1923-portiek": 0.087
+   }
   },
   {
    "pandId": "0363100012149666",
@@ -548,25 +552,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.46 < 0.7 (3DBAG eaves 17.38 m = 4 storeys of 4.34 m vs the type's 3.55 m; strip columns 5 vs 3 bays)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.46,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 17.07 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 17.38 m = 4 storeys of 4.34 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -648,25 +650,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.46 < 0.7 (3DBAG eaves 17.09 m = 4 storeys of 4.27 m vs the type's 3.55 m; strip columns 7 vs 3 bays)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.46,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "strip cornice 15.9 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "score": 0,
+      "note": "3DBAG eaves 17.09 m = 4 storeys of 4.27 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -753,25 +753,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1914, type 1921-1924)",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.55 < 0.7 (3DBAG eaves 16.97 m = 4 storeys of 4.24 m vs the type's 3.55 m; strip columns 4 vs 3 bays)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1914, type 1921-1924"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.55,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 16.98 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 16.97 m = 4 storeys of 4.24 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",

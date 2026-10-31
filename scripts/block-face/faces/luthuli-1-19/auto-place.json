@@ -3,7 +3,7 @@
  "street": "Albert Luthulistraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.1,
+ "seconds": 4.57,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -102,7 +102,9 @@
     },
     "iou": 0.14
    },
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.013
+   }
   },
   {
    "pandId": "0363100012142304",
@@ -187,7 +189,9 @@
     },
     "iou": 0.234
    },
-   "challengers": {}
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.233
+   }
   },
   {
    "pandId": "0363100012110043",
@@ -288,12 +292,44 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1923, type 1908-1914; frontage 12.71 m, type 4.8-11 m)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1908-1914",
+     "frontage 12.71 m, type 4.8-11 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 11.74 m = 4 storeys of 2.94 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.09 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
    "likeness": null,
-   "challengers": {
-    "transvaal-1923-portiek": 0.275
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012145564",
@@ -352,12 +388,10 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
-   "challengers": {
-    "transvaal-1923-portiek": 0.103
-   }
+   "challengers": {}
   }
  ]
 }

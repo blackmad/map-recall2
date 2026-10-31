@@ -146,3 +146,17 @@ The first Oud-Oost buurt showed three things the Bellamy recipe got wrong.
    untracked and a buurt-wide auto-place run deletes the run-face staging dirs. Copy the strips
    into the next lane's worktree and archive the exemplar strips in `map-recall2-source-data`
    `block-face-strips/<face>/` at integration.
+
+Round 2 (#151) added two more.
+
+6. **Fixing the veto moves pands from "vetoed" to "held", not to "placed".** With the stair-block
+   frontage and a type for the 1908–1914 family, Oost went from 423 vetoed / 13 held / 0 placed to
+   147 / 279 / 15, and all 15 placements then failed either the gallery-size review or the GLB
+   audit. The library is the first gate; the kit's crown read and the gable-beside-neighbour
+   geometry are the next two, and they only show once pands are compared. Budget a buurt as
+   three lanes (types, kit blockers, install), not one.
+7. **Read the strip before trusting a crown.** The skyline read assumes clean sky; trees and
+   neighbours' tops at 15.5–18.4 m become point gables on flat fronts, and a row-wide era guard
+   (ribbon) holds a whole same-year row for one pand's wide windows. Review every auto-placed
+   face at gallery size beside its strip before any batch install; a `pass` from the gates is
+   not a placement.
