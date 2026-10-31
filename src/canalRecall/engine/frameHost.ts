@@ -50,6 +50,12 @@ export interface FrameHostOptions {
   maxSubsteps?: number;
   /** Clear colour (the sky). */
   clearColor?: number;
+  /**
+   * Render only when something asked for it (`triggerRepaint`: a camera move, an install, an easing) even while the
+   * game's simulation runs every frame. A still frame is not redrawn; the canvas keeps the last one. Default true;
+   * false draws every animation frame the simulation runs (the old behaviour, `?renderOnChange=0`).
+   */
+  renderOnChange?: boolean;
   /** Tests: the clock and the frame scheduler. */
   now?: () => number;
   requestFrame?: (callback: (t: number) => void) => unknown;
@@ -84,7 +90,7 @@ export class FrameHost {
   readonly contextEvents = { lost: 0, restored: 0 };
   readonly clock: StepClock;
   /** Frames drawn, and the last frame's render time (ms, main thread). */
-  readonly stats = { frames: 0, renderMs: 0, ticks: 0 };
+  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0 };
   private readonly hooks: FrameHostHooks;
   private sim: FrameSimulation | null = null;
   private readonly options: FrameHostOptions;
@@ -104,6 +110,7 @@ export class FrameHost {
     this.hooks = hooks;
     this.options = options;
     this.pixelRatio = options.pixelRatio ?? 1;
+    this.renderOnChange = options.renderOnChange ?? true;
     this.clock = new StepClock(options.fixedDt ?? 1 / 120, options.maxSubsteps ?? 8);
     const doc = container.ownerDocument;
     this.canvas = doc.createElement('canvas');
@@ -230,12 +237,16 @@ export class FrameHost {
     this.alpha = alpha;
     if (sim?.frame) {
       try { sim.frame(Math.max(0, Math.min(dt, 0.25)), alpha); } catch (error) { console.warn('frame host: frame failed', error); }
-      this.dirty = true;
+      // What the frame changed reaches the host as triggerRepaint (the camera's jumpTo, the participants).
+      if (this.renderOnChange === false) this.dirty = true;
     }
     if (this.dirty || this.hooks.wantsFrame?.()) this._render();
+    else this.stats.idleFrames++;
     this.schedule();
   }
   private alpha = 0;
+  /** See FrameHostOptions.renderOnChange; mutable so a probe can compare both at one pose. */
+  renderOnChange: boolean;
 
   /** Hand the game's loop to the host (null gives it back): see FrameSimulation. Resets the step accumulator. */
   setSimulation(sim: FrameSimulation | null): void {

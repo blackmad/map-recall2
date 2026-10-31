@@ -174,7 +174,7 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
     const prefs = W().CanalRecallPreferences;
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });

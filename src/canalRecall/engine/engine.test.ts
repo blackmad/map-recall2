@@ -301,3 +301,23 @@ test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animal
   assert.equal(wrap.contains([179.5, 0]), true, 'antimeridian-wrapped box');
   assert.equal(wrap.contains([0, 0]), false);
 });
+
+test('FrameHost render on change: a still simulation frame draws nothing; a camera move or an install draws once', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+  const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+  const createRenderer = () => ({ autoClear: true, getContext: () => ({ isContextLost: () => false }), clear() {}, setViewport() {}, setRenderTarget() {}, dispose() {} });
+  let frames: Array<(t: number) => void> = [];
+  let renders = 0, moved = false;
+  const host = new FrameHost({}, container, { render: () => { renders++; } }, { createRenderer, requestFrame: cb => { frames.push(cb); return 1; }, cancelFrame() {} });
+  host.setSimulation({ frame: () => { if (moved) { moved = false; host.triggerRepaint(); } } });
+  host.start();
+  let t = 0;
+  const step = (n = 1) => { for (let i = 0; i < n; i++) { const f = frames; frames = []; for (const cb of f) cb(t += 1000 / 120); } };
+  step(); assert.equal(renders, 1, 'the first frame (dirty from setSimulation)');
+  step(600); assert.equal(renders, 1, 'five seconds standing still: no redraw');
+  assert.equal(host.stats.idleFrames, 600);
+  moved = true; step(); assert.equal(renders, 2, 'input moves the camera: drawn that same frame');
+  host.renderOnChange = false; step(10); assert.equal(renders, 12, 'renderOnChange off: every simulation frame draws');
+  host.stop();
+});
