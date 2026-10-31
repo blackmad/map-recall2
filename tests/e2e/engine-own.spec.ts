@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
@@ -34,6 +34,12 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await countMapLibre(page);
+  // BUNDLES_DIR=<dir>: serve *.bundle.js from a local build (a lane's source change before the integrator rebuilds).
+  const bundles = process.env.BUNDLES_DIR;
+  if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
   await openRoute(page, { query: '?engine=own', viewMode: 'chase' });
   const view = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;

@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+**Own-ground materials share programs through uniforms: `?engine=own` rides at 20 programs, under the 32 budget (2026-10-31, #129, P4 materials lane steps 1–3).**
+`src/canalRecall/ownGround/groundMaterial.ts` now holds the shader edits the
+own ground used to make per clone: the dissolve (`-ownFade`), the water cut
+(`cut3-r|g`) and the flat / vertex-colour tone are uniforms, so each kind
+compiles one program instead of a twin per flag; the precompile builds one
+mesh per layer and the keeper meshes are gone. Desktop chase `?engine=own`,
+Anne Frank → Rijksmuseum, `renderer.info.programs` 14 s after landing:
+before 36–38 resident (20 own-ground); fade as uniform 26 (10); + cut 21
+(5); + tone 20 (4); the 4 left are textured, untextured, vertex-colour and
+vertex-colour + DoubleSide. Emulated iPhone 13: 37 → 21. Start flight 28 →
+12 programs seen. The forced overview→city crossing (`setGroundTransparent`)
+compiles 4 transparent twins instead of 9 and its worst frames fall from
+86/32/173 to 56/20/70 ms; on the real start flight and ride the flip never
+happens because the engine ground's zoom never goes below 17. Pixel diff at
+three frozen spots (Dam, Munt, Westerkerk, zoom 17.5 pitch 60), step 3 vs a
+before run: 30 / 0 / 5 px on desktop (tree canopy and the rider sprite),
+inside the before-vs-before noise (3,560 / 316,324 / 0); iPhone the same
+speckle pattern as two before runs. Water and roads clean in every pair; by
+construction the change is bit-exact (discards skipped when the fade is 1
+and the mask is outside the city, tone mix is exactly 0 or 1). Held: step 4
+(1×1 white map for untextured layers, −1 program) wants a real-phone
+fill-rate measurement; the DoubleSide row is untouched. Found on the way: the
+engine map shim's `getBounds()` has no `contains()`, so `artis-animals.js:59`
+throws on the iPhone ride under the flag (L1 fixes the shim); zooming out
+to 15.5 compiled ~48 short-lived non-ground program keys (program churn, a
+registry follow-up). `engine-own.spec.ts` accepts `BUNDLES_DIR` so a lane can
+measure the budget before the integrator rebuilds. Tests: 134 own-ground unit
+tests (5 new: a key and a shader source per kind).
+
 **Pythonbrug's askable id follows its name again (2026-10-31, CI red after #147).**
 Askable bridge ids are `extract_bridges_<hash of the lowercased name>`
 (`askableBridges.ts bridgeFeatureId`), and `bridgeStreetName.test.ts` pins

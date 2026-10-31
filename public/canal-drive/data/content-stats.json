@@ -49,7 +49,7 @@
       ]
     },
     "placesToVisit": {
-      "count": 381,
+      "count": 384,
       "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).",
       "sources": [
         "public/data/extracts/amsterdam/landmarks.json",
@@ -88,8 +88,8 @@
       ]
     },
     "streetsAndCanals": {
-      "count": 5525,
-      "note": "Names you can be asked: 5225 streets on rideable ways (bridge decks are counted under named bridges) and 300 canals and waters.",
+      "count": 5523,
+      "note": "Names you can be asked: 5223 streets on rideable ways (bridge decks are counted under named bridges) and 300 canals and waters.",
       "sources": [
         "public/data/extracts/amsterdam/streets-routing.json",
         "public/data/extracts/amsterdam/water.json"

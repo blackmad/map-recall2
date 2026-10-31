@@ -213,9 +213,14 @@ step 6 legacy layers gone, `setLoop` hook (wired in `game.js` under the flag,
 (HISTORY "The own-map overview carries rail, footways, landuse and piers"):
 v2 overview extract published (2.13 MB gz), footprint worker for the lab page,
 fair A/B 5 MapLibre 8.56 vs own v1 4.69 vs own v2 3.14 ms owned frame CPU;
-the materials lane runs from `lane-materials-20261031.md` (programs 37 > 32,
-expected 36 → ~18–21 after the uniform merge). **Integrator next:** merge the
-materials lane and re-run `engine-own` at budget 32; `CanalRecallUi.stepSteer`
+the materials lane steps 1–3 merged 2026-10-31 (HISTORY "Own-ground materials
+share programs through uniforms"): programs 36 → 20 desktop / 21–23 iPhone,
+`engine-own` green on both at budget 32. Materials lane next: the material
+registry follow-up (cityLook, litFacade, highlight, building-types on the
+`groundMaterial.test.ts` pattern), the ~48 short-lived program keys compiled
+when zooming out to 15.5; step 4 (1×1 white map) held for a real-phone
+measurement. **Integrator next:** merge L1's `getBounds().contains()` shim fix
+(Artis on the iPhone ride under the flag); `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
 px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
@@ -301,8 +306,8 @@ catalogue and extract fetches (~0.6 s each cold) running serially. Also not
 met: the ≤ 4 MB bytes target.
 **Reds on main found by the programme's runs (2026-10-30): all fixed 2026-10-31**
 (#144, HISTORY "Three reds on main were checks that fell behind the game";
-#131 for sun-heading). Still red by decision: `engine-own.spec.ts` programs
-35 > 32 under `ENGINE=own` (landmark materials, see L1 state). CI runs only
+#131 for sun-heading). The `engine-own.spec.ts` programs red is gone 2026-10-31
+(materials lane: 20 programs desktop, 23 iPhone, budget 32). CI runs only
 lint and the boot smoke, so no e2e red blocks a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
