@@ -3,7 +3,7 @@
  "street": "Transvaalplein",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.11,
+ "seconds": 0.13,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -78,27 +78,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 5.8 m, type 8.8-12.9 m; strip shows balconies (dark open axis 2.38 m at 0.22 (light 0.3): no brick spandrel between the storeys))",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.54 < 0.7 (3DBAG eaves 9.32 m = 4 storeys of 2.33 m vs the type's 3.55 m; 3DBAG bouwlagen 3 vs 5)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1913, type 1921-1924",
-     "frontage 5.8 m, type 8.8-12.9 m",
-     "strip shows balconies (dark open axis 2.38 m at 0.22 (light 0.3): no brick spandrel between the storeys)"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.54,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 9.63 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 9.32 m = 4 storeys of 2.33 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 4/5"
+      "note": "3DBAG bouwlagen 3 vs 5"
      },
      {
       "key": "stucco",
@@ -160,27 +156,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1913, type 1921-1924; frontage 5.8 m, type 8.8-12.9 m; strip shows balconies (dark open axis 5.35 m at 0.5 (light 0.13): no brick spandrel between the storeys))",
+   "reason": "best transvaal-1911-five-storey-tall scores 0.4 < 0.7 (3DBAG eaves 6.23 m = 4 storeys of 1.56 m vs the type's 3.55 m; 3DBAG bouwlagen 3 vs 5)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0,
-    "veto": [
-     "built 1913, type 1921-1924",
-     "frontage 5.8 m, type 8.8-12.9 m",
-     "strip shows balconies (dark open axis 5.35 m at 0.5 (light 0.13): no brick spandrel between the storeys)"
-    ],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0.4,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 9.78 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 6.23 m = 4 storeys of 1.56 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 4/5"
+      "note": "3DBAG bouwlagen 3 vs 5"
      },
      {
       "key": "stucco",

@@ -298,8 +298,12 @@ cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
 0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
 JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
 start, which the script does not yet sample; the 36 resident cells plus
-per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
-7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31 after format v3
+(HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
+cells (10.4 MB lossless v3 today; v4 with a shared string table, 1 cm
+heights and ≤ 5 cm collinear vertex removal is the lane's next step) plus a
+per-ride download gate ≤ 2 MB under `?world=v1` (browser table pending);
+both in `budgets.json`. Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -364,7 +368,7 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt round 2, in flight (user, 2026-10-31, #151; round 1 #149 in HISTORY "Transvaalbuurt kit"):** the strips grouped by build-year family (comparison page 2026-10-31) showed the "0 placed" of round 1 was a library-coverage number: 695 of 769 pands were vetoed on year or width before any photo comparison, and the installed 1923 portiek design also stands on Schalk Burgerstraat 2–140, Krugerstraat 4–28, Retiefstraat 194–268 and Tugelaweg 19–31, refused only by the frontage veto (a pand here is a 7–17 m stair block). Lane `lane/transvaalbuurt-types-2-20261031` (brief `docs/handoffs/lane-transvaalbuurt-types-2-20261031.md`): replace the width veto with a bay-rhythm veto for portiek types, rerun auto-place, author the 1908–1914 five-storey type (274 pands on 37 faces) from three measured faces, batch-install in ride order. After it: the 1929–1931 blocks with round corner towers (120 pands), the 1920–1922 three-storey rows (129), the 1926–1928 band-window rows (50), and a flat-roof-with-setback crown for the installed design (its grey pitched roof is the largest visible gap). Method changes are in `docs/buurt-generator-20261016.md` "Transvaalbuurt lessons": cluster by family before auto-place; hand-backs split vetoed-before-comparison / compared-and-held / placed. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 3, next (user, 2026-10-31; rounds 1 and 2 in HISTORY "Transvaalbuurt kit" and "Transvaalbuurt round 2"):** round 2 (#151) put the stair-block frontage and the 1911 five-storey twins in the library and compared the 274-pand 1908–1914 family for the first time, but nothing survived review, so the buurt still shows one installed row (Albert Luthulistraat 25–39). Two kit blockers before any 1911 row installs: (1) a point gable beside a cornice or dormer neighbour leaves 1.2–2.3 m² of coplanar brick/tile overlap that the GLB audit rejects (a `crownAt` inset did not clear it; blocks Retiefstraat 69C–73A, Pretoriusstraat 79–87, Paardekraalstraat 1–15, Transvaalstraat 42–48); (2) the crown read needs a clean sky and reads trees at 15.5–18.4 m as point gables on flat fronts (Smitstraat 36–38, Transvaalstraat 54–56, 100–102, Laing's Nekstraat 34–56). Then: the ribbon era guard holds whole same-year rows when one pand reads "ribbon" (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat 72–96; make it per pand); the 1923 portiek design's stair-only (5.6 m) and window-only (10 m) BAG pands (Schalk Burgerstraat 18, 28); round-arched doors and segmental relieving arches on the 1911 rows; three axis widths on one front (Retiefstraat 3–41). Families still without a type (pands West+Oost): 1929–1931 corner-tower blocks 123, 1920–1922 three-storey rows 80 (+44 taller), 1926–1928 band-window rows 53, 1915–1919 58, after 1931 99; and a flat-roof-with-setback crown for the installed 1923 design (its grey pitched roof is the largest visible gap). Lane state and strips: `docs/handoffs/lane-transvaalbuurt-types-2-20261031.md`, source-data `block-face-strips/transvaalbuurt-round2/`. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1327,6 +1331,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low
+  > 25 ms on the ~1 s probe come from one M4 Pro (1.5 ms) and SwiftShader
+  (13–14 ms); a real mid-class laptop and an Android phone have never run the
+  probe. Until they do, `?tier=` forcing and the Sentry graphics-failure
+  counts are the only check that nobody lands in the wrong tier. Also: on the
+  SwiftShader proxy every tier sits near 2 fps, so `weak-gpu-perf` cannot
+  show a tier difference (the proxy is too slow to be a mid-class stand-in).
 
 - **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh

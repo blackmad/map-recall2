@@ -2,8 +2,8 @@
  "face": "nek-60-162",
  "street": "Laing's Nekstraat",
  "library": "transvaalbuurt",
- "stripDate": "2023-01-02",
- "seconds": 0.58,
+ "stripDate": "2020-04-29",
+ "seconds": 0.65,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,99 +24,77 @@
    "storeys3dbag": 4,
    "bagBay": null,
    "strip": {
-    "wall": "#715a55",
-    "wallRaw": "#69564e",
+    "wall": "#9a6c62",
+    "wallRaw": "#7a574f",
     "skyline": {
-     "eavesM": 9.43,
-     "eavesRow": 113,
-     "confidence": 0.43,
+     "eavesM": 10.25,
+     "eavesRow": 80,
+     "confidence": 0.75,
      "crown": {
-      "widthM": 1.5,
-      "riseM": 2.65,
-      "topWidthM": 0.72,
-      "centre": 0.1
+      "widthM": 3.38,
+      "riseM": 1.6,
+      "topWidthM": 1.18,
+      "centre": 0.77
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 5,
+    "columns": 7,
     "frontClass": "punched",
     "doorSide": null,
     "accentSide": "right",
-    "accentShare": 0.02,
+    "accentShare": 0.056,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 1.2,
+     "bayCentre": 0.56,
      "balconies": true,
-     "why": "dark open axis 3.6 m at 0.11 (light 0.09): no brick spandrel between the storeys",
+     "why": "dark open axis 0.65 m at 0.97 (light 0.12): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 3.6,
-       "centre": 0.11,
-       "light": 0.09
-      },
-      {
-       "widthM": 1.1,
-       "centre": 0.27,
-       "light": 0.08
-      },
-      {
-       "widthM": 1.8,
-       "centre": 0.37,
-       "light": 0.3
-      },
-      {
-       "widthM": 1.43,
-       "centre": 0.54,
-       "light": 0.24
+       "widthM": 0.65,
+       "centre": 0.97,
+       "light": 0.12
       }
      ],
-     "slabs": [
-      {
-       "atM": 6.6,
-       "widthM": 0.82,
-       "centre": 0.62
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.03
+    "foliageShare": 0.01
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: built 1994, type 1921-1924; frontage 18.33 m, type 8.8-12.9 m; strip shows balconies (dark open axis 3.6 m at 0.11 (light 0.09): no brick spandrel between the storeys))",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1994, type 1908-1914; frontage 18.33 m, type 4.8-11 m)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "built 1994, type 1921-1924",
-     "frontage 18.33 m, type 8.8-12.9 m",
-     "strip shows balconies (dark open axis 3.6 m at 0.11 (light 0.09): no brick spandrel between the storeys)"
+     "built 1994, type 1908-1914",
+     "frontage 18.33 m, type 4.8-11 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 12.1 m; 3DBAG 8.77 m not compared)"
+      "score": 0,
+      "note": "3DBAG eaves 8.77 m = 4 storeys of 2.19 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 4 vs 4/5"
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.041 (brick)"
+      "note": "strip accent share 0.045 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "note": "strip columns 7 vs 4 bays"
      }
     ]
    },
@@ -132,92 +110,76 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#53494a",
-    "wallRaw": "#5e5454",
+    "wall": "#846d66",
+    "wallRaw": "#756760",
     "skyline": {
-     "eavesM": 8.72,
-     "eavesRow": 141,
+     "eavesM": 9.85,
+     "eavesRow": 96,
      "confidence": 1,
      "crown": {
-      "widthM": 1.73,
-      "riseM": 3.03,
-      "topWidthM": 0.07,
-      "centre": 0.16
+      "widthM": 1.32,
+      "riseM": 1.4,
+      "topWidthM": 1.18,
+      "centre": 0.67
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
+    "columns": 3,
     "frontClass": "punched",
-    "doorSide": "left",
-    "accentSide": "left",
-    "accentShare": 0.001,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.142,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.5,
+     "bayCentre": 0.2,
      "balconies": true,
-     "why": "dark open axis 1.02 m at 0.09 (light 0.46): no brick spandrel between the storeys",
+     "why": "dark open axis 0.85 m at 0.76 (light 0.02): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 1.02,
-       "centre": 0.09,
-       "light": 0.46
-      },
-      {
-       "widthM": 0.6,
-       "centre": 0.25,
-       "light": 0.27
-      },
-      {
-       "widthM": 0.65,
-       "centre": 0.68,
-       "light": 0.03
-      },
-      {
-       "widthM": 1.27,
-       "centre": 0.88,
-       "light": 0.24
+       "widthM": 0.85,
+       "centre": 0.76,
+       "light": 0.02
       }
      ],
      "slabs": []
     },
-    "voidShare": 0,
-    "foliageShare": 0
+    "voidShare": 0.01,
+    "foliageShare": 0.01
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 6.02 m, type 8.8-12.9 m; strip shows balconies (dark open axis 1.02 m at 0.09 (light 0.46): no brick spandrel between the storeys))",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "frontage 6.02 m, type 8.8-12.9 m",
-     "strip shows balconies (dark open axis 1.02 m at 0.09 (light 0.46): no brick spandrel between the storeys)"
+     "built 1922, type 1908-1914"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 8.72 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 7.65 m = 4 storeys of 1.91 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 4/5"
+      "note": "3DBAG bouwlagen 3 vs 5"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.005 (brick)"
+      "note": "strip accent share 0.16 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -233,81 +195,82 @@
    "storeys3dbag": 4,
    "bagBay": null,
    "strip": {
-    "wall": "#483b3e",
-    "wallRaw": "#3e3c3f",
+    "wall": "#363031",
+    "wallRaw": "#474140",
     "skyline": {
-     "eavesM": 9.4,
-     "eavesRow": 114,
+     "eavesM": 9.85,
+     "eavesRow": 96,
      "confidence": 1,
-     "crown": null
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.7,
+      "topWidthM": 1.38,
+      "centre": 0.34
+     }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "curtain",
-    "doorSide": null,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0,
+    "accentShare": 0.154,
     "structure": {
-     "bayWidthM": 0.53,
-     "bayCentre": 0.6,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.82 m at 0.2 (light 0.13): no brick spandrel between the storeys",
+     "why": "dark open axis 0.68 m at 0.55 (light 0): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 0.82,
-       "centre": 0.2,
-       "light": 0.13
-      },
-      {
-       "widthM": 0.7,
-       "centre": 0.48,
-       "light": 0.01
-      },
-      {
-       "widthM": 0.6,
-       "centre": 0.6,
-       "light": 0.59
-      },
-      {
-       "widthM": 0.78,
-       "centre": 0.94,
+       "widthM": 0.68,
+       "centre": 0.55,
        "light": 0
       }
      ],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6.82,
+       "widthM": 0.85,
+       "centre": 0.67
+      }
+     ]
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.01
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1923-portiek-tower: frontage 7.21 m, type 8.8-12.9 m; strip shows balconies (dark open axis 0.82 m at 0.2 (light 0.13): no brick spandrel between the storeys))",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "frontage 7.21 m, type 8.8-12.9 m",
-     "strip shows balconies (dark open axis 0.82 m at 0.2 (light 0.13): no brick spandrel between the storeys)"
+     "built 1922, type 1908-1914"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 9.4 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 7.73 m = 4 storeys of 1.93 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 4 vs 4/5"
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.003 (brick)"
+      "note": "strip accent share 0.35 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
      }
     ]
    },
@@ -323,26 +286,21 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#6f635e",
-    "wallRaw": "#4c4742",
+    "wall": "#6a5e56",
+    "wallRaw": "#5e554c",
     "skyline": {
-     "eavesM": 10.45,
-     "eavesRow": 72,
-     "confidence": 0.7,
-     "crown": {
-      "widthM": 0.9,
-      "riseM": 1.8,
-      "topWidthM": 0.25,
-      "centre": 0.95
-     }
+     "eavesM": 10.55,
+     "eavesRow": 68,
+     "confidence": 0.88,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
-    "columns": 5,
-    "frontClass": "punched",
-    "doorSide": null,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0,
+    "accentShare": 0.212,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -352,39 +310,41 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.04
    },
    "status": "held",
    "stage": "match",
-   "reason": "best transvaal-1923-portiek-tower scores 0.31 < 0.7 (strip cornice 10.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m); 3DBAG bouwlagen 3 vs 4/5; strip columns 5 vs 3 bays)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1923, type 1908-1914)",
    "best": {
-    "type": "transvaal-1923-portiek-tower",
-    "score": 0.31,
-    "veto": [],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1908-1914"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "strip cornice 10.45 m vs the type's 12.1 m (wall-dormer skyline 15.7 m)"
+      "note": "3DBAG eaves 9.94 m = 4 storeys of 2.48 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 4/5"
+      "note": "3DBAG bouwlagen 3 vs 5"
      },
      {
       "key": "stucco",
       "weight": 2,
       "score": 1,
-      "note": "strip accent share 0.001 (brick)"
+      "note": "strip accent share 0.196 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
      }
     ]
    },
