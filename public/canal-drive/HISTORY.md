@@ -562,6 +562,34 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
 
+**Kalvertoren / Kalverpassage, Singel (2026-10-31, lane #148).** Ride-visibility
+rank 6, parked by triage as a `curtain` gap. One BAG pand
+(`0363100012165086`, 1997) holds three parts: the historicist red-brick
+Singel range (451-457B), the 1997 stone block with its semicircular glazed
+attic (457C-463) and the Kalverstraat fronts, with the 30 m glass tower in
+the middle; the historic Heiligeweg fronts are separate pands and are kept.
+The issue's premise that the Singel front is a glass curtain was wrong; the
+round crown seen from the Singel is the stone block's attic. Bespoke model
+(`scripts/landmarks/kalvertoren-builder.ts`, 22,268 triangles, 292 KB,
+slots 100 %) on the kept 3DBAG LoD2.2 shell (442 of 543 walls, 73 of 87
+roofs; the tower and attic roofs replaced by decks). Inventory 34 items: 17
+modelled (two gables with claws, neck and gilt balls, the arms relief, the K
+arch, the east portal pediment, speklagen and relieving arches, the stone
+shopfronts, the glazed attic with bronze cap, an 8-column colonnade, the
+tower with café storey, mullions, ring cornice and dome, the passage portal,
+the KALVERPASSAGE board with raised lettering, the Kalverstraat deep windows
+and balconies, the dark curtain return, the Heiligeweg lattice gate), 11
+simplified, 6 skipped. The tower shaft below 25 m is not visible from any
+street and is fitted from the 3DBAG roofs. Gates: audit:glb PASS (largest
+open loop 28.98 m against a 30 m limit), inventory 0 fail, taxonomy 17/17,
+osm-under-models 0, manual-landmarks 346. The kit cannot say: bowed curtain
+glass with mullion profiles, carved claws and cartouches, heraldic lions, a
+3D lattice canopy, true recessed openings, lettering on curved boards. The
+large-tier draft singel-457-165086 for the same pand stays uninstalled. The
+Rasphuispoort host-wall opening at the Heiligeweg mouth is on this pand and
+needs a look now that the pand is suppressed (TODO). Sources (18 panoramas,
+nl:Kalverpassage, BAG, 3DBAG) are archived under `models/kalvertoren/`.
+
 **Painted and clad fronts in the large tier; 3 of 82 moved, 0 passed (2026-10-31, lane #146).**
 The largest triage gap after band fronts was `painted-or-clad` (82 pands,
 5.9 M blocked ride visibility): wide street walls whose photo wall family
