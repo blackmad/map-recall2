@@ -23,11 +23,14 @@ class WorkerStub {
     this.onmessage({ data: { key: message.key, gen: message.gen, appearanceRevision: message.appearanceRevision, surveyedEnvelopeRevision: message.surveyedEnvelopeRevision, hostOpeningRevision: message.hostOpeningRevision, boundParentIds: [], chunk, ms: 1 } });
   }
 }
-const THREE = { Camera: class {}, Scene, WebGLRenderer: class {}, RawShaderMaterial: Material, Matrix4: Matrix, Vector3: class {}, BufferGeometry: Geometry, BufferAttribute: Attribute, Mesh: class { constructor(public geometry: any, public material: any) {} } };
+const THREE = { Camera: class {}, Scene, WebGLRenderer: class {}, RawShaderMaterial: Material, Matrix4: Matrix, Vector3: class { constructor(..._xyz: number[]) {} }, Vector4: class { constructor(..._xyzw: number[]) {} }, Matrix3: class {}, ShaderMaterial: Material, FrontSide: 0, Sphere: class { constructor(public center: any, public radius: number) {} }, BufferGeometry: Geometry, BufferAttribute: Attribute, Mesh: class { constructor(public geometry: any, public material: any) {} } };
 (globalThis as any).window = { CanalRecallThree: { THREE } };
 (globalThis as any).document = { currentScript: { src: 'https://test.local/three-buildings.bundle.js' } };
 (globalThis as any).Worker = WorkerStub;
 const { ThreeBuildings } = await import('../src/canalRecall/threeBuildingsBrowser.ts');
+// The stub document only supplies the bundle URL at import. Without it, the city look (default since #137) takes its
+// node path: materials and uniforms, no brick photo or atlas painting.
+delete (globalThis as any).document;
 const deferred = () => { let resolve!: (value: any) => void; const promise = new Promise(r => resolve = r); return { promise, resolve }; };
 const textures = (name: string) => ({ colour: { name, userData: { bytes: 1 } }, mask: { name, userData: { bytes: 1 } } });
 const map = { getCanvas: () => ({ addEventListener() {} }), triggerRepaint() {}, getZoom: () => 18 };
@@ -35,6 +38,9 @@ const ml = { MercatorCoordinate: { fromLngLat: () => ({ x: 0, y: 0, z: 0, meterI
 const initial = deferred(), photo = deferred();
 const t: any = new ThreeBuildings(map as any, ml as any, 'procedural');
 t.pump = () => {}; // Run queued adapter jobs explicitly, keeping the production queue and worker handler.
+// Worker replies stage and install on later frames (6370811e7); drain the real staging queue as those frames would.
+t.scheduleStage = () => {};
+const deliver = (message: any) => { (t.worker as WorkerStub).reply(message); while (t.staged.length) t.drainStaged(); };
 t.texturesFor = (look: string) => look === 'procedural' ? initial.promise : photo.promise;
 t.layer.onAdd(map, {});
 const firstSwitch = t.setLook('photo'); photo.resolve(textures('photo')); await firstSwitch;
@@ -44,19 +50,19 @@ assert.equal(t.material.uniforms.cells.value.name, 'photo', 'late initial atlas 
 assert.equal(t.ready, true, 'newest mode can become ready without waiting for obsolete initialization');
 const f = { type: 'Feature', properties: { id: 'w100', height: 12 }, geometry: { type: 'Polygon', coordinates: [[[4.89, 52.37], [4.8901, 52.37], [4.8901, 52.3701], [4.89, 52.3701], [4.89, 52.37]]] } };
 t.setFeatures([f]); while (t.pending.length) t.pending.shift()();
-const worker: WorkerStub = t.worker, first = worker.messages.at(-1); worker.reply(first);
+const worker: WorkerStub = t.worker, first = worker.messages.at(-1); deliver(first);
 const firstMesh = t.chunks.get(first.key).mesh;
 assert.equal(firstMesh.material.uniforms.cells.value.name, 'photo');
 // An old PHOTO job is in flight when CARTOON is requested.
 t.rebuild(first.key, [f]); const obsolete = worker.messages.at(-1);
 const cartoon = deferred(); t.texturesFor = (look: string) => look === 'cartoon' ? cartoon.promise : Promise.resolve(textures(look));
 const pendingCartoon = t.setLook('cartoon');
-worker.reply(obsolete);
+deliver(obsolete);
 assert.equal(t.chunks.get(first.key).mesh, firstMesh, 'request synchronously invalidates old worker replies before textures resolve');
 assert.equal(firstMesh.material.uniforms.cells.value.name, 'photo', 'resident geometry retains its matching old atlas while a new one loads');
 cartoon.resolve(textures('cartoon')); await pendingCartoon;
 assert.equal(firstMesh.material.uniforms.cells.value.name, 'photo', 'activating CARTOON does not recolor old PHOTO geometry through a shared material');
-while (t.pending.length) t.pending.shift()(); const cartoonJob = worker.messages.at(-1); worker.reply(cartoonJob);
+while (t.pending.length) t.pending.shift()(); const cartoonJob = worker.messages.at(-1); deliver(cartoonJob);
 const cartoonMesh = t.chunks.get(first.key).mesh;
 assert.notEqual(cartoonMesh, firstMesh);
 assert.equal(cartoonMesh.material.uniforms.cells.value.name, 'cartoon', 'new geometry and its palette/atlas install together');
@@ -66,21 +72,21 @@ const slowProcedural = deferred(); t.texturesFor = (look: string) => look === 'p
 const older = t.setLook('procedural'), latest = t.setLook('photo'); await latest;
 slowProcedural.resolve(textures('procedural')); await older;
 assert.equal(t.getLook(), 'photo'); assert.equal(t.material.uniforms.cells.value.name, 'photo', 'the most recent request wins even if old textures resolve last');
-worker.reply(cartoonJob);
+deliver(cartoonJob);
 assert.equal(t.chunks.get(first.key).mesh, cartoonMesh, 'a previous mode cannot replace geometry after the next mode is ready');
-while (t.pending.length) t.pending.shift()(); worker.reply(worker.messages.at(-1));
+while (t.pending.length) t.pending.shift()(); deliver(worker.messages.at(-1));
 assert.equal(t.chunks.get(first.key).mesh.material.uniforms.cells.value.name, 'photo');
 // A cached older feature list must not overwrite a tile that changed while awaiting its reply.
 t.rebuild(first.key, [f]); const staleFeatureJob = worker.messages.at(-1);
 const updated = { ...f, properties: { ...f.properties, height: 17 } }; t.setFeatures([updated]);
-worker.reply(staleFeatureJob);
+deliver(staleFeatureJob);
 assert.notEqual(t.chunks.get(first.key).source[0], updated, 'obsolete reply is ignored until fresh geometry arrives');
-while (t.pending.length) t.pending.shift()(); worker.reply(worker.messages.at(-1));
+while (t.pending.length) t.pending.shift()(); deliver(worker.messages.at(-1));
 assert.equal(t.chunks.get(first.key).source[0], updated, 'latest source survives mode switching and out-of-order feature work');
 const originalStreets = new Float32Array([1, 2, 3, 4]);
 t.streetsFor = () => originalStreets; t.rebuild(first.key, [updated]);
 const streetJob = worker.messages.at(-1); t.streetsFor = () => new Float32Array([8, 9, 10, 11]);
-worker.reply(streetJob);
+deliver(streetJob);
 assert.equal(t.chunks.get(first.key).mesh.userData.installedStreets, originalStreets, 'picking stores streets actually used by the worker, rather than later mutable streets');
 assert.equal(t.chunks.get(first.key).mesh.userData.installedLook, 'photo');
 assert.equal(t.pending.length, 0); assert.equal(t.inflight.size, 0);
@@ -88,6 +94,6 @@ assert.equal(t.pending.length, 0); assert.equal(t.inflight.size, 0);
 t.rebuild(first.key, [updated]); const evictedJob = worker.messages.at(-1);
 assert.equal(t.inflightOptions.size, 1); t.setFeatures([]);
 assert.equal(t.inflightOptions.size, 0, 'evicted tiles release captured build inputs');
-worker.reply(evictedJob);
+deliver(evictedJob);
 assert.equal(t.chunks.size, 0, 'late evicted tile cannot reinstall geometry');
 console.log('Building mode transition regressions passed: delayed initialization, stale workers, atomic chunk materials, rapid cycles and newer tile sources.');
