@@ -10,6 +10,7 @@
  *   npm run world:compile -- --no-policy  # cells exactly as the default path (no centimetre heights:
  *                                         # src/canalRecall/world/cellPolicy.ts)
  *   npm run world:compile -- --collinear  # also remove near-collinear vertices within 5 cm (held, #130)
+ *   npm run world:compile -- --height-step=0.1 --eaves-step=0.1  # height/minHeight, eaves to the decimetre (held, #130)
  * Format 4 also writes strings.bin, the shared string table (strings two or more cells use).
  *
  * Reference check (P2 bytes gate): every written cell is decoded and compared, whole (buildings, geometry,
@@ -39,7 +40,7 @@ import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
 import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, WORLD_FORMAT_VERSION, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../../src/canalRecall/world/cellGrid.js';
-import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsOf, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
+import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsOf, policyOptionsFromArgs, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readGlobalStrings } from './cellFiles.js';
 
 export const COMPILER_VERSION = 'world-compiler-1';
@@ -52,7 +53,7 @@ const WITH_ROOF = !!flag('roof');
 const DEBUG = !!flag('debug');
 const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
 const NO_POLICY = !!flag('no-policy');
-const POLICY_OPTIONS: PolicyOptions = { collinear: !!flag('collinear') };
+const POLICY_OPTIONS: PolicyOptions = policyOptionsFromArgs(process.argv.slice(2));
 const AGAINST = value('against') === 'none' ? null : path.resolve(value('against') ?? path.join(EXTRACT, 'world-v1'));
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
@@ -168,7 +169,7 @@ async function main() {
     const hide = [...hides.values()].filter(h => ids.has(h.id));
     for (const h of hide) hiddenPlaced.add(h.id);
     const cell: Cell = DEBUG ? { i, j, buildings, hide, debug: true } : { i, j, buildings, hide };
-    // The compile policy (cellPolicy.ts): heights to the centimetre; with --collinear, near-collinear vertices within 5 cm removed.
+    // The compile policy (cellPolicy.ts): heights to POLICY_OPTIONS.heightStepM; with --collinear, near-collinear vertices within 5 cm removed.
     built.push({ key, list, cell: NO_POLICY ? cell : applyPolicy(cell, policyReport, POLICY_OPTIONS) });
   }
 
@@ -196,7 +197,7 @@ async function main() {
     if (reference) {
       const entry = reference.cells?.[key], file = path.join(AGAINST!, 'cells', `${key}.bin`);
       // A reference compiled under a different policy (or a policy when this run has none) cannot be compared.
-      const refOptions = policyOptionsOf(reference), policyClash = !!refOptions && (NO_POLICY || refOptions.collinear !== POLICY_OPTIONS.collinear);
+      const refOptions = policyOptionsOf(reference), policyClash = !!refOptions && (NO_POLICY || refOptions.collinear !== POLICY_OPTIONS.collinear || refOptions.heightStepM !== POLICY_OPTIONS.heightStepM || refOptions.eavesStepM !== POLICY_OPTIONS.eavesStepM);
       const fresh = !policyClash && referenceGlobalsMatch && !!entry && entry.tiles.every((t: string) => reference.tileHashes?.[t] === tileHash.get(t)) && entry.tiles.join() === [...new Set(list.map(r => r.tile))].sort().join();
       if (!entry || !exists(file)) against.missing.push(key);
       else if (!fresh) against.skippedStale.push(key);

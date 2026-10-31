@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { cellGlobalRef, chooseGlobalStrings, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
 import { readWorldIndex } from './worldCells.js';
-import { applyPolicy, areaM2, emptyPolicyReport, HEIGHT_KEYS, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
+import { applyPolicy, areaM2, DEFAULT_POLICY_OPTIONS, emptyPolicyReport, HEIGHT_KEYS, policyOptionsFromArgs, policyOptionsOf, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -249,8 +249,8 @@ test('v3: every single-byte change is rejected or decodes without crashing; v2 s
   }
   assert.ok(decodeCell(encodeCell(small, 2).bytes));
   assert.throws(() => encodeCell(small, 1), /cannot encode/);
-  for (const format of [2, 3, 4]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
-  assert.equal(readWorldIndex({ version: 1, format: 5, tileCells: {}, cells: {} }), null);
+  for (const format of [2, 3, 4, 5]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
+  assert.equal(readWorldIndex({ version: 1, format: 6, tileCells: {}, cells: {} }), null);
 });
 
 // --- v4: shared string table, C_SAME columns, interleaved FOOT; the compile policy ----------------------------
@@ -300,6 +300,19 @@ test('policy: heights to the centimetre; near-collinear vertices within 5 cm go,
   assert.equal(q.height, 9.33); assert.equal(q.minHeight, 0); assert.ok(Object.is(q.roofEavesHeightM, 0)); assert.equal(q.tier, 3);
   assert.equal(quantiseHeights({ height: 8.33 }).height, 8.33);
   const same = { height: 8.33 }; assert.equal(quantiseHeights(same), same, 'an already-centimetre bag is returned as is');
+  // The held decimetre step: never more than 5 cm off.
+  const dm = quantiseHeights(bag, 0.1);
+  assert.equal(dm.height, 9.3); assert.equal(dm.minHeight, 0); assert.ok(Object.is(dm.roofEavesHeightM, 0));
+  assert.equal(quantiseHeights({ height: 12.35 }, 0.1).height, 12.4);
+  assert.equal(quantiseHeights({ height: 0.3 }, 0.1).height, 0.3, 'no 0.30000000000000004');
+  assert.throws(() => quantiseHeights({ height: 1 }, 0.25), /height step/);
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false } }), { collinear: false, heightStepM: 0.01, eavesStepM: 0.01 }, 'indexes before heightStepM were centimetres');
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false, heightStepM: 0.1 } }), { collinear: false, heightStepM: 0.1, eavesStepM: 0.1 });
+  assert.deepEqual(policyOptionsOf({ policy: 'world-policy-1', policyOptions: { collinear: false, heightStepM: 0.01, eavesStepM: 0.1 } }), { collinear: false, heightStepM: 0.01, eavesStepM: 0.1 });
+  const split = quantiseHeights({ height: 9.328, roofEavesHeightM: 6.27, minHeight: 0.04 }, 0.01, 0.1);
+  assert.deepEqual(split, { height: 9.33, roofEavesHeightM: 6.3, minHeight: 0.04 }, 'eaves at their own step');
+  assert.deepEqual(policyOptionsFromArgs([]), DEFAULT_POLICY_OPTIONS);
+  assert.deepEqual(policyOptionsFromArgs(['--collinear', '--height-step=0.01', '--eaves-step=0.1']), { collinear: true, heightStepM: 0.01, eavesStepM: 0.1 });
   // A 20 m x 10 m rectangle at 52.37 N with an extra vertex on the long south edge, offset north by `off` metres.
   const lat = 52.37, lng = 4.88, kx = 111_320 * Math.cos(lat * Math.PI / 180), my = (m: number) => m / 111_320, mx = (m: number) => m / kx;
   const ring = (off: number) => [[lng, lat], [lng + mx(10), lat + my(off)], [lng + mx(20), lat], [lng + mx(20), lat + my(10)], [lng, lat + my(10)], [lng, lat]];
@@ -325,10 +338,19 @@ test('policy: heights to the centimetre; near-collinear vertices within 5 cm go,
 
 test('policy: published sentinel cells keep ids, order, first vertices, party walls and every shared corner; area change <= 1%', () => {
   for (const key of [...new Set(SENTINELS.map(s => s.cell))]) {
-    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report, { collinear: true });
-    // The default policy (collinear removal held, #130) leaves every footprint exactly as it was.
+    const cell = published(key), report = emptyPolicyReport(), p = applyPolicy(cell, report, { collinear: true, heightStepM: 0.01, eavesStepM: 0.01 });
+    // The default policy (collinear removal held, #130) leaves every footprint exactly as it was; heights within 5 mm.
     const heightsOnly = applyPolicy(cell);
-    heightsOnly.buildings.forEach((b, k) => assert.equal(b.geometry, cell.buildings[k].geometry, `${b.id}: footprint untouched by default`));
+    heightsOnly.buildings.forEach((b, k) => {
+      const o = cell.buildings[k];
+      assert.equal(b.geometry, o.geometry, `${b.id}: footprint untouched by default`);
+      for (const k2 of HEIGHT_KEYS) { const v = (o.styled ?? o.attr)[k2]; if (typeof v === 'number') { const q = (b.styled ?? b.attr)[k2] as number; assert.ok(Math.abs(q - v) <= 0.005 + 1e-9 && Math.round(q * 100) / 100 === q, `${o.id} ${k2}: ${v} -> ${q}`); } }
+    });
+    // The held decimetre option stays within 5 cm.
+    applyPolicy(cell, undefined, { collinear: false, heightStepM: 0.1, eavesStepM: 0.1 }).buildings.forEach((b, k) => {
+      const o = cell.buildings[k];
+      for (const k2 of HEIGHT_KEYS) { const v = (o.styled ?? o.attr)[k2]; if (typeof v === 'number') { const q = (b.styled ?? b.attr)[k2] as number; assert.ok(Math.abs(q - v) <= 0.05 + 1e-9 && Math.round(q * 10) / 10 === q, `${o.id} ${k2}: ${v} -> ${q}`); } }
+    });
     assert.equal(p.buildings.length, cell.buildings.length);
     const before = sharedVertices(cell.buildings.map(b => b.geometry)), after = sharedVertices(p.buildings.map(b => b.geometry));
     assert.deepEqual([...after].sort(), [...before].sort(), `${key}: shared corners unchanged`);
@@ -348,5 +370,60 @@ test('policy: published sentinel cells keep ids, order, first vertices, party wa
     }
     const back = decodeCell(encodeCell(p, 4).bytes, key); sameCell(back, p, `${key} policy round trip`);
     assert.ok(report.verticesAfter <= report.verticesBefore);
+  }
+});
+
+// --- v5: integer-list columns (roofFurniture), vertex-run references --------------------------------------------
+test('v5: published cells round-trip exactly and re-encode byte-identically; smaller than v4 gzip', () => {
+  const keys = ['-2_0', '-1_-1', '8_-2', '0_0', ...[...new Set(SENTINELS.map(s => s.cell))]].filter((k, n, a) => a.indexOf(k) === n && fs.existsSync(path.join(PUBLISHED, `${k}.bin`)));
+  let v4 = 0, v5 = 0;
+  for (const key of keys) {
+    const cell = published(key), b5 = encodeCell(cell, 5).bytes, back = decodeCell(b5, key);
+    sameCell(back, cell, `${key} v5`);
+    assert.deepEqual(encodeCell(back, 5).bytes, b5, `${key}: v5 re-encode is byte-identical`);
+    v4 += zlib.gzipSync(encodeCell(cell, 4).bytes).length; v5 += zlib.gzipSync(b5).length;
+  }
+  assert.ok(v5 < v4, `v5 ${v5} B < v4 ${v4} B gzip`);
+});
+
+test('v5: integer lists survive (negatives, zero, one item); a column with any other string stays a dictionary', () => {
+  const g = (u: number) => u / 1e7, sq = (x: number) => ({ type: 'Polygon' as const, coordinates: [[[g(48_000_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_000_000)], [g(48_001_000 + x * 1000), g(523_001_000)], [g(48_000_000 + x * 1000), g(523_000_000)]]] });
+  const lists = ['2,41,7,5,9,34', '0', '-79,20,3', '5,-19,-12,5,6,18', '123456789012345', '-1', '3,0,0,0', '17,1'];
+  const make = (furn: string[]): Cell => ({ i: 0, j: 0, buildings: furn.map((f, k) => ({ id: `w${k}`, tile: '8414/5384', ordinal: k, geometry: sq(k), attr: k % 3 === 2 ? { id: `w${k}`, h: k } : { id: `w${k}`, roofFurniture: f } })), hide: [] });
+  const ok = make(lists), b5 = encodeCell(ok, 5).bytes;
+  sameCell(decodeCell(b5), ok, 'integer lists');
+  const strs = encodeCell(ok, 5).strings;
+  for (const l of lists) assert.ok(!strs.includes(l), `${l}: not in STRS`);
+  assert.ok(encodeCell(ok, 4).strings.includes(lists[0]), 'v4 still writes them as strings');
+  for (const odd of ['01,2', '-0', '1, 2', '', '1,,2', '+1', '1.5', '9007199254740993', 'a']) {
+    const c = make([...lists.slice(0, 4), odd, ...lists.slice(4)]);
+    sameCell(decodeCell(encodeCell(c, 5).bytes), c, `fallback for ${JSON.stringify(odd)}`);
+    assert.ok(encodeCell(c, 5).strings.includes(odd) || odd === '', `${JSON.stringify(odd)} kept as a string`);
+  }
+  // A v4 cell never carries the kind: the same bytes relabelled v4 do not decode as lists.
+  const relabelled = b5.slice(); relabelled[4] = 4;
+  assert.throws(() => decodeCell(relabelled), /world cell/);
+});
+
+test('v5: shared wall runs in both directions, a T-junction and a multipolygon round-trip; every single-byte change is rejected or decodes', () => {
+  const g = (u: number) => u / 1e7;
+  // A terrace: each house shares its west wall (two or three vertices) with the previous one, alternating winding.
+  const buildings: CellBuilding[] = [];
+  for (let k = 0; k < 12; k++) {
+    const x0 = 48_000_000 + k * 700, x1 = x0 + 700, y0 = 523_000_000, y1 = y0 + 900, mid = y0 + 450;
+    let ring = [[x0, y0], [x1, y0], [x1, mid], [x1, y1], [x0, y1], [x0, mid], [x0, y0]];
+    if (k % 2) ring = [...ring].reverse();
+    const geometry = k === 7
+      ? { type: 'MultiPolygon' as const, coordinates: [[ring.map(([x, y]) => [g(x), g(y)])], [[[g(x0 + 100), g(y1 + 100)], [g(x0 + 300), g(y1 + 100)], [g(x0 + 300), g(y1 + 300)], [g(x0 + 100), g(y1 + 100)]]]] }
+      : { type: 'Polygon' as const, coordinates: [ring.map(([x, y]) => [g(x), g(y)])] };
+    buildings.push({ id: `w${k}`, tile: '8414/5384', ordinal: k, geometry, attr: { id: `w${k}`, height: 9 + k / 10 } });
+  }
+  const cell: Cell = { i: 0, j: 0, buildings, hide: [] };
+  const b5 = encodeCell(cell, 5).bytes;
+  sameCell(decodeCell(b5), cell, 'terrace v5'); sameCell(decodeCell(encodeCell(cell, 4).bytes), cell, 'terrace v4');
+  for (let at = 0; at < b5.length; at++) for (const v of [0, 1, 2, 3, 0x7f, 0x80, 0xff]) {
+    if (b5[at] === v) continue;
+    const c = b5.slice(); c[at] = v;
+    try { decodeCell(c); } catch (e) { assert.ok(e instanceof Error && /^world cell/.test(e.message), `byte ${at}=${v}: ${String(e)}`); }
   }
 });
