@@ -250,3 +250,22 @@ test('overview v2 layers: landuse, piers and rail add meshes on the shared flat 
   const tunnel = withV2.root.children.find(o => o.renderOrder === 9) as any;
   assert.ok(tunnel && tunnel.material.uniforms.uOpacity.value < 0.5, 'tunnels faint');
 });
+
+test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animals.js), getWest… (park-landscape.js)', async () => {
+  const { boundsObject } = await import('./cameraMap');
+  const b = boundsObject({ west: 4.910, south: 52.362, east: 4.920, north: 52.369 });
+  // ARTIS, the anchor artis-animals.js tests every frame on the iPhone ride (Plantage Kerklaan).
+  assert.equal(b.contains([4.9155, 52.3660]), true);
+  assert.equal(b.contains({ lng: 4.9155, lat: 52.3660 }), true);
+  assert.equal(b.contains({ lon: 4.9155, lat: 52.3660 }), true);
+  assert.equal(b.contains([4.905, 52.366]), false, 'west of the box');
+  assert.equal(b.contains([4.915, 52.370]), false, 'north of the box');
+  assert.equal(b.contains([4.910, 52.362]), true, 'edges inclusive, as LngLatBounds');
+  assert.deepEqual([b.getWest(), b.getSouth(), b.getEast(), b.getNorth()], [4.910, 52.362, 4.920, 52.369]);
+  assert.deepEqual(b.getCenter().toArray(), [4.915, 52.3655]);
+  assert.deepEqual([b.getNorthEast().lng, b.getSouthWest().lat], [4.920, 52.362]);
+  assert.equal(b.isEmpty(), false);
+  const wrap = boundsObject({ west: 179, south: -1, east: -179, north: 1 });
+  assert.equal(wrap.contains([179.5, 0]), true, 'antimeridian-wrapped box');
+  assert.equal(wrap.contains([0, 0]), false);
+});
