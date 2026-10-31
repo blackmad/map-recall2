@@ -13,6 +13,7 @@
 
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
 import type { Vec2 } from './surface.js';
+import type { OpeningDeck } from './water.js';
 
 export const WAY_DECK_STEP_M = 0.5, WAY_DECK_MIN_WATER_M = 2, ABUTMENT_M = 1, APPROACH_M = 6;
 /** A wet station this close to a measured deck or a flat footprint belongs to that bridge (no second deck beside it). */
@@ -231,4 +232,148 @@ export function roadEdgeSides(p: DeckProfile, onRoad: (x: number, y: number) => 
   const hw = Math.max(...p.halfWidth), med = (v: number[]) => { const s = [...v].sort((x, y) => x - y); return s[s.length >> 1]; };
   const sides = edges.map(v => (v.length >= ROAD_EDGE_MIN_STATIONS ? Math.max(hw, med(v)) : hw)) as [number, number];
   return sides.some(w => w > hw + ROAD_EDGE_WIDER_M) ? sides : undefined;
+}
+
+/**
+ * Water under OSM bridge ways whose water polygon stops at the bridge (user 2026-10-31, "why missing road": the
+ * Kinkerbrug, Postjesweg over the Kostverlorenvaart, OSM 743740428, and the Beltbrug, Jan van Galenstraat, OSM 27316608
+ * + 467803028). The OpenFreeMap water ends at both deck edges and no register outline carries the bridge, so the way
+ * crossed no water, got no way deck, and the survey's deck-level road polygons (h 1) had nothing to lie on: the
+ * carriageway stopped at both abutments over a patch of bare land. The footbridge openings rule (water.ts
+ * openUnderFootbridges) opens that strip for every bridge way no measured deck or flat footprint claims, with no width
+ * cap (the OSM bridge tag, not the width, says it is a bridge and not a dam) and WAY_OPENING_REACH_M beside the edges;
+ * the way deck then finds its water as on any other crossing.
+ */
+export const WAY_OPENING_REACH_M = 8;
+/** Bridge ways side by side on one crossing join a bundle while the gap between their bands is at most this. */
+export const BUNDLE_GAP_M = 8;
+/** At most this far apart (midpoints) and within ~37° of parallel, as wayDeckGroups. */
+export const BUNDLE_MID_M = WAY_DECK_GROUP_M;
+
+/**
+ * The bridge ways of one crossing as one line covering all of them (the Beltbrug: two carriageways and two cycle paths
+ * mapped as four ways, each too narrow for the water beside the bridge's far edge to lie within reach). Ways within
+ * BUNDLE_MID_M of each other, within ~37° of parallel and with at most BUNDLE_GAP_M between neighbouring bands join;
+ * the line is the widest way's, shifted to the bundle's middle, with the bundle's half-width. A lone way is returned
+ * as it is.
+ */
+export function bridgeWayBundles(ways: readonly WayDeckInput[]): WayDeckInput[] {
+  const len = (pts: readonly Vec2[]) => pts.reduce((a, p, i) => (i ? a + Math.hypot(p[0] - pts[i - 1][0], p[1] - pts[i - 1][1]) : 0), 0);
+  const mid = (pts: readonly Vec2[]): Vec2 => {
+    const half = len(pts) / 2;
+    for (let i = 1, a = 0; i < pts.length; i++) {
+      const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+      if (a + l >= half) { const t = l ? (half - a) / l : 0; return [pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * t, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * t]; }
+      a += l;
+    }
+    return pts[0] as Vec2;
+  };
+  const dir = (pts: readonly Vec2[]): Vec2 => { const n = pts.length - 1, l = Math.hypot(pts[n][0] - pts[0][0], pts[n][1] - pts[0][1]) || 1; return [(pts[n][0] - pts[0][0]) / l, (pts[n][1] - pts[0][1]) / l]; };
+  const order = ways.filter(w => w.points.length >= 2).sort((a, b) => b.halfWidth - a.halfWidth || a.id - b.id);
+  const used = new Set<number>(), out: WayDeckInput[] = [];
+  for (const main of order) {
+    if (used.has(main.id)) continue;
+    used.add(main.id);
+    const m = mid(main.points), u = dir(main.points), nrm: Vec2 = [-u[1], u[0]];
+    // Candidates by their lateral offset; a band joins when it reaches within BUNDLE_GAP_M of the bundle's edge.
+    const cands = order.filter(o => !used.has(o.id)).map(o => {
+      const c = mid(o.points), v = dir(o.points);
+      return { o, c, ok: Math.hypot(c[0] - m[0], c[1] - m[1]) <= BUNDLE_MID_M && Math.abs(u[0] * v[0] + u[1] * v[1]) >= 0.8, lat: (c[0] - m[0]) * nrm[0] + (c[1] - m[1]) * nrm[1] };
+    }).filter(c => c.ok);
+    let left = main.halfWidth, right = main.halfWidth, grew = true;
+    while (grew) {
+      grew = false;
+      for (const c of cands) {
+        if (used.has(c.o.id)) continue;
+        const lo = c.lat - c.o.halfWidth, hi = c.lat + c.o.halfWidth;
+        if (lo > left + BUNDLE_GAP_M || hi < -right - BUNDLE_GAP_M) continue;
+        left = Math.max(left, hi); right = Math.max(right, -lo); used.add(c.o.id); grew = true;
+      }
+    }
+    if (left === main.halfWidth && right === main.halfWidth) { out.push(main); continue; }
+    out.push({ ...main, points: offsetLine(main.points, (left - right) / 2), halfWidth: (left + right) / 2 });
+  }
+  return out;
+}
+
+/**
+ * The opening stops this far past the way's ends. OSM puts a bridge way's end nodes on the abutments, and along the
+ * axis there is no water to stop at (the cut covers the whole crossing): run on further and a skewed crossing's quays
+ * have water on both sides too (the Beltbrug opened 27 m of quay for a 12 m way, and its way deck then ended over water).
+ */
+export const WAY_OPENING_PAST_M = 0.5;
+
+/**
+ * One bridge way as the openings rule reads a deck (water.ts OpeningDeck): stations every WAY_DECK_STEP_M along it,
+ * extended straight WAY_OPENING_PAST_M past each end, the whole line its span.
+ */
+export function wayOpeningDeck(w: WayDeckInput): OpeningDeck {
+  const pts: Vec2[] = [];
+  for (let i = 0; i + 1 < w.points.length; i++) {
+    const [ax, ay] = w.points[i], [bx, by] = w.points[i + 1], n = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay) / WAY_DECK_STEP_M));
+    for (let j = i === 0 ? 0 : 1; j <= n; j++) pts.push([ax + (bx - ax) * j / n, ay + (by - ay) * j / n]);
+  }
+  const ext = (b: Vec2, a: Vec2): Vec2[] => {
+    const l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, out: Vec2[] = [];
+    for (let d = WAY_DECK_STEP_M; d <= WAY_OPENING_PAST_M + 1e-6; d += WAY_DECK_STEP_M) out.push([b[0] + (b[0] - a[0]) / l * d, b[1] + (b[1] - a[1]) / l * d]);
+    return out;
+  };
+  const all = pts.length >= 2 ? [...ext(pts[0], pts[1]).reverse(), ...pts, ...ext(pts[pts.length - 1], pts[pts.length - 2])] : pts;
+  const n = all.length, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), hw = new Float64Array(n).fill(w.halfWidth);
+  for (let i = 0; i < n; i++) { x[i] = all[i][0]; y[i] = all[i][1]; s[i] = i ? s[i - 1] + Math.hypot(x[i] - x[i - 1], y[i] - y[i - 1]) : 0; }
+  return { id: `OSM${w.id}`, x, y, s, halfWidth: hw, deck: [0, n ? s[n - 1] : 0] };
+}
+
+/**
+ * Cap a way deck's sides at the water found beside an opened bridge's edges (`cap`: left, right of the axis, from
+ * water.ts openUnderFootbridges `sides`), when the roads survey gives no deck-level outline (deckEdgeSides). Sides
+ * (roadEdgeSides) that lie inside stay; the bbox is left as it was (it only bounds lookups).
+ */
+export function capDeckSides(p: DeckProfile, cap: readonly [number, number]): void {
+  const hw = Math.max(...p.halfWidth), [l, r] = p.sides ?? [hw, hw];
+  if (l <= cap[0] && r <= cap[1]) return;
+  setDeckSides(p, [Math.min(l, cap[0]), Math.min(r, cap[1])]);
+}
+
+/**
+ * A deck over water opened under its way: its sides from the survey's deck-level polygons (h ≥ 1, `onDeckPoly`), which
+ * outline the bridge itself. The road edges (roadEdgeSides) walk on along the quay's pavements, and the water found
+ * beside the opening can lie past the bridge where the source water was cut wider than the deck (the De Clercqstraat:
+ * 12.8 m to the south over a 3 m pavement). Per station over the deck span, each side walks out from the axis in
+ * ROAD_EDGE_STEP_M steps, across gaps of at most DECK_EDGE_GAP_M between polygons, to the last deck-level point;
+ * the median over ROAD_EDGE_MIN_STATIONS stations at least, else undefined for that side.
+ */
+export const DECK_EDGE_GAP_M = 1.5;
+export function deckEdgeSides(p: DeckProfile, onDeckPoly: (x: number, y: number) => boolean, reach: number): [number | undefined, number | undefined] {
+  const edges: [number[], number[]] = [[], []];
+  for (let i = 0; i < p.s.length; i++) {
+    if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+    const a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    for (const side of [0, 1] as const) {
+      const sg = side === 0 ? 1 : -1;
+      let last = -1;
+      for (let t = 0; t <= reach && t - Math.max(0, last) <= DECK_EDGE_GAP_M; t += ROAD_EDGE_STEP_M) if (onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t)) last = t;
+      if (last >= 0) edges[side].push(last + ROAD_EDGE_STEP_M / 2);
+    }
+  }
+  const med = (v: number[]) => { const q = [...v].sort((x, y) => x - y); return q[q.length >> 1]; };
+  return edges.map(v => (v.length >= ROAD_EDGE_MIN_STATIONS ? med(v) : undefined)) as [number | undefined, number | undefined];
+}
+
+/**
+ * A way deck re-centred on its outline (deckEdgeSides, or the water beside an opening): `sides` left and right of
+ * the current axis. The axis shifts by (left - right) / 2 and the half-width becomes (left + right) / 2, with no
+ * `sides`: the deck surface, its weight and the water mask read the half-width (GroundSurface.locate), so narrowing
+ * a side through `sides` alone would leave the half-width standing over the water. The bbox follows.
+ */
+export function setDeckSides(p: DeckProfile, sides: readonly [number, number]): void {
+  const shift = (sides[0] - sides[1]) / 2, half = (sides[0] + sides[1]) / 2, n = p.x.length;
+  const pts = offsetLine(Array.from({ length: n }, (_, i) => [p.x[i], p.y[i]] as Vec2), shift);
+  let bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
+  for (let i = 0; i < n; i++) {
+    p.x[i] = pts[i][0]; p.y[i] = pts[i][1]; p.halfWidth[i] = half;
+    bx0 = Math.min(bx0, p.x[i] - half); by0 = Math.min(by0, p.y[i] - half); bx1 = Math.max(bx1, p.x[i] + half); by1 = Math.max(by1, p.y[i] + half);
+  }
+  delete p.sides;
+  p.bbox = [bx0, by0, bx1, by1];
 }
