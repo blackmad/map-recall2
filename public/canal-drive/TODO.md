@@ -219,8 +219,17 @@ share programs through uniforms"): programs 36 → 20 desktop / 21–23 iPhone,
 registry follow-up (cityLook, litFacade, highlight, building-types on the
 `groundMaterial.test.ts` pattern), the ~48 short-lived program keys compiled
 when zooming out to 15.5; step 4 (1×1 white map) held for a real-phone
-measurement. **Integrator next:** merge L1's `getBounds().contains()` shim fix
-(Artis on the iPhone ride under the flag); `CanalRecallUi.stepSteer`
+measurement. Materials round 2 merged 2026-10-31 (HISTORY "The landmark highlight no
+longer rebuilds its shaders every frame"). L1 hand-back (4) merged 2026-10-31
+(HISTORY "`?engine=own` matches MapLibre's drawn camera to 2e-8 px"): camera
+parity gate (`engine-parity.spec.ts`, budget `cameraParityPx` 3.2), settle
+through the WorldView API with the `game-route.js` patch applied, bounds shim,
+Utrecht / Rotterdam / Den Haag own-map extracts published. Open from it: under
+the default engine anything placed or picked through `map.project` is off by
+up to 6 px while the rider's deck is lifted (maplibre-gl 5.24 builds that
+matrix before the lift); the iPhone engine-own ride barely moves (`moved`
+0.0017 m, needs touch input in the spec); `setActiveLandmark` runs every frame
+(L1). **Integrator next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
 px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag

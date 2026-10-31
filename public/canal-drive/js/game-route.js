@@ -1971,35 +1971,47 @@ class GameRouteRuntime {
   }
 
   /**
-   * Wait for the basemap to finish its first idle at the aimed spawn, or until
-   * maxMs — whichever comes first. Prevents racing into a still-loading tile
-   * cascade.
+   * Wait for the world view to settle at the aimed spawn, or until maxMs — whichever comes first. Prevents racing
+   * into a still-loading tile cascade. Either engine answers through the WorldView API: MapLibre's camera resolves
+   * `whenIdle` on its `idle` event (tiles may still follow, hence the short breath); the own engine's resolves only
+   * once its loaders have caught up with the view (engine/settle.ts), so it needs none. The outcome is kept on
+   * `_lastMapSettle` ({ ms, timedOut, pending }) for the perf scripts.
    */
   _waitForMapSettle(maxMs = 2500) {
+    const started = performance.now();
+    const vectorMap = this.vectorMap;
+    const own = !!vectorMap && vectorMap.engine === 'own';
+    const report = (timedOut) => {
+      this._lastMapSettle = {
+        ms: Math.round(performance.now() - started), timedOut, engine: own ? 'own' : 'maplibre',
+        pending: own && vectorMap.pendingWork ? vectorMap.pendingWork() : [],
+      };
+    };
     return new Promise((resolve) => {
-      const camera = this.vectorMap && this.vectorMap.camera;
-      if (!camera || !this.vectorMap.ready) {
-        setTimeout(resolve, Math.min(900, maxMs));
+      const camera = vectorMap && vectorMap.camera;
+      if (!camera || !vectorMap.ready) {
+        setTimeout(() => { report(true); resolve(); }, Math.min(900, maxMs));
         return;
       }
       let done = false;
-      const finish = () => {
+      const finish = (timedOut) => {
         if (done) return;
         done = true;
+        report(timedOut);
         resolve();
       };
-      const timer = setTimeout(finish, maxMs);
+      const timer = setTimeout(() => finish(true), maxMs);
       const onIdle = () => {
         clearTimeout(timer);
-        // One short breath after idle so follow-on tile requests can land.
-        setTimeout(finish, 450);
+        if (own) finish(false);
+        // MapLibre: one short breath after idle so follow-on tile requests can land.
+        else setTimeout(() => finish(false), 450);
       };
       try {
-        // The world view's camera (engine/worldViewApi.ts) answers for either engine.
         camera.whenIdle().then(onIdle, onIdle);
       } catch (_) {
         clearTimeout(timer);
-        setTimeout(finish, Math.min(900, maxMs));
+        setTimeout(() => finish(true), Math.min(900, maxMs));
       }
     });
   }
