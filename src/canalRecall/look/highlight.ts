@@ -557,8 +557,43 @@ function recordExtent(pass: any, mvp: any, renderer: any, size: any): void {
 
 /** Remove the passes `attachHighlightPasses` added under `mesh`. */
 export function detachHighlightPasses(mesh: any): void {
-  for (const pass of mesh?.userData?.[PASS_TAG] ?? []) { mesh.remove(pass); pass.material.dispose(); extentRegistry().delete(pass); }
+  for (const pass of mesh?.userData?.[PASS_TAG] ?? []) { mesh.remove(pass); releasePassMaterial(pass.material); extentRegistry().delete(pass); }
   if (mesh?.userData) delete mesh.userData[PASS_TAG];
+}
+
+/**
+ * Pass materials by kind and options, kept instead of disposed (#129 P4). Disposing a ShaderMaterial frees three's
+ * shader-stage ids, so the next identical material got a new program key and a fresh link each time a highlight
+ * moved; a released material waits here and keeps its program. A few per key: one highlight is shown at a time.
+ */
+const PASS_POOL_PER_KEY = 4;
+const passPool = new Map<string, any[]>();
+const POOL_KEY = Symbol('highlightPassPool');
+function passPoolKey(kind: PassKind, options: { merged?: boolean; accent?: string; feature?: FeatureSelector | null }): string {
+  return `${kind}|${options.merged ? 1 : 0}|${options.feature?.attribute ?? ''}|${options.accent ?? ''}`;
+}
+/** A pass material from the pool (its per-pass uniforms reset), or a new one. */
+export function acquirePassMaterial(THREE: any, kind: PassKind, options: { merged?: boolean; accent?: string; feature?: FeatureSelector | null } = {}): any {
+  const key = passPoolKey(kind, options);
+  const pooled = passPool.get(key)?.pop();
+  if (pooled) {
+    const u = pooled.uniforms;
+    u.hlCentre.value.set(0, 0, 0); u.hlHasNormal.value = 1; u.hlFeatureId.value = options.feature?.id ?? 0;
+    u.hlUp.value.set(0, 0, 1); u.hlWash.value = 0; u.hlEye.value.set(0, 0, 0); u.hlTime.value = 0;
+    u.hlWidthPx.value = OUTLINE_PX; u.hlFarScale.value = OUTLINE_FAR_PX / OUTLINE_PX;
+    return pooled;
+  }
+  const material = createHighlightPassMaterial(THREE, kind, options);
+  material.userData[POOL_KEY] = key;
+  return material;
+}
+function releasePassMaterial(material: any): void {
+  const key = material?.userData?.[POOL_KEY];
+  if (!key) { material?.dispose?.(); return; }
+  const list = passPool.get(key) ?? [];
+  passPool.set(key, list);
+  if (list.length < PASS_POOL_PER_KEY && !list.includes(material)) list.push(material);
+  else material.dispose();
 }
 
 /**
@@ -608,7 +643,7 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   const measureExtent = !options.merged && !options.feature && !mesh.isInstancedMesh;
   if (measureExtent && !geometry.boundingBox && boundsReadable(geometry)) geometry.computeBoundingBox?.();
   for (const kind of kinds) {
-    const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
+    const material = acquirePassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
     material.uniforms.hlCentre.value.set(centre[0], centre[1], centre[2]);
     material.uniforms.hlHasNormal.value = hasNormal;
     const pass = mesh.isInstancedMesh ? new THREE.InstancedMesh(geometry, material, mesh.count) : new THREE.Mesh(geometry, material);
@@ -679,6 +714,10 @@ export function highlightMaterialFor(THREE: any, material: any, state: 'plain' |
     // Recipe look: per-material tint uniform; shared textures and frame stay shared.
     out = material.clone();
     out.uniforms = { ...material.uniforms, tint: { value: desatVector(material.uniforms.tint.value.clone()) } };
+  } else if (material.isShaderMaterial && material.uniforms?.hlDimAll) {
+    // A shader that reads `hlDimAll` (building-types merged): the dim is a uniform, so the variant shares the program.
+    out = material.clone();
+    out.uniforms = { ...material.uniforms, hlDimAll: { value: 1 } };
   } else if (material.isShaderMaterial) {
     out = material.clone();
     out.uniforms = material.uniforms;

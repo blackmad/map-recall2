@@ -225,6 +225,13 @@ uniform float opacity;
 varying float vUp;
 void main() { gl_FragColor = vec4(accent, opacity * (1.0 - vUp) * (1.0 - vUp) * smoothstep(0.0, 0.04, vUp)); }`;
 
+/** A focus by value (the engine re-sends the same landmark as a new object): null for none. */
+export function focusKey(focus: HighlightFocus | null | undefined): string | null {
+  if (!focus) return null;
+  const f = focus as any;
+  return JSON.stringify([f.lngLat ?? null, f.ids ?? null, f.polygons ?? null, f.heightM ?? null, f.baseM ?? null, !!f.hull]);
+}
+
 export interface HighlightMarkerOptions {
   /** The page's one three.js frame; without one the marker is built but drawn by nobody (tests). */
   sharedFrame?: any;
@@ -253,6 +260,14 @@ export class HighlightMarker {
   lastDistanceM = NaN;
   /** Equivalent-circle radius (m) of the focus footprint (0: none known, no small-target boost). */
   private radiusM = 0;
+  /** The focus last asked for, by value (focusKey): asking for the same one again keeps what is drawn (and its footprint lookup). */
+  private askedKey: string | null = null;
+  /**
+   * The ring's, beacon's and hull's materials, kept for the marker's life (#129 P4): a disposed ShaderMaterial frees
+   * three's shader-stage ids, so an identical new one got a new program key and a fresh link (~60 links in 10 s while
+   * the game re-set the same landmark during a zoom-out).
+   */
+  private materials: { ring?: any; beacon?: any; hull?: any } = {};
   /** Last frame's small-target boost (footprint share of the frame, weight, shortfall). */
   lastBoost = { share: 0, weight: 0, shortfall: 0 };
   /** Small-target latch (smallTargetBoostLatched) and the two shares last measured (footprint, model extent). */
@@ -277,10 +292,16 @@ export class HighlightMarker {
   }
 
   /** Show the ring (and beacon) at a footprint, or hide with null. */
-  set(focus: HighlightFocus | null | undefined): void {
+  set(focus: HighlightFocus | null | undefined, resolved = false): void {
     const THREE = this.THREE;
+    // `resolved`: the footprint lookup below re-entering with what it found (the caller's focus is unchanged).
+    if (!resolved) {
+      const key = focusKey(focus);
+      if (key === this.askedKey) return;
+      this.askedKey = key;
+    }
     if (this.hull) detachHighlightPasses(this.hull);
-    for (const child of [...this.root.children]) { this.root.remove(child); child.geometry?.dispose(); child.material?.dispose(); }
+    for (const child of [...this.root.children]) { this.root.remove(child); child.geometry?.dispose(); }
     this.ring = this.beacon = this.hull = null;
     this.anchor = null;
     this.radiusM = 0;
@@ -299,7 +320,7 @@ export class HighlightMarker {
       const data: Promise<any> | undefined = local ? Promise.resolve({ features: local }) : this.map.getSource?.(HULL_SOURCE)?.getData?.();
       data?.then((data: any) => {
         const found = this.focus === asked ? footprintFromFeatures(data?.features ?? [], asked.ids ?? []) : null;
-        if (found) this.set({ ...asked, polygons: found.polygons, heightM: asked.heightM ?? found.heightM, baseM: found.baseM });
+        if (found) this.set({ ...asked, polygons: found.polygons, heightM: asked.heightM ?? found.heightM, baseM: found.baseM }, true);
       }, () => { /* no source */ });
     }
     const baseM = focus.baseM ?? 0;
@@ -321,7 +342,7 @@ export class HighlightMarker {
       g.setAttribute('aAlpha', new THREE.Float32BufferAttribute(alphas, 1));
       g.setIndex(index);
       g.computeBoundingSphere();
-      const m = new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 } }, vertexShader: RING_VERTEX, fragmentShader: RING_FRAGMENT,
+      const m = this.materials.ring ??= new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 } }, vertexShader: RING_VERTEX, fragmentShader: RING_FRAGMENT,
         transparent: true, depthWrite: false, side: THREE.DoubleSide });
       this.ring = new THREE.Mesh(g, m);
       this.ring.name = 'highlight-marker/ring';
@@ -337,7 +358,7 @@ export class HighlightMarker {
         g.computeVertexNormals();
         g.computeBoundingBox();
         // The prism itself is never drawn (MapLibre draws the building); only its outline pass, a child of it.
-        const m = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false });
+        const m = this.materials.hull ??= new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false });
         m.visible = false;
         this.hull = new THREE.Mesh(g, m);
         this.hull.name = 'highlight-marker/hull';
@@ -354,9 +375,10 @@ export class HighlightMarker {
       g.setAttribute('aSide', new THREE.Float32BufferAttribute([-1, 1, -1, 1], 1));
       g.setIndex([0, 1, 2, 2, 1, 3]);
       g.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, (base + top) / 2), BEACON_HEIGHT_M);
-      const m = new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 }, viewport: { value: new THREE.Vector2(1, 1) }, widthPx: { value: BEACON_PX },
+      const m = this.materials.beacon ??= new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 }, viewport: { value: new THREE.Vector2(1, 1) }, widthPx: { value: BEACON_PX },
         baseM: { value: base }, raise: { value: 1 } },
         vertexShader: BEACON_VERTEX, fragmentShader: BEACON_FRAGMENT, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+      Object.assign(m.uniforms.opacity, { value: 1 }); m.uniforms.widthPx.value = BEACON_PX; m.uniforms.baseM.value = base; m.uniforms.raise.value = 1;
       const mesh = new THREE.Mesh(g, m), inv = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2();
       const roofM = focus.heightM ?? 20;
       mesh.name = 'highlight-marker/beacon';
@@ -422,6 +444,8 @@ export class HighlightMarker {
 
   dispose(): void {
     this.set(null);
+    for (const m of Object.values(this.materials)) m?.dispose();
+    this.materials = {};
     this.unregister?.();
   }
 }
