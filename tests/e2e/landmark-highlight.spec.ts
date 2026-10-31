@@ -139,6 +139,13 @@ test('a clicked ordinary building tells its year instead of "no details"', async
   test.setTimeout(200000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCityHasBuildings), { timeout: 60000 }).toBe(true);
+  // The fact tiles load from the first card need on (per-ride bytes gate,
+  // 2026-10-31): stand in for that first click at the rider's position.
+  await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const [lat, lng] = game._toLatLon(game.player.x, game.player.y);
+    return game._buildingFacts.ensureAt(lng, lat);
+  });
   await expect.poll(() => page.evaluate(() => {
     const game = (window as any).canalRecallGame;
     const features = game.vectorMap._completeCity.cache.collection().features;
