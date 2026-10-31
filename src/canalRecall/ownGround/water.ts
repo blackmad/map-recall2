@@ -293,7 +293,22 @@ export function clipRing(ring: readonly Vec2[], rect: readonly [number, number, 
  */
 export function openUnderFootbridges(geo: WaterGeometry, decks: readonly OpeningDeck[], rect: readonly [number, number, number, number], fallbackZ: number, opts: OpeningOptions = {}): { geo: WaterGeometry; opened: string[]; sides: Map<string, [number, number]> } {
   const maxWidth = opts.maxWidth ?? OPENING_MAX_WIDTH_M, reach = opts.reach ?? OPENING_REACH_M, under = opts.under;
-  const inWater = (x: number, y: number) => geo.polygons.findIndex(p => inPolygon(p, x, y));
+  // Each polygon's box first (a point outside it has an even crossing count on every ring): the probes below walk
+  // 0.25 m steps beside every station, and testing every polygon of the cell at each step ran 350-580 ms tasks on
+  // the main thread while riding (#129). Same answer: the first polygon holding the point.
+  const boxes = geo.polygons.map(p => {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const ring of p) for (const [x, y] of ring) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    return [x0, y0, x1, y1] as const;
+  });
+  const inWater = (x: number, y: number) => {
+    for (let k = 0; k < geo.polygons.length; k++) {
+      const b = boxes[k];
+      if (x < b[0] || x > b[2] || y < b[1] || y > b[3]) continue;
+      if (inPolygon(geo.polygons[k], x, y)) return k;
+    }
+    return -1;
+  };
   const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [], sides = new Map<string, [number, number]>();
   const median = (v: number[]) => { const q = [...v].sort((a, b) => a - b); return q[q.length >> 1]; };
   for (const d of decks) {
