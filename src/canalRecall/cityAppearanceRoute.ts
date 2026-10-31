@@ -1,4 +1,4 @@
-import { buildRoadGraph, findRoadRoute, nearestRoadGraphNode, type RoadGraphPoint } from './routing/roadGraph.js';
+import { buildRoadGraph, findRoadRoute, nearestRoadGraphNode, roadGraphEdgeBetween, type RoadGraphPoint } from './routing/roadGraph.js';
 import { lngLatToRd } from './facade/rdNew.js';
 export type AreaRoute={version:1;points:[number,number][];distanceM:number;streetNames:string[];legs:{fromM:number;toM:number;streetName:string|null}[];sourceSegments:number};
 type Street={name?:string;highway?:string;path?:[number,number][];paths?:[number,number][][]};
@@ -16,6 +16,6 @@ export function compileAreaRoute(streets:Street[],bbox:[number,number,number,num
     for(let i=1;i<nodes.length;i++){const a=nodes[i-1],b=nodes[i];if(!a||!b)throw Error('Route waypoint has no graph node');const leg=findRoadRoute(graph,a,b);if(leg.length<2)throw Error('Disconnected route waypoints');best.push(...(best.length?leg.slice(1):leg));}
   }
   if(best.length<2)throw Error('Area road graph has no cross-area route');const names=new Set<string>(),legs:AreaRoute['legs']=[];let travelled=0;
-  for(let i=1;i<best.length;i++){const a=nearestRoadGraphNode(graph,best[i-1]),b=nearestRoadGraphNode(graph,best[i]),edge=a?.edges.find(item=>item.node===b),length=distance(best[i-1],best[i]);const candidates=[...new Set((edge?.segmentMetadata??[]).map(metadata=>metadata?.name).filter(Boolean))].sort() as string[],streetName=candidates[0]??null;for(const name of candidates)names.add(name);const fromM=travelled;travelled+=length;const prior=legs.at(-1);if(prior?.streetName===streetName)prior.toM=Number(travelled.toFixed(2));else legs.push({fromM:Number(fromM.toFixed(2)),toM:Number(travelled.toFixed(2)),streetName});}
+  for(let i=1;i<best.length;i++){const a=nearestRoadGraphNode(graph,best[i-1]),b=nearestRoadGraphNode(graph,best[i]),edge=a&&b?roadGraphEdgeBetween(graph,a,b):undefined,length=distance(best[i-1],best[i]);const candidates=[...new Set((edge?.segmentMetadata??[]).map(metadata=>metadata?.name).filter(Boolean))].sort() as string[],streetName=candidates[0]??null;for(const name of candidates)names.add(name);const fromM=travelled;travelled+=length;const prior=legs.at(-1);if(prior?.streetName===streetName)prior.toM=Number(travelled.toFixed(2));else legs.push({fromM:Number(fromM.toFixed(2)),toM:Number(travelled.toFixed(2)),streetName});}
   return{version:1,points:best.map(point=>[Number((point.x-origin.x).toFixed(3)),Number((origin.y-point.y).toFixed(3))]),distanceM:Number(travelled.toFixed(2)),streetNames:[...names].sort(),legs,sourceSegments:segments.length};
 }

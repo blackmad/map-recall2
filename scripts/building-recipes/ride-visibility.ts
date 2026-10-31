@@ -127,7 +127,7 @@ export function sampleRoutes(nRoutes: number, seed: number) {
       const b = dests[Math.floor(rand() * dests.length)], d = Math.hypot(a.p.x - b.p.x, a.p.y - b.p.y);
       if (d < 1000 || d > 6000) continue;
       const end = nearestRoadGraphNode(graph, b.p);
-      if (!end || !tree.distances.has(end.key)) continue;
+      if (!end || tree.dist[end.index] === Infinity) continue;
       const route = reconstructRoadPath(tree.previous, end), id = made++;
       for (let i = 1; i < route.length; i++) {
         const p = route[i - 1], q = route[i], len = Math.hypot(q.x - p.x, q.y - p.y);

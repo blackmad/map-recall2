@@ -1,5 +1,5 @@
 import type { TransitNetwork } from '../transit/network';
-import type { RoadGraph, RoadGraphNode } from '../routing/roadGraph';
+import { appendRoadGraph, type RoadGraph } from '../routing/roadGraph';
 
 export type Point = { x: number; y: number };
 export type Terminal = Point & { id: string; name: string; land: Point };
@@ -87,23 +87,36 @@ export function ferrySegments(network: TransitNetwork, land: readonly Segment[],
 }
 
 /** Add sea links after street junction construction. Crossing ferry shapes
- * are never stitched to one another or to a shoreline midway through a trip. */
+ * are never stitched to one another or to a shoreline midway through a trip.
+ * The links go into a copy of the graph's flat storage (`appendRoadGraph`). */
 export function connectFerryGraph<T>(graph: RoadGraph<T>, segments: readonly Segment[]): RoadGraph<T> {
-  const nodes = new Map(graph.nodes), allNodes = [...graph.allNodes];
+  const { x, y, nodeCount } = graph.storage;
+  const nodes: { x: number; y: number; key: string }[] = [];
+  const links: { a: number; b: number; segmentIndex: number; metadata: T }[] = [];
+  const at = (index: number): Point => (index < nodeCount ? { x: x[index], y: y[index] } : nodes[index - nodeCount]);
+  // The street node nearest a ferry end (first of equals), among the street graph's own nodes only.
+  const nearestStreetNode = (point: Point): number => {
+    let best = -1, bestDistance = Infinity;
+    for (let i = 0; i < nodeCount; i++) {
+      const d = Math.hypot(point.x - x[i], point.y - y[i]);
+      if (best < 0 || d < bestDistance) { best = i; bestDistance = d; }
+    }
+    return best;
+  };
   segments.forEach((segment, segmentIndex) => {
     if (!segment.ferryLink) return;
     const endpoints = [segment.points[0], segment.points[segment.points.length - 1]];
-    const ends = endpoints.map(point => graph.allNodes.reduce<RoadGraphNode<T> | undefined>((best, n) => !best || distance(point, n) < distance(point, best) ? n : best, undefined));
-    if (!ends[0] || !ends[1] || ends.some((n, i) => distance(n!, endpoints[i]) > 24)) return;
-    const add = (p: Point, key: string): RoadGraphNode<T> => {
-      const node: RoadGraphNode<T> = { x: p.x, y: p.y, key: `ferry:${segmentIndex}:${key}`, edges: [] };
-      nodes.set(node.key, node); allNodes.push(node); return node;
+    const ends = endpoints.map(nearestStreetNode);
+    if (ends[0] < 0 || ends[1] < 0 || ends.some((n, i) => distance(at(n), endpoints[i]) > 24)) return;
+    const add = (p: Point, key: string): number => {
+      nodes.push({ x: p.x, y: p.y, key: `ferry:${segmentIndex}:${key}` });
+      return nodeCount + nodes.length - 1;
     };
     // The junction grid (mergeSize 18) can fold a short terminal access into
     // its land node; Centraal F3's 3 m access did, so the planned line left
     // from the quay and passed 3.1 m from the stop, outside boarding reach.
     // Route through the stop itself, where boarding happens.
-    const stop = (end: RoadGraphNode<T>, point: Point, key: string) => (distance(end, point) > 0.5 ? [add(point, key)] : []);
+    const stop = (end: number, point: Point, key: string) => (distance(at(end), point) > 0.5 ? [add(point, key)] : []);
     const chain = [
       ends[0], ...stop(ends[0], endpoints[0], 'from'),
       ...segment.points.slice(1, -1).map((p, i) => add(p, String(i))),
@@ -111,13 +124,11 @@ export function connectFerryGraph<T>(graph: RoadGraph<T>, segments: readonly Seg
     ];
     const metadata = { segmentIndex, name: '', ferryId: segment.ferryLink.id } as T;
     for (let i = 1; i < chain.length; i++) {
-      const a = chain[i - 1]!, b = chain[i]!;
-      if (a === b) continue;
-      const edge = { distance: distance(a, b), kind: 'centreline' as const, segmentIndexes: [segmentIndex], segmentMetadata: [metadata] };
-      a.edges.push({ ...edge, node: b }); b.edges.push({ ...edge, node: a });
+      if (chain[i - 1] === chain[i]) continue;
+      links.push({ a: chain[i - 1], b: chain[i], segmentIndex, metadata });
     }
   });
-  return { ...graph, nodes, allNodes };
+  return appendRoadGraph(graph, { nodes, links });
 }
 
 export function connectedTerminals(origin: string, links: readonly FerryLink[]): Terminal[] {
