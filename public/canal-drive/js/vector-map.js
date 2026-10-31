@@ -131,7 +131,11 @@ function canalRecallBuildings3dLook() {
   return null;
 }
 
-/** @implements {import("../../../src/canalRecall/engine/worldViewApi").WorldView} */
+// Implements the WorldView interface (src/canalRecall/engine/worldViewApi.ts):
+// the same surface as engine/ownWorldView.ts behind `?engine=own`. Written as a
+// plain comment because the Sentry source-map collector follows every
+// `import("...")` in the site and refuses paths outside it (deploy failures
+// 2026-10-30/31).
 class VectorBasemap {
   constructor(container) {
     this.container = container;
