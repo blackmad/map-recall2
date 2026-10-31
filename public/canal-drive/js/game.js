@@ -101,7 +101,6 @@ class Game {
 
     // OSM components
     this.osmLoader = new OSMLoader();
-    this.mapPicker = new MapPicker();
     this.loadingScreen = new LoadingScreen();
     // Engine programme (2026-10-30): `?engine=own` picks the three.js-owned
     // world view (src/canalRecall/engine/ownWorldView.ts); default stays MapLibre.
@@ -435,14 +434,6 @@ class Game {
     switch (this.state) {
       case GameState.MENU:
         // Route setup is a DOM form layered above the canvas.
-        break;
-
-      case GameState.MAP_SELECT:
-        // Map picker handles its own UI via DOM
-        if (this.input.wasPressed('Escape')) {
-          this.mapPicker.hide();
-          this.state = GameState.MENU;
-        }
         break;
 
       case GameState.LOADING:
