@@ -57,6 +57,7 @@ import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { cutClone, fadeClone, groundProgram } from './groundMaterial.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
 
@@ -399,7 +400,7 @@ export class OwnGround {
     this.relief = null;
     this.workerReady = false;
     this.gen++;
-    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; this.precompileQueue = null; }
+    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); this.precompiled = false; this.precompileQueue = null; }
   }
 
   /**
@@ -827,15 +828,14 @@ export class OwnGround {
   }
 
   /**
-   * Every ground program a cell can use (each layer's base, its water cut, and the dissolve of either),
-   * compiled once when the frame first draws, and held by keeper materials for the session. Before this,
+   * Every ground program a cell can use (each layer's base; a cut or dissolving clone shares its program),
+   * compiled once when the frame first draws (the base materials hold them for the session). Before this,
    * each arriving cell compiled its dissolve programs in the frame it first drew, and released them when
    * its dissolve ended, so the next cell compiled them again: ~90 program links in the first seconds of a
    * ride and three's first-use link waits inside MapLibre's frame (docs/perf-motion-stutter-20261016.md).
    * Same materials and cache keys as the cells', so the cells reuse these programs.
    */
   private precompiled = false;
-  private readonly keepers: any[] = [];
   /** A touch device's warm-up still to compile (one mesh per material variant), and where it resumes. */
   private precompileQueue: { meshes: any[]; next: number; lastStep: number | null } | null = null;
   private precompile(): void {
@@ -843,7 +843,6 @@ export class OwnGround {
     if (!renderer || typeof this.frame.compile !== 'function') return;
     this.precompiled = true;
     const THREE = this.THREE;
-    const uniforms = { waterMask: { value: null }, maskOrigin: { value: new THREE.Vector2(0, 0) }, maskSize: { value: new THREE.Vector2(1, 1) } };
     // The cells' attribute set (geometry()): normals and uvs are part of a program's key, colours where a layer uses them.
     const plain = new THREE.BufferGeometry();
     plain.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3));
@@ -855,16 +854,11 @@ export class OwnGround {
     for (const layer of GROUND_LAYERS) {
       const base = this.base[layer];
       if (!base) continue;
-      const variants = [base];
-      if (CUT[layer]) variants.push(this.cutMaterial(layer, uniforms));
-      for (const v of [...variants]) variants.push(this.fadeMaterial(v, { value: 1 }));
-      for (const m of variants) {
-        const mesh = new THREE.Mesh(m.vertexColors ? coloured : plain, m);
-        mesh.receiveShadow = true;
-        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
-        group.add(mesh);
-        if (m !== base) this.keepers.push(m);
-      }
+      // One per layer: a cut or dissolving clone shares its base's program (groundMaterial.ts).
+      const mesh = new THREE.Mesh(base.vertexColors ? coloured : plain, base);
+      mesh.receiveShadow = true;
+      mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+      group.add(mesh);
     }
     group.updateMatrixWorld(true);
     const budget = this.opts.precompilePerFrame ?? Infinity;
@@ -886,29 +880,9 @@ export class OwnGround {
     else this.host.repaint();
   }
 
-  /** A clone of a base material that discards fragments over water by this cell's mask. */
+  /** A clone of a base material that discards fragments over water by this cell's mask (same program as the base). */
   private cutMaterial(layer: GroundLayer, uniforms: Record<string, { value: unknown }>): any {
-    const channel = CUT[layer]!;
-    const m = this.base[layer].clone();
-    const base = this.base[layer];
-    m.onBeforeCompile = (shader: any, renderer: any) => {
-      base.onBeforeCompile?.(shader, renderer);
-      Object.assign(shader.uniforms, uniforms);
-      // The mask UV is formed per vertex (0..1, highp): scene metres reach ±15 km
-      // city-wide, too coarse for a mediump varying on a phone GPU.
-      shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform vec2 maskOrigin;\nuniform vec2 maskSize;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMaskUV = (transformed.xy - maskOrigin) / maskSize;');
-      // Outside the mask's extent the ground is land (no cut). The discard
-      // edge is per pixel (MSAA does not smooth it); at quays it is covered by
-      // the walls' coping cap (water.ts quayWallMesh, QUAY_CAP_M), which is
-      // what fixed the stair-stepped, see-through seam on phones (DPR 1.5).
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;')
-        .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0 && texture2D(waterMask, vMaskUV).${channel} < 0.5) discard;`);
-    };
-    // The cut's code depends on the channel and the base's own edits (the blend), not on the layer: keying by layer
-    // compiled one copy of the same program per ground surface (68 programs on a phone ride, 2026-10-26).
-    m.customProgramCacheKey = () => `ownGround-cut3-${channel}-${base.customProgramCacheKey()}`;
-    return m;
+    return cutClone(this.base[layer], uniforms as any, CUT[layer]!);
   }
 
   /**
@@ -930,42 +904,24 @@ export class OwnGround {
   }
 
   /**
-   * Patch a base ground material for the overview blend (transition on; no-op otherwise): its alpha is the presence
+   * Patch a base ground material with the ground's shader edits (groundMaterial.ts): the dissolve always, and for the
+   * overview blend (transition on) its alpha is the presence
    * (`presenceOf(b)`, blended only while `setGroundTransparent`), and its output colour mixes from `flat` (the palette tone the basemap draws, sRGB; 'vertex' =
    * its own vertex colour) to the lit, textured ground by `b`.
    */
   private blendMaterial(m: any, flat: readonly number[] | string | 'vertex'): void {
-    if (!this.opts.transition) return;
-    const { blendUniform: blend, presenceUniform: presence } = this;
-    const vertex = flat === 'vertex';
-    const rgb = vertex ? [0, 0, 0] : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
-    const tone = { value: rgb };
-    m.onBeforeCompile = (shader: any) => {
-      shader.uniforms.ownBlend = blend;
-      shader.uniforms.ownPresence = presence;
-      shader.uniforms.ownFlat = tone;
-      const flatExpr = vertex ? 'pow(max(vColor.rgb, vec3(0.0)), vec3(1.0 / 2.2))' : 'ownFlat';
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;')
-        .replace('#include <dithering_fragment>', `#include <dithering_fragment>\nif (ownBlend < 1.0) gl_FragColor.rgb = mix(${flatExpr}, gl_FragColor.rgb, ownBlend);\ngl_FragColor.a = ownPresence;`);
-    };
-    m.customProgramCacheKey = () => `ownGround-blend3-${m.type}-${vertex ? 'vc' : 'flat'}`;
+    if (!this.opts.transition) { groundProgram(m, null); return; }
+    const rgb = flat === 'vertex' ? 'vertex' : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
+    groundProgram(m, { blend: this.blendUniform, presence: this.presenceUniform, flat: rgb });
   }
 
   /**
    * A per-cell clone of `source` that dissolves by `fade.value` (0 → 1): a screen-door dither discard, so no blending
-   * (no sorting against the map's own layers) and no change to the depth buffer. Chains the source's own shader edits.
+   * (no sorting against the map's own layers) and no change to the depth buffer. The dissolve is compiled into every
+   * ground program (groundMaterial.ts), so the clone shares the source's program and only swaps the uniform.
    */
   private fadeMaterial(source: any, fade: { value: number }): any {
-    const m = source.clone();
-    m.onBeforeCompile = (shader: any, renderer: any) => {
-      source.onBeforeCompile?.(shader, renderer);
-      shader.uniforms.ownFade = fade;
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownFade;')
-        .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (ownFade < 1.0 && fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) > ownFade) discard;');
-    };
-    const key = source.customProgramCacheKey ? source.customProgramCacheKey() : `base-${source.type}`;
-    m.customProgramCacheKey = () => `${key}-ownFade`;
-    return m;
+    return fadeClone(source, fade);
   }
 
   /** Advance the dissolve of arriving cells; nothing runs (and nothing repaints) when no cell is fading. */
