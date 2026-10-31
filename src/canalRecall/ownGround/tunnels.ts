@@ -44,6 +44,15 @@ export const MIN_RUN_DEPTH_M = 1.2;
 export const MIN_RUN_M = 10;
 /** The rise must begin within this distance of the road's edge (metres): a dike or a mound farther off is no wall. */
 export const WALL_REACH_M = 6;
+/**
+ * …and for a motor road, within this (metres): motorway and trunk cuts carry shoulders and verges inside the walls
+ * (Piet Hein east, the A10 at Watergraafsmeer: the wall foot 12-15 m from the carriageway's centreline).
+ */
+export const WALL_REACH_MOTOR_M = 10;
+/** A rise lower than this (metres) that the relief falls back from is a kerb island or barrier, not a wall. */
+export const BUMP_MAX_M = 1;
+/** A covered span: a motor ramp ending where the relief steps up at least the portal height, a motor tunnel's portal this far beyond it at most (metres; the IJsei bus station over the Michiel de Ruijtertunnel). */
+export const COVER_REACH_M = 40;
 /** A wall's DTM rise (foot to top) spans at most this plus `WALL_SPAN_PER_M` per metre of height; wider is a sloped bank (talud). */
 export const WALL_SPAN_M = 4;
 export const WALL_SPAN_PER_M = 1.5;
@@ -51,7 +60,22 @@ export const WALL_SPAN_PER_M = 1.5;
 export const DIP_M = 4;
 /** Past a portal the relief over the tunnel is lifted to the headwall's top over this length, metres. */
 export const LID_M = 6;
-/** A rideable tunnel run this long at most may be opened as a slot, metres. */
+/** Ramps are scanned this far from their portal at most, metres (the IJ-tunnel's south ramp: ~330 m). */
+export const RAMP_REACH_M = 500;
+/** A road open to the rider is scanned this far from a portal at most, metres. */
+export const RIDE_RAMP_REACH_M = 120;
+/** …and only where bounded on both sides for at least this share of the run. */
+export const BOTH_SIDES_MIN = 0.5;
+/**
+ * The wall line is smoothed by a running median over REACH_MEDIAN_R stations either side and a mean over
+ * REACH_MEAN_R (~30 m in all): a retaining wall is straight or gently curved, while the DTM's half-height line
+ * wanders with steps, stairs and planters beside it (the IJ ramp's east wall drew a sinuous coping line).
+ */
+export const REACH_MEDIAN_R = 8;
+export const REACH_MEAN_R = 6;
+/** A tunnel way is scanned this far from its own portals at most (its DTM-open, louvred stretch), metres. */
+export const TUNNEL_SCAN_M = 200;
+/** A rideable tunnel run this long at most may be opened as a slot, metres (probe-slot-lengths.ts: no rideable run over it climbs). */
 export const SLOT_MAX_M = 150;
 /** A slot opens where the relief over the run rises at least this far above the line between its portal levels, metres. */
 export const SLOT_MIN_EXCESS_M = 1;
@@ -64,14 +88,43 @@ export const SLOT_MIN_HALF_M = 1.6;
 export const TUNNEL_FLOOR_TOL_M = 1;
 /** Parapet on the wall top, metres high and thick. */
 export const PARAPET_M = 1.0;
-export const PARAPET_T = 0.3;
+export const PARAPET_T = 0.45;
+/** The gutter along a wall's foot, metres wide: a dark line that draws the wall's base on the phone frame. */
+export const GUTTER_M = 0.4;
 /** Clear height of a portal's mouth (motor tunnel), metres. */
 export const PORTAL_CLEAR_M = 4.6;
+/** A slot's portal lintel: the embankment must stand this far over the floor at the tunnel's end, metres; its clear height. */
+export const SLOT_PORTAL_MIN_M = 3;
+export const SLOT_CLEAR_M = 2.8;
 /** Floor under the bands: lift over the floor (the carriageway's 0.03 stays on top). */
 export const FLOOR_LIFT_M = 0.012;
 
-/** Colours (sRGB): in-situ concrete for walls and headwall, a lighter coping, the mouth's dark interior. */
-export const TUNNEL_COLOURS = { wall: [0.46, 0.45, 0.43] as RGB, coping: [0.84, 0.83, 0.8] as RGB, parapet: [0.6, 0.59, 0.56] as RGB, mouth: [0.05, 0.055, 0.06] as RGB, headwall: [0.56, 0.56, 0.54] as RGB };
+/** A run is carried on past its ends while a side still shows a rise of at least this (metres): the ramp's shallow taper. */
+export const TAPER_RISE_M = 0.15;
+/** …for this far at most, metres: the last 0.45 m of a ramp at 2-4 % is 11-23 m; farther, a 0.15 m rise is a kerb. */
+export const TAPER_MAX_M = 30;
+/** Two cuts side by side (the carriageways of one ramp) merge across a gap this wide at most (metres)… */
+export const MERGE_GAP_M = 12;
+/** …when their floors agree within this (metres)… */
+export const MERGE_FLOOR_M = 1.2;
+/** …and the relief between them stands at most this over the higher floor (a median island or barrier, not a berm). */
+export const MERGE_BERM_M = 1.6;
+/** Coping lip on the trench face, metres, and its overhang. */
+export const COPING_LIP_M = 0.18;
+export const COPING_OVER_M = 0.08;
+
+/**
+ * Colours (sRGB), after the aimed panoramas (data.amsterdam.nl, IJ-tunnel south ramp): weathered in-situ concrete,
+ * stained dark at the foot (run-off, tyre spray) and paler toward the top, under a pale precast coping that draws the
+ * cut's edge as a line at chase distance; the land-side face of the parapet is the paler concrete; the mouth is dark.
+ */
+export const TUNNEL_COLOURS = {
+  wallFoot: [0.22, 0.215, 0.205] as RGB, wallTop: [0.46, 0.455, 0.44] as RGB, coping: [0.9, 0.895, 0.87] as RGB, parapet: [0.64, 0.63, 0.6] as RGB,
+  /** The parapet's top: weathered mid-grey, so the pale lip and the pale pavement behind it frame a dark line from above. */
+  cap: [0.5, 0.495, 0.48] as RGB,
+  gutter: [0.12, 0.12, 0.125] as RGB,
+  mouth: [0.04, 0.045, 0.05] as RGB, headwall: [0.52, 0.515, 0.495] as RGB,
+};
 
 /** Highways that are no way through a tunnel's portal for this purpose (indoor, vertical, or not built). */
 const NOT_A_ROAD = new Set(['steps', 'corridor', 'elevator', 'platform', 'proposed', 'construction', 'bus_stop', 'raceway', 'abandoned', 'disused', 'razed']);
@@ -103,6 +156,8 @@ export interface CutPortal {
   dir: Vec2;
   /** Ground level over the tunnel just past the portal (the headwall's top), scene z. */
   top: number;
+  /** A slot's portal: the passage runs on open-topped through the embankment, so a headwall spans it with no dark mouth. */
+  open?: boolean;
 }
 
 /** One cut: a polyline with per-station floor, reach and walls either side (left = counter-clockwise of the direction). */
@@ -122,6 +177,11 @@ export interface Cut {
   wallL: number[]; wallR: number[];
   /** Wall tops (the land level beside the cut), scene z. */
   rimL: number[]; rimR: number[];
+  /**
+   * Merged with a neighbouring cut across that side (mergeNeighbours): the gap to the neighbour's strip, metres (0: not
+   * merged), and the neighbour's floor there. The gap (a median between carriageways) lies on the floors.
+   */
+  gapL?: number[]; gapR?: number[]; nfL?: number[]; nfR?: number[];
   portals: CutPortal[];
   bbox: [number, number, number, number];
 }
@@ -132,6 +192,16 @@ const median = (v: number[]): number => { const s = v.filter(x => x === x).sort(
 export function smoothRun(v: readonly number[], r = 2): number[] {
   const m = v.map((_, i) => median(v.slice(Math.max(0, i - r), i + r + 1) as number[]));
   return m.map((x, i) => (x === x ? ((m[i - 1] ?? x) === (m[i - 1] ?? x) ? (m[i - 1] ?? x) : x) + x + ((m[i + 1] ?? x) === (m[i + 1] ?? x) ? (m[i + 1] ?? x) : x) : NaN) / 3);
+}
+
+/** Mean over `r` stations either side (NaN entries ignored; the window shrinks at the ends so they stay put). */
+export function boxMean(v: readonly number[], r: number): number[] {
+  return v.map((x, i) => {
+    const w = Math.min(r, i, v.length - 1 - i);
+    let s = 0, c = 0;
+    for (let k = i - w; k <= i + w; k++) if (v[k] === v[k]) { s += v[k]; c++; }
+    return c ? s / c : x;
+  });
 }
 
 /** Points every `step` along a polyline with their stations and unit tangents. */
@@ -171,19 +241,33 @@ export interface SideScan { reach: number; wall: boolean; rim: number; depth: nu
  * Before any rise, a neighbouring road `shared(t)` on the floor (within 0.5 m) ends the side without a wall: the strip
  * runs on into that road's own cut. Null: neither (the side is not a cut).
  */
-export function scanSide(g: (t: number) => number, floor: number, half: number, shared: (t: number) => boolean): SideScan | null {
-  let foot = 0;
+export function scanSide(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise = MIN_RISE_M, wallReach = WALL_REACH_M, skipBumps = true): SideScan | null {
+  let foot = 0, skipped = false;
+  const none = () => (skipped ? scanSide(g, floor, half, shared, minRise, wallReach, false) : null);
   for (let t = SCAN_STEP_M; t <= SCAN_M; t += SCAN_STEP_M) {
     const z = g(t);
-    if (z === z && z - floor <= 0.25) foot = t;
-    if (t > 1 && shared(t) && Math.abs(z - floor) < 0.5) return { reach: t, wall: false, rim: z, depth: 0 };
-    if (!(z - floor >= MIN_RISE_M)) continue;
-    if (foot > half + WALL_REACH_M) return null;
+    if (z === z && z - floor <= (minRise >= MIN_RISE_M ? 0.25 : minRise * 0.5)) {
+      foot = t;
+      // Past the reach with no neighbouring road to meet: any rise from here has its foot too far off (exact exit).
+      if (!shared && foot > half + wallReach) return none();
+    }
+    if (t > 1 && shared && shared(t) && Math.abs(z - floor) < 0.5) return skipped ? none() : { reach: t, wall: false, rim: z, depth: 0 };
+    if (!(z - floor >= minRise)) continue;
+    if (foot > half + wallReach) return none();
     // The plateau: keep climbing while the relief still rises.
     let top = t, zt = z;
     for (let u = t + SCAN_STEP_M; u <= Math.min(SCAN_M + 6, t + 8); u += SCAN_STEP_M) { const zu = g(u); if (!(zu > zt + 0.04)) break; top = u; zt = zu; }
     const depth = zt - floor;
-    if (top - foot > WALL_SPAN_M + WALL_SPAN_PER_M * depth) return null;
+    // A low rise the relief falls back from within a few metres (a kerb island, a barrier, a planter between the
+    // carriageway and the wall) is no wall: the scan carries on past it (Piet Hein east: a 0.5 m island 4-8 m out hid
+    // the 8 m wall at 14-18 m). With no wall behind it after all (a taper's end), or the neighbouring carriageway behind it
+    // (a median kerb: the strips merge over it), the low rise is the side's wall.
+    if (skipBumps && depth < BUMP_MAX_M && Math.min(...[2, 3, 4, 5, 6].map(m => g(top + m))) - floor < depth * 0.8) {
+      let back = top + 2;
+      while (back < top + 6 && g(back) - floor >= depth * 0.8) back += SCAN_STEP_M;
+      foot = back; t = foot - SCAN_STEP_M; skipped = true; continue;
+    }
+    if (top - foot > WALL_SPAN_M + WALL_SPAN_PER_M * depth) return none();
     // Half-height crossing between the foot and the plateau.
     const mid = floor + depth / 2;
     let at = foot;
@@ -192,7 +276,7 @@ export function scanSide(g: (t: number) => number, floor: number, half: number, 
     const rim = median([0, 1, 2, 3].map(k => g(top + k * SCAN_STEP_M)));
     return { reach: Math.max(Math.min(half, 1), at), wall: true, rim: Math.max(rim, mid), depth: Math.max(rim, mid) - floor };
   }
-  return null;
+  return none();
 }
 
 export interface CutWay { id: number; tags: Record<string, string>; points: Vec2[]; half: number; tunnel: boolean }
@@ -202,8 +286,8 @@ export interface CutWay { id: number; tags: Record<string, string>; points: Vec2
  * either side kept when at least MIN_RUN_M long and MIN_RUN_DEPTH_M deep somewhere. `others` are the candidate roads
  * around (their centrelines end a side as shared), `ground` the raw relief.
  */
-export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[], motor: boolean, box?: readonly [number, number, number, number]): Cut[] {
-  const inBox = (p: Vec2) => !box || (p[0] >= box[0] && p[0] <= box[2] && p[1] >= box[1] && p[1] <= box[3]);
+export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[], motor: boolean, box?: readonly [number, number, number, number], reach?: (p: Vec2) => boolean): Cut[] {
+  const inBox = (p: Vec2) => (!box || (p[0] >= box[0] && p[0] <= box[2] && p[1] >= box[1] && p[1] <= box[3])) && (!reach || reach(p));
   const st = stationsAlong(way.points, STATION_M), n = st.p.length;
   const near = others.filter(o => o.id !== way.id);
   const bb = way.points.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity]);
@@ -214,34 +298,57 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
   for (const o of close) for (let k = 0; k + 1 < o.points.length; k++) segs.push([o.points[k][0], o.points[k][1], o.points[k + 1][0], o.points[k + 1][1]]);
   const R = SCAN_M + 1;
   const floor: number[] = [], sides: [SideScan | null, SideScan | null][] = [];
+  const scanAt = (i: number, minRise: number): [SideScan | null, SideScan | null] => {
+    const [cx, cy] = st.p[i], [tx, ty] = st.t[i], nx = -ty, ny = tx, f = floor[i];
+    const local = segs.filter(([ax, ay, bx, by]) => Math.max(ax, bx) > cx - R && Math.min(ax, bx) < cx + R && Math.max(ay, by) > cy - R && Math.min(ay, by) < cy + R);
+    const onNeighbour = (x: number, y: number) => local.some(([ax, ay, bx, by]) => polylineDistance([[ax, ay], [bx, by]], x, y) < 0.75);
+    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, local.length ? t => onNeighbour(cx + nx * sg * t, cy + ny * sg * t) : null, minRise, motor ? WALL_REACH_MOTOR_M : WALL_REACH_M);
+    return [side(1), side(-1)];
+  };
   for (let i = 0; i < n; i++) {
     if (!inBox(st.p[i])) { floor.push(NaN); sides.push([null, null]); continue; }
     const [cx, cy] = st.p[i], [tx, ty] = st.t[i], nx = -ty, ny = tx;
     const fs: number[] = [];
     for (let t = -way.half * 0.5; t <= way.half * 0.5 + 1e-6; t += Math.max(0.5, way.half * 0.25)) fs.push(ground(cx + nx * t, cy + ny * t));
-    const f = median(fs);
-    floor.push(f);
-    const local = segs.filter(([ax, ay, bx, by]) => Math.max(ax, bx) > cx - R && Math.min(ax, bx) < cx + R && Math.max(ay, by) > cy - R && Math.min(ay, by) < cy + R);
-    const onNeighbour = (x: number, y: number) => local.some(([ax, ay, bx, by]) => polylineDistance([[ax, ay], [bx, by]], x, y) < 0.75);
-    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, t => local.length > 0 && onNeighbour(cx + nx * sg * t, cy + ny * sg * t));
-    sides.push([side(1), side(-1)]);
+    floor.push(median(fs));
+    sides.push(scanAt(i, MIN_RISE_M));
   }
   fillWallGaps(sides, floor, GAP_STATIONS);
   // Runs of stations with a wall on at least one side.
-  const cuts: Cut[] = [];
-  let i = 0;
-  while (i < n) {
-    const isCut = (k: number) => inBox(st.p[k]) && !!(sides[k][0]?.wall || sides[k][1]?.wall);
+  const isCut = (k: number) => inBox(st.p[k]) && !!(sides[k][0]?.wall || sides[k][1]?.wall);
+  const runs: [number, number][] = [];
+  for (let i = 0; i < n;) {
     if (!isCut(i)) { i++; continue; }
     let j = i;
     while (j + 1 < n && isCut(j + 1)) j++;
     const idx = Array.from({ length: j - i + 1 }, (_, k) => i + k);
-    const len = st.s[j] - st.s[i];
     const deepest = Math.max(...idx.map(k => Math.max(sides[k][0]?.depth ?? 0, sides[k][1]?.depth ?? 0)));
-    if (len >= MIN_RUN_M && deepest >= MIN_RUN_DEPTH_M) cuts.push(buildCut(`ramp:${way.id}:${i}`, 'ramp', motor, idx.map(k => st.p[k]), idx.map(k => st.s[k]), idx.map(k => floor[k]), idx.map(k => sides[k]), way.half));
+    // A road open to the rider is a ramp only where it is bounded on both sides (a wall, or a neighbouring road on the
+    // floor) for at least BOTH_SIDES_MIN of its run: a path at the foot of a rail embankment or a dike has its "wall" on
+    // one side and open land on the other (Westerpark, 2026-10-30).
+    const both = idx.filter(k => sides[k][0] && sides[k][1]).length / idx.length;
+    if (st.s[j] - st.s[i] >= MIN_RUN_M && deepest >= MIN_RUN_DEPTH_M && (motor || both >= BOTH_SIDES_MIN)) runs.push([i, j]);
     i = j + 1;
   }
-  return cuts;
+  // A kept run carries on past its ends while a side still rises TAPER_RISE_M (the ramp's shallow start, where the
+  // walls sink to nothing); only from a run already deep enough, so no new cut starts from a shallow dip.
+  const taken = new Set<number>();
+  for (const r of runs) for (let k = r[0]; k <= r[1]; k++) taken.add(k);
+  for (const r of runs) {
+    for (const dir of [-1, 1] as const) {
+      const from = dir < 0 ? r[0] : r[1];
+      for (let k = from + dir; k >= 0 && k < n && !taken.has(k) && inBox(st.p[k]) && floor[k] === floor[k] && Math.abs(st.s[k] - st.s[from]) <= TAPER_MAX_M; k += dir) {
+        const sd = scanAt(k, TAPER_RISE_M);
+        if (!sd[0]?.wall && !sd[1]?.wall) break;
+        sides[k] = sd; taken.add(k);
+        if (dir < 0) r[0] = k; else r[1] = k;
+      }
+    }
+  }
+  return runs.map(([i, j]) => {
+    const idx = Array.from({ length: j - i + 1 }, (_, k) => i + k);
+    return buildCut(`ramp:${way.id}:${i}`, 'ramp', motor, idx.map(k => st.p[k]), idx.map(k => st.s[k]), idx.map(k => floor[k]), idx.map(k => sides[k]), way.half);
+  });
 }
 
 /** Wall gaps up to this many stations between two walled stations on the same side are bridged (a junction mouth, a lamp post, a DTM hole). */
@@ -271,8 +378,17 @@ export function fillWallGaps(sides: [SideScan | null, SideScan | null][], floor:
 
 function buildCut(id: string, kind: Cut['kind'], motor: boolean, p: Vec2[], s: number[], floorRaw: number[], sides: [SideScan | null, SideScan | null][], half: number): Cut {
   // A side with neither wall nor shared neighbour at a station keeps the way's own edge (the bands cover it).
-  const reach = (k: 0 | 1) => smoothRun(sides.map(sd => sd[k]?.reach ?? half));
+  // The wall line: a wider running median and a box mean (the DTM's half-height line wanders ±0.5 m station to station,
+  // which drew a wobbling wall).
+  // Walled and open stations are smoothed apart: a wall's line follows only its own stations (the open side's reach
+  // runs to the next road's centreline, and mixing it in bulged the IJ ramp's east wall out at the foot, 2026-10-30).
   const wall = (k: 0 | 1) => { const w = sides.map(sd => (sd[k]?.wall ? 1 : 0)); return w.map((v, i) => (median([w[i - 1] ?? v, v, w[i + 1] ?? v]) >= 0.5 ? 1 : 0)); };
+  const reach = (k: 0 | 1) => {
+    const w = wall(k), raw = sides.map(sd => sd[k]?.reach ?? half);
+    const part = (on: number) => boxMean(smoothRun(raw.map((v, i) => (w[i] === on ? v : NaN)), REACH_MEDIAN_R), REACH_MEAN_R);
+    const walled = part(1), open = part(0);
+    return raw.map((v, i) => { const r = w[i] ? walled[i] : open[i]; return r === r ? r : v; });
+  };
   const rim = (k: 0 | 1) => smoothRun(sides.map((sd, i) => (sd[k]?.wall ? sd[k]!.rim : NaN)));
   const floor = smoothRun(floorRaw, 1);
   const rimL = rim(0), rimR = rim(1);
@@ -287,14 +403,14 @@ function buildCut(id: string, kind: Cut['kind'], motor: boolean, p: Vec2[], s: n
 }
 
 export function cutBox(c: Cut): [number, number, number, number] {
-  const r = Math.max(...c.left, ...c.right) + DIP_M + PARAPET_T + LID_M;
+  const r = Math.max(...c.left, ...c.right) + Math.max(DIP_M + PARAPET_T + LID_M, ...(c.gapL ?? []), ...(c.gapR ?? []));
   return [Math.min(...c.x) - r, Math.min(...c.y) - r, Math.max(...c.x) + r, Math.max(...c.y) + r];
 }
 
 /** A cut's stations [i, j] as a cut of its own (s re-based to 0). */
 export function sliceCut(c: Cut, i: number, j: number): Cut {
   const pick = <T>(a: T[]) => a.slice(i, j + 1);
-  const out: Cut = { ...c, id: i === 0 && j === c.x.length - 1 ? c.id : `${c.id}/${i}`, x: pick(c.x), y: pick(c.y), s: pick(c.s).map(v => v - c.s[i]), floor: pick(c.floor), left: pick(c.left), right: pick(c.right), wallL: pick(c.wallL), wallR: pick(c.wallR), rimL: pick(c.rimL), rimR: pick(c.rimR), portals: c.portals.filter(p => p.at >= i && p.at <= j).map(p => ({ ...p, at: p.at - i })) };
+  const out: Cut = { ...c, id: i === 0 && j === c.x.length - 1 ? c.id : `${c.id}/${i}`, x: pick(c.x), y: pick(c.y), s: pick(c.s).map(v => v - c.s[i]), floor: pick(c.floor), left: pick(c.left), right: pick(c.right), wallL: pick(c.wallL), wallR: pick(c.wallR), rimL: pick(c.rimL), rimR: pick(c.rimR), ...(c.gapL ? { gapL: pick(c.gapL), gapR: pick(c.gapR!), nfL: pick(c.nfL!), nfR: pick(c.nfR!) } : {}), portals: c.portals.filter(p => p.at >= i && p.at <= j).map(p => ({ ...p, at: p.at - i })) };
   out.bbox = cutBox(out);
   return out;
 }
@@ -343,14 +459,23 @@ export function splitAtCrossings(c: Cut, over: readonly CutWay[]): { cut: Cut; c
 }
 
 /** Rounded key of a point (0.1 m), for portal and junction matching. */
-const pkey = (p: Vec2) => `${Math.round(p[0] * 10)}:${Math.round(p[1] * 10)}`;
+const pkey = (p: Vec2): number => (Math.round(p[0] * 10) + 4194304) * 8388608 + (Math.round(p[1] * 10) + 4194304);
+
+/** The tunnel ways' end vertices that are also vertices of an open (non-tunnel) road: where portals can be. */
+function openEnds(ways: readonly CutWay[]): Set<number> {
+  const ends = new Set<number>();
+  for (const w of ways) if (w.tunnel) { ends.add(pkey(w.points[0])); ends.add(pkey(w.points[w.points.length - 1])); }
+  const open = new Set<number>();
+  if (!ends.size) return open;
+  for (const w of ways) if (!w.tunnel) for (const p of w.points) { const k = pkey(p); if (ends.has(k)) open.add(k); }
+  return open;
+}
 
 export interface Portal { at: Vec2; /** Unit direction into the tunnel. */ dir: Vec2; tunnel: CutWay; motor: boolean }
 
 /** Where a tunnel way ends at a vertex of an open (non-tunnel) road: the portals. */
 export function findPortals(ways: readonly CutWay[]): Portal[] {
-  const open = new Set<string>();
-  for (const w of ways) if (!w.tunnel) for (const p of w.points) open.add(pkey(p));
+  const open = openEnds(ways);
   const out: Portal[] = [];
   for (const w of ways) {
     if (!w.tunnel) continue;
@@ -381,9 +506,8 @@ export function cutWays(ways: readonly OsmWay[], project: (p: [number, number]) 
  */
 export function tunnelRuns(ways: readonly CutWay[]): { ways: CutWay[]; points: Vec2[]; ends: [boolean, boolean] }[] {
   const tunnels = ways.filter(w => w.tunnel);
-  const open = new Set<string>();
-  for (const w of ways) if (!w.tunnel) for (const p of w.points) open.add(pkey(p));
-  const byEnd = new Map<string, CutWay[]>();
+  const open = openEnds(ways);
+  const byEnd = new Map<number, CutWay[]>();
   for (const w of tunnels) for (const p of [w.points[0], w.points[w.points.length - 1]]) (byEnd.get(pkey(p)) ?? byEnd.set(pkey(p), []).get(pkey(p))!).push(w);
   const used = new Set<number>(), runs: { ways: CutWay[]; points: Vec2[]; ends: [boolean, boolean] }[] = [];
   for (const w of tunnels) {
@@ -442,6 +566,15 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
   const cut = buildCut(`slot:${run.ways.map(w => w.id).join('+')}`, 'slot', false, st.p, st.s, floor, sides, half);
   // A slot's floor is the line, unsmoothed; its reach the fixed half.
   cut.floor = floor; cut.left = cut.left.map(() => half); cut.right = cut.right.map(() => half);
+  // Its portals: where the embankment over the tunnel's end stands a real headwall above the floor, a lintel spans
+  // the slot there (open: no dark mouth, the passage stays in view).
+  for (const [sAt, sg] of [[SLOT_EXT_M, 1], [SLOT_EXT_M + L, -1]] as const) {
+    let at = 0;
+    for (let i = 0; i < n; i++) if (Math.abs(st.s[i] - sAt) < Math.abs(st.s[at] - sAt)) at = i;
+    const d: Vec2 = [st.t[at][0] * sg, st.t[at][1] * sg];
+    const top = median([2, 3, 4, 5].map(m => ground(st.p[at][0] + d[0] * m, st.p[at][1] + d[1] * m)));
+    if (top - floor[at] >= SLOT_PORTAL_MIN_M) cut.portals.push({ at, dir: d, top, open: true });
+  }
   return cut;
 }
 
@@ -455,6 +588,12 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
 export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Cut[] {
   const portals = findPortals(ways).filter(p => within(p.at));
   const cuts: Cut[] = [];
+  // Only stations within RAMP_REACH_M of one of these portals are scanned: a ramp is never longer, and a long trunk
+  // way through the neighbourhood is not scanned end to end.
+  const nearPortal = (q: Vec2) => portals.some(p => (q[0] - p.at[0]) ** 2 + (q[1] - p.at[1]) ** 2 <= RAMP_REACH_M * RAMP_REACH_M);
+  // A road the rider may take is scanned only near a portal (a cycle or street underpass's ramp is short; farther on, a
+  // path at the foot of a dike or a rail embankment has a "wall" on one side: Westerpark, 2026-10-30).
+  const nearPortalRide = (q: Vec2) => portals.some(p => (q[0] - p.at[0]) ** 2 + (q[1] - p.at[1]) ** 2 <= RIDE_RAMP_REACH_M * RIDE_RAMP_REACH_M);
   const motorAt = (w: CutWay) => motorOnlyTags(w.tags);
   // Seeds: ways with a vertex at a portal, and the tunnel ways themselves.
   const keys = new Set(portals.map(p => pkey(p.at)));
@@ -464,7 +603,11 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
     for (const w of queue) {
       if (skip.has(w.id)) continue;
       skip.add(w.id);
-      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box);
+      // A tunnel way is scanned only near its own portals (a run on it must start at one: TUNNEL_SCAN_M covers the
+      // longest louvred open stretch, Piet Hein east).
+      const own = w.tunnel ? portals.filter(p => p.tunnel.id === w.id) : [];
+      const reach = w.tunnel ? (q: Vec2) => own.some(p => (q[0] - p.at[0]) ** 2 + (q[1] - p.at[1]) ** 2 <= TUNNEL_SCAN_M * TUNNEL_SCAN_M) : motorAt(w) ? nearPortal : nearPortalRide;
+      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box, reach);
       // On a tunnel way only the part the DTM sees open (a louvred roof) continues a ramp: a run that starts at one of
       // its portals, on the floor of the open road just outside (within TUNNEL_FLOOR_TOL_M). Elsewhere the DTM over a
       // tunnel is the ground over it (a quay, a plaza, NEMO's stairs), and stays.
@@ -495,11 +638,21 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
     if (c.kind !== 'ramp') continue;
     for (const at of [0, c.x.length - 1]) {
       const k = at === 0 ? 1 : at - 1, dx = c.x[at] - c.x[k], dy = c.y[at] - c.y[k], l = Math.hypot(dx, dy) || 1, d: Vec2 = [dx / l, dy / l];
-      const probe: Vec2 = [c.x[at] + d[0] * 4, c.y[at] + d[1] * 4];
-      const tunnel = ways.find(w => w.tunnel && motorOnlyTags(w.tags) && polylineDistance(w.points, probe[0], probe[1]) < Math.max(2, w.half));
+      // The motor tunnel just beyond the end, or (a covered span: the ramp runs on under a deck or a station roof that
+      // the DTM measures as ground) its portal up to COVER_REACH_M beyond, the relief stepping up at the end.
+      const tunnelAt = (m: number) => { const q: Vec2 = [c.x[at] + d[0] * m, c.y[at] + d[1] * m]; return ways.find(w => w.tunnel && motorOnlyTags(w.tags) && polylineDistance(w.points, q[0], q[1]) < Math.max(2, w.half)); };
+      let tunnel = tunnelAt(4), coverM = 0;
+      for (let m = 8; !tunnel && c.motor && m <= COVER_REACH_M; m += 4) { tunnel = tunnelAt(m); if (tunnel) coverM = m; }
       const under = crossed[at === 0 ? 0 : 1];
       if (!tunnel && !(under && c.motor)) continue;
-      const top = under ? Math.max(c.rimL[at], c.rimR[at]) : median([3, 4, 5, 6].map(m => ground(c.x[at] + d[0] * m, c.y[at] + d[1] * m)));
+      const ahead = (m: number) => ground(c.x[at] + d[0] * m, c.y[at] + d[1] * m);
+      let top = under ? Math.max(c.rimL[at], c.rimR[at]) : coverM ? NaN : median([3, 4, 5, 6].map(ahead));
+      // The roof further on: a sun screen or truss over the carriageway (Piet Hein east: OSM's tunnel starts 10 m
+      // before the DTM's roof edge) or a covered span: the mouth stands at the cut's end at the level of the roof
+      // where the relief first steps up within COVER_REACH_M.
+      if (!under && !(top - c.floor[at] > 2.5)) {
+        for (let m = 4; m <= COVER_REACH_M; m += 2) if (ahead(m) - c.floor[at] > 2.5) { top = Math.max(...[0, 2, 4, 6, 8].map(k => ahead(m + k))); break; }
+      }
       if (!(top - c.floor[at] > 2.5)) continue;
       c.portals.push({ at, dir: d, top });
       c.motor = true;
@@ -514,23 +667,56 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
     for (const w of run.ways) skip.add(-w.id);
     if (slot) cuts.push(slot);
   }
-  dropSharedWalls(cuts);
+  mergeNeighbours(cuts, ground);
   return cuts;
 }
 
 /**
- * Walls between two cuts that meet (a road tunnel beside its cycle tunnel, two carriageways of one ramp) are not
- * walls: a wall whose outside (0.5 m past its edge) lies in another cut's strip goes, and with it the parapet.
+ * Cuts side by side (two carriageways of one ramp, a road tunnel beside its cycle tunnel) are one trench: across each
+ * side, the nearest other strip within MERGE_GAP_M whose floor agrees within MERGE_FLOOR_M, over relief standing at
+ * most MERGE_BERM_M above the floors (a median island, a barrier: the DTM measures them, and they drew a ridge between
+ * the carriageways), merges with it. The wall on that side goes, and the gap is recorded (gapL/gapR, the neighbour's
+ * floor nfL/nfR) so the relief there lies on the floors (cutRelief). Single stations are smoothed out of either state.
+ * `ground` is the raw relief. Returns the stations merged.
  */
-export function dropSharedWalls(cuts: readonly Cut[]): number {
-  let dropped = 0;
-  for (const c of cuts) for (let i = 0; i < c.x.length; i++) for (const sg of [1, -1] as const) {
-    const w = sg > 0 ? c.wallL : c.wallR;
-    if (!w[i]) continue;
-    const [nx, ny] = normalAt(c, i), r = (sg > 0 ? c.left[i] : c.right[i]) + 0.5, px = c.x[i] + nx * sg * r, py = c.y[i] + ny * sg * r;
-    if (cuts.some(o => o !== c && px >= o.bbox[0] && px <= o.bbox[2] && py >= o.bbox[1] && py <= o.bbox[3] && (() => { const h = locateCut(o, px, py); return !!h && insideCut(o, h); })())) { w[i] = 0; dropped++; }
+export function mergeNeighbours(cuts: readonly Cut[], ground?: HeightFn): number {
+  let merged = 0;
+  for (const c of cuts) {
+    const n = c.x.length, others = cuts.filter(o => o !== c && o.bbox[0] <= c.bbox[2] + MERGE_GAP_M && o.bbox[2] >= c.bbox[0] - MERGE_GAP_M && o.bbox[1] <= c.bbox[3] + MERGE_GAP_M && o.bbox[3] >= c.bbox[1] - MERGE_GAP_M);
+    c.gapL = new Array(n).fill(0); c.gapR = new Array(n).fill(0); c.nfL = c.floor.slice(); c.nfR = c.floor.slice();
+    if (!others.length) continue;
+    for (const sg of [1, -1] as const) {
+      const gap = sg > 0 ? c.gapL : c.gapR, nf = sg > 0 ? c.nfL : c.nfR;
+      for (let i = 0; i < n; i++) {
+        const [nx, ny] = normalAt(c, i), r = sg > 0 ? c.left[i] : c.right[i];
+        for (let d = 0.25; d <= MERGE_GAP_M; d += 0.5) {
+          const px = c.x[i] + nx * sg * (r + d), py = c.y[i] + ny * sg * (r + d);
+          let hit: CutHit | null = null;
+          for (const o of others) {
+            if (px < o.bbox[0] || px > o.bbox[2] || py < o.bbox[1] || py > o.bbox[3]) continue;
+            const h = locateCut(o, px, py);
+            if (h && insideCut(o, h)) { hit = h; break; }
+          }
+          if (!hit) continue;
+          if (Math.abs(hit.floor - c.floor[i]) > MERGE_FLOOR_M) break;
+          let rise = 0;
+          if (ground) for (let e = 0.5; e < d; e += 1) rise = Math.max(rise, ground(c.x[i] + nx * sg * (r + e), c.y[i] + ny * sg * (r + e)) - Math.max(hit.floor, c.floor[i]));
+          if (rise > MERGE_BERM_M) break;
+          gap[i] = Math.max(d, 0.01); nf[i] = hit.floor;
+          break;
+        }
+      }
+      // One station alone in either state follows its neighbours (a gap interpolated, a lone merge dropped).
+      for (let i = 1; i + 1 < n; i++) {
+        if (!gap[i] && gap[i - 1] && gap[i + 1]) { gap[i] = (gap[i - 1] + gap[i + 1]) / 2; nf[i] = (nf[i - 1] + nf[i + 1]) / 2; }
+        else if (gap[i] && !gap[i - 1] && !gap[i + 1]) gap[i] = 0;
+      }
+      const wall = sg > 0 ? c.wallL : c.wallR;
+      for (let i = 0; i < n; i++) if (gap[i]) { wall[i] = 0; merged++; }
+    }
+    c.bbox = cutBox(c);
   }
-  return dropped;
+  return merged;
 }
 
 // ------------------------------------------------------------------ queries
@@ -572,10 +758,22 @@ export const insideCut = (c: Cut, h: CutHit): boolean => h.s >= 0 && h.s <= c.s[
 export function cutRelief(c: Cut, h: CutHit, raw: number): number {
   const end = c.s[c.s.length - 1];
   for (const p of c.portals) {
+    if (p.open) continue;
     const past = p.at === 0 ? -h.s : h.s - end;
     if (past >= 0 && past <= LID_M && h.lateral <= h.left + DIP_M && h.lateral >= -h.right - DIP_M) return Math.max(raw, p.top);
   }
   if (h.s < 0 || h.s > end) return NaN;
+  // A merged side: the strip's half and the gap to the neighbour lie on the floors (the neighbour's own cut answers
+  // the same across the gap, so the median meets both).
+  if (c.gapL && c.gapR && c.nfL && c.nfR) {
+    const gl = (a: number[]) => a[h.i] + (a[h.i + 1] - a[h.i]) * h.f;
+    const sideGap = h.lateral >= 0 ? gl(c.gapL) : gl(c.gapR), edge = h.lateral >= 0 ? h.left : h.right, off = Math.abs(h.lateral);
+    if (sideGap > 0.005 && off <= edge + sideGap) {
+      if (off <= edge) return h.floor;
+      const nf = h.lateral >= 0 ? gl(c.nfL) : gl(c.nfR);
+      return h.floor + (nf - h.floor) * Math.min(1, (off - edge) / sideGap);
+    }
+  }
   if (h.lateral >= 0) {
     if (h.lateral <= h.left) return h.wallL >= 0.5 ? h.rimL : NaN;
     return h.wallL >= 0.5 && h.lateral <= h.left + DIP_M ? Math.max(raw, h.rimL) : NaN;
@@ -603,26 +801,60 @@ function normalAt(c: Cut, i: number): Vec2 {
   return [-dy / l, dx / l];
 }
 
-function quad(m: MeshArrays, p: [number, number, number][], toward: [number, number, number], colour: RGB): void {
+function quad(m: MeshArrays, p: [number, number, number][], toward: [number, number, number], colour: RGB | RGB[]): void {
   const ux = p[1][0] - p[0][0], uy = p[1][1] - p[0][1], uz = p[1][2] - p[0][2], vx = p[2][0] - p[0][0], vy = p[2][1] - p[0][1], vz = p[2][2] - p[0][2];
   const nrm = [uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx], flip = nrm[0] * toward[0] + nrm[1] * toward[1] + nrm[2] * toward[2] < 0;
-  const k = p.map(q => vertex(m, q[0], q[1], q[2], colour));
+  const k = p.map((q, j) => vertex(m, q[0], q[1], q[2], Array.isArray(colour[0]) ? (colour as RGB[])[j] : (colour as RGB)));
   if (flip) m.indices.push(k[0], k[2], k[1], k[0], k[3], k[2]); else m.indices.push(k[0], k[1], k[2], k[0], k[2], k[3]);
+}
+
+/** The wall face's colour at height `z` over a wall from `foot` to `top`: stained at the foot, paler upward. */
+function wallTint(z: number, foot: number, top: number): RGB {
+  const C = TUNNEL_COLOURS, t = Math.max(0, Math.min(1, (z - foot) / Math.max(0.5, top - foot)));
+  const u = Math.sqrt(t);
+  return [0, 1, 2].map(k => C.wallFoot[k] + (C.wallTop[k] - C.wallFoot[k]) * u) as RGB;
+}
+
+/** A merged gap at least this wide (metres) is a verge and draws as grass; narrower, a barrier on the ground. */
+export const MEDIAN_GRASS_MIN_M = 1.5;
+
+/**
+ * The cut's half of each merged gap (mergeNeighbours) at least MEDIAN_GRASS_MIN_M wide, as quads per segment whose
+ * midpoint `owns` accepts: the verges between the carriageways of one trench (the IJ-tunnel's south ramp: grass
+ * wedges tapering to the portal). The neighbour's cut draws the other half. The cell drapes them on the land, which
+ * lies on the floors there (cutRelief).
+ */
+export function cutMedianQuads(c: Cut, owns: (x: number, y: number) => boolean): Vec2[][] {
+  const out: Vec2[][] = [];
+  if (!c.gapL || !c.gapR) return out;
+  for (const sg of [1, -1] as const) {
+    const gap = sg > 0 ? c.gapL : c.gapR, reach = sg > 0 ? c.left : c.right;
+    for (let i = 0; i + 1 < c.x.length; i++) {
+      if (gap[i] < MEDIAN_GRASS_MIN_M || gap[i + 1] < MEDIAN_GRASS_MIN_M) continue;
+      if (!owns((c.x[i] + c.x[i + 1]) / 2, (c.y[i] + c.y[i + 1]) / 2)) continue;
+      const at = (k: number, extra: number): Vec2 => { const [nx, ny] = normalAt(c, k), r = reach[k] + extra; return [c.x[k] + nx * sg * r, c.y[k] + ny * sg * r]; };
+      out.push([at(i, 0), at(i + 1, 0), at(i + 1, gap[i + 1] / 2 + 0.05), at(i, gap[i] / 2 + 0.05)]);
+    }
+  }
+  return out;
 }
 
 export interface CutMeshes { walls: MeshArrays; floor: MeshArrays; walled: number; portals: number }
 
 /**
  * A cut's geometry for one cell (`owns(x, y)`: the segment midpoints it draws): per walled side a concrete face from
- * under the floor to the wall top and a parapet on it (face, top, back), the coping over the land's cut edge; a floor
- * strip edge to edge just under the bands; a portal (dark mouth, headwall up to the land over the tunnel plus the
- * parapet) where one was found. Walls are vertex-coloured (deckBody), the floor plain (asphalt).
+ * under the floor to under the coping (stained at the foot, paler upward), a pale coping over the parapet with a lip
+ * overhanging the trench (the edge reads as a line at chase distance), and the parapet's land face; a floor strip edge
+ * to edge just under the bands; a portal where one was found: a motor tunnel's dark mouth under a concrete headwall,
+ * or over a slot an open lintel. A portal on a merged side spans the gap to the neighbour's strip. Walls are
+ * vertex-coloured (deckBody), the floor plain (asphalt).
  */
 export function cutMeshes(c: Cut, owns: (x: number, y: number) => boolean): CutMeshes {
   const walls = emptyMesh(true), floor = emptyMesh();
   const C = TUNNEL_COLOURS, n = c.x.length, parapet = PARAPET_M;
   let walled = 0;
   const edge = (i: number, sg: 1 | -1, extra = 0): Vec2 => { const [nx, ny] = normalAt(c, i), r = (sg > 0 ? c.left[i] : c.right[i]) + extra; return [c.x[i] + nx * sg * r, c.y[i] + ny * sg * r]; };
+  const gapAt = (i: number, sg: 1 | -1) => ((sg > 0 ? c.gapL : c.gapR)?.[i] ?? 0);
   for (let i = 0; i + 1 < n; i++) {
     const mx = (c.x[i] + c.x[i + 1]) / 2, my = (c.y[i] + c.y[i + 1]) / 2;
     if (!owns(mx, my)) continue;
@@ -635,15 +867,24 @@ export function cutMeshes(c: Cut, owns: (x: number, y: number) => boolean): CutM
     for (const sg of [1, -1] as const) {
       const w = sg > 0 ? c.wallL : c.wallR, rim = sg > 0 ? c.rimL : c.rimR;
       if (!w[i] || !w[i + 1]) continue;
-      const a = edge(i, sg), b = edge(i + 1, sg), into: [number, number, number] = [-(normalAt(c, i)[0]) * sg, -(normalAt(c, i)[1]) * sg, 0];
       if (rim[i] - c.floor[i] < 0.15 && rim[i + 1] - c.floor[i + 1] < 0.15) continue;
-      const ta = rim[i] + parapet, tb = rim[i + 1] + parapet;
-      // Face: from under the floor up to the parapet's top.
-      quad(walls, [[a[0], a[1], c.floor[i] - 0.3], [b[0], b[1], c.floor[i + 1] - 0.3], [b[0], b[1], tb], [a[0], a[1], ta]], into, C.wall);
-      // Parapet top and back face (down to just under the land).
+      const a = edge(i, sg), b = edge(i + 1, sg), into: [number, number, number] = [-(normalAt(c, i)[0]) * sg, -(normalAt(c, i)[1]) * sg, 0];
+      const ta = rim[i] + parapet, tb = rim[i + 1] + parapet, la = ta - COPING_LIP_M, lb = tb - COPING_LIP_M;
+      const fa = c.floor[i] - 0.3, fb = c.floor[i + 1] - 0.3;
+      // Face: from under the floor up to the coping's lip, stained at the foot.
+      quad(walls, [[a[0], a[1], fa], [b[0], b[1], fb], [b[0], b[1], lb], [a[0], a[1], la]], into,
+        [wallTint(fa, c.floor[i], ta), wallTint(fb, c.floor[i + 1], tb), wallTint(lb, c.floor[i + 1], tb), wallTint(la, c.floor[i], ta)]);
+      // The coping: a pale lip over the trench, its top across the parapet, and the parapet's land face.
+      const ao = edge(i, sg, -COPING_OVER_M), bo = edge(i + 1, sg, -COPING_OVER_M);
+      quad(walls, [[ao[0], ao[1], la], [bo[0], bo[1], lb], [bo[0], bo[1], tb], [ao[0], ao[1], ta]], into, C.coping);
       const a2 = edge(i, sg, PARAPET_T), b2 = edge(i + 1, sg, PARAPET_T);
-      quad(walls, [[a[0], a[1], ta], [b[0], b[1], tb], [b2[0], b2[1], tb], [a2[0], a2[1], ta]], [0, 0, 1], C.coping);
+      const am = edge(i, sg, 0.06), bm = edge(i + 1, sg, 0.06);
+      quad(walls, [[ao[0], ao[1], ta], [bo[0], bo[1], tb], [bm[0], bm[1], tb], [am[0], am[1], ta]], [0, 0, 1], C.coping);
+      quad(walls, [[am[0], am[1], ta], [bm[0], bm[1], tb], [b2[0], b2[1], tb], [a2[0], a2[1], ta]], [0, 0, 1], C.cap);
       quad(walls, [[a2[0], a2[1], ta], [b2[0], b2[1], tb], [b2[0], b2[1], rim[i + 1] - 0.4], [a2[0], a2[1], rim[i] - 0.4]], [-into[0], -into[1], 0], C.parapet);
+      // The gutter: a dark strip on the floor along the foot (under the bands' lift, over the floor's).
+      const ag = edge(i, sg, -GUTTER_M), bg = edge(i + 1, sg, -GUTTER_M), zg = FLOOR_LIFT_M + 0.008;
+      quad(walls, [[ag[0], ag[1], c.floor[i] + zg], [bg[0], bg[1], c.floor[i + 1] + zg], [b[0], b[1], c.floor[i + 1] + zg], [a[0], a[1], c.floor[i] + zg]], [0, 0, 1], C.gutter);
       walled++;
     }
   }
@@ -651,25 +892,38 @@ export function cutMeshes(c: Cut, owns: (x: number, y: number) => boolean): CutM
   for (const p of c.portals) {
     const i = p.at;
     if (!owns(c.x[i], c.y[i])) continue;
-    const l = edge(i, 1, PARAPET_T), r = edge(i, -1, PARAPET_T), out: [number, number, number] = [-p.dir[0], -p.dir[1], 0];
-    const f = c.floor[i], clear = Math.min(PORTAL_CLEAR_M, p.top - f - 0.6), top = Math.max(p.top, c.rimL[i], c.rimR[i]) + parapet;
+    // Across a merged side the portal runs on over half the gap, and on a side shared with a neighbouring road (no
+    // wall: the strip reaches that road's centreline) to the midpoint between the two; the neighbour's portal meets it
+    // there (a headwall spanning the next carriageway drew staggered pieces beside the IJ-tunnel's mouths).
+    const walledAt = (sg: 1 | -1) => !!(sg > 0 ? c.wallL : c.wallR)[i], reachAt = (sg: 1 | -1) => (sg > 0 ? c.left : c.right)[i];
+    const reachOut = (sg: 1 | -1) => (gapAt(i, sg) > 0 ? gapAt(i, sg) / 2 + 0.05 : walledAt(sg) ? PARAPET_T : -reachAt(sg) / 2 + 0.05);
+    const reachIn = (sg: 1 | -1) => (gapAt(i, sg) > 0 ? gapAt(i, sg) / 2 + 0.05 : walledAt(sg) ? 0 : -reachAt(sg) / 2 + 0.05);
+    const l = edge(i, 1, reachOut(1)), r = edge(i, -1, reachOut(-1)), out: [number, number, number] = [-p.dir[0], -p.dir[1], 0];
+    const f = c.floor[i];
+    const clear = p.open ? Math.min(SLOT_CLEAR_M, p.top - f - 0.6) : Math.min(PORTAL_CLEAR_M, p.top - f - 0.6);
+    const top = Math.max(p.top, c.rimL[i], c.rimR[i]) + (p.open ? 0.4 : parapet);
     if (clear < 1.5) continue;
     const back = (q: Vec2, d: number): Vec2 => [q[0] + p.dir[0] * d, q[1] + p.dir[1] * d];
-    const lm = edge(i, 1), rm = edge(i, -1);
-    // The mouth: a dark face a little inside the portal (the tunnel's interior), and its soffit.
-    const li = back(lm, 0.6), ri = back(rm, 0.6);
-    quad(walls, [[li[0], li[1], f - 0.3], [ri[0], ri[1], f - 0.3], [ri[0], ri[1], f + clear], [li[0], li[1], f + clear]], out, C.mouth);
-    quad(walls, [[lm[0], lm[1], f + clear], [rm[0], rm[1], f + clear], [ri[0], ri[1], f + clear], [li[0], li[1], f + clear]], [0, 0, -1], C.mouth);
-    // Reveals: the mouth's sides between the portal plane and the dark face.
-    for (const [q, qi, sg] of [[lm, li, 1], [rm, ri, -1]] as [Vec2, Vec2, number][]) {
-      const nrm = normalAt(c, i);
-      quad(walls, [[q[0], q[1], f - 0.3], [qi[0], qi[1], f - 0.3], [qi[0], qi[1], f + clear], [q[0], q[1], f + clear]], [-nrm[0] * sg, -nrm[1] * sg, 0], C.mouth);
+    if (!p.open) {
+      // The mouth: a dark face a little inside the portal (the tunnel's interior), its soffit and reveals.
+      const lm = edge(i, 1, reachIn(1)), rm = edge(i, -1, reachIn(-1));
+      const li = back(lm, 0.6), ri = back(rm, 0.6);
+      quad(walls, [[li[0], li[1], f - 0.3], [ri[0], ri[1], f - 0.3], [ri[0], ri[1], f + clear], [li[0], li[1], f + clear]], out, C.mouth);
+      quad(walls, [[lm[0], lm[1], f + clear], [rm[0], rm[1], f + clear], [ri[0], ri[1], f + clear], [li[0], li[1], f + clear]], [0, 0, -1], C.mouth);
+      for (const [q, qi, sg] of [[lm, li, 1], [rm, ri, -1]] as [Vec2, Vec2, number][]) {
+        const nrm = normalAt(c, i);
+        quad(walls, [[q[0], q[1], f - 0.3], [qi[0], qi[1], f - 0.3], [qi[0], qi[1], f + clear], [q[0], q[1], f + clear]], [-nrm[0] * sg, -nrm[1] * sg, 0], C.mouth);
+      }
     }
-    // The headwall: above the mouth up to the land over the tunnel plus the parapet, edge to edge over the walls; its top.
-    quad(walls, [[l[0], l[1], f + clear], [r[0], r[1], f + clear], [r[0], r[1], top], [l[0], l[1], top]], out, C.headwall);
-    const lb = back(l, PARAPET_T), rb = back(r, PARAPET_T);
+    // The headwall over the mouth (or the lintel over a slot): its face, coping, back face and, over a slot, its soffit.
+    const depth = p.open ? 0.7 : PARAPET_T;
+    const lb = back(l, depth), rb = back(r, depth);
+    quad(walls, [[l[0], l[1], f + clear], [r[0], r[1], f + clear], [r[0], r[1], top - COPING_LIP_M], [l[0], l[1], top - COPING_LIP_M]], out,
+      [wallTint(f + clear, f, top), wallTint(f + clear, f, top), wallTint(top, f, top), wallTint(top, f, top)].map(t => t.map((v, k) => (v + C.headwall[k]) / 2) as RGB));
+    quad(walls, [[l[0], l[1], top - COPING_LIP_M], [r[0], r[1], top - COPING_LIP_M], [r[0], r[1], top], [l[0], l[1], top]], out, C.coping);
     quad(walls, [[l[0], l[1], top], [r[0], r[1], top], [rb[0], rb[1], top], [lb[0], lb[1], top]], [0, 0, 1], C.coping);
-    quad(walls, [[lb[0], lb[1], top], [rb[0], rb[1], top], [rb[0], rb[1], p.top - 0.4], [lb[0], lb[1], p.top - 0.4]], [p.dir[0], p.dir[1], 0], C.parapet);
+    quad(walls, [[lb[0], lb[1], top], [rb[0], rb[1], top], [rb[0], rb[1], p.open ? f + clear : p.top - 0.4], [lb[0], lb[1], p.open ? f + clear : p.top - 0.4]], [p.dir[0], p.dir[1], 0], C.parapet);
+    if (p.open) quad(walls, [[l[0], l[1], f + clear], [r[0], r[1], f + clear], [rb[0], rb[1], f + clear], [lb[0], lb[1], f + clear]], [0, 0, -1], C.headwall);
     portals++;
   }
   return { walls, floor, walled, portals };

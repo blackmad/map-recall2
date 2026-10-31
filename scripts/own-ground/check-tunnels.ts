@@ -41,7 +41,7 @@ for (const site of TUNNEL_SITES) {
       if (depth < e.minWallM) fail(site, `wall ${depth.toFixed(2)} m at the probe, expected at least ${e.minWallM}`);
     }
     if (e.floorBelowReliefM !== undefined && !(relief - floor >= e.floorBelowReliefM)) fail(site, `floor ${floor.toFixed(2)} only ${(relief - floor).toFixed(2)} m under the relief ${relief.toFixed(2)}, expected ${e.floorBelowReliefM}`);
-  } else if (floor === floor) fail(site, `a cut holds the probe point (floor ${floor.toFixed(2)}), expected none`);
+  } else if (e.noCut && floor === floor) fail(site, `a cut holds the probe point (floor ${floor.toFixed(2)}), expected none`);
   if (e.portalNear) {
     const [px, py] = toLocal(e.portalNear[0], e.portalNear[1]);
     const d = Math.min(Infinity, ...s.cuts.flatMap(c => c.portals.map(p => Math.hypot(c.x[p.at] - px, c.y[p.at] - py))));
@@ -52,6 +52,14 @@ for (const site of TUNNEL_SITES) {
     const [qx, qy] = toLocal(q[0], q[1]), g = s.ground(qx, qy), r = s.relief(qx, qy), f = s.cutFloor(qx, qy);
     console.log(`  ground over the tunnel at ${q.join(',')}: ${g.toFixed(2)} (relief ${r.toFixed(2)})`);
     if (Math.abs(g - r) > 0.05 || f === f) fail(site, `ground over the tunnel at ${q.join(',')} changed: ${g.toFixed(2)} vs relief ${r.toFixed(2)}${f === f ? `, cut floor ${f.toFixed(2)}` : ''}`);
+  }
+  for (const q of e.groundAtFloor ?? []) {
+    // The cut floors within 8 m around (the median lies outside both strips, sloping from one floor to the other).
+    const [qx, qy] = toLocal(q[0], q[1]), g = s.ground(qx, qy);
+    let lo = Infinity, hi = -Infinity;
+    for (let a = 0; a < 16; a++) for (const r of [2, 4, 6, 8]) { const v = s.cutFloor(qx + Math.cos(a * Math.PI / 8) * r, qy + Math.sin(a * Math.PI / 8) * r); if (v === v) { lo = Math.min(lo, v); hi = Math.max(hi, v); } }
+    console.log(`  ground at ${q.join(',')}: ${g.toFixed(2)}, cut floors around ${lo.toFixed(2)}..${hi.toFixed(2)} (relief ${s.relief(qx, qy).toFixed(2)})`);
+    if (!(lo <= hi) || g < lo - 0.1 || g > hi + 0.3) fail(site, `ground at ${q.join(',')} ${g.toFixed(2)} is not on the cut floors ${lo.toFixed(2)}..${hi.toFixed(2)}`);
   }
   if (e.rideMaxClimbM !== undefined && e.ride) {
     // The riding height along the routed way through the passage: the climb above the lower portal level.

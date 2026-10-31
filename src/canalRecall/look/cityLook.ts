@@ -37,7 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, isMeasuredTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
+import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, isMeasuredTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
@@ -52,13 +52,17 @@ import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts'
 
 export const CITY_LOOK_PARAM = 'cityLook';
 
-/** `?cityLook=1` (or `window.__canalRecallCityLook = true` before the bundles run). */
+/**
+ * On by default since 2026-10-30 (#137, decision A: level 1 after the #135 re-level). `?cityLook=0`, or
+ * `window.__canalRecallCityLook = false` before the bundles run, is the opt-out that draws the legacy flat-colour path.
+ */
 export function cityLookEnabled(search?: string): boolean {
   try {
     const g = globalThis as any;
+    if (search === undefined && g.__canalRecallCityLook === false) return false;
     if (search === undefined && g.__canalRecallCityLook === true) return true;
-    return new URLSearchParams(search ?? g.location?.search ?? '').get(CITY_LOOK_PARAM) === '1';
-  } catch { return false; }
+    return new URLSearchParams(search ?? g.location?.search ?? '').get(CITY_LOOK_PARAM) !== '0';
+  } catch { return true; }
 }
 
 // ---------------------------------------------------------------------------
@@ -96,7 +100,16 @@ export type SlotLayer = {
  * frames, paint, doors and glass (untinted in the bay cells) keep their level.
  * The unlit (default frame) variant is the city's baked look and is unchanged.
  */
-export const CITY_LIT_LEVEL = 0.9;
+export const CITY_LIT_LEVELS: Readonly<Record<SceneLook, number>> = { legacy: 0.9, sunny: 1 };
+/**
+ * Re-levelled against the sunny frame (lane citylook-relevel, 2026-10-30): the sunny rig's exposure is solved so a wall
+ * facing the sun draws its albedo (look/sunny.ts SUNNY_EXPOSURE), so the legacy rig's 0.9 only darkened the city look
+ * (flag on read 5-6 luma under flag off). In the sunny look the level is 1 and the city look's chunks and unmeasured
+ * brick take the sunny wall exposure like the default look's (`litFacadeWallGain`, chunkWallExposure.ts
+ * `photoMatchedWallTint`); `?look=legacy` keeps 0.9 and the plain gains.
+ */
+export const cityLitLevel = (look: SceneLook = sceneLookFrom()): number => CITY_LIT_LEVELS[look];
+export const CITY_LIT_LEVEL = cityLitLevel();
 /** The photo look's chunk wall gain (palette.ts `litWallGain`): roof slots follow the chunk roofs, which take it too. */
 const LIFT = 255 / PHOTO_WALL_CELL_MEAN;
 /**
@@ -182,6 +195,15 @@ export function slotLayerBytes(size: number): number {
  */
 export const SLATE_KEEP_FROM_L = 0.38;
 const SLATE_CELL_MEAN = 0.8;
+/** Authored slate darker than this takes the darkest measured slate (CITY_ROOF.slate[1]); otherwise the default (slate[0]). */
+export const DARK_SLATE_BELOW_L = 0.27;
+/**
+ * A level face of an inferred slate material is a flat roof (re-level 2026-10-30). The landmark kit paints every roof
+ * `slate` #4a525d, flat decks included (Theater Amsterdam, the Stedelijk, Studio K, ARCAM's deck), so the city look drew
+ * them as pitched slate. Faces whose normal is within ~14° of up sample the flat-roof cell with the bitumen tint
+ * (`cityRoofTint('bitumen')`): the dark bitumen the streamed city's flat roofs take, not a pale slate.
+ */
+export const LEVEL_ROOF_MIN_UP = 0.97;
 /**
  * Mid-grey joinery keeps its colour (gallery review 2026-10-13). `cityFrameTint`
  * pulls every frame with L ≥ 0.5 75 % towards the city's cream frame. That is
@@ -232,6 +254,10 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
   if (slot === 'slate' && l > SLATE_KEEP_FROM_L) return rgbToHex(hslToRgb([h, Math.min(s, 0.12), Math.min(0.72, l / SLATE_CELL_MEAN)]));
+  // Dark authored slate takes the city's default measured slate, the darkest one below DARK_SLATE_BELOW_L, never the
+  // lightest (re-level 2026-10-30: `cityRoofTint`'s thresholds date from the old near-black tones and sent the landmark
+  // kit's #4a525d, L 0.33, to the lightest measured slate #8c939c, +80 % luma on every landmark roof).
+  if (slot === 'slate') return l < DARK_SLATE_BELOW_L ? CITY_ROOF.slate[1] : CITY_ROOF.slate[0];
   if (slot === 'frame' && l >= 0.5 && l < FRAME_CREAM_FROM_L) return rgbToHex(rgb);
   if (slot === 'stone' && l < STONE_KEEP_BELOW_L) return rgbToHex(rgb);
   return cityTint(slot, hex);
@@ -248,7 +274,9 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
  */
 export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null): [number, number, number, number] {
   const tint = cityLookTint(slot, hex, source, look, white);
-  const [r, g, b] = hexToRgb(exposure ? photoMatchedWallTint(slot, tint, exposure, source, look) : tint);
+  // Since the re-level (2026-10-30) the city look's chunks take the sunny wall exposure (litFacadeWallGain), so an
+  // unrecorded GLB's brick takes it too, as in the default look (#73): `photoMatchedWallTint` with no exposure record.
+  const [r, g, b] = hexToRgb(photoMatchedWallTint(slot, tint, exposure ?? null, source, look));
   return [r, g, b, 255];
 }
 
@@ -634,6 +662,29 @@ export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot,
   return true;
 }
 
+/**
+ * Inferred slate: level faces (normal within LEVEL_ROOF_MIN_UP of the model's up, glTF +Y in `root`'s frame) take the
+ * flat-roof layer and the bitumen tint. Returns the number of vertices moved. Needs a normal attribute.
+ */
+export function levelFacesAsFlatRoof(THREE: any, root: any, mesh: any, geometry: any, hex: string, hints: SlotVariantHints = {}): number {
+  const normal = geometry.getAttribute('normal'), layer = geometry.getAttribute('layer'), tint = geometry.getAttribute('tint');
+  if (!normal || !layer || !tint) return 0;
+  const [r, g, b] = slotTintBytes('bitumen', hex, hints.source);
+  root.updateWorldMatrix(true, true);
+  const rel = new THREE.Matrix4().copy(root.matrixWorld).invert().multiply(mesh.matrixWorld);
+  const nm = new THREE.Matrix3().getNormalMatrix(rel), v = new THREE.Vector3();
+  const flat = slotLayerOf('bitumen', hints);
+  let moved = 0;
+  for (let i = 0; i < normal.count; i++) {
+    v.set(normal.getX(i), normal.getY(i), normal.getZ(i)).applyMatrix3(nm).normalize();
+    if (v.y < LEVEL_ROOF_MIN_UP) continue;
+    layer.setX(i, flat); tint.setXYZW(i, r / 255, g / 255, b / 255, 1);
+    moved++;
+  }
+  if (moved) { layer.needsUpdate = true; tint.needsUpdate = true; }
+  return moved;
+}
+
 export type CityLookOptions = {
   document?: Document;
   /** Decoded brick photo; undefined = load Bricks057, null = drawn bond. */
@@ -736,6 +787,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
           geometry.deleteAttribute('layer'); geometry.deleteAttribute('tint');
           setSlotAttributes(THREE, geometry, found.slot, found.tint, hints);
         }
+        if (found.inferred && found.slot === 'slate' && !found.source) levelFacesAsFlatRoof(THREE, root, o, geometry, found.tint, hints);
         const previous = o.material;
         o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side });
         o.userData.citySlot = { slot: found.slot, tint: found.tint, ...(found.source ? { source: found.source } : {}), inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };

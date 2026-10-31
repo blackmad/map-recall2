@@ -54,6 +54,12 @@ const browser = await chromium.launch({ headless: true, executablePath: '/Applic
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
+// WORLD_DIR=<dir> serves staged world-v1 cells at /data/extracts/amsterdam/world-v1/ (for `--qs '?world=v1'`; nothing is
+// published). On the context, so the cell fetches of a worker are routed too.
+if (process.env.WORLD_DIR) await page.context().route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
+  const dir = path.resolve(process.env.WORLD_DIR), file = path.join(dir, /world-v1\/([^?]+)/.exec(route.request().url())[1]);
+  return file.startsWith(dir) && fs.existsSync(file) ? route.fulfill({ path: file, contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.fulfill({ status: 404, body: '' });
+});
 if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();

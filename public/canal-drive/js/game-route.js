@@ -171,14 +171,8 @@ class GameRouteRuntime {
     // Briefing only: show the chosen city centre instead of Damrak defaults.
     if (previousCityId !== this.cityId && this.state === GameState.MENU) {
       const center = city.center;
-      if (center && this.vectorMap.map && typeof this.vectorMap.map.jumpTo === 'function') {
-        this.vectorMap.map.jumpTo({
-          center: [center.lng, center.lat],
-          zoom: 13,
-          bearing: 0,
-          pitch: 0,
-        });
-      }
+      // Through the world view (engine/worldViewApi.ts), either engine.
+      if (center) this.vectorMap.jumpToLngLat({ center: [center.lng, center.lat], zoom: 13, bearing: 0, pitch: 0 });
       this._loadRoutePoiCatalog();
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       this._loadRoutePoiCatalog();
@@ -1961,8 +1955,8 @@ class GameRouteRuntime {
    */
   _waitForMapSettle(maxMs = 2500) {
     return new Promise((resolve) => {
-      const map = this.vectorMap && this.vectorMap.map;
-      if (!map || !this.vectorMap.ready) {
+      const camera = this.vectorMap && this.vectorMap.camera;
+      if (!camera || !this.vectorMap.ready) {
         setTimeout(resolve, Math.min(900, maxMs));
         return;
       }
@@ -1979,7 +1973,8 @@ class GameRouteRuntime {
         setTimeout(finish, 450);
       };
       try {
-        map.once('idle', onIdle);
+        // The world view's camera (engine/worldViewApi.ts) answers for either engine.
+        camera.whenIdle().then(onIdle, onIdle);
       } catch (_) {
         clearTimeout(timer);
         setTimeout(finish, Math.min(900, maxMs));

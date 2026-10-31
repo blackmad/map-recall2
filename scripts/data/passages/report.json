@@ -4380,5 +4380,53 @@
   ],
   "ground": 2,
   "decks": 1
+ },
+ {
+  "id": "w453809679",
+  "height": 36,
+  "ways": [
+   "Oosterdoksstraat",
+   "Oosterdoksstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "w779659694",
+  "height": 48,
+  "ways": [
+   "Oosterdoksstraat",
+   "Oosterdoksstraat"
+  ],
+  "ground": 2,
+  "decks": 1
+ },
+ {
+  "id": "NL.IMBAG.Pand.0363100012164372",
+  "height": 17.51,
+  "ways": [
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park"
+  ],
+  "ground": 2,
+  "decks": 2
+ },
+ {
+  "id": "w1082655793",
+  "height": 12,
+  "ways": [
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park",
+   "Science Park"
+  ],
+  "ground": 2,
+  "decks": 3
  }
 ]

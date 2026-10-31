@@ -73,6 +73,39 @@ cell statistics cannot tell from AkzoNobel's glare. Self-test drafts sit in
 the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
+**Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
+"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
+live, a POI or destination card, a re-measured copper tint, and the bounded
+Beeldbank search. The review
+sheet's IN GAME column and the gallery card work again in lane worktrees
+(#139, HISTORY "Review sheet sees the lane's own landmark"); the guard spec
+`tests/e2e/review-sheet-ingame.spec.ts` runs standalone, not in
+`check:canal`, because it needs a browser and the shared lock. Follow-ups:
+a POI or destination for De Roos, a blind counter on
+`de-roos-elevations.json`, a "free-standing glazing" class in audit:glb so
+serres and timber screens are not fitted to the ochre and green slots to
+dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
+waited 3 h behind 25 others today; the lock is not fair).
+
+**City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
+default"):** measure iPhone perf with the slot array at 128² (desktop was
+16.7 ms either way); a `timber` and a `metalRoof` slot (houseboat museum,
+Hannekes Boom, Vondeltuin, Hotel Jakarta, Odessa; Ronde Lutherse dome,
+American Hotel copper); a warm-grey roofTile keeping its tone instead of the
+black-tile slate tone (Uilenburger); evidence for Podium Mozaïek / He Hua /
+Centrale Markthal / Symphony / Haparandaweg cladding; drop the
+`materialSlotSource: 'inferred'` marker on tagged materials now that the
+default is the city look (check `_dress` first); a base-vs-base
+look-consistency control run when the browser lock is quiet; the missing
+bagYears (values in the #138 hand-back: olvg-west 1966, olvg-oost 1900,
+max-euwe-centrum 1905, academie-theater-dans 1996, jodenbreestraat-11 1996,
+begijnhof 1697, europarking-marnixstraat 1972; `landmark-bag-years.ts`
+writes to staging only, and olvg-west/oost have no manualCatalogue entry).
+Note: `build-manual-landmarks.ts` changed in #138, so its toolchain hash
+moved and the next full builder run re-exports every model.
+
 **Slop New York round (2026-10-29, user asked for an opus plan):** six
 lane briefs from reading mrdoob's slop-newyork, plan
 `docs/handoffs/slop-newyork-plan-20261029.md`, evidence
@@ -113,12 +146,15 @@ reverted the lane's change of `mapRender` in `ride-perf` / `landmark-lod-perf`
 to the render-to-render interval: `DESKTOP_BUDGET` is main-thread ms, so the
 MapLibre `_render` wrap stays (guarded on `vm.map`) until the frame host has
 its own render owner. `tests/perf/budgets.json` + `scripts/perf-gate.mjs`
-landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser
-verification pending:** the lane's run was mis-scoped to every spec (426/638
-in 2 h, lock held); two migrated specs failed there (`bike-xray` chase
-colours, `complete-city` contextualFeatures 0) and are classified
-not-migration-caused by reading only; a `ride-perf` + those two specs run is
-queued behind the lock. P0 deletions still open: study layers and Google
+landed with dated P0 baselines; `perf-gate.mjs ""` not yet run. **Browser verification done (2026-10-30):** `ride-perf` default
+variants pass with the restored `_render` owner; `bike-xray` ("bike draws
+after every building layer") and `complete-city` (contextualFeatures 0 of
+> 12,578) fail identically with their pre-migration spec files on the same
+tree, so they are reds on main, not from the migration (listed under "Reds
+on main" below); the `ride-perf` motion variant read 8 frames > 50 ms against
+a budget of 4 (p95 16.8, 0 > 100 ms, longest 100 ms) on a machine running
+three other browser lanes: load-induced by the 2026-10-16 doc's own spread,
+re-measure on a quiet machine before calling it a regression. P0 deletions still open: study layers and Google
 tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 `scripts/city-appearance/publish-area-geometry-demo.ts`,
 `scripts/build-3d-bundles.mjs:75`, `game-route.js:198 setGoogleTilesEnabled`,
@@ -128,6 +164,90 @@ tiles have consumers (`scripts/review/study-observed-sign-aspect.test.ts`,
 and the build chain), `index.html` script tags, the bundles. Lesson for
 `LANE-RULES.md`: one browser run ≤ ~20 min; a migration lane re-runs a
 representative subset, not every touched spec.
+State: **L1 engine host step 3 merged 2026-10-30** (#129, `bc3f9e664`):
+`?engine=own` rides with three.js owning the frame and no `maplibregl.Map`
+constructed. `src/canalRecall/engine/`: `worldViewApi.ts` (the `WorldView`
+interface, `vector-map.js` `@implements` it), `frameHost.ts` (one canvas, one
+renderer, one rAF with `tick(dtFixed)` for L8, context loss/restore, mapGuard
+and the governor attached; `SharedFrame.drive`), `cameraMap.ts` (MapLibre-exact
+camera in metres about the view centre: parity 0.00 px over 22 samples,
+desktop and iPhone), `ownWorldView.ts` (facades, own ground, vehicles,
+own-map overview as far field, `isWater`, clearance, rider cover, facade
+picking), typed `riderCover.ts` / `cameraClearance.ts` / `gameCamera.ts`
+(`vector-map.js` still runs its own copies: swap-in is a fix-level edit).
+Bundle `engine.bundle.js` (`build:canal-engine`, 89 KB), wired in `game.js`
+and `index.html`. Measured under the flag: desktop 140–146 draws, 29–30
+programs; iPhone 167 draws, 29 programs; `engine-own.spec.ts` green on both.
+Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
+specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
+overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
+dashed, route + active street draped, active-landmark highlight and marker,
+ferry pins, answered street) and POI / landmark / branded labels through
+`ownMap/labels.ts` + `labelPolicy.ts` (place labels also screened by their nl
+Wikipedia name, `engine/placeNames.ts`, Nieuwmarkt regression);
+`vector-map.js` gained `frameCanvas()`, `captureFrame()`, `jumpToLngLat()` so
+the `.map` fallbacks in `game-route.js` / `feedback/browser.ts` are gone.
+**Measured, in-page A/B desktop chase 12 s:** main-thread owned CPU 6.61 →
+1.97 ms/frame (gate ≥ 1.5 lower), draws 648 → 137, p95 22.5 → 17.8 ms, frame
+median vsync-bound both; not like-for-like (no trees, detailed buildings,
+signature landmarks, Google tiles, palette themes under the flag). iPhone
+`ENGINE=own`: engine-own, phone-memory, start-heading, context-restore green;
+60 s ride heap flat at 246 MB, textures 27 MB, buffers 78 MB, 0 MapLibre
+workers. Desktop gates green under the flag: context-restore, intro-perf,
+look-consistency (photo), open-squares, start-heading.
+**Still not under the flag:** trees, detailed buildings, signature landmarks,
+palette themes (Google tiles are being deleted). **Not done:** the 2026-10-10
+re-port (own picker, overview extract with rail/footway/landuse, ~2.7k lines)
+and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
+State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
+`?world=v1` is identical to the default path in the browser (five spots,
+desktop and iPhone: same feature ids and styled features per tile; Node
+`world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
+difference was stale cells (207 of 295 tiles' inputs had changed since L3
+compiled; `scripts/world/verify.ts` now catches staleness and the A/B runs it
+first) plus one ulp of `Math.cos` (Node's fdlibm vs Chrome's correctly rounded
+cos; `scripts/world/browserMath.ts` gives the compiler the browser's cos/sin,
+358 buildings city-wide). Cells decode inside the three-buildings worker
+(`WorldCellReader`; main thread gets 400-feature batches, longest task 3.3 ms
+at 1× / 7.3 ms at 4×; `?worldWorker=0` falls back). Format v2 runtime cells:
+no ATTR, compact ids: 15.86 → 13.45 MB gz. JS heap at the end of a 90 s
+desktop ride: default 1,262 MB, world 688 MB. **Cells published** to
+`public/data/extracts/amsterdam/world-v1/` (format 2, 604 cells) after the
+integrator's A/B. **Integration rule from now on:** any change to building
+tiles, facts, covers, kits or decorators needs `npm run world:compile &&
+npm run world:verify` and the re-published cells in the same integration
+(`verify` reports `staleTiles`). Integrator's A/B on the published cells: 3/3, 0 differing tiles, but the
+default path held ~6,000 more buildings at snapshot time (36,352 vs 30,410 at
+Westerkerk: more tiles resident, not different styling) and pixels differed
+up to 1.15 M of 1.3 M, above the 0.83–0.88 M default-vs-default noise: the
+world path streams tiles in later at page start (inflate wall time), which is
+step 4's flush/regroup and look-ahead work; measure time-to-resident per
+tile both ways. **Step 4 merged 2026-10-30** (`21a8d01db`):
+`engine/worldStreamer.ts` holds one `CellQueue` (plan order, ahead rank from
+the rider's motion, ≤ 2 reads per worker in flight, 36 resident cells,
+off-plan eviction), a pool of min(cores−1, 3) decode workers with cell
+affinity, and a per-frame `FrameBudget` (4 ms / 1 MiB) that chunk installs
+spend (`?uploadBudget=0` = one per frame); the compiler writes a 39 KB
+runtime `tiles.json`. Measured: last of the first four tiles resident at
+page start default 3,870 ms vs world 3,791 ms (was ~120 ms behind); 40 s
+cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
+0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
+JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
+start, which the script does not yet sample; the 36 resident cells plus
+per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
+7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+(12/18/24/36 resident cells, one decoded cell shared across tiles,
+transfer not copy), then chunk and own-ground builds onto the pool so
+`chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
+and the second own-ground worker can go, then road CSR (step 5).
+**Reds on main found by the programme's runs (2026-10-30), not yet owned:**
+`tests/e2e/bike-xray.spec.ts` "the chase bike keeps its own colours …" (bike
+draws after every building layer: expected > 128, got −1);
+`tests/e2e/complete-city.spec.ts` "the streamed city loads …"
+(contextualFeatures 0, want > 50 % of features: the citywide display prior is
+not applied, or the status counter is dead); `scripts/check-building-look-transition.ts`
+throws (`test:city-startup`). CI runs only lint and the boot smoke, so none of
+these block a push. Triage lane wanted: are they product-visible?
 State: **L3 world compiler merged 2026-10-30** (#130, `73e8b0ba1`, flag
 `?world=v1`, cells NOT published yet): WRLD v1 format
 (STRS/FOOT/ATTR/STYL/ROOF/GRP/HIDE, strict decoders, `test:world-format` 7/7),
@@ -265,14 +385,16 @@ Open, in order:
   junction pinned as a spot; the user decides grey and red on the strip.
   Also: the Dokwerker card shows while standing on the Rembrandtplein
   (landmark placement, content lane).
-  **Zebras and the Muntplein (user 2026-10-30 screenshots)**: lane
-  `lane/zebra-munt-20261030` (opus), running. Zebras by Arcam (Prins
-  Hendrikkade × Kattenburgerstraat) break into pieces at every BGT polygon
-  edge; 45 crossings in cell 0_0 dropped on cycle lanes; the crossing audit
-  measures against the clipped polygon, so it passes them. Muntplein: water
-  through the bridge road, a brown klinker band, the tram wye reads as
-  wireframe, 3 of 5 zebras drawn. City-wide rule plus a new `short` audit
-  category; both spots pinned as regressions.
+  **Zebras and the Muntplein, left open** (shipped 2026-10-30, HISTORY
+  "Continuous zebras"): the Muntplein S zebra is planned along its stripes
+  instead of across them (surveyMarkings orient/roadDirOf at that node), so
+  evidence cannot confirm it; zebras wider than 4 m (Muntplein S is ~8–10 m);
+  faint zebras in deep shadow can drop; 604 `short` rows remain (island
+  breaks, nodes on one lane of a dual carriageway; +2 at 4.8364,52.3515 since
+  road look B, not investigated); the Muntplein klinker band (road look tone);
+  7 BRU0001 parapet posts remain. Game frames for the Arcam/Muntplein spots
+  with the new evidence were never shot (Playwright lock); shoot them on the
+  next ride review.
   **Road look, continuity, left open** (shipped 2026-10-30 as look B, HISTORY
   "Road look continuity"): the kerb edge is under 1.5 px on desktop at far
   junctions (an `fwidth` ground-shader edge was not prototyped); the east kerb
@@ -1102,21 +1224,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Untagged streets under buildings, mixed-height fills, post-2020 guesses (2026-10-30).**
-  Passages OSM tags (`tunnel=building_passage`, `covered=yes`) are cut
-  (`scripts/cut-building-passages.ts`, 474 buildings). Still solid over a
-  street that OSM does not tag as passing under them, on the reviewed list in
-  `scripts/data/buildings-over-roads.json`: Gerard Ruttenhof (`…108857`),
-  Staalmeesterslaan (`…148630`), Javakade (`…247056`), Het Buitenhof
-  (`0457…063471`), Oosterdoksstraat (`w453809679`, `w779659694`), Science
-  Park (`w1082655793`, `…164372`). Check each with a panorama, and where the
-  street runs under the building, tag the way in OSM or add a passage
-  override. 14 published gap fills have an AHN top ≥ 10 m over their p70
-  (tower on a low base, or a tree at the edge), e.g. Gelderlandplein
-  `…241555` (7.7 m box, top 29 m): review them as one box each. 171 OSM
-  outlines AHN sees as flat stay at the 9 m guess, and outlines OSM dates
-  after 2019 keep the new-build rules' guess; re-measure them when AHN5 is
-  on PDOK.
+- **"New Market" is a street name (found by L1, 2026-10-30).** In
+  `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
+  (52.372955, 4.900113) is named "New Market": an English translation leaked
+  into a Dutch street name, so when Nieuwmarkt is asked and every name is
+  earned, "New Market" is drawn next to it on both engines. Fix in the
+  extract generator (`scripts/build-amsterdam-extract.ts` /
+  `translate-extracts-to-english.ts` must not write translations into the
+  name field), regenerate, and the own-map overview names; then pin a
+  regression (the engine's Nieuwmarkt test already screens nl names).
 - **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
   Seen in the teaser phone shot: the card hides and the view jumps to a
   different zoom in one frame as the d-pad returns. Ease the zoom/padding
@@ -1172,6 +1288,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Wikipedia articles on plain buildings never reach the card (2026-10-30).**
+  User, Emerald Empire / Venetiëhof on KNSM-eiland: the card says only
+  "Built 1995" although OSM relation r3679879 carries `wikipedia=nl:Emerald
+  Empire` and `wikidata=Q66764687`. `build-amsterdam-extract.ts`
+  `classify()` admits landmarks only via tourism/historic/civic amenity,
+  the POI layer filters amenity/shop/tourism/leisure, and
+  `build-building-facts.ts` ignores name/wikipedia/wikidata. Measured:
+  1,698 OSM buildings carry a wiki tag (8 joined to a landmark); 1,257
+  Wikidata building articles with coordinates land in an OSM footprint and
+  are linked nowhere (200 OSM-tagged, 1,057 by point; 126 English, 1,131
+  Dutch-only). Beyond buildings, 5,611 located Wikidata items with
+  articles share no Q-id with the extracts (942 bridges, 789 streets, 513
+  sculptures, 243 works of art, 127 statues, 88 murals…; bridges/streets
+  unverified by title). Lane brief
+  `docs/handoffs/lane-wikipedia-buildings-20261030.md`; audit
+  `npm run audit:wikipedia-buildings`. Open: the lane itself.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
@@ -2107,12 +2239,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after the tunnel lane).**
-  - Walls are light concrete near the pavement tone: faint at chase distance on the far side, with grey streaks at the wall ends by the portals.
-  - The IJ medians read as raised islands, because adjacent carriageway strips keep their own walls; merge the strips that touch.
-  - In `scripts/tunnel-places-shots.mjs`, the Piet Hein and Wibautstraat cameras miss their cuts.
-  - Coverage gaps: no cut on shallow or long-taper ramps (wall under 0.45 m); no portal mouths on rideable tunnels; slots capped at 150 m.
-  - Cost: about +0.5 s `prepareCell` at the IJ cell; measure on a quiet machine.
+- **Tunnel cuts: follow-ups (2026-10-30, after round 3).**
+  - Phone-frame walls are still faint at the IJ ramp after round 3's coping and gutter line; the cut reads through the mouths. It may need a wall shadow or AO, not more colour.
+  - The IJ median wedge still looks pale on the phone, despite the park drape.
+  - Motor approaches still uncut (8/59), with reasons in `probe-portal-misses.ts`:
+    - Michiel de Ruijter west has no mouth (the DTM reads under the IJsei deck; it needs a structure layer);
+    - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
+  - The Piet Hein east camera frames the ramp from the side; re-aim it.
 
 - **Movable-bridge kinds the kit cannot draw (audit 2026-10-30).** The audit read aimed panoramas for 48 timber/blank register rows plus 12 steel ones (contact sheets in `artifacts/bridge-audit/`). It applied overrides to `BASCULE_STYLE` and `BASCULE_COLOUR` in `bridgeKit.ts`. Still missing, by reach:
   - steel lattice portals drawn as the white timber frame (now green only): Oranjebrug BRU0146, BRU0148, Westergasbrug BRU0193, Peperbrug BRU0281, Ezelsbrug BRU1904, Aluminiumbrug BRU0222;
@@ -3453,6 +3586,13 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
+- **OSM outlines with nothing standing (2026-10-30).** AHN4 and AHN5 both
+  see bare ground under some OSM-only outlines, now drawn as 1 m slabs
+  (`source: "low"` in `scripts/data/osm-guessed-heights.json`). Examples are
+  a cleared lot (`w1343730490`), a paved yard (`w540078369`) and the
+  Romneyloods site (`w531438245`). Check them and delete them in OSM. The
+  3,179 outlines that keep a guess are mostly 2023+ new builds: re-run
+  `scripts/measure-guessed-heights.ts` when an AHN flight after 2023 is out.
 - **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
   paint and look from the orthophoto.** Surveyed roads draw no procedural
   paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural

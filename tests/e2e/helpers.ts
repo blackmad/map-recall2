@@ -32,6 +32,14 @@ export type OpenRouteOptions = {
   controlMode?: 'street' | 'relative' | 'absolute';
 };
 
+/**
+ * `ENGINE=own` runs a spec against the engine world view (src/canalRecall/engine/ownWorldView.ts, `?engine=own`):
+ * three.js owns the frame and MapLibre is never constructed. openRoute applies it; specs that `goto` themselves call it.
+ */
+export async function useEngine(page: Page): Promise<void> {
+  if (process.env.ENGINE === 'own') await page.addInitScript(() => { (window as any).__canalRecallEngine = 'own'; });
+}
+
 /** Boot Canal Recall, set prefs via the hidden selects, and start a route. */
 export async function openRoute(page: Page, options: OpenRouteOptions = {}): Promise<void> {
   const {
@@ -59,9 +67,11 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
     await page.route(/3dbag|cesium3dtiles/i, (route) => route.abort());
   }
   if (process.env.PW_OFFLINE_MAP) await serveMapLibreOffline(page);
+  await useEngine(page);
 
   await page.goto(`/canal-drive/${query}`);
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+  if (process.env.ENGINE === 'own') expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap.engine), 'ENGINE=own: the engine world view is in charge').toBe('own');
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);
   if (viewMode) await setHiddenSelect(page, 'view-mode', viewMode);

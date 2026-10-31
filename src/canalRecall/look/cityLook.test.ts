@@ -3,16 +3,17 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { sunlitMeasuredWall } from './sunny.ts';
 import * as THREE from 'three';
-import { MATERIAL_SLOTS, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
-import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { MATERIAL_SLOTS, CITY_ROOF, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
+import { BRICK20_FROM, CITY_LIT_LEVEL, CITY_LIT_LEVELS, cityLitLevel, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { photoMatchedWallTint } from './chunkWallExposure.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
-test('flag: only ?cityLook=1 turns the city look on', () => {
+test('flag: the city look is on unless ?cityLook=0 opts out', () => {
   assert.equal(cityLookEnabled('?cityLook=1'), true);
   assert.equal(cityLookEnabled('?cityLook=0'), false);
-  assert.equal(cityLookEnabled('?sharedFrame=1'), false);
-  assert.equal(cityLookEnabled(''), false);
+  // On by default (#137, 2026-10-30): a page without the parameter draws the city look.
+  assert.equal(cityLookEnabled('?sharedFrame=1'), true);
+  assert.equal(cityLookEnabled(''), true);
 });
 
 test('slot table: every material slot samples a layer; frame and paint read plain white; glass panes clamp', () => {
@@ -40,12 +41,13 @@ test('slot table: every material slot samples a layer; frame and paint read plai
 });
 
 test('slot tints are the city palette mapping (one rule for recipe houses and landmarks)', () => {
-  // brick without an exposure record does not take the default look's generic sunlit gain (#73) in the city look: the
-  // city look's chunks keep the plain litWallGain, and the slots must match them (building-look.spec "share one brick", #76)
-  assert.deepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
-  assert.notDeepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(photoMatchedWallTint('brick', cityTint('brick', '#9a5240'), null, null, 'sunny')), 255]);
+  // Since the re-level (2026-10-30) the city look's chunks take the sunny wall exposure (litFacadeWallGain), so brick
+  // without an exposure record takes the default look's generic sunlit gain (#73) too, and the slots still match the
+  // chunks (building-look.spec "share one brick", #76). The legacy look keeps the plain tint.
+  assert.deepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(photoMatchedWallTint('brick', cityTint('brick', '#9a5240'), null, null, 'sunny')), 255]);
+  assert.notDeepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
   assert.deepEqual(slotTintBytes('brick', '#9a5240', null, 'legacy'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
-  assert.deepEqual(slotTintBytes('brick', '#808080'), [...hexToRgb(cityLookTint('brick', '#808080')), 255], 'the city look mapping (grey brick stays grey)');
+  assert.deepEqual(slotTintBytes('brick', '#808080', null, 'legacy'), [...hexToRgb(cityLookTint('brick', '#808080')), 255], 'the city look mapping (grey brick stays grey)');
   assert.deepEqual(slotTintBytes('stone', '#cfc2a6'), [...hexToRgb(cityLookTint('stone', '#cfc2a6')), 255], 'stone takes no gain');
   assert.deepEqual(slotTintBytes('glass', '#123456'), [255, 255, 255, 255]);
   assert.deepEqual(slotTintBytes('paint', '#D9B24C'), [0xd9, 0xb2, 0x4c, 255], 'paint keeps the authored colour');
@@ -77,7 +79,7 @@ test('dress: a legacy landmark mesh (no UVs, untagged "brick") takes the brick s
   assert.equal(wall.material.userData.cityLook, true);
   assert.deepEqual(wall.material.userData.cityVariant, { lit: true, kind: 'slot', uv: 'box', side: THREE.FrontSide });
   assert.equal(wall.geometry.getAttribute('layer').getX(0), slotLayerOf('brick'));
-  assert.equal(Math.round(wall.geometry.getAttribute('tint').getX(0) * 255), hexToRgb(cityTint('brick', '#9a5240'))[0]);
+  assert.equal(Math.round(wall.geometry.getAttribute('tint').getX(0) * 255), slotTintBytes('brick', '#9a5240')[0]);
   assert.deepEqual(wall.userData.citySlot, { slot: 'brick', tint: '#9a5240', inferred: true, from: 'brick', layer: slotLayerOf('brick') });
   assert.equal(glass.geometry.getAttribute('layer').getX(0), slotLayerOf('glass'));
   assert.equal(glass.material.userData.cityVariant.uv, 'uv', 'authored UVs are kept');
@@ -180,8 +182,10 @@ test('measured brick/accent: cell x tint lands on the authored hex; every unmeas
 });
 
 test('review corrections: light slate keeps its lightness, mid-grey joinery and dark stone keep their colour (flag on only)', () => {
-  // Dark slate: the city tones, as before (parity with chunk roofs and recipe houses).
-  assert.equal(cityLookTint('slate', '#4a525d'), cityTint('slate', '#4a525d'));
+  // Dark slate (the landmark kit's #4a525d): the city's default measured slate, not the lightest (re-level 2026-10-30);
+  // near-black slate the darkest measured one.
+  assert.equal(cityLookTint('slate', '#4a525d'), CITY_ROOF.slate[0]);
+  assert.equal(cityLookTint('slate', '#2a2e33'), CITY_ROOF.slate[1]);
   // Light slate / zinc: lighter than the lightest city tone, and ordered.
   const l = (hex: string) => rgbToHsl(hexToRgb(hex))[2];
   assert.ok(l(cityLookTint('slate', '#707e86')) > l(cityTint('slate', '#707e86')));
@@ -240,3 +244,29 @@ test('measured glass samples the grey pane with the authored tint; measured bric
   assert.equal(SLOT_LAYERS[wall.userData.citySlot.layer].cell, 'brick');
 });
 
+
+test('re-level 2026-10-30: level 1 under the sunny rig, 0.9 under the legacy one', () => {
+  assert.equal(cityLitLevel('sunny'), 1);
+  assert.equal(cityLitLevel('legacy'), 0.9);
+  assert.equal(CITY_LIT_LEVEL, CITY_LIT_LEVELS.sunny, 'the default look is sunny');
+});
+
+test('re-level 2026-10-30: level faces of an inferred slate roof are a flat roof, pitched faces stay slate', () => {
+  const city = createCityLook(THREE, { brick: null });
+  // A box: top face level (glTF +Y up), sides vertical; a tilted plane stays pitched.
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(10, 2, 10), Object.assign(new THREE.MeshStandardMaterial({ color: '#4a525d' }), { name: 'slate' }));
+  const pitched = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), Object.assign(new THREE.MeshStandardMaterial({ color: '#4a525d' }), { name: 'slate' }));
+  pitched.rotation.x = -Math.PI / 4;
+  const root = new THREE.Group(); root.add(deck, pitched);
+  city.dress(root, { lit: true, infer: true });
+  const layers = (m: any) => new Set(Array.from(m.geometry.getAttribute('layer').array as Uint8Array));
+  assert.deepEqual(layers(deck), new Set([slotLayerOf('slate'), slotLayerOf('bitumen')]));
+  assert.deepEqual(layers(pitched), new Set([slotLayerOf('slate')]));
+  const top = Array.from({ length: deck.geometry.getAttribute('normal').count }, (_, i) => i).find(i => deck.geometry.getAttribute('normal').getY(i) > 0.99)!;
+  assert.equal(Math.round(deck.geometry.getAttribute('tint').getX(top) * 255), slotTintBytes('bitumen', '#4a525d')[0]);
+  // A declared (recipe) slate is left as authored.
+  const tagged = new THREE.Mesh(new THREE.BoxGeometry(10, 2, 10), new THREE.MeshStandardMaterial({ color: '#4a525d' }));
+  tagged.material.userData = { materialSlot: 'slate', tint: '#4a525d' };
+  city.dress(tagged, { lit: true });
+  assert.deepEqual(layers(tagged), new Set([slotLayerOf('slate')]));
+});

@@ -45,7 +45,7 @@ import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace.js';
 import type { Rect } from './groundStore.js';
 import { RAIL_VIADUCTS, viaductMesh, type ViaductBuild } from './railViaducts.js';
-import { cutMeshes, cutRing, type Cut } from './tunnels.js';
+import { cutMedianQuads, cutMeshes, cutRing, type Cut } from './tunnels.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
@@ -104,6 +104,8 @@ export interface CellInput {
   cuts?: readonly Cut[];
   /** Every placed deck's footprint near the cell (street mask exceptions). */
   deckRingsAround: readonly Vec2[][];
+  /** The cell's BGT ground polygons standing over water as a deck (wetGround.ts; also in deckRingsAround). */
+  wetGround?: readonly Vec2[][];
   flatDecks: readonly Vec2[][];
   /** Per flat deck (same order): register id and whether it is movable ('Beweegbare brug'). */
   flatDeckMeta?: readonly { id: string; movable: boolean }[];
@@ -567,11 +569,15 @@ export function buildCell(input: CellInput): BuiltCell {
     for (const f of [0.3, 0.5, 0.7]) { const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f); if (i >= 0 && roadIndex.onDeck(p.x[i], p.y[i])) hit++; }
     return hit >= 2;
   };
+  // Water under a surveyed plein is not open water beside a deck (wetGround.ts): the Muntsluis (BRU0001), a 7 m strip
+  // inside the 60 m Muntplein, drew its parapets as a green wireframe triangle on the plein (user 2026-10-30).
+  const wetRings = (input.wetGround ?? []).map(r => ({ r, box: r.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [Infinity, Infinity, -Infinity, -Infinity]) }));
+  const openWater = wetRings.length ? (x: number, y: number) => overWater(x, y) && !wetRings.some(({ r, box }) => x >= box[0] && x <= box[2] && y >= box[1] && y <= box[3] && pointInRing(r, x, y)) : overWater;
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
     const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
@@ -612,6 +618,13 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const c of cuts) {
     const m = cutMeshes(c, inCell);
     add('deckBody', m.walls, 'deck'); add('asphalt', m.floor, 'band');
+    // The verges between merged carriageways (tunnels.ts cutMedianQuads): grass on the land, which lies on the floors.
+    const quads = cutMedianQuads(c, inCell);
+    if (quads.length) {
+      const g = emptyMesh();
+      for (const q of quads) drapeBisect(g, q.flatMap(p => [p[0], p[1]]), [0, 1, 2, 0, 2, 3], onLand, LIFT.area, fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
+      add('park', g, 'osmArea');
+    }
   }
 
   phase('waterDecks');

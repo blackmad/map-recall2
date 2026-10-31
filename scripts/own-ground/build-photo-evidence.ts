@@ -28,15 +28,18 @@ import { pointAt, stations } from '../../src/canalRecall/ownGround/drape.ts';
 import { encodeRuns, flagRuns, PHOTO_EVIDENCE_VERSION, ZEBRA_DROP, type PhotoEvidenceFile } from '../../src/canalRecall/ownGround/photoEvidence.ts';
 import type { Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 import { OrthoTiles, ORTHO_ATTRIBUTION } from './ortho.ts';
+import { scoreZebra } from '../../src/canalRecall/ownGround/zebraEvidence.ts';
 
 const arg = (k: string, d: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
 const OUT = arg('out', 'public/data/extracts/amsterdam/staging/photo-evidence.json');
 const ONLY = process.argv.find(a => a.startsWith('--only='))?.slice(7).split(',');
 const COUNT = process.argv.includes('--count');
+/** --zebras-only: sample the zebras alone (tuning the zebra score; the lanes, centre lines and fietsstraten are left out). */
+const ZEBRAS_ONLY = process.argv.includes('--zebras-only');
 const ROOT = 'public/data/extracts/amsterdam';
 const bytes = async (path: string) => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
 
-export const RULES = { RED_MIN: 1.08, RED_STATION: 0.45, LANE_BRIDGE_M: 3, LANE_MIN_M: 6, LINE_DELTA: 22, LINE_SHARE: 0.12, LINE_MAX_SHARE: 0.85, CENTRE_BRIDGE_M: 9, CENTRE_MIN_M: 9, FIETS_KEEP: 0.65, FIETS_MIN: 0.2, ZEBRA_SEARCH_M: 6, ZEBRA_SCORE: 0.07, ZEBRA_MOVE_M: 0.5 };
+export const RULES = { RED_MIN: 1.08, RED_STATION: 0.45, LANE_BRIDGE_M: 3, LANE_MIN_M: 6, LINE_DELTA: 22, LINE_SHARE: 0.12, LINE_MAX_SHARE: 0.85, CENTRE_BRIDGE_M: 9, CENTRE_MIN_M: 9, FIETS_KEEP: 0.65, FIETS_MIN: 0.2, ZEBRA_SEARCH_M: 6, ZEBRA_SCORE: 0.07, ZEBRA_MOVE_M: 0.5, ZEBRA_MODE: (process.argv.find(a => a.startsWith('--zebra-mode='))?.slice(13) ?? 'window') as 'full' | 'window' };
 const isRed = (c: readonly number[]) => c[0] >= 30 && c[0] >= RULES.RED_MIN * Math.max(c[1], c[2]);
 const isGreen = (c: readonly number[]) => c[1] > c[0] + 4 && c[1] > c[2] + 4;
 const isWhite = (c: readonly number[]) => Math.min(c[0], c[1], c[2]) > 195;
@@ -73,7 +76,7 @@ async function main(): Promise<void> {
     const tasks: Task[] = [];
 
     // ---- lanes
-    for (const w of ways) {
+    for (const w of ZEBRAS_ONLY ? [] : ways) {
       if (!own.has(w.id) || !covered.has(w.id) || !isCarriage(w)) continue;
       const lanes = w.section.bands.filter(b => b.kind === 'cycle_lane');
       if (!lanes.length) continue;
@@ -105,7 +108,7 @@ async function main(): Promise<void> {
     }
 
     // ---- centre lines (the ways surveyMarkings would dash)
-    for (const w of ways) {
+    for (const w of ZEBRAS_ONLY ? [] : ways) {
       if (!own.has(w.id) || !isCarriage(w) || !twoWay(w) || rankOf(w.tags.highway) < 1) continue;
       if (w.tags.cyclestreet === 'yes' || w.tags.bicycle_road === 'yes' || w.tags.junction === 'roundabout') continue;
       const st = stations(w.points), total = st[st.length - 1];
@@ -173,35 +176,10 @@ async function main(): Promise<void> {
         out.sampled!.zebras! += plans.length;
         tasks.push({ tiles, run: () => {
           for (const c of plans) {
-            const n = left(c.r), us: number[] = [], score: number[] = [];
-            for (let u = -RULES.ZEBRA_SEARCH_M - 1.5; u <= RULES.ZEBRA_SEARCH_M + 1.5 + 1e-6; u += 0.25) {
-              const vs: number[] = [], ls: number[] = [];
-              for (let v = c.from; v <= c.to; v += 0.05) {
-                let l = 0, m = 0;
-                for (const a of [-0.5, 0, 0.5]) { const q = ortho.rgbAt(c.centre[0] + c.r[0] * (u + a) + n[0] * v, c.centre[1] + c.r[1] * (u + a) + n[1] * v); if (q) { l += luma(q); m++; } }
-                if (m) { vs.push(v); ls.push(l / m); }
-              }
-              // Periodogram over the stripe pitches painted (0.8–1.3 m), the strongest.
-              let amp = 0;
-              const k = ls.length, mean = ls.reduce((a, b) => a + b, 0) / Math.max(1, k);
-              if (k >= 40) for (let period = 0.8; period <= 1.3 + 1e-6; period += 0.05) {
-                let re = 0, im = 0;
-                for (let i = 0; i < k; i++) { re += (ls[i] - mean) * Math.cos(2 * Math.PI * vs[i] / period); im += (ls[i] - mean) * Math.sin(2 * Math.PI * vs[i] / period); }
-                amp = Math.max(amp, 2 * Math.hypot(re, im) / k);
-              }
-              us.push(u); score.push(amp / (mean + 10));
-            }
-            // Smoothed over the 3 m stripe length (±1.25 m), the best position within the search.
-            let best = -1, bu = 0;
-            for (let i = 0; i < us.length; i++) {
-              if (Math.abs(us[i]) > RULES.ZEBRA_SEARCH_M) continue;
-              let t = 0, k = 0;
-              for (let j = 0; j < us.length; j++) if (Math.abs(us[j] - us[i]) <= 1.25) { t += score[j]; k++; }
-              if (k && t / k > best) { best = t / k; bu = us[i]; }
-            }
+            const { best, bu, far } = scoreZebra(c, (x, y) => ortho.rgbAt(x, y), { searchM: RULES.ZEBRA_SEARCH_M, mode: RULES.ZEBRA_MODE });
             const du = best < RULES.ZEBRA_SCORE ? ZEBRA_DROP : Math.abs(bu) < RULES.ZEBRA_MOVE_M ? 0 : Math.round(bu * 10);
             out.zebras!.push(Math.round(c.centre[0] * 10), Math.round(c.centre[1] * 10), du);
-            report.push({ cell: key, zebra: c.centre.map(v => +v.toFixed(1)), score: +best.toFixed(3), farScore: +Math.min(score[0], score[score.length - 1]).toFixed(3), du: du === ZEBRA_DROP ? 'drop' : du / 10 });
+            report.push({ cell: key, zebra: c.centre.map(v => +v.toFixed(1)), score: +best.toFixed(3), farScore: +far.toFixed(3), du: du === ZEBRA_DROP ? 'drop' : du / 10, r: c.r.map(v => +v.toFixed(3)), from: +c.from.toFixed(1), to: +c.to.toFixed(1) });
           }
         } });
       }
@@ -220,7 +198,7 @@ async function main(): Promise<void> {
       for (let x = Math.min(...xs) + step / 2; x < Math.max(...xs); x += step) for (let y = Math.min(...ys) + step / 2; y < Math.max(...ys); y += step) if (ownIndex.findAtLevel(x, y, false) === k) pts.push([x, y]);
       return pts;
     };
-    if (fiets.length) {
+    if (fiets.length && !ZEBRAS_ONLY) {
       const fp = fiets.map(k => gridOf(k, 0.5)), cp = cycles.map(k => gridOf(k, 1.5)).flat();
       const tiles = new Set<string>([...fp.flat(), ...cp].map(tileOf));
       out.sampled!.fietsSections += fiets.length;

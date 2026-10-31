@@ -2,6 +2,7 @@ import { BuildingContextIndex } from './buildingContextIndex.js';
 import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
 import { footprintTone } from './overviewTransition/basemapOverview.js';
 import { ChunkBuildQueue } from './chunkBuildQueue.js';
+import { FrameBudget } from './engine/worldStreamer.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
 // Browser adapter: facade walls for the streamed city as one three.js custom
@@ -375,6 +376,18 @@ type GroundLift = { applied: Map<string, number>; pending: Set<string>; features
  * (docs/perf-motion-stutter-20261016.md). Staged, the old chunk keeps drawing until the new one swaps in.
  */
 export const INSTALL_BUDGET_MS = 4;
+/**
+ * Chunk geometry the main thread installs (and the GPU then uploads) per frame, bytes of typed arrays
+ * (engine/worldStreamer.ts FrameBudget, lane L4). The first chunk of a frame always installs, as before; small
+ * chunks (kits, boats, a sparse tile's walls) may follow it in the same frame while they fit. `?uploadBudget=N`
+ * (bytes; 0 = one chunk per frame, the old rule) overrides it for measurement.
+ */
+export const INSTALL_BUDGET_BYTES = 1 << 20;
+function installBudgetBytes(): number {
+  try { const v = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('uploadBudget') : null; if (v != null && v !== '' && Number.isFinite(Number(v))) return Math.max(0, Number(v)); } catch { /* no location */ }
+  return INSTALL_BUDGET_BYTES;
+}
+const chunkBytes = (c: Chunk): number => [c.positions, c.uvs, c.layers, c.tints, c.accents, c.indices].reduce((s, a) => s + (a?.byteLength ?? 0), 0);
 type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number; options: BuildOptions; boundParentIds: string[]; lift?: GroundLift; ranges?: Map<string, { start: number; count: number }> };
 
 
@@ -536,8 +549,8 @@ export class ThreeBuildings {
     material.uniforms.masks.value = set.mask;
     material.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
     material.uniforms.flatColour.value = LOOK_VARIANTS[look].flatColour ? 1 : 0;
-    // Lit facades take the sunny look's wall exposure (look/sunny.ts litFacadeWallGain); the opt-in city look keeps its own.
-    if (material.uniforms.wallGain) material.uniforms.wallGain.value = this.cityLook ? LOOK_VARIANTS[look].litWallGain : litFacadeWallGain(LOOK_VARIANTS[look].litWallGain);
+    // Lit facades take the sunny look's wall exposure (look/sunny.ts litFacadeWallGain), in the city look too since its re-level (2026-10-30).
+    if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[look].litWallGain);
     this.material = material;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     if (this.cityLook) {
@@ -1255,9 +1268,10 @@ export class ThreeBuildings {
     if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
   }
 
+  private readonly uploadBudget = new FrameBudget(INSTALL_BUDGET_MS, installBudgetBytes());
   private drainStaged(): void {
     const deadline = performance.now() + INSTALL_BUDGET_MS;
-    let installed = false;
+    this.uploadBudget.begin();
     while (this.staged.length) {
       const job = this.staged[0];
       if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(job.key, job.source)) { this.staged.shift(); continue; }
@@ -1273,11 +1287,10 @@ export class ThreeBuildings {
         this.applyGroundLift(job.chunk.positions, job.ranges!, lift, deadline);
         if (lift.todo?.length) break; // out of budget: carry on next frame
       }
-      // One install per frame: the geometry upload follows at the next render.
-      if (installed) break;
+      // Installs per frame within the upload budget (the first always): the geometry upload follows at the next render.
+      if (!this.uploadBudget.take(chunkBytes(job.chunk))) break;
       this.staged.shift();
       this.install(job.key, job.source, job.chunk, job.ms, job.options, job.boundParentIds, lift);
-      installed = true;
       if (performance.now() > deadline) break;
     }
     this.scheduleStage();
@@ -1513,7 +1526,7 @@ export class ThreeBuildings {
       // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
       const variant = LOOK_VARIANTS[this.look];
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
-        bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
+        bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) },
       }));
     }

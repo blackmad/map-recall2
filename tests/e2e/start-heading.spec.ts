@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { openRoute, setHiddenSelect } from './helpers';
+import { openRoute, setHiddenSelect, useEngine } from './helpers';
 
 // User report 2026-10-02: the bike started pointing away from the route, with the camera
 // behind it, so the first thing a rider saw was the route line running off behind them.
@@ -63,6 +63,7 @@ for (const ride of rides) {
     page.on('pageerror', error => { if (/startHeading|routeSelection|_setupRace/i.test(`${error.message} ${error.stack ?? ''}`)) headingErrors.push(error.message); });
     if (ride.from) {
       await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+      await useEngine(page);
       await page.goto('/canal-drive/');
       await page.waitForFunction(() => !!(window as any).canalRecallGame);
       await setHiddenSelect(page, 'travel-mode', ride.travelMode);
@@ -101,7 +102,7 @@ for (const ride of rides) {
       const legBearing = first ? Math.atan2(first.y - y, first.x - x) : null;
       const firstLeg = first ? ((first.x - x) * Math.cos(roadAngle) + (first.y - y) * Math.sin(roadAngle)) / Math.hypot(first.x - x, first.y - y) : 0;
       const along = (a: number) => Math.cos(a) * Math.cos(roadAngle) + Math.sin(a) * Math.sin(roadAngle);
-      const gameBearing = game.vectorMap.map?.getBearing?.();
+      const gameBearing = game.vectorMap.camera?.bearing?.();
       const wanted = (((angle + Math.PI / 2) * 180 / Math.PI) % 360 + 360) % 360;
       // The camera looks along rotation - 90 degrees in the world frame (y down); bearing = rotation.
       const cameraForward = game.camera.rotation - Math.PI / 2;

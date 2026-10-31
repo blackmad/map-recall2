@@ -11,7 +11,7 @@ import { gunzipSync } from 'node:zlib';
 import { encodeLine } from './parks';
 import { kerbEdges, RoadIndex } from './roadSurfaces';
 import { prepareWays, type LocalWay } from './streets';
-import { buildSurveyMarkings, ZEBRA, type DrawnCrossing } from './surveyMarkings';
+import { buildSurveyMarkings, crossingStripPoints, ZEBRA, type DrawnCrossing } from './surveyMarkings';
 import { auditCrossings, AUDIT_CATEGORIES, CROSSING_AUDIT_MAX, lineAngle, type AuditCategory, type GroundAt } from './crossingAudit';
 import { GroundStore, toLocal } from './groundStore';
 import { auditCity, cellCrossings, exactGround, roadDirOf } from './crossingCells';
@@ -102,6 +102,84 @@ test('a BGT voetpad strip across the road at a crossing draws as carriageway wit
   assert.equal(idx.classAt(0, 20), 'foot');
 });
 
+// Lane zebra-munt 2026-10-30 (user at the Prins Hendrikkade by Arcam: "why do we still have these broken zebras?"):
+// one row across every road-level surface, fietspad and parking strip included, broken only at a raised island.
+/** The 8 m carriageway with a 2 m fietspad on its east side at road level, a 2.5 m parking strip on the west. */
+const WIDE: Poly[] = [
+  { c: 'carriage', k: 'asphalt', ring: rect(-4, -60, 4, 60) },
+  { c: 'cycle', k: 'cycle', ring: rect(4, -60, 6, 60) },
+  { c: 'parking', k: 'klinker', ring: rect(-6.5, -60, -4, 60) },
+  { c: 'foot', k: 'paving', ring: rect(-12, -60, -6.5, 60) },
+  { c: 'foot', k: 'paving', ring: rect(6, -60, 12, 60) },
+];
+const CYCLE_WAY = { id: 5, tags: { highway: 'cycleway' }, g: [[5, -60], [5, 20.6], [5, 60]] as Vec2[] };
+
+test('a zebra runs across the carriageway, the fietspad and the parking strip as one row', () => {
+  const r = build(WIDE, ways([ROAD_WAY, FOOTWAY]), [zebraAt([0, 20])]);
+  assert.equal(r.crossings.length, 1);
+  const c = r.crossings[0];
+  assert.ok(c.from <= -5.5 && c.to >= 5.5, `row ${c.from.toFixed(1)}..${c.to.toFixed(1)} spans parking to fietspad`);
+  const xs = c.stripes.flatMap(s => s.pieces.flatMap(p => p.map(q => q[0])));
+  assert.ok(Math.max(...xs) > 5 && Math.min(...xs) < -5, 'stripes on the fietspad and the parking strip');
+  assert.ok(Math.max(...xs) < 6 && Math.min(...xs) > -6.5, 'none on the pavement');
+  assert.ok((c.len ?? ZEBRA.len) >= 4, 'a wide row takes the long stripes');
+  assert.deepEqual(zero(r.audit.counts), []);
+});
+
+test('a crossing node on the fietspad with the footway across it draws the zebra there, joined to the carriageway row', () => {
+  const w = ways([ROAD_WAY, { ...FOOTWAY, g: [[-12, 20.6], [5, 20.6], [12, 20.6]] }, CYCLE_WAY]);
+  // The carriageway node alone is cut at the fietspad on main; the fietspad node (a cycleway vertex) was dropped.
+  const r = build(WIDE, w, [zebraAt([5, 20.6]), zebraAt([0, 20])]);
+  assert.equal(r.plan.onCycle, 0, 'the fietspad node is planned');
+  assert.equal(r.crossings.length, 1, `one row, got ${r.crossings.length}`);
+  assert.deepEqual(zero(r.audit.counts), []);
+  // Without a footway across it the node is a cycle crossing's (the cycle pass draws those): still dropped.
+  const alone = build(WIDE, ways([ROAD_WAY, CYCLE_WAY]), [zebraAt([5, 20.6])]);
+  assert.equal(alone.plan.onCycle, 1);
+  assert.equal(alone.crossings.length, 0);
+});
+
+test('a raised island breaks the row; the two pieces lie on one line', () => {
+  const polys: Poly[] = [
+    { c: 'carriage', k: 'asphalt', ring: rect(-12, -60, -2, 60) },
+    { c: 'island', k: 'paving', ring: rect(-2, -60, 1, 60) },
+    { c: 'carriage', k: 'asphalt', ring: rect(1, -60, 11, 60) },
+    { c: 'foot', k: 'paving', ring: rect(-18, -60, -12, 60) },
+    { c: 'foot', k: 'paving', ring: rect(11, -60, 17, 60) },
+  ];
+  // One node per carriageway half, 1.5 m apart along the road: the second slides onto the first's line.
+  const w = ways([{ id: 1, tags: { highway: 'secondary' }, g: [[-7, -60], [-7, 60]] }, { id: 6, tags: { highway: 'secondary' }, g: [[6, -60], [6, 60]] }, { ...FOOTWAY, g: [[-18, 20], [17, 21.5]] }]);
+  const r = build(polys, w, [zebraAt([-7, 20]), zebraAt([6, 21.5])]);
+  const xs = r.crossings.flatMap(c => c.stripes.flatMap(s => s.pieces.flatMap(p => p.map(q => q[0]))));
+  assert.ok(!xs.some(x => x > -1.8 && x < 0.8), 'no stripe on the island');
+  const ys = r.crossings.map(c => c.centre[1]);
+  assert.ok(Math.max(...ys) - Math.min(...ys) < 0.01, `pieces on one line, centres at y ${ys.map(y => y.toFixed(2)).join(', ')}`);
+  assert.deepEqual(zero(r.audit.counts), []);
+});
+
+test('BGT voetpad strips across the fietspad and between the lanes at a crossing draw as road (Arcam)', () => {
+  const polys: Poly[] = [
+    { c: 'carriage', k: 'asphalt', ring: rect(-4, -60, 4, 60) },
+    { c: 'cycle', k: 'cycle', ring: [[4, -60], [7, -60], [7, 18], [4, 18]] },
+    { c: 'foot', k: 'paving', ring: rect(4, 18, 7, 22) },
+    { c: 'cycle', k: 'cycle', ring: [[4, 22], [7, 22], [7, 60], [4, 60]] },
+    { c: 'foot', k: 'paving', ring: rect(-10, -60, -4, 60) },
+    { c: 'foot', k: 'paving', ring: rect(7, -60, 13, 60) },
+  ];
+  const w = ways([ROAD_WAY, FOOTWAY]);
+  const index = new RoadIndex([cellOf(polys)]);
+  assert.ok(index.crossingStrips(crossingStripPoints(w, [zebraAt([0, 20])])) >= 1);
+  assert.equal(index.classAt(5.5, 20), 'cycle', 'the strip across the fietspad takes the fietspad');
+  assert.equal(index.classAt(10, 20), 'foot', 'the pavement stays');
+});
+
+test('the short category: a zebra that stops short of the road it crosses', () => {
+  const groundAt: GroundAt = (x) => (Math.abs(x) <= 4 ? { cls: 'carriage', mesh: 'asphalt' } : Math.abs(x) <= 6 ? { cls: 'cycle', mesh: 'cycle' } : { cls: 'foot', mesh: 'paving' });
+  const n: Vec2 = [-1, 0], mk = (from: number, to: number): DrawnCrossing => ({ kind: 'zebra', source: 'node', ref: [0, 0], centre: [0, 0], r: [0, 1], from, to, stripes: Array.from({ length: Math.round(to - from) }, (_, i) => { const v = from + 0.5 + i; return { i, pieces: [[[n[0] * v, -1.5], [n[0] * v, 1.5]]] as [Vec2, Vec2][] }; }) });
+  assert.equal(auditCrossings([mk(-4, 4)], groundAt, ZEBRA).counts.short, 1, 'the carriageway alone, the fietspaden either side unpainted');
+  assert.equal(auditCrossings([mk(-6, 6)], groundAt, ZEBRA).counts.short, 0, 'kerb to kerb across every road-level surface');
+});
+
 test('the audit catches fans, duplicates, alternate stripes, paint off the road and implausible rows', () => {
   const groundAt: GroundAt = (x, y) => (Math.abs(x) <= 4 ? { cls: 'carriage', mesh: y > 40 ? 'klinker' : 'asphalt' } : { cls: 'foot', mesh: 'paving' });
   const row = (cy: number, r: Vec2, is: number[], from = -3.5, to = 3.5, splay = 0): DrawnCrossing => {
@@ -147,6 +225,13 @@ for (const reg of CROSSINGS) {
     const r = auditCrossings(near, exactGround(ref!.index), ZEBRA, () => true, roadDirOf(ref!.ways));
     assert.ok(near.length >= reg.count[0] && near.length <= reg.count[1], `${near.length} zebras within ${reg.radiusM} m (want ${reg.count.join('–')})`);
     assert.deepEqual(zero(r.counts), [], r.flagged.map(f => f.notes.join('; ')).join(' | '));
+    if (reg.pinShort === undefined) return;
+    // The pin is live: zebras clipped to the carriageway class alone (main before lane zebra-munt) are short here.
+    const carriageOnly: typeof buildSurveyMarkings = input => buildSurveyMarkings({ ...input, zebraClasses: new Set(['carriage']) });
+    const old: DrawnCrossing[] = [];
+    for (const k of keys) { const c = await cellCrossings(store, k, carriageOnly); if (c) old.push(...c.crossings.filter(q => Math.hypot(q.centre[0] - x, q.centre[1] - y) <= reg.radiusM)); }
+    const pin = auditCrossings(old, exactGround(ref!.index), ZEBRA, () => true, roadDirOf(ref!.ways));
+    assert.ok(pin.counts.short >= reg.pinShort, `carriageway-only zebras: ${pin.counts.short} short (≥ ${reg.pinShort}, the pin is live)`);
   });
 }
 

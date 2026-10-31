@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadavg } from 'node:os';
-import { openRoute } from './helpers';
+import { openRoute, useEngine } from './helpers';
 
 // Riding frame-cost baseline (2026-10-09 perf cycle).
 // Opt-in measurement, not a gate:
@@ -231,6 +231,7 @@ test('motion stutter: steady ride through the Jordaan to Kinkerstraat', async ({
   });
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
   if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
+  await useEngine(page);
   await page.goto(process.env.BUILDING_TYPES === '0' ? '/canal-drive/?buildingTypes=0' : '/canal-drive/');
   await page.waitForFunction(([a, b]) => (window as any).canalRecallGame?.routePois?.some((p: any) => p.id === a) && (window as any).canalRecallGame.routePois.some((p: any) => p.id === b), [MOTION_START, MOTION_DEST], { timeout: 90_000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });

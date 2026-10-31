@@ -64,11 +64,18 @@ function blank(c: HTMLCanvasElement) {
   for (let i = 3; i < d.length; i += 4) if (d[i]) return false;
   return true;
 }
+/** The game's world canvas through the world view (engine/worldViewApi.ts): either engine (`?engine=own` has no MapLibre map). */
+function worldCanvas(): HTMLCanvasElement | null {
+  return w.canalRecallGame?.vectorMap?.frameCanvas?.() ?? null;
+}
+function worldCapture(): Promise<HTMLCanvasElement | null> | null {
+  return w.canalRecallGame?.vectorMap?.captureFrame?.() ?? null;
+}
 function snapshot(target: Target) {
   try {
-    const gameMap = w.canalRecallGame?.vectorMap?.map;
+    const gameCanvas = worldCanvas();
     // The map canvas alone is captured through the HUD path, which composites both.
-    const source = target.canvas && target.canvas === gameMap?.getCanvas?.() ? (document.getElementById('gameCanvas') as HTMLCanvasElement || target.canvas) : target.canvas || target.image;
+    const source = target.canvas && target.canvas === gameCanvas ? (document.getElementById('gameCanvas') as HTMLCanvasElement || target.canvas) : target.canvas || target.image;
     if (!source) return '';
     const width = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
     const height = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
@@ -78,7 +85,7 @@ function snapshot(target: Target) {
     c.width = Math.round(width * ratio); c.height = Math.round(height * ratio);
     const ctx = c.getContext('2d')!;
     if (source.id === 'gameCanvas') {
-      const mapCanvas = gameMap?.getCanvas?.();
+      const mapCanvas = gameCanvas;
       if (mapCanvas) {
         const gameRect = source.getBoundingClientRect(), mapRect = mapCanvas.getBoundingClientRect();
         ctx.drawImage(mapCanvas, (mapRect.left - gameRect.left) / gameRect.width * c.width,
@@ -95,7 +102,7 @@ function snapshot(target: Target) {
 function gameContext(): Context {
   const g = w.canalRecallGame;
   if (!g) return {};
-  const center = g.vectorMap?.map?.getCenter?.();
+  const center = g.vectorMap?.camera?.center?.();
   return {
     city: g.cityId, travelMode: g.travelMode, viewMode: g.viewMode, themeMode: g.themeMode,
     buildingLook: g.vectorMap?.buildingLook?.(), state: g.state,
@@ -146,8 +153,8 @@ function open(options?: OpenOptions) {
   // Capture a fresh WebGL render in its render callback; no permanent drawing
   // buffer and no continuous screenshot cost during normal gameplay.
   capturePromise = new Promise<void>(resolve => {
-    const gameMap = w.canalRecallGame?.vectorMap?.map;
-    const map = current.map || (current.canvas && (current.canvas.id === 'gameCanvas' || current.canvas === gameMap?.getCanvas?.()) ? gameMap : null);
+    const gameFrame = !current.map && current.canvas && (current.canvas.id === 'gameCanvas' || current.canvas === worldCanvas());
+    const map = current.map || null;
     let done = false;
     const finish = () => {
       if (done) return; done = true;
@@ -157,7 +164,9 @@ function open(options?: OpenOptions) {
     };
     // 'render' fires after every painted frame, styled or still streaming, and
     // the drawing buffer is readable until the frame is composited.
-    if (map?.once && map.triggerRepaint) { map.once('render', finish); map.triggerRepaint(); setTimeout(finish, 2000); }
+    const fresh = gameFrame ? worldCapture() : null;
+    if (fresh) { void fresh.then(finish, finish); setTimeout(finish, 2000); }
+    else if (map?.once && map.triggerRepaint) { map.once('render', finish); map.triggerRepaint(); setTimeout(finish, 2000); }
     else finish();
   });
 }

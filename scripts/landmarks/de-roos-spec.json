@@ -1,0 +1,262 @@
+{
+ "id": "de-roos",
+ "name": "De Roos (P.C. Hooftstraat 183)",
+ "modelUrl": "./models/de-roos.glb",
+ "suppressOsmIds": [
+  "NL.IMBAG.Pand.0363100012236970"
+ ],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.8754121,
+   52.35861
+  ],
+  "headingDegrees": 0,
+  "lengthMetres": 46.2,
+  "widthMetres": 37.9
+ },
+ "surveyed": {
+  "anchor": [
+   4.8754121,
+   52.35861
+  ],
+  "northOffsetDegrees": 0,
+  "source": "BAG pand 0363100012236970 ring (CC0) in local east/south metres from the anchor (de-roos-footprints.json), read in a frame along the Van Eeghenlaan building line (bearing 66.9); part heights from the 3DBAG LoD2.2 roof planes (CC BY 4.0) above the -1.28 m NAP ground; facades from gemeentelijk monument 222055's register text and Gemeente Amsterdam panoramas 2024-2025 (CC BY 4.0), see de-roos-inventory.json."
+ },
+ "groundAltitudeMetres": 0,
+ "facingOffsetDegrees": 0,
+ "materialOverrides": {
+  "stone": "#eceae3",
+  "white": "#f6f5f0",
+  "concrete": "#939ca1",
+  "greyBrick": "#b9c6cc",
+  "blue": "#c6dbe3",
+  "red": "#b4614a",
+  "slate": "#5f6569",
+  "copper": "#7f8b90",
+  "glass": "#4b585e",
+  "frame": "#2f3a38",
+  "dark": "#2b3533",
+  "ochre": "#f2f0ea",
+  "green": "#9fb7b8"
+ },
+ "attribution": {
+  "title": "De Roos, P.C. Hooftstraat 183 / Van Eeghenlaan 21",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/d2466b7d-9fb5-464f-8c73-96fc2157c5f8?_format=json",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0): the 1880 plastered villa with pilasters, baluster panels, console cornice, attic arch, chamfered park corner, risalit pediment, two bay windows and its mansard; the 1897/1912 Van Arkel/Jacot wing with red-tile hips, the five-sided serre with tile skirt and balcony, thermal window and glass serres; the 1943 garage. Read from the gemeentelijk monument 222055 description and Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+ },
+ "bagYear": 1880,
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.8757104,
+     52.3586187
+    ],
+    [
+     4.8757059,
+     52.3586241
+    ],
+    [
+     4.8756603,
+     52.3586879
+    ],
+    [
+     4.8755775,
+     52.3588134
+    ],
+    [
+     4.8755546,
+     52.3588068
+    ],
+    [
+     4.8754627,
+     52.3587823
+    ],
+    [
+     4.8754508,
+     52.3587626
+    ],
+    [
+     4.8754759,
+     52.3587279
+    ],
+    [
+     4.87545,
+     52.3587209
+    ],
+    [
+     4.8754383,
+     52.3586976
+    ],
+    [
+     4.8754728,
+     52.35865
+    ],
+    [
+     4.8753945,
+     52.3586288
+    ],
+    [
+     4.8753903,
+     52.3586346
+    ],
+    [
+     4.8753774,
+     52.3586312
+    ],
+    [
+     4.8753741,
+     52.3586359
+    ],
+    [
+     4.875361,
+     52.3586378
+    ],
+    [
+     4.875335,
+     52.3586309
+    ],
+    [
+     4.8753281,
+     52.3586234
+    ],
+    [
+     4.8753313,
+     52.3586191
+    ],
+    [
+     4.8753195,
+     52.3586158
+    ],
+    [
+     4.8753142,
+     52.3586229
+    ],
+    [
+     4.8752374,
+     52.3586024
+    ],
+    [
+     4.8752089,
+     52.3586424
+    ],
+    [
+     4.8751627,
+     52.3586301
+    ],
+    [
+     4.8751422,
+     52.3586589
+    ],
+    [
+     4.8750321,
+     52.3586295
+    ],
+    [
+     4.8751448,
+     52.3584708
+    ],
+    [
+     4.8752019,
+     52.3584857
+    ],
+    [
+     4.875254,
+     52.3584994
+    ],
+    [
+     4.8752537,
+     52.3584999
+    ],
+    [
+     4.8753317,
+     52.3585202
+    ],
+    [
+     4.8753321,
+     52.3585197
+    ],
+    [
+     4.8753403,
+     52.3585218
+    ],
+    [
+     4.8753399,
+     52.3585224
+    ],
+    [
+     4.8753766,
+     52.358532
+    ],
+    [
+     4.8753772,
+     52.3585311
+    ],
+    [
+     4.875444,
+     52.3585497
+    ],
+    [
+     4.8754447,
+     52.3585487
+    ],
+    [
+     4.8754679,
+     52.358555
+    ],
+    [
+     4.8754682,
+     52.3585546
+    ],
+    [
+     4.8754769,
+     52.3585569
+    ],
+    [
+     4.8754766,
+     52.3585573
+    ],
+    [
+     4.875546,
+     52.3585758
+    ],
+    [
+     4.8755462,
+     52.3585755
+    ],
+    [
+     4.8755559,
+     52.3585781
+    ],
+    [
+     4.8755557,
+     52.3585784
+    ],
+    [
+     4.8756611,
+     52.3586068
+    ],
+    [
+     4.8756615,
+     52.3586063
+    ],
+    [
+     4.8756701,
+     52.3586084
+    ],
+    [
+     4.8757104,
+     52.3586187
+    ]
+   ]
+  ]
+ },
+ "partyWallBearings": [
+  67
+ ]
+}
