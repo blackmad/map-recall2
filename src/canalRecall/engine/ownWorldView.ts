@@ -38,6 +38,7 @@ import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
 import { LandmarkHighlight } from './landmarkHighlight';
+import { LabelOcclusion } from './labelOcclusion';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -147,6 +148,9 @@ export class OwnWorldView {
   readonly _labels: LabelLayer;
   _highlightMarker: any = null;
   private readonly landmarkHighlight = new LandmarkHighlight();
+  readonly labelOcclusion = new LabelOcclusion();
+  /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
+  labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   private quizQuiet = false;
   private spoilersSuspended = false;
   private loader: LoaderFrame | null = null;
@@ -414,6 +418,20 @@ export class OwnWorldView {
     const frame = cameraFrame({ center: [lx, ly], zoom, bearing: cam.bearing, pitch: cam.pitch, fovDeg: cam.fovDeg, elevation: cam.elevation }, this.host.viewport(), cam.lat);
     const b = cam.bounds();
     const [x0, y0] = toLocal(b.west, b.south), [x1, y1] = toLocal(b.east, b.north);
+    // POI labels behind nearer buildings are not drawn (engine/labelOcclusion.ts), tested against the resident
+    // footprints at each full placement only (the grid is (re)built lazily there, not per frame). Every resident, not
+    // sampleFeatures' first 20,000: the city holds ~36,000 and the cap dropped the blocks around the camera.
+    // `?labelOcclusion=0` turns it off.
+    const city = this._completeCity;
+    if (this.labelOcclusionOn && city?.residentFeatures) {
+      const eye = cam.eye();
+      let indexed = false;
+      this._labels.setOcclusion(c => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        const [lng, lat] = fromLocal(c.at![0], c.at![1]);
+        return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
+      });
+    } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
   }
 
