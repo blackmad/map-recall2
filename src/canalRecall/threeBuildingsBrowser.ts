@@ -394,7 +394,6 @@ type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number;
 
 
 export class ThreeBuildings {
-  readonly layer: any;
   private visible = true;
   private THREE: any;
   private scene: any;
@@ -467,7 +466,6 @@ export class ThreeBuildings {
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural', options: { detail?: FacadeDetail } = {}) {
     this.look = this.requestedLook = look;
     this.detail = options.detail ?? facadeDetailFlag();
-    this.layer = this.makeLayer();
     // Nearest-ahead chunk first (chunkRank); `?lookAhead=0` keeps request order.
     this.pending.setRank(key => this.lookAheadOn === false ? NaN : this.chunkRank(key));
   }
@@ -1507,9 +1505,8 @@ export class ThreeBuildings {
     this.camera = camera;
     this.scene = scene;
     this.renderer = renderer;
-    // CPU copies are freed after upload, so a restored context needs fresh meshes. In the shared frame the frame
-    // calls rebuildAfterContextLoss once its new renderer exists (onContextRestored).
-    if (!this.sharedFrame) map.getCanvas().addEventListener('webglcontextrestored', () => this.rebuildAfterContextLoss());
+    // CPU copies are freed after upload, so a restored context needs fresh meshes: the shared frame calls
+    // rebuildAfterContextLoss once its new renderer exists (onContextRestored).
     this.material = this.newMaterial();
     if (this.lit) this.depthMaterial = createFacadeDepthMaterial(THREE);
     this.materials.set(this.look, this.material);
@@ -1583,8 +1580,7 @@ export class ThreeBuildings {
   /**
    * Draw in the page's shared three.js frame instead of an own custom layer:
    * one renderer, scene and light rig with the landmarks, trees and vehicles,
-   * plus the lit facade material and sun shadows. Call
-   * this instead of adding `layer` to the map.
+   * plus the lit facade material and sun shadows. The only way the facades draw.
    */
   attachToSharedFrame(frame: any, options: { order?: number } = {}): void {
     if (this.sharedFrame) return;
@@ -1613,26 +1609,4 @@ export class ThreeBuildings {
 
   /** Whether this layer draws through the shared frame. */
   get inSharedFrame(): boolean { return !!this.sharedFrame; }
-
-  private makeLayer(): any {
-    const owner = this;
-    return {
-      id: 'three-building-facades', type: 'custom', renderingMode: '3d',
-      onAdd(map: MapLike, gl: WebGL2RenderingContext) {
-        const THREE = (window as any).CanalRecallThree?.THREE;
-        if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
-        owner.THREE = THREE;
-        const renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        renderer.autoClear = false;
-        owner.setup(map, renderer, new THREE.Camera(), new THREE.Scene());
-      },
-      render(_gl: WebGL2RenderingContext, args: any) {
-        if (!owner.prepareFrame()) return;
-        owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
-        owner.renderer.resetState();
-        owner.renderer.render(owner.scene, owner.camera);
-      },
-      onRemove() { owner.dispose(); },
-    };
-  }
 }

@@ -19,6 +19,6 @@ for(const id of ['ams-1170059','orientation-2','orientation-3'])for(const [speci
    if(p.archetype==='trained-flat'&&Math.abs(l.offset[0])>.1){const line=new THREE.Vector3(a.elements[12],a.elements[13],0).normalize();assert.ok(Math.abs(line.dot(axis))>1-1e-6,'flat crown lobes remain parallel to the trained screen');const oldAxis=new THREE.Vector3(b.elements[0],b.elements[1],0).normalize();assert.ok(Math.abs(Math.abs(line.dot(oldAxis))-Math.abs(Math.cos(2*p.rotation)))<1e-6,'baseline rotation demonstrably crosses the flat plane');if(id==='ams-1170059')assert.ok(Math.abs(line.dot(oldAxis))<.2);}
   }
  }
- now.layer.onRemove();old.layer.onRemove();
+ now.remove();old.layer.onRemove();
 }
 console.log(JSON.stringify({corrected,palmsUnchanged,forms:16,budgets:'unchanged',inventory:'unchanged'}));

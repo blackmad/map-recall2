@@ -44,6 +44,6 @@ layer.clear();assert.equal(layer.meshes.length,0);
 // Removal must invalidate an in-flight index response, not revive the dead layer.
 let finishIndex;globalThis.fetch=()=>new Promise(resolve=>{finishIndex=resolve;});
 const removed=new InventoryTrees(map,projection);removed.setEnabled(true);const loading=removed.load('/data/extracts/amsterdam');
-removed.layer.onRemove();finishIndex({ok:true,json:async()=>index});await loading;
+removed.remove();finishIndex({ok:true,json:async()=>index});await loading;
 assert.equal(removed.ready,false);assert.equal(removed.enabled,false);assert.equal(removed.pending.size,0);
 console.log('Passed: city changes and toggle abort in-flight tiles, preserve fallback, and render mixed species in bounded instanced draws.');

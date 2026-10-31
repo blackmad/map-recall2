@@ -29,6 +29,8 @@ export interface TunnelSite {
     ride?: LngLat[];
     /** The ground here (a median between carriageways merged into one trench) lies on the cut floor within 0.3 m. */
     groundAtFloor?: LngLat[];
+    /** A cut's median grass (cutMedianQuads) covers these points: the verge between merged carriageways is grass. */
+    grassAt?: LngLat[];
   };
 }
 
@@ -46,6 +48,12 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     expect: { groundAtFloor: [[4.91166, 52.37264], [4.91162, 52.37265]] },
   },
   {
+    id: 'ij-tunnel-median-wedge-north',
+    label: 'IJ-tunnel south ramp: the 12-14 m flat verge where the inner carriageways part toward the portal drew as pale land on the floor (round 4: merges up to 20 m when flat, draws as grass)',
+    at: [4.91219, 52.3733],
+    expect: { grassAt: [[4.91219, 52.3733], [4.91216, 52.37320]] },
+  },
+  {
     id: 'piet-heintunnel-east-south',
     label: 'Piet Heintunnel east ramp, south carriageway (way 895958377): a 0.5 m island 4-8 m out hid the 8 m wall at 14-18 m (round 3)',
     at: [4.95889, 52.37275],
@@ -53,7 +61,7 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
   },
   {
     id: 'michiel-de-ruijtertunnel-west-cover',
-    label: 'Michiel de Ruijtertunnel west: the ramp is cut up to the IJsei bus-station deck (round 3). No mouth: the DTM measures the floor under the deck (+0.3 m over 120 m), so its level needs a structure layer',
+    label: 'Michiel de Ruijtertunnel west: the ramp is cut up to the IJsei bus-station deck (round 3). No mouth, by evidence (round 4): the road runs on near grade (+0.3 m over 40 m in the DTM) under the elevated bus deck (OSM busway bridges 67498391/143163511/312969436, layer 1, no placed deck) and the station hall; the panorama shows no headwall, the station structure is the cover',
     at: [4.89820, 52.38057],
     expect: { kind: 'ramp', motor: true },
   },

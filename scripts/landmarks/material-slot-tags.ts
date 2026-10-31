@@ -46,6 +46,16 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'joods-verzetsmonument': {
     dark: {slot: 'stone', why: 'a stele of polished black stone (builder header, Gemeente Amsterdam panoramas), not painted joinery'},
   },
+  kalvertoren: {
+    white: {slot: 'accent', why: 'white stone bands, keystones, portals and gable dressings on the red-brick Singel range (w01-192L)'},
+    red: {slot: 'roofTile', why: 'red pantile saddle roofs behind the two Singel gables (tower-singel-even-e), not brick'},
+    pink: {slot: 'paint', why: 'painted red shield of the Amsterdam arms over the west portal (w01-192)'},
+    sandstone: {slot: 'stone', why: 'grey stone plinth of the Singel range'},
+    concrete: {slot: 'stone', why: 'the roof colonnade columns and beam read as cast stone in w01-192L'},
+    bronze: {slot: 'slate', why: 'dark metal caps of the stone-block attic and the tower (w03-190, crown-singel-265) and the curtain spandrels'},
+    canopyGlass: {slot: 'glass', why: 'glass balustrades, the lattice canopies and the cafe storey'},
+    dark: {slot: 'frame', why: 'dark window frames, rails, mullions and door leaves'},
+  },
 };
 
 /** The declared slot for a palette name in a model, if any. */

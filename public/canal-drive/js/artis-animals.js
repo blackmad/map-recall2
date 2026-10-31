@@ -7,16 +7,9 @@
       this.maplibregl = maplibregl;
       this.active = extractRoot.endsWith('/amsterdam');
       this.root = new URL('models/artis-animals/', location.href);
-      // `?sharedFrame=1`: a root in the page's one three.js frame, lit by its rig.
+      // A root in the page's one three.js frame, lit by its rig.
       this.sharedFrame = options.sharedFrame || null;
-      this.scene = this.sharedFrame ? new THREE.Group() : new THREE.Scene();
-      if (!this.sharedFrame) {
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0x657054, 2.1));
-        const sun = new THREE.DirectionalLight(0xffefd9, 2);
-        // Y-up model frame (x east, y up, z south): the rig's sun, fixed in the world.
-        const toSun = window.CanalRecallThree.SUN_DIRECTION || [-0.44, -0.63, 0.64];
-        sun.position.set(toSun[0], toSun[2], -toSun[1]); this.scene.add(sun);
-      }
+      this.scene = new THREE.Group();
       this.origin = maplibregl.MercatorCoordinate.fromLngLat([4.915,52.366], .12);
       this.unit = this.origin.meterInMercatorCoordinateUnits();
       this.transform = new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z)
@@ -24,35 +17,21 @@
         .multiply(new THREE.Matrix4().makeRotationX(Math.PI/2));
       this.entries = []; this.pending = new Map(); this.failures = new Map();
       this.loader = new GLTFLoader(); this.loader.setMeshoptDecoder(MeshoptDecoder);
-      this.layer = {id:'artis-animals', type:'custom', renderingMode:'3d',
-        onAdd:(_map,gl) => {
-          this.camera = new THREE.Camera();
-          this.renderer = new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl});
-          this.renderer.autoClear = false;
-        },
-        render:(_gl,args) => {
-          if (!this.nearby() || !this.entries.some(e=>e.group.visible)) return;
-          const transform = new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z)
-            .scale(new THREE.Vector3(this.unit,-this.unit,this.unit))
-            .multiply(new THREE.Matrix4().makeRotationX(Math.PI/2));
-          this.camera.projectionMatrix.fromArray(args.defaultProjectionData?.mainMatrix || args).multiply(transform);
-          this.renderer.resetState(); this.renderer.render(this.scene,this.camera);
-        },
-        onRemove:() => {
-          this.removed = true; map.off('moveend',this.move);
-          const geometries = new Set(), materials = new Set(), textures = new Set();
-          this.scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of o.material ? (Array.isArray(o.material)?o.material:[o.material]) : []){materials.add(m);for(const v of Object.values(m))if(v?.isTexture)textures.add(v);}});
-          for(const x of [...geometries,...materials,...textures])x.dispose();
-          this.renderer?.dispose();
-        }};
       this.move = () => this.update();
-      if (this.sharedFrame) this.sharedFrame.register('artis', {
+      this._unregister = this.sharedFrame?.register('artis', {
         root: this.scene,
         mercatorFromLocal: () => this.transform.elements,
         beforeRender: () => this.nearby() && this.entries.some(e=>e.group.visible),
       }, {order: options.sharedOrder ?? 10});
-      else map.addLayer(this.layer);
       map.on('moveend',this.move); this.update();
+    }
+    /** Leave the frame and free its geometry, materials and textures (what the legacy layer's onRemove did). */
+    remove() {
+      this._unregister?.(); this._unregister = null;
+      this.removed = true; this.map.off('moveend',this.move);
+      const geometries = new Set(), materials = new Set(), textures = new Set();
+      this.scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of o.material ? (Array.isArray(o.material)?o.material:[o.material]) : []){materials.add(m);for(const v of Object.values(m))if(v?.isTexture)textures.add(v);}});
+      for(const x of [...geometries,...materials,...textures])x.dispose();
     }
     setExtractRoot(root) {this.active=root.endsWith('/amsterdam');this.update();}
     nearby() {

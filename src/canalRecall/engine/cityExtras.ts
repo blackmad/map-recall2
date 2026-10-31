@@ -18,6 +18,9 @@
 
 const W = () => globalThis as any;
 
+/** Minimum interval between landmark ground re-bases (ms). */
+export const LANDMARK_REBASE_MS = 1500;
+
 export interface CityExtrasHost {
   readonly cameraMap: any;
   readonly sharedFrame: any;
@@ -134,10 +137,29 @@ export class CityExtras {
     this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat));
     this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM));
   }
-  refreshGroundBases(): void {
+  /**
+   * New relief or decks arrived. Trees re-base at once (cheap: one height per tree). Landmarks re-base at most every
+   * LANDMARK_REBASE_MS, with a trailing pass from `tick`: a street chunk samples the relief under every ground-level
+   * vertex of every pand (signature-landmarks-source.js _applyChunkPandBases), 0.38 ms a frame in the fair A/B when
+   * it ran on each ground revision (60 calls in 12 s against MapLibre's 10).
+   */
+  refreshGroundBases(now = performance.now()): void {
     this.trees?.refreshGroundBases?.();
-    this.signature?.refreshGroundBases?.();
+    this.landmarkRebaseDue = true;
+    this.tick(now);
   }
+  /** Per frame: runs a due landmark re-base once the throttle allows. */
+  tick(now = performance.now()): void {
+    if (!this.landmarkRebaseDue || now - this.landmarkRebasedAt < LANDMARK_REBASE_MS) return;
+    this.landmarkRebaseDue = false;
+    this.landmarkRebasedAt = now;
+    this.signature?.refreshGroundBases?.();
+    this.landmarkRebases++;
+  }
+  private landmarkRebaseDue = false;
+  private landmarkRebasedAt = -Infinity;
+  /** Landmark re-bases run (perf probe). */
+  landmarkRebases = 0;
 
   setTreesVisible(visible: boolean): void {
     this.treesVisible = !!visible;

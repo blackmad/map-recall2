@@ -332,16 +332,16 @@ for (const query of QUERIES) {
       });
       report.spots.push({ spot: spot.name, building: { id: building.id, heightM: building.heightM, axisDeg: Math.round(building.axisDeg) }, walls: pairs, bike });
     }
-    // Legacy landmarks: each model carries its own lights in model space. Where does each one's sun point in the world?
+    // Landmarks with their own lights in model space (none since L1 step 6): where does each one's sun point in the world?
     await teleport(page, { lng: 4.8926, lat: 52.3725, bearing: 0 });
     await page.waitForTimeout(2500);
     await teleport(page, { lng: 4.8926, lat: 52.3725, bearing: 0 });
     await settle(page);
     report.landmarkSuns = await page.evaluate(() => {
       const l = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
-      // One scene per model (legacy frame under `?cityLook=1`), or the one scene for all of them, lit in its anchor world.
+      // Since L1 step 6 the landmarks have no own scenes or lights (the shared frame's one rig lights them), so this
+      // list is empty unless a per-model scene with its own lights comes back.
       const scenes = (l?._entries ?? []).filter((e: any) => e.scene).map((e: any) => ({ id: e.spec.id, scene: e.scene, m: e.transform.elements }));
-      if (l?._batchLegacy && l._batchScene && l._mercatorFromWorld) scenes.push({ id: 'one-scene', scene: l._batchScene, m: l._mercatorFromWorld });
       return scenes.map((e: any) => {
         const suns = e.scene.children.filter((c: any) => c.isDirectionalLight).sort((a: any, b: any) => b.intensity - a.intensity);
         if (!suns.length) return null;

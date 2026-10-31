@@ -1,5 +1,160 @@
 # Canal Recall — what is built
 
+**`?engine=own` now beats MapLibre on frame CPU; the legacy per-layer code is gone (2026-10-31, #129, L1 hand-back 2).**
+Fair A/B (desktop chase, MapLibre then own back to back): before the fixes
+7.76 vs 7.52 ms owned frame CPU; after them 8.26 vs 5.07 and 11.91 (loaded
+machine) vs 4.14, p99 54 → 43 and 86 → 34 ms. What changed: the landmark
+ground-height refresh runs at most every 1.5 s with a trailing pass
+(`_applyChunkPandBases` 57 → 9 calls), a full label placement only when the
+camera moved or every 400 ms (engineLabels 0.40 → 0.29 ms), and the overview
+discards its flat map fills inside the radius the own ground fully covers.
+The suspected shader double-compile was not real: both engines compile 53–56
+programs after landing and the count swings with what loads in the window.
+The programs budget now lives in `tests/perf/budgets.json` (32); the own
+engine measures 36, and the ~20 variants are the own-ground materials
+(textured or not, layer bitmasks, `customProgramCacheKey` blend3/cut3, each
+with an `-ownFade` twin), not the landmark materials: a P4 materials item.
+Step 6 removed the per-participant custom layers, renderers and lights from
+signature landmarks, detailed buildings, player vehicles, pyramidal roofs,
+three-buildings, the highlight marker, inventory trees and ARTIS (net −930
+lines), `landmarks/batchedLegacyFrame.ts` and the facades fallback in
+`vector-map.js`; lab pages create their own SharedFrame; headless checks
+still load and place models. `vectorMap.setLoop({ tick(dtFixed), frame(dt,
+alpha) })` is the fixed-step hook for the steer model (game.js/car.js wiring
+is the integrator's next step). The Leaflet map picker (`map-picker.js`, 424
+lines) was unreachable: nothing called `show` or entered `MAP_SELECT`; deleted
+with its script tag instead of ported. Not yet re-ported: the v2 overview
+extract (rail, footway, landuse) and the footprint worker.
+**Tunnel cuts round 4 (2026-10-31).**
+- **Why the phone walls didn't show:** the chase camera sits high over the
+  quay, so the near wall shows only its top.
+- **Round 3 gutter:** it lay under the carriageway bands (0.02 m against
+  0.03 m), so it never showed.
+- **New in round 4:**
+  - a floor shade band along each wall foot (0.06 m up, 35 % of the wall
+    depth);
+  - a dark coping and cap;
+  - a stained face.
+- **Median merges:** gaps up to 20 m merge when their ground lies flat on
+  the floors, and draw as grass (IJ median north; `grassAt` check).
+- **Uncut approaches:** the 8 remaining sunken motor approaches were judged
+  from panoramas to need no cut. They are open courts or wide cuts with
+  banks, plus Stationsweg's wall-plus-bank outside the city. Michiel de
+  Ruijter west has no mouth because the station is the cover.
+- **Shot harness bug:** Playwright routes never reach the dedicated
+  own-ground worker, so every `BUNDLES_DIR` "after" shot before this showed
+  the checkout's own geometry. Round 3's phone verdict ("looks like round 2")
+  was taken from such shots, and the round-3 Piet Hein What's New image was
+  replaced with a valid one. The note is in the header of
+  `scripts/tunnel-places-shots.mjs`.
+
+**Street art, street articles and promoted landmarks (2026-10-31).** The
+four follow-ups of the building-article lane, in one pass.
+- *Street-side art is clickable from the ground.* `scripts/build-street-art.ts`
+  joins the 775 named OSM `tourism=artwork` / `historic=memorial|monument`
+  points inside the tiles with the 990 Wikidata art items that have an
+  article (by `wikidata=*` tag, else within 25 m, else standalone), into
+  `street-art.json` (1,427 points, 988 with a lede, 743 KB). The runtime
+  (`src/canalRecall/streetArt.ts`, `StreetArtIndex.nearest`, 14 m click
+  radius) answers a click that hits no building and no landmark; the card
+  names the piece, its kind, artist and year, with the English lede, photo and
+  link. 960 Dutch ledes were translated through the same batch hand-off as
+  the buildings (`--master=scripts/data/amsterdam-street-art.json`). The
+  orientation POI layer gained an `art` category (ground band, culture label
+  class, 693 points) so sculptures appear as cues too. Gate:
+  `npm run test:street-art` (Homomonument, De Dokwerker, Het Lieverdje).
+- *Streets with an article get a ride card.* `street-knowledge.json` came only
+  from the 500-street quiz pool, so Zeedijk, Waterlooplein and Sarphatistraat
+  had no card at all. `scripts/build-street-articles.ts` matches Wikidata
+  street/square items to `streets-routing.json` / `squares.json` names within
+  250 m (797 matched, 793 with text, all English after translation) and
+  `build-street-knowledge.ts` merges them as `article_streets_*` entries
+  (1,255 entries now). A street item often also carries a district or levee
+  class (Zeedijk: street, levee, neighbourhood, Chinatown), so only classes
+  that make it not-a-street at all disqualify it. Gate:
+  `npm run test:street-articles`.
+- *Famous unlinked buildings are landmarks.* `scripts/promote-building-articles.ts`
+  promotes article records with eight or more sitelinks into `landmarks.json`
+  as `article_landmarks_<Q>` with footprint, centre, prominence
+  60 + 4 × sitelinks and the four nearest landmark names as distractors:
+  Johan Cruyff Arena, Olympic Stadium, Muiderslot, Amstel station, Cobra
+  Museum, Diamond Museum, Museum of Bags and Purses (7). Nine of the first
+  sixteen candidates (Paradiso, Magna Plaza, Trippenhuis, Rembrandt Tower, De
+  Nederlandsche Bank, Ronde Lutherse Kerk, Vondelkerk, De Otter, the Amstel
+  hotel) were already bespoke manual POIs that `mergeManualPoiFeatures` adds
+  at runtime, invisible to a landmarks.json check and sometimes under another
+  name ("Amstel Hotel"): the promoter now merges the manual POIs itself and
+  skips their names, their claimed pands and anything within 60 m of one.
+  Clubs, academies and societies are excluded even when they own a famous
+  building. All landmark gates pass at 427 landmarks.
+- *Buildings outside the streamed tiles.* A centroid-in-pand fallback
+  recovered 19 footprints the ring join missed; 185 remain untiled
+  (`staging/building-articles-untiled.json`): 167 are outside the Amsterdam
+  box (Pampus, Nederhorst den Berg, Weesp fringe) and 18 inside are mostly not
+  buildings (platforms, piers, sheds). Bridges were audited by title: the
+  register already carries the ones the game can name; the rest are outside
+  the game's naming.
+- Regression: `tests/e2e/street-art-landmark-cards.spec.ts` (Homomonument
+  ground click, Paradiso landmark card, Zeedijk ride card).
+
+**Bridge kit round 2 (2026-10-31).**
+- `PORTAL_FIT`: per-bridge post height, tail, head gap, piers, stays and
+  ballast box. Ezelsbrug gets red stays and concrete piers; Westergasbrug a
+  taller portal.
+- Lattice end frames close the Peperbrug's overhead beam box.
+- Aluminiumbrug: arched braces and a solid lower girder.
+- Shaped trusses:
+  - Mariniersbrug arches 0.7 to 2.3 m over one span and ends at the
+    abutments;
+  - Oosterdoksdraaibrug has 1.8 m panels, arched overhead members, and one
+    piece over the swing leaf;
+  - shaped trusses keep a far-ring outline.
+- `BRIDGE_TOWER`: the Berlagebrug's brick keeper block and tower.
+- A `'plain'` style with no portal and no masts for small lifting footbridges
+  (BRU0379, 0380, 0483, 0850).
+- Bridge hints regenerated: only the named flag is added for BRU0379, 0380,
+  0423, 0483, 0850.
+- Every other bridge hashes identical over 568 frames.
+
+**Every Firebase deploy failed for a day on a JSDoc import (2026-10-31).** From L1 step 3
+(2026-10-30 afternoon) to 1429440dc, `Deploy to Firebase Hosting` failed in
+"Upload Canal Recall source maps to Sentry": `scripts/sentry/
+collect-canal-bundles.mjs` follows every `import("…")` in the ride's scripts
+and refuses paths outside the site, and `vector-map.js` had gained
+`/** @implements {import("../../../src/canalRecall/engine/worldViewApi").WorldView} */`.
+Nothing merged in that window (L1 steps 4–5, L4, L8, the deletions, the
+rail look) reached rideamsterdam.nl until the comment became plain prose.
+Nobody noticed because CI runs lint and the boot smoke, not the deploy's
+collector. Now `npm run check:site-imports` (the collector with
+`--imports-only` against `public/canal-drive`) is part of `check:canal`, so
+the same mistake fails the pre-integration gate and CI. The deploy's own
+failure still needs a human reading the Actions tab; the integrator checks
+`gh run list` after every push from now on.
+
+**Streets, squares and waterways carry the name on the sign (2026-10-31, #147).**
+L1 found `routing_15692` named "New Market" while screening labels for the
+Nieuwmarkt spoiler. Cause: `scripts/build-amsterdam-extract.ts` took
+`name:en || name || name:nl` for every feature; a first one-line fix to
+prefer `name` renamed 59 landmarks too (Weepers' Tower → Schreierstoren,
+Royal Palace → Koninklijk Paleis), so the rule lives in
+`scripts/lib/extractNaming.ts` and depends on `classify()`: streets, squares,
+water, bridges and routing take the local name, landmarks and parks keep
+`name:en`. The generator's output is otherwise byte-identical. Publishing did
+not go through `refresh-amsterdam-extract.sh`: from the same archived PBF the
+refresh no longer reproduces the committed extract (routing 47,259 → 45,620
+ways, streets 343 → 500, every tree moved, enrichment and translation churn),
+so the committed data carries curation the refresh would discard (TODO
+"Extract refresh drift"). Instead `scripts/patch-local-street-names.ts`
+applies only the renames the rule implies, driven by the PBF's `name:en`
+objects within 150 m, staging first and `--publish` second, idempotent: 11
+names, 35 records, 73 distractor strings, 5 place-photo keys, 0 features
+added or removed, all ids kept (facts, street-knowledge and bridge crossings
+join on id). Renamed: Nieuwmarkt, Dam, Bloemenmarkt, Museumplein,
+Rembrandtplein, Albert Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug
+(bridge register key and `REGISTER_ALIASES` updated), Vincent van Goghstraat,
+K+R. Checks: canal-streets, canal-car, reachability, extract-english,
+check-city-extract, answered-street-name + labels + start-heading.
+
 **One worker pool; the world path's heap measured with a GC (2026-10-31, #136, L4).**
 The 977 / 1,019 MB "heap at ride end" of step 4 were readings without a
 garbage collection. `scripts/heap-sample.mjs` forces a GC over CDP in the
@@ -561,6 +716,34 @@ cut), per dense tile 163–301 ms → 25–58 ms, cell decode median 0.24 ms, p9
 4.5 ms on desktop. Cells are not published and the browser A/B
 (`tests/e2e/world-v1-ab.spec.ts`) has not run yet; both wait on the shared
 Playwright lock.
+
+**Kalvertoren / Kalverpassage, Singel (2026-10-31, lane #148).** Ride-visibility
+rank 6, parked by triage as a `curtain` gap. One BAG pand
+(`0363100012165086`, 1997) holds three parts: the historicist red-brick
+Singel range (451-457B), the 1997 stone block with its semicircular glazed
+attic (457C-463) and the Kalverstraat fronts, with the 30 m glass tower in
+the middle; the historic Heiligeweg fronts are separate pands and are kept.
+The issue's premise that the Singel front is a glass curtain was wrong; the
+round crown seen from the Singel is the stone block's attic. Bespoke model
+(`scripts/landmarks/kalvertoren-builder.ts`, 22,268 triangles, 292 KB,
+slots 100 %) on the kept 3DBAG LoD2.2 shell (442 of 543 walls, 73 of 87
+roofs; the tower and attic roofs replaced by decks). Inventory 34 items: 17
+modelled (two gables with claws, neck and gilt balls, the arms relief, the K
+arch, the east portal pediment, speklagen and relieving arches, the stone
+shopfronts, the glazed attic with bronze cap, an 8-column colonnade, the
+tower with café storey, mullions, ring cornice and dome, the passage portal,
+the KALVERPASSAGE board with raised lettering, the Kalverstraat deep windows
+and balconies, the dark curtain return, the Heiligeweg lattice gate), 11
+simplified, 6 skipped. The tower shaft below 25 m is not visible from any
+street and is fitted from the 3DBAG roofs. Gates: audit:glb PASS (largest
+open loop 28.98 m against a 30 m limit), inventory 0 fail, taxonomy 17/17,
+osm-under-models 0, manual-landmarks 346. The kit cannot say: bowed curtain
+glass with mullion profiles, carved claws and cartouches, heraldic lions, a
+3D lattice canopy, true recessed openings, lettering on curved boards. The
+large-tier draft singel-457-165086 for the same pand stays uninstalled. The
+Rasphuispoort host-wall opening at the Heiligeweg mouth is on this pand and
+needs a look now that the pand is suppressed (TODO). Sources (18 panoramas,
+nl:Kalverpassage, BAG, 3DBAG) are archived under `models/kalvertoren/`.
 
 **Painted and clad fronts in the large tier; 3 of 82 moved, 0 passed (2026-10-31, lane #146).**
 The largest triage gap after band fronts was `painted-or-clad` (82 pands,

@@ -226,7 +226,7 @@ varying float vUp;
 void main() { gl_FragColor = vec4(accent, opacity * (1.0 - vUp) * (1.0 - vUp) * smoothstep(0.0, 0.04, vUp)); }`;
 
 export interface HighlightMarkerOptions {
-  /** The shared frame (`?sharedFrame=1`); otherwise a custom layer is added to `map`. */
+  /** The page's one three.js frame; without one the marker is built but drawn by nobody (tests). */
   sharedFrame?: any;
   style?: HighlightStyle;
   /** Ground height (own ground relief) at a point, metres. */
@@ -247,10 +247,6 @@ export class HighlightMarker {
   private altitude = 0;
   private local: number[] | null = null;
   private unregister: (() => void) | null = null;
-  private layerId: string | null = null;
-  private renderer: any = null;
-  private camera: any = null;
-  private scene: any = null;
   private raf = 0;
   private readonly accent: any;
   /** Last frame's camera distance (m) to the beacon base, for tests. */
@@ -277,7 +273,7 @@ export class HighlightMarker {
         mercatorFromLocal: () => this.local,
         beforeRender: () => !!this.anchor && !!this.root.children.length,
       }, { order: 25 });
-    } else this.addLayer();
+    }
   }
 
   /** Show the ring (and beacon) at a footprint, or hide with null. */
@@ -392,7 +388,6 @@ export class HighlightMarker {
       this.beacon = mesh;
       this.root.add(mesh);
     }
-    this.raise();
     if (this.recipe.animated) {
       const tick = () => { this.map.triggerRepaint?.(); this.raf = requestAnimationFrame(tick); };
       this.raf = requestAnimationFrame(tick);
@@ -425,50 +420,8 @@ export class HighlightMarker {
     if (changed) this.map.triggerRepaint?.();
   }
 
-  /**
-   * Default frame: draw after every building layer (just under the labels). The ring and beacon do not write depth,
-   * so a building layer added after the marker (the three.js city streams in later) painted over them wherever a
-   * building stood behind: at the Oud-West terrace (chase, 213 m) only 830 px of ring and a stub of beacon survived.
-   */
-  private raise(): void {
-    const id = this.layerId;
-    if (!id || !this.map.getLayer?.(id) || !this.map.moveLayer || !this.map.getLayersOrder) return;
-    const order: string[] = this.map.getLayersOrder();
-    const slot = markerSlot(order.map(l => ({ id: l, type: this.map.getLayer(l)?.type })), id);
-    try { if (slot >= 0 && order[slot - 1] !== id) this.map.moveLayer(id, order[slot]); } catch { /* style mid-reload: the next set() retries */ }
-  }
-
-  private addLayer(): void {
-    const owner = this, THREE = this.THREE;
-    const id = this.layerId = 'highlight-marker';
-    const layer = {
-      id, type: 'custom', renderingMode: '3d',
-      onAdd(map: any, gl: any) {
-        owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        owner.renderer.autoClear = false;
-        owner.camera = new THREE.Camera();
-        owner.scene = new THREE.Scene();
-        owner.scene.add(owner.root);
-      },
-      render(_gl: any, args: any) {
-        if (!owner.anchor || !owner.local || !owner.root.children.length) return;
-        const main = args?.defaultProjectionData?.mainMatrix ?? args;
-        owner.camera.projectionMatrix.fromArray(main).multiply(new THREE.Matrix4().fromArray(owner.local));
-        owner.renderer.resetState();
-        owner.renderer.render(owner.scene, owner.camera);
-      },
-    };
-    const add = () => {
-      if (this.map.getLayer?.(id)) return;
-      const symbol = this.map.getStyle?.()?.layers?.find((l: any) => l.type === 'symbol')?.id;
-      this.map.addLayer(layer, symbol);
-    };
-    if (this.map.isStyleLoaded?.() === false) this.map.once?.('idle', add); else add();
-  }
-
   dispose(): void {
     this.set(null);
     this.unregister?.();
-    if (this.layerId && this.map.getLayer?.(this.layerId)) this.map.removeLayer(this.layerId);
   }
 }

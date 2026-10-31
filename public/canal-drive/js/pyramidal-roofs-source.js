@@ -13,7 +13,6 @@ import {
   pyramidalRoofMesh,
   wantsPyramidalRoof,
 } from '../../../src/canalRecall/pyramidalRoof.ts';
-import { LANDMARK_SEQUENCE, anchorWorldFromMercator, bySequence, mercatorFromAnchorWorld, multiplyMat4, needsRebase, painterSortStable, reversePainterSortStable } from '../../../src/canalRecall/landmarks/batchedLegacyFrame.ts';
 
 const { THREE } = window.CanalRecallThree;
 
@@ -64,28 +63,20 @@ export class PyramidalRoofs {
   constructor(map, maplibregl, options = {}) {
     this.map = map;
     this.maplibregl = maplibregl;
-    // `?sharedFrame=1`: caps live in a Mercator-space root of the page's one
-    // three.js frame (one draw pass for all of them, lit by its rig).
+    // Caps live in a Mercator-space root of the page's one three.js frame (one draw pass for all of them, lit by
+    // its rig). Without a frame (headless checks) the root is built but drawn by nobody.
     this.sharedFrame = options.sharedFrame || null;
-    // Legacy layer: every cap in one scene and one render per frame, as the landmarks
-    // (landmarks/batchedLegacyFrame.ts).
-    this._batchScene = this.sharedFrame ? null : new THREE.Scene();
-    if (this._batchScene) this._batchScene.matrixWorldAutoUpdate = false;
-    this._batchAnchor = null;
     this.enabled = true;
     this._entries = [];
     this._hiddenIds = new Set();
     this._hiddenReasons = new Map([['surveyed-envelope', new Set(map._surveyedEnvelopeRoofIds || [])]]);
-    this.layer = this._makeLayer();
-    if (this.sharedFrame) {
-      this._sharedRoot = new THREE.Group();
-      this._sharedRoot.name = 'osm-pyramidal-roofs';
-      this.sharedFrame.register('pyramidal-roofs', {
-        root: this._sharedRoot,
-        beforeRender: () => this.enabled && this._entries.length > 0,
-        revision: () => this._hiddenRevision,
-      }, { order: options.sharedOrder ?? 40 });
-    } else if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
+    this._sharedRoot = new THREE.Group();
+    this._sharedRoot.name = 'osm-pyramidal-roofs';
+    this.sharedFrame?.register('pyramidal-roofs', {
+      root: this._sharedRoot,
+      beforeRender: () => this.enabled && this._entries.length > 0,
+      revision: () => this._hiddenRevision,
+    }, { order: options.sharedOrder ?? 40 });
     map._pyramidalRoofs = this;
     this.setHiddenReason('surveyed-envelope', map._surveyedEnvelopeRoofIds || []);
   }
@@ -157,33 +148,18 @@ export class PyramidalRoofs {
       geometry.computeVertexNormals();
       geometry.computeBoundingSphere();
       // Lit inside the shared frame, like the facade roofs around it.
-      const material = this.sharedFrame
-        ? new THREE.MeshStandardMaterial({ color: parseColour(meshData.colour), side: THREE.DoubleSide, roughness: 0.9, metalness: 0, flatShading: true })
-        : new THREE.MeshBasicMaterial({
-          color: parseColour(meshData.colour),
-          side: THREE.DoubleSide,
-        });
+      const material = new THREE.MeshStandardMaterial({ color: parseColour(meshData.colour), side: THREE.DoubleSide, roughness: 0.9, metalness: 0, flatShading: true });
       const mesh = new THREE.Mesh(geometry, material);
       const ids = [props.osmId, props.id].filter(id => id != null).map(String);
       mesh.visible = !ids.some(id => this._hiddenIds.has(id));
       mesh.frustumCulled = false;
       const transform = mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat);
-      let holder = null;
-      if (this.sharedFrame) {
-        holder = new THREE.Group();
-        holder.matrixAutoUpdate = false;
-        holder.matrix.copy(transform);
-        holder.add(mesh);
-        this.sharedFrame.constructor.setShadows(mesh, true, true);
-        this._sharedRoot.add(holder);
-      } else {
-        // One scene: the holder maps Mercator to the anchor world (set at the next render), its sequence the draw order.
-        holder = new THREE.Group();
-        holder.matrixAutoUpdate = false;
-        holder[LANDMARK_SEQUENCE] = entries.length + 1;
-        holder.add(mesh);
-        this._batchScene.add(holder);
-      }
+      const holder = new THREE.Group();
+      holder.matrixAutoUpdate = false;
+      holder.matrix.copy(transform);
+      holder.add(mesh);
+      this.sharedFrame?.constructor.setShadows(mesh, true, true);
+      this._sharedRoot.add(holder);
       entries.push({
         mesh,
         holder,
@@ -194,7 +170,6 @@ export class PyramidalRoofs {
       });
     }
     this._entries = entries;
-    this._batchAnchor = null;
     this.debugCount = entries.length;
     this.debugRadii = entries.map(entry => entry.mesh.geometry.boundingSphere?.radius ?? null);
     this.map.triggerRepaint();
@@ -207,47 +182,6 @@ export class PyramidalRoofs {
       entry.mesh.material.dispose();
     }
     this._entries = [];
-  }
-
-  /** Anchor the one scene's world near the view centre (float32 on the GPU); holders follow. */
-  _rebaseIfFar() {
-    const centre = this.map.getCenter();
-    const c = this.maplibregl.MercatorCoordinate.fromLngLat([centre.lng, centre.lat], 0);
-    const units = c.meterInMercatorCoordinateUnits();
-    if (!needsRebase(this._batchAnchor, [c.x, c.y], units)) return;
-    this._batchAnchor = [c.x, c.y];
-    this._mercatorFromWorld = mercatorFromAnchorWorld(c.x, c.y, units);
-    const worldFromMercator = anchorWorldFromMercator(c.x, c.y, units);
-    for (const entry of this._entries) entry.holder.matrix.fromArray(multiplyMat4(worldFromMercator, entry.transform.elements));
-    this._batchScene.updateMatrixWorld(true);
-  }
-
-  _makeLayer() {
-    const owner = this;
-    let camera, renderer;
-    const mvp = new THREE.Matrix4();
-    return {
-      id: 'osm-pyramidal-roofs',
-      type: 'custom',
-      renderingMode: '3d',
-      onAdd(_map, gl) {
-        camera = new THREE.Camera();
-        renderer = new THREE.WebGLRenderer({ canvas: owner.map.getCanvas(), context: gl, antialias: true });
-        renderer.autoClear = false;
-        // Caps in their install order, three's own order inside one.
-        renderer.setOpaqueSort(bySequence(painterSortStable));
-        renderer.setTransparentSort(bySequence(reversePainterSortStable));
-      },
-      render(_gl, args) {
-        if (!owner.enabled || !camera || !renderer) return;
-        const main = args.defaultProjectionData.mainMatrix;
-        renderer.resetState();
-        if (!owner._entries.some(entry => entry.mesh.visible)) return;
-        owner._rebaseIfFar();
-        camera.projectionMatrix.fromArray(multiplyMat4(main, owner._mercatorFromWorld, mvp.elements));
-        renderer.render(owner._batchScene, camera);
-      },
-    };
   }
 }
 

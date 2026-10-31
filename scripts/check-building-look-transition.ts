@@ -47,7 +47,8 @@ t.scheduleStage = () => {};
 const poolWorker = (): WorkerStub => { assert.ok(stubs.length, 'chunk builds started the worker pool'); return stubs[0]; };
 const deliver = (message: any) => { poolWorker().reply(message); while (t.staged.length) t.drainStaged(); };
 t.texturesFor = (look: string) => look === 'procedural' ? initial.promise : photo.promise;
-t.layer.onAdd(map, {});
+// What the shared frame's onAttach does (the facades' own layer went with L1 step 6).
+t.THREE = THREE; t.setup(map, new THREE.WebGLRenderer(), new THREE.Camera(), new THREE.Scene());
 const firstSwitch = t.setLook('photo'); photo.resolve(textures('photo')); await firstSwitch;
 initial.resolve(textures('procedural')); await Promise.resolve();
 assert.equal(t.getLook(), 'photo');

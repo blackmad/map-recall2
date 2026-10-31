@@ -1,7 +1,6 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
-import {SUN_DIRECTION} from '../../../src/canalRecall/rendererShared/lightRig.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
@@ -44,41 +43,27 @@ export class InventoryTrees {
     this.residency=new ViewResidency(.25,60);
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
-    // `?sharedFrame=1`: a root in the page's one three.js frame, lit by its rig.
+    // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).
     this.sharedFrame=options.sharedFrame||null;
-    this.scene=this.sharedFrame?new THREE.Group():new THREE.Scene();
-    if(!this.sharedFrame){
-      // Local frame is east/north/up: the sky's "up" is +z (three's default +y
-      // here was north, so crowns took the sky on their north side and the dark
-      // ground colour on top), and the sun is the rig's (lane-sun-and-mood 2026-10-13).
-      const sky=new THREE.HemisphereLight(0xffffff,0x526048,2.15);sky.position.set(0,0,1);this.scene.add(sky);
-      const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(...SUN_DIRECTION);this.scene.add(sun);
-    }
+    this.scene=new THREE.Group();
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
     this.transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
-    this.layer={id:'municipal-inventory-trees',type:'custom',renderingMode:'3d',
-      onAdd:(_map,gl)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},
-      onRemove:()=>{
-        this.generation++;this.enabled=false;this.ready=false;
-        this.clear();map.off('moveend',this.move);
-        for(const geometry of this.geometries.values())geometry.dispose();
-        for(const material of this.materials.values())material.dispose();
-        this.geometries.clear();this.materials.clear();this.renderer?.dispose();
-      },
-      render:(_gl,args)=>{
-        if (!this.enabled || !this.ready || map.getZoom()<MIN_ZOOM || !this.meshes.length) return;
-        const transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
-        this.camera.projectionMatrix.fromArray(args.defaultProjectionData?.mainMatrix || args).multiply(transform);
-        this.renderer.resetState();this.renderer.render(this.scene,this.camera);
-      }};
-    if(this.sharedFrame)this.sharedFrame.register('trees',{
+    this._unregister=this.sharedFrame?.register('trees',{
       root:this.scene,
       mercatorFromLocal:()=>this.transform.elements,
       beforeRender:()=>this.enabled&&this.ready&&map.getZoom()>=MIN_ZOOM&&this.meshes.length>0,
     },{order:options.sharedOrder??30});
-    else map.addLayer(this.layer);
     this.move=()=>this.update();map.on('moveend',this.move);
+  }
+  /** Leave the frame and free every geometry and material (what the legacy layer's onRemove did). */
+  remove() {
+    this._unregister?.();this._unregister=null;
+    this.generation++;this.enabled=false;this.ready=false;
+    this.clear();this.map.off('moveend',this.move);
+    for(const geometry of this.geometries.values())geometry.dispose();
+    for(const material of this.materials.values())material.dispose();
+    this.geometries.clear();this.materials.clear();
   }
   async load(root) {
     const generation=++this.generation;

@@ -49,6 +49,7 @@ import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCar
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
+import { StreetArtIndex, streetArtCard, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
@@ -103,6 +104,12 @@ export class GameLandmarkRuntime {
     if (owner && !nearest) nearest = owner;
     if (!nearest || !isWorthACard(nearest)) {
       if (building) nearest = this._cardForClickedBuilding(building);
+    }
+    // Nothing built under the pointer: a statue, mural or memorial standing
+    // on the ground here (streetArt.ts) answers the click instead.
+    if (!nearest || !isWorthACard(nearest)) {
+      const art = this._streetArtAt(clientX - rect.left, clientY - rect.top, rect);
+      if (art) nearest = art;
     }
     if (!nearest || !isWorthACard(nearest)) {
       this.vectorMap.setActiveLandmark(null);
@@ -194,6 +201,23 @@ export class GameLandmarkRuntime {
     this._landmarkCloseBounds = null;
   }
 
+  /** The piece of street art under a ground click, as a card; null when none is near. */
+  _streetArtAt(cssX: number, cssY: number, rect: DOMRect): LandmarkNotice | null {
+    const index = this._streetArt;
+    const loader = this.osmLoader;
+    if (!index?.size || loader._lastCenterLat == null || loader._lastCenterLng == null) return null;
+    const world = this.vectorMap.screenToWorld?.(cssX, cssY, rect, loader);
+    if (!world) return null;
+    // Inverse of the route projection (`toWorld` in _loadLandmarks).
+    const centerLat = loader._lastCenterLat, centerLng = loader._lastCenterLng;
+    const lng = (world.x - loader._lastOffsetX) / (111320 * Math.cos(centerLat * Math.PI / 180) * PIXELS_PER_METER) + centerLng;
+    const lat = centerLat - (world.y - loader._lastOffsetY) / (111320 * PIXELS_PER_METER);
+    const point = index.nearest(lng, lat);
+    if (!point) return null;
+    const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
+    return streetArtCard(point, !!spoils?.call(this.vectorMap, point.name));
+  }
+
   /** Exact researched owner first, then mapped places inside the actual plan. */
   _cardForClickedBuilding(building: BuildingHit): LandmarkNotice | null {
     const buildingName = building.name || '';
@@ -202,7 +226,8 @@ export class GameLandmarkRuntime {
     if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
     // A Wikipedia article about this very building (buildingArticles.ts):
     // an apartment ring or a church no landmark or POI layer ever claimed.
-    const article = this._buildingFacts?.article(building.id) ?? null;
+    // Older facts objects (and the click-selection check's fake) carry no article index.
+    const article = typeof this._buildingFacts?.article === 'function' ? this._buildingFacts.article(building.id) ?? null : null;
     const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     const mapped = this._clickPoiInfo?.card(building);
     if (mapped) {
@@ -370,6 +395,7 @@ export class GameLandmarkRuntime {
       const url = (name: string) => new URL(`${city.extractPath}/${name}`, base);
       const factBase = new URL(`${city.extractPath}/`, base).href;
       this._clickPoiInfo = null;
+      this._streetArt = null;
       if (this._buildingFacts) this._buildingFacts.setBase(factBase);
       else this._buildingFacts = new BuildingFactStore(factBase);
       // Only what the start needs is awaited (START_EXTRACTS): the places,
@@ -422,10 +448,12 @@ export class GameLandmarkRuntime {
         deferredJson<unknown[]>('branded-pois.json'),
         deferredJson<{ buildings?: Record<string, string[]> }>('landmark-buildings.json'),
         deferredJson<ClickPoiFile>('click-poi-info.json'),
-      ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo]) => {
+        deferredJson<StreetArtFile>('street-art.json'),
+      ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo, streetArt]) => {
         // Another load replaced this one: its own merge will run.
         if (this.streetKnowledge !== knowledge) return;
         this._clickPoiInfo = new ClickPoiIndex(clickPoiInfo);
+        this._streetArt = new StreetArtIndex(streetArt);
         if (factsFile) this._facts = buildFactIndex(factsFile);
         if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
           this.streetKnowledge = buildRouteKnowledgeIndex(

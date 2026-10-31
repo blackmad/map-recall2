@@ -14,6 +14,9 @@
  *     "Raadhuis van Ransdorp" is rightly "the town hall of Ransdorp" in the
  *     lede, since the card's title stays the Dutch article name.
  *   npx tsx scripts/building-articles-translation-batch.ts status
+ *
+ * `--master=<file>` points every command at another master in the same shape
+ * (the street articles, `build-street-articles.ts`).
  */
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -21,7 +24,8 @@ import path from 'node:path';
 import { droppedProperNames, trimToSentence } from './lib/translation.ts';
 
 const argument = (name: string) => process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
-const masterFile = path.resolve('scripts/data/amsterdam-building-articles.json');
+// `--master=scripts/data/amsterdam-street-articles.json` translates the street ledes instead.
+const masterFile = path.resolve(argument('master') || 'scripts/data/amsterdam-building-articles.json');
 const cacheFile = path.resolve('scripts/english-translations.json');
 const sha = (text: string) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 

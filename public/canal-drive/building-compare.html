@@ -140,7 +140,11 @@ const FLAT_ROOF = helpers && helpers.flatRoofFilter
 function attachPyramids(map) {
   const api = window.CanalRecallPyramidalRoofs;
   if (!api || !window.CanalRecallThree) return null;
-  return new api.PyramidalRoofs(map, maplibregl);
+  // The roofs draw only through a shared three.js frame (their own layer went with L1 step 6).
+  const three = window.CanalRecallThree;
+  let frame = map._canalSharedFrame;
+  if (!frame && three.SharedFrame) { frame = new three.SharedFrame(three.THREE, map, {}); frame.attach(); map._canalSharedFrame = frame; }
+  return new api.PyramidalRoofs(map, maplibregl, { sharedFrame: frame });
 }
 
 /** The appearance overlay the game ships today: 10,578 tagged buildings. */

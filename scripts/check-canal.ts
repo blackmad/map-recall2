@@ -61,6 +61,8 @@ const CHECKS = [
   'test:cycle-tracks',
   'test:own-pois',
   'test:building-facts',
+  'test:street-articles',
+  'test:street-art',
   'test:building-recipes', 'test:canal-elevation', 'test:large-tier', 'test:glb-quality', 'test:facade-compare', 'test:block-kit-installed', 'test:own-ground', 'test:block-face', 'test:own-map', 'test:building-taxonomy', 'test:landmark-cards', 'test:finish-blurb', 'check:bag-gaps', 'check:signature-bundle', 'test:bridge-street-name', 'test:landmark-shading', 'test:rose-gardens', 'test:prism-pick', 'audit:landmark-filler', 'test:geometry-audit',
   'test:canalhouse-recipes',
   'test:bridge-register',

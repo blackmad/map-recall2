@@ -79,8 +79,13 @@ the skill worktree's `staging/landmark-lane-selftest/`, uncommitted (they
 would move fit-golden).
 
 **Bespoke landmarks (2026-10-30):** De Roos (#133) landed (HISTORY "De
-Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) landed (HISTORY
-"Hirschgebouw, Leidseplein"): still to do there, a grouped-lights mode in
+Roos, P.C. Hooftstraat 183"); Hirschgebouw (#132) and the Kalvertoren (#148, HISTORY "Kalvertoren /
+Kalverpassage, Singel") landed. Kalvertoren follow-ups: review the Rasphuispoort
+`hostWallOpenings` at the Heiligeweg mouth (edge 18-19, open below 6.4 m) now
+that pand 165086 is suppressed; one street-level look at the Kalverstraat side
+(bare 3DBAG roof planes from above); the queue row for 165086 reads `error` /
+kit-gap until the next triage `--write` marks it covered; the large-tier draft
+singel-457-165086 stays uninstalled. Hirschgebouw: still to do there, a grouped-lights mode in
 the window-rhythm audit so `hirschgebouw-elevations-pending.json` can go
 live, a POI or destination card, a re-measured copper tint, and the bounded
 Beeldbank search. The review
@@ -201,6 +206,14 @@ draws the whole ride"): landmarks, trees, detailed buildings, roofs, ARTIS and
 themes under the flag; fair A/B saves only 0.24 ms CPU with p99 worse from
 doubled shader compiles; `engine-own.spec.ts` is **red under the flag on
 programs (37–39 > 32)** by decision until the landmark materials are merged.
+Hand-back (2) merged 2026-10-31 (`5bc4bc0dc`, HISTORY "`?engine=own` now beats
+MapLibre on frame CPU"): own 4.1–5.1 vs MapLibre 7.6–8.3 ms owned frame CPU,
+step 6 legacy layers gone, `setLoop` hook, Leaflet picker deleted. **Integrator
+next:** wire `vectorMap.setLoop` in `game.js` under `?engine=own` and
+`CanalRecallUi.stepSteer` in `car.js`; drop the `leaflet`/`@types/leaflet`
+dependencies at the flip. L1 next: the v2 overview extract (rail, footway,
+landuse) and footprint worker re-port; the own-ground material variants go to
+the P4 materials lane (programs 36 > 32).
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -1265,25 +1278,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **"New Market" is a street name (found by L1, 2026-10-30).** In
-  `public/data/extracts/amsterdam/streets-routing.json` way `routing_15692`
-  (52.372955, 4.900113) is named "New Market": an English translation leaked
-  into a Dutch street name, so when Nieuwmarkt is asked and every name is
-  earned, "New Market" is drawn next to it on both engines. Cause found
-  2026-10-31: `scripts/build-amsterdam-extract.ts` l.260 took `name:en`
-  before `name` for roads and places (landmarks and venues keep English on
-  purpose). The line now prefers the local name; lane #147
-  (`lane-street-names-dutch-20261031.md`, port 4539) regenerates the extract
-  from the archived PBF, reviews every changed name, fixes English pins and
-  hands back a Nieuwmarkt screenshot for What's New; then pin a regression
-  (the engine's Nieuwmarkt test already screens nl names). Lane finding
-  (2026-10-31, #147): the one-line rule also renamed 59 landmarks (Weepers'
-  Tower → Schreierstoren), so the rule is scoped by `classify()` to streets,
-  squares, water, bridges and routing; like-for-like it changes 11 names
-  (Nieuwmarkt, Dam, Bloemenmarkt, Museumplein, Rembrandtplein, Albert
-  Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug, Vincent van
-  Goghstraat, K+R). Publishing goes through a scripted name-only patch
-  (`scripts/patch-local-street-names.ts`, staging + `--publish`), because:
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways
@@ -1351,17 +1345,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
-  articles on ordinary buildings open from the click card (HISTORY
-  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
-  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
-  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
-  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
-  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
-  click POI, not a building; bridges/streets in the Wikidata box should be
-  audited by title before counting them missing. Brief
-  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
-  `npm run audit:wikipedia-buildings`, issue #142.
+- **Building articles, remainder (2026-10-31).** Shipped: article cards on
+  1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
+  7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints
+  are not in the streamed tiles (`staging/building-articles-untiled.json`;
+  167 outside the Amsterdam box, 18 inside and mostly non-buildings) and
+  stay silent until the tiles grow; street-art points with no article (439)
+  show only kind/artist/year from OSM; the `art` orientation category has no
+  own icon yet (culture label class). Issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.
@@ -2297,28 +2288,24 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the remaining builder is held. Decide the source (open `lane` issues, the
   programme bullets above, or drop the strip) and point the page at it.
 
-- **Tunnel cuts: follow-ups (2026-10-30, after round 3).**
-  - Phone-frame walls are still faint at the IJ ramp after round 3's coping and gutter line; the cut reads through the mouths. It may need a wall shadow or AO, not more colour.
-  - The IJ median wedge still looks pale on the phone, despite the park drape.
-  - Motor approaches still uncut (8/59), with reasons in `probe-portal-misses.ts`:
-    - Michiel de Ruijter west has no mouth (the DTM reads under the IJsei deck; it needs a structure layer);
-    - Noord service courts, Kruislaan, the A10 link and Stationsweg are flat or sloped banks with no wall.
-  - The Piet Hein east camera frames the ramp from the side; re-aim it.
+- **Tunnel cuts: follow-ups (2026-10-31, after round 4).**
+  - Phone walls read only modestly. The near wall's face is out of view from the chase camera; the next idea is a vertical face that catches the key light, tested with the rider inside the trench, which needs a camera override.
+  - Stationsweg (outside the city): a wall-plus-bank profile would give it a cut.
+  - The Piet Hein east west-facing shot needs a camera override; the rider spawns on the path west of the portal.
+  - `tunnel-places-shots.mjs` `BUNDLES_DIR` does not reach the own-ground worker. Stage bundles into `public/canal-drive/js` for after-shots, or fix the harness by serving the worker from a swapped path.
 
-- **Movable bridges: what the kit still cannot say (after the swing/lattice lane, 2026-10-31).**
-  - Ezelsbrug's red backstay cables and the piers under its posts; its frames sit too close to midspan.
-  - Arched girder undersides (Buiksloterdraaibrug).
-  - The Oosterdoksdraaibrug's dense web and curved overhead bracing; shaped trusses vanish in the far ring.
-  - Peperbrug's closed overhead beam box.
-  - The Aluminiumbrug's ornate knee braces.
-  - Per-bridge portal height and reach (the Westergasbrug's is taller).
-  - Denser fenders; a swing tail and counterweight.
-  - Brick towers (Berlagebrug BRU0423).
-  - Mariniersbrug BRU0272: the real top chord arches deeper at midspan (a `TRUSS_SHAPE` entry, judged on its sheet), and the truss runs past the brick abutments.
-  - Small timber or wip footbridges with no portal (BRU0379, 0380, 0483, 0850).
+- **Movable bridges: what the kit still cannot say (after bridge kit round 2, 2026-10-31).**
+  - Ezelsbrug: more fanning stays; round-ended piers.
+  - Oosterdoksdraaibrug: the K-pattern web.
+  - Mariniersbrug: the lower chord also arches; the web is Warren, not Pratt; the abutment inset is approximate.
+  - Peperbrug: the portal is as wide as the footprint, wider than in the photo.
+  - Aluminiumbrug: cast scrollwork; a steeper beam slope.
+  - Per-bridge paint shades (Westergasbrug darker grey).
+  - Berlagebrug: the stepped tower top, the block's eastern extent, brick piers, arched approach spans.
+  - Barrier gates (BRU0379); BRU0850's two lift posts; Buiksloterdraaibrug's arched underside.
   - Modern sculptural portals (Wasknijper BRU0177, BRU0307, Pelikaanbrug BRU0277); Omvalbrug pylons.
-  - `check:bridge-railings` did not finish in the lane; run it.
-  - Panoramas missing or hidden for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
+  - Some boat-view sheets draw no water (sheet renderer).
+  - No panoramas for 13 bridges (BRU0227, 0339, 0507, 0516, 0519, 0531, 0538, 5047; 0375, 0592, 2294, 2410, 2481).
 
 - **Batch likeness discrimination (#113, 2026-10-29).** The ribbon era guard is in (HISTORY). Still open:
   - storey count: sweelinck-1-11 was drawn one storey too many;

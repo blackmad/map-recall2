@@ -124,9 +124,10 @@
   },
   {
    "pands": [
-    "w640102319"
+    "w640102319",
+    "w640102320"
    ],
-   "osmId": "w640102319",
+   "osmId": "w268460687",
    "osmName": null,
    "wikidata": "Q50721",
    "how": "point",
@@ -135,8 +136,8 @@
    "title": "Amsterdam Sloterdijk station",
    "url": "https://en.wikipedia.org/wiki/Amsterdam_Sloterdijk_station",
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Station-amsterdam-sloterdijk.jpg/960px-Station-amsterdam-sloterdijk.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-   "lng": 4.838129708333334,
-   "lat": 52.38883273333334,
+   "lng": 4.837939730769231,
+   "lat": 52.389022303846154,
    "extract": "Amsterdam Sloterdijk is a major railway junction to the west of Amsterdam Centraal station. It is at a rail-rail crossing, with an additional chord (Hemboog).",
    "extractLang": "en",
    "extractSource": "wikipedia-en",
@@ -177,6 +178,53 @@
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Amsterdam_amstel_station.jpg/960px-Amsterdam_amstel_station.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "lng": 4.9176029833333335,
    "lat": 52.34648926666666,
+   "extract": "Amsterdam Amstel (Dutch pronunciation: [ˌɑmstərˈdɑm ˈɑmstəl]; abbreviation: Asa) is a railway station in Amsterdam, Netherlands. The station opened in 1939. It is located to the southeast of Amsterdam Centraal in the borough of Amsterdam-Oost, near the Amstel river. Amsterdam Amstel is used daily by 26,000 train and metro passengers.",
+   "extractLang": "en",
+   "extractSource": "wikipedia-en",
+   "sourceText": "Amsterdam Amstel (Dutch pronunciation: [ˌɑmstərˈdɑm ˈɑmstəl]; abbreviation: Asa) is a railway station in Amsterdam, Netherlands. The station opened in 1939. It is located to the southeast of Amsterdam Centraal in the borough of Amsterdam-Oost, near the Amstel river. Amsterdam Amstel is used daily by 26,000 train and metro passengers. Rail services at the station are provided by NS, the principal railway operator in the Netherlands. Metro, tram and city bus services are provided by municipal operator GVB. Regional buses are operated by Transdev and Keolis. Amstel station is situated in the Omval business district which includes the Rembrandt Tower, the tallest skyscraper in the city, and the Leeuwenburg campus of the Hogeschool van Amsterdam."
+  },
+  {
+   "pands": [
+    "w1302925049",
+    "part:NL.IMBAG.Pand.0363100012145715:3",
+    "part:NL.IMBAG.Pand.0363100012145715:4",
+    "part:NL.IMBAG.Pand.0363100012145715:2",
+    "part:NL.IMBAG.Pand.0363100012145715:7"
+   ],
+   "osmId": "w1302924574",
+   "osmName": "Amsterdam Amstel",
+   "wikidata": "Q50720",
+   "how": "osm-tag",
+   "sitelinks": 15,
+   "name": "Amsterdam Amstel",
+   "title": "Amsterdam Amstel station",
+   "url": "https://en.wikipedia.org/wiki/Amsterdam_Amstel_station",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Amsterdam_amstel_station.jpg/960px-Amsterdam_amstel_station.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.918131494402983,
+   "lat": 52.34661355298505,
+   "extract": "Amsterdam Amstel (Dutch pronunciation: [ˌɑmstərˈdɑm ˈɑmstəl]; abbreviation: Asa) is a railway station in Amsterdam, Netherlands. The station opened in 1939. It is located to the southeast of Amsterdam Centraal in the borough of Amsterdam-Oost, near the Amstel river. Amsterdam Amstel is used daily by 26,000 train and metro passengers.",
+   "extractLang": "en",
+   "extractSource": "wikipedia-en",
+   "sourceText": "Amsterdam Amstel (Dutch pronunciation: [ˌɑmstərˈdɑm ˈɑmstəl]; abbreviation: Asa) is a railway station in Amsterdam, Netherlands. The station opened in 1939. It is located to the southeast of Amsterdam Centraal in the borough of Amsterdam-Oost, near the Amstel river. Amsterdam Amstel is used daily by 26,000 train and metro passengers. Rail services at the station are provided by NS, the principal railway operator in the Netherlands. Metro, tram and city bus services are provided by municipal operator GVB. Regional buses are operated by Transdev and Keolis. Amstel station is situated in the Omval business district which includes the Rembrandt Tower, the tallest skyscraper in the city, and the Leeuwenburg campus of the Hogeschool van Amsterdam."
+  },
+  {
+   "pands": [
+    "part:NL.IMBAG.Pand.0363100012145715:1",
+    "part:NL.IMBAG.Pand.0363100012145715:0",
+    "w1302924572",
+    "part:NL.IMBAG.Pand.0363100012145715:5"
+   ],
+   "osmId": "w26602796",
+   "osmName": "Amsterdam Amstel",
+   "wikidata": "Q50720",
+   "how": "osm-tag",
+   "sitelinks": 15,
+   "name": "Amsterdam Amstel",
+   "title": "Amsterdam Amstel station",
+   "url": "https://en.wikipedia.org/wiki/Amsterdam_Amstel_station",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Amsterdam_amstel_station.jpg/960px-Amsterdam_amstel_station.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.917676281363639,
+   "lat": 52.34665198818183,
    "extract": "Amsterdam Amstel (Dutch pronunciation: [ˌɑmstərˈdɑm ˈɑmstəl]; abbreviation: Asa) is a railway station in Amsterdam, Netherlands. The station opened in 1939. It is located to the southeast of Amsterdam Centraal in the borough of Amsterdam-Oost, near the Amstel river. Amsterdam Amstel is used daily by 26,000 train and metro passengers.",
    "extractLang": "en",
    "extractSource": "wikipedia-en",
@@ -418,6 +466,26 @@
   },
   {
    "pands": [
+    "NL.IMBAG.Pand.0384100000000612"
+   ],
+   "osmId": "w1013194256",
+   "osmName": null,
+   "wikidata": "Q800664",
+   "how": "point",
+   "sitelinks": 9,
+   "name": "Diemen Zuid railway station",
+   "title": "Diemen Zuid station",
+   "url": "https://en.wikipedia.org/wiki/Diemen_Zuid_station",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Station_Diemen_Zuid_2021_6.jpg/960px-Station_Diemen_Zuid_2021_6.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.955170216666667,
+   "lat": 52.33013549166666,
+   "extract": "Diemen Zuid (Dutch pronunciation: [ˈdimə(n) ˈzœyt]; abbreviation: Dmnz) is a railway station is located in Diemen, a city to the southeast of Amsterdam. The railway station is served by Nederlandse Spoorwegen (NS) services as well as line 53 of the Amsterdam Metro. The station was first used as only a metro station operated by GVB in 1977.",
+   "extractLang": "en",
+   "extractSource": "wikipedia-en",
+   "sourceText": "Diemen Zuid (Dutch pronunciation: [ˈdimə(n) ˈzœyt]; abbreviation: Dmnz) is a railway station is located in Diemen, a city to the southeast of Amsterdam. The railway station is served by Nederlandse Spoorwegen (NS) services as well as line 53 of the Amsterdam Metro. The station was first used as only a metro station operated by GVB in 1977. This was one of the original metro lines in Amsterdam and is route 53 Centraal Station to Gaasperplas. In 1993, the Nederlandse Spoorwegen railway station opened at Diemen Zuid. This was as part of the Zuidelijke tak (South section) of the Ringspoorbaan in Amsterdam — this is the present-day line between Schiphol and Weesp."
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0384100000000562"
    ],
    "osmId": "w166152585",
@@ -615,6 +683,26 @@
    "extractLang": "en",
    "extractSource": "wikipedia-en",
    "sourceText": "Museum Geelvinck was situated from its opening 1991 till the end of 2015 in a canal-side mansion, the Geelvinck Hinlopen Huis in Amsterdam, the Netherlands. This patrician mansion, close to the Rembrandtplein, was built for Albert Geelvinck (1647–1693) and Sara Hinlopen (1660–1749), then in an attractive and new laid-out section of the city towards the Amstel. In the year 1687 the couple moved into this double wide canal house on the Herengracht 518, with storage rooms in the cellar, under the attic and in the warehouse on the Keizersgracht 633, now the museum entrance. The canal mansion 'Geelvinck Hinlopen Huis' is now closed for the public, because the museum (including the rosarium) has moved to new premises. In Spring 2017 the museum opened its new premises in the historic mansion 'De Wildeman' in Zutphen, but had to close down already by the end of 2019. Today, Museum Geelvinck is located at the country estate 'Kolthoorn House' in Heerde, and also has a modest venue at the 'Posthoornkerk' in Amsterdam."
+  },
+  {
+   "pands": [
+    "NL.IMBAG.Pand.0363100012251261"
+   ],
+   "osmId": "w1216240562",
+   "osmName": null,
+   "wikidata": "Q2673118",
+   "how": "point",
+   "sitelinks": 7,
+   "name": "Noorderpark",
+   "title": "Noorderpark metro station",
+   "url": "https://en.wikipedia.org/wiki/Noorderpark_metro_station",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/NoordZuidLijn_Metrostation_Noorderpark_hnapel_006.jpg/960px-NoordZuidLijn_Metrostation_Noorderpark_hnapel_006.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.9195418375,
+   "lat": 52.389414275,
+   "extract": "Noorderpark is a station on the Amsterdam Metro's Route 52 (North–South Line) in Amsterdam, Netherlands. The line and station were opened on 22 July 2018.",
+   "extractLang": "en",
+   "extractSource": "wikipedia-en",
+   "sourceText": "Noorderpark is a station on the Amsterdam Metro's Route 52 (North–South Line) in Amsterdam, Netherlands. The line and station were opened on 22 July 2018."
   },
   {
    "pands": [
@@ -2851,7 +2939,7 @@
    "pands": [
     "NL.IMBAG.Pand.0457100000057782"
    ],
-   "osmId": "w282064630",
+   "osmId": "w1047727438",
    "osmName": null,
    "wikidata": "Q2738496",
    "how": "point",
@@ -2860,8 +2948,8 @@
    "title": "'t Haantje (Weesp)",
    "url": "https://nl.wikipedia.org/wiki/%27t_Haantje_(Weesp)",
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Weesp_molen_%27t_Haantje.jpg/960px-Weesp_molen_%27t_Haantje.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-   "lng": 5.032924850000001,
-   "lat": 52.308112466666664,
+   "lng": 5.032929375,
+   "lat": 52.308104812500005,
    "extract": "'t Haantje is a former grain mill on the Stammerdijk beside the Smal Weesp, in the Dutch town of Weesp (province of North Holland).",
    "extractLang": "en",
    "extractSource": "translated",
@@ -3889,6 +3977,30 @@
   },
   {
    "pands": [
+    "passage:NL.IMBAG.Pand.0363100012110795:0",
+    "passage:NL.IMBAG.Pand.0363100012110795:1",
+    "passage:NL.IMBAG.Pand.0363100012110795:2"
+   ],
+   "osmId": "r3679882",
+   "osmName": "Albertcomplex",
+   "wikidata": "Q43899186",
+   "how": "osm-tag",
+   "sitelinks": 2,
+   "name": "Albertcomplex",
+   "title": "Barcelona (gebouw)",
+   "url": "https://nl.wikipedia.org/wiki/Barcelona_(gebouw)",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Ertshaven_%2807%29.jpg/960px-2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Ertshaven_%2807%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.94418514047619,
+   "lat": 52.37682148492064,
+   "extract": "Woongebouw Barcelona, also known as the Albertcomplex, Bruno Albert or Barcelonaplein, is an apartment building on the KNSM island in Amsterdam-Oost.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Woongebouw Barcelona, ook Albertcomplex, Bruno Albert of Barcelonaplein, is een appartementengebouw op het KNSM-eiland in Amsterdam-Oost.",
+   "original": "Woongebouw Barcelona, ook Albertcomplex, Bruno Albert of Barcelonaplein, is een appartementengebouw op het KNSM-eiland in Amsterdam-Oost.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0363100012136391"
    ],
    "osmId": "r3679883",
@@ -4545,6 +4657,29 @@
    "extractSource": "translated",
    "sourceText": "Het Cartesius Lyceum is een school voor havo- en vwo-onderwijs in Amsterdam. De school is vernoemd naar de Franse filosoof Cartesius (Descartes). Ook zijn lijfspreuk: Cogito ergo sum (ruim vertaald: Ik denk, dus ik ben (besta)), is door de school overgenomen. De school is onderdeel van de Esprit Scholengroep.",
    "original": "Het Cartesius Lyceum is een school voor havo- en vwo-onderwijs in Amsterdam. De school is vernoemd naar de Franse filosoof Cartesius (Descartes). Ook zijn lijfspreuk: Cogito ergo sum (ruim vertaald: Ik denk, dus ik ben (besta)), is door de school overgenomen. De school is onderdeel van de Esprit Scholengroep.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
+    "passage:NL.IMBAG.Pand.0363100012249515:1",
+    "passage:NL.IMBAG.Pand.0363100012249515:2"
+   ],
+   "osmId": "w1123833670",
+   "osmName": null,
+   "wikidata": "Q81854086",
+   "how": "osm-tag",
+   "sitelinks": 2,
+   "name": "Cedar",
+   "title": "Cedar (gebouw)",
+   "url": "https://nl.wikipedia.org/wiki/Cedar_(gebouw)",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/2020_ING_Bijlmerdreef_106_%281%29.jpg/960px-2020_ING_Bijlmerdreef_106_%281%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.95029167647059,
+   "lat": 52.31539580882354,
+   "extract": "Cedar (Dutch for cedar tree) is a large-scale office building on the Bijlmerdreef, adjoining the Amsterdamse Poort shopping centre in Amsterdam-Zuidoost. It was officially opened on 7 January 2020 as the head office of ING Groep.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Cedar (Engels voor ceder) is een grootschalig kantoorgebouw gelegen aan de Bijlmerdreef, grenzend aan winkelcentrum Amsterdamse Poort in Amsterdam-Zuidoost. Het is op 7 januari 2020 officieel geopend als hoofdkantoor van ING Groep. Het maakt deel uit van 'Cumulus Park', een innovatiedistrict opgericht door ING waar ook bestaande kantoorgebouwen als ING Financial Plaza en ING Treasury Center zich bevinden. Het gebouw is ontworpen door Benthem Crouwel Architecten en HofmanDujardin en staat op de plek waar vroeger kantoorgebouw Frankemaheerd stond, dat voor dit gebouw plaats heeft moeten maken. Het gebouw is over het Abcouderpad heen gebouwd. ING is naar dit gebouw verhuisd vanuit hun oude hoofdkantoor aan het Bijlmerplein twee straten verderop. Met het nieuwe gebouw wil de bank Het Nieuwe Werken, duurzaamheid, flexibiliteit en ontmoeting introduceren aan 2800 werknemers en hun klanten. Een kleiner gebouw zou bovendien goed zijn voor het imago voor de bank, met meer transparantie, een menselijke maat en minder grote anonieme pompeuze kantoorgebouwen. Hierdoor moet de bank meer gaan lijken op een hightechbedrijf dan een bank. Architectenbureau HofmanDuardin is verantwoordelijk geweest voor…",
+   "original": "Cedar (Engels voor ceder) is een grootschalig kantoorgebouw gelegen aan de Bijlmerdreef, grenzend aan winkelcentrum Amsterdamse Poort in Amsterdam-Zuidoost. Het is op 7 januari 2020 officieel geopend als hoofdkantoor van ING Groep.",
    "originalLang": "nl"
   },
   {
@@ -7230,6 +7365,31 @@
   },
   {
    "pands": [
+    "w1207503214",
+    "w44824383",
+    "w1207503211",
+    "w1207503213"
+   ],
+   "osmId": "r18035788",
+   "osmName": "Groot Lab",
+   "wikidata": "Q23931083",
+   "how": "osm-tag",
+   "sitelinks": 2,
+   "name": "Groot Laboratorium",
+   "title": "Groot Laboratorium",
+   "url": "https://nl.wikipedia.org/wiki/Groot_Laboratorium",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Groot_Lab_%28brug%29.jpg/960px-Groot_Lab_%28brug%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.903666963934429,
+   "lat": 52.38436650491804,
+   "extract": "The Groot Laboratorium (or simply Groot Lab) is a building in Amsterdam that housed the laboratory of the Bataafsche Petroleum Maatschappij (BPM), later Shell. It lies in the Overhoeks district of Amsterdam-Noord, next to the Toren Overhoeks, and is separated by a footbridge from the Tolhuistuin.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Het Groot Laboratorium (of kortweg Groot Lab) is een gebouw in Amsterdam, waarin het laboratorium van de Bataafsche Petroleum Maatschappij (BPM), later Shell, was gevestigd. Het gebouw ligt in de wijk Overhoeks in Amsterdam-Noord, naast de Toren Overhoeks, en is door een voetbrug gescheiden van de Tolhuistuin. Nadat Shell zich uit dit gebouw had teruggetrokken kreeg het andere functies. Vanaf juni 2013 is de broedplaats A Lab gevestigd in de rechter voorvleugel van het gebouw. In januari 2016 is de linker voorvleugel van het gebouw door de Amsterdamse Hogeschool voor de Kunsten in gebruik genomen. Vanaf september 2014 is Clink Hostel in de achterste vleugel gevestigd. In het gebouw bevinden zich, in een van de twee grote trappenhuizen, gedenkramen van glas in lood van Max Nauta uit 1939 en 1947. Het raam op de 2e verdieping uit 1947 is een oorlogsmonument ter herinnering aan de in de Tweede Wereldoorlog omgekomen medewerkers van de BPM.",
+   "original": "Het Groot Laboratorium (of kortweg Groot Lab) is een gebouw in Amsterdam, waarin het laboratorium van de Bataafsche Petroleum Maatschappij (BPM), later Shell, was gevestigd. Het gebouw ligt in de wijk Overhoeks in Amsterdam-Noord, naast de Toren Overhoeks, en is door een voetbrug gescheiden van de Tolhuistuin.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "w1207525451"
    ],
    "osmId": "w1207525451",
@@ -9222,6 +9382,30 @@
    "extractSource": "translated",
    "sourceText": "Klarenbeek is een boerderij uit de 17e eeuw in de Groot-Duivendrechtse Polder aan de Ouderkerkerdijk aan de oostkant (rechteroever) van de rivier de Amstel. Tot en met het jaar 1921 hoorde de gehele Ouderkerkerdijk en Groot-Duivendrechtse Polder tot de gemeente Ouder-Amstel. Sinds 1922 hoort dit deel bij de gemeente Amsterdam (wijk Overamstel, stadsdeel Oost) Sinds 1970 is het hoofdgebouw beschermd als rijksmonument. De summiere beschrijving in het monumentenregister vermeldt achtervleugels die gedeeltelijk van hout zijn en een deel aan de straatkant met een schilddak. Het huidige beschermde aanzien zou uit de 19e eeuw dateren (\"Algemeen huidig aspect 19e eeuws\"). In de 21e eeuw is Klarenbeek een zorgboerderij geworden, beheerd door de welzijnsinstelling Cordaan.",
    "original": "Klarenbeek is een boerderij uit de 17e eeuw in de Groot-Duivendrechtse Polder aan de Ouderkerkerdijk aan de oostkant (rechteroever) van de rivier de Amstel. Tot en met het jaar 1921 hoorde de gehele Ouderkerkerdijk en Groot-Duivendrechtse Polder tot de gemeente Ouder-Amstel.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
+    "passage:NL.IMBAG.Pand.0363100012112668:1",
+    "passage:NL.IMBAG.Pand.0363100012112668:0",
+    "passage:NL.IMBAG.Pand.0363100012112668:2"
+   ],
+   "osmId": "w57853005",
+   "osmName": "Kleiburg",
+   "wikidata": "Q15877469",
+   "how": "point",
+   "sitelinks": 2,
+   "name": "Kleiburg",
+   "title": "Kleiburg",
+   "url": "https://nl.wikipedia.org/wiki/Kleiburg",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Kleiburg2022.jpg/960px-Kleiburg2022.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.980409613157895,
+   "lat": 52.318300360526315,
+   "extract": "Kleiburg is an existing block of flats and street/address in the K-buurt of the Bijlmermeer (Bijlmer-Oost) in the Amsterdam district of Zuidoost. It was the last honeycomb flat in its original 1970s state. From 1995 to the present, the Zuidoost district has been renewing and upgrading the Bijlmer.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Kleiburg is een bestaand flatgebouw en straat/adres in de K-buurt van de Bijlmermeer (Bijlmer-Oost) in het Amsterdamse stadsdeel Zuidoost. Het was de laatste honingraatflat in de originele staat uit de jaren '70. Vanaf 1995 t/m heden is stadsdeel Zuidoost bezig met de vernieuwing en upgrade van de Bijlmer. Alle hoogbouw/honingraatflats in de wijk zijn gesloopt of grondig gerenoveerd. In het jaar 1971 werd Kleiburg opgeleverd met uitsluitend 3/4kamer sociale huurwoningen. In 2012 werd gekozen voor een totale renovatie die in september 2013 startte en in december 2016 is afgerond. In het eerste en tweede segment zijn 200 gerenoveerde woningen opgeleverd in 2014. Tot en met 2016 werden de laatste 300 gerenoveerde woningen opgeleverd en de openbare ruimte rondom. Heden bestaat de flat uit koop- en particuliere huurwoningen en kleinschalige bedrijvigheid. Het gebouw telt circa 500 appartementen verdeeld over 4 segmenten, 10 verdiepingen en 450 meter lange galerijen. Daarmee is het een van de grootste gebouwen (in vloeroppervlakte) van Nederland. De begane grond en eerste verdieping bestaat uit woningen en kleinschalige bedrijvigheid. Sinds renovatie zijn de kelderboxen verplaatst naar…",
+   "original": "Kleiburg is een bestaand flatgebouw en straat/adres in de K-buurt van de Bijlmermeer (Bijlmer-Oost) in het Amsterdamse stadsdeel Zuidoost. Het was de laatste honingraatflat in de originele staat uit de jaren '70. Vanaf 1995 t/m heden is stadsdeel Zuidoost bezig met de vernieuwing en upgrade van de Bijlmer.",
    "originalLang": "nl"
   },
   {
@@ -12826,6 +13010,30 @@
   },
   {
    "pands": [
+    "passage:NL.IMBAG.Pand.0363100012158581:0",
+    "passage:NL.IMBAG.Pand.0363100012158581:1",
+    "passage:NL.IMBAG.Pand.0363100012158581:2"
+   ],
+   "osmId": "w277233851",
+   "osmName": null,
+   "wikidata": "Q105658702",
+   "how": "point",
+   "sitelinks": 2,
+   "name": "Onderdoorgang Hercules Seghersstraat",
+   "title": "Onderdoorgang Hercules Seghersstraat",
+   "url": "https://nl.wikipedia.org/wiki/Onderdoorgang_Hercules_Seghersstraat",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/2020_Onderdoorgang_H._Seghersstraat%2C_Asd_%2801%29.jpg/960px-2020_Onderdoorgang_H._Seghersstraat%2C_Asd_%2801%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.88837225263158,
+   "lat": 52.354444331578954,
+   "extract": "Onderdoorgang Hercules Seghersstraat is a gatehouse in Amsterdam-Zuid, De Pijp.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Onderdoorgang Hercules Seghersstraat is een poortgebouw in Amsterdam-Zuid, De Pijp.",
+   "original": "Onderdoorgang Hercules Seghersstraat is een poortgebouw in Amsterdam-Zuid, De Pijp.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0363100012078545"
    ],
    "osmId": "w57858987",
@@ -14929,6 +15137,30 @@
   },
   {
    "pands": [
+    "passage:NL.IMBAG.Pand.0363100012084981:0",
+    "passage:NL.IMBAG.Pand.0363100012084981:1",
+    "passage:NL.IMBAG.Pand.0363100012084981:2"
+   ],
+   "osmId": "w279739452",
+   "osmName": null,
+   "wikidata": "Q17296485",
+   "how": "point",
+   "sitelinks": 2,
+   "name": "Brink 43-45, Amsterdam",
+   "title": "Rijksmonument 335336",
+   "url": "https://nl.wikipedia.org/wiki/Rijksmonument_335336",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/2022_Brink_43-45%2C_Asd_%2810%29.jpg/960px-2022_Brink_43-45%2C_Asd_%2810%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.943213463461537,
+   "lat": 52.339817792307706,
+   "extract": "Rijksmonument 335336 comprises a building block on the edge of Brink in Betondorp, Amsterdam-Oost. The building stands partly on Brink (house numbers 43-45) and partly in the Landbouwstraat (house number 61). It was erected in 1926-1928 as a library with reading room in the Betondorp neighbourhood. Homes and shops had stood here earlier.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Rijksmonument 335336 omvat een bouwblok aan de rand van Brink, Betondorp, Amsterdam-Oost. Het gebouw staat deels op Brink (huisnummers 43-45) en deels in de Landbouwstraat (huisnummer 61). Het gebouw werd in de jaren 1926-1928 neergezet als bibliotheek annex leeszaal in de wijk Betondorp. Al eerder verschenen hier woningen en winkels. Het gehele complex rondom Brink is ontworpen door architect Dick Greiner, die alles ontwierp als een soort totaalontwerp. Hij hanteerde daarbij een combinatie van Amsterdamse School en Nieuwe Bouwen. Het gebouw is de tegenhanger van het verenigingsgebouw, rijksmonument 335330 en is daarmee mee verbonden via een galerij, rijksmonument 335342. Het gebouw op Brink 43-45, Landbouwstraat 61, is op eerste blik het spiegelbeeld van dat verenigingsgebouw, maar een blik op de achterzijde levert verschillen op. De bibliotheek mist een erker en ook de ruitverdeling binnen de raampartijen verschillen. Het geheel is opgetrokken uit beton, het hier alom aanwezige korrelbeton, dat alles hier een grijze kleur geeft. Opvallend zijn daardoor de toegangsdeuren Brink 43 en 45 die uitgevoerd zijn in diepgroen en knalrood. Op de knalrode deur zijn twee stroken aangebracht…",
+   "original": "Rijksmonument 335336 omvat een bouwblok aan de rand van Brink, Betondorp, Amsterdam-Oost. Het gebouw staat deels op Brink (huisnummers 43-45) en deels in de Landbouwstraat (huisnummer 61). Het gebouw werd in de jaren 1926-1928 neergezet als bibliotheek annex leeszaal in de wijk Betondorp. Al eerder verschenen hier woningen en winkels.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0363100012101820"
    ],
    "osmId": "w279736533",
@@ -16835,17 +17067,17 @@
    "pands": [
     "NL.IMBAG.Pand.0363100012123932"
    ],
-   "osmId": "w43066056",
-   "osmName": "Schutterstoren",
+   "osmId": "w274838851",
+   "osmName": null,
    "wikidata": "Q1974995",
-   "how": "osm-tag",
+   "how": "point",
    "sitelinks": 2,
    "name": "Schutterstoren",
    "title": "Schutterstoren (Amsterdam)",
    "url": "https://nl.wikipedia.org/wiki/Schutterstoren_(Amsterdam)",
    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Schutterstoren_in_Amsterdam_Netherlands.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-   "lng": 4.807466790697673,
-   "lat": 52.3651872616279,
+   "lng": 4.807464758267716,
+   "lat": 52.36518392125985,
    "extract": "The Schutterstoren is a tower block in Amsterdam Nieuw-West. It forms part of the new-build project 'Meer en Oever', together with 't Waterfort and Het Bastion. This project was initiated by Projectbureau Vernieuwing Osdorp.",
    "extractLang": "en",
    "extractSource": "translated",
@@ -21176,6 +21408,35 @@
   },
   {
    "pands": [
+    "passage:NL.IMBAG.Pand.0362100001111445:4",
+    "passage:NL.IMBAG.Pand.0362100001111445:0",
+    "passage:NL.IMBAG.Pand.0362100001111445:1",
+    "passage:NL.IMBAG.Pand.0362100001111445:3",
+    "passage:NL.IMBAG.Pand.0362100001111445:6",
+    "passage:NL.IMBAG.Pand.0362100001111445:7",
+    "passage:NL.IMBAG.Pand.0362100001111445:2",
+    "passage:NL.IMBAG.Pand.0362100001111445:5"
+   ],
+   "osmId": "w25728982",
+   "osmName": "Q-Park Schouwburggarage",
+   "wikidata": "Q2427171",
+   "how": "point",
+   "sitelinks": 1,
+   "name": "Busstation Amstelveen",
+   "title": "Busstation Amstelveen",
+   "url": "https://nl.wikipedia.org/wiki/Busstation_Amstelveen",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Busstation-amstelveen.jpg/960px-Busstation-amstelveen.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.858110276562499,
+   "lat": 52.30281795625001,
+   "extract": "The Amstelveen bus station is a bus station in Amstelveen that was built in 1997. It replaced the bus stops on Plein 1960 and the Keizer Karelweg. The bus station is in the Stadshart (city centre), under a car park, and so is almost entirely covered.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Het busstation van Amstelveen is een busstation in Amstelveen dat aangelegd is in 1997. Het busstation kwam ter vervanging van de op Plein 1960 en de Keizer Karelweg gelegen bushaltes. Het busstation ligt in het Stadshart en is gelegen onder een parkeergarage en daarmee vrijwel volledig overdekt. Uitzondering vormen de bushaltes aan de oostzijde die niet op het busstation zelf liggen maar op de weg ernaast. Het is niet gelegen aan een trein- of metrostation en er is ook geen tramhalte. Eindhalte Amstelveen Stadshart van tramlijn 5 ligt aan de andere kant van het Stadshart, circa 800 meter oostelijker. De dichtstbijzijnde haltes van de Amsteltram, Oranjebaan en Ouderkerkerlaan, liggen op ca. 1,5 kilometer afstand van het busstation.",
+   "original": "Het busstation van Amstelveen is een busstation in Amstelveen dat aangelegd is in 1997. Het busstation kwam ter vervanging van de op Plein 1960 en de Keizer Karelweg gelegen bushaltes. Het busstation ligt in het Stadshart en is gelegen onder een parkeergarage en daarmee vrijwel volledig overdekt.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0363100012135250"
    ],
    "osmId": "r20168389",
@@ -22074,6 +22335,30 @@
   },
   {
    "pands": [
+    "passage:NL.IMBAG.Pand.0363100012087688:0",
+    "passage:NL.IMBAG.Pand.0363100012087688:2",
+    "passage:NL.IMBAG.Pand.0363100012087688:1"
+   ],
+   "osmId": "r3694003",
+   "osmName": "Entrepotbrug",
+   "wikidata": "Q21090259",
+   "how": "osm-tag",
+   "sitelinks": 1,
+   "name": "Entrepotbrug",
+   "title": "Entrepotbrug",
+   "url": "https://nl.wikipedia.org/wiki/Entrepotbrug",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/2023_Borneosteiger%2C_Brug_1981-1982%2C_Asd.jpg/960px-2023_Borneosteiger%2C_Brug_1981-1982%2C_Asd.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.936978953216374,
+   "lat": 52.36970592163743,
+   "extract": "De Entrepotbrug is a large residential apartment building from 1992 in the Eastern Harbour District of Amsterdam, designed by architects of atelier PRO. It lies largely above the water of the Entrepothaven. 'Entrepotbrug' is also the street name of the addresses in the building.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "De Entrepotbrug is een groot woon-appartementengebouw uit 1992 in het Oostelijk Havengebied van Amsterdam, ontworpen door architecten van atelier PRO, dat grotendeels boven het water van de Entrepothaven ligt. \"Entrepotbrug\" is ook de straatnaam van de adressen in het gebouw. Het gebouw heeft een langgerekte golvende vorm (slang), en strekt zich uit van het Entrepothof bij de Cruquiusweg op het Cruquiuseiland tot aan de Borneolaan.",
+   "original": "De Entrepotbrug is een groot woon-appartementengebouw uit 1992 in het Oostelijk Havengebied van Amsterdam, ontworpen door architecten van atelier PRO, dat grotendeels boven het water van de Entrepothaven ligt. \"Entrepotbrug\" is ook de straatnaam van de adressen in het gebouw.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
     "NL.IMBAG.Pand.0424100000001818"
    ],
    "osmId": "w279189567",
@@ -22178,7 +22463,7 @@
    "extract": "The G. Perlee Draaiorgelmuseum is a museum in Amsterdam with a changing collection of barrel organs from the Perlee organ company. The museum is located at Westerstraat 119 in the Jordaan, where the Perlee organ company has been based since 1932. In that year the museum's namesake, Gijs Perlee, took over the company from his father-in-law Leon Warnies.",
    "extractLang": "en",
    "extractSource": "translated",
-   "sourceText": "Het G. Perlee Draaiorgelmuseum is een museum in Amsterdam met een wisselende collectie draaiorgels van het orgelbedrijf Perlee. Het museum is gevestigd aan de Westerstraat 119 in de Jordaan, waar sinds 1932 het orgelbedrijf Perlee is gevestigd. In dat jaar nam de naamgever van het museum, Gijs Perlee, het bedrijf van zijn schoonvader Leon Warnies over. Warnies was een Belg die zijn bedrijf als orgeldraaier en -verhuurder in 1875 startte aan de Egelantiersstraat in Amsterdam. De rondgang door het museum voert door de authentieke, nog operationele werkplaats van het bedrijf. Hier worden orgels gebouwd en gerepareerd en gaatjesboeken geschreven en uitgeponst. Bij dit handwerk wordt onder meer authentiek gereedschap uit de 19e eeuw gebruikt. Tijdens een bezoek kunnen bezoekers een orgelboek in het orgel plaatsen en leren hoe een orgel in het juiste tempo wordt gedraaid. Er is een wisselende collectie van pierementen en andere draaiorgels te zien, waarvan sommige exemplaren wereldwijde bekendheid hebben gekregen. Het museum is op afspraak in groepen te bezoeken. De orgels behoren tot de collectie van het Museum Speelklok in Utrecht en worden in bruikleen gegeven voor tentoonstelling en restauratie.",
+   "sourceText": "Het G. Perlee Draaiorgelmuseum is een museum in Amsterdam met een wisselende collectie draaiorgels van het orgelbedrijf Perlee. Het museum is gevestigd aan de Westerstraat 119 in de Jordaan, waar sinds 1932 het orgelbedrijf Perlee is gevestigd. In dat jaar nam de naamgever van het museum, Gijs Perlee, het bedrijf van zijn schoonvader Leon Warnies over. Warnies was een Belg die zijn bedrijf als orgeldraaier en -verhuurder in 1875 startte aan de Egelantiersstraat in Amsterdam. De rondgang door het museum voert door de authentieke, nog operationele werkplaats van het bedrijf. Hier worden orgels gebouwd en gerepareerd en gaatjesboeken geschreven en uitgeponst. Bij dit handwerk wordt onder meer authentiek gereedschap uit de 19e eeuw gebruikt. Tijdens een bezoek kunnen bezoekers een orgelboek in het orgel plaatsen en leren hoe een orgel in het juiste tempo wordt gedraaid. Er is een wisselende collectie van pierementen en andere draaiorgels te zien, waarvan sommige exemplaren wereldwijde bekendheid hebben gekregen. Het museum is op afspraak in groepen te bezoeken. De orgels behoren tot de collectie van het Museum Speelklok in Utrecht en worden in bruikleen gegeven voor tentoonstelling en restauratie…",
    "original": "Het G. Perlee Draaiorgelmuseum is een museum in Amsterdam met een wisselende collectie draaiorgels van het orgelbedrijf Perlee. Het museum is gevestigd aan de Westerstraat 119 in de Jordaan, waar sinds 1932 het orgelbedrijf Perlee is gevestigd. In dat jaar nam de naamgever van het museum, Gijs Perlee, het bedrijf van zijn schoonvader Leon Warnies over.",
    "originalLang": "nl"
   },
@@ -22964,7 +23249,7 @@
    "pands": [
     "NL.IMBAG.Pand.0363100012240694"
    ],
-   "osmId": "w279738536",
+   "osmId": "w1081879099",
    "osmName": null,
    "wikidata": "Q96742315",
    "how": "point",
@@ -22973,8 +23258,8 @@
    "title": "Kantoor en rouwcentrum De Nieuwe Ooster",
    "url": "https://nl.wikipedia.org/wiki/Kantoor_en_rouwcentrum_De_Nieuwe_Ooster",
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/2020_Kantoor_Nieuwe_Ooster_%282%29.jpg/960px-2020_Kantoor_Nieuwe_Ooster_%282%29.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-   "lng": 4.936710685714286,
-   "lat": 52.34145689999999,
+   "lng": 4.936660542857143,
+   "lat": 52.341445185714285,
    "extract": "The Kantoor en rouwcentrum De Nieuwe Ooster is a building in Amsterdam-Oost. It was erected in 2010-2012, when the western part of the De Nieuwe Ooster cemetery was redeveloped according to the insights of Karres en Brands Landschapsarchitecten. A new entrance was created at Rozenburglaan 5.",
    "extractLang": "en",
    "extractSource": "translated",
@@ -24175,6 +24460,28 @@
    "sourceText": "Overtoom 447, Amsterdam is een dubbel herenhuis aan de Overtoom in Amsterdam-West.",
    "original": "Overtoom 447, Amsterdam is een dubbel herenhuis aan de Overtoom in Amsterdam-West.",
    "originalLang": "nl"
+  },
+  {
+   "pands": [
+    "passage:NL.IMBAG.Pand.0424100000005337:0",
+    "passage:NL.IMBAG.Pand.0424100000005337:1",
+    "passage:NL.IMBAG.Pand.0424100000005337:2"
+   ],
+   "osmId": "w27921691",
+   "osmName": "Fort Pampus Batterij",
+   "wikidata": null,
+   "how": "osm-tag",
+   "sitelinks": 1,
+   "name": "Fort Pampus Batterij",
+   "title": "Pampus",
+   "url": "https://en.wikipedia.org/wiki/Pampus",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/526452-Fort_Pampus.jpg/960px-526452-Fort_Pampus.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 5.068940923456791,
+   "lat": 52.36478977530865,
+   "extract": "Pampus (Dutch pronunciation: [ˈpɑmpʏs]) is an artificial island and late 19th-century sea fort located in the IJmeer near Amsterdam. Pampus now belongs to the municipality of Gooise Meren and is open to visitors.",
+   "extractLang": "en",
+   "extractSource": "wikipedia-en",
+   "sourceText": "Pampus (Dutch pronunciation: [ˈpɑmpʏs]) is an artificial island and late 19th-century sea fort located in the IJmeer near Amsterdam. Pampus now belongs to the municipality of Gooise Meren and is open to visitors. Together with the artillery battery on the lighthouse island near Durgerdam and the battery at the Diemer seawall, Pampus protected the entrance to IJ Bay and the harbour of Amsterdam. Pampus was part of the Defence Line of Amsterdam (Dutch: Stelling van Amsterdam). In 1996, UNESCO designated the entire Defence Line with its 42 forts a World Heritage Site."
   },
   {
    "pands": [
@@ -27099,6 +27406,29 @@
    "extractSource": "translated",
    "sourceText": "Het pand Vinkenstraat 39, ook wel Vinkenstraat 39-41, is een gebouw in de Vinkenstraat te Amsterdam-Centrum. In 1872 werd hier door de \"Vereeniging tot verbetering der kleine kinderbewaarplaatsen\" (zijnde kinderdagverblijf) een eerste filiaal geopend. Er zou voor de kinderen gezorgd kunnen worden van ’s morgens 7 uur tot ’s avonds half 10. Koningin Emma van Waldeck-Pyrmont vereerde het jaar daarop de opvang met een bezoek, waarbij de leidster van de dan al 92 aanwezige kinderen, Femina Muller ideeën heeft voor een tweede gebouw. Die werd amper drie jaar later geopend aan de Warmoesstraat 71. In 1901 wordt de situatie in dit gebouw nijpend; er moeten zoveel reparaties verricht worden, dat het niet meer binnen het budget past. Er werd geld ingezameld voor een nieuw gebouw. De opvang verhuisde even naar de Brouwersgracht 198 (achterkant van Vinkenstraat). Het werd een niet geheel nieuw gebouw, maar het voldeed bij de oplevering in april 1904 aan (weer) meer hygiënische eisen dan die destijds aan zulke instanties werden gesteld. Van twee panden werd één gemaakt. Het ontwerp kwam van Coenraad Wiegand, makelaar, aannemer en architect. Het gebouw is opgetrokken in de electische bouwstijl.…",
    "original": "Het pand Vinkenstraat 39, ook wel Vinkenstraat 39-41, is een gebouw in de Vinkenstraat te Amsterdam-Centrum. In 1872 werd hier door de \"Vereeniging tot verbetering der kleine kinderbewaarplaatsen\" (zijnde kinderdagverblijf) een eerste filiaal geopend. Er zou voor de kinderen gezorgd kunnen worden van ’s morgens 7 uur tot ’s avonds half 10.",
+   "originalLang": "nl"
+  },
+  {
+   "pands": [
+    "passage:NL.IMBAG.Pand.0363100012165755:1",
+    "passage:NL.IMBAG.Pand.0363100012165755:2"
+   ],
+   "osmId": "w268999590",
+   "osmName": "Weesperstaete",
+   "wikidata": "Q18089047",
+   "how": "point",
+   "sitelinks": 1,
+   "name": "Weesperstaete",
+   "title": "Weesperstaete",
+   "url": "https://nl.wikipedia.org/wiki/Weesperstaete",
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Weesperstaete.jpg/960px-Weesperstaete.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "lng": 4.906934137777777,
+   "lat": 52.36155297111111,
+   "extract": "Weesperstaete is a Dutch office building from 1969 in Amsterdam. It is located on the Weesperplein, on the corner of the Sarphatistraat, and was designed by Alexander Bodon for Bank voor Onroerende Zaken nv. Colloquially it is known as 'De Doodskist' (The Coffin). It has 9 floors and was originally fitted with a curtain wall of dark-tinted glass.",
+   "extractLang": "en",
+   "extractSource": "translated",
+   "sourceText": "Weesperstaete is een Nederlands kantoorgebouw uit 1969 in Amsterdam. Het is gelegen aan het Weesperplein, hoek Sarphatistraat en is ontworpen door Alexander Bodon in opdracht van Bank voor Onroerende Zaken nv. In de volksmond staat het bekend als \"De Doodskist\". Het telt 9 verdiepingen en was aanvankelijk voorzien van een vliesgevel van donkergetint glas. Volgens Ids Haagsma is het een kopie van het Seagram Building (1958) in New York, van Ludwig Mies van der Rohe. Bodon had het evenwel willen voorzien van twee extra verdiepingen en een duidelijk afsluitende dakopbouw, maar kreeg hier van de welstandscommissie en de Dienst Stadsontwikkeling geen toestemming voor. Het gebouw past in de toenmalige plannen voor grootschalige cityvorming en staat achter de rooilijn van de Sarphatistraat omdat deze straat net als de Weesperstraat tot verkeersader zou worden verbreed. In de sokkel is een ingang van metrostation Weesperplein opgenomen. Aan de Weesperpleinzijde overkluist het een kleine straat, de Voormalige Stadstimmertuinen. Weesperstaete werd bij oplevering in 1971 verhuurd aan de Gemeente Universiteit van Amsterdam, die er de faculteit psychologie onderbracht. Toen deze faculteit naar…",
+   "original": "Weesperstaete is een Nederlands kantoorgebouw uit 1969 in Amsterdam. Het is gelegen aan het Weesperplein, hoek Sarphatistraat en is ontworpen door Alexander Bodon in opdracht van Bank voor Onroerende Zaken nv. In de volksmond staat het bekend als \"De Doodskist\". Het telt 9 verdiepingen en was aanvankelijk voorzien van een vliesgevel van donkergetint glas.",
    "originalLang": "nl"
   },
   {

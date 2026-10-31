@@ -127,6 +127,8 @@ export function sameBridgeName(a: string, b: string): boolean {
 export const REGISTER_ALIASES: Readonly<Record<string, string>> = {
   // nl.wikipedia "Pythonbrug": officially Hoge brug, bridge 1998.
   'Python Bridge': 'Hoge brug',
+  // The extract names bridges by their local OSM name since 2026-10-31.
+  Pythonbrug: 'Hoge brug',
   // nl.wikipedia "Brug 348": Zeilbrug and Zeilstraatbrug, over the Schinkel.
   Zeilbrug: 'Zeilstraatbrug',
   // nl.wikipedia "Willem Breukerbrug": bridge 2326 was called Zouthavenbrug

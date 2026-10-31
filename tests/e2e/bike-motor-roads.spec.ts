@@ -21,7 +21,7 @@ test('the cycling graph has no motor roads and still reaches Noord', async ({ pa
     let length = 0;
     for (let i = 1; i < route.length; i++) length += Math.hypot(route[i].x - route[i - 1].x, route[i].y - route[i - 1].y);
     return {
-      tunnels: ['IJ-tunnel', 'Piet Heintunnel', 'Coen Tunnel', 'Ringweg-Noord'].filter(name => names.has(name)),
+      tunnels: ['IJ-tunnel', 'Piet Heintunnel', 'Coen Tunnel', 'Coentunnel', 'Ringweg-Noord'].filter(name => names.has(name)),
       points: route.length,
       km: length / 3000,
     };
