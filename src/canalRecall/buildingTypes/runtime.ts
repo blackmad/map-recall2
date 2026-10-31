@@ -224,6 +224,7 @@ ${BAKED_SHADE_GLSL}
 }`,
     fragmentShader: `
 ${Array.from({length: n}, (_, i) => `uniform sampler2D t${i};`).join('\n')}
+uniform float hlDimAll;
 varying vec2 vUv;
 varying float vShade;
 varying float vTex;
@@ -234,6 +235,8 @@ void main() {
   c *= vTint;
 #ifdef HL_DIM_ALL
   c = mix(c, vec3(dot(c, vec3(0.2126, 0.7152, 0.0722))), 0.4);
+#else
+  if (hlDimAll > 0.5) c = mix(c, vec3(dot(c, vec3(0.2126, 0.7152, 0.0722))), 0.4);
 #endif
   gl_FragColor = vec4(c * vShade, 1.0);
 }`,
@@ -274,14 +277,16 @@ export function litMergedMaterial(THREE: any, textures: readonly any[], side: nu
       constructor(parameters?: Record<string, unknown>) {
         super(parameters);
         this.onBeforeCompile = function (this: any, shader: any) {
-          const {declarations, sample} = litMergedFragment(this.btTextures.length);
-          this.btTextures.forEach((t: any, i: number) => { shader.uniforms[`btT${i}`] = {value: t}; });
+          // Always MAX_LIT_MERGED_SAMPLERS samplers (#129 P4): one program for every area, whatever its texture count.
+          // The padding binds the first texture and is never picked (vBtTex < n).
+          const {declarations, sample} = litMergedFragment(MAX_LIT_MERGED_SAMPLERS);
+          for (let i = 0; i < MAX_LIT_MERGED_SAMPLERS; i++) shader.uniforms[`btT${i}`] = {value: this.btTextures[i] ?? this.btTextures[0] ?? null};
           shader.vertexShader = shader.vertexShader
             .replace('#include <common>', '#include <common>\nattribute float btTex;\nattribute vec3 btTint;\nvarying float vBtTex;\nvarying vec3 vBtTint;\nvarying vec2 vBtUv;')
             .replace('#include <uv_vertex>', '#include <uv_vertex>\n  vBtUv = uv; vBtTex = btTex; vBtTint = btTint;');
           shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>\n${declarations}`).replace('#include <map_fragment>', sample);
         };
-        this.customProgramCacheKey = function (this: any) { return `building-types/lit-merged/${this.btTextures.length}`; };
+        this.customProgramCacheKey = function (this: any) { return `building-types/lit-merged/${MAX_LIT_MERGED_SAMPLERS}`; };
       }
       copy(source: any) {
         super.copy(source);
@@ -414,7 +419,8 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     }
     let m = merged.get(source.side);
     if (!m) {
-      const uniforms: Record<string, any> = {enuFromWorld: source.uniforms.enuFromWorld};
+      // hlDimAll: the dim highlight variant (look/highlight.ts) is a uniform, so it shares this program.
+      const uniforms: Record<string, any> = {enuFromWorld: source.uniforms.enuFromWorld, hlDimAll: {value: 0}};
       textures.forEach((t, i) => { uniforms[`t${i}`] = {value: t}; });
       m = new THREE.ShaderMaterial({uniforms, ...mergedShaders(textures.length), side: source.side});
       m.name = 'building-types/merged';
