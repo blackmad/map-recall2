@@ -6,7 +6,7 @@ import {readFileSync} from 'node:fs';
 let resolve!: (value:any)=>void;
 const projection=new Promise(r=>resolve=r);
 const index={name:'new index'};
-const context=vm.createContext({window:{CanalRecallRoadProjection:{buildRoadSegmentsAsync:()=>projection,RoadSnapIndex:{create:async()=>index}}},DOMException,SIMPLIFICATION_TOLERANCE:.00003,ROAD_WIDTHS:{},DEFAULT_ROAD_WIDTH:30});
+const context=vm.createContext({window:{CanalRecallRoadProjection:{buildRoadSegmentsAsync:()=>projection,RoadSnapIndex:{create:async()=>index}}},DOMException,SIMPLIFICATION_TOLERANCE:.00003,ROAD_WIDTHS:{},DEFAULT_ROAD_WIDTH:30,ROAD_SETUP_SLICE_MS:48});
 vm.runInContext(readFileSync('public/canal-drive/js/osm-loader.js','utf8')+'\nglobalThis.loader = new OSMLoader();',context);
 const loader=context.loader;
 const previous={_lastCenterLat:52,_lastCenterLng:4,_lastOffsetX:20,_lastOffsetY:30,_roadSnapSegments:[],_roadSnapIndex:{name:'previous index'}};
