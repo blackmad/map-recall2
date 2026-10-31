@@ -54,7 +54,7 @@ export const LABEL_GAP_PX = 6;
 
 export function categoryClass(category: PoiCategory | string | undefined): LabelClass {
   switch (category) {
-    case 'culture': case 'worship': return 'culture';
+    case 'culture': case 'worship': case 'art': return 'culture';
     case 'education': case 'health': case 'civic': case 'leisure': case 'market': return 'civic';
     default: return 'venue';
   }

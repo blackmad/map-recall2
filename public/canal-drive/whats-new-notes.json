@@ -3,6 +3,54 @@
   "notes": [
     {
       "date": "2026-10-31",
+      "title": "Statues, murals and memorials answer a click",
+      "text": "Click a sculpture, mural or memorial standing in the street and a card now names it, with its kind, artist and year, the English lede from Wikipedia, a photo and the link. 1,427 pieces of street art inside the city got this, 988 with an article: the Homomonument on Westermarkt, De Dokwerker, Het Lieverdje, the Anne Frank statues, the murals of Amsterdam-Nieuw-West. 960 of the articles exist only in Dutch and were translated for the card. Sculptures also show as small orientation labels on the ground.",
+      "where": [
+        4.884722,
+        52.374444
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-street-art-homomonument.jpg",
+          "alt": "The Homomonument on Westermarkt with a card naming it, its English lede, photo and Wikipedia link",
+          "caption": "The Homomonument, clicked from the square"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "793 more streets tell their story while you ride",
+      "text": "Streets and squares with a Wikipedia article now show a ride card even when they are not in the quiz pool. Zeedijk, Waterlooplein, Sarphatistraat, Lindengracht, Kerkstraat and 788 others gained an English card with the article's opening lines, photo and link; 748 were translated from Dutch for it.",
+      "where": [
+        4.900676,
+        52.374672
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-street-article-zeedijk.jpg",
+          "alt": "The ride card for Zeedijk with its English lede, photo and Wikipedia link",
+          "caption": "Zeedijk: a street the game could route along but never described"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Seven famous buildings become landmarks",
+      "text": "Buildings that Wikipedia covers in eight or more languages but that the map tagged only as a building are now proper landmarks: Johan Cruyff Arena, the Olympic Stadium, Muiderslot, Amstel station, the Cobra Museum, the Diamond Museum and the Museum of Bags and Purses on Herengracht. They get the landmark card and dot, count for recall, and can be asked about.",
+      "where": [
+        4.88244,
+        52.359468
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-10-31-promoted-landmark-diamond-museum.jpg",
+          "alt": "The Diamond Museum on Paulus Potterstraat with the landmark card open",
+          "caption": "The Diamond Museum, now a landmark rather than a plain building"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
       "title": "Buildings with a Wikipedia article open it",
       "text": "Click an ordinary building that Wikipedia has written about and the card now names it, tells its story in English and links the article, with its photo. 1,237 buildings on 1,785 footprints gained this: apartment rings like Emerald Empire on KNSM-eiland, water towers, churches, gable houses, offices, mosques. 1,104 of the articles exist only in Dutch and were translated for the card; the Dutch original is kept with the data. Mapped venues such as Paradiso keep their card and gain the article text.",
       "where": [

@@ -17,10 +17,10 @@
 
 export type PoiCategory =
   | 'culture' | 'worship' | 'education' | 'health' | 'civic'
-  | 'lodging' | 'shop' | 'bike' | 'leisure' | 'market' | 'food';
+  | 'lodging' | 'shop' | 'bike' | 'leisure' | 'market' | 'food' | 'art';
 
 export const POI_CATEGORIES: readonly PoiCategory[] = [
-  'culture', 'worship', 'education', 'health', 'civic', 'lodging', 'shop', 'bike', 'leisure', 'market', 'food',
+  'culture', 'worship', 'education', 'health', 'civic', 'lodging', 'shop', 'bike', 'leisure', 'market', 'food', 'art',
 ];
 
 export interface PoiClass { category: PoiCategory; weight: number }
@@ -28,6 +28,9 @@ export interface PoiClass { category: PoiCategory; weight: number }
 /** Base weight by tag value; a higher weight wins a crowded block. */
 const RULES: Array<[key: string, values: Record<string, PoiClass>]> = [
   ['tourism', {
+    // Street-side art stands on the ground, not in a building (streetArt.ts):
+    // a statue in a square is a cue riders orient by, and a click near it opens its card.
+    artwork: { category: 'art', weight: 22 },
     museum: { category: 'culture', weight: 80 },
     gallery: { category: 'culture', weight: 55 },
     hotel: { category: 'lodging', weight: 35 },
@@ -149,4 +152,5 @@ export const POI_CATEGORY_COLOURS: Record<PoiCategory, string> = {
   leisure: '#4f9a52',
   market: '#b3702f',
   food: '#c2553b',
+  art: '#a0527d',
 };

@@ -1313,17 +1313,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Building articles, follow-ups (2026-10-31).** Shipped: 1,237 Wikipedia
-  articles on ordinary buildings open from the click card (HISTORY
-  2026-10-31). Open: 200 article footprints lie outside the streamed tiles
-  (Pampus, Nederhorst den Berg); promotion of famous unlinked buildings to
-  landmarks (Olympisch Stadion, De Nederlandsche Bank, Stopera's building)
-  needs a `classify()` rule plus a look at the 420 cap and distractor pools;
-  ~1,050 located Wikidata sculptures, murals and memorials want a street-side
-  click POI, not a building; bridges/streets in the Wikidata box should be
-  audited by title before counting them missing. Brief
-  `docs/handoffs/lane-wikipedia-buildings-20261030.md`, audit
-  `npm run audit:wikipedia-buildings`, issue #142.
+- **Building articles, remainder (2026-10-31).** Shipped: article cards on
+  1,251 buildings, 793 street ride cards, 1,427 clickable street-art points,
+  7 promoted landmarks (HISTORY 2026-10-31). Open: 185 article footprints
+  are not in the streamed tiles (`staging/building-articles-untiled.json`;
+  167 outside the Amsterdam box, 18 inside and mostly non-buildings) and
+  stay silent until the tiles grow; street-art points with no article (439)
+  show only kind/artist/year from OSM; the `art` orientation category has no
+  own icon yet (culture label class). Issue #142.
 - **Follow-the-street touch steering, follow-ups (2026-10-29).** Shipped as
   the phone default (HISTORY 2026-10-29). Open:
   - Feel check on a real phone by the user; no one has ridden it on glass.

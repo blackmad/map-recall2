@@ -28,9 +28,8 @@ import path from 'node:path';
 import { createInterface } from 'node:readline';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { BuildingGrid, pointInRing, ringCentroid, tileIdsDrawing, type OsmBuilding, type Ring } from './lib/landmarkBuildings.ts';
-import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 import { articleTitle, loadWikidataArticlesBox, type WikidataArticleItem } from './lib/wikidata-articles-box.ts';
-import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
+import { fetchWikipediaPages, pageLanguage, pageTitle, type WikipediaPage } from './lib/wikipedia-pages.ts';
 import { factTileOf, shortBuildingId } from '../src/canalRecall/buildingFacts.ts';
 import {
   BUILDING_ARTICLE_VERSION, clipExtract, isBuildingClass, parseWikipediaTag, pickArticle,
@@ -46,13 +45,40 @@ if (!await stat(buildingsSeq).catch(() => null)) throw new Error('Run `npm run r
 
 // ---- What the tiles draw, and which pands a landmark already claims ----
 const tileIds = new Set<string>();
+// Drawn pands by centroid, for an OSM footprint without `ref:bag` whose pand
+// the tiles draw under a BAG id (200 article footprints had no tile id).
+const pandCentroids = new Map<string, Array<{ id: string; lng: number; lat: number }>>();
+const centroidCell = (lng: number, lat: number) => `${Math.floor(lng * 1000)}:${Math.floor(lat * 2000)}`;
 const tileRoot = path.join(directory, 'building-tiles', '14');
 for (const x of await readdir(tileRoot)) {
   for (const file of await readdir(path.join(tileRoot, x))) {
     if (!file.endsWith('.geojson.gz')) continue;
     const collection = JSON.parse(gunzipSync(await readFile(path.join(tileRoot, x, file))).toString('utf8'));
-    for (const feature of collection.features) if (feature.properties?.id) tileIds.add(String(feature.properties.id));
+    for (const feature of collection.features) {
+      const id = feature.properties?.id;
+      if (!id) continue;
+      tileIds.add(String(id));
+      const ring: Ring | undefined = feature.geometry?.type === 'Polygon' ? feature.geometry.coordinates[0]
+        : feature.geometry?.type === 'MultiPolygon' ? feature.geometry.coordinates[0]?.[0] : undefined;
+      if (!ring?.length) continue;
+      const [lng, lat] = ringCentroid(ring);
+      const key = centroidCell(lng, lat);
+      (pandCentroids.get(key) ?? pandCentroids.set(key, []).get(key)!).push({ id: String(id), lng, lat });
+    }
   }
+}
+/** Drawn pands standing inside an OSM footprint the tiles do not know by id. */
+function pandsInside(building: OsmBuilding): string[] {
+  const outer = building.rings[0];
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const [x, y] of outer) { minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y); }
+  const found: string[] = [];
+  for (let cx = Math.floor(minX * 1000); cx <= Math.floor(maxX * 1000); cx++) for (let cy = Math.floor(minY * 2000); cy <= Math.floor(maxY * 2000); cy++) {
+    for (const pand of pandCentroids.get(`${cx}:${cy}`) ?? []) {
+      if (pand.lng >= minX && pand.lng <= maxX && pand.lat >= minY && pand.lat <= maxY && pointInRing(pand.lng, pand.lat, outer)) found.push(pand.id);
+    }
+  }
+  return found;
 }
 const landmarkJoin = JSON.parse(await readFile(path.join(directory, 'landmark-buildings.json'), 'utf8')) as { buildings: Record<string, string[]> };
 const landmarkPands = new Set(Object.values(landmarkJoin.buildings).flat());
@@ -134,57 +160,27 @@ process.stdout.write(`${scanned} buildings scanned; ${footprints.length} footpri
 interface Placed extends Footprint { chosen: Candidate; pands: string[] }
 const placed: Placed[] = [];
 const claimed = new Set<string>();
-let leftToLandmark = 0, noTile = 0;
+let leftToLandmark = 0, noTile = 0, viaCentroid = 0;
+const untiled: Array<{ osmId: string; name: string | null; label: string; lng: number; lat: number }> = [];
 for (const footprint of footprints.sort((a, b) => a.building.osmId.localeCompare(b.building.osmId))) {
   const chosen = pickArticle(footprint.candidates)!;
-  const ids = tileIdsDrawing(footprint.building, grid, tileIds).filter(id => !claimed.has(id));
-  if (!ids.length) { noTile++; continue; }
+  const drawn = tileIdsDrawing(footprint.building, grid, tileIds);
+  const ids = (drawn.length ? drawn : pandsInside(footprint.building)).filter(id => !claimed.has(id));
+  if (!drawn.length && ids.length) viaCentroid++;
+  if (!ids.length) { noTile++; untiled.push({ osmId: footprint.building.osmId, name: footprint.name, label: chosen.label, lng: footprint.lng, lat: footprint.lat }); continue; }
   if (ids.every(id => landmarkPands.has(id))) { leftToLandmark++; continue; }
   const pands = ids.filter(id => !landmarkPands.has(id));
   for (const id of pands) claimed.add(id);
   placed.push({ ...footprint, chosen, pands });
 }
-process.stdout.write(`${placed.length} footprints placed on ${claimed.size} pands; ${leftToLandmark} left to a landmark card; ${noTile} not drawn by the tiles\n`);
+process.stdout.write(`${placed.length} footprints placed on ${claimed.size} pands (${viaCentroid} via pands standing inside the footprint); ${leftToLandmark} left to a landmark card; ${noTile} not drawn by the tiles\n`);
+await mkdir(path.join(directory, 'staging'), { recursive: true });
+await writeFile(path.join(directory, 'staging', 'building-articles-untiled.json'), JSON.stringify(untiled, null, 1));
 
 // ---- Article text ----
-interface PageDetail { title: string; extract?: string; url?: string; image?: string; englishTitle?: string }
-const headers = { 'User-Agent': 'map-recall2 building articles (https://github.com/blackmad/map-recall2)' };
-const chunks = <T>(list: T[], size: number) => Array.from({ length: Math.ceil(list.length / size) }, (_, i) => list.slice(i * size, (i + 1) * size));
-async function fetchPages(language: string, titles: string[]): Promise<Map<string, PageDetail>> {
-  const details = new Map<string, PageDetail>();
-  for (const batch of chunks([...new Set(titles)], 20)) {
-    const url = new URL(`https://${language}.wikipedia.org/w/api.php`);
-    url.search = new URLSearchParams({
-      action: 'query', format: 'json', redirects: '1', titles: batch.join('|'),
-      prop: 'extracts|info|pageimages|pageprops|langlinks', inprop: 'url', lllang: 'en', lllimit: '20',
-      exintro: '1', explaintext: '1', exchars: '2400', exlimit: '20', piprop: 'thumbnail', pithumbsize: '640', ppprop: 'disambiguation',
-    }).toString();
-    let data: any;
-    try {
-      data = await cachedJsonFetch(url, { cacheDirectory: '.cache/wikimedia', headers, attempts: offline ? 1 : 4, pauseMs: 200, maxAgeMs: offline ? Infinity : undefined });
-    } catch (error) {
-      process.stdout.write(`  ${language}: batch failed (${(error as Error).message})\n`);
-      continue;
-    }
-    const aliases = new Map<string, string>();
-    for (const item of [...(data.query?.normalized || []), ...(data.query?.redirects || [])] as { from: string; to: string }[]) aliases.set(item.from, item.to);
-    for (const page of Object.values(data.query?.pages || {}) as any[]) {
-      if (!page.title || page.missing !== undefined) continue;
-      if (page.pageprops && 'disambiguation' in page.pageprops) continue;
-      if (isDisambiguationExtract(page.extract)) continue;
-      const detail: PageDetail = { title: page.title, extract: page.extract, url: page.fullurl, image: page.thumbnail?.source, englishTitle: page.langlinks?.find((l: any) => l.lang === 'en')?.['*'] };
-      details.set(page.title, detail);
-      for (const from of aliases.keys()) {
-        let resolved = from;
-        for (let hop = 0; hop < 3 && aliases.has(resolved); hop++) resolved = aliases.get(resolved)!;
-        if (resolved === page.title) details.set(from, detail);
-      }
-    }
-  }
-  return details;
-}
-const titleOf = (page: string) => page.slice(page.indexOf(':') + 1);
-const langOf = (page: string) => page.slice(0, page.indexOf(':'));
+const fetchPages = (language: string, titles: string[]) => fetchWikipediaPages(language, titles, { offline });
+const titleOf = pageTitle;
+const langOf = pageLanguage;
 const nlTitles = placed.map(p => p.chosen.page).filter(page => langOf(page) === 'nl').map(titleOf);
 const nlPages = await fetchPages('nl', nlTitles);
 // A Dutch article may link an English one the box query did not know about.
@@ -209,7 +205,7 @@ const records: MasterRecord[] = [];
 let noText = 0;
 for (const entry of placed) {
   const page = entry.chosen.page;
-  let detail: PageDetail | undefined;
+  let detail: WikipediaPage | undefined;
   let lang = langOf(page);
   if (lang === 'en') detail = enPages.get(titleOf(page));
   else {
@@ -266,7 +262,7 @@ const bySource = { 'wikipedia-en': 0, translated: 0, 'wikipedia-nl': 0 };
 for (const record of records) { byHow[record.how]++; bySource[record.extractSource]++; }
 const report = {
   generated: new Date().toISOString(), scanned, footprintsWithCandidates: footprints.length, placed: placed.length, leftToLandmark, noTile, noText,
-  articles: records.length, pands: records.reduce((n, r) => n + r.pands.length, 0), byHow, bySource, tiles: tiles.size, gzippedKb: Math.round(bytes / 1024),
+  articles: records.length, pands: records.reduce((n, r) => n + r.pands.length, 0), viaCentroid, byHow, bySource, tiles: tiles.size, gzippedKb: Math.round(bytes / 1024),
   pendingTranslation: records.filter(r => r.extractLang !== 'en').length,
 };
 await writeFile(path.join(directory, 'staging', 'building-articles-report.json'), JSON.stringify(report, null, 2));

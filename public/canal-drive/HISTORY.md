@@ -1,5 +1,54 @@
 # Canal Recall — what is built
 
+**Street art, street articles and promoted landmarks (2026-10-31).** The
+four follow-ups of the building-article lane, in one pass.
+- *Street-side art is clickable from the ground.* `scripts/build-street-art.ts`
+  joins the 775 named OSM `tourism=artwork` / `historic=memorial|monument`
+  points inside the tiles with the 990 Wikidata art items that have an
+  article (by `wikidata=*` tag, else within 25 m, else standalone), into
+  `street-art.json` (1,427 points, 988 with a lede, 743 KB). The runtime
+  (`src/canalRecall/streetArt.ts`, `StreetArtIndex.nearest`, 14 m click
+  radius) answers a click that hits no building and no landmark; the card
+  names the piece, its kind, artist and year, with the English lede, photo and
+  link. 960 Dutch ledes were translated through the same batch hand-off as
+  the buildings (`--master=scripts/data/amsterdam-street-art.json`). The
+  orientation POI layer gained an `art` category (ground band, culture label
+  class, 693 points) so sculptures appear as cues too. Gate:
+  `npm run test:street-art` (Homomonument, De Dokwerker, Het Lieverdje).
+- *Streets with an article get a ride card.* `street-knowledge.json` came only
+  from the 500-street quiz pool, so Zeedijk, Waterlooplein and Sarphatistraat
+  had no card at all. `scripts/build-street-articles.ts` matches Wikidata
+  street/square items to `streets-routing.json` / `squares.json` names within
+  250 m (797 matched, 793 with text, all English after translation) and
+  `build-street-knowledge.ts` merges them as `article_streets_*` entries
+  (1,255 entries now). A street item often also carries a district or levee
+  class (Zeedijk: street, levee, neighbourhood, Chinatown), so only classes
+  that make it not-a-street at all disqualify it. Gate:
+  `npm run test:street-articles`.
+- *Famous unlinked buildings are landmarks.* `scripts/promote-building-articles.ts`
+  promotes article records with eight or more sitelinks into `landmarks.json`
+  as `article_landmarks_<Q>` with footprint, centre, prominence
+  60 + 4 × sitelinks and the four nearest landmark names as distractors:
+  Johan Cruyff Arena, Olympic Stadium, Muiderslot, Amstel station, Cobra
+  Museum, Diamond Museum, Museum of Bags and Purses (7). Nine of the first
+  sixteen candidates (Paradiso, Magna Plaza, Trippenhuis, Rembrandt Tower, De
+  Nederlandsche Bank, Ronde Lutherse Kerk, Vondelkerk, De Otter, the Amstel
+  hotel) were already bespoke manual POIs that `mergeManualPoiFeatures` adds
+  at runtime, invisible to a landmarks.json check and sometimes under another
+  name ("Amstel Hotel"): the promoter now merges the manual POIs itself and
+  skips their names, their claimed pands and anything within 60 m of one.
+  Clubs, academies and societies are excluded even when they own a famous
+  building. All landmark gates pass at 427 landmarks.
+- *Buildings outside the streamed tiles.* A centroid-in-pand fallback
+  recovered 19 footprints the ring join missed; 185 remain untiled
+  (`staging/building-articles-untiled.json`): 167 are outside the Amsterdam
+  box (Pampus, Nederhorst den Berg, Weesp fringe) and 18 inside are mostly not
+  buildings (platforms, piers, sheds). Bridges were audited by title: the
+  register already carries the ones the game can name; the rest are outside
+  the game's naming.
+- Regression: `tests/e2e/street-art-landmark-cards.spec.ts` (Homomonument
+  ground click, Paradiso landmark card, Zeedijk ride card).
+
 **Wikipedia articles on ordinary buildings reach the card (2026-10-31).**
 User, KNSM-eiland: the Venetiëhof ring opened a card saying only "Built 1995"
 although OSM relation r3679879 carries `wikipedia=nl:Emerald Empire` and
