@@ -777,7 +777,6 @@ export class OwnWorldView {
   /** The flat 2D tree layer's data: the inventory trees load their own (inventory-trees-source.js). */
   setTrees(): void {}
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
-  setGoogleTilesEnabled(): void {}
 }
 
 function globalNum(name: string, fallback: number): number {
