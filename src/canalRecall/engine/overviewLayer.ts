@@ -11,9 +11,10 @@
 import * as THREE from 'three';
 import { decodeOverview, STREET_CLASSES, type OverviewData, type OverviewFile, type StreetClass } from '../ownMap/overviewFormat';
 import { fillMaterial, lineGeometry, lineMaterial, polygonGeometry, handover } from '../ownMap/layers';
-import { interpolateStops, MIN_LINE_PX, PALETTE, STREET_STYLE } from '../ownMap/style';
+import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, STREET_STYLE, type Stops } from '../ownMap/style';
+import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 import { overviewColours } from './themePalette';
-import { KX, KY, ORIGIN, toLocal } from '../ownMap/frame';
+import { KX, KY, ORIGIN, toLocal, type Vec2 } from '../ownMap/frame';
 import { metresPerPixel } from '../ownMap/mapCamera';
 import { WaterIndex } from './waterIndex';
 import type { FrameContext, FrameParticipant } from '../rendererShared/sharedFrame';
@@ -45,11 +46,14 @@ export function mercatorFromOwnLocal(lat: number): number[] {
 export const OVERVIEW_Z = -3;
 
 type Lines = { cls: StreetClass; fill: THREE.Mesh; casing: THREE.Mesh | null };
+/** v2 overview lines with their own width stops (rail by kind, pier walkways). */
+type ExtraLine = { mesh: THREE.Mesh; width: Stops; scale: number; opacity: number };
 
 export class OverviewLayer implements FrameParticipant {
   readonly root = new THREE.Group();
   readonly water: WaterIndex;
   private readonly lines: Lines[] = [];
+  private readonly extraLines: ExtraLine[] = [];
   private readonly land: THREE.Mesh;
   private readonly parks: THREE.Mesh;
   private readonly waterMesh: THREE.Mesh;
@@ -79,6 +83,7 @@ export class OverviewLayer implements FrameParticipant {
     this.parks = parks; this.waterMesh = water;
     for (const m of [this.land, parks, water]) m.frustumCulled = false;
     this.root.add(this.land, parks, water);
+    this.addV2Layers(data);
     const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
     for (const cls of ordered) {
       const geo = lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points));
@@ -95,6 +100,39 @@ export class OverviewLayer implements FrameParticipant {
       if (u?.uNear) { u.uRider = this.near.uRider; u.uNearR = this.near.uNearR; u.uNear = this.near.uNear; }
     });
     this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
+  }
+
+  /**
+   * v2 overview layers (scripts/own-map/fetch-osm-extras.ts), absent from a v1 file: landuse under the parks, piers
+   * over the water, rail over the streets' casings. Footways arrive as `path` street lines and need nothing here.
+   * All of them reuse the flat fill/line programs (one colour uniform each), so they add draws, not programs.
+   */
+  private addV2Layers(data: OverviewData): void {
+    const add = (m: THREE.Mesh, order: number) => { m.renderOrder = order; m.frustumCulled = false; this.root.add(m); return m; };
+    for (const cls of LANDUSE_CLASSES) {
+      const polys = data.landuse.filter(l => l.cls === cls).map(l => l.rings);
+      if (!polys.length) continue;
+      // Between the land (-1) and the parks (1), in the style's order.
+      add(new THREE.Mesh(polygonGeometry(polys), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
+    }
+    if (data.piers.length) add(new THREE.Mesh(polygonGeometry(data.piers.map(r => [r])), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
+    if (data.pierLines.length) {
+      const mesh = add(new THREE.Mesh(lineGeometry(data.pierLines), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
+      this.extraLines.push({ mesh, width: PIER_STYLE.width, scale: 1, opacity: 1 });
+    }
+    const groups = new Map<string, { kind: keyof typeof RAIL_STYLE; tunnel: boolean; service: boolean; lines: Vec2[][] }>();
+    for (const r of data.rail) {
+      const key = `${r.kind}|${r.tunnel}|${r.service}`;
+      let g = groups.get(key);
+      if (!g) groups.set(key, g = { kind: r.kind, tunnel: r.tunnel, service: r.service, lines: [] });
+      g.lines.push(r.points);
+    }
+    for (const g of groups.values()) {
+      const st = RAIL_STYLE[g.kind];
+      // Tunnels under the streets, faint; surface track over the street fills.
+      const mesh = add(new THREE.Mesh(lineGeometry(g.lines), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
+      this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1 });
+    }
   }
 
   /** A palette theme (themePalette.ts) as the flat materials' colours; 'clean' restores the own map's. */
@@ -132,6 +170,13 @@ export class OverviewLayer implements FrameParticipant {
         l.casing.visible = visible && px > 1.2;
         (l.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + st.casingExtra) / 2 * mpp;
       }
+    }
+    for (const l of this.extraLines) {
+      const px = interpolateStops(l.width, zoom) * l.scale;
+      l.mesh.visible = px >= MIN_LINE_PX;
+      const m = l.mesh.material as THREE.ShaderMaterial;
+      m.uniforms.uHalf.value = px / 2 * mpp;
+      m.uniforms.uOpacity.value = l.opacity * Math.min(1, px / 0.9);
     }
     // Inside the radius the own ground fully covers round the rider the flat fills and lines would only be overdraw:
     // discard them there (checked twice a second; the ground's ring changes a cell at a time).
