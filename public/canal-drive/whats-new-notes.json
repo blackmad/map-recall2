@@ -2,6 +2,15 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-01",
+      "title": "Fewer hitches when new ground streams in",
+      "text": "Riding into a new part of the city, the game no longer freezes for a moment while the next ground cell is prepared: the preparation now yields between its steps, the road index behind bridge decks only covers the roads it needs, and landmarks re-seat on the ground in small slices. On a 60 s Jordaan ride the frames over 50 ms went from 7 to 0 and the longest frame from 92 to 40 ms.",
+      "where": [
+        4.883,
+        52.376
+      ]
+    },
+    {
       "date": "2026-10-31",
       "title": "Roads run across the Kinkerbrug and the Beltbrug",
       "text": "Thirty-nine road bridges whose decks were missing from the bridge register, among them the Kinkerbrug on the Postjesweg, the Beltbrug on the Jan van Galenstraat, De Clercqstraat and Nassauplein, now carry their asphalt and tram rails across the water instead of a pale paved slab.",

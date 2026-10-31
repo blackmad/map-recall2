@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { LabelOcclusion, OCCLUSION_MARGIN_M } from './labelOcclusion';
+import { LABEL_ALT_M, LabelOcclusion, OCCLUSION_MARGIN_M } from './labelOcclusion';
 
 // Metres → lng/lat around the Overtoom crossing.
 const O = [4.8742, 52.3615] as const, mLng = 111320 * Math.cos(O[1] * Math.PI / 180), mLat = 111320;
@@ -34,7 +34,7 @@ test('a shopfront facing away from the camera hides its label, the host never bl
   assert.equal(occ.occluded('corner', at(-29, 62.5), eye), false, 'a corner shop: the nearest (west) frontage faces away, the south one 2.5 m off still faces the camera');
   // A wall exactly at the line height: within the margin it keeps whichever state it had.
   const lineAt = (n: number, anchorAlt: number, anchorN: number) => anchorAlt + (90 - anchorAlt) * ((anchorN - n) / (anchorN + 150));
-  const h = lineAt(60, 3, 120); // the ray from a 3 m anchor at 120 m north, crossing a wall at 60 m north
+  const h = lineAt(60, LABEL_ALT_M, 120); // the ray from the label's anchor at 120 m north, crossing a wall at 60 m north
   const wall = (dh: number) => box('wall', -30, 58, 30, 62, h + dh);
   const a = new LabelOcclusion(); a.index([wall(0.5)], eye_);
   assert.equal(a.occluded('x', at(0, 120), eye), false, 'shown: 0.5 m over the line is inside the margin');
@@ -44,4 +44,27 @@ test('a shopfront facing away from the camera hides its label, the host never bl
   assert.equal(b.occluded('x', at(0, 120), eye), true, 'stays hidden while within the margin (no flicker)');
   b.index([wall(-OCCLUSION_MARGIN_M - 0.5)], eye_);
   assert.equal(b.occluded('x', at(0, 120), eye), false, 'shown again once clearly below');
+});
+
+test('a pitched roof hides what is behind it above its eave line (between eaves and ridge, as the street-name test)', () => {
+  // Eye 150 m south at 90 m; a place 120 m north with no host (3 m anchor). The line crosses 60 m north at
+  // 1.5 + 88.5 × (60 / 270) ≈ 21.2 m. A gable with eaves 18 m and ridge 30 m (mid 24 m) stands above it; its eaves do not.
+  const gable = (eaves: number, ridge: number) => ({ ...box('gable', -30, 58, 30, 62, ridge), properties: { id: 'gable', height: ridge, roofEavesHeightM: eaves, roofShape: 'gabled' } });
+  const occ = new LabelOcclusion();
+  occ.index([gable(18, 30)], eye_);
+  assert.equal(occ.occluded('x', at(0, 120), eye), true, 'hidden by the roof above the eaves');
+  const flat = new LabelOcclusion();
+  flat.index([{ ...gable(18, 30), properties: { id: 'gable', height: 18, roofEavesHeightM: 18, roofShape: 'flat' } }], eye_);
+  assert.equal(flat.occluded('x', at(0, 120), eye), false, 'an 18 m flat roof is below the line');
+});
+
+test('a party wall is no frontage: a place whose nearest edge is shared with the next house is seen through its street side', () => {
+  // Two houses in a row, west one hosting the place 1 m from the party wall; the street frontage faces south (the eye).
+  const west = box('west', -20, 40, 0, 52, 14), east = box('east', 0, 40, 20, 52, 14);
+  const occ = new LabelOcclusion();
+  occ.index([west, east], eye_);
+  assert.equal(occ.occluded('p', at(-1, 46), eye), false, 'the south frontage faces the eye');
+  const f = occ.front.get('p')!;
+  const [fe, fn] = [(f[0] - O[0]) * mLng, (f[1] - O[1]) * mLat];
+  assert.ok(fn < 40 && Math.abs(fe + 1) < 1, `drawn at the street frontage, not across the party wall (${fe.toFixed(1)}, ${fn.toFixed(1)})`);
 });

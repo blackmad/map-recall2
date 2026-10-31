@@ -18,6 +18,11 @@ import { openRoute } from './helpers';
 // First it runs scripts/world/verify.ts on WORLD_DIR: cells compiled from an older extract or older code
 // differ for that reason alone (the 2026-10-30 Westerkerk A/B), and that is a compile step, not a runtime bug.
 // WORLD_AB_STALE=1 skips that gate (to measure stale cells on purpose).
+// AB_CAMERA=fixed: the chase camera lands sub-pixel differently on every load, so default vs default differs in
+// 0.65-1.1 M of 1.3 M pixels (2026-10-31) and no pixel claim can be proven. Fixed mode stops the game driving the
+// world camera after settle (`sync`/`aimAtWorld` held), sets one pose per spot through the WorldView API
+// (`jumpToLngLat`, as engine-parity.spec replays poses), settles again and reads the world canvas itself
+// (`captureFrame`: no HUD, no car sprite). Run it with AB_NOISE=1 to show the floor before a policy claim.
 test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 
 const OUT = process.env.AB_DIR || 'artifacts/world/ab';
@@ -36,6 +41,11 @@ const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.
 // buildings, which world-v1 never makes). AB_NOISE=1 adds a second default run: default vs default2 is the noise floor.
 const AB_QUERY = (process.env.AB_QUERY ?? '').replace(/^[?&]/, '');
 const withQuery = (q: string) => (q || AB_QUERY ? `?${[q.replace(/^\?/, ''), AB_QUERY].filter(Boolean).join('&')}` : '');
+const FIXED_CAMERA = process.env.AB_CAMERA === 'fixed';
+const FIXED_ZOOM = 17.5;
+/** Degrees clockwise from north, from the spot to the face it looks at. */
+const bearingOf = (at: readonly number[], face: readonly number[]) =>
+  Math.atan2((face[0] - at[0]) * Math.cos(at[1] * Math.PI / 180), face[1] - at[1]) * 180 / Math.PI;
 const VARIANTS = [{ name: 'default', query: withQuery('') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
 
 async function serve(page: Page) {
@@ -62,6 +72,23 @@ async function park(page: Page, at: readonly number[], face: readonly number[]) 
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     g.viewMode = 'chase'; g.camera.viewMode = 'chase'; g.camera.northUp = false;
   }, { at, face });
+}
+
+/** Hold the world camera at one pose per spot (AB_CAMERA=fixed) and return the world canvas as PNG bytes. */
+async function fixedShot(page: Page, at: readonly number[], face: readonly number[]): Promise<Buffer> {
+  const pose = { center: [at[0], at[1]] as [number, number], zoom: FIXED_ZOOM, bearing: bearingOf(at, face) };
+  await page.evaluate((pose) => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    vm.__abHeld ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
+    vm.sync = () => {}; vm.aimAtWorld = () => {};
+    vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
+  }, pose);
+  await settle(page);
+  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
+  expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
+  return Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
 }
 
 /** Streamer idle and the three.js layer done building for two consecutive polls. */
@@ -101,7 +128,8 @@ for (const variant of VARIANTS) {
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(800);
       const shot = `${OUT}/${spot.name}-${variant.name}.png`;
-      await page.screenshot({ path: shot });
+      if (FIXED_CAMERA) writeFileSync(shot, await fixedShot(page, spot.at, spot.face));
+      else await page.screenshot({ path: shot });
       spots[spot.name] = await page.evaluate((dumpIds: string[]) => {
         const vm = (window as any).canalRecallGame.vectorMap, city = vm._completeCity;
         const fnv = (s: string) => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16); };
