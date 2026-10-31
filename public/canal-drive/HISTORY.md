@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+**Streets, squares and waterways carry the name on the sign (2026-10-31, #147).**
+L1 found `routing_15692` named "New Market" while screening labels for the
+Nieuwmarkt spoiler. Cause: `scripts/build-amsterdam-extract.ts` took
+`name:en || name || name:nl` for every feature; a first one-line fix to
+prefer `name` renamed 59 landmarks too (Weepers' Tower → Schreierstoren,
+Royal Palace → Koninklijk Paleis), so the rule lives in
+`scripts/lib/extractNaming.ts` and depends on `classify()`: streets, squares,
+water, bridges and routing take the local name, landmarks and parks keep
+`name:en`. The generator's output is otherwise byte-identical. Publishing did
+not go through `refresh-amsterdam-extract.sh`: from the same archived PBF the
+refresh no longer reproduces the committed extract (routing 47,259 → 45,620
+ways, streets 343 → 500, every tree moved, enrichment and translation churn),
+so the committed data carries curation the refresh would discard (TODO
+"Extract refresh drift"). Instead `scripts/patch-local-street-names.ts`
+applies only the renames the rule implies, driven by the PBF's `name:en`
+objects within 150 m, staging first and `--publish` second, idempotent: 11
+names, 35 records, 73 distractor strings, 5 place-photo keys, 0 features
+added or removed, all ids kept (facts, street-knowledge and bridge crossings
+join on id). Renamed: Nieuwmarkt, Dam, Bloemenmarkt, Museumplein,
+Rembrandtplein, Albert Cuyp-markt, Waterloopleinmarkt, Coentunnel, Pythonbrug
+(bridge register key and `REGISTER_ALIASES` updated), Vincent van Goghstraat,
+K+R. Checks: canal-streets, canal-car, reachability, extract-english,
+check-city-extract, answered-street-name + labels + start-heading.
+
 **One worker pool; the world path's heap measured with a GC (2026-10-31, #136, L4).**
 The 977 / 1,019 MB "heap at ride end" of step 4 were readings without a
 garbage collection. `scripts/heap-sample.mjs` forces a GC over CDP in the
