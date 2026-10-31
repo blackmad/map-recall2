@@ -1,23 +1,17 @@
 # Canal Recall — what is built
 
-<<<<<<< HEAD
-**Rail bridges, Centraal shed and railway pands (2026-10-31).** User at Amsterdam Amstel: "that big flat white
-thing is weird" and "the houses under the tracks here are probably wrong"; plus the open items of the rail-look lane.
-Round 3 of `rail-look-20261031`:
-- `railBridge.ts`: rail decks get piers, through plate girders over water (≥ 4 m) and railings; viaducts get column
-  rows under a crosshead. Piers only on land, never in a street band or beside track at grade. +285k triangles LOD 0
-  (+0.57 % of ground), no extra draw calls.
-- Centraal: AHN has no ground under the shed, so the relief was a fill from the quay (+1.2) and the tracks sat in a
-  pit. Track beside a station's platforms is levelled from the measured track past the platform ends; OSM
-  `railway=platform` rings now ride in rail-v1 and draw 0.76 m above the rails.
-- `railInfraBuildings.ts` + `rail-infra-buildings.json`: pands that are railway structure, decided from data (share
-  over track/platforms, minHeight, OSM building/roof tags, BAG use from PDOK), are dropped (viaduct/deck) or cut to
-  the platforms (canopies): 45 pands. Amstel's `building=roof` slab becomes two platform canopies; the pand part and
-  two pavilions under the platforms (drawn as brick houses) are dropped. Station halls, shed arches, building parts,
-  pands with ≥ 25 % live use and arches in use stay.
-- Unanchored rail decks were 5 real components (17 per-cell counts): OSM split gaps snap within 3 m; three tram
-  bridges without approaches span their own ends.
-=======
+**Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
+Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
+classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
+(a 20 m land band under the bridge), no BRU outline or footprint covers it so the OSM bridge way crosses no water and
+gets no way deck, BGT's deck-level (h 1) carriageway is skipped off a deck, the way is in `coverWays` so no OSM bands
+draw, and look B paints the bare land as paving. Lane `bridge-roads-20261031`: `withOpenings` opens the water under
+OSM bridge ways no measured deck or footprint claims (side-by-side ways bundled, 0.5 m past the ends, never over a
+ground-level crossing street), the way-deck path then builds a real deck, re-centred on the BGT deck-level outline.
+Bare OSM highway bridge ways 205 → 166 (with the water cut at the bridge 19 → 1); +0.18 % triangles in 19 cells.
+Pinned: `BRIDGE_ROADS` (Kinkerbrug 743740428, Beltbrug 27316608) and ROAD_SPOTS kinkerbrug-postjesweg,
+beltbrug-jan-van-galenstraat; `probe-undecked-bridges.ts` for the city count.
+
 **World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
 `cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
 2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
@@ -99,7 +93,23 @@ holds whole same-year rows (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat
 72–96) because one pand has wide three-light windows. Strips archived in
 source-data `block-face-strips/` (11 re-striped faces, two strip-over-model
 sheets under `transvaalbuurt-round2/`). Nothing visible changed in the game.
->>>>>>> origin/main
+
+**Rail bridges, Centraal shed and railway pands (2026-10-31).** User at Amsterdam Amstel: "that big flat white
+thing is weird" and "the houses under the tracks here are probably wrong"; plus the open items of the rail-look lane.
+Round 3 of `rail-look-20261031`:
+- `railBridge.ts`: rail decks get piers, through plate girders over water (≥ 4 m) and railings; viaducts get column
+  rows under a crosshead. Piers only on land, never in a street band or beside track at grade. +285k triangles LOD 0
+  (+0.57 % of ground), no extra draw calls.
+- Centraal: AHN has no ground under the shed, so the relief was a fill from the quay (+1.2) and the tracks sat in a
+  pit. Track beside a station's platforms is levelled from the measured track past the platform ends; OSM
+  `railway=platform` rings now ride in rail-v1 and draw 0.76 m above the rails.
+- `railInfraBuildings.ts` + `rail-infra-buildings.json`: pands that are railway structure, decided from data (share
+  over track/platforms, minHeight, OSM building/roof tags, BAG use from PDOK), are dropped (viaduct/deck) or cut to
+  the platforms (canopies): 45 pands. Amstel's `building=roof` slab becomes two platform canopies; the pand part and
+  two pavilions under the platforms (drawn as brick houses) are dropped. Station halls, shed arches, building parts,
+  pands with ≥ 25 % live use and arches in use stay.
+- Unanchored rail decks were 5 real components (17 per-cell counts): OSM split gaps snap within 3 m; three tram
+  bridges without approaches span their own ends.
 
 **`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
 `SharedFrame.shaderErrors()` counts programs three.js failed to compile or
