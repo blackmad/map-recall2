@@ -1,0 +1,38 @@
+{
+  "city": "utrecht",
+  "source": "public/data/extracts/utrecht/streets-routing.json",
+  "sourceSha256": "508c5e3782f17f1a142bad4a4d286261a3dd5c7784c9e015cae3314cf71e9d1a",
+  "output": "artifacts/roads/staging/utrecht/streets-routing.bin",
+  "publish": "artifacts/roads/staging/utrecht/streets-routing.bin.gz",
+  "header": {
+    "version": 1,
+    "byteLength": 902016,
+    "featureCount": 22064,
+    "pathCount": 32055,
+    "pointCount": 163310,
+    "stringCount": 3549,
+    "exactCount": 0,
+    "stringsOffset": 88,
+    "stringsLength": 53346,
+    "featuresOffset": 53434,
+    "featuresLength": 848575,
+    "exactOffset": 902016,
+    "exactLength": 0,
+    "sourceSha256": "508c5e3782f17f1a142bad4a4d286261a3dd5c7784c9e015cae3314cf71e9d1a"
+  },
+  "bytes": {
+    "json": {
+      "raw": 6779859,
+      "gzip": 1261778,
+      "brotli": 744439
+    },
+    "binary": {
+      "raw": 902016,
+      "gzip": 666675,
+      "brotli": 543005
+    }
+  },
+  "encodeMs": 47,
+  "nodeDecodeMs": 15,
+  "roundTrip": "JSON.stringify(decoded) === source"
+}
