@@ -318,9 +318,9 @@ export class SignatureLandmarks {
     if (!this.enabled || !width || !height) return null;
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     let result = null;
-    const local = new THREE.Ray(), toLocal = new THREE.Matrix4();
+    const local = new THREE.Ray(), toLocal = new THREE.Matrix4(), view = this._viewBounds();
     for (const entry of this._entries || []) {
-      if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
+      if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor, view)) continue;
       const inverse = entry.pickProjection.clone().invert();
       const near = new THREE.Vector3(nx, ny, -1).applyMatrix4(inverse);
       const far = new THREE.Vector3(nx, ny, 1).applyMatrix4(inverse);
@@ -614,13 +614,14 @@ export class SignatureLandmarks {
     if (now - this._lastEvictCheck < 500) return;
     this._lastEvictCheck = now;
     const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
+    const view = this._viewBounds();
     const models = this._entries.map(entry => {
       const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
       const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
-        inView: !anchor || this._nearby(entry.spec, anchor),
+        inView: !anchor || this._nearby(entry.spec, anchor, view),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
         evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
       };
@@ -634,8 +635,10 @@ export class SignatureLandmarks {
   _requestModels() {
     if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
     if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
+    // One view for the whole list (the camera cannot move inside this loop).
+    const view = this.loadVisibleOnly ? this._viewBounds() : null;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
-      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
+      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec, undefined, view)));
     const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
@@ -1028,9 +1031,10 @@ export class SignatureLandmarks {
    */
   _updateLevels() {
     if (this._removed || !this.enabled || !this._loader) return;
+    const view = this._viewBounds();
     for (const entry of this._entries) {
       if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
-      if (!this._nearby(entry.spec, entry.placement.anchor)) continue;
+      if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
       const wanted = lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
       if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }
