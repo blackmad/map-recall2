@@ -141,6 +141,9 @@ test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   assert.deepEqual(analyseRhythm(regular).missing, []);
   const gap = [...row(1, [1, 4, 7, 10, 13]), ...row(5, [1, 4, 10, 13])];
   assert.deepEqual(analyseRhythm(gap).missing.map(m => m.t), [7.6]);
+  // A wide glazed bay filling a two-bay gap is an opening, not two missing windows (Olympisch Stadion w01, #165).
+  const bay = [...gap, {t0: 6.2, t1: 9.0, y0: 3, y1: 5.5, area: 7}];
+  assert.deepEqual(analyseRhythm(bay).missing, [], 'a wide opening at the predicted position is not missing');
   const odd = [...row(1, [1, 4, 10, 13]), ...row(1, [7], 2.4)];
   assert.equal(analyseRhythm(odd).mismatched.length, 1);
 });
