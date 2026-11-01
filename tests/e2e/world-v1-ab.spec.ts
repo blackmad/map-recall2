@@ -81,6 +81,12 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.__abHeld ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
     vm.sync = () => {}; vm.aimAtWorld = () => {};
+    // The player's vehicle is posed and animated per frame (wheel spin, lean): nearly every > 30 px pixel of default
+    // vs default2 (materials, 2026-11-01). Off every camera layer, so neither the main nor the shadow pass draws it.
+    for (const top of vm._sharedFrame?.scene?.children ?? []) {
+      if (!/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) continue;
+      top.traverse((o: any) => o.layers?.disableAll?.());
+    }
     vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
   }, pose);
   await settle(page);
