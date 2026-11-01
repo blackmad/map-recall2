@@ -47,6 +47,40 @@ class RoadNetwork {
     return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], scheduling || { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
   }
 
+  /**
+   * The routing graph and surface index for `segments` from this device's cache (roadWorldCache.ts), or a miss
+   * that `storeWorld` fills after a build. The record must name exactly these segments (fingerprint) and pass every
+   * array check; any mismatch, storage error, private window or `?worldCache=0` is a miss, never an error.
+   * `parts`: { cityId, travelMode, extractVersion }.
+   */
+  static async restoreWorld(segments, parts) {
+    const miss = { hit: false, key: null, fingerprint: null };
+    try {
+      if (!GRAPH.readRoadWorld || new URLSearchParams(window.location.search).get('worldCache') === '0') return miss;
+      const key = GRAPH.roadWorldCacheKey({ ...parts, options: `m18|s${JUNCTION_STITCH_RADIUS}|g${ROAD_GRID_CELL}` });
+      const fingerprint = GRAPH.roadSegmentsFingerprint(segments);
+      const record = await GRAPH.readRoadWorld(key);
+      const restored = record && GRAPH.unpackRoadWorld(record, fingerprint, routingSegmentsOf(segments).map(s => s.metadata), landOnly(segments));
+      if (!restored) return { hit: false, key, fingerprint };
+      return { hit: true, key, fingerprint, routingGraph: restored.graph, surfaceIndex: restored.surface };
+    } catch (error) {
+      console.warn('Road world cache unavailable; building.', error);
+      return miss;
+    }
+  }
+
+  /** Store a fresh build for the next visit, once the ride is under way (the structured clone is ~17 MB). */
+  static storeWorld(cache, segments, routingGraph, surfaceIndex) {
+    if (!cache || !cache.key || cache.hit || !GRAPH.writeRoadWorld) return;
+    const write = () => {
+      try {
+        GRAPH.writeRoadWorld(cache.key, GRAPH.packRoadWorld(routingGraph, surfaceIndex, cache.fingerprint, landOnly(segments)))
+          .catch(() => {});
+      } catch (error) { console.warn('Road world not cached.', error); }
+    };
+    setTimeout(() => (window.requestIdleCallback ? window.requestIdleCallback(write, { timeout: 5000 }) : write()), 3000);
+  }
+
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
     this.isOpenTrack = true;
     this.segments = segments; // [{points, width, type, bounds}]

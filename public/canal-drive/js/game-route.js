@@ -1640,7 +1640,7 @@ class GameRouteRuntime {
     next.promise = (async () => {
       const ways = await next.fetched;
       // What this fetch set on the loader, put back when a ride takes this world (a later fetch may have run).
-      const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork };
+      const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork, roadExtractVersion: loader.roadExtractVersion };
       if (!ways.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments: [], loaded };
       const segments = await loader.buildRoadSegmentsAsync(ways, centre.lat, centre.lng, cancelled, scheduling);
       loaded.projection = {
@@ -1657,8 +1657,13 @@ class GameRouteRuntime {
         segments.push(...CanalRecallFerry.ferrySegments(loaded.ferryNetwork, segments, project));
       }
       if (!segments.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments, loaded };
+      // A return visit restores the graph and surface index this device built last time for these exact segments.
+      const cache = await RoadNetwork.restoreWorld(segments, { cityId, travelMode, extractVersion: loaded.roadExtractVersion });
+      if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
+      if (cache.hit) return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph: cache.routingGraph, surfaceIndex: cache.surfaceIndex, loaded, cached: true };
       const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, cancelled, scheduling);
       const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, cancelled, scheduling);
+      RoadNetwork.storeWorld(cache, segments, routingGraph, surfaceIndex);
       return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph, surfaceIndex, loaded };
     })();
     // A failed build is not kept: the ride builds at submit as before.
