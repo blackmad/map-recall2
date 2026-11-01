@@ -2,6 +2,19 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-02",
+      "title": "The city's own street furniture: containers, lamp posts, shelters",
+      "text": "The ride is furnished from the city's registers now. Thirteen thousand underground-container tops stand where the waste register puts them, with yellow lids for glass and blue for paper; a hundred and twenty thousand lamp posts come from the BGT, maroon canal lanterns in the centre and light-grey hooked poles elsewhere; eleven hundred tram and bus shelters and two hundred and forty advertising columns join them. Every model was measured from the city's own street panoramas (a container column is 1.25 m high on a 1.45 m plate, a canal lantern 4.1 m to its finial). They are drawn only near the rider and cost about four draws a frame. The What's New page has a new Street furniture category with its own gallery. Pairs: Noordermarkt containers, a Pijp street's lamp posts on a phone, the Nassaukade shelter; before on the left, after on the right.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-prinsengracht-containers-before-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-prinsengracht-containers-after-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-pijp-lamps-before-iphone.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-pijp-lamps-after-iphone.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-nassaukade-abri-before-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-street-furniture-nassaukade-abri-after-desktop.jpg"
+      ]
+    },
+    {
       "date": "2026-11-01",
       "title": "Back gardens get garden rooms",
       "text": "Inside the canal-ring courts and the Oud-Zuid and De Pijp blocks, the small outbuildings that were plain grey boxes now read as the garden rooms they usually are: a flat-roofed room in oiled larch slats or matte-black boards, with a glass front and door facing the house, an anthracite frame and a lid that overhangs the walls. Which sheds qualify is decided from open data only: a BAG build year from 2005 on, or a measured white-membrane or glass roof, and at least six square metres (the smaller boxes are bin and bike stores). That is 226 rooms in the centre so far; every other shed and every neighbour is byte-identical to before. You only see them at close zoom from the garden side, so the ride itself is unchanged. The first image is before, the second after, the third the glass front, the fourth the PDOK orthophoto of the same Herengracht/Keizersgracht court.",

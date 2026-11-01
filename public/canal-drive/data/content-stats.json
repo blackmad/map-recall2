@@ -3,8 +3,8 @@
   "city": "amsterdam",
   "generator": "scripts/landing/content-stats.ts",
   "display": {
-    "buildingsModelled": "520+",
-    "landmarkModels": "320+",
+    "buildingsModelled": "530+",
+    "landmarkModels": "330+",
     "kitBuildings": "13,000+",
     "buildings3d": "340,000+",
     "placesToVisit": "380+",
@@ -16,19 +16,20 @@
     "namedBridges": "410+",
     "neighbourhoods": "78",
     "tours": "8",
+    "streetFurniture": "130,000+",
     "zooAnimals": "39"
   },
   "stats": {
     "buildingsModelled": {
-      "count": 529,
-      "note": "Buildings with their own individually modelled 3D model in the ride: 329 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "count": 534,
+      "note": "Buildings with their own individually modelled 3D model in the ride: 334 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
       ]
     },
     "landmarkModels": {
-      "count": 329,
+      "count": 334,
       "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"
@@ -114,6 +115,15 @@
       "note": "Themed tours with a tour stamp for finishing.",
       "sources": [
         "public/data/extracts/amsterdam/tours.json"
+      ]
+    },
+    "streetFurniture": {
+      "count": 135140,
+      "models": 7,
+      "note": "Street furniture placed in the ride from the open registers (underground-container tops, lamp posts, abris, advertising columns, bike hoops), one instance per object; `models` is how many furniture models draw them.",
+      "sources": [
+        "public/canal-drive/street-furniture/catalogue.json",
+        "public/data/extracts/amsterdam/street-furniture/index.json"
       ]
     },
     "zooAnimals": {
