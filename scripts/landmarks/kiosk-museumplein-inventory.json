@@ -1,0 +1,126 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-museumplein",
+ "signature": [
+  "poster-wall",
+  "service-end",
+  "roof-ac-units"
+ ],
+ "walls": [
+  {
+   "tag": "v-336",
+   "bearing": 336,
+   "lengthM": 5.9,
+   "centre": [
+    4.8831423,
+    52.3592532
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01192",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "Poster face from 11 m (artifacts/kiosks/museumplein/zoom.jpg top).",
+   "items": [
+    {
+     "id": "poster-wall",
+     "kind": "other",
+     "where": "six tall poster panels behind glass in the dark frame, about 0.35-2.4 m: a Rembrandt portrait, a coffee cup with KIOSK REMBRANDT MUSEUMPLEIN AMSTERDAM, a Golden Age painting, tulips, yellow tulips with a cup, a blue cup poster",
+     "approxSizeM": [
+      4.9,
+      2.05
+     ],
+     "plan": "simplified",
+     "how": "six glass panels with the panel role override, each in its poster median tint; the images and text are not drawn",
+     "seenIn": "recording_2025-09-29_08-09-56_01192; recording_2025-09-29_08-09-56_01190"
+    },
+    {
+     "id": "roof-ac-units",
+     "kind": "other",
+     "where": "two grey air-conditioning units on the flat roof",
+     "approxSizeM": [
+      0.95,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "kioskKit roof boxes",
+     "seenIn": "recording_2025-09-29_08-09-56_01192; recording_2025-09-29_08-09-56_01195"
+    },
+    {
+     "id": "graffiti",
+     "kind": "other",
+     "where": "tags on the frame posts and the door end",
+     "approxSizeM": [
+      1.0,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "spray tags"
+     },
+     "seenIn": "recording_2025-09-29_08-09-56_01195"
+    }
+   ]
+  },
+  {
+   "tag": "v-246",
+   "bearing": 246,
+   "lengthM": 2.6,
+   "centre": [
+    4.8831423,
+    52.3592532
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01190",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "Service end (zoom.jpg middle).",
+   "items": [
+    {
+     "id": "service-end",
+     "kind": "other",
+     "where": "a pale door/panel under a small striped awning, a white curtain tied at the corner, a ladder and extinguisher on the wall",
+     "approxSizeM": [
+      1.1,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "pale solid panel (role override) under a 1.0 m kit awning; curtain, ladder and extinguisher not drawn (movable)",
+     "seenIn": "recording_2025-09-29_08-09-56_01190"
+    }
+   ]
+  },
+  {
+   "tag": "v-066",
+   "bearing": 66,
+   "lengthM": 2.6,
+   "centre": [
+    4.8831423,
+    52.3592532
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01195",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "Door end from the north-east (zoom.jpg bottom): a dark door and a solid panel.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012151388",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151388/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 6657813385",
+   "url": "https://www.openstreetmap.org/node/6657813385",
+   "licence": "ODbL"
+  }
+ ]
+}

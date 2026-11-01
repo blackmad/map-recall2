@@ -2849,5 +2849,19 @@
       52.368854,
       4.890787
     ]
+  },
+  {
+    "modelId": "kiosk-museumplein",
+    "landmarkId": "osm_cafe_6657813385",
+    "name": "Kiosk Rembrandt Van Gogh",
+    "funFact": "This dark kiosk on the Museumplein corner of the Paulus Potterstraat, registered in BAG in 2000, sells coffee to museum queues; its long side is a wall of posters, among them a Rembrandt portrait and a cup labelled Kiosk Rembrandt Museumplein Amsterdam.",
+    "sourceUrl": "https://www.openstreetmap.org/node/6657813385",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151388/"
+    ],
+    "center": [
+      52.3592532,
+      4.8831423
+    ]
   }
 ]

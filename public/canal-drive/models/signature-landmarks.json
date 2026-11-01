@@ -62279,6 +62279,90 @@
       "triangles": 2280,
       "bytes": 35860,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-museumplein": {
+      "id": "kiosk-museumplein",
+      "name": "Kiosk Rembrandt Van Gogh",
+      "landmarkId": "osm_cafe_6657813385",
+      "modelUrl": "./models/kiosk-museumplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012151388",
+        "w277104686"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8831423,
+          52.3592532
+        ],
+        "headingDegrees": 336.25,
+        "lengthMetres": 6.027,
+        "widthMetres": 2.68
+      },
+      "surveyed": {
+        "anchor": [
+          4.8831423,
+          52.3592532
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012151388 (2000) outline, vertex average as the anchor (OSM node 6657813385 is 0.9 m away); walls 5.9 x 2.6 m; height from 3DBAG (eaves 3.0 m, top 3.16 m). Posters, ends and roof units from Gemeente Amsterdam panoramas recording_2025-09-29_08-09-56_01192 / _01190 / _01195 (CC BY 4.0). See scripts/landmarks/kiosk-museumplein-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.4,
+      "assetKind": "building",
+      "materialOverrides": {
+        "slate": "#3f494f",
+        "concrete": "#8c9290",
+        "copper": "#d4d2c8",
+        "stone": "#cfccc2",
+        "glass": "#4a5258",
+        "red": "#796e6d",
+        "bronze": "#4a4a50",
+        "sandstone": "#5c5d64",
+        "ochre": "#857a55",
+        "blue": "#414860"
+      },
+      "attribution": {
+        "title": "Kiosk Rembrandt Van Gogh, Museumplein",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/6657813385",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0), the yellow-tulip poster lifted by eye from the shade. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.249281406402588,
+          8.940696516468449e-10,
+          -2.4005494117736816
+        ],
+        "max": [
+          3.2772812843322754,
+          3.319999933242798,
+          2.434549331665039
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8831423,
+          52.3592532
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 336.25,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.526562690734863,
+        "heightMetres": 3.319999932348728,
+        "depthMetres": 4.835098743438721,
+        "depthCoverage": 1.804141322178627
+      },
+      "triangles": 564,
+      "bytes": 19232,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
