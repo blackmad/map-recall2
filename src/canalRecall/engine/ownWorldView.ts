@@ -35,6 +35,7 @@ import { awaitWorkerPool } from './workerPool';
 import type { BuildingLookId, JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
 import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
+import { ToonPost, toonLookFlag } from './toonLook';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
@@ -171,6 +172,8 @@ export class OwnWorldView implements WorldViewOracles {
   private measuredColoursOnly = false;
   /** The building look in force (worldViewApi BUILDING_LOOK_IDS); a URL/global look locks out the saved preference. */
   private buildingLookNow: BuildingLookId = 'photo';
+  /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
+  private toonPost: ToonPost | null = null;
   private buildingLookLocked = false;
   /** Overlays (engine/overlays): flat lines over the ground, labels on a 2D canvas, the landmark marker. */
   readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
@@ -198,6 +201,9 @@ export class OwnWorldView implements WorldViewOracles {
     this.container = container;
     const urlLook = urlBuildingLook(W().__canalRecallBuildings3d !== undefined ? W().__canalRecallBuildings3d : new URLSearchParams(W().location?.search ?? '').get('buildings3d'));
     if (urlLook) { this.buildingLookNow = urlLook; this.buildingLookLocked = true; }
+    // The toon look (#161) starts from the Cartoon buildings look; an explicit ?buildings3d= still wins.
+    const toon = toonLookFlag();
+    if (toon && !urlLook) { this.buildingLookNow = 'cartoon'; this.buildingLookLocked = true; }
     const three = W().CanalRecallThree;
     if (!three?.THREE) throw new Error('OwnWorldView needs window.CanalRecallThree');
     const THREE = three.THREE;
@@ -214,6 +220,7 @@ export class OwnWorldView implements WorldViewOracles {
       render: () => this.renderFrame(),
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
+      ...(toon ? { post: (renderer: any, width: number, height: number) => (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height) } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {
