@@ -64068,6 +64068,242 @@
         "bytes": 29304,
         "triangles": 1221
       }
+    },
+    "blauwbrug": {
+      "id": "blauwbrug",
+      "name": "Blauwbrug",
+      "modelUrl": "./models/blauwbrug.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9008813,
+          52.3663569
+        ],
+        "headingDegrees": 69.1,
+        "lengthMetres": 48.9,
+        "widthMetres": 25
+      },
+      "surveyed": {
+        "anchor": [
+          4.9008813,
+          52.3663569
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Bridge frame along bearing 69.1 deg from the OSM man_made=bridge outline (48.9 x 21.2 m) and the Gemeente Amsterdam register outline BRU0236 (pier notches at 16.1 and 32.8 m); deck kept 6 cm under the game's ride surface (scripts/landmarks/blauwbrug-footprints.json rideProfile, bridge-deck-probe.ts). Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.4) on the runtime's anchor base (0.486). Faces read from the Gemeente Amsterdam boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518352 register text (three passages, ship-bow piers, eight red granite columns with sixteen lanterns and imperial crowns, white limestone vase balustrade)."
+      },
+      "groundAltitudeMetres": -2.886,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1883,
+      "materialOverrides": {
+        "stone": "#8f9493",
+        "slate": "#5d6262",
+        "white": "#c9bfae",
+        "red": "#7c4b42",
+        "gold": "#c8a24a",
+        "dark": "#2e3437",
+        "ochre": "#d9cf9c",
+        "brick": "#985846",
+        "concrete": "#8a8b86",
+        "frame": "#2e3437"
+      },
+      "attribution": {
+        "title": "Blauwbrug (brug 236, 1883)",
+        "author": "Map Recall; bridge by W. Springer and B. de Greef, ornament J. Springer",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518352",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Blauwbrug.jpg\" (M.Minderhoud, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug.jpg) and \"Blauwbrug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug_amsterdam.jpg) as visual reference only; no photo pixels or imported meshes."
+      },
+      "throughPassages": [
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              -26.79,
+              -5.4
+            ],
+            [
+              -14.41,
+              -10.13
+            ],
+            [
+              -3.99,
+              17.15
+            ],
+            [
+              -16.37,
+              21.88
+            ]
+          ],
+          "evidence": "Blauwbrug west side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -23.1..-9.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        },
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              -11.61,
+              -11.2
+            ],
+            [
+              1.19,
+              -16.08
+            ],
+            [
+              11.61,
+              11.2
+            ],
+            [
+              -1.19,
+              16.08
+            ]
+          ],
+          "evidence": "Blauwbrug flat central span: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -6.85..6.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        },
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              3.99,
+              -17.15
+            ],
+            [
+              16.37,
+              -21.88
+            ],
+            [
+              26.79,
+              5.4
+            ],
+            [
+              14.41,
+              10.13
+            ]
+          ],
+          "evidence": "Blauwbrug east side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along 9.85..23.1 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        }
+      ],
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -27.359106063842773,
+          -9.536743306171047e-8,
+          -20.08302879333496
+        ],
+        "max": [
+          27.359106063842773,
+          11.421649932861328,
+          20.08302879333496
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9008813,
+          52.3663569
+        ],
+        "altitudeMetres": -2.886,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 69.10000000000002,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 54.71821212768555,
+        "heightMetres": 11.421650028228761,
+        "depthMetres": 40.16605758666992,
+        "depthCoverage": 1.606642303466797
+      },
+      "triangles": 25992,
+      "bytes": 401448,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5d46d293ff21dc52",
+        "buildVersion": 2,
+        "bytes": 75900,
+        "triangles": 3910
+      }
+    },
+    "magere-brug": {
+      "id": "magere-brug",
+      "name": "Magere Brug",
+      "modelUrl": "./models/magere-brug.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9023713,
+          52.3635814
+        ],
+        "headingDegrees": 73,
+        "lengthMetres": 74,
+        "widthMetres": 11
+      },
+      "surveyed": {
+        "anchor": [
+          4.9023713,
+          52.3635814
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Bridge frame along bearing 73 deg from the Gemeente Amsterdam register footprint BRU0242 (fixed spans 32 m x 9.9 m either side of the 4.75 m bascule section); deck kept 6 cm under the game's ride surface (scripts/landmarks/magere-brug-footprints.json rideProfile, bridge-deck-probe.ts), which over this unmeasured footprint is the relief, about 1 m under the real deck. Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.3) on the runtime's anchor base (-0.252). Faces read from the boat panoramas TMX7316010203-000355_pano_0000_000633 and _000625 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518383."
+      },
+      "groundAltitudeMetres": -2.048,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1934,
+      "materialOverrides": {
+        "slate": "#77766f",
+        "concrete": "#8e8d87",
+        "ochre": "#d9cf9c",
+        "red": "#c0392b",
+        "bronze": "#2f2b27",
+        "stone": "#e0dccf",
+        "copper": "#2b2f30",
+        "green": "#e6e2d6"
+      },
+      "attribution": {
+        "title": "Magere Brug (brug 242, 1934)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518383",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Magere brug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magere_brug_amsterdam.jpg) and \"Magerebrug.jpg\" (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magerebrug.jpg) as visual reference only; no photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -36.87833023071289,
+          4.7683716530855236e-8,
+          -15.651599884033203
+        ],
+        "max": [
+          36.87833023071289,
+          9.408527374267578,
+          15.651599884033203
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9023713,
+          52.3635814
+        ],
+        "altitudeMetres": -2.048,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 73,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 73.75666046142578,
+        "heightMetres": 9.408527326583862,
+        "depthMetres": 31.303199768066406,
+        "depthCoverage": 2.8457454334605825
+      },
+      "triangles": 15088,
+      "bytes": 237764,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e8c99d8e2714c970",
+        "buildVersion": 2,
+        "bytes": 46764,
+        "triangles": 2275
+      }
     }
   }
 }

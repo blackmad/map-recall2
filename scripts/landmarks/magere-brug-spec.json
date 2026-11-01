@@ -1,0 +1,45 @@
+{
+ "id": "magere-brug",
+ "name": "Magere Brug",
+ "modelUrl": "./models/magere-brug.glb",
+ "suppressOsmIds": [],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.9023713,
+   52.3635814
+  ],
+  "headingDegrees": 73.0,
+  "lengthMetres": 74.0,
+  "widthMetres": 11.0
+ },
+ "surveyed": {
+  "anchor": [
+   4.9023713,
+   52.3635814
+  ],
+  "northOffsetDegrees": 0,
+  "source": "Bridge frame along bearing 73 deg from the Gemeente Amsterdam register footprint BRU0242 (fixed spans 32 m x 9.9 m either side of the 4.75 m bascule section); deck kept 6 cm under the game's ride surface (scripts/landmarks/magere-brug-footprints.json rideProfile, bridge-deck-probe.ts), which over this unmeasured footprint is the relief, about 1 m under the real deck. Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.3) on the runtime's anchor base (-0.252). Faces read from the boat panoramas TMX7316010203-000355_pano_0000_000633 and _000625 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518383."
+ },
+ "groundAltitudeMetres": -2.048,
+ "facingOffsetDegrees": 0,
+ "bagYear": 1934,
+ "materialOverrides": {
+  "slate": "#77766f",
+  "concrete": "#8e8d87",
+  "ochre": "#d9cf9c",
+  "red": "#c0392b",
+  "bronze": "#2f2b27",
+  "stone": "#e0dccf",
+  "copper": "#2b2f30",
+  "green": "#e6e2d6"
+ },
+ "attribution": {
+  "title": "Magere Brug (brug 242, 1934)",
+  "author": "Map Recall",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518383",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Magere brug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magere_brug_amsterdam.jpg) and \"Magerebrug.jpg\" (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magerebrug.jpg) as visual reference only; no photo pixels or imported meshes."
+ }
+}

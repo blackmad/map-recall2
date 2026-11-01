@@ -1,0 +1,115 @@
+{
+ "id": "blauwbrug",
+ "name": "Blauwbrug",
+ "modelUrl": "./models/blauwbrug.glb",
+ "suppressOsmIds": [],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.9008813,
+   52.3663569
+  ],
+  "headingDegrees": 69.1,
+  "lengthMetres": 48.9,
+  "widthMetres": 25.0
+ },
+ "surveyed": {
+  "anchor": [
+   4.9008813,
+   52.3663569
+  ],
+  "northOffsetDegrees": 0,
+  "source": "Bridge frame along bearing 69.1 deg from the OSM man_made=bridge outline (48.9 x 21.2 m) and the Gemeente Amsterdam register outline BRU0236 (pier notches at 16.1 and 32.8 m); deck kept 6 cm under the game's ride surface (scripts/landmarks/blauwbrug-footprints.json rideProfile, bridge-deck-probe.ts). Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.4) on the runtime's anchor base (0.486). Faces read from the Gemeente Amsterdam boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518352 register text (three passages, ship-bow piers, eight red granite columns with sixteen lanterns and imperial crowns, white limestone vase balustrade)."
+ },
+ "groundAltitudeMetres": -2.886,
+ "facingOffsetDegrees": 0,
+ "bagYear": 1883,
+ "materialOverrides": {
+  "stone": "#8f9493",
+  "slate": "#5d6262",
+  "white": "#c9bfae",
+  "red": "#7c4b42",
+  "gold": "#c8a24a",
+  "dark": "#2e3437",
+  "ochre": "#d9cf9c",
+  "brick": "#985846",
+  "concrete": "#8a8b86",
+  "frame": "#2e3437"
+ },
+ "attribution": {
+  "title": "Blauwbrug (brug 236, 1883)",
+  "author": "Map Recall; bridge by W. Springer and B. de Greef, ornament J. Springer",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518352",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Blauwbrug.jpg\" (M.Minderhoud, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug.jpg) and \"Blauwbrug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug_amsterdam.jpg) as visual reference only; no photo pixels or imported meshes."
+ },
+ "throughPassages": [
+  {
+   "axisBearing": 159.1,
+   "corridor": [
+    [
+     -26.79,
+     -5.4
+    ],
+    [
+     -14.41,
+     -10.13
+    ],
+    [
+     -3.99,
+     17.15
+    ],
+    [
+     -16.37,
+     21.88
+    ]
+   ],
+   "evidence": "Blauwbrug west side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -23.1..-9.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+  },
+  {
+   "axisBearing": 159.1,
+   "corridor": [
+    [
+     -11.61,
+     -11.2
+    ],
+    [
+     1.19,
+     -16.08
+    ],
+    [
+     11.61,
+     11.2
+    ],
+    [
+     -1.19,
+     16.08
+    ]
+   ],
+   "evidence": "Blauwbrug flat central span: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -6.85..6.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+  },
+  {
+   "axisBearing": 159.1,
+   "corridor": [
+    [
+     3.99,
+     -17.15
+    ],
+    [
+     16.37,
+     -21.88
+    ],
+    [
+     26.79,
+     5.4
+    ],
+    [
+     14.41,
+     10.13
+    ]
+   ],
+   "evidence": "Blauwbrug east side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along 9.85..23.1 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+  }
+ ]
+}

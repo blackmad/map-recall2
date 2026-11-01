@@ -1978,5 +1978,17 @@
   "buildVersion": 2,
   "bytes": 29304,
   "triangles": 1221
+ },
+ "blauwbrug": {
+  "sourceHash": "5d46d293ff21dc52",
+  "buildVersion": 2,
+  "bytes": 75900,
+  "triangles": 3910
+ },
+ "magere-brug": {
+  "sourceHash": "e8c99d8e2714c970",
+  "buildVersion": 2,
+  "bytes": 46764,
+  "triangles": 2275
  }
 }
