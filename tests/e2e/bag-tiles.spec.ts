@@ -57,7 +57,7 @@ async function settleAt(page: Page, view: View): Promise<void> {
   }, { eye, view });
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks, w = window as any;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -65,7 +65,7 @@ async function settleAt(page: Page, view: View): Promise<void> {
     w.__bagKey = key;
     return w.__bagIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__bagCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__bagCamera); });
   await page.waitForTimeout(4000);
   await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap.map;
