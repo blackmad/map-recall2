@@ -269,7 +269,7 @@ export type LngLatBounds = { west: number; east: number; south: number; north: n
 /** Degrees added around the view: about 280 m east-west and 220 m north-south in Amsterdam. */
 export const DEFAULT_RESIDENCY_PAD = { lng: 0.004, lat: 0.002 } as const;
 
-const METRES_PER_DEGREE_LAT = 111320;
+export const METRES_PER_DEGREE_LAT = 111320;
 
 /**
  * True when a model anchored at `anchor` with a horizontal radius of

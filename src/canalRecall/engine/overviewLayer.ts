@@ -10,7 +10,10 @@
 
 import * as THREE from 'three';
 import { decodeOverview, STREET_CLASSES, type OverviewData, type OverviewFile, type StreetClass } from '../ownMap/overviewFormat';
-import { fillMaterial, lineGeometry, lineMaterial, polygonGeometry, handover } from '../ownMap/layers';
+import { fillMaterial, lineMaterial, handover } from '../ownMap/layers';
+import { overviewRecipes, railGroups, type BuiltOverviewGeometry, type GeometryArrays } from '../ownMap/overviewArrays';
+import { overviewText } from '../ownMap/overviewPool';
+import type { CellTile } from '../ownGround/cellTiles';
 import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, STREET_STYLE, type Stops } from '../ownMap/style';
 import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 import { overviewColours } from './themePalette';
@@ -23,11 +26,31 @@ import type { FrameContext, FrameParticipant } from '../rendererShared/sharedFra
 export async function fetchOverview(extractRoot: string): Promise<OverviewData> {
   const r = await fetch(`${extractRoot}/own-map-v1/overview.json.gz`);
   if (!r.ok) throw new Error(`own-map overview: ${r.status}`);
-  const b = new Uint8Array(await r.arrayBuffer());
-  const text = b[0] === 0x1f && b[1] === 0x8b
-    ? await new Response(new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'))).text()
-    : new TextDecoder().decode(b);
-  return decodeOverview(JSON.parse(text) as OverviewFile);
+  return decodeOverviewBytes(new Uint8Array(await r.arrayBuffer()));
+}
+
+/** The overview file's bytes (fetchOverviewBytes), decoded. */
+export async function decodeOverviewBytes(b: Uint8Array): Promise<OverviewData> {
+  return decodeOverview(JSON.parse(await overviewText(b)) as OverviewFile);
+}
+
+/** overview.json.gz as fetched (the engine hands a copy to the worker pool, overviewPool.ts). */
+export async function fetchOverviewBytes(extractRoot: string): Promise<Uint8Array> {
+  const r = await fetch(`${extractRoot}/own-map-v1/overview.json.gz`);
+  if (!r.ok) throw new Error(`own-map overview: ${r.status}`);
+  return new Uint8Array(await r.arrayBuffer());
+}
+
+/** A geometry over these arrays (overviewArrays.ts): the attributes, index and bounding sphere polygonGeometry / lineGeometry make. */
+export function geometryOf(a: GeometryArrays): THREE.BufferGeometry {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(a.attributes.position, 3));
+  if (a.attributes.aDir) g.setAttribute('aDir', new THREE.BufferAttribute(a.attributes.aDir, 2));
+  if (a.attributes.aCorner) g.setAttribute('aCorner', new THREE.BufferAttribute(a.attributes.aCorner, 2));
+  g.setIndex(new THREE.BufferAttribute(a.index, 1));
+  const [x, y, z, r] = a.sphere;
+  g.boundingSphere = new THREE.Sphere(new THREE.Vector3(x, y, z), r);
+  return g;
 }
 
 /** Mercator ← own-map local metres, linearised in y at `lat` (column-major). */
@@ -61,9 +84,24 @@ export class OverviewLayer implements FrameParticipant {
   private centreLat: number = ORIGIN.lat;
   /** How to build each geometry again (a lost context): the CPU copies are freed once uploaded (heap gate, #130). */
   private readonly rebuild = new Map<THREE.BufferGeometry, () => THREE.BufferGeometry>();
-  /** A geometry that frees its CPU arrays after upload, with the recipe to make it again. */
-  private built(make: () => THREE.BufferGeometry): THREE.BufferGeometry {
-    const g = make();
+  /** Each overview geometry's recipe by id (overviewArrays.ts), and what the pool built (constructor `prebuilt`). */
+  private readonly recipes = new Map<string, () => GeometryArrays>();
+  private readonly prebuilt = new Map<string, BuiltOverviewGeometry>();
+  /** Span tiles cut in the pool worker, per geometry (cutSpans: undefined means cut here). */
+  private readonly preTiles = new Map<THREE.BufferGeometry, CellTile[] | null>();
+  /**
+   * The geometry `id` (overviewArrays.ts overviewRecipes), freeing its CPU arrays after upload, with the recipe to make
+   * it again. Wraps the pool's arrays when it built them (the same arrays and sphere as the recipe: overviewArrays.test).
+   */
+  private built(id: string): THREE.BufferGeometry {
+    const recipe = this.recipes.get(id)!, make = () => geometryOf(recipe());
+    const pre = this.prebuilt.get(id);
+    this.prebuilt.delete(id);
+    const g = pre ? geometryOf(pre) : make();
+    if (pre) this.preTiles.set(g, pre.tiles);
+    return this.track(g, make);
+  }
+  private track(g: THREE.BufferGeometry, make: () => THREE.BufferGeometry): THREE.BufferGeometry {
     for (const a of [...Object.values(g.attributes), g.index]) (a as THREE.BufferAttribute | null)?.onUpload(releaseArray);
     this.rebuild.set(g, make);
     return g;
@@ -84,22 +122,22 @@ export class OverviewLayer implements FrameParticipant {
     center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
     /** The own ground (gameGround.ts coversRect), when there is one. */
     ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean } | null;
-  }) {
+  }, prebuilt?: readonly BuiltOverviewGeometry[] | null) {
     this.root.name = 'engine-overview';
     this.water = new WaterIndex(data.water);
-    const [x0, y0, x1, y1] = data.bounds;
-    const pad = 20_000;
-    this.land = new THREE.Mesh(this.built(() => polygonGeometry([[[[x0 - pad, y0 - pad], [x1 + pad, y0 - pad], [x1 + pad, y1 + pad], [x0 - pad, y1 + pad]]]])), fillMaterial(PALETTE.land, OVERVIEW_Z));
+    for (const r of overviewRecipes(data)) this.recipes.set(r.id, r.make);
+    for (const g of prebuilt ?? []) if (this.recipes.has(g.id)) this.prebuilt.set(g.id, g);
+    this.land = new THREE.Mesh(this.built('land'), fillMaterial(PALETTE.land, OVERVIEW_Z));
     this.land.renderOrder = -1;
-    const water = new THREE.Mesh(this.built(() => polygonGeometry(data.water)), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
-    const parks = new THREE.Mesh(this.built(() => polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r])))), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
+    const water = new THREE.Mesh(this.built('water'), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
+    const parks = new THREE.Mesh(this.built('parks'), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
     this.parks = parks; this.waterMesh = water;
     for (const m of [this.land, parks, water]) m.frustumCulled = false;
     this.root.add(this.land, parks, water);
     this.addV2Layers(data);
     const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
     for (const cls of ordered) {
-      const geo = this.built(() => lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points)));
+      const geo = this.built(`street:${cls}`);
       const st = STREET_STYLE[cls];
       const fill = new THREE.Mesh(geo, lineMaterial(st.fill, OVERVIEW_Z)); fill.renderOrder = 20 + st.order; fill.frustumCulled = false;
       let casing: THREE.Mesh | null = null;
@@ -133,7 +171,7 @@ export class OverviewLayer implements FrameParticipant {
     });
     for (const [geo, meshes] of byGeo) {
       const owner = meshes[0];
-      if (!cutMesh(THREE, owner, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans' })) continue;
+      if (!cutMesh(THREE, owner, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans', tiles: this.preTiles.has(geo) ? this.preTiles.get(geo) : undefined })) continue;
       const cull = owner.onBeforeRender;
       const whole = () => { geo.drawRange.start = 0; geo.drawRange.count = Infinity; };
       for (const m of meshes) {
@@ -155,28 +193,19 @@ export class OverviewLayer implements FrameParticipant {
   private addV2Layers(data: OverviewData): void {
     const add = (m: THREE.Mesh, order: number) => { m.renderOrder = order; m.frustumCulled = false; this.root.add(m); return m; };
     for (const cls of LANDUSE_CLASSES) {
-      const polys = data.landuse.filter(l => l.cls === cls).map(l => l.rings);
-      if (!polys.length) continue;
+      if (!this.recipes.has(`landuse:${cls}`)) continue;
       // Between the land (-1) and the parks (1), in the style's order.
-      add(new THREE.Mesh(this.built(() => polygonGeometry(polys)), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
+      add(new THREE.Mesh(this.built(`landuse:${cls}`), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
     }
-    if (data.piers.length) add(new THREE.Mesh(this.built(() => polygonGeometry(data.piers.map(r => [r]))), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
+    if (data.piers.length) add(new THREE.Mesh(this.built('piers'), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
     if (data.pierLines.length) {
-      const mesh = add(new THREE.Mesh(this.built(() => lineGeometry(data.pierLines)), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
+      const mesh = add(new THREE.Mesh(this.built('pierLines'), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
       this.extraLines.push({ mesh, width: PIER_STYLE.width, scale: 1, opacity: 1 });
     }
-    const groups = new Map<string, { kind: keyof typeof RAIL_STYLE; tunnel: boolean; service: boolean; lines: Vec2[][] }>();
-    for (const r of data.rail) {
-      const key = `${r.kind}|${r.tunnel}|${r.service}`;
-      let g = groups.get(key);
-      if (!g) groups.set(key, g = { kind: r.kind, tunnel: r.tunnel, service: r.service, lines: [] });
-      g.lines.push(r.points);
-    }
-    for (const g of groups.values()) {
-      const st = RAIL_STYLE[g.kind];
+    for (const g of railGroups(data)) {
+      const st = RAIL_STYLE[g.kind as keyof typeof RAIL_STYLE];
       // Tunnels under the streets, faint; surface track over the street fills.
-      const lines = g.lines;
-      const mesh = add(new THREE.Mesh(this.built(() => lineGeometry(lines)), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
+      const mesh = add(new THREE.Mesh(this.built(`rail:${g.key}`), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
       this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1 });
     }
   }
@@ -207,7 +236,7 @@ export class OverviewLayer implements FrameParticipant {
       if (!g) {
         const make = this.rebuild.get(old);
         if (!make) return;
-        g = this.built(make); fresh.set(old, g); this.rebuild.delete(old); old.dispose();
+        g = this.track(make(), make); fresh.set(old, g); this.rebuild.delete(old); old.dispose();
       }
       m.geometry = g;
     });
@@ -265,8 +294,8 @@ export class OverviewLayer implements FrameParticipant {
 }
 
 /** Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. */
-const OVERVIEW_TILES = 8;
-const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
+export const OVERVIEW_TILES = 8;
+export const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
 

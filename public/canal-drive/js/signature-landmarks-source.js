@@ -25,6 +25,7 @@ import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from 
 import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the MapLibre-shaped map.
 import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/worldCameraOf.ts';
+import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -99,8 +100,13 @@ export class SignatureLandmarks {
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this.streetChunks = options.streetChunks === true;
     this.buildingTypes = options.buildingTypes !== false;
-    this._pending = new Map();
-    this._failed = new Set();
+    /**
+     * Bumped by every change to what `_requestModels` reads besides the view (pending, failed, shown, the model list,
+     * the generation): a walk that found nothing to load is skipped only while this and the view's margin hold.
+     */
+    this._requestRev = 0;
+    this._pending = this._tracked(new Map());
+    this._failed = this._tracked(new Set());
     /** One decoded GLB per shared-mesh URL (recipe-pipeline houses); instances clone it and share geometry and materials. */
     this._sharedAssets = new window.CanalRecallSignatureLandmarks.SharedAssetCache();
     this._generation = 0;
@@ -125,7 +131,7 @@ export class SignatureLandmarks {
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
-    this.shown = new Set();
+    this.shown = this._tracked(new Set());
     this.activeLandmarkId = null;
     /** The page's one three.js frame (no own layer, renderer or lights). */
     this.sharedFrame = options.sharedFrame || null;
@@ -579,6 +585,15 @@ export class SignatureLandmarks {
     this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, base));
   }
 
+  /** `collection` with its add/set/delete/clear bumping `_requestRev` (see the request gate in `_requestModels`). */
+  _tracked(collection) {
+    for (const name of ['add', 'set', 'delete', 'clear']) {
+      const f = collection[name];
+      if (typeof f === 'function') collection[name] = (...args) => { this._requestRev++; return f.apply(collection, args); };
+    }
+    return collection;
+  }
+
   /** Keep loading and render culling aligned, including large footprint edges. */
   _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre, bounds = null) {
     if (!anchor) return !this.loadVisibleOnly;
@@ -632,13 +647,56 @@ export class SignatureLandmarks {
     this._dropEntries(ids);
   }
 
+  /** The smallest outsideSlack (engine/viewSlack.ts) over the models a walk could request, all outside `view`. */
+  _loadableSlack(view) {
+    let slack = Infinity;
+    for (const spec of this.models) {
+      if (this.shown.has(spec.id) || this._pending.has(spec.id) || this._failed.has(spec.id)) continue;
+      const s = outsideSlack(view, spec.surveyed?.anchor || spec.footprint?.centre, Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2);
+      if (s < slack) slack = s;
+    }
+    return slack;
+  }
+
+  _gateOn() {
+    if (this._gateFlag === undefined) { try { this._gateFlag = new URLSearchParams(window.location?.search ?? '').get('landmarkGate') !== '0'; } catch { this._gateFlag = true; } }
+    return this._gateFlag;
+  }
+
+  /**
+   * The gate's pin, on the page only when asked (`window.__canalRecallLandmarkGateCheck = {}`): each skipped walk is
+   * run anyway, and any model it would have requested is recorded (`misses`; must stay empty).
+   */
+  _gateCheck(view) {
+    const check = window.__canalRecallLandmarkGateCheck;
+    if (!check) return;
+    check.skips = (check.skips || 0) + 1;
+    const found = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) && !this._failed.has(spec.id) && this._nearby(spec, undefined, view));
+    if (found.length) (check.misses ||= []).push({ t: performance.now(), ids: found.map(spec => spec.id) });
+  }
+
+  /** Requests in order, when asked (`window.__canalRecallLandmarkRequests = []`): id and time (the gate's A/B). */
+  _logRequest(spec) {
+    const log = window.__canalRecallLandmarkRequests;
+    if (Array.isArray(log)) log.push({ id: spec.id, t: performance.now() });
+  }
+
   _requestModels() {
     if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
     if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
     // One view for the whole list (the camera cannot move inside this loop).
     const view = this.loadVisibleOnly ? this._viewBounds() : null;
+    // The request gate (#129): the last walk found nothing to load, nothing it read has changed since, and the view's
+    // edges have moved less than half the margin of the nearest loadable model outside it, so this walk would find
+    // nothing too. A walk ran on every frame that moved the view, ~0.8 s a minute at 4x. `?landmarkGate=0` walks always.
+    const idle = this._requestIdle;
+    if (view && idle && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
+      this._gateCheck(view);
+      return;
+    }
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec, undefined, view)));
+    this._requestIdle = view && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
     const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
@@ -649,6 +707,7 @@ export class SignatureLandmarks {
       const spec = candidates.shift(), generation = this._generation;
       if (this._pending.has(spec.id) || this.shown.has(spec.id)) continue;
       this._pending.set(spec.id, generation);
+      this._logRequest(spec);
       const finish = () => {
         if (this._removed || generation !== this._generation) return;
         this._pending.delete(spec.id);
