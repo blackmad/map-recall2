@@ -11,14 +11,14 @@ try{
  await page.locator('#route-card').evaluate(f=>f.requestSubmit());
  await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?.ready===true,null,{timeout:120000});
  await page.waitForFunction(()=>Boolean(window.canalRecallGame.vectorMap._threeBuildings?.appearanceRevision));
- await page.evaluate(async()=>{const v=window.canalRecallGame.vectorMap;v.sync=()=>{};v.setBuildingLook('photo');await v.setBuildingsLook('photo');v.map.jumpTo({center:[4.8979412,52.3713544],zoom:20.5,bearing:116,pitch:80});v._threeBuildings.setDetailCentre(4.8979412,52.3713544);v._completeCity.followCamera();});
+ await page.evaluate(async()=>{const v=window.canalRecallGame.vectorMap;v.sync=()=>{};v.setBuildingLook('photo');await v.setBuildingsLook('photo');(v.map ?? v.cameraMap).jumpTo({center:[4.8979412,52.3713544],zoom:20.5,bearing:116,pitch:80});v._threeBuildings.setDetailCentre(4.8979412,52.3713544);v._completeCity.followCamera();});
  await page.waitForTimeout(3000);
  await page.waitForFunction(()=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;return t.chunks.size&&!t.pending.length&&!t.inflight.size&&!v._completeCity.status().inFlight;},null,{timeout:120000});
  const audit=await page.evaluate(()=>{
   const v=window.canalRecallGame.vectorMap,t=v._threeBuildings,unique=new Map();for(const f of [...v._tileFeatures,...[...t.sourceGroups.values()].flat()])unique.set(f.id??f.properties.id,f);
   const near=[...unique.values()].filter(f=>{const points=f.geometry?.type==='Polygon'?f.geometry.coordinates.flat():f.geometry?.type==='MultiPolygon'?f.geometry.coordinates.flat(2):[];return points.some(([lng,lat])=>Math.hypot((lng-4.8979412)*111320*.61,(lat-52.3713544)*110540)<50);});
   const feature=near.find(f=>JSON.stringify(f).includes('0363100012178210'));
-  return {feature,near,profiles:t.appearanceProfiles,revision:t.appearanceRevision,freeCameraSupported:typeof v.map.getFreeCameraOptions==='function',features:unique.size};
+  return {feature,near,profiles:t.appearanceProfiles,revision:t.appearanceRevision,freeCameraSupported:typeof (v.map ?? v.cameraMap).getFreeCameraOptions==='function',features:unique.size};
  });
  await fs.writeFile(`${root}/samrat-feature.json`,JSON.stringify(audit.feature,null,2)+'\n');
  await fs.writeFile(`${root}/source-feature-audit.json`,JSON.stringify(audit,null,2)+'\n');
@@ -28,12 +28,12 @@ try{
  await page.evaluate(()=>window.canalRecallGame.vectorMap._threeBuildings.setHighlighted(['NL.IMBAG.Pand.0363100012178210']));
  for(const bearing of [116,296,26,206]){
   const camera={center:[4.8979412,52.3713544],bearing,zoom:21.5,pitch:80};
-  await page.evaluate(camera=>{const v=window.canalRecallGame.vectorMap;v.map.jumpTo(camera);v._completeCity.followCamera();v.map.triggerRepaint();},camera);
+  await page.evaluate(camera=>{const v=window.canalRecallGame.vectorMap;(v.map ?? v.cameraMap).jumpTo(camera);v._completeCity.followCamera();(v.map ?? v.cameraMap).triggerRepaint();},camera);
   await page.waitForTimeout(1000);
   const file=`samrat-highlight-${bearing}.png`;
   await page.locator('#vector-map').screenshot({path:`${root}/${file}`});captures.push({file,camera});
  }
- const mapCameraSupported=await page.evaluate(()=>typeof window.canalRecallGame.vectorMap.map.calculateCameraOptionsFromTo==='function');
+ const mapCameraSupported=await page.evaluate(()=>typeof (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap).calculateCameraOptionsFromTo==='function');
  if(mapCameraSupported){
   for(const offsetM of [12,20,28]){
    const result=await page.evaluate(offsetM=>{
