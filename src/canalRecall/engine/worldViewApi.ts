@@ -129,8 +129,8 @@ export function hasWorldCamera(view: unknown): view is WorldView & { camera: Wor
 
 /**
  * The extract files the own engine cannot run without, per city (`public/data/extracts/<city>/`): the own map's
- * overview and the routing roads binary. Only Amsterdam has both (user 2026-11-01: the `?engine=own` flip is
- * Amsterdam-only; Utrecht, Rotterdam and Den Haag keep MapLibre). engine.test.ts checks this list against the files.
+ * overview and the routing roads binary. The flip is Amsterdam-only (user 2026-11-01: Utrecht, Rotterdam and Den Haag
+ * keep MapLibre, even where both files exist); engine.test.ts checks every listed city has both files.
  */
 export const OWN_ENGINE_FILES = ['own-map-v1/overview.json.gz', 'roads-v2/streets-routing.bin.gz'] as const;
 export const OWN_ENGINE_CITIES: ReadonlySet<string> = new Set(['amsterdam']);

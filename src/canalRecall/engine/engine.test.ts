@@ -79,17 +79,20 @@ test('engine flag', () => {
   assert.equal(engineFlag(''), 'maplibre');
 });
 
-test('engine choice is city-aware: own only where the own map and the roads binary exist', async () => {
+test('engine choice is city-aware: own only in listed cities, each with the own map and the roads binary', async () => {
   const { existsSync, readdirSync } = await import('node:fs');
   const { OWN_ENGINE_CITIES, OWN_ENGINE_FILES, engineForCity } = await import('./worldViewApi');
   const root = 'public/data/extracts';
+  // The flip is Amsterdam-only (user decision, 2026-11-01): a city with both files (Utrecht has roads-v2 since
+  // origin/main 2026-11-01) still draws with MapLibre until it is listed; a listed city must have both.
+  for (const city of OWN_ENGINE_CITIES) {
+    for (const f of OWN_ENGINE_FILES) assert.ok(existsSync(`${root}/${city}/${f}`), `${city}: listed for the own engine, has ${f}`);
+  }
   for (const city of readdirSync(root)) {
-    const has = OWN_ENGINE_FILES.every(f => existsSync(`${root}/${city}/${f}`));
-    assert.equal(OWN_ENGINE_CITIES.has(city), has, `${city}: own engine listed iff ${OWN_ENGINE_FILES.join(' and ')} exist`);
-    assert.equal(engineFlag('?engine=own', city), has ? 'own' : 'maplibre', city);
+    assert.equal(engineFlag('?engine=own', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', city);
     assert.equal(engineFlag('', city), 'maplibre', `${city}: the default stays MapLibre`);
   }
-  assert.ok(OWN_ENGINE_CITIES.has('amsterdam'));
+  assert.deepEqual([...OWN_ENGINE_CITIES], ['amsterdam']);
   for (const city of ['utrecht', 'rotterdam', 'den-haag']) assert.equal(engineForCity('own', city), 'maplibre', city);
   assert.equal(engineForCity('own', null), 'own', 'no city yet: Amsterdam, the default');
 });
