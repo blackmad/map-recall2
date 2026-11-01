@@ -1421,11 +1421,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
   at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
   occluded too; `street-label-occlusion.spec` passes under both engines.
-  Left: Cafe Kompleet at a row-house corner the frontage walk misses; names
-  ever drawn through a building while riding 6 s from the Westerkerk still
-  14 → 7 (between-pass re-tests cover 4 POIs per frame, not street names);
-  the occlusion step's own per-frame cost is not isolated against the ≤ 0.3
-  ms budget. The user looks at this next on the deployed `?engine=own`.
+  Round 3 (HISTORY "Label occlusion round 3"): street names re-tested per
+  copy while riding, budget 8 sightlines a frame (100–137 µs). Left: Cafe
+  Kompleet, a roof-height case (saltbox 17 m in front hit at 7.9 m on screen
+  while the sightline clears the walk's top): test at the glyph top or use
+  the ridge for occluders within ≈ 25 m (materials, after the facades
+  package); riding POI samples through buildings ECH 25/22, Westerkerk 62,
+  Dam 4 per 6 s. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

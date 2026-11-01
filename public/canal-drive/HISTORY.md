@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+**Label occlusion round 3: street names re-tested per copy while riding, between-pass budget 4 → 8; Cafe Kompleet is a roof-height case, not a corner (2026-11-01, #129).**
+Materials lane. The between-pass budget is 8 sightlines a frame (a POI costs
+1, a street or water name 1 per anchor; `stats.betweenMs`,
+`stats.betweenSightlines`, A/B knobs `between.{budget,lines}`), and street
+and water names join the per-frame round-robin. The new riding test found
+that a long name placed several times under one id had only its first copy
+tested (Overtoom stayed drawn behind a building for 2 s); each copy is now
+tested on its own with its own hysteresis key and dropped alone. Moving
+counts over a 6 s ride per pose, run twice, main → this: POI
+through-building samples ECH 34/30 → 25/22, Westerkerk 79/81 → 62/62, Dam
+4/6 → 4/4; line labels drawn while hidden, summed over the three poses, 7 and
+11 → 1 and 2; per-frame cost 82–104 → 100–137 µs. `label-occlusion.spec`
+gains a riding assertion (no copy still drawn 250 ms after a building hid
+it, cost < 500 µs; fails on main's old bundle). Under render-on-change,
+flipping `labelOcclusionOn` never redrew the labels (the spec saw on == off);
+the switch now asks for a frame. Cafe Kompleet is not fixed: trying the
+camera-facing frontage first leaves it in place and adds Rue D'Alger and
+others, so it was reverted; the debug pick shows the roof-height model is the
+cause (the saltbox 17 m in front is hit at 7.9 m on screen while the
+sightline clears the walk's top for that roof shape); next candidate is the
+glyph top, or the ridge for occluders within ≈ 25 m, after the facades
+package.
+
 **P3 pop-in gate met under both engines; ground tiles cut and shadow stand-ins welded off the main thread; ARTIS off the camera shim (2026-11-01, #129).**
 L1 hand-back (11). `pop-in.mjs` now counts own-ground cell and facade chunk
 arrivals within 150 m of the rider: car route, 60 s, real GPU, DPR 2: 0 under
