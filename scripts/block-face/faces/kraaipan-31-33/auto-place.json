@@ -3,7 +3,7 @@
  "street": "Kraaipanstraat",
  "library": "transvaalbuurt",
  "stripDate": "2017-04-06",
- "seconds": 4.31,
+ "seconds": 4.62,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -95,18 +95,18 @@
    "notes": [
     "door right: mirrored",
     "crown eaves: crown from type (skyline not sky-bounded: skyline crown top 13.35 m over the 3DBAG roof max 12.1 m (trees, branches or a building behind))",
-    "no photo evidence of its own (usable photo 35 % < 50 %); placed on row evidence from 127519"
+    "no photo evidence of its own (usable photo 33 % < 50 %); placed on row evidence from 127519"
    ],
    "likeness": {
     "pandId": "0363100012154076",
     "ncc": null,
-    "nccRaw": 0.391,
+    "nccRaw": 0.344,
     "shiftM": [
-     -0.05,
-     0.1
+     0.15,
+     0.2
     ],
-    "usable": 0.35,
-    "abstain": "usable photo 35 % < 50 %",
+    "usable": 0.33,
+    "abstain": "usable photo 33 % < 50 %",
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 30 % > 25 %"
@@ -124,11 +124,14 @@
      "photo": null,
      "model": null
     },
-    "iou": 0.458
+    "iou": 0.458,
+    "footOffsetM": 0.72
    },
    "challengers": {
     "transvaal-1920-three-storey~m": null,
-    "transvaal-1920-three-storey": null
+    "transvaal-1920-three-storey": null,
+    "vaalrivier-1931-row~m": null,
+    "vaalrivier-1931-row": null
    }
   },
   {
@@ -199,13 +202,13 @@
    ],
    "likeness": {
     "pandId": "0363100012127519",
-    "ncc": 0.255,
-    "nccRaw": 0.255,
+    "ncc": 0.231,
+    "nccRaw": 0.231,
     "shiftM": [
      0.3,
-     -0.25
+     -0.15
     ],
-    "usable": 0.76,
+    "usable": 0.78,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
@@ -225,11 +228,14 @@
      "photo": null,
      "model": null
     },
-    "iou": 0.463
+    "iou": 0.463,
+    "footOffsetM": 0.72
    },
    "challengers": {
-    "transvaal-1920-three-storey~m": 0.255,
-    "transvaal-1920-three-storey": 0.256
+    "transvaal-1920-three-storey~m": 0.231,
+    "transvaal-1920-three-storey": 0.174,
+    "vaalrivier-1931-row~m": 0.147,
+    "vaalrivier-1931-row": 0.206
    }
   }
  ]

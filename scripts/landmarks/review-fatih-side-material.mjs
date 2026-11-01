@@ -19,7 +19,7 @@ for(const device of ['desktop','touch']){
  await page.waitForFunction(()=>canalRecallGame.vectorMap._completeCity&&canalRecallGame.vectorMap._threeBuildings,null,{timeout:120000});
  await page.evaluate(()=>{const g=canalRecallGame,v=g.vectorMap;g.state=6;g._renderPaused=()=>{};g.player.vx=g.player.vy=g.player.speed=0;v.sync=()=>{};v._completeCity?.setSuspended(false);v.setActiveLandmark(null);});
  for(const [look,bearing] of [['photo',68],['photo',248],['untextured',68],['photo',68]]){
-  await page.evaluate(async({look,bearing})=>{const v=canalRecallGame.vectorMap;await v._threeBuildings.setLook(look);v.map.jumpTo({center:[4.87849,52.37322],zoom:18.5,pitch:60,bearing});v._completeCity?.followCamera();},{look,bearing});
+  await page.evaluate(async({look,bearing})=>{const v=canalRecallGame.vectorMap;await v._threeBuildings.setLook(look);(v.map ?? v.cameraMap).jumpTo({center:[4.87849,52.37322],zoom:18.5,pitch:60,bearing});v._completeCity?.followCamera();},{look,bearing});
   await page.waitForTimeout(2500);
   await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b.ready&&!b.pending.length&&!b.inflight.size&&b.lastFeatures.some(f=>f.properties.id==='NL.IMBAG.Pand.0363100012167944')},null,{timeout:120000});
   const frames=await page.evaluate(async()=>{const out=[];let prev=performance.now();for(let i=0;i<45;i++){await new Promise(requestAnimationFrame);const now=performance.now();out.push(now-prev);prev=now}return out});

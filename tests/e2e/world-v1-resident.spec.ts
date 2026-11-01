@@ -13,7 +13,7 @@ test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 const OUT = process.env.AB_DIR || 'artifacts/world/resident';
 const WORLD_DIR = process.env.WORLD_DIR ? path.resolve(process.env.WORLD_DIR) : null;
 const RUNS = Number(process.env.RUNS || 2);
-const VARIANTS = [{ name: 'default', query: '' }, { name: 'world', query: '?world=v1' }];
+const VARIANTS = [{ name: 'default', query: '?world=live' }, { name: 'world', query: '?world=v1' }];
 
 async function serve(page: Page) {
   if (WORLD_DIR) await page.context().route(/\/data\/extracts\/amsterdam\/world-v1\/(.+)$/, route => {

@@ -15,14 +15,14 @@ test('osm extrusion under placed models', async ({ page }, info) => {
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
     vm._signatureLandmarks.setSuspended?.(false);
   }, CAM);
   mkdirSync('artifacts/osm-under', { recursive: true });
   for (const v of VIEWS) {
     await page.evaluate((c) => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       map.__jumpTo.call(map, { center: c.center, zoom: c.zoom ?? 18.6, pitch: c.pitch ?? 58, bearing: c.bearing ?? 20 });
     }, v);
     let last = -1, stable = 0;

@@ -1,12 +1,12 @@
 {
  "buurt": "transvaalbuurt-oost",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T10:01:53.729Z",
- "seconds": 51.53,
+ "generatedAt": "2026-11-01T13:03:58.469Z",
+ "seconds": 0,
  "totals": {
-  "faces": 82,
-  "pands": 489,
-  "placed": 18
+  "faces": 78,
+  "pands": 465,
+  "placed": 27
  },
  "faces": [
   {
@@ -24,8 +24,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 5.92,
+   "seconds": 5.3,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -41,8 +42,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.78,
+   "seconds": 0.97,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 2,
@@ -62,8 +64,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.9,
+   "seconds": 1.07,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
@@ -79,8 +82,9 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.49,
+   "seconds": 1.21,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -95,20 +99,7 @@
   },
   {
    "face": "burger-45-131",
-   "street": "Schalk Burgerstraat",
-   "pands": 9,
-   "placed": 0,
-   "held": 9,
-   "runs": [],
-   "seconds": 3.15,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 9,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "cilliers-12-42",
@@ -125,8 +116,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.85,
+   "seconds": 1.38,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 1,
@@ -142,8 +134,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 1.14,
+   "seconds": 1.19,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 0,
@@ -163,8 +156,9 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.91,
+   "seconds": 1.29,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 5,
@@ -179,37 +173,11 @@
   },
   {
    "face": "colenso-13-25",
-   "street": "Colensostraat",
-   "pands": 4,
-   "placed": 0,
-   "held": 4,
-   "runs": [],
-   "seconds": 0.45,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 4,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "colenso-14-28",
-   "street": "Colensostraat",
-   "pands": 4,
-   "placed": 0,
-   "held": 4,
-   "runs": [],
-   "seconds": 0.52,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 4,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "colenso-2-12",
@@ -218,8 +186,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.32,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 1,
@@ -235,8 +204,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 1.6,
+   "seconds": 1.39,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 6,
@@ -252,8 +222,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.23,
+   "seconds": 0.58,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 1,
@@ -269,8 +240,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.54,
+   "seconds": 0.88,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 0,
@@ -286,8 +258,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 5.51,
+   "seconds": 4.73,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -303,8 +276,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 11.64,
+   "seconds": 3.99,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 4,
     "match": 1,
@@ -320,8 +294,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 22.04,
+   "seconds": 26.04,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -337,8 +312,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 11.47,
+   "seconds": 13.27,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -354,8 +330,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 9.07,
+   "seconds": 7.39,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -371,8 +348,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.1,
+   "seconds": 0.9,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -388,8 +366,9 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 10.98,
+   "seconds": 10.48,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 15,
@@ -406,15 +385,27 @@
    "face": "linnaeus-92-102",
    "street": "Linnaeusstraat",
    "pands": 5,
-   "placed": 0,
-   "held": 5,
-   "runs": [],
-   "seconds": 7.24,
-   "byType": {},
+   "placed": 1,
+   "held": 4,
+   "runs": [
+    {
+     "face": "linnaeus-92-102-r1",
+     "pands": [
+      "0363100012150033"
+     ],
+     "passed": false,
+     "triangles": 1894
+    }
+   ],
+   "seconds": 7.16,
+   "byType": {
+    "transvaal-1911-five-storey-tall": 1
+   },
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
-    "likeness": 2,
+    "likeness": 1,
     "run": 0,
     "review": 0
    }
@@ -426,8 +417,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 13.16,
+   "seconds": 14.58,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -443,8 +435,9 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 24.86,
+   "seconds": 148.23,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
@@ -460,8 +453,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.63,
+   "seconds": 0.62,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -477,8 +471,9 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.72,
+   "seconds": 3.38,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 5,
@@ -494,13 +489,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.61,
+   "seconds": 1.43,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
-    "match": 3,
+    "match": 2,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 1
    }
   },
@@ -523,8 +519,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 18.55,
+   "seconds": 14.41,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
@@ -540,8 +537,9 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 5.14,
+   "seconds": 2.2,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -561,8 +559,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.45,
+   "seconds": 0.36,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 6,
@@ -578,8 +577,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.87,
+   "seconds": 0.77,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
@@ -600,14 +600,14 @@
      "pands": [
       "0363100012073473"
      ],
-     "passed": true,
-     "triangles": 1860
+     "installed": true
     }
    ],
-   "seconds": 24.04,
+   "seconds": 7.84,
    "byType": {
     "transvaal-1911-five-storey-tall": 1
    },
+   "installed": 1,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -623,8 +623,9 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 19,
+   "seconds": 20.98,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -645,14 +646,14 @@
      "pands": [
       "0363100012167293"
      ],
-     "passed": true,
-     "triangles": 2005
+     "installed": true
     }
    ],
-   "seconds": 27.32,
+   "seconds": 23.67,
    "byType": {
     "transvaal-1911-five-storey": 1
    },
+   "installed": 1,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -668,8 +669,9 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 4.63,
+   "seconds": 4,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 12,
@@ -685,8 +687,9 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.97,
+   "seconds": 0.87,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -702,8 +705,9 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 20.71,
+   "seconds": 18.18,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -731,8 +735,9 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 12.87,
+   "seconds": 15.1,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -754,8 +759,7 @@
       "0363100012065205",
       "0363100012076837"
      ],
-     "passed": true,
-     "triangles": 4464
+     "installed": true
     },
     {
      "face": "pretorius-71-95-r2",
@@ -763,14 +767,14 @@
       "0363100012061274",
       "0363100012087223"
      ],
-     "passed": true,
-     "triangles": 4444
+     "installed": true
     }
    ],
-   "seconds": 36.57,
+   "seconds": 22.15,
    "byType": {
     "transvaal-1911-five-storey-tall": 4
    },
+   "installed": 4,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -793,15 +797,15 @@
       "0363100012142310",
       "0363100012076819"
      ],
-     "passed": true,
-     "triangles": 6877
+     "installed": true
     }
    ],
-   "seconds": 34.54,
+   "seconds": 13.3,
    "byType": {
     "transvaal-1911-five-storey-tall": 2,
     "transvaal-1911-five-storey": 1
    },
+   "installed": 3,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -814,33 +818,66 @@
    "face": "retief-194-268",
    "street": "Retiefstraat",
    "pands": 9,
-   "placed": 0,
-   "held": 9,
-   "runs": [],
-   "seconds": 11.87,
-   "byType": {},
+   "placed": 5,
+   "held": 4,
+   "runs": [
+    {
+     "face": "retief-194-268-r1",
+     "pands": [
+      "0363100012137027",
+      "0363100012096769"
+     ],
+     "installed": true
+    },
+    {
+     "face": "retief-194-268-r2",
+     "pands": [
+      "0363100012066390",
+      "0363100012066681",
+      "0363100012063111"
+     ],
+     "installed": true
+    }
+   ],
+   "seconds": 4.33,
+   "byType": {
+    "transvaal-1921-five-storey-flat": 5
+   },
+   "installed": 5,
    "holds": {
     "evidence": 0,
-    "match": 1,
-    "likeness": 7,
+    "match": 0,
+    "likeness": 2,
     "run": 0,
-    "review": 1
+    "review": 2
    }
   },
   {
    "face": "retief-2-28",
    "street": "Retiefstraat",
    "pands": 7,
-   "placed": 0,
-   "held": 7,
-   "runs": [],
-   "seconds": 3.4,
-   "byType": {},
+   "placed": 1,
+   "held": 6,
+   "runs": [
+    {
+     "face": "retief-2-28-r1",
+     "pands": [
+      "0363100012236810"
+     ],
+     "passed": true,
+     "triangles": 1732
+    }
+   ],
+   "seconds": 23.64,
+   "byType": {
+    "transvaal-1923-portiek": 1
+   },
+   "installed": 0,
    "holds": {
     "evidence": 0,
-    "match": 5,
-    "likeness": 2,
-    "run": 0,
+    "match": 4,
+    "likeness": 1,
+    "run": 1,
     "review": 0
    }
   },
@@ -851,13 +888,14 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 2.06,
+   "seconds": 0.62,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 0,
-    "likeness": 1,
-    "run": 0,
+    "likeness": 0,
+    "run": 1,
     "review": 1
    }
   },
@@ -865,15 +903,35 @@
    "face": "retief-3-41",
    "street": "Retiefstraat",
    "pands": 13,
-   "placed": 0,
-   "held": 13,
-   "runs": [],
-   "seconds": 56.54,
-   "byType": {},
+   "placed": 2,
+   "held": 11,
+   "runs": [
+    {
+     "face": "retief-3-41-r1",
+     "pands": [
+      "0363100012103086"
+     ],
+     "passed": true,
+     "triangles": 1940
+    },
+    {
+     "face": "retief-3-41-r2",
+     "pands": [
+      "0363100012085865"
+     ],
+     "passed": true,
+     "triangles": 1933
+    }
+   ],
+   "seconds": 33.47,
+   "byType": {
+    "transvaal-1911-five-storey-tall": 2
+   },
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 13,
+    "likeness": 11,
     "run": 0,
     "review": 0
    }
@@ -886,37 +944,35 @@
    "held": 11,
    "runs": [
     {
-     "face": "retief-45-75-r2",
-     "pands": [
-      "0363100012154435"
-     ],
-     "passed": true,
-     "triangles": 2052
-    },
-    {
-     "face": "retief-45-75-r3",
-     "pands": [
-      "0363100012074312"
-     ],
-     "passed": true,
-     "triangles": 2047
-    },
-    {
      "face": "retief-45-75-r1",
      "pands": [
       "0363100012112323",
       "0363100012129491",
       "0363100012067013"
      ],
-     "passed": true,
-     "triangles": 6650
+     "installed": true
+    },
+    {
+     "face": "retief-45-75-r2",
+     "pands": [
+      "0363100012154435"
+     ],
+     "installed": true
+    },
+    {
+     "face": "retief-45-75-r3",
+     "pands": [
+      "0363100012074312"
+     ],
+     "installed": true
     }
    ],
-   "seconds": 51.52,
+   "seconds": 10.69,
    "byType": {
     "transvaal-1911-five-storey-tall": 3,
     "transvaal-1911-five-storey": 2
    },
+   "installed": 5,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -932,8 +988,9 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 20.52,
+   "seconds": 16.47,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 6,
@@ -949,8 +1006,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 14.67,
+   "seconds": 8.18,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -966,8 +1024,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 14.33,
+   "seconds": 12.49,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -983,8 +1042,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 23.26,
+   "seconds": 14.9,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -1000,8 +1060,9 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 6.01,
+   "seconds": 5.07,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 3,
@@ -1017,8 +1078,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.18,
+   "seconds": 0.56,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1034,8 +1096,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.05,
+   "seconds": 0.91,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -1051,8 +1114,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.17,
+   "seconds": 0.16,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -1068,12 +1132,13 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 6.96,
+   "seconds": 11.4,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 4,
-    "match": 4,
-    "likeness": 3,
+    "match": 3,
+    "likeness": 4,
     "run": 0,
     "review": 3
    }
@@ -1085,8 +1150,9 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.29,
+   "seconds": 0.28,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
@@ -1097,20 +1163,7 @@
   },
   {
    "face": "transvaal-131-143",
-   "street": "Transvaalstraat",
-   "pands": 7,
-   "placed": 0,
-   "held": 7,
-   "runs": [],
-   "seconds": 0.49,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 7,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "transvaal-3-47",
@@ -1125,21 +1178,21 @@
       "0363100012093192",
       "0363100012146296"
      ],
-     "passed": true,
-     "triangles": 4279
+     "installed": true
     }
    ],
-   "seconds": 38.82,
+   "seconds": 28.66,
    "byType": {
     "transvaal-1911-five-storey": 1,
     "transvaal-1911-five-storey-tall": 1
    },
+   "installed": 2,
    "holds": {
     "evidence": 0,
     "match": 4,
-    "likeness": 10,
+    "likeness": 8,
     "run": 1,
-    "review": 0
+    "review": 2
    }
   },
   {
@@ -1166,8 +1219,9 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 1.69,
+   "seconds": 1.49,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 7,
@@ -1189,14 +1243,14 @@
       "0363100012140529",
       "0363100012071217"
      ],
-     "passed": true,
-     "triangles": 4116
+     "installed": true
     }
    ],
-   "seconds": 6.46,
+   "seconds": 0.73,
    "byType": {
     "transvaal-1911-five-storey-tall": 2
    },
+   "installed": 2,
    "holds": {
     "evidence": 0,
     "match": 1,
@@ -1212,8 +1266,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 9.64,
+   "seconds": 8.58,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1229,8 +1284,9 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 13.07,
+   "seconds": 10.49,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1246,8 +1302,9 @@
    "placed": 0,
    "held": 11,
    "runs": [],
-   "seconds": 1.82,
+   "seconds": 2.08,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 10,
@@ -1263,8 +1320,9 @@
    "placed": 0,
    "held": 16,
    "runs": [],
-   "seconds": 6.79,
+   "seconds": 6.95,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 10,
@@ -1280,8 +1338,9 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 0.65,
+   "seconds": 0.68,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 9,
@@ -1341,8 +1400,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.41,
+   "seconds": 0.64,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1398,8 +1458,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.43,
+   "seconds": 0.36,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1447,8 +1508,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.26,
+   "seconds": 0.27,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1500,8 +1562,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.27,
+   "seconds": 0.21,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1533,8 +1596,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.23,
+   "seconds": 0.2,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1586,8 +1650,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.2,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1635,8 +1700,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.21,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1670,6 +1736,7 @@
    "runs": [],
    "seconds": 0.23,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1701,8 +1768,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.21,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1718,8 +1786,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.15,
+   "seconds": 0.12,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1735,8 +1804,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.08,
+   "seconds": 0.07,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -1752,8 +1822,9 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.44,
+   "seconds": 0.19,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 2,
@@ -1771,6 +1842,7 @@
    "runs": [],
    "seconds": 0.07,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 1,
@@ -1802,13 +1874,14 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 3.41,
+   "seconds": 30.89,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
-    "match": 1,
+    "match": 0,
     "likeness": 5,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -1819,8 +1892,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.43,
+   "seconds": 0.51,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 1,
     "match": 1,
@@ -1840,8 +1914,9 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.66,
+   "seconds": 1.06,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
@@ -1877,13 +1952,14 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 1.28,
+   "seconds": 0.7,
    "byType": {},
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 1,
-    "run": 0,
+    "likeness": 0,
+    "run": 1,
     "review": 0
    }
   }

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { coloredBuildingLayerFilter, flatRoofFilter } from '../../src/canalRecall/buildingStyle.ts';
+import { OWN } from './worldCam';
 
 // The complete LoD1 city is 336,784 BAG-keyed buildings at AHN-measured
 // heights, streamed as z14 tiles instead of the single 5.5 MB file that
@@ -12,6 +13,7 @@ import { coloredBuildingLayerFilter, flatRoofFilter } from '../../src/canalRecal
 // resident, and whether the basemap's redundant extrusion was hidden. A picture
 // of a city with buildings in it looks identical either way.
 test('the streamed city loads, and replaces the basemap extrusion', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(180000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await page.goto('/canal-drive/');
@@ -142,14 +144,14 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
     return [centre.lng, centre.lat];
   });
   const stateHeld = await page.evaluate((id) => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     map.setFeatureState({ source: 'osm-building-appearance', id }, { highlighted: true });
     return map.getFeatureState({ source: 'osm-building-appearance', id }).highlighted;
   }, idBefore);
   expect(stateHeld, 'feature state can be set by the building id').toBe(true);
 
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     const centre = (window as any).canalRecallGame.vectorMap.camera.center();
     map.jumpTo({ center: [centre.lng + 0.02, centre.lat + 0.012] });
   });
@@ -158,7 +160,7 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
     .toBe(0);
   await page.evaluate(([lng, lat]) => {
     const vectorMap = (window as any).canalRecallGame.vectorMap;
-    vectorMap.map.jumpTo({ center: [lng, lat] });
+    (vectorMap.map ?? vectorMap.cameraMap).jumpTo({ center: [lng, lat] });
     vectorMap._completeCity.followCamera();
   }, centreBefore);
   await expect
@@ -167,6 +169,6 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   await expect.poll(() => page.evaluate((id) => {
     return (window as any).canalRecallGame.vectorMap._completeCity.sampleFeatures(100_000).some((feature: any) => feature.properties?.id === id);
   }, idBefore), { timeout: 30000 }).toBe(true);
-  const sourceIdentity = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getSource('osm-building-appearance').promoteId);
+  const sourceIdentity = await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).getSource('osm-building-appearance').promoteId);
   expect(sourceIdentity, 'tile replacement keeps feature state keyed by canonical building identity').toBe('id');
 });

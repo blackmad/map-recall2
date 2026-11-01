@@ -23,7 +23,7 @@ try{
  await page.waitForFunction(l=>canalRecallGame.routePois.some(p=>p.id===l),'lm-'+spec.landmarkId);
  await page.locator('#poi-destination').selectOption('lm-'+spec.landmarkId);
  await page.locator('#route-card').evaluate(f=>f.requestSubmit());await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera.introOverview===0,null,{timeout:180000});
- await page.evaluate(({s,bearing,zoom,pitch})=>{const g=canalRecallGame,v=g.vectorMap;v.sync=()=>{};v.map.jumpTo({center:s.surveyed.anchor,zoom,pitch,bearing});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s:spec,bearing,zoom,pitch});
+ await page.evaluate(({s,bearing,zoom,pitch})=>{const g=canalRecallGame,v=g.vectorMap;v.sync=()=>{};(v.map ?? v.cameraMap).jumpTo({center:s.surveyed.anchor,zoom,pitch,bearing});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s:spec,bearing,zoom,pitch});
  await page.waitForFunction(i=>canalRecallGame.vectorMap._signatureLandmarks.shown.has(i),id,{timeout:180000});await page.waitForTimeout(8500);
  await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size},null,{timeout:180000});
  await page.evaluate(()=>canalRecallGame.vectorMap.setActiveLandmark(null));await page.waitForTimeout(300);

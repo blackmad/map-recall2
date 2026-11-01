@@ -1,0 +1,249 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1930-stair-tower",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1930 portiek blocks of Albert Luthulistraat 6-32, the tower pand: a dark red-brown brick front of a 4.1 m ground storey and three 3.1 m upper storeys under a 0.75 m plain parapet with a light coping (top 14.25 m), white two-light casement windows with a top light in pairs (a single window at one end), and over the portiek a 5.7-6.3 m broad brick stair tower rising about 3 m over the coping to a flat top, one wide light near its top; in the tower each storey has a narrow two-light window either side of the stair axis, whose narrow stair lights climb between ochre header-brick ladders; a grey concrete canopy over the tower's ground storey. Its sibling transvaal-1930-stair-block is the 12.6-12.9 m pand between two towers",
+ "fit": {
+  "widthM": [
+   13.5,
+   17.5
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1929,
+   1931
+  ],
+  "eavesM": [
+   12.2,
+   15.3
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "frontEavesM": 14.25,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    13.8,
+    17.2
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    1.1,
+    4.5
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "crownFromType": "tower",
+  "note": "Albert Luthulistraat 6-32 (BAG 1930 on all 7 pands; 3DBAG bouwlagen 5, eaves 12.7-14.8 m, roof max 14.7-14.8 m: the setback roof storey, not the towers, which 3DBAG misses). One design of two pand kinds that BAG cuts alternately: 16.2-16.5 m tower pands (and 073273 at 14.3 m) and 12.6-12.9 m stair pands; the frontage width tells them apart (transvaal-1930-stair-tower 13.8-17.2 m, transvaal-1930-stair-block 12.0-13.6 m). The strip evidence gate holds the tower pands (sky over the roof in 57-68 % of columns: the tower stands in the band over the roof), so the luthuli faces are placed by hand from this library (authoring note in the run intent)."
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   8,
+   7,
+   7,
+   7
+  ],
+  "axisGrid": 8,
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   4.1,
+   3.1,
+   3.1,
+   3.2
+  ],
+  "windowHeights": [
+   0.39,
+   0.48,
+   0.5,
+   0.5
+  ],
+  "headLines": [
+   0.9,
+   0.81,
+   0.82,
+   0.81
+  ],
+  "bayWidths": [
+   3.1,
+   2.1,
+   1.4,
+   2.4,
+   1.5,
+   2.4,
+   1.6,
+   1.7
+  ],
+  "bayFill": [
+   0.39,
+   0.62,
+   0.93,
+   0.42,
+   0.53,
+   0.42,
+   0.81,
+   0.76
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "2": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "3": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "axisWindows": {
+   "3": "two-light",
+   "4": "casement-pair",
+   "5": "two-light"
+  }
+ },
+ "crowns": {
+  "tower": {
+   "gable": "flat",
+   "parapet": {
+    "courses": 14,
+    "coping": true
+   },
+   "tower": {
+    "bays": {
+     "from": 3,
+     "to": 5
+    },
+    "rise": 1.0,
+    "cap": "flat"
+   },
+   "note": "Albert Luthulistraat 30-32 (124743) and 18-20 (092667): wall top with a light coping 14.0-14.3 m; the tower 6.45-12.25 m (124743) / 6.9-12.6 m (092667) from the pand's left runs past the strip top (16.77 m), its top light 15.1-16.1 m (1.55 m wide, centred); lane #153 read the tower about 3 m over the coping (rise 1.0 upper storeys)"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 4,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.5,
+    "thickness": 0.2,
+    "overhang": 0.4,
+    "gap": 0.3,
+    "doorOverhang": 0.4,
+    "colour": "#71797f",
+    "groundTransomOnly": true
+   },
+   "note": "the portiek door (red, 1.05 m, head 3.4 m) on the stair axis under a grey concrete canopy at 3.85-4.1 m that spans the tower's 5.8 m (drawn over the door only); a ground window either side in the tower, mailboxes"
+  }
+ },
+ "palettes": {
+  "dark-red-brown": {
+   "brick": "#6f5b53",
+   "frame": "#e8e6de",
+   "door": "#7a2a2c",
+   "stone": "#71797f",
+   "band": "#827959",
+   "cornice": "#8a726b"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Albert Luthulistraat 22-32 strip 2020-04-29: a level coping with a white roof-terrace railing of the setback roof storey behind it (14.4-15.3 m); no roof face over the front; 3DBAG roof max 14.7-14.8 m"
+ },
+ "rhythm": {
+  "bays": "a single window at one end, a window pair, the stair tower (narrow two-light window, stair lights, narrow two-light window), a window pair",
+  "identicalBays": "no: the tower is broad, the single window and the pairs",
+  "windowsPerStorey": "ground: windows + the portiek door under the tower canopy | 1-3: single + pair + tower (flank, stair, flank) + pair",
+  "symmetry": "near symmetric about the tower but for the end single window",
+  "groundFloor": "the portiek door on the tower axis under a grey canopy, garden windows",
+  "signage": "none",
+  "roofline": "flat; a plain parapet with a light coping, the tower about 3 m over it",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "luthuli-22-32",
+   "pands": [
+    "0363100012124743"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, gridded 1 m (staging/block-face/transvaalbuurt/5b/luthuli-22-32-0-17-grid.png): pair 3.15-4.45 and 4.85-6.15 m, tower 6.45-12.25 m, pair 12.65-13.95 and 14.3-15.6 m; window rows 2.1-3.7 (ground), 5.1-6.6, 8.2-9.75, 11.3-12.9 m; tower flank two-light windows 6.8-7.8 and 10.9-11.9 m (heads 0.3-0.7 m over the main line), stair lights 8.9-9.8 m, door 8.85-9.9 m (head 3.4 m) under a grey canopy 3.85-4.1 m over the tower; coping 14.0-14.3 m; tower top light 8.55-10.1 m at 15.1-16.1 m"
+  },
+  {
+   "face": "luthuli-6-20",
+   "pands": [
+    "0363100012092667",
+    "0363100012073273"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, gridded (staging/block-face/transvaalbuurt/5b/luthuli-6-20-grid.png): 092667 single 1.0-2.1 m, pair 3.5-4.8 and 5.2-6.6 m, tower 6.9-12.6 m, pair 13.05-14.4 and 14.7-16.0 m; 073273 (14.3 m) the same with the tower 4.9-10.4 m from its left"
+  },
+  {
+   "face": "luthuli-22-32",
+   "pands": [
+    "0363100012124743",
+    "0363100012088339"
+   ],
+   "citation": "raw strip wall #6f5b53-#756055 on tree-free piers (0.3-2.8 m and 16.3-20.5 m at 7-8 m), #655249-#68554d on luthuli-6-20 (30-34 and 44-48 m); ochre header-brick stair ladder #827959; grey canopy #71797f; coping #8a726b"
+  }
+ ],
+ "schemaLimits": [
+  "the stair lights climb half a storey off the main window line between ochre header-brick ladders; drawn as narrow paired lights on the main head line, no ladders",
+  "the tower's flank windows sit 0.3-0.7 m higher than the main windows; drawn on the main line",
+  "the grey canopy spans the tower's whole 5.8 m ground storey; groundCanopy draws it over the door only (overhang <= 0.4 m)",
+  "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn",
+  "the yellow brick piers between the windows of a pair are not drawn",
+  "the single end window stands at the end BAG gives it; on 30-32 that end is blank wall (the pair moves 3 m in)"
+ ],
+ "notes": [
+  "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

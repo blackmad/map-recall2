@@ -32,6 +32,7 @@ import { chooseTileDraws } from './tiledGeometry.js';
 import { updateDrawnWorld, type WorldNode } from './drawnWorld.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
+import { disposeShadowPrimer, shadowPrimer } from './shadowPrimer.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -67,10 +68,21 @@ function frameViewCheckOf(): FrameViewCheck | null {
  * overrides it.
  */
 export const DESKTOP_TILE_WHOLE_SHARE = 0.6;
-function tileWholeShareFlag(): number {
+/**
+ * An explicit `tileWhole` share, or null when none was asked. A page with any query string but no `tileWhole` reads
+ * `get('tileWhole')` as null, and `Number(null)` is 0: that forced every tiled mesh whole on every page with a query
+ * (`?engine=own` included), so an iPad drew whole facade chunks: 668k facade triangles per frame on the Jordaan ride
+ * against 255k through the tiles (P4 counters gate, 2026-11-01).
+ */
+export function askedTileWhole(raw: number | string | null | undefined): number | null {
+  if (raw === null || raw === undefined || (typeof raw === 'string' && raw.trim() === '')) return null;
+  const asked = Number(raw);
+  return Number.isFinite(asked) && asked >= 0 && asked <= 2 ? asked : null;
+}
+export function tileWholeShareFlag(): number {
   const g = globalThis as { __canalRecallTileWhole?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
-  const asked = Number(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : NaN));
-  if (Number.isFinite(asked) && asked >= 0 && asked <= 2) return asked;
+  const asked = askedTileWhole(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : null));
+  if (asked !== null) return asked;
   return g.matchMedia?.('(pointer: coarse)')?.matches ? 2 : DESKTOP_TILE_WHOLE_SHARE;
 }
 
@@ -167,6 +179,8 @@ export class SharedFrame {
   private shadowAge = 0;
   /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
   shadowRedraws = 0;
+  /** The depth programs were linked in a shadow redraw (shadowPrimer.ts); `?shadowPrimer=0` skips it. */
+  private shadowPrimed = shadowPrimerOff();
   /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
   shadowDepthRange: [number, number] | null = null;
   /**
@@ -668,9 +682,15 @@ export class SharedFrame {
       renderer.shadowMap.needsUpdate = redraw;
       const r0 = phases ? performance.now() : 0;
       if (phases) phases.add('shadow fit', r0 - s0);
+      // The first redraw also links every depth-program variant (shadowPrimer.ts): zero-area casters, no pixels.
+      const primer = redraw && !this.shadowPrimed ? shadowPrimer(this.THREE) : null;
+      if (primer) this.scene.add(primer);
+      // After the primer joins the scene: its casters need world matrices too (the scene does not auto-update).
       this.updateWorld(phases);
       const r1 = phases ? performance.now() : 0;
-      const ok = renderLosingContext(renderer, this.scene, this.camera, gl);
+      let ok: boolean;
+      try { ok = renderLosingContext(renderer, this.scene, this.camera, gl); }
+      finally { if (primer) { disposeShadowPrimer(primer); this.shadowPrimed = true; } }
       if (phases) phases.add('three render main', performance.now() - r1);
       if (!ok) return;
     } else {
@@ -703,6 +723,13 @@ export class SharedFrame {
  * dropped quietly; `webglcontextlost` follows and contextLost() takes over.
  * Any error from a live context still throws. Returns whether it drew.
  */
+/** `?shadowPrimer=0` (or `window.__canalRecallShadowPrimer = false`): no depth-program primer (A/B control). */
+function shadowPrimerOff(): boolean {
+  const g = globalThis as { __canalRecallShadowPrimer?: unknown; location?: { search?: string } };
+  if (g.__canalRecallShadowPrimer === false) return true;
+  try { return new URLSearchParams(g.location?.search ?? '').get('shadowPrimer') === '0'; } catch { return false; }
+}
+
 export function renderLosingContext(renderer: { render(scene: any, camera: any): void }, scene: any, camera: any, gl: WebGL2RenderingContext): boolean {
   try {
     renderer.render(scene, camera);

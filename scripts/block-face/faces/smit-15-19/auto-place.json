@@ -3,7 +3,7 @@
  "street": "Smitstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 14.33,
+ "seconds": 12.49,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -98,7 +98,8 @@
     "transvaal-1911-five-storey-tall~m": 0.062,
     "transvaal-1911-five-storey": 0.058,
     "transvaal-1911-five-storey~m": 0.037,
-    "transvaal-1923-portiek-tower": 0.045
+    "transvaal-1923-portiek-tower": 0.045,
+    "transvaal-1929-block": 0.024
    }
   },
   {
@@ -187,7 +188,8 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.033,
-    "transvaal-1911-five-storey-tall~m": 0.032
+    "transvaal-1911-five-storey-tall~m": 0.032,
+    "transvaal-1929-block": -0.061
    }
   },
   {

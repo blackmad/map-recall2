@@ -39,14 +39,14 @@ test('shop houses close up in game', async ({ page }, info) => {
     await parkAt(page, at, ahead(at, bearing, 40));
     await page.waitForFunction(({ id }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && l.shown.has(id);
     }, { id: h.id }, { timeout: 120_000, polling: 1000 });
     await parkAt(page, ahead(at, outward, 120), ahead(at, outward, 160));
     for (const [name, back, height] of [['near', info.project.name === 'iphone' ? 22 : 12, 3], ['street', 22, 6]] as const) {
       const eye = ahead(h.anchor, outward, back), target = ahead(h.anchor, outward, -1);
       await page.evaluate(({ eye, target, height }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
         map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, height, { lng: target[0], lat: target[1] }, height));
       }, { eye, target, height });

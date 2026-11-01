@@ -56,7 +56,7 @@ try{
  await page.waitForTimeout(750);
  if(!bundlePhase)await page.waitForFunction(()=>Boolean(window.canalRecallGame.vectorMap._threeBuildings?.appearanceRevision),null,{timeout:60000});
  await page.evaluate(emptyProfiles=>{const v=window.canalRecallGame.vectorMap;v.sync=()=>{};if(emptyProfiles)v._threeBuildings?.setStreetAppearance?.({schemaVersion:1,revision:'review-empty-profiles',profiles:[]});},emptyProfiles);
- if(targetSet==='front')await page.evaluate(()=>window.canalRecallGame.vectorMap.map.setMaxPitch(85));
+ if(targetSet==='front')await page.evaluate(()=>(window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap).setMaxPitch(85));
  for(const target of targets){
   for(const look of looks){
    for(const view of views){
@@ -64,22 +64,22 @@ try{
     const camera={center:target.center,bearing:target.bearing,pitch:view==='street'?(front?80:75):(front?65:58),zoom:view==='street'?(front?20.5:19.8):(front?19:18.3)};
     await page.evaluate(async({camera,look})=>{
      const v=window.canalRecallGame.vectorMap; v.setBuildingLook(look);
-     await v.setBuildingsLook(look); v.map.jumpTo(camera);
-     v._threeBuildings?.setDetailCentre(...camera.center);v._completeCity?.followCamera();v.map.triggerRepaint();
+     await v.setBuildingsLook(look); (v.map ?? v.cameraMap).jumpTo(camera);
+     v._threeBuildings?.setDetailCentre(...camera.center);v._completeCity?.followCamera();(v.map ?? v.cameraMap).triggerRepaint();
     },{camera,look});
     await page.waitForFunction(()=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings,city=v._completeCity?.status?.();return t?.ready&&t.chunks?.size>0&&!t.pending?.length&&!t.inflight?.size&&!t.pumping&&!city?.inFlight&&!city?.queued;},null,{timeout:120000});
     await page.waitForTimeout(1500);
     const diagnostics=await page.evaluate(async()=>{
      const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;
      const renderTimes=[],originalRender=t.renderer.render.bind(t.renderer);t.renderer.render=(...args)=>{const start=performance.now();const result=originalRender(...args);renderTimes.push(performance.now()-start);return result;};
-     const times=[];let last=performance.now();await new Promise(resolve=>{const frame=now=>{times.push(now-last);last=now;if(times.length<121){v.map.triggerRepaint();requestAnimationFrame(frame);}else resolve();};requestAnimationFrame(frame);});
+     const times=[];let last=performance.now();await new Promise(resolve=>{const frame=now=>{times.push(now-last);last=now;if(times.length<121){(v.map ?? v.cameraMap).triggerRepaint();requestAnimationFrame(frame);}else resolve();};requestAnimationFrame(frame);});
      t.renderer.render=originalRender;
      const gpuTimes=[],gl=t.renderer.getContext();
      for(let i=0;i<45;i++){gl.finish();const start=performance.now();t.renderer.resetState();t.renderer.render(t.scene,t.camera);gl.finish();if(i>=5)gpuTimes.push(performance.now()-start);}
-     gpuTimes.sort((a,b)=>a-b);v.map.triggerRepaint();
+     gpuTimes.sort((a,b)=>a-b);(v.map ?? v.cameraMap).triggerRepaint();
      const renderOrdered=renderTimes.slice(1).sort((a,b)=>a-b);
      const ordered=times.slice(1).sort((a,b)=>a-b);
-     return {appearanceRevision:t.appearanceRevision??t.streetAppearanceRevision??null,appearanceProfileCount:t.appearanceProfiles?.length??t.streetAppearance?.profiles?.length??null,renderCompletedMedianMs:gpuTimes[Math.floor(gpuTimes.length*.5)],renderCompletedP95Ms:gpuTimes[Math.floor(gpuTimes.length*.95)],stats:t.stats(),renderCpuMedianMs:renderOrdered[Math.floor(renderOrdered.length*.5)]??null,renderCpuP95Ms:renderOrdered[Math.floor(renderOrdered.length*.95)]??null,look:t.look,requestedLook:t.requestedLook,chunks:t.chunks.size,pending:t.pending.length,inflight:t.inflight.size,lastBuildMs:t.lastBuildMs,triangles:[...t.chunks.values()].reduce((s,c)=>s+(c.mesh.geometry.index?.count??c.mesh.geometry.attributes.position?.count??0)/3,0),featureCount:v._tileFeatures.length,frameMedianMs:ordered[Math.floor(ordered.length*.5)],frameP95Ms:ordered[Math.floor(ordered.length*.95)],city:v._completeCity?.status?.(),camera:{center:v.map.getCenter().toArray(),bearing:v.map.getBearing(),pitch:v.map.getPitch(),zoom:v.map.getZoom()}};
+     return {appearanceRevision:t.appearanceRevision??t.streetAppearanceRevision??null,appearanceProfileCount:t.appearanceProfiles?.length??t.streetAppearance?.profiles?.length??null,renderCompletedMedianMs:gpuTimes[Math.floor(gpuTimes.length*.5)],renderCompletedP95Ms:gpuTimes[Math.floor(gpuTimes.length*.95)],stats:t.stats(),renderCpuMedianMs:renderOrdered[Math.floor(renderOrdered.length*.5)]??null,renderCpuP95Ms:renderOrdered[Math.floor(renderOrdered.length*.95)]??null,look:t.look,requestedLook:t.requestedLook,chunks:t.chunks.size,pending:t.pending.length,inflight:t.inflight.size,lastBuildMs:t.lastBuildMs,triangles:[...t.chunks.values()].reduce((s,c)=>s+(c.mesh.geometry.index?.count??c.mesh.geometry.attributes.position?.count??0)/3,0),featureCount:v._tileFeatures.length,frameMedianMs:ordered[Math.floor(ordered.length*.5)],frameP95Ms:ordered[Math.floor(ordered.length*.95)],city:v._completeCity?.status?.(),camera:{center:v.camera.center().toArray(),bearing:v.camera.bearing(),pitch:v.camera.pitch(),zoom:v.camera.zoom()}};
     });
     if(target.id.startsWith('de-wallen')&&look==='photo'&&view==='gameplay'){
      const auditInput=await page.evaluate(()=>{const t=window.canalRecallGame.vectorMap._threeBuildings;for(const [key,source]of t.sourceGroups){if(!key.startsWith('extras:')&&!key.startsWith('coarse:')&&source.some(f=>f.properties.id==='NL.IMBAG.Pand.0363100012178210')){const entry=t.chunks.get(key);return {key,source,streets:Array.from(entry?.mesh?.userData?.installedStreets??[]),profiles:t.appearanceProfiles,revision:t.appearanceRevision};}}return null;});
@@ -96,7 +96,7 @@ try{
   }
  }
  // Last-request-wins while tiles/geometry are queued, then return to the first target.
- await page.evaluate(async camera=>{const v=window.canalRecallGame.vectorMap;v.map.jumpTo(camera);v._completeCity?.followCamera();v.setBuildingLook('cartoon');v.setBuildingLook('storybook');v.setBuildingLook('photo');await v.setBuildingsLook('photo');return {look:v._threeBuildings.look,requested:v._threeBuildings.requestedLook};},{center:targets[0].center,zoom:19.8,pitch:75,bearing:targets[0].bearing});
+ await page.evaluate(async camera=>{const v=window.canalRecallGame.vectorMap;(v.map ?? v.cameraMap).jumpTo(camera);v._completeCity?.followCamera();v.setBuildingLook('cartoon');v.setBuildingLook('storybook');v.setBuildingLook('photo');await v.setBuildingsLook('photo');return {look:v._threeBuildings.look,requested:v._threeBuildings.requestedLook};},{center:targets[0].center,zoom:19.8,pitch:75,bearing:targets[0].bearing});
  await page.waitForFunction(()=>{const t=window.canalRecallGame.vectorMap._threeBuildings;return t?.look==='photo'&&!t.pending.length&&!t.inflight.size&&!t.pumping;},null,{timeout:120000});
  const race=await page.evaluate(()=>{const t=window.canalRecallGame.vectorMap._threeBuildings;return {look:t.look,requested:t.requestedLook,appearanceRevision:t.appearanceRevision??null,mismatches:[...t.chunks.entries()].filter(([,c])=>c.mesh.userData.appearanceRevision!==undefined&&(c.mesh.userData.installedLook!==t.look||c.mesh.userData.appearanceRevision!==t.appearanceRevision)).map(([key,c])=>({key,...c.mesh.userData}))};});
  if(race.look!=='photo'||race.requested!=='photo'||race.mismatches.length)throw Error('Last-request-wins failed');

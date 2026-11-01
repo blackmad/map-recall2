@@ -100,9 +100,9 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
     ? { id: `tapped-${spot.pand}`, name: 'Terrace house', lngLat: spot.pick, buildingIds: [spot.pand], featureTarget: { source: 'osm-building-appearance', id: spot.pand } }
     : await page.evaluate(id => window.canalRecallGame.landmarks.find(l => l.id === id), spot.landmarkId);
   const state = await page.evaluate(l => {
-    const vm = window.canalRecallGame.vectorMap, map = vm.map;
+    const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     vm.setActiveLandmark(l);
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if (vm.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else vm.setLabelsVisible(false);
     const canvas = map.getCanvas();
     for (const e of document.body.querySelectorAll('*')) if (e !== canvas && !e.contains(canvas)) e.style.visibility = 'hidden';
     return { marker: vm._highlightMarker?.status?.() ?? null };
@@ -114,7 +114,7 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
   if (status.boost) state.boost = status.boost;
   const canvas = page.locator('canvas.maplibregl-canvas').first();
   const onPng = await canvas.screenshot();
-  const before = await page.evaluate(() => { const v = window.__canalRecallHighlightOutlinePx; window.__canalRecallHighlightOutlinePx = 0; window.canalRecallGame.vectorMap.map.triggerRepaint(); return v; });
+  const before = await page.evaluate(() => { const v = window.__canalRecallHighlightOutlinePx; window.__canalRecallHighlightOutlinePx = 0; (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap).triggerRepaint(); return v; });
   await page.waitForTimeout(1200);
   const offPng = await canvas.screenshot();
   await page.evaluate(v => { window.__canalRecallHighlightOutlinePx = v; window.canalRecallGame.vectorMap.setActiveLandmark(null); for (const e of document.body.querySelectorAll('*')) e.style.visibility = ''; }, before);

@@ -75,5 +75,73 @@
   "_desktopPerfViewport": {
     "value": "1512x982 CSS px at DPR 2",
     "note": "the user's 14-inch MacBook Pro (3024x1964). Perf runs before 2026-11-01 used 1800x1100 at DPR 2 (7.9 Mpx, 33 % more than the screen); motion-stutter.mjs defaults to this size now and lanes pass VIEWPORT/DPR only to test another device."
+  },
+  "p4Counters": {
+    "note": "P4 counters gate (accepted by the integrator 2026-11-01 from the materials lane's draft): `target` is the gate, `measured` the baseline of that run; a lane that moves a measured value re-records it here with its SHA. Red at acceptance: shaderCompilesAfterWarmup (landmark precompiles off the frame, acceptable until the deck precompile moves to the loading screen), uploadsOver1MBAfterWarmup (facade chunk geometry and own-ground cells must be split or uploaded in pieces), drawsAt60Pitch p95 and iPad triangles (facade LOD, merged roof caps and bike parts).",
+    "source": "materials lane 2026-11-01, #129: GL_COUNTERS=1 HEADED=1 DPR=2 node scripts/motion-stutter.mjs --qs '?engine=own' --start lm-extract_landmarks_433737872 --dest lm-extract_landmarks_1632187034 --via lm-extract_landmarks_1632187034 --warmup 10 --measure 40 (desktop 1512x982@2, --device ipad 1180x734@2 touch), M4 Pro headed Metal, tier high",
+    "date": "2026-11-01",
+    "entries": {
+      "inFrameShaderLinksAfterWarmup": {
+        "target": 0,
+        "measured": {
+          "desktop": 0,
+          "ipad": 0
+        },
+        "unit": "program links inside a frame after warm-up (engine/glCounters.ts programs not from SharedFrame.compileAsync)",
+        "before": {
+          "desktop": 0,
+          "ipad": 2
+        },
+        "owners": "fixed: own-ground hedge double-sided shadow depth program (shadowPrimer.ts), pyramidal-roofs cap program (one held anchor)"
+      },
+      "shaderCompilesAfterWarmup": {
+        "target": 0,
+        "measured": {
+          "desktop": 4,
+          "ipad": 8
+        },
+        "unit": "compileShader calls after warm-up, all of them landmark/stand-in precompiles through SharedFrame.compileAsync (KHR_parallel_shader_compile, off the frame)"
+      },
+      "uploadsOver1MBAfterWarmup": {
+        "target": 0,
+        "measured": {
+          "desktop": 49,
+          "ipad": 32
+        },
+        "unit": "texImage/bufferData calls of at least 1 MiB after warm-up",
+        "measuredMB": {
+          "desktop": 93.7,
+          "ipad": 61.3
+        },
+        "owners": "facade chunk geometry (desktop 37 / 72 MB, iPad 24 / 43 MB), own-ground cell layers and land textures (desktop 12 / 22 MB, iPad 6 / 9 MB), one landmark (iPad europarking-marnixstraat 3 / 10 MB)"
+      },
+      "drawsAt60Pitch": {
+        "target": 400,
+        "measured": {
+          "desktop": {
+            "p50": 294,
+            "p95": 399,
+            "max": 508
+          },
+          "ipad": {
+            "p50": 386,
+            "p95": 749
+          }
+        },
+        "unit": "GL draw calls per frame at 60 deg chase pitch, every pass",
+        "owners": "mean per frame, iPad: own-ground 124, landmarks 59 (+18 shadow), overview 40, player bike 36, pyramidal roofs 26 (+3 shadow) for ~150 triangles, facades 15; desktop: own-ground 87, landmarks 75, overview 40, bike 36, roofs 22",
+        "note": "iPad re-recorded 2026-11-01 with 811ff753c (per-tile facade draws on touch are the designed trade: 326 / 589 before the fix drew whole chunks)"
+      },
+      "trianglesIpad": {
+        "target": 700000,
+        "measured": {
+          "p50": 1210000,
+          "p95": 1980000
+        },
+        "unit": "triangles per frame, iPad profile, every pass",
+        "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k",
+        "note": "re-recorded 2026-11-01 with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
+      }
+    }
   }
 }

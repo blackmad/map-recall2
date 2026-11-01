@@ -15,6 +15,7 @@ import type {RoofLevelIntent} from './roofLevel.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
+import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
@@ -561,6 +562,8 @@ export interface FrontIntent {
    */
   /** A staircase light through the storeys on one axis of the shared grid (stairLight.ts). Absent = byte-identical. */
   stairLight?: StairLightIntent;
+  /** A recessed loggia in place of the windows of some axes on upper storeys (frontLoggia.ts; Transvaalbuurt 1922 rows). Absent = byte-identical. */
+  loggia?: FrontLoggiaIntent;
   /**
    * A rendered gable (Zaanhof 1919, Walenkamp): the crown face in the render `colour` (#rrggbb, a measured tint; the
    * storeys under it keep their brick or take `paintedStoreys`) and a painted board `bargeboard` metres deep inside each
@@ -1577,6 +1580,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.gable === 'flat' || f.gable === 'cornice') problems.push(`${at}.renderedGable: only on a gabled crown (gable ${f.gable})`);
     }
     if (f.stairLight !== undefined) problems.push(...stairLightProblems(f.stairLight, f.storeys, frontGrid(f), !!f.repeat, at));
+    if (f.loggia !== undefined) problems.push(...frontLoggiaProblems(f.loggia, f.storeys, frontGrid(f), at));
     if (f.brickStripes !== undefined) problems.push(...brickStripeProblems(f.brickStripes, f.palette?.band ?? intent?.palette?.band, !!f.repeat, at));
     problems.push(...windowProblems(f, at, oneOf));
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));

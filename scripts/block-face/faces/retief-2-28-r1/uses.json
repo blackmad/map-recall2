@@ -1,0 +1,88 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236810",
+   "addresses": [
+    "Retiefstraat 16A",
+    "Retiefstraat 16B",
+    "Retiefstraat 16C",
+    "Retiefstraat 16D",
+    "Retiefstraat 16E",
+    "Retiefstraat 18A",
+    "Retiefstraat 18C",
+    "Retiefstraat 18D",
+    "Retiefstraat 18E",
+    "Retiefstraat 18B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000791580"
+    },
+    {
+     "address": "Retiefstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791581"
+    },
+    {
+     "address": "Retiefstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791582"
+    },
+    {
+     "address": "Retiefstraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791583"
+    },
+    {
+     "address": "Retiefstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791588"
+    },
+    {
+     "address": "Retiefstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791590"
+    },
+    {
+     "address": "Retiefstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000791591"
+    },
+    {
+     "address": "Retiefstraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130746"
+    },
+    {
+     "address": "Retiefstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012130747"
+    },
+    {
+     "address": "Retiefstraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791589"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

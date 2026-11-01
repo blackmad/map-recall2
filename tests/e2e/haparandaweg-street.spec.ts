@@ -37,7 +37,7 @@ test('haparandaweg in-game shots', async ({ page }, testInfo) => {
     await page.waitForFunction(() => { const b = (window as any).canalRecallGame.vectorMap._threeBuildings; return !b || (b.ready && !b.pending.length && !b.inflight.size); }, null, { timeout: 15_000 }).catch(() => {});
     // Free camera: stop the game steering the map, then look at the target from the parked side.
     await page.evaluate(({ at, face, street }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.sync = () => {}; map.stop();
       const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
       const dist = Math.hypot((face[0] - at[0]) * 111320 * Math.cos(face[1] * Math.PI / 180), (face[1] - at[1]) * 111320);

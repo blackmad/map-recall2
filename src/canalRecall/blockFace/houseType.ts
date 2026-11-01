@@ -170,7 +170,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   // An alternating row (`repeat.mirrorAlternate`) is mirrored as a whole by laying its modules in the other order
   // (fit.ts `repeat.mirrored`): the module stays as authored, only the side-specific front-wide fields cannot follow.
   if (f.repeat?.mirrorAlternate) {
-    const sided = (['lisenes', 'brickStripes', 'shopfront', 'groundFront', 'gridAt', 'crownAt', 'crownBays', 'crownGroups', 'tower', 'dormerAt', 'bayWindows', 'stairLight'] as const).filter(k => f[k] !== undefined);
+    const sided = (['lisenes', 'brickStripes', 'shopfront', 'groundFront', 'gridAt', 'crownAt', 'crownBays', 'crownGroups', 'tower', 'dormerAt', 'bayWindows', 'stairLight', 'loggia'] as const).filter(k => f[k] !== undefined);
     if (sided.length) throw Error(`${f.id}: repeat.mirrorAlternate with ${sided.join(', ')} inside a mirrored type`);
     const {mirrored, ...repeat} = f.repeat;
     return {...f, repeat: mirrored ? repeat : {...repeat, mirrored: true}};
@@ -204,6 +204,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   }
   if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
   if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
+  if (f.loggia) out.loggia = {...f.loggia, axes: f.loggia.axes.map(flipAxis).sort((p, q) => p - q)};
   if (f.paintedStoreys?.panels) out.paintedStoreys = {...f.paintedStoreys, panels: f.paintedStoreys.panels.map(q => ({...q, axis: flipAxis(q.axis)}))};
   if (f.friezeVents?.axes) out.friezeVents = {...f.friezeVents, axes: f.friezeVents.axes.map(flipAxis).sort((p, q) => p - q)};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();

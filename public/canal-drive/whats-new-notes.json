@@ -3,6 +3,69 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Amsterdam's buildings now load from compiled city cells",
+      "text": "The ride used to download the city's buildings as map tiles and work out their roofs, colours and neighbours on your device while you rode. The whole city is now compiled in advance into 9.7 MB of cells; a ride fetches only the cells around it, and the game's workers unpack them off the main thread. The buildings themselves do not change: at the five check spots the picture is pixel-identical to the old path. Expect fewer hitches as new streets stream in. If anything looks wrong, add ?world=live to the address to ride the old path and tell us."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "The bike leans into its turns, and only as much as the turn",
+      "text": "Since the lean arrived on 30 October a tap on a steering key rolled the bike to its full 19° at once, and onto the outside of the turn, so from the chase camera it looked like it had fallen over while riding straight. The lean now follows the turn the bike is actually making (speed times yaw rate, as a real bicycle does), stays at zero while the bike rides straight however the key is held, and rolls into the turn.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-before.jpg",
+          "alt": "Before: the bike rolled almost flat onto its left side during a held right turn, seen from the chase camera",
+          "caption": "Before: a held right turn rolled the bike flat, to the outside."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-after.jpg",
+          "alt": "After: the bike upright and leaning slightly into the same held right turn",
+          "caption": "After: the same turn, upright with a slight lean into it."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Transvaalbuurt: the 1930 stair towers, Afrikanerplein and Schalk Burgerstraat",
+      "text": "Three more Transvaalbuurt designs are drawn from measured types: the 1930 blocks on Albert Luthulistraat 6–32 with their stair towers rising over the coping and canopied red doors, the plain 1931 five-storey grid of Afrikanerplein 33–49 with its striped ground band, and the 1931 diaper-brick rows of Schalk Burgerstraat 59–71 and 99–111 with teal doors and paired windows. 22 more pands, 79 in the buurt. The 1922 loggia rows have their type and a new loggia kit part but stay held: their porches step 0.65 m out of the surveyed wall, more than the kit allows. Alongside, five block-face pipeline faults from the last round are fixed, and one is visible: Hasebroekstraat 28 in Bellamybuurt was drawn with a bar front because a public bookcase on the pavement matched a pub; it is a house again.",
+      "where": [
+        4.91985,
+        52.353
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-luthuli-6-20-strip.jpg",
+          "alt": "Albert Luthulistraat 6-20 panorama strip over the model: 1930 block with two stair towers",
+          "caption": "Albert Luthulistraat 6–20, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-5b-luthulistraat-6-20.jpg",
+          "alt": "Albert Luthulistraat 6-20 from the street in the game",
+          "caption": "The same block from the street."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-afrikanerplein-strip.jpg",
+          "alt": "Afrikanerplein 25-55 strip over the model: plain five-storey grid with a striped ground band",
+          "caption": "Afrikanerplein 33–49, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-burger-45-131-strip.jpg",
+          "alt": "Schalk Burgerstraat 45-131 strip over the model: diaper-brick rows with teal doors",
+          "caption": "Schalk Burgerstraat 59–71 and 99–111, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-hasebroek-28-before.jpg",
+          "alt": "Hasebroekstraat 2-46 review sheet before: house 28 drawn with a bar shopfront",
+          "caption": "Hasebroekstraat 28 before: a bar front from a public bookcase."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-hasebroek-28-after.jpg",
+          "alt": "Hasebroekstraat 2-46 review sheet after: house 28 drawn with a door and windows",
+          "caption": "After: a house front."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "One phrase for the modelled buildings",
       "text": "The landing page, the neighbourhood pages and the model credits now all say \"individually modelled\" where some still said \"modelled by hand\" or \"hand-built\". The stat strip reads \"510+ individually modelled buildings\", the open-data figure says landmarks are individually modelled from photographs, and kit-built landmarks on the neighbourhood pages carry a \"Kit-built landmark\" badge."
     },

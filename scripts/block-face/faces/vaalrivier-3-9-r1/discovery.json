@@ -1,0 +1,718 @@
+{
+ "street": "Vaalrivierstraat",
+ "seed": "0363100012135231",
+ "members": [
+  "0363100012132149",
+  "0363100012145010"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of vaalrivier-3-9: 150126 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012135489 16.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062612",
+   "reason": "frontage 48.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012064549",
+   "reason": "frontage 87.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012068510",
+   "reason": "frontage 74.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012068825",
+   "reason": "frontage 101.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012070168",
+   "reason": "frontage 41.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012071769",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012073654",
+   "reason": "frontage 32.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012073977",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012101363"
+  },
+  {
+   "pandId": "0363100012074114",
+   "reason": "frontage 56.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "frontage 61.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012075751",
+   "reason": "frontage 90.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012079290",
+   "reason": "frontage 61.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012079506",
+   "reason": "frontage 33.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012081369",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012088655"
+  },
+  {
+   "pandId": "0363100012083847",
+   "reason": "frontage 32.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012083941",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012132444"
+  },
+  {
+   "pandId": "0363100012084269",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012109842"
+  },
+  {
+   "pandId": "0363100012084510",
+   "reason": "frontage 54.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012085617",
+   "reason": "frontage 88.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012086955",
+   "reason": "frontage 94.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "frontage 131.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012088081",
+   "reason": "frontage 32.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012088316",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012134600"
+  },
+  {
+   "pandId": "0363100012088339",
+   "reason": "frontage 89.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "frontage 47.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012088873",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012131601"
+  },
+  {
+   "pandId": "0363100012089391",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012088316"
+  },
+  {
+   "pandId": "0363100012089836",
+   "reason": "frontage 34.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012092661",
+   "reason": "frontage 36.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "frontage 117.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012093680",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012081369"
+  },
+  {
+   "pandId": "0363100012094272",
+   "reason": "frontage 67.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012095081",
+   "reason": "frontage 72.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012095089",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012067111"
+  },
+  {
+   "pandId": "0363100012096065",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012096148",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012097742",
+   "reason": "frontage 100.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012098320",
+   "reason": "frontage 56.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012101363",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012135489"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "frontage 69.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012105200",
+   "reason": "frontage 99.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012105582",
+   "reason": "frontage 39.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012107235",
+   "reason": "frontage 58.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012107303",
+   "reason": "frontage 90.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012108224",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012076608"
+  },
+  {
+   "pandId": "0363100012108752",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012073977"
+  },
+  {
+   "pandId": "0363100012108831",
+   "reason": "frontage 57.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "frontage 49.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "frontage 81.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "frontage 55.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012114784",
+   "reason": "frontage 40.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012115223",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012067111"
+  },
+  {
+   "pandId": "0363100012116889",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012101363"
+  },
+  {
+   "pandId": "0363100012118763",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012109842"
+  },
+  {
+   "pandId": "0363100012119150",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012119983",
+   "reason": "frontage 31.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012122087",
+   "reason": "frontage 64.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012122445",
+   "reason": "frontage 43.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012123328",
+   "reason": "frontage 38.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012123446",
+   "reason": "frontage 73.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012124743",
+   "reason": "frontage 72.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012125852",
+   "reason": "frontage 47.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012126814",
+   "reason": "frontage 76.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012127658",
+   "reason": "frontage 57.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012128866",
+   "reason": "frontage 63.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012129188",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012067111"
+  },
+  {
+   "pandId": "0363100012129254",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012130038",
+   "reason": "frontage 34.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012131601",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012132444",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012133198"
+  },
+  {
+   "pandId": "0363100012132830",
+   "reason": "frontage 34.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012133223",
+   "reason": "frontage 102.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012134600",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012151300"
+  },
+  {
+   "pandId": "0363100012134742",
+   "reason": "frontage 92.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012135114",
+   "reason": "frontage 34.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012135325",
+   "reason": "frontage 81.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012138546",
+   "reason": "frontage 107.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012139681",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012088316"
+  },
+  {
+   "pandId": "0363100012140132",
+   "reason": "frontage 56.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012140934",
+   "reason": "frontage 56.8 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012142206",
+   "reason": "frontage 86.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012143471",
+   "reason": "frontage 67.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012144506",
+   "reason": "frontage 72.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012145599",
+   "reason": "frontage 69.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012145617",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012076608"
+  },
+  {
+   "pandId": "0363100012146315",
+   "reason": "frontage 115.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "frontage 72.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012148607",
+   "reason": "frontage 64.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012149403",
+   "reason": "frontage 78.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012150301",
+   "reason": "frontage 84.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012150331",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012119150"
+  },
+  {
+   "pandId": "0363100012150397",
+   "reason": "frontage 32.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012150686",
+   "reason": "frontage 34.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "frontage 50.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012152175",
+   "reason": "frontage 34.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012154531",
+   "reason": "frontage 36.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012154575",
+   "reason": "frontage 32.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012154997",
+   "reason": "frontage 34.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012155546",
+   "reason": "frontage 77.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012163453",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012067111"
+  },
+  {
+   "pandId": "0363100012167300",
+   "reason": "frontage 38.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012191097",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012135231"
+  },
+  {
+   "pandId": "0363100012191098",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012135231"
+  },
+  {
+   "pandId": "0363100012191099",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012132149"
+  },
+  {
+   "pandId": "0363100012191100",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012191096"
+  },
+  {
+   "pandId": "0363100012191101",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012150126"
+  },
+  {
+   "pandId": "0363100012191102",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012132149"
+  },
+  {
+   "pandId": "0363100012191391",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012193352",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012108545"
+  },
+  {
+   "pandId": "0363100012199219",
+   "reason": "frontage 105.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199220",
+   "reason": "frontage 104.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199312",
+   "reason": "frontage 90.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199313",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199314",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012090850"
+  },
+  {
+   "pandId": "0363100012199315",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012108545"
+  },
+  {
+   "pandId": "0363100012199316",
+   "reason": "frontage 37.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199317",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012108545"
+  },
+  {
+   "pandId": "0363100012199318",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012090850"
+  },
+  {
+   "pandId": "0363100012199319",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012090850"
+  },
+  {
+   "pandId": "0363100012199386",
+   "reason": "frontage 31.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199387",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012120724"
+  },
+  {
+   "pandId": "0363100012199388",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199389",
+   "reason": "frontage 39.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199390",
+   "reason": "frontage 78.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199391",
+   "reason": "frontage 76.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199392",
+   "reason": "frontage 65.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199393",
+   "reason": "frontage 63.5 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199394",
+   "reason": "frontage 91.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199395",
+   "reason": "frontage 51.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012199396",
+   "reason": "frontage 50.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012206387",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012206968",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012214503",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012145010"
+  },
+  {
+   "pandId": "0363100012214504",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012132149"
+  },
+  {
+   "pandId": "0363100012214505",
+   "reason": "sightline to Vaalrivierstraat crosses 0363100012150126"
+  },
+  {
+   "pandId": "0363100012214953",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "frontage 66.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223677",
+   "reason": "frontage 87.4 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223685",
+   "reason": "frontage 120.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223686",
+   "reason": "frontage 119.3 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223690",
+   "reason": "frontage 105.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223691",
+   "reason": "frontage 107.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223692",
+   "reason": "frontage 87.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223693",
+   "reason": "frontage 92.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223694",
+   "reason": "frontage 94.6 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223695",
+   "reason": "frontage 93.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223696",
+   "reason": "frontage 95.0 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223697",
+   "reason": "frontage 105.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012223698",
+   "reason": "frontage 107.9 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012229480",
+   "reason": "no frontage on Vaalrivierstraat: No footprint edge faces Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012243120",
+   "reason": "frontage 91.1 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012243121",
+   "reason": "frontage 98.7 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012243123",
+   "reason": "frontage 78.2 m from Vaalrivierstraat"
+  },
+  {
+   "pandId": "0363100012076039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076608",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088655",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090850",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092908",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109842",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120724",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131537",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133198",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137594",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012132149",
+   "alongM": 26.52,
+   "widthM": 8,
+   "eavesM": 6.09,
+   "roofMaxM": 9.44,
+   "storeys3dbag": 3,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012145010",
+   "alongM": 34.61,
+   "widthM": 8.22,
+   "eavesM": 6.11,
+   "roofMaxM": 9.45,
+   "storeys3dbag": 3,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ],
+ "runOf": "vaalrivier-3-9"
+}

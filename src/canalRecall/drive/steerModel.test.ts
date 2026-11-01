@@ -5,7 +5,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  advance, bicycleYawLimit, bikeLean, BIKE, BIKE_TRUE_SCALE, initialSteerState, LEGACY_BASE, legacyYawLimit, step,
+  advance, bicycleYawLimit, bikeLean, bikeLeanFromTurn, BIKE_LEAN_MAX, BIKE, BIKE_TRUE_SCALE, initialSteerState, LEGACY_BASE, legacyYawLimit, step,
   STEP_MAX, type SteerInput, type SteerParams, type SteerState,
 } from './steerModel.ts';
 
@@ -141,4 +141,19 @@ test('lean: none at rest, slop\'s 0.34 rad at full steer and speed', () => {
   assert.equal(bikeLean(1, 0), 0);
   assert.equal(bikeLean(-1, 300), -0.34);
   assert.ok(Math.abs(bikeLean(0.5, 13.5) - 0.085) < 1e-9);
+});
+
+test('lean from the turn: none riding straight, into the turn, proportional, capped', () => {
+  // A held key with the heading locked (a wall, street-follow) is not a turn.
+  assert.equal(bikeLeanFromTurn(120, 0), 0);
+  assert.equal(bikeLeanFromTurn(0, 1.5), 0);
+  // + yaw (clockwise on screen, a right turn) leans right; left leans left.
+  assert.ok(bikeLeanFromTurn(100, 0.3) > 0);
+  assert.ok(bikeLeanFromTurn(100, -0.3) < 0);
+  // Gentle turn ~6°, sharper turns lean more, the cap is slop's 0.34 rad.
+  assert.ok(Math.abs(bikeLeanFromTurn(100, 0.3) - Math.atan(30 / 280)) < 1e-12);
+  assert.ok(bikeLeanFromTurn(100, 0.6) > bikeLeanFromTurn(100, 0.3));
+  assert.equal(bikeLeanFromTurn(100, 1.2), BIKE_LEAN_MAX);
+  assert.equal(bikeLeanFromTurn(150, -3), -BIKE_LEAN_MAX);
+  assert.equal(bikeLeanFromTurn(NaN, 1), 0);
 });

@@ -1,5 +1,236 @@
 # Canal Recall — what is built
 
+**A query string drew every tiled mesh whole on touch; iPad baselines re-recorded; the facade LOD is parked for the bigger owners (2026-11-01, P4).**
+Materials lane (811ff753c). `sharedFrame.ts` `tileWholeShareFlag` did
+`Number(params.get('tileWhole'))`, and `Number(null)` is 0, so any page
+with a query string but no `tileWhole` (every `?engine=own` run, every
+measurement so far) forced every tiled mesh to draw whole; on touch that
+meant whole facade chunks instead of the tiles on screen. Typed
+`askedTileWhole()` with a test. iPad, Jordaan ride after warm-up: facade
+triangles 667k → 259k, frame p50/p95 1.65 M / 2.47 M → 1.21 M / 1.98 M,
+draws p50/p95 326 / 589 → 386 / 749 (per-tile draws are the designed touch
+trade); desktop unchanged (2.18 M, 289 draws). Fixed-camera frame, fix vs
+`tileWhole=0`: 0 px at Westerkerk, Nassaukade's 51,691 px equals two
+identical loads (noise). `p4Counters` iPad rows re-recorded. Decision
+(integrator): the 150/400 m facade LOD would cut 60–100k (5–8 %) and even
+no facades leaves ~950k, so it is parked; the lane takes the owners in
+size order instead: overview 279k at ride zoom (cull or coarsen what the
+near ground and facades cover), own ground 306k, trees 183k, cycle overlay
+108k, with frozen-frame pins per step. Integrator: `build:canal-engine`,
+`build:canal-three`; test:engine 110/110; tsc clean.
+
+**P4 counters gate measured and recorded; in-frame shader links after warm-up are 0 on desktop and iPad (2026-11-01, P4).**
+Materials lane hand-back (bb5c00bce): `engine/glCounters.ts` (opt-in
+`?glCounters=1`, `__canalPerf.gl` with `markWarm()`/`report()`) counts, from
+the end of warm-up, draws and triangles per frame and per participant
+(shadow pass separate), compiles and links, and uploads ≥ 1 MiB, each with
+an owner; `motion-stutter.mjs GL_COUNTERS=1` writes the report, `--device
+ipad` adds the iPad profile. Seeded Jordaan ride on rails (~2 km in 40 s),
+`?engine=own`, 10 s warm-up, headed Metal M4 Pro, tier high, 60° pitch:
+in-frame links 0 / 0 (iPad was 2: the own-ground hedge double-sided shadow
+depth program and the pyramidal-roof cap program; now
+`rendererShared/shadowPrimer.ts` links every depth-program variant with
+zero-area casters on the first shadow redraw, `?shadowPrimer=0` turns it
+off, frozen frame 9 / 0 px on vs off = harness noise, and
+`pyramidal-roofs-source.js` keeps one never-drawn cap as the program's
+anchor compiled through `compileAsync` instead of relinking per
+`setFeatures`); compileShader after warm-up 4 / 8, all landmark and
+stand-in precompiles through `compileAsync` off the frame; uploads ≥ 1 MiB
+49 (94 MB) / 32 (61 MB): facade chunk geometry 37 / 24, own-ground cell
+layers and land textures 12 / 6, one landmark on iPad; draws at 60° p50 294
+p95 399 max 508 / p50 326 p95 589 max 858 (iPad per frame: own ground 124,
+landmarks 59 + 18 shadow, overview 40, bike 36, roof caps 26, facades 15);
+triangles iPad p50 1.65 M p95 2.47 M (facades 666 k, own ground 306 k,
+overview 279 k, trees 183 k, cycle overlay 108 k, landmarks 73 k), desktop
+p50 2.18 M. The draft block is accepted into `tests/perf/budgets.json` as
+`p4Counters` (targets are the gates, measured are the baselines). Open
+owners: facade LOD for the iPad triangle budget and sub-MiB facade uploads
+(materials/facade lane), own-ground cells uploaded in pieces (ground),
+merged roof caps (~25 draws) and bike parts (~35 draws) in the legacy
+bundles (presentation). Integrator: `build:canal-engine`, `build:canal-three`
+(`three.bundle.js` exports `SharedFrame`), `build:canal-3d`; test:engine
+109/109; tsc clean.
+
+**Quality tiers: the probe runs under a forced tier too; auto equals `?tier=high` to the pixel on the M4; the phone low-tier gate stays red (2026-11-01, P4).**
+Materials lane hand-back (46b9bbd4d). Most of the tiers item was already
+on main (dadb83eb6, 7c201b35c, 05c5e9550: `chooseTier`, `TIER_SETTINGS`,
+the startup fill probe at view construction — the tier must be known before
+the shadow map, stand-ins and ground are built — `?tier=low|mid|high`, the
+governor stepping down and back up to the tier's cap with a lock after a
+step down that follows a step up). This hand-back: `?tier=` no longer skips
+the probe (a forced tier left different coarse tiles resident: 64 /
+29,246 px from auto at Westerkerk / Nassaukade; now 0–11 px, and the 11 px
+also appears between two plain auto loads, so it is harness noise);
+`world-v1-ab.spec` takes `AB_B_QUERY` as the B side and `AB_DPR`, and
+records tier, pixel ratio and probe ms per row (integrator: the A side
+asks `world=live` since the cells are the default, a pin of another flag
+leaves both sides on the default world); `weak-gpu-perf.spec` gains a
+`tierLow` variant and `WEAK_GPU_DEVICE=phone` (iPhone 13 profile, DPR 3).
+Probe medians: M4 Pro headed Metal 1.4–2.8 ms (DPR 2) / 0.5–1.2 (DPR 1)
+→ high; SwiftShader 23.9–25.3 (DPR 2), 6.8–7.0 (DPR 1), 7.9–8.8 (phone
+profile) → low, but only by its software-renderer name at DPR 1: the fill
+probe cannot detect a weak GPU limited by triangle count, so the
+thresholds still need a real weak device. weak-gpu-perf phone profile p95:
+tierLow 401 ms (median 2.4), tierMid 641, tierHigh 620, auto 764; the 33 ms
+gate stays red, SwiftShader is triangle-bound (HISTORY "Weak-GPU low
+tier"), no budget raised. Process: `alarm` must sit inside
+`/tmp/canal-pw.sh`, or lock-wait time counts against it and orphaned runs
+are left behind (the lane reran every table). Integrator: `build:canal-engine`,
+test:engine 102/102, renderGovernor.test 14/14, tsc clean.
+
+**The compiled city cells are the default world; `?world=live` is the tile path (2026-11-01, P2 → P5 step).**
+Integrator decision after the materials lane's result on the published
+`--no-policy` cells (HISTORY "World-v1 is pixel-identical"): the P2 gate
+restated on 2026-11-01 (structural equality of the styled building set at
+the five A/B spots, `check-ab-spots.ts`, plus a pinned pixel A/B at 0 px)
+held, so `worldV1Enabled()` now answers true unless the query says
+`world=live` (also `0`, `off`, `tiles`); `?world=v1` still spells the
+default. A city without published cells (every city but Amsterdam today)
+falls back to its GeoJSON tiles in `probeWorld`, as before. The A/B specs
+(`world-v1-ab`, `world-v1-bytes`, `world-v1-resident`) and the streamer
+test ask for `world=live` on their default side. What the player gets: the
+buildings come from the 9.70 MB of compiled cells (the whole city; a
+ride fetches only the cells around it, `worldRideDownloadMB` gate 2 MB
+still to be measured by #130 part 2) instead of the GeoJSON z14 tiles
+(16 MB on disk), decoded in the worker pool with no GeoJSON parse, feature
+clones or decorator chain on the main thread (lane L4's time-to-resident
+and stutter-owner numbers are in the 2026-10-30/31 entries). Verified here: `check-ab-spots` same at all five
+spots, `test:world-format` 34/34 with the new `worldV1Enabled` test, and
+the default-engine specs (`canal-recall`, `labels`, `landmark-highlight`)
+on desktop + iphone 43 passed / 1 failed (the pre-existing iphone
+`HUD withholds an unanswered street` red, routing lane's spawn-pose item)
+plus `engine-own` on desktop 2 passed. P5 deletion of `building-tiles/` and `bag-tiles/` waits for a week
+of Sentry quiet on the default.
+
+**The bike's lean follows the turn it makes and rolls into it (2026-11-01).**
+User's screenshot: the bike "leaning weird", near flat on its side while
+riding straight. Measured on the deployed default engine with the model
+pinned at 3× and the saddle, grip and hub vertices projected onto the
+screenshot (the drawn pose matched the scene graph exactly): the drawn roll
+was the lean value, but the lean came from the raw steer key times a speed
+ramp that saturates at 27 px/s while the bike rides at 50–150 px/s, so a
+tap went to the full 0.34 rad (19°) within ~0.1 s, and `rotateX(-lean)`
+put it on the outside of the turn (+Z is the rider's right with nose +X and
+up +Y; `steer` + is a right turn, `angle` increasing clockwise on the
+y-down canvas). From a steep chase camera a 19° roll shows the whole side
+of the bike, which reads as fallen over. Now `bikeLeanFromTurn(speed,
+yawRate)` in `steerModel.ts` = atan(v·ω/280) capped at 0.34 rad, + right;
+the vehicle derives ω from the heading delta and v from the odometer, eases
+at 9/s, and `_pose` rolls `rotateX(+lean)`. Zero while riding straight
+however the key is held, ~6° in a gentle turn, the cap only in a 1 rad/s
+turn at 100 px/s. Tests in `steerModel.test.ts`; `bikeLean` kept for
+reference. Verified on this checkout: lean 0.007–0.027 in headless held
+turns (yaw there is slow), saddle over the hub line, upright from behind.
+What's New note with before/after screenshots.
+
+**Transvaalbuurt round 5 (2026-11-01, #157 pipeline, #158 designs): 22 pands in three designs, 79 in the buurt; the five pipeline faults fixed.**
+#157: (1) `batch.ts --faces=`/`--only=` restricts a `--buurt` run and prints the
+list first; (2) `auto-place` keeps every run in `chunks.json` (pands held at
+stage `installed`, run dirs never written, renumbered or removed; a face
+installed whole is skipped; `--replace=<run>` re-places one; `--skip=`
+added; `--photo-decides` carried through the batch); (3) the batch wall
+refit drops foliage columns (isLeaf share > 8 %) and takes the row median
+under 40 % clean columns or 1.2 m; (4) `groundUse` treats public_bookcase,
+fountain, give_box, parking_space and bicycle_repair_station as street
+furniture and matches whole values (Hasebroekstraat 28's bar came from
+`amenity=pub` prefix-matching `public_bookcase`); (5) `stripFoot.ts` reads
+the facade foot as the paving line, one offset per strip, and the edge NCC
+and sheet place the photo between foot and eaves (`--no-foot` for the old
+read): Tugelaweg 95–118 NCC 0.07–0.16 → 0.11–0.22, now over the gate but
+held at gallery size (stair panel misplaced, punched windows where the photo
+has bands, storeys ~15 % too tall: the real front stands 1.9 m above 3DBAG
+ground, and the kit has no plinth offset). Hasebroekstraat 28 re-installed
+with a ground-only patch (bar → residential, 2477 → 2325 tris, roof top
++0.16 m); Eerste Jacob van Campenstraat 8 and Bloemgracht 158A/162 held
+because a re-place drags other changes. Records regenerated for both buurten
+with the fixed pipeline: 0 installed run dirs changed. #158: seven types
+(`transvaal-1930-stair-tower`/`-block`, `transvaal-1931-plain-grid`/`-nodoor`,
+`transvaal-1931-diaper-row`/`-oriel-left`, `transvaal-1922-loggia-row`) and
+the front loggia kit part (`loggia: {storeys, axes, deep, rail, head,
+lights}`, byte-identical when absent); installed Albert Luthulistraat 6–20
+and 22–32 (7, hand-placed like luthuli-21-41 because the tower blocks the
+sky read; NCC median 0.46–0.48), Afrikanerplein 33–49 (9; two pands on the
+no-door twin, one portiek door serving two pands), Schalk Burgerstraat
+59–71 and 99–111 (6; the `-oriel-left` twin for pands whose BAG cut lies 1 m
+off the portiek axis, NCC 0.28 → 0.60). Held: Afrikanerplein 25, 29 (1989),
+51 (tree); Schalk Burgerstraat 45, 79–97 (gateway arch, raised centre), 117;
+the 1922 loggia rows (Colensostraat 13–28, Vaalrivierstraat 15–21: a 0.65 m
+porch jog beyond the 0.5 m grouped-frontage cap); Transvaalstraat 131–143
+(another design). Integration: chunks 132 → 137, records for #158's eight
+faces regenerated with `--only` under the frozen-run rule, goldens for six
+runs, exposure rows, covers 623/656, signature-placement bundle, buurt pages.
+Funnel after this round (806 pands on the records, both buurten): no type
+fit on facts 389, no photo evidence 80, failed likeness 151, lone or run 29,
+review 72, placed 85, installed 79.
+
+**World-v1 is pixel-identical to the live path at the five A/B spots; the settle hold waits on what the first frame shows; the covered world renders once a second (2026-11-01, P2/P4).**
+Materials lane hand-back (52957eae9), merged with L1 (16)'s `framePhases`
+`rendered` flag combined in `frameHost.ts`. The `?world=v1` structural gate
+(`check-ab-spots.ts`) now reads the cell policy from `index.json` and
+compares against the unrounded runtime path: the published `--no-policy`
+cells match at all five spots and the old centimetre-height cells fail it,
+as they should. The pixel A/B with the owner classifier on those cells is
+0 px differing at every threshold at all five spots, ijburg-edge included
+(the harness re-plans the own ground at the held pose and waits for the
+builds and fade-ins; one cell's detail level had depended on the path to
+the spot), and world vs default equals default vs default2. Harness-only
+residue: the first page load of a run renders ~1 K px of edge and seam
+differences (353 px over 30 at Westerkerk) against every later load,
+camera, lift, styled features, chunk sets, worker/inline builds and install
+order all ruled out; the harness now makes a throwaway first load
+(`AB_NO_WARMUP=1` skips it). The settle hold (`settle.ts`) waits for the
+detail block, the kits and the coarse/houseboat chunks whose z14 tile comes
+within `SETTLE_FACADE_RING_M` = 800 m of the rider (the chase camera's view
+reach at hand-off, 776 m, rounded up), 4 s timeout unchanged. The 300–500 ms
+build round trips were not the pool: headless Chromium renders WebGL in
+software and each world frame drawn behind the loading screen cost 300–900
+ms of main thread, so replies and installs queued behind frames nobody
+saw. The frame host now renders the covered world at most once a second
+while the game is loading (`coveredFrameMs`, `COVERED_FRAME_MS` = 1000;
+`stats.coveredSkips`). Exclusive runs at 1512×982 @2x under `?engine=own`:
+headless settle 4529–5069 ms and timed out every run before, 1710 / 2684 /
+3736 ms and never timed out after, submit→racing 6.8–7.5 s → 4.0–5.7 s;
+headed Chrome 1460–1959 → 1483–1533 ms. Atlas extract unchanged, opt-in.
+Integrator: `build:canal-engine` + `build:canal-three-buildings`,
+`test:engine` 102/102, `test:world-format` 33/33, tsc clean; no world-v1
+recompile (no code-hash file changed). Next decision: `?world=v1` default.
+
+**Specs and scripts read the engine-neutral camera; the MapLibre oracles that remain are listed (2026-11-01, P0/P5).**
+Oracle-migration-2 lane (haiku, c392e578e; brief
+`docs/handoffs/lane-oracle-migration-2-20261031.md`). Across ~124 files under
+`tests/` and `scripts/`, `vectorMap.map` camera reads
+(getCenter/getZoom/getPitch/getBearing/getBounds/project/unproject) read
+`vectorMap.camera` (`tests/e2e/worldCam.ts`), `getCanvas` → `frameCanvas()`,
+the remaining MapLibre calls go through `vm.map ?? vm.cameraMap`, bare
+`map = vm.map` aliases get the fallback, setup code that hid style layers
+is guarded `if (vm.map) {…} else vm.setLabelsVisible(false)` (13 files),
+style-only tests are `test.skip(OWN, 'MapLibre style assertion: deleted
+with the default path at P5')`, and the four perf scripts
+(ride-perf-fixed-route, ride-perf-places, highlight-perf,
+perf-frozen-frames) report painter reads as n/a under own. Acceptance was
+that the rewrite is a no-op on the default engine: all 51 migrated specs,
+desktop, 211 passed / 3 failed / 35 skipped, the three failures
+pre-existing on main at the same code (`building-click-perf` "every kind of
+drawn building opens a card" 0.818 vs 0.95; `street-survey-retire` "shots:
+default" expected [] got 35 entries; `city-startup-lod` "mobile city shells
+remain" flaky); iphone P1 gate set 13 passed; ENGINE=own desktop P1 gate set
+16 passed / 6 skipped / 1 failed (`labels.spec` "hidden while the loading
+screen covers the map" reads the `.cr-map-labels` DOM element only the
+MapLibre label path creates). Oracles with no own equivalent yet, listed
+not skipped: `vectorMap._completeCityHasBuildings` (MapLibre-only flag,
+waited on in ~17 specs; `landmark-highlight` test 5 fails under own on it),
+`.cr-map-labels`, style reads (getLayer/getLayoutProperty/
+setLayoutProperty/getPaintProperty/getFeatureState/setFeatureState/
+querySourceFeatures/getFilter/getSource/painter/_render: `CameraMap`
+answers getStyle/getLayer/getSource/getLayersOrder/queryRenderedFeatures
+with empty values, the rest throw), and the C-group that needs an own
+assertion (`answered-street-name`, two `canal-recall` tests: own labels via
+`vm._labels.placed`, own lines via `vm._lines`; L1). Unchanged because they
+are not `vectorMap`: wall-material-demo, facade-recipe, explore specs. Not
+yet run: the other 44 specs under own, the other specs on iphone, the perf
+scripts for real (lane's next round). Integrator: the frozen-frames conflict
+with L1 (16) resolved to L1's version (own camera pin).
+
 **Engine frame owners at 4× named by `?framePhases=1`; label policy spikes gone; groundCrossing and the openings filter paced; frozen frames under own (2026-11-01, #129).**
 L1 hand-back (16). `?framePhases=1` times each phase of the engine frame
 (three render main / overlay / shadow, game frame with its sync sub-phases,

@@ -23,6 +23,7 @@ import {houseIntents, validateBlockFace, type BlockFaceIntent} from '../../src/c
 import {measureWallColour, toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {compareBands, countBands, groundStoreysOf, type FrontBands} from '../../src/canalRecall/blockFace/openingCount.ts';
 import {FACES, STAGING} from './intake.ts';
+import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const esc = (s: string) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -68,10 +69,25 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   const report = JSON.parse(await fs.readFile(path.join(stage, 'report.json'), 'utf8'));
   const glb = glbOverride ?? path.join(stage, 'chunk.glb');
   const W = strip.width, H = strip.height, ppm = strip.pixelsPerMetre, x0 = strip.x0M, x1 = strip.x1M, top = strip.heightM;
+  // The strip's facade foot (blockFace/stripFoot.ts, #157): the model stands on it instead of the strip's bottom row.
+  // Drawn between the photo's foot and the eaves line, as the edge NCC reads it (stripLikeness.ts footOffsetM).
+  const stripRaw = await sharp(strip.image).removeAlpha().raw().toBuffer({resolveWithObject: true});
+  const foot = runFootOffset({rgb: new Uint8Array(stripRaw.data), width: stripRaw.info.width, height: stripRaw.info.height}, strip, !process.argv.includes('--no-foot'));
   // Model: chunk frame (x along the face, y up, z outward); camera on +z looking back, same metres as the strip.
-  const [model] = await renderModels([{file: glb}], [{eye: [(x0 + x1) / 2, top / 2, 200], target: [(x0 + x1) / 2, top / 2, 0], fov: 30, width: W, height: H,
+  const [model0] = await renderModels([{file: glb}], [{eye: [(x0 + x1) / 2, top / 2, 200], target: [(x0 + x1) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1 - x0) / 2, (x1 - x0) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   await closeRenderer();
+  let model = model0;
+  if (foot.offsetM) {
+    const eaves = [...report.perPand.map((p: any) => p.eavesM)].sort((p: number, q: number) => p - q)[report.perPand.length >> 1], k = (eaves - foot.offsetM) / eaves;
+    const {data, info} = await sharp(model0).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer({resolveWithObject: true}), out = Buffer.alloc(data.length);
+    for (let y = 0; y < H; y++) {
+      const hm = ((H - y) / ppm - foot.offsetM) / k, my = Math.round(H - hm * ppm);
+      if (hm < 0 || my < 0 || my >= H) { for (let x = 0; x < W; x++) out.set([159, 184, 207], (y * W + x) * 3); continue; }
+      data.copy(out, y * W * 3, my * W * 3, (my + 1) * W * 3);
+    }
+    model = await sharp(out, {raw: {width: W, height: H, channels: 3}}).png().toBuffer();
+  }
   const modelPng = await sharp(model).resize(W, H, {fit: 'fill'}).png().toBuffer();
   await fs.writeFile(path.join(out, 'model-ortho.png'), modelPng);
   const photo = await sharp(strip.image).resize(W, H, {fit: 'fill'}).png().toBuffer();
@@ -107,7 +123,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   const lines = (yTop: number, h: number) => strip.spans.map((s: any) => `<line x1="${s.px[0]}" y1="${yTop}" x2="${s.px[0]}" y2="${yTop + h}" stroke="#ff2d55" stroke-width="2"/>`).join('') + `<line x1="${W - 1}" y1="${yTop}" x2="${W - 1}" y2="${yTop + h}" stroke="#ff2d55" stroke-width="2"/>`;
   const rowY = [titleH, titleH + LABEL + H + GAP, titleH + 2 * (LABEL + H + GAP)], infoY = titleH + 3 * (LABEL + H + GAP), partyY = infoY + INFO;
   const totalH = partyY + PARTY + 10;
-  const rowLabels = [`1. photo strip, rectified, ${strip.date} (Gemeente Amsterdam panoramas, CC BY 4.0) · ${ppm} px/m`, `2. model, orthographic, same frame and scale${label ? ' · ' + label : ''}${(report.rears ?? []).length ? ' · street side only: rear facades are INFERRED (plain window grid, not shown here)' : ''}`, '3. overlay 50 %'];
+  const rowLabels = [`1. photo strip, rectified, ${strip.date} (Gemeente Amsterdam panoramas, CC BY 4.0) · ${ppm} px/m`, `2. model, orthographic, same frame and scale${foot.offsetM ? ` · fitted between the photo's facade foot (${foot.offsetM} m above the strip's bottom row) and the eaves` : ''}${label ? ' · ' + label : ''}${(report.rears ?? []).length ? ' · street side only: rear facades are INFERRED (plain window grid, not shown here)' : ''}`, '3. overlay 50 %'];
   let svg = `<svg width="${W}" height="${totalH}" xmlns="http://www.w3.org/2000/svg"><style>text{font-family:Helvetica,Arial}</style>`;
   svg += `<text x="10" y="30" font-size="22" font-weight="bold" fill="#1f2328">${esc(face.street)} · block face ${esc(face.id)} · ${face.houses.length} pands · ${report.triangles.chunk} tris · ${(report.bytes.chunk / 1024).toFixed(0)} KB · ${report.passed ? 'gates pass' : 'GATES FAIL'}</text>`;
   rowY.forEach((y, k) => { svg += `<rect x="0" y="${y}" width="${W}" height="${LABEL}" fill="#1f2328"/><text x="8" y="${y + 21}" font-size="16" fill="#fff">${esc(rowLabels[k])}</text>` + lines(y + LABEL, H); });

@@ -32,7 +32,7 @@ const SPOTS = [
   { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
   { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
 ] as const;
-const ALL_VARIANTS = [{ name: 'default', query: '' }, { name: 'world', query: '?world=v1' }, { name: 'world-main', query: '?world=v1&worldWorker=0' }];
+const ALL_VARIANTS = [{ name: 'default', query: '?world=live' }, { name: 'world', query: '?world=v1' }, { name: 'world-main', query: '?world=v1&worldWorker=0' }];
 const pick = (env: string | undefined, all: string[]) => (env ?? '').split(',').filter(Boolean).filter(x => all.includes(x));
 const VARIANTS = ALL_VARIANTS.filter(v => (pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)).length ? pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)) : ['default', 'world']).includes(v.name));
 const RIDES = pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']).length ? pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']) : ['seeded', 'free'];

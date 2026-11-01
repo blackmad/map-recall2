@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // The bicycle's front wheel is on its native +X and the boat's bow is on -X, so
 // the two vehicles need opposite heading offsets. Swapping them makes the boat
@@ -42,6 +43,7 @@ async function boatPixels(page: Page): Promise<number> {
 }
 
 test('boat mode draws the boat, facing forward, on the water', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(180000);
   await openRoute(page, { travelMode: 'boat', viewMode: 'chase', seedRandom: false });
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?.isPlayerBoatReady?.())), { timeout: 90000 }).toBe(true);

@@ -102,12 +102,30 @@ export function bestNcc(photo: Gray, model: Gray, maxShift: number): {ncc: numbe
  * Body NCC of one pand span: `photoRgb` (the strip) and `modelRgb` (the ortho render, same size and frame), the span's
  * pixel columns and the eaves, at the strip's px/m.
  */
-export function spanLikeness(a: {photoRgb: Uint8Array; modelRgb: Uint8Array; width: number; height: number; px: [number, number]; eavesM: number; pixelsPerMetre: number}) {
+export function spanLikeness(a: {photoRgb: Uint8Array; modelRgb: Uint8Array; width: number; height: number; px: [number, number]; eavesM: number; pixelsPerMetre: number;
+  /**
+   * The photo's facade foot above the strip's bottom row (blockFace/stripFoot.ts, #157). The photo is read with its foot
+   * on the model's ground and its eaves on the model's eaves (rows resampled linearly between the two): on Tugelaweg the
+   * pavement stands 1.9 m above the strip's ground while the cornice sits at the 3DBAG eaves, so a pure shift moved the
+   * storeys apart (edge NCC 0.04-0.09) where the foot-to-eaves fit lines them up (0.11-0.25).
+   */
+  footOffsetM?: number}) {
   const scale = a.pixelsPerMetre / STRIP_LIKENESS.ppm, inset = Math.round((a.px[1] - a.px[0]) * 0.04);
   const y0 = Math.max(0, Math.round(a.height - (a.eavesM - STRIP_LIKENESS.topMarginM) * a.pixelsPerMetre)), y1 = Math.round(a.height - STRIP_LIKENESS.bodyFromM * a.pixelsPerMetre);
   const x0 = a.px[0] + inset, x1 = a.px[1] - inset;
   if (y1 - y0 < 40 || x1 - x0 < 20) return {ncc: null, dx: 0, dy: 0, usable: 0, abstain: 'span too small'};
-  const photo = blur(gradient(blur(grayRegion(a.photoRgb, a.width, x0, x1, y0, y1, scale, true), STRIP_LIKENESS.blur)), STRIP_LIKENESS.blur);
+  const foot = a.footOffsetM && a.footOffsetM > 0 && a.footOffsetM < a.eavesM ? a.footOffsetM : 0;
+  const photoGray = foot ? (() => {
+    // The span's body rows of the photo, each model row taken from its foot-to-eaves photo row.
+    const w = x1 - x0, h = y1 - y0, sub = new Uint8Array(w * h * 3), k = (a.eavesM - foot) / a.eavesM;
+    for (let j = 0; j < h; j++) {
+      const hm = (a.height - (y0 + j)) / a.pixelsPerMetre, py = Math.round(a.height - (foot + hm * k) * a.pixelsPerMetre);
+      if (py < 0 || py >= a.height) { sub.fill(128, j * w * 3, (j + 1) * w * 3); continue; } // placeholder grey: masked
+      sub.set(a.photoRgb.subarray((py * a.width + x0) * 3, (py * a.width + x1) * 3), j * w * 3);
+    }
+    return grayRegion(sub, w, 0, w, 0, h, scale, true);
+  })() : grayRegion(a.photoRgb, a.width, x0, x1, y0, y1, scale, true);
+  const photo = blur(gradient(blur(photoGray, STRIP_LIKENESS.blur)), STRIP_LIKENESS.blur);
   const model = blur(gradient(blur(grayRegion(a.modelRgb, a.width, x0, x1, y0, y1, scale, false), STRIP_LIKENESS.blur)), STRIP_LIKENESS.blur);
   const r = bestNcc(photo, model, Math.round(STRIP_LIKENESS.maxShiftM * STRIP_LIKENESS.ppm));
   const abstain = r.usable < STRIP_LIKENESS.minUsable ? `usable photo ${Math.round(r.usable * 100)} % < ${STRIP_LIKENESS.minUsable * 100} %` : null;

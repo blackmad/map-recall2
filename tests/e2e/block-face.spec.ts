@@ -21,7 +21,7 @@ const EYE_M = 1.7;
  */
 async function oppositeBuildingM(page: Page, anchor: number[], outward: number): Promise<number | null> {
   return page.evaluate(({ anchor, outward }) => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     const kx = 111320 * Math.cos(anchor[1] * Math.PI / 180), ky = 111320;
     const r = outward * Math.PI / 180, dx = Math.sin(r), dy = Math.cos(r);
     let best: number | null = null;
@@ -70,7 +70,7 @@ for (const chunk of faces) {
     await parkAt(page, at, ahead(at, bearing, 40));
     await page.waitForFunction(({ id }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && l.shown.has(id);
     }, { id: chunk.id }, { timeout: 150_000, polling: 1000 });
     await parkAt(page, ahead(at, outward, 120), ahead(at, outward, 160));
@@ -100,7 +100,7 @@ for (const chunk of faces) {
     const shots: Record<string, unknown> = { oppositeBuildingM: opposite && +opposite.toFixed(1), streetM: +streetM.toFixed(1), topM, topDeg: +topDeg.toFixed(1) };
     for (const [name, eye, eyeAlt, target, targetAlt, fovDeg, padTop] of views) {
       shots[name] = await page.evaluate(({ eye, eyeAlt, target, targetAlt, fovDeg, padTop }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(90); map.setVerticalFieldOfView(fovDeg); map.setPadding({ top: padTop, bottom: 0, left: 0, right: 0 });
         const opts = map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, eyeAlt, { lng: target[0], lat: target[1] }, targetAlt);
         map.jumpTo(opts);

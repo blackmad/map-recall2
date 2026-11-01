@@ -1,11 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regression (user request 2026-10-01, "after I get a street right or
 // wrong, I really think we need it in big letters on the street ahead of me to
 // reinforce it"). The answered name stands on the street ahead, green when
 // right and red when missed, and nothing is shown while the question is open.
 test('the answered street is named on the street ahead, never the open question', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map layer logic; one project is enough');
   test.setTimeout(120000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
@@ -13,7 +15,7 @@ test('the answered street is named on the street ahead, never the open question'
   await page.waitForFunction(() => !!(window as any).canalRecallGame?.vectorMap?.map?.getLayer('answered-street-name'), null, { timeout: 30000 });
   const result = await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
-    const map = game.vectorMap.map;
+    const map = game.vectorMap.map ?? game.vectorMap.cameraMap;
     // MapLibre 5 keeps setData input under `_data.geojson`.
     const painted = () => { const data = (map.getSource('answered-street') as any)?._data; return (data?.geojson ?? data)?.features ?? []; };
     // A long named street near the bike, ridden from its first vertex.

@@ -141,7 +141,7 @@ test('question street is draped without its name; nothing on screen spells it', 
   expect(s.overlays.highlight).toBeGreaterThan(0);
   // The ground draws geometry only; the basemap's labels keep their own rules. No rendered label spells the answer.
   const texts: string[] = await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     return map.queryRenderedFeatures().filter((f: any) => f.layer?.type === 'symbol').map((f: any) => String(f.properties?.name ?? f.properties?.['name:en'] ?? ''));
   });
   expect(texts.filter(t => t.includes(name))).toEqual([]);

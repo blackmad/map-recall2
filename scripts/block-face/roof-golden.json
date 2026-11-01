@@ -2628,7 +2628,7 @@
     "class": "front+row"
    },
    "164522": {
-    "hash": "4f21f62629757367",
+    "hash": "a72df28229bdeef4",
     "class": "front"
    },
    "165214": {
@@ -3943,6 +3943,104 @@
     "hash": "0dc29f8869343557",
     "class": "recipe"
    }
+  },
+  "luthuli-6-20": {
+   "092667": {
+    "hash": "e584f0a045cab0fa",
+    "class": "front"
+   },
+   "087850": {
+    "hash": "36c4e0a966d1e74b",
+    "class": "front"
+   },
+   "073273": {
+    "hash": "37e1149fa1f1e46f",
+    "class": "front"
+   },
+   "097026": {
+    "hash": "cf7bc4523ba91707",
+    "class": "front"
+   }
+  },
+  "luthuli-22-32": {
+   "124743": {
+    "hash": "fd3d2c18dbce0cf4",
+    "class": "front"
+   },
+   "088339": {
+    "hash": "acb733175e64a076",
+    "class": "front"
+   },
+   "068825": {
+    "hash": "aa18d93ee78f5c34",
+    "class": "front"
+   }
+  },
+  "afrikanerplein-25-55-r1": {
+   "125852": {
+    "hash": "d12cec57d39d0aed",
+    "class": "front"
+   },
+   "135325": {
+    "hash": "46194856685b10fc",
+    "class": "front"
+   },
+   "143471": {
+    "hash": "f642bc55ffc41f5a",
+    "class": "front"
+   },
+   "070168": {
+    "hash": "78a5b73649e80531",
+    "class": "front"
+   },
+   "084510": {
+    "hash": "14ed89179897d364",
+    "class": "front"
+   },
+   "079290": {
+    "hash": "6d5940bd36bc738c",
+    "class": "front"
+   },
+   "068510": {
+    "hash": "56b7346d9b80b2ea",
+    "class": "front"
+   },
+   "064549": {
+    "hash": "c110d8b96509e628",
+    "class": "front"
+   },
+   "086955": {
+    "hash": "c2ba4d3cb90ebb52",
+    "class": "front"
+   }
+  },
+  "burger-45-131-r1": {
+   "140152": {
+    "hash": "7952226f5841fcff",
+    "class": "front"
+   },
+   "076994": {
+    "hash": "d867ce2b929dd3e3",
+    "class": "front"
+   },
+   "093454": {
+    "hash": "087fd42ac2ce499d",
+    "class": "front"
+   }
+  },
+  "burger-45-131-r2": {
+   "117331": {
+    "hash": "d6e6e07a5cc83900",
+    "class": "front"
+   },
+   "150447": {
+    "hash": "6722b28db22b2384",
+    "class": "front"
+   },
+   "076140": {
+    "hash": "fd542e648482e267",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -4023,7 +4121,7 @@
   "gorontalo-25-47-r2": "9984bca7d46cd11a",
   "hasebroek-1-41-r1": "6ee3e097566fd36f",
   "hasebroek-1-41-r2": "907e885958f1f038",
-  "hasebroek-2-46-r1": "f1155f97ecf4a95e",
+  "hasebroek-2-46-r1": "77dc21ca83a0269b",
   "hasebroek-43-101-r1": "fe6a10f3f988e07f",
   "hasebroek-52-88-r1": "0e1cf391f0a83f0a",
   "hasebroek-90-98-r1": "abfca5fd866df466",
@@ -4101,6 +4199,11 @@
   "retief-45-75-r2": "04d2ffbd2dd1b6c7",
   "retief-45-75-r3": "adb821f386a8f01a",
   "pretorius-1-33-r1": "95ae6879ddbe9bae",
-  "paardekraal-1-15-r1": "38de9d710faaba2c"
+  "paardekraal-1-15-r1": "38de9d710faaba2c",
+  "luthuli-6-20": "b35af4d53055b9c8",
+  "luthuli-22-32": "751b7f80f989184c",
+  "afrikanerplein-25-55-r1": "b26f71ce4d3dc165",
+  "burger-45-131-r1": "aeec91c3ddf52ade",
+  "burger-45-131-r2": "d9457064fdc54f1e"
  }
 }

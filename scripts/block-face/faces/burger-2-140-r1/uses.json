@@ -1,0 +1,60 @@
+{
+ "street": "Schalk Burgerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:41:00.697Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012112723",
+   "addresses": [
+    "Schalk Burgerstraat 130",
+    "Schalk Burgerstraat 132",
+    "Schalk Burgerstraat 134",
+    "Schalk Burgerstraat 136",
+    "Schalk Burgerstraat 138",
+    "Schalk Burgerstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 130",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000805942"
+    },
+    {
+     "address": "Schalk Burgerstraat 132",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990498"
+    },
+    {
+     "address": "Schalk Burgerstraat 134",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990499"
+    },
+    {
+     "address": "Schalk Burgerstraat 136",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990500"
+    },
+    {
+     "address": "Schalk Burgerstraat 138",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990501"
+    },
+    {
+     "address": "Schalk Burgerstraat 140",
+     "use": "industriefunctie",
+     "areaM2": 76,
+     "bagId": "0363010001169284"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

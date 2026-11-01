@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "luthuli-22-32",
+ "street": "Albert Luthulistraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/luthuli-22-32/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane transvaalbuurt-designs-5-20261101 (issue #158)",
+  "passes": 1,
+  "note": "placed from the transvaalbuurt library by hand after a gallery-size read of the gridded strip: auto-place (--only, --photo-decides) holds the tower pands on the strip evidence gate (the stair tower stands in the band over the roof: sky in 57-68 % of columns) and draws the stair pands at the skyline 14.6-14.8 m, which is the roof-terrace railing, not the 14.25 m coping. Types, mirrors and the end-window overrides are read off the strip; the per-pand reads are in auto-place.json"
+ },
+ "types": [
+  "transvaal-1930-stair-block",
+  "transvaal-1930-stair-tower"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "flat roof behind the parapet; the strips show the roof-terrace railing of a setback roof storey behind the coping, which the kit does not draw"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012124743",
+    "stripRow": 101,
+    "evidence": "the 1930 coping line 14.25 m (luthuli-22-32 gridded strip: light coping 14.0-14.3 m on every pand); the strip skyline 14.8 m reads the white roof-terrace railing of the setback roof storey (14.4-15.3 m) or the tower; 3DBAG eaves 12.8 m"
+   },
+   {
+    "pand": "0363100012088339",
+    "stripRow": 101,
+    "evidence": "the 1930 coping line 14.25 m (luthuli-22-32 gridded strip: light coping 14.0-14.3 m on every pand); the strip skyline 14.75 m reads the white roof-terrace railing of the setback roof storey (14.4-15.3 m) or the tower; 3DBAG eaves 12.73 m"
+   },
+   {
+    "pand": "0363100012068825",
+    "stripRow": 101,
+    "evidence": "the 1930 coping line 14.25 m (luthuli-22-32 gridded strip: light coping 14.0-14.3 m on every pand); the strip skyline 15.03 m reads the white roof-terrace railing of the setback roof storey (14.4-15.3 m) or the tower; 3DBAG eaves 14.76 m"
+   }
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012124743",
+   "slug": "luthuli-124743",
+   "address": "Albert Luthulistraat 30A",
+   "type": {
+    "type": "transvaal-1930-stair-tower",
+    "measuredPalette": {
+     "brick": "#735c50",
+     "evidence": "one brick for the row (lesson 10): per-channel median of the trim-normalised strip walls of the four tree-free pands (foliage <= 3 %) 092667 #715a4d, 073273 #755e55, 097026 #655047 (luthuli-6-20) and 124743 #765f53 (luthuli-22-32), strips 2020-04-29; 087850, 088339, 068825 read street-tree green (foliage 13-18 %)"
+    },
+    "overrides": {
+     "storeyAxes": {
+      "0": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "1": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "2": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "3": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ]
+     },
+     "bays": [
+      7,
+      7,
+      7,
+      7
+     ]
+    },
+    "doorBay": 3
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel; the strip shows the portiek door and garden windows"
+   },
+   "rhythm": {
+    "citation": "lane transvaalbuurt-designs-5 (#158), strip 2020-04-29 gridded 1 m (staging/block-face/transvaalbuurt/5b/luthuli-22-32-grid.png): no end window: 0-3.1 m of its left end is plain wall (pair 3.15-6.15 m, tower 6.45-12.25 m, pair 12.65-15.6 m): storeyAxes without axis 0"
+   }
+  },
+  {
+   "pandId": "0363100012088339",
+   "slug": "luthuli-088339",
+   "address": "Albert Luthulistraat 26A",
+   "type": {
+    "type": "transvaal-1930-stair-block",
+    "measuredPalette": {
+     "brick": "#735c50",
+     "evidence": "one brick for the row (lesson 10): per-channel median of the trim-normalised strip walls of the four tree-free pands (foliage <= 3 %) 092667 #715a4d, 073273 #755e55, 097026 #655047 (luthuli-6-20) and 124743 #765f53 (luthuli-22-32), strips 2020-04-29; 087850, 088339, 068825 read street-tree green (foliage 13-18 %)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel; the strip shows the portiek door and garden windows"
+   },
+   "rhythm": {
+    "citation": "lane transvaalbuurt-designs-5 (#158), strip 2020-04-29 gridded 1 m (staging/block-face/transvaalbuurt/5b/luthuli-22-32-grid.png): pair, small window, stair axis 23.0 m, small window, pair"
+   }
+  },
+  {
+   "pandId": "0363100012068825",
+   "slug": "luthuli-068825",
+   "address": "Albert Luthulistraat 22A",
+   "type": {
+    "type": "transvaal-1930-stair-tower",
+    "measuredPalette": {
+     "brick": "#735c50",
+     "evidence": "one brick for the row (lesson 10): per-channel median of the trim-normalised strip walls of the four tree-free pands (foliage <= 3 %) 092667 #715a4d, 073273 #755e55, 097026 #655047 (luthuli-6-20) and 124743 #765f53 (luthuli-22-32), strips 2020-04-29; 087850, 088339, 068825 read street-tree green (foliage 13-18 %)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "BAG gebruiksdoel; the strip shows the portiek door and garden windows"
+   },
+   "rhythm": {
+    "citation": "lane transvaalbuurt-designs-5 (#158), strip 2020-04-29 gridded 1 m (staging/block-face/transvaalbuurt/5b/luthuli-22-32-grid.png): mirrored: pair 1.1-4.0 m, tower 4.6-10.4 m, pair 10.6-13.5 m, single window at the right end 15.1-16.5 m"
+   }
+  }
+ ]
+}

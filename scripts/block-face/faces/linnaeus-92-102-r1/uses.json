@@ -1,0 +1,47 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:24:47.589Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150033",
+   "addresses": [
+    "Linnaeusstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 102-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000726504"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393136467,
+     "lngLat": [
+      4.9276134,
+      52.3558199
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "102",
+      "addr:postcode": "1092CP",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "pub",
+      "check_date": "2026-10-25",
+      "name": "Cafe Sport",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-31T14:24:47.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

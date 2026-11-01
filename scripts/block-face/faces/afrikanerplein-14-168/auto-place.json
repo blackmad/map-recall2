@@ -3,7 +3,7 @@
  "street": "Afrikanerplein",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 19.16,
+ "seconds": 25.63,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,16 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "afrikanerplein-14-168-r1",
+   "pands": [
+    "0363100012131433"
+   ],
+   "passed": true,
+   "triangles": 1590
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012148898",
@@ -232,18 +241,33 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.123 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15 mean 0.23 vs photo 0.35)",
+   "status": "placed",
+   "type": "transvaal-1923-portiek-tower",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "transvaal-1923-portiek",
+    "score": 0.69
+   },
+   "placement": {
+    "type": "transvaal-1923-portiek-tower",
+    "measuredPalette": {
+     "brick": "#816f67",
+     "evidence": "strip 2020-04-29 span 2362-2840: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "lone pand: a stair block on its own: transvaal-1923-portiek-tower opts in to one-house faces from 5 m (frontage 11.96 m)"
+   ],
    "likeness": {
     "pandId": "0363100012131433",
-    "ncc": 0.123,
-    "nccRaw": 0.123,
+    "ncc": 0.189,
+    "nccRaw": 0.189,
     "shiftM": [
-     -0.05,
-     0
+     0.05,
+     -0.4
     ],
-    "usable": 0.95,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
@@ -262,15 +286,16 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.181
+    "iou": 0.181,
+    "footOffsetM": 2.4
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": 0.123,
-    "transvaal-1911-five-storey-tall": 0.14,
-    "transvaal-1911-five-storey-tall~m": 0.15,
-    "transvaal-1911-five-storey": 0.123,
-    "transvaal-1911-five-storey~m": 0.133,
-    "transvaal-1923-portiek": 0.122
+    "transvaal-1923-portiek-tower": 0.189,
+    "transvaal-1911-five-storey-tall": 0.072,
+    "transvaal-1911-five-storey-tall~m": 0.104,
+    "transvaal-1911-five-storey": 0.117,
+    "transvaal-1911-five-storey~m": 0.141,
+    "transvaal-1923-portiek": 0.046
    }
   },
   {
@@ -396,14 +421,14 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 3 vs photo 2)",
+   "reason": "edge NCC 0.098 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 3 vs photo 2)",
    "likeness": {
     "pandId": "0363100012098180",
-    "ncc": 0.114,
-    "nccRaw": 0.114,
+    "ncc": 0.098,
+    "nccRaw": 0.098,
     "shiftM": [
      -0.4,
-     0.35
+     -0.4
     ],
     "usable": 0.94,
     "abstain": null,
@@ -425,14 +450,15 @@
      "photo": 2,
      "model": 3
     },
-    "iou": 0.137
+    "iou": 0.137,
+    "footOffsetM": 2.33
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": 0.114,
-    "transvaal-1911-five-storey-tall": 0.151,
-    "transvaal-1911-five-storey-tall~m": 0.159,
-    "transvaal-1911-five-storey": 0.145,
-    "transvaal-1911-five-storey~m": 0.164
+    "transvaal-1923-portiek-tower": 0.098,
+    "transvaal-1911-five-storey-tall": 0.123,
+    "transvaal-1911-five-storey-tall~m": 0.136,
+    "transvaal-1911-five-storey": 0.186,
+    "transvaal-1911-five-storey~m": 0.191
    }
   }
  ]

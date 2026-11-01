@@ -1,0 +1,89 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "linnaeus-92-102-r1",
+ "street": "Linnaeusstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/linnaeus-92-102-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-Oost); scores and holds in scripts/block-face/faces/linnaeus-92-102/auto-place.json"
+ },
+ "types": [
+  "transvaal-1911-five-storey-tall"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012150033",
+   "slug": "linnaeus-150033",
+   "address": "Linnaeusstraat 102",
+   "type": {
+    "type": "transvaal-1911-five-storey-tall",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#434440",
+      "fascia": true,
+      "name": "Cafe Sport",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=pub); fascia colour measured on the strip 2023-01-02 span 0-206"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#b0b1ae",
+     "evidence": "strip 2023-01-02 span 0-206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "groundFloor": {
+    "use": "bar",
+    "name": "Cafe Sport",
+    "category": "amenity=pub",
+    "osm": {
+     "type": "node",
+     "id": 393136467,
+     "name": "Cafe Sport"
+    },
+    "bag": [
+     "bijeenkomstfunctie,woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1911-five-storey-tall scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2023-01-02 span 0-206"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 5.16 m)"
+  }
+ }
+}

@@ -62,7 +62,7 @@ async function settle(page: Page, ms = 4000): Promise<Record<string, any>> {
 /** Freeze the camera `dist` m behind the spot along its bearing, `up` m above, looking at it. */
 async function look(page: Page, p: Place, dist: number, up: number): Promise<void> {
   await page.evaluate(({ p, dist, up }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map, ground = vm._ownGround;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
     vm.__syncOriginal = vm.__syncOriginal || vm.sync;
     vm.sync = () => {};
     const rad = p.bearing * Math.PI / 180, ux = Math.sin(rad), uy = Math.cos(rad);
@@ -78,7 +78,7 @@ async function look(page: Page, p: Place, dist: number, up: number): Promise<voi
 /** rAF cadence and the cell under the spot: its triangles per layer and build time. */
 async function cost(page: Page, p: Place): Promise<Record<string, unknown>> {
   return page.evaluate(async ({ lng, lat }) => {
-    const vm = (window as any).canalRecallGame.vectorMap, ground = vm._ownGround, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, ground = vm._ownGround, map = vm.map ?? vm.cameraMap;
     const times: number[] = [];
     let last = performance.now();
     for (let i = 0; i < 120; i++) { map.triggerRepaint(); await new Promise<void>(r => requestAnimationFrame(() => r())); const t = performance.now(); times.push(t - last); last = t; }

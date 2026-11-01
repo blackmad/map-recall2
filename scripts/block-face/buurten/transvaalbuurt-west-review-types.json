@@ -43,6 +43,41 @@
     "transvaal-1928-plain-row"
    ],
    "reason": "Transvaalkade 130-132 (2020-04-29 strip): three sash windows per storey, no bands"
+  },
+  {
+   "face": "afrikanerplein-25-55",
+   "types": [
+    "transvaal-1931-plain-grid-nodoor"
+   ],
+   "pands": [
+    "0363100012125852",
+    "0363100012079290"
+   ],
+   "reason": "Afrikanerplein 35 and 39 (2020-04-29 strip, gridded): one portiek door serves two pands; these have a ground window on the erker axis beside the neighbour's door (#158)"
+  },
+  {
+   "face": "afrikanerplein-25-55",
+   "types": [
+    "transvaal-1931-plain-grid"
+   ],
+   "pands": [
+    "0363100012070168",
+    "0363100012084510",
+    "0363100012143471",
+    "0363100012135325",
+    "0363100012064549",
+    "0363100012086955",
+    "0363100012097742",
+    "0363100012068510"
+   ],
+   "reason": "Afrikanerplein 33, 37, 41, 45, 47, 49, 51 (2020-04-29 strip, gridded): the blue portiek door on the erker axis at a party wall (#158); 43 is the door-less half too, but a street tree hides 51 % of it and auto-place places a pand without its own photo evidence only on a same-type neighbour's, so it takes the door type (one door too many) rather than leave a 3DBAG box in the row"
+  },
+  {
+   "face": "vaalrivier-15-21",
+   "types": [
+    "transvaal-1922-loggia-row"
+   ],
+   "reason": "Vaalrivierstraat 15-19 (2020-04-29 strip, gridded): the Colensostraat loggia front (BAG 1920, where transvaal-1920-three-storey also matches on the facts): half loggias over brick parapets at the party walls of 15/17 and 19/21, blue door pairs under shared canopies (#158)"
   }
  ],
  "mirrors": [

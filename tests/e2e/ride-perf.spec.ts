@@ -70,7 +70,7 @@ async function instrument(page: Page) {
   await page.evaluate(() => {
     const w = window as any;
     const vm = w.canalRecallGame.vectorMap;
-    const map = vm.map;
+    const map = vm.map ?? vm.cameraMap;
     const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [], minimap: [], gameRender: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => {

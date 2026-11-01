@@ -44,9 +44,9 @@ try {
   await page.locator('#route-card').evaluate(f=>f.requestSubmit());
   await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera?.introOverview===0,null,{timeout:60000});
   console.log(`Reviewing ${touch?'touch':'desktop'} game scene`);
-  await page.evaluate(()=>{canalRecallGame.vectorMap.sync=()=>{};canalRecallGame.vectorMap._cameraClearanceRequest=null;canalRecallGame.vectorMap.map.jumpTo({center:[4.915,52.366],zoom:16,pitch:0,bearing:0});});
+  await page.evaluate(()=>{canalRecallGame.vectorMap.sync=()=>{};canalRecallGame.vectorMap._cameraClearanceRequest=null;(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center:[4.915,52.366],zoom:16,pitch:0,bearing:0});});
   if(touch)for(const center of [[4.914,52.366],[4.918,52.366],[4.919,52.365]]) {
-   await page.evaluate(center=>canalRecallGame.vectorMap.map.jumpTo({center,zoom:16,pitch:0}),center);
+   await page.evaluate(center=>(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center,zoom:16,pitch:0}),center);
    await page.waitForFunction(()=>{const a=canalRecallGame.vectorMap._artisAnimals;return a.index&&!a.indexPending&&a.pending.size===0;},null,{timeout:30000});
   }
   await page.waitForFunction(count=>{const a=canalRecallGame.vectorMap._artisAnimals;return a.index&&a.pending.size===0&&a.entries.length>=count-1;},animalCount,{timeout:60000});
@@ -60,7 +60,7 @@ try {
    ['savannah',[4.918055,52.36642],20,25],['south-america',[4.91467,52.36598],21,80],['jaguar',[4.91547,52.365757],21,100],['lemurs',[4.9156665,52.3670347],21,160]
   ];
   for(const [name,center,zoom,bearing] of stations){
-   await page.evaluate(({center,zoom,bearing})=>canalRecallGame.vectorMap.map.jumpTo({center,zoom,pitch:55,bearing}),{center,zoom,bearing});
+   await page.evaluate(({center,zoom,bearing})=>(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center,zoom,pitch:55,bearing}),{center,zoom,bearing});
    await page.waitForTimeout(1200);
    const state=await page.evaluate(async()=>{
     const a=canalRecallGame.vectorMap._artisAnimals,times=[];await new Promise(resolve=>{let last;function step(t){if(last)times.push(t-last);last=t;if(times.length<60)requestAnimationFrame(step);else resolve();}requestAnimationFrame(step);});times.sort((x,y)=>x-y);
@@ -71,9 +71,9 @@ try {
    assert(state.visible.length>0);assert(state.draws>0,JSON.stringify(state));
   }
   const before=requests.length;
-  await page.evaluate(()=>canalRecallGame.vectorMap.map.jumpTo({center:[4.88,52.375],zoom:18,pitch:50}));
+  await page.evaluate(()=>(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center:[4.88,52.375],zoom:18,pitch:50}));
   assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._artisAnimals.entries.filter(e=>e.group.visible).length),0);
-  await page.evaluate(()=>{const a=canalRecallGame.vectorMap._artisAnimals;a.setExtractRoot('../data/extracts/utrecht');canalRecallGame.vectorMap.map.jumpTo({center:[4.915,52.366],zoom:16,pitch:0});});
+  await page.evaluate(()=>{const a=canalRecallGame.vectorMap._artisAnimals;a.setExtractRoot('../data/extracts/utrecht');(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center:[4.915,52.366],zoom:16,pitch:0});});
   assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._artisAnimals.entries.filter(e=>e.group.visible).length),0);
   await page.evaluate(()=>canalRecallGame.vectorMap._artisAnimals.setExtractRoot('../data/extracts/amsterdam'));
   assert(await page.evaluate(()=>canalRecallGame.vectorMap._artisAnimals.entries.some(e=>e.group.visible)));

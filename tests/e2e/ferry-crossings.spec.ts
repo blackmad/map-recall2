@@ -8,7 +8,7 @@ test('cycling boards an IJ ferry, is kept off the bank, and docks at any pier', 
   await expect.poll(()=>page.evaluate(()=>!!(window as any).canalRecallGame)).toBe(true);
   if (process.env.PW_REQUIRE_SWIFTSHADER) {
     const renderer = await page.evaluate(()=>{
-      const map=(window as any).canalRecallGame.vectorMap.map;
+      const map=(window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       const gl=map.getCanvas().getContext('webgl2');
       const ext=gl.getExtension('WEBGL_debug_renderer_info');
       return ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : 'unknown';

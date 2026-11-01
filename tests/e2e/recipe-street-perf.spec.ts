@@ -41,7 +41,7 @@ for (const rep of [1, 2]) test(`ride the recipe street ${baseline ? '(baseline)'
   await parkAt(page, at, face);
   const ids = houses.map(h => h.id);
   if (!baseline) await page.waitForFunction((need: string[]) => {
-    const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks, c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+    const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks, c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
     return l && need.filter(id => l.shown.has(id)).length >= 8;
   }, ids, { timeout: 120_000, polling: 1000 });
   else await page.waitForTimeout(25_000);
@@ -51,7 +51,7 @@ for (const rep of [1, 2]) test(`ride the recipe street ${baseline ? '(baseline)'
   const throttle = info.project.name === 'iphone' ? 4 : 1;
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle });
   await page.evaluate(() => {
-    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map;
+    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => { const o = obj[key].bind(obj); obj[key] = (...a: unknown[]) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; };

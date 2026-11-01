@@ -100,8 +100,8 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
   });
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: true });
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+    if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
   });
   const results: Record<string, unknown> = {};
   for (const spot of TONE_SPOTS.filter(s => !ONLY || ONLY.includes(s.name))) {
@@ -116,7 +116,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
     // which moved the masked luma by more than a look change does (#73). Eye on the stand line, `standM` out and up at
     // 35 deg, looking at the target 8 m up.
     await page.evaluate(({ eye, target, alt }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.__toneSync ??= vm.sync; vm.sync = () => {}; map.stop();
       map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, alt, { lng: target[0], lat: target[1] }, 8));
     }, { eye: [p.lng, p.lat], target: c, alt: Math.round(spot.standM * Math.tan(35 * Math.PI / 180)) + 8 });
@@ -124,7 +124,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
     await settle(page);
     await page.waitForTimeout(2500);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map, canvas = map.getCanvas();
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, canvas = map.getCanvas();
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
     await page.waitForTimeout(600);
@@ -136,7 +136,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
         vm.__toneLandmarks ??= vm._signatureLandmarks?.enabled;
         vm._threeBuildings?.setVisible(!(what === 'facades' || what === 'both'));
         if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = what === 'landmarks' || what === 'both' ? false : vm.__toneLandmarks;
-        vm.map.triggerRepaint();
+        (vm.map ?? vm.cameraMap).triggerRepaint();
       }, what);
       await page.waitForTimeout(800);
       return page.screenshot();
@@ -149,11 +149,11 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
       sf.scene.overrideMaterial = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
         vertexShader: 'varying vec3 vW; void main() { vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }',
         fragmentShader: 'varying vec3 vW; void main() { vec3 n = normalize(cross(dFdx(vW), dFdy(vW))); gl_FragColor = abs(n.z) > 0.5 ? vec4(1.0, 0.0, 0.0, 1.0) : vec4(0.0, 1.0, 0.0, 1.0); }' });
-      vm.map.triggerRepaint();
+      (vm.map ?? vm.cameraMap).triggerRepaint();
     });
     await page.waitForTimeout(800);
     const faces = await page.screenshot();
-    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._sharedFrame.scene.overrideMaterial = null; vm.map.triggerRepaint(); });
+    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._sharedFrame.scene.overrideMaterial = null; (vm.map ?? vm.cameraMap).triggerRepaint(); });
     await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = ''; });
     await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__toneSync) vm.sync = vm.__toneSync; });
     const s = await raw(shot);

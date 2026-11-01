@@ -55,9 +55,9 @@ async function holdAt(page: Page, query: string, place: { lng: number; lat: numb
 
 /** Move the held plan view to map zoom `t` and wait for its tiles. */
 async function planZoom(page: Page, t: number, settleMs = 2500) {
-  await page.evaluate(t => { const g = (window as any).canalRecallGame, m = g.vectorMap.map; (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.getZoom()) }; }, t);
+  await page.evaluate(t => { const g = (window as any).canalRecallGame, m = g.vectorMap.camera; (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.zoom()) }; }, t);
   await page.waitForTimeout(settleMs);
-  await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 15_000 }).catch(() => {});
+  await page.waitForFunction(() => ((window as any).canalRecallGame.vectorMap.map ? (window as any).canalRecallGame.vectorMap.map.areTilesLoaded() : true), null, { timeout: 15_000 }).catch(() => {});
   await page.waitForTimeout(500);
 }
 
@@ -68,13 +68,13 @@ async function sweep(page: Page, query: string, info0: TestInfo) {
   const frames: { z: number; frame: Frame; cx: number; cy: number }[] = [];
   for (let target = FROM; target <= TO + 1e-9; target += STEP) {
     await page.evaluate(t => {
-      const g = (window as any).canalRecallGame, m = g.vectorMap.map;
-      (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.getZoom()) };
+      const g = (window as any).canalRecallGame, m = g.vectorMap.camera;
+      (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.zoom()) };
     }, target);
     await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
     await page.waitForTimeout(250);
-    await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 5000 }).catch(() => {});
-    const st = await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map, c = m.project(m.getCenter()); return { z: m.getZoom() as number, cx: c.x as number, cy: c.y as number, cssW: window.innerWidth }; });
+    await page.waitForFunction(() => ((window as any).canalRecallGame.vectorMap.map ? (window as any).canalRecallGame.vectorMap.map.areTilesLoaded() : true), null, { timeout: 5000 }).catch(() => {});
+    const st = await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.camera, c = m.project(m.center()); return { z: m.zoom() as number, cx: c.x as number, cy: c.y as number, cssW: window.innerWidth }; });
     const shot = await page.screenshot();
     // TRANSITION_SHOTS=<dir>: keep the sweep's frames for inspection.
     if (process.env.TRANSITION_SHOTS) writeFileSync(`${process.env.TRANSITION_SHOTS}/${info0.project.name}${query ? '-ab' : ''}-${st.z.toFixed(1)}.png`, shot);

@@ -55,7 +55,7 @@ async function settle(page: Page, ms = 4000): Promise<Record<string, any>> {
 /** Freeze the camera `dist` m behind the spot along its bearing, `up` m above, looking at it. */
 async function look(page: Page, p: Place, dist: number, up: number): Promise<void> {
   await page.evaluate(({ p, dist, up }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map, ground = vm._ownGround;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
     vm.__syncOriginal = vm.__syncOriginal || vm.sync;
     vm.sync = () => {};
     const rad = p.bearing * Math.PI / 180, ux = Math.sin(rad), uy = Math.cos(rad);
@@ -87,7 +87,7 @@ test('aerial edge: Da Costakade 13 from 300 m above Nieuw-West, resident radius 
   const rows: Record<string, unknown>[] = [];
   for (const radius of radii) {
     const zoom = await page.evaluate(({ AERIAL, radius, before }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map, ground = vm._ownGround;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
       vm.__syncOriginal = vm.__syncOriginal || vm.sync;
       vm.sync = () => {};
       ground.opts.aerialRadiusM = radius;
@@ -102,7 +102,7 @@ test('aerial edge: Da Costakade 13 from 300 m above Nieuw-West, resident radius 
     await page.waitForTimeout(3000);
     // Frame cost with the camera held: rAF cadence and the map's own render time over 180 frames.
     const perf = await page.evaluate(async () => {
-      const map = (window as any).canalRecallGame.vectorMap.map, times: number[] = [];
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, times: number[] = [];
       let last = performance.now();
       for (let i = 0; i < 180; i++) { map.triggerRepaint(); await new Promise<void>(r => requestAnimationFrame(() => r())); const t = performance.now(); times.push(t - last); last = t; }
       times.sort((a, b) => a - b);
@@ -136,7 +136,7 @@ test('far ring: aerial views over Nieuw-West and Noord, far ring off and on', as
     await teleport(page, view);
     for (const far of [false, true]) {
       await page.evaluate(({ view, far }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, ground = vm._ownGround;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
         vm.__syncOriginal = vm.__syncOriginal || vm.sync;
         vm.sync = () => {};
         ground.opts.far = far;
@@ -148,7 +148,7 @@ test('far ring: aerial views over Nieuw-West and Noord, far ring off and on', as
       await expect.poll(async () => { const s = await status(page); return s.ready && !s.queued && !Object.keys(s.pending ?? {}).length && !s.far.pending; }, { timeout: 300_000, intervals: [1000] }).toBe(true);
       await page.waitForTimeout(3000);
       const perf = await page.evaluate(async () => {
-        const map = (window as any).canalRecallGame.vectorMap.map, times: number[] = [];
+        const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, times: number[] = [];
         let last = performance.now();
         for (let i = 0; i < 120; i++) { map.triggerRepaint(); await new Promise<void>(r => requestAnimationFrame(() => r())); const t = performance.now(); times.push(t - last); last = t; }
         times.sort((a, b) => a - b);
@@ -228,7 +228,7 @@ test('far-ring cells dissolve in: mid-dissolve shot, no shader errors', async ({
     // Jump the ring 1.6 km east: a column of cells arrives.
     const east: [number, number] = [4.8685, 52.3745];
     ground.update(east, 15.8, 76);
-    vm.map.jumpTo({ center: east, zoom: 15.8, pitch: 76, bearing: 90 });
+    (vm.map ?? vm.cameraMap).jumpTo({ center: east, zoom: 15.8, pitch: 76, bearing: 90 });
   });
   await expect.poll(async () => { const s = await status(page); return Object.keys(s.pending ?? {}).length === 0 && !s.queued; }, { timeout: 240_000, intervals: [500] }).toBe(true);
   await page.waitForTimeout(4000);

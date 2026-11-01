@@ -1,0 +1,48 @@
+{
+ "street": "De la Reijstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:43:49.927Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012130038",
+   "addresses": [
+    "De la Reijstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000992646"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089836",
+   "addresses": [
+    "De la Reijstraat 34A",
+    "De la Reijstraat 34B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000617915"
+    },
+    {
+     "address": "De la Reijstraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000617916"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

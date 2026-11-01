@@ -243,7 +243,37 @@ shadows through one merged stand-in per level"): shadow draws ÷3, no visible
 change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
 :228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
 timeout), same with and without the fix. Phone players who tap a turn at a
-T-junction instead of holding it stay stopped (routing lane). **Integrator
+T-junction instead of holding it stay stopped (routing lane). Oracle
+migration 2 merged 2026-11-01 (HISTORY "Specs and scripts read the
+engine-neutral camera"): default-engine smoke 28/28 green; the own gate set
+still fails `labels.spec` "hidden while the loading screen covers the map"
+(`.cr-map-labels` is MapLibre-only). Open oracles, listed in that entry: own
+equivalents for `_completeCityHasBuildings`, `.cr-map-labels`, the style reads
+and the C-group assertions (L1); the lane's next round runs the other 44
+specs under own, the rest on iphone and the four perf scripts for real.
+Materials hand-back merged 2026-11-01 (HISTORY "World-v1 is pixel-identical"):
+0 px at the five A/B spots on the published cells; **`?world=v1` is the
+default since 2026-11-01** (HISTORY "The compiled city cells are the default
+world"; `?world=live` is the tile path). P4 counters gate (budgets `p4Counters`, measured 2026-11-01): red on uploads
+≥ 1 MiB after warm-up (49 desktop / 32 iPad: facade chunk geometry, own-ground
+cell layers, one landmark), draws at 60° p95 399 / 589 vs ≤ 400 (roof caps ~25
+and bike parts ~35 are the cheap merges, legacy bundles), iPad triangles p50
+1.21 M vs ≤ 700 k after the `tileWhole` fix (811ff753c; owners: own ground
+306k, overview 279k, facades 259k, trees 183k, cycle overlay 108k). Materials
+lane takes the owners in size order (overview at ride zoom first); the 150/400 m
+facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
+shader links are 0. P5 follow-ups: delete
+`building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
+default; measure `worldRideDownloadMB` (#130 part 2, gate 2 MB, still
+pending). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
+ready ~1 s sooner locally but racing 0.7–1.2 s later, equal at 20 Mbit; the
+network is the bottleneck), shaders-off-at-boot (program calls cost 13 ms at
+boot, nothing to win). Parked: world-v1 A/B first load after a cold start
+sometimes differs by ~1000 px at Westerkerk (not camera/lifts/styled/install
+order); the harness warm-up hides it; find the cause before trusting
+cold-load pixel A/Bs. Pre-existing default red to own: `street-survey-retire` "shots: default" (35
+entries, expected none) and the flaky `city-startup-lod` "mobile city shells
+remain". **Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
@@ -398,7 +428,9 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt round 5, next (rounds 1–4 in HISTORY "Transvaalbuurt kit", "round 2", "round 3", "round 4"):** 57 pands installed on Albert Luthulistraat, Retiefstraat, Pretoriusstraat, Transvaalstraat, Paardekraalstraat, De la Reijstraat, Kraaipanstraat, Transvaalkade, Vaalrivierstraat, Danie Theronstraat and President Steynstraat; the type library has ten types. Pipeline fixes first, each small and typed: (1) `batch.ts --faces` is ignored when `--buurt` is given (it ran the whole buurt and installed another lane's face); (2) a buurt-wide `auto-place --review` re-run renumbers runs and overwrites installed run intents (every round-4 lane restored them from HEAD by hand): skip faces with an installed chunk unless `--replace`; (3) the batch's per-pand wall refit reads hedge and tree green (Danie Theronstraat 13A/16A/23A/28 came out near-black): refit from tree-free columns only or take the row median; (4) auto-place `groundUse` turns OSM street furniture (amenity=waste_disposal, bicycle_parking, public_bookcase) into a shopfront (Vaalrivierstraat 14–22, Retiefstraat 61–63, also campen-2-34-r2, flinck-169-233-r1, hasebroek-2-46-r1 carries it); (5) the Tugelaweg strips put the facade foot 0.6–1.8 m above the strip ground, which fails the 1929 block on likeness (NCC 0.07–0.13): a strip-foot offset read, not a type change. Then the designs with the most held pands and no type: Albert Luthulistraat 6–32 (1930 stair towers rising ~3 m over the coping, 7 pands, measured in `transvaalbuurt-round4/1929/luth-a.png`), Schalk Burgerstraat 45–131 (diaper brick, corner oriels, 9), Afrikanerplein 1–23 (band windows, arched portieken) and 25–55 (plain five-storey grid, 14), Krugerstraat 5–27 (point gables with a tall tower), the 1922 recessed-loggia rows (Transvaalstraat 131–143, Colensostraat, Vaalrivierstraat 15–21; loggias exist only in large intents), Hofmeyrstraat 24–44 (3DBAG 15 m vs a compressed 2023 strip), the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28). Kit gaps the holds name: a brick attic bay over several axes (Pretoriusstraat 76–80), the oculus gablet of Pretoriusstraat 79–87, header-brick vent rows and consoles under the top band, a stone-mullioned small-paned window, a cheap flat dormer (triangle budget), double doors, a fifth storey of attic lights, a setback roof storey that 3DBAG sees and the strips do not (also the installed 1923 row's grey pitched roof), 71D's balcony stack on the third of four axes with the door left. `bilder-157757-164549` carries the same rake overlap `roof.rakeClear` fixes; opt it in when next recompiled. Placement records (`transvaalbuurt-{oost,west}-placement.json`, per-face `auto-place.json`) are per-lane snapshots after the four-way merge; regenerate them once fix (2) lands. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 6, next (rounds 1–5 in HISTORY "Transvaalbuurt kit", "round 2" … "round 5"):** 79 pands installed in 27 runs, 17 types. Highest-value items: (1) a plinth or foot offset on the model (the Tugelaweg 1929 block's front stands 1.9 m above 3DBAG ground; the strip-foot read in `stripFoot.ts` only aligns the photo), then the grouped band windows and the stair panel position of `transvaal-1929-block`, which releases Tugelaweg 95–118 (7 pands over the gate, held at gallery size); (2) a porch projection beyond the 0.5 m grouped-frontage cap, which releases the 1922 loggia rows (12 pands, type and loggia kit part are in); (3) a patterned-brick material for diaper brick (Schalk Burgerstraat reads greyer than the photo) and canted blue-framed corner oriels; (4) the gateway arch with a raised centre bay (Schalk Burgerstraat 79–97) and the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28); (5) the remaining designs without a type: Transvaalstraat 131–143 (window pair + small window per storey, 7), Krugerstraat 5–27 (point gables with a tall tower), Afrikanerplein 1–23 (band windows, arched portieken), Christiaan de Wetstraat 116–272, the 1915–1919 (58) and post-1931 (99) pands, Hofmeyrstraat 24–44 (compressed strip). Ground-only patches for Eerste Jacob van Campenstraat 8 (bicycle rack → shop) and Bloemgracht 158A/162 (charging station, parking space) if wanted: the #157 pattern (HEAD intent + the one pand's groundFloor and type.ground). `bilder-157757-164549` still carries the rake overlap `roof.rakeClear` fixes. The 174 Transvaalbuurt faces without a usable strip need a second panorama pass (other capture dates, lower obliquity) before anything else can place there. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+
+**Museumkwartier, first buurt lanes inside the ring (user 2026-11-01; #159 `lane/museumkwartier-museum-a-20261101` Cornelis Schuytbuurt + Concertgebouwbuurt, #160 `lane/museumkwartier-museum-b-20261101` Duivelseiland + Hondecoeterbuurt + Johannes Vermeerbuurt):** chosen over Staatsliedenbuurt and Oosterparkbuurt because it is the most-ridden uncovered wijk (2,892 pands, 1 % modelled, repetition 0.31, built 1890–1910, same stock as the Helmersbuurt and Oud-West libraries across the park). Order per the Transvaalbuurt lessons: survey with intake, cluster by build-year family, try `oud-west`, `helmersbuurt`, `de-pijp`, `bellamy` first and report the outcome split per library, author one measured type per family no library fits into the new `scripts/block-face/types/museumkwartier/`, gallery-size review, install. Next after these: P.C. Hooftbuurt (310), Banpleinbuurt (238, 1920s), Harmoniehofbuurt (146, 1920s, repetition 0.53); then Staatsliedenbuurt (1,792, 1910s, next to the Spaarndammerbuurt library).
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1362,7 +1394,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ## P0 — Red, or actively teaching something false
 
-- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low
+- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low SwiftShader at DPR 1 probes 6.8–7.0 ms, under the 8 ms mid threshold, so the fill probe cannot detect a weak GPU limited by triangle count; only the renderer name sends it to low (materials 2026-11-01). M4 pin: auto vs `?tier=high` 0–11 px at westerkerk/nassaukade, rerun with `ENGINE=own WORLD_AB=1 WORLD_AB_STALE=1 AB_CAMERA=fixed AB_NOISE=1 AB_DPR=2 AB_SPOTS=westerkerk,nassaukade AB_QUERY=governor=0 AB_B_QUERY=tier=high npx playwright test world-v1-ab --project=desktop --headed`.
   > 25 ms on the ~1 s probe come from one M4 Pro (1.5 ms) and SwiftShader
   (13–14 ms); a real mid-class laptop and an Android phone have never run the
   probe. Until they do, `?tier=` forcing and the Sentry graphics-failure

@@ -11,6 +11,44 @@
     "transvaal-1911-five-storey"
    ],
    "reason": "Retiefstraat 71D (2023-01-02 strip): the low-ground 1911 front with its door on the left; --photo-decides took the mirrored variant on edge NCC (0.291 vs 0.277), which puts the door and the shouldered gable on the wrong sides"
+  },
+  {
+   "face": "colenso-13-25",
+   "types": [
+    "transvaal-1922-loggia-row"
+   ],
+   "reason": "Colensostraat 13-25 (2020-04-29 strip, gridded): upper window and half a recessed loggia over a brick parapet at every second party wall, door pairs under a shared canopy below; no canted bay (#158)"
+  },
+  {
+   "face": "colenso-14-28",
+   "types": [
+    "transvaal-1922-loggia-row"
+   ],
+   "reason": "Colensostraat 14-28 (2019-12-19 strip, gridded): the same front as 13-25, loggia halves meeting at 11.6 m (#158)"
+  },
+  {
+   "face": "burger-45-131",
+   "types": [
+    "transvaal-1931-diaper-row-oriel-left"
+   ],
+   "pands": [
+    "0363100012076994",
+    "0363100012117331",
+    "0363100012150447"
+   ],
+   "reason": "Schalk Burgerstraat 65, 99, 111 (2020-04-30 strip, gridded): oriel and portiek door at the left party wall, the pair 3.1 and 4.8 m from the pand left; the BAG cut lies 1 m off the shared portiek axis so the mirrored base type misplaces the pair by 0.9 m (#158)"
+  },
+  {
+   "face": "burger-45-131",
+   "types": [
+    "transvaal-1931-diaper-row"
+   ],
+   "pands": [
+    "0363100012140152",
+    "0363100012093454",
+    "0363100012076140"
+   ],
+   "reason": "Schalk Burgerstraat 59, 71, 105 (2020-04-30 strip, gridded): pair at 1.0 and 2.5 m, oriel and portiek door at the right party wall (#158)"
   }
  ],
  "mirrors": [
@@ -25,6 +63,42 @@
    "type": "transvaal-1911-five-storey",
    "mirror": false,
    "reason": "Retiefstraat 71D (retief-45-75 strip 2023-01-02): the house door with its letterbox panel is on the left axis and the shouldered gable stands over the right two-thirds; the door reading mirrored it"
+  },
+  {
+   "pandId": "0363100012140152",
+   "type": "transvaal-1931-diaper-row",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
+  },
+  {
+   "pandId": "0363100012093454",
+   "type": "transvaal-1931-diaper-row",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
+  },
+  {
+   "pandId": "0363100012076140",
+   "type": "transvaal-1931-diaper-row",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
+  },
+  {
+   "pandId": "0363100012076994",
+   "type": "transvaal-1931-diaper-row-oriel-left",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
+  },
+  {
+   "pandId": "0363100012117331",
+   "type": "transvaal-1931-diaper-row-oriel-left",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
+  },
+  {
+   "pandId": "0363100012150447",
+   "type": "transvaal-1931-diaper-row-oriel-left",
+   "mirror": false,
+   "reason": "Schalk Burgerstraat (2020-04-30 strip): door read is unread under parked cars for half the row; the oriel side is read off the upper storeys (#158)"
   }
  ]
 }

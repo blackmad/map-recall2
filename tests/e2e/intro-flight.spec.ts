@@ -58,7 +58,7 @@ test('the ride opens on an overview of start and destination, then lands on the 
       osmLoader: unknown; canvas: HTMLCanvasElement;
     };
     const rect = g.canvas.getBoundingClientRect();
-    const mapRect = g.vectorMap.map.getCanvas().getBoundingClientRect();
+    const mapRect = g.vectorMap.frameCanvas().getBoundingClientRect();
     const scale = rect.width / CANVAS_W;
     let worst = 0;
     for (const point of [g.player, g.track.finishPoint]) {
@@ -102,7 +102,7 @@ test.describe('on a retina laptop window', () => {
         osmLoader: unknown; canvas: HTMLCanvasElement;
       };
       const rect = g.canvas.getBoundingClientRect();
-      const mapRect = g.vectorMap.map.getCanvas().getBoundingClientRect();
+      const mapRect = g.vectorMap.frameCanvas().getBoundingClientRect();
       const scale = rect.width / CANVAS_W;
       let worst = 0;
       for (const point of [g.player, g.track.finishPoint]) {

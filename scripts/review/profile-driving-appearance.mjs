@@ -21,12 +21,12 @@ try {
     for (const zoom of [17.1, 17.5, 18]) {
       await page.evaluate(zoom => {
         const vm = window.canalRecallGame.vectorMap;
-        vm.map.jumpTo({ center: [4.874284, 52.371787], zoom, pitch: 65, bearing: -18.12 });
-        vm.map.triggerRepaint();
+        (vm.map ?? vm.cameraMap).jumpTo({ center: [4.874284, 52.371787], zoom, pitch: 65, bearing: -18.12 });
+        (vm.map ?? vm.cameraMap).triggerRepaint();
       }, zoom);
       await page.waitForTimeout(3000);
       const data = await page.evaluate(async () => {
-        const vm = window.canalRecallGame.vectorMap, map = vm.map;
+        const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         // getStyle() omits custom layers in MapLibre; inspect runtime layers too.
         const layers = map.style._order.map(id => map.getLayer(id)).filter(Boolean);
         const groups = {
