@@ -386,7 +386,7 @@ export class OwnWorldView {
     return this.riderSurfaceM;
   }
 
-  private syncGroundConsumers(): void {
+  private syncGroundConsumers(lap?: (name: string) => void): void {
     const ground = this._ownGround;
     if (!ground || !ground.ready) return;
     const tb = this._threeBuildings;
@@ -404,8 +404,11 @@ export class OwnWorldView {
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
     this.groundRefreshAt = now;
     this.groundRevision = ground.surfaceRevision;
+    lap?.('ground update: consumers');
     tb?.refreshGroundBases?.();
+    lap?.('ground update: building bases');
     this.extras.refreshGroundBases();
+    lap?.('ground update: extras bases');
   }
 
   // ---- the frame ----
@@ -617,7 +620,11 @@ export class OwnWorldView {
     // Landmark models and trees hold what the driving view loaded: "visible" at city scale is all of Amsterdam.
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
-    if (this._ownGround) { this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch); this.syncGroundConsumers(); }
+    if (this._ownGround) {
+      this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch);
+      lap('ground update: own ground');
+      this.syncGroundConsumers(phases ? lap : undefined);
+    }
     lap('ground update');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
