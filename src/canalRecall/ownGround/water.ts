@@ -23,16 +23,31 @@ export interface WaterGeometry {
 export function waterZAt(geos: readonly WaterGeometry[], x: number, y: number, fallback: number): number {
   for (const g of geos) {
     if (!g.levels) continue;
+    // Per polygon, cached: its box, then its y-banded edges (bandedInPolygon). The rider's boat and the ferry ask every
+    // frame, and the full ring walk over the resident water was 1.5 s of a 60 s ride at 4x (#129). Same answer.
+    const tests = polygonTests(g.polygons);
     for (let k = 0; k < g.polygons.length; k++) {
-      let inside = false;
-      for (const ring of g.polygons[k]) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const [xi, yi] = ring[i], [xj, yj] = ring[j];
-        if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
-      }
-      if (inside) return g.levels[k] ?? fallback;
+      const t = tests[k];
+      if (x < t.box[0] || x > t.box[2] || y < t.box[1] || y > t.box[3]) continue;
+      if ((t.inside ??= bandedInPolygon(g.polygons[k]))(x, y)) return g.levels[k] ?? fallback;
     }
   }
   return fallback;
+}
+
+type PolygonTest = { box: readonly [number, number, number, number]; inside?: (x: number, y: number) => boolean };
+const POLYGON_TESTS = new WeakMap<readonly (readonly (readonly Vec2[])[])[], PolygonTest[]>();
+function polygonTests(polygons: readonly (readonly (readonly Vec2[])[])[]): PolygonTest[] {
+  let tests = POLYGON_TESTS.get(polygons);
+  if (!tests) {
+    tests = polygons.map(p => {
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const ring of p) for (const [px, py] of ring) { if (px < x0) x0 = px; if (px > x1) x1 = px; if (py < y0) y0 = py; if (py > y1) y1 = py; }
+      return { box: [x0, y0, x1, y1] as const };
+    });
+    POLYGON_TESTS.set(polygons, tests);
+  }
+  return tests;
 }
 
 export interface WaterMask {
@@ -227,6 +242,32 @@ export const OPENING_REACH_M = 6;
 /** The opening reaches this far into the water found beside the deck (overlap, so no land strip is left). */
 export const OPENING_OVERLAP_M = 0.5;
 
+/**
+ * inPolygon with the edges bucketed into horizontal bands: only an edge whose y-range holds y can flip the even-odd
+ * count, and every such edge lies in y's band, so the answer is the same with far fewer edges per point.
+ */
+export function bandedInPolygon(poly: readonly (readonly Vec2[])[], band = 2): (x: number, y: number) => boolean {
+  let y0 = Infinity, y1 = -Infinity;
+  for (const ring of poly) for (const p of ring) { if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }
+  if (!(y1 >= y0)) return () => false;
+  const n = Math.floor((y1 - y0) / band) + 1, bands: number[][] = Array.from({ length: n }, () => []), edges: number[] = [];
+  for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j], e = edges.length / 4;
+    edges.push(xi, yi, xj, yj);
+    const b0 = Math.floor((Math.min(yi, yj) - y0) / band), b1 = Math.floor((Math.max(yi, yj) - y0) / band);
+    for (let b = b0; b <= b1; b++) bands[b].push(e);
+  }
+  return (x, y) => {
+    if (y < y0 || y > y1) return false;
+    let c = false;
+    for (const e of bands[Math.floor((y - y0) / band)]) {
+      const xi = edges[4 * e], yi = edges[4 * e + 1], xj = edges[4 * e + 2], yj = edges[4 * e + 3];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+    }
+    return c;
+  };
+}
+
 const inPolygon = (poly: readonly (readonly Vec2[])[], x: number, y: number) => {
   let c = false;
   for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; }
@@ -293,7 +334,24 @@ export function clipRing(ring: readonly Vec2[], rect: readonly [number, number, 
  */
 export function openUnderFootbridges(geo: WaterGeometry, decks: readonly OpeningDeck[], rect: readonly [number, number, number, number], fallbackZ: number, opts: OpeningOptions = {}): { geo: WaterGeometry; opened: string[]; sides: Map<string, [number, number]> } {
   const maxWidth = opts.maxWidth ?? OPENING_MAX_WIDTH_M, reach = opts.reach ?? OPENING_REACH_M, under = opts.under;
-  const inWater = (x: number, y: number) => geo.polygons.findIndex(p => inPolygon(p, x, y));
+  // Each polygon's box first (a point outside it has an even crossing count on every ring): the probes below walk
+  // 0.25 m steps beside every station, and testing every polygon of the cell at each step ran 350-580 ms tasks on
+  // the main thread while riding (#129). Same answer: the first polygon holding the point.
+  const boxes = geo.polygons.map(p => {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const ring of p) for (const [x, y] of ring) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    return [x0, y0, x1, y1] as const;
+  });
+  // A canal polygon's box covers most of the cell, so its edges are banded by y as well (bandedInPolygon), lazily.
+  const banded: (((x: number, y: number) => boolean) | undefined)[] = [];
+  const inWater = (x: number, y: number) => {
+    for (let k = 0; k < geo.polygons.length; k++) {
+      const b = boxes[k];
+      if (x < b[0] || x > b[2] || y < b[1] || y > b[3]) continue;
+      if ((banded[k] ??= bandedInPolygon(geo.polygons[k]))(x, y)) return k;
+    }
+    return -1;
+  };
   const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [], sides = new Map<string, [number, number]>();
   const median = (v: number[]) => { const q = [...v].sort((a, b) => a - b); return q[q.length >> 1]; };
   for (const d of decks) {

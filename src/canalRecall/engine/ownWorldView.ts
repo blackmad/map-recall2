@@ -179,7 +179,7 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
     const search = new URLSearchParams(W().location?.search ?? '');
@@ -192,6 +192,12 @@ export class OwnWorldView {
     const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
     if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);
     if (settings.facadeDetail && W().__canalRecallFacadeDetail === undefined && !search.has('facadeDetail')) W().__canalRecallFacadeDetail = settings.facadeDetail;
+    // The ground reads these once, when it is built below; an explicit query or global still wins.
+    if (settings.ground) {
+      if (W().__canalRecallGroundDetail === undefined && !search.has('groundDetail')) W().__canalRecallGroundDetail = settings.ground.detail;
+      if (W().__canalRecallGroundNear === undefined && !search.has('groundNear')) W().__canalRecallGroundNear = settings.ground.near;
+      if (W().__canalRecallGroundRing === undefined && !search.has('groundRing')) W().__canalRecallGroundRing = settings.ground.ring;
+    }
     this.qualityTier = { tier, reasons, settings: { ...settings, dprCap: Number.isFinite(settings.dprCap) ? settings.dprCap : null }, probe };
     W().__canalPerf = { ...(W().__canalPerf ?? {}), tier, tierReasons: reasons, tierSettings: this.qualityTier.settings, tierProbe: probe };
     console.info('[canal-recall] quality tier', tier, reasons.join(', ') || '-', probe ? `probe ${probe.frameMs} ms @${probe.fill.width}x${probe.fill.height}` : '');
@@ -652,7 +658,8 @@ export class OwnWorldView {
     ferry.zoomScale = zoomScale;
     const lngLat = worldToLngLat(player.x, player.y, loader);
     const surface = this.riderSurface();
-    ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
+    // Only while drawn: the water test ran every frame of every ride for a hidden ferry (#129); `update` below shows it.
+    if (visible) ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
     ferry.update(lngLat, player.angle, visible);
   }
   setPlayerTransit(player: any, loader: LoaderFrame, visible: boolean, underground = false, zoomScale = 1): void {
@@ -860,10 +867,15 @@ export class OwnWorldView {
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
 }
 
+/** Found numbers, by name: they are `const` in constants.js, and the indirect eval compiled a script per call, several a frame (#129). */
+const GLOBAL_NUMS = new Map<string, number>();
 function globalNum(name: string, fallback: number): number {
+  const known = GLOBAL_NUMS.get(name);
+  if (known !== undefined) return known;
   try {
     // Top-level `const` in constants.js is a global lexical binding, not a window property.
     const v = (0, eval)(`typeof ${name} === 'number' ? ${name} : undefined`);
-    return typeof v === 'number' ? v : fallback;
+    if (typeof v === 'number') { GLOBAL_NUMS.set(name, v); return v; }
+    return fallback;
   } catch (_) { return fallback; }
 }

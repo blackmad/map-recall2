@@ -230,7 +230,11 @@ camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
 iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
 P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
 in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
-Hand-back (6) merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
+Hand-back (7) merged 2026-11-01 (HISTORY "Seeded-route stutter owners
+fixed"): four exact own-ground fixes (What's New "Long routes no longer freeze
+as canals and bridges load"), render-on-change green (`render-on-change.spec`),
+`CameraMap.jumpTo` sub-mm tolerance, vehicle pose snapshots. Hand-back (6)
+merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
 named"): stutter owner table + three fixes (What's New "Fewer hitches when
 new ground streams in"), `clearanceResidents()`, P5 B1 (no maplibre-gl fetch
 under the flag), the oracle-migration-2 haiku brief; render-on-change WIP
@@ -1363,17 +1367,33 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   anything measurable, so fill is not the owner on this Mac). The user still
   feels stutter on localhost `?engine=own`: owners are main-thread hitches,
   named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
-  owners under `?engine=own` named"); the first three are fixed on main
-  (frames > 50 ms 7 → 0, long tasks 7 → 0 on the Jordaan ride). Still above
-  16 ms, 13 frames of 17–40 ms per 60 s: `_applyChunkPandBases` on a newly
-  added street chunk (≈ 100 ms total: first separation + relief sampling),
-  three.js render + `shadowMap.render` (≈ 70 ms), GC (49 ms), main-thread
-  own-ground `splitIntoTiles`/`cutMesh` (30 ms), the wayOpening deck index
-  still on the full 3×3 road cells (≈ 32 ms), facade `t4` (24 ms); P3 gate
-  "no streaming task > 16 ms at 1×" not met (L1, seeded-route run pending).
-  Both engines also render every idle frame (fan): render-on-change WIP on
-  L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
-  frames; spec not green yet, stays out of main until it is).
+  owners under `?engine=own` named", "Seeded-route stutter owners fixed").
+  Seeded route meets the P3 gate at 1× (long tasks 10 → 0, longest 600 → 68
+  ms). Jordaan after the 4× round (HISTORY "Per-frame CPU under
+  `?engine=own` at 4×"): 1× no task > 50 ms, longest 34 ms, but streaming
+  tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
+  bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
+  ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99. L1 next:
+  `buildShadowStandIn` and `splitIntoTiles` to the worker pool, then
+  `pop-in.mjs` under both engines and P5 B6.
+  Idle rendering (fan) is fixed under own: render-on-change on main, 0
+  renders per 5 s at rest; the default engine still renders every idle frame
+  until the flip.
+- **Heap gates after the ride-start cuts** (HISTORY "Heap at ride start under
+  `?engine=own&world=v1&roads=bin`"): desktop 493 MB meets ≤ 500; iPhone 359
+  MB against ≤ 160 is the open gap. Next owners: landmark GLB CPU arrays after
+  upload (25–42 MB), then the live data on a phone (ground store 90 MB, road
+  graph 39 MB, streetFronts 25 MB: smaller ring, lazy far-city CSR, fronts per
+  cell), owners table first on #130 (road lane). `engine-own.spec`'s `heapMB`
+  is noise without a GC; `scripts/heap-ride.mjs` is the measure.
+- **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
+  "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
+  single layer removal gets under 195 ms. Gate stays red as written; deciding
+  what the low tier may drop (trees, landmarks, overview beyond the ground)
+  needs a real weak device and the user's pixel budget, not a proxy. Related
+  P4 numbers: own ground at the Dam 1.78 M triangles on low / 2.21 M on high
+  against the 700k iPad budget (materials lane, 2026-11-01).
 - **POI/business labels through buildings under `?engine=own`** (user
   screenshot, Eerste Constantijn Huygensstraat; "we still need more
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1

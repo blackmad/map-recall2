@@ -17,6 +17,7 @@ import { overviewColours } from './themePalette';
 import { KX, KY, ORIGIN, toLocal, type Vec2 } from '../ownMap/frame';
 import { metresPerPixel } from '../ownMap/mapCamera';
 import { WaterIndex } from './waterIndex';
+import { cutMesh, growTileSpheres } from '../rendererShared/tiledGeometry';
 import type { FrameContext, FrameParticipant } from '../rendererShared/sharedFrame';
 
 export async function fetchOverview(extractRoot: string): Promise<OverviewData> {
@@ -75,6 +76,9 @@ export class OverviewLayer implements FrameParticipant {
   private readonly near = { uRider: { value: new THREE.Vector2() }, uNearR: { value: 600 }, uNear: { value: 0 } };
   private coverCheckAt = -Infinity;
   private coveredR = 0;
+  /** Span-culled geometries (cutSpans): the mesh that owns the spans and every mesh drawing that geometry. */
+  private readonly spanned: { owner: THREE.Mesh; meshes: THREE.Mesh[]; line: boolean }[] = [];
+  private spansOn = true;
 
   constructor(readonly data: OverviewData, private readonly view: {
     center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
@@ -109,7 +113,39 @@ export class OverviewLayer implements FrameParticipant {
       if (u?.uNear) { u.uRider = this.near.uRider; u.uNearR = this.near.uNearR; u.uNear = this.near.uNear; }
     });
     this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
+    this.cutSpans();
   }
+
+  /**
+   * Each heavy geometry drawn over only the span of its index on screen (tiledGeometry.ts drawAsSpans): the overview
+   * covers the whole region, ~0.7 M triangles plus casings, every one transformed and set up each frame though most
+   * are off screen; that is what a CPU rasteriser and a weak GPU are bound by (hand-back on #129, 2026-11-01). One
+   * draw call per mesh, as before. The index is reordered by tile; every mesh is one colour with no depth write, so
+   * the order inside a mesh changes no pixel. A fill and its casing share a geometry: the casing reuses the fill's
+   * spans. `?overviewSpans=0` keeps the whole index.
+   */
+  private cutSpans(): void {
+    if (new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get('overviewSpans') === '0') return;
+    const byGeo = new Map<THREE.BufferGeometry, THREE.Mesh[]>();
+    this.root.traverse(o => {
+      const m = o as THREE.Mesh;
+      if (m.isMesh && m.geometry.index) byGeo.set(m.geometry, [...(byGeo.get(m.geometry) ?? []), m]);
+    });
+    for (const [geo, meshes] of byGeo) {
+      const owner = meshes[0];
+      if (!cutMesh(THREE, owner, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans' })) continue;
+      const cull = owner.onBeforeRender;
+      const whole = () => { geo.drawRange.start = 0; geo.drawRange.count = Infinity; };
+      for (const m of meshes) {
+        m.onBeforeRender = (...a) => { if (this.spansOn) cull.apply(owner, a); else whole(); };
+        m.onAfterRender = whole;
+      }
+      this.spanned.push({ owner, meshes, line: !!geo.getAttribute('aDir') });
+    }
+  }
+
+  /** The A/B for span culling (the census, specs): off draws every geometry whole. */
+  setSpans(on: boolean): void { this.spansOn = on; }
 
   /**
    * v2 overview layers (scripts/own-map/fetch-osm-extras.ts), absent from a v1 file: landuse under the parks, piers
@@ -204,6 +240,13 @@ export class OverviewLayer implements FrameParticipant {
       m.uniforms.uHalf.value = px / 2 * mpp;
       m.uniforms.uOpacity.value = l.opacity * Math.min(1, px / 0.9);
     }
+    // The spans' spheres were built round the stored (z = 0, centreline) vertices: grow them by the draw depth and,
+    // for lines, the corner extrusion (uHalf × √2) of the widest mesh drawing that geometry.
+    for (const sp of this.spanned) {
+      let half = 0;
+      if (sp.line) for (const m of sp.meshes) half = Math.max(half, (m.material as THREE.ShaderMaterial).uniforms.uHalf.value as number);
+      growTileSpheres(sp.owner, half * Math.SQRT2 + Math.abs(OVERVIEW_Z) + 1);
+    }
     // Inside the radius the own ground fully covers round the rider the flat fills and lines would only be overdraw:
     // discard them there (checked twice a second; the ground's ring changes a cell at a time).
     const rider = this.view.rider?.();
@@ -221,6 +264,9 @@ export class OverviewLayer implements FrameParticipant {
   }
 }
 
+/** Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. */
+const OVERVIEW_TILES = 8;
+const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
 

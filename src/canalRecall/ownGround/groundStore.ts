@@ -109,7 +109,19 @@ export function groundCrossing(osms: readonly (OsmGroundExtract | null)[]): (x: 
     for (let i = 0; i + 1 < w.g.length; i++) { const a = toLocal(w.g[i][0], w.g[i][1]), b = toLocal(w.g[i + 1][0], w.g[i + 1][1]); segs.push([a[0], a[1], b[0], b[1]]); }
   }
   const R = GROUND_CROSSING_M;
-  return (x, y, ux, uy) => segs.some(([ax, ay, bx, by]) => {
+  // Bucket each segment under every grid cell its R-padded box touches: a point outside that box cannot pass the
+  // test below, so looking only at the point's own cell is exact (a linear scan made 200+ ms tasks, #129).
+  const G = 32, buckets = new Map<number, [number, number, number, number][]>();
+  const cellKey = (i: number, j: number) => i * 1_000_003 + j;
+  for (const s of segs) {
+    const i0 = Math.floor((Math.min(s[0], s[2]) - R) / G), i1 = Math.floor((Math.max(s[0], s[2]) + R) / G);
+    const j0 = Math.floor((Math.min(s[1], s[3]) - R) / G), j1 = Math.floor((Math.max(s[1], s[3]) + R) / G);
+    for (let i = i0; i <= i1; i++) for (let j = j0; j <= j1; j++) {
+      const k = cellKey(i, j), b = buckets.get(k);
+      if (b) b.push(s); else buckets.set(k, [s]);
+    }
+  }
+  return (x, y, ux, uy) => (buckets.get(cellKey(Math.floor(x / G), Math.floor(y / G))) ?? []).some(([ax, ay, bx, by]) => {
     if (x < Math.min(ax, bx) - R || x > Math.max(ax, bx) + R || y < Math.min(ay, by) - R || y > Math.max(ay, by) + R) return false;
     const dx = bx - ax, dy = by - ay, l = Math.hypot(dx, dy) || 1e-9;
     if (Math.abs(dx * ux + dy * uy) / l > GROUND_CROSSING_PARALLEL) return false;
@@ -499,12 +511,23 @@ export class GroundStore {
     // Over water opened under the way (withOpenings), the deck stops where the water beside the bridge begins: a bundle's
     // half-width or the road edges can reach past it (the De Clercqstraat's four ways, 41 m, over a 30 m bridge).
     let deckIndex: RoadIndex | null = null;
+    // Only the polygons deckEdgeSides can probe: each opened profile's box padded by its reach (onDeck asks which
+    // polygons contain a point, so the rest cannot answer). The full 3x3 earcut was a 100+ ms task while riding (#129).
+    let deckWithin: Rect | null = null;
+    for (const profile of profiles) {
+      const open = this.wayOpeningSides.get(profile.id);
+      if (!open) continue;
+      const r = Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M + 2, b = profile.bbox;
+      deckWithin = deckWithin
+        ? [Math.min(deckWithin[0], b[0] - r), Math.min(deckWithin[1], b[1] - r), Math.max(deckWithin[2], b[2] + r), Math.max(deckWithin[3], b[3] + r)]
+        : [b[0] - r, b[1] - r, b[2] + r, b[3] + r];
+    }
     for (const profile of profiles) {
       const open = this.wayOpeningSides.get(profile.id);
       if (!open) continue;
       // The survey's deck-level polygons outline the bridge (wayDecks.ts deckEdgeSides); the opening's water is the cap.
       if (this.options.roads === true) {
-        deckIndex ??= new RoadIndex(await Promise.all(around.map(k => this.roadCell(k))));
+        deckIndex ??= new RoadIndex([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined);
         const idx = deckIndex, e = deckEdgeSides(profile, (x, y) => idx.onDeck(x, y), Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M);
         if (e[0] !== undefined || e[1] !== undefined) setDeckSides(profile, [e[0] ?? open[0], e[1] ?? open[1]]);
         else capDeckSides(profile, open);

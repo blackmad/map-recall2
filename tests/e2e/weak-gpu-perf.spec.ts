@@ -27,6 +27,8 @@ const VARIANTS: Record<string, string> = {
   // Quality tiers (renderGovernor.ts, the own engine: ENGINE=own): the probe picks one; these force the others.
   tierHigh: '?governor=0&tier=high',
   tierMid: '?governor=0&tier=mid',
+  // The low tier with the desktop ground level (before the tier set it): the A/B for the low tier's coarse ground.
+  tierLowFullGround: '?governor=0&tier=low&groundDetail=full&groundNear=cell&groundRing=steps',
 };
 const chosen = (process.env.WEAK_GPU_VARIANTS ?? Object.keys(VARIANTS).join(',')).split(',');
 const dpr = Number(process.env.WEAK_GPU_DPR ?? 1.5);

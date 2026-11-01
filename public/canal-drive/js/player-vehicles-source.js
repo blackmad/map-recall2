@@ -135,10 +135,16 @@ class Vehicle3D {
       onContextRestored: frame => { this._renderer = frame.renderer; },
       beforeRender: (ctx) => {
         if (!this.ready || !this.visible || !this.lngLat || !this._modelRoot) { this.screenBox = null; return false; }
-        this._modelRoot.scale.setScalar(this.options.gameScale * this.viewportScale() * (this.zoomScale || 1));
+        // The drawn pose is taken when the rounded pose key changes, not every render: a rider at rest creeps
+        // ~1e-5 px a frame and the wheel and lean ease below the key's rounding, so a redraw of a still frame put
+        // the model on different pixels (#129 render on change). Anything that changes the key is drawn at once.
+        const key = this._poseKey();
+        if (key !== this._renderedKey || !this._drawn) { this._renderedKey = key; this._drawn = this._poseState(); }
+        this._modelRoot.scale.setScalar(this.options.gameScale * this.viewportScale() * (this._drawn.zoomScale || 1));
         this._pose(this._modelRoot);
         if (ctx && ctx.clipFromWorld && ctx.worldFromMercator) this._updateScreenBox(multiplyMat4(ctx.clipFromWorld.elements, ctx.worldFromMercator.elements));
-        this.map.triggerRepaint();
+        // No repaint from here: drawing asked for the next frame forever, so a still ride redrew at the display
+        // rate (#129 render on change). `update` asks when the pose moved.
         return true;
       },
       mercatorFromLocal: () => this._transform().elements,
@@ -166,19 +172,25 @@ class Vehicle3D {
     });
   }
 
-  /** Model → Mercator for this frame's position, heading and ramp pitch. */
+  /** What `_transform` and `_pose` draw (see beforeRender); subclasses add their animated parts. */
+  _poseState() {
+    return { lngLat: this.lngLat, angle: this.angle, altitudeM: this.altitudeM, surfacePitch: this.surfacePitch, zoomScale: this.zoomScale };
+  }
+
+  /** Model → Mercator for this frame's position, heading and ramp pitch (the drawn pose once there is one). */
   _transform() {
+    const d = this._drawn || this;
     const coordinate = this.maplibregl.MercatorCoordinate.fromLngLat(
-      this.lngLat,
-      Number.isFinite(this.altitudeM) ? this.altitudeM : 0.22,
+      d.lngLat,
+      Number.isFinite(d.altitudeM) ? d.altitudeM : 0.22,
     );
     const units = coordinate.meterInMercatorCoordinateUnits();
     return new THREE.Matrix4()
       .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
       .scale(new THREE.Vector3(units, -units, units))
-      .multiply(new THREE.Matrix4().makeRotationZ(this.options.headingOffset - this.angle))
+      .multiply(new THREE.Matrix4().makeRotationZ(this.options.headingOffset - d.angle))
       // In the Z-up map frame, negative Y rotation raises native +X (the bike's nose).
-      .multiply(new THREE.Matrix4().makeRotationY(-(this.surfacePitch || 0)))
+      .multiply(new THREE.Matrix4().makeRotationY(-(d.surfacePitch || 0)))
       .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
   }
 
@@ -209,6 +221,24 @@ class Vehicle3D {
     this.angle = angle || 0;
     this.visible = !!visible;
     if (!this.visible) this.screenBox = null;
+    this._repaintOnChange();
+  }
+
+  /**
+   * What the drawn vehicle depends on, rounded below a pixel: unchanged means the last frame still shows it. The
+   * game calls `update` every frame; only a change asks for a repaint (#129 render on change).
+   */
+  _poseKey() {
+    if (!this.visible) return 'hidden';
+    const p = this.lngLat, lng = Array.isArray(p) ? p[0] : p?.lng, lat = Array.isArray(p) ? p[1] : p?.lat;
+    const r = (v, d) => (Number.isFinite(v) ? v.toFixed(d) : '-');
+    return `${r(lng, 8)},${r(lat, 8)},${r(this.angle, 4)},${this.visible ? 1 : 0},${r(this.altitudeM, 3)},${r(this.surfacePitch, 4)},${r(this.zoomScale, 4)},${this.ready ? 1 : 0}`;
+  }
+
+  _repaintOnChange() {
+    const key = this._poseKey();
+    if (key === this._drawnKey) return;
+    this._drawnKey = key;
     this.map.triggerRepaint();
   }
 
@@ -423,24 +453,33 @@ export class PlayerBike3D extends Vehicle3D {
       this.lean = (this.lean || 0) + (target - (this.lean || 0)) * (1 - Math.exp(-LEAN_RATE * seconds));
     }
     this._leanDistance = distancePx || 0;
+    this._repaintOnChange();
   }
 
+  _poseKey() {
+    const base = super._poseKey();
+    return base === 'hidden' ? base : `${base}|${(this.steerAngle || 0).toFixed(4)},${(this.lean || 0).toFixed(4)},${(this.wheelSpin || 0).toFixed(2)}`;
+  }
+
+  _poseState() { return { ...super._poseState(), steerAngle: this.steerAngle, lean: this.lean, wheelSpin: this.wheelSpin }; }
+
   _pose(model) {
+    const d = this._drawn || this;
     // Roll about the bike's long axis (+X), into the turn: the opposite sense
     // to the boat's heel, which leans out of it.
     if (model) {
       model.rotation.set(0, 0, 0);
-      model.rotateX(-(this.lean || 0));
+      model.rotateX(-(d.lean || 0));
     }
     const { steer, frontWheel, rearWheel } = this.parts;
     if (steer) {
       steer.quaternion.copy(steer.userData.restQuaternion)
-        .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, this.steerAngle));
+        .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, d.steerAngle));
     }
     for (const wheel of [frontWheel, rearWheel]) {
       if (!wheel) continue;
       wheel.quaternion.copy(wheel.userData.restQuaternion)
-        .multiply(SCRATCH_QUAT.setFromAxisAngle(WHEEL_AXIS, this.wheelSpin));
+        .multiply(SCRATCH_QUAT.setFromAxisAngle(WHEEL_AXIS, d.wheelSpin));
     }
   }
 }
@@ -461,7 +500,10 @@ export class PlayerBoat3D extends Vehicle3D {
     super.update(lngLat, angle, visible);
     const target = Math.max(-1, Math.min(1, steerInput || 0)) * MAX_HEEL;
     this.heel += (target - this.heel) * HEEL_EASING;
+    this._repaintOnChange();
   }
+
+  _poseKey() { const base = super._poseKey(); return base === 'hidden' ? base : `${base}|${(this.heel || 0).toFixed(4)}`; }
 
   // The model is raw geometry: no normals, no materials, no textures — one
   // mesh, one primitive. Without normals glTF requires flat shading; without
@@ -484,9 +526,11 @@ export class PlayerBoat3D extends Vehicle3D {
     });
   }
 
+  _poseState() { return { ...super._poseState(), heel: this.heel }; }
+
   _pose(model) {
     model.rotation.set(0, 0, 0);
-    model.rotateX(this.heel);
+    model.rotateX((this._drawn || this).heel);
   }
 }
 
