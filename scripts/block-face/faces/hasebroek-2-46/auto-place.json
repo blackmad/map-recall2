@@ -3,7 +3,7 @@
  "street": "Hasebroekstraat",
  "library": "bellamy",
  "stripDate": "2022-01-04",
- "seconds": 21.43,
+ "seconds": 45.68,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -35,8 +35,8 @@
     "0363100012160593",
     "0363100012236958"
    ],
-   "passed": false,
-   "triangles": 40969
+   "passed": true,
+   "triangles": 40801
   }
  ],
  "pands": [
@@ -47,6 +47,22 @@
    "widthM": 5.52,
    "eavesM": 13.15,
    "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.11,
+    "toM": 5.51,
+    "depthM": 0.34,
+    "centre": 0.964,
+    "lineRD": [
+     [
+      119467.9398125,
+      486602.177
+     ],
+     [
+      119471.8298125,
+      486603.95300000004
+     ]
+    ]
+   },
    "strip": {
     "wall": "#3e3836",
     "wallRaw": "#403d3a",
@@ -64,6 +80,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "curtain",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -109,8 +126,8 @@
    ],
    "likeness": {
     "pandId": "0363100012160178",
-    "ncc": 0.339,
-    "nccRaw": 0.339,
+    "ncc": 0.338,
+    "nccRaw": 0.338,
     "shiftM": [
      0.15,
      0.35
@@ -120,25 +137,32 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.16",
-     "glazing storey band off by 0.60 mean 0.36 vs photo 0.77",
-     "wall family unresolved (#2e2724 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.65 mean 0.36 vs photo 0.71",
+     "wall family unresolved (#2e2725 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#2e2724",
+     "photo": "#2e2725",
      "model": "#59504d",
-     "dL": 0.165
+     "dL": 0.163
     },
     "glazing": {
-     "photo": 0.77,
+     "photo": 0.71,
      "model": 0.36
     },
     "columns": {
-     "photo": 4,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.403
+    "iou": 0.401
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.338,
+    "bellamy-1895-plain-three-axis": 0.341,
+    "bellamy-1915-green-tile": 0.255,
+    "bellamy-1915-green-tile~m": 0.273,
+    "bellamy-1915-tile-bay": 0.171,
+    "bellamy-1915-tile-bay~m": 0.142
+   }
   },
   {
    "pandId": "0363100012167170",
@@ -147,6 +171,7 @@
    "widthM": 5.41,
    "eavesM": 12.31,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#483f39",
     "wallRaw": "#44413e",
@@ -159,6 +184,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
@@ -213,8 +239,8 @@
    ],
    "likeness": {
     "pandId": "0363100012167170",
-    "ncc": 0.3,
-    "nccRaw": 0.3,
+    "ncc": 0.296,
+    "nccRaw": 0.296,
     "shiftM": [
      -0.15,
      0.3
@@ -224,7 +250,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.16",
-     "glazing storey band off by 0.47 mean 0.35 vs photo 0.67",
+     "glazing storey band off by 0.46 mean 0.35 vs photo 0.66",
      "wall family unresolved (#342d2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -233,7 +259,7 @@
      "dL": 0.163
     },
     "glazing": {
-     "photo": 0.67,
+     "photo": 0.66,
      "model": 0.35
     },
     "columns": {
@@ -242,7 +268,14 @@
     },
     "iou": 0.446
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.296,
+    "bellamy-1895-plain-three-axis": 0.185,
+    "bellamy-1915-green-tile~m": 0.148,
+    "bellamy-1915-green-tile": 0.119,
+    "bellamy-1915-tile-bay": 0.116,
+    "bellamy-1915-tile-bay~m": 0.074
+   }
   },
   {
    "pandId": "0363100012161486",
@@ -251,6 +284,7 @@
    "widthM": 5.41,
    "eavesM": 12.97,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#38312e",
     "wallRaw": "#463f3c",
@@ -268,6 +302,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -323,7 +358,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.35 vs photo 0.50",
+     "glazing storey band off by 0.41 mean 0.35 vs photo 0.48",
      "wall family unresolved (#362f2c is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -332,16 +367,23 @@
      "dL": 0.108
     },
     "glazing": {
-     "photo": 0.5,
+     "photo": 0.48,
      "model": 0.35
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.369
+    "iou": 0.373
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.334,
+    "bellamy-1895-plain-three-axis": 0.326,
+    "bellamy-1915-green-tile": 0.233,
+    "bellamy-1915-green-tile~m": 0.254,
+    "bellamy-1915-tile-bay": 0.175,
+    "bellamy-1915-tile-bay~m": 0.187
+   }
   },
   {
    "pandId": "0363100012163006",
@@ -350,6 +392,7 @@
    "widthM": 5.41,
    "eavesM": 13.62,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#37302d",
     "wallRaw": "#48413e",
@@ -367,6 +410,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 4,
+    "frontClass": "columns",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -412,8 +456,8 @@
    ],
    "likeness": {
     "pandId": "0363100012163006",
-    "ncc": 0.289,
-    "nccRaw": 0.289,
+    "ncc": 0.288,
+    "nccRaw": 0.288,
     "shiftM": [
      -0.25,
      0.4
@@ -439,7 +483,13 @@
     },
     "iou": 0.458
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.288,
+    "bellamy-1915-green-tile~m": 0.223,
+    "bellamy-1915-green-tile": 0.198,
+    "bellamy-1915-tile-bay": 0.224,
+    "bellamy-1915-tile-bay~m": 0.174
+   }
   },
   {
    "pandId": "0363100012164522",
@@ -448,6 +498,7 @@
    "widthM": 5.39,
    "eavesM": 13.29,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#433b36",
     "wallRaw": "#45413e",
@@ -465,6 +516,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "columns",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -509,20 +561,7 @@
    },
    "placement": {
     "type": "bellamy-1904-balcony-axis",
-    "ground": {
-     "shopfront": {
-      "colour": "#201e1b",
-      "fascia": true,
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
-      },
-      "evidence": "auto-place: osm-only (industriefunctie, amenity=public_bookcase); fascia colour measured on the strip 2022-01-04 span 870-1086"
-     }
-    },
+    "ground": "door-left",
     "measuredPalette": {
      "brick": "#433b36",
      "evidence": "strip 2022-01-04 span 870-1086: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -533,8 +572,8 @@
    ],
    "likeness": {
     "pandId": "0363100012164522",
-    "ncc": 0.224,
-    "nccRaw": 0.224,
+    "ncc": 0.282,
+    "nccRaw": 0.282,
     "shiftM": [
      0.1,
      0.4
@@ -543,24 +582,31 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22 mean 0.41 vs photo 0.25"
+     "glazing storey band off by 0.65 mean 0.34 vs photo 0.84"
     ],
     "wall": {
-     "photo": "#4a423c",
+     "photo": "#4a3f3a",
      "model": "#5e534c",
-     "dL": 0.071
+     "dL": 0.075
     },
     "glazing": {
-     "photo": 0.25,
-     "model": 0.41
+     "photo": 0.84,
+     "model": 0.34
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.397
+    "iou": 0.394
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.282,
+    "bellamy-1895-plain-three-axis": 0.289,
+    "bellamy-1915-green-tile": 0.208,
+    "bellamy-1915-green-tile~m": 0.202,
+    "bellamy-1915-tile-bay": 0.154,
+    "bellamy-1915-tile-bay~m": 0.131
+   }
   },
   {
    "pandId": "0363100012159125",
@@ -569,6 +615,7 @@
    "widthM": 5.39,
    "eavesM": 12.6,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#342e2a",
     "wallRaw": "#403c38",
@@ -586,6 +633,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -626,8 +674,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159125",
-    "ncc": 0.281,
-    "nccRaw": 0.281,
+    "ncc": 0.279,
+    "nccRaw": 0.279,
     "shiftM": [
      -0.15,
      -0.3
@@ -636,7 +684,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.36 vs photo 0.48",
+     "glazing storey band off by 0.33 mean 0.35 vs photo 0.47",
      "wall family unresolved (#362e2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -645,16 +693,23 @@
      "dL": 0.11
     },
     "glazing": {
-     "photo": 0.48,
-     "model": 0.36
+     "photo": 0.47,
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.419
+    "iou": 0.411
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.279,
+    "bellamy-1895-plain-three-axis": 0.317,
+    "bellamy-1915-green-tile~m": 0.259,
+    "bellamy-1915-green-tile": 0.217,
+    "bellamy-1915-tile-bay": 0.205,
+    "bellamy-1915-tile-bay~m": 0.124
+   }
   },
   {
    "pandId": "0363100012155789",
@@ -663,6 +718,7 @@
    "widthM": 5.41,
    "eavesM": 12.96,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#322c28",
     "wallRaw": "#423e3a",
@@ -675,6 +731,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -720,8 +777,8 @@
    ],
    "likeness": {
     "pandId": "0363100012155789",
-    "ncc": 0.311,
-    "nccRaw": 0.311,
+    "ncc": 0.31,
+    "nccRaw": 0.31,
     "shiftM": [
      0.1,
      0.25
@@ -730,25 +787,33 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.35 vs photo 0.50",
-     "wall family unresolved (#372f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.51 mean 0.35 vs photo 0.77"
     ],
     "wall": {
-     "photo": "#372f2b",
+     "photo": "#3a322d",
      "model": "#554b44",
-     "dL": 0.108
+     "dL": 0.098
     },
     "glazing": {
-     "photo": 0.5,
+     "photo": 0.77,
      "model": 0.35
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.434
+    "iou": 0.396
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.31,
+    "bellamy-1895-plain-three-axis": 0.324,
+    "bellamy-1915-green-tile": 0.206,
+    "bellamy-1915-green-tile~m": 0.214,
+    "bellamy-1915-tile-bay": 0.16,
+    "bellamy-1915-tile-bay~m": 0.148,
+    "bellamy-1916-two-axis": 0.226,
+    "bellamy-1937-flat-row": 0.075
+   }
   },
   {
    "pandId": "0363100012236622",
@@ -757,6 +822,7 @@
    "widthM": 5.61,
    "eavesM": 14.64,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#413530",
     "wallRaw": "#4a413e",
@@ -769,6 +835,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "columns",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -819,8 +886,8 @@
    ],
    "likeness": {
     "pandId": "0363100012236622",
-    "ncc": 0.309,
-    "nccRaw": 0.309,
+    "ncc": 0.306,
+    "nccRaw": 0.306,
     "shiftM": [
      0.1,
      0.15
@@ -844,7 +911,13 @@
     },
     "iou": 0.517
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.306,
+    "bellamy-1915-green-tile~m": 0.18,
+    "bellamy-1915-green-tile": 0.189,
+    "bellamy-1916-two-axis": 0.111,
+    "bellamy-1937-flat-row": 0.025
+   }
   },
   {
    "pandId": "0363100012164477",
@@ -853,6 +926,22 @@
    "widthM": 5.65,
    "eavesM": 13.68,
    "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.11,
+    "toM": 5.62,
+    "depthM": 0.59,
+    "centre": 0.776,
+    "lineRD": [
+     [
+      119508.5598125,
+      486617.901
+     ],
+     [
+      119511.11581250001,
+      486619.228
+     ]
+    ]
+   },
    "strip": {
     "wall": "#3e332e",
     "wallRaw": "#433b37",
@@ -870,6 +959,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "columns",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -940,7 +1030,15 @@
     },
     "iou": 0.598
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.245,
+    "bellamy-1915-green-tile": 0.158,
+    "bellamy-1915-green-tile~m": 0.149,
+    "bellamy-1915-tile-bay": 0.208,
+    "bellamy-1915-tile-bay~m": 0.187,
+    "bellamy-1916-two-axis": 0.239,
+    "bellamy-1937-flat-row": 0.085
+   }
   },
   {
    "pandId": "0363100012156654",
@@ -949,6 +1047,7 @@
    "widthM": 5.58,
    "eavesM": 13.89,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#423530",
     "wallRaw": "#483f3d",
@@ -961,6 +1060,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 5,
+    "frontClass": "curtain",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -1006,8 +1106,8 @@
    ],
    "likeness": {
     "pandId": "0363100012156654",
-    "ncc": 0.245,
-    "nccRaw": 0.245,
+    "ncc": 0.244,
+    "nccRaw": 0.244,
     "shiftM": [
      0.05,
      0.15
@@ -1019,21 +1119,25 @@
      "glazing storey band off by 0.20"
     ],
     "wall": {
-     "photo": "#433834",
+     "photo": "#433833",
      "model": "#5f4c45",
-     "dL": 0.088
+     "dL": 0.09
     },
     "glazing": {
-     "photo": 0.38,
+     "photo": 0.33,
      "model": 0.36
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.476
+    "iou": 0.459
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.244,
+    "bellamy-1915-tile-bay": 0.208,
+    "bellamy-1915-tile-bay~m": 0.151
+   }
   },
   {
    "pandId": "0363100012165214",
@@ -1042,6 +1146,7 @@
    "widthM": 5.62,
    "eavesM": 13.91,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#443934",
     "wallRaw": "#4a423e",
@@ -1054,6 +1159,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
@@ -1118,8 +1224,8 @@
    ],
    "likeness": {
     "pandId": "0363100012165214",
-    "ncc": 0.195,
-    "nccRaw": 0.195,
+    "ncc": 0.19,
+    "nccRaw": 0.19,
     "shiftM": [
      0.05,
      0.4
@@ -1136,16 +1242,21 @@
      "dL": 0.096
     },
     "glazing": {
-     "photo": 0.33,
+     "photo": 0.31,
      "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.426
+    "iou": 0.405
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.19,
+    "bellamy-1915-tile-bay": 0.083,
+    "bellamy-1915-tile-bay~m": 0.059,
+    "bellamy-1916-two-axis": 0.059
+   }
   },
   {
    "pandId": "0363100012164498",
@@ -1154,6 +1265,7 @@
    "widthM": 5.55,
    "eavesM": 13.6,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#3f3531",
     "wallRaw": "#4b4441",
@@ -1166,6 +1278,7 @@
     "stucco": false,
     "bands": 0,
     "columns": null,
+    "frontClass": "curtain",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -1211,8 +1324,8 @@
    ],
    "likeness": {
     "pandId": "0363100012164498",
-    "ncc": 0.298,
-    "nccRaw": 0.298,
+    "ncc": 0.294,
+    "nccRaw": 0.294,
     "shiftM": [
      0.05,
      0.4
@@ -1236,7 +1349,12 @@
     },
     "iou": 0.523
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.294,
+    "bellamy-1915-tile-bay": 0.136,
+    "bellamy-1915-tile-bay~m": 0.165,
+    "bellamy-1916-two-axis": 0.231
+   }
   },
   {
    "pandId": "0363100012153488",
@@ -1245,6 +1363,22 @@
    "widthM": 5.43,
    "eavesM": 13.19,
    "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 4.33,
+    "toM": 5.41,
+    "depthM": 0.42,
+    "centre": 0.9,
+    "lineRD": [
+     [
+      119529.4508125,
+      486626.001
+     ],
+     [
+      119532.41881250001,
+      486627.422
+     ]
+    ]
+   },
    "strip": {
     "wall": "#614d47",
     "wallRaw": "#473c38",
@@ -1257,6 +1391,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -1284,7 +1419,7 @@
    },
    "status": "placed",
    "type": "bellamy-1904-balcony-axis",
-   "score": 0.87,
+   "score": 1,
    "runnerUp": {
     "typeId": "bellamy-1895-plain-three-axis",
     "score": 0
@@ -1315,8 +1450,8 @@
    ],
    "likeness": {
     "pandId": "0363100012153488",
-    "ncc": 0.3,
-    "nccRaw": 0.3,
+    "ncc": 0.296,
+    "nccRaw": 0.296,
     "shiftM": [
      0.15,
      0.35
@@ -1325,8 +1460,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.21",
-     "glazing storey band off by 0.26 mean 0.43 vs photo 0.26"
+     "glazing storey band off by 0.26 mean 0.43 vs photo 0.25",
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.21 darker than the model's in shade or overcast light"
     ],
     "wall": {
      "photo": "#3e332e",
@@ -1334,7 +1469,7 @@
      "dL": 0.206
     },
     "glazing": {
-     "photo": 0.26,
+     "photo": 0.25,
      "model": 0.43
     },
     "columns": {
@@ -1343,7 +1478,12 @@
     },
     "iou": 0.383
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.296,
+    "bellamy-1915-tile-bay": 0.092,
+    "bellamy-1915-tile-bay~m": 0.163,
+    "bellamy-1916-two-axis": 0.17
+   }
   },
   {
    "pandId": "0363100012154364",
@@ -1352,6 +1492,7 @@
    "widthM": 5.46,
    "eavesM": 13.62,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#564540",
     "wallRaw": "#443b37",
@@ -1364,6 +1505,7 @@
     "stucco": false,
     "bands": 0,
     "columns": null,
+    "frontClass": "punched",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -1404,8 +1546,8 @@
    ],
    "likeness": {
     "pandId": "0363100012154364",
-    "ncc": 0.237,
-    "nccRaw": 0.237,
+    "ncc": 0.235,
+    "nccRaw": 0.235,
     "shiftM": [
      0.1,
      0.4
@@ -1433,7 +1575,12 @@
     },
     "iou": 0.383
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.235,
+    "bellamy-1915-tile-bay": 0.107,
+    "bellamy-1915-tile-bay~m": 0.213,
+    "bellamy-1916-two-axis": 0.284
+   }
   },
   {
    "pandId": "0363100012165475",
@@ -1442,6 +1589,7 @@
    "widthM": 5.39,
    "eavesM": 12.99,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#4e3f3a",
     "wallRaw": "#464340",
@@ -1454,6 +1602,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -1499,8 +1648,8 @@
    ],
    "likeness": {
     "pandId": "0363100012165475",
-    "ncc": 0.269,
-    "nccRaw": 0.269,
+    "ncc": 0.263,
+    "nccRaw": 0.263,
     "shiftM": [
      0.15,
      -0.05
@@ -1526,7 +1675,14 @@
     },
     "iou": 0.54
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.263,
+    "bellamy-1895-plain-three-axis": 0.181,
+    "bellamy-1915-tile-bay": 0.179,
+    "bellamy-1915-tile-bay~m": 0.175,
+    "bellamy-1916-two-axis": 0.193,
+    "bellamy-1937-flat-row": -0.035
+   }
   },
   {
    "pandId": "0363100012160593",
@@ -1535,6 +1691,7 @@
    "widthM": 5.41,
    "eavesM": 14.12,
    "storeys3dbag": 5,
+   "bagBay": null,
    "strip": {
     "wall": "#554845",
     "wallRaw": "#433f3b",
@@ -1547,6 +1704,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "columns",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -1597,8 +1755,8 @@
    ],
    "likeness": {
     "pandId": "0363100012160593",
-    "ncc": 0.293,
-    "nccRaw": 0.293,
+    "ncc": 0.291,
+    "nccRaw": 0.291,
     "shiftM": [
      0.1,
      0.3
@@ -1624,7 +1782,14 @@
     },
     "iou": 0.451
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.291,
+    "bellamy-1895-plain-three-axis": 0.268,
+    "bellamy-1915-tile-bay": 0.135,
+    "bellamy-1915-tile-bay~m": 0.227,
+    "bellamy-1916-two-axis": 0.286,
+    "bellamy-1937-flat-row": 0.08
+   }
   },
   {
    "pandId": "0363100012236958",
@@ -1633,6 +1798,22 @@
    "widthM": 5.27,
    "eavesM": 13.57,
    "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.59,
+    "toM": 4.59,
+    "depthM": 0.49,
+    "centre": 0.871,
+    "lineRD": [
+     [
+      119549.6598125,
+      486633.85
+     ],
+     [
+      119553.9508125,
+      486636.063
+     ]
+    ]
+   },
    "strip": {
     "wall": "#3e3631",
     "wallRaw": "#423b37",
@@ -1645,6 +1826,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 3,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -1713,8 +1895,8 @@
    ],
    "likeness": {
     "pandId": "0363100012236958",
-    "ncc": 0.275,
-    "nccRaw": 0.275,
+    "ncc": 0.271,
+    "nccRaw": 0.271,
     "shiftM": [
      0.15,
      -0.3
@@ -1740,7 +1922,14 @@
     },
     "iou": 0.421
    },
-   "challengers": {}
+   "challengers": {
+    "bellamy-1904-balcony-axis": 0.271,
+    "bellamy-1895-plain-three-axis": 0.221,
+    "bellamy-1915-tile-bay": 0.118,
+    "bellamy-1915-tile-bay~m": 0.173,
+    "bellamy-1916-two-axis": 0.252,
+    "bellamy-1937-flat-row": 0.058
+   }
   },
   {
    "pandId": "0363100012158343",
@@ -1749,6 +1938,22 @@
    "widthM": 16.71,
    "eavesM": 14.09,
    "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 13.01,
+    "toM": 16.71,
+    "depthM": 0.41,
+    "centre": 0.889,
+    "lineRD": [
+     [
+      119554.5498125,
+      486635.74
+     ],
+     [
+      119566.6578125,
+      486640.742
+     ]
+    ]
+   },
    "strip": {
     "wall": "#41302a",
     "wallRaw": "#483934",
@@ -1761,6 +1966,7 @@
     "stucco": false,
     "bands": 0,
     "columns": 8,
+    "frontClass": "punched",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,

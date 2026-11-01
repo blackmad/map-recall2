@@ -1,8 +1,8 @@
 {
  "buurt": "bellamybuurt-zuid",
  "library": "bellamy",
- "generatedAt": "2026-10-16T13:03:21.030Z",
- "seconds": 8.42,
+ "generatedAt": "2026-11-01T12:57:31.271Z",
+ "seconds": 45.69,
  "totals": {
   "faces": 49,
   "pands": 335,
@@ -707,14 +707,15 @@
       "0363100012160593",
       "0363100012236958"
      ],
-     "passed": false,
-     "triangles": 40969
+     "passed": true,
+     "triangles": 40801
     }
    ],
-   "seconds": 21.43,
+   "seconds": 45.68,
    "byType": {
     "bellamy-1904-balcony-axis": 17
    },
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
