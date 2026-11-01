@@ -125,17 +125,18 @@ test('riding: between full placements no street or water name stays drawn behind
   let lines = 0, last = new Set<string>();
   for (let i = 0; i < 20; i++) {
     await page.waitForTimeout(250);
-    const r = await page.evaluate(() => {
+    const r = await page.evaluate((sample) => {
       const L = (window as any).canalRecallGame.vectorMap._labels, out = { lines: 0, hidden: [] as string[] }, copies = new Map<string, number>();
       for (const l of L.placed) {
         const n = copies.get(l.id) ?? 0; copies.set(l.id, n + 1);
         if ((l.kind !== 'street' && l.kind !== 'water') || !l.anchors?.length || !L.lineTest) continue;
         out.lines++;
-        // Every drawn copy (a long street repeats), under a probe key: its own hysteresis, from the shown side.
-        if (L.lineTest(`probe:${l.id}@${n}`, l.anchors)) out.hidden.push(`${l.text} #${n}`);
+        // Every drawn copy (a long street repeats), under a fresh probe key each sample: judged from the shown side,
+        // so only a name clearly behind a building (beyond the hysteresis margin) counts, as the layer judges it.
+        if (L.lineTest(`probe${sample}:${l.id}@${n}`, l.anchors)) out.hidden.push(`${l.text} #${n}`);
       }
       return out;
-    });
+    }, i);
     lines += r.lines;
     for (const h of r.hidden) if (last.has(h)) stale.push(h);
     last = new Set(r.hidden);
