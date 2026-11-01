@@ -33,9 +33,30 @@ test('standing still draws nothing, the still frame equals a redraw, and riding 
   // visibility, which does not touch layout, so the canvas is neither resized nor redrawn by hiding it.
   const canvas = page.locator('canvas.engine-canvas');
   const hud = await page.addStyleTag({ content: 'body * { visibility: hidden !important; } canvas.engine-canvas { visibility: visible !important; }' });
-  const framesBefore = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.stats.frames);
+  // Who asks for a repaint while capturing (named in the failure: the iPhone run drew one frame here, 2026-11-01).
+  const framesBefore = await page.evaluate(() => {
+    const w = window as any, host = w.canalRecallGame.vectorMap.host, own = host.triggerRepaint;
+    w.__captureCallers = {};
+    host.triggerRepaint = function (...args: unknown[]) {
+      const k = (new Error().stack ?? '').split('\n').slice(2, 6).map(l => l.trim().replace(/\(.*\//, '(').replace(/\?[^:)]*/, '')).join(' < ');
+      w.__captureCallers[k] = (w.__captureCallers[k] ?? 0) + 1;
+      return own.apply(this, args);
+    };
+    const ownResize = host.resize;
+    host.resize = function (...args: unknown[]) {
+      const before = host.viewport(), r = ownResize.apply(this, args), after = host.viewport();
+      if (before.width !== after.width || before.height !== after.height || args[0]) {
+        const k = `resize ${before.width}x${before.height} -> ${after.width}x${after.height}${args[0] ? ' (forced)' : ''}`;
+        w.__captureCallers[k] = (w.__captureCallers[k] ?? 0) + 1;
+      }
+      return r;
+    };
+    w.__captureRestore = () => { host.triggerRepaint = own; host.resize = ownResize; };
+    return host.stats.frames;
+  });
   const still = await canvas.screenshot({ animations: 'disabled' });
-  expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.stats.frames), 'capturing draws nothing').toBe(framesBefore);
+  const captured = await page.evaluate(() => { const w = window as any; w.__captureRestore(); return { frames: w.canalRecallGame.vectorMap.host.stats.frames, callers: w.__captureCallers }; });
+  expect(captured.frames, `capturing draws nothing (repaints asked by ${JSON.stringify(captured.callers)})`).toBe(framesBefore);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.redraw());
   expect(Buffer.compare(still, await canvas.screenshot({ animations: 'disabled' })), 'the still frame is the frame a redraw makes').toBe(0);
   await hud.evaluate(el => el.remove());

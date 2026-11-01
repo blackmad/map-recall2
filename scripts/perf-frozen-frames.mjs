@@ -96,7 +96,8 @@ for (const spot of SPOTS.filter(s => !only.length || only.includes(s.name))) {
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || ((!l._pending || !l._pending.size) && !(l._lodLoads > 0));
     // ?engine=own: the camera shim has no tile pyramid; the own ground's readiness stands in for areTilesLoaded.
-    const tiles = typeof vm.map.areTilesLoaded === 'function' ? vm.map.areTilesLoaded() : !!(vm._ownGround?.ready ?? true);
+    const map = vm.map || vm.cameraMap; // ?engine=own: no MapLibre map, the engine's camera shim
+    const tiles = typeof map.areTilesLoaded === 'function' ? map.areTilesLoaded() : !!(vm._ownGround?.ready ?? true);
     const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${tiles}`;
     window.__frozenIdle = idle && landmarksIdle && tiles && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
     window.__frozenKey = key;
@@ -105,11 +106,34 @@ for (const spot of SPOTS.filter(s => !only.length || only.includes(s.name))) {
   await page.waitForTimeout(1500);
   // Freeze MapLibre's camera (the game's per-frame sync jumps it by sub-pixels while the chase camera settles).
   await page.evaluate(() => { const vm = canalRecallGame.vectorMap; vm.__sync = vm.sync; vm.sync = () => {}; });
+  // ?engine=own: the freeze catches the chase camera at a different point of its easing each run (main vs main
+  // differed by up to 1.0 M pixels at the Waag), so the engine camera is pinned to the spot: centre, bearing, and the
+  // zoom/pitch it had, rounded. Then the streaming settles again at that exact pose.
+  const pinned = await page.evaluate(({ lng, lat, bearing }) => {
+    const vm = canalRecallGame.vectorMap;
+    if (vm.map || !vm.cameraMap) return false;
+    const cam = vm.cameraMap;
+    cam.jumpTo({ center: [lng, lat], bearing, zoom: Math.round(cam.getZoom() * 4) / 4, pitch: Math.round(cam.getPitch() / 5) * 5 });
+    return true;
+  }, spot);
+  if (pinned) {
+    await page.evaluate(() => { window.__frozenIdle = 0; window.__frozenKey = ''; });
+    await page.waitForFunction(() => {
+      const vm = canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
+      const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
+      const landmarksIdle = !l || ((!l._pending || !l._pending.size) && !(l._lodLoads > 0));
+      const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${!!vm._ownGround?.ready}`;
+      window.__frozenIdle = idle && landmarksIdle && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
+      window.__frozenKey = key;
+      return window.__frozenIdle >= 5;
+    }, null, { timeout: 180000, polling: 1000 });
+    await page.waitForTimeout(1500);
+  }
   await page.waitForTimeout(300);
   const grab = async (name, before) => {
     if (before) { await page.evaluate(before); await page.waitForTimeout(300); }
     const shot = await page.evaluate(() => new Promise(resolve => {
-      const map = canalRecallGame.vectorMap.map, l = canalRecallGame.vectorMap._signatureLandmarks;
+      const map = canalRecallGame.vectorMap.map || canalRecallGame.vectorMap.cameraMap, l = canalRecallGame.vectorMap._signatureLandmarks;
       map.once('render', () => resolve({ url: map.getCanvas().toDataURL('image/png'), drawn: (l?._entries || []).filter(e => e.pickProjection).length, resident: l?._entries?.length ?? 0 }));
       map.triggerRepaint();
     }));
