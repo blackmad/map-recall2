@@ -82,7 +82,7 @@ test('shared frame: 3DBAG detailed buildings join the frame and bring no light',
   await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._detailedBuildings?.ready, null, { timeout: 120_000 });
   const view = LOOK_VIEWS[0], eye = ahead(view.target, view.bearing, view.distM);
   await page.evaluate(({ eye, view }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
     map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, view.altM, { lng: view.target[0], lat: view.target[1] }, view.targetAltM));
   }, { eye, view });
@@ -93,7 +93,7 @@ test('shared frame: 3DBAG detailed buildings join the frame and bring no light',
     let meshes = 0;
     const root = f.registry.all().find((e: any) => e.id === 'detailed-buildings')?.participant.participant.root;
     root?.traverse((o: any) => { if (o.isMesh) meshes++; });
-    return { lights, participants: f.registry.all().map((e: any) => e.id), detailedMeshes: meshes, tilesStats: root?.children[0]?.tilesRenderer?.stats, customLayer: !!(window as any).canalRecallGame.vectorMap.map.getLayer('detailed-buildings-3dbag') };
+    return { lights, participants: f.registry.all().map((e: any) => e.id), detailedMeshes: meshes, tilesStats: root?.children[0]?.tilesRenderer?.stats, customLayer: !!((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).getLayer('detailed-buildings-3dbag') };
   });
   await page.screenshot({ path: `${OUT}/detailed-shared.png` });
   writeFileSync(`${OUT}/detailed-shared.json`, JSON.stringify(frame, null, 1));

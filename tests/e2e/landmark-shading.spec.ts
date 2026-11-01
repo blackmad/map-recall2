@@ -51,7 +51,7 @@ for (const id of ids) {
     await parkAt(page, ahead(anchor, facade + 90, radius + 30), anchor);
     await page.waitForFunction(({ id }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && l.shown.has(id);
     }, { id }, { timeout: 150_000, polling: 1000 });
     // Three obliques round the model: from the facade side, its opposite quarter, and a low street-ish view.
