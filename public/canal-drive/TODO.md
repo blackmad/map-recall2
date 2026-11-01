@@ -1374,19 +1374,36 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
   bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
   ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
-  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99. L1 next:
-  `buildShadowStandIn` and `splitIntoTiles` to the worker pool, then
-  `pop-in.mjs` under both engines and P5 B6.
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99.
+  `pop-in.mjs` runs under own since hand-back (9); hand-back (10) settled its
+  3,500 px/s "unexplained" own figure: chase-camera turn parallax on the
+  Westerkerk tower, counted only under own because the script skipped turn
+  frames by a > 2° bearing step (MapLibre turns in jumps, the own camera
+  turns ≤ 1.33°/frame); the script now also skips frames turning > 60°/s.
+  Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
+  unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
+  pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
+  chunks 0 / 0 in both. Open: the within-150 m install count with
+  per-install cell geometry (the P3 pop-in gate), `buildShadowStandIn` and
+  `splitIntoTiles` to the worker pool with the Jordaan 1×/4× re-measure, P5
+  B6 (B3 satisfied under own, B4 applied); a fresh L1 session picks these up
+  (the previous one ran out of context after hand-back (10)).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
-- **Heap gates after the ride-start cuts** (HISTORY "Heap at ride start under
-  `?engine=own&world=v1&roads=bin`"): desktop 493 MB meets ≤ 500; iPhone 359
-  MB against ≤ 160 is the open gap. Next owners: landmark GLB CPU arrays after
-  upload (25–42 MB), then the live data on a phone (ground store 90 MB, road
-  graph 39 MB, streetFronts 25 MB: smaller ring, lazy far-city CSR, fronts per
-  cell), owners table first on #130 (road lane). `engine-own.spec`'s `heapMB`
-  is noise without a GC; `scripts/heap-ride.mjs` is the measure.
+- **Heap gates** (HISTORY "Landmark chunk copies typed"): desktop 462 MB at
+  ride start / 469 at 60 s meets ≤ 500; iPhone 332 MB against ≤ 160 is not
+  reachable by trimming owners (city-wide data as JS objects); the road lane
+  builds, in order, roadIndex CSR + snap-index merge, columnar building tile
+  cache, overview polyline pack, phone ground radii (≈ 235–250 MB expected),
+  the materials lane releases the facade CPU arrays (33.9 MB). The gate stays
+  red with that reason. `engine-own.spec`'s `heapMB` is noise without a GC;
+  `scripts/heap-ride.mjs` is the measure.
+- **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
+  the 4 s gate**: the settle hold waiting on facade chunks is the variance
+  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
+  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  after context loss, seen once (materials lane).
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
   single layer removal gets under 195 ms. Gate stays red as written; deciding

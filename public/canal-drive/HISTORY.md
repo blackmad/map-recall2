@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+**Landmark chunk copies typed, streetFronts handed to the buildings layer: desktop ride start 493 → 462 MB; time to ride under own ≈ 3.5 s with the settle hold as its variance (2026-11-01, #130).**
+Road lane. The 17.6 MB of interleaved landmark GLB buffers are kept: click
+picking reads them (three's fallback raycast reads uv and normal before a
+mesh's pick BVH exists), the pand lift rewrites positions, and a context
+restore re-uploads from them. Cut instead: `_applyChunkPandBases` widened
+every street-chunk attribute to Float32; non-position attributes now keep
+their stored type and normalized flag (interleaved ones read by stride) and
+the index is Uint16 when it fits (`ownGround/chunkBases.ts`,
+`signature-landmarks-source.js`): landmark CPU arrays 40.5 → 33.3 MB at 60 s
+with the same 143 chunk meshes. `ownWorldView` no longer keeps the raw OSM
+ways as `streetFronts` for the session (24.7 MB on both devices); the
+buildings layer keeps its own packed segments. Context-loss probe after a 60 s
+ride: 0 stale attributes, 0 errors. Heap with forced GC: desktop 493 → 462 MB
+at ride start and 506–522 → 469 at 60 s (both under the 500 MB gate), iPhone
+359 → 332 MB. iPhone proposal (nothing built yet, integrator go given in the
+lane's order): roadIndex CSR + snap-index merge (−18 to −21 MB, −6.7),
+columnar building tile cache (−20 to −25), overview polyline pack (−15),
+ground ring/keep radii (−12 to −20); ≈ 235–250 MB after all of them, ≈
+205–220 with the facade arrays (33.9 MB, materials lane) released; the 160 MB
+gate is not reachable by trimming owners because the city-wide data is held
+as millions of JS objects, so it stays red with that reason. Time to ride
+under `?engine=own&world=v1&roads=bin`, six warm runs: 3.96, 3.08, 2.33,
+2.74, 3.93, 3.95 s (median ≈ 3.5, three within 70 ms of the 4 s gate; default
+3.98 median in the same session). Boot → submit 0.9 s vs 0.53 default (not
+profiled), submit → track ≈ 1.0 vs 1.75. The settle hold (0.08–1.87 s) is all
+the variance; `time-to-ride-phases.mjs` now reports `settlePending` and its
+owner: facade chunks, pending until ≈ 2.8 s after submit in slow runs with ≈
+1.1 s of main-thread idle inside. Decision: racing does not start without
+facades; the materials lane builds the spawn cell's chunks first. Seen once on
+main's bundles: three's `compileAsync` poll throws "isReady of undefined"
+after a context loss (materials lane).
+
 **Per-frame CPU under `?engine=own` at 4×: water level, view-mode constants, clearance walk; Jordaan 1× longest frame 68 → 34 ms (2026-11-01, #129).**
 L1 interim, all exact: `waterZAt` gets a per-polygon box plus y-banded edges
 cached per polygon list (200,000 random points over 12 central cells give
