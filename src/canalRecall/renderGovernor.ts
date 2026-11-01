@@ -46,6 +46,14 @@ export interface GovernorOptions {
   floorPixelRatio?: number;
   /** Riding time not judged after a start or a gap (loading, not drawing). */
   settleMs?: number;
+  /**
+   * Inside a quality tier the pixel ratio may also step back up, never above this (the tier's cap). Off (the
+   * default) keeps the original one-way ladder. Up needs `fastWindows` windows in a row at or under `fastP75Ms`;
+   * a step down straight after a step up (a bounce) ends stepping up for the ride.
+   */
+  maxPixelRatio?: number;
+  fastP75Ms?: number;
+  fastWindows?: number;
 }
 
 export type GovernorStep =
@@ -64,7 +72,9 @@ export class RenderGovernor {
   readonly steps: GovernorStep[] = [];
   pixelRatio: number;
   shadows: boolean;
-  private readonly o: Required<Omit<GovernorOptions, 'fixedPixelRatio' | 'shadows'>> & { fixedPixelRatio: boolean };
+  private readonly o: Required<Omit<GovernorOptions, 'fixedPixelRatio' | 'shadows' | 'maxPixelRatio'>> & { fixedPixelRatio: boolean; maxPixelRatio: number };
+  private fastRun = 0;
+  private upLocked = false;
   private window: number[] = [];
   private windowMs = 0;
   private slowRun = 0;
@@ -81,7 +91,10 @@ export class RenderGovernor {
       floorPixelRatio: 0.75,
       settleMs: 0,
       fixedPixelRatio: false,
+      fastP75Ms: 18,
+      fastWindows: 4,
       ...options,
+      maxPixelRatio: options.maxPixelRatio ?? 0,
     };
     this.pixelRatio = options.initialPixelRatio;
     this.shadows = options.shadows ?? false;
@@ -113,21 +126,40 @@ export class RenderGovernor {
     this.windowMs = 0;
     if (p75 <= this.o.slowP75Ms) {
       this.slowRun = 0;
-      return null;
+      const up = this.upStep(p75);
+      if (!up) return null;
+      this.pixelRatio = up.to;
+      this.steps.push(up);
+      return up;
     }
+    this.fastRun = 0;
     if (++this.slowRun < this.o.slowWindows) return null;
     this.slowRun = 0;
     const step = this.nextStep(p75);
     if (!step) return null;
+    // Down right after up: the ratio above is too much for this machine; stay down.
+    const last = this.steps[this.steps.length - 1];
+    if (last && last.kind === 'pixelRatio' && last.to > last.from) this.upLocked = true;
     if (step.kind === 'pixelRatio') this.pixelRatio = step.to;
     else this.shadows = false;
     this.steps.push(step);
     return step;
   }
 
-  /** Nothing left to give up. */
+  /** One step back up towards the tier's cap after `fastWindows` fast windows; null otherwise. */
+  private upStep(p75Ms: number): Extract<GovernorStep, { kind: 'pixelRatio' }> | null {
+    const cap = this.o.maxPixelRatio;
+    if (!(cap > 0) || this.upLocked || this.o.fixedPixelRatio || this.pixelRatio >= cap || p75Ms > this.o.fastP75Ms) { this.fastRun = 0; return null; }
+    if (++this.fastRun < this.o.fastWindows) return null;
+    this.fastRun = 0;
+    const to = Math.min(cap, Math.round(this.pixelRatio / 0.75 * 100) / 100);
+    return { kind: 'pixelRatio', from: this.pixelRatio, to, p75Ms };
+  }
+
+  /** Nothing left to give up, and no way back up. */
   get exhausted(): boolean {
-    return this.nextStep(Infinity) === null;
+    const canRise = this.o.maxPixelRatio > 0 && !this.upLocked && !this.o.fixedPixelRatio;
+    return !canRise && this.nextStep(Infinity) === null;
   }
 
   /** The step a window this slow would take; pure, so `exhausted` can ask. */
@@ -172,6 +204,8 @@ export interface GovernorInstallOptions {
    */
   defer?: (apply: () => void) => void;
   onStep?: (step: GovernorStep, governor: RenderGovernor) => void;
+  /** Quality tier cap: the governor may step the pixel ratio back up to it (see GovernorOptions.maxPixelRatio). */
+  maxPixelRatio?: number;
 }
 
 /** Attach a governor to a map's render events. Returns it for status/tests. */
@@ -186,6 +220,7 @@ export function governMapRender(map: GovernableMap, options: GovernorInstallOpti
     fixedPixelRatio: options.fixedPixelRatio,
     shadows: !!options.setShadows,
     settleMs: options.settleMs ?? 12_000,
+    maxPixelRatio: options.maxPixelRatio,
   });
   let last = 0;
   const onRender = () => {
@@ -216,4 +251,67 @@ export function governMapRender(map: GovernableMap, options: GovernorInstallOpti
   };
   map.on('render', onRender);
   return governor;
+}
+
+// ---- Quality tiers (engine programme P4) ----
+//
+// Chosen once at start. The probe (engine/tierProbe.ts) draws a fixed fill-heavy scene at the canvas's
+// native size; only a machine that misses the probe's budget there leaves `high`. `high` is the frame as
+// it was before tiers (native pixel ratio: the user's first complaint on 2026-10-31 was a blurry frame, and
+// an M4 Pro holds 74 fps at DPR 2), `mid` caps the pixel ratio at 1.5 with 1024² shadows and the touch
+// facade level, `low` drops to 1x without sun shadows. A tier only ever lowers a device default (phones
+// keep their 1.25x and 1024² either way). The governor steps down, and inside the tier back up, from there.
+// `?tier=low|mid|high` forces one (specs); window.__canalPerf carries the choice and the probe numbers.
+
+export type QualityTier = 'low' | 'mid' | 'high';
+
+export interface TierSettings {
+  shadows: boolean;
+  /** Ceiling on the sun shadow map size. */
+  shadowMapSize: number;
+  /** Landmark shadow stand-ins (rendererShared/shadowStandIns.ts); nothing to stand in for without shadows. */
+  standIns: boolean;
+  /** threeBuildingsBrowser FacadeDetail for chunks away from the rider; null keeps the device default. */
+  facadeDetail: 'full' | 'touch' | null;
+  /** Pixel ratio cap (also the governor's ceiling); Infinity = the device's own ratio. */
+  dprCap: number;
+  /**
+   * Own-ground level (ownGround/gameGround.ts detail/groundNear/groundRing); null keeps the device default.
+   * `low` builds every cell at the coarse `touch` level (no bollards or furniture, coarser drapes) with the
+   * ring fitted to the viewport, which is what a CPU rasteriser is bound by (hand-back on #129).
+   */
+  ground: { detail: 'full' | 'touch'; near: 'block' | 'cell' | 'all'; ring: 'steps' | 'view' } | null;
+}
+
+export const TIER_SETTINGS: Readonly<Record<QualityTier, Readonly<TierSettings>>> = {
+  high: { shadows: true, shadowMapSize: 2048, standIns: true, facadeDetail: null, dprCap: Infinity, ground: null },
+  mid: { shadows: true, shadowMapSize: 1024, standIns: true, facadeDetail: 'touch', dprCap: 1.5, ground: null },
+  low: { shadows: false, shadowMapSize: 1024, standIns: false, facadeDetail: 'touch', dprCap: 1, ground: { detail: 'touch', near: 'all', ring: 'view' } },
+};
+
+export interface TierProbe {
+  /** Median ms of one probe frame (fixed fill scene at the native canvas size, GPU-inclusive); null when it could not run. */
+  frameMs: number | null;
+  /** UNMASKED_RENDERER / RENDERER string. */
+  gpu: string;
+  deviceMemory: number | null;
+  hardwareConcurrency: number | null;
+  dpr: number;
+  coarse: boolean;
+}
+
+/**
+ * Probe budget (ms per probe frame at native size). Calibrated on this programme's machines (lane D,
+ * 2026-10-31): see the hand-back on #129 for the M4 Pro at DPR 2 and SwiftShader numbers.
+ */
+export const TIER_FRAME_MS = { mid: 8, low: 25 };
+const SOFTWARE_GPU = /swiftshader|llvmpipe|softpipe|software|basic render|microsoft basic/i;
+
+/** The tier for a probe, with the reason. `asked` (`?tier=`) wins; only a missed probe budget (or a software GPU) lowers it. */
+export function chooseTier(probe: TierProbe, asked?: string | null): { tier: QualityTier; reasons: string[] } {
+  if (asked === 'low' || asked === 'mid' || asked === 'high') return { tier: asked, reasons: ['asked'] };
+  if (SOFTWARE_GPU.test(probe.gpu)) return { tier: 'low', reasons: ['software renderer'] };
+  if (probe.frameMs != null && probe.frameMs > TIER_FRAME_MS.low) return { tier: 'low', reasons: [`probe ${probe.frameMs} ms > ${TIER_FRAME_MS.low}`] };
+  if (probe.frameMs != null && probe.frameMs > TIER_FRAME_MS.mid) return { tier: 'mid', reasons: [`probe ${probe.frameMs} ms > ${TIER_FRAME_MS.mid}`] };
+  return { tier: 'high', reasons: [] };
 }

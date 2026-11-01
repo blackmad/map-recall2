@@ -11,7 +11,7 @@
  * thread receives a tile's styled features in batches of `WORLD_BATCH` buildings, each its own small task,
  * so no cell is ever one long main-thread task. Without a worker (Node, a worker that failed) it all runs here.
  */
-import { decodeCell, inflateCell, rawFeature, styledFeature, WORLD_FORMAT_VERSION, type Cell, type Props, type Geometry } from './cellFormat.js';
+import { decodeCell, decodeGlobalStrings, cellGlobalRef, GLOBAL_STRINGS_FILE, inflateCell, type GlobalStrings, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
 import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
@@ -27,7 +27,7 @@ export function worldV1Enabled(search: string = typeof location !== 'undefined' 
 /** Parse and check index.json; null when it is not a world-v1 index (a host answering with the app page). */
 export function readWorldIndex(value: unknown): WorldIndex | null {
   const v = value as Partial<WorldIndex> | null;
-  if (!v || v.version !== 1 || v.format !== WORLD_FORMAT_VERSION || !v.tileCells || typeof v.tileCells !== 'object' || !v.cells || typeof v.cells !== 'object') return null;
+  if (!v || v.version !== 1 || !WORLD_FORMAT_VERSIONS.includes(v.format as number) || !v.tileCells || typeof v.tileCells !== 'object' || !v.cells || typeof v.cells !== 'object') return null;
   return v as WorldIndex;
 }
 
@@ -46,7 +46,20 @@ export class WorldCellReader {
    *  "decodes" of the first A/B, 2026-10-30, were this wall time during page start, not decode work). */
   readonly decodeMs = new Map<string, number>();
   readonly inflateMs = new Map<string, number>();
+  /** world-v1/strings.bin (format v4's shared string table): fetched once, on the first cell that needs it. */
+  private globals: Promise<GlobalStrings> | null = null;
   constructor(private readonly baseUrl: string, private readonly fetcher: typeof fetch = (...a) => fetch(...a), private readonly capacity = WORLD_CELL_CACHE) {}
+
+  /** Not tied to one cell's abort signal: every cell of the page shares it. A failure is not cached. */
+  private sharedStrings(): Promise<GlobalStrings> {
+    this.globals ??= (async () => {
+      const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/${GLOBAL_STRINGS_FILE}`);
+      if (!response.ok) throw Error(`world strings: HTTP ${response.status}`);
+      return decodeGlobalStrings(await inflateCell(new Uint8Array(await response.arrayBuffer())));
+    })();
+    this.globals.catch(() => { this.globals = null; });
+    return this.globals;
+  }
 
   cell(key: string, signal?: AbortSignal): Promise<Cell> {
     let hit = this.cells.get(key);
@@ -57,8 +70,9 @@ export class WorldCellReader {
       const bytes = new Uint8Array(await response.arrayBuffer());
       const t0 = performance.now();
       const inflated = await inflateCell(bytes);
+      const ref = cellGlobalRef(inflated), globals = ref ? await this.sharedStrings() : undefined;
       const t1 = performance.now();
-      const cell = decodeCell(inflated, `world cell ${key}`);
+      const cell = decodeCell(inflated, `world cell ${key}`, globals);
       this.inflateMs.set(key, t1 - t0);
       this.decodeMs.set(key, performance.now() - t1);
       return cell;
@@ -170,6 +184,8 @@ export class WorldCellClient {
   /** The page's worker pool (engine/workerPool.ts), shared with chunk builds and relief decodes; null: main thread. */
   private pool: WorkerPool | null;
   private unsubscribe: (() => void) | null = null;
+  /** One copy of each property string value received from the workers (see `internStrings`). */
+  private readonly interned: InternTable = new Map();
   private nextId = 1;
   private readonly pending = new Map<number, Pending>();
   /** The one cell queue (engine/worldStreamer.ts): cells the planned tiles need, read ahead in rank order. */
@@ -211,7 +227,14 @@ export class WorldCellClient {
   private receive(reply: WorldReply): void {
     const job = this.pending.get(reply.id);
     if (!job) return;
-    if (reply.kind === 'world-batch') { job.share.ordinals.push(...reply.ordinals); for (const f of reply.raw) job.share.raw.push(f); for (const s of reply.styled) job.share.styled.push(s); return; }
+    if (reply.kind === 'world-batch') {
+      job.share.ordinals.push(...reply.ordinals);
+      // Structured clone gave every string value its own copy; the worker's decoded cells shared one per
+      // string-table entry. Intern them again (#130).
+      for (const f of reply.raw) { internStrings(f.properties, this.interned); job.share.raw.push(f); }
+      for (const s of reply.styled) { if (s) internStrings(s, this.interned); job.share.styled.push(s); }
+      return;
+    }
     this.pending.delete(reply.id);
     if (reply.kind === 'world-error') { job.reject(Error(reply.message)); return; }
     for (const [k, v] of Object.entries(reply.decodeMs)) this.decodeMs.set(k, v);
@@ -299,4 +322,39 @@ export class WorldCellClient {
 
   /** Leave the shared pool (it stays up for the other layers); in-flight replies are then ignored. */
   dispose(): void { this.unsubscribe?.(); this.unsubscribe = null; this.pool = null; }
+}
+
+/** String value → its one shared copy (`internStrings`). */
+export type InternTable = Map<string, string>;
+/** Entries beyond this are not added (a long ride's distinct values stay bounded); known ones still match. */
+export const INTERN_LIMIT = 50_000;
+
+/**
+ * Replace every string value in a property bag (nested arrays and plain objects included) by one shared copy
+ * from `table`. Structured clone (a worker's postMessage) makes a new string per occurrence: 289,000 property
+ * strings, 5.6 M characters, over four z14 tiles on the main thread where the worker's decoded cells held one
+ * per string-table entry. `id` is unique per building and is left alone. Same values, same objects.
+ */
+export function internStrings(bag: Record<string, unknown> | null | undefined, table: InternTable, depth = 0): void {
+  if (!bag || depth > 4) return;
+  const intern = (v: string): string => {
+    const hit = table.get(v);
+    if (hit !== undefined) return hit;
+    if (table.size < INTERN_LIMIT) table.set(v, v);
+    return v;
+  };
+  if (Array.isArray(bag)) {
+    for (let i = 0; i < bag.length; i++) {
+      const v = bag[i];
+      if (typeof v === 'string') bag[i] = intern(v);
+      else if (v && typeof v === 'object') internStrings(v as Record<string, unknown>, table, depth + 1);
+    }
+    return;
+  }
+  for (const k in bag) {
+    if (!Object.prototype.hasOwnProperty.call(bag, k) || (depth === 0 && k === 'id')) continue;
+    const v = bag[k];
+    if (typeof v === 'string') bag[k] = intern(v);
+    else if (v && typeof v === 'object') internStrings(v as Record<string, unknown>, table, depth + 1);
+  }
 }

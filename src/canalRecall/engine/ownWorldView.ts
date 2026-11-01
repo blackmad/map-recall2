@@ -16,6 +16,8 @@
 // `UNIMPLEMENTED` and answers as a no-op until its step lands (overlays,
 // labels, landmarks, trees: steps 4–5, lane L5).
 
+import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
+import { tierProbe } from './tierProbe';
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
@@ -23,7 +25,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera } from './cameraClearance';
+import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { fetchOverview, OverviewLayer } from './overviewLayer';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
@@ -35,7 +37,9 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
+import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
 import { LandmarkHighlight } from './landmarkHighlight';
+import { LabelOcclusion } from './labelOcclusion';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -93,6 +97,8 @@ export class OwnWorldView {
   readonly camera: WorldCamera;
   readonly _sharedFrame: SharedFrame;
   _renderGovernor: any = null;
+  /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
+  qualityTier: { tier: QualityTier; reasons: string[]; settings: Record<string, unknown>; probe: unknown } | null = null;
   _cameraTilt = 0;
   theme = 'clean';
   riderCovered = false;
@@ -143,6 +149,12 @@ export class OwnWorldView {
   readonly _labels: LabelLayer;
   _highlightMarker: any = null;
   private readonly landmarkHighlight = new LandmarkHighlight();
+  readonly labelOcclusion = new LabelOcclusion();
+  /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
+  private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  get labelOcclusionOn(): boolean { return this._labelOcclusionOn; }
+  /** The A/B switch: a still frame is not redrawn (render-on-change), so the switch asks for the frame that re-places the labels. */
+  set labelOcclusionOn(on: boolean) { this._labelOcclusionOn = on; this.host?.triggerRepaint(); }
   private quizQuiet = false;
   private spoilersSuspended = false;
   private loader: LoaderFrame | null = null;
@@ -170,20 +182,42 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
+    // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
+    // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
+    const search = new URLSearchParams(W().location?.search ?? '');
+    const asked = search.get('tier');
+    const ratio = this.host.getPixelRatio();
+    const probe = asked ? null : tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
+      { width: Math.max(container.clientWidth, W().innerWidth || 0) * ratio, height: Math.max(container.clientHeight, W().innerHeight || 0) * ratio });
+    const { tier, reasons } = probe ? chooseTier(probe) : chooseTier({ frameMs: null, gpu: '', deviceMemory: null, hardwareConcurrency: null, dpr, coarse: coarse() }, asked);
+    const settings = TIER_SETTINGS[tier];
+    const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
+    if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);
+    if (settings.facadeDetail && W().__canalRecallFacadeDetail === undefined && !search.has('facadeDetail')) W().__canalRecallFacadeDetail = settings.facadeDetail;
+    // The ground reads these once, when it is built below; an explicit query or global still wins.
+    if (settings.ground) {
+      if (W().__canalRecallGroundDetail === undefined && !search.has('groundDetail')) W().__canalRecallGroundDetail = settings.ground.detail;
+      if (W().__canalRecallGroundNear === undefined && !search.has('groundNear')) W().__canalRecallGroundNear = settings.ground.near;
+      if (W().__canalRecallGroundRing === undefined && !search.has('groundRing')) W().__canalRecallGroundRing = settings.ground.ring;
+    }
+    this.qualityTier = { tier, reasons, settings: { ...settings, dprCap: Number.isFinite(settings.dprCap) ? settings.dprCap : null }, probe };
+    W().__canalPerf = { ...(W().__canalPerf ?? {}), tier, tierReasons: reasons, tierSettings: this.qualityTier.settings, tierProbe: probe };
+    console.info('[canal-recall] quality tier', tier, reasons.join(', ') || '-', probe ? `probe ${probe.frameMs} ms @${probe.fill.width}x${probe.fill.height}` : '');
     const prefs = W().CanalRecallPreferences;
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
     for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
     this.camera = this.cameraMap.api;
-    const shadows = flag('shadows', '__canalRecallShadows', true);
+    const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
       host: { renderer: () => this.host.renderer },
       shadows,
-      shadowMapSize: coarse() ? 1024 : 2048,
+      shadowMapSize: Math.min(coarse() ? 1024 : 2048, settings.shadowMapSize),
       shadowRamp: flag('transition', '__canalRecallTransition', true) && three.blendAtZoom ? (z: number) => three.blendAtZoom(z) : undefined,
     });
+    this._sharedFrame.shadowStandIns = settings.standIns;
     (this.cameraMap as any)._canalSharedFrame = this._sharedFrame;
     this._sharedFrame.attach();
     const guards = guardFrameHost(this.host, {
@@ -193,6 +227,7 @@ export class OwnWorldView {
       setShadows: shadows ? on => this._sharedFrame.setShadows(on) : undefined,
       restoredOk: () => !!this._sharedFrame.renderer,
       probe: () => this.graphicsProbe(),
+      maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
     const view = { center: () => this.camera.center(), zoom: () => this.camera.zoom() };
@@ -277,12 +312,16 @@ export class OwnWorldView {
       this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, 'photo');
       this._threeBuildings.attachToSharedFrame(this._sharedFrame);
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
+      this.streetFronts = null;
       this._threeBuildings.setVisible(true);
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
       const years = Facades.constructionYearEnricher(this.extractPath);
-      city.setTileEnricher(Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years);
+      const facts = Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years;
+      // Railway infrastructure registered as buildings (railInfraBuildings.ts, rail-infra-buildings.json): viaduct pands
+      // dropped for the track's own structure, platform canopies as open canopies over the platforms. After the facts.
+      city.setTileEnricher(composeTileEnrichers(facts, railInfraEnricher(this.extractPath)) as any);
       const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(Facades.decorateFacade(f)) : Facades.decorateFacade;
       const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
@@ -310,7 +349,9 @@ export class OwnWorldView {
         });
       }
       const api = W().CanalRecallOwnGround;
-      const budget: Record<string, unknown> = { releaseArrays: coarse() && W().__canalRecallKeepGroundArrays !== true };
+      // Every device frees the ground's CPU arrays once uploaded (81 MB on the desktop ride start, heap gate #130);
+      // a lost context rebuilds the resident cells from the worker. Phones also draw through the tiles only.
+      const budget: Record<string, unknown> = { releaseArrays: W().__canalRecallKeepGroundArrays !== true, tilesOnly: coarse() };
       if (coarse()) budget.radiusM = 400;
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),
@@ -393,6 +434,26 @@ export class OwnWorldView {
     const frame = cameraFrame({ center: [lx, ly], zoom, bearing: cam.bearing, pitch: cam.pitch, fovDeg: cam.fovDeg, elevation: cam.elevation }, this.host.viewport(), cam.lat);
     const b = cam.bounds();
     const [x0, y0] = toLocal(b.west, b.south), [x1, y1] = toLocal(b.east, b.north);
+    // POI labels behind nearer buildings are not drawn (engine/labelOcclusion.ts), tested against the resident
+    // footprints at each full placement only (the grid is (re)built lazily there, not per frame). Every resident, not
+    // sampleFeatures' first 20,000: the city holds ~36,000 and the cap dropped the blocks around the camera.
+    // `?labelOcclusion=0` turns it off.
+    const city = this._completeCity;
+    if (this.labelOcclusionOn && city?.residentFeatures) {
+      const eye = cam.eye();
+      let indexed = false;
+      this._labels.setOcclusion(c => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        const [lng, lat] = fromLocal(c.at![0], c.at![1]);
+        return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
+      }, id => { const f = this.labelOcclusion.front.get(id); return f ? toLocal(f[0], f[1]) : null; }, (id, anchors) => {
+        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        // Any blocked point hides the name (the default engine's street-name rule, labels/streetLabelOcclusion.ts).
+        let blocked = false;
+        anchors.forEach((a, k) => { if (this.labelOcclusion.occluded(`${id}#${k}`, fromLocal(a[0], a[1]), eye)) blocked = true; });
+        return blocked;
+      });
+    } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
   }
 
@@ -413,7 +474,7 @@ export class OwnWorldView {
   private graphicsProbe(): Record<string, unknown> {
     const r = this.host.renderer;
     return {
-      engine: 'own', zoom: Math.round(this.camera.zoom() * 10) / 10, pitch: Math.round(this.camera.pitch()),
+      engine: 'own', tier: this.qualityTier?.tier ?? null, zoom: Math.round(this.camera.zoom() * 10) / 10, pitch: Math.round(this.camera.pitch()),
       programs: r?.info?.programs?.length ?? null, geometries: r?.info?.memory?.geometries ?? null, textures: r?.info?.memory?.textures ?? null,
       lastFrameCalls: this._sharedFrame.stats.main.calls, lastFrameTriangles: this._sharedFrame.stats.main.triangles,
     };
@@ -502,7 +563,7 @@ export class OwnWorldView {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
         return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
-      }, () => this._completeCity.sampleFeatures(20_000));
+      }, () => clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] }));
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
@@ -554,6 +615,8 @@ export class OwnWorldView {
     return lngLatToWorld(hit.lng, hit.lat, loader);
   }
   worldToLngLat(worldX: number, worldY: number, loader: LoaderFrame): [number, number] { return worldToLngLat(worldX, worldY, loader); }
+  /** The camera eye (lng/lat, metres up): the HUD street-name pass's occlusion test reads it (labels/streetLabelOcclusion.ts). */
+  cameraEye(): { lng: number; lat: number; altitudeM: number } { return this.cameraMap.camera.eye(); }
 
   isWater(worldX: number, worldY: number, loader: LoaderFrame): boolean {
     if (!this._overview || !loader || loader._lastCenterLat == null) return false;
@@ -598,7 +661,8 @@ export class OwnWorldView {
     ferry.zoomScale = zoomScale;
     const lngLat = worldToLngLat(player.x, player.y, loader);
     const surface = this.riderSurface();
-    ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
+    // Only while drawn: the water test ran every frame of every ride for a hidden ferry (#129); `update` below shows it.
+    if (visible) ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
     ferry.update(lngLat, player.angle, visible);
   }
   setPlayerTransit(player: any, loader: LoaderFrame, visible: boolean, underground = false, zoomScale = 1): void {
@@ -661,7 +725,14 @@ export class OwnWorldView {
   }
 
   // ---- content the game hands over ----
-  setStreetFronts(ways: unknown): void { this.streetFronts = ways; this._threeBuildings?.setStreets?.(ways); }
+  /**
+   * The buildings layer keeps its own packed street segments; the raw OSM ways are held only until it exists to take
+   * them (24.7 MB on the ride-start heap when kept for the session, #130).
+   */
+  setStreetFronts(ways: unknown): void {
+    if (this._threeBuildings) { this._threeBuildings.setStreets?.(ways); this.streetFronts = null; }
+    else this.streetFronts = ways;
+  }
   setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
@@ -799,10 +870,15 @@ export class OwnWorldView {
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
 }
 
+/** Found numbers, by name: they are `const` in constants.js, and the indirect eval compiled a script per call, several a frame (#129). */
+const GLOBAL_NUMS = new Map<string, number>();
 function globalNum(name: string, fallback: number): number {
+  const known = GLOBAL_NUMS.get(name);
+  if (known !== undefined) return known;
   try {
     // Top-level `const` in constants.js is a global lexical binding, not a window property.
     const v = (0, eval)(`typeof ${name} === 'number' ? ${name} : undefined`);
-    return typeof v === 'number' ? v : fallback;
+    if (typeof v === 'number') { GLOBAL_NUMS.set(name, v); return v; }
+    return fallback;
   } catch (_) { return fallback; }
 }

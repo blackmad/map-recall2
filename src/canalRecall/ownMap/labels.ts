@@ -53,6 +53,8 @@ export interface PlacedLabel {
   x?: number; y?: number;
   /** Line labels. */
   glyphs?: PlacedGlyph[];
+  /** Line labels: the street points (local metres) under the first, middle and last glyph (occlusion tests them). */
+  anchors?: Vec2[];
 }
 
 type Box = [number, number, number, number];
@@ -97,6 +99,15 @@ export function glyphsAlong(line: readonly { x: number; y: number }[], cum: read
   return out;
 }
 
+/** The local point (metres) at screen arc length `s` along a projected run (linear between its path points). */
+function localAlong(run: readonly { q: Vec2 }[], cum: readonly number[], s: number): Vec2 {
+  let i = 0;
+  while (i < cum.length - 2 && cum[i + 1] < s) i++;
+  const len = cum[i + 1] - cum[i] || 1, t = Math.max(0, Math.min(1, (s - cum[i]) / len));
+  const a = run[i].q, b = run[i + 1].q;
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+}
+
 export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOptions): PlacedLabel[] {
   const { width: W, height: H, zoom } = opts;
   const pad = opts.padding ?? 2;
@@ -132,11 +143,11 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
     }
     if (!c.path || c.path.length < 2) continue;
     // Project; cut where the line goes behind the eye or past the horizon depth.
-    const runs: Array<Array<{ x: number; y: number }>> = [[]];
+    const runs: Array<Array<{ x: number; y: number; q: Vec2 }>> = [[]];
     for (const q of c.path) {
       const p = opts.project(q);
       const ok = p.depth > 0 && (!opts.maxDepth || p.depth < opts.maxDepth);
-      if (ok) runs[runs.length - 1].push({ x: p.x, y: p.y });
+      if (ok) runs[runs.length - 1].push({ x: p.x, y: p.y, q });
       else if (runs[runs.length - 1].length) runs.push([]);
     }
     let metrics: ReturnType<typeof measure> | null = null;
@@ -174,7 +185,7 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
         if (boxes.some(b => !inside(b, W, H) || grid.hits(b)) || tooClose(c.text, mid.x, mid.y)) continue;
         for (const b of boxes) grid.insert(b);
         remember(c.text, mid.x, mid.y);
-        out.push({ id: c.id, text: c.text, kind: c.kind, size, glyphs });
+        out.push({ id: c.id, text: c.text, kind: c.kind, size, glyphs, anchors: [centre - textW / 2, centre, centre + textW / 2].map(a => localAlong(run, cum, a)) });
         break;
       }
     }

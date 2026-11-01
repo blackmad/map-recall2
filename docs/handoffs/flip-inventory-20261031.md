@@ -27,7 +27,7 @@ the probe set racing itself; then a 10 s chase ride and one building tap.
 Proxy before its script ran, and nothing read it. No `maplibregl.Map` was
 constructed (`engine-own.spec`: `maplibreMaps 0`).
 
-**MapLibre download: still happens.** There are 2 requests to
+**MapLibre download: still happened at the time of this trace.** With the B1 loader applied it is 0 requests (pinned in `engine-own.spec`). There are 2 requests to
 `unpkg.com/maplibre-gl@5.24.0/dist` (the JS and the CSS). Removing them is B1
 below. The other third-party requests are Google Fonts and Wikimedia card
 images; neither has anything to do with MapLibre.
@@ -65,7 +65,7 @@ switch, and the specs.
 
 | # | Where | What it does | Replacement | Blocks the flip? |
 |---|---|---|---|---|
-| B1 | `public/canal-drive/index.html:36-37` | Loads `maplibre-gl@5.24.0` JS and CSS from unpkg on every page load, `?engine=own` included: a third-party fetch on the critical path, then the parse. | Under `own`, do not load it. Either a tag written only when `engineFlag() !== 'own'`, or a dynamic loader in `VectorBasemap._installMap`. Delete the tag at the flip. | **Yes**, for the P1 gate "MapLibre workers 0 MB / never constructed". Today nothing constructs a map, but the library is still downloaded. |
+| B1 | `public/canal-drive/index.html:36-37` | Loaded `maplibre-gl@5.24.0` JS and CSS from unpkg on every page load, `?engine=own` included. | **Done behind the flag (L1, 2026-10-31; the integrator applies the index.html patch).** `engine/mapLibreLoader.ts` is a 592-byte classic script that runs in place of the tags. Under the default engine it `document.write`s the same preconnect, CSS and JS, so they stay parser-blocking and in order. Under own it writes nothing. `engine-own.spec` asserts 0 maplibre-gl requests under the flag, and that the default path still requests the script and the stylesheet and builds its map. Delete the loader together with vector-map.js at the flip. Caveat: Chrome's document.write intervention can refuse the written cross-site script on 2G connections; self-hosting maplibre-gl removes that. | Was the one load-time blocker. |
 | B2 | `public/canal-drive/js/game.js:107-110` | Picks `OwnWorldView` only under `?engine=own`; MapLibre stays the default. | Default to `own`; keep `?engine=maplibre` as a dev fallback until P5 deletes it. | **Yes**: the flip itself (integrator). |
 | B3 | `public/canal-drive/js/game-route.js:1897-1902`, `:1936`, `:1955` `_waitForMapSettle` | Waits for MapLibre's first idle at the spawn and the overview. | Under `own`, already answered by `camera.whenIdle()` and the settle checks (`engine/settle.ts`, 71703e7b5, with the settle patch applied). At P5, delete the MapLibre branch and the 450 ms breathing pause. | No: own already works through it. |
 | B4 | `public/canal-drive/js/game-route.js:1628` | Comment and loading message "MapLibre supplies a continuously rendered vector basemap". | Text only: fix it when the branch goes. | No. |
@@ -116,10 +116,10 @@ shim answers.
 
 Each step leaves the game working and all specs green.
 
-1. **Stop loading MapLibre under own (B1).** Either an index.html tag guarded by
-   `engineFlag()`, or a lazy loader in `VectorBasemap`. Check: under own, a
-   network trace shows no unpkg request, and `engine-own.spec` still reports
-   `maplibreMaps 0`.
+1. **Stop loading MapLibre under own (B1). Done behind the flag**
+   (`engine/mapLibreLoader.ts` and the index.html patch). `engine-own.spec`
+   now pins 0 maplibre-gl requests under own and the full load on the default
+   path.
 2. **Specs off `vectorMap.map`** (section 4, lane L2). This must come before the
    default switch: these specs read MapLibre internals and would fail or skip
    under own.

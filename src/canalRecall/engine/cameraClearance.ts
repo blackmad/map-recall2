@@ -60,12 +60,36 @@ export function blockingFeature<T extends FootprintFeature>(point: LngLat, altit
   }) || null;
 }
 
+/** Resident lists at least this long are walked through a grid (residentIndex); shorter ones linearly. */
+export const RESIDENT_INDEX_MIN = 2000;
+const RESIDENT_GRID_DEG = 0.002;
+const gridKey = (i: number, j: number) => i * 1_000_003 + j;
+const RESIDENT_INDEXES = new WeakMap<readonly FootprintFeature[], Map<number, number[]>>();
+/** Each resident's position in the list under every grid cell its box touches. */
+function residentIndex(resident: readonly FootprintFeature[]): Map<number, number[]> {
+  let index = RESIDENT_INDEXES.get(resident);
+  if (index) return index;
+  index = new Map();
+  for (let k = 0; k < resident.length; k++) {
+    const b = featureBox(resident[k]);
+    if (!b) continue;
+    for (let i = Math.floor(b[0] / RESIDENT_GRID_DEG); i <= Math.floor(b[2] / RESIDENT_GRID_DEG); i++) {
+      for (let j = Math.floor(b[1] / RESIDENT_GRID_DEG); j <= Math.floor(b[3] / RESIDENT_GRID_DEG); j++) {
+        const key = gridKey(i, j), list = index.get(key);
+        if (list) list.push(k); else index.set(key, [k]);
+      }
+    }
+  }
+  RESIDENT_INDEXES.set(resident, index);
+  return index;
+}
+
 /**
  * Walk the sightline from the camera (`from`, `altitude` metres) down to the rider (`center`, ground) one metre at a
  * time; the last 2 m are ignored so rounding at a kerb cannot make the camera oscillate. Only footprints whose box
  * touches the line's box are tested (point-in-polygon over 20 000 residents per metre was a phone frame's largest cost).
  */
-export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, center: LngLat, altitude: number, resident: readonly T[]): T | null {
+export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, center: LngLat, altitude: number, resident: readonly T[], indexMin = RESIDENT_INDEX_MIN): T | null {
   const mLat = 111320, mLng = 111320 * Math.cos(center[1] * Math.PI / 180);
   const east = (center[0] - from[0]) * mLng, north = (center[1] - from[1]) * mLat;
   const distance = Math.hypot(east, north);
@@ -73,10 +97,17 @@ export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, cente
   const west = Math.min(from[0], center[0]), eastEdge = Math.max(from[0], center[0]);
   const south = Math.min(from[1], center[1]), northEdge = Math.max(from[1], center[1]);
   const candidates: T[] = [];
-  for (const f of resident) {
-    const b = featureBox(f);
-    if (b && b[0] <= eastEdge && b[2] >= west && b[1] <= northEdge && b[3] >= south) candidates.push(f);
-  }
+  const hits = (f: T) => { const b = featureBox(f); return !!b && b[0] <= eastEdge && b[2] >= west && b[1] <= northEdge && b[3] >= south; };
+  if (resident.length >= indexMin) {
+    // The city's ~34,000 residents in a grid, built once per resident list: the walk ran a box test on every one for
+    // each pitch probe, every frame (#129). Candidates keep the list's order, so the blocker found is the same.
+    const index = residentIndex(resident);
+    const seen = new Set<number>();
+    for (let i = Math.floor(west / RESIDENT_GRID_DEG); i <= Math.floor(eastEdge / RESIDENT_GRID_DEG); i++) {
+      for (let j = Math.floor(south / RESIDENT_GRID_DEG); j <= Math.floor(northEdge / RESIDENT_GRID_DEG); j++) for (const k of index.get(gridKey(i, j)) ?? []) seen.add(k);
+    }
+    for (const k of [...seen].sort((a, b) => a - b)) if (hits(resident[k])) candidates.push(resident[k]);
+  } else for (const f of resident) if (hits(f)) candidates.push(f);
   if (!candidates.length) return null;
   for (let travelled = 1; travelled < distance - 2; travelled += 1) {
     const t = travelled / distance;
@@ -87,6 +118,15 @@ export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, cente
     if (blocker) return blocker;
   }
   return null;
+}
+
+/**
+ * Every resident building for the clearance walk. `sampleFeatures(20_000)` took the first 20,000 of the city's
+ * ~34,000 residents in cache order, so the blocks around the camera were often among the ones dropped and the camera
+ * sank into them (#129). The sightline walk prefilters by box, so the whole list costs one box test per resident.
+ */
+export function clearanceResidents<T extends FootprintFeature = FootprintFeature>(city: { sampleFeatures(limit: number): readonly T[] }): readonly T[] {
+  return city.sampleFeatures(Number.POSITIVE_INFINITY);
 }
 
 /**

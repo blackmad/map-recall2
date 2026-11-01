@@ -47,6 +47,7 @@ import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
+import type { CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -92,6 +93,12 @@ export interface OwnGroundOptions {
    * on beside their GPU copy; only `layersAt`, a diagnostics walk, reads them.
    */
   releaseArrays?: boolean;
+  /**
+   * Draw the cut layers through their tiles only and drop the whole-mesh index (phones). Defaults to
+   * `releaseArrays`; `?engine=own` on desktop releases the arrays but keeps the whole draw (spans there rewrite the
+   * index once before upload and need no CPU copy after it).
+   */
+  tilesOnly?: boolean;
   /** Ground palette (groundLook.ts; GROUND_LOOK_DEFAULT unless given). Colour only. */
   groundLook?: GroundLook;
   /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
@@ -331,7 +338,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -353,7 +360,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag() });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, tileMin: TILE_MIN_TRIANGLES });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -966,11 +973,12 @@ export class OwnGround {
    * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
    * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
    */
-  private tile(mesh: any): void {
+  private tile(mesh: any, tiles?: CellTile[] | null): void {
     if (this.opts.tiles <= 1) return;
-    const tilesOnly = !!this.opts.releaseArrays;
+    const tilesOnly = this.opts.tilesOnly;
     // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
-    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: tilesOnly, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
+    // `tiles`: cut in the worker (cellTiles.ts layerTiles, the same partition), so only the wrapping runs here.
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly, tiles }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {
@@ -1039,7 +1047,7 @@ export class OwnGround {
       // Deck bodies, hedges and park furniture stand up; the rest is ground.
       mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-      this.tile(mesh);
+      this.tile(mesh, cell.tiles ? cell.tiles[layer] ?? null : undefined);
       group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);

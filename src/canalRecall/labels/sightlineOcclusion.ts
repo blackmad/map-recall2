@@ -208,10 +208,10 @@ export class SightlineIndex {
     if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
     // Cheapest rejection: the sightline is above this roof everywhere along it.
     if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
-    for (const ring of p.rings) {
-      if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
-    }
-    for (const ring of p.rings) {
+    // The wall crossings first; whether the footprint holds the camera or the anchor (then it never hides) only for a
+    // footprint that would hide: the same answer, without two point-in-ring tests per footprint near the line.
+    let above = false;
+    outer: for (const ring of p.rings) {
       const n = ring.length / 2;
       for (let i = 0, j = n - 1; i < n; j = i++) {
         const cx = ring[j * 2], cy = ring[j * 2 + 1];
@@ -223,9 +223,13 @@ export class SightlineIndex {
         const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
         if (u < 0 || u > 1) continue;
         const rayAlt = camAlt + (anchorAlt - camAlt) * t;
-        if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) return true;
+        if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) { above = true; break outer; }
       }
     }
-    return false;
+    if (!above) return false;
+    for (const ring of p.rings) {
+      if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
+    }
+    return true;
   }
 }

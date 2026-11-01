@@ -12,8 +12,10 @@ import { splitIntoTiles, type CellTile } from '../ownGround/cellTiles.js';
  * draw ranges are not carried over: a geometry with groups is left whole.
  */
 /** The index partition behind tileGeometry (null when unfit), for drawAsSpans. */
-export function rawTiles(base: any, n: number, minTriangles: number, groups?: readonly { start: number; count: number }[]): CellTile[] | null {
+export function rawTiles(base: any, n: number, minTriangles: number, groups?: readonly { start: number; count: number }[], precomputed?: CellTile[] | null): CellTile[] | null {
   if (n <= 1 || !base?.index?.array || base.groups?.length) return null;
+  // Cut where the mesh was built (ownGround/cellTiles.ts layerTiles: the same call on the same arrays).
+  if (precomputed !== undefined) return precomputed;
   const position = base.attributes.position;
   if (!position || position.itemSize !== 3) return null;
   const interleaved = !!position.isInterleavedBufferAttribute;
@@ -25,8 +27,8 @@ export function rawTiles(base: any, n: number, minTriangles: number, groups?: re
   return splitIntoTiles(array, base.index.array, n, minTriangles, interleaved ? position.data.stride : 3, groups);
 }
 
-export function tileGeometry(THREE: any, base: any, n: number, minTriangles: number, groups?: readonly { start: number; count: number }[]): any[] | null {
-  const tiles = rawTiles(base, n, minTriangles, groups);
+export function tileGeometry(THREE: any, base: any, n: number, minTriangles: number, groups?: readonly { start: number; count: number }[], precomputed?: CellTile[] | null): any[] | null {
+  const tiles = rawTiles(base, n, minTriangles, groups, precomputed);
   if (!tiles) return null;
   return tiles.map(t => {
     const g = new THREE.BufferGeometry();
@@ -58,15 +60,15 @@ export function tileDrawFlag(): TileDraw {
  * meshes). Returns false when the mesh is not worth cutting. `groups` keeps vertex ranges whole (a building);
  * `release` / `tilesOnly` as drawAsTiles.
  */
-export function cutMesh(THREE: any, owner: any, n: number, minTriangles: number, options: { groups?: readonly { start: number; count: number }[]; release?: boolean; tilesOnly?: boolean; draw?: TileDraw } = {}): boolean {
+export function cutMesh(THREE: any, owner: any, n: number, minTriangles: number, options: { groups?: readonly { start: number; count: number }[]; release?: boolean; tilesOnly?: boolean; draw?: TileDraw; /** The partition, already computed off the main thread (undefined: compute it here). */ tiles?: CellTile[] | null } = {}): boolean {
   const draw = options.draw ?? tileDrawFlag();
   if (draw === 'spans') {
-    const tiles = rawTiles(owner.geometry, n, minTriangles, options.groups);
+    const tiles = rawTiles(owner.geometry, n, minTriangles, options.groups, options.tiles);
     if (!tiles || tiles.length < 2) return false;
     drawAsSpans(THREE, owner, tiles, n);
     return true;
   }
-  const tiles = tileGeometry(THREE, owner.geometry, n, minTriangles, options.groups);
+  const tiles = tileGeometry(THREE, owner.geometry, n, minTriangles, options.groups, options.tiles);
   if (!tiles) return false;
   drawAsTiles(THREE, owner, tiles, options);
   return true;

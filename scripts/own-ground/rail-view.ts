@@ -3,7 +3,7 @@
 // shader: no textures, no polygon offsets, no shadows. The ballast gets its sleepers back from the bed's UV (v along
 // the track), so the tracks read as tracks.
 //
-//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before]
+//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy] [--buildings [--infra=<rail-infra-buildings.json>]]
 //
 // The camera stands `distM` behind the spot (against the bearing) and `heightM` up, looking at the spot.
 import sharp from 'sharp';
@@ -38,7 +38,7 @@ export function renderView(cells: readonly BuiltCell[], at: [number, number], v:
   const sun = [0.35, -0.45, 0.82]; const sl = Math.hypot(...sun); const S = sun.map(c => c / sl);
   for (const cell of cells) for (const [layer, m] of Object.entries(cell.layers) as [GroundLayer, BuiltCell['layers'][GroundLayer]][]) {
     if (!m) continue;
-    const base = C[layer] ?? [255, 0, 255], P = m.positions, I = m.indices, UV = (m as { uvs?: Float32Array | number[] }).uvs, ch = CUT_CHANNEL[layer];
+    const base = C[layer] ?? [255, 0, 255], CO = (m as { colors?: Float32Array | number[] }).colors, P = m.positions, I = m.indices, UV = (m as { uvs?: Float32Array | number[] }).uvs, ch = CUT_CHANNEL[layer];
     const cam = new Float32Array(P.length);
     for (let i = 0; i < P.length; i += 3) {
       const dx = P[i] - eye[0], dy = P[i + 1] - eye[1], dz = P[i + 2] - eye[2];
@@ -69,7 +69,8 @@ export function renderView(cells: readonly BuiltCell[], at: [number, number], v:
         const wx = (l0 * iza * P[a] + l1 * izb * P[bb] + l2 * izc * P[c]) * z, wy = (l0 * iza * P[a + 1] + l1 * izb * P[bb + 1] + l2 * izc * P[c + 1]) * z;
         if (ch !== undefined && cell.mask && maskChannelAt(cell.mask, wx, wy, ch) < 0.5) continue;
         zb[k] = z;
-        let col = base;
+        // Vertex-coloured layers (deckBody: slab, piers, girders, platforms) by the face's first vertex.
+        let col: readonly number[] = CO && layer === 'deckBody' ? [CO[I[t] * 3] * 255, CO[I[t] * 3 + 1] * 255, CO[I[t] * 3 + 2] * 255] : base;
         if (layer === 'ballast' && UV) {
           // Sleepers every 0.6 m on the top (u inside the shoulders' gravel column).
           const uu = (l0 * iza * UV[I[t] * 2] + l1 * izb * UV[I[t + 1] * 2] + l2 * izc * UV[I[t + 2] * 2]) * z;
@@ -92,12 +93,50 @@ async function main(): Promise<void> {
   const out = args[5] ?? `artifacts/rail-look/view-${lng}-${lat}.png`;
   const w = opt('w', 960), h = opt('h', 540), lod = process.argv.includes('--lod=1') ? 1 : 0;
   // --before: main's #145 beds without railProfile.ts (`railLevels: false`); --legacy: rail-v1 of build 04e3c88.
-  const { cells, x, y } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : {});
+  const { cells, x, y, store } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : {});
   const own = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
   void own;
-  const img = renderView(cells, [x, y], { lng, lat, bearing, dist, height, w, h }, 2);
+  // --buildings: the building tiles as plain extrusions (brick walls, pale roofs, as the house generator reads from far);
+  // --infra=<table>: with railInfraBuildings.ts's table applied (viaducts dropped, canopies cut to the platforms).
+  const all = [...cells] as BuiltCell[];
+  if (process.argv.includes('--buildings')) all.push(await buildingCell(x, y, Math.max(200, dist * 2.5), (px, py) => store.surface.ground(px, py), process.argv.find(a => a.startsWith('--infra='))?.slice(8)));
+  const img = renderView(all, [x, y], { lng, lat, bearing, dist, height, w, h }, 2);
   await sharp(Buffer.from(img), { raw: { width: w, height: h, channels: 3 } }).png().toFile(out);
   console.log(JSON.stringify({ out, cells: cells.length }));
+}
+
+/** The building tiles near (x, y) as one vertex-coloured pseudo cell (deckBody layer). */
+async function buildingCell(x: number, y: number, r: number, ground: (x: number, y: number) => number, infra?: string): Promise<BuiltCell> {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const earcut = (await import('earcut')).default;
+  const { toLocal } = await import('../../src/canalRecall/ownGround/groundStore.ts');
+  const { applyRailInfra } = await import('../../src/canalRecall/railInfraBuildings.ts');
+  const dir = 'public/data/extracts/amsterdam/building-tiles/14', seen = new Set<string>();
+  const feats: { properties: Record<string, unknown>; geometry: { type: string; coordinates: any } | null }[] = [];
+  for (const tx of readdirSync(dir)) for (const f of readdirSync(`${dir}/${tx}`)) for (const ft of JSON.parse(gunzipSync(readFileSync(`${dir}/${tx}/${f}`)).toString()).features ?? []) {
+    const id = String(ft.properties.id); if (seen.has(id)) continue;
+    const ring = (ft.geometry.type === 'Polygon' ? ft.geometry.coordinates[0] : ft.geometry.coordinates[0][0]) as number[][];
+    const [px, py] = toLocal(ring[0][0], ring[0][1]);
+    if (Math.hypot(px - x, py - y) > r) continue;
+    seen.add(id); feats.push(ft);
+  }
+  if (infra) applyRailInfra(feats, JSON.parse(readFileSync(infra, 'utf8')));
+  const positions: number[] = [], colors: number[] = [], indices: number[] = [];
+  const vtx = (p: number[], z: number, c: number[]) => { positions.push(p[0], p[1], z); colors.push(...c); return positions.length / 3 - 1; };
+  for (const f of feats) {
+    const canopy = f.properties.railInfra === 'canopy', wall = canopy ? [0.43, 0.45, 0.46] : [0.6, 0.38, 0.31], roof = canopy ? [0.81, 0.8, 0.78] : [0.86, 0.85, 0.82];
+    const polys = f.geometry!.type === 'Polygon' ? [f.geometry!.coordinates] : f.geometry!.coordinates;
+    for (const poly of polys) {
+      const ring = (poly[0] as number[][]).slice(0, -1).map(([a, b]) => toLocal(a, b));
+      if (ring.length < 3) continue;
+      const base = Math.min(...ring.map(p => ground(p[0], p[1]))), z0 = base + (Number(f.properties.minHeight) || 0), z1 = base + (Number(f.properties.height) || 0);
+      const top = ring.map(p => vtx(p, z1, roof)), tris = earcut(ring.flat());
+      for (let t = 0; t < tris.length; t += 3) indices.push(top[tris[t]], top[tris[t + 1]], top[tris[t + 2]]);
+      for (let i = 0; i < ring.length; i++) { const a = ring[i], b = ring[(i + 1) % ring.length]; const q = [vtx(a, z0, wall), vtx(b, z0, wall), vtx(b, z1, wall), vtx(a, z1, wall)]; indices.push(q[0], q[1], q[2], q[0], q[2], q[3]); }
+    }
+  }
+  return { key: 'buildings', lod: 0, rect: [0, 0, 0, 0], layers: { deckBody: { positions, colors, indices, uvs: [] } }, mask: null } as unknown as BuiltCell;
 }
 
 if (process.argv[1]?.endsWith('rail-view.ts')) main().catch(e => { console.error(e); process.exit(1); });

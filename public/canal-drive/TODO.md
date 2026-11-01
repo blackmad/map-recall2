@@ -230,7 +230,15 @@ camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
 iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
 P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
 in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
-Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
+Hand-back (7) merged 2026-11-01 (HISTORY "Seeded-route stutter owners
+fixed"): four exact own-ground fixes (What's New "Long routes no longer freeze
+as canals and bridges load"), render-on-change green (`render-on-change.spec`),
+`CameraMap.jumpTo` sub-mm tolerance, vehicle pose snapshots. Hand-back (6)
+merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
+named"): stutter owner table + three fixes (What's New "Fewer hitches when
+new ground streams in"), `clearanceResidents()`, P5 B1 (no maplibre-gl fetch
+under the flag), the oracle-migration-2 haiku brief; render-on-change WIP
+held. Materials lane D step 1 merged 2026-10-31 (HISTORY "Landmarks cast their
 shadows through one merged stand-in per level"): shadow draws ÷3, no visible
 change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
 :228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
@@ -298,8 +306,20 @@ cold ride p99 frame 83.4 → 66.6 ms, stalled 3.63 → 2.6 s, pop-in equal; A/B
 0 differing tiles, Westerkerk 36,352 buildings both ways. **Gates not met:**
 JS heap at ride end default 977 vs world 1,019 MB (gate ≤ 500 MB at ride
 start, which the script does not yet sample; the 36 resident cells plus
-per-worker decoded copies are the suspects); the ≤ 4 MB target (FOOT alone
-7.4 MB gz). Next for L4 (sent): ride-start heap sample and the owners
+per-worker decoded copies are the suspects); the bytes gate, restated 2026-10-31 after format v3
+(HISTORY "World cell format v3"): city total ≤ 8 MB gzip for the building
+cells (v4 published 2026-11-01: 9.13 MB, HISTORY "World cell format v4";
+collinear removal held; next cuts need a byte census by stream, lane) plus a
+per-ride download gate ≤ 2 MB under `?world=v1` (met 2026-11-01: seeded
+1.11 MB, free ride 1.96 MB after facts load on the first card); both in
+`budgets.json`. City: format v5 (lossless roofFurniture integer-list column
++ FOOT refs run symbol) published 2026-11-01 at 8.92 MB; decimetre heights/eaves
+are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
+fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
+runtime derives storeys, window rows and the facade kit from the fine value
+(a Westerkerk brick gable turned grey). A safe variant would round only where
+the derived storey/kit decision is unchanged; parked. The gate stays red by
+decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -1328,18 +1348,90 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ## P0 — Red, or actively teaching something false
 
+- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low
+  > 25 ms on the ~1 s probe come from one M4 Pro (1.5 ms) and SwiftShader
+  (13–14 ms); a real mid-class laptop and an Android phone have never run the
+  probe. Until they do, `?tier=` forcing and the Sentry graphics-failure
+  counts are the only check that nobody lands in the wrong tier. Also: on the
+  SwiftShader proxy every tier sits near 2 fps, so `weak-gpu-perf` cannot
+  show a tier difference (the proxy is too slow to be a mid-class stand-in).
+
 - **`?engine=own` on a real Mac (2026-10-31, user ride):** reported slow, janky,
   fan, pop-in and a blurry (~2× upscaled) frame on the deployed site; a fresh
   localhost build "looks great". Root cause found: stale cached bundles (18
   stale `?v=` stamps), fixed by content-hash stamping at deploy (HISTORY
-  "Deployed pages stamp every asset"). Still owed: one measured default-vs-own
-  table on the real GPU at DPR 2 in a full window (frame/GPU time, governor
-  state, backing-store size, pop-in timing); every own-engine number so far is
-  headless DPR 1 or an emulator profile (L1, #129).
-- **POI/business labels draw through buildings under `?engine=own`** (user
-  screenshot, Eerste Constantijn Huygensstraat looking north): labels need an
-  occlusion test at the facade-height anchor with hysteresis; pin the pose as
-  a regression (L1, after the table).
+  "Deployed pages stamp every asset"). Real-GPU table delivered (M4 Pro,
+  DPR 2, #129): own engine frame p99 9–19 ms vs default 58–75, sharp, no
+  governor step-down; GPU frame ≈ 5 ms p50 at the Dam/Westerkerk, own ground
+  1.3–1.5 ms of it (materials lane 2026-10-31, nothing pixel-identical saves
+  anything measurable, so fill is not the owner on this Mac). The user still
+  feels stutter on localhost `?engine=own`: owners are main-thread hitches,
+  named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
+  owners under `?engine=own` named", "Seeded-route stutter owners fixed").
+  Seeded route meets the P3 gate at 1× (long tasks 10 → 0, longest 600 → 68
+  ms). Jordaan after the 4× round (HISTORY "Per-frame CPU under
+  `?engine=own` at 4×"): 1× no task > 50 ms, longest 34 ms, but streaming
+  tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
+  bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
+  ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99.
+  `pop-in.mjs` runs under own since hand-back (9); hand-back (10) settled its
+  3,500 px/s "unexplained" own figure: chase-camera turn parallax on the
+  Westerkerk tower, counted only under own because the script skipped turn
+  frames by a > 2° bearing step (MapLibre turns in jumps, the own camera
+  turns ≤ 1.33°/frame); the script now also skips frames turning > 60°/s.
+  Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
+  unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
+  pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
+  chunks 0 / 0 in both. Hand-back (11): the P3 pop-in gate is met (0
+  installs within 150 m under both engines, nearest chunk 154 m, thin);
+  `buildShadowStandIn` and own-ground `splitIntoTiles` are off the main
+  thread; ARTIS is off the camera shim (B6 started). Streaming gate still
+  open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
+  are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
+  the 1× frame over 50 ms is the `prepareCell` yield continuation for the
+  cell entering the ring (45–57 ms; 117–128 ms at 4×; L1 next: into the
+  ground worker or yields inside, exactness-pinned); `setFeatures` 606 /
+  `_applyChunkPandBases` 374 / `post` 219 ms at 4× (materials);
+  signature-landmarks `_requestModels` 393 → 629 ms at 4× unproven (L1 paired
+  run). Shim callers left: three-buildings `getZoom` 82/s, player-vehicles
+  `getContainer` (L1).
+  Idle rendering (fan) is fixed under own: render-on-change on main, 0
+  renders per 5 s at rest; the default engine still renders every idle frame
+  until the flip.
+- **Heap gates** (HISTORY "Phone heap cuts"): desktop 436 MB meets ≤ 500;
+  iPhone 305 MB against ≤ 160 stays red. Owners left on the phone: shared
+  frame 135 MB (88 MB buffers; materials/L1), own-ground store 43 (road lane
+  next: per-cell contents and never-read copies), building cache 33, track
+  24, overview 20, landmark CPU arrays 24–36, facades 14 (materials). Held
+  product option: 6 phone building tiles instead of 9 (user's call, a look
+  trade). `no-maplibre.bundle.js` has no npm build script (old overview
+  decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
+  `scripts/heap-ride.mjs` is the measure.
+- **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
+  the 4 s gate**: the settle hold waiting on facade chunks is the variance
+  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
+  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  after context loss, seen once (materials lane).
+- **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
+  "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
+  single layer removal gets under 195 ms. Gate stays red as written; deciding
+  what the low tier may drop (trees, landmarks, overview beyond the ground)
+  needs a real weak device and the user's pixel budget, not a proxy. Related
+  P4 numbers: own ground at the Dam 1.78 M triangles on low / 2.21 M on high
+  against the 700k iPad budget (materials lane, 2026-11-01).
+- **POI/business labels through buildings under `?engine=own`** (user
+  screenshot, Eerste Constantijn Huygensstraat; "we still need more
+  occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
+  at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
+  occluded too; `street-label-occlusion.spec` passes under both engines.
+  Round 3 (HISTORY "Label occlusion round 3"): street names re-tested per
+  copy while riding, budget 8 sightlines a frame (100–137 µs). Left: Cafe
+  Kompleet, a roof-height case (saltbox 17 m in front hit at 7.9 m on screen
+  while the sightline clears the walk's top): test at the glyph top or use
+  the ridge for occluders within ≈ 25 m (materials, after the facades
+  package); riding POI samples through buildings ECH 25/22, Westerkerk 62,
+  Dam 4 per 6 s. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways
@@ -1512,6 +1604,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   palette is about twice as light as measured walls. Next: measured colours
   for generic facades next to chunks (facade-colour pipeline). Whether shade
   sides go past 0.55 toward flat overcast light is the user's call.
+- **Bridges still bare after the bridge-roads lane** (2026-10-31, HISTORY "Roads across unregistered road
+  bridges"): 166 OSM highway bridge ways draw a land patch (paving under look B) where the road should be, all over
+  land: Westrandweg/Ringweg/Gooiseweg viaducts, Schiphol Vertrekpassage, Piet Heinkade, 11 De Ruijterkade busways,
+  Johan van Hasseltweg, cycle culvert 118576817 west of the Kinkerbrug. Needs a way deck over land or the h 1 BGT
+  polygons on the relief (which would paint roads under viaducts). Also: Beltbrug cycle/median bands stop at the
+  abutments (covered OSM cycleways emit no bands), thin pale seams at Beltbrug ends, water specks at skewed deck
+  corners (Nassauplein, Postjesweg), measured decks narrower than the survey (BRU0034, BRU0117, BRU0108).
+  Lists: `artifacts/bridge-roads/work/undecked-after.txt` in the lane worktree; `probe-undecked-bridges.ts`.
 - **Bridge follow-ups** (2026-10-17, HISTORY "Way decks: level over
   underpasses, chained ways, parapets at the road edges"): 22 of 1,200 street
   bridge ways still draw no surface. **PAUSED by the user (2026-10-17):**
@@ -2412,14 +2512,17 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 - **Per-pand modern walls (#117/#120).** The thumbnail gate exists but walls stay empty. Next: project the BAG footprint into the thumbnail to confirm the box is the target pand, and reject scaffolding/sheeting. Also: the strip evidence gate falsely holds fronts under dense bare crowns (Ceintuurbaan, Tweede Jan Steen); 4 near-coplanar wall pairs remain (tiles 8417/5384, 8416/5382, 8421/5389, 8413/5388); `scripts/check-signature-houseboat-suppression.ts` reads a field that no longer exists and is not wired.
 
-- **Rail look, left open (lane rail-look-20261031, 2026-10-31).** Rail
-  bridges have no piers, girders or parapets; 17 bridge decks no approach
-  meets draw plain on the relief (170 m: −7_-2, −8_-2, −1_-2); lifted
-  approaches have plain walls and the land beside keeps the fill's smeared
-  slope; tracks in Centraal's train shed sit on wrong 1.2 m relief (lifted to
-  ~4.5); a metro node north of the IJ (4.9163, 52.3876) spans a one-point
-  relief pit; switches can meet at slightly different heights. Game frames at
-  the three RAIL_SPOTS not shot yet (scripts/own-ground/rail-shots.mjs).
+- **Rail look, left open (lane rail-look-20261031, round 3 shipped 2026-10-31).**
+  Brick arch viaducts and masonry piers are not modelled (viaducts are
+  concrete column rows); long river spans have no piers; canopies are thin
+  flat slabs with no columns or roof profile; a kiosk on an elevated platform
+  cannot stand; lifted approaches have plain walls. The Oostertoegang,
+  Dijksgracht and Droogbak bridge types are inferred, not checked against
+  panoramas. 5 rail bridge components (65 m, −1_-2, −7_-2) ride road decks.
+  Doubtful rail-infra drops: Amstel kiosk NL.IMBAG.Pand.0363100012253545
+  (58 m² shop), Westerpark lone arch 0363100012173021. `?world=v1` and the
+  legacy MapLibre path do not apply rail-infra-buildings.json. Game frames at
+  Amstel and Centraal not shot yet.
 - **Rail follow-ups (#124, 2026-10-30).**
   - Overview tiles are pre-generated, so ballast does not show there until they are rebuilt (the tones are in `layerColours.ts`).
   - The far ring (`farRing.ts`) draws no rails, so distant aerial views still show bare corridors.

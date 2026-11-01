@@ -1,6 +1,6 @@
 // Top surface at lng/lat points in the streamed cells (named-regression helper).
 //
-//   npx tsx scripts/own-ground/probe-top.ts <lng,lat> [<lng,lat> ...]
+//   npx tsx scripts/own-ground/probe-top.ts <lng,lat> [<lng,lat> ...] [--roads]   --roads: with the roads-v1 survey (the game's default)
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
@@ -8,9 +8,9 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
-const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
+const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, process.argv.includes('--roads') ? { roads: true } : {});
 await store.init();
-for (const arg of process.argv.slice(2)) {
+for (const arg of process.argv.slice(2).filter(a => !a.startsWith('--'))) {
   const [lng, lat] = arg.split(',').map(Number), [x, y] = toLocal(lng, lat);
   const cells: BuiltCell[] = [];
   for (const k of GroundStore.neighbours(store.cellAt(x, y))) if (store.covers(k)) cells.push(buildCell(await store.cellInput(k, 0)));

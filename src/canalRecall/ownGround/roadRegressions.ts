@@ -533,6 +533,11 @@ export const ROAD_SPOTS: RoadSpot[] = [
   // User 2026-10-30 (artifacts/zebra-munt/user-muntplein.png): "what is happening with the roads here": the Muntplein, one
   // klinker bridge over the Singel with trams across it, drew water through the deck, a brown band, stray rails, three zebras of five.
   { id: 'muntplein', label: 'Muntplein over the Singel (Munttoren, looking north to the Rokin)', at: [4.8937, 52.3672], bearing: 335, halfM: 45, backM: 30 },
+  // User 2026-10-31 (artifacts/bridge-roads/user-postjesweg-*.png): "why missing road": the asphalt and the median stopped
+  // at both abutments of the Kinkerbrug and the bridge drew as pale paving (water cut at the bridge, no deck; lane bridge-roads).
+  { id: 'kinkerbrug-postjesweg', label: 'Kinkerbrug: Postjesweg over the Kostverlorenvaart (Het Sieraad, The Coffee Bridge, looking south-east)', at: [4.86005, 52.36460], bearing: 120, halfM: 40, backM: 30 },
+  // User 2026-10-31 (artifacts/bridge-roads/user-otter-bridge.png, by the De Otter mill card): the same fault on the Beltbrug.
+  { id: 'beltbrug-jan-van-galenstraat', label: 'Beltbrug: Jan van Galenstraat over the Kostverlorenvaart (De Otter, looking east)', at: [4.86984, 52.37540], bearing: 110, halfM: 40, backM: 30 },
   { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */

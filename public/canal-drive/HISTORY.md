@@ -1,5 +1,457 @@
 # Canal Recall — what is built
 
+**Facade chunk tiles planned in the worker; signature-landmarks and building-tiles off the camera shim; the last 1× long frame named (2026-11-01, #129).**
+L1 hand-back (12). `cellTiles.ts` splits facade tiling into `planTiles` (the
+x/y partition and each tile's box, cut in the pool worker) and `finishTiles`
+(each tile's heights read on the main thread after the ground lift); the lift
+moves only z per building and the partition reads only x/y, so the result is
+exact (`rendererShared/facadeTiles.test.ts` pins byte-identity on real
+Jordaan chunks with a random float32 lift per building). Facade
+`splitIntoTiles` in the stall profile: 20 → 0 ms at 1×, 436 → 0 ms at 4×;
+the 4× totals did not move (32 → 35 long tasks, within run-to-run spread),
+so the P3 streaming gate stays open. B6: signature-landmarks and
+building-tiles read `WorldCamera` through `worldCameraOf`; shim calls per
+second over a 20 s ride 455.8 → 4.8 (`triggerRepaint` only) and 228.1 → 0.1
+(the GeoJSON source path, a P5 deletion). The #109 restore test fires a
+frame whose view moved instead of a bare `moveend`, keeps its three
+assertions and adds one (a redraw of the same view does not re-plan). A
+regression in the first version was caught before hand-back: the view-bounds
+cache compared a formatted key string once per model per frame (≈ 1.5 s a
+minute at 4×); it compares numbers now and `_viewBounds` is gone from the
+profile. Open: signature-landmarks' `_requestModels` filter over every model
+(393 → 629 ms at 4×, unproven against spread); next shim callers
+three-buildings `getZoom` (82/s) and player-vehicles `getContainer`. The one
+1× frame over 50 ms is the same moment in every run: a 45–57 ms
+`scheduler.yield` continuation of `GroundStore.prepareCell` for the cell
+entering the ring (`placeWayDecks` road index 12–21 ms, `planCutsFor` over
+the neighbours 15–21 ms, `lngLatToRd` + a polygon test ≈ 20 ms), load
+sensitive (41.7 and 42.1 ms in quieter runs) and the worst-frame owner at 4×
+(117–128 ms); next: that planning into the ground worker or yields inside
+it, with an exactness pin.
+
+**Label occlusion round 3: street names re-tested per copy while riding, between-pass budget 4 → 8; Cafe Kompleet is a roof-height case, not a corner (2026-11-01, #129).**
+Materials lane. The between-pass budget is 8 sightlines a frame (a POI costs
+1, a street or water name 1 per anchor; `stats.betweenMs`,
+`stats.betweenSightlines`, A/B knobs `between.{budget,lines}`), and street
+and water names join the per-frame round-robin. The new riding test found
+that a long name placed several times under one id had only its first copy
+tested (Overtoom stayed drawn behind a building for 2 s); each copy is now
+tested on its own with its own hysteresis key and dropped alone. Moving
+counts over a 6 s ride per pose, run twice, main → this: POI
+through-building samples ECH 34/30 → 25/22, Westerkerk 79/81 → 62/62, Dam
+4/6 → 4/4; line labels drawn while hidden, summed over the three poses, 7 and
+11 → 1 and 2; per-frame cost 82–104 → 100–137 µs. `label-occlusion.spec`
+gains a riding assertion (no copy still drawn 250 ms after a building hid
+it, cost < 500 µs; fails on main's old bundle). Under render-on-change,
+flipping `labelOcclusionOn` never redrew the labels (the spec saw on == off);
+the switch now asks for a frame. Cafe Kompleet is not fixed: trying the
+camera-facing frontage first leaves it in place and adds Rue D'Alger and
+others, so it was reverted; the debug pick shows the roof-height model is the
+cause (the saltbox 17 m in front is hit at 7.9 m on screen while the
+sightline clears the walk's top for that roof shape); next candidate is the
+glyph top, or the ridge for occluders within ≈ 25 m, after the facades
+package.
+
+**P3 pop-in gate met under both engines; ground tiles cut and shadow stand-ins welded off the main thread; ARTIS off the camera shim (2026-11-01, #129).**
+L1 hand-back (11). `pop-in.mjs` now counts own-ground cell and facade chunk
+arrivals within 150 m of the rider: car route, 60 s, real GPU, DPR 2: 0 under
+MapLibre and 0 under `?engine=own`, with a thin margin (nearest facade chunk
+154.3 / 154.6 m; ground cells ≥ 1,189 m, LOD swaps ≥ 257 m, landmark models ≥
+539 m); the coarse shell under the rider is replaced in place 2–4 times a
+minute at 0 px charged. Own-ground `splitIntoTiles` runs in the ground worker
+(`ownGround/cellTiles.ts`, `groundWorker.ts`, `gameGround.ts`,
+`rendererShared/tiledGeometry.ts`) and `buildShadowStandIn` welds in the
+worker pool (`rendererShared/shadowStandIns.ts`, `threeBuildingsWorker.ts`,
+`signature-landmarks-source.js`; `existingWorkerPool` in `engine/workerPool.ts`
+never starts a pool of its own), both byte-identical with the old
+implementation kept as the test reference. Their time in frames over 16 ms:
+`buildShadowStandIn` 13 → 0 ms at 1× and 795 → 0 at 4×, `splitIntoTiles` 43 →
+0 and 387 → 0. Jordaan 1×: longest frame 74.8 → 58 ms, one frame a minute
+over 50 ms, p99 10.3; 4×: 34 → 36 long tasks, longest task 117 → 104 ms, p99
+65.4 → 59.2 (quieter machine for the after runs). P3 streaming gate still
+open: facade chunks also `splitIntoTiles` in three-buildings `cutMesh` (9 ms
+at 1×, 444 at 4×) and cannot move as is because the ground lift changes
+heights after the worker build (next: worker-cut tiles + a height patch);
+materials lane's `setFeatures` 606 ms, `_applyChunkPandBases` 374,
+`post` 219 at 4×. P5 B6: `engine/worldCameraOf.ts` gives a participant a
+`WorldCamera` under both engines (`onViewChange` stands in for `moveend` and
+fires only when the view moved); ARTIS (`artis-animals.js`, served unbundled)
+makes 0 shim calls (222.6/s before); `scripts/camera-shim-calls.mjs` counts
+per bundle; next by rate: signature-landmarks 416–871/s, building-tiles.
+
+**Phone heap cuts: packed road and snap indexes, interned tile strings, packed overview streets; iPhone 336 → 305 MB, desktop 467 → 436 (2026-11-01, #130).**
+Road lane, forced-GC reachable MB at start / end of a 60 s ride: desktop
+466.8 / 454.3 → 436.2 / 423.6, iPhone 335.9 / 336.6 → 305.3 / 305.9. Owners:
+`game.track` 38.7 → 23.8, roadIndex 22.9 → 8.0 (CSR, bucket order unchanged,
+equivalence test over rings 0/1/2/4 and 10k queries with object identity),
+snap index 6.7 → 2.4 (packed in place rather than merged into the road
+index: it covers ferries that landOnly blanks, is built before the road
+network exists and answers an unbounded nearest query), building cache 41.3
+→ 33.1 (the world-v1 batch receive interns the property strings that
+structured clone duplicated; a full columnar cache was not built because
+callers cache feature objects and post them to the buildings worker),
+overview streets 20.9 → 17.5 (cumulative Int32, decoded on read, values
+identical). Ground ring/keep radii on the phone: no safe cut (ring already
+400 m, per-cell stores already bounded); the product option is 6 phone
+building tiles instead of 9, held for the user. Frames at the three fixed
+cameras within the cross-run noise floor. The iPhone gate (≤ 160 MB) stays
+red: the shared frame claims 135 MB (88 MB of buffers), own-ground store 43,
+building cache 33, track 24, overview 20, landmark CPU arrays 24–36, facades
+14. `check-road-surface.ts` asserts the packed layout at equal strength.
+`no-maplibre.bundle.js` also contains `overviewFormat` but no npm script
+builds it; it keeps the old decoder and still works.
+
+**Landmark chunk copies typed, streetFronts handed to the buildings layer: desktop ride start 493 → 462 MB; time to ride under own ≈ 3.5 s with the settle hold as its variance (2026-11-01, #130).**
+Road lane. The 17.6 MB of interleaved landmark GLB buffers are kept: click
+picking reads them (three's fallback raycast reads uv and normal before a
+mesh's pick BVH exists), the pand lift rewrites positions, and a context
+restore re-uploads from them. Cut instead: `_applyChunkPandBases` widened
+every street-chunk attribute to Float32; non-position attributes now keep
+their stored type and normalized flag (interleaved ones read by stride) and
+the index is Uint16 when it fits (`ownGround/chunkBases.ts`,
+`signature-landmarks-source.js`): landmark CPU arrays 40.5 → 33.3 MB at 60 s
+with the same 143 chunk meshes. `ownWorldView` no longer keeps the raw OSM
+ways as `streetFronts` for the session (24.7 MB on both devices); the
+buildings layer keeps its own packed segments. Context-loss probe after a 60 s
+ride: 0 stale attributes, 0 errors. Heap with forced GC: desktop 493 → 462 MB
+at ride start and 506–522 → 469 at 60 s (both under the 500 MB gate), iPhone
+359 → 332 MB. iPhone proposal (nothing built yet, integrator go given in the
+lane's order): roadIndex CSR + snap-index merge (−18 to −21 MB, −6.7),
+columnar building tile cache (−20 to −25), overview polyline pack (−15),
+ground ring/keep radii (−12 to −20); ≈ 235–250 MB after all of them, ≈
+205–220 with the facade arrays (33.9 MB, materials lane) released; the 160 MB
+gate is not reachable by trimming owners because the city-wide data is held
+as millions of JS objects, so it stays red with that reason. Time to ride
+under `?engine=own&world=v1&roads=bin`, six warm runs: 3.96, 3.08, 2.33,
+2.74, 3.93, 3.95 s (median ≈ 3.5, three within 70 ms of the 4 s gate; default
+3.98 median in the same session). Boot → submit 0.9 s vs 0.53 default (not
+profiled), submit → track ≈ 1.0 vs 1.75. The settle hold (0.08–1.87 s) is all
+the variance; `time-to-ride-phases.mjs` now reports `settlePending` and its
+owner: facade chunks, pending until ≈ 2.8 s after submit in slow runs with ≈
+1.1 s of main-thread idle inside. Decision: racing does not start without
+facades; the materials lane builds the spawn cell's chunks first. Seen once on
+main's bundles: three's `compileAsync` poll throws "isReady of undefined"
+after a context loss (materials lane).
+
+**Per-frame CPU under `?engine=own` at 4×: water level, view-mode constants, clearance walk; Jordaan 1× longest frame 68 → 34 ms (2026-11-01, #129).**
+L1 interim, all exact: `waterZAt` gets a per-polygon box plus y-banded edges
+cached per polygon list (200,000 random points over 12 central cells give
+identical levels, 6.9 → 0.33 s; the hidden ferry no longer asks for a water
+level every frame; it owned 1.46 s per 60 s at 4×); the `constants.js`
+view-mode numbers are cached as `const` (an indirect eval compiled a script
+several times a frame, 0.6 s); the camera-clearance `sightlineBlocker` puts
+the ~34,000 residents in a 0.002° grid built once per resident list (300
+random sightlines over 5,000 houses give the same blocker as the linear walk,
+0.52 s). Jordaan, real GPU, DPR 2, 60 s: 1× longest frame 67.8 → 33.9 ms, > 50
+ms per minute 1 → 0, p99 10.3; 4× long tasks 67 (4,646 ms) → 56 (3,852 ms),
+p99 84.4 → 81.8 (the after run started under load 14.2 from another lane).
+P3 gate still not met: at 1× streaming tasks over 16 ms remain from
+`splitIntoTiles` in the ground `cutMesh` (48 ms) and the chunk pand bases (57
+ms); at 4× the owners per 60 s are `buildShadowStandIn` on landmark `_add`
+(1,086 ms), `_applyChunkPandBases` (≈ 1,240 ms), three-buildings `t4` /
+`setFeatures` / `post` (≈ 1,840 ms), `splitIntoTiles` (370 ms); the render
+pass at 4× is 13 s and sets p99 but is not streaming work. Next: move
+`buildShadowStandIn` and `splitIntoTiles` to the worker pool (pure array
+functions). P5 B3 is already answered under own (`game-route.js` finishes on
+idle with no 450 ms pause; only the MapLibre branch deletion remains for P5).
+
+**Seeded-route stutter owners fixed (long tasks 10 → 0, longest frame 600 → 68 ms); render-on-change green under `?engine=own` (idle renders 755 → 0) (2026-11-01, #129).**
+L1 hand-back (7), measured on the real GPU (DPR 2, 1800×1100, headed, 60 s
+motion window). Four exact fixes in the own-ground preparation, each with
+byte-identical output across the city (95 cells for water and openings, 139
+for placed decks; `test:own-ground` 251/251): `openUnderFootbridges`'
+`inWater` skips polygons whose bbox does not hold the point (owned 350–584 ms
+tasks); `groundCrossing` buckets ground street and rail segments into a 32 m
+grid (≈ 210 ms); the deck-edge `RoadIndex` in `placeWayDecks` holds only
+polygons near the opened decks instead of the whole 3×3 (≈ 140 ms);
+`bandedInPolygon` tests the large canal polygons by y-bands, with a randomised
+test against the plain test (≈ 170 ms). City prepare run 25.1 → 5.6 s. Seeded
+route: long tasks 10 (2,008 ms) → 0, longest frame 600 → 68 ms, > 100 ms per
+minute 5 → 0, p99 16.3 → 10.4 ms: the P3 gate at 1× is met there. Jordaan:
+7 (462 ms) → 2 (108 ms) long tasks, longest 92 → 75 ms, p99 17.0 under load
+5.1; the remaining owners are all ≤ 55 ms (`_applyChunkPandBases` on a new
+street chunk, three-buildings `setFeatures`/`t4`, `splitIntoTiles`/`cutMesh`,
+render pass, GC); 4× not measured this round. The own ground is the default
+ground, so this is a What's New ("Long routes no longer freeze as canals and
+bridges load"). Render-on-change, own engine only: `CameraMap.jumpTo` ignores
+sub-millimetre jumps (a rider at rest creeps ≈ 1e-5 px per frame in the
+legacy physics and caused 120 renders per 2 s; drift past the tolerance is
+still applied, unit-tested) and the vehicles draw a pose snapshot taken only
+when the rounded pose key changes, so wheel and lean easing below the
+rounding moves no pixels. Idle: 0 renders per 5 s (755 before), renderer CPU
+21–92 % vs 55–187 % with `?renderOnChange=0`, the still frame pixel-identical
+to a redraw; `render-on-change.spec` compares the engine canvas only because
+the HUD fades on its own clock. Not done: separate GPU ms for the overview
+fills (superseded by the materials lane's spans), `pop-in.mjs` under both
+engines, the P5 steps.
+
+**Heap at ride start under `?engine=own&world=v1&roads=bin`: desktop 562–581 → 493 MB, the P3 gate (≤ 500 MB) met; iPhone 384 → 359 MB (2026-11-01, #130).**
+Measured with forced GC by `scripts/heap-ride.mjs` (the `engine-own.spec`
+`heapMB` reads without a GC and swings 443–1,341 MB between identical runs, so
+it cannot judge the gate). Cuts (road lane), all CPU copies never read after
+upload: the own ground releases its arrays on desktop too (≈ 40 MB, the rest
+as meshes first draw); the overview drops its CPU arrays via three's
+`onUpload` (34 MB) and rebuilds from its data on context restore; cycle,
+transit and neighbourhood lines (`overlays/flatLines.ts`, 7 MB) rebuild from
+the last `set()` on restore. Left as live data: ground store 90 MB, road graph
+39 MB, streetFronts 25 MB, facts. ArrayBuffer data in the snapshot 293 → 213
+MB; 60 s in 587–613 → 506–522 MB, the growth being landmark GLB arrays (+17
+MB, next cut). A context-loss probe caught that overview casings share their
+fill's geometry and were not rebuilt (three threw on null arrays); fixed in
+the same commit, re-run 0 stale attributes and 0 page errors. Merged over the
+materials lane's overview spans (both add helpers at the same spot in
+`overviewLayer.ts`; kept both).
+
+**Weak-GPU low tier: coarse ground on low, overview drawn over its on-screen spans on every tier; SwiftShader is triangle-bound (2026-11-01, #129).**
+The materials lane measured what SwiftShader is bound by with synchronous
+frames (redraw + 1 px readPixels, low tier, DPR 1.5, layers toggled in one
+page): triangles, not fill (DPR 0.5 moves 450 → 445 ms) and not draws (≈ 200
+calls in every configuration). Per layer: overview 1.0 M triangles ≈ 175 ms
+(0.7 M never culled because every overview mesh had `frustumCulled = false`),
+own ground 90–150 ms, trees 65–75 ms, landmarks 40–45 ms. Two changes: (1) the
+low tier builds the own ground at the coarse level (`TierSettings.ground` in
+`renderGovernor.ts`: detail touch, groundNear all, ring view; mid and high
+unchanged; an explicit query or global still wins), Dam ground triangles 2.21
+→ 1.78 M, low-tier pixel diff 5.8 % of px (drape tone on squares and paving,
+missing bollards); (2) the overview is drawn over its on-screen index span on
+every tier (`engine/overviewLayer.ts`: each geometry cut 8×8 through
+`cutMesh`/`drawAsSpans`, one draw per mesh, tile spheres grown by draw depth
+and line extrusion, `?overviewSpans=0` turns it off): 0 px diff at the high
+tier at the rider pose and the Dam, ≈ 0.65 M fewer triangles, SwiftShader
+low-tier frame 394 → 293 ms at the rider and 492 → 367 at the Dam, desktop
+GPU time unchanged (4–5 ms). SwiftShader p95 per tier (ENGINE=own, DPR 1.5):
+main low 1.8 fps / 244 / 2,904 ms → this low 2.8 / 123 / 1,082; mid 2.3 /
+224 / 985; high 2.1 / 129 / 1,406. The P4 gate (low tier p95 ≤ 33 ms) is not
+met and cannot be on SwiftShader: its steady frame is ≈ 290 ms and removing
+any one of ground, overview, trees or landmarks still leaves 195–220 ms.
+Integrator decision: the gate stays as written and red, no layer is dropped
+from the low tier on a proxy's numbers; it needs a real weak device, which
+the user has deferred. Culling overview triangles inside the ground's discard
+disc was pixel-exact but removed 1 %, dropped.
+
+**World cell format v5 published, lossless: 9.13 → 8.92 MB; decimetre heights built and held (2026-11-01, #130).**
+v5 (road lane) stores `roofFurniture` as a typed integer-list column and adds
+a run symbol to the FOOT shared-vertex back-references; the decoder reads
+v2–v5. Published from a full compile (format 5, `policyOptions
+{collinear:false, heightStepM:0.01, eavesStepM:0.01}`, `world:verify` fresh
+with 0 differing tiles, `check:covers` ok): 8,912,122 B of cells + 5,491 B
+`strings.bin`. Decimetre heights and eaves are built behind
+`--height-step=0.1` / `--eaves-step=0.1` and HELD: the fixed-camera A/B at
+three spots shows 7–9 K px over 30 for heights at 1 dm, 13–22 K for eaves,
+18–29 K for both, against a 0.1–1.3 K noise floor and 1.5–4 K for the cm
+world, because the runtime derives storeys, window rows and the facade kit
+from the fine values (a Westerkerk brick gable turned grey, a white front
+changed its windows); the integrator's "the pre-v3 format stored 0.25 m"
+argument did not hold once those decisions read the finer value. A safe
+variant would round only where the derived storey/kit decision is unchanged;
+parked. The city gate ≤ 8 MB therefore stays red, lossless, with the gap
+explained. `test:world-format`'s `published()` fixture now loads the
+published `strings.bin` whenever the index says format ≥ 4 (it had decoded
+published cells bare, so it only passed while they were v3) and
+`WORLD_CELLS_DIR=<dir>` points the suite elsewhere; 32/32 against the
+published v5 directory. The deploy of 6e74a57d4 failed at the Sentry
+source-map upload because the new `maplibre-loader` bundle was built without
+a source map; `build-canal-engine.mjs` now builds it with `sourcemap:
+'external'` (every bundle index.html loads needs one, maps are gitignored and
+built on CI).
+
+**Label occlusion round 2 under `?engine=own`: labels through buildings 16 → 1 at the user's pose; street and water names occluded too (2026-11-01, #129).**
+The materials lane extended L1's `engine/labelOcclusion.ts`: the sightline
+starts where the label is drawn (1.5 m above the street, not half way up the
+facade); POIs draw at their visible shopfront instead of deep inside the
+block (`drawAt` in `overlays/labelLayer.ts`); party walls no longer count as
+frontages; pitched roofs count from between eaves and ridge; four drawn POI
+labels per frame are re-tested between full placements (`OCCLUSION_PER_FRAME`)
+so a label that went behind a building while riding drops within a few
+frames; own-engine street and water names are tested at their first, middle
+and last glyph (`lineTest`); and the HUD street-name occlusion runs under the
+own engine via `OwnWorldView.cameraEye()` and `residentFeatures()`. Counted
+independently with the facades' own pick at each drawn label, POI labels drawn
+through a building, off → on: Eerste Constantijn Huygensstraat 16 → 1 (L1's
+first pass: 6; the one left is Cafe Kompleet at a row-house corner the walk
+misses), Dam 27 → 0, Westerkerk 14 → 0–1; riding 6 s from each pose the names
+ever drawn through a building: 18 → 4, 10 → 2–3, 14 → 7.
+`street-label-occlusion.spec` now passes under ENGINE=own (44 → 6 names
+drawn, 0.26–0.35 ms per frame) and unchanged on the default engine (44 → 7).
+Cost: a full placement 0.68–0.82 ms with occlusion on vs 0.65–0.83 off,
+roughly every 400 ms, plus 4 sightlines per frame between passes; the
+occlusion step alone was not isolated, so the ≤ 0.3 ms per-frame budget is
+not demonstrated directly. `label-occlusion.spec` counts independently (off
+≥ 4, on ≤ 1) on desktop and iPhone. Before/after frames:
+`map-recall2-screenshots/whats-new/2026-11-01-label-occlusion-{ech,dam,
+westerkerk}-{before,after}.jpg` (for the flip note; no What's New entry while
+the engine is behind the flag).
+
+**Building facts load on the first card, not at ride start; maplibre-gl loader applied in index.html; fixed-camera pixel harness (2026-11-01, #130, #129).**
+`buildingFacts.ts` (road lane): `prefetchAround` only remembers the rider's
+position until the first card asks for facts, then the 3×3 tile window
+follows the rider as before and the first card fills through the existing
+`_requestBuildingFacts` path; card code unchanged, `check-building-facts`
+asserts no request before the first card and nine tiles once after it. Per
+ride under `?world=v1`: seeded 1.33 → 1.11 MB, free ride 2.30 → 1.96 MB, so
+the ≤ 2 MB per-ride gate is met; the default path still loads 133–272 KB of
+facts for the construction-year enricher that world cells bake in. The city
+gate stays red: census of the 9.13 MB (FOOT 5.74 MB: coordinate deltas 3.01,
+first vertices 1.02, shared-vertex back-refs 0.82, ids 0.51; STYL 2.34 MB:
+height 0.46, roofMeasured 0.43, roofFurniture 0.36 for 16 K rows, eaves 0.21,
+year 0.20; GRP 0.62; STRS 0.35) and the integrator's decision: build the
+lossless roofFurniture column and 1 dm heights/eaves (the format before v3
+stored them at 0.25 m) for ≈ 8.65 MB, never footprints coarser than the
+source, so ≤ 8 MB stays unmet and says so. `world-v1-ab` gains
+`AB_CAMERA=fixed` (holds sync and `aimAtWorld`, `jumpToLngLat`, settle,
+`captureFrame`): default-vs-default noise 0.65–1.1 M → 56–80 K px of 1.3 M,
+cm-heights world vs default 69–102 K px; the leftover is edge speckle that
+looks like chunk draw order (three.js layer, parked for the materials lane).
+P5 B1 is now applied: `index.html` runs `js/maplibre-loader.bundle.js` (592
+bytes, built by `scripts/build-canal-engine.mjs`) in place of the static
+maplibre-gl tags; `engine-own.spec` asserts 0 maplibre-gl requests under the
+flag and that the default path still loads the script and stylesheet.
+
+**World cell format v4 published: shared string table, centimetre heights; 10.43 → 9.13 MB (2026-11-01, #130).**
+`world-v1/strings.bin` (1,324 strings, 5.8 KB gzip) replaces the per-cell
+string tables; each cell carries the table's count and FNV hash and refuses a
+missing or wrong table, and `WorldCellReader` (`world/worldCells.ts`) fetches
+it once, so the streamer needed no patch. v4 also stores a `C_SAME` column
+where `groundColour` equals `sideColour` (99.8 % of buildings) and interleaves
+FOOT x/y; the decoder reads v2–v4. A compile policy (`world/cellPolicy.ts`,
+recorded in `index.policy` / `policyOptions` and applied identically by
+`world:verify`) stores heights to the centimetre; its second option, removing
+near-collinear vertices within 5 cm (area change ≤ 1 %, shared corners and
+T-junctions kept), is off by default (`--collinear` opts in) by integrator
+decision: it saves 0.14 MB of the 1.13 MB gap to the 8 MB city gate and the
+world-v1-ab pixel harness cannot prove it (its noise floor is 0.65–1.1 M of
+1.3 M px because the camera lands sub-pixel differently each run; a
+fixed-camera variant is the lane's next item). Published from a full compile
+(604 cells, 349,282 buildings identical to v3 through the policy, `world:verify`
+fresh with 0 differing tiles, `check:covers` ok): cells 9,128,132 B +
+strings 5,847 B gzip. Gates: city ≤ 8 MB not met (9.13); per ride under
+`?world=v1` seeded 1.51 MB (met), free ride 2.30 MB (gate 2 MB, not met) with
+`building-facts` 0.43–0.65 MB fetched whole by `buildingFacts.ts` the next
+cut. Cell decode: worker median 5 ms, max 14 ms; at 4× CPU on the main-thread
+proxy median 14 ms, max 24–42 ms (gate ≤ 5 ms in the worker at 4× is not yet
+measurable because Playwright cannot throttle worker targets).
+
+**Stutter owners under `?engine=own` named and the first three fixed; camera clearance sees every resident; maplibre-gl not fetched under the flag (2026-11-01, #129).**
+L1 ran `motion-stutter.mjs` on the Jordaan free ride (rails, 120 px/s, 60 s
+after a 10 s warm-up, headed Chrome on the M4 Pro at DPR 2, readable bundles
+via `--no-minify` and `BUNDLES_DIR`) and attributed every frame over 16 ms
+through the V8 profile. Owners before: own-ground cell preparation after its
+fetch (50–91 ms long animation frames: `placeWayDecks` earcutting the road
+polygons of the full 3×3 cells ≈ 150 ms, relief tile insert and decks ≈ 100
+ms, `lngLatToRd` 20 ms), signature-landmark ground re-base
+`_applyChunkPandBases` ≈ 200 ms, GC 77 ms, the three.js render pass 82 ms,
+facade `setFeatures` + chunk install ≈ 60 ms, trees 26 ms. Fixes:
+`GroundStore` yields to a frame (`scheduler.yield`) between relief, deck,
+way-deck and cut steps and per relief tile (page only, workers unchanged);
+`placeWayDecks` indexes only the road polygons inside the profiles' reach (all
+236 way decks in the test box byte-identical, node prepare 6.7 → 4.2 s);
+landmark re-bases run in 4 ms slices with each chunk's ground points projected
+once. Motion window p50/p95/p99 8.3/10.0/10.4 → 8.3/9.9/10.3 ms, frames > 50
+ms 7 → 0, long tasks 7 (462 ms) → 0, longest frame 92 → 40 ms. The P3 gate (no
+streaming task over 16 ms at 1×) is still not met: 13 frames of 17–40 ms
+remain (`_applyChunkPandBases` on a new street chunk ≈ 100 ms total, render +
+shadow ≈ 70 ms, GC 49 ms, main-thread `splitIntoTiles`/`cutMesh` 30 ms, the
+wayOpening deck index still on the full 3×3 ≈ 32 ms, facade `t4` 24 ms); they
+are on TODO. The own ground is the default ground in both engines, so this is
+the one engine-programme change so far with a What's New note. Also: camera
+clearance under the own engine used `sampleFeatures(20_000)`, the first 20k of
+~34k residents, so a wall past that index never lowered the camera;
+`clearanceResidents()` returns all of them (test: a wall at index 30,000).
+P5 step B1 behind the flag: `engine/mapLibreLoader.ts` does not fetch
+maplibre-gl under `?engine=own` (`engine-own.spec` asserts no request). The
+haiku brief for oracle migration 2 (124 files off `vectorMap.map`) is at
+`docs/handoffs/lane-oracle-migration-2-20261031.md`.
+
+**Label occlusion under `?engine=own`, first pass; own-ground fill measured and cleared as a stutter owner (2026-10-31, #129).**
+The user's screenshot on Eerste Constantijn Huygensstraat showed shop labels
+drawn through the facades. `engine/labelOcclusion.ts` (L1) tests each label
+anchor against the resident building footprints and heights: a frontage that
+faces away from the camera, or has a nearer taller pand between it and the
+camera, does not draw. It runs inside the full-placement winners loop of
+`engine/overlays/labelLayer.ts` (≈ 0.4 ms per pass) over
+`BuildingTileStreamer.residentFeatures()`; `tests/e2e/label-occlusion.spec.ts`
+pins the pose. The user has since said more occlusion is needed; the gaps are
+on TODO. `scripts/motion-stutter.mjs` now runs under the own engine (it
+wrapped `vm.map._render`, which is null under the flag, so every earlier
+own-engine stutter run idled to its deadline and one held the browser lock for
+an hour), with `WATCHDOG=<s>` (debugger pause + stack dump when the page stops
+answering), `STALL_MS`, `DPR`, `VIEWPORT`, `HEADED`. Measured the same evening
+by the materials lane on the M4 Pro at DPR 2, headed, tier high: GPU frame p50
+5.2 ms at the Dam and 5.3 at the Westerkerk; the own ground is 1.3–1.5 ms of
+that across 31 lit layers and ≈ 3.0 M triangles (paving 501k, land 421k, quay
+418k); front-to-back ordering was 0.2 ms slower and flipped coplanar ties, a
+depth prepass would cost more than the < 1 ms it could save, so nothing landed
+and the ≈ 9.5 ms figure from the earlier table is withdrawn (GPU contention
+between lanes). Conclusion for the user's "still stuttery" report: the GPU
+frame is ≈ 5 ms, so the owners are main-thread hitches; L1 names them per task
+next. Verification of ff47a2864 + this: `engine-own` + `engine-parity`
+desktop and iphone 4/4 (shaderErrors 0, programs 20, facades drawn),
+`start-heading` + `look-consistency` default 12/12, `test:engine` 76/76.
+
+**Roads across unregistered road bridges (2026-10-31).** User at the Kinkerbrug (Postjesweg over the
+Kostverlorenvaart): "why missing road" / "recent bridge work made something weird here". Not the new engine: the
+classic renderer and `?engine=own` drew the same pale slab. Cause chain: the water polygon stops at both deck edges
+(a 20 m land band under the bridge), no BRU outline or footprint covers it so the OSM bridge way crosses no water and
+gets no way deck, BGT's deck-level (h 1) carriageway is skipped off a deck, the way is in `coverWays` so no OSM bands
+draw, and look B paints the bare land as paving. Lane `bridge-roads-20261031`: `withOpenings` opens the water under
+OSM bridge ways no measured deck or footprint claims (side-by-side ways bundled, 0.5 m past the ends, never over a
+ground-level crossing street), the way-deck path then builds a real deck, re-centred on the BGT deck-level outline.
+Bare OSM highway bridge ways 205 → 166 (with the water cut at the bridge 19 → 1); +0.18 % triangles in 19 cells.
+Pinned: `BRIDGE_ROADS` (Kinkerbrug 743740428, Beltbrug 27316608) and ROAD_SPOTS kinkerbrug-postjesweg,
+beltbrug-jan-van-galenstraat; `probe-undecked-bridges.ts` for the city count.
+
+**World cell format v3: the compiled city is 13.5 → 10.4 MB gzip with every decoded value unchanged; the 4 MB gate is restated (2026-10-31, #130, P2 bytes gate part 1).**
+`cellFormat.ts` v3 (decoder reads v2 and v3; `readWorldIndex` accepts index
+2 or 3): per stream, gzipped, STRS 854 → 739 KB, FOOT 7.40 → 5.82 MB, STYL
+3.58 → 3.13 MB, GRP 1.34 → 0.61 MB (ROOF and HIDE unchanged); 604 cells,
+349,282 buildings, 2.71 M vertices. `scripts/world/transcode.ts` re-encodes
+published cells and matched 604/604; a full `world:compile` against the
+published v2 cells compared 349,282 buildings with no differences. Decode in
+Node: median 0.23 ms per cell, p95 4.36, max 9.85 (1.6 µs per building, as
+v2). Published to `world-v1/` after rebuilding `building-tiles` and the
+three-buildings worker bundle, which rejected v3 before and read both now.
+The 4 MB target cannot be met this way: the brief's lossy grid (0.1 m
+footprints, 0.25 m heights) still gives 9.69 MB and 0.5 m gives 8.61,
+because 1e-6° is already a 7 × 11 cm grid and slop's 441 KB for 37k
+footprints scales to ~4.1 MB for 349k buildings before any style. Decision
+(integrator): the gate becomes city total ≤ 8 MB gzip for the building cells
+plus a per-ride download gate (target ≤ 2 MB for a seeded and a free ride
+under `?world=v1`, measured by the browser table that follows); the lane
+does a shared global string/key table fetched once (lossless, needs a
+streamer patch), heights/eaves/minHeight at 1 cm, and collinear vertex
+removal at ≤ 5 cm with pixel diff 0 and the sentinel pands, as v4; deriving
+palette fields at runtime is deferred. Lock rule from the same evening: lock-
+held commands are capped at 20 minutes (`perl -e 'alarm 1200; exec @ARGV'`,
+there is no `timeout` binary on the Mac) after an engine-host stutter run
+spun for an hour.
+
+**Quality tiers from a startup probe; landmarks precompile before they join the scene; the facade shader has no cheap win left except resolution (2026-10-31, #129, materials lane round 4).**
+`renderGovernor.ts` gains `chooseTier`, `TIER_SETTINGS` and `TIER_FRAME_MS`:
+high = native DPR, 2048 shadow map, stand-ins on; mid = DPR 1.5, 1024
+shadows, touch facade detail; low = DPR 1, no shadows, no stand-ins. The
+governor steps the pixel ratio back up within the tier's cap (it only
+stepped down before). `tierProbe.ts` runs a ~1 s fixed probe at startup; the
+M4 Pro at DPR 2 takes 1.5 ms (high), SwiftShader 13–14 ms (low, flagged as a
+software renderer); the mid (> 8 ms) and low (> 25 ms) thresholds are not
+yet calibrated on real mid-class hardware. `?tier=low|mid|high` forces one;
+`__canalPerf` exposes tier, tierReasons, tierSettings and tierProbe.
+`weak-gpu-perf` runs on the own engine with tier variants; on SwiftShader
+every tier sits near 2 fps (low auto median 424 ms / p95 1,373; mid 158 /
+2,360; high 216 / 2,955), so the proxy shows no tier difference and no budget
+was raised. `SharedFrame.compileAsync(scene)` and a `shadowStandIns` flag;
+landmarks and their LODs precompile before placement: in-frame program links
+after warm-up iPhone 4 → 0, desktop 4 → 1–3. Facade shader A/B on the real
+GPU (change in GPU ms, Dam / Westerkerk): no discard +0.4 / +0.4, cell tier
+off +0.5 / +0.7, shadow receive off −0.4 / −1.1, anisotropy 1–8 within ±1,
+so the Apple hidden-surface-removal hypothesis is refuted and no shader
+change landed; the cost is the base fetch plus lighting over ~8 Mpx and the
+only lever is DPR (1.5: Dam 15.8 → 12.1 ms, Westerkerk 12.4 → 12.6). Pixel
+diff tier high vs pre-tier (governor off): Dam 891, Westerkerk 3,294, Paleis
+13,032 px, against 185k / 2,860 / 67 for the same build against itself (the
+animated pin and streaming differences), so not a clean 0 but inside the
+run-to-run noise. Decision kept: no DPR cap on machines that pass the probe
+at native resolution.
+
 **Transvaalbuurt round 2 (2026-10-31, #151): stair-block frontage, the 1911 five-storey twins, nothing installed.**
 Round 1 (#149) reported "0 placed" because 695 of 769 pands were vetoed on
 build year or house width before any photo comparison. Round 2 fixed the
@@ -29,6 +481,23 @@ holds whole same-year rows (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat
 72–96) because one pand has wide three-light windows. Strips archived in
 source-data `block-face-strips/` (11 re-striped faces, two strip-over-model
 sheets under `transvaalbuurt-round2/`). Nothing visible changed in the game.
+
+**Rail bridges, Centraal shed and railway pands (2026-10-31).** User at Amsterdam Amstel: "that big flat white
+thing is weird" and "the houses under the tracks here are probably wrong"; plus the open items of the rail-look lane.
+Round 3 of `rail-look-20261031`:
+- `railBridge.ts`: rail decks get piers, through plate girders over water (≥ 4 m) and railings; viaducts get column
+  rows under a crosshead. Piers only on land, never in a street band or beside track at grade. +285k triangles LOD 0
+  (+0.57 % of ground), no extra draw calls.
+- Centraal: AHN has no ground under the shed, so the relief was a fill from the quay (+1.2) and the tracks sat in a
+  pit. Track beside a station's platforms is levelled from the measured track past the platform ends; OSM
+  `railway=platform` rings now ride in rail-v1 and draw 0.76 m above the rails.
+- `railInfraBuildings.ts` + `rail-infra-buildings.json`: pands that are railway structure, decided from data (share
+  over track/platforms, minHeight, OSM building/roof tags, BAG use from PDOK), are dropped (viaduct/deck) or cut to
+  the platforms (canopies): 45 pands. Amstel's `building=roof` slab becomes two platform canopies; the pand part and
+  two pavilions under the platforms (drawn as brick houses) are dropped. Station halls, shed arches, building parts,
+  pands with ≥ 25 % live use and arches in use stay.
+- Unanchored rail decks were 5 real components (17 per-cell counts): OSM split gaps snap within 3 m; three tram
+  bridges without approaches span their own ends.
 
 **`engine-own.spec` fails when a shader fails to compile or no facade draws (2026-10-31, #129 P0 after the facade outage).**
 `SharedFrame.shaderErrors()` counts programs three.js failed to compile or
@@ -717,7 +1186,6 @@ BASCULES list grew, `build-bridge-hints.ts --write` changes only the
 named flag on the 10 listed movable bridges (BRU0146, 0148, 0193, 0222, 0272,
 0281, 1904, 2205, 2270, 2361). They now take the 1,500-triangle named tier.
 Register codes and flat hints are unchanged (decoded diff).
-
 
 **Ferries no longer strand a few metres out (2026-10-31, user report "ferries get stuck ~50 m out").**
 Reproduced on `main` by boarding at every IJ pier with the real controller
@@ -1637,7 +2105,6 @@ basement bascules, 2 portals among the steel rows, 2 swing bridges as basement
 for now, and green for steel lattice portals. Unknown material now renders
 white like timber; it was green before, and the Weesp portals are white. Kit
 gaps are in TODO P2.
-
 
 **Buurt colour from the strips, not the kit palettes (2026-10-30, #121).**
 Saenredamstraat drew saturated red because `derive.ts` read the De Pijp type
@@ -15186,7 +15653,6 @@ first twelve already measured the camera model.
 ## 2026-09-13 — Roof-focused review and keyboard workflow
 
 
-
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
 upper source view with the candidate's upper roof/gable area, while Full façade
@@ -17763,7 +18229,6 @@ building. Searching in Dutch roughly doubles the hit rate, because nobody
 uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
-
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and

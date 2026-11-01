@@ -193,6 +193,12 @@ export function factTileOf(lng: number, lat: number): { x: number; y: number } {
  * Browser side: the fact tiles around the rider, loaded as they move so a
  * click can answer at once. Nine small gzipped tiles at a time; a tile that
  * is missing (outside the extract) is remembered, not refetched.
+ *
+ * Lazy until the first card asks (`ensureAt`): a ride on which nobody clicks
+ * a building fetched 0.43–0.65 MB of facts it never showed, a fifth to a third
+ * of its building bytes (world-v1-bytes spec, 2026-10-31). The first click's
+ * card fills in on arrival through the same path a click outside the 3×3 has
+ * always used; from then on the tiles follow the rider as before.
  */
 export class BuildingFactStore {
   private readonly rows = new Map<string, BuildingFactRow>();
@@ -200,6 +206,9 @@ export class BuildingFactStore {
   private readonly requested = new Set<string>();
   private articleTiles: Promise<ReadonlySet<string>> | null = null;
   private lastCentre = '';
+  /** Set by the first card need; until then `prefetchAround` only remembers where the rider is. */
+  private engaged = false;
+  private riderAt: [number, number] | null = null;
   constructor(private base: string, private readonly fetchImpl: typeof fetch = (...args) => fetch(...args)) {}
 
   setBase(base: string): void {
@@ -211,10 +220,15 @@ export class BuildingFactStore {
     this.loads.clear();
     this.articleTiles = null;
     this.lastCentre = '';
+    this.engaged = false;
+    this.riderAt = null;
   }
 
-  /** Load the tile under a point and its eight neighbours. Cheap when unchanged. */
+  /** Load the tile under a point and its eight neighbours once a card has
+   *  asked for facts. Cheap when unchanged; free before the first card. */
   prefetchAround(lng: number, lat: number): void {
+    this.riderAt = [lng, lat];
+    if (!this.engaged) return;
     const { x, y } = factTileOf(lng, lat);
     const centre = `${x}/${y}`;
     if (centre === this.lastCentre) return;
@@ -235,7 +249,13 @@ export class BuildingFactStore {
    *  it has arrived. Resolves when that tile's rows are in (or known absent). */
   ensureAt(lng: number, lat: number): Promise<void> {
     const { x, y } = factTileOf(lng, lat);
-    return this.load(x, y);
+    const pending = this.load(x, y);
+    if (!this.engaged) {
+      // The first card need: from now on keep the rider's 3×3 resident.
+      this.engaged = true;
+      if (this.riderAt) this.prefetchAround(this.riderAt[0], this.riderAt[1]);
+    }
+    return pending;
   }
 
   private readonly loads = new Map<string, Promise<void>>();

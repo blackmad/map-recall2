@@ -1648,7 +1648,7 @@ class GameRouteRuntime {
         await this._loadLandmarks(lat, lng, segments);
         if (stale()) return;
 
-        // Step 3: MapLibre supplies a continuously rendered vector basemap.
+        // Step 3: the world view (MapLibre, or the engine under ?engine=own) prepares the map; this only reports it.
         this.loadingMessage = routeText('ride.load.preparingMap');
         this.loadingProgress = 0.45;
       }
