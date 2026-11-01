@@ -571,6 +571,16 @@
       "version": "cd736700f02d6b29",
       "dateSource": "asset-update"
     },
+    "cromhouthuizen": {
+      "updatedAt": "2026-11-01T20:52:52.814Z",
+      "version": "7bc87d5fa8600fd2",
+      "dateSource": "asset-update"
+    },
+    "cromhouthuizen.lod1": {
+      "updatedAt": "2026-11-01T20:52:54.109Z",
+      "version": "57dbd0f58be3afde",
+      "dateSource": "asset-update"
+    },
     "d-admiraal": {
       "updatedAt": "2026-10-25T08:03:40.844Z",
       "version": "a75d487e29023373",
@@ -3299,6 +3309,16 @@
     "waag.lod1": {
       "updatedAt": "2026-10-13T14:31:00.136Z",
       "version": "b2b06e539545f012",
+      "dateSource": "asset-update"
+    },
+    "waldorf-astoria-herengracht": {
+      "updatedAt": "2026-11-01T21:09:17.238Z",
+      "version": "761e8a608fc3a710",
+      "dateSource": "asset-update"
+    },
+    "waldorf-astoria-herengracht.lod1": {
+      "updatedAt": "2026-11-01T21:12:01.141Z",
+      "version": "b02257761c40db73",
       "dateSource": "asset-update"
     },
     "walloon-church": {

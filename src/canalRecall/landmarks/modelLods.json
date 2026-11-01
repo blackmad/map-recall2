@@ -1954,5 +1954,17 @@
   "buildVersion": 2,
   "bytes": 96024,
   "triangles": 4833
+ },
+ "cromhouthuizen": {
+  "sourceHash": "7bc87d5fa8600fd2",
+  "buildVersion": 2,
+  "bytes": 65408,
+  "triangles": 3130
+ },
+ "waldorf-astoria-herengracht": {
+  "sourceHash": "761e8a608fc3a710",
+  "buildVersion": 2,
+  "bytes": 86320,
+  "triangles": 4325
  }
 }

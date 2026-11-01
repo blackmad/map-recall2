@@ -1,0 +1,552 @@
+{
+ "schemaVersion": 1,
+ "id": "cromhouthuizen",
+ "pand": "0363100012169510",
+ "brief": "scripts/landmarks/cromhouthuizen-brief.md",
+ "signature": [
+  "neck-gables-366-368",
+  "neck-gable-364",
+  "neck-gable-370",
+  "crowns-366-368",
+  "oculi-366-368",
+  "bel-pediments-366-368",
+  "stoop-366-368",
+  "claws-366-368"
+ ],
+ "walls": [
+  {
+   "tag": "w01-93",
+   "bearing": 93,
+   "lengthM": 14.3,
+   "centre": [
+    4.886393,
+    52.368501
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000497",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "Herengracht 366 (right, three bays, door on its left bay) and 368 (left, three bays, door on its right bay) under the shared double stoop. Read on the rectified panorama with a metre grid; 2017 view TMX7316010203-000355_pano_0000_001041 agrees.",
+   "items": [
+    {
+     "id": "neck-gables-366-368",
+     "kind": "other",
+     "where": "the two neck gables over 366 and 368: the full-width wall ends at the shoulder line (16.6 m), a neck rises over the middle bay to the crowning cornice (366: 3.7 m wide neck, cornice 20.85 m; 368: 2.1 m neck, cornice 18.8 m)",
+     "approxSizeM": [
+      8.1,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "neck-gable.ts neckGable(): neck shaft, claws, cornice and pediment per measured spec (HOUSES in cromhouthuizen-builder.ts)"
+    },
+    {
+     "id": "crowns-366-368",
+     "kind": "other",
+     "where": "crowning cornice with a triangular pediment (fronton) on each neck; apex 22.55 m (366) and 20.25 m (368)",
+     "approxSizeM": [
+      4.1,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "slab cornice proud of the neck, extruded pediment triangle with raking mouldings"
+    },
+    {
+     "id": "claws-366-368",
+     "kind": "relief",
+     "where": "sandstone claw pieces (klauwstukken) filling the shoulders either side of each neck, carved with scrolls and foliage, a volute at each foot",
+     "approxSizeM": [
+      2.2,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "concave claw solids (clawOutline) with a stone rim along the curve and a disc-and-ring volute at the foot; the foliage carving is not modelled"
+    },
+    {
+     "id": "oculi-366-368",
+     "kind": "window-shape",
+     "where": "two oval oeil-de-boeuf windows on the shoulders of each house, over the outer bays, in carved cartouches",
+     "approxSizeM": [
+      1.3,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "oval stone ring with glass and a glazing bar, the cartouche as six carved lumps"
+    },
+    {
+     "id": "neck-windows-366-368",
+     "kind": "window-shape",
+     "where": "the window in the neck over the middle bay under an arched stone niche head, and the small attic window above it",
+     "approxSizeM": [
+      1.6,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "sash window plus archBand head; second window higher in the neck"
+    },
+    {
+     "id": "bel-pediments-366-368",
+     "kind": "window-shape",
+     "where": "triangular pediments over the outer bel-etage openings (the doors and the outer windows), a flat hood over the middle window",
+     "approxSizeM": [
+      1.75,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "cornice slab and extruded triangle per outer bay, flat hood on the middle bay"
+    },
+    {
+     "id": "relief-tablets-366-368",
+     "kind": "relief",
+     "where": "sculpted relief tablet between the bel-etage hood and the first-floor window of the middle bay, on 366 and on 368",
+     "approxSizeM": [
+      1.6,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "stone tablet with four low relief masses; the figures are not resolvable on the panorama"
+    },
+    {
+     "id": "festoons-366-368",
+     "kind": "relief",
+     "where": "fruit festoons hanging under each second-floor window",
+     "approxSizeM": [
+      1.1,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "five-ball swag between two pendant drops per bay"
+    },
+    {
+     "id": "stoop-366-368",
+     "kind": "balcony-ironwork",
+     "where": "shared double stoop: a stone landing in front of both doors (2.25 m up) with flights down to either side, black iron railings, the cellar doors under the landing",
+     "approxSizeM": [
+      5.5,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "landing on two piers, seven-step flights, rails and posts"
+    },
+    {
+     "id": "leaded-transoms-366-368",
+     "kind": "window-shape",
+     "where": "leaded transom lights over the two doors (diamond lattice)",
+     "approxSizeM": [
+      1.0,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "glass panel with diagonal cames"
+    },
+    {
+     "id": "hoist-beams-366-368",
+     "kind": "other",
+     "where": "hoist beam under each crown (a boarded hood over it on 366)",
+     "approxSizeM": [
+      0.7,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "beam projecting 1 m, stone hood on 366"
+    },
+    {
+     "id": "lantern-366-364",
+     "kind": "lamp",
+     "where": "wall lantern on the 366/364 party line at the bel-etage",
+     "approxSizeM": [
+      0.3,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "bracket, glass box, pyramid cap"
+    },
+    {
+     "id": "pilasters",
+     "kind": "other",
+     "where": "flat sandstone pilaster strips on the party lines from the plinth to the shoulder band",
+     "approxSizeM": [
+      0.35,
+      11.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497"
+    },
+    {
+     "id": "house-plaques",
+     "kind": "sign",
+     "where": "small house-number and museum plaques beside the doors",
+     "approxSizeM": [
+      0.4,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 x 0.2 m plates, unreadable at ride distance"
+     }
+    },
+    {
+     "id": "basement-366-368",
+     "kind": "window-shape",
+     "where": "souterrain: barred cellar windows under the window bays, cellar doors under the stoop; boarded with white panels on 368 in 2021",
+     "approxSizeM": [
+      0.95,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "note": "the white boards are temporary; modelled as dark openings with bars"
+    }
+   ]
+  },
+  {
+   "tag": "w02-273",
+   "bearing": 273,
+   "lengthM": 11.9,
+   "centre": [
+    4.8859215,
+    52.3685145
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear of 366-368 on the gardens: no panorama or open photograph. Massing only, from the 3DBAG roof planes (rear house with a saddle parallel to the canal, ridge 19.3 NAP); plain brick, no openings invented."
+  },
+  {
+   "tag": "p6534-w02-93",
+   "bearing": 93,
+   "lengthM": 5.8,
+   "centre": [
+    4.886383,
+    52.368408
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000498",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "Herengracht 370 (BAG 0363100012176534): three bays, door on the left bay with its own stoop descending to the right; seen square-on from _000498 and on the rectified _000497.",
+   "items": [
+    {
+     "id": "neck-gable-370",
+     "kind": "other",
+     "where": "neck gable over the middle bay: shoulders at 16.6 m, 2.1 m neck, crowning cornice 18.8 m, pediment apex 20.25 m",
+     "approxSizeM": [
+      5.85,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498",
+     "how": "neckGable() with the 370 spec"
+    },
+    {
+     "id": "claws-370",
+     "kind": "relief",
+     "where": "claw pieces with volutes either side of the neck",
+     "approxSizeM": [
+      1.9,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498",
+     "how": "concave claw solids with rim and foot volute"
+    },
+    {
+     "id": "oculi-370",
+     "kind": "window-shape",
+     "where": "two oval oeil-de-boeuf windows in cartouches on the shoulders",
+     "approxSizeM": [
+      1.3,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498",
+     "how": "oval ring, glass, bar, carved lumps"
+    },
+    {
+     "id": "neck-window-370",
+     "kind": "window-shape",
+     "where": "arched-head window in the neck and the small attic window under the crown",
+     "approxSizeM": [
+      1.4,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498"
+    },
+    {
+     "id": "bel-pediments-370",
+     "kind": "window-shape",
+     "where": "triangular pediments over the door and the right window, flat hood over the middle",
+     "approxSizeM": [
+      1.75,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498"
+    },
+    {
+     "id": "festoons-370",
+     "kind": "relief",
+     "where": "festoons under the second-floor windows",
+     "approxSizeM": [
+      1.1,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498",
+     "how": "ball swags"
+    },
+    {
+     "id": "stoop-370",
+     "kind": "balcony-ironwork",
+     "where": "stoop: landing at the door with one flight down to the right, iron railing",
+     "approxSizeM": [
+      3.5,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000498"
+    },
+    {
+     "id": "lantern-370",
+     "kind": "lamp",
+     "where": "wall lantern at the 370/372 party line beside the door",
+     "approxSizeM": [
+      0.3,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497"
+    },
+    {
+     "id": "hoist-beam-370",
+     "kind": "other",
+     "where": "hoist beam under the crown",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497"
+    },
+    {
+     "id": "transom-370",
+     "kind": "window-shape",
+     "where": "leaded diamond transom over the door",
+     "approxSizeM": [
+      1.0,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000497",
+     "how": "glass with diagonal cames"
+    }
+   ]
+  },
+  {
+   "tag": "p6599-w01-93",
+   "bearing": 93,
+   "lengthM": 12.9,
+   "centre": [
+    4.8864,
+    52.368621
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000496",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "Herengracht 364 (9 m, three bays, white small-pane sashes, no bel-etage door) and 362 (4 m, later stucco front) in BAG pand 0363100012176599; seen from _000496 and on the rectified _000497.",
+   "items": [
+    {
+     "id": "neck-gable-364",
+     "kind": "other",
+     "where": "the widest neck gable: 3.1 m neck rising from claws that climb to 19.6 m, crowning cornice 20.85 m, pediment apex 22.6 m",
+     "approxSizeM": [
+      9.0,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "neckGable() with the 364 spec"
+    },
+    {
+     "id": "claws-364",
+     "kind": "relief",
+     "where": "tall claw pieces with scrolls and foliage either side of the neck",
+     "approxSizeM": [
+      2.9,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "concave claw solids with rim and volute"
+    },
+    {
+     "id": "oculi-364",
+     "kind": "window-shape",
+     "where": "two oval oeil-de-boeuf windows with figured tracery in cartouches",
+     "approxSizeM": [
+      1.3,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "oval ring and glass with one bar; the tracery figure is not modelled"
+    },
+    {
+     "id": "french-window-364",
+     "kind": "balcony-ironwork",
+     "where": "tall French window in the neck under an arched head with a low iron balconette",
+     "approxSizeM": [
+      1.6,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    },
+    {
+     "id": "white-sashes-364",
+     "kind": "window-shape",
+     "where": "white-painted small-pane sash windows on every storey (the other three houses have dark sashes)",
+     "approxSizeM": [
+      1.55,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "white surround and white glazing bars at 0.45 m rows"
+    },
+    {
+     "id": "hoist-hood-364",
+     "kind": "other",
+     "where": "white boarded hood over the hoist beam under the crown",
+     "approxSizeM": [
+      0.7,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    },
+    {
+     "id": "bel-pediments-364",
+     "kind": "window-shape",
+     "where": "triangular pediments over the outer bel-etage windows, flat hood over the middle",
+     "approxSizeM": [
+      1.75,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    },
+    {
+     "id": "festoons-364",
+     "kind": "relief",
+     "where": "festoons under the second-floor windows",
+     "approxSizeM": [
+      1.1,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "five-ball swag between two pendant drops per bay"
+    },
+    {
+     "id": "basement-364",
+     "kind": "window-shape",
+     "where": "barred cellar windows below the bel-etage",
+     "approxSizeM": [
+      0.95,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    },
+    {
+     "id": "balcony-362",
+     "kind": "other",
+     "where": "stone balcony across the 362 front at the first floor: bulbous balusters between end pedestals",
+     "approxSizeM": [
+      3.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "slab, lathe balusters, pedestals, rail"
+    },
+    {
+     "id": "consoles-362",
+     "kind": "sculpture",
+     "where": "two large carved scroll consoles under the balcony",
+     "approxSizeM": [
+      0.4,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "quarter-ellipse console solids with a volute cylinder"
+    },
+    {
+     "id": "doors-362",
+     "kind": "other",
+     "where": "three panelled wooden doors with glazed transoms in a stone frame at street level",
+     "approxSizeM": [
+      3.6,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    },
+    {
+     "id": "cartouche-362",
+     "kind": "relief",
+     "where": "carved cartouche around the window over the doors",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496",
+     "how": "window with three carved masses"
+    },
+    {
+     "id": "roof-362",
+     "kind": "other",
+     "where": "slate roof falling towards the Huidenstraat corner, hipped to the front",
+     "approxSizeM": [
+      4.0,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000496"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Cromhouthuizen",
+   "url": "https://nl.wikipedia.org/wiki/Cromhouthuizen",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

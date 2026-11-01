@@ -1,5 +1,5 @@
 {
-  "toolchain": "b77a74a206b7e6b68857bcd4aa84df7d90461b221b39cb147e487619d8f9cee5",
+  "toolchain": "5d50e7f7197335aef3cbe2561483b40550da983f8f7c28ca45dafd4ca7ae9827",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -62,6 +62,7 @@
     "concertgebouw": "b9452c17950d55a5f7661b47258218b64ddbc4ab4b6a8a31c76f79cced9628c1",
     "conservatorium": "a918e73a80c944f64970a79743bc6bbb2cf49b688fdb6a62d77d13b44b4a1b53",
     "coymanshuis": "11ca553b4238bfdb340942ab861b83a4646d776a6b8d82854029cf0fa04d8381",
+    "cromhouthuizen": "a8987c9be23e1a3de4eb36af942a949d75dd956c8914c869baba1dde11486a56",
     "d-admiraal": "3b9edf2d19154e823fe2a66ea144c8cfe6230c08ed0b1a8e6984ab159aadd6db",
     "da-costakade-13": "04a0c3d07afef4ea2183e248a4fd14ac760b3976d9d26641b7a6ba6a56bd3310",
     "dageraad": "d22aa498a6d5c71ccef3439ea12f3a876f10536df4b683993e2ec0f20c04af0d",
@@ -346,6 +347,7 @@
     "vrijburg": "fc1144b37eed314df3af66fcacd79afcd861dbec9e11150c35c8a70c9f489bd1",
     "w139": "ce023fd1f895caa04179f06271f7f6ad0f2054be44a839ee8750cbb1237af26a",
     "waag": "c3c8e16b2644f8abbb9a57c259b01b5c81ea7a783dc92a1659d5e6ec65fb9b92",
+    "waldorf-astoria-herengracht": "d3b13ed7bbe32e9831f1572fa552fc35ee36543f2559d422bfd0703a2c839bb2",
     "walloon-church": "babb41276d9442e42a172b1ab066fa7bc2b73492beff85cd2abbb07fb356d90c",
     "walraven-van-hall": "ed352dda223cec7804a6eea286c48cb68a5f3368b14883559bf39daf1f68e813",
     "waterdraagster-bellamyplein": "a3ef013db1d8e4f7207ecf71c3d6615bd0af2dbe0b52d110a593e968d765d0ad",

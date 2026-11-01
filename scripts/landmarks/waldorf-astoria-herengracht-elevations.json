@@ -1,0 +1,22 @@
+{"id": "waldorf-astoria-herengracht", "countedBy": "lane #174 (opus) from ref-front.jpg = Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000032 (2021-01-22) rectified onto the BAG front line with a metre grid, cross-checked on _000028 and _000611; not a blind count, 2026-11-01", "facades": [
+ {"name": "554: white stucco front", "bearing": 343, "photo": "artifacts/landmark-lanes/waldorf-astoria-herengracht/ref-front.jpg",
+  "alongM": [15.4, 30.1], "openings": ["glass"],
+  "rows": [5, 5, 5],
+  "rowsNote": "bottom up: bel-etage (four windows and the glazed transom over the door, one row), first floor, second floor; five bays each",
+  "columns": 5, "symmetric": true},
+ {"name": "550-552: seven-bay brick double house", "bearing": 343, "photo": "artifacts/landmark-lanes/waldorf-astoria-herengracht/ref-front.jpg",
+  "alongM": [30.3, 47.2], "openings": ["glass"],
+  "rows": [null, 7, 7, 7, 2],
+  "rowsNote": "bottom up: souterrain (behind parked cars), bel-etage, first, second floor of seven bays, the two neck dormers",
+  "columns": 7},
+ {"name": "548: hotel entrance front", "bearing": 343, "photo": "artifacts/landmark-lanes/waldorf-astoria-herengracht/ref-front.jpg",
+  "alongM": [48.0, 61.8], "openings": ["glass"],
+  "rows": [5, 5, 5],
+  "rowsNote": "bottom up: bel-etage (four windows and the round fanlight over the door, which sits within the row band; the door is a dark leaf), first floor and second floor of five bays; the crop is centred on the frontispiece axis",
+  "columns": 5, "symmetric": true},
+ {"name": "546: frontispiece front", "bearing": 343, "photo": "artifacts/landmark-lanes/waldorf-astoria-herengracht/ref-front.jpg",
+  "alongM": [62.0, 76.65], "heightM": [2.2, 20], "openings": ["glass", "dark"],
+  "rows": [6, 5, 5, 1],
+  "rowsNote": "bottom up, above the souterrain (cropped: hidden by parked cars and the stoop): bel-etage band = four segment-headed windows, the door and the oculus over it (one band: their centres are within half an opening height), first and second floor of five bays, the dormer window",
+  "columns": 5}
+]}
