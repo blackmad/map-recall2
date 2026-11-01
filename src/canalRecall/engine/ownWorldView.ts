@@ -381,6 +381,7 @@ export class OwnWorldView implements WorldViewOracles {
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
       this._labels.setOverview(data);
       this._overview.setTheme(this.theme);
+      if (this._tileFeatures.length) this._overview.setFootprints(this._tileFeatures as never);
     } catch (error) { this.fail('overview', error); }
   }
 
@@ -412,6 +413,7 @@ export class OwnWorldView implements WorldViewOracles {
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
       city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
         this._tileFeatures = features;
+        this._overview?.setFootprints(features);
         this.extras.setBuildingFeatures(features);
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
       });

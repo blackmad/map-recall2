@@ -532,3 +532,29 @@ test('a URL building look reads as vector-map.js reads it, so both engines honou
     ['1', 'procedural'], [true, 'procedural'], ['on', 'procedural'], ['procedural', 'procedural'], ['off', 'default'], ['default', 'default'],
     [null, null], [undefined, null], ['banana', null]] as const) assert.equal(urlBuildingLook(raw), look, String(raw));
 });
+
+test('overview footprints: MapLibre\'s zoom range and fade, one tile built per frame, only when they can show', async () => {
+  const { footprintOpacity, footprintTile, OverviewFootprints, FOOTPRINT_MAX_ZOOM } = await import('./overviewFootprints');
+  const { BLEND_END_ZOOM } = await import('../overviewTransition/blend');
+  assert.equal(footprintOpacity(12.9), 0);
+  assert.equal(footprintOpacity(14.2), 1);
+  assert.equal(footprintOpacity(BLEND_END_ZOOM), 1);
+  assert.ok(Math.abs(footprintOpacity(BLEND_END_ZOOM + 0.3) - 0.5) < 1e-9);
+  assert.equal(footprintOpacity(FOOTPRINT_MAX_ZOOM), 0);
+  assert.equal(footprintOpacity(17.98), 0, 'the play zoom builds and draws nothing');
+  const square = (lng: number, lat: number, id: string) => ({ properties: { id }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-4, lat], [lng + 1e-4, lat + 1e-4], [lng, lat + 1e-4], [lng, lat]]] } });
+  const a = square(4.8840, 52.3746, 'a'), b = square(4.8842, 52.3747, 'b'), far = square(4.95, 52.36, 'c');
+  assert.equal(footprintTile(a), footprintTile(b));
+  assert.notEqual(footprintTile(a), footprintTile(far));
+  const fp = new OverviewFootprints(-3, {}, 5);
+  fp.setFeatures([a, b, far]);
+  assert.equal(fp.update(17.98), false);
+  assert.equal(fp.stats().built, 0, 'nothing built at the play zoom');
+  assert.equal(fp.update(14.5), true, 'one tile built, one waiting');
+  assert.equal(fp.stats().built, 1);
+  assert.equal(fp.update(14.5), false);
+  assert.deepEqual([fp.stats().built, fp.stats().triangles], [2, 6]);
+  fp.setFeatures([a, b]);
+  assert.equal(fp.stats().tiles, 1, 'a tile that left the resident set is dropped');
+  assert.equal(fp.stats().triangles, 4);
+});
