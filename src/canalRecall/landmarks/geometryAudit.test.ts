@@ -149,7 +149,8 @@ test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   assert.equal(analyseRhythm(axis).mismatched.length, 2, 'without the declaration the wide centre is off-size');
   assert.equal(analyseRhythm(axis, {symmetric: true}).mismatched.length, 0, 'declared symmetric: the centre axis is the composition');
   const axisLow = [...row(1, [1, 4, 10, 13]), {t0: 6.6, t1: 8.6, y0: 0.2, y1: 2.2, area: 4}];
-  assert.equal(analyseRhythm(axisLow, {symmetric: true}).mismatched.length, 1, 'an off-level centre axis still counts');
+  assert.equal(analyseRhythm(axisLow, {symmetric: true}).mismatched.length, 0, 'a door on the axis runs to the ground: not off-level');
+  assert.equal(analyseRhythm(axisLow).mismatched.length, 1, 'undeclared, the same opening is off-level');
   const odd = [...row(1, [1, 4, 10, 13]), ...row(1, [7], 2.4)];
   assert.equal(analyseRhythm(odd).mismatched.length, 1);
 });

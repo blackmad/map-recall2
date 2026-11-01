@@ -1320,8 +1320,9 @@ export function dominantFacades(s: MaterialSoup, minArea = 60): FacadeInventory[
  */
 /**
  * `symmetric`: the photo inventory declares a mirror-symmetric front. In a row with an odd count the centre opening is
- * then the composition's axis (a door, a wider centre window, a pedimented bay, Academie van Bouwkunst risalit) and its
- * size is not an error; its level still is, and every other opening is judged as usual.
+ * then the composition's axis (a door running to the ground under the perron, a wider centre window, the light over the
+ * bel-etage door: Academie van Bouwkunst risalit) and neither its size nor its level is an error; its column alignment
+ * is still checked, and every other opening is judged as usual.
  */
 export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
   // Rows: cluster by vertical centre (half the median opening height, ≥ 0.9 m), as facadeCompare does.
@@ -1342,7 +1343,7 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
     const axis = opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
     if (r.length >= 3) for (const o of r) {
       const dw = Math.abs(o.t1 - o.t0 - mw), dh = Math.abs(o.y1 - o.y0 - mh);
-      const bad = (o !== axis && ((dw > 0.3 && dw > 0.25 * mw) || (dh > 0.4 && dh > 0.25 * mh))) || (!opts.staggered && (Math.abs(o.y0 - ms) > 0.35 || Math.abs(o.y1 - mt) > 0.35));
+      const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * mw) || (dh > 0.4 && dh > 0.25 * mh) || (!opts.staggered && (Math.abs(o.y0 - ms) > 0.35 || Math.abs(o.y1 - mt) > 0.35)));
       if (bad) { odd++; mismatched.push(o); }
     }
     // Missing: a gap that is a whole multiple of the regular spacing, between two regular windows of the same size.
