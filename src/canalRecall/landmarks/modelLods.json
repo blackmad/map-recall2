@@ -1936,5 +1936,11 @@
   "buildVersion": 2,
   "bytes": 54100,
   "triangles": 2285
+ },
+ "marnixbad": {
+  "sourceHash": "109f06ad4434b460",
+  "buildVersion": 2,
+  "bytes": 35048,
+  "triangles": 1010
  }
 }
