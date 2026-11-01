@@ -1629,7 +1629,7 @@ class GameRouteRuntime {
     // the briefing has left (another mode or city picked) stops at its next slice.
     const next = { key, scheduling: null, promise: null, fetched: null };
     const cancelled = () => this._cityWorldPrep !== next;
-    const scheduling = next.scheduling = { cancelled, budgetMs: urgent ? ROAD_SETUP_SLICE_MS : 12 };
+    const scheduling = next.scheduling = { cancelled, budgetMs: urgent ? ROAD_SETUP_SLICE_MS : 24 };
     const loader = this.osmLoader;
     // fetchRoads sets the loader's squares and ferry network for its mode: one fetch at a time, in pick order.
     const previousFetch = prep && prep.fetched ? prep.fetched : Promise.resolve();
