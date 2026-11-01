@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**The far city fades into haze by default; catalogue landmarks stay crisp (2026-11-02, #161 lever 1).**
+Materials (9083203ff, on top of a37f977bc). The user asked how to make the chase-cam
+frame less busy; the busyness probe showed the far third of the frame carrying
+more edges than the near one at four of five spots (far/near 1.45–1.82), so the
+eye is pulled to the horizon instead of the corridor. The depth fade is now on
+for every look (`?depthFade=0` turns it off). Catalogue landmarks, including
+church towers and catalogue bridges, skip it through a `noFade` city-look
+material variant (a `|nofade` key suffix that highlight and dim swaps keep),
+keyed on the landmark load path in `signature-landmarks-source.js` rather than
+the model kind, because the first review found the Westerkerk tower going soft
+and orientation landmarks must stay sharp. Kiosks, street furniture, building
+types and chunks fade with the city. Westerkerk far/near: desktop 1.45 → 0.85,
+iPhone 1.69 → 1.21, near third unchanged, and the diff mask shows the tower and
+nave untouched. The ≤ 0.5 target is expected from levers 2–5 combined, not this
+one. Integrator: engine, 3d, three, three-buildings, building-types,
+tile-buildings, signature-landmarks and the three gallery bundles rebuilt; lint,
+test:look 172/172, test:engine 129/129, test:own-ground 227/227. What's New
+note with the off/on strips.
+
 **Depth fade behind `?depthFade=1`: the far city loses saturation and moves toward haze, the near field stays pixel-identical (2026-11-02, #161 lever 1).**
 Materials (a37f977bc). `look/depthFade.ts`: with eye distance, saturation drops
 up to 70 % and colour moves up to 55 % toward the haze #a1c6e5. Window and trim

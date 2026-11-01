@@ -2,6 +2,23 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-02",
+      "title": "The far city fades into haze",
+      "text": "Distant streets now lose colour and detail toward the horizon, so the corridor ahead stands out, while landmarks such as the Westerkerk stay crisp.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-depth-fade-westerkerk.jpg",
+          "alt": "Westerkerk from the chase camera on desktop, without and with the haze",
+          "caption": "Before | after | changed pixels in red (the church is unchanged)"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-depth-fade-westerkerk-iphone.jpg",
+          "alt": "The same view on a phone, without and with the haze",
+          "caption": "Phone: before | after | changed pixels"
+        }
+      ]
+    },
+    {
       "date": "2026-11-01",
       "title": "White roofs keep their texture",
       "text": "Bright white flat roofs (e.g. Da Costakade) no longer burn out to pure white; they keep the orthophoto's tone and texture.",
