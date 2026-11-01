@@ -1870,5 +1870,11 @@
   "buildVersion": 2,
   "bytes": 75072,
   "triangles": 3500
+ },
+ "academie-van-bouwkunst": {
+  "sourceHash": "2b17f566c8922653",
+  "buildVersion": 2,
+  "bytes": 83368,
+  "triangles": 4091
  }
 }

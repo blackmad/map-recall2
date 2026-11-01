@@ -1,0 +1,46 @@
+{
+ "id": "academie-van-bouwkunst",
+ "countedBy": "lane (opus) from the rectified Gemeente Amsterdam panoramas w02-308 (recording_2025-06-19_06-21-49_00258) and w07-307 / w06-307, 2026-11-01; not a blind count",
+ "facades": [
+  {
+   "name": "Turfpakhuizen front (NW, three point gables)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w02-308.jpg",
+   "note": "Bands from the bottom: street storey (4 basket arches and 6 small round-headed lights), storeys 1 and 2 (14 axes each: 3 per side gable, 8 in the middle gable), gable storey 3 (one wide window per side gable, 6 in the middle gable), gable storey 4 (2 wide windows in the middle gable, one small light per side gable).",
+   "rows": [
+    10,
+    14,
+    14,
+    8,
+    4
+   ],
+   "columns": 14,
+   "symmetric": true,
+   "gables": 3,
+   "alongM": [
+    22.5,
+    48.2
+   ],
+   "depthBand": 3
+  },
+  {
+   "name": "Huiszittenhuis front (NW, risalit with pediment)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w07-307.jpg",
+   "note": "Souterrain (8 windows and the door under the perron), bel-etage (8 windows, the front door and the light over it), upper storey 9 windows; one pediment. The perron hides part of the souterrain door.",
+   "rows": [
+    9,
+    10,
+    9
+   ],
+   "columns": 9,
+   "symmetric": true,
+   "gables": 1,
+   "alongM": [
+    0,
+    22.4
+   ],
+   "depthBand": 3
+  }
+ ]
+}

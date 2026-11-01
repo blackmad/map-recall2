@@ -42990,5 +42990,134 @@
         ]
       ]
     }
+  },
+  {
+    "id": "academie-van-bouwkunst",
+    "name": "Academie van Bouwkunst",
+    "landmarkId": "extract_landmarks_1225009678",
+    "modelUrl": "./models/academie-van-bouwkunst.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012171994"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9034502,
+        52.367566
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 64.3,
+      "widthMetres": 60.0
+    },
+    "surveyed": {
+      "anchor": [
+        4.9034502,
+        52.367566
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Vertex average of the BAG 0363100012171994 outer ring (RD); the Turfpakhuizen and Huiszittenhuis fronts on the BAG facets and the 3DBAG LoD2.2 shell (courtyard ranges, hipped roofs, courtyard gallery, SE annex) in native east/south metres (scripts/landmarks/academie-van-bouwkunst-prepare.ts). Gables, storey lines and bays measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/academie-van-bouwkunst-inventory.json)."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "heightMetres": 16.2,
+    "bagYear": 1613,
+    "materialOverrides": {
+      "brick": "#6e4c40",
+      "stone": "#d9d5ca",
+      "white": "#e8e5dc",
+      "slate": "#55595b",
+      "glass": "#3e494f",
+      "dark": "#2b2b2d",
+      "red": "#6e2e28",
+      "gold": "#a88d4f",
+      "bronze": "#242628"
+    },
+    "attribution": {
+      "title": "Academie van Bouwkunst: Oudezijds Huiszittenhuis and Stadsturfpakhuizen (1610)",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/268",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Original texture-free flat-colour geometry: individually modelled Turfpakhuizen gables and Huiszittenhuis fronts from the RCE register description (CC0) and rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only); the rest is the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.9034645,
+            52.3677154
+          ],
+          [
+            4.9033276,
+            52.3677934
+          ],
+          [
+            4.9032591,
+            52.3677375
+          ],
+          [
+            4.9032562,
+            52.3677389
+          ],
+          [
+            4.903195,
+            52.367689
+          ],
+          [
+            4.903198,
+            52.3676876
+          ],
+          [
+            4.9031295,
+            52.3676318
+          ],
+          [
+            4.902901,
+            52.3674478
+          ],
+          [
+            4.9032758,
+            52.3672542
+          ],
+          [
+            4.9035879,
+            52.3673942
+          ],
+          [
+            4.9036322,
+            52.3674152
+          ],
+          [
+            4.9036554,
+            52.3673968
+          ],
+          [
+            4.9038444,
+            52.3674862
+          ],
+          [
+            4.9038178,
+            52.3675077
+          ],
+          [
+            4.9038169,
+            52.3675076
+          ],
+          [
+            4.9037925,
+            52.3675231
+          ],
+          [
+            4.903499,
+            52.3676962
+          ],
+          [
+            4.9034645,
+            52.3677154
+          ]
+        ]
+      ]
+    }
   }
 ]
