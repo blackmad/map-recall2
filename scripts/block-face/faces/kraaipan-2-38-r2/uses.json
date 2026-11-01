@@ -1,0 +1,126 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:01:31.673Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074901",
+   "addresses": [
+    "Kraaipanstraat 16A",
+    "Kraaipanstraat 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000711975"
+    },
+    {
+     "address": "Kraaipanstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000711976"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149786",
+   "addresses": [
+    "Kraaipanstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000997032"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101968",
+   "addresses": [
+    "Kraaipanstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001017373"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111001",
+   "addresses": [
+    "Kraaipanstraat 10A",
+    "Kraaipanstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000711962"
+    },
+    {
+     "address": "Kraaipanstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711963"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061769",
+   "addresses": [
+    "Kraaipanstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000997031"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069468",
+   "addresses": [
+    "Kraaipanstraat 6A",
+    "Kraaipanstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000711953"
+    },
+    {
+     "address": "Kraaipanstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000711954"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

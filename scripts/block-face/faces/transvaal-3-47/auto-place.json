@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 21.59,
+ "seconds": 24.46,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -99,6 +99,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall": -0.005,
     "transvaal-1911-five-storey-tall~m": -0.004,
+    "transvaal-1921-five-storey-flat": 0.013,
+    "transvaal-1921-five-storey-flat~m": 0.107,
     "transvaal-1923-portiek-tower": -0.046,
     "transvaal-1923-portiek": -0.104
    }
@@ -186,6 +188,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall": -0.004,
     "transvaal-1911-five-storey-tall~m": -0.028,
+    "transvaal-1921-five-storey-flat": 0.063,
+    "transvaal-1921-five-storey-flat~m": 0.073,
     "transvaal-1923-portiek-tower": 0.077,
     "transvaal-1923-portiek": 0.054
    }
@@ -852,6 +856,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.052,
     "transvaal-1911-five-storey-tall~m": 0.05,
+    "transvaal-1921-five-storey-flat~m": 0.184,
+    "transvaal-1921-five-storey-flat": 0.007,
     "transvaal-1923-portiek-tower": 0.089,
     "transvaal-1923-portiek": 0.067
    }
@@ -943,6 +949,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall~m": 0.206,
     "transvaal-1911-five-storey-tall": 0.136,
+    "transvaal-1921-five-storey-flat": 0.285,
+    "transvaal-1921-five-storey-flat~m": 0.235,
     "transvaal-1923-portiek-tower": 0.108,
     "transvaal-1923-portiek": 0.118
    }

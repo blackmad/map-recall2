@@ -1,0 +1,41 @@
+{
+ "street": "Kraaipanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:06:05.410Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121091",
+   "addresses": [
+    "Kraaipanstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000986821"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126013",
+   "addresses": [
+    "Kraaipanstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kraaipanstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001019684"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

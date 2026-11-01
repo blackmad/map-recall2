@@ -74,3 +74,22 @@ test('match: the oriel rows place on their dak70p eaves and wall; the flat type 
   // A 1911 pand is no 1920 row.
   assert.ok(scoreType(low, ev({builtYear: 1911})).veto.length);
 });
+
+test('oriel stair block: Retiefstraat 10-14 (236977) has two canted bays either side of the stair axis, mirrored too', async () => {
+  const f = facts('retief-2-28', '236977');
+  for (const mirror of [false, true]) {
+    const built = await compileBuilding(house('transvaal-1921-five-storey-oriel', '236977', 'Retiefstraat', {mirror}), f);
+    const fr = built.fit.fronts[0], e = fr.erker!;
+    assert.ok(e.oriel?.twinLeftM !== undefined, 'twin stack');
+    const centres = [e.leftM, e.oriel!.twinLeftM!].map(l => l + e.widthM / 2).sort((a, b) => a - b);
+    // Measured on the 2023 strip: bay centres at 6.2 and 12.45 m of the 18 m front; mirrored, 18 - those.
+    const want = mirror ? [18.02 - 12.45, 18.02 - 6.2] : [6.2, 12.45];
+    centres.forEach((c, k) => assert.ok(Math.abs(c - want[k]) < 0.35, `${mirror}: bay ${k} at ${c} (want ${want[k]})`));
+    let twin = 0, consoles = 0;
+    built.group.traverse(o => { if (/twin-erker-s[12]\/front\/glass\//.test(o.name)) twin++; if (/^oriel-console\//.test(o.name)) consoles++; });
+    assert.ok(twin >= 2, 'twin glazing on storeys 1 and 2');
+    assert.equal(consoles, 1, 'one console mesh holding both slabs');
+  }
+  const base = house('transvaal-1921-five-storey-oriel', '236977', 'Retiefstraat'), bw = base.fronts[0].bayWindows!;
+  assert.throws(() => validateIntent({...base, fronts: base.fronts.map(x => ({...x, bayWindows: {...bw, oriel: {...bw.oriel!, twin: {from: 1, to: 1}}}}))} as CanalHouseIntent), /oriel.twin/);
+});

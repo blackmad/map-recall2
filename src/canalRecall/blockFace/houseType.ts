@@ -204,7 +204,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     const n = sameCount(f.balconies.storeys, 'balconies'), flip = (l: number[]) => l.map(b => n - 1 - b).sort((p, q) => p - q);
     out.balconies = {...f.balconies, bays: flip(f.balconies.bays), ...(f.balconies.storeyBays ? {storeyBays: Object.fromEntries(Object.entries(f.balconies.storeyBays).map(([k, v]) => [k, flip(v)]))} : {})};
   }
-  if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays)};
+  if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays), ...(f.bayWindows.oriel?.twin ? {oriel: {...f.bayWindows.oriel, twin: flipAxes(f.bayWindows.oriel.twin)}} : {})};
   else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
   if (f.shopfront) {
     const sf = f.shopfront;

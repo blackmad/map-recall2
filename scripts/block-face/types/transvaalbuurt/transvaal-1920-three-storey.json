@@ -18,6 +18,7 @@
    1919,
    1921
   ],
+  "yearSlack": 0,
   "storeys3dbag": [
    3
   ],
@@ -39,7 +40,7 @@
     "none": true
    }
   },
-  "note": "No eaves criterion: the evidence eaves of these low fronts is 6.2-8.0 m where the 3DBAG front reads over 6 m and the dak70p fallback (10.4-11.3 m) elsewhere (auto-place.ts: front eaves under 6 m are not trusted), so no storey pitch holds both; ridge 11.9-12.4 m but the evidence roof max is capped 1.3-1.5 m over the dak70p eaves (no roof criterion); bouwlagen 3 (the attic counts). The strips read the cream eaves board at 6.0-6.2 m over the pavement. BAG 1920-1921; the 1922 rows of Colensostraat and Transvaalstraat 131-143 share the roof and height but have no canted bay. Wall: the trim-normalised strip walls of De la Reijstraat 28-42 read #7d675d-#8b6b63 (dE 10 scores 1, 20 scores 0.5)"
+  "note": "No eaves criterion: the evidence eaves of these low fronts is 6.2-8.0 m where the 3DBAG front reads over 6 m and the dak70p fallback (10.4-11.3 m) elsewhere (auto-place.ts: front eaves under 6 m are not trusted), so no storey pitch holds both; ridge 11.9-12.4 m but the evidence roof max is capped 1.3-1.5 m over the dak70p eaves (no roof criterion); bouwlagen 3 (the attic counts). The strips read the cream eaves board at 6.0-6.2 m over the pavement. BAG 1920-1921; the 1922 rows of Colensostraat and Transvaalstraat 131-143 share the roof and height but have no canted bay. Wall: the trim-normalised strip walls of De la Reijstraat 28-42 read #7d675d-#8b6b63 (dE 10 scores 1, 20 scores 0.5). yearSlack 0: the 1922 rows of Transvaalstraat 131-143 and Colensostraat share eaves, roof and wall but have no bay (they took this type at the default slack of 2)"
  },
  "body": {
   "storeys": 2,

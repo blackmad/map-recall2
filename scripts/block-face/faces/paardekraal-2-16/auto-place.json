@@ -3,7 +3,7 @@
  "street": "Paardekraalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2022-01-12",
- "seconds": 14.51,
+ "seconds": 18.32,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -594,6 +594,7 @@
     "transvaal-1911-five-storey-tall~m": 0.103,
     "transvaal-1911-five-storey": 0.077,
     "transvaal-1911-five-storey~m": 0.077,
+    "transvaal-1921-five-storey-oriel": 0.181,
     "transvaal-1923-portiek": 0.133
    }
   },
@@ -690,6 +691,7 @@
     "transvaal-1911-five-storey-tall~m": 0.105,
     "transvaal-1911-five-storey": 0.082,
     "transvaal-1911-five-storey~m": 0.082,
+    "transvaal-1921-five-storey-oriel": 0.125,
     "transvaal-1923-portiek": 0.14
    }
   }

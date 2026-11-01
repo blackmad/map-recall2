@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 3.62,
+ "seconds": 9.26,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -55,35 +55,38 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012061780",
-    "ncc": 0.211,
-    "nccRaw": 0.211,
+    "ncc": 0.199,
+    "nccRaw": 0.199,
     "shiftM": [
-     -0.15,
-     0.3
+     0.3,
+     0.4
     ],
     "usable": 0.98,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.261 < 0.45"
+     "glazing storey band off by 0.15 mean 0.34 vs photo 0.22"
     ],
     "wall": {
-     "photo": "#6b514e",
+     "photo": "#6e5654",
      "model": "#89675d",
-     "dL": 0.088
+     "dL": 0.071
     },
     "glazing": {
-     "photo": 0.24,
-     "model": 0.24
+     "photo": 0.22,
+     "model": 0.34
     },
     "columns": {
      "photo": null,
-     "model": 3
+     "model": 2
     },
-    "iou": 0.261
+    "iou": 0.457
    },
    "challengers": {
-    "transvaal-1923-portiek": 0.211
+    "transvaal-1921-five-storey-flat": 0.199,
+    "transvaal-1921-five-storey-flat~m": 0.053,
+    "transvaal-1921-five-storey-oriel": 0.166,
+    "transvaal-1923-portiek": 0.157
    }
   },
   {
@@ -155,7 +158,10 @@
     "iou": 0.261
    },
    "challengers": {
-    "transvaal-1923-portiek": 0.095
+    "transvaal-1921-five-storey-flat": -0.053,
+    "transvaal-1921-five-storey-flat~m": 0.009,
+    "transvaal-1921-five-storey-oriel": 0.124,
+    "transvaal-1923-portiek": 0.045
    }
   },
   {

@@ -1,0 +1,30 @@
+{
+ "note": "Door sides a reviewer read on the strip where auto-place mirrored the front wrongly (blockFace/reviewDoors.ts; auto-place.ts reads this file).",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "pandId": "0363100012152175",
+   "type": "transvaal-1920-three-storey",
+   "side": "right",
+   "reason": "reij-28-42-r1 sheet (2020-04-29 strip): the door pair at the right party wall, the canted bay on the left"
+  },
+  {
+   "pandId": "0363100012154997",
+   "type": "transvaal-1920-three-storey",
+   "side": "left",
+   "reason": "reij-28-42-r1 sheet: the door pair at the left party wall, meeting 40A's"
+  },
+  {
+   "pandId": "0363100012130038",
+   "type": "transvaal-1920-three-storey",
+   "side": "right",
+   "reason": "reij-28-42-r1 sheet: the door pair at the right party wall"
+  },
+  {
+   "pandId": "0363100012089836",
+   "type": "transvaal-1920-three-storey",
+   "side": "left",
+   "reason": "reij-28-42-r1 sheet: the door pair at the left party wall, meeting 36's"
+  }
+ ]
+}

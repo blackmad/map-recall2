@@ -3,7 +3,7 @@
  "street": "Tugelaweg",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 4.15,
+ "seconds": 23.5,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -88,9 +88,43 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.07 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15 mean 0.24 vs photo 0.36; window shape wide vs photo square; columns 3 vs photo 5)",
+   "likeness": {
+    "pandId": "0363100012237245",
+    "ncc": 0.07,
+    "nccRaw": 0.07,
+    "shiftM": [
+     0.2,
+     -0.1
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15 mean 0.24 vs photo 0.36",
+     "window shape wide vs photo square",
+     "columns 3 vs photo 5"
+    ],
+    "wall": {
+     "photo": "#726357",
+     "model": "#89776a",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 5,
+     "model": 3
+    },
+    "iou": 0.275
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.121,
+    "transvaal-1921-five-storey-flat": 0.048,
+    "transvaal-1921-five-storey-flat~m": 0.057
+   }
   },
   {
    "pandId": "0363100012237041",
@@ -150,9 +184,42 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.103 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; window shape square vs photo wide)",
+   "likeness": {
+    "pandId": "0363100012237041",
+    "ncc": 0.103,
+    "nccRaw": 0.103,
+    "shiftM": [
+     0.25,
+     -0.3
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19",
+     "window shape square vs photo wide"
+    ],
+    "wall": {
+     "photo": "#806f61",
+     "model": "#8f7b6b",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.204
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.119,
+    "transvaal-1921-five-storey-flat": -0.005,
+    "transvaal-1921-five-storey-flat~m": 0.006
+   }
   },
   {
    "pandId": "0363100012236929",
@@ -211,44 +278,43 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914; frontage 18.03 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914",
-     "frontage 18.03 m, type 4.8-11 m"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012236929",
+    "ncc": 0.296,
+    "nccRaw": 0.296,
+    "shiftM": [
+     -0.3,
+     -0.2
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.82 m = 4 storeys of 3.21 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.198 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.33 vs photo 0.20"
+    ],
+    "wall": {
+     "photo": "#6e5e54",
+     "model": "#8e7a6a",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.453
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1921-five-storey-oriel": 0.296,
+    "transvaal-1921-five-storey-flat": 0.039,
+    "transvaal-1921-five-storey-flat~m": 0.049,
+    "transvaal-1923-portiek": 0.102
+   }
   },
   {
    "pandId": "0363100012236751",
@@ -298,9 +364,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.223 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012236751",
+    "ncc": 0.089,
+    "nccRaw": 0.089,
+    "shiftM": [
+     0.4,
+     -0.35
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.223 < 0.45"
+    ],
+    "wall": {
+     "photo": "#766557",
+     "model": "#917c6e",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.223
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.105,
+    "transvaal-1921-five-storey-flat": 0.03,
+    "transvaal-1921-five-storey-flat~m": 0.035
+   }
   },
   {
    "pandId": "0363100012236807",
@@ -355,9 +453,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.085 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo wide)",
+   "likeness": {
+    "pandId": "0363100012236807",
+    "ncc": 0.085,
+    "nccRaw": 0.085,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo wide"
+    ],
+    "wall": {
+     "photo": "#736256",
+     "model": "#8d7767",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.213
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.084,
+    "transvaal-1921-five-storey-flat": 0.03,
+    "transvaal-1921-five-storey-flat~m": 0.022
+   }
   },
   {
    "pandId": "0363100012233676",
@@ -437,9 +567,42 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.014 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.53 mean 0.24 vs photo 0.56; window shape square vs photo wide)",
+   "likeness": {
+    "pandId": "0363100012233676",
+    "ncc": 0.014,
+    "nccRaw": 0.014,
+    "shiftM": [
+     0.35,
+     -0.25
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.53 mean 0.24 vs photo 0.56",
+     "window shape square vs photo wide"
+    ],
+    "wall": {
+     "photo": "#645447",
+     "model": "#847262",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.242
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.057,
+    "transvaal-1921-five-storey-flat": 0.029,
+    "transvaal-1921-five-storey-flat~m": 0.026
+   }
   }
  ]
 }

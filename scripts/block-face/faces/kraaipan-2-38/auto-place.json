@@ -3,7 +3,7 @@
  "street": "Kraaipanstraat",
  "library": "transvaalbuurt",
  "stripDate": "2019-05-16",
- "seconds": 1.25,
+ "seconds": 20.87,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,31 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "kraaipan-2-38-r1",
+   "pands": [
+    "0363100012073809",
+    "0363100012092315",
+    "0363100012119532"
+   ],
+   "passed": true,
+   "triangles": 3176
+  },
+  {
+   "face": "kraaipan-2-38-r2",
+   "pands": [
+    "0363100012074901",
+    "0363100012149786",
+    "0363100012101968",
+    "0363100012111001",
+    "0363100012061769",
+    "0363100012069468"
+   ],
+   "passed": true,
+   "triangles": 6391
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012122087",
@@ -56,37 +80,41 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012122087",
+    "ncc": 0.072,
+    "nccRaw": 0.072,
+    "shiftM": [
+     -0.2,
+     0.3
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 8.16 m = 4 storeys of 2.04 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.068 (brick)"
-     }
-    ]
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.47 vs photo 0.34"
+    ],
+    "wall": {
+     "photo": "#68564c",
+     "model": "#856f63",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.211
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey": 0.072,
+    "transvaal-1920-three-storey~m": 0.177
+   }
   },
   {
    "pandId": "0363100012095081",
@@ -129,37 +157,41 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
+   "stage": "likeness",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.48 vs photo 0.25)",
+   "likeness": {
+    "pandId": "0363100012095081",
+    "ncc": 0.124,
+    "nccRaw": 0.124,
+    "shiftM": [
+     -0.4,
+     -0.35
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 8.16 m = 4 storeys of 2.04 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.078 (brick)"
-     }
-    ]
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.48 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#645249",
+     "model": "#695c53",
+     "dL": 0.029
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.286
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey": 0.124,
+    "transvaal-1920-three-storey~m": 0.124
+   }
   },
   {
    "pandId": "0363100012149403",
@@ -202,41 +234,8 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 8.26 m = 4 storeys of 2.06 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.082 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 7 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: a flat front with a small window over two plain windows and no canted bay (kraaipan-2-38-r1 sheet, 2019-05-16 strip): transvaal-1920-three-storey draws the bay (#154, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },
@@ -286,37 +285,41 @@
     "foliageShare": 0.09
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23 mean 0.48 vs photo 0.71)",
+   "likeness": {
+    "pandId": "0363100012150301",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     -0.35,
+     -0.05
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.88 m = 4 storeys of 1.97 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.097 (brick)"
-     }
-    ]
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.48 vs photo 0.71"
+    ],
+    "wall": {
+     "photo": "#a06a5b",
+     "model": "#ad7b6e",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.71,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.409
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey": 0.135,
+    "transvaal-1920-three-storey~m": 0.15
+   }
   },
   {
    "pandId": "0363100012107303",
@@ -359,43 +362,41 @@
     "foliageShare": 0.1
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1921, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1921, type 1908-1914"
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012107303",
+    "ncc": 0.191,
+    "nccRaw": 0.191,
+    "shiftM": [
+     0.1,
+     0.05
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.94 m = 4 storeys of 1.99 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.091 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#765d4d",
+     "model": "#9f7c6a",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.348
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.191,
+    "transvaal-1920-three-storey": 0.042
+   }
   },
   {
    "pandId": "0363100012119746",
@@ -438,43 +439,43 @@
     "foliageShare": 0.06
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
+   "stage": "likeness",
+   "reason": "edge NCC 0.147 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.51 vs photo 0.65; window shape none vs photo tall; columns none vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012119746",
+    "ncc": 0.147,
+    "nccRaw": 0.147,
+    "shiftM": [
+     -0.2,
+     0.1
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 8 m = 4 storeys of 2 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.097 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.51 vs photo 0.65",
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#935c4e",
+     "model": "#aa6c5e",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.65,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.41
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey": 0.147,
+    "transvaal-1920-three-storey~m": 0.085
+   }
   },
   {
    "pandId": "0363100012141566",
@@ -517,37 +518,41 @@
     "foliageShare": 0.05
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
+   "stage": "likeness",
+   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.47 vs photo 0.60)",
+   "likeness": {
+    "pandId": "0363100012141566",
+    "ncc": 0.14,
+    "nccRaw": 0.14,
+    "shiftM": [
+     0.25,
+     0.2
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.87 m = 4 storeys of 1.97 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.124 (brick)"
-     }
-    ]
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.47 vs photo 0.60"
+    ],
+    "wall": {
+     "photo": "#756053",
+     "model": "#8d7363",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.6,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.491
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.14,
+    "transvaal-1920-three-storey": 0.172
+   }
   },
   {
    "pandId": "0363100012073809",
@@ -589,38 +594,58 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.81 m = 4 storeys of 1.95 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.131 (brick)"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.4
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#8b564b",
+     "evidence": "strip 2019-05-16 span 1657-1887: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012073809",
+    "ncc": 0.212,
+    "nccRaw": 0.212,
+    "shiftM": [
+     0.4,
+     0
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#6b5548",
+     "model": "#a56659",
+     "dL": 0.147
+    },
+    "glazing": {
+     "photo": 0.53,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.37
+   },
+   "challengers": {
+    "transvaal-1920-three-storey": 0.216,
+    "transvaal-1920-three-storey~m": -0.005
+   }
   },
   {
    "pandId": "0363100012092315",
@@ -662,38 +687,58 @@
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.85 m = 4 storeys of 1.96 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.155 (brick)"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.4
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#756159",
+     "evidence": "strip 2019-05-16 span 1887-2120: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012092315",
+    "ncc": 0.297,
+    "nccRaw": 0.297,
+    "shiftM": [
+     0.05,
+     -0.05
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.48 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#a06860",
+     "model": "#8c746b",
+     "dL": -0.018
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.412
+   },
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.271,
+    "transvaal-1920-three-storey": 0.021
+   }
   },
   {
    "pandId": "0363100012119532",
@@ -735,44 +780,59 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.92 m = 4 storeys of 1.98 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.129 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.54
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#6f5c50",
+     "evidence": "strip 2019-05-16 span 2119-2354: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 092315",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012119532",
+    "ncc": 0.164,
+    "nccRaw": 0.164,
+    "shiftM": [
+     -0.4,
+     0.05
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16",
+     "window shape none vs photo tall",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#74625a",
+     "model": "#877062",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.378
+   },
+   "challengers": {
+    "transvaal-1920-three-storey": 0.15,
+    "transvaal-1920-three-storey~m": 0.044
+   }
   },
   {
    "pandId": "0363100012062562",
@@ -816,25 +876,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
+   "reason": "best transvaal-1920-three-storey scores 0.62 < 0.7 (strip wall #a56d61 dE 15.6 to #7f675d (<= 10); strip columns 4 vs 2 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
+    "type": "transvaal-1920-three-storey",
+    "score": 0.62,
+    "veto": [],
     "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.88 m = 4 storeys of 1.97 m vs the type's 3.55 m"
-     },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "score": 1,
+      "note": "3DBAG bouwlagen 3 vs 3"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip wall #a56d61 dE 15.6 to #7f675d (<= 10)"
      },
      {
       "key": "stucco",
@@ -845,8 +903,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
      }
     ]
    },
@@ -893,44 +951,57 @@
     "voidShare": 0.01,
     "foliageShare": 0.07
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.87 m = 4 storeys of 1.97 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.093 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.31
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#765d51",
+     "evidence": "strip 2019-05-16 span 2591-2820: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 149786",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012074901",
+    "ncc": 0.179,
+    "nccRaw": 0.179,
+    "shiftM": [
+     0.05,
+     -0.1
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#a96c60",
+     "model": "#8e7062",
+     "dL": -0.049
+    },
+    "glazing": {
+     "photo": 0.66,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 4,
+     "model": null
+    },
+    "iou": 0.428
+   },
+   "challengers": {
+    "transvaal-1920-three-storey": 0.179,
+    "transvaal-1920-three-storey~m": 0.102
+   }
   },
   {
    "pandId": "0363100012149786",
@@ -972,44 +1043,58 @@
     "voidShare": 0.01,
     "foliageShare": 0.09
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.79 m = 4 storeys of 1.95 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.101 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.31
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#837062",
+     "evidence": "strip 2019-05-16 span 2822-3057: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012149786",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     0.3,
+     -0.05
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.49 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#7e6b5d",
+     "model": "#978374",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.456
+   },
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.199,
+    "transvaal-1920-three-storey": 0.116
+   }
   },
   {
    "pandId": "0363100012101968",
@@ -1051,44 +1136,59 @@
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.82 m = 4 storeys of 1.96 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.122 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.4
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#675646",
+     "evidence": "strip 2019-05-16 span 3057-3291: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012101968",
+    "ncc": 0.18,
+    "nccRaw": 0.18,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.50 vs photo 0.38",
+     "window shape none vs photo tall",
+     "columns none vs photo 4"
+    ],
+    "wall": {
+     "photo": "#66574b",
+     "model": "#816c58",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 4,
+     "model": null
+    },
+    "iou": 0.381
+   },
+   "challengers": {
+    "transvaal-1920-three-storey": 0.18,
+    "transvaal-1920-three-storey~m": 0.044
+   }
   },
   {
    "pandId": "0363100012111001",
@@ -1130,44 +1230,59 @@
     "voidShare": 0,
     "foliageShare": 0.06
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.73 m = 4 storeys of 1.93 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.158 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.31
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7c695d",
+     "evidence": "strip 2019-05-16 span 3291-3525: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012111001",
+    "ncc": 0.237,
+    "nccRaw": 0.237,
+    "shiftM": [
+     -0.05,
+     -0.15
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 14 deg",
+     "glazing storey band off by 0.29 mean 0.47 vs photo 0.75"
+    ],
+    "wall": {
+     "photo": "#95635a",
+     "model": "#927c6e",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.75,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.444
+   },
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.237,
+    "transvaal-1920-three-storey": 0.117
+   }
   },
   {
    "pandId": "0363100012061769",
@@ -1209,38 +1324,58 @@
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.83 m = 4 storeys of 1.96 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.188 (brick)"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.4
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#95655c",
+     "evidence": "strip 2019-05-16 span 3525-3755: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown eaves: skyline no crown over the eaves"
+   ],
+   "likeness": {
+    "pandId": "0363100012061769",
+    "ncc": 0.206,
+    "nccRaw": 0.206,
+    "shiftM": [
+     0.25,
+     -0.05
+    ],
+    "usable": 0.84,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue -12 deg",
+     "glazing storey band off by 0.35 mean 0.50 vs photo 0.73"
+    ],
+    "wall": {
+     "photo": "#7e6a5f",
+     "model": "#a67870",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.73,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.471
+   },
+   "challengers": {
+    "transvaal-1920-three-storey": 0.206,
+    "transvaal-1920-three-storey~m": 0.159
+   }
   },
   {
    "pandId": "0363100012069468",
@@ -1287,38 +1422,59 @@
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.86 m = 4 storeys of 1.97 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.152 (brick)"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "transvaal-1921-five-storey-flat",
+    "score": 0.4
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#956156",
+     "evidence": "strip 2019-05-16 span 3755-3987: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 061769",
+    "crown eaves: crown from type (skyline not sky-bounded: the skyline crown (1.75 m) hugs the right party wall: the neighbour's crown or the cornice's bend)"
+   ],
+   "likeness": {
+    "pandId": "0363100012069468",
+    "ncc": 0.237,
+    "nccRaw": 0.237,
+    "shiftM": [
+     -0.4,
+     -0.05
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 5"
+    ],
+    "wall": {
+     "photo": "#915e53",
+     "model": "#a87469",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 5,
+     "model": null
+    },
+    "iou": 0.433
+   },
+   "challengers": {
+    "transvaal-1920-three-storey~m": 0.237,
+    "transvaal-1920-three-storey": 0.095
+   }
   },
   {
    "pandId": "0363100012134073",
@@ -1374,25 +1530,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.33 < 0.7 (3DBAG eaves 8.25 m = 4 storeys of 2.06 m vs the type's 3.21 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.33,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 8.25 m = 4 storeys of 2.06 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 8.25 m = 4 storeys of 2.06 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 4 vs 5"
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
      },
      {
       "key": "stucco",
@@ -1452,41 +1606,8 @@
     "foliageShare": 0.15
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 8.25 m = 4 storeys of 2.06 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.059 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }

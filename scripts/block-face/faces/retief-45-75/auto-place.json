@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 24,
+ "seconds": 32.4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -1205,7 +1205,8 @@
     "transvaal-1911-five-storey-tall": 0.22,
     "transvaal-1911-five-storey-tall~m": 0.22,
     "transvaal-1911-five-storey": 0.274,
-    "transvaal-1911-five-storey~m": 0.274
+    "transvaal-1911-five-storey~m": 0.274,
+    "transvaal-1921-five-storey-oriel": 0.231
    }
   },
   {
@@ -1306,7 +1307,10 @@
     "transvaal-1911-five-storey-tall": 0.198,
     "transvaal-1911-five-storey-tall~m": 0.314,
     "transvaal-1911-five-storey": 0.208,
-    "transvaal-1911-five-storey~m": 0.291
+    "transvaal-1911-five-storey~m": 0.291,
+    "transvaal-1921-five-storey-flat~m": 0.274,
+    "transvaal-1921-five-storey-flat": 0.207,
+    "transvaal-1921-five-storey-oriel": 0.247
    }
   },
   {
@@ -1414,7 +1418,10 @@
     "transvaal-1911-five-storey-tall~m": 0.274,
     "transvaal-1911-five-storey-tall": 0.274,
     "transvaal-1911-five-storey~m": 0.278,
-    "transvaal-1911-five-storey": 0.278
+    "transvaal-1911-five-storey": 0.278,
+    "transvaal-1921-five-storey-flat": 0.328,
+    "transvaal-1921-five-storey-flat~m": 0.174,
+    "transvaal-1921-five-storey-oriel": 0.248
    }
   },
   {

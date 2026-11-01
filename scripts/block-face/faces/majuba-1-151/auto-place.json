@@ -3,7 +3,7 @@
  "street": "Majubastraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 10.02,
+ "seconds": 13.11,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -476,6 +476,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.15,
     "transvaal-1911-five-storey-tall~m": 0.142,
+    "transvaal-1921-five-storey-flat": 0.191,
+    "transvaal-1921-five-storey-flat~m": 0.129,
     "transvaal-1923-portiek-tower": 0.161,
     "transvaal-1923-portiek": 0.141
    }
@@ -567,6 +569,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.137,
     "transvaal-1911-five-storey-tall~m": 0.129,
+    "transvaal-1921-five-storey-flat": 0.192,
+    "transvaal-1921-five-storey-flat~m": 0.185,
     "transvaal-1923-portiek-tower": 0.106,
     "transvaal-1923-portiek": 0.153
    }
