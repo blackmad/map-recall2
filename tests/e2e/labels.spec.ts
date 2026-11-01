@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // POI labels (lane 2026-10-13, docs/handoffs/lane-poi-labels-20261013.md).
 // User report: "labels now look really bad against our palette; also not sure
@@ -96,6 +97,7 @@ const overlaps = (l: Seen, r: Box) => {
 };
 
 test('labels: shots and counts at the review viewpoints', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(info.project.name !== 'desktop', 'one viewport for the counted shots');
   test.setTimeout(420_000);
   mkdirSync(OUT, { recursive: true });

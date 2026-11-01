@@ -2,6 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // One route ribbon and one highlight band under own ground (`?ownGround=1`),
 // Kostverlorenvaart in the Chassebuurt (user shot 2026-10-13). Opt-in:
@@ -87,6 +88,7 @@ async function routePixels(png: Buffer): Promise<{ rowsWithRoute: number; double
 }
 
 test('route line: one ribbon, one highlight band, stable between frames', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   const errors = await boot(page);

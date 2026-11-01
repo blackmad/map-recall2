@@ -5,6 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { AB_SPOTS } from '../../scripts/world/abSpots';
+import { OWN } from './worldCam';
 
 // `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
@@ -232,6 +233,7 @@ test.beforeAll(() => {
 });
 for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(900_000);
     await serve(page);
     await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');

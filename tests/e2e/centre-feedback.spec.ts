@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute, setHiddenSelect } from './helpers';
+import { OWN } from './worldCam';
 
 // Replays the 2026-10-25 centre feedback poses (player x/y/angle from the notes) and
 // records a frame plus the POI labels drawn, for before/after evidence.
@@ -60,6 +61,7 @@ async function drawnLabels(page: Page) {
 }
 
 test('centre feedback poses: frames and drawn labels', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(info.project.name !== 'desktop', 'desktop frames');
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
