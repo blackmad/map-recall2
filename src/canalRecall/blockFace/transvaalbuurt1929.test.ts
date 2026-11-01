@@ -49,7 +49,7 @@ test('compile: Tugelaweg 95-96 and 93-94 carry the panel in its colour from the 
     const built = await compileBuilding(house('transvaal-1929-block', pand, 'Tugelaweg', mirror), facts(face, pand));
     const panels = named(built.group, /painted-panel-0\//), storeys = named(built.group, /painted-storey-s0\//);
     const box = new T.Box3(); for (const m of panels) box.expandByObject(m);
-    assert.ok(box.min.y > 3.5 && box.max.y > 12, `${pand}: panel ${box.min.y.toFixed(2)}-${box.max.y.toFixed(2)} m`);
+    assert.ok(box.min.y > 2.8 && box.max.y > 12, `${pand}: panel ${box.min.y.toFixed(2)}-${box.max.y.toFixed(2)} m`);
     assert.ok(panels.length > 0, `${pand}: panel meshes`);
     assert.ok(storeys.length > 0, `${pand}: painted storeys`);
     assert.equal('#' + (panels[0].material as T.MeshStandardMaterial).color.getHexString(), '#abaca5');

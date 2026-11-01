@@ -3,7 +3,7 @@
  "street": "Tugelaweg",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 16.73,
+ "seconds": 14.38,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -416,38 +416,38 @@
     "foliageShare": 0.2
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.35 mean 0.36 vs photo 0.54; window shape none vs photo square; columns none vs photo 3)",
    "likeness": {
     "pandId": "0363100012062331",
-    "ncc": 0.205,
-    "nccRaw": 0.205,
+    "ncc": 0.128,
+    "nccRaw": 0.128,
     "shiftM": [
      -0.4,
-     0.1
+     -0.35
     ],
-    "usable": 0.6,
+    "usable": 0.61,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22",
-     "window shape square vs photo wide",
-     "columns 7 vs photo 3"
+     "glazing storey band off by 0.35 mean 0.36 vs photo 0.54",
+     "window shape none vs photo square",
+     "columns none vs photo 3"
     ],
     "wall": {
-     "photo": "#b5ac91",
+     "photo": "#b3ab8e",
      "model": "#c6c0ac",
-     "dL": 0.086
+     "dL": 0.096
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.4
+     "photo": 0.54,
+     "model": 0.36
     },
     "columns": {
      "photo": 3,
-     "model": 7
+     "model": null
     },
-    "iou": 0.39
+    "iou": 0.358
    },
    "challengers": {}
   },
@@ -509,36 +509,35 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.41 vs photo 0.58; columns 7 vs photo 3)",
+   "reason": "edge NCC 0.067 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.49 mean 0.37 vs photo 0.70)",
    "likeness": {
     "pandId": "0363100012083727",
-    "ncc": 0.072,
-    "nccRaw": 0.072,
+    "ncc": 0.067,
+    "nccRaw": 0.067,
     "shiftM": [
      0.1,
-     0.15
+     -0.3
     ],
-    "usable": 0.77,
+    "usable": 0.78,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25 mean 0.41 vs photo 0.58",
-     "columns 7 vs photo 3"
+     "glazing storey band off by 0.49 mean 0.37 vs photo 0.70"
     ],
     "wall": {
-     "photo": "#b7af94",
+     "photo": "#bbb296",
      "model": "#c6c0ac",
-     "dL": 0.076
+     "dL": 0.065
     },
     "glazing": {
-     "photo": 0.58,
-     "model": 0.41
+     "photo": 0.7,
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 7
     },
-    "iou": 0.402
+    "iou": 0.325
    },
    "challengers": {}
   },
@@ -600,36 +599,36 @@
     "foliageShare": 0.1
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 34 % > 30 %)",
    "likeness": {
     "pandId": "0363100012094499",
-    "ncc": 0.21,
-    "nccRaw": 0.21,
+    "ncc": 0.128,
+    "nccRaw": 0.128,
     "shiftM": [
-     0,
-     0.1
+     0.4,
+     -0.2
     ],
-    "usable": 0.81,
+    "usable": 0.8,
     "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
      "washed out 34 % > 30 %"
     ],
     "wall": {
-     "photo": "#bbb39a",
+     "photo": "#bcb49b",
      "model": "#c6c0ac",
-     "dL": 0.057
+     "dL": 0.053
     },
     "glazing": {
-     "photo": 0.39,
-     "model": 0.39
+     "photo": 0.31,
+     "model": 0.35
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 8
     },
-    "iou": 0.348
+    "iou": 0.308
    },
    "challengers": {}
   },
@@ -692,37 +691,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.149 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.51 mean 0.39 vs photo 0.66; window shape tall vs photo square; columns 8 vs photo 3)",
+   "reason": "edge NCC 0.104 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.35 mean 0.36 vs photo 0.23; columns 8 vs photo 6)",
    "likeness": {
     "pandId": "0363100012102941",
-    "ncc": 0.149,
-    "nccRaw": 0.149,
+    "ncc": 0.104,
+    "nccRaw": 0.104,
     "shiftM": [
      -0.4,
-     0.15
+     0.3
     ],
-    "usable": 0.83,
+    "usable": 0.84,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.51 mean 0.39 vs photo 0.66",
-     "window shape tall vs photo square",
-     "columns 8 vs photo 3"
+     "glazing storey band off by 0.35 mean 0.36 vs photo 0.23",
+     "columns 8 vs photo 6"
     ],
     "wall": {
-     "photo": "#b4ab92",
+     "photo": "#b7ae95",
      "model": "#c6c0ac",
-     "dL": 0.086
+     "dL": 0.075
     },
     "glazing": {
-     "photo": 0.66,
-     "model": 0.39
+     "photo": 0.23,
+     "model": 0.36
     },
     "columns": {
-     "photo": 3,
+     "photo": 6,
      "model": 8
     },
-    "iou": 0.406
+    "iou": 0.129
    },
    "challengers": {}
   },
@@ -777,17 +775,17 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012137443",
-    "ncc": 0.258,
-    "nccRaw": 0.258,
+    "ncc": 0.163,
+    "nccRaw": 0.163,
     "shiftM": [
      -0.4,
-     0.1
+     -0.15
     ],
     "usable": 0.69,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.52 mean 0.39 vs photo 0.73"
+     "glazing storey band off by 0.60 mean 0.36 vs photo 0.68"
     ],
     "wall": {
      "photo": "#c0b79d",
@@ -795,14 +793,14 @@
      "dL": 0.041
     },
     "glazing": {
-     "photo": 0.73,
-     "model": 0.39
+     "photo": 0.68,
+     "model": 0.36
     },
     "columns": {
-     "photo": 4,
-     "model": 8
+     "photo": 2,
+     "model": null
     },
-    "iou": 0.43
+    "iou": 0.35
    },
    "challengers": {}
   },

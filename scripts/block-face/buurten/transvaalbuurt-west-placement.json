@@ -1,12 +1,12 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T08:39:20.315Z",
- "seconds": 3.2,
+ "generatedAt": "2026-11-01T08:42:58.678Z",
+ "seconds": 24.17,
  "totals": {
   "faces": 76,
   "pands": 359,
-  "placed": 12
+  "placed": 10
  },
  "faces": [
   {
@@ -1211,27 +1211,15 @@
    "face": "tugelaweg-113-120",
    "street": "Tugelaweg",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "tugelaweg-113-120-r1",
-     "pands": [
-      "0363100012086731",
-      "0363100012118471"
-     ],
-     "passed": true,
-     "triangles": 5929
-    }
-   ],
-   "seconds": 9.73,
-   "byType": {
-    "transvaal-1929-block": 2
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 9.77,
+   "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
-    "likeness": 0,
+    "likeness": 2,
     "run": 0,
     "review": 0
    }
@@ -1402,13 +1390,13 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 16.73,
+   "seconds": 14.38,
    "byType": {},
    "holds": {
     "evidence": 2,
     "match": 2,
-    "likeness": 2,
-    "run": 4,
+    "likeness": 4,
+    "run": 2,
     "review": 0
    }
   },

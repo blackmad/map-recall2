@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "transvaal-1929-block",
  "district": "transvaalbuurt",
- "description": "Transvaalbuurt 1929 portiek blocks of Tugelaweg 91-120: 14 m stair blocks of a dark purple-brown brick ground storey (to 4.0 m) under three cream-rendered storeys and a flat roof run out as a deep white eaves slab; one grey rendered stair panel about 1.9 m wide over the portiek door on the block's middle axis, a small stair light per storey in it; either side a narrow window, a 1.6 m window with a small iron balcony on storeys 1-3, and at both ends half of a wide band window that the neighbour completes across the party wall",
+ "description": "Transvaalbuurt 1929 portiek blocks of Tugelaweg 91-120: 14 m stair blocks of a dark purple-brown brick ground storey (2.4 m of dark brick) under three cream-rendered storeys and a flat roof run out as a deep white eaves slab; one grey rendered stair panel about 1.9 m wide over the portiek door on the block's middle axis, a small stair light per storey in it; either side a narrow window, a 1.6 m window with a small iron balcony on storeys 1-3, and at both ends half of a wide band window that the neighbour completes across the party wall",
  "fit": {
   "widthM": [
    13.5,
@@ -58,10 +58,10 @@
   ],
   "axisGrid": 7,
   "storeyHeights": [
-   4.1,
-   2.85,
-   2.85,
-   3.1
+   2.9,
+   2.8,
+   2.7,
+   2.7
   ],
   "cornice": "none",
   "windows": "casement-toplight",
@@ -72,15 +72,15 @@
   },
   "windowHeights": [
    0.41,
-   0.47,
+   0.5,
    0.44,
-   0.44
+   0.37
   ],
   "headLines": [
-   0.83,
    0.79,
-   0.74,
-   0.69
+   0.75,
+   0.7,
+   0.59
   ],
   "bayWidths": [
    1.6,
@@ -210,6 +210,14 @@
     "102941"
    ],
    "citation": "strip.jpg 2020-04-29, 1 m grid on 105-106 (14.0 m): stair panel 5.3-7.2 m, narrow windows 4.1-5.1 and 7.2-7.7 m, 1.5-2 m windows with small projecting iron balconies (0.6-1 m rails) on storeys 1-3 at 1.1-2.6 and 9.2-11.0 m, slit lights at 0.4 and 11.3 m, wide windows at 12.3-14 m and 0-0.5 m running across the party walls"
+  },
+  {
+   "face": "tugelaweg-113-120",
+   "pands": [
+    "086731",
+    "118471"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, heights over the facade foot (0.6 m on the strip): dark brick to 2.4 m, ground windows 1.1-2.3 m, window rows 3.6-5.0, 6.4-7.6, 9.0-10.0 m, the eaves slab's foot at 11.1 m; storeys 2.9 / 2.8 / 2.7 / 2.7 m (the first sheet drew the 4.1 m ground storey read on 95-96 without its foot offset: 1.8 m on that strip)"
   }
  ],
  "schemaLimits": [
@@ -222,6 +230,7 @@
  "notes": [
   "Kit (2026-11-01, #153): paintedStoreys.panels (fit.ts paintedPanelBlocks) draws the grey stair panel; the wall is the cream render (palette wallMaterial stucco) and the dark ground storey is paintedStoreys [0], one cut facing instead of three: the three painted upper storeys cost 790 triangles and put the stair block over the 3,000-triangle budget.",
   "Roof: flat from the front (source front, form flat). The 3DBAG roof drew a 3-4 m red roof face over the slab that the strip never shows (tugelaweg-113-120-r1 sheet, 2026-11-01); only the end of the corner wing shows a roof face rising far behind.",
-  "Palette: the cream is the raw strip reading #b8b097 (the trim-normalised #cdc4a8 drew the stucco wall dL +0.16 lighter than the photo on 101-102 and 105-106)."
+  "Palette: the cream is the raw strip reading #b8b097 (the trim-normalised #cdc4a8 drew the stucco wall dL +0.16 lighter than the photo on 101-102 and 105-106).",
+  "Status 2026-11-01 (#153): with the measured storeys every Tugelaweg pand is held by the likeness gate (edge NCC 0.07-0.13). The strips put the facade foot 0.6-1.8 m over the strip ground and the eaves slab's foot 11.1 m over that, while 3DBAG draws the eaves at 12.9 m, so the model's storey lines sit 1-2 m off the photo's. Tugelaweg 113-116 passed the gate and was installed earlier the same day with a 4.1 m ground storey (the 95-96 reading taken without its foot offset) and was uninstalled once the strip-over-model sheet showed the error. The next step is the eaves height: read the front eaves off the strip (match.frontEavesM, as the 1923 types do) or a strip foot-offset fix in intake. Do not raise the gate."
  ]
 }
