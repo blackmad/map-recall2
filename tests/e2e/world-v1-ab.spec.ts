@@ -43,7 +43,8 @@ const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.
 const AB_QUERY = (process.env.AB_QUERY ?? '').replace(/^[?&]/, '');
 const withQuery = (q: string) => (q || AB_QUERY ? `?${[q.replace(/^\?/, ''), AB_QUERY].filter(Boolean).join('&')}` : '');
 const FIXED_CAMERA = process.env.AB_CAMERA === 'fixed';
-const FIXED_ZOOM = 17.5;
+// AB_ZOOM=18.5: hold the fixed shots closer (default 17.5), for looks that change with camera distance.
+const FIXED_ZOOM = Number(process.env.AB_ZOOM) || 17.5;
 /** Degrees clockwise from north, from the spot to the face it looks at. */
 const bearingOf = (at: readonly number[], face: readonly number[]) =>
   Math.atan2((face[0] - at[0]) * Math.cos(at[1] * Math.PI / 180), face[1] - at[1]) * 180 / Math.PI;

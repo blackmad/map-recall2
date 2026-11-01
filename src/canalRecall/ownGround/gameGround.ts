@@ -59,7 +59,8 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
-import { cutClone, fadeClone, groundProgram } from './groundMaterial.js';
+import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
+import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
 import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
 
@@ -875,11 +876,15 @@ export class OwnGround {
     // The basemap's tones are look/sunny.ts `groundTokens` (basemapPalette.ts); the ground fades from the same strings.
     // One table with the overview tiles (overviewTiles/layerColours.ts), so the flat map and the fading ground agree.
     const flat = flatLayerTones(groundPalette(this.opts.groundLook)) as Record<string, readonly number[] | string | 'vertex'>;
-    for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex');
+    // Lever 2 of the #161 design note (look/markingFade.ts, `?markingFade=1`): far paint and cycle-path red fade into the
+    // asphalt's albedo (its texture averages to the base tone; the material colour carries the ground gain).
+    const asphaltAlbedo = new THREE.Color(`rgb(${asphaltBase.map(Math.round).join(',')})`).multiplyScalar(UNGAINED.has('asphalt') ? 1 : FLAT_GROUND_GAIN).toArray();
+    const marking = (layer: string) => (layer in MARKING_FADE_STRENGTH ? { tone: asphaltAlbedo, strength: MARKING_FADE_STRENGTH[layer as keyof typeof MARKING_FADE_STRENGTH] } : null);
+    for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex', marking(layer));
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
     M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false, fog: false });
-    // The route band stays clear of the depth falloff haze (look/depthFalloff.ts): the corridor is what the rider reads.
+    // The route band stays clear of the depth fade haze (look/depthFade.ts): the corridor is what the rider reads.
     M.route = overlay('#38BDF8', 6, { transparent: true, opacity: 0.9, depthWrite: false, fog: false });
     M.highlight = overlay('#38BDF8', 7, { transparent: true, opacity: 0.96, depthWrite: false });
     M.destination = overlay('#f97316', 7, { transparent: true, opacity: 0.85, depthWrite: false });
@@ -968,10 +973,10 @@ export class OwnGround {
    * (`presenceOf(b)`, blended only while `setGroundTransparent`), and its output colour mixes from `flat` (the palette tone the basemap draws, sRGB; 'vertex' =
    * its own vertex colour) to the lit, textured ground by `b`.
    */
-  private blendMaterial(m: any, flat: readonly number[] | string | 'vertex'): void {
-    if (!this.opts.transition) { groundProgram(m, null); return; }
+  private blendMaterial(m: any, flat: readonly number[] | string | 'vertex', marking: GroundMarking | null = null): void {
+    if (!this.opts.transition) { groundProgram(m, null, marking); return; }
     const rgb = flat === 'vertex' ? 'vertex' : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
-    groundProgram(m, { blend: this.blendUniform, presence: this.presenceUniform, flat: rgb });
+    groundProgram(m, { blend: this.blendUniform, presence: this.presenceUniform, flat: rgb }, marking);
   }
 
   /**

@@ -11,6 +11,8 @@
  * objects with an identical shader source and key reuses the program and draws with its own values.
  */
 
+import { MARKING_FADE_FRAGMENT, MARKING_FADE_FRAGMENT_PARS, MARKING_FADE_VERTEX, MARKING_FADE_VERTEX_PARS, markingFadeFlag, markingFadeUniforms } from '../look/markingFade.js';
+
 /** A uniform the shader edits read. */
 export interface Uniform<T = unknown> { value: T }
 
@@ -82,13 +84,18 @@ export interface GroundBlend {
   flat: readonly number[] | 'vertex';
 }
 
+/** A marking layer's fade toward the surface under it (look/markingFade.ts): linear albedo and the share at full fade. */
+export interface GroundMarking { tone: readonly number[]; strength: number }
 /**
  * Install the ground's shader edits on a base material: the water cut (uniforms, off by default), the dissolve
  * (uniform `ownFade`, 1 by default) and, with
  * `blend`, the overview crossfade. Sets `customProgramCacheKey` to one key per kind.
  */
-export function groundProgram(m: GroundShaderMaterial, blend: GroundBlend | null): void {
+export function groundProgram(m: GroundShaderMaterial, blend: GroundBlend | null, marking: GroundMarking | null = null): void {
   const vertex = blend?.flat === 'vertex';
+  // `?markingFade=1` (look/markingFade.ts): every ground program takes the edit, so the kinds keep one program each;
+  // a layer that is not a marking draws with strength 0.
+  const mark = markingFadeFlag() ? { tone: { value: marking ? [...marking.tone] : [0, 0, 0] }, strength: { value: marking?.strength ?? 0 } } : null;
   const tone = blend ? { value: vertex ? [0, 0, 0] : [...(blend.flat as readonly number[])] } : null;
   const fromVertex = { value: vertex ? 1 : 0 };
   m.onBeforeCompile = (shader: ShaderSource) => {
@@ -107,6 +114,13 @@ export function groundProgram(m: GroundShaderMaterial, blend: GroundBlend | null
       shader.uniforms.ownFlatFromVertex = fromVertex;
       common += '\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;\nuniform float ownFlatFromVertex;';
       fragment = fragment.replace('#include <dithering_fragment>', `#include <dithering_fragment>\n${BLEND_GLSL}`);
+    }
+    if (mark) {
+      Object.assign(shader.uniforms, markingFadeUniforms(), { ownMarkTone: mark.tone, ownMarkStrength: mark.strength });
+      shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>${MARKING_FADE_VERTEX_PARS}`)
+        .replace('#include <project_vertex>', `#include <project_vertex>${MARKING_FADE_VERTEX}`);
+      common += MARKING_FADE_FRAGMENT_PARS;
+      fragment = fragment.replace('#include <color_fragment>', `#include <color_fragment>${MARKING_FADE_FRAGMENT}`);
     }
     shader.fragmentShader = fragment.replace('#include <common>', common)
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\n${CUT_GLSL}\n${FADE_GLSL}`);

@@ -24,6 +24,7 @@ import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
 import { mapLibreSky, SKY } from '../look/sunny.js';
 import { depthFadeFlag, depthFadeMultiples, depthFadeRange, installDepthFade } from '../look/depthFade.js';
+import { markingFadeFlag, markingFadeRange, markingFadeUniforms, type MarkingFadeUniforms } from '../look/markingFade.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
 import { worldCameraOf } from '../engine/worldCameraOf.js';
@@ -379,15 +380,25 @@ export class SharedFrame {
   }
 
   private fadeMultiples: [number, number] | null = null;
-  /** The last frame's eye-to-centre distance, metres, while the depth fade is on (diagnostics). */
+  /** `?markingFade=1` (look/markingFade.ts): the ground's marking-fade range, set per frame like the fog's. */
+  private readonly markingFade: MarkingFadeUniforms | null = markingFadeFlag() ? markingFadeUniforms() : null;
+  /** The last frame's eye-to-centre distance, metres, while the depth or marking fade is on (diagnostics). */
   fadeEyeToCentreM = 0;
   private rangeFog(fm: FrameMatrices, view: FrameView): void {
     const c = view.center(), m = mercatorOfLngLat(c.lng, c.lat);
     const d = Math.hypot(fm.eye[0] - m[0], fm.eye[1] - m[1], fm.eye[2] - m[2]) / fm.unitsPerMetre;
-    const r = depthFadeRange(d, this.fadeMultiples ??= depthFadeMultiples());
+    const multiples = this.fadeMultiples ??= depthFadeMultiples();
     this.fadeEyeToCentreM = d;
-    this.scene.fog.near = r.near;
-    this.scene.fog.far = r.far;
+    if (this.scene.fog) {
+      const r = depthFadeRange(d, multiples);
+      this.scene.fog.near = r.near;
+      this.scene.fog.far = r.far;
+    }
+    if (this.markingFade) {
+      const r = markingFadeRange(d, multiples);
+      this.markingFade.ownMarkFrom.value = r.from;
+      this.markingFade.ownMarkTo.value = r.to;
+    }
   }
 
   /** Register a participant. Returns an unregister function. */
@@ -630,7 +641,7 @@ export class SharedFrame {
     const phases = framePhases();
     if (phases && !this.shadowPhaseWrapped) this.wrapShadowPhase(renderer, phases);
     const view = this.frameView ?? this.readView();
-    if (this.scene.fog) this.rangeFog(fm, view);
+    if (this.scene.fog || this.markingFade) this.rangeFog(fm, view);
     const ctx: FrameContext = {
       pass, frame: fm, worldFromMercator: this.worldFromMercatorM, clipFromWorld: this.camera.projectionMatrix,
       zoom: view.zoom,
