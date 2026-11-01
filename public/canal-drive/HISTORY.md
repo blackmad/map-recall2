@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+**Binary road extract is Amsterdam's default; boot → submit owners named; phone own-ground store drops never-read inputs (2026-11-01, #130).**
+Road lane. `osm-loader.js` reads `roads-v2/streets-routing.bin.gz` for cities
+in `BINARY_ROAD_CITIES` (Amsterdam); `?roads=json` forces the JSON, the
+other cities read their JSON without a 404 first; any failure returns null
+and the JSON path runs. New gate: the published binary must match the shipped
+JSON (sha256 and decoded text); `test:canal-car` and `test:reachability` load
+the binary through `scripts/lib/routingFeatures.ts` (`ROADS=json` switches
+back): canal-car passes every named spot, reachability output byte-identical
+(Dam, Buikslotermeerplein, NDSM-werf, Oosterdokskade, Brug 228 in component
+0), canal-streets and city-startup pass. Warm fetchRoads: binary 63 ms vs
+JSON 205 on the default engine, 70 under own. What's New "Amsterdam's streets
+load three times faster". The `roadExtract` tests ran nowhere
+(`test:city-startup` passed the file to `check-road-setup-adapter`, which
+ignored it); they are in the node test list now (24/24). `street-follow-tap`
+fails on iphone 3/3 on main regardless of roads path: the seeded spawn is now
+on Amsteldijk on a straight path, so the spec's "waiting for a side" premise
+is stale (road lane fixes the premise). Boot → submit under own 0.84–1.03 s
+vs default 0.48–0.57: engine overview build 236 ms (part fixed:
+`lineGeometry` writes in place and `splitIntoTiles` scatters in one pass,
+byte-identical; engine boot 184 ms, median boot → submit 957 → 919 ms; the
+rest of the overview build off the boot path is L1's), three-buildings
+texture painting ≈ 117 ms, own-ground `makeMaterials` procedural noise ≈ 110
+ms, three.js shader programs ≈ 75 ms (materials); submit → racing under own
+1.36–1.56 s. Own-ground store on the phone: the main-thread store never
+builds a cell, so the OSM `areas` and the road cells' `kerbs`/`coverWays` it
+held were never read; a `prepareOnly` store option drops them (building on
+that store throws; prepare output unchanged over > 50k height samples plus
+decks, way decks and tunnel cuts): iPhone store 42.7 → 37.7 MB (reachable
+308.1 → 303.6), desktop 90.5 → 79.2 (436.1 → 424.9); what stays per cell is
+read by heights, way decks and tunnel cuts (relief 11.9 MB, OSM ways 5.7,
+road surfaces 6.2, cutWayCells 4.1). Shared frame on the iPhone: 94 MB, 48
+MB of it buffers (the 135 MB figure was desktop); scene CPU arrays facades
+27.6, landmarks 11.5, own-ground 2.9, players ≈ 1; the other ≈ 50 MB is
+three.js objects and materials.
+
 **Facade chunk tiles planned in the worker; signature-landmarks and building-tiles off the camera shim; the last 1× long frame named (2026-11-01, #129).**
 L1 hand-back (12). `cellTiles.ts` splits facade tiling into `planTiles` (the
 x/y partition and each tile's box, cut in the pool worker) and `finishTiles`

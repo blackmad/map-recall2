@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Amsterdam's streets load three times faster",
+      "text": "The Amsterdam street network now arrives as a compact binary file instead of a 14 MB JSON document: the same streets, decoded bit for bit (a test pins the published file to the shipped data), fetched and parsed in about 60 ms where it took 200. Routes, turn names and the reachability of every named spot are byte-identical. Other cities keep their JSON until their binaries are published.",
+      "where": [
+        4.8952,
+        52.3702
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Long routes no longer freeze as canals and bridges load",
       "text": "Preparing a new ground cell used to stall the ride for up to half a second on long routes while it tested every canal polygon and every street segment for openings under footbridges. Those tests now skip polygons and segments that cannot contain the point (same result, byte-identical across the city). On the seeded Anne Frank → Rijksmuseum ride the long tasks went from 10 to 0 and the longest frame from 600 to 68 ms; a city-wide preparation run fell from 25 to 6 s.",
       "where": [
