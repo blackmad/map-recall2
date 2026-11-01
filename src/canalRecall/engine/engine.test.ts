@@ -360,3 +360,26 @@ test('CameraMap.jumpTo: a sub-millimetre creep is not a move, real motion and ac
   cm.jumpTo({ ...at, bearing: -179.9999995 });
   assert.equal(repaints, r1, 'the wrap at ±180 compares as one angle');
 });
+
+test('sightlineBlocker through the resident grid finds the blocker the linear walk finds (#129)', async () => {
+  const { sightlineBlocker } = await import('./cameraClearance');
+  let seed = 11;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const list: any[] = [];
+  // 5,000 overlapping houses of 4-40 m around the Dam, some straddling the 0.002-degree grid lines.
+  for (let i = 0; i < 5000; i++) {
+    const w = 4.88 + rnd() * 0.03, s = 52.365 + rnd() * 0.02, dx = (4 + rnd() * 36) / 68000, dy = (4 + rnd() * 36) / 111320;
+    list.push({ properties: { id: `h${i}`, height: 3 + rnd() * 25 }, geometry: { type: 'Polygon', coordinates: [[[w, s], [w + dx, s], [w + dx, s + dy], [w, s + dy], [w, s]]] } });
+  }
+  let blocked = 0;
+  for (let q = 0; q < 300; q++) {
+    const center: [number, number] = [4.88 + rnd() * 0.03, 52.365 + rnd() * 0.02];
+    const a = rnd() * Math.PI * 2, d = 20 + rnd() * 120;
+    const from: [number, number] = [center[0] + Math.cos(a) * d / 68000, center[1] + Math.sin(a) * d / 111320];
+    const alt = 5 + rnd() * 60;
+    const grid = sightlineBlocker(from, center, alt, list), linear = sightlineBlocker(from, center, alt, list, Infinity);
+    assert.equal(grid?.properties?.id ?? null, linear?.properties?.id ?? null, `query ${q}`);
+    if (linear) blocked++;
+  }
+  assert.ok(blocked > 30, `the queries exercise blocking (${blocked})`);
+});

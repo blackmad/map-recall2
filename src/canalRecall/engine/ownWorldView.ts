@@ -657,7 +657,8 @@ export class OwnWorldView {
     ferry.zoomScale = zoomScale;
     const lngLat = worldToLngLat(player.x, player.y, loader);
     const surface = this.riderSurface();
-    ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
+    // Only while drawn: the water test ran every frame of every ride for a hidden ferry (#129); `update` below shows it.
+    if (visible) ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
     ferry.update(lngLat, player.angle, visible);
   }
   setPlayerTransit(player: any, loader: LoaderFrame, visible: boolean, underground = false, zoomScale = 1): void {
@@ -858,10 +859,15 @@ export class OwnWorldView {
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
 }
 
+/** Found numbers, by name: they are `const` in constants.js, and the indirect eval compiled a script per call, several a frame (#129). */
+const GLOBAL_NUMS = new Map<string, number>();
 function globalNum(name: string, fallback: number): number {
+  const known = GLOBAL_NUMS.get(name);
+  if (known !== undefined) return known;
   try {
     // Top-level `const` in constants.js is a global lexical binding, not a window property.
     const v = (0, eval)(`typeof ${name} === 'number' ? ${name} : undefined`);
-    return typeof v === 'number' ? v : fallback;
+    if (typeof v === 'number') { GLOBAL_NUMS.set(name, v); return v; }
+    return fallback;
   } catch (_) { return fallback; }
 }

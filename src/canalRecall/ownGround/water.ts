@@ -23,16 +23,31 @@ export interface WaterGeometry {
 export function waterZAt(geos: readonly WaterGeometry[], x: number, y: number, fallback: number): number {
   for (const g of geos) {
     if (!g.levels) continue;
+    // Per polygon, cached: its box, then its y-banded edges (bandedInPolygon). The rider's boat and the ferry ask every
+    // frame, and the full ring walk over the resident water was 1.5 s of a 60 s ride at 4x (#129). Same answer.
+    const tests = polygonTests(g.polygons);
     for (let k = 0; k < g.polygons.length; k++) {
-      let inside = false;
-      for (const ring of g.polygons[k]) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const [xi, yi] = ring[i], [xj, yj] = ring[j];
-        if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
-      }
-      if (inside) return g.levels[k] ?? fallback;
+      const t = tests[k];
+      if (x < t.box[0] || x > t.box[2] || y < t.box[1] || y > t.box[3]) continue;
+      if ((t.inside ??= bandedInPolygon(g.polygons[k]))(x, y)) return g.levels[k] ?? fallback;
     }
   }
   return fallback;
+}
+
+type PolygonTest = { box: readonly [number, number, number, number]; inside?: (x: number, y: number) => boolean };
+const POLYGON_TESTS = new WeakMap<readonly (readonly (readonly Vec2[])[])[], PolygonTest[]>();
+function polygonTests(polygons: readonly (readonly (readonly Vec2[])[])[]): PolygonTest[] {
+  let tests = POLYGON_TESTS.get(polygons);
+  if (!tests) {
+    tests = polygons.map(p => {
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const ring of p) for (const [px, py] of ring) { if (px < x0) x0 = px; if (px > x1) x1 = px; if (py < y0) y0 = py; if (py > y1) y1 = py; }
+      return { box: [x0, y0, x1, y1] as const };
+    });
+    POLYGON_TESTS.set(polygons, tests);
+  }
+  return tests;
 }
 
 export interface WaterMask {
