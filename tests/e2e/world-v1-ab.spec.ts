@@ -266,7 +266,8 @@ for (const variant of VARIANTS) {
     test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(900_000);
     await serve(page);
-    await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
+    // AB_TREES3D=1 keeps the 3D trees (a tree A/B); by default they are off, as the world-cell comparison needs.
+    await page.addInitScript(([stable, trees]) => { if (!trees) (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, [process.env.AB_SORT !== 'three', process.env.AB_TREES3D === '1'] as const);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     // The landmark card's highlight (lit building, marker beam) follows the ride's timing, not the variant: a card shown
     // by capture time in one load and not the other moved 26 k px at the Westerkerk (#129, 2026-11-01). Once the route
