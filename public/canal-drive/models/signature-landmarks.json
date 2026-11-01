@@ -63550,6 +63550,524 @@
         "bytes": 86320,
         "triangles": 4325
       }
+    },
+    "de-burcht": {
+      "id": "de-burcht",
+      "name": "De Burcht (Burcht van Berlage)",
+      "modelUrl": "./models/de-burcht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170603",
+        "tower:NL.IMBAG.Pand.0363100012170603"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91086217,
+          52.3680999
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 32.5,
+        "widthMetres": 28.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012170603 footprint; one closed prism per 3DBAG LoD2.2 roof plane except the tower, which is authored (scripts/landmarks/de-burcht-footprints.json, de-burcht-prepare.ts), native east/south metres. Front, tower, parapet, stair and windows read from the Gemeente Amsterdam panorama b_20241210_1246_Track22_Sphere_00058 and the RCE photographs on Wikimedia Commons (scripts/landmarks/de-burcht-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.9,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "brick": "#b5806a",
+        "stone": "#d6cab0",
+        "concrete": "#b2af99",
+        "slate": "#6f6d5c",
+        "frame": "#a76d3d",
+        "copper": "#9b652f",
+        "ochre": "#e0b46c",
+        "red": "#b8553a",
+        "pink": "#a5604c",
+        "bronze": "#3a3631",
+        "greyBrick": "#8a8178",
+        "glass": "#5a6064",
+        "white": "#e8e6df",
+        "canopyGlass": "#9fb2b8"
+      },
+      "attribution": {
+        "title": "De Burcht, vakbondsgebouw van de ANDB (H.P. Berlage, 1899-1900)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Burcht_van_Berlage",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: tower, crenellated parapet, A N D B panels, entrance arch and stair, window groups from the Gemeente Amsterdam panoramas (CC BY 4.0) and RCE photographs on Wikimedia Commons (CC BY-SA 4.0), read for proportion only; massing is the 3DBAG LoD2.2 roof planes (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.91100572,
+              52.36818423
+            ],
+            [
+              4.91087205,
+              52.36823025
+            ],
+            [
+              4.91087077,
+              52.3682288
+            ],
+            [
+              4.91084196,
+              52.36819747
+            ],
+            [
+              4.91082754,
+              52.3681818
+            ],
+            [
+              4.91069679,
+              52.36803949
+            ],
+            [
+              4.91069795,
+              52.3680389
+            ],
+            [
+              4.9107089,
+              52.36803513
+            ],
+            [
+              4.91080259,
+              52.36800283
+            ],
+            [
+              4.91081242,
+              52.36799944
+            ],
+            [
+              4.91098778,
+              52.36793896
+            ],
+            [
+              4.91112062,
+              52.36808355
+            ],
+            [
+              4.91096306,
+              52.3681378
+            ],
+            [
+              4.91100572,
+              52.36818423
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.050040245056152,
+          -2.3841858265427618e-8,
+          -14.512999534606934
+        ],
+        "max": [
+          17.590625762939453,
+          26.850000381469727,
+          18.293048858642578
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.80604839324951,
+        "heightMetres": 26.850000405311583,
+        "depthMetres": 30.640666007995605,
+        "depthCoverage": 1.060230657716111
+      },
+      "triangles": 8268,
+      "bytes": 129960,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1768ecdf65823a24",
+        "buildVersion": 2,
+        "bytes": 53620,
+        "triangles": 1985
+      }
+    },
+    "eerste-openluchtschool": {
+      "id": "eerste-openluchtschool",
+      "name": "Eerste Openluchtschool voor het Gezonde Kind",
+      "modelUrl": "./models/eerste-openluchtschool.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012090993",
+        "NL.IMBAG.Pand.0363100012098627"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87442135,
+          52.34795184
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 64.5,
+        "widthMetres": 30
+      },
+      "surveyed": {
+        "anchor": [
+          4.87442135,
+          52.34795184
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012090993 (school) footprint; the gatehouse BAG 0363100012098627 shifted into the same frame (scripts/landmarks/eerste-openluchtschool-footprints.json, eerste-openluchtschool-prepare.ts), native east/south metres. Diamond plan from the 3DBAG LoD2.2 roof planes and the PDOK orthophoto; loggias, slab bands, window walls, stair hall and gate front read from the Rijksmonument 46504 register text, Commons photographs and the Gemeente Amsterdam panorama of the gate (scripts/landmarks/eerste-openluchtschool-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 18.1,
+      "bagYear": 1932,
+      "materialOverrides": {
+        "white": "#e6e4dc",
+        "glass": "#4d5f6a",
+        "blue": "#2e4a78",
+        "red": "#d65a2c",
+        "concrete": "#c9cdcc",
+        "slate": "#707270"
+      },
+      "attribution": {
+        "title": "Eerste Openluchtschool voor het Gezonde Kind (J. Duiker, 1929-30)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/46504",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: loggias, slab bands, window walls, stair hall, gymnasium and gatehouse front from the Rijksmonument 46504 register text (CC0), photographs on Wikimedia Commons (RCE CC BY-SA 4.0, Nationaal Archief public domain, Flickr no known restrictions, CC BY-SA 2.0) and the Gemeente Amsterdam panorama of the gate (CC BY 4.0), read for proportion only; plan from 3DBAG LoD2.2 (CC BY 4.0), BAG (CC0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.87447254,
+                52.34798061
+              ],
+              [
+                4.87445694,
+                52.34798909
+              ],
+              [
+                4.87447064,
+                52.34799847
+              ],
+              [
+                4.87448655,
+                52.34799018
+              ],
+              [
+                4.87449649,
+                52.34799698
+              ],
+              [
+                4.8744011,
+                52.34804886
+              ],
+              [
+                4.87434842,
+                52.34804707
+              ],
+              [
+                4.87427502,
+                52.34799736
+              ],
+              [
+                4.87429339,
+                52.34798678
+              ],
+              [
+                4.87421247,
+                52.34793135
+              ],
+              [
+                4.8743077,
+                52.34787869
+              ],
+              [
+                4.87439502,
+                52.34783183
+              ],
+              [
+                4.87447533,
+                52.34788737
+              ],
+              [
+                4.87457722,
+                52.34783125
+              ],
+              [
+                4.87465145,
+                52.34788179
+              ],
+              [
+                4.87447254,
+                52.34798061
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.87456986,
+                52.34760198
+              ],
+              [
+                4.87456837,
+                52.34760192
+              ],
+              [
+                4.87456888,
+                52.34759618
+              ],
+              [
+                4.8745673,
+                52.34759613
+              ],
+              [
+                4.87456742,
+                52.34759471
+              ],
+              [
+                4.87446901,
+                52.34759145
+              ],
+              [
+                4.87446603,
+                52.34762503
+              ],
+              [
+                4.87446588,
+                52.3476261
+              ],
+              [
+                4.87446556,
+                52.34762715
+              ],
+              [
+                4.87446509,
+                52.34762818
+              ],
+              [
+                4.87446447,
+                52.34762919
+              ],
+              [
+                4.87446373,
+                52.34763016
+              ],
+              [
+                4.87446284,
+                52.34763108
+              ],
+              [
+                4.87446182,
+                52.34763196
+              ],
+              [
+                4.87446068,
+                52.34763277
+              ],
+              [
+                4.87445943,
+                52.34763352
+              ],
+              [
+                4.87445809,
+                52.34763421
+              ],
+              [
+                4.87445665,
+                52.34763481
+              ],
+              [
+                4.87445511,
+                52.34763534
+              ],
+              [
+                4.87445352,
+                52.34763579
+              ],
+              [
+                4.87445188,
+                52.34763614
+              ],
+              [
+                4.87445018,
+                52.34763641
+              ],
+              [
+                4.87444845,
+                52.34763658
+              ],
+              [
+                4.8744467,
+                52.34763666
+              ],
+              [
+                4.87444496,
+                52.34763666
+              ],
+              [
+                4.8744432,
+                52.34763655
+              ],
+              [
+                4.87444145,
+                52.34763635
+              ],
+              [
+                4.87443974,
+                52.34763606
+              ],
+              [
+                4.87443809,
+                52.34763567
+              ],
+              [
+                4.87443649,
+                52.3476352
+              ],
+              [
+                4.87443497,
+                52.34763464
+              ],
+              [
+                4.87443354,
+                52.347634
+              ],
+              [
+                4.8744322,
+                52.34763329
+              ],
+              [
+                4.87443097,
+                52.3476325
+              ],
+              [
+                4.87442985,
+                52.34763166
+              ],
+              [
+                4.87442888,
+                52.34763075
+              ],
+              [
+                4.87442803,
+                52.3476298
+              ],
+              [
+                4.87442732,
+                52.34762881
+              ],
+              [
+                4.87442676,
+                52.34762777
+              ],
+              [
+                4.87442635,
+                52.34762672
+              ],
+              [
+                4.87442609,
+                52.34762564
+              ],
+              [
+                4.87442599,
+                52.34762456
+              ],
+              [
+                4.87442605,
+                52.34762347
+              ],
+              [
+                4.87443516,
+                52.34752945
+              ],
+              [
+                4.87447273,
+                52.34753082
+              ],
+              [
+                4.87447403,
+                52.34751726
+              ],
+              [
+                4.87447578,
+                52.34749914
+              ],
+              [
+                4.8745757,
+                52.3475028
+              ],
+              [
+                4.87458016,
+                52.34750297
+              ],
+              [
+                4.87456986,
+                52.34760198
+              ]
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.985078811645508,
+          0,
+          -10.800999641418457
+        ],
+        "max": [
+          15.694875717163086,
+          18.14900016784668,
+          51.511962890625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87442135,
+          52.34795184
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.31296253204346,
+        "heightMetres": 18.14900016784668,
+        "depthMetres": 29.679954528808594,
+        "depthCoverage": 0.9893318176269531
+      },
+      "triangles": 6328,
+      "bytes": 99220,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "8ae0d4a333f2b7e6",
+        "buildVersion": 2,
+        "bytes": 29304,
+        "triangles": 1221
+      }
     }
   }
 }

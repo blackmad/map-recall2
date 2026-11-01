@@ -1,5 +1,5 @@
 {
-  "toolchain": "5d50e7f7197335aef3cbe2561483b40550da983f8f7c28ca45dafd4ca7ae9827",
+  "toolchain": "4fb5150c5b8a7ccb28be2f9b92177498bb52a0c08a72d59a52079fc52940b29b",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -71,6 +71,7 @@
     "de-beurs-van-berlage": "ddd48ea7871004f5e919c7711754d59171355a32be3dec0c0f7782cee9663871",
     "de-bijenkorf": "f1d153954f09151d4504d346be1413b5a02ef638ae378c63ed46a7e69a01c522",
     "de-bloem": "02d944809c1749a6a4010ceee13538f26ce486c170ac04a4ebab655cc7eed36c",
+    "de-burcht": "7d8f8c87ce4da297351bad872c633beec13d4bf9f1f3c078637eea71f467de42",
     "de-dokwerker": "4326324b7940fc8a598b998035455abfaea2ea0af31eea5a284bc9e774502468",
     "de-dolphijn": "6b18095e907352a4130d6b01a8ac21334338bb6dfcdbbd5d86761b44c092cf96",
     "de-duif": "2ac67efe38813570815a242e23869b54b86e7b07fbbfa720da0a720fcd3dfa02",
@@ -90,6 +91,7 @@
     "dorus-theus-brug": "61a634bdadd26ac18f25813dc582e3baa04e221a71f00bbd4e087e7b20fe4fbb",
     "droogbak": "224e07c8e31c35d7e1f8900f7dac03103dd0d33f5afa6d10c9844c3189cf077e",
     "dutch-resistance-museum": "1020d48638d428186a382eaeae5ef319646dc286348ef2c0b45f4bc2799b1ff2",
+    "eerste-openluchtschool": "1e9cfcd3a700db8db0187a5afd5bc880bfa13f6d06d3d2cb23b3c59bcd64effd",
     "el-tawheed": "c5750d5d1d712cdb548f7bd1ab13c30bc2ec271f8af539d77a5e212ae2f6f603",
     "electric-ladyland": "00e798e2b651a89da8d33e5d5059b40cc9c641e745d8ba1718576f61d3cea1e1",
     "embassy-free-mind": "e20c93449265684654af1b4936a0a64800576f128f1c33a21839fd7fccd6906d",
