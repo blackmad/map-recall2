@@ -18,7 +18,7 @@ bicycle", released CC0 via MorfVision / BlenderKit; it keeps that licence.
 
 ## What the models are built from
 
-The geometry is original: modelled by hand or generated from recipes, with
+The geometry is original: modelled individually or generated from recipes, with
 flat materials and no imported meshes or photo textures. It uses open data,
 which carries its own terms:
 

@@ -440,7 +440,7 @@ function render(p: Props, items: ContentItems): HTMLElement[] {
   if (c.kits.length) out.push(section('kits', 'Landmark kits', c.kits.length,
     h('ul', { class: 'plain' }, ...c.kits.map(([name, n]) => {
       const k = items.kits[name];
-      return h('li', {}, h('b', {}, name), h('span', { class: 'mut small' }, ` · ${plural(n, 'pand')} · ${k?.hand ? 'hand-modelled kit' : 'generic kit (no gallery page)'}`), ' ', ...(k?.links ?? []).map(l => h('a', { href: l.href }, l.label)));
+      return h('li', {}, h('b', {}, name), h('span', { class: 'mut small' }, ` · ${plural(n, 'pand')} · ${k?.hand ? 'individually modelled kit' : 'generic kit (no gallery page)'}`), ' ', ...(k?.links ?? []).map(l => h('a', { href: l.href }, l.label)));
     }))));
 
   if (p.survey.streets.length) out.push(section('surveys', 'Street surveys', p.survey.streets.length,
