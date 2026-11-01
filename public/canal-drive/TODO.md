@@ -254,7 +254,12 @@ specs under own, the rest on iphone and the four perf scripts for real.
 Materials hand-back merged 2026-11-01 (HISTORY "World-v1 is pixel-identical"):
 0 px at the five A/B spots on the published cells; **`?world=v1` is the
 default since 2026-11-01** (HISTORY "The compiled city cells are the default
-world"; `?world=live` is the tile path). P5 follow-ups: delete
+world"; `?world=live` is the tile path). P4 counters gate (budgets `p4Counters`, measured 2026-11-01): red on uploads
+≥ 1 MiB after warm-up (49 desktop / 32 iPad: facade chunk geometry, own-ground
+cell layers, one landmark), draws at 60° p95 399 / 589 vs ≤ 400 (roof caps ~25
+and bike parts ~35 are the cheap merges, legacy bundles), iPad triangles p50
+1.65 M vs ≤ 700 k (facades 666 k alone: materials lane is building a facade LOD
+at 150/400 m). In-frame shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
 default; measure `worldRideDownloadMB` (#130 part 2, gate 2 MB, still
 pending). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
