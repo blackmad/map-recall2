@@ -648,13 +648,20 @@ export class ThreeBuildings {
     if (!this.THREE) { this.look = look; return; } // onAdd picks up the latest request
     const set = await this.texturesFor(cellSetOf(look));
     if (token !== this.lookToken) return;
-    // Tile arrivals during texture loading may have queued jobs for the former look.
-    this.invalidateBuilds();
+    // Tile arrivals during texture loading may have queued jobs for the former look. Jobs for this look (the first
+    // load: the workers build the spawn's chunks while the atlas paints, #129 settle hold) are kept and install now.
+    const same = this.look === look;
+    if (!same) this.invalidateBuilds();
     this.look = look;
     this.bindLookMaterial(look, set);
     this.ready = true;
-    for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
+    const staged = new Set(this.staged.map(s => s.key));
+    for (const [key, source] of this.sourceGroups) {
+      if (same && (this.inflight.has(key) || staged.has(key) || this.pending.has(key))) continue;
+      this.pending.push(key, () => this.rebuild(key, source));
+    }
     this.pump();
+    this.scheduleStage();
     this.map.triggerRepaint();
   }
 
@@ -936,8 +943,11 @@ export class ThreeBuildings {
   private ready = false;
 
   private pump(): void {
-    if (this.pumping || !this.pending.length || !this.THREE || !this.ready) return;
+    // Before the atlas is ready the chunks of the current look still build (geometry needs no texture); they wait in
+    // `staged` and install once it is (drainStaged).
+    if (this.pumping || !this.pending.length || !this.THREE || !(this.ready || this.look === this.requestedLook)) return;
     const pool = this.chunkPool();
+    if (!this.ready && !pool) return; // an inline build installs at once: it waits for the atlas
     if (pool && this.idleWorker(pool) < 0) return;
     this.pumping = true;
     // One chunk per task: a z14 tile is ~10-30 ms of layout and fill, so
@@ -1139,6 +1149,7 @@ export class ThreeBuildings {
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     const pool = this.chunkPool(), w = pool ? this.idleWorker(pool) : -1;
+    if (!this.ready && !(pool && w >= 0)) { this.pending.push(key, () => this.rebuild(key, source)); return; } // inline only once the atlas is bound
     const gen = (this.gens.get(key) ?? 0) + 1;
     this.gens.set(key, gen);
     if (pool && w >= 0) {
@@ -1296,6 +1307,7 @@ export class ThreeBuildings {
 
   private readonly uploadBudget = new FrameBudget(INSTALL_BUDGET_MS, installBudgetBytes());
   private drainStaged(): void {
+    if (!this.ready) return; // setLook schedules the drain when the atlas is bound
     const deadline = performance.now() + INSTALL_BUDGET_MS;
     this.uploadBudget.begin();
     while (this.staged.length) {
@@ -1529,12 +1541,20 @@ export class ThreeBuildings {
     void this.texturesFor(cellSetOf(initialLook)).then(set => {
       // A newer mode can finish before the initial atlas. Never overwrite it.
       if (token !== this.lookToken) return;
+      // The chunks of this look the workers built while the atlas painted (pump) are kept and install now (#129: the
+      // facades were the settle hold's last check, and nothing built until the atlas was ready).
+      const same = this.look === initialLook;
       this.look = initialLook;
       this.bindLookMaterial(initialLook, set);
       this.ready = true;
-      this.invalidateBuilds();
-      for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
+      if (!same) this.invalidateBuilds();
+      const staged = new Set(this.staged.map(s => s.key));
+      for (const [key, source] of this.sourceGroups) {
+        if (same && (this.inflight.has(key) || staged.has(key) || this.pending.has(key))) continue;
+        this.pending.push(key, () => this.rebuild(key, source));
+      }
       this.pump();
+      this.scheduleStage();
       this.map.triggerRepaint();
     });
     const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
