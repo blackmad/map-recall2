@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**World cell format v5 published, lossless: 9.13 → 8.92 MB; decimetre heights built and held (2026-11-01, #130).**
+v5 (road lane) stores `roofFurniture` as a typed integer-list column and adds
+a run symbol to the FOOT shared-vertex back-references; the decoder reads
+v2–v5. Published from a full compile (format 5, `policyOptions
+{collinear:false, heightStepM:0.01, eavesStepM:0.01}`, `world:verify` fresh
+with 0 differing tiles, `check:covers` ok): 8,912,122 B of cells + 5,491 B
+`strings.bin`. Decimetre heights and eaves are built behind
+`--height-step=0.1` / `--eaves-step=0.1` and HELD: the fixed-camera A/B at
+three spots shows 7–9 K px over 30 for heights at 1 dm, 13–22 K for eaves,
+18–29 K for both, against a 0.1–1.3 K noise floor and 1.5–4 K for the cm
+world, because the runtime derives storeys, window rows and the facade kit
+from the fine values (a Westerkerk brick gable turned grey, a white front
+changed its windows); the integrator's "the pre-v3 format stored 0.25 m"
+argument did not hold once those decisions read the finer value. A safe
+variant would round only where the derived storey/kit decision is unchanged;
+parked. The city gate ≤ 8 MB therefore stays red, lossless, with the gap
+explained. `test:world-format`'s `published()` fixture now loads the
+published `strings.bin` whenever the index says format ≥ 4 (it had decoded
+published cells bare, so it only passed while they were v3) and
+`WORLD_CELLS_DIR=<dir>` points the suite elsewhere; 32/32 against the
+published v5 directory. The deploy of 6e74a57d4 failed at the Sentry
+source-map upload because the new `maplibre-loader` bundle was built without
+a source map; `build-canal-engine.mjs` now builds it with `sourcemap:
+'external'` (every bundle index.html loads needs one, maps are gitignored and
+built on CI).
+
 **Label occlusion round 2 under `?engine=own`: labels through buildings 16 → 1 at the user's pose; street and water names occluded too (2026-11-01, #129).**
 The materials lane extended L1's `engine/labelOcclusion.ts`: the sightline
 starts where the label is drawn (1.5 m above the street, not half way up the

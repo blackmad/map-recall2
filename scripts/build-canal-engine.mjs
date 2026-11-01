@@ -25,6 +25,7 @@ await build({
   bundle: true,
   format: 'iife',
   outfile: `${outdir}/maplibre-loader.bundle.js`,
+  sourcemap: 'external', // the deploy uploads a source map for every bundle the ride loads
   minify: true,
 });
 console.log(`built ${outdir}/maplibre-loader.bundle.js`);

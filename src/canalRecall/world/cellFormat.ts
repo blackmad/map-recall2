@@ -44,14 +44,16 @@
  * indices, tags and leftover bytes all throw.
  */
 
-export const WORLD_FORMAT_VERSION = 4;
+export const WORLD_FORMAT_VERSION = 5;
+// v5 (2026-10-31, #130 census): v4 plus an integer-list bag column (C_INTS: roofFurniture, 363 KB of near-unique
+// strings in STRS) and a run symbol in FOOT refs (a party wall shares vertex runs: continue the last reference).
 // v4 (2026-10-31): v3 plus an optional shared string table (FLAG_GLOBAL, strings.bin), fetched once per page.
 // v3 (P2 bytes gate, 2026-10-31): the same decoded cell as v2, laid out for gzip: FOOT in columns with
 // per-building 1e-6 units, vertex back-references and per-tile ordinal deltas; typed bag columns (no
 // per-value tag, column dictionaries, numeric deltas, packed colours and booleans); GRP with symmetric
 // party walls written once. City total 13.46 MB -> 10.37 MB gzip; see the "v3 streams" section.
 /** Versions `decodeCell` reads: v2 cells (published before the v3 bytes gate) stay readable until world-v1 is recompiled. */
-export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3, 4];
+export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3, 4, 5];
 /** Flag bit: the cell carries ATTR (a `--debug` compile). */
 export const FLAG_DEBUG = 1;
 /** Flag bit (v4): the cell's string indices start with the shared table (strings.bin). */
@@ -286,10 +288,10 @@ function writeBags(w: Writer, s: StringTable, bags: readonly Props[], ids: reado
       const refName = s.at(ref), name = s.at(k), flags: boolean[] = [], rest: unknown[] = [];
       for (const bag of bags) if (Object.prototype.hasOwnProperty.call(bag, name)) { const eq = isPrimitive(bag[name]) && Object.prototype.hasOwnProperty.call(bag, refName) && Object.is(bag[name], bag[refName]); flags.push(eq); if (!eq) rest.push(bag[name]); }
       w.byte(C_SAME); w.uvar(ref); writeBits(w, flags);
-      if (rest.length) writeColumn(w, s, rest);
+      if (rest.length) writeColumn(w, s, rest, ver);
       continue;
     }
-    if (v3) writeColumn(w, s, col); else for (const v of col) writeValue(w, s, v, 1);
+    if (v3) writeColumn(w, s, col, ver); else for (const v of col) writeValue(w, s, v, 1);
   }
 }
 
@@ -339,10 +341,10 @@ function readBags(r: Reader, strings: readonly string[], expected: number, ids: 
       r.byte(); const ref = r.uvar();
       if (ref >= strings.length || ref === k || ref === selfKey) r.fail(`same-as key ${ref}`);
       const flags = readBits(r, c), m = flags.reduce((x, f) => x + (f ? 0 : 1), 0);
-      same.set(k, { ref, flags, rest: m ? readColumn(r, strings, m) : [] });
+      same.set(k, { ref, flags, rest: m ? readColumn(r, strings, m, ver) : [] });
       continue;
     }
-    if (v3) { columns[k] = readColumn(r, strings, c); continue; }
+    if (v3) { columns[k] = readColumn(r, strings, c, ver); continue; }
     const col = new Array(c); for (let i = 0; i < c; i++) col[i] = readValue(r, strings, 1); columns[k] = col;
   }
   for (const { ref } of same.values()) if (same.has(ref) || !counts[ref] && ref !== selfKey) r.fail(`same-as key ${ref} is not a plain column`);
@@ -524,7 +526,16 @@ function readFoot(r: Reader, strings: readonly string[], tiles: readonly string[
 //   C_BOOL all booleans: bits, least significant first, zero padding
 //   C_HEX  all "#rrggbb" (lowercase) with many distinct values (> 1 in 8 rows): three bytes each instead of
 //          a dictionary (measured roof colours); C_STR wins for the palette colours, which repeat
-const C_GEN = 0, C_STR = 1, C_NUM = 2, C_BOOL = 3, C_HEX = 4, C_NUM_DELTA = 5, C_SAME = 6;
+const C_GEN = 0, C_STR = 1, C_NUM = 2, C_BOOL = 3, C_HEX = 4, C_NUM_DELTA = 5, C_SAME = 6, C_INTS = 7;
+// C_INTS (v5): strings that are comma-joined integer lists ("2,41,7,5,9,34": roofFurniture), mostly distinct, as
+// per row uvar(count) then zigzag integers. Only for lists that print back exactly (no "-0", "+1", "01" or spaces).
+const INT_ITEM = /^-?(0|[1-9][0-9]{0,14})$/;
+function intList(v: string): number[] | null {
+  if (!v) return null;
+  const parts = v.split(','), out: number[] = [];
+  for (const p of parts) { if (!INT_ITEM.test(p) || p === '-0') return null; const n = Number(p); if (!Number.isSafeInteger(n) || Math.abs(n) >= 2 ** 52) return null; out.push(n); }
+  return out;
+}
 const varintBytes = (xs: readonly number[]): number => { let n = 0; for (const x of xs) { let u = x >= 0 ? x * 2 : -x * 2 - 1; n++; while (u >= 128) { n++; u = Math.floor(u / 128); } } return n; };
 const HEX = /^#[0-9a-f]{6}$/;
 const HEX_DISTINCT = 8;
@@ -535,10 +546,15 @@ function placesOf(v: number): number {
   for (let k = 1; k < POW10.length; k++) { const m = Math.round(v * POW10[k]); if (Math.abs(m) < 2 ** 52 && m / POW10[k] === v) return k; }
   return -1;
 }
-function writeColumn(w: Writer, s: StringTable, col: readonly unknown[]): void {
+function writeColumn(w: Writer, s: StringTable, col: readonly unknown[], ver: number): void {
   if (col.every(v => typeof v === 'string')) {
     const dict = new Map<string, number>();
     for (const v of col as string[]) if (!dict.has(v)) dict.set(v, dict.size);
+    // Mostly distinct integer lists: the dictionary would put each one in STRS.
+    if (ver >= 5 && dict.size * 4 > col.length) {
+      const lists = (col as string[]).map(intList);
+      if (lists.every(l => l !== null)) { w.byte(C_INTS); for (const l of lists as number[][]) { w.uvar(l.length); for (const x of l) w.zvar(x); } return; }
+    }
     if (dict.size * HEX_DISTINCT > col.length && (col as string[]).every(v => HEX.test(v))) {
       w.byte(C_HEX); for (const v of col as string[]) { const x = parseInt(v.slice(1), 16); w.byte(x >> 16); w.byte(x >> 8); w.byte(x); }
       return;
@@ -568,9 +584,14 @@ function writeColumn(w: Writer, s: StringTable, col: readonly unknown[]): void {
   }
   w.byte(C_GEN); for (const v of col) writeValue(w, s, v, 1);
 }
-function readColumn(r: Reader, strings: readonly string[], n: number): unknown[] {
+function readColumn(r: Reader, strings: readonly string[], n: number, ver: number): unknown[] {
   const kind = r.byte(), col = new Array<unknown>(n);
   switch (kind) {
+    case C_INTS: {
+      if (ver < 5) r.fail(`bad column kind ${kind}`);
+      for (let i = 0; i < n; i++) { const m = r.count(1_000_000, 'integer list'); if (m < 1) r.fail('empty integer list'); const xs = new Array<number>(m); for (let k = 0; k < m; k++) xs[k] = r.zvar(); col[i] = xs.join(','); }
+      return col;
+    }
     case C_STR: {
       const size = r.count(n, 'column dictionary'); if (size < 1) r.fail('empty column dictionary');
       const dict: string[] = [], seen = new Set<number>();
@@ -607,7 +628,13 @@ function readColumn(r: Reader, strings: readonly string[], n: number): unknown[]
 // city's coordinates sit on the 1e-6 grid), else 1e-7 (geometry kind bit FOOT_FINE). Exact either way.
 // Ordinals are a delta from the previous building of the same tile (+1 is the common step).
 const FOOT_FINE = 2;
-function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding[], tiles: StringTable, interleave: boolean): void {
+// FOOT v5 refs: 0 = a new vertex; 1 / 2 = the reference continues the previous vertex's reference one vertex
+// back / forward in the earlier ring (a shared wall run, traversed against / with it); else distance back + 2.
+// The run symbols are canonical: a distance that a run symbol could say is rejected.
+const REF_NEW = 0, REF_RUN_BACK = 1, REF_RUN_FORWARD = 2, REF_DISTANCE = 2;
+function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding[], tiles: StringTable, ver: number): void {
+  const interleave = ver >= 4, runs = ver >= 5;
+  let runAt = -2, runVertex = -2;
   w.uvar(buildings.length);
   // v4 interleaves X and Y (one first-vertex block, one delta block): -80 KB gzip city-wide.
   const idw = new Writer(), src = new Writer(), shape = new Writer(), refs = new Writer(), x0 = new Writer(), y0 = interleave ? x0 : new Writer(), xd = new Writer(), yd = interleave ? xd : new Writer();
@@ -644,15 +671,25 @@ function writeFootV3(w: Writer, s: StringTable, buildings: readonly CellBuilding
     const unit = fine ? 1 : 10;
     for (let k = 0; k < units.length; k += 2, vertex++) {
       const key = `${units[k]},${units[k + 1]}`, at = seen.get(key); seen.set(key, vertex);
-      if (at !== undefined) { refs.uvar(vertex - at); if (k === 0) { fx = units[0]; fy = units[1]; } continue; }
-      refs.uvar(0);
+      if (at !== undefined) {
+        if (!runs) refs.uvar(vertex - at);
+        else if (runVertex === vertex - 1 && at === runAt - 1) refs.uvar(REF_RUN_BACK);
+        else if (runVertex === vertex - 1 && at === runAt + 1) refs.uvar(REF_RUN_FORWARD);
+        else refs.uvar(vertex - at + REF_DISTANCE);
+        runAt = at; runVertex = vertex;
+        if (k === 0) { fx = units[0]; fy = units[1]; }
+        continue;
+      }
+      refs.uvar(REF_NEW);
       if (k === 0) { x0.zvar(units[0] - fx); y0.zvar(units[1] - fy); fx = units[0]; fy = units[1]; }
       else { xd.zvar((units[k] - units[k - 2]) / unit); yd.zvar((units[k + 1] - units[k - 1]) / unit); }
     }
   }
   for (const block of interleave ? [idw, src, shape, refs, x0, xd] : [idw, src, shape, refs, x0, y0, xd, yd]) { const b = block.done(); w.uvar(b.length); w.bytes(b); }
 }
-function readFootV3(r: Reader, strings: readonly string[], tiles: readonly string[], interleave: boolean): FootRow[] {
+function readFootV3(r: Reader, strings: readonly string[], tiles: readonly string[], ver: number): FootRow[] {
+  const interleave = ver >= 4, runs = ver >= 5;
+  let runAt = -2, runVertex = -2;
   const n = r.count(MAX_BUILDINGS, 'buildings');
   const block = (name: string) => new Reader(r.take(r.count(r.buf.length, `${name} block`)), `${r.what} FOOT ${name}`);
   const idr = block('ids'), src = block('source'), shr = block('shape'), refs = block('refs');
@@ -675,8 +712,21 @@ function readFootV3(r: Reader, strings: readonly string[], tiles: readonly strin
         vertices += count; if (vertices > MAX_COUNT) shr.fail('too many vertices');
         const ring: number[][] = new Array(count + (closed ? 1 : 0));
         for (let q = 0; q < count; q++) {
-          const back = refs.uvar();
-          if (back) { if (back > hx.length) refs.fail(`vertex reference ${back}`); px = hx[hx.length - back]; py = hy[hy.length - back]; if (first) { fx = px; fy = py; } }
+          const symbol = refs.uvar(), vertex = hx.length;
+          let at = -1;
+          if (symbol !== REF_NEW) {
+            if (!runs) at = vertex - symbol;
+            else if (symbol === REF_RUN_BACK || symbol === REF_RUN_FORWARD) {
+              if (runVertex !== vertex - 1) refs.fail('vertex run without a reference before it');
+              at = symbol === REF_RUN_BACK ? runAt - 1 : runAt + 1;
+            } else {
+              at = vertex - (symbol - REF_DISTANCE);
+              if (runVertex === vertex - 1 && (at === runAt - 1 || at === runAt + 1)) refs.fail('vertex reference that a run symbol says');
+            }
+            if (at < 0 || at >= vertex) refs.fail(`vertex reference ${symbol}`);
+            runAt = at; runVertex = vertex;
+          }
+          if (at >= 0) { px = hx[at]; py = hy[at]; if (first) { fx = px; fy = py; } }
           else if (first) { fx += x0.zvar(); fy += y0.zvar(); px = fx; py = fy; } else { px += xd.zvar() * unit; py += yd.zvar() * unit; }
           first = false; hx.push(px); hy.push(py);
           ring[q] = [px / COORD_SCALE, py / COORD_SCALE];
@@ -769,7 +819,7 @@ export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION, g
   for (const b of cell.buildings) if (b.group !== undefined) tiles.ref(b.group);
   const foot = new Writer();
   foot.uvar(tiles.list.length); for (const t of tiles.list) { const [x, y] = t.split('/').map(Number); if (!Number.isSafeInteger(x) || !Number.isSafeInteger(y) || x < 0 || y < 0 || `${x}/${y}` !== t) throw Error(`bad tile ${t}`); foot.uvar(x); foot.uvar(y); }
-  if (v3) writeFootV3(foot, s, cell.buildings, tiles, version >= 4); else writeFoot(foot, s, cell.buildings, tiles);
+  if (v3) writeFootV3(foot, s, cell.buildings, tiles, version); else writeFoot(foot, s, cell.buildings, tiles);
   const attr = new Writer(), styl = new Writer(), roof = new Writer(), grp = new Writer(), hide = new Writer();
   if (debug) {
     writeBags(attr, s, cell.buildings.map(b => b.attr), cell.buildings.map(b => b.id), version);
@@ -833,7 +883,7 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell', globals?: Glo
   const fr = sub.get('FOOT')!;
   const tileCount = fr.count(10_000, 'tiles'), tiles: string[] = [];
   for (let k = 0; k < tileCount; k++) tiles.push(`${fr.uvar()}/${fr.uvar()}`);
-  const rows = v3 ? readFootV3(fr, strings, tiles, version >= 4) : readFoot(fr, strings, tiles); fr.end();
+  const rows = v3 ? readFootV3(fr, strings, tiles, version) : readFoot(fr, strings, tiles); fr.end();
   const ar = sub.get('ATTR'), sr = sub.get('STYL')!, rr = sub.get('ROOF')!, gr = sub.get('GRP ')!, hr = sub.get('HIDE')!;
   const ids = rows.map(row => row.id);
   const attrs = readBags(ar ?? sr, strings, rows.length, ids, version);
