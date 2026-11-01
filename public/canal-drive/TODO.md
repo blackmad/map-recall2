@@ -1374,6 +1374,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Both engines also render every idle frame (fan): render-on-change WIP on
   L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
   frames; spec not green yet, stays out of main until it is).
+- **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
+  "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
+  single layer removal gets under 195 ms. Gate stays red as written; deciding
+  what the low tier may drop (trees, landmarks, overview beyond the ground)
+  needs a real weak device and the user's pixel budget, not a proxy. Related
+  P4 numbers: own ground at the Dam 1.78 M triangles on low / 2.21 M on high
+  against the 700k iPad budget (materials lane, 2026-11-01).
 - **POI/business labels through buildings under `?engine=own`** (user
   screenshot, Eerste Constantijn Huygensstraat; "we still need more
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
