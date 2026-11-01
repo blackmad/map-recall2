@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**World-v1 cells recompiled (--no-policy) after the fetch ring and the Transvaalbuurt round 5 covers (2026-11-01).**
+Integrator. `buildingTilesBrowser.ts` is in the compiler's hashed code list,
+so the fetch ring (b74955c7c) made the published index stale
+(`globalFresh: false`); the recompile also found `coversMatch: false`, the
+round 5 covers had not been recompiled into the HIDE stream. All 604 cells
+rewritten (the shared string table changed, so every cell differs
+byte-wise), city total 9.70 MB gzip (gate 10), `world:verify` green
+(global fresh, 0 stale, 0 differing tiles against the default path),
+`test:world-format` 36/36. The browser five-spot A/B (`world-v1-ab`, fixed
+camera, default engine) was started twice and could not finish under the
+day's lock contention (the second run waited 27 min for a slot and then
+hit the 15 min test timeout inside `page.evaluate`); the push rests on the
+verifier's semantic equality and the road lane's own-engine pins, and the
+A/B is owed on the next quiet slot.
+
 **The world streamer fetches the cells under the ride view, not whole z14 tiles: free-ride cells halved, iPhone start heap −26 MB (2026-11-01, P3/#130).**
 Road lane (b74955c7c). `world/worldRing.ts`: the ring is the cells under
 the ride-zoom view box grown by 300 m plus the look-ahead boxes (a 530 m
