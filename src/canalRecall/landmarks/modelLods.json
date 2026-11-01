@@ -1882,5 +1882,17 @@
   "buildVersion": 2,
   "bytes": 15204,
   "triangles": 508
+ },
+ "olympisch-stadion": {
+  "sourceHash": "234c41654ea98cca",
+  "buildVersion": 2,
+  "bytes": 100184,
+  "triangles": 5407
+ },
+ "het-nieuwe-huis": {
+  "sourceHash": "1dabed264c783f80",
+  "buildVersion": 2,
+  "bytes": 57852,
+  "triangles": 4041
  }
 }
