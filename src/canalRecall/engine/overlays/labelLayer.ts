@@ -102,11 +102,27 @@ export class LabelLayer {
   /** Game point labels by group (answered street name, ferry landings). */
   setPoints(group: string, points: PointLabel[]): void { this.extra.set(group, points); this.rev++; }
 
+  // Geometry-only work per path, kept across rebuilds (a policy change re-ran it for every labelled street:
+  // 115-150 ms frames at 4x, #129 hand-back 16): the bucket keys in first-seen order and the line length.
+  private readonly pathKeys = new WeakMap<readonly Vec2[], string[]>();
+  private readonly pathLength = new WeakMap<readonly Vec2[], number>();
+  private lengthOf(points: readonly Vec2[]): number {
+    let l = this.pathLength.get(points);
+    if (l === undefined) { l = lineLength(points as Vec2[]); this.pathLength.set(points, l); }
+    return l;
+  }
+
   private rebuild(ctx: LabelContext): void {
     this.buckets.clear();
+    const keysOf = (c: LabelCandidate): Iterable<string> => {
+      const key = ([x, y]: readonly number[]) => `${Math.floor(x / BUCKET)},${Math.floor(y / BUCKET)}`;
+      if (!c.path) return [key(c.at!)];
+      let keys = this.pathKeys.get(c.path);
+      if (!keys) { keys = [...new Set(c.path.map(key))]; this.pathKeys.set(c.path, keys); }
+      return keys;
+    };
     const add = (c: LabelCandidate) => {
-      const keys = new Set((c.path ?? [c.at!]).map(([x, y]) => `${Math.floor(x / BUCKET)},${Math.floor(y / BUCKET)}`));
-      for (const k of keys) { const l = this.buckets.get(k); if (l) l.push(c); else this.buckets.set(k, [c]); }
+      for (const k of keysOf(c)) { const l = this.buckets.get(k); if (l) l.push(c); else this.buckets.set(k, [c]); }
     };
     const d = this.data;
     if (d) {
@@ -114,12 +130,12 @@ export class LabelLayer {
         if (!s.name) return;
         const mid = s.points[s.points.length >> 1];
         if (!streetLabelVisible(ctx, s.name, mid[0], mid[1])) return;
-        add({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, lineLength(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] });
+        add({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, this.lengthOf(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] });
       });
       d.waterLines.forEach((w, i) => {
         const mid = w.points[w.points.length >> 1];
         if (!streetLabelVisible(ctx, w.name, mid[0], mid[1])) return;
-        add({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, lineLength(w.points) / 10), path: w.points, minZoom: lineLength(w.points) > 1500 ? 12.5 : 14.5 });
+        add({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, this.lengthOf(w.points) / 10), path: w.points, minZoom: this.lengthOf(w.points) > 1500 ? 12.5 : 14.5 });
       });
       if (neighbourhoodLabelVisible(ctx)) d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }));
     }
@@ -148,11 +164,12 @@ export class LabelLayer {
     let pt = phases ? performance.now() : 0;
     const lap = (name: string) => { if (!phases) return; const t = performance.now(); phases.add(`labels: ${name}`, t - pt); pt = t; };
     const policy = this.visible ? this.policy() : null;
+    lap('policy');
     if (policy) {
       const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
       if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); this.rev++; }
     }
-    lap('policy and rebuild');
+    lap('rebuild');
     const rev = this.visible ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
     if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }

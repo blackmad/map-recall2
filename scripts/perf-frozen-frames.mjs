@@ -95,8 +95,10 @@ for (const spot of SPOTS.filter(s => !only.length || only.includes(s.name))) {
     const vm = canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || ((!l._pending || !l._pending.size) && !(l._lodLoads > 0));
-    const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${vm.map.areTilesLoaded()}`;
-    window.__frozenIdle = idle && landmarksIdle && vm.map.areTilesLoaded() && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
+    // ?engine=own: the camera shim has no tile pyramid; the own ground's readiness stands in for areTilesLoaded.
+    const tiles = typeof vm.map.areTilesLoaded === 'function' ? vm.map.areTilesLoaded() : !!(vm._ownGround?.ready ?? true);
+    const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${tiles}`;
+    window.__frozenIdle = idle && landmarksIdle && tiles && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
     window.__frozenKey = key;
     return window.__frozenIdle >= 5;
   }, null, { timeout: 180000, polling: 1000 });
