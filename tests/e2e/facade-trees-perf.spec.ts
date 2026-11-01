@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Frame-cost A/B for the generic facades and stylised 3D trees (2026-10-01).
 // Opt-in (it is a measurement, not a regression gate):
@@ -25,6 +26,7 @@ const results: Sample[] = [];
 
 for (const variant of variants) {
   test(`frame cost: ${variant.label}`, async ({ page }) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(240_000);
     await page.addInitScript(([facades, trees]) => {
       (window as any).__canalRecallFacades = facades;
