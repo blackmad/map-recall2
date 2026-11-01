@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+**Ground planning paced on the page under `?engine=own`; three-buildings zoom and vehicle container off the camera shim (2026-11-01, #129).**
+L1 hand-back (13). The `prepareCell` continuation that owned the one 1× frame
+over 50 ms (the cell entering the ring: way-deck grouping, road-edge search,
+tunnel plan) stays on the main thread (the decks and cuts are the page's own
+surface; shipping them from the worker would make a second source of truth)
+but ends its task every ~6 ms (`pacer`; a no-op in the worker and in node):
+a step per way profile, per road-edge profile, per opened profile, per way
+scanned by `tunnels.ts planCutsSteps` (a generator `planCuts` drains
+unchanged, so the worker's plan is the same); plans share state so they run
+one at a time. `SurfaceIndex` skips polygons outside the search box before
+decoding and runs earcut on first use. Exactness pin: ownGround.test 'paced
+planning' (a task after every step places the same decks and cuts at four
+places, value for value). Jordaan, own: 1× longest frame 50.4 → 42.7 ms,
+frames over 50 ms 1 → 0; 4× largest ground continuation 115–171 → 19–22 ms,
+longest frame 199 → 151–160 ms, frames over 100 ms 13 → 7–10 (the rest is the
+engine render callback and cell-decode continuations; next split is
+`withOpenings` → `groundCrossing`, ~11 ms, in the water cell decode). The 1×
+target (no continuation over 16 ms) is inferred from 4× (~20 ms → ~5 ms); the
+browser records no long-animation-frame entry at 1×. Signature-landmarks
+`_requestModels` 393 → 629 ms at 4× was run-to-run spread, not a regression
+(paired bundle swap 804 vs 779 ms; a view-bucket index cut the node walk 430
+→ 145 models but moved nothing in the game, dropped); a real cut is to run
+the check only when a load slot frees or the shown/failed set changes (held,
+pinned once agreed). Camera shim: three-buildings `getZoom` 105/s → 0 (reads
+`worldCameraOf`), player-vehicles `getContainer` 37/s → 0 (asked once); left:
+engine `project` ~1600/s and inventory-trees. Integrator: the `canal-recall`
+year-only building spec faked the facts store with `lookup` only, so every
+default run since the lazy store (cd5be8a55) threw "store.ensureAt is not a
+function"; the fake now models the store. Raw runs in the lane's
+`artifacts/perf/r3-*.json`, `artifacts/camera-shim/r3-*.json`.
+
 **Binary road extract is Amsterdam's default; boot → submit owners named; phone own-ground store drops never-read inputs (2026-11-01, #130).**
 Road lane. `osm-loader.js` reads `roads-v2/streets-routing.bin.gz` for cities
 in `BINARY_ROAD_CITIES` (Amsterdam); `?roads=json` forces the JSON, the
