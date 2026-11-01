@@ -51,7 +51,7 @@ async function park(page: Page, waitForThree = true): Promise<any> {
     g.vectorMap.setActiveLandmark(null);
     g._landmarkNotice = null;
     const map = g.vectorMap.map ?? g.vectorMap.cameraMap, canvas = map.getCanvas();
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if (g.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else g.vectorMap.setLabelsVisible(false);
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
   return landmark;
@@ -145,7 +145,7 @@ test('highlight (default a): a terrace house from the chase camera carries ≥ 0
     g.vectorMap.setActiveLandmark(null);
     g._landmarkNotice = null;
     const map = g.vectorMap.map ?? g.vectorMap.cameraMap, canvas = map.getCanvas();
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if (g.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else g.vectorMap.setLabelsVisible(false);
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
   const canvas = page.locator('canvas.maplibregl-canvas').first();

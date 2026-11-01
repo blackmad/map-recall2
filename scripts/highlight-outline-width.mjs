@@ -102,7 +102,7 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
   const state = await page.evaluate(l => {
     const vm = window.canalRecallGame.vectorMap, map = vm.map;
     vm.setActiveLandmark(l);
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if (vm.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else vm.setLabelsVisible(false);
     const canvas = map.getCanvas();
     for (const e of document.body.querySelectorAll('*')) if (e !== canvas && !e.contains(canvas)) e.style.visibility = 'hidden';
     return { marker: vm._highlightMarker?.status?.() ?? null };

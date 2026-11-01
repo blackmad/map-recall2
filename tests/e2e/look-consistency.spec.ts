@@ -41,7 +41,7 @@ async function quiet(page: Page): Promise<void> {
   await page.evaluate(() => {
     // MapLibre, or the engine's MapLibre-shaped camera (`ENGINE=own`).
     const vm0 = (window as any).canalRecallGame.vectorMap, map = vm0.map ?? vm0.cameraMap;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if (vm0.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else vm0.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });

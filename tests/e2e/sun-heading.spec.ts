@@ -242,7 +242,7 @@ for (const query of QUERIES) {
       await page.evaluate(() => {
         const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
         if (!map.getLayer('sun-heading-probe')) map.addLayer({ id: 'sun-heading-probe', type: 'custom', renderingMode: '3d', render(_gl: any, args: any) { (window as any).__sunProbeMatrix = Array.from(args.defaultProjectionData?.mainMatrix ?? args); } });
-        for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+        if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
         const t = (window as any).canalRecallGame.vectorMap._inventoryTrees; if (t?.setEnabled) t.setEnabled(false);
       });
       const samples: Sample[] = [];

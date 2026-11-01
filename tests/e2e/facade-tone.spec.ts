@@ -101,7 +101,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: true });
   await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap.map;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
   });
   const results: Record<string, unknown> = {};
   for (const spot of TONE_SPOTS.filter(s => !ONLY || ONLY.includes(s.name))) {

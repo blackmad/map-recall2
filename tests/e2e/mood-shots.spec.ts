@@ -115,7 +115,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
       }
       await page.evaluate(() => {
         const map = (window as any).canalRecallGame.vectorMap.map;
-        for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+        if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       });
       for (const spot of spots) {
         // Sun side: stand toward the sun from the target, face away from it. Shade side: the opposite.
