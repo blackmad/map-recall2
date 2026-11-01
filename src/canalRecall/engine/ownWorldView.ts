@@ -16,6 +16,7 @@
 // `UNIMPLEMENTED` and answers as a no-op until its step lands (overlays,
 // labels, landmarks, trees: steps 4–5, lane L5).
 
+import { framePhases } from './framePhases';
 import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
 import { SharedFrame } from '../rendererShared/sharedFrame';
@@ -398,8 +399,13 @@ export class OwnWorldView {
 
   // ---- the frame ----
   private renderFrame(): void {
-    this._sharedFrame.drive(this.cameraMap.camera.clipFromMercator());
+    const phases = framePhases(), t0 = phases ? performance.now() : 0;
+    const clip = this.cameraMap.camera.clipFromMercator();
+    if (phases) phases.add('camera matrix', performance.now() - t0);
+    this._sharedFrame.drive(clip);
+    const t1 = phases ? performance.now() : 0;
     this.drawLabels();
+    if (phases) phases.add('labels', performance.now() - t1);
   }
 
   /** The game's spoiler screen (labelPolicy.ts gameLabelContext) from the live game, cached by what it reads. */

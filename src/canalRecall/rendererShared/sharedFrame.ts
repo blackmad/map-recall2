@@ -26,6 +26,7 @@ import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
 import { worldCameraOf } from '../engine/worldCameraOf.js';
+import { framePhases } from '../engine/framePhases.js';
 import type { LngLat, WorldCamera } from '../engine/worldViewApi.js';
 import { chooseTileDraws } from './tiledGeometry.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
@@ -548,6 +549,16 @@ export class SharedFrame {
     return out;
   }
 
+  /** `?framePhases=1`: the shadow map's own render, inside 'three render main', as its own phase. */
+  private shadowPhaseWrapped = false;
+  private wrapShadowPhase(renderer: any, phases: NonNullable<ReturnType<typeof framePhases>>): void {
+    this.shadowPhaseWrapped = true;
+    const sm = renderer?.shadowMap;
+    if (!sm || typeof sm.render !== 'function') return;
+    const own = sm.render;
+    sm.render = function (...args: unknown[]) { const t = performance.now(); try { return own.apply(this, args); } finally { phases.add('three shadow map (inside render main)', performance.now() - t); } };
+  }
+
   private renderPass(pass: FramePass, gl: WebGL2RenderingContext, args: any): void {
     const renderer = this.renderer;
     if (!renderer) return;
@@ -575,6 +586,8 @@ export class SharedFrame {
     this.camera.projectionMatrix.fromArray(fm.clipFromWorld);
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
     this.worldFromMercatorM.fromArray(fm.worldFromMercator);
+    const phases = framePhases();
+    if (phases && !this.shadowPhaseWrapped) this.wrapShadowPhase(renderer, phases);
     const view = this.frameView ?? this.readView();
     const ctx: FrameContext = {
       pass, frame: fm, worldFromMercator: this.worldFromMercatorM, clipFromWorld: this.camera.projectionMatrix,
@@ -588,8 +601,10 @@ export class SharedFrame {
       const handle = entry.participant;
       if (entry.pass !== pass) { handle.wrapper.visible = false; continue; }
       let ok = false;
+      const b0 = phases ? performance.now() : 0;
       try { ok = handle.participant.beforeRender?.(ctx) !== false; }
       catch (error) { console.warn(`Shared frame participant ${entry.id} failed`, error); }
+      if (phases) phases.add(`beforeRender ${entry.id}`, performance.now() - b0);
       this.checkView(view, `after ${entry.id}`);
       handle.wrapper.visible = ok;
       if (!ok) continue;
@@ -615,6 +630,8 @@ export class SharedFrame {
       // Tiled meshes (tiledGeometry.ts): whole or through their culled tiles, per mesh, from what is on screen.
       const t = chooseTileDraws(this.THREE, this.camera.projectionMatrix, this.tileWholeShare, this.tileScratch ??= { frustum: new this.THREE.Frustum(), sphere: new this.THREE.Sphere(), m: new this.THREE.Matrix4() });
       this.tileDraws = t;
+      if (phases) phases.add('tile draws', performance.now() - t0);
+      const s0 = phases ? performance.now() : 0;
       // castShadow stays constant (toggling it recompiles every lit program);
       // below the shadow zoom, or when switched off, the map is not redrawn and
       // its contribution is zeroed instead.
@@ -638,8 +655,13 @@ export class SharedFrame {
         }
       } else this.shadowKey = '';
       renderer.shadowMap.needsUpdate = redraw;
-      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
+      const r0 = phases ? performance.now() : 0;
+      if (phases) phases.add('shadow fit', r0 - s0);
+      const ok = renderLosingContext(renderer, this.scene, this.camera, gl);
+      if (phases) phases.add('three render main', performance.now() - r0);
+      if (!ok) return;
     } else {
+      const r0 = phases ? performance.now() : 0;
       renderer.shadowMap.needsUpdate = false;
       for (const handle of drawn) {
         const xray = handle.participant.xrayMaterial?.();
@@ -650,7 +672,9 @@ export class SharedFrame {
         finally { this.scene.overrideMaterial = null; }
       }
       for (const handle of drawn) handle.wrapper.visible = true;
-      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
+      const ok = renderLosingContext(renderer, this.scene, this.camera, gl);
+      if (phases) phases.add('three render overlay', performance.now() - r0);
+      if (!ok) return;
     }
     const s = this.stats[pass];
     s.ms = performance.now() - t0; s.calls = renderer.info.render.calls; s.triangles = renderer.info.render.triangles; s.frames++;

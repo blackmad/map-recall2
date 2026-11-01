@@ -235,7 +235,7 @@ export class CameraMap {
       bounds: () => boundsObject(self.camera.bounds()),
       pitch: () => self.camera.pitch,
       bearing: () => self.camera.bearing,
-      onFrame: cb => { const l = () => cb(); self.host.on('render', l); return () => self.host.off('render', l); },
+      onFrame: cb => { const l = Object.assign(() => cb(), { label: cb.name || String(cb).slice(0, 60) }); self.host.on('render', l); return () => self.host.off('render', l); },
       whenIdle: () => self.whenIdle(),
     };
   }
