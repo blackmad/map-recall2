@@ -177,6 +177,8 @@ class GameRouteRuntime {
     } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       // Bike and boat share the landmark catalogue; only transit has its own.
       this._ensureRoutePoiCatalog();
+      // Their streets and waterways are separate worlds.
+      this._scheduleCityWorldPrep();
     }
     if (this._setPlayerZoom) this._setPlayerZoom(prefs.zoom);
     else this.camera.zoom = prefs.zoom;
@@ -874,6 +876,8 @@ class GameRouteRuntime {
   _loadRoutePoiCatalog() {
     const ready = this._loadRoutePoiCatalogNow();
     this._routePoiCatalogReady = ready.catch(() => {});
+    // The briefing is up: build this city's streets for the ride while the player reads it.
+    this._routePoiCatalogReady.then(() => this._scheduleCityWorldPrep());
     this._routePoiCatalogLoading = { key: this._routePoiCatalogKey(), ready: this._routePoiCatalogReady };
     return ready;
   }
@@ -1555,6 +1559,114 @@ class GameRouteRuntime {
     }
   }
 
+  // ---- City world, built during the briefing ----
+
+  /**
+   * The city's street network (the whole extract, projected about the city centre), its routing graph and its
+   * surface index do not depend on the route: the reuse path below already rides a second route on the first
+   * one's world. The first ride used to build them all after submit (~4.8 s of the emulated iPhone's 6-8 s to
+   * racing, 2026-11-01). They are now built while the briefing is read, in short slices so it stays responsive;
+   * a submit joins the build in flight (and lengthens its slices) instead of starting over. Only the first ride of
+   * a session (no world in memory) and the current city and street/water mode; `?worldPrewarm=0` builds at submit.
+   */
+  /** The city and mode the next ride will use: the briefing's picks (applied to the runtime only at submit). */
+  _cityWorldTarget() {
+    let prefs = null;
+    try { prefs = this._overlay ? this._prefs() : null; } catch (_) { prefs = null; }
+    const cityId = (prefs && prefs.cityId) || this.cityId || 'amsterdam';
+    const travelMode = (prefs && prefs.travelMode) || this.travelMode;
+    return { cityId, travelMode, key: `${cityId}|${travelMode}` };
+  }
+
+  _cityWorldKey() {
+    return this._cityWorldTarget().key;
+  }
+
+  /** Re-aim the build when the briefing's city or mode changes (once; the store outlives the briefing). */
+  _watchCityWorldTarget() {
+    if (this._cityWorldWatch || !this._overlay || !this._overlay.store || !this._overlay.store.subscribe) return;
+    let last = this._cityWorldKey();
+    this._cityWorldWatch = this._overlay.store.subscribe(() => {
+      const key = this._cityWorldKey();
+      if (key === last) return;
+      last = key;
+      this._scheduleCityWorldPrep();
+    });
+  }
+
+  _cityWorldPrepEnabled() {
+    if (this._cityWorldPrepFlag === undefined) {
+      let off = false;
+      try { off = new URLSearchParams(window.location.search).get('worldPrewarm') === '0'; } catch (_) { /* no location */ }
+      this._cityWorldPrepFlag = !off;
+    }
+    return this._cityWorldPrepFlag;
+  }
+
+  _scheduleCityWorldPrep() {
+    if (!this.osmLoader || !this._cityWorldPrepEnabled()) return;
+    this._watchCityWorldTarget();
+    const idle = () => !this._loadedWorld && this.state === GameState.MENU && this._cityWorldTarget().travelMode !== 'transit';
+    if (!idle()) return;
+    if (this._cityWorldPrep && this._cityWorldPrep.key === this._cityWorldKey()) return;
+    // After the briefing's own first frames.
+    setTimeout(() => { if (idle()) this._prepareCityWorld(false); }, 250);
+  }
+
+  /** The build for the current city and mode: the one in flight or done, else a new one. `urgent`: a ride waits. */
+  _prepareCityWorld(urgent) {
+    const { key, cityId, travelMode } = this._cityWorldTarget();
+    const prep = this._cityWorldPrep;
+    if (prep && prep.key === key) {
+      if (urgent) prep.scheduling.budgetMs = ROAD_SETUP_SLICE_MS;
+      return prep.promise;
+    }
+    // A build for a mode or city the briefing has since left keeps its short slices and is dropped when done.
+    const city = (window.CanalRecallPreferences && window.CanalRecallPreferences.cityById) ? window.CanalRecallPreferences.cityById(cityId) : this._activeCity();
+    const centre = city && city.center ? city.center : null;
+    if (!centre || travelMode === 'transit') return null;
+    // Briefing slices are short (the menu keeps its frame rate); a waiting ride takes the loading screen's. A build
+    // the briefing has left (another mode or city picked) stops at its next slice.
+    const next = { key, scheduling: null, promise: null, fetched: null };
+    const cancelled = () => this._cityWorldPrep !== next;
+    const scheduling = next.scheduling = { cancelled, budgetMs: urgent ? ROAD_SETUP_SLICE_MS : 12 };
+    const loader = this.osmLoader;
+    // fetchRoads sets the loader's squares and ferry network for its mode: one fetch at a time, in pick order.
+    const previousFetch = prep && prep.fetched ? prep.fetched : Promise.resolve();
+    next.fetched = previousFetch.catch(() => {}).then(() => {
+      if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
+      return loader.fetchRoads(centre.lat, centre.lng, OSM_FETCH_RADIUS, travelMode, cityId);
+    });
+    next.promise = (async () => {
+      const ways = await next.fetched;
+      // What this fetch set on the loader, put back when a ride takes this world (a later fetch may have run).
+      const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork };
+      if (!ways.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments: [], loaded };
+      const segments = await loader.buildRoadSegmentsAsync(ways, centre.lat, centre.lng, cancelled, scheduling);
+      loaded.projection = {
+        _lastCenterLat: loader._lastCenterLat, _lastCenterLng: loader._lastCenterLng,
+        _lastOffsetX: loader._lastOffsetX, _lastOffsetY: loader._lastOffsetY,
+        _roadSnapSegments: loader._roadSnapSegments, _roadSnapIndex: loader._roadSnapIndex,
+      };
+      if (travelMode === 'car' && loaded.ferryNetwork) {
+        const at = loaded.projection;
+        const project = (lat, lng) => ({
+          x: at._lastOffsetX + (lng - at._lastCenterLng) * 111320 * Math.cos(at._lastCenterLat * Math.PI / 180) * PIXELS_PER_METER,
+          y: at._lastOffsetY - (lat - at._lastCenterLat) * 111320 * PIXELS_PER_METER,
+        });
+        segments.push(...CanalRecallFerry.ferrySegments(loaded.ferryNetwork, segments, project));
+      }
+      if (!segments.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments, loaded };
+      const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, cancelled, scheduling);
+      const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, cancelled, scheduling);
+      return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph, surfaceIndex, loaded };
+    })();
+    // A failed build is not kept: the ride builds at submit as before.
+    next.promise.catch(() => { if (this._cityWorldPrep === next) this._cityWorldPrep = null; });
+    this._cityWorldPrep = next;
+    return next.promise;
+  }
+
   // ---- OSM Loading Flow ----
 
   /**
@@ -1605,7 +1717,7 @@ class GameRouteRuntime {
       : routeText('ride.load.city', { city: this._activeCity().name, network: routeNoun(profile, true) });
 
     try {
-      let segments;
+      let segments, prepared = null;
       if (world) {
         // Same projection as the ride just finished: landmarks, areas and the
         // basemap stay where they were drawn.
@@ -1615,6 +1727,29 @@ class GameRouteRuntime {
       } else {
         // Step 1: Fetch from Overpass API (tries multiple servers)
         this.loadingProgress = 0.1;
+        // The briefing's build of this city's world (_prepareCityWorld), joined if still in flight.
+        const preparing = this._cityWorldPrepEnabled() && !this._loadedWorld ? this._prepareCityWorld(true) : null;
+        if (preparing) {
+          try { prepared = await preparing; } catch (error) { console.warn('City world build failed; loading at submit.', error); prepared = null; }
+          if (stale()) return;
+          if (prepared && prepared.key !== this._cityWorldKey()) prepared = null;
+        }
+        if (prepared && prepared.segments.length && prepared.routingGraph) {
+          // The world is projected about the city centre, as a ride on a reused world is about the first ride's.
+          lat = prepared.lat;
+          lng = prepared.lng;
+          segments = prepared.segments;
+          const { projection, ...loaded } = prepared.loaded;
+          Object.assign(this.osmLoader, loaded, projection);
+          if (this.vectorMap && this.vectorMap.setCycleTracks) this.vectorMap.setCycleTracks(this.travelMode === 'car' ? prepared.ways : []);
+          if (this.vectorMap && this.vectorMap.setStreetFronts) this.vectorMap.setStreetFronts(this.travelMode === 'car' ? prepared.ways : []);
+          this.loadingProgress = 0.3;
+          await this._loadLandmarks(lat, lng, segments);
+          if (stale()) return;
+          this.loadingMessage = routeText('ride.load.preparingMap');
+          this.loadingProgress = 0.45;
+        } else {
+        prepared = null;
         const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
         if (stale()) return;
         if (this.vectorMap && this.vectorMap.setCycleTracks) this.vectorMap.setCycleTracks(this.travelMode === 'car' ? ways : []);
@@ -1651,6 +1786,7 @@ class GameRouteRuntime {
         // Step 3: the world view (MapLibre, or the engine under ?engine=own) prepares the map; this only reports it.
         this.loadingMessage = routeText('ride.load.preparingMap');
         this.loadingProgress = 0.45;
+        }
       }
 
       // Step 4: Find start/finish — use user-picked points or auto-find
@@ -1738,13 +1874,16 @@ class GameRouteRuntime {
         this.track.setEndpoints(start, finish);
         this.track.clearFrameCache();
       } else {
-        // Use a small delay to let the loading screen render
-        await new Promise(r => setTimeout(r, 50));
-        if (stale()) return;
-        const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, stale);
-        if (stale()) return;
-        const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, stale);
-        if (stale()) return;
+        let routingGraph = prepared && prepared.routingGraph, surfaceIndex = prepared && prepared.surfaceIndex;
+        if (!routingGraph || !surfaceIndex) {
+          // Use a small delay to let the loading screen render
+          await new Promise(r => setTimeout(r, 50));
+          if (stale()) return;
+          routingGraph = await RoadNetwork.prepareRoutingGraph(segments, stale);
+          if (stale()) return;
+          surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, stale);
+          if (stale()) return;
+        }
         this.track = new RoadNetwork(segments, start, finish, [], routingGraph, surfaceIndex);
         const surface = window.CanalRecallRoadSurface;
         if (this.travelMode === 'car' && this.osmLoader.plazaFeatures && surface && surface.buildPlazaIndex) {
@@ -1759,6 +1898,8 @@ class GameRouteRuntime {
           segments,
           track: this.track,
         };
+        // The world in memory now holds what the briefing built.
+        if (prepared) this._cityWorldPrep = null;
       }
       this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
       this._routeReviewDue = this.recall && typeof this.recall.routeReviewDue === 'function'

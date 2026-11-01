@@ -369,8 +369,8 @@ class OSMLoader {
     return built.segments;
   }
 
-  async buildRoadSegmentsAsync(ways, centerLat, centerLng, cancelled) {
-    const scheduling = { cancelled, budgetMs: ROAD_SETUP_SLICE_MS };
+  async buildRoadSegmentsAsync(ways, centerLat, centerLng, cancelled, sliceScheduling = null) {
+    const scheduling = sliceScheduling || { cancelled, budgetMs: ROAD_SETUP_SLICE_MS };
     const built = await PROJECT.buildRoadSegmentsAsync(ways, { lat: centerLat, lon: centerLng }, {
       simplificationToleranceDegrees: SIMPLIFICATION_TOLERANCE,
       roadWidths: ROAD_WIDTHS,
