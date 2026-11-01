@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**Kerbs and bollards of the rider's cell draw only within 150 m; the pin harness stops landmark cards (2026-11-01, P4).**
+Materials lane (c9f743361). `tiledGeometry.ts` `setTileReach`: a tile wholly
+beyond the distance from the rider is not drawn, with 25 m of hysteresis,
+on both the desktop and touch draw paths; `gameGround` applies it to the
+kerb and bollard layers of the LOD 0 full-detail cell only (bridge deck
+bodies stay at every distance, they are large and seen from far);
+`?groundReach=0` off, `?groundReach=<m>` moves the distance; the flag parser
+keeps the default when the key is absent (the `Number(null)` = 0 class of
+bug again, now with a test). Jordaan ride p50: desktop own ground 397k →
+362k, frame 1.87 M → 1.84 M, draws unchanged 288 / 399; iPad own ground
+234k → 222k, frame 0.95 M → 0.94 M, draws p95 800 → 789; in-frame links
+0 / 0. Frozen frame against `?groundReach=0`: Westerkerk 4,855 px,
+Bloemgracht 80 923, Nassaukade 5,347, Leidsegracht courtyard 3,079, IJburg
+edge 0 (its noise floor was 1.9 M px that run, so it proves nothing); every
+moved pixel is a thin far kerb edge in the top third of the frame; the
+integrator looked at the Nassaukade transition and densest-window strips at
+ride zoom and 60° pitch and could not tell A from B, no kerb line visibly
+ends. Harness: once the route is open `_lastDriveByAt` reads as the current
+race time so no drive-by card comes up, any card up is closed with its
+highlight (`AB_HIGHLIGHT=1` keeps them); the step-1 pin re-read 1 / 0 / 0 /
+0 / 0 px (noise ≤ 3), replacing the 26k px explained earlier. Integrator:
+engine, three, three-buildings and 3d bundles rebuilt; test:own-ground
+224/224, test:engine 120/120; `trianglesIpad` re-recorded p50 0.94 M.
+Next owner: trees (183k on iPad), then the cycle overlay (108k).
+
 **Time to ride by phase on the phone profile: the routing graph is the largest phase; its stitch pass reads one grid cell, build 754 → 473 ms (2026-11-01, P3).**
 Road lane (5f0fad294). `scripts/time-to-ride-device.mjs` times submit →
 racing by phase (fetchRoads, buildRoadSegments, loadLandmarks,
