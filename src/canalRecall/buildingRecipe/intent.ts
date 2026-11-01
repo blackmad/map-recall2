@@ -18,6 +18,7 @@ import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
+import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
@@ -169,7 +170,16 @@ export interface OrielIntent {
    * stair axis). Absent = one stack.
    */
   twin?: {from: number; to: number};
+  /**
+   * A corbelled stone console under the console slab (Wouwermanstraat 6-24, 1910-1911: the carved bracket mass under
+   * each glazed oriel, 7.0-8.2 m on the 2024-11-06 strip): `steps` courses (default 3) stacked `rise` metres down from
+   * the slab, each a shallower copy of the oriel plan (the top course the full plan, the lowest 1/steps of its depth),
+   * in `colour` (a measured tint; default the trim colour). Needs `console`. Absent = byte-identical.
+   */
+  consoleCorbel?: OrielConsoleCorbel;
 }
+export interface OrielConsoleCorbel { rise: number; steps?: number; colour?: string }
+export const ORIEL_CORBEL = {steps: 3, minRise: 0.2, maxRise: 2, maxSteps: 6} as const;
 export const ORIEL = {projection: 0.5, returns: 0.3, stallriser: 0.4, head: 0.35, frontLights: 3, consoleM: 0.15, consoleOverM: 0.06} as const;
 
 /**
@@ -618,6 +628,13 @@ export interface FrontIntent {
    * `axes` = only those axes. Needs a cornice. Absent = byte-identical.
    */
   friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
+  /**
+   * Corbel table (Duivelseiland 1899-1900 rows, Cornelis Anthoniszstraat 50-72; buildingRecipe/corbelTable.ts): a band-brick
+   * course on the cornice foot (an entablature's cap foot) with `rows` rows of corbelled blocks hanging from it, half a
+   * `pitch` wide and `blockCourses` courses tall, odd rows shifted half a pitch (the diamond-lattice brick frieze). Needs
+   * a cornice and `palette.band`. Absent = byte-identical.
+   */
+  corbelTable?: CorbelTableIntent;
   /**
    * Entablature (Helmersbuurt 1893-1900 rows, Eerste Helmersstraat 116-122 and 42-56; buildingRecipe/entablature.ts): the
    * measured deep white crown band in place of the cornice style's fixed height: `rise` metres in all, a projecting
@@ -1561,6 +1578,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
+    if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
     if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
     if (f.jambBlocks !== undefined) problems.push(...jambBlockProblems(f, at));
     if (f.axisHeads !== undefined) {
@@ -1828,6 +1846,13 @@ export function orielProblems(f: FrontIntent, at: string): string[] {
   if (o.paintedStoreys !== undefined && (!Array.isArray(o.paintedStoreys) || o.paintedStoreys.some(s => !bw.storeys.includes(s)))) p.push(`${at}.bayWindows.oriel.paintedStoreys: storeys of bayWindows.storeys`);
   if (o.paintFrom !== undefined && (!num(o.paintFrom, 0.05, 2.4) || !o.paintedStoreys?.length)) p.push(`${at}.bayWindows.oriel.paintFrom: 0.05..2.4 m, with paintedStoreys`);
   if (o.console !== undefined && typeof o.console !== 'boolean') p.push(`${at}.bayWindows.oriel.console: boolean`);
+  if (o.consoleCorbel !== undefined) {
+    const c = o.consoleCorbel as unknown as Record<string, unknown>;
+    if (!c || typeof c !== 'object' || Object.keys(c).some(k => !['rise', 'steps', 'colour'].includes(k)) || !num(c.rise, ORIEL_CORBEL.minRise, ORIEL_CORBEL.maxRise)
+      || (c.steps !== undefined && !(Number.isInteger(c.steps) && (c.steps as number) >= 1 && (c.steps as number) <= ORIEL_CORBEL.maxSteps))
+      || (c.colour !== undefined && !(typeof c.colour === 'string' && /^#[0-9a-f]{6}$/i.test(c.colour)))) p.push(`${at}.bayWindows.oriel.consoleCorbel: {rise ${ORIEL_CORBEL.minRise}..${ORIEL_CORBEL.maxRise} m, steps? 1..${ORIEL_CORBEL.maxSteps}, colour? #rrggbb}`);
+    if (!o.console) p.push(`${at}.bayWindows.oriel.consoleCorbel: needs console`);
+  }
   if (o.topGap !== undefined && !num(o.topGap, 0.1, 2)) p.push(`${at}.bayWindows.oriel.topGap: 0.1..2 m of wall over the top module`);
   if (o.twin !== undefined) {
     const t = o.twin as {from: unknown; to: unknown}, b = bw.bays!;

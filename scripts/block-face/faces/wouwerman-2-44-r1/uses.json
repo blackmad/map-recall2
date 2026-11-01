@@ -1,0 +1,89 @@
+{
+ "street": "Wouwermanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:04:44.015Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114665",
+   "addresses": [
+    "Wouwermanstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000876779"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108114",
+   "addresses": [
+    "Wouwermanstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010000876775"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138798",
+   "addresses": [
+    "Wouwermanstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000876770"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083474",
+   "addresses": [
+    "Wouwermanstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000876766"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078941",
+   "addresses": [
+    "Wouwermanstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000876762"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

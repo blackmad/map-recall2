@@ -1,0 +1,127 @@
+{
+ "street": "Hobbemakade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:44:37.973Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165731",
+   "addresses": [
+    "Hobbemakade 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 66-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000667746"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237013",
+   "addresses": [
+    "Hobbemakade 64",
+    "Hobbemakade 65A",
+    "Hobbemakade 65B",
+    "Hobbemakade 65C",
+    "Hobbemakade 65D",
+    "Hobbemakade 65F",
+    "Hobbemakade 65G",
+    "Hobbemakade 65H",
+    "Hobbemakade 65K",
+    "Hobbemakade 65E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 64",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 190,
+     "bagId": "0363010001022622"
+    },
+    {
+     "address": "Hobbemakade 65A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001022624"
+    },
+    {
+     "address": "Hobbemakade 65B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001022625"
+    },
+    {
+     "address": "Hobbemakade 65C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001022626"
+    },
+    {
+     "address": "Hobbemakade 65D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001022627"
+    },
+    {
+     "address": "Hobbemakade 65F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001022629"
+    },
+    {
+     "address": "Hobbemakade 65G",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001022630"
+    },
+    {
+     "address": "Hobbemakade 65H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001022631"
+    },
+    {
+     "address": "Hobbemakade 65K",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001022632"
+    },
+    {
+     "address": "Hobbemakade 65E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001023974"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521494,
+     "lngLat": [
+      4.8862567,
+      52.3538747
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64",
+      "addr:postcode": "1071XM",
+      "addr:street": "Hobbemakade",
+      "amenity": "restaurant",
+      "check_date": "2025-12-05",
+      "name": "bistrot des Alpes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T12:44:37.973Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

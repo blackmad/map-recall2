@@ -1,0 +1,141 @@
+{
+ "street": "Balthasar Floriszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:22:27.476Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158122",
+   "addresses": [
+    "Balthasar Floriszstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000576071"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3899090812,
+     "lngLat": [
+      4.8846713,
+      52.3530315
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1071VC",
+      "addr:street": "Balthasar Floriszstraat",
+      "name": "Coffeeshop Pacific",
+      "phone": "+31 20 671 0318",
+      "shop": "cannabis",
+      "website": "https://coffeeshop-pacific.business.site/"
+     },
+     "fetchedAt": "2026-11-01T12:22:27.476Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12925720360,
+     "lngLat": [
+      4.884783,
+      52.3530689
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-11-01T12:22:27.476Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159183",
+   "addresses": [
+    "Balthasar Floriszstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 8-H",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000576061"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152551",
+   "addresses": [
+    "Balthasar Floriszstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000576053"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152951",
+   "addresses": [
+    "Balthasar Floriszstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000576045"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162188",
+   "addresses": [
+    "Balthasar Floriszstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 2A-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000576037"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064913",
+   "addresses": [
+    "Balthasar Floriszstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000576036"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

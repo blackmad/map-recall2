@@ -1,0 +1,69 @@
+{
+ "street": "Pieter Baststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:53:07.204Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161682",
+   "addresses": [
+    "Pieter Baststraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 29-H",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000576147"
+    },
+    {
+     "address": "Pieter Baststraat 14-H",
+     "use": "kantoorfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012069076"
+    },
+    {
+     "address": "Balthasar Floriszstraat 29-H",
+     "use": "kantoorfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012069077"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072123",
+   "addresses": [
+    "Pieter Baststraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001170897"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163005",
+   "addresses": [
+    "Pieter Baststraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001040570"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:37:12.385Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118196",
+   "addresses": [
+    "Johannes Vermeerstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 15-H",
+     "use": "kantoorfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000694403"
+    },
+    {
+     "address": "Johannes Vermeerstraat 15-1",
+     "use": "kantoorfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000694404"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099490",
+   "addresses": [
+    "Johannes Vermeerstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 560,
+     "bagId": "0363010000694409"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099258",
+   "addresses": [
+    "Johannes Vermeerstraat 19",
+    "Johannes Vermeerstraat 19A",
+    "Johannes Vermeerstraat 19B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 434,
+     "bagId": "0363010000956361"
+    },
+    {
+     "address": "Johannes Vermeerstraat 19A",
+     "use": "kantoorfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012098844"
+    },
+    {
+     "address": "Johannes Vermeerstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 457,
+     "bagId": "0363010012098845"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080690",
+   "addresses": [
+    "Johannes Vermeerstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 532,
+     "bagId": "0363010000694413"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154873",
+   "addresses": [
+    "Johannes Vermeerstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 23",
+     "use": "kantoorfunctie",
+     "areaM2": 550,
+     "bagId": "0363010000694415"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116517",
+   "addresses": [
+    "Johannes Vermeerstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 525,
+     "bagId": "0363010000694417"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136130",
+   "addresses": [
+    "Johannes Vermeerstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 409,
+     "bagId": "0363010000694419"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121710",
+   "addresses": [
+    "Johannes Vermeerstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 29",
+     "use": "kantoorfunctie",
+     "areaM2": 550,
+     "bagId": "0363010000694421"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150353",
+   "addresses": [
+    "Johannes Vermeerstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 990,
+     "bagId": "0363010000694422"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

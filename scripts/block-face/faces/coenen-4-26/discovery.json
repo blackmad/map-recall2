@@ -1,0 +1,1341 @@
+{
+ "street": "Joh.M. Coenenstraat",
+ "seed": "0363100012085712",
+ "members": [
+  "0363100012122501",
+  "0363100012071771",
+  "0363100012123148",
+  "0363100012075943",
+  "0363100012134792",
+  "0363100012085712"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012122501 (face continues: 094340)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012085712 (face continues: 119530)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064254",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012065856",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012066480",
+   "reason": "frontage 119.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012068211",
+   "reason": "frontage 84.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012070257",
+   "reason": "frontage 81.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012071939",
+   "reason": "frontage 121.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012073470",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012073582",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012077675",
+   "reason": "frontage 179.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012080468",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012085225",
+   "reason": "frontage 112.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "frontage 54.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012061243",
+   "reason": "frontage 249.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012061410",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012063222",
+   "reason": "frontage 93.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012065812",
+   "reason": "frontage 42.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012065876",
+   "reason": "frontage 42.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "frontage 219.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012066928",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012094340"
+  },
+  {
+   "pandId": "0363100012068870",
+   "reason": "frontage 53.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012069906",
+   "reason": "frontage 69.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012070403",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012086887"
+  },
+  {
+   "pandId": "0363100012070818",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012149149"
+  },
+  {
+   "pandId": "0363100012070981",
+   "reason": "frontage 42.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012071097",
+   "reason": "frontage 69.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012071799",
+   "reason": "frontage 81.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012073360",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012075006",
+   "reason": "frontage 58.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "frontage 223.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012075888",
+   "reason": "frontage 42.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 110.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012076301",
+   "reason": "frontage 83.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012076302",
+   "reason": "frontage 73.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012076543",
+   "reason": "frontage 38.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 125.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012078318",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012078452",
+   "reason": "frontage 87.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012081607",
+   "reason": "frontage 94.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012082767",
+   "reason": "frontage 173.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012082921",
+   "reason": "frontage 41.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012085656",
+   "reason": "frontage 69.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012086257",
+   "reason": "frontage 40.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012086311",
+   "reason": "frontage 69.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012086383",
+   "reason": "frontage 37.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012087607",
+   "reason": "frontage 90.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "frontage 108.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012092787",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012093863",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012095133",
+   "reason": "frontage 130.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012099544",
+   "reason": "frontage 72.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012101742",
+   "reason": "frontage 69.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012102464",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 110.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012105321",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012105855",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "frontage 183.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012106506",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012109332",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012109459",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 86.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012115579",
+   "reason": "frontage 77.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012116723",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012117630",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012118973",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "frontage 221.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 119.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012091723",
+   "reason": "frontage 47.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012093460",
+   "reason": "frontage 100.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "frontage 69.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012097655",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012098685",
+   "reason": "frontage 104.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012098694",
+   "reason": "frontage 80.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012099803",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012101927",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "frontage 69.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012107746",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012149357"
+  },
+  {
+   "pandId": "0363100012108582",
+   "reason": "frontage 55.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012109125",
+   "reason": "frontage 64.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "frontage 217.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012110579",
+   "reason": "frontage 69.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012112467",
+   "reason": "frontage 42.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "frontage 113.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012120055",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012120411",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012121537",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 92.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012123641",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012124348",
+   "reason": "frontage 106.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012124499",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012126447",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012129222",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012130423",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012130993",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012133960",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012135326",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012135539",
+   "reason": "frontage 172.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 114.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012136943",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012141253",
+   "reason": "frontage 101.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "frontage 66.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 79.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012143985",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 110.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012121249",
+   "reason": "frontage 69.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "frontage 103.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "frontage 105.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012126637",
+   "reason": "frontage 42.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012127553",
+   "reason": "frontage 82.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012127564",
+   "reason": "frontage 69.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012127925",
+   "reason": "frontage 78.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012128092",
+   "reason": "frontage 69.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012128160",
+   "reason": "frontage 41.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 243.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "frontage 206.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012133078",
+   "reason": "frontage 69.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012134336",
+   "reason": "frontage 56.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "frontage 245.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012135932",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012136110",
+   "reason": "frontage 69.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012137056",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012070403"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "frontage 246.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012139722",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012088868"
+  },
+  {
+   "pandId": "0363100012140711",
+   "reason": "frontage 42.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012141661",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012141667",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012143846",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012145183",
+   "reason": "frontage 98.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012146724",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012149001",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012149961",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012152578",
+   "reason": "frontage 73.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012153011",
+   "reason": "frontage 133.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154115",
+   "reason": "frontage 78.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 148.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155471",
+   "reason": "frontage 72.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 153.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012156095",
+   "reason": "frontage 114.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012156879",
+   "reason": "frontage 105.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157012",
+   "reason": "frontage 86.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157787",
+   "reason": "frontage 100.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157821",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157894",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012146136",
+   "reason": "frontage 62.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012146977",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012148909",
+   "reason": "frontage 43.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012148966",
+   "reason": "frontage 42.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012149421",
+   "reason": "frontage 33.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "frontage 69.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012150713",
+   "reason": "frontage 49.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 188.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "frontage 138.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012153563",
+   "reason": "frontage 182.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "frontage 146.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012153998",
+   "reason": "frontage 76.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154007",
+   "reason": "frontage 42.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "frontage 213.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "frontage 118.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "frontage 146.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012154443",
+   "reason": "frontage 84.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155320",
+   "reason": "frontage 131.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "frontage 111.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "frontage 211.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "frontage 138.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "frontage 214.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012156759",
+   "reason": "frontage 126.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 150.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 144.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "frontage 148.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157299",
+   "reason": "frontage 176.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 184.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "frontage 139.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158047",
+   "reason": "frontage 90.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158184",
+   "reason": "frontage 138.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158280",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158462",
+   "reason": "frontage 61.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159008",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159228",
+   "reason": "frontage 109.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159614",
+   "reason": "frontage 74.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159969",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159970",
+   "reason": "frontage 80.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160591",
+   "reason": "frontage 53.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161202",
+   "reason": "frontage 56.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161406",
+   "reason": "frontage 81.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161462",
+   "reason": "frontage 93.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012162410",
+   "reason": "frontage 67.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012162481",
+   "reason": "frontage 111.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012162853",
+   "reason": "frontage 105.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163041",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163132",
+   "reason": "frontage 84.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "frontage 144.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158207",
+   "reason": "frontage 133.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 186.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 221.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "frontage 209.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 152.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158844",
+   "reason": "frontage 180.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012158932",
+   "reason": "frontage 128.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "frontage 202.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159034",
+   "reason": "frontage 171.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 135.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159652",
+   "reason": "frontage 187.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "frontage 199.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "frontage 196.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 150.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160510",
+   "reason": "frontage 179.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "frontage 104.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "frontage 147.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "frontage 150.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012160844",
+   "reason": "frontage 177.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161125",
+   "reason": "frontage 182.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 182.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161607",
+   "reason": "frontage 171.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "frontage 150.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161927",
+   "reason": "frontage 183.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "frontage 141.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "frontage 153.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163146",
+   "reason": "frontage 168.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163735",
+   "reason": "frontage 129.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "frontage 151.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012163921",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164048",
+   "reason": "frontage 104.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164356",
+   "reason": "frontage 79.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164462",
+   "reason": "frontage 56.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164466",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164691",
+   "reason": "frontage 119.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164703",
+   "reason": "frontage 86.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165229",
+   "reason": "frontage 85.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165285",
+   "reason": "frontage 54.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165310",
+   "reason": "frontage 98.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165388",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165484",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166637",
+   "reason": "frontage 95.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166868",
+   "reason": "frontage 123.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012167012",
+   "reason": "frontage 88.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012200899",
+   "reason": "frontage 84.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012205647",
+   "reason": "frontage 99.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012207257",
+   "reason": "frontage 147.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236051",
+   "reason": "frontage 50.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 162.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 148.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 180.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "frontage 146.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "frontage 151.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "frontage 125.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "frontage 143.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 191.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "frontage 132.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "frontage 146.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012167149",
+   "reason": "frontage 93.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "frontage 193.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 104.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012200136",
+   "reason": "frontage 101.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012203385",
+   "reason": "frontage 91.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012206732",
+   "reason": "frontage 86.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012208002",
+   "reason": "frontage 89.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 147.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012218857",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012085712"
+  },
+  {
+   "pandId": "0363100012218858",
+   "reason": "sightline to Joh.M. Coenenstraat crosses 0363100012085712"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "frontage 171.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012230919",
+   "reason": "frontage 163.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 153.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 133.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012233653",
+   "reason": "frontage 157.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012233672",
+   "reason": "frontage 173.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 159.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 177.5 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 228.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236201",
+   "reason": "frontage 166.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236287",
+   "reason": "frontage 189.0 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236611",
+   "reason": "frontage 129.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236703",
+   "reason": "frontage 93.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 117.7 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237248",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012570892",
+   "reason": "no frontage on Joh.M. Coenenstraat: No footprint edge faces Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 225.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 157.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 234.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 231.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236921",
+   "reason": "frontage 166.8 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "frontage 120.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 158.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 237.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 238.9 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012239943",
+   "reason": "frontage 69.6 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012246038",
+   "reason": "frontage 119.1 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "frontage 111.2 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100100092059",
+   "reason": "frontage 69.4 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "frontage 69.3 m from Joh.M. Coenenstraat"
+  },
+  {
+   "pandId": "0363100012077804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086887",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109060",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142716",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149149",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149357",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012122501",
+   "alongM": -121.28,
+   "widthM": 11.13,
+   "eavesM": 12.86,
+   "roofMaxM": 15.38,
+   "storeys3dbag": 5,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012071771",
+   "alongM": -93,
+   "widthM": 22.57,
+   "eavesM": 12.76,
+   "roofMaxM": 15.3,
+   "storeys3dbag": 5,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123148",
+   "alongM": -70.27,
+   "widthM": 22.89,
+   "eavesM": 12.87,
+   "roofMaxM": 15.37,
+   "storeys3dbag": 5,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012075943",
+   "alongM": -47.36,
+   "widthM": 22.93,
+   "eavesM": 12.99,
+   "roofMaxM": 15.51,
+   "storeys3dbag": 5,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012134792",
+   "alongM": -26.08,
+   "widthM": 19.63,
+   "eavesM": 2.91,
+   "roofMaxM": 15.41,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012085712",
+   "alongM": 0,
+   "widthM": 25.7,
+   "eavesM": 14.34,
+   "roofMaxM": 20.39,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

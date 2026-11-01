@@ -1,0 +1,75 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at gallery size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace). Duivelseiland 1899-1900 corbel-cornice rows (#160): four variants of one builder's front (arch rings on storeys 1-2 or not, centre balconettes or not) share years, eaves and frontage; the edges cannot tell them apart.",
+ "pins": [
+  {
+   "face": "anthonisz-40-72",
+   "types": [
+    "museum-de-1899-corbel-flat"
+   ],
+   "pands": [
+    "0363100012159956",
+    "0363100012158092",
+    "0363100012160204"
+   ],
+   "reason": "Cornelis Anthoniszstraat 70, 68, 62: square heads on storeys 1-2 (no arch ring), balconettes on the centre axis"
+  },
+  {
+   "face": "anthonisz-40-72",
+   "types": [
+    "museum-de-1899-corbel-cornice"
+   ],
+   "pands": [
+    "0363100012164470",
+    "0363100012159040"
+   ],
+   "reason": "Cornelis Anthoniszstraat 66, 64: segmental heads under a brick arch ring on storeys 1-2, balconettes on the centre axis (the exemplars)"
+  },
+  {
+   "face": "florisz-2-10",
+   "types": [
+    "museum-de-1899-corbel-flat"
+   ],
+   "pands": [
+    "0363100012152551",
+    "0363100012152951"
+   ],
+   "reason": "Balthasar Floriszstraat 6, 4: square heads, centre balconettes (on storeys 1-3; the type draws 1-2)"
+  },
+  {
+   "face": "florisz-2-10",
+   "types": [
+    "museum-de-1899-corbel-flat-plain"
+   ],
+   "pands": [
+    "0363100012159183",
+    "0363100012162188"
+   ],
+   "reason": "Balthasar Floriszstraat 8, 2A: square heads, no balconettes"
+  },
+  {
+   "face": "florisz-12-38",
+   "types": [
+    "museum-de-1899-corbel-flat-plain"
+   ],
+   "pands": [
+    "0363100012157185",
+    "0363100012144384",
+    "0363100012164388",
+    "0363100012156418",
+    "0363100012164869"
+   ],
+   "reason": "Balthasar Floriszstraat 18-26: no balconettes; 26, 22, 18 square-headed, 24 and 20 with segmental arch rings on storeys 1-2 (drawn square: the overexposed strip gives 24, 22, 20 no photo evidence of their own, so they stand on a same-type passing neighbour)"
+  },
+  {
+   "face": "florisz-33-61",
+   "types": [
+    "museum-de-1899-corbel-flat-plain"
+   ],
+   "pands": [
+    "0363100012156940",
+    "0363100012162993"
+   ],
+   "reason": "Balthasar Floriszstraat 57, 59: square heads, no balconettes"
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "street": "Pieter Baststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:56:00.246Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153124",
+   "addresses": [
+    "Pieter Baststraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000774288"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157086",
+   "addresses": [
+    "Pieter Baststraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 19-H",
+     "use": "overige gebruiksfunctie,kantoorfunctie",
+     "areaM2": 246,
+     "bagId": "0363010000774296"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236100",
+   "addresses": [
+    "Pieter Baststraat 21",
+    "Pieter Baststraat 23",
+    "Pieter Baststraat 25",
+    "Pieter Baststraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 21-1",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011156766"
+    },
+    {
+     "address": "Pieter Baststraat 25-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 520,
+     "bagId": "0363010011156767"
+    }
+   ],
+   "units": 17,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816520186,
+     "lngLat": [
+      4.885137,
+      52.3528145
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21-27",
+      "addr:postcode": "1071TV",
+      "addr:street": "Pieter Baststraat",
+      "amenity": "dentist",
+      "name": "Tandartspraktijk de ZuidAs",
+      "phone": "+31 20 672 4747",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.tandartspraktijk-dezuidas.nl"
+     },
+     "fetchedAt": "2026-11-01T12:56:00.246Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152455",
+   "addresses": [
+    "Pieter Baststraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001018812"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162624",
+   "addresses": [
+    "Pieter Baststraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001018814"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

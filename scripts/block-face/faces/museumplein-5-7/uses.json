@@ -1,0 +1,76 @@
+{
+ "street": "Museumplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012138066",
+   "addresses": [
+    "Museumplein 5",
+    "Museumplein 5A",
+    "Museumplein 5B",
+    "Museumplein 5E",
+    "Museumplein 5F",
+    "Museumplein 5C",
+    "Museumplein 5D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Museumplein 5",
+     "use": "kantoorfunctie",
+     "areaM2": 1360,
+     "bagId": "0363010000980990"
+    },
+    {
+     "address": "Museumplein 5A",
+     "use": "kantoorfunctie",
+     "areaM2": 289,
+     "bagId": "0363010011831287"
+    },
+    {
+     "address": "Museumplein 5B",
+     "use": "kantoorfunctie",
+     "areaM2": 178,
+     "bagId": "0363010011831288"
+    },
+    {
+     "address": "Museumplein 5E",
+     "use": "kantoorfunctie",
+     "areaM2": 178,
+     "bagId": "0363010011831289"
+    },
+    {
+     "address": "Museumplein 5F",
+     "use": "kantoorfunctie",
+     "areaM2": 81,
+     "bagId": "0363010011831290"
+    },
+    {
+     "address": "Museumplein 5C",
+     "use": "kantoorfunctie",
+     "areaM2": 177,
+     "bagId": "0363010011831291"
+    },
+    {
+     "address": "Museumplein 5D",
+     "use": "kantoorfunctie",
+     "areaM2": 177,
+     "bagId": "0363010011831373"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114637",
+   "addresses": [
+    "Museumplein 7"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

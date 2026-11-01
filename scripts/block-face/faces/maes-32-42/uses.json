@@ -1,0 +1,105 @@
+{
+ "street": "Nicolaas Maesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:10:15.532Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114773",
+   "addresses": [
+    "Nicolaas Maesstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000750679"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085631",
+   "addresses": [
+    "Nicolaas Maesstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 249,
+     "bagId": "0363010000750674"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111932",
+   "addresses": [
+    "Nicolaas Maesstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 321,
+     "bagId": "0363010000750668"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084204",
+   "addresses": [
+    "Nicolaas Maesstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000750662"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113999",
+   "addresses": [
+    "Nicolaas Maesstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000750656"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109321",
+   "addresses": [
+    "Nicolaas Maesstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010000750649"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

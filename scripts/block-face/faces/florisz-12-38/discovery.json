@@ -1,0 +1,1831 @@
+{
+ "street": "Balthasar Floriszstraat",
+ "seed": "0363100012158817",
+ "members": [
+  "0363100012163756",
+  "0363100012158714",
+  "0363100012152798",
+  "0363100012160017",
+  "0363100012165635",
+  "0363100012157185",
+  "0363100012144384",
+  "0363100012164388",
+  "0363100012156418",
+  "0363100012164869",
+  "0363100012156400",
+  "0363100012158817"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012158122 22.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 159.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012063666",
+   "reason": "frontage 32.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012065248",
+   "reason": "frontage 150.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012065856",
+   "reason": "frontage 51.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012066480",
+   "reason": "frontage 166.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012068211",
+   "reason": "frontage 145.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012070169",
+   "reason": "frontage 133.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012070257",
+   "reason": "frontage 92.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012070855",
+   "reason": "frontage 98.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012071920",
+   "reason": "frontage 149.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012071939",
+   "reason": "frontage 114.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012072123",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012165513"
+  },
+  {
+   "pandId": "0363100012072231",
+   "reason": "frontage 102.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012073017",
+   "reason": "frontage 101.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012073470",
+   "reason": "frontage 149.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012073535",
+   "reason": "frontage 147.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012073582",
+   "reason": "frontage 122.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012074316",
+   "reason": "frontage 99.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012075418",
+   "reason": "frontage 57.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012076662",
+   "reason": "frontage 89.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012076833",
+   "reason": "frontage 137.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012077153",
+   "reason": "frontage 109.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012077675",
+   "reason": "frontage 121.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 159.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012078923",
+   "reason": "frontage 172.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012080468",
+   "reason": "frontage 122.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012081326",
+   "reason": "frontage 87.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012081566",
+   "reason": "frontage 86.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012083278",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012085225",
+   "reason": "frontage 110.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "frontage 52.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012090664",
+   "reason": "frontage 63.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012091346",
+   "reason": "frontage 88.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 164.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012092787",
+   "reason": "frontage 95.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012092835",
+   "reason": "frontage 105.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012093863",
+   "reason": "frontage 160.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "frontage 49.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012094774",
+   "reason": "frontage 169.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "frontage 158.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012095133",
+   "reason": "frontage 121.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012095170",
+   "reason": "frontage 126.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012095198",
+   "reason": "frontage 32.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012096016",
+   "reason": "frontage 157.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012096292",
+   "reason": "frontage 125.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012097582",
+   "reason": "frontage 161.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012097854",
+   "reason": "frontage 79.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 192.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012099206",
+   "reason": "frontage 89.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012099837",
+   "reason": "frontage 161.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012099950",
+   "reason": "frontage 99.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 190.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012101742",
+   "reason": "frontage 47.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012102195",
+   "reason": "frontage 84.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012102464",
+   "reason": "frontage 122.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 110.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012103410",
+   "reason": "frontage 92.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "frontage 82.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012104191",
+   "reason": "frontage 76.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 111.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012105207",
+   "reason": "frontage 144.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012105855",
+   "reason": "frontage 147.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "frontage 122.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012106506",
+   "reason": "frontage 94.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012107904",
+   "reason": "frontage 143.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012108217",
+   "reason": "frontage 193.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012109332",
+   "reason": "frontage 91.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012109347",
+   "reason": "frontage 106.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012109459",
+   "reason": "frontage 99.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012111391",
+   "reason": "frontage 187.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012112615",
+   "reason": "frontage 97.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012113108",
+   "reason": "frontage 103.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012113685",
+   "reason": "frontage 148.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 79.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012115579",
+   "reason": "frontage 46.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012116723",
+   "reason": "frontage 135.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012117972",
+   "reason": "frontage 123.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "frontage 119.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012118871",
+   "reason": "frontage 172.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012118973",
+   "reason": "frontage 128.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012118975",
+   "reason": "frontage 86.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012120252",
+   "reason": "frontage 182.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012120629",
+   "reason": "frontage 171.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 78.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012123641",
+   "reason": "frontage 140.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 157.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012124348",
+   "reason": "frontage 102.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012124499",
+   "reason": "frontage 123.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012125391",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "frontage 191.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012125787",
+   "reason": "frontage 177.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012126826",
+   "reason": "frontage 91.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012126860",
+   "reason": "frontage 155.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012126949",
+   "reason": "frontage 138.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012127220",
+   "reason": "frontage 172.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012129013",
+   "reason": "frontage 172.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012129222",
+   "reason": "frontage 116.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012129511",
+   "reason": "frontage 172.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012130993",
+   "reason": "frontage 118.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012131267",
+   "reason": "frontage 98.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012132525",
+   "reason": "frontage 171.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012133960",
+   "reason": "frontage 154.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012133971",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012135539",
+   "reason": "frontage 121.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012136011",
+   "reason": "frontage 166.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 110.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012136861",
+   "reason": "frontage 121.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012136943",
+   "reason": "frontage 116.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012138609",
+   "reason": "frontage 103.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012138651",
+   "reason": "frontage 151.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "frontage 117.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012140466",
+   "reason": "frontage 140.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012140478",
+   "reason": "frontage 94.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012140658",
+   "reason": "frontage 166.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012140844",
+   "reason": "frontage 162.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012141253",
+   "reason": "frontage 144.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 190.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "frontage 78.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 80.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012143780",
+   "reason": "frontage 140.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012146709",
+   "reason": "frontage 170.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012146724",
+   "reason": "frontage 118.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012147177",
+   "reason": "frontage 167.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012147298",
+   "reason": "frontage 100.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012148010",
+   "reason": "frontage 41.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012148377",
+   "reason": "frontage 115.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 163.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012149961",
+   "reason": "frontage 167.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012150915",
+   "reason": "frontage 160.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012151549",
+   "reason": "frontage 137.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152297",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012153842"
+  },
+  {
+   "pandId": "0363100012152455",
+   "reason": "frontage 59.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152510",
+   "reason": "frontage 109.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152666",
+   "reason": "frontage 219.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152700",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152791",
+   "reason": "frontage 64.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152837",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012156365"
+  },
+  {
+   "pandId": "0363100012152862",
+   "reason": "frontage 46.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152949",
+   "reason": "frontage 30.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012152978",
+   "reason": "frontage 61.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153011",
+   "reason": "frontage 58.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012135932",
+   "reason": "frontage 128.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153124",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012156400"
+  },
+  {
+   "pandId": "0363100012153176",
+   "reason": "frontage 191.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153235",
+   "reason": "frontage 38.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153540",
+   "reason": "frontage 30.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153638",
+   "reason": "frontage 100.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153707",
+   "reason": "frontage 219.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153775",
+   "reason": "frontage 61.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012153842",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012162750"
+  },
+  {
+   "pandId": "0363100012154115",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012154126",
+   "reason": "frontage 70.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012154134",
+   "reason": "frontage 35.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012154156",
+   "reason": "frontage 81.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012154363",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 144.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012155471",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012155484",
+   "reason": "frontage 66.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012155660",
+   "reason": "frontage 112.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012155709",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012152297"
+  },
+  {
+   "pandId": "0363100012155909",
+   "reason": "frontage 75.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156095",
+   "reason": "frontage 31.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156365",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012163756"
+  },
+  {
+   "pandId": "0363100012156477",
+   "reason": "frontage 156.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156498",
+   "reason": "frontage 104.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156523",
+   "reason": "frontage 67.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156630",
+   "reason": "frontage 36.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156658",
+   "reason": "frontage 193.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156712",
+   "reason": "frontage 149.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156774",
+   "reason": "frontage 193.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156807",
+   "reason": "frontage 106.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156832",
+   "reason": "frontage 219.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156835",
+   "reason": "frontage 64.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156867",
+   "reason": "frontage 44.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156879",
+   "reason": "frontage 82.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156965",
+   "reason": "frontage 39.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012156966",
+   "reason": "frontage 34.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157008",
+   "reason": "frontage 30.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157012",
+   "reason": "frontage 71.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157086",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012153124"
+  },
+  {
+   "pandId": "0363100012157146",
+   "reason": "frontage 74.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157250",
+   "reason": "frontage 42.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157263",
+   "reason": "frontage 41.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157350",
+   "reason": "frontage 47.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157504",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157569",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157599",
+   "reason": "frontage 40.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157745",
+   "reason": "frontage 66.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157821",
+   "reason": "frontage 57.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157850",
+   "reason": "frontage 220.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012157894",
+   "reason": "frontage 57.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158008",
+   "reason": "frontage 37.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158013",
+   "reason": "frontage 109.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158092",
+   "reason": "frontage 37.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158184",
+   "reason": "frontage 58.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158280",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012159008"
+  },
+  {
+   "pandId": "0363100012158324",
+   "reason": "frontage 66.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158426",
+   "reason": "frontage 68.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158462",
+   "reason": "frontage 56.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158479",
+   "reason": "frontage 49.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158545",
+   "reason": "frontage 62.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158592",
+   "reason": "frontage 71.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158761",
+   "reason": "frontage 58.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012158962",
+   "reason": "frontage 189.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159008",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012165388"
+  },
+  {
+   "pandId": "0363100012159040",
+   "reason": "frontage 38.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159048",
+   "reason": "frontage 76.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159055",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012162929"
+  },
+  {
+   "pandId": "0363100012159065",
+   "reason": "frontage 50.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159143",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159228",
+   "reason": "frontage 31.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159355",
+   "reason": "frontage 83.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159402",
+   "reason": "frontage 192.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159688",
+   "reason": "frontage 84.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159731",
+   "reason": "frontage 76.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159910",
+   "reason": "frontage 57.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159956",
+   "reason": "frontage 42.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159969",
+   "reason": "frontage 57.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012159981",
+   "reason": "frontage 63.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160140",
+   "reason": "frontage 62.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160163",
+   "reason": "frontage 91.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160204",
+   "reason": "frontage 40.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160236",
+   "reason": "frontage 107.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160300",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012158122"
+  },
+  {
+   "pandId": "0363100012160408",
+   "reason": "frontage 78.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160618",
+   "reason": "frontage 107.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160643",
+   "reason": "frontage 192.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160667",
+   "reason": "frontage 192.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160744",
+   "reason": "frontage 66.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160803",
+   "reason": "frontage 78.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160872",
+   "reason": "frontage 219.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160945",
+   "reason": "frontage 36.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160955",
+   "reason": "frontage 45.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160960",
+   "reason": "frontage 40.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012160975",
+   "reason": "frontage 61.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161001",
+   "reason": "frontage 102.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161032",
+   "reason": "frontage 81.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161040",
+   "reason": "frontage 67.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161177",
+   "reason": "frontage 112.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161193",
+   "reason": "frontage 193.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161202",
+   "reason": "frontage 53.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161339",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012159055"
+  },
+  {
+   "pandId": "0363100012161397",
+   "reason": "frontage 117.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161406",
+   "reason": "frontage 47.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161461",
+   "reason": "frontage 32.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161462",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012165229"
+  },
+  {
+   "pandId": "0363100012161511",
+   "reason": "frontage 32.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161543",
+   "reason": "frontage 51.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161623",
+   "reason": "frontage 30.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161659",
+   "reason": "frontage 70.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161772",
+   "reason": "frontage 36.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012161776",
+   "reason": "frontage 64.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162100",
+   "reason": "frontage 59.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162129",
+   "reason": "frontage 35.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162131",
+   "reason": "frontage 219.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162400",
+   "reason": "frontage 31.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162410",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162481",
+   "reason": "frontage 84.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162519",
+   "reason": "frontage 109.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162624",
+   "reason": "frontage 64.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162700",
+   "reason": "frontage 34.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162875",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162915",
+   "reason": "frontage 152.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162939",
+   "reason": "frontage 65.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012162954",
+   "reason": "frontage 107.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163005",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012072123"
+  },
+  {
+   "pandId": "0363100012163041",
+   "reason": "frontage 49.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163058",
+   "reason": "frontage 80.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163132",
+   "reason": "frontage 30.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163213",
+   "reason": "frontage 79.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163221",
+   "reason": "frontage 55.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163478",
+   "reason": "frontage 70.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163502",
+   "reason": "frontage 48.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163635",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012152297"
+  },
+  {
+   "pandId": "0363100012163637",
+   "reason": "frontage 159.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163670",
+   "reason": "frontage 87.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163763",
+   "reason": "frontage 89.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163864",
+   "reason": "frontage 149.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163921",
+   "reason": "frontage 58.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163957",
+   "reason": "frontage 59.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012163999",
+   "reason": "frontage 182.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164003",
+   "reason": "frontage 41.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164048",
+   "reason": "frontage 31.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164208",
+   "reason": "frontage 79.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164356",
+   "reason": "frontage 30.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164462",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012160591"
+  },
+  {
+   "pandId": "0363100012164466",
+   "reason": "frontage 54.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164470",
+   "reason": "frontage 41.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164567",
+   "reason": "frontage 69.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164584",
+   "reason": "frontage 221.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164605",
+   "reason": "frontage 36.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164691",
+   "reason": "frontage 31.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164692",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164703",
+   "reason": "frontage 48.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164729",
+   "reason": "frontage 49.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164736",
+   "reason": "frontage 176.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164820",
+   "reason": "frontage 59.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164821",
+   "reason": "frontage 149.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012164861",
+   "reason": "frontage 66.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165238",
+   "reason": "frontage 62.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165250",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165310",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012158047"
+  },
+  {
+   "pandId": "0363100012165388",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012164462"
+  },
+  {
+   "pandId": "0363100012165484",
+   "reason": "frontage 57.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165731",
+   "reason": "frontage 40.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165780",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165823",
+   "reason": "frontage 68.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165887",
+   "reason": "frontage 67.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165946",
+   "reason": "frontage 46.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012165987",
+   "reason": "frontage 187.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166070",
+   "reason": "frontage 198.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166079",
+   "reason": "frontage 97.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166201",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012158122"
+  },
+  {
+   "pandId": "0363100012166217",
+   "reason": "frontage 86.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166222",
+   "reason": "frontage 153.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166337",
+   "reason": "frontage 36.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166353",
+   "reason": "frontage 38.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166456",
+   "reason": "frontage 69.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166487",
+   "reason": "frontage 155.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166508",
+   "reason": "frontage 219.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166643",
+   "reason": "frontage 166.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166699",
+   "reason": "frontage 67.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166719",
+   "reason": "frontage 220.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166782",
+   "reason": "frontage 108.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166864",
+   "reason": "frontage 68.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166868",
+   "reason": "frontage 58.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012166939",
+   "reason": "frontage 34.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167012",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012159970"
+  },
+  {
+   "pandId": "0363100012167090",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167121",
+   "reason": "frontage 52.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167234",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167303",
+   "reason": "frontage 151.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167330",
+   "reason": "frontage 43.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012167407",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012156365"
+  },
+  {
+   "pandId": "0363100012167452",
+   "reason": "frontage 62.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012185742",
+   "reason": "frontage 73.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012185930",
+   "reason": "frontage 176.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012188743",
+   "reason": "frontage 110.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012191288",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012163557"
+  },
+  {
+   "pandId": "0363100012191335",
+   "reason": "frontage 82.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012192181",
+   "reason": "frontage 58.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012194423",
+   "reason": "frontage 81.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012196867",
+   "reason": "frontage 55.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012200334",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012156418"
+  },
+  {
+   "pandId": "0363100012200899",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012159970"
+  },
+  {
+   "pandId": "0363100012204927",
+   "reason": "frontage 83.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012205647",
+   "reason": "frontage 91.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012207257",
+   "reason": "frontage 75.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012207258",
+   "reason": "frontage 153.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012207267",
+   "reason": "frontage 157.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012207268",
+   "reason": "frontage 158.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012209343",
+   "reason": "frontage 84.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012214153",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012166458"
+  },
+  {
+   "pandId": "0363100012216131",
+   "reason": "frontage 139.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012218117",
+   "reason": "sightline to Balthasar Floriszstraat crosses 0363100012157185"
+  },
+  {
+   "pandId": "0363100012220164",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012221439",
+   "reason": "frontage 37.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012222982",
+   "reason": "frontage 105.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012227185",
+   "reason": "frontage 30.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012227407",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012231206",
+   "reason": "frontage 107.8 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012232362",
+   "reason": "frontage 93.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012233309",
+   "reason": "frontage 82.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012233499",
+   "reason": "frontage 73.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012233703",
+   "reason": "frontage 148.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012233853",
+   "reason": "frontage 189.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012235011",
+   "reason": "frontage 70.9 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012235993",
+   "reason": "no frontage on Balthasar Floriszstraat: No footprint edge faces Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236051",
+   "reason": "frontage 50.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236100",
+   "reason": "frontage 36.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236120",
+   "reason": "frontage 94.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236176",
+   "reason": "frontage 121.5 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236611",
+   "reason": "frontage 58.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236703",
+   "reason": "frontage 77.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 152.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "frontage 113.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "frontage 120.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237013",
+   "reason": "frontage 45.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237161",
+   "reason": "frontage 50.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237177",
+   "reason": "frontage 131.6 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237188",
+   "reason": "frontage 150.4 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 109.3 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237248",
+   "reason": "frontage 84.0 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "frontage 121.2 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012239645",
+   "reason": "frontage 72.1 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012570892",
+   "reason": "frontage 91.7 m from Balthasar Floriszstraat"
+  },
+  {
+   "pandId": "0363100012108299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152578",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157182",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157787",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158047",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159970",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160591",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161682",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162750",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162835",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162853",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162929",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163557",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164000",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165229",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165285",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165513",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166004",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166637",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166941",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167342",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237212",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012163756",
+   "alongM": -73.52,
+   "widthM": 21.97,
+   "eavesM": 13.97,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158714",
+   "alongM": -59.65,
+   "widthM": 5.77,
+   "eavesM": 14.44,
+   "roofMaxM": 19.51,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152798",
+   "alongM": -54.03,
+   "widthM": 5.46,
+   "eavesM": 16.46,
+   "roofMaxM": 16.8,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160017",
+   "alongM": -48.55,
+   "widthM": 5.5,
+   "eavesM": 15.8,
+   "roofMaxM": 16.82,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165635",
+   "alongM": -42.85,
+   "widthM": 5.9,
+   "eavesM": 15.75,
+   "roofMaxM": 15.75,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157185",
+   "alongM": -37.33,
+   "widthM": 5.14,
+   "eavesM": 15.51,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012144384",
+   "alongM": -32.16,
+   "widthM": 5.18,
+   "eavesM": 13.51,
+   "roofMaxM": 16.14,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164388",
+   "alongM": -26.86,
+   "widthM": 5.43,
+   "eavesM": 15.57,
+   "roofMaxM": 15.9,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156418",
+   "alongM": -21.4,
+   "widthM": 5.49,
+   "eavesM": 15.56,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164869",
+   "alongM": -16.34,
+   "widthM": 4.63,
+   "eavesM": 15.59,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156400",
+   "alongM": -8.34,
+   "widthM": 11.38,
+   "eavesM": 15.81,
+   "roofMaxM": 18.25,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012158817",
+   "alongM": 0,
+   "widthM": 5.3,
+   "eavesM": 15.51,
+   "roofMaxM": 15.55,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  }
+ ]
+}

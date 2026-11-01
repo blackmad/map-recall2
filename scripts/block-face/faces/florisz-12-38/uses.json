@@ -1,0 +1,260 @@
+{
+ "street": "Balthasar Floriszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:23:47.128Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163756",
+   "addresses": [
+    "Balthasar Floriszstraat 36",
+    "Balthasar Floriszstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 73-H",
+     "use": "kantoorfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000667774"
+    },
+    {
+     "address": "Balthasar Floriszstraat 36-H",
+     "use": "kantoorfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012158190"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158714",
+   "addresses": [
+    "Balthasar Floriszstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000576168"
+    },
+    {
+     "address": "Balthasar Floriszstraat 34-O",
+     "use": "industriefunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955596"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152798",
+   "addresses": [
+    "Balthasar Floriszstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 32-H",
+     "use": "industriefunctie",
+     "areaM2": 77,
+     "bagId": "0363010000576159"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160017",
+   "addresses": [
+    "Balthasar Floriszstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 30-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001030298"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165635",
+   "addresses": [
+    "Balthasar Floriszstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000576143"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157185",
+   "addresses": [
+    "Balthasar Floriszstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000980953"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144384",
+   "addresses": [
+    "Balthasar Floriszstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000576127"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164388",
+   "addresses": [
+    "Balthasar Floriszstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000576119"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156418",
+   "addresses": [
+    "Balthasar Floriszstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000576111"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164869",
+   "addresses": [
+    "Balthasar Floriszstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000576103"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156400",
+   "addresses": [
+    "Balthasar Floriszstraat 14",
+    "Balthasar Floriszstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010001021094"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158817",
+   "addresses": [
+    "Balthasar Floriszstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001020711"
+    },
+    {
+     "address": "Pieter Baststraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001020712"
+    },
+    {
+     "address": "Balthasar Floriszstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001020710"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12195384048,
+     "lngLat": [
+      4.8849465,
+      52.3531812
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T12:23:47.128Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    },
+    {
+     "type": "node",
+     "id": 12925710356,
+     "lngLat": [
+      4.8848485,
+      52.3531585
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-01T12:23:47.128Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  }
+ ]
+}

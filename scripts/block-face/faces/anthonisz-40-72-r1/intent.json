@@ -1,0 +1,203 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "anthonisz-40-72-r1",
+ "street": "Cornelis Anthoniszstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/anthonisz-40-72-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the museumkwartier library (buurt Duivelseiland); scores and holds in scripts/block-face/faces/anthonisz-40-72/auto-place.json"
+ },
+ "types": [
+  "museum-de-1899-corbel-cornice",
+  "museum-de-1899-corbel-flat"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159956",
+   "slug": "anthonisz-159956",
+   "address": "Cornelis Anthoniszstraat 70",
+   "type": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#c3835c",
+     "evidence": "strip 2024-12-11 span 211-429: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b5835d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-de-1899-corbel-flat scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-12-11 span 211-429"
+   }
+  },
+  {
+   "pandId": "0363100012158092",
+   "slug": "anthonisz-158092",
+   "address": "Cornelis Anthoniszstraat 68",
+   "type": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#d39166",
+     "evidence": "strip 2024-12-11 span 429-628: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b5835d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-de-1899-corbel-flat scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-12-11 span 429-628"
+   }
+  },
+  {
+   "pandId": "0363100012164470",
+   "slug": "anthonisz-164470",
+   "address": "Cornelis Anthoniszstraat 66",
+   "type": {
+    "type": "museum-de-1899-corbel-cornice",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#b58462",
+     "evidence": "strip 2024-12-11 span 628-847: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b5835d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-de-1899-corbel-cornice scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-12-11 span 628-847"
+   }
+  },
+  {
+   "pandId": "0363100012159040",
+   "slug": "anthonisz-159040",
+   "address": "Cornelis Anthoniszstraat 64",
+   "type": {
+    "type": "museum-de-1899-corbel-cornice",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8e694a",
+     "evidence": "strip 2024-12-11 span 847-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b5835d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-de-1899-corbel-cornice scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-12-11 span 847-1066"
+   }
+  },
+  {
+   "pandId": "0363100012160204",
+   "slug": "anthonisz-160204",
+   "address": "Cornelis Anthoniszstraat 62",
+   "type": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#b1815d",
+     "evidence": "strip 2024-12-11 span 1066-1274: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b5835d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-de-1899-corbel-flat scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-12-11 span 1066-1274"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012158092",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-de-1899-corbel-flat cornice line 13.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.57 m"
+   },
+   {
+    "pand": "0363100012164470",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-de-1899-corbel-cornice cornice line 13.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.55 m"
+   },
+   {
+    "pand": "0363100012159040",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-de-1899-corbel-cornice cornice line 13.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.63 m"
+   },
+   {
+    "pand": "0363100012160204",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-de-1899-corbel-flat cornice line 13.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.41 m"
+   }
+  ]
+ }
+}

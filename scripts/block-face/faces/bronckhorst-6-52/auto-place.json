@@ -1,0 +1,1233 @@
+{
+ "face": "bronckhorst-6-52",
+ "street": "Bronckhorststraat",
+ "library": "museumkwartier",
+ "stripDate": "2022-03-21",
+ "seconds": 5.89,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012097163",
+   "address": "Bronckhorststraat 32",
+   "builtYear": 1923,
+   "widthM": 16.49,
+   "eavesM": 13.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fdedbe",
+    "wallRaw": "#fcf6c9",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 285,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 7.58,
+      "riseM": 7.13,
+      "topWidthM": 0.75,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.231,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.05 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.05,
+       "light": 0
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.48,
+       "light": 0
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.58,
+       "light": 0
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.66,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 16.49 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 16.49 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.95 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149470",
+   "address": "Bronckhorststraat 30",
+   "builtYear": 1923,
+   "widthM": 8.2,
+   "eavesM": 13.68,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fadaa8",
+    "wallRaw": "#f8daa8",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 292,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 7.3,
+      "topWidthM": 0.25,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.133,
+    "structure": {
+     "bayWidthM": 1.95,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.2 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.2 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.78 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100100092059",
+   "address": "Bronckhorststraat 28",
+   "builtYear": 1923,
+   "widthM": 8.26,
+   "eavesM": 13.24,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fce0af",
+    "wallRaw": "#fdebb9",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 296,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 0.72,
+      "topWidthM": 1.05,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.203,
+    "structure": {
+     "bayWidthM": 3.45,
+     "bayCentre": 0.4,
+     "balconies": true,
+     "why": "dark open axis 1.57 m at 0.3 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.57,
+       "centre": 0.3,
+       "light": 0.49
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.54,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.87,
+       "light": 0.62
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.26 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.26 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.68 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.021 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107472",
+   "address": "Bronckhorststraat 26",
+   "builtYear": 1923,
+   "widthM": 5.72,
+   "eavesM": 13.17,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fbdaa9",
+    "wallRaw": "#fcecba",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 294,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.287,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 1,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.29,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.72 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.05 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100100092060",
+   "address": "Bronckhorststraat 24",
+   "builtYear": 1923,
+   "widthM": 5.53,
+   "eavesM": 13.13,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#958264",
+    "wallRaw": "#f7d5a1",
+    "skyline": {
+     "eavesM": 19.07,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 2.53,
+      "topWidthM": 0.78,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.272,
+    "structure": {
+     "bayWidthM": 1.85,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.86 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.86,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 0.82,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.27,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.07 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.042 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136110",
+   "address": "Bronckhorststraat 22",
+   "builtYear": 1920,
+   "widthM": 6.89,
+   "eavesM": 10.56,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#feedb2",
+    "wallRaw": "#f9e8b0",
+    "skyline": {
+     "eavesM": 11.38,
+     "eavesRow": 428,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.293,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.12 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.12,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.65,
+       "widthM": 1.68,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.95,
+       "widthM": 1.85,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1920, type 1898-1901; frontage 6.89 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1920, type 1898-1901",
+     "frontage 6.89 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.38 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.081 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127564",
+   "address": "Bronckhorststraat 20",
+   "builtYear": 1920,
+   "widthM": 7.5,
+   "eavesM": 10.61,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dfb889",
+    "wallRaw": "#e7be8d",
+    "skyline": {
+     "eavesM": 11.35,
+     "eavesRow": 429,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 10.72,
+      "topWidthM": 0.45,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.91,
+     "balconies": true,
+     "why": "bay-less open axis 0.97 m at 0.93 (light 0.63): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.93,
+       "light": 0.63
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.7,
+       "widthM": 1.9,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1920, type 1898-1901; frontage 7.5 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1920, type 1898-1901",
+     "frontage 7.5 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.35 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.08 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071097",
+   "address": "Bronckhorststraat 18",
+   "builtYear": 1920,
+   "widthM": 7.83,
+   "eavesM": 10.65,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f443c",
+    "wallRaw": "#f8e8a9",
+    "skyline": {
+     "eavesM": 11.22,
+     "eavesRow": 434,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 10.85,
+      "topWidthM": 0.23,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.126,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.95 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.95,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.52,
+       "widthM": 4.6,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.8,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1920, type 1898-1901; frontage 7.83 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1920, type 1898-1901",
+     "frontage 7.83 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.22 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.044 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110579",
+   "address": "Bronckhorststraat 16",
+   "builtYear": 1920,
+   "widthM": 7.32,
+   "eavesM": 10.39,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aa8c68",
+    "wallRaw": "#f8eaaf",
+    "skyline": {
+     "eavesM": 11.25,
+     "eavesRow": 433,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 10.75,
+      "topWidthM": 0.03,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.216,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.11 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.11,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 5,
+       "centre": 0.63
+      },
+      {
+       "atM": 7.02,
+       "widthM": 0.8,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1920, type 1898-1901; frontage 7.32 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1920, type 1898-1901",
+     "frontage 7.32 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.25 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012239943",
+   "address": "Bronckhorststraat 14",
+   "builtYear": 2010,
+   "widthM": 8.28,
+   "eavesM": 14.47,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f6c898",
+    "wallRaw": "#eabf92",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 288,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 7.2,
+      "topWidthM": 0.15,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 2010, type 1898-1901; frontage 8.28 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 2010, type 1898-1901",
+     "frontage 8.28 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.88 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.069 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086311",
+   "address": "Bronckhorststraat 12",
+   "builtYear": 1923,
+   "widthM": 6.34,
+   "eavesM": 14.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66554c",
+    "wallRaw": "#fae8b1",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 308,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.38 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073360",
+   "address": "Bronckhorststraat 10",
+   "builtYear": 1923,
+   "widthM": 9.4,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65574f",
+    "wallRaw": "#f3d09c",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 313,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 2.77,
+      "topWidthM": 0.1,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.224,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 9.4 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 9.4 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.25 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.059 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012075006",
+   "address": "Bronckhorststraat 8",
+   "builtYear": 1923,
+   "widthM": 9.37,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695954",
+    "wallRaw": "#8d7a6f",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 316,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 8.5,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.48 m at 0.48 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.35,
+       "centre": 0.2,
+       "light": 0.63
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.48,
+       "light": 0.32
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.63,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.82,
+       "centre": 0.83,
+       "light": 0.44
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.95,
+       "centre": 0.83
+      },
+      {
+       "atM": 8.77,
+       "widthM": 1.68,
+       "centre": 0.49
+      },
+      {
+       "atM": 6,
+       "widthM": 1.93,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 9.37 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 9.37 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.18 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.046 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068870",
+   "address": "Bronckhorststraat 6",
+   "builtYear": 1923,
+   "widthM": 9.94,
+   "eavesM": 14.29,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725f5a",
+    "wallRaw": "#897c74",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 308,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.93,
+      "topWidthM": 0.15,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.149,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 6.03 m at 0.33 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 6.03,
+       "centre": 0.33,
+       "light": 0.27
+      },
+      {
+       "widthM": 2.7,
+       "centre": 0.85,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 1.63,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 9.94 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 9.94 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.38 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

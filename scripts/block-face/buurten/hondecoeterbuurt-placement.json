@@ -1,0 +1,632 @@
+{
+ "buurt": "hondecoeterbuurt",
+ "library": "museumkwartier",
+ "generatedAt": "2026-11-01T15:40:00.843Z",
+ "seconds": 134.04,
+ "totals": {
+  "faces": 32,
+  "pands": 259,
+  "placed": 7
+ },
+ "faces": [
+  {
+   "face": "baerle-102-118",
+   "street": "Van Baerlestraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 2.19,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-120-134",
+   "street": "Van Baerlestraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.1,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-136-146",
+   "street": "Van Baerlestraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.66,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-148-162",
+   "street": "Van Baerlestraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.13,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-164-172",
+   "street": "Van Baerlestraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.92,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bronckhorst-5-37",
+   "street": "Bronckhorststraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 7.51,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bronckhorst-6-52",
+   "street": "Bronckhorststraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 5.89,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "coenen-32-64",
+   "status": "no intake"
+  },
+  {
+   "face": "coenen-4-26",
+   "street": "Joh.M. Coenenstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 5.64,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "concertgebouwplein-19-19",
+   "status": "no intake"
+  },
+  {
+   "face": "concertgebouwplein-21-29",
+   "street": "Concertgebouwplein",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.7,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "concertgebouwplein-3-17",
+   "street": "Concertgebouwplein",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 3.62,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hartplein-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "hondecoeter-15-19",
+   "street": "Hondecoeterstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.26,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hondecoeter-18-30",
+   "street": "Hondecoeterstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 2.58,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hondecoeter-2-12",
+   "street": "Hondecoeterstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.77,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hondecoeter-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "hondecoeter-5-5",
+   "status": "no intake"
+  },
+  {
+   "face": "hondecoeter-7-9",
+   "street": "Hondecoeterstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.62,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "lairesse-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "lairesse-7-19",
+   "street": "De Lairessestraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.68,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "maes-100-100",
+   "status": "no intake"
+  },
+  {
+   "face": "maes-106-114",
+   "street": "Nicolaas Maesstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.85,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "maes-113-121",
+   "street": "Nicolaas Maesstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.55,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "maes-58-98",
+   "street": "Nicolaas Maesstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 4.64,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 12,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "maes-71-109",
+   "street": "Nicolaas Maesstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 5.13,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 15,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "mieris-110-112",
+   "status": "no intake"
+  },
+  {
+   "face": "mieris-119-137",
+   "street": "Frans van Mierisstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 5,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "mieris-52-88",
+   "street": "Frans van Mierisstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 5.44,
+   "byType": {},
+   "holds": {
+    "evidence": 4,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "mieris-73-113",
+   "street": "Frans van Mierisstraat",
+   "pands": 16,
+   "placed": 2,
+   "held": 14,
+   "runs": [
+    {
+     "face": "mieris-73-113-r1",
+     "pands": [
+      "0363100012160830",
+      "0363100012166167"
+     ],
+     "passed": false,
+     "triangles": 5260
+    }
+   ],
+   "seconds": 7.64,
+   "byType": {
+    "museum-de-1899-corbel-cornice": 2
+   },
+   "holds": {
+    "evidence": 4,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "mieris-90-108",
+   "street": "Frans van Mierisstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.8,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 4,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-53-73",
+   "street": "Jacob Obrechtstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 4.52,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-75-81",
+   "street": "Jacob Obrechtstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.61,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-85-85",
+   "status": "no intake"
+  },
+  {
+   "face": "obrechtplein-1-11",
+   "street": "Jacob Obrechtplein",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.66,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrechtplein-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "ruloffs-1-11",
+   "street": "Bartholomeus Ruloffsstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 2.18,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "ruloffs-15-19",
+   "street": "Bartholomeus Ruloffsstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.33,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "ruysdael-59-99",
+   "street": "Ruysdaelstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 6.86,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "ruysdael-77-89",
+   "status": "no intake"
+  },
+  {
+   "face": "ruysdael-88-126",
+   "street": "Ruysdaelstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 3.82,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vinkeleskade-53-53",
+   "status": "no intake"
+  },
+  {
+   "face": "wouwerman-1-43",
+   "street": "Wouwermanstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 4.69,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wouwerman-2-44",
+   "street": "Wouwermanstraat",
+   "pands": 17,
+   "placed": 5,
+   "held": 12,
+   "runs": [
+    {
+     "face": "wouwerman-2-44-r1",
+     "pands": [
+      "0363100012114665",
+      "0363100012108114",
+      "0363100012138798",
+      "0363100012083474",
+      "0363100012078941"
+     ],
+     "passed": true,
+     "triangles": 14233
+    }
+   ],
+   "seconds": 28.98,
+   "byType": {
+    "museum-hc-1910-glazed-oriel": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 5,
+    "run": 0,
+    "review": 5
+   }
+  }
+ ]
+}

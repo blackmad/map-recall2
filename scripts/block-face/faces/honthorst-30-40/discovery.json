@@ -1,0 +1,250 @@
+{
+ "street": "Honthorststraat",
+ "seed": "0363100012114350",
+ "members": [
+  "0363100012118922",
+  "0363100012236794",
+  "0363100012066812",
+  "0363100012138135",
+  "0363100012114350"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012077492 25.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012114350 (face continues: 118196)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064884",
+   "reason": "frontage 36.5 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012065390",
+   "reason": "frontage 69.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012079089",
+   "reason": "frontage 34.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012079894",
+   "reason": "frontage 89.6 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "frontage 51.7 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012089728",
+   "reason": "frontage 99.6 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012090747",
+   "reason": "frontage 63.8 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012093534",
+   "reason": "frontage 43.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012095224",
+   "reason": "frontage 47.9 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012099258",
+   "reason": "frontage 41.6 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 31.8 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012099680",
+   "reason": "frontage 44.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012105881",
+   "reason": "no frontage on Honthorststraat: No footprint edge faces Honthorststraat"
+  },
+  {
+   "pandId": "0363100012114637",
+   "reason": "frontage 52.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 73.5 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012116862",
+   "reason": "frontage 32.5 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "frontage 89.5 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012122272",
+   "reason": "frontage 50.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012122594",
+   "reason": "frontage 79.9 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012133770",
+   "reason": "sightline to Honthorststraat crosses 0363100012071827"
+  },
+  {
+   "pandId": "0363100012134540",
+   "reason": "frontage 40.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012135779",
+   "reason": "frontage 71.9 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 81.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012138066",
+   "reason": "frontage 31.3 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012138696",
+   "reason": "sightline to Honthorststraat crosses 0363100012105881"
+  },
+  {
+   "pandId": "0363100012149520",
+   "reason": "frontage 42.1 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012149721",
+   "reason": "frontage 56.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012150353",
+   "reason": "frontage 97.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012151199",
+   "reason": "frontage 60.6 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "frontage 62.5 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012155190",
+   "reason": "frontage 61.4 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012162222",
+   "reason": "no frontage on Honthorststraat: No footprint edge faces Honthorststraat"
+  },
+  {
+   "pandId": "0363100012214752",
+   "reason": "frontage 71.3 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012224122",
+   "reason": "frontage 63.7 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012232428",
+   "reason": "frontage 52.6 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "frontage 67.8 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "frontage 83.1 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012233523",
+   "reason": "frontage 49.7 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012240320",
+   "reason": "frontage 77.0 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 97.3 m from Honthorststraat"
+  },
+  {
+   "pandId": "0363100012160093",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236293",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012118922",
+   "alongM": -35.87,
+   "widthM": 7.14,
+   "eavesM": 11.16,
+   "roofMaxM": 15.63,
+   "storeys3dbag": 4,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236794",
+   "alongM": -25.1,
+   "widthM": 14.41,
+   "eavesM": 11.74,
+   "roofMaxM": 18.34,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012066812",
+   "alongM": -14.32,
+   "widthM": 7.16,
+   "eavesM": 12.73,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138135",
+   "alongM": -7.16,
+   "widthM": 7.16,
+   "eavesM": 15.56,
+   "roofMaxM": 18.76,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114350",
+   "alongM": 0,
+   "widthM": 7.16,
+   "eavesM": 14.53,
+   "roofMaxM": 16.99,
+   "storeys3dbag": 0,
+   "builtYear": 1907,
+   "uncertainty": []
+  }
+ ]
+}

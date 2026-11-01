@@ -1,0 +1,814 @@
+{
+ "face": "moreelse-1-33",
+ "street": "Moreelsestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 3.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236579",
+   "address": "Moreelsestraat 1A",
+   "builtYear": 1904,
+   "widthM": 4.63,
+   "eavesM": 15,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655840",
+    "wallRaw": "#796c54",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 640,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 4.6,
+      "topWidthM": 0.05,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.32,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.33,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.03 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.125 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070992",
+   "address": "Moreelsestraat 5",
+   "builtYear": 1907,
+   "widthM": 6.38,
+   "eavesM": 14.55,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0.48,
+    "toM": 0.48,
+    "depthM": 0.52,
+    "centre": 0.076,
+    "lineRD": [
+     [
+      120497.60718749999,
+      485413.32
+     ],
+     [
+      120503.1101875,
+      485411.06
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5a5130",
+    "wallRaw": "#525133",
+    "skyline": {
+     "eavesM": 26.63,
+     "eavesRow": 96,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 2,
+      "topWidthM": 0.4,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 0.97,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.68
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1907, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1907, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 26.63 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113779",
+   "address": "Moreelsestraat 7",
+   "builtYear": 1907,
+   "widthM": 6.41,
+   "eavesM": 14.34,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b59378",
+    "wallRaw": "#ab9275",
+    "skyline": {
+     "eavesM": 18,
+     "eavesRow": 441,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 11.02,
+      "topWidthM": 0.13,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.321,
+    "structure": {
+     "bayWidthM": 1.35,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.82,
+       "widthM": 0.95,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1907, type 1898-1901; frontage 6.41 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1907, type 1898-1901",
+     "frontage 6.41 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.162 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012111913",
+   "address": "Moreelsestraat 9",
+   "builtYear": 1907,
+   "widthM": 6.41,
+   "eavesM": 14.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#917a5f",
+    "wallRaw": "#81735a",
+    "skyline": {
+     "eavesM": 25.73,
+     "eavesRow": 132,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 3.3,
+      "topWidthM": 0.53,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.213,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 0.85,
+       "centre": 0.36
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.5,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1907, type 1898-1901; frontage 6.41 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1907, type 1898-1901",
+     "frontage 6.41 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 25.73 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.149 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138332",
+   "address": "Moreelsestraat 11",
+   "builtYear": 1907,
+   "widthM": 6.41,
+   "eavesM": 9.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#49402a",
+    "wallRaw": "#797258",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 624,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.65,
+      "riseM": 2.02,
+      "topWidthM": 0.4,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.397,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.33 m at 0.7 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.33,
+       "centre": 0.7,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 1.77,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1907, type 1898-1901; frontage 6.41 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1907, type 1898-1901",
+     "frontage 6.41 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.43 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.18 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012111241",
+   "address": "Moreelsestraat 13",
+   "builtYear": 1910,
+   "widthM": 6.42,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#827563",
+    "wallRaw": "#817962",
+    "skyline": {
+     "eavesM": 18.23,
+     "eavesRow": 432,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 10.4,
+      "topWidthM": 0.4,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.269,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.38,
+       "widthM": 1.95,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.02,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099460",
+   "address": "Moreelsestraat 15",
+   "builtYear": 1910,
+   "widthM": 6.42,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a745f",
+    "wallRaw": "#877a62",
+    "skyline": {
+     "eavesM": 24.75,
+     "eavesRow": 171,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 3.9,
+      "topWidthM": 0.38,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.288,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.67 < 0.7 (strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 15.3 m; 3DBAG 13.69 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.157 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012120516",
+   "address": "Moreelsestraat 17",
+   "builtYear": 1910,
+   "widthM": 6.47,
+   "eavesM": 13.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f7865",
+    "wallRaw": "#867c64",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 608,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 10.4,
+      "topWidthM": 0.2,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.337,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.47,
+       "widthM": 0.93,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159779",
+   "address": "Moreelsestraat 19",
+   "builtYear": 1910,
+   "widthM": 22.05,
+   "eavesM": 16.06,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e3cbb4",
+    "wallRaw": "#d6ab89",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 495,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 6.58,
+      "riseM": 5.03,
+      "topWidthM": 0.9,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.358,
+    "structure": {
+     "bayWidthM": 2.58,
+     "bayCentre": 0.4,
+     "balconies": true,
+     "why": "dark open axis 1.82 m at 0.05 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.82,
+       "centre": 0.05,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.17,
+       "widthM": 0.93,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1910, type 1898-1901; frontage 22.05 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1898-1901",
+     "frontage 22.05 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.65 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.158 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132812",
+   "address": "Moreelsestraat 21",
+   "builtYear": 1913,
+   "widthM": 7.46,
+   "eavesM": 22.06,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fbe9b4",
+    "wallRaw": "#f8e0ae",
+    "skyline": {
+     "eavesM": 23.23,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.241,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.7,
+       "widthM": 0.8,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1913, type 1898-1901; frontage 7.46 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1898-1901",
+     "frontage 7.46 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 23.23 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.05 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

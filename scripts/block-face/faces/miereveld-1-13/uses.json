@@ -1,0 +1,127 @@
+{
+ "street": "Van Miereveldstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:43:35.319Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154971",
+   "addresses": [
+    "Van Miereveldstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 1",
+     "use": "kantoorfunctie",
+     "areaM2": 613,
+     "bagId": "0363010000842067"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145556",
+   "addresses": [
+    "Van Miereveldstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 3",
+     "use": "kantoorfunctie",
+     "areaM2": 471,
+     "bagId": "0363010001002627"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079958",
+   "addresses": [
+    "Van Miereveldstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 261,
+     "bagId": "0363010000842068"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147731",
+   "addresses": [
+    "Van Miereveldstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000842069"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110232",
+   "addresses": [
+    "Van Miereveldstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 9",
+     "use": "kantoorfunctie",
+     "areaM2": 360,
+     "bagId": "0363010000979479"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107845",
+   "addresses": [
+    "Van Miereveldstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 11",
+     "use": "kantoorfunctie",
+     "areaM2": 357,
+     "bagId": "0363010012138857"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062753",
+   "addresses": [
+    "Van Miereveldstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Miereveldstraat 13",
+     "use": "kantoorfunctie",
+     "areaM2": 1350,
+     "bagId": "0363010001006930"
+    },
+    {
+     "address": "Van Miereveldstraat 13",
+     "use": "kantoorfunctie",
+     "areaM2": 944,
+     "bagId": "0363010012138858"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

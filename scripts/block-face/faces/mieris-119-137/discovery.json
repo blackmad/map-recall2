@@ -1,0 +1,1502 @@
+{
+ "street": "Frans van Mierisstraat",
+ "seed": "0363100012236287",
+ "members": [
+  "0363100012236287",
+  "0363100012142671",
+  "0363100012096687",
+  "0363100012089533",
+  "0363100012237068",
+  "0363100012237244",
+  "0363100012236746",
+  "0363100012120258",
+  "0363100012144493"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012161125 30.7 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012097110 60.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061243",
+   "reason": "frontage 37.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012061252",
+   "reason": "frontage 97.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012061410",
+   "reason": "frontage 71.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012061581",
+   "reason": "frontage 143.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012061926",
+   "reason": "frontage 123.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012061959",
+   "reason": "frontage 140.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012062427",
+   "reason": "frontage 84.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012062452",
+   "reason": "frontage 35.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012062539",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 128.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012064104",
+   "reason": "frontage 154.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012065200",
+   "reason": "frontage 66.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012065330",
+   "reason": "frontage 80.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012065798",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012099468"
+  },
+  {
+   "pandId": "0363100012065812",
+   "reason": "frontage 165.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012066928",
+   "reason": "frontage 190.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012067174",
+   "reason": "frontage 66.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012068409",
+   "reason": "frontage 144.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 99.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012069054",
+   "reason": "frontage 115.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012069906",
+   "reason": "frontage 134.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 126.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "frontage 95.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012070981",
+   "reason": "frontage 148.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012071097",
+   "reason": "frontage 111.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012071771",
+   "reason": "frontage 197.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012073360",
+   "reason": "frontage 102.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "frontage 98.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012074574",
+   "reason": "frontage 71.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 97.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012074730",
+   "reason": "frontage 90.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012074968",
+   "reason": "frontage 35.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012075006",
+   "reason": "frontage 102.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012075176",
+   "reason": "frontage 148.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012075888",
+   "reason": "frontage 161.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012075943",
+   "reason": "frontage 185.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 74.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012076543",
+   "reason": "frontage 121.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012076562",
+   "reason": "frontage 49.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 99.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012077779",
+   "reason": "frontage 148.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012078452",
+   "reason": "frontage 77.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012079291",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 128.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012079935",
+   "reason": "frontage 135.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012079949",
+   "reason": "frontage 103.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012080156",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012081607",
+   "reason": "frontage 125.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012082599",
+   "reason": "frontage 38.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012082921",
+   "reason": "frontage 137.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012083384",
+   "reason": "frontage 88.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 98.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012085656",
+   "reason": "frontage 138.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012085712",
+   "reason": "frontage 158.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012086257",
+   "reason": "frontage 139.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012086311",
+   "reason": "frontage 107.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 97.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "frontage 48.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012088619",
+   "reason": "frontage 186.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 127.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 97.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012090956",
+   "reason": "frontage 186.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012091058",
+   "reason": "frontage 147.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012091399",
+   "reason": "frontage 108.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012091786",
+   "reason": "frontage 154.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012092203",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012092581",
+   "reason": "frontage 144.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012093105",
+   "reason": "frontage 42.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012093460",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012093999",
+   "reason": "frontage 109.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012094340",
+   "reason": "frontage 199.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012096682",
+   "reason": "frontage 117.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "frontage 126.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012097793",
+   "reason": "frontage 37.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012099055",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012144493"
+  },
+  {
+   "pandId": "0363100012099485",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012099803",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 127.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012101217",
+   "reason": "frontage 37.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012101863",
+   "reason": "frontage 37.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 152.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 128.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012105244",
+   "reason": "frontage 146.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 99.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012105894",
+   "reason": "frontage 147.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012106312",
+   "reason": "frontage 139.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012107142",
+   "reason": "frontage 73.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012107170",
+   "reason": "frontage 37.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "frontage 119.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012107670",
+   "reason": "frontage 66.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 128.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "frontage 128.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012108722",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012109686",
+   "reason": "frontage 44.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012110579",
+   "reason": "frontage 108.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "frontage 65.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012111363",
+   "reason": "frontage 87.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 97.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012112467",
+   "reason": "frontage 152.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 94.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012113666",
+   "reason": "frontage 66.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "frontage 128.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012115169",
+   "reason": "frontage 149.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 99.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012118801",
+   "reason": "frontage 123.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012118867",
+   "reason": "frontage 182.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "frontage 37.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012119530",
+   "reason": "frontage 136.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 127.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012120011",
+   "reason": "frontage 90.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012120956",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012121249",
+   "reason": "frontage 134.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012121336",
+   "reason": "frontage 140.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012121517",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012121774",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012065798"
+  },
+  {
+   "pandId": "0363100012121843",
+   "reason": "frontage 152.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012122255",
+   "reason": "frontage 34.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012122501",
+   "reason": "frontage 202.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012122929",
+   "reason": "frontage 141.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012122938",
+   "reason": "frontage 186.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012122962",
+   "reason": "frontage 100.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012123148",
+   "reason": "frontage 191.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012123541",
+   "reason": "frontage 137.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 153.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012125119",
+   "reason": "frontage 71.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012126637",
+   "reason": "frontage 168.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 127.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012126879",
+   "reason": "frontage 65.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012127564",
+   "reason": "frontage 112.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012127925",
+   "reason": "frontage 77.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012128092",
+   "reason": "frontage 130.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012128160",
+   "reason": "frontage 141.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012128629",
+   "reason": "frontage 90.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012128736",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012095692"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 38.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012129710",
+   "reason": "frontage 64.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012130151",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "frontage 91.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012131184",
+   "reason": "frontage 65.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012132213",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012132447",
+   "reason": "frontage 137.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012133078",
+   "reason": "frontage 148.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012134185",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012134221",
+   "reason": "frontage 75.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012134293",
+   "reason": "frontage 136.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012134433",
+   "reason": "frontage 64.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012134792",
+   "reason": "frontage 180.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "frontage 38.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012136110",
+   "reason": "frontage 112.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "frontage 126.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012137074",
+   "reason": "frontage 64.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 127.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "frontage 37.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012139354",
+   "reason": "frontage 100.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012139819",
+   "reason": "frontage 71.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012140050",
+   "reason": "frontage 70.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012141661",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 99.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "frontage 146.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012145619",
+   "reason": "frontage 186.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012145993",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012146105",
+   "reason": "frontage 90.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012146113",
+   "reason": "frontage 35.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012146221",
+   "reason": "frontage 187.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012146977",
+   "reason": "frontage 76.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012147677",
+   "reason": "frontage 92.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 127.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012147832",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012148809",
+   "reason": "frontage 225.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012148966",
+   "reason": "frontage 144.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012149357",
+   "reason": "frontage 228.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012149421",
+   "reason": "frontage 182.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "frontage 123.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012149750",
+   "reason": "frontage 39.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152130",
+   "reason": "frontage 65.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "frontage 34.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "frontage 65.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "frontage 39.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "frontage 101.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 95.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 98.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "frontage 31.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 99.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012153998",
+   "reason": "frontage 130.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012154007",
+   "reason": "frontage 157.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "frontage 41.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012154443",
+   "reason": "frontage 77.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012154962",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 127.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155248",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012095692"
+  },
+  {
+   "pandId": "0363100012155320",
+   "reason": "frontage 72.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "frontage 48.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "frontage 64.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012156856"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 97.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 42.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "frontage 65.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "frontage 65.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 97.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156533",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "frontage 65.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156622",
+   "reason": "frontage 107.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 35.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156759",
+   "reason": "frontage 72.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "frontage 77.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156834",
+   "reason": "frontage 34.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012156856"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "frontage 34.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "frontage 41.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "frontage 30.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "frontage 65.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "frontage 46.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "frontage 65.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 98.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158207",
+   "reason": "frontage 71.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 34.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "frontage 65.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "frontage 65.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012158932",
+   "reason": "frontage 72.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 97.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 39.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "frontage 65.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "frontage 41.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "frontage 65.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 77.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "frontage 55.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 65.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 35.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "frontage 65.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "frontage 36.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "frontage 83.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 70.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "frontage 65.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "frontage 65.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "frontage 41.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "frontage 65.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "frontage 34.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "frontage 41.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "frontage 65.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 65.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "frontage 36.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163345",
+   "reason": "frontage 34.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "frontage 71.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "frontage 65.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163735",
+   "reason": "frontage 72.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "frontage 46.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "frontage 65.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012164333",
+   "reason": "frontage 147.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 89.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 65.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "frontage 65.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "frontage 34.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "frontage 46.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166495",
+   "reason": "frontage 89.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 98.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012155476"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "frontage 41.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "sightline to Frans van Mierisstraat crosses 0363100012236106"
+  },
+  {
+   "pandId": "0363100012167149",
+   "reason": "frontage 75.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "frontage 35.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 75.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012183440",
+   "reason": "frontage 121.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 88.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012190884",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012191848",
+   "reason": "frontage 136.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "frontage 84.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012200136",
+   "reason": "frontage 76.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012203385",
+   "reason": "frontage 101.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012204080",
+   "reason": "frontage 136.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012206732",
+   "reason": "frontage 119.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012207168",
+   "reason": "frontage 102.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012208002",
+   "reason": "frontage 123.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012211064",
+   "reason": "frontage 42.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012211065",
+   "reason": "frontage 40.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012211066",
+   "reason": "frontage 34.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012211067",
+   "reason": "frontage 34.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012211101",
+   "reason": "frontage 136.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 31.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012218010",
+   "reason": "frontage 131.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012218857",
+   "reason": "frontage 162.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012218858",
+   "reason": "frontage 161.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "frontage 35.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "frontage 88.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012227333",
+   "reason": "frontage 131.1 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012227383",
+   "reason": "frontage 136.7 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012230919",
+   "reason": "frontage 32.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 31.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012233624",
+   "reason": "no frontage on Frans van Mierisstraat: No footprint edge faces Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012233653",
+   "reason": "frontage 48.3 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012233672",
+   "reason": "frontage 31.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 43.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "frontage 65.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 35.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 35.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "frontage 43.2 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 35.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 35.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 82.8 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236921",
+   "reason": "frontage 41.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "frontage 34.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 35.9 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 36.0 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "frontage 100.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012237375",
+   "reason": "frontage 39.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012239943",
+   "reason": "frontage 108.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012246038",
+   "reason": "frontage 73.4 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "frontage 73.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "frontage 87.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012254672",
+   "reason": "frontage 125.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100100092059",
+   "reason": "frontage 121.6 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "frontage 118.5 m from Frans van Mierisstraat"
+  },
+  {
+   "pandId": "0363100012065316",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079547",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083972",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119516",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148154",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236749",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012236287",
+   "alongM": 0,
+   "widthM": 20.22,
+   "eavesM": 13.82,
+   "roofMaxM": 16.01,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012142671",
+   "alongM": 14.46,
+   "widthM": 5.73,
+   "eavesM": 16.98,
+   "roofMaxM": 20.41,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096687",
+   "alongM": 20.82,
+   "widthM": 6.99,
+   "eavesM": 15.05,
+   "roofMaxM": 17.91,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012089533",
+   "alongM": 27.86,
+   "widthM": 7.08,
+   "eavesM": 14.99,
+   "roofMaxM": 17.91,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012237068",
+   "alongM": 36.25,
+   "widthM": 9.72,
+   "eavesM": 15.76,
+   "roofMaxM": 20.19,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237244",
+   "alongM": 45.96,
+   "widthM": 9.69,
+   "eavesM": 15.84,
+   "roofMaxM": 21.55,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236746",
+   "alongM": 55.64,
+   "widthM": 9.67,
+   "eavesM": 15.91,
+   "roofMaxM": 19.29,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012120258",
+   "alongM": 65.17,
+   "widthM": 9.4,
+   "eavesM": 15.83,
+   "roofMaxM": 19.4,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012144493",
+   "alongM": 74.99,
+   "widthM": 10.24,
+   "eavesM": 15.69,
+   "roofMaxM": 20.13,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  }
+ ]
+}

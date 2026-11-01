@@ -1,0 +1,28 @@
+{
+ "pins": [
+  {
+   "pandId": "0363100012064242",
+   "type": "museum-jv-1910-lintel-parapet",
+   "side": "left",
+   "reason": "maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 49 has its double house door on the left axis, paired with its neighbour's door on the party wall"
+  },
+  {
+   "pandId": "0363100012161910",
+   "type": "museum-jv-1910-lintel-parapet",
+   "side": "left",
+   "reason": "maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 53 has its double house door on the left axis, paired with its neighbour's door on the party wall"
+  },
+  {
+   "pandId": "0363100012111419",
+   "type": "museum-jv-1910-lintel-parapet",
+   "side": "left",
+   "reason": "maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 57 has its double house door on the left axis, paired with its neighbour's door on the party wall"
+  },
+  {
+   "pandId": "0363100012095505",
+   "type": "museum-jv-1910-lintel-parapet",
+   "side": "left",
+   "reason": "maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 61 has its double house door on the left axis, paired with its neighbour's door on the party wall"
+  }
+ ]
+}

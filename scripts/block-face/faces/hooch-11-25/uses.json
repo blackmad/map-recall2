@@ -1,0 +1,540 @@
+{
+ "street": "Pieter de Hoochstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:33:32.202Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012255082",
+   "addresses": [
+    "Pieter de Hoochstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 11",
+     "use": "industriefunctie",
+     "areaM2": 428,
+     "bagId": "0363010012086127"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012250514",
+   "addresses": [
+    "Pieter de Hoochstraat 11A",
+    "Pieter de Hoochstraat 11B",
+    "Pieter de Hoochstraat 11C",
+    "Pieter de Hoochstraat 11D",
+    "Pieter de Hoochstraat 11E",
+    "Pieter de Hoochstraat 11F",
+    "Pieter de Hoochstraat 11G",
+    "Pieter de Hoochstraat 11H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 31",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001000628"
+    },
+    {
+     "address": "Hobbemakade 31",
+     "use": "kantoorfunctie",
+     "areaM2": 5829,
+     "bagId": "0363010012086126"
+    },
+    {
+     "address": "Hobbemakade 31",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 755,
+     "bagId": "0363010012126413"
+    },
+    {
+     "address": "Pieter de Hoochstraat 11H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 3494,
+     "bagId": "0363010012126447"
+    }
+   ],
+   "units": 31,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11971527111,
+     "lngLat": [
+      4.8854127,
+      52.3564556
+     ],
+     "tags": {
+      "access": "private",
+      "amenity": "parking_entrance",
+      "level": "-1",
+      "parking": "underground"
+     },
+     "fetchedAt": "2026-11-01T16:33:32.202Z",
+     "match": "frontage",
+     "distanceM": 2.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012121704",
+   "addresses": [
+    "Pieter de Hoochstraat 13B",
+    "Pieter de Hoochstraat 13C",
+    "Pieter de Hoochstraat 13D",
+    "Pieter de Hoochstraat 13E",
+    "Pieter de Hoochstraat 13F",
+    "Pieter de Hoochstraat 13G",
+    "Pieter de Hoochstraat 13H",
+    "Pieter de Hoochstraat 13K",
+    "Pieter de Hoochstraat 13A",
+    "Pieter de Hoochstraat 15B",
+    "Pieter de Hoochstraat 15C",
+    "Pieter de Hoochstraat 15D",
+    "Pieter de Hoochstraat 15E",
+    "Pieter de Hoochstraat 15F",
+    "Pieter de Hoochstraat 15G",
+    "Pieter de Hoochstraat 15H",
+    "Pieter de Hoochstraat 15K",
+    "Pieter de Hoochstraat 15A",
+    "Pieter de Hoochstraat 17B",
+    "Pieter de Hoochstraat 17C",
+    "Pieter de Hoochstraat 17D",
+    "Pieter de Hoochstraat 17E",
+    "Pieter de Hoochstraat 17F",
+    "Pieter de Hoochstraat 17G",
+    "Pieter de Hoochstraat 17H",
+    "Pieter de Hoochstraat 17A",
+    "Pieter de Hoochstraat 19B",
+    "Pieter de Hoochstraat 19C",
+    "Pieter de Hoochstraat 19D",
+    "Pieter de Hoochstraat 19E",
+    "Pieter de Hoochstraat 19F",
+    "Pieter de Hoochstraat 19G",
+    "Pieter de Hoochstraat 19A",
+    "Pieter de Hoochstraat 19H",
+    "Pieter de Hoochstraat 21B",
+    "Pieter de Hoochstraat 21C",
+    "Pieter de Hoochstraat 21D",
+    "Pieter de Hoochstraat 21E",
+    "Pieter de Hoochstraat 21F",
+    "Pieter de Hoochstraat 21G",
+    "Pieter de Hoochstraat 21H",
+    "Pieter de Hoochstraat 21K",
+    "Pieter de Hoochstraat 21A",
+    "Pieter de Hoochstraat 23E",
+    "Pieter de Hoochstraat 23G",
+    "Pieter de Hoochstraat 23H",
+    "Pieter de Hoochstraat 23K",
+    "Pieter de Hoochstraat 23A",
+    "Pieter de Hoochstraat 23B",
+    "Pieter de Hoochstraat 23C",
+    "Pieter de Hoochstraat 23D",
+    "Pieter de Hoochstraat 23F",
+    "Pieter de Hoochstraat 25B",
+    "Pieter de Hoochstraat 25C",
+    "Pieter de Hoochstraat 25D",
+    "Pieter de Hoochstraat 25E",
+    "Pieter de Hoochstraat 25G",
+    "Pieter de Hoochstraat 25H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996337"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996338"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996339"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996340"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13F",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000996341"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996342"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996343"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13K",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000996344"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996346"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996347"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996348"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996349"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15F",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996350"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996351"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996352"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15K",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000996353"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996355"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996356"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996357"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996358"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17F",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996359"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996360"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996361"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996363"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996364"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996365"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996366"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19F",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996367"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996368"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996374"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996375"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996376"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996377"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21F",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996378"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996379"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996380"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21K",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010000996381"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996389"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000996390"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23K",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000996391"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000996393"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000996394"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25D",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000996395"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000996396"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25G",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000996397"
+    },
+    {
+     "address": "Pieter de Hoochstraat 25H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000996398"
+    },
+    {
+     "address": "Nicolaas Maesstraat 2A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000996399"
+    },
+    {
+     "address": "Nicolaas Maesstraat 2B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000996401"
+    },
+    {
+     "address": "Nicolaas Maesstraat 2C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000996402"
+    },
+    {
+     "address": "Pieter de Hoochstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000996411"
+    },
+    {
+     "address": "Pieter de Hoochstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000996412"
+    },
+    {
+     "address": "Pieter de Hoochstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000996414"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996415"
+    },
+    {
+     "address": "Pieter de Hoochstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000996458"
+    },
+    {
+     "address": "Nicolaas Maesstraat 2D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001002057"
+    },
+    {
+     "address": "Hobbemakade 50",
+     "use": "logiesfunctie",
+     "areaM2": 6809,
+     "bagId": "0363010001002606"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000996383"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000996384"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000996385"
+    },
+    {
+     "address": "Pieter de Hoochstraat 23F",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000996387"
+    },
+    {
+     "address": "Pieter de Hoochstraat 19H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996369"
+    }
+   ],
+   "units": 65,
+   "osm": [
+    {
+     "type": "node",
+     "id": 358187953,
+     "lngLat": [
+      4.8860287,
+      52.3558504
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50",
+      "addr:postcode": "1071XL",
+      "addr:street": "Hobbemakade",
+      "name": "Avani Museum Quarter",
+      "operator": "Avani Hotels",
+      "stars": "4",
+      "tourism": "hotel",
+      "website": "https://www.avanihotels.com/en/museum-quarter-amsterdam"
+     },
+     "fetchedAt": "2026-11-01T16:33:32.202Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

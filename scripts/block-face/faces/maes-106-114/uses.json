@@ -1,0 +1,89 @@
+{
+ "street": "Nicolaas Maesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107670",
+   "addresses": [
+    "Nicolaas Maesstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000750830"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067174",
+   "addresses": [
+    "Nicolaas Maesstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000750824"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131184",
+   "addresses": [
+    "Nicolaas Maesstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000750821"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113666",
+   "addresses": [
+    "Nicolaas Maesstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000750816"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152130",
+   "addresses": [
+    "Nicolaas Maesstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000750812"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

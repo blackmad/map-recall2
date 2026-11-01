@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "museum-de-1899-corbel-flat",
+ "district": "museumkwartier",
+ "description": "Duivelseiland 1899-1900 speculative rows (Cornelis Anthoniszstraat 50-72, Balthasar Floriszstraat 4-10 and 18-26): 5.2-5.7 m orange-red brick fronts of four storeys under a white timber cornice at 13.4 m over a 0.75 m brick corbel-table frieze; three equal axes of white T-windows (a top light over two casements) with white sills; flat heads on every storey (the twin of museum-de-1899-corbel-cornice: same row, same builder, no arch rings); an iron balconette on a slab on the centre axis of storeys 1 and 2; one white pediment dormer with a carved crest over the centre; the house door with its transom on an end axis",
+ "fit": {
+  "widthM": [
+   5.0,
+   6.0
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1898,
+   1901
+  ],
+  "yearSlack": 0,
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 13.4,
+  "frontSkylineM": 14.7,
+  "crownFromType": "pediment-dormer",
+  "note": "Cornelis Anthoniszstraat 62-68 and Balthasar Floriszstraat 18-24 on the 2024-12-11 strips (40 px/m, 1 m grid): white cornice top 13.35-13.5 m; 3DBAG eaves 15.2-15.8 m read the roof behind it (the dark roof face shows 13.5-14.2 m between the dormers), so the cornice is the type's front line (frontEavesM). BAG 1899-1900 on the exemplars; widths 5.2-5.7 m. The strip skyline reads 14.5-14.9 m on the clean-sky pands (Cornelis Anthoniszstraat 50-70, Balthasar Floriszstraat 2A-8, 18, 32-34): the top of the dark roof face behind the cornice, between the dormers (frontSkylineM). Twin of museum-de-1899-corbel-cornice: the arch rings over storeys 1-2 are the only difference (Cornelis Anthoniszstraat 62, 68-70, Balthasar Floriszstraat 22 against their arched neighbours); the edges cannot tell them apart reliably, so reviewed pands are pinned (duivelseiland-review-types.json)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.3,
+   3.0,
+   2.95,
+   2.85
+  ],
+  "windows": "t-window",
+  "windowShare": 0.62,
+  "windowHeights": [
+   0.79,
+   0.77,
+   0.8,
+   0.81
+  ],
+  "headLines": [
+   0.88,
+   0.87,
+   0.86,
+   0.88
+  ],
+  "windowSurround": "sill",
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.3,
+   "cap": 0.5,
+   "frieze": "wall",
+   "capDepth": 0.35
+  },
+  "corbelTable": {
+   "courses": 2,
+   "rows": 2,
+   "pitch": 0.3,
+   "blockCourses": 3
+  },
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.39,
+     "to": 0.61
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.4,
+    "setback": 0.35
+   },
+   "note": "Cornelis Anthoniszstraat 62-68: one white dormer 1.2-1.3 m wide over the centre axis, its body 13.5-14.6 m to a pediment with a carved crest to about 15.2 m (the crest is not drawn)"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "Cornelis Anthoniszstraat 66, Balthasar Floriszstraat 24: the house door with a transom on the left axis, two windows"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "Cornelis Anthoniszstraat 64 and 68, Balthasar Floriszstraat 18: mirrored, the door on the right axis"
+  }
+ },
+ "palettes": {
+  "orange-red": {
+   "brick": "#9a6a4e",
+   "band": "#8a5a42",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#e2ded2",
+   "cornice": "#e6e2d6"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: three T-windows of one width (1.1-1.15 m)",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric; the door on the left or right axis",
+  "groundFloor": "residential: house door with a transom and two windows",
+  "signage": "none",
+  "roofline": "white timber cornice at 13.4 m over a brick corbel-table frieze; one white pediment dormer",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "anthonisz-40-72",
+   "pands": [
+    "0363100012159956",
+    "0363100012158092"
+   ],
+   "citation": "strip.jpg 2024-12-11 at 40 px/m (Cornelis Anthoniszstraat 70, 68, 62): storey lines, cornice, corbel table and dormers as on 66-62 within 0.1 m; storey 1-2 windows 3.6-5.9 m and 6.5-8.85 m square-headed under a flat brick lintel, no arch ring"
+  },
+  {
+   "face": "florisz-12-38",
+   "pands": [
+    "0363100012164388"
+   ],
+   "citation": "strip.jpg 2024-12-11 (Balthasar Floriszstraat 22): flat-headed between the arched 24 and 20"
+  }
+ ],
+ "schemaLimits": [
+  "the corbel-table frieze is drawn as a band-brick course with two staggered rows of corbel blocks (corbelTable); the photo's lattice is moulded brick with diamond joints, its relief not drawn",
+  "the carved crest on the dormer pediment is not drawn"
+ ],
+ "notes": [
+  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10)."
+ ]
+}

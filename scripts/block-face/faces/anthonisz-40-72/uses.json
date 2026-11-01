@@ -1,0 +1,357 @@
+{
+ "street": "Cornelis Anthoniszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:37:23.873Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157250",
+   "addresses": [
+    "Cornelis Anthoniszstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001007623"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159956",
+   "addresses": [
+    "Cornelis Anthoniszstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001167838"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158092",
+   "addresses": [
+    "Cornelis Anthoniszstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000609176"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164470",
+   "addresses": [
+    "Cornelis Anthoniszstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001018015"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159040",
+   "addresses": [
+    "Cornelis Anthoniszstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001015302"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160204",
+   "addresses": [
+    "Cornelis Anthoniszstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000609152"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166337",
+   "addresses": [
+    "Cornelis Anthoniszstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001986981"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166353",
+   "addresses": [
+    "Cornelis Anthoniszstraat 58A",
+    "Cornelis Anthoniszstraat 58B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 58A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000609138"
+    },
+    {
+     "address": "Cornelis Anthoniszstraat 58B",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000609139"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153235",
+   "addresses": [
+    "Cornelis Anthoniszstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000609130"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157008",
+   "addresses": [
+    "Cornelis Anthoniszstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000609122"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158008",
+   "addresses": [
+    "Cornelis Anthoniszstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000609114"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161772",
+   "addresses": [
+    "Cornelis Anthoniszstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000609106"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164605",
+   "addresses": [
+    "Cornelis Anthoniszstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 48-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000609099"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154134",
+   "addresses": [
+    "Cornelis Anthoniszstraat 46A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 46A-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012069027"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161511",
+   "addresses": [
+    "Cornelis Anthoniszstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000609087"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156630",
+   "addresses": [
+    "Cornelis Anthoniszstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000609079"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160945",
+   "addresses": [
+    "Cornelis Anthoniszstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000609071"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925704837,
+     "lngLat": [
+      4.8847423,
+      52.3536401
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T12:37:23.873Z",
+     "match": "frontage",
+     "distanceM": 3.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012063666",
+   "addresses": [
+    "Cornelis Anthoniszstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000999434"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925693252,
+     "lngLat": [
+      4.8846518,
+      52.3535377
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "10",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T12:37:23.873Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    },
+    {
+     "type": "node",
+     "id": 12925704837,
+     "lngLat": [
+      4.8847423,
+      52.3536401
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T12:37:23.873Z",
+     "match": "frontage",
+     "distanceM": 3.7
+    }
+   ]
+  }
+ ]
+}

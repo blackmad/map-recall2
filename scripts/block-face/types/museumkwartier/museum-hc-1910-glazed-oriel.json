@@ -1,0 +1,239 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "museum-hc-1910-glazed-oriel",
+ "district": "museumkwartier",
+ "description": "Wouwermanstraat 6-24 (1910-1911): 6.0-6.6 m brick fronts (dark brown, yellow or red) of four tall storeys under a white timber cornice at 15.3 m over a brick frieze; three axes of white windows with segmental heads on stone springers; a white glazed timber oriel on a heavy bracketed console on the centre axis of storey 2; an iron-railed balcony on the centre axis of storey 1; a round-arched house-door portal on an end axis; over the centre axis either a brick tower dormer with one tall light (6-16) or a white pediment dormer (18-24)",
+ "fit": {
+  "widthM": [
+   5.8,
+   6.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1910,
+   1911
+  ],
+  "yearSlack": 0,
+  "storeys3dbag": [
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 15.3,
+  "note": "Wouwermanstraat 14 and 22 on the 2024-11-06 strip (40 px/m, 1 m grid): white cornice top 15.2-15.3 m; 3DBAG eaves 14.0-14.4 m sit a metre under the photo's cornice, and 3DBAG counts five storeys in four tall ones, so the cornice is the type's front line (frontEavesM). BAG 1910-1911 on the exemplars, widths 6.0-6.6 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.3,
+   3.45,
+   3.1,
+   3.55
+  ],
+  "windows": "small-over-one",
+  "windowShare": 0.6,
+  "windowHeights": [
+   0.66,
+   0.78,
+   0.87,
+   0.82
+  ],
+  "headLines": [
+   0.9,
+   0.87,
+   0.95,
+   0.87
+  ],
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "stone",
+    "style": "springers",
+    "springerSize": [
+     0.18,
+     0.3
+    ]
+   }
+  },
+  "windowSurround": "sill",
+  "cornice": "simple",
+  "entablature": {
+   "rise": 0.9,
+   "cap": 0.3,
+   "frieze": "wall",
+   "capDepth": 0.3
+  },
+  "balconies": {
+   "storeys": [
+    1
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  },
+  "bayWindows": {
+   "bays": {
+    "from": 1,
+    "to": 1
+   },
+   "storeys": [
+    2
+   ],
+   "oriel": {
+    "span": 2.2,
+    "projection": 0.6,
+    "returns": 0.4,
+    "stallriser": 0.3,
+    "head": 0.35,
+    "frontLights": 2,
+    "paintedStoreys": [
+     2
+    ],
+    "console": true,
+    "consoleCorbel": {
+     "rise": 0.5,
+     "steps": 3,
+     "colour": "#6a6258"
+    }
+   }
+  }
+ },
+ "crowns": {
+  "tower-dormer": {
+   "gable": "cornice",
+   "tower": {
+    "bays": {
+     "from": 1,
+     "to": 1
+    },
+    "rise": 0.85,
+    "cap": "flat",
+    "lights": "per-axis",
+    "lightSill": 0.08,
+    "lightRise": 0.55
+   },
+   "note": "Wouwermanstraat 6-16: a brick tower dormer 1.85 m wide flush with the front over the centre axis, from the frieze at 14.4 m to a flat coping at 18.2 m, one tall white light 15.5-17.3 m"
+  },
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.6,
+    "setback": 0.4
+   },
+   "note": "Wouwermanstraat 18-24 (and 26-34): one white timber dormer about 1.7 m wide over the centre axis, its body 15.4-16.8 m to a pediment at 17.7 m"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "doorArch": {
+    "span": 1.5,
+    "apex": 4.0
+   },
+   "basement": "none",
+   "note": "Wouwermanstraat 14, 10: the house door under a round-arched portal 1.5 m wide to 4.0 m on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "doorArch": {
+    "span": 1.5,
+    "apex": 4.0
+   },
+   "basement": "none",
+   "note": "Wouwermanstraat 12, 6: mirrored, the portal on the right axis"
+  }
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#6a5040",
+   "band": "#5a4436",
+   "frame": "white-painted",
+   "door": "#5a2a20",
+   "stone": "#cdb98e",
+   "cornice": "#e6e2d6"
+  },
+  "yellow": {
+   "brick": "#b08a52",
+   "band": "#9a7848",
+   "frame": "white-painted",
+   "door": "#5a2a20",
+   "stone": "#cdb98e",
+   "cornice": "#e6e2d6"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: three windows of one width (1.15-1.2 m) under segmental heads; the centre window of storey 2 is the oriel",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 2 + oriel | 3: 3 | dormer: 1",
+  "symmetry": "upper storeys symmetric on the oriel axis; the door portal on the left or right axis",
+  "groundFloor": "residential: a round-arched house-door portal and two windows",
+  "signage": "none",
+  "roofline": "white timber cornice at 15.3 m over a 0.6 m brick frieze; a brick tower dormer or a white pediment dormer on the centre axis",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "wouwerman-2-44",
+   "pands": [
+    "0363100012138798"
+   ],
+   "citation": "strip.jpg 2024-11-06 at 40 px/m, 1 m grid (Wouwermanstraat 14, 6.0 m): ground windows 1.0-3.85 m, the door portal 0.4-1.9 m across to 4.0 m; balcony slab 4.3 m, storey 1 windows 4.6-7.3 m; oriel console 7.0-8.2 m, oriel 8.2-11.3 m, 2.2 m across; storey 2 side windows 8.0-10.7 m; storey 3 11.05-13.95 m; segmental heads on light springer blocks at every storey; frieze 14.4-15.0 m, white cornice 15.0-15.3 m; tower dormer 2.2-4.0 m across to 18.2 m, light 15.5-17.3 m; side windows 1.2 m wide"
+  },
+  {
+   "face": "wouwerman-2-44",
+   "pands": [
+    "0363100012107749"
+   ],
+   "citation": "strip.jpg 2024-11-06 at 40 px/m (Wouwermanstraat 22, yellow brick): the same storey lines within 0.1 m, oriel 8.3-11.4 m under a hipped hood, a zigzag moulded frieze 14.4-14.9 m, cornice to 15.3 m, white pediment dormer 15.4-17.7 m"
+  },
+  {
+   "face": "wouwerman-2-44",
+   "pands": [
+    "0363100012079390",
+    "0363100012114665",
+    "0363100012108114",
+    "0363100012083474",
+    "0363100012078941",
+    "0363100012090555",
+    "0363100012151501"
+   ],
+   "citation": "strip.jpg 2024-11-06 pands 20-6: the same axes, oriel, console, balcony and cornice; tower dormers on 16-6, pediment dormers on 20-18"
+  }
+ ],
+ "schemaLimits": [
+  "the moulded zigzag frieze under the cornice is drawn as plain wall (entablature frieze)",
+  "the oriel's heavy carved stone console is the kit's oriel console slab",
+  "the oriel's angled hood and its glazing bars are the kit's hipped erker cap and two front lights",
+  "the top storey's centre window over the oriel is drawn full height; the photo's is shortened by the oriel hood"
+ ],
+ "notes": [
+  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install."
+ ]
+}

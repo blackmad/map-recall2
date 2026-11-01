@@ -1,0 +1,258 @@
+{
+ "street": "Bronckhorststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:19:57.520Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012097163",
+   "addresses": [
+    "Bronckhorststraat 32",
+    "Bronckhorststraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000596653"
+    },
+    {
+     "address": "Bronckhorststraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000596661"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149470",
+   "addresses": [
+    "Bronckhorststraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000596645"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100100092059",
+   "addresses": [
+    "Bronckhorststraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 28-H",
+     "use": "industriefunctie",
+     "areaM2": 208,
+     "bagId": "0363010000596637"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107472",
+   "addresses": [
+    "Bronckhorststraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012146340"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100100092060",
+   "addresses": [
+    "Bronckhorststraat 24"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136110",
+   "addresses": [
+    "Bronckhorststraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000596616"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127564",
+   "addresses": [
+    "Bronckhorststraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000596610"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071097",
+   "addresses": [
+    "Bronckhorststraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000596603"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110579",
+   "addresses": [
+    "Bronckhorststraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 16-H",
+     "use": "kantoorfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012065230"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012239943",
+   "addresses": [
+    "Bronckhorststraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 14",
+     "use": "logiesfunctie",
+     "areaM2": 737,
+     "bagId": "0363010002005700"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086311",
+   "addresses": [
+    "Bronckhorststraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 12-H",
+     "use": "industriefunctie",
+     "areaM2": 80,
+     "bagId": "0363010000596587"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073360",
+   "addresses": [
+    "Bronckhorststraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010000596579"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 927214963,
+     "lngLat": [
+      4.8811483,
+      52.3531959
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "14",
+      "addr:postcode": "1071WR",
+      "addr:street": "Bronckhorststraat",
+      "internet_access": "wlan",
+      "name": "The Muse Hotel Amsterdam",
+      "smoking": "outside",
+      "source": "local_knowledge;extrapolation",
+      "tourism": "hotel",
+      "website": "https://www.themuseamsterdam.com/en/index.html"
+     },
+     "fetchedAt": "2026-11-01T13:19:57.520Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012075006",
+   "addresses": [
+    "Bronckhorststraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000596571"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068870",
+   "addresses": [
+    "Bronckhorststraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000596563"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

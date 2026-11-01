@@ -1,0 +1,126 @@
+{
+ "street": "Pieter Baststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:46:49.588Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012104191",
+   "addresses": [
+    "Pieter Baststraat 4A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 4A-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000774243"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102195",
+   "addresses": [
+    "Pieter Baststraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000774239"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103410",
+   "addresses": [
+    "Pieter Baststraat 2A",
+    "Pieter Baststraat 2B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 2A-H",
+     "use": "winkelfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000774234"
+    },
+    {
+     "address": "Pieter Baststraat 2A-H",
+     "use": "woonfunctie",
+     "areaM2": 268,
+     "bagId": "0363010001988351"
+    },
+    {
+     "address": "Pieter Baststraat 2A-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012136445"
+    },
+    {
+     "address": "Pieter Baststraat 2B",
+     "use": "winkelfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012136446"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925704913,
+     "lngLat": [
+      4.8842224,
+      52.3539899
+     ],
+     "tags": {
+      "male": "yes",
+      "name": "Herenkapper Herman & Richard van Bolderick",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-11-01T12:46:49.588Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012147298",
+   "addresses": [
+    "Pieter Baststraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 2-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000774230"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5026474420,
+     "lngLat": [
+      4.8841748,
+      52.3540829
+     ],
+     "tags": {
+      "name": "De Tabakshoek",
+      "shop": "kiosk",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T12:46:49.588Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
