@@ -2806,5 +2806,19 @@
       52.3854454,
       4.880979
     ]
+  },
+  {
+    "modelId": "kiosk-frens-haringhandel",
+    "landmarkId": "osm_food_2179747557",
+    "name": "Frens Haringhandel",
+    "funFact": "Frens Haringhandel has sold herring from its navy kiosk on the Koningsplein, at the head of the Leidsestraat by the Bloemenmarkt, since the kiosk was registered in 1983; at night diamond-lattice grilles close it up.",
+    "sourceUrl": "https://www.openstreetmap.org/way/266907976",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012176251/"
+    ],
+    "center": [
+      52.3672889,
+      4.889437
+    ]
   }
 ]

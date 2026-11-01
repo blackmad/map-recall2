@@ -48012,5 +48012,58 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed bays and double door, dark corner posts, two red windscreen leaves, a grey retractable awning, a dark slab with a metal band, a planted roof with grass tufts and a flue. Footprint from BAG (CC0); bays, proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "kiosk-frens-haringhandel",
+  "name": "Frens Haringhandel",
+  "landmarkId": "osm_food_2179747557",
+  "modelUrl": "./models/kiosk-frens-haringhandel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012176251",
+   "w266907976"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "headingDegrees": 230.84,
+   "lengthMetres": 4.306,
+   "widthMetres": 3.461
+  },
+  "surveyed": {
+   "anchor": [
+    4.8894325,
+    52.3672947
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012176251 (1983) outline, vertex average as the anchor; walls 4.2 x 3.35 m inside it, top 2.79 m (BAG tile). Panels, grilles, fascia and tints from Gemeente Amsterdam panoramas recording_2025-06-16_06-42-40_00636 / _00632, recording_2025-06-19_03-28-47_01535 and b_20250120_0926_Track17_Sphere_00005 (CC BY 4.0). See scripts/landmarks/kiosk-frens-haringhandel-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 2.79,
+  "bagYear": 1983,
+  "assetKind": "building",
+  "materialOverrides": {
+   "blue": "#2b3a5c",
+   "ochre": "#c98f45",
+   "bronze": "#b98f5a",
+   "glass": "#4a5858",
+   "stone": "#c4c6c0",
+   "copper": "#d6dbd6",
+   "gold": "#ece4c8",
+   "concrete": "#9a9c98",
+   "greyBrick": "#4a5056",
+   "sandstone": "#a9b2b2"
+  },
+  "attribution": {
+   "title": "Frens Haringhandel, Koningsplein",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/way/266907976",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: navy frame, base and fascia lettered FRENS HARINGHANDEL AMSTERDAM, timber corners, wood-and-glass bays behind diamond-lattice roll grilles, the serving front behind a square grille and roller shutter, roof plant, on a concrete platform. Footprint from BAG (CC0); tints and proportions from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
  }
 ]
