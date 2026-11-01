@@ -47,6 +47,8 @@ import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
+import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
+import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
@@ -168,53 +170,13 @@ void main() {
   if (cityTone < 1.0) fragColor.rgb = mix(cityFlat, fragColor.rgb, cityTone);
 }`;
 
-const ROOF_LAYER_COUNT = 4;
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
   buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
   bytes: chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.accents.byteLength + chunk.indices.byteLength + chunk.vertexCount,
 });
 
-/**
- * The bay drawings are drawn crisp for a standalone page; seen as whole streets
- * at game scale they read as noise. Soften them where it costs nothing a player
- * learns from: wall texture is pulled toward its mean (brick reads as colour,
- * not speckle) and the darkest glass is lifted so windows stop being black
- * holes. Frames, doors and stone keep their contrast, so the facade rhythm stays.
- */
-export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look, size = CELL_PX): void {
-  const px = size * size;
-  const { wallPull, glassLift, liftBrick } = LOOK_VARIANTS[look];
-  for (let layer = 0; layer < layers; layer++) {
-    // Mean wall colour of this layer (mask.r is the wall tint weight).
-    let sum = [0, 0, 0], n = 0;
-    for (let i = 0; i < px; i++) {
-      if (mask[(layer * px + i) * 2] > 200) { for (let c = 0; c < 3; c++) sum[c] += colour[(layer * px + i) * 4 + c]; n++; }
-    }
-    const mean = n ? sum.map(v => v / n) : [200, 200, 200];
-    // Brick photos are dark; the tint multiplies them again. Lift wall pixels so the layer's mean is ~0.88 and the tint colour is what you see.
-    const meanLum = (mean[0] + mean[1] + mean[2]) / 3;
-    const lift = liftBrick && meanLum > 0 ? Math.min(2.4, PHOTO_WALL_CELL_MEAN / meanLum) : 1;
-    for (let i = 0; i < px; i++) {
-      const at = (layer * px + i) * 4, wall = mask[(layer * px + i) * 2] / 255, accent = mask[(layer * px + i) * 2 + 1];
-      if (wall > 0.5) {
-        if (liftBrick) {
-          // Brick is relief evidence, not a second colour prior. Multiplying a
-          // red photograph by surveyed brown/charcoal tint made every street
-          // orange. Keep luminance variation and let vertex tint own the hue.
-          const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
-          const neutral = Math.min(255, (lum + (meanLum - lum) * wallPull * wall) * (1 + (lift - 1) * wall));
-          for (let c = 0; c < 3; c++) colour[at + c] = colour[at + c] * (1 - wall) + neutral * wall;
-        } else {
-          for (let c = 0; c < 3; c++) colour[at + c] = Math.min(255, (colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall) * (1 + (lift - 1) * wall));
-        }
-      } else if (accent < 128) {
-        const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
-        if (lum < 90) { const k = glassLift * (1 - lum / 90); for (let c = 0; c < 3; c++) colour[at + c] += (150 - colour[at + c]) * k; }
-      }
-    }
-  }
-}
+export { calmBayLayers, RESTORE_TEXTURE_SLICE_MS, paintLookArrays, lookAtlasLayers };
 
 
 // Per-ring memo of tile keys by zoom: setFeatures regroups the whole resident city (up to ~20k buildings) on every
@@ -258,6 +220,8 @@ const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
+/** This bundle's script URL: its `?v=` deploy stamp versions the stored atlas (look/lookAtlas.ts). */
+const BUNDLE_SRC = typeof document !== 'undefined' ? (document.currentScript as HTMLScriptElement | null)?.src ?? '' : '';
 const WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
 type ChunkReply = { key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[]; /** The facade tiles' x/y partition, cut in the worker (cellTiles.ts planTiles) at `tiles` per side. */ tiles?: { n: number; plan: PlannedTile[] | null } };
 /** Worker-cut tile plans of the chunks waiting to install (finished after the ground lift: cellTiles.ts finishTiles). */
@@ -274,84 +238,15 @@ export type ThreeBuildingStats = { kitVertices: number; chunks: number; building
  * The game's colour and tint-mask texture arrays for a look (also used by the gallery pages).
  * `slotLayers` (`?cityLook=1`, look/cityLook.ts `paintSlotLayers`): the material-slot layers,
  * appended after the bay cells; `slotBase` is where they start. Without it the arrays are
- * exactly the bay cells, as before.
+ * exactly the bay cells, as before. Painting is look/paintLookAtlas.ts `paintLookArrays`.
  */
-/** Painting time per main-thread slice while the facade textures build (first load: never more than a frame's share). */
-const TEXTURE_SLICE_MS = 6;
-/**
- * The same after a WebGL context restore, when the city has no facades until the build ends: each yield waits a whole
- * frame, so at 6 ms the ~200 bay cells took ~32 s in headless Chromium (issue #20). Longer slices, still bounded.
- */
-export const RESTORE_TEXTURE_SLICE_MS = 32;
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number | (() => number) } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
+  return lookTexturesOf(THREE, await paintLookArrays(look, size, options), maxAnisotropy);
+}
 
-export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
-  if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
-  const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
-  // Facade chunks store their layer as a byte; slot meshes carry their own (small) slot ordinal.
-  if (layers > 256) throw new Error('Building texture array exceeds byte layer indices');
-  const slotLayers = options.slotLayers ? SLOT_LAYER_COUNT : 0, total = layers + slotLayers;
-  const px = size * size, colour = new Uint8Array(px * 4 * total), mask = new Uint8Array(px * 2 * total);
-  if (options.slotLayers) { colour.set(options.slotLayers.colour, px * 4 * layers); mask.set(options.slotLayers.mask, px * 2 * layers); }
-  let batchStart = performance.now();
-  const yieldBudget = async () => {
-    if (performance.now() - batchStart < (options.sliceMs ?? TEXTURE_SLICE_MS)) return;
-    await new Promise<void>(resolve => setTimeout(resolve, 0));
-    batchStart = performance.now();
-  };
-  // Native procedural painters store wall tint in alpha. Downsample one cell at
-  // a time so the mobile path never allocates a second full-size city atlas.
-  const copyCell = (cell: Uint8ClampedArray, layer: number) => {
-    const factor = CELL_PX / size;
-    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-      let red = 0, green = 0, blue = 0, tint = 0;
-      for (let dy = 0; dy < factor; dy++) for (let dx = 0; dx < factor; dx++) {
-        const at = ((y * factor + dy) * CELL_PX + x * factor + dx) * 4;
-        red += cell[at]; green += cell[at + 1]; blue += cell[at + 2]; tint += cell[at + 3];
-      }
-      const at = layer * px + y * size + x, count = factor * factor;
-      colour[at * 4] = Math.round(red / count); colour[at * 4 + 1] = Math.round(green / count); colour[at * 4 + 2] = Math.round(blue / count);
-      colour[at * 4 + 3] = 255; mask[at * 2] = Math.round(tint / count);
-    }
-  };
-  if (look === 'procedural') {
-    for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS; variant++) for (const kind of CELL_KINDS) {
-      copyCell(paintCell(style, kind, variant), cellLayer(style, kind, variant));
-      await yieldBudget();
-    }
-  }
-  const roofBase = look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
-  copyCell(paintGlassBlockCell(),layers - 1);
-  for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
-  let brick: CanvasImageSource = document.createElement('canvas');
-  if (look === 'photo') {
-    const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
-    try { await image.decode(); brick = image; } catch { /* neutral drawn brick */ }
-  }
-  const scratch = document.createElement('canvas'); scratch.width = scratch.height = size;
-  const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
-  for (const entry of BAY_ENTRIES) {
-    if (entry.originalMasonry) {
-      copyCell(paintFatihMasonryCell(), look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + entry.layer : entry.layer);
-      await yieldBudget();
-      continue;
-    }
-    const bayLook = look === 'procedural' ? 'photo' : look;
-    const painted = bayTextures(bayVariant(entry), brick, bayLook);
-    const layer = look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + entry.layer : entry.layer;
-    for (const [source, isMask] of [[painted.colour, false], [painted.mask, true]] as const) {
-      ctx.clearRect(0, 0, size, size); ctx.drawImage(source, 0, 0, size, size);
-      const pixels = ctx.getImageData(0, 0, size, size).data;
-      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-        const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
-        if (isMask) { mask[at * 2] = pixels[from]; mask[at * 2 + 1] = pixels[from + 1]; }
-        else { colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255; }
-      }
-    }
-    if (look !== 'procedural') calmBayLayers(colour.subarray(layer * px * 4, (layer + 1) * px * 4), mask.subarray(layer * px * 2, (layer + 1) * px * 2), 1, bayLook, size);
-    await yieldBudget();
-  }
-  // The canvases' pixels now live in `colour`/`mask`; the cache would keep them for the session.
-  releaseBayTextures();
+/** Texture arrays over painted (or pre-painted, look/lookAtlas.ts) atlas bytes; the CPU copy goes after upload. */
+export function lookTexturesOf(THREE: any, atlas: LookAtlasArrays, maxAnisotropy: number): { colour: any; mask: any; slotBase: number } {
+  const { size, total } = atlas;
   const array = (data: Uint8Array, format: any) => {
     const t = new THREE.DataArrayTexture(data, size, size, total);
     t.format = format; t.type = THREE.UnsignedByteType;
@@ -361,7 +256,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
     t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     return t;
   };
-  return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat), slotBase: layers };
+  return { colour: array(atlas.colour, THREE.RGBAFormat), mask: array(atlas.mask, THREE.RGFormat), slotBase: atlas.layers };
 }
 
 /**
@@ -437,6 +332,22 @@ export class ThreeBuildings {
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any; slotBase: number }>>();
   /** `?cityLook=1`: facades draw with the city look (look/cityLook.ts) and their array carries the slot layers. */
   private readonly cityLook = cityLookEnabled();
+  /** Painting slice while something waits on the facades (hurryAtlas); undefined: the first-load slice. */
+  private atlasSliceMs: number | undefined;
+  /**
+   * The settle hold is waiting on the facades (engine/settle.ts): paint the rest of the atlas in restore-sized slices.
+   * Behind the loading screen nothing is riding, and at 6 ms slices the ~0.4 s paint stretched to ~3 s of wall time
+   * against the boot's other tasks (cache-probe, 2026-11-01). Same pixels.
+   */
+  hurryAtlas(): void {
+    if (!this.ready) this.atlasSliceMs = RESTORE_TEXTURE_SLICE_MS;
+    // Installs, one budgeted drain per animation frame, also go on timers while the hold waits: frames came 0.3-0.9 s
+    // apart behind the loading screen. Back to frames once nothing is left to install.
+    if (this.staged.length || this.pending.length || this.inflight.size) this.installHurried = true;
+  }
+  private installHurried = false;
+  /** Where the facade atlas came from (look/lookAtlas.ts): the pre-painted extract, or why it was painted. */
+  atlasSource: { reason: string; ms: number; file: string; paintMs?: number } | null = null;
   private lookToken = 0;
   private appearanceToken = 0;
   private envelopeLoadToken = 0;
@@ -655,6 +566,7 @@ export class ThreeBuildings {
     this.look = look;
     this.bindLookMaterial(look, set);
     this.ready = true;
+    this.atlasSliceMs = undefined;
     const staged = new Set(this.staged.map(s => s.key));
     for (const [key, source] of this.sourceGroups) {
       if (same && (this.inflight.has(key) || staged.has(key) || this.pending.has(key))) continue;
@@ -676,8 +588,20 @@ export class ThreeBuildings {
     const size = this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX;
     // The slot layers join this array only in the shared frame, where slot meshes sample it (one renderer, one
     // upload). Legacy layers each own a renderer, so there slot meshes keep the city look's small slot-only array.
-    const slotLayers = this.cityLook && this.sharedFrame ? paintSlotLayers(document, await loadCityBrick(document), size) : undefined;
-    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), size, { slotLayers, sliceMs });
+    const slots = !!(this.cityLook && this.sharedFrame), anisotropy = Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16);
+    // Pre-painted atlas (look/lookAtlas.ts): this browser's own bytes from an earlier visit, or (opt-in) the shipped
+    // extract, instead of ~200 canvas cells painted on the main thread. Anything short of exact bytes paints as before.
+    const { layers, total } = lookAtlasLayers(look, slots), started = performance.now(), stamp = lookAtlasStamp(BUNDLE_SRC);
+    const cached = await readCachedLookAtlas(stamp, look, size, slots, layers, total);
+    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return lookTexturesOf(this.THREE, cached, anisotropy); }
+    const load = await loadLookAtlas(new URL('../data/extracts/amsterdam', document.baseURI).href, look, size, slots, layers, total);
+    this.atlasSource = { reason: load.reason, ms: Math.round(load.ms), file: load.file };
+    if (load.atlas) return lookTexturesOf(this.THREE, load.atlas, anisotropy);
+    const paintStarted = performance.now();
+    const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs: () => this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
+    this.atlasSource.paintMs = Math.round(performance.now() - paintStarted);
+    storeCachedLookAtlas(stamp, painted, look, slots);
+    return lookTexturesOf(this.THREE, painted, anisotropy);
   }
 
   setVisible(visible: boolean): void {
@@ -1301,8 +1225,8 @@ export class ThreeBuildings {
   private scheduleStage(): void {
     if (this.stageScheduled || !this.staged.length) return;
     this.stageScheduled = true;
-    const run = () => { this.stageScheduled = false; this.drainStaged(); };
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
+    const run = () => { this.stageScheduled = false; this.drainStaged(); if (!this.staged.length && !this.pending.length && !this.inflight.size) this.installHurried = false; };
+    if (this.installHurried || typeof requestAnimationFrame !== 'function') setTimeout(run, 0); else requestAnimationFrame(run);
   }
 
   private readonly uploadBudget = new FrameBudget(INSTALL_BUDGET_MS, installBudgetBytes());
@@ -1643,7 +1567,15 @@ export class ThreeBuildings {
   }
 
   /** Chunks still queued, building in the worker or staged for install; 0 when settled or not drawn at this zoom. */
-  get loadingCount(): number { return this.visible && this.view.zoom() >= MIN_ZOOM ? this.pending.length + this.inflight.size + this.staged.length : 0; }
+  /**
+   * Work the settle hold (engine/settle.ts 'facades') waits on: queued, building and staged chunks, plus the look's
+   * atlas while it is requested but not yet bound (#129: `?engine=own` never races without facades; the chunks built
+   * meanwhile install only once it is).
+   */
+  get loadingCount(): number {
+    if (!this.visible || this.view.zoom() < MIN_ZOOM) return 0;
+    return this.pending.length + this.inflight.size + this.staged.length + (!this.ready && this.textureSets.size ? 1 : 0);
+  }
 
   /** Whether this layer draws through the shared frame. */
   get inSharedFrame(): boolean { return !!this.sharedFrame; }
