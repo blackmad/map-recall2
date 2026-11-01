@@ -4899,6 +4899,120 @@
     "hash": "ffe813b55b744e01",
     "class": "recipe"
    }
+  },
+  "anthonisz-40-72-r1": {
+   "158092": {
+    "hash": "cb428639b15e2b33",
+    "class": "front"
+   },
+   "159040": {
+    "hash": "05f507b4d3434e54",
+    "class": "front"
+   },
+   "159956": {
+    "hash": "de8455cec0075aa3",
+    "class": "recipe"
+   },
+   "160204": {
+    "hash": "ac74eebb3ddc6f63",
+    "class": "front"
+   },
+   "164470": {
+    "hash": "4e3dbab13350c7e8",
+    "class": "front"
+   }
+  },
+  "florisz-2-10-r1": {
+   "152551": {
+    "hash": "28aeaf0ce74ffd2b",
+    "class": "front"
+   },
+   "152951": {
+    "hash": "3ee6e98f99674016",
+    "class": "front"
+   },
+   "159183": {
+    "hash": "cafd799a24eaeefe",
+    "class": "front"
+   },
+   "162188": {
+    "hash": "32ed304efab04a5b",
+    "class": "front"
+   }
+  },
+  "florisz-12-38-r1": {
+   "144384": {
+    "hash": "7d643c9203ce087f",
+    "class": "recipe+row"
+   },
+   "156418": {
+    "hash": "e00e56be69edf50f",
+    "class": "front"
+   },
+   "157185": {
+    "hash": "e973efc5a4e343cd",
+    "class": "front"
+   },
+   "164388": {
+    "hash": "745e80a74c0592e1",
+    "class": "front"
+   }
+  },
+  "wouwerman-2-44-r1": {
+   "108114": {
+    "hash": "89284f6a6e60fe09",
+    "class": "front"
+   },
+   "114665": {
+    "hash": "389af5e88194100e",
+    "class": "front"
+   },
+   "138798": {
+    "hash": "51021b503f585ee3",
+    "class": "front"
+   },
+   "083474": {
+    "hash": "683e3bc9ca86e1ea",
+    "class": "front"
+   },
+   "078941": {
+    "hash": "38ac62a17daa408e",
+    "class": "front"
+   }
+  },
+  "maes-31-71-r1": {
+   "101245": {
+    "hash": "d683b7710b7d5a88",
+    "class": "front+row"
+   },
+   "111419": {
+    "hash": "7b00f393399d5cd1",
+    "class": "front"
+   },
+   "125531": {
+    "hash": "386417fa87946af7",
+    "class": "front"
+   },
+   "150328": {
+    "hash": "80d16d29c03b0f80",
+    "class": "front"
+   },
+   "161910": {
+    "hash": "4493e8deed94e584",
+    "class": "front"
+   },
+   "064242": {
+    "hash": "63a13d763e214ee9",
+    "class": "front"
+   },
+   "063128": {
+    "hash": "bb1674e625be96af",
+    "class": "front+row"
+   },
+   "095505": {
+    "hash": "c5003eeb837a2f50",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5125,6 +5239,11 @@
   "sweelinck-1-11-r1": "8da4047a09999d31",
   "tugelaweg-113-120-r1": "a288bc8177a51223",
   "tugelaweg-91-112-r1": "0af22056d6b57a8b",
-  "vaalrivier-3-9-r1": "8a72a495f3352511"
+  "vaalrivier-3-9-r1": "8a72a495f3352511",
+  "anthonisz-40-72-r1": "51754c75468857f4",
+  "florisz-2-10-r1": "32711d502f63d047",
+  "florisz-12-38-r1": "26ec75e00ce8675f",
+  "wouwerman-2-44-r1": "1b119d1a763e6659",
+  "maes-31-71-r1": "09a6b1241a6593f7"
  }
 }
