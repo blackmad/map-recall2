@@ -1,8 +1,8 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T08:36:40.385Z",
- "seconds": 0.44,
+ "generatedAt": "2026-11-01T08:39:20.315Z",
+ "seconds": 3.2,
  "totals": {
   "faces": 76,
   "pands": 359,
@@ -534,7 +534,7 @@
      "triangles": 1493
     }
    ],
-   "seconds": 4.05,
+   "seconds": 3.19,
    "byType": {
     "vaalrivier-1931-row": 2
    },
@@ -1483,7 +1483,7 @@
      "triangles": 3672
     }
    ],
-   "seconds": 5.75,
+   "seconds": 5.72,
    "byType": {
     "vaalrivier-1931-row": 5
    },
