@@ -966,7 +966,7 @@
     "class": "front+row"
    },
    "157710": {
-    "hash": "bd0b926e3ca2f685",
+    "hash": "17398d96724706b4",
     "class": "front+row"
    },
    "158310": {
@@ -4041,6 +4041,864 @@
     "hash": "fd542e648482e267",
     "class": "front"
    }
+  },
+  "bree-107-149-r1": {
+   "157147": {
+    "hash": "b760500170d15856",
+    "class": "front"
+   },
+   "160169": {
+    "hash": "3dc36b674aaacce8",
+    "class": "front"
+   },
+   "160540": {
+    "hash": "3c6a685b02347adf",
+    "class": "front"
+   },
+   "163068": {
+    "hash": "06bf3ea5e0473810",
+    "class": "front"
+   }
+  },
+  "afrikanerplein-14-168-r1": {
+   "131433": {
+    "hash": "be3af636e2a98653",
+    "class": "front"
+   }
+  },
+  "akoleien-2-10-r1": {
+   "174736": {
+    "hash": "39585752a1c51862",
+    "class": "recipe"
+   },
+   "174739": {
+    "hash": "5e91b7ab4a91a445",
+    "class": "recipe"
+   }
+  },
+  "bloem-128-206-r1": {
+   "167881": {
+    "hash": "82324973aed32479",
+    "class": "front"
+   },
+   "174650": {
+    "hash": "466234b9dc5d6057",
+    "class": "front"
+   },
+   "174735": {
+    "hash": "8e6ccaa97aa0829e",
+    "class": "recipe"
+   }
+  },
+  "bloem-128-206-r2": {
+   "167946": {
+    "hash": "36509a6c54d807b5",
+    "class": "recipe"
+   },
+   "174091": {
+    "hash": "6951e5ca1d9ee0a3",
+    "class": "recipe"
+   }
+  },
+  "bloem-3-25-r1": {
+   "172583": {
+    "hash": "7e46cbf95081e3fa",
+    "class": "recipe"
+   },
+   "172768": {
+    "hash": "d2a52e69f9e4533a",
+    "class": "recipe"
+   }
+  },
+  "bloemgracht-121-197-r1": {
+   "168006": {
+    "hash": "fbf765082f9ebc4f",
+    "class": "recipe"
+   },
+   "174177": {
+    "hash": "47b36de409c88606",
+    "class": "recipe"
+   }
+  },
+  "bloemgracht-121-197-r2": {
+   "174828": {
+    "hash": "2d693c922162517e",
+    "class": "recipe"
+   },
+   "174833": {
+    "hash": "b6710510b6f5a6d4",
+    "class": "recipe"
+   }
+  },
+  "bloemgracht-16-32-r1": {
+   "173345": {
+    "hash": "75a4d17eaee16bf7",
+    "class": "recipe"
+   },
+   "173350": {
+    "hash": "b8624e92195f107f",
+    "class": "recipe"
+   }
+  },
+  "bloemgracht-53-95-r1": {
+   "170209": {
+    "hash": "cc51e42923852ae9",
+    "class": "recipe"
+   },
+   "170212": {
+    "hash": "8a3e21252fca34b0",
+    "class": "front"
+   }
+  },
+  "bloemgracht-80-128-r1": {
+   "169915": {
+    "hash": "290889deb1341496",
+    "class": "recipe"
+   },
+   "169916": {
+    "hash": "b65355db34e0b8de",
+    "class": "recipe"
+   }
+  },
+  "burger-2-140-r1": {
+   "112723": {
+    "hash": "eacbad5c49d6886f",
+    "class": "front"
+   }
+  },
+  "campen-2-34-r1": {
+   "155600": {
+    "hash": "aff9927463a437b3",
+    "class": "recipe"
+   },
+   "167124": {
+    "hash": "2aee6fcf3ef70120",
+    "class": "recipe"
+   }
+  },
+  "cuyp-153-179-r1": {
+   "155726": {
+    "hash": "3d19ba2af4ce6a2c",
+    "class": "recipe"
+   },
+   "167067": {
+    "hash": "54d3af4cb3a3a911",
+    "class": "recipe"
+   }
+  },
+  "cuyp-238-278-r1": {
+   "163308": {
+    "hash": "01cf5a4f40f05263",
+    "class": "front"
+   },
+   "165136": {
+    "hash": "4c5146784e09a1f3",
+    "class": "recipe"
+   }
+  },
+  "cuyp-241-259-r1": {
+   "156408": {
+    "hash": "67a8a693fac7a252",
+    "class": "front"
+   },
+   "160542": {
+    "hash": "24f3809d092bd2af",
+    "class": "front"
+   },
+   "166567": {
+    "hash": "384bac1a747b1289",
+    "class": "front"
+   }
+  },
+  "dou-1-7-r1": {
+   "152502": {
+    "hash": "0f90fe1d48d250dc",
+    "class": "recipe"
+   },
+   "160743": {
+    "hash": "3e8487ff3b9bd5ab",
+    "class": "front"
+   },
+   "236717": {
+    "hash": "fe6c34197a01385e",
+    "class": "front"
+   }
+  },
+  "egelantiersgracht-47-101-r1": {
+   "172618": {
+    "hash": "e594712c9e1f136f",
+    "class": "recipe"
+   },
+   "172620": {
+    "hash": "17c1b3cf1ecd3298",
+    "class": "recipe"
+   }
+  },
+  "flinck-120-178-r1": {
+   "162469": {
+    "hash": "4fd00c0c105498cf",
+    "class": "front"
+   },
+   "237280": {
+    "hash": "7beff66722a24d68",
+    "class": "front"
+   }
+  },
+  "flinck-120-178-r2": {
+   "153714": {
+    "hash": "fb1fb3158125d0f1",
+    "class": "front"
+   },
+   "157232": {
+    "hash": "7efaac9698ee486a",
+    "class": "front"
+   },
+   "163530": {
+    "hash": "6ad0e9c2add0fcac",
+    "class": "front"
+   }
+  },
+  "flinck-169-233-r1": {
+   "157212": {
+    "hash": "ba11c7694f7d3aee",
+    "class": "front"
+   },
+   "157734": {
+    "hash": "5ad3b6cbed69da36",
+    "class": "front"
+   },
+   "162693": {
+    "hash": "c2220f6668918081",
+    "class": "front"
+   }
+  },
+  "flinck-265-287-r1": {
+   "155442": {
+    "hash": "40cb70656c50059d",
+    "class": "front"
+   },
+   "156438": {
+    "hash": "50db049983b952c8",
+    "class": "front"
+   },
+   "161721": {
+    "hash": "b060d51d5123b4ed",
+    "class": "front"
+   },
+   "164382": {
+    "hash": "86bf8ff9dc3129a5",
+    "class": "front"
+   },
+   "166940": {
+    "hash": "43029cfade7ab3a4",
+    "class": "front"
+   }
+  },
+  "hals-42-66-r1": {
+   "161957": {
+    "hash": "e2115c8a8d54ae8b",
+    "class": "recipe"
+   },
+   "237026": {
+    "hash": "507899fac4c95316",
+    "class": "recipe"
+   }
+  },
+  "hals-5-19-r1": {
+   "152579": {
+    "hash": "0e3d270eadfeee9e",
+    "class": "front"
+   },
+   "159558": {
+    "hash": "7fa9942bd07f25a7",
+    "class": "front"
+   },
+   "162907": {
+    "hash": "d43a8a752ae4ef78",
+    "class": "front"
+   },
+   "163052": {
+    "hash": "af3ad3a5d92d89d0",
+    "class": "front"
+   }
+  },
+  "hals-76-90-r1": {
+   "156971": {
+    "hash": "c79e007aaec20ad2",
+    "class": "recipe"
+   },
+   "166097": {
+    "hash": "3d7207b701731fc1",
+    "class": "front"
+   }
+  },
+  "helmers-79-97-r1": {
+   "156928": {
+    "hash": "ab2676e22305e408",
+    "class": "front"
+   },
+   "158996": {
+    "hash": "a62bc72ba78a2ead",
+    "class": "recipe"
+   },
+   "162865": {
+    "hash": "fd18d2e42e245017",
+    "class": "front"
+   },
+   "165956": {
+    "hash": "f47c3c8866370dd4",
+    "class": "front"
+   }
+  },
+  "joubert-3-25-r1": {
+   "129254": {
+    "hash": "8f05c4c725bc99d6",
+    "class": "recipe"
+   },
+   "071769": {
+    "hash": "f6809a24fed52c59",
+    "class": "recipe"
+   },
+   "096148": {
+    "hash": "78963660c18b88c4",
+    "class": "recipe"
+   }
+  },
+  "kraaipan-17-21-r1": {
+   "121091": {
+    "hash": "ad09210226ed8cc5",
+    "class": "front"
+   },
+   "126013": {
+    "hash": "404271465369c945",
+    "class": "front"
+   }
+  },
+  "kraaipan-2-38-r1": {
+   "119532": {
+    "hash": "afa9f5195e248f54",
+    "class": "front"
+   },
+   "073809": {
+    "hash": "0a7e510c7819dbb1",
+    "class": "front"
+   },
+   "092315": {
+    "hash": "f0f5a27deeb984ab",
+    "class": "front"
+   }
+  },
+  "kraaipan-2-38-r2": {
+   "101968": {
+    "hash": "e6db308f91ae9f8a",
+    "class": "front+row"
+   },
+   "111001": {
+    "hash": "f53f2d6bf384a9f7",
+    "class": "front"
+   },
+   "149786": {
+    "hash": "979e74abf6185821",
+    "class": "front+row"
+   },
+   "074901": {
+    "hash": "bb2f5c9b4b69abca",
+    "class": "front"
+   },
+   "061769": {
+    "hash": "2015f83bd365dcfe",
+    "class": "front"
+   },
+   "069468": {
+    "hash": "297c60bd772bfddd",
+    "class": "front"
+   }
+  },
+  "kraaipan-31-33": {
+   "127519": {
+    "hash": "88302a00de3c2bf7",
+    "class": "front"
+   },
+   "154076": {
+    "hash": "f1ff48367dd5fd1e",
+    "class": "front"
+   }
+  },
+  "kruger-32-40": {
+   "114784": {
+    "hash": "c823d8ec4d15f647",
+    "class": "front"
+   },
+   "132444": {
+    "hash": "5040c2e6f270e38f",
+    "class": "front"
+   },
+   "150686": {
+    "hash": "b2635dfe9418f56e",
+    "class": "front"
+   },
+   "083941": {
+    "hash": "d0ec7536e01b6ea0",
+    "class": "front"
+   }
+  },
+  "lelie-150-194-r1": {
+   "169842": {
+    "hash": "7f00cb33a89ea510",
+    "class": "front"
+   },
+   "169843": {
+    "hash": "428b2b289d0654dc",
+    "class": "recipe"
+   }
+  },
+  "lelie-83-141-r1": {
+   "168148": {
+    "hash": "91dec1e4fb19464e",
+    "class": "front"
+   },
+   "168161": {
+    "hash": "1e15f14a21e46f13",
+    "class": "recipe"
+   }
+  },
+  "lelie-83-141-r2": {
+   "169848": {
+    "hash": "b9e3f19f1f84d26b",
+    "class": "recipe"
+   },
+   "169849": {
+    "hash": "bc4ae19d5bfeebff",
+    "class": "recipe"
+   },
+   "174428": {
+    "hash": "40789bd04d823760",
+    "class": "front"
+   }
+  },
+  "lennepkade-19-43-r1": {
+   "153662": {
+    "hash": "5124fb2308f0bcb5",
+    "class": "front"
+   },
+   "156512": {
+    "hash": "b178e1a5cb3ec863",
+    "class": "front"
+   },
+   "159235": {
+    "hash": "1e3828254b2409b4",
+    "class": "front"
+   },
+   "163778": {
+    "hash": "1bb9fc66e6707224",
+    "class": "recipe"
+   }
+  },
+  "linnaeus-92-102-r1": {
+   "150033": {
+    "hash": "3eb7723fd602f6fc",
+    "class": "recipe"
+   }
+  },
+  "luthuli-21-41-r1": {
+   "105200": {
+    "hash": "7c321feb2701af9e",
+    "class": "front"
+   },
+   "126814": {
+    "hash": "ee37299ed572c265",
+    "class": "recipe"
+   },
+   "128866": {
+    "hash": "919e2b68e37d703c",
+    "class": "front"
+   },
+   "142206": {
+    "hash": "c062a53dae7451d9",
+    "class": "front"
+   }
+  },
+  "prinsengracht-130-150-r1": {
+   "174415": {
+    "hash": "54ba2f31de3208bf",
+    "class": "front"
+   },
+   "174416": {
+    "hash": "495f774f12f52cdb",
+    "class": "front"
+   }
+  },
+  "quellijn-1-27-r1": {
+   "158625": {
+    "hash": "857a1374e0397136",
+    "class": "front"
+   },
+   "164504": {
+    "hash": "e7ccce2115967d71",
+    "class": "front"
+   }
+  },
+  "quellijn-1-27-r2": {
+   "155636": {
+    "hash": "9f34507e569dbc68",
+    "class": "recipe"
+   },
+   "083238": {
+    "hash": "a3022922527319cb",
+    "class": "recipe"
+   }
+  },
+  "reij-28-42-r1": {
+   "130038": {
+    "hash": "ba882aeabd595aee",
+    "class": "front"
+   },
+   "089836": {
+    "hash": "9eb45f30aaa82698",
+    "class": "front"
+   }
+  },
+  "retief-2-28-r1": {
+   "236810": {
+    "hash": "74aa495afbf44e82",
+    "class": "front"
+   }
+  },
+  "retief-3-41-r1": {
+   "103086": {
+    "hash": "7375c1b6e81874e9",
+    "class": "recipe"
+   }
+  },
+  "retief-3-41-r2": {
+   "085865": {
+    "hash": "28334d12f761f51f",
+    "class": "recipe"
+   }
+  },
+  "rozengracht-30-82-r1": {
+   "168603": {
+    "hash": "6439cd0f32703331",
+    "class": "front"
+   },
+   "168605": {
+    "hash": "f276d3ea51a66df4",
+    "class": "front"
+   }
+  },
+  "ruysdaelkade-89-105-r1": {
+   "163180": {
+    "hash": "ec7a72cfe5408ff0",
+    "class": "front"
+   },
+   "165247": {
+    "hash": "c7a01da39695b5da",
+    "class": "front"
+   },
+   "062357": {
+    "hash": "4f362c72673cffbc",
+    "class": "front"
+   }
+  },
+  "saenredam-1-37-r1": {
+   "152593": {
+    "hash": "9755e47361bfc9cd",
+    "class": "recipe"
+   },
+   "155977": {
+    "hash": "ba81fdb233b82371",
+    "class": "front"
+   },
+   "164149": {
+    "hash": "f5bc503a136bdc85",
+    "class": "front"
+   }
+  },
+  "saenredam-1-37-r2": {
+   "155819": {
+    "hash": "730158e03f331d0f",
+    "class": "recipe+row"
+   },
+   "159703": {
+    "hash": "3f58589414c09412",
+    "class": "front"
+   },
+   "163619": {
+    "hash": "3e4f3d32cf76ed1d",
+    "class": "recipe+row"
+   },
+   "236169": {
+    "hash": "79e8939b4501d328",
+    "class": "recipe"
+   }
+  },
+  "saenredam-2-22-r1": {
+   "155728": {
+    "hash": "a237422a8b14d5cd",
+    "class": "front"
+   },
+   "158262": {
+    "hash": "4c2bbe6281eee926",
+    "class": "front"
+   },
+   "162009": {
+    "hash": "ccbd3e725aa39211",
+    "class": "front"
+   },
+   "164404": {
+    "hash": "4b7cc6f959b95053",
+    "class": "front"
+   },
+   "166578": {
+    "hash": "87a549213d13a0c8",
+    "class": "front"
+   }
+  },
+  "saenredam-26-56-r1": {
+   "152867": {
+    "hash": "5c6a10de7a3121bd",
+    "class": "front"
+   },
+   "166655": {
+    "hash": "dc5803114f357b52",
+    "class": "front"
+   },
+   "167431": {
+    "hash": "ccbf3c2014ce2767",
+    "class": "recipe+row"
+   }
+  },
+  "stalpert-1-5": {
+   "160573": {
+    "hash": "d20a2cab9a5f2d20",
+    "class": "recipe"
+   },
+   "165850": {
+    "hash": "b8937ef8bb70e4e3",
+    "class": "recipe"
+   },
+   "081074": {
+    "hash": "8f349272d1079dd8",
+    "class": "recipe"
+   }
+  },
+  "stalpert-2-36-r1": {
+   "154148": {
+    "hash": "e6e26b98eac1ce26",
+    "class": "front"
+   },
+   "156061": {
+    "hash": "cb1f0fd1f932510d",
+    "class": "recipe"
+   },
+   "159244": {
+    "hash": "9563a1d2003c7acc",
+    "class": "recipe"
+   },
+   "160596": {
+    "hash": "4a2a94af7197a600",
+    "class": "front"
+   },
+   "162486": {
+    "hash": "5b68717d185acfb5",
+    "class": "front"
+   },
+   "162598": {
+    "hash": "d2b8a7389c18b619",
+    "class": "front"
+   },
+   "163608": {
+    "hash": "b5d3b51fdc612f55",
+    "class": "front"
+   },
+   "164898": {
+    "hash": "7af708357a078c74",
+    "class": "front"
+   },
+   "166226": {
+    "hash": "44e9b3266c11da55",
+    "class": "front"
+   },
+   "166489": {
+    "hash": "95ef7fa792747e6a",
+    "class": "front"
+   },
+   "166627": {
+    "hash": "f0be628fc48df916",
+    "class": "front"
+   },
+   "167015": {
+    "hash": "d761f8408f5253be",
+    "class": "recipe"
+   },
+   "069043": {
+    "hash": "c2315fbc41c79d38",
+    "class": "recipe"
+   }
+  },
+  "stalpert-33-67-r1": {
+   "157683": {
+    "hash": "625eec393bfb4a58",
+    "class": "front"
+   },
+   "164142": {
+    "hash": "b92a9a8ba9fadc8f",
+    "class": "front"
+   },
+   "236571": {
+    "hash": "97bb8054fe7893b9",
+    "class": "front+row"
+   },
+   "237225": {
+    "hash": "48d51e079ed50f28",
+    "class": "front"
+   },
+   "074388": {
+    "hash": "d86cc4b1c5e5c597",
+    "class": "front"
+   }
+  },
+  "stalpert-38-70-r1": {
+   "153510": {
+    "hash": "d8ab536c4899a757",
+    "class": "front"
+   },
+   "158633": {
+    "hash": "215cb7c331bcfb47",
+    "class": "front"
+   },
+   "164016": {
+    "hash": "5406bb6c403c0c4d",
+    "class": "front"
+   },
+   "164659": {
+    "hash": "75174cbedbe9f479",
+    "class": "recipe"
+   },
+   "166062": {
+    "hash": "fc42c2347bf09be0",
+    "class": "front"
+   }
+  },
+  "stalpert-9-31-r1": {
+   "163767": {
+    "hash": "60adf502a97cdc79",
+    "class": "front"
+   },
+   "165989": {
+    "hash": "c9d715e8f3e3e713",
+    "class": "recipe"
+   },
+   "166630": {
+    "hash": "8403b220ce23101e",
+    "class": "recipe"
+   }
+  },
+  "stalpert-9-31-r2": {
+   "152613": {
+    "hash": "3bd20ea6f3fa126f",
+    "class": "front"
+   },
+   "162731": {
+    "hash": "9514ca908b166c41",
+    "class": "recipe"
+   }
+  },
+  "steen-1-43-r1": {
+   "152994": {
+    "hash": "f434fe7b2af09d00",
+    "class": "front"
+   },
+   "156687": {
+    "hash": "09f684add3f9483c",
+    "class": "front"
+   },
+   "237284": {
+    "hash": "f93748e6cafd8af5",
+    "class": "front"
+   }
+  },
+  "steen-84-140-r1": {
+   "152902": {
+    "hash": "54d3ea29a52473f7",
+    "class": "front"
+   },
+   "153336": {
+    "hash": "c451be768bc35849",
+    "class": "front"
+   },
+   "156490": {
+    "hash": "fd03f82a34cfdb82",
+    "class": "front"
+   },
+   "157354": {
+    "hash": "00f71e41e386f0ef",
+    "class": "front"
+   },
+   "159966": {
+    "hash": "577e856075d841fb",
+    "class": "front"
+   },
+   "160607": {
+    "hash": "a10398879ae8dfe7",
+    "class": "front"
+   },
+   "163026": {
+    "hash": "01559f67de11dac8",
+    "class": "front"
+   },
+   "163192": {
+    "hash": "bc116a8e11bd5cce",
+    "class": "front"
+   },
+   "164678": {
+    "hash": "62b05657aefea248",
+    "class": "front"
+   }
+  },
+  "sweelinck-1-11-r1": {
+   "156851": {
+    "hash": "4ec69ad9f86a1700",
+    "class": "front"
+   },
+   "163278": {
+    "hash": "10fd4a2780253fa6",
+    "class": "recipe"
+   }
+  },
+  "tugelaweg-113-120-r1": {
+   "118471": {
+    "hash": "112141a67698f7e7",
+    "class": "front"
+   },
+   "086731": {
+    "hash": "2c450a4006ebb994",
+    "class": "front"
+   }
+  },
+  "tugelaweg-91-112-r1": {
+   "102941": {
+    "hash": "a7a10daf546f641b",
+    "class": "front"
+   },
+   "137443": {
+    "hash": "48b0a7a84730bc97",
+    "class": "front"
+   },
+   "094499": {
+    "hash": "4c5e856154629ad4",
+    "class": "front+row"
+   }
+  },
+  "vaalrivier-3-9-r1": {
+   "132149": {
+    "hash": "23b23539c727e8f7",
+    "class": "recipe"
+   },
+   "145010": {
+    "hash": "ffe813b55b744e01",
+    "class": "recipe"
+   }
   }
  },
  "intents": {
@@ -4204,6 +5062,69 @@
   "luthuli-22-32": "751b7f80f989184c",
   "afrikanerplein-25-55-r1": "b26f71ce4d3dc165",
   "burger-45-131-r1": "aeec91c3ddf52ade",
-  "burger-45-131-r2": "d9457064fdc54f1e"
+  "burger-45-131-r2": "d9457064fdc54f1e",
+  "bree-107-149-r1": "714ae403abbc5817",
+  "afrikanerplein-14-168-r1": "fa126891c9b5c469",
+  "akoleien-2-10-r1": "4fc0e15a567b0345",
+  "bloem-128-206-r1": "85bbacb8b0b54106",
+  "bloem-128-206-r2": "9e6b69178a24425f",
+  "bloem-3-25-r1": "ec0ad383985bfd43",
+  "bloemgracht-121-197-r1": "eaaaa59a436040c2",
+  "bloemgracht-121-197-r2": "111e9006c3d08295",
+  "bloemgracht-16-32-r1": "8a2a5e4c7022085b",
+  "bloemgracht-53-95-r1": "16fcf5f62aa481fb",
+  "bloemgracht-80-128-r1": "840e708c4766bcc1",
+  "burger-2-140-r1": "327859aac01448e0",
+  "campen-2-34-r1": "3a44490374cb21ea",
+  "cuyp-153-179-r1": "1874651240e173f2",
+  "cuyp-238-278-r1": "9d73f8691ddc04e8",
+  "cuyp-241-259-r1": "254f93d27ea71dd4",
+  "dou-1-7-r1": "864c0eeb985d7dbe",
+  "egelantiersgracht-47-101-r1": "136a6340cfcbbb6d",
+  "flinck-120-178-r1": "b263c13d2654939e",
+  "flinck-120-178-r2": "fbdfa9ae3ed67f0d",
+  "flinck-169-233-r1": "66e3ac4d3a675185",
+  "flinck-265-287-r1": "fdd62c1aa0f72ff4",
+  "hals-42-66-r1": "681af4f2f6765d00",
+  "hals-5-19-r1": "b302c492767ee934",
+  "hals-76-90-r1": "3e80b61496fb8e76",
+  "helmers-79-97-r1": "61941150c9b1e438",
+  "joubert-3-25-r1": "b4e4e5d05e71a05c",
+  "kraaipan-17-21-r1": "d127090da371f4c3",
+  "kraaipan-2-38-r1": "227ec19d815f80ac",
+  "kraaipan-2-38-r2": "7fdf877776893225",
+  "kraaipan-31-33": "2ab7579a19c3105e",
+  "kruger-32-40": "762dc6cbefb29097",
+  "lelie-150-194-r1": "6688ef9639040428",
+  "lelie-83-141-r1": "110a9bbf47d2a0c8",
+  "lelie-83-141-r2": "a26cf5ca8a52574e",
+  "lennepkade-19-43-r1": "65306bc9d31466ee",
+  "linnaeus-92-102-r1": "cc092b1aaffb3acf",
+  "luthuli-21-41-r1": "a821752906213576",
+  "prinsengracht-130-150-r1": "e45625b3dc4ceb2d",
+  "quellijn-1-27-r1": "b2d207516415e80f",
+  "quellijn-1-27-r2": "2572ef67add8d2dd",
+  "reij-28-42-r1": "fd831a1cdb782a4e",
+  "retief-2-28-r1": "bf23796d7583852b",
+  "retief-3-41-r1": "53f1dc8332d8db78",
+  "retief-3-41-r2": "410dd4c75d4ba975",
+  "rozengracht-30-82-r1": "5b6db64534dfe565",
+  "ruysdaelkade-89-105-r1": "b51211e7a80f9f50",
+  "saenredam-1-37-r1": "b0e11e91a54813ec",
+  "saenredam-1-37-r2": "b4ebf45b6915972e",
+  "saenredam-2-22-r1": "fbd94d952c5ef7c2",
+  "saenredam-26-56-r1": "a7addffaa5414cc8",
+  "stalpert-1-5": "75bd6f510aef6c51",
+  "stalpert-2-36-r1": "350c5b26fe1ccce6",
+  "stalpert-33-67-r1": "6ad653439d0cf274",
+  "stalpert-38-70-r1": "a3e1afd32dca6232",
+  "stalpert-9-31-r1": "f0d17c861358b7cb",
+  "stalpert-9-31-r2": "0bd802529c5162dc",
+  "steen-1-43-r1": "fd137fd0128b8087",
+  "steen-84-140-r1": "eb6e70630274d44b",
+  "sweelinck-1-11-r1": "8da4047a09999d31",
+  "tugelaweg-113-120-r1": "a288bc8177a51223",
+  "tugelaweg-91-112-r1": "0af22056d6b57a8b",
+  "vaalrivier-3-9-r1": "8a72a495f3352511"
  }
 }
