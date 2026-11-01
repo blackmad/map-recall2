@@ -81,7 +81,11 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "double door under a fanlight on the left axis, two windows with a transom"
+   "note": "double door under a fanlight on the left axis, two windows with a transom. Door reveal: as helmers-1897-balconette on the same row (Eerste Helmersstraat 209-253, 165470/159862 measured): a 0.12 m brick return before the white frame, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.25
+   }
   }
  },
  "palettes": {
@@ -139,6 +143,7 @@
   "the dormer's finial is not drawn"
  ],
  "notes": [
-  "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall."
+  "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall.",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): as helmers-1897-balconette on the same row (Eerste Helmersstraat 209-253, 165470/159862 measured): a 0.12 m brick return before the white frame, no step."
  ]
 }

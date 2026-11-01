@@ -86,7 +86,11 @@
   "door-right": {
    "doorBay": 2,
    "basement": "none",
-   "note": "213: double house door on the right axis under the segmental head; windows with a transom"
+   "note": "213: double house door on the right axis under the segmental head; windows with a transom. Door reveal: Eerste Helmersstraat 213 (159748): plane sweep over two 2024-11-29 panoramas (-27/+35 deg) puts the double door 0.3 m behind the wall band; the same 0.12 m brick return as the row's 241 (165470), a curved brick jamb on its right.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.25
+   }
   }
  },
  "palettes": {
@@ -147,6 +151,7 @@
   "211A has a shop window on the ground storey; held"
  ],
  "notes": [
-  "Palette: strip medians of 211A-213 (2024-11-29): wall #9a7d62, tympanum ochre #b39466, white trim #eeeae0."
+  "Palette: strip medians of 211A-213 (2024-11-29): wall #9a7d62, tympanum ochre #b39466, white trim #eeeae0.",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Eerste Helmersstraat 213 (159748): plane sweep over two 2024-11-29 panoramas (-27/+35 deg) puts the double door 0.3 m behind the wall band; the same 0.12 m brick return as the row's 241 (165470), a curved brick jamb on its right."
  ]
 }

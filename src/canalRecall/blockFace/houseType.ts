@@ -25,7 +25,7 @@ export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
-export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy'] as const;
+export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal'] as const;
 /** Keys a type never sets: identity and frontage split come from the face/placement. */
 const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];

@@ -87,7 +87,11 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "58, 60: arched house door on the left axis"
+   "note": "58, 60: arched house door on the left axis. Door reveal: Tweede Helmersstraat (165412) at -42/+28 deg: about 0.14 m of brick return before the white frame (25 px of a 195 px opening at 42 deg), a stone threshold slab in front, no step inside.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.25
+   }
   }
  },
  "palettes": {
@@ -146,6 +150,7 @@
   "58 and 50-52 carry a painted timber oriel on storey 1: held"
  ],
  "notes": [
-  "Palette: read on the 2023-01-12 strip; placed pands take their own measured wall."
+  "Palette: read on the 2023-01-12 strip; placed pands take their own measured wall.",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Tweede Helmersstraat (165412) at -42/+28 deg: about 0.14 m of brick return before the white frame (25 px of a 195 px opening at 42 deg), a stone threshold slab in front, no step inside."
  ]
 }

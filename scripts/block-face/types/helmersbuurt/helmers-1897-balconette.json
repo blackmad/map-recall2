@@ -77,7 +77,11 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "double door under a fanlight on the left axis, two windows with a transom"
+   "note": "double door under a fanlight on the left axis, two windows with a transom. Door reveal: Eerste Helmersstraat 241 (165470) at -45/+40 deg (b_20241129 Track43): a brick return of 0.12-0.13 m before the white door frame on the far side, about 10 % of the 1.25 m opening; the double door and two-light fanlight stand in it, a stone threshold at the pavement, no step. Plane sweep (door-depth.ts) over 159862: the leaf 0.4 m behind the face chord, the wall band 0.18 m -> 0.23 m. deep 0.25 = 0.12 m return + the 0.135 m frame.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.25
+   }
   }
  },
  "palettes": {
@@ -147,6 +151,7 @@
   "the dormer's finial is not drawn"
  ],
  "notes": [
-  "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall."
+  "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall.",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Eerste Helmersstraat 241 (165470) at -45/+40 deg (b_20241129 Track43): a brick return of 0.12-0.13 m before the white door frame on the far side, about 10 % of the 1.25 m opening; the double door and two-light fanlight stand in it, a stone threshold at the pavement, no step. Plane sweep (door-depth.ts) over 159862: the leaf 0.4 m behind the face chord, the wall band 0.18 m -> 0.23 m. deep 0.25 = 0.12 m return + the 0.135 m frame."
  ]
 }

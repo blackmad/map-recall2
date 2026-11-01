@@ -14,6 +14,7 @@ import {parapetBandBlocks} from './parapetBand.ts';
 import {corbelTableBlocks} from './corbelTable.ts';
 import {stairLightOpenings} from './stairLight.ts';
 import {frontLoggiaOpening, isLoggia} from './frontLoggia.ts';
+import {doorRevealOpenings} from './doorReveal.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
@@ -253,7 +254,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // `gridAt`: the window grid spans only the visual house module [gx0, gx0 + gw] of the front (0 and width when absent).
   const gx0 = f.gridAt ? width * f.gridAt.from : 0, gw = f.gridAt ? width * (f.gridAt.to - f.gridAt.from) : width;
   // `doorArch`: the measured round-arched portiek opening sets the door's width.
-  const doorWidth = f.doorArch && !f.shopfront?.residentialDoor ? f.doorArch.span : f.shopfront?.residentialDoor ? clamp(gw * 0.17, 0.95, 1.3) : clamp(gw * 0.2, 0.95, 1.4);
+  // `doorReveal.span`: a portiek cavity wider than the kit's door.
+  const doorWidth = f.doorReveal?.span ?? (f.doorArch && !f.shopfront?.residentialDoor ? f.doorArch.span : f.shopfront?.residentialDoor ? clamp(gw * 0.17, 0.95, 1.3) : clamp(gw * 0.2, 0.95, 1.4));
   let doorLeft: number | null = null;
   const warnings: string[] = [];
   const sf = f.shopfront, rd = sf?.residentialDoor;
@@ -351,8 +353,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
           continue;
         }
         const doorH = Math.min(h * 0.78, 2.7);
-        openings.push({id: 'door', kind: 'door', leftM: doorLeft, bottomM: y, widthM: doorWidth, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
         const transomH = Math.min(0.6, h - doorH - 0.25);
+        // `doorReveal` (doorReveal.ts): the door and fanlight stand at the back of a cavity cut into the wall.
+        if (f.doorReveal) { openings.push(...doorRevealOpenings(f.doorReveal, doorLeft, y, doorWidth, doorH, transomH)); continue; }
+        openings.push({id: 'door', kind: 'door', leftM: doorLeft, bottomM: y, widthM: doorWidth, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
         if (transomH > 0.2) openings.push({id: 'door-transom', kind: 'window', leftM: doorLeft, bottomM: y + doorH + 0.06, widthM: doorWidth, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         continue;
       }
@@ -458,9 +462,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       const edge = 0.12, resLeft = rd.side === 'right' ? width - doorWidth - edge : edge;
       doorLeft = resLeft;
       const doorH = Math.min(h * 0.78, 2.7), ground = basement;
-      openings.push({id: 'door', kind: 'door', leftM: resLeft, bottomM: ground, widthM: doorWidth, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
       const transomH = Math.min(0.5, h - doorH - 0.25);
-      if (transomH > 0.2) openings.push({id: 'door-transom', kind: 'window', leftM: resLeft, bottomM: ground + doorH + 0.06, widthM: doorWidth, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
+      if (f.doorReveal) openings.push(...doorRevealOpenings(f.doorReveal, resLeft, ground, doorWidth, doorH, transomH));
+      else openings.push({id: 'door', kind: 'door', leftM: resLeft, bottomM: ground, widthM: doorWidth, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
+      if (!f.doorReveal && transomH > 0.2) openings.push({id: 'door-transom', kind: 'window', leftM: resLeft, bottomM: ground + doorH + 0.06, widthM: doorWidth, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
       if (rd.side === 'right') right = resLeft - 0.18; else left = resLeft + doorWidth + 0.18;
       if (sf.shopShare !== undefined) { const span = (width - 2 * pier) * sf.shopShare; if (rd.side === 'right') right = Math.min(right, left + span); else left = Math.max(left, right - span); }
     }

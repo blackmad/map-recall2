@@ -166,7 +166,11 @@
     "colour": "#8f8c88",
     "groundTransomOnly": true
    },
-   "note": "the teal portiek door on the oriel axis at the left party wall under the flat grey canopy shared with the left neighbour; ground windows under the pair"
+   "note": "the teal portiek door on the oriel axis at the left party wall under the flat grey canopy shared with the left neighbour; ground windows under the pair. Door reveal: Schalk Burgerstraat 45-131 (076994) at -40/+41 deg: the teal door in a brick reveal, 35-50 of 115 px and 45 of 140 px of return -> 0.37 m to the frame face; no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.45
+   }
   }
  },
  "palettes": {
@@ -236,6 +240,7 @@
   "the ground storey's darker brick is drawn in the wall brick"
  ],
  "notes": [
-  "Palette: the type default is the raw strip wall; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10)."
+  "Palette: the type default is the raw strip wall; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10).",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Schalk Burgerstraat 45-131 (076994) at -40/+41 deg: the teal door in a brick reveal, 35-50 of 115 px and 45 of 140 px of return -> 0.37 m to the frame face; no step."
  ]
 }
