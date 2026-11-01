@@ -1,0 +1,9 @@
+{
+ "note": "Pands held after reading their run's strip sheet at gallery size beside the strip (scripts/block-face/auto-place.ts). Museumkwartier A (#159), 2026-11-01.",
+ "reviewed": "2026-11-01",
+ "holds": [
+  {"pandId": "0363100012160202", "reason": "Van Breestraat 90 (bree-72-150-r1, 2024-11-12 strip): a pointed brick gable over two axes of segmental windows, another design; museum-cs-1900-gable-balcony passed the gate on row evidence only"},
+  {"pandId": "0363100012157977", "reason": "Van Breestraat 88A (bree-72-150-r1): orange brick with red speklagen, two axes and a white oriel stack with a balcony, a dormer; not the three-axis gable-balcony front (edge NCC 0.185 is a false positive)"},
+  {"pandId": "0363100012164847", "reason": "Van Breestraat 86 (bree-72-150-r1): the same orange banded two-axis front with a white oriel as 88A; false positive at NCC 0.154"}
+ ]
+}
