@@ -3,7 +3,7 @@
  "street": "Majubastraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 11.95,
+ "seconds": 10.02,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -228,43 +228,10 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: window shape tall vs photo square)",
-   "likeness": {
-    "pandId": "0363100012090964",
-    "ncc": 0.061,
-    "nccRaw": 0.061,
-    "shiftM": [
-     0.1,
-     0.4
-    ],
-    "usable": 0.92,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "window shape tall vs photo square"
-    ],
-    "wall": {
-     "photo": "#685850",
-     "model": "#78655f",
-     "dL": 0.061
-    },
-    "glazing": {
-     "photo": 0.38,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.283
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.061,
-    "transvaal-1911-five-storey-tall": 0.061,
-    "transvaal-1923-portiek-tower": -0.022,
-    "transvaal-1923-portiek": -0.029
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012108540",
@@ -338,43 +305,10 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.382 < 0.45)",
-   "likeness": {
-    "pandId": "0363100012108540",
-    "ncc": 0.14,
-    "nccRaw": 0.14,
-    "shiftM": [
-     -0.2,
-     0.4
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.382 < 0.45"
-    ],
-    "wall": {
-     "photo": "#7f6e66",
-     "model": "#99877d",
-     "dL": 0.096
-    },
-    "glazing": {
-     "photo": 0.46,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.382
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.14,
-    "transvaal-1911-five-storey-tall~m": 0.14,
-    "transvaal-1923-portiek-tower": 0.028,
-    "transvaal-1923-portiek": 0.037
-   }
+   "stage": "review",
+   "reason": "review: 7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012061648",
@@ -439,42 +373,10 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 4 vs photo 8)",
-   "likeness": {
-    "pandId": "0363100012061648",
-    "ncc": 0.063,
-    "nccRaw": 0.063,
-    "shiftM": [
-     0.15,
-     0.4
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "window shape square vs photo tall",
-     "columns 4 vs photo 8"
-    ],
-    "wall": {
-     "photo": "#66554f",
-     "model": "#806a62",
-     "dL": 0.088
-    },
-    "glazing": {
-     "photo": 0.39,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 4,
-     "model": 4
-    },
-    "iou": 0.377
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.063,
-    "transvaal-1911-five-storey-tall": 0.07
-   }
+   "stage": "review",
+   "reason": "review: 7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012118441",
@@ -539,41 +441,41 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.071 < 0.15 (photo vs model body; likeness.ts FAIL: window shape tall vs photo square; columns 4 vs photo 3)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012118441",
-    "ncc": 0.071,
-    "nccRaw": 0.071,
+    "ncc": 0.15,
+    "nccRaw": 0.15,
     "shiftM": [
-     0.25,
-     -0.3
+     0.15,
+     0.4
     ],
-    "usable": 0.88,
+    "usable": 0.91,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "window shape tall vs photo square",
-     "columns 4 vs photo 3"
+     "columns 4 vs photo 3",
+     "mask IoU 0.367 < 0.45"
     ],
     "wall": {
-     "photo": "#695650",
+     "photo": "#68554f",
      "model": "#826c62",
-     "dL": 0.084
+     "dL": 0.088
     },
     "glazing": {
-     "photo": 0.4,
-     "model": 0.38
+     "photo": 0.38,
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 4
     },
-    "iou": 0.383
+    "iou": 0.367
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.071,
-    "transvaal-1911-five-storey-tall~m": 0.071,
+    "transvaal-1911-five-storey-tall": 0.15,
+    "transvaal-1911-five-storey-tall~m": 0.142,
     "transvaal-1923-portiek-tower": 0.161,
     "transvaal-1923-portiek": 0.141
    }
@@ -631,40 +533,40 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: window shape tall vs photo wide; columns 4 vs photo 3)",
+   "reason": "edge NCC 0.137 < 0.15 (photo vs model body; likeness.ts WARN: columns 4 vs photo 3; mask IoU 0.385 < 0.45)",
    "likeness": {
     "pandId": "0363100012098189",
-    "ncc": 0.113,
-    "nccRaw": 0.113,
+    "ncc": 0.137,
+    "nccRaw": 0.137,
     "shiftM": [
-     -0.4,
-     0.4
+     0.35,
+     0.15
     ],
-    "usable": 0.97,
+    "usable": 0.99,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "window shape tall vs photo wide",
-     "columns 4 vs photo 3"
+     "columns 4 vs photo 3",
+     "mask IoU 0.385 < 0.45"
     ],
     "wall": {
-     "photo": "#65514a",
+     "photo": "#64524a",
      "model": "#846b61",
-     "dL": 0.106
+     "dL": 0.108
     },
     "glazing": {
-     "photo": 0.39,
+     "photo": 0.41,
      "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 4
     },
-    "iou": 0.348
+    "iou": 0.385
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.113,
-    "transvaal-1911-five-storey-tall": 0.113,
+    "transvaal-1911-five-storey-tall": 0.137,
+    "transvaal-1911-five-storey-tall~m": 0.129,
     "transvaal-1923-portiek-tower": 0.106,
     "transvaal-1923-portiek": 0.153
    }

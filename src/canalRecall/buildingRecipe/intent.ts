@@ -890,6 +890,13 @@ export interface RoofIntent {
   rearPitchDeg?: number;
   crossGables?: boolean;
   hip?: typeof ROOF_HIPS[number];
+  /**
+   * `true`: a saddle under a gable crown (blockFace/compile.ts `frontRoofSpecs`) stays `RAKE_CLEAR_M` under the crown's
+   * rakes measured square to the slope instead of 3 cm plumb (recipeRoof.ts `saddleUnderProfile` `clearM`). A roof
+   * pitched to a point gable's rake otherwise runs 2-2.5 cm under the crown wall's raking top face: a coplanar
+   * brick/roof-tile overlap the GLB audit fails (Transvaalbuurt 1911 point gables, 2026-11-01). Absent = byte-identical.
+   */
+  rakeClear?: boolean;
   evidence?: string;
 }
 
@@ -1667,8 +1674,9 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     oneOf(intent.roof.hip, ROOF_HIPS, 'roof.hip');
     if (intent.roof.form !== 'saddle' || intent.roof.pitchDeg === undefined) problems.push('roof.hip: needs form "saddle" and a measured pitchDeg');
   }
+  if (intent?.roof?.rakeClear !== undefined && intent.roof.rakeClear !== true) problems.push('roof.rakeClear: true or absent');
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');

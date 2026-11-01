@@ -1,0 +1,115 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "retief-45-75-r1",
+ "street": "Retiefstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/retief-45-75-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-Oost); scores and holds in scripts/block-face/faces/retief-45-75/auto-place.json"
+ },
+ "types": [
+  "transvaal-1911-five-storey-tall",
+  "transvaal-1911-five-storey"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012112323",
+   "slug": "retief-112323",
+   "address": "Retiefstraat 69C",
+   "type": {
+    "type": "transvaal-1911-five-storey",
+    "measuredPalette": {
+     "brick": "#4a3c37",
+     "evidence": "strip 2023-01-02 span 3423-3661: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "wall-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1911-five-storey scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3423-3661"
+   }
+  },
+  {
+   "pandId": "0363100012129491",
+   "slug": "retief-129491",
+   "address": "Retiefstraat 71D",
+   "type": {
+    "type": "transvaal-1911-five-storey",
+    "overrides": {
+     "bays": 4
+    },
+    "measuredPalette": {
+     "brick": "#56453f",
+     "evidence": "strip 2023-01-02 span 3661-3921: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1911-five-storey scored 1 on eaves 1, storeys 1, stucco 1; strip 2023-01-02 span 3661-3921"
+   }
+  },
+  {
+   "pandId": "0363100012067013",
+   "slug": "retief-067013",
+   "address": "Retiefstraat 73A",
+   "type": {
+    "type": "transvaal-1911-five-storey-tall",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5c4842",
+     "evidence": "strip 2023-01-02 span 3921-4162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1911-five-storey-tall scored 1 on eaves 1, storeys 1, stucco 1; strip 2023-01-02 span 3921-4162"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:00:24.414Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012061274",
+   "addresses": [
+    "Pretoriusstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000782718"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087223",
+   "addresses": [
+    "Pretoriusstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 87-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010011290774"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}
