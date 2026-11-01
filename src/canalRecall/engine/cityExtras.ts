@@ -88,7 +88,7 @@ export class CityExtras {
     }
     const artis = W().CanalRecallArtisAnimals;
     if (artis?.ArtisAnimals) {
-      try { this.artis = new artis.ArtisAnimals(h.cameraMap, h.mercator, h.extractPath(), { sharedFrame: h.sharedFrame }); } catch (error) { h.fail('artis', error); }
+      try { this.artis = new artis.ArtisAnimals(h.cameraMap, h.mercator, h.extractPath(), { sharedFrame: h.sharedFrame, camera: h.cameraMap.api }); } catch (error) { h.fail('artis', error); }
     }
     const trees = W().CanalRecallInventoryTrees;
     if (trees?.InventoryTrees && h.trees3d) {
