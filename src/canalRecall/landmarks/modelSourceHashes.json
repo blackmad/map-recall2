@@ -1,5 +1,5 @@
 {
-  "toolchain": "5d50e7f7197335aef3cbe2561483b40550da983f8f7c28ca45dafd4ca7ae9827",
+  "toolchain": "a76724e54b61f6b4ab77f3092e1adbbd336a4731fb8f02a8bb0514add24da4e3",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -62,7 +62,7 @@
     "concertgebouw": "b9452c17950d55a5f7661b47258218b64ddbc4ab4b6a8a31c76f79cced9628c1",
     "conservatorium": "a918e73a80c944f64970a79743bc6bbb2cf49b688fdb6a62d77d13b44b4a1b53",
     "coymanshuis": "11ca553b4238bfdb340942ab861b83a4646d776a6b8d82854029cf0fa04d8381",
-    "cromhouthuizen": "a8987c9be23e1a3de4eb36af942a949d75dd956c8914c869baba1dde11486a56",
+    "cromhouthuizen": "2e278623f5409845b2b8ea0de1d09dc7acc9719b802ab1e5e9a6172a0e4976be",
     "d-admiraal": "3b9edf2d19154e823fe2a66ea144c8cfe6230c08ed0b1a8e6984ab159aadd6db",
     "da-costakade-13": "04a0c3d07afef4ea2183e248a4fd14ac760b3976d9d26641b7a6ba6a56bd3310",
     "dageraad": "d22aa498a6d5c71ccef3439ea12f3a876f10536df4b683993e2ec0f20c04af0d",
@@ -245,6 +245,7 @@
     "oba-oosterdok": "9744169906192822c1ce78ae435119b34a9c534585de9c6b4f4f50c885e57b84",
     "obrechtkerk": "1885de25c34f0f53ef7622309ec37ba11b5ea5bb1f911f70f7835bfa28c34bd3",
     "occii": "0d6600d651a58827a7ecc6b62e136549179cbfe3362af361dbb16975624d738e",
+    "odeon-singel": "2fc15d34d11e36534853bc4ff353d946dd893eb8b14cb2101715319d4f5b2196",
     "odessa": "685df670542f84941d5fc398f6d769e1216625f36ca8381daec2ded1c71b04ac",
     "olvg-oost": "664cdfba506908eb4bee6a7ad00996812376ec862924ad4023bc3d64da041896",
     "olvg-west": "ee615bf8c3a9d5ca8c06a7dfe03c955ef8427dc1714d5ae840cf8d62cf263440",

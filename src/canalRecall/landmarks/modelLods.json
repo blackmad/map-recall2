@@ -1966,5 +1966,11 @@
   "buildVersion": 2,
   "bytes": 86320,
   "triangles": 4325
+ },
+ "odeon-singel": {
+  "sourceHash": "f45795786dc7c4de",
+  "buildVersion": 2,
+  "bytes": 32264,
+  "triangles": 1344
  }
 }

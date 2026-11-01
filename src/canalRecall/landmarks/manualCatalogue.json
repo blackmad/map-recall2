@@ -49457,5 +49457,126 @@
    253
   ],
   "partyWallNote": "The east side (556) adjoins Herengracht 558 and the west side (542) Herengracht 540 (pand 0363100012171082, also hotel floor space, not modelled); both BAG rings share these walls."
+ },
+ {
+  "id": "odeon-singel",
+  "name": "Odeon",
+  "modelUrl": "./models/odeon-singel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012171740"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8887309,
+    52.3675184
+   ],
+   "headingDegrees": 231.2,
+   "lengthMetres": 34.9,
+   "widthMetres": 14.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.8887309,
+    52.3675184
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG ring of Singel 460 (pand 0363100012171740; PDOK BAG WFS, CC0) as the anchor; native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder's front frame runs along the BAG front from the 458/460 corner (bearing 321.2, front facing 51.2); facade heights and openings measured on the Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000256 (2023, CC BY 4.0) rectified onto the front plane, detail from the Wikimedia Commons photograph 'Amsterdam - Singel 460.JPG' (Rudolphous, 2011, CC BY-SA 3.0); massing behind the front from the 3DBAG LoD2.2 roof planes (CC BY 4.0). See odeon-singel-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 24.6,
+  "bagYear": 1662,
+  "materialOverrides": {
+   "stone": "#d6d2c6",
+   "white": "#e6e1d4",
+   "glass": "#2b3238",
+   "frame": "#2f3631",
+   "dark": "#2a2522",
+   "slate": "#4d5156",
+   "brick": "#75362a"
+  },
+  "attribution": {
+   "title": "Odeon, Singel 460",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Odeon_(Amsterdam)",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG massing (CC BY 4.0): Philips Vingboons' front of 1661-62, painted dark-red brick under a sandstone neck gable with claw pieces, ball finials, a segmental pediment, a hoist-beam cartouche, the 1662 date stone, oval windows in carved cartouches, festoons, the middle column of white-framed windows, the ODEON tablet and the entrance with its leaded fanlight; read from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Rudolphous (CC BY-SA 3.0) and C messier (CC BY-SA 4.0) for proportion only. No photo pixels or imported meshes."
+  },
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.8889046,
+       52.3675323
+      ],
+      [
+       4.8888755,
+       52.3675542
+      ],
+      [
+       4.8888763,
+       52.3675546
+      ],
+      [
+       4.8888479,
+       52.3675763
+      ],
+      [
+       4.8888467,
+       52.3675758
+      ],
+      [
+       4.8888178,
+       52.3675975
+      ],
+      [
+       4.8888173,
+       52.3675978
+      ],
+      [
+       4.888817,
+       52.3675976
+      ],
+      [
+       4.8886162,
+       52.3674917
+      ],
+      [
+       4.8885721,
+       52.3675219
+      ],
+      [
+       4.8885414,
+       52.3675058
+      ],
+      [
+       4.8883864,
+       52.3674244
+      ],
+      [
+       4.8885227,
+       52.3673299
+      ],
+      [
+       4.8886165,
+       52.3673845
+      ],
+      [
+       4.8889046,
+       52.3675323
+      ]
+     ]
+    ]
+   ]
+  },
+  "partyWallBearings": [
+   141,
+   321
+  ],
+  "partyWallNote": "The south-east side adjoins Singel 458 and the north-west side Singel 462; the BAG rings share these walls."
  }
 ]

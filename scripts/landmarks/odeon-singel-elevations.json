@@ -1,0 +1,7 @@
+{"id": "odeon-singel", "countedBy": "lane landmarks-singel-20261101 (#184, opus) from ref-front.jpg = Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000256 (2023-01-13) rectified onto the BAG front plane, counted before the model was built; cross-checked on Wikimedia Commons 'Amsterdam - Singel 460.JPG' (2011) and the 2021-01-22 street view TMX7316010203-001975_pano_0000_001375; not a blind count, 2026-11-01", "facades": [
+ {"name": "canal front, Singel 460", "bearing": 51, "photo": "artifacts/landmark-lanes/odeon-singel/ref-front.jpg",
+  "rows": [null, 1, 2, 1, 3, 3, 3, 3, 1],
+  "rowsNote": "bottom up, clustered by opening centre height like the tool: the souterrain windows under the left and middle bays (vans and blurred boxes hide them in every capture: null); the entrance door on the right bay (leaves under a leaded fanlight, one opening); the two tall bel-etage windows (left and middle bays); the entresol window over the door; first, second and third floors, three windows each; the shoulder storey, the oval windows in the cartouches over the outer bays and the fourth middle window; the attic window in the neck under the hoist beam",
+  "columns": 3, "symmetric": true, "gables": 1,
+  "gablesNote": "one neck gable crowned by a segmental pediment"}
+]}

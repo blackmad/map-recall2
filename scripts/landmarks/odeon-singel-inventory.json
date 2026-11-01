@@ -1,0 +1,283 @@
+{
+ "schemaVersion": 1,
+ "id": "odeon-singel",
+ "pand": "0363100012171740",
+ "brief": "scripts/landmarks/odeon-singel-brief.md",
+ "signature": [
+  "neck-gable",
+  "segmental-pediment",
+  "claws",
+  "middle-column",
+  "odeon-tablet",
+  "festoons",
+  "cartouche-oculi",
+  "date-stone-1662",
+  "painted-brick"
+ ],
+ "walls": [
+  {
+   "tag": "w01-51",
+   "bearing": 51,
+   "lengthM": 3.1,
+   "centre": [
+    4.8888925,
+    52.367545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001374",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "neck-gable",
+     "kind": "other",
+     "where": "the neck gable: the full-width front stops at the shoulder line (17.0 m), a brick neck 2.9 m wide over the middle bay rises to the crowning cornice at 23.0 m",
+     "approxSizeM": [
+      9.4,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "neck-gable.ts neckGable() with the measured GABLE spec, brick neck between stone claws (new `neck` colour option)"
+    },
+    {
+     "id": "segmental-pediment",
+     "kind": "other",
+     "where": "crown of the neck: a cornice 4.2 m wide and a segmental (arched) pediment to 24.6 m",
+     "approxSizeM": [
+      4.2,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "neck-gable.ts crown: 'segment' (new kit option): arc tympanum and an arched moulding of blocks along it"
+    },
+    {
+     "id": "claws",
+     "kind": "relief",
+     "where": "white sandstone claw pieces (klauwstukken) either side of the neck, their rims carved with leafy scrolls, a large volute high against the neck",
+     "approxSizeM": [
+      3.2,
+      5.4
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "concave claw solids with a stone rim; the carved foliage as knobs along the rim and a ring-and-boss volute each side at 21 m"
+    },
+    {
+     "id": "shoulder-finials",
+     "kind": "sculpture",
+     "where": "stone balls on the outer corners of the shoulder line",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "sphere on a small plinth on each corner"
+    },
+    {
+     "id": "hoist-cartouche",
+     "kind": "relief",
+     "where": "hoist beam under the crown, set in a white carved cartouche with scroll ears",
+     "approxSizeM": [
+      1.3,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "beam box through a white panel, scroll ears as stretched spheres"
+    },
+    {
+     "id": "date-stone-1662",
+     "kind": "lettering",
+     "where": "stone tablet '1662' under the attic window in the neck",
+     "approxSizeM": [
+      1.2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "white tablet with raised dark digits (letters() with the new digit glyphs in nearbar-kit.ts)"
+    },
+    {
+     "id": "attic-window",
+     "kind": "window-shape",
+     "where": "small two-light attic window in the neck between the date stone and the hoist cartouche",
+     "approxSizeM": [
+      0.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "win() flat head, white surround"
+    },
+    {
+     "id": "cartouche-oculi",
+     "kind": "window-shape",
+     "where": "horizontal oval windows in carved cartouches over the two outer bays, just under the shoulder (16.1 m)",
+     "approxSizeM": [
+      1.5,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "oval stone ring with an oval glass pane and carved knobs around it"
+    },
+    {
+     "id": "festoons",
+     "kind": "relief",
+     "where": "fruit-and-leaf festoons hanging under the outer windows of the first, second and third floors (six)",
+     "approxSizeM": [
+      1.4,
+      0.45
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "swag of seven flattened spheres on a hanging curve, knots and drops at each end"
+    },
+    {
+     "id": "middle-column",
+     "kind": "window-shape",
+     "where": "the middle bay: four stacked windows in heavy white frames forming one continuous white strip from the ODEON tablet into the neck",
+     "approxSizeM": [
+      1.75,
+      10.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "four win() with white surrounds plus white side strips running the column"
+    },
+    {
+     "id": "odeon-tablet",
+     "kind": "lettering",
+     "where": "stone tablet with incised 'ODEON' over the middle bel-etage window, on the doorcase cornice",
+     "approxSizeM": [
+      1.8,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "white tablet with raised dark capitals (letters())"
+    },
+    {
+     "id": "entrance",
+     "kind": "window-shape",
+     "where": "entrance on the right bay: panelled leaves under a glazed fanlight with a round leaded medallion, white doorcase with a cornice; entresol window with an eared surround over it",
+     "approxSizeM": [
+      1.7,
+      5.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001375",
+     "how": "dark leaves with raised panels, glass fanlight with a ring medallion, white jambs and cornice, a step; win() entresol with ears"
+    },
+    {
+     "id": "bel-etage-windows",
+     "kind": "window-shape",
+     "where": "two tall bel-etage windows (left and middle bays) with white surrounds and hoods",
+     "approxSizeM": [
+      1.8,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "win() with white surrounds, hood slabs"
+    },
+    {
+     "id": "souterrain-windows",
+     "kind": "window-shape",
+     "where": "barred souterrain windows under the left and middle bays",
+     "approxSizeM": [
+      1.0,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002932_pano_0001_000256",
+     "how": "dark panes behind five bars; positions from the 2023 view, partly hidden by vans",
+     "note": "hidden by vans and blurred boxes in every capture; low confidence"
+    },
+    {
+     "id": "banners-and-awning",
+     "kind": "sign",
+     "where": "event banners on the facade (2011 'events & conferences', 2023 'SUPPER WHAT'S YOUR STORY?'), the round 'odeon' awning over the entrance (2011), floodlights",
+     "approxSizeM": [
+      1.0,
+      8.0
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant banners and awnings change between captures (2011, 2017, 2021, 2023)"
+     }
+    },
+    {
+     "id": "painted-brick",
+     "kind": "other",
+     "where": "the brick front is painted a dark oxblood red; frames, claws and carving white",
+     "approxSizeM": [
+      9.4,
+      17.0
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Singel_460.JPG (2011)",
+     "how": "brick slot tinted #75362a (photo #3f2821-#573d33 in the 2011 shade, lifted into the city brick lightness band), white #e6e1d4"
+    }
+   ],
+   "note": "w01-w03 are the three 3 m BAG segments of one 9.4 m canal front; the whole front was read on the 2023-01-13 panorama TMX7316010203-002932_pano_0001_000256 (opposite bank, rectified with a metre grid), the 2021-09-09 view TMX7316010203-002306_pano_0001_003142, the 2021-01-22 close view TMX7316010203-001975_pano_0000_001375 and the 2011 Commons photograph. All items are listed here."
+  },
+  {
+   "tag": "w02-51",
+   "bearing": 51,
+   "lengthM": 3.1,
+   "centre": [
+    4.8888345,
+    52.367589
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001375",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "part of the same front as w01-51; its items are listed under w01-51"
+  },
+  {
+   "tag": "w03-51",
+   "bearing": 51,
+   "lengthM": 3,
+   "centre": [
+    4.888865,
+    52.3675675
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001374",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "part of the same front as w01-51; its items are listed under w01-51"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Amsterdam - Singel 460.JPG (Rudolphous, 2011)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Singel_460.JPG",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Wikimedia Commons, Odeon Amsterdam 7285.jpg (C messier, 2017)",
+   "url": "https://commons.wikimedia.org/wiki/File:Odeon_Amsterdam_7285.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "nl.wikipedia Odeon (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/Odeon_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}
