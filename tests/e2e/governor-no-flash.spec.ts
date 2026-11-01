@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import jpeg from 'jpeg-js';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // White flashes while riding (issue #64, 2026-10-25). The render governor took its pixel-ratio steps inside the
 // map's `render` event, after the frame was drawn: resizing the canvas cleared it and the browser composited the
@@ -20,7 +21,10 @@ const meanLuma = (b64: string): number => {
 test('render-governor pixel-ratio steps never put an empty (white) canvas on screen', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'desktop high-DPI governor path');
   test.setTimeout(300_000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, playerTimeoutMs: 180_000 });
+  // The own engine starts at its quality tier's pixel-ratio cap (renderGovernor.ts TIER_SETTINGS; headless desktop
+  // probes as mid, 1.5); `?tier=high` pins the uncapped tier so the governor's own 2 -> 1.5 -> 1.13 steps are what
+  // this spec exercises, as under MapLibre (#129 hand-back 18).
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, playerTimeoutMs: 180_000, ...(OWN ? { query: '?tier=high' } : {}) });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 180_000 });
   expect(await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).getPixelRatio())).toBe(2);
   const cdp = await page.context().newCDPSession(page);
@@ -34,10 +38,20 @@ test('render-governor pixel-ratio steps never put an empty (white) canvas on scr
     const w = window as any, map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap;
     w.canalRecallGame.maxAsksPerMinute = 0;
     w.__steps = [];
-    const setPixelRatio = map.setPixelRatio.bind(map);
-    map.setPixelRatio = (r: number) => { w.__steps.push({ t: Date.now(), r }); return setPixelRatio(r); };
+    // The governor steps its "map": MapLibre's map, or under own the frame host (engine/frameGuards.ts).
+    const governed = w.canalRecallGame.vectorMap.engine === 'own' ? w.canalRecallGame.vectorMap.host : map;
+    const setPixelRatio = governed.setPixelRatio.bind(governed);
+    governed.setPixelRatio = (r: number) => { w.__steps.push({ t: Date.now(), r }); return setPixelRatio(r); };
     // ~32 ms frames: past the governor's 26 ms p75, so it steps once the 12 s settle period is over.
-    map.on('render', () => { const s = performance.now(); while (performance.now() - s < 30) { /* slow GPU stand-in */ } });
+    // Under own the frame host draws only on change: a rider who stops (the chase car runs into the route's first
+    // corner) leaves gaps the governor reads as pauses, so its 12 s settle restarts and it never judges a window.
+    // Asking for the next frame from each frame stands in for a ride that keeps moving, as MapLibre's per-frame
+    // camera does.
+    const own = w.canalRecallGame.vectorMap.engine === 'own';
+    map.on('render', () => {
+      const s = performance.now(); while (performance.now() - s < 30) { /* slow GPU stand-in */ }
+      if (own) requestAnimationFrame(() => w.canalRecallGame.vectorMap.host.triggerRepaint());
+    });
   });
   await page.keyboard.down('ArrowUp');
   await expect.poll(() => page.evaluate(() => (window as any).__steps.length), { timeout: 90_000, intervals: [1000] }).toBeGreaterThanOrEqual(2);

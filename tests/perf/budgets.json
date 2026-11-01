@@ -71,6 +71,12 @@
       "source": "#130 road-csr heap-gs desktop+iphone (lane interim hand-back 2026-11-01)",
       "date": "2026-11-01"
     },
+    "iphoneTextureMB": {
+      "value": 27,
+      "unit": "MB of GPU texture at city startup, iPhone profile (tests/e2e/city-startup-lod.spec.ts), both engines",
+      "source": "re-baselined 2026-11-01 from 22 (integrator, L1 hand-back 19): the facade atlas is 208 layers at 128 px (191 bay + 4 roof + 1 = 24.5 MB) plus 12 city-look slot layers 1.5 MB, by design; 96 px bays on phones (~14 MB) would need a look review; the mask-format cut is a later materials item",
+      "date": "2026-11-01"
+    },
     "worldRideDownloadMB": {
       "value": 2,
       "measured": { "seededWorld": 1.13, "seededLive": 1.58, "freeWorld": 2.00, "freeLive": 0.22, "note": "MB gzip of building data for one ride: seeded Anne Frank -> Rijksmuseum replay 90 s (692 m, 16 cells, worker decode median 5 ms p95 16) and 90 s Free Ride (202 m, 27 cells, decode median 5.9 p95 25.9); live = ?world=live tile path (building-tiles + facts). The free ride's 27 cells for 202 m is the lever (fetch ring), road lane item." },
