@@ -1,0 +1,118 @@
+{
+ "id": "marnixbad",
+ "source": "Counted 2026-11-01 (lane #172) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0) and the Commons photograph 'Amsterdam - Het Marnix II' (Picasdre, CC BY 3.0).",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "Marnixstraat: brick sports-hall box",
+   "bearing": 112,
+   "photo": "artifacts/landmark-briefs/marnixbad/w02-112.alt.jpg",
+   "rows": [
+    1,
+    1
+   ],
+   "gables": 0,
+   "openings": [
+    "glass",
+    "canopyGlass",
+    "dark"
+   ],
+   "alongM": [
+    0,
+    31.4
+   ],
+   "heightM": [
+    0,
+    14.6
+   ],
+   "note": "Ground storey: one run of frosted glass under the cantilever (mullions only). Above: one ribbon window across nearly the whole front. Brick above with the logo; level top."
+  },
+  {
+   "name": "Singelgracht: aluminium box over the pool glazing",
+   "bearing": 292,
+   "photo": "artifacts/landmark-briefs/marnixbad/w03-292.jpg",
+   "rows": [
+    1
+   ],
+   "gables": 0,
+   "alongM": [
+    21.6,
+    52.8
+   ],
+   "heightM": [
+    0,
+    14.6
+   ],
+   "note": "One continuous run of pool glazing under the oversailing ribbed box; the box itself is blind."
+  },
+  {
+   "name": "Singelgracht: glass link",
+   "bearing": 292,
+   "photo": "artifacts/landmark-briefs/marnixbad/w08-292.jpg",
+   "rows": [
+    1
+   ],
+   "gables": 0,
+   "alongM": [
+    11.5,
+    21.3
+   ],
+   "heightM": [
+    1.0,
+    11.3
+   ],
+   "note": "Curtain wall on a 2.5 m x 1.35 m grid: thin mullions and transoms only, so one opening. Terrace wall in front below 1 m."
+  },
+  {
+   "name": "Marnixplein: north block",
+   "bearing": 22,
+   "photo": "artifacts/landmark-briefs/marnixbad/w01-22.jpg",
+   "rows": [
+    1
+   ],
+   "gables": 0,
+   "alongM": [
+    0.1,
+    31.8
+   ],
+   "heightM": [
+    0,
+    14.0
+   ],
+   "note": "Two-storey curtain wall (mullions and two transoms) across the front, recessed entrance at the east end inside the same glazed field; blind brick above."
+  },
+  {
+   "name": "Marnixplein block, Marnixstraat end",
+   "bearing": 112,
+   "photo": "artifacts/landmark-briefs/marnixbad/w05-112.jpg",
+   "rows": [
+    1
+   ],
+   "gables": 0,
+   "alongM": [
+    41.6,
+    52.8
+   ],
+   "heightM": [
+    0,
+    14.0
+   ],
+   "note": "Blind brick with one large stair window low down at the north end; the poster is temporary."
+  },
+  {
+   "name": "South front",
+   "bearing": 202,
+   "photo": "artifacts/landmark-briefs/marnixbad/w04-202.jpg",
+   "rows": [
+    2,
+    1
+   ],
+   "gables": 0,
+   "heightM": [
+    0,
+    14.6
+   ],
+   "note": "Ground row: the glazed west end (w07 2022 view) and the dark service doors; first row: the dark louvred band. Brick otherwise."
+  }
+ ]
+}

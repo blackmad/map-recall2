@@ -48194,5 +48194,568 @@
     ]
    ]
   }
+ },
+ {
+  "id": "marnixbad",
+  "name": "Zwembad Het Marnix",
+  "modelUrl": "./models/marnixbad.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012169393",
+   "w221058014"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87842138,
+    52.37795928
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 61.1,
+   "widthMetres": 53.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.87842138,
+    52.37795928
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012169393 ring (RD, PDOK BAG WFS); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) clustered by height and snapped to the BAG ring in native east/south metres (scripts/landmarks/marnixbad-prepare.ts). Soffit, ribbon window, curtain walls and the logo measured on rectified Gemeente Amsterdam panorama crops at 50 px/m (scripts/landmarks/marnixbad-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 16.5,
+  "bagYear": 2006,
+  "materialOverrides": {
+   "brick": "#7a4636",
+   "concrete": "#a9b0ac",
+   "white": "#d6d9d4",
+   "glass": "#4f6468",
+   "canopyGlass": "#c5ccc9",
+   "dark": "#2c2b29",
+   "frame": "#8e9696",
+   "slate": "#9e9281",
+   "gold": "#e39a3b",
+   "pink": "#e58fa6",
+   "blue": "#4f9fd6",
+   "green": "#8cc55a",
+   "stone": "#b7bbb8",
+   "greyBrick": "#3b3734",
+   "bronze": "#3f4144"
+  },
+  "attribution": {
+   "title": "Zwembad Het Marnix (Mecanoo, 2006)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbad",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the brick sports-hall box on the Marnixstraat with its ribbon window and the het marnix logo over a recessed frosted ground storey, the ribbed aluminium box cantilevered over the glazed pool storey on the Singelgracht, the glass link with its curved café front, the brick Marnixplein block with its curtain wall and the canal terrace, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) and the Wikimedia Commons photograph 'Amsterdam - Het Marnix II' by Picasdre (CC BY 3.0), read for proportion only. Architect and year: Wikipedia nl 'Marnixbad' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8782499,
+      52.3782112
+     ],
+     [
+      4.8782404,
+      52.3782135
+     ],
+     [
+      4.8782109,
+      52.3781676
+     ],
+     [
+      4.8781797,
+      52.3781188
+     ],
+     [
+      4.878198,
+      52.3781146
+     ],
+     [
+      4.878144,
+      52.3780305
+     ],
+     [
+      4.8780944,
+      52.3780424
+     ],
+     [
+      4.878072,
+      52.378048
+     ],
+     [
+      4.8779024,
+      52.3777848
+     ],
+     [
+      4.8779249,
+      52.3777793
+     ],
+     [
+      4.8779254,
+      52.37778
+     ],
+     [
+      4.8780802,
+      52.3777429
+     ],
+     [
+      4.8780797,
+      52.3777421
+     ],
+     [
+      4.8781337,
+      52.3777291
+     ],
+     [
+      4.8781359,
+      52.3777286
+     ],
+     [
+      4.8782207,
+      52.3777081
+     ],
+     [
+      4.8783595,
+      52.3776746
+     ],
+     [
+      4.8783995,
+      52.3776652
+     ],
+     [
+      4.8785685,
+      52.3779284
+     ],
+     [
+      4.8785279,
+      52.3779385
+     ],
+     [
+      4.8785156,
+      52.3779412
+     ],
+     [
+      4.8785343,
+      52.3779699
+     ],
+     [
+      4.8785366,
+      52.37797
+     ],
+     [
+      4.878539,
+      52.3779704
+     ],
+     [
+      4.8785412,
+      52.3779708
+     ],
+     [
+      4.8785434,
+      52.3779714
+     ],
+     [
+      4.8785455,
+      52.3779721
+     ],
+     [
+      4.8785475,
+      52.3779729
+     ],
+     [
+      4.8785491,
+      52.3779737
+     ],
+     [
+      4.8785506,
+      52.3779745
+     ],
+     [
+      4.8785519,
+      52.3779755
+     ],
+     [
+      4.8785532,
+      52.3779765
+     ],
+     [
+      4.8785543,
+      52.3779775
+     ],
+     [
+      4.8785553,
+      52.3779786
+     ],
+     [
+      4.8785562,
+      52.3779797
+     ],
+     [
+      4.8785569,
+      52.3779807
+     ],
+     [
+      4.8785575,
+      52.3779819
+     ],
+     [
+      4.878558,
+      52.377983
+     ],
+     [
+      4.8785583,
+      52.3779842
+     ],
+     [
+      4.8785584,
+      52.3779854
+     ],
+     [
+      4.8785584,
+      52.3779866
+     ],
+     [
+      4.8785582,
+      52.3779877
+     ],
+     [
+      4.8785579,
+      52.3779889
+     ],
+     [
+      4.8785573,
+      52.3779901
+     ],
+     [
+      4.8785567,
+      52.3779912
+     ],
+     [
+      4.8785558,
+      52.3779923
+     ],
+     [
+      4.8785549,
+      52.3779933
+     ],
+     [
+      4.8785538,
+      52.3779943
+     ],
+     [
+      4.8785525,
+      52.3779952
+     ],
+     [
+      4.8785512,
+      52.377996
+     ],
+     [
+      4.8785697,
+      52.3780251
+     ],
+     [
+      4.8786225,
+      52.3780124
+     ],
+     [
+      4.8786833,
+      52.3781071
+     ],
+     [
+      4.8786743,
+      52.3781092
+     ],
+     [
+      4.8782499,
+      52.3782112
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "bungehuis",
+  "name": "Bungehuis",
+  "modelUrl": "./models/bungehuis.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012167624",
+   "w158634246"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88915783,
+    52.37200969
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 49.8,
+   "widthMetres": 36.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.88915783,
+    52.37200969
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012167624 ring (RD, PDOK BAG WFS); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/bungehuis-prepare.ts). Bays, piers, storey and band heights measured on rectified Gemeente Amsterdam panorama crops at 39-50 px/m (scripts/landmarks/bungehuis-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34,
+  "bagYear": 1934,
+  "materialOverrides": {
+   "stone": "#9a8e7b",
+   "sandstone": "#7a7264",
+   "glass": "#4e5e66",
+   "frame": "#3c4540",
+   "dark": "#2e2c29",
+   "bronze": "#4a4a3c",
+   "slate": "#5f6166",
+   "canopyGlass": "#4e5e66"
+  },
+  "attribution": {
+   "title": "Bungehuis (A.D.N. van Gendt and W.J. Klok, 1932-1934; Rijksmonument 518486)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Bungehuis",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG footprint (CC0): stone piers with pinnacles, canted steel bay windows, Greek-key panels, banded corners, the stone plinth and the Spuistraat entrance with BUNGE-HUIS, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Jane023 (CC BY 3.0), Ceescamel (CC BY-SA 4.0) and Alf van Beem (CC0/public domain), read for proportion only. Architects and dates: Wikipedia nl 'Bungehuis' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8892926,
+      52.3720109
+     ],
+     [
+      4.889291,
+      52.372011
+     ],
+     [
+      4.8892915,
+      52.3720146
+     ],
+     [
+      4.8892898,
+      52.3720147
+     ],
+     [
+      4.8892899,
+      52.3720158
+     ],
+     [
+      4.8892882,
+      52.3720159
+     ],
+     [
+      4.8892884,
+      52.372017
+     ],
+     [
+      4.8892866,
+      52.3720171
+     ],
+     [
+      4.8892867,
+      52.3720181
+     ],
+     [
+      4.8892832,
+      52.3720183
+     ],
+     [
+      4.8892875,
+      52.372047
+     ],
+     [
+      4.889291,
+      52.3720468
+     ],
+     [
+      4.8892912,
+      52.3720478
+     ],
+     [
+      4.8892929,
+      52.3720477
+     ],
+     [
+      4.8892931,
+      52.3720488
+     ],
+     [
+      4.8892949,
+      52.3720487
+     ],
+     [
+      4.889295,
+      52.3720498
+     ],
+     [
+      4.8892968,
+      52.3720497
+     ],
+     [
+      4.8892973,
+      52.3720533
+     ],
+     [
+      4.8892989,
+      52.3720532
+     ],
+     [
+      4.8893171,
+      52.3721757
+     ],
+     [
+      4.8893128,
+      52.3721782
+     ],
+     [
+      4.8893086,
+      52.3721783
+     ],
+     [
+      4.8893081,
+      52.3721809
+     ],
+     [
+      4.8893039,
+      52.3721811
+     ],
+     [
+      4.8893034,
+      52.3721836
+     ],
+     [
+      4.8892992,
+      52.3721838
+     ],
+     [
+      4.8892987,
+      52.3721863
+     ],
+     [
+      4.8892944,
+      52.3721888
+     ],
+     [
+      4.8888829,
+      52.3721491
+     ],
+     [
+      4.888878,
+      52.3721459
+     ],
+     [
+      4.8888777,
+      52.3721433
+     ],
+     [
+      4.8888735,
+      52.3721431
+     ],
+     [
+      4.8888732,
+      52.3721405
+     ],
+     [
+      4.888869,
+      52.3721402
+     ],
+     [
+      4.8888687,
+      52.3721377
+     ],
+     [
+      4.8888645,
+      52.3721374
+     ],
+     [
+      4.8888595,
+      52.3721344
+     ],
+     [
+      4.8888579,
+      52.3721273
+     ],
+     [
+      4.8887834,
+      52.3717848
+     ],
+     [
+      4.8887849,
+      52.3717847
+     ],
+     [
+      4.8888754,
+      52.3717854
+     ],
+     [
+      4.8888782,
+      52.3717987
+     ],
+     [
+      4.8890392,
+      52.3718402
+     ],
+     [
+      4.8890435,
+      52.3718598
+     ],
+     [
+      4.889102,
+      52.371855
+     ],
+     [
+      4.8890921,
+      52.3718097
+     ],
+     [
+      4.8891001,
+      52.3717811
+     ],
+     [
+      4.8891115,
+      52.3717401
+     ],
+     [
+      4.8892547,
+      52.3717637
+     ],
+     [
+      4.8892557,
+      52.3717636
+     ],
+     [
+      4.8892628,
+      52.3718112
+     ],
+     [
+      4.8892552,
+      52.3718116
+     ],
+     [
+      4.8892585,
+      52.3718336
+     ],
+     [
+      4.8892661,
+      52.3718332
+     ],
+     [
+      4.8892926,
+      52.3720109
+     ]
+    ]
+   ]
+  }
  }
 ]

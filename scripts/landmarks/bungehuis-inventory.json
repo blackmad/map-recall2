@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "id": "bungehuis",
+ "pand": "0363100012167624",
+ "brief": "scripts/landmarks/bungehuis-brief.md",
+ "signature": [
+  "w-bay-windows",
+  "w-piers",
+  "w-meander-band",
+  "e-entrance",
+  "e-bunge-huis-letters",
+  "w-banded-corner",
+  "w-pinnacles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-278",
+   "bearing": 278,
+   "lengthM": 39.3,
+   "centre": [
+    4.888825,
+    52.371962
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002961_pano_0014_000016",
+   "capturedAt": "2023-02-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-bay-windows",
+     "kind": "window-shape",
+     "where": "five storeys of canted steel bay windows per bay, 6.9-24.4 m, nine bays on 4.07 m",
+     "approxSizeM": [
+      2.0,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "bungehuis-builder.ts bay(): glass trapezoid prism 0.36 m proud with steel mullions, transom, stone sill and head",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-piers",
+     "kind": "colonnade",
+     "where": "projecting stone piers between the bays from the plinth to the cornice",
+     "approxSizeM": [
+      0.9,
+      24
+     ],
+     "plan": "modelled",
+     "how": "0.38 m slabs per pier",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-pinnacles",
+     "kind": "other",
+     "where": "stubby blocks over every pier above the cornice",
+     "approxSizeM": [
+      0.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "stone block on each pier top",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Bungehuis.jpg"
+    },
+    {
+     "id": "w-meander-band",
+     "kind": "relief",
+     "where": "Greek-key (meander) panel over every ground-storey window, 5.2-6.8 m",
+     "approxSizeM": [
+      2.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "meander(): proud stone panel with raised key bars and a dark centre square",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-ground-windows",
+     "kind": "window-shape",
+     "where": "tall ground-storey windows 2.45-5.1 m between the piers",
+     "approxSizeM": [
+      2.0,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "glass slab with steel bars and stone sill",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-spandrel-squares",
+     "kind": "other",
+     "where": "small dark square in each spandrel above a bay window",
+     "approxSizeM": [
+      0.25,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "dark 26 cm block",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-plinth",
+     "kind": "other",
+     "where": "darker stone plinth 0-2.3 m with basement grilles",
+     "approxSizeM": [
+      39,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "sandstone slab and cap, dark grille slab per bay",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-banded-corner",
+     "kind": "other",
+     "where": "south end 36.6-39.2 m: horizontal banding, one narrow window and a meander panel per storey",
+     "approxSizeM": [
+      2.6,
+      24
+     ],
+     "plan": "modelled",
+     "how": "cornerZone(): raised bands every 0.6 m, narrow windows, small meander panels",
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    },
+    {
+     "id": "w-cafe-letters",
+     "kind": "lettering",
+     "where": "gilt café lettering on the ground-storey glass",
+     "approxSizeM": [
+      1.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant window lettering"
+     },
+     "seenIn": "TMX7316010203-002961_pano_0014_000016"
+    }
+   ],
+   "note": "Singel front (facade-ring edge 15). Commons \"Bungehuis.jpg\" (Ceescamel, CC BY-SA 4.0, 2018) shows it whole: nine bays, banded corners."
+  },
+  {
+   "tag": "w02-351",
+   "bearing": 351,
+   "lengthM": 28.4,
+   "centre": [
+    4.889092,
+    52.372171
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_001099",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-bay-windows",
+     "kind": "window-shape",
+     "where": "same canted bay windows, seven bays on about 3.3 m",
+     "approxSizeM": [
+      1.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "bay()",
+     "seenIn": "TMX7316010203-001178_pano_0000_001099"
+    },
+    {
+     "id": "n-banded-corners",
+     "kind": "other",
+     "where": "banded corner zones at both ends with stacked meander panels under narrow windows",
+     "approxSizeM": [
+      2.6,
+      24
+     ],
+     "plan": "modelled",
+     "how": "cornerZone() both ends",
+     "seenIn": "TMX7316010203-001178_pano_0000_001099"
+    },
+    {
+     "id": "n-meander-band",
+     "kind": "relief",
+     "where": "meander panels over the ground storey",
+     "approxSizeM": [
+      2.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "meander()",
+     "seenIn": "TMX7316010203-001178_pano_0000_001099"
+    }
+   ],
+   "note": "Paleisstraat front (facade-ring edge 10). The 2019 crop is behind a tree; the 2022 alternate view in the brief shows the west part and the banded NW corner, Commons \"Amsterdam Spui 210 Bungehuis\" (Jane023) the east part."
+  },
+  {
+   "tag": "w03-96",
+   "bearing": 96,
+   "lengthM": 19.9,
+   "centre": [
+    4.8892825,
+    52.371924
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track05_Sphere_00165",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-bay-windows",
+     "kind": "window-shape",
+     "where": "six bays of canted bay windows",
+     "approxSizeM": [
+      1.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "bay()",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00165"
+    },
+    {
+     "id": "e-entrance",
+     "kind": "canopy",
+     "where": "entrance at the north end of this front (ring edge 2, set 0.5 m back): bronze doors up three steps in a stone surround with stepped side blocks",
+     "approxSizeM": [
+      4.4,
+      6.6
+     ],
+     "plan": "modelled",
+     "how": "entrance(): steps, bronze door slab with ribs, two stepped side blocks, lintel block, stepped frieze",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg"
+    },
+    {
+     "id": "e-bunge-huis-letters",
+     "kind": "lettering",
+     "where": "BUNGE-HUIS in raised stone letters on the lintel block over the door, about 0.75 m tall",
+     "approxSizeM": [
+      3.2,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "raisedLettering BUNGE-HUIS on the lintel block",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg"
+    },
+    {
+     "id": "e-door-lamps",
+     "kind": "lamp",
+     "where": "bronze bell lamps under the side blocks and bronze finials on top",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "bronze cylinders",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg"
+    },
+    {
+     "id": "e-door-pattern",
+     "kind": "relief",
+     "where": "key-pattern bronze grille in the door leaves",
+     "approxSizeM": [
+      2.4,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "five vertical bronze ribs",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg"
+    },
+    {
+     "id": "e-house-number",
+     "kind": "lettering",
+     "where": "\"210\" beside the door",
+     "approxSizeM": [
+      0.4,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "house number"
+     },
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg"
+    },
+    {
+     "id": "e-parking-sign",
+     "kind": "sign",
+     "where": "parking sign on a pole",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture"
+     },
+     "seenIn": "b_20250109_1300_Track05_Sphere_00165"
+    }
+   ],
+   "note": "Spuistraat front south of the entrance (facade-ring edge 28): six bays on 3.3 m, same system."
+  },
+  {
+   "tag": "w04-96",
+   "bearing": 96,
+   "lengthM": 13.7,
+   "centre": [
+    4.8893115,
+    52.3721165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001544_pano_0001_000524",
+   "capturedAt": "2020-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-bay-windows",
+     "kind": "window-shape",
+     "where": "three bays",
+     "approxSizeM": [
+      1.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "bay()",
+     "seenIn": "TMX7316010203-001544_pano_0001_000524"
+    },
+    {
+     "id": "ne-banded-corner",
+     "kind": "other",
+     "where": "banded corner zone from 11.9 m round to the Paleisstraat",
+     "approxSizeM": [
+      1.8,
+      24
+     ],
+     "plan": "modelled",
+     "how": "cornerZone()",
+     "seenIn": "TMX7316010203-001544_pano_0001_000524"
+    },
+    {
+     "id": "ne-street-sign",
+     "kind": "sign",
+     "where": "street-name plate on the plinth",
+     "approxSizeM": [
+      0.5,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "street-name plate"
+     },
+     "seenIn": "TMX7316010203-001544_pano_0001_000524"
+    }
+   ],
+   "note": "Spuistraat front north of the entrance (facade-ring edge 5), full height at 50 px/m: plinth 2.3, ground windows 2.45-5.1, meander 5.2-6.8, bays 6.9-9.4 / 10.7-13.4 / 14.7-17.4 / 18.7-20.9 / 22.3-24.4, cornice 26.6, pinnacles to 27.5 m."
+  },
+  {
+   "tag": "w05-261",
+   "bearing": 261,
+   "lengthM": 7.9,
+   "centre": [
+    4.8891055,
+    52.371777
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003004_pano_0009_000003",
+   "capturedAt": "2023-03-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-rear-windows",
+     "kind": "window-shape",
+     "where": "column of small windows on the south return above the neighbours",
+     "approxSizeM": [
+      1,
+      20
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 1 m windows seen only from across the Singel, 100 m away; the rear walls are the plain 3DBAG shell"
+     },
+     "seenIn": "TMX7316010203-003004_pano_0009_000003"
+    }
+   ],
+   "note": "Rear wing over the Singel neighbours, seen across the canal (far): plain stone with a column of windows; drawn by the 3DBAG shell only."
+  },
+  {
+   "tag": "w06-96",
+   "bearing": 96,
+   "lengthM": 5.3,
+   "centre": [
+    4.8892625,
+    52.3717895
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track05_Sphere_00168",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-bay",
+     "kind": "window-shape",
+     "where": "one bay column of bay windows",
+     "approxSizeM": [
+      1.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "bay()",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00168"
+    },
+    {
+     "id": "se-tower",
+     "kind": "tower",
+     "where": "stair/lift tower over the south wing to 33.6 m (3DBAG)",
+     "approxSizeM": [
+      4,
+      6
+     ],
+     "plan": "simplified",
+     "how": "3DBAG shell volume",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00168"
+    }
+   ],
+   "note": "South wing on the Spuistraat (facade-ring edge 24): one bay of the same system; a lift/stair tower rises behind to 33.6 m (3DBAG)."
+  },
+  {
+   "tag": "w07-277",
+   "bearing": 277,
+   "lengthM": 5,
+   "centre": [
+    4.8891005,
+    52.3718345
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003004_pano_0009_000001",
+   "capturedAt": "2023-03-20",
+   "checked": true,
+   "items": [],
+   "note": "Rear wall over the neighbours, seen across the Singel (far)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Bungehuis.jpg (Ceescamel, 2018)",
+   "url": "https://commons.wikimedia.org/wiki/File:Bungehuis.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Amsterdam Spui 210 Bungehuis - door.jpg (Jane023, 2011)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis_-_door.jpg",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "Wikimedia Commons: Amsterdam Spui 210 Bungehuis.jpg (Jane023, 2011)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Spui_210_Bungehuis.jpg",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "Wikipedia nl: Bungehuis (A.D.N. van Gendt, completed by W.J. Klok, 1932-1934)",
+   "url": "https://nl.wikipedia.org/wiki/Bungehuis",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012167624",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167624",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

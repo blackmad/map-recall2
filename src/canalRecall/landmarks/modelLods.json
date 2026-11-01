@@ -1942,5 +1942,17 @@
   "buildVersion": 2,
   "bytes": 83392,
   "triangles": 4389
+ },
+ "marnixbad": {
+  "sourceHash": "109f06ad4434b460",
+  "buildVersion": 2,
+  "bytes": 35048,
+  "triangles": 1010
+ },
+ "bungehuis": {
+  "sourceHash": "0e987c34023206c1",
+  "buildVersion": 2,
+  "bytes": 96024,
+  "triangles": 4833
  }
 }
