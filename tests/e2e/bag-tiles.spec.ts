@@ -40,7 +40,10 @@ async function load(page: Page, query: string): Promise<void> {
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
   await page.setViewportSize({ width: 1280, height: 800 });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false, query });
+  // world=live: the compiled world-v1 cells are the default and their probe returns before `?bagTiles=1` is read,
+  // so both runs take the live tile path this test guards until P5 deletes it (#129 round 19).
+  const live = `${query ? `${query}&` : '?'}world=live`;
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false, query: live });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
 }
 
