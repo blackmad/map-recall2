@@ -28,6 +28,14 @@ working behavior, and leave it easier for the next session to continue.
   history.
 - Preserve unrelated user changes. Never reset or discard a dirty worktree to
   make integration easier.
+- Prune worktrees as part of every integration round, not when the disk is
+  full: after pushing `main`, run `scripts/worktrees/triage.sh --remove-merged`
+  from any checkout. It removes worktrees that are in `origin/main`, have no
+  live process and were idle for 12 h, after staging their review sheets into
+  `map-recall2-worktrees/_pruned-sheets/` and WIP-committing any dirt onto the
+  lane branch. Each worktree costs ~1.2 GB; 64 of them filled the disk on
+  2026-11-01. Unmerged or dirty-and-detached worktrees are reported, never
+  removed; sweeping `_pruned-sheets` (`--sweep-sheets`) stays the user's call.
 - For parallel agents, use a separate worktree and feature branch per agent.
   Give each agent an exclusive lane (presentation, routing, content/data, or
   domain logic) and a unique dev-server port.
