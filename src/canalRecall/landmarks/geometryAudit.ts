@@ -1347,7 +1347,16 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean} =
       const sp = median(gaps);
       gaps.forEach((g, i) => {
         const k = Math.round(g / sp);
-        if (sp > 0.8 && k >= 2 && k <= 3 && Math.abs(g - k * sp) < 0.2 * sp) for (let j = 1; j < k; j++) missing.push({t: +(cs[i] + j * sp).toFixed(2), y0: +ms.toFixed(2), y1: +mt.toFixed(2)});
+        if (!(sp > 0.8 && k >= 2 && k <= 3 && Math.abs(g - k * sp) < 0.2 * sp)) return;
+        // Only between two regular windows: an odd-sized neighbour (a wide entrance bay) is not a gap in the rhythm.
+        if (mismatched.includes(r[i]) || mismatched.includes(r[i + 1])) return;
+        for (let j = 1; j < k; j++) {
+          const t = cs[i] + j * sp;
+          // Not missing when the wall there already carries an opening of any size at that level (a 17 m glazed bay
+          // between two regular windows, Olympisch Stadion w01).
+          if (openings.some(o => o !== r[i] && o !== r[i + 1] && o.t0 - 0.1 <= t && t <= o.t1 + 0.1 && o.y1 > ms && o.y0 < mt)) continue;
+          missing.push({t: +t.toFixed(2), y0: +ms.toFixed(2), y1: +mt.toFixed(2)});
+        }
       });
     }
     rowOut.push({y: +((ms + mt) / 2).toFixed(1), count: r.length, medianW: +mw.toFixed(2), medianH: +mh.toFixed(2), odd});
