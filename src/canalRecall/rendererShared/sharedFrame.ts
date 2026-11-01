@@ -22,7 +22,8 @@
 import { SHADOW_STAND_IN_SOURCE, shadowOnlyLayerPass } from './shadowStandIns.js';
 import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator, type FrameMatrices, type Mat4, type Vec3 } from './frameMath.js';
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
-import { mapLibreSky } from '../look/sunny.js';
+import { mapLibreSky, SKY } from '../look/sunny.js';
+import { depthFadeFlag, depthFadeMultiples, depthFadeRange, installDepthFade } from '../look/depthFade.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
 import { worldCameraOf } from '../engine/worldCameraOf.js';
@@ -210,6 +211,9 @@ export class SharedFrame {
     this.shadowsOn = options.shadows ?? true;
     this.scene = new THREE.Scene();
     this.scene.name = 'shared-frame';
+    // `?depthFade=1`: aerial perspective toward the horizon haze (look/depthFade.ts), ranged per frame by the
+    // eye-to-centre distance.
+    if (depthFadeFlag()) { installDepthFade(THREE); this.scene.fog = new THREE.Fog(SKY.horizon, 1e7, 2e7); }
     // World matrices are refreshed right before each render for what can draw (drawnWorld.ts: three's
     // updateMatrixWorld without the invisible subtrees, #129); the camera's own matrices stay identity (the view
     // lives in its projection).
@@ -372,6 +376,18 @@ export class SharedFrame {
     const t = phases ? performance.now() : 0;
     this.worldNodes = updateDrawnWorld(this.scene as unknown as WorldNode);
     if (phases) phases.add('world matrices', performance.now() - t);
+  }
+
+  private fadeMultiples: [number, number] | null = null;
+  /** The last frame's eye-to-centre distance, metres, while the depth fade is on (diagnostics). */
+  fadeEyeToCentreM = 0;
+  private rangeFog(fm: FrameMatrices, view: FrameView): void {
+    const c = view.center(), m = mercatorOfLngLat(c.lng, c.lat);
+    const d = Math.hypot(fm.eye[0] - m[0], fm.eye[1] - m[1], fm.eye[2] - m[2]) / fm.unitsPerMetre;
+    const r = depthFadeRange(d, this.fadeMultiples ??= depthFadeMultiples());
+    this.fadeEyeToCentreM = d;
+    this.scene.fog.near = r.near;
+    this.scene.fog.far = r.far;
   }
 
   /** Register a participant. Returns an unregister function. */
@@ -614,6 +630,7 @@ export class SharedFrame {
     const phases = framePhases();
     if (phases && !this.shadowPhaseWrapped) this.wrapShadowPhase(renderer, phases);
     const view = this.frameView ?? this.readView();
+    if (this.scene.fog) this.rangeFog(fm, view);
     const ctx: FrameContext = {
       pass, frame: fm, worldFromMercator: this.worldFromMercatorM, clipFromWorld: this.camera.projectionMatrix,
       zoom: view.zoom,

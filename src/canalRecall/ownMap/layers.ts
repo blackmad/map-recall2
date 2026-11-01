@@ -38,6 +38,14 @@ export const handover = { uRider: { value: new THREE.Vector2() }, uNearR: { valu
 // conversion, so the colour is passed through untouched (declared "linear").
 const raw = (color: string) => new THREE.Color().setStyle(color, THREE.LinearSRGBColorSpace);
 
+// Scene fog (look/depthFalloff.ts, `?depthFalloff=1`): the flat layers take three's fog chunks, which compile to
+// nothing while the scene has no fog. The fog colour arrives in the output colour space, like these raw colours.
+const fogUniforms = () => THREE.UniformsUtils.clone(THREE.UniformsLib.fog) as Record<string, THREE.IUniform>;
+const FOG_VERT_PARS = '\n#include <fog_pars_vertex>\n';
+const FOG_FRAG_PARS = '\n#include <fog_pars_fragment>\n';
+const FOG_VERTEX = '\n#include <fog_vertex>\n';
+const FOG_FRAGMENT = '\n#include <fog_fragment>\n';
+
 function flatUniforms(color: string, z: number): FlatUniforms {
   return { uColor: { value: raw(color) }, uOpacity: { value: 1 }, uZ: { value: z }, uHalf: { value: 1 }, ...handover };
 }
@@ -45,12 +53,14 @@ function flatUniforms(color: string, z: number): FlatUniforms {
 const FRAG = /* glsl */`
 uniform vec3 uColor; uniform float uOpacity; varying vec2 vWorld;
 ${DITHER}
-void main(){ float a=uOpacity*nearKeep(vWorld); if(a<bayer4(gl_FragCoord.xy)) discard; gl_FragColor=vec4(uColor,1.); }`;
+${FOG_FRAG_PARS}
+void main(){ float a=uOpacity*nearKeep(vWorld); if(a<bayer4(gl_FragCoord.xy)) discard; gl_FragColor=vec4(uColor,1.);${FOG_FRAGMENT}}`;
 
 export function fillMaterial(color: string, z: number): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
-    uniforms: flatUniforms(color, z) as unknown as Record<string, THREE.IUniform>,
-    vertexShader: /* glsl */`uniform float uZ; varying vec2 vWorld; void main(){ vWorld=position.xy; gl_Position=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.); }`,
+    uniforms: { ...flatUniforms(color, z), ...fogUniforms() } as unknown as Record<string, THREE.IUniform>,
+    fog: true,
+    vertexShader: /* glsl */`${FOG_VERT_PARS}uniform float uZ; varying vec2 vWorld; void main(){ vWorld=position.xy; vec4 mvPosition=modelViewMatrix*vec4(position.xy,uZ,1.); gl_Position=projectionMatrix*mvPosition;${FOG_VERTEX} }`,
     fragmentShader: FRAG,
     // In three's transparent list (ordered by renderOrder, after the opaque 3D),
     // so the flat layers keep their cartographic order among themselves.
@@ -61,11 +71,12 @@ export function fillMaterial(color: string, z: number): THREE.ShaderMaterial {
 
 export function lineMaterial(color: string, z: number): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
-    uniforms: flatUniforms(color, z) as unknown as Record<string, THREE.IUniform>,
-    vertexShader: /* glsl */`
+    uniforms: { ...flatUniforms(color, z), ...fogUniforms() } as unknown as Record<string, THREE.IUniform>,
+    fog: true,
+    vertexShader: /* glsl */`${FOG_VERT_PARS}
       uniform float uZ; uniform float uHalf; attribute vec2 aDir; attribute vec2 aCorner; varying vec2 vWorld;
       void main(){ vec2 n=vec2(-aDir.y,aDir.x); vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*uHalf; vWorld=p;
-        gl_Position=projectionMatrix*modelViewMatrix*vec4(p,uZ,1.); }`,
+        vec4 mvPosition=modelViewMatrix*vec4(p,uZ,1.); gl_Position=projectionMatrix*mvPosition;${FOG_VERTEX} }`,
     fragmentShader: FRAG,
     // In three's transparent list (ordered by renderOrder, after the opaque 3D),
     // so the flat layers keep their cartographic order among themselves.
@@ -153,10 +164,12 @@ export function tileQuadGeometry(z: number, x: number, y: number, toLocal: (lng:
 
 export function rasterMaterial(texture: THREE.Texture, color: string, z: number): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
-    uniforms: { map: { value: texture }, ...flatUniforms(color, z) } as unknown as Record<string, THREE.IUniform>,
-    vertexShader: /* glsl */`uniform float uZ; varying vec2 vUv; varying vec2 vWorld; void main(){ vUv=uv; vWorld=position.xy; gl_Position=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.); }`,
+    uniforms: { map: { value: texture }, ...flatUniforms(color, z), ...fogUniforms() } as unknown as Record<string, THREE.IUniform>,
+    fog: true,
+    vertexShader: /* glsl */`${FOG_VERT_PARS}uniform float uZ; varying vec2 vUv; varying vec2 vWorld; void main(){ vUv=uv; vWorld=position.xy; vec4 mvPosition=modelViewMatrix*vec4(position.xy,uZ,1.); gl_Position=projectionMatrix*mvPosition;${FOG_VERTEX} }`,
     fragmentShader: /* glsl */`uniform sampler2D map; uniform vec3 uColor; uniform float uOpacity; varying vec2 vUv; varying vec2 vWorld; ${DITHER}
-      void main(){ vec4 t=texture2D(map,vUv); float a=t.a*uOpacity*nearKeep(vWorld); if(a<0.01) discard; gl_FragColor=vec4(uColor*0.9,a); }`,
+      ${FOG_FRAG_PARS}
+      void main(){ vec4 t=texture2D(map,vUv); float a=t.a*uOpacity*nearKeep(vWorld); if(a<0.01) discard; gl_FragColor=vec4(uColor*0.9,a);${FOG_FRAGMENT}}`,
     // Real blending here: raster tiles never overlap, and dithering a soft
     // (anti-aliased) footprint edge stippled the whole city.
     transparent: true,
