@@ -1966,5 +1966,11 @@
   "buildVersion": 2,
   "bytes": 86320,
   "triangles": 4325
+ },
+ "vijzelbank": {
+  "sourceHash": "1310fc65cf2a62ae",
+  "buildVersion": 2,
+  "bytes": 78468,
+  "triangles": 4147
  }
 }

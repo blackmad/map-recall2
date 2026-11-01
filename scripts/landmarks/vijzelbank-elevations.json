@@ -1,0 +1,44 @@
+{
+  "id": "vijzelbank",
+  "source": "Counted 2026-11-01 (lane #182) from the landmark-brief.ts crops (--height=32) of the Gemeente Amsterdam panoramas (CC BY 4.0): w01-103 recording_2025-06-16_06-42-40_01588 (2025) and w05-193 TMX7316010203-000355_pano_0000_000368 (2017).",
+  "countedBy": "photo (lane, not blind)",
+  "facades": [
+    {
+      "name": "Vijzelstraat front",
+      "bearing": 103,
+      "photo": "artifacts/landmark-briefs/vijzelbank/w01-103.jpg",
+      "rows": [
+        28,
+        29,
+        29,
+        30,
+        30,
+        25,
+        10,
+        null
+      ],
+      "gables": 3,
+      "note": "One opening per bay per storey (two panes with a narrow mullion = one opening by the ribbon rule). 30 bays: 13 x 4.71 m south of the Kerkstraat passage, two of 5.1 m over it, 15 x 4.64 m north of it. Ground: shopfronts between the white gallery piers, none in the two passage bays. Storeys 1-2: the double-height void over the passage shows one glazed back wall (counted once). Recounted on full-resolution crops of rows 18-30 m: storey 5 (19.1-22.5 m) stands on the front plane except at 0-4.5 m and 31-35.5 m and north of 130.6 m (~25 bays); storey 6 (22.5-25.8 m) stands on the front plane over 47-81 m (7 bays: a third recount at full resolution puts the fins at 4.75 m from 47 m to the block's end at 81 m, not 88 m) and over 108.5-122 m (3 bays; the fourth window seen at 104-108.5 m sits under the diagonal edge of its roof plate, i.e. it is the set-back bay seen obliquely, ~5.4 m behind the front as 3DBAG also has it, outside depthBand, so 10 in all; the block's storey starts right above the 22.5 m band, so it is not set back as first read); the masses set back more than ~3 m (to 26-27.5 m in 3DBAG) are hidden from the street camera behind the front's top band, so the comparison keeps the front plane only. The top storey (25.8-29.2 m) under the overhanging roof plate is in deep shadow on the crop: not countable (null). depthBand 4.0 keeps the shopfronts (2.6 m behind the pier faces) and drops the 26.1 m masses 3.5-4.5 m behind the 22.7 m front edge, which the street camera cannot see over that edge (sight line rises 2 m per metre of set-back). Silhouette peaks on the photo: the roof-plate block over 44-82 m, the set-back block over 102-120 m and the 22.6 m block over 4.5-31 m (a 19 m dip at 31-35.5 m), so 3.",
+      "depthBand": 4.0
+    },
+    {
+      "name": "Prinsengracht end",
+      "bearing": 193,
+      "photo": "artifacts/landmark-briefs/vijzelbank/w05-193.jpg",
+      "rows": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ],
+      "gables": 0,
+      "note": "Three bays between cream fins, four glazed storeys over the dark fascia, the roof railing above. The ground storey is the open end of the gallery behind the quay wall and a parked bicycle: not counted. alongM frames the 15 m face of BAG edge 3 (the photographed one); the 7.8 m face west of it is set back ~3 m and outside the crop. depthBand 4.5: the 22.7 m tier stands ~5 m and the 26.1 m tier ~10 m behind this face; seen from the far bank (~24 m) the sight line over the 19.35 m edge rises ~0.7 m per metre of set-back, so the photo cannot show them.",
+      "alongM": [
+        8,
+        22.6
+      ],
+      "depthBand": 4.5
+    }
+  ]
+}
