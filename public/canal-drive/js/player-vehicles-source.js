@@ -198,9 +198,17 @@ class Vehicle3D {
    * The mesh's CSS-pixel box this frame (`screenBox`, null while not drawn), from its local bounds, scale and
    * pose transform under the frame's clip-from-Mercator matrix. The START tag keeps off it (vehicleScreenBox.ts).
    */
+  /**
+   * The map's container element, asked once: it is the same element for the map's life, and asking the CameraMap shim
+   * every frame was its last per-frame call from this bundle (P5 B6, 29 calls/s).
+   */
+  _container() {
+    return this._containerEl || (this._containerEl = (this.map.getContainer && this.map.getContainer()) || null);
+  }
+
   _updateScreenBox(clipFromMercator) {
     const box = this._localBox;
-    const container = this.map.getContainer && this.map.getContainer();
+    const container = this._container();
     if (!box || !container) { this.screenBox = null; return; }
     const clipFromLocal = multiplyMat4(clipFromMercator, this._transform().elements);
     this.screenBox = projectLocalBox(clipFromLocal, box.min, box.max, this._modelRoot.scale.x, container.clientWidth, container.clientHeight);
@@ -246,7 +254,7 @@ class Vehicle3D {
   viewportScale() {
     const reference = this.options.viewportReferencePx;
     if (!reference) return 1;
-    const container = this.map.getContainer && this.map.getContainer();
+    const container = this._container();
     const shortSide = container ? Math.min(container.clientWidth, container.clientHeight) : 0;
     if (!(shortSide > 0)) return 1;
     return Math.max(1, Math.min(this.options.viewportMaxScale || 1, shortSide / reference));

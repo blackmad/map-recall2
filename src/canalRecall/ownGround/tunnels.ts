@@ -609,6 +609,16 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
  * Motor-only tunnels get a portal where a ramp cut ends against the tunnel's roof.
  */
 export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Cut[] {
+  const steps = planCutsSteps(ways, ground, within, skip, box);
+  for (;;) { const r = steps.next(); if (r.done) return r.value; }
+}
+
+/**
+ * planCuts as steps: the same plan, pausing (a bare `yield`) after each way scanned and each piece finished, so the
+ * page can end its task there (groundStore planCutsFor, #129: one plan was a 60-120 ms task while riding). Drained
+ * without pausing it is planCuts; the caller keeps `ways`, `ground` and `skip` unchanged until it finishes.
+ */
+export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Generator<void, Cut[], void> {
   const portals = findPortals(ways).filter(p => within(p.at));
   const cuts: Cut[] = [];
   // Only stations within RAMP_REACH_M of one of these portals are scanned: a ramp is never longer, and a long trunk
@@ -641,6 +651,7 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
         return [0, c.x.length - 1].some(e => Math.hypot(c.x[e] - p.at[0], c.y[e] - p.at[1]) < 3 && Math.abs(c.floor[e] - open) < TUNNEL_FLOOR_TOL_M)
           && c.floor.every(f => f <= open + TUNNEL_FLOOR_TOL_M);
       })) : scanned));
+      yield;
     }
     cuts.push(...found);
     // Next round: candidate roads with a vertex on a found cut's strip (a neighbouring carriageway, a slip road
@@ -650,11 +661,13 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
       const h = locateCut(c, p[0], p[1]);
       return !!h && h.s >= -1 && h.s <= c.s[c.s.length - 1] + 1 && h.lateral <= h.left + 1 && h.lateral >= -h.right - 1;
     }))) : [];
+    yield;
   }
   // A street crossing the strip at the land's level (not a bridge, not in a cut itself) passes over the ramp: the strip
   // breaks under it (the ground under a road over a sunken trunk is the DTM's view under its deck, Prins Hendrikkade).
   const cutIds = new Set(cuts.map(c => c.way));
-  const pieces = cuts.flatMap(c => splitAtCrossings(c, ways.filter(w => !w.tunnel && !cutIds.has(w.id))));
+  const pieces: ReturnType<typeof splitAtCrossings> = [];
+  for (const c of cuts) { pieces.push(...splitAtCrossings(c, ways.filter(w => !w.tunnel && !cutIds.has(w.id)))); yield; }
   // Portals: a motor tunnel's portal (or the end of its DTM-open part) where a ramp cut ends against the roof, and
   // a motor ramp's end under a crossing street.
   for (const { cut: c, crossed } of pieces) {
@@ -680,6 +693,7 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
       c.portals.push({ at, dir: d, top });
       c.motor = true;
     }
+    yield;
   }
   cuts.length = 0;
   cuts.push(...pieces.map(p => p.cut).filter(c => c.s[c.s.length - 1] >= 4));
@@ -689,6 +703,7 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
     const slot = slotCut(run, ground);
     for (const w of run.ways) skip.add(-w.id);
     if (slot) cuts.push(slot);
+    yield;
   }
   mergeNeighbours(cuts, ground);
   return cuts;
