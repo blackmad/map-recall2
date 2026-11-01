@@ -4,7 +4,9 @@
  * placed pands, compile (never --install), a per-pand likeness gate on the compiled model against the strip, and a
  * second pass without the pands that fail it. Review sheets with --review.
  *
- *   node --import tsx scripts/block-face/auto-place.ts --buurt=bellamybuurt-zuid --district=bellamy [--only=<face>,...] [--review] [--no-compile]
+ *   node --import tsx scripts/block-face/auto-place.ts --buurt=bellamybuurt-zuid --district=bellamy [--only=<face>,...] [--skip=<face>,...] [--review] [--no-compile]
+ *        [--replace=<run>,...]  re-place these installed runs; every other run with a chunk in chunks.json is kept as it is
+ *                               (pands held at stage `installed`, directory untouched; new runs take the next free number)
  *
  * Reads scripts/block-face/buurten/<buurt>.json (buurt-survey.ts), scripts/block-face/faces/<face>/{discovery,strip,uses}.json,
  * pands/<id>/facts.json, staging/block-face/<face>/strip.jpg and the library scripts/block-face/types/<district>/.
@@ -16,7 +18,7 @@ import fs from 'node:fs/promises';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, assignRunIds, frozenRuns, installedRunIds, type Decision, type ExistingRun, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts';
@@ -260,7 +262,7 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
 }
 
 if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
-  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(',');
+  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
   // --photo-decides (Rivierenbuurt, 2026-10-16): where facts and strip readings cannot tell two types of one row apart
   // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
   // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.
@@ -308,6 +310,10 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
+  // Installed runs are kept (autoPlace.ts frozenRuns, #157): a re-run never writes, renumbers or removes a run directory
+  // that chunks.json installs, unless --replace=<run>,... names it.
+  const replace = new Set((arg('replace') ?? '').split(',').filter(Boolean));
+  const chunkIds: string[] = (await readJson('public/canal-drive/ordinary-buildings-data/chunks.json')).chunks.map((c: {id: string}) => c.id);
   const t0 = performance.now();
   // --row-exposure=date: the trim gains of every face of this run, pooled per strip date, before any face is placed.
   const dateGains = new Map<string, number[][]>();
@@ -322,12 +328,20 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     // `covered` by an authored face; a face this buurt generated itself (the face or its runs) is not a cover.
     const coverIntent = f.covered && existsSync(path.join(FACES, f.covered, 'intent.json')) ? await readJson(path.join(FACES, f.covered, 'intent.json')) : null;
     const coveredByOther = !!coverIntent && !String(coverIntent.authoring?.author ?? '').startsWith('auto-place');
-    if (coveredByOther || (only && !only.includes(f.id))) continue;
+    if (coveredByOther || (only && !only.includes(f.id)) || skipFaces.has(f.id)) continue;
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
     // A run face authored by hand from the library (Albert Luthulistraat 25-39, #149: authoring.author is not auto-place)
     // is kept: re-placing the face would delete or overwrite it. Remove that run face to let auto-place own the face again.
     const handRuns = (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && existsSync(path.join(FACES, d, 'intent.json')))
       .filter(d => !/^auto-place/.test(JSON.parse(readFileSync(path.join(FACES, d, 'intent.json'), 'utf8')).authoring?.author ?? 'auto-place'));
+    const installedIds = installedRunIds(f.id, chunkIds);
+    // The face itself is installed (one run of every member, or its batch trim): nothing to re-place without --replace.
+    const wholeFace = installedIds.filter(id => (id === f.id || id === `${f.id}-t`) && !replace.has(id));
+    if (wholeFace.length) { console.log(`${f.id}: skipped, installed as ${wholeFace.join(', ')} (--replace=${wholeFace[0]} to re-place it)`); continue; }
+    const existingRuns: ExistingRun[] = (await fs.readdir(FACES)).filter(d => new RegExp(`^${f.id}-r\\d+(-t)?$`).test(d) && existsSync(path.join(FACES, d, 'discovery.json')))
+      .map(d => ({id: d, pands: JSON.parse(readFileSync(path.join(FACES, d, 'discovery.json'), 'utf8')).members, installed: installedIds.includes(d)}));
+    const frozen = frozenRuns(existingRuns, replace), frozenIds = new Set(frozen.map(r => r.id));
+    if (frozen.length) console.log(`${f.id}: keeping installed run(s) ${frozen.map(r => r.id).join(', ')} (--replace=<run> to re-place one)`);
     if (handRuns.length) { console.log(`${f.id}: skipped, hand-authored run face ${handRuns.join(', ')}`); summary.push({face: f.id, status: `hand-authored ${handRuns.join(', ')}`}); continue; }
     const tf = performance.now();
     if (types !== library) console.log(`${f.id}: types pinned to ${types.map(t => t.id).join(', ')}`);
@@ -342,6 +356,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
       return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
+    // Pands of a kept installed run: held here, recorded below as placed in that run.
+    for (const [k, d] of decisions.entries()) { const r = frozen.find(x => x.pands.includes(d.pandId)); if (r) decisions[k] = {kind: 'held', pandId: d.pandId, address: evs[k].address, stage: 'installed', reason: `installed in chunk-face-${r.id}`}; }
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
@@ -359,7 +375,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       for (const id of holdBrokenPairs(decisions)) console.log(`${f.id}: ${id.slice(-6)} held, its pair crown's other half is not placed`);
       const {runs, orphans} = placedRuns(decisions, lone);
       for (const o of orphans) { const k = decisions.findIndex(d => d.pandId === o.pandId); decisions[k] = {kind: 'held', ...o}; }
-      runFaces = runs.map((run, k) => ({id: runs.length === 1 && run.length === discovery.members.length ? f.id : `${f.id}-r${k + 1}`, ids: run.map(p => p.pandId)}));
+      const runIds = assignRunIds(f.id, discovery.members.length, runs.map(run => run.map(p => p.pandId)), existingRuns, replace);
+      runFaces = runs.map((run, k) => ({id: runIds[k], ids: run.map(p => p.pandId)}));
       for (const [k, rf] of runFaces.entries()) {
         if (rf.id !== f.id) await writeRunFace(f.id, rf.id, rf.ids, strip, uses, discovery);
         const intent = withPhotoEaves(runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
@@ -494,12 +511,19 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     }
     // Remove run directories of earlier passes that are no longer runs.
     const keep = new Set(runFaces.map(r => r.id));
-    for (const d of (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && !keep.has(d))) { await fs.rm(path.join(FACES, d), {recursive: true}); await fs.rm(path.join(STAGING, d), {recursive: true, force: true}); }
+    for (const d of (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && !keep.has(d) && !frozenIds.has(d))) { await fs.rm(path.join(FACES, d), {recursive: true}); await fs.rm(path.join(STAGING, d), {recursive: true, force: true}); }
     if (!keep.has(f.id)) await fs.rm(path.join(FACES, f.id, 'intent.json'), {force: true});
     if (reviewFace) for (const rf of runFaces) if (compiled.get(rf.id)) { try { await reviewFace(rf.id); } catch (e) { console.log(`${rf.id}: review failed ${(e as Error).message.slice(0, 200)}`); } }
+    const prevRecord = existsSync(path.join(FACES, f.id, 'auto-place.json')) ? await readJson(path.join(FACES, f.id, 'auto-place.json')) : null;
     const out = {face: f.id, street: f.street, library: district, stripDate: strip.date, seconds: r2((performance.now() - tf) / 1000), thresholds: AUTO_PLACE,
-      runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
+      runs: [...runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})), ...frozen.map(r => ({face: r.id, pands: [...r.pands], installed: true}))],
       pands: decisions.map((d, k) => {
+        // A kept installed pand: its record from the placement that installed it, else what its run's intent says.
+        if (d.kind === 'held' && d.stage === 'installed') {
+          const run = frozen.find(r => r.pands.includes(d.pandId))!, prior = prevRecord?.pands?.find((p: any) => p.pandId === d.pandId && p.status === 'placed');
+          const house = JSON.parse(readFileSync(path.join(FACES, run.id, 'intent.json'), 'utf8')).houses.find((h: any) => h.pandId === d.pandId);
+          return {...(prior ?? {pandId: d.pandId, address: evs[k].address, builtYear: evs[k].builtYear, widthM: evs[k].widthM, eavesM: evs[k].eavesM, status: 'placed', type: house?.type?.type ?? null, placement: house?.type ?? null}), installed: run.id};
+        }
         const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag, bagBay: ev.bagBay ?? null,
           strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, frontClass: ev.strip.frontClass ?? null, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
             structure: ev.strip.structure ? {bayWidthM: ev.strip.structure.bayWidthM, bayCentre: ev.strip.structure.bayCentre, balconies: ev.strip.structure.balconies, why: ev.strip.structure.balconyWhy, openAxes: ev.strip.structure.openAxes, slabs: ev.strip.structure.slabs} : null, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
@@ -513,6 +537,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     for (const p of out.pands as any[]) console.log(`  ${p.pandId.slice(-6)} ${String(p.address).padEnd(26)} ${p.status === 'placed' ? `${p.type} ${p.score} | NCC ${p.likeness?.ncc ?? '-'} (raw ${p.likeness?.nccRaw ?? '-'}) ${p.notes?.join('; ') ?? ''}` : `HELD ${p.stage}: ${p.reason}`}`.slice(0, 260));
     summary.push({face: f.id, street: f.street, pands: out.pands.length, placed, held: out.pands.length - placed, runs: out.runs, seconds: out.seconds,
       byType: Object.fromEntries([...new Set(out.pands.filter((p: any) => p.type).map((p: any) => p.type))].map(t => [t, out.pands.filter((p: any) => p.type === t).length])),
+      installed: out.pands.filter((p: any) => p.installed).length,
       holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run', 'review'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
   }
   const file = path.join('scripts/block-face/buurten', `${buurt}-placement.json`);

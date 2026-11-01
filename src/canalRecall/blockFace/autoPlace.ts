@@ -362,7 +362,7 @@ export interface Placed {
   house: BlockFaceHouse; notes: string[];
 }
 /** `review`: held after a person reviewed the run's strip sheet (buurten/<buurt>-review-holds.json). */
-export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review'; reason: string; best?: TypeScore }
+export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review' | 'installed'; reason: string; best?: TypeScore }
 export type Decision = ({kind: 'placed'} & Placed) | ({kind: 'held'} & Held);
 
 /** The shop ground of an auto-placed trading pand: the measured fascia colour, a residential door on the door side. */
@@ -669,4 +669,47 @@ export function runIntent(o: {id: string; street: string; stripDate: string; str
       roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'},
       // A run of one exists only when its type opted in (placedRuns `lone`); its note names why.
       ...(o.run.length === 1 ? {lonePand: {evidence: o.run[0].notes.find(n => n.startsWith('lone pand: '))?.slice(11) ?? 'a stair block on its own'}} : {})}};
+}
+
+/** A run directory of a face (`<face>` or `<face>-r<k>`, a batch trim `-t` included) and whether a chunk installs it. */
+export interface ExistingRun { id: string; pands: readonly string[]; installed: boolean }
+
+/** Run ids of `faceId` that `chunks.json` installs (`chunk-face-<run>`). */
+export function installedRunIds(faceId: string, chunkIds: readonly string[]): string[] {
+  const esc = faceId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), re = new RegExp(`^chunk-face-(${esc}(?:-r\\d+)?(?:-t)?)$`);
+  return chunkIds.flatMap(c => { const m = re.exec(c); return m ? [m[1]] : []; });
+}
+
+/**
+ * Installed runs a re-run keeps (#157 fix 2): every run with an installed chunk unless `--replace=<run>` names it. A
+ * buurt-wide `auto-place --review` re-run used to renumber runs and overwrite installed intents (round 4 restored
+ * retief-45-75-r1, pretorius-71-95-r1/r2 and pretorius-72-120-r1 from HEAD by hand; one re-run deleted pretorius-72-120-r1).
+ * Their pands are held at stage `installed` and their directories are never written or removed.
+ */
+export function frozenRuns(existing: readonly ExistingRun[], replace: ReadonlySet<string>): ExistingRun[] {
+  return existing.filter(r => r.installed && !replace.has(r.id));
+}
+
+/**
+ * Ids for the runs of a (re-)placement. Without frozen runs or replacements: the face itself for one run of every member,
+ * else `<face>-r1..k` in order (the numbering auto-place always used). With frozen runs: a frozen id is never given out;
+ * a run that re-places a `--replace` run keeps that run's id (the one it overlaps most); every other run takes the
+ * next free number, so an installed run directory is never renumbered or overwritten.
+ */
+export function assignRunIds(faceId: string, memberCount: number, runs: readonly (readonly string[])[], existing: readonly ExistingRun[], replace: ReadonlySet<string>): string[] {
+  const frozen = frozenRuns(existing, replace), replaced = existing.filter(r => r.installed && replace.has(r.id));
+  if (!frozen.length && !replaced.length) return runs.map((run, k) => runs.length === 1 && run.length === memberCount ? faceId : `${faceId}-r${k + 1}`);
+  const used = new Set(frozen.map(r => r.id)), ids: (string | null)[] = runs.map(() => null);
+  // Replaced runs first: each goes to the new run that shares most pands with it.
+  for (const r of replaced) {
+    let best = -1, overlap = 0;
+    for (const [k, run] of runs.entries()) { const o = run.filter(p => r.pands.includes(p)).length; if (ids[k] === null && o > overlap) { best = k; overlap = o; } }
+    if (best >= 0 && !used.has(r.id)) { ids[best] = r.id; used.add(r.id); }
+  }
+  let next = 1;
+  return ids.map(id => {
+    if (id) return id;
+    while (used.has(`${faceId}-r${next}`)) next++;
+    const out = `${faceId}-r${next}`; used.add(out); return out;
+  });
 }
