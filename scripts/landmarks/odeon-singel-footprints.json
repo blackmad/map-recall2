@@ -1,0 +1,246 @@
+{
+ "id": "odeon-singel",
+ "address": "Singel 460, 1017AW Amsterdam (pand 0363100012171740; VBO 0363010012102714, bijeenkomstfunctie)",
+ "bagYears": {
+  "0363100012171740": 1662
+ },
+ "monument": "Rijksmonument, municipal register 5406 (Odeon, Singel 460, 1661-1662)",
+ "sources": [
+  {
+   "what": "BAG pand ring and VBO",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand (filter identificatie 0363100012171740; srsName EPSG:28992); address via https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Singel%20460%20Amsterdam",
+   "retrieved": "2026-11-01",
+   "licence": "CC0"
+  },
+  {
+   "what": "3DBAG LoD2.2 roof planes",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171740",
+   "retrieved": "2026-11-01",
+   "licence": "CC BY 4.0",
+   "note": "ground 0.98 m NAP; h_dak max 24.49, nok 24.84, 70p 21.47. Front house (0-18 m deep): saddle with its ridge along the depth at x 4.3-4.9, ridge 24.85 NAP, left slope to 16.8 NAP, right slope to 13.5 NAP towards the rear. Rear part (18-35 m deep): narrow saddle x 1.2-6.6, ridge 22.45 NAP, eaves 19.9-20.3 NAP; strip x -1..1.3 at 17.2-20.5 NAP; flat x 8.5-13.4 at 14.0-14.5 NAP (with a dip to 11.5-11.75 NAP)."
+  },
+  {
+   "what": "Facade heights and openings",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002932_pano_0001_000256/",
+   "retrieved": "2026-11-01",
+   "licence": "CC BY 4.0",
+   "note": "Gemeente Amsterdam panorama 2023-01-13 from the opposite (Spui-side) bank of the Singel, 37.6 m off, obliquity 0, rectified onto the BAG front plane (scripts/pand-reference/rectify.ts, 50 px/m) with a metre grid; the pavement reads 1.0 m above the rectification datum, so facade heights in the builder are grid heights minus 1.0. Cross-checked on TMX7316010203-002306_pano_0001_003142 (2021-09-09, same station, leaves on the left half) and the close street view TMX7316010203-001975_pano_0000_001375 (2021-01-22: door with round leaded fanlight, entresol window, festoons). Pediment top 24.6 m over the pavement against the 3DBAG ridge 23.9 m (0.98 NAP ground): the thin crown is above the fitted roof."
+  },
+  {
+   "what": "Facade photograph (detail: claws, cartouches, festoons, 1662 stone, ODEON tablet)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Singel_460.JPG",
+   "author": "Rudolphous",
+   "date": "2011-09-07",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "what": "Facade photograph",
+   "url": "https://commons.wikimedia.org/wiki/File:Odeon_Amsterdam_7285.jpg",
+   "author": "C messier",
+   "date": "2017-02-04",
+   "licence": "CC BY-SA 4.0"
+  }
+ ],
+ "frame": "Local front frame: x along the BAG front from its south-east corner (Singel 460 / 458 party line, RD 121061.84 486744.34) to the north-west corner (460 / 462, RD 121055.95 486751.66); z out of the front towards the Singel, the building at z <= 0; y up from the pavement. axisDeg/origin feed church-kit local(); native metres east/south of the anchor at 111320 m per degree (cos-latitude in longitude).",
+ "anchor": [
+  4.8887309,
+  52.3675184
+ ],
+ "axisDeg": 128.819,
+ "origin": [
+  11.807,
+  -1.548
+ ],
+ "frontLengthM": 9.398,
+ "frontFacingBearing": 51.2,
+ "pands": {
+  "0363100012171740": {
+   "ringRD": [
+    [
+     121061.841,
+     486744.34
+    ],
+    [
+     121059.881,
+     486746.78
+    ],
+    [
+     121059.935,
+     486746.832
+    ],
+    [
+     121058.014,
+     486749.26
+    ],
+    [
+     121057.932,
+     486749.201
+    ],
+    [
+     121055.981,
+     486751.626
+    ],
+    [
+     121055.95,
+     486751.662
+    ],
+    [
+     121055.927,
+     486751.643
+    ],
+    [
+     121042.168,
+     486739.954
+    ],
+    [
+     121039.187,
+     486743.333
+    ],
+    [
+     121037.084,
+     486741.553
+    ],
+    [
+     121026.468,
+     486732.569
+    ],
+    [
+     121035.682,
+     486721.995
+    ],
+    [
+     121042.112,
+     486728.031
+    ],
+    [
+     121061.841,
+     486744.34
+    ]
+   ],
+   "ringWGS84": [
+    [
+     4.8889046,
+     52.3675323
+    ],
+    [
+     4.8888755,
+     52.3675542
+    ],
+    [
+     4.8888763,
+     52.3675546
+    ],
+    [
+     4.8888479,
+     52.3675763
+    ],
+    [
+     4.8888467,
+     52.3675758
+    ],
+    [
+     4.8888178,
+     52.3675975
+    ],
+    [
+     4.8888173,
+     52.3675978
+    ],
+    [
+     4.888817,
+     52.3675976
+    ],
+    [
+     4.8886162,
+     52.3674917
+    ],
+    [
+     4.8885721,
+     52.3675219
+    ],
+    [
+     4.8885414,
+     52.3675058
+    ],
+    [
+     4.8883864,
+     52.3674244
+    ],
+    [
+     4.8885227,
+     52.3673299
+    ],
+    [
+     4.8886165,
+     52.3673845
+    ],
+    [
+     4.8889046,
+     52.3675323
+    ]
+   ],
+   "ringLocal": [
+    [
+     0,
+     0
+    ],
+    [
+     3.13,
+     0.002
+    ],
+    [
+     3.136,
+     0.077
+    ],
+    [
+     6.232,
+     0.102
+    ],
+    [
+     6.238,
+     0.002
+    ],
+    [
+     9.35,
+     0.002
+    ],
+    [
+     9.398,
+     0
+    ],
+    [
+     9.397,
+     -0.03
+    ],
+    [
+     8.915,
+     -18.077
+    ],
+    [
+     13.416,
+     -18.282
+    ],
+    [
+     13.348,
+     -21.036
+    ],
+    [
+     13.003,
+     -34.939
+    ],
+    [
+     -1.012,
+     -34.388
+    ],
+    [
+     -0.34,
+     -25.595
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}

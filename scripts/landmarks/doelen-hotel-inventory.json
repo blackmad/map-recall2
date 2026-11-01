@@ -1,0 +1,425 @@
+{
+ "schemaVersion": 1,
+ "id": "doelen-hotel",
+ "pand": "0363100012180410",
+ "brief": "scripts/landmarks/doelen-hotel-brief.md",
+ "signature": [
+  "clock-tower",
+  "tower-dome",
+  "lantern",
+  "militia-figures",
+  "doelen-lettering",
+  "tower-cartouches",
+  "polychrome-bands",
+  "bay-balcony",
+  "arched-ground-windows",
+  "corner-mansard"
+ ],
+ "walls": [
+  {
+   "tag": "w01-329",
+   "bearing": 329,
+   "lengthM": 21.4,
+   "centre": [
+    4.8958045,
+    52.368266
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002356_pano_0005_000338",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-bay",
+     "kind": "canopy",
+     "where": "hotel entrance on the Nieuwe Doelenstraat under a stone bay with a balcony and a canopy",
+     "approxSizeM": [
+      3.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002356_pano_0005_000338",
+     "how": "stone bay with two wide windows, balustrade, flat canopy over a glazed door"
+    }
+   ]
+  },
+  {
+   "tag": "w02-119",
+   "bearing": 119,
+   "lengthM": 21.3,
+   "centre": [
+    4.8957695,
+    52.368023
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001503",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion",
+     "kind": "canopy",
+     "where": "one-storey glazed pavilion (café-restaurant) in front of the south wing, six glazed units between white mullions",
+     "approxSizeM": [
+      19,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "glass panes between white mullions on a brick base, cornice and a terrace balustrade on its roof"
+    },
+    {
+     "id": "pavilion-awnings",
+     "kind": "canopy",
+     "where": "striped red-and-white awning valance over the pavilion glazing",
+     "approxSizeM": [
+      19,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "quarter-dome awning strips alternating red and cream"
+    },
+    {
+     "id": "terrace-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "stone balustrade along the pavilion roof terrace",
+     "approxSizeM": [
+      19,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "church-kit balustrade()"
+    },
+    {
+     "id": "south-balconies",
+     "kind": "balcony-ironwork",
+     "where": "two stone balconies on consoles at 10 m over the outer bays of the south wing",
+     "approxSizeM": [
+      5.3,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_Hotel_Amsterdam_2014.jpg (Tuxyso, CC BY-SA 3.0)",
+     "how": "slab on three consoles with balusters"
+    },
+    {
+     "id": "south-fleurs",
+     "kind": "other",
+     "where": "wrought-iron wall anchors between the second- and third-floor windows",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Doelen_Hotel_Amsterdam_2014.jpg (Tuxyso, CC BY-SA 3.0)",
+     "how": "stem and cross-bar with two flared arms in frame colour"
+    },
+    {
+     "id": "south-zigzag",
+     "kind": "relief",
+     "where": "row of small stone gablets along the parapet under the roof",
+     "approxSizeM": [
+      18.8,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Doelen_Hotel_Amsterdam_2014.jpg (Tuxyso, CC BY-SA 3.0)",
+     "how": "triangular stone plates with a brick infill per window axis"
+    }
+   ]
+  },
+  {
+   "tag": "w03-329",
+   "bearing": 329,
+   "lengthM": 18.4,
+   "centre": [
+    4.895556,
+    52.3681725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001187_pano_0000_001326",
+   "capturedAt": "2019-05-16",
+   "checked": true,
+   "items": [],
+   "note": "plain dark brick over a grey stone ground storey; windows only"
+  },
+  {
+   "tag": "w04-230",
+   "bearing": 230,
+   "lengthM": 9.4,
+   "centre": [
+    4.8956495,
+    52.3679715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001506",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [],
+   "note": "cream-rendered flank over the café pavilion, no ornament"
+  },
+  {
+   "tag": "w05-125",
+   "bearing": 125,
+   "lengthM": 8.9,
+   "centre": [
+    4.8959645,
+    52.368202
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001501",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "clock-tower",
+     "kind": "tower",
+     "where": "central tower, brick with stone pilaster strips, an arched ground window and a stone ground storey",
+     "approxSizeM": [
+      6.4,
+      22.4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "brick shaft with stone pilasters, arched window, cornice at 5.2 m"
+    },
+    {
+     "id": "tower-cartouches",
+     "kind": "relief",
+     "where": "carved cartouche round an oculus at 7.6 m with a round medallion either side",
+     "approxSizeM": [
+      5,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "stone panel, ring and a dark slate disc for the leaded oculus, bosses for the scrolls, ring-and-boss medallions"
+    },
+    {
+     "id": "doelen-lettering",
+     "kind": "lettering",
+     "where": "DOELEN HOTEL in the frieze under the tower balcony",
+     "approxSizeM": [
+      4.3,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "nearbar letters() in frame colour"
+    },
+    {
+     "id": "tower-balcony",
+     "kind": "balcony-ironwork",
+     "where": "stone balcony at 18 m across the tower",
+     "approxSizeM": [
+      5.6,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "slab and balustrade()"
+    },
+    {
+     "id": "tower-clock",
+     "kind": "clock",
+     "where": "round clock face at 19.9 m in a stone surround",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "stone ring surround, cream dial, gilt hands"
+    },
+    {
+     "id": "militia-figures",
+     "kind": "sculpture",
+     "where": "two standing stone militiamen (schutters) either side of the clock",
+     "approxSizeM": [
+      0.8,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "turned-solid figures: legs, coat, arms, head, broad hat, musket"
+    },
+    {
+     "id": "tower-pediment",
+     "kind": "other",
+     "where": "segmental gable over the clock",
+     "approxSizeM": [
+      6,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "segmental band and infill with a boss"
+    },
+    {
+     "id": "tower-dome",
+     "kind": "dome",
+     "where": "slate dome on a stone drum with metal ribs",
+     "approxSizeM": [
+      6.2,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "lathe profile in slate, 8 ribs"
+    },
+    {
+     "id": "lantern",
+     "kind": "dome",
+     "where": "open lantern with columns, cap and finial on the dome to about 31.6 m",
+     "approxSizeM": [
+      2,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Doelen_hotel_tower.jpg (PD)",
+     "how": "six posts round a core, two rings, half-dome cap and spike"
+    }
+   ]
+  },
+  {
+   "tag": "w06-120",
+   "bearing": 120,
+   "lengthM": 4.6,
+   "centre": [
+    4.896015,
+    52.368255
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001500",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "polychrome-bands",
+     "kind": "other",
+     "where": "cream stone courses and speklagen striping the red brick of the north wing",
+     "approxSizeM": [
+      17,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "stone courses at every storey line and two stripes per storey in each pier"
+    },
+    {
+     "id": "arched-ground-windows",
+     "kind": "window-shape",
+     "where": "round-arched ground-floor windows over balustered panels",
+     "approxSizeM": [
+      1.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "round-head win() with stone surround, baluster panels"
+    },
+    {
+     "id": "bay-balcony",
+     "kind": "colonnade",
+     "where": "pilastered bay of the north wing carrying a balcony at 10 m",
+     "approxSizeM": [
+      9.5,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "stone pilasters with capitals, entablature, balcony and balustrade"
+    },
+    {
+     "id": "north-fleurs",
+     "kind": "other",
+     "where": "wrought-iron wall anchors (fleurs) between the second- and third-floor windows",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "stem and cross-bar with two flared arms in frame colour"
+    },
+    {
+     "id": "console-frieze",
+     "kind": "relief",
+     "where": "console frieze under the top storey",
+     "approxSizeM": [
+      17,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "stone band with a row of consoles"
+    },
+    {
+     "id": "north-zigzag",
+     "kind": "relief",
+     "where": "row of small stone gablets along the parapet",
+     "approxSizeM": [
+      17,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "triangular stone plates with a brick infill per window axis"
+    },
+    {
+     "id": "mansard-dormers",
+     "kind": "window-shape",
+     "where": "dormers in the mansard behind the parapet",
+     "approxSizeM": [
+      1.3,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002981_pano_0001_000003",
+     "how": "stone dormer box with a window and a pointed gablet"
+    },
+    {
+     "id": "corner-mansard",
+     "kind": "tower",
+     "where": "tall slate mansard pavilion on the rounded Nieuwe Doelenstraat corner",
+     "approxSizeM": [
+      5.5,
+      6.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_03471",
+     "how": "frustum over the corner plan with a flat top, dormer to the water"
+    },
+    {
+     "id": "roof-sign",
+     "kind": "sign",
+     "where": "hotel brand letters on the roof",
+     "approxSizeM": [
+      6,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Doelen_Hotel_Amsterdam_2014.jpg (Tuxyso, CC BY-SA 3.0)",
+     "skip": {
+      "reason": "temporary",
+      "note": "operator branding (NH Collection), changes with the operator"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons Doelen Hotel photographs (see staging/landmarks/doelen-hotel/sources.md)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Doelen_Hotel",
+   "licence": "CC BY-SA 3.0/4.0, CC BY 3.0, public domain"
+  }
+ ]
+}

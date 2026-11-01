@@ -35,6 +35,11 @@ export interface NeckGableSpec {
   apexY: number;
   /** Wall thickness of the gable solids (they stand behind the wall plane). */
   thick?: number;
+  /**
+   * Crown over the cornice: 'triangle' (default, a fronton: Cromhouthuizen) or 'segment', a segmental (arched)
+   * pediment whose arc rises from the cornice ends to apexY (Odeon, Singel 460, Vingboons 1662).
+   */
+  crown?: 'triangle' | 'segment';
 }
 
 /** Concave claw outline on one side, closed polygon in (t, y): foot at the house edge, top against the neck side. */
@@ -52,10 +57,19 @@ export function clawOutline(g: NeckGableSpec, side: -1 | 1, steps = 8): V2[] {
   return signedArea(ring) < 0 ? ring.reverse() : ring;
 }
 
-/** Pediment triangle over the crowning cornice, closed polygon in (t - axis, y - corniceTop). */
-export function pedimentOutline(g: NeckGableSpec): V2[] {
+/** Pediment over the crowning cornice, closed polygon in (t - axis, y - corniceTop): a triangle, or a circular segment. */
+export function pedimentOutline(g: NeckGableSpec, steps = 10): V2[] {
   const h = g.apexY - (g.corniceY + g.corniceH);
-  return [[-g.corniceHalf, 0], [g.corniceHalf, 0], [0, h]];
+  if (g.crown !== 'segment') return [[-g.corniceHalf, 0], [g.corniceHalf, 0], [0, h]];
+  const out: V2[] = [];
+  for (let i = 0; i <= steps; i++) { const x = g.corniceHalf * (2 * i / steps - 1); out.push([x, segmentY(g, x)]); }
+  return out.reverse(); // right to left over the top, closing along the cornice: counter-clockwise
+}
+
+/** Height of a segmental crown's arc over the cornice top at offset x from the axis (0 at the cornice ends, h at the axis). */
+export function segmentY(g: NeckGableSpec, x: number) {
+  const h = g.apexY - (g.corniceY + g.corniceH), c = g.corniceHalf, R = (c * c + h * h) / (2 * h);
+  return Math.max(0, h - R + Math.sqrt(Math.max(0, R * R - x * x)));
 }
 
 export function signedArea(r: V2[]) {
@@ -70,8 +84,9 @@ export function gableSilhouette(g: NeckGableSpec): V2[] {
   const leftCurve = left.sort((a, b) => a[0] - b[0]);
   const right = clawOutline(g, 1).filter(p => !(Math.abs(p[0] - (g.axis + g.neckHalf)) < 1e-9 && Math.abs(p[1] - g.shoulderY) < 1e-9)).sort((a, b) => a[0] - b[0]);
   const top = g.corniceY + g.corniceH;
-  return [...leftCurve, [g.axis - g.neckHalf, g.corniceY], [g.axis - g.corniceHalf, g.corniceY], [g.axis - g.corniceHalf, top], [g.axis, g.apexY],
-    [g.axis + g.corniceHalf, top], [g.axis + g.corniceHalf, g.corniceY], [g.axis + g.neckHalf, g.corniceY], ...right];
+  const crown: V2[] = g.crown === 'segment' ? pedimentOutline(g).slice().reverse().map(([x, y]) => [g.axis + x, top + y] as V2) : [[g.axis - g.corniceHalf, top], [g.axis, g.apexY], [g.axis + g.corniceHalf, top]];
+  return [...leftCurve, [g.axis - g.neckHalf, g.corniceY], [g.axis - g.corniceHalf, g.corniceY], ...crown,
+    [g.axis + g.corniceHalf, g.corniceY], [g.axis + g.neckHalf, g.corniceY], ...right];
 }
 
 type Col = Parameters<BuildingTools['add']>[1];
@@ -80,18 +95,28 @@ type Col = Parameters<BuildingTools['add']>[1];
  * Builds the gable solids: claws, neck shaft, crowning cornice and pediment, the scroll at each claw foot and a
  * moulded rim along each claw curve. Openings and carving are the caller's (they differ per house).
  */
-export function neckGable(b: BuildingTools, f: Frame, g: NeckGableSpec, o: {wall?: Col; trim?: Col} = {}) {
+export function neckGable(b: BuildingTools, f: Frame, g: NeckGableSpec, o: {wall?: Col; trim?: Col; neck?: Col} = {}) {
   const wall = o.wall ?? 'stone', trim = o.trim ?? wall, th = g.thick ?? 0.5;
   for (const side of [-1, 1] as const) poly(b, f, 0, 0, clawOutline(g, side), th, wall, -th);
-  // neck shaft from the shoulder line to the cornice
-  slab(b, f, g.axis, g.shoulderY, g.neckHalf * 2, g.corniceY - g.shoulderY, th, wall, -th);
+  // neck shaft from the shoulder line to the cornice (its own colour when the neck is brick between stone claws)
+  slab(b, f, g.axis, g.shoulderY, g.neckHalf * 2, g.corniceY - g.shoulderY, th, o.neck ?? wall, -th);
   // crowning cornice (proud of the neck on all sides) and the pediment with a raking moulding
   slab(b, f, g.axis, g.corniceY, g.corniceHalf * 2, g.corniceH, th + 0.3, trim, -th);
   poly(b, f, g.axis, g.corniceY + g.corniceH, pedimentOutline(g), th + 0.15, wall, -th);
-  const rise = g.apexY - g.corniceY - g.corniceH, len = Math.hypot(g.corniceHalf, rise), ang = Math.atan2(rise, g.corniceHalf);
-  for (const s of [-1, 1]) {
-    const m = new T.BoxGeometry(len + 0.1, 0.16, th + 0.4).translate(0, 0.08, (th + 0.4) / 2).rotateZ(s * ang);
-    put(b, f, m, g.axis - s * g.corniceHalf / 2, g.corniceY + g.corniceH + rise / 2 - 0.08, -th, trim);
+  if (g.crown === 'segment') {
+    // arched moulding: short blocks along the arc, standing proud of the tympanum like the raking mouldings
+    const arc = pedimentOutline(g).slice().reverse();
+    for (let i = 0; i + 1 < arc.length; i++) {
+      const [a, c] = [arc[i], arc[i + 1]], L = Math.hypot(c[0] - a[0], c[1] - a[1]);
+      const m = new T.BoxGeometry(L + 0.06, 0.16, th + 0.4).translate(0, 0.08, (th + 0.4) / 2).rotateZ(Math.atan2(c[1] - a[1], c[0] - a[0]));
+      put(b, f, m, g.axis + (a[0] + c[0]) / 2, g.corniceY + g.corniceH + (a[1] + c[1]) / 2 - 0.08, -th, trim);
+    }
+  } else {
+    const rise = g.apexY - g.corniceY - g.corniceH, len = Math.hypot(g.corniceHalf, rise), ang = Math.atan2(rise, g.corniceHalf);
+    for (const s of [-1, 1]) {
+      const m = new T.BoxGeometry(len + 0.1, 0.16, th + 0.4).translate(0, 0.08, (th + 0.4) / 2).rotateZ(s * ang);
+      put(b, f, m, g.axis - s * g.corniceHalf / 2, g.corniceY + g.corniceH + rise / 2 - 0.08, -th, trim);
+    }
   }
   // claw rim: short stone blocks along the curve, standing 8 cm proud of the claw face, and the scroll at the foot
   for (const side of [-1, 1] as const) {
