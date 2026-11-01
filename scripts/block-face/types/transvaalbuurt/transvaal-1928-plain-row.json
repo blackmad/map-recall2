@@ -58,9 +58,9 @@
   "windowShare": 0.63,
   "storeyHeights": [
    3.4,
-   3.0,
-   3.0,
-   3.0
+   3,
+   3,
+   3
   ],
   "windowHeights": [
    0.44,
@@ -110,7 +110,7 @@
  },
  "palettes": {
   "red-brown": {
-   "brick": "#765853",
+   "brick": "#4c3c37",
    "frame": "#ebe8df",
    "door": "#5a2a22",
    "stone": "#bdb8ae",
@@ -156,6 +156,14 @@
     "0363100012074676"
    ],
    "citation": "strip.jpg 2020-04-29 at 40 px/m: 7 (5.7 m) three sash windows per storey at the same lines, door on the right, parapet to 14.0 m"
+  },
+  {
+   "face": "steyn-9-19",
+   "pands": [
+    "0363100012145744",
+    "0363100012138134"
+   ],
+   "citation": "brick #4c3c37: mean of the batch wall fit on President Steynstraat 13 and 15 (#4b3833, #4d3f3b); the trim-normalised #765853 drew 9 and 11 +0.09 lighter than the strip"
   }
  ],
  "schemaLimits": [

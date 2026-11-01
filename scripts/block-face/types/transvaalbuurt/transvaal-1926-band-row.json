@@ -174,7 +174,7 @@
  },
  "palettes": {
   "purple-brown": {
-   "brick": "#6f6058",
+   "brick": "#433d37",
    "frame": "#ebe8df",
    "door": "#3a2f2a",
    "stone": "#e2ded4",
@@ -222,6 +222,18 @@
     "0363100012112858"
    ],
    "citation": "strip.jpg 2020-04-29 at 40 px/m: 24-26 (12 m) pair 0-1.25 and 1.6-2.9 m, stair pair 4.75-7.0 m, pair 8.9-11.6 m; top storey windows centred 0.8, 2.9, 4.9, 6.9, 8.9, 10.9 m; 18 (6 m) the pair on its left half and the half stair window on its right party wall, 16 the mirror"
+  },
+  {
+   "face": "theron-9-37",
+   "pands": [
+    "0363100012148172",
+    "0363100012139446",
+    "0363100012140487",
+    "0363100012125668",
+    "0363100012115092",
+    "0363100012112858"
+   ],
+   "citation": "brick #433d37: per-channel median of the batch wall fit (fit-wall-palette, review wall reading through the city tint) on the six tree-free walls of Danie Theronstraat 17A, 18A, 20, 25D, 29A, 31A (#3b342f-#4c4844); the trim-normalised #6f6058 drew the wall +0.09 lighter. One brick for the row: the per-pand fit on Theronstraat 13A, 16A, 23A, 28 read hedge and tree green (photo blue channel 36-45) and drew olive walls"
   }
  ],
  "schemaLimits": [

@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#785a52",
      "evidence": "strip 2020-04-29 span 0-267: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c3c37"
     }
    },
    "groundFloor": {
@@ -42,6 +45,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "three equal axes over 5.7-6.7 m; the ground a door axis and a wide window over two",
+    "identicalBays": "yes above the ground",
+    "windowsPerStorey": "ground: door + wide window | 1-3: three sash windows",
+    "symmetry": "symmetric above the ground; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis under a grey lintel band, one wide window",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m brick parapet with a dark coping",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1928-plain-row scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 0-267"
    }
   },
@@ -55,6 +72,9 @@
     "measuredPalette": {
      "brick": "#755651",
      "evidence": "strip 2020-04-29 span 267-533: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c3c37"
     }
    },
    "groundFloor": {
@@ -67,6 +87,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "three equal axes over 5.7-6.7 m; the ground a door axis and a wide window over two",
+    "identicalBays": "yes above the ground",
+    "windowsPerStorey": "ground: door + wide window | 1-3: three sash windows",
+    "symmetry": "symmetric above the ground; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis under a grey lintel band, one wide window",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m brick parapet with a dark coping",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1928-plain-row scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 267-533"
    }
   },
@@ -79,6 +113,9 @@
     "measuredPalette": {
      "brick": "#775752",
      "evidence": "strip 2020-04-29 span 533-798: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c3c37"
     }
    },
    "groundFloor": {
@@ -91,6 +128,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "three equal axes over 5.7-6.7 m; the ground a door axis and a wide window over two",
+    "identicalBays": "yes above the ground",
+    "windowsPerStorey": "ground: door + wide window | 1-3: three sash windows",
+    "symmetry": "symmetric above the ground; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis under a grey lintel band, one wide window",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m brick parapet with a dark coping",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1928-plain-row scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 533-798"
    }
   },
@@ -104,6 +155,9 @@
     "measuredPalette": {
      "brick": "#766260",
      "evidence": "strip 2020-04-29 span 798-1048: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c3c37"
     }
    },
    "groundFloor": {
@@ -116,6 +170,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "three equal axes over 5.7-6.7 m; the ground a door axis and a wide window over two",
+    "identicalBays": "yes above the ground",
+    "windowsPerStorey": "ground: door + wide window | 1-3: three sash windows",
+    "symmetry": "symmetric above the ground; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis under a grey lintel band, one wide window",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m brick parapet with a dark coping",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1928-plain-row scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 798-1048"
    }
   }

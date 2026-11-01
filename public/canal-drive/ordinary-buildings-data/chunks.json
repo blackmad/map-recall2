@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T05:26:00.737Z",
+ "generatedAt": "2026-11-01T08:53:23.127Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -72396,6 +72396,1553 @@
        "primitive": 9,
        "firstTriangle": 6,
        "triangleCount": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-theron-2-36-r1",
+   "category": "street-survey",
+   "name": "face-theron-2-36-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-theron-2-36-r1.glb?asset=46aba9b8839c933f",
+   "sha256": "46aba9b8839c933f3a137841bc92cb005d2dbe851367e96df4103ce054b38109",
+   "bytes": 618192,
+   "triangles": 9187,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.915472503223362,
+     52.35218355603039
+    ],
+    "northOffsetDegrees": 282.2456,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -27.6,
+     0,
+     -9.664
+    ],
+    "max": [
+     20.4,
+     13.93,
+     0.601
+    ]
+   },
+   "height": 13.93,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012069116",
+    "NL.IMBAG.Pand.0363100012116701",
+    "NL.IMBAG.Pand.0363100012115092",
+    "NL.IMBAG.Pand.0363100012112858",
+    "NL.IMBAG.Pand.0363100012089089"
+   ],
+   "replaces": [
+    "ordinary-0363100012069116",
+    "ordinary-0363100012116701",
+    "ordinary-0363100012115092",
+    "ordinary-0363100012112858",
+    "ordinary-0363100012089089"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9154238,
+        52.3520466
+       ],
+       [
+        4.9152858,
+        52.352065
+       ],
+       [
+        4.9152484,
+        52.3519596
+       ],
+       [
+        4.9153864,
+        52.3519412
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9154613,
+        52.3521519
+       ],
+       [
+        4.9153233,
+        52.3521703
+       ],
+       [
+        4.9152858,
+        52.3520649
+       ],
+       [
+        4.9154238,
+        52.3520466
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9154987,
+        52.3522573
+       ],
+       [
+        4.9153607,
+        52.3522757
+       ],
+       [
+        4.9153233,
+        52.3521703
+       ],
+       [
+        4.9154613,
+        52.3521519
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9155174,
+        52.35231
+       ],
+       [
+        4.9153794,
+        52.3523284
+       ],
+       [
+        4.9153607,
+        52.3522757
+       ],
+       [
+        4.9154987,
+        52.3522573
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9155362,
+        52.3523627
+       ],
+       [
+        4.9153981,
+        52.3523811
+       ],
+       [
+        4.9153794,
+        52.3523284
+       ],
+       [
+        4.9155174,
+        52.35231
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "theron-069116",
+     "pandId": "0363100012069116",
+     "buildingId": "NL.IMBAG.Pand.0363100012069116",
+     "address": "Danie Theronstraat 28",
+     "frontage": {
+      "x0": -27.6,
+      "x1": -15.599,
+      "widthM": 12.001
+     },
+     "bounds": {
+      "min": [
+       -27.6,
+       0,
+       -9.663
+      ],
+      "max": [
+       -15.599,
+       13.93,
+       0.601
+      ]
+     },
+     "triangles": 2263,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-116701",
+     "pandId": "0363100012116701",
+     "buildingId": "NL.IMBAG.Pand.0363100012116701",
+     "address": "Danie Theronstraat 24",
+     "frontage": {
+      "x0": -15.599,
+      "x1": -3.6,
+      "widthM": 11.999
+     },
+     "bounds": {
+      "min": [
+       -15.6,
+       0,
+       -9.663
+      ],
+      "max": [
+       -3.6,
+       13.93,
+       0.601
+      ]
+     },
+     "triangles": 2260,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 26,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1652,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 328,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-115092",
+     "pandId": "0363100012115092",
+     "buildingId": "NL.IMBAG.Pand.0363100012115092",
+     "address": "Danie Theronstraat 20",
+     "frontage": {
+      "x0": -3.6,
+      "x1": 8.399,
+      "widthM": 11.999
+     },
+     "bounds": {
+      "min": [
+       -3.6,
+       0,
+       -9.664
+      ],
+      "max": [
+       8.4,
+       13.93,
+       0.6
+      ]
+     },
+     "triangles": 2258,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 48,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 408,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3304,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 656,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 11,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-112858",
+     "pandId": "0363100012112858",
+     "buildingId": "NL.IMBAG.Pand.0363100012112858",
+     "address": "Danie Theronstraat 18A",
+     "frontage": {
+      "x0": 8.399,
+      "x1": 14.4,
+      "widthM": 6.002
+     },
+     "bounds": {
+      "min": [
+       8.399,
+       0,
+       -9.664
+      ],
+      "max": [
+       14.4,
+       13.93,
+       0.599
+      ]
+     },
+     "triangles": 1201,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 68,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 612,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 30,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 4956,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 984,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 15,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-089089",
+     "pandId": "0363100012089089",
+     "buildingId": "NL.IMBAG.Pand.0363100012089089",
+     "address": "Danie Theronstraat 16A",
+     "frontage": {
+      "x0": 14.401,
+      "x1": 20.4,
+      "widthM": 5.999
+     },
+     "bounds": {
+      "min": [
+       14.4,
+       0,
+       -9.664
+      ],
+      "max": [
+       20.4,
+       13.93,
+       0.599
+      ]
+     },
+     "triangles": 1205,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 91,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 732,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 40,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 5804,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1152,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-theron-9-37-r1",
+   "category": "street-survey",
+   "name": "face-theron-9-37-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-theron-9-37-r1.glb?asset=495d09c2a8c28850",
+   "sha256": "495d09c2a8c28850dece50c8a09f526f180a45a395547f7616cf2ca8fd5a47d5",
+   "bytes": 307984,
+   "triangles": 4530,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.915891679351537,
+     52.35231515426615
+    ],
+    "northOffsetDegrees": 102.2725,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.921,
+     0,
+     -9.716
+    ],
+    "max": [
+     11.921,
+     13.93,
+     0.6
+    ]
+   },
+   "height": 13.93,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012138289",
+    "NL.IMBAG.Pand.0363100012148172"
+   ],
+   "replaces": [
+    "ordinary-0363100012138289",
+    "ordinary-0363100012148172"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9160677,
+        52.3524013
+       ],
+       [
+        4.915929,
+        52.3524198
+       ],
+       [
+        4.9158917,
+        52.3523152
+       ],
+       [
+        4.9160304,
+        52.3522966
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9160304,
+        52.3522966
+       ],
+       [
+        4.9158917,
+        52.3523152
+       ],
+       [
+        4.9158544,
+        52.3522105
+       ],
+       [
+        4.9159932,
+        52.3521919
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "theron-138289",
+     "pandId": "0363100012138289",
+     "buildingId": "NL.IMBAG.Pand.0363100012138289",
+     "address": "Danie Theronstraat 13A",
+     "frontage": {
+      "x0": -11.92,
+      "x1": 0,
+      "widthM": 11.919
+     },
+     "bounds": {
+      "min": [
+       -11.921,
+       0,
+       -9.716
+      ],
+      "max": [
+       0.001,
+       13.93,
+       0.6
+      ]
+     },
+     "triangles": 2265,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-148172",
+     "pandId": "0363100012148172",
+     "buildingId": "NL.IMBAG.Pand.0363100012148172",
+     "address": "Danie Theronstraat 17A",
+     "frontage": {
+      "x0": 0,
+      "x1": 11.92,
+      "widthM": 11.921
+     },
+     "bounds": {
+      "min": [
+       0,
+       0,
+       -9.716
+      ],
+      "max": [
+       11.921,
+       13.93,
+       0.6
+      ]
+     },
+     "triangles": 2265,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 27,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1652,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 328,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-theron-9-37-r2",
+   "category": "street-survey",
+   "name": "face-theron-9-37-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-theron-9-37-r2.glb?asset=050d88c3cb47cf71",
+   "sha256": "050d88c3cb47cf71919a71510471e513593d831a0a1917a21e633c6e8f6be26a",
+   "bytes": 404880,
+   "triangles": 5957,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.915786091262546,
+     52.35201861384394
+    ],
+    "northOffsetDegrees": 102.2741,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.829,
+     0,
+     -10.692
+    ],
+    "max": [
+     14.667,
+     14.2,
+     0.6
+    ]
+   },
+   "height": 14.2,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012137971",
+    "NL.IMBAG.Pand.0363100012139446",
+    "NL.IMBAG.Pand.0363100012140487",
+    "NL.IMBAG.Pand.0363100012125668"
+   ],
+   "replaces": [
+    "ordinary-0363100012137971",
+    "ordinary-0363100012139446",
+    "ordinary-0363100012140487",
+    "ordinary-0363100012125668"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9159883,
+        52.3521372
+       ],
+       [
+        4.9158356,
+        52.3521576
+       ],
+       [
+        4.9158168,
+        52.3521048
+       ],
+       [
+        4.9159695,
+        52.3520844
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9159695,
+        52.3520844
+       ],
+       [
+        4.9158168,
+        52.3521048
+       ],
+       [
+        4.9157791,
+        52.351999
+       ],
+       [
+        4.9159319,
+        52.3519786
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9159319,
+        52.3519786
+       ],
+       [
+        4.9157791,
+        52.351999
+       ],
+       [
+        4.9157603,
+        52.3519462
+       ],
+       [
+        4.915913,
+        52.3519258
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.915913,
+        52.3519258
+       ],
+       [
+        4.9157603,
+        52.3519462
+       ],
+       [
+        4.9157408,
+        52.3518914
+       ],
+       [
+        4.9158626,
+        52.3518751
+       ],
+       [
+        4.9158621,
+        52.3518736
+       ],
+       [
+        4.915893,
+        52.3518694
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "theron-137971",
+     "pandId": "0363100012137971",
+     "buildingId": "NL.IMBAG.Pand.0363100012137971",
+     "address": "Danie Theronstraat 23A",
+     "frontage": {
+      "x0": -15.829,
+      "x1": -9.81,
+      "widthM": 6.019
+     },
+     "bounds": {
+      "min": [
+       -15.829,
+       0,
+       -10.689
+      ],
+      "max": [
+       -9.81,
+       13.93,
+       0.6
+      ]
+     },
+     "triangles": 1206,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 29
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-139446",
+     "pandId": "0363100012139446",
+     "buildingId": "NL.IMBAG.Pand.0363100012139446",
+     "address": "Danie Theronstraat 25D",
+     "frontage": {
+      "x0": -9.81,
+      "x1": 2.231,
+      "widthM": 12.041
+     },
+     "bounds": {
+      "min": [
+       -9.81,
+       0,
+       -10.692
+      ],
+      "max": [
+       2.231,
+       14.12,
+       0.6
+      ]
+     },
+     "triangles": 2258,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 29,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 120,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 848,
+       "triangleCount": 1652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 168,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-140487",
+     "pandId": "0363100012140487",
+     "buildingId": "NL.IMBAG.Pand.0363100012140487",
+     "address": "Danie Theronstraat 29A",
+     "frontage": {
+      "x0": 2.231,
+      "x1": 8.25,
+      "widthM": 6.019
+     },
+     "bounds": {
+      "min": [
+       2.229,
+       0,
+       -10.692
+      ],
+      "max": [
+       8.25,
+       14.13,
+       0.6
+      ]
+     },
+     "triangles": 1207,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 53,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 324,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2500,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 496,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 11,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "theron-125668",
+     "pandId": "0363100012125668",
+     "buildingId": "NL.IMBAG.Pand.0363100012125668",
+     "address": "Danie Theronstraat 31A",
+     "frontage": {
+      "x0": 8.25,
+      "x1": 14.489,
+      "widthM": 6.239
+     },
+     "bounds": {
+      "min": [
+       8.25,
+       0,
+       -10.692
+      ],
+      "max": [
+       14.667,
+       14.2,
+       0.6
+      ]
+     },
+     "triangles": 1286,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 83,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 444,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 30,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3348,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 664,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 15,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-steyn-9-19-r1",
+   "category": "street-survey",
+   "name": "face-steyn-9-19-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-steyn-9-19-r1.glb?asset=6a0d43894472dddf",
+   "sha256": "6a0d43894472dddf1b0b1218cba4e84adfe72bd0f95688306ea68cdecc89770a",
+   "bytes": 399824,
+   "triangles": 5857,
+   "primitives": 8,
+   "instance": {
+    "anchor": [
+     4.916180439450808,
+     52.35111953079472
+    ],
+    "northOffsetDegrees": 118.7036,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -13.448,
+     0,
+     -11.05
+    ],
+    "max": [
+     12.94,
+     14.17,
+     0.328
+    ]
+   },
+   "height": 14.17,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012063929",
+    "NL.IMBAG.Pand.0363100012073365",
+    "NL.IMBAG.Pand.0363100012145744",
+    "NL.IMBAG.Pand.0363100012138134"
+   ],
+   "replaces": [
+    "ordinary-0363100012063929",
+    "ordinary-0363100012073365",
+    "ordinary-0363100012145744",
+    "ordinary-0363100012138134"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9163967,
+        52.3511762
+       ],
+       [
+        4.9163909,
+        52.3511867
+       ],
+       [
+        4.9163901,
+        52.3511857
+       ],
+       [
+        4.9162722,
+        52.3512246
+       ],
+       [
+        4.9162258,
+        52.3511719
+       ],
+       [
+        4.9163673,
+        52.3511252
+       ],
+       [
+        4.9163892,
+        52.3511502
+       ],
+       [
+        4.9163835,
+        52.3511612
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9163673,
+        52.3511252
+       ],
+       [
+        4.9162258,
+        52.3511719
+       ],
+       [
+        4.9161795,
+        52.3511192
+       ],
+       [
+        4.916321,
+        52.3510726
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.916321,
+        52.3510726
+       ],
+       [
+        4.9161795,
+        52.3511192
+       ],
+       [
+        4.9161334,
+        52.3510668
+       ],
+       [
+        4.9162749,
+        52.3510201
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9162749,
+        52.3510201
+       ],
+       [
+        4.9161334,
+        52.3510668
+       ],
+       [
+        4.9160899,
+        52.3510173
+       ],
+       [
+        4.9162321,
+        52.3509714
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "steyn-063929",
+     "pandId": "0363100012063929",
+     "buildingId": "NL.IMBAG.Pand.0363100012063929",
+     "address": "President Steynstraat 9",
+     "frontage": {
+      "x0": -13.259,
+      "x1": -6.59,
+      "widthM": 6.669
+     },
+     "bounds": {
+      "min": [
+       -13.448,
+       0,
+       -10.892
+      ],
+      "max": [
+       -6.589,
+       13.85,
+       0.28
+      ]
+     },
+     "triangles": 1437,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 1108
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "steyn-073365",
+     "pandId": "0363100012073365",
+     "buildingId": "NL.IMBAG.Pand.0363100012073365",
+     "address": "President Steynstraat 11",
+     "frontage": {
+      "x0": -6.591,
+      "x1": 0.06,
+      "widthM": 6.651
+     },
+     "bounds": {
+      "min": [
+       -6.678,
+       0,
+       -10.947
+      ],
+      "max": [
+       0.06,
+       14.05,
+       0.328
+      ]
+     },
+     "triangles": 1523,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 59,
+       "triangleCount": 97
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 84,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1108,
+       "triangleCount": 1140
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 148,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 4,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 10,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "steyn-145744",
+     "pandId": "0363100012145744",
+     "buildingId": "NL.IMBAG.Pand.0363100012145744",
+     "address": "President Steynstraat 13",
+     "frontage": {
+      "x0": 0.06,
+      "x1": 6.69,
+      "widthM": 6.631
+     },
+     "bounds": {
+      "min": [
+       -0.029,
+       0,
+       -11
+      ],
+      "max": [
+       6.69,
+       14.04,
+       0.122
+      ]
+     },
+     "triangles": 1443,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 156,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 168,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2248,
+       "triangleCount": 1140
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 304,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 14,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 22,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "steyn-138134",
+     "pandId": "0363100012138134",
+     "buildingId": "NL.IMBAG.Pand.0363100012138134",
+     "address": "President Steynstraat 15",
+     "frontage": {
+      "x0": 6.69,
+      "x1": 12.939,
+      "widthM": 6.249
+     },
+     "bounds": {
+      "min": [
+       6.601,
+       0,
+       -11.05
+      ],
+      "max": [
+       12.94,
+       14.17,
+       0.117
+      ]
+     },
+     "triangles": 1454,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 186,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 252,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 3388,
+       "triangleCount": 1140
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 460,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 16,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 29,
+       "triangleCount": 6
       }
      ]
     }

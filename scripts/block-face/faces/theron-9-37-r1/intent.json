@@ -27,7 +27,10 @@
    "address": "Danie Theronstraat 13A",
    "type": {
     "type": "transvaal-1926-band-row",
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -39,6 +42,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "per 6 m half-portiek: a window pair (two 1.15-1.25 m two-light windows, 0.35 m pier) and, against the party wall, one half of the stair window; top storey three evenly spaced windows at 2 m pitch",
+    "identicalBays": "no: pairs and the stair window",
+    "windowsPerStorey": "ground: garden windows + portiek door | 1-2: window pair + stair light | 3: three windows between the white bands",
+    "symmetry": "a 12 m portiek unit is symmetric about the stair axis",
+    "groundFloor": "portiek door under a flat white canopy on the stair axis, garden windows and French doors",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m plain brick parapet with a thin dark coping over a continuous white band",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 482-959"
    }
   },
@@ -52,6 +69,9 @@
     "measuredPalette": {
      "brick": "#716357",
      "evidence": "strip 2020-04-29 span 959-1436: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#433d37"
     }
    },
    "groundFloor": {
@@ -64,6 +84,20 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "per 6 m half-portiek: a window pair (two 1.15-1.25 m two-light windows, 0.35 m pier) and, against the party wall, one half of the stair window; top storey three evenly spaced windows at 2 m pitch",
+    "identicalBays": "no: pairs and the stair window",
+    "windowsPerStorey": "ground: garden windows + portiek door | 1-2: window pair + stair light | 3: three windows between the white bands",
+    "symmetry": "a 12 m portiek unit is symmetric about the stair axis",
+    "groundFloor": "portiek door under a flat white canopy on the stair axis, garden windows and French doors",
+    "signage": "none",
+    "roofline": "flat; a 1.3 m plain brick parapet with a thin dark coping over a continuous white band",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 959-1436"
    }
   }
