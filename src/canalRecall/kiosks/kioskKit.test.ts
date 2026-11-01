@@ -183,3 +183,11 @@ test('a ridge sign stands on the centre line, lettered on both sides, with a fin
   const fin = bounds(parts.filter(p => p.role === 'awning'));
   assert.ok(fin.min.x < -0.95 && fin.max.x > 0.95 && fin.min.y >= 3.0 - 0.2);
 });
+
+test('a panel role draws a solid/glass infill in that role (posters) and leaves the default untouched', () => {
+  const s: KioskSpec = {...glass, faces: {...glass.faces, front: {panels: [{kind: 'solid', width: 1, role: 'bloomA'}, {kind: 'glass', width: 1, role: 'bloomC'}, {kind: 'solid', width: 1}]}}};
+  const parts = buildKiosk(s);
+  assert.equal(parts.filter(p => p.role === 'bloomA').length, 1);
+  assert.equal(parts.filter(p => p.role === 'bloomC').length, 1);
+  assert.equal(triangleCount(parts), triangleCount(buildKiosk({...s, faces: {...s.faces, front: {panels: [{kind: 'solid', width: 1}, {kind: 'glass', width: 1}, {kind: 'solid', width: 1}]}}})));
+});

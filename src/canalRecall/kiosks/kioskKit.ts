@@ -52,6 +52,8 @@ export interface KioskPanel {
   sill?: number; lowerRole?: KioskRole; lattice?: 'diamond' | 'square';
   lettering?: KioskLettering | KioskLettering[];
   louvreFrom?: number;
+  /** glass/solid: draw the infill in this role instead (a poster behind glass, a coloured board); absent = the kind */
+  role?: KioskRole;
 }
 export interface KioskFace { panels: KioskPanel[] }
 export interface KioskHatch {
@@ -372,7 +374,7 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
     face.panels.forEach((p, i) => {
       const [c, w] = panels[i];
       const back = -recess - infill, front = -recess;
-      if (p.kind === 'glass' || p.kind === 'solid') add(p.kind, faceBox(s, f, c, w, y0, y1, back, front));
+      if (p.kind === 'glass' || p.kind === 'solid') add(p.role ?? p.kind, faceBox(s, f, c, w, y0, y1, back, front));
       else if (p.kind === 'door') {
         add('glass', faceBox(s, f, c, w, y0, y1, back, front));
         // door stiles stand 5 cm proud of the glass, inside the frame depth
