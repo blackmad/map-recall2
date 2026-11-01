@@ -594,10 +594,12 @@ export class SignatureLandmarks {
    */
   _viewBounds() {
     // Kept while the view (camera and window size) is the one it was measured for, and at most until a frame has drawn.
-    const c = this.camera.center(), key = `${this.camera.zoom()},${c.lng},${c.lat},${this.camera.bearing()},${this.camera.pitch()},${window.innerWidth}x${window.innerHeight}`;
-    if (this._viewBoundsCache && this._viewBoundsKey === key) return this._viewBoundsCache;
-    this._viewBoundsKey = key;
-    return this._viewBoundsCache = plainBounds(this.camera.bounds());
+    // Compared as numbers: this runs once per model per frame, and formatting a key string cost 1.5 s a minute at 4x.
+    const cam = this.camera, c = cam.center(), k = this._viewBoundsKey ??= new Float64Array(7);
+    const z = cam.zoom(), b = cam.bearing(), p = cam.pitch(), w = window.innerWidth, h = window.innerHeight;
+    if (this._viewBoundsCache && k[0] === z && k[1] === c.lng && k[2] === c.lat && k[3] === b && k[4] === p && k[5] === w && k[6] === h) return this._viewBoundsCache;
+    k[0] = z; k[1] = c.lng; k[2] = c.lat; k[3] = b; k[4] = p; k[5] = w; k[6] = h;
+    return this._viewBoundsCache = plainBounds(cam.bounds());
   }
 
   /**
