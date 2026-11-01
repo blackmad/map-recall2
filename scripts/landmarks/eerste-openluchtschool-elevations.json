@@ -1,0 +1,17 @@
+{
+ "id": "eerste-openluchtschool",
+ "countedBy": "lane #176 (opus) from the rectified gate panorama TMX7316010203-002918_pano_0007_000016 (artifacts/landmark-briefs/eerste-openluchtschool-poort/w01-177.jpg) before the model was rendered; not a blind haiku count, integrator may re-count. Ribbon convention: each storey's run of steel windows is one opening. The school itself has no city panorama (it stands inside the block) and no frontal photograph to count from, so only the gate front is compared.",
+ "facades": [
+  {
+   "name": "Cliostraat gatehouse front",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/eerste-openluchtschool-poort/w01-177.jpg",
+   "rows": [2, 1, 1],
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 3,
+   "alongM": [0, 7.2],
+   "note": "Bands: ground floor (a small window left, a wide one right), first and second floor ribbons behind the balconies; flat roof slab, no peak."
+  }
+ ]
+}

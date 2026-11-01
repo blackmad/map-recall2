@@ -1,0 +1,482 @@
+{
+ "schemaVersion": 1,
+ "id": "eerste-openluchtschool",
+ "pand": "0363100012090993",
+ "brief": "scripts/landmarks/eerste-openluchtschool-brief.md",
+ "signature": [
+  "w01-loggias",
+  "w01-slab-bands",
+  "w01-classroom-glazing",
+  "w02-stair-hall",
+  "g01-balconies",
+  "w03-gym-glazing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-222",
+   "bearing": 222,
+   "lengthM": 16.6,
+   "centre": [
+    4.8743065,
+    52.3478835
+   ],
+   "evidence": "photo",
+   "panoId": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg",
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-loggias",
+     "kind": "colonnade",
+     "where": "south (playground) corner of the diamond: the stacked open-air loggias, one per upper floor, under the floor slabs, the corner itself free of columns, grey tubular railings on the slab edges",
+     "approxSizeM": [
+      8,
+      15
+     ],
+     "plan": "modelled",
+     "how": "the south quadrant left open; slab bands continue round it; railing() on its two outer slab edges at each upper floor; columns where it meets the wings and in its middle",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    },
+    {
+     "id": "w01-slab-bands",
+     "kind": "other",
+     "where": "white concrete floor-slab bands running round the whole block at every floor and the roof, ~0.8 m deep, 0.35 m proud of the glass",
+     "approxSizeM": [
+      16.6,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "band(): the outline grown 0.35 m, extruded from 0.3 m under each floor to its 0.5 m sill, and a roof band",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    },
+    {
+     "id": "w01-classroom-glazing",
+     "kind": "window-shape",
+     "where": "west classroom wing: full-height blue steel window walls between the slabs, eight equal axes per long side (register), a transom",
+     "approxSizeM": [
+      8,
+      15
+     ],
+     "plan": "modelled",
+     "how": "windowWall(): glass prism faces with blue mullions on eight axes, a transom and a dark blue plinth on the ground floor",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    },
+    {
+     "id": "w01-roof-railing",
+     "kind": "balcony-ironwork",
+     "where": "grey tubular railing round the roof terrace",
+     "approxSizeM": [
+      16.6,
+      1
+     ],
+     "plan": "modelled",
+     "how": "railing() along the grown outline at the roof",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    },
+    {
+     "id": "w01-columns",
+     "kind": "colonnade",
+     "where": "square white columns with dark blue feet at the loggia (ground floor)",
+     "approxSizeM": [
+      0.4,
+      15
+     ],
+     "plan": "simplified",
+     "how": "three columns: where the loggia meets each wing and in its middle",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    },
+    {
+     "id": "w01-banner",
+     "kind": "sign",
+     "where": "cloth banner on the ground-floor loggia",
+     "approxSizeM": [
+      2,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "school banner, changes"
+     },
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs."
+  },
+  {
+   "tag": "w02-42",
+   "bearing": 42,
+   "lengthM": 16.4,
+   "centre": [
+    4.8745645,
+    52.3479335
+   ],
+   "evidence": "photo",
+   "panoId": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png",
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-stair-hall",
+     "kind": "tower",
+     "where": "back of the block: the recessed, fully glazed stair hall in the middle, rising above the roof as a glass box (3DBAG 18 m)",
+     "approxSizeM": [
+      4.6,
+      18
+     ],
+     "plan": "modelled",
+     "how": "glass prism under 3DBAG plane 54; a glass panel with blue mullions and floor bars in the middle of the rear wall",
+     "seenIn": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png",
+     "note": "1930s photograph (Nationaal Archief, public domain) and RCE 20320299 (2001)"
+    },
+    {
+     "id": "w02-east-wing-glazing",
+     "kind": "window-shape",
+     "where": "east wing outer north-east side: blue window walls between slab bands",
+     "approxSizeM": [
+      7.6,
+      15
+     ],
+     "plan": "modelled",
+     "how": "windowWall()",
+     "seenIn": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs. The north-east side of the wing is seen on the 1930s photograph; the low rear wing in front of it is inferred."
+  },
+  {
+   "tag": "w03-222",
+   "bearing": 222,
+   "lengthM": 9.3,
+   "centre": [
+    4.874529,
+    52.347861
+   ],
+   "evidence": "photo",
+   "panoId": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg",
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-gym-glazing",
+     "kind": "window-shape",
+     "where": "the low gymnasium to the right of the main block: blue-framed glazing, orange panels in the end bays, white fascia",
+     "approxSizeM": [
+      9.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "how": "glass slab with blue mullions on 1.2 m, two orange panels, dark blue plinth on each free side",
+     "seenIn": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg",
+     "note": "orange panels also on Commons 8157211576 (2012)"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs."
+  },
+  {
+   "tag": "w04-42",
+   "bearing": 42,
+   "lengthM": 8.7,
+   "centre": [
+    4.8744515,
+    52.348025
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Low rear wing (3DBAG 3.6 m). The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs. Drawn white with a blue-framed window band (inferred)."
+  },
+  {
+   "tag": "w05-312",
+   "bearing": 312,
+   "lengthM": 8.3,
+   "centre": [
+    4.8742555,
+    52.347961
+   ],
+   "evidence": "photo",
+   "panoId": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png",
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-west-wing-glazing",
+     "kind": "window-shape",
+     "where": "west wing outer north-west side: blue window walls between slab bands",
+     "approxSizeM": [
+      7.9,
+      15
+     ],
+     "plan": "modelled",
+     "how": "windowWall()",
+     "seenIn": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs."
+  },
+  {
+   "tag": "w06-132",
+   "bearing": 132,
+   "lengthM": 8.2,
+   "centre": [
+    4.874438,
+    52.3478615
+   ],
+   "evidence": "photo",
+   "panoId": "Openluchtschool_-_Open-air_School_(8157211576).jpg",
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-east-wing-glazing",
+     "kind": "window-shape",
+     "where": "east classroom wing and the east half of the loggias seen from the playground: same slab bands, blue window walls and railings",
+     "approxSizeM": [
+      8,
+      15
+     ],
+     "plan": "modelled",
+     "how": "windowWall() on the wing side facing the loggia and the outer south-east side",
+     "seenIn": "Openluchtschool_-_Open-air_School_(8157211576).jpg"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs."
+  },
+  {
+   "tag": "w07-132",
+   "bearing": 132,
+   "lengthM": 7.6,
+   "centre": [
+    4.874617,
+    52.3478585
+   ],
+   "evidence": "photo",
+   "panoId": "Overzicht_zuidgevel_en_oostgevel_-_Amsterdam_-_20531711_-_RCE.jpg",
+   "capturedAt": "2016-07-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-gym-glazing",
+     "kind": "window-shape",
+     "where": "gymnasium south-east side: blue-framed glazing",
+     "approxSizeM": [
+      7.6,
+      4.8
+     ],
+     "plan": "simplified",
+     "how": "same glazing as the front of the gymnasium",
+     "seenIn": "Overzicht_zuidgevel_en_oostgevel_-_Amsterdam_-_20531711_-_RCE.jpg"
+    }
+   ],
+   "note": "The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs."
+  },
+  {
+   "tag": "w08-312",
+   "bearing": 312,
+   "lengthM": 7.5,
+   "centre": [
+    4.8743145,
+    52.348024
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Low rear wing (3DBAG 3.6 m). The panorama the brief matched to this wall looks at the neighbouring housing across the courtyard; the school stands inside the block and no city panorama sees it. Evidence is the Commons photographs. Drawn white with a blue-framed window band (inferred)."
+  },
+  {
+   "tag": "g01-177",
+   "bearing": 177,
+   "lengthM": 7.2,
+   "centre": [
+    4.8745305,
+    52.347503
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0007_000016",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "g01-balconies",
+     "kind": "balcony-ironwork",
+     "where": "first and second floor: full-width concrete balconies (~0.9 m deep) with white tubular railings in four panels",
+     "approxSizeM": [
+      6.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "slab per floor and railing() on its edge",
+     "seenIn": "TMX7316010203-002918_pano_0007_000016"
+    },
+    {
+     "id": "g01-ribbon-glazing",
+     "kind": "window-shape",
+     "where": "first and second floor: ribbon of blue steel windows across the front (3.65-5.6 m and 6.45-8.25 m)",
+     "approxSizeM": [
+      5.8,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "glass slab with blue mullions on ~0.65 m and frame rails",
+     "seenIn": "TMX7316010203-002918_pano_0007_000016"
+    },
+    {
+     "id": "g01-ground-windows",
+     "kind": "window-shape",
+     "where": "ground floor: a small blue-framed window left and a wide one right",
+     "approxSizeM": [
+      3.6,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "two framed glass slabs",
+     "seenIn": "TMX7316010203-002918_pano_0007_000016"
+    },
+    {
+     "id": "g01-roof-slab",
+     "kind": "canopy",
+     "where": "thin flat roof slab projecting ~1.1 m over the front",
+     "approxSizeM": [
+      7.2,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "white slab 8.45-8.95 m",
+     "seenIn": "TMX7316010203-002918_pano_0007_000016"
+    },
+    {
+     "id": "g01-bridge-lettering",
+     "kind": "lettering",
+     "where": "left of the block: the glazed first-floor bridge over the passage to the playground, in 1981 with OPENLUCHTSCHOOL VOOR HET GEZONDE KIND on its fascia",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the bridge stands outside BAG pand 0363100012098627 and the lettering is not on the 2023 panorama crop; left for the integrator to decide (RCE 20016356, 1981)"
+     },
+     "seenIn": "Voorgevel_-_Amsterdam_-_20016356_-_RCE.jpg"
+    }
+   ],
+   "note": "Gatehouse on the Cliostraat, BAG pand 0363100012098627 (rectified crop 50 px/m)."
+  },
+  {
+   "tag": "g02-358",
+   "bearing": 358,
+   "lengthM": 6.7,
+   "centre": [
+    4.874521,
+    52.3475955
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Gatehouse back towards the playground and its narrow wing with the rounded north end (orthophoto): no usable photo; plain white render (inferred)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 46504",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/46504",
+   "licence": "CC0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB Actueel_orthoHR (plan check)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Johannes_Duiker-_Open_Air_School,_1930_(2627656346).jpg",
+   "licence": "CC BY-SA 2.0"
+  },
+  {
+   "name": "Openluchtschool_-_Open-air_School_(8157210726).jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Openluchtschool_-_Open-air_School_(8157210726).jpg",
+   "licence": "No restrictions"
+  },
+  {
+   "name": "Openluchtschool_-_Open-air_School_(8157211576).jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Openluchtschool_-_Open-air_School_(8157211576).jpg",
+   "licence": "No restrictions"
+  },
+  {
+   "name": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png",
+   "url": "https://commons.wikimedia.org/wiki/File:Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat._Architect_Duiker,_Bestanddeelnr_122-0006.png",
+   "licence": "Public domain"
+  },
+  {
+   "name": "Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat.png",
+   "url": "https://commons.wikimedia.org/wiki/File:Openluchtschool_te_Amsterdam-Zuid_aan_de_Cliostraat.png",
+   "licence": "Public domain"
+  },
+  {
+   "name": "Overzicht_-_Amsterdam_-_20016357_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_-_Amsterdam_-_20016357_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_-_Amsterdam_-_20016358_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_-_Amsterdam_-_20016358_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_oostgevel_-_Amsterdam_-_20531710_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_oostgevel_-_Amsterdam_-_20531710_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_schoolgebouw_genomen_vanuit_glazen_trappenhuis_-_Amsterdam_-_20320299_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_schoolgebouw_genomen_vanuit_glazen_trappenhuis_-_Amsterdam_-_20320299_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_schoolgebouw_met_ingang_-_Amsterdam_-_20320295_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_schoolgebouw_met_ingang_-_Amsterdam_-_20320295_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_speelplaats_-_Amsterdam_-_20320296_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_speelplaats_-_Amsterdam_-_20320296_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Overzicht_zuidgevel_en_oostgevel_-_Amsterdam_-_20531711_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_zuidgevel_en_oostgevel_-_Amsterdam_-_20531711_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Straatgevel_met_poortgebouw_en_onderdoorgang_naar_binnenplein_-_Amsterdam_-_20320298_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Straatgevel_met_poortgebouw_en_onderdoorgang_naar_binnenplein_-_Amsterdam_-_20320298_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Voorgevel_-_Amsterdam_-_20016356_-_RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Voorgevel_-_Amsterdam_-_20016356_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "BAG panden 0363100012090993, 0363100012098627",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012090993",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
